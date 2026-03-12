@@ -4,43 +4,43 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AtlasDays — Track Every Country Visit</title>
-  <meta name="description" content="AtlasDays is a private iPhone app for tracking trips by country, visa day limits, residency thresholds, and travel history — without spreadsheet chaos." />
+  <meta name="description" content="AtlasDays is a private iPhone app for tracking trips by country, visa day limits, residency thresholds, and travel history without spreadsheet chaos." />
   <meta property="og:title" content="AtlasDays — Track Every Country Visit" />
   <meta property="og:description" content="Track trips, visa days, and residency thresholds in one private travel log for iPhone." />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
   <style>
     :root {
-      --bg: #0a0a0b;
-      --bg-elevated: #101114;
-      --bg-card: rgba(255,255,255,0.04);
-      --bg-card-strong: rgba(255,255,255,0.06);
-      --text: #f5f7fb;
-      --muted: #b0b6c2;
-      --muted-2: #8b92a0;
-      --line: rgba(255,255,255,0.1);
+      --bg: #0a0b0d;
+      --bg-elevated: #0f1319;
+      --bg-card: rgba(255,255,255,0.05);
+      --bg-card-strong: rgba(255,255,255,0.07);
+      --text: #f4f7fb;
+      --muted: #b2b9c5;
+      --muted-2: #8790a0;
+      --line: rgba(255,255,255,0.10);
       --line-strong: rgba(255,255,255,0.16);
       --blue: #1692ff;
       --blue-soft: rgba(22,146,255,0.12);
-      --shadow: 0 20px 70px rgba(0,0,0,0.45);
+      --shadow: 0 20px 64px rgba(0,0,0,0.40);
       --radius: 24px;
-      --max: 1180px;
-      --section-pad: 96px;
+      --max: 1160px;
+      --section-pad: 84px;
     }
 
     @media (prefers-color-scheme: light) {
       :root {
-        --bg: #f7f9fc;
+        --bg: #f6f8fc;
         --bg-elevated: #ffffff;
-        --bg-card: rgba(255,255,255,0.86);
+        --bg-card: rgba(255,255,255,0.88);
         --bg-card-strong: rgba(255,255,255,0.96);
-        --text: #0e1320;
-        --muted: #4d5a70;
-        --muted-2: #687588;
-        --line: rgba(10,20,40,0.08);
-        --line-strong: rgba(10,20,40,0.14);
+        --text: #0d1422;
+        --muted: #526075;
+        --muted-2: #6c788b;
+        --line: rgba(12,22,40,0.09);
+        --line-strong: rgba(12,22,40,0.14);
         --blue-soft: rgba(22,146,255,0.08);
-        --shadow: 0 24px 60px rgba(20, 31, 56, 0.10);
+        --shadow: 0 20px 52px rgba(16,28,48,0.10);
       }
     }
 
@@ -51,10 +51,10 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top center, rgba(22,146,255,0.14), transparent 28%),
-        radial-gradient(circle at 10% 20%, rgba(22,146,255,0.08), transparent 18%),
+        radial-gradient(circle at top center, rgba(22,146,255,0.13), transparent 26%),
+        radial-gradient(circle at 10% 15%, rgba(22,146,255,0.06), transparent 18%),
         var(--bg);
-      line-height: 1.55;
+      line-height: 1.5;
       -webkit-font-smoothing: antialiased;
       text-rendering: optimizeLegibility;
     }
@@ -94,16 +94,14 @@
       height: 36px;
       border-radius: 11px;
       overflow: hidden;
-      box-shadow: 0 6px 18px rgba(22,146,255,0.18);
-      background: #0d1117;
       flex: none;
+      background: #0e1218;
+      box-shadow: 0 6px 18px rgba(22,146,255,0.16);
     }
-    .brand span { font-size: 1rem; }
-
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 26px;
+      gap: 24px;
       color: var(--muted);
       font-size: 0.95rem;
     }
@@ -113,17 +111,15 @@
       border-radius: 14px;
       background: var(--blue);
       color: white;
-      font-weight: 600;
-      box-shadow: 0 12px 24px rgba(22,146,255,0.22);
+      font-weight: 650;
+      box-shadow: 0 12px 24px rgba(22,146,255,0.20);
     }
 
-    .hero {
-      padding: 52px 0 var(--section-pad);
-    }
+    .hero { padding: 50px 0 var(--section-pad); }
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.04fr 0.96fr;
-      gap: 56px;
+      grid-template-columns: 1.02fr 0.98fr;
+      gap: 48px;
       align-items: center;
     }
     .eyebrow {
@@ -146,23 +142,23 @@
       box-shadow: 0 0 0 6px rgba(22,146,255,0.12);
     }
     h1 {
-      font-size: clamp(2.8rem, 6vw, 5rem);
+      font-size: clamp(2.75rem, 6vw, 4.9rem);
       line-height: 0.98;
       letter-spacing: -0.05em;
-      margin: 0 0 20px;
-      max-width: 10.8ch;
+      margin: 0 0 18px;
+      max-width: 11ch;
     }
-    .hero p {
-      font-size: clamp(1.04rem, 1.7vw, 1.18rem);
+    .hero-lead {
+      font-size: clamp(1.01rem, 1.7vw, 1.14rem);
       color: var(--muted);
-      margin: 0 0 28px;
-      max-width: 58ch;
+      margin: 0 0 22px;
+      max-width: 54ch;
     }
     .hero-actions {
       display: flex;
       gap: 14px;
       flex-wrap: wrap;
-      margin-bottom: 26px;
+      margin-bottom: 22px;
     }
     .btn {
       display: inline-flex;
@@ -206,20 +202,16 @@
       display: block;
       color: var(--text);
       font-size: 0.98rem;
-      margin-bottom: 2px;
+      margin-bottom: 3px;
     }
 
-    .visual-column {
-      display: flex;
-      flex-direction: column;
-    }
     .visual-wrap {
       position: relative;
-      min-height: 760px;
+      min-height: 610px;
     }
     .visual-card {
       position: absolute;
-      border-radius: 36px;
+      border-radius: 34px;
       padding: 12px;
       background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04));
       border: 1px solid rgba(255,255,255,0.12);
@@ -228,72 +220,39 @@
       -webkit-backdrop-filter: blur(10px);
     }
     .visual-card img {
-      border-radius: 26px;
+      border-radius: 24px;
       width: 100%;
       height: auto;
     }
     .visual-card.primary {
-      width: min(365px, 78%);
+      width: min(360px, 78%);
       right: 0;
       top: 0;
       z-index: 2;
     }
     .visual-card.secondary {
-      width: min(320px, 68%);
+      width: min(295px, 64%);
       left: 0;
-      bottom: 32px;
+      bottom: 54px;
       z-index: 1;
     }
-    .hero-visual-caption {
-      margin-top: 18px;
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
-    }
-    .visual-caption-card {
-      background: var(--bg-card);
-      border: 1px solid var(--line);
-      border-radius: 20px;
-      padding: 16px 18px;
-      box-shadow: var(--shadow);
-    }
-    .visual-caption-card small {
-      display: block;
-      color: var(--muted-2);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-size: 0.7rem;
-      margin-bottom: 6px;
-    }
-    .visual-caption-card strong {
-      display: block;
-      font-size: 1.02rem;
-      margin-bottom: 4px;
-    }
-    .visual-caption-card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.92rem;
-    }
 
-    .section {
-      padding: 0 0 var(--section-pad);
-    }
+    .section { padding: 0 0 var(--section-pad); }
     .section-header {
-      max-width: 760px;
-      margin: 0 auto 34px;
+      max-width: 720px;
+      margin: 0 auto 30px;
       text-align: center;
     }
     .section-header h2 {
-      font-size: clamp(2rem, 3vw, 3rem);
-      line-height: 1.05;
+      font-size: clamp(2rem, 3vw, 2.9rem);
+      line-height: 1.06;
       letter-spacing: -0.04em;
-      margin: 0 0 12px;
+      margin: 0 0 10px;
     }
     .section-header p {
       margin: 0;
       color: var(--muted);
-      font-size: 1.05rem;
+      font-size: 1rem;
     }
 
     .use-cases-grid,
@@ -304,30 +263,18 @@
       display: grid;
       gap: 18px;
     }
-
-    .use-cases-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-    .feature-grid {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-    .proof-grid {
-      grid-template-columns: 1.12fr 0.88fr;
-      align-items: stretch;
-    }
-    .faq-grid {
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
-    .footer-grid {
-      grid-template-columns: 1.2fr 0.8fr;
-      align-items: start;
-    }
+    .use-cases-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .feature-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .proof-grid { grid-template-columns: 1fr 1fr; align-items: stretch; }
+    .faq-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .footer-grid { grid-template-columns: 1.15fr 0.85fr; align-items: start; }
 
     .card,
     .feature,
     .faq,
     .proof,
-    .cta-panel {
+    .cta-panel,
+    .footer-box {
       background: var(--bg-card);
       border: 1px solid var(--line);
       border-radius: 26px;
@@ -336,23 +283,26 @@
       -webkit-backdrop-filter: blur(10px);
     }
 
-    .card {
-      padding: 26px;
-    }
+    .card,
+    .feature,
+    .proof,
+    .faq,
+    .footer-box { padding: 24px; }
+
     .card-icon {
       width: 44px;
       height: 44px;
       border-radius: 14px;
       display: inline-grid;
       place-items: center;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
       background: var(--blue-soft);
       color: var(--blue);
       font-weight: 800;
     }
     .card h3, .feature h3, .proof h3, .faq h3 {
-      margin: 0 0 10px;
-      font-size: 1.18rem;
+      margin: 0 0 9px;
+      font-size: 1.12rem;
       letter-spacing: -0.02em;
     }
     .card p, .feature p, .proof p, .faq p {
@@ -360,49 +310,37 @@
       color: var(--muted);
     }
 
-    .feature {
-      padding: 28px;
-    }
-    .feature ul,
-    .proof ul {
-      margin: 14px 0 0;
+    .mini-list {
+      margin: 12px 0 0;
       padding-left: 18px;
       color: var(--muted);
     }
-    .feature li,
-    .proof li {
-      margin: 7px 0;
-    }
+    .mini-list li { margin: 6px 0; }
 
-    .proof {
-      padding: 30px;
-    }
     .proof-visual {
       overflow: hidden;
       padding: 0;
       display: flex;
       flex-direction: column;
     }
-    .proof-visual .frame {
-      padding: 16px 16px 0;
-    }
+    .proof-visual .frame { padding: 16px 16px 0; }
     .proof-visual .frame img {
-      border-radius: 24px 24px 0 0;
+      border-radius: 22px 22px 0 0;
       border: 1px solid var(--line);
     }
     .proof-caption {
-      padding: 22px;
+      padding: 18px 20px 20px;
       border-top: 1px solid var(--line);
       color: var(--muted);
     }
     .proof-caption strong {
       display: block;
       color: var(--text);
-      margin-bottom: 6px;
+      margin-bottom: 5px;
     }
 
     .privacy-panel {
-      padding: 34px;
+      padding: 32px;
       background: linear-gradient(180deg, rgba(22,146,255,0.10), rgba(22,146,255,0.03));
       border: 1px solid rgba(22,146,255,0.18);
       border-radius: 30px;
@@ -414,9 +352,9 @@
       letter-spacing: -0.04em;
     }
     .privacy-panel p {
-      margin: 0 0 18px;
+      margin: 0 0 16px;
       color: var(--muted);
-      max-width: 66ch;
+      max-width: 62ch;
     }
     .trust-row {
       display: flex;
@@ -432,13 +370,13 @@
       font-size: 0.92rem;
     }
     .disclaimer {
-      margin-top: 14px;
+      margin-top: 12px;
       color: var(--muted-2);
       font-size: 0.9rem;
     }
 
     .cta-panel {
-      padding: 34px;
+      padding: 32px;
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -446,29 +384,16 @@
     }
     .cta-panel h2 {
       margin: 0 0 10px;
-      font-size: clamp(1.8rem, 2.8vw, 2.8rem);
+      font-size: clamp(1.8rem, 2.8vw, 2.7rem);
       line-height: 1.02;
       letter-spacing: -0.04em;
     }
     .cta-panel p {
       margin: 0;
       color: var(--muted);
-      max-width: 60ch;
+      max-width: 54ch;
     }
 
-    footer {
-      padding: 0 0 48px;
-    }
-    .footer-box {
-      padding: 28px;
-      background: var(--bg-card);
-      border: 1px solid var(--line);
-      border-radius: 26px;
-    }
-    .footer-box p {
-      color: var(--muted);
-      margin: 10px 0 0;
-    }
     .footer-links {
       display: flex;
       flex-direction: column;
@@ -477,11 +402,23 @@
     }
     .footer-links a:hover { color: var(--text); }
     .copyright {
-      margin-top: 22px;
+      margin-top: 18px;
       color: var(--muted-2);
       font-size: 0.92rem;
     }
-
+    .contact-line {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 14px;
+      color: var(--text);
+      font-weight: 600;
+      flex-wrap: wrap;
+    }
+    .contact-line .label {
+      color: var(--muted);
+      font-weight: 500;
+    }
     .muted-link {
       color: var(--muted);
       text-decoration: underline;
@@ -501,12 +438,10 @@
     @media (max-width: 1060px) {
       .hero-grid,
       .proof-grid,
-      .footer-grid {
-        grid-template-columns: 1fr;
-      }
+      .footer-grid { grid-template-columns: 1fr; }
       .hero-grid { gap: 34px; }
       .visual-wrap {
-        min-height: 720px;
+        min-height: 600px;
         max-width: 520px;
         margin: 0 auto;
       }
@@ -517,22 +452,15 @@
     }
 
     @media (max-width: 820px) {
-      :root { --section-pad: 72px; }
+      :root { --section-pad: 66px; }
       .nav-links a:not(.nav-cta) { display: none; }
       .use-cases-grid,
       .feature-grid,
       .faq-grid,
-      .hero-points {
-        grid-template-columns: 1fr;
-      }
-      .visual-wrap {
-        min-height: 650px;
-      }
+      .hero-points { grid-template-columns: 1fr; }
+      .visual-wrap { min-height: 540px; }
       .visual-card.primary { width: min(330px, 82%); }
-      .visual-card.secondary { width: min(285px, 70%); }
-      .hero-visual-caption {
-        grid-template-columns: 1fr;
-      }
+      .visual-card.secondary { width: min(272px, 66%); }
     }
 
     @media (max-width: 620px) {
@@ -540,22 +468,37 @@
       .site-header { position: static; }
       .nav { min-height: 64px; }
       .brand-mark { width: 32px; height: 32px; border-radius: 10px; }
-      h1 { max-width: 11.5ch; }
       .hero { padding-top: 26px; }
+      h1 { max-width: 10.4ch; }
+      .hero-lead { margin-bottom: 18px; }
       .visual-wrap {
-        min-height: 560px;
+        min-height: auto;
+        display: grid;
+        gap: 12px;
       }
-      .visual-card { border-radius: 28px; padding: 10px; }
-      .visual-card img { border-radius: 20px; }
-      .visual-card.primary { width: 72%; }
-      .visual-card.secondary { width: 62%; bottom: 42px; }
-      .hero-visual-caption {
-        grid-template-columns: 1fr;
-        margin-top: 14px;
+      .visual-card {
+        position: relative;
+        inset: auto;
+        border-radius: 24px;
+        padding: 8px;
       }
-      .card, .feature, .proof, .cta-panel, .privacy-panel, .footer-box, .faq {
-        padding: 22px;
+      .visual-card img { border-radius: 18px; }
+      .visual-card.primary,
+      .visual-card.secondary { width: 100%; }
+      .visual-card.secondary {
+        width: 80%;
+        margin: -42px 0 0 auto;
       }
+      .card,
+      .feature,
+      .proof,
+      .faq,
+      .footer-box,
+      .cta-panel,
+      .privacy-panel { padding: 20px; }
+      .btn { width: 100%; }
+      .hero-actions { gap: 10px; }
+      .cta-panel h2 { max-width: 12ch; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -569,7 +512,7 @@
   <header class="site-header">
     <div class="container nav">
       <a class="brand" href="#top" aria-label="AtlasDays home">
-        <span class="brand-mark"><img src="logo.png" alt="AtlasDays logo" /></span>
+        <span class="brand-mark"><img src="assets/logo.png" alt="AtlasDays logo" /></span>
         <span>AtlasDays</span>
       </a>
       <nav class="nav-links" aria-label="Primary">
@@ -577,7 +520,7 @@
         <a href="#features">Features</a>
         <a href="#privacy">Privacy</a>
         <a href="#faq">FAQ</a>
-        <a class="nav-cta" href="mailto:atlasdays@pm.me?subject=AtlasDays%20launch%20updates">Get updates</a>
+        <a href="mailto:atlasdays@pm.me">Contact</a>
       </nav>
     </div>
   </header>
@@ -588,39 +531,24 @@
         <div class="reveal visible">
           <div class="eyebrow"><span class="dot"></span>Private travel tracking for iPhone</div>
           <h1>Track every country visit. Stay ahead of visa and residency limits.</h1>
-          <p>AtlasDays gives you one clean record of where you have been, how long you stayed, and how many days you have left. Track Schengen-style rules, 183-day residency thresholds, and your full country-by-country travel history without spreadsheet chaos.</p>
+          <p class="hero-lead">AtlasDays keeps your trips, day totals, and key limits in one place. Track Schengen-style rules, 183-day thresholds, and long-term travel history without spreadsheet drift.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="mailto:atlasdays@pm.me?subject=AtlasDays%20launch%20updates">Get launch updates</a>
             <a class="btn btn-secondary" href="#proof">See the product</a>
           </div>
           <div class="hero-points" aria-label="Key benefits">
-            <div class="hero-point"><strong>Visa day tracking</strong>Rolling windows, per-stay limits, calendar-year rules, and custom trackers.</div>
-            <div class="hero-point"><strong>Residency counting</strong>Monitor 183-day thresholds and country totals before they become a problem.</div>
-            <div class="hero-point"><strong>Travel history that stays usable</strong>Browse trips by country, year, and map instead of digging through notes.</div>
-            <div class="hero-point"><strong>Private by default</strong>On-device data, optional iCloud sync, no ads, and no bloated analytics stack.</div>
+            <div class="hero-point"><strong>Visa day tracking</strong>Rolling windows, per-stay limits, and custom trackers.</div>
+            <div class="hero-point"><strong>Residency counting</strong>Watch 183-day style thresholds before they become a problem.</div>
+            <div class="hero-point"><strong>Travel history</strong>Browse by country, year, and map instead of scattered notes.</div>
+            <div class="hero-point"><strong>Private by default</strong>On-device data, optional iCloud sync, no ads, no analytics bloat.</div>
           </div>
         </div>
 
-        <div class="visual-column reveal">
-          <div class="visual-wrap" aria-label="AtlasDays app previews">
-            <div class="visual-card primary">
-              <img src="screenshot1.png" alt="AtlasDays trips screen showing country visits and day counts" />
-            </div>
-            <div class="visual-card secondary">
-              <img src="screenshot2.png" alt="AtlasDays map view showing visited countries and a country detail sheet" />
-            </div>
+        <div class="visual-wrap reveal" aria-label="AtlasDays app previews">
+          <div class="visual-card primary">
+            <img src="assets/screenshot1.png" alt="AtlasDays trips screen showing country visits and day counts" />
           </div>
-          <div class="hero-visual-caption" aria-label="Screenshot highlights">
-            <div class="visual-caption-card">
-              <small>Trips view</small>
-              <strong>Clear day totals at a glance</strong>
-              <p>Ongoing trips, country history, and stay lengths remain readable without spreadsheets or manual recounting.</p>
-            </div>
-            <div class="visual-caption-card">
-              <small>Map view</small>
-              <strong>Visual history with real context</strong>
-              <p>See visited countries, open a country sheet, and jump straight into trip detail or a new entry.</p>
-            </div>
+          <div class="visual-card secondary">
+            <img src="assets/screenshot2.png" alt="AtlasDays map view showing visited countries and a country detail sheet" />
           </div>
         </div>
       </div>
@@ -629,24 +557,24 @@
     <section id="use-cases" class="section">
       <div class="container">
         <div class="section-header reveal">
-          <h2>Built for real travel constraints</h2>
-          <p>AtlasDays is not just a travel diary. It is designed for the moments when the exact number of days actually matters.</p>
+          <h2>Built for when the numbers matter</h2>
+          <p>For visas, residency planning, and long-term travel records.</p>
         </div>
         <div class="use-cases-grid">
           <article class="card reveal">
             <div class="card-icon">90</div>
-            <h3>Schengen and similar rolling windows</h3>
-            <p>Track rules like 90 days in 180, without re-counting old entries by hand every time you book a trip.</p>
+            <h3>Schengen and rolling windows</h3>
+            <p>Track rules like 90 in 180 without re-counting old entries every time you plan a trip.</p>
           </article>
           <article class="card reveal">
             <div class="card-icon">183</div>
-            <h3>Tax residency thresholds</h3>
-            <p>Watch 183-day style thresholds and custom targets before they quietly creep past your intended limit.</p>
+            <h3>Residency thresholds</h3>
+            <p>Watch 183-day style totals and custom targets before they quietly drift past your limit.</p>
           </article>
           <article class="card reveal">
             <div class="card-icon">🛂</div>
-            <h3>Travel history for applications</h3>
-            <p>Keep a usable record of visits by country and date when you need past travel history for forms or planning.</p>
+            <h3>Travel history for paperwork</h3>
+            <p>Keep a clean country-by-country record when you need past travel for forms or planning.</p>
           </article>
         </div>
       </div>
@@ -655,63 +583,33 @@
     <section id="features" class="section">
       <div class="container">
         <div class="section-header reveal">
-          <h2>What makes it better than a spreadsheet</h2>
-          <p>The point is not just storing dates. The point is making those dates stay clear, accurate, and useful over time.</p>
+          <h2>Better than a spreadsheet</h2>
+          <p>Clear records, clear totals, less manual counting.</p>
         </div>
         <div class="feature-grid">
           <article class="feature reveal">
-            <h3>Visa day tracking that matches real rules</h3>
-            <p>Set up rolling windows, calendar-year limits, per-stay limits, and custom trackers for specific countries or regions.</p>
-            <ul>
-              <li>Good fit for Schengen-style counting</li>
-              <li>Multiple trackers can run side by side</li>
-              <li>Clear totals instead of manual formulas</li>
-            </ul>
+            <h3>Rules that match real travel constraints</h3>
+            <p>Rolling windows, calendar-year limits, per-stay limits, and custom trackers.</p>
           </article>
           <article class="feature reveal">
-            <h3>Country-by-country travel log</h3>
-            <p>Browse your travel history by country and year, with day totals that remain easy to read even as your history grows.</p>
-            <ul>
-              <li>Ongoing trips are immediately visible</li>
-              <li>Day totals are attached to each stay</li>
-              <li>Designed for long-term travelers, not just holidays</li>
-            </ul>
+            <h3>Country log that stays readable</h3>
+            <p>Browse by country and year with ongoing trips and day totals visible immediately.</p>
           </article>
           <article class="feature reveal">
-            <h3>Interactive map with useful detail</h3>
-            <p>See where you have been, tap a country, and jump straight into trip history and quick actions from the map.</p>
-            <ul>
-              <li>Visual proof of travel at a glance</li>
-              <li>Country sheet with trip count and total days</li>
-              <li>Better overview than a flat list alone</li>
-            </ul>
+            <h3>Map with actual utility</h3>
+            <p>Tap a country, inspect totals, and move from overview to action fast.</p>
           </article>
           <article class="feature reveal">
             <h3>Flexible entries for imperfect history</h3>
-            <p>Not every old trip is remembered perfectly. AtlasDays supports approximate history better than rigid date-only tools.</p>
-            <ul>
-              <li>Useful for reconstructing older travel</li>
-              <li>Faster imports from messy records</li>
-              <li>More realistic than pretending every date is exact</li>
-            </ul>
+            <p>Useful when older travel data is incomplete or reconstructed later.</p>
           </article>
           <article class="feature reveal">
             <h3>Fast logging without clutter</h3>
-            <p>Add trips quickly and keep the interface focused on the information you actually need when traveling.</p>
-            <ul>
-              <li>Clean trip list with country flags and totals</li>
-              <li>Designed for regular use, not occasional setup</li>
-              <li>Supports a running record instead of one-off calculations</li>
-            </ul>
+            <p>Add trips quickly and keep the interface focused on what matters.</p>
           </article>
           <article class="feature reveal">
             <h3>Private by design</h3>
-            <p>Your travel history is sensitive. AtlasDays keeps privacy as product behavior, not as a footnote.</p>
-            <ul>
-              <li>On-device storage</li>
-              <li>Optional iCloud sync</li>
-              <li>No ads and no third-party analytics bloat</li>
-            </ul>
+            <p>Your travel history stays yours, with on-device storage and optional iCloud sync.</p>
           </article>
         </div>
       </div>
@@ -722,40 +620,18 @@
         <div class="proof-grid">
           <article class="proof reveal">
             <h3>Clear counts where they matter</h3>
-            <p>On the trips screen, each country stay carries its own day total, ongoing trips are obvious, and your history remains readable year by year. That is a stronger operational tool than a generic travel journal.</p>
-            <ul>
-              <li>Fast visual scan of current and past stays</li>
-              <li>Useful for residency counting and planning</li>
-              <li>Readable enough to trust during real travel decisions</li>
+            <p>Each stay carries its own day total, ongoing trips are obvious, and history remains readable year by year.</p>
+            <ul class="mini-list">
+              <li>Fast scan of current and past stays</li>
+              <li>Practical for planning decisions</li>
+              <li>Readable enough to trust while traveling</li>
             </ul>
           </article>
           <article class="proof proof-visual reveal">
             <div class="frame">
-              <img src="screenshot1.png" alt="Trips list in AtlasDays with country rows and day badges" />
+              <img src="assets/screenshot1.png" alt="Trips list in AtlasDays with country rows and day badges" />
             </div>
-            <div class="proof-caption"><strong>Trips list with day totals</strong>Country, dates, and day count sit together so the log stays operational instead of becoming passive archive data.</div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <div class="container">
-        <div class="proof-grid">
-          <article class="proof proof-visual reveal">
-            <div class="frame">
-              <img src="screenshot2.png" alt="AtlasDays map screen focused on Europe and San Marino trip detail" />
-            </div>
-            <div class="proof-caption"><strong>Map plus country detail</strong>See visited countries visually, inspect a country sheet, and jump straight into adding another trip from the same place.</div>
-          </article>
-          <article class="proof reveal">
-            <h3>Map view that does more than look pretty</h3>
-            <p>The map is useful because it connects your visual history to actual trip records. Tap a country, see trip count and total days, and move from overview to action immediately.</p>
-            <ul>
-              <li>Good for spotting gaps or forgotten stays</li>
-              <li>Useful when reconstructing older history</li>
-              <li>Turns geography into working context, not decoration</li>
-            </ul>
+            <div class="proof-caption"><strong>Trips list with day totals</strong>Country, dates, and total days stay together so the log remains operational.</div>
           </article>
         </div>
       </div>
@@ -765,7 +641,7 @@
       <div class="container">
         <div class="privacy-panel reveal">
           <h2>Privacy first, because travel history is personal</h2>
-          <p>AtlasDays keeps your data on your device and can sync through your own iCloud if you choose. It is built to help you count days and keep records, without turning your movement history into someone else’s dataset.</p>
+          <p>AtlasDays keeps your data on your device and can sync through your own iCloud if you choose. The goal is simple: help you count days without turning your movement history into someone else’s dataset.</p>
           <div class="trust-row">
             <span class="pill">On-device storage</span>
             <span class="pill">Optional iCloud sync</span>
@@ -782,23 +658,23 @@
       <div class="container">
         <div class="section-header reveal">
           <h2>How it works</h2>
-          <p>Keep the flow simple: add trips, review your totals, and let the app keep the counting readable.</p>
+          <p>Add trips, review totals, stay ahead of limits.</p>
         </div>
         <div class="use-cases-grid">
           <article class="card reveal">
             <div class="card-icon">1</div>
             <h3>Add your trips</h3>
-            <p>Log a country visit once and keep a clean travel record instead of scattered notes and old bookings.</p>
+            <p>Log a country visit once and keep one clean record.</p>
           </article>
           <article class="card reveal">
             <div class="card-icon">2</div>
-            <h3>Track countries and day windows</h3>
-            <p>Review trip totals, country history, and the trackers that matter for your visa or residency planning.</p>
+            <h3>Review totals and windows</h3>
+            <p>Check country history, day totals, and the trackers that matter.</p>
           </article>
           <article class="card reveal">
             <div class="card-icon">3</div>
-            <h3>Stay ahead of limits</h3>
-            <p>Use clear counts and history views to make travel decisions before a threshold becomes an unpleasant surprise.</p>
+            <h3>Stay ahead of thresholds</h3>
+            <p>Use clear counts before a limit turns into a problem.</p>
           </article>
         </div>
       </div>
@@ -808,48 +684,38 @@
       <div class="container">
         <div class="section-header reveal">
           <h2>FAQ</h2>
-          <p>Practical questions people ask before trusting a travel-day tracker.</p>
+          <p>Practical questions before you trust a travel-day tracker.</p>
         </div>
         <div class="faq-grid">
-          <article class="faq reveal card">
+          <article class="faq reveal">
             <h3>Does AtlasDays store my precise location?</h3>
-            <p>No. The app is positioned around travel-day tracking, with privacy as a core design goal. Your travel history is meant to stay yours.</p>
+            <p>No. The product is designed around private travel-day tracking, not location surveillance.</p>
           </article>
-          <article class="faq reveal card">
+          <article class="faq reveal">
             <h3>Can it track Schengen 90/180?</h3>
-            <p>Yes. AtlasDays is built for rolling-window visa counting and similar country or region-based limits.</p>
+            <p>Yes. AtlasDays is built for rolling-window visa counting and similar country or region limits.</p>
           </article>
-          <article class="faq reveal card">
+          <article class="faq reveal">
             <h3>Can I add older trips with incomplete dates?</h3>
-            <p>Yes. AtlasDays is designed to be more realistic than tools that only work when every historic date is perfectly known.</p>
+            <p>Yes. AtlasDays is meant to work with real-world travel history, not only perfect records.</p>
           </article>
-          <article class="faq reveal card">
+          <article class="faq reveal">
             <h3>Is this legal or tax advice?</h3>
-            <p>No. AtlasDays helps you keep records and count days. The underlying legal interpretation remains your responsibility.</p>
-          </article>
-          <article class="faq reveal card">
-            <h3>Can I import past travel history?</h3>
-            <p>Yes. AtlasDays supports bringing in older travel data so you do not have to rebuild everything manually.</p>
-          </article>
-          <article class="faq reveal card">
-            <h3>Does it sync anywhere?</h3>
-            <p>It can use your own iCloud for sync. The core positioning is private travel tracking without mandatory accounts.</p>
+            <p>No. It helps you keep records and count days. Interpretation remains your responsibility.</p>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section">
+    <section class="section" style="text-align:center">
       <div class="container">
-        <div class="cta-panel reveal">
-          <div>
-            <h2>Stop manually counting travel days.</h2>
-            <p>Use one private record for country visits, visa windows, and residency thresholds instead of rebuilding the answer every time you need it.</p>
+        <div class="reveal" style="max-width:480px;margin:0 auto">
+          <div class="brand" style="justify-content:center;margin-bottom:16px">
+            <span class="brand-mark"><img src="assets/logo.png" alt="AtlasDays logo" /></span>
+            <span>AtlasDays</span>
           </div>
-          <div class="hero-actions" style="margin:0">
-            <a class="btn btn-primary" href="mailto:atlasdays@pm.me?subject=AtlasDays%20launch%20updates">Get launch updates</a>
-            <a class="btn btn-secondary" href="mailto:atlasdays@pm.me?subject=AtlasDays%20question">Contact</a>
-          </div>
+          <h2 style="font-size:clamp(1.6rem,2.5vw,2.2rem);letter-spacing:-0.03em;margin:0 0 10px">Coming soon to iPhone</h2>
+          <p style="color:var(--muted);margin:0">Private travel-day tracking for visa limits, residency thresholds, and country history.</p>
         </div>
       </div>
     </section>
@@ -859,7 +725,7 @@
     <div class="container footer-grid">
       <div class="footer-box reveal">
         <div class="brand">
-          <span class="brand-mark"><img src="logo.png" alt="AtlasDays logo" /></span>
+          <span class="brand-mark"><img src="assets/logo.png" alt="AtlasDays logo" /></span>
           <span>AtlasDays</span>
         </div>
         <p>Private travel-day tracking for people who need clear country history, visa counts, and residency totals.</p>
@@ -869,7 +735,7 @@
         <div class="footer-links">
           <a href="atlasdays-privacy.html">Privacy Policy</a>
           <a href="atlasdays-changelog.html">What’s New</a>
-          <a href="mailto:atlasdays@pm.me">atlasdays@pm.me</a>
+          <a href="mailto:atlasdays@pm.me">Contact</a>
           <a class="muted-link" href="#top">Back to top</a>
         </div>
       </div>
