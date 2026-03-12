@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AtlasDays — Track Your Travels, Know Your Visa Days</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <meta name="description" content="AtlasDays helps you log every country you visit, track visa day limits like Schengen 90/180, and explore your travel history — all private, all on your device.">
+  <meta property="og:title" content="AtlasDays — Track Your Travels, Know Your Visa Days">
+  <meta property="og:description" content="Log every country you visit, track visa day limits, and explore your travel history on a beautiful interactive map.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #fafafa;
+      --bg-alt: #ffffff;
+      --text: #1a1a1a;
+      --text-muted: #666;
+      --text-dim: #999;
+      --accent: #2563eb;
+      --accent2: #7c3aed;
+      --accent-soft: rgba(37, 99, 235, 0.07);
+      --border: #e5e7eb;
+      --card-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 32px rgba(0,0,0,0.06);
+      --card-shadow-hover: 0 4px 12px rgba(0,0,0,0.06), 0 20px 48px rgba(0,0,0,0.1);
+      --glow: rgba(37, 99, 235, 0.15);
+      --feature-icon-size: 52px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #09090b;
+        --bg-alt: #18181b;
+        --text: #f4f4f5;
+        --text-muted: #a1a1aa;
+        --text-dim: #52525b;
+        --accent: #60a5fa;
+        --accent2: #a78bfa;
+        --accent-soft: rgba(96, 165, 250, 0.08);
+        --border: #27272a;
+        --card-shadow: 0 1px 3px rgba(0,0,0,0.3), 0 8px 32px rgba(0,0,0,0.2);
+        --card-shadow-hover: 0 4px 12px rgba(0,0,0,0.3), 0 20px 48px rgba(0,0,0,0.3);
+        --glow: rgba(96, 165, 250, 0.1);
+      }
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ---- Animations ---- */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      33% { transform: translateY(-8px) rotate(1deg); }
+      66% { transform: translateY(-4px) rotate(-0.5deg); }
+    }
+    @keyframes pulse-ring {
+      0% { transform: scale(0.95); opacity: 0.5; }
+      100% { transform: scale(1.5); opacity: 0; }
+    }
+    @keyframes spin-slow {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes glow-pulse {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 0.8; }
+    }
+    @keyframes gradient-shift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    @keyframes counter {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up { animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both; }
+    .fade-up-d1 { animation-delay: 0.12s; }
+    .fade-up-d2 { animation-delay: 0.24s; }
+    .fade-up-d3 { animation-delay: 0.36s; }
+    .fade-up-d4 { animation-delay: 0.48s; }
+    .fade-up-d5 { animation-delay: 0.6s; }
+
+    /* ---- Hero ---- */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      padding: 80px 24px;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(37,99,235,0.08) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 20% 80%, rgba(124,58,237,0.06) 0%, transparent 50%),
+        radial-gradient(ellipse 60% 50% at 80% 80%, rgba(37,99,235,0.04) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    @media (prefers-color-scheme: dark) {
+      .hero-bg {
+        background:
+          radial-gradient(ellipse 80% 60% at 50% 0%, rgba(96,165,250,0.08) 0%, transparent 60%),
+          radial-gradient(ellipse 60% 50% at 20% 80%, rgba(167,139,250,0.06) 0%, transparent 50%),
+          radial-gradient(ellipse 60% 50% at 80% 80%, rgba(96,165,250,0.04) 0%, transparent 50%);
+      }
+    }
+
+    /* Animated orbs */
+    .hero-orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+      animation: float 12s ease-in-out infinite;
+    }
+    .hero-orb-1 {
+      width: 500px; height: 500px;
+      background: rgba(37,99,235,0.08);
+      top: -10%; left: -10%;
+      animation-delay: 0s;
+    }
+    .hero-orb-2 {
+      width: 400px; height: 400px;
+      background: rgba(124,58,237,0.06);
+      bottom: -10%; right: -5%;
+      animation-delay: -4s;
+      animation-duration: 15s;
+    }
+    .hero-orb-3 {
+      width: 300px; height: 300px;
+      background: rgba(37,99,235,0.05);
+      top: 40%; right: 20%;
+      animation-delay: -8s;
+      animation-duration: 18s;
+    }
+    @media (prefers-color-scheme: dark) {
+      .hero-orb-1 { background: rgba(96,165,250,0.06); }
+      .hero-orb-2 { background: rgba(167,139,250,0.05); }
+      .hero-orb-3 { background: rgba(96,165,250,0.04); }
+    }
+
+    /* Grid pattern overlay */
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,0,0,0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,0,0,0.02) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 0%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 0%, transparent 70%);
+    }
+    @media (prefers-color-scheme: dark) {
+      .hero-grid {
+        background-image:
+          linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      }
+    }
+
+    .hero-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Logo */
+    .hero-logo {
+      width: 120px;
+      height: 120px;
+      margin: 0 auto 28px;
+      animation: float 6s ease-in-out infinite;
+      position: relative;
+    }
+    .hero-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 8px 24px rgba(37,99,235,0.2));
+    }
+    .hero-logo::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 12px;
+      background: rgba(0,0,0,0.06);
+      border-radius: 50%;
+      filter: blur(4px);
+      animation: glow-pulse 6s ease-in-out infinite;
+    }
+    @media (prefers-color-scheme: dark) {
+      .hero-logo img { filter: drop-shadow(0 8px 24px rgba(96,165,250,0.25)); }
+      .hero-logo::after { background: rgba(96,165,250,0.08); }
+    }
+
+    .hero h1 {
+      font-size: clamp(2.2rem, 5.5vw, 3.6rem);
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      margin-bottom: 20px;
+    }
+    .gradient-text {
+      background: linear-gradient(135deg, var(--accent), var(--accent2), var(--accent));
+      background-size: 200% 200%;
+      animation: gradient-shift 6s ease infinite;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p.hero-sub {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      max-width: 540px;
+      margin: 0 auto 32px;
+      line-height: 1.7;
+    }
+
+    /* Audience pills */
+    .audience {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 40px;
+    }
+    .audience-pill {
+      font-size: 0.82rem;
+      font-weight: 500;
+      padding: 7px 18px;
+      border-radius: 100px;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      background: var(--bg-alt);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      transition: border-color 0.3s, color 0.3s;
+    }
+    .audience-pill:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* Hero CTA */
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 36px;
+      border-radius: 16px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: default;
+      position: relative;
+      background: var(--text);
+      color: var(--bg);
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s;
+    }
+    .hero-cta::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      z-index: -1;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .hero-cta:hover::before { opacity: 1; }
+    .hero-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(37,99,235,0.2);
+    }
+    .hero-cta svg { width: 22px; height: 22px; }
+    .coming-soon-label {
+      display: block;
+      width: 100%;
+      margin-top: 16px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--text-dim);
+      letter-spacing: 0.03em;
+    }
+
+    /* Scroll indicator */
+    .scroll-hint {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      color: var(--text-dim);
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      animation: fadeUp 1s 1.2s both;
+    }
+    .scroll-hint-line {
+      width: 1px;
+      height: 32px;
+      background: linear-gradient(to bottom, var(--text-dim), transparent);
+      animation: glow-pulse 2s ease-in-out infinite;
+    }
+    @media (max-width: 600px) {
+      .scroll-hint { display: none; }
+    }
+
+    /* ---- Section shared ---- */
+    section { padding: 96px 24px; }
+    .section-title {
+      text-align: center;
+      font-size: 1.8rem;
+      font-weight: 750;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+    .section-sub {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 1.05rem;
+      max-width: 520px;
+      margin: 0 auto 56px;
+    }
+
+    /* ---- Highlight strip ---- */
+    .highlights {
+      background: var(--bg-alt);
+      padding: 64px 24px;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .highlights-track {
+      display: flex;
+      gap: 56px;
+      justify-content: center;
+      flex-wrap: wrap;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+    .highlight-item {
+      text-align: center;
+      min-width: 140px;
+    }
+    .highlight-number {
+      font-size: 2.8rem;
+      font-weight: 800;
+      font-variant-numeric: tabular-nums;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1.1;
+    }
+    .highlight-label {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+      font-weight: 500;
+    }
+
+    /* ---- Features grid ---- */
+    .features { background: var(--bg); }
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+    @media (max-width: 860px) {
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 560px) {
+      .features-grid { grid-template-columns: 1fr; }
+    }
+    .feature-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 32px 28px;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s, border-color 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .feature-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .feature-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--card-shadow-hover);
+      border-color: transparent;
+    }
+    .feature-card:hover::before { opacity: 1; }
+    .feature-icon {
+      width: var(--feature-icon-size);
+      height: var(--feature-icon-size);
+      border-radius: 14px;
+      background: var(--accent-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 26px;
+      margin-bottom: 18px;
+      transition: transform 0.3s;
+    }
+    .feature-card:hover .feature-icon { transform: scale(1.1); }
+    .feature-card h3 {
+      font-size: 1.1rem;
+      font-weight: 650;
+      margin-bottom: 8px;
+    }
+    .feature-card p {
+      font-size: 0.92rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* ---- How it works ---- */
+    .how-it-works { background: var(--bg-alt); }
+    .steps {
+      display: flex;
+      gap: 24px;
+      max-width: 900px;
+      margin: 0 auto;
+      flex-wrap: wrap;
+      justify-content: center;
+      position: relative;
+    }
+    /* Connector line between steps */
+    .steps::before {
+      content: "";
+      position: absolute;
+      top: 24px;
+      left: calc(16.67% + 24px);
+      right: calc(16.67% + 24px);
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      opacity: 0.2;
+    }
+    @media (max-width: 700px) {
+      .steps::before { display: none; }
+    }
+    .step {
+      flex: 1;
+      min-width: 220px;
+      max-width: 280px;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .step-number {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+      position: relative;
+      box-shadow: 0 4px 16px rgba(37,99,235,0.25);
+    }
+    .step-number::after {
+      content: "";
+      position: absolute;
+      inset: -8px;
+      border-radius: 50%;
+      border: 2px solid var(--accent);
+      opacity: 0.15;
+      animation: pulse-ring 3s ease-out infinite;
+    }
+    .step h3 {
+      font-size: 1.05rem;
+      font-weight: 650;
+      margin-bottom: 8px;
+    }
+    .step p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ---- Use cases ---- */
+    .use-cases { background: var(--bg); }
+    .use-cases-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .use-case {
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 28px 24px;
+      background: var(--bg-alt);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .use-case::before {
+      content: "";
+      position: absolute;
+      top: -1px; left: -1px; right: -1px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    .use-case:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--card-shadow);
+    }
+    .use-case:hover::before { opacity: 1; }
+    .use-case-icon {
+      font-size: 28px;
+      margin-bottom: 12px;
+    }
+    .use-case h3 {
+      font-size: 1.05rem;
+      font-weight: 650;
+      margin-bottom: 8px;
+    }
+    .use-case p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* ---- Privacy callout ---- */
+    .privacy-section { background: var(--bg-alt); }
+    .privacy-card {
+      max-width: 720px;
+      margin: 0 auto;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      padding: 52px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .privacy-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, var(--glow) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .privacy-card .shield {
+      font-size: 56px;
+      margin-bottom: 20px;
+      display: inline-block;
+      position: relative;
+    }
+    .privacy-card h2 {
+      font-size: 1.6rem;
+      font-weight: 750;
+      margin-bottom: 14px;
+      position: relative;
+    }
+    .privacy-card > p {
+      color: var(--text-muted);
+      font-size: 1rem;
+      max-width: 500px;
+      margin: 0 auto 24px;
+      position: relative;
+      line-height: 1.6;
+    }
+    .privacy-badges {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      position: relative;
+    }
+    .badge {
+      background: var(--accent-soft);
+      color: var(--accent);
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 8px 18px;
+      border-radius: 100px;
+      border: 1px solid transparent;
+      transition: border-color 0.3s, transform 0.2s;
+    }
+    .badge:hover {
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    /* ---- CTA bottom ---- */
+    .cta-section {
+      text-align: center;
+      padding: 100px 24px 120px;
+      background: var(--bg);
+      position: relative;
+      overflow: hidden;
+    }
+    .cta-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 70% 50% at 50% 100%, var(--glow) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .cta-section h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 14px;
+      position: relative;
+      letter-spacing: -0.02em;
+    }
+    .cta-section > p {
+      color: var(--text-muted);
+      font-size: 1.1rem;
+      margin-bottom: 36px;
+      position: relative;
+    }
+    .cta-logo {
+      width: 64px;
+      height: 64px;
+      margin: 0 auto 24px;
+      position: relative;
+    }
+    .cta-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 4px 12px rgba(37,99,235,0.15));
+    }
+
+    /* ---- Footer ---- */
+    footer {
+      text-align: center;
+      padding: 36px 24px;
+      border-top: 1px solid var(--border);
+      font-size: 0.85rem;
+      color: var(--text-dim);
+    }
+    footer a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    footer a:hover { color: var(--accent); }
+    .footer-links {
+      display: flex;
+      gap: 28px;
+      justify-content: center;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    /* ---- Scroll reveal ---- */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    /* Stagger children */
+    .features-grid .reveal:nth-child(1) { transition-delay: 0s; }
+    .features-grid .reveal:nth-child(2) { transition-delay: 0.06s; }
+    .features-grid .reveal:nth-child(3) { transition-delay: 0.12s; }
+    .features-grid .reveal:nth-child(4) { transition-delay: 0.18s; }
+    .features-grid .reveal:nth-child(5) { transition-delay: 0.24s; }
+    .features-grid .reveal:nth-child(6) { transition-delay: 0.30s; }
+    .features-grid .reveal:nth-child(7) { transition-delay: 0.36s; }
+    .features-grid .reveal:nth-child(8) { transition-delay: 0.42s; }
+    .features-grid .reveal:nth-child(9) { transition-delay: 0.48s; }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-orb hero-orb-1"></div>
+    <div class="hero-orb hero-orb-2"></div>
+    <div class="hero-orb hero-orb-3"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-inner">
+      <div class="hero-logo fade-up">
+        <img src="logo.png" alt="AtlasDays" />
+      </div>
+      <h1 class="fade-up fade-up-d1">Track your travels.<br><span class="gradient-text">Know your visa days.</span></h1>
+      <p class="hero-sub fade-up fade-up-d2">AtlasDays tracks every country you visit, counts your visa and tax residency days automatically, and keeps everything private on your device.</p>
+      <div class="audience fade-up fade-up-d3">
+        <span class="audience-pill">Digital nomads</span>
+        <span class="audience-pill">Frequent travelers</span>
+        <span class="audience-pill">Expats &amp; remote workers</span>
+      </div>
+      <div class="hero-cta fade-up fade-up-d4">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 21.99 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 21.99C7.79 22.03 6.8 20.68 5.96 19.47C4.25 16.56 2.93 11.3 4.7 7.72C5.57 5.94 7.36 4.86 9.28 4.84C10.56 4.82 11.78 5.71 12.57 5.71C13.36 5.71 14.85 4.63 16.4 4.8C17.07 4.83 18.84 5.08 19.93 6.72C19.83 6.78 17.56 8.12 17.58 10.88C17.61 14.17 20.45 15.31 20.49 15.32C20.45 15.42 20 16.96 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/></svg>
+        Coming Soon on the App Store
+      </div>
+      <div class="coming-soon-label fade-up fade-up-d5">Free. No account required.</div>
+    </div>
+    <div class="scroll-hint">
+      <span>Scroll</span>
+      <div class="scroll-hint-line"></div>
+    </div>
+  </section>
+
+  <!-- Stats strip -->
+  <section class="highlights">
+    <div class="highlights-track">
+      <div class="highlight-item reveal">
+        <div class="highlight-number">195+</div>
+        <div class="highlight-label">Countries supported</div>
+      </div>
+      <div class="highlight-item reveal">
+        <div class="highlight-number">3</div>
+        <div class="highlight-label">Counting modes</div>
+      </div>
+      <div class="highlight-item reveal">
+        <div class="highlight-number">6</div>
+        <div class="highlight-label">Regional visa presets</div>
+      </div>
+      <div class="highlight-item reveal">
+        <div class="highlight-number">0</div>
+        <div class="highlight-label">Third-party SDKs</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="features">
+    <h2 class="section-title reveal">Everything you need to travel with confidence</h2>
+    <p class="section-sub reveal">Visa rules are complex. AtlasDays handles the counting so you don't have to.</p>
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <div class="feature-icon">⏱️</div>
+        <h3>Smart Visa Trackers</h3>
+        <p>Set up rules like Schengen 90/180 with rolling windows, calendar year, or per-stay counting. Track multiple countries at once with presets for Schengen, MERCOSUR, CARICOM, GCC, and more.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">📍</div>
+        <h3>Auto-Detection</h3>
+        <p>Cross a border and AtlasDays notices. Low-power location monitoring detects country changes and suggests logging a trip — even in the background.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">🗺️</div>
+        <h3>Interactive World Map</h3>
+        <p>See every country you've visited on a pannable, zoomable map. Tap any country for your trip history, total days spent, and quick-add a new trip.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">🏛️</div>
+        <h3>Tax Residency Tracking</h3>
+        <p>Built-in 183-day rolling tracker for tax residency rules. Set a "stay under" limit or a "reach target" goal — AtlasDays counts both ways.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">✈️</div>
+        <h3>Airside Transit</h3>
+        <p>Mark trips as airport transit so they show on your map but don't count toward visa days. Because a layover isn't a visit.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">📅</div>
+        <h3>Flexible Dates</h3>
+        <p>Know the exact dates? Great. Only remember the month? That works too. AtlasDays supports exact, month/year, and year-only entries for incomplete travel history.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">☁️</div>
+        <h3>iCloud Sync</h3>
+        <p>Your trips sync seamlessly across all your Apple devices through your personal iCloud. No account to create, no servers involved.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">📊</div>
+        <h3>Travel Summary</h3>
+        <p>A dashboard with visa day totals, country breakdowns, custom date ranges, and rolling window presets — all the numbers at a glance.</p>
+      </div>
+      <div class="feature-card reveal">
+        <div class="feature-icon">📁</div>
+        <h3>CSV Import &amp; Export</h3>
+        <p>Bulk import your travel history from a spreadsheet or export everything. Download a CSV template to get started fast.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="how-it-works">
+    <h2 class="section-title reveal">Up and running in under a minute</h2>
+    <p class="section-sub reveal">No accounts. No setup wizards. Just your trips.</p>
+    <div class="steps">
+      <div class="step reveal">
+        <div class="step-number">1</div>
+        <h3>Pick your home country</h3>
+        <p>Choose where you're based — or select "no fixed residence" if you're always on the move.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-number">2</div>
+        <h3>Log your trips</h3>
+        <p>Add trips manually, import a CSV, or let auto-detection handle it when you cross a border.</p>
+      </div>
+      <div class="step reveal">
+        <div class="step-number">3</div>
+        <h3>Set up trackers</h3>
+        <p>Create visa or residency trackers with one-tap presets. AtlasDays counts the days for you.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Use cases -->
+  <section class="use-cases">
+    <h2 class="section-title reveal">Built for how you travel</h2>
+    <p class="section-sub reveal">Whether you're managing visas, taxes, or just curious about your travel stats.</p>
+    <div class="use-cases-grid">
+      <div class="use-case reveal">
+        <div class="use-case-icon">🇪🇺</div>
+        <h3>Schengen 90/180 rule</h3>
+        <p>Track your rolling 180-day window across all 29 Schengen countries with a single tracker. See exactly how many days you have left.</p>
+      </div>
+      <div class="use-case reveal">
+        <div class="use-case-icon">🧾</div>
+        <h3>Tax residency thresholds</h3>
+        <p>Monitor the 183-day rule (or any custom threshold) to stay compliant with tax obligations in your home country or abroad.</p>
+      </div>
+      <div class="use-case reveal">
+        <div class="use-case-icon">🛂</div>
+        <h3>Travel history for visa apps</h3>
+        <p>Keep a complete, exportable record of every country visit — with dates and notes — ready for your next visa application.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Privacy -->
+  <section class="privacy-section">
+    <div class="privacy-card reveal">
+      <div class="shield">🛡️</div>
+      <h2>Privacy first. Always.</h2>
+      <p>All your data lives on your device and optionally in your personal iCloud. No analytics, no ads, no third-party SDKs. Your precise location is never stored or transmitted — only the country code is kept locally.</p>
+      <div class="privacy-badges">
+        <span class="badge">No tracking</span>
+        <span class="badge">No analytics</span>
+        <span class="badge">No ads</span>
+        <span class="badge">On-device only</span>
+        <span class="badge">No account needed</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-logo reveal">
+      <img src="logo.png" alt="AtlasDays" />
+    </div>
+    <h2 class="reveal">Never lose track of your travel days again</h2>
+    <p class="reveal">AtlasDays is coming soon to the App Store. Free, private, and built for travelers.</p>
+    <div class="hero-cta reveal" style="position:relative;">
+      <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M18.71 19.5C17.88 20.74 17 21.95 15.66 21.97C14.32 21.99 13.89 21.18 12.37 21.18C10.84 21.18 10.37 21.95 9.1 21.99C7.79 22.03 6.8 20.68 5.96 19.47C4.25 16.56 2.93 11.3 4.7 7.72C5.57 5.94 7.36 4.86 9.28 4.84C10.56 4.82 11.78 5.71 12.57 5.71C13.36 5.71 14.85 4.63 16.4 4.8C17.07 4.83 18.84 5.08 19.93 6.72C19.83 6.78 17.56 8.12 17.58 10.88C17.61 14.17 20.45 15.31 20.49 15.32C20.45 15.42 20 16.96 18.71 19.5ZM13 3.5C13.73 2.67 14.94 2.04 15.94 2C16.07 3.17 15.6 4.35 14.9 5.19C14.21 6.04 13.07 6.7 11.95 6.61C11.8 5.46 12.36 4.26 13 3.5Z"/></svg>
+      Coming Soon on the App Store
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-links">
+      <a href="atlasdays-privacy.html">Privacy Policy</a>
+      <a href="atlasdays-changelog.html">What's New</a>
+      <a href="mailto:atlasdays@pm.me">Contact</a>
+    </div>
+    <p>&copy; 2026 AtlasDays</p>
+  </footer>
+
+  <script>
+    // Scroll reveal with stagger
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    reveals.forEach(el => observer.observe(el));
+
+    // Hide scroll hint on scroll
+    const scrollHint = document.querySelector('.scroll-hint');
+    if (scrollHint) {
+      let hidden = false;
+      window.addEventListener('scroll', () => {
+        if (!hidden && window.scrollY > 100) {
+          scrollHint.style.opacity = '0';
+          scrollHint.style.transition = 'opacity 0.4s';
+          hidden = true;
+        }
+      }, { passive: true });
+    }
+  </script>
+
+</body>
+</html>
