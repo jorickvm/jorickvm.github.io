@@ -520,11 +520,11 @@
         <span>AtlasDays</span>
       </a>
       <nav class="nav-links" aria-label="Primary">
-        <a href="#use-cases">Use cases</a>
+        <a href="#who-its-for">Use cases</a>
         <a href="#features">Features</a>
         <a href="#privacy">Privacy</a>
         <a href="#faq">FAQ</a>
-        <a href="mailto:atlasdays@pm.me">Contact</a>
+        <a href="#" class="contact-email">Contact</a>
       </nav>
     </div>
   </header>
@@ -537,7 +537,7 @@
           <h1>Track every country visit. Stay ahead of visa and residency limits.</h1>
           <p class="hero-lead">AtlasDays keeps your trips, day totals, and key limits in one place. Track Schengen-style rules, 183-day thresholds, and long-term travel history without spreadsheet drift.</p>
           <div class="hero-actions">
-            <a class="btn btn-secondary" href="#proof">See the product</a>
+            <a class="btn btn-primary" href="#proof">See how it works</a>
           </div>
           <div class="hero-points" aria-label="Key benefits">
             <div class="hero-point"><strong>Visa day tracking</strong>Rolling windows, per-stay limits, and custom trackers.</div>
@@ -558,7 +558,7 @@
       </div>
     </section>
 
-    <section id="use-cases" class="section">
+    <section id="who-its-for" class="section">
       <div class="container">
         <div class="section-header reveal">
           <h2>Built for when the numbers matter</h2>
@@ -707,6 +707,22 @@
             <h3>Is this legal or tax advice?</h3>
             <p>No. It helps you keep records and count days. Interpretation remains your responsibility.</p>
           </article>
+          <article class="faq reveal">
+            <h3>Does it work offline?</h3>
+            <p>Yes. All data is stored on your device. You don't need an internet connection to log or review trips.</p>
+          </article>
+          <article class="faq reveal">
+            <h3>How much does it cost?</h3>
+            <p>Pricing will be announced closer to launch. There will be no ads and no hidden fees.</p>
+          </article>
+          <article class="faq reveal">
+            <h3>Is there an Android version?</h3>
+            <p>Not yet. AtlasDays is iPhone-only for now.</p>
+          </article>
+          <article class="faq reveal">
+            <h3>Does it support multiple passports?</h3>
+            <p>You can create separate trackers for different visa rules and nationalities, so yes.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -739,7 +755,7 @@
         <div class="footer-links">
           <a href="/privacy">Privacy Policy</a>
           <a href="/changelog">What’s New</a>
-          <a href="mailto:atlasdays@pm.me">Contact</a>
+          <a href="#" class="contact-email">Contact</a>
           <a class="muted-link" href="#top">Back to top</a>
         </div>
       </div>
@@ -747,6 +763,14 @@
   </footer>
 
   <script>
+    document.querySelectorAll('.contact-email').forEach(function(el) {
+      var u = 'atlasdays', d = 'pm.me';
+      el.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.location.href = 'mai' + 'lto:' + u + '@' + d;
+      });
+    });
+
     const items = document.querySelectorAll('.reveal');
     if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       const io = new IntersectionObserver((entries) => {
