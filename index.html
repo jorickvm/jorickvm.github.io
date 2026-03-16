@@ -65,6 +65,7 @@
     ]
   }
   </script>
+  <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)})()</script>
   <style>
     :root {
       --bg: #0a0b0d;
@@ -562,6 +563,57 @@
       .reveal { opacity: 1; transform: none; transition: none; }
       .btn { transition: none; }
     }
+
+    html[data-theme="dark"] {
+      --bg: #0a0b0d;
+      --bg-elevated: #0f1319;
+      --bg-card: rgba(255,255,255,0.05);
+      --bg-card-strong: rgba(255,255,255,0.07);
+      --text: #f4f7fb;
+      --muted: #b2b9c5;
+      --muted-2: #8790a0;
+      --line: rgba(255,255,255,0.10);
+      --line-strong: rgba(255,255,255,0.16);
+      --blue-soft: rgba(22,146,255,0.12);
+      --shadow: 0 20px 64px rgba(0,0,0,0.40);
+    }
+    html[data-theme="light"] {
+      --bg: #f6f8fc;
+      --bg-elevated: #ffffff;
+      --bg-card: rgba(255,255,255,0.88);
+      --bg-card-strong: rgba(255,255,255,0.96);
+      --text: #0d1422;
+      --muted: #526075;
+      --muted-2: #6c788b;
+      --line: rgba(12,22,40,0.09);
+      --line-strong: rgba(12,22,40,0.14);
+      --blue-soft: rgba(22,146,255,0.08);
+      --shadow: 0 20px 52px rgba(16,28,48,0.10);
+    }
+
+    .theme-toggle {
+      background: none;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      color: var(--muted);
+      cursor: pointer;
+      width: 36px;
+      height: 36px;
+      display: inline-grid;
+      place-items: center;
+      transition: border-color 160ms ease, color 160ms ease;
+      padding: 0;
+    }
+    .theme-toggle:hover { border-color: var(--blue); color: var(--text); }
+    .icon-moon { display: none; }
+    @media (prefers-color-scheme: light) {
+      .icon-sun { display: none; }
+      .icon-moon { display: block; }
+    }
+    html[data-theme="dark"] .icon-sun { display: block; }
+    html[data-theme="dark"] .icon-moon { display: none; }
+    html[data-theme="light"] .icon-sun { display: none; }
+    html[data-theme="light"] .icon-moon { display: block; }
   </style>
 </head>
 <body>
@@ -578,6 +630,10 @@
         <a href="#faq">FAQ</a>
         <a href="/learn/">Learn</a>
         <a href="#" class="contact-email">Contact</a>
+        <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()">
+          <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
       </nav>
     </div>
   </header>
@@ -816,6 +872,17 @@
   </footer>
 
   <script>
+    function toggleTheme() {
+      var html = document.documentElement;
+      var current = html.getAttribute('data-theme');
+      var isDark;
+      if (current) isDark = current === 'dark';
+      else isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var next = isDark ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    }
+
     document.querySelectorAll('.contact-email').forEach(function(el) {
       var u = 'atlasdays', d = 'pm.me';
       el.addEventListener('click', function(e) {
