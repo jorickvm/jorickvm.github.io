@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>iCloud Sync for Travel Tracking: Why Your Data Follows You — AtlasDays</title>
+  <meta name="description" content="How AtlasDays uses iCloud to keep your travel data in sync across devices — with no accounts, no servers, and no data leaving Apple's ecosystem." />
+  <meta property="og:title" content="iCloud Sync for Travel Tracking: Why Your Data Follows You" />
+  <meta property="og:description" content="How AtlasDays uses iCloud to keep your travel data in sync across devices — with no accounts, no servers, and no data leaving Apple's ecosystem." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://atlasdays.app/learn/icloud-sync-travel-tracking" />
+  <meta property="og:image" content="https://atlasdays.app/assets/screenshot1.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="iCloud Sync for Travel Tracking: Why Your Data Follows You" />
+  <meta name="twitter:description" content="How AtlasDays uses iCloud to keep your travel data in sync across devices — with no accounts, no servers, and no data leaving Apple's ecosystem." />
+  <meta name="twitter:image" content="https://atlasdays.app/assets/screenshot1.png" />
+  <link rel="canonical" href="https://atlasdays.app/learn/icloud-sync-travel-tracking" />
+  <link rel="icon" type="image/png" href="../assets/favicon.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "iCloud Sync for Travel Tracking: Why Your Data Follows You",
+    "description": "How AtlasDays uses iCloud to keep your travel data in sync across devices — with no accounts, no servers, and no data leaving Apple's ecosystem.",
+    "author": { "@type": "Organization", "name": "AtlasDays" },
+    "publisher": { "@type": "Organization", "name": "AtlasDays" },
+    "url": "https://atlasdays.app/learn/icloud-sync-travel-tracking",
+    "datePublished": "2026-03-16",
+    "dateModified": "2026-03-16"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "AtlasDays",
+        "item": "https://atlasdays.app"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Learn",
+        "item": "https://atlasdays.app/learn/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "iCloud Sync for Travel Tracking",
+        "item": "https://atlasdays.app/learn/icloud-sync-travel-tracking"
+      }
+    ]
+  }
+  </script>
+  <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)})()</script>
+  <style>
+    :root {
+      --bg: #0a0b0d;
+      --bg-elevated: #0f1319;
+      --bg-card: rgba(255,255,255,0.05);
+      --text: #f4f7fb;
+      --muted: #b2b9c5;
+      --muted-2: #8790a0;
+      --line: rgba(255,255,255,0.10);
+      --blue: #1692ff;
+      --blue-soft: rgba(22,146,255,0.12);
+      --max: 720px;
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f6f8fc;
+        --bg-elevated: #ffffff;
+        --bg-card: rgba(255,255,255,0.88);
+        --text: #0d1422;
+        --muted: #526075;
+        --muted-2: #6c788b;
+        --line: rgba(12,22,40,0.09);
+        --blue-soft: rgba(22,146,255,0.08);
+      }
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .top-bar {
+      border-bottom: 1px solid var(--line);
+      padding: 18px 0;
+    }
+    .top-bar-inner {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .brand:hover { text-decoration: none; }
+    .brand img {
+      width: 30px;
+      height: 30px;
+      border-radius: 9px;
+    }
+
+    article {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+      padding: 48px 0 80px;
+    }
+
+    .breadcrumb {
+      font-size: 0.88rem;
+      color: var(--muted-2);
+      margin-bottom: 24px;
+    }
+    .breadcrumb a { color: var(--muted); }
+
+    h1 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin: 0 0 12px;
+    }
+    .subtitle {
+      color: var(--muted);
+      font-size: 1.08rem;
+      margin: 0 0 12px;
+    }
+    .verified {
+      display: inline-block;
+      padding: 5px 12px;
+      background: var(--blue-soft);
+      border: 1px solid rgba(22,146,255,0.18);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      margin: 0 0 32px;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      letter-spacing: -0.02em;
+      margin: 36px 0 12px;
+    }
+    h3 {
+      font-size: 1.1rem;
+      margin: 28px 0 8px;
+    }
+
+    p, li { color: var(--muted); font-size: 1rem; }
+    p { margin: 0 0 16px; }
+    ul, ol { padding-left: 20px; margin: 0 0 16px; }
+    li { margin: 6px 0; }
+    strong { color: var(--text); }
+
+    .callout {
+      padding: 20px 24px;
+      background: var(--blue-soft);
+      border: 1px solid rgba(22,146,255,0.18);
+      border-radius: 16px;
+      margin: 28px 0;
+    }
+    .callout p { margin: 0; }
+    .callout strong { color: var(--text); }
+
+    .cta-box {
+      padding: 28px;
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      margin: 40px 0 0;
+      text-align: center;
+    }
+    .cta-box h3 { margin: 0 0 8px; color: var(--text); }
+    .cta-box p { margin: 0 0 16px; }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 12px 24px;
+      background: var(--blue);
+      color: white;
+      border-radius: 14px;
+      font-weight: 650;
+      text-decoration: none;
+    }
+    .cta-btn:hover { text-decoration: none; opacity: 0.9; }
+
+    .disclaimer {
+      font-size: 0.85rem;
+      color: var(--muted-2);
+      font-style: italic;
+      margin: 32px 0 0;
+    }
+
+    .related { margin: 40px 0 0; }
+    .related h3 { font-size: 1.1rem; margin: 0 0 10px; }
+    .related ul { list-style: none; padding: 0; margin: 0; }
+    .related li { margin: 6px 0; }
+    .related a { color: var(--blue); font-size: 0.95rem; }
+    .related a:hover { text-decoration: underline; }
+
+    @media (max-width: 620px) {
+      article { padding: 32px 0 60px; }
+    }
+
+    html[data-theme="dark"] {
+      --bg: #0a0b0d;
+      --bg-elevated: #0f1319;
+      --bg-card: rgba(255,255,255,0.05);
+      --text: #f4f7fb;
+      --muted: #b2b9c5;
+      --muted-2: #8790a0;
+      --line: rgba(255,255,255,0.10);
+      --blue: #1692ff;
+      --blue-soft: rgba(22,146,255,0.12);
+    }
+    html[data-theme="light"] {
+      --bg: #f6f8fc;
+      --bg-elevated: #ffffff;
+      --bg-card: rgba(255,255,255,0.88);
+      --text: #0d1422;
+      --muted: #526075;
+      --muted-2: #6c788b;
+      --line: rgba(12,22,40,0.09);
+      --blue-soft: rgba(22,146,255,0.08);
+    }
+
+    .theme-toggle {
+      background: none;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      color: var(--muted);
+      cursor: pointer;
+      width: 36px;
+      height: 36px;
+      display: inline-grid;
+      place-items: center;
+      transition: border-color 160ms ease, color 160ms ease;
+      padding: 0;
+    }
+    .theme-toggle:hover { border-color: var(--blue); color: var(--text); }
+    .icon-moon { display: none; }
+    @media (prefers-color-scheme: light) {
+      .icon-sun { display: none; }
+      .icon-moon { display: block; }
+    }
+    html[data-theme="dark"] .icon-sun { display: block; }
+    html[data-theme="dark"] .icon-moon { display: none; }
+    html[data-theme="light"] .icon-sun { display: none; }
+    html[data-theme="light"] .icon-moon { display: block; }
+  </style>
+</head>
+<body>
+  <header class="top-bar">
+    <div class="top-bar-inner">
+      <a class="brand" href="/">
+        <img src="../assets/logo.png" alt="AtlasDays logo" />
+        <span>AtlasDays</span>
+      </a>
+      <div style="display:flex;align-items:center;gap:16px">
+        <a href="/" style="color:var(--muted);font-size:0.92rem">Home</a>
+        <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()">
+          <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <article>
+    <nav class="breadcrumb">
+      <a href="/">AtlasDays</a> / <a href="/learn/">Learn</a>
+    </nav>
+
+    <h1>iCloud Sync for Travel Tracking: Why Your Data Follows You</h1>
+    <p class="subtitle">How AtlasDays uses iCloud to keep your travel data in sync across devices — with no accounts, no servers, and no data leaving Apple's ecosystem.</p>
+    <p class="verified">Last verified: March 2026</p>
+
+    <h2>The problem with spreadsheets and notes</h2>
+    <p>Most travelers who take visa day limits seriously end up building some kind of tracking system. Maybe it is a Google Sheet with formulas that count days within rolling windows. Maybe it is a note in Apple Notes with a running list of entry and exit dates. Maybe it is a paper notebook tucked into a passport cover. These approaches all share the same fundamental weakness: they live in one place, and your life does not.</p>
+    <p>The fragmentation problem becomes obvious at the worst possible moment. You are standing at an airport check-in counter and need to confirm how many days you have spent in the Schengen Area this period. Your spreadsheet is on your laptop, which is already packed in your checked bag. The note you kept on your phone has not been updated since your last trip because you made the most recent edits on your iPad at the hotel. The paper notebook is thorough but requires you to do mental arithmetic under pressure.</p>
+    <p>Even if you are disciplined about updating every device, manual sync is inherently fragile. You update the spreadsheet on your laptop, then forget to copy the changes to your phone. Or you add a trip on your phone and plan to transfer it later, but later never comes. Over time, you end up with multiple versions of your travel history, none of which you fully trust. When the stakes are visa compliance and potential overstay penalties, "pretty sure this is up to date" is not good enough.</p>
+
+    <h2>How AtlasDays syncs with iCloud</h2>
+    <p>AtlasDays stores all of your travel data in <strong>iCloud</strong> using Apple's <strong>CloudKit</strong> framework. CloudKit is the same technology that Apple uses to sync your own apps like Photos, Notes, and Reminders across devices. When you log a trip on your iPhone, that data is written to your personal iCloud account and propagated to every other device signed into the same Apple ID. There is no delay, no manual export, and no "sync" button to press.</p>
+    <p>The sync happens automatically in the background. Open AtlasDays on your iPad after logging a trip on your iPhone, and the trip is already there. Edit a date on one device, and the correction appears on the other within moments. This is not a feature you need to configure or enable — it is how the app works by default, as long as you are signed into iCloud on your devices.</p>
+    <p>Because AtlasDays uses CloudKit's private database, your travel data is stored in <strong>your personal iCloud account</strong> — not on servers owned or operated by AtlasDays. The app never sees, processes, or stores your data on any third-party infrastructure. From a data flow perspective, your information moves between your device and Apple's iCloud servers, and nowhere else.</p>
+
+    <h2>No account needed</h2>
+    <p>Most productivity and travel apps require you to create an account before you can use them. That means choosing a username, entering your email address, setting a password, and then verifying your email before you can even start. Some apps add further friction with mandatory onboarding flows, profile setup screens, or requests to connect social accounts. All of this stands between you and the thing you actually want to do: track your travel days.</p>
+    <p>AtlasDays skips all of that. The app relies entirely on your <strong>Apple ID</strong> for identity and data storage. If you are signed into iCloud on your device — which virtually every iPhone and iPad user already is — sync just works. There is no signup flow, no password to remember, no email verification step, and no account recovery process to worry about.</p>
+    <p>This also means one fewer account to manage, one fewer password to store in your password manager, and one fewer service that has your email address. For travelers who already juggle dozens of accounts for airlines, hotels, visa services, and government portals, eliminating yet another login is a meaningful reduction in complexity.</p>
+
+    <h2>Privacy by design</h2>
+    <p>Travel data is more sensitive than most people realize. Your entry and exit dates reveal where you have been, how long you stayed, and how frequently you travel. Combined with passport country information, this data paints a detailed picture of your movements and immigration status. It is not the kind of information you want sitting on a startup's server, subject to their security practices and data retention policies.</p>
+    <p>With AtlasDays, your travel data <strong>never touches third-party servers</strong>. It lives in two places: on your device and in your iCloud account. Both are encrypted by Apple — data is encrypted in transit and at rest. AtlasDays has no analytics SDK, no tracking pixels, no crash reporting that sends your data to external services, and no way for anyone at AtlasDays to access or view your travel history.</p>
+    <p>This is not a privacy policy promise that could change with the next update or acquisition. It is an architectural decision. Because the app uses CloudKit's private database, there is no mechanism for the developer to query your data even if they wanted to. The privacy guarantee is enforced by Apple's infrastructure, not by a policy document.</p>
+
+    <div class="callout">
+      <p><strong>How it works technically:</strong> AtlasDays uses CloudKit's private database container. Data in this container is only accessible to the user who created it, using their Apple ID credentials. The developer cannot access, read, or export data from any user's private container. Apple encrypts this data both in transit and at rest.</p>
+    </div>
+
+    <h2>Why this beats spreadsheets</h2>
+    <p>Spreadsheets are powerful, but they were not designed for travel day tracking. To calculate a rolling 180-day window in Google Sheets, you need to write formulas that count days within a moving date range, account for partial stays, and handle the edge cases where trips span window boundaries. Most travelers who attempt this end up with formulas they do not fully understand and cannot easily verify.</p>
+    <p>Beyond the formula complexity, spreadsheets have practical limitations for this use case:</p>
+    <ul>
+      <li><strong>No automatic calculations:</strong> Every new trip requires you to manually enter dates and verify that your formulas still produce correct results. One mistyped date can throw off your entire count.</li>
+      <li><strong>No alerts:</strong> A spreadsheet will not warn you when you are approaching a visa limit. You have to remember to check it, and you have to trust your formulas are correct when you do.</li>
+      <li><strong>Unreliable cross-device access:</strong> Google Sheets works on phones, but the mobile experience is clunky for data entry. Apple Numbers does not sync as reliably between devices. Excel files require manual transfers.</li>
+      <li><strong>No concept of visa rules:</strong> A spreadsheet does not know that the Schengen rule uses a rolling 180-day window or that the US B1/B2 visa counts days per admission. You have to encode all of this logic yourself.</li>
+    </ul>
+    <p>AtlasDays handles all of this automatically. You log your trips — entry date, exit date, country — and the app calculates your remaining days for each visa rule you are tracking. The calculations update in real time, the data syncs across devices without intervention, and you get a clear answer without needing to audit a formula chain.</p>
+
+    <h2>Multi-device scenarios</h2>
+    <p>The value of seamless sync becomes clear when you look at how travelers actually use their devices throughout a trip. Real-world usage rarely happens on just one device, and the moments when you need your travel data most are often the moments when your preferred device is not at hand.</p>
+    <p>Consider these common scenarios:</p>
+    <ul>
+      <li><strong>Logging a trip at the airport:</strong> You have just cleared immigration and want to record your entry date while it is fresh in your mind. Your iPhone is in your pocket. You open AtlasDays, add the entry, and it is done. Later that evening, when you open the app on your iPad at the hotel, the trip is already there.</li>
+      <li><strong>Reviewing your Schengen days at the hotel:</strong> You are planning the rest of your Europe itinerary and want to see exactly how many days you have left in the Schengen Area. Your iPad gives you a comfortable view of your full travel timeline, and every trip you logged on your phone is already accounted for.</li>
+      <li><strong>Checking remaining US days before booking a flight:</strong> You are browsing flights on your laptop and want to confirm you have enough days left on your US authorization before committing to travel dates. You pull out your phone, open AtlasDays, and get an instant answer — no need to find and open a spreadsheet file.</li>
+      <li><strong>Updating a trip after returning home:</strong> You realize you entered the wrong exit date for a recent trip. You correct it on whichever device is closest, and the fix propagates everywhere. No need to remember which device has the "master" copy of your data.</li>
+    </ul>
+    <p>In each of these cases, the key benefit is the same: you never have to think about whether the device in your hand has the latest version of your data. It always does.</p>
+
+    <p class="disclaimer">iCloud sync requires an Apple ID and an active iCloud account. AtlasDays is available on the App Store for iPhone and iPad.</p>
+
+    <div class="related">
+      <h3>Related articles</h3>
+      <ul>
+        <li><a href="/learn/how-to-use-atlasdays">How to Use AtlasDays to Track Your Visa Days</a></li>
+        <li><a href="/learn/how-to-track-travel-days">How to Track Your Travel Days (And Why Spreadsheets Fail)</a></li>
+        <li><a href="/learn/export-travel-history-visa-application">How to Export Your Travel History for a Visa Application</a></li>
+      </ul>
+    </div>
+
+    <div class="cta-box">
+      <h3>Your travel data, everywhere you need it</h3>
+      <p>AtlasDays syncs via iCloud — no accounts, no servers, no hassle.</p>
+      <a class="cta-btn" href="/">Learn more about AtlasDays</a>
+    </div>
+  </article>
+  <script>
+  function toggleTheme() {
+    var html = document.documentElement;
+    var current = html.getAttribute('data-theme');
+    var isDark;
+    if (current) isDark = current === 'dark';
+    else isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = isDark ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  }
+  </script>
+</body>
+</html>

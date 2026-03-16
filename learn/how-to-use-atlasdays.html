@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How to Use AtlasDays to Track Your Visa Days — AtlasDays</title>
+  <meta name="description" content="A getting-started guide to setting up trackers, logging trips, and staying on top of your visa limits with AtlasDays." />
+  <meta property="og:title" content="How to Use AtlasDays to Track Your Visa Days" />
+  <meta property="og:description" content="A getting-started guide to setting up trackers, logging trips, and staying on top of your visa limits with AtlasDays." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://atlasdays.app/learn/how-to-use-atlasdays" />
+  <meta property="og:image" content="https://atlasdays.app/assets/screenshot1.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="How to Use AtlasDays to Track Your Visa Days" />
+  <meta name="twitter:description" content="A getting-started guide to setting up trackers, logging trips, and staying on top of your visa limits with AtlasDays." />
+  <meta name="twitter:image" content="https://atlasdays.app/assets/screenshot1.png" />
+  <link rel="canonical" href="https://atlasdays.app/learn/how-to-use-atlasdays" />
+  <link rel="icon" type="image/png" href="../assets/favicon.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "How to Use AtlasDays to Track Your Visa Days",
+    "description": "A getting-started guide to setting up trackers, logging trips, and staying on top of your visa limits with AtlasDays.",
+    "author": { "@type": "Organization", "name": "AtlasDays" },
+    "publisher": { "@type": "Organization", "name": "AtlasDays" },
+    "url": "https://atlasdays.app/learn/how-to-use-atlasdays",
+    "datePublished": "2026-03-16",
+    "dateModified": "2026-03-16"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "AtlasDays",
+        "item": "https://atlasdays.app"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Learn",
+        "item": "https://atlasdays.app/learn/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "How to Use AtlasDays",
+        "item": "https://atlasdays.app/learn/how-to-use-atlasdays"
+      }
+    ]
+  }
+  </script>
+  <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)})()</script>
+  <style>
+    :root {
+      --bg: #0a0b0d;
+      --bg-elevated: #0f1319;
+      --bg-card: rgba(255,255,255,0.05);
+      --text: #f4f7fb;
+      --muted: #b2b9c5;
+      --muted-2: #8790a0;
+      --line: rgba(255,255,255,0.10);
+      --blue: #1692ff;
+      --blue-soft: rgba(22,146,255,0.12);
+      --max: 720px;
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f6f8fc;
+        --bg-elevated: #ffffff;
+        --bg-card: rgba(255,255,255,0.88);
+        --text: #0d1422;
+        --muted: #526075;
+        --muted-2: #6c788b;
+        --line: rgba(12,22,40,0.09);
+        --blue-soft: rgba(22,146,255,0.08);
+      }
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .top-bar {
+      border-bottom: 1px solid var(--line);
+      padding: 18px 0;
+    }
+    .top-bar-inner {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .brand:hover { text-decoration: none; }
+    .brand img {
+      width: 30px;
+      height: 30px;
+      border-radius: 9px;
+    }
+
+    article {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+      padding: 48px 0 80px;
+    }
+
+    .breadcrumb {
+      font-size: 0.88rem;
+      color: var(--muted-2);
+      margin-bottom: 24px;
+    }
+    .breadcrumb a { color: var(--muted); }
+
+    h1 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin: 0 0 12px;
+    }
+    .subtitle {
+      color: var(--muted);
+      font-size: 1.08rem;
+      margin: 0 0 12px;
+    }
+    .verified {
+      display: inline-block;
+      padding: 5px 12px;
+      background: var(--blue-soft);
+      border: 1px solid rgba(22,146,255,0.18);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 0.82rem;
+      margin: 0 0 32px;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      letter-spacing: -0.02em;
+      margin: 36px 0 12px;
+    }
+    h3 {
+      font-size: 1.1rem;
+      margin: 28px 0 8px;
+    }
+
+    p, li { color: var(--muted); font-size: 1rem; }
+    p { margin: 0 0 16px; }
+    ul, ol { padding-left: 20px; margin: 0 0 16px; }
+    li { margin: 6px 0; }
+    strong { color: var(--text); }
+
+    .callout {
+      padding: 20px 24px;
+      background: var(--blue-soft);
+      border: 1px solid rgba(22,146,255,0.18);
+      border-radius: 16px;
+      margin: 28px 0;
+    }
+    .callout p { margin: 0; }
+    .callout strong { color: var(--text); }
+
+    .cta-box {
+      padding: 28px;
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      margin: 40px 0 0;
+      text-align: center;
+    }
+    .cta-box h3 { margin: 0 0 8px; color: var(--text); }
+    .cta-box p { margin: 0 0 16px; }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 12px 24px;
+      background: var(--blue);
+      color: white;
+      border-radius: 14px;
+      font-weight: 650;
+      text-decoration: none;
+    }
+    .cta-btn:hover { text-decoration: none; opacity: 0.9; }
+
+    .disclaimer {
+      font-size: 0.85rem;
+      color: var(--muted-2);
+      font-style: italic;
+      margin: 32px 0 0;
+    }
+
+    .related { margin: 40px 0 0; }
+    .related h3 { font-size: 1.1rem; margin: 0 0 10px; }
+    .related ul { list-style: none; padding: 0; margin: 0; }
+    .related li { margin: 6px 0; }
+    .related a { color: var(--blue); font-size: 0.95rem; }
+    .related a:hover { text-decoration: underline; }
+
+    @media (max-width: 620px) {
+      article { padding: 32px 0 60px; }
+    }
+
+    html[data-theme="dark"] {
+      --bg: #0a0b0d;
+      --bg-elevated: #0f1319;
+      --bg-card: rgba(255,255,255,0.05);
+      --text: #f4f7fb;
+      --muted: #b2b9c5;
+      --muted-2: #8790a0;
+      --line: rgba(255,255,255,0.10);
+      --blue: #1692ff;
+      --blue-soft: rgba(22,146,255,0.12);
+    }
+    html[data-theme="light"] {
+      --bg: #f6f8fc;
+      --bg-elevated: #ffffff;
+      --bg-card: rgba(255,255,255,0.88);
+      --text: #0d1422;
+      --muted: #526075;
+      --muted-2: #6c788b;
+      --line: rgba(12,22,40,0.09);
+      --blue-soft: rgba(22,146,255,0.08);
+    }
+
+    .theme-toggle {
+      background: none;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      color: var(--muted);
+      cursor: pointer;
+      width: 36px;
+      height: 36px;
+      display: inline-grid;
+      place-items: center;
+      transition: border-color 160ms ease, color 160ms ease;
+      padding: 0;
+    }
+    .theme-toggle:hover { border-color: var(--blue); color: var(--text); }
+    .icon-moon { display: none; }
+    @media (prefers-color-scheme: light) {
+      .icon-sun { display: none; }
+      .icon-moon { display: block; }
+    }
+    html[data-theme="dark"] .icon-sun { display: block; }
+    html[data-theme="dark"] .icon-moon { display: none; }
+    html[data-theme="light"] .icon-sun { display: none; }
+    html[data-theme="light"] .icon-moon { display: block; }
+  </style>
+</head>
+<body>
+  <header class="top-bar">
+    <div class="top-bar-inner">
+      <a class="brand" href="/">
+        <img src="../assets/logo.png" alt="AtlasDays logo" />
+        <span>AtlasDays</span>
+      </a>
+      <div style="display:flex;align-items:center;gap:16px">
+        <a href="/" style="color:var(--muted);font-size:0.92rem">Home</a>
+        <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()">
+          <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <article>
+    <nav class="breadcrumb">
+      <a href="/">AtlasDays</a> / <a href="/learn/">Learn</a>
+    </nav>
+
+    <h1>How to Use AtlasDays to Track Your Visa Days</h1>
+    <p class="subtitle">A getting-started guide to setting up trackers, logging trips, and staying on top of your visa limits.</p>
+    <p class="verified">Last verified: March 2026</p>
+
+    <h2>What AtlasDays does</h2>
+    <p><strong>AtlasDays</strong> is an iOS app designed to track visa day limits automatically. If you travel internationally and need to stay within a fixed number of allowed days — whether that is the Schengen Area's 90/180-day rolling window, a US B1/B2 stay, or a calendar-year cap in countries like Colombia — AtlasDays handles the counting for you.</p>
+    <p>The app comes with a <strong>built-in Schengen tracker</strong> that implements the 90/180-day rolling window correctly out of the box. For every other country or visa rule, you can create a <strong>custom tracker</strong> that matches the specific rule type you need. Each tracker runs independently, so you can monitor multiple countries at the same time without any overlap or confusion between them.</p>
+    <p>Instead of maintaining spreadsheets or doing manual date arithmetic, you log your entry and exit dates and let the app calculate the rest. It tells you how many days you have used, how many remain, and when your limits reset — all updated instantly as you add trips.</p>
+
+    <h2>The Schengen tracker</h2>
+    <p>The Schengen 90/180-day rule is one of the most common — and most confusing — visa limits travelers encounter. You are allowed to spend <strong>up to 90 days within any rolling 180-day period</strong> inside the Schengen Area. Because the window rolls forward with each passing day, figuring out your remaining days by hand is notoriously error-prone.</p>
+    <p>AtlasDays includes a dedicated Schengen tracker that is <strong>ready to use from the moment you open the app</strong>. There is nothing to configure. Simply log your entry and exit dates for any Schengen country — France, Germany, Spain, the Netherlands, or any of the other member states — and the app calculates your position within the rolling window automatically.</p>
+    <p>The Schengen tracker shows you three key pieces of information at all times:</p>
+    <ul>
+      <li><strong>Days used</strong> — how many of your 90 allowed days you have spent within the current 180-day window.</li>
+      <li><strong>Days remaining</strong> — how many days you can still spend in the Schengen Area right now without exceeding the limit.</li>
+      <li><strong>Next full stay</strong> — the earliest date when a full 90-day stay becomes available again, so you can plan longer future trips with confidence.</li>
+    </ul>
+    <p>Every time a day rolls out of the 180-day window, your available balance updates. This means you always have an accurate, real-time picture of where you stand — no need to recalculate anything yourself.</p>
+
+    <h2>Custom trackers</h2>
+    <p>The Schengen Area is just one of many countries and regions with day-count rules. The United States, the United Kingdom, Colombia, Thailand, and dozens of other destinations impose their own limits, and the rules vary widely. AtlasDays lets you create a <strong>custom tracker</strong> for any of them.</p>
+    <p>When you create a custom tracker, you choose the <strong>rule type</strong> that matches the country's visa policy:</p>
+    <ul>
+      <li><strong>Rolling window</strong> — Use this for rules that follow the pattern "X days in any Y-day period." This is the same logic the Schengen tracker uses, but you can set your own values. For example, the UK Standard Visitor visa informally follows a pattern where spending close to 180 days in any 12-month period can raise red flags at the border. A rolling-window tracker with a 180-day limit and a 365-day window captures this.</li>
+      <li><strong>Calendar year</strong> — Use this for rules that reset on January 1 each year. Colombia, for example, allows tourists to stay up to <strong>180 days per calendar year</strong> (typically granted in two 90-day periods). A calendar-year tracker counts your days from January through December and resets automatically when the new year begins.</li>
+      <li><strong>Per-stay</strong> — Use this for rules that limit each individual visit rather than an aggregate period. The US Visa Waiver Program (ESTA), for instance, allows <strong>90 days per entry</strong>. A per-stay tracker counts down from your entry date so you know exactly when your authorized stay expires.</li>
+    </ul>
+    <p>After choosing the rule type, set the <strong>day limit</strong> (and the window length, if applicable), give your tracker a name, and you are ready to start logging trips. The tracker counts down automatically based on the rule you selected.</p>
+
+    <h2>Logging a trip</h2>
+    <p>Adding a trip to any tracker takes just a few seconds. Open the tracker you want to update and tap to add a new trip. You will enter two pieces of information:</p>
+    <ul>
+      <li><strong>Entry date</strong> — the day you arrived in the country or region.</li>
+      <li><strong>Exit date</strong> — the day you departed. If you are still there, you can leave this open and the app will count up to the current day.</li>
+    </ul>
+    <p>You can also add an optional <strong>note</strong> to each trip — useful for recording a visa type, flight number, port of entry, or anything else you want to remember later.</p>
+    <p>As soon as you save the trip, your tracker updates instantly. The remaining days recalculate, and you can see the impact of the new trip right away. If you make a mistake, you can edit or delete any trip at any time — the tracker recalculates every time you make a change.</p>
+    <p>For past trips, you can backfill entries by selecting historical dates. This is especially helpful when you first set up the app and need to account for recent travel that already counts toward your current limits.</p>
+
+    <h2>Staying informed</h2>
+    <p>The AtlasDays home screen gives you an <strong>at-a-glance overview</strong> of all your active trackers. Each tracker displays your remaining days and includes a <strong>visual indicator</strong> that shows how close you are to your limit. When you have plenty of days left, the indicator is calm. As you approach your limit, it shifts to signal that you are running low — so you never have to guess whether you are cutting it close.</p>
+    <p>This overview is particularly valuable if you travel to multiple regions. Instead of switching between spreadsheets or apps, you see your Schengen balance, your US days, your UK days, and anything else you track, all in one place. Each tracker operates independently with its own rule type and limits, but they are all visible together so you can plan trips across destinations without losing track of any single one.</p>
+
+    <h2>iCloud sync</h2>
+    <p>AtlasDays uses <strong>iCloud</strong> to sync your data across all your Apple devices. Log a trip on your iPhone during your travels, and it appears on your iPad when you get home — no manual transfer, no account setup, and no extra steps required.</p>
+    <p>Because the app relies on iCloud rather than a custom server, <strong>your data never leaves Apple's ecosystem</strong>. There is no AtlasDays account to create, no email to register, and no personal information sent to third-party servers. Your trip data stays in your private iCloud storage, protected by whatever security measures you already have in place for your Apple ID.</p>
+    <p>Sync happens automatically in the background. As long as your devices are signed into the same Apple ID and have iCloud enabled, everything stays up to date without any intervention on your part.</p>
+
+    <p class="disclaimer">Feature availability may vary. AtlasDays is available on the App Store for iPhone and iPad.</p>
+
+    <div class="related">
+      <h3>Related articles</h3>
+      <ul>
+        <li><a href="/learn/schengen-90-180-rule">Schengen 90/180-Day Rule Explained</a></li>
+        <li><a href="/learn/schengen-rolling-window-walkthrough">How the Schengen Rolling Window Actually Works</a></li>
+        <li><a href="/learn/how-to-track-travel-days">How to Track Your Travel Days (And Why Spreadsheets Fail)</a></li>
+      </ul>
+    </div>
+
+    <div class="cta-box">
+      <h3>Ready to start tracking?</h3>
+      <p>Download AtlasDays and set up your first tracker in under a minute.</p>
+      <a class="cta-btn" href="/">Learn more about AtlasDays</a>
+    </div>
+  </article>
+  <script>
+  function toggleTheme() {
+    var html = document.documentElement;
+    var current = html.getAttribute('data-theme');
+    var isDark;
+    if (current) isDark = current === 'dark';
+    else isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = isDark ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  }
+  </script>
+</body>
+</html>
