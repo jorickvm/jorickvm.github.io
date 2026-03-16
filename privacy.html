@@ -19,10 +19,19 @@
     p, li { font-size: 1rem; }
     ul { padding-left: 1.4rem; }
     .updated { color: #666; font-size: 0.9rem; margin-bottom: 2rem; }
+    .summary {
+      background: #f5f5f7;
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 2rem;
+    }
+    .summary p { margin: 0.3rem 0; }
+    .summary strong { display: block; margin-bottom: 0.4rem; }
     a { color: #007aff; }
     @media (prefers-color-scheme: dark) {
       body { background: #1a1a1a; color: #e5e5e5; }
       .updated { color: #888; }
+      .summary { background: #2a2a2a; }
     }
   </style>
 </head>
@@ -30,39 +39,49 @@
 
   <p><a href="/">&larr; AtlasDays</a></p>
   <h1>AtlasDays Privacy Policy</h1>
-  <p class="updated">Last updated: March 14, 2026</p>
+  <p class="updated">Last updated: March 15, 2026</p>
 
   <p>AtlasDays is a trip-tracking app that helps you log the countries you have visited and understand your travel history. Your privacy is important. This policy explains exactly what data the app collects, where it is stored, and what it is used for.</p>
 
-  <h2>1. Data You Enter</h2>
-  <p>All trip data you create in AtlasDays — including country visits, dates, and notes — is stored exclusively on your device using SwiftData. This data is never transmitted to any server or third party.</p>
+  <div class="summary">
+    <strong>TL;DR</strong>
+    <p>No account required — just download and use the app.</p>
+    <p>No AtlasDays servers — your data stays on your device (and your iCloud, if enabled).</p>
+    <p>No analytics, no ads, no third-party SDKs.</p>
+  </div>
+
+  <h2>1. No Account Required</h2>
+  <p>AtlasDays does not require you to create an account, sign in, or provide any personal information to use the app. There is no registration, no email collection, and no user profiles.</p>
+
+  <h2>2. Data You Enter</h2>
+  <p>Your trip data never leaves your device, except to sync across your own devices via iCloud. All trip data you create — including country visits, dates, and notes — is stored exclusively on your device using SwiftData. This data is never transmitted to any server or third party.</p>
   <p>If you have iCloud enabled on your device, SwiftData may sync your data across your own devices via your personal iCloud account. This sync happens between your devices only and is governed by Apple's iCloud privacy policy.</p>
 
-  <h2>2. Location Data</h2>
+  <h2>3. Location Data</h2>
   <p>AtlasDays optionally requests "Always On" location access to detect when you enter a new country and suggest adding a trip automatically. This feature is entirely opt-in.</p>
   <ul>
     <li>Location is monitored using iOS's <em>significant location change</em> service, which uses low-power cell-tower and Wi-Fi signals rather than continuous GPS.</li>
-    <li>Your location is resolved to a country code (e.g. "FR") using Apple's geocoding services, which may involve a network request to Apple's servers. The resulting country code is stored locally on your device. No location data is transmitted to AtlasDays or any third party.</li>
+    <li>Apple's geocoding may receive a coordinate to resolve a country code; AtlasDays receives only the resulting country code (e.g. "FR") and never your raw coordinates. No location data is transmitted to AtlasDays or any third party.</li>
     <li>Your precise location coordinates are never stored, logged, or transmitted outside your device.</li>
     <li>You can revoke location access at any time in iOS Settings → Privacy &amp; Security → Location Services → AtlasDays.</li>
   </ul>
 
-  <h2>3. Notifications</h2>
+  <h2>4. Notifications</h2>
   <p>AtlasDays may send local notifications to prompt you to review a trip when a new country is detected. These notifications are generated entirely on-device and do not involve any external servers or push notification services.</p>
 
-  <h2>4. CSV Export &amp; Import</h2>
+  <h2>5. CSV Export &amp; Import</h2>
   <p>AtlasDays allows you to export your trip data as a CSV file and import CSV files. Any files you share or store are handled entirely by you. AtlasDays does not upload, access, or process these files on any server.</p>
 
-  <h2>5. Analytics &amp; Advertising</h2>
+  <h2>6. No Analytics, No Advertising</h2>
   <p>AtlasDays collects no analytics, crash reporting, or advertising data. There are no third-party SDKs included in the app.</p>
 
-  <h2>6. Children's Privacy</h2>
+  <h2>7. Children's Privacy</h2>
   <p>AtlasDays does not knowingly collect any personal information from anyone, including children under the age of 13.</p>
 
-  <h2>7. Changes to This Policy</h2>
+  <h2>8. Changes to This Policy</h2>
   <p>If this privacy policy changes, the updated version will be posted at this URL with a revised "Last updated" date.</p>
 
-  <h2>8. Contact</h2>
+  <h2>9. Contact</h2>
   <p>If you have any questions about this privacy policy, you can reach us at <a href="#" id="privacy-email">loading...</a>.</p>
 
 <script>
