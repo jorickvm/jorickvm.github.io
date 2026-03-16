@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Schengen 90/180-Day Rule Explained — AtlasDays</title>
+  <meta name="description" content="How the Schengen 90/180-day rule works, how to count your days correctly, and how to avoid overstaying with a rolling window calculator." />
+  <meta property="og:title" content="Schengen 90/180-Day Rule Explained" />
+  <meta property="og:description" content="How the Schengen 90/180-day rule works and how to count your days correctly." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://atlasdays.app/learn/schengen-90-180-rule" />
+  <meta property="og:image" content="https://atlasdays.app/assets/screenshot1.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Schengen 90/180-Day Rule Explained" />
+  <meta name="twitter:description" content="How the Schengen 90/180-day rule works and how to count your days correctly." />
+  <meta name="twitter:image" content="https://atlasdays.app/assets/screenshot1.png" />
+  <link rel="canonical" href="https://atlasdays.app/learn/schengen-90-180-rule" />
+  <link rel="icon" type="image/png" href="../assets/favicon.png" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Schengen 90/180-Day Rule Explained",
+    "description": "How the Schengen 90/180-day rule works, how to count your days correctly, and how to avoid overstaying.",
+    "author": { "@type": "Organization", "name": "AtlasDays" },
+    "publisher": { "@type": "Organization", "name": "AtlasDays" },
+    "url": "https://atlasdays.app/learn/schengen-90-180-rule",
+    "datePublished": "2026-03-16",
+    "dateModified": "2026-03-16"
+  }
+  </script>
+  <style>
+    :root {
+      --bg: #0a0b0d;
+      --bg-elevated: #0f1319;
+      --bg-card: rgba(255,255,255,0.05);
+      --text: #f4f7fb;
+      --muted: #b2b9c5;
+      --muted-2: #8790a0;
+      --line: rgba(255,255,255,0.10);
+      --blue: #1692ff;
+      --blue-soft: rgba(22,146,255,0.12);
+      --max: 720px;
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f6f8fc;
+        --bg-elevated: #ffffff;
+        --bg-card: rgba(255,255,255,0.88);
+        --text: #0d1422;
+        --muted: #526075;
+        --muted-2: #6c788b;
+        --line: rgba(12,22,40,0.09);
+        --blue-soft: rgba(22,146,255,0.08);
+      }
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .top-bar {
+      border-bottom: 1px solid var(--line);
+      padding: 18px 0;
+    }
+    .top-bar-inner {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .brand:hover { text-decoration: none; }
+    .brand img {
+      width: 30px;
+      height: 30px;
+      border-radius: 9px;
+    }
+
+    article {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+      padding: 48px 0 80px;
+    }
+
+    .breadcrumb {
+      font-size: 0.88rem;
+      color: var(--muted-2);
+      margin-bottom: 24px;
+    }
+    .breadcrumb a { color: var(--muted); }
+
+    h1 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin: 0 0 12px;
+    }
+    .subtitle {
+      color: var(--muted);
+      font-size: 1.08rem;
+      margin: 0 0 32px;
+    }
+
+    h2 {
+      font-size: 1.4rem;
+      letter-spacing: -0.02em;
+      margin: 36px 0 12px;
+    }
+    h3 {
+      font-size: 1.1rem;
+      margin: 28px 0 8px;
+    }
+
+    p, li { color: var(--muted); font-size: 1rem; }
+    p { margin: 0 0 16px; }
+    ul, ol { padding-left: 20px; margin: 0 0 16px; }
+    li { margin: 6px 0; }
+    strong { color: var(--text); }
+
+    .callout {
+      padding: 20px 24px;
+      background: var(--blue-soft);
+      border: 1px solid rgba(22,146,255,0.18);
+      border-radius: 16px;
+      margin: 28px 0;
+    }
+    .callout p { margin: 0; }
+    .callout strong { color: var(--text); }
+
+    .cta-box {
+      padding: 28px;
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      margin: 40px 0 0;
+      text-align: center;
+    }
+    .cta-box h3 { margin: 0 0 8px; color: var(--text); }
+    .cta-box p { margin: 0 0 16px; }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 12px 24px;
+      background: var(--blue);
+      color: white;
+      border-radius: 14px;
+      font-weight: 650;
+      text-decoration: none;
+    }
+    .cta-btn:hover { text-decoration: none; opacity: 0.9; }
+
+    @media (max-width: 620px) {
+      article { padding: 32px 0 60px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="top-bar">
+    <div class="top-bar-inner">
+      <a class="brand" href="/">
+        <img src="../assets/logo.png" alt="AtlasDays logo" />
+        <span>AtlasDays</span>
+      </a>
+      <a href="/" style="color:var(--muted);font-size:0.92rem">Home</a>
+    </div>
+  </header>
+
+  <article>
+    <nav class="breadcrumb">
+      <a href="/">AtlasDays</a> / Learn
+    </nav>
+
+    <h1>Schengen 90/180-Day Rule Explained</h1>
+    <p class="subtitle">How the rolling window works, how to count your days, and how to avoid overstaying.</p>
+
+    <h2>What is the 90/180-day rule?</h2>
+    <p>Non-EU citizens visiting the Schengen Area can stay for a maximum of <strong>90 days within any 180-day rolling window</strong>. This applies across all 29 Schengen countries combined — days in France, Germany, and Spain all count toward the same 90-day limit.</p>
+
+    <h2>How the rolling window works</h2>
+    <p>The 180-day window is not a fixed period. It rolls forward with each day. On any given day, border officials look back 180 days and count how many of those days you spent in the Schengen Area. If it's 90 or more, you cannot enter.</p>
+    <p>This is where most people get confused. It's not "90 days per half-year" — it's a continuous sliding window that moves with you.</p>
+
+    <h3>Example</h3>
+    <ul>
+      <li>You arrive in Spain on January 1 and leave on March 31 — that's 90 days used.</li>
+      <li>On April 1, you look back 180 days (to October 4 of the previous year). Your 90 days from Jan–Mar are all within this window, so you have 0 days remaining.</li>
+      <li>On April 2, October 5 drops out of the window — but that doesn't help because your first day (Jan 1) is still within the 180-day lookback.</li>
+      <li>You can re-enter on July 1, when January 1 finally falls outside the 180-day window, and days start freeing up one by one.</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>The common mistake:</strong> thinking you can do "90 days in, 90 days out, repeat." This doesn't always work because the window is rolling, not fixed. Depending on your travel pattern, you may need to wait longer than 90 days before your full allowance resets.</p>
+    </div>
+
+    <h2>Which countries count?</h2>
+    <p>All <strong>29 Schengen member states</strong> share the same 90/180 counter. Days in any of these countries are added together:</p>
+    <p>Austria, Belgium, Bulgaria, Croatia, Czech Republic, Denmark, Estonia, Finland, France, Germany, Greece, Hungary, Iceland, Italy, Latvia, Liechtenstein, Lithuania, Luxembourg, Malta, Netherlands, Norway, Poland, Portugal, Romania, Slovakia, Slovenia, Spain, Sweden, and Switzerland.</p>
+
+    <h2>How to count your days correctly</h2>
+    <ol>
+      <li><strong>Both entry and exit days count.</strong> If you arrive on the 1st and leave on the 3rd, that's 3 days.</li>
+      <li><strong>Count across all Schengen countries combined</strong>, not per country.</li>
+      <li><strong>Use the rolling method:</strong> for any given date, look back 180 days and total the days you were present.</li>
+    </ol>
+    <p>Doing this manually with a spreadsheet is possible but error-prone — especially with multiple short trips across different countries.</p>
+
+    <h2>What happens if you overstay?</h2>
+    <p>Consequences vary by country but can include fines, deportation, and entry bans. Some countries are stricter than others, but none treat overstays lightly. The safest approach is to track your days accurately before you travel.</p>
+
+    <h2>Stop counting manually</h2>
+    <p>AtlasDays is built for exactly this. Log your trips once, and the app tracks your rolling 90/180 window automatically — no formulas, no guesswork.</p>
+
+    <div class="cta-box">
+      <h3>Track your Schengen days automatically</h3>
+      <p>AtlasDays counts your rolling visa window so you don't have to.</p>
+      <a class="cta-btn" href="/">Learn more about AtlasDays</a>
+    </div>
+  </article>
+</body>
+</html>

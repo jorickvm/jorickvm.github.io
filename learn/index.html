@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learn — AtlasDays</title>
+  <meta name="description" content="Guides on visa day counting, residency thresholds, and travel tracking — from the Schengen 90/180 rule to the 183-day tax rule." />
+  <meta property="og:title" content="Learn — AtlasDays" />
+  <meta property="og:description" content="Guides on visa day counting, residency thresholds, and travel tracking." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://atlasdays.app/learn/" />
+  <meta property="og:image" content="https://atlasdays.app/assets/screenshot1.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Learn — AtlasDays" />
+  <meta name="twitter:description" content="Guides on visa day counting, residency thresholds, and travel tracking." />
+  <meta name="twitter:image" content="https://atlasdays.app/assets/screenshot1.png" />
+  <link rel="canonical" href="https://atlasdays.app/learn/" />
+  <link rel="icon" type="image/png" href="../assets/favicon.png" />
+  <style>
+    :root {
+      --bg: #0a0b0d;
+      --bg-elevated: #0f1319;
+      --bg-card: rgba(255,255,255,0.05);
+      --text: #f4f7fb;
+      --muted: #b2b9c5;
+      --muted-2: #8790a0;
+      --line: rgba(255,255,255,0.10);
+      --blue: #1692ff;
+      --blue-soft: rgba(22,146,255,0.12);
+      --max: 800px;
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f6f8fc;
+        --bg-elevated: #ffffff;
+        --bg-card: rgba(255,255,255,0.88);
+        --text: #0d1422;
+        --muted: #526075;
+        --muted-2: #6c788b;
+        --line: rgba(12,22,40,0.09);
+        --blue-soft: rgba(22,146,255,0.08);
+      }
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    .top-bar {
+      border-bottom: 1px solid var(--line);
+      padding: 18px 0;
+    }
+    .top-bar-inner {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      color: var(--text);
+      text-decoration: none;
+    }
+    .brand:hover { text-decoration: none; }
+    .brand img {
+      width: 30px;
+      height: 30px;
+      border-radius: 9px;
+    }
+
+    .page {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+      padding: 48px 0 80px;
+    }
+
+    h1 {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin: 0 0 8px;
+    }
+    .subtitle {
+      color: var(--muted);
+      font-size: 1.08rem;
+      margin: 0 0 36px;
+    }
+
+    .articles {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .article-card {
+      display: block;
+      padding: 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      transition: border-color 160ms ease, transform 160ms ease;
+    }
+    .article-card:hover {
+      border-color: rgba(22,146,255,0.3);
+      transform: translateY(-1px);
+      text-decoration: none;
+    }
+    .article-card h2 {
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+      margin: 0 0 6px;
+      color: var(--text);
+    }
+    .article-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 620px) {
+      .page { padding: 32px 0 60px; }
+      .article-card { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="top-bar">
+    <div class="top-bar-inner">
+      <a class="brand" href="/">
+        <img src="../assets/logo.png" alt="AtlasDays logo" />
+        <span>AtlasDays</span>
+      </a>
+      <a href="/" style="color:var(--muted);font-size:0.92rem">Home</a>
+    </div>
+  </header>
+
+  <div class="page">
+    <h1>Learn</h1>
+    <p class="subtitle">Visa rules, residency thresholds, and travel day counting — explained.</p>
+
+    <div class="articles">
+      <a class="article-card" href="/learn/schengen-90-180-rule">
+        <h2>Schengen 90/180-Day Rule Explained</h2>
+        <p>How the rolling window works, how to count your days, and how to avoid overstaying.</p>
+      </a>
+      <a class="article-card" href="/learn/183-day-tax-residency-rule">
+        <h2>183-Day Tax Residency Rule: What Travelers Need to Know</h2>
+        <p>How the 183-day rule works, which countries use it, and how to avoid triggering unexpected tax obligations.</p>
+      </a>
+      <a class="article-card" href="/learn/how-to-track-travel-days">
+        <h2>How to Track Your Travel Days (And Why Spreadsheets Fail)</h2>
+        <p>Why tracking travel days in a spreadsheet breaks down, and what to use instead.</p>
+      </a>
+      <a class="article-card" href="/learn/us-b1-b2-visa-180-day-limit">
+        <h2>US B1/B2 Visa: Understanding the 180-Day Stay Limit</h2>
+        <p>How the US visitor visa stay limit works, ESTA vs. B1/B2, and what happens if you overstay.</p>
+      </a>
+      <a class="article-card" href="/learn/what-counts-as-a-day-for-visa-purposes">
+        <h2>What Counts as a "Day" for Visa Purposes?</h2>
+        <p>Do entry and exit days count? What about transit? How different countries count days.</p>
+      </a>
+      <a class="article-card" href="/learn/digital-nomad-visa-day-limits">
+        <h2>Digital Nomad Visa Day Limits: A Country-by-Country Overview</h2>
+        <p>Day limits and stay rules for popular digital nomad destinations around the world.</p>
+      </a>
+      <a class="article-card" href="/learn/multiple-passports-and-visa-counting">
+        <h2>Multiple Passports and Visa Counting: What You Need to Know</h2>
+        <p>How visa counting works when you hold multiple passports, and common mistakes to avoid.</p>
+      </a>
+    </div>
+  </div>
+</body>
+</html>
