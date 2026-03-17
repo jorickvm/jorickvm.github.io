@@ -605,22 +605,23 @@
       padding: 0;
     }
     .theme-toggle:hover { border-color: var(--blue); color: var(--text); }
-    .icon-moon { display: none; }
+    .icon-moon, .logo-light { display: none; }
+    .logo-dark { display: block; }
     @media (prefers-color-scheme: light) {
-      .icon-sun { display: none; }
-      .icon-moon { display: block; }
+      .icon-sun, .logo-dark { display: none; }
+      .icon-moon, .logo-light { display: block; }
     }
-    html[data-theme="dark"] .icon-sun { display: block; }
-    html[data-theme="dark"] .icon-moon { display: none; }
-    html[data-theme="light"] .icon-sun { display: none; }
-    html[data-theme="light"] .icon-moon { display: block; }
+    html[data-theme="dark"] .icon-sun, html[data-theme="dark"] .logo-dark { display: block; }
+    html[data-theme="dark"] .icon-moon, html[data-theme="dark"] .logo-light { display: none; }
+    html[data-theme="light"] .icon-sun, html[data-theme="light"] .logo-dark { display: none; }
+    html[data-theme="light"] .icon-moon, html[data-theme="light"] .logo-light { display: block; }
   </style>
 </head>
 <body>
   <header class="site-header">
     <div class="container nav">
       <a class="brand" href="#top" aria-label="AtlasDays home">
-        <span class="brand-mark"><img src="assets/logo.png" alt="AtlasDays logo" /></span>
+        <span class="brand-mark"><img class="logo-dark" src="assets/logo_dark.png" alt="AtlasDays logo" /><img class="logo-light" src="assets/logo_light.png" alt="AtlasDays logo" /></span>
         <span>AtlasDays</span>
       </a>
       <nav class="nav-links" aria-label="Primary">
@@ -840,7 +841,7 @@
       <div class="container">
         <div class="reveal" style="max-width:480px;margin:0 auto">
           <div class="brand" style="justify-content:center;margin-bottom:16px">
-            <span class="brand-mark"><img src="assets/logo.png" alt="AtlasDays logo" /></span>
+            <span class="brand-mark"><img class="logo-dark" src="assets/logo_dark.png" alt="AtlasDays logo" /><img class="logo-light" src="assets/logo_light.png" alt="AtlasDays logo" /></span>
             <span>AtlasDays</span>
           </div>
           <h2 style="font-size:clamp(1.6rem,2.5vw,2.2rem);letter-spacing:-0.03em;margin:0 0 10px">Coming soon to iPhone</h2>
@@ -854,7 +855,7 @@
     <div class="container footer-grid">
       <div class="footer-box reveal">
         <div class="brand">
-          <span class="brand-mark"><img src="assets/logo.png" alt="AtlasDays logo" /></span>
+          <span class="brand-mark"><img class="logo-dark" src="assets/logo_dark.png" alt="AtlasDays logo" /><img class="logo-light" src="assets/logo_light.png" alt="AtlasDays logo" /></span>
           <span>AtlasDays</span>
         </div>
         <p>Private travel-day tracking for people who need clear country history, visa counts, and residency totals.</p>

@@ -251,22 +251,24 @@
       padding: 0;
     }
     .theme-toggle:hover { border-color: var(--blue); color: var(--text); }
-    .icon-moon { display: none; }
+    .icon-moon, .logo-light { display: none; }
+    .logo-dark { display: block; }
     @media (prefers-color-scheme: light) {
-      .icon-sun { display: none; }
-      .icon-moon { display: block; }
+      .icon-sun, .logo-dark { display: none; }
+      .icon-moon, .logo-light { display: block; }
     }
-    html[data-theme="dark"] .icon-sun { display: block; }
-    html[data-theme="dark"] .icon-moon { display: none; }
-    html[data-theme="light"] .icon-sun { display: none; }
-    html[data-theme="light"] .icon-moon { display: block; }
+    html[data-theme="dark"] .icon-sun, html[data-theme="dark"] .logo-dark { display: block; }
+    html[data-theme="dark"] .icon-moon, html[data-theme="dark"] .logo-light { display: none; }
+    html[data-theme="light"] .icon-sun, html[data-theme="light"] .logo-dark { display: none; }
+    html[data-theme="light"] .icon-moon, html[data-theme="light"] .logo-light { display: block; }
   </style>
 </head>
 <body>
   <header class="top-bar">
     <div class="top-bar-inner">
       <a class="brand" href="/">
-        <img src="../assets/logo.png" alt="AtlasDays logo" />
+        <img class="logo-dark" src="../assets/logo_dark.png" alt="AtlasDays logo" />
+        <img class="logo-light" src="../assets/logo_light.png" alt="AtlasDays logo" />
         <span>AtlasDays</span>
       </a>
       <div style="display:flex;align-items:center;gap:16px">

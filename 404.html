@@ -65,6 +65,17 @@
       font-size: 0.95rem;
     }
 
+    .logo-light { display: none; }
+    .logo-dark { display: block; }
+    @media (prefers-color-scheme: light) {
+      .logo-dark { display: none; }
+      .logo-light { display: block; }
+    }
+    html[data-theme="dark"] .logo-dark { display: block; }
+    html[data-theme="dark"] .logo-light { display: none; }
+    html[data-theme="light"] .logo-dark { display: none; }
+    html[data-theme="light"] .logo-light { display: block; }
+
     html[data-theme="dark"] {
       --bg: #0a0b0d;
       --text: #f4f7fb;
@@ -80,7 +91,8 @@
   </style>
 </head>
 <body>
-  <img class="logo" src="/assets/logo.png" alt="AtlasDays logo" />
+  <img class="logo logo-dark" src="/assets/logo_dark.png" alt="AtlasDays logo" />
+  <img class="logo logo-light" src="/assets/logo_light.png" alt="AtlasDays logo" />
   <h1>Page not found</h1>
   <p>The page you're looking for doesn't exist or has moved.</p>
   <div class="links">
