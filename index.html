@@ -710,7 +710,7 @@
         <a href="#privacy">Privacy</a>
         <a href="#faq">FAQ</a>
         <a href="/learn/">Learn</a>
-        <a href="/privacy#contact" class="contact-email" data-email-user="atlasdays" data-email-domain="pm.me" aria-label="Contact AtlasDays by email">Contact</a>
+        <a href="#waitlist">Waitlist</a>
         <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()">
           <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
           <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -728,6 +728,7 @@
           <p class="hero-lead">AtlasDays keeps your trips, day totals, and key limits in one place. Track Schengen-style rules, 183-day thresholds, and long-term travel history without spreadsheet drift.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#proof">See how it works</a>
+            <a class="btn btn-secondary" href="#waitlist">Keep me in the loop</a>
           </div>
           <div class="hero-points" aria-label="Key benefits">
             <div class="hero-point"><strong>Visa day tracking</strong>Rolling windows, per-stay limits, and custom trackers.</div>
@@ -917,12 +918,12 @@
       </div>
     </section>
 
-    <section class="section">
+    <section id="waitlist" class="section">
       <div class="container">
         <div class="cta-panel reveal">
           <div class="cta-panel-copy">
-            <h2>Stay in the loop for launch</h2>
-            <p>Join the waitlist and be the first to know when AtlasDays launches in April 2026 for iPhone and iPad.</p>
+            <h2>Keep me in the loop</h2>
+            <p>Get a short email when AtlasDays launches, plus occasional updates as it gets closer.</p>
           </div>
           <div class="cta-panel-actions">
             <form
@@ -931,14 +932,14 @@
               class="waitlist-form"
               id="waitlist-form"
             >
-              <label for="waitlist-email">Enter your email</label>
+              <label for="waitlist-email">Email address</label>
               <div class="waitlist-row">
                 <input type="email" name="email" id="waitlist-email" placeholder="you@example.com" autocomplete="email" required />
-                <input type="submit" value="Subscribe" />
+                <input type="submit" value="Keep me posted" />
               </div>
               <p class="waitlist-status" id="waitlist-status" aria-live="polite"></p>
             </form>
-            <div class="cta-note">No account required. You can unsubscribe at any time.</div>
+            <div class="cta-note">No spam. Just launch updates and occasional product news.</div>
           </div>
         </div>
       </div>
@@ -957,6 +958,7 @@
       </div>
       <div class="footer-box reveal">
         <div class="footer-links">
+          <a href="/#waitlist">Join the waitlist</a>
           <a href="/privacy">Privacy Policy</a>
           <a href="/changelog">What’s New</a>
           <a href="/privacy#contact" class="contact-email" data-email-user="atlasdays" data-email-domain="pm.me" aria-label="Contact AtlasDays by email">Contact</a>
@@ -1009,7 +1011,7 @@
 
           if (response.ok) {
             waitlistForm.reset();
-            waitlistStatus.textContent = 'You are on the list. I will email you when AtlasDays is ready.';
+            waitlistStatus.textContent = 'You are on the list. I will email you when there is something worth sending.';
             waitlistStatus.classList.add('is-success');
           } else {
             waitlistStatus.textContent = 'Something went wrong. Please try again in a moment.';
@@ -1020,7 +1022,7 @@
           waitlistStatus.classList.add('is-error');
         } finally {
           submit.disabled = false;
-          submit.value = 'Subscribe';
+          submit.value = 'Keep me posted';
         }
       });
     }
