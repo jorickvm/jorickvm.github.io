@@ -4,34 +4,108 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AtlasDays – What's New</title>
-  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <meta name="description" content="Release notes for AtlasDays, the private travel-day tracking app for iPhone and iPad." />
+  <meta property="og:title" content="AtlasDays — What's New" />
+  <meta property="og:description" content="Release notes for AtlasDays, the private travel-day tracking app for iPhone and iPad." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.atlasdays.app/changelog" />
+  <meta property="og:image" content="https://www.atlasdays.app/assets/screenshot1.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AtlasDays — What's New" />
+  <meta name="twitter:description" content="Release notes for AtlasDays, the private travel-day tracking app for iPhone and iPad." />
+  <meta name="twitter:image" content="https://www.atlasdays.app/assets/screenshot1.png" />
+  <link rel="canonical" href="https://www.atlasdays.app/changelog" />
+  <link rel="icon" type="image/png" href="assets/favicon.png" />
+  <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)})()</script>
   <style>
+    :root {
+      --bg: #ffffff;
+      --text: #1a1a1a;
+      --muted: #666;
+      --muted-2: #999;
+      --line: #e0e0e0;
+      --link: #007aff;
+    }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       max-width: 720px;
       margin: 48px auto;
-      padding: 0 24px;
-      color: #1a1a1a;
+      padding: 0 24px 48px;
+      color: var(--text);
+      background: var(--bg);
       line-height: 1.6;
     }
     h1 { font-size: 2rem; margin-bottom: 0.25rem; }
-    h2 { font-size: 1.3rem; margin-top: 2.5rem; border-bottom: 1px solid #e0e0e0; padding-bottom: 0.3rem; }
-    h3 { font-size: 1rem; margin-top: 1.2rem; margin-bottom: 0.4rem; color: #444; }
+    h2 { font-size: 1.3rem; margin-top: 2.5rem; border-bottom: 1px solid var(--line); padding-bottom: 0.3rem; }
+    h3 { font-size: 1rem; margin-top: 1.2rem; margin-bottom: 0.4rem; color: var(--muted); }
     p, li { font-size: 1rem; }
     ul { padding-left: 1.4rem; }
-    .subtitle { color: #666; font-size: 0.9rem; margin-bottom: 2rem; }
-    a { color: #007aff; }
-    @media (prefers-color-scheme: dark) {
-      body { background: #1a1a1a; color: #e5e5e5; }
-      h2 { border-bottom-color: #333; }
-      h3 { color: #aaa; }
-      .subtitle { color: #888; }
+    .subtitle { color: var(--muted); font-size: 0.9rem; margin-bottom: 2rem; }
+    a { color: var(--link); }
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 8px;
     }
+    .theme-toggle {
+      background: none;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      color: var(--muted);
+      cursor: pointer;
+      width: 36px;
+      height: 36px;
+      display: inline-grid;
+      place-items: center;
+      padding: 0;
+    }
+    .theme-toggle:hover { color: var(--text); }
+    .icon-moon { display: none; }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #1a1a1a;
+        --text: #e5e5e5;
+        --muted: #888;
+        --muted-2: #999;
+        --line: #333;
+        --link: #5fb0ff;
+      }
+      .icon-sun { display: none; }
+      .icon-moon { display: block; }
+    }
+    html[data-theme="dark"] {
+      --bg: #1a1a1a;
+      --text: #e5e5e5;
+      --muted: #888;
+      --muted-2: #999;
+      --line: #333;
+      --link: #5fb0ff;
+    }
+    html[data-theme="light"] {
+      --bg: #ffffff;
+      --text: #1a1a1a;
+      --muted: #666;
+      --muted-2: #999;
+      --line: #e0e0e0;
+      --link: #007aff;
+    }
+    html[data-theme="dark"] .icon-sun { display: none; }
+    html[data-theme="dark"] .icon-moon { display: block; }
+    html[data-theme="light"] .icon-sun { display: block; }
+    html[data-theme="light"] .icon-moon { display: none; }
   </style>
 </head>
 <body>
 
-  <p><a href="/">&larr; AtlasDays</a></p>
+  <div class="top-bar">
+    <p><a href="/">&larr; AtlasDays</a></p>
+    <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()">
+      <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+    </button>
+  </div>
   <h1>What's New in AtlasDays</h1>
   <p class="subtitle">New features and improvements in each release.</p>
 
@@ -276,5 +350,17 @@
     <li>Initial release — basic trip logging with country, dates, and notes</li>
   </ul>
 
+<script>
+  function toggleTheme() {
+    var html = document.documentElement;
+    var current = html.getAttribute('data-theme');
+    var isDark;
+    if (current) isDark = current === 'dark';
+    else isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = isDark ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  }
+</script>
 </body>
 </html>

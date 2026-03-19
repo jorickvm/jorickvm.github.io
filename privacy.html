@@ -63,7 +63,7 @@
 
   <div class="summary">
     <strong>TL;DR</strong>
-    <p>No account required — just download and use the app.</p>
+    <p>No account required — AtlasDays is in TestFlight now and planned to launch in April 2026 for iPhone and iPad.</p>
     <p>No AtlasDays servers — your data stays on your device (and your iCloud, if enabled).</p>
     <p>No analytics, no ads, no third-party SDKs.</p>
   </div>
@@ -99,13 +99,15 @@
   <h2>8. Changes to This Policy</h2>
   <p>If this privacy policy changes, the updated version will be posted at this URL with a revised "Last updated" date.</p>
 
-  <h2>9. Contact</h2>
-  <p>If you have any questions about this privacy policy, you can reach us at <a href="#" id="privacy-email">loading...</a>.</p>
+  <h2 id="contact">9. Contact</h2>
+  <p>If you have any questions about this privacy policy, you can reach us at <a href="#contact" id="privacy-email" data-email-user="atlasdays" data-email-domain="pm.me">atlasdays [at] pm.me</a>.</p>
 
 <script>
   (function() {
-    var u = 'atlasdays', d = 'pm.me', addr = u + '@' + d;
     var el = document.getElementById('privacy-email');
+    var u = el.getAttribute('data-email-user');
+    var d = el.getAttribute('data-email-domain');
+    var addr = u + '@' + d;
     el.textContent = addr;
     el.href = 'mai' + 'lto:' + addr;
   })();
