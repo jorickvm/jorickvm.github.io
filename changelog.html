@@ -4,344 +4,205 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AtlasDays – What's New</title>
-  <meta name="description" content="Release notes for AtlasDays, the private travel-day tracking app for iPhone and iPad." />
-  <meta property="og:title" content="AtlasDays — What's New" />
-  <meta property="og:description" content="Release notes for AtlasDays, the private travel-day tracking app for iPhone and iPad." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://www.atlasdays.app/changelog" />
-  <meta property="og:image" content="https://www.atlasdays.app/assets/screenshot1.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="AtlasDays — What's New" />
-  <meta name="twitter:description" content="Release notes for AtlasDays, the private travel-day tracking app for iPhone and iPad." />
-  <meta name="twitter:image" content="https://www.atlasdays.app/assets/screenshot1.png" />
-  <link rel="canonical" href="https://www.atlasdays.app/changelog" />
-  <link rel="icon" type="image/png" href="assets/favicon.png" />
-  <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)})()</script>
+  <link rel="icon" type="image/png" href="assets/favicon.png">
   <style>
-    :root {
-      --bg: #ffffff;
-      --text: #1a1a1a;
-      --muted: #666;
-      --muted-2: #999;
-      --line: #e0e0e0;
-      --link: #007aff;
-    }
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       max-width: 720px;
       margin: 48px auto;
-      padding: 0 24px 48px;
-      color: var(--text);
-      background: var(--bg);
+      padding: 0 24px;
+      color: #1a1a1a;
       line-height: 1.6;
     }
     h1 { font-size: 2rem; margin-bottom: 0.25rem; }
-    h2 { font-size: 1.3rem; margin-top: 2.5rem; border-bottom: 1px solid var(--line); padding-bottom: 0.3rem; }
-    h3 { font-size: 1rem; margin-top: 1.2rem; margin-bottom: 0.4rem; color: var(--muted); }
+    h2 { font-size: 1.3rem; margin-top: 2.5rem; border-bottom: 1px solid #e0e0e0; padding-bottom: 0.3rem; }
+    h3 { font-size: 1rem; margin-top: 1.2rem; margin-bottom: 0.4rem; color: #444; }
     p, li { font-size: 1rem; }
     ul { padding-left: 1.4rem; }
-    .subtitle { color: var(--muted); font-size: 0.9rem; margin-bottom: 2rem; }
-    a { color: var(--link); }
-    .top-bar {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 8px;
-    }
-    .theme-toggle {
-      background: none;
-      border: 1px solid var(--line);
-      border-radius: 10px;
-      color: var(--muted);
-      cursor: pointer;
-      width: 36px;
-      height: 36px;
-      display: inline-grid;
-      place-items: center;
-      padding: 0;
-    }
-    .theme-toggle:hover { color: var(--text); }
-    .icon-moon { display: none; }
+    .subtitle { color: #666; font-size: 0.9rem; margin-bottom: 2rem; }
+    a { color: #007aff; }
     @media (prefers-color-scheme: dark) {
-      :root {
-        --bg: #1a1a1a;
-        --text: #e5e5e5;
-        --muted: #888;
-        --muted-2: #999;
-        --line: #333;
-        --link: #5fb0ff;
-      }
-      .icon-sun { display: none; }
-      .icon-moon { display: block; }
+      body { background: #1a1a1a; color: #e5e5e5; }
+      h2 { border-bottom-color: #333; }
+      h3 { color: #aaa; }
+      .subtitle { color: #888; }
     }
-    html[data-theme="dark"] {
-      --bg: #1a1a1a;
-      --text: #e5e5e5;
-      --muted: #888;
-      --muted-2: #999;
-      --line: #333;
-      --link: #5fb0ff;
-    }
-    html[data-theme="light"] {
-      --bg: #ffffff;
-      --text: #1a1a1a;
-      --muted: #666;
-      --muted-2: #999;
-      --line: #e0e0e0;
-      --link: #007aff;
-    }
-    html[data-theme="dark"] .icon-sun { display: none; }
-    html[data-theme="dark"] .icon-moon { display: block; }
-    html[data-theme="light"] .icon-sun { display: block; }
-    html[data-theme="light"] .icon-moon { display: none; }
   </style>
 </head>
 <body>
 
-  <div class="top-bar">
-    <p><a href="/">&larr; AtlasDays</a></p>
-    <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()">
-      <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-      <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-    </button>
-  </div>
+  <p><a href="/">&larr; AtlasDays</a></p>
   <h1>What's New in AtlasDays</h1>
   <p class="subtitle">New features and improvements in each release.</p>
+
+  <h2>Version 0.7.7 <span style="color:#999; font-weight:normal;">— March 20, 2026</span></h2>
+  <h3>New</h3>
+  <ul>
+    <li><strong>New share cards</strong> — share your top destinations and continent breakdown alongside your world map</li>
+    <li><strong>Light/dark share cards</strong> — choose light or dark appearance when sharing your travel stats</li>
+  </ul>
+  <h3>Improved</h3>
+  <ul>
+    <li><strong>Settings redesigned</strong> — cleaner, simpler layout</li>
+    <li><strong>Dashboard remembers your preferences</strong> — your last-used mode and date range are restored automatically</li>
+    <li><strong>Per-tracker notifications</strong> — control alerts individually for each tracker instead of one global switch</li>
+    <li><strong>CSV Import &amp; Export</strong> now has its own dedicated screen</li>
+    <li>Various layout and polish improvements</li>
+  </ul>
 
   <h2>Version 0.7.6 <span style="color:#999; font-weight:normal;">— March 18, 2026</span></h2>
   <h3>New</h3>
   <ul>
     <li><strong>Tracker threshold alerts</strong> — get notified when you're approaching a visa or residency day limit</li>
-    <li><strong>Days abroad stat</strong> — the dashboard now shows your total days spent abroad</li>
+    <li><strong>Days abroad stat</strong> on the dashboard</li>
   </ul>
-  <h3>Changed</h3>
+  <h3>Improved</h3>
   <ul>
     <li>Trips tab renamed to <strong>Timeline</strong></li>
-    <li>Onboarding flow improved — permission dialogs no longer skip ahead, and the welcome page now leads with what the app does</li>
-    <li>After onboarding, the app lands on the Timeline with a prompt to add your first trip</li>
+    <li>Smoother onboarding flow with better permission handling</li>
   </ul>
 
   <h2>Version 0.7.5 <span style="color:#999; font-weight:normal;">— March 18, 2026</span></h2>
   <h3>New</h3>
   <ul>
-    <li><strong>Share your stats</strong> — a new share sheet with a carousel of shareable travel cards</li>
-    <li><strong>Duplicate trip detection</strong> — prevents duplicate trips during manual entry, CSV import, and iCloud sync</li>
-    <li><strong>Animated stats</strong> — dashboard numbers now count up smoothly when they change</li>
-  </ul>
-  <h3>Changed</h3>
-  <ul>
-    <li>Location permission now asks for "When In Use" first — less intrusive initial prompt</li>
-    <li>Various label and layout improvements across the tracker editor and country picker</li>
+    <li><strong>Share your stats</strong> — a carousel of shareable travel cards</li>
+    <li><strong>Duplicate trip detection</strong> — prevents accidental duplicates during import and sync</li>
+    <li><strong>Animated stats</strong> — dashboard numbers count up smoothly</li>
   </ul>
   <h3>Fixed</h3>
   <ul>
-    <li>Dashboard stats and current country now update immediately after editing a trip</li>
-    <li>Dashboard no longer briefly shows stale data when returning to the app</li>
+    <li>Dashboard now updates immediately after editing a trip</li>
   </ul>
 
   <h2>Version 0.7.4 <span style="color:#999; font-weight:normal;">— March 18, 2026</span></h2>
   <h3>New</h3>
   <ul>
-    <li><strong>Custom fiscal year trackers</strong> — set any start date for a tax year period (e.g. Apr 6 – Apr 5 for the UK), instead of only January–December</li>
-    <li><strong>Tracker list view</strong> — long-press the tracker carousel to see all your trackers in a scrollable list</li>
-    <li><strong>Hide Trackers</strong> — long-press the empty tracker card to hide the section if you don't use trackers</li>
-  </ul>
-  <h3>Changed</h3>
-  <ul>
-    <li>Tracker context menus simplified — cleaner long-press options</li>
-    <li>Onboarding residency tracker now defaults to calendar year</li>
+    <li><strong>Custom fiscal year trackers</strong> — set any start date for a tax year period (e.g. Apr 6 – Apr 5 for the UK)</li>
+    <li><strong>Tracker list view</strong> — long-press the tracker carousel to see all your trackers at once</li>
   </ul>
 
   <h2>Version 0.7.3 <span style="color:#999; font-weight:normal;">— March 16, 2026</span></h2>
   <h3>New</h3>
   <ul>
-    <li><strong>Tappable dashboard stats</strong> — tap the Countries or Trips quadrant to browse your data in a sortable half-sheet list</li>
-    <li><strong>Trip sorting</strong> — sort trips by date, name, or length of stay from the new trip list sheet</li>
-    <li><strong>Live tracker explanation</strong> — the Add/Edit Tracker form now shows a plain-language summary that updates as you configure the tracker</li>
-    <li><strong>Move tracker position</strong> — long-press a tracker card to move it below the map or back to the top</li>
+    <li><strong>Tappable dashboard stats</strong> — tap Countries or Trips to browse your data in a sortable list</li>
+    <li><strong>Trip sorting</strong> — sort by date, name, or length of stay</li>
+    <li><strong>Live tracker explanation</strong> — see a plain-language summary as you configure a tracker</li>
   </ul>
-  <h3>Changed</h3>
+  <h3>Improved</h3>
   <ul>
-    <li>Countries list sheet redesigned with individual card rows and drill-down to each country's trips</li>
-    <li>Various pill badge contrast and layout improvements</li>
-  </ul>
-  <h3>Fixed</h3>
-  <ul>
-    <li>Pill badges were invisible on certain backgrounds</li>
-    <li>Deleting trips from the dashboard list now works correctly</li>
+    <li>Countries list redesigned with card rows and drill-down to each country's trips</li>
   </ul>
 
   <h2>Version 0.7.2 <span style="color:#999; font-weight:normal;">— March 15, 2026</span></h2>
   <h3>New</h3>
   <ul>
-    <li><strong>Pinch-to-zoom on the world map</strong> — zoom up to 28× with smooth rubber-band and spring-back; pan with one finger; accidental taps after a pinch are prevented</li>
-    <li><strong>Share your map</strong> — export a square image of your world map with your country count, % of world, and travel days</li>
-    <li><strong>Privacy details on first launch</strong> — tap "How your data stays private" on the welcome screen for a clear breakdown: no account, no AtlasDays server copy, all processing on-device</li>
+    <li><strong>Pinch-to-zoom on the world map</strong> — zoom in with smooth gestures and one-finger panning</li>
+    <li><strong>Share your map</strong> — export an image of your world map with your travel stats</li>
   </ul>
-  <h3>Changed</h3>
+  <h3>Improved</h3>
   <ul>
-    <li><strong>Onboarding simplified</strong> — the "Log your first trip" step has been removed; you can add trips anytime from the Trips tab</li>
-    <li>Welcome screen is now privacy-first with clearer, more direct copy</li>
-    <li>Various onboarding copy and flow improvements</li>
-  </ul>
-  <h3>Fixed</h3>
-  <ul>
-    <li>Tapping "Enable Location" when access is blocked now shows a prompt to open Settings instead of doing nothing</li>
-    <li>Trips suggested from location detection now correctly start as ongoing</li>
+    <li>Simpler onboarding — get started faster, add trips whenever you're ready</li>
+    <li>Privacy-first welcome screen</li>
   </ul>
 
   <h2>Version 0.7.1 <span style="color:#999; font-weight:normal;">— March 14, 2026</span></h2>
   <h3>New</h3>
   <ul>
-    <li><strong>Territories and dependencies</strong> are now trackable places — UK dependencies, French overseas territories, Dutch Caribbean, US territories, HK, Macau, and more, plus Liberland</li>
-    <li><strong>Country Count setting</strong> — choose between UN 195, UN 195+2 (adds Kosovo &amp; Taiwan), or All Jurisdictions; all stats update accordingly</li>
-    <li><strong>UN / OBS badges</strong> in the country picker — sovereign UN members are labelled UN; Vatican and Palestine show OBS</li>
-    <li><strong>Hide non-UN / Show all</strong> toggle in the country picker to filter the list to UN countries only</li>
-    <li>Search field in the trip list now opens the keyboard automatically</li>
-    <li>AtlasDays now has a website — <a href="https://www.atlasdays.app">atlasdays.app</a></li>
+    <li><strong>Territories and dependencies</strong> — track visits to UK overseas territories, French departments, US territories, Hong Kong, Macau, and more</li>
+    <li><strong>Country Count setting</strong> — choose between UN 195, UN 195+2 (adds Kosovo &amp; Taiwan), or All Jurisdictions</li>
   </ul>
   <h3>Fixed</h3>
   <ul>
-    <li>Dot markers on the world map (Vatican, Monaco, Liberland, etc.) now respond reliably to taps</li>
-    <li>CSV import improved — handles Numbers/Excel line endings, UTF-16 encoding, and semicolon/tab delimiters</li>
+    <li>Small territories on the world map now respond reliably to taps</li>
+    <li>CSV import handles more file formats and encodings</li>
   </ul>
 
   <h2>Version 0.7.0 <span style="color:#999; font-weight:normal;">— March 13, 2026</span></h2>
   <h3>New</h3>
   <ul>
-    <li><strong>Dashboard redesign</strong> — the Summary tab is now called Dashboard, with a full-width world map, a 2×2 stats grid (Countries, Trips, Days, Top Country), and a refined countries list</li>
-    <li><strong>Sort the countries list</strong> by most days or alphabetically — tap 321/123 or ABC/ZYX to switch and reverse order</li>
-    <li><strong>Expand/collapse countries list</strong> — shows your top 5 by default; tap to reveal all</li>
-    <li><strong>Tracker carousel</strong> — multiple visa trackers are now swipeable cards with page dots</li>
-    <li><strong>Exclude Home Country</strong> option in Settings — hide your home country from all Dashboard stats</li>
-    <li>Approximate trips (month/year, year-only) now appear in the Dashboard countries list with a ~ indicator</li>
-  </ul>
-  <h3>Changed</h3>
-  <ul>
-    <li>Date picker on Dashboard opens as a compact half-sheet, matching the Add Trip style</li>
-    <li>Various Settings and Dashboard polish improvements</li>
+    <li><strong>Dashboard redesign</strong> — full-width world map, stats grid, and a sortable countries list</li>
+    <li><strong>Tracker carousel</strong> — swipe between your visa trackers</li>
+    <li><strong>Exclude Home Country</strong> from all dashboard stats</li>
   </ul>
 
   <h2>Version 0.6.2 <span style="color:#999; font-weight:normal;">— March 12, 2026</span></h2>
   <h3>New</h3>
   <ul>
-    <li>Future trips now appear in a dedicated <strong>Upcoming</strong> section in the trip list</li>
-    <li>Country search recognises common alternative names — search "Turkey", "USA", "UK", "Holland", and more</li>
+    <li>Future trips appear in a dedicated <strong>Upcoming</strong> section</li>
+    <li>Search by common country names — "Turkey", "USA", "UK", "Holland", and more</li>
   </ul>
-  <h3>Changed</h3>
+  <h3>Improved</h3>
   <ul>
-    <li><strong>Add Trip</strong> redesigned as a half-sheet with a compact header and popup date pickers</li>
-    <li>Airport Transit and Notes tucked behind a <strong>More options</strong> row to keep the form clean</li>
-    <li>Various form label and layout improvements</li>
+    <li><strong>Add Trip</strong> redesigned with a cleaner layout and popup date pickers</li>
   </ul>
   <h3>Fixed</h3>
   <ul>
-    <li>Future trips no longer counted in the Travel Summary</li>
-    <li>Ongoing trips now count only days up to today in the Travel Summary</li>
+    <li>Future and ongoing trips now count correctly in the summary</li>
   </ul>
 
   <h2>Version 0.6.1 <span style="color:#999; font-weight:normal;">— March 12, 2026</span></h2>
-  <h3>Changed</h3>
+  <h3>Improved</h3>
   <ul>
-    <li>Various layout and polish improvements to the <strong>country detail sheet</strong> and <strong>full-screen map</strong></li>
-    <li>Notes field in Add/Edit Trip starts as a single line and grows as you type</li>
-  </ul>
-  <h3>Fixed</h3>
-  <ul>
-    <li>Trips added from the country detail sheet now appear immediately</li>
-    <li>Transit badge was invisible in dark mode</li>
+    <li>Various layout and polish improvements to the country detail sheet and full-screen map</li>
   </ul>
 
   <h2>Version 0.6.0 <span style="color:#999; font-weight:normal;">— March 11, 2026</span></h2>
   <h3>New</h3>
   <ul>
-    <li><strong>Settings tab</strong> — a dedicated screen for all your preferences, replacing the World Map tab</li>
-    <li>Toggle <strong>auto-detect country changes</strong> and <strong>push notifications</strong> directly from Settings</li>
-    <li>Choose your <strong>home country</strong> in Settings (with a "No fixed residence" option)</li>
-    <li><strong>iCloud Sync toggle</strong> — turn iCloud backup on or off from Settings</li>
-    <li>Set a <strong>default trip mode</strong> (Exact or Approximate) for new trips</li>
-    <li><strong>Theme picker</strong> — switch between System, Light, and Dark appearance</li>
-    <li><strong>CSV export, import, and template download</strong> from Settings</li>
-    <li><strong>Density toggle</strong> — switch between comfortable and compact trip list layout</li>
-    <li><strong>Re-run onboarding</strong> at any time from Settings</li>
-  </ul>
-  <h3>Changed</h3>
-  <ul>
-    <li>The world map is now accessible by tapping the minimap on the Summary tab</li>
-    <li>Menus on the Trips and Summary tabs have been simplified</li>
-  </ul>
-  <h3>Fixed</h3>
-  <ul>
-    <li>Notification toggle no longer gets stuck after granting permission</li>
-    <li>Home country selection now saves reliably</li>
+    <li><strong>Settings tab</strong> — a dedicated screen for all your preferences</li>
+    <li><strong>iCloud Sync toggle</strong> — back up your data to iCloud</li>
+    <li><strong>Theme picker</strong> — switch between System, Light, and Dark</li>
+    <li><strong>CSV import, export, and template</strong> from Settings</li>
+    <li><strong>Re-run onboarding</strong> at any time</li>
   </ul>
 
   <h2>Version 0.5.1 <span style="color:#999; font-weight:normal;">— March 11, 2026</span></h2>
   <h3>New</h3>
   <ul>
-    <li><strong>Re-run onboarding</strong> from the Summary tab menu</li>
-    <li>"No fixed residence" option during onboarding</li>
-    <li>Optional <strong>residency tracker</strong> when selecting a home country</li>
+    <li><strong>Residency tracker</strong> — optionally create a day tracker when setting your home country</li>
+    <li>"No fixed residence" option for digital nomads</li>
   </ul>
-  <h3>Changed</h3>
+  <h3>Improved</h3>
   <ul>
-    <li>Onboarding redesigned — simpler country selection with an optional residency tracker</li>
-  </ul>
-  <h3>Fixed</h3>
-  <ul>
-    <li>Location detection no longer suggests your home country right after onboarding</li>
+    <li>Onboarding redesigned with simpler country selection</li>
   </ul>
 
   <h2>Version 0.5.0 <span style="color:#999; font-weight:normal;">— March 9, 2026</span></h2>
   <h3>New</h3>
   <ul>
-    <li><strong>Country detail sheet</strong> — tap any country on the world map to see your trip history, trip count, and total days spent</li>
-    <li><strong>Add Trip</strong> button directly from the country detail sheet</li>
-    <li><strong>Full-screen map</strong> by tapping the minimap on the Summary tab</li>
-    <li><strong>Map color style toggle</strong> — choose between blue or greyscale themes</li>
-  </ul>
-  <h3>Changed</h3>
-  <ul>
-    <li>Transit countries (airside) are no longer colored on the map</li>
+    <li><strong>Country detail sheet</strong> — tap any country on the map to see your trip history and total days</li>
+    <li><strong>Full-screen map</strong> — tap the minimap to expand it</li>
+    <li><strong>Map color themes</strong> — choose between blue and greyscale</li>
   </ul>
 
   <h2>Version 0.4.0 <span style="color:#999; font-weight:normal;">— March 8, 2026</span></h2>
   <h3>New</h3>
   <ul>
-    <li>New tracker counting mode: <strong>Per Stay</strong> (alongside Rolling and Calendar Year)</li>
-    <li>Optional <strong>"Tracking starts on"</strong> date to ignore days before a chosen date</li>
-    <li><strong>Country flags</strong> in the country picker</li>
-    <li><strong>Splash screen</strong> with branded logo animation on startup</li>
+    <li><strong>Per Stay</strong> tracker mode — track your longest continuous stay</li>
+    <li><strong>Country flags</strong> throughout the app</li>
+    <li><strong>Splash screen</strong> on startup</li>
   </ul>
-  <h3>Changed</h3>
+  <h3>Improved</h3>
   <ul>
-    <li>Tracker editor reorganized into clearer sections</li>
-    <li>Various performance improvements — faster startup and smoother scrolling</li>
+    <li>Faster startup and smoother scrolling</li>
   </ul>
 
   <h2>Version 0.3.0 <span style="color:#999; font-weight:normal;">— March 5, 2026</span></h2>
   <h3>New</h3>
   <ul>
-    <li><strong>iCloud sync</strong> — trip data is automatically backed up to your personal iCloud</li>
-    <li><strong>Undo</strong> banner when deleting a trip — tap within 4 seconds to restore it</li>
-    <li><strong>Delete Trip</strong> button in the trip edit form</li>
-  </ul>
-  <h3>Changed</h3>
-  <ul>
-    <li>Date precision simplified to two options: Exact and Approximate</li>
-    <li>Exact date trips can now have future dates — useful for planned trips</li>
-    <li>Improved CSV format with flexible month input</li>
+    <li><strong>iCloud sync</strong> — your trips are backed up automatically</li>
+    <li><strong>Undo delete</strong> — tap to restore a deleted trip within 4 seconds</li>
+    <li>Plan future trips with exact dates</li>
   </ul>
 
   <h2>Version 0.2.0 <span style="color:#999; font-weight:normal;">— February 28, 2026</span></h2>
   <h3>New</h3>
   <ul>
-    <li><strong>Trip list</strong> with sections by year, Ongoing, and No Date</li>
-    <li><strong>Auto-detection</strong> — the app suggests starting or ending a trip when you enter a new country</li>
-    <li><strong>Summary tab</strong> with visa day totals, custom date ranges, and rolling window presets</li>
-    <li><strong>Visa rule trackers</strong> (e.g. Schengen 90/180) with progress bar and days remaining</li>
-    <li><strong>Interactive world map</strong> showing visited countries</li>
+    <li><strong>Trip list</strong> organized by year with Ongoing and Upcoming sections</li>
+    <li><strong>Auto-detection</strong> — get a suggestion when you enter a new country</li>
+    <li><strong>Summary tab</strong> with visa day totals and date range presets</li>
+    <li><strong>Visa rule trackers</strong> (e.g. Schengen 90/180) with progress bars</li>
+    <li><strong>Interactive world map</strong></li>
     <li><strong>CSV export and import</strong></li>
   </ul>
 
@@ -350,17 +211,5 @@
     <li>Initial release — basic trip logging with country, dates, and notes</li>
   </ul>
 
-<script>
-  function toggleTheme() {
-    var html = document.documentElement;
-    var current = html.getAttribute('data-theme');
-    var isDark;
-    if (current) isDark = current === 'dark';
-    else isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    var next = isDark ? 'light' : 'dark';
-    html.setAttribute('data-theme', next);
-    localStorage.setItem('theme', next);
-  }
-</script>
 </body>
 </html>
