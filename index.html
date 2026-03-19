@@ -454,22 +454,22 @@
       flex: none;
       width: min(380px, 100%);
     }
-    .embeddable-buttondown-form {
+    .waitlist-form {
       display: flex;
       flex-direction: column;
       gap: 10px;
       width: 100%;
     }
-    .embeddable-buttondown-form label {
+    .waitlist-form label {
       color: var(--muted);
       font-size: 0.92rem;
     }
-    .embeddable-buttondown-row {
+    .waitlist-row {
       display: flex;
       gap: 10px;
       width: 100%;
     }
-    .embeddable-buttondown-form input[type="email"] {
+    .waitlist-form input[type="email"] {
       flex: 1 1 auto;
       min-width: 0;
       min-height: 52px;
@@ -481,15 +481,15 @@
       font: inherit;
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
     }
-    .embeddable-buttondown-form input[type="email"]::placeholder {
+    .waitlist-form input[type="email"]::placeholder {
       color: var(--muted-2);
     }
-    .embeddable-buttondown-form input[type="email"]:focus {
+    .waitlist-form input[type="email"]:focus {
       outline: 2px solid rgba(22,146,255,0.28);
       outline-offset: 2px;
       border-color: rgba(22,146,255,0.45);
     }
-    .embeddable-buttondown-form input[type="submit"] {
+    .waitlist-form input[type="submit"] {
       min-height: 52px;
       padding: 0 20px;
       border: 0;
@@ -501,18 +501,25 @@
       cursor: pointer;
       box-shadow: 0 14px 28px rgba(22,146,255,0.22);
     }
-    .embeddable-buttondown-form input[type="submit"]:hover {
+    .waitlist-form input[type="submit"]:hover {
       transform: translateY(-1px);
     }
-    .embeddable-buttondown-form p {
+    .waitlist-form input[type="submit"]:disabled {
+      opacity: 0.7;
+      cursor: wait;
+      transform: none;
+    }
+    .waitlist-status {
       margin: 0;
       color: var(--muted-2);
-      font-size: 0.82rem;
+      font-size: 0.88rem;
+      min-height: 1.4em;
     }
-    .embeddable-buttondown-form p a {
-      color: var(--muted);
-      text-decoration: underline;
-      text-underline-offset: 0.18em;
+    .waitlist-status.is-success {
+      color: #3bb273;
+    }
+    .waitlist-status.is-error {
+      color: #e06c75;
     }
     .cta-note {
       color: var(--muted-2);
@@ -626,7 +633,7 @@
       .cta-panel,
       .privacy-panel { padding: 20px; }
       .btn { width: 100%; }
-      .embeddable-buttondown-row { flex-direction: column; }
+      .waitlist-row { flex-direction: column; }
       .hero-actions { gap: 10px; }
       .cta-panel h2 { max-width: 12ch; }
     }
@@ -919,18 +926,17 @@
           </div>
           <div class="cta-panel-actions">
             <form
-              action="https://buttondown.com/api/emails/embed-subscribe/atlasdays"
+              action="https://formspree.io/f/mkoqynez"
               method="post"
-              target="popupwindow"
-              onsubmit="window.open('https://buttondown.com/atlasdays', 'popupwindow')"
-              class="embeddable-buttondown-form"
+              class="waitlist-form"
+              id="waitlist-form"
             >
-              <label for="bd-email">Enter your email</label>
-              <div class="embeddable-buttondown-row">
-                <input type="email" name="email" id="bd-email" placeholder="you@example.com" required />
+              <label for="waitlist-email">Enter your email</label>
+              <div class="waitlist-row">
+                <input type="email" name="email" id="waitlist-email" placeholder="you@example.com" autocomplete="email" required />
                 <input type="submit" value="Subscribe" />
               </div>
-              <p><a href="https://buttondown.com/refer/atlasdays" target="_blank" rel="noopener noreferrer">Powered by Buttondown.</a></p>
+              <p class="waitlist-status" id="waitlist-status" aria-live="polite"></p>
             </form>
             <div class="cta-note">No account required. You can unsubscribe at any time.</div>
           </div>
@@ -980,6 +986,44 @@
         window.location.href = 'mai' + 'lto:' + u + '@' + d;
       });
     });
+
+    var waitlistForm = document.getElementById('waitlist-form');
+    var waitlistStatus = document.getElementById('waitlist-status');
+    if (waitlistForm && waitlistStatus) {
+      waitlistForm.addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        var submit = waitlistForm.querySelector('input[type="submit"]');
+        var formData = new FormData(waitlistForm);
+        waitlistStatus.textContent = '';
+        waitlistStatus.className = 'waitlist-status';
+        submit.disabled = true;
+        submit.value = 'Submitting...';
+
+        try {
+          var response = await fetch(waitlistForm.action, {
+            method: 'POST',
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+          });
+
+          if (response.ok) {
+            waitlistForm.reset();
+            waitlistStatus.textContent = 'You are on the list. I will email you when AtlasDays is ready.';
+            waitlistStatus.classList.add('is-success');
+          } else {
+            waitlistStatus.textContent = 'Something went wrong. Please try again in a moment.';
+            waitlistStatus.classList.add('is-error');
+          }
+        } catch (err) {
+          waitlistStatus.textContent = 'Something went wrong. Please try again in a moment.';
+          waitlistStatus.classList.add('is-error');
+        } finally {
+          submit.disabled = false;
+          submit.value = 'Subscribe';
+        }
+      });
+    }
 
     const items = document.querySelectorAll('.reveal');
     if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
