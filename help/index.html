@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Help Center — AtlasDays</title>
+  <meta name="description" content="Product help for AtlasDays: getting started, trackers, dashboard, import/export, privacy, location detection, and sync." />
+  <meta property="og:title" content="Help Center — AtlasDays" />
+  <meta property="og:description" content="Product help for AtlasDays: getting started, trackers, dashboard, import/export, privacy, location detection, and sync." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://atlasdays.app/help/" />
+  <meta property="og:image" content="https://atlasdays.app/assets/screenshot1.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Help Center — AtlasDays" />
+  <meta name="twitter:description" content="Product help for AtlasDays: getting started, trackers, dashboard, import/export, privacy, location detection, and sync." />
+  <meta name="twitter:image" content="https://atlasdays.app/assets/screenshot1.png" />
+  <link rel="canonical" href="https://atlasdays.app/help/" />
+  <link rel="icon" type="image/png" href="../assets/favicon_light.png" media="(prefers-color-scheme: light)" />
+  <link rel="icon" type="image/png" href="../assets/favicon_dark.png" media="(prefers-color-scheme: dark)" />
+  <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)})()</script>
+  <style>
+    :root {
+      --bg: #0a0b0d;
+      --bg-elevated: #0f1319;
+      --bg-card: rgba(255,255,255,0.05);
+      --text: #f4f7fb;
+      --muted: #b2b9c5;
+      --muted-2: #8790a0;
+      --line: rgba(255,255,255,0.10);
+      --blue: #1692ff;
+      --blue-soft: rgba(22,146,255,0.12);
+      --max: 860px;
+    }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f6f8fc;
+        --bg-elevated: #ffffff;
+        --bg-card: rgba(255,255,255,0.88);
+        --text: #0d1422;
+        --muted: #526075;
+        --muted-2: #6c788b;
+        --line: rgba(12,22,40,0.09);
+        --blue-soft: rgba(22,146,255,0.08);
+      }
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: inherit; text-decoration: none; }
+    .top-bar {
+      border-bottom: 1px solid var(--line);
+      padding: 18px 0;
+    }
+    .top-bar-inner {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      color: var(--text);
+    }
+    .brand img { width: 30px; height: 30px; }
+    .top-links {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+    .top-links a:hover { color: var(--text); }
+    .theme-toggle {
+      background: none;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      color: var(--muted);
+      cursor: pointer;
+      width: 36px;
+      height: 36px;
+      display: inline-grid;
+      place-items: center;
+      padding: 0;
+    }
+    .theme-toggle:hover { color: var(--text); border-color: var(--blue); }
+    .icon-moon, .logo-light { display: none; }
+    .logo-dark { display: block; }
+    @media (prefers-color-scheme: light) {
+      .icon-sun, .logo-dark { display: none; }
+      .icon-moon, .logo-light { display: block; }
+    }
+    html[data-theme="dark"] .icon-sun, html[data-theme="dark"] .logo-dark { display: block; }
+    html[data-theme="dark"] .icon-moon, html[data-theme="dark"] .logo-light { display: none; }
+    html[data-theme="light"] .icon-sun, html[data-theme="light"] .logo-dark { display: none; }
+    html[data-theme="light"] .icon-moon, html[data-theme="light"] .logo-light { display: block; }
+    .page {
+      width: min(var(--max), calc(100% - 40px));
+      margin: 0 auto;
+      padding: 48px 0 80px;
+    }
+    h1 {
+      font-size: clamp(1.9rem, 4vw, 2.8rem);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
+      margin: 0 0 10px;
+    }
+    .subtitle {
+      color: var(--muted);
+      font-size: 1.06rem;
+      margin: 0 0 36px;
+      max-width: 56ch;
+    }
+    .topic { margin-bottom: 36px; }
+    .topic:last-child { margin-bottom: 0; }
+    .topic-label {
+      font-size: 0.82rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted-2);
+      margin: 0 0 14px;
+    }
+    .articles {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .article-card {
+      display: block;
+      padding: 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      transition: border-color 160ms ease, transform 160ms ease;
+    }
+    .article-card:hover {
+      border-color: rgba(22,146,255,0.3);
+      transform: translateY(-1px);
+    }
+    .article-card h3 {
+      font-size: 1.08rem;
+      letter-spacing: -0.02em;
+      margin: 0 0 5px;
+      color: var(--text);
+    }
+    .article-card p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+    .notice {
+      margin-top: 36px;
+      padding: 20px 24px;
+      background: var(--blue-soft);
+      border: 1px solid rgba(22,146,255,0.18);
+      border-radius: 16px;
+      color: var(--muted);
+    }
+    .notice strong { color: var(--text); }
+    @media (max-width: 620px) {
+      .page { padding: 32px 0 60px; }
+      .top-bar-inner { width: calc(100% - 24px); }
+      .page { width: calc(100% - 24px); }
+      .article-card { padding: 20px; }
+      .top-links a.hide-mobile { display: none; }
+    }
+    html[data-theme="dark"] {
+      --bg: #0a0b0d;
+      --bg-elevated: #0f1319;
+      --bg-card: rgba(255,255,255,0.05);
+      --text: #f4f7fb;
+      --muted: #b2b9c5;
+      --muted-2: #8790a0;
+      --line: rgba(255,255,255,0.10);
+      --blue-soft: rgba(22,146,255,0.12);
+    }
+    html[data-theme="light"] {
+      --bg: #f6f8fc;
+      --bg-elevated: #ffffff;
+      --bg-card: rgba(255,255,255,0.88);
+      --text: #0d1422;
+      --muted: #526075;
+      --muted-2: #6c788b;
+      --line: rgba(12,22,40,0.09);
+      --blue-soft: rgba(22,146,255,0.08);
+    }
+  </style>
+</head>
+<body>
+  <header class="top-bar">
+    <div class="top-bar-inner">
+      <a class="brand" href="/">
+        <img class="logo-dark" src="../assets/logo_dark.png" alt="AtlasDays logo" width="1024" height="1024" />
+        <img class="logo-light" src="../assets/logo_light.png" alt="AtlasDays logo" width="1024" height="1024" />
+        <span>AtlasDays</span>
+      </a>
+      <div class="top-links">
+        <a class="hide-mobile" href="/">Home</a>
+        <a href="/learn/">Learn</a>
+        <a href="/#waitlist">Waitlist</a>
+        <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()">
+          <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="page">
+    <h1>Help Center</h1>
+    <p class="subtitle">Practical product documentation for AtlasDays, based on how the app actually stores trips and calculates counts. Use <a href="/learn/" style="text-decoration:underline;text-underline-offset:0.18em">Learn</a> for broader travel-rule explainers and SEO articles.</p>
+
+    <div class="topic">
+      <p class="topic-label">Start here</p>
+      <div class="articles">
+        <a class="article-card" href="/help/getting-started">
+          <h3>Getting Started with AtlasDays</h3>
+          <p>What the three tabs do, how to add your first trips, and how to choose the right trip mode from the start.</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="topic">
+      <p class="topic-label">Trackers and counting</p>
+      <div class="articles">
+        <a class="article-card" href="/help/trackers-and-limits">
+          <h3>Trackers and Limits</h3>
+          <p>What each preset really does, how rolling/per-stay/yearly differ, and when exact dates are required for reliable tracker math.</p>
+        </a>
+        <a class="article-card" href="/help/dashboard-and-map">
+          <h3>Dashboard and Map</h3>
+          <p>Countries visited, days abroad, map views, country drill-down, period filters, and share cards.</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="topic">
+      <p class="topic-label">History and data</p>
+      <div class="articles">
+        <a class="article-card" href="/help/history-and-import">
+          <h3>Trip Modes and Import</h3>
+          <p>Exact Dates vs Month &amp; Year, year-only and unknown trips, transit, and how CSV import maps to those same modes.</p>
+        </a>
+        <a class="article-card" href="/help/privacy-location-and-sync">
+          <h3>Privacy, Location, and Sync</h3>
+          <p>On-device data, optional iCloud sync, auto-detect country arrivals, and what AtlasDays does not store.</p>
+        </a>
+      </div>
+    </div>
+
+    <div class="notice">
+      <p><strong>Need travel-rule explainers instead?</strong> Visit <a href="/learn/" style="text-decoration:underline;text-underline-offset:0.18em">Learn</a> for Schengen, tax residency, and visa-application content. Help is for using the product itself.</p>
+    </div>
+  </div>
+
+  <script>
+  function toggleTheme() {
+    var html = document.documentElement;
+    var current = html.getAttribute('data-theme');
+    var isDark;
+    if (current) isDark = current === 'dark';
+    else isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = isDark ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  }
+  </script>
+</body>
+</html>

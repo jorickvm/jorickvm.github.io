@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy, Location, and Sync — AtlasDays Help</title>
+  <meta name="description" content="How AtlasDays handles on-device data, optional iCloud sync, country detection, and what the app does not store." />
+  <meta property="og:title" content="Privacy, Location, and Sync — AtlasDays Help" />
+  <meta property="og:description" content="How AtlasDays handles on-device data, optional iCloud sync, country detection, and what the app does not store." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://atlasdays.app/help/privacy-location-and-sync" />
+  <meta property="og:image" content="https://atlasdays.app/assets/screenshot1.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Privacy, Location, and Sync — AtlasDays Help" />
+  <meta name="twitter:description" content="How AtlasDays handles on-device data, optional iCloud sync, country detection, and what the app does not store." />
+  <meta name="twitter:image" content="https://atlasdays.app/assets/screenshot1.png" />
+  <link rel="canonical" href="https://atlasdays.app/help/privacy-location-and-sync" />
+  <link rel="icon" type="image/png" href="../assets/favicon_light.png" media="(prefers-color-scheme: light)" />
+  <link rel="icon" type="image/png" href="../assets/favicon_dark.png" media="(prefers-color-scheme: dark)" />
+  <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)})()</script>
+  <style>
+    :root { --bg:#0a0b0d; --bg-card:rgba(255,255,255,0.05); --text:#f4f7fb; --muted:#b2b9c5; --muted-2:#8790a0; --line:rgba(255,255,255,0.10); --blue:#1692ff; --blue-soft:rgba(22,146,255,0.12); --max:720px; }
+    @media (prefers-color-scheme: light) { :root { --bg:#f6f8fc; --bg-card:rgba(255,255,255,0.88); --text:#0d1422; --muted:#526075; --muted-2:#6c788b; --line:rgba(12,22,40,0.09); --blue-soft:rgba(22,146,255,0.08); } }
+    * { box-sizing:border-box; } body { margin:0; font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif; color:var(--text); background:var(--bg); line-height:1.7; -webkit-font-smoothing:antialiased; }
+    a { color:var(--blue); text-decoration:none; } a:hover { text-decoration:underline; }
+    .top-bar { border-bottom:1px solid var(--line); padding:18px 0; } .top-bar-inner { width:min(var(--max), calc(100% - 40px)); margin:0 auto; display:flex; align-items:center; justify-content:space-between; }
+    .brand { display:inline-flex; align-items:center; gap:10px; font-weight:700; color:var(--text); } .brand img { width:30px; height:30px; }
+    article { width:min(var(--max), calc(100% - 40px)); margin:0 auto; padding:48px 0 80px; }
+    .breadcrumb { font-size:0.88rem; color:var(--muted-2); margin-bottom:24px; } .breadcrumb a { color:var(--muted); }
+    h1 { font-size:clamp(1.8rem, 4vw, 2.6rem); line-height:1.1; letter-spacing:-0.03em; margin:0 0 12px; } .subtitle { color:var(--muted); font-size:1.08rem; margin:0 0 24px; }
+    h2 { font-size:1.4rem; letter-spacing:-0.02em; margin:36px 0 12px; } p, li { color:var(--muted); font-size:1rem; } p { margin:0 0 16px; } ul { padding-left:20px; margin:0 0 16px; } li { margin:6px 0; } strong { color:var(--text); }
+    .callout, .cta-box { padding:20px 24px; border-radius:16px; margin:28px 0; } .callout { background:var(--blue-soft); border:1px solid rgba(22,146,255,0.18); } .cta-box { background:var(--bg-card); border:1px solid var(--line); } .cta-btn { display:inline-flex; align-items:center; padding:12px 24px; background:var(--blue); color:white; border-radius:14px; font-weight:650; text-decoration:none; }
+    .theme-toggle { background:none; border:1px solid var(--line); border-radius:10px; color:var(--muted); cursor:pointer; width:36px; height:36px; display:inline-grid; place-items:center; padding:0; } .theme-toggle:hover { border-color:var(--blue); color:var(--text); }
+    .icon-moon, .logo-light { display:none; } .logo-dark { display:block; }
+    @media (prefers-color-scheme: light) { .icon-sun, .logo-dark { display:none; } .icon-moon, .logo-light { display:block; } }
+    html[data-theme="dark"] .icon-sun, html[data-theme="dark"] .logo-dark { display:block; } html[data-theme="dark"] .icon-moon, html[data-theme="dark"] .logo-light { display:none; } html[data-theme="light"] .icon-sun, html[data-theme="light"] .logo-dark { display:none; } html[data-theme="light"] .icon-moon, html[data-theme="light"] .logo-light { display:block; }
+    html[data-theme="dark"] { --bg:#0a0b0d; --bg-card:rgba(255,255,255,0.05); --text:#f4f7fb; --muted:#b2b9c5; --muted-2:#8790a0; --line:rgba(255,255,255,0.10); --blue-soft:rgba(22,146,255,0.12); }
+    html[data-theme="light"] { --bg:#f6f8fc; --bg-card:rgba(255,255,255,0.88); --text:#0d1422; --muted:#526075; --muted-2:#6c788b; --line:rgba(12,22,40,0.09); --blue-soft:rgba(22,146,255,0.08); }
+  </style>
+</head>
+<body>
+  <header class="top-bar"><div class="top-bar-inner"><a class="brand" href="/"><img class="logo-dark" src="../assets/logo_dark.png" alt="AtlasDays logo" width="1024" height="1024" /><img class="logo-light" src="../assets/logo_light.png" alt="AtlasDays logo" width="1024" height="1024" /><span>AtlasDays</span></a><div style="display:flex;align-items:center;gap:16px"><a href="/help/" style="color:var(--muted);font-size:0.92rem">Help</a><button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()"><svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></div></div></header>
+  <article>
+    <nav class="breadcrumb"><a href="/">AtlasDays</a> / <a href="/help/">Help</a></nav>
+    <h1>Privacy, Location, and Sync</h1>
+    <p class="subtitle">How AtlasDays handles on-device data, optional iCloud sync, local country detection, and what the app does not store.</p>
+
+    <h2>No account required</h2>
+    <p>The AtlasDays app is designed so you can use it without creating an account or signing in to an AtlasDays service.</p>
+
+    <h2>On-device data by default</h2>
+    <p>Your trip history and tracker calculations live on your device. The app is designed around a local record rather than a cloud-first account system.</p>
+
+    <h2>Optional iCloud sync</h2>
+    <p>If you enable iCloud sync in Settings, your trips and trackers sync across your devices through your personal Apple iCloud account. This uses Apple's CloudKit — your data goes to your iCloud storage, not to an AtlasDays server.</p>
+    <p>Separately, your preferences (appearance, accent color, home country, and other settings) sync through iCloud key-value storage automatically if you are signed into iCloud. This works even if you have not enabled the full data sync toggle, so your settings carry over to a new device or after a reinstall without extra setup.</p>
+    <p>If you reinstall the app and iCloud sync was previously enabled, your trip data will recover from CloudKit once you turn the sync toggle back on.</p>
+
+    <h2>How country detection works</h2>
+    <p>AtlasDays can optionally detect that you have entered a new country and suggest a trip. It uses iOS significant location changes — the same low-power system other travel apps use — not continuous GPS tracking. The app only wakes up when iOS determines you have moved a significant distance, then checks which country you are in. This has minimal battery impact.</p>
+    <p>When a new country is detected, the app suggests a trip either as an in-app banner (if the app is open) or as a notification (if it is in the background). You choose whether to accept, edit, or dismiss the suggestion. The app only suggests once per country crossing — it will not re-suggest the same country until you leave and re-enter.</p>
+    <ul>
+      <li>You can leave auto-detect off and log trips manually.</li>
+      <li>No location data is stored or sent anywhere. The app only uses it to determine which country you are in.</li>
+      <li>You can revoke location access at any time in iOS Settings.</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>Important distinction:</strong> the app privacy model and the website waitlist are separate. The website can collect your email if you choose to join the waitlist, but the app itself does not require an account.</p>
+    </div>
+
+    <h2>Notifications</h2>
+    <p>Notifications serve two purposes: trip suggestions when you enter a new country, and tracker milestone alerts (like "7 days remaining on your Schengen limit"). Both are local notifications scheduled on your device — nothing goes through a server. You can turn off trip suggestions and tracker alerts independently in Settings.</p>
+
+    <div class="cta-box">
+      <h3>Related help</h3>
+      <p>Read <a href="/privacy">the full privacy page</a> for the app and website breakdown, or go to <a href="/help/history-and-import">history and import</a> if your main question is how AtlasDays stores travel records.</p>
+      <p><a class="cta-btn" href="/#waitlist">Join the waitlist</a></p>
+    </div>
+  </article>
+  <script>function toggleTheme(){var html=document.documentElement;var current=html.getAttribute('data-theme');var isDark;if(current)isDark=current==='dark';else isDark=window.matchMedia('(prefers-color-scheme: dark)').matches;var next=isDark?'light':'dark';html.setAttribute('data-theme',next);localStorage.setItem('theme',next);}</script>
+</body>
+</html>

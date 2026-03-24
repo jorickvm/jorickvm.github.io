@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard and Map — AtlasDays Help</title>
+  <meta name="description" content="How the AtlasDays dashboard works: countries, trips, days abroad, trackers, map views, and share cards." />
+  <meta property="og:title" content="Dashboard and Map — AtlasDays Help" />
+  <meta property="og:description" content="How the AtlasDays dashboard works: countries, trips, days abroad, trackers, map views, and share cards." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://atlasdays.app/help/dashboard-and-map" />
+  <meta property="og:image" content="https://atlasdays.app/assets/screenshot2.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Dashboard and Map — AtlasDays Help" />
+  <meta name="twitter:description" content="How the AtlasDays dashboard works: countries, trips, days abroad, trackers, map views, and share cards." />
+  <meta name="twitter:image" content="https://atlasdays.app/assets/screenshot2.png" />
+  <link rel="canonical" href="https://atlasdays.app/help/dashboard-and-map" />
+  <link rel="icon" type="image/png" href="../assets/favicon_light.png" media="(prefers-color-scheme: light)" />
+  <link rel="icon" type="image/png" href="../assets/favicon_dark.png" media="(prefers-color-scheme: dark)" />
+  <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)})()</script>
+  <style>
+    :root { --bg:#0a0b0d; --bg-card:rgba(255,255,255,0.05); --text:#f4f7fb; --muted:#b2b9c5; --muted-2:#8790a0; --line:rgba(255,255,255,0.10); --blue:#1692ff; --blue-soft:rgba(22,146,255,0.12); --max:720px; }
+    @media (prefers-color-scheme: light) { :root { --bg:#f6f8fc; --bg-card:rgba(255,255,255,0.88); --text:#0d1422; --muted:#526075; --muted-2:#6c788b; --line:rgba(12,22,40,0.09); --blue-soft:rgba(22,146,255,0.08); } }
+    * { box-sizing:border-box; } body { margin:0; font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif; color:var(--text); background:var(--bg); line-height:1.7; -webkit-font-smoothing:antialiased; }
+    a { color:var(--blue); text-decoration:none; } a:hover { text-decoration:underline; }
+    .top-bar { border-bottom:1px solid var(--line); padding:18px 0; } .top-bar-inner { width:min(var(--max), calc(100% - 40px)); margin:0 auto; display:flex; align-items:center; justify-content:space-between; }
+    .brand { display:inline-flex; align-items:center; gap:10px; font-weight:700; color:var(--text); } .brand img { width:30px; height:30px; }
+    article { width:min(var(--max), calc(100% - 40px)); margin:0 auto; padding:48px 0 80px; }
+    .breadcrumb { font-size:0.88rem; color:var(--muted-2); margin-bottom:24px; } .breadcrumb a { color:var(--muted); }
+    h1 { font-size:clamp(1.8rem, 4vw, 2.6rem); line-height:1.1; letter-spacing:-0.03em; margin:0 0 12px; } .subtitle { color:var(--muted); font-size:1.08rem; margin:0 0 24px; }
+    h2 { font-size:1.4rem; letter-spacing:-0.02em; margin:36px 0 12px; } h3 { font-size:1.1rem; margin:28px 0 8px; }
+    p, li { color:var(--muted); font-size:1rem; } p { margin:0 0 16px; } ul { padding-left:20px; margin:0 0 16px; } li { margin:6px 0; } strong { color:var(--text); }
+    .callout, .cta-box { padding:20px 24px; border-radius:16px; margin:28px 0; } .callout { background:var(--blue-soft); border:1px solid rgba(22,146,255,0.18); } .cta-box { background:var(--bg-card); border:1px solid var(--line); } .cta-btn { display:inline-flex; align-items:center; padding:12px 24px; background:var(--blue); color:white; border-radius:14px; font-weight:650; text-decoration:none; }
+    .theme-toggle { background:none; border:1px solid var(--line); border-radius:10px; color:var(--muted); cursor:pointer; width:36px; height:36px; display:inline-grid; place-items:center; padding:0; } .theme-toggle:hover { border-color:var(--blue); color:var(--text); }
+    .icon-moon, .logo-light { display:none; } .logo-dark { display:block; }
+    @media (prefers-color-scheme: light) { .icon-sun, .logo-dark { display:none; } .icon-moon, .logo-light { display:block; } }
+    html[data-theme="dark"] .icon-sun, html[data-theme="dark"] .logo-dark { display:block; } html[data-theme="dark"] .icon-moon, html[data-theme="dark"] .logo-light { display:none; } html[data-theme="light"] .icon-sun, html[data-theme="light"] .logo-dark { display:none; } html[data-theme="light"] .icon-moon, html[data-theme="light"] .logo-light { display:block; }
+    html[data-theme="dark"] { --bg:#0a0b0d; --bg-card:rgba(255,255,255,0.05); --text:#f4f7fb; --muted:#b2b9c5; --muted-2:#8790a0; --line:rgba(255,255,255,0.10); --blue-soft:rgba(22,146,255,0.12); }
+    html[data-theme="light"] { --bg:#f6f8fc; --bg-card:rgba(255,255,255,0.88); --text:#0d1422; --muted:#526075; --muted-2:#6c788b; --line:rgba(12,22,40,0.09); --blue-soft:rgba(22,146,255,0.08); }
+  </style>
+</head>
+<body>
+  <header class="top-bar"><div class="top-bar-inner"><a class="brand" href="/"><img class="logo-dark" src="../assets/logo_dark.png" alt="AtlasDays logo" width="1024" height="1024" /><img class="logo-light" src="../assets/logo_light.png" alt="AtlasDays logo" width="1024" height="1024" /><span>AtlasDays</span></a><div style="display:flex;align-items:center;gap:16px"><a href="/help/" style="color:var(--muted);font-size:0.92rem">Help</a><button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()"><svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></div></div></header>
+  <article>
+    <nav class="breadcrumb"><a href="/">AtlasDays</a> / <a href="/help/">Help</a></nav>
+    <h1>Dashboard and Map</h1>
+    <p class="subtitle">How to read the dashboard, change periods, understand the map, and use the share features.</p>
+
+    <h2>What the dashboard is for</h2>
+    <p>The dashboard turns your trip history into a period-based summary. It is the place to answer questions like: how many countries have I visited this year, how many days have I spent abroad, and what does that look like on the map?</p>
+
+    <h2>The main dashboard stats</h2>
+    <p>The four stat tiles at the top are tappable — each opens a detail sheet with the full breakdown.</p>
+    <ul>
+      <li><strong>Countries:</strong> how many distinct countries you visited in the period. The percentage denominator depends on your counting mode in Settings: UN 195 (standard member states), UN 195+2 (adds Kosovo and Taiwan), or All Places (includes territories and dependencies like Hong Kong, Guam, and Aruba). Tap to see the full country list with days per country.</li>
+      <li><strong>Trips:</strong> how many trips fall inside the selected period. Tap to see the list.</li>
+      <li><strong>Days Abroad:</strong> total days spent outside your home country. If you chose no fixed residence, this counts all days with a recorded trip. Tap to see the breakdown between days in tracker-relevant countries and days elsewhere.</li>
+      <li><strong>Continents:</strong> how many continents your trips span. Tap to see countries grouped by continent.</li>
+    </ul>
+
+    <h2>Trackers on the dashboard</h2>
+    <p>If you have trackers set up, they appear as cards below the stats. Each card shows the tracker name, current day count, threshold, and a progress bar. The bar shifts from your accent color to orange past two-thirds, and to red past five-sixths — so you can tell at a glance how close you are to a limit or a goal.</p>
+    <p>For upper-limit trackers, the card shows "X days remaining" or "Over by Y days". For target trackers, it shows "X days needed" or "Target reached". You can reorder tracker cards by dragging, and collapse or expand the whole tracker section.</p>
+
+    <h2>Changing the period</h2>
+    <p>The dashboard has two period modes. <strong>Year mode</strong> lets you pick a specific year or All Time. <strong>Custom range mode</strong> lets you choose a window like the last 7, 30, 90, 180, or 365 days, or set any start and end date manually. Switch between them using the control at the top of the dashboard.</p>
+    <p>This matters because the same trip history can answer different questions depending on the time window. A Schengen tracker cares about the last 180 days. A tax question usually cares about a calendar year.</p>
+
+    <h2>Using the map</h2>
+    <p>The dashboard shows a mini world map. Tapping it opens the full-screen interactive map where you can tap any country to see its trip details.</p>
+    <p>Visited countries are highlighted in your chosen accent color. Countries you only transited through (airport layovers marked as transit) appear in a separate color so you can tell the difference. Very small countries like Vatican City, Singapore, and Malta show up as dot markers since their territory is too small to see otherwise.</p>
+    <p>The map reflects the currently selected period, so switching from "2024" to "All Time" changes which countries are highlighted.</p>
+
+    <div class="callout">
+      <p><strong>Tip:</strong> if the map feels like decoration at first glance, tap a country. The detail sheet shows every trip to that country, days spent, and whether any of those trips overlap with your trackers.</p>
+    </div>
+
+    <h2>How day counting works</h2>
+    <p>A detail worth knowing: AtlasDays counts both the arrival day and the departure day. A trip from January 1 to January 3 is 3 days, not 2. This matches how most immigration authorities count presence.</p>
+    <p>If you have overlapping trips to the same country, shared days are only counted once. Two trips that both cover January 5 do not produce 2 days for that date — they produce 1. Ongoing trips (no end date) use today as the effective end for counting purposes.</p>
+
+    <h2>Share cards</h2>
+    <p>AtlasDays can generate shareable cards from your dashboard data, including a map snapshot and your key stats. You can swipe through a carousel of card styles and toggle each card between light and dark appearance independently from your system theme. Save to Photos or share directly.</p>
+    <p>The cards are rendered from your actual trip data for the selected period, not composed manually.</p>
+
+    <div class="cta-box">
+      <h3>Related help</h3>
+      <p><a href="/help/trackers-and-limits">Trackers and limits</a> explains what the dashboard is summarizing. <a href="/help/history-and-import">History and import</a> explains how to improve the underlying data.</p>
+      <p><a class="cta-btn" href="/#waitlist">Join the waitlist</a></p>
+    </div>
+  </article>
+  <script>function toggleTheme(){var html=document.documentElement;var current=html.getAttribute('data-theme');var isDark;if(current)isDark=current==='dark';else isDark=window.matchMedia('(prefers-color-scheme: dark)').matches;var next=isDark?'light':'dark';html.setAttribute('data-theme',next);localStorage.setItem('theme',next);}</script>
+</body>
+</html>

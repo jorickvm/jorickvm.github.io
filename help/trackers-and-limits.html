@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trackers and Limits — AtlasDays Help</title>
+  <meta name="description" content="How AtlasDays trackers really work: presets, rolling vs per-stay vs yearly windows, upper limits vs targets, and when exact dates matter." />
+  <meta property="og:title" content="Trackers and Limits — AtlasDays Help" />
+  <meta property="og:description" content="How AtlasDays trackers really work: presets, rolling vs per-stay vs yearly windows, upper limits vs targets, and when exact dates matter." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://atlasdays.app/help/trackers-and-limits" />
+  <meta property="og:image" content="https://atlasdays.app/assets/screenshot1.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Trackers and Limits — AtlasDays Help" />
+  <meta name="twitter:description" content="How AtlasDays trackers really work: presets, rolling vs per-stay vs yearly windows, upper limits vs targets, and when exact dates matter." />
+  <meta name="twitter:image" content="https://atlasdays.app/assets/screenshot1.png" />
+  <link rel="canonical" href="https://atlasdays.app/help/trackers-and-limits" />
+  <link rel="icon" type="image/png" href="../assets/favicon_light.png" media="(prefers-color-scheme: light)" />
+  <link rel="icon" type="image/png" href="../assets/favicon_dark.png" media="(prefers-color-scheme: dark)" />
+  <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)})()</script>
+  <style>
+    :root { --bg:#0a0b0d; --bg-card:rgba(255,255,255,0.05); --text:#f4f7fb; --muted:#b2b9c5; --muted-2:#8790a0; --line:rgba(255,255,255,0.10); --blue:#1692ff; --blue-soft:rgba(22,146,255,0.12); --max:720px; }
+    @media (prefers-color-scheme: light) { :root { --bg:#f6f8fc; --bg-card:rgba(255,255,255,0.88); --text:#0d1422; --muted:#526075; --muted-2:#6c788b; --line:rgba(12,22,40,0.09); --blue-soft:rgba(22,146,255,0.08); } }
+    * { box-sizing:border-box; } body { margin:0; font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif; color:var(--text); background:var(--bg); line-height:1.7; -webkit-font-smoothing:antialiased; }
+    a { color:var(--blue); text-decoration:none; } a:hover { text-decoration:underline; }
+    .top-bar { border-bottom:1px solid var(--line); padding:18px 0; } .top-bar-inner { width:min(var(--max), calc(100% - 40px)); margin:0 auto; display:flex; align-items:center; justify-content:space-between; }
+    .brand { display:inline-flex; align-items:center; gap:10px; font-weight:700; color:var(--text); } .brand img { width:30px; height:30px; }
+    article { width:min(var(--max), calc(100% - 40px)); margin:0 auto; padding:48px 0 80px; }
+    .breadcrumb { font-size:0.88rem; color:var(--muted-2); margin-bottom:24px; } .breadcrumb a { color:var(--muted); }
+    h1 { font-size:clamp(1.8rem, 4vw, 2.6rem); line-height:1.1; letter-spacing:-0.03em; margin:0 0 12px; } .subtitle { color:var(--muted); font-size:1.08rem; margin:0 0 24px; }
+    h2 { font-size:1.4rem; letter-spacing:-0.02em; margin:36px 0 12px; } h3 { font-size:1.1rem; margin:28px 0 8px; }
+    p, li { color:var(--muted); font-size:1rem; } p { margin:0 0 16px; } ul, ol { padding-left:20px; margin:0 0 16px; } li { margin:6px 0; } strong { color:var(--text); }
+    .callout, .cta-box { padding:20px 24px; border-radius:16px; margin:28px 0; } .callout { background:var(--blue-soft); border:1px solid rgba(22,146,255,0.18); } .cta-box { background:var(--bg-card); border:1px solid var(--line); } .cta-btn { display:inline-flex; align-items:center; padding:12px 24px; background:var(--blue); color:white; border-radius:14px; font-weight:650; text-decoration:none; }
+    .theme-toggle { background:none; border:1px solid var(--line); border-radius:10px; color:var(--muted); cursor:pointer; width:36px; height:36px; display:inline-grid; place-items:center; padding:0; } .theme-toggle:hover { border-color:var(--blue); color:var(--text); }
+    .icon-moon, .logo-light { display:none; } .logo-dark { display:block; }
+    @media (prefers-color-scheme: light) { .icon-sun, .logo-dark { display:none; } .icon-moon, .logo-light { display:block; } }
+    html[data-theme="dark"] .icon-sun, html[data-theme="dark"] .logo-dark { display:block; } html[data-theme="dark"] .icon-moon, html[data-theme="dark"] .logo-light { display:none; } html[data-theme="light"] .icon-sun, html[data-theme="light"] .logo-dark { display:none; } html[data-theme="light"] .icon-moon, html[data-theme="light"] .logo-light { display:block; }
+    html[data-theme="dark"] { --bg:#0a0b0d; --bg-card:rgba(255,255,255,0.05); --text:#f4f7fb; --muted:#b2b9c5; --muted-2:#8790a0; --line:rgba(255,255,255,0.10); --blue-soft:rgba(22,146,255,0.12); }
+    html[data-theme="light"] { --bg:#f6f8fc; --bg-card:rgba(255,255,255,0.88); --text:#0d1422; --muted:#526075; --muted-2:#6c788b; --line:rgba(12,22,40,0.09); --blue-soft:rgba(22,146,255,0.08); }
+  </style>
+</head>
+<body>
+  <header class="top-bar">
+    <div class="top-bar-inner">
+      <a class="brand" href="/"><img class="logo-dark" src="../assets/logo_dark.png" alt="AtlasDays logo" width="1024" height="1024" /><img class="logo-light" src="../assets/logo_light.png" alt="AtlasDays logo" width="1024" height="1024" /><span>AtlasDays</span></a>
+      <div style="display:flex;align-items:center;gap:16px"><a href="/help/" style="color:var(--muted);font-size:0.92rem">Help</a><button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()"><svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></div>
+    </div>
+  </header>
+  <article>
+    <nav class="breadcrumb"><a href="/">AtlasDays</a> / <a href="/help/">Help</a></nav>
+    <h1>Trackers and Limits</h1>
+    <p class="subtitle">How to choose the right tracker, what each window type actually counts, and where exact dates still matter.</p>
+
+    <h2>What a tracker actually does</h2>
+    <p>Your trip history is the raw record. A tracker is a counting rule applied to that record. The same trip can affect multiple trackers at once, because each tracker asks a different question about the same travel history.</p>
+    <p>That also means tracker reliability depends on the quality of the underlying trip data. Exact-date trips drive the precise day math. Approximate, year-only, and unknown-date trips keep the record complete, but they do not generate exact tracker day totals.</p>
+
+    <h2>Choose the right preset</h2>
+    <h3>Residence</h3>
+    <p>This starts as a <strong>yearly target</strong> with a default threshold of 183 days. Use it when you want to prove or reach presence in one country for tax or residency reasons. After creation, you can still point it at a specific year or a custom fiscal-year period.</p>
+    <h3>Schengen 90/180</h3>
+    <p>This is a preconfigured <strong>upper-limit rolling tracker</strong>: 90 days across the full Schengen set in the last 180 days. Use it when you want one combined Schengen counter instead of separate country trackers.</p>
+    <h3>Visa Limit</h3>
+    <p>This is a <strong>per-stay upper-limit tracker</strong>. Use it when each continuous stay matters more than your total across the year. AtlasDays anchors this kind of tracker to a tracking-from date, because per-stay counting needs a clear start point.</p>
+    <h3>Travel Goal</h3>
+    <p>This is a <strong>yearly target tracker</strong>. Use it when the question is “have I reached my goal yet?” rather than “am I about to exceed a limit?”</p>
+    <h3>Custom</h3>
+    <p>Use this when you want to choose your own country set, threshold, window type, and target direction.</p>
+
+    <h2>Rolling vs Per Stay vs Yearly</h2>
+    <h3>Rolling</h3>
+    <p>A rolling tracker counts days inside the last <strong>N</strong> days. The window moves forward every day, so old days fall off automatically. This is the right shape for rules like Schengen 90/180.</p>
+    <h3>Per Stay</h3>
+    <p>A per-stay tracker is about one continuous stay, not the total across many trips. If you have an ongoing exact-date trip in that country set, AtlasDays follows that current stay. If you do not, the tracker falls back to the most recent completed stay after the tracking-from date.</p>
+    <h3>Yearly</h3>
+    <p>A yearly tracker counts inside a Jan 1 to Dec 31 period by default. You can also switch it to a specific year or a custom fiscal year if your real-world rule does not follow the calendar year.</p>
+
+    <h2>Stay under vs reach target</h2>
+    <p>AtlasDays supports two tracker directions. <strong>Stay under</strong> is for limits, where you want a warning as you approach a maximum. <strong>Reach target</strong> is for goals, where you want to accumulate at least a certain number of days.</p>
+
+    <div class="callout">
+      <p><strong>Important:</strong> tracker calculations use only trips with exact dates. If a rule is legally or financially important, upgrade the relevant trips to exact dates before you rely on the number.</p>
+    </div>
+
+    <h2>What counts and what does not</h2>
+    <ul>
+      <li><strong>Exact-date trips:</strong> these drive tracker day totals. Both the arrival day and the departure day count — a trip from the 1st to the 3rd is 3 days. If two trips overlap in the same country, shared days are counted once, not twice.</li>
+      <li><strong>Ongoing trips:</strong> a trip with no end date uses today as the effective end, so the count grows each day.</li>
+      <li><strong>Approximate, year-only, and unknown trips:</strong> these preserve history and context, but they do not feed exact day math.</li>
+      <li><strong>Transit trips:</strong> if a trip is marked as transit, AtlasDays counts 0 days for it. The country still appears on the map in a separate color.</li>
+    </ul>
+
+    <h2>Tracker alerts</h2>
+    <p>Each tracker can send local notifications as you approach a limit or reach a goal. For upper-limit trackers, you get alerts at 7 days remaining, 1 day remaining, and when the limit is reached. For target trackers, you get an alert when the target is met. These are scheduled automatically based on your current trip data and update whenever your trips change.</p>
+
+    <h2>Common setup patterns</h2>
+    <ul>
+      <li><strong>I need a Schengen counter:</strong> use the Schengen preset and keep the relevant trips exact-dated.</li>
+      <li><strong>I need to prove 183 days in one country this year:</strong> use Residence, choose the country, and keep the relevant year exact.</li>
+      <li><strong>I need to know how long my current stay has been:</strong> use Visa Limit with a per-stay window and a clear tracking-from date.</li>
+      <li><strong>I want to spend at least 30 days somewhere this year:</strong> use Travel Goal.</li>
+    </ul>
+
+    <div class="cta-box">
+      <h3>Related help</h3>
+      <p><a href="/help/history-and-import">Read how trip modes affect tracker accuracy</a>, <a href="/help/dashboard-and-map">see how trackers appear in the dashboard</a>, or visit <a href="/learn/schengen-90-180-rule">Learn</a> if you want a broader Schengen explainer.</p>
+      <p><a class="cta-btn" href="/#waitlist">Join the waitlist</a></p>
+    </div>
+  </article>
+  <script>function toggleTheme(){var html=document.documentElement;var current=html.getAttribute('data-theme');var isDark;if(current)isDark=current==='dark';else isDark=window.matchMedia('(prefers-color-scheme: dark)').matches;var next=isDark?'light':'dark';html.setAttribute('data-theme',next);localStorage.setItem('theme',next);}</script>
+</body>
+</html>
