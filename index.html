@@ -422,6 +422,14 @@
       margin: 0;
       color: var(--muted);
     }
+    code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+      font-size: 0.92em;
+      padding: 0.14em 0.38em;
+      border-radius: 8px;
+      background: var(--blue-soft);
+      color: var(--text);
+    }
     .mini-list {
       margin: 12px 0 0;
       padding-left: 18px;
@@ -831,10 +839,11 @@
 
         <div class="visual-wrap reveal" aria-label="AtlasDays app previews">
           <div class="visual-card primary">
-            <!-- TODO: Replace launch placeholder screenshots after new captures are ready. See README.md for the screenshot checklist. -->
+            <!-- TODO: Replace with Hero primary screenshot: dashboard overview with tracker cards, top stats, and mini map. -->
             <img src="assets/screenshot1.png" alt="AtlasDays timeline showing country trips and day badges" width="1206" height="2622" />
           </div>
           <div class="visual-card secondary">
+            <!-- TODO: Replace with Hero secondary screenshot: tracker detail showing used days, remaining days, and next insight. -->
             <img src="assets/screenshot2.png" alt="AtlasDays map view showing visited countries and a country detail sheet" width="1206" height="2622" />
           </div>
         </div>
@@ -923,6 +932,7 @@
           </article>
           <article class="proof proof-visual reveal">
             <div class="frame">
+              <!-- TODO: Replace with Proof timeline screenshot: realistic trip history with day badges and mixed countries. -->
               <img src="assets/screenshot1.png" alt="AtlasDays timeline showing country trips grouped by year with day counts" width="1206" height="2622" />
             </div>
             <div class="proof-caption"><strong>Timeline</strong>Country, dates, and days per trip — all visible without tapping in.</div>
@@ -931,6 +941,7 @@
         <div class="proof-grid">
           <article class="proof proof-visual reveal">
             <div class="frame">
+              <!-- TODO: Replace with Proof map screenshot: world map plus country detail sheet. -->
               <img src="assets/screenshot2.png" alt="AtlasDays world map with visited countries highlighted and a country detail sheet" width="1206" height="2622" loading="lazy" />
             </div>
             <div class="proof-caption"><strong>World map</strong>Tap any country to see your trips, total days, and how it relates to your trackers.</div>
@@ -942,6 +953,28 @@
               <li>Mini map on the dashboard, full-screen interactive view</li>
               <li>Country detail sheets with trip lists and day totals</li>
               <li>Shareable cards with your map, stats, and flags</li>
+            </ul>
+          </article>
+        </div>
+        <div class="proof-grid" style="margin-top:18px">
+          <article class="proof reveal">
+            <!-- TODO: Pair or replace this card with the tracker preset or tracker detail screenshots once they exist. -->
+            <h3>Trackers built for different rules</h3>
+            <p>AtlasDays is not locked to one formula. The same trip record can power Schengen tracking, per-stay visa limits, yearly residence counts, and custom fiscal-year thresholds.</p>
+            <ul class="mini-list">
+              <li>Preset trackers for Schengen, residence, visa limits, and travel goals</li>
+              <li>Rolling windows, per-stay counting, calendar years, and fiscal years</li>
+              <li>Warnings as you approach a limit instead of manual recounting</li>
+            </ul>
+          </article>
+          <article class="proof reveal">
+            <!-- TODO: Pair or replace this card with the trip modes or import screenshots once they exist. -->
+            <h3>Messy history still works</h3>
+            <p>Older travel rarely comes in clean, exact dates. The app is built for reconstruction as well as perfect records, so you can still build a usable timeline and export it later.</p>
+            <ul class="mini-list">
+              <li><code>Exact Dates</code> for precise counting and <code>Month &amp; Year</code> for reconstructed history</li>
+              <li><code>Dates Unknown</code> support when you know a trip happened but not exactly when</li>
+              <li>CSV import and review before anything is saved</li>
             </ul>
           </article>
         </div>
@@ -968,12 +1001,13 @@
           </article>
           <article class="doc-card reveal">
             <h3>Learn</h3>
-            <p>Long-form explainers and SEO pages for visa rules, residency thresholds, and travel-day counting topics beyond the product itself.</p>
+            <p>Long-form explainers and SEO pages for visa rules, residency thresholds, country counting, and travel-day edge cases beyond the product itself.</p>
             <div class="doc-links">
               <a href="/learn/">Open Learn</a>
               <a href="/learn/schengen-90-180-rule">Schengen 90/180-Day Rule</a>
-              <a href="/learn/183-day-tax-residency-rule">183-Day Tax Residency Rule</a>
-              <a href="/learn/travel-history-for-visa-applications">Travel History for Visa Applications</a>
+              <a href="/learn/travel-history-template-visa-application">Travel History Template for Visa Applications</a>
+              <a href="/learn/how-many-countries-in-the-world">How Many Countries Are There in the World?</a>
+              <a href="/learn/does-a-layover-count-as-visiting-a-country">Does a Layover Count as Visiting a Country?</a>
             </div>
           </article>
         </div>
