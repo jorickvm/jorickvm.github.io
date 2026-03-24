@@ -380,7 +380,7 @@
     .footer-grid,
     .doc-grid { grid-template-columns: 1fr 1fr; align-items: stretch; }
     .faq-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    .footer-grid { grid-template-columns: 1.15fr 0.85fr; align-items: start; }
+    .footer-grid { grid-template-columns: 1.15fr 0.85fr; align-items: stretch; }
 
     .card,
     .feature,
@@ -603,15 +603,61 @@
     .cta-note a:hover { color: var(--text); }
 
     footer { padding-bottom: 36px; }
+    .footer-primary,
+    .footer-secondary {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 26px;
+      height: 100%;
+    }
+    .footer-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    .footer-copy p {
+      max-width: 36ch;
+      margin: 0;
+    }
+    .footer-points {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .footer-point {
+      padding: 11px 13px;
+      border-radius: 16px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.03);
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.35;
+    }
+    .footer-nav {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 22px;
+    }
+    .footer-group {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .footer-group-title {
+      font-size: 0.78rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted-2);
+    }
     .footer-links {
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 12px;
       color: var(--muted);
     }
     .footer-links a:hover { color: var(--text); }
     .copyright {
-      margin-top: 18px;
       color: var(--muted-2);
       font-size: 0.92rem;
     }
@@ -701,6 +747,8 @@
       .waitlist-row { flex-direction: column; }
       .hero-actions { gap: 10px; }
       .cta-panel h2 { max-width: 12ch; }
+      .footer-points,
+      .footer-nav { grid-template-columns: 1fr; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -945,7 +993,7 @@
             <span class="pill">Local-only country detection</span>
             <span class="pill">No third-party analytics SDKs</span>
           </div>
-          <div class="disclaimer">If you choose to join the waitlist on this website, that email signup is handled separately from the app itself. Details are on the <a href="/privacy#website-and-waitlist">privacy page</a>.</div>
+          <div class="disclaimer">If you choose to join the waitlist on this website, that email signup is handled separately from the app itself. Details are on the <a href="/website-privacy">website waitlist privacy page</a>.</div>
         </div>
       </div>
     </section>
@@ -955,7 +1003,7 @@
         <div class="section-header reveal">
           <p class="section-kicker">FAQ</p>
           <h2>Common questions</h2>
-          <p>The things most people want to know before signing up.</p>
+          <p>The things most people want to know before deciding whether AtlasDays is for them.</p>
         </div>
         <div class="faq-grid">
           <article class="faq reveal">
@@ -1015,7 +1063,7 @@
               </div>
               <p class="waitlist-status" id="waitlist-status" aria-live="polite"></p>
             </form>
-            <div class="cta-note">Submitted through Formspree and used only for AtlasDays launch updates. See <a href="/privacy#website-and-waitlist">website privacy details</a>.</div>
+            <div class="cta-note">Submitted through Formspree and used only for AtlasDays launch updates. See <a href="/website-privacy">website waitlist privacy details</a>.</div>
           </div>
         </div>
       </div>
@@ -1024,25 +1072,45 @@
 
   <footer>
     <div class="container footer-grid">
-      <div class="footer-box reveal">
-        <div class="brand">
-          <span class="brand-mark">
-            <img class="logo-dark" src="assets/logo_dark.png?v=20260324a" alt="AtlasDays logo" width="1024" height="1024" />
-            <img class="logo-light" src="assets/logo_light.png?v=20260324a" alt="AtlasDays logo" width="1024" height="1024" />
-          </span>
-          <span>AtlasDays</span>
+      <div class="footer-box footer-primary reveal">
+        <div class="footer-copy">
+          <div class="brand">
+            <span class="brand-mark">
+              <img class="logo-dark" src="assets/logo_dark.png?v=20260324a" alt="AtlasDays logo" width="1024" height="1024" />
+              <img class="logo-light" src="assets/logo_light.png?v=20260324a" alt="AtlasDays logo" width="1024" height="1024" />
+            </span>
+            <span>AtlasDays</span>
+          </div>
+          <p>Track countries, count visa days, and prove residence. Private, on-device, no account required.</p>
+          <div class="footer-points">
+            <div class="footer-point">Private by design</div>
+            <div class="footer-point">iPhone and iPad</div>
+            <div class="footer-point">Exact and approximate trip modes</div>
+            <div class="footer-point">Trackers for visas, residence, and goals</div>
+          </div>
         </div>
-        <p>Track countries, count visa days, and prove residence. Private, on-device, no account required.</p>
         <div class="copyright">© 2026 AtlasDays</div>
       </div>
-      <div class="footer-box reveal">
+      <div class="footer-box footer-secondary reveal">
+        <div class="footer-nav">
+          <div class="footer-group">
+            <div class="footer-group-title">Product</div>
+            <div class="footer-links">
+              <a href="/#waitlist">Join the waitlist</a>
+              <a href="/help/">Help</a>
+              <a href="/learn/">Learn</a>
+            </div>
+          </div>
+          <div class="footer-group">
+            <div class="footer-group-title">Company</div>
+            <div class="footer-links">
+              <a href="/privacy">Privacy</a>
+              <a href="/changelog">What’s New</a>
+              <a href="/privacy#contact" class="contact-email" data-email-user="atlasdays" data-email-domain="pm.me" aria-label="Contact AtlasDays by email">Contact</a>
+            </div>
+          </div>
+        </div>
         <div class="footer-links">
-          <a href="/#waitlist">Join the waitlist</a>
-          <a href="/help/">Help</a>
-          <a href="/learn/">Learn</a>
-          <a href="/privacy">Privacy</a>
-          <a href="/changelog">What’s New</a>
-          <a href="/privacy#contact" class="contact-email" data-email-user="atlasdays" data-email-domain="pm.me" aria-label="Contact AtlasDays by email">Contact</a>
           <a class="muted-link" href="#top">Back to top</a>
         </div>
       </div>
