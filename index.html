@@ -265,6 +265,7 @@
       margin-bottom: 22px;
     }
     .hero-mobile-visuals { display: none; }
+    .hero-copy { min-width: 0; }
     .btn {
       display: inline-flex;
       align-items: center;
@@ -923,9 +924,10 @@
       .hero-mobile-visuals {
         display: block;
         position: relative;
-        width: min(100%, 248px);
-        margin: 16px auto 12px;
-        padding: 6px 40px 24px 0;
+        width: 100%;
+        max-width: 340px;
+        margin: 16px auto 14px;
+        padding: 0 30% 10px 0;
       }
       .hero-mobile-shot {
         position: relative;
@@ -938,14 +940,14 @@
         -webkit-backdrop-filter: blur(10px);
       }
       .hero-mobile-shot.primary {
-        width: 78%;
+        width: 100%;
         z-index: 2;
       }
       .hero-mobile-shot.secondary {
         position: absolute;
         right: 0;
         bottom: 0;
-        width: 38%;
+        width: 34%;
         z-index: 3;
       }
       .hero-mobile-shot img {
@@ -999,18 +1001,21 @@
         color: var(--text);
       }
       .hero-points {
-        display: flex;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 10px;
-        overflow-x: auto;
-        padding: 2px 0 4px;
-        margin: 0 -2px;
-        scroll-snap-type: x proximity;
+        max-width: none;
+        padding: 2px 0 0;
+        margin: 0;
       }
-      .hero-points::-webkit-scrollbar { display: none; }
       .hero-point {
-        min-width: 210px;
-        padding: 14px 15px;
-        scroll-snap-align: start;
+        min-width: 0;
+        padding: 14px 14px;
+        font-size: 0.89rem;
+        line-height: 1.38;
+      }
+      .hero-point strong {
+        font-size: 0.94rem;
       }
       .waitlist-row { flex-direction: column; }
       .hero-actions { gap: 10px; }
