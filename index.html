@@ -921,15 +921,16 @@
         margin-bottom: 16px;
       }
       .hero-mobile-visuals {
-        display: flex;
-        align-items: flex-end;
-        gap: 12px;
-        margin: 18px 0;
+        display: block;
+        position: relative;
+        width: min(100%, 248px);
+        margin: 16px auto 12px;
+        padding: 6px 40px 24px 0;
       }
       .hero-mobile-shot {
         position: relative;
-        padding: 8px;
-        border-radius: 24px;
+        padding: 6px;
+        border-radius: 22px;
         background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04));
         border: 1px solid rgba(255,255,255,0.12);
         box-shadow: var(--shadow);
@@ -937,19 +938,20 @@
         -webkit-backdrop-filter: blur(10px);
       }
       .hero-mobile-shot.primary {
-        width: 61%;
+        width: 78%;
         z-index: 2;
       }
       .hero-mobile-shot.secondary {
-        width: 39%;
-        margin-bottom: 28px;
-        margin-left: -18px;
-        z-index: 1;
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 38%;
+        z-index: 3;
       }
       .hero-mobile-shot img {
         width: 100%;
         height: auto;
-        border-radius: 18px;
+        border-radius: 16px;
         border: 1px solid var(--line);
       }
       .visual-wrap {
@@ -976,6 +978,26 @@
       .proof-split { grid-template-columns: 1fr; }
       .proof-split .split-shot img { height: 360px; }
       .btn { width: 100%; }
+      .hero-actions {
+        gap: 8px;
+        margin-bottom: 16px;
+      }
+      .hero-actions .btn-secondary {
+        min-height: auto;
+        padding: 2px 0 0;
+        width: auto;
+        margin: 0 auto;
+        border: 0;
+        background: none;
+        box-shadow: none;
+        color: var(--muted);
+        text-decoration: underline;
+        text-underline-offset: 0.18em;
+      }
+      .hero-actions .btn-secondary:hover {
+        transform: none;
+        color: var(--text);
+      }
       .hero-points {
         display: flex;
         gap: 10px;
@@ -986,8 +1008,8 @@
       }
       .hero-points::-webkit-scrollbar { display: none; }
       .hero-point {
-        min-width: 230px;
-        padding: 15px 16px;
+        min-width: 210px;
+        padding: 14px 15px;
         scroll-snap-align: start;
       }
       .waitlist-row { flex-direction: column; }
