@@ -4,7 +4,7 @@ Landing page for [AtlasDays](https://atlasdays.app) — a private iPhone app for
 
 ### Homepage screenshot checklist
 
-Use portrait iPhone screenshots unless a different crop clearly works better.
+The homepage is now wired to these portrait iPhone screenshots.
 
 1. `Hero primary`
    File target: `assets/home-hero-dashboard.png`
@@ -42,5 +42,9 @@ Use portrait iPhone screenshots unless a different crop clearly works better.
 
 ### Notes
 
-- The homepage currently still uses the temporary `assets/screenshot1.png` and `assets/screenshot2.png` placeholders.
-- `index.html` contains TODO comments marking the screenshot slots that should be replaced later.
+- The hero supports theme-specific screenshots:
+  - dark: `assets/home-hero-dashboard.png`, `assets/home-hero-tracker-detail.png`
+  - light: `assets/home-hero-dashboard-light.png`, `assets/home-hero-tracker-light.png`
+- The proof section uses `timeline`, `map`, `tracker presets`, `trip modes`, and `import`.
+- The privacy section uses `assets/home-proof-privacy.png`.
+- Remaining launch work is image optimization and a browser QA pass after deployment.

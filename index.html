@@ -9,11 +9,11 @@
   <meta property="og:description" content="Track every country you visit, count days for visa limits, and prove tax residence. Private, on-device, no account required." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://atlasdays.app/" />
-  <meta property="og:image" content="https://atlasdays.app/assets/screenshot1.png" />
+  <meta property="og:image" content="https://atlasdays.app/assets/home-hero-dashboard.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="AtlasDays — Track Countries, Count Visa Days, Prove Residence" />
   <meta name="twitter:description" content="Track every country you visit, count days for visa limits, and prove tax residence. Private, on-device, no account required." />
-  <meta name="twitter:image" content="https://atlasdays.app/assets/screenshot1.png" />
+  <meta name="twitter:image" content="https://atlasdays.app/assets/home-hero-dashboard.png" />
   <link rel="canonical" href="https://atlasdays.app/" />
   <link rel="icon" type="image/png" href="assets/favicon_light.png?v=20260324a" media="(prefers-color-scheme: light)" />
   <link rel="icon" type="image/png" href="assets/favicon_dark.png?v=20260324a" media="(prefers-color-scheme: dark)" />
@@ -26,7 +26,7 @@
     "applicationCategory": "TravelApplication",
     "description": "Private iPhone app to track every country you visit, count days for Schengen and visa limits, and prove tax residence.",
     "url": "https://atlasdays.app/",
-    "image": "https://atlasdays.app/assets/screenshot1.png",
+    "image": "https://atlasdays.app/assets/home-hero-dashboard.png",
     "author": {
       "@type": "Organization",
       "name": "AtlasDays"
@@ -206,16 +206,16 @@
       padding: 0;
     }
     .theme-toggle:hover { border-color: var(--blue); color: var(--text); }
-    .icon-moon, .logo-light { display: none; }
-    .logo-dark { display: block; }
+    .icon-moon, .logo-light, .theme-shot-light { display: none; }
+    .logo-dark, .theme-shot-dark { display: block; }
     @media (prefers-color-scheme: light) {
-      .icon-sun, .logo-dark { display: none; }
-      .icon-moon, .logo-light { display: block; }
+      .icon-sun, .logo-dark, .theme-shot-dark { display: none; }
+      .icon-moon, .logo-light, .theme-shot-light { display: block; }
     }
-    html[data-theme="dark"] .icon-sun, html[data-theme="dark"] .logo-dark { display: block; }
-    html[data-theme="dark"] .icon-moon, html[data-theme="dark"] .logo-light { display: none; }
-    html[data-theme="light"] .icon-sun, html[data-theme="light"] .logo-dark { display: none; }
-    html[data-theme="light"] .icon-moon, html[data-theme="light"] .logo-light { display: block; }
+    html[data-theme="dark"] .icon-sun, html[data-theme="dark"] .logo-dark, html[data-theme="dark"] .theme-shot-dark { display: block; }
+    html[data-theme="dark"] .icon-moon, html[data-theme="dark"] .logo-light, html[data-theme="dark"] .theme-shot-light { display: none; }
+    html[data-theme="light"] .icon-sun, html[data-theme="light"] .logo-dark, html[data-theme="light"] .theme-shot-dark { display: none; }
+    html[data-theme="light"] .icon-moon, html[data-theme="light"] .logo-light, html[data-theme="light"] .theme-shot-light { display: block; }
 
     .hero { padding: 50px 0 var(--section-pad); }
     .hero-grid {
@@ -324,6 +324,10 @@
       border-radius: 24px;
       width: 100%;
       height: auto;
+    }
+    .theme-shot {
+      display: none;
+      width: 100%;
     }
     .visual-card.primary {
       width: min(360px, 78%);
@@ -462,6 +466,27 @@
       color: var(--text);
       margin-bottom: 5px;
     }
+    .proof-split {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+      padding: 16px 16px 0;
+    }
+    .proof-split .split-shot img {
+      border-radius: 22px 22px 0 0;
+      border: 1px solid var(--line);
+      width: 100%;
+      height: 420px;
+      object-fit: cover;
+      object-position: top;
+    }
+    .proof-split .split-shot span {
+      display: block;
+      padding: 10px 2px 0;
+      color: var(--muted-2);
+      font-size: 0.86rem;
+      letter-spacing: 0.01em;
+    }
     .doc-card {
       display: flex;
       flex-direction: column;
@@ -486,6 +511,28 @@
       border: 1px solid rgba(22,146,255,0.18);
       border-radius: 30px;
       box-shadow: var(--shadow);
+    }
+    .privacy-grid {
+      display: grid;
+      grid-template-columns: 1.04fr 0.96fr;
+      gap: 22px;
+      align-items: center;
+    }
+    .privacy-visual {
+      padding: 12px;
+      border-radius: 28px;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: var(--shadow);
+    }
+    .privacy-visual img {
+      width: 100%;
+      height: 100%;
+      max-height: 520px;
+      object-fit: cover;
+      object-position: top;
+      border-radius: 20px;
+      border: 1px solid var(--line);
     }
     .privacy-panel h2 {
       margin: 0 0 10px;
@@ -691,6 +738,7 @@
       .footer-grid,
       .doc-grid { grid-template-columns: 1fr; }
       .hero-grid { gap: 34px; }
+      .privacy-grid { grid-template-columns: 1fr; }
       .visual-wrap {
         min-height: 600px;
         max-width: 520px;
@@ -751,6 +799,8 @@
       .privacy-panel,
       .doc-card { padding: 20px; }
       .proof-visual .frame img { max-height: 400px; }
+      .proof-split { grid-template-columns: 1fr; }
+      .proof-split .split-shot img { height: 360px; }
       .btn { width: 100%; }
       .waitlist-row { flex-direction: column; }
       .hero-actions { gap: 10px; }
@@ -839,12 +889,12 @@
 
         <div class="visual-wrap reveal" aria-label="AtlasDays app previews">
           <div class="visual-card primary">
-            <!-- TODO: Replace with Hero primary screenshot: dashboard overview with tracker cards, top stats, and mini map. -->
-            <img src="assets/screenshot1.png" alt="AtlasDays timeline showing country trips and day badges" width="1206" height="2622" />
+            <img class="theme-shot theme-shot-dark" src="assets/home-hero-dashboard.png" alt="AtlasDays dashboard showing tracker cards, summary stats, and the mini map" width="1320" height="2868" />
+            <img class="theme-shot theme-shot-light" src="assets/home-hero-dashboard-light.png" alt="AtlasDays dashboard showing tracker cards, summary stats, and the mini map in light mode" width="1320" height="2868" />
           </div>
           <div class="visual-card secondary">
-            <!-- TODO: Replace with Hero secondary screenshot: tracker detail showing used days, remaining days, and next insight. -->
-            <img src="assets/screenshot2.png" alt="AtlasDays map view showing visited countries and a country detail sheet" width="1206" height="2622" />
+            <img class="theme-shot theme-shot-dark" src="assets/home-hero-tracker-detail.png" alt="AtlasDays tracker detail showing used days, remaining days, and the next threshold" width="1320" height="2868" />
+            <img class="theme-shot theme-shot-light" src="assets/home-hero-tracker-light.png" alt="AtlasDays tracker detail showing used days, remaining days, and the next threshold in light mode" width="1320" height="2868" />
           </div>
         </div>
       </div>
@@ -932,8 +982,7 @@
           </article>
           <article class="proof proof-visual reveal">
             <div class="frame">
-              <!-- TODO: Replace with Proof timeline screenshot: realistic trip history with day badges and mixed countries. -->
-              <img src="assets/screenshot1.png" alt="AtlasDays timeline showing country trips grouped by year with day counts" width="1206" height="2622" />
+              <img src="assets/home-proof-timeline.png" alt="AtlasDays timeline showing realistic trips grouped by year with visible day totals" width="1320" height="2868" loading="lazy" />
             </div>
             <div class="proof-caption"><strong>Timeline</strong>Country, dates, and days per trip — all visible without tapping in.</div>
           </article>
@@ -941,8 +990,7 @@
         <div class="proof-grid">
           <article class="proof proof-visual reveal">
             <div class="frame">
-              <!-- TODO: Replace with Proof map screenshot: world map plus country detail sheet. -->
-              <img src="assets/screenshot2.png" alt="AtlasDays world map with visited countries highlighted and a country detail sheet" width="1206" height="2622" loading="lazy" />
+              <img src="assets/home-proof-map-country.png" alt="AtlasDays world map with visited countries highlighted and a country detail sheet open" width="1320" height="2868" loading="lazy" />
             </div>
             <div class="proof-caption"><strong>World map</strong>Tap any country to see your trips, total days, and how it relates to your trackers.</div>
           </article>
@@ -957,8 +1005,13 @@
           </article>
         </div>
         <div class="proof-grid" style="margin-top:18px">
+          <article class="proof proof-visual reveal">
+            <div class="frame">
+              <img src="assets/home-proof-tracker-presets.png" alt="AtlasDays tracker preset picker showing Schengen, residence, visa limit, and travel goal options" width="1320" height="2868" loading="lazy" />
+            </div>
+            <div class="proof-caption"><strong>Tracker presets</strong>Start from the right rule instead of building your day counting setup from scratch.</div>
+          </article>
           <article class="proof reveal">
-            <!-- TODO: Pair or replace this card with the tracker preset or tracker detail screenshots once they exist. -->
             <h3>Trackers built for different rules</h3>
             <p>AtlasDays is not locked to one formula. The same trip record can power Schengen tracking, per-stay visa limits, yearly residence counts, and custom fiscal-year thresholds.</p>
             <ul class="mini-list">
@@ -967,15 +1020,29 @@
               <li>Warnings as you approach a limit instead of manual recounting</li>
             </ul>
           </article>
+        </div>
+        <div class="proof-grid" style="margin-top:18px">
           <article class="proof reveal">
-            <!-- TODO: Pair or replace this card with the trip modes or import screenshots once they exist. -->
             <h3>Messy history still works</h3>
-            <p>Older travel rarely comes in clean, exact dates. The app is built for reconstruction as well as perfect records, so you can still build a usable timeline and export it later.</p>
+            <p>Older travel rarely comes in clean, exact dates. AtlasDays is built for reconstruction as well as perfect records, so you can still build a usable timeline and export it later.</p>
             <ul class="mini-list">
               <li><code>Exact Dates</code> for precise counting and <code>Month &amp; Year</code> for reconstructed history</li>
               <li><code>Dates Unknown</code> support when you know a trip happened but not exactly when</li>
-              <li>CSV import and review before anything is saved</li>
+              <li>CSV import with review before anything is saved</li>
             </ul>
+          </article>
+          <article class="proof proof-visual reveal">
+            <div class="proof-split">
+              <div class="split-shot">
+                <img src="assets/home-proof-trip-modes.png" alt="AtlasDays trip form showing Exact Dates and Month and Year trip modes" width="1320" height="2868" loading="lazy" />
+                <span>Trip modes</span>
+              </div>
+              <div class="split-shot">
+                <img src="assets/home-proof-import.png" alt="AtlasDays CSV import preview showing mapped columns before saving trips" width="1320" height="2868" loading="lazy" />
+                <span>Import preview</span>
+              </div>
+            </div>
+            <div class="proof-caption"><strong>Reconstruction flow</strong>Start with what you know, clean it up, and only save once the import preview looks right.</div>
           </article>
         </div>
       </div>
@@ -1017,17 +1084,24 @@
     <section id="privacy" class="section">
       <div class="container">
         <div class="privacy-panel reveal">
-          <h2>Private by design, because travel history is sensitive</h2>
-          <p>AtlasDays is built so the product itself does not need an account or an AtlasDays server copy of your travel history. Calculations run on-device. iCloud sync is optional. Country detection is optional. Your record is meant to stay yours.</p>
-          <div class="trust-row">
-            <span class="pill">No account required</span>
-            <span class="pill">No AtlasDays server copy</span>
-            <span class="pill">On-device calculations</span>
-            <span class="pill">Optional iCloud sync</span>
-            <span class="pill">Local-only country detection</span>
-            <span class="pill">No third-party analytics SDKs</span>
+          <div class="privacy-grid">
+            <div>
+              <h2>Private by design, because travel history is sensitive</h2>
+              <p>AtlasDays is built so the product itself does not need an account or an AtlasDays server copy of your travel history. Calculations run on-device. iCloud sync is optional. Country detection is optional. Your record is meant to stay yours.</p>
+              <div class="trust-row">
+                <span class="pill">No account required</span>
+                <span class="pill">No AtlasDays server copy</span>
+                <span class="pill">On-device calculations</span>
+                <span class="pill">Optional iCloud sync</span>
+                <span class="pill">Local-only country detection</span>
+                <span class="pill">No third-party analytics SDKs</span>
+              </div>
+              <div class="disclaimer">If you choose to join the waitlist on this website, that email signup is handled separately from the app itself. Details are on the <a href="/website-privacy">website waitlist privacy page</a>.</div>
+            </div>
+            <div class="privacy-visual">
+              <img src="assets/home-proof-privacy.png" alt="AtlasDays privacy and location screen explaining local-only country detection and optional iCloud sync" width="1320" height="2868" loading="lazy" />
+            </div>
           </div>
-          <div class="disclaimer">If you choose to join the waitlist on this website, that email signup is handled separately from the app itself. Details are on the <a href="/website-privacy">website waitlist privacy page</a>.</div>
         </div>
       </div>
     </section>
