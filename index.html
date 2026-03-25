@@ -15,8 +15,8 @@
   <meta name="twitter:description" content="Track every country you visit, count days for visa limits, and prove tax residence. Private, on-device, no account required." />
   <meta name="twitter:image" content="https://atlasdays.app/assets/home-hero-dashboard.png" />
   <link rel="canonical" href="https://atlasdays.app/" />
-  <link rel="icon" type="image/png" href="assets/favicon_light.png?v=20260324a" media="(prefers-color-scheme: light)" />
-  <link rel="icon" type="image/png" href="assets/favicon_dark.png?v=20260324a" media="(prefers-color-scheme: dark)" />
+  <link rel="icon" type="image/png" href="assets/favicon_light.png?v=20260325a" media="(prefers-color-scheme: light)" />
+  <link rel="icon" type="image/png" href="assets/favicon_dark.png?v=20260325a" media="(prefers-color-scheme: dark)" />
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -466,6 +466,124 @@
       color: var(--text);
       margin-bottom: 5px;
     }
+    .showcase {
+      padding: 24px;
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .showcase-tabs {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+      margin-bottom: 22px;
+      scrollbar-width: none;
+    }
+    .showcase-tabs::-webkit-scrollbar { display: none; }
+    .showcase-tab {
+      flex: none;
+      min-height: 42px;
+      padding: 0 15px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.04);
+      color: var(--muted);
+      font: inherit;
+      font-weight: 600;
+      cursor: pointer;
+      transition: border-color 160ms ease, color 160ms ease, background 160ms ease;
+    }
+    .showcase-tab:hover {
+      color: var(--text);
+      border-color: var(--line-strong);
+    }
+    .showcase-tab.is-active {
+      background: var(--blue-soft);
+      border-color: rgba(22,146,255,0.28);
+      color: var(--text);
+    }
+    .showcase-slide {
+      display: none;
+      grid-template-columns: minmax(0, 0.84fr) minmax(0, 1.16fr);
+      gap: 28px;
+      align-items: center;
+    }
+    .showcase-slide.is-active { display: grid; }
+    .showcase-device-wrap {
+      display: grid;
+      place-items: center;
+    }
+    .showcase-device {
+      width: min(100%, 340px);
+      padding: 12px;
+      border-radius: 34px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04));
+      border: 1px solid rgba(255,255,255,0.12);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .showcase-device img {
+      width: 100%;
+      height: auto;
+      border-radius: 24px;
+      border: 1px solid var(--line);
+    }
+    .showcase-label {
+      margin: 0 0 10px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted-2);
+    }
+    .showcase-copy h3 {
+      margin: 0 0 10px;
+      font-size: clamp(1.5rem, 2.4vw, 2.2rem);
+      line-height: 1.05;
+      letter-spacing: -0.04em;
+    }
+    .showcase-copy p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+    .showcase-copy .mini-list { margin-top: 14px; }
+    .showcase-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-top: 24px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+    }
+    .showcase-counter {
+      color: var(--muted-2);
+      font-size: 0.92rem;
+      white-space: nowrap;
+    }
+    .showcase-arrows {
+      display: flex;
+      gap: 10px;
+    }
+    .showcase-arrow {
+      min-height: 44px;
+      padding: 0 16px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.04);
+      color: var(--text);
+      font: inherit;
+      font-weight: 600;
+      cursor: pointer;
+      transition: border-color 160ms ease, background 160ms ease;
+    }
+    .showcase-arrow:hover { border-color: var(--line-strong); }
     .proof-split {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -519,6 +637,8 @@
       align-items: center;
     }
     .privacy-visual {
+      display: grid;
+      place-items: center;
       padding: 12px;
       border-radius: 28px;
       background: rgba(255,255,255,0.05);
@@ -526,11 +646,8 @@
       box-shadow: var(--shadow);
     }
     .privacy-visual img {
-      width: 100%;
-      height: 100%;
-      max-height: 520px;
-      object-fit: cover;
-      object-position: top;
+      width: min(100%, 320px);
+      height: auto;
       border-radius: 20px;
       border: 1px solid var(--line);
     }
@@ -738,6 +855,7 @@
       .footer-grid,
       .doc-grid { grid-template-columns: 1fr; }
       .hero-grid { gap: 34px; }
+      .showcase-slide { grid-template-columns: 1fr; }
       .privacy-grid { grid-template-columns: 1fr; }
       .visual-wrap {
         min-height: 600px;
@@ -799,6 +917,14 @@
       .privacy-panel,
       .doc-card { padding: 20px; }
       .proof-visual .frame img { max-height: 400px; }
+      .showcase { padding: 20px; }
+      .showcase-slide { gap: 20px; }
+      .showcase-controls {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .showcase-arrows { width: 100%; }
+      .showcase-arrow { flex: 1 1 0; }
       .proof-split { grid-template-columns: 1fr; }
       .proof-split .split-shot img { height: 360px; }
       .btn { width: 100%; }
@@ -848,8 +974,8 @@
     <div class="container nav">
       <a class="brand" href="#top" aria-label="AtlasDays home">
         <span class="brand-mark">
-          <img class="logo-dark" src="assets/logo_dark.png?v=20260324a" alt="AtlasDays logo" width="1024" height="1024" />
-          <img class="logo-light" src="assets/logo_light.png?v=20260324a" alt="AtlasDays logo" width="1024" height="1024" />
+          <img class="logo-dark" src="assets/logo_dark.png?v=20260325a" alt="AtlasDays logo" width="1024" height="1024" />
+          <img class="logo-light" src="assets/logo_light.png?v=20260325a" alt="AtlasDays logo" width="1024" height="1024" />
         </span>
         <span>AtlasDays</span>
       </a>
@@ -970,80 +1096,108 @@
           <h2>Numbers you can act on, not just look at</h2>
           <p>Every screen is designed so you can answer a real question — how many days left, which countries count, what does my record look like — without digging through formulas.</p>
         </div>
-        <div class="proof-grid" style="margin-bottom:18px">
-          <article class="proof reveal">
-            <h3>Your trips, grouped and searchable</h3>
-            <p>The timeline is your source of truth. Trips grouped by year, ongoing and upcoming trips at the top, day totals on every card.</p>
-            <ul class="mini-list">
-              <li>Search across countries, notes, and years</li>
-              <li>Swipe to delete with a few seconds to undo</li>
-              <li>Overlap detection when trips share nights</li>
-            </ul>
-          </article>
-          <article class="proof proof-visual reveal">
-            <div class="frame">
-              <img src="assets/home-proof-timeline.png" alt="AtlasDays timeline showing realistic trips grouped by year with visible day totals" width="1320" height="2868" loading="lazy" />
-            </div>
-            <div class="proof-caption"><strong>Timeline</strong>Country, dates, and days per trip — all visible without tapping in.</div>
-          </article>
-        </div>
-        <div class="proof-grid">
-          <article class="proof proof-visual reveal">
-            <div class="frame">
-              <img src="assets/home-proof-map-country.png" alt="AtlasDays world map with visited countries highlighted and a country detail sheet open" width="1320" height="2868" loading="lazy" />
-            </div>
-            <div class="proof-caption"><strong>World map</strong>Tap any country to see your trips, total days, and how it relates to your trackers.</div>
-          </article>
-          <article class="proof reveal">
-            <h3>A map that does more than decorate</h3>
-            <p>Visited countries in color, transit countries separate, every country tappable. The map changes with the selected period so you can see your history evolve year by year.</p>
-            <ul class="mini-list">
-              <li>Mini map on the dashboard, full-screen interactive view</li>
-              <li>Country detail sheets with trip lists and day totals</li>
-              <li>Shareable cards with your map, stats, and flags</li>
-            </ul>
-          </article>
-        </div>
-        <div class="proof-grid" style="margin-top:18px">
-          <article class="proof proof-visual reveal">
-            <div class="frame">
-              <img src="assets/home-proof-tracker-presets.png" alt="AtlasDays tracker preset picker showing Schengen, residence, visa limit, and travel goal options" width="1320" height="2868" loading="lazy" />
-            </div>
-            <div class="proof-caption"><strong>Tracker presets</strong>Start from the right rule instead of building your day counting setup from scratch.</div>
-          </article>
-          <article class="proof reveal">
-            <h3>Trackers built for different rules</h3>
-            <p>AtlasDays is not locked to one formula. The same trip record can power Schengen tracking, per-stay visa limits, yearly residence counts, and custom fiscal-year thresholds.</p>
-            <ul class="mini-list">
-              <li>Preset trackers for Schengen, residence, visa limits, and travel goals</li>
-              <li>Rolling windows, per-stay counting, calendar years, and fiscal years</li>
-              <li>Warnings as you approach a limit instead of manual recounting</li>
-            </ul>
-          </article>
-        </div>
-        <div class="proof-grid" style="margin-top:18px">
-          <article class="proof reveal">
-            <h3>Messy history still works</h3>
-            <p>Older travel rarely comes in clean, exact dates. AtlasDays is built for reconstruction as well as perfect records, so you can still build a usable timeline and export it later.</p>
-            <ul class="mini-list">
-              <li><code>Exact Dates</code> for precise counting and <code>Month &amp; Year</code> for reconstructed history</li>
-              <li><code>Dates Unknown</code> support when you know a trip happened but not exactly when</li>
-              <li>CSV import with review before anything is saved</li>
-            </ul>
-          </article>
-          <article class="proof proof-visual reveal">
-            <div class="proof-split">
-              <div class="split-shot">
-                <img src="assets/home-proof-trip-modes.png" alt="AtlasDays trip form showing Exact Dates and Month and Year trip modes" width="1320" height="2868" loading="lazy" />
-                <span>Trip modes</span>
+        <div class="showcase reveal" data-showcase>
+          <div class="showcase-tabs" role="tablist" aria-label="AtlasDays product screens">
+            <button class="showcase-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="showcase-timeline" id="showcase-tab-timeline" data-showcase-tab>Timeline</button>
+            <button class="showcase-tab" type="button" role="tab" aria-selected="false" aria-controls="showcase-map" id="showcase-tab-map" tabindex="-1" data-showcase-tab>Map</button>
+            <button class="showcase-tab" type="button" role="tab" aria-selected="false" aria-controls="showcase-trackers" id="showcase-tab-trackers" tabindex="-1" data-showcase-tab>Trackers</button>
+            <button class="showcase-tab" type="button" role="tab" aria-selected="false" aria-controls="showcase-trip-modes" id="showcase-tab-trip-modes" tabindex="-1" data-showcase-tab>Trip Modes</button>
+            <button class="showcase-tab" type="button" role="tab" aria-selected="false" aria-controls="showcase-import" id="showcase-tab-import" tabindex="-1" data-showcase-tab>Import</button>
+          </div>
+          <div class="showcase-viewport">
+            <article class="showcase-slide is-active" id="showcase-timeline" role="tabpanel" aria-labelledby="showcase-tab-timeline" data-showcase-slide>
+              <div class="showcase-device-wrap">
+                <div class="showcase-device">
+                  <img src="assets/home-proof-timeline.png" alt="AtlasDays timeline showing realistic trips grouped by year with visible day totals" width="1320" height="2868" loading="lazy" />
+                </div>
               </div>
-              <div class="split-shot">
-                <img src="assets/home-proof-import.png" alt="AtlasDays CSV import preview showing mapped columns before saving trips" width="1320" height="2868" loading="lazy" />
-                <span>Import preview</span>
+              <div class="showcase-copy">
+                <p class="showcase-label">Timeline</p>
+                <h3>Your trips, grouped and searchable</h3>
+                <p>The timeline is the source of truth. Trips stay grouped by year, ongoing and upcoming trips surface first, and day totals stay visible on every card instead of being buried in detail screens.</p>
+                <ul class="mini-list">
+                  <li>Search across countries, notes, and years</li>
+                  <li>Swipe to delete with a few seconds to undo</li>
+                  <li>Overlap detection when trips share nights</li>
+                </ul>
               </div>
+            </article>
+            <article class="showcase-slide" id="showcase-map" role="tabpanel" aria-labelledby="showcase-tab-map" data-showcase-slide hidden>
+              <div class="showcase-device-wrap">
+                <div class="showcase-device">
+                  <img src="assets/home-proof-map-country.png" alt="AtlasDays world map with visited countries highlighted and a country detail sheet open" width="1320" height="2868" loading="lazy" />
+                </div>
+              </div>
+              <div class="showcase-copy">
+                <p class="showcase-label">Map</p>
+                <h3>A map that does more than decorate</h3>
+                <p>Visited countries appear in color, transit countries stay separate, and every country is tappable. The map changes with the selected period so you can see your history evolve year by year instead of staring at one static total.</p>
+                <ul class="mini-list">
+                  <li>Mini map on the dashboard and a full-screen interactive view</li>
+                  <li>Country detail sheets with trip lists and day totals</li>
+                  <li>Shareable cards with your map, stats, and flags</li>
+                </ul>
+              </div>
+            </article>
+            <article class="showcase-slide" id="showcase-trackers" role="tabpanel" aria-labelledby="showcase-tab-trackers" data-showcase-slide hidden>
+              <div class="showcase-device-wrap">
+                <div class="showcase-device">
+                  <img src="assets/home-proof-tracker-presets.png" alt="AtlasDays tracker preset picker showing Schengen, residence, visa limit, and travel goal options" width="1320" height="2868" loading="lazy" />
+                </div>
+              </div>
+              <div class="showcase-copy">
+                <p class="showcase-label">Trackers</p>
+                <h3>Trackers built for different rules</h3>
+                <p>AtlasDays is not locked to one formula. The same trip record can power Schengen tracking, per-stay visa limits, yearly residence counts, and custom fiscal-year thresholds.</p>
+                <ul class="mini-list">
+                  <li>Preset trackers for Schengen, residence, visa limits, and travel goals</li>
+                  <li>Rolling windows, per-stay counting, calendar years, and fiscal years</li>
+                  <li>Warnings as you approach a limit instead of manual recounting</li>
+                </ul>
+              </div>
+            </article>
+            <article class="showcase-slide" id="showcase-trip-modes" role="tabpanel" aria-labelledby="showcase-tab-trip-modes" data-showcase-slide hidden>
+              <div class="showcase-device-wrap">
+                <div class="showcase-device">
+                  <img src="assets/home-proof-trip-modes.png" alt="AtlasDays trip form showing Exact Dates and Month and Year trip modes" width="1320" height="2868" loading="lazy" />
+                </div>
+              </div>
+              <div class="showcase-copy">
+                <p class="showcase-label">Trip Modes</p>
+                <h3>Messy history still works</h3>
+                <p>Older travel rarely comes in clean, exact dates. AtlasDays lets you choose the precision level that matches what you actually know, so reconstruction is possible without pretending every trip is perfect.</p>
+                <ul class="mini-list">
+                  <li><code>Exact Dates</code> for precise day counting</li>
+                  <li><code>Month &amp; Year</code> for reconstructed history</li>
+                  <li><code>Dates Unknown</code> support when a trip is real but incomplete</li>
+                </ul>
+              </div>
+            </article>
+            <article class="showcase-slide" id="showcase-import" role="tabpanel" aria-labelledby="showcase-tab-import" data-showcase-slide hidden>
+              <div class="showcase-device-wrap">
+                <div class="showcase-device">
+                  <img src="assets/home-proof-import.png" alt="AtlasDays CSV import preview showing mapped columns before saving trips" width="1320" height="2868" loading="lazy" />
+                </div>
+              </div>
+              <div class="showcase-copy">
+                <p class="showcase-label">Import</p>
+                <h3>Bring in old travel without wrecking the record</h3>
+                <p>CSV import is built around review, not blind upload. You map columns, inspect the preview, catch bad rows early, and only save once the result looks right.</p>
+                <ul class="mini-list">
+                  <li>Import from spreadsheets and existing logs</li>
+                  <li>Preview catches issues before anything is saved</li>
+                  <li>Pairs naturally with the app's cleanup and export tools</li>
+                </ul>
+              </div>
+            </article>
+          </div>
+          <div class="showcase-controls">
+            <div class="showcase-counter" aria-live="polite"><span data-showcase-current>1</span> / <span data-showcase-total>5</span></div>
+            <div class="showcase-arrows">
+              <button class="showcase-arrow" type="button" data-showcase-prev>Previous</button>
+              <button class="showcase-arrow" type="button" data-showcase-next>Next</button>
             </div>
-            <div class="proof-caption"><strong>Reconstruction flow</strong>Start with what you know, clean it up, and only save once the import preview looks right.</div>
-          </article>
+          </div>
         </div>
       </div>
     </section>
@@ -1184,8 +1338,8 @@
         <div class="footer-copy">
           <div class="brand">
             <span class="brand-mark">
-              <img class="logo-dark" src="assets/logo_dark.png?v=20260324a" alt="AtlasDays logo" width="1024" height="1024" />
-              <img class="logo-light" src="assets/logo_light.png?v=20260324a" alt="AtlasDays logo" width="1024" height="1024" />
+              <img class="logo-dark" src="assets/logo_dark.png?v=20260325a" alt="AtlasDays logo" width="1024" height="1024" />
+              <img class="logo-light" src="assets/logo_light.png?v=20260325a" alt="AtlasDays logo" width="1024" height="1024" />
             </span>
             <span>AtlasDays</span>
           </div>
@@ -1297,6 +1451,91 @@
       items.forEach((item) => io.observe(item));
     } else {
       items.forEach((item) => item.classList.add('visible'));
+    }
+
+    var showcase = document.querySelector('[data-showcase]');
+    if (showcase) {
+      var showcaseTabs = Array.from(showcase.querySelectorAll('[data-showcase-tab]'));
+      var showcaseSlides = Array.from(showcase.querySelectorAll('[data-showcase-slide]'));
+      var showcasePrev = showcase.querySelector('[data-showcase-prev]');
+      var showcaseNext = showcase.querySelector('[data-showcase-next]');
+      var showcaseCurrent = showcase.querySelector('[data-showcase-current]');
+      var showcaseTotal = showcase.querySelector('[data-showcase-total]');
+      var showcaseViewport = showcase.querySelector('.showcase-viewport');
+      var showcaseIndex = showcaseTabs.findIndex(function(tab) {
+        return tab.classList.contains('is-active');
+      });
+
+      if (showcaseIndex < 0) showcaseIndex = 0;
+      if (showcaseTotal) showcaseTotal.textContent = String(showcaseSlides.length);
+
+      function setShowcase(nextIndex) {
+        if (!showcaseSlides.length) return;
+        if (nextIndex < 0) nextIndex = showcaseSlides.length - 1;
+        if (nextIndex >= showcaseSlides.length) nextIndex = 0;
+        showcaseIndex = nextIndex;
+
+        showcaseTabs.forEach(function(tab, index) {
+          var active = index === showcaseIndex;
+          tab.classList.toggle('is-active', active);
+          tab.setAttribute('aria-selected', active ? 'true' : 'false');
+          tab.setAttribute('tabindex', active ? '0' : '-1');
+        });
+
+        showcaseSlides.forEach(function(slide, index) {
+          var active = index === showcaseIndex;
+          slide.classList.toggle('is-active', active);
+          slide.hidden = !active;
+        });
+
+        if (showcaseCurrent) showcaseCurrent.textContent = String(showcaseIndex + 1);
+      }
+
+      showcaseTabs.forEach(function(tab, index) {
+        tab.addEventListener('click', function() {
+          setShowcase(index);
+        });
+        tab.addEventListener('keydown', function(event) {
+          if (event.key === 'ArrowRight') {
+            event.preventDefault();
+            setShowcase(index + 1);
+            showcaseTabs[(index + 1) % showcaseTabs.length].focus();
+          } else if (event.key === 'ArrowLeft') {
+            event.preventDefault();
+            setShowcase(index - 1);
+            showcaseTabs[(index - 1 + showcaseTabs.length) % showcaseTabs.length].focus();
+          }
+        });
+      });
+
+      if (showcasePrev) {
+        showcasePrev.addEventListener('click', function() {
+          setShowcase(showcaseIndex - 1);
+        });
+      }
+      if (showcaseNext) {
+        showcaseNext.addEventListener('click', function() {
+          setShowcase(showcaseIndex + 1);
+        });
+      }
+
+      if (showcaseViewport) {
+        var touchStartX = 0;
+        var touchEndX = 0;
+
+        showcaseViewport.addEventListener('touchstart', function(event) {
+          touchStartX = event.changedTouches[0].clientX;
+        }, { passive: true });
+
+        showcaseViewport.addEventListener('touchend', function(event) {
+          touchEndX = event.changedTouches[0].clientX;
+          if (Math.abs(touchEndX - touchStartX) < 36) return;
+          if (touchEndX < touchStartX) setShowcase(showcaseIndex + 1);
+          else setShowcase(showcaseIndex - 1);
+        }, { passive: true });
+      }
+
+      setShowcase(showcaseIndex);
     }
   </script>
 </body>
