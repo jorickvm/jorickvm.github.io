@@ -262,6 +262,82 @@
     html[data-theme="light"] .icon-sun, html[data-theme="light"] .logo-dark { display: none; }
     html[data-theme="light"] .icon-moon, html[data-theme="light"] .logo-light { display: block; }
   </style>
+<!-- ARTICLE_IMAGE_STYLES_START -->
+  <style id="atlasdays-article-image-styles">
+    .atlasdays-article-image {
+      margin: 26px 0 30px;
+      padding: 10px;
+      border-radius: 28px;
+      border: 1px solid var(--line, rgba(255,255,255,0.10));
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)),
+        radial-gradient(circle at top left, rgba(22,146,255,0.12), transparent 58%);
+      box-shadow: 0 18px 42px rgba(0,0,0,0.12);
+    }
+    .atlasdays-article-image img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(214, 232, 248, 0.42);
+      box-shadow: 0 18px 42px rgba(0,0,0,0.18);
+    }
+    .atlasdays-article-image.is-hero {
+      margin-top: 22px;
+      margin-bottom: 34px;
+    }
+    .atlasdays-article-image figcaption {
+      margin-top: 10px;
+      color: var(--muted-2, var(--muted));
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+    @media (prefers-color-scheme: light) {
+      .atlasdays-article-image {
+        border-color: rgba(22,146,255,0.14);
+        background:
+          linear-gradient(180deg, rgba(22,146,255,0.10), rgba(22,146,255,0.03)),
+          linear-gradient(180deg, rgba(232,242,252,0.88), rgba(244,248,253,0.92));
+        box-shadow: 0 14px 30px rgba(15, 28, 48, 0.08);
+      }
+      .atlasdays-article-image img {
+        border-color: rgba(22,146,255,0.10);
+        background: rgba(226, 238, 248, 0.82);
+        box-shadow: 0 14px 28px rgba(15, 28, 48, 0.10);
+      }
+    }
+    html[data-theme="light"] .atlasdays-article-image {
+      border-color: rgba(22,146,255,0.14);
+      background:
+        linear-gradient(180deg, rgba(22,146,255,0.10), rgba(22,146,255,0.03)),
+        linear-gradient(180deg, rgba(232,242,252,0.88), rgba(244,248,253,0.92));
+      box-shadow: 0 14px 30px rgba(15, 28, 48, 0.08);
+    }
+    html[data-theme="light"] .atlasdays-article-image img {
+      border-color: rgba(22,146,255,0.10);
+      background: rgba(226, 238, 248, 0.82);
+      box-shadow: 0 14px 28px rgba(15, 28, 48, 0.10);
+    }
+    @media (max-width: 640px) {
+      .atlasdays-article-image {
+        margin: 22px 0 26px;
+        padding: 8px;
+        border-radius: 24px;
+      }
+      .atlasdays-article-image img {
+        border-radius: 18px;
+      }
+      .atlasdays-article-image.is-hero {
+        margin-top: 18px;
+        margin-bottom: 28px;
+      }
+      .atlasdays-article-image figcaption {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+  <!-- ARTICLE_IMAGE_STYLES_END -->
 </head>
 <body>
   <header class="top-bar">
@@ -290,10 +366,23 @@
     <p class="subtitle">Do entry and exit days count? What about transit? How different countries count days for visa limits and residency thresholds.</p>
     <p class="verified">Last reviewed: March 24, 2026</p>
 
+    <!-- ARTICLE_IMAGE:hero -->
+    <!-- ARTICLE_IMAGE_RENDER_START:hero -->
+    <figure class="atlasdays-article-image is-hero" data-article-image-slot="hero">
+      <img src="../assets/article-images/learn/what-counts-as-a-day-for-visa-purposes/hero.webp" alt="Hero illustration for What Counts as a 'Day' for Visa Purposes?, showing yearly threshold counting, calendar blocks, and residency-day markers in the AtlasDays visual style." width="1536" height="1024" decoding="async" sizes="(max-width: 760px) calc(100vw - 40px), 720px" loading="eager" fetchpriority="high" />
+    </figure>
+    <!-- ARTICLE_IMAGE_RENDER_END:hero -->
+
     <h2>Why it matters</h2>
     <p>When you are tracking visa limits, <strong>a single day can be the difference between a legal stay and an overstay</strong>. Immigration rules set hard thresholds — 90 days in the Schengen Area, 183 days for tax residency in many countries — and miscounting by even one day can trigger fines, deportation, or future entry bans. The tricky part is that different countries count days differently, and the rules are rarely spelled out in plain language.</p>
 
     <h2>Entry and exit days</h2>
+    <!-- ARTICLE_IMAGE:body-1 -->
+    <!-- ARTICLE_IMAGE_RENDER_START:body-1 -->
+    <figure class="atlasdays-article-image is-body" data-article-image-slot="body-1">
+      <img src="../assets/article-images/learn/what-counts-as-a-day-for-visa-purposes/body-1.webp" alt="Supporting illustration for What Counts as a 'Day' for Visa Purposes?, focused on entry and exit days in the AtlasDays visual style." width="1536" height="1024" decoding="async" sizes="(max-width: 760px) calc(100vw - 40px), 720px" loading="lazy" />
+    </figure>
+    <!-- ARTICLE_IMAGE_RENDER_END:body-1 -->
     <p>The most common question travellers face: do the day you arrive and the day you leave both count? In most visa regimes, <strong>yes — both the entry day and the exit day count as full days of presence</strong>. The Schengen Area is the most well-known example. If you land in Paris on March 1 and fly out on March 3, that counts as three days, not two.</p>
     <p>This catches people off guard because it feels intuitive to count only full 24-hour periods. But immigration authorities typically count calendar days, not hours. Even if you arrive at 11:55 PM, that entire calendar day counts.</p>
 
@@ -310,6 +399,12 @@
     <p>Tax authorities sometimes use a "midnight rule": you are counted as present on a given day only if you are in the country at midnight. This means a day trip where you arrive in the morning and leave before midnight might not count. But again, this varies and you need to verify the specific rule that governs your situation.</p>
 
     <h2>How different systems count</h2>
+    <!-- ARTICLE_IMAGE:body-2 -->
+    <!-- ARTICLE_IMAGE_RENDER_START:body-2 -->
+    <figure class="atlasdays-article-image is-body" data-article-image-slot="body-2">
+      <img src="../assets/article-images/learn/what-counts-as-a-day-for-visa-purposes/body-2.webp" alt="Supporting illustration for What Counts as a 'Day' for Visa Purposes?, focused on how different systems count in the AtlasDays visual style." width="1536" height="1024" decoding="async" sizes="(max-width: 760px) calc(100vw - 40px), 720px" loading="lazy" />
+    </figure>
+    <!-- ARTICLE_IMAGE_RENDER_END:body-2 -->
     <ul>
       <li><strong>Schengen Area:</strong> Both the entry day and the exit day count as full days. Calendar-day basis. All 29 Schengen countries share one counter.</li>
       <li><strong>United States (Substantial Presence Test):</strong> For IRS tax residency, the formula weights days across three years: current-year days count fully, prior-year days count as one-third, and the year before that as one-sixth. You trigger the test at 183 weighted days — which can happen even if you spent fewer than 183 actual days in the US this year.</li>

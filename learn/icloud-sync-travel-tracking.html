@@ -269,6 +269,82 @@
     html[data-theme="light"] .icon-sun, html[data-theme="light"] .logo-dark { display: none; }
     html[data-theme="light"] .icon-moon, html[data-theme="light"] .logo-light { display: block; }
   </style>
+<!-- ARTICLE_IMAGE_STYLES_START -->
+  <style id="atlasdays-article-image-styles">
+    .atlasdays-article-image {
+      margin: 26px 0 30px;
+      padding: 10px;
+      border-radius: 28px;
+      border: 1px solid var(--line, rgba(255,255,255,0.10));
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)),
+        radial-gradient(circle at top left, rgba(22,146,255,0.12), transparent 58%);
+      box-shadow: 0 18px 42px rgba(0,0,0,0.12);
+    }
+    .atlasdays-article-image img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(214, 232, 248, 0.42);
+      box-shadow: 0 18px 42px rgba(0,0,0,0.18);
+    }
+    .atlasdays-article-image.is-hero {
+      margin-top: 22px;
+      margin-bottom: 34px;
+    }
+    .atlasdays-article-image figcaption {
+      margin-top: 10px;
+      color: var(--muted-2, var(--muted));
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+    @media (prefers-color-scheme: light) {
+      .atlasdays-article-image {
+        border-color: rgba(22,146,255,0.14);
+        background:
+          linear-gradient(180deg, rgba(22,146,255,0.10), rgba(22,146,255,0.03)),
+          linear-gradient(180deg, rgba(232,242,252,0.88), rgba(244,248,253,0.92));
+        box-shadow: 0 14px 30px rgba(15, 28, 48, 0.08);
+      }
+      .atlasdays-article-image img {
+        border-color: rgba(22,146,255,0.10);
+        background: rgba(226, 238, 248, 0.82);
+        box-shadow: 0 14px 28px rgba(15, 28, 48, 0.10);
+      }
+    }
+    html[data-theme="light"] .atlasdays-article-image {
+      border-color: rgba(22,146,255,0.14);
+      background:
+        linear-gradient(180deg, rgba(22,146,255,0.10), rgba(22,146,255,0.03)),
+        linear-gradient(180deg, rgba(232,242,252,0.88), rgba(244,248,253,0.92));
+      box-shadow: 0 14px 30px rgba(15, 28, 48, 0.08);
+    }
+    html[data-theme="light"] .atlasdays-article-image img {
+      border-color: rgba(22,146,255,0.10);
+      background: rgba(226, 238, 248, 0.82);
+      box-shadow: 0 14px 28px rgba(15, 28, 48, 0.10);
+    }
+    @media (max-width: 640px) {
+      .atlasdays-article-image {
+        margin: 22px 0 26px;
+        padding: 8px;
+        border-radius: 24px;
+      }
+      .atlasdays-article-image img {
+        border-radius: 18px;
+      }
+      .atlasdays-article-image.is-hero {
+        margin-top: 18px;
+        margin-bottom: 28px;
+      }
+      .atlasdays-article-image figcaption {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+  <!-- ARTICLE_IMAGE_STYLES_END -->
 </head>
 <body>
   <header class="top-bar">
@@ -297,12 +373,25 @@
     <p class="subtitle">How AtlasDays uses iCloud to keep your travel data in sync across devices — with no accounts, no servers, and no data leaving Apple's ecosystem.</p>
     <p class="verified">Last verified: March 2026</p>
 
+    <!-- ARTICLE_IMAGE:hero -->
+    <!-- ARTICLE_IMAGE_RENDER_START:hero -->
+    <figure class="atlasdays-article-image is-hero" data-article-image-slot="hero">
+      <img src="../assets/article-images/learn/icloud-sync-travel-tracking/hero.webp" alt="Hero illustration for iCloud Sync for Travel Tracking: Why Your Data Follows You, showing locked-device privacy, optional cloud sync, and location-pin motifs in the AtlasDays visual style." width="1536" height="1024" decoding="async" sizes="(max-width: 760px) calc(100vw - 40px), 720px" loading="eager" fetchpriority="high" />
+    </figure>
+    <!-- ARTICLE_IMAGE_RENDER_END:hero -->
+
     <h2>The problem with spreadsheets and notes</h2>
     <p>Most travelers who take visa day limits seriously end up building some kind of tracking system. Maybe it is a Google Sheet with formulas that count days within rolling windows. Maybe it is a note in Apple Notes with a running list of entry and exit dates. Maybe it is a paper notebook tucked into a passport cover. These approaches all share the same fundamental weakness: they live in one place, and your life does not.</p>
     <p>The fragmentation problem becomes obvious at the worst possible moment. You are standing at an airport check-in counter and need to confirm how many days you have spent in the Schengen Area this period. Your spreadsheet is on your laptop, which is already packed in your checked bag. The note you kept on your phone has not been updated since your last trip because you made the most recent edits on your iPad at the hotel. The paper notebook is thorough but requires you to do mental arithmetic under pressure.</p>
     <p>Even if you are disciplined about updating every device, manual sync is inherently fragile. You update the spreadsheet on your laptop, then forget to copy the changes to your phone. Or you add a trip on your phone and plan to transfer it later, but later never comes. Over time, you end up with multiple versions of your travel history, none of which you fully trust. When the stakes are visa compliance and potential overstay penalties, "pretty sure this is up to date" is not good enough.</p>
 
     <h2>How AtlasDays syncs with iCloud</h2>
+    <!-- ARTICLE_IMAGE:body-1 -->
+    <!-- ARTICLE_IMAGE_RENDER_START:body-1 -->
+    <figure class="atlasdays-article-image is-body" data-article-image-slot="body-1">
+      <img src="../assets/article-images/learn/icloud-sync-travel-tracking/body-1.webp" alt="Supporting illustration for iCloud Sync for Travel Tracking: Why Your Data Follows You, focused on how atlasdays syncs with icloud in the AtlasDays visual style." width="1536" height="1024" decoding="async" sizes="(max-width: 760px) calc(100vw - 40px), 720px" loading="lazy" />
+    </figure>
+    <!-- ARTICLE_IMAGE_RENDER_END:body-1 -->
     <p>AtlasDays stores all of your travel data in <strong>iCloud</strong> using Apple's <strong>CloudKit</strong> framework. CloudKit is the same technology that Apple uses to sync your own apps like Photos, Notes, and Reminders across devices. When you log a trip on your iPhone, that data is written to your personal iCloud account and propagated to every other device signed into the same Apple ID. There is no delay, no manual export, and no "sync" button to press.</p>
     <p>The sync happens automatically in the background. Open AtlasDays on your iPad after logging a trip on your iPhone, and the trip is already there. Edit a date on one device, and the correction appears on the other within moments. This is not a feature you need to configure or enable — it is how the app works by default, as long as you are signed into iCloud on your devices.</p>
     <p>Because AtlasDays uses CloudKit's private database, your travel data is stored in <strong>your personal iCloud account</strong> — not on servers owned or operated by AtlasDays. The app never sees, processes, or stores your data on any third-party infrastructure. From a data flow perspective, your information moves between your device and Apple's iCloud servers, and nowhere else.</p>
@@ -333,6 +422,12 @@
     <p>AtlasDays handles all of this automatically. You log your trips — entry date, exit date, country — and the app calculates your remaining days for each visa rule you are tracking. The calculations update in real time, the data syncs across devices without intervention, and you get a clear answer without needing to audit a formula chain.</p>
 
     <h2>Multi-device scenarios</h2>
+    <!-- ARTICLE_IMAGE:body-2 -->
+    <!-- ARTICLE_IMAGE_RENDER_START:body-2 -->
+    <figure class="atlasdays-article-image is-body" data-article-image-slot="body-2">
+      <img src="../assets/article-images/learn/icloud-sync-travel-tracking/body-2.webp" alt="Supporting illustration for iCloud Sync for Travel Tracking: Why Your Data Follows You, focused on multi-device scenarios in the AtlasDays visual style." width="1536" height="1024" decoding="async" sizes="(max-width: 760px) calc(100vw - 40px), 720px" loading="lazy" />
+    </figure>
+    <!-- ARTICLE_IMAGE_RENDER_END:body-2 -->
     <p>The value of seamless sync becomes clear when you look at how travelers actually use their devices throughout a trip. Real-world usage rarely happens on just one device, and the moments when you need your travel data most are often the moments when your preferred device is not at hand.</p>
     <p>Consider these common scenarios:</p>
     <ul>

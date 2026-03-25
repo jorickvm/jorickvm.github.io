@@ -37,6 +37,82 @@
     html[data-theme="dark"] { --bg:#0a0b0d; --bg-card:rgba(255,255,255,0.05); --text:#f4f7fb; --muted:#b2b9c5; --muted-2:#8790a0; --line:rgba(255,255,255,0.10); --blue-soft:rgba(22,146,255,0.12); }
     html[data-theme="light"] { --bg:#f6f8fc; --bg-card:rgba(255,255,255,0.88); --text:#0d1422; --muted:#526075; --muted-2:#6c788b; --line:rgba(12,22,40,0.09); --blue-soft:rgba(22,146,255,0.08); }
   </style>
+<!-- ARTICLE_IMAGE_STYLES_START -->
+  <style id="atlasdays-article-image-styles">
+    .atlasdays-article-image {
+      margin: 26px 0 30px;
+      padding: 10px;
+      border-radius: 28px;
+      border: 1px solid var(--line, rgba(255,255,255,0.10));
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)),
+        radial-gradient(circle at top left, rgba(22,146,255,0.12), transparent 58%);
+      box-shadow: 0 18px 42px rgba(0,0,0,0.12);
+    }
+    .atlasdays-article-image img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(214, 232, 248, 0.42);
+      box-shadow: 0 18px 42px rgba(0,0,0,0.18);
+    }
+    .atlasdays-article-image.is-hero {
+      margin-top: 22px;
+      margin-bottom: 34px;
+    }
+    .atlasdays-article-image figcaption {
+      margin-top: 10px;
+      color: var(--muted-2, var(--muted));
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+    @media (prefers-color-scheme: light) {
+      .atlasdays-article-image {
+        border-color: rgba(22,146,255,0.14);
+        background:
+          linear-gradient(180deg, rgba(22,146,255,0.10), rgba(22,146,255,0.03)),
+          linear-gradient(180deg, rgba(232,242,252,0.88), rgba(244,248,253,0.92));
+        box-shadow: 0 14px 30px rgba(15, 28, 48, 0.08);
+      }
+      .atlasdays-article-image img {
+        border-color: rgba(22,146,255,0.10);
+        background: rgba(226, 238, 248, 0.82);
+        box-shadow: 0 14px 28px rgba(15, 28, 48, 0.10);
+      }
+    }
+    html[data-theme="light"] .atlasdays-article-image {
+      border-color: rgba(22,146,255,0.14);
+      background:
+        linear-gradient(180deg, rgba(22,146,255,0.10), rgba(22,146,255,0.03)),
+        linear-gradient(180deg, rgba(232,242,252,0.88), rgba(244,248,253,0.92));
+      box-shadow: 0 14px 30px rgba(15, 28, 48, 0.08);
+    }
+    html[data-theme="light"] .atlasdays-article-image img {
+      border-color: rgba(22,146,255,0.10);
+      background: rgba(226, 238, 248, 0.82);
+      box-shadow: 0 14px 28px rgba(15, 28, 48, 0.10);
+    }
+    @media (max-width: 640px) {
+      .atlasdays-article-image {
+        margin: 22px 0 26px;
+        padding: 8px;
+        border-radius: 24px;
+      }
+      .atlasdays-article-image img {
+        border-radius: 18px;
+      }
+      .atlasdays-article-image.is-hero {
+        margin-top: 18px;
+        margin-bottom: 28px;
+      }
+      .atlasdays-article-image figcaption {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+  <!-- ARTICLE_IMAGE_STYLES_END -->
 </head>
 <body>
   <header class="top-bar"><div class="top-bar-inner"><a class="brand" href="/"><img class="logo-dark" src="../assets/logo_dark.png?v=20260325a" alt="AtlasDays logo" width="1024" height="1024" /><img class="logo-light" src="../assets/logo_light.png?v=20260325a" alt="AtlasDays logo" width="1024" height="1024" /><span>AtlasDays</span></a><div style="display:flex;align-items:center;gap:16px"><a href="/help/" style="color:var(--muted);font-size:0.92rem">Help</a><button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()"><svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></div></div></header>
@@ -44,6 +120,13 @@
     <nav class="breadcrumb"><a href="/">AtlasDays</a> / <a href="/help/">Help</a></nav>
     <h1>Privacy, Location, and Sync</h1>
     <p class="subtitle">How AtlasDays handles on-device data, optional iCloud sync, local country detection, and what the app does not store.</p>
+
+    <!-- ARTICLE_IMAGE:hero -->
+    <!-- ARTICLE_IMAGE_RENDER_START:hero -->
+    <figure class="atlasdays-article-image is-hero" data-article-image-slot="hero">
+      <img src="../assets/article-images/help/privacy-location-and-sync/hero.webp" alt="Hero illustration for Privacy, Location, and Sync, showing locked-device privacy, optional cloud sync, and location-pin motifs in the AtlasDays visual style." width="1536" height="1024" decoding="async" sizes="(max-width: 760px) calc(100vw - 40px), 720px" loading="eager" fetchpriority="high" />
+    </figure>
+    <!-- ARTICLE_IMAGE_RENDER_END:hero -->
 
     <h2>No account required</h2>
     <p>The AtlasDays app is designed so you can use it without creating an account or signing in to an AtlasDays service.</p>
@@ -57,6 +140,12 @@
     <p>If you reinstall the app and iCloud sync was previously enabled, your trip data will recover from CloudKit once you turn the sync toggle back on.</p>
 
     <h2>How country detection works</h2>
+    <!-- ARTICLE_IMAGE:body-1 -->
+    <!-- ARTICLE_IMAGE_RENDER_START:body-1 -->
+    <figure class="atlasdays-article-image is-body" data-article-image-slot="body-1">
+      <img src="../assets/article-images/help/privacy-location-and-sync/body-1.webp" alt="Supporting illustration for Privacy, Location, and Sync, focused on how country detection works in the AtlasDays visual style." width="1536" height="1024" decoding="async" sizes="(max-width: 760px) calc(100vw - 40px), 720px" loading="lazy" />
+    </figure>
+    <!-- ARTICLE_IMAGE_RENDER_END:body-1 -->
     <p>AtlasDays can optionally detect that you have entered a new country and suggest a trip. It uses iOS significant location changes — the same low-power system other travel apps use — not continuous GPS tracking. The app only wakes up when iOS determines you have moved a significant distance, then checks which country you are in. This has minimal battery impact.</p>
     <p>When a new country is detected, the app suggests a trip either as an in-app banner (if the app is open) or as a notification (if it is in the background). You choose whether to accept, edit, or dismiss the suggestion. The app only suggests once per country crossing — it will not re-suggest the same country until you leave and re-enter.</p>
     <ul>

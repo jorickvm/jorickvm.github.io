@@ -4,15 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Getting Started with AtlasDays — Help</title>
-  <meta name="description" content="How to start using AtlasDays: timeline, dashboard, trackers, first trips, and how to choose between Exact Dates and Month & Year." />
+  <meta name="description" content="How to start using AtlasDays: timeline, dashboard, trackers, first trips, and how to choose between Exact Dates and Year." />
   <meta property="og:title" content="Getting Started with AtlasDays" />
-  <meta property="og:description" content="How to start using AtlasDays: timeline, dashboard, trackers, first trips, and how to choose between Exact Dates and Month & Year." />
+  <meta property="og:description" content="How to start using AtlasDays: timeline, dashboard, trackers, first trips, and how to choose between Exact Dates and Year." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/help/getting-started" />
   <meta property="og:image" content="https://atlasdays.app/assets/home-hero-dashboard.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Getting Started with AtlasDays" />
-  <meta name="twitter:description" content="How to start using AtlasDays: timeline, dashboard, trackers, first trips, and how to choose between Exact Dates and Month & Year." />
+  <meta name="twitter:description" content="How to start using AtlasDays: timeline, dashboard, trackers, first trips, and how to choose between Exact Dates and Year." />
   <meta name="twitter:image" content="https://atlasdays.app/assets/home-hero-dashboard.png" />
   <link rel="canonical" href="https://atlasdays.app/help/getting-started" />
   <link rel="icon" type="image/png" href="../assets/favicon_light.png?v=20260325a" media="(prefers-color-scheme: light)" />
@@ -53,6 +53,82 @@
     html[data-theme="dark"] { --bg:#0a0b0d; --bg-card:rgba(255,255,255,0.05); --text:#f4f7fb; --muted:#b2b9c5; --muted-2:#8790a0; --line:rgba(255,255,255,0.10); --blue-soft:rgba(22,146,255,0.12); }
     html[data-theme="light"] { --bg:#f6f8fc; --bg-card:rgba(255,255,255,0.88); --text:#0d1422; --muted:#526075; --muted-2:#6c788b; --line:rgba(12,22,40,0.09); --blue-soft:rgba(22,146,255,0.08); }
   </style>
+<!-- ARTICLE_IMAGE_STYLES_START -->
+  <style id="atlasdays-article-image-styles">
+    .atlasdays-article-image {
+      margin: 26px 0 30px;
+      padding: 10px;
+      border-radius: 28px;
+      border: 1px solid var(--line, rgba(255,255,255,0.10));
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)),
+        radial-gradient(circle at top left, rgba(22,146,255,0.12), transparent 58%);
+      box-shadow: 0 18px 42px rgba(0,0,0,0.12);
+    }
+    .atlasdays-article-image img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(214, 232, 248, 0.42);
+      box-shadow: 0 18px 42px rgba(0,0,0,0.18);
+    }
+    .atlasdays-article-image.is-hero {
+      margin-top: 22px;
+      margin-bottom: 34px;
+    }
+    .atlasdays-article-image figcaption {
+      margin-top: 10px;
+      color: var(--muted-2, var(--muted));
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+    @media (prefers-color-scheme: light) {
+      .atlasdays-article-image {
+        border-color: rgba(22,146,255,0.14);
+        background:
+          linear-gradient(180deg, rgba(22,146,255,0.10), rgba(22,146,255,0.03)),
+          linear-gradient(180deg, rgba(232,242,252,0.88), rgba(244,248,253,0.92));
+        box-shadow: 0 14px 30px rgba(15, 28, 48, 0.08);
+      }
+      .atlasdays-article-image img {
+        border-color: rgba(22,146,255,0.10);
+        background: rgba(226, 238, 248, 0.82);
+        box-shadow: 0 14px 28px rgba(15, 28, 48, 0.10);
+      }
+    }
+    html[data-theme="light"] .atlasdays-article-image {
+      border-color: rgba(22,146,255,0.14);
+      background:
+        linear-gradient(180deg, rgba(22,146,255,0.10), rgba(22,146,255,0.03)),
+        linear-gradient(180deg, rgba(232,242,252,0.88), rgba(244,248,253,0.92));
+      box-shadow: 0 14px 30px rgba(15, 28, 48, 0.08);
+    }
+    html[data-theme="light"] .atlasdays-article-image img {
+      border-color: rgba(22,146,255,0.10);
+      background: rgba(226, 238, 248, 0.82);
+      box-shadow: 0 14px 28px rgba(15, 28, 48, 0.10);
+    }
+    @media (max-width: 640px) {
+      .atlasdays-article-image {
+        margin: 22px 0 26px;
+        padding: 8px;
+        border-radius: 24px;
+      }
+      .atlasdays-article-image img {
+        border-radius: 18px;
+      }
+      .atlasdays-article-image.is-hero {
+        margin-top: 18px;
+        margin-bottom: 28px;
+      }
+      .atlasdays-article-image figcaption {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+  <!-- ARTICLE_IMAGE_STYLES_END -->
 </head>
 <body>
   <header class="top-bar">
@@ -80,6 +156,13 @@
     <h1>Getting Started with AtlasDays</h1>
     <p class="subtitle">What AtlasDays is for, what the three tabs do, and how to build a useful record without overthinking the setup.</p>
 
+    <!-- ARTICLE_IMAGE:hero -->
+    <!-- ARTICLE_IMAGE_RENDER_START:hero -->
+    <figure class="atlasdays-article-image is-hero" data-article-image-slot="hero">
+      <img src="../assets/article-images/help/getting-started/hero.webp" alt="Hero illustration for Getting Started with AtlasDays, showing world map, summary cards, and country-highlight motifs in the AtlasDays visual style." width="1536" height="1024" decoding="async" sizes="(max-width: 760px) calc(100vw - 40px), 720px" loading="eager" fetchpriority="high" />
+    </figure>
+    <!-- ARTICLE_IMAGE_RENDER_END:hero -->
+
     <h2>What AtlasDays is designed to solve</h2>
     <p>AtlasDays is for people who need a reliable country-by-country travel record. That usually means one or more of these things matter to you: visa day limits, residence or tax presence thresholds, border questions, or reconstructing travel history later for paperwork.</p>
     <p>The app is built around one idea: <strong>keep the trip record itself clean first</strong>. Once your trip history is solid, the day counts, map, dashboard, and trackers become useful automatically.</p>
@@ -101,7 +184,13 @@
     </ol>
 
     <h2>Choose the right trip mode first</h2>
-    <p>If a trip affects a real count, enter it as <strong>Exact Dates</strong>. Use <strong>Month &amp; Year</strong> when your memory is rough and you want to preserve the trip honestly without making up precise days. Exact-date trips can be ongoing or upcoming. Approximate trips cannot be future-dated.</p>
+    <!-- ARTICLE_IMAGE:body-1 -->
+    <!-- ARTICLE_IMAGE_RENDER_START:body-1 -->
+    <figure class="atlasdays-article-image is-body" data-article-image-slot="body-1">
+      <img src="../assets/article-images/help/getting-started/body-1.webp" alt="Supporting illustration for Getting Started with AtlasDays, focused on choose the right trip mode first in the AtlasDays visual style." width="1536" height="1024" decoding="async" sizes="(max-width: 760px) calc(100vw - 40px), 720px" loading="lazy" />
+    </figure>
+    <!-- ARTICLE_IMAGE_RENDER_END:body-1 -->
+    <p>If a trip affects a real count, enter it as <strong>Exact Dates</strong>. Use <strong>Year</strong> when your memory is rough and you want to preserve the trip honestly without making up precise days. If you cannot even place the trip in a year yet, choose <strong>Unknown</strong> in the year picker. Exact-date trips can be ongoing or upcoming. Year entries cannot be future-dated.</p>
     <p>That distinction matters later: exact trips feed precise day totals and tracker math, while approximate trips preserve history and context.</p>
 
     <div class="callout">

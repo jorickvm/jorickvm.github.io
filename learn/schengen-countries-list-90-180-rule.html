@@ -262,6 +262,82 @@
     html[data-theme="light"] .icon-sun, html[data-theme="light"] .logo-dark { display: none; }
     html[data-theme="light"] .icon-moon, html[data-theme="light"] .logo-light { display: block; }
   </style>
+<!-- ARTICLE_IMAGE_STYLES_START -->
+  <style id="atlasdays-article-image-styles">
+    .atlasdays-article-image {
+      margin: 26px 0 30px;
+      padding: 10px;
+      border-radius: 28px;
+      border: 1px solid var(--line, rgba(255,255,255,0.10));
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)),
+        radial-gradient(circle at top left, rgba(22,146,255,0.12), transparent 58%);
+      box-shadow: 0 18px 42px rgba(0,0,0,0.12);
+    }
+    .atlasdays-article-image img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(214, 232, 248, 0.42);
+      box-shadow: 0 18px 42px rgba(0,0,0,0.18);
+    }
+    .atlasdays-article-image.is-hero {
+      margin-top: 22px;
+      margin-bottom: 34px;
+    }
+    .atlasdays-article-image figcaption {
+      margin-top: 10px;
+      color: var(--muted-2, var(--muted));
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+    @media (prefers-color-scheme: light) {
+      .atlasdays-article-image {
+        border-color: rgba(22,146,255,0.14);
+        background:
+          linear-gradient(180deg, rgba(22,146,255,0.10), rgba(22,146,255,0.03)),
+          linear-gradient(180deg, rgba(232,242,252,0.88), rgba(244,248,253,0.92));
+        box-shadow: 0 14px 30px rgba(15, 28, 48, 0.08);
+      }
+      .atlasdays-article-image img {
+        border-color: rgba(22,146,255,0.10);
+        background: rgba(226, 238, 248, 0.82);
+        box-shadow: 0 14px 28px rgba(15, 28, 48, 0.10);
+      }
+    }
+    html[data-theme="light"] .atlasdays-article-image {
+      border-color: rgba(22,146,255,0.14);
+      background:
+        linear-gradient(180deg, rgba(22,146,255,0.10), rgba(22,146,255,0.03)),
+        linear-gradient(180deg, rgba(232,242,252,0.88), rgba(244,248,253,0.92));
+      box-shadow: 0 14px 30px rgba(15, 28, 48, 0.08);
+    }
+    html[data-theme="light"] .atlasdays-article-image img {
+      border-color: rgba(22,146,255,0.10);
+      background: rgba(226, 238, 248, 0.82);
+      box-shadow: 0 14px 28px rgba(15, 28, 48, 0.10);
+    }
+    @media (max-width: 640px) {
+      .atlasdays-article-image {
+        margin: 22px 0 26px;
+        padding: 8px;
+        border-radius: 24px;
+      }
+      .atlasdays-article-image img {
+        border-radius: 18px;
+      }
+      .atlasdays-article-image.is-hero {
+        margin-top: 18px;
+        margin-bottom: 28px;
+      }
+      .atlasdays-article-image figcaption {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+  <!-- ARTICLE_IMAGE_STYLES_END -->
 </head>
 <body>
   <header class="top-bar">
@@ -291,11 +367,24 @@
     <p class="subtitle">The Schengen Area members that count together under the short-stay 90/180 rule.</p>
     <p class="verified">Last verified: March 2026</p>
 
+    <!-- ARTICLE_IMAGE:hero -->
+    <!-- ARTICLE_IMAGE_RENDER_START:hero -->
+    <figure class="atlasdays-article-image is-hero" data-article-image-slot="hero">
+      <img src="../assets/article-images/learn/schengen-countries-list-90-180-rule/hero.webp" alt="Hero illustration for Schengen Countries List for the 90/180 Rule, showing Europe, a rolling calendar window, and travel-day counting motifs in the AtlasDays visual style." width="1536" height="1024" decoding="async" sizes="(max-width: 760px) calc(100vw - 40px), 720px" loading="eager" fetchpriority="high" />
+    </figure>
+    <!-- ARTICLE_IMAGE_RENDER_END:hero -->
+
     <h2>Short answer</h2>
     <p>The Schengen 90/180 rule applies across the <strong>29 countries in the Schengen Area</strong>. For short stays, your days are pooled across all of them, so time in France, Italy, and Spain all counts toward the same limit.</p>
     <p>That is why the country list matters: the rule is shared by the whole area, not reset every time you cross a border.</p>
 
     <h2>Current Schengen countries</h2>
+    <!-- ARTICLE_IMAGE:body-1 -->
+    <!-- ARTICLE_IMAGE_RENDER_START:body-1 -->
+    <figure class="atlasdays-article-image is-body" data-article-image-slot="body-1">
+      <img src="../assets/article-images/learn/schengen-countries-list-90-180-rule/body-1.webp" alt="Supporting illustration for Schengen Countries List for the 90/180 Rule, focused on current schengen countries in the AtlasDays visual style." width="1536" height="1024" decoding="async" sizes="(max-width: 760px) calc(100vw - 40px), 720px" loading="lazy" />
+    </figure>
+    <!-- ARTICLE_IMAGE_RENDER_END:body-1 -->
     <p><strong>EU Schengen countries</strong></p>
     <ul>
       <li>Austria</li>
@@ -338,6 +427,12 @@
     </div>
 
     <h2>Why this list matters</h2>
+    <!-- ARTICLE_IMAGE:body-2 -->
+    <!-- ARTICLE_IMAGE_RENDER_START:body-2 -->
+    <figure class="atlasdays-article-image is-body" data-article-image-slot="body-2">
+      <img src="../assets/article-images/learn/schengen-countries-list-90-180-rule/body-2.webp" alt="Supporting illustration for Schengen Countries List for the 90/180 Rule, focused on why this list matters in the AtlasDays visual style." width="1536" height="1024" decoding="async" sizes="(max-width: 760px) calc(100vw - 40px), 720px" loading="lazy" />
+    </figure>
+    <!-- ARTICLE_IMAGE_RENDER_END:body-2 -->
     <p>If a country is in Schengen, its days count toward the same 90-day limit as every other Schengen country. A two-week trip split between Amsterdam, Berlin, and Barcelona still uses 14 Schengen days.</p>
     <p>If a country is not in Schengen, its stay rules are separate. That is why travelers often need to distinguish between <strong>EU membership</strong> and <strong>Schengen membership</strong> before they plan a trip.</p>
 

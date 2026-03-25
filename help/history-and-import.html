@@ -4,15 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Trip Modes and Import — AtlasDays Help</title>
-  <meta name="description" content="How AtlasDays handles Exact Dates vs Month & Year trips, year-only and unknown entries, transit, and CSV import/export." />
+  <meta name="description" content="How AtlasDays handles Exact Dates vs Year trips, unknown entries, transit, and CSV import/export." />
   <meta property="og:title" content="Trip Modes and Import — AtlasDays Help" />
-  <meta property="og:description" content="How AtlasDays handles Exact Dates vs Month & Year trips, year-only and unknown entries, transit, and CSV import/export." />
+  <meta property="og:description" content="How AtlasDays handles Exact Dates vs Year trips, unknown entries, transit, and CSV import/export." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/help/history-and-import" />
   <meta property="og:image" content="https://atlasdays.app/assets/home-hero-dashboard.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Trip Modes and Import — AtlasDays Help" />
-  <meta name="twitter:description" content="How AtlasDays handles Exact Dates vs Month & Year trips, year-only and unknown entries, transit, and CSV import/export." />
+  <meta name="twitter:description" content="How AtlasDays handles Exact Dates vs Year trips, unknown entries, transit, and CSV import/export." />
   <meta name="twitter:image" content="https://atlasdays.app/assets/home-hero-dashboard.png" />
   <link rel="canonical" href="https://atlasdays.app/help/history-and-import" />
   <link rel="icon" type="image/png" href="../assets/favicon_light.png?v=20260325a" media="(prefers-color-scheme: light)" />
@@ -38,62 +38,151 @@
     html[data-theme="dark"] { --bg:#0a0b0d; --bg-card:rgba(255,255,255,0.05); --text:#f4f7fb; --muted:#b2b9c5; --muted-2:#8790a0; --line:rgba(255,255,255,0.10); --blue-soft:rgba(22,146,255,0.12); }
     html[data-theme="light"] { --bg:#f6f8fc; --bg-card:rgba(255,255,255,0.88); --text:#0d1422; --muted:#526075; --muted-2:#6c788b; --line:rgba(12,22,40,0.09); --blue-soft:rgba(22,146,255,0.08); }
   </style>
+<!-- ARTICLE_IMAGE_STYLES_START -->
+  <style id="atlasdays-article-image-styles">
+    .atlasdays-article-image {
+      margin: 26px 0 30px;
+      padding: 10px;
+      border-radius: 28px;
+      border: 1px solid var(--line, rgba(255,255,255,0.10));
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)),
+        radial-gradient(circle at top left, rgba(22,146,255,0.12), transparent 58%);
+      box-shadow: 0 18px 42px rgba(0,0,0,0.12);
+    }
+    .atlasdays-article-image img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(214, 232, 248, 0.42);
+      box-shadow: 0 18px 42px rgba(0,0,0,0.18);
+    }
+    .atlasdays-article-image.is-hero {
+      margin-top: 22px;
+      margin-bottom: 34px;
+    }
+    .atlasdays-article-image figcaption {
+      margin-top: 10px;
+      color: var(--muted-2, var(--muted));
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+    @media (prefers-color-scheme: light) {
+      .atlasdays-article-image {
+        border-color: rgba(22,146,255,0.14);
+        background:
+          linear-gradient(180deg, rgba(22,146,255,0.10), rgba(22,146,255,0.03)),
+          linear-gradient(180deg, rgba(232,242,252,0.88), rgba(244,248,253,0.92));
+        box-shadow: 0 14px 30px rgba(15, 28, 48, 0.08);
+      }
+      .atlasdays-article-image img {
+        border-color: rgba(22,146,255,0.10);
+        background: rgba(226, 238, 248, 0.82);
+        box-shadow: 0 14px 28px rgba(15, 28, 48, 0.10);
+      }
+    }
+    html[data-theme="light"] .atlasdays-article-image {
+      border-color: rgba(22,146,255,0.14);
+      background:
+        linear-gradient(180deg, rgba(22,146,255,0.10), rgba(22,146,255,0.03)),
+        linear-gradient(180deg, rgba(232,242,252,0.88), rgba(244,248,253,0.92));
+      box-shadow: 0 14px 30px rgba(15, 28, 48, 0.08);
+    }
+    html[data-theme="light"] .atlasdays-article-image img {
+      border-color: rgba(22,146,255,0.10);
+      background: rgba(226, 238, 248, 0.82);
+      box-shadow: 0 14px 28px rgba(15, 28, 48, 0.10);
+    }
+    @media (max-width: 640px) {
+      .atlasdays-article-image {
+        margin: 22px 0 26px;
+        padding: 8px;
+        border-radius: 24px;
+      }
+      .atlasdays-article-image img {
+        border-radius: 18px;
+      }
+      .atlasdays-article-image.is-hero {
+        margin-top: 18px;
+        margin-bottom: 28px;
+      }
+      .atlasdays-article-image figcaption {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+  <!-- ARTICLE_IMAGE_STYLES_END -->
 </head>
 <body>
   <header class="top-bar"><div class="top-bar-inner"><a class="brand" href="/"><img class="logo-dark" src="../assets/logo_dark.png?v=20260325a" alt="AtlasDays logo" width="1024" height="1024" /><img class="logo-light" src="../assets/logo_light.png?v=20260325a" alt="AtlasDays logo" width="1024" height="1024" /><span>AtlasDays</span></a><div style="display:flex;align-items:center;gap:16px"><a href="/help/" style="color:var(--muted);font-size:0.92rem">Help</a><button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()"><svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></div></div></header>
   <article>
     <nav class="breadcrumb"><a href="/">AtlasDays</a> / <a href="/help/">Help</a></nav>
     <h1>Trip Modes and Import</h1>
-    <p class="subtitle">How Exact Dates and Month &amp; Year differ, when approximate history still helps, and how CSV import matches those same modes.</p>
+    <p class="subtitle">How Exact Dates and Year differ, how Unknown fits in, and how CSV import matches those same formats.</p>
+
+    <!-- ARTICLE_IMAGE:hero -->
+    <!-- ARTICLE_IMAGE_RENDER_START:hero -->
+    <figure class="atlasdays-article-image is-hero" data-article-image-slot="hero">
+      <img src="../assets/article-images/help/history-and-import/hero.webp" alt="Hero illustration for Trip Modes and Import, showing calendar fragments, timeline cards, and structured travel-record motifs in the AtlasDays visual style." width="1536" height="1024" decoding="async" sizes="(max-width: 760px) calc(100vw - 40px), 720px" loading="eager" fetchpriority="high" />
+    </figure>
+    <!-- ARTICLE_IMAGE_RENDER_END:hero -->
 
     <h2>Why AtlasDays has two main trip modes</h2>
-    <p>The app uses two primary entry modes because real travel history usually comes in two qualities: trips you know exactly, and trips you only remember approximately. AtlasDays lets you store both without forcing fake precision.</p>
+    <p>The app uses two primary entry modes because real travel history usually comes in two qualities: trips you know exactly, and trips you can only place by year or not confidently at all. AtlasDays lets you store both without forcing fake precision.</p>
 
     <h2>Exact Dates</h2>
+    <!-- ARTICLE_IMAGE:body-1 -->
+    <!-- ARTICLE_IMAGE_RENDER_START:body-1 -->
+    <figure class="atlasdays-article-image is-body" data-article-image-slot="body-1">
+      <img src="../assets/article-images/help/history-and-import/body-1.webp" alt="Supporting illustration for Trip Modes and Import, focused on exact dates in the AtlasDays visual style." width="1536" height="1024" decoding="async" sizes="(max-width: 760px) calc(100vw - 40px), 720px" loading="lazy" />
+    </figure>
+    <!-- ARTICLE_IMAGE_RENDER_END:body-1 -->
     <p>Use <strong>Exact Dates</strong> when you know the actual arrival and departure dates, or when you want to pre-add a future trip. This is the only mode that supports <strong>ongoing</strong> trips and <strong>upcoming</strong> trips.</p>
     <p>Exact-date trips are also what power precise tracker math, dashboard day totals, and the most reliable country-day calculations. If the number matters for a visa, tax, or border question, this is the mode you want whenever possible.</p>
 
-    <h2>Month &amp; Year</h2>
-    <p>Use <strong>Month &amp; Year</strong> when you know the rough window but not the exact days. You can store a single month, a month-to-month range, or clear both months and keep only the year, which effectively becomes a <strong>year-only</strong> trip.</p>
+    <h2>Year</h2>
+    <p>Use <strong>Year</strong> when you know which year a trip belongs in but not the exact arrival and departure dates. You can save a single year or a multi-year range when a trip clearly spans more than one calendar year.</p>
     <p>This mode is designed for reconstructed history. It keeps the record honest without pretending you know the exact entry and exit days.</p>
     <ul>
-      <li>Approximate trips cannot be saved in the future.</li>
-      <li>Either both sides have a month, or neither side does.</li>
-      <li>Month &amp; Year trips help with history and context, but they do not generate exact day counts.</li>
+      <li>Year entries cannot be saved in the future.</li>
+      <li>The start and end values are years only. There is no separate month picker anymore.</li>
+      <li>Year entries help with history and context, but they do not generate exact day counts.</li>
     </ul>
 
-    <h2>Dates Unknown</h2>
-    <p>Inside Month &amp; Year mode, you can turn on <strong>Dates Unknown</strong>. That creates a country-only memory with no stored date fields. It is useful when you know you visited a place but cannot place it confidently in time yet.</p>
+    <h2>Unknown</h2>
+    <p>Inside <strong>Year</strong>, the year picker includes an <strong>Unknown</strong> option. Choosing it creates a country-only memory with no stored date fields. It is useful when you know you visited a place but cannot place it confidently in time yet.</p>
     <p>Unknown-date trips appear at the bottom of the timeline in the <strong>No Date</strong> section. They preserve the fact of the visit, but they do not drive exact-day calculations.</p>
 
     <div class="callout">
-      <p><strong>Best practice:</strong> if a trip affects a real limit, keep it exact. Use Month &amp; Year, year-only, or unknown entries to preserve incomplete history without contaminating the precise day math.</p>
+      <p><strong>Best practice:</strong> if a trip affects a real limit, keep it exact. Use Year or Unknown entries to preserve incomplete history without contaminating the precise day math.</p>
     </div>
 
     <h2>How the mode changes what you see</h2>
     <ul>
       <li><strong>Ongoing and Upcoming sections:</strong> only exact-date trips can appear there.</li>
-      <li><strong>Year sections:</strong> month-and-year and year-only trips are grouped into the relevant year.</li>
+      <li><strong>Year sections:</strong> year entries are grouped into a year section instead of Ongoing or Upcoming.</li>
       <li><strong>No Date section:</strong> unknown-date trips go there.</li>
-      <li><strong>Dashboard custom ranges:</strong> approximate trips only appear if your selected range fully contains the trip's possible window. AtlasDays avoids pretending a precise day count when the real date could have fallen outside the range.</li>
+      <li><strong>Dashboard custom ranges:</strong> year entries only appear if your selected range fully contains at least one year they could fall into. AtlasDays avoids pretending a precise day count when the real date could have fallen outside the range.</li>
     </ul>
 
     <h2>Transit</h2>
-    <p>Both Exact Dates and Month &amp; Year trips can be marked as <strong>Transit</strong> from the extra options area. Transit entries stay in your history but are excluded from day counts.</p>
+    <p>Both Exact Dates and Year entries can be marked as <strong>Transit</strong> from the extra options area. Transit entries stay in your history but are excluded from day counts.</p>
 
     <h2>CSV import and export</h2>
-    <p>The CSV format mirrors the same four data shapes the app supports:</p>
+    <p>The CSV format mirrors the same date models the app stores:</p>
     <ul>
       <li><strong>Exact dates:</strong> fill Start Date and End Date.</li>
       <li><strong>Ongoing exact trip:</strong> fill Start Date and leave End Date empty.</li>
-      <li><strong>Month &amp; Year:</strong> fill the month and year columns, leave exact-date columns empty.</li>
-      <li><strong>Year only:</strong> fill only the year columns.</li>
-      <li><strong>Unknown date:</strong> leave all date and month/year columns empty.</li>
+      <li><strong>Year:</strong> put a 4-digit year in Start Date. Add End Date only if the trip spans multiple years.</li>
+      <li><strong>Unknown date:</strong> leave both Start Date and End Date empty.</li>
     </ul>
-    <p>AtlasDays does not let you mix exact-date columns with approximate month/year columns in the same imported row. One row must use one precision model.</p>
+    <p>AtlasDays does not let you mix exact dates with year-only values in the same imported row. One row must use one precision model.</p>
 
     <h2>Import details</h2>
-    <p>The CSV importer accepts both full country names and ISO country codes, and auto-detects whether your file uses commas or semicolons as the delimiter. Month columns accept names (January, Jan) or numbers (1, 01). The app shows a preview with per-row validation — unknown countries, invalid dates, and format problems are flagged before you confirm.</p>
+    <p>The CSV importer accepts both full country names and ISO country codes, and auto-detects whether your file uses commas, semicolons, or tabs as the delimiter. The current export format is five columns: <strong>Country</strong>, <strong>Start Date</strong>, <strong>End Date</strong>, <strong>Airside</strong>, and <strong>Notes</strong>. Use <code>yyyy-mm-dd</code> for exact trips, a bare 4-digit year for Year entries, or leave both date fields empty for Unknown.</p>
+    <p>Older 9-column CSV files with month and year columns still import for backward compatibility, but AtlasDays now ignores the legacy month columns. The app shows a preview with per-row validation — unknown countries, invalid dates, and format problems are flagged before you confirm.</p>
     <p>If you import trips that already exist in your history, duplicates are automatically skipped. You can also download a sample CSV template from the import screen that shows examples of all date precisions.</p>
 
     <h2>Overlap detection</h2>

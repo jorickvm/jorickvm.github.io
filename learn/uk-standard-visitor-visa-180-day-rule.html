@@ -262,6 +262,82 @@
     html[data-theme="light"] .icon-sun, html[data-theme="light"] .logo-dark { display: none; }
     html[data-theme="light"] .icon-moon, html[data-theme="light"] .logo-light { display: block; }
   </style>
+<!-- ARTICLE_IMAGE_STYLES_START -->
+  <style id="atlasdays-article-image-styles">
+    .atlasdays-article-image {
+      margin: 26px 0 30px;
+      padding: 10px;
+      border-radius: 28px;
+      border: 1px solid var(--line, rgba(255,255,255,0.10));
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)),
+        radial-gradient(circle at top left, rgba(22,146,255,0.12), transparent 58%);
+      box-shadow: 0 18px 42px rgba(0,0,0,0.12);
+    }
+    .atlasdays-article-image img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(214, 232, 248, 0.42);
+      box-shadow: 0 18px 42px rgba(0,0,0,0.18);
+    }
+    .atlasdays-article-image.is-hero {
+      margin-top: 22px;
+      margin-bottom: 34px;
+    }
+    .atlasdays-article-image figcaption {
+      margin-top: 10px;
+      color: var(--muted-2, var(--muted));
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+    @media (prefers-color-scheme: light) {
+      .atlasdays-article-image {
+        border-color: rgba(22,146,255,0.14);
+        background:
+          linear-gradient(180deg, rgba(22,146,255,0.10), rgba(22,146,255,0.03)),
+          linear-gradient(180deg, rgba(232,242,252,0.88), rgba(244,248,253,0.92));
+        box-shadow: 0 14px 30px rgba(15, 28, 48, 0.08);
+      }
+      .atlasdays-article-image img {
+        border-color: rgba(22,146,255,0.10);
+        background: rgba(226, 238, 248, 0.82);
+        box-shadow: 0 14px 28px rgba(15, 28, 48, 0.10);
+      }
+    }
+    html[data-theme="light"] .atlasdays-article-image {
+      border-color: rgba(22,146,255,0.14);
+      background:
+        linear-gradient(180deg, rgba(22,146,255,0.10), rgba(22,146,255,0.03)),
+        linear-gradient(180deg, rgba(232,242,252,0.88), rgba(244,248,253,0.92));
+      box-shadow: 0 14px 30px rgba(15, 28, 48, 0.08);
+    }
+    html[data-theme="light"] .atlasdays-article-image img {
+      border-color: rgba(22,146,255,0.10);
+      background: rgba(226, 238, 248, 0.82);
+      box-shadow: 0 14px 28px rgba(15, 28, 48, 0.10);
+    }
+    @media (max-width: 640px) {
+      .atlasdays-article-image {
+        margin: 22px 0 26px;
+        padding: 8px;
+        border-radius: 24px;
+      }
+      .atlasdays-article-image img {
+        border-radius: 18px;
+      }
+      .atlasdays-article-image.is-hero {
+        margin-top: 18px;
+        margin-bottom: 28px;
+      }
+      .atlasdays-article-image figcaption {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+  <!-- ARTICLE_IMAGE_STYLES_END -->
 </head>
 <body>
   <header class="top-bar">
@@ -290,12 +366,25 @@
     <p class="subtitle">How the UK's visitor rules work, why there is no formal 180-day-in-12-month formula, and what border officers actually look for.</p>
     <p class="verified">Last reviewed: March 24, 2026</p>
 
+    <!-- ARTICLE_IMAGE:hero -->
+    <!-- ARTICLE_IMAGE_RENDER_START:hero -->
+    <figure class="atlasdays-article-image is-hero" data-article-image-slot="hero">
+      <img src="../assets/article-images/learn/uk-standard-visitor-visa-180-day-rule/hero.webp" alt="Hero illustration for UK Standard Visitor: How Length of Stay Is Assessed, showing UK travel-rule motifs, duration bars, and trip checkpoints in the AtlasDays visual style." width="1536" height="1024" decoding="async" sizes="(max-width: 760px) calc(100vw - 40px), 720px" loading="eager" fetchpriority="high" />
+    </figure>
+    <!-- ARTICLE_IMAGE_RENDER_END:hero -->
+
     <h2>What is the UK Standard Visitor route?</h2>
     <p>The UK Standard Visitor route allows travel to the United Kingdom for tourism, family visits, business meetings, short courses of study, medical treatment, and a limited set of other visitor activities. A visit is usually limited to <strong>up to 6 months</strong>.</p>
     <p>Many nationalities can enter the UK without applying for a visitor visa in advance. Others need a Standard Visitor visa before travel. Either way, the same visitor rules apply when UK authorities decide whether you can enter and how long you may stay.</p>
     <p>Unlike a work visa or residence permission, visitor status is for genuine visits. You are expected to leave at the end of the visit and not use repeated trips to make the UK your main home.</p>
 
     <h2>Is there a formal "180 days in 12 months" rule?</h2>
+    <!-- ARTICLE_IMAGE:body-2 -->
+    <!-- ARTICLE_IMAGE_RENDER_START:body-2 -->
+    <figure class="atlasdays-article-image is-body" data-article-image-slot="body-2">
+      <img src="../assets/article-images/learn/uk-standard-visitor-visa-180-day-rule/body-2.webp" alt="Supporting illustration for UK Standard Visitor: How Length of Stay Is Assessed, focused on is there a formal "180 days in 12 months" rule? in the AtlasDays visual style." width="1536" height="1024" decoding="async" sizes="(max-width: 760px) calc(100vw - 40px), 720px" loading="lazy" />
+    </figure>
+    <!-- ARTICLE_IMAGE_RENDER_END:body-2 -->
     <p><strong>No.</strong> The UK visitor rules do not create a Schengen-style rolling window and do not say that you automatically fail after 180 days in any 12-month period. The legal rule is simpler: a Standard Visitor stay is usually limited to up to 6 months per visit.</p>
     <p>What makes the UK different is discretion. Border Force officers and Home Office caseworkers look at your overall travel pattern to decide whether you are still a <strong>genuine visitor</strong>. Frequent or successive visits can cause problems if they suggest that you are effectively living in the UK through repeated entries.</p>
     <p>That is why people talk about an "unwritten 180-day rule." It is really a shorthand for enforcement risk, not a formal threshold written into the rules. Long visits, repeated returns after short absences, and weak ties outside the UK are what increase that risk.</p>
@@ -305,6 +394,12 @@
     </div>
 
     <h2>How it differs from the Schengen rule</h2>
+    <!-- ARTICLE_IMAGE:body-1 -->
+    <!-- ARTICLE_IMAGE_RENDER_START:body-1 -->
+    <figure class="atlasdays-article-image is-body" data-article-image-slot="body-1">
+      <img src="../assets/article-images/learn/uk-standard-visitor-visa-180-day-rule/body-1.webp" alt="Supporting illustration for UK Standard Visitor: How Length of Stay Is Assessed, focused on how it differs from the schengen rule in the AtlasDays visual style." width="1536" height="1024" decoding="async" sizes="(max-width: 760px) calc(100vw - 40px), 720px" loading="lazy" />
+    </figure>
+    <!-- ARTICLE_IMAGE_RENDER_END:body-1 -->
     <p>In the Schengen Area, you can count your remaining days precisely using the rolling 90/180-day window. The UK offers much less certainty. Key differences include:</p>
     <ul>
       <li><strong>No fixed rolling window:</strong> Border officers use judgment, not a Schengen-style calculator.</li>

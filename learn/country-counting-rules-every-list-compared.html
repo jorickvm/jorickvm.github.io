@@ -262,6 +262,82 @@
     html[data-theme="light"] .icon-sun, html[data-theme="light"] .logo-dark { display: none; }
     html[data-theme="light"] .icon-moon, html[data-theme="light"] .logo-light { display: block; }
   </style>
+<!-- ARTICLE_IMAGE_STYLES_START -->
+  <style id="atlasdays-article-image-styles">
+    .atlasdays-article-image {
+      margin: 26px 0 30px;
+      padding: 10px;
+      border-radius: 28px;
+      border: 1px solid var(--line, rgba(255,255,255,0.10));
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)),
+        radial-gradient(circle at top left, rgba(22,146,255,0.12), transparent 58%);
+      box-shadow: 0 18px 42px rgba(0,0,0,0.12);
+    }
+    .atlasdays-article-image img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(214, 232, 248, 0.42);
+      box-shadow: 0 18px 42px rgba(0,0,0,0.18);
+    }
+    .atlasdays-article-image.is-hero {
+      margin-top: 22px;
+      margin-bottom: 34px;
+    }
+    .atlasdays-article-image figcaption {
+      margin-top: 10px;
+      color: var(--muted-2, var(--muted));
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+    @media (prefers-color-scheme: light) {
+      .atlasdays-article-image {
+        border-color: rgba(22,146,255,0.14);
+        background:
+          linear-gradient(180deg, rgba(22,146,255,0.10), rgba(22,146,255,0.03)),
+          linear-gradient(180deg, rgba(232,242,252,0.88), rgba(244,248,253,0.92));
+        box-shadow: 0 14px 30px rgba(15, 28, 48, 0.08);
+      }
+      .atlasdays-article-image img {
+        border-color: rgba(22,146,255,0.10);
+        background: rgba(226, 238, 248, 0.82);
+        box-shadow: 0 14px 28px rgba(15, 28, 48, 0.10);
+      }
+    }
+    html[data-theme="light"] .atlasdays-article-image {
+      border-color: rgba(22,146,255,0.14);
+      background:
+        linear-gradient(180deg, rgba(22,146,255,0.10), rgba(22,146,255,0.03)),
+        linear-gradient(180deg, rgba(232,242,252,0.88), rgba(244,248,253,0.92));
+      box-shadow: 0 14px 30px rgba(15, 28, 48, 0.08);
+    }
+    html[data-theme="light"] .atlasdays-article-image img {
+      border-color: rgba(22,146,255,0.10);
+      background: rgba(226, 238, 248, 0.82);
+      box-shadow: 0 14px 28px rgba(15, 28, 48, 0.10);
+    }
+    @media (max-width: 640px) {
+      .atlasdays-article-image {
+        margin: 22px 0 26px;
+        padding: 8px;
+        border-radius: 24px;
+      }
+      .atlasdays-article-image img {
+        border-radius: 18px;
+      }
+      .atlasdays-article-image.is-hero {
+        margin-top: 18px;
+        margin-bottom: 28px;
+      }
+      .atlasdays-article-image figcaption {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+  <!-- ARTICLE_IMAGE_STYLES_END -->
 </head>
 <body>
   <header class="top-bar">
@@ -290,7 +366,20 @@
     <p class="subtitle">UN, ISO, FIFA, Olympics, TCC, NomadMania — every system counts differently. Here's what each one includes and why it matters.</p>
     <p class="verified">Last verified: March 2026</p>
 
+    <!-- ARTICLE_IMAGE:hero -->
+    <!-- ARTICLE_IMAGE_RENDER_START:hero -->
+    <figure class="atlasdays-article-image is-hero" data-article-image-slot="hero">
+      <img src="../assets/article-images/learn/country-counting-rules-every-list-compared/hero.webp" alt="Hero illustration for Country Counting Rules: Every Major List Compared, showing globe fragments, country tiles, and route-node comparison motifs in the AtlasDays visual style." width="1536" height="1024" decoding="async" sizes="(max-width: 760px) calc(100vw - 40px), 720px" loading="eager" fetchpriority="high" />
+    </figure>
+    <!-- ARTICLE_IMAGE_RENDER_END:hero -->
+
     <h2>Why there's no single answer</h2>
+    <!-- ARTICLE_IMAGE:body-1 -->
+    <!-- ARTICLE_IMAGE_RENDER_START:body-1 -->
+    <figure class="atlasdays-article-image is-body" data-article-image-slot="body-1">
+      <img src="../assets/article-images/learn/country-counting-rules-every-list-compared/body-1.webp" alt="Supporting illustration for Country Counting Rules: Every Major List Compared, focused on why there's no single answer in the AtlasDays visual style." width="1536" height="1024" decoding="async" sizes="(max-width: 760px) calc(100vw - 40px), 720px" loading="lazy" />
+    </figure>
+    <!-- ARTICLE_IMAGE_RENDER_END:body-1 -->
     <p>"How many countries have you visited?" sounds like a simple question. It isn't. The answer depends entirely on which list you use — and there are at least half a dozen widely used ones, each built for a different purpose.</p>
     <p>A trip to Hong Kong counts as one additional entry on the Travelers' Century Club list, but zero extra countries on the UN list (it's part of China). Visit Kosovo and you can add it to your FIFA count, but not your UN tally. Fly to Guam and you've been to a new ISO code, a separate Olympic territory, and a TCC entry — but you never left the United States.</p>
     <p>None of these systems are wrong. They just measure different things. Here's how each one works.</p>
@@ -331,6 +420,12 @@
     <p>The community around NomadMania is active, with rankings, meetups, and a social platform. It appeals to travelers who treat exploration as a lifelong pursuit rather than a checklist to finish.</p>
 
     <h2>Which list should you use?</h2>
+    <!-- ARTICLE_IMAGE:body-2 -->
+    <!-- ARTICLE_IMAGE_RENDER_START:body-2 -->
+    <figure class="atlasdays-article-image is-body" data-article-image-slot="body-2">
+      <img src="../assets/article-images/learn/country-counting-rules-every-list-compared/body-2.webp" alt="Supporting illustration for Country Counting Rules: Every Major List Compared, focused on which list should you use? in the AtlasDays visual style." width="1536" height="1024" decoding="async" sizes="(max-width: 760px) calc(100vw - 40px), 720px" loading="lazy" />
+    </figure>
+    <!-- ARTICLE_IMAGE_RENDER_END:body-2 -->
     <p>There's no universally correct answer. The right list depends on what you're tracking and why.</p>
     <ul>
       <li><strong>For visa and legal purposes:</strong> use sovereign states. The UN list (or a close equivalent) is what immigration authorities care about.</li>

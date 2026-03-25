@@ -262,6 +262,82 @@
     html[data-theme="light"] .icon-sun, html[data-theme="light"] .logo-dark { display: none; }
     html[data-theme="light"] .icon-moon, html[data-theme="light"] .logo-light { display: block; }
   </style>
+<!-- ARTICLE_IMAGE_STYLES_START -->
+  <style id="atlasdays-article-image-styles">
+    .atlasdays-article-image {
+      margin: 26px 0 30px;
+      padding: 10px;
+      border-radius: 28px;
+      border: 1px solid var(--line, rgba(255,255,255,0.10));
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)),
+        radial-gradient(circle at top left, rgba(22,146,255,0.12), transparent 58%);
+      box-shadow: 0 18px 42px rgba(0,0,0,0.12);
+    }
+    .atlasdays-article-image img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(214, 232, 248, 0.42);
+      box-shadow: 0 18px 42px rgba(0,0,0,0.18);
+    }
+    .atlasdays-article-image.is-hero {
+      margin-top: 22px;
+      margin-bottom: 34px;
+    }
+    .atlasdays-article-image figcaption {
+      margin-top: 10px;
+      color: var(--muted-2, var(--muted));
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+    @media (prefers-color-scheme: light) {
+      .atlasdays-article-image {
+        border-color: rgba(22,146,255,0.14);
+        background:
+          linear-gradient(180deg, rgba(22,146,255,0.10), rgba(22,146,255,0.03)),
+          linear-gradient(180deg, rgba(232,242,252,0.88), rgba(244,248,253,0.92));
+        box-shadow: 0 14px 30px rgba(15, 28, 48, 0.08);
+      }
+      .atlasdays-article-image img {
+        border-color: rgba(22,146,255,0.10);
+        background: rgba(226, 238, 248, 0.82);
+        box-shadow: 0 14px 28px rgba(15, 28, 48, 0.10);
+      }
+    }
+    html[data-theme="light"] .atlasdays-article-image {
+      border-color: rgba(22,146,255,0.14);
+      background:
+        linear-gradient(180deg, rgba(22,146,255,0.10), rgba(22,146,255,0.03)),
+        linear-gradient(180deg, rgba(232,242,252,0.88), rgba(244,248,253,0.92));
+      box-shadow: 0 14px 30px rgba(15, 28, 48, 0.08);
+    }
+    html[data-theme="light"] .atlasdays-article-image img {
+      border-color: rgba(22,146,255,0.10);
+      background: rgba(226, 238, 248, 0.82);
+      box-shadow: 0 14px 28px rgba(15, 28, 48, 0.10);
+    }
+    @media (max-width: 640px) {
+      .atlasdays-article-image {
+        margin: 22px 0 26px;
+        padding: 8px;
+        border-radius: 24px;
+      }
+      .atlasdays-article-image img {
+        border-radius: 18px;
+      }
+      .atlasdays-article-image.is-hero {
+        margin-top: 18px;
+        margin-bottom: 28px;
+      }
+      .atlasdays-article-image figcaption {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+  <!-- ARTICLE_IMAGE_STYLES_END -->
 </head>
 <body>
   <header class="top-bar">
@@ -290,16 +366,35 @@
     <p class="subtitle">Why tracking travel days in a spreadsheet breaks down, and what to use instead for visa limits, tax residency, and travel history.</p>
     <p class="verified">Last verified: March 2026</p>
 
+    <!-- ARTICLE_IMAGE:hero -->
+    <!-- ARTICLE_IMAGE_RENDER_START:hero -->
+    <figure class="atlasdays-article-image is-hero" data-article-image-slot="hero">
+      <img src="../assets/article-images/learn/how-to-track-travel-days/hero.webp" alt="Hero illustration for How to Track Your Travel Days (And Why Spreadsheets Fail), showing yearly threshold counting, calendar blocks, and residency-day markers in the AtlasDays visual style." width="1536" height="1024" decoding="async" sizes="(max-width: 760px) calc(100vw - 40px), 720px" loading="eager" fetchpriority="high" />
+    </figure>
+    <!-- ARTICLE_IMAGE_RENDER_END:hero -->
+
     <h2>Why travel day tracking matters</h2>
     <p>If you travel internationally with any regularity, counting your days abroad is not optional — it is a legal requirement in many situations. <strong>Visa compliance</strong> is the most obvious reason: overstay your allowed days in a country or zone like the Schengen Area, and you risk fines, deportation, or future entry bans.</p>
     <p>But visas are only part of the picture. <strong>Tax residency</strong> rules in most countries are triggered by the number of days you spend there. Cross a threshold — often 183 days in a calendar year — and you may owe taxes in that country, sometimes in addition to your home country. Getting this wrong can mean surprise tax bills, penalties, or double taxation.</p>
     <p>Then there are <strong>immigration forms</strong>. Many countries ask you to declare your travel history when applying for visas, residency permits, or citizenship. Having accurate records saves hours of guesswork and reduces the risk of inconsistencies that raise red flags with immigration officers.</p>
 
     <h2>The spreadsheet approach</h2>
+    <!-- ARTICLE_IMAGE:body-1 -->
+    <!-- ARTICLE_IMAGE_RENDER_START:body-1 -->
+    <figure class="atlasdays-article-image is-body" data-article-image-slot="body-1">
+      <img src="../assets/article-images/learn/how-to-track-travel-days/body-1.webp" alt="Supporting illustration for How to Track Your Travel Days (And Why Spreadsheets Fail), focused on the spreadsheet approach in the AtlasDays visual style." width="1536" height="1024" decoding="async" sizes="(max-width: 760px) calc(100vw - 40px), 720px" loading="lazy" />
+    </figure>
+    <!-- ARTICLE_IMAGE_RENDER_END:body-1 -->
     <p>Most people start with a spreadsheet. The setup seems straightforward: a column for the country, one for entry date, one for exit date, and a formula to calculate the number of days. Add a few conditional sums and you have a basic travel log.</p>
     <p>For a handful of trips per year to a single country, this works well enough. You can see your history at a glance, total up days per country, and feel reasonably confident in the numbers. It is simple, flexible, and free.</p>
 
     <h2>Where spreadsheets break down</h2>
+    <!-- ARTICLE_IMAGE:body-2 -->
+    <!-- ARTICLE_IMAGE_RENDER_START:body-2 -->
+    <figure class="atlasdays-article-image is-body" data-article-image-slot="body-2">
+      <img src="../assets/article-images/learn/how-to-track-travel-days/body-2.webp" alt="Supporting illustration for How to Track Your Travel Days (And Why Spreadsheets Fail), focused on where spreadsheets break down in the AtlasDays visual style." width="1536" height="1024" decoding="async" sizes="(max-width: 760px) calc(100vw - 40px), 720px" loading="lazy" />
+    </figure>
+    <!-- ARTICLE_IMAGE_RENDER_END:body-2 -->
     <p>The problems start as soon as your travel patterns get even slightly complicated.</p>
     <ul>
       <li><strong>Rolling windows are hard to formula.</strong> Rules like the Schengen 90/180-day limit use a rolling window, not a calendar period. Building a formula that looks back exactly 180 days from every possible date and sums your presence days is technically possible, but fragile and difficult to verify.</li>

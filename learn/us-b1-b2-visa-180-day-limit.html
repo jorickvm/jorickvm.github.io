@@ -269,6 +269,82 @@
     html[data-theme="light"] .icon-sun, html[data-theme="light"] .logo-dark { display: none; }
     html[data-theme="light"] .icon-moon, html[data-theme="light"] .logo-light { display: block; }
   </style>
+<!-- ARTICLE_IMAGE_STYLES_START -->
+  <style id="atlasdays-article-image-styles">
+    .atlasdays-article-image {
+      margin: 26px 0 30px;
+      padding: 10px;
+      border-radius: 28px;
+      border: 1px solid var(--line, rgba(255,255,255,0.10));
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)),
+        radial-gradient(circle at top left, rgba(22,146,255,0.12), transparent 58%);
+      box-shadow: 0 18px 42px rgba(0,0,0,0.12);
+    }
+    .atlasdays-article-image img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.06);
+      background: rgba(214, 232, 248, 0.42);
+      box-shadow: 0 18px 42px rgba(0,0,0,0.18);
+    }
+    .atlasdays-article-image.is-hero {
+      margin-top: 22px;
+      margin-bottom: 34px;
+    }
+    .atlasdays-article-image figcaption {
+      margin-top: 10px;
+      color: var(--muted-2, var(--muted));
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+    @media (prefers-color-scheme: light) {
+      .atlasdays-article-image {
+        border-color: rgba(22,146,255,0.14);
+        background:
+          linear-gradient(180deg, rgba(22,146,255,0.10), rgba(22,146,255,0.03)),
+          linear-gradient(180deg, rgba(232,242,252,0.88), rgba(244,248,253,0.92));
+        box-shadow: 0 14px 30px rgba(15, 28, 48, 0.08);
+      }
+      .atlasdays-article-image img {
+        border-color: rgba(22,146,255,0.10);
+        background: rgba(226, 238, 248, 0.82);
+        box-shadow: 0 14px 28px rgba(15, 28, 48, 0.10);
+      }
+    }
+    html[data-theme="light"] .atlasdays-article-image {
+      border-color: rgba(22,146,255,0.14);
+      background:
+        linear-gradient(180deg, rgba(22,146,255,0.10), rgba(22,146,255,0.03)),
+        linear-gradient(180deg, rgba(232,242,252,0.88), rgba(244,248,253,0.92));
+      box-shadow: 0 14px 30px rgba(15, 28, 48, 0.08);
+    }
+    html[data-theme="light"] .atlasdays-article-image img {
+      border-color: rgba(22,146,255,0.10);
+      background: rgba(226, 238, 248, 0.82);
+      box-shadow: 0 14px 28px rgba(15, 28, 48, 0.10);
+    }
+    @media (max-width: 640px) {
+      .atlasdays-article-image {
+        margin: 22px 0 26px;
+        padding: 8px;
+        border-radius: 24px;
+      }
+      .atlasdays-article-image img {
+        border-radius: 18px;
+      }
+      .atlasdays-article-image.is-hero {
+        margin-top: 18px;
+        margin-bottom: 28px;
+      }
+      .atlasdays-article-image figcaption {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+  <!-- ARTICLE_IMAGE_STYLES_END -->
 </head>
 <body>
   <header class="top-bar">
@@ -297,16 +373,35 @@
     <p class="subtitle">How the authorized stay period works, what happens if you overstay, and how to keep track of your days in the United States.</p>
     <p class="verified">Last verified: March 2026</p>
 
+    <!-- ARTICLE_IMAGE:hero -->
+    <!-- ARTICLE_IMAGE_RENDER_START:hero -->
+    <figure class="atlasdays-article-image is-hero" data-article-image-slot="hero">
+      <img src="../assets/article-images/learn/us-b1-b2-visa-180-day-limit/hero.webp" alt="Hero illustration for US B1/B2 Visa: Understanding the 180-Day Stay Limit, showing US travel-day planning motifs and arrival-departure markers in the AtlasDays visual style." width="1536" height="1024" decoding="async" sizes="(max-width: 760px) calc(100vw - 40px), 720px" loading="eager" fetchpriority="high" />
+    </figure>
+    <!-- ARTICLE_IMAGE_RENDER_END:hero -->
+
     <h2>What is the B1/B2 visa?</h2>
     <p>The <strong>B1/B2 visa</strong> is the most common nonimmigrant visa issued by the United States. It covers two categories of short-term visitors: <strong>B1</strong> is for business activities such as attending conferences, negotiating contracts, or consulting with business partners, while <strong>B2</strong> is for tourism, medical treatment, and visiting family or friends. In practice, most travelers receive a combined B1/B2 visa that covers both purposes.</p>
     <p>The B1/B2 visa is distinct from the <strong>Visa Waiver Program (VWP)</strong>, which allows citizens of 41 countries to visit the US for up to 90 days using an ESTA authorization instead of a full visa. While the entry process is similar, the rules around length of stay and extensions differ significantly.</p>
 
     <h2>The 180-day authorized stay</h2>
+    <!-- ARTICLE_IMAGE:body-1 -->
+    <!-- ARTICLE_IMAGE_RENDER_START:body-1 -->
+    <figure class="atlasdays-article-image is-body" data-article-image-slot="body-1">
+      <img src="../assets/article-images/learn/us-b1-b2-visa-180-day-limit/body-1.webp" alt="Supporting illustration for US B1/B2 Visa: Understanding the 180-Day Stay Limit, focused on the 180-day authorized stay in the AtlasDays visual style." width="1536" height="1024" decoding="async" sizes="(max-width: 760px) calc(100vw - 40px), 720px" loading="lazy" />
+    </figure>
+    <!-- ARTICLE_IMAGE_RENDER_END:body-1 -->
     <p>A common misconception is that a B1/B2 visa automatically grants you 180 days in the United States. It does not. The visa allows you to <strong>travel to a US port of entry and request admission</strong> — the actual length of your authorized stay is determined by the <strong>Customs and Border Protection (CBP) officer</strong> at the border.</p>
     <p>The CBP officer reviews your travel purpose, return ticket, ties to your home country, and other factors before stamping your passport and assigning an authorized stay period. This is typically <strong>up to 180 days</strong> (six months), but the officer can grant a shorter period if they see fit. Your authorized stay date is recorded on your <strong>I-94 arrival/departure record</strong>, which is now maintained electronically.</p>
     <p>It is critical to check your I-94 record after every entry. The date stamped in your passport and the electronic I-94 should match, but discrepancies do happen — and the I-94 is the official record.</p>
 
     <h2>ESTA and the Visa Waiver Program</h2>
+    <!-- ARTICLE_IMAGE:body-2 -->
+    <!-- ARTICLE_IMAGE_RENDER_START:body-2 -->
+    <figure class="atlasdays-article-image is-body" data-article-image-slot="body-2">
+      <img src="../assets/article-images/learn/us-b1-b2-visa-180-day-limit/body-2.webp" alt="Supporting illustration for US B1/B2 Visa: Understanding the 180-Day Stay Limit, focused on esta and the visa waiver program in the AtlasDays visual style." width="1536" height="1024" decoding="async" sizes="(max-width: 760px) calc(100vw - 40px), 720px" loading="lazy" />
+    </figure>
+    <!-- ARTICLE_IMAGE_RENDER_END:body-2 -->
     <p>If you are entering the US under the <strong>Visa Waiver Program</strong> with an approved ESTA, your maximum stay is <strong>90 days per visit</strong>. Unlike B1/B2 visa holders, VWP travelers <strong>cannot extend their stay</strong> or change their immigration status while in the US. You also cannot appeal a denial of entry at the border.</p>
     <p>Short trips to Canada, Mexico, or the Caribbean generally do not reset your 90-day clock — the time spent in neighboring countries still counts toward your 90-day limit unless you return to your home country first.</p>
 
