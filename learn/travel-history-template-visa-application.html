@@ -305,6 +305,47 @@
     html[data-theme="light"] .icon-sun, html[data-theme="light"] .logo-dark { display: none; }
     html[data-theme="light"] .icon-moon, html[data-theme="light"] .logo-light { display: block; }
   </style>
+<!-- ARTICLE_IMAGE_STYLES_START -->
+  <style id="atlasdays-article-image-styles">
+    .atlasdays-article-image {
+      margin: 26px 0 30px;
+    }
+    .atlasdays-article-image img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 22px;
+      border: 1px solid var(--line, rgba(255,255,255,0.10));
+      background: var(--bg-card, rgba(255,255,255,0.04));
+      box-shadow: 0 18px 42px rgba(0,0,0,0.18);
+    }
+    .atlasdays-article-image.is-hero {
+      margin-top: 22px;
+      margin-bottom: 34px;
+    }
+    .atlasdays-article-image figcaption {
+      margin-top: 10px;
+      color: var(--muted-2, var(--muted));
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+    @media (max-width: 640px) {
+      .atlasdays-article-image {
+        margin: 22px 0 26px;
+      }
+      .atlasdays-article-image img {
+        border-radius: 18px;
+      }
+      .atlasdays-article-image.is-hero {
+        margin-top: 18px;
+        margin-bottom: 28px;
+      }
+      .atlasdays-article-image figcaption {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+  <!-- ARTICLE_IMAGE_STYLES_END -->
 </head>
 <body>
   <header class="top-bar">
@@ -334,11 +375,24 @@
     <p class="subtitle">Use this simple template to organize trip dates, countries, and notes before you fill in a visa form or prepare supporting documents.</p>
     <p class="verified">Last verified: March 2026</p>
 
+    <!-- ARTICLE_IMAGE:hero -->
+    <!-- ARTICLE_IMAGE_RENDER_START:hero -->
+    <figure class="atlasdays-article-image is-hero" data-article-image-slot="hero">
+      <img src="../assets/article-images/learn/travel-history-template-visa-application/hero.webp" alt="Hero illustration for Travel History Template for Visa Applications, showing travel-history documents, timelines, and map-pin evidence in the AtlasDays visual style." width="1536" height="1024" decoding="async" sizes="(max-width: 760px) calc(100vw - 40px), 720px" loading="eager" fetchpriority="high" />
+    </figure>
+    <!-- ARTICLE_IMAGE_RENDER_END:hero -->
+
     <h2>The short answer</h2>
     <p>The easiest travel history template is a chronological list with the same fields every time: country, entry date, exit date, purpose, and a note about where you found the information. That keeps your answers consistent and makes it easier to check your work before submitting an application.</p>
     <p>Different visa forms ask for different details, but the structure below works as a starting point for most applications. If a form asks for more or less, adapt the columns rather than inventing a new system each time.</p>
 
     <h2>Copyable template</h2>
+    <!-- ARTICLE_IMAGE:body-1 -->
+    <!-- ARTICLE_IMAGE_RENDER_START:body-1 -->
+    <figure class="atlasdays-article-image is-body" data-article-image-slot="body-1">
+      <img src="../assets/article-images/learn/travel-history-template-visa-application/body-1.webp" alt="Supporting illustration for Travel History Template for Visa Applications, focused on copyable template in the AtlasDays visual style." width="1536" height="1024" decoding="async" sizes="(max-width: 760px) calc(100vw - 40px), 720px" loading="lazy" />
+    </figure>
+    <!-- ARTICLE_IMAGE_RENDER_END:body-1 -->
     <div class="table-wrap" aria-label="Blank travel history template">
       <table class="template">
         <thead>
@@ -423,6 +477,12 @@
     </ol>
 
     <h2>What to include if your records are incomplete</h2>
+    <!-- ARTICLE_IMAGE:body-2 -->
+    <!-- ARTICLE_IMAGE_RENDER_START:body-2 -->
+    <figure class="atlasdays-article-image is-body" data-article-image-slot="body-2">
+      <img src="../assets/article-images/learn/travel-history-template-visa-application/body-2.webp" alt="Supporting illustration for Travel History Template for Visa Applications, focused on what to include if your records are incomplete in the AtlasDays visual style." width="1536" height="1024" decoding="async" sizes="(max-width: 760px) calc(100vw - 40px), 720px" loading="lazy" />
+    </figure>
+    <!-- ARTICLE_IMAGE_RENDER_END:body-2 -->
     <p>If you do not have perfect records, build the table from the best evidence you have. Passport stamps, airline emails, hotel confirmations, bank statements, photo timestamps, and official entry or exit records can all help reconstruct a trip.</p>
     <p>When a date is uncertain, write that it is estimated. That is better than guessing and later giving a different answer in another application.</p>
 
