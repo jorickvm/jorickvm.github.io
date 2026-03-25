@@ -171,8 +171,8 @@
       letter-spacing: -0.02em;
     }
     .brand-mark {
-      width: 36px;
-      height: 36px;
+      width: 42px;
+      height: 42px;
       overflow: hidden;
       flex: none;
     }
@@ -484,6 +484,10 @@
       scrollbar-width: none;
     }
     .showcase-tabs::-webkit-scrollbar { display: none; }
+    .showcase-viewport {
+      position: relative;
+      padding: 0 58px;
+    }
     .showcase-tab {
       flex: none;
       min-height: 42px;
@@ -518,7 +522,7 @@
       place-items: center;
     }
     .showcase-device {
-      width: min(100%, 340px);
+      width: min(100%, 300px);
       padding: 12px;
       border-radius: 34px;
       background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04));
@@ -555,9 +559,7 @@
     .showcase-copy .mini-list { margin-top: 14px; }
     .showcase-controls {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
+      justify-content: center;
       margin-top: 24px;
       padding-top: 18px;
       border-top: 1px solid var(--line);
@@ -568,22 +570,32 @@
       white-space: nowrap;
     }
     .showcase-arrows {
-      display: flex;
-      gap: 10px;
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
     }
     .showcase-arrow {
-      min-height: 44px;
-      padding: 0 16px;
-      border-radius: 14px;
+      position: absolute;
+      top: min(36%, 260px);
+      transform: translateY(-50%);
+      width: 48px;
+      height: 48px;
+      padding: 0;
+      border-radius: 999px;
       border: 1px solid var(--line);
       background: rgba(255,255,255,0.04);
       color: var(--text);
       font: inherit;
       font-weight: 600;
       cursor: pointer;
+      display: grid;
+      place-items: center;
+      pointer-events: auto;
       transition: border-color 160ms ease, background 160ms ease;
     }
     .showcase-arrow:hover { border-color: var(--line-strong); }
+    .showcase-arrow.prev { left: 0; }
+    .showcase-arrow.next { right: 0; }
     .proof-split {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -856,6 +868,7 @@
       .doc-grid { grid-template-columns: 1fr; }
       .hero-grid { gap: 34px; }
       .showcase-slide { grid-template-columns: 1fr; }
+      .showcase-device { width: min(100%, 320px); }
       .privacy-grid { grid-template-columns: 1fr; }
       .visual-wrap {
         min-height: 600px;
@@ -886,7 +899,7 @@
       .site-header { position: static; }
       .nav { min-height: 64px; }
       .nav-links { gap: 12px; font-size: 0.9rem; }
-      .brand-mark { width: 32px; height: 32px; }
+      .brand-mark { width: 38px; height: 38px; }
       .hero { padding-top: 26px; }
       h1 { max-width: 14ch; }
       .hero-lead { margin-bottom: 18px; }
@@ -918,13 +931,14 @@
       .doc-card { padding: 20px; }
       .proof-visual .frame img { max-height: 400px; }
       .showcase { padding: 20px; }
+      .showcase-viewport { padding: 0 44px; }
       .showcase-slide { gap: 20px; }
-      .showcase-controls {
-        flex-direction: column;
-        align-items: stretch;
+      .showcase-controls { margin-top: 18px; }
+      .showcase-arrow {
+        width: 42px;
+        height: 42px;
+        top: min(30%, 210px);
       }
-      .showcase-arrows { width: 100%; }
-      .showcase-arrow { flex: 1 1 0; }
       .proof-split { grid-template-columns: 1fr; }
       .proof-split .split-shot img { height: 360px; }
       .btn { width: 100%; }
@@ -1015,12 +1029,12 @@
 
         <div class="visual-wrap reveal" aria-label="AtlasDays app previews">
           <div class="visual-card primary">
-            <img class="theme-shot theme-shot-dark" src="assets/home-hero-dashboard.png" alt="AtlasDays dashboard showing tracker cards, summary stats, and the mini map" width="1320" height="2868" />
-            <img class="theme-shot theme-shot-light" src="assets/home-hero-dashboard-light.png" alt="AtlasDays dashboard showing tracker cards, summary stats, and the mini map in light mode" width="1320" height="2868" />
+            <img class="theme-shot theme-shot-dark" src="assets/home-hero-dashboard.webp" alt="AtlasDays dashboard showing tracker cards, summary stats, and the mini map" width="1320" height="2868" />
+            <img class="theme-shot theme-shot-light" src="assets/home-hero-dashboard-light.webp" alt="AtlasDays dashboard showing tracker cards, summary stats, and the mini map in light mode" width="1320" height="2868" />
           </div>
           <div class="visual-card secondary">
-            <img class="theme-shot theme-shot-dark" src="assets/home-hero-tracker-detail.png" alt="AtlasDays tracker detail showing used days, remaining days, and the next threshold" width="1320" height="2868" />
-            <img class="theme-shot theme-shot-light" src="assets/home-hero-tracker-light.png" alt="AtlasDays tracker detail showing used days, remaining days, and the next threshold in light mode" width="1320" height="2868" />
+            <img class="theme-shot theme-shot-dark" src="assets/home-hero-tracker-detail.webp" alt="AtlasDays tracker detail showing used days, remaining days, and the next threshold" width="1320" height="2868" />
+            <img class="theme-shot theme-shot-light" src="assets/home-hero-tracker-light.webp" alt="AtlasDays tracker detail showing used days, remaining days, and the next threshold in light mode" width="1320" height="2868" />
           </div>
         </div>
       </div>
@@ -1105,10 +1119,14 @@
             <button class="showcase-tab" type="button" role="tab" aria-selected="false" aria-controls="showcase-import" id="showcase-tab-import" tabindex="-1" data-showcase-tab>Import</button>
           </div>
           <div class="showcase-viewport">
+            <div class="showcase-arrows">
+              <button class="showcase-arrow prev" type="button" data-showcase-prev aria-label="Previous slide">&#8249;</button>
+              <button class="showcase-arrow next" type="button" data-showcase-next aria-label="Next slide">&#8250;</button>
+            </div>
             <article class="showcase-slide is-active" id="showcase-timeline" role="tabpanel" aria-labelledby="showcase-tab-timeline" data-showcase-slide>
               <div class="showcase-device-wrap">
                 <div class="showcase-device">
-                  <img src="assets/home-proof-timeline.png" alt="AtlasDays timeline showing realistic trips grouped by year with visible day totals" width="1320" height="2868" loading="lazy" />
+                  <img src="assets/home-proof-timeline.webp" alt="AtlasDays timeline showing realistic trips grouped by year with visible day totals" width="1320" height="2868" loading="lazy" />
                 </div>
               </div>
               <div class="showcase-copy">
@@ -1125,7 +1143,7 @@
             <article class="showcase-slide" id="showcase-map" role="tabpanel" aria-labelledby="showcase-tab-map" data-showcase-slide hidden>
               <div class="showcase-device-wrap">
                 <div class="showcase-device">
-                  <img src="assets/home-proof-map-country.png" alt="AtlasDays world map with visited countries highlighted and a country detail sheet open" width="1320" height="2868" loading="lazy" />
+                  <img src="assets/home-proof-map-country.webp" alt="AtlasDays world map with visited countries highlighted and a country detail sheet open" width="1320" height="2868" loading="lazy" />
                 </div>
               </div>
               <div class="showcase-copy">
@@ -1142,7 +1160,7 @@
             <article class="showcase-slide" id="showcase-trackers" role="tabpanel" aria-labelledby="showcase-tab-trackers" data-showcase-slide hidden>
               <div class="showcase-device-wrap">
                 <div class="showcase-device">
-                  <img src="assets/home-proof-tracker-presets.png" alt="AtlasDays tracker preset picker showing Schengen, residence, visa limit, and travel goal options" width="1320" height="2868" loading="lazy" />
+                  <img src="assets/home-proof-tracker-presets.webp" alt="AtlasDays tracker preset picker showing Schengen, residence, visa limit, and travel goal options" width="1320" height="2868" loading="lazy" />
                 </div>
               </div>
               <div class="showcase-copy">
@@ -1159,7 +1177,7 @@
             <article class="showcase-slide" id="showcase-trip-modes" role="tabpanel" aria-labelledby="showcase-tab-trip-modes" data-showcase-slide hidden>
               <div class="showcase-device-wrap">
                 <div class="showcase-device">
-                  <img src="assets/home-proof-trip-modes.png" alt="AtlasDays trip form showing Exact Dates and Month and Year trip modes" width="1320" height="2868" loading="lazy" />
+                  <img src="assets/home-proof-trip-modes.webp" alt="AtlasDays trip form showing Exact Dates and Month and Year trip modes" width="1320" height="2868" loading="lazy" />
                 </div>
               </div>
               <div class="showcase-copy">
@@ -1176,7 +1194,7 @@
             <article class="showcase-slide" id="showcase-import" role="tabpanel" aria-labelledby="showcase-tab-import" data-showcase-slide hidden>
               <div class="showcase-device-wrap">
                 <div class="showcase-device">
-                  <img src="assets/home-proof-import.png" alt="AtlasDays CSV import preview showing mapped columns before saving trips" width="1320" height="2868" loading="lazy" />
+                  <img src="assets/home-proof-import.webp" alt="AtlasDays CSV import preview showing mapped columns before saving trips" width="1320" height="2868" loading="lazy" />
                 </div>
               </div>
               <div class="showcase-copy">
@@ -1193,10 +1211,6 @@
           </div>
           <div class="showcase-controls">
             <div class="showcase-counter" aria-live="polite"><span data-showcase-current>1</span> / <span data-showcase-total>5</span></div>
-            <div class="showcase-arrows">
-              <button class="showcase-arrow" type="button" data-showcase-prev>Previous</button>
-              <button class="showcase-arrow" type="button" data-showcase-next>Next</button>
-            </div>
           </div>
         </div>
       </div>
@@ -1253,7 +1267,7 @@
               <div class="disclaimer">If you choose to join the waitlist on this website, that email signup is handled separately from the app itself. Details are on the <a href="/website-privacy">website waitlist privacy page</a>.</div>
             </div>
             <div class="privacy-visual">
-              <img src="assets/home-proof-privacy.png" alt="AtlasDays privacy and location screen explaining local-only country detection and optional iCloud sync" width="1320" height="2868" loading="lazy" />
+              <img src="assets/home-proof-privacy.webp" alt="AtlasDays privacy and location screen explaining local-only country detection and optional iCloud sync" width="1320" height="2868" loading="lazy" />
             </div>
           </div>
         </div>
