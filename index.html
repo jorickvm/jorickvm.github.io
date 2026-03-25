@@ -256,12 +256,15 @@
       margin: 0 0 22px;
       max-width: 58ch;
     }
+    .hero-lead-mobile,
+    .mobile-only-link { display: none; }
     .hero-actions {
       display: flex;
       gap: 14px;
       flex-wrap: wrap;
       margin-bottom: 22px;
     }
+    .hero-mobile-visuals { display: none; }
     .btn {
       display: inline-flex;
       align-items: center;
@@ -898,28 +901,59 @@
       .container { width: min(var(--max), calc(100% - 24px)); }
       .site-header { position: static; }
       .nav { min-height: 64px; }
-      .nav-links { gap: 12px; font-size: 0.9rem; }
+      .nav-links { gap: 10px; font-size: 0.88rem; }
+      .nav-links > a:not(.nav-cta):not(.mobile-only-link) { display: none; }
+      .mobile-only-link { display: inline-flex; }
+      .nav-cta {
+        padding: 10px 14px;
+        border-radius: 13px;
+      }
+      .theme-toggle {
+        width: 34px;
+        height: 34px;
+      }
       .brand-mark { width: 38px; height: 38px; }
       .hero { padding-top: 26px; }
       h1 { max-width: 14ch; }
-      .hero-lead { margin-bottom: 18px; }
-      .visual-wrap {
-        min-height: auto;
-        display: grid;
+      .hero-lead-desktop { display: none; }
+      .hero-lead-mobile {
+        display: block;
+        margin-bottom: 16px;
+      }
+      .hero-mobile-visuals {
+        display: flex;
+        align-items: flex-end;
         gap: 12px;
+        margin: 18px 0;
       }
-      .visual-card {
+      .hero-mobile-shot {
         position: relative;
-        inset: auto;
-        border-radius: 24px;
         padding: 8px;
+        border-radius: 24px;
+        background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04));
+        border: 1px solid rgba(255,255,255,0.12);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
       }
-      .visual-card img { border-radius: 18px; }
-      .visual-card.primary,
-      .visual-card.secondary { width: 100%; }
-      .visual-card.secondary {
-        width: 80%;
-        margin: -42px 0 0 auto;
+      .hero-mobile-shot.primary {
+        width: 61%;
+        z-index: 2;
+      }
+      .hero-mobile-shot.secondary {
+        width: 39%;
+        margin-bottom: 28px;
+        margin-left: -18px;
+        z-index: 1;
+      }
+      .hero-mobile-shot img {
+        width: 100%;
+        height: auto;
+        border-radius: 18px;
+        border: 1px solid var(--line);
+      }
+      .visual-wrap {
+        display: none;
       }
       .card,
       .feature,
@@ -942,6 +976,20 @@
       .proof-split { grid-template-columns: 1fr; }
       .proof-split .split-shot img { height: 360px; }
       .btn { width: 100%; }
+      .hero-points {
+        display: flex;
+        gap: 10px;
+        overflow-x: auto;
+        padding: 2px 0 4px;
+        margin: 0 -2px;
+        scroll-snap-type: x proximity;
+      }
+      .hero-points::-webkit-scrollbar { display: none; }
+      .hero-point {
+        min-width: 230px;
+        padding: 15px 16px;
+        scroll-snap-align: start;
+      }
       .waitlist-row { flex-direction: column; }
       .hero-actions { gap: 10px; }
       .cta-panel h2 { max-width: 12ch; }
@@ -999,6 +1047,7 @@
         <a class="hide-mobile" href="#privacy">Privacy</a>
         <a href="/help/">Help</a>
         <a href="/learn/">Learn</a>
+        <a class="mobile-only-link" href="/help/">Docs</a>
         <a class="nav-cta" href="#waitlist">Waitlist</a>
         <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()">
           <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
@@ -1011,13 +1060,24 @@
   <main id="top">
     <section class="hero">
       <div class="container hero-grid">
-        <div class="reveal visible">
+        <div class="hero-copy reveal visible">
           <div class="eyebrow"><span class="dot"></span>Private travel tracking for iPhone and iPad</div>
           <h1>Track countries. Count days. Keep it private.</h1>
-          <p class="hero-lead">AtlasDays is one app for three jobs: see every country you have visited on a map, count days for visa limits like Schengen 90/180, and track residence thresholds for tax or citizenship purposes. Everything stays on your device.</p>
+          <p class="hero-lead hero-lead-desktop">AtlasDays is one app for three jobs: see every country you have visited on a map, count days for visa limits like Schengen 90/180, and track residence thresholds for tax or citizenship purposes. Everything stays on your device.</p>
+          <p class="hero-lead hero-lead-mobile">Map every country you have visited, track visa and residence days, and keep the record on your device.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="#who">See how it works</a>
             <a class="btn btn-secondary" href="#waitlist">Join the waitlist</a>
+          </div>
+          <div class="hero-mobile-visuals" aria-label="AtlasDays mobile app previews">
+            <div class="hero-mobile-shot primary">
+              <img class="theme-shot theme-shot-dark" src="assets/home-hero-dashboard.webp" alt="AtlasDays dashboard showing tracker cards, summary stats, and the mini map" width="1320" height="2868" />
+              <img class="theme-shot theme-shot-light" src="assets/home-hero-dashboard-light.webp" alt="AtlasDays dashboard showing tracker cards, summary stats, and the mini map in light mode" width="1320" height="2868" />
+            </div>
+            <div class="hero-mobile-shot secondary">
+              <img class="theme-shot theme-shot-dark" src="assets/home-hero-tracker-detail.webp" alt="AtlasDays tracker detail showing used days, remaining days, and the next threshold" width="1320" height="2868" />
+              <img class="theme-shot theme-shot-light" src="assets/home-hero-tracker-light.webp" alt="AtlasDays tracker detail showing used days, remaining days, and the next threshold in light mode" width="1320" height="2868" />
+            </div>
           </div>
           <div class="hero-points" aria-label="Key benefits">
             <div class="hero-point"><strong>World map</strong>Every country you have visited, highlighted and tappable. Share cards built from real data.</div>
