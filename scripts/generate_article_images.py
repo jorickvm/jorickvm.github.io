@@ -421,6 +421,8 @@ def build_prompt(
                 lines.append(f"Explicit scene brief: {collapse_whitespace(str(slot['scene_brief']))}")
             else:
                 lines.extend(body_scene_brief(article, context, slot["id"]))
+        elif slot.get("scene_brief"):
+            lines.append(f"Explicit scene brief: {collapse_whitespace(str(slot['scene_brief']))}")
         lines.append(f'Section heading to visualize: "{context.heading}"')
         if context.summary:
             lines.append(f'Section summary: "{shorten_text(sanitize_for_image_prompt(context.summary))}"')
@@ -455,6 +457,8 @@ def build_prompt(
 
 def build_alt_text(article: Article, theme: dict[str, Any], slot_id: str, context: SectionContext | None) -> str:
     if slot_id == "hero":
+        if context is not None:
+            return f"Hero illustration for {article.title}, focused on {context.heading.lower()} in the AtlasDays visual style."
         return f"Hero illustration for {article.title}, showing {theme['alt_focus']} in the AtlasDays visual style."
     if context is not None:
         return f"Supporting illustration for {article.title}, focused on {context.heading.lower()} in the AtlasDays visual style."
@@ -464,6 +468,8 @@ def build_alt_text(article: Article, theme: dict[str, Any], slot_id: str, contex
 def build_caption(article: Article, theme: dict[str, Any], slot_id: str, context: SectionContext | None) -> str:
     motif = theme["motifs"][0].lower()
     if slot_id == "hero":
+        if context is not None:
+            return f'AtlasDays hero illustration for "{context.heading}", using {motif} as a visual anchor.'
         return f"AtlasDays hero illustration for {article.title}, using {motif} as a visual anchor."
     if context is not None:
         return f'AtlasDays supporting illustration for "{context.heading}", using {motif} as a visual anchor.'
@@ -495,6 +501,7 @@ def build_generation_plan(
                 raise SystemExit(f"Invalid slot config for {key}: {slot}")
             context = None
             anchor_heading = article.headline
+            slot_anchor_heading = str(slot.get("anchor_heading", "")).strip()
             sibling_signatures = []
             for other in slots:
                 if other is slot:
@@ -511,9 +518,12 @@ def build_generation_plan(
                     f'{other_label}: {shorten_text(collapse_whitespace(str(descriptor)), limit=120)}'
                 )
             if slot["id"] != "hero":
-                anchor_heading = str(slot.get("anchor_heading", "")).strip()
+                anchor_heading = slot_anchor_heading
                 if not anchor_heading:
                     raise SystemExit(f'Missing "anchor_heading" for {key} slot {slot["id"]}')
+                context = find_section_context(article, anchor_heading)
+            elif slot_anchor_heading:
+                anchor_heading = slot_anchor_heading
                 context = find_section_context(article, anchor_heading)
             relative_path = (
                 Path("assets")
@@ -616,6 +626,8 @@ def write_catalog(
         for field in ("generated_at", "revised_prompt", "usage", "bytes"):
             if field in previous:
                 image_record[field] = previous[field]
+        if entry["absolute_path"].exists():
+            image_record["bytes"] = entry["absolute_path"].stat().st_size
         article_record["images"].append(image_record)
 
     catalog = {

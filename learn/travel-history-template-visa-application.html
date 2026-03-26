@@ -184,34 +184,46 @@
 
     .table-wrap {
       overflow-x: auto;
-      margin: 18px 0 24px;
+      margin: 20px 0 28px;
       border: 1px solid var(--line);
       border-radius: 16px;
       background: var(--bg-card);
+      box-shadow: 0 4px 18px rgba(0,0,0,0.10);
     }
     table.template {
       width: 100%;
       border-collapse: collapse;
-      min-width: 700px;
+      min-width: 680px;
     }
     .template th,
     .template td {
       text-align: left;
-      padding: 14px 16px;
+      padding: 13px 18px;
       vertical-align: top;
       border-bottom: 1px solid var(--line);
       color: var(--muted);
-      font-size: 0.95rem;
+      font-size: 0.93rem;
+      line-height: 1.55;
     }
     .template th {
       color: var(--text);
-      background: rgba(255,255,255,0.03);
+      background: rgba(255,255,255,0.06);
       font-weight: 650;
+      font-size: 0.85rem;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
     }
+    .template tbody tr:hover td { background: rgba(255,255,255,0.03); }
     .template tr:last-child td { border-bottom: none; }
+    @media (prefers-color-scheme: light) {
+      .template th { background: rgba(22,146,255,0.07); }
+      .template tbody tr:hover td { background: rgba(22,146,255,0.03); }
+    }
+    html[data-theme="light"] .template th { background: rgba(22,146,255,0.07); }
+    html[data-theme="light"] .template tbody tr:hover td { background: rgba(22,146,255,0.03); }
 
     .code-block {
-      margin: 18px 0 24px;
+      margin: 0 0 28px;
       padding: 18px 20px;
       border-radius: 16px;
       border: 1px solid var(--line);
@@ -219,10 +231,11 @@
       overflow-x: auto;
     }
     .code-block code {
-      color: var(--text);
+      color: var(--muted);
       font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
-      font-size: 0.9rem;
+      font-size: 0.88rem;
       white-space: pre;
+      line-height: 1.7;
     }
 
     .cta-box {
@@ -422,12 +435,6 @@
     <p>Different visa forms ask for different details, but the structure below works as a starting point for most applications. If a form asks for more or less, adapt the columns rather than inventing a new system each time.</p>
 
     <h2>Copyable template</h2>
-    <!-- ARTICLE_IMAGE:body-1 -->
-    <!-- ARTICLE_IMAGE_RENDER_START:body-1 -->
-    <figure class="atlasdays-article-image is-body" data-article-image-slot="body-1">
-      <img src="../assets/article-images/learn/travel-history-template-visa-application/body-1.webp" alt="Supporting illustration for Travel History Template for Visa Applications, focused on copyable template in the AtlasDays visual style." width="1536" height="1024" decoding="async" sizes="(max-width: 760px) calc(100vw - 40px), 720px" loading="lazy" />
-    </figure>
-    <!-- ARTICLE_IMAGE_RENDER_END:body-1 -->
     <div class="table-wrap" aria-label="Blank travel history template">
       <table class="template">
         <thead>

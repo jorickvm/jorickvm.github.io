@@ -237,6 +237,44 @@
       --blue-soft: rgba(22,146,255,0.08);
     }
 
+    .table-wrap {
+      overflow-x: auto;
+      margin: 20px 0 28px;
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--bg-card);
+      box-shadow: 0 4px 18px rgba(0,0,0,0.10);
+    }
+    table.schengen-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .schengen-table th,
+    .schengen-table td {
+      text-align: left;
+      padding: 11px 18px;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.93rem;
+      line-height: 1.5;
+    }
+    .schengen-table th {
+      color: var(--text);
+      background: rgba(255,255,255,0.06);
+      font-weight: 650;
+      font-size: 0.85rem;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+    .schengen-table tbody tr:hover td { background: rgba(255,255,255,0.03); }
+    .schengen-table tr:last-child td { border-bottom: none; }
+    @media (prefers-color-scheme: light) {
+      .schengen-table th { background: rgba(22,146,255,0.07); }
+      .schengen-table tbody tr:hover td { background: rgba(22,146,255,0.03); }
+    }
+    html[data-theme="light"] .schengen-table th { background: rgba(22,146,255,0.07); }
+    html[data-theme="light"] .schengen-table tbody tr:hover td { background: rgba(22,146,255,0.03); }
+
     .theme-toggle {
       background: none;
       border: 1px solid var(--line);
@@ -385,54 +423,62 @@
       <img src="../assets/article-images/learn/schengen-countries-list-90-180-rule/body-1.webp" alt="Supporting illustration for Schengen Countries List for the 90/180 Rule, focused on current schengen countries in the AtlasDays visual style." width="1536" height="1024" decoding="async" sizes="(max-width: 760px) calc(100vw - 40px), 720px" loading="lazy" />
     </figure>
     <!-- ARTICLE_IMAGE_RENDER_END:body-1 -->
-    <p><strong>EU Schengen countries</strong></p>
-    <ul>
-      <li>Austria</li>
-      <li>Belgium</li>
-      <li>Bulgaria</li>
-      <li>Croatia</li>
-      <li>Czech Republic</li>
-      <li>Denmark</li>
-      <li>Estonia</li>
-      <li>Finland</li>
-      <li>France</li>
-      <li>Germany</li>
-      <li>Greece</li>
-      <li>Hungary</li>
-      <li>Italy</li>
-      <li>Latvia</li>
-      <li>Lithuania</li>
-      <li>Luxembourg</li>
-      <li>Malta</li>
-      <li>Netherlands</li>
-      <li>Poland</li>
-      <li>Portugal</li>
-      <li>Romania</li>
-      <li>Slovakia</li>
-      <li>Slovenia</li>
-      <li>Spain</li>
-      <li>Sweden</li>
-    </ul>
-
-    <p><strong>Non-EU Schengen countries</strong></p>
-    <ul>
-      <li>Iceland</li>
-      <li>Liechtenstein</li>
-      <li>Norway</li>
-      <li>Switzerland</li>
-    </ul>
+    <div class="table-wrap" aria-label="All 29 Schengen member countries">
+      <table class="schengen-table">
+        <thead>
+          <tr>
+            <th>Country</th>
+            <th>EU member</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Austria</td><td>Yes</td></tr>
+          <tr><td>Belgium</td><td>Yes</td></tr>
+          <tr><td>Bulgaria</td><td>Yes</td></tr>
+          <tr><td>Croatia</td><td>Yes</td></tr>
+          <tr><td>Czech Republic</td><td>Yes</td></tr>
+          <tr><td>Denmark</td><td>Yes</td></tr>
+          <tr><td>Estonia</td><td>Yes</td></tr>
+          <tr><td>Finland</td><td>Yes</td></tr>
+          <tr><td>France</td><td>Yes</td></tr>
+          <tr><td>Germany</td><td>Yes</td></tr>
+          <tr><td>Greece</td><td>Yes</td></tr>
+          <tr><td>Hungary</td><td>Yes</td></tr>
+          <tr><td>Iceland</td><td>No</td></tr>
+          <tr><td>Italy</td><td>Yes</td></tr>
+          <tr><td>Latvia</td><td>Yes</td></tr>
+          <tr><td>Liechtenstein</td><td>No</td></tr>
+          <tr><td>Lithuania</td><td>Yes</td></tr>
+          <tr><td>Luxembourg</td><td>Yes</td></tr>
+          <tr><td>Malta</td><td>Yes</td></tr>
+          <tr><td>Netherlands</td><td>Yes</td></tr>
+          <tr><td>Norway</td><td>No</td></tr>
+          <tr><td>Poland</td><td>Yes</td></tr>
+          <tr><td>Portugal</td><td>Yes</td></tr>
+          <tr><td>Romania</td><td>Yes</td></tr>
+          <tr><td>Slovakia</td><td>Yes</td></tr>
+          <tr><td>Slovenia</td><td>Yes</td></tr>
+          <tr><td>Spain</td><td>Yes</td></tr>
+          <tr><td>Sweden</td><td>Yes</td></tr>
+          <tr><td>Switzerland</td><td>No</td></tr>
+        </tbody>
+      </table>
+    </div>
 
     <div class="callout">
       <p><strong>Important distinction:</strong> not every EU country is in Schengen. Ireland is in the EU but not in Schengen. Cyprus is also an EU country, but it is not yet part of the Schengen short-stay system. The UK is outside Schengen entirely.</p>
     </div>
 
+    <h2>What about Vatican City, San Marino, Monaco, and Andorra?</h2>
+    <p>These four micro-states are not Schengen members, but their geography means your days there can still count toward your 90-day limit:</p>
+    <ul>
+      <li><strong>Vatican City</strong> — Completely surrounded by Italy. There is no border control between Italy and Vatican City, so entering Vatican City counts as being in Italy. Days there count toward your Schengen total.</li>
+      <li><strong>San Marino</strong> — Also surrounded by Italy, with no border control. Same rule applies: time spent in San Marino counts as time in the Schengen Area.</li>
+      <li><strong>Monaco</strong> — Bordered by France and the Mediterranean Sea. The open border with France means days in Monaco are treated as Schengen days in practice.</li>
+      <li><strong>Andorra</strong> — Located between France and Spain, both of which are Schengen members. Andorra itself is not Schengen, and days spent entirely within Andorra do not count toward the 90-day limit. However, every time you enter or leave Andorra, you cross through France or Spain, which uses an entry and exit day on your Schengen count.</li>
+    </ul>
+
     <h2>Why this list matters</h2>
-    <!-- ARTICLE_IMAGE:body-2 -->
-    <!-- ARTICLE_IMAGE_RENDER_START:body-2 -->
-    <figure class="atlasdays-article-image is-body" data-article-image-slot="body-2">
-      <img src="../assets/article-images/learn/schengen-countries-list-90-180-rule/body-2.webp" alt="Supporting illustration for Schengen Countries List for the 90/180 Rule, focused on why this list matters in the AtlasDays visual style." width="1536" height="1024" decoding="async" sizes="(max-width: 760px) calc(100vw - 40px), 720px" loading="lazy" />
-    </figure>
-    <!-- ARTICLE_IMAGE_RENDER_END:body-2 -->
     <p>If a country is in Schengen, its days count toward the same 90-day limit as every other Schengen country. A two-week trip split between Amsterdam, Berlin, and Barcelona still uses 14 Schengen days.</p>
     <p>If a country is not in Schengen, its stay rules are separate. That is why travelers often need to distinguish between <strong>EU membership</strong> and <strong>Schengen membership</strong> before they plan a trip.</p>
 
