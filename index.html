@@ -59,7 +59,7 @@
         "name": "Can I add older trips with incomplete dates?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. AtlasDays supports exact trips, approximate month and year ranges, year-only records, and trips with unknown dates."
+          "text": "Yes. AtlasDays supports exact trips, year-only records, and unknown-date visits for incomplete travel history."
         }
       },
       {
@@ -1268,7 +1268,7 @@
           </article>
           <article class="feature reveal">
             <h3>Flexible trip logging</h3>
-            <p>Exact dates for trips that matter to a count. Month-and-year or year-only for older history. Mark airport layovers as transit. Add notes, flag ongoing trips, log future plans.</p>
+            <p>Exact dates for trips that matter to a count. Year-only or unknown entries for older history. Mark airport layovers as transit. Add notes, flag ongoing trips, log future plans.</p>
           </article>
           <article class="feature reveal">
             <h3>CSV import and AI helper</h3>
@@ -1356,7 +1356,7 @@
             <article class="showcase-slide" id="showcase-trip-modes" role="tabpanel" aria-labelledby="showcase-tab-trip-modes" data-showcase-slide hidden>
               <div class="showcase-device-wrap">
                 <div class="showcase-device">
-                  <img src="assets/home-proof-trip-modes.webp" alt="AtlasDays trip form showing Exact Dates and Month and Year trip modes" width="1320" height="2868" loading="lazy" />
+                  <img src="assets/home-proof-trip-modes.webp" alt="AtlasDays trip form showing precise and flexible trip modes for reconstructed travel history" width="1320" height="2868" loading="lazy" />
                 </div>
               </div>
               <div class="showcase-copy">
@@ -1365,8 +1365,8 @@
                 <p>Older travel rarely comes in clean, exact dates. AtlasDays lets you choose the precision level that matches what you actually know, so reconstruction is possible without pretending every trip is perfect.</p>
                 <ul class="mini-list">
                   <li><code>Exact Dates</code> for precise day counting</li>
-                  <li><code>Month &amp; Year</code> for reconstructed history</li>
-                  <li><code>Dates Unknown</code> support when a trip is real but incomplete</li>
+                  <li><code>Year</code> for reconstructed history</li>
+                  <li><code>Unknown</code> support when a trip is real but incomplete</li>
                 </ul>
               </div>
             </article>
@@ -1408,6 +1408,7 @@
             <p>Product documentation for using AtlasDays: getting started, trackers, timeline, CSV import, dashboard, privacy, and sync.</p>
             <div class="doc-links">
               <a href="/help/">Open the Help Center</a>
+              <a href="/support">Support FAQ &amp; Contact</a>
               <a href="/help/getting-started">Getting Started</a>
               <a href="/help/trackers-and-limits">Trackers and Limits</a>
               <a href="/help/history-and-import">Trip Modes and Import</a>
@@ -1440,13 +1441,13 @@
                 <span class="pill">No AtlasDays server copy</span>
                 <span class="pill">On-device calculations</span>
                 <span class="pill">Optional iCloud sync</span>
-                <span class="pill">Local-only country detection</span>
+                <span class="pill">Optional country suggestions</span>
                 <span class="pill">No third-party analytics SDKs</span>
               </div>
               <div class="disclaimer">If you choose to join the waitlist on this website, that email signup is handled separately from the app itself. Details are on the <a href="/website-privacy">website waitlist privacy page</a>.</div>
             </div>
             <div class="privacy-visual">
-              <img src="assets/home-proof-privacy.webp" alt="AtlasDays privacy and location screen explaining local-only country detection and optional iCloud sync" width="1320" height="2868" loading="lazy" />
+              <img src="assets/home-proof-privacy.webp" alt="AtlasDays privacy and location screen explaining optional country suggestions and optional iCloud sync" width="1320" height="2868" loading="lazy" />
             </div>
           </div>
         </div>
@@ -1467,11 +1468,11 @@
           </article>
           <article class="faq reveal">
             <h3>Can I add older trips with incomplete dates?</h3>
-            <p>Yes. AtlasDays supports exact trips, approximate month and year ranges, year-only entries, and unknown-date visits.</p>
+            <p>Yes. AtlasDays supports exact trips, year-only entries, and unknown-date visits.</p>
           </article>
           <article class="faq reveal">
             <h3>Does it store my precise location?</h3>
-            <p>No. Country detection is optional and designed around local-only country suggestions, not location surveillance.</p>
+            <p>No. Country detection is optional and designed around country suggestions, not continuous location surveillance.</p>
           </article>
           <article class="faq reveal">
             <h3>Can I import travel history I already have?</h3>
@@ -1540,7 +1541,7 @@
           <div class="footer-points">
             <div class="footer-point">Private by design</div>
             <div class="footer-point">iPhone and iPad</div>
-            <div class="footer-point">Exact and approximate trip modes</div>
+            <div class="footer-point">Exact and year-only trip modes</div>
             <div class="footer-point">Trackers for visas, residence, and goals</div>
           </div>
         </div>
@@ -1561,7 +1562,7 @@
             <div class="footer-links">
               <a href="/privacy">Privacy</a>
               <a href="/changelog">What’s New</a>
-              <a href="/privacy#contact" class="contact-email" data-email-user="atlasdays" data-email-domain="pm.me" aria-label="Contact AtlasDays by email">Contact</a>
+              <a href="/support">Support</a>
             </div>
           </div>
         </div>
@@ -1583,16 +1584,6 @@
       html.setAttribute('data-theme', next);
       localStorage.setItem('theme', next);
     }
-
-    document.querySelectorAll('.contact-email').forEach(function(el) {
-      var u = el.getAttribute('data-email-user');
-      var d = el.getAttribute('data-email-domain');
-      el.addEventListener('click', function(e) {
-        e.preventDefault();
-        window.location.href = 'mai' + 'lto:' + u + '@' + d;
-      });
-    });
-
     var waitlistForm = document.getElementById('waitlist-form');
     var waitlistStatus = document.getElementById('waitlist-status');
     if (waitlistForm && waitlistStatus) {
