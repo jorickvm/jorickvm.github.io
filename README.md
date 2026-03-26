@@ -104,6 +104,18 @@ Output:
 - the catalog includes suggested placement, section anchors, intro context, and extracted section summaries
 - markers in the HTML use `<!-- ARTICLE_IMAGE:hero -->`, `<!-- ARTICLE_IMAGE:body-1 -->`, etc.
 
+## Future help articles: program-specific tracking guides
+
+How to track specific residency/tax programs in the app. Each article would explain the rule and walk through setting up a tracker.
+
+- **US Foreign Earned Income Exclusion (FEIE) / Bona Fide Residence** — 330/365 days outside the US (Physical Presence Test)
+- **IRS Substantial Presence Test** — 183-day weighted formula across 3 years
+- **UK Statutory Residence Test (SRT)** — automatic overseas/UK tests + sufficient ties
+- **Portugal NHR / Malaysia MM2H / New Zealand** — rolling 365-day windows
+- **Cyprus 60-day rule** — non-domiciled tax residency via 60 days presence
+
+---
+
 Context used for prompting:
 - page `<title>`
 - meta description
