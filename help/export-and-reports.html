@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Export and Reports — AtlasDays Help</title>
+  <meta name="description" content="Export trip data from AtlasDays as CSV or PDF, understand what each format contains, and clean up your record before you share or review it." />
+  <meta property="og:title" content="Export and Reports — AtlasDays Help" />
+  <meta property="og:description" content="Export trip data from AtlasDays as CSV or PDF, understand what each format contains, and clean up your record before you share or review it." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://atlasdays.app/help/export-and-reports" />
+  <meta property="og:image" content="https://atlasdays.app/assets/home-hero-dashboard.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Export and Reports — AtlasDays Help" />
+  <meta name="twitter:description" content="Export trip data from AtlasDays as CSV or PDF, understand what each format contains, and clean up your record before you share or review it." />
+  <meta name="twitter:image" content="https://atlasdays.app/assets/home-hero-dashboard.png" />
+  <link rel="canonical" href="https://atlasdays.app/help/export-and-reports" />
+  <link rel="icon" type="image/png" href="../assets/favicon_light.png?v=20260325a" media="(prefers-color-scheme: light)" />
+  <link rel="icon" type="image/png" href="../assets/favicon_dark.png?v=20260325a" media="(prefers-color-scheme: dark)" />
+  <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)})()</script>
+  <style>
+    :root { --bg:#0a0b0d; --bg-card:rgba(255,255,255,0.05); --text:#f4f7fb; --muted:#b2b9c5; --muted-2:#8790a0; --line:rgba(255,255,255,0.10); --blue:#1692ff; --blue-soft:rgba(22,146,255,0.12); --max:720px; }
+    @media (prefers-color-scheme: light) { :root { --bg:#f6f8fc; --bg-card:rgba(255,255,255,0.88); --text:#0d1422; --muted:#526075; --muted-2:#6c788b; --line:rgba(12,22,40,0.09); --blue-soft:rgba(22,146,255,0.08); } }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif; color:var(--text); background:var(--bg); line-height:1.7; -webkit-font-smoothing:antialiased; }
+    a { color:var(--blue); text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    .top-bar { border-bottom:1px solid var(--line); padding:18px 0; }
+    .top-bar-inner { width:min(var(--max), calc(100% - 40px)); margin:0 auto; display:flex; align-items:center; justify-content:space-between; }
+    .brand { display:inline-flex; align-items:center; gap:10px; font-weight:700; color:var(--text); text-decoration:none; }
+    .brand img { width:30px; height:30px; }
+    article { width:min(var(--max), calc(100% - 40px)); margin:0 auto; padding:48px 0 80px; }
+    .breadcrumb { font-size:0.88rem; color:var(--muted-2); margin-bottom:24px; }
+    .breadcrumb a { color:var(--muted); }
+    h1 { font-size:clamp(1.8rem, 4vw, 2.6rem); line-height:1.1; letter-spacing:-0.03em; margin:0 0 12px; }
+    .subtitle { color:var(--muted); font-size:1.08rem; margin:0 0 24px; }
+    h2 { font-size:1.4rem; letter-spacing:-0.02em; margin:36px 0 12px; }
+    h3 { font-size:1.1rem; margin:28px 0 8px; }
+    p, li { color:var(--muted); font-size:1rem; }
+    p { margin:0 0 16px; }
+    ul { padding-left:20px; margin:0 0 16px; }
+    li { margin:6px 0; }
+    strong, code { color:var(--text); }
+    code { font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size:0.95em; }
+    .callout, .cta-box { padding:20px 24px; border-radius:16px; margin:28px 0; }
+    .callout { background:var(--blue-soft); border:1px solid rgba(22,146,255,0.18); }
+    .cta-box { background:var(--bg-card); border:1px solid var(--line); }
+    .theme-toggle { background:none; border:1px solid var(--line); border-radius:10px; color:var(--muted); cursor:pointer; width:36px; height:36px; display:inline-grid; place-items:center; padding:0; }
+    .theme-toggle:hover { border-color:var(--blue); color:var(--text); }
+    .icon-moon, .logo-light { display:none; } .logo-dark { display:block; }
+    @media (prefers-color-scheme: light) { .icon-sun, .logo-dark { display:none; } .icon-moon, .logo-light { display:block; } }
+    html[data-theme="dark"] .icon-sun, html[data-theme="dark"] .logo-dark { display:block; } html[data-theme="dark"] .icon-moon, html[data-theme="dark"] .logo-light { display:none; } html[data-theme="light"] .icon-sun, html[data-theme="light"] .logo-dark { display:none; } html[data-theme="light"] .icon-moon, html[data-theme="light"] .logo-light { display:block; }
+    html[data-theme="dark"] { --bg:#0a0b0d; --bg-card:rgba(255,255,255,0.05); --text:#f4f7fb; --muted:#b2b9c5; --muted-2:#8790a0; --line:rgba(255,255,255,0.10); --blue-soft:rgba(22,146,255,0.12); }
+    html[data-theme="light"] { --bg:#f6f8fc; --bg-card:rgba(255,255,255,0.88); --text:#0d1422; --muted:#526075; --muted-2:#6c788b; --line:rgba(12,22,40,0.09); --blue-soft:rgba(22,146,255,0.08); }
+  </style>
+</head>
+<body>
+  <header class="top-bar">
+    <div class="top-bar-inner">
+      <a class="brand" href="/">
+        <img class="logo-dark" src="../assets/logo_dark.png?v=20260325a" alt="AtlasDays logo" width="1024" height="1024" />
+        <img class="logo-light" src="../assets/logo_light.png?v=20260325a" alt="AtlasDays logo" width="1024" height="1024" />
+        <span>AtlasDays</span>
+      </a>
+      <div style="display:flex;align-items:center;gap:16px">
+        <a href="/help/" style="color:var(--muted);font-size:0.92rem">Help</a>
+        <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()">
+          <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <article>
+    <nav class="breadcrumb">
+      <a href="/">AtlasDays</a> / <a href="/help/">Help</a>
+    </nav>
+
+    <h1>Export and Reports</h1>
+    <p class="subtitle">Export your AtlasDays trip record for backup, review, transfer, or paperwork, and know what to clean up before you share it.</p>
+
+    <h2>What This Page Helps You Do</h2>
+    <p>Use this page when you need a copy of your trip data outside AtlasDays, want a shareable report, or want to check what the app will include before you send it anywhere.</p>
+    <p>By the end of this page, you should know:</p>
+    <ul>
+      <li>when to use <strong>CSV</strong> versus <strong>PDF</strong></li>
+      <li>what each export format actually contains</li>
+      <li>what to verify before you export a record you plan to rely on</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>Export reflects the trip record you have now.</strong> It does not repair bad dates, resolve overlaps, or turn approximate history into exact proof. Clean the record first, then export it.</p>
+    </div>
+
+    <h2>When Export Is Useful</h2>
+    <ul>
+      <li>use <strong>CSV</strong> when you want a spreadsheet-friendly copy of your trip record for backup, transfer, or your own review</li>
+      <li>use <strong>PDF</strong> when you want a cleaner report for human review, records, or compliance paperwork</li>
+      <li>export before major cleanup if you want a checkpoint, and after cleanup if you want a record you can rely on</li>
+    </ul>
+    <p>In the current app, both <strong>CSV export</strong> and <strong>PDF export</strong> require <strong>AtlasDays Pro</strong>.</p>
+
+    <h2>Where Export Lives in the App</h2>
+    <p>Go to <strong>Settings &gt; Export</strong>. AtlasDays then lets you choose the export period and preview either <strong>CSV</strong> or <strong>PDF</strong> before you share the file.</p>
+    <p>If the selected period contains no trips, the export buttons stay disabled.</p>
+
+    <h2>Choose the Right Export Scope First</h2>
+    <p>Export is period-based. The screen supports:</p>
+    <ul>
+      <li><strong>All Time</strong></li>
+      <li><strong>Year</strong>, including a custom fiscal-year-style period</li>
+      <li><strong>Range</strong>, using presets like 365, 180, 90, 30, or 7 days, or a custom start and end date</li>
+    </ul>
+    <p>If you export a limited year or range, AtlasDays only includes trips it can place in that period. <strong>Unknown-date</strong> trips only appear in <strong>All Time</strong> exports because they have no dates to place in a filtered period.</p>
+
+    <h2>CSV Export: What It Is For</h2>
+    <p>CSV export is the trip-data format. It is best when you want to inspect the record in a spreadsheet, keep a portable copy, or re-import the same trip record later.</p>
+    <p>The exported CSV contains these columns:</p>
+    <ul>
+      <li><code>Country</code></li>
+      <li><code>Start Date</code></li>
+      <li><code>End Date</code></li>
+      <li><code>Days</code></li>
+      <li><code>Transit</code></li>
+      <li><code>Notes</code></li>
+    </ul>
+    <p>What those fields mean in practice:</p>
+    <ul>
+      <li><strong>Country</strong> is exported as a human-readable place name.</li>
+      <li><strong>Exact-date trips</strong> export exact dates in <code>yyyy-mm-dd</code>.</li>
+      <li><strong>Year-only trips</strong> export years in the Start Date and End Date columns.</li>
+      <li><strong>Unknown-date trips</strong> export with blank date fields.</li>
+      <li><strong>Ongoing trips</strong> export with a blank End Date.</li>
+      <li><strong>Transit</strong> is exported as its own flag.</li>
+      <li><strong>Notes</strong> export exactly as stored on the trip.</li>
+    </ul>
+    <p>The CSV export is trip data only. It does <strong>not</strong> export app settings, home-country configuration, or tracker definitions.</p>
+
+    <h2>How CSV Export Relates to Import</h2>
+    <p>Import brings trip data <strong>into</strong> AtlasDays. Export takes your current AtlasDays trip record <strong>out</strong>.</p>
+    <p>AtlasDays can import its own exported CSV later because the importer accepts the extra <code>Days</code> column in the export format. If your goal is backup or transfer, export is the right tool. If your goal is rebuilding older history into the app, use <a href="/help/csv-import">CSV Import</a>.</p>
+
+    <h2>PDF Export: When It Fits</h2>
+    <p>PDF export is the report-style output. It is better when you want a cleaner document for review, records, or paperwork rather than a spreadsheet.</p>
+    <p>The PDF report includes a trip table built from the currently selected export period. Depending on the options you choose, it can also include:</p>
+    <ul>
+      <li><strong>Tracker Summary</strong></li>
+      <li><strong>Traveler Information</strong> such as name, passport number, and nationality</li>
+      <li><strong>Group by Country</strong> layout</li>
+      <li><strong>App Branding</strong></li>
+      <li><strong>Disclaimer</strong></li>
+    </ul>
+    <p>If you turn on the disclaimer option, the PDF states that the report is based on user-entered data and is not an official travel record.</p>
+
+    <h2>What to Verify Before You Export</h2>
+    <ul>
+      <li>Resolve any <strong>date conflicts</strong> in Timeline before you export a record you plan to trust.</li>
+      <li>Close <strong>ongoing</strong> trips if you need a fixed end date. Otherwise the current day span will keep changing.</li>
+      <li>Make sure trips that matter to a visa or residency threshold are stored as <strong>Exact Dates</strong>, not just Year or Unknown.</li>
+      <li>Review <strong>notes</strong> before sharing, because export includes them.</li>
+      <li>Check the selected <strong>period</strong> before exporting so you do not accidentally leave out relevant trips.</li>
+    </ul>
+
+    <h2>How Export Relates to Trackers and Dashboard</h2>
+    <p>Export is built from your trip record. If the trip record is incomplete or approximate, the export will reflect that.</p>
+    <ul>
+      <li><strong>Tracker trust</strong> still depends on exact trips and clean conflict-free history.</li>
+      <li><strong>CSV export</strong> is raw trip output, not a separate compliance calculation.</li>
+      <li><strong>PDF Tracker Summary</strong>, if included, is generated from the trips in the current export period.</li>
+      <li><strong>Dashboard</strong> is still the best place to inspect how the app is interpreting your record before you share it.</li>
+    </ul>
+
+    <div class="cta-box">
+      <h3>Where to go next</h3>
+      <p><a href="/help/getting-started">Getting Started</a> explains the setup order that produces cleaner exports later.</p>
+      <p><a href="/help/history-and-import">Trip Modes and Record Quality</a> explains how Exact Dates, Year, Unknown, transit, and ongoing trips affect the exported record.</p>
+      <p><a href="/help/csv-import">CSV Import</a> explains how to bring bulk history into AtlasDays before you export it back out.</p>
+      <p><a href="/help/trackers-and-limits">Trackers and Limits</a> explains how much confidence you should place in tracker outputs before sharing a report.</p>
+      <p><a href="/help/dashboard-and-map">Dashboard and Map</a> helps you review totals, periods, and results before exporting.</p>
+    </div>
+  </article>
+
+  <script>
+  function toggleTheme() {
+    var html = document.documentElement;
+    var current = html.getAttribute('data-theme');
+    var isDark;
+    if (current) isDark = current === 'dark';
+    else isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = isDark ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  }
+  </script>
+</body>
+</html>

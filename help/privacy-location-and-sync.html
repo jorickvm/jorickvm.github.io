@@ -4,15 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Privacy, Location, and Sync — AtlasDays Help</title>
-  <meta name="description" content="How AtlasDays handles on-device data, optional iCloud sync, country detection, and what the app does not store." />
+  <meta name="description" content="How AtlasDays stores data on your device, what country detection and notifications do, and when optional iCloud sync is worth turning on." />
   <meta property="og:title" content="Privacy, Location, and Sync — AtlasDays Help" />
-  <meta property="og:description" content="How AtlasDays handles on-device data, optional iCloud sync, country detection, and what the app does not store." />
+  <meta property="og:description" content="How AtlasDays stores data on your device, what country detection and notifications do, and when optional iCloud sync is worth turning on." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/help/privacy-location-and-sync" />
   <meta property="og:image" content="https://atlasdays.app/assets/home-hero-dashboard.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Privacy, Location, and Sync — AtlasDays Help" />
-  <meta name="twitter:description" content="How AtlasDays handles on-device data, optional iCloud sync, country detection, and what the app does not store." />
+  <meta name="twitter:description" content="How AtlasDays stores data on your device, what country detection and notifications do, and when optional iCloud sync is worth turning on." />
   <meta name="twitter:image" content="https://atlasdays.app/assets/home-hero-dashboard.png" />
   <link rel="canonical" href="https://atlasdays.app/help/privacy-location-and-sync" />
   <link rel="icon" type="image/png" href="../assets/favicon_light.png?v=20260325a" media="(prefers-color-scheme: light)" />
@@ -119,7 +119,7 @@
   <article>
     <nav class="breadcrumb"><a href="/">AtlasDays</a> / <a href="/help/">Help</a></nav>
     <h1>Privacy, Location, and Sync</h1>
-    <p class="subtitle">How AtlasDays handles on-device data, optional iCloud sync, country-detection suggestions, and what the app does not store.</p>
+    <p class="subtitle">Understand AtlasDays' local-first privacy model, what permissions matter, and when optional iCloud sync is useful.</p>
 
     <!-- ARTICLE_IMAGE:hero -->
     <!-- ARTICLE_IMAGE_RENDER_START:hero -->
@@ -128,39 +128,76 @@
     </figure>
     <!-- ARTICLE_IMAGE_RENDER_END:hero -->
 
-    <h2>No account required</h2>
-    <p>The AtlasDays app is designed so you can use it without creating an account or signing in to an AtlasDays service.</p>
+    <h2>What This Page Helps You Do</h2>
+    <p>Use this page when you are deciding whether to keep AtlasDays fully local, whether to enable country detection, or whether notifications and iCloud sync are worth turning on.</p>
+    <p>By the end of this page, you should know:</p>
+    <ul>
+      <li>what AtlasDays keeps on your device by default</li>
+      <li>what location detection and notifications actually do in the app</li>
+      <li>whether iCloud sync fits your setup or should stay off</li>
+    </ul>
 
-    <h2>On-device data by default</h2>
-    <p>Your trip history and tracker calculations live on your device. The app is designed around a local record rather than a cloud-first account system.</p>
+    <div class="callout">
+      <p><strong>AtlasDays is local-first.</strong> There is no AtlasDays account, no sign-in, and no AtlasDays server copy of your trip history. Trips, trackers, and day calculations work on-device by default.</p>
+    </div>
 
-    <h2>Optional iCloud sync</h2>
-    <p>If you enable iCloud sync in Settings, your trips and trackers sync across your devices through your personal Apple iCloud account. This uses Apple's CloudKit — your data goes to your iCloud storage, not to an AtlasDays server.</p>
-    <p>Separately, your preferences (appearance, accent color, home country, and other settings) sync through iCloud key-value storage automatically if you are signed into iCloud. This works even if you have not enabled the full data sync toggle, so your settings carry over to a new device or after a reinstall without extra setup.</p>
-    <p>If you reinstall the app and iCloud sync was previously enabled, your trip data will recover from CloudKit once you turn the sync toggle back on.</p>
+    <h2>When to Use This Page</h2>
+    <p>Come here during first-time setup, before turning on <strong>Auto-Detect Trips</strong>, after changing devices, or any time you want to understand what the app is doing with your data and permissions.</p>
 
-    <h2>How country detection works</h2>
+    <h2>What AtlasDays Stores on Your Device</h2>
+    <p>Your trip record and tracker data live in the app's local data store on your device. Manual trip entry, dashboard totals, tracker calculations, CSV import, and export all work without creating an AtlasDays account.</p>
+    <p>AtlasDays also keeps some device-level app state locally, such as pending trip suggestions, so the app can continue where you left off.</p>
+    <p>If you are signed into iCloud, AtlasDays can also mirror a small set of preferences such as home-country and appearance settings through Apple's iCloud key-value storage. That preference carry-over is separate from the full trip-and-tracker sync toggle.</p>
+
+    <h2>How Country Detection Works</h2>
     <!-- ARTICLE_IMAGE:body-1 -->
     <!-- ARTICLE_IMAGE_RENDER_START:body-1 -->
     <figure class="atlasdays-article-image is-body" data-article-image-slot="body-1">
       <img src="../assets/article-images/help/privacy-location-and-sync/body-1.webp" alt="Supporting illustration for Privacy, Location, and Sync, focused on how country detection works in the AtlasDays visual style." width="1536" height="1024" decoding="async" sizes="(max-width: 760px) calc(100vw - 40px), 720px" loading="lazy" />
     </figure>
     <!-- ARTICLE_IMAGE_RENDER_END:body-1 -->
-    <p>AtlasDays can optionally detect that you have entered a new country and suggest a trip. It uses iOS significant location changes — the same low-power system other travel apps use — not continuous GPS tracking. The app only wakes up when iOS determines you have moved a significant distance, then checks which country you are in. This has minimal battery impact.</p>
-    <p>When a new country is detected, the app suggests a trip either as an in-app banner (if the app is open) or as a notification (if it is in the background). You choose whether to accept, edit, or dismiss the suggestion. The app only suggests once per country crossing — it will not re-suggest the same country until you leave and re-enter.</p>
+    <p><strong>Auto-Detect Trips</strong> is optional. When you turn it on, AtlasDays uses iOS significant-change location monitoring to notice that you may have entered a different country and then checks which country that is.</p>
+    <p>AtlasDays does <strong>not</strong> silently create trips from location events. It creates a suggestion that you can review, edit, confirm, or dismiss. If the app is open, you see that suggestion in-app. If the app is in the background and notifications are allowed, you can receive a local notification.</p>
     <ul>
-      <li>You can leave auto-detect off and log trips manually.</li>
-      <li>AtlasDays does not store a location history or send it to an AtlasDays server.</li>
-      <li>You can revoke location access at any time in iOS Settings.</li>
+      <li>AtlasDays uses significant-change location, not continuous GPS tracking.</li>
+      <li>Raw location history is not stored by AtlasDays and is not sent to an AtlasDays server.</li>
+      <li>The app avoids re-suggesting the same country until you leave and enter a different one.</li>
+      <li>You can leave auto-detect off and log everything manually in <a href="/help/history-and-import">Trip Modes and Record Quality</a>.</li>
     </ul>
 
-    <h2>Notifications</h2>
-    <p>Notifications serve two purposes: trip suggestions when you enter a new country, and tracker milestone alerts (like "7 days remaining on your Schengen limit"). Both are local notifications scheduled on your device — nothing goes through a server. You can turn off trip suggestions and tracker alerts independently in Settings.</p>
+    <h2>Which Permissions Matter</h2>
+    <ul>
+      <li><strong>Location</strong> matters only if you want automatic country-detection suggestions. Manual entry, dashboard review, import, and export do not require it.</li>
+      <li><strong>Notifications</strong> matter if you want background trip-suggestion alerts or tracker alerts. They are not required for manual logging.</li>
+      <li><strong>For the most reliable border detection</strong>, allow location and choose <strong>Always Allow</strong> if iOS offers that upgrade.</li>
+    </ul>
+    <p>If iOS location or notification permission is denied later, AtlasDays mirrors that and turns the related in-app toggle off rather than pretending the feature is still active.</p>
+
+    <h2>What Notifications Are For</h2>
+    <p>AtlasDays uses local notifications for two jobs:</p>
+    <ul>
+      <li><strong>Trip suggestions</strong> when the app detects that you may have entered a new country while AtlasDays is in the background</li>
+      <li><strong>Tracker alerts</strong> such as approaching a visa or residency threshold</li>
+    </ul>
+    <p>These alerts are scheduled on your device. They are not routed through an AtlasDays server.</p>
+
+    <h2>When to Use iCloud Sync and When to Leave It Off</h2>
+    <p>Turn on <strong>iCloud Sync</strong> if you want your trips and trackers available across multiple Apple devices or you want your private Apple iCloud account to hold the sync-backed copy of that data.</p>
+    <p>Leave it off if you use one device only, prefer to keep the full trip record local to that device, or would rather rely on manual file exports for backup and transfer.</p>
+
+    <div class="callout">
+      <p><strong>This page is the privacy and permissions overview.</strong> For the exact sync behavior, restart expectations, and device-change details, use <a href="/help/icloud-sync-and-restore">iCloud Sync and Restore</a>.</p>
+    </div>
 
     <div class="cta-box">
-      <h3>Related help</h3>
-      <p>Read <a href="/privacy">the full app privacy page</a>, or go to <a href="/help/history-and-import">trip modes and import</a> if your main question is how AtlasDays stores travel records.</p>
-      <p><a class="cta-btn" href="/#waitlist">Join the waitlist</a></p>
+      <h3>Where to go next</h3>
+      <p><a href="/help/icloud-sync-and-restore">iCloud Sync and Restore</a> explains what syncs, what does not, and what to expect on a new device or after reinstalling.</p>
+      <p><a href="/help/getting-started">Getting Started</a> shows where privacy, permissions, and home-country setup fit into first-time setup.</p>
+      <p><a href="/help/history-and-import">Trip Modes and Record Quality</a> explains how manual trips, transit, and ongoing stays are stored.</p>
+      <p><a href="/help/trackers-and-limits">Trackers and Limits</a> explains how tracker alerts use notification permission.</p>
+      <p><a href="/help/dashboard-and-map">Dashboard and Map</a> explains how your local trip record turns into totals and maps.</p>
+      <p><a href="/help/export-and-reports">Export and Reports</a> explains how to create a portable record before changing devices or doing destructive cleanup.</p>
+      <p>For the formal policy rather than the operational Help page, read <a href="/privacy">the Privacy Policy</a>.</p>
     </div>
   </article>
   <script>function toggleTheme(){var html=document.documentElement;var current=html.getAttribute('data-theme');var isDark;if(current)isDark=current==='dark';else isDark=window.matchMedia('(prefers-color-scheme: dark)').matches;var next=isDark?'light':'dark';html.setAttribute('data-theme',next);localStorage.setItem('theme',next);}</script>

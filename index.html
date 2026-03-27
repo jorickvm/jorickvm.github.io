@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AtlasDays — Track Countries, Count Visa Days, Prove Residence</title>
-  <meta name="description" content="AtlasDays is a private iPhone app to track every country you visit, count days for Schengen and visa limits, and prove tax residence — all on-device, no account required." />
-  <meta property="og:title" content="AtlasDays — Track Countries, Count Visa Days, Prove Residence" />
-  <meta property="og:description" content="Track every country you visit, count days for visa limits, and prove tax residence. Private, on-device, no account required." />
+  <title>AtlasDays — Private Day Tracking for Visa, Residency, and Travel History</title>
+  <meta name="description" content="AtlasDays is a private iPhone app for tracking visa limits, residency or tax presence days, and accurate travel history. On-device, no account required." />
+  <meta property="og:title" content="AtlasDays — Private Day Tracking for Visa, Residency, and Travel History" />
+  <meta property="og:description" content="Private iPhone app for tracking visa limits, residency or tax presence days, and accurate travel history. On-device, no account required." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://atlasdays.app/" />
   <meta property="og:image" content="https://atlasdays.app/assets/home-hero-dashboard.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="AtlasDays — Track Countries, Count Visa Days, Prove Residence" />
-  <meta name="twitter:description" content="Track every country you visit, count days for visa limits, and prove tax residence. Private, on-device, no account required." />
+  <meta name="twitter:title" content="AtlasDays — Private Day Tracking for Visa, Residency, and Travel History" />
+  <meta name="twitter:description" content="Private iPhone app for tracking visa limits, residency or tax presence days, and accurate travel history. On-device, no account required." />
   <meta name="twitter:image" content="https://atlasdays.app/assets/home-hero-dashboard.png" />
   <link rel="canonical" href="https://atlasdays.app/" />
   <link rel="icon" type="image/png" href="assets/favicon_light.png?v=20260325a" media="(prefers-color-scheme: light)" />
@@ -24,7 +24,7 @@
     "name": "AtlasDays",
     "operatingSystem": "iOS",
     "applicationCategory": "TravelApplication",
-    "description": "Private iPhone app to track every country you visit, count days for Schengen and visa limits, and prove tax residence.",
+    "description": "Private iPhone app for tracking visa limits, residency or tax presence days, and accurate travel history.",
     "url": "https://atlasdays.app/",
     "image": "https://atlasdays.app/assets/home-hero-dashboard.png",
     "author": {
@@ -40,15 +40,7 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Does AtlasDays store my precise location?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. Country detection is optional, raw coordinates are not stored, and AtlasDays does not keep a server-side copy of your travel history."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can it track Schengen 90/180 and other limits?",
+        "name": "Can it track Schengen 90/180 and custom limits?",
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "Yes. AtlasDays supports rolling windows, per-stay limits, calendar-year counting, and custom trackers."
@@ -59,15 +51,23 @@
         "name": "Can I add older trips with incomplete dates?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. AtlasDays supports exact trips, year-only records, and unknown-date visits for incomplete travel history."
+          "text": "Yes. AtlasDays supports exact trips, year-only entries, and unknown-date visits. Approximate history stays useful without turning into fake precision."
         }
       },
       {
         "@type": "Question",
-        "name": "Can I import my existing travel history?",
+        "name": "Does it store my precise location?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. AtlasDays supports CSV import and export, provides a template, and includes guidance for turning messy travel history into import-ready data."
+          "text": "No. Country detection is optional and designed around country suggestions, not continuous location surveillance."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I import and export travel history?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. AtlasDays supports CSV import and export, and the import flow shows a preview with validation before imported trips are saved."
         }
       },
       {
@@ -80,10 +80,10 @@
       },
       {
         "@type": "Question",
-        "name": "How much does AtlasDays cost?",
+        "name": "Is this legal or tax advice?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Pricing details will be announced closer to launch."
+          "text": "No. AtlasDays helps you keep records and count days. Interpretation of immigration or tax rules is still your responsibility."
         }
       }
     ]
@@ -1161,8 +1161,7 @@
         <span>AtlasDays</span>
       </a>
       <nav class="nav-links" aria-label="Primary">
-        <a class="hide-mobile" href="#who">Who it's for</a>
-        <a class="hide-mobile" href="#product">Product</a>
+        <a class="hide-mobile" href="#proof">Proof</a>
         <a class="hide-mobile" href="#privacy">Privacy</a>
         <a href="/help/">Help</a>
         <a href="/learn/">Learn</a>
@@ -1180,13 +1179,13 @@
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-copy reveal visible">
-          <div class="eyebrow"><span class="dot"></span>Private travel tracking for iPhone and iPad</div>
-          <h1>Track countries. Count days. Keep it private.</h1>
-          <p class="hero-lead hero-lead-desktop">AtlasDays is one app for three jobs: see every country you have visited on a map, count days for visa limits like Schengen 90/180, and track residence thresholds for tax or citizenship purposes. Everything stays on your device.</p>
-          <p class="hero-lead hero-lead-mobile">Map every country you have visited, track visa and residence days, and keep the record on your device.</p>
+          <div class="eyebrow"><span class="dot"></span>Private day tracking for iPhone and iPad</div>
+          <h1>Private day tracking that holds up when dates matter.</h1>
+          <p class="hero-lead hero-lead-desktop">AtlasDays is built for people who need accurate day counts: track visa limits, monitor residency or tax presence thresholds, and keep a long-term travel history you can trust. Your travel record stays on your device, with no account required and optional iCloud sync.</p>
+          <p class="hero-lead hero-lead-mobile">Track visa limits, residency thresholds, and travel history on your device. No account required.</p>
           <div class="hero-actions">
-            <a class="btn btn-primary" href="#who">See how it works</a>
-            <a class="btn btn-secondary" href="#waitlist">Join the waitlist</a>
+            <a class="btn btn-primary" href="#waitlist">Join the waitlist</a>
+            <a class="btn btn-secondary" href="#proof">See the product</a>
           </div>
           <div class="hero-mobile-visuals" aria-label="AtlasDays mobile app previews">
             <div class="hero-mobile-shot primary">
@@ -1199,10 +1198,10 @@
             </div>
           </div>
           <div class="hero-points" aria-label="Key benefits">
-            <div class="hero-point"><strong>World map</strong>Every country you have visited, highlighted and tappable. Share cards built from real data.</div>
-            <div class="hero-point"><strong>Visa day tracking</strong>Schengen 90/180, per-stay limits, and rolling windows that update automatically.</div>
-            <div class="hero-point"><strong>Residence proof</strong>183-day rules, fiscal year counting, and milestone alerts as thresholds approach.</div>
-            <div class="hero-point"><strong>Private by design</strong>On-device calculations, optional iCloud sync, no account required.</div>
+            <div class="hero-point"><strong>Visa limits</strong>Schengen 90/180, per-stay limits, and rolling windows that update automatically.</div>
+            <div class="hero-point"><strong>Residency thresholds</strong>183-day rules, calendar years, and fiscal-year counts that stay current as trips change.</div>
+            <div class="hero-point"><strong>Travel history</strong>Exact trips when the count matters, year-only or unknown entries when older history is incomplete.</div>
+            <div class="hero-point"><strong>Private by design</strong>On-device calculations, no account required, optional iCloud sync.</div>
           </div>
         </div>
 
@@ -1222,61 +1221,25 @@
     <section id="who" class="section">
       <div class="container">
         <div class="section-header reveal">
-          <p class="section-kicker">Who it's for</p>
-          <h2>One app, three reasons to use it</h2>
-          <p>Whether you collect countries, manage visa limits, or need to prove residence days — AtlasDays handles all three from the same trip record.</p>
+          <p class="section-kicker">Serious use cases</p>
+          <h2>Built for situations where the count has consequences</h2>
+          <p>AtlasDays is designed for people who need a private, reliable travel record to stay within limits, document presence, or rebuild history without inventing dates.</p>
         </div>
         <div class="use-cases-grid">
           <article class="card reveal">
-            <div class="card-icon">🗺️</div>
-            <h3>Travelers who collect countries</h3>
-            <p>See every country you have visited on an interactive world map. Track your count, compare continents, and share visual cards with your stats. Works whether you log exact dates or just check off countries.</p>
-          </article>
-          <article class="card reveal">
             <div class="card-icon">90</div>
-            <h3>People tracking visa day limits</h3>
-            <p>Schengen 90/180, per-stay limits, and rolling windows that update every day. Get alerts at 7 days remaining, 1 day remaining, and when you hit the limit — so you stop counting manually.</p>
+            <h3>Visa day limits</h3>
+            <p>Track Schengen 90/180, per-stay limits, and rolling windows from exact trip dates. See used days, days remaining, and warning thresholds before you overstay.</p>
           </article>
           <article class="card reveal">
             <div class="card-icon">183</div>
-            <h3>People proving tax residence or CBI requirements</h3>
-            <p>Track 183-day rules, custom fiscal years, and annual presence thresholds. Both arrival and departure days count. The record is on your device, ready when an advisor or authority asks.</p>
+            <h3>Residency and tax presence</h3>
+            <p>Monitor 183-day tests, calendar-year totals, and custom fiscal-year thresholds. Keep arrival and departure days straight when an advisor, employer, or authority asks for the count.</p>
           </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="product" class="section">
-      <div class="container">
-        <div class="section-header reveal">
-          <p class="section-kicker">Product</p>
-          <h2>How AtlasDays works</h2>
-          <p>Three views built around the same trip record. Log once, review everywhere.</p>
-        </div>
-        <div class="feature-grid">
-          <article class="feature reveal">
-            <h3>Interactive world map</h3>
-            <p>Visited countries in your accent color, transit countries in a separate color, micro-nations as dot markers. Tap any country to see trips and days. Share map cards directly.</p>
-          </article>
-          <article class="feature reveal">
-            <h3>Dashboard with live stats</h3>
-            <p>Countries visited, trips taken, days abroad, and continents — each tappable for the full breakdown. Switch between year view, all-time, or custom date ranges.</p>
-          </article>
-          <article class="feature reveal">
-            <h3>Tracker cards with alerts</h3>
-            <p>Rolling windows, per-stay limits, yearly counting, and custom fiscal years. Progress bars shift color as you approach a limit. Notifications fire at key milestones.</p>
-          </article>
-          <article class="feature reveal">
-            <h3>Flexible trip logging</h3>
-            <p>Exact dates for trips that matter to a count. Year-only or unknown entries for older history. Mark airport layovers as transit. Add notes, flag ongoing trips, log future plans.</p>
-          </article>
-          <article class="feature reveal">
-            <h3>CSV import and AI helper</h3>
-            <p>Import from spreadsheets, export your full history. A built-in prompt turns booking emails or passport stamps into import-ready CSV. The preview catches errors before anything is saved.</p>
-          </article>
-          <article class="feature reveal">
-            <h3>Auto-detect country arrivals</h3>
-            <p>Optional low-power country detection suggests trips as you cross borders. One suggestion per crossing, no GPS tracking, no data sent anywhere.</p>
+          <article class="card reveal">
+            <div class="card-icon">LOG</div>
+            <h3>Accurate travel history</h3>
+            <p>Keep a long-term record that stays honest about precision. Use exact dates where you have them, and year-only or unknown entries when older trips are real but incomplete.</p>
           </article>
         </div>
       </div>
@@ -1285,58 +1248,24 @@
     <section id="proof" class="section">
       <div class="container">
         <div class="section-header reveal">
-          <p class="section-kicker">In the app</p>
-          <h2>Numbers you can act on, not just look at</h2>
-          <p>Every screen is designed so you can answer a real question — how many days left, which countries count, what does my record look like — without digging through formulas.</p>
+          <p class="section-kicker">Product proof</p>
+          <h2>See how AtlasDays counts days and holds the record together</h2>
+          <p>Trackers, history, precision levels, and imports all work from the same trip record. The app shows the mechanics directly instead of hiding them behind a simple total.</p>
         </div>
         <div class="showcase reveal" data-showcase>
           <div class="showcase-tabs" role="tablist" aria-label="AtlasDays product screens">
-            <button class="showcase-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="showcase-timeline" id="showcase-tab-timeline" data-showcase-tab>Timeline</button>
-            <button class="showcase-tab" type="button" role="tab" aria-selected="false" aria-controls="showcase-map" id="showcase-tab-map" tabindex="-1" data-showcase-tab>Map</button>
-            <button class="showcase-tab" type="button" role="tab" aria-selected="false" aria-controls="showcase-trackers" id="showcase-tab-trackers" tabindex="-1" data-showcase-tab>Trackers</button>
+            <button class="showcase-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="showcase-trackers" id="showcase-tab-trackers" data-showcase-tab>Trackers</button>
+            <button class="showcase-tab" type="button" role="tab" aria-selected="false" aria-controls="showcase-timeline" id="showcase-tab-timeline" tabindex="-1" data-showcase-tab>Timeline</button>
             <button class="showcase-tab" type="button" role="tab" aria-selected="false" aria-controls="showcase-trip-modes" id="showcase-tab-trip-modes" tabindex="-1" data-showcase-tab>Trip Modes</button>
             <button class="showcase-tab" type="button" role="tab" aria-selected="false" aria-controls="showcase-import" id="showcase-tab-import" tabindex="-1" data-showcase-tab>Import</button>
+            <button class="showcase-tab" type="button" role="tab" aria-selected="false" aria-controls="showcase-map" id="showcase-tab-map" tabindex="-1" data-showcase-tab>Map</button>
           </div>
           <div class="showcase-viewport">
             <div class="showcase-arrows">
               <button class="showcase-arrow prev" type="button" data-showcase-prev aria-label="Previous slide">&#8249;</button>
               <button class="showcase-arrow next" type="button" data-showcase-next aria-label="Next slide">&#8250;</button>
             </div>
-            <article class="showcase-slide is-active" id="showcase-timeline" role="tabpanel" aria-labelledby="showcase-tab-timeline" data-showcase-slide>
-              <div class="showcase-device-wrap">
-                <div class="showcase-device">
-                  <img src="assets/home-proof-timeline.webp" alt="AtlasDays timeline showing realistic trips grouped by year with visible day totals" width="1320" height="2868" loading="lazy" />
-                </div>
-              </div>
-              <div class="showcase-copy">
-                <p class="showcase-label">Timeline</p>
-                <h3>Your trips, grouped and searchable</h3>
-                <p>The timeline is the source of truth. Trips stay grouped by year, ongoing and upcoming trips surface first, and day totals stay visible on every card instead of being buried in detail screens.</p>
-                <ul class="mini-list">
-                  <li>Search across countries, notes, and years</li>
-                  <li>Swipe to delete with a few seconds to undo</li>
-                  <li>Overlap detection when trips share nights</li>
-                </ul>
-              </div>
-            </article>
-            <article class="showcase-slide" id="showcase-map" role="tabpanel" aria-labelledby="showcase-tab-map" data-showcase-slide hidden>
-              <div class="showcase-device-wrap">
-                <div class="showcase-device">
-                  <img src="assets/home-proof-map-country.webp" alt="AtlasDays world map with visited countries highlighted and a country detail sheet open" width="1320" height="2868" loading="lazy" />
-                </div>
-              </div>
-              <div class="showcase-copy">
-                <p class="showcase-label">Map</p>
-                <h3>A map that does more than decorate</h3>
-                <p>Visited countries appear in color, transit countries stay separate, and every country is tappable. The map changes with the selected period so you can see your history evolve year by year instead of staring at one static total.</p>
-                <ul class="mini-list">
-                  <li>Mini map on the dashboard and a full-screen interactive view</li>
-                  <li>Country detail sheets with trip lists and day totals</li>
-                  <li>Shareable cards with your map, stats, and flags</li>
-                </ul>
-              </div>
-            </article>
-            <article class="showcase-slide" id="showcase-trackers" role="tabpanel" aria-labelledby="showcase-tab-trackers" data-showcase-slide hidden>
+            <article class="showcase-slide is-active" id="showcase-trackers" role="tabpanel" aria-labelledby="showcase-tab-trackers" data-showcase-slide>
               <div class="showcase-device-wrap">
                 <div class="showcase-device">
                   <img src="assets/home-proof-tracker-presets.webp" alt="AtlasDays tracker preset picker showing Schengen, residence, visa limit, and travel goal options" width="1320" height="2868" loading="lazy" />
@@ -1344,12 +1273,29 @@
               </div>
               <div class="showcase-copy">
                 <p class="showcase-label">Trackers</p>
-                <h3>Trackers built for different rules</h3>
-                <p>AtlasDays is not locked to one formula. The same trip record can power Schengen tracking, per-stay visa limits, yearly residence counts, and custom fiscal-year thresholds.</p>
+                <h3>Trackers read directly from the trip record</h3>
+                <p>Schengen limits, per-stay rules, calendar-year counts, and fiscal-year thresholds all run from the same stored trips. Edit the record and the count updates immediately.</p>
                 <ul class="mini-list">
                   <li>Preset trackers for Schengen, residence, visa limits, and travel goals</li>
                   <li>Rolling windows, per-stay counting, calendar years, and fiscal years</li>
                   <li>Warnings as you approach a limit instead of manual recounting</li>
+                </ul>
+              </div>
+            </article>
+            <article class="showcase-slide" id="showcase-timeline" role="tabpanel" aria-labelledby="showcase-tab-timeline" data-showcase-slide hidden>
+              <div class="showcase-device-wrap">
+                <div class="showcase-device">
+                  <img src="assets/home-proof-timeline.webp" alt="AtlasDays timeline showing realistic trips grouped by year with visible day totals" width="1320" height="2868" loading="lazy" />
+                </div>
+              </div>
+              <div class="showcase-copy">
+                <p class="showcase-label">Timeline</p>
+                <h3>The timeline is the source record</h3>
+                <p>Trips stay grouped by year, ongoing and upcoming trips surface first, and day totals stay visible on each card so you can review the record behind a count.</p>
+                <ul class="mini-list">
+                  <li>Search across countries, notes, and years</li>
+                  <li>Swipe to delete with a few seconds to undo</li>
+                  <li>Overlap detection when trips share nights</li>
                 </ul>
               </div>
             </article>
@@ -1361,8 +1307,8 @@
               </div>
               <div class="showcase-copy">
                 <p class="showcase-label">Trip Modes</p>
-                <h3>Messy history still works</h3>
-                <p>Older travel rarely comes in clean, exact dates. AtlasDays lets you choose the precision level that matches what you actually know, so reconstruction is possible without pretending every trip is perfect.</p>
+                <h3>Precision stays explicit</h3>
+                <p>Exact dates drive precise day counts. Year-only and unknown entries preserve older history without pretending you know more than you do.</p>
                 <ul class="mini-list">
                   <li><code>Exact Dates</code> for precise day counting</li>
                   <li><code>Year</code> for reconstructed history</li>
@@ -1378,12 +1324,29 @@
               </div>
               <div class="showcase-copy">
                 <p class="showcase-label">Import</p>
-                <h3>Bring in old travel without wrecking the record</h3>
-                <p>CSV import is built around review, not blind upload. You map columns, inspect the preview, catch bad rows early, and only save once the result looks right.</p>
+                <h3>Imports are reviewed before they count</h3>
+                <p>CSV import is built around review, not blind upload. You map columns, inspect the preview, catch bad rows early, and only save once the record looks right.</p>
                 <ul class="mini-list">
                   <li>Import from spreadsheets and existing logs</li>
                   <li>Preview catches issues before anything is saved</li>
                   <li>Pairs naturally with the app's cleanup and export tools</li>
+                </ul>
+              </div>
+            </article>
+            <article class="showcase-slide" id="showcase-map" role="tabpanel" aria-labelledby="showcase-tab-map" data-showcase-slide hidden>
+              <div class="showcase-device-wrap">
+                <div class="showcase-device">
+                  <img src="assets/home-proof-map-country.webp" alt="AtlasDays world map with visited countries highlighted and a country detail sheet open" width="1320" height="2868" loading="lazy" />
+                </div>
+              </div>
+              <div class="showcase-copy">
+                <p class="showcase-label">Map</p>
+                <h3>The same record also powers the map</h3>
+                <p>Once the counting logic is in place, the same travel record can drive a map view, country detail sheets, and period-based summaries without creating a second system to maintain.</p>
+                <ul class="mini-list">
+                  <li>Mini map on the dashboard and a full-screen interactive view</li>
+                  <li>Country detail sheets with trip lists and day totals</li>
+                  <li>Shareable cards with your map, stats, and flags</li>
                 </ul>
               </div>
             </article>
@@ -1395,47 +1358,13 @@
       </div>
     </section>
 
-    <section id="help" class="section">
-      <div class="container">
-        <div class="section-header reveal">
-          <p class="section-kicker">Docs</p>
-          <h2>Help and Learn</h2>
-          <p>Product documentation for using the app, and broader explainers on the visa and tax rules that AtlasDays is built around.</p>
-        </div>
-        <div class="doc-grid">
-          <article class="doc-card reveal">
-            <h3>Help</h3>
-            <p>Product documentation for using AtlasDays: getting started, trackers, timeline, CSV import, dashboard, privacy, and sync.</p>
-            <div class="doc-links">
-              <a href="/help/">Open the Help Center</a>
-              <a href="/support">Support FAQ &amp; Contact</a>
-              <a href="/help/getting-started">Getting Started</a>
-              <a href="/help/trackers-and-limits">Trackers and Limits</a>
-              <a href="/help/history-and-import">Trip Modes and Import</a>
-            </div>
-          </article>
-          <article class="doc-card reveal">
-            <h3>Learn</h3>
-            <p>Long-form explainers and SEO pages for visa rules, residency thresholds, country counting, and travel-day edge cases beyond the product itself.</p>
-            <div class="doc-links">
-              <a href="/learn/">Open Learn</a>
-              <a href="/learn/schengen-90-180-rule">Schengen 90/180-Day Rule</a>
-              <a href="/learn/travel-history-template-visa-application">Travel History Template for Visa Applications</a>
-              <a href="/learn/how-many-countries-in-the-world">How Many Countries Are There in the World?</a>
-              <a href="/learn/does-a-layover-count-as-visiting-a-country">Does a Layover Count as Visiting a Country?</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
     <section id="privacy" class="section">
       <div class="container">
         <div class="privacy-panel reveal">
           <div class="privacy-grid">
             <div>
-              <h2>Private by design, because travel history is sensitive</h2>
-              <p>AtlasDays is built so the product itself does not need an account or an AtlasDays server copy of your travel history. Calculations run on-device. iCloud sync is optional. Country detection is optional. Your record is meant to stay yours.</p>
+              <h2>Private by design, because day counts and travel records are sensitive</h2>
+              <p>Visa limits, residency thresholds, and long-term travel history can be sensitive records. AtlasDays is built so the product does not need an account or an AtlasDays server copy of your trips. Calculations run on-device. iCloud sync is optional. Country detection is optional.</p>
               <div class="trust-row">
                 <span class="pill">No account required</span>
                 <span class="pill">No AtlasDays server copy</span>
@@ -1454,29 +1383,99 @@
       </div>
     </section>
 
+    <section id="product" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-kicker">Beyond counting</p>
+          <h2>The same record also supports broader travel tracking</h2>
+          <p>Once the counting work is in place, AtlasDays can also show where you have been, how travel changes over time, and what the wider record looks like.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature reveal">
+            <h3>Interactive world map</h3>
+            <p>Visited countries, transit countries, and small-state markers all stay tied to the trips in your record. Tap a country to inspect the trips and totals behind it.</p>
+          </article>
+          <article class="feature reveal">
+            <h3>Dashboard and period stats</h3>
+            <p>Review countries visited, trips taken, days abroad, and continent totals across all-time, year view, or custom ranges from the same stored trips.</p>
+          </article>
+          <article class="feature reveal">
+            <h3>Country record over time</h3>
+            <p>See how your travel history changes by year instead of staring at one lifetime total. The same stored trips power yearly review, country drill-down, and broader travel context.</p>
+          </article>
+          <article class="feature reveal">
+            <h3>Shareable summaries</h3>
+            <p>Create map and stats cards from the same record you already keep. Sharing is optional and does not change the underlying trip data.</p>
+          </article>
+          <article class="feature reveal">
+            <h3>Travel goals and country counts</h3>
+            <p>If you also care about country counts or personal travel goals, the same trip record can support them without a separate tracking workflow.</p>
+          </article>
+          <article class="feature reveal">
+            <h3>Optional country suggestions</h3>
+            <p>Low-power country detection can suggest border crossings as they happen. Suggestions are optional, reviewed by you, and do not create a continuous location log.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="help" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-kicker">Docs</p>
+          <h2>Help and Learn</h2>
+          <p>Go deeper into trackers, trip precision, imports, privacy, and the visa or residency rules the product is built around.</p>
+        </div>
+        <div class="doc-grid">
+          <article class="doc-card reveal">
+            <h3>Help</h3>
+            <p>Product documentation for AtlasDays: trackers, trip modes, CSV import, privacy, and how the record behaves inside the app.</p>
+            <div class="doc-links">
+              <a href="/help/">Open the Help Center</a>
+              <a href="/help/trackers-and-limits">Trackers and Limits</a>
+              <a href="/help/history-and-import">Trip Modes and Record Quality</a>
+              <a href="/help/privacy-location-and-sync">Privacy, Location, and Sync</a>
+              <a href="/support">Support FAQ &amp; Contact</a>
+            </div>
+          </article>
+          <article class="doc-card reveal">
+            <h3>Learn</h3>
+            <p>Long-form explainers for Schengen limits, 183-day residency logic, and preparing or reconstructing travel history when dates matter.</p>
+            <div class="doc-links">
+              <a href="/learn/">Open Learn</a>
+              <a href="/learn/schengen-90-180-rule">Schengen 90/180-Day Rule</a>
+              <a href="/learn/183-day-tax-residency-rule">183-Day Tax Residency Rule</a>
+              <a href="/learn/travel-history-template-visa-application">Travel History Template for Visa Applications</a>
+              <a href="/learn/rebuild-travel-history-from-passport-stamps-emails-photos">Rebuild Travel History From Passport Stamps, Emails, and Photos</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section id="faq" class="section">
       <div class="container">
         <div class="section-header reveal">
           <p class="section-kicker">FAQ</p>
-          <h2>Common questions</h2>
-          <p>The things most people want to know before deciding whether AtlasDays is for them.</p>
+          <h2>Questions before you rely on the record</h2>
+          <p>The practical questions people ask before trusting a day count, an import, or a long-term travel record.</p>
         </div>
         <div class="faq-grid">
           <article class="faq reveal">
-            <h3>Can it track Schengen 90/180 and other limits?</h3>
+            <h3>Can it track Schengen 90/180 and custom limits?</h3>
             <p>Yes. AtlasDays supports rolling windows, per-stay limits, calendar-year counting, and custom trackers.</p>
           </article>
           <article class="faq reveal">
             <h3>Can I add older trips with incomplete dates?</h3>
-            <p>Yes. AtlasDays supports exact trips, year-only entries, and unknown-date visits.</p>
+            <p>Yes. AtlasDays supports exact trips, year-only entries, and unknown-date visits. Approximate history stays useful without turning into fake precision.</p>
           </article>
           <article class="faq reveal">
             <h3>Does it store my precise location?</h3>
             <p>No. Country detection is optional and designed around country suggestions, not continuous location surveillance.</p>
           </article>
           <article class="faq reveal">
-            <h3>Can I import travel history I already have?</h3>
-            <p>Yes. You can import CSV, export your data, and use the built-in template and import guidance to clean up existing records.</p>
+            <h3>Can I import and export travel history?</h3>
+            <p>Yes. AtlasDays supports CSV import and export, and the import flow shows a preview with validation before imported trips are saved.</p>
           </article>
           <article class="faq reveal">
             <h3>Does it work offline?</h3>
@@ -1486,14 +1485,6 @@
             <h3>Is this legal or tax advice?</h3>
             <p>No. AtlasDays helps you keep records and count days. Interpretation of immigration or tax rules is still your responsibility.</p>
           </article>
-          <article class="faq reveal">
-            <h3>How much will AtlasDays cost?</h3>
-            <p>Pricing details will be announced closer to launch.</p>
-          </article>
-          <article class="faq reveal">
-            <h3>Is there an Android version?</h3>
-            <p>No Android version is planned yet. AtlasDays is currently focused on iPhone and iPad.</p>
-          </article>
         </div>
       </div>
     </section>
@@ -1502,8 +1493,8 @@
       <div class="container">
         <div class="cta-panel reveal">
           <div class="cta-panel-copy">
-            <h2>Get the launch email</h2>
-            <p>Join the waitlist for launch news, release updates, and the next round of product screenshots as AtlasDays gets closer to v1.0.</p>
+            <h2>Get the AtlasDays launch email</h2>
+            <p>Join the waitlist for the AtlasDays launch email and the updates that matter if you rely on day counts: tracker changes, exports, pricing, and release timing.</p>
           </div>
           <div class="cta-panel-actions">
             <form
@@ -1515,11 +1506,11 @@
               <label for="waitlist-email">Email address</label>
               <div class="waitlist-row">
                 <input type="email" name="email" id="waitlist-email" placeholder="you@example.com" autocomplete="email" required />
-                <input type="submit" value="Keep me posted" />
+                <input type="submit" value="Get launch updates" />
               </div>
               <p class="waitlist-status" id="waitlist-status" aria-live="polite"></p>
             </form>
-            <div class="cta-note">Submitted through Formspree and used only for AtlasDays launch updates. See <a href="/website-privacy">website waitlist privacy details</a>.</div>
+            <div class="cta-note">Handled through Formspree and used only for AtlasDays launch emails and essential product updates. See <a href="/website-privacy">website waitlist privacy details</a>.</div>
           </div>
         </div>
       </div>
@@ -1537,12 +1528,12 @@
             </span>
             <span>AtlasDays</span>
           </div>
-          <p>Track countries, count visa days, and prove residence. Private, on-device, no account required.</p>
+          <p>Private day tracking for visa limits, residency thresholds, and accurate travel history. On-device, no account required.</p>
           <div class="footer-points">
             <div class="footer-point">Private by design</div>
             <div class="footer-point">iPhone and iPad</div>
             <div class="footer-point">Exact and year-only trip modes</div>
-            <div class="footer-point">Trackers for visas, residence, and goals</div>
+            <div class="footer-point">Trackers for visa and residency limits</div>
           </div>
         </div>
         <div class="copyright">© 2026 AtlasDays</div>
@@ -1607,7 +1598,7 @@
 
           if (response.ok) {
             waitlistForm.reset();
-            waitlistStatus.textContent = 'You are on the list. I will email you when there is something worth sending.';
+            waitlistStatus.textContent = 'You are on the list. I will email you about launch timing and important AtlasDays updates.';
             waitlistStatus.classList.add('is-success');
           } else {
             waitlistStatus.textContent = 'Something went wrong. Please try again in a moment.';
@@ -1618,7 +1609,7 @@
           waitlistStatus.classList.add('is-error');
         } finally {
           submit.disabled = false;
-          submit.value = 'Keep me posted';
+          submit.value = 'Get launch updates';
         }
       });
     }

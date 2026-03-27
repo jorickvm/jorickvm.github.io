@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSV Import — AtlasDays Help</title>
+  <meta name="description" content="Import existing travel history into AtlasDays with the right CSV format, validation preview, duplicate handling, and AI-helper workflow." />
+  <meta property="og:title" content="CSV Import — AtlasDays Help" />
+  <meta property="og:description" content="Import existing travel history into AtlasDays with the right CSV format, validation preview, duplicate handling, and AI-helper workflow." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://atlasdays.app/help/csv-import" />
+  <meta property="og:image" content="https://atlasdays.app/assets/home-hero-dashboard.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="CSV Import — AtlasDays Help" />
+  <meta name="twitter:description" content="Import existing travel history into AtlasDays with the right CSV format, validation preview, duplicate handling, and AI-helper workflow." />
+  <meta name="twitter:image" content="https://atlasdays.app/assets/home-hero-dashboard.png" />
+  <link rel="canonical" href="https://atlasdays.app/help/csv-import" />
+  <link rel="icon" type="image/png" href="../assets/favicon_light.png?v=20260325a" media="(prefers-color-scheme: light)" />
+  <link rel="icon" type="image/png" href="../assets/favicon_dark.png?v=20260325a" media="(prefers-color-scheme: dark)" />
+  <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)})()</script>
+  <style>
+    :root { --bg:#0a0b0d; --bg-card:rgba(255,255,255,0.05); --text:#f4f7fb; --muted:#b2b9c5; --muted-2:#8790a0; --line:rgba(255,255,255,0.10); --blue:#1692ff; --blue-soft:rgba(22,146,255,0.12); --max:720px; }
+    @media (prefers-color-scheme: light) { :root { --bg:#f6f8fc; --bg-card:rgba(255,255,255,0.88); --text:#0d1422; --muted:#526075; --muted-2:#6c788b; --line:rgba(12,22,40,0.09); --blue-soft:rgba(22,146,255,0.08); } }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif; color:var(--text); background:var(--bg); line-height:1.7; -webkit-font-smoothing:antialiased; }
+    a { color:var(--blue); text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    .top-bar { border-bottom:1px solid var(--line); padding:18px 0; }
+    .top-bar-inner { width:min(var(--max), calc(100% - 40px)); margin:0 auto; display:flex; align-items:center; justify-content:space-between; }
+    .brand { display:inline-flex; align-items:center; gap:10px; font-weight:700; color:var(--text); text-decoration:none; }
+    .brand img { width:30px; height:30px; }
+    article { width:min(var(--max), calc(100% - 40px)); margin:0 auto; padding:48px 0 80px; }
+    .breadcrumb { font-size:0.88rem; color:var(--muted-2); margin-bottom:24px; }
+    .breadcrumb a { color:var(--muted); }
+    h1 { font-size:clamp(1.8rem, 4vw, 2.6rem); line-height:1.1; letter-spacing:-0.03em; margin:0 0 12px; }
+    .subtitle { color:var(--muted); font-size:1.08rem; margin:0 0 24px; }
+    h2 { font-size:1.4rem; letter-spacing:-0.02em; margin:36px 0 12px; }
+    h3 { font-size:1.1rem; margin:28px 0 8px; }
+    p, li { color:var(--muted); font-size:1rem; }
+    p { margin:0 0 16px; }
+    ul { padding-left:20px; margin:0 0 16px; }
+    li { margin:6px 0; }
+    strong, code { color:var(--text); }
+    code { font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; font-size:0.95em; }
+    .callout, .cta-box { padding:20px 24px; border-radius:16px; margin:28px 0; }
+    .callout { background:var(--blue-soft); border:1px solid rgba(22,146,255,0.18); }
+    .cta-box { background:var(--bg-card); border:1px solid var(--line); }
+    .theme-toggle { background:none; border:1px solid var(--line); border-radius:10px; color:var(--muted); cursor:pointer; width:36px; height:36px; display:inline-grid; place-items:center; padding:0; }
+    .theme-toggle:hover { border-color:var(--blue); color:var(--text); }
+    .icon-moon, .logo-light { display:none; } .logo-dark { display:block; }
+    @media (prefers-color-scheme: light) { .icon-sun, .logo-dark { display:none; } .icon-moon, .logo-light { display:block; } }
+    html[data-theme="dark"] .icon-sun, html[data-theme="dark"] .logo-dark { display:block; } html[data-theme="dark"] .icon-moon, html[data-theme="dark"] .logo-light { display:none; } html[data-theme="light"] .icon-sun, html[data-theme="light"] .logo-dark { display:none; } html[data-theme="light"] .icon-moon, html[data-theme="light"] .logo-light { display:block; }
+    html[data-theme="dark"] { --bg:#0a0b0d; --bg-card:rgba(255,255,255,0.05); --text:#f4f7fb; --muted:#b2b9c5; --muted-2:#8790a0; --line:rgba(255,255,255,0.10); --blue-soft:rgba(22,146,255,0.12); }
+    html[data-theme="light"] { --bg:#f6f8fc; --bg-card:rgba(255,255,255,0.88); --text:#0d1422; --muted:#526075; --muted-2:#6c788b; --line:rgba(12,22,40,0.09); --blue-soft:rgba(22,146,255,0.08); }
+  </style>
+</head>
+<body>
+  <header class="top-bar">
+    <div class="top-bar-inner">
+      <a class="brand" href="/">
+        <img class="logo-dark" src="../assets/logo_dark.png?v=20260325a" alt="AtlasDays logo" width="1024" height="1024" />
+        <img class="logo-light" src="../assets/logo_light.png?v=20260325a" alt="AtlasDays logo" width="1024" height="1024" />
+        <span>AtlasDays</span>
+      </a>
+      <div style="display:flex;align-items:center;gap:16px">
+        <a href="/help/" style="color:var(--muted);font-size:0.92rem">Help</a>
+        <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()">
+          <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <article>
+    <nav class="breadcrumb">
+      <a href="/">AtlasDays</a> / <a href="/help/">Help</a>
+    </nav>
+
+    <h1>CSV Import</h1>
+    <p class="subtitle">Batch-import existing travel history into AtlasDays without guessing dates or polluting the record.</p>
+
+    <h2>What This Page Helps You Do</h2>
+    <p>Use this page when your trip history already exists in a spreadsheet, notes export, or rough source material and manual entry would be too slow.</p>
+    <p>By the end of this page, you should know:</p>
+    <ul>
+      <li>when CSV import is the right tool and when manual entry is still better</li>
+      <li>what file shape AtlasDays accepts</li>
+      <li>what the preview checks before anything is saved</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>Decide the trip precision before you import.</strong> The importer can validate the file shape, but it cannot decide for you whether a trip should be Exact Dates, Year, or Unknown. Use <a href="/help/history-and-import">Trip Modes and Record Quality</a> for that part.</p>
+    </div>
+
+    <h2>When to Use CSV Import</h2>
+    <p>CSV import is best when you already have a spreadsheet, a large backlog of trips, or rough source material you want to convert into a structured file. For a few recent trips, manual entry is usually faster and safer.</p>
+    <p>The main in-app path is <strong>Settings &gt; Import CSV</strong>. If your timeline is still empty, AtlasDays also shows an <strong>Import from CSV</strong> shortcut there.</p>
+
+    <h2>Start with the App Template</h2>
+    <p>On the import screen, use <strong>Download Example CSV</strong>. That gives you the exact header AtlasDays expects:</p>
+    <p><code>Country,Start Date,End Date,Transit,Notes (optional)</code></p>
+    <p>AtlasDays can also import its own CSV export format that includes a <code>Days</code> column, and it still accepts the older 9-column legacy format. If you are building a new file from scratch, use the current 5-column template.</p>
+
+    <h2>Choose One Date Model per Row</h2>
+    <ul>
+      <li><strong>Exact trip:</strong> use <code>yyyy-mm-dd</code> in Start Date and End Date.</li>
+      <li><strong>Ongoing exact trip:</strong> use <code>yyyy-mm-dd</code> in Start Date and leave End Date empty.</li>
+      <li><strong>Year-only trip:</strong> put a 4-digit year in Start Date, and another year in End Date only if the trip spans multiple years.</li>
+      <li><strong>Unknown-date trip:</strong> leave both Start Date and End Date empty.</li>
+      <li><strong>Same-day trip:</strong> use the same exact date in both fields.</li>
+    </ul>
+    <p>Do <strong>not</strong> mix exact dates and year-only values in the same row. If you visited the same country twice, create two rows.</p>
+
+    <h2>What AtlasDays Accepts</h2>
+    <ul>
+      <li><strong>Country</strong> can be a supported full place name or a 2-letter code. Some common aliases resolve too, but the app template is the safest source of names.</li>
+      <li><strong>Transit</strong> should be <code>Yes</code>, <code>Y</code>, <code>True</code>, or <code>1</code> if you did not enter the country. Leave it empty otherwise.</li>
+      <li><strong>Notes</strong> are optional. If a note contains commas, wrap it in double quotes.</li>
+      <li>The importer detects <strong>comma</strong>, <strong>semicolon</strong>, and <strong>tab</strong> delimiters from the header row.</li>
+    </ul>
+
+    <h2>What Happens Before Anything Is Saved</h2>
+    <p>After you choose a file, AtlasDays parses it and opens <strong>Import Preview</strong>. Nothing is written to your trip history until you confirm the import from that preview screen.</p>
+    <ul>
+      <li><strong>Valid rows</strong> appear under <strong>Trips to Import</strong>.</li>
+      <li><strong>Rows with errors</strong> appear under <strong>Errors</strong> and are not imported.</li>
+      <li><strong>Duplicate rows</strong> are labeled and skipped automatically.</li>
+      <li><strong>Overlap warnings</strong> highlight rows that would introduce date conflicts. They are warnings, not an automatic block.</li>
+    </ul>
+    <p>If the file has both good and bad rows, AtlasDays still lets you import the valid, non-duplicate rows.</p>
+
+    <h2>Using Imperfect Source Material</h2>
+    <p>If your source data is messy, clean the precision first rather than forcing everything into exact dates. Import exact trips as exact, vague past visits as year-only, and only use unknown-date rows when you truly cannot place the trip in time yet.</p>
+    <p>Good source material includes passport stamps, booking emails, calendar history, old notes, and previous spreadsheets. If the source is contradictory, fix that before you rely on tracker results.</p>
+
+    <h2>What the AI Helper Does and Does Not Do</h2>
+    <p>The import screen includes a built-in prompt you can copy into ChatGPT, Claude, or another assistant. Its job is to turn rough source material into AtlasDays CSV faster.</p>
+    <ul>
+      <li>It <strong>does</strong> help convert rough notes into the right column structure.</li>
+      <li>It <strong>does not</strong> import anything into AtlasDays by itself.</li>
+      <li>It <strong>does not</strong> know whether an ambiguous date should be exact, year-only, or unknown unless you tell it clearly.</li>
+      <li>It <strong>does not</strong> replace the in-app preview and your own review.</li>
+    </ul>
+    <p>Use the helper as a drafting tool, not as a reason to skip checking the preview.</p>
+
+    <h2>Avoid Garbage Imports</h2>
+    <ul>
+      <li>Do not batch-import until you know which rows should be exact and which should stay approximate.</li>
+      <li>Do not combine multiple visits to the same country into one row unless it was actually one continuous stay.</li>
+      <li>Do not use transit for trips that should count toward time spent in the country.</li>
+      <li>Fix large error groups in the source file and re-import instead of trying to work around them row by row.</li>
+    </ul>
+
+    <div class="cta-box">
+      <h3>Where to go next</h3>
+      <p><a href="/help/history-and-import">Trip Modes and Record Quality</a> helps you decide whether each row should be exact, year-only, unknown, or transit before import.</p>
+      <p><a href="/help/getting-started">Getting Started</a> shows where import fits into initial setup.</p>
+      <p><a href="/help/dashboard-and-map">Dashboard and Map</a> helps you verify the totals and summaries after import.</p>
+      <p><a href="/help/trackers-and-limits">Trackers and Limits</a> explains which imported trips actually affect live counters.</p>
+    </div>
+  </article>
+
+  <script>
+  function toggleTheme() {
+    var html = document.documentElement;
+    var current = html.getAttribute('data-theme');
+    var isDark;
+    if (current) isDark = current === 'dark';
+    else isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = isDark ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  }
+  </script>
+</body>
+</html>

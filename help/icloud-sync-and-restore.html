@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>iCloud Sync and Restore — AtlasDays Help</title>
+  <meta name="description" content="What AtlasDays iCloud sync is for, what it syncs, what stays device-specific, and what to expect on a new device or after reinstalling." />
+  <meta property="og:title" content="iCloud Sync and Restore — AtlasDays Help" />
+  <meta property="og:description" content="What AtlasDays iCloud sync is for, what it syncs, what stays device-specific, and what to expect on a new device or after reinstalling." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://atlasdays.app/help/icloud-sync-and-restore" />
+  <meta property="og:image" content="https://atlasdays.app/assets/home-hero-dashboard.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="iCloud Sync and Restore — AtlasDays Help" />
+  <meta name="twitter:description" content="What AtlasDays iCloud sync is for, what it syncs, what stays device-specific, and what to expect on a new device or after reinstalling." />
+  <meta name="twitter:image" content="https://atlasdays.app/assets/home-hero-dashboard.png" />
+  <link rel="canonical" href="https://atlasdays.app/help/icloud-sync-and-restore" />
+  <link rel="icon" type="image/png" href="../assets/favicon_light.png?v=20260325a" media="(prefers-color-scheme: light)" />
+  <link rel="icon" type="image/png" href="../assets/favicon_dark.png?v=20260325a" media="(prefers-color-scheme: dark)" />
+  <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)})()</script>
+  <style>
+    :root { --bg:#0a0b0d; --bg-card:rgba(255,255,255,0.05); --text:#f4f7fb; --muted:#b2b9c5; --muted-2:#8790a0; --line:rgba(255,255,255,0.10); --blue:#1692ff; --blue-soft:rgba(22,146,255,0.12); --max:720px; }
+    @media (prefers-color-scheme: light) { :root { --bg:#f6f8fc; --bg-card:rgba(255,255,255,0.88); --text:#0d1422; --muted:#526075; --muted-2:#6c788b; --line:rgba(12,22,40,0.09); --blue-soft:rgba(22,146,255,0.08); } }
+    * { box-sizing:border-box; } body { margin:0; font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif; color:var(--text); background:var(--bg); line-height:1.7; -webkit-font-smoothing:antialiased; }
+    a { color:var(--blue); text-decoration:none; } a:hover { text-decoration:underline; }
+    .top-bar { border-bottom:1px solid var(--line); padding:18px 0; } .top-bar-inner { width:min(var(--max), calc(100% - 40px)); margin:0 auto; display:flex; align-items:center; justify-content:space-between; }
+    .brand { display:inline-flex; align-items:center; gap:10px; font-weight:700; color:var(--text); } .brand img { width:30px; height:30px; }
+    article { width:min(var(--max), calc(100% - 40px)); margin:0 auto; padding:48px 0 80px; }
+    .breadcrumb { font-size:0.88rem; color:var(--muted-2); margin-bottom:24px; } .breadcrumb a { color:var(--muted); }
+    h1 { font-size:clamp(1.8rem, 4vw, 2.6rem); line-height:1.1; letter-spacing:-0.03em; margin:0 0 12px; } .subtitle { color:var(--muted); font-size:1.08rem; margin:0 0 24px; }
+    h2 { font-size:1.4rem; letter-spacing:-0.02em; margin:36px 0 12px; } p, li { color:var(--muted); font-size:1rem; } p { margin:0 0 16px; } ul { padding-left:20px; margin:0 0 16px; } li { margin:6px 0; } strong, code { color:var(--text); } code { font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+    .callout, .cta-box { padding:20px 24px; border-radius:16px; margin:28px 0; } .callout { background:var(--blue-soft); border:1px solid rgba(22,146,255,0.18); } .cta-box { background:var(--bg-card); border:1px solid var(--line); }
+    .theme-toggle { background:none; border:1px solid var(--line); border-radius:10px; color:var(--muted); cursor:pointer; width:36px; height:36px; display:inline-grid; place-items:center; padding:0; } .theme-toggle:hover { border-color:var(--blue); color:var(--text); }
+    .icon-moon, .logo-light { display:none; } .logo-dark { display:block; }
+    @media (prefers-color-scheme: light) { .icon-sun, .logo-dark { display:none; } .icon-moon, .logo-light { display:block; } }
+    html[data-theme="dark"] .icon-sun, html[data-theme="dark"] .logo-dark { display:block; } html[data-theme="dark"] .icon-moon, html[data-theme="dark"] .logo-light { display:none; } html[data-theme="light"] .icon-sun, html[data-theme="light"] .logo-dark { display:none; } html[data-theme="light"] .icon-moon, html[data-theme="light"] .logo-light { display:block; }
+    html[data-theme="dark"] { --bg:#0a0b0d; --bg-card:rgba(255,255,255,0.05); --text:#f4f7fb; --muted:#b2b9c5; --muted-2:#8790a0; --line:rgba(255,255,255,0.10); --blue-soft:rgba(22,146,255,0.12); }
+    html[data-theme="light"] { --bg:#f6f8fc; --bg-card:rgba(255,255,255,0.88); --text:#0d1422; --muted:#526075; --muted-2:#6c788b; --line:rgba(12,22,40,0.09); --blue-soft:rgba(22,146,255,0.08); }
+  </style>
+</head>
+<body>
+  <header class="top-bar"><div class="top-bar-inner"><a class="brand" href="/"><img class="logo-dark" src="../assets/logo_dark.png?v=20260325a" alt="AtlasDays logo" width="1024" height="1024" /><img class="logo-light" src="../assets/logo_light.png?v=20260325a" alt="AtlasDays logo" width="1024" height="1024" /><span>AtlasDays</span></a><div style="display:flex;align-items:center;gap:16px"><a href="/help/" style="color:var(--muted);font-size:0.92rem">Help</a><button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()"><svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></div></div></header>
+  <article>
+    <nav class="breadcrumb"><a href="/">AtlasDays</a> / <a href="/help/">Help</a></nav>
+    <h1>iCloud Sync and Restore</h1>
+    <p class="subtitle">Understand what AtlasDays syncs through your Apple account, what stays device-specific, and what to expect on a new device or after reinstalling.</p>
+
+    <h2>What This Page Helps You Do</h2>
+    <p>Use this page when you are deciding whether to enable <strong>iCloud Sync</strong>, moving to another device, reinstalling AtlasDays, or checking whether sync is the right backup plan for your workflow.</p>
+    <p>By the end of this page, you should know:</p>
+    <ul>
+      <li>what the <strong>iCloud Sync</strong> toggle is actually for</li>
+      <li>what AtlasDays syncs and what stays device-specific</li>
+      <li>what to expect after turning sync on, reinstalling, or changing devices</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>There are two separate iCloud behaviors in AtlasDays.</strong> The <strong>iCloud Sync</strong> toggle controls whether trips and trackers use an iCloud-backed store. Separately, some app preferences can carry over through Apple's iCloud key-value storage even if full trip sync is off.</p>
+    </div>
+
+    <h2>When to Use iCloud Sync</h2>
+    <p>Turn it on if you want the same trips and trackers available across your Apple devices, or if you want AtlasDays to reconnect to that data after a reinstall or device change through your personal iCloud account.</p>
+    <p>Leave it off if you use one device only, want the full trip record to stay local to that device, or prefer to rely on <a href="/help/export-and-reports">file exports</a> that you control directly.</p>
+
+    <h2>What iCloud Sync Covers</h2>
+    <ul>
+      <li><strong>Trips</strong> in your AtlasDays record</li>
+      <li><strong>Trackers</strong> you have created</li>
+      <li><strong>Some basic preferences</strong> can also follow your Apple account, including items such as home-country state, appearance, visited-country mode, and certain default settings</li>
+    </ul>
+    <p>The important split is this: trips and trackers depend on the in-app <strong>iCloud Sync</strong> toggle, while a smaller set of preferences can still carry over separately through iCloud key-value storage.</p>
+
+    <h2>What It Does Not Sync</h2>
+    <ul>
+      <li><strong>iOS permission grants</strong> themselves. You may still need to allow location or notifications again on each device.</li>
+      <li><strong>Exported files</strong> such as CSV or PDF output. If you want a portable copy, export it explicitly.</li>
+      <li><strong>Pending trip suggestions</strong> from country detection. Those are local app state, not part of the synced trip record.</li>
+    </ul>
+
+    <h2>What to Expect When You Turn It On</h2>
+    <p>Open <strong>Settings</strong> and enable <strong>iCloud Sync</strong>. AtlasDays tells you that sync changes take effect after restarting the app, so treat the toggle as a next-launch setting rather than an immediate manual sync button.</p>
+    <p>After restart, AtlasDays opens its iCloud-backed data store if the device and Apple account can use it. The Settings row can later show a <strong>Last synced</strong> label after a successful sync event.</p>
+    <p>AtlasDays does not expose a separate <strong>Sync Now</strong> or <strong>Restore from Backup</strong> button. If you need a portable backup you control, use <a href="/help/export-and-reports">Export and Reports</a>.</p>
+
+    <h2>What to Expect on a New Device or After Reinstalling</h2>
+    <p>On a fresh install or a new device signed into the same Apple account, AtlasDays can pull back synced preferences first. That includes the iCloud Sync preference itself on a clean install, so the app may reconnect to the synced store without you rebuilding settings from scratch.</p>
+    <p>Location and notification permissions do <strong>not</strong> come back automatically just because preferences synced. If you use auto-detect or alerts, you may need to grant those again on the new device.</p>
+    <p>If your trips do not appear right away, verify that you are using the same iCloud account and check whether <strong>iCloud Sync</strong> is enabled inside AtlasDays Settings.</p>
+
+    <h2>Practical Limits and Cautions</h2>
+    <ul>
+      <li><strong>Sync is not version history.</strong> AtlasDays does not expose a user-facing rollback tool or older cloud snapshots.</li>
+      <li><strong>Reset is not restore.</strong> Treat destructive cleanup inside the app as real cleanup, not as a safe way to test recovery.</li>
+      <li><strong>Manual export is still useful.</strong> If the record matters for paperwork or you want a file you can archive yourself, export before major changes.</li>
+    </ul>
+
+    <div class="cta-box">
+      <h3>Where to go next</h3>
+      <p><a href="/help/privacy-location-and-sync">Privacy, Location, and Sync</a> explains the broader privacy model, permissions, and country-detection choices.</p>
+      <p><a href="/help/getting-started">Getting Started</a> shows when to set privacy and sync decisions during setup.</p>
+      <p><a href="/help/history-and-import">Trip Modes and Record Quality</a> explains how to keep the synced trip record clean enough to trust.</p>
+      <p><a href="/help/csv-import">CSV Import</a> is the file-based alternative when you are rebuilding data manually rather than relying on sync.</p>
+      <p><a href="/help/export-and-reports">Export and Reports</a> explains how to create a controlled backup or paperwork-ready record.</p>
+      <p><a href="/help/trackers-and-limits">Trackers and Limits</a> explains how synced trip quality affects tracker trust.</p>
+      <p><a href="/help/dashboard-and-map">Dashboard and Map</a> helps you verify the synced record on a device before relying on the results.</p>
+    </div>
+  </article>
+  <script>function toggleTheme(){var html=document.documentElement;var current=html.getAttribute('data-theme');var isDark;if(current)isDark=current==='dark';else isDark=window.matchMedia('(prefers-color-scheme: dark)').matches;var next=isDark?'light':'dark';html.setAttribute('data-theme',next);localStorage.setItem('theme',next);}</script>
+</body>
+</html>
