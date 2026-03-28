@@ -179,11 +179,14 @@ def parse_article(path: Path, section: str) -> Article:
     )
 
 
-def discover_articles() -> dict[str, Article]:
+def discover_articles(selected_keys: set[str] | None = None) -> dict[str, Article]:
     lookup: dict[str, Article] = {}
     for section in ("help", "learn"):
         for path in sorted((SITE_ROOT / section).glob("*.html")):
             if path.name == "index.html":
+                continue
+            key = f"{section}/{path.stem}"
+            if selected_keys is not None and key not in selected_keys:
                 continue
             article = parse_article(path, section)
             lookup[article.key] = article

@@ -70,7 +70,13 @@ THEME_RULES = [
         "alt_focus": "UK travel-rule motifs, duration bars, and trip checkpoints",
     },
     {
-        "keywords": ["b1/b2", "us-b1-b2", "esta", "united states", " us "],
+        "keywords": ["substantial presence", "us substantial presence", "u.s. substantial presence"],
+        "focus": "U.S. tax presence, multi-year weighted counting, and residency-day analysis",
+        "motifs": ["US outline", "stacked year bands", "weighted count chips", "residency threshold markers"],
+        "alt_focus": "U.S. tax-presence motifs, weighted year bands, and residency-threshold markers",
+    },
+    {
+        "keywords": ["b1/b2", "us-b1-b2", "esta", "united states", "u.s.", " us "],
         "focus": "US visitor stays, entry and exit timing, and stay-limit planning",
         "motifs": ["US outline", "arrival and departure markers", "count chips", "calendar bars"],
         "alt_focus": "US travel-day planning motifs and arrival-departure markers",
@@ -155,6 +161,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--section", choices=("all", "learn", "help"), default="all")
     parser.add_argument("--slug")
     parser.add_argument("--limit", type=int, default=0)
+    parser.add_argument("--model")
+    parser.add_argument("--quality", choices=("low", "medium", "high", "auto"))
     parser.add_argument("--force", action="store_true")
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--show-prompts", action="store_true")
@@ -180,16 +188,18 @@ def clamp(value: int, minimum: int, maximum: int) -> int:
     return max(minimum, min(value, maximum))
 
 
-def load_settings() -> dict[str, Any]:
+def load_settings(args: argparse.Namespace | None = None) -> dict[str, Any]:
     fmt = env_str("ATLASDAYS_IMAGE_FORMAT", "webp").lower()
     if fmt not in {"png", "jpeg", "webp"}:
         fmt = "webp"
     background = env_str("ATLASDAYS_IMAGE_BACKGROUND", "opaque").lower()
     if background not in {"opaque", "transparent", "auto"}:
         background = "opaque"
+    model = args.model.strip() if args and args.model else env_str("ATLASDAYS_IMAGE_MODEL", "gpt-image-1-mini")
+    quality = args.quality.strip() if args and args.quality else env_str("ATLASDAYS_IMAGE_QUALITY", "medium")
     return {
-        "model": env_str("ATLASDAYS_IMAGE_MODEL", "gpt-image-1-mini"),
-        "quality": env_str("ATLASDAYS_IMAGE_QUALITY", "medium"),
+        "model": model,
+        "quality": quality,
         "size": env_str("ATLASDAYS_IMAGE_SIZE", "1536x1024"),
         "output_format": fmt,
         "output_compression": clamp(env_int("ATLASDAYS_IMAGE_COMPRESSION", 72), 0, 100),
@@ -413,7 +423,11 @@ def build_prompt(
         lines.append(f"Composition goal: {BODY_COMPOSITION[article.section]}")
     if context is not None:
         if slot["id"] != "hero":
-            mode = pick_body_visual_mode(context, slot["id"])
+            slot_mode = collapse_whitespace(str(slot.get("body_mode", "")))
+            if slot_mode in {"workflow", "comparison", "documents", "scenarios", "map-detail", "cards", "timeline", "focused-explainer"}:
+                mode = slot_mode
+            else:
+                mode = pick_body_visual_mode(context, slot["id"])
             lines.append(f"Body image mode: {mode}.")
             lines.append(body_mode_instruction(mode, slot["id"]))
             lines.append("For this slot, the section-level brief should override the generic article overview whenever they compete.")
@@ -722,14 +736,14 @@ def call_openai_image_api(api_key: str, prompt: str, settings: dict[str, Any]) -
 def main() -> int:
     args = parse_args()
     load_env_file()
-    settings = load_settings()
+    settings = load_settings(args)
     api_key = ensure_api_key(args.dry_run)
     plan_data = load_plan()
-    article_lookup = discover_articles()
     selected_keys = select_article_keys(plan_data, args.section, args.slug, args.limit)
     if not selected_keys:
         print("No matching articles found.")
         return 0
+    article_lookup = discover_articles(set(selected_keys))
     generation_plan = build_generation_plan(plan_data, article_lookup, selected_keys, settings)
     prior_lookup = load_existing_catalog()
     print_plan(generation_plan, args.show_prompts)

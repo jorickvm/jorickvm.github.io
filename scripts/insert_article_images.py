@@ -187,12 +187,12 @@ def upsert_render_block(text: str, marker: str, slot_id: str, figure_html: str |
 def main() -> int:
     args = parse_args()
     plan = load_plan()
-    articles = discover_articles()
     catalog = load_catalog()
     selected_keys = select_article_keys(plan, args.section, args.slug, args.limit)
     if not selected_keys:
         print("No matching articles found.")
         return 0
+    articles = discover_articles(set(selected_keys))
 
     inserted = 0
     removed = 0

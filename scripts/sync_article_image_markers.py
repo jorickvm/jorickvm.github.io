@@ -72,11 +72,11 @@ def ensure_body_marker(text: str, marker: str, anchor_heading: str) -> tuple[str
 def main() -> int:
     args = parse_args()
     plan = load_plan()
-    articles = discover_articles()
     selected_keys = select_article_keys(plan, args.section, args.slug, args.limit)
     if not selected_keys:
         print("No matching articles found.")
         return 0
+    articles = discover_articles(set(selected_keys))
 
     changed_files = 0
     for key in selected_keys:
