@@ -51,6 +51,8 @@
     html[data-theme="dark"] .icon-sun, html[data-theme="dark"] .logo-dark { display:block; } html[data-theme="dark"] .icon-moon, html[data-theme="dark"] .logo-light { display:none; } html[data-theme="light"] .icon-sun, html[data-theme="light"] .logo-dark { display:none; } html[data-theme="light"] .icon-moon, html[data-theme="light"] .logo-light { display:block; }
     html[data-theme="dark"] { --bg:#0a0b0d; --bg-card:rgba(255,255,255,0.05); --text:#f4f7fb; --muted:#b2b9c5; --muted-2:#8790a0; --line:rgba(255,255,255,0.10); --blue-soft:rgba(22,146,255,0.12); }
     html[data-theme="light"] { --bg:#f6f8fc; --bg-card:rgba(255,255,255,0.88); --text:#0d1422; --muted:#526075; --muted-2:#6c788b; --line:rgba(12,22,40,0.09); --blue-soft:rgba(22,146,255,0.08); }
+    .atlasdays-screenshot { margin:24px auto 28px; max-width:320px; display:block; }
+    .atlasdays-screenshot img { display:block; width:100%; height:auto; border-radius:22px; border:1px solid var(--line); box-shadow:0 12px 32px rgba(0,0,0,0.18); }
   </style>
 <!-- ARTICLE_IMAGE_STYLES_START -->
   <style id="atlasdays-article-image-styles">
@@ -182,6 +184,9 @@
       <li>Add the tracker early if you want the structure in place, but do not rely on it until the relevant trips are exact and cleaned up.</li>
       <li>If you are still rebuilding history, fix the trip record first in <a href="/help/history-and-import">Trip Modes and Record Quality</a>.</li>
     </ul>
+    <figure class="atlasdays-screenshot">
+      <img src="../assets/article-images/help/trackers-and-limits/screenshot-tracker-card.webp" alt="Dashboard showing a tracker card with progress bar" width="1206" height="2622" decoding="async" loading="lazy" />
+    </figure>
 
     <h2>What Trackers Do in AtlasDays</h2>
     <p>Each tracker applies one counting rule to a selected country set. The same trip can affect multiple trackers at once, because each tracker can use a different country scope, threshold, direction, and time window.</p>
@@ -214,12 +219,18 @@
 
     <h3>Custom</h3>
     <p>Use <strong>Custom</strong> when the preset is close but not right. You can choose your own country scope, threshold, mode, and time window.</p>
+    <figure class="atlasdays-screenshot">
+      <img src="../assets/article-images/help/trackers-and-limits/screenshot-presets.webp" alt="Tracker preset selection screen showing Residence, Schengen 90/180, Visa Limit, Travel Goal, and Custom options" width="1206" height="2622" decoding="async" loading="lazy" />
+    </figure>
 
     <h2>Choose the Tracker Mode</h2>
     <ul>
       <li><strong>Stay under</strong> is for limits. AtlasDays shows days remaining, at limit, or over limit.</li>
       <li><strong>Reach target</strong> is for goals. AtlasDays shows progress and how many more days you still need.</li>
     </ul>
+    <figure class="atlasdays-screenshot">
+      <img src="../assets/article-images/help/trackers-and-limits/screenshot-mode.webp" alt="Tracker mode selector showing Stay under and Reach target options" width="1206" height="2622" decoding="async" loading="lazy" />
+    </figure>
 
     <h2>Choose the Time Window</h2>
     <h3>Rolling</h3>
@@ -236,6 +247,9 @@
       <li>a specific stored year</li>
       <li>a custom fiscal-year-style period</li>
     </ul>
+    <figure class="atlasdays-screenshot">
+      <img src="../assets/article-images/help/trackers-and-limits/screenshot-window.webp" alt="Tracker window selector showing Rolling, Per Stay, and Yearly options" width="1206" height="2622" decoding="async" loading="lazy" />
+    </figure>
 
     <h2>What Counts Toward Tracker Math</h2>
     <ul>

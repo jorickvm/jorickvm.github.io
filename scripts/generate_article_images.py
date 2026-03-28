@@ -76,7 +76,7 @@ THEME_RULES = [
         "alt_focus": "U.S. tax-presence motifs, weighted year bands, and residency-threshold markers",
     },
     {
-        "keywords": ["b1/b2", "us-b1-b2", "esta", "united states", "u.s.", " us "],
+        "keywords": ["b1/b2", "us-b1-b2", "esta visa", " visa waiver ", "united states", "u.s.", " us "],
         "focus": "US visitor stays, entry and exit timing, and stay-limit planning",
         "motifs": ["US outline", "arrival and departure markers", "count chips", "calendar bars"],
         "alt_focus": "US travel-day planning motifs and arrival-departure markers",
@@ -86,6 +86,12 @@ THEME_RULES = [
         "focus": "threshold counting across a year, fiscal periods, and residency-day milestones",
         "motifs": ["year grid", "threshold bar", "calendar blocks", "country presence markers"],
         "alt_focus": "yearly threshold counting, calendar blocks, and residency-day markers",
+    },
+    {
+        "keywords": ["prove you were not", "absence claim", "not in a country", "proving absence"],
+        "focus": "absence claims, chronology gaps, and corroborating records across disputed periods",
+        "motifs": ["timeline gaps", "evidence anchors", "cross-border route traces", "threshold review markers"],
+        "alt_focus": "timeline gaps, corroborating records, and absence-threshold review",
     },
     {
         "keywords": ["travel history", "passport", "visa application", "visa applications", "prove time spent", "rebuild"],
