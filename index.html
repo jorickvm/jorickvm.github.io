@@ -166,7 +166,7 @@
     .brand {
       display: inline-flex;
       align-items: center;
-      gap: 12px;
+      gap: 4px;
       font-weight: 700;
       letter-spacing: -0.02em;
     }
@@ -175,6 +175,11 @@
       height: 42px;
       overflow: hidden;
       flex: none;
+    }
+    .brand-mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
     }
     .nav-links {
       display: flex;
@@ -1484,6 +1489,18 @@
           <article class="faq reveal">
             <h3>Is this legal or tax advice?</h3>
             <p>No. AtlasDays helps you keep records and count days. Interpretation of immigration or tax rules is still your responsibility.</p>
+          </article>
+          <article class="faq reveal">
+            <h3>Why does location access need to be set to "Always"?</h3>
+            <p>Automatic country detection uses iOS Significant Location Changes, which only fires in the background — when you actually cross a border. "When In Use" only works while the app is open, so it would miss most arrivals. The feature is optional; you can use AtlasDays entirely by logging trips manually.</p>
+          </article>
+          <article class="faq reveal">
+            <h3>Is there an Android version?</h3>
+            <p>No. AtlasDays is iOS only for now.</p>
+          </article>
+          <article class="faq reveal">
+            <h3>Can I track England, Scotland, Wales, and Northern Ireland separately?</h3>
+            <p>Not currently. AtlasDays tracks at the country level, so all four home nations log under the United Kingdom.</p>
           </article>
         </div>
       </div>
