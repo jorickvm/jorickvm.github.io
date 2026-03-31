@@ -4,15 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>App Privacy — AtlasDays</title>
-  <meta name="description" content="How the AtlasDays app handles on-device data, optional iCloud sync, country-detection suggestions, notifications, and CSV import/export." />
+  <meta name="description" content="How the AtlasDays app handles local data, Apple iCloud sync, preference carry-over, country-detection suggestions, notifications, and CSV import/export." />
   <meta property="og:title" content="App Privacy — AtlasDays" />
-  <meta property="og:description" content="How the AtlasDays app handles on-device data, optional iCloud sync, country-detection suggestions, notifications, and CSV import/export." />
+  <meta property="og:description" content="How the AtlasDays app handles local data, Apple iCloud sync, preference carry-over, country-detection suggestions, notifications, and CSV import/export." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://atlasdays.app/privacy" />
   <meta property="og:image" content="https://atlasdays.app/assets/home/home-hero-dashboard.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="App Privacy — AtlasDays" />
-  <meta name="twitter:description" content="How the AtlasDays app handles on-device data, optional iCloud sync, country-detection suggestions, notifications, and CSV import/export." />
+  <meta name="twitter:description" content="How the AtlasDays app handles local data, Apple iCloud sync, preference carry-over, country-detection suggestions, notifications, and CSV import/export." />
   <meta name="twitter:image" content="https://atlasdays.app/assets/home/home-hero-dashboard.png" />
   <link rel="canonical" href="https://atlasdays.app/privacy" />
   <link rel="icon" type="image/png" href="assets/brand/favicon_light.png?v=20260325a" media="(prefers-color-scheme: light)" />
@@ -58,14 +58,15 @@
 
   <p><a href="/">&larr; AtlasDays</a></p>
   <h1>AtlasDays App Privacy</h1>
-  <p class="updated">Last updated: March 24, 2026</p>
+  <p class="updated">Last updated: March 31, 2026</p>
 
   <p>AtlasDays is a private travel-history app for iPhone and iPad. This page describes how the app handles your data.</p>
 
   <div class="summary">
-    <strong>TL;DR</strong>
+    <strong>Key Points</strong>
     <p>The AtlasDays app does not require an account and does not keep a server-side copy of your travel history.</p>
-    <p>Optional iCloud sync stores your app data in your own Apple iCloud account, not on AtlasDays servers.</p>
+    <p>Trips and trackers stay on your device unless they sync through your own Apple iCloud account.</p>
+    <p>A smaller set of app preferences can also carry over through Apple’s iCloud key-value storage separately from full trip sync.</p>
   </div>
 
   <p>For paid features, subscriptions, website terms, and App Store license information, see the <a href="/terms">AtlasDays Terms of Use</a>.</p>
@@ -73,30 +74,36 @@
   <h2>1. No Account Required</h2>
   <p>You do not need to create an account, sign in, or provide personal information to use the AtlasDays app. The app is designed to work locally on your device.</p>
 
-  <h2>2. App Data Stays on Your Device</h2>
-  <p>Your trip data is stored on your device using Apple's local data storage frameworks. AtlasDays does not upload your travel history, day counts, trip notes, or tracker data to an AtlasDays-operated server.</p>
-  <p>If you enable iCloud sync, your data may sync across your own devices through your personal iCloud account. That sync is handled by Apple and governed by Apple's privacy policies.</p>
+  <h2>2. Local Storage, Apple iCloud Sync, and Preferences</h2>
+  <p>Your trip data is stored on your device using Apple’s local data storage frameworks. AtlasDays does not upload your travel history, day counts, trip notes, or tracker data to an AtlasDays-operated server.</p>
+  <p>If <strong>iCloud Sync</strong> is on, your trips and trackers may sync across your own devices through your personal Apple iCloud account. That sync is handled by Apple and governed by Apple’s privacy policies.</p>
+  <p>If you are signed into iCloud, AtlasDays can also mirror a smaller set of app preferences through Apple’s iCloud key-value storage. That preference carry-over is separate from the full trip-and-tracker sync toggle and can include items such as home-country state, appearance, certain defaults, and sync preferences.</p>
+  <p>On a new device or after reinstalling, previously synced preferences can restore your prior sync settings. iOS permission grants themselves remain device-specific.</p>
 
   <h2>3. Location Detection</h2>
   <p>AtlasDays can optionally request location access to detect country changes and suggest new trips. This feature is opt-in.</p>
   <ul>
-    <li>The app is designed around <em>country detection</em>, not continuous location tracking.</li>
+    <li>The app uses significant-change location monitoring and Apple geocoding for <em>country detection</em>, not continuous GPS tracking.</li>
+    <li>AtlasDays creates a suggestion for you to review, edit, confirm, or dismiss. It does not silently create trips from location events.</li>
     <li>Raw coordinates are not stored as part of your trip history.</li>
     <li>AtlasDays does not transmit your location history to an AtlasDays server.</li>
+    <li>If you allow background location, detection can continue while the app is not open.</li>
     <li>You can revoke location access at any time in iOS Settings.</li>
   </ul>
   <p>For general product questions, start on the <a href="/support">Support page</a>. This page is specifically about app privacy.</p>
 
   <h2>4. Notifications</h2>
-  <p>AtlasDays can send local notifications for trip suggestions and tracker alerts. These are generated on-device.</p>
+  <p>AtlasDays can send local notifications for trip suggestions and tracker alerts. These are generated and scheduled on-device.</p>
 
-  <h2>5. CSV Import and Export</h2>
-  <p>The app can import and export CSV files. Those files are handled locally through the Apple share sheet and file picker. AtlasDays does not upload the contents of your CSV files to an AtlasDays server.</p>
+  <h2>5. CSV Import, Export, and Other Sharing Choices</h2>
+  <p>The app can import and export CSV files, and it can generate PDF reports. Those files are handled locally through Apple’s file picker and share sheet. AtlasDays does not upload the contents of those files to an AtlasDays server.</p>
+  <p>If you choose to paste travel data into another app or AI assistant outside AtlasDays, that separate service’s privacy policies apply to what you share there.</p>
 
   <h2>6. Analytics and Advertising</h2>
   <p>The app does not include advertising SDKs or third-party analytics SDKs at this time.</p>
 
-  <h2>7. Changes to This Page</h2>
+  <h2>7. More Detail and Changes to This Page</h2>
+  <p>For an operational explanation of sync behavior, device changes, and permissions, see the <a href="/help/privacy-location-and-sync">Privacy, Location, and Sync guide</a> and the <a href="/help/icloud-sync-and-restore">iCloud Sync and Restore guide</a>.</p>
   <p>If the AtlasDays app privacy model changes, this page will be updated and the date above will change.</p>
 
   <h2 id="contact">8. Contact</h2>
