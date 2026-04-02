@@ -3,448 +3,81 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Support — AtlasDays</title>
-  <meta name="description" content="Get help with AtlasDays. Find answers about day counting, trackers, location detection, CSV import/export, transit, and incomplete dates." />
-  <meta property="og:title" content="Support — AtlasDays" />
-  <meta property="og:description" content="Get help with AtlasDays. Find answers about day counting, trackers, location detection, CSV import/export, transit, and incomplete dates." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://atlasdays.app/support" />
-  <meta property="og:image" content="https://atlasdays.app/assets/home/home-hero-dashboard.png" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Support — AtlasDays" />
-  <meta name="twitter:description" content="Get help with AtlasDays. Find answers about day counting, trackers, location detection, CSV import/export, transit, and incomplete dates." />
-  <meta name="twitter:image" content="https://atlasdays.app/assets/home/home-hero-dashboard.png" />
-  <link rel="canonical" href="https://atlasdays.app/support" />
+  <title>Redirecting to Help Center — AtlasDays</title>
+  <meta name="description" content="AtlasDays Support now lives in the Help Center." />
+  <meta name="robots" content="noindex,follow" />
+  <meta http-equiv="refresh" content="0; url=/help/" />
+  <link rel="canonical" href="https://atlasdays.app/help/" />
   <link rel="icon" type="image/png" href="assets/brand/favicon_light.png?v=20260325a" media="(prefers-color-scheme: light)" />
   <link rel="icon" type="image/png" href="assets/brand/favicon_dark.png?v=20260325a" media="(prefers-color-scheme: dark)" />
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "How does day counting work?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "AtlasDays counts both the arrival day and the departure day. Open trips use today as the effective end date. For country totals and trackers, overlapping exact-date days are deduplicated so the same day is not counted twice."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What are trackers?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Trackers are counting rules applied to selected countries in your trip history. Use them for limits and goals like Schengen 90/180, residency thresholds, visa limits, or personal travel targets."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How does location detection work?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "If you enable auto-detect, AtlasDays uses iOS significant location updates plus Apple geocoding to detect the current country and create a suggestion rather than automatically adding a trip. You can confirm, edit, or dismiss it. AtlasDays does not send your trip history to an AtlasDays server, and you can turn this feature off at any time in Settings."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can I import or export my data?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes. AtlasDays supports CSV import, CSV export, and PDF travel reports from Settings. You can back up your trips, share a reviewable report, clean data up in a spreadsheet, or import existing travel history into the app."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What does Transit mean?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "If a stop was transit only, you can mark it as Transit. Transit entries stay in your history and may appear separately on the map, but they do not count toward day totals, trackers, or visited-place counts."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How are visited countries counted?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "AtlasDays supports three counting modes: UN 195, UN 195+2, and All Places. UN 195 counts 193 UN member states plus Vatican City and Palestine. UN 195+2 adds Kosovo and Taiwan. All Places also includes territories and dependencies."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What about incomplete dates?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "AtlasDays supports exact-date trips, year-only trips, and unknown-date visits. Year-only and unknown entries preserve your history without inventing fake precision, but they do not feed exact day totals or tracker calculations."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Do I need an account or iCloud?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No account is required. AtlasDays works locally by default. iCloud sync is optional and uses your personal Apple iCloud account."
-        }
-      }
-    ]
-  }
+  <script>
+    window.location.replace('/help/');
   </script>
-  <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)})()</script>
   <style>
     :root {
-      --bg:#0a0b0d;
-      --bg-card:rgba(255,255,255,0.05);
-      --text:#f4f7fb;
-      --muted:#b2b9c5;
-      --muted-2:#8790a0;
-      --line:rgba(255,255,255,0.10);
-      --blue:#1692ff;
-      --blue-soft:rgba(22,146,255,0.12);
-      --max:760px;
+      --bg: #0a0b0d;
+      --panel: rgba(255,255,255,0.05);
+      --text: #f4f7fb;
+      --muted: #b2b9c5;
+      --line: rgba(255,255,255,0.10);
+      --blue: #1692ff;
     }
     @media (prefers-color-scheme: light) {
       :root {
-        --bg:#f6f8fc;
-        --bg-card:rgba(255,255,255,0.88);
-        --text:#0d1422;
-        --muted:#526075;
-        --muted-2:#6c788b;
-        --line:rgba(12,22,40,0.09);
-        --blue-soft:rgba(22,146,255,0.08);
+        --bg: #f6f8fc;
+        --panel: rgba(255,255,255,0.9);
+        --text: #0d1422;
+        --muted: #526075;
+        --line: rgba(12,22,40,0.09);
       }
     }
-    * { box-sizing:border-box; }
+    * { box-sizing: border-box; }
     body {
-      margin:0;
-      font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
-      color:var(--text);
-      background:var(--bg);
-      line-height:1.7;
-      -webkit-font-smoothing:antialiased;
+      margin: 0;
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+      -webkit-font-smoothing: antialiased;
     }
-    a { color:var(--blue); text-decoration:none; }
-    a:hover { text-decoration:underline; }
-    .top-bar {
-      border-bottom:1px solid var(--line);
-      padding:18px 0;
+    main {
+      width: min(520px, 100%);
+      padding: 28px 24px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: var(--panel);
+      text-align: center;
     }
-    .top-bar-inner {
-      width:min(var(--max), calc(100% - 40px));
-      margin:0 auto;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-    }
-    .brand {
-      display:inline-flex;
-      align-items:center;
-      gap:10px;
-      font-weight:700;
-      color:var(--text);
-    }
-    .brand img { width:30px; height:30px; }
-    article {
-      width:min(var(--max), calc(100% - 40px));
-      margin:0 auto;
-      padding:48px 0 80px;
-    }
-    .breadcrumb {
-      font-size:0.88rem;
-      color:var(--muted-2);
-      margin-bottom:24px;
-    }
-    .breadcrumb a { color:var(--muted); }
     h1 {
-      font-size:clamp(1.8rem, 4vw, 2.6rem);
-      line-height:1.1;
-      letter-spacing:-0.03em;
-      margin:0 0 12px;
+      margin: 0 0 10px;
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      letter-spacing: -0.03em;
     }
-    .subtitle {
-      color:var(--muted);
-      font-size:1.08rem;
-      margin:0 0 28px;
-      max-width:58ch;
+    p {
+      margin: 0 0 14px;
+      color: var(--muted);
     }
-    h2 {
-      font-size:1.35rem;
-      letter-spacing:-0.02em;
-      margin:36px 0 14px;
+    a {
+      color: var(--blue);
+      text-decoration: none;
+      font-weight: 600;
     }
-    p, li {
-      color:var(--muted);
-      font-size:1rem;
-    }
-    p { margin:0 0 16px; }
-    ul {
-      padding-left:20px;
-      margin:0 0 16px;
-    }
-    li { margin:6px 0; }
-    strong { color:var(--text); }
-    .quick-links {
-      display:grid;
-      grid-template-columns:repeat(2, minmax(0, 1fr));
-      gap:14px;
-      margin:18px 0 10px;
-    }
-    .link-card,
-    .related-links a {
-      display:block;
-      padding:18px 20px;
-      border-radius:16px;
-      border:1px solid var(--line);
-      background:var(--bg-card);
-      color:inherit;
-    }
-    .link-card:hover,
-    .related-links a:hover {
-      text-decoration:none;
-      border-color:rgba(22,146,255,0.28);
-    }
-    .link-card h3 {
-      margin:0 0 6px;
-      color:var(--text);
-      font-size:1rem;
-      letter-spacing:-0.02em;
-    }
-    .link-card p {
-      margin:0;
-      font-size:0.94rem;
-    }
-    .faq-list {
-      display:flex;
-      flex-direction:column;
-      gap:12px;
-      margin-top:16px;
-    }
-    .faq-item {
-      border:1px solid var(--line);
-      border-radius:16px;
-      background:var(--bg-card);
-      overflow:hidden;
-    }
-    .faq-item summary {
-      list-style:none;
-      cursor:pointer;
-      padding:18px 20px;
-      color:var(--text);
-      font-weight:600;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:16px;
-    }
-    .faq-item summary::-webkit-details-marker { display:none; }
-    .faq-item summary::after {
-      content:"+";
-      color:var(--muted-2);
-      font-size:1.1rem;
-      flex:none;
-    }
-    .faq-item[open] summary::after { content:"−"; }
-    .faq-item p {
-      margin:0;
-      padding:0 20px 20px;
-    }
-    .callout,
-    .related-links {
-      padding:20px 24px;
-      border-radius:16px;
-      margin:28px 0;
-    }
-    .callout {
-      background:var(--blue-soft);
-      border:1px solid rgba(22,146,255,0.18);
-    }
-    .related-links {
-      background:var(--bg-card);
-      border:1px solid var(--line);
-    }
-    .related-links-grid {
-      display:grid;
-      grid-template-columns:repeat(2, minmax(0, 1fr));
-      gap:12px;
-      margin-top:14px;
-    }
-    .theme-toggle {
-      background:none;
-      border:1px solid var(--line);
-      border-radius:10px;
-      color:var(--muted);
-      cursor:pointer;
-      width:36px;
-      height:36px;
-      display:inline-grid;
-      place-items:center;
-      padding:0;
-    }
-    .theme-toggle:hover {
-      border-color:var(--blue);
-      color:var(--text);
-    }
-    .icon-moon, .logo-light { display:none; }
-    .logo-dark { display:block; }
-    @media (prefers-color-scheme: light) {
-      .icon-sun, .logo-dark { display:none; }
-      .icon-moon, .logo-light { display:block; }
-    }
-    html[data-theme="dark"] .icon-sun, html[data-theme="dark"] .logo-dark { display:block; }
-    html[data-theme="dark"] .icon-moon, html[data-theme="dark"] .logo-light { display:none; }
-    html[data-theme="light"] .icon-sun, html[data-theme="light"] .logo-dark { display:none; }
-    html[data-theme="light"] .icon-moon, html[data-theme="light"] .logo-light { display:block; }
-    html[data-theme="dark"] {
-      --bg:#0a0b0d;
-      --bg-card:rgba(255,255,255,0.05);
-      --text:#f4f7fb;
-      --muted:#b2b9c5;
-      --muted-2:#8790a0;
-      --line:rgba(255,255,255,0.10);
-      --blue-soft:rgba(22,146,255,0.12);
-    }
-    html[data-theme="light"] {
-      --bg:#f6f8fc;
-      --bg-card:rgba(255,255,255,0.88);
-      --text:#0d1422;
-      --muted:#526075;
-      --muted-2:#6c788b;
-      --line:rgba(12,22,40,0.09);
-      --blue-soft:rgba(22,146,255,0.08);
-    }
-    @media (max-width: 640px) {
-      .top-bar-inner,
-      article {
-        width:calc(100% - 24px);
-      }
-      article {
-        padding:32px 0 60px;
-      }
-      .quick-links,
-      .related-links-grid {
-        grid-template-columns:1fr;
-      }
+    a:hover,
+    a:focus-visible {
+      text-decoration: underline;
+      text-underline-offset: 0.18em;
     }
   </style>
 </head>
 <body>
-  <header class="top-bar">
-    <div class="top-bar-inner">
-      <a class="brand" href="/">
-        <img class="logo-dark" src="assets/brand/logo_dark.png?v=20260325a" alt="AtlasDays logo" width="1024" height="1024" />
-        <img class="logo-light" src="assets/brand/logo_light.png?v=20260325a" alt="AtlasDays logo" width="1024" height="1024" />
-        <span>AtlasDays</span>
-      </a>
-      <div style="display:flex;align-items:center;gap:16px">
-        <a href="/help/" style="color:var(--muted);font-size:0.92rem">Help</a>
-        <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()">
-          <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-          <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        </button>
-      </div>
-    </div>
-  </header>
-  <article>
-    <nav class="breadcrumb"><a href="/">AtlasDays</a> / <a href="/help/">Help</a> / Support</nav>
-    <h1>Support</h1>
-    <p class="subtitle">Need help with AtlasDays? Start with the quick answers below. If you still need help, email me and I’ll get back to you.</p>
-
-    <h2>Quick Links</h2>
-    <div class="quick-links">
-      <a class="link-card" href="/help/getting-started">
-        <h3>Getting Started with AtlasDays</h3>
-        <p>Set home country or no fixed residence, enter the first trips with the right precision, and add your first tracker in the right order.</p>
-      </a>
-      <a class="link-card" href="/help/trackers-and-limits">
-        <h3>Trackers and Limits</h3>
-        <p>Understand rolling windows, per-stay rules, yearly trackers, and when exact dates matter.</p>
-      </a>
-      <a class="link-card" href="/help/history-and-import">
-        <h3>Trip Modes and Record Quality</h3>
-        <p>See how exact dates, year-only records, unknown dates, transit, and CSV import fit together.</p>
-      </a>
-      <a class="link-card" href="/help/privacy-location-and-sync">
-        <h3>Privacy, Location, and Sync</h3>
-        <p>Read how AtlasDays handles local data, optional iCloud sync, and country-detection suggestions.</p>
-      </a>
-    </div>
-
-    <h2>FAQ</h2>
-    <div class="faq-list">
-      <details class="faq-item">
-        <summary>How does day counting work?</summary>
-        <p>AtlasDays counts both the arrival day and the departure day. Open trips use today as the effective end date. For country totals and trackers, overlapping exact-date days are deduplicated so the same day is not counted twice.</p>
-      </details>
-      <details class="faq-item">
-        <summary>What are trackers?</summary>
-        <p>Trackers are counting rules applied to selected countries in your trip history. Use them for limits and goals like Schengen 90/180, residency thresholds, visa limits, or personal travel targets.</p>
-      </details>
-      <details class="faq-item">
-        <summary>How does location detection work?</summary>
-        <p>If you enable auto-detect, AtlasDays uses iOS significant location updates plus Apple geocoding to detect the current country and create a suggestion instead of automatically adding a trip. You can confirm, edit, or dismiss it, and you can turn the feature off at any time in Settings.</p>
-      </details>
-      <details class="faq-item">
-        <summary>Can I import or export my data?</summary>
-        <p>Yes. AtlasDays supports CSV import, CSV export, and PDF travel reports from Settings. You can back up your trips, share a reviewable report, clean data up in a spreadsheet, or import existing travel history into the app.</p>
-      </details>
-      <details class="faq-item">
-        <summary>What does Transit mean?</summary>
-        <p>If a stop was transit only, you can mark it as Transit. Transit entries stay in your history and may appear separately on the map, but they do not count toward day totals, trackers, or visited-place counts.</p>
-      </details>
-      <details class="faq-item">
-        <summary>How are visited countries counted?</summary>
-        <p>AtlasDays supports three counting modes: UN 195, UN 195+2, and All Places. UN 195 counts 193 UN member states plus Vatican City and Palestine. UN 195+2 adds Kosovo and Taiwan. All Places also includes territories and dependencies.</p>
-      </details>
-      <details class="faq-item">
-        <summary>What about incomplete dates?</summary>
-        <p>AtlasDays supports exact-date trips, year-only trips, and unknown-date visits. Year-only and unknown entries preserve your history without inventing fake precision, but they do not feed exact day totals or tracker calculations.</p>
-      </details>
-      <details class="faq-item">
-        <summary>Do I need an account or iCloud?</summary>
-        <p>No account is required. AtlasDays works locally by default. iCloud sync is optional and uses your personal Apple iCloud account.</p>
-      </details>
-    </div>
-
-    <div class="callout" id="contact">
-      <h2 style="margin-top:0">Still Need Help?</h2>
-      <p>Email me at <a href="#contact" id="support-email" data-email-user="atlasdays" data-email-domain="pm.me">this address</a> and I’ll get back to you as soon as I can.</p>
-    </div>
-
-    <div class="related-links">
-      <h2 style="margin-top:0">Related Links</h2>
-      <div class="related-links-grid">
-        <a href="/help/">Help Center</a>
-        <a href="/terms">Terms of Use</a>
-        <a href="/privacy">Privacy Policy</a>
-        <a href="/changelog">What’s New</a>
-        <a href="/">Back to Home</a>
-      </div>
-    </div>
-  </article>
-  <script>
-    function toggleTheme() {
-      var html = document.documentElement;
-      var current = html.getAttribute('data-theme');
-      var isDark;
-      if (current) isDark = current === 'dark';
-      else isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      var next = isDark ? 'light' : 'dark';
-      html.setAttribute('data-theme', next);
-      localStorage.setItem('theme', next);
-    }
-
-    (function() {
-      var el = document.getElementById('support-email');
-      if (!el) return;
-      var u = el.getAttribute('data-email-user');
-      var d = el.getAttribute('data-email-domain');
-      var addr = u + '@' + d;
-      el.textContent = addr;
-      el.addEventListener('click', function(e) {
-        e.preventDefault();
-        window.location.href = 'mai' + 'lto:' + addr;
-      });
-    })();
-  </script>
+  <main>
+    <h1>Redirecting to Help Center</h1>
+    <p>AtlasDays support now lives in the Help Center.</p>
+    <p>If you are not redirected automatically, <a href="/help/">open Help Center</a>.</p>
+  </main>
 </body>
 </html>

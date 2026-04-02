@@ -4,15 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Help Center — AtlasDays</title>
-  <meta name="description" content="Operational Help for AtlasDays: setup, trip record quality, CSV import, trackers, exports, dashboard review, privacy, sync, and support." />
+  <meta name="description" content="Find the right AtlasDays help article fast. Use Help for setup, trips, trackers, exports, privacy, and iCloud; use Learn for visa, residency, and travel-history rules." />
   <meta property="og:title" content="Help Center — AtlasDays" />
-  <meta property="og:description" content="Operational Help for AtlasDays: setup, trip record quality, CSV import, trackers, exports, dashboard review, privacy, sync, and support." />
+  <meta property="og:description" content="Find the right AtlasDays help article fast. Use Help for setup, trips, trackers, exports, privacy, and iCloud; use Learn for visa, residency, and travel-history rules." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://atlasdays.app/help/" />
   <meta property="og:image" content="https://atlasdays.app/assets/home/home-hero-dashboard.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Help Center — AtlasDays" />
-  <meta name="twitter:description" content="Operational Help for AtlasDays: setup, trip record quality, CSV import, trackers, exports, dashboard review, privacy, sync, and support." />
+  <meta name="twitter:description" content="Find the right AtlasDays help article fast. Use Help for setup, trips, trackers, exports, privacy, and iCloud; use Learn for visa, residency, and travel-history rules." />
   <meta name="twitter:image" content="https://atlasdays.app/assets/home/home-hero-dashboard.png" />
   <link rel="canonical" href="https://atlasdays.app/help/" />
   <link rel="icon" type="image/png" href="../assets/brand/favicon_light.png?v=20260325a" media="(prefers-color-scheme: light)" />
@@ -23,62 +23,99 @@
       --bg: #0a0b0d;
       --bg-elevated: #0f1319;
       --bg-card: rgba(255,255,255,0.05);
+      --bg-card-strong: rgba(255,255,255,0.07);
       --text: #f4f7fb;
       --muted: #b2b9c5;
       --muted-2: #8790a0;
       --line: rgba(255,255,255,0.10);
       --blue: #1692ff;
       --blue-soft: rgba(22,146,255,0.12);
-      --max: 860px;
+      --shadow: 0 18px 52px rgba(0,0,0,0.28);
+      --radius: 24px;
+      --max: 1120px;
+      --reading: 760px;
     }
+
     @media (prefers-color-scheme: light) {
       :root {
         --bg: #f6f8fc;
         --bg-elevated: #ffffff;
         --bg-card: rgba(255,255,255,0.88);
+        --bg-card-strong: rgba(255,255,255,0.96);
         --text: #0d1422;
         --muted: #526075;
         --muted-2: #6c788b;
         --line: rgba(12,22,40,0.09);
         --blue-soft: rgba(22,146,255,0.08);
+        --shadow: 0 18px 48px rgba(16,28,48,0.10);
       }
     }
+
     * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
     body {
       margin: 0;
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
       color: var(--text);
-      background: var(--bg);
-      line-height: 1.7;
+      background:
+        radial-gradient(circle at top center, rgba(22,146,255,0.10), transparent 28%),
+        radial-gradient(circle at 10% 12%, rgba(22,146,255,0.05), transparent 18%),
+        var(--bg);
+      line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
     a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--blue);
+      outline-offset: 3px;
+    }
+
     .top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      background: color-mix(in srgb, var(--bg) 78%, transparent);
       border-bottom: 1px solid var(--line);
-      padding: 18px 0;
     }
     .top-bar-inner {
       width: min(var(--max), calc(100% - 40px));
       margin: 0 auto;
+      min-height: 72px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 16px;
+      gap: 20px;
     }
     .brand {
       display: inline-flex;
       align-items: center;
-      gap: 10px;
+      gap: 4px;
       font-weight: 700;
+      letter-spacing: -0.02em;
       color: var(--text);
     }
-    .brand img { width: 42px; height: 42px; }
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      overflow: hidden;
+      flex: none;
+    }
+    .brand-mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
     .top-links {
       display: flex;
       align-items: center;
       gap: 16px;
       color: var(--muted);
-      font-size: 0.92rem;
+      font-size: 0.94rem;
     }
     .top-links a:hover { color: var(--text); }
     .theme-toggle {
@@ -92,114 +129,497 @@
       display: inline-grid;
       place-items: center;
       padding: 0;
+      transition: border-color 160ms ease, color 160ms ease;
     }
     .theme-toggle:hover { color: var(--text); border-color: var(--blue); }
+    .theme-toggle:focus-visible { border-color: var(--blue); }
     .icon-moon, .logo-light { display: none; }
     .logo-dark { display: block; }
     @media (prefers-color-scheme: light) {
       .icon-sun, .logo-dark { display: none; }
       .icon-moon, .logo-light { display: block; }
     }
-    html[data-theme="dark"] .icon-sun, html[data-theme="dark"] .logo-dark { display: block; }
-    html[data-theme="dark"] .icon-moon, html[data-theme="dark"] .logo-light { display: none; }
-    html[data-theme="light"] .icon-sun, html[data-theme="light"] .logo-dark { display: none; }
-    html[data-theme="light"] .icon-moon, html[data-theme="light"] .logo-light { display: block; }
+    html[data-theme="dark"] .icon-sun,
+    html[data-theme="dark"] .logo-dark { display: block; }
+    html[data-theme="dark"] .icon-moon,
+    html[data-theme="dark"] .logo-light { display: none; }
+    html[data-theme="light"] .icon-sun,
+    html[data-theme="light"] .logo-dark { display: none; }
+    html[data-theme="light"] .icon-moon,
+    html[data-theme="light"] .logo-light { display: block; }
+
     .page {
       width: min(var(--max), calc(100% - 40px));
       margin: 0 auto;
-      padding: 48px 0 80px;
+      padding: 44px 0 88px;
+    }
+    .breadcrumb {
+      font-size: 0.9rem;
+      color: var(--muted-2);
+      margin-bottom: 24px;
+    }
+    .breadcrumb a {
+      color: var(--muted);
+      text-decoration: none;
+    }
+    .breadcrumb a:hover {
+      color: var(--text);
+      text-decoration: underline;
+      text-underline-offset: 0.18em;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.18fr) minmax(320px, 0.82fr);
+      gap: 28px;
+      align-items: stretch;
+      margin-bottom: 28px;
+    }
+    .hero-copy {
+      padding: 12px 0;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--bg-card);
+      color: var(--muted);
+      font-size: 0.86rem;
+      margin-bottom: 22px;
+    }
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--blue);
+      box-shadow: 0 0 0 6px rgba(22,146,255,0.12);
     }
     h1 {
-      font-size: clamp(1.9rem, 4vw, 2.8rem);
-      line-height: 1.08;
+      font-size: clamp(2.4rem, 5vw, 4.2rem);
+      line-height: 0.98;
+      letter-spacing: -0.05em;
+      margin: 0 0 16px;
+      max-width: 12ch;
+    }
+    .subtitle {
+      font-size: clamp(1.02rem, 1.8vw, 1.14rem);
+      color: var(--muted);
+      margin: 0 0 24px;
+      max-width: 64ch;
+    }
+    .jump-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .jump-links a,
+    .route-links a,
+    .mini-links a,
+    .resource-links a,
+    .inline-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      border: 1px solid var(--line);
+      background: var(--bg-card);
+      border-radius: 999px;
+      padding: 10px 14px;
+      color: var(--text);
+      font-size: 0.92rem;
+      line-height: 1.25;
+      transition: border-color 160ms ease, transform 160ms ease;
+    }
+    .jump-links a:hover,
+    .route-links a:hover,
+    .mini-links a:hover,
+    .resource-links a:hover,
+    .inline-link:hover {
+      border-color: rgba(22,146,255,0.30);
+      text-decoration: none;
+      transform: translateY(-1px);
+    }
+
+    .hero-panel,
+    .section-card,
+    .route-card,
+    .check-card,
+    .topic-card,
+    .article-card,
+    .contact-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: var(--bg-card);
+    }
+    .hero-panel,
+    .section-card,
+    .contact-card.primary {
+      box-shadow: var(--shadow);
+    }
+    .hero-panel {
+      padding: 26px 24px;
+      background:
+        linear-gradient(180deg, rgba(22,146,255,0.08), rgba(22,146,255,0.02)),
+        var(--bg-card-strong);
+    }
+    .hero-panel h2,
+    .section-title {
+      font-size: 1.5rem;
       letter-spacing: -0.03em;
       margin: 0 0 10px;
     }
-    .subtitle {
+    .hero-panel p {
+      margin: 0 0 18px;
       color: var(--muted);
-      font-size: 1.06rem;
-      margin: 0 0 36px;
-      max-width: 56ch;
     }
-    .topic { margin-bottom: 36px; }
-    .topic:last-child { margin-bottom: 0; }
-    .topic-label {
-      font-size: 0.82rem;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: var(--muted-2);
-      margin: 0 0 14px;
+    .mini-steps {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 18px;
+      display: grid;
+      gap: 12px;
+      counter-reset: step;
     }
-    .topic-copy {
-      margin: 0 0 16px;
+    .mini-steps li {
+      padding: 14px 14px 14px 52px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.03);
+      color: var(--muted);
+      position: relative;
+    }
+    .mini-steps li::before {
+      content: counter(step);
+      counter-increment: step;
+      position: absolute;
+      left: 14px;
+      top: 14px;
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(22,146,255,0.16);
+      color: var(--text);
+      font-weight: 700;
+      font-size: 0.84rem;
+    }
+    .hero-note {
+      padding: 14px 16px;
+      border-radius: 18px;
+      border: 1px solid rgba(22,146,255,0.18);
+      background: var(--blue-soft);
       color: var(--muted);
       font-size: 0.95rem;
-      max-width: 60ch;
     }
-    .articles {
+    .hero-note strong { color: var(--text); }
+    .hero-note a {
+      color: var(--text);
+      text-decoration: underline;
+      text-underline-offset: 0.18em;
+    }
+
+    .section {
+      margin-top: 24px;
+    }
+    .section-card {
+      padding: 28px;
+    }
+    .section-heading {
+      margin-bottom: 22px;
+      max-width: 70ch;
+    }
+    .section-label {
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted-2);
+      margin: 0 0 10px;
+    }
+    .section-heading p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.58;
+    }
+
+    .route-grid,
+    .checks-grid,
+    .topics-grid,
+    .contact-grid {
+      display: grid;
+      gap: 16px;
+    }
+    .route-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    .route-card {
+      padding: 22px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: border-color 160ms ease, transform 160ms ease;
+    }
+    .route-card:hover {
+      border-color: rgba(22,146,255,0.28);
+      transform: translateY(-1px);
+    }
+    .route-number {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      background: var(--blue-soft);
+      color: var(--text);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .route-card h3,
+    .check-card h3,
+    .topic-card h3,
+    .article-card h3,
+    .contact-card h3 {
+      margin: 0;
+      font-size: 1.08rem;
+      letter-spacing: -0.02em;
+      color: var(--text);
+    }
+    .route-card p,
+    .check-card p,
+    .topic-card p,
+    .article-card p,
+    .contact-card p,
+    .contact-card li {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.96rem;
+      line-height: 1.58;
+    }
+    .route-links,
+    .mini-links,
+    .resource-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .route-links { margin-top: auto; }
+    .route-links a { text-align: center; }
+
+    .checks-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .check-card {
+      padding: 22px;
+      min-height: 154px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.02), transparent 46%),
+        var(--bg-card);
+    }
+    .check-step {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.83rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted-2);
+      margin-bottom: 12px;
+    }
+    .check-step::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--blue);
+      box-shadow: 0 0 0 6px rgba(22,146,255,0.10);
+    }
+    .checks-note {
+      margin-top: 18px;
+      padding: 18px 20px;
+      border-radius: 20px;
+      border: 1px solid rgba(22,146,255,0.18);
+      background: var(--blue-soft);
+      color: var(--muted);
+    }
+    .checks-note strong { color: var(--text); }
+
+    .topics-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .topic-card {
+      padding: 24px;
       display: flex;
       flex-direction: column;
       gap: 16px;
     }
+    .topic-copy {
+      color: var(--muted);
+      max-width: 58ch;
+    }
+    .article-list {
+      display: grid;
+      gap: 14px;
+    }
     .article-card {
       display: block;
-      padding: 24px;
-      background: var(--bg-card);
-      border: 1px solid var(--line);
-      border-radius: 20px;
+      padding: 20px;
+      background: color-mix(in srgb, var(--bg-elevated) 76%, transparent);
       transition: border-color 160ms ease, transform 160ms ease;
     }
     .article-card:hover {
-      border-color: rgba(22,146,255,0.3);
+      border-color: rgba(22,146,255,0.30);
       transform: translateY(-1px);
     }
-    .article-card h3 {
-      font-size: 1.08rem;
-      letter-spacing: -0.02em;
-      margin: 0 0 5px;
-      color: var(--text);
+    .article-card:focus-visible {
+      border-color: rgba(22,146,255,0.34);
     }
     .article-card p {
-      margin: 0;
-      color: var(--muted);
       font-size: 0.93rem;
+      margin-top: 6px;
     }
-    .notice {
-      margin-top: 36px;
-      padding: 20px 24px;
-      background: var(--blue-soft);
-      border: 1px solid rgba(22,146,255,0.18);
-      border-radius: 16px;
+
+    .contact-grid {
+      grid-template-columns: minmax(0, 1.14fr) repeat(2, minmax(0, 0.93fr));
+      align-items: stretch;
+    }
+    .contact-card {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .contact-card.primary {
+      background:
+        linear-gradient(180deg, rgba(22,146,255,0.10), rgba(22,146,255,0.04)),
+        var(--bg-card-strong);
+    }
+    .contact-card ul {
+      margin: 0;
+      padding-left: 18px;
+      display: grid;
+      gap: 8px;
       color: var(--muted);
     }
-    .notice strong { color: var(--text); }
-    @media (max-width: 620px) {
-      .page { padding: 32px 0 60px; }
-      .top-bar-inner { width: calc(100% - 24px); }
-      .page { width: calc(100% - 24px); }
-      .article-card { padding: 20px; }
-      .top-links a.hide-mobile { display: none; }
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      padding: 13px 18px;
+      border-radius: 14px;
+      background: var(--blue);
+      color: #fff;
+      font-weight: 700;
+      box-shadow: 0 14px 28px rgba(22,146,255,0.22);
     }
+    .cta-btn:hover { text-decoration: none; }
+    .contact-note { font-size: 0.94rem; }
+    .support-scope strong { color: var(--text); }
+
+    .footer-note {
+      margin-top: 18px;
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.58;
+      max-width: var(--reading);
+    }
+    .footer-note strong { color: var(--text); }
+
     html[data-theme="dark"] {
       --bg: #0a0b0d;
       --bg-elevated: #0f1319;
       --bg-card: rgba(255,255,255,0.05);
+      --bg-card-strong: rgba(255,255,255,0.07);
       --text: #f4f7fb;
       --muted: #b2b9c5;
       --muted-2: #8790a0;
       --line: rgba(255,255,255,0.10);
       --blue-soft: rgba(22,146,255,0.12);
+      --shadow: 0 18px 52px rgba(0,0,0,0.28);
     }
     html[data-theme="light"] {
       --bg: #f6f8fc;
       --bg-elevated: #ffffff;
       --bg-card: rgba(255,255,255,0.88);
+      --bg-card-strong: rgba(255,255,255,0.96);
       --text: #0d1422;
       --muted: #526075;
       --muted-2: #6c788b;
       --line: rgba(12,22,40,0.09);
       --blue-soft: rgba(22,146,255,0.08);
+      --shadow: 0 18px 48px rgba(16,28,48,0.10);
+    }
+
+    @media (max-width: 1020px) {
+      .hero,
+      .contact-grid,
+      .route-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .hero {
+        grid-template-columns: 1fr;
+      }
+      .contact-card.primary {
+        grid-column: 1 / -1;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .top-bar-inner,
+      .page {
+        width: calc(100% - 24px);
+      }
+      .top-bar-inner {
+        min-height: 64px;
+        gap: 14px;
+      }
+      .top-links {
+        gap: 12px;
+        font-size: 0.92rem;
+      }
+      .page {
+        padding: 26px 0 56px;
+      }
+      h1 { max-width: unset; }
+      .top-links a.hide-mobile { display: none; }
+      .jump-links {
+        gap: 10px;
+      }
+      .section {
+        margin-top: 20px;
+      }
+      .hero-panel,
+      .section-card,
+      .route-card,
+      .check-card,
+      .topic-card,
+      .contact-card,
+      .article-card {
+        padding: 18px;
+      }
+      .route-grid,
+      .checks-grid,
+      .topics-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      .hero {
+        gap: 18px;
+        margin-bottom: 22px;
+      }
+      .mini-steps li {
+        padding-left: 48px;
+      }
+      .route-card,
+      .check-card,
+      .topic-card,
+      .contact-card {
+        gap: 12px;
+      }
     }
   </style>
 </head>
@@ -207,14 +627,16 @@
   <header class="top-bar">
     <div class="top-bar-inner">
       <a class="brand" href="/">
-        <img class="logo-dark" src="../assets/brand/logo_dark.png?v=20260325a" alt="AtlasDays logo" width="1024" height="1024" />
-        <img class="logo-light" src="../assets/brand/logo_light.png?v=20260325a" alt="AtlasDays logo" width="1024" height="1024" />
+        <span class="brand-mark">
+          <img class="logo-dark" src="../assets/brand/logo_dark.png?v=20260325a" alt="AtlasDays logo" width="1024" height="1024" />
+          <img class="logo-light" src="../assets/brand/logo_light.png?v=20260325a" alt="AtlasDays logo" width="1024" height="1024" />
+        </span>
         <span>AtlasDays</span>
       </a>
       <div class="top-links">
         <a class="hide-mobile" href="/">Home</a>
         <a href="/learn/">Learn</a>
-        <a href="/#waitlist">Waitlist</a>
+        <a class="hide-mobile" href="/changelog">Changelog</a>
         <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()">
           <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
           <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -223,99 +645,299 @@
     </div>
   </header>
 
-  <div class="page">
-    <h1>Help Center</h1>
-    <p class="subtitle">Operational product documentation for AtlasDays: setup, trip record quality, trackers, exports, dashboard review, privacy, sync, and support. Use <a href="/learn/" style="text-decoration:underline;text-underline-offset:0.18em">Learn</a> for concept-first explainers about visa, residency, and travel-history rules.</p>
+  <main class="page">
+    <nav class="breadcrumb"><a href="/">AtlasDays</a> / Help</nav>
 
-    <div class="topic">
-      <p class="topic-label">Start Here</p>
-      <p class="topic-copy">Set up AtlasDays in the right order before you rely on counts, trackers, or exports.</p>
-      <div class="articles">
-        <a class="article-card" href="/help/getting-started">
-          <h3>Getting Started with AtlasDays</h3>
-          <p>Set home country or no fixed residence, enter the first trips with the right precision, and add your first tracker in the right order.</p>
-        </a>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="dot"></span> Operational Help for AtlasDays</p>
+        <h1>Help Center</h1>
+        <p class="subtitle">Use this page to find the right operational answer quickly. Help is for using AtlasDays itself: setup, trip record quality, trackers, exports, dashboard behavior, privacy, and iCloud. Use <a href="/learn/" style="text-decoration: underline; text-underline-offset: 0.18em;">Learn</a> when the real question is about the underlying visa, residency, or travel-history rule.</p>
+        <div class="jump-links">
+          <a href="#routes">Choose the right route</a>
+          <a href="#checks">Run fast checks</a>
+          <a href="#topics">Browse by topic</a>
+          <a href="#contact">Contact support</a>
+        </div>
       </div>
-    </div>
 
-    <div class="topic">
-      <p class="topic-label">Trips and Record Quality</p>
-      <p class="topic-copy">Use these docs when the trip record still needs decisions, cleanup, or bulk entry before the numbers are trustworthy.</p>
-      <div class="articles">
-        <a class="article-card" href="/help/history-and-import">
-          <h3>Trip Modes and Record Quality</h3>
-          <p>Choose Exact Dates, Year, Unknown, transit, and ongoing correctly so the record stays usable for counts and paperwork.</p>
-        </a>
-        <a class="article-card" href="/help/csv-import">
-          <h3>CSV Import</h3>
-          <p>Prepare CSV files, validate rows before saving, and avoid low-quality, duplicate, or misleading imports.</p>
-        </a>
+      <aside class="hero-panel">
+        <h2>Start here</h2>
+        <p>This page is designed for the moment when something feels off and you are not yet sure which article will answer it.</p>
+        <ol class="mini-steps">
+          <li>Choose the route that matches the actual problem, not just the screen you were on.</li>
+          <li>Run the short checks below before editing a lot of trips or trackers.</li>
+          <li>If the result still looks wrong, email support with one clear reproducible example.</li>
+        </ol>
+        <div class="hero-note"><strong>Help vs Learn:</strong> Help explains AtlasDays workflow. Learn explains the rule behind the workflow.</div>
+      </aside>
+    </section>
+
+    <section class="section section-card" id="routes">
+      <div class="section-heading">
+        <p class="section-label">Choose the right route</p>
+        <h2 class="section-title">Find the fastest path to the answer</h2>
+        <p>Most confusion clears up faster when you start from the real problem category instead of browsing the whole Help Center at random.</p>
       </div>
-    </div>
 
-    <div class="topic">
-      <p class="topic-label">Trackers and Limits</p>
-      <p class="topic-copy">Use this when a count needs to track a specific threshold or goal from the trips already in AtlasDays.</p>
-      <div class="articles">
-        <a class="article-card" href="/help/trackers-and-limits">
-          <h3>Trackers and Limits</h3>
-          <p>Choose the right preset and window, see what affects tracker math, and verify when a tracker is trustworthy.</p>
-        </a>
+      <div class="route-grid">
+        <article class="route-card">
+          <div class="route-number">01</div>
+          <h3>Counts or dashboard look wrong</h3>
+          <p>Use this when Days Abroad, country totals, visited places, filters, or map output do not match what you expected. Same-day border crossings can be normal and are not automatically a bad record.</p>
+          <div class="route-links">
+            <a href="/help/dashboard-and-map">Dashboard and Map</a>
+            <a href="/help/history-and-import">Trip Modes and Record Quality</a>
+          </div>
+        </article>
+
+        <article class="route-card">
+          <div class="route-number">02</div>
+          <h3>A tracker looks wrong</h3>
+          <p>Use this when a Schengen, residency, visa, or custom tracker seems off, the setup looks wrong, or alerts are not firing because permissions or notification setup are incomplete.</p>
+          <div class="route-links">
+            <a href="/help/trackers-and-limits">Trackers and Limits</a>
+            <a href="/help/getting-started">Getting Started</a>
+          </div>
+        </article>
+
+        <article class="route-card">
+          <div class="route-number">03</div>
+          <h3>Need to add or clean travel history</h3>
+          <p>Use this when the record is incomplete, approximate, duplicated, overlapping, or still being rebuilt before the numbers can be trusted. Duplicate exact-date trips and overlapping trips both need review, but they are not the same problem.</p>
+          <div class="route-links">
+            <a href="/help/history-and-import">Trip Modes and Record Quality</a>
+            <a href="/help/csv-import">CSV Import</a>
+          </div>
+        </article>
+
+        <article class="route-card">
+          <div class="route-number">04</div>
+          <h3>Import, export, or report issue</h3>
+          <p>Use this when CSV import is messy, export seems to be missing trips, or you need a cleaner backup or report flow. Many export issues come from the selected period, and CSV or PDF export currently require AtlasDays Pro.</p>
+          <div class="route-links">
+            <a href="/help/csv-import">CSV Import</a>
+            <a href="/help/export-and-reports">Export and Reports</a>
+            <a href="/help/icloud-sync-and-restore">iCloud Sync and Restore</a>
+          </div>
+        </article>
+
+        <article class="route-card">
+          <div class="route-number">05</div>
+          <h3>Privacy, auto-detect, or iCloud issue</h3>
+          <p>Use this when Auto-Detect Trips is delayed or misses a crossing, tracker alerts do not fire, or the question is about local data, permissions, or iCloud sync behavior. Auto-Detect Trips relies on iOS significant location changes rather than continuous GPS, and force-quitting the app can stop background detection until AtlasDays is opened again.</p>
+          <div class="route-links">
+            <a href="/help/privacy-location-and-sync">Privacy, Location, and Sync</a>
+            <a href="/help/icloud-sync-and-restore">iCloud Sync and Restore</a>
+          </div>
+        </article>
+
+        <article class="route-card">
+          <div class="route-number">06</div>
+          <h3>Need rule guidance rather than app guidance</h3>
+          <p>Use this when the real question is about Schengen, residency, travel proof, or how a legal rule is usually counted.</p>
+          <div class="route-links">
+            <a href="/learn/">Learn</a>
+            <a href="/learn/schengen-90-180-rule">Schengen 90/180</a>
+          </div>
+        </article>
       </div>
-    </div>
+    </section>
 
-    <div class="topic">
-      <p class="topic-label">Import, Export, and Reports</p>
-      <p class="topic-copy">Use this when you need a portable record or a reviewable output from the current trip data.</p>
-      <div class="articles">
-        <a class="article-card" href="/help/export-and-reports">
-          <h3>Export and Reports</h3>
-          <p>Export CSV or PDF, choose the right period, and check the record before sharing, archiving, or re-importing it later.</p>
-        </a>
+    <section class="section section-card" id="checks">
+      <div class="section-heading">
+        <p class="section-label">Before you trust a result</p>
+        <h2 class="section-title">Fast checks</h2>
+        <p>These are the highest-value checks to run before assuming the app math is wrong.</p>
       </div>
-    </div>
 
-    <div class="topic">
-      <p class="topic-label">Dashboard, Map, and Counting Modes</p>
-      <p class="topic-copy">Use this when you need to understand what AtlasDays is showing from the stored trip record.</p>
-      <div class="articles">
-        <a class="article-card" href="/help/dashboard-and-map">
-          <h3>Dashboard and Map</h3>
-          <p>Review days abroad, period filters, country totals, map output, and how the dashboard reflects the trips you entered.</p>
-        </a>
+      <div class="checks-grid">
+        <article class="check-card">
+          <p class="check-step">Check 1</p>
+          <h3>Home country or No fixed residence</h3>
+          <p><strong>Days Abroad</strong> depends on the home-country setup in Settings. If that is wrong, the dashboard can look wrong even when the trip record is fine.</p>
+        </article>
+
+        <article class="check-card">
+          <p class="check-step">Check 2</p>
+          <h3>Exact Dates vs Year or Unknown</h3>
+          <p><strong>Exact Dates</strong> feed exact counts. <strong>Year</strong> and <strong>Unknown</strong> preserve history but do not power exact tracker or rolling-window math. A same-day border crossing can still be a valid exact-date trip if you really entered and left on that day.</p>
+        </article>
+
+        <article class="check-card">
+          <p class="check-step">Check 3</p>
+          <h3>Ongoing trips</h3>
+          <p>An exact-date trip with no end date is treated as ongoing, so AtlasDays uses <strong>today</strong> as the effective end date until you close it.</p>
+        </article>
+
+        <article class="check-card">
+          <p class="check-step">Check 4</p>
+          <h3>Transit</h3>
+          <p>Transit counts as <strong>0 days</strong>. If you actually entered the country, even briefly, the trip should not be marked as transit.</p>
+        </article>
+
+        <article class="check-card">
+          <p class="check-step">Check 5</p>
+          <h3>Duplicates or overlaps</h3>
+          <p>Imports and cleanup can create duplicate exact-date trips or overlapping trips. Duplicates repeat the same stay; overlaps are conflicting records that share dates. Both need review before you trust the result.</p>
+        </article>
+
+        <article class="check-card">
+          <p class="check-step">Check 6</p>
+          <h3>Tracker scope, export period, or permissions</h3>
+          <p>If the issue is tracker-related, confirm the tracker countries, window, and notification permission if you expect alerts. If the issue is export-related, confirm the selected year or range first, because many "missing trip" reports are filtered exports rather than lost data.</p>
+        </article>
       </div>
-    </div>
 
-    <div class="topic">
-      <p class="topic-label">Privacy, Sync, and Permissions</p>
-      <p class="topic-copy">Use these docs before enabling auto-detect, notifications, or iCloud-backed sync.</p>
-      <div class="articles">
-        <a class="article-card" href="/help/privacy-location-and-sync">
-          <h3>Privacy, Location, and Sync</h3>
-          <p>Understand the local-first privacy model, country-detection suggestions, and which permissions matter.</p>
-        </a>
-        <a class="article-card" href="/help/icloud-sync-and-restore">
-          <h3>iCloud Sync and Restore</h3>
-          <p>See what iCloud sync covers, what stays device-specific, and what to expect after reinstalling or changing devices.</p>
-        </a>
+      <div class="checks-note">
+        <strong>Rule of thumb:</strong> if a trip affects a live visa limit, residency threshold, or near-term paperwork question, keep it in <strong>Exact Dates</strong>.
       </div>
-    </div>
+    </section>
 
-    <div class="topic">
-      <p class="topic-label">Support</p>
-      <p class="topic-copy">Use support when the docs do not answer the operational question.</p>
-      <div class="articles">
-        <a class="article-card" href="/support">
-          <h3>Support</h3>
-          <p>Start with quick answers, then use the contact path if you still need help with AtlasDays.</p>
-        </a>
+    <section class="section section-card" id="topics">
+      <div class="section-heading">
+        <p class="section-label">Browse by topic</p>
+        <h2 class="section-title">Help articles</h2>
+        <p>The routes above get you close quickly. The sections below keep the full product-help directory in one place.</p>
       </div>
-    </div>
 
-    <div class="notice">
-      <p><strong>Need the rule rather than the product workflow?</strong> Visit <a href="/learn/" style="text-decoration:underline;text-underline-offset:0.18em">Learn</a> for Schengen, residency, and travel-history explainers. Help is for using AtlasDays itself.</p>
-    </div>
-  </div>
+      <div class="topics-grid">
+        <section class="topic-card">
+          <div>
+            <p class="section-label">Start here</p>
+            <h3>Set up AtlasDays in the right order</h3>
+            <p class="topic-copy">Use this first if you are new to AtlasDays or cleaning up an early setup before you rely on counts, trackers, or exports.</p>
+          </div>
+          <div class="article-list">
+            <a class="article-card" href="/help/getting-started">
+              <h3>Getting Started with AtlasDays</h3>
+              <p>Set home country or no fixed residence, enter the first trips with the right precision, and add your first tracker in the right order.</p>
+            </a>
+          </div>
+        </section>
+
+        <section class="topic-card">
+          <div>
+            <p class="section-label">Trips and record quality</p>
+            <h3>Clean the trip record before trusting the numbers</h3>
+            <p class="topic-copy">Use these docs when the trip history still needs decisions, cleanup, or bulk entry before the output is trustworthy.</p>
+          </div>
+          <div class="article-list">
+            <a class="article-card" href="/help/history-and-import">
+              <h3>Trip Modes and Record Quality</h3>
+              <p>Choose Exact Dates, Year, Unknown, transit, and ongoing correctly so the record stays usable for counts and paperwork.</p>
+            </a>
+            <a class="article-card" href="/help/csv-import">
+              <h3>CSV Import</h3>
+              <p>Prepare CSV files, validate rows before saving, and avoid low-quality, duplicate, or misleading imports.</p>
+            </a>
+          </div>
+        </section>
+
+        <section class="topic-card">
+          <div>
+            <p class="section-label">Trackers and limits</p>
+            <h3>Check whether the tracker is configured to match the rule</h3>
+            <p class="topic-copy">Use this when the count needs to track a threshold or goal from the trips already in AtlasDays, or when tracker alerts and setup need review.</p>
+          </div>
+          <div class="article-list">
+            <a class="article-card" href="/help/trackers-and-limits">
+              <h3>Trackers and Limits</h3>
+              <p>Choose the right preset and window, see what affects tracker math, and verify when a tracker is trustworthy.</p>
+            </a>
+          </div>
+        </section>
+
+        <section class="topic-card">
+          <div>
+            <p class="section-label">Import, export, and reports</p>
+            <h3>Move the record in or out without losing context</h3>
+            <p class="topic-copy">Use this when you need a portable record, a reviewable output, or a cleaner import and export workflow. Selected periods explain many export questions, and CSV or PDF export currently require AtlasDays Pro.</p>
+          </div>
+          <div class="article-list">
+            <a class="article-card" href="/help/export-and-reports">
+              <h3>Export and Reports</h3>
+              <p>Export CSV or PDF, choose the right period, check what is actually included, and remember those exports currently require AtlasDays Pro.</p>
+            </a>
+          </div>
+        </section>
+
+        <section class="topic-card">
+          <div>
+            <p class="section-label">Dashboard, map, and counting modes</p>
+            <h3>Understand what AtlasDays is showing</h3>
+            <p class="topic-copy">Use this when the question is about how the stored trip record turns into totals, views, filters, and map output, including whether same-day crossings are being counted as expected.</p>
+          </div>
+          <div class="article-list">
+            <a class="article-card" href="/help/dashboard-and-map">
+              <h3>Dashboard and Map</h3>
+              <p>Review days abroad, period filters, country totals, map output, and how the dashboard reflects the trips you entered.</p>
+            </a>
+          </div>
+        </section>
+
+        <section class="topic-card">
+          <div>
+            <p class="section-label">Privacy, sync, and permissions</p>
+            <h3>Check what stays local, what is optional, and what syncs</h3>
+            <p class="topic-copy">Use these docs before enabling Auto-Detect Trips, notifications, or iCloud sync, or when those features behave differently than expected. Start here for delayed trip suggestions, missed crossings, tracker alerts, reinstalls, and device changes.</p>
+          </div>
+          <div class="article-list">
+            <a class="article-card" href="/help/privacy-location-and-sync">
+              <h3>Privacy, Location, and Sync</h3>
+              <p>Understand the local-first privacy model, country-detection suggestions, and which permissions matter.</p>
+            </a>
+            <a class="article-card" href="/help/icloud-sync-and-restore">
+              <h3>iCloud Sync and Restore</h3>
+              <p>See what iCloud sync covers, what stays device-specific, and what to expect after reinstalling or changing devices.</p>
+            </a>
+          </div>
+        </section>
+      </div>
+
+      <p class="footer-note"><strong>Need the rule rather than the product workflow?</strong> Visit <a class="inline-link" href="/learn/">Learn</a> for Schengen, residency, and travel-history explainers. Help is for using AtlasDays itself.</p>
+    </section>
+
+    <section class="section section-card" id="contact">
+      <div class="section-heading">
+        <p class="section-label">Still stuck?</p>
+        <h2 class="section-title">Contact support from here</h2>
+        <p>Email support when you have already used the relevant help article and still have one specific AtlasDays behavior that does not make sense.</p>
+      </div>
+
+      <div class="contact-grid">
+        <article class="contact-card primary">
+          <h3>Email support</h3>
+          <p>Support is best for one clear operational question, one tracker that looks wrong, one export that seems filtered incorrectly, or one privacy or sync behavior that does not match the docs.</p>
+          <a class="cta-btn" href="#contact" id="support-email" data-email-user="atlasdays" data-email-domain="pm.me">Email support</a>
+          <p class="contact-note">For privacy, send only the minimum personal data needed to explain the issue. Avoid passport scans, full document uploads, or anything more sensitive than necessary.</p>
+        </article>
+
+        <article class="contact-card">
+          <h3>Include these details</h3>
+          <ul>
+            <li>what you expected and what AtlasDays showed instead</li>
+            <li>the exact countries and dates involved, and whether the trips are Exact Dates, Year, Unknown, ongoing, transit, duplicate, or overlapping</li>
+            <li>the selected tracker window, dashboard period, or export period if the issue depends on filtered output</li>
+            <li>whether Auto-Detect Trips, notifications, or iCloud sync were enabled, and whether the app had been force-quit if the issue involved background behavior</li>
+            <li>screenshots of the relevant tracker, timeline entries, import preview, export screen, or permissions state</li>
+            <li>your iPhone model, iOS version, and AtlasDays app version if it looks like a bug</li>
+          </ul>
+        </article>
+
+        <article class="contact-card">
+          <h3>Useful next stops</h3>
+          <p class="support-scope"><strong>Help covers product workflow.</strong> If the question is really about the underlying rule, go to <a href="/learn/" style="text-decoration: underline; text-underline-offset: 0.18em;">Learn</a> first.</p>
+          <div class="mini-links">
+            <a href="/learn/">Learn</a>
+            <a href="/privacy">Privacy Policy</a>
+            <a href="/terms">Terms</a>
+            <a href="/changelog">Changelog</a>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
 
   <script>
   function toggleTheme() {
@@ -328,6 +950,17 @@
     html.setAttribute('data-theme', next);
     localStorage.setItem('theme', next);
   }
+
+  (function() {
+    var el = document.getElementById('support-email');
+    if (!el) return;
+    var user = el.getAttribute('data-email-user');
+    var domain = el.getAttribute('data-email-domain');
+    var addr = user + '@' + domain;
+    el.setAttribute('href', 'mai' + 'lto:' + addr);
+    el.setAttribute('aria-label', 'Email support at ' + addr);
+    el.setAttribute('title', addr);
+  })();
   </script>
 </body>
 </html>
