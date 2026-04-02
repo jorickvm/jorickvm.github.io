@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Getting Started with AtlasDays — Help</title>
-  <meta name="description" content="Set up AtlasDays correctly: choose a home country or no fixed residence, log your first trips with the right precision, and add your first tracker." />
-  <meta property="og:title" content="Getting Started with AtlasDays — Help" />
-  <meta property="og:description" content="Set up AtlasDays correctly: choose a home country or no fixed residence, log your first trips with the right precision, and add your first tracker." />
+  <title>Getting Started — AtlasDays Help</title>
+  <meta name="description" content="Avoid early AtlasDays setup mistakes: choose Home Country or No fixed residence correctly, enter the trips that affect live counts first, and know when trackers or CSV import should wait." />
+  <meta property="og:title" content="Getting Started — AtlasDays Help" />
+  <meta property="og:description" content="Avoid early AtlasDays setup mistakes: choose Home Country or No fixed residence correctly, enter the trips that affect live counts first, and know when trackers or CSV import should wait." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/help/getting-started" />
   <meta property="og:image" content="https://atlasdays.app/assets/home/home-hero-dashboard.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Getting Started with AtlasDays — Help" />
-  <meta name="twitter:description" content="Set up AtlasDays correctly: choose a home country or no fixed residence, log your first trips with the right precision, and add your first tracker." />
+  <meta name="twitter:title" content="Getting Started — AtlasDays Help" />
+  <meta name="twitter:description" content="Avoid early AtlasDays setup mistakes: choose Home Country or No fixed residence correctly, enter the trips that affect live counts first, and know when trackers or CSV import should wait." />
   <meta name="twitter:image" content="https://atlasdays.app/assets/home/home-hero-dashboard.png" />
   <link rel="canonical" href="https://atlasdays.app/help/getting-started" />
   <link rel="icon" type="image/png" href="../assets/brand/favicon_light.png?v=20260325a" media="(prefers-color-scheme: light)" />
@@ -44,7 +44,6 @@
     .callout, .cta-box { padding:20px 24px; border-radius:16px; margin:28px 0; }
     .callout { background:var(--blue-soft); border:1px solid rgba(22,146,255,0.18); }
     .cta-box { background:var(--bg-card); border:1px solid var(--line); }
-    .cta-btn { display:inline-flex; align-items:center; padding:12px 24px; background:var(--blue); color:white; border-radius:14px; font-weight:650; text-decoration:none; }
     .theme-toggle { background:none; border:1px solid var(--line); border-radius:10px; color:var(--muted); cursor:pointer; width:36px; height:36px; display:inline-grid; place-items:center; padding:0; }
     .theme-toggle:hover { border-color:var(--blue); color:var(--text); }
     .icon-moon, .logo-light { display:none; } .logo-dark { display:block; }
@@ -141,7 +140,7 @@
         <span>AtlasDays</span>
       </a>
       <div style="display:flex;align-items:center;gap:16px">
-        <a href="/help/" style="color:var(--muted);font-size:0.92rem">Help</a>
+        <a href="/help/" style="color:var(--muted);font-size:0.92rem">Help Center</a>
         <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()">
           <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
           <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -152,96 +151,128 @@
 
   <article>
     <nav class="breadcrumb">
-      <a href="/">AtlasDays</a> / <a href="/help/">Help</a>
+      <a href="/">AtlasDays</a> / <a href="/help/">Help Center</a>
     </nav>
 
-    <h1>Getting Started with AtlasDays</h1>
-    <p class="subtitle">Set up AtlasDays so your trip record, tracker results, and days-abroad totals start clean.</p>
+    <h1>Getting Started</h1>
+    <p class="subtitle">Set up AtlasDays in an order that keeps <strong>Days Abroad</strong>, early dashboard totals, and first trackers from drifting off immediately.</p>
 
     <!-- ARTICLE_IMAGE:hero -->
     <!-- ARTICLE_IMAGE_RENDER_START:hero -->
     <figure class="atlasdays-article-image is-hero" data-article-image-slot="hero">
-      <img src="../assets/article-images/help/getting-started/hero.webp" alt="Hero illustration for Getting Started with AtlasDays, showing world map, summary cards, and country-highlight motifs in the AtlasDays visual style." width="1536" height="1024" decoding="async" sizes="(max-width: 760px) calc(100vw - 40px), 720px" loading="eager" fetchpriority="high" />
+      <img src="../assets/article-images/help/getting-started/hero.webp" alt="Hero illustration for Getting Started, showing world map, summary cards, and country-highlight motifs in the AtlasDays visual style." width="1536" height="1024" decoding="async" sizes="(max-width: 760px) calc(100vw - 40px), 720px" loading="eager" fetchpriority="high" />
     </figure>
     <!-- ARTICLE_IMAGE_RENDER_END:hero -->
 
     <h2>What This Page Helps You Do</h2>
-    <p>Use this page when you are setting up AtlasDays for the first time, restarting after skipping onboarding, or cleaning up an early setup before you rely on the numbers.</p>
-    <p>By the end of this page, you should have:</p>
+    <p>Start here when you are setting up AtlasDays for the first time, restarting after skipping onboarding, or cleaning up an early setup before you rely on the numbers.</p>
+    <p>This page should leave you with:</p>
     <ul>
-      <li>a clear home-country decision, or <strong>No fixed residence</strong> if that fits you better</li>
-      <li>your first count-relevant trips logged with the right date precision</li>
-      <li>your first tracker created, or a clear decision to add it after the trip record is ready</li>
+      <li>a clear <strong>Home Country</strong> decision, or <strong>No fixed residence</strong> if that fits you better</li>
+      <li>the trips that still affect live counts entered with the right precision first</li>
+      <li>a clear decision on whether to add a first tracker now, later, or only provisionally</li>
+      <li>a clear decision on whether <strong>CSV import</strong> is worth doing yet</li>
     </ul>
 
     <div class="callout">
-      <p><strong>Use the app in this order:</strong> <strong>Timeline</strong> is your source of truth, <strong>Dashboard</strong> shows what that record produces, and <strong>Settings</strong> controls home country, import/export, sync, and permissions.</p>
+      <p><strong>Use the app in this order:</strong> <strong>Timeline</strong> holds the trip record, <strong>Dashboard</strong> shows what that record produces, and <strong>Settings</strong> controls <strong>Home Country</strong>, <strong>CSV import</strong>, <strong>iCloud sync</strong>, and permissions.</p>
     </div>
 
+    <h2>Avoid These Setup Mistakes First</h2>
+    <p>Most early confusion comes from a few avoidable setup choices. Check these before you do anything else:</p>
+    <ul>
+      <li><strong>Wrong Home Country:</strong> if <strong>Days Abroad</strong> looks wrong early, verify <strong>Home Country</strong> before you question the dashboard.</li>
+      <li><strong>Wrong base model:</strong> choose a real <strong>Home Country</strong> when one country should be treated as home. Choose <strong>No fixed residence</strong> only when you do not want one country treated as home at all.</li>
+      <li><strong>Approximate history before live trips:</strong> do not start by filling vague older trips if you still need to enter the trips that affect a live limit, residency threshold, or near-term paperwork question.</li>
+      <li><strong>Trackers too early:</strong> a tracker can exist before the record is ready, but its result should be treated as provisional until the relevant trips are good enough.</li>
+      <li><strong>Import before precision decisions:</strong> do not run <strong>CSV import</strong> before deciding which trips should be <strong>Exact Dates</strong>, <strong>Year</strong>, <strong>Unknown</strong>, or <strong>Transit</strong>.</li>
+      <li><strong>Onboarding as proof:</strong> finishing onboarding only means the basic settings flow is complete. It does not prove the trip record is already trustworthy.</li>
+      <li><strong>Auto-Detect Trips as a substitute:</strong> <strong>Auto-Detect Trips</strong> is optional and useful for new movement, but it does not replace adding your first important trips correctly.</li>
+    </ul>
+
     <h2>Set Up AtlasDays in This Order</h2>
-    <h3>1. Set your home country first</h3>
-    <p>Open <strong>Settings</strong> and set <strong>Home Country</strong> to the country that should be treated as home in the app. This affects how <strong>Days Abroad</strong> is calculated on the dashboard.</p>
-    <p>If you do not have one fixed base, choose <strong>No fixed residence</strong>. In that mode, Days Abroad counts all days covered by recorded trips instead of subtracting time spent in one home country.</p>
-    <p>If you choose a real home country during onboarding and leave <strong>Track residency</strong> turned on, AtlasDays creates a yearly <strong>Residence</strong> tracker for that country automatically with a default threshold of <strong>183 days</strong>.</p>
+    <p>This order front-loads the decisions that change <strong>Days Abroad</strong>, live tracker math, and early dashboard trust. The app still works if you skip ahead, but early numbers are much easier to understand if you do these in sequence.</p>
+
+    <h3>1. Decide your Home Country first</h3>
+    <p>Open <strong>Settings</strong> and set <strong>Home Country</strong> to the country that should be treated as home in the app. This is one of the first things to verify if <strong>Days Abroad</strong> or early dashboard totals look wrong.</p>
+    <p>Choose a real <strong>Home Country</strong> if one country should be treated as home for abroad-vs-home questions. Choose <strong>No fixed residence</strong> if you do not want one country treated as home at all. In <strong>No fixed residence</strong> mode, <strong>Days Abroad</strong> counts all recorded days from <strong>Exact Dates</strong> trips instead of subtracting time in one home country.</p>
+    <p>Do this before entering lots of trips. If you add history first and change this decision later, <strong>Days Abroad</strong> can shift in ways that feel like bad math even when the app is doing exactly what you asked.</p>
+    <p>During onboarding, choosing a real <strong>Home Country</strong> and leaving <strong>Track residency</strong> on can create a yearly <strong>Residence</strong> tracker automatically with a default threshold of <strong>183 days</strong>. Treat that as useful only when the trips behind it are ready.</p>
     <figure class="atlasdays-screenshot">
       <img src="../assets/article-images/help/getting-started/screenshot-home-country.webp" alt="Settings screen showing the Home Country field" width="1206" height="2622" decoding="async" loading="lazy" />
     </figure>
 
-    <h3>2. Add the trips that affect real counts</h3>
+    <h3>2. Add the trips that affect live counts</h3>
     <!-- ARTICLE_IMAGE:body-1 -->
     <!-- ARTICLE_IMAGE_RENDER_START:body-1 -->
     <figure class="atlasdays-article-image is-body" data-article-image-slot="body-1">
-      <img src="../assets/article-images/help/getting-started/body-1.webp" alt="Supporting illustration for Getting Started with AtlasDays, focused on choose the right trip mode first in the AtlasDays visual style." width="1536" height="1024" decoding="async" sizes="(max-width: 760px) calc(100vw - 40px), 720px" loading="lazy" />
+      <img src="../assets/article-images/help/getting-started/body-1.webp" alt="Supporting illustration for Getting Started, focused on choosing the right trip mode first in the AtlasDays visual style." width="1536" height="1024" decoding="async" sizes="(max-width: 760px) calc(100vw - 40px), 720px" loading="lazy" />
     </figure>
     <!-- ARTICLE_IMAGE_RENDER_END:body-1 -->
-    <p>Open <strong>Timeline</strong> and tap <strong>+</strong>. Start with the trips that can still affect a current visa limit, residency threshold, or near-term paperwork question.</p>
+    <p>Open <strong>Timeline</strong> and tap <strong>+</strong>. Start with the trips that can still affect a current visa limit, residency threshold, or near-term paperwork question. If a question is live now, that trip belongs early in the record.</p>
     <ul>
-      <li>Use <strong>Exact Dates</strong> when the trip needs to feed real day counts or tracker math.</li>
-      <li>Leave the end date empty for an <strong>ongoing</strong> exact-date trip.</li>
-      <li>Mark a trip as <strong>Transit</strong> only if you did not actually enter the country. Transit trips stay in history but count <strong>0 days</strong>.</li>
-      <li>AtlasDays counts both the <strong>arrival day</strong> and the <strong>departure day</strong> for exact-date trips.</li>
+      <li>Use <strong>Exact Dates</strong> when the trip needs to feed real day counts, tracker math, or near-term paperwork.</li>
+      <li>Leave the end date empty only for an intentionally <strong>ongoing</strong> trip with <strong>Exact Dates</strong>. That trip keeps affecting totals until you close it.</li>
+      <li>Mark a trip as <strong>Transit</strong> only if you did not actually enter the country. <strong>Transit</strong> stays in history but counts <strong>0 days</strong>.</li>
+      <li>AtlasDays counts both the <strong>arrival day</strong> and the <strong>departure day</strong> for <strong>Exact Dates</strong>.</li>
     </ul>
+    <p>This step comes before trackers for a reason. A good tracker needs a good trip record. If you are close to a limit or threshold, slow down here and get these trips right first.</p>
     <figure class="atlasdays-screenshot">
       <img src="../assets/article-images/help/getting-started/screenshot-add-trip.webp" alt="Timeline tab showing the + button to add a new trip" width="1206" height="2622" decoding="async" loading="lazy" />
     </figure>
 
-    <h3>3. Add approximate older history without inventing precision</h3>
+    <h3>3. Add older approximate history only after the live trips are right</h3>
     <p>Use <strong>Year</strong> when you know which year a trip belongs in but not the exact dates. Use <strong>Unknown</strong> if you know you visited a place but cannot place it confidently in time yet.</p>
-    <p>These entries preserve your record, but they do <strong>not</strong> create precise day totals or tracker counts. Year entries also cannot be future-dated.</p>
+    <p>These entries preserve your record, but they do <strong>not</strong> create precise day totals or tracker counts. <strong>Year</strong> entries also cannot be future-dated.</p>
+    <p>Do not let rough older history delay the trips that still matter now. It is usually better to get the live-count trips correct first, then come back and fill older background history carefully.</p>
     <figure class="atlasdays-screenshot">
       <img src="../assets/article-images/help/getting-started/screenshot-trip-modes.webp" alt="Trip creation sheet showing the Exact Dates, Year, and Unknown mode options" width="1206" height="2622" decoding="async" loading="lazy" />
     </figure>
 
-    <h3>4. Add your first tracker from Dashboard</h3>
+    <h3>4. Add your first tracker only when the relevant trips are ready</h3>
     <p>Open <strong>Dashboard</strong>. If you do not already have a tracker, tap <strong>Add Tracker</strong> and choose the preset that matches the limit or goal you actually want to monitor.</p>
-    <p>If the trips behind that question are still approximate, clean up the trip record first and then return to the tracker. For preset types, windows, alerts, and tracker trust, use <a href="/help/trackers-and-limits">Trackers and Limits</a>.</p>
+    <p>A tracker is useful early only if the trips behind that question are already good enough. If those trips are still approximate, either wait to add the tracker or treat its result as provisional until the record is cleaned up.</p>
+    <p>If onboarding already created a <strong>Residence</strong> tracker from your <strong>Home Country</strong> choice, that is normal. Review the trips behind it before acting on the number. For preset types, windows, alerts, and tracker trust, use <a href="/help/trackers-and-limits">Trackers and Limits</a>.</p>
     <figure class="atlasdays-screenshot">
       <img src="../assets/article-images/help/getting-started/screenshot-add-tracker.webp" alt="Dashboard showing the Add Tracker entry point" width="1206" height="2622" decoding="async" loading="lazy" />
     </figure>
 
-    <h3>5. Import only after you know what precision you actually have</h3>
-    <p>If your history already exists in a spreadsheet or travel notes, use <strong>Settings &gt; Import CSV</strong> after you decide which trips should be exact, year-only, unknown, or transit.</p>
-    <p>Do not invent exact dates just to fill the app faster. Import exact trips as exact, rough history as year-only, and truly unknown visits as unknown.</p>
+    <h3>5. Use CSV import only when it is actually worth it</h3>
+    <p>If your history already exists in a spreadsheet or travel notes, use <strong>Settings &gt; Import CSV</strong> after you decide which trips should be <strong>Exact Dates</strong>, <strong>Year</strong>, <strong>Unknown</strong>, or <strong>Transit</strong>.</p>
+    <p><strong>CSV import</strong> is worth it for a real backlog. Manual entry is often cleaner for a small number of recent or important trips, especially when those trips affect live counts right away.</p>
+    <p>Do not invent <strong>Exact Dates</strong> just to fill the app faster. Import speed is not worth damaging record quality. Import trips with defensible calendar dates as <strong>Exact Dates</strong>, rough history as <strong>Year</strong>, and truly unknown visits as <strong>Unknown</strong>.</p>
+
+    <h2>When the Setup Is Trustworthy Enough</h2>
+    <p>You do not need a perfect lifetime travel history before you can trust a near-term question. You do need the trips behind that question to be right enough.</p>
+    <ul>
+      <li><strong>Home Country</strong> or <strong>No fixed residence</strong> matches the way you want <strong>Days Abroad</strong> interpreted.</li>
+      <li>The trips that still affect live limits, residency thresholds, or paperwork are entered first, using <strong>Exact Dates</strong> when you can defend them.</li>
+      <li>Any <strong>ongoing</strong> trip is intentionally still open.</li>
+      <li><strong>Transit</strong> is used only for non-entry travel.</li>
+      <li>Your first tracker is either based on ready trips or clearly treated as provisional.</li>
+      <li>You understand that finished onboarding, imported rows, <strong>Auto-Detect Trips</strong>, or <strong>iCloud sync</strong> do not by themselves prove the record is trustworthy.</li>
+    </ul>
 
     <h2>What Affects Counts and Results</h2>
     <ul>
-      <li><strong>Home Country</strong> changes the meaning of <strong>Days Abroad</strong>.</li>
-      <li><strong>Exact-date trips</strong> feed tracker math and precise dashboard day totals.</li>
-      <li><strong>Year</strong> and <strong>Unknown</strong> entries preserve history but do not generate exact day counts.</li>
-      <li><strong>Transit</strong> entries stay in the record and may appear on the map, but they count 0 days.</li>
-      <li><strong>Ongoing exact-date trips</strong> use today as the effective end until you close them.</li>
-      <li><strong>Overlapping exact-date trips</strong> are flagged for review so you can clean up the record before relying on it.</li>
+      <li><strong>Home Country</strong> versus <strong>No fixed residence</strong> changes what <strong>Days Abroad</strong> means.</li>
+      <li><strong>Exact Dates</strong> feed tracker math and precise dashboard day totals.</li>
+      <li><strong>Year</strong> and <strong>Unknown</strong> preserve history, but they do not generate exact counted days.</li>
+      <li><strong>Transit</strong> stays in the record and may appear on the map, but it counts <strong>0 days</strong>.</li>
+      <li><strong>ongoing</strong> trips with <strong>Exact Dates</strong> use today as the effective end until you close them.</li>
+      <li><strong>Overlapping</strong> <strong>Exact Dates</strong> trips can change totals and should be cleaned up before you rely on them.</li>
       <li><strong>Country Count</strong> mode changes visited-country totals, but it does not change tracker math.</li>
+      <li><strong>Auto-Detect Trips</strong> and <strong>iCloud sync</strong> can help populate or restore the record, but the numbers still depend on the trip data being correct.</li>
     </ul>
 
     <div class="cta-box">
       <h3>Where to go next</h3>
-      <p><a href="/help/trackers-and-limits">Trackers and Limits</a> explains tracker presets, windows, alerts, and when tracker results are trustworthy.</p>
-      <p><a href="/help/history-and-import">Trip Modes and Record Quality</a> explains Exact Dates, Year, Unknown, transit, and when manual entry is better than import.</p>
-      <p><a href="/help/dashboard-and-map">Dashboard and Map</a> explains how totals, periods, and the map are calculated from your trip record.</p>
-      <p><a href="/help/privacy-location-and-sync">Privacy, Location, and Sync</a> explains the privacy model, permissions, and auto-detect suggestions.</p>
-      <p><a href="/help/icloud-sync-and-restore">iCloud Sync and Restore</a> explains what syncs and what to expect on a new device or after reinstalling.</p>
-      <p>If you need the rule itself rather than the app workflow, use <a href="/learn/schengen-90-180-rule">Learn</a> for broader explainers like Schengen 90/180.</p>
+      <p><a href="/help/history-and-import">Trip Modes and Record Quality</a> is the next page if the real problem is trip precision, duplicates, overlaps, or deciding between <strong>Exact Dates</strong>, <strong>Year</strong>, <strong>Unknown</strong>, and <strong>Transit</strong>.</p>
+      <p><a href="/help/trackers-and-limits">Trackers and Limits</a> explains when a first tracker is worth adding, which setup choices change the result, and when a tracker should still be treated as provisional.</p>
+      <p><a href="/help/dashboard-and-map">Dashboard and Map</a> helps when early <strong>Days Abroad</strong>, totals, or map output still look wrong after setup.</p>
+      <p><a href="/help/csv-import">CSV Import</a> is the next page if you have a backlog and need to decide whether import is worth it or whether manual entry is cleaner.</p>
+      <p><a href="/help/privacy-location-and-sync">Privacy, Location, and Sync</a> explains when to enable <strong>Auto-Detect Trips</strong>, which permissions matter, and what stays local.</p>
+      <p><a href="/help/icloud-sync-and-restore">iCloud Sync and Restore</a> explains what to expect from <strong>iCloud sync</strong> if you are setting up a second device or recovering after a reinstall.</p>
     </div>
   </article>
 

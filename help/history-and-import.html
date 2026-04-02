@@ -4,15 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Trip Modes and Record Quality — AtlasDays Help</title>
-  <meta name="description" content="Choose Exact Dates, Year, or Unknown in AtlasDays; handle transit and ongoing trips correctly; and know when CSV import is the better tool." />
+  <meta name="description" content="Troubleshoot messy trip history in AtlasDays: choose Exact Dates, Year, Unknown, Transit, and ongoing correctly, and resolve duplicates or overlaps before trusting counts." />
   <meta property="og:title" content="Trip Modes and Record Quality — AtlasDays Help" />
-  <meta property="og:description" content="Choose Exact Dates, Year, or Unknown in AtlasDays; handle transit and ongoing trips correctly; and know when CSV import is the better tool." />
+  <meta property="og:description" content="Troubleshoot messy trip history in AtlasDays: choose Exact Dates, Year, Unknown, Transit, and ongoing correctly, and resolve duplicates or overlaps before trusting counts." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/help/history-and-import" />
   <meta property="og:image" content="https://atlasdays.app/assets/home/home-hero-dashboard.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Trip Modes and Record Quality — AtlasDays Help" />
-  <meta name="twitter:description" content="Choose Exact Dates, Year, or Unknown in AtlasDays; handle transit and ongoing trips correctly; and know when CSV import is the better tool." />
+  <meta name="twitter:description" content="Troubleshoot messy trip history in AtlasDays: choose Exact Dates, Year, Unknown, Transit, and ongoing correctly, and resolve duplicates or overlaps before trusting counts." />
   <meta name="twitter:image" content="https://atlasdays.app/assets/home/home-hero-dashboard.png" />
   <link rel="canonical" href="https://atlasdays.app/help/history-and-import" />
   <link rel="icon" type="image/png" href="../assets/brand/favicon_light.png?v=20260325a" media="(prefers-color-scheme: light)" />
@@ -140,7 +140,7 @@
         <span>AtlasDays</span>
       </a>
       <div style="display:flex;align-items:center;gap:16px">
-        <a href="/help/" style="color:var(--muted);font-size:0.92rem">Help</a>
+        <a href="/help/" style="color:var(--muted);font-size:0.92rem">Help Center</a>
         <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()">
           <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
           <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -151,11 +151,11 @@
 
   <article>
     <nav class="breadcrumb">
-      <a href="/">AtlasDays</a> / <a href="/help/">Help</a>
+      <a href="/">AtlasDays</a> / <a href="/help/">Help Center</a>
     </nav>
 
     <h1>Trip Modes and Record Quality</h1>
-    <p class="subtitle">Choose the right trip precision, keep incomplete history honest, and know when CSV import is the better tool.</p>
+    <p class="subtitle">Choose the right trip precision, clean up messy history, and know what to fix before you trust totals, trackers, or exports.</p>
 
     <!-- ARTICLE_IMAGE:hero -->
     <!-- ARTICLE_IMAGE_RENDER_START:hero -->
@@ -165,25 +165,39 @@
     <!-- ARTICLE_IMAGE_RENDER_END:hero -->
 
     <h2>What This Page Helps You Do</h2>
-    <p>Use this page when you are adding trips manually, cleaning up old history, or deciding whether a trip should be exact, approximate, unknown, or transit.</p>
+    <p>Use this page when you are adding trips manually, cleaning up old history, or trying to work out why dashboard totals, trackers, or exports look wrong downstream.</p>
     <p>By the end of this page, you should know:</p>
     <ul>
       <li>when to use <strong>Exact Dates</strong>, <strong>Year</strong>, or <strong>Unknown</strong></li>
-      <li>how <strong>Transit</strong> and <strong>Ongoing</strong> affect the record</li>
+      <li>how <strong>Transit</strong> and <strong>ongoing</strong> trips affect the record</li>
+      <li>how duplicates, overlaps, and same-day crossings should be interpreted</li>
       <li>when manual entry is still better than <a href="/help/csv-import">CSV import</a></li>
     </ul>
 
     <div class="callout">
-      <p><strong>If a trip affects a live visa limit, residency threshold, or near-term paperwork question, keep it exact.</strong> Use Year or Unknown to preserve older history without making the precise counts less trustworthy.</p>
+      <p><strong>If a trip affects a live visa limit, residency threshold, or near-term paperwork question, keep it in Exact Dates.</strong> Use Year or Unknown to preserve older history without making the precise counts less trustworthy.</p>
     </div>
+
+    <h2>When the Trip Record Looks Wrong</h2>
+    <p>Most record problems come from a small number of choices or conflicts. Check these before you trust anything downstream:</p>
+    <ul>
+      <li><strong>Wrong precision:</strong> a trip that should be <strong>Exact Dates</strong> may have been saved as <strong>Year</strong> or <strong>Unknown</strong>, which preserves history but does not support precise counts.</li>
+      <li><strong>Ongoing trip:</strong> an <strong>ongoing</strong> trip keeps affecting totals because AtlasDays uses today as the effective end date until you close it.</li>
+      <li><strong>Transit marked incorrectly:</strong> <strong>Transit</strong> counts as <strong>0 days</strong>. If you actually entered the country, the trip should not be marked as Transit.</li>
+      <li><strong>Duplicate Exact Dates trip:</strong> this repeats the same stay twice.</li>
+      <li><strong>Overlap conflict:</strong> this means different records share dates and need review.</li>
+      <li><strong>Same-day border crossing:</strong> this can be normal if you really left one country and entered another on the same date. Not every shared calendar date is bad data.</li>
+      <li><strong>Upstream quality matters:</strong> if the trip record is messy, dashboard totals, tracker math, and export output will look messy too.</li>
+    </ul>
 
     <h2>Choose the Right Trip Mode</h2>
     <h3>Exact Dates</h3>
     <p>Use <strong>Exact Dates</strong> when the trip needs to feed real day counts, tracker math, or an upcoming application or compliance check. This is the mode to use for current trips, recent trips, and anything you can verify from stamps, tickets, or records.</p>
     <ul>
-      <li>Exact-date trips are the only trips that generate precise day totals.</li>
+      <li><strong>Exact Dates</strong> trips are the only trips that generate precise day totals.</li>
       <li>They are also the only trips that can be <strong>ongoing</strong> or <strong>upcoming</strong>.</li>
-      <li>AtlasDays counts both the <strong>arrival day</strong> and the <strong>departure day</strong> for exact-date trips.</li>
+      <li>AtlasDays counts both the <strong>arrival day</strong> and the <strong>departure day</strong> for <strong>Exact Dates</strong> trips.</li>
+      <li>Use this mode for current trips, recent trips, same-day border crossings you can verify, and anything that affects live counts.</li>
     </ul>
     <figure class="atlasdays-screenshot">
       <img src="../assets/article-images/help/history-and-import/screenshot-exact-dates.webp" alt="Trip creation sheet with Exact Dates mode selected" width="1206" height="1680" decoding="async" loading="lazy" />
@@ -198,9 +212,10 @@
     <!-- ARTICLE_IMAGE_RENDER_END:body-1 -->
     <p>Use <strong>Year</strong> when you know which year a trip belongs in, but you do not know the exact entry and exit dates. This is for reconstructed history, not for active counting.</p>
     <ul>
-      <li>A year-only trip can be a single year or a multi-year range.</li>
+      <li>A <strong>Year</strong> trip can be a single year or a multi-year range.</li>
       <li>Use it for approximate past history, not planned travel.</li>
       <li>It preserves the visit without pretending you know the exact dates.</li>
+      <li>Use it when the year is defensible but the exact dates are not.</li>
     </ul>
 
     <h3>Unknown</h3>
@@ -209,41 +224,73 @@
       <li>Unknown trips appear in the <strong>No Date</strong> section of the timeline.</li>
       <li>They are useful for preserving history while you keep researching the dates.</li>
       <li>They do <strong>not</strong> generate exact day counts or precise tracker results.</li>
+      <li>Use this only when even the year is still uncertain.</li>
     </ul>
 
     <h2>Use Transit Only for Non-Entry Travel</h2>
     <p>Mark a trip as <strong>Transit</strong> when you did not actually enter the country, such as an airside layover or similar pass-through travel. Transit entries stay in your record, but AtlasDays counts them as <strong>0 days</strong>.</p>
-    <p>If the trip should count toward time spent in the country, do not mark it as transit even if it was short.</p>
+    <p>If the trip should count toward time spent in the country, do not mark it as <strong>Transit</strong> even if it was short.</p>
 
-    <h2>How Ongoing Trips Work</h2>
-    <p>Only exact-date trips can be ongoing. To create one, save the trip with a start date and leave the end date empty.</p>
+    <h2>How ongoing trips work</h2>
+    <p>Only <strong>Exact Dates</strong> trips can be <strong>ongoing</strong>. To create one, save the trip with a start date and leave the end date empty.</p>
     <ul>
-      <li>Ongoing trips appear in the <strong>Ongoing</strong> section of the timeline.</li>
+      <li>They appear in the <strong>Ongoing</strong> section of the timeline.</li>
       <li>AtlasDays uses <strong>today</strong> as the effective end date until you close the trip.</li>
-      <li>If you need a planned future trip, use Exact Dates as well.</li>
+      <li>If you need a fixed total, close the trip before you rely on downstream counts.</li>
+      <li>If you need a planned future trip, use <strong>Exact Dates</strong> as well.</li>
     </ul>
 
-    <h2>Keep the Record Usable</h2>
+    <h2>Duplicates, Overlaps, and Same-Day Crossings</h2>
+    <p><strong>Duplicates</strong> and <strong>overlaps</strong> are not the same problem, and a same-day crossing is not automatically either of them.</p>
     <ul>
-      <li><strong>Approximate entries</strong> are for preserving history, not for exact counters.</li>
-      <li><strong>Date conflicts</strong> are flagged in Timeline when exact-date, non-transit trips overlap and should be resolved before you rely on the totals.</li>
+      <li><strong>Duplicate Exact Dates trip:</strong> the same stay was entered twice.</li>
+      <li><strong>Overlap:</strong> two different records share dates and create a conflict that should be reviewed.</li>
+      <li><strong>Same-day border crossing:</strong> if you departed one country and arrived in another on the same date, that shared date can be legitimate because AtlasDays counts both arrival and departure days for <strong>Exact Dates</strong>.</li>
+      <li><strong>Not every shared date is suspicious:</strong> review the chronology before assuming every overlap is bad data.</li>
+      <li><strong>Date conflicts</strong> are flagged in Timeline when <strong>Exact Dates</strong>, non-<strong>Transit</strong> trips overlap and should be resolved before you rely on the totals.</li>
       <li><strong>Manual entry</strong> blocks exact duplicates when you try to save them.</li>
-      <li><strong>CSV import</strong> skips duplicate rows automatically instead of adding them twice.</li>
+      <li><strong>CSV import</strong> skips duplicate rows automatically instead of adding them twice, but imported history can still create overlaps or other cleanup work.</li>
     </ul>
     <figure class="atlasdays-screenshot">
-      <img src="../assets/article-images/help/history-and-import/screenshot-timeline-sections.webp" alt="Timeline showing distinct sections: Upcoming, Ongoing, Year-only, and No Date" width="1206" height="2622" decoding="async" loading="lazy" />
+      <img src="../assets/article-images/help/history-and-import/screenshot-timeline-sections.webp" alt="Timeline showing distinct sections: Upcoming, Ongoing, Year, and No Date" width="1206" height="2622" decoding="async" loading="lazy" />
     </figure>
 
+    <h2>When the Record Is Trustworthy Enough</h2>
+    <p>You can start trusting downstream math when the record is precise enough for the question you are asking.</p>
+    <ul>
+      <li>Trips that affect live counts, trackers, or paperwork are saved as <strong>Exact Dates</strong>.</li>
+      <li><strong>ongoing</strong> trips are closed if you need a fixed result.</li>
+      <li><strong>Transit</strong> is used only for non-entry travel.</li>
+      <li>Duplicate <strong>Exact Dates</strong> trips and overlapping conflicts have been reviewed.</li>
+      <li>Same-day crossings have been checked and left as-is only when they reflect real travel.</li>
+      <li>Imported history has been reviewed instead of trusted blindly.</li>
+    </ul>
+
     <h2>When to Use Import Instead of Manual Entry</h2>
-    <p>Use manual entry when you are logging a small number of trips, cleaning up recent travel, or still deciding which entries should be exact versus approximate.</p>
-    <p>Use <a href="/help/csv-import">CSV import</a> when you already have a spreadsheet, a large backlog of travel history, or rough source material you want to convert into a batch import. Decide the right precision for each trip first, then build or clean the file.</p>
+    <p>Use manual entry when you are logging a small number of trips, cleaning up recent travel, or still deciding whether an entry should be <strong>Exact Dates</strong>, <strong>Year</strong>, or <strong>Unknown</strong>.</p>
+    <p>Use <a href="/help/csv-import">CSV import</a> when you already have a spreadsheet, a large backlog of travel history, or rough source material you want to convert into a batch import.</p>
+    <ul>
+      <li>Decide the right precision for each trip first. Import does <strong>not</strong> resolve ambiguity for you.</li>
+      <li>Imported duplicates or overlaps should still be reviewed before you trust totals.</li>
+      <li>If the source material is messy, expect cleanup after import rather than a perfect record immediately.</li>
+    </ul>
+
+    <h2>How Record Quality Affects the Rest of the App</h2>
+    <ul>
+      <li><strong>Dashboard totals</strong> reflect the trip record you have now, including <strong>Year</strong>, <strong>Unknown</strong>, <strong>Transit</strong>, and any open <strong>ongoing</strong> trip.</li>
+      <li><strong>Trackers</strong> depend most on trips that are saved as <strong>Exact Dates</strong>. <strong>Year</strong> and <strong>Unknown</strong> preserve history but do not power exact tracker math.</li>
+      <li><strong>Export output</strong> reflects the same trip record and does not repair conflicts or bad precision choices for you.</li>
+      <li><strong>Auto-Detect Trips</strong> can help surface suggestions, but those suggestions still need review, edit, and confirmation before you rely on them as part of the record.</li>
+    </ul>
 
     <div class="cta-box">
       <h3>Where to go next</h3>
       <p><a href="/help/csv-import">CSV Import</a> explains the file format, preview step, duplicate handling, overlap warnings, and the AI prompt helper.</p>
-      <p><a href="/help/getting-started">Getting Started</a> shows how trip quality fits into initial app setup.</p>
-      <p><a href="/help/trackers-and-limits">Trackers and Limits</a> explains why exact trips matter when you want actionable counters.</p>
       <p><a href="/help/dashboard-and-map">Dashboard and Map</a> explains how your trip record turns into totals, summaries, and map output.</p>
+      <p><a href="/help/trackers-and-limits">Trackers and Limits</a> explains why exact trips matter when you want actionable counters.</p>
+      <p><a href="/help/export-and-reports">Export and Reports</a> explains how this same trip record turns into CSV and PDF output.</p>
+      <p><a href="/help/privacy-location-and-sync">Privacy, Location, and Sync</a> explains how <strong>Auto-Detect Trips</strong> suggestions work and why they still need review.</p>
+      <p>If the real question is the underlying travel-rule concept rather than record handling, use <a href="/learn/">Learn</a>.</p>
     </div>
   </article>
 

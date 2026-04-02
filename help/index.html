@@ -4,15 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Help Center — AtlasDays</title>
-  <meta name="description" content="Find the right AtlasDays help article fast. Use Help for setup, trips, trackers, exports, privacy, and iCloud; use Learn for visa, residency, and travel-history rules." />
+  <meta name="description" content="Use the AtlasDays Help Center for setup, trip records, trackers, exports, Auto-Detect Trips, privacy, and iCloud sync. Use Learn for visa, residency, and travel-history rules." />
   <meta property="og:title" content="Help Center — AtlasDays" />
-  <meta property="og:description" content="Find the right AtlasDays help article fast. Use Help for setup, trips, trackers, exports, privacy, and iCloud; use Learn for visa, residency, and travel-history rules." />
+  <meta property="og:description" content="Use the AtlasDays Help Center for setup, trip records, trackers, exports, Auto-Detect Trips, privacy, and iCloud sync. Use Learn for visa, residency, and travel-history rules." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://atlasdays.app/help/" />
   <meta property="og:image" content="https://atlasdays.app/assets/home/home-hero-dashboard.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Help Center — AtlasDays" />
-  <meta name="twitter:description" content="Find the right AtlasDays help article fast. Use Help for setup, trips, trackers, exports, privacy, and iCloud; use Learn for visa, residency, and travel-history rules." />
+  <meta name="twitter:description" content="Use the AtlasDays Help Center for setup, trip records, trackers, exports, Auto-Detect Trips, privacy, and iCloud sync. Use Learn for visa, residency, and travel-history rules." />
   <meta name="twitter:image" content="https://atlasdays.app/assets/home/home-hero-dashboard.png" />
   <link rel="canonical" href="https://atlasdays.app/help/" />
   <link rel="icon" type="image/png" href="../assets/brand/favicon_light.png?v=20260325a" media="(prefers-color-scheme: light)" />
@@ -320,9 +320,20 @@
       text-decoration: underline;
       text-underline-offset: 0.18em;
     }
+    .text-link {
+      color: var(--text);
+      text-decoration: underline;
+      text-underline-offset: 0.18em;
+    }
+    .text-link:hover {
+      text-decoration-thickness: 0.12em;
+    }
 
     .section {
       margin-top: 24px;
+    }
+    .section[id] {
+      scroll-margin-top: 92px;
     }
     .section-card {
       padding: 28px;
@@ -633,43 +644,43 @@
         </span>
         <span>AtlasDays</span>
       </a>
-      <div class="top-links">
+      <nav class="top-links" aria-label="Primary">
         <a class="hide-mobile" href="/">Home</a>
         <a href="/learn/">Learn</a>
         <a class="hide-mobile" href="/changelog">Changelog</a>
-        <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()">
+        <button class="theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme" onclick="toggleTheme()">
           <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
           <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         </button>
-      </div>
+      </nav>
     </div>
   </header>
 
   <main class="page">
-    <nav class="breadcrumb"><a href="/">AtlasDays</a> / Help</nav>
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">AtlasDays</a> / <span aria-current="page">Help Center</span></nav>
 
     <section class="hero">
       <div class="hero-copy">
         <p class="eyebrow"><span class="dot"></span> Operational Help for AtlasDays</p>
         <h1>Help Center</h1>
-        <p class="subtitle">Use this page to find the right operational answer quickly. Help is for using AtlasDays itself: setup, trip record quality, trackers, exports, dashboard behavior, privacy, and iCloud. Use <a href="/learn/" style="text-decoration: underline; text-underline-offset: 0.18em;">Learn</a> when the real question is about the underlying visa, residency, or travel-history rule.</p>
-        <div class="jump-links">
+        <p class="subtitle">Find the right operational answer fast. The Help Center covers AtlasDays setup, trip records, trackers, exports, dashboard behavior, Auto-Detect Trips, privacy, and iCloud sync. Use <a class="text-link" href="/learn/">Learn</a> when the real question is the underlying visa, residency, or travel-history rule.</p>
+        <nav class="jump-links" aria-label="Help page sections">
           <a href="#routes">Choose the right route</a>
           <a href="#checks">Run fast checks</a>
           <a href="#topics">Browse by topic</a>
           <a href="#contact">Contact support</a>
-        </div>
+        </nav>
       </div>
 
       <aside class="hero-panel">
         <h2>Start here</h2>
-        <p>This page is designed for the moment when something feels off and you are not yet sure which article will answer it.</p>
+        <p>Start here when something feels off and you are not yet sure which article will answer it.</p>
         <ol class="mini-steps">
           <li>Choose the route that matches the actual problem, not just the screen you were on.</li>
           <li>Run the short checks below before editing a lot of trips or trackers.</li>
           <li>If the result still looks wrong, email support with one clear reproducible example.</li>
         </ol>
-        <div class="hero-note"><strong>Help vs Learn:</strong> Help explains AtlasDays workflow. Learn explains the rule behind the workflow.</div>
+        <div class="hero-note"><strong>Help vs Learn:</strong> Help explains AtlasDays workflow. Learn explains the rule behind it.</div>
       </aside>
     </section>
 
@@ -677,14 +688,14 @@
       <div class="section-heading">
         <p class="section-label">Choose the right route</p>
         <h2 class="section-title">Find the fastest path to the answer</h2>
-        <p>Most confusion clears up faster when you start from the real problem category instead of browsing the whole Help Center at random.</p>
+        <p>Start from the real problem category instead of browsing the whole Help Center at random.</p>
       </div>
 
       <div class="route-grid">
         <article class="route-card">
           <div class="route-number">01</div>
           <h3>Counts or dashboard look wrong</h3>
-          <p>Use this when Days Abroad, country totals, visited places, filters, or map output do not match what you expected. Same-day border crossings can be normal and are not automatically a bad record.</p>
+          <p>Use this when Days Abroad, country totals, visited places, filters, or map output do not match what you expected. Same-day border crossings can be normal and are not automatically bad data.</p>
           <div class="route-links">
             <a href="/help/dashboard-and-map">Dashboard and Map</a>
             <a href="/help/history-and-import">Trip Modes and Record Quality</a>
@@ -694,7 +705,7 @@
         <article class="route-card">
           <div class="route-number">02</div>
           <h3>A tracker looks wrong</h3>
-          <p>Use this when a Schengen, residency, visa, or custom tracker seems off, the setup looks wrong, or alerts are not firing because permissions or notification setup are incomplete.</p>
+          <p>Use this when a Schengen, residency, visa, or custom tracker seems off, or alerts are missing because tracker setup or notification permission is incomplete.</p>
           <div class="route-links">
             <a href="/help/trackers-and-limits">Trackers and Limits</a>
             <a href="/help/getting-started">Getting Started</a>
@@ -704,7 +715,7 @@
         <article class="route-card">
           <div class="route-number">03</div>
           <h3>Need to add or clean travel history</h3>
-          <p>Use this when the record is incomplete, approximate, duplicated, overlapping, or still being rebuilt before the numbers can be trusted. Duplicate exact-date trips and overlapping trips both need review, but they are not the same problem.</p>
+          <p>Use this when the record is incomplete, approximate, duplicated, overlapping, or still being rebuilt. Duplicate <strong>Exact Dates</strong> trips and overlapping trips both need review, but they are different problems.</p>
           <div class="route-links">
             <a href="/help/history-and-import">Trip Modes and Record Quality</a>
             <a href="/help/csv-import">CSV Import</a>
@@ -714,7 +725,7 @@
         <article class="route-card">
           <div class="route-number">04</div>
           <h3>Import, export, or report issue</h3>
-          <p>Use this when CSV import is messy, export seems to be missing trips, or you need a cleaner backup or report flow. Many export issues come from the selected period, and CSV or PDF export currently require AtlasDays Pro.</p>
+          <p>Use this when CSV import is messy, export seems to miss trips, or you need a cleaner backup or report. Many export issues come from the selected export period, and CSV or PDF export currently require AtlasDays Pro.</p>
           <div class="route-links">
             <a href="/help/csv-import">CSV Import</a>
             <a href="/help/export-and-reports">Export and Reports</a>
@@ -724,8 +735,8 @@
 
         <article class="route-card">
           <div class="route-number">05</div>
-          <h3>Privacy, auto-detect, or iCloud issue</h3>
-          <p>Use this when Auto-Detect Trips is delayed or misses a crossing, tracker alerts do not fire, or the question is about local data, permissions, or iCloud sync behavior. Auto-Detect Trips relies on iOS significant location changes rather than continuous GPS, and force-quitting the app can stop background detection until AtlasDays is opened again.</p>
+          <h3>Privacy, Auto-Detect Trips, or iCloud sync issue</h3>
+          <p>Use this when Auto-Detect Trips is delayed or misses a crossing, tracker alerts do not fire, or the question is about local data, permissions, or iCloud sync. Auto-Detect Trips relies on iOS significant location changes, and force-quitting the app can stop background detection until AtlasDays is opened again.</p>
           <div class="route-links">
             <a href="/help/privacy-location-and-sync">Privacy, Location, and Sync</a>
             <a href="/help/icloud-sync-and-restore">iCloud Sync and Restore</a>
@@ -754,38 +765,38 @@
       <div class="checks-grid">
         <article class="check-card">
           <p class="check-step">Check 1</p>
-          <h3>Home country or No fixed residence</h3>
-          <p><strong>Days Abroad</strong> depends on the home-country setup in Settings. If that is wrong, the dashboard can look wrong even when the trip record is fine.</p>
+          <h3>Home Country or No fixed residence</h3>
+          <p><strong>Days Abroad</strong> depends on your <strong>Home Country</strong> choice in Settings. If that is wrong, the dashboard can look wrong even when the trip record is fine.</p>
         </article>
 
         <article class="check-card">
           <p class="check-step">Check 2</p>
           <h3>Exact Dates vs Year or Unknown</h3>
-          <p><strong>Exact Dates</strong> feed exact counts. <strong>Year</strong> and <strong>Unknown</strong> preserve history but do not power exact tracker or rolling-window math. A same-day border crossing can still be a valid exact-date trip if you really entered and left on that day.</p>
+          <p><strong>Exact Dates</strong> feed exact counts. <strong>Year</strong> and <strong>Unknown</strong> preserve history but do not power exact tracker or rolling-window math. A same-day border crossing can still be a valid <strong>Exact Dates</strong> trip if you really entered and left on that day.</p>
         </article>
 
         <article class="check-card">
           <p class="check-step">Check 3</p>
-          <h3>Ongoing trips</h3>
-          <p>An exact-date trip with no end date is treated as ongoing, so AtlasDays uses <strong>today</strong> as the effective end date until you close it.</p>
+          <h3>ongoing trips</h3>
+          <p>An <strong>Exact Dates</strong> trip with no end date is treated as <strong>ongoing</strong>, so AtlasDays uses <strong>today</strong> as the effective end date until you close it.</p>
         </article>
 
         <article class="check-card">
           <p class="check-step">Check 4</p>
           <h3>Transit</h3>
-          <p>Transit counts as <strong>0 days</strong>. If you actually entered the country, even briefly, the trip should not be marked as transit.</p>
+          <p><strong>Transit</strong> counts as <strong>0 days</strong>. If you actually entered the country, even briefly, the trip should not be marked as <strong>Transit</strong>.</p>
         </article>
 
         <article class="check-card">
           <p class="check-step">Check 5</p>
           <h3>Duplicates or overlaps</h3>
-          <p>Imports and cleanup can create duplicate exact-date trips or overlapping trips. Duplicates repeat the same stay; overlaps are conflicting records that share dates. Both need review before you trust the result.</p>
+          <p>Imports and cleanup can create duplicate <strong>Exact Dates</strong> trips or overlapping trips. Duplicates repeat the same stay; overlaps are conflicting records that share dates. Both need review before you trust the result.</p>
         </article>
 
         <article class="check-card">
           <p class="check-step">Check 6</p>
           <h3>Tracker scope, export period, or permissions</h3>
-          <p>If the issue is tracker-related, confirm the tracker countries, window, and notification permission if you expect alerts. If the issue is export-related, confirm the selected year or range first, because many "missing trip" reports are filtered exports rather than lost data.</p>
+          <p>If the issue is tracker-related, confirm the tracker countries, window, and notification permission if you expect alerts. If the issue is export-related, confirm the selected export period first, because many "missing trip" reports are filtered exports rather than lost data.</p>
         </article>
       </div>
 
@@ -810,8 +821,8 @@
           </div>
           <div class="article-list">
             <a class="article-card" href="/help/getting-started">
-              <h3>Getting Started with AtlasDays</h3>
-              <p>Set home country or no fixed residence, enter the first trips with the right precision, and add your first tracker in the right order.</p>
+              <h3>Getting Started</h3>
+              <p>Set <strong>Home Country</strong> or <strong>No fixed residence</strong>, enter the first trips with the right precision, and add your first tracker in the right order.</p>
             </a>
           </div>
         </section>
@@ -825,7 +836,7 @@
           <div class="article-list">
             <a class="article-card" href="/help/history-and-import">
               <h3>Trip Modes and Record Quality</h3>
-              <p>Choose Exact Dates, Year, Unknown, transit, and ongoing correctly so the record stays usable for counts and paperwork.</p>
+              <p>Choose Exact Dates, Year, Unknown, Transit, and ongoing correctly so the record stays usable for counts and paperwork.</p>
             </a>
             <a class="article-card" href="/help/csv-import">
               <h3>CSV Import</h3>
@@ -838,7 +849,7 @@
           <div>
             <p class="section-label">Trackers and limits</p>
             <h3>Check whether the tracker is configured to match the rule</h3>
-            <p class="topic-copy">Use this when the count needs to track a threshold or goal from the trips already in AtlasDays, or when tracker alerts and setup need review.</p>
+            <p class="topic-copy">Use this when the count needs to track a threshold or goal from the trips already in AtlasDays, or when tracker alerts or setup need review.</p>
           </div>
           <div class="article-list">
             <a class="article-card" href="/help/trackers-and-limits">
@@ -852,7 +863,7 @@
           <div>
             <p class="section-label">Import, export, and reports</p>
             <h3>Move the record in or out without losing context</h3>
-            <p class="topic-copy">Use this when you need a portable record, a reviewable output, or a cleaner import and export workflow. Selected periods explain many export questions, and CSV or PDF export currently require AtlasDays Pro.</p>
+            <p class="topic-copy">Use this when you need a portable record or a cleaner import and export workflow. Selected export periods explain many export questions, and CSV or PDF export currently require AtlasDays Pro.</p>
           </div>
           <div class="article-list">
             <a class="article-card" href="/help/export-and-reports">
@@ -866,7 +877,7 @@
           <div>
             <p class="section-label">Dashboard, map, and counting modes</p>
             <h3>Understand what AtlasDays is showing</h3>
-            <p class="topic-copy">Use this when the question is about how the stored trip record turns into totals, views, filters, and map output, including whether same-day crossings are being counted as expected.</p>
+            <p class="topic-copy">Use this when the question is about how the stored trip record turns into totals, views, filters, and map output, including same-day crossings.</p>
           </div>
           <div class="article-list">
             <a class="article-card" href="/help/dashboard-and-map">
@@ -878,14 +889,14 @@
 
         <section class="topic-card">
           <div>
-            <p class="section-label">Privacy, sync, and permissions</p>
+            <p class="section-label">Privacy, iCloud sync, and permissions</p>
             <h3>Check what stays local, what is optional, and what syncs</h3>
-            <p class="topic-copy">Use these docs before enabling Auto-Detect Trips, notifications, or iCloud sync, or when those features behave differently than expected. Start here for delayed trip suggestions, missed crossings, tracker alerts, reinstalls, and device changes.</p>
+            <p class="topic-copy">Use these docs before enabling Auto-Detect Trips, notifications, or iCloud sync, or when those features behave differently than expected. Start here for delayed suggestions, missed crossings, tracker alerts, reinstalls, and device changes.</p>
           </div>
           <div class="article-list">
             <a class="article-card" href="/help/privacy-location-and-sync">
               <h3>Privacy, Location, and Sync</h3>
-              <p>Understand the local-first privacy model, country-detection suggestions, and which permissions matter.</p>
+              <p>Understand the local-first privacy model, Auto-Detect Trips suggestions, and which permissions matter.</p>
             </a>
             <a class="article-card" href="/help/icloud-sync-and-restore">
               <h3>iCloud Sync and Restore</h3>
@@ -902,14 +913,14 @@
       <div class="section-heading">
         <p class="section-label">Still stuck?</p>
         <h2 class="section-title">Contact support from here</h2>
-        <p>Email support when you have already used the relevant help article and still have one specific AtlasDays behavior that does not make sense.</p>
+        <p>Email support after the relevant help article still leaves one specific AtlasDays behavior unresolved.</p>
       </div>
 
       <div class="contact-grid">
         <article class="contact-card primary">
           <h3>Email support</h3>
-          <p>Support is best for one clear operational question, one tracker that looks wrong, one export that seems filtered incorrectly, or one privacy or sync behavior that does not match the docs.</p>
-          <a class="cta-btn" href="#contact" id="support-email" data-email-user="atlasdays" data-email-domain="pm.me">Email support</a>
+          <p>Support is best for one clear operational question, one tracker that looks wrong, one export that seems filtered incorrectly, or one privacy or iCloud sync behavior that does not match the docs.</p>
+          <a class="cta-btn" href="#contact" id="support-email" data-email-user="atlasdays" data-email-domain="pm.me">Email AtlasDays support</a>
           <p class="contact-note">For privacy, send only the minimum personal data needed to explain the issue. Avoid passport scans, full document uploads, or anything more sensitive than necessary.</p>
         </article>
 
@@ -917,9 +928,9 @@
           <h3>Include these details</h3>
           <ul>
             <li>what you expected and what AtlasDays showed instead</li>
-            <li>the exact countries and dates involved, and whether the trips are Exact Dates, Year, Unknown, ongoing, transit, duplicate, or overlapping</li>
+            <li>the exact countries and dates involved, and whether the trips are Exact Dates, Year, Unknown, ongoing, Transit, duplicate, or overlapping</li>
             <li>the selected tracker window, dashboard period, or export period if the issue depends on filtered output</li>
-            <li>whether Auto-Detect Trips, notifications, or iCloud sync were enabled, and whether the app had been force-quit if the issue involved background behavior</li>
+            <li>whether Auto-Detect Trips, notification permission, or iCloud sync were enabled, and whether the app had been force-quit if the issue involved background behavior</li>
             <li>screenshots of the relevant tracker, timeline entries, import preview, export screen, or permissions state</li>
             <li>your iPhone model, iOS version, and AtlasDays app version if it looks like a bug</li>
           </ul>
@@ -927,7 +938,7 @@
 
         <article class="contact-card">
           <h3>Useful next stops</h3>
-          <p class="support-scope"><strong>Help covers product workflow.</strong> If the question is really about the underlying rule, go to <a href="/learn/" style="text-decoration: underline; text-underline-offset: 0.18em;">Learn</a> first.</p>
+          <p class="support-scope"><strong>Help covers product workflow.</strong> If the question is really about the underlying rule, go to <a class="text-link" href="/learn/">Learn</a> first.</p>
           <div class="mini-links">
             <a href="/learn/">Learn</a>
             <a href="/privacy">Privacy Policy</a>

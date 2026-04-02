@@ -4,15 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Trackers and Limits — AtlasDays Help</title>
-  <meta name="description" content="Set up AtlasDays trackers correctly: choose a preset, understand rolling versus per-stay versus yearly windows, and know when a tracker is safe to rely on." />
+  <meta name="description" content="Troubleshoot AtlasDays trackers: check country scope, time window, trip precision, Smart Alerts, and when a tracker result is safe to trust." />
   <meta property="og:title" content="Trackers and Limits — AtlasDays Help" />
-  <meta property="og:description" content="Set up AtlasDays trackers correctly: choose a preset, understand rolling versus per-stay versus yearly windows, and know when a tracker is safe to rely on." />
+  <meta property="og:description" content="Troubleshoot AtlasDays trackers: check country scope, time window, trip precision, Smart Alerts, and when a tracker result is safe to trust." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/help/trackers-and-limits" />
   <meta property="og:image" content="https://atlasdays.app/assets/home/home-hero-dashboard.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Trackers and Limits — AtlasDays Help" />
-  <meta name="twitter:description" content="Set up AtlasDays trackers correctly: choose a preset, understand rolling versus per-stay versus yearly windows, and know when a tracker is safe to rely on." />
+  <meta name="twitter:description" content="Troubleshoot AtlasDays trackers: check country scope, time window, trip precision, Smart Alerts, and when a tracker result is safe to trust." />
   <meta name="twitter:image" content="https://atlasdays.app/assets/home/home-hero-dashboard.png" />
   <link rel="canonical" href="https://atlasdays.app/help/trackers-and-limits" />
   <link rel="icon" type="image/png" href="../assets/brand/favicon_light.png?v=20260325a" media="(prefers-color-scheme: light)" />
@@ -140,7 +140,7 @@
         <span>AtlasDays</span>
       </a>
       <div style="display:flex;align-items:center;gap:16px">
-        <a href="/help/" style="color:var(--muted);font-size:0.92rem">Help</a>
+        <a href="/help/" style="color:var(--muted);font-size:0.92rem">Help Center</a>
         <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()">
           <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
           <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -151,11 +151,11 @@
 
   <article>
     <nav class="breadcrumb">
-      <a href="/">AtlasDays</a> / <a href="/help/">Help</a>
+      <a href="/">AtlasDays</a> / <a href="/help/">Help Center</a>
     </nav>
 
     <h1>Trackers and Limits</h1>
-    <p class="subtitle">Choose the right tracker, know what it is actually counting, and verify when the result is safe to rely on.</p>
+    <p class="subtitle">Troubleshoot a tracker that looks wrong, keep the setup aligned with your rule, and verify when the result is safe to trust.</p>
 
     <!-- ARTICLE_IMAGE:hero -->
     <!-- ARTICLE_IMAGE_RENDER_START:hero -->
@@ -165,17 +165,32 @@
     <!-- ARTICLE_IMAGE_RENDER_END:hero -->
 
     <h2>What This Page Helps You Do</h2>
-    <p>Use this page when you are adding a tracker for the first time, deciding which preset fits your use case, or checking whether a tracker result is trustworthy enough to act on.</p>
+    <p>Use this page when a tracker looks wrong, when you are not sure the setup matches the rule you care about, or when you want to know whether the result is safe enough to act on.</p>
     <p>By the end of this page, you should know:</p>
     <ul>
-      <li>which tracker type to choose in AtlasDays</li>
-      <li>what trips affect tracker math and what does not</li>
-      <li>what to verify before you rely on the result</li>
+      <li>why a tracker can look wrong even when the trip record seems close</li>
+      <li>which setup choices change the count and which do not</li>
+      <li>what to verify before you trust the result or expect Smart Alerts</li>
     </ul>
 
     <div class="callout">
-      <p><strong>A tracker is a counting rule, not your source of truth.</strong> The source of truth is still your trip record. If the trip record is incomplete, approximate, or unresolved, the tracker will reflect that.</p>
+      <p><strong>A tracker is a counting rule, not the record itself.</strong> AtlasDays derives it from your trip record, so incomplete, approximate, or unresolved trips will flow straight into the result.</p>
     </div>
+
+    <h2>When a Tracker Looks Wrong</h2>
+    <p>Most tracker mismatches come from a small number of setup or trip-record issues. Check these before you change anything else:</p>
+    <ul>
+      <li><strong>Country scope:</strong> confirm the tracker is pointed at the right country or preset set. A one-country tracker and a Schengen tracker can legitimately show different numbers for the same trip record.</li>
+      <li><strong>Window:</strong> confirm whether the question is <strong>Rolling</strong>, <strong>Per Stay</strong>, or <strong>Yearly</strong>. Those windows answer different questions.</li>
+      <li><strong>Mode:</strong> confirm whether the tracker should be <strong>Stay under</strong> or <strong>Reach target</strong>. The same exact days can look very different depending on whether AtlasDays is showing remaining days or progress toward a goal.</li>
+      <li><strong>Days vs nights:</strong> confirm whether the tracker is counting <strong>days</strong> or <strong>nights</strong>. From <strong>Dashboard</strong>, you can long-press the tracker card and switch between <strong>Count Nights</strong> and <strong>Count Days</strong>.</li>
+      <li><strong>ongoing trip:</strong> if a relevant trip is still open, AtlasDays uses today as the effective end date, so the number keeps moving until you close the trip.</li>
+      <li><strong>Trip precision:</strong> only trips saved as <strong>Exact Dates</strong> feed exact tracker math. <strong>Year</strong> and <strong>Unknown</strong> preserve history but do not add precise days.</li>
+      <li><strong>Transit:</strong> trips marked <strong>Transit</strong> count as <strong>0 days</strong>. If you actually entered the country, fix the trip instead of the tracker.</li>
+      <li><strong>Tracking from:</strong> for a <strong>Per Stay</strong> tracker, the <strong>Tracking from</strong> date must match the stay you are measuring.</li>
+      <li><strong>Yearly period:</strong> for a <strong>Yearly</strong> tracker, confirm the stored year or fiscal-year-style period before trusting the total.</li>
+      <li><strong>Smart Alerts:</strong> if the count looks right but no alert fired, check <strong>AtlasDays Pro</strong>, notification permission, and whether the tracker plus relevant trips are fully set up. Smart Alerts are not a substitute for reviewing the tracker.</li>
+    </ul>
 
     <h2>When to Add a Tracker</h2>
     <p>Add a tracker when you already know the question you want AtlasDays to answer, such as “How many Schengen days have I used?”, “How many days have I spent in this country this year?”, or “How long has this stay been since it started?”</p>
@@ -227,6 +242,7 @@
     <ul>
       <li><strong>Stay under</strong> is for limits. AtlasDays shows days remaining, at limit, or over limit.</li>
       <li><strong>Reach target</strong> is for goals. AtlasDays shows progress and how many more days you still need.</li>
+      <li>If the result feels conceptually backwards, check the mode before you change the trip record.</li>
     </ul>
     <figure class="atlasdays-screenshot">
       <img src="../assets/article-images/help/trackers-and-limits/screenshot-mode.webp" alt="Tracker mode selector showing Stay under and Reach target options" width="1206" height="2622" decoding="async" loading="lazy" />
@@ -234,14 +250,14 @@
 
     <h2>Choose the Time Window</h2>
     <h3>Rolling</h3>
-    <p>Use <strong>Rolling</strong> when the question is “How many days have I used in the last N days?” The window moves forward every day, so old days fall off automatically.</p>
+    <p>Use <strong>Rolling</strong> when the question is “How many days have I used in the last N days?” The window moves forward every day, so old days fall off automatically. If you expected a calendar-year or stay-based total, this is the wrong window.</p>
 
     <h3>Per Stay</h3>
-    <p>Use <strong>Per Stay</strong> when the question is about one stay rather than a whole year or rolling history. In AtlasDays, upper-limit per-stay trackers are anchored by a <strong>Tracking from</strong> date, so the stay has a clear start inside the app.</p>
+    <p>Use <strong>Per Stay</strong> when the question is about one stay rather than a whole year or rolling history. In AtlasDays, upper-limit per-stay trackers are anchored by a <strong>Tracking from</strong> date, so the stay has a clear start inside the app. If that date is off, the tracker will be off.</p>
     <p>This works best when the stay you care about is represented cleanly in the trip record. If that stay is split across messy or approximate entries, fix the trips first.</p>
 
     <h3>Yearly</h3>
-    <p>Use <strong>Yearly</strong> when the question is “How many days in this year-style period?” AtlasDays supports:</p>
+    <p>Use <strong>Yearly</strong> when the question is “How many days in this year-style period?” If the total looks wrong, first confirm that the stored year or fiscal-year-style period is the one you intended. AtlasDays supports:</p>
     <ul>
       <li>the current calendar year</li>
       <li>a specific stored year</li>
@@ -251,63 +267,84 @@
       <img src="../assets/article-images/help/trackers-and-limits/screenshot-window.webp" alt="Tracker window selector showing Rolling, Per Stay, and Yearly options" width="1206" height="2622" decoding="async" loading="lazy" />
     </figure>
 
+    <h2>Days or Nights</h2>
+    <p>Trackers can count either <strong>days</strong> or <strong>nights</strong>. If the number looks off by one, check this before you edit the trip record.</p>
+    <ul>
+      <li><strong>Days</strong> are dual-inclusive. A trip from January 1 to January 3 counts as <strong>3 days</strong>.</li>
+      <li><strong>Nights</strong> are midnight crossings. The same trip counts as <strong>2 nights</strong>.</li>
+      <li>From <strong>Dashboard</strong>, long-press the tracker card to switch between <strong>Count Nights</strong> and <strong>Count Days</strong> for that tracker.</li>
+    </ul>
+
     <h2>What Counts Toward Tracker Math</h2>
     <ul>
-      <li><strong>Exact-date, non-transit trips</strong> inside the tracker’s selected country set count.</li>
-      <li><strong>Arrival and departure days</strong> both count for exact-date trips.</li>
-      <li><strong>Overlapping exact days</strong> are counted once, not twice.</li>
-      <li><strong>Ongoing trips</strong> use today as the effective end date, so the number changes day by day until you close the trip.</li>
+      <li><strong>Exact Dates</strong> trips inside the tracker’s selected country set count, as long as they are not marked <strong>Transit</strong>.</li>
+      <li><strong>Arrival and departure days</strong> both count for <strong>Exact Dates</strong> trips.</li>
+      <li><strong>Shared dates from Exact Dates trips</strong> are counted once, not twice, even if more than one tracked trip touches that date.</li>
+      <li><strong>ongoing trips</strong> use today as the effective end date, so the number changes day by day until you close the trip.</li>
     </ul>
 
     <h2>What Does Not Count Toward Tracker Math</h2>
     <ul>
-      <li><strong>Year-only</strong> trips do not feed exact tracker day totals.</li>
-      <li><strong>Unknown-date</strong> trips do not feed exact tracker day totals.</li>
-      <li><strong>Transit</strong> trips count as 0 days.</li>
+      <li><strong>Year</strong> trips stay in your history but do not feed exact tracker day totals.</li>
+      <li><strong>Unknown</strong> trips stay in your history but do not feed exact tracker day totals.</li>
+      <li><strong>Transit</strong> trips count as <strong>0 days</strong>.</li>
       <li><strong>Home Country</strong> does not change tracker math. It affects Days Abroad, not trackers.</li>
-      <li><strong>Country Count</strong> mode does not change tracker math. It only affects visited-country totals elsewhere in the app.</li>
+      <li><strong>Visited-country counting elsewhere in the app</strong> does not change tracker math. It only affects visited-country totals.</li>
     </ul>
 
     <h2>When a Tracker Is Trustworthy</h2>
-    <p>A tracker is useful as soon as it is configured, but it is only trustworthy when the trips that matter to that question are clean enough to support the answer.</p>
+    <p>You can act on a tracker when both the rule and the trips behind it match the real-world question. Use this checklist before you rely on the number:</p>
     <ul>
-      <li>the relevant trips are saved as <strong>Exact Dates</strong></li>
       <li>the tracker is pointed at the right <strong>country set</strong></li>
+      <li>the tracker is using the right <strong>mode</strong>: <strong>Stay under</strong> for a limit or <strong>Reach target</strong> for a goal</li>
+      <li>the tracker is using the right <strong>window</strong>: <strong>Rolling</strong>, <strong>Per Stay</strong>, or <strong>Yearly</strong></li>
+      <li>the tracker is counting the right unit: <strong>days</strong> or <strong>nights</strong></li>
+      <li>for <strong>Per Stay</strong>, the <strong>Tracking from</strong> date matches the actual start of the stay you care about</li>
+      <li>for <strong>Yearly</strong>, the stored <strong>year</strong> or <strong>fiscal-year-style period</strong> matches the period you mean</li>
+      <li>the relevant trips are present and saved as <strong>Exact Dates</strong></li>
+      <li>the trip fields that matter most are correct: <strong>country</strong>, <strong>start date</strong>, <strong>end date</strong>, <strong>Transit</strong>, and whether the trip is still ongoing</li>
       <li>any <strong>date conflicts</strong> in Timeline are resolved</li>
-      <li>the <strong>Tracking from</strong> date is correct for per-stay trackers</li>
-      <li>the <strong>year</strong> or <strong>fiscal-year</strong> setting is correct for yearly trackers</li>
     </ul>
 
     <div class="callout">
-      <p><strong>If you are still cleaning up history, treat the tracker as provisional.</strong> AtlasDays will still count what it can, but the result is only as defensible as the exact trips behind it.</p>
+      <p><strong>Treat the number as provisional if any relevant trip is still Year, Unknown, incorrectly marked Transit, or still ongoing when you expected a fixed total.</strong> AtlasDays will still count what it can, but you should not use that result as final until the trips behind it are exact and resolved.</p>
     </div>
 
     <h2>Smart Alerts and Multiple Trackers</h2>
     <p>AtlasDays supports multiple concurrent trackers. Dashboard shows one tracker card if you only have one, and a swipeable set when you have several.</p>
     <ul>
       <li><strong>Free</strong> includes one tracker.</li>
-      <li><strong>Pro</strong> unlocks unlimited trackers.</li>
-      <li><strong>Smart Alerts</strong> are also a Pro feature and require notification permission.</li>
+      <li><strong>AtlasDays Pro</strong> unlocks unlimited trackers.</li>
+      <li><strong>Smart Alerts</strong> are an <strong>AtlasDays Pro</strong> feature and require notification permission.</li>
     </ul>
     <p>For upper-limit trackers, AtlasDays can alert at <strong>7 days remaining</strong>, <strong>1 day remaining</strong>, and <strong>at limit</strong>. For target trackers, it can alert when the <strong>target is reached</strong>. These alerts are recalculated when your trip data changes.</p>
+    <h3>Why Smart Alerts May Not Fire</h3>
+    <ul>
+      <li><strong>AtlasDays Pro:</strong> Smart Alerts are not available on the free plan.</li>
+      <li><strong>Notification permission:</strong> AtlasDays needs notification permission on that device.</li>
+      <li><strong>Tracker setup:</strong> the tracker still needs the right country set, mode, and window, and the relevant trips need to be present in the record.</li>
+      <li><strong>No matching alert point yet:</strong> do not expect Smart Alerts until the tracker reaches one of the supported alert states for its mode.</li>
+    </ul>
+    <p>Missing Smart Alerts do not prove the tracker is wrong, and delivered Smart Alerts do not prove the tracker is configured correctly. Review the tracker itself before you rely on it.</p>
 
     <h2>How Trackers Relate to Dashboard and Exports</h2>
     <ul>
       <li><strong>Dashboard tracker cards</strong> show the live tracker state from the tracker’s own rules and window.</li>
-      <li><strong>Tracker Detail</strong> lets you inspect the tracker more closely, including the trips currently affecting it.</li>
+      <li><strong>Tracker Detail</strong> lets you inspect the trips and per-country totals currently affecting the tracker.</li>
+      <li><strong>Do not assume the country rows should add up exactly to the tracker total.</strong> If the same calendar date appears in more than one tracked trip or country row, the tracker total still counts that shared date once.</li>
       <li><strong>CSV export</strong> exports trips, not tracker definitions.</li>
       <li><strong>PDF export</strong> can include a tracker summary, but the export is still downstream of the same trip quality and window choices.</li>
     </ul>
-    <p>If you want to check raw trip output before trusting a tracker, use <a href="/help/export-and-reports">Export and Reports</a> and <a href="/help/dashboard-and-map">Dashboard and Map</a> together.</p>
+    <p>If you want to check the raw trip output before trusting a tracker, use <a href="/help/dashboard-and-map">Dashboard and Map</a> to inspect the live record and <a href="/help/export-and-reports">Export and Reports</a> to inspect the exported trip set.</p>
 
     <div class="cta-box">
       <h3>Where to go next</h3>
-      <p><a href="/help/getting-started">Getting Started</a> shows when trackers fit into initial AtlasDays setup.</p>
-      <p><a href="/help/history-and-import">Trip Modes and Record Quality</a> explains how exact, approximate, transit, and ongoing trips affect tracker accuracy.</p>
-      <p><a href="/help/csv-import">CSV Import</a> helps you bring exact trip history into AtlasDays before you rely on tracker numbers.</p>
-      <p><a href="/help/export-and-reports">Export and Reports</a> explains how tracker-related output fits into CSV and PDF exports.</p>
-      <p><a href="/help/dashboard-and-map">Dashboard and Map</a> explains how tracker cards, totals, and dashboard review fit together.</p>
-      <p>If you need the rule itself rather than the app workflow, use <a href="/learn/schengen-90-180-rule">Learn</a> for broader explainers like Schengen 90/180.</p>
+      <p><a href="/help/history-and-import">Trip Modes and Record Quality</a> explains how <strong>Exact Dates</strong>, <strong>Year</strong>, <strong>Unknown</strong>, <strong>Transit</strong>, and ongoing trips change tracker accuracy.</p>
+      <p><a href="/help/dashboard-and-map">Dashboard and Map</a> shows how to compare the tracker card with the trips and totals currently driving it.</p>
+      <p><a href="/help/privacy-location-and-sync">Privacy, Location, and Sync</a> covers notification permission, <strong>Auto-Detect Trips</strong>, and <strong>iCloud sync</strong> when alerts or background suggestions are part of the confusion.</p>
+      <p><a href="/help/export-and-reports">Export and Reports</a> helps you inspect the underlying trip output before you rely on or share tracker-related numbers.</p>
+      <p><a href="/help/getting-started">Getting Started</a> is the simpler setup walkthrough if you are still choosing your first tracker.</p>
+      <p>If the real question is the underlying travel rule rather than AtlasDays behavior, use <a href="/learn/schengen-90-180-rule">Learn</a>.</p>
     </div>
   </article>
 

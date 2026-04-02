@@ -4,15 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dashboard and Map — AtlasDays Help</title>
-  <meta name="description" content="How the AtlasDays dashboard works: stats, trackers, period filters, interactive map, day counting, and share cards." />
+  <meta name="description" content="Troubleshoot AtlasDays dashboard totals and map output: selected period, Days Abroad, Transit, ongoing trips, and when the trip record needs fixing." />
   <meta property="og:title" content="Dashboard and Map — AtlasDays Help" />
-  <meta property="og:description" content="How the AtlasDays dashboard works: stats, trackers, period filters, interactive map, day counting, and share cards." />
+  <meta property="og:description" content="Troubleshoot AtlasDays dashboard totals and map output: selected period, Days Abroad, Transit, ongoing trips, and when the trip record needs fixing." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/help/dashboard-and-map" />
   <meta property="og:image" content="https://atlasdays.app/assets/home/home-proof-map-country.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Dashboard and Map — AtlasDays Help" />
-  <meta name="twitter:description" content="How the AtlasDays dashboard works: stats, trackers, period filters, interactive map, day counting, and share cards." />
+  <meta name="twitter:description" content="Troubleshoot AtlasDays dashboard totals and map output: selected period, Days Abroad, Transit, ongoing trips, and when the trip record needs fixing." />
   <meta name="twitter:image" content="https://atlasdays.app/assets/home/home-proof-map-country.png" />
   <link rel="canonical" href="https://atlasdays.app/help/dashboard-and-map" />
   <link rel="icon" type="image/png" href="../assets/brand/favicon_light.png?v=20260325a" media="(prefers-color-scheme: light)" />
@@ -30,7 +30,7 @@
     h1 { font-size:clamp(1.8rem, 4vw, 2.6rem); line-height:1.1; letter-spacing:-0.03em; margin:0 0 12px; } .subtitle { color:var(--muted); font-size:1.08rem; margin:0 0 24px; }
     h2 { font-size:1.4rem; letter-spacing:-0.02em; margin:36px 0 12px; } h3 { font-size:1.1rem; margin:28px 0 8px; }
     p, li { color:var(--muted); font-size:1rem; } p { margin:0 0 16px; } ul { padding-left:20px; margin:0 0 16px; } li { margin:6px 0; } strong { color:var(--text); }
-    .callout, .cta-box { padding:20px 24px; border-radius:16px; margin:28px 0; } .callout { background:var(--blue-soft); border:1px solid rgba(22,146,255,0.18); } .cta-box { background:var(--bg-card); border:1px solid var(--line); } .cta-btn { display:inline-flex; align-items:center; padding:12px 24px; background:var(--blue); color:white; border-radius:14px; font-weight:650; text-decoration:none; }
+    .callout, .cta-box { padding:20px 24px; border-radius:16px; margin:28px 0; } .callout { background:var(--blue-soft); border:1px solid rgba(22,146,255,0.18); } .cta-box { background:var(--bg-card); border:1px solid var(--line); }
     .theme-toggle { background:none; border:1px solid var(--line); border-radius:10px; color:var(--muted); cursor:pointer; width:36px; height:36px; display:inline-grid; place-items:center; padding:0; } .theme-toggle:hover { border-color:var(--blue); color:var(--text); }
     .icon-moon, .logo-light { display:none; } .logo-dark { display:block; }
     @media (prefers-color-scheme: light) { .icon-sun, .logo-dark { display:none; } .icon-moon, .logo-light { display:block; } }
@@ -118,11 +118,11 @@
   <!-- ARTICLE_IMAGE_STYLES_END -->
 </head>
 <body>
-  <header class="top-bar"><div class="top-bar-inner"><a class="brand" href="/"><img class="logo-dark" src="../assets/brand/logo_dark.png?v=20260325a" alt="AtlasDays logo" width="1024" height="1024" /><img class="logo-light" src="../assets/brand/logo_light.png?v=20260325a" alt="AtlasDays logo" width="1024" height="1024" /><span>AtlasDays</span></a><div style="display:flex;align-items:center;gap:16px"><a href="/help/" style="color:var(--muted);font-size:0.92rem">Help</a><button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()"><svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></div></div></header>
+  <header class="top-bar"><div class="top-bar-inner"><a class="brand" href="/"><img class="logo-dark" src="../assets/brand/logo_dark.png?v=20260325a" alt="AtlasDays logo" width="1024" height="1024" /><img class="logo-light" src="../assets/brand/logo_light.png?v=20260325a" alt="AtlasDays logo" width="1024" height="1024" /><span>AtlasDays</span></a><div style="display:flex;align-items:center;gap:16px"><a href="/help/" style="color:var(--muted);font-size:0.92rem">Help Center</a><button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()"><svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></div></div></header>
   <article>
-    <nav class="breadcrumb"><a href="/">AtlasDays</a> / <a href="/help/">Help</a></nav>
+    <nav class="breadcrumb"><a href="/">AtlasDays</a> / <a href="/help/">Help Center</a></nav>
     <h1>Dashboard and Map</h1>
-    <p class="subtitle">How to read the dashboard, change periods, understand the map, and use the share features.</p>
+    <p class="subtitle">Check what the dashboard is summarizing, what the selected period changes, and why totals or map highlights can look wrong.</p>
 
     <!-- ARTICLE_IMAGE:hero -->
     <!-- ARTICLE_IMAGE_RENDER_START:hero -->
@@ -131,59 +131,110 @@
     </figure>
     <!-- ARTICLE_IMAGE_RENDER_END:hero -->
 
-    <h2>What the dashboard is for</h2>
-    <p>The dashboard turns your trip history into a period-based summary. It is the place to answer questions like: how many countries have I visited this year, how many days have I spent abroad, and what does that look like on the map?</p>
-
-    <h2>The main dashboard stats</h2>
-    <p>The four stat tiles at the top are tappable — each opens a detail sheet with the full breakdown.</p>
+    <h2>What This Page Helps You Do</h2>
+    <p>Use this page when totals, map highlights, or period filters do not match what you expected, and you need to work out whether the issue is in the dashboard or in the trip record behind it.</p>
     <ul>
-      <li><strong>Countries:</strong> how many distinct countries you visited in the period. The percentage denominator depends on your counting mode in Settings: UN 195 (standard member states), UN 195+2 (adds Kosovo and Taiwan), or All Places (includes territories and dependencies like Hong Kong, Guam, and Aruba). Tap to see the full country list with days per country.</li>
-      <li><strong>Trips:</strong> how many trips fall inside the selected period. Tap to see the list.</li>
-      <li><strong>Days Abroad:</strong> total days spent outside your home country. If you chose no fixed residence, this counts all days with a recorded trip. Tap to see the breakdown between days in tracker-relevant countries and days elsewhere.</li>
-      <li><strong>Continents:</strong> how many continents your trips span. Tap to see countries grouped by continent.</li>
+      <li>what the selected <strong>Year</strong>, <strong>All Time</strong>, or <strong>Range</strong> actually changes</li>
+      <li>why <strong>Days Abroad</strong>, countries, trips, and tracker cards do not all answer the same question</li>
+      <li>when the right fix is in the trip record or settings instead of on the dashboard</li>
     </ul>
 
-    <h2>Trackers on the dashboard</h2>
-    <p>If you have trackers set up, they appear as cards below the stats. Each card shows the tracker name, current day count, threshold, and a progress bar. The bar shifts from your accent color to orange past two-thirds, and to red past five-sixths — so you can tell at a glance how close you are to a limit or a goal.</p>
-    <p>For upper-limit trackers, the card shows "X days remaining" or "Over by Y days". For target trackers, it shows "X days needed" or "Target reached". You can reorder tracker cards by dragging, and collapse or expand the whole tracker section.</p>
+    <h2>When the Dashboard Looks Wrong</h2>
+    <p>Most dashboard confusion comes from a small number of causes. Check these first before assuming the math is broken:</p>
+    <ul>
+      <li><strong>Selected period:</strong> the current <strong>Year</strong>, <strong>All Time</strong>, or <strong>Range</strong> changes every stat, the map, the detail sheets, and the share cards.</li>
+      <li><strong>Current trip record:</strong> the dashboard summarizes the trip record you have now. It is not reading from a separate hidden data layer.</li>
+      <li><strong>Transit:</strong> <strong>Transit</strong> can still appear on the map or in country details, but it does not count as a visited stay and adds <strong>0 days</strong>.</li>
+      <li><strong>ongoing trips:</strong> an <strong>ongoing</strong> trip uses today as its effective end date, so totals keep moving until you close it.</li>
+      <li><strong>Same-day crossings:</strong> one date can legitimately belong to two countries if you left one and entered another on the same day. That can make countries and trips move in a way that feels surprising.</li>
+      <li><strong>Trip precision:</strong> <strong>Exact Dates</strong> drive precise day totals. <strong>Year</strong> and <strong>Unknown</strong> preserve history, but narrower filters cannot always place them.</li>
+      <li><strong>Record quality:</strong> if the trip record is messy, duplicated, overlapping, or wrongly marked as <strong>Transit</strong>, the dashboard will look messy too.</li>
+    </ul>
 
-    <h2>Changing the period</h2>
-    <p>The dashboard has two period modes. <strong>Year mode</strong> lets you pick a specific year or All Time. <strong>Custom range mode</strong> lets you choose a window like the last 7, 30, 90, 180, or 365 days, or set any start and end date manually. Switch between them using the control at the top of the dashboard.</p>
-    <p>This matters because the same trip history can answer different questions depending on the time window. A Schengen tracker cares about the last 180 days. A tax question usually cares about a calendar year.</p>
+    <h2>What the Dashboard Is For</h2>
+    <p>The dashboard turns your current trip record into a period-based summary. It helps you answer questions like how many countries you visited in a period, how many unique days you were abroad, and how that record looks on the map.</p>
+
+    <div class="callout">
+      <p><strong>The dashboard summarizes the record you already have.</strong> If the number looks wrong, first check the selected period and the trip entries behind it.</p>
+    </div>
+
+    <h2>The Main Dashboard Stats</h2>
+    <p>The four stat tiles at the top are tappable, and each one opens the trips or country rows behind the number.</p>
+    <ul>
+      <li><strong>Countries:</strong> how many distinct visited countries fall inside the selected period. The denominator depends on your visited-country counting mode in Settings: <strong>UN 195</strong>, <strong>UN 195+2</strong>, or <strong>All Places</strong>. <strong>Transit</strong>-only countries appear separately on the map, but they do not count as visited countries.</li>
+      <li><strong>Trips:</strong> how many non-<strong>Transit</strong> trips fall inside the selected period. <strong>All Time</strong> can include trips stored as <strong>Year</strong> or <strong>Unknown</strong>. A specific <strong>Year</strong> can include matching <strong>Year</strong> entries. <strong>Range</strong> is the strictest view and focuses on trips that can be placed inside that exact window.</li>
+      <li><strong>Days Abroad:</strong> total unique exact days outside your <strong>Home Country</strong> in the selected period. If you chose <strong>No fixed residence</strong>, all recorded days from <strong>Exact Dates</strong> trips count as abroad. This is not the same thing as tracker days, because trackers use their own country scope, time window, and optional night counting.</li>
+      <li><strong>Continents:</strong> how many continents are represented by the visited countries in the selected period. If countries drop out because of the current period or counting mode, continents can change too.</li>
+    </ul>
+
+    <h2>Trackers on the Dashboard</h2>
+    <p>If you have trackers set up, they appear as cards below the stats. Each card shows the tracker name, current total, threshold, and progress state.</p>
+    <p>Those cards use the same underlying trip record, but not the same question as <strong>Days Abroad</strong>. A tracker can use a different country scope, a rolling or stay-based window, and either day or night counting, so its number does not need to match the dashboard total.</p>
+    <p>You can reorder tracker cards by dragging, and collapse or expand the whole tracker section. If the tracker logic itself looks wrong, use <a href="/help/trackers-and-limits">Trackers and Limits</a>.</p>
+
+    <h2>Changing the Period</h2>
+    <p>The selected period changes what appears everywhere on the dashboard. When you switch periods, you are not changing one tile. You are changing the whole summary.</p>
+    <p><strong>Year</strong> mode lets you pick a specific year or <strong>All Time</strong>. <strong>Range</strong> mode lets you choose a window like the last 7, 30, 90, 180, or 365 days, or set a manual start and end date. Use <strong>Year</strong> when the question is about a calendar year. Use <strong>Range</strong> when the question is about a rolling or custom window.</p>
+    <p>Approximate trips do not behave the same way in every period:</p>
+    <ul>
+      <li><strong>All Time</strong> can show trips saved as <strong>Year</strong> or <strong>Unknown</strong>.</li>
+      <li>A specific <strong>Year</strong> can show matching <strong>Year</strong> entries.</li>
+      <li><strong>Range</strong> is best for <strong>Exact Dates</strong> analysis. A <strong>Year</strong> entry appears there only when the selected range fully covers that year. <strong>Unknown</strong> entries do not land inside a specific <strong>Year</strong> or <strong>Range</strong>.</li>
+    </ul>
+    <p>If countries, trips, or totals appear or disappear after switching filters, verify the selected period before assuming the dashboard lost data.</p>
     <figure class="atlasdays-screenshot">
       <img src="../assets/article-images/help/dashboard-and-map/screenshot-period-selector.webp" alt="Dashboard period selector showing Year mode and Custom range mode" width="1206" height="2622" decoding="async" loading="lazy" />
     </figure>
 
-    <h2>Using the map</h2>
+    <h2>Using the Map</h2>
     <!-- ARTICLE_IMAGE:body-1 -->
     <!-- ARTICLE_IMAGE_RENDER_START:body-1 -->
     <figure class="atlasdays-article-image is-body" data-article-image-slot="body-1">
       <img src="../assets/article-images/help/dashboard-and-map/body-1.webp" alt="Supporting illustration for Dashboard and Map, focused on using the map in the AtlasDays visual style." width="1536" height="1024" decoding="async" sizes="(max-width: 760px) calc(100vw - 40px), 720px" loading="lazy" />
     </figure>
     <!-- ARTICLE_IMAGE_RENDER_END:body-1 -->
-    <p>The dashboard shows a mini world map. Tapping it opens the full-screen interactive map where you can tap any country to see its trip details.</p>
-    <p>Visited countries are highlighted in your chosen accent color. Countries you only transited through (airport layovers marked as transit) appear in a separate color so you can tell the difference. Very small countries like Vatican City, Singapore, and Malta show up as dot markers since their territory is too small to see otherwise.</p>
-    <p>The map reflects the currently selected period, so switching from "2024" to "All Time" changes which countries are highlighted.</p>
+    <p>The dashboard shows a mini world map. Tapping it opens the full-screen interactive map where you can tap any country to inspect the trips behind that highlight.</p>
+    <p>The map reflects the selected period and the same trip record behind the stats. It is a visualization of that record, not a separate calculation layer.</p>
+    <p>Visited countries are highlighted in your chosen accent color. <strong>Transit</strong> places appear differently so you can tell them apart from entered-country visits. Very small countries like Vatican City, Singapore, and Malta can appear as dot markers because their territory is too small to see reliably at map scale.</p>
+    <p>If the map changes when you switch from <strong>2024</strong> to <strong>All Time</strong>, that is expected. The map follows the current filter exactly.</p>
 
     <div class="callout">
-      <p><strong>Tip:</strong> if the map feels like decoration at first glance, tap a country. The detail sheet shows every trip to that country, days spent, and whether any of those trips overlap with your trackers.</p>
+      <p><strong>If a country highlight looks wrong, tap it.</strong> The detail sheet shows the trips behind that country, including <strong>Transit</strong> badges and exact day counts where available.</p>
     </div>
 
-    <h2>How day counting works</h2>
-    <p>A detail worth knowing: AtlasDays counts both the arrival day and the departure day. A trip from January 1 to January 3 is 3 days, not 2. This matches how most immigration authorities count presence.</p>
-    <p>If you have overlapping trips to the same country, shared days are only counted once. Two trips that both cover January 5 do not produce 2 days for that date — they produce 1. Ongoing trips (no end date) use today as the effective end for counting purposes.</p>
+    <h2>How Day Counting Works</h2>
+    <p>AtlasDays counts both the arrival day and the departure day. A trip from January 1 to January 3 is <strong>3 days</strong>, not 2.</p>
+    <p>Shared dates from <strong>Exact Dates</strong> trips are not double-counted in unique dashboard day totals. If you have overlapping trips, or a legitimate same-day border crossing, one calendar date still counts once toward <strong>Days Abroad</strong>. An <strong>ongoing</strong> trip uses today as the effective end date until you close it.</p>
+    <p>That is why some results can feel unintuitive while still being correct. Two same-day border crossings can increase <strong>Trips</strong> or the country list, while <strong>Days Abroad</strong> only moves by one unique day for that date.</p>
+    <p>It also means country-by-country day rows can add up to more than <strong>Days Abroad</strong> when the same exact date legitimately appears in two countries.</p>
+    <p><strong>Exact Dates</strong> drive precise day totals. <strong>Year</strong> and <strong>Unknown</strong> can still preserve history and affect broader summaries, but they do not create exact day math.</p>
 
-    <h2>Share cards</h2>
+    <h2>When to Fix the Record Instead</h2>
+    <p>The right fix is in the record or settings, not on the dashboard, when any of these are true:</p>
+    <ul>
+      <li>a trip is saved as <strong>Year</strong> or <strong>Unknown</strong> when you actually know the <strong>Exact Dates</strong></li>
+      <li><strong>Transit</strong> is marked incorrectly</li>
+      <li>there are duplicate or overlapping entries</li>
+      <li>an <strong>ongoing</strong> trip should already be closed</li>
+      <li><strong>Home Country</strong> is wrong, so <strong>Days Abroad</strong> is solving the wrong question</li>
+      <li>a recent crossing never became a trip because <strong>Auto-Detect Trips</strong> was delayed, missed, or not reviewed</li>
+    </ul>
+    <p>If one of those applies, clean up the trip record first. The dashboard will update from that record.</p>
+
+    <h2>Share Cards</h2>
     <p>AtlasDays can generate shareable cards from your dashboard data, including a map snapshot and your key stats. You can swipe through a carousel of card styles and toggle each card between light and dark appearance independently from your system theme. Save to Photos or share directly.</p>
-    <p>The cards are rendered from your actual trip data for the selected period, not composed manually.</p>
+    <p>The cards are rendered from your actual trip data for the selected period. If the card looks wrong, the thing to verify is still the selected period and the trip record behind the dashboard.</p>
     <figure class="atlasdays-screenshot">
       <img src="../assets/article-images/help/dashboard-and-map/screenshot-share-cards.webp" alt="Share cards carousel showing a card with map snapshot and stats" width="1206" height="2622" decoding="async" loading="lazy" />
     </figure>
 
     <div class="cta-box">
-      <h3>Related help</h3>
-      <p><a href="/help/trackers-and-limits">Trackers and Limits</a> explains what the dashboard is summarizing. <a href="/help/history-and-import">Trip Modes and Record Quality</a> explains how to improve the underlying data.</p>
-      <p><a class="cta-btn" href="/#waitlist">Join the waitlist</a></p>
+      <h3>Where to go next</h3>
+      <p><a href="/help/history-and-import">Trip Modes and Record Quality</a> explains how <strong>Exact Dates</strong>, <strong>Year</strong>, <strong>Unknown</strong>, <strong>Transit</strong>, duplicates, overlaps, and <strong>ongoing</strong> trips affect the record behind the dashboard.</p>
+      <p><a href="/help/trackers-and-limits">Trackers and Limits</a> explains why a tracker total can differ from <strong>Days Abroad</strong> or other dashboard summaries.</p>
+      <p><a href="/help/export-and-reports">Export and Reports</a> helps you inspect the selected period outside the dashboard when you want a file-based review.</p>
+      <p><a href="/help/getting-started">Getting Started</a> is the right next page if your <strong>Home Country</strong> or counting preferences were never set up clearly.</p>
+      <p><a href="/help/privacy-location-and-sync">Privacy, Location, and Sync</a> is relevant when a recent trip is missing because <strong>Auto-Detect Trips</strong>, notification permission, or local device behavior did not work as expected.</p>
     </div>
   </article>
   <script>function toggleTheme(){var html=document.documentElement;var current=html.getAttribute('data-theme');var isDark;if(current)isDark=current==='dark';else isDark=window.matchMedia('(prefers-color-scheme: dark)').matches;var next=isDark?'light':'dark';html.setAttribute('data-theme',next);localStorage.setItem('theme',next);}</script>
