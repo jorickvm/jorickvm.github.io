@@ -52,6 +52,8 @@
     html[data-theme="dark"] .icon-sun, html[data-theme="dark"] .logo-dark { display:block; } html[data-theme="dark"] .icon-moon, html[data-theme="dark"] .logo-light { display:none; } html[data-theme="light"] .icon-sun, html[data-theme="light"] .logo-dark { display:none; } html[data-theme="light"] .icon-moon, html[data-theme="light"] .logo-light { display:block; }
     html[data-theme="dark"] { --bg:#0a0b0d; --bg-card:rgba(255,255,255,0.05); --text:#f4f7fb; --muted:#b2b9c5; --muted-2:#8790a0; --line:rgba(255,255,255,0.10); --blue-soft:rgba(22,146,255,0.12); }
     html[data-theme="light"] { --bg:#f6f8fc; --bg-card:rgba(255,255,255,0.88); --text:#0d1422; --muted:#526075; --muted-2:#6c788b; --line:rgba(12,22,40,0.09); --blue-soft:rgba(22,146,255,0.08); }
+    .atlasdays-screenshot { margin:24px auto 28px; max-width:320px; display:block; }
+    .atlasdays-screenshot img { display:block; width:100%; height:auto; border-radius:22px; border:1px solid var(--line); box-shadow:0 12px 32px rgba(0,0,0,0.18); }
   </style>
 </head>
 <body>
@@ -127,6 +129,9 @@
     </ul>
     <p>If you export a limited <strong>Year</strong> or <strong>Range</strong>, AtlasDays only includes trips it can place in that period. Filtered exports can legitimately omit trips that fall outside the selected period or cannot be placed there.</p>
     <p><strong>Unknown</strong> trips only appear in <strong>All Time</strong> exports because they have no dates to place in a filtered period. If a trip seems missing, verify <strong>All Time</strong> versus the selected <strong>Year</strong> or <strong>Range</strong> before assuming a bug.</p>
+    <figure class="atlasdays-screenshot">
+      <img src="../assets/article-images/help/export-and-reports/screenshot-export-options.webp" alt="Export screen showing All Time, Year, and Range period options with CSV and PDF export buttons" width="1206" height="2622" decoding="async" loading="lazy" />
+    </figure>
 
     <h2>CSV Export: What It Is For</h2>
     <p><strong>CSV export</strong> is the trip-data format. It is best when you want to inspect the record in a spreadsheet, keep a portable copy, transfer it elsewhere, or re-import the same trip record later.</p>
@@ -170,6 +175,9 @@
     </ul>
     <p><strong>PDF export</strong> is not raw trip data and it is not an independent cross-check. It is a report built from the same selected period and trip record you already have in the app.</p>
     <p>If you turn on the disclaimer option, the PDF states that the report is based on user-entered data and is not an official travel record.</p>
+    <figure class="atlasdays-screenshot">
+      <img src="../assets/article-images/help/export-and-reports/screenshot-pdf-export.webp" alt="PDF export preview showing a multi-page AtlasDays travel report with a trip table and summary counts" width="1206" height="2622" decoding="async" loading="lazy" />
+    </figure>
 
     <h2>What Export Does Not Do</h2>
     <ul>

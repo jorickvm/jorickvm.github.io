@@ -36,6 +36,8 @@
     html[data-theme="dark"] .icon-sun, html[data-theme="dark"] .logo-dark { display:block; } html[data-theme="dark"] .icon-moon, html[data-theme="dark"] .logo-light { display:none; } html[data-theme="light"] .icon-sun, html[data-theme="light"] .logo-dark { display:none; } html[data-theme="light"] .icon-moon, html[data-theme="light"] .logo-light { display:block; }
     html[data-theme="dark"] { --bg:#0a0b0d; --bg-card:rgba(255,255,255,0.05); --text:#f4f7fb; --muted:#b2b9c5; --muted-2:#8790a0; --line:rgba(255,255,255,0.10); --blue-soft:rgba(22,146,255,0.12); }
     html[data-theme="light"] { --bg:#f6f8fc; --bg-card:rgba(255,255,255,0.88); --text:#0d1422; --muted:#526075; --muted-2:#6c788b; --line:rgba(12,22,40,0.09); --blue-soft:rgba(22,146,255,0.08); }
+    .atlasdays-screenshot { margin:24px auto 28px; max-width:320px; display:block; }
+    .atlasdays-screenshot img { display:block; width:100%; height:auto; border-radius:22px; border:1px solid var(--line); box-shadow:0 12px 32px rgba(0,0,0,0.18); }
   </style>
 <!-- ARTICLE_IMAGE_STYLES_START -->
   <style id="atlasdays-article-image-styles">
@@ -156,6 +158,9 @@
     <p>Your trip record and tracker data live in the app's local data store on your device by default. Manual trip entry, dashboard review, tracker calculations, CSV import, and export all work without an AtlasDays account.</p>
     <p>AtlasDays also keeps some device-level app state locally, such as pending trip suggestions, so the app can continue where you left off.</p>
     <p>If you are signed into iCloud, AtlasDays can also mirror a smaller set of preferences through Apple's iCloud key-value storage. That preference carry-over is separate from full <strong>iCloud sync</strong>.</p>
+    <figure class="atlasdays-screenshot">
+      <img src="../assets/article-images/help/privacy-location-and-sync/screenshot-privacy-overview.webp" alt="Privacy screen explaining on-device storage, no sign-in, optional iCloud sync, and country-detection-only location use" width="1206" height="2622" decoding="async" loading="lazy" />
+    </figure>
 
     <h2>How Auto-Detect Trips Works</h2>
     <!-- ARTICLE_IMAGE:body-1 -->
@@ -196,6 +201,9 @@
       <li><strong>Smart Alerts</strong> are an <strong>AtlasDays Pro</strong> feature and still depend on the tracker being configured correctly and the relevant trips being present.</li>
       <li>A missing alert does <strong>not</strong> prove AtlasDays saw no country change, and it does <strong>not</strong> prove a tracker is set up correctly.</li>
     </ul>
+    <figure class="atlasdays-screenshot">
+      <img src="../assets/article-images/help/privacy-location-and-sync/screenshot-alerts.webp" alt="Alerts screen showing configurable alert time and warning thresholds" width="1206" height="2622" decoding="async" loading="lazy" />
+    </figure>
 
     <h2>When to Use iCloud sync and When to Leave It Off</h2>
     <p>Turn on <strong>iCloud sync</strong> if you want your trips and trackers available across multiple Apple devices or you want your Apple iCloud account to hold the sync-backed copy of that data.</p>

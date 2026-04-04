@@ -28,7 +28,7 @@ The homepage is now wired to these portrait iPhone screenshots.
 
 6. `Proof trip modes`
    File target: `assets/home/home-proof-trip-modes.png`
-   Needed state: trip form showing the difference between `Exact Dates` and `Month & Year`.
+   Needed state: trip form showing the difference between `Exact Dates` and `Year`.
    Bonus: include `Dates Unknown` if it still reads clearly in one capture.
 
 7. `Proof import`
