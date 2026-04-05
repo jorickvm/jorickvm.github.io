@@ -448,35 +448,6 @@
     }
     .mini-list li { margin: 6px 0; }
 
-    .proof-board {
-      display: grid;
-      gap: 18px;
-    }
-    .proof-feature,
-    .proof-card {
-      background: var(--bg-card);
-      border: 1px solid var(--line);
-      border-radius: 26px;
-      box-shadow: var(--shadow);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-    }
-    .proof-feature {
-      padding: 28px;
-      display: grid;
-      grid-template-columns: minmax(0, 0.98fr) minmax(280px, 0.82fr);
-      gap: 22px;
-      align-items: center;
-      background:
-        radial-gradient(circle at top right, rgba(22,146,255,0.12), transparent 36%),
-        var(--bg-card);
-    }
-    .proof-feature-copy {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      min-width: 0;
-    }
     .proof-label {
       margin: 0 0 10px;
       font-size: 0.78rem;
@@ -485,96 +456,131 @@
       text-transform: uppercase;
       color: var(--muted-2);
     }
-    .proof-feature-copy h3 {
-      margin: 0;
-      font-size: clamp(2rem, 3vw, 3rem);
-      line-height: 0.98;
-      letter-spacing: -0.04em;
-      max-width: 10ch;
-    }
-    .proof-feature-copy p {
-      margin: 0;
-      color: var(--muted);
-      max-width: 58ch;
-    }
-    .proof-feature-copy .proof-label,
-    .proof-caption .proof-label {
-      margin: 0 0 10px;
-      color: var(--muted-2);
-    }
-    .proof-badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 4px;
-    }
-    .proof-badges span {
-      padding: 9px 12px;
-      border-radius: 999px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,0.04);
-      color: var(--muted);
-      font-size: 0.9rem;
-    }
-    .proof-feature-visual,
-    .proof-device {
+    .proof-story {
       display: grid;
-      place-items: center;
+      gap: 18px;
     }
-    .proof-device {
-      width: min(100%, 356px);
-      padding: 12px;
-      border-radius: 36px;
+    .proof-carousel {
+      position: relative;
+      display: grid;
+      gap: 18px;
+    }
+    .proof-track {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: 100%;
+      gap: 18px;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+      overscroll-behavior-x: contain;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 4px;
+    }
+    .proof-track::-webkit-scrollbar { display: none; }
+    .proof-slide {
+      scroll-snap-align: start;
+      scroll-snap-stop: always;
+      min-width: 0;
+      display: grid;
+      gap: 16px;
+      align-content: start;
+    }
+    .proof-shot {
+      width: min(100%, 520px);
+      margin: 0 auto;
+      padding: 14px;
+      border-radius: 30px;
       background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04));
       border: 1px solid rgba(255,255,255,0.12);
       box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
     }
-    .proof-device img {
+    .proof-shot img {
       width: 100%;
-      height: auto;
+      height: min(68svh, 720px);
+      object-fit: contain;
+      object-position: top center;
       border-radius: 24px;
-      border: 1px solid var(--line);
-    }
-    .proof-support-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-      align-items: stretch;
-    }
-    .proof-card {
-      overflow: hidden;
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-    }
-    .proof-card .frame {
-      padding: 16px 16px 0;
-    }
-    .proof-card .frame img {
-      width: 100%;
-      height: clamp(216px, 24vw, 292px);
-      object-fit: cover;
-      object-position: top;
-      border-radius: 22px 22px 0 0;
       border: 1px solid var(--line);
       background: var(--bg-elevated);
     }
-    .proof-caption {
-      padding: 18px 20px 20px;
-      border-top: 1px solid var(--line);
+    .proof-copy {
+      max-width: 46ch;
+      margin: 0 auto;
+      text-align: center;
     }
-    .proof-caption strong {
-      display: block;
-      margin-bottom: 6px;
-      color: var(--text);
-      font-size: 1.08rem;
-      letter-spacing: -0.02em;
+    .proof-copy h3 {
+      margin: 0 0 8px;
+      font-size: clamp(1.36rem, 2vw, 1.8rem);
+      line-height: 1.08;
+      letter-spacing: -0.03em;
     }
-    .proof-caption p {
+    .proof-copy p {
       margin: 0;
       color: var(--muted);
+      font-size: 1rem;
     }
-    .proof-card-pdf .frame img { height: clamp(188px, 20vw, 248px); }
+    .proof-controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+    }
+    .proof-dots {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    .proof-dot {
+      width: 12px;
+      height: 12px;
+      padding: 0;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.10);
+      cursor: pointer;
+      transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+    }
+    .proof-dot:hover {
+      border-color: rgba(22,146,255,0.34);
+      background: rgba(22,146,255,0.18);
+    }
+    .proof-dot.is-active {
+      transform: scale(1.05);
+      border-color: rgba(22,146,255,0.40);
+      background: var(--blue);
+    }
+    .proof-arrow {
+      display: none;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      padding: 0;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--bg-card);
+      color: var(--text);
+      cursor: pointer;
+      transition: border-color 160ms ease, transform 160ms ease, background 160ms ease;
+    }
+    .proof-arrow:hover {
+      transform: translateY(-1px);
+      border-color: var(--line-strong);
+    }
+    .proof-arrow:disabled {
+      opacity: 0.42;
+      cursor: default;
+      transform: none;
+    }
+    @media (min-width: 961px) {
+      .proof-arrow { display: inline-grid; }
+    }
     .doc-card {
       display: flex;
       flex-direction: column;
@@ -773,12 +779,6 @@
       .footer-grid,
       .doc-grid { grid-template-columns: 1fr; }
       .hero-grid { gap: 34px; }
-      .proof-feature {
-        grid-template-columns: 1fr;
-      }
-      .proof-feature-copy h3 { max-width: none; }
-      .proof-support-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .proof-support-grid .proof-card:last-child { grid-column: 1 / -1; }
       .privacy-grid { grid-template-columns: 1fr; }
       .visual-wrap {
         min-height: 720px;
@@ -799,6 +799,9 @@
       .feature-grid,
       .faq-grid,
       .hero-points { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 700px) {
       .hero-mobile-visuals {
         display: block;
         width: 100%;
@@ -825,31 +828,11 @@
     }
 
     @media (max-width: 960px) {
-      .proof-feature {
-        grid-template-columns: 1fr;
-        gap: 20px;
-        padding: 24px;
+      .proof-shot {
+        width: min(100%, 470px);
       }
-      .proof-feature-copy h3 { max-width: none; }
-      .proof-feature-copy p { max-width: 42ch; }
-      .proof-badges { display: none; }
-      .proof-device { width: min(100%, 296px); }
-      .proof-support-grid {
-        grid-template-columns: 1fr;
-      }
-      .proof-support-grid .proof-card:last-child { grid-column: auto; }
-      .proof-card .frame img { height: 204px; }
-      .proof-card-import .frame img { height: 216px; }
-      .proof-card-pdf .frame img { height: 168px; }
-      .proof-caption {
-        padding: 16px 18px 18px;
-      }
-      .proof-caption strong {
-        margin-bottom: 4px;
-        font-size: 1rem;
-      }
-      .proof-caption p {
-        font-size: 0.94rem;
+      .proof-shot img {
+        height: min(64svh, 640px);
       }
     }
 
@@ -893,20 +876,31 @@
       .cta-panel,
       .privacy-panel,
       .doc-card { padding: 20px; }
-      .proof-feature,
-      .proof-card { padding: 20px; }
-      .proof-feature {
-        grid-template-columns: 1fr;
-        gap: 18px;
+      .proof-story {
+        gap: 14px;
       }
-      .proof-feature-copy h3 { max-width: none; }
-      .proof-device { width: min(100%, 278px); }
-      .proof-card {
-        padding: 0;
+      .proof-shot {
+        width: 100%;
+        padding: 10px;
+        border-radius: 24px;
       }
-      .proof-card .frame img { height: 188px; }
-      .proof-card-import .frame img { height: 198px; }
-      .proof-card-pdf .frame img { height: 156px; }
+      .proof-shot img {
+        height: min(62svh, 560px);
+        border-radius: 18px;
+      }
+      .proof-copy {
+        text-align: left;
+      }
+      .proof-copy h3 {
+        font-size: 1.34rem;
+        margin-bottom: 6px;
+      }
+      .proof-copy p {
+        font-size: 0.96rem;
+      }
+      .proof-controls {
+        gap: 10px;
+      }
       .btn { width: 100%; }
       .hero-actions {
         gap: 8px;
@@ -1000,6 +994,9 @@
         width: min(100%, 238px);
       }
       .visual-wrap { display: none; }
+      .proof-arrow {
+        display: none;
+      }
       .hero-points {
         display: grid;
         grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -1141,62 +1138,71 @@
       <div class="container">
         <div class="section-header reveal">
           <p class="section-kicker">Product proof</p>
-          <h2>The count stays trustworthy because the record behind it stays visible</h2>
-          <p>Read the allowance, inspect the trips behind it, review imports before they change totals, and export the same record when you need to share it.</p>
+          <h2>See the product the way it is actually used on a phone</h2>
+          <p>One record, four key screens, and a clear path from the count you care about to the trips behind it.</p>
         </div>
-        <div class="proof-board reveal">
-          <article class="proof-feature">
-            <div class="proof-feature-copy">
-              <div>
-                <p class="proof-label">Tracker detail</p>
-                <h3>Used days, days left, and rule logic stay in one view</h3>
-              </div>
-              <p>See the allowance, the trips currently counted, and when time returns without leaving the tracker.</p>
-              <div class="proof-badges" aria-label="Tracker detail highlights">
-                <span>Used days and days left</span>
-                <span>Rolling-window logic</span>
-                <span>Threshold dates</span>
-              </div>
-            </div>
-            <div class="proof-feature-visual">
-              <div class="proof-device">
-                <img src="assets/home/home-proof-tracker-detail-crop.webp" alt="AtlasDays tracker detail showing used days, remaining days, and when days return" width="1206" height="1680" loading="lazy" />
-              </div>
-            </div>
-          </article>
-          <div class="proof-support-grid">
-            <article class="proof proof-card proof-card-timeline">
-              <div class="frame">
-                <img src="assets/home/home-proof-timeline-crop.webp" alt="AtlasDays timeline showing ongoing and past trips in chronological order" width="1206" height="1590" loading="lazy" />
-              </div>
-              <div class="proof-caption">
-                <p class="proof-label">Timeline</p>
-                <strong>The total is backed by visible trips</strong>
-                <p>See which trips are active, which are past, and why the total reads the way it does.</p>
-              </div>
-            </article>
+        <div class="proof-story reveal" data-proof-carousel>
+          <div class="proof-carousel">
+            <div class="proof-track" aria-label="AtlasDays product proof carousel" data-proof-track>
+              <article class="proof-slide" data-proof-slide>
+                <div class="proof-shot">
+                  <img src="assets/home/home-hero-dashboard.webp" alt="AtlasDays dashboard showing trackers, summary stats, and the mini map" width="960" height="2086" />
+                </div>
+                <div class="proof-copy">
+                  <p class="proof-label">Dashboard</p>
+                  <h3>Track Schengen, residency, and travel history from one record</h3>
+                  <p>See your active trackers, broader travel totals, and the rest of your record without switching between separate tools.</p>
+                </div>
+              </article>
 
-            <article class="proof proof-card proof-card-import">
-              <div class="frame">
-                <img src="assets/home/home-proof-import-preview.webp" alt="AtlasDays CSV import preview showing mapped columns and rows before import" width="1206" height="2622" loading="lazy" />
-              </div>
-              <div class="proof-caption">
-                <p class="proof-label">Import review</p>
-                <strong>Review imports before they change the record</strong>
-                <p>Mapped columns and flagged rows let you fix a CSV before it touches totals.</p>
-              </div>
-            </article>
+              <article class="proof-slide" data-proof-slide>
+                <div class="proof-shot">
+                  <img src="assets/home/home-hero-tracker-detail.webp" alt="AtlasDays tracker detail showing used days, days left, and threshold dates" width="960" height="2086" loading="lazy" />
+                </div>
+                <div class="proof-copy">
+                  <p class="proof-label">Tracker detail</p>
+                  <h3>See used days, days left, and the rule behind the count</h3>
+                  <p>Rolling windows, threshold dates, and the trips currently being counted stay connected in the same view.</p>
+                </div>
+              </article>
 
-            <article class="proof proof-card proof-card-pdf">
-              <div class="frame">
-                <img src="assets/home/home-proof-pdf-preview-crop.webp" alt="AtlasDays PDF export preview showing a formatted travel history report" width="1206" height="1549" loading="lazy" />
+              <article class="proof-slide" data-proof-slide>
+                <div class="proof-shot">
+                  <img src="assets/home/home-proof-timeline.webp" alt="AtlasDays timeline showing ongoing, past, and upcoming trips" width="960" height="2086" loading="lazy" />
+                </div>
+                <div class="proof-copy">
+                  <p class="proof-label">Timeline</p>
+                  <h3>The total is backed by visible trips</h3>
+                  <p>Ongoing, past, and upcoming entries stay readable, so the number never feels like a black box.</p>
+                </div>
+              </article>
+
+              <article class="proof-slide" data-proof-slide>
+                <div class="proof-shot">
+                  <img src="assets/home/home-proof-import.webp" alt="AtlasDays CSV import screen showing a file preview before saving" width="1320" height="2868" loading="lazy" />
+                </div>
+                <div class="proof-copy">
+                  <p class="proof-label">Import and export</p>
+                  <h3>Review imports before they affect the record</h3>
+                  <p>Check mapped columns before saving, then export the same record later as CSV or PDF when you need to share it.</p>
+                </div>
+              </article>
+            </div>
+
+            <div class="proof-controls">
+              <button class="proof-arrow" type="button" aria-label="Previous proof slide" data-proof-prev>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+              </button>
+              <div class="proof-dots" aria-label="Proof slides">
+                <button class="proof-dot is-active" type="button" aria-label="Show dashboard slide" aria-current="true" aria-pressed="true" data-proof-dot="0"></button>
+                <button class="proof-dot" type="button" aria-label="Show tracker detail slide" aria-current="false" aria-pressed="false" data-proof-dot="1"></button>
+                <button class="proof-dot" type="button" aria-label="Show timeline slide" aria-current="false" aria-pressed="false" data-proof-dot="2"></button>
+                <button class="proof-dot" type="button" aria-label="Show import and export slide" aria-current="false" aria-pressed="false" data-proof-dot="3"></button>
               </div>
-              <div class="proof-caption">
-                <p class="proof-label">PDF report</p>
-                <strong>Export the same record you track</strong>
-                <p>PDF reports come from the same trips shown in AtlasDays.</p>
-              </div>
-            </article>
+              <button class="proof-arrow" type="button" aria-label="Next proof slide" data-proof-next>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -1424,6 +1430,54 @@
     } else {
       items.forEach((item) => item.classList.add('visible'));
     }
+
+    document.querySelectorAll('[data-proof-carousel]').forEach((carousel) => {
+      const track = carousel.querySelector('[data-proof-track]');
+      const slides = Array.from(carousel.querySelectorAll('[data-proof-slide]'));
+      const dots = Array.from(carousel.querySelectorAll('[data-proof-dot]'));
+      const prev = carousel.querySelector('[data-proof-prev]');
+      const next = carousel.querySelector('[data-proof-next]');
+      let activeIndex = 0;
+
+      function setActive(index) {
+        activeIndex = index;
+        dots.forEach((dot, dotIndex) => {
+          const isActive = dotIndex === index;
+          dot.classList.toggle('is-active', isActive);
+          dot.setAttribute('aria-current', isActive ? 'true' : 'false');
+          dot.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+        });
+        if (prev) prev.disabled = index === 0;
+        if (next) next.disabled = index === slides.length - 1;
+      }
+
+      function goTo(index) {
+        const safeIndex = Math.max(0, Math.min(index, slides.length - 1));
+        slides[safeIndex].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+      }
+
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => goTo(index));
+      });
+
+      if (prev) prev.addEventListener('click', () => goTo(activeIndex - 1));
+      if (next) next.addEventListener('click', () => goTo(activeIndex + 1));
+
+      const slideObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = slides.indexOf(entry.target);
+            if (index !== -1) setActive(index);
+          }
+        });
+      }, {
+        root: track,
+        threshold: 0.68
+      });
+
+      slides.forEach((slide) => slideObserver.observe(slide));
+      setActive(0);
+    });
 
   </script>
 </body>
