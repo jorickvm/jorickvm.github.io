@@ -319,7 +319,7 @@
 
     .visual-wrap {
       position: relative;
-      min-height: 610px;
+      min-height: 760px;
     }
     .visual-card {
       position: absolute;
@@ -337,13 +337,13 @@
       height: auto;
     }
     .visual-card.primary {
-      width: min(360px, 78%);
+      width: min(338px, 72%);
       right: 0;
       top: 0;
       z-index: 2;
     }
     .visual-card.secondary {
-      width: min(295px, 64%);
+      width: min(276px, 58%);
       left: 0;
       bottom: 54px;
       z-index: 1;
@@ -552,7 +552,7 @@
     }
     .proof-card .frame img {
       width: 100%;
-      height: clamp(248px, 30vw, 320px);
+      height: clamp(216px, 24vw, 292px);
       object-fit: cover;
       object-position: top;
       border-radius: 22px 22px 0 0;
@@ -574,6 +574,7 @@
       margin: 0;
       color: var(--muted);
     }
+    .proof-card-pdf .frame img { height: clamp(188px, 20vw, 248px); }
     .doc-card {
       display: flex;
       flex-direction: column;
@@ -780,7 +781,7 @@
       .proof-support-grid .proof-card:last-child { grid-column: 1 / -1; }
       .privacy-grid { grid-template-columns: 1fr; }
       .visual-wrap {
-        min-height: 600px;
+        min-height: 720px;
         max-width: 520px;
         margin: 0 auto;
       }
@@ -798,9 +799,58 @@
       .feature-grid,
       .faq-grid,
       .hero-points { grid-template-columns: 1fr; }
-      .visual-wrap { min-height: 540px; }
-      .visual-card.primary { width: min(330px, 82%); }
-      .visual-card.secondary { width: min(272px, 66%); }
+      .hero-mobile-visuals {
+        display: block;
+        width: 100%;
+        margin: 18px 0 14px;
+      }
+      .hero-mobile-shot {
+        width: min(100%, 272px);
+        margin: 0 auto;
+        padding: 8px;
+        border-radius: 24px;
+        background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04));
+        border: 1px solid rgba(255,255,255,0.12);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+      }
+      .hero-mobile-shot img {
+        width: 100%;
+        height: auto;
+        border-radius: 18px;
+        border: 1px solid var(--line);
+      }
+      .visual-wrap { display: none; }
+    }
+
+    @media (max-width: 960px) {
+      .proof-feature {
+        grid-template-columns: 1fr;
+        gap: 20px;
+        padding: 24px;
+      }
+      .proof-feature-copy h3 { max-width: none; }
+      .proof-feature-copy p { max-width: 42ch; }
+      .proof-badges { display: none; }
+      .proof-device { width: min(100%, 296px); }
+      .proof-support-grid {
+        grid-template-columns: 1fr;
+      }
+      .proof-support-grid .proof-card:last-child { grid-column: auto; }
+      .proof-card .frame img { height: 204px; }
+      .proof-card-import .frame img { height: 216px; }
+      .proof-card-pdf .frame img { height: 168px; }
+      .proof-caption {
+        padding: 16px 18px 18px;
+      }
+      .proof-caption strong {
+        margin-bottom: 4px;
+        font-size: 1rem;
+      }
+      .proof-caption p {
+        font-size: 0.94rem;
+      }
     }
 
     @media (max-width: 620px) {
@@ -827,42 +877,13 @@
         margin-bottom: 16px;
       }
       .hero-mobile-visuals {
-        display: block;
-        position: relative;
         width: 100%;
-        max-width: 364px;
-        margin: 16px auto 14px;
-        padding: 0 28% 10px 0;
+        margin: 14px 0 12px;
       }
       .hero-mobile-shot {
-        position: relative;
-        padding: 6px;
+        width: min(100%, 258px);
+        padding: 7px;
         border-radius: 22px;
-        background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04));
-        border: 1px solid rgba(255,255,255,0.12);
-        box-shadow: var(--shadow);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-      }
-      .hero-mobile-shot.primary {
-        width: 100%;
-        z-index: 2;
-      }
-      .hero-mobile-shot.secondary {
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        width: 36%;
-        z-index: 3;
-      }
-      .hero-mobile-shot img {
-        width: 100%;
-        height: auto;
-        border-radius: 16px;
-        border: 1px solid var(--line);
-      }
-      .visual-wrap {
-        display: none;
       }
       .card,
       .feature,
@@ -879,13 +900,13 @@
         gap: 18px;
       }
       .proof-feature-copy h3 { max-width: none; }
-      .proof-device { width: min(100%, 320px); }
-      .proof-support-grid { grid-template-columns: 1fr; }
-      .proof-support-grid .proof-card:last-child { grid-column: auto; }
+      .proof-device { width: min(100%, 278px); }
       .proof-card {
         padding: 0;
       }
-      .proof-card .frame img { height: 248px; }
+      .proof-card .frame img { height: 188px; }
+      .proof-card-import .frame img { height: 198px; }
+      .proof-card-pdf .frame img { height: 156px; }
       .btn { width: 100%; }
       .hero-actions {
         gap: 8px;
@@ -972,39 +993,11 @@
         color: var(--text);
       }
       .hero-mobile-visuals {
-        display: block;
-        position: relative;
         width: 100%;
-        max-width: 320px;
-        margin: 12px auto 12px;
-        padding: 0 28% 10px 0;
+        margin: 12px 0;
       }
       .hero-mobile-shot {
-        position: relative;
-        padding: 6px;
-        border-radius: 22px;
-        background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04));
-        border: 1px solid rgba(255,255,255,0.12);
-        box-shadow: var(--shadow);
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-      }
-      .hero-mobile-shot.primary {
-        width: 100%;
-        z-index: 2;
-      }
-      .hero-mobile-shot.secondary {
-        position: absolute;
-        right: 0;
-        bottom: 0;
-        width: 36%;
-        z-index: 3;
-      }
-      .hero-mobile-shot img {
-        width: 100%;
-        height: auto;
-        border-radius: 16px;
-        border: 1px solid var(--line);
+        width: min(100%, 238px);
       }
       .visual-wrap { display: none; }
       .hero-points {
@@ -1093,12 +1086,9 @@
             <a class="btn btn-primary" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">Download on the App Store</a>
             <a class="btn btn-secondary" href="#proof">See the product</a>
           </div>
-          <div class="hero-mobile-visuals" aria-label="AtlasDays mobile app previews">
-            <div class="hero-mobile-shot primary">
-              <img src="assets/home/home-hero-dashboard-crop.webp" alt="AtlasDays dashboard showing tracker cards, a Schengen summary, and travel stats" width="1206" height="1900" />
-            </div>
-            <div class="hero-mobile-shot secondary">
-              <img src="assets/home/home-hero-tracker-detail-crop.webp" alt="AtlasDays tracker detail showing used days, remaining days, and when days return" width="1206" height="1680" />
+          <div class="hero-mobile-visuals" aria-label="AtlasDays dashboard preview">
+            <div class="hero-mobile-shot">
+              <img src="assets/home/home-hero-dashboard.webp" alt="AtlasDays dashboard showing tracker cards, summary stats, and the mini map" width="960" height="2086" />
             </div>
           </div>
           <div class="hero-points" aria-label="Key benefits">
@@ -1111,10 +1101,10 @@
 
         <div class="visual-wrap reveal" aria-label="AtlasDays app previews">
           <div class="visual-card primary">
-            <img src="assets/home/home-hero-dashboard-crop.webp" alt="AtlasDays dashboard showing tracker cards, a Schengen summary, and travel stats" width="1206" height="1900" />
+            <img src="assets/home/home-hero-dashboard.webp" alt="AtlasDays dashboard showing tracker cards, summary stats, and the mini map" width="960" height="2086" />
           </div>
           <div class="visual-card secondary">
-            <img src="assets/home/home-hero-tracker-detail-crop.webp" alt="AtlasDays tracker detail showing used days, remaining days, and when days return" width="1206" height="1680" />
+            <img src="assets/home/home-hero-tracker-detail.webp" alt="AtlasDays tracker detail showing used days, remaining days, and the next threshold" width="960" height="2086" />
           </div>
         </div>
       </div>
@@ -1159,9 +1149,9 @@
             <div class="proof-feature-copy">
               <div>
                 <p class="proof-label">Tracker detail</p>
-                <h3>Used days, days left, and rule logic stay in the same view</h3>
+                <h3>Used days, days left, and rule logic stay in one view</h3>
               </div>
-              <p>The tracker detail keeps the headline number grounded. You can see used days, remaining days, when days return, and the trips currently inside the rule without hopping between screens.</p>
+              <p>See the allowance, the trips currently counted, and when time returns without leaving the tracker.</p>
               <div class="proof-badges" aria-label="Tracker detail highlights">
                 <span>Used days and days left</span>
                 <span>Rolling-window logic</span>
@@ -1175,36 +1165,36 @@
             </div>
           </article>
           <div class="proof-support-grid">
-            <article class="proof proof-card">
+            <article class="proof proof-card proof-card-timeline">
               <div class="frame">
                 <img src="assets/home/home-proof-timeline-crop.webp" alt="AtlasDays timeline showing ongoing and past trips in chronological order" width="1206" height="1590" loading="lazy" />
               </div>
               <div class="proof-caption">
                 <p class="proof-label">Timeline</p>
-                <strong>The count is backed by visible trips</strong>
-                <p>Timeline rows and day badges show what is included, what is ongoing, and where the total comes from.</p>
+                <strong>The total is backed by visible trips</strong>
+                <p>See which trips are active, which are past, and why the total reads the way it does.</p>
               </div>
             </article>
 
-            <article class="proof proof-card">
+            <article class="proof proof-card proof-card-import">
               <div class="frame">
                 <img src="assets/home/home-proof-import-preview.webp" alt="AtlasDays CSV import preview showing mapped columns and rows before import" width="1206" height="2622" loading="lazy" />
               </div>
               <div class="proof-caption">
                 <p class="proof-label">Import review</p>
-                <strong>Imports are reviewed before they affect totals</strong>
-                <p>Mapped columns, detected issues, and a preview step let you clean up a CSV before anything is added to the record.</p>
+                <strong>Review imports before they change the record</strong>
+                <p>Mapped columns and flagged rows let you fix a CSV before it touches totals.</p>
               </div>
             </article>
 
-            <article class="proof proof-card">
+            <article class="proof proof-card proof-card-pdf">
               <div class="frame">
                 <img src="assets/home/home-proof-pdf-preview-crop.webp" alt="AtlasDays PDF export preview showing a formatted travel history report" width="1206" height="1549" loading="lazy" />
               </div>
               <div class="proof-caption">
                 <p class="proof-label">PDF report</p>
-                <strong>Export the same record when you need to share it</strong>
-                <p>Travel reports come from the trips you already track, so the number on screen and the exported document stay aligned.</p>
+                <strong>Export the same record you track</strong>
+                <p>PDF reports come from the same trips shown in AtlasDays.</p>
               </div>
             </article>
           </div>
