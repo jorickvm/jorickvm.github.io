@@ -183,7 +183,7 @@
       <li><strong>Country scope:</strong> confirm the tracker is pointed at the right country or preset set. A one-country tracker and a Schengen tracker can legitimately show different numbers for the same trip record.</li>
       <li><strong>Window:</strong> confirm whether the question is <strong>Rolling</strong>, <strong>Per Stay</strong>, or <strong>Yearly</strong>. Those windows answer different questions.</li>
       <li><strong>Mode:</strong> confirm whether the tracker should be <strong>Stay under</strong> or <strong>Reach target</strong>. The same exact days can look very different depending on whether AtlasDays is showing remaining days or progress toward a goal.</li>
-      <li><strong>Days vs nights:</strong> confirm whether the tracker is counting <strong>days</strong> or <strong>nights</strong>. From <strong>Dashboard</strong>, you can long-press the tracker card and switch between <strong>Count Nights</strong> and <strong>Count Days</strong>.</li>
+      <li><strong>Days vs nights:</strong> confirm whether the tracker is counting <strong>days</strong> or <strong>nights</strong>. From <strong>Dashboard</strong>, long-press the tracker card and choose <strong>Count Nights</strong> or <strong>Count Days</strong> for that tracker.</li>
       <li><strong>ongoing trip:</strong> if a relevant trip is still open, AtlasDays uses today as the effective end date, so the number keeps moving until you close the trip.</li>
       <li><strong>Trip precision:</strong> only trips saved as <strong>Exact Dates</strong> feed exact tracker math. <strong>Year</strong> and <strong>Unknown</strong> preserve history but do not add precise days.</li>
       <li><strong>Transit:</strong> trips marked <strong>Transit</strong> count as <strong>0 days</strong>. If you actually entered the country, fix the trip instead of the tracker.</li>
@@ -272,16 +272,20 @@
     <ul>
       <li><strong>Days</strong> are dual-inclusive. A trip from January 1 to January 3 counts as <strong>3 days</strong>.</li>
       <li><strong>Nights</strong> are midnight crossings. The same trip counts as <strong>2 nights</strong>.</li>
-      <li>From <strong>Dashboard</strong>, long-press the tracker card to switch between <strong>Count Nights</strong> and <strong>Count Days</strong> for that tracker.</li>
+      <li>From <strong>Dashboard</strong>, long-press the tracker card to switch that tracker between <strong>Count Nights</strong> and <strong>Count Days</strong>.</li>
     </ul>
 
     <h2>What Counts Toward Tracker Math</h2>
     <ul>
       <li><strong>Exact Dates</strong> trips inside the tracker’s selected country set count, as long as they are not marked <strong>Transit</strong>.</li>
       <li><strong>Arrival and departure days</strong> both count for <strong>Exact Dates</strong> trips.</li>
-      <li><strong>Shared dates from Exact Dates trips</strong> are counted once, not twice, even if more than one tracked trip touches that date.</li>
+      <li><strong>Shared dates from Exact Dates trips</strong> are counted once in the tracker total, not once per country row inside the tracker detail view.</li>
       <li><strong>ongoing trips</strong> use today as the effective end date, so the number changes day by day until you close the trip.</li>
     </ul>
+
+    <div class="callout">
+      <p><strong>Why the country breakdown can look higher than the tracker total:</strong> in a multi-country tracker such as Schengen, the detail view can show the same calendar date under more than one country if you were present in multiple countries on that date. Each country row gets that day in its own subtotal, but the tracker total still counts that date once across the whole tracked area. If you were in three countries on one day, the country subtotals can add up to <strong>3 days</strong> while the tracker total adds only <strong>1 day</strong>.</p>
+    </div>
 
     <h2>What Does Not Count Toward Tracker Math</h2>
     <ul>
