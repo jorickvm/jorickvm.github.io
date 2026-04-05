@@ -750,11 +750,13 @@ footer { padding-bottom: 36px; }
     position: relative;
     width: min(calc(100vw - 8px), 460px);
     max-width: none;
-    height: clamp(500px, 138vw, 680px);
-    margin: 18px auto 10px;
+    height: clamp(500px, 134vw, 648px);
+    margin: 18px auto 8px;
   }
   .hero-mobile-shot {
     position: absolute;
+    overflow: hidden;
+    aspect-ratio: 1 / 1.95;
     padding: 8px;
     border-radius: 24px;
     background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04));
@@ -764,20 +766,22 @@ footer { padding-bottom: 36px; }
     -webkit-backdrop-filter: blur(10px);
   }
   .hero-mobile-shot.primary {
-    width: 72%;
+    width: 76%;
     right: 0;
     top: 0;
     z-index: 2;
   }
   .hero-mobile-shot.secondary {
-    width: 56%;
+    width: 60%;
     left: 0;
-    bottom: 34px;
+    bottom: 28px;
     z-index: 1;
   }
   .hero-mobile-shot img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
     border-radius: 18px;
     border: 1px solid var(--line);
   }
@@ -814,19 +818,23 @@ footer { padding-bottom: 36px; }
     display: block;
     margin-bottom: 16px;
   }
+  .section-header {
+    margin: 0 0 24px;
+    text-align: left;
+  }
   .hero-mobile-visuals {
     width: min(calc(100vw - 24px), 420px);
-    height: clamp(470px, 142vw, 620px);
-    margin: 14px auto 10px;
+    height: clamp(480px, 140vw, 610px);
+    margin: 14px auto 8px;
   }
   .hero-mobile-shot {
     padding: 8px;
     border-radius: 22px;
   }
-  .hero-mobile-shot.primary { width: 72%; }
+  .hero-mobile-shot.primary { width: 75%; }
   .hero-mobile-shot.secondary {
-    width: 58%;
-    bottom: 26px;
+    width: 61%;
+    bottom: 22px;
   }
   .card,
   .feature,
@@ -840,12 +848,17 @@ footer { padding-bottom: 36px; }
     gap: 14px;
   }
   .proof-shot {
+    width: min(100%, 330px);
     padding: 3px;
     border-radius: 18px;
+    overflow: hidden;
   }
   .proof-shot img {
-    max-width: min(100%, 320px);
-    height: min(64svh, 600px);
+    width: 100%;
+    max-width: none;
+    height: clamp(480px, 126vw, 548px);
+    object-fit: cover;
+    object-position: top center;
     border-radius: 14px;
   }
   .proof-copy {
