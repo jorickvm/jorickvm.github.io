@@ -619,16 +619,20 @@
     .privacy-visual {
       display: grid;
       place-items: center;
-      padding: 12px;
-      border-radius: 28px;
+      width: fit-content;
+      max-width: 100%;
+      justify-self: center;
+      padding: 4px;
+      border-radius: 20px;
       background: rgba(255,255,255,0.05);
       border: 1px solid rgba(255,255,255,0.08);
       box-shadow: var(--shadow);
     }
     .privacy-visual img {
-      width: min(100%, 320px);
+      width: auto;
+      max-width: min(100%, 320px);
       height: auto;
-      border-radius: 20px;
+      border-radius: 16px;
       border: 1px solid var(--line);
     }
     .privacy-panel h2 {
@@ -658,6 +662,36 @@
       margin-top: 12px;
       color: var(--muted-2);
       font-size: 0.9rem;
+    }
+    .mid-cta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 20px 22px;
+      background: var(--bg-card);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .mid-cta-copy {
+      min-width: 0;
+    }
+    .mid-cta-copy strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 1rem;
+      letter-spacing: -0.02em;
+    }
+    .mid-cta-copy p {
+      margin: 0;
+      color: var(--muted);
+    }
+    .mid-cta .btn {
+      flex: none;
+      white-space: nowrap;
     }
 
     .cta-panel {
@@ -808,12 +842,13 @@
     @media (max-width: 700px) {
       .hero-mobile-visuals {
         display: block;
+        position: relative;
         width: 100%;
-        margin: 18px 0 14px;
+        max-width: 322px;
+        margin: 18px auto 14px;
+        padding: 0 29% 12px 0;
       }
       .hero-mobile-shot {
-        width: min(100%, 272px);
-        margin: 0 auto;
         padding: 8px;
         border-radius: 24px;
         background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04));
@@ -821,6 +856,18 @@
         box-shadow: var(--shadow);
         backdrop-filter: blur(10px);
         -webkit-backdrop-filter: blur(10px);
+      }
+      .hero-mobile-shot.primary {
+        position: relative;
+        width: 100%;
+        z-index: 2;
+      }
+      .hero-mobile-shot.secondary {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 37%;
+        z-index: 3;
       }
       .hero-mobile-shot img {
         width: 100%;
@@ -862,14 +909,15 @@
         margin-bottom: 16px;
       }
       .hero-mobile-visuals {
-        width: 100%;
-        margin: 14px 0 12px;
+        max-width: 300px;
+        margin: 14px auto 12px;
+        padding-right: 30%;
       }
       .hero-mobile-shot {
-        width: min(100%, 258px);
         padding: 7px;
         border-radius: 22px;
       }
+      .hero-mobile-shot.secondary { width: 38%; }
       .card,
       .feature,
       .proof,
@@ -902,6 +950,15 @@
       }
       .proof-controls {
         gap: 10px;
+      }
+      .mid-cta {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 18px;
+      }
+      .mid-cta .btn {
+        width: 100%;
+        white-space: normal;
       }
       .btn { width: 100%; }
       .hero-actions {
@@ -989,12 +1046,11 @@
         color: var(--text);
       }
       .hero-mobile-visuals {
-        width: 100%;
-        margin: 12px 0;
+        max-width: 286px;
+        margin: 12px auto;
+        padding-right: 29%;
       }
-      .hero-mobile-shot {
-        width: min(100%, 238px);
-      }
+      .hero-mobile-shot.secondary { width: 37%; }
       .visual-wrap { display: none; }
       .proof-arrow {
         display: none;
@@ -1085,9 +1141,12 @@
             <a class="btn btn-primary" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">Download on the App Store</a>
             <a class="btn btn-secondary" href="#proof">See the product</a>
           </div>
-          <div class="hero-mobile-visuals" aria-label="AtlasDays dashboard preview">
-            <div class="hero-mobile-shot">
+          <div class="hero-mobile-visuals" aria-label="AtlasDays app previews">
+            <div class="hero-mobile-shot primary">
               <img src="assets/home/home-hero-dashboard.webp" alt="AtlasDays dashboard showing tracker cards, summary stats, and the mini map" width="960" height="2086" />
+            </div>
+            <div class="hero-mobile-shot secondary">
+              <img src="assets/home/home-hero-tracker-detail.webp" alt="AtlasDays tracker detail showing used days, remaining days, and the next threshold" width="960" height="2086" />
             </div>
           </div>
           <div class="hero-points" aria-label="Key benefits">
@@ -1206,6 +1265,18 @@
               </button>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="mid-cta reveal">
+          <div class="mid-cta-copy">
+            <strong>Ready to track your days privately?</strong>
+            <p>AtlasDays handles visa limits, residency thresholds, and travel history from one record.</p>
+          </div>
+          <a class="btn btn-primary" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">Download on the App Store</a>
         </div>
       </div>
     </section>
