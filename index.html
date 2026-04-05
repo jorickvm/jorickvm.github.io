@@ -489,10 +489,12 @@
       align-content: start;
     }
     .proof-shot {
-      width: min(100%, 560px);
+      width: fit-content;
+      max-width: 100%;
       margin: 0 auto;
-      padding: 10px;
-      border-radius: 28px;
+      justify-self: center;
+      padding: 4px;
+      border-radius: 20px;
       background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04));
       border: 1px solid rgba(255,255,255,0.12);
       box-shadow: var(--shadow);
@@ -500,11 +502,13 @@
       -webkit-backdrop-filter: blur(10px);
     }
     .proof-shot img {
-      width: 100%;
+      display: block;
+      width: auto;
+      max-width: min(100%, 370px);
       height: min(72svh, 760px);
       object-fit: contain;
       object-position: top center;
-      border-radius: 22px;
+      border-radius: 16px;
       border: 1px solid var(--line);
       background: var(--bg-elevated);
     }
@@ -828,10 +832,8 @@
     }
 
     @media (max-width: 960px) {
-      .proof-shot {
-        width: min(100%, 500px);
-      }
       .proof-shot img {
+        max-width: min(100%, 350px);
         height: min(66svh, 680px);
       }
     }
@@ -880,13 +882,13 @@
         gap: 14px;
       }
       .proof-shot {
-        width: 100%;
-        padding: 8px;
-        border-radius: 22px;
+        padding: 3px;
+        border-radius: 18px;
       }
       .proof-shot img {
+        max-width: min(100%, 320px);
         height: min(64svh, 600px);
-        border-radius: 17px;
+        border-radius: 14px;
       }
       .proof-copy {
         text-align: left;
@@ -1137,9 +1139,9 @@
     <section id="proof" class="section">
       <div class="container">
         <div class="section-header reveal">
-          <p class="section-kicker">Product proof</p>
-          <h2>The count stays grounded in the record</h2>
-          <p>Trackers, timeline, and import review all point back to the same trips.</p>
+          <p class="section-kicker">How It Works</p>
+          <h2>From the count to the trips behind it</h2>
+          <p>Check your tracker, inspect the timeline, and review imports before anything changes your record.</p>
         </div>
         <div class="proof-story reveal" data-proof-carousel>
           <div class="proof-carousel">
@@ -1179,7 +1181,7 @@
 
               <article class="proof-slide" data-proof-slide>
                 <div class="proof-shot">
-                  <img src="assets/home/home-proof-import.webp" alt="AtlasDays CSV import screen showing a file preview before saving" width="1320" height="2868" loading="lazy" />
+                  <img src="assets/home/home-proof-import-preview.webp" alt="AtlasDays CSV import preview showing a file before saving" width="1206" height="2622" loading="lazy" />
                 </div>
                 <div class="proof-copy">
                   <p class="proof-label">Import and export</p>
@@ -1214,13 +1216,10 @@
           <div class="privacy-grid">
             <div>
               <h2>Private by design, because day counts and travel records are sensitive</h2>
-              <p>Visa limits, residency thresholds, and long-term travel history can be sensitive records. AtlasDays is built so the product does not need an account or an AtlasDays server copy of your trips. Calculations run on-device. iCloud sync is optional. Country detection is optional.</p>
+              <p>Visa limits, residency thresholds, and long-term travel history can be sensitive records. AtlasDays keeps the privacy model simple: no required account, no AtlasDays server copy of your trips, and on-device calculations. Optional features like iCloud sync and country suggestions stay opt-in.</p>
               <div class="trust-row">
-                <span class="pill">No account required</span>
                 <span class="pill">No AtlasDays server copy</span>
                 <span class="pill">On-device calculations</span>
-                <span class="pill">Optional iCloud sync</span>
-                <span class="pill">Optional country suggestions</span>
                 <span class="pill">No third-party analytics SDKs</span>
               </div>
               <div class="disclaimer">Read the <a href="/privacy">App Privacy page</a> and the <a href="/help/privacy-location-and-sync">Privacy, Location, and Sync guide</a> for the exact storage, location, and sync model.</div>
