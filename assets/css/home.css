@@ -748,15 +748,13 @@ footer { padding-bottom: 36px; }
   .hero-mobile-visuals {
     display: block;
     position: relative;
-    width: min(calc(100vw - 8px), 460px);
+    width: min(calc(100vw - 20px), 430px);
     max-width: none;
-    height: clamp(500px, 134vw, 648px);
-    margin: 18px auto 8px;
+    height: clamp(560px, 152vw, 760px);
+    margin: 20px auto 20px;
   }
   .hero-mobile-shot {
     position: absolute;
-    overflow: hidden;
-    aspect-ratio: 1 / 1.95;
     padding: 8px;
     border-radius: 24px;
     background: linear-gradient(180deg, rgba(255,255,255,0.10), rgba(255,255,255,0.04));
@@ -766,22 +764,20 @@ footer { padding-bottom: 36px; }
     -webkit-backdrop-filter: blur(10px);
   }
   .hero-mobile-shot.primary {
-    width: 76%;
+    width: 68%;
     right: 0;
     top: 0;
     z-index: 2;
   }
   .hero-mobile-shot.secondary {
-    width: 60%;
+    width: 52%;
     left: 0;
-    bottom: 28px;
+    bottom: 52px;
     z-index: 1;
   }
   .hero-mobile-shot img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top center;
+    height: auto;
     border-radius: 18px;
     border: 1px solid var(--line);
   }
@@ -812,7 +808,10 @@ footer { padding-bottom: 36px; }
   }
   .brand-mark { width: 38px; height: 38px; }
   .hero { padding-top: 26px; }
-  h1 { max-width: 14ch; }
+  h1 {
+    font-size: clamp(2.35rem, 10.2vw, 3rem);
+    max-width: 15ch;
+  }
   .hero-lead-desktop { display: none; }
   .hero-lead-mobile {
     display: block;
@@ -823,18 +822,18 @@ footer { padding-bottom: 36px; }
     text-align: left;
   }
   .hero-mobile-visuals {
-    width: min(calc(100vw - 24px), 420px);
-    height: clamp(480px, 140vw, 610px);
-    margin: 14px auto 8px;
+    width: min(calc(100vw - 32px), 388px);
+    height: clamp(560px, 168vw, 720px);
+    margin: 16px auto 22px;
   }
   .hero-mobile-shot {
     padding: 8px;
     border-radius: 22px;
   }
-  .hero-mobile-shot.primary { width: 75%; }
+  .hero-mobile-shot.primary { width: 69%; }
   .hero-mobile-shot.secondary {
-    width: 61%;
-    bottom: 22px;
+    width: 52%;
+    bottom: 56px;
   }
   .card,
   .feature,
@@ -848,17 +847,12 @@ footer { padding-bottom: 36px; }
     gap: 14px;
   }
   .proof-shot {
-    width: min(100%, 330px);
     padding: 3px;
     border-radius: 18px;
-    overflow: hidden;
   }
   .proof-shot img {
-    width: 100%;
-    max-width: none;
-    height: clamp(480px, 126vw, 548px);
-    object-fit: cover;
-    object-position: top center;
+    max-width: min(100%, 320px);
+    height: min(64svh, 600px);
     border-radius: 14px;
   }
   .proof-copy {
