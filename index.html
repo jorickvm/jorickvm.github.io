@@ -92,7 +92,7 @@
   }
   </script>
   <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)})()</script>
-  <link rel="stylesheet" href="assets/css/home.css?v=20260407b" />
+  <link rel="stylesheet" href="assets/css/home.css?v=20260405a" />
 </head>
 <body>
   <header class="site-header">
@@ -110,7 +110,8 @@
         <a class="hide-mobile" href="/changelog">Changelog</a>
         <a href="/help/">Help Center</a>
         <a href="/learn/">Learn</a>
-        <a class="nav-cta" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a>
+        <a class="mobile-only-link" href="/help/">Help Center</a>
+        <a class="nav-cta" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">Download</a>
         <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()">
           <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
           <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -123,26 +124,27 @@
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-copy reveal visible">
-          <div class="eyebrow" aria-label="Trust signals">
-            <span>No account required</span>
-            <span>On-device</span>
-            <span>Optional iCloud sync</span>
-          </div>
+          <div class="eyebrow"><span class="dot"></span>Private day tracking for iPhone and iPad</div>
           <h1>Private day tracking that holds up when dates matter.</h1>
-          <p class="hero-lead">Track 90/180 limits, 183-day thresholds, and travel history from one private trip record.</p>
+          <p class="hero-lead hero-lead-desktop">AtlasDays is built for people who need accurate day counts: track visa limits, monitor residency or tax presence thresholds, and keep a long-term travel history you can trust. Your travel record stays on your device, with no account required and optional iCloud sync.</p>
+          <p class="hero-lead hero-lead-mobile">Track visa limits, residency thresholds, and travel history on-device. No account required, with optional iCloud sync.</p>
           <div class="hero-actions">
             <a class="btn btn-primary" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">Download on the App Store</a>
             <a class="btn btn-secondary" href="#proof">See the product</a>
           </div>
-          <div class="hero-mobile-visuals" aria-label="AtlasDays dashboard preview">
-            <div class="hero-mobile-shot">
+          <div class="hero-mobile-visuals" aria-label="AtlasDays app previews">
+            <div class="hero-mobile-shot primary">
               <img src="assets/home/home-hero-dashboard.webp" alt="AtlasDays dashboard showing tracker cards, summary stats, and the mini map" width="960" height="2086" />
             </div>
+            <div class="hero-mobile-shot secondary">
+              <img src="assets/home/home-hero-tracker-detail.webp" alt="AtlasDays tracker detail showing used days, remaining days, and the next threshold" width="960" height="2086" />
+            </div>
           </div>
-          <div class="hero-points" aria-label="Key proof points">
-            <div class="hero-point"><strong>Rolling 90/180</strong>Schengen, per-stay limits, and rolling windows.</div>
-            <div class="hero-point"><strong>183-day thresholds</strong>Calendar-year and fiscal-year presence trackers.</div>
-            <div class="hero-point"><strong>Exact or year-only history</strong>Rebuild older travel without inventing dates.</div>
+          <div class="hero-points" aria-label="Key benefits">
+            <div class="hero-point"><strong>Visa limits</strong>Schengen 90/180, per-stay limits, and rolling windows.</div>
+            <div class="hero-point"><strong>Residency thresholds</strong>183-day tests, calendar years, and fiscal-year trackers.</div>
+            <div class="hero-point"><strong>Travel history</strong>Exact trips where counts matter, year-only or unknown entries for older history.</div>
+            <div class="hero-point"><strong>Private by design</strong>On-device, no account required, optional iCloud sync.</div>
           </div>
         </div>
 
@@ -254,6 +256,18 @@
               </button>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="mid-cta reveal">
+          <div class="mid-cta-copy">
+            <strong>Ready to track your days privately?</strong>
+            <p>Keep visa limits, residency thresholds, and travel history in one private record.</p>
+          </div>
+          <a class="btn btn-primary" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">Download on the App Store</a>
         </div>
       </div>
     </section>
@@ -373,6 +387,10 @@
           <article class="faq reveal">
             <h3>Why does location access need to be set to "Always"?</h3>
             <p>Automatic country detection uses iOS Significant Location Changes, which only fires in the background — when you actually cross a border. "When In Use" only works while the app is open, so it would miss most arrivals. The feature is optional; you can use AtlasDays entirely by logging trips manually.</p>
+          </article>
+          <article class="faq reveal">
+            <h3>Is there an Android version?</h3>
+            <p>No. AtlasDays is iOS only for now.</p>
           </article>
           <article class="faq reveal">
             <h3>Can I track England, Scotland, Wales, and Northern Ireland separately?</h3>
