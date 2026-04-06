@@ -3,55 +3,420 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>AtlasDays – What's New</title>
-  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <title>Changelog — AtlasDays</title>
+  <meta name="description" content="Public release notes for AtlasDays, the private travel-history app for iPhone." />
+  <link rel="canonical" href="https://atlasdays.app/changelog" />
+  <link rel="icon" type="image/png" href="assets/brand/favicon_light.png?v=20260325a" media="(prefers-color-scheme: light)" />
+  <link rel="icon" type="image/png" href="assets/brand/favicon_dark.png?v=20260325a" media="(prefers-color-scheme: dark)" />
+  <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)})()</script>
   <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      max-width: 720px;
-      margin: 48px auto;
-      padding: 0 24px;
-      color: #1a1a1a;
-      line-height: 1.6;
+    :root {
+      --bg: #0a0b0d;
+      --bg-elevated: #0f1319;
+      --panel: rgba(255,255,255,0.035);
+      --panel-strong: rgba(255,255,255,0.055);
+      --text: #f4f7fb;
+      --muted: #b2b9c5;
+      --muted-2: #8790a0;
+      --line: rgba(255,255,255,0.09);
+      --line-strong: rgba(255,255,255,0.14);
+      --blue: #1692ff;
+      --blue-soft: rgba(22,146,255,0.10);
+      --shadow: none;
     }
-    h1 { font-size: 2rem; margin-bottom: 0.25rem; }
-    h2 { font-size: 1.3rem; margin-top: 2.5rem; border-bottom: 1px solid #e0e0e0; padding-bottom: 0.3rem; }
-    h3 { font-size: 1rem; margin-top: 1.2rem; margin-bottom: 0.4rem; color: #444; }
-    p, li { font-size: 1rem; }
-    ul { padding-left: 1.4rem; }
-    .subtitle { color: #666; font-size: 0.9rem; margin-bottom: 2rem; }
-    a { color: #007aff; }
-    @media (prefers-color-scheme: dark) {
-      body { background: #1a1a1a; color: #e5e5e5; }
-      h2 { border-bottom-color: #333; }
-      h3 { color: #aaa; }
-      .subtitle { color: #888; }
+    @media (prefers-color-scheme: light) {
+      :root {
+        --bg: #f7f8fa;
+        --bg-elevated: #ffffff;
+        --panel: rgba(255,255,255,0.7);
+        --panel-strong: #ffffff;
+        --text: #0d1422;
+        --muted: #526075;
+        --muted-2: #6c788b;
+        --line: rgba(12,22,40,0.08);
+        --line-strong: rgba(12,22,40,0.14);
+        --blue-soft: rgba(22,146,255,0.07);
+        --shadow: none;
+      }
+    }
+    html[data-theme="dark"] {
+      --bg: #0a0b0d;
+      --bg-elevated: #0f1319;
+      --panel: rgba(255,255,255,0.035);
+      --panel-strong: rgba(255,255,255,0.055);
+      --text: #f4f7fb;
+      --muted: #b2b9c5;
+      --muted-2: #8790a0;
+      --line: rgba(255,255,255,0.09);
+      --line-strong: rgba(255,255,255,0.14);
+      --blue: #1692ff;
+      --blue-soft: rgba(22,146,255,0.10);
+      --shadow: none;
+    }
+    html[data-theme="light"] {
+      --bg: #f7f8fa;
+      --bg-elevated: #ffffff;
+      --panel: rgba(255,255,255,0.7);
+      --panel-strong: #ffffff;
+      --text: #0d1422;
+      --muted: #526075;
+      --muted-2: #6c788b;
+      --line: rgba(12,22,40,0.08);
+      --line-strong: rgba(12,22,40,0.14);
+      --blue: #1692ff;
+      --blue-soft: rgba(22,146,255,0.07);
+      --shadow: none;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    .page-shell {
+      width: min(780px, calc(100% - 40px));
+      margin: 0 auto;
+      padding: 22px 0 80px;
+    }
+
+    .top-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      margin-bottom: 22px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 650;
+      font-size: 0.98rem;
+      letter-spacing: -0.01em;
+      color: var(--muted);
+    }
+    .brand:hover { color: var(--text); }
+    .brand-mark {
+      width: 26px;
+      height: 26px;
+      overflow: hidden;
+      flex: none;
+    }
+    .brand-mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    .icon-moon, .logo-light { display: none; }
+    .logo-dark { display: block; }
+    @media (prefers-color-scheme: light) {
+      .icon-sun, .logo-dark { display: none; }
+      .icon-moon, .logo-light { display: block; }
+    }
+    html[data-theme="dark"] .icon-sun, html[data-theme="dark"] .logo-dark { display: block; }
+    html[data-theme="dark"] .icon-moon, html[data-theme="dark"] .logo-light { display: none; }
+    html[data-theme="light"] .icon-sun, html[data-theme="light"] .logo-dark { display: none; }
+    html[data-theme="light"] .icon-moon, html[data-theme="light"] .logo-light { display: block; }
+
+    .theme-toggle {
+      background: none;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      color: var(--muted);
+      cursor: pointer;
+      width: 32px;
+      height: 32px;
+      display: inline-grid;
+      place-items: center;
+      padding: 0;
+      transition: border-color 160ms ease, color 160ms ease;
+    }
+    .theme-toggle:hover {
+      border-color: var(--line-strong);
+      color: var(--text);
+    }
+
+    .page-head {
+      padding: 8px 0 26px;
+      border-bottom: 1px solid var(--line);
+      margin-bottom: 28px;
+    }
+    .page-eyebrow {
+      margin: 0 0 10px;
+      color: var(--muted-2);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(1.6rem, 3.2vw, 2rem);
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      font-weight: 650;
+    }
+    .page-copy {
+      max-width: 56ch;
+      margin: 12px 0 0;
+      color: var(--muted);
+      font-size: 0.98rem;
+      line-height: 1.65;
+    }
+    .page-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 22px;
+      margin-top: 18px;
+      color: var(--muted-2);
+      font-size: 0.86rem;
+    }
+    .page-meta > span {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 8px;
+    }
+    .page-meta b {
+      color: var(--text);
+      font-weight: 550;
+      font-variant-numeric: tabular-nums;
+      font-feature-settings: "tnum" 1, "cv11" 1;
+    }
+    .page-meta a {
+      color: var(--blue);
+      border-bottom: 1px solid transparent;
+      transition: border-color 140ms ease;
+    }
+    .page-meta a:hover { border-bottom-color: currentColor; }
+
+    .release-stack {
+      display: grid;
+      gap: 18px;
+    }
+    .release-card {
+      position: relative;
+      padding: 22px 24px 24px;
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--panel);
+    }
+    .release-card-featured {
+      background: var(--panel-strong);
+      border-color: var(--line-strong);
+      box-shadow: inset 3px 0 0 0 var(--blue);
+      padding-left: 26px;
+    }
+    .release-card-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 18px;
+      padding-bottom: 14px;
+      margin-bottom: 14px;
+      border-bottom: 1px solid var(--line);
+    }
+    .release-kicker {
+      display: inline-block;
+      margin: 0 0 6px;
+      padding: 2px 8px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      color: var(--muted-2);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .release-card-featured .release-kicker {
+      color: var(--blue);
+      border-color: rgba(22,146,255,0.35);
+      background: var(--blue-soft);
+    }
+    .release-card h2 {
+      margin: 0;
+      font-size: 1.12rem;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+      font-weight: 650;
+      font-variant-numeric: tabular-nums;
+      font-feature-settings: "tnum" 1, "cv11" 1;
+    }
+    .release-card h2 .v-label {
+      color: var(--muted-2);
+      font-weight: 550;
+      margin-right: 4px;
+    }
+    .release-date {
+      margin: 0;
+      color: var(--muted-2);
+      font-size: 0.86rem;
+      white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+      font-feature-settings: "tnum" 1, "cv11" 1;
+    }
+    .release-summary {
+      margin: 0 0 14px;
+      max-width: 60ch;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .release-section {
+      margin-top: 14px;
+    }
+    .release-section:first-of-type {
+      margin-top: 0;
+    }
+    .release-section h3 {
+      margin: 0 0 8px;
+      color: var(--muted-2);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+    .release-section ul {
+      margin: 0;
+      padding-left: 1.1rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .release-section li {
+      margin-bottom: 0.5rem;
+    }
+    .release-section li:last-child {
+      margin-bottom: 0;
+    }
+    .release-section strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    @media (max-width: 700px) {
+      .page-shell {
+        width: min(780px, calc(100% - 28px));
+        padding-top: 18px;
+      }
+      .top-bar {
+        margin-bottom: 18px;
+      }
+      .page-head {
+        padding-bottom: 22px;
+        margin-bottom: 24px;
+      }
+      .page-copy {
+        font-size: 0.95rem;
+      }
+      .release-card {
+        padding: 20px 18px 20px;
+      }
+      .release-card-featured {
+        padding-left: 20px;
+      }
+      .release-card-head {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+      }
+      .release-date {
+        white-space: normal;
+      }
     }
   </style>
 </head>
 <body>
+  <div class="page-shell">
+    <header class="top-bar">
+      <a class="brand" href="/" aria-label="AtlasDays home">
+        <span class="brand-mark">
+          <img class="logo-dark" src="assets/brand/logo_dark.png?v=20260325a" alt="AtlasDays logo" width="1024" height="1024" />
+          <img class="logo-light" src="assets/brand/logo_light.png?v=20260325a" alt="AtlasDays logo" width="1024" height="1024" />
+        </span>
+        <span>AtlasDays</span>
+      </a>
+      <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()">
+        <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+    </header>
 
-  <p><a href="/">&larr; AtlasDays</a></p>
-  <h1>What's New in AtlasDays</h1>
-  <p class="subtitle">New features and improvements in each release.</p>
+    <section class="page-head">
+      <p class="page-eyebrow">Release Notes</p>
+      <h1>AtlasDays Changelog</h1>
+      <p class="page-copy">A record of what's shipped in AtlasDays since the App Store launch.</p>
+      <div class="page-meta">
+        <span>Latest release <b>1.0.1</b></span>
+        <span>Updated <b>April 6, 2026</b></span>
+        <span><a href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">View on the App Store</a></span>
+      </div>
+    </section>
 
-  <h2>Version 1.0.1 <span style="color:#999; font-weight:normal;">— April 6, 2026</span></h2>
-  <h3>New</h3>
-  <ul>
-    <li><strong>Travel purpose</strong> — tag trips as Tourism, Business, Medical, Transit, or Personal</li>
-  </ul>
-  <h3>Improved</h3>
-  <ul>
-    <li>Various refinements and polish across trip cards, the trip form, and settings</li>
-  </ul>
+    <main class="release-stack">
+      <article class="release-card release-card-featured">
+        <div class="release-card-head">
+          <div>
+            <p class="release-kicker">Latest release</p>
+            <h2><span class="v-label">v</span>1.0.1</h2>
+          </div>
+          <p class="release-date">April 6, 2026</p>
+        </div>
+        <div class="release-section">
+          <h3>New</h3>
+          <ul>
+            <li><strong>Travel purpose</strong> - categorize each trip as Tourism, Business, Medical, Transit, or Personal.</li>
+          </ul>
+        </div>
+        <div class="release-section">
+          <h3>Improved</h3>
+          <ul>
+            <li>Refined trip cards and a simpler trip-entry form.</li>
+          </ul>
+        </div>
+      </article>
 
-  <h2>Version 1.0 <span style="color:#999; font-weight:normal;">— April 2, 2026</span></h2>
-  <h3>New</h3>
-  <ul>
-    <li><strong>App Store launch</strong> — AtlasDays is now available on the App Store</li>
-    <li><strong>Travel records in one place</strong> — track visa limits, residency thresholds, and travel history from the same trip record</li>
-    <li><strong>Exports and reports</strong> — export your records with CSV support and PDF travel reports</li>
-  </ul>
+      <article class="release-card">
+        <div class="release-card-head">
+          <div>
+            <p class="release-kicker">App Store launch</p>
+            <h2><span class="v-label">v</span>1.0</h2>
+          </div>
+          <p class="release-date">April 2, 2026</p>
+        </div>
+        <p class="release-summary">First public release of AtlasDays - a private travel history, day counter, and reporting tool for iPhone.</p>
+        <div class="release-section">
+          <h3>Included in this release</h3>
+          <ul>
+            <li><strong>Travel timeline</strong> - log exact trips, older approximate history, and transit records in one continuous timeline.</li>
+            <li><strong>Visa and residency trackers</strong> - Schengen 90/180, rolling windows, per-entry limits, fiscal-year periods, and custom day thresholds.</li>
+            <li><strong>Dashboard overview</strong> - world map, country totals, days abroad, and yearly breakdowns.</li>
+            <li><strong>Threshold alerts</strong> - notifications as you approach any visa or residency day limit.</li>
+            <li><strong>CSV and PDF export</strong> - export your records or generate printable travel reports.</li>
+            <li><strong>On-device and private</strong> - no account required, with optional iCloud sync.</li>
+          </ul>
+        </div>
+      </article>
+    </main>
+  </div>
 
+  <script>
+    function toggleTheme() {
+      var html = document.documentElement;
+      var current = html.getAttribute('data-theme');
+      var isDark;
+      if (current) isDark = current === 'dark';
+      else isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      var next = isDark ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('theme', next);
+    }
+  </script>
 </body>
 </html>
