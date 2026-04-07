@@ -32,16 +32,25 @@ document.querySelectorAll('[data-proof-carousel]').forEach((carousel) => {
   const next = carousel.querySelector('[data-proof-next]');
   let activeIndex = 0;
 
+  const getPageSize = () => window.matchMedia('(min-width: 961px)').matches ? 3 : 1;
+  const pageStartFor = (index) => {
+    const size = getPageSize();
+    return Math.floor(index / size) * size;
+  };
+
   function setActive(index) {
     activeIndex = index;
+    const pageSize = getPageSize();
+    const totalPages = Math.ceil(slides.length / pageSize);
+    const currentPage = Math.floor(index / pageSize);
     dots.forEach((dot, dotIndex) => {
       const isActive = dotIndex === index;
       dot.classList.toggle('is-active', isActive);
       dot.setAttribute('aria-current', isActive ? 'true' : 'false');
       dot.setAttribute('aria-pressed', isActive ? 'true' : 'false');
     });
-    if (prev) prev.disabled = index === 0;
-    if (next) next.disabled = index === slides.length - 1;
+    if (prev) prev.disabled = currentPage === 0;
+    if (next) next.disabled = currentPage === totalPages - 1;
   }
 
   function goTo(index) {
@@ -50,11 +59,17 @@ document.querySelectorAll('[data-proof-carousel]').forEach((carousel) => {
   }
 
   dots.forEach((dot, index) => {
-    dot.addEventListener('click', () => goTo(index));
+    dot.addEventListener('click', () => goTo(pageStartFor(index)));
   });
 
-  if (prev) prev.addEventListener('click', () => goTo(activeIndex - 1));
-  if (next) next.addEventListener('click', () => goTo(activeIndex + 1));
+  if (prev) prev.addEventListener('click', () => {
+    const target = pageStartFor(activeIndex) - getPageSize();
+    if (target >= 0) goTo(target);
+  });
+  if (next) next.addEventListener('click', () => {
+    const target = pageStartFor(activeIndex) + getPageSize();
+    if (target < slides.length) goTo(target);
+  });
 
   const slideObserver = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {

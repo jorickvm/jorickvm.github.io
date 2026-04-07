@@ -304,6 +304,7 @@ h1 {
   line-height: 1.06;
   letter-spacing: -0.04em;
   margin: 0 0 10px;
+  text-wrap: balance;
 }
 .section-header p {
   margin: 0;
@@ -517,7 +518,30 @@ code {
   transform: none;
 }
 @media (min-width: 961px) {
+  .proof-track {
+    gap: 24px;
+    grid-auto-columns: calc((100% - 48px) / 3);
+  }
+  .proof-slide {
+    scroll-snap-align: none;
+    scroll-snap-stop: normal;
+  }
+  .proof-slide:nth-child(3n+1) {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+  .proof-shot img {
+    max-width: 280px;
+    max-height: none;
+  }
+  .proof-copy h3 {
+    font-size: clamp(1.2rem, 1.4vw, 1.5rem);
+  }
+  .proof-copy {
+    min-height: 6.4em;
+  }
   .proof-arrow { display: inline-grid; }
+  .proof-dots { display: none; }
 }
 .doc-card {
   display: flex;
@@ -575,6 +599,7 @@ code {
   margin: 0 0 10px;
   font-size: clamp(1.8rem, 2.5vw, 2.6rem);
   letter-spacing: -0.04em;
+  text-wrap: balance;
 }
 .privacy-panel p {
   margin: 0 0 16px;
@@ -602,24 +627,26 @@ code {
 .mid-cta {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 20px 22px;
-  background: var(--bg-card);
-  border: 1px solid var(--line);
-  border-radius: 24px;
+  justify-content: flex-start;
+  gap: 36px;
+  padding: 32px 36px;
+  background: linear-gradient(180deg, rgba(22,146,255,0.10), rgba(22,146,255,0.03));
+  border: 1px solid rgba(22,146,255,0.18);
+  border-radius: 26px;
   box-shadow: var(--shadow);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
 }
 .mid-cta-copy {
+  flex: 1;
   min-width: 0;
 }
 .mid-cta-copy strong {
   display: block;
-  margin-bottom: 4px;
-  font-size: 1rem;
-  letter-spacing: -0.02em;
+  margin-bottom: 6px;
+  font-size: clamp(1.35rem, 1.8vw, 1.7rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
 }
 .mid-cta-copy p {
   margin: 0;
@@ -642,6 +669,7 @@ code {
   font-size: clamp(1.8rem, 2.8vw, 2.7rem);
   line-height: 1.02;
   letter-spacing: -0.04em;
+  text-wrap: balance;
 }
 .cta-panel p {
   margin: 0;
@@ -947,7 +975,6 @@ footer { padding-bottom: 36px; }
     font-size: 0.94rem;
   }
   .hero-actions { gap: 10px; }
-  .cta-panel h2 { max-width: 12ch; }
   .footer-points,
   .footer-nav { grid-template-columns: 1fr; }
 }
