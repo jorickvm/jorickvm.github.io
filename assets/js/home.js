@@ -72,3 +72,15 @@ document.querySelectorAll('[data-proof-carousel]').forEach((carousel) => {
   setActive(0);
 });
 
+document.querySelectorAll('.hero-video').forEach((video) => {
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const playFromStart = () => {
+    video.currentTime = 0;
+    video.play().catch(() => {});
+  };
+  video.addEventListener('click', playFromStart);
+  if (reduceMotion) return;
+  if (document.readyState === 'complete') playFromStart();
+  else window.addEventListener('load', playFromStart, { once: true });
+});
+

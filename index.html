@@ -50,10 +50,26 @@
       },
       {
         "@type": "Question",
-        "name": "Can I add older trips with incomplete dates?",
+        "name": "Is AtlasDays free?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. AtlasDays supports exact trips, year-only entries, and unknown-date visits. Approximate history stays useful without turning into fake precision."
+          "text": "Yes. The core day tracking, trips, trackers, and map are free with no account required. AtlasDays Pro is an optional upgrade, available as a yearly subscription or a one-time lifetime purchase."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is there an Android version?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. AtlasDays is iOS only for now."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is this legal or tax advice?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. AtlasDays helps you keep records and count days. Interpretation of immigration or tax rules is still your responsibility."
         }
       },
       {
@@ -69,7 +85,15 @@
         "name": "Can I import and export travel history?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. AtlasDays supports CSV import and export, and the import flow shows a preview with validation before imported trips are saved."
+          "text": "Yes. AtlasDays supports CSV import, CSV export, and PDF travel reports, and the import flow shows a preview with validation before imported trips are saved."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I add older trips with incomplete dates?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. AtlasDays supports exact trips, year-only entries, and unknown-date visits. Approximate history stays useful without turning into fake precision."
         }
       },
       {
@@ -77,22 +101,30 @@
         "name": "Does it work offline?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. Your trip log, trackers, and map stay available on-device without an internet connection."
+          "text": "Yes. Your trips, trackers, and map stay available on-device without an internet connection."
         }
       },
       {
         "@type": "Question",
-        "name": "Is this legal or tax advice?",
+        "name": "Why does location access need to be set to \"Always\"?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. AtlasDays helps you keep records and count days. Interpretation of immigration or tax rules is still your responsibility."
+          "text": "Automatic country detection uses iOS Significant Location Changes, which only fires in the background, when you actually cross a border. \"When In Use\" only works while the app is open, so it would miss most arrivals. The feature is optional; you can use AtlasDays entirely by logging trips manually."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I track England, Scotland, Wales, and Northern Ireland separately?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Not currently. AtlasDays tracks at the country level, so all four home nations log under the United Kingdom."
         }
       }
     ]
   }
   </script>
-  <script>(function(){var t=localStorage.getItem('theme');if(t)document.documentElement.setAttribute('data-theme',t)})()</script>
-  <link rel="stylesheet" href="assets/css/home.css?v=20260407h" />
+  <script>(function(){var t=localStorage.getItem('theme');document.documentElement.setAttribute('data-theme',t==='light'?'light':'dark');document.documentElement.classList.add('js')})()</script>
+  <link rel="stylesheet" href="assets/css/home.css?v=20260407q" />
 </head>
 <body>
   <header class="site-header">
@@ -107,7 +139,6 @@
       <nav class="nav-links" aria-label="Primary">
         <a class="hide-mobile" href="#proof">Proof</a>
         <a class="hide-mobile" href="#privacy">Privacy</a>
-        <a class="hide-mobile" href="/changelog">Changelog</a>
         <a href="/help/">Help Center</a>
         <a href="/learn/">Learn</a>
         <a class="mobile-only-link" href="/help/">Help Center</a>
@@ -124,7 +155,7 @@
     <section class="hero">
       <div class="container hero-grid">
         <div class="hero-copy-main reveal visible">
-          <div class="eyebrow"><span class="dot"></span>Private day tracking for iPhone and iPad</div>
+          <div class="eyebrow"><span class="dot"></span>Available now for iPhone &amp; iPad</div>
           <h1>Private day tracking<br class="mobile-break"> that holds up when<br class="mobile-break"> dates matter.</h1>
           <p class="hero-lead hero-lead-desktop">AtlasDays helps you stay inside visa limits, prove residency when you need to, and rebuild a long-term travel history you can trust. Your record stays on your iPhone – no account required, with optional iCloud sync.</p>
           <p class="hero-lead hero-lead-mobile">Stay inside visa limits, prove residency when you need to, and rebuild a travel history you can trust – without an account or cloud upload.</p>
@@ -136,7 +167,12 @@
 
         <div class="visual-wrap" aria-label="AtlasDays app previews">
           <div class="visual-card primary">
-            <img src="assets/home/home-hero-dashboard.webp" alt="AtlasDays dashboard showing tracker cards, summary stats, and the mini map" width="960" height="2086" />
+            <div class="hero-media">
+              <img class="hero-media-still" src="assets/home/home-hero-dashboard-final.webp" alt="AtlasDays dashboard showing the Schengen tracker, all-time stats, and the world map" width="1206" height="2622" />
+              <video class="hero-media-video hero-video" muted playsinline preload="none" poster="assets/home/home-hero-dashboard-poster.webp" width="1206" height="2622" aria-hidden="true" tabindex="0">
+                <source src="assets/home/home-hero-dashboard.mp4?v=20260407b" type="video/mp4">
+              </video>
+            </div>
           </div>
           <div class="visual-card secondary">
             <img src="assets/home/home-hero-tracker-detail.webp" alt="AtlasDays tracker detail showing used days, remaining days, and the next threshold" width="960" height="2086" />
@@ -155,9 +191,9 @@
     <section id="proof" class="section">
       <div class="container">
         <div class="section-header reveal">
-          <p class="section-kicker">How It Works</p>
-          <h2>From the count to the trips behind it</h2>
-          <p>Check your tracker, inspect the timeline, and review imports before anything changes your record.</p>
+          <p class="section-kicker">See the product</p>
+          <h2>Trackers, timelines, maps, alerts, and the trips behind every count</h2>
+          <p>The same record powers your visa math, your residency thresholds, and the travel history behind both.</p>
         </div>
         <div class="proof-story reveal" data-proof-carousel>
           <div class="proof-carousel">
@@ -202,7 +238,7 @@
                 <div class="proof-copy">
                   <p class="proof-label">Alerts</p>
                   <h3>Get warned before the count crosses the line</h3>
-                  <p>Set alerts 14 days out, 3 days out, or the moment you hit the limit.</p>
+                  <p>Configure alerts however you want, for any tracker, at any threshold.</p>
                 </div>
               </article>
 
@@ -243,8 +279,9 @@
         <div class="privacy-panel reveal">
           <div class="privacy-grid">
             <div>
-              <h2>Private by design, because day counts and travel records are sensitive</h2>
-              <p>Visa limits, residency thresholds, and long-term travel history can be sensitive records. AtlasDays keeps the privacy model simple: no required account, no AtlasDays server copy of your trips, and on-device calculations. Optional features like iCloud sync and country suggestions stay opt-in.</p>
+              <p class="section-kicker">Privacy</p>
+              <h2>Your travel record stays on your iPhone</h2>
+              <p>Visa limits, residency thresholds, and long-term travel history can be sensitive records, so the model is simple: no required account, no AtlasDays server copy of your trips, and on-device calculations. iCloud sync and country suggestions stay opt-in.</p>
               <div class="trust-row">
                 <span class="pill">No AtlasDays server copy</span>
                 <span class="pill">On-device calculations</span>
@@ -264,8 +301,8 @@
       <div class="container">
         <div class="mid-cta reveal">
           <div class="mid-cta-copy">
-            <strong>Ready to track your days privately?</strong>
-            <p>Keep visa limits, residency thresholds, and travel history in one private record.</p>
+            <strong>The count, on hand the moment you need it.</strong>
+            <p>Whether you're at the border, filing your taxes, or filling in a visa form.</p>
           </div>
           <a class="btn btn-primary" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">Download on the App Store</a>
         </div>
@@ -285,8 +322,16 @@
             <p>Yes. AtlasDays supports rolling windows, per-stay limits, calendar-year counting, and custom trackers.</p>
           </article>
           <article class="faq reveal">
-            <h3>Can I add older trips with incomplete dates?</h3>
-            <p>Yes. AtlasDays supports exact trips, year-only entries, and unknown-date visits. Approximate history stays useful without turning into fake precision.</p>
+            <h3>Is AtlasDays free?</h3>
+            <p>Yes. The core day tracking, trips, trackers, and map are free with no account required. AtlasDays Pro is an optional upgrade, available as a yearly subscription or a one-time lifetime purchase.</p>
+          </article>
+          <article class="faq reveal">
+            <h3>Is there an Android version?</h3>
+            <p>No. AtlasDays is iOS only for now.</p>
+          </article>
+          <article class="faq reveal">
+            <h3>Is this legal or tax advice?</h3>
+            <p>No. AtlasDays helps you keep records and count days. Interpretation of immigration or tax rules is still your responsibility.</p>
           </article>
           <article class="faq reveal">
             <h3>Does it store my precise location?</h3>
@@ -297,20 +342,16 @@
             <p>Yes. AtlasDays supports CSV import, CSV export, and PDF travel reports, and the import flow shows a preview with validation before imported trips are saved.</p>
           </article>
           <article class="faq reveal">
+            <h3>Can I add older trips with incomplete dates?</h3>
+            <p>Yes. AtlasDays supports exact trips, year-only entries, and unknown-date visits. Approximate history stays useful without turning into fake precision.</p>
+          </article>
+          <article class="faq reveal">
             <h3>Does it work offline?</h3>
             <p>Yes. Your trips, trackers, and map stay available on-device without an internet connection.</p>
           </article>
           <article class="faq reveal">
-            <h3>Is this legal or tax advice?</h3>
-            <p>No. AtlasDays helps you keep records and count days. Interpretation of immigration or tax rules is still your responsibility.</p>
-          </article>
-          <article class="faq reveal">
             <h3>Why does location access need to be set to "Always"?</h3>
             <p>Automatic country detection uses iOS Significant Location Changes, which only fires in the background – when you actually cross a border. "When In Use" only works while the app is open, so it would miss most arrivals. The feature is optional; you can use AtlasDays entirely by logging trips manually.</p>
-          </article>
-          <article class="faq reveal">
-            <h3>Is there an Android version?</h3>
-            <p>No. AtlasDays is iOS only for now.</p>
           </article>
           <article class="faq reveal">
             <h3>Can I track England, Scotland, Wales, and Northern Ireland separately?</h3>
@@ -323,7 +364,7 @@
     <section id="help" class="section">
       <div class="container">
         <div class="section-header reveal">
-          <p class="section-kicker">Help Center and Learn</p>
+          <p class="section-kicker">Resources</p>
           <h2>Help Center and Learn</h2>
           <p>Go deeper into trackers, trip precision, imports, privacy, and the visa or residency rules the product is built around.</p>
         </div>
@@ -358,13 +399,12 @@
       <div class="container">
         <div class="cta-panel reveal">
           <div class="cta-panel-copy">
-            <h2>AtlasDays is live on the App Store</h2>
-            <p>Download AtlasDays for iPhone and iPad to track visa limits, residency thresholds, and travel history from one private on-device record.</p>
+            <h2>Track your days privately. Today.</h2>
+            <p>AtlasDays is on the App Store for iPhone and iPad. Free for the core, no account, no cloud upload.</p>
           </div>
           <div class="cta-panel-actions">
             <a class="btn btn-primary" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">Download on the App Store</a>
             <a class="btn btn-secondary" href="/help/">Open Help Center</a>
-            <div class="cta-note">AtlasDays is available now on the App Store. Use the Help Center if you want setup steps, tracker guidance, privacy details, or import/export instructions before relying on the record.</div>
           </div>
         </div>
       </div>
@@ -419,6 +459,6 @@
     </div>
   </footer>
 
-  <script src="assets/js/home.js?v=20260407a"></script>
+  <script src="assets/js/home.js?v=20260407i"></script>
 </body>
 </html>
