@@ -33,6 +33,7 @@
     .breadcrumb { font-size:0.88rem; color:var(--muted-2); margin-bottom:24px; }
     .breadcrumb a { color:var(--muted); }
     h1 { font-size:clamp(1.8rem, 4vw, 2.6rem); line-height:1.1; letter-spacing:-0.03em; margin:0 0 12px; }
+    .updated { color:var(--muted-2); font-size:0.9rem; line-height:1.4; margin:-4px 0 16px; }
     .subtitle { color:var(--muted); font-size:1.08rem; margin:0 0 24px; }
     h2 { font-size:1.4rem; letter-spacing:-0.02em; margin:36px 0 12px; }
     h3 { font-size:1.1rem; margin:28px 0 8px; }
@@ -161,6 +162,7 @@
     </nav>
 
     <h1>Trackers and Limits</h1>
+    <p class="updated">Last updated: April 11, 2026</p>
     <p class="subtitle">Troubleshoot a tracker that looks wrong, keep the setup aligned with your rule, and verify when the result is safe to trust.</p>
 
     <!-- ARTICLE_IMAGE:hero -->
@@ -327,13 +329,13 @@
       <li><strong>AtlasDays Pro</strong> unlocks unlimited trackers.</li>
       <li><strong>Smart Alerts</strong> are an <strong>AtlasDays Pro</strong> feature and require notification permission.</li>
     </ul>
-    <p>For upper-limit trackers, AtlasDays can alert at <strong>7 days remaining</strong>, <strong>1 day remaining</strong>, and <strong>at limit</strong>. For target trackers, it can alert when the <strong>target is reached</strong>. These alerts are recalculated when your trip data changes.</p>
+    <p>For upper-limit trackers, AtlasDays starts with sensible warning thresholds such as <strong>7 days remaining</strong>, <strong>1 day remaining</strong>, and <strong>at limit</strong> where they apply. For target trackers, it can alert when the <strong>target is reached</strong>. You can adjust tracker alert thresholds and alert time in the tracker alert settings, and alerts are recalculated when your trip data changes.</p>
     <h3>Why Smart Alerts May Not Fire</h3>
     <ul>
       <li><strong>AtlasDays Pro:</strong> Smart Alerts are not available on the free plan.</li>
       <li><strong>Notification permission:</strong> AtlasDays needs notification permission on that device.</li>
       <li><strong>Tracker setup:</strong> the tracker still needs the right country set, mode, and window, and the relevant trips need to be present in the record.</li>
-      <li><strong>No matching alert point yet:</strong> do not expect Smart Alerts until the tracker reaches one of the supported alert states for its mode.</li>
+      <li><strong>No matching alert point yet:</strong> do not expect Smart Alerts until the tracker reaches one of its configured alert states for its mode.</li>
     </ul>
     <p>Missing Smart Alerts do not prove the tracker is wrong, and delivered Smart Alerts do not prove the tracker is configured correctly. Review the tracker itself before you rely on it.</p>
 
@@ -343,7 +345,7 @@
       <li><strong>Tracker Detail</strong> lets you inspect the trips and per-country totals currently affecting the tracker.</li>
       <li><strong>Do not assume the country rows should add up exactly to the tracker total.</strong> If the same calendar date appears in more than one tracked trip or country row, the tracker total still counts that shared date once.</li>
       <li><strong>CSV export</strong> exports trips, not tracker definitions.</li>
-      <li><strong>PDF export</strong> can include a tracker summary, but the export is still downstream of the same trip quality and window choices.</li>
+      <li><strong>PDF export</strong> summarizes trips and countries in the selected export period; it does not export tracker definitions.</li>
     </ul>
     <p>If you want to check the raw trip output before trusting a tracker, use <a href="/help/dashboard-and-map">Dashboard and Map</a> to inspect the live record and <a href="/help/export-and-reports">Export and Reports</a> to inspect the exported trip set.</p>
 

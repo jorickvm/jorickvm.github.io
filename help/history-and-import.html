@@ -4,15 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Trip Modes and Record Quality — AtlasDays Help Center</title>
-  <meta name="description" content="Troubleshoot messy trip history in AtlasDays: choose Exact Dates, Year, Unknown, Transit, and ongoing correctly, and resolve duplicates or overlaps before trusting counts." />
+  <meta name="description" content="Troubleshoot messy trip history in AtlasDays: choose Exact Dates, Year, Unknown, Transit, and ongoing correctly, and review Photo Import or CSV Import before trusting counts." />
   <meta property="og:title" content="Trip Modes and Record Quality — AtlasDays Help Center" />
-  <meta property="og:description" content="Troubleshoot messy trip history in AtlasDays: choose Exact Dates, Year, Unknown, Transit, and ongoing correctly, and resolve duplicates or overlaps before trusting counts." />
+  <meta property="og:description" content="Troubleshoot messy trip history in AtlasDays: choose Exact Dates, Year, Unknown, Transit, and ongoing correctly, and review Photo Import or CSV Import before trusting counts." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/help/history-and-import" />
   <meta property="og:image" content="https://atlasdays.app/assets/home/home-hero-dashboard.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Trip Modes and Record Quality — AtlasDays Help Center" />
-  <meta name="twitter:description" content="Troubleshoot messy trip history in AtlasDays: choose Exact Dates, Year, Unknown, Transit, and ongoing correctly, and resolve duplicates or overlaps before trusting counts." />
+  <meta name="twitter:description" content="Troubleshoot messy trip history in AtlasDays: choose Exact Dates, Year, Unknown, Transit, and ongoing correctly, and review Photo Import or CSV Import before trusting counts." />
   <meta name="twitter:image" content="https://atlasdays.app/assets/home/home-hero-dashboard.png" />
   <link rel="canonical" href="https://atlasdays.app/help/history-and-import" />
   <link rel="icon" type="image/png" href="../assets/brand/favicon_light.png?v=20260325a" media="(prefers-color-scheme: light)" />
@@ -33,6 +33,7 @@
     .breadcrumb { font-size:0.88rem; color:var(--muted-2); margin-bottom:24px; }
     .breadcrumb a { color:var(--muted); }
     h1 { font-size:clamp(1.8rem, 4vw, 2.6rem); line-height:1.1; letter-spacing:-0.03em; margin:0 0 12px; }
+    .updated { color:var(--muted-2); font-size:0.9rem; line-height:1.4; margin:-4px 0 16px; }
     .subtitle { color:var(--muted); font-size:1.08rem; margin:0 0 24px; }
     h2 { font-size:1.4rem; letter-spacing:-0.02em; margin:36px 0 12px; }
     h3 { font-size:1.1rem; margin:28px 0 8px; }
@@ -161,6 +162,7 @@
     </nav>
 
     <h1>Trip Modes and Record Quality</h1>
+    <p class="updated">Last updated: April 11, 2026</p>
     <p class="subtitle">Choose the right trip precision, clean up messy history, and know what to fix before you trust totals, trackers, or exports.</p>
 
     <!-- ARTICLE_IMAGE:hero -->
@@ -177,7 +179,7 @@
       <li>when to use <strong>Exact Dates</strong>, <strong>Year</strong>, or <strong>Unknown</strong></li>
       <li>how <strong>Transit</strong> and <strong>ongoing</strong> trips affect the record</li>
       <li>how duplicates, overlaps, and same-day crossings should be interpreted</li>
-      <li>when manual entry is still better than <a href="/help/csv-import">CSV import</a></li>
+      <li>when manual entry is still better than <a href="/help/photo-import">Photo Import</a> or <a href="/help/csv-import">CSV Import</a></li>
     </ul>
 
     <div class="callout">
@@ -220,7 +222,7 @@
     <ul>
       <li>A <strong>Year</strong> trip can be a single year or a multi-year range.</li>
       <li>Use it for approximate past history, not planned travel.</li>
-      <li>It preserves the visit without pretending you know the exact dates.</li>
+      <li>It preserves the visit without pretending you know the exact dates, and it can appear as visited history without contributing exact counted days.</li>
       <li>Use it when the year is defensible but the exact dates are not.</li>
     </ul>
 
@@ -255,7 +257,7 @@
       <li><strong>Not every shared date is suspicious:</strong> review the chronology before assuming every overlap is bad data.</li>
       <li><strong>Date conflicts</strong> are flagged in Timeline when <strong>Exact Dates</strong>, non-<strong>Transit</strong> trips overlap and should be resolved before you rely on the totals.</li>
       <li><strong>Manual entry</strong> blocks exact duplicates when you try to save them.</li>
-      <li><strong>CSV import</strong> skips duplicate rows automatically instead of adding them twice, but imported history can still create overlaps or other cleanup work.</li>
+      <li><strong>Photo Import</strong> and <strong>CSV Import</strong> skip duplicate candidates automatically instead of adding them twice, but imported history can still create overlaps or other cleanup work.</li>
     </ul>
     <figure class="atlasdays-screenshot">
       <img src="../assets/article-images/help/history-and-import/screenshot-timeline-sections.webp" alt="Timeline showing ongoing and year-grouped sections with visible day badges" width="1206" height="2622" decoding="async" loading="lazy" />
@@ -274,16 +276,16 @@
 
     <h2>When to Use Import Instead of Manual Entry</h2>
     <p>Use manual entry when you are logging a small number of trips, cleaning up recent travel, or still deciding whether an entry should be <strong>Exact Dates</strong>, <strong>Year</strong>, or <strong>Unknown</strong>.</p>
-    <p>Use <a href="/help/csv-import">CSV import</a> when you already have a spreadsheet, a large backlog of travel history, or rough source material you want to convert into a batch import.</p>
+    <p>Use <a href="/help/photo-import">Photo Import</a> when geotagged photo metadata is your best source for reconstructing old travel. Use <a href="/help/csv-import">CSV Import</a> when you already have a spreadsheet, a large backlog of travel history, or rough source material you want to convert into a structured batch import.</p>
     <ul>
-      <li>Decide the right precision for each trip first. Import does <strong>not</strong> resolve ambiguity for you.</li>
+      <li>Decide or review the right precision for each trip first. Import does <strong>not</strong> resolve ambiguity for you.</li>
       <li>Imported duplicates or overlaps should still be reviewed before you trust totals.</li>
       <li>If the source material is messy, expect cleanup after import rather than a perfect record immediately.</li>
     </ul>
 
     <h2>How Record Quality Affects the Rest of the App</h2>
     <ul>
-      <li><strong>Dashboard totals</strong> reflect the trip record you have now, including <strong>Year</strong>, <strong>Unknown</strong>, <strong>Transit</strong>, and any open <strong>ongoing</strong> trip.</li>
+      <li><strong>Dashboard summaries</strong> reflect the trip record you have now, including <strong>Year</strong>, <strong>Unknown</strong>, <strong>Transit</strong>, and any open <strong>ongoing</strong> trip. Exact day totals still depend on <strong>Exact Dates</strong>.</li>
       <li><strong>Trackers</strong> depend most on trips that are saved as <strong>Exact Dates</strong>. <strong>Year</strong> and <strong>Unknown</strong> preserve history but do not power exact tracker math.</li>
       <li><strong>Export output</strong> reflects the same trip record and does not repair conflicts or bad precision choices for you.</li>
       <li><strong>Auto-Detect Trips</strong> can help surface suggestions, but those suggestions still need review, edit, and confirmation before you rely on them as part of the record.</li>
@@ -292,6 +294,7 @@
     <div class="cta-box">
       <h3>Where to go next</h3>
       <p><a href="/help/csv-import">CSV Import</a> explains the file format, preview step, duplicate handling, overlap warnings, and the AI prompt helper.</p>
+      <p><a href="/help/photo-import">Photo Import</a> explains on-device photo metadata scanning, review, duplicate handling, overlaps, transit detection, and Photos privacy.</p>
       <p><a href="/help/dashboard-and-map">Dashboard and Map</a> explains how your trip record turns into totals, summaries, and map output.</p>
       <p><a href="/help/trackers-and-limits">Trackers and Limits</a> explains why exact trips matter when you want actionable counters.</p>
       <p><a href="/help/export-and-reports">Export and Reports</a> explains how this same trip record turns into CSV and PDF output.</p>

@@ -27,7 +27,7 @@
     .brand { display:inline-flex; align-items:center; gap:10px; font-weight:700; color:var(--text); } .brand img { width:30px; height:30px; }
     article { width:min(var(--max), calc(100% - 40px)); margin:0 auto; padding:48px 0 80px; }
     .breadcrumb { font-size:0.88rem; color:var(--muted-2); margin-bottom:24px; } .breadcrumb a { color:var(--muted); }
-    h1 { font-size:clamp(1.8rem, 4vw, 2.6rem); line-height:1.1; letter-spacing:-0.03em; margin:0 0 12px; } .subtitle { color:var(--muted); font-size:1.08rem; margin:0 0 24px; }
+    h1 { font-size:clamp(1.8rem, 4vw, 2.6rem); line-height:1.1; letter-spacing:-0.03em; margin:0 0 12px; } .updated { color:var(--muted-2); font-size:0.9rem; line-height:1.4; margin:-4px 0 16px; } .subtitle { color:var(--muted); font-size:1.08rem; margin:0 0 24px; }
     h2 { font-size:1.4rem; letter-spacing:-0.02em; margin:36px 0 12px; } h3 { font-size:1.1rem; margin:28px 0 8px; }
     p, li { color:var(--muted); font-size:1rem; } p { margin:0 0 16px; } ul { padding-left:20px; margin:0 0 16px; } li { margin:6px 0; } strong { color:var(--text); }
     .callout, .cta-box { padding:20px 24px; border-radius:16px; margin:28px 0; } .callout { background:var(--blue-soft); border:1px solid rgba(22,146,255,0.18); } .cta-box { background:var(--bg-card); border:1px solid var(--line); }
@@ -143,6 +143,7 @@
   <article>
     <nav class="breadcrumb"><a href="/">AtlasDays</a> / <a href="/help/">Help Center</a></nav>
     <h1>Dashboard and Map</h1>
+    <p class="updated">Last updated: April 11, 2026</p>
     <p class="subtitle">Check what the dashboard is summarizing, what the selected period changes, and why totals or map highlights can look wrong.</p>
 
     <!-- ARTICLE_IMAGE:hero -->
@@ -228,7 +229,7 @@
     <p>Shared dates from <strong>Exact Dates</strong> trips are not double-counted in unique dashboard day totals. If you have overlapping trips, or a legitimate same-day border crossing, one calendar date still counts once toward <strong>Days Abroad</strong>. An <strong>ongoing</strong> trip uses today as the effective end date until you close it.</p>
     <p>That is why some results can feel unintuitive while still being correct. Two same-day border crossings can increase <strong>Trips</strong> or the country list, while <strong>Days Abroad</strong> only moves by one unique day for that date.</p>
     <p>It also means country-by-country day rows can add up to more than <strong>Days Abroad</strong> when the same exact date legitimately appears in two countries.</p>
-    <p><strong>Exact Dates</strong> drive precise day totals. <strong>Year</strong> and <strong>Unknown</strong> can still preserve history and affect broader summaries, but they do not create exact day math.</p>
+    <p><strong>Exact Dates</strong> drive precise day totals. <strong>Year</strong> and <strong>Unknown</strong> preserve history, and <strong>Year</strong> entries can appear in broad visited-country or trip summaries where the selected period supports them, but they do not create exact day math.</p>
 
     <h2>When to Fix the Record Instead</h2>
     <p>The right fix is in the record or settings, not on the dashboard, when any of these are true:</p>

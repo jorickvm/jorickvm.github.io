@@ -4,15 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Privacy, Location, and Sync — AtlasDays Help Center</title>
-  <meta name="description" content="Troubleshoot Auto-Detect Trips, notification permission, and iCloud sync expectations while understanding AtlasDays' local-first privacy model." />
+  <meta name="description" content="Troubleshoot Auto-Detect Trips, Photos access, notification permission, and iCloud sync expectations while understanding AtlasDays' local-first privacy model." />
   <meta property="og:title" content="Privacy, Location, and Sync — AtlasDays Help Center" />
-  <meta property="og:description" content="Troubleshoot Auto-Detect Trips, notification permission, and iCloud sync expectations while understanding AtlasDays' local-first privacy model." />
+  <meta property="og:description" content="Troubleshoot Auto-Detect Trips, Photos access, notification permission, and iCloud sync expectations while understanding AtlasDays' local-first privacy model." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/help/privacy-location-and-sync" />
   <meta property="og:image" content="https://atlasdays.app/assets/home/home-hero-dashboard.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Privacy, Location, and Sync — AtlasDays Help Center" />
-  <meta name="twitter:description" content="Troubleshoot Auto-Detect Trips, notification permission, and iCloud sync expectations while understanding AtlasDays' local-first privacy model." />
+  <meta name="twitter:description" content="Troubleshoot Auto-Detect Trips, Photos access, notification permission, and iCloud sync expectations while understanding AtlasDays' local-first privacy model." />
   <meta name="twitter:image" content="https://atlasdays.app/assets/home/home-hero-dashboard.png" />
   <link rel="canonical" href="https://atlasdays.app/help/privacy-location-and-sync" />
   <link rel="icon" type="image/png" href="../assets/brand/favicon_light.png?v=20260325a" media="(prefers-color-scheme: light)" />
@@ -27,7 +27,7 @@
     .brand { display:inline-flex; align-items:center; gap:10px; font-weight:700; color:var(--text); } .brand img { width:30px; height:30px; }
     article { width:min(var(--max), calc(100% - 40px)); margin:0 auto; padding:48px 0 80px; }
     .breadcrumb { font-size:0.88rem; color:var(--muted-2); margin-bottom:24px; } .breadcrumb a { color:var(--muted); }
-    h1 { font-size:clamp(1.8rem, 4vw, 2.6rem); line-height:1.1; letter-spacing:-0.03em; margin:0 0 12px; } .subtitle { color:var(--muted); font-size:1.08rem; margin:0 0 24px; }
+    h1 { font-size:clamp(1.8rem, 4vw, 2.6rem); line-height:1.1; letter-spacing:-0.03em; margin:0 0 12px; } .updated { color:var(--muted-2); font-size:0.9rem; line-height:1.4; margin:-4px 0 16px; } .subtitle { color:var(--muted); font-size:1.08rem; margin:0 0 24px; }
     h2 { font-size:1.4rem; letter-spacing:-0.02em; margin:36px 0 12px; } p, li { color:var(--muted); font-size:1rem; } p { margin:0 0 16px; } ul { padding-left:20px; margin:0 0 16px; } li { margin:6px 0; } strong { color:var(--text); }
     .callout, .cta-box { padding:20px 24px; border-radius:16px; margin:28px 0; } .callout { background:var(--blue-soft); border:1px solid rgba(22,146,255,0.18); } .cta-box { background:var(--bg-card); border:1px solid var(--line); } .cta-btn { display:inline-flex; align-items:center; padding:12px 24px; background:var(--blue); color:white; border-radius:14px; font-weight:650; text-decoration:none; }
     .theme-toggle { background:none; border:1px solid var(--line); border-radius:10px; color:var(--muted); cursor:pointer; width:36px; height:36px; display:inline-grid; place-items:center; padding:0; } .theme-toggle:hover { border-color:var(--blue); color:var(--text); }
@@ -142,6 +142,7 @@
   <article>
     <nav class="breadcrumb"><a href="/">AtlasDays</a> / <a href="/help/">Help Center</a></nav>
     <h1>Privacy, Location, and Sync</h1>
+    <p class="updated">Last updated: April 11, 2026</p>
     <p class="subtitle">Troubleshoot Auto-Detect Trips, notification permission, and iCloud sync confusion without losing sight of AtlasDays' local-first privacy model.</p>
 
     <!-- ARTICLE_IMAGE:hero -->
@@ -156,6 +157,7 @@
     <p>By the end of this page, you should know:</p>
     <ul>
       <li>why Auto-Detect Trips or alerts may not behave as expected</li>
+      <li>what Photos access is used for during <strong>Photo Import</strong></li>
       <li>which permissions matter for which features</li>
       <li>what stays local by default and when iCloud sync is worth turning on</li>
     </ul>
@@ -176,7 +178,7 @@
     </ul>
 
     <h2>What AtlasDays Stores on Your Device</h2>
-    <p>Your trip record and tracker data live in the app's local data store on your device by default. Manual trip entry, dashboard review, tracker calculations, CSV import, and export all work without an AtlasDays account.</p>
+    <p>Your trip record and tracker data live in the app's local data store on your device by default. Manual trip entry, dashboard review, tracker calculations, Photo Import, CSV import, and export all work without an AtlasDays account.</p>
     <p>AtlasDays also keeps some device-level app state locally, such as pending trip suggestions, so the app can continue where you left off.</p>
     <p>If you are signed into iCloud, AtlasDays can also mirror a smaller set of preferences through Apple's iCloud key-value storage. That preference carry-over is separate from full <strong>iCloud sync</strong>.</p>
     <figure class="atlasdays-screenshot">
@@ -190,19 +192,31 @@
       <img src="../assets/article-images/help/privacy-location-and-sync/body-1.webp" alt="Supporting illustration for Privacy, Location, and Sync, focused on how country detection works in the AtlasDays visual style." width="1536" height="1024" decoding="async" sizes="(max-width: 760px) calc(100vw - 40px), 720px" loading="lazy" />
     </figure>
     <!-- ARTICLE_IMAGE_RENDER_END:body-1 -->
-    <p><strong>Auto-Detect Trips</strong> is optional. When you turn it on, AtlasDays uses iOS significant-change location monitoring to notice that you may have entered a different country and then checks which country that is.</p>
+    <p><strong>Auto-Detect Trips</strong> is optional. When you turn it on, AtlasDays uses iOS significant-change location monitoring to notice that you may have entered a different country and then resolves the country on device using bundled country boundaries.</p>
     <p>AtlasDays does <strong>not</strong> silently create trips from location events. It creates a suggestion that you can review, edit, confirm, or dismiss. If the app is open, you see that suggestion in-app. If the app is in the background and <strong>notification permission</strong> is allowed, you can receive a local notification.</p>
     <ul>
       <li>AtlasDays uses significant-change location, not continuous GPS tracking.</li>
       <li>Because it is not continuous GPS, suggestions can arrive later than the actual crossing and some crossings may be missed.</li>
       <li>Raw location history is not stored by AtlasDays and is not sent to an AtlasDays server.</li>
+      <li>AtlasDays keeps local country-detection state so it can avoid repeat suggestions and build a reviewable trip suggestion when the country changes.</li>
       <li>The app avoids re-suggesting the same country until you leave and enter a different one.</li>
       <li>You can leave auto-detect off and log everything manually in <a href="/help/history-and-import">Trip Modes and Record Quality</a>.</li>
+    </ul>
+
+    <h2>What Photo Import Does with Photos Access</h2>
+    <p><strong>Photo Import</strong> is separate from <strong>Auto-Detect Trips</strong>. It scans geotagged photo metadata on device to draft past trips for review.</p>
+    <ul>
+      <li>Full Photos access is needed so AtlasDays can scan the library automatically.</li>
+      <li>AtlasDays reads metadata such as dates and locations. It can use altitude and media-type metadata to ignore likely airplane-window photos, screenshots, and screen recordings.</li>
+      <li>AtlasDays does not view, store, upload, or sync your images.</li>
+      <li>The scan works without an internet connection and resolves countries with bundled boundaries on device.</li>
+      <li>Nothing becomes a trip until you review and confirm the import.</li>
     </ul>
 
     <h2>Which Permissions Matter</h2>
     <ul>
       <li><strong>Location permission</strong> matters only for <strong>Auto-Detect Trips</strong>. Manual trip entry, dashboard review, import, and export do not require it.</li>
+      <li><strong>Photos access</strong> matters only for <strong>Photo Import</strong>. Manual entry, CSV import, dashboard review, trackers, export, and Auto-Detect Trips do not require it.</li>
       <li><strong>Notification permission</strong> matters for background trip-suggestion notifications and tracker alerts. It is not required for manual logging.</li>
       <li>If location permission or notification permission is denied at the iOS level, the related feature cannot behave normally.</li>
       <li>For the most reliable background country detection, allow the location access level iOS offers for ongoing background use. If iOS offers an <strong>Always Allow</strong> upgrade, that is the setting AtlasDays needs for the most reliable background detection.</li>
@@ -247,6 +261,7 @@
       <p><a href="/help/icloud-sync-and-restore">iCloud Sync and Restore</a> explains what syncs, what does not, and what to expect after restart, reinstall, or a device change.</p>
       <p><a href="/help/history-and-import">Trip Modes and Record Quality</a> explains how <strong>Exact Dates</strong>, <strong>Year</strong>, <strong>Unknown</strong>, <strong>Transit</strong>, and ongoing trips affect the record behind alerts and trackers.</p>
       <p><a href="/help/trackers-and-limits">Trackers and Limits</a> explains why tracker alerts may not fire and what to verify before trusting a tracker.</p>
+      <p><a href="/help/photo-import">Photo Import</a> explains the photo scan, review step, duplicate handling, overlaps, transit detection, and date-range limits.</p>
       <p><a href="/help/export-and-reports">Export and Reports</a> explains how to create a portable record before major cleanup, device changes, or support questions.</p>
       <p><a href="/help/getting-started">Getting Started</a> shows where privacy, permissions, and optional detection fit into first-time setup.</p>
       <p>For the formal policy rather than the operational Help page, read <a href="/privacy">the Privacy Policy</a>.</p>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Photo Import — AtlasDays Help Center</title>
+  <meta name="description" content="Use AtlasDays Photo Import to scan geotagged photo metadata on device, review inferred trips, handle duplicates and overlaps, and understand privacy and date-range limits." />
+  <meta property="og:title" content="Photo Import — AtlasDays Help Center" />
+  <meta property="og:description" content="Use AtlasDays Photo Import to scan geotagged photo metadata on device, review inferred trips, handle duplicates and overlaps, and understand privacy and date-range limits." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://atlasdays.app/help/photo-import" />
+  <meta property="og:image" content="https://atlasdays.app/assets/home/home-hero-dashboard.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Photo Import — AtlasDays Help Center" />
+  <meta name="twitter:description" content="Use AtlasDays Photo Import to scan geotagged photo metadata on device, review inferred trips, handle duplicates and overlaps, and understand privacy and date-range limits." />
+  <meta name="twitter:image" content="https://atlasdays.app/assets/home/home-hero-dashboard.png" />
+  <link rel="canonical" href="https://atlasdays.app/help/photo-import" />
+  <link rel="icon" type="image/png" href="../assets/brand/favicon_light.png?v=20260325a" media="(prefers-color-scheme: light)" />
+  <link rel="icon" type="image/png" href="../assets/brand/favicon_dark.png?v=20260325a" media="(prefers-color-scheme: dark)" />
+  <script>(function(){var t=localStorage.getItem('theme');document.documentElement.setAttribute('data-theme',t==='light'?'light':'dark')})()</script>
+  <style>
+    :root { --bg:#0a0b0d; --bg-card:rgba(255,255,255,0.05); --text:#f4f7fb; --muted:#b2b9c5; --muted-2:#8790a0; --line:rgba(255,255,255,0.10); --blue:#1692ff; --blue-soft:rgba(22,146,255,0.12); --max:720px; }
+    @media (prefers-color-scheme: light) { :root { --bg:#f6f8fc; --bg-card:rgba(255,255,255,0.88); --text:#0d1422; --muted:#526075; --muted-2:#6c788b; --line:rgba(12,22,40,0.09); --blue-soft:rgba(22,146,255,0.08); } }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif; color:var(--text); background:var(--bg); line-height:1.7; -webkit-font-smoothing:antialiased; }
+    a { color:var(--blue); text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    .top-bar { border-bottom:1px solid var(--line); padding:18px 0; }
+    .top-bar-inner { width:min(var(--max), calc(100% - 40px)); margin:0 auto; display:flex; align-items:center; justify-content:space-between; }
+    .brand { display:inline-flex; align-items:center; gap:10px; font-weight:700; color:var(--text); text-decoration:none; }
+    .brand img { width:30px; height:30px; }
+    article { width:min(var(--max), calc(100% - 40px)); margin:0 auto; padding:48px 0 80px; }
+    .breadcrumb { font-size:0.88rem; color:var(--muted-2); margin-bottom:24px; }
+    .breadcrumb a { color:var(--muted); }
+    h1 { font-size:clamp(1.8rem, 4vw, 2.6rem); line-height:1.1; letter-spacing:-0.03em; margin:0 0 12px; }
+    .updated { color:var(--muted-2); font-size:0.9rem; line-height:1.4; margin:-4px 0 16px; }
+    .subtitle { color:var(--muted); font-size:1.08rem; margin:0 0 24px; }
+    h2 { font-size:1.4rem; letter-spacing:-0.02em; margin:36px 0 12px; }
+    h3 { font-size:1.1rem; margin:28px 0 8px; }
+    p, li { color:var(--muted); font-size:1rem; }
+    p { margin:0 0 16px; }
+    ul { padding-left:20px; margin:0 0 16px; }
+    li { margin:6px 0; }
+    strong { color:var(--text); }
+    .callout, .cta-box { padding:20px 24px; border-radius:16px; margin:28px 0; }
+    .callout { background:var(--blue-soft); border:1px solid rgba(22,146,255,0.18); }
+    .cta-box { background:var(--bg-card); border:1px solid var(--line); }
+    .theme-toggle { background:none; border:1px solid var(--line); border-radius:10px; color:var(--muted); cursor:pointer; width:36px; height:36px; display:inline-grid; place-items:center; padding:0; }
+    .theme-toggle:hover { border-color:var(--blue); color:var(--text); }
+    .icon-moon, .logo-light { display:none; } .logo-dark { display:block; }
+    @media (prefers-color-scheme: light) { .icon-sun, .logo-dark { display:none; } .icon-moon, .logo-light { display:block; } }
+    html[data-theme="dark"] .icon-sun, html[data-theme="dark"] .logo-dark { display:block; } html[data-theme="dark"] .icon-moon, html[data-theme="dark"] .logo-light { display:none; } html[data-theme="light"] .icon-sun, html[data-theme="light"] .logo-dark { display:none; } html[data-theme="light"] .icon-moon, html[data-theme="light"] .logo-light { display:block; }
+    html[data-theme="dark"] { --bg:#0a0b0d; --bg-card:rgba(255,255,255,0.05); --text:#f4f7fb; --muted:#b2b9c5; --muted-2:#8790a0; --line:rgba(255,255,255,0.10); --blue-soft:rgba(22,146,255,0.12); }
+    html[data-theme="light"] { --bg:#f6f8fc; --bg-card:rgba(255,255,255,0.88); --text:#0d1422; --muted:#526075; --muted-2:#6c788b; --line:rgba(12,22,40,0.09); --blue-soft:rgba(22,146,255,0.08); }
+  </style>
+  <link rel="stylesheet" href="../assets/css/site-header.css?v=20260406a" />
+</head>
+<body>
+  <header class="top-bar">
+    <div class="top-bar-inner">
+      <a class="brand" href="/" aria-label="AtlasDays home">
+        <span class="brand-mark">
+          <img class="logo-dark" src="../assets/brand/logo_dark.png?v=20260325a" alt="AtlasDays logo" width="1024" height="1024" />
+          <img class="logo-light" src="../assets/brand/logo_light.png?v=20260325a" alt="AtlasDays logo" width="1024" height="1024" />
+        </span>
+        <span>AtlasDays</span>
+      </a>
+      <nav class="top-links" aria-label="Primary">
+        <a class="hide-mobile" href="/">Home</a>
+        <a href="/help/" aria-current="page">Help Center</a>
+        <a href="/learn/">Learn</a>
+        <a href="/changelog">Changelog</a>
+        <button class="theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme" onclick="toggleTheme()">
+          <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <article>
+    <nav class="breadcrumb">
+      <a href="/">AtlasDays</a> / <a href="/help/">Help Center</a>
+    </nav>
+
+    <h1>Photo Import</h1>
+    <p class="updated">Last updated: April 11, 2026</p>
+    <p class="subtitle">Rebuild travel history from geotagged photo metadata, review inferred trips before saving, and understand privacy, duplicates, overlaps, transit detection, and date-range limits.</p>
+
+    <h2>What This Page Helps You Do</h2>
+    <p>Use this page when you want AtlasDays to scan your photo library for travel evidence instead of entering every old trip manually or preparing a CSV file first.</p>
+    <p>By the end of this page, you should know:</p>
+    <ul>
+      <li>when Photo Import is the right tool and when manual entry or CSV import is safer</li>
+      <li>what Photos access is used for</li>
+      <li>how AtlasDays turns photo metadata into trip suggestions</li>
+      <li>what to check before saving imported trips</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>Photo Import drafts trips for review.</strong> It does not silently add your whole photo history to the trip record. Nothing is saved until you review the suggestions and confirm the import.</p>
+    </div>
+
+    <h2>When to Use Photo Import</h2>
+    <p>Photo Import is useful when you have geotagged photos from past travel and want a faster first draft of your travel history. It is especially useful after onboarding, after a reinstall, or when your timeline is still mostly empty.</p>
+    <p>Use manual entry instead when only a few important trips matter, when you already know the exact dates, or when a trip affects a live visa, residency, or paperwork question and you want to enter it from source documents yourself.</p>
+    <p>Use <a href="/help/csv-import">CSV Import</a> instead when your source is already a spreadsheet, booking export, passport-stamp notes, or another structured list.</p>
+
+    <h2>Where Photo Import Lives</h2>
+    <p>Go to <strong>Settings &gt; Import</strong> and choose <strong>Photos</strong>. If your timeline is empty or you just finished onboarding, AtlasDays can also show an <strong>Import from Photos</strong> prompt in Timeline.</p>
+    <p>You can scan a selected year, a preset range, or a custom date range depending on your plan and current choices. The free plan includes the last <strong>180 days</strong> of photo history. Older, full-history, or all-time scans require <strong>AtlasDays Pro</strong>.</p>
+
+    <h2>What Photos Access Is For</h2>
+    <p>AtlasDays asks for full Photos access because iOS requires it for an automatic library scan. The scan reads metadata such as dates and locations. Altitude and media-type metadata can be used to filter out likely airplane-window photos, screenshots, and screen recordings.</p>
+    <ul>
+      <li>Photo Import runs on device.</li>
+      <li>AtlasDays does not view, store, upload, or sync your images.</li>
+      <li>The scan does not need an internet connection.</li>
+      <li>AtlasDays uses bundled country boundaries on device to resolve photo locations to countries.</li>
+      <li>You can skip Photo Import and keep using AtlasDays manually without Photos access.</li>
+    </ul>
+
+    <h2>How the Scan Works</h2>
+    <p>AtlasDays looks for photo or video assets with usable date and GPS metadata, skips media that is unlikely to represent a real stay, then groups the remaining evidence by country and date.</p>
+    <p>The result is a set of draft trip candidates. A candidate can be marked with warnings when it looks like a duplicate, overlaps another trip, was inferred from limited evidence, has gaps, or may be transit.</p>
+    <p>Photo Import can miss trips if photos have no location metadata, if camera location services were off, if the scan range excludes those dates, or if the available evidence is too thin to infer a clean stay.</p>
+
+    <h2>Review Before Saving</h2>
+    <p>After scanning, AtlasDays opens a review screen. Use it like a draft inbox, not like an automatic source of truth.</p>
+    <ul>
+      <li><strong>Ready to import</strong> candidates are selected by default.</li>
+      <li><strong>Duplicates</strong> are skipped so they do not recreate trips already in your record.</li>
+      <li><strong>Overlaps</strong> are warnings. Review them before trusting downstream totals.</li>
+      <li><strong>Transit</strong> can be detected for short pass-through candidates, but you should still confirm it.</li>
+      <li>You can tap a candidate to edit its country, dates, purpose, transit state, and notes before import.</li>
+      <li>You can deselect or delete candidates you do not want to save.</li>
+    </ul>
+
+    <h2>When Imported Photo Trips Are Trustworthy Enough</h2>
+    <p>Treat Photo Import as a reconstruction aid. It is good at finding likely travel from geotagged media, but the final trip record is only as trustworthy as the evidence and your review.</p>
+    <ul>
+      <li>Use imported trips as a starting point for old history, then verify important stays against stronger source material when needed.</li>
+      <li>Review duplicates, overlaps, and transit badges before trusting dashboard totals or trackers.</li>
+      <li>Confirm exact start and end dates for any trip that affects a live rule or paperwork question.</li>
+      <li>Remember that photos without location metadata cannot prove where you were.</li>
+      <li>After import, review the new trips in Timeline and clean up anything that still looks provisional.</li>
+    </ul>
+
+    <h2>What Photo Import Does Not Do</h2>
+    <ul>
+      <li>It does <strong>not</strong> create official travel records.</li>
+      <li>It does <strong>not</strong> prove exact border-crossing dates without your review.</li>
+      <li>It does <strong>not</strong> upload or back up your photo library.</li>
+      <li>It does <strong>not</strong> replace <strong>Auto-Detect Trips</strong> for future movement.</li>
+      <li>It does <strong>not</strong> replace CSV import when your source material is already structured.</li>
+    </ul>
+
+    <div class="cta-box">
+      <h3>Where to go next</h3>
+      <p><a href="/help/history-and-import">Trip Modes and Record Quality</a> explains how to decide whether imported trips should be trusted as exact, adjusted, or cleaned up.</p>
+      <p><a href="/help/csv-import">CSV Import</a> is the better path when your source material is a spreadsheet or structured travel list.</p>
+      <p><a href="/help/dashboard-and-map">Dashboard and Map</a> helps you verify the totals and country view after importing photo-based trips.</p>
+      <p><a href="/help/trackers-and-limits">Trackers and Limits</a> explains why imported trips still need review before you rely on a tracker.</p>
+      <p><a href="/help/privacy-location-and-sync">Privacy, Location, and Sync</a> covers Photos access, location permission, notifications, Auto-Detect Trips, and iCloud behavior in one place.</p>
+    </div>
+  </article>
+
+  <script>
+  function toggleTheme() {
+    var html = document.documentElement;
+    var current = html.getAttribute('data-theme');
+    var isDark;
+    if (current) isDark = current === 'dark';
+    else isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = isDark ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  }
+  </script>
+</body>
+</html>

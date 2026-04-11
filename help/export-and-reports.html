@@ -33,6 +33,7 @@
     .breadcrumb { font-size:0.88rem; color:var(--muted-2); margin-bottom:24px; }
     .breadcrumb a { color:var(--muted); }
     h1 { font-size:clamp(1.8rem, 4vw, 2.6rem); line-height:1.1; letter-spacing:-0.03em; margin:0 0 12px; }
+    .updated { color:var(--muted-2); font-size:0.9rem; line-height:1.4; margin:-4px 0 16px; }
     .subtitle { color:var(--muted); font-size:1.08rem; margin:0 0 24px; }
     h2 { font-size:1.4rem; letter-spacing:-0.02em; margin:36px 0 12px; }
     h3 { font-size:1.1rem; margin:28px 0 8px; }
@@ -86,6 +87,7 @@
     </nav>
 
     <h1>Export and Reports</h1>
+    <p class="updated">Last updated: April 11, 2026</p>
     <p class="subtitle">Troubleshoot export availability, period-filter confusion, and missing trips while understanding what CSV export and PDF export actually contain.</p>
 
     <h2>What This Page Helps You Do</h2>
@@ -147,8 +149,8 @@
       <li><code>Start Date</code></li>
       <li><code>End Date</code></li>
       <li><code>Days</code></li>
-      <li><code>Transit</code></li>
-      <li><code>Notes</code></li>
+      <li><code>Purpose</code></li>
+      <li><code>Notes (optional)</code></li>
     </ul>
     <p>What those fields mean in practice:</p>
     <ul>
@@ -157,7 +159,8 @@
       <li><strong>Year</strong> trips export years in the Start Date and End Date columns.</li>
       <li><strong>Unknown</strong> trips export with blank date fields.</li>
       <li><strong>ongoing</strong> trips export with a blank End Date.</li>
-      <li><strong>Transit</strong> is exported as its own flag.</li>
+      <li><strong>Days</strong> is blank for <strong>Year</strong> and <strong>Unknown</strong> trips because they do not create exact day totals.</li>
+      <li><strong>Purpose</strong> exports selected trip purposes such as <strong>Tourism</strong>, <strong>Personal</strong>, <strong>Business</strong>, <strong>Medical</strong>, or <strong>Transit</strong>.</li>
       <li><strong>Notes</strong> export exactly as stored on the trip.</li>
     </ul>
     <p><strong>CSV export</strong> is trip data only. It does <strong>not</strong> export tracker definitions, home-country configuration, or all app settings.</p>
@@ -171,10 +174,10 @@
     <p><strong>PDF export</strong> is the report-style output. It is better when you want a cleaner document for review, records, or paperwork rather than a spreadsheet.</p>
     <p>The PDF report includes a trip table built from the currently selected export period. Depending on the options you choose, it can also include:</p>
     <ul>
-      <li><strong>Tracker Summary</strong></li>
       <li><strong>Traveler Information</strong> such as name, passport number, and nationality</li>
-      <li><strong>Group by Country</strong> layout</li>
-      <li><strong>Notes</strong>, <strong>Transit</strong>, and night-counting display options</li>
+      <li><strong>Trip Order</strong>, either <strong>Chronological</strong> or <strong>By Country</strong></li>
+      <li><strong>Country Summary</strong> in chronological reports</li>
+      <li><strong>Purpose</strong>, <strong>Notes</strong>, and night-counting display options</li>
       <li><strong>Approximate Date Trips</strong> appendix when that option is enabled</li>
       <li><strong>App Branding</strong></li>
       <li><strong>Disclaimer</strong></li>
@@ -200,7 +203,7 @@
       <li>Resolve any <strong>date conflicts</strong> in Timeline before you export a record you plan to trust.</li>
       <li>Close <strong>ongoing</strong> trips if you need a fixed end date. Otherwise the exported day span will keep changing.</li>
       <li>Make sure trips that matter to a visa or residency threshold are stored as <strong>Exact Dates</strong>, not just <strong>Year</strong> or <strong>Unknown</strong>.</li>
-      <li>Check whether <strong>Transit</strong> is marked correctly, because it changes what appears in summaries.</li>
+      <li>Check whether <strong>Transit</strong> and other trip purposes are marked correctly, because they change what appears in exports and summaries.</li>
       <li>Review <strong>notes</strong> before sharing, because export includes them.</li>
       <li>Pick the right output for the job: <strong>CSV export</strong> for inspection or transfer, <strong>PDF export</strong> for a report-style document.</li>
     </ul>
@@ -210,7 +213,7 @@
     <ul>
       <li><strong>Tracker trust</strong> still depends on exact trips and clean conflict-free history.</li>
       <li><strong>CSV export</strong> is trip output, not a separate compliance calculation.</li>
-      <li><strong>PDF Tracker Summary</strong>, if included, is downstream of the same trip quality and selected period.</li>
+      <li><strong>PDF export</strong> summarizes trips and countries in the selected period; it does not export tracker definitions.</li>
       <li><strong>Dashboard</strong> is still the best place to inspect how the app is interpreting your record before you share it.</li>
     </ul>
 
