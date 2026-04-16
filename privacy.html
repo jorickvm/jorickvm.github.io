@@ -38,7 +38,18 @@
       padding: 20px 24px;
       margin-bottom: 2rem;
     }
-    .summary p { margin: 0.3rem 0; }
+    .summary ul {
+      margin: 0.3rem 0 0;
+      padding-left: 1.45rem;
+    }
+    .summary li {
+      margin: 0.3rem 0;
+      padding-left: 0.25rem;
+    }
+    .summary li::marker {
+      color: #a7a7a7;
+      font-size: 1.35rem;
+    }
     .summary strong { display: block; margin-bottom: 0.4rem; }
     a { color: #007aff; }
     @media (prefers-color-scheme: dark) {
@@ -64,10 +75,12 @@
 
   <div class="summary">
     <strong>Key Points</strong>
-    <p>The AtlasDays app does not require an account and does not keep a server-side copy of your travel history.</p>
-    <p>Trips and trackers stay on your device unless they sync through your own Apple iCloud account.</p>
-    <p>Photo Import scans photo metadata on your device, and imported trips may store local photo references for thumbnails. AtlasDays does not upload or store your photo files on AtlasDays-operated servers.</p>
-    <p>A smaller set of app preferences can also carry over through Apple’s iCloud key-value storage separately from full trip sync.</p>
+    <ul>
+      <li>The AtlasDays app does not require an account and does not keep a server-side copy of your travel history.</li>
+      <li>Trips and trackers stay on your device unless they sync through your own Apple iCloud account.</li>
+      <li>Photo Import scans photo metadata on your device, and imported trips may store local photo references for thumbnails. AtlasDays does not upload or store your photo files on AtlasDays-operated servers.</li>
+      <li>A smaller set of app preferences can also carry over through Apple’s iCloud key-value storage separately from full trip sync.</li>
+    </ul>
   </div>
 
   <p>For paid features, subscriptions, website terms, and App Store license information, see the <a href="/terms">AtlasDays Terms of Use</a>.</p>

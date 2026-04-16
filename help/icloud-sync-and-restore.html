@@ -64,7 +64,7 @@
   <article>
     <nav class="breadcrumb"><a href="/">AtlasDays</a> / <a href="/help/">Help Center</a></nav>
     <h1>iCloud Sync and Restore</h1>
-    <p class="updated">Last updated: April 11, 2026</p>
+    <p class="updated">Last updated: April 16, 2026</p>
     <p class="subtitle">Check what AtlasDays iCloud sync actually restores, what stays device-specific, and what to verify first when trips or trackers do not appear after a reinstall or device change.</p>
 
     <h2>What This Page Helps You Do</h2>
@@ -102,6 +102,7 @@
     <ul>
       <li><strong>Trips</strong> in your AtlasDays record, including entries recorded as <strong>Exact Dates</strong>, <strong>Year</strong>, <strong>Unknown</strong>, <strong>Transit</strong>, or <strong>ongoing</strong></li>
       <li><strong>Trackers</strong> you have created</li>
+      <li><strong>Photo Import trip data</strong>, such as imported trip records and the local photo references stored on those trips</li>
       <li><strong>Some basic preferences</strong> can also follow your Apple account, including items such as home-country state, appearance, visited-country mode, and certain default settings</li>
     </ul>
     <p>The important split is this: trips and trackers depend on the in-app <strong>iCloud sync</strong> toggle, while a smaller set of preferences can still carry over separately through iCloud key-value storage.</p>
@@ -109,10 +110,12 @@
     <h2>What iCloud sync Does Not Sync</h2>
     <ul>
       <li><strong>Permissions.</strong> Location access and <strong>notification permission</strong> are controlled by iOS on each device.</li>
+      <li><strong>Your photo library.</strong> <strong>Photo Import</strong> trips can store local photo references, but AtlasDays does not copy your actual photo files into its own sync store. Photos remain managed by Apple Photos and iCloud Photos.</li>
       <li><strong>Exported files.</strong> CSV export and PDF export do not sync back into the app automatically. If you need a portable file copy, create and store it explicitly.</li>
       <li><strong>Pending trip suggestions.</strong> Suggestions from <strong>Auto-Detect Trips</strong> are local app state, not part of the synced trip record.</li>
       <li><strong>Device-specific state.</strong> A new install can still need local setup even if some preferences came back.</li>
     </ul>
+    <p>If photo thumbnails do not appear on a new device, the trip may still have synced correctly. Check Photos access on that device and whether Apple Photos can resolve the referenced originals.</p>
 
     <h2>What to Expect When You Turn It On</h2>
     <p>Open <strong>Settings</strong> and enable <strong>iCloud sync</strong>. AtlasDays tells you that sync changes take effect after restarting the app, so treat the toggle as a next-launch setting rather than an immediate manual sync button.</p>
@@ -143,6 +146,7 @@
       <p><a href="/help/privacy-location-and-sync">Privacy, Location, and Sync</a> explains what stays local, which permissions matter, and why <strong>Auto-Detect Trips</strong> or alerts may still need local setup after sync.</p>
       <p><a href="/help/export-and-reports">Export and Reports</a> is the right next page if you want a controlled backup or a portable file outside iCloud sync.</p>
       <p><a href="/help/history-and-import">Trip Modes and Record Quality</a> helps if synced data appears, but the trip record still needs cleanup before you trust counts.</p>
+      <p><a href="/help/photo-import">Photo Import</a> explains how photo references, thumbnails, duplicates, overlaps, transit detection, and Photos access work.</p>
       <p><a href="/help/dashboard-and-map">Dashboard and Map</a> helps you verify the restored record on the device before relying on totals or country views.</p>
       <p><a href="/help/trackers-and-limits">Trackers and Limits</a> explains why synced trips can still produce unexpected tracker results if the underlying record or tracker setup is off.</p>
       <p><a href="/help/getting-started">Getting Started</a> is useful if you are setting up AtlasDays again and want the cleanest first-run path.</p>

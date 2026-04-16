@@ -84,7 +84,7 @@
     </nav>
 
     <h1>Photo Import</h1>
-    <p class="updated">Last updated: April 15, 2026</p>
+    <p class="updated">Last updated: April 16, 2026</p>
     <p class="subtitle">Rebuild travel history from geotagged photo metadata, review inferred trips before saving, and understand privacy, duplicates, overlaps, transit detection, and date-range limits.</p>
 
     <h2>What This Page Helps You Do</h2>
@@ -113,7 +113,7 @@
     <p>You can scan a selected year, a preset range, or a custom date range depending on your plan and current choices. The free plan includes the last <strong>180 days</strong> of photo history. Older, full-history, or all-time scans require <strong>AtlasDays Pro</strong>.</p>
 
     <h2>What Photos Access Is For</h2>
-    <p>AtlasDays asks for full Photos access because iOS requires it for an automatic library scan. The scan reads metadata such as dates and locations. Altitude and media-type metadata can be used to filter out likely airplane-window photos, screenshots, and screen recordings.</p>
+    <p>AtlasDays asks for full Photos access because iOS requires it for an automatic library scan. Selected Photos access is not enough for the full-library scan. The scan reads metadata such as dates and locations. Altitude and media-type metadata can be used to filter out likely airplane-window photos, screenshots, and screen recordings.</p>
     <ul>
       <li>Photo Import runs on device.</li>
       <li>AtlasDays does not copy your photo files into its own database, analyze image contents, or upload your photos to an AtlasDays-operated server. Imported trips can show thumbnails or open related photos from your Photos library.</li>
@@ -152,7 +152,7 @@
     <h2>If No Trips Are Found</h2>
     <p>A scan that finds no trips usually means AtlasDays could not find enough usable travel evidence in the selected range.</p>
     <ul>
-      <li>Check that Photos access is set to <strong>Full Access</strong>. Selected Photos access will miss most of your library.</li>
+      <li>Check that Photos access is set to <strong>Full Access</strong>. Selected Photos access is not enough for an automatic library scan.</li>
       <li>Check that the selected scan range includes the trip dates you expected to find.</li>
       <li>Photos need usable date and GPS metadata. Photos without location metadata cannot become location evidence.</li>
       <li>Screenshots, screen recordings, and likely airplane-window photos can be skipped.</li>
@@ -169,6 +169,28 @@
       <li>Remember that photos without location metadata cannot prove where you were.</li>
       <li>After import, review the new trips in Timeline and clean up anything that still looks provisional.</li>
     </ul>
+
+    <h2>Common Photo Import Questions</h2>
+    <h3>Why does AtlasDays need Full Photos access?</h3>
+    <p>Photo Import scans your library automatically for dated, geotagged photo evidence. iOS needs you to grant <strong>Full Access</strong> for that kind of scan. If you choose <strong>Selected Photos</strong>, AtlasDays cannot scan the full library for past trips.</p>
+
+    <h3>Are my photos uploaded or analyzed?</h3>
+    <p>No. The trip-drafting scan runs on your device and uses photo metadata such as dates, GPS locations, altitude, media type, and local photo references. AtlasDays does not upload your photo library to an AtlasDays-operated server and does not analyze the image contents.</p>
+
+    <h3>Why did my home country appear as a trip?</h3>
+    <p>Photo Import groups evidence by country and date. If you have geotagged photos in your home country, AtlasDays may draft those dates too. Delete or deselect home-country candidates that are not useful for your record, or keep them if they help explain a wider travel timeline.</p>
+
+    <h3>Why are some trips marked Duplicate, Overlap, Transit, or based on limited evidence?</h3>
+    <p><strong>Duplicate</strong> means the candidate matches an existing trip and is skipped by default. <strong>Overlap</strong> means the dates share time with an existing trip and should be reviewed. <strong>Transit</strong> means AtlasDays detected a likely short pass-through stay. Limited-evidence candidates usually have thin evidence, near-border evidence, or inferred gaps.</p>
+
+    <h3>What happens if I delete a photo or revoke Photos access?</h3>
+    <p>The imported trip stays in your timeline, but photo previews depend on your Photos library. If you delete a referenced photo, its preview can disappear. If you revoke Photos access, thumbnails and fullscreen previews may stop loading until access is restored.</p>
+
+    <h3>Will photo thumbnails work on another device?</h3>
+    <p>Imported trips can store local photo references. If <strong>iCloud sync</strong> is on, the trip record can sync with the rest of your AtlasDays data, but the actual photo files remain managed by Apple Photos and iCloud Photos. A new device still needs Photos access, and previews depend on whether Apple Photos can resolve those referenced photos on that device.</p>
+
+    <h3>Can Photo Import prove travel dates for paperwork?</h3>
+    <p>Treat it as a reconstruction aid, not official proof. Use it to find likely stays, then verify important dates against passport stamps, tickets, accommodation records, emails, or other source material before relying on the record for visa, residency, tax, or legal questions.</p>
 
     <h2>What Photo Import Does Not Do</h2>
     <ul>
