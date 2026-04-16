@@ -85,7 +85,7 @@
         "name": "Can I import and export travel history?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. AtlasDays supports CSV import, CSV export, and PDF travel reports, and the import flow shows a preview with validation before imported trips are saved."
+          "text": "Yes. AtlasDays supports Photo Import from geotagged photo metadata, CSV import, CSV export, and PDF travel reports. Photo and CSV imports show a review step before trips are saved."
         }
       },
       {
@@ -125,6 +125,13 @@
   </script>
   <script>(function(){var t=localStorage.getItem('theme');document.documentElement.setAttribute('data-theme',t==='light'?'light':'dark');document.documentElement.classList.add('js')})()</script>
   <link rel="stylesheet" href="assets/css/home.css?v=20260407w" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KL7694MDS0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-KL7694MDS0");
+  </script>
 </head>
 <body>
   <header class="site-header">
@@ -250,9 +257,9 @@
                   <img src="assets/home/home-proof-import-preview.webp" alt="AtlasDays CSV import preview showing a file before saving" width="1206" height="2622" loading="lazy" />
                 </div>
                 <div class="proof-copy">
-                  <p class="proof-label">Import and export</p>
-                  <h3>Review imports before they save</h3>
-                  <p>Check the file first, then export the same record later.</p>
+                  <p class="proof-label">Import review</p>
+                  <h3>Import from photos or CSV</h3>
+                  <p>Draft trips from geotagged photos or a spreadsheet, then review before saving.</p>
                 </div>
               </article>
 
@@ -277,7 +284,7 @@
                 <button class="proof-dot" type="button" aria-label="Show timeline slide" aria-current="false" aria-pressed="false" data-proof-dot="1"></button>
                 <button class="proof-dot" type="button" aria-label="Show map and countries slide" aria-current="false" aria-pressed="false" data-proof-dot="2"></button>
                 <button class="proof-dot" type="button" aria-label="Show alerts slide" aria-current="false" aria-pressed="false" data-proof-dot="3"></button>
-                <button class="proof-dot" type="button" aria-label="Show import and export slide" aria-current="false" aria-pressed="false" data-proof-dot="4"></button>
+                <button class="proof-dot" type="button" aria-label="Show import review slide" aria-current="false" aria-pressed="false" data-proof-dot="4"></button>
                 <button class="proof-dot" type="button" aria-label="Show PDF report slide" aria-current="false" aria-pressed="false" data-proof-dot="5"></button>
               </div>
               <button class="proof-arrow" type="button" aria-label="Next proof slide" data-proof-next>
@@ -296,13 +303,14 @@
             <div>
               <p class="section-kicker">Privacy</p>
               <h2>Your travel record stays on your iPhone</h2>
-              <p>Visa limits, residency thresholds, and long-term travel history can be sensitive records, so the model is simple: no required account, no AtlasDays server copy of your trips, and on-device calculations. iCloud sync and country suggestions stay opt-in.</p>
+              <p>Visa limits, residency thresholds, and long-term travel history can be sensitive records, so the model is simple: no required account, no AtlasDays server copy of your trips, and on-device calculations. iCloud sync, country suggestions, and Photo Import stay optional.</p>
               <div class="trust-row">
                 <span class="pill">No AtlasDays server copy</span>
                 <span class="pill">On-device calculations</span>
-                <span class="pill">No third-party analytics SDKs</span>
+                <span class="pill">Optional Photos access</span>
+                <span class="pill">No in-app analytics SDKs</span>
               </div>
-              <div class="disclaimer">Read the <a href="/privacy">App Privacy page</a> and the <a href="/help/privacy-location-and-sync">Privacy, Location, and Sync guide</a> for the exact storage, location, and sync model.</div>
+              <div class="disclaimer">Read the <a href="/privacy">App Privacy page</a>, <a href="/help/photo-import">Photo Import guide</a>, and <a href="/help/privacy-location-and-sync">Privacy, Location, and Sync guide</a> for the exact storage, location, Photos access, and sync model.</div>
             </div>
             <div class="privacy-visual">
               <img src="assets/home/home-proof-privacy.webp" alt="AtlasDays privacy and location screen explaining optional country suggestions and optional iCloud sync" width="1320" height="2868" loading="lazy" />
@@ -354,7 +362,7 @@
           </article>
           <article class="faq reveal">
             <h3>Can I import and export travel history?</h3>
-            <p>Yes. AtlasDays supports CSV import, CSV export, and PDF travel reports, and the import flow shows a preview with validation before imported trips are saved.</p>
+            <p>Yes. AtlasDays supports Photo Import from geotagged photo metadata, CSV import, CSV export, and PDF travel reports. Photo and CSV imports show a review step before trips are saved.</p>
           </article>
           <article class="faq reveal">
             <h3>Can I add older trips with incomplete dates?</h3>
@@ -463,7 +471,8 @@
               <a href="/about">About AtlasDays</a>
               <a href="/changelog">What’s New</a>
               <a href="/terms">Terms</a>
-              <a href="/privacy">Privacy</a>
+              <a href="/privacy">App Privacy</a>
+              <a href="/website-privacy">Website Privacy</a>
             </div>
           </div>
         </div>

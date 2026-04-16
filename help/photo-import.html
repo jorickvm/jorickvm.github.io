@@ -54,6 +54,13 @@
     html[data-theme="light"] { --bg:#f6f8fc; --bg-card:rgba(255,255,255,0.88); --text:#0d1422; --muted:#526075; --muted-2:#6c788b; --line:rgba(12,22,40,0.09); --blue-soft:rgba(22,146,255,0.08); }
   </style>
   <link rel="stylesheet" href="../assets/css/site-header.css?v=20260406a" />
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-KL7694MDS0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag("js", new Date());
+    gtag("config", "G-KL7694MDS0");
+  </script>
 </head>
 <body>
   <header class="top-bar">
@@ -84,7 +91,7 @@
     </nav>
 
     <h1>Photo Import</h1>
-    <p class="updated">Last updated: April 11, 2026</p>
+    <p class="updated">Last updated: April 15, 2026</p>
     <p class="subtitle">Rebuild travel history from geotagged photo metadata, review inferred trips before saving, and understand privacy, duplicates, overlaps, transit detection, and date-range limits.</p>
 
     <h2>What This Page Helps You Do</h2>
@@ -95,6 +102,8 @@
       <li>what Photos access is used for</li>
       <li>how AtlasDays turns photo metadata into trip suggestions</li>
       <li>what to check before saving imported trips</li>
+      <li>what happens to photo previews after import</li>
+      <li>why a scan might find no trips</li>
     </ul>
 
     <div class="callout">
@@ -114,9 +123,10 @@
     <p>AtlasDays asks for full Photos access because iOS requires it for an automatic library scan. The scan reads metadata such as dates and locations. Altitude and media-type metadata can be used to filter out likely airplane-window photos, screenshots, and screen recordings.</p>
     <ul>
       <li>Photo Import runs on device.</li>
-      <li>AtlasDays does not view, store, upload, or sync your images.</li>
+      <li>AtlasDays does not copy your photo files into its own database, analyze image contents, or upload your photos to an AtlasDays-operated server. Imported trips can show thumbnails or open related photos from your Photos library.</li>
       <li>The scan does not need an internet connection.</li>
       <li>AtlasDays uses bundled country boundaries on device to resolve photo locations to countries.</li>
+      <li>Imported trips can store local photo references so AtlasDays can load previews from your Photos library later.</li>
       <li>You can skip Photo Import and keep using AtlasDays manually without Photos access.</li>
     </ul>
 
@@ -134,6 +144,27 @@
       <li><strong>Transit</strong> can be detected for short pass-through candidates, but you should still confirm it.</li>
       <li>You can tap a candidate to edit its country, dates, purpose, transit state, and notes before import.</li>
       <li>You can deselect or delete candidates you do not want to save.</li>
+    </ul>
+
+    <h2>After Import: Photo Previews</h2>
+    <p>Trips created from Photo Import can keep local photo references. AtlasDays uses those references to show thumbnails on trip cards and to open related photos from your Photos library.</p>
+    <ul>
+      <li>The photo files stay in Photos. AtlasDays does not copy them into its own trip database.</li>
+      <li>If you delete a referenced photo from Photos, its preview can disappear from AtlasDays.</li>
+      <li>If the original is stored in iCloud Photos, iOS may retrieve it through Apple's Photos services when you open it.</li>
+      <li>Fullscreen photo captions may use Apple geocoding to turn a photo location into a readable place name.</li>
+      <li>If you revoke Photos access later, imported trips remain in your timeline, but thumbnails or fullscreen photo previews may stop loading.</li>
+    </ul>
+
+    <h2>If No Trips Are Found</h2>
+    <p>A scan that finds no trips usually means AtlasDays could not find enough usable travel evidence in the selected range.</p>
+    <ul>
+      <li>Check that Photos access is set to <strong>Full Access</strong>. Selected Photos access will miss most of your library.</li>
+      <li>Check that the selected scan range includes the trip dates you expected to find.</li>
+      <li>Photos need usable date and GPS metadata. Photos without location metadata cannot become location evidence.</li>
+      <li>Screenshots, screen recordings, and likely airplane-window photos can be skipped.</li>
+      <li>Older, full-history, or all-time photo scans require <strong>AtlasDays Pro</strong>.</li>
+      <li>If a trip has only thin evidence, manual entry or CSV import may be more reliable.</li>
     </ul>
 
     <h2>When Imported Photo Trips Are Trustworthy Enough</h2>
