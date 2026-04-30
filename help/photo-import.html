@@ -4,23 +4,23 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Photo Import — AtlasDays Help Center</title>
-  <meta name="description" content="Use AtlasDays Photo Import to scan geotagged photo metadata on device, review inferred trips, handle duplicates and overlaps, and understand privacy and date-range limits." />
+  <meta name="description" content="Use AtlasDays Photo Import to scan geotagged photo metadata on device, review inferred trips, handle duplicates and overlaps, and understand privacy, videos, and older locked trips." />
   <meta property="og:title" content="Photo Import — AtlasDays Help Center" />
-  <meta property="og:description" content="Use AtlasDays Photo Import to scan geotagged photo metadata on device, review inferred trips, handle duplicates and overlaps, and understand privacy and date-range limits." />
+  <meta property="og:description" content="Use AtlasDays Photo Import to scan geotagged photo metadata on device, review inferred trips, handle duplicates and overlaps, and understand privacy, videos, and older locked trips." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/help/photo-import" />
   <meta property="og:image" content="https://atlasdays.app/assets/home/home-hero-dashboard.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Photo Import — AtlasDays Help Center" />
-  <meta name="twitter:description" content="Use AtlasDays Photo Import to scan geotagged photo metadata on device, review inferred trips, handle duplicates and overlaps, and understand privacy and date-range limits." />
+  <meta name="twitter:description" content="Use AtlasDays Photo Import to scan geotagged photo metadata on device, review inferred trips, handle duplicates and overlaps, and understand privacy, videos, and older locked trips." />
   <meta name="twitter:image" content="https://atlasdays.app/assets/home/home-hero-dashboard.png" />
   <link rel="canonical" href="https://atlasdays.app/help/photo-import" />
   <link rel="icon" type="image/png" href="../assets/brand/favicon_light.png?v=20260325a" media="(prefers-color-scheme: light)" />
   <link rel="icon" type="image/png" href="../assets/brand/favicon_dark.png?v=20260325a" media="(prefers-color-scheme: dark)" />
   <script>(function(){var t=localStorage.getItem('theme');document.documentElement.setAttribute('data-theme',t==='light'?'light':'dark')})()</script>
   <style>
-    :root { --bg:#0a0b0d; --bg-card:rgba(255,255,255,0.05); --text:#f4f7fb; --muted:#b2b9c5; --muted-2:#8790a0; --line:rgba(255,255,255,0.10); --blue:#1692ff; --blue-soft:rgba(22,146,255,0.12); --max:720px; }
-    @media (prefers-color-scheme: light) { :root { --bg:#f6f8fc; --bg-card:rgba(255,255,255,0.88); --text:#0d1422; --muted:#526075; --muted-2:#6c788b; --line:rgba(12,22,40,0.09); --blue-soft:rgba(22,146,255,0.08); } }
+    :root { --bg:#0a0b0d; --bg-card:rgba(255,255,255,0.05); --text:#f4f7fb; --muted:#b2b9c5; --muted-2:#8790a0; --line:rgba(255,255,255,0.10); --blue:#428FD2; --blue-soft:rgba(66,143,210,0.12); --max:720px; }
+    @media (prefers-color-scheme: light) { :root { --bg:#f6f8fc; --bg-card:rgba(255,255,255,0.88); --text:#0d1422; --muted:#526075; --muted-2:#6c788b; --line:rgba(12,22,40,0.09); --blue-soft:rgba(66,143,210,0.08); } }
     * { box-sizing:border-box; }
     body { margin:0; font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif; color:var(--text); background:var(--bg); line-height:1.7; -webkit-font-smoothing:antialiased; }
     a { color:var(--blue); text-decoration:none; }
@@ -43,15 +43,15 @@
     li { margin:6px 0; }
     strong { color:var(--text); }
     .callout, .cta-box { padding:20px 24px; border-radius:16px; margin:28px 0; }
-    .callout { background:var(--blue-soft); border:1px solid rgba(22,146,255,0.18); }
+    .callout { background:var(--blue-soft); border:1px solid rgba(66,143,210,0.18); }
     .cta-box { background:var(--bg-card); border:1px solid var(--line); }
     .theme-toggle { background:none; border:1px solid var(--line); border-radius:10px; color:var(--muted); cursor:pointer; width:36px; height:36px; display:inline-grid; place-items:center; padding:0; }
     .theme-toggle:hover { border-color:var(--blue); color:var(--text); }
     .icon-moon, .logo-light { display:none; } .logo-dark { display:block; }
     @media (prefers-color-scheme: light) { .icon-sun, .logo-dark { display:none; } .icon-moon, .logo-light { display:block; } }
     html[data-theme="dark"] .icon-sun, html[data-theme="dark"] .logo-dark { display:block; } html[data-theme="dark"] .icon-moon, html[data-theme="dark"] .logo-light { display:none; } html[data-theme="light"] .icon-sun, html[data-theme="light"] .logo-dark { display:none; } html[data-theme="light"] .icon-moon, html[data-theme="light"] .logo-light { display:block; }
-    html[data-theme="dark"] { --bg:#0a0b0d; --bg-card:rgba(255,255,255,0.05); --text:#f4f7fb; --muted:#b2b9c5; --muted-2:#8790a0; --line:rgba(255,255,255,0.10); --blue-soft:rgba(22,146,255,0.12); }
-    html[data-theme="light"] { --bg:#f6f8fc; --bg-card:rgba(255,255,255,0.88); --text:#0d1422; --muted:#526075; --muted-2:#6c788b; --line:rgba(12,22,40,0.09); --blue-soft:rgba(22,146,255,0.08); }
+    html[data-theme="dark"] { --bg:#0a0b0d; --bg-card:rgba(255,255,255,0.05); --text:#f4f7fb; --muted:#b2b9c5; --muted-2:#8790a0; --line:rgba(255,255,255,0.10); --blue-soft:rgba(66,143,210,0.12); }
+    html[data-theme="light"] { --bg:#f6f8fc; --bg-card:rgba(255,255,255,0.88); --text:#0d1422; --muted:#526075; --muted-2:#6c788b; --line:rgba(12,22,40,0.09); --blue-soft:rgba(66,143,210,0.08); }
   </style>
   <link rel="stylesheet" href="../assets/css/site-header.css?v=20260406a" />
 </head>
@@ -84,8 +84,8 @@
     </nav>
 
     <h1>Photo Import</h1>
-    <p class="updated">Last updated: April 16, 2026</p>
-    <p class="subtitle">Rebuild travel history from geotagged photo metadata, review inferred trips before saving, and understand privacy, duplicates, overlaps, transit detection, and date-range limits.</p>
+    <p class="updated">Last updated: April 30, 2026</p>
+    <p class="subtitle">Rebuild travel history from geotagged photo metadata, review inferred trips before saving, and understand privacy, duplicates, overlaps, transit detection, video evidence, and older locked trips.</p>
 
     <h2>What This Page Helps You Do</h2>
     <p>Use this page when you want AtlasDays to scan your photo library for travel evidence instead of entering every old trip manually or preparing a CSV file first.</p>
@@ -110,7 +110,7 @@
 
     <h2>Where Photo Import Lives</h2>
     <p>Go to <strong>Settings &gt; Import</strong> and choose <strong>Photos</strong>. If your timeline is empty or you just finished onboarding, AtlasDays can also show an <strong>Import from Photos</strong> prompt in Timeline.</p>
-    <p>You can scan a selected year, a preset range, or a custom date range depending on your plan and current choices. The free plan includes the last <strong>180 days</strong> of photo history. Older, full-history, or all-time scans require <strong>AtlasDays Pro</strong>.</p>
+    <p>You can scan a selected year, a preset range, or a custom date range. On the free plan, trips from the last <strong>180 days</strong> can be imported. A scan can still find older candidates, but those appear in a locked <strong>Older Trips Found</strong> section until <strong>AtlasDays Pro</strong> unlocks older photo-history import.</p>
 
     <h2>What Photos Access Is For</h2>
     <p>AtlasDays asks for full Photos access because iOS requires it for an automatic library scan. Selected Photos access is not enough for the full-library scan. The scan reads metadata such as dates and locations. Altitude and media-type metadata can be used to filter out likely airplane-window photos, screenshots, and screen recordings.</p>
@@ -125,6 +125,7 @@
 
     <h2>How the Scan Works</h2>
     <p>AtlasDays looks for photo or video assets with usable date and GPS metadata, skips media that is unlikely to represent a real stay, then groups the remaining evidence by country and date.</p>
+    <p>Videos can help detect trips when they have readable dates and locations. They are used as evidence only; the preview gallery shows photos, not videos.</p>
     <p>The result is a set of draft trip candidates. A candidate can be marked with warnings when it looks like a duplicate, overlaps another trip, was inferred from limited evidence, has gaps, or may be transit.</p>
     <p>Photo Import can miss trips if photos have no location metadata, if camera location services were off, if the scan range excludes those dates, or if the available evidence is too thin to infer a clean stay.</p>
 
@@ -135,6 +136,7 @@
       <li><strong>Duplicates</strong> are skipped so they do not recreate trips already in your record.</li>
       <li><strong>Overlaps</strong> are warnings. Review them before trusting downstream totals.</li>
       <li><strong>Transit</strong> can be detected for short pass-through candidates, but you should still confirm it.</li>
+      <li><strong>Older Trips Found</strong> groups older locked candidates by country with a year range and trip count. Upgrade to Pro only if those older candidates are useful enough to import.</li>
       <li>You can tap a candidate to edit its country, dates, purpose, transit state, and notes before import.</li>
       <li>You can deselect or delete candidates you do not want to save.</li>
     </ul>
@@ -145,7 +147,7 @@
       <li>The photo files stay in Photos. AtlasDays does not copy them into its own trip database.</li>
       <li>If you delete a referenced photo from Photos, its preview can disappear from AtlasDays.</li>
       <li>If the original is stored in iCloud Photos, iOS may retrieve it through Apple's Photos services when you open it.</li>
-      <li>Fullscreen photo captions may use Apple geocoding to turn a photo location into a readable place name.</li>
+      <li>Videos can help create a trip suggestion, but only photos appear in the trip photo preview gallery.</li>
       <li>If you revoke Photos access later, imported trips remain in your timeline, but thumbnails or fullscreen photo previews may stop loading.</li>
     </ul>
 
@@ -156,7 +158,7 @@
       <li>Check that the selected scan range includes the trip dates you expected to find.</li>
       <li>Photos need usable date and GPS metadata. Photos without location metadata cannot become location evidence.</li>
       <li>Screenshots, screen recordings, and likely airplane-window photos can be skipped.</li>
-      <li>Older, full-history, or all-time photo scans require <strong>AtlasDays Pro</strong>.</li>
+      <li>On the free plan, older candidates may appear in <strong>Older Trips Found</strong> instead of <strong>Ready to import</strong>. Pro is required to import those older trips.</li>
       <li>If a trip has only thin evidence, manual entry or CSV import may be more reliable.</li>
     </ul>
 

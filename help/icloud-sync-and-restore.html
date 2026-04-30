@@ -19,8 +19,8 @@
   <link rel="icon" type="image/png" href="../assets/brand/favicon_dark.png?v=20260325a" media="(prefers-color-scheme: dark)" />
   <script>(function(){var t=localStorage.getItem('theme');document.documentElement.setAttribute('data-theme',t==='light'?'light':'dark')})()</script>
   <style>
-    :root { --bg:#0a0b0d; --bg-card:rgba(255,255,255,0.05); --text:#f4f7fb; --muted:#b2b9c5; --muted-2:#8790a0; --line:rgba(255,255,255,0.10); --blue:#1692ff; --blue-soft:rgba(22,146,255,0.12); --max:720px; }
-    @media (prefers-color-scheme: light) { :root { --bg:#f6f8fc; --bg-card:rgba(255,255,255,0.88); --text:#0d1422; --muted:#526075; --muted-2:#6c788b; --line:rgba(12,22,40,0.09); --blue-soft:rgba(22,146,255,0.08); } }
+    :root { --bg:#0a0b0d; --bg-card:rgba(255,255,255,0.05); --text:#f4f7fb; --muted:#b2b9c5; --muted-2:#8790a0; --line:rgba(255,255,255,0.10); --blue:#428FD2; --blue-soft:rgba(66,143,210,0.12); --max:720px; }
+    @media (prefers-color-scheme: light) { :root { --bg:#f6f8fc; --bg-card:rgba(255,255,255,0.88); --text:#0d1422; --muted:#526075; --muted-2:#6c788b; --line:rgba(12,22,40,0.09); --blue-soft:rgba(66,143,210,0.08); } }
     * { box-sizing:border-box; } body { margin:0; font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif; color:var(--text); background:var(--bg); line-height:1.7; -webkit-font-smoothing:antialiased; }
     a { color:var(--blue); text-decoration:none; } a:hover { text-decoration:underline; }
     .top-bar { border-bottom:1px solid var(--line); padding:18px 0; } .top-bar-inner { width:min(var(--max), calc(100% - 40px)); margin:0 auto; display:flex; align-items:center; justify-content:space-between; }
@@ -29,13 +29,13 @@
     .breadcrumb { font-size:0.88rem; color:var(--muted-2); margin-bottom:24px; } .breadcrumb a { color:var(--muted); }
     h1 { font-size:clamp(1.8rem, 4vw, 2.6rem); line-height:1.1; letter-spacing:-0.03em; margin:0 0 12px; } .updated { color:var(--muted-2); font-size:0.9rem; line-height:1.4; margin:-4px 0 16px; } .subtitle { color:var(--muted); font-size:1.08rem; margin:0 0 24px; }
     h2 { font-size:1.4rem; letter-spacing:-0.02em; margin:36px 0 12px; } p, li { color:var(--muted); font-size:1rem; } p { margin:0 0 16px; } ul { padding-left:20px; margin:0 0 16px; } li { margin:6px 0; } strong, code { color:var(--text); } code { font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
-    .callout, .cta-box { padding:20px 24px; border-radius:16px; margin:28px 0; } .callout { background:var(--blue-soft); border:1px solid rgba(22,146,255,0.18); } .cta-box { background:var(--bg-card); border:1px solid var(--line); }
+    .callout, .cta-box { padding:20px 24px; border-radius:16px; margin:28px 0; } .callout { background:var(--blue-soft); border:1px solid rgba(66,143,210,0.18); } .cta-box { background:var(--bg-card); border:1px solid var(--line); }
     .theme-toggle { background:none; border:1px solid var(--line); border-radius:10px; color:var(--muted); cursor:pointer; width:36px; height:36px; display:inline-grid; place-items:center; padding:0; } .theme-toggle:hover { border-color:var(--blue); color:var(--text); }
     .icon-moon, .logo-light { display:none; } .logo-dark { display:block; }
     @media (prefers-color-scheme: light) { .icon-sun, .logo-dark { display:none; } .icon-moon, .logo-light { display:block; } }
     html[data-theme="dark"] .icon-sun, html[data-theme="dark"] .logo-dark { display:block; } html[data-theme="dark"] .icon-moon, html[data-theme="dark"] .logo-light { display:none; } html[data-theme="light"] .icon-sun, html[data-theme="light"] .logo-dark { display:none; } html[data-theme="light"] .icon-moon, html[data-theme="light"] .logo-light { display:block; }
-    html[data-theme="dark"] { --bg:#0a0b0d; --bg-card:rgba(255,255,255,0.05); --text:#f4f7fb; --muted:#b2b9c5; --muted-2:#8790a0; --line:rgba(255,255,255,0.10); --blue-soft:rgba(22,146,255,0.12); }
-    html[data-theme="light"] { --bg:#f6f8fc; --bg-card:rgba(255,255,255,0.88); --text:#0d1422; --muted:#526075; --muted-2:#6c788b; --line:rgba(12,22,40,0.09); --blue-soft:rgba(22,146,255,0.08); }
+    html[data-theme="dark"] { --bg:#0a0b0d; --bg-card:rgba(255,255,255,0.05); --text:#f4f7fb; --muted:#b2b9c5; --muted-2:#8790a0; --line:rgba(255,255,255,0.10); --blue-soft:rgba(66,143,210,0.12); }
+    html[data-theme="light"] { --bg:#f6f8fc; --bg-card:rgba(255,255,255,0.88); --text:#0d1422; --muted:#526075; --muted-2:#6c788b; --line:rgba(12,22,40,0.09); --blue-soft:rgba(66,143,210,0.08); }
   </style>
   <link rel="stylesheet" href="../assets/css/site-header.css?v=20260406a" />
 </head>
@@ -64,7 +64,7 @@
   <article>
     <nav class="breadcrumb"><a href="/">AtlasDays</a> / <a href="/help/">Help Center</a></nav>
     <h1>iCloud Sync and Restore</h1>
-    <p class="updated">Last updated: April 16, 2026</p>
+    <p class="updated">Last updated: April 30, 2026</p>
     <p class="subtitle">Check what AtlasDays iCloud sync actually restores, what stays device-specific, and what to verify first when trips or trackers do not appear after a reinstall or device change.</p>
 
     <h2>What This Page Helps You Do</h2>
@@ -129,6 +129,11 @@
     <p>Location access and <strong>notification permission</strong> do <strong>not</strong> come back automatically just because preferences synced. If you use <strong>Auto-Detect Trips</strong> or alerts, you may need to grant those again on the new device.</p>
     <p>If your trips do not appear right away, verify that you are using the same iCloud account, check whether <strong>iCloud sync</strong> is enabled inside AtlasDays Settings, restart the app, and then review the record before assuming data is gone.</p>
 
+    <h2>When You See Restoring from iCloud</h2>
+    <p>After a reinstall, AtlasDays can show a <strong>Restoring from iCloud</strong> screen while the iCloud-backed trip store catches up. This is meant to prevent duplicate setup work, especially duplicate Photo Import, while existing trips are still downloading.</p>
+    <p>If the restore takes longer than expected, AtlasDays shows a <strong>Taking long?</strong> button after about a minute. The in-app help sheet asks you to check your connection, keep AtlasDays open, and confirm the device is signed into the right Apple Account.</p>
+    <p>Do not start rebuilding the same travel history while this screen is still active unless you are intentionally abandoning the synced record. Wait for the restore to complete, then check Timeline and Dashboard before deciding anything is missing.</p>
+
     <h2>When Sync Is Not Enough</h2>
     <p>Use iCloud sync when you want AtlasDays to keep the same trips and trackers available across devices. Use <a href="/help/export-and-reports">Export and Reports</a> when you need a controlled file backup, a portable archive, or a record you can inspect outside the app.</p>
     <p>That matters most before major cleanup, before a risky reinstall, or when you want a fallback path that does not depend on the app reconnecting to the same iCloud-backed store. CSV export and PDF export currently require <strong>AtlasDays Pro</strong>.</p>
@@ -138,6 +143,7 @@
       <li><strong>Sync is not version history.</strong> AtlasDays does not expose a user-facing rollback tool or older cloud snapshots.</li>
       <li><strong>Reset is not restore.</strong> Treat destructive cleanup inside the app as real cleanup, not as a safe way to test recovery.</li>
       <li><strong>Manual export is still useful.</strong> If the record matters for paperwork or you want a file you can archive yourself, export before major changes.</li>
+      <li><strong>Restore screens are not import prompts.</strong> If AtlasDays is still restoring from iCloud, wait before using Photo Import to rebuild history that may already be syncing back.</li>
       <li><strong>Silence does not prove the record is complete.</strong> If trips or trackers look wrong after a device change, inspect the record itself instead of relying on what did or did not reappear automatically.</li>
     </ul>
 

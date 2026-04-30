@@ -19,8 +19,8 @@
   <link rel="icon" type="image/png" href="../assets/brand/favicon_dark.png?v=20260325a" media="(prefers-color-scheme: dark)" />
   <script>(function(){var t=localStorage.getItem('theme');document.documentElement.setAttribute('data-theme',t==='light'?'light':'dark')})()</script>
   <style>
-    :root { --bg:#0a0b0d; --bg-card:rgba(255,255,255,0.05); --text:#f4f7fb; --muted:#b2b9c5; --muted-2:#8790a0; --line:rgba(255,255,255,0.10); --blue:#1692ff; --blue-soft:rgba(22,146,255,0.12); --max:720px; }
-    @media (prefers-color-scheme: light) { :root { --bg:#f6f8fc; --bg-card:rgba(255,255,255,0.88); --text:#0d1422; --muted:#526075; --muted-2:#6c788b; --line:rgba(12,22,40,0.09); --blue-soft:rgba(22,146,255,0.08); } }
+    :root { --bg:#0a0b0d; --bg-card:rgba(255,255,255,0.05); --text:#f4f7fb; --muted:#b2b9c5; --muted-2:#8790a0; --line:rgba(255,255,255,0.10); --blue:#428FD2; --blue-soft:rgba(66,143,210,0.12); --max:720px; }
+    @media (prefers-color-scheme: light) { :root { --bg:#f6f8fc; --bg-card:rgba(255,255,255,0.88); --text:#0d1422; --muted:#526075; --muted-2:#6c788b; --line:rgba(12,22,40,0.09); --blue-soft:rgba(66,143,210,0.08); } }
     * { box-sizing:border-box; }
     body { margin:0; font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif; color:var(--text); background:var(--bg); line-height:1.7; -webkit-font-smoothing:antialiased; }
     a { color:var(--blue); text-decoration:none; }
@@ -43,15 +43,15 @@
     li { margin:6px 0; }
     strong { color:var(--text); }
     .callout, .cta-box { padding:20px 24px; border-radius:16px; margin:28px 0; }
-    .callout { background:var(--blue-soft); border:1px solid rgba(22,146,255,0.18); }
+    .callout { background:var(--blue-soft); border:1px solid rgba(66,143,210,0.18); }
     .cta-box { background:var(--bg-card); border:1px solid var(--line); }
     .theme-toggle { background:none; border:1px solid var(--line); border-radius:10px; color:var(--muted); cursor:pointer; width:36px; height:36px; display:inline-grid; place-items:center; padding:0; }
     .theme-toggle:hover { border-color:var(--blue); color:var(--text); }
     .icon-moon, .logo-light { display:none; } .logo-dark { display:block; }
     @media (prefers-color-scheme: light) { .icon-sun, .logo-dark { display:none; } .icon-moon, .logo-light { display:block; } }
     html[data-theme="dark"] .icon-sun, html[data-theme="dark"] .logo-dark { display:block; } html[data-theme="dark"] .icon-moon, html[data-theme="dark"] .logo-light { display:none; } html[data-theme="light"] .icon-sun, html[data-theme="light"] .logo-dark { display:none; } html[data-theme="light"] .icon-moon, html[data-theme="light"] .logo-light { display:block; }
-    html[data-theme="dark"] { --bg:#0a0b0d; --bg-card:rgba(255,255,255,0.05); --text:#f4f7fb; --muted:#b2b9c5; --muted-2:#8790a0; --line:rgba(255,255,255,0.10); --blue-soft:rgba(22,146,255,0.12); }
-    html[data-theme="light"] { --bg:#f6f8fc; --bg-card:rgba(255,255,255,0.88); --text:#0d1422; --muted:#526075; --muted-2:#6c788b; --line:rgba(12,22,40,0.09); --blue-soft:rgba(22,146,255,0.08); }
+    html[data-theme="dark"] { --bg:#0a0b0d; --bg-card:rgba(255,255,255,0.05); --text:#f4f7fb; --muted:#b2b9c5; --muted-2:#8790a0; --line:rgba(255,255,255,0.10); --blue-soft:rgba(66,143,210,0.12); }
+    html[data-theme="light"] { --bg:#f6f8fc; --bg-card:rgba(255,255,255,0.88); --text:#0d1422; --muted:#526075; --muted-2:#6c788b; --line:rgba(12,22,40,0.09); --blue-soft:rgba(66,143,210,0.08); }
     .atlasdays-screenshot { margin:24px auto 28px; max-width:320px; display:block; }
     .atlasdays-screenshot img { display:block; width:100%; height:auto; border-radius:22px; border:1px solid var(--line); box-shadow:0 12px 32px rgba(0,0,0,0.18); }
   </style>
@@ -64,7 +64,7 @@
       border: 1px solid var(--line, rgba(255,255,255,0.10));
       background:
         linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)),
-        radial-gradient(circle at top left, rgba(22,146,255,0.12), transparent 58%);
+        radial-gradient(circle at top left, rgba(66,143,210,0.12), transparent 58%);
       box-shadow: 0 18px 42px rgba(0,0,0,0.12);
     }
     .atlasdays-article-image img {
@@ -88,27 +88,27 @@
     }
     @media (prefers-color-scheme: light) {
       .atlasdays-article-image {
-        border-color: rgba(22,146,255,0.14);
+        border-color: rgba(66,143,210,0.14);
         background:
-          linear-gradient(180deg, rgba(22,146,255,0.10), rgba(22,146,255,0.03)),
+          linear-gradient(180deg, rgba(66,143,210,0.10), rgba(66,143,210,0.02)),
           linear-gradient(180deg, rgba(232,242,252,0.88), rgba(244,248,253,0.92));
         box-shadow: 0 14px 30px rgba(15, 28, 48, 0.08);
       }
       .atlasdays-article-image img {
-        border-color: rgba(22,146,255,0.10);
+        border-color: rgba(66,143,210,0.10);
         background: rgba(226, 238, 248, 0.82);
         box-shadow: 0 14px 28px rgba(15, 28, 48, 0.10);
       }
     }
     html[data-theme="light"] .atlasdays-article-image {
-      border-color: rgba(22,146,255,0.14);
+      border-color: rgba(66,143,210,0.14);
       background:
-        linear-gradient(180deg, rgba(22,146,255,0.10), rgba(22,146,255,0.03)),
+        linear-gradient(180deg, rgba(66,143,210,0.10), rgba(66,143,210,0.02)),
         linear-gradient(180deg, rgba(232,242,252,0.88), rgba(244,248,253,0.92));
       box-shadow: 0 14px 30px rgba(15, 28, 48, 0.08);
     }
     html[data-theme="light"] .atlasdays-article-image img {
-      border-color: rgba(22,146,255,0.10);
+      border-color: rgba(66,143,210,0.10);
       background: rgba(226, 238, 248, 0.82);
       box-shadow: 0 14px 28px rgba(15, 28, 48, 0.10);
     }
@@ -162,7 +162,7 @@
     </nav>
 
     <h1>Trackers and Limits</h1>
-    <p class="updated">Last updated: April 11, 2026</p>
+    <p class="updated">Last updated: April 30, 2026</p>
     <p class="subtitle">Troubleshoot a tracker that looks wrong, keep the setup aligned with your rule, and verify when the result is safe to trust.</p>
 
     <!-- ARTICLE_IMAGE:hero -->
@@ -338,6 +338,31 @@
       <li><strong>No matching alert point yet:</strong> do not expect Smart Alerts until the tracker reaches one of its configured alert states for its mode.</li>
     </ul>
     <p>Missing Smart Alerts do not prove the tracker is wrong, and delivered Smart Alerts do not prove the tracker is configured correctly. Review the tracker itself before you rely on it.</p>
+
+    <h2>Reading the Tracker Detail Chart</h2>
+    <p><strong>Tracker Detail</strong> can show different chart shapes depending on the tracker's window. <strong>Rolling</strong> trackers show a rolling count over time. <strong>Yearly</strong> trackers show the calendar or fiscal-year period for the stored tracker year. <strong>Per Stay</strong> trackers show a cumulative chart when the tracker has a <strong>Tracking from</strong> date.</p>
+    <ul>
+      <li><strong>Solid line:</strong> the day count produced by your trip record, day by day, up to today.</li>
+      <li><strong>Dashed line:</strong> the projected count for days after today, based on ongoing and planned exact-date trips where the tracker can place them. This is not a saved forecast. It updates whenever you add, edit, or close a trip.</li>
+      <li><strong>Threshold line:</strong> the tracker's limit or target, drawn horizontally across the chart. A floating label pinned to the right edge of the viewport shows the threshold value, and fades out while you scroll or scrub so it does not sit on top of the data.</li>
+      <li><strong>Occupancy strip:</strong> the row of short bars above the x-axis marks the days you were present in the tracker's country set. Use it to see at a glance which days fed into the count.</li>
+      <li><strong>Scrubbing:</strong> touch and drag on the chart to pin a cursor to a specific date. AtlasDays shows the exact day count on that date, the date itself, and a status label such as <strong>under limit</strong>, <strong>at limit</strong>, or <strong>over limit</strong>.</li>
+    </ul>
+
+    <h3>Stay and Recovery Insights</h3>
+    <p>Below the chart, AtlasDays shows short forward-looking text derived from the same trip record the tracker uses:</p>
+    <ul>
+      <li><strong>When you will be back under the limit:</strong> shown when the current count is already over the threshold and you have a planned departure. AtlasDays simulates the rolling window forward to the first date where old days will have fallen out.</li>
+      <li><strong>How an ongoing or planned trip affects your count:</strong> shown when you have an ongoing trip or planned future trips in the tracker's country set. Use this to see the effect of a scheduled trip before you take it.</li>
+    </ul>
+    <p>If a relevant future trip is still <strong>Year</strong> or <strong>Unknown</strong>, or ongoing with no end date, the projection cannot reflect it precisely. Fix the trip record rather than the chart.</p>
+
+    <div class="callout">
+      <p><strong>The chart reflects your current trip record, not a promise.</strong> It assumes planned future trips happen on the dates you saved and can only be as precise as the trip dates behind it. If your plans change, edit the trip and the chart will update on its own.</p>
+    </div>
+
+    <h2>Adding a Trip From Tracker Detail</h2>
+    <p>Tracker Detail has a <strong>+</strong> button that opens the trip form pre-scoped to the tracker's country set. A one-country tracker locks the country field. A multi-country tracker shows a filtered picker so you can only pick from the tracker's countries. Use this when the chart or the trips section on Tracker Detail shows that a trip is missing and you want to add it without leaving the view.</p>
 
     <h2>How Trackers Relate to Dashboard and Exports</h2>
     <ul>

@@ -28,8 +28,8 @@
       --muted: #b2b9c5;
       --muted-2: #8790a0;
       --line: rgba(255,255,255,0.10);
-      --blue: #1692ff;
-      --blue-soft: rgba(22,146,255,0.12);
+      --blue: #428FD2;
+      --blue-soft: rgba(66,143,210,0.12);
       --shadow: 0 18px 52px rgba(0,0,0,0.28);
       --radius: 24px;
       --max: 1120px;
@@ -46,7 +46,7 @@
         --muted: #526075;
         --muted-2: #6c788b;
         --line: rgba(12,22,40,0.09);
-        --blue-soft: rgba(22,146,255,0.08);
+        --blue-soft: rgba(66,143,210,0.08);
         --shadow: 0 18px 48px rgba(16,28,48,0.10);
       }
     }
@@ -58,8 +58,7 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top center, rgba(22,146,255,0.10), transparent 28%),
-        radial-gradient(circle at 10% 12%, rgba(22,146,255,0.05), transparent 18%),
+        radial-gradient(ellipse at 50% -10%, rgba(66,143,210,0.06), transparent 40%),
         var(--bg);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
@@ -195,7 +194,6 @@
       height: 8px;
       border-radius: 50%;
       background: var(--blue);
-      box-shadow: 0 0 0 6px rgba(22,146,255,0.12);
     }
     h1 {
       font-size: clamp(2.4rem, 5vw, 4.2rem);
@@ -238,7 +236,7 @@
     }
     .jump-links a:hover,
     .mini-links a:hover {
-      border-color: rgba(22,146,255,0.30);
+      border-color: rgba(66,143,210,0.18);
       text-decoration: none;
       transform: translateY(-1px);
     }
@@ -260,7 +258,7 @@
     .hero-panel {
       padding: 26px 24px;
       background:
-        linear-gradient(180deg, rgba(22,146,255,0.08), rgba(22,146,255,0.02)),
+        linear-gradient(180deg, rgba(66,143,210,0.08), rgba(66,143,210,0.02)),
         var(--bg-card-strong);
     }
     .hero-panel h2,
@@ -290,7 +288,7 @@
     .hero-note {
       padding: 14px 16px;
       border-radius: 18px;
-      border: 1px solid rgba(22,146,255,0.18);
+      border: 1px solid rgba(66,143,210,0.18);
       background: var(--blue-soft);
       color: var(--muted);
       font-size: 0.95rem;
@@ -407,11 +405,11 @@
       transition: border-color 160ms ease, transform 160ms ease;
     }
     .article-card:hover {
-      border-color: rgba(22,146,255,0.30);
+      border-color: rgba(66,143,210,0.18);
       transform: translateY(-1px);
     }
     .article-card:focus-visible {
-      border-color: rgba(22,146,255,0.34);
+      border-color: rgba(66,143,210,0.28);
     }
     .article-card .article-tag {
       margin-bottom: 10px;
@@ -432,7 +430,7 @@
     }
     .contact-card.primary {
       background:
-        linear-gradient(180deg, rgba(22,146,255,0.10), rgba(22,146,255,0.04)),
+        linear-gradient(180deg, rgba(66,143,210,0.10), rgba(66,143,210,0.04)),
         var(--bg-card-strong);
     }
     .contact-card ul {
@@ -448,11 +446,10 @@
       justify-content: center;
       width: fit-content;
       padding: 13px 18px;
-      border-radius: 14px;
+      border-radius: 16px;
       background: var(--blue);
       color: #fff;
       font-weight: 700;
-      box-shadow: 0 14px 28px rgba(22,146,255,0.22);
     }
     .cta-btn:hover { text-decoration: none; }
     .contact-note { font-size: 0.94rem; }
@@ -466,7 +463,7 @@
       --muted: #b2b9c5;
       --muted-2: #8790a0;
       --line: rgba(255,255,255,0.10);
-      --blue-soft: rgba(22,146,255,0.12);
+      --blue-soft: rgba(66,143,210,0.12);
       --shadow: 0 18px 52px rgba(0,0,0,0.28);
     }
     html[data-theme="light"] {
@@ -478,7 +475,7 @@
       --muted: #526075;
       --muted-2: #6c788b;
       --line: rgba(12,22,40,0.09);
-      --blue-soft: rgba(22,146,255,0.08);
+      --blue-soft: rgba(66,143,210,0.08);
       --shadow: 0 18px 48px rgba(16,28,48,0.10);
     }
 
@@ -573,7 +570,7 @@
       <div class="hero-copy">
         <p class="eyebrow"><span class="dot"></span> AtlasDays Help Center</p>
         <h1>Help Center</h1>
-        <p class="updated">Last updated: April 16, 2026</p>
+        <p class="updated">Last updated: April 30, 2026</p>
         <p class="subtitle">Start with the guide that matches what looks wrong or what you are trying to do in AtlasDays. For visa, residency, and travel-history rules themselves, use <a class="text-link" href="/learn/">Learn</a>.</p>
         <nav class="jump-links" aria-label="Help Center page sections">
           <a href="/help/dashboard-and-map">Counts look wrong</a>
@@ -593,8 +590,8 @@
           <li><strong>Counts, map, or Days Abroad look wrong:</strong> start with <a class="text-link" href="/help/dashboard-and-map">Dashboard and Map</a>.</li>
           <li><strong>A tracker or alert looks wrong:</strong> start with <a class="text-link" href="/help/trackers-and-limits">Trackers and Limits</a>.</li>
           <li><strong>Your trip record needs cleanup or import help:</strong> use <a class="text-link" href="/help/history-and-import">Trip Modes and Record Quality</a>, <a class="text-link" href="/help/photo-import">Photo Import</a>, or <a class="text-link" href="/help/csv-import">CSV Import</a>.</li>
-          <li><strong>You changed devices or reinstalled:</strong> use <a class="text-link" href="/help/icloud-sync-and-restore">iCloud Sync and Restore</a>.</li>
-          <li><strong>Auto-Detect Trips, permissions, privacy, or notifications are involved:</strong> use <a class="text-link" href="/help/privacy-location-and-sync">Privacy, Location, and Sync</a>.</li>
+          <li><strong>You changed devices, reinstalled, or see Restoring from iCloud:</strong> use <a class="text-link" href="/help/icloud-sync-and-restore">iCloud Sync and Restore</a>.</li>
+          <li><strong>Auto-Detect Trips, ignored countries, permissions, privacy, or notifications are involved:</strong> use <a class="text-link" href="/help/privacy-location-and-sync">Privacy, Location, and Sync</a>.</li>
         </ul>
         <div class="hero-note"><strong>Still not solved?</strong> Start with the closest guide, then <a href="#support">contact support</a> with one clear example.</div>
       </aside>
@@ -628,7 +625,7 @@
             <a class="article-card" href="/help/photo-import">
               <span class="article-tag">Photo library</span>
               <h3>Photo Import</h3>
-              <p>Scan geotagged photo metadata on device, review inferred trips, and understand duplicates, overlaps, transit detection, and date-range limits.</p>
+              <p>Scan geotagged photo and video metadata on device, review inferred trips, and understand duplicates, overlaps, transit detection, and locked older trips.</p>
             </a>
             <a class="article-card" href="/help/csv-import">
               <span class="article-tag">CSV</span>
@@ -673,12 +670,12 @@
             <a class="article-card" href="/help/privacy-location-and-sync">
               <span class="article-tag">Permissions</span>
               <h3>Privacy, Location, and Sync</h3>
-              <p>Understand the local-first privacy model, Auto-Detect Trips suggestions, Photos access, and which permissions matter.</p>
+              <p>Understand the local-first privacy model, Auto-Detect Trips suggestions, ignored countries, Photos access, and which permissions matter.</p>
             </a>
             <a class="article-card" href="/help/icloud-sync-and-restore">
               <span class="article-tag">iCloud</span>
               <h3>iCloud Sync and Restore</h3>
-              <p>See what iCloud sync covers, what stays device-specific, and what to expect after reinstalling or changing devices.</p>
+              <p>See what iCloud sync covers, what stays device-specific, and what to expect after reinstalling, changing devices, or seeing a restore screen.</p>
             </a>
           </div>
         </section>

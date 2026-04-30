@@ -19,8 +19,8 @@
   <link rel="icon" type="image/png" href="../assets/brand/favicon_dark.png?v=20260325a" media="(prefers-color-scheme: dark)" />
   <script>(function(){var t=localStorage.getItem('theme');document.documentElement.setAttribute('data-theme',t==='light'?'light':'dark')})()</script>
   <style>
-    :root { --bg:#0a0b0d; --bg-card:rgba(255,255,255,0.05); --text:#f4f7fb; --muted:#b2b9c5; --muted-2:#8790a0; --line:rgba(255,255,255,0.10); --blue:#1692ff; --blue-soft:rgba(22,146,255,0.12); --max:720px; }
-    @media (prefers-color-scheme: light) { :root { --bg:#f6f8fc; --bg-card:rgba(255,255,255,0.88); --text:#0d1422; --muted:#526075; --muted-2:#6c788b; --line:rgba(12,22,40,0.09); --blue-soft:rgba(22,146,255,0.08); } }
+    :root { --bg:#0a0b0d; --bg-card:rgba(255,255,255,0.05); --text:#f4f7fb; --muted:#b2b9c5; --muted-2:#8790a0; --line:rgba(255,255,255,0.10); --blue:#428FD2; --blue-soft:rgba(66,143,210,0.12); --max:720px; }
+    @media (prefers-color-scheme: light) { :root { --bg:#f6f8fc; --bg-card:rgba(255,255,255,0.88); --text:#0d1422; --muted:#526075; --muted-2:#6c788b; --line:rgba(12,22,40,0.09); --blue-soft:rgba(66,143,210,0.08); } }
     * { box-sizing:border-box; }
     body { margin:0; font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif; color:var(--text); background:var(--bg); line-height:1.7; -webkit-font-smoothing:antialiased; }
     a { color:var(--blue); text-decoration:none; }
@@ -43,15 +43,15 @@
     li { margin:6px 0; }
     strong { color:var(--text); }
     .callout, .cta-box { padding:20px 24px; border-radius:16px; margin:28px 0; }
-    .callout { background:var(--blue-soft); border:1px solid rgba(22,146,255,0.18); }
+    .callout { background:var(--blue-soft); border:1px solid rgba(66,143,210,0.18); }
     .cta-box { background:var(--bg-card); border:1px solid var(--line); }
     .theme-toggle { background:none; border:1px solid var(--line); border-radius:10px; color:var(--muted); cursor:pointer; width:36px; height:36px; display:inline-grid; place-items:center; padding:0; }
     .theme-toggle:hover { border-color:var(--blue); color:var(--text); }
     .icon-moon, .logo-light { display:none; } .logo-dark { display:block; }
     @media (prefers-color-scheme: light) { .icon-sun, .logo-dark { display:none; } .icon-moon, .logo-light { display:block; } }
     html[data-theme="dark"] .icon-sun, html[data-theme="dark"] .logo-dark { display:block; } html[data-theme="dark"] .icon-moon, html[data-theme="dark"] .logo-light { display:none; } html[data-theme="light"] .icon-sun, html[data-theme="light"] .logo-dark { display:none; } html[data-theme="light"] .icon-moon, html[data-theme="light"] .logo-light { display:block; }
-    html[data-theme="dark"] { --bg:#0a0b0d; --bg-card:rgba(255,255,255,0.05); --text:#f4f7fb; --muted:#b2b9c5; --muted-2:#8790a0; --line:rgba(255,255,255,0.10); --blue-soft:rgba(22,146,255,0.12); }
-    html[data-theme="light"] { --bg:#f6f8fc; --bg-card:rgba(255,255,255,0.88); --text:#0d1422; --muted:#526075; --muted-2:#6c788b; --line:rgba(12,22,40,0.09); --blue-soft:rgba(22,146,255,0.08); }
+    html[data-theme="dark"] { --bg:#0a0b0d; --bg-card:rgba(255,255,255,0.05); --text:#f4f7fb; --muted:#b2b9c5; --muted-2:#8790a0; --line:rgba(255,255,255,0.10); --blue-soft:rgba(66,143,210,0.12); }
+    html[data-theme="light"] { --bg:#f6f8fc; --bg-card:rgba(255,255,255,0.88); --text:#0d1422; --muted:#526075; --muted-2:#6c788b; --line:rgba(12,22,40,0.09); --blue-soft:rgba(66,143,210,0.08); }
     .atlasdays-screenshot { margin:24px auto 28px; max-width:320px; display:block; }
     .atlasdays-screenshot img { display:block; width:100%; height:auto; border-radius:22px; border:1px solid var(--line); box-shadow:0 12px 32px rgba(0,0,0,0.18); }
   </style>
@@ -64,7 +64,7 @@
       border: 1px solid var(--line, rgba(255,255,255,0.10));
       background:
         linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)),
-        radial-gradient(circle at top left, rgba(22,146,255,0.12), transparent 58%);
+        radial-gradient(circle at top left, rgba(66,143,210,0.12), transparent 58%);
       box-shadow: 0 18px 42px rgba(0,0,0,0.12);
     }
     .atlasdays-article-image img {
@@ -88,27 +88,27 @@
     }
     @media (prefers-color-scheme: light) {
       .atlasdays-article-image {
-        border-color: rgba(22,146,255,0.14);
+        border-color: rgba(66,143,210,0.14);
         background:
-          linear-gradient(180deg, rgba(22,146,255,0.10), rgba(22,146,255,0.03)),
+          linear-gradient(180deg, rgba(66,143,210,0.10), rgba(66,143,210,0.02)),
           linear-gradient(180deg, rgba(232,242,252,0.88), rgba(244,248,253,0.92));
         box-shadow: 0 14px 30px rgba(15, 28, 48, 0.08);
       }
       .atlasdays-article-image img {
-        border-color: rgba(22,146,255,0.10);
+        border-color: rgba(66,143,210,0.10);
         background: rgba(226, 238, 248, 0.82);
         box-shadow: 0 14px 28px rgba(15, 28, 48, 0.10);
       }
     }
     html[data-theme="light"] .atlasdays-article-image {
-      border-color: rgba(22,146,255,0.14);
+      border-color: rgba(66,143,210,0.14);
       background:
-        linear-gradient(180deg, rgba(22,146,255,0.10), rgba(22,146,255,0.03)),
+        linear-gradient(180deg, rgba(66,143,210,0.10), rgba(66,143,210,0.02)),
         linear-gradient(180deg, rgba(232,242,252,0.88), rgba(244,248,253,0.92));
       box-shadow: 0 14px 30px rgba(15, 28, 48, 0.08);
     }
     html[data-theme="light"] .atlasdays-article-image img {
-      border-color: rgba(22,146,255,0.10);
+      border-color: rgba(66,143,210,0.10);
       background: rgba(226, 238, 248, 0.82);
       box-shadow: 0 14px 28px rgba(15, 28, 48, 0.10);
     }
@@ -162,7 +162,7 @@
     </nav>
 
     <h1>Getting Started</h1>
-    <p class="updated">Last updated: April 11, 2026</p>
+    <p class="updated">Last updated: April 30, 2026</p>
     <p class="subtitle">Set up AtlasDays in an order that keeps <strong>Days Abroad</strong>, early dashboard totals, and first trackers from drifting off immediately.</p>
 
     <!-- ARTICLE_IMAGE:hero -->
@@ -247,7 +247,7 @@
 
     <h3>5. Use import only when it is actually worth it</h3>
     <p>Open <strong>Settings &gt; Import</strong> when you have enough history that manual entry would be slow. Choose <strong>Photos</strong> when geotagged photo metadata is your strongest source. Choose <strong>CSV</strong> when your history already exists in a spreadsheet or travel notes.</p>
-    <p><strong>Photo Import</strong> scans on-device metadata and drafts trips for review. The free plan includes the last <strong>180 days</strong> of photo history; older or all-time photo scans require <strong>AtlasDays Pro</strong>.</p>
+    <p><strong>Photo Import</strong> scans on-device metadata and drafts trips for review. On the free plan, you can import trips from the last <strong>180 days</strong>; older candidates can still be found, but they appear locked under <strong>Older Trips Found</strong> until <strong>AtlasDays Pro</strong> unlocks older photo-history import.</p>
     <p><strong>CSV Import</strong> is worth it for a structured backlog. Manual entry is often cleaner for a small number of recent or important trips, especially when those trips affect live counts right away.</p>
     <p>Do not invent <strong>Exact Dates</strong> just to fill the app faster. Import speed is not worth damaging record quality. Save trips with defensible calendar dates as <strong>Exact Dates</strong>, rough history as <strong>Year</strong>, and truly unknown visits as <strong>Unknown</strong>.</p>
 

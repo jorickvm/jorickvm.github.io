@@ -19,8 +19,8 @@
   <link rel="icon" type="image/png" href="../assets/brand/favicon_dark.png?v=20260325a" media="(prefers-color-scheme: dark)" />
   <script>(function(){var t=localStorage.getItem('theme');document.documentElement.setAttribute('data-theme',t==='light'?'light':'dark')})()</script>
   <style>
-    :root { --bg:#0a0b0d; --bg-card:rgba(255,255,255,0.05); --text:#f4f7fb; --muted:#b2b9c5; --muted-2:#8790a0; --line:rgba(255,255,255,0.10); --blue:#1692ff; --blue-soft:rgba(22,146,255,0.12); --max:720px; }
-    @media (prefers-color-scheme: light) { :root { --bg:#f6f8fc; --bg-card:rgba(255,255,255,0.88); --text:#0d1422; --muted:#526075; --muted-2:#6c788b; --line:rgba(12,22,40,0.09); --blue-soft:rgba(22,146,255,0.08); } }
+    :root { --bg:#0a0b0d; --bg-card:rgba(255,255,255,0.05); --text:#f4f7fb; --muted:#b2b9c5; --muted-2:#8790a0; --line:rgba(255,255,255,0.10); --blue:#428FD2; --blue-soft:rgba(66,143,210,0.12); --max:720px; }
+    @media (prefers-color-scheme: light) { :root { --bg:#f6f8fc; --bg-card:rgba(255,255,255,0.88); --text:#0d1422; --muted:#526075; --muted-2:#6c788b; --line:rgba(12,22,40,0.09); --blue-soft:rgba(66,143,210,0.08); } }
     * { box-sizing:border-box; } body { margin:0; font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif; color:var(--text); background:var(--bg); line-height:1.7; -webkit-font-smoothing:antialiased; }
     a { color:var(--blue); text-decoration:none; } a:hover { text-decoration:underline; }
     .top-bar { border-bottom:1px solid var(--line); padding:18px 0; } .top-bar-inner { width:min(var(--max), calc(100% - 40px)); margin:0 auto; display:flex; align-items:center; justify-content:space-between; }
@@ -30,13 +30,13 @@
     h1 { font-size:clamp(1.8rem, 4vw, 2.6rem); line-height:1.1; letter-spacing:-0.03em; margin:0 0 12px; } .updated { color:var(--muted-2); font-size:0.9rem; line-height:1.4; margin:-4px 0 16px; } .subtitle { color:var(--muted); font-size:1.08rem; margin:0 0 24px; }
     h2 { font-size:1.4rem; letter-spacing:-0.02em; margin:36px 0 12px; } h3 { font-size:1.1rem; margin:28px 0 8px; }
     p, li { color:var(--muted); font-size:1rem; } p { margin:0 0 16px; } ul { padding-left:20px; margin:0 0 16px; } li { margin:6px 0; } strong { color:var(--text); }
-    .callout, .cta-box { padding:20px 24px; border-radius:16px; margin:28px 0; } .callout { background:var(--blue-soft); border:1px solid rgba(22,146,255,0.18); } .cta-box { background:var(--bg-card); border:1px solid var(--line); }
+    .callout, .cta-box { padding:20px 24px; border-radius:16px; margin:28px 0; } .callout { background:var(--blue-soft); border:1px solid rgba(66,143,210,0.18); } .cta-box { background:var(--bg-card); border:1px solid var(--line); }
     .theme-toggle { background:none; border:1px solid var(--line); border-radius:10px; color:var(--muted); cursor:pointer; width:36px; height:36px; display:inline-grid; place-items:center; padding:0; } .theme-toggle:hover { border-color:var(--blue); color:var(--text); }
     .icon-moon, .logo-light { display:none; } .logo-dark { display:block; }
     @media (prefers-color-scheme: light) { .icon-sun, .logo-dark { display:none; } .icon-moon, .logo-light { display:block; } }
     html[data-theme="dark"] .icon-sun, html[data-theme="dark"] .logo-dark { display:block; } html[data-theme="dark"] .icon-moon, html[data-theme="dark"] .logo-light { display:none; } html[data-theme="light"] .icon-sun, html[data-theme="light"] .logo-dark { display:none; } html[data-theme="light"] .icon-moon, html[data-theme="light"] .logo-light { display:block; }
-    html[data-theme="dark"] { --bg:#0a0b0d; --bg-card:rgba(255,255,255,0.05); --text:#f4f7fb; --muted:#b2b9c5; --muted-2:#8790a0; --line:rgba(255,255,255,0.10); --blue-soft:rgba(22,146,255,0.12); }
-    html[data-theme="light"] { --bg:#f6f8fc; --bg-card:rgba(255,255,255,0.88); --text:#0d1422; --muted:#526075; --muted-2:#6c788b; --line:rgba(12,22,40,0.09); --blue-soft:rgba(22,146,255,0.08); }
+    html[data-theme="dark"] { --bg:#0a0b0d; --bg-card:rgba(255,255,255,0.05); --text:#f4f7fb; --muted:#b2b9c5; --muted-2:#8790a0; --line:rgba(255,255,255,0.10); --blue-soft:rgba(66,143,210,0.12); }
+    html[data-theme="light"] { --bg:#f6f8fc; --bg-card:rgba(255,255,255,0.88); --text:#0d1422; --muted:#526075; --muted-2:#6c788b; --line:rgba(12,22,40,0.09); --blue-soft:rgba(66,143,210,0.08); }
     .atlasdays-screenshot { margin:24px auto 28px; max-width:320px; display:block; }
     .atlasdays-screenshot img { display:block; width:100%; height:auto; border-radius:22px; border:1px solid var(--line); box-shadow:0 12px 32px rgba(0,0,0,0.18); }
   </style>
@@ -49,7 +49,7 @@
       border: 1px solid var(--line, rgba(255,255,255,0.10));
       background:
         linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02)),
-        radial-gradient(circle at top left, rgba(22,146,255,0.12), transparent 58%);
+        radial-gradient(circle at top left, rgba(66,143,210,0.12), transparent 58%);
       box-shadow: 0 18px 42px rgba(0,0,0,0.12);
     }
     .atlasdays-article-image img {
@@ -73,27 +73,27 @@
     }
     @media (prefers-color-scheme: light) {
       .atlasdays-article-image {
-        border-color: rgba(22,146,255,0.14);
+        border-color: rgba(66,143,210,0.14);
         background:
-          linear-gradient(180deg, rgba(22,146,255,0.10), rgba(22,146,255,0.03)),
+          linear-gradient(180deg, rgba(66,143,210,0.10), rgba(66,143,210,0.02)),
           linear-gradient(180deg, rgba(232,242,252,0.88), rgba(244,248,253,0.92));
         box-shadow: 0 14px 30px rgba(15, 28, 48, 0.08);
       }
       .atlasdays-article-image img {
-        border-color: rgba(22,146,255,0.10);
+        border-color: rgba(66,143,210,0.10);
         background: rgba(226, 238, 248, 0.82);
         box-shadow: 0 14px 28px rgba(15, 28, 48, 0.10);
       }
     }
     html[data-theme="light"] .atlasdays-article-image {
-      border-color: rgba(22,146,255,0.14);
+      border-color: rgba(66,143,210,0.14);
       background:
-        linear-gradient(180deg, rgba(22,146,255,0.10), rgba(22,146,255,0.03)),
+        linear-gradient(180deg, rgba(66,143,210,0.10), rgba(66,143,210,0.02)),
         linear-gradient(180deg, rgba(232,242,252,0.88), rgba(244,248,253,0.92));
       box-shadow: 0 14px 30px rgba(15, 28, 48, 0.08);
     }
     html[data-theme="light"] .atlasdays-article-image img {
-      border-color: rgba(22,146,255,0.10);
+      border-color: rgba(66,143,210,0.10);
       background: rgba(226, 238, 248, 0.82);
       box-shadow: 0 14px 28px rgba(15, 28, 48, 0.10);
     }
@@ -143,7 +143,7 @@
   <article>
     <nav class="breadcrumb"><a href="/">AtlasDays</a> / <a href="/help/">Help Center</a></nav>
     <h1>Dashboard and Map</h1>
-    <p class="updated">Last updated: April 11, 2026</p>
+    <p class="updated">Last updated: April 30, 2026</p>
     <p class="subtitle">Check what the dashboard is summarizing, what the selected period changes, and why totals or map highlights can look wrong.</p>
 
     <!-- ARTICLE_IMAGE:hero -->
@@ -183,11 +183,21 @@
     <h2>The Main Dashboard Stats</h2>
     <p>The four stat tiles at the top are tappable, and each one opens the trips or country rows behind the number.</p>
     <ul>
-      <li><strong>Countries:</strong> how many distinct visited countries fall inside the selected period. The denominator depends on your visited-country counting mode in Settings: <strong>UN 195</strong>, <strong>UN 195+2</strong>, or <strong>All Places</strong>. <strong>Transit</strong>-only countries appear separately on the map, but they do not count as visited countries.</li>
+      <li><strong>Countries:</strong> how many distinct visited countries fall inside the selected period. The denominator depends on your visited-country counting mode in Settings: <strong>UN 193</strong>, <strong>UN 195</strong>, <strong>UN 195+2</strong>, or <strong>All Places</strong>. <strong>Transit</strong>-only countries appear separately on the map, but they do not count as visited countries.</li>
       <li><strong>Trips:</strong> how many non-<strong>Transit</strong> trips fall inside the selected period. <strong>All Time</strong> can include trips stored as <strong>Year</strong> or <strong>Unknown</strong>. A specific <strong>Year</strong> can include matching <strong>Year</strong> entries. <strong>Range</strong> is the strictest view and focuses on trips that can be placed inside that exact window.</li>
       <li><strong>Days Abroad:</strong> total unique exact days outside your <strong>Home Country</strong> in the selected period. If you chose <strong>No fixed residence</strong>, all recorded days from <strong>Exact Dates</strong> trips count as abroad. This is not the same thing as tracker days, because trackers use their own country scope, time window, and optional night counting.</li>
       <li><strong>Continents:</strong> how many continents are represented by the visited countries in the selected period. If countries drop out because of the current period or counting mode, continents can change too.</li>
     </ul>
+
+    <h2>Country Count and Continent Settings</h2>
+    <p><strong>Country Count</strong> changes the visited-country denominator and which places count toward the country total. It does not rewrite your trips or change tracker math.</p>
+    <ul>
+      <li><strong>UN 193</strong> counts UN member states only.</li>
+      <li><strong>UN 195</strong> adds the two UN observer states.</li>
+      <li><strong>UN 195+2</strong> adds Kosovo and Taiwan.</li>
+      <li><strong>All Places</strong> includes tracked territories and dependencies as separate places.</li>
+    </ul>
+    <p>Settings also lets you choose how transcontinental countries count in continent breakdowns: their primary continent, their secondary continent, or both. That affects the dashboard continent list and continent share card, but it does not change trip dates, visited-country totals, or tracker results.</p>
 
     <h2>Trackers on the Dashboard</h2>
     <p>If you have trackers set up, they appear as cards below the stats. Each card shows the tracker name, current total, threshold, and progress state.</p>

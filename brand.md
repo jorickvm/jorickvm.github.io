@@ -327,7 +327,11 @@ Safer patterns:
 
 ## Visual Direction
 
-AtlasDays should look like a calm, modern, technical travel tool.
+AtlasDays should look like a calm, modern, technical travel tool. The app is the
+canonical surface; the marketing site follows its lead. For the full token-level
+spec (color values, typography scale, spacing, radii, elevation, motion) see
+`DESIGN.md` in the app repo. This section captures the direction in plain
+language.
 
 ### Visual cues
 
@@ -335,12 +339,53 @@ AtlasDays should look like a calm, modern, technical travel tool.
 - structured rather than decorative
 - clean rather than glossy
 - calm rather than loud
+- content-forward, with chrome reduced to hairlines
 
 ### Color direction
 
-- deep navy, graphite, slate, and clear atlas blue
-- bright accents used sparingly for focus, state, and trust
-- light mode should feel crisp and airy, not sterile
+- dark by default in the app: a true-black canvas with dark grey grouped cards
+  layered on top, so the world map and country fills carry the color
+- light mode is supported with the same care: an off-white app background and
+  pure-white cards; it should feel crisp and airy, not sterile
+- one user-chosen accent at a time, applied consistently to active controls,
+  the back chevron, the visited countries on the map, and the active portion of
+  every progress bar
+- atlas blue (`#428FD2`) is the default accent, used everywhere – in the app,
+  in the marketing site, in the favicon, in the App Store screenshots
+- graphite and slate greys are used for land masses, dividers, and inactive
+  controls, never as the primary accent
+- state colors are restrained: green only when a tracker target is met, orange
+  only when a limit is approaching, red only when a limit is reached or within
+  three days; everything else stays neutral so warnings keep their meaning
+- no decorative gradients, no glassmorphism, no glow on either surface
+
+### Surfaces
+
+AtlasDays has two visual surfaces and they are intentionally close, not identical.
+
+**The app** is the canonical visual identity. True-black canvas (or off-white in
+light mode), opaque grouped cards layered on top, hairline shadows, a tight
+radius scale (6 / 12 / 16 / 24 / pill, all continuous-curvature), and absolutely
+no gradients, no glass, no glow.
+
+**The marketing site** is allowed to relax the canvas slightly to read better in
+a browser:
+- a near-black `#0a0b0d` body background instead of true black
+- at most one very subtle accent halo at the top of the page, never per-component
+- larger card radii (24 for cards, 16 for buttons, 12 for small controls)
+- a slightly larger but still neutral drop shadow under cards
+- the standard iOS-style translucent sticky top-bar (a `backdrop-filter` blur on
+  the navigation chrome only, never on cards)
+
+Forbidden on the marketing site (same as in the app):
+- glassmorphism on cards (no `backdrop-filter`, no white-translucent sheens)
+- colored glow under buttons or behind dots
+- a second accent color – atlas blue is the only blue
+- gradients on cards, buttons, or panels
+
+A returning visitor going from the homepage into the App Store and into the app
+should never feel a visual seam. Slightly more breathing room is fine; a
+different visual language is not.
 
 ### Imagery
 
