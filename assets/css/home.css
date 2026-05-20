@@ -103,6 +103,43 @@ img { max-width: 100%; display: block; }
   color: white;
   font-weight: 650;
 }
+.nav-cta-wrap {
+  position: relative;
+}
+.nav-qr-popup {
+  display: none;
+}
+@media (min-width: 621px) and (hover: hover) {
+  .nav-qr-popup {
+    display: block;
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    background: var(--bg-card);
+    border: 1px solid var(--line-strong);
+    border-radius: 18px;
+    padding: 14px;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.18);
+    z-index: 200;
+    pointer-events: none;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity 140ms ease, transform 140ms ease, visibility 140ms;
+  }
+  .nav-cta-wrap:hover .nav-qr-popup {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .nav-qr-popup img {
+    width: 164px;
+    height: 164px;
+    max-width: none;
+    display: block;
+    border-radius: 8px;
+  }
+}
 .theme-toggle {
   background: none;
   border: 1px solid var(--line);
