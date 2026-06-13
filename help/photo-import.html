@@ -84,7 +84,7 @@
     </nav>
 
     <h1>Photo Import</h1>
-    <p class="updated">Last updated: April 30, 2026</p>
+    <p class="updated">Last updated: June 13, 2026</p>
     <p class="subtitle">Rebuild travel history from geotagged photo metadata, review inferred trips before saving, and understand privacy, duplicates, overlaps, transit detection, video evidence, and older locked trips.</p>
 
     <h2>What This Page Helps You Do</h2>
@@ -110,6 +110,7 @@
 
     <h2>Where Photo Import Lives</h2>
     <p>Go to <strong>Settings &gt; Import</strong> and choose <strong>Photos</strong>. If your timeline is empty or you just finished onboarding, AtlasDays can also show an <strong>Import from Photos</strong> prompt in Timeline.</p>
+    <p><strong>Find Photos</strong> is a separate mode at <strong>Settings &gt; Import &gt; Find Photos</strong>. Instead of creating new trips, it scans your library to match geotagged photos to trips already in your timeline. Use it to add photo previews to existing trips without importing new ones.</p>
     <p>You can scan a selected year, a preset range, or a custom date range. On the free plan, trips from the last <strong>180 days</strong> can be imported. A scan can still find older candidates, but those appear in a locked <strong>Older Trips Found</strong> section until <strong>AtlasDays Pro</strong> unlocks older photo-history import.</p>
 
     <h2>What Photos Access Is For</h2>
@@ -128,6 +129,14 @@
     <p>Videos can help detect trips when they have readable dates and locations. They are used as evidence only; the preview gallery shows photos, not videos.</p>
     <p>The result is a set of draft trip candidates. A candidate can be marked with warnings when it looks like a duplicate, overlaps another trip, was inferred from limited evidence, has gaps, or may be transit.</p>
     <p>Photo Import can miss trips if photos have no location metadata, if camera location services were off, if the scan range excludes those dates, or if the available evidence is too thin to infer a clean stay.</p>
+
+    <h2>US State Detection</h2>
+    <p>When photos have GPS data from within the United States, AtlasDays can resolve those locations to individual states. How this appears in the review screen depends on your plan:</p>
+    <ul>
+      <li><strong>AtlasDays Pro:</strong> US trips are split into per-state candidates. Each candidate shows the detected state alongside the country.</li>
+      <li><strong>Free plan:</strong> detected states appear as a preview without per-state import rows. Upgrade to Pro to import state-tagged trips.</li>
+    </ul>
+    <p>In the review screen, use the <strong>US states found</strong> filter to focus on state-detected candidates. You can still edit the state, adjust dates, or remove any candidate before confirming the import.</p>
 
     <h2>Review Before Saving</h2>
     <p>After scanning, AtlasDays opens a review screen. Use it like a draft inbox, not like an automatic source of truth.</p>
