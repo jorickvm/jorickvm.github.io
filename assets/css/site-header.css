@@ -84,6 +84,25 @@
 }
 .theme-toggle:focus-visible { border-color: var(--blue); }
 
+.top-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  border-radius: 999px;
+  background: var(--blue);
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  transition: opacity 140ms ease;
+}
+.top-links a.top-cta,
+.top-links a.top-cta:hover {
+  color: #fff;
+  text-decoration: none;
+}
+.top-cta:hover { opacity: 0.92; }
+
 @media (max-width: 760px) {
   .top-bar-inner {
     width: min(var(--max), calc(100% - 28px));
@@ -95,4 +114,5 @@
     font-size: 0.92rem;
   }
   .top-links a.hide-mobile { display: none; }
+  .top-cta { padding: 7px 13px; }
 }

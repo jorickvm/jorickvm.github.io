@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flighty Import — AtlasDays Help Center</title>
+  <meta name="description" content="Import your flight history from a Flighty CSV export into AtlasDays. How trips are built from flights, the review categories, and handling transit, overnights, and overlaps." />
+  <meta property="og:title" content="Flighty Import — AtlasDays Help Center" />
+  <meta property="og:description" content="Import your flight history from a Flighty CSV export into AtlasDays. How trips are built from flights, the review categories, and handling transit, overnights, and overlaps." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://atlasdays.app/help/flighty-import" />
+  <meta property="og:image" content="https://atlasdays.app/assets/home/home-hero-dashboard.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Flighty Import — AtlasDays Help Center" />
+  <meta name="twitter:description" content="Import your flight history from a Flighty CSV export into AtlasDays. How trips are built from flights, the review categories, and handling transit, overnights, and overlaps." />
+  <meta name="twitter:image" content="https://atlasdays.app/assets/home/home-hero-dashboard.png" />
+  <meta name="apple-itunes-app" content="app-id=6760133544, app-argument=https://apps.apple.com/app/atlasdays-track-country-days/id6760133544" />
+  <link rel="canonical" href="https://atlasdays.app/help/flighty-import" />
+  <link rel="icon" type="image/png" href="../assets/brand/favicon_light.png?v=20260325a" media="(prefers-color-scheme: light)" />
+  <link rel="icon" type="image/png" href="../assets/brand/favicon_dark.png?v=20260325a" media="(prefers-color-scheme: dark)" />
+  <script>(function(){var t=localStorage.getItem('theme');document.documentElement.setAttribute('data-theme',t==='light'?'light':'dark')})()</script>
+  <style>
+    :root { --bg:#0a0b0d; --bg-card:rgba(255,255,255,0.05); --text:#f4f7fb; --muted:#b2b9c5; --muted-2:#8790a0; --line:rgba(255,255,255,0.10); --blue:#428FD2; --blue-soft:rgba(66,143,210,0.12); --max:720px; }
+    @media (prefers-color-scheme: light) { :root { --bg:#f6f8fc; --bg-card:rgba(255,255,255,0.88); --text:#0d1422; --muted:#526075; --muted-2:#6c788b; --line:rgba(12,22,40,0.09); --blue-soft:rgba(66,143,210,0.08); } }
+    * { box-sizing:border-box; }
+    body { margin:0; font-family:-apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif; color:var(--text); background:var(--bg); line-height:1.7; -webkit-font-smoothing:antialiased; }
+    a { color:var(--blue); text-decoration:none; }
+    a:hover { text-decoration:underline; }
+    .top-bar { border-bottom:1px solid var(--line); padding:18px 0; }
+    .top-bar-inner { width:min(var(--max), calc(100% - 40px)); margin:0 auto; display:flex; align-items:center; justify-content:space-between; }
+    .brand { display:inline-flex; align-items:center; gap:10px; font-weight:700; color:var(--text); text-decoration:none; }
+    .brand img { width:30px; height:30px; }
+    article { width:min(var(--max), calc(100% - 40px)); margin:0 auto; padding:48px 0 80px; }
+    .breadcrumb { font-size:0.88rem; color:var(--muted-2); margin-bottom:24px; }
+    .breadcrumb a { color:var(--muted); }
+    h1 { font-size:clamp(1.8rem, 4vw, 2.6rem); line-height:1.1; letter-spacing:-0.03em; margin:0 0 12px; }
+    .updated { color:var(--muted-2); font-size:0.9rem; line-height:1.4; margin:-4px 0 16px; }
+    .subtitle { color:var(--muted); font-size:1.08rem; margin:0 0 24px; }
+    h2 { font-size:1.4rem; letter-spacing:-0.02em; margin:36px 0 12px; }
+    h3 { font-size:1.1rem; margin:28px 0 8px; }
+    p, li { color:var(--muted); font-size:1rem; }
+    p { margin:0 0 16px; }
+    ul, ol { padding-left:20px; margin:0 0 16px; }
+    li { margin:6px 0; }
+    strong { color:var(--text); }
+    .callout, .cta-box { padding:20px 24px; border-radius:16px; margin:28px 0; }
+    .callout { background:var(--blue-soft); border:1px solid rgba(66,143,210,0.18); }
+    .cta-box { background:var(--bg-card); border:1px solid var(--line); }
+    .cta-box h3 { margin:0 0 8px; color:var(--text); }
+    .cta-box p { margin:0 0 12px; }
+    .cta-btn { display:inline-flex; align-items:center; justify-content:center; padding:13px 18px; border-radius:14px; background:var(--blue); color:#fff; font-weight:700; margin-top:4px; }
+    .cta-btn:hover { text-decoration:none; opacity:0.92; }
+    .theme-toggle { background:none; border:1px solid var(--line); border-radius:10px; color:var(--muted); cursor:pointer; width:36px; height:36px; display:inline-grid; place-items:center; padding:0; }
+    .theme-toggle:hover { border-color:var(--blue); color:var(--text); }
+    .icon-moon, .logo-light { display:none; } .logo-dark { display:block; }
+    @media (prefers-color-scheme: light) { .icon-sun, .logo-dark { display:none; } .icon-moon, .logo-light { display:block; } }
+    html[data-theme="dark"] .icon-sun, html[data-theme="dark"] .logo-dark { display:block; } html[data-theme="dark"] .icon-moon, html[data-theme="dark"] .logo-light { display:none; } html[data-theme="light"] .icon-sun, html[data-theme="light"] .logo-dark { display:none; } html[data-theme="light"] .icon-moon, html[data-theme="light"] .logo-light { display:block; }
+    html[data-theme="dark"] { --bg:#0a0b0d; --bg-card:rgba(255,255,255,0.05); --text:#f4f7fb; --muted:#b2b9c5; --muted-2:#8790a0; --line:rgba(255,255,255,0.10); --blue-soft:rgba(66,143,210,0.12); }
+    html[data-theme="light"] { --bg:#f6f8fc; --bg-card:rgba(255,255,255,0.88); --text:#0d1422; --muted:#526075; --muted-2:#6c788b; --line:rgba(12,22,40,0.09); --blue-soft:rgba(66,143,210,0.08); }
+  </style>
+  <link rel="stylesheet" href="../assets/css/site-header.css?v=20260406a" />
+</head>
+<body>
+  <header class="top-bar">
+    <div class="top-bar-inner">
+      <a class="brand" href="/" aria-label="AtlasDays home">
+        <span class="brand-mark">
+          <img class="logo-dark" src="../assets/brand/logo_dark.png?v=20260325a" alt="AtlasDays logo" width="1024" height="1024" />
+          <img class="logo-light" src="../assets/brand/logo_light.png?v=20260325a" alt="AtlasDays logo" width="1024" height="1024" />
+        </span>
+        <span>AtlasDays</span>
+      </a>
+      <nav class="top-links" aria-label="Primary">
+        <a class="hide-mobile" href="/">Home</a>
+        <a href="/help/" aria-current="page">Help Center</a>
+        <a href="/learn/">Learn</a>
+        <a class="hide-mobile" href="/changelog">Changelog</a>
+        <a class="top-cta" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">Get the app</a>
+        <button class="theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme" onclick="toggleTheme()">
+          <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <article>
+    <nav class="breadcrumb">
+      <a href="/">AtlasDays</a> / <a href="/help/">Help Center</a>
+    </nav>
+
+    <h1>Flighty Import</h1>
+    <p class="updated">Last updated: June 18, 2026</p>
+    <p class="subtitle">If you already track your flights in Flighty, you can turn that flight history into AtlasDays trips — with a review step before anything is saved.</p>
+
+    <!-- ARTICLE_IMAGE:hero — Screenshot: Flighty import review screen showing inferred trips with Ready / Transit / Overnight pills -->
+
+    <h2>What Flighty Import Does</h2>
+    <p>Flighty Import is the third way to bring travel into AtlasDays, alongside <a href="/help/photo-import">Photo Import</a> and <a href="/help/csv-import">CSV Import</a>. It reads a CSV export of your Flighty flight history, works out which country each flight started and ended in, and groups consecutive flights into trips you can review before saving.</p>
+    <p>Like the other importers, nothing is written to your trip record until you confirm it. AtlasDays shows you a draft of every trip it inferred, with the evidence behind it, so you stay in control of what becomes part of your day count.</p>
+
+    <div class="callout">
+      <p><strong>Flights are not the whole picture.</strong> Flighty Import covers air travel only. Ground crossings — trains, cars, ferries, walking across a land border — are not in a flight history, so you may still need to add or adjust some trips by hand afterward.</p>
+    </div>
+
+    <h2>Before You Start</h2>
+    <p>You need a CSV export of your flights from Flighty. Flighty can export your flight history to a CSV file, which you then save or share to your device (Files, iCloud Drive, or directly into AtlasDays). Once that file is somewhere your iPhone can reach it, you are ready to import.</p>
+    <p>AtlasDays reads the columns it needs from that export — origin and destination airports, dates, and times — and uses a built-in airport and airline reference to translate airport codes into countries. It does not need an internet connection to do this; the lookup happens on device.</p>
+
+    <h2>How to Import</h2>
+    <!-- SCREENSHOT: Import source screen showing Photo / CSV / Flighty options -->
+    <ol>
+      <li>Open AtlasDays and go to <strong>Import</strong>.</li>
+      <li>Choose <strong>Flighty</strong> as the source.</li>
+      <li>Select your Flighty CSV file from Files or wherever you saved it.</li>
+      <li>Wait for AtlasDays to read the flights and build draft trips. Larger histories take a few seconds.</li>
+      <li>Review the draft trips (see below), adjust anything that looks wrong, and save.</li>
+    </ol>
+
+    <h2>How AtlasDays Builds Trips From Flights</h2>
+    <p>A trip is usually more than one flight. AtlasDays chains your flights together so that a journey out and back becomes the trips it represents, not a row-per-flight dump:</p>
+    <ul>
+      <li><strong>Each flight lands you in a country.</strong> The destination airport determines where you were after that flight.</li>
+      <li><strong>Same-day connections are treated as transit.</strong> If you land and take off again the same day without staying, that connecting country is marked as <strong>Transit</strong> and does not add days to your count. See <a href="/learn/does-a-layover-count-as-visiting-a-country">Does a Layover Count as Visiting a Country?</a> for why this matters.</li>
+      <li><strong>A stay becomes a trip.</strong> When you remain in a country before flying onward, that becomes a trip with a start and end date.</li>
+    </ul>
+    <p>Because the importer reasons from arrival and departure airports, the quality of the result depends on how complete your Flighty history is. Gaps in the flight history become gaps in the inferred trips.</p>
+
+    <h2>The Review Categories</h2>
+    <!-- SCREENSHOT: Review list grouped by Ready / Transit / Overnight / Missing -->
+    <p>Draft trips are grouped so you can scan them quickly and spend attention where it is needed:</p>
+    <ul>
+      <li><strong>Ready</strong> — a clear stay in a country with confident dates. These are safe to save as-is in most cases.</li>
+      <li><strong>Transit</strong> — a same-day connection AtlasDays does not count as a visit. Confirm it really was airside transit if a country matters to a tracker.</li>
+      <li><strong>Overnight</strong> — a connection that crossed midnight. Worth a look, because whether it counts as a day in that country can depend on the rule you are tracking.</li>
+      <li><strong>Missing</strong> — flights AtlasDays could not fully place, for example an airport it could not resolve or a flight with incomplete data. These need a manual decision before they can be saved.</li>
+    </ul>
+
+    <h2>Editing a Draft Before Saving</h2>
+    <p>Tap any draft trip to open its detail. You can see the flights and evidence behind it, change the country, adjust the dates, mark or unmark it as transit, or drop it from the import entirely. This is the moment to fix anything the inference got wrong — it is much easier than correcting saved trips later.</p>
+
+    <h2>Duplicates and Overlaps</h2>
+    <p>If a Flighty trip covers the same country and dates as something already in your record, AtlasDays detects the overlap rather than creating a duplicate. Overlapping stays in the same country are merged so you do not end up double-counting days. If you have already added some of this travel by hand or through another import, check the overlap notes during review so the merge does what you expect.</p>
+
+    <div class="callout">
+      <p><strong>Import once, then refine.</strong> The cleanest approach is to import your Flighty history into an empty or lightly populated record first, review it as a whole, and then add ground travel or older trips afterward. That keeps overlap handling simple.</p>
+    </div>
+
+    <h2>When to Trust the Result</h2>
+    <p>Flighty Import is a fast way to rebuild years of air travel, but treat the result as a strong draft, not a finished record:</p>
+    <ul>
+      <li>It only knows about flights that are in your Flighty export.</li>
+      <li>It cannot see ground crossings, so a trip that ended by train or car may need its end date adjusted.</li>
+      <li>Transit and overnight calls are best-guesses from times and airports — confirm them where a country affects a visa or residency tracker.</li>
+    </ul>
+    <p>For how trip precision affects your counts after importing, see <a href="/help/history-and-import">Trip Modes and Record Quality</a>. For rebuilding history from sources beyond flights, see <a href="/learn/rebuild-travel-history-from-passport-stamps-emails-photos">How to Rebuild Your Travel History From Passport Stamps, Emails, and Photos</a>.</p>
+
+    <div class="cta-box">
+      <h3>Bring your flight history into AtlasDays</h3>
+      <p>Import from Flighty, photos, or a spreadsheet, then track Schengen, residency, and visa days from one trusted record — private, on your iPhone.</p>
+      <a class="cta-btn" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">Get AtlasDays on the App Store</a>
+    </div>
+  </article>
+
+  <script>
+  function toggleTheme() {
+    var html = document.documentElement;
+    var current = html.getAttribute('data-theme');
+    var isDark;
+    if (current) isDark = current === 'dark';
+    else isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var next = isDark ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('theme', next);
+  }
+  </script>
+  <!-- Cloudflare Web Analytics -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;token&quot;: &quot;1488e163b83a4eee81b63340359b6566&quot;}"></script>
+  <!-- End Cloudflare Web Analytics -->
+</body>
+</html>
