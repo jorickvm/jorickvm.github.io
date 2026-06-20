@@ -4,20 +4,50 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Privacy, Location, and Sync — AtlasDays Help Center</title>
-  <meta name="description" content="Troubleshoot Auto-Detect Trips, Photos access, notification permission, and iCloud sync expectations while understanding AtlasDays' local-first privacy model." />
+  <meta name="description" content="Troubleshoot Auto-Detect Trips, US state detection, Photos access, Flighty or CSV import, notification permission, and iCloud sync expectations." />
   <meta property="og:title" content="Privacy, Location, and Sync — AtlasDays Help Center" />
-  <meta property="og:description" content="Troubleshoot Auto-Detect Trips, Photos access, notification permission, and iCloud sync expectations while understanding AtlasDays' local-first privacy model." />
+  <meta property="og:description" content="Troubleshoot Auto-Detect Trips, US state detection, Photos access, Flighty or CSV import, notification permission, and iCloud sync expectations." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/help/privacy-location-and-sync" />
   <meta property="og:image" content="https://atlasdays.app/assets/home/home-hero-dashboard.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Privacy, Location, and Sync — AtlasDays Help Center" />
-  <meta name="twitter:description" content="Troubleshoot Auto-Detect Trips, Photos access, notification permission, and iCloud sync expectations while understanding AtlasDays' local-first privacy model." />
+  <meta name="twitter:description" content="Troubleshoot Auto-Detect Trips, US state detection, Photos access, Flighty or CSV import, notification permission, and iCloud sync expectations." />
   <meta name="twitter:image" content="https://atlasdays.app/assets/home/home-hero-dashboard.png" />
   <meta name="apple-itunes-app" content="app-id=6760133544, app-argument=https://apps.apple.com/app/atlasdays-track-country-days/id6760133544" />
   <link rel="canonical" href="https://atlasdays.app/help/privacy-location-and-sync" />
   <link rel="icon" type="image/png" href="../assets/brand/favicon_light.png?v=20260325a" media="(prefers-color-scheme: light)" />
   <link rel="icon" type="image/png" href="../assets/brand/favicon_dark.png?v=20260325a" media="(prefers-color-scheme: dark)" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "AtlasDays", "item": "https://atlasdays.app" },
+      { "@type": "ListItem", "position": 2, "name": "Help Center", "item": "https://atlasdays.app/help/" },
+      { "@type": "ListItem", "position": 3, "name": "Privacy, Location, and Sync", "item": "https://atlasdays.app/help/privacy-location-and-sync" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Privacy, Location, and Sync",
+    "description": "Troubleshoot Auto-Detect Trips, US state detection, Photos access, Flighty or CSV import, notification permission, and iCloud sync expectations.",
+    "author": {
+      "@type": "Organization",
+      "name": "AtlasDays"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "AtlasDays"
+    },
+    "url": "https://atlasdays.app/help/privacy-location-and-sync",
+    "image": "https://atlasdays.app/assets/home/home-hero-dashboard.png",
+    "dateModified": "2026-04-30"
+  }
+  </script>
   <script>(function(){var t=localStorage.getItem('theme');document.documentElement.setAttribute('data-theme',t==='light'?'light':'dark')})()</script>
   <style>
     :root { --bg:#0a0b0d; --bg-card:rgba(255,255,255,0.05); --text:#f4f7fb; --muted:#b2b9c5; --muted-2:#8790a0; --line:rgba(255,255,255,0.10); --blue:#428FD2; --blue-soft:rgba(66,143,210,0.12); --max:720px; }
@@ -116,7 +146,7 @@
     }
   </style>
   <!-- ARTICLE_IMAGE_STYLES_END -->
-  <link rel="stylesheet" href="../assets/css/site-header.css?v=20260406a" />
+  <link rel="stylesheet" href="../assets/css/site-header.css?v=20260618a" />
 </head>
 <body>
   <header class="top-bar">
@@ -161,6 +191,7 @@
       <li>why Auto-Detect Trips or alerts may not behave as expected</li>
       <li>how ignored countries affect Auto-Detect Trip suggestions</li>
       <li>what Photos access is used for during <strong>Photo Import</strong></li>
+      <li>what CSV and Flighty imports do without Photos or location permission</li>
       <li>which permissions matter for which features</li>
       <li>what stays local by default and when iCloud sync is worth turning on</li>
     </ul>
@@ -181,7 +212,7 @@
     </ul>
 
     <h2>What AtlasDays Stores on Your Device</h2>
-    <p>Your trip record and tracker data live in the app's local data store on your device by default. Manual trip entry, dashboard review, tracker calculations, Photo Import, CSV import, and export all work without an AtlasDays account.</p>
+    <p>Your trip record and tracker data live in the app's local data store on your device by default. Manual trip entry, dashboard review, tracker calculations, Photo Import, CSV import, Flighty import, and export all work without an AtlasDays account.</p>
     <p>AtlasDays also keeps some device-level app state locally, such as pending trip suggestions, so the app can continue where you left off.</p>
     <p>If you are signed into iCloud, AtlasDays can also mirror a smaller set of preferences through Apple's iCloud key-value storage. That preference carry-over is separate from full <strong>iCloud sync</strong>.</p>
     <figure class="atlasdays-screenshot">
@@ -195,7 +226,7 @@
       <img src="../assets/article-images/help/privacy-location-and-sync/body-1.webp" alt="Supporting illustration for Privacy, Location, and Sync, focused on how country detection works in the AtlasDays visual style." width="1536" height="1024" decoding="async" sizes="(max-width: 760px) calc(100vw - 40px), 720px" loading="lazy" />
     </figure>
     <!-- ARTICLE_IMAGE_RENDER_END:body-1 -->
-    <p><strong>Auto-Detect Trips</strong> is optional. When you turn it on, AtlasDays uses iOS significant-change location monitoring to notice that you may have entered a different country and then resolves the country on device using bundled country boundaries.</p>
+    <p><strong>Auto-Detect Trips</strong> is optional. When you turn it on, AtlasDays uses iOS significant-change location monitoring to notice that you may have entered a different country and then resolves the country on device using bundled country boundaries. For Pro users in the United States, AtlasDays can also resolve the US state on device so a suggestion can be state-specific.</p>
     <p>AtlasDays does <strong>not</strong> silently create trips from location events. It creates a suggestion that you can review, edit, confirm, or dismiss. If the app is open, you see that suggestion in-app. If the app is in the background and <strong>notification permission</strong> is allowed, you can receive a local notification.</p>
     <ul>
       <li>AtlasDays uses significant-change location, not continuous GPS tracking.</li>
@@ -203,7 +234,7 @@
       <li>Raw location history is not stored by AtlasDays and is not sent to an AtlasDays server.</li>
       <li>AtlasDays keeps local country-detection state so it can avoid repeat suggestions and build a reviewable trip suggestion when the country changes.</li>
       <li>The app avoids re-suggesting the same country until you leave and enter a different one.</li>
-      <li><strong>Ignored Countries</strong> lets you suppress trip suggestions for countries you live near, commute through, or do not want prompted every time. You can still add those trips manually.</li>
+      <li><strong>Ignored Countries</strong> and, for Pro users, <strong>Ignored States</strong> let you suppress trip suggestions for places you live near, commute through, or do not want prompted every time. You can still add those trips manually.</li>
       <li>You can leave auto-detect off and log everything manually in <a href="/help/history-and-import">Trip Modes and Record Quality</a>.</li>
     </ul>
 
@@ -218,10 +249,18 @@
       <li>Nothing becomes a trip until you review and confirm the import.</li>
     </ul>
 
+    <h2>What CSV and Flighty Import Need</h2>
+    <p><strong>CSV Import</strong> and <strong>Flighty Import</strong> use files you choose. They do not need Photos access, location permission, an AtlasDays account, or an AtlasDays server lookup.</p>
+    <ul>
+      <li>CSV files are parsed on device and can include an optional <strong>State</strong> column for United States trips.</li>
+      <li>Flighty CSV exports are parsed on device with bundled airport and airline references. Supported US airports can resolve to individual states.</li>
+      <li>Nothing from a CSV or Flighty file becomes a trip until you review and confirm the import.</li>
+    </ul>
+
     <h2>Which Permissions Matter</h2>
     <ul>
       <li><strong>Location permission</strong> matters only for <strong>Auto-Detect Trips</strong>. Manual trip entry, dashboard review, import, and export do not require it.</li>
-      <li><strong>Photos access</strong> matters only for <strong>Photo Import</strong>. Manual entry, CSV import, dashboard review, trackers, export, and Auto-Detect Trips do not require it.</li>
+      <li><strong>Photos access</strong> matters only for <strong>Photo Import</strong>. Manual entry, CSV import, Flighty import, dashboard review, trackers, export, and Auto-Detect Trips do not require it.</li>
       <li><strong>Notification permission</strong> matters for background trip-suggestion notifications and tracker alerts. It is not required for manual logging.</li>
       <li>If location permission or notification permission is denied at the iOS level, the related feature cannot behave normally.</li>
       <li>For the most reliable background country detection, allow the location access level iOS offers for ongoing background use. If iOS offers an <strong>Always Allow</strong> upgrade, that is the setting AtlasDays needs for the most reliable background detection.</li>
@@ -267,6 +306,7 @@
       <p><a href="/help/history-and-import">Trip Modes and Record Quality</a> explains how <strong>Exact Dates</strong>, <strong>Year</strong>, <strong>Unknown</strong>, <strong>Transit</strong>, and ongoing trips affect the record behind alerts and trackers.</p>
       <p><a href="/help/trackers-and-limits">Trackers and Limits</a> explains why tracker alerts may not fire and what to verify before trusting a tracker.</p>
       <p><a href="/help/photo-import">Photo Import</a> explains the photo scan, review step, duplicate handling, overlaps, transit detection, video evidence, and locked older trips.</p>
+      <p><a href="/help/flighty-import">Flighty Import</a> explains how a selected Flighty CSV is parsed on device and turned into reviewable trips.</p>
       <p><a href="/help/export-and-reports">Export and Reports</a> explains how to create a portable record before major cleanup, device changes, or support questions.</p>
       <p><a href="/help/getting-started">Getting Started</a> shows where privacy, permissions, and optional detection fit into first-time setup.</p>
       <p>For the formal policy rather than the operational Help page, read <a href="/privacy">the Privacy Policy</a>.</p>

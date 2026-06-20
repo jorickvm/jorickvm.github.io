@@ -4,20 +4,50 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Flighty Import — AtlasDays Help Center</title>
-  <meta name="description" content="Import your flight history from a Flighty CSV export into AtlasDays. How trips are built from flights, the review categories, and handling transit, overnights, and overlaps." />
+  <meta name="description" content="Import your flight history from a Flighty CSV export into AtlasDays. How trips are built from flights, including US state detection, transit, overnights, and overlaps." />
   <meta property="og:title" content="Flighty Import — AtlasDays Help Center" />
-  <meta property="og:description" content="Import your flight history from a Flighty CSV export into AtlasDays. How trips are built from flights, the review categories, and handling transit, overnights, and overlaps." />
+  <meta property="og:description" content="Import your flight history from a Flighty CSV export into AtlasDays. How trips are built from flights, including US state detection, transit, overnights, and overlaps." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/help/flighty-import" />
   <meta property="og:image" content="https://atlasdays.app/assets/home/home-hero-dashboard.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Flighty Import — AtlasDays Help Center" />
-  <meta name="twitter:description" content="Import your flight history from a Flighty CSV export into AtlasDays. How trips are built from flights, the review categories, and handling transit, overnights, and overlaps." />
+  <meta name="twitter:description" content="Import your flight history from a Flighty CSV export into AtlasDays. How trips are built from flights, including US state detection, transit, overnights, and overlaps." />
   <meta name="twitter:image" content="https://atlasdays.app/assets/home/home-hero-dashboard.png" />
   <meta name="apple-itunes-app" content="app-id=6760133544, app-argument=https://apps.apple.com/app/atlasdays-track-country-days/id6760133544" />
   <link rel="canonical" href="https://atlasdays.app/help/flighty-import" />
   <link rel="icon" type="image/png" href="../assets/brand/favicon_light.png?v=20260325a" media="(prefers-color-scheme: light)" />
   <link rel="icon" type="image/png" href="../assets/brand/favicon_dark.png?v=20260325a" media="(prefers-color-scheme: dark)" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "AtlasDays", "item": "https://atlasdays.app" },
+      { "@type": "ListItem", "position": 2, "name": "Help Center", "item": "https://atlasdays.app/help/" },
+      { "@type": "ListItem", "position": 3, "name": "Flighty Import", "item": "https://atlasdays.app/help/flighty-import" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Flighty Import",
+    "description": "Import your flight history from a Flighty CSV export into AtlasDays. How trips are built from flights, including US state detection, transit, overnights, and overlaps.",
+    "author": {
+      "@type": "Organization",
+      "name": "AtlasDays"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "AtlasDays"
+    },
+    "url": "https://atlasdays.app/help/flighty-import",
+    "image": "https://atlasdays.app/assets/home/home-hero-dashboard.png",
+    "dateModified": "2026-06-18"
+  }
+  </script>
   <script>(function(){var t=localStorage.getItem('theme');document.documentElement.setAttribute('data-theme',t==='light'?'light':'dark')})()</script>
   <style>
     :root { --bg:#0a0b0d; --bg-card:rgba(255,255,255,0.05); --text:#f4f7fb; --muted:#b2b9c5; --muted-2:#8790a0; --line:rgba(255,255,255,0.10); --blue:#428FD2; --blue-soft:rgba(66,143,210,0.12); --max:720px; }
@@ -58,7 +88,7 @@
     html[data-theme="dark"] { --bg:#0a0b0d; --bg-card:rgba(255,255,255,0.05); --text:#f4f7fb; --muted:#b2b9c5; --muted-2:#8790a0; --line:rgba(255,255,255,0.10); --blue-soft:rgba(66,143,210,0.12); }
     html[data-theme="light"] { --bg:#f6f8fc; --bg-card:rgba(255,255,255,0.88); --text:#0d1422; --muted:#526075; --muted-2:#6c788b; --line:rgba(12,22,40,0.09); --blue-soft:rgba(66,143,210,0.08); }
   </style>
-  <link rel="stylesheet" href="../assets/css/site-header.css?v=20260406a" />
+  <link rel="stylesheet" href="../assets/css/site-header.css?v=20260618a" />
 </head>
 <body>
   <header class="top-bar">
@@ -104,8 +134,8 @@
     </div>
 
     <h2>Before You Start</h2>
-    <p>You need a CSV export of your flights from Flighty. Flighty can export your flight history to a CSV file, which you then save or share to your device (Files, iCloud Drive, or directly into AtlasDays). Once that file is somewhere your iPhone can reach it, you are ready to import.</p>
-    <p>AtlasDays reads the columns it needs from that export — origin and destination airports, dates, and times — and uses a built-in airport and airline reference to translate airport codes into countries. It does not need an internet connection to do this; the lookup happens on device.</p>
+    <p>You need a CSV export of your flights from Flighty. In Flighty, export your flight history as CSV from <strong>Settings › Account Data</strong>, then save or share that file to your device (Files, iCloud Drive, or straight into AtlasDays). Once it is somewhere your iPhone can reach, you are ready to import.</p>
+    <p>AtlasDays reads the columns it needs from that export — origin and destination airports, dates, and times — and uses a built-in airport and airline reference to translate airport codes into countries and, for supported US airports, individual states. It does not need an internet connection to do this; the lookup happens on device.</p>
 
     <h2>How to Import</h2>
     <!-- SCREENSHOT: Import source screen showing Photo / CSV / Flighty options -->
@@ -126,6 +156,14 @@
     </ul>
     <p>Because the importer reasons from arrival and departure airports, the quality of the result depends on how complete your Flighty history is. Gaps in the flight history become gaps in the inferred trips.</p>
 
+    <h2>US State Detection</h2>
+    <p>When a Flighty row uses a supported United States airport, AtlasDays can resolve that airport to a US state as well as the United States country record. How that appears depends on your plan:</p>
+    <ul>
+      <li><strong>AtlasDays Pro:</strong> US flight history can become per-state trip suggestions, so state-level stays can feed US State trackers and the full-screen state map.</li>
+      <li><strong>Free plan:</strong> AtlasDays can show that US states were found, but imported trips save as country-level United States trips. Upgrade to Pro to preserve the per-state rows.</li>
+    </ul>
+    <p>State detection is still airport-based. If you landed in one state and drove or took a train into another, Flighty may not contain that state change. Add or adjust those state legs manually before relying on a US State tracker.</p>
+
     <h2>The Review Categories</h2>
     <!-- SCREENSHOT: Review list grouped by Ready / Transit / Overnight / Missing -->
     <p>Draft trips are grouped so you can scan them quickly and spend attention where it is needed:</p>
@@ -133,14 +171,15 @@
       <li><strong>Ready</strong> — a clear stay in a country with confident dates. These are safe to save as-is in most cases.</li>
       <li><strong>Transit</strong> — a same-day connection AtlasDays does not count as a visit. Confirm it really was airside transit if a country matters to a tracker.</li>
       <li><strong>Overnight</strong> — a connection that crossed midnight. Worth a look, because whether it counts as a day in that country can depend on the rule you are tracking.</li>
+      <li><strong>US states</strong> — state-detected United States stays. Pro users can review and save these as state-tagged trips; free users can preview them before deciding whether to upgrade.</li>
       <li><strong>Missing</strong> — flights AtlasDays could not fully place, for example an airport it could not resolve or a flight with incomplete data. These need a manual decision before they can be saved.</li>
     </ul>
 
     <h2>Editing a Draft Before Saving</h2>
-    <p>Tap any draft trip to open its detail. You can see the flights and evidence behind it, change the country, adjust the dates, mark or unmark it as transit, or drop it from the import entirely. This is the moment to fix anything the inference got wrong — it is much easier than correcting saved trips later.</p>
+    <p>Tap any draft trip to open its detail. You can see the flights and evidence behind it, change the country or US state, adjust the dates, mark or unmark it as transit, or drop it from the import entirely. This is the moment to fix anything the inference got wrong — it is much easier than correcting saved trips later.</p>
 
     <h2>Duplicates and Overlaps</h2>
-    <p>If a Flighty trip covers the same country and dates as something already in your record, AtlasDays detects the overlap rather than creating a duplicate. Overlapping stays in the same country are merged so you do not end up double-counting days. If you have already added some of this travel by hand or through another import, check the overlap notes during review so the merge does what you expect.</p>
+    <p>If a Flighty trip covers the same country and dates as something already in your record, AtlasDays detects the overlap rather than creating a duplicate. Overlapping stays in the same country are merged so you do not end up double-counting days. For state-tagged US trips, the state is part of the place: different states should remain separate, while same-state overlaps should still be reviewed. If you have already added some of this travel by hand or through another import, check the overlap notes during review so the merge does what you expect.</p>
 
     <div class="callout">
       <p><strong>Import once, then refine.</strong> The cleanest approach is to import your Flighty history into an empty or lightly populated record first, review it as a whole, and then add ground travel or older trips afterward. That keeps overlap handling simple.</p>
@@ -151,6 +190,7 @@
     <ul>
       <li>It only knows about flights that are in your Flighty export.</li>
       <li>It cannot see ground crossings, so a trip that ended by train or car may need its end date adjusted.</li>
+      <li>US state results depend on airport lookup and your review; overland state changes still need manual cleanup.</li>
       <li>Transit and overnight calls are best-guesses from times and airports — confirm them where a country affects a visa or residency tracker.</li>
     </ul>
     <p>For how trip precision affects your counts after importing, see <a href="/help/history-and-import">Trip Modes and Record Quality</a>. For rebuilding history from sources beyond flights, see <a href="/learn/rebuild-travel-history-from-passport-stamps-emails-photos">How to Rebuild Your Travel History From Passport Stamps, Emails, and Photos</a>.</p>

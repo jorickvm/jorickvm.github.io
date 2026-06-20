@@ -4,20 +4,50 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Export and Reports — AtlasDays Help Center</title>
-  <meta name="description" content="Troubleshoot CSV export and PDF export in AtlasDays: check AtlasDays Pro, selected period, missing trips, and what export can and cannot fix." />
+  <meta name="description" content="Troubleshoot CSV export and PDF export in AtlasDays: check AtlasDays Pro, selected period, US State columns, missing trips, and what export cannot fix." />
   <meta property="og:title" content="Export and Reports — AtlasDays Help Center" />
-  <meta property="og:description" content="Troubleshoot CSV export and PDF export in AtlasDays: check AtlasDays Pro, selected period, missing trips, and what export can and cannot fix." />
+  <meta property="og:description" content="Troubleshoot CSV export and PDF export in AtlasDays: check AtlasDays Pro, selected period, US State columns, missing trips, and what export cannot fix." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/help/export-and-reports" />
   <meta property="og:image" content="https://atlasdays.app/assets/home/home-hero-dashboard.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Export and Reports — AtlasDays Help Center" />
-  <meta name="twitter:description" content="Troubleshoot CSV export and PDF export in AtlasDays: check AtlasDays Pro, selected period, missing trips, and what export can and cannot fix." />
+  <meta name="twitter:description" content="Troubleshoot CSV export and PDF export in AtlasDays: check AtlasDays Pro, selected period, US State columns, missing trips, and what export cannot fix." />
   <meta name="twitter:image" content="https://atlasdays.app/assets/home/home-hero-dashboard.png" />
   <meta name="apple-itunes-app" content="app-id=6760133544, app-argument=https://apps.apple.com/app/atlasdays-track-country-days/id6760133544" />
   <link rel="canonical" href="https://atlasdays.app/help/export-and-reports" />
   <link rel="icon" type="image/png" href="../assets/brand/favicon_light.png?v=20260325a" media="(prefers-color-scheme: light)" />
   <link rel="icon" type="image/png" href="../assets/brand/favicon_dark.png?v=20260325a" media="(prefers-color-scheme: dark)" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "AtlasDays", "item": "https://atlasdays.app" },
+      { "@type": "ListItem", "position": 2, "name": "Help Center", "item": "https://atlasdays.app/help/" },
+      { "@type": "ListItem", "position": 3, "name": "Export and Reports", "item": "https://atlasdays.app/help/export-and-reports" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Export and Reports",
+    "description": "Troubleshoot CSV export and PDF export in AtlasDays: check AtlasDays Pro, selected period, US State columns, missing trips, and what export cannot fix.",
+    "author": {
+      "@type": "Organization",
+      "name": "AtlasDays"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "AtlasDays"
+    },
+    "url": "https://atlasdays.app/help/export-and-reports",
+    "image": "https://atlasdays.app/assets/home/home-hero-dashboard.png",
+    "dateModified": "2026-04-11"
+  }
+  </script>
   <script>(function(){var t=localStorage.getItem('theme');document.documentElement.setAttribute('data-theme',t==='light'?'light':'dark')})()</script>
   <style>
     :root { --bg:#0a0b0d; --bg-card:rgba(255,255,255,0.05); --text:#f4f7fb; --muted:#b2b9c5; --muted-2:#8790a0; --line:rgba(255,255,255,0.10); --blue:#428FD2; --blue-soft:rgba(66,143,210,0.12); --max:720px; }
@@ -57,7 +87,7 @@
     .atlasdays-screenshot { margin:24px auto 28px; max-width:320px; display:block; }
     .atlasdays-screenshot img { display:block; width:100%; height:auto; border-radius:22px; border:1px solid var(--line); box-shadow:0 12px 32px rgba(0,0,0,0.18); }
   </style>
-  <link rel="stylesheet" href="../assets/css/site-header.css?v=20260406a" />
+  <link rel="stylesheet" href="../assets/css/site-header.css?v=20260618a" />
 </head>
 <body>
   <header class="top-bar">
@@ -111,6 +141,7 @@
       <li>The selected export period is often the real reason a trip seems missing.</li>
       <li>If the selected period contains no trips, the export buttons stay disabled.</li>
       <li><strong>Unknown</strong> trips only appear in <strong>All Time</strong> exports because AtlasDays cannot place them in a filtered <strong>Year</strong> or <strong>Range</strong>.</li>
+      <li>The <strong>State</strong> column appears in CSV export only when at least one exported trip has a US state tag.</li>
       <li><strong>ongoing</strong> trips keep changing until you close them, so exported day spans can keep changing too.</li>
       <li>Export reflects the current trip record. It does <strong>not</strong> fix bad dates, conflicts, duplicates, overlaps, or approximate history.</li>
       <li>In the current app, both <strong>CSV export</strong> and <strong>PDF export</strong> require <strong>AtlasDays Pro</strong>. If you expected export on the free tier, that is not a bug.</li>
@@ -145,9 +176,10 @@
 
     <h2>CSV Export: What It Is For</h2>
     <p><strong>CSV export</strong> is the trip-data format. It is best when you want to inspect the record in a spreadsheet, keep a portable copy, transfer it elsewhere, or re-import the same trip record later.</p>
-    <p>The exported CSV contains these columns:</p>
+    <p>The exported CSV contains these columns. If the selected export includes at least one state-tagged United States trip, AtlasDays also includes <code>State</code> after <code>Country</code>:</p>
     <ul>
       <li><code>Country</code></li>
+      <li><code>State</code>, only when the export includes US state-tagged trips</li>
       <li><code>Start Date</code></li>
       <li><code>End Date</code></li>
       <li><code>Days</code></li>
@@ -157,6 +189,7 @@
     <p>What those fields mean in practice:</p>
     <ul>
       <li><strong>Country</strong> is exported as a human-readable place name.</li>
+      <li><strong>State</strong> is exported as a human-readable state name for state-tagged United States trips and stays blank for other rows.</li>
       <li><strong>Exact Dates</strong> trips export exact dates in <code>yyyy-mm-dd</code>.</li>
       <li><strong>Year</strong> trips export years in the Start Date and End Date columns.</li>
       <li><strong>Unknown</strong> trips export with blank date fields.</li>
@@ -165,12 +198,12 @@
       <li><strong>Purpose</strong> exports selected trip purposes such as <strong>Tourism</strong>, <strong>Personal</strong>, <strong>Business</strong>, <strong>Medical</strong>, or <strong>Transit</strong>.</li>
       <li><strong>Notes</strong> export exactly as stored on the trip.</li>
     </ul>
-    <p><strong>CSV export</strong> is trip data only. It does <strong>not</strong> export tracker definitions, home-country configuration, or all app settings.</p>
+    <p><strong>CSV export</strong> is trip data only. It does <strong>not</strong> export tracker definitions, home-country configuration, or all app settings. It does preserve saved US state tags when those trips are in the exported period.</p>
     <p>If the CSV looks wrong, the issue is usually in the selected period or the underlying trip record, not in a separate hidden export layer.</p>
 
     <h2>How CSV Export Relates to Import</h2>
     <p>Import brings trip data <strong>into</strong> AtlasDays. Export takes your current AtlasDays trip record <strong>out</strong>.</p>
-    <p>AtlasDays can import its own exported CSV later because the importer accepts the extra <code>Days</code> column in the export format. If your goal is backup or transfer, export is the right tool. If your goal is rebuilding older history into the app, use <a href="/help/csv-import">CSV Import</a>.</p>
+    <p>AtlasDays can import its own exported CSV later because the importer accepts the extra <code>Days</code> column in the export format, and it can read the <code>State</code> column for United States trips. If your goal is backup or transfer, export is the right tool. If your goal is rebuilding older history into the app, use <a href="/help/csv-import">CSV Import</a>.</p>
 
     <h2>PDF Export: When It Fits</h2>
     <p><strong>PDF export</strong> is the report-style output. It is better when you want a cleaner document for review, records, or paperwork rather than a spreadsheet.</p>
@@ -206,6 +239,7 @@
       <li>Close <strong>ongoing</strong> trips if you need a fixed end date. Otherwise the exported day span will keep changing.</li>
       <li>Make sure trips that matter to a visa or residency threshold are stored as <strong>Exact Dates</strong>, not just <strong>Year</strong> or <strong>Unknown</strong>.</li>
       <li>Check whether <strong>Transit</strong> and other trip purposes are marked correctly, because they change what appears in exports and summaries.</li>
+      <li>If US states matter, confirm the selected trips have state tags before exporting. A plain United States row cannot be reconstructed as a specific state from the export alone.</li>
       <li>Review <strong>notes</strong> before sharing, because export includes them.</li>
       <li>Pick the right output for the job: <strong>CSV export</strong> for inspection or transfer, <strong>PDF export</strong> for a report-style document.</li>
     </ul>

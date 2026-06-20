@@ -4,20 +4,50 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dashboard and Map — AtlasDays Help Center</title>
-  <meta name="description" content="Troubleshoot AtlasDays dashboard totals and map output: selected period, Days Abroad, Transit, ongoing trips, and when the trip record needs fixing." />
+  <meta name="description" content="Troubleshoot AtlasDays dashboard totals and map output: selected period, Days Abroad, US states, Transit, ongoing trips, and when the record needs fixing." />
   <meta property="og:title" content="Dashboard and Map — AtlasDays Help Center" />
-  <meta property="og:description" content="Troubleshoot AtlasDays dashboard totals and map output: selected period, Days Abroad, Transit, ongoing trips, and when the trip record needs fixing." />
+  <meta property="og:description" content="Troubleshoot AtlasDays dashboard totals and map output: selected period, Days Abroad, US states, Transit, ongoing trips, and when the record needs fixing." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/help/dashboard-and-map" />
   <meta property="og:image" content="https://atlasdays.app/assets/home/home-proof-map-country.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Dashboard and Map — AtlasDays Help Center" />
-  <meta name="twitter:description" content="Troubleshoot AtlasDays dashboard totals and map output: selected period, Days Abroad, Transit, ongoing trips, and when the trip record needs fixing." />
+  <meta name="twitter:description" content="Troubleshoot AtlasDays dashboard totals and map output: selected period, Days Abroad, US states, Transit, ongoing trips, and when the record needs fixing." />
   <meta name="twitter:image" content="https://atlasdays.app/assets/home/home-proof-map-country.png" />
   <meta name="apple-itunes-app" content="app-id=6760133544, app-argument=https://apps.apple.com/app/atlasdays-track-country-days/id6760133544" />
   <link rel="canonical" href="https://atlasdays.app/help/dashboard-and-map" />
   <link rel="icon" type="image/png" href="../assets/brand/favicon_light.png?v=20260325a" media="(prefers-color-scheme: light)" />
   <link rel="icon" type="image/png" href="../assets/brand/favicon_dark.png?v=20260325a" media="(prefers-color-scheme: dark)" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "AtlasDays", "item": "https://atlasdays.app" },
+      { "@type": "ListItem", "position": 2, "name": "Help Center", "item": "https://atlasdays.app/help/" },
+      { "@type": "ListItem", "position": 3, "name": "Dashboard and Map", "item": "https://atlasdays.app/help/dashboard-and-map" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Dashboard and Map",
+    "description": "Troubleshoot AtlasDays dashboard totals and map output: selected period, Days Abroad, US states, Transit, ongoing trips, and when the record needs fixing.",
+    "author": {
+      "@type": "Organization",
+      "name": "AtlasDays"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "AtlasDays"
+    },
+    "url": "https://atlasdays.app/help/dashboard-and-map",
+    "image": "https://atlasdays.app/assets/home/home-proof-map-country.png",
+    "dateModified": "2026-06-13"
+  }
+  </script>
   <script>(function(){var t=localStorage.getItem('theme');document.documentElement.setAttribute('data-theme',t==='light'?'light':'dark')})()</script>
   <style>
     :root { --bg:#0a0b0d; --bg-card:rgba(255,255,255,0.05); --text:#f4f7fb; --muted:#b2b9c5; --muted-2:#8790a0; --line:rgba(255,255,255,0.10); --blue:#428FD2; --blue-soft:rgba(66,143,210,0.12); --max:720px; }
@@ -117,7 +147,7 @@
     }
   </style>
   <!-- ARTICLE_IMAGE_STYLES_END -->
-  <link rel="stylesheet" href="../assets/css/site-header.css?v=20260406a" />
+  <link rel="stylesheet" href="../assets/css/site-header.css?v=20260618a" />
 </head>
 <body>
   <header class="top-bar">
@@ -160,6 +190,7 @@
     <ul>
       <li>what the selected <strong>Year</strong>, <strong>All Time</strong>, or <strong>Range</strong> actually changes</li>
       <li>why <strong>Days Abroad</strong>, countries, trips, and tracker cards do not all answer the same question</li>
+      <li>why US states appear only when trips have state tags and you are using the full-screen map</li>
       <li>when the right fix is in the trip record or settings instead of on the dashboard</li>
     </ul>
 
@@ -230,7 +261,8 @@
     <p>The dashboard shows a mini world map. Tapping it opens the full-screen interactive map where you can tap any country to inspect the trips behind that highlight.</p>
     <p>The map reflects the selected period and the same trip record behind the stats. It is a visualization of that record, not a separate calculation layer.</p>
     <p>Visited countries are highlighted in your chosen accent color. <strong>Transit</strong> places appear differently so you can tell them apart from entered-country visits. Very small countries like Vatican City, Singapore, and Malta can appear as dot markers because their territory is too small to see reliably at map scale.</p>
-    <p>When you have trips tagged with a US state, the full-screen map shows individual state boundaries as you zoom in. Visited states are highlighted in your accent color. The state layer appears in the full-screen map only, not in the mini-map on the dashboard or in widgets. Tagging trips with US states requires <strong>AtlasDays Pro</strong>.</p>
+    <p>When you have trips tagged with a US state, the full-screen map shows individual state boundaries as you zoom in. Visited states are highlighted in your accent color, and tapping a state opens the trips behind that state. The state layer appears in the full-screen map only, not in the mini-map on the dashboard or in widgets. Tagging trips with US states requires <strong>AtlasDays Pro</strong>.</p>
+    <p>If the United States is highlighted but individual states are not, check whether the trips are saved as plain United States trips instead of state-tagged trips. Photo, CSV, and Flighty imports can detect state detail when the source supports it, but state-level tracking still depends on those tags being present in the saved record.</p>
     <p>If the map changes when you switch from <strong>2024</strong> to <strong>All Time</strong>, that is expected. The map follows the current filter exactly.</p>
 
     <div class="callout">
@@ -267,6 +299,7 @@
       <h3>Where to go next</h3>
       <p><a href="/help/history-and-import">Trip Modes and Record Quality</a> explains how <strong>Exact Dates</strong>, <strong>Year</strong>, <strong>Unknown</strong>, <strong>Transit</strong>, duplicates, overlaps, and <strong>ongoing</strong> trips affect the record behind the dashboard.</p>
       <p><a href="/help/trackers-and-limits">Trackers and Limits</a> explains why a tracker total can differ from <strong>Days Abroad</strong> or other dashboard summaries.</p>
+      <p><a href="/help/atlasdays-pro">AtlasDays Pro</a> explains what is free and what unlocks US state tracking.</p>
       <p><a href="/help/export-and-reports">Export and Reports</a> helps you inspect the selected period outside the dashboard when you want a file-based review.</p>
       <p><a href="/help/getting-started">Getting Started</a> is the right next page if your <strong>Home Country</strong> or counting preferences were never set up clearly.</p>
       <p><a href="/help/privacy-location-and-sync">Privacy, Location, and Sync</a> is relevant when a recent trip is missing because <strong>Auto-Detect Trips</strong>, notification permission, or local device behavior did not work as expected.</p>

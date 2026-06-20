@@ -4,20 +4,50 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Trackers and Limits — AtlasDays Help Center</title>
-  <meta name="description" content="Troubleshoot AtlasDays trackers: check country scope, time window, trip precision, Smart Alerts, and when a tracker result is safe to trust." />
+  <meta name="description" content="Troubleshoot AtlasDays trackers: check country or US state scope, time window, trip precision, Smart Alerts, and when a tracker result is safe to trust." />
   <meta property="og:title" content="Trackers and Limits — AtlasDays Help Center" />
-  <meta property="og:description" content="Troubleshoot AtlasDays trackers: check country scope, time window, trip precision, Smart Alerts, and when a tracker result is safe to trust." />
+  <meta property="og:description" content="Troubleshoot AtlasDays trackers: check country or US state scope, time window, trip precision, Smart Alerts, and when a tracker result is safe to trust." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/help/trackers-and-limits" />
   <meta property="og:image" content="https://atlasdays.app/assets/home/home-hero-dashboard.png" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Trackers and Limits — AtlasDays Help Center" />
-  <meta name="twitter:description" content="Troubleshoot AtlasDays trackers: check country scope, time window, trip precision, Smart Alerts, and when a tracker result is safe to trust." />
+  <meta name="twitter:description" content="Troubleshoot AtlasDays trackers: check country or US state scope, time window, trip precision, Smart Alerts, and when a tracker result is safe to trust." />
   <meta name="twitter:image" content="https://atlasdays.app/assets/home/home-hero-dashboard.png" />
   <meta name="apple-itunes-app" content="app-id=6760133544, app-argument=https://apps.apple.com/app/atlasdays-track-country-days/id6760133544" />
   <link rel="canonical" href="https://atlasdays.app/help/trackers-and-limits" />
   <link rel="icon" type="image/png" href="../assets/brand/favicon_light.png?v=20260325a" media="(prefers-color-scheme: light)" />
   <link rel="icon" type="image/png" href="../assets/brand/favicon_dark.png?v=20260325a" media="(prefers-color-scheme: dark)" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "AtlasDays", "item": "https://atlasdays.app" },
+      { "@type": "ListItem", "position": 2, "name": "Help Center", "item": "https://atlasdays.app/help/" },
+      { "@type": "ListItem", "position": 3, "name": "Trackers and Limits", "item": "https://atlasdays.app/help/trackers-and-limits" }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Trackers and Limits",
+    "description": "Troubleshoot AtlasDays trackers: check country or US state scope, time window, trip precision, Smart Alerts, and when a tracker result is safe to trust.",
+    "author": {
+      "@type": "Organization",
+      "name": "AtlasDays"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "AtlasDays"
+    },
+    "url": "https://atlasdays.app/help/trackers-and-limits",
+    "image": "https://atlasdays.app/assets/home/home-hero-dashboard.png",
+    "dateModified": "2026-06-13"
+  }
+  </script>
   <script>(function(){var t=localStorage.getItem('theme');document.documentElement.setAttribute('data-theme',t==='light'?'light':'dark')})()</script>
   <style>
     :root { --bg:#0a0b0d; --bg-card:rgba(255,255,255,0.05); --text:#f4f7fb; --muted:#b2b9c5; --muted-2:#8790a0; --line:rgba(255,255,255,0.10); --blue:#428FD2; --blue-soft:rgba(66,143,210,0.12); --max:720px; }
@@ -132,7 +162,7 @@
     }
   </style>
   <!-- ARTICLE_IMAGE_STYLES_END -->
-  <link rel="stylesheet" href="../assets/css/site-header.css?v=20260406a" />
+  <link rel="stylesheet" href="../assets/css/site-header.css?v=20260618a" />
 </head>
 <body>
   <header class="top-bar">
@@ -191,6 +221,7 @@
     <p>Most tracker mismatches come from a small number of setup or trip-record issues. Check these before you change anything else:</p>
     <ul>
       <li><strong>Country scope:</strong> confirm the tracker is pointed at the right country or preset set. A one-country tracker and a Schengen tracker can legitimately show different numbers for the same trip record.</li>
+      <li><strong>US state scope:</strong> for a US State tracker, confirm the relevant United States trips are tagged with that state. Plain United States trips do not feed a state-specific tracker.</li>
       <li><strong>Window:</strong> confirm whether the question is <strong>Rolling</strong>, <strong>Per Stay</strong>, or <strong>Yearly</strong>. Those windows answer different questions.</li>
       <li><strong>Mode:</strong> confirm whether the tracker should be <strong>Stay under</strong> or <strong>Reach target</strong>. The same exact days can look very different depending on whether AtlasDays is showing remaining days or progress toward a goal.</li>
       <li><strong>Days vs nights:</strong> confirm whether the tracker is counting <strong>days</strong> or <strong>nights</strong>. From <strong>Dashboard</strong>, long-press the tracker card and choose <strong>Count Nights</strong> or <strong>Count Days</strong> for that tracker.</li>
@@ -245,6 +276,7 @@
 
     <h3>US State</h3>
     <p>Use <strong>US State</strong> when you want to track days spent in a specific US state. AtlasDays includes presets for ten commonly tracked states, each with caveats relevant to that state's rules, such as any-part-of-day counting for New York or domicile requirements. You can also pick a custom state. Browsing presets is free; saving a US State tracker requires <strong>AtlasDays Pro</strong>.</p>
+    <p>A US State tracker only counts trips tagged with that state. If your record has plain United States trips, edit them manually or use state-aware Photo, CSV, or Flighty import so AtlasDays knows which state should count.</p>
 
     <h3>Custom</h3>
     <p>Use <strong>Custom</strong> when the preset is close but not right. You can choose your own country scope, threshold, mode, and time window.</p>
@@ -292,6 +324,7 @@
     <h2>What Counts Toward Tracker Math</h2>
     <ul>
       <li><strong>Exact Dates</strong> trips inside the tracker’s selected country set count, as long as they are not marked <strong>Transit</strong>.</li>
+      <li><strong>US State trackers</strong> count the trip's state tag, not merely the United States country code.</li>
       <li><strong>Arrival and departure days</strong> both count for <strong>Exact Dates</strong> trips.</li>
       <li><strong>Shared dates from Exact Dates trips</strong> are counted once in the tracker total, not once per country row inside the tracker detail view.</li>
       <li><strong>ongoing trips</strong> use today as the effective end date, so the number changes day by day until you close the trip.</li>
@@ -320,6 +353,7 @@
       <li>for <strong>Per Stay</strong>, the <strong>Tracking from</strong> date matches the actual start of the stay you care about</li>
       <li>for <strong>Yearly</strong>, the stored <strong>year</strong> or <strong>fiscal-year-style period</strong> matches the period you mean</li>
       <li>the relevant trips are present and saved as <strong>Exact Dates</strong></li>
+      <li>for a <strong>US State</strong> tracker, the relevant United States trips carry the right state tag</li>
       <li>the trip fields that matter most are correct: <strong>country</strong>, <strong>start date</strong>, <strong>end date</strong>, <strong>Transit</strong>, and whether the trip is still ongoing</li>
       <li>any <strong>date conflicts</strong> in Timeline are resolved</li>
     </ul>
@@ -384,6 +418,7 @@
       <h3>Where to go next</h3>
       <p><a href="/help/history-and-import">Trip Modes and Record Quality</a> explains how <strong>Exact Dates</strong>, <strong>Year</strong>, <strong>Unknown</strong>, <strong>Transit</strong>, and ongoing trips change tracker accuracy.</p>
       <p><a href="/help/dashboard-and-map">Dashboard and Map</a> shows how to compare the tracker card with the trips and totals currently driving it.</p>
+      <p><a href="/help/csv-import">CSV Import</a> and <a href="/help/flighty-import">Flighty Import</a> explain how imported United States history can preserve state detail for Pro users.</p>
       <p><a href="/help/privacy-location-and-sync">Privacy, Location, and Sync</a> covers notification permission, <strong>Auto-Detect Trips</strong>, and <strong>iCloud sync</strong> when alerts or background suggestions are part of the confusion.</p>
       <p><a href="/help/export-and-reports">Export and Reports</a> helps you inspect the underlying trip output before you rely on or share tracker-related numbers.</p>
       <p><a href="/help/getting-started">Getting Started</a> is the simpler setup walkthrough if you are still choosing your first tracker.</p>
