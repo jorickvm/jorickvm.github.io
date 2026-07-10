@@ -45,7 +45,7 @@
     },
     "url": "https://atlasdays.app/help/trackers-and-limits",
     "image": "https://atlasdays.app/assets/home/home-hero-dashboard.png",
-    "dateModified": "2026-06-13"
+    "dateModified": "2026-07-10"
   }
   </script>
   <script>(function(){var t=localStorage.getItem('theme');document.documentElement.setAttribute('data-theme',t==='light'?'light':'dark')})()</script>
@@ -85,6 +85,13 @@
     html[data-theme="light"] { --bg:#f6f8fc; --bg-card:rgba(255,255,255,0.88); --text:#0d1422; --muted:#526075; --muted-2:#6c788b; --line:rgba(12,22,40,0.09); --blue-soft:rgba(66,143,210,0.08); }
     .atlasdays-screenshot { margin:24px auto 28px; max-width:320px; display:block; }
     .atlasdays-screenshot img { display:block; width:100%; height:auto; border-radius:22px; border:1px solid var(--line); box-shadow:0 12px 32px rgba(0,0,0,0.18); }
+    @media (min-width:900px) {
+      .atlasdays-screenshot { float:left; clear:left; width:240px; max-width:240px; margin:6px 28px 24px 0; }
+      article h2, .atlasdays-article-image, .cta-box, .related { clear:both; }
+    }
+    @media (min-width:1120px) {
+      .atlasdays-screenshot { margin-left:clamp(-130px, -9vw, -80px); }
+    }
   </style>
 <!-- ARTICLE_IMAGE_STYLES_START -->
   <style id="atlasdays-article-image-styles">
@@ -194,7 +201,7 @@
     </nav>
 
     <h1>Trackers and Limits</h1>
-    <p class="updated">Last updated: June 13, 2026</p>
+    <p class="updated">Last updated: July 10, 2026</p>
     <p class="subtitle">Troubleshoot a tracker that looks wrong, keep the setup aligned with your rule, and verify when the result is safe to trust.</p>
 
     <!-- ARTICLE_IMAGE:hero -->
@@ -275,7 +282,7 @@
     <p>Use <strong>Travel Goal</strong> when you want to accumulate days toward a personal target rather than stay under a limit.</p>
 
     <h3>US State</h3>
-    <p>Use <strong>US State</strong> when you want to track days spent in a specific US state. AtlasDays includes presets for ten commonly tracked states, each with caveats relevant to that state's rules, such as any-part-of-day counting for New York or domicile requirements. You can also pick a custom state. Browsing presets is free; saving a US State tracker requires <strong>AtlasDays Pro</strong>.</p>
+    <p>Use <strong>US State</strong> when you want to track days spent in one or more US states. AtlasDays includes presets for commonly tracked states, each with caveats relevant to that state's rules, such as any-part-of-day counting for New York or domicile requirements. You can also choose a custom state set. Browsing presets is free; saving a US State tracker requires <strong>AtlasDays Pro</strong>.</p>
     <p>A US State tracker only counts trips tagged with that state. If your record has plain United States trips, edit them manually or use state-aware Photo, CSV, or Flighty import so AtlasDays knows which state should count.</p>
 
     <h3>Custom</h3>

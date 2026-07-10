@@ -45,7 +45,7 @@
     },
     "url": "https://atlasdays.app/help/history-and-import",
     "image": "https://atlasdays.app/assets/home/home-hero-dashboard.png",
-    "dateModified": "2026-04-11"
+    "dateModified": "2026-07-10"
   }
   </script>
   <script>(function(){var t=localStorage.getItem('theme');document.documentElement.setAttribute('data-theme',t==='light'?'light':'dark')})()</script>
@@ -85,6 +85,13 @@
     html[data-theme="light"] { --bg:#f6f8fc; --bg-card:rgba(255,255,255,0.88); --text:#0d1422; --muted:#526075; --muted-2:#6c788b; --line:rgba(12,22,40,0.09); --blue-soft:rgba(66,143,210,0.08); }
     .atlasdays-screenshot { margin:24px auto 28px; max-width:320px; display:block; }
     .atlasdays-screenshot img { display:block; width:100%; height:auto; border-radius:22px; border:1px solid var(--line); box-shadow:0 12px 32px rgba(0,0,0,0.18); }
+    @media (min-width:900px) {
+      .atlasdays-screenshot { float:left; clear:left; width:240px; max-width:240px; margin:6px 28px 24px 0; }
+      article h2, .atlasdays-article-image, .cta-box, .related { clear:both; }
+    }
+    @media (min-width:1120px) {
+      .atlasdays-screenshot { margin-left:clamp(-130px, -9vw, -80px); }
+    }
   </style>
 <!-- ARTICLE_IMAGE_STYLES_START -->
   <style id="atlasdays-article-image-styles">
@@ -194,7 +201,7 @@
     </nav>
 
     <h1>Trip Modes and Record Quality</h1>
-    <p class="updated">Last updated: April 11, 2026</p>
+    <p class="updated">Last updated: July 10, 2026</p>
     <p class="subtitle">Choose the right trip precision, clean up messy history, and know what to fix before you trust totals, trackers, or exports.</p>
 
     <!-- ARTICLE_IMAGE:hero -->
@@ -316,6 +323,7 @@
       <li>US state tags should be reviewed when a state-level tracker, map view, or export matters.</li>
       <li>If the source material is messy, expect cleanup after import rather than a perfect record immediately.</li>
     </ul>
+    <p>After an import is saved, use <strong>Settings &gt; Manage Imports</strong> to inspect its batch or remove the whole batch if the source was wrong. Use individual trip editing when only a few rows need correction.</p>
 
     <h2>How Record Quality Affects the Rest of the App</h2>
     <ul>
@@ -323,18 +331,19 @@
       <li><strong>Trackers</strong> depend most on trips that are saved as <strong>Exact Dates</strong>. <strong>Year</strong> and <strong>Unknown</strong> preserve history but do not power exact tracker math.</li>
       <li><strong>US State trackers</strong> depend on United States trips being tagged with the specific state. Plain United States trips do not tell AtlasDays which state to count.</li>
       <li><strong>Export output</strong> reflects the same trip record and does not repair conflicts or bad precision choices for you.</li>
-      <li><strong>Auto-Detect Trips</strong> can help surface suggestions, but those suggestions still need review, edit, and confirmation before you rely on them as part of the record.</li>
+      <li><strong>Auto-Detect Trips</strong> surfaces new-place suggestions inline in Timeline. New trips still need review and confirmation, but later detection can automatically close an existing confirmed <strong>Open-ended</strong> trip when AtlasDays has evidence that you departed.</li>
     </ul>
 
     <div class="cta-box">
       <h3>Where to go next</h3>
+      <p><a href="/help/timeline-and-calendar">Timeline and Calendar</a> explains how to browse, display, and clean up the records described here.</p>
       <p><a href="/help/csv-import">CSV Import</a> explains the file format, preview step, duplicate handling, overlap warnings, and the AI prompt helper.</p>
       <p><a href="/help/photo-import">Photo Import</a> explains on-device photo metadata scanning, review, duplicate handling, overlaps, transit detection, and Photos privacy.</p>
       <p><a href="/help/flighty-import">Flighty Import</a> explains how AtlasDays turns Flighty exports into reviewable trips, including same-day transit, overnight connections, and US state detection.</p>
       <p><a href="/help/dashboard-and-map">Dashboard and Map</a> explains how your trip record turns into totals, summaries, and map output.</p>
       <p><a href="/help/trackers-and-limits">Trackers and Limits</a> explains why exact trips matter when you want actionable counters.</p>
       <p><a href="/help/export-and-reports">Export and Reports</a> explains how this same trip record turns into CSV and PDF output.</p>
-      <p><a href="/help/privacy-location-and-sync">Privacy, Location, and Sync</a> explains how <strong>Auto-Detect Trips</strong> suggestions work and why they still need review.</p>
+      <p><a href="/help/privacy-location-and-sync">Privacy, Location, and Sync</a> explains inline <strong>Auto-Detect Trips</strong> suggestions, automatic closing of confirmed Open-ended trips, and the related permissions.</p>
       <p>If the real question is the underlying travel-rule concept rather than record handling, use <a href="/learn/">Learn</a>.</p>
     </div>
   </article>

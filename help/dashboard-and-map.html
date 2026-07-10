@@ -70,6 +70,13 @@
     html[data-theme="light"] { --bg:#f6f8fc; --bg-card:rgba(255,255,255,0.88); --text:#0d1422; --muted:#526075; --muted-2:#6c788b; --line:rgba(12,22,40,0.09); --blue-soft:rgba(66,143,210,0.08); }
     .atlasdays-screenshot { margin:24px auto 28px; max-width:320px; display:block; }
     .atlasdays-screenshot img { display:block; width:100%; height:auto; border-radius:22px; border:1px solid var(--line); box-shadow:0 12px 32px rgba(0,0,0,0.18); }
+    @media (min-width:900px) {
+      .atlasdays-screenshot { float:left; clear:left; width:240px; max-width:240px; margin:6px 28px 24px 0; }
+      article h2, .atlasdays-article-image, .cta-box, .related { clear:both; }
+    }
+    @media (min-width:1120px) {
+      .atlasdays-screenshot { margin-left:clamp(-130px, -9vw, -80px); }
+    }
   </style>
 <!-- ARTICLE_IMAGE_STYLES_START -->
   <style id="atlasdays-article-image-styles">
@@ -238,6 +245,9 @@
     <p>You can reorder tracker cards by dragging, and collapse or expand the whole tracker section. If the tracker logic itself looks wrong, use <a href="/help/trackers-and-limits">Trackers and Limits</a>.</p>
 
     <h2>Changing the Period</h2>
+    <figure class="atlasdays-screenshot">
+      <img src="../assets/article-images/help/dashboard-and-map/screenshot-period-selector.webp" alt="Dashboard showing the period controls with All Time selected and Year and Range options visible" width="1320" height="2868" decoding="async" loading="lazy" />
+    </figure>
     <p>The selected period changes what appears everywhere on the dashboard. When you switch periods, you are not changing one tile. You are changing the whole summary.</p>
     <p><strong>Year</strong> mode lets you pick a specific year or <strong>All Time</strong>. <strong>Range</strong> mode lets you choose a window like the last 7, 30, 90, 180, or 365 days, or set a manual start and end date. Use <strong>Year</strong> when the question is about a calendar year. Use <strong>Range</strong> when the question is about a rolling or custom window.</p>
     <p>Approximate trips do not behave the same way in every period:</p>
@@ -247,9 +257,6 @@
       <li><strong>Range</strong> is best for <strong>Exact Dates</strong> analysis. A <strong>Year</strong> entry appears there only when the selected range fully covers that year. <strong>Unknown</strong> entries do not land inside a specific <strong>Year</strong> or <strong>Range</strong>.</li>
     </ul>
     <p>If countries, trips, or totals appear or disappear after switching filters, verify the selected period before assuming the dashboard lost data.</p>
-    <figure class="atlasdays-screenshot">
-      <img src="../assets/article-images/help/dashboard-and-map/screenshot-period-selector.webp" alt="Dashboard showing the period controls with All Time selected and Year and Range options visible" width="1320" height="2868" decoding="async" loading="lazy" />
-    </figure>
 
     <h2>Using the Map</h2>
     <!-- ARTICLE_IMAGE:body-1 -->

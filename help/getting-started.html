@@ -45,7 +45,7 @@
     },
     "url": "https://atlasdays.app/help/getting-started",
     "image": "https://atlasdays.app/assets/home/home-hero-dashboard.png",
-    "dateModified": "2026-04-30"
+    "dateModified": "2026-07-10"
   }
   </script>
   <script>(function(){var t=localStorage.getItem('theme');document.documentElement.setAttribute('data-theme',t==='light'?'light':'dark')})()</script>
@@ -85,6 +85,13 @@
     html[data-theme="light"] { --bg:#f6f8fc; --bg-card:rgba(255,255,255,0.88); --text:#0d1422; --muted:#526075; --muted-2:#6c788b; --line:rgba(12,22,40,0.09); --blue-soft:rgba(66,143,210,0.08); }
     .atlasdays-screenshot { margin:24px auto 28px; max-width:320px; display:block; }
     .atlasdays-screenshot img { display:block; width:100%; height:auto; border-radius:22px; border:1px solid var(--line); box-shadow:0 12px 32px rgba(0,0,0,0.18); }
+    @media (min-width:900px) {
+      .atlasdays-screenshot { float:left; clear:left; width:240px; max-width:240px; margin:6px 28px 24px 0; }
+      article h2, .atlasdays-article-image, .cta-box, .related { clear:both; }
+    }
+    @media (min-width:1120px) {
+      .atlasdays-screenshot { margin-left:clamp(-130px, -9vw, -80px); }
+    }
   </style>
 <!-- ARTICLE_IMAGE_STYLES_START -->
   <style id="atlasdays-article-image-styles">
@@ -194,7 +201,7 @@
     </nav>
 
     <h1>Getting Started</h1>
-    <p class="updated">Last updated: April 30, 2026</p>
+    <p class="updated">Last updated: July 10, 2026</p>
     <p class="subtitle">Set up AtlasDays in an order that keeps <strong>Days Abroad</strong>, early dashboard totals, and first trackers from drifting off immediately.</p>
 
     <!-- ARTICLE_IMAGE:hero -->
@@ -280,7 +287,7 @@
 
     <h3>5. Use import only when it is actually worth it</h3>
     <p>Open <strong>Settings &gt; Import</strong> when you have enough history that manual entry would be slow. Choose <strong>Photos</strong> when geotagged photo metadata is your strongest source. Choose <strong>CSV</strong> when your history already exists in a spreadsheet or travel notes. Choose <strong>Flighty</strong> when your best structured source is a Flighty flight-history export.</p>
-    <p><strong>Photo Import</strong> scans on-device metadata and drafts trips for review. On the free plan, you can import trips from the last <strong>180 days</strong>; older candidates can still be found, but they appear locked under <strong>Older Trips Found</strong> until <strong>AtlasDays Pro</strong> unlocks older photo-history import.</p>
+    <p><strong>Photo Import</strong> scans on-device metadata and drafts trips for review. Photo Import is free for any scan period you select. <strong>AtlasDays Pro</strong> is only needed here to preserve detected United States history as individual state-tagged trips.</p>
     <p><strong>CSV Import</strong> is worth it for a structured backlog. <strong>Flighty Import</strong> is worth it when flights cover most of the history you want to rebuild, but it still misses ground crossings and flights missing from Flighty. Manual entry is often cleaner for a small number of recent or important trips, especially when those trips affect live counts right away.</p>
     <p>Photo, CSV, and Flighty imports can all surface US state detail when the source contains enough information. On the free plan, state-detected US history imports as country-level United States trips. <strong>AtlasDays Pro</strong> preserves per-state rows for US state tracking.</p>
     <p>Do not invent <strong>Exact Dates</strong> just to fill the app faster. Import speed is not worth damaging record quality. Save trips with defensible calendar dates as <strong>Exact Dates</strong>, rough history as <strong>Year</strong>, and truly unknown visits as <strong>Unknown</strong>.</p>
@@ -310,6 +317,7 @@
 
     <div class="cta-box">
       <h3>Where to go next</h3>
+      <p><a href="/help/timeline-and-calendar">Timeline and Calendar</a> explains List and Calendar mode, inline suggestions, Find Photos, and overlap cleanup.</p>
       <p><a href="/help/history-and-import">Trip Modes and Record Quality</a> is the next page if the real problem is trip precision, duplicates, overlaps, or deciding between <strong>Exact Dates</strong>, <strong>Year</strong>, <strong>Unknown</strong>, and <strong>Transit</strong>.</p>
       <p><a href="/help/trackers-and-limits">Trackers and Limits</a> explains when a first tracker is worth adding, which setup choices change the result, and when a tracker should still be treated as provisional.</p>
       <p><a href="/help/dashboard-and-map">Dashboard and Map</a> helps when early <strong>Days Abroad</strong>, totals, or map output still look wrong after setup.</p>

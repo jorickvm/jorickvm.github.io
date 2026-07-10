@@ -45,7 +45,7 @@
     },
     "url": "https://atlasdays.app/help/csv-import",
     "image": "https://atlasdays.app/assets/home/home-hero-dashboard.png",
-    "dateModified": "2026-04-11"
+    "dateModified": "2026-07-10"
   }
   </script>
   <script>(function(){var t=localStorage.getItem('theme');document.documentElement.setAttribute('data-theme',t==='light'?'light':'dark')})()</script>
@@ -86,6 +86,13 @@
     html[data-theme="light"] { --bg:#f6f8fc; --bg-card:rgba(255,255,255,0.88); --text:#0d1422; --muted:#526075; --muted-2:#6c788b; --line:rgba(12,22,40,0.09); --blue-soft:rgba(66,143,210,0.08); }
     .atlasdays-screenshot { margin:24px auto 28px; max-width:320px; display:block; }
     .atlasdays-screenshot img { display:block; width:100%; height:auto; border-radius:22px; border:1px solid var(--line); box-shadow:0 12px 32px rgba(0,0,0,0.18); }
+    @media (min-width:900px) {
+      .atlasdays-screenshot { float:left; clear:left; width:240px; max-width:240px; margin:6px 28px 24px 0; }
+      article h2, .atlasdays-article-image, .cta-box, .related { clear:both; }
+    }
+    @media (min-width:1120px) {
+      .atlasdays-screenshot { margin-left:clamp(-130px, -9vw, -80px); }
+    }
   </style>
   <link rel="stylesheet" href="../assets/css/site-header.css?v=20260618a" />
 </head>
@@ -119,7 +126,7 @@
     </nav>
 
     <h1>CSV Import</h1>
-    <p class="updated">Last updated: April 11, 2026</p>
+    <p class="updated">Last updated: July 10, 2026</p>
     <p class="subtitle">Import a backlog of travel history, understand why rows fail or get skipped, and decide when the imported record is safe enough to use.</p>
 
     <h2>What This Page Helps You Do</h2>
@@ -191,6 +198,9 @@
     </ul>
 
     <h2>What Import Preview Actually Tells You</h2>
+    <figure class="atlasdays-screenshot">
+      <img src="../assets/article-images/help/csv-import/screenshot-import-preview.webp" alt="Import Preview screen showing Trips to Import, Errors, and duplicate rows sections" width="1320" height="2868" decoding="async" loading="lazy" />
+    </figure>
     <p>After you choose a file, AtlasDays parses it and opens <strong>Import Preview</strong>. Nothing is written to your trip history until you confirm the import from that preview screen.</p>
     <ul>
       <li><strong>Valid rows</strong> appear under <strong>Trips to Import</strong>. That means AtlasDays accepted the row shape and can turn it into a trip.</li>
@@ -202,9 +212,6 @@
       <li><strong>Rows you do not want</strong> can be removed from the preview before you confirm the batch.</li>
     </ul>
     <p>If the file has both good and bad rows, AtlasDays still lets you import the valid, non-duplicate rows. That is useful for progress, but it does <strong>not</strong> mean the final record is already clean enough to trust without review.</p>
-    <figure class="atlasdays-screenshot">
-      <img src="../assets/article-images/help/csv-import/screenshot-import-preview.webp" alt="Import Preview screen showing Trips to Import, Errors, and duplicate rows sections" width="1320" height="2868" decoding="async" loading="lazy" />
-    </figure>
 
     <h2>Using Imperfect Source Material</h2>
     <p>If your source data is messy, clean the precision first rather than forcing everything into <strong>Exact Dates</strong>. Import trips with defensible calendar dates as <strong>Exact Dates</strong>, vague past visits as <strong>Year</strong>, and only use <strong>Unknown</strong> rows when you truly cannot place the trip in time yet.</p>
@@ -244,6 +251,9 @@
       <li>Check that any <strong>ongoing</strong> imported trip is intentionally still open.</li>
       <li>Treat <strong>Year</strong> and <strong>Unknown</strong> as preserved history, not as proof of precise counted days.</li>
     </ul>
+
+    <h2>Managing a Saved CSV Import</h2>
+    <p>Open <strong>Settings &gt; Manage Imports</strong> to inspect saved import batches or remove a mistaken batch together. If many rows came from the wrong source file, deleting the batch and importing a corrected CSV is usually clearer than editing every trip individually.</p>
     <p>If the imported record still has unresolved duplicates, overlaps, or vague dates, the same uncertainty will flow into <a href="/help/dashboard-and-map">Dashboard and Map</a>, <a href="/help/trackers-and-limits">Trackers and Limits</a>, and <a href="/help/export-and-reports">Export and Reports</a>.</p>
 
     <div class="cta-box">

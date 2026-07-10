@@ -45,7 +45,7 @@
     },
     "url": "https://atlasdays.app/help/widgets",
     "image": "https://atlasdays.app/assets/article-images/help/widgets/screenshot-widgets.webp",
-    "dateModified": "2026-05-16"
+    "dateModified": "2026-07-10"
   }
   </script>
   <script>(function(){var t=localStorage.getItem('theme');document.documentElement.setAttribute('data-theme',t==='light'?'light':'dark')})()</script>
@@ -78,6 +78,13 @@
     .cta-box { background:var(--bg-card); border:1px solid var(--line); }
     .atlasdays-screenshot { margin:24px auto 28px; max-width:320px; display:block; }
     .atlasdays-screenshot img { display:block; width:100%; height:auto; border-radius:22px; border:1px solid var(--line); box-shadow:0 12px 32px rgba(0,0,0,0.18); }
+    @media (min-width:900px) {
+      .atlasdays-screenshot { float:left; clear:left; width:240px; max-width:240px; margin:6px 28px 24px 0; }
+      article h2, .atlasdays-article-image, .cta-box, .related { clear:both; }
+    }
+    @media (min-width:1120px) {
+      .atlasdays-screenshot { margin-left:clamp(-130px, -9vw, -80px); }
+    }
     .theme-toggle { background:none; border:1px solid var(--line); border-radius:10px; color:var(--muted); cursor:pointer; width:36px; height:36px; display:inline-grid; place-items:center; padding:0; }
     .theme-toggle:hover { border-color:var(--blue); color:var(--text); }
     .icon-moon, .logo-light { display:none; } .logo-dark { display:block; }
@@ -118,15 +125,16 @@
     </nav>
 
     <h1>Home Screen Widgets</h1>
-    <p class="updated">Last updated: May 16, 2026</p>
+    <p class="updated">Last updated: July 10, 2026</p>
     <p class="subtitle">Add a tracker or your world map to your iPhone Home Screen and see your day count at a glance — without opening the app.</p>
 
     <h2>What Widgets Do</h2>
-    <p>AtlasDays widgets pull live data from your trip record and display it directly on your Home Screen or Lock Screen. They update automatically as your trip record changes — no manual refresh needed.</p>
+    <p>AtlasDays widgets display a snapshot of your current trip record on the iPhone Home Screen. AtlasDays refreshes their data when the record changes, while iOS controls the final WidgetKit refresh timing.</p>
     <p>You can add:</p>
     <ul>
-      <li>a <strong>Tracker widget</strong> showing days used, days remaining, and a forecast for any tracker you have set up, including a US State tracker when your record has state-tagged trips</li>
-      <li>a <strong>World Map widget</strong> showing your visited-country map</li>
+      <li>a free <strong>small Tracker Status widget</strong> showing the current count and status for a tracker</li>
+      <li>Pro <strong>medium and large Tracker Trend widgets</strong> with charts, forecasts, and trip context</li>
+      <li>a free <strong>World Map widget</strong> showing your visited-country map in small, medium, or large</li>
     </ul>
     <figure class="atlasdays-screenshot">
       <img src="../assets/article-images/help/widgets/screenshot-widgets.webp" alt="iPhone Home Screen widget gallery showing AtlasDays map and tracker widgets in several sizes" width="1320" height="2868" decoding="async" loading="lazy" />
@@ -144,47 +152,48 @@
       <li>Choose the widget type — <strong>Tracker</strong> or <strong>World Map</strong>.</li>
       <li>Swipe through the size options: <strong>small</strong>, <strong>medium</strong>, or <strong>large</strong>.</li>
       <li>Tap <strong>Add Widget</strong>, then drag it into position.</li>
-      <li>Tap the widget to choose which tracker it should display.</li>
+      <li>To choose a tracker, long-press the placed Tracker widget, tap <strong>Edit Widget</strong>, and select the tracker.</li>
     </ol>
     <p>You can add multiple widgets to show different trackers side by side.</p>
 
     <h2>Widget Sizes</h2>
     <h3>Small</h3>
-    <p>Shows the tracker name, current day count, and status (under limit, at limit, or over limit). Good for a quick one-number glance.</p>
+    <p>The free Tracker Status layout shows the tracker name, current count, and status. The World Map is also available in small.</p>
 
     <h3>Medium</h3>
-    <p>Shows the tracker name, day count, days remaining or progress, and a compact forecast based on your upcoming trips.</p>
+    <p>The Pro Tracker Trend layout shows the tracker name, count, progress, and a compact chart with projected activity. The free World Map is also available in medium.</p>
 
     <h3>Large</h3>
-    <p>Shows the full tracker summary with forecast detail and the underlying trip context. Best if you track a rule that changes frequently, such as Schengen 90/180.</p>
+    <p>The Pro Tracker Trend layout shows the full tracker summary, chart, and relevant trip context. The free World Map is also available in large.</p>
 
     <h2>Tracker Forecasts in Widgets</h2>
-    <p>Medium and large tracker widgets include a <strong>forecast</strong> derived from your planned future trips. If you have upcoming exact-date trips in the tracker's country set, the widget shows how those trips will affect your count.</p>
+    <p>Medium and large Tracker Trend widgets require AtlasDays Pro. Their projected chart is derived from planned future trips in the tracker's country set.</p>
     <ul>
       <li>The forecast is as precise as the trips behind it. Planned trips saved as <strong>Exact Dates</strong> appear in the forecast; <strong>Year</strong> and <strong>Unknown</strong> trips do not.</li>
-      <li>If you change or cancel a planned trip inside the app, the widget forecast updates automatically.</li>
+      <li>If you change or cancel a planned trip inside the app, AtlasDays writes a new widget snapshot; iOS may take a short time to display it.</li>
       <li>An open ongoing trip uses today as the end date in the forecast, so the count moves forward until you close the trip.</li>
     </ul>
 
     <h2>Choosing Which Tracker a Widget Shows</h2>
-    <p>After adding a tracker widget, tap it to open the widget configuration. Select the tracker you want from the list. If you only have one tracker, it is selected automatically.</p>
+    <p>After adding a Tracker widget, long-press it and choose <strong>Edit Widget</strong>, then select the tracker from the list. If you only have one tracker, AtlasDays uses it by default. A normal tap on the widget opens that tracker in AtlasDays; it does not open configuration.</p>
     <p>Each widget remembers its own tracker selection independently, so you can have a Schengen widget and a Residence widget on the same Home Screen.</p>
     <p>If you choose a US State tracker, the widget follows that tracker exactly. Plain United States trips do not feed a state-specific tracker unless the trips are tagged with that state.</p>
 
     <div class="callout">
-      <p><strong>AtlasDays Pro is required for multiple trackers.</strong> The free plan includes one tracker. If you only see one option in the widget tracker picker, that is expected on the free plan.</p>
+      <p><strong>AtlasDays Pro is required for multiple trackers and for the medium and large Tracker Trend layouts.</strong> The free plan includes one tracker, the small Tracker Status widget, and every size of the World Map widget.</p>
     </div>
 
     <h2>Why a Widget Might Look Wrong</h2>
     <ul>
       <li><strong>Widget shows a stale number:</strong> widgets refresh periodically. Open the app once to force a refresh if the number looks out of date.</li>
-      <li><strong>Widget count differs from the app:</strong> make sure the widget is pointing at the correct tracker. Tap the widget to check its tracker selection.</li>
+      <li><strong>Widget count differs from the app:</strong> make sure the widget is pointing at the correct tracker. Long-press it and choose <strong>Edit Widget</strong> to check.</li>
+      <li><strong>Medium or large tracker widget says Pro Widget:</strong> those Tracker Trend layouts require AtlasDays Pro. Use the small Tracker Status widget for the free tracker view.</li>
       <li><strong>Widget shows no data:</strong> the app needs to have been opened at least once after install for widgets to have data to display.</li>
       <li><strong>Forecast is missing:</strong> the forecast only appears when you have upcoming exact-date trips in the tracker's country set. Add or fix those trips inside the app.</li>
     </ul>
 
     <h2>World Map Widget</h2>
-    <p>The World Map widget displays a miniature version of your visited-country map, updated from your trip record. It is available in medium and large sizes.</p>
+    <p>The free World Map widget displays a miniature version of your visited-country map, updated from your trip record. It is available in small, medium, and large sizes.</p>
     <p>Visited-country counting follows the same rules as the in-app map: a country is visited when you have at least one non-Transit trip there, regardless of trip precision.</p>
     <p>The World Map widget is country-level. Individual US state boundaries and state fills appear only in the full-screen in-app map, not in the widget.</p>
 

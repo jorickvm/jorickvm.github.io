@@ -45,7 +45,7 @@
     },
     "url": "https://atlasdays.app/help/photo-import",
     "image": "https://atlasdays.app/assets/article-images/help/photo-import/screenshot-import-options.webp",
-    "dateModified": "2026-06-13"
+    "dateModified": "2026-07-10"
   }
   </script>
   <script>(function(){var t=localStorage.getItem('theme');document.documentElement.setAttribute('data-theme',t==='light'?'light':'dark')})()</script>
@@ -78,6 +78,13 @@
     .cta-box { background:var(--bg-card); border:1px solid var(--line); }
     .atlasdays-screenshot { margin:24px auto 28px; max-width:320px; display:block; }
     .atlasdays-screenshot img { display:block; width:100%; height:auto; border-radius:22px; border:1px solid var(--line); box-shadow:0 12px 32px rgba(0,0,0,0.18); }
+    @media (min-width:900px) {
+      .atlasdays-screenshot { float:left; clear:left; width:240px; max-width:240px; margin:6px 28px 24px 0; }
+      article h2, .atlasdays-article-image, .cta-box, .related { clear:both; }
+    }
+    @media (min-width:1120px) {
+      .atlasdays-screenshot { margin-left:clamp(-130px, -9vw, -80px); }
+    }
     .theme-toggle { background:none; border:1px solid var(--line); border-radius:10px; color:var(--muted); cursor:pointer; width:36px; height:36px; display:inline-grid; place-items:center; padding:0; }
     .theme-toggle:hover { border-color:var(--blue); color:var(--text); }
     .icon-moon, .logo-light { display:none; } .logo-dark { display:block; }
@@ -118,8 +125,8 @@
     </nav>
 
     <h1>Photo Import</h1>
-    <p class="updated">Last updated: June 13, 2026</p>
-    <p class="subtitle">Rebuild travel history from geotagged photo metadata, review inferred trips before saving, and understand privacy, duplicates, overlaps, transit detection, video evidence, and older locked trips.</p>
+    <p class="updated">Last updated: July 10, 2026</p>
+    <p class="subtitle">Rebuild travel history from geotagged photo metadata, review inferred trips before saving, and understand privacy, duplicates, overlaps, transit detection, video evidence, and US state preservation.</p>
 
     <h2>What This Page Helps You Do</h2>
     <p>Use this page when you want AtlasDays to scan your photo library for travel evidence instead of entering every old trip manually or preparing a CSV file first.</p>
@@ -143,12 +150,12 @@
     <p>Use <a href="/help/csv-import">CSV Import</a> instead when your source is already a spreadsheet, booking export, passport-stamp notes, or another structured list. Use <a href="/help/flighty-import">Flighty Import</a> instead when your source is a Flighty flight-history export.</p>
 
     <h2>Where Photo Import Lives</h2>
-    <p>Go to <strong>Settings &gt; Import</strong> and choose <strong>Photos</strong>. If your timeline is empty or you just finished onboarding, AtlasDays can also show an <strong>Import from Photos</strong> prompt in Timeline.</p>
-    <p><strong>Find Photos</strong> is a separate mode at <strong>Settings &gt; Import &gt; Find Photos</strong>. Instead of creating new trips, it scans your library to match geotagged photos to trips already in your timeline. Use it to add photo previews to existing trips without importing new ones.</p>
+    <p>Go to <strong>Settings &gt; Import</strong>, choose <strong>Photos</strong>, then tap <strong>Find Trips in Photos</strong>. If your timeline is empty or you just finished onboarding, AtlasDays can also show an import prompt in Timeline.</p>
+    <p><strong>Find Photos…</strong> in the Timeline menu is a separate tool. Instead of creating new trips, it scans your library to match geotagged photos to trips already in your timeline. Use it to add photo previews to existing trips without importing new ones.</p>
     <figure class="atlasdays-screenshot">
       <img src="../assets/article-images/help/photo-import/screenshot-import-options.webp" alt="Photo Import screen showing privacy notes, scan period controls, and the Find Trips in Photos button" width="1320" height="2868" decoding="async" loading="lazy" />
     </figure>
-    <p>You can scan a selected year, a preset range, or a custom date range. On the free plan, trips from the last <strong>180 days</strong> can be imported. A scan can still find older candidates, but those appear in a locked <strong>Older Trips Found</strong> section until <strong>AtlasDays Pro</strong> unlocks older photo-history import.</p>
+    <p>You can scan a selected year, a preset range, or a custom date range. Photo Import itself is free for every available scan period. Pro changes how detected US states are preserved; it does not unlock older photo history.</p>
 
     <h2>What Photos Access Is For</h2>
     <p>AtlasDays asks for full Photos access because iOS requires it for an automatic library scan. Selected Photos access is not enough for the full-library scan. The scan reads metadata such as dates and locations. Altitude and media-type metadata can be used to filter out likely airplane-window photos, screenshots, and screen recordings.</p>
@@ -182,7 +189,7 @@
       <li><strong>Duplicates</strong> are skipped so they do not recreate trips already in your record.</li>
       <li><strong>Overlaps</strong> are warnings. Review them before trusting downstream totals.</li>
       <li><strong>Transit</strong> can be detected for short pass-through candidates, but you should still confirm it.</li>
-      <li><strong>Older Trips Found</strong> groups older locked candidates by country with a year range and trip count. Upgrade to Pro only if those older candidates are useful enough to import.</li>
+      <li><strong>US states</strong> appear as importable state-tagged candidates for Pro users and as a detected-state preview for free users.</li>
       <li>You can tap a candidate to edit its country, dates, purpose, transit state, and notes before import.</li>
       <li>You can deselect or delete candidates you do not want to save.</li>
     </ul>
@@ -204,7 +211,7 @@
       <li>Check that the selected scan range includes the trip dates you expected to find.</li>
       <li>Photos need usable date and GPS metadata. Photos without location metadata cannot become location evidence.</li>
       <li>Screenshots, screen recordings, and likely airplane-window photos can be skipped.</li>
-      <li>On the free plan, older candidates may appear in <strong>Older Trips Found</strong> instead of <strong>Ready to import</strong>. Pro is required to import those older trips.</li>
+      <li>AtlasDays can exclude media that appears to have been received from someone else rather than captured by you, so another person's geotagged photo is less likely to become your trip.</li>
       <li>If a trip has only thin evidence, manual entry or CSV import may be more reliable.</li>
     </ul>
 
@@ -217,6 +224,9 @@
       <li>Remember that photos without location metadata cannot prove where you were.</li>
       <li>After import, review the new trips in Timeline and clean up anything that still looks provisional.</li>
     </ul>
+
+    <h2>Managing a Saved Photo Import</h2>
+    <p>After saving, open <strong>Settings &gt; Manage Imports</strong> to inspect imported batches. Use it when you need to review which trips came from a scan or remove an entire mistaken import together. Deleting an import batch removes the trips from that batch, so inspect the batch before confirming.</p>
 
     <h2>Common Photo Import Questions</h2>
     <h3>Why does AtlasDays need Full Photos access?</h3>
