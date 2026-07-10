@@ -61,6 +61,11 @@
     h1 { font-size:clamp(1.8rem, 4vw, 2.6rem); line-height:1.1; letter-spacing:-0.03em; margin:0 0 12px; } .updated { color:var(--muted-2); font-size:0.9rem; line-height:1.4; margin:-4px 0 16px; } .subtitle { color:var(--muted); font-size:1.08rem; margin:0 0 24px; }
     h2 { font-size:1.4rem; letter-spacing:-0.02em; margin:36px 0 12px; } p, li { color:var(--muted); font-size:1rem; } p { margin:0 0 16px; } ul { padding-left:20px; margin:0 0 16px; } li { margin:6px 0; } strong, code { color:var(--text); } code { font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
     .callout, .cta-box { padding:20px 24px; border-radius:16px; margin:28px 0; } .callout { background:var(--blue-soft); border:1px solid rgba(66,143,210,0.18); } .cta-box { background:var(--bg-card); border:1px solid var(--line); }
+    .atlasdays-screenshot { margin:24px auto 28px; max-width:320px; display:block; }
+    .atlasdays-screenshot img { display:block; width:100%; height:auto; border-radius:22px; border:1px solid var(--line); box-shadow:0 12px 32px rgba(0,0,0,0.18); }
+    @media (min-width:900px) {
+      .atlasdays-screenshot { margin-left:0; margin-right:auto; }
+    }
     .theme-toggle { background:none; border:1px solid var(--line); border-radius:10px; color:var(--muted); cursor:pointer; width:36px; height:36px; display:inline-grid; place-items:center; padding:0; } .theme-toggle:hover { border-color:var(--blue); color:var(--text); }
     .icon-moon, .logo-light { display:none; } .logo-dark { display:block; }
     @media (prefers-color-scheme: light) { .icon-sun, .logo-dark { display:none; } .icon-moon, .logo-light { display:block; } }
@@ -113,6 +118,10 @@
       <p><strong>There are two separate iCloud behaviors in AtlasDays.</strong> The <strong>iCloud sync</strong> toggle controls whether trips and trackers use an iCloud-backed store. Separately, some app preferences can carry over through Apple iCloud key-value storage even if full trip sync is off.</p>
       <p>That means seeing a few settings come back does <strong>not</strong> prove your full trip history restored. Preferences and full trip data are related, but they are not the same thing.</p>
     </div>
+
+    <figure class="atlasdays-screenshot">
+      <img src="../assets/article-images/help/privacy-location-and-sync/screenshot-privacy-overview.webp" alt="AtlasDays privacy overview explaining no sign-in, on-device storage, optional iCloud sync, location use, and user control" width="1320" height="2868" decoding="async" loading="lazy" />
+    </figure>
 
     <h2>When Synced Data Does Not Appear as Expected</h2>
     <p>Check these first before assuming your trips or trackers were lost:</p>
