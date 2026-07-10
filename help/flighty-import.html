@@ -9,11 +9,11 @@
   <meta property="og:description" content="Import your flight history from a Flighty CSV export into AtlasDays. How trips are built from flights, including US state detection, transit, overnights, and overlaps." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/help/flighty-import" />
-  <meta property="og:image" content="https://atlasdays.app/assets/home/home-hero-dashboard.png" />
+  <meta property="og:image" content="https://atlasdays.app/assets/article-images/help/flighty-import/screenshot-import.webp" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Flighty Import — AtlasDays Help Center" />
   <meta name="twitter:description" content="Import your flight history from a Flighty CSV export into AtlasDays. How trips are built from flights, including US state detection, transit, overnights, and overlaps." />
-  <meta name="twitter:image" content="https://atlasdays.app/assets/home/home-hero-dashboard.png" />
+  <meta name="twitter:image" content="https://atlasdays.app/assets/article-images/help/flighty-import/screenshot-import.webp" />
   <meta name="apple-itunes-app" content="app-id=6760133544, app-argument=https://apps.apple.com/app/atlasdays-track-country-days/id6760133544" />
   <link rel="canonical" href="https://atlasdays.app/help/flighty-import" />
   <link rel="icon" type="image/png" href="../assets/brand/favicon_light.png?v=20260325a" media="(prefers-color-scheme: light)" />
@@ -44,7 +44,7 @@
       "name": "AtlasDays"
     },
     "url": "https://atlasdays.app/help/flighty-import",
-    "image": "https://atlasdays.app/assets/home/home-hero-dashboard.png",
+    "image": "https://atlasdays.app/assets/article-images/help/flighty-import/screenshot-import.webp",
     "dateModified": "2026-06-18"
   }
   </script>
@@ -76,6 +76,8 @@
     .callout, .cta-box { padding:20px 24px; border-radius:16px; margin:28px 0; }
     .callout { background:var(--blue-soft); border:1px solid rgba(66,143,210,0.18); }
     .cta-box { background:var(--bg-card); border:1px solid var(--line); }
+    .atlasdays-screenshot { margin:24px auto 28px; max-width:320px; display:block; }
+    .atlasdays-screenshot img { display:block; width:100%; height:auto; border-radius:22px; border:1px solid var(--line); box-shadow:0 12px 32px rgba(0,0,0,0.18); }
     .cta-box h3 { margin:0 0 8px; color:var(--text); }
     .cta-box p { margin:0 0 12px; }
     .cta-btn { display:inline-flex; align-items:center; justify-content:center; padding:13px 18px; border-radius:14px; background:var(--blue); color:#fff; font-weight:700; margin-top:4px; }
@@ -123,8 +125,6 @@
     <p class="updated">Last updated: June 18, 2026</p>
     <p class="subtitle">If you already track your flights in Flighty, you can turn that flight history into AtlasDays trips — with a review step before anything is saved.</p>
 
-    <!-- ARTICLE_IMAGE:hero — Screenshot: Flighty import review screen showing inferred trips with Ready / Transit / Overnight pills -->
-
     <h2>What Flighty Import Does</h2>
     <p>Flighty Import is the third way to bring travel into AtlasDays, alongside <a href="/help/photo-import">Photo Import</a> and <a href="/help/csv-import">CSV Import</a>. It reads a CSV export of your Flighty flight history, works out which country each flight started and ended in, and groups consecutive flights into trips you can review before saving.</p>
     <p>Like the other importers, nothing is written to your trip record until you confirm it. AtlasDays shows you a draft of every trip it inferred, with the evidence behind it, so you stay in control of what becomes part of your day count.</p>
@@ -138,7 +138,9 @@
     <p>AtlasDays reads the columns it needs from that export — origin and destination airports, dates, and times — and uses a built-in airport and airline reference to translate airport codes into countries and, for supported US airports, individual states. It does not need an internet connection to do this; the lookup happens on device.</p>
 
     <h2>How to Import</h2>
-    <!-- SCREENSHOT: Import source screen showing Photo / CSV / Flighty options -->
+    <figure class="atlasdays-screenshot">
+      <img src="../assets/article-images/help/flighty-import/screenshot-import.webp" alt="Flighty import screen showing how AtlasDays reads a Flighty CSV export and the Select Flighty CSV button" width="1320" height="2868" decoding="async" loading="lazy" />
+    </figure>
     <ol>
       <li>Open AtlasDays and go to <strong>Import</strong>.</li>
       <li>Choose <strong>Flighty</strong> as the source.</li>
@@ -165,7 +167,6 @@
     <p>State detection is still airport-based. If you landed in one state and drove or took a train into another, Flighty may not contain that state change. Add or adjust those state legs manually before relying on a US State tracker.</p>
 
     <h2>The Review Categories</h2>
-    <!-- SCREENSHOT: Review list grouped by Ready / Transit / Overnight / Missing -->
     <p>Draft trips are grouped so you can scan them quickly and spend attention where it is needed:</p>
     <ul>
       <li><strong>Ready</strong> — a clear stay in a country with confident dates. These are safe to save as-is in most cases.</li>
