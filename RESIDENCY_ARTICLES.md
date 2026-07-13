@@ -144,6 +144,9 @@ via the same `build_residency_hub.py`. Adding a state = new article + one JSON e
 limits, not tax residency, so drop the tax-residency framing; keep TLDR + factbox + official
 source + CTA. Schengen is already well covered — cross-link it.
 
+STATUS: all 3 DONE and wired into the day-limits pillar. slugs: `us-visa-waiver-90-day-limit`,
+`turkiye-90-180-rule`, `schengen-single-entry-visa`. Flags: `us.png`, `tr.png`, `eu.png`.
+
 | Rule | Limit | Window | Note |
 |------|-------|--------|------|
 | US ESTA / Visa Waiver | 90 days | per visit | closer to existing us-b1-b2 content |
