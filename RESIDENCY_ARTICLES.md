@@ -32,6 +32,10 @@ the correct schema, meta, CSS, header, and CTA boilerplate.
 2. Replace, throughout: slug, `<title>`, meta description + keywords, all OG/Twitter tags,
    canonical URL, all three JSON-LD blocks (Article headline/description/url/dates,
    FAQPage Q&As, BreadcrumbList name/item), `datePublished`/`dateModified` = today.
+2b. Breadcrumb (visible nav + JSON-LD BreadcrumbList) is 4 levels: AtlasDays / Learn / <Hub> /
+    <Name>. Country articles use hub `tax-residency-by-country` ("Tax Residency by Country");
+    US-state articles use `us-state-tax-residency` ("US State Tax Residency"). The article itself
+    is position 4 in the JSON-LD.
 3. Flag: `<img class="title-flag" src="../assets/flags/<code>.png" ...>` — flags already exist in
    `assets/flags/` (country ISO code lowercased, e.g. `th.png`; US states `us-ny.png`).
 4. H1, subtitle, TLDR, `.factbox` values, "The rule", "How to count it" + example,
