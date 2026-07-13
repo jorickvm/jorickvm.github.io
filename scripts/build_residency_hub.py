@@ -22,7 +22,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "scripts" / "residency_data.json"
-HUB = ROOT / "learn" / "tax-residency-by-country.html"
+HUBS = [
+    ("countries", ROOT / "learn" / "tax-residency-by-country.html"),
+    ("us_states", ROOT / "learn" / "us-state-tax-residency.html"),
+]
 
 
 def esc(s: str) -> str:
@@ -54,26 +57,30 @@ def replace_region(html: str, start: str, end: str, body: str) -> str:
 
 def main() -> None:
     data = json.loads(DATA.read_text())
-    countries = data["countries"]
-    html = HUB.read_text()
 
-    html = replace_region(html, "<!-- HUB_TABLE_START -->", "<!-- HUB_TABLE_END -->", build_table(countries))
-    html = re.sub(
-        r"<!-- HUB_COUNT_START -->.*?<!-- HUB_COUNT_END -->",
-        f"<!-- HUB_COUNT_START -->{len(countries)}<!-- HUB_COUNT_END -->",
-        html,
-        flags=re.DOTALL,
-    )
-
-    HUB.write_text(html)
-    print(f"Wrote {HUB.relative_to(ROOT)} with {len(countries)} countries.")
+    for key, hub_path in HUBS:
+        rows = data.get(key, [])
+        if not rows or not hub_path.exists():
+            print(f"Skipped {hub_path.name} ({len(rows)} entries, exists={hub_path.exists()}).")
+            continue
+        html = hub_path.read_text()
+        html = replace_region(html, "<!-- HUB_TABLE_START -->", "<!-- HUB_TABLE_END -->", build_table(rows))
+        html = re.sub(
+            r"<!-- HUB_COUNT_START -->.*?<!-- HUB_COUNT_END -->",
+            f"<!-- HUB_COUNT_START -->{len(rows)}<!-- HUB_COUNT_END -->",
+            html,
+            flags=re.DOTALL,
+        )
+        hub_path.write_text(html)
+        print(f"Wrote {hub_path.relative_to(ROOT)} with {len(rows)} entries.")
 
     print("\n--- sitemap <url> blocks ---")
-    for c in countries:
-        print(
-            f"  <url>\n    <loc>https://atlasdays.app/learn/{c['slug']}</loc>\n"
-            f"    <lastmod>2026-07-13</lastmod>\n    <priority>0.8</priority>\n  </url>"
-        )
+    for key, _ in HUBS:
+        for c in data.get(key, []):
+            print(
+                f"  <url>\n    <loc>https://atlasdays.app/learn/{c['slug']}</loc>\n"
+                f"    <lastmod>2026-07-13</lastmod>\n    <priority>0.8</priority>\n  </url>"
+            )
 
 
 if __name__ == "__main__":

@@ -98,34 +98,45 @@ UK is already covered by `learn/uk-statutory-residence-test.html` — skip or cr
 ## Data: US-state residence presets (21)
 
 `~/Projects/AtlasDays/AtlasDays/AtlasDays/Trackers/StatePresetSheet.swift`. Flags: `us-xx.png`.
-**Material nuance for a smart audience:** US "statutory resident" status generally requires BOTH
-183+ days AND maintaining a permanent place of abode in the state, for someone domiciled elsewhere.
-State articles must state that, not just the day number. Presumption states (CA/AZ/ID) are a
-rebuttable presumption, not a hard line.
+**Reference article:** `learn/new-york-tax-residency.html` (statutory-resident pattern). Slug convention:
+`<state>-tax-residency` (put the day number in the title/H1, not the slug, since thresholds vary).
+Georgia the US state uses `georgia-us-tax-residency` to avoid clashing with the country.
 
-| Code | State | Threshold | Window | Note |
-|------|-------|-----------|--------|------|
-| US-NY | New York | > 183 | calendar year | + permanent place of abode |
-| US-NJ | New Jersey | > 183 | calendar year | + place of abode |
-| US-CT | Connecticut | > 183 | calendar year | + place of abode |
-| US-CA | California | > 270 (presumption) | calendar year | no fixed limit; rebuttable presumption |
-| US-MD | Maryland | ≥ 183 | calendar year | + place of abode |
-| US-MA | Massachusetts | > 183 | calendar year | + place of abode |
-| US-MN | Minnesota | ≥ 183 | calendar year | + place of abode |
-| US-NE | Nebraska | ≥ 183 | calendar year | + place of abode |
-| US-ND | North Dakota | > 210 (7-month) | calendar year | requires permanent home in state |
-| US-OH | Ohio | > 212 (overnights) | calendar year | counts nights / "contact periods" |
-| US-VA | Virginia | > 183 | calendar year | + place of abode |
-| US-ME | Maine | > 183 | calendar year | + place of abode |
-| US-RI | Rhode Island | > 183 | calendar year | + place of abode |
-| US-VT | Vermont | > 183 | calendar year | + place of abode |
-| US-CO | Colorado | > 183 | calendar year | + place of abode |
-| US-PA | Pennsylvania | > 183 | calendar year | + place of abode |
-| US-ID | Idaho | > 270 (presumption) | calendar year | rebuttable presumption |
-| US-HI | Hawaii | > 200 | calendar year | + place of abode |
-| US-OR | Oregon | > 200 | calendar year | + place of abode |
-| US-AZ | Arizona | > 270 (presumption) | calendar year | rebuttable presumption |
-| US-GA | Georgia (US) | > 183 | rolling 12-mo | slug must disambiguate from Georgia country |
+Two structural types, and the article must use the right one:
+- **statutory** = resident if 183+ days (varies) AND a permanent place of abode maintained for
+  substantially all year, even if domiciled elsewhere. Both conditions required. Mirror NY.
+- **presumption** = no hard statutory-resident line; the day count creates a REBUTTABLE
+  presumption of residency (CA/AZ/ID/HI). Frame it as a presumption, not an automatic rule, and
+  replace the "Also required" factbox row with a "Presumption" note.
+
+STATUS: all 21 state articles are DONE and wired. The US-state hub lives at
+`learn/us-state-tax-residency.html`, driven by the `us_states` array in `residency_data.json`
+via the same `build_residency_hub.py`. Adding a state = new article + one JSON entry + run script
++ sitemap/llms. Verify each state against its Department of Revenue / Taxation source.
+
+| State | Slug | Threshold | Window | Type / note |
+|-------|------|-----------|--------|-------------|
+| New York | new-york-tax-residency | > 183 (184+) | calendar | statutory + abode — DONE |
+| New Jersey | new-jersey-tax-residency | > 183 (184+) | calendar | statutory + abode |
+| Connecticut | connecticut-tax-residency | > 183 (184+) | calendar | statutory + abode |
+| California | california-tax-residency | > 270 | calendar | presumption (rebuttable); no fixed line |
+| Maryland | maryland-tax-residency | ≥ 183 | calendar | statutory + abode (place >6 months) |
+| Massachusetts | massachusetts-tax-residency | > 183 (184+) | calendar | statutory + abode |
+| Minnesota | minnesota-tax-residency | ≥ 183 | calendar | statutory + abode |
+| Nebraska | nebraska-tax-residency | ≥ 183 | calendar | statutory + abode |
+| North Dakota | north-dakota-tax-residency | > 210 (7-month) | calendar | statutory + permanent home |
+| Ohio | ohio-tax-residency | > 212 nights | calendar | counts overnights ("contact periods") |
+| Virginia | virginia-tax-residency | > 183 (184+) | calendar | actual resident + abode |
+| Maine | maine-tax-residency | > 183 (184+) | calendar | statutory + abode (safe harbor) |
+| Rhode Island | rhode-island-tax-residency | > 183 (184+) | calendar | statutory + abode |
+| Vermont | vermont-tax-residency | > 183 (184+) | calendar | statutory + abode |
+| Colorado | colorado-tax-residency | > 183 (184+) | calendar | statutory + abode (>6 months) |
+| Pennsylvania | pennsylvania-tax-residency | > 183 (184+) | calendar | statutory + abode |
+| Idaho | idaho-tax-residency | > 270 | calendar | present >270 days -> resident |
+| Hawaii | hawaii-tax-residency | > 200 | calendar | presumption (rebuttable) |
+| Oregon | oregon-tax-residency | > 200 | calendar | abode + >200 days |
+| Arizona | arizona-tax-residency | > 270 | calendar | presumption (rebuttable) |
+| Georgia (US state) | georgia-us-tax-residency | > 183 | rolling 12-mo | present 183+ days; disambiguate from country |
 
 ## Data: visa / entry presets (3 uncovered)
 
