@@ -94,8 +94,13 @@ document.querySelectorAll('.hero-video').forEach((video) => {
     video.play().catch(() => {});
   };
   video.addEventListener('click', playFromStart);
+  video.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      playFromStart();
+    }
+  });
   if (reduceMotion) return;
   if (document.readyState === 'complete') playFromStart();
   else window.addEventListener('load', playFromStart, { once: true });
 });
-

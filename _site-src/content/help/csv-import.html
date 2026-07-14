@@ -1,0 +1,145 @@
+    <nav class="breadcrumb">
+      <a href="/">AtlasDays</a> / <a href="/help/">Help Center</a>
+    </nav>
+
+    <h1>CSV Import</h1>
+    <p class="updated">Last updated: July 10, 2026</p>
+    <p class="subtitle">Import a backlog of travel history, understand why rows fail or get skipped, and decide when the imported record is safe enough to use.</p>
+
+    <h2>What This Page Helps You Do</h2>
+    <p>Use this page when your trip history already exists in a spreadsheet, notes export, or rough source material and manual entry would be too slow.</p>
+    <p>By the end of this page, you should know:</p>
+    <ul>
+      <li>when CSV import is the right tool and when manual entry is still better</li>
+      <li>what file shape AtlasDays accepts, including the optional US <strong>State</strong> column</li>
+      <li>why a row can fail, be skipped as a duplicate, or trigger an overlap warning</li>
+      <li>what the preview checks before anything is saved, and what it does not prove</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>Decide the trip precision before you import.</strong> The importer can validate the file shape, but it cannot decide for you whether a trip should be <strong>Exact Dates</strong>, <strong>Year</strong>, or <strong>Unknown</strong>. Use <a href="/help/history-and-import">Trip Modes and Record Quality</a> for that part.</p>
+    </div>
+
+    <h2>When CSV Import Does Not Behave as Expected</h2>
+    <p>Most CSV import problems come from a small number of causes. Check these first:</p>
+    <ul>
+      <li><strong>Invalid row shape:</strong> the first row must be a header, and AtlasDays needs a <strong>Country</strong> column. Use the app template so <strong>State</strong>, <strong>Start Date</strong>, <strong>End Date</strong>, <strong>Purpose</strong>, and <strong>Notes</strong> are named correctly.</li>
+      <li><strong>Unsupported date shape:</strong> dates must be either <strong>Exact Dates</strong> in <code>yyyy-mm-dd</code>, a bare 4-digit <strong>Year</strong>, or fully empty for <strong>Unknown</strong>.</li>
+      <li><strong>Mixed date models in one row:</strong> a row like <code>2024-06-15</code> for Start Date and <code>2024</code> for End Date is invalid. Use one model per row.</li>
+      <li><strong>Invalid country or Purpose value:</strong> the country must resolve to an app-supported place, and <strong>Purpose</strong> should use values AtlasDays understands, such as <strong>Tourism</strong>, <strong>Personal</strong>, <strong>Business</strong>, <strong>Medical</strong>, or <strong>Transit</strong>.</li>
+      <li><strong>Duplicate rows are skipped automatically:</strong> AtlasDays skips trips that already exist in your record, and it also skips later duplicates inside the same import file.</li>
+      <li><strong>Overlap warnings are warnings, not an automatic block:</strong> AtlasDays can still import a non-duplicate row that overlaps with existing <strong>Exact Dates</strong> trips, but you should review that conflict before trusting totals.</li>
+      <li><strong>Import Preview is a review step, not proof:</strong> parsing successfully means the row shape is accepted. It does not prove the dates, precision, or source material are already trustworthy enough for live counting.</li>
+      <li><strong>Bad source material should usually be fixed before import:</strong> if many rows share the same problem, repair the source CSV first instead of pushing a messy batch through and cleaning it trip by trip later.</li>
+    </ul>
+
+    <h2>When to Use CSV Import</h2>
+    <p>CSV import is best when you already have a spreadsheet, a large backlog of trips, or rough source material you want to convert into a structured file. For a few recent trips, manual entry is usually faster and safer.</p>
+    <p>Manual entry is also better when the trip matters for live counting right away, when you need to resolve same-day crossings carefully, or when the source is too ambiguous to batch-format confidently.</p>
+    <p>The main in-app path is <strong>Settings &gt; Import</strong>, then choose <strong>CSV</strong>.</p>
+
+    <h2>Start with the App Template</h2>
+    <p>On the import screen, use <strong>Download Example CSV</strong>. That gives you the exact header AtlasDays expects:</p>
+    <p><code>Country,State,Start Date,End Date,Purpose,Notes (optional)</code></p>
+    <p>The <code>State</code> column is for United States trips only. Leave it empty for non-US trips and for US trips where the state is unknown. AtlasDays can also import its own CSV export format that includes a <code>Days</code> column, and it still accepts older legacy formats, including files that used a boolean <code>Transit</code> column. If you are building a new file from scratch, use the current 6-column template.</p>
+
+    <h2>Choose the Right Date Model for Each Row</h2>
+    <p>Pick the most defensible precision for each trip before you import it:</p>
+    <ul>
+      <li><strong>Exact Dates:</strong> use <code>yyyy-mm-dd</code> in Start Date and End Date when the stay matters for counting and you can defend the exact calendar dates.</li>
+      <li><strong>ongoing:</strong> use <code>yyyy-mm-dd</code> in Start Date and leave End Date empty only when the stay is still open now.</li>
+      <li><strong>Year:</strong> put a 4-digit year in Start Date when you know the year but not the exact dates. Use another year in End Date only if the <strong>Year</strong> trip spans multiple years.</li>
+      <li><strong>Unknown:</strong> leave both Start Date and End Date empty only when you truly cannot place the trip in time at all yet.</li>
+      <li><strong>Transit:</strong> use <strong>Transit</strong> as the purpose only when you did not enter the country, such as an airside layover. Do not use it for a short entered-country stay.</li>
+      <li><strong>Same-day trip:</strong> use the same calendar date in both fields for a one-day visit.</li>
+    </ul>
+    <p>Do <strong>not</strong> mix <strong>Exact Dates</strong> and <strong>Year</strong> values in the same row. If you visited the same country twice, crossed a border and came back later, or need to represent separate stays, split that into multiple rows.</p>
+
+    <h2>What AtlasDays Accepts</h2>
+    <ul>
+      <li><strong>Country</strong> can be a supported full place name or a 2-letter code. Some common aliases resolve too, but the app template is the safest source of names.</li>
+      <li><strong>State</strong> is optional and only valid for United States trips. Full state names such as <code>California</code> are clearest; ISO codes such as <code>US-CA</code> and unambiguous abbreviations also work.</li>
+      <li><strong>Purpose</strong> should use supported values such as <code>Tourism</code>, <code>Personal</code>, <code>Business</code>, <code>Medical</code>, or <code>Transit</code>. Multiple purposes can be separated with commas; wrap the field in double quotes when it contains commas.</li>
+      <li>Legacy files can still use a boolean <strong>Transit</strong> column with values like <code>Yes</code>, <code>Y</code>, <code>True</code>, or <code>1</code>.</li>
+      <li><strong>Notes</strong> are optional. If a note contains commas, wrap it in double quotes.</li>
+      <li>The importer detects <strong>comma</strong>, <strong>semicolon</strong>, and <strong>tab</strong> delimiters from the header row.</li>
+    </ul>
+
+    <h2>US State Rows</h2>
+    <p>Use the <strong>State</strong> column when a United States stay should be tracked state by state. If one US visit covers several states, use one row per state instead of compressing the whole visit into one plain United States row.</p>
+    <ul>
+      <li><strong>AtlasDays Pro:</strong> state-filled rows import as state-tagged United States trips and can feed US State trackers, the full-screen state map, and state-aware CSV export later.</li>
+      <li><strong>Free plan:</strong> AtlasDays can detect state-filled rows during preview, but the imported trips are saved as country-level United States trips. Upgrade to Pro to preserve the per-state rows.</li>
+      <li><strong>Different states are different places:</strong> same-date rows for California and Nevada are not duplicates just because both are United States rows.</li>
+      <li><strong>State belongs in State:</strong> keep the country as <code>United States</code> and put the state in the <code>State</code> column. That avoids country-code collisions such as <code>CA</code> meaning Canada in many contexts.</li>
+    </ul>
+
+    <h2>What Import Preview Actually Tells You</h2>
+    <figure class="atlasdays-screenshot">
+      <img src="../assets/article-images/help/csv-import/screenshot-import-preview.webp" alt="Import Preview screen showing Trips to Import, Errors, and duplicate rows sections" width="1320" height="2868" decoding="async" loading="lazy" />
+    </figure>
+    <p>After you choose a file, AtlasDays parses it and opens <strong>Import Preview</strong>. Nothing is written to your trip history until you confirm the import from that preview screen.</p>
+    <ul>
+      <li><strong>Valid rows</strong> appear under <strong>Trips to Import</strong>. That means AtlasDays accepted the row shape and can turn it into a trip.</li>
+      <li><strong>US state rows</strong> can appear in the preview when the file includes state data. If you are on the free plan, review the state teaser before deciding whether to import as plain United States trips or upgrade first.</li>
+      <li><strong>Rows with errors</strong> appear under <strong>Errors</strong> and are not imported. Typical reasons include invalid country names, invalid date text, an end date without a start date, or mixing <strong>Exact Dates</strong> with <strong>Year</strong> in one row.</li>
+      <li><strong>Duplicate rows</strong> are labeled and skipped automatically. A duplicate means the same meaningful trip fields already exist in AtlasDays, or already appeared earlier in the same file.</li>
+      <li><strong>Overlap warnings</strong> highlight non-duplicate <strong>Exact Dates</strong> trips that would overlap with existing or other imported trips. They are warnings, not an automatic block.</li>
+      <li><strong>Editable candidates</strong> can be opened from the preview before import. Use that when a row parses correctly but the country, dates, purpose, transit state, or notes need cleanup.</li>
+      <li><strong>Rows you do not want</strong> can be removed from the preview before you confirm the batch.</li>
+    </ul>
+    <p>If the file has both good and bad rows, AtlasDays still lets you import the valid, non-duplicate rows. That is useful for progress, but it does <strong>not</strong> mean the final record is already clean enough to trust without review.</p>
+
+    <h2>Using Imperfect Source Material</h2>
+    <p>If your source data is messy, clean the precision first rather than forcing everything into <strong>Exact Dates</strong>. Import trips with defensible calendar dates as <strong>Exact Dates</strong>, vague past visits as <strong>Year</strong>, and only use <strong>Unknown</strong> rows when you truly cannot place the trip in time yet.</p>
+    <p>Good source material includes passport stamps, booking emails, calendar history, old notes, and previous spreadsheets. If the source is contradictory, fix that before you rely on tracker results.</p>
+
+    <h2>What the AI Helper Does and Does Not Do</h2>
+    <p>The import screen includes a built-in prompt you can copy into ChatGPT, Claude, or another assistant. Its job is to turn rough source material into AtlasDays CSV faster.</p>
+    <ul>
+      <li>It <strong>does</strong> help convert rough notes into the right column structure faster.</li>
+      <li>It <strong>does not</strong> import anything into AtlasDays by itself.</li>
+      <li>It <strong>does not</strong> know whether an ambiguous date should be <strong>Exact Dates</strong>, <strong>Year</strong>, or <strong>Unknown</strong> unless you tell it clearly.</li>
+      <li>It <strong>does not</strong> make US state inference trustworthy on its own. Review state rows the same way you review countries and dates.</li>
+      <li>It <strong>does not</strong> replace the in-app preview.</li>
+      <li>It <strong>does not</strong> replace your own source verification.</li>
+    </ul>
+    <p>Use the helper as a drafting tool. It is useful for structure, not authoritative on ambiguous dates, overlaps, or whether the imported record is already trustworthy enough for totals.</p>
+
+    <h2>Avoid Garbage Imports</h2>
+    <ul>
+      <li>Do not batch-import until you know which rows should be <strong>Exact Dates</strong> and which should stay <strong>Year</strong> or <strong>Unknown</strong>.</li>
+      <li>Do not compress multiple visits to the same country into one row unless it was actually one continuous stay.</li>
+      <li>Do not force <strong>Exact Dates</strong> when you only know the year.</li>
+      <li>Do not use <strong>Transit</strong> for trips that should count toward time spent in the country.</li>
+      <li>Do not put several US states into one row when state tracking matters. Split the stay into one row per state.</li>
+      <li>Fix large clusters of source errors and re-import instead of trying to work around them row by row.</li>
+      <li>Do not assume AI-generated CSV is correct just because it parses.</li>
+    </ul>
+
+    <h2>When Imported Data Is Trustworthy Enough</h2>
+    <p>CSV import can save a lot of time, but it does not resolve ambiguity for you. Treat the imported record as trustworthy enough only when the important trips behind your question have been reviewed.</p>
+    <ul>
+      <li>Use <strong>Exact Dates</strong> for trips that matter to live dashboard totals, trackers, and export math when you can defend those dates.</li>
+      <li>Review duplicate skips so you know AtlasDays ignored the rows you expected it to ignore.</li>
+      <li>Review every overlap warning before trusting the record downstream.</li>
+      <li>Check that <strong>Transit</strong> is used only for non-entry travel.</li>
+      <li>Check that US state rows are filled only when the state is known well enough to rely on.</li>
+      <li>Check that any <strong>ongoing</strong> imported trip is intentionally still open.</li>
+      <li>Treat <strong>Year</strong> and <strong>Unknown</strong> as preserved history, not as proof of precise counted days.</li>
+    </ul>
+
+    <h2>Managing a Saved CSV Import</h2>
+    <p>Open <strong>Settings &gt; Manage Imports</strong> to inspect saved import batches or remove a mistaken batch together. If many rows came from the wrong source file, deleting the batch and importing a corrected CSV is usually clearer than editing every trip individually.</p>
+    <p>If the imported record still has unresolved duplicates, overlaps, or vague dates, the same uncertainty will flow into <a href="/help/dashboard-and-map">Dashboard and Map</a>, <a href="/help/trackers-and-limits">Trackers and Limits</a>, and <a href="/help/export-and-reports">Export and Reports</a>.</p>
+
+    <div class="cta-box">
+      <h3>Where to go next</h3>
+      <p><a href="/help/history-and-import">Trip Modes and Record Quality</a> is the next page if the real problem is row precision, duplicate cleanup, overlap review, or deciding between <strong>Exact Dates</strong>, <strong>Year</strong>, <strong>Unknown</strong>, and <strong>Transit</strong>.</p>
+      <p><a href="/help/photo-import">Photo Import</a> is the better import path when your strongest source is geotagged photo metadata rather than a spreadsheet.</p>
+      <p><a href="/help/flighty-import">Flighty Import</a> is the better import path when your source is a Flighty flight-history export rather than an AtlasDays-formatted CSV.</p>
+      <p><a href="/help/dashboard-and-map">Dashboard and Map</a> helps you verify whether the imported record now produces the totals, map output, and period summaries you expected.</p>
+      <p><a href="/help/trackers-and-limits">Trackers and Limits</a> explains why imported trips can still produce unexpected tracker results if the underlying record or precision is off.</p>
+      <p><a href="/help/export-and-reports">Export and Reports</a> is useful when you want to inspect the imported record as a file after review. CSV export and PDF export currently require <strong>AtlasDays Pro</strong>.</p>
+      <p><a href="/help/getting-started">Getting Started</a> is better if your backlog is still small and manual entry is likely the cleaner path.</p>
+    </div>

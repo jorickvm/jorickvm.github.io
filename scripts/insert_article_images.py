@@ -11,6 +11,7 @@ from article_image_lib import (
     CATALOG_PATH,
     SITE_ROOT,
     discover_articles,
+    editable_article_path,
     load_plan,
     relative_asset_url,
     select_article_keys,
@@ -200,7 +201,8 @@ def main() -> int:
         article = articles.get(key)
         if article is None:
             raise SystemExit(f"Plan references missing article: {key}")
-        text = article.source_path.read_text(encoding="utf-8")
+        editable_path = editable_article_path(article)
+        text = editable_path.read_text(encoding="utf-8")
         original = text
         has_real_asset = False
         for slot in plan["articles"][key]["slots"]:
@@ -228,7 +230,7 @@ def main() -> int:
                     removed += 1
                 else:
                     inserted += 1
-        if has_real_asset or STYLE_START in text:
+        if editable_path == article.source_path and (has_real_asset or STYLE_START in text):
             if has_real_asset:
                 text = ensure_style_block(text)
             elif STYLE_START in text and STYLE_END in text:
@@ -238,10 +240,10 @@ def main() -> int:
                 )
                 text = style_pattern.sub("", text)
         if text != original and not args.dry_run:
-            article.source_path.write_text(text, encoding="utf-8")
-            print(f"Updated {article.source_path.relative_to(SITE_ROOT)}")
+            editable_path.write_text(text, encoding="utf-8")
+            print(f"Updated {editable_path.relative_to(SITE_ROOT)}")
         elif args.dry_run:
-            print(f"Checked {article.source_path.relative_to(SITE_ROOT)}")
+            print(f"Checked {editable_path.relative_to(SITE_ROOT)}")
 
     action = "Checked" if args.dry_run else "Updated"
     print(f"\n{action} {len(selected_keys)} article files. Inserted/updated {inserted} image blocks; removed {removed}.")

@@ -1,0 +1,61 @@
+name: Site audit
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "23 7 * * 1"
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Audit committed site
+        run: python3 scripts/audit_site.py --strict-semantics --strict-images --check-baseline _site-src/data/baseline.json
+      - name: Check generated article output
+        run: |
+          python3 scripts/build_site.py --check
+          python3 scripts/build_route_outputs.py --check
+      - name: Check generated governance and search data
+        run: |
+          python3 scripts/build_content_governance.py --check
+          python3 scripts/build_search_index.py --check
+          python3 scripts/check_external_sources.py --check-config
+          python3 scripts/migrate_related_content.py --check
+      - name: Check social cards and dark-default CSS policy
+        run: |
+          python3 scripts/generate_social_cards.py --check
+          python3 scripts/remove_system_theme_css.py --check
+      - name: Check article image markers
+        run: python3 scripts/sync_article_image_markers.py --check
+      - name: Check article image assets
+        run: python3 scripts/insert_article_images.py --section all --dry-run --strict
+      - name: Test audit tooling
+        run: python3 -m unittest discover -s scripts/tests -p 'test_*.py'
+
+  source-monitor:
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check official sources
+        run: python3 scripts/check_external_sources.py --output external-source-report.json
+      - name: Upload classified source report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: external-source-report
+          path: external-source-report.json
+          if-no-files-found: warn

@@ -4,18 +4,41 @@
    page's own <style> block so it wins the cascade against any legacy
    inline header rules. */
 
+.skip-link {
+  position: fixed;
+  top: -80px;
+  left: 16px;
+  z-index: 100;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: var(--blue, #1692ff);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+}
+.skip-link:focus { top: 14px; }
+
 .top-bar {
   position: sticky;
   top: 0;
   z-index: 20;
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
-  background: color-mix(in srgb, var(--bg) 78%, transparent);
-  border-bottom: 1px solid var(--line);
+  background: color-mix(in srgb, var(--bg, #0a0b0d) 78%, transparent);
+  border-bottom: 1px solid var(--line, rgba(255,255,255,0.10));
+}
+
+
+html[data-theme="light"] { --blue: #246ca8; }
+
+.top-bar a:focus-visible,
+.top-bar button:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
 }
 
 .top-bar-inner {
-  width: min(var(--max), calc(100% - 40px));
+  width: min(var(--max, 1120px), calc(100% - 40px));
   margin: 0 auto;
   min-height: 72px;
   display: flex;
@@ -30,7 +53,7 @@
   gap: 10px;
   font-weight: 700;
   letter-spacing: -0.02em;
-  color: var(--text);
+  color: var(--text, currentColor);
   text-decoration: none;
 }
 .brand:hover { text-decoration: none; }
@@ -51,7 +74,7 @@
   display: flex;
   align-items: center;
   gap: 18px;
-  color: var(--muted);
+  color: var(--muted, #b2b9c5);
   font-size: 0.94rem;
 }
 .top-links a {
@@ -103,6 +126,50 @@
 }
 .top-cta:hover { opacity: 0.92; }
 
+.mobile-menu { display: none; position: relative; }
+.mobile-menu summary {
+  min-height: 44px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  color: var(--text);
+  cursor: pointer;
+  list-style: none;
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+.mobile-menu summary::-webkit-details-marker { display: none; }
+.mobile-menu summary:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+.mobile-menu-panel {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: min(290px, calc(100vw - 28px));
+  padding: 10px;
+  display: grid;
+  gap: 3px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--bg);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.28);
+}
+.mobile-menu-panel a {
+  min-height: 44px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  color: var(--muted);
+  text-decoration: none;
+}
+.mobile-menu-panel a:hover,
+.mobile-menu-panel a[aria-current="page"] { color: var(--text); background: color-mix(in srgb, var(--blue) 10%, transparent); }
+.mobile-menu-panel .mobile-menu-cta { margin-top: 4px; color: #fff; background: var(--blue); font-weight: 700; }
+.mobile-menu-panel .mobile-menu-cta:hover { color: #fff; background: var(--blue); opacity: 0.92; }
+
 @media (max-width: 760px) {
   .top-bar-inner {
     width: min(var(--max), calc(100% - 28px));
@@ -115,6 +182,13 @@
   }
   .top-links a.hide-mobile { display: none; }
   .top-cta { padding: 7px 13px; }
+  .top-links a:not(.top-cta) { display: none; }
+  .mobile-menu { display: block; }
+}
+
+@media (max-width: 560px) {
+  .brand > span:not(.brand-mark) { display: none; }
+  .mobile-menu-label { display: none; }
 }
 
 /* Inline mid-article CTA (learn/help article bodies) */
@@ -129,3 +203,10 @@
 .midcta p { margin: 0; color: var(--muted); font-size: 0.98rem; line-height: 1.6; }
 .midcta strong { color: var(--text); }
 .midcta a { color: var(--blue); font-weight: 600; white-space: nowrap; }
+
+/* Body links should remain identifiable without relying on color alone. */
+article a {
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+article .breadcrumb a { text-decoration: none; }

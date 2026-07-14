@@ -6,10 +6,10 @@ import re
 import sys
 
 from article_image_lib import (
-    H2_RE,
     SITE_ROOT,
     clean_html_text,
     discover_articles,
+    editable_article_path,
     load_plan,
     select_article_keys,
 )
@@ -55,18 +55,30 @@ def ensure_hero_marker(text: str, marker: str) -> tuple[str, bool]:
     return text[: target.start()] + insertion + text[target.end():], True
 
 
-def ensure_body_marker(text: str, marker: str, anchor_heading: str) -> tuple[str, bool]:
-    text, removed = strip_marker(text, marker)
-    for match in H2_RE.finditer(text):
+def ensure_body_marker(
+    text: str,
+    marker: str,
+    anchor_heading: str,
+    anchor_level: int = 2,
+) -> tuple[str, bool]:
+    if marker_comment(marker) in text:
+        return text, False
+    heading_re = re.compile(
+        rf"<h{anchor_level}[^>]*>(.*?)</h{anchor_level}>",
+        re.IGNORECASE | re.DOTALL,
+    )
+    for match in heading_re.finditer(text):
         heading = clean_html_text(match.group(1))
         if heading.casefold() != anchor_heading.casefold():
             continue
         insert_at = match.end()
         marker_text = f"\n    {marker_comment(marker)}"
         if text[insert_at:insert_at + len(marker_text)] == marker_text:
-            return text, removed
+            return text, False
         return text[:insert_at] + marker_text + text[insert_at:], True
-    raise SystemExit(f'Could not find h2 heading "{anchor_heading}" while inserting marker {marker}')
+    raise SystemExit(
+        f'Could not find h{anchor_level} heading "{anchor_heading}" while inserting marker {marker}'
+    )
 
 
 def main() -> int:
@@ -83,7 +95,8 @@ def main() -> int:
         article = articles.get(key)
         if article is None:
             raise SystemExit(f"Plan references missing article: {key}")
-        text = article.source_path.read_text(encoding="utf-8")
+        editable_path = editable_article_path(article)
+        text = editable_path.read_text(encoding="utf-8")
         original = text
         for slot in plan["articles"][key]["slots"]:
             marker = slot["marker"]
@@ -93,17 +106,23 @@ def main() -> int:
                 anchor = slot.get("anchor_heading")
                 if not isinstance(anchor, str) or not anchor.strip():
                     raise SystemExit(f'Missing anchor_heading for {key} slot {slot["id"]}')
-                text, _ = ensure_body_marker(text, marker, anchor.strip())
+                anchor_level = slot.get("anchor_level", 2)
+                if anchor_level not in (2, 3):
+                    raise SystemExit(f'Invalid anchor_level for {key} slot {slot["id"]}: {anchor_level}')
+                text, _ = ensure_body_marker(text, marker, anchor.strip(), anchor_level)
         if text != original:
             changed_files += 1
             if not args.check:
-                article.source_path.write_text(text, encoding="utf-8")
-                print(f"Updated {article.source_path.relative_to(SITE_ROOT)}")
+                editable_path.write_text(text, encoding="utf-8")
+                print(f"Updated {editable_path.relative_to(SITE_ROOT)}")
         elif args.check:
-            print(f"OK {article.source_path.relative_to(SITE_ROOT)}")
+            print(f"OK {editable_path.relative_to(SITE_ROOT)}")
 
     if args.check:
         print(f"\nVerified {len(selected_keys)} article files.")
+        if changed_files:
+            print(f"{changed_files} article files need marker updates.", file=sys.stderr)
+            return 1
     else:
         print(f"\nUpdated {changed_files} article files.")
     return 0

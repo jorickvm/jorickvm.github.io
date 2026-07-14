@@ -9,11 +9,16 @@
   <meta property="og:description" content="Private iPhone app for tracking visa limits, residency or tax presence days, and accurate travel history. On-device, no account required." />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://atlasdays.app/" />
-  <meta property="og:image" content="https://atlasdays.app/assets/home/home-hero-dashboard.png" />
+  <meta property="og:image" content="https://atlasdays.app/assets/social/home.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="AtlasDays share card for private travel-day tracking" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="AtlasDays — Private Day Tracking for Visa, Residency, and Travel History" />
   <meta name="twitter:description" content="Private iPhone app for tracking visa limits, residency or tax presence days, and accurate travel history. On-device, no account required." />
-  <meta name="twitter:image" content="https://atlasdays.app/assets/home/home-hero-dashboard.png" />
+  <meta name="twitter:image" content="https://atlasdays.app/assets/social/home.png" />
+  <meta name="twitter:image:alt" content="AtlasDays share card for private travel-day tracking" />
   <meta name="apple-itunes-app" content="app-id=6760133544, app-argument=https://apps.apple.com/app/atlasdays-track-country-days/id6760133544" />
   <link rel="canonical" href="https://atlasdays.app/" />
   <link rel="icon" type="image/png" href="assets/brand/favicon_light.png?v=20260325a" media="(prefers-color-scheme: light)" />
@@ -53,7 +58,7 @@
         "name": "Is AtlasDays free?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes. The core day tracking, trips, one tracker, and the map are free with no account required. AtlasDays Pro is an optional upgrade, available as a yearly subscription or a one-time lifetime purchase, that adds unlimited trackers, Smart Alerts, exports, and more."
+          "text": "Yes. The core day tracking, trips, one tracker, and the map are free with no account required. AtlasDays Pro is an optional upgrade, available as a quarterly or annual subscription or a one-time lifetime purchase, that adds unlimited trackers, Smart Alerts, exports, and more."
         }
       },
       {
@@ -124,9 +129,10 @@
   }
   </script>
   <script>(function(){var t=localStorage.getItem('theme');document.documentElement.setAttribute('data-theme',t==='light'?'light':'dark');document.documentElement.classList.add('js')})()</script>
-  <link rel="stylesheet" href="assets/css/home.css?v=20260407w" />
+  <link rel="stylesheet" href="assets/css/home.css?v=20260714a" />
 </head>
 <body>
+  <a class="skip-link" href="#top">Skip to content</a>
   <header class="site-header">
     <div class="container nav">
       <a class="brand" href="#top" aria-label="AtlasDays home">
@@ -142,18 +148,32 @@
         <a href="/help/">Help Center</a>
         <a href="/learn/">Learn</a>
         <a href="/learn/day-limits">Day Limits</a>
-        <a class="mobile-only-link" href="/help/">Help Center</a>
         <div class="nav-cta-wrap">
           <a class="nav-cta" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">Download</a>
           <div class="nav-qr-popup" aria-hidden="true">
             <img src="assets/qrcode-appstore.png" width="164" height="164" alt="">
           </div>
         </div>
-        <button class="theme-toggle" aria-label="Toggle theme" onclick="toggleTheme()">
+        <button class="theme-toggle" type="button" aria-label="Toggle theme" onclick="toggleTheme()">
           <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
           <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         </button>
       </nav>
+      <details class="home-mobile-menu">
+        <summary aria-label="Open navigation menu">
+          <span>Menu</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </summary>
+        <nav class="home-mobile-menu-panel" aria-label="Mobile primary">
+          <a href="#proof">Product proof</a>
+          <a href="#privacy">Privacy</a>
+          <a href="/help/">Help Center</a>
+          <a href="/learn/">Learn</a>
+          <a href="/learn/day-limits">Day Limits</a>
+          <a href="/changelog">Changelog</a>
+          <a href="/about">About</a>
+        </nav>
+      </details>
     </div>
   </header>
 
@@ -178,7 +198,7 @@
                 <source srcset="assets/home/home-hero-dashboard-final.webp" media="(prefers-reduced-motion: reduce)" />
                 <img class="hero-media-still" src="assets/home/home-hero-dashboard-poster.webp" alt="AtlasDays dashboard showing the Schengen tracker, all-time stats, and the world map" width="1320" height="2868" />
               </picture>
-              <video class="hero-media-video hero-video" muted playsinline preload="none" poster="assets/home/home-hero-dashboard-poster.webp" width="1206" height="2622" aria-hidden="true" tabindex="0">
+              <video class="hero-media-video hero-video" muted playsinline preload="none" poster="assets/home/home-hero-dashboard-poster.webp" width="1206" height="2622" role="button" aria-label="Replay the AtlasDays dashboard preview" tabindex="0">
                 <source src="assets/home/home-hero-dashboard.mp4?v=20260407b" type="video/mp4">
               </video>
             </div>
@@ -310,26 +330,29 @@
     <section id="loved" class="section">
       <div class="container">
         <div class="section-header">
-          <p class="section-kicker">What travelers say</p>
-          <h2>Built for people whose days actually count</h2>
-          <p>Notes from travelers tracking visa limits, residency thresholds, and a long-term history.</p>
+          <p class="section-kicker">Trust by design</p>
+          <h2>Product facts you can verify</h2>
+          <p>No anonymous praise or invented star rating—just the parts of AtlasDays you can inspect in the app and its documentation.</p>
         </div>
-        <div class="testimonial-grid">
-          <figure class="card testimonial">
-            <div class="stars" aria-hidden="true">★★★★★</div>
-            <blockquote>“I'm in and out of the Schengen area constantly, and the 90/180 count used to live in a spreadsheet I never trusted. Now it's just there on my Home Screen, and I've stopped second-guessing every trip.”</blockquote>
-            <figcaption>Digital nomad, based around Lisbon</figcaption>
-          </figure>
-          <figure class="card testimonial">
-            <div class="stars" aria-hidden="true">★★★★★</div>
-            <blockquote>“I had ten years of travel scattered across old emails and photos. The photo import pieced most of it back together in an evening — that alone was worth it.”</blockquote>
-            <figcaption>Long-term expat</figcaption>
-          </figure>
-          <figure class="card testimonial">
-            <div class="stars" aria-hidden="true">★★★★★</div>
-            <blockquote>“No account, nothing leaves my phone, and it still does the one thing I need perfectly: tells me how many days I have left.”</blockquote>
-            <figcaption>Frequent business traveler</figcaption>
-          </figure>
+        <div class="trust-grid">
+          <article class="card trust-card">
+            <p class="trust-label">Local first</p>
+            <h3>No AtlasDays account</h3>
+            <p>Your trip record lives on your device. Optional sync uses your personal iCloud account, and AtlasDays does not operate a travel-history server.</p>
+            <a href="/privacy">Read the privacy model</a>
+          </article>
+          <article class="card trust-card">
+            <p class="trust-label">Review before save</p>
+            <h3>Imports stay under your control</h3>
+            <p>Photo, CSV, and Flighty imports prepare candidates for review. You decide what becomes part of your trip history.</p>
+            <a href="/help/history-and-import">See the import workflow</a>
+          </article>
+          <article class="card trust-card">
+            <p class="trust-label">Independent</p>
+            <h3>Built and maintained by one maker</h3>
+            <p>AtlasDays is designed, developed, documented, and supported by Jorick. Product limitations and rule disclaimers stay visible.</p>
+            <a href="/about">Meet the maker</a>
+          </article>
         </div>
       </div>
     </section>
@@ -384,7 +407,7 @@
           </article>
           <article class="faq reveal">
             <h3>Is AtlasDays free?</h3>
-            <p>Yes. The core day tracking, trips, one tracker, and the map are free with no account required. AtlasDays Pro is an optional upgrade — available as a yearly subscription or a one-time lifetime purchase — that adds unlimited trackers, Smart Alerts, exports, and more. See <a href="/help/atlasdays-pro">what's included in Pro</a>.</p>
+            <p>Yes. The core day tracking, trips, one tracker, and the map are free with no account required. AtlasDays Pro is an optional upgrade — available as a quarterly or annual subscription or a one-time lifetime purchase — that adds unlimited trackers, Smart Alerts, exports, and more. See <a href="/help/atlasdays-pro">what's included in Pro</a>.</p>
           </article>
           <article class="faq reveal">
             <h3>Is there an Android version?</h3>
@@ -521,7 +544,8 @@
     </div>
   </footer>
 
-  <script src="assets/js/home.js?v=20260407j"></script>
+  <script src="assets/js/home.js?v=20260714a"></script>
+  <script src="assets/js/navigation.js?v=20260714b"></script>
   <!-- Cloudflare Web Analytics -->
   <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;token&quot;: &quot;1488e163b83a4eee81b63340359b6566&quot;}"></script>
   <!-- End Cloudflare Web Analytics -->

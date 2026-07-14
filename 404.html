@@ -19,15 +19,14 @@
       --blue: #428FD2;
     }
 
-    @media (prefers-color-scheme: light) {
-      :root {
+    :root[data-theme="light"] {
         --bg: #f6f8fc;
         --bg-card: rgba(255,255,255,0.88);
         --text: #0d1422;
         --muted: #526075;
         --muted-2: #6c788b;
+        --blue: #246ca8;
         --line: rgba(12,22,40,0.09);
-      }
     }
 
     * { box-sizing: border-box; }
@@ -44,6 +43,12 @@
       text-align: center;
       padding: 24px;
       -webkit-font-smoothing: antialiased;
+    }
+    main {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
     a { color: var(--blue); text-decoration: none; }
     a:hover { text-decoration: underline; }
@@ -110,6 +115,7 @@
       --text: #0d1422;
       --muted: #526075;
       --muted-2: #6c788b;
+      --blue: #246ca8;
       --line: rgba(12,22,40,0.09);
     }
 
@@ -119,8 +125,9 @@
   </style>
 </head>
 <body>
-  <img class="logo logo-dark" src="/assets/brand/logo_dark.png?v=20260325a" alt="AtlasDays logo" />
-  <img class="logo logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="AtlasDays logo" />
+<main>
+  <img class="logo logo-dark" src="/assets/brand/logo_dark.png?v=20260325a" alt="AtlasDays logo" width="1024" height="1024" />
+  <img class="logo logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="AtlasDays logo" width="1024" height="1024" />
   <h1>Page not found</h1>
   <p class="lead">This page doesn't exist or has moved. Here's where to pick back up.</p>
   <div class="cards">
@@ -138,6 +145,7 @@
     </a>
   </div>
   <p class="sub">Looking for the app? <a href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">Get AtlasDays on the App Store</a>.</p>
+</main>
   <!-- Cloudflare Web Analytics -->
   <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;token&quot;: &quot;1488e163b83a4eee81b63340359b6566&quot;}"></script>
   <!-- End Cloudflare Web Analytics -->

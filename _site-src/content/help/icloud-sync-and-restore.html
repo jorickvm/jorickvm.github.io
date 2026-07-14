@@ -1,0 +1,103 @@
+    <nav class="breadcrumb"><a href="/">AtlasDays</a> / <a href="/help/">Help Center</a></nav>
+    <h1>iCloud Sync and Restore</h1>
+    <p class="updated">Last updated: July 10, 2026</p>
+    <p class="subtitle">Check what AtlasDays iCloud sync actually restores, what stays device-specific, and what to verify first when trips or trackers do not appear after a reinstall or device change.</p>
+
+    <h2>What This Page Helps You Do</h2>
+    <p>Use this page when you changed devices, reinstalled AtlasDays, turned on iCloud sync, or expected trips and trackers to reappear but they did not.</p>
+    <p>By the end of this page, you should know:</p>
+    <ul>
+      <li>what the <strong>iCloud sync</strong> toggle is actually for</li>
+      <li>what AtlasDays syncs and what stays device-specific</li>
+      <li>what to check before assuming your data is gone</li>
+      <li>when <a href="/help/export-and-reports">Export and Reports</a> is the safer backup path</li>
+    </ul>
+
+    <div class="callout">
+      <p><strong>There are two separate iCloud behaviors in AtlasDays.</strong> The <strong>iCloud sync</strong> toggle controls whether trips and trackers use an iCloud-backed store. Separately, some app preferences can carry over through Apple iCloud key-value storage even if full trip sync is off.</p>
+      <p>That means seeing a few settings come back does <strong>not</strong> prove your full trip history restored. Preferences and full trip data are related, but they are not the same thing.</p>
+    </div>
+
+    <figure class="atlasdays-screenshot">
+      <img src="../assets/article-images/help/privacy-location-and-sync/screenshot-privacy-overview.webp" alt="AtlasDays privacy overview explaining no sign-in, on-device storage, optional iCloud sync, location use, and user control" width="1320" height="2868" decoding="async" loading="lazy" />
+    </figure>
+
+    <h2>When Synced Data Does Not Appear as Expected</h2>
+    <p>Check these first before assuming your trips or trackers were lost:</p>
+    <ul>
+      <li><strong>Confirm the same Apple ID.</strong> AtlasDays can only reconnect to the same iCloud-backed data if the device is using the same Apple account.</li>
+      <li><strong>Confirm iCloud sync is enabled inside AtlasDays.</strong> If the app is still using the local store, your synced trips and trackers will not appear there yet.</li>
+      <li><strong>Restart the app after changing the setting.</strong> AtlasDays treats iCloud sync as a next-launch change, not an instant <strong>Sync Now</strong> action.</li>
+      <li><strong>Do not use returning preferences as proof of a full restore.</strong> Some preferences can come back separately through Apple iCloud key-value storage even when the trip store has not reconnected yet.</li>
+      <li><strong>Recheck permissions on the device you are using now.</strong> <strong>notification permission</strong> and location access do not return just because iCloud sync is on.</li>
+      <li><strong>Use export when you need a controlled backup.</strong> iCloud sync is for keeping AtlasDays data available across devices, not for version history or a portable archive you can inspect directly.</li>
+    </ul>
+    <p>If the app is freshly installed, treat the first launch as a setup check: confirm the Apple account, confirm the in-app setting, restart once, and then review the record in <a href="/help/dashboard-and-map">Dashboard and Map</a> before assuming anything is missing.</p>
+
+    <h2>When to Use iCloud sync</h2>
+    <p>Turn it on if you want the same trips and trackers available across your Apple devices, or if you want AtlasDays to reconnect to that data after a reinstall or device change through your personal iCloud account.</p>
+    <p>Leave it off if you use one device only, want the full trip record to stay local to that device, or prefer to rely on <a href="/help/export-and-reports">file exports</a> that you control directly.</p>
+
+    <h2>What iCloud sync Covers</h2>
+    <ul>
+      <li><strong>Trips</strong> in your AtlasDays record, including entries recorded as <strong>Exact Dates</strong>, <strong>Year</strong>, <strong>Unknown</strong>, <strong>Transit</strong>, or <strong>ongoing</strong>, plus any saved US state tags on those trips</li>
+      <li><strong>Trackers</strong> you have created</li>
+      <li><strong>Imported trip records</strong> from Photo, CSV, or Flighty import, once you have confirmed and saved them</li>
+      <li><strong>Photo Import references</strong>, such as the local photo references stored on imported photo-based trips</li>
+      <li><strong>Some basic preferences</strong> can also follow your Apple account, including items such as home-country state, appearance, visited-country mode, and certain default settings</li>
+    </ul>
+    <p>The important split is this: trips and trackers depend on the in-app <strong>iCloud sync</strong> toggle, while a smaller set of preferences can still carry over separately through iCloud key-value storage.</p>
+
+    <h2>What iCloud sync Does Not Sync</h2>
+    <ul>
+      <li><strong>Permissions.</strong> Location access and <strong>notification permission</strong> are controlled by iOS on each device.</li>
+      <li><strong>Your photo library.</strong> <strong>Photo Import</strong> trips can store local photo references, but AtlasDays does not copy your actual photo files into its own sync store. Photos remain managed by Apple Photos and iCloud Photos.</li>
+      <li><strong>Source import files.</strong> The original CSV or Flighty export you selected is not stored as an import file inside iCloud sync. Sync covers the trips you saved from it.</li>
+      <li><strong>Exported files.</strong> CSV export and PDF export do not sync back into the app automatically. If you need a portable file copy, create and store it explicitly.</li>
+      <li><strong>Pending trip suggestions and auto-close receipts.</strong> Auto-Detect's pending suggestions and the device-local record used to protect a quick return are not part of the synced trip record. If Auto-Detect changes the end date of an existing trip, that saved trip change is ordinary trip data and can sync.</li>
+      <li><strong>Device-specific state.</strong> A new install can still need local setup even if some preferences came back.</li>
+    </ul>
+    <p>If photo thumbnails do not appear on a new device, the trip may still have synced correctly. Check Photos access on that device and whether Apple Photos can resolve the referenced originals.</p>
+
+    <h2>What to Expect When You Turn It On</h2>
+    <p>Open <strong>Settings</strong> and enable <strong>iCloud sync</strong>. AtlasDays tells you that sync changes take effect after restarting the app, so treat the toggle as a next-launch setting rather than an immediate manual sync button.</p>
+    <p>After restart, AtlasDays opens its iCloud-backed data store if the device and Apple account can use it. The Settings row can later show a <strong>Last synced</strong> label after a successful sync event.</p>
+    <p>If you turn the setting on and keep using the app without restarting, you may still be looking at the local store. That is a common reason trips or trackers do not appear when expected.</p>
+    <p>AtlasDays does not expose a separate <strong>Sync Now</strong> or <strong>Restore from Backup</strong> button. If you need a portable backup you control, use <a href="/help/export-and-reports">Export and Reports</a>.</p>
+
+    <h2>What to Expect on a New Device or After Reinstalling</h2>
+    <p>On a fresh install or a new device signed into the same Apple account, AtlasDays can pull back synced preferences first. That includes the iCloud sync preference itself on a clean install, so the app may reconnect to the synced store without you rebuilding settings from scratch.</p>
+    <p>What should come back is the synced trip and tracker record, not a full copy of every device-level condition. Permissions, notification state, and pending local suggestions still need to be checked on that device.</p>
+    <p>Location access and <strong>notification permission</strong> do <strong>not</strong> come back automatically just because preferences synced. If you use <strong>Auto-Detect Trips</strong> or alerts, you may need to grant those again on the new device.</p>
+    <p>If your trips do not appear right away, verify that you are using the same iCloud account, check whether <strong>iCloud sync</strong> is enabled inside AtlasDays Settings, restart the app, and then review the record before assuming data is gone.</p>
+
+    <h2>When You See Restoring from iCloud</h2>
+    <p>After a reinstall, AtlasDays can show a <strong>Restoring from iCloud</strong> screen while the iCloud-backed trip store catches up. This is meant to prevent duplicate setup work, especially duplicate Photo Import, while existing trips are still downloading.</p>
+    <p>If the restore takes longer than expected, AtlasDays shows a <strong>Taking long?</strong> button after about a minute. The in-app help sheet asks you to check your connection, keep AtlasDays open, and confirm the device is signed into the right Apple Account.</p>
+    <p>Do not start rebuilding the same travel history while this screen is still active unless you are intentionally abandoning the synced record. Wait for the restore to complete, then check Timeline and Dashboard before deciding anything is missing.</p>
+
+    <h2>When Sync Is Not Enough</h2>
+    <p>Use iCloud sync when you want AtlasDays to keep the same trips and trackers available across devices. Use <a href="/help/export-and-reports">Export and Reports</a> when you need a controlled file backup, a portable archive, or a record you can inspect outside the app.</p>
+    <p>That matters most before major cleanup, before a risky reinstall, or when you want a fallback path that does not depend on the app reconnecting to the same iCloud-backed store. CSV export and PDF export currently require <strong>AtlasDays Pro</strong>.</p>
+
+    <h2>Practical Limits and Cautions</h2>
+    <ul>
+      <li><strong>Sync is not version history.</strong> AtlasDays does not expose a user-facing rollback tool or older cloud snapshots.</li>
+      <li><strong>Reset is not restore.</strong> Treat destructive cleanup inside the app as real cleanup, not as a safe way to test recovery.</li>
+      <li><strong>Manual export is still useful.</strong> If the record matters for paperwork or you want a file you can archive yourself, export before major changes.</li>
+      <li><strong>Restore screens are not import prompts.</strong> If AtlasDays is still restoring from iCloud, wait before using Photo, CSV, or Flighty import to rebuild history that may already be syncing back.</li>
+      <li><strong>Silence does not prove the record is complete.</strong> If trips or trackers look wrong after a device change, inspect the record itself instead of relying on what did or did not reappear automatically.</li>
+    </ul>
+
+    <div class="cta-box">
+      <h3>Where to go next</h3>
+      <p><a href="/help/privacy-location-and-sync">Privacy, Location, and Sync</a> explains what stays local, which permissions matter, and why <strong>Auto-Detect Trips</strong> or alerts may still need local setup after sync.</p>
+      <p><a href="/help/export-and-reports">Export and Reports</a> is the right next page if you want a controlled backup or a portable file outside iCloud sync.</p>
+      <p><a href="/help/history-and-import">Trip Modes and Record Quality</a> helps if synced data appears, but the trip record still needs cleanup before you trust counts.</p>
+      <p><a href="/help/photo-import">Photo Import</a> explains how photo references, thumbnails, duplicates, overlaps, transit detection, and Photos access work.</p>
+      <p><a href="/help/flighty-import">Flighty Import</a> explains what is read from a selected Flighty CSV and what becomes a saved trip.</p>
+      <p><a href="/help/dashboard-and-map">Dashboard and Map</a> helps you verify the restored record on the device before relying on totals or country views.</p>
+      <p><a href="/help/trackers-and-limits">Trackers and Limits</a> explains why synced trips can still produce unexpected tracker results if the underlying record or tracker setup is off.</p>
+      <p><a href="/help/getting-started">Getting Started</a> is useful if you are setting up AtlasDays again and want the cleanest first-run path.</p>
+      <p><a href="/help/csv-import">CSV Import</a> is the file-based rebuild path when you are reconstructing data manually instead of relying on iCloud sync.</p>
+    </div>

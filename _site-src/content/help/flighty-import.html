@@ -1,0 +1,87 @@
+    <nav class="breadcrumb">
+      <a href="/">AtlasDays</a> / <a href="/help/">Help Center</a>
+    </nav>
+
+    <h1>Flighty Import</h1>
+    <p class="updated">Last updated: July 10, 2026</p>
+    <p class="subtitle">If you already track your flights in Flighty, you can turn that flight history into AtlasDays trips — with a review step before anything is saved.</p>
+
+    <h2>What Flighty Import Does</h2>
+    <p>Flighty Import is the third way to bring travel into AtlasDays, alongside <a href="/help/photo-import">Photo Import</a> and <a href="/help/csv-import">CSV Import</a>. It reads a CSV export of your Flighty flight history, works out which country each flight started and ended in, and groups consecutive flights into trips you can review before saving.</p>
+    <p>Like the other importers, nothing is written to your trip record until you confirm it. AtlasDays shows you a draft of every trip it inferred, with the evidence behind it, so you stay in control of what becomes part of your day count.</p>
+
+    <div class="callout">
+      <p><strong>Flights are not the whole picture.</strong> Flighty Import covers air travel only. Ground crossings — trains, cars, ferries, walking across a land border — are not in a flight history, so you may still need to add or adjust some trips by hand afterward.</p>
+    </div>
+
+    <h2>Before You Start</h2>
+    <p>You need a CSV export of your flights from Flighty. In Flighty, export your flight history as CSV from <strong>Settings › Account Data</strong>, then save or share that file to your device (Files, iCloud Drive, or straight into AtlasDays). Once it is somewhere your iPhone can reach, you are ready to import.</p>
+    <p>AtlasDays reads the columns it needs from that export — origin and destination airports, dates, and times — and uses a built-in airport and airline reference to translate airport codes into countries and, for supported US airports, individual states. It does not need an internet connection to do this; the lookup happens on device.</p>
+
+    <h2>How to Import</h2>
+    <figure class="atlasdays-screenshot">
+      <img src="../assets/article-images/help/flighty-import/screenshot-import.webp" alt="Flighty import screen showing how AtlasDays reads a Flighty CSV export and the Select Flighty CSV button" width="1320" height="2868" decoding="async" loading="lazy" />
+    </figure>
+    <ol>
+      <li>Open AtlasDays and go to <strong>Import</strong>.</li>
+      <li>Choose <strong>Flighty</strong> as the source.</li>
+      <li>Select your Flighty CSV file from Files or wherever you saved it.</li>
+      <li>Wait for AtlasDays to read the flights and build draft trips. Larger histories take a few seconds.</li>
+      <li>Review the draft trips (see below), adjust anything that looks wrong, and save.</li>
+    </ol>
+
+    <h2>How AtlasDays Builds Trips From Flights</h2>
+    <p>A trip is usually more than one flight. AtlasDays chains your flights together so that a journey out and back becomes the trips it represents, not a row-per-flight dump:</p>
+    <ul>
+      <li><strong>Each flight lands you in a country.</strong> The destination airport determines where you were after that flight.</li>
+      <li><strong>Same-day connections are treated as transit.</strong> If you land and take off again the same day without staying, that connecting country is marked as <strong>Transit</strong> and does not add days to your count. See <a href="/learn/does-a-layover-count-as-visiting-a-country">Does a Layover Count as Visiting a Country?</a> for why this matters.</li>
+      <li><strong>A stay becomes a trip.</strong> When you remain in a country before flying onward, that becomes a trip with a start and end date.</li>
+    </ul>
+    <p>Because the importer reasons from arrival and departure airports, the quality of the result depends on how complete your Flighty history is. Gaps in the flight history become gaps in the inferred trips.</p>
+
+    <h2>US State Detection</h2>
+    <p>When a Flighty row uses a supported United States airport, AtlasDays can resolve that airport to a US state as well as the United States country record. How that appears depends on your plan:</p>
+    <ul>
+      <li><strong>AtlasDays Pro:</strong> US flight history can become per-state trip suggestions, so state-level stays can feed US State trackers and the full-screen state map.</li>
+      <li><strong>Free plan:</strong> AtlasDays can show that US states were found, but imported trips save as country-level United States trips. Upgrade to Pro to preserve the per-state rows.</li>
+    </ul>
+    <p>State detection is still airport-based. If you landed in one state and drove or took a train into another, Flighty may not contain that state change. Add or adjust those state legs manually before relying on a US State tracker.</p>
+
+    <h2>The Review Categories</h2>
+    <p>Draft trips are grouped so you can scan them quickly and spend attention where it is needed:</p>
+    <ul>
+      <li><strong>Ready</strong> — a clear stay in a country with confident dates. These are safe to save as-is in most cases.</li>
+      <li><strong>Transit</strong> — a same-day connection AtlasDays does not count as a visit. Confirm it really was airside transit if a country matters to a tracker.</li>
+      <li><strong>Overnight</strong> — a connection that crossed midnight. Worth a look, because whether it counts as a day in that country can depend on the rule you are tracking.</li>
+      <li><strong>US states</strong> — state-detected United States stays. Pro users can review and save these as state-tagged trips; free users can preview them before deciding whether to upgrade.</li>
+      <li><strong>Missing</strong> — flights AtlasDays could not fully place, for example an airport it could not resolve or a flight with incomplete data. These need a manual decision before they can be saved.</li>
+    </ul>
+
+    <h2>Editing a Draft Before Saving</h2>
+    <p>Tap any draft trip to open its detail. You can see the flights and evidence behind it, change the country or US state, adjust the dates, mark or unmark it as transit, or drop it from the import entirely. This is the moment to fix anything the inference got wrong — it is much easier than correcting saved trips later.</p>
+
+    <h2>Duplicates and Overlaps</h2>
+    <p>If a Flighty trip covers the same country and dates as something already in your record, AtlasDays detects the overlap rather than creating a duplicate. Overlapping stays in the same country are merged so you do not end up double-counting days. For state-tagged US trips, the state is part of the place: different states should remain separate, while same-state overlaps should still be reviewed. If you have already added some of this travel by hand or through another import, check the overlap notes during review so the merge does what you expect.</p>
+
+    <div class="callout">
+      <p><strong>Import once, then refine.</strong> The cleanest approach is to import your Flighty history into an empty or lightly populated record first, review it as a whole, and then add ground travel or older trips afterward. That keeps overlap handling simple.</p>
+    </div>
+
+    <h2>When to Trust the Result</h2>
+    <p>Flighty Import is a fast way to rebuild years of air travel, but treat the result as a strong draft, not a finished record:</p>
+    <ul>
+      <li>It only knows about flights that are in your Flighty export.</li>
+      <li>It cannot see ground crossings, so a trip that ended by train or car may need its end date adjusted.</li>
+      <li>US state results depend on airport lookup and your review; overland state changes still need manual cleanup.</li>
+      <li>Transit and overnight calls are best-guesses from times and airports — confirm them where a country affects a visa or residency tracker.</li>
+    </ul>
+    <p>For how trip precision affects your counts after importing, see <a href="/help/history-and-import">Trip Modes and Record Quality</a>. For rebuilding history from sources beyond flights, see <a href="/learn/rebuild-travel-history-from-passport-stamps-emails-photos">How to Rebuild Your Travel History From Passport Stamps, Emails, and Photos</a>.</p>
+
+    <h2>Managing a Saved Flighty Import</h2>
+    <p>Open <strong>Settings &gt; Manage Imports</strong> to inspect saved Flighty batches or remove an entire mistaken import. This is useful when the source export was incomplete or wrong and you want to correct it before importing again.</p>
+
+    <div class="cta-box">
+      <h3>Bring your flight history into AtlasDays</h3>
+      <p>Import from Flighty, photos, or a spreadsheet, then track Schengen, residency, and visa days from one trusted record — private, on your iPhone.</p>
+      <a class="cta-btn" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">Get AtlasDays on the App Store</a>
+    </div>

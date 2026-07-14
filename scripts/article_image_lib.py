@@ -28,6 +28,7 @@ CANONICAL_RE = re.compile(
 ARTICLE_RE = re.compile(r"<article\b[^>]*>(.*?)</article>", re.IGNORECASE | re.DOTALL)
 H1_RE = re.compile(r"<h1[^>]*>(.*?)</h1>", re.IGNORECASE | re.DOTALL)
 H2_RE = re.compile(r"<h2[^>]*>(.*?)</h2>", re.IGNORECASE | re.DOTALL)
+H3_RE = re.compile(r"<h3[^>]*>(.*?)</h3>", re.IGNORECASE | re.DOTALL)
 P_RE = re.compile(r"<p[^>]*>(.*?)</p>", re.IGNORECASE | re.DOTALL)
 LI_RE = re.compile(r"<li[^>]*>(.*?)</li>", re.IGNORECASE | re.DOTALL)
 TAG_RE = re.compile(r"<[^>]+>")
@@ -118,7 +119,10 @@ def extract_intro_paragraph(article_html: str) -> str:
 
 
 def extract_section_contexts(article_html: str) -> list[SectionContext]:
-    matches = list(H2_RE.finditer(article_html))
+    matches = sorted(
+        [*H2_RE.finditer(article_html), *H3_RE.finditer(article_html)],
+        key=lambda match: match.start(),
+    )
     contexts: list[SectionContext] = []
     for index, match in enumerate(matches):
         heading = clean_html_text(match.group(1))
@@ -191,6 +195,12 @@ def discover_articles(selected_keys: set[str] | None = None) -> dict[str, Articl
             article = parse_article(path, section)
             lookup[article.key] = article
     return lookup
+
+
+def editable_article_path(article: Article) -> Path:
+    """Return the generator source when one exists, otherwise the public HTML file."""
+    generated_source = SITE_ROOT / "_site-src" / "content" / article.section / f"{article.slug}.html"
+    return generated_source if generated_source.exists() else article.source_path
 
 
 def load_plan(path: Path = PLAN_PATH) -> dict[str, Any]:

@@ -1,0 +1,102 @@
+:root {
+      --bg: #0a0b0d; --bg-elevated: #0f1319; --bg-card: rgba(255,255,255,0.05);
+      --text: #f4f7fb; --muted: #b2b9c5; --muted-2: #8790a0; --line: rgba(255,255,255,0.10);
+      --blue: #428FD2; --blue-soft: rgba(66,143,210,0.12); --max: 860px;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+      color: var(--text); background: var(--bg); line-height: 1.7; -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .top-bar { border-bottom: 1px solid var(--line); padding: 18px 0; }
+    .top-bar-inner {
+      width: min(var(--max), calc(100% - 40px)); margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .brand { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; color: var(--text); text-decoration: none; }
+    .brand:hover { text-decoration: none; }
+    .brand img { width: 42px; height: 42px; }
+
+    main { width: min(var(--max), calc(100% - 40px)); margin: 0 auto; padding: 44px 0 72px; }
+    .breadcrumb { font-size: 0.88rem; color: var(--muted-2); margin-bottom: 22px; }
+    .breadcrumb a { color: var(--muted); }
+
+    h1 { font-size: clamp(1.9rem, 4vw, 2.6rem); line-height: 1.12; letter-spacing: -0.03em; margin: 0 0 12px; }
+    .lede { color: var(--muted); font-size: 1.08rem; margin: 0 0 24px; max-width: 640px; }
+
+    .hub-search { position: relative; margin: 0 0 8px; }
+    .hub-search input {
+      width: 100%; padding: 14px 18px 14px 44px; font-size: 1rem;
+      color: var(--text); background: var(--bg-card);
+      border: 1px solid var(--line); border-radius: 14px; outline: none;
+      transition: border-color 160ms ease;
+    }
+    .hub-search input:focus { border-color: var(--blue); }
+    .hub-search::before {
+      content: ""; position: absolute; left: 16px; top: 50%; width: 16px; height: 16px;
+      transform: translateY(-50%);
+      background: no-repeat center/contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%238790a0' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m21 21-4.3-4.3'/%3E%3C/svg%3E");
+      pointer-events: none;
+    }
+    .hub-noresults { color: var(--muted); padding: 24px 4px; margin: 0; }
+    .hub-noresults[hidden] { display: none; }
+
+    .hub-table-wrap { overflow-x: auto; margin: 18px 0 0; border: 1px solid var(--line); border-radius: 16px; }
+    table.hub-table { width: 100%; border-collapse: collapse; font-size: 0.97rem; }
+    .hub-table th, .hub-table td { text-align: left; padding: 14px 16px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+    .hub-table thead th { color: var(--muted-2); font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.04em; font-weight: 700; }
+    .hub-table tbody tr:last-child td { border-bottom: 0; }
+    .hub-row { cursor: pointer; transition: background 140ms ease; }
+    .hub-row:hover { background: var(--blue-soft); }
+    .hub-row[hidden] { display: none; }
+    .hub-td-country { display: flex; align-items: center; gap: 11px; }
+    .hub-td-country a { color: var(--text); font-weight: 600; text-decoration: none; }
+    .hub-row:hover .hub-td-country a { color: var(--blue); }
+    .hub-row-flag { border-radius: 4px; border: 1px solid var(--line); object-fit: cover; flex: 0 0 auto; box-shadow: 0 2px 6px rgba(0,0,0,0.12); }
+    .hub-table td { color: var(--muted); }
+    .hub-td-go { color: var(--muted-2); text-align: right; width: 1%; }
+    .hub-row:hover .hub-td-go { color: var(--blue); }
+    .hub-legend { color: var(--muted-2); font-size: 0.86rem; margin: 12px 2px 0; }
+    .hub-legend strong { color: var(--muted); }
+    .visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+    .cta-box { padding: 30px 28px; background: var(--bg-card); border: 1px solid var(--line); border-radius: 20px; margin: 44px 0 0; text-align: center; }
+    .cta-logo img { width: 52px; height: 52px; margin: 0 auto 14px; border-radius: 12px; }
+    .cta-box h2 { margin: 0 0 10px; }
+    .cta-box p { margin: 0 0 20px; color: var(--muted); }
+    .cta-btn { display: inline-flex; align-items: center; gap: 8px; padding: 13px 26px; background: var(--blue); color: white; border-radius: 14px; font-weight: 650; text-decoration: none; }
+    .cta-btn:hover { text-decoration: none; opacity: 0.92; }
+    .cta-btn svg { flex: 0 0 auto; }
+
+    .disclaimer { color: var(--muted-2); font-size: 0.88rem; margin: 28px 0 0; }
+
+    @media (max-width: 620px) { main { padding: 30px 0 56px; } }
+
+    html[data-theme="dark"] {
+      --bg: #0a0b0d; --bg-elevated: #0f1319; --bg-card: rgba(255,255,255,0.05);
+      --text: #f4f7fb; --muted: #b2b9c5; --muted-2: #8790a0; --line: rgba(255,255,255,0.10);
+      --blue: #428FD2; --blue-soft: rgba(66,143,210,0.12);
+    }
+    html[data-theme="light"] {
+      --bg: #f6f8fc; --bg-elevated: #ffffff; --bg-card: rgba(255,255,255,0.88);
+      --text: #0d1422; --muted: #526075; --muted-2: #6c788b; --line: rgba(12,22,40,0.09);
+      --blue-soft: rgba(66,143,210,0.08);
+    }
+    .theme-toggle {
+      background: none; border: 1px solid var(--line); border-radius: 10px; color: var(--muted);
+      cursor: pointer; width: 36px; height: 36px; display: inline-grid; place-items: center;
+      transition: border-color 160ms ease, color 160ms ease; padding: 0;
+    }
+    .theme-toggle:hover { border-color: var(--blue); color: var(--text); }
+    .icon-moon, .logo-light { display: none; }
+    .logo-dark { display: block; }
+
+    html[data-theme="dark"] .icon-sun, html[data-theme="dark"] .logo-dark { display: block; }
+    html[data-theme="dark"] .icon-moon, html[data-theme="dark"] .logo-light { display: none; }
+    html[data-theme="light"] .icon-sun, html[data-theme="light"] .logo-dark { display: none; }
+    html[data-theme="light"] .icon-moon, html[data-theme="light"] .logo-light { display: block; }

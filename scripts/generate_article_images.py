@@ -171,6 +171,11 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--quality", choices=("low", "medium", "high", "auto"))
     parser.add_argument("--force", action="store_true")
     parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument(
+        "--catalog-only",
+        action="store_true",
+        help="Rebuild the complete catalog from the plan and existing assets without generating images.",
+    )
     parser.add_argument("--show-prompts", action="store_true")
     return parser.parse_args()
 
@@ -544,7 +549,13 @@ def build_generation_plan(
                 context = find_section_context(article, anchor_heading)
             elif slot_anchor_heading:
                 anchor_heading = slot_anchor_heading
-                context = find_section_context(article, anchor_heading)
+                try:
+                    context = find_section_context(article, anchor_heading)
+                except SystemExit:
+                    # A hero marker is always top-of-article. A legacy thematic
+                    # heading may survive in the art brief after editorial copy
+                    # changes, but it must not prevent rebuilding the catalog.
+                    anchor_heading = article.headline
             relative_path = (
                 Path("assets")
                 / "article-images"
@@ -743,7 +754,7 @@ def main() -> int:
     args = parse_args()
     load_env_file()
     settings = load_settings(args)
-    api_key = ensure_api_key(args.dry_run)
+    api_key = ensure_api_key(args.dry_run or args.catalog_only)
     plan_data = load_plan()
     selected_keys = select_article_keys(plan_data, args.section, args.slug, args.limit)
     if not selected_keys:
@@ -753,7 +764,7 @@ def main() -> int:
     generation_plan = build_generation_plan(plan_data, article_lookup, selected_keys, settings)
     prior_lookup = load_existing_catalog()
     print_plan(generation_plan, args.show_prompts)
-    if not args.dry_run:
+    if not args.dry_run and not args.catalog_only:
         for entry in generation_plan:
             target: Path = entry["absolute_path"]
             if target.exists() and not args.force:
@@ -764,7 +775,10 @@ def main() -> int:
             image_bytes, revised_prompt, usage = call_openai_image_api(api_key, entry["prompt"], settings)
             target.write_bytes(image_bytes)
             update_catalog_entry(prior_lookup, entry["relative_path"], revised_prompt, usage, len(image_bytes))
-    write_catalog(generation_plan, plan_data, settings, prior_lookup)
+    all_keys = select_article_keys(plan_data, "all", None, 0)
+    all_articles = discover_articles(set(all_keys))
+    catalog_plan = build_generation_plan(plan_data, all_articles, all_keys, settings)
+    write_catalog(catalog_plan, plan_data, settings, prior_lookup)
     print(f"\nCatalog written to {CATALOG_PATH.relative_to(SITE_ROOT)}")
     return 0
 
