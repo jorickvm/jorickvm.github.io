@@ -43,8 +43,14 @@
         var clear = root.querySelector("[data-search-clear]");
         var status = root.querySelector("[data-search-status]");
         var results = root.querySelector("[data-search-results]");
+        var initialStatus = status.textContent;
+        var resultsId = section + "-search-results";
 
-        function render() {
+        results.id = resultsId;
+        input.setAttribute("aria-controls", resultsId);
+        input.setAttribute("aria-expanded", "false");
+
+        function render(showResults) {
           var query = normalize(input.value);
           var category = filter ? filter.value : "";
           var active = Boolean(query || category);
@@ -56,14 +62,15 @@
             .sort(function (a, b) { return b.score - a.score || a.entry.title.localeCompare(b.entry.title); });
 
           results.replaceChildren();
-          results.hidden = !active;
-          clear.hidden = !active;
-          status.textContent = active ? matches.length + (matches.length === 1 ? " result" : " results") : "Browse all guides below";
+          results.hidden = !active || showResults === false;
+          clear.hidden = !query;
+          input.setAttribute("aria-expanded", String(active && showResults !== false));
+          status.textContent = active ? matches.length + (matches.length === 1 ? " result found" : " results found") : initialStatus;
           if (!active) return;
           if (!matches.length) {
             var empty = document.createElement("p");
             empty.className = "search-empty";
-            empty.textContent = "No matching guide. Try a country, rule, feature, or broader category.";
+            empty.textContent = "No matching rule or guide. Try a country, US state, region, or broader topic.";
             results.appendChild(empty);
             return;
           }
@@ -80,20 +87,32 @@
           });
         }
 
-        input.addEventListener("input", render);
-        if (filter) filter.addEventListener("change", render);
+        input.addEventListener("input", function () { render(true); });
+        input.addEventListener("focus", function () { render(true); });
+        if (filter) {
+          filter.addEventListener("change", function () { render(true); });
+          filter.addEventListener("focus", function () {
+            if (input.value || filter.value) render(true);
+          });
+        }
         clear.addEventListener("click", function () {
           input.value = "";
-          if (filter) filter.value = "";
-          render();
+          render(Boolean(filter && filter.value));
           input.focus();
         });
-        render();
+        root.addEventListener("keydown", function (event) {
+          if (event.key !== "Escape" || results.hidden) return;
+          render(false);
+        });
+        document.addEventListener("click", function (event) {
+          if (!root.contains(event.target) && !results.hidden) render(false);
+        });
+        render(false);
       });
     })
     .catch(function () {
       roots.forEach(function (root) {
-        root.querySelector("[data-search-status]").textContent = "Search is unavailable; browse all guides below.";
+        root.querySelector("[data-search-status]").textContent = "Search is unavailable; browse by place and topic below.";
       });
     });
 })();

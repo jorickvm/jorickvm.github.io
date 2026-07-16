@@ -6,11 +6,39 @@
         <p class="eyebrow"><span class="dot"></span> AtlasDays Help Center</p>
         <h1>Help Center</h1>
         <p class="updated">Last updated: July 10, 2026</p>
-        <p class="subtitle">Start with the guide that matches what looks wrong or what you are trying to do in AtlasDays. For visa, residency, and travel-history rules themselves, use <a class="text-link" href="/learn/">Learn</a>.</p>
+        <p class="subtitle">Start with the guide that matches what looks wrong or what you are trying to do in AtlasDays. For visa, residency, and travel-history rules themselves, use the <a class="text-link" href="/learn/">Travel Rule Library</a>.</p>
+        <section class="library-search" data-library-search data-section="help" aria-labelledby="help-search-title">
+          <h2 class="search-title" id="help-search-title">Find a Help guide</h2>
+          <div class="search-controls">
+            <div class="search-query">
+              <label class="search-visually-hidden" for="help-search-input">Search Help</label>
+              <svg class="search-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4 4"></path></svg>
+              <input id="help-search-input" type="search" data-search-input autocomplete="off" placeholder="Search CSV, Flighty, iCloud…" />
+              <button class="search-clear" type="button" data-search-clear hidden aria-label="Clear search">
+                <svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="m6 6 8 8M14 6l-8 8"></path></svg>
+              </button>
+            </div>
+            <div class="search-filter">
+              <label class="search-visually-hidden" for="help-search-filter">Filter by topic</label>
+              <select id="help-search-filter" data-search-filter>
+                <option value="">All topics</option>
+                <option value="setup-trips">Setup and trips</option>
+                <option value="imports">Imports</option>
+                <option value="trackers-counts">Trackers and counts</option>
+                <option value="reports">Reports</option>
+                <option value="privacy-sync">Privacy and sync</option>
+                <option value="pro-widgets">Pro and widgets</option>
+              </select>
+              <svg class="search-chevron" aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="m6 8 4 4 4-4"></path></svg>
+            </div>
+          </div>
+          <p class="search-status" data-search-status aria-live="polite">Search privately in your browser, or browse all guides below.</p>
+          <div class="search-results" data-search-results aria-label="Help search results" hidden></div>
+        </section>
         <nav class="jump-links" aria-label="Help Center page sections">
           <a href="#articles">Browse guides</a>
           <a href="#support">Contact support</a>
-          <a href="/learn/">Use Learn for rules</a>
+          <a href="/learn/">Browse Travel Rules</a>
         </nav>
       </div>
 
@@ -26,30 +54,6 @@
         </ul>
         <div class="hero-note"><strong>Still not solved?</strong> Start with the closest guide, then <a href="#support">contact support</a> with one clear example.</div>
       </aside>
-    </section>
-
-    <section class="library-search" data-library-search data-section="help" aria-labelledby="help-search-title">
-      <h2 id="help-search-title">Search Help</h2>
-      <p>Search locally in your browser. Your query is not sent anywhere.</p>
-      <div class="search-controls">
-        <label class="search-field">Question or feature
-          <input type="search" data-search-input autocomplete="off" placeholder="Try CSV, Flighty, iCloud…" />
-        </label>
-        <label class="search-field">Topic
-          <select data-search-filter>
-            <option value="">All Help topics</option>
-            <option value="setup-trips">Setup and trips</option>
-            <option value="imports">Imports</option>
-            <option value="trackers-counts">Trackers and counts</option>
-            <option value="reports">Reports</option>
-            <option value="privacy-sync">Privacy and sync</option>
-            <option value="pro-widgets">Pro and widgets</option>
-          </select>
-        </label>
-        <button class="search-clear" type="button" data-search-clear hidden>Clear</button>
-      </div>
-      <p class="search-status" data-search-status aria-live="polite">Browse all guides below</p>
-      <div class="search-results" data-search-results hidden></div>
     </section>
 
     <section class="section section-card" id="articles">
@@ -184,7 +188,7 @@
             <li>your iPhone model, iOS version, and AtlasDays app version if it looks like a bug</li>
           </ul>
           <div class="mini-links">
-            <a href="/learn/">Learn</a>
+            <a href="/learn/">Travel Rules</a>
             <a href="/privacy">Privacy Policy</a>
             <a href="/terms">Terms</a>
             <a href="/changelog">Changelog</a>

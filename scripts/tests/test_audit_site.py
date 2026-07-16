@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import sys
+import json
 import unittest
 from pathlib import Path
 
@@ -52,6 +53,17 @@ class AuditSiteTests(unittest.TestCase):
         parser = audit_site.PageParser()
         parser.feed("<header>Navigation</header><article><h1>Title</h1><p>Body.</p></article>")
         self.assertEqual(parser.content_text, "Title Body.")
+
+    def test_root_content_pages_have_styles_and_single_shared_scripts(self) -> None:
+        pages = json.loads((audit_site.SITE_ROOT / "_site-src/data/pages.json").read_text())["pages"]
+        by_path = {page["path"]: page for page in pages}
+        for path in ("about.html", "privacy.html", "terms.html"):
+            with self.subTest(path=path):
+                self.assertTrue(by_path[path]["style_variants"])
+                source = (audit_site.SITE_ROOT / path).read_text()
+                self.assertIn("assets/css/page-variants/legal.css", source)
+                self.assertEqual(source.count("assets/js/theme.js"), 1)
+                self.assertEqual(source.count("assets/js/navigation.js"), 1)
 
 
 if __name__ == "__main__":

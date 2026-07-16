@@ -106,7 +106,7 @@ def render_header(article: dict[str, object], template: str, prefix: str = "../"
     return (
         template.replace("{{ASSET_PREFIX}}", prefix)
         .replace("{{HELP_CURRENT}}", ' aria-current="page"' if section == "help" else "")
-        .replace("{{LEARN_CURRENT}}", ' aria-current="page"' if section == "learn" else "")
+        .replace("{{LEARN_CURRENT}}", ' aria-current="page"' if section in {"learn", "day-limits"} else "")
         .replace("{{DAY_LIMITS_CURRENT}}", ' aria-current="page"' if section == "day-limits" else "")
         .replace("{{CHANGELOG_CURRENT}}", ' aria-current="page"' if section == "changelog" else "")
     ).rstrip()
@@ -192,6 +192,14 @@ def render_hub(
         "{{MAIN_CONTENT}}": content,
         "{{SITE_FOOTER}}": footer_template.replace("{{ASSET_PREFIX}}", prefix).rstrip(),
         "{{PAGE_SCRIPTS}}": str(hub.get("page_scripts", "")).rstrip(),
+        "{{SEARCH_STYLESHEET}}": (
+            f'  <link rel="stylesheet" href="{prefix}assets/css/search.css?v=20260717b" />'
+            if family == "hub" else ""
+        ),
+        "{{SEARCH_SCRIPT}}": (
+            f'  <script src="{prefix}assets/js/search.js?v=20260717b"></script>'
+            if family == "hub" else ""
+        ),
         "{{ASSET_PREFIX}}": prefix,
     }
     rendered = template

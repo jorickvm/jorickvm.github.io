@@ -54,9 +54,11 @@
       ],
       "jsonld": [],
       "content": "content/pages/about.html",
-      "style_variants": [],
+      "style_variants": [
+        "legal"
+      ],
       "current_navigation": "",
-      "page_scripts": "<script src=\"assets/js/theme.js?v=20260714b\"></script>\n<script src=\"assets/js/navigation.js?v=20260714b\"></script>\n<script>\n  (function() {\n    function decode(parts) {\n      return parts.map(function(code) {\n        return String.fromCharCode(code);\n      }).join('');\n    }\n\n    var local = decode([104, 101, 108, 108, 111]);\n    var domain = decode([97, 116, 108, 97, 115, 100, 97, 121, 115]) + '.' + decode([97, 112, 112]);\n    var addr = local + '@' + domain;\n    var el = document.getElementById('about-email');\n    if (el) {\n      el.textContent = addr;\n      el.href = 'mai' + 'lto:' + addr;\n    }\n  })();\n</script>"
+      "page_scripts": "<script>\n  (function() {\n    function decode(parts) {\n      return parts.map(function(code) {\n        return String.fromCharCode(code);\n      }).join('');\n    }\n\n    var local = decode([104, 101, 108, 108, 111]);\n    var domain = decode([97, 116, 108, 97, 115, 100, 97, 121, 115]) + '.' + decode([97, 112, 112]);\n    var addr = local + '@' + domain;\n    var el = document.getElementById('about-email');\n    if (el) {\n      el.textContent = addr;\n      el.href = 'mai' + 'lto:' + addr;\n    }\n  })();\n</script>"
     },
     {
       "path": "privacy.html",
@@ -111,9 +113,11 @@
       ],
       "jsonld": [],
       "content": "content/pages/privacy.html",
-      "style_variants": [],
+      "style_variants": [
+        "legal"
+      ],
       "current_navigation": "",
-      "page_scripts": "<script src=\"assets/js/theme.js?v=20260714b\"></script>\n<script src=\"assets/js/navigation.js?v=20260714b\"></script>\n<script>\n  (function() {\n    var el = document.getElementById('privacy-email');\n    var u = el.getAttribute('data-email-user');\n    var d = el.getAttribute('data-email-domain');\n    var addr = u + '@' + d;\n    el.textContent = addr;\n    el.href = 'mai' + 'lto:' + addr;\n  })();\n</script>"
+      "page_scripts": "<script>\n  (function() {\n    var el = document.getElementById('privacy-email');\n    var u = el.getAttribute('data-email-user');\n    var d = el.getAttribute('data-email-domain');\n    var addr = u + '@' + d;\n    el.textContent = addr;\n    el.href = 'mai' + 'lto:' + addr;\n  })();\n</script>"
     },
     {
       "path": "terms.html",
@@ -168,9 +172,11 @@
       ],
       "jsonld": [],
       "content": "content/pages/terms.html",
-      "style_variants": [],
+      "style_variants": [
+        "legal"
+      ],
       "current_navigation": "",
-      "page_scripts": "<script src=\"assets/js/theme.js?v=20260714b\"></script>\n<script src=\"assets/js/navigation.js?v=20260714b\"></script>\n<script>\n  (function() {\n    function decode(parts) {\n      return parts.map(function(code) {\n        return String.fromCharCode(code);\n      }).join('');\n    }\n\n    var local = decode([115, 117, 112, 112, 111, 114, 116]);\n    var domain = decode([97, 116, 108, 97, 115, 100, 97, 121, 115]) + '.' + decode([97, 112, 112]);\n    var addr = local + '@' + domain;\n    var ids = ['terms-email', 'terms-email-contact'];\n    ids.forEach(function(id) {\n      var el = document.getElementById(id);\n      if (!el) return;\n      el.textContent = addr;\n      el.href = 'mai' + 'lto:' + addr;\n    });\n  })();\n</script>"
+      "page_scripts": "<script>\n  (function() {\n    function decode(parts) {\n      return parts.map(function(code) {\n        return String.fromCharCode(code);\n      }).join('');\n    }\n\n    var local = decode([115, 117, 112, 112, 111, 114, 116]);\n    var domain = decode([97, 116, 108, 97, 115, 100, 97, 121, 115]) + '.' + decode([97, 112, 112]);\n    var addr = local + '@' + domain;\n    var ids = ['terms-email', 'terms-email-contact'];\n    ids.forEach(function(id) {\n      var el = document.getElementById(id);\n      if (!el) return;\n      el.textContent = addr;\n      el.href = 'mai' + 'lto:' + addr;\n    });\n  })();\n</script>"
     },
     {
       "path": "changelog.html",
@@ -193,7 +199,7 @@
         "8dd7045d9b0b"
       ],
       "current_navigation": "changelog",
-      "page_scripts": "<script>\n    function toggleTheme() {\n      var html = document.documentElement;\n      var current = html.getAttribute('data-theme');\n      var isDark;\n      if (current) isDark = current === 'dark';\n      else isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;\n      var next = isDark ? 'light' : 'dark';\n      html.setAttribute('data-theme', next);\n      localStorage.setItem('theme', next);\n    }\n  </script>"
+      "page_scripts": ""
     }
   ]
 }

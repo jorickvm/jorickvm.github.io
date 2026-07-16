@@ -20,7 +20,7 @@
   <link rel="stylesheet" href="assets/css/page-variants/8dd7045d9b0b.css?v=20260714b" />
   <link rel="stylesheet" href="assets/css/site-header.css?v=20260714b" />
   <link rel="stylesheet" href="assets/css/site-footer.css?v=20260714b" />
-  <link rel="stylesheet" href="assets/css/search.css?v=20260714a" />
+
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
@@ -36,8 +36,7 @@
       <nav class="top-links" aria-label="Primary">
         <a class="hide-mobile" href="/">Home</a>
         <a href="/help/">Help Center</a>
-        <a href="/learn/">Learn</a>
-        <a href="/learn/day-limits">Day Limits</a>
+        <a href="/learn/">Travel Rules</a>
         <a class="hide-mobile" href="/changelog" aria-current="page">Changelog</a>
         <a class="top-cta" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">Get the app</a>
         <button class="theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme" onclick="toggleTheme()">
@@ -53,8 +52,7 @@
         <nav class="mobile-menu-panel" aria-label="Mobile primary">
           <a href="/">Home</a>
           <a href="/help/">Help Center</a>
-          <a href="/learn/">Learn</a>
-          <a href="/learn/day-limits">Day Limits</a>
+          <a href="/learn/">Travel Rules</a>
           <a href="/changelog" aria-current="page">Changelog</a>
           <a href="/about">About</a>
           <a href="/support">Support</a>
@@ -543,8 +541,7 @@
         <div>
           <h2>Explore</h2>
           <a href="/help/">Help Center</a>
-          <a href="/learn/">Learn</a>
-          <a href="/learn/day-limits">Day Limits</a>
+          <a href="/learn/">Travel Rules</a>
           <a href="/changelog">Changelog</a>
         </div>
         <div>
@@ -565,19 +562,8 @@
 
   <script src="assets/js/theme.js?v=20260714b"></script>
   <script src="assets/js/navigation.js?v=20260714b"></script>
-  <script src="assets/js/search.js?v=20260714a"></script>
-<script>
-    function toggleTheme() {
-      var html = document.documentElement;
-      var current = html.getAttribute('data-theme');
-      var isDark;
-      if (current) isDark = current === 'dark';
-      else isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      var next = isDark ? 'light' : 'dark';
-      html.setAttribute('data-theme', next);
-      localStorage.setItem('theme', next);
-    }
-  </script>
+
+
   <!-- Cloudflare Web Analytics -->
   <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;token&quot;: &quot;1488e163b83a4eee81b63340359b6566&quot;}"></script>
   <!-- End Cloudflare Web Analytics -->

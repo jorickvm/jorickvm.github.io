@@ -323,6 +323,17 @@ def audit_pages(args: argparse.Namespace) -> tuple[list[PageRecord], list[Findin
                     findings.append(Finding("error", "social-image", rel, og_images[0]))
         if indexable and len(parser.h1) != 1:
             findings.append(Finding("error", "h1-count", rel, f"Expected 1 H1, found {len(parser.h1)}"))
+        if indexable:
+            stylesheets = [
+                str(attrs.get("href") or "")
+                for tag, attrs, _ in parser.tags
+                if tag == "link" and "stylesheet" in str(attrs.get("rel") or "").split()
+            ]
+            shared_styles = ("site-header.css", "site-footer.css", "search.css")
+            if not any(href and not any(name in href for name in shared_styles) for href in stylesheets):
+                findings.append(
+                    Finding("error", "missing-content-style", rel, "Page has no page-family or content stylesheet")
+                )
         if indexable and parser.main_count != 1:
             findings.append(
                 Finding(
@@ -347,6 +358,16 @@ def audit_pages(args: argparse.Namespace) -> tuple[list[PageRecord], list[Findin
         duplicates = [item for item, count in Counter(parser.ids).items() if count > 1]
         if duplicates:
             findings.append(Finding("error", "duplicate-id", rel, ", ".join(sorted(duplicates))))
+
+        script_sources = [
+            str(attrs.get("src") or "")
+            for tag, attrs, _ in parser.tags
+            if tag == "script" and attrs.get("src")
+        ]
+        for shared_script in ("theme.js", "navigation.js", "search.js"):
+            count = sum(shared_script in source for source in script_sources)
+            if count > 1:
+                findings.append(Finding("error", "duplicate-shared-script", rel, f"{shared_script}: {count}"))
 
         page_jsonld_types: list[str] = []
         for blob in parser.jsonld_blobs:

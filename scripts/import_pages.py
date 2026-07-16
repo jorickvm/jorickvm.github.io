@@ -18,6 +18,7 @@ DATA_PATH = SOURCE_ROOT / "data" / "pages.json"
 CONTENT_ROOT = SOURCE_ROOT / "content" / "pages"
 VARIANT_ROOT = SITE_ROOT / "assets" / "css" / "page-variants"
 PAGE_PATHS = [Path("about.html"), Path("privacy.html"), Path("terms.html"), Path("changelog.html")]
+LEGAL_PATHS = {Path("about.html"), Path("privacy.html"), Path("terms.html")}
 
 
 def extract_changelog(text: str) -> str:
@@ -45,11 +46,12 @@ def main() -> int:
         content_path = CONTENT_ROOT / rel
         content = extract_changelog(text) if rel == Path("changelog.html") else extract_main(text, rel)
         content_path.write_text(content, encoding="utf-8")
-        style_ids: list[str] = []
-        for style in style_blocks(text):
-            style_id = hashlib.sha256(style.encode("utf-8")).hexdigest()[:12]
-            (VARIANT_ROOT / f"{style_id}.css").write_text(style.strip() + "\n", encoding="utf-8")
-            style_ids.append(style_id)
+        style_ids: list[str] = ["legal"] if rel in LEGAL_PATHS else []
+        if rel not in LEGAL_PATHS:
+            for style in style_blocks(text):
+                style_id = hashlib.sha256(style.encode("utf-8")).hexdigest()[:12]
+                (VARIANT_ROOT / f"{style_id}.css").write_text(style.strip() + "\n", encoding="utf-8")
+                style_ids.append(style_id)
         records.append(
             {
                 "path": rel.as_posix(),

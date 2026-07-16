@@ -1,0 +1,117 @@
+:root {
+  --bg: #0a0b0d;
+  --bg-elevated: #0f1319;
+  --bg-card: rgba(255,255,255,0.045);
+  --text: #f4f7fb;
+  --muted: #b2b9c5;
+  --muted-2: #8790a0;
+  --line: rgba(255,255,255,0.10);
+  --blue: #4f9dee;
+  --blue-soft: rgba(79,157,238,0.12);
+  --max: 1120px;
+}
+
+html[data-theme="light"] {
+  --bg: #f7f8fa;
+  --bg-elevated: #ffffff;
+  --bg-card: #ffffff;
+  --text: #111827;
+  --muted: #526075;
+  --muted-2: #6c788b;
+  --line: rgba(12,22,40,0.10);
+  --blue: #246ca8;
+  --blue-soft: rgba(36,108,168,0.08);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  color: var(--text);
+  background: var(--bg);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+main#main-content {
+  width: min(760px, calc(100% - 40px));
+  margin: 0 auto;
+  padding: clamp(32px, 6vw, 64px) 0 80px;
+}
+
+main > p:first-child {
+  margin: 0 0 30px;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+main h1 {
+  margin: 0 0 8px;
+  color: var(--text);
+  font-size: clamp(2.15rem, 6vw, 3.25rem);
+  line-height: 1.08;
+  letter-spacing: -0.045em;
+}
+
+main h2 {
+  margin: 42px 0 12px;
+  color: var(--text);
+  font-size: clamp(1.25rem, 3vw, 1.55rem);
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+main p,
+main li { color: var(--muted); }
+
+main p { margin: 0 0 18px; }
+main ul { margin: 0 0 22px; padding-left: 1.35rem; }
+main li { margin: 7px 0; padding-left: 0.2rem; }
+main strong { color: var(--text); }
+
+main a {
+  color: var(--blue);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.16em;
+}
+
+main a:hover { text-decoration-thickness: 2px; }
+main a:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 3px; }
+
+.updated,
+.lede {
+  margin-bottom: 30px;
+  color: var(--muted-2);
+  font-size: 0.95rem;
+}
+
+.lede { font-size: 1.1rem; line-height: 1.55; }
+
+.summary {
+  margin: 28px 0;
+  padding: 22px 24px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--bg-card);
+}
+
+.summary > strong {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 1.02rem;
+}
+
+.summary p:last-child,
+.summary ul:last-child { margin-bottom: 0; }
+.summary ul { padding-left: 1.25rem; }
+.summary li::marker { color: var(--blue); }
+
+@media (max-width: 520px) {
+  body { font-size: 16px; }
+  main#main-content { width: min(100% - 32px, 760px); padding-top: 30px; }
+  .summary { padding: 18px; border-radius: 15px; }
+}
