@@ -2,73 +2,55 @@
 
   <p><a href="/">&larr; AtlasDays</a></p>
   <h1>AtlasDays App Privacy</h1>
-  <p class="updated">Last updated: April 30, 2026</p>
+  <p class="updated">Last updated: July 17, 2026 · Reviewed for AtlasDays 1.11.3</p>
 
-  <p>AtlasDays is a private travel-history app for iPhone and iPad. This page describes how the app handles your data.</p>
+  <p class="lede">This page applies to the AtlasDays app for iPhone and iPad. AtlasDays is designed to keep your travel data on your devices and in your own Apple iCloud account.</p>
 
   <div class="summary">
-    <strong>Key Points</strong>
+    <strong>In short</strong>
     <ul>
-      <li>The AtlasDays app does not require an account and does not keep a server-side copy of your travel history.</li>
-      <li>Trips and trackers stay on your device unless they sync through your own Apple iCloud account.</li>
-      <li>Photo Import scans photo and video metadata on your device, and imported trips may store local photo references for thumbnails. AtlasDays does not upload or store your photo files on AtlasDays-operated servers.</li>
-      <li>A smaller set of app preferences can also carry over through Apple’s iCloud key-value storage separately from full trip sync.</li>
+      <li><strong>AtlasDays is designed for privacy by default.</strong> There is no account, advertising, third-party analytics, or AtlasDays data server.</li>
+      <li><strong>Core travel tracking works offline.</strong> You can add trips, count days, use trackers, import local files, and create reports without an internet connection.</li>
+      <li><strong>Your travel history stays on your device unless iCloud Sync is enabled.</strong> With sync on, it moves only through your private Apple iCloud account. AtlasDays never receives it.</li>
+      <li><strong>Location and Photos are processed on your device.</strong> AtlasDays does not upload raw coordinates or photo files.</li>
     </ul>
   </div>
 
-  <p>For paid features, subscriptions, website terms, and App Store license information, see the <a href="/terms">AtlasDays Terms of Use</a>.</p>
+  <h2>1. Storage and iCloud</h2>
+  <p>Trips, trackers, notes, settings, and local photo references are stored on your device. AtlasDays does not upload this data to an AtlasDays-operated server.</p>
+  <p>On new installations, <strong>iCloud Sync</strong> is on by default when iCloud is available. It syncs trips and trackers through your private Apple iCloud account. You can turn it off in AtlasDays Settings.</p>
+  <p>A separate set of preferences can sync through Apple’s iCloud key-value storage even when full trip sync is off. This includes your residence choice, appearance, display and counting defaults, Auto-Detect and notification settings, ignored places, and iCloud Sync setting. It does not include your trip history or iOS permission grants.</p>
 
-  <h2>1. No Account Required</h2>
-  <p>You do not need to create an account, sign in, or provide personal information to use the AtlasDays app. The app is designed to work locally on your device.</p>
+  <h2>2. Location</h2>
+  <p><strong>Auto-Detect Trips</strong> is optional. It uses Apple’s significant-change location service, not continuous GPS tracking. AtlasDays checks each location against bundled country boundaries and, for Pro users, US state boundaries on your device. Raw coordinates are not stored or sent to AtlasDays.</p>
+  <p>The app stores a local log containing the detected country or US state and date. It uses this log to suggest trips, avoid duplicate prompts, and close or reopen confirmed ongoing trips when later detections support that change. AtlasDays never creates a new trip from location data without your confirmation.</p>
+  <p>With background location permission, detection can continue while the app is closed. You can turn Auto-Detect off in AtlasDays or revoke location access in iOS Settings.</p>
 
-  <h2>2. Local Storage, Apple iCloud Sync, and Preferences</h2>
-  <p>Your trip data is stored on your device using Apple’s local data storage frameworks. AtlasDays does not upload your travel history, day counts, trip notes, or tracker data to an AtlasDays-operated server.</p>
-  <p>If <strong>iCloud Sync</strong> is on, your trips and trackers may sync across your own devices through your personal Apple iCloud account. That sync is handled by Apple and governed by Apple’s privacy policies.</p>
-  <p>If you are signed into iCloud, AtlasDays can also mirror a smaller set of app preferences through Apple’s iCloud key-value storage. That preference carry-over is separate from the full trip-and-tracker sync toggle and can include items such as home-country state, appearance, certain defaults, and sync preferences.</p>
-  <p>On a new device or after reinstalling, previously synced preferences can restore your prior sync settings. iOS permission grants themselves remain device-specific.</p>
+  <h2>3. Photos</h2>
+  <p><strong>Photo Import</strong> is optional. For an automatic library scan, AtlasDays asks for full Photos access. The scan reads photo and video metadata including dates, GPS locations, altitude, media type, dimensions, and local asset identifiers. For a small set of likely received photos, it may also read the original filename and camera-model metadata. It does not use image recognition.</p>
+  <p>The scan and country lookup run on your device. Nothing is added to your trip history until you review and confirm it. Raw photo coordinates are not stored in trip records.</p>
+  <p><strong>No photo or video is sent to AtlasDays or an AtlasDays-operated service.</strong> The developer cannot see or retrieve anything in your photo library. The only exception is a photo you deliberately send to support.</p>
+  <p>Imported trips may store local photo identifiers for thumbnails and previews. Those identifiers can sync with the trip through iCloud; the photo files do not. If a photo is stored in iCloud Photos, iOS may download it when you open it. If you favorite or unfavorite a photo in AtlasDays, that explicit action updates the item in Apple Photos.</p>
+  <p>You can revoke Photos access in iOS Settings. Trips remain, but their photo previews may stop working.</p>
 
-  <h2>3. Location Detection</h2>
-  <p>AtlasDays can optionally request location access to detect country changes and suggest new trips. This feature is opt-in.</p>
-  <ul>
-    <li>The app uses significant-change location monitoring and bundled country-boundary data for <em>country detection</em>, not continuous GPS tracking.</li>
-    <li>AtlasDays creates a suggestion for you to review, edit, confirm, or dismiss. It does not silently create trips from location events.</li>
-    <li>Country detections may be stored locally as a country-and-date log so AtlasDays can build trip suggestions and avoid repeated prompts.</li>
-    <li>Raw coordinates are not stored as part of your trip history.</li>
-    <li>AtlasDays does not transmit your location history to an AtlasDays server.</li>
-    <li>If you allow background location, detection can continue while the app is not open.</li>
-    <li>You can revoke location access at any time in iOS Settings.</li>
-  </ul>
-  <p>For general product questions, start in the <a href="/help/">Help Center</a>. This page is specifically about app privacy.</p>
+  <h2>4. Notifications</h2>
+  <p>Trip-suggestion and tracker-alert notifications are generated and scheduled on your device. Notification permission is optional.</p>
 
-  <h2>4. Photos and Photo Import</h2>
-  <p>Photo Import is optional. You can use AtlasDays manually, import CSV files, review trackers, and export reports without granting Photos access.</p>
-  <p>If you choose Photo Import, AtlasDays asks for full Photos access because iOS requires it for an automatic library scan. The scan reads photo and video metadata such as creation dates, GPS locations, altitude, media type, and local photo asset identifiers. AtlasDays uses this metadata to suggest trips for your review.</p>
-  <ul>
-    <li>The trip-drafting scan runs on your device. AtlasDays resolves photo locations to countries using bundled country-boundary data and does not upload your photo library to an AtlasDays-operated server.</li>
-    <li>AtlasDays uses photo metadata to draft trip candidates. Nothing becomes part of your trip history until you review the suggestions and confirm the import.</li>
-    <li>Imported trips can store local photo asset identifiers so AtlasDays can show thumbnails or open the related photos from your Photos library later. AtlasDays does not copy those image files into its own database, analyze image contents, or upload your photos to an AtlasDays-operated server.</li>
-    <li>Videos can contribute dated location evidence during import, but they are not shown in the trip photo preview gallery.</li>
-    <li>Raw photo GPS coordinates are used during scanning and photo display, but they are not stored as trip coordinates in your AtlasDays trip records.</li>
-    <li>If iCloud Sync is on, imported trip records, including any stored photo asset identifiers, may sync through your personal Apple iCloud account with the rest of your trip data. Your actual photo library remains managed by Apple Photos and iCloud Photos, not by AtlasDays.</li>
-    <li>When you open an imported trip photo, AtlasDays loads that image from your Photos library for display. If the original photo is stored in iCloud Photos, iOS may retrieve it through Apple’s Photos services. AtlasDays does not create a server-side copy.</li>
-    <li>You can revoke Photos access at any time in iOS Settings. Imported trips remain in AtlasDays, but photo thumbnails or full-screen photo previews may stop loading.</li>
-  </ul>
+  <h2>5. Imports, Exports, and Sharing</h2>
+  <p>CSV and Flighty imports, CSV exports, and PDF reports are processed locally. AtlasDays does not upload these files. If you use the Apple share sheet, paste data into another app, or use an AI assistant, the service you choose handles that data under its own privacy policy.</p>
 
-  <h2>5. Notifications</h2>
-  <p>AtlasDays can send local notifications for trip suggestions and tracker alerts. These are generated and scheduled on-device.</p>
-
-  <h2>6. CSV Import, Export, and Other Sharing Choices</h2>
-  <p>The app can import and export CSV files, and it can generate PDF reports. Those files are handled locally through Apple’s file picker and share sheet. AtlasDays does not upload the contents of those files to an AtlasDays server.</p>
-  <p>If you choose to paste travel data into another app or AI assistant outside AtlasDays, that separate service’s privacy policies apply to what you share there.</p>
+  <h2>6. Purchases and Support</h2>
+  <p>Apple handles purchases and subscriptions through StoreKit. AtlasDays receives your entitlement status, not your payment details.</p>
+  <p>Sending feedback is optional. The app prepares an editable email with basic app and device details, selected settings, permission states, and limited usage context. You can review or remove this information before sending. Your mail provider handles the email.</p>
 
   <h2>7. Analytics and Advertising</h2>
-  <p>The AtlasDays app does not include advertising SDKs or third-party analytics SDKs.</p>
+  <p>The app has no advertising SDKs or third-party analytics SDKs.</p>
 
-  <h2>8. More Detail and Changes to This Page</h2>
-  <p>For an operational explanation of sync behavior, device changes, Photo Import, and permissions, see the <a href="/help/privacy-location-and-sync">Privacy, Location, and Sync guide</a>, the <a href="/help/photo-import">Photo Import guide</a>, and the <a href="/help/icloud-sync-and-restore">iCloud Sync and Restore guide</a>.</p>
-  <p>If the AtlasDays app privacy model changes, this page will be updated and the date above will change.</p>
+  <h2>8. More Information</h2>
+  <p>For operational details, see <a href="/help/privacy-location-and-sync">Privacy, Location, and Sync</a>, <a href="/help/photo-import">Photo Import</a>, and <a href="/help/icloud-sync-and-restore">iCloud Sync and Restore</a>. Paid features and subscriptions are covered by the <a href="/terms">Terms of Use</a>.</p>
+  <p>If the app’s privacy model changes, this page and its update date will change.</p>
 
   <h2 id="contact">9. Contact</h2>
-  <p>If you have app privacy questions, contact <a href="#contact" id="privacy-email" data-email-user="support" data-email-domain="atlasdays.app">support email</a>.</p>
+  <p>Questions: <a href="#contact" id="privacy-email" data-email-user="support" data-email-domain="atlasdays.app">support email</a>.</p>
 
 </main>
