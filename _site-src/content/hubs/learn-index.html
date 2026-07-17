@@ -1,357 +1,250 @@
 <main class="page" id="main-content">
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">AtlasDays</a> / <span aria-current="page">Travel Rules</span></nav>
 
-    <section class="hero">
+    <section class="hero hero-simple">
       <div class="hero-copy">
-        <p class="eyebrow"><span class="dot"></span> AtlasDays Travel Rules</p>
-        <h1>Travel Rule Library</h1>
-        <p class="subtitle">Find visa, residency, tax, and absence rules by country, US state, region, or topic. Use the structured rule pages for the facts and the practical guides when you need the reasoning behind them.</p>
-        <section class="library-search" data-library-search data-section="learn" aria-labelledby="learn-search-title">
-          <h2 class="search-title" id="learn-search-title">Find a rule or guide</h2>
+        <p class="eyebrow"><span class="dot"></span> AtlasDays Library</p>
+        <h1>Travel Rules &amp; Guides</h1>
+        <p class="subtitle">Browse rules by country or US state, or read general guides about day counting and travel history.</p>
+
+        <section class="library-search" data-library-search data-simple-search data-section="learn" aria-labelledby="learn-search-title">
+          <h2 class="search-title" id="learn-search-title">Search all rules and guides</h2>
           <div class="search-controls">
             <div class="search-query">
-              <label class="search-visually-hidden" for="learn-search-input">Search travel rules and guides</label>
+              <label class="search-visually-hidden" for="learn-search-input">Search all travel rules and guides</label>
               <svg class="search-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4 4"></path></svg>
-              <input id="learn-search-input" type="search" data-search-input autocomplete="off" placeholder="Search Portugal, New York, Schengen, 183 days…" />
+              <input id="learn-search-input" type="search" data-search-input autocomplete="off" placeholder="Search a place, rule, or topic…" />
               <button class="search-clear" type="button" data-search-clear hidden aria-label="Clear search">
                 <svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="m6 6 8 8M14 6l-8 8"></path></svg>
               </button>
             </div>
-            <div class="search-filter">
-              <label class="search-visually-hidden" for="learn-search-filter">Filter by topic</label>
-              <select id="learn-search-filter" data-search-filter>
-                <option value="">All topics</option>
-                <option value="immigration-and-entry">Visa and entry rules</option>
-                <option value="tax-residency">Tax residency</option>
-                <option value="travel-record-evidence">Travel history and proof</option>
-                <option value="travel-day-method">Day-counting methods</option>
-                <option value="product-workflow">Product workflows</option>
-              </select>
-              <svg class="search-chevron" aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="m6 8 4 4 4-4"></path></svg>
-            </div>
           </div>
-          <p class="search-status" data-search-status aria-live="polite">Search privately in your browser, or browse by place and topic below.</p>
+          <p class="search-status" data-search-status aria-live="polite">Search the full library, or browse the two sections below.</p>
           <div class="search-results" data-search-results aria-label="Travel rule and guide search results" hidden></div>
         </section>
-        <nav class="jump-links" aria-label="Travel Rule Library sections">
-          <a href="#places">Rules by place</a>
-          <a href="#topics">Guides by topic</a>
-          <a href="/help/">Help Center</a>
-        </nav>
-      </div>
 
-      <aside class="hero-panel">
-        <h2>Rules for facts. Guides for context.</h2>
-        <p>Start from a place when you know the jurisdiction, or from a topic when you are still working out which rule applies.</p>
-        <ul class="hero-list">
-          <li><a href="/learn/day-limits"><strong>All day-count rules</strong><span>Visa caps and residency thresholds collected in one reference.</span></a></li>
-          <li><a href="/learn/tax-residency-by-country"><strong>Browse countries</strong><span>Find the threshold, counting window, method, and official source.</span></a></li>
-          <li><a href="/learn/us-state-tax-residency"><strong>Browse US states</strong><span>Compare statutory-residency rules and state-specific counting methods.</span></a></li>
-          <li><a href="#topics"><strong>Browse guides by topic</strong><span>Understand rolling windows, exceptions, proof, and common mistakes.</span></a></li>
-          <li><a href="/learn/what-counts-as-a-day-for-visa-purposes"><strong>Start with day-counting fundamentals</strong><span>Clarify what counts as a day before relying on any calculation.</span></a></li>
-        </ul>
-        <div class="hero-note"><strong>Important:</strong> The library is a starting point, not legal or tax advice. Confirm live decisions with the linked official sources or a qualified professional.</div>
-      </aside>
+      </div>
     </section>
 
-    <section class="section section-card" id="places">
+    <section class="section section-card library-overview" id="rules-by-place">
       <div class="section-heading">
         <p class="section-label">Rules by place</p>
-        <h2 class="section-title">Start with the jurisdiction</h2>
-        <p>Use these reference routes when you already know the country, US state, or shared travel regime. Rule pages focus on the threshold, counting window, method, exceptions, and official source.</p>
+        <h2 class="section-title">Countries and US states</h2>
+        <p>Choose a place to find its visa, tax-residency, or absence rules. Places with several rules keep them together.</p>
       </div>
 
-      <div class="route-grid">
-        <article class="route-card">
-          <div class="route-number">01</div>
-          <h3>All day-count rules</h3>
-          <p>Scan visa and entry limits alongside residency and tax-presence thresholds in one compact directory.</p>
-          <div class="route-links">
-            <a href="/learn/day-limits">Open the Rule Directory</a>
-            <a href="/learn/what-counts-as-a-day-for-visa-purposes">What Counts as a Day?</a>
-          </div>
-        </article>
+      <div class="place-browser" data-place-browser>
+        <div class="place-filters" role="group" aria-label="Filter rules by place type">
+          <button type="button" data-place-filter="all" aria-pressed="true">All places</button>
+          <button type="button" data-place-filter="country" aria-pressed="false">Countries &amp; regions</button>
+          <button type="button" data-place-filter="state" aria-pressed="false">US states</button>
+        </div>
 
-        <article class="route-card">
-          <div class="route-number">02</div>
-          <h3>Countries</h3>
-          <p>Browse tax-residency thresholds by country, including the counting period, other residence tests, and primary government source.</p>
-          <div class="route-links">
-            <a href="/learn/tax-residency-by-country">Browse 15+ Countries</a>
-            <a href="/learn/portugal-183-day-tax-residency">Portugal</a>
-            <a href="/learn/thailand-180-day-tax-residency">Thailand</a>
-            <a href="/learn/australia-183-day-tax-residency">Australia</a>
-          </div>
-        </article>
-
-        <article class="route-card">
-          <div class="route-number">03</div>
-          <h3>US states</h3>
-          <p>Find state statutory-residency rules, day thresholds, abode requirements, presumptions, and unusual counting models.</p>
-          <div class="route-links">
-            <a href="/learn/us-state-tax-residency">Browse 21 States</a>
-            <a href="/learn/new-york-tax-residency">New York</a>
-            <a href="/learn/california-tax-residency">California</a>
-            <a href="/learn/ohio-tax-residency">Ohio</a>
-          </div>
-        </article>
-
-        <article class="route-card">
-          <div class="route-number">04</div>
-          <h3>Regions and shared regimes</h3>
-          <p>Start here when one rule applies across several countries or uses a shared rolling window rather than a national calendar.</p>
-          <div class="route-links">
-            <a href="/learn/schengen-90-180-rule">Schengen 90/180 Rule</a>
-            <a href="/learn/schengen-countries-list-90-180-rule">Schengen Countries</a>
-            <a href="/learn/schengen-rolling-window-walkthrough">Rolling Window Walkthrough</a>
-          </div>
-        </article>
+        <div class="place-grid" data-place-grid>
+          <article class="place-card" data-place-type="state">
+            <div class="place-card-heading"><h3>Arizona</h3><span>US state</span></div>
+            <a href="/learn/arizona-tax-residency">Tax residency</a>
+          </article>
+          <article class="place-card" data-place-type="country">
+            <div class="place-card-heading"><h3>Australia</h3><span>Country</span></div>
+            <a href="/learn/australia-183-day-tax-residency">Tax residency</a>
+          </article>
+          <article class="place-card" data-place-type="state">
+            <div class="place-card-heading"><h3>California</h3><span>US state</span></div>
+            <a href="/learn/california-tax-residency">Tax residency</a>
+          </article>
+          <article class="place-card" data-place-type="country">
+            <div class="place-card-heading"><h3>Canada</h3><span>Country</span></div>
+            <a href="/learn/canada-183-day-tax-residency">Tax residency</a>
+          </article>
+          <article class="place-card" data-place-type="country">
+            <div class="place-card-heading"><h3>Colombia</h3><span>Country</span></div>
+            <a href="/learn/colombia-183-day-tax-residency">Tax residency</a>
+          </article>
+          <article class="place-card" data-place-type="state">
+            <div class="place-card-heading"><h3>Colorado</h3><span>US state</span></div>
+            <a href="/learn/colorado-tax-residency">Tax residency</a>
+          </article>
+          <article class="place-card" data-place-type="state">
+            <div class="place-card-heading"><h3>Connecticut</h3><span>US state</span></div>
+            <a href="/learn/connecticut-tax-residency">Tax residency</a>
+          </article>
+          <article class="place-card" data-place-type="country">
+            <div class="place-card-heading"><h3>Estonia</h3><span>Country</span></div>
+            <a href="/learn/estonia-183-day-tax-residency">Tax residency</a>
+          </article>
+          <article class="place-card" data-place-type="country">
+            <div class="place-card-heading"><h3>Georgia</h3><span>Country</span></div>
+            <a href="/learn/georgia-183-day-tax-residency">Tax residency</a>
+          </article>
+          <article class="place-card" data-place-type="state">
+            <div class="place-card-heading"><h3>Georgia</h3><span>US state</span></div>
+            <a href="/learn/georgia-us-tax-residency">Tax residency</a>
+          </article>
+          <article class="place-card" data-place-type="country">
+            <div class="place-card-heading"><h3>Greece</h3><span>Country</span></div>
+            <a href="/learn/greece-183-day-tax-residency">Tax residency</a>
+          </article>
+          <article class="place-card" data-place-type="state">
+            <div class="place-card-heading"><h3>Hawaii</h3><span>US state</span></div>
+            <a href="/learn/hawaii-tax-residency">Tax residency</a>
+          </article>
+          <article class="place-card" data-place-type="state">
+            <div class="place-card-heading"><h3>Idaho</h3><span>US state</span></div>
+            <a href="/learn/idaho-tax-residency">Tax residency</a>
+          </article>
+          <article class="place-card" data-place-type="country">
+            <div class="place-card-heading"><h3>Ireland</h3><span>Country</span></div>
+            <a href="/learn/ireland-183-day-tax-residency">Tax residency</a>
+          </article>
+          <article class="place-card" data-place-type="country">
+            <div class="place-card-heading"><h3>Japan</h3><span>Country</span></div>
+            <a href="/learn/japan-90-day-rule">90-day visitor rule</a>
+          </article>
+          <article class="place-card" data-place-type="state">
+            <div class="place-card-heading"><h3>Maine</h3><span>US state</span></div>
+            <a href="/learn/maine-tax-residency">Tax residency</a>
+          </article>
+          <article class="place-card" data-place-type="country">
+            <div class="place-card-heading"><h3>Malta</h3><span>Country</span></div>
+            <a href="/learn/malta-183-day-tax-residency">Tax residency</a>
+          </article>
+          <article class="place-card" data-place-type="state">
+            <div class="place-card-heading"><h3>Maryland</h3><span>US state</span></div>
+            <a href="/learn/maryland-tax-residency">Tax residency</a>
+          </article>
+          <article class="place-card" data-place-type="state">
+            <div class="place-card-heading"><h3>Massachusetts</h3><span>US state</span></div>
+            <a href="/learn/massachusetts-tax-residency">Tax residency</a>
+          </article>
+          <article class="place-card" data-place-type="country">
+            <div class="place-card-heading"><h3>Mauritius</h3><span>Country</span></div>
+            <a href="/learn/mauritius-183-day-tax-residency">Tax residency</a>
+          </article>
+          <article class="place-card" data-place-type="state">
+            <div class="place-card-heading"><h3>Minnesota</h3><span>US state</span></div>
+            <a href="/learn/minnesota-tax-residency">Tax residency</a>
+          </article>
+          <article class="place-card" data-place-type="state">
+            <div class="place-card-heading"><h3>Nebraska</h3><span>US state</span></div>
+            <a href="/learn/nebraska-tax-residency">Tax residency</a>
+          </article>
+          <article class="place-card" data-place-type="state">
+            <div class="place-card-heading"><h3>New Jersey</h3><span>US state</span></div>
+            <a href="/learn/new-jersey-tax-residency">Tax residency</a>
+          </article>
+          <article class="place-card" data-place-type="state">
+            <div class="place-card-heading"><h3>New York</h3><span>US state</span></div>
+            <a href="/learn/new-york-tax-residency">Tax residency</a>
+          </article>
+          <article class="place-card" data-place-type="country">
+            <div class="place-card-heading"><h3>New Zealand</h3><span>Country</span></div>
+            <a href="/learn/new-zealand-183-day-tax-residency">Tax residency</a>
+          </article>
+          <article class="place-card" data-place-type="state">
+            <div class="place-card-heading"><h3>North Dakota</h3><span>US state</span></div>
+            <a href="/learn/north-dakota-tax-residency">Tax residency</a>
+          </article>
+          <article class="place-card" data-place-type="state">
+            <div class="place-card-heading"><h3>Ohio</h3><span>US state</span></div>
+            <a href="/learn/ohio-tax-residency">Tax residency</a>
+          </article>
+          <article class="place-card" data-place-type="state">
+            <div class="place-card-heading"><h3>Oregon</h3><span>US state</span></div>
+            <a href="/learn/oregon-tax-residency">Tax residency</a>
+          </article>
+          <article class="place-card" data-place-type="state">
+            <div class="place-card-heading"><h3>Pennsylvania</h3><span>US state</span></div>
+            <a href="/learn/pennsylvania-tax-residency">Tax residency</a>
+          </article>
+          <article class="place-card" data-place-type="country">
+            <div class="place-card-heading"><h3>Portugal</h3><span>Country</span></div>
+            <a href="/learn/portugal-183-day-tax-residency">Tax residency</a>
+          </article>
+          <article class="place-card" data-place-type="state">
+            <div class="place-card-heading"><h3>Rhode Island</h3><span>US state</span></div>
+            <a href="/learn/rhode-island-tax-residency">Tax residency</a>
+          </article>
+          <article class="place-card" data-place-type="country">
+            <div class="place-card-heading"><h3>Romania</h3><span>Country</span></div>
+            <a href="/learn/romania-183-day-tax-residency">Tax residency</a>
+          </article>
+          <article class="place-card place-card-wide" data-place-type="country">
+            <div class="place-card-heading"><h3>Schengen Area</h3><span>Region</span></div>
+            <a href="/learn/schengen-90-180-rule">90/180 rule</a>
+            <a href="/learn/schengen-countries-list-90-180-rule">Countries in the area</a>
+            <a href="/learn/schengen-rolling-window-walkthrough">Rolling-window walkthrough</a>
+            <a href="/learn/when-do-you-get-schengen-days-back-after-90-day-stay">When days come back</a>
+            <a href="/learn/schengen-single-entry-visa">Single-entry visas</a>
+          </article>
+          <article class="place-card" data-place-type="country">
+            <div class="place-card-heading"><h3>Singapore</h3><span>Country</span></div>
+            <a href="/learn/singapore-183-day-tax-residency">Tax residency</a>
+          </article>
+          <article class="place-card" data-place-type="country">
+            <div class="place-card-heading"><h3>Thailand</h3><span>Country</span></div>
+            <a href="/learn/thailand-180-day-tax-residency">Tax residency</a>
+          </article>
+          <article class="place-card" data-place-type="country">
+            <div class="place-card-heading"><h3>Türkiye</h3><span>Country</span></div>
+            <a href="/learn/turkiye-90-180-rule">90/180 visitor rule</a>
+          </article>
+          <article class="place-card" data-place-type="country">
+            <div class="place-card-heading"><h3>United Arab Emirates</h3><span>Country</span></div>
+            <a href="/learn/uae-183-day-tax-residency">Tax residency</a>
+          </article>
+          <article class="place-card place-card-wide" data-place-type="country">
+            <div class="place-card-heading"><h3>United Kingdom</h3><span>Country</span></div>
+            <a href="/learn/uk-standard-visitor-visa-180-day-rule">Standard Visitor stays</a>
+            <a href="/learn/uk-eta-vs-standard-visitor-visa">ETA vs visitor visa</a>
+            <a href="/learn/uk-statutory-residence-test">Tax residence</a>
+            <a href="/learn/uk-ilr-absence-limit">ILR absence limits</a>
+            <a href="/learn/uk-citizenship-absence-limits">Citizenship absence limits</a>
+          </article>
+          <article class="place-card place-card-wide" data-place-type="country">
+            <div class="place-card-heading"><h3>United States</h3><span>Country</span></div>
+            <a href="/learn/us-visa-waiver-90-day-limit">Visa Waiver Program</a>
+            <a href="/learn/us-b1-b2-visa-180-day-limit">B1/B2 visitor stays</a>
+            <a href="/learn/us-substantial-presence-test">Substantial Presence Test</a>
+          </article>
+          <article class="place-card" data-place-type="state">
+            <div class="place-card-heading"><h3>Vermont</h3><span>US state</span></div>
+            <a href="/learn/vermont-tax-residency">Tax residency</a>
+          </article>
+          <article class="place-card" data-place-type="state">
+            <div class="place-card-heading"><h3>Virginia</h3><span>US state</span></div>
+            <a href="/learn/virginia-tax-residency">Tax residency</a>
+          </article>
+        </div>
+        <p class="place-empty" data-place-empty hidden>No places match this filter.</p>
       </div>
     </section>
 
-    <section class="section section-card" id="topics">
+    <section class="section section-card library-overview" id="general-guides">
       <div class="section-heading">
-        <p class="section-label">Guides by topic</p>
-        <h2 class="section-title">Understand how the rule works</h2>
-        <p>Guides explain the reasoning around the reference entries: rolling windows, exceptions, common mistakes, record keeping, proof, and the questions a threshold alone cannot answer.</p>
+        <p class="section-label">General guides</p>
+        <h2 class="section-title">Rules, counting, and travel records</h2>
+        <p>Articles that explain a general concept rather than one country or state.</p>
       </div>
 
-      <div class="topics-grid">
-        <section class="topic-card">
-          <div>
-            <p class="section-label">Visa limits and rolling windows</p>
-            <h3>How visitor-day limits are usually counted</h3>
-            <p class="topic-copy">Start here when the question is how a stay limit works, how a rolling window is counted, or how a visitor regime is assessed in practice.</p>
-          </div>
-          <div class="article-list">
-            <a class="article-card" href="/learn/schengen-90-180-rule">
-              <h3>What Does 90 Days in Any 180-Day Period Mean?</h3>
-              <p>The core Schengen explainer: what the 90-day rule in Europe means, how the rolling window works, and where travelers usually miscount.</p>
-            </a>
-            <a class="article-card" href="/learn/us-b1-b2-visa-180-day-limit">
-              <h3>US B1/B2 Visa: Understanding the 180-Day Stay Limit</h3>
-              <p>How US visitor stays are assessed, where the 180-day shorthand helps, and where it can mislead.</p>
-            </a>
-            <a class="article-card" href="/learn/uk-standard-visitor-visa-180-day-rule">
-              <h3>UK Standard Visitor: How Length of Stay Is Assessed</h3>
-              <p>How UK visitor stay patterns are assessed in practice and what repeated or long stays can signal.</p>
-            </a>
-            <a class="article-card" href="/learn/schengen-rolling-window-walkthrough">
-              <h3>How the Schengen Rolling Window Actually Works</h3>
-              <p>A worked example of the rolling window when you need the day-by-day logic, not just the headline rule.</p>
-            </a>
-            <a class="article-card" href="/learn/when-do-you-get-schengen-days-back-after-90-day-stay">
-              <h3>When Do You Get Schengen Days Back After a 90-Day Stay?</h3>
-              <p>When Schengen days return and why they come back one day at a time after a long stay.</p>
-            </a>
-            <a class="article-card" href="/learn/schengen-countries-list-90-180-rule">
-              <h3>Schengen Countries List for the 90/180 Rule</h3>
-              <p>The Schengen member list relevant to short-stay counting, with EU and non-EU differences kept separate.</p>
-            </a>
-            <a class="article-card" href="/learn/uk-eta-vs-standard-visitor-visa">
-              <h3>UK ETA vs Standard Visitor Visa: What's the Difference?</h3>
-              <p>When an ETA is enough, when a visitor visa may still be required, and why neither guarantees entry.</p>
-            </a>
-            <a class="article-card" href="/learn/japan-90-day-rule">
-              <h3>Japan's 90-Day Rule Explained</h3>
-              <p>How Japan's short-stay limit works for visa-exempt visitors, what the 90 days means in practice, and where the common counting mistakes happen.</p>
-            </a>
-            <a class="article-card" href="/learn/us-visa-waiver-90-day-limit">
-              <h3>The US Visa Waiver Program 90-Day Limit</h3>
-              <p>With an approved ESTA you may be admitted for up to 90 days per visit, why side trips to Canada or Mexico do not reset the clock, and why VWP stays cannot be extended.</p>
-            </a>
-            <a class="article-card" href="/learn/turkiye-90-180-rule">
-              <h3>Turkiye's 90/180 Rule</h3>
-              <p>At most 90 days within any rolling 180-day period on a visa or visa exemption, how the rolling window is counted, and when you need a residence permit.</p>
-            </a>
-            <a class="article-card" href="/learn/schengen-single-entry-visa">
-              <h3>Schengen Single-Entry Visa: Entries vs Duration of Stay</h3>
-              <p>How to read the number of entries, the duration of stay, and the validity dates on a type C visa, and why a single-entry visa is used up once you leave.</p>
-            </a>
-            <a class="article-card" href="/learn/digital-nomad-visa-day-limits">
-              <h3>Digital Nomad Visa Day Limits: A Country-by-Country Overview</h3>
-              <p>Compare stay-length patterns across popular nomad routes without mixing them up with standard visitor rules.</p>
-            </a>
-            <a class="article-card" href="/learn/overstaying-a-visa-or-stay-limit">
-              <h3>Overstaying a Visa or Stay Limit: What It Means and Why It Matters</h3>
-              <p>What overstaying actually means, why consequences differ by country and regime, and what people most commonly misunderstand before they cross a line.</p>
-            </a>
-          </div>
-        </section>
-
-        <section class="topic-card">
-          <div>
-            <p class="section-label">Residency and tax presence</p>
-            <h3>When time in-country starts to carry heavier consequences</h3>
-            <p class="topic-copy">Start here when the question is whether time spent in a country can trigger residence, tax presence, or a continuous-residence issue.</p>
-          </div>
-          <div class="article-list">
-            <a class="article-card" href="/learn/183-day-tax-residency-rule">
-              <h3>183-Day Tax Residency Rule: What Travelers Need to Know</h3>
-              <p>What the 183-day rule usually means, where it is oversimplified, and why context still matters.</p>
-            </a>
-            <a class="article-card" href="/learn/uk-statutory-residence-test">
-              <h3>UK Statutory Residence Test: What Travelers Need to Know</h3>
-              <p>What the UK's tax-residence test is trying to determine, why 183 days is not the whole story, and how automatic tests and ties matter.</p>
-            </a>
-            <a class="article-card" href="/learn/uk-ilr-absence-limit">
-              <h3>UK ILR Absence Limits: What Continuous Residence Is Trying to Show</h3>
-              <p>What the continuous residence requirement for ILR is really assessing, how the absence limits work in practice, and why the record behind them matters.</p>
-            </a>
-            <a class="article-card" href="/learn/uk-citizenship-absence-limits">
-              <h3>UK Citizenship Absence Limits: What Naturalisation Residence Rules Are Trying to Show</h3>
-              <p>What the residence and absence requirements for British citizenship naturalisation are measuring, how the qualifying period works, and where the record behind the dates matters most.</p>
-            </a>
-            <a class="article-card" href="/learn/us-substantial-presence-test">
-              <h3>US Substantial Presence Test: What Travelers Need to Know</h3>
-              <p>What the U.S. substantial presence test is trying to determine, why the count is weighted, and where exceptions and closer analysis matter.</p>
-            </a>
-            <a class="article-card" href="/learn/tax-residency-by-country">
-              <h3>Tax Residency by Country: Browse 15+ Rules &rarr;</h3>
-              <p>The searchable directory of per-country residency rules (Portugal, Thailand, Australia, Canada, and more), each with the day threshold, counting window, how to calculate it, and the official government source.</p>
-            </a>
-            <a class="article-card" href="/learn/us-state-tax-residency">
-              <h3>US State Tax Residency: Browse 21 States &rarr;</h3>
-              <p>The searchable directory of US state residency rules (New York, California, Ohio, and more), each with the day threshold, the statutory-residence basis, how to calculate it, and the official state source.</p>
-            </a>
-          </div>
-        </section>
-
-        <section class="topic-card">
-          <div>
-            <p class="section-label">Travel history and applications</p>
-            <h3>Build a record that can survive review</h3>
-            <p class="topic-copy">Start here when you need to organize travel history for an application, interview, audit, or other formal review.</p>
-          </div>
-          <div class="article-list">
-            <a class="article-card" href="/learn/travel-history-for-visa-applications">
-              <h3>How to Prepare Travel History for a Visa Application</h3>
-              <p>What a usable travel-history record looks like and the gaps that create avoidable scrutiny.</p>
-            </a>
-            <a class="article-card" href="/learn/travel-history-template-visa-application">
-              <h3>Travel History Template for Visa Applications</h3>
-              <p>A structured format you can copy when you need dates, countries, purpose, and source notes in one place.</p>
-            </a>
-            <a class="article-card" href="/learn/export-travel-history-visa-application">
-              <h3>How to Export Your Travel History for a Visa Application</h3>
-              <p>When a clean exported record helps and what to verify before you rely on it.</p>
-            </a>
-          </div>
-        </section>
-
-        <section class="topic-card">
-          <div>
-            <p class="section-label">Proof and reconstruction</p>
-            <h3>Recover the chronology when the record is incomplete</h3>
-            <p class="topic-copy">Use these explainers when older travel data is scattered and you need to support the timeline with multiple sources.</p>
-          </div>
-          <div class="article-list">
-            <a class="article-card" href="/learn/rebuild-travel-history-from-passport-stamps-emails-photos">
-              <h3>How to Rebuild Your Travel History From Passport Stamps, Emails, and Photos</h3>
-              <p>A practical reconstruction workflow when your old travel record is scattered across multiple sources.</p>
-            </a>
-            <a class="article-card" href="/learn/prove-time-spent-in-country-without-perfect-records">
-              <h3>How to Prove Time Spent in a Country When You Don't Have Perfect Records</h3>
-              <p>How to combine direct proof, supporting evidence, and reasonable reconstruction when exact records are missing.</p>
-            </a>
-            <a class="article-card" href="/learn/prove-you-were-not-in-a-country">
-              <h3>How to Prove You Were Not in a Country</h3>
-              <p>How absence claims are really supported, why chronology matters more than one document, and what usually weakens the case.</p>
-            </a>
-          </div>
-        </section>
-
-        <section class="topic-card">
-          <div>
-            <p class="section-label">Day counting fundamentals</p>
-            <h3>Understand the counting model before you automate it</h3>
-            <p class="topic-copy">Start here when the question is what usually counts as a day, what trips people up, and why manual tracking breaks down over time.</p>
-          </div>
-          <div class="article-list">
-            <a class="article-card" href="/learn/what-counts-as-a-day-for-visa-purposes">
-              <h3>What Counts as a 'Day' for Visa Purposes?</h3>
-              <p>Entry days, exit days, transit, and the counting assumptions that vary across visa and residence regimes.</p>
-            </a>
-            <a class="article-card" href="/learn/how-to-track-travel-days">
-              <h3>How to Track Your Travel Days (And Why Spreadsheets Fail)</h3>
-              <p>Why day tracking gets harder over time and what a durable travel record needs.</p>
-            </a>
-            <a class="article-card" href="/learn/flighty-flight-history-day-count">
-              <h3>How to Turn Your Flighty Flight History Into a Visa and Residency Day Count</h3>
-              <p>Use your Flighty flight log as the source for Schengen, residency, and visa day counts — and where flights alone fall short.</p>
-            </a>
-          </div>
-        </section>
-
-        <section class="topic-card">
-          <div>
-            <p class="section-label">Country counting and travel-list questions</p>
-            <h3>Broader travel-list questions that still depend on definitions</h3>
-            <p class="topic-copy">These guides cover broader travel-list questions where the answer depends on the definition being used.</p>
-          </div>
-          <div class="article-list">
-            <a class="article-card" href="/learn/country-counting-rules-every-list-compared">
-              <h3>Country Counting Rules: Every Major List Compared</h3>
-              <p>UN, ISO, TCC, NomadMania, FIFA, and other country-counting systems compared in one place.</p>
-            </a>
-            <a class="article-card" href="/learn/how-many-countries-in-the-world">
-              <h3>How Many Countries Are There in the World?</h3>
-              <p>Why the answer changes depending on which list is being used and what each list is actually counting.</p>
-            </a>
-            <a class="article-card" href="/learn/does-a-layover-count-as-visiting-a-country">
-              <h3>Does a Layover Count as Visiting a Country?</h3>
-              <p>A practical framing for layovers, transit, and travel-list judgment calls when the answer is not purely technical.</p>
-            </a>
-          </div>
-        </section>
+      <div class="general-guide-list">
+        <a href="/learn/183-day-tax-residency-rule">183-Day Tax Residency Rule</a>
+        <a href="/learn/what-counts-as-a-day-for-visa-purposes">What Counts as a Day?</a>
+        <a href="/learn/how-to-track-travel-days">How to Track Travel Days</a>
+        <a href="/learn/digital-nomad-visa-day-limits">Digital Nomad Visa Day Limits</a>
+        <a href="/learn/overstaying-a-visa-or-stay-limit">Overstaying a Visa or Stay Limit</a>
+        <a href="/learn/travel-history-for-visa-applications">Prepare Travel History for a Visa Application</a>
+        <a href="/learn/travel-history-template-visa-application">Travel History Template for Visa Applications</a>
+        <a href="/learn/export-travel-history-visa-application">Export Travel History for a Visa Application</a>
+        <a href="/learn/rebuild-travel-history-from-passport-stamps-emails-photos">Rebuild Travel History From Existing Records</a>
+        <a href="/learn/prove-time-spent-in-country-without-perfect-records">Prove Time Spent Without Perfect Records</a>
+        <a href="/learn/prove-you-were-not-in-a-country">Prove You Were Not in a Country</a>
+        <a href="/learn/flighty-flight-history-day-count">Turn Flighty History Into a Day Count</a>
+        <a href="/learn/country-counting-rules-every-list-compared">Country-Counting Systems Compared</a>
+        <a href="/learn/how-many-countries-in-the-world">How Many Countries Are There?</a>
+        <a href="/learn/does-a-layover-count-as-visiting-a-country">Does a Layover Count as a Visit?</a>
       </div>
-
-      <p class="footer-note"><strong>Need AtlasDays workflow instead of rule guidance?</strong> Use the <a class="inline-link" href="/help/">Help Center</a> for setup, trackers, imports, exports, privacy, and sync.</p>
     </section>
 
-    <section class="section section-card" id="bridge">
-      <div class="section-heading">
-        <p class="section-label">Use the library with AtlasDays</p>
-        <h2 class="section-title">Read the rule, then keep the record clean</h2>
-        <p>The library gives you the rule and its reasoning. AtlasDays and the Help Center handle the day-to-day workflow of keeping the trip record accurate enough to support it.</p>
-      </div>
-
-      <div class="bridge-grid">
-        <article class="bridge-card">
-          <p class="section-label">Record Layer</p>
-          <h3>AtlasDays as the record layer</h3>
-          <p>AtlasDays keeps the dated trip record behind these explainers: trip chronology, tracker math, exports, and the long-term history that later questions depend on.</p>
-          <div class="mini-links">
-            <a href="/">Home</a>
-            <a href="/help/">Help Center</a>
-          </div>
-        </article>
-
-        <article class="bridge-card">
-          <p class="section-label">Help Center</p>
-          <h3>Product workflow</h3>
-          <p>The Help Center covers the AtlasDays side: setup order, tracker behavior, imports, exports, privacy, and sync.</p>
-          <div class="mini-links">
-            <a href="/help/">Help Center</a>
-            <a href="/help/trackers-and-limits">Trackers and Limits</a>
-            <a href="/help/history-and-import">Trip Modes and Record Quality</a>
-            <a href="/help/export-and-reports">Export and Reports</a>
-          </div>
-        </article>
-
-        <article class="bridge-card">
-          <p class="section-label">Core Guides</p>
-          <h3>Core explainers</h3>
-          <p>If you are starting from zero, these are the highest-value guides to open first.</p>
-          <div class="mini-links">
-            <a href="/learn/schengen-90-180-rule">90 Days in Any 180-Day Period</a>
-            <a href="/learn/183-day-tax-residency-rule">183-Day Rule</a>
-            <a href="/learn/travel-history-for-visa-applications">Travel History</a>
-            <a href="/learn/rebuild-travel-history-from-passport-stamps-emails-photos">Rebuild History</a>
-          </div>
-        </article>
-      </div>
-
-      <p class="footer-note"><strong>Reminder:</strong> For a live immigration, tax, or legal decision, confirm the governing rule with official sources or professional advice.</p>
-    </section>
+    <p class="library-disclaimer"><strong>Important:</strong> AtlasDays provides general information, not legal or tax advice. Confirm live decisions with official sources or a qualified professional.</p>
   </main>

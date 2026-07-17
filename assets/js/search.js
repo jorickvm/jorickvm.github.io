@@ -1,6 +1,31 @@
 (function () {
   "use strict";
 
+  Array.prototype.slice.call(document.querySelectorAll("[data-place-browser]")).forEach(function (browser) {
+    var buttons = Array.prototype.slice.call(browser.querySelectorAll("[data-place-filter]"));
+    var cards = Array.prototype.slice.call(browser.querySelectorAll("[data-place-type]"));
+    var empty = browser.querySelector("[data-place-empty]");
+
+    function filterPlaces(value) {
+      var visible = 0;
+      cards.forEach(function (card) {
+        var show = value === "all" || card.getAttribute("data-place-type") === value;
+        card.hidden = !show;
+        if (show) visible += 1;
+      });
+      buttons.forEach(function (button) {
+        button.setAttribute("aria-pressed", String(button.getAttribute("data-place-filter") === value));
+      });
+      if (empty) empty.hidden = visible !== 0;
+    }
+
+    buttons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        filterPlaces(button.getAttribute("data-place-filter"));
+      });
+    });
+  });
+
   var roots = Array.prototype.slice.call(document.querySelectorAll("[data-library-search]"));
   if (!roots.length) return;
 
@@ -112,7 +137,7 @@
     })
     .catch(function () {
       roots.forEach(function (root) {
-        root.querySelector("[data-search-status]").textContent = "Search is unavailable; browse by place and topic below.";
+        root.querySelector("[data-search-status]").textContent = "Search is unavailable; browse the two sections below.";
       });
     });
 })();
