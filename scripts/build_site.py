@@ -193,11 +193,11 @@ def render_hub(
         "{{SITE_FOOTER}}": footer_template.replace("{{ASSET_PREFIX}}", prefix).rstrip(),
         "{{PAGE_SCRIPTS}}": str(hub.get("page_scripts", "")).rstrip(),
         "{{SEARCH_STYLESHEET}}": (
-            f'  <link rel="stylesheet" href="{prefix}assets/css/search.css?v=20260717c" />'
+            f'  <link rel="stylesheet" href="{prefix}assets/css/search.css?v=20260717d" />'
             if family == "hub" else ""
         ),
         "{{SEARCH_SCRIPT}}": (
-            f'  <script src="{prefix}assets/js/search.js?v=20260717c"></script>'
+            f'  <script src="{prefix}assets/js/search.js?v=20260717d"></script>'
             if family == "hub" else ""
         ),
         "{{ASSET_PREFIX}}": prefix,

@@ -66,14 +66,54 @@
         var input = root.querySelector("[data-search-input]");
         var filter = root.querySelector("[data-search-filter]");
         var clear = root.querySelector("[data-search-clear]");
+        var close = root.querySelector("[data-search-close]");
         var status = root.querySelector("[data-search-status]");
         var results = root.querySelector("[data-search-results]");
         var initialStatus = status.textContent;
         var resultsId = section + "-search-results";
+        var mobileSearch = root.hasAttribute("data-simple-search") && window.matchMedia("(max-width: 640px)");
+        var mobilePlaceholder = null;
 
         results.id = resultsId;
         input.setAttribute("aria-controls", resultsId);
         input.setAttribute("aria-expanded", "false");
+
+        function syncMobileViewport() {
+          if (!root.classList.contains("search-mobile-active")) return;
+          var viewport = window.visualViewport;
+          root.style.setProperty("--search-viewport-top", (viewport ? viewport.offsetTop : 0) + "px");
+          root.style.setProperty("--search-viewport-height", (viewport ? viewport.height : window.innerHeight) + "px");
+        }
+
+        function openMobileSearch() {
+          if (!mobileSearch || !mobileSearch.matches || root.classList.contains("search-mobile-active")) return;
+          mobilePlaceholder = document.createComment("library search position");
+          root.parentNode.insertBefore(mobilePlaceholder, root);
+          document.body.appendChild(root);
+          root.classList.add("search-mobile-active");
+          root.setAttribute("role", "dialog");
+          root.setAttribute("aria-modal", "true");
+          document.documentElement.classList.add("search-overlay-open");
+          syncMobileViewport();
+          input.focus({ preventScroll: true });
+        }
+
+        function closeMobileSearch() {
+          if (!root.classList.contains("search-mobile-active")) return;
+          input.blur();
+          root.classList.remove("search-mobile-active");
+          root.removeAttribute("role");
+          root.removeAttribute("aria-modal");
+          document.documentElement.classList.remove("search-overlay-open");
+          root.style.removeProperty("--search-viewport-top");
+          root.style.removeProperty("--search-viewport-height");
+          if (mobilePlaceholder && mobilePlaceholder.parentNode) {
+            mobilePlaceholder.parentNode.insertBefore(root, mobilePlaceholder);
+            mobilePlaceholder.remove();
+          }
+          mobilePlaceholder = null;
+          render(false);
+        }
 
         function render(showResults) {
           var query = normalize(input.value);
@@ -113,7 +153,10 @@
         }
 
         input.addEventListener("input", function () { render(true); });
-        input.addEventListener("focus", function () { render(true); });
+        input.addEventListener("focus", function () {
+          openMobileSearch();
+          render(true);
+        });
         if (filter) {
           filter.addEventListener("change", function () { render(true); });
           filter.addEventListener("focus", function () {
@@ -125,13 +168,28 @@
           render(Boolean(filter && filter.value));
           input.focus();
         });
+        if (close) close.addEventListener("click", closeMobileSearch);
         root.addEventListener("keydown", function (event) {
-          if (event.key !== "Escape" || results.hidden) return;
+          if (event.key !== "Escape") return;
+          if (root.classList.contains("search-mobile-active")) {
+            closeMobileSearch();
+            return;
+          }
+          if (results.hidden) return;
           render(false);
         });
         document.addEventListener("click", function (event) {
           if (!root.contains(event.target) && !results.hidden) render(false);
         });
+        if (window.visualViewport) {
+          window.visualViewport.addEventListener("resize", syncMobileViewport);
+          window.visualViewport.addEventListener("scroll", syncMobileViewport);
+        }
+        if (mobileSearch) {
+          mobileSearch.addEventListener("change", function (event) {
+            if (!event.matches) closeMobileSearch();
+          });
+        }
         render(false);
       });
     })
