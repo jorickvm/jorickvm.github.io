@@ -92,12 +92,13 @@ def render_structured_data(article: dict[str, object]) -> str:
 
 
 def render_styles(article: dict[str, object], family: str = "article", prefix: str = "../") -> str:
+    asset_version = str(article.get("asset_version", BUILD_VERSION))
     lines = [
-        f'  <link rel="stylesheet" href="{prefix}assets/css/{family}-variants/{style_id}.css?v={BUILD_VERSION}" />'
+        f'  <link rel="stylesheet" href="{prefix}assets/css/{family}-variants/{style_id}.css?v={asset_version}" />'
         for style_id in article.get("style_variants", [])
     ]
-    lines.append(f'  <link rel="stylesheet" href="{prefix}assets/css/site-header.css?v={BUILD_VERSION}" />')
-    lines.append(f'  <link rel="stylesheet" href="{prefix}assets/css/site-footer.css?v={BUILD_VERSION}" />')
+    lines.append(f'  <link rel="stylesheet" href="{prefix}assets/css/site-header.css?v={asset_version}" />')
+    lines.append(f'  <link rel="stylesheet" href="{prefix}assets/css/site-footer.css?v={asset_version}" />')
     return "\n".join(lines)
 
 
