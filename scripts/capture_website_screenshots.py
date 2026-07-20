@@ -167,7 +167,9 @@ def main() -> int:
             )
             run([
                 "/usr/bin/xcrun", "simctl", "launch", "--terminate-running-process",
-                udid, BUNDLE_ID, "--ui-testing", "--website-screenshot", scenario,
+                udid, BUNDLE_ID,
+                "--ui-testing", "--website-screenshot", scenario,
+                "-AppleLanguages", "(en-US)", "-AppleLocale", "en_US",
             ], env=env, dry_run=args.dry_run)
             if not args.dry_run:
                 time.sleep(float(capture.get("settle_seconds", 4)))
