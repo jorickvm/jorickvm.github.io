@@ -2,13 +2,14 @@
   "use strict";
 
   var input = document.querySelector("[data-filter-input]");
-  if (!input) return;
+  var chips = Array.prototype.slice.call(document.querySelectorAll("[data-filter-chip]"));
+  if (!input && !chips.length) return;
 
   var clearBtn = document.querySelector("[data-filter-clear]");
-  var chips = Array.prototype.slice.call(document.querySelectorAll("[data-filter-chip]"));
   var items = Array.prototype.slice.call(document.querySelectorAll("[data-filter-item]"));
   var groups = Array.prototype.slice.call(document.querySelectorAll("[data-filter-group]"));
   var sections = Array.prototype.slice.call(document.querySelectorAll("[data-filter-section]"));
+  var counts = Array.prototype.slice.call(document.querySelectorAll("[data-filter-count]"));
   var empty = document.querySelector("[data-filter-empty]");
   var category = "all";
 
@@ -21,18 +22,15 @@
       .trim();
   });
 
-  // Chips narrow places only; general guides (and any untyped item) stay visible.
+  // A chip matches an item when the item lists that chip's value in data-groups.
   function matchesChip(item) {
     if (category === "all") return true;
-    var type = item.getAttribute("data-type");
-    if (!type || type === "guide") return true;
-    if (category === "country") return type !== "state"; // country + region
-    if (category === "state") return type === "state";
-    return true;
+    var groups = (item.getAttribute("data-groups") || "").split(/\s+/);
+    return groups.indexOf(category) !== -1;
   }
 
   function apply() {
-    var term = input.value.trim().toLowerCase();
+    var term = input ? input.value.trim().toLowerCase() : "";
     var anyVisible = false;
 
     items.forEach(function (item) {
@@ -49,13 +47,20 @@
       section.hidden = !section.querySelector("[data-filter-item]:not([hidden])");
     });
 
+    // Live counts reflect the visible items inside each count's own section.
+    counts.forEach(function (count) {
+      var section = count.closest("[data-filter-section]");
+      var scope = section || document;
+      count.textContent = scope.querySelectorAll("[data-filter-item]:not([hidden])").length;
+    });
+
     if (empty) empty.hidden = anyVisible;
-    if (clearBtn) clearBtn.hidden = !input.value;
+    if (clearBtn) clearBtn.hidden = !(input && input.value);
   }
 
-  input.addEventListener("input", apply);
+  if (input) input.addEventListener("input", apply);
 
-  if (clearBtn) {
+  if (clearBtn && input) {
     clearBtn.addEventListener("click", function () {
       input.value = "";
       apply();

@@ -580,3 +580,201 @@
   .search-filter select,
   .search-result { transition: none; }
 }
+
+/* ============================================================
+   Library hubs (Help Center + Travel Rules) — card-grid layout
+   Ported from the redesign mockups, driven by library-filter.js.
+   ============================================================ */
+
+.hub-hero {
+  max-width: 840px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+.hub-hero::before { display: none; }
+.hub-hero .hero-copy { padding: 4px 0 0; }
+.hub-hero .eyebrow { justify-content: center; }
+.hub-hero h1 { max-width: none; margin-inline: auto; }
+.hub-hero .subtitle { max-width: 58ch; margin-inline: auto; }
+
+.hub-hero .library-search-inline {
+  max-width: 560px;
+  margin: 26px auto 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  box-shadow: none;
+}
+.hub-hero .library-search-inline .search-controls { grid-template-columns: minmax(0, 1fr); }
+
+.hub-content {
+  max-width: 840px;
+  margin: 6px auto 0;
+}
+
+.hub-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin: 0 0 30px;
+}
+.hub-chips button {
+  min-height: 38px;
+  padding: 8px 15px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--muted);
+  background: transparent;
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 650;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: border-color 140ms ease, color 140ms ease, background 140ms ease;
+}
+.hub-chips button:hover { border-color: var(--line-strong); color: var(--text); }
+.hub-chips button[aria-pressed="true"] {
+  border-color: var(--blue);
+  color: #fff;
+  background: var(--blue);
+}
+
+.hub-section { margin-bottom: 34px; }
+.hub-section[hidden] { display: none !important; }
+
+.hub-label {
+  margin: 0 0 13px;
+  color: var(--muted-2);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+.hub-count { font-variant-numeric: tabular-nums; }
+
+.hub-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 12px;
+}
+
+/* Guide card — Help topics and Travel Rules general guides */
+.hub-card {
+  display: block;
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--bg-card);
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 140ms ease, background 140ms ease;
+}
+.hub-card:hover {
+  border-color: var(--line-strong);
+  background: color-mix(in srgb, var(--bg-elevated) 82%, var(--bg-card));
+}
+.hub-card .q {
+  margin: 0 0 5px;
+  color: var(--text);
+  font-size: 0.95rem;
+  font-weight: 650;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+.hub-card .d {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.83rem;
+  line-height: 1.5;
+}
+.hub-card[hidden] { display: none !important; }
+
+/* Place card — flag + name + type + article links */
+.hub-place {
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--bg-card);
+}
+.hub-place[hidden] { display: none !important; }
+.hub-place-head {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 4px;
+}
+.hub-flag {
+  flex-shrink: 0;
+  width: 28px;
+  height: 19px;
+  border-radius: 4px;
+  object-fit: cover;
+  border: 0.5px solid rgba(0, 0, 0, 0.25);
+  background: var(--bg-elevated);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16);
+}
+.hub-place-name {
+  color: var(--text);
+  font-size: 0.9rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+.hub-place-type {
+  color: var(--muted-2);
+  font-size: 0.72rem;
+}
+.hub-article {
+  display: block;
+  padding: 9px 0;
+  color: var(--blue);
+  font-size: 0.855rem;
+  line-height: 1.4;
+  text-decoration: none;
+}
+.hub-article + .hub-article { border-top: 1px solid var(--line); }
+.hub-article:hover { color: color-mix(in srgb, var(--blue) 68%, var(--text)); }
+
+/* Numbered general-guide groups (01 / 02 / 03) */
+.hub-guides-group { margin-bottom: 24px; }
+.hub-guides-group[hidden] { display: none !important; }
+.hub-guides-head {
+  display: flex;
+  gap: 12px;
+  align-items: baseline;
+  margin-bottom: 12px;
+}
+.hub-num {
+  color: var(--blue);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  font-variant-numeric: tabular-nums;
+}
+.hub-guides-name {
+  color: var(--text);
+  font-size: 0.95rem;
+  font-weight: 700;
+}
+
+.hub-disclaimer {
+  max-width: 76ch;
+  margin: 28px auto 0;
+  color: var(--muted-2);
+  font-size: 0.85rem;
+  line-height: 1.5;
+  text-align: center;
+}
+.hub-disclaimer strong { color: var(--muted); }
+
+@media (max-width: 600px) {
+  .hub-chips { gap: 6px; }
+  .hub-chips button { min-height: 36px; padding: 7px 12px; font-size: 0.8rem; }
+  .hub-grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hub-chips button,
+  .hub-card { transition: none; }
+}
