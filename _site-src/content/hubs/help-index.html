@@ -1,199 +1,119 @@
 <main class="page" id="main-content">
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">AtlasDays</a> / <span aria-current="page">Help Center</span></nav>
 
-    <section class="hero">
+    <section class="hero hero-simple">
       <div class="hero-copy">
-        <p class="eyebrow"><span class="dot"></span> AtlasDays Help Center</p>
+        <p class="eyebrow"><span class="dot"></span> AtlasDays Guides</p>
         <h1>Help Center</h1>
-        <p class="updated">Last updated: July 10, 2026</p>
-        <p class="subtitle">Start with the guide that matches what looks wrong or what you are trying to do in AtlasDays. For visa, residency, and travel-history rules themselves, use the <a class="text-link" href="/learn/">Travel Rule Library</a>.</p>
-        <section class="library-search" data-library-search data-section="help" aria-labelledby="help-search-title">
-          <h2 class="search-title" id="help-search-title">Find a Help guide</h2>
+        <p class="subtitle">Quick answers for using AtlasDays. Looking for visa or residency rules? Visit the <a class="text-link" href="/learn/">Travel Rule Library</a>.</p>
+        <div class="library-search library-search-inline" data-simple-search>
           <div class="search-controls">
             <div class="search-query">
-              <label class="search-visually-hidden" for="help-search-input">Search Help</label>
+              <label class="search-visually-hidden" for="help-search-input">Search the Help Center</label>
               <svg class="search-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4 4"></path></svg>
-              <input id="help-search-input" type="search" data-search-input autocomplete="off" placeholder="Search CSV, Flighty, iCloud…" />
-              <button class="search-clear" type="button" data-search-clear hidden aria-label="Clear search">
+              <input id="help-search-input" type="search" data-filter-input autocomplete="off" autocapitalize="none" enterkeyhint="search" spellcheck="false" placeholder="Search the Help Center…" />
+              <button class="search-clear" type="button" data-filter-clear hidden aria-label="Clear search">
                 <svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="m6 6 8 8M14 6l-8 8"></path></svg>
               </button>
             </div>
-            <div class="search-filter">
-              <label class="search-visually-hidden" for="help-search-filter">Filter by topic</label>
-              <select id="help-search-filter" data-search-filter>
-                <option value="">All topics</option>
-                <option value="setup-trips">Setup and trips</option>
-                <option value="imports">Imports</option>
-                <option value="trackers-counts">Trackers and counts</option>
-                <option value="reports">Reports</option>
-                <option value="privacy-sync">Privacy and sync</option>
-                <option value="pro-widgets">Pro and widgets</option>
-              </select>
-              <svg class="search-chevron" aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="m6 8 4 4 4-4"></path></svg>
-            </div>
           </div>
-          <p class="search-status" data-search-status aria-live="polite">Search privately in your browser, or browse all guides below.</p>
-          <div class="search-results" data-search-results aria-label="Help search results" hidden></div>
-        </section>
-        <nav class="jump-links" aria-label="Help Center page sections">
-          <a href="#articles">Browse guides</a>
-          <a href="#support">Contact support</a>
-          <a href="/learn/">Browse Travel Rules</a>
-        </nav>
+        </div>
       </div>
-
-      <aside class="hero-panel">
-        <h2>Choose the closest help path</h2>
-        <p>Most product questions are faster to solve when you start from the symptom.</p>
-        <ul class="hero-list">
-          <li><a href="/help/dashboard-and-map"><strong>Counts, map, or Days Abroad look wrong</strong><span>Check Dashboard and Map first.</span></a></li>
-          <li><a href="/help/trackers-and-limits"><strong>A tracker or alert looks wrong</strong><span>Review tracker scope, windows, and alert behavior.</span></a></li>
-          <li><a href="/help/history-and-import"><strong>Trips need cleanup or import help</strong><span>Start with trip quality, then Photo, CSV, or Flighty Import.</span></a></li>
-          <li><a href="/help/icloud-sync-and-restore"><strong>New phone, reinstall, or iCloud restore</strong><span>Check what sync covers and what stays device-specific.</span></a></li>
-          <li><a href="/help/privacy-location-and-sync"><strong>Privacy, Auto-Detect Trips, or notifications</strong><span>Review permissions, ignored countries, and local-first behavior.</span></a></li>
-        </ul>
-        <div class="hero-note"><strong>Still not solved?</strong> Start with the closest guide, then <a href="#support">contact support</a> with one clear example.</div>
-      </aside>
     </section>
 
-    <section class="section section-card" id="articles">
+    <section class="section section-card help-topics" id="articles" aria-labelledby="help-topics-title" data-filter-section>
       <div class="section-heading">
-        <p class="section-label">All guides</p>
-        <h2 class="section-title">Start with the closest match</h2>
-        <p>If the decision card above was not enough, browse the current AtlasDays help guides by topic.</p>
+        <p class="section-label">Help by topic</p>
+        <h2 class="section-title" id="help-topics-title">All Help guides</h2>
+        <p>Find the question closest to what you are trying to do.</p>
       </div>
 
-      <div class="article-groups">
-        <section class="article-group">
-          <div class="group-header">
-            <p class="group-kicker">Setup and trips</p>
-            <h3>Set AtlasDays up correctly and keep the trip record clean</h3>
-            <p>Start here if you are new, rebuilding history, or cleaning up imports before you trust the math.</p>
-          </div>
-          <div class="article-list">
-            <a class="article-card" href="/help/timeline-and-calendar">
-              <span class="article-tag">Timeline</span>
-              <h3>Timeline and Calendar</h3>
-              <p>Switch between List and Calendar, review inline suggestions, find photos, display US stays, and resolve overlaps.</p>
-            </a>
-            <a class="article-card" href="/help/getting-started">
-              <span class="article-tag">New setup</span>
-              <h3>Getting Started</h3>
-              <p>Set <strong>Home Country</strong> or <strong>No fixed residence</strong>, add the first trips with the right precision, and create your first tracker in the right order.</p>
-            </a>
-            <a class="article-card" href="/help/history-and-import">
-              <span class="article-tag">Trip quality</span>
-              <h3>Trip Modes and Record Quality</h3>
-              <p>Choose <strong>Exact Dates</strong>, <strong>Year</strong>, <strong>Unknown</strong>, <strong>Transit</strong>, and ongoing trips correctly so the record stays usable.</p>
-            </a>
-            <a class="article-card" href="/help/photo-import">
-              <span class="article-tag">Photo library</span>
-              <h3>Photo Import</h3>
-              <p>Scan geotagged photo and video metadata on device for free, review inferred trips, and understand duplicates, overlaps, transit detection, and US state preservation.</p>
-            </a>
-            <a class="article-card" href="/help/csv-import">
-              <span class="article-tag">CSV</span>
-              <h3>CSV Import</h3>
-              <p>Prepare CSV files, add US State rows when needed, validate before saving, and avoid duplicate, overlapping, or misleading imports.</p>
-            </a>
-            <a class="article-card" href="/help/flighty-import">
-              <span class="article-tag">Flighty</span>
-              <h3>Flighty Import</h3>
-              <p>Turn your Flighty flight history into trips, with same-day transit, overnight, and US state detection before anything is saved.</p>
-            </a>
-          </div>
+      <div class="help-topic-list">
+        <section class="help-topic" data-filter-group>
+        <h2>Get started</h2>
+        <div class="help-list">
+          <a class="help-item" href="/help/getting-started" data-filter-item>
+            <h3>How do I get started with AtlasDays?</h3>
+            <p>Choose your home-country setup, add the trips that affect today’s counts, then create your first tracker.</p>
+          </a>
+          <a class="help-item" href="/help/timeline-and-calendar" data-filter-item>
+            <h3>How do I use the Timeline and Calendar?</h3>
+            <p>Switch views, find trips and photos, review Auto-Detect suggestions, show US stays, and resolve overlaps.</p>
+          </a>
+          <a class="help-item" href="/help/dashboard-and-map" data-filter-item>
+            <h3>Why do my Dashboard or Map totals look wrong?</h3>
+            <p>Check the selected period, your home country, ongoing trips, Transit days, and US state records first.</p>
+          </a>
+        </div>
         </section>
 
-        <section class="article-group">
-          <div class="group-header">
-            <p class="group-kicker">Counts and output</p>
-            <h3>Use these when the totals, trackers, or exports look wrong</h3>
-            <p>Most issues here come from <strong>Home Country</strong>, trip precision, ongoing trips, tracker scope, or the selected export period.</p>
-          </div>
-          <div class="article-list">
-            <a class="article-card" href="/help/dashboard-and-map">
-              <span class="article-tag">Dashboard</span>
-              <h3>Dashboard and Map</h3>
-              <p>Review days abroad, period filters, country totals, map output, US states, and how same-day crossings appear in AtlasDays.</p>
-            </a>
-            <a class="article-card" href="/help/trackers-and-limits">
-              <span class="article-tag">Trackers</span>
-              <h3>Trackers and Limits</h3>
-              <p>Choose the right preset and window, check count mode, and understand why tracker totals can differ from country rows.</p>
-            </a>
-            <a class="article-card" href="/help/widgets">
-              <span class="article-tag">Widgets</span>
-              <h3>Home Screen Widgets</h3>
-              <p>Use the free World Map and small Tracker Status widgets, or unlock medium and large Tracker Trend layouts with Pro.</p>
-            </a>
-            <a class="article-card" href="/help/export-and-reports">
-              <span class="article-tag">Exports</span>
-              <h3>Export and Reports</h3>
-              <p>Export CSV or PDF, choose the correct period, and check what is actually included before assuming trips are missing.</p>
-            </a>
-            <a class="article-card" href="/help/atlasdays-pro">
-              <span class="article-tag">Plans</span>
-              <h3>AtlasDays Pro</h3>
-              <p>What's free, what Pro unlocks — including Tracker Trend widgets — and how quarterly, annual, and lifetime plans work.</p>
-            </a>
-          </div>
+        <section class="help-topic" data-filter-group>
+        <h2>Trips and imports</h2>
+        <div class="help-list">
+          <a class="help-item" href="/help/history-and-import" data-filter-item>
+            <h3>Which trip mode should I use?</h3>
+            <p>Use Exact Dates when you know them; Year, Unknown, Transit, and Open-ended each have different effects on your record.</p>
+          </a>
+          <a class="help-item" href="/help/photo-import" data-filter-item>
+            <h3>How does Photo Import work?</h3>
+            <p>AtlasDays scans location metadata on your device, suggests trips, and lets you review duplicates and overlaps before saving.</p>
+          </a>
+          <a class="help-item" href="/help/csv-import" data-filter-item>
+            <h3>How do I import a CSV?</h3>
+            <p>Format the required columns, include US State rows when needed, and review row errors and overlap warnings in the preview.</p>
+          </a>
+          <a class="help-item" href="/help/flighty-import" data-filter-item>
+            <h3>How do I import from Flighty?</h3>
+            <p>Export your Flighty history as CSV, then review how AtlasDays turns flights into stays, transit days, and overnight trips.</p>
+          </a>
+        </div>
         </section>
 
-        <section class="article-group">
-          <div class="group-header">
-            <p class="group-kicker">Privacy and sync</p>
-            <h3>Use these for permissions, Auto-Detect Trips, and iCloud behavior</h3>
-            <p>Start here for local-first privacy questions, delayed suggestions, missed crossings, notifications, reinstalls, and device changes.</p>
-          </div>
-          <div class="article-list">
-            <a class="article-card" href="/help/privacy-location-and-sync">
-              <span class="article-tag">Permissions</span>
-              <h3>Privacy, Location, and Sync</h3>
-              <p>Understand local-first privacy, inline Auto-Detect suggestions, automatic closing of confirmed Open-ended trips, ignored places, and permissions.</p>
-            </a>
-            <a class="article-card" href="/help/icloud-sync-and-restore">
-              <span class="article-tag">iCloud</span>
-              <h3>iCloud Sync and Restore</h3>
-              <p>See what iCloud sync covers, what stays device-specific, and what to expect after reinstalling, changing devices, or seeing a restore screen.</p>
-            </a>
-          </div>
+        <section class="help-topic" data-filter-group>
+        <h2>Trackers and sharing</h2>
+        <div class="help-list">
+          <a class="help-item" href="/help/trackers-and-limits" data-filter-item>
+            <h3>Why does a tracker total look wrong?</h3>
+            <p>Review the tracker’s places, time window, count mode, trip precision, and Smart Alert settings.</p>
+          </a>
+          <a class="help-item" href="/help/widgets" data-filter-item>
+            <h3>How do I add a Home Screen widget?</h3>
+            <p>Add a World Map or Tracker widget from iOS, then choose its tracker, size, and forecast display.</p>
+          </a>
+          <a class="help-item" href="/help/export-and-reports" data-filter-item>
+            <h3>How do I export my travel history?</h3>
+            <p>Choose CSV or PDF and the right date range, then check what the export includes before sharing it.</p>
+          </a>
+        </div>
+        </section>
+
+        <section class="help-topic" data-filter-group>
+        <h2>Privacy, sync, and Pro</h2>
+        <div class="help-list">
+          <a class="help-item" href="/help/privacy-location-and-sync" data-filter-item>
+            <h3>How private is AtlasDays?</h3>
+            <p>Your travel history is local-first. Learn how Photos, location, notifications, and Auto-Detect permissions are used.</p>
+          </a>
+          <a class="help-item" href="/help/icloud-sync-and-restore" data-filter-item>
+            <h3>What syncs through iCloud?</h3>
+            <p>See what moves to a new device, what stays device-specific, and what to expect after a reinstall or restore.</p>
+          </a>
+          <a class="help-item" href="/help/atlasdays-pro" data-filter-item>
+            <h3>What is included with AtlasDays Pro?</h3>
+            <p>Compare the free app with Pro features such as unlimited trackers, Smart Alerts, exports, US states, and more widgets.</p>
+          </a>
+        </div>
         </section>
       </div>
 
+      <p class="filter-empty" data-filter-empty hidden><strong>No matches</strong>Try a different word, or clear the search.</p>
     </section>
 
-    <section class="section section-card" id="support">
-      <div class="section-heading">
-        <p class="section-label">Still stuck?</p>
-        <h2 class="section-title">Contact support with one clear example</h2>
-        <p>Email support after the closest guide still leaves one specific AtlasDays behavior unresolved.</p>
+    <section class="support-note" id="support">
+      <div>
+        <h2>Still stuck?</h2>
+        <p>Email one clear example of what you expected and what happened. Include the relevant dates and a screenshot if useful.</p>
       </div>
-
-      <div class="contact-grid">
-        <article class="contact-card primary">
-          <h3>Email support</h3>
-          <p>Support is best for one clear operational question, one tracker that looks wrong, one export that seems filtered incorrectly, or one privacy or iCloud sync behavior that does not match the docs.</p>
-          <a class="cta-btn" href="#support" id="support-email" data-email-user="support" data-email-domain="atlasdays.app">Email AtlasDays support</a>
-          <p class="contact-note">For privacy, send only the minimum personal data needed to explain the issue. Avoid passport scans, full document uploads, or anything more sensitive than necessary.</p>
-        </article>
-
-        <article class="contact-card">
-          <h3>Include these details</h3>
-          <ul>
-            <li>what you expected and what AtlasDays showed instead</li>
-            <li>the exact countries, US states, and dates involved, and whether the trips are Exact Dates, Year, Unknown, ongoing, Transit, duplicate, overlapping, or imported from Photos, CSV, or Flighty</li>
-            <li>the selected tracker window, dashboard period, import date range, or export period if the issue depends on filtered output</li>
-            <li>whether Photos access, Auto-Detect Trips, notification permission, or iCloud sync were enabled, and whether the app had been force-quit if the issue involved background behavior</li>
-            <li>screenshots of the relevant tracker, timeline entries, import preview, export screen, or permissions state</li>
-            <li>your iPhone model, iOS version, and AtlasDays app version if it looks like a bug</li>
-          </ul>
-          <div class="mini-links">
-            <a href="/learn/">Travel Rules</a>
-            <a href="/privacy">Privacy Policy</a>
-            <a href="/terms">Terms</a>
-            <a href="/changelog">Changelog</a>
-          </div>
-        </article>
-      </div>
+      <a href="#support" id="support-email" data-email-user="support" data-email-domain="atlasdays.app">Email support <span aria-hidden="true">→</span></a>
     </section>
   </main>

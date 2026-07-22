@@ -26,8 +26,8 @@
 
   <script>(function(){var t=localStorage.getItem('theme');document.documentElement.setAttribute('data-theme',t==='light'?'light':'dark')})()</script>
   <link rel="stylesheet" href="../assets/css/hub-variants/a2023fe42813.css?v=20260714b" />
-  <link rel="stylesheet" href="../assets/css/search.css?v=20260717d" />
-  <link rel="stylesheet" href="../assets/css/hub-variants/bccad2bbae69.css?v=20260720b" />
+  <link rel="stylesheet" href="../assets/css/search.css?v=20260722a" />
+  <link rel="stylesheet" href="../assets/css/hub-variants/bccad2bbae69.css?v=20260722a" />
   <link rel="stylesheet" href="../assets/css/site-header.css?v=20260714b" />
   <link rel="stylesheet" href="../assets/css/site-footer.css?v=20260714b" />
 </head>
@@ -79,28 +79,22 @@
         <p class="eyebrow"><span class="dot"></span> AtlasDays Guides</p>
         <h1>Help Center</h1>
         <p class="subtitle">Quick answers for using AtlasDays. Looking for visa or residency rules? Visit the <a class="text-link" href="/learn/">Travel Rule Library</a>.</p>
-        <section class="library-search" data-library-search data-simple-search data-section="help" aria-labelledby="help-search-title">
-          <div class="search-heading">
-            <h2 class="search-title" id="help-search-title">Search Help</h2>
-            <button class="search-close" type="button" data-search-close aria-label="Close search">Done</button>
-          </div>
+        <div class="library-search library-search-inline" data-simple-search>
           <div class="search-controls">
             <div class="search-query">
-              <label class="search-visually-hidden" for="help-search-input">Search Help</label>
+              <label class="search-visually-hidden" for="help-search-input">Search the Help Center</label>
               <svg class="search-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4 4"></path></svg>
-              <input id="help-search-input" type="search" data-search-input autocomplete="off" autocapitalize="none" enterkeyhint="search" spellcheck="false" placeholder="Search the Help Center…" />
-              <button class="search-clear" type="button" data-search-clear hidden aria-label="Clear search">
+              <input id="help-search-input" type="search" data-filter-input autocomplete="off" autocapitalize="none" enterkeyhint="search" spellcheck="false" placeholder="Search the Help Center…" />
+              <button class="search-clear" type="button" data-filter-clear hidden aria-label="Clear search">
                 <svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="m6 6 8 8M14 6l-8 8"></path></svg>
               </button>
             </div>
           </div>
-          <p class="search-status" data-search-status aria-live="polite">Search by feature or question, or browse by topic below.</p>
-          <div class="search-results" data-search-results aria-label="Help search results" hidden></div>
-        </section>
+        </div>
       </div>
     </section>
 
-    <section class="section section-card help-topics" id="articles" aria-labelledby="help-topics-title">
+    <section class="section section-card help-topics" id="articles" aria-labelledby="help-topics-title" data-filter-section>
       <div class="section-heading">
         <p class="section-label">Help by topic</p>
         <h2 class="section-title" id="help-topics-title">All Help guides</h2>
@@ -108,95 +102,84 @@
       </div>
 
       <div class="help-topic-list">
-        <section class="help-topic">
+        <section class="help-topic" data-filter-group>
         <h2>Get started</h2>
         <div class="help-list">
-          <article class="help-item">
+          <a class="help-item" href="/help/getting-started" data-filter-item>
             <h3>How do I get started with AtlasDays?</h3>
             <p>Choose your home-country setup, add the trips that affect today’s counts, then create your first tracker.</p>
-            <a href="/help/getting-started">Read the getting started guide <span aria-hidden="true">→</span></a>
-          </article>
-          <article class="help-item">
+          </a>
+          <a class="help-item" href="/help/timeline-and-calendar" data-filter-item>
             <h3>How do I use the Timeline and Calendar?</h3>
             <p>Switch views, find trips and photos, review Auto-Detect suggestions, show US stays, and resolve overlaps.</p>
-            <a href="/help/timeline-and-calendar">Read the Timeline guide <span aria-hidden="true">→</span></a>
-          </article>
-          <article class="help-item">
+          </a>
+          <a class="help-item" href="/help/dashboard-and-map" data-filter-item>
             <h3>Why do my Dashboard or Map totals look wrong?</h3>
             <p>Check the selected period, your home country, ongoing trips, Transit days, and US state records first.</p>
-            <a href="/help/dashboard-and-map">Read the Dashboard and Map guide <span aria-hidden="true">→</span></a>
-          </article>
+          </a>
         </div>
         </section>
 
-        <section class="help-topic">
+        <section class="help-topic" data-filter-group>
         <h2>Trips and imports</h2>
         <div class="help-list">
-          <article class="help-item">
+          <a class="help-item" href="/help/history-and-import" data-filter-item>
             <h3>Which trip mode should I use?</h3>
             <p>Use Exact Dates when you know them; Year, Unknown, Transit, and Open-ended each have different effects on your record.</p>
-            <a href="/help/history-and-import">Read the trip modes guide <span aria-hidden="true">→</span></a>
-          </article>
-          <article class="help-item">
+          </a>
+          <a class="help-item" href="/help/photo-import" data-filter-item>
             <h3>How does Photo Import work?</h3>
             <p>AtlasDays scans location metadata on your device, suggests trips, and lets you review duplicates and overlaps before saving.</p>
-            <a href="/help/photo-import">Read the Photo Import guide <span aria-hidden="true">→</span></a>
-          </article>
-          <article class="help-item">
+          </a>
+          <a class="help-item" href="/help/csv-import" data-filter-item>
             <h3>How do I import a CSV?</h3>
             <p>Format the required columns, include US State rows when needed, and review row errors and overlap warnings in the preview.</p>
-            <a href="/help/csv-import">Read the CSV Import guide <span aria-hidden="true">→</span></a>
-          </article>
-          <article class="help-item">
+          </a>
+          <a class="help-item" href="/help/flighty-import" data-filter-item>
             <h3>How do I import from Flighty?</h3>
             <p>Export your Flighty history as CSV, then review how AtlasDays turns flights into stays, transit days, and overnight trips.</p>
-            <a href="/help/flighty-import">Read the Flighty Import guide <span aria-hidden="true">→</span></a>
-          </article>
+          </a>
         </div>
         </section>
 
-        <section class="help-topic">
+        <section class="help-topic" data-filter-group>
         <h2>Trackers and sharing</h2>
         <div class="help-list">
-          <article class="help-item">
+          <a class="help-item" href="/help/trackers-and-limits" data-filter-item>
             <h3>Why does a tracker total look wrong?</h3>
             <p>Review the tracker’s places, time window, count mode, trip precision, and Smart Alert settings.</p>
-            <a href="/help/trackers-and-limits">Read the trackers guide <span aria-hidden="true">→</span></a>
-          </article>
-          <article class="help-item">
+          </a>
+          <a class="help-item" href="/help/widgets" data-filter-item>
             <h3>How do I add a Home Screen widget?</h3>
             <p>Add a World Map or Tracker widget from iOS, then choose its tracker, size, and forecast display.</p>
-            <a href="/help/widgets">Read the widgets guide <span aria-hidden="true">→</span></a>
-          </article>
-          <article class="help-item">
+          </a>
+          <a class="help-item" href="/help/export-and-reports" data-filter-item>
             <h3>How do I export my travel history?</h3>
             <p>Choose CSV or PDF and the right date range, then check what the export includes before sharing it.</p>
-            <a href="/help/export-and-reports">Read the export guide <span aria-hidden="true">→</span></a>
-          </article>
+          </a>
         </div>
         </section>
 
-        <section class="help-topic">
+        <section class="help-topic" data-filter-group>
         <h2>Privacy, sync, and Pro</h2>
         <div class="help-list">
-          <article class="help-item">
+          <a class="help-item" href="/help/privacy-location-and-sync" data-filter-item>
             <h3>How private is AtlasDays?</h3>
             <p>Your travel history is local-first. Learn how Photos, location, notifications, and Auto-Detect permissions are used.</p>
-            <a href="/help/privacy-location-and-sync">Read the privacy and location guide <span aria-hidden="true">→</span></a>
-          </article>
-          <article class="help-item">
+          </a>
+          <a class="help-item" href="/help/icloud-sync-and-restore" data-filter-item>
             <h3>What syncs through iCloud?</h3>
             <p>See what moves to a new device, what stays device-specific, and what to expect after a reinstall or restore.</p>
-            <a href="/help/icloud-sync-and-restore">Read the iCloud guide <span aria-hidden="true">→</span></a>
-          </article>
-          <article class="help-item">
+          </a>
+          <a class="help-item" href="/help/atlasdays-pro" data-filter-item>
             <h3>What is included with AtlasDays Pro?</h3>
             <p>Compare the free app with Pro features such as unlimited trackers, Smart Alerts, exports, US states, and more widgets.</p>
-            <a href="/help/atlasdays-pro">Compare Free and Pro <span aria-hidden="true">→</span></a>
-          </article>
+          </a>
         </div>
         </section>
       </div>
+
+      <p class="filter-empty" data-filter-empty hidden><strong>No matches</strong>Try a different word, or clear the search.</p>
     </section>
 
     <section class="support-note" id="support">
@@ -246,6 +229,7 @@
   <script src="../assets/js/theme.js?v=20260714b"></script>
   <script src="../assets/js/navigation.js?v=20260714b"></script>
   <script src="../assets/js/search.js?v=20260717d"></script>
+  <script src="../assets/js/library-filter.js?v=20260722a"></script>
 <script>
 (function() {
     var el = document.getElementById('support-email');
