@@ -22,6 +22,7 @@
   position: sticky;
   top: 0;
   z-index: 20;
+  padding: 0;
   backdrop-filter: blur(18px);
   -webkit-backdrop-filter: blur(18px);
   background: color-mix(in srgb, var(--bg, #0a0b0d) 78%, transparent);
@@ -145,6 +146,7 @@ html[data-theme="light"] { --blue: #246ca8; }
 .mobile-menu summary:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
 .mobile-menu-panel {
   position: absolute;
+  z-index: 50;
   top: calc(100% + 10px);
   right: 0;
   width: min(290px, calc(100vw - 28px));
@@ -165,24 +167,53 @@ html[data-theme="light"] { --blue: #246ca8; }
   color: var(--muted);
   text-decoration: none;
 }
+.mobile-menu-theme {
+  width: 100%;
+  min-height: 44px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 0;
+  border-radius: 10px;
+  color: var(--muted);
+  background: transparent;
+  font: inherit;
+  cursor: pointer;
+}
+.mobile-menu-theme:hover {
+  color: var(--text);
+  background: color-mix(in srgb, var(--blue) 10%, transparent);
+}
+.mobile-menu-theme-icon {
+  width: 24px;
+  display: grid;
+  place-items: center;
+}
+.mobile-menu-theme-icon > * { grid-area: 1 / 1; }
 .mobile-menu-panel a:hover,
 .mobile-menu-panel a[aria-current="page"] { color: var(--text); background: color-mix(in srgb, var(--blue) 10%, transparent); }
 .mobile-menu-panel .mobile-menu-cta { margin-top: 4px; color: #fff; background: var(--blue); font-weight: 700; }
 .mobile-menu-panel .mobile-menu-cta:hover { color: #fff; background: var(--blue); opacity: 0.92; }
 
 @media (max-width: 760px) {
+  .top-bar {
+    /* Not sticky on mobile, but still `relative` with a z-index: dropping to
+       `static` removes the stacking context the open menu panel depends on,
+       and the page content below then paints straight through it. */
+    position: relative;
+    z-index: 40;
+    background: var(--bg, #0a0b0d);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
   .top-bar-inner {
     width: min(var(--max), calc(100% - 28px));
-    min-height: 64px;
+    min-height: 56px;
     gap: 14px;
   }
-  .top-links {
-    gap: 14px;
-    font-size: 0.92rem;
-  }
-  .top-links a.hide-mobile { display: none; }
-  .top-cta { padding: 7px 13px; }
-  .top-links a:not(.top-cta) { display: none; }
+  .brand-mark { width: 32px; height: 32px; }
+  .top-links { display: none; }
   .mobile-menu { display: block; }
 }
 

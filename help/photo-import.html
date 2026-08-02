@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Photo Import — AtlasDays Help Center</title>
-  <meta name="description" content="Use AtlasDays Photo Import to scan geotagged photo metadata on device, review inferred trips and US states, handle duplicates and overlaps, and understand privacy." />
+  <meta name="description" content="Use photo location metadata to suggest AtlasDays trips, then review dates, countries, duplicates, and overlaps before saving." />
   <meta property="og:title" content="Photo Import — AtlasDays Help Center" />
-  <meta property="og:description" content="Use AtlasDays Photo Import to scan geotagged photo metadata on device, review inferred trips and US states, handle duplicates and overlaps, and understand privacy." />
+  <meta property="og:description" content="Use photo location metadata to suggest AtlasDays trips, then review dates, countries, duplicates, and overlaps before saving." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/help/photo-import" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Photo Import — AtlasDays Help Center" />
-  <meta name="twitter:description" content="Use AtlasDays Photo Import to scan geotagged photo metadata on device, review inferred trips and US states, handle duplicates and overlaps, and understand privacy." />
+  <meta name="twitter:description" content="Use photo location metadata to suggest AtlasDays trips, then review dates, countries, duplicates, and overlaps before saving." />
   <meta name="apple-itunes-app" content="app-id=6760133544, app-argument=https://apps.apple.com/app/atlasdays-track-country-days/id6760133544" />
   <meta property="og:image" content="https://atlasdays.app/assets/social/help/photo-import.png" />
   <meta property="og:image:type" content="image/png" />
@@ -25,38 +25,52 @@
   <link rel="icon" type="image/png" href="../assets/brand/favicon_dark.png?v=20260325a" media="(prefers-color-scheme: dark)" />
   <script type="application/ld+json">
   {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      "itemListElement": [
-        { "@type": "ListItem", "position": 1, "name": "AtlasDays", "item": "https://atlasdays.app" },
-        { "@type": "ListItem", "position": 2, "name": "Help Center", "item": "https://atlasdays.app/help/" },
-        { "@type": "ListItem", "position": 3, "name": "Photo Import", "item": "https://atlasdays.app/help/photo-import" }
-      ]
-    }
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "AtlasDays",
+        "item": "https://atlasdays.app"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Help Center",
+        "item": "https://atlasdays.app/help/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "Photo Import",
+        "item": "https://atlasdays.app/help/photo-import"
+      }
+    ]
+  }
   </script>
   <script type="application/ld+json">
   {
-      "@context": "https://schema.org",
-      "@type": "Article",
-      "headline": "Photo Import",
-      "description": "Use AtlasDays Photo Import to scan geotagged photo metadata on device, review inferred trips and US states, handle duplicates and overlaps, and understand privacy.",
-      "author": {
-        "@type": "Organization",
-        "name": "AtlasDays"
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "AtlasDays"
-      },
-      "url": "https://atlasdays.app/help/photo-import",
-      "image": "https://atlasdays.app/assets/article-images/help/photo-import/screenshot-import-options.webp",
-      "dateModified": "2026-07-10"
-    }
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "Photo Import",
+    "description": "Use photo location metadata to suggest AtlasDays trips, then review dates, countries, duplicates, and overlaps before saving.",
+    "author": {
+      "@type": "Organization",
+      "name": "AtlasDays"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "AtlasDays"
+    },
+    "url": "https://atlasdays.app/help/photo-import",
+    "dateModified": "2026-08-02"
+  }
   </script>
   <script>(function(){var t=localStorage.getItem('theme');document.documentElement.setAttribute('data-theme',t==='light'?'light':'dark')})()</script>
-  <link rel="stylesheet" href="../assets/css/article-variants/59bbc21cc155.css?v=20260714b" />
-  <link rel="stylesheet" href="../assets/css/site-header.css?v=20260714b" />
-  <link rel="stylesheet" href="../assets/css/site-footer.css?v=20260714b" />
+  <link rel="stylesheet" href="../assets/css/article-variants/help20260802.css?v=20260802a" />
+  <link rel="stylesheet" href="../assets/css/site-header.css?v=20260802a" />
+  <link rel="stylesheet" href="../assets/css/site-footer.css?v=20260802a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
@@ -92,6 +106,13 @@
           <a href="/changelog">Changelog</a>
           <a href="/about">About</a>
           <a href="/support">Support</a>
+          <button class="mobile-menu-theme" type="button" onclick="toggleTheme()">
+            <span>Change appearance</span>
+            <span class="mobile-menu-theme-icon" aria-hidden="true">
+              <svg class="icon-sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+              <svg class="icon-moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            </span>
+          </button>
           <a class="mobile-menu-cta" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">Get the app</a>
         </nav>
       </details>
@@ -100,156 +121,58 @@
 
   <main id="main-content">
   <article>
-    <nav class="breadcrumb">
-      <a href="/">AtlasDays</a> / <a href="/help/">Help Center</a>
-    </nav>
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">AtlasDays</a> / <a href="/help/">Help Center</a></nav>
 
     <h1>Photo Import</h1>
-    <p class="updated">Last updated: July 10, 2026</p>
-    <p class="subtitle">Rebuild travel history from geotagged photo metadata, review inferred trips before saving, and understand privacy, duplicates, overlaps, transit detection, video evidence, and US state preservation.</p>
+<p class="article-answer">Photo Import scans location information in your photo library on the device, groups evidence into suggested trips, and lets you review everything before saving.</p>
 
-    <h2>What This Page Helps You Do</h2>
-    <p>Use this page when you want AtlasDays to scan your photo library for travel evidence instead of entering every old trip manually or preparing a CSV file first.</p>
-    <p>By the end of this page, you should know:</p>
-    <ul>
-      <li>when Photo Import is the right tool and when manual entry, CSV import, or Flighty import is safer</li>
-      <li>what Photos access is used for</li>
-      <li>how AtlasDays turns photo metadata into trip suggestions</li>
-      <li>what to check before saving imported trips</li>
-      <li>what happens to photo previews after import</li>
-      <li>why a scan might find no trips</li>
-    </ul>
+    <h2>Start Photo Import</h2>
+    <ol>
+      <li>Open <strong>Settings → Import → Photos</strong>.</li>
+      <li>Choose the date range and allow Photos access if requested.</li>
+      <li>Start the scan and keep AtlasDays open while it examines the selected library.</li>
+      <li>Review the proposed trips before saving.</li>
+    </ol>
+    <!-- SCREENSHOT_DEFERRED: photo-setup | import-photos -->
+    <!-- SCREENSHOT_DEFERRED: photo-permission | import-photos -->
+    <!-- SCREENSHOT_DEFERRED: photo-scan | import-photos-scanning -->
 
-    <div class="callout">
-      <p><strong>Photo Import drafts trips for review.</strong> It does not silently add your whole photo history to the trip record. Nothing is saved until you review the suggestions and confirm the import.</p>
-    </div>
+    <h2>What AtlasDays examines</h2>
+    <p>AtlasDays uses photo timestamps and embedded location coordinates when available. The scan and country resolution happen on your device; the photos themselves are not uploaded to AtlasDays.</p>
 
-    <h2>When to Use Photo Import</h2>
-    <p>Photo Import is useful when you have geotagged photos from past travel and want a faster first draft of your travel history. It is especially useful after onboarding, after a reinstall, or when your timeline is still mostly empty.</p>
-    <p>Use manual entry instead when only a few important trips matter, when you already know the exact dates, or when a trip affects a live visa, residency, or paperwork question and you want to enter it from source documents yourself.</p>
-    <p>Use <a href="/help/csv-import">CSV Import</a> instead when your source is already a spreadsheet, booking export, passport-stamp notes, or another structured list. Use <a href="/help/flighty-import">Flighty Import</a> instead when your source is a Flighty flight-history export.</p>
+    <h2>Review every proposal</h2>
+    <p>Check the country or US state, start and end dates, and any duplicate or overlap warning. A photo’s location is evidence, not proof of the exact moment you crossed a border.</p>
+    <!-- SCREENSHOT_DEFERRED: photo-review | import-photos-review -->
 
-    <h2>Where Photo Import Lives</h2>
-    <p>Go to <strong>Settings &gt; Import</strong>, choose <strong>Photos</strong>, then tap <strong>Find Trips in Photos</strong>. If your timeline is empty or you just finished onboarding, AtlasDays can also show an import prompt in Timeline.</p>
-    <p><strong>Find Photos…</strong> in the Timeline menu is a separate tool. Instead of creating new trips, it scans your library to match geotagged photos to trips already in your timeline. Use it to add photo previews to existing trips without importing new ones.</p>
-    <figure class="atlasdays-screenshot">
-      <img src="../assets/article-images/help/photo-import/screenshot-import-options.webp" alt="Photo Import screen showing privacy notes, scan period controls, and the Find Trips in Photos button" width="1320" height="2868" decoding="async" loading="lazy" />
-    </figure>
-    <p>You can scan a selected year, a preset range, or a custom date range. Photo Import itself is free for every available scan period. Pro changes how detected US states are preserved; it does not unlock older photo history.</p>
+    <h2>Handle gaps conservatively</h2>
+    <p>Photos without location information cannot support a suggestion. Long gaps between geotagged photos may also produce boundaries that need manual correction. Edit the saved trip in <a href="/help/timeline-and-calendar">Timeline</a> when better evidence is available.</p>
 
-    <h2>What Photos Access Is For</h2>
-    <p>AtlasDays asks for full Photos access because iOS requires it for an automatic library scan. Selected Photos access is not enough for the full-library scan. The scan reads metadata such as dates and locations. Altitude and media-type metadata can be used to filter out likely airplane-window photos, screenshots, and screen recordings.</p>
-    <ul>
-      <li>Photo Import runs on device.</li>
-      <li>AtlasDays does not copy your photo files into its own database, analyze image contents, or upload your photos to an AtlasDays-operated server. Imported trips can show thumbnails or open related photos from your Photos library.</li>
-      <li>The scan does not need an internet connection.</li>
-      <li>AtlasDays uses bundled country boundaries on device to resolve photo locations to countries.</li>
-      <li>Imported trips can store local photo references so AtlasDays can load previews from your Photos library later.</li>
-      <li>You can skip Photo Import and keep using AtlasDays manually without Photos access.</li>
-    </ul>
-
-    <h2>How the Scan Works</h2>
-    <p>AtlasDays looks for photo or video assets with usable date and GPS metadata, skips media that is unlikely to represent a real stay, then groups the remaining evidence by country and date.</p>
-    <p>Videos can help detect trips when they have readable dates and locations. They are used as evidence only; the preview gallery shows photos, not videos.</p>
-    <p>The result is a set of draft trip candidates. A candidate can be marked with warnings when it looks like a duplicate, overlaps another trip, was inferred from limited evidence, has gaps, or may be transit.</p>
-    <p>Photo Import can miss trips if photos have no location metadata, if camera location services were off, if the scan range excludes those dates, or if the available evidence is too thin to infer a clean stay.</p>
-
-    <h2>US State Detection</h2>
-    <p>When photos have GPS data from within the United States, AtlasDays can resolve those locations to individual states. How this appears in the review screen depends on your plan:</p>
-    <ul>
-      <li><strong>AtlasDays Pro:</strong> US trips are split into per-state candidates. Each candidate shows the detected state alongside the country.</li>
-      <li><strong>Free plan:</strong> detected states appear as a preview without per-state import rows. Upgrade to Pro to import state-tagged trips.</li>
-    </ul>
-    <p>In the review screen, use the <strong>US states found</strong> filter to focus on state-detected candidates. You can still edit the state, adjust dates, or remove any candidate before confirming the import. State-tagged trips can feed US State trackers and the full-screen state map; plain United States trips cannot identify which state should count.</p>
-
-    <h2>Review Before Saving</h2>
-    <p>After scanning, AtlasDays opens a review screen. Use it like a draft inbox, not like an automatic source of truth.</p>
-    <ul>
-      <li><strong>Ready to import</strong> candidates are selected by default.</li>
-      <li><strong>Duplicates</strong> are skipped so they do not recreate trips already in your record.</li>
-      <li><strong>Overlaps</strong> are warnings. Review them before trusting downstream totals.</li>
-      <li><strong>Transit</strong> can be detected for short pass-through candidates, but you should still confirm it.</li>
-      <li><strong>US states</strong> appear as importable state-tagged candidates for Pro users and as a detected-state preview for free users.</li>
-      <li>You can tap a candidate to edit its country, dates, purpose, transit state, and notes before import.</li>
-      <li>You can deselect or delete candidates you do not want to save.</li>
-    </ul>
-
-    <h2>After Import: Photo Previews</h2>
-    <p>Trips created from Photo Import can keep local photo references. AtlasDays uses those references to show thumbnails on trip cards and to open related photos from your Photos library.</p>
-    <ul>
-      <li>The photo files stay in Photos. AtlasDays does not copy them into its own trip database.</li>
-      <li>If you delete a referenced photo from Photos, its preview can disappear from AtlasDays.</li>
-      <li>If the original is stored in iCloud Photos, iOS may retrieve it through Apple's Photos services when you open it.</li>
-      <li>Videos can help create a trip suggestion, but only photos appear in the trip photo preview gallery.</li>
-      <li>If you revoke Photos access later, imported trips remain in your timeline, but thumbnails or fullscreen photo previews may stop loading.</li>
-    </ul>
-
-    <h2>If No Trips Are Found</h2>
-    <p>A scan that finds no trips usually means AtlasDays could not find enough usable travel evidence in the selected range.</p>
-    <ul>
-      <li>Check that Photos access is set to <strong>Full Access</strong>. Selected Photos access is not enough for an automatic library scan.</li>
-      <li>Check that the selected scan range includes the trip dates you expected to find.</li>
-      <li>Photos need usable date and GPS metadata. Photos without location metadata cannot become location evidence.</li>
-      <li>Screenshots, screen recordings, and likely airplane-window photos can be skipped.</li>
-      <li>AtlasDays can exclude media that appears to have been received from someone else rather than captured by you, so another person's geotagged photo is less likely to become your trip.</li>
-      <li>If a trip has only thin evidence, manual entry or CSV import may be more reliable.</li>
-    </ul>
-
-    <h2>When Imported Photo Trips Are Trustworthy Enough</h2>
-    <p>Treat Photo Import as a reconstruction aid. It is good at finding likely travel from geotagged media, but the final trip record is only as trustworthy as the evidence and your review.</p>
-    <ul>
-      <li>Use imported trips as a starting point for old history, then verify important stays against stronger source material when needed.</li>
-      <li>Review duplicates, overlaps, and transit badges before trusting dashboard totals or trackers.</li>
-      <li>Confirm exact start and end dates for any trip that affects a live rule or paperwork question.</li>
-      <li>Remember that photos without location metadata cannot prove where you were.</li>
-      <li>After import, review the new trips in Timeline and clean up anything that still looks provisional.</li>
-    </ul>
-
-    <h2>Managing a Saved Photo Import</h2>
-    <p>After saving, open <strong>Settings &gt; Manage Imports</strong> to inspect imported batches. Use it when you need to review which trips came from a scan or remove an entire mistaken import together. Deleting an import batch removes the trips from that batch, so inspect the batch before confirming.</p>
-
-    <h2>Common Photo Import Questions</h2>
-    <h3>Why does AtlasDays need Full Photos access?</h3>
-    <p>Photo Import scans your library automatically for dated, geotagged photo evidence. iOS needs you to grant <strong>Full Access</strong> for that kind of scan. If you choose <strong>Selected Photos</strong>, AtlasDays cannot scan the full library for past trips.</p>
-
-    <h3>Are my photos uploaded or analyzed?</h3>
-    <p>No. The trip-drafting scan runs on your device and uses photo metadata such as dates, GPS locations, altitude, media type, and local photo references. AtlasDays does not upload your photo library to an AtlasDays-operated server and does not analyze the image contents.</p>
-
-    <h3>Why did my home country appear as a trip?</h3>
-    <p>Photo Import groups evidence by country and date. If you have geotagged photos in your home country, AtlasDays may draft those dates too. Delete or deselect home-country candidates that are not useful for your record, or keep them if they help explain a wider travel timeline.</p>
-
-    <h3>Why are some trips marked Duplicate, Overlap, Transit, or based on limited evidence?</h3>
-    <p><strong>Duplicate</strong> means the candidate matches an existing trip and is skipped by default. <strong>Overlap</strong> means the dates share time with an existing trip and should be reviewed. <strong>Transit</strong> means AtlasDays detected a likely short pass-through stay. Limited-evidence candidates usually have thin evidence, near-border evidence, or inferred gaps.</p>
-
-    <h3>What happens if I delete a photo or revoke Photos access?</h3>
-    <p>The imported trip stays in your timeline, but photo previews depend on your Photos library. If you delete a referenced photo, its preview can disappear. If you revoke Photos access, thumbnails and fullscreen previews may stop loading until access is restored.</p>
-
-    <h3>Will photo thumbnails work on another device?</h3>
-    <p>Imported trips can store local photo references. If <strong>iCloud sync</strong> is on, the trip record can sync with the rest of your AtlasDays data, but the actual photo files remain managed by Apple Photos and iCloud Photos. A new device still needs Photos access, and previews depend on whether Apple Photos can resolve those referenced photos on that device.</p>
-
-    <h3>Can Photo Import prove travel dates for paperwork?</h3>
-    <p>Treat it as a reconstruction aid, not official proof. Use it to find likely stays, then verify important dates against passport stamps, tickets, accommodation records, emails, or other source material before relying on the record for visa, residency, tax, or legal questions.</p>
-
-    <h2>What Photo Import Does Not Do</h2>
-    <ul>
-      <li>It does <strong>not</strong> create official travel records.</li>
-      <li>It does <strong>not</strong> prove exact border-crossing dates without your review.</li>
-      <li>It does <strong>not</strong> upload or back up your photo library.</li>
-      <li>It does <strong>not</strong> replace <strong>Auto-Detect Trips</strong> for future movement.</li>
-      <li>It does <strong>not</strong> replace CSV import when your source material is already structured.</li>
-      <li>It does <strong>not</strong> replace Flighty import when your source material is a Flighty flight-history export.</li>
-    </ul>
-
-    <div class="cta-box">
-      <h3>Where to go next</h3>
-      <p><a href="/help/history-and-import">Trip Modes and Record Quality</a> explains how to decide whether imported trips should be trusted as exact, adjusted, or cleaned up.</p>
-      <p><a href="/help/csv-import">CSV Import</a> is the better path when your source material is a spreadsheet or structured travel list.</p>
-      <p><a href="/help/flighty-import">Flighty Import</a> is the better path when your source material is a Flighty flight-history export.</p>
-      <p><a href="/help/dashboard-and-map">Dashboard and Map</a> helps you verify the totals and country view after importing photo-based trips.</p>
-      <p><a href="/help/trackers-and-limits">Trackers and Limits</a> explains why imported trips still need review before you rely on a tracker.</p>
-      <p><a href="/help/privacy-location-and-sync">Privacy, Location, and Sync</a> covers Photos access, location permission, notifications, Auto-Detect Trips, and iCloud behavior in one place.</p>
-    </div>
-
+    <section class="if-needed">
+      <h2>If no trips are found</h2>
+      <p>Confirm AtlasDays can access the intended photos, choose a period containing geotagged images, and check that location was enabled when those photos were taken.</p>
+    </section>
+    <nav class="help-next" aria-labelledby="next-photo-import">
+      <h2 id="next-photo-import">Continue with</h2>
+      <ul>
+        <li><a href="/help/history-and-import">
+          <strong>Understanding Trip Modes</strong>
+          <span>Choose an honest precision for suggestions with uncertain boundaries.</span>
+        </a></li>
+        <li><a href="/help/auto-detect-trips">
+          <strong>Auto-Detect Trips</strong>
+          <span>Detect future travel without rescanning old photos.</span>
+        </a></li>
+        <li><a href="/help/privacy-location-and-sync">
+          <strong>Privacy and Permissions</strong>
+          <span>Review how Photos and location permissions are used.</span>
+        </a></li>
+      </ul>
+    </nav>
+    <aside class="help-contact">
+      <h2>Still need help?</h2>
+      <p><a href="mailto:support@atlasdays.app">Contact AtlasDays Support</a> with the relevant dates, what you expected, and what happened.</p>
+    </aside>
+    <p class="help-updated">Last updated August 2, 2026</p>
   </article>
   </main>
 

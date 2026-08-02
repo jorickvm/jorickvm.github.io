@@ -45,9 +45,9 @@
     }
   </script>
   <script>(function(){var t=localStorage.getItem('theme');document.documentElement.setAttribute('data-theme',t==='light'?'light':'dark')})()</script>
-  <link rel="stylesheet" href="../assets/css/hub-variants/92c3adc0daf3.css?v=20260714b" />
-  <link rel="stylesheet" href="../assets/css/site-header.css?v=20260714b" />
-  <link rel="stylesheet" href="../assets/css/site-footer.css?v=20260714b" />
+  <link rel="stylesheet" href="../assets/css/hub-variants/92c3adc0daf3.css?v=20260802a" />
+  <link rel="stylesheet" href="../assets/css/site-header.css?v=20260802a" />
+  <link rel="stylesheet" href="../assets/css/site-footer.css?v=20260802a" />
   <link rel="stylesheet" href="../assets/css/search.css?v=20260722a" />
 </head>
 <body>
@@ -84,6 +84,13 @@
           <a href="/changelog">Changelog</a>
           <a href="/about">About</a>
           <a href="/support">Support</a>
+          <button class="mobile-menu-theme" type="button" onclick="toggleTheme()">
+            <span>Change appearance</span>
+            <span class="mobile-menu-theme-icon" aria-hidden="true">
+              <svg class="icon-sun" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+              <svg class="icon-moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            </span>
+          </button>
           <a class="mobile-menu-cta" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">Get the app</a>
         </nav>
       </details>
@@ -96,7 +103,7 @@
     </nav>
 
     <h1>Tax Residency by Country</h1>
-    <p class="lede">Find your country to see the day threshold that can make you a tax resident, the counting window it uses, how to calculate it, and the official government source. Covering <!-- HUB_COUNT_START -->25<!-- HUB_COUNT_END --> countries so far.</p>
+    <p class="lede">Find your country to see the day threshold that can make you a tax resident, the counting window it uses, how to calculate it, and the official government source. Covering <!-- HUB_COUNT_START -->15<!-- HUB_COUNT_END --> countries so far.</p>
 
     <div class="hub-search">
       <input type="search" id="hubSearch" placeholder="Search a country..." aria-label="Search countries" autocomplete="off" />
@@ -116,12 +123,6 @@
           <td>Income year</td>
           <td class="hub-td-go"><span aria-hidden="true">&rarr;</span></td>
         </tr>
-        <tr class="hub-row" data-name="bulgaria" data-href="/learn/bulgaria-183-day-tax-residency">
-          <td class="hub-td-country"><img class="hub-row-flag" src="../assets/flags/bg.png" alt="" width="30" height="22" loading="lazy" /> <a href="/learn/bulgaria-183-day-tax-residency">Bulgaria</a></td>
-          <td>&gt; 183 days</td>
-          <td>Rolling 12 months</td>
-          <td class="hub-td-go"><span aria-hidden="true">&rarr;</span></td>
-        </tr>
         <tr class="hub-row" data-name="canada" data-href="/learn/canada-183-day-tax-residency">
           <td class="hub-td-country"><img class="hub-row-flag" src="../assets/flags/ca.png" alt="" width="30" height="22" loading="lazy" /> <a href="/learn/canada-183-day-tax-residency">Canada</a></td>
           <td>≥ 183 days</td>
@@ -132,18 +133,6 @@
           <td class="hub-td-country"><img class="hub-row-flag" src="../assets/flags/co.png" alt="" width="30" height="22" loading="lazy" /> <a href="/learn/colombia-183-day-tax-residency">Colombia</a></td>
           <td>&gt; 183 days</td>
           <td>Rolling 365 days</td>
-          <td class="hub-td-go"><span aria-hidden="true">&rarr;</span></td>
-        </tr>
-        <tr class="hub-row" data-name="cyprus" data-href="/learn/cyprus-183-day-tax-residency">
-          <td class="hub-td-country"><img class="hub-row-flag" src="../assets/flags/cy.png" alt="" width="30" height="22" loading="lazy" /> <a href="/learn/cyprus-183-day-tax-residency">Cyprus</a></td>
-          <td>&gt; 183 days</td>
-          <td>Calendar year</td>
-          <td class="hub-td-go"><span aria-hidden="true">&rarr;</span></td>
-        </tr>
-        <tr class="hub-row" data-name="czech republic" data-href="/learn/czech-republic-183-day-tax-residency">
-          <td class="hub-td-country"><img class="hub-row-flag" src="../assets/flags/cz.png" alt="" width="30" height="22" loading="lazy" /> <a href="/learn/czech-republic-183-day-tax-residency">Czech Republic</a></td>
-          <td>≥ 183 days</td>
-          <td>Calendar year</td>
           <td class="hub-td-go"><span aria-hidden="true">&rarr;</span></td>
         </tr>
         <tr class="hub-row" data-name="estonia" data-href="/learn/estonia-183-day-tax-residency">
@@ -164,27 +153,9 @@
           <td>Rolling 12 months</td>
           <td class="hub-td-go"><span aria-hidden="true">&rarr;</span></td>
         </tr>
-        <tr class="hub-row" data-name="indonesia" data-href="/learn/indonesia-183-day-tax-residency">
-          <td class="hub-td-country"><img class="hub-row-flag" src="../assets/flags/id.png" alt="" width="30" height="22" loading="lazy" /> <a href="/learn/indonesia-183-day-tax-residency">Indonesia</a></td>
-          <td>&gt; 183 days</td>
-          <td>Rolling 12 months</td>
-          <td class="hub-td-go"><span aria-hidden="true">&rarr;</span></td>
-        </tr>
         <tr class="hub-row" data-name="ireland" data-href="/learn/ireland-183-day-tax-residency">
           <td class="hub-td-country"><img class="hub-row-flag" src="../assets/flags/ie.png" alt="" width="30" height="22" loading="lazy" /> <a href="/learn/ireland-183-day-tax-residency">Ireland</a></td>
           <td>≥ 183 days</td>
-          <td>Calendar year</td>
-          <td class="hub-td-go"><span aria-hidden="true">&rarr;</span></td>
-        </tr>
-        <tr class="hub-row" data-name="italy" data-href="/learn/italy-183-day-tax-residency">
-          <td class="hub-td-country"><img class="hub-row-flag" src="../assets/flags/it.png" alt="" width="30" height="22" loading="lazy" /> <a href="/learn/italy-183-day-tax-residency">Italy</a></td>
-          <td>≥ 183 days</td>
-          <td>Calendar year</td>
-          <td class="hub-td-go"><span aria-hidden="true">&rarr;</span></td>
-        </tr>
-        <tr class="hub-row" data-name="malaysia" data-href="/learn/malaysia-182-day-tax-residency">
-          <td class="hub-td-country"><img class="hub-row-flag" src="../assets/flags/my.png" alt="" width="30" height="22" loading="lazy" /> <a href="/learn/malaysia-182-day-tax-residency">Malaysia</a></td>
-          <td>≥ 182 days</td>
           <td>Calendar year</td>
           <td class="hub-td-go"><span aria-hidden="true">&rarr;</span></td>
         </tr>
@@ -200,22 +171,10 @@
           <td>Income year</td>
           <td class="hub-td-go"><span aria-hidden="true">&rarr;</span></td>
         </tr>
-        <tr class="hub-row" data-name="montenegro" data-href="/learn/montenegro-183-day-tax-residency">
-          <td class="hub-td-country"><img class="hub-row-flag" src="../assets/flags/me.png" alt="" width="30" height="22" loading="lazy" /> <a href="/learn/montenegro-183-day-tax-residency">Montenegro</a></td>
-          <td>&gt; 183 days</td>
-          <td>Calendar year</td>
-          <td class="hub-td-go"><span aria-hidden="true">&rarr;</span></td>
-        </tr>
         <tr class="hub-row" data-name="new zealand" data-href="/learn/new-zealand-183-day-tax-residency">
           <td class="hub-td-country"><img class="hub-row-flag" src="../assets/flags/nz.png" alt="" width="30" height="22" loading="lazy" /> <a href="/learn/new-zealand-183-day-tax-residency">New Zealand</a></td>
           <td>&gt; 183 days</td>
           <td>Rolling 12 months</td>
-          <td class="hub-td-go"><span aria-hidden="true">&rarr;</span></td>
-        </tr>
-        <tr class="hub-row" data-name="poland" data-href="/learn/poland-183-day-tax-residency">
-          <td class="hub-td-country"><img class="hub-row-flag" src="../assets/flags/pl.png" alt="" width="30" height="22" loading="lazy" /> <a href="/learn/poland-183-day-tax-residency">Poland</a></td>
-          <td>&gt; 183 days</td>
-          <td>Calendar year</td>
           <td class="hub-td-go"><span aria-hidden="true">&rarr;</span></td>
         </tr>
         <tr class="hub-row" data-name="portugal" data-href="/learn/portugal-183-day-tax-residency">
@@ -227,12 +186,6 @@
         <tr class="hub-row" data-name="romania" data-href="/learn/romania-183-day-tax-residency">
           <td class="hub-td-country"><img class="hub-row-flag" src="../assets/flags/ro.png" alt="" width="30" height="22" loading="lazy" /> <a href="/learn/romania-183-day-tax-residency">Romania</a></td>
           <td>&gt; 183 days</td>
-          <td>Rolling 12 months</td>
-          <td class="hub-td-go"><span aria-hidden="true">&rarr;</span></td>
-        </tr>
-        <tr class="hub-row" data-name="serbia" data-href="/learn/serbia-183-day-tax-residency">
-          <td class="hub-td-country"><img class="hub-row-flag" src="../assets/flags/rs.png" alt="" width="30" height="22" loading="lazy" /> <a href="/learn/serbia-183-day-tax-residency">Serbia</a></td>
-          <td>≥ 183 days</td>
           <td>Rolling 12 months</td>
           <td class="hub-td-go"><span aria-hidden="true">&rarr;</span></td>
         </tr>
@@ -250,12 +203,6 @@
         </tr>
         <tr class="hub-row" data-name="united arab emirates" data-href="/learn/uae-183-day-tax-residency">
           <td class="hub-td-country"><img class="hub-row-flag" src="../assets/flags/ae.png" alt="" width="30" height="22" loading="lazy" /> <a href="/learn/uae-183-day-tax-residency">United Arab Emirates</a></td>
-          <td>≥ 183 days</td>
-          <td>Rolling 12 months</td>
-          <td class="hub-td-go"><span aria-hidden="true">&rarr;</span></td>
-        </tr>
-        <tr class="hub-row" data-name="vietnam" data-href="/learn/vietnam-183-day-tax-residency">
-          <td class="hub-td-country"><img class="hub-row-flag" src="../assets/flags/vn.png" alt="" width="30" height="22" loading="lazy" /> <a href="/learn/vietnam-183-day-tax-residency">Vietnam</a></td>
           <td>≥ 183 days</td>
           <td>Rolling 12 months</td>
           <td class="hub-td-go"><span aria-hidden="true">&rarr;</span></td>
@@ -319,7 +266,7 @@
 
   <script src="../assets/js/theme.js?v=20260714b"></script>
   <script src="../assets/js/navigation.js?v=20260714b"></script>
-  <script src="../assets/js/search.js?v=20260717d"></script>
+  <script src="../assets/js/search.js?v=20260802b"></script>
 <script>
 (function () {
     var input = document.getElementById('hubSearch');

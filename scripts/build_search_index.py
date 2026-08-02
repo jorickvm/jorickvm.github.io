@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import json
+from html.parser import HTMLParser
 from pathlib import Path
 
 
@@ -12,13 +13,34 @@ ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "_site-src" / "data"
 OUTPUT = ROOT / "assets" / "search-index.json"
 
-HELP_CATEGORIES = {
-    "getting-started": "setup-trips", "timeline-and-calendar": "setup-trips", "history-and-import": "setup-trips",
-    "photo-import": "imports", "csv-import": "imports", "flighty-import": "imports",
-    "dashboard-and-map": "trackers-counts", "trackers-and-limits": "trackers-counts",
-    "export-and-reports": "reports", "privacy-location-and-sync": "privacy-sync",
-    "icloud-sync-and-restore": "privacy-sync", "atlasdays-pro": "pro-widgets", "widgets": "pro-widgets",
-}
+class HeadingParser(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__()
+        self.in_heading = False
+        self.current: list[str] = []
+        self.headings: list[str] = []
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        if tag in {"h1", "h2", "h3"}:
+            self.in_heading = True
+            self.current = []
+
+    def handle_endtag(self, tag: str) -> None:
+        if tag in {"h1", "h2", "h3"} and self.in_heading:
+            value = " ".join(" ".join(self.current).split())
+            if value:
+                self.headings.append(value)
+            self.in_heading = False
+
+    def handle_data(self, data: str) -> None:
+        if self.in_heading:
+            self.current.append(data)
+
+
+def help_headings(record: dict[str, object]) -> list[str]:
+    parser = HeadingParser()
+    parser.feed((ROOT / "_site-src" / str(record["content"])).read_text(encoding="utf-8"))
+    return parser.headings
 
 
 def arguments() -> argparse.Namespace:
@@ -47,7 +69,7 @@ def build() -> dict[str, object]:
         slug = Path(path).stem
         title = str(record["title"]).replace(" — AtlasDays Help Center", "").replace(" — AtlasDays", "")
         if section == "help":
-            category = HELP_CATEGORIES.get(slug, "setup-trips")
+            category = str(record.get("category", "trips-travel-days"))
             jurisdiction = ""
             pillar = False
         else:
@@ -63,7 +85,16 @@ def build() -> dict[str, object]:
                 "title": title,
                 "description": description(record),
                 "jurisdiction": jurisdiction,
-                "keywords": sorted({slug.replace("-", " "), category.replace("-", " "), jurisdiction.lower()} - {""}),
+                "keywords": sorted(
+                    {
+                        slug.replace("-", " "),
+                        category.replace("-", " "),
+                        jurisdiction.lower(),
+                        *(str(value).lower() for value in record.get("search_synonyms", [])),
+                        *(value.lower() for value in help_headings(record) if section == "help"),
+                    }
+                    - {""}
+                ),
                 "url": route(path),
                 "pillar": pillar,
             }

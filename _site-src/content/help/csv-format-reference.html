@@ -1,0 +1,44 @@
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">AtlasDays</a> / <a href="/help/">Help Center</a></nav>
+
+    <h1>CSV Format Reference</h1>
+<p class="article-answer">Only the <strong>Country</strong> column is required. AtlasDays finds supported columns by header name, so their order does not matter.</p>
+
+    <h2>Recommended headers</h2>
+    <p><code>Country,State,Start Date,End Date,Purpose,Notes</code></p>
+    <ul>
+      <li><strong>Country:</strong> English <a href="/help/languages">country name</a>, ISO two-letter code, or a recognized common alias.</li>
+      <li><strong>State:</strong> optional US state name, postal abbreviation, or ISO subdivision code such as <code>US-CA</code>.</li>
+      <li><strong>Start Date / End Date:</strong> exact date, year, or empty according to the rules below.</li>
+      <li><strong>Purpose:</strong> Tourism, Business, Medical, <a href="/help/history-and-import">Transit</a>, or Personal; multiple non-Transit purposes may be comma-separated.</li>
+      <li><strong>Notes:</strong> optional text.</li>
+    </ul>
+    <!-- SCREENSHOT_DEFERRED: csv-reference | import-csv -->
+
+    <h2>Date formats</h2>
+    <h3>Exact Dates</h3>
+    <p>Use <code>yyyy-mm-dd</code> in both date columns. Leave End Date empty only for an ongoing trip.</p>
+    <h3>Year</h3>
+    <p>Use a four-digit year in Start Date. End Date can contain a year or remain empty for the same year. A multi-year range can be expanded by AtlasDays into year records.</p>
+    <h3>Unknown</h3>
+    <p>Leave both date cells empty. The country is preserved as a visit without numeric days.</p>
+
+    <h2>US state rows</h2>
+    <p>Use State only for a United States trip. If one US visit covered several states and you need state-level records, use one row per state. A plain US row is valid for country-level tracking.</p>
+
+    <h2>Transit</h2>
+    <p>Put <code>Transit</code> in Purpose when you did not enter the country. Transit is exclusive: do not combine it with Tourism, Business, or another purpose.</p>
+
+    <h2>Example</h2>
+    <pre><code>Country,State,Start Date,End Date,Purpose,Notes
+France,,2026-03-01,2026-03-05,Tourism,
+United States,CA,2026-04-10,2026-04-15,Business,Conference
+Japan,,2024,,Tourism,Dates not known
+United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></pre>
+
+    <h2>Delimiter and quoting</h2>
+    <p>AtlasDays recognizes comma, semicolon, and tab-delimited files from the header row. Quote fields that contain the delimiter or a line break according to normal CSV rules.</p>
+
+    <section class="if-needed">
+      <h2>If a value is not recognized</h2>
+      <p>Use an ISO country code, an unambiguous English country name, ISO dates, and a standard US state name or code. Keep the original row number so it is easy to compare with the import preview.</p>
+    </section>

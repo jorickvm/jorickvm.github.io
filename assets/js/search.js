@@ -33,6 +33,20 @@
     return String(value || "").toLowerCase().replace(/[^a-z0-9]+/g, " ").replace(/\bdays\b/g, "day").trim();
   }
 
+  // Words that carry no signal on their own. Dropping them lets a natural
+  // question ("how do i add a trip") be judged on "add" and "trip" alone.
+  var STOP_WORDS = [
+    "a", "an", "and", "are", "can", "did", "do", "does", "for", "from", "get",
+    "has", "have", "how", "i", "if", "in", "is", "it", "me", "my", "of", "on",
+    "or", "the", "to", "what", "when", "where", "why", "with", "you", "your"
+  ];
+
+  function meaningfulTerms(query) {
+    return query.split(" ").filter(function (term) {
+      return term.length > 1 && STOP_WORDS.indexOf(term) === -1;
+    });
+  }
+
   function score(entry, query) {
     if (!query) return entry.pillar ? 2 : 1;
     var title = normalize(entry.title);
@@ -40,6 +54,8 @@
     var keywords = normalize(entry.keywords.join(" "));
     var description = normalize(entry.description);
     var value = 0;
+
+    // Whole-phrase matches stay the strongest signal.
     if (title === query) value += 160;
     else if (title.indexOf(query) === 0) value += 120;
     else if (title.indexOf(query) !== -1) value += 90;
@@ -47,9 +63,27 @@
     else if (jurisdiction.indexOf(query) !== -1) value += 45;
     if (keywords.indexOf(query) !== -1) value += 35;
     if (description.indexOf(query) !== -1) value += 20;
-    query.split(" ").forEach(function (term) {
-      if (term.length > 1 && title.indexOf(term) !== -1) value += 8;
+
+    // Then each meaningful word on its own, so a phrasing we did not
+    // anticipate still reaches the right article.
+    var terms = meaningfulTerms(query);
+    var matched = 0;
+    terms.forEach(function (term) {
+      var hit = 0;
+      if (title.indexOf(term) !== -1) hit = 12;
+      else if (keywords.indexOf(term) !== -1) hit = 8;
+      else if (jurisdiction.indexOf(term) !== -1) hit = 8;
+      else if (description.indexOf(term) !== -1) hit = 5;
+      if (hit) {
+        matched += 1;
+        value += hit;
+      }
     });
+
+    // Require most of the query to be accounted for. Without this a single
+    // incidental word would surface unrelated entries.
+    if (terms.length && matched * 2 < terms.length) return 0;
+
     if (entry.pillar && value > 0) value += query.indexOf(" ") === -1 ? 150 : 5;
     return value;
   }
@@ -122,9 +156,15 @@
           var matches = entries
             .map(function (entry) { return { entry: entry, score: score(entry, query) }; })
             .filter(function (item) {
+              // score() already discards entries that match too little of the
+              // query, so any positive score here is a genuine hit.
               return (!category || item.entry.category === category) && (!query || item.score > 0);
             })
-            .sort(function (a, b) { return b.score - a.score || a.entry.title.localeCompare(b.entry.title); });
+            .sort(function (a, b) {
+              return b.score - a.score
+                || a.entry.title.length - b.entry.title.length
+                || a.entry.title.localeCompare(b.entry.title);
+            });
 
           results.replaceChildren();
           results.hidden = !active || showResults === false;
@@ -135,7 +175,9 @@
           if (!matches.length) {
             var empty = document.createElement("p");
             empty.className = "search-empty";
-            empty.textContent = "No matching rule or guide. Try a country, US state, region, or broader topic.";
+            empty.textContent = section === "help"
+              ? "No matching Help article. Try a feature name, task, or shorter phrase."
+              : "No matching rule or guide. Try a country, US state, region, or broader topic.";
             results.appendChild(empty);
             return;
           }
@@ -195,7 +237,7 @@
     })
     .catch(function () {
       roots.forEach(function (root) {
-        root.querySelector("[data-search-status]").textContent = "Search is unavailable; browse the two sections below.";
+        root.querySelector("[data-search-status]").textContent = "Search is unavailable; browse the topics below.";
       });
     });
 })();

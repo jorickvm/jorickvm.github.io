@@ -12,6 +12,14 @@
   var counts = Array.prototype.slice.call(document.querySelectorAll("[data-filter-count]"));
   var empty = document.querySelector("[data-filter-empty]");
   var category = "all";
+  var desktopTopics = window.matchMedia("(min-width: 761px)");
+
+  function restoreTopicDisclosures() {
+    groups.forEach(function (group) {
+      if (group.tagName !== "DETAILS") return;
+      group.open = desktopTopics.matches || group.hasAttribute("data-default-open");
+    });
+  }
 
   // Cache each item's searchable text: an explicit data-search wins, otherwise
   // fall back to the item's own visible text (name, titles, descriptions).
@@ -42,6 +50,7 @@
     // Hide a group or section once everything inside it is filtered out.
     groups.forEach(function (group) {
       group.hidden = !group.querySelector("[data-filter-item]:not([hidden])");
+      if (term && group.tagName === "DETAILS" && !group.hidden) group.open = true;
     });
     sections.forEach(function (section) {
       section.hidden = !section.querySelector("[data-filter-item]:not([hidden])");
@@ -56,6 +65,7 @@
 
     if (empty) empty.hidden = anyVisible;
     if (clearBtn) clearBtn.hidden = !(input && input.value);
+    if (!term) restoreTopicDisclosures();
   }
 
   if (input) input.addEventListener("input", apply);
@@ -77,6 +87,12 @@
       apply();
     });
   });
+
+  if (desktopTopics.addEventListener) {
+    desktopTopics.addEventListener("change", restoreTopicDisclosures);
+  } else if (desktopTopics.addListener) {
+    desktopTopics.addListener(restoreTopicDisclosures);
+  }
 
   apply();
 })();

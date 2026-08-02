@@ -23,7 +23,7 @@ HUB_TEMPLATE = SOURCE_ROOT / "templates" / "hub.html"
 HEADER_TEMPLATE = SOURCE_ROOT / "templates" / "partials" / "site-header.html"
 FOOTER_TEMPLATE = SOURCE_ROOT / "templates" / "partials" / "site-footer.html"
 CLUSTER_DATA_PATH = SOURCE_ROOT / "data" / "content-clusters.json"
-BUILD_VERSION = "20260714b"
+BUILD_VERSION = "20260802a"
 
 
 def parse_args() -> argparse.Namespace:
@@ -148,6 +148,65 @@ def render_cluster_related(article: dict[str, object]) -> str:
     )
 
 
+def render_help_tail(article: dict[str, object]) -> str:
+    if article.get("section") != "help":
+        return ""
+    items = []
+    for step in article.get("next_steps", []):
+        items.append(
+            "\n".join(
+                [
+                    f'        <li><a href="{html.escape(str(step["url"]))}">',
+                    f'          <strong>{html.escape(str(step["title"]))}</strong>',
+                    f'          <span>{html.escape(str(step["description"]))}</span>',
+                    "        </a></li>",
+                ]
+            )
+        )
+    identifier = "next-" + Path(str(article["path"])).stem
+    updated = html.escape(str(article.get("last_updated", "August 2, 2026")))
+    return "\n".join(
+        [
+            f'    <nav class="help-next" aria-labelledby="{identifier}">',
+            f'      <h2 id="{identifier}">Continue with</h2>',
+            "      <ul>",
+            *items,
+            "      </ul>",
+            "    </nav>",
+            '    <aside class="help-contact">',
+            "      <h2>Still need help?</h2>",
+            '      <p><a href="mailto:support@atlasdays.app">Contact AtlasDays Support</a> with the relevant dates, what you expected, and what happened.</p>',
+            "    </aside>",
+            f'    <p class="help-updated">Last updated {updated}</p>',
+        ]
+    )
+
+
+def validate_help_next_steps(articles: list[dict[str, object]]) -> None:
+    help_articles = [article for article in articles if article.get("section") == "help"]
+    routes = {"/" + str(article["path"]).removesuffix(".html") for article in help_articles}
+    errors = []
+    for article in help_articles:
+        current = "/" + str(article["path"]).removesuffix(".html")
+        steps = article.get("next_steps", [])
+        if not 2 <= len(steps) <= 3:
+            errors.append(f"{article['path']}: expected 2 or 3 next_steps")
+            continue
+        urls = [str(step.get("url", "")) for step in steps]
+        if len(urls) != len(set(urls)):
+            errors.append(f"{article['path']}: duplicate next_steps")
+        if current in urls:
+            errors.append(f"{article['path']}: next_steps contains a self-link")
+        for url in urls:
+            if url not in routes:
+                errors.append(f"{article['path']}: missing next-step route {url}")
+        for step in steps:
+            if not step.get("title") or not step.get("description"):
+                errors.append(f"{article['path']}: incomplete next-step metadata")
+    if errors:
+        raise SystemExit("Invalid Help next-step metadata:\n  " + "\n  ".join(errors))
+
+
 def render_article(
     article: dict[str, object],
     template: str,
@@ -163,7 +222,7 @@ def render_article(
         "{{SITE_HEADER}}": render_header(article, header_template),
         "{{SITE_FOOTER}}": footer_template.replace("{{ASSET_PREFIX}}", "../").rstrip(),
         "{{ARTICLE_CONTENT}}": content,
-        "{{CLUSTER_RELATED}}": render_cluster_related(article),
+        "{{CLUSTER_RELATED}}": render_help_tail(article) or render_cluster_related(article),
         "{{ASSET_PREFIX}}": "../",
     }
     rendered = template
@@ -198,7 +257,7 @@ def render_hub(
             if family == "hub" else ""
         ),
         "{{SEARCH_SCRIPT}}": (
-            f'  <script src="{prefix}assets/js/search.js?v=20260717d"></script>'
+            f'  <script src="{prefix}assets/js/search.js?v=20260802b"></script>'
             if family == "hub" else ""
         ),
         "{{ASSET_PREFIX}}": prefix,
@@ -212,6 +271,7 @@ def render_hub(
 def main() -> int:
     args = parse_args()
     data = json.loads(DATA_PATH.read_text(encoding="utf-8"))
+    validate_help_next_steps(data.get("articles", []))
     template = ARTICLE_TEMPLATE.read_text(encoding="utf-8")
     header_template = HEADER_TEMPLATE.read_text(encoding="utf-8")
     footer_template = FOOTER_TEMPLATE.read_text(encoding="utf-8")

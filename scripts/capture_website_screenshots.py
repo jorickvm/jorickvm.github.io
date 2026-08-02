@@ -178,8 +178,10 @@ def main() -> int:
             for target_value in capture.get("targets", []):
                 write_target(raw_png, SITE_ROOT / target_value, width, height, env, args.dry_run)
             if not args.dry_run:
+                # Provenance is a timestamp and a device, deliberately not an
+                # app version: the site never refers to AtlasDays by version
+                # number, in copy or in metadata.
                 capture["last_captured_at"] = captured_at
-                capture["captured_app_version"] = manifest["app_version"]
                 capture["captured_device"] = device_name
 
     if not args.dry_run:

@@ -44,8 +44,8 @@ class SearchIndexTests(unittest.TestCase):
         cls.entries = json.loads((ROOT / "assets/search-index.json").read_text())["entries"]
 
     def first(self, query: str, section: str) -> str:
-        matches = [entry for entry in self.entries if entry["section"] == section and score(entry, query) > 0]
-        matches.sort(key=lambda entry: (-score(entry, query), str(entry["title"])))
+        matches = [entry for entry in self.entries if entry["section"] == section and score(entry, query) >= 20]
+        matches.sort(key=lambda entry: (-score(entry, query), len(str(entry["title"])), str(entry["title"])))
         self.assertTrue(matches, query)
         return str(matches[0]["url"])
 
@@ -54,6 +54,14 @@ class SearchIndexTests(unittest.TestCase):
             ("CSV", "help"): "/help/csv-import",
             ("Flighty", "help"): "/help/flighty-import",
             ("iCloud", "help"): "/help/icloud-sync-and-restore",
+            ("arrival day", "help"): "/help/day-counting",
+            ("edit trip", "help"): "/help/timeline-and-calendar",
+            ("restore purchase", "help"): "/help/atlasdays-pro",
+            ("missing data", "help"): "/help/icloud-sync-and-restore",
+            ("backup", "help"): "/help/export-and-reports",
+            ("widget blank", "help"): "/help/widgets",
+            ("notification", "help"): "/help/smart-alerts",
+            ("ground crossing", "help"): "/help/auto-detect-trips",
             ("Schengen", "learn"): "/learn/schengen-90-180-rule",
             ("183 days", "learn"): "/learn/183-day-tax-residency-rule",
             ("New York", "learn"): "/learn/new-york-tax-residency",
