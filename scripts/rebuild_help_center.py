@@ -77,6 +77,31 @@ def image_relpath(slug: str, key: str) -> str:
     return f"assets/article-images/help/{slug}/{key}.webp"
 
 
+def webp_dimensions(path: Path) -> tuple[int, int] | None:
+    """Intrinsic size of a WebP, straight from its header.
+
+    Only the two container shapes this project produces are handled: simple
+    lossy (``VP8 ``) and the extended form cwebp writes for cropped output
+    (``VP8X``). Anything else returns None and the tag simply omits the size.
+    """
+    try:
+        data = path.read_bytes()[:32]
+    except OSError:
+        return None
+    if len(data) < 30 or data[:4] != b"RIFF" or data[8:12] != b"WEBP":
+        return None
+    chunk = data[12:16]
+    if chunk == b"VP8X":
+        width = int.from_bytes(data[24:27], "little") + 1
+        height = int.from_bytes(data[27:30], "little") + 1
+        return width, height
+    if chunk == b"VP8 ":
+        width = int.from_bytes(data[26:28], "little") & 0x3FFF
+        height = int.from_bytes(data[28:30], "little") & 0x3FFF
+        return width, height
+    return None
+
+
 # Phrases that should become a link to the article that explains them, longest
 # first so "CSV Format Reference" wins over "CSV Import". Only the first
 # mention in an article is linked, headings and existing links are skipped, and
@@ -164,9 +189,18 @@ def wrap_content(article: dict[str, object]) -> str:
         relpath = image_relpath(slug, key)
         if (ROOT / relpath).exists():
             alt = str(item["alt"]).replace('"', "&quot;")
+            # Intrinsic size is read off the file rather than assumed: control
+            # crops are all different shapes, and without width/height the
+            # browser reflows the article as each image arrives.
+            size = webp_dimensions(ROOT / relpath)
+            dimensions = f' width="{size[0]}" height="{size[1]}"' if size else ""
+            # A landscape shot (the iPad captures) must not be squeezed into the
+            # portrait-phone width cap, or it lands on a phone at a tenth of its
+            # size and nothing in it can be read.
+            landscape = " help-shot-landscape" if size and size[0] > size[1] else ""
             replacement = (
-                f'<figure class="help-shot help-shot-{item["crop"]}">'
-                f'<img src="/{relpath}" alt="{alt}" loading="lazy" decoding="async" />'
+                f'<figure class="help-shot help-shot-{item["crop"]}{landscape}">'
+                f'<img src="/{relpath}" alt="{alt}"{dimensions} loading="lazy" decoding="async" />'
                 f"</figure>"
             )
         else:
@@ -332,7 +366,6 @@ add(
 
     <h2>Delete a trip</h2>
     <p>Open the trip and choose <strong>Delete Trip</strong>, or use the delete action available from the Timeline row. AtlasDays briefly offers Undo after a Timeline deletion.</p>
-    {{shot:delete-trip}}
     {{shot:undo}}
 
     <h2>Switch between List and Calendar</h2>
@@ -357,7 +390,6 @@ add(
     shots=[
         shot("timeline-list", "timeline", "Above the Add a trip steps", "Timeline list containing past and ongoing trips", priority="p0", crop="screen"),
         shot("add-edit", "edit-trip", "End of the Edit a trip section", "Edit Trip sheet showing country and exact dates", priority="p0", crop="screen"),
-        shot("delete-trip", "edit-trip", "In the Delete a trip section, on the Delete Trip control", "Delete Trip button inside the trip editor", priority="p1", crop="control"),
         shot("undo", "timeline-undo", "In the Delete a trip section, on the Undo toast", "Undo toast shown briefly after deleting a trip", priority="p1", crop="control"),
         shot("calendar", "timeline-calendar", "In the Switch between List and Calendar section", "Calendar view with trips spanning several dates", priority="p0", crop="screen"),
         shot("us-breakdown", "timeline", "In the United States stays section", "United States state breakdown in the Timeline", priority="p1", crop="control"),
@@ -437,7 +469,6 @@ add(
 
     <h2>Transit</h2>
     <p>Choose <strong>Transit</strong> when you did not enter the country. Transit contributes zero days and does not mark the country as visited.</p>
-    {{shot:mode-exact}}
     {{shot:mode-year}}
     {{shot:mode-unknown}}
     {{shot:mode-transit}}
@@ -458,7 +489,6 @@ add(
     ],
     synonyms=["exact dates", "year only", "unknown date", "open ended", "ongoing", "transit", "approximate trip", "approximate", "dont know the dates", "rough dates", "old trips"],
     shots=[
-        shot("mode-exact", "add-trip", "In the Exact Dates section", "Trip editor with Exact Dates selected", priority="p0", crop="control"),
         shot("mode-year", "trip-editor-year", "In the Year section", "Trip editor with Year precision selected", priority="p1", crop="control"),
         shot("mode-unknown", "trip-editor-unknown", "In the Unknown section", "Trip editor with Unknown precision selected", priority="p1", crop="control"),
         shot("mode-transit", "trip-editor-transit", "In the Transit section", "Trip editor with Transit selected", priority="p1", crop="control"),
@@ -480,7 +510,6 @@ add(
 
     <h2>Days Abroad uses Home Country</h2>
     <p>With a Home Country selected, Days Abroad reflects exact recorded days outside that country. With <strong>No fixed residence</strong>, it reflects exact recorded travel days without subtracting one home country.</p>
-    {{shot:days-abroad}}
 
     <h2>The map and totals answer different questions</h2>
     <p>A non-Transit trip can highlight a country as visited even when its mode is Year or Unknown. Those approximate trips do not create numeric day totals. Transit does neither.</p>
@@ -488,7 +517,6 @@ add(
 
     <h2>United States detail</h2>
     <p>A country-level United States trip can highlight the US and contribute to US totals. State-level views require a state on the trip; an untagged US trip cannot be assigned to a state automatically.</p>
-    {{shot:us-detail}}
 
     <h2>Share cards follow the Dashboard</h2>
     <p>Review the period and visible result before sharing. You can choose the share-card appearance and language without changing the underlying trip record.</p>
@@ -507,9 +535,7 @@ add(
     synonyms=["dashboard totals", "map highlights", "days abroad", "visited countries", "period selector", "share card", "map wrong", "country count", "map", "statistics"],
     shots=[
         shot("period-selector", "dashboard", "In the Start with the selected period section", "Dashboard period selector open", priority="p0", crop="control"),
-        shot("days-abroad", "dashboard", "In the Days Abroad section", "Dashboard Days Abroad card", priority="p1", crop="control"),
         shot("map-state", "full-map", "In the map and totals section", "AtlasDays world map with visited countries highlighted", priority="p0", crop="screen"),
-        shot("us-detail", "dashboard", "In the United States detail section", "Dashboard showing United States totals", priority="p1", crop="control"),
         shot("share-cards", "share-cards", "In the Share cards section", "Share preview showing AtlasDays Dashboard cards", priority="p1", crop="control"),
     ],
 )
@@ -539,7 +565,6 @@ add(
       <li><strong>Calendar year</strong> uses January 1 through December 31.</li>
       <li><strong>Per entry</strong> evaluates a continuous stay rather than adding unrelated visits.</li>
     </ul>
-    {{shot:window-picker}}
 
     <p>Tracking the Schengen 90/180 rule? <a href="/help/schengen-90-180">Follow the dedicated walkthrough</a> instead of building it by hand.</p>
 
@@ -570,8 +595,7 @@ add(
     shots=[
         shot("category-picker", "tracker-categories", "Directly after step 2, the category list", "Add Tracker category picker showing Residence, Schengen, Visa and Entry Limits, Travel Goal, US State, and Custom", priority="p0", crop="screen"),
         shot("preset-picker", "tracker-presets", "Directly after step 3, the preset list", "Tracker preset picker with available rules for the chosen category", priority="p0", crop="screen"),
-        shot("window-picker", "tracker-editor", "Directly under the three window bullets", "Tracker editor window control showing Rolling, Calendar Year, and Per Entry", priority="p0", crop="control"),
-        shot("configured-editor", "tracker-editor", "End of the Review the places section", "Configured tracker editor showing places, window, and limit", priority="p1", crop="screen"),
+        shot("configured-editor", "tracker-editor", "End of the Review the places section", "Configured tracker editor showing places, window, and limit", priority="p0", crop="screen"),
     ],
 )
 
@@ -656,7 +680,6 @@ add(
 
     <h2>Read the forecast</h2>
     <p>Open the tracker that covers those countries. When planned travel would take you past a limit, AtlasDays names the date, for example <em>Based on your travel plans, you'll reach the limit on 14 Oct</em>. On a goal tracker, the same forecast tells you when you would reach your target instead.</p>
-    {{shot:plan-forecast}}
 
     <h2>Try a different set of dates</h2>
     <p>Edit the planned trip and save it again. The forecast recalculates immediately, so you can shorten the stay, move it later, or split it until the dates work.</p>
@@ -687,8 +710,7 @@ add(
     ],
     shots=[
         shot("plan-future-trip", "trip-editor-future", "Directly after the numbered steps", "Add Trip sheet with future exact dates entered", priority="p0", crop="screen"),
-        shot("plan-forecast", "tracker-detail-forecast", "Directly under the forecast paragraph", "Tracker forecast message naming the date a limit is reached", priority="p0", crop="control"),
-        shot("plan-chart", "tracker-detail", "End of the Try a different set of dates section", "Tracker detail chart including projected planned travel", priority="p1", crop="screen"),
+        shot("plan-chart", "tracker-detail", "End of the Try a different set of dates section", "Tracker detail chart including projected planned travel", priority="p0", crop="screen"),
     ],
 )
 
@@ -707,7 +729,6 @@ add(
       <li><strong>Limit:</strong> the threshold determines the tracker’s progress and status.</li>
       <li><strong>Trip precision:</strong> Exact Dates can count; Year, Unknown, and Transit contribute zero days.</li>
     </ol>
-    {{shot:tracker-card}}
 
     <h2>Rolling windows move every day</h2>
     <p>A rolling tracker looks backward from its selected reference date. Older days leave the window while newer exact trip days enter it, so the total can change even when you do not edit a trip.</p>
@@ -739,7 +760,6 @@ add(
         "tracker status", "tracker color",
     ],
     shots=[
-        shot("tracker-card", "tracker-detail", "After the four numbered inputs", "Tracker card showing current count and status", priority="p0", crop="control"),
         shot("detail-chart", "tracker-detail", "In the Charts and forecasts section", "Tracker detail chart across its active window", priority="p0", crop="screen"),
         shot("goal-window", "tracker-editor", "End of the Charts and forecasts section", "Tracker editor showing its limit and window controls", priority="p1", crop="control"),
     ],
@@ -760,8 +780,6 @@ add(
       <li>Select the available threshold or timing options you want.</li>
       <li>Allow notifications when iOS asks.</li>
     </ol>
-    {{shot:alert-toggle}}
-    {{shot:alert-thresholds}}
     {{shot:alert-settings}}
 
     <h2>Alerts follow tracker calculations</h2>
@@ -787,9 +805,7 @@ add(
     ],
     synonyms=["notification", "threshold", "reminder", "alert not working", "milestone", "limit warning", "alert", "warning", "notify me"],
     shots=[
-        shot("alert-toggle", "tracker-alerts", "Directly after the steps, on the Smart Alerts toggle", "Smart Alerts toggle inside a tracker's alert settings", priority="p0", crop="control"),
-        shot("alert-thresholds", "tracker-alerts", "Directly after the steps, on the threshold options", "Threshold and timing options for a tracker's Smart Alerts", priority="p0", crop="control"),
-        shot("alert-settings", "tracker-alerts", "Directly after the steps, the full alert settings screen", "Smart Alert settings screen", priority="p1", crop="screen"),
+        shot("alert-settings", "tracker-alerts", "Directly after the steps, the full alert settings screen", "Smart Alert settings screen", priority="p0", crop="screen"),
     ],
 )
 
@@ -855,7 +871,6 @@ add(
       <li>Review the proposed trips before saving.</li>
     </ol>
     {{shot:photo-setup}}
-    {{shot:photo-permission}}
     {{shot:photo-scan}}
 
     <h2>What AtlasDays examines</h2>
@@ -881,7 +896,6 @@ add(
     synonyms=["scan photos", "photo location", "geotag", "no photos found", "duplicate import", "photo privacy", "photos", "photo library", "found nothing", "missed trips"],
     shots=[
         shot("photo-setup", "import-photos", "Directly after the numbered steps", "Photo Import setup with date-range options", priority="p0", crop="screen"),
-        shot("photo-permission", "import-photos", "Directly after the steps, on the Photos access prompt", "Photos access prompt shown during Photo Import", priority="p1", crop="control"),
         shot("photo-scan", "import-photos-scanning", "Directly after the steps, during the scan", "Photo Import scan in progress", priority="p1", crop="control"),
         shot("photo-review", "import-photos-review", "In the Review every proposal section", "Photo Import review with proposed trips and warnings", priority="p0", crop="screen"),
     ],
@@ -907,7 +921,6 @@ add(
       <li>Save only the rows you want in Timeline.</li>
     </ol>
     {{shot:flighty-setup}}
-    {{shot:flighty-picker}}
     {{shot:flighty-review}}
 
     <h2>How flights become trips</h2>
@@ -929,7 +942,6 @@ add(
     synonyms=["import flights", "flighty csv", "airport transit", "overnight flight", "flight history"],
     shots=[
         shot("flighty-setup", "import-flighty", "Directly after the Import into AtlasDays steps", "Import from Flighty setup screen", priority="p0", crop="screen"),
-        shot("flighty-picker", "import-flighty", "Directly after the steps, on the file picker", "Files picker selecting the Flighty CSV export", priority="p1", crop="control"),
         shot("flighty-review", "import-flighty-review", "End of the How flights become trips section", "Flighty Import preview with stays, transit, and warnings", priority="p0", crop="screen"),
     ],
 )
@@ -951,12 +963,10 @@ add(
       <li>Import the rows you accept.</li>
     </ol>
     {{shot:csv-setup}}
-    {{shot:csv-picker}}
     {{shot:csv-review}}
 
     <h2>Fix errors in the source file</h2>
     <p>The preview reports a row number and reason when it cannot resolve a country, state, date, or required header. Correct that row in the CSV and import the file again.</p>
-    {{shot:csv-errors}}
 
     <h2>Warnings are review prompts</h2>
     <p>A duplicate can repeat a trip already in Timeline. An overlap can be legitimate or can represent two versions of the same stay. Check the dates and places rather than accepting every row automatically.</p>
@@ -977,8 +987,6 @@ add(
     synonyms=["csv error", "row invalid", "spreadsheet import", "template", "duplicate", "overlap warning", "missing country column"],
     shots=[
         shot("csv-setup", "import-csv", "Directly after the numbered steps", "CSV Import setup and example-file controls", priority="p0", crop="screen"),
-        shot("csv-picker", "import-csv", "Directly after the steps, on the file picker", "Files picker selecting a CSV", priority="p1", crop="control"),
-        shot("csv-errors", "import-csv-review", "In the Fix errors in the source file section", "CSV preview row showing an error reason and row number", priority="p0", crop="control"),
         shot("csv-review", "import-csv-review", "In the Warnings are review prompts section", "CSV Import preview containing valid, invalid, duplicate, and overlap rows", priority="p0", crop="screen"),
     ],
 )
@@ -1059,13 +1067,11 @@ add(
 
     <h2>Configure the period and detail</h2>
     <p>Choose the date range, language, date format, and available columns or report options. Review whether state, purpose, notes, or other details should be included before sharing personal travel data.</p>
-    {{shot:export-period}}
     {{shot:spreadsheet-config}}
 
     <h2>Preview before sharing</h2>
     <p>The preview shows what the export will contain. If a trip is missing or needs correction, return to Timeline, edit the source record, and create the export again.</p>
     {{shot:pdf-preview}}
-    {{shot:export-share}}
 
     <h2>Exports do not change the app</h2>
     <p>Creating or sharing an export does not remove, mark, or alter trips. The exported file is a separate copy.</p>
@@ -1085,10 +1091,8 @@ add(
     synonyms=["backup", "pdf", "excel", "xlsx", "csv export", "report", "share travel history", "visa application", "export", "spreadsheet", "download my data", "print"],
     shots=[
         shot("export-hub", "export", "End of the Choose an export section", "Export hub with AtlasDays CSV, Spreadsheet, and PDF options", priority="p0", crop="screen"),
-        shot("export-period", "export", "In the Configure the period and detail section", "Export period and column configuration", priority="p0", crop="control"),
-        shot("spreadsheet-config", "export-spreadsheet", "End of the Configure the period and detail section", "Spreadsheet export configuration with format and date options", priority="p1", crop="screen"),
+        shot("spreadsheet-config", "export-spreadsheet", "End of the Configure the period and detail section", "Spreadsheet export configuration with format and date options", priority="p0", crop="screen"),
         shot("pdf-preview", "export-pdf", "In the Preview before sharing section", "PDF travel report preview", priority="p0", crop="screen"),
-        shot("export-share", "export-share", "End of the Preview before sharing section", "Share sheet for a finished export", priority="p1", crop="control"),
     ],
 )
 
@@ -1157,11 +1161,9 @@ add(
 
     <h2>Ignore places you do not want suggested</h2>
     <p>Add countries to the Ignore list when recurring border proximity produces suggestions you never need. Pro users can also ignore individual US states. Ignored places can still be added manually.</p>
-    {{shot:auto-detect-ignore}}
 
     <h2>Auto-Detect is not continuous GPS recording</h2>
     <p>The feature uses low-power system location events rather than storing a detailed route. Detection timing depends on iOS, geography, connectivity, and the available boundary signal.</p>
-    {{shot:auto-detect-state}}
 
     <section class="if-needed">
       <h2>If no suggestion appears</h2>
@@ -1177,8 +1179,6 @@ add(
     shots=[
         shot("auto-detect-settings", "auto-detect", "Directly after the numbered steps", "Auto-Detect Trips settings with location and notification controls", priority="p0", crop="screen"),
         shot("auto-detect-suggestion", "timeline-suggestion", "In the Review suggestions section", "Timeline suggestion card awaiting review", priority="p0", crop="control"),
-        shot("auto-detect-ignore", "auto-detect-ignore", "In the Ignore places section", "Auto-Detect ignore list", priority="p1", crop="control"),
-        shot("auto-detect-state", "auto-detect", "End of the Auto-Detect is not continuous GPS recording section", "Auto-Detect status showing active location permission", priority="p1", crop="control"),
     ],
 )
 
@@ -1204,7 +1204,6 @@ add(
 
     <h2>Understand the status</h2>
     <p>The iCloud Sync screen reports whether AtlasDays is checking, syncing, waiting, synced, not signed in, or using local storage. Enabling or disabling sync can require closing AtlasDays from the app switcher and reopening it.</p>
-    {{shot:icloud-toggle}}
 
     <h2>If data appears missing</h2>
     <ol>
@@ -1231,7 +1230,6 @@ add(
     synonyms=["missing data", "new phone", "restore", "reinstall", "backup", "icloud status", "sync not working", "same apple account", "new iphone", "transfer to new device", "lost trips"],
     shots=[
         shot("icloud-status", "icloud-sync", "Directly after the Set up a new device steps", "iCloud Sync settings showing status, last activity, and data count", priority="p0", crop="screen"),
-        shot("icloud-toggle", "icloud-sync", "In the Understand the status section, on the sync toggle", "iCloud Sync toggle and status row", priority="p1", crop="control"),
     ],
 )
 
@@ -1303,7 +1301,6 @@ add(
 
     <h2>Purchase and restore</h2>
     <p>Open the AtlasDays Pro screen from Settings or a locked feature. Complete the purchase through Apple. If you already purchased with the same Apple Account, use <strong>Restore Purchases</strong>.</p>
-    {{shot:pro-restore}}
 
     <h2>If Pro is not recognized</h2>
     <p>Confirm the App Store Apple Account, check connectivity, reopen AtlasDays, and try Restore Purchases. Apple manages billing and the purchase record.</p>
@@ -1322,7 +1319,6 @@ add(
     shots=[
         shot("pro-paywall", "pro-paywall", "End of the Pro unlocks list", "Current AtlasDays Pro upgrade screen with feature list", priority="p0", crop="screen"),
         shot("pro-locked", "pro-locked", "End of the Pro unlocks list, on a locked feature", "A locked Pro feature prompting an upgrade", priority="p1", crop="control"),
-        shot("pro-restore", "pro-paywall", "In the Purchase and restore section, on Restore Purchases", "Restore Purchases control on the AtlasDays Pro screen", priority="p0", crop="control"),
     ],
 )
 
@@ -1344,7 +1340,6 @@ add(
     <h2>Choose country names separately</h2>
     <p>Under the same screen, choose <strong>Country Names</strong>. It can follow the app language or use another supported naming language. Screens update as they reload.</p>
     {{shot:language-country}}
-    {{shot:language-app}}
     {{shot:language-settings}}
 
     <h2>Exports and share cards</h2>
@@ -1361,8 +1356,7 @@ add(
     ],
     synonyms=["change language", "country names", "translation", "export language", "share card language", "language", "translate"],
     shots=[
-        shot("language-app", "settings-language", "Directly after the numbered steps, on the interface language picker", "App interface language picker", priority="p0", crop="control"),
-        shot("language-settings", "settings-language", "Directly after the numbered steps, the full Language screen", "Language settings showing interface and country-name choices", priority="p1", crop="screen"),
+        shot("language-settings", "settings-language", "Directly after the numbered steps, the full Language screen", "Language settings showing interface and country-name choices", priority="p0", crop="screen"),
         shot("language-country", "settings-language-country-names", "In the Choose country names separately section", "Country Names language picker", priority="p0", crop="control"),
     ],
 )
@@ -1381,7 +1375,6 @@ add(
     <h2>Personalize AtlasDays</h2>
     <p>Use the personalization settings to select an accent color, background wash, and app icon. The map uses the chosen visual treatment while preserving the same highlighted places.</p>
     {{shot:appearance-icon}}
-    {{shot:appearance-theme}}
     {{shot:appearance-settings}}
 
     <h2>Widgets follow their supported appearance</h2>
@@ -1398,8 +1391,7 @@ add(
     ],
     synonyms=["dark mode", "light mode", "theme", "accent color", "app icon", "background wash", "personalize"],
     shots=[
-        shot("appearance-theme", "settings-appearance", "Directly after the theme step, on the theme picker", "Theme picker showing light, dark, and device options", priority="p0", crop="control"),
-        shot("appearance-settings", "settings-appearance", "Directly after the theme step, the full Appearance screen", "Appearance and personalization settings with theme and accent choices", priority="p1", crop="screen"),
+        shot("appearance-settings", "settings-appearance", "Directly after the theme step, the full Appearance screen", "Appearance and personalization settings with theme and accent choices", priority="p0", crop="screen"),
         shot("appearance-icon", "settings-app-icon", "In the Personalize AtlasDays section, on the app icon picker", "App icon picker", priority="p1", crop="control"),
     ],
 )

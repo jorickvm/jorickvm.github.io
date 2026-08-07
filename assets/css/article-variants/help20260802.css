@@ -61,7 +61,10 @@ html[data-theme="light"] .icon-moon, html[data-theme="light"] .logo-light { disp
 
 @media (max-width: 760px) {
   article { width: min(var(--max), calc(100% - 28px)); padding: 30px 0 24px; }
-  .breadcrumb { display: none; }
+  /* The breadcrumb is the only way back to the Help Center from an article on
+     a phone, where the header collapses into a menu button. Hiding it stranded
+     the reader. Keep it, just tighter. */
+  .breadcrumb { margin-bottom: 18px; font-size: 0.82rem; }
   h1 { font-size: clamp(1.9rem, 9vw, 2.45rem); }
   .article-answer { margin-bottom: 26px; font-size: 1rem; }
   h2 { margin-top: 30px; font-size: 1.23rem; }
@@ -73,9 +76,9 @@ html[data-theme="light"] .icon-moon, html[data-theme="light"] .logo-light { disp
   html { scroll-behavior: auto; }
 }
 
-/* Screenshot slots. `control` is a tight crop around one button or row and is
-   shown small; `screen` is a whole device screen and gets more width. Both are
-   centered so a narrow crop does not look stranded beside the text column. */
+/* Screenshot slots. Every phone capture is cropped to the full device width and
+   trimmed only top and bottom, so they all share one on-page width and stack
+   into a consistent column. Heights differ; widths never do. */
 .help-shot {
   margin: 18px auto 22px;
   text-align: center;
@@ -89,9 +92,17 @@ html[data-theme="light"] .icon-moon, html[data-theme="light"] .logo-light { disp
   border: 1px solid color-mix(in srgb, var(--text, #fff) 12%, transparent);
   background: color-mix(in srgb, var(--text, #fff) 4%, transparent);
 }
-.help-shot-control img { max-width: min(100%, 340px); }
-.help-shot-screen img { max-width: min(100%, 300px); }
+/* One width for every phone capture, whole screen or band alike. On a phone the
+   article column already insets the image from the page edge, which is the
+   breathing room these need; on wider screens they stay phone-sized instead of
+   blowing up to the full text column. */
+.help-shot-screen img,
+.help-shot-control img { max-width: min(100%, 360px); }
+/* Landscape captures (iPad) are wider than they are tall, so the phone-width
+   cap above would shrink them to a tenth of their size. */
+.help-shot-landscape img { max-width: 100%; }
 @media (max-width: 520px) {
+  .help-shot-screen img,
   .help-shot-control img,
-  .help-shot-screen img { max-width: min(100%, 260px); }
+  .help-shot-landscape img { max-width: 100%; }
 }
