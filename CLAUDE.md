@@ -35,6 +35,14 @@ Their only versioned copies live in the private repo. If you change them, back t
 
 Never use em dashes in anything a reader sees. Use periods or commas.
 
+## Translations
+
+The privacy and terms pages are localized in `assets/js/legal-translations.js`, keyed by language code, with the switcher registry in `assets/js/legal-language.js`.
+
+Before writing or editing any translation here, read `~/Projects/AtlasDays/AtlasDays/Docs/reference/translation-guidelines.md` and follow it. It lives in the app repo but explicitly covers this surface, under "Website legal pages (separate repo)". It sets legal text as its narrowest-freedom category (translate faithfully, do not shorten or soften), fixes the form of address per language, and carries typography rules that are easy to destroy with a scripted edit, such as the nonbreaking space French requires before `:`. Copying the register of the text already on the page is not a substitute for reading it.
+
+When the English wording changes, update `_site-src/content/pages/` first, rebuild, then move every localized copy in the same commit so no language silently drifts.
+
 ## Keeping this file honest
 
 Correct **verifiable inventory** here when you find it stale — paths, script names, directory names — after checking with a command, and say so in your response.
