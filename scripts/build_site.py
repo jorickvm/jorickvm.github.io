@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import html
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -30,7 +31,46 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true", help="Fail if generated output differs from committed HTML")
     parser.add_argument("--section", choices=("all", "help", "learn"), default="all")
+    parser.add_argument(
+        "--allow-delisting",
+        action="store_true",
+        help="Permit a rebuild to drop links to pages that still exist on disk",
+    )
     return parser.parse_args()
+
+
+SITE_URL = "https://atlasdays.app"
+
+
+def linked_paths(text: str) -> set[str]:
+    """Repo-relative paths for every internal link in a generated file.
+
+    Covers absolute canonicals in sitemap.xml and llms.txt as well as the
+    root-relative hrefs used by hub rows.
+    """
+    paths: set[str] = set()
+    for route in re.findall(rf"{re.escape(SITE_URL)}(/[\w\-./]*)", text):
+        paths.add(route)
+    for route in re.findall(r'(?:href|data-href)="(/[\w\-./]*)"', text):
+        paths.add(route)
+    normalised = set()
+    for route in paths:
+        trimmed = route.strip("/")
+        if not trimmed:
+            trimmed = "index"
+        normalised.add(trimmed if trimmed.endswith(".html") else f"{trimmed}.html")
+    return normalised
+
+
+def delisted_live_pages(current: str, rendered: str) -> list[str]:
+    """Pages the rebuild would stop linking to that are still published.
+
+    A page vanishing from the sitemap, llms.txt, or a hub while its HTML is
+    still committed means the build data lost track of it, not that it was
+    retired. That is silent de-indexing, so the caller must refuse to write.
+    """
+    dropped = linked_paths(current) - linked_paths(rendered)
+    return sorted(path for path in dropped if (SITE_ROOT / path).exists())
 
 
 def attrs_html(attrs: dict[str, str]) -> str:
@@ -218,63 +258,80 @@ def main() -> int:
     hub_template = HUB_TEMPLATE.read_text(encoding="utf-8")
     changed: list[str] = []
     selected = 0
+    # (output_path, rendered) queued until every de-listing check has passed, so
+    # an aborted build leaves the working tree untouched rather than half-written.
+    pending: list[tuple[Path, str]] = []
+    delistings: list[tuple[str, list[str]]] = []
+
+    def queue(output_path: Path, rendered: str, *, guard: bool = False) -> None:
+        nonlocal selected
+        selected += 1
+        current = output_path.read_text(encoding="utf-8") if output_path.exists() else ""
+        if current == rendered:
+            return
+        relative = output_path.relative_to(SITE_ROOT).as_posix()
+        changed.append(relative)
+        if guard and current:
+            dropped = delisted_live_pages(current, rendered)
+            if dropped:
+                delistings.append((relative, dropped))
+        pending.append((output_path, rendered))
 
     for article in data.get("articles", []):
         if args.section != "all" and article.get("section") != args.section:
             continue
-        selected += 1
-        output_path = SITE_ROOT / str(article["path"])
-        rendered = render_article(article, template, header_template, footer_template)
-        current = output_path.read_text(encoding="utf-8") if output_path.exists() else ""
-        if current == rendered:
-            continue
-        changed.append(str(article["path"]))
-        if not args.check:
-            output_path.parent.mkdir(parents=True, exist_ok=True)
-            output_path.write_text(rendered, encoding="utf-8")
+        queue(
+            SITE_ROOT / str(article["path"]),
+            render_article(article, template, header_template, footer_template),
+        )
 
     if args.section == "all" and HUB_DATA_PATH.exists():
         hub_data = json.loads(HUB_DATA_PATH.read_text(encoding="utf-8"))
         for hub in hub_data.get("hubs", []):
-            selected += 1
-            output_path = SITE_ROOT / str(hub["path"])
-            rendered = render_hub(hub, hub_template, header_template, footer_template)
-            current = output_path.read_text(encoding="utf-8") if output_path.exists() else ""
-            if current == rendered:
-                continue
-            changed.append(str(hub["path"]))
-            if not args.check:
-                output_path.write_text(rendered, encoding="utf-8")
+            queue(
+                SITE_ROOT / str(hub["path"]),
+                render_hub(hub, hub_template, header_template, footer_template),
+                guard=True,
+            )
 
     if args.section == "all" and PAGE_DATA_PATH.exists():
         page_data = json.loads(PAGE_DATA_PATH.read_text(encoding="utf-8"))
         for page in page_data.get("pages", []):
-            selected += 1
-            output_path = SITE_ROOT / str(page["path"])
-            rendered = render_hub(
-                page,
-                hub_template,
-                header_template,
-                footer_template,
-                family="page",
-                prefix="",
+            queue(
+                SITE_ROOT / str(page["path"]),
+                render_hub(
+                    page,
+                    hub_template,
+                    header_template,
+                    footer_template,
+                    family="page",
+                    prefix="",
+                ),
+                guard=True,
             )
-            current = output_path.read_text(encoding="utf-8") if output_path.exists() else ""
-            if current == rendered:
-                continue
-            changed.append(str(page["path"]))
-            if not args.check:
-                output_path.write_text(rendered, encoding="utf-8")
 
     if args.section == "all" and ROUTES.exists():
         routes = json.loads(ROUTES.read_text(encoding="utf-8"))["routes"]
-        for output_path, rendered in ((SITEMAP, render_sitemap(routes)), (LLMS, render_llms(routes))):
-            current = output_path.read_text(encoding="utf-8") if output_path.exists() else ""
-            if current == rendered:
-                continue
-            changed.append(output_path.relative_to(SITE_ROOT).as_posix())
-            if not args.check:
-                output_path.write_text(rendered, encoding="utf-8")
+        queue(SITEMAP, render_sitemap(routes), guard=True)
+        queue(LLMS, render_llms(routes), guard=True)
+
+    if delistings and not args.allow_delisting:
+        print("Refusing to build: this would unlink pages that are still published.")
+        for relative, dropped in delistings:
+            print(f"  {relative} would stop linking to:")
+            for path in dropped:
+                print(f"    {path}")
+        print(
+            "\nThese pages exist but are missing from the build data, so a rebuild\n"
+            "drops them from search engines and site navigation. Register them in\n"
+            "_site-src/data/ first, or pass --allow-delisting if the removal is intended."
+        )
+        return 1
+
+    if not args.check:
+        for output_path, rendered in pending:
+            output_path.parent.mkdir(parents=True, exist_ok=True)
+            output_path.write_text(rendered, encoding="utf-8")
 
     if args.check and changed:
         print("Generated article output is stale:")
