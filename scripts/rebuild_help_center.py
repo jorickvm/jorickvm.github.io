@@ -103,10 +103,11 @@ def webp_dimensions(path: Path) -> tuple[int, int] | None:
 
 
 # Phrases that should become a link to the article that explains them, longest
-# first so "CSV Format Reference" wins over "CSV Import". Only the first
-# mention in an article is linked, headings and existing links are skipped, and
-# a single article never gets more than MAX_INLINE_LINKS of them: the point is
-# to let a reader follow a term mid-sentence, not to turn the prose blue.
+# first so "CSV Format Reference" wins over "CSV Import" when both could match
+# the same spot. That order is match precedence only. Which links survive the
+# budget is decided by link_score, never by where the phrase happens to appear:
+# ranking by reading position once linked Photo Import and Flighty Import while
+# dropping CSV Import from the sentence between them.
 INLINE_LINK_TARGETS: list[tuple[str, str]] = [
     ("CSV Format Reference", "csv-format-reference"),
     ("AtlasDays Pro", "atlasdays-pro"),
@@ -133,26 +134,78 @@ INLINE_LINK_TARGETS: list[tuple[str, str]] = [
     ("accent color", "appearance-and-personalization"),
 ]
 
-MAX_INLINE_LINKS = 6
+# Ordinary vocabulary that happens to name an article. Linking one of these is
+# a convenience. Linking a product name the reader may not have met yet is the
+# reason inline linking exists, so those win when the budget binds.
+AMBIENT_PHRASES = frozenset(
+    {
+        "rolling window",
+        "Schengen",
+        "Timeline",
+        "Dashboard",
+        "widget",
+        "forecast",
+        "export",
+        "app icon",
+        "country name",
+        "accent color",
+    }
+)
 
 SKIP_LINE_MARKERS = ("<h1", "<h2", "<h3", "{{shot:", "class=\"breadcrumb\"")
 
 
-def link_related(slug: str, body: str) -> str:
-    """Turn the first mention of another article's subject into a link."""
+def link_budget(body: str) -> int:
+    """A runaway guard, not a quota. One link per 25 words, floor 6, ceiling 10.
+
+    Demand is already self-limiting: only the first mention of a target is ever
+    linked, so an article cannot exceed the size of INLINE_LINK_TARGETS however
+    long it gets. Measured across the Help Center, articles want two to seven
+    links, so this binds on nothing today and exists to stop a future article
+    from turning blue. Set it any tighter and it starts deleting links that are
+    genuinely warranted, which is what a flat cap of 6 did to AtlasDays Pro.
+    """
+    words = len(re.sub(r"<[^>]+>", " ", body).split())
+    return max(6, min(10, words // 25))
+
+
+def link_score(phrase: str, target: str, next_slugs: set[str]) -> float:
+    """How much a link is warranted. Highest first when the budget binds."""
+    score = 0.0
+    if target in next_slugs:
+        # The author already named this as where the reader goes next, which is
+        # the only place in an article definition that states intent.
+        score += 3
+    if phrase not in AMBIENT_PHRASES:
+        score += 2
+    # Tie-break only: a longer phrase is a more deliberate mention. Held under 1
+    # so it can never outrank either signal above.
+    return score + len(phrase) / 100
+
+
+def link_related(article: dict[str, object]) -> str:
+    """Turn the first mention of another article's subject into a link.
+
+    Candidates are collected across the whole article, ranked by how much each
+    link is warranted, cut to the budget, and only then written back in reading
+    order, so what survives does not depend on what happened to appear first.
+    """
+    slug = str(article["slug"])
+    body = str(article["body"])
+    next_slugs = {target for target, _ in article["next"]}
     # Targets already linked by hand in the prose. Without this the automatic
     # pass would add a second link to the same article a paragraph later.
     used: set[str] = set(re.findall(r'href="/help/([a-z0-9-]+)"', body))
-    count = 0
-    out: list[str] = []
-    for line in body.split("\n"):
+
+    lines = body.split("\n")
+    # (score, line index, start, end, target, matched text)
+    candidates: list[tuple[float, int, int, int, str, str]] = []
+    seen: set[str] = set()
+    for index, line in enumerate(lines):
         if any(marker in line for marker in SKIP_LINE_MARKERS) or "<a " in line:
-            out.append(line)
             continue
         for phrase, target in INLINE_LINK_TARGETS:
-            if count >= MAX_INLINE_LINKS:
-                break
-            if target == slug or target in used:
+            if target == slug or target in used or target in seen:
                 continue
             # Whole words only, with an optional plural, so "export" never
             # matches inside "exported" and "widget" still catches "widgets".
@@ -162,15 +215,25 @@ def link_related(slug: str, body: str) -> str:
             # Never link inside a tag, only in visible text.
             if line.rfind("<", 0, match.start()) > line.rfind(">", 0, match.start()):
                 continue
-            line = (
-                line[: match.start()]
-                + f'<a href="/help/{target}">{match.group(0)}</a>'
-                + line[match.end():]
+            seen.add(target)
+            candidates.append(
+                (
+                    link_score(phrase, target, next_slugs),
+                    index,
+                    match.start(),
+                    match.end(),
+                    target,
+                    match.group(0),
+                )
             )
-            used.add(target)
-            count += 1
-        out.append(line)
-    return "\n".join(out)
+
+    winners = sorted(candidates, key=lambda item: -item[0])[: link_budget(body)]
+    # Rewrite from the end backwards so an earlier match's offsets stay valid
+    # after a later one on the same line has been replaced.
+    for _, index, start, end, target, text in sorted(winners, key=lambda item: (-item[1], -item[2])):
+        line = lines[index]
+        lines[index] = line[:start] + f'<a href="/help/{target}">{text}</a>' + line[end:]
+    return "\n".join(lines)
 
 
 def wrap_content(article: dict[str, object]) -> str:
@@ -182,7 +245,7 @@ def wrap_content(article: dict[str, object]) -> str:
     script" with no hand-editing of generated HTML.
     """
     slug = str(article["slug"])
-    body = link_related(slug, str(article["body"]))
+    body = link_related(article)
     for item in article["shots"]:
         key = str(item["key"])
         marker = "{{shot:" + key + "}}"
@@ -295,51 +358,52 @@ add(
     "getting-started",
     "Getting Started",
     "trips-travel-days",
-    "Set your home country, add the trips that affect current counts, and create your first tracker in AtlasDays.",
+    "What AtlasDays does, how to fill your Timeline from photos and Auto-Detect instead of typing, and how to add your first tracker.",
     """
-    <p class="article-answer">Start with three things: choose how AtlasDays should treat home, record the trips that matter now, and only then add a tracker.</p>
+    <p class="article-answer">AtlasDays records which country you were in on which day, then counts those days against the limits that matter to you. Trips live in the Timeline, the Dashboard shows what they add up to, and a tracker watches one specific rule.</p>
 
-    <h2>1. Choose your home-country setup</h2>
-    <p>Open <strong>Settings → Home Country</strong>. Choose the country that should be treated as home, or choose <strong>No fixed residence</strong> if you do not want any country treated as home.</p>
-    <p>This choice affects <strong>Days Abroad</strong>. It does not rewrite your trips or change a country-specific tracker.</p>
-    {{shot:home-country}}
+    <h2>What AtlasDays is for</h2>
+    <p>Questions with a consequence attached: how many Schengen 90/180 days are still available, whether you are approaching a 183-day residency threshold, how long you have really been out of your home country this year.</p>
+    <p>AtlasDays keeps the record and counts the days. Interpreting an immigration or tax rule is still your responsibility.</p>
 
-    <h2>2. Add the trips that matter now</h2>
-    <ol>
-      <li>Open <strong>Timeline</strong> and tap <strong>+</strong>.</li>
-      <li>Choose the country and, for a United States trip, the relevant state when known.</li>
-      <li>Use <strong>Exact Dates</strong> for trips that should contribute to day totals.</li>
-      <li>Save the trip and repeat for the period you currently need to monitor.</li>
-    </ol>
-    <p>You do not need to reconstruct your entire travel life before AtlasDays becomes useful. Begin with the rolling window, calendar year, visa application, or residency question that matters today.</p>
-    {{shot:add-trip}}
-
-    <h2>3. Create your first tracker</h2>
-    <p>Open <strong>Trackers</strong>, tap <strong>+</strong>, and choose a preset or build a custom tracker. Check its countries, window, and limit before relying on its total.</p>
-    {{shot:add-tracker}}
-
-    <h2>Import older history when useful</h2>
-    <p><strong>Photo Import</strong>, <strong>Flighty Import</strong>, and <strong>CSV Import</strong> can accelerate setup. Every import includes a review step; nothing should be saved until the proposed trips look right.</p>
+    <h2>Fill your Timeline without typing</h2>
+    <p>Photos cover the past. Auto-Detect covers what comes next.</p>
+    <p>Open <strong>Settings → Import → Photos</strong> and scan a date range. Photo Import reads geotagged photo metadata on the device and proposes trips for review, and nothing is saved until you confirm. Use CSV Import instead when your history is already in a spreadsheet or a booking record, or Flighty Import when your Flighty flight history covers most of it.</p>
     {{shot:import-hub}}
+    <p>Then turn on <strong>Auto-Detect Trips</strong> so new travel arrives as a Timeline suggestion rather than a manual entry. It never saves a trip without your confirmation.</p>
 
-    <div class="callout"><p><strong>A useful first record beats a complete approximate record.</strong> Exact trips that affect a live question should come before uncertain older visits.</p></div>
+    <h2>The Timeline holds the record</h2>
+    <p>Every trip, in order, with the dates you gave it. Tap a trip to edit it, or tap <strong>+</strong> to add one by hand.</p>
+    <p>Not every trip needs precise dates. Use Exact Dates for anything feeding a live limit, and year-only or unknown-date entries for older history you cannot place confidently. Forcing a guess into exact dates makes the record look more certain than it is.</p>
+    {{shot:timeline}}
+
+    <h2>The Dashboard shows what it adds up to</h2>
+    <p>Days abroad, countries and continents visited, the world map, and your trackers. The period selector at the top switches between this year, a fiscal year, or a custom range, so the same record answers different questions.</p>
+    {{shot:dashboard}}
+
+    <div class="callout"><p><strong>Home Country only affects Days Abroad.</strong> Onboarding asks you to choose one, and it sets which country counts as home rather than abroad. Choose <strong>No fixed residence</strong> to count every recorded day instead. You can change it in Settings at any time.</p></div>
+
+    <h2>Add your first tracker</h2>
+    <p>A tracker is the reason to use AtlasDays rather than a travel diary. Open <strong>Trackers</strong>, tap <strong>+</strong>, and choose a preset such as Schengen 90/180 or a 183-day residency threshold. It then shows used days, remaining days, and how close you are.</p>
+    {{shot:add-tracker}}
+    <p>A tracker is only as good as the trips behind it. Treat its total as provisional while the relevant trips are still approximate.</p>
 
     <section class="if-needed">
-      <h2>If the first totals are unexpected</h2>
-      <p>Check the selected Dashboard period, your Home Country setting, open-ended trips, Transit trips, and whether important trips use Exact Dates.</p>
+      <h2>If the first totals look wrong</h2>
+      <p>Check the selected Dashboard period, your Home Country setting, any open-ended trip still counting toward today, Transit trips, and whether the trips that matter use Exact Dates.</p>
     </section>
     """,
     next_steps=[
-        ("timeline-and-calendar", "Add and maintain the trips behind every AtlasDays total."),
-        ("day-counting", "Learn exactly which travel days contribute to numeric totals."),
-        ("create-a-tracker", "Build a tracker after the relevant trips are in place."),
+        ("photo-import", "Rebuild older history from your photo library."),
+        ("create-a-tracker", "Set up the limit you actually need to watch."),
+        ("day-counting", "See exactly which travel days count toward a total."),
     ],
     synonyms=["what is atlasdays", "first setup", "onboarding", "home country", "new user", "how does it work", "start here", "first steps", "set up"],
     shots=[
-        shot("home-country", "home-country", "Under step 1, after the No fixed residence sentence", "AtlasDays Home Country setting with a country selected", priority="p0", crop="control"),
-        shot("add-trip", "add-trip", "Under step 2, after the numbered list", "Add Trip sheet with country and exact dates filled in", priority="p0", crop="screen"),
-        shot("add-tracker", "trackers", "Under step 3, after the tracker paragraph", "Trackers screen with the Add Tracker button", priority="p1", crop="control"),
-        shot("import-hub", "import", "End of the Import older history when useful section", "Import screen listing Photos, Flighty, and CSV options", priority="p1", crop="control"),
+        shot("import-hub", "import", "End of the first paragraph of Fill your Timeline without typing", "Import screen listing Photos, Flighty, and CSV options", priority="p1", crop="control"),
+        shot("timeline", "timeline", "End of The Timeline holds the record", "AtlasDays Timeline listing saved trips by country and date", priority="p0", crop="screen"),
+        shot("dashboard", "dashboard", "End of The Dashboard shows what it adds up to", "AtlasDays Dashboard showing day totals, trackers, and the world map", priority="p0", crop="screen"),
+        shot("add-tracker", "trackers", "End of the first paragraph of Add your first tracker", "Trackers screen with the Add Tracker button", priority="p1", crop="control"),
     ],
 )
 

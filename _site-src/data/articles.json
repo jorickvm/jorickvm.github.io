@@ -10,7 +10,7 @@
       "meta": [
         {
           "name": "description",
-          "content": "Set your home country, add the trips that affect current counts, and create your first tracker in AtlasDays."
+          "content": "What AtlasDays does, how to fill your Timeline from photos and Auto-Detect instead of typing, and how to add your first tracker."
         },
         {
           "property": "og:title",
@@ -18,7 +18,7 @@
         },
         {
           "property": "og:description",
-          "content": "Set your home country, add the trips that affect current counts, and create your first tracker in AtlasDays."
+          "content": "What AtlasDays does, how to fill your Timeline from photos and Auto-Detect instead of typing, and how to add your first tracker."
         },
         {
           "property": "og:type",
@@ -38,7 +38,7 @@
         },
         {
           "name": "twitter:description",
-          "content": "Set your home country, add the trips that affect current counts, and create your first tracker in AtlasDays."
+          "content": "What AtlasDays does, how to fill your Timeline from photos and Auto-Detect instead of typing, and how to add your first tracker."
         },
         {
           "name": "apple-itunes-app",
@@ -53,7 +53,7 @@
       ],
       "jsonld": [
         "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"BreadcrumbList\",\n  \"itemListElement\": [\n    {\n      \"@type\": \"ListItem\",\n      \"position\": 1,\n      \"name\": \"AtlasDays\",\n      \"item\": \"https://atlasdays.app\"\n    },\n    {\n      \"@type\": \"ListItem\",\n      \"position\": 2,\n      \"name\": \"Help Center\",\n      \"item\": \"https://atlasdays.app/help/\"\n    },\n    {\n      \"@type\": \"ListItem\",\n      \"position\": 3,\n      \"name\": \"Getting Started\",\n      \"item\": \"https://atlasdays.app/help/getting-started\"\n    }\n  ]\n}",
-        "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Article\",\n  \"headline\": \"Getting Started\",\n  \"description\": \"Set your home country, add the trips that affect current counts, and create your first tracker in AtlasDays.\",\n  \"author\": {\n    \"@type\": \"Organization\",\n    \"name\": \"AtlasDays\"\n  },\n  \"publisher\": {\n    \"@type\": \"Organization\",\n    \"name\": \"AtlasDays\"\n  },\n  \"url\": \"https://atlasdays.app/help/getting-started\",\n  \"dateModified\": \"2026-08-02\"\n}"
+        "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"Article\",\n  \"headline\": \"Getting Started\",\n  \"description\": \"What AtlasDays does, how to fill your Timeline from photos and Auto-Detect instead of typing, and how to add your first tracker.\",\n  \"author\": {\n    \"@type\": \"Organization\",\n    \"name\": \"AtlasDays\"\n  },\n  \"publisher\": {\n    \"@type\": \"Organization\",\n    \"name\": \"AtlasDays\"\n  },\n  \"url\": \"https://atlasdays.app/help/getting-started\",\n  \"dateModified\": \"2026-08-02\"\n}"
       ],
       "content": "content/help/getting-started.html",
       "style_variants": [
@@ -61,19 +61,19 @@
       ],
       "next_steps": [
         {
-          "url": "/help/timeline-and-calendar",
-          "title": "Add, Edit, or Delete a Trip",
-          "description": "Add and maintain the trips behind every AtlasDays total."
-        },
-        {
-          "url": "/help/day-counting",
-          "title": "How AtlasDays Counts Travel Days",
-          "description": "Learn exactly which travel days contribute to numeric totals."
+          "url": "/help/photo-import",
+          "title": "Photo Import",
+          "description": "Rebuild older history from your photo library."
         },
         {
           "url": "/help/create-a-tracker",
           "title": "Create a Tracker",
-          "description": "Build a tracker after the relevant trips are in place."
+          "description": "Set up the limit you actually need to watch."
+        },
+        {
+          "url": "/help/day-counting",
+          "title": "How AtlasDays Counts Travel Days",
+          "description": "See exactly which travel days count toward a total."
         }
       ],
       "search_synonyms": [
@@ -89,19 +89,28 @@
       ],
       "screenshot_slots": [
         {
-          "key": "home-country",
-          "scenario": "home-country",
-          "placement": "Under step 1, after the No fixed residence sentence",
-          "alt": "AtlasDays Home Country setting with a country selected",
+          "key": "import-hub",
+          "scenario": "import",
+          "placement": "End of the first paragraph of Fill your Timeline without typing",
+          "alt": "Import screen listing Photos, Flighty, and CSV options",
           "device": "iPhone 17 Pro Max",
-          "priority": "p0",
+          "priority": "p1",
           "crop": "control"
         },
         {
-          "key": "add-trip",
-          "scenario": "add-trip",
-          "placement": "Under step 2, after the numbered list",
-          "alt": "Add Trip sheet with country and exact dates filled in",
+          "key": "timeline",
+          "scenario": "timeline",
+          "placement": "End of The Timeline holds the record",
+          "alt": "AtlasDays Timeline listing saved trips by country and date",
+          "device": "iPhone 17 Pro Max",
+          "priority": "p0",
+          "crop": "screen"
+        },
+        {
+          "key": "dashboard",
+          "scenario": "dashboard",
+          "placement": "End of The Dashboard shows what it adds up to",
+          "alt": "AtlasDays Dashboard showing day totals, trackers, and the world map",
           "device": "iPhone 17 Pro Max",
           "priority": "p0",
           "crop": "screen"
@@ -109,17 +118,8 @@
         {
           "key": "add-tracker",
           "scenario": "trackers",
-          "placement": "Under step 3, after the tracker paragraph",
+          "placement": "End of the first paragraph of Add your first tracker",
           "alt": "Trackers screen with the Add Tracker button",
-          "device": "iPhone 17 Pro Max",
-          "priority": "p1",
-          "crop": "control"
-        },
-        {
-          "key": "import-hub",
-          "scenario": "import",
-          "placement": "End of the Import older history when useful section",
-          "alt": "Import screen listing Photos, Flighty, and CSV options",
           "device": "iPhone 17 Pro Max",
           "priority": "p1",
           "crop": "control"
