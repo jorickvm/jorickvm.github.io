@@ -10,7 +10,7 @@ Deploying has no build step, but **authoring does**, and this is the easy mistak
 
 Edit the source fragment under `_site-src/content/`, then rebuild. Editing a file in `learn/` or `help/` directly will be overwritten by the next build, and `python3 scripts/build_site.py --check` fails when committed HTML no longer matches what the sources produce.
 
-Root pages (`index.html`, `about.html`, `privacy.html`, `terms.html`, `support.html`, `404.html`) are genuinely hand-authored and go live as-is.
+Only `index.html`, `support.html`, and `404.html` are genuinely hand-authored and go live as-is. `about.html`, `privacy.html`, and `terms.html` sit at the root but are generated too: they are listed in `_site-src/data/pages.json` and built from `_site-src/content/pages/`, so edit the fragment and rebuild. `changelog.html` is owned by the release workflow, which mirrors it from the AtlasDays repo.
 
 ## Structure
 
