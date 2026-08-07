@@ -14,12 +14,20 @@ import audit_site  # noqa: E402
 
 
 class AuditSiteTests(unittest.TestCase):
+    EXPECTED_BOOTSTRAP = (
+        "var d=document.documentElement,"
+        "q=new URLSearchParams(location.search).get('theme'),t=null;"
+        "if(q==='light'||q==='dark'){t=q;try{sessionStorage.setItem('theme',q)}catch(e){}}"
+        "else{try{t=sessionStorage.getItem('theme')}catch(e){}"
+        "if(!t)try{t=localStorage.getItem('theme')}catch(e){}}"
+        "d.setAttribute('data-theme',t==='light'?'light':'dark')"
+    )
+
     def test_dark_default_contract_matches_expected_bootstrap(self) -> None:
-        source = (
-            "var t=localStorage.getItem('theme');"
-            "document.documentElement.setAttribute('data-theme',t==='light'?'light':'dark')"
-        )
-        self.assertRegex(source, audit_site.THEME_DARK_DEFAULT)
+        self.assertRegex(self.EXPECTED_BOOTSTRAP, audit_site.THEME_DARK_DEFAULT)
+
+    def test_app_override_contract_matches_expected_bootstrap(self) -> None:
+        self.assertRegex(self.EXPECTED_BOOTSTRAP, audit_site.THEME_APP_OVERRIDE)
 
     def test_system_preference_bootstrap_does_not_match_contract(self) -> None:
         source = (
@@ -27,6 +35,14 @@ class AuditSiteTests(unittest.TestCase):
             "if(t)document.documentElement.setAttribute('data-theme',t)"
         )
         self.assertIsNone(audit_site.THEME_DARK_DEFAULT.search(source))
+
+    def test_bootstrap_without_app_override_is_rejected(self) -> None:
+        source = (
+            "var t=localStorage.getItem('theme');"
+            "document.documentElement.setAttribute('data-theme',t==='light'?'light':'dark')"
+        )
+        self.assertRegex(source, audit_site.THEME_DARK_DEFAULT)
+        self.assertIsNone(audit_site.THEME_APP_OVERRIDE.search(source))
 
     def test_route_mapping(self) -> None:
         self.assertEqual(audit_site.route_for_path(audit_site.SITE_ROOT / "index.html"), "/")

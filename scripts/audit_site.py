@@ -28,8 +28,16 @@ SITE_ORIGIN = "https://atlasdays.app"
 SITEMAP_NS = "{http://www.sitemaps.org/schemas/sitemap/0.9}"
 IGNORED_DIRS = {".git", "assets", "_site-src"}
 THEME_DARK_DEFAULT = re.compile(
-    r"document\.documentElement\.setAttribute\("
+    r"[A-Za-z_$][\w$]*\.setAttribute\("
     r"['\"]data-theme['\"],\s*t===['\"]light['\"]\?['\"]light['\"]:['\"]dark['\"]\)"
+)
+# Pages opened from the iOS app carry ?theme=light|dark so the web view matches
+# the app's appearance setting. The value is held in sessionStorage rather than
+# localStorage: the in-app browser shares storage with Safari, so persisting it
+# would flip the visitor's site-wide preference behind their back.
+THEME_APP_OVERRIDE = re.compile(
+    r"URLSearchParams\(location\.search\)\.get\(['\"]theme['\"]\)[\s\S]{0,400}?"
+    r"sessionStorage\.setItem\(['\"]theme['\"]"
 )
 
 
@@ -377,10 +385,20 @@ def audit_pages(args: argparse.Namespace) -> tuple[list[PageRecord], list[Findin
                 findings.append(Finding("error", "invalid-jsonld", rel, str(exc)))
 
         source_text = path.read_text(encoding="utf-8")
-        if "localStorage.getItem('theme')" in source_text and not THEME_DARK_DEFAULT.search(source_text):
-            findings.append(
-                Finding("error", "theme-default", rel, "Theme bootstrap must fall back to dark unless light is stored")
-            )
+        if "localStorage.getItem('theme')" in source_text:
+            if not THEME_DARK_DEFAULT.search(source_text):
+                findings.append(
+                    Finding("error", "theme-default", rel, "Theme bootstrap must fall back to dark unless light is stored")
+                )
+            if not THEME_APP_OVERRIDE.search(source_text):
+                findings.append(
+                    Finding(
+                        "error",
+                        "theme-app-override",
+                        rel,
+                        "Theme bootstrap must honour ?theme= from the app and store it in sessionStorage",
+                    )
+                )
 
         for tag, attrs, position in parser.tags:
             line = position[0]
