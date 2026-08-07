@@ -1,20 +1,22 @@
 #!/usr/bin/env python3
-"""Regenerate the tax-residency hub page from scripts/residency_data.json.
+"""Regenerate the tax-residency hub content from scripts/residency_data.json.
 
-The hub page keeps hand-written chrome (header, hero, search box, CTA) and two
+The hub fragment keeps hand-written chrome (hero, search box, CTA) and two
 machine-generated regions marked by HTML comments:
 
     <!-- HUB_TABLE_START --> ... <!-- HUB_TABLE_END -->
     <!-- HUB_COUNT_START -->N<!-- HUB_COUNT_END -->
 
-This script fills those regions in place, so the emitted HTML is static and
-crawlable (search is progressive-enhancement JS layered on top). Adding a country
-is a one-line edit in residency_data.json followed by:
+This script fills those regions in the _site-src fragment, not in the rendered
+page. build_site.py renders the page from that fragment, so writing the page
+here would be undone by the next site build -- which is exactly how the hub
+once lost ten countries. Adding a country is a one-line edit in
+residency_data.json followed by:
 
-    python3 scripts/build_residency_hub.py
+    python3 scripts/build_residency_hub.py && python3 scripts/build_site.py
 
-It also prints the sitemap <url> blocks and llms.txt lines for any entries, so the
-shared files can be kept in sync.
+It also prints the sitemap <url> blocks for any entries, so the shared files can
+be kept in sync.
 """
 import json
 import re
@@ -22,9 +24,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 DATA = ROOT / "scripts" / "residency_data.json"
+FRAGMENTS = ROOT / "_site-src" / "content" / "hubs"
 HUBS = [
-    ("countries", ROOT / "learn" / "tax-residency-by-country.html"),
-    ("us_states", ROOT / "learn" / "us-state-tax-residency.html"),
+    ("countries", FRAGMENTS / "learn-tax-residency-by-country.html"),
+    ("us_states", FRAGMENTS / "learn-us-state-tax-residency.html"),
 ]
 
 
