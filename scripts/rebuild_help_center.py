@@ -423,22 +423,20 @@ add(
       <li>Optionally add purposes or notes, then tap <strong>Save</strong>.</li>
     </ol>
     {{shot:timeline-list}}
-    {{shot:add-edit}}
 
     <h2>Edit a trip</h2>
     <p>Tap a trip in the Timeline list or its entry in Calendar view. Change the country, state, dates, purposes, notes, or Transit status, then save. Related totals refresh from the edited record.</p>
+    {{shot:add-edit}}
 
     <h2>Delete a trip</h2>
-    <p>Open the trip and choose <strong>Delete Trip</strong>, or use the delete action available from the Timeline row. AtlasDays briefly offers Undo after a Timeline deletion.</p>
-    {{shot:undo}}
+    <p>Open the trip and choose <strong>Delete Trip</strong>, or use the delete action available from the Timeline row. After a Timeline deletion an <strong>Undo</strong> button appears at the bottom of the screen for a few seconds. Once it disappears the deletion stands, so restore the trip by adding it again.</p>
 
     <h2>Switch between List and Calendar</h2>
     <p><strong>List</strong> is fastest for reviewing trips chronologically. <strong>Calendar</strong> makes gaps, overlaps, and trips spanning weeks easier to see. Both views edit the same records.</p>
     {{shot:calendar}}
 
     <h2>United States stays</h2>
-    <p>A United States trip without a state still contributes to country-level US totals. Add the state when you need state-specific trackers or the US state breakdown.</p>
-    {{shot:us-breakdown}}
+    <p>A United States trip without a state still contributes to country-level US totals. The Timeline row shows the state beneath the country name once you add one. Add the state when you need state-specific trackers or the US state breakdown.</p>
 
     <section class="if-needed">
       <h2>If a trip cannot be saved</h2>
@@ -452,11 +450,9 @@ add(
     ],
     synonyms=["edit trip", "delete trip", "add stay", "calendar", "timeline", "us state breakdown", "remove trip", "undo", "change dates", "fix a trip", "wrong dates", "add trip"],
     shots=[
-        shot("timeline-list", "timeline", "Above the Add a trip steps", "Timeline list containing past and ongoing trips", priority="p0", crop="screen"),
+        shot("timeline-list", "timeline", "End of the Add a trip steps", "Timeline list containing past and ongoing trips", priority="p0", crop="screen"),
         shot("add-edit", "edit-trip", "End of the Edit a trip section", "Edit Trip sheet showing country and exact dates", priority="p0", crop="screen"),
-        shot("undo", "timeline-undo", "In the Delete a trip section, on the Undo toast", "Undo toast shown briefly after deleting a trip", priority="p1", crop="control"),
-        shot("calendar", "timeline-calendar", "In the Switch between List and Calendar section", "Calendar view with trips spanning several dates", priority="p0", crop="screen"),
-        shot("us-breakdown", "timeline", "In the United States stays section", "United States state breakdown in the Timeline", priority="p1", crop="control"),
+        shot("calendar", "timeline-calendar", "End of the Switch between List and Calendar section", "Calendar view with trips spanning several dates", priority="p0", crop="screen"),
     ],
 )
 
@@ -490,7 +486,7 @@ add(
     <h2>Home Country has a specific role</h2>
     <p>Your Home Country setting affects the Dashboard’s Days Abroad metric. It does not remove trips from a country tracker or change how an exact trip’s inclusive dates are calculated.</p>
 
-    <div class="callout"><p><strong>AtlasDays is a record-keeping tool.</strong> A tracker can calculate the dates you entered, but official visa, tax, and residency rules determine which days legally qualify. The <a href="/learn/">Travel Rule Library</a> explains the common rules in plain language.</p></div>
+    <div class="callout"><p><strong>AtlasDays is a record-keeping tool.</strong> A tracker counts the dates you entered. Official visa, tax, and residency rules decide which days legally qualify. The <a href="/learn/">Travel Rule Library</a> explains the common rules in plain language.</p></div>
 
     <section class="if-needed">
       <h2>If a total differs from your manual count</h2>
@@ -527,15 +523,18 @@ add(
 
     <h2>Year</h2>
     <p>Choose <strong>Year</strong> when you know the year but not the calendar dates. A year-only trip marks the place as visited but contributes no numeric days.</p>
+    {{shot:mode-year}}
 
     <h2>Unknown</h2>
     <p>Choose <strong>Unknown</strong> when even the year is uncertain. This is useful for a country list or map, not for compliance calculations.</p>
+    {{shot:mode-unknown}}
 
     <h2>Transit</h2>
     <p>Choose <strong>Transit</strong> when you did not enter the country. Transit contributes zero days and does not mark the country as visited.</p>
-    {{shot:mode-year}}
-    {{shot:mode-unknown}}
     {{shot:mode-transit}}
+
+    <h2>All five modes in one place</h2>
+    <p>The mode selector in the trip editor holds every option, so you can change a trip's precision later without recreating it.</p>
     {{shot:mode-selector}}
 
     <h2>Choose conservatively</h2>
@@ -556,7 +555,7 @@ add(
         shot("mode-year", "trip-editor-year", "In the Year section", "Trip editor with Year precision selected", priority="p1", crop="control"),
         shot("mode-unknown", "trip-editor-unknown", "In the Unknown section", "Trip editor with Unknown precision selected", priority="p1", crop="control"),
         shot("mode-transit", "trip-editor-transit", "In the Transit section", "Trip editor with Transit selected", priority="p1", crop="control"),
-        shot("mode-selector", "add-trip", "After the five mode sections, showing all options together", "Trip mode selector showing Exact Dates, Year, Unknown, and Transit", priority="p0", crop="screen"),
+        shot("mode-selector", "add-trip", "End of the All five modes in one place section", "Trip mode selector showing Exact Dates, Year, Unknown, and Transit", priority="p0", crop="screen"),
     ],
 )
 
@@ -621,6 +620,7 @@ add(
       <li>Save the tracker.</li>
     </ol>
     {{shot:category-picker}}
+    <p>The category you pick decides which presets you are offered next.</p>
     {{shot:preset-picker}}
 
     <h2>Understand the window</h2>
@@ -637,7 +637,7 @@ add(
     {{shot:configured-editor}}
 
     <h2>Presets are starting configurations</h2>
-    <p>Presets save setup time, but the official rule still controls. Confirm that the preset matches your nationality, permission, purpose, and current legal situation.</p>
+    <p>A preset saves setup time. It does not change the rule you are actually subject to, so confirm it matches your nationality, permission, purpose, and current situation before relying on the number.</p>
 
     <div class="callout"><p><strong>Free AtlasDays includes one tracker.</strong> AtlasDays Pro adds unlimited trackers and Smart Alerts.</p></div>
 
@@ -680,6 +680,7 @@ add(
       <li>Save the tracker.</li>
     </ol>
     {{shot:schengen-category}}
+    <p>The Schengen category offers two presets. Pick the short-stay rule unless you hold a visa.</p>
     {{shot:schengen-preset}}
 
     <h2>Add the trips it needs</h2>
@@ -806,6 +807,7 @@ add(
     <h2>Charts and forecasts</h2>
     <p>The detail chart explains how the count changes across time. Planned future Exact Dates can contribute to a forecast; approximate future trips cannot. <a href="/help/plan-a-trip">Checking whether a planned trip fits</a> covers the forecast in detail.</p>
     {{shot:detail-chart}}
+    <p>The limit and window that shape that chart are set in the tracker editor.</p>
     {{shot:goal-window}}
 
     <section class="if-needed">
@@ -841,7 +843,7 @@ add(
     <ol>
       <li>Open the tracker and choose its alert settings.</li>
       <li>Turn on <strong>Smart Alerts</strong>.</li>
-      <li>Select the available threshold or timing options you want.</li>
+      <li>Choose the thresholds and timing you want to be warned at.</li>
       <li>Allow notifications when iOS asks.</li>
     </ol>
     {{shot:alert-settings}}
@@ -885,18 +887,17 @@ add(
     <ol>
       <li>Long-press an empty area of the Home Screen until it enters editing mode.</li>
       <li>Tap <strong>+</strong> and search for <strong>AtlasDays</strong>.</li>
-      <li>Choose Tracker or World Map and swipe through the available sizes.</li>
+      <li>Choose Tracker or World Map, then swipe through the available sizes.</li>
       <li>Tap <strong>Add Widget</strong> and place it.</li>
     </ol>
     {{shot:widget-gallery}}
-    {{shot:widget-sizes}}
 
     <h2>Choose a tracker</h2>
     <p>Long-press a placed Tracker widget, choose <strong>Edit Widget</strong>, and select the tracker. Each widget remembers its own selection, so several trackers can appear together.</p>
     {{shot:widget-edit}}
 
     <h2>Understand refresh timing</h2>
-    <p>AtlasDays writes a new widget snapshot when relevant data changes, while iOS decides when the Home Screen redraws it. Opening AtlasDays after an install or major edit helps provide current widget data.</p>
+    <p>AtlasDays writes a new widget snapshot when relevant data changes, and iOS decides when the Home Screen redraws it. Open AtlasDays once after installing it or after a large edit so the widget has current data to draw.</p>
 
     <h2>Free and Pro layouts</h2>
     <p>The small Tracker Status widget and all World Map sizes are available with the free app. Medium and large Tracker Trend layouts, including charts and forecasts, require AtlasDays Pro.</p>
@@ -914,7 +915,6 @@ add(
     synonyms=["widget blank", "widget stale", "home screen", "edit widget", "world map widget", "tracker widget", "widget not updating", "lock screen"],
     shots=[
         shot("widget-gallery", "widgets-gallery", "Directly after the numbered steps", "iOS widget gallery showing AtlasDays Tracker and World Map widgets", priority="p0", crop="screen"),
-        shot("widget-sizes", "widgets-gallery", "Directly after the numbered steps, on the size options", "AtlasDays widget sizes in the iOS gallery", priority="p1", crop="control"),
         shot("widget-edit", "widgets-edit", "In the Choose a tracker section, on Edit Widget", "Edit Widget sheet with the tracker picker", priority="p0", crop="control"),
     ],
 )
@@ -935,10 +935,10 @@ add(
       <li>Review the proposed trips before saving.</li>
     </ol>
     {{shot:photo-setup}}
-    {{shot:photo-scan}}
 
     <h2>What AtlasDays examines</h2>
     <p>AtlasDays uses photo timestamps and embedded location coordinates when available. The scan and country resolution happen on your device; the photos themselves are not uploaded to AtlasDays.</p>
+    {{shot:photo-scan}}
 
     <h2>Review every proposal</h2>
     <p>Check the country or US state, start and end dates, and any duplicate or overlap warning. A photo’s location is evidence, not proof of the exact moment you crossed a border.</p>
@@ -960,7 +960,7 @@ add(
     synonyms=["scan photos", "photo location", "geotag", "no photos found", "duplicate import", "photo privacy", "photos", "photo library", "found nothing", "missed trips"],
     shots=[
         shot("photo-setup", "import-photos", "Directly after the numbered steps", "Photo Import setup with date-range options", priority="p0", crop="screen"),
-        shot("photo-scan", "import-photos-scanning", "Directly after the steps, during the scan", "Photo Import scan in progress", priority="p1", crop="control"),
+        shot("photo-scan", "import-photos-scanning", "End of the What AtlasDays examines section", "Photo Import scan in progress", priority="p1", crop="control"),
         shot("photo-review", "import-photos-review", "In the Review every proposal section", "Photo Import review with proposed trips and warnings", priority="p0", crop="screen"),
     ],
 )
@@ -974,7 +974,7 @@ add(
     <p class="article-answer">Export your flight history from Flighty as CSV, select it in AtlasDays, and review the proposed trips before saving.</p>
 
     <h2>Export from Flighty</h2>
-    <p>Use Flighty’s export feature to create a CSV containing the flights you want to import. Save it somewhere available in the iOS Files picker.</p>
+    <p>Export your flight history from Flighty as CSV and save it somewhere the iOS Files picker can reach, such as iCloud Drive or On My iPhone.</p>
 
     <h2>Import into AtlasDays</h2>
     <ol>
@@ -985,10 +985,10 @@ add(
       <li>Save only the rows you want in Timeline.</li>
     </ol>
     {{shot:flighty-setup}}
-    {{shot:flighty-review}}
 
     <h2>How flights become trips</h2>
     <p>Arrival and departure airports provide evidence for a stay, while connections may become Transit. Overnight and closely connected flights can require judgment, so compare the preview with your actual entry into each country.</p>
+    {{shot:flighty-review}}
 
     <h2>Review US states</h2>
     <p>When airport information supports a US state, AtlasDays can propose it. Confirm the state before saving if you rely on state-specific tracking.</p>
@@ -1027,13 +1027,13 @@ add(
       <li>Import the rows you accept.</li>
     </ol>
     {{shot:csv-setup}}
-    {{shot:csv-review}}
 
     <h2>Fix errors in the source file</h2>
     <p>The preview reports a row number and reason when it cannot resolve a country, state, date, or required header. Correct that row in the CSV and import the file again.</p>
 
     <h2>Warnings are review prompts</h2>
     <p>A duplicate can repeat a trip already in Timeline. An overlap can be legitimate or can represent two versions of the same stay. Check the dates and places rather than accepting every row automatically.</p>
+    {{shot:csv-review}}
 
     <h2>Only saving changes your Timeline</h2>
     <p>Selecting a file and viewing the preview does not add trips. AtlasDays writes the accepted rows only after the final import action.</p>
@@ -1051,7 +1051,7 @@ add(
     synonyms=["csv error", "row invalid", "spreadsheet import", "template", "duplicate", "overlap warning", "missing country column"],
     shots=[
         shot("csv-setup", "import-csv", "Directly after the numbered steps", "CSV Import setup and example-file controls", priority="p0", crop="screen"),
-        shot("csv-review", "import-csv-review", "In the Warnings are review prompts section", "CSV Import preview containing valid, invalid, duplicate, and overlap rows", priority="p0", crop="screen"),
+        shot("csv-review", "import-csv-review", "End of the Warnings are review prompts section", "CSV Import preview containing valid, invalid, duplicate, and overlap rows", priority="p0", crop="screen"),
     ],
 )
 
@@ -1078,7 +1078,7 @@ add(
     <h3>Exact Dates</h3>
     <p>Use <code>yyyy-mm-dd</code> in both date columns. Leave End Date empty only for an ongoing trip.</p>
     <h3>Year</h3>
-    <p>Use a four-digit year in Start Date. End Date can contain a year or remain empty for the same year. A multi-year range can be expanded by AtlasDays into year records.</p>
+    <p>Use a four-digit year in Start Date. End Date can hold a year, or stay empty to mean the same year. A range spanning several years becomes one year-only record per year.</p>
     <h3>Unknown</h3>
     <p>Leave both date cells empty. The country is preserved as a visit without numeric days.</p>
 
@@ -1130,7 +1130,7 @@ add(
     {{shot:export-hub}}
 
     <h2>Configure the period and detail</h2>
-    <p>Choose the date range, language, date format, and available columns or report options. Review whether state, purpose, notes, or other details should be included before sharing personal travel data.</p>
+    <p>Choose the date range, language, date format, and the columns or report options you want. Decide whether state, purpose, and notes belong in the file before you share it, because an export can carry more detail than the recipient needs.</p>
     {{shot:spreadsheet-config}}
 
     <h2>Preview before sharing</h2>
@@ -1180,14 +1180,19 @@ add(
     <h2>Notifications</h2>
     <p>Notifications are used for enabled Auto-Detect events and Smart Alerts. You can disable the related feature in AtlasDays or change notification permission in iOS Settings.</p>
 
-    <h2>Analytics</h2>
-    <p>AtlasDays may collect limited anonymous product signals to understand feature use and reliability. These signals are not your travel history and are not used to build an advertising profile.</p>
+    <h2>Review or revoke access</h2>
+    <p>Open iOS Settings for AtlasDays to change Photos, Location, and Notifications permission at any time. A permission only appears in that list once AtlasDays has asked for it, so a feature you have never opened will not be listed yet.</p>
+    {{shot:privacy-permissions}}
+
+    <h2>Usage statistics</h2>
+    <p>AtlasDays sends anonymous usage statistics to an independent analytics provider in the European Union, so it can see how the app is used and where it can be better. There is no account and nothing that identifies you personally.</p>
+    <p>These statistics cover actions taken in the app, your settings, basic device and app information, and your approximate country. Counts, such as how many trips you have, are sent as ranges rather than exact numbers. They never include your trips, dates, notes, photos, or coordinates.</p>
+    <p>AtlasDays carries no advertising, uses no advertising identifier, and asks for no tracking permission. The <a href="/privacy">Privacy Policy</a> is the full statement.</p>
     {{shot:privacy-overview}}
 
     <section class="if-needed">
-      <h2>Review or revoke access</h2>
-      <p>Open iOS Settings for AtlasDays to change Photos, Location, and Notifications permission. Features that depend on revoked access stop working until it is allowed again.</p>
-    {{shot:privacy-permissions}}
+      <h2>If a feature stops working</h2>
+      <p>Check the permission it depends on in iOS Settings. Photo Import needs Photos access, Auto-Detect needs Always location, and alerts need notifications. Each keeps working normally once access is allowed again.</p>
     </section>
     """,
     next_steps=[
@@ -1195,10 +1200,10 @@ add(
         ("photo-import", "Understand the on-device photo scan and review flow."),
         ("icloud-sync-and-restore", "Review private iCloud storage and device sync."),
     ],
-    synonyms=["privacy", "location permission", "photos permission", "analytics", "notification permission", "data storage", "private", "does it track me", "data collection", "tracking", "permissions", "opt out", "offline"],
+    synonyms=["privacy", "location permission", "photos permission", "analytics", "usage statistics", "telemetry", "notification permission", "data storage", "private", "does it track me", "data collection", "tracking", "permissions", "opt out", "offline"],
     shots=[
         shot("privacy-overview", "privacy", "End of the Analytics section", "AtlasDays privacy overview showing data and permission summaries", priority="p0", crop="screen"),
-        shot("privacy-permissions", "ios-settings-atlasdays", "In the Review or revoke access section", "iOS Settings page for AtlasDays showing Photos, Location, and Notifications", priority="p1", crop="control"),
+        shot("privacy-permissions", "ios-settings-atlasdays", "End of the Review or revoke access section", "iOS Settings page for AtlasDays listing its Location, Photos, and other permissions", priority="p1", crop="control"),
     ],
 )
 
@@ -1220,8 +1225,7 @@ add(
     {{shot:auto-detect-settings}}
 
     <h2>Review suggestions</h2>
-    <p>A detection is evidence of movement, not a finished legal travel record. Open its Timeline suggestion, confirm the country or US state and boundary dates, then accept, edit, or ignore it.</p>
-    {{shot:auto-detect-suggestion}}
+    <p>A suggestion appears in Timeline as a card above your saved trips, showing the detected country and the dates AtlasDays inferred. It is evidence of movement, not a finished travel record. Open it, confirm the country or US state and the boundary dates, then accept, edit, or ignore it. Ignoring one does not stop you adding the trip by hand later.</p>
 
     <h2>Ignore places you do not want suggested</h2>
     <p>Add countries to the Ignore list when recurring border proximity produces suggestions you never need. Pro users can also ignore individual US states. Ignored places can still be added manually.</p>
@@ -1242,7 +1246,6 @@ add(
     synonyms=["automatic trip", "border crossing", "always location", "location notification", "detection missing", "ground crossing", "automatic tracking", "background location", "battery", "always allow", "detect trips", "location permission"],
     shots=[
         shot("auto-detect-settings", "auto-detect", "Directly after the numbered steps", "Auto-Detect Trips settings with location and notification controls", priority="p0", crop="screen"),
-        shot("auto-detect-suggestion", "timeline-suggestion", "In the Review suggestions section", "Timeline suggestion card awaiting review", priority="p0", crop="control"),
     ],
 )
 
@@ -1264,7 +1267,7 @@ add(
     {{shot:icloud-status}}
 
     <h2>After reinstalling AtlasDays</h2>
-    <p>Cloud-backed trips and trackers can return after the app reconnects to its iCloud store. Device-specific permissions, widget configuration, and some preferences may need to be set again.</p>
+    <p>Trips and trackers held in iCloud come back once the app reconnects to its iCloud store, which can take a few minutes on first launch. Device-specific permissions, widget configuration, and some preferences have to be set again.</p>
 
     <h2>Understand the status</h2>
     <p>The iCloud Sync screen reports whether AtlasDays is checking, syncing, waiting, synced, not signed in, or using local storage. Enabling or disabling sync can require closing AtlasDays from the app switcher and reopening it.</p>
@@ -1358,9 +1361,10 @@ add(
       <li>US state tracking</li>
       <li>AtlasDays CSV, Spreadsheet, and PDF exports</li>
       <li>Medium and large Tracker Trend widgets with charts and forecasts</li>
-      <li>Other Pro personalization and advanced features shown in the current upgrade screen</li>
+      <li>Additional personalization options, listed in full on the upgrade screen</li>
     </ul>
     {{shot:pro-paywall}}
+    <p>A Pro feature you have not unlocked shows the same upgrade route where you meet it.</p>
     {{shot:pro-locked}}
 
     <h2>Purchase and restore</h2>
@@ -1400,11 +1404,11 @@ add(
       <li>Choose the app interface language.</li>
       <li>Follow the restart instruction when shown so the interface reloads consistently.</li>
     </ol>
+    {{shot:language-settings}}
 
     <h2>Choose country names separately</h2>
-    <p>Under the same screen, choose <strong>Country Names</strong>. It can follow the app language or use another supported naming language. Screens update as they reload.</p>
+    <p>On the same screen, choose <strong>Country Names</strong>. It can follow the app language or use a different supported language, which is useful when you read the interface in one language but want country names in another.</p>
     {{shot:language-country}}
-    {{shot:language-settings}}
 
     <h2>Exports and share cards</h2>
     <p>Spreadsheet, PDF, and share-card screens can offer their own language choice. Changing that output language does not change the app interface.</p>
@@ -1420,7 +1424,7 @@ add(
     ],
     synonyms=["change language", "country names", "translation", "export language", "share card language", "language", "translate"],
     shots=[
-        shot("language-settings", "settings-language", "Directly after the numbered steps, the full Language screen", "Language settings showing interface and country-name choices", priority="p0", crop="screen"),
+        shot("language-settings", "settings-language", "End of the Change the app language steps", "Language settings showing interface and country-name choices", priority="p0", crop="screen"),
         shot("language-country", "settings-language-country-names", "In the Choose country names separately section", "Country Names language picker", priority="p0", crop="control"),
     ],
 )
@@ -1435,11 +1439,11 @@ add(
 
     <h2>Choose a theme</h2>
     <p>Open <strong>Settings → Appearance</strong> and choose the available light, dark, or device-following behavior.</p>
+    {{shot:appearance-settings}}
 
     <h2>Personalize AtlasDays</h2>
     <p>Use the personalization settings to select an accent color, background wash, and app icon. The map uses the chosen visual treatment while preserving the same highlighted places.</p>
     {{shot:appearance-icon}}
-    {{shot:appearance-settings}}
 
     <h2>Widgets follow their supported appearance</h2>
     <p>AtlasDays prepares widget map snapshots for light and dark appearances. iOS controls which version appears with the Home Screen environment.</p>
@@ -1455,7 +1459,7 @@ add(
     ],
     synonyms=["dark mode", "light mode", "theme", "accent color", "app icon", "background wash", "personalize"],
     shots=[
-        shot("appearance-settings", "settings-appearance", "Directly after the theme step, the full Appearance screen", "Appearance and personalization settings with theme and accent choices", priority="p0", crop="screen"),
+        shot("appearance-settings", "settings-appearance", "End of the Choose a theme section", "Appearance and personalization settings with theme and accent choices", priority="p0", crop="screen"),
         shot("appearance-icon", "settings-app-icon", "In the Personalize AtlasDays section, on the app icon picker", "App icon picker", priority="p1", crop="control"),
     ],
 )
