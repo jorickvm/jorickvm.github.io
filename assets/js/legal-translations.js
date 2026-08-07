@@ -464,7 +464,7 @@ window.AtlasDaysLegalTranslations = {
       title: 'Politique de confidentialité d’AtlasDays',
       html: `<p><a href="/">&larr; AtlasDays</a></p>
   <h1>Politique de confidentialité d’AtlasDays</h1>
-  <p class="updated">Dernière mise à jour : 7 août 2026</p>
+  <p class="updated">Dernière mise à jour : 7 août 2026</p>
 
   <p class="lede">Votre historique de voyage, vos photos et votre position restent sur votre appareil ou dans votre compte iCloud personnel. AtlasDays ne possède aucun compte utilisateur ni copie de votre historique de voyage sur ses serveurs.</p>
 
