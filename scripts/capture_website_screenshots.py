@@ -7,6 +7,7 @@ import argparse
 import json
 import os
 import shutil
+import re
 import subprocess
 import sys
 import tempfile
@@ -25,11 +26,28 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--capture", action="append", help="Capture id or scenario; repeat as needed.")
     parser.add_argument("--all", action="store_true", help="Capture every ready manifest entry.")
+    parser.add_argument(
+        "--id-prefix",
+        help='Restrict --all to ids starting with this, e.g. "help-". Keeps a Help Center '
+             "run from recapturing the published marketing assets.",
+    )
     parser.add_argument("--list", action="store_true", help="List capture states and exit.")
     parser.add_argument("--device", help="Override the manifest Simulator name.")
     parser.add_argument("--app-repo", type=Path)
     parser.add_argument("--no-build", action="store_true")
     parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument(
+        "--raw-dir",
+        type=Path,
+        help="Keep the full-screen PNG per scenario here instead of a temp dir, so crops "
+             "can be re-cut later without relaunching the Simulator.",
+    )
+    parser.add_argument(
+        "--from-raw",
+        type=Path,
+        help="Re-cut targets from PNGs saved by --raw-dir. Touches no Simulator and no build, "
+             "which is what makes tuning a crop rectangle cheap.",
+    )
     return parser.parse_args()
 
 
@@ -54,9 +72,18 @@ def load_manifest() -> dict:
     return json.loads(MANIFEST_PATH.read_text(encoding="utf-8"))
 
 
-def select_captures(manifest: dict, args: argparse.Namespace) -> list[dict]:
+def select_captures(manifest: dict, args: argparse.Namespace, device_name: str) -> list[dict]:
     captures = manifest["captures"]
+    # A capture without a `device` belongs to the manifest default, so an iPad
+    # run picks up only the entries that actually name the iPad. Without this
+    # every run would try to capture the other device's slots on the wrong one.
+    captures = [
+        capture for capture in captures
+        if device_matches(capture.get("device", manifest["device"]["name"]), device_name)
+    ]
     if args.all:
+        if args.id_prefix:
+            captures = [c for c in captures if str(c["id"]).startswith(args.id_prefix)]
         return [capture for capture in captures if capture.get("status") == "ready"]
     requested = set(args.capture or [])
     return [
@@ -64,6 +91,47 @@ def select_captures(manifest: dict, args: argparse.Namespace) -> list[dict]:
         for capture in captures
         if capture.get("id") in requested or capture.get("scenario") in requested
     ]
+
+
+def known_scenarios(app_repo: Path) -> set[str]:
+    """Scenario names the app actually understands.
+
+    Parsed from the harness enum so the manifest cannot drift from it. This
+    exists because an unrecognised name is silently ignored at launch: the app
+    comes up with an empty in-memory store and none of the pinned defaults, and
+    that empty screen gets published as though it were the real thing.
+    """
+    source = app_repo / "AtlasDays" / "App" / "WebsiteScreenshotHarness.swift"
+    if not source.exists():
+        return set()
+    names: set[str] = set()
+    for line in source.read_text(encoding="utf-8").splitlines():
+        stripped = line.strip()
+        if not stripped.startswith("case "):
+            continue
+        # `case fullMap = "full-map"` or a bare `case timeline`
+        match = re.match(r'case\s+`?(\w+)`?(?:\s*=\s*"([^"]+)")?', stripped)
+        if match:
+            names.add(match.group(2) or match.group(1))
+    return names
+
+
+def device_matches(wanted: str, actual: str) -> bool:
+    """Match a manifest device against a booted Simulator name.
+
+    Slots name a device family ("iPad Pro 13-inch") while Simulator names carry
+    a generation ("iPad Pro 13-inch (M5)"). Matching on the family means the
+    manifest does not need editing every time Apple ships new hardware.
+    """
+    return actual == wanted or actual.startswith(f"{wanted} (")
+
+
+def group_by_scenario(captures: list[dict]) -> list[tuple[str, list[dict]]]:
+    """Group captures by scenario, preserving manifest order."""
+    grouped: dict[str, list[dict]] = {}
+    for capture in captures:
+        grouped.setdefault(str(capture["scenario"]), []).append(capture)
+    return list(grouped.items())
 
 
 def simulator_lookup(env: dict[str, str], name: str) -> tuple[str, str]:
@@ -91,7 +159,11 @@ def build_app(app_repo: Path, udid: str, derived_data: Path, env: dict[str, str]
         "-configuration", "Debug",
         "-destination", f"platform=iOS Simulator,id={udid}",
         "-derivedDataPath", str(derived_data),
-        "CODE_SIGNING_ALLOWED=NO",
+        # Deliberately signed. `CODE_SIGNING_ALLOWED=NO` strips the iCloud
+        # container entitlement, and `CKContainer.default()` then raises an
+        # Objective-C CKException that no Swift `catch` can see, so the app
+        # dies the moment a capture opens Settings → iCloud Sync. A signed
+        # simulator build is also simply closer to what ships.
         "build",
     ]
     print("+", " ".join(command))
@@ -100,16 +172,49 @@ def build_app(app_repo: Path, udid: str, derived_data: Path, env: dict[str, str]
     return derived_data / "Build" / "Products" / "Debug-iphonesimulator" / "AtlasDays.app"
 
 
-def write_target(raw_png: Path, target: Path, width: int, height: int, env: dict[str, str], dry_run: bool) -> None:
+def normalize_targets(capture: dict) -> list[dict]:
+    """Accept both target spellings.
+
+    Marketing captures list plain path strings and want the whole screen. Help
+    Center slots need a rectangle out of that same screen, so they use
+    ``{"path": ..., "crop": [x, y, w, h]}``. Several slots crop the same
+    capture differently, which is why cropping belongs here and not in a
+    second launch.
+    """
+    normalized = []
+    for target in capture.get("targets", []):
+        if isinstance(target, str):
+            normalized.append({"path": target, "crop": None})
+        else:
+            normalized.append({"path": target["path"], "crop": target.get("crop")})
+    return normalized
+
+
+def write_target(
+    raw_png: Path,
+    target: Path,
+    width: int,
+    height: int,
+    crop: list[int] | None,
+    env: dict[str, str],
+    dry_run: bool,
+) -> None:
     target.parent.mkdir(parents=True, exist_ok=True)
     if target.suffix.lower() == ".webp":
-        run([
-            shutil.which("cwebp") or "cwebp",
-            "-quiet", "-q", "88", "-resize", str(width), str(height),
-            str(raw_png), "-o", str(target),
-        ], env=env, dry_run=dry_run)
+        command = [shutil.which("cwebp") or "cwebp", "-quiet", "-q", "88"]
+        if crop:
+            # cwebp crops before it resizes, and a cropped control keeps its
+            # native pixels: resizing it to the full device frame would stretch
+            # a 400pt-tall strip over 2868px.
+            command += ["-crop", *(str(int(v)) for v in crop)]
+        elif should_resize(raw_png, width, height, env):
+            command += ["-resize", str(width), str(height)]
+        command += [str(raw_png), "-o", str(target)]
+        run(command, env=env, dry_run=dry_run)
         return
     if target.suffix.lower() == ".png":
+        if crop:
+            raise SystemExit(f"Cropping is only implemented for WebP targets: {target}")
         if dry_run:
             print(f"+ resize PNG {raw_png} -> {target} ({width}x{height})")
             return
@@ -120,6 +225,119 @@ def write_target(raw_png: Path, target: Path, width: int, height: int, env: dict
     raise SystemExit(f"Unsupported screenshot target format: {target}")
 
 
+def raw_dimensions(raw_png: Path, env: dict[str, str]) -> tuple[int, int] | None:
+    output = run(
+        ["/usr/bin/sips", "-g", "pixelWidth", "-g", "pixelHeight", str(raw_png)],
+        env=env, check=False, echo_output=False,
+    )
+    dimensions = {}
+    for line in output.splitlines():
+        key, _, value = line.strip().partition(":")
+        if key in ("pixelWidth", "pixelHeight") and value.strip().isdigit():
+            dimensions[key] = int(value.strip())
+    if len(dimensions) != 2:
+        return None
+    return dimensions["pixelWidth"], dimensions["pixelHeight"]
+
+
+def should_resize(raw_png: Path, width: int, height: int, env: dict[str, str]) -> bool:
+    """Only resize a capture that shares the target's aspect ratio.
+
+    The manifest carries one target size, sized for the iPhone. An iPad
+    landscape capture forced into it comes out squashed into portrait, so a
+    capture whose shape does not match keeps its own pixels.
+    """
+    raw = raw_dimensions(raw_png, env)
+    if raw is None:
+        return False
+    if abs((raw[0] / raw[1]) - (width / height)) >= 0.01:
+        return False
+    # Downscale only. A hand-captured shot from a smaller phone shares the same
+    # aspect, and stretching it up to the Pro Max frame invents pixels for no
+    # gain: the page scales the image anyway.
+    return raw[0] > width
+
+
+def rotate_to_landscape(raw_png: Path, env: dict[str, str], dry_run: bool) -> None:
+    """Turn a landscape capture the right way up.
+
+    The app rotates fine once the Simulator itself is rotated, but
+    `simctl io screenshot` always writes the framebuffer in the device's native
+    portrait, so landscape content arrives on its side. Rotating 90 degrees
+    clockwise puts the status bar back along the top edge.
+    """
+    if dry_run:
+        print(f"+ rotate {raw_png} 90 degrees clockwise")
+        return
+    run(["/usr/bin/sips", "--rotate", "90", str(raw_png)], env=env, echo_output=False)
+
+
+def capture_settled(
+    udid: str,
+    raw_png: Path,
+    settle_seconds: float,
+    env: dict[str, str],
+    dry_run: bool,
+    max_extra: float = 20.0,
+    exact: bool = False,
+) -> None:
+    """Screenshot once the screen stops changing.
+
+    A fixed sleep is a guess, and a wrong guess photographs the launch splash,
+    which is how several slots quietly shipped a black screen with a logo on it.
+    This waits the scenario's settle time, then keeps re-shooting every two
+    seconds until two consecutive frames are byte-identical.
+
+    Deliberately capped: a scenario captured mid-animation (the photo scan) never
+    produces two identical frames, and for those the cap is the answer.
+    """
+    if dry_run:
+        print(f"+ screenshot {raw_png} once settled (>= {settle_seconds}s)")
+        return
+    time.sleep(settle_seconds)
+    shot = ["/usr/bin/xcrun", "simctl", "io", udid, "screenshot", str(raw_png)]
+    run(shot, env=env, echo_output=False)
+    if exact:
+        # Some states are deliberately temporary. The undo toast lives about
+        # four seconds, so waiting for the screen to stop changing is waiting
+        # for the very thing being photographed to disappear.
+        return
+    previous = raw_png.read_bytes()
+    waited = 0.0
+    while waited < max_extra:
+        time.sleep(2.0)
+        waited += 2.0
+        run(shot, env=env, echo_output=False)
+        current = raw_png.read_bytes()
+        if current == previous:
+            return
+        previous = current
+    print(f"note: {raw_png.stem} never settled; captured after {settle_seconds + waited:.0f}s")
+
+
+def set_status_bar(udid: str, env: dict[str, str], dry_run: bool) -> None:
+    """Pin every capture to the same status bar.
+
+    `discharging` matters: `charged` and `charging` both draw a charging
+    indicator, which is an instant tell that a screenshot was staged.
+    """
+    run([
+        "/usr/bin/xcrun", "simctl", "status_bar", udid, "override",
+        "--time", "9:41",
+        "--wifiBars", "3",
+        "--cellularBars", "4",
+        "--batteryLevel", "100",
+        "--batteryState", "discharging",
+    ], env=env, dry_run=dry_run, check=False, echo_output=False)
+
+
+def clear_status_bar(udid: str, env: dict[str, str], dry_run: bool) -> None:
+    run(
+        ["/usr/bin/xcrun", "simctl", "status_bar", udid, "clear"],
+        env=env, dry_run=dry_run, check=False, echo_output=False,
+    )
+
+
 def main() -> int:
     args = parse_args()
     manifest = load_manifest()
@@ -127,16 +345,60 @@ def main() -> int:
         for capture in manifest["captures"]:
             print(f"{capture['status']:18} {capture['id']:28} {capture.get('scenario') or '-'}")
         return 0
-    captures = select_captures(manifest, args)
+    device_name = args.device or manifest["device"]["name"]
+    captures = select_captures(manifest, args, device_name)
     if not captures:
-        raise SystemExit("Choose --all or at least one --capture id/scenario. Use --list to inspect options.")
+        raise SystemExit(
+            f'No ready captures for "{device_name}". Choose --all or a --capture id/scenario, '
+            "and check --device against the manifest. Use --list to inspect options."
+        )
     blocked = [capture["id"] for capture in captures if capture.get("status") != "ready"]
-    if blocked:
+    if blocked and not args.raw_dir:
         raise SystemExit(f"Capture entries are not ready: {', '.join(blocked)}")
+    if blocked:
+        # With --raw-dir the point is to collect full screens to measure crops
+        # against, so a not-yet-ready entry still gets its screenshot taken. It
+        # just does not publish anything until its rectangle exists.
+        print(f"note: {len(blocked)} entries are not ready; capturing raws only for those")
 
     env = os.environ.copy()
     env["DEVELOPER_DIR"] = str(DEVELOPER_DIR)
-    device_name = args.device or manifest["device"]["name"]
+    width = int(manifest["device"]["target_width"])
+    height = int(manifest["device"]["target_height"])
+
+    # Entries with a `source` are captured by hand, outside the app: the iOS
+    # Settings page and the Home Screen widget surfaces. They are cut from the
+    # archived PNG rather than launched, and never reach the Simulator.
+    manual = [c for c in captures if c.get("source")]
+    captures = [c for c in captures if not c.get("source")]
+    for capture in manual:
+        source = SITE_ROOT / capture["source"]
+        if not source.exists():
+            raise SystemExit(f'Manual source missing for {capture["id"]}: {source}')
+        for target in normalize_targets(capture):
+            write_target(
+                source, SITE_ROOT / target["path"],
+                width, height, target["crop"], env, args.dry_run,
+            )
+    if manual:
+        print(f"cut {len(manual)} manual capture(s) from archived sources")
+
+    if args.from_raw:
+        recut = 0
+        for scenario, group in group_by_scenario(captures):
+            raw_png = args.from_raw / f"{scenario}.png"
+            if not raw_png.exists():
+                print(f"! no raw capture for {scenario}, skipping")
+                continue
+            for capture in group:
+                for target in normalize_targets(capture):
+                    write_target(
+                        raw_png, SITE_ROOT / target["path"],
+                        width, height, target["crop"], env, args.dry_run,
+                    )
+                    recut += 1
+        print(f"re-cut {recut} targets from {args.from_raw}")
+        return 0
     app_repo = (args.app_repo or (SITE_ROOT.parent / "AtlasDays" / "AtlasDays")).resolve()
     derived_data = Path(tempfile.gettempdir()) / "AtlasDaysWebsiteScreenshots"
     if args.dry_run:
@@ -152,37 +414,72 @@ def main() -> int:
         app_path = build_app(app_repo, udid, derived_data, env, args.dry_run)
     run(["/usr/bin/xcrun", "simctl", "install", udid, str(app_path)], env=env, dry_run=args.dry_run)
 
-    width = int(manifest["device"]["target_width"])
-    height = int(manifest["device"]["target_height"])
     captured_at = datetime.now(UTC).isoformat(timespec="seconds").replace("+00:00", "Z")
-    with tempfile.TemporaryDirectory() as temp_dir:
-        for capture in captures:
-            scenario = str(capture["scenario"])
-            run(
-                ["/usr/bin/xcrun", "simctl", "terminate", udid, BUNDLE_ID],
-                env=env,
-                dry_run=args.dry_run,
-                check=False,
-                echo_output=False,
-            )
-            run([
-                "/usr/bin/xcrun", "simctl", "launch", "--terminate-running-process",
-                udid, BUNDLE_ID,
-                "--ui-testing", "--website-screenshot", scenario,
-                "-AppleLanguages", "(en-US)", "-AppleLocale", "en_US",
-            ], env=env, dry_run=args.dry_run)
-            if not args.dry_run:
-                time.sleep(float(capture.get("settle_seconds", 4)))
-            raw_png = Path(temp_dir) / f"{capture['id']}.png"
-            run(["/usr/bin/xcrun", "simctl", "io", udid, "screenshot", str(raw_png)], env=env, dry_run=args.dry_run)
-            for target_value in capture.get("targets", []):
-                write_target(raw_png, SITE_ROOT / target_value, width, height, env, args.dry_run)
-            if not args.dry_run:
-                # Provenance is a timestamp and a device, deliberately not an
-                # app version: the site never refers to AtlasDays by version
-                # number, in copy or in metadata.
-                capture["last_captured_at"] = captured_at
-                capture["captured_device"] = device_name
+    # An unrecognised scenario is not a no-op: the app launches with an empty
+    # store and no pinned defaults, and that blank screen publishes silently.
+    valid = known_scenarios(app_repo)
+    unknown = sorted({str(c["scenario"]) for c in captures} - valid) if valid else []
+    if unknown:
+        raise SystemExit(
+            "These scenarios are not in WebsiteScreenshotScenario, so the app would "
+            f"launch unseeded and publish a blank screen: {', '.join(unknown)}"
+        )
+
+    set_status_bar(udid, env, args.dry_run)
+    if args.raw_dir:
+        args.raw_dir.mkdir(parents=True, exist_ok=True)
+    try:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            raw_root = args.raw_dir or Path(temp_dir)
+            # One launch per scenario, not per capture. Slots that share a
+            # scenario are different crops of the same screen, so relaunching
+            # for each would be slower and could drift between shots.
+            for scenario, group in group_by_scenario(captures):
+                run(
+                    ["/usr/bin/xcrun", "simctl", "terminate", udid, BUNDLE_ID],
+                    env=env,
+                    dry_run=args.dry_run,
+                    check=False,
+                    echo_output=False,
+                )
+                launch = [
+                    "/usr/bin/xcrun", "simctl", "launch", "--terminate-running-process",
+                    udid, BUNDLE_ID,
+                    "--ui-testing", "--website-screenshot", scenario,
+                    "-AppleLanguages", "(en-US)", "-AppleLocale", "en_US",
+                ]
+                if any(capture.get("landscape") for capture in group):
+                    launch.insert(-4, "--landscape")
+                run(launch, env=env, dry_run=args.dry_run)
+                raw_png = raw_root / f"{scenario}.png"
+                capture_settled(
+                    udid,
+                    raw_png,
+                    max(float(c.get("settle_seconds", 4)) for c in group),
+                    env,
+                    args.dry_run,
+                    exact=any(c.get("settle_exact") for c in group),
+                )
+                if any(capture.get("landscape") for capture in group):
+                    rotate_to_landscape(raw_png, env, args.dry_run)
+                for capture in group:
+                    if capture.get("status") != "ready":
+                        continue
+                    for target in normalize_targets(capture):
+                        write_target(
+                            raw_png, SITE_ROOT / target["path"],
+                            width, height, target["crop"], env, args.dry_run,
+                        )
+                    if not args.dry_run:
+                        # Provenance is a timestamp and a device, deliberately
+                        # not an app version: the site never refers to
+                        # AtlasDays by version number, in copy or in metadata.
+                        capture["last_captured_at"] = captured_at
+                        capture["captured_device"] = device_name
+    finally:
+        # Always clear, including after a failed capture: a left-over override
+        # silently stages every later screenshot taken on this simulator.
+        clear_status_bar(udid, env, args.dry_run)
 
     if not args.dry_run:
         MANIFEST_PATH.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
