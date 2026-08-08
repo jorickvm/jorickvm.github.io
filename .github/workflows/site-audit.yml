@@ -78,6 +78,7 @@ jobs:
         run: |
           python3 scripts/build_content_governance.py --check
           python3 scripts/build_search_index.py --check
+          python3 scripts/sync_help_screenshots.py --check
           python3 scripts/check_external_sources.py --check-config
           python3 scripts/migrate_related_content.py --check
       - name: Check social cards and dark-default CSS policy
