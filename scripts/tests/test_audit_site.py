@@ -83,6 +83,15 @@ class AuditSiteTests(unittest.TestCase):
         audit_site.audit_learn_fragments(findings)
         self.assertEqual(findings, [])
 
+    def test_changelog_body_is_exempt_from_baseline_content_hash(self) -> None:
+        # The app repo rewrites this page's cards on every release, so comparing
+        # its content_hash would turn CI red after each one.
+        self.assertIn("changelog.html", audit_site.BASELINE_VOLATILE_CONTENT)
+
+    def test_no_other_page_is_exempt_from_baseline_drift(self) -> None:
+        # A wider exemption would silently stop guarding generated pages.
+        self.assertEqual(audit_site.BASELINE_VOLATILE_CONTENT, {"changelog.html"})
+
     def test_root_content_pages_have_styles_and_single_shared_scripts(self) -> None:
         pages = json.loads((audit_site.SITE_ROOT / "_site-src/data/pages.json").read_text())["pages"]
         by_path = {page["path"]: page for page in pages}

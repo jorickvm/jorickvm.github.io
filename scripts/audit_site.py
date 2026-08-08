@@ -586,6 +586,11 @@ def write_baseline(path: Path, records: list[PageRecord]) -> None:
     target.write_text(json.dumps(baseline_payload(records), indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
 
 
+# Pages whose body is owned by another repo and legitimately changes without
+# a commit here. Their content_hash is excluded from the baseline comparison.
+BASELINE_VOLATILE_CONTENT = {"changelog.html"}
+
+
 def check_baseline(path: Path, records: list[PageRecord], findings: list[Finding]) -> None:
     target = path if path.is_absolute() else SITE_ROOT / path
     try:
@@ -602,7 +607,17 @@ def check_baseline(path: Path, records: list[PageRecord], findings: list[Finding
         findings.append(Finding("error", "baseline-page-added", added, "Page was added"))
     compared_fields = ("route", "indexable", "title", "description", "canonical", "h1", "content_hash")
     for page in sorted(expected_pages.keys() & actual_pages.keys()):
-        for field_name in compared_fields:
+        fields = compared_fields
+        if page in BASELINE_VOLATILE_CONTENT:
+            # The AtlasDays repo owns this page's body and rewrites it on every
+            # release through sync_changelog.py, so its content_hash changing is
+            # the system working, not drift. Comparing it guarantees a red audit
+            # after each release. Everything else about the page is still
+            # compared, and the checks that actually caught the 2026-08 clobber
+            # (footer-count, social-metadata, skip-link, theme bootstrap) are
+            # independent of the baseline.
+            fields = tuple(name for name in compared_fields if name != "content_hash")
+        for field_name in fields:
             if expected_pages[page].get(field_name) != actual_pages[page].get(field_name):
                 findings.append(
                     Finding(
