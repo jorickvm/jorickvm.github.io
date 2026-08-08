@@ -15,6 +15,7 @@ Dev tooling only. Never deployed.
 from __future__ import annotations
 
 import argparse
+import os
 from functools import partial
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 from pathlib import Path
@@ -51,7 +52,10 @@ class PagesHandler(SimpleHTTPRequestHandler):
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--port", type=int, default=8899)
+    # `$PORT` before the fixed default, so a harness that assigns a free port
+    # (the agent preview runner) can start this without the flag, and 8899
+    # stays the port you get when you just run it yourself.
+    parser.add_argument("--port", type=int, default=int(os.environ.get("PORT") or 8899))
     args = parser.parse_args()
 
     handler = partial(PagesHandler, directory=str(SITE_ROOT))

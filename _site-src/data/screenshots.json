@@ -16,21 +16,21 @@
       "settle_seconds": 6,
       "targets": [
         "assets/home/home-hero-dashboard.png",
-        "assets/home/home-hero-dashboard-poster.webp"
+        "assets/home/home-hero-dashboard-poster.webp",
+        "assets/home/home-hero-dashboard-final.webp"
       ],
-      "notes": "Populated dashboard with current date title, trackers, stats, and map.",
-      "last_captured_at": "2026-07-14T08:24:12Z",
+      "last_captured_at": "2026-08-08T07:52:02Z",
       "captured_device": "iPhone 17 Pro Max"
     },
     {
       "id": "homepage-tracker-detail",
-      "scenario": "tracker-detail",
+      "scenario": "tracker-detail-schengen",
       "status": "ready",
-      "settle_seconds": 5,
+      "settle_seconds": 6,
       "targets": [
         "assets/home/home-hero-tracker-detail.webp"
       ],
-      "last_captured_at": "2026-07-14T08:24:12Z",
+      "last_captured_at": "2026-08-08T07:41:58Z",
       "captured_device": "iPhone 17 Pro Max"
     },
     {
@@ -39,10 +39,9 @@
       "status": "ready",
       "settle_seconds": 4,
       "targets": [
-        "assets/home/home-proof-timeline.webp",
-        "assets/article-images/help/history-and-import/screenshot-timeline-sections.webp"
+        "assets/home/home-proof-timeline.webp"
       ],
-      "last_captured_at": "2026-07-14T08:24:12Z",
+      "last_captured_at": "2026-08-08T07:41:58Z",
       "captured_device": "iPhone 17 Pro Max"
     },
     {
@@ -80,15 +79,16 @@
       "captured_device": "iPhone 17 Pro Max"
     },
     {
-      "id": "full-map",
+      "id": "homepage-map",
       "scenario": "full-map",
       "status": "ready",
-      "settle_seconds": 6,
       "targets": [
         "assets/home/home-proof-map-country.webp"
       ],
-      "last_captured_at": "2026-07-14T08:24:12Z",
-      "captured_device": "iPhone 17 Pro Max"
+      "last_captured_at": "2026-08-08T07:41:58Z",
+      "captured_device": "iPhone 17 Pro Max",
+      "source": "assets/article-images/help/_manual-sources/map-zoomed.png",
+      "device": "iPhone 17"
     },
     {
       "id": "home-country",
@@ -127,13 +127,11 @@
       "id": "homepage-privacy-sheet",
       "scenario": "privacy",
       "status": "ready",
-      "settle_seconds": 12,
+      "settle_seconds": 5,
       "targets": [
-        "assets/home/home-proof-privacy.webp",
-        "assets/article-images/help/privacy-location-and-sync/screenshot-privacy-overview.webp"
+        "assets/home/home-proof-privacy.webp"
       ],
-      "notes": "Full-screen Privacy view captured from the feature/v2 worktree.",
-      "last_captured_at": "2026-07-20T19:07:00Z",
+      "last_captured_at": "2026-08-08T07:41:58Z",
       "captured_device": "iPhone 17 Pro Max"
     },
     {
@@ -187,22 +185,25 @@
     },
     {
       "id": "pdf-preview",
-      "scenario": null,
-      "status": "pending-harness",
+      "scenario": "export-pdf",
+      "status": "ready",
       "targets": [
-        "assets/home/home-proof-pdf-export.webp",
-        "assets/article-images/help/export-and-reports/screenshot-pdf-export.webp"
+        "assets/home/home-proof-pdf-export.webp"
       ],
-      "notes": "Needs a direct PDF preview launch destination."
+      "settle_seconds": 22,
+      "last_captured_at": "2026-08-08T07:41:58Z",
+      "captured_device": "iPhone 17 Pro Max"
     },
     {
       "id": "widgets",
-      "scenario": null,
-      "status": "pending-manual",
+      "scenario": "widgets-gallery",
+      "status": "ready",
       "targets": [
         "assets/home/home-proof-widgets.webp"
       ],
-      "notes": "Widget gallery capture requires the Simulator Home Screen rather than an in-app route."
+      "settle_seconds": 5,
+      "source": "assets/article-images/help/_manual-sources/widgets-gallery.png",
+      "device": "iPhone 17"
     },
     {
       "id": "help-getting-started-dashboard",
@@ -215,7 +216,7 @@
           "path": "assets/article-images/help/getting-started/dashboard.webp"
         }
       ],
-      "last_captured_at": "2026-08-07T22:49:07Z",
+      "last_captured_at": "2026-08-08T07:52:02Z",
       "captured_device": "iPhone 17 Pro Max"
     },
     {
@@ -458,7 +459,7 @@
           ]
         }
       ],
-      "last_captured_at": "2026-08-07T10:19:54Z",
+      "last_captured_at": "2026-08-08T07:52:02Z",
       "captured_device": "iPhone 17 Pro Max"
     },
     {
@@ -472,7 +473,7 @@
           "path": "assets/article-images/help/dashboard-and-map/map-state.webp"
         }
       ],
-      "last_captured_at": "2026-08-07T10:19:54Z",
+      "last_captured_at": "2026-08-08T07:41:58Z",
       "captured_device": "iPhone 17 Pro Max"
     },
     {
@@ -1132,6 +1133,28 @@
       "landscape": true,
       "last_captured_at": "2026-08-07T10:34:44Z",
       "captured_device": "iPad Pro 13-inch (M5)"
+    },
+    {
+      "id": "homepage-alerts",
+      "scenario": "tracker-alerts",
+      "status": "ready",
+      "settle_seconds": 9,
+      "targets": [
+        "assets/home/home-proof-alerts.webp"
+      ],
+      "last_captured_at": "2026-08-08T07:41:58Z",
+      "captured_device": "iPhone 17 Pro Max"
+    },
+    {
+      "id": "homepage-import-preview",
+      "scenario": "import-csv-review",
+      "status": "ready",
+      "settle_seconds": 14,
+      "targets": [
+        "assets/home/home-proof-import-preview.webp"
+      ],
+      "last_captured_at": "2026-08-08T07:41:58Z",
+      "captured_device": "iPhone 17 Pro Max"
     }
   ]
 }

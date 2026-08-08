@@ -77,6 +77,25 @@ def image_relpath(slug: str, key: str) -> str:
     return f"assets/article-images/help/{slug}/{key}.webp"
 
 
+def phone_capture_width() -> int:
+    """Full frame width of a phone capture, from the screenshot manifest.
+
+    Every phone capture spans the whole device frame (the guide forbids side
+    crops), so this is the one width they all share and the threshold that
+    separates them from a tablet capture. Read rather than hardcoded so
+    recapturing on a different phone cannot silently break the width rule in
+    `wrap_content`.
+    """
+    try:
+        manifest = json.loads((DATA / "screenshots.json").read_text())
+        return int(manifest["device"]["target_width"])
+    except (OSError, ValueError, KeyError, TypeError):
+        return 1320
+
+
+PHONE_WIDTH = phone_capture_width()
+
+
 def webp_dimensions(path: Path) -> tuple[int, int] | None:
     """Intrinsic size of a WebP, straight from its header.
 
@@ -257,12 +276,16 @@ def wrap_content(article: dict[str, object]) -> str:
             # browser reflows the article as each image arrives.
             size = webp_dimensions(ROOT / relpath)
             dimensions = f' width="{size[0]}" height="{size[1]}"' if size else ""
-            # A landscape shot (the iPad captures) must not be squeezed into the
-            # portrait-phone width cap, or it lands on a phone at a tenth of its
-            # size and nothing in it can be read.
-            landscape = " help-shot-landscape" if size and size[0] > size[1] else ""
+            # A tablet capture must not be squeezed into the portrait-phone
+            # width cap, or it lands at a tenth of its size and nothing in it
+            # can be read. The test is the source width, not the aspect ratio:
+            # a phone band trimmed hard enough is wider than it is tall while
+            # still being a phone frame, and an aspect test sent thirteen of
+            # those to full text width while the uncropped shots beside them
+            # stayed at 360px.
+            tablet = " help-shot-landscape" if size and size[0] > PHONE_WIDTH else ""
             replacement = (
-                f'<figure class="help-shot help-shot-{item["crop"]}{landscape}">'
+                f'<figure class="help-shot help-shot-{item["crop"]}{tablet}">'
                 f'<img src="/{relpath}" alt="{alt}"{dimensions} loading="lazy" decoding="async" />'
                 f"</figure>"
             )

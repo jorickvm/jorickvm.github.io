@@ -35,8 +35,35 @@ html[data-theme="dark"] {
   --blue: #428FD2;
   --blue-soft: rgba(66, 143, 210, 0.14);
 
-  --bg: #000000;
-  --bg-elevated: #15171a;
+  /* Action gradient, mirroring the app's `AtlasActionStyle.gradient`
+     (AtlasDays/Shared/AtlasActionStyles.swift): the accent through the middle
+     falling away to one derived tone at both outer corners, so the button reads
+     as a single slightly convex accent surface rather than a wash from one
+     color to another. The outer tone is the accent blended toward the
+     background — 34% toward black in dark, 20% toward white in light — which is
+     how the app derives a hierarchical symbol's secondary layer, and is what
+     makes the corners deepen in dark and lift in light on their own.
+     Deliberately no glow and no gloss; it should read as a surface, not an
+     effect. Values resolved to hex here because the web has no UIColor to mix
+     against, so a change to the app's blend amounts needs recomputing by hand. */
+  --action-base: #428FD2;
+  --action-outer: #2C5E8B;
+  --action-border: rgba(255, 255, 255, 0.12);
+  /* `AtlasActionStyle.pillGradient`, for selected chips. A button's symmetric
+     centre-to-corners fall-off reads as a highlight, which is loud repeated
+     across a filter row, so a pill gets a single directional ramp at about
+     half the blend instead. Same accent, same derivation. */
+  --action-pill-far: #3777AE;
+
+  /* Not pure black. The app is only ever one screen tall, so its wash never
+     runs out and the canvas underneath is rarely seen; a page is many screens
+     tall, and #000 meant everything below the first viewport was flat black.
+     A soft near-black keeps the app's character, gives the card ladder
+     somewhere to sit, and stops long articles reading as a void. Every wash
+     stop below is this value plus the offset it always had, so the gradient's
+     shape is unchanged and only its floor moved. */
+  --bg: #0D1117;
+  --bg-elevated: #171B21;
   --bg-card: #1F242B;
   --bg-card-strong: #262C34;
   --text: #f4f7fb;
@@ -46,23 +73,27 @@ html[data-theme="dark"] {
   --line-strong: rgba(255, 255, 255, 0.16);
   --shadow: 0 14px 32px rgba(0, 0, 0, 0.32);
 
-  /* Wash, `.medium`. Dark mixes onto black, where every point added is pure
-     gain, so the numbers look small and still read. */
-  --wash-top: #0C151C;
-  --wash-mid: #05080B;
+  /* Wash, `.medium`. Dark mixes onto the canvas, where every point added is
+     pure gain, so the numbers look small and still read. The top stop leans
+     harder on blue than on red and green rather than lifting all three
+     together: a neutral lift only turns the page grey, and the tint is the
+     part that is meant to be felt. Each stop still sits above `--bg` on every
+     channel, so the ramp stays monotonic and meets the canvas without a seam. */
+  --wash-top: #16283A;
+  --wash-mid: #121A24;
   --wash-mid-stop: 52%;
   --wash-end-stop: 86%;
-  --halo: rgba(66, 143, 210, 0.126);
+  --halo: rgba(66, 143, 210, 0.17);
 }
 
 html[data-theme="dark"].wash-subtle {
   --bg-card: #1D2024;
   --bg-card-strong: #23262B;
-  --wash-top: #060A0E;
-  --wash-mid: #020405;
+  --wash-top: #121E2B;
+  --wash-mid: #0F1620;
   --wash-mid-stop: 45%;
   --wash-end-stop: 78%;
-  --halo: rgba(66, 143, 210, 0.06);
+  --halo: rgba(66, 143, 210, 0.085);
 }
 
 html[data-theme="light"] {
@@ -71,6 +102,16 @@ html[data-theme="light"] {
   --brand: #428FD2;
   --blue: #246ca8;
   --blue-soft: rgba(66, 143, 210, 0.10);
+
+  /* The app builds this from the raw accent in both schemes. Here it is built
+     from `--blue`, which light mode already darkens for contrast: a white label
+     on the raw #428FD2 clears the app's own threshold but sits under 3:1 on a
+     white page, and the site made that call before this gradient existed.
+     Same construction, one step darker base. */
+  --action-base: #246ca8;
+  --action-outer: #5089B9;
+  --action-border: rgba(255, 255, 255, 0.25);
+  --action-pill-far: #3A7BB1;
 
   --bg: #F2F2F7;
   --bg-elevated: #ffffff;
@@ -114,6 +155,26 @@ html[data-theme="light"].wash-subtle {
    under, which is how the app's nav bar behaves over its own wash. */
 html {
   --header-bg: color-mix(in srgb, var(--wash-top) 82%, transparent);
+
+  /* `to bottom left` is the app's `.topTrailing` → `.bottomLeading`. The
+     hairline is an inset ring rather than a `border` so it sits inside the
+     fill the way SwiftUI's `strokeBorder` does, without shrinking the gradient
+     box; the drop shadow rides in the same declaration. SwiftUI's shadow
+     radius is roughly half a CSS blur, so radius 6 becomes 12px. */
+  --action-gradient: linear-gradient(
+    to bottom left,
+    var(--action-outer) 0%,
+    var(--action-base) 50%,
+    var(--action-outer) 100%
+  );
+  --action-chrome: inset 0 0 0 1px var(--action-border), 0 2px 12px rgba(0, 0, 0, 0.08);
+  --action-pill-gradient: linear-gradient(to right, var(--action-base), var(--action-pill-far));
+}
+
+/* Increased contrast thickens the ring, as `AtlasActionStyle.borderColor` does. */
+@media (prefers-contrast: more) {
+  :root, html[data-theme="dark"] { --action-border: rgba(255, 255, 255, 0.30); }
+  html[data-theme="light"] { --action-border: rgba(255, 255, 255, 0.45); }
 }
 
 /* The wash sits on the root, not on <body>, so it is never at the mercy of a

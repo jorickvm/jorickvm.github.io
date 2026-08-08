@@ -11,11 +11,14 @@
   <link rel="icon" type="image/png" href="assets/brand/favicon_light.png?v=20260325a" media="(prefers-color-scheme: light)" />
   <link rel="icon" type="image/png" href="assets/brand/favicon_dark.png?v=20260325a" media="(prefers-color-scheme: dark)" />
   <script>
-    window.location.replace('/help/');
+    // Carry the query through. The app appends ?theme= (and ?lang= on legal
+    // pages) and the Help Center reads it on load, so dropping it here would
+    // land an app-opened link in the site's own theme instead of the app's.
+    window.location.replace('/help/' + location.search);
   </script>
   <style>
     :root {
-      --bg: #0a0b0d;
+      --bg: #0D1117;
       --panel: rgba(255,255,255,0.05);
       --text: #f4f7fb;
       --muted: #b2b9c5;

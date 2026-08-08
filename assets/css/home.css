@@ -75,10 +75,12 @@ button:focus-visible {
 .nav-cta {
   padding: 11px 16px;
   border-radius: var(--radius-button);
-  background: var(--blue);
+  background: var(--action-gradient);
+  box-shadow: var(--action-chrome);
   color: white;
   font-weight: 650;
 }
+.nav-cta:active { filter: brightness(0.95); }
 .nav-cta-wrap {
   position: relative;
 }
@@ -256,8 +258,14 @@ h1 {
 }
 .btn:hover { transform: translateY(-1px); }
 .btn-primary {
-  background: var(--blue);
+  background: var(--action-gradient);
+  box-shadow: var(--action-chrome);
   color: white;
+}
+/* The app dims and shrinks a pressed CTA by the same amounts. */
+.btn-primary:active {
+  transform: scale(0.985);
+  filter: brightness(0.95);
 }
 .btn-secondary {
   background: var(--bg-card);

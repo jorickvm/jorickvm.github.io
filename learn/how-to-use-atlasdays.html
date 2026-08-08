@@ -14,7 +14,7 @@
   <script>(function(){var d=document.documentElement,q=new URLSearchParams(location.search).get('theme'),t=null;if(q==='light'||q==='dark'){t=q;try{sessionStorage.setItem('theme',q)}catch(e){}}else{try{t=sessionStorage.getItem('theme')}catch(e){}if(!t)try{t=localStorage.getItem('theme')}catch(e){}}d.setAttribute('data-theme',t==='light'?'light':'dark')})()</script>
   <style>
     :root {
-      --bg: #0a0b0d;
+      --bg: #0D1117;
       --text: #f4f7fb;
       --muted: #b2b9c5;
       --line: rgba(255,255,255,0.10);
@@ -23,7 +23,7 @@
     @media (prefers-color-scheme: light) {
       :root { --bg: #f6f8fc; --text: #0d1422; --muted: #526075; --line: rgba(12,22,40,0.09); }
     }
-    html[data-theme="dark"] { --bg: #0a0b0d; --text: #f4f7fb; --muted: #b2b9c5; }
+    html[data-theme="dark"] { --bg: #0D1117; --text: #f4f7fb; --muted: #b2b9c5; }
     html[data-theme="light"] { --bg: #f6f8fc; --text: #0d1422; --muted: #526075; }
     * { box-sizing: border-box; }
     body {

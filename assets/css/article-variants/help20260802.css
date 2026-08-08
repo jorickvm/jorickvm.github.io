@@ -86,11 +86,15 @@ html[data-theme="light"] .icon-moon, html[data-theme="light"] .logo-light { disp
 /* One width for every phone capture, whole screen or band alike. On a phone the
    article column already insets the image from the page edge, which is the
    breathing room these need; on wider screens they stay phone-sized instead of
-   blowing up to the full text column. */
+   blowing up to the full text column. A band cropped down to a couple of rows
+   is still a phone frame and still belongs at this width: sizing by aspect
+   ratio instead put the short ones at full text width, so an article alternated
+   between 720px-wide bands and 360px-wide screens. */
 .help-shot-screen img,
 .help-shot-control img { max-width: min(100%, 360px); }
-/* Landscape captures (iPad) are wider than they are tall, so the phone-width
-   cap above would shrink them to a tenth of their size. */
+/* Tablet captures only. The iPad frame is more than twice a phone's width, so
+   the cap above would shrink them to a tenth of their size. `rebuild_help_center.py`
+   grants this class on source width, never on orientation. */
 .help-shot-landscape img { max-width: 100%; }
 @media (max-width: 520px) {
   .help-shot-screen img,
