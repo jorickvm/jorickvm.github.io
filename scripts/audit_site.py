@@ -2,9 +2,8 @@
 """Audit the committed AtlasDays static site without third-party dependencies.
 
 The default mode blocks regressions that the current site can already satisfy.
-Known migration work (semantic landmarks and the article-image catalog) is
-reported as warnings until its dedicated phase is complete. Use the strict
-flags to promote those warnings to errors.
+Remaining migration work (semantic landmarks) is reported as warnings until its
+dedicated phase is complete; --strict-semantics promotes those to errors.
 """
 
 from __future__ import annotations
@@ -157,7 +156,6 @@ class PageParser(HTMLParser):
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--strict-semantics", action="store_true")
-    parser.add_argument("--strict-images", action="store_true")
     parser.add_argument("--write-baseline", type=Path)
     parser.add_argument("--check-baseline", type=Path)
     parser.add_argument("--json", dest="json_output", action="store_true")
@@ -572,51 +570,6 @@ def audit_sitemap(records: list[PageRecord], findings: list[Finding]) -> None:
             findings.append(Finding("error", "sitemap-missing", record.path, canonical))
 
 
-def audit_image_pipeline(args: argparse.Namespace, findings: list[Finding]) -> None:
-    plan_path = SITE_ROOT / "article-image-plan.json"
-    catalog_path = SITE_ROOT / "assets/article-images/catalog.json"
-    try:
-        plan = json.loads(plan_path.read_text(encoding="utf-8"))
-        catalog = json.loads(catalog_path.read_text(encoding="utf-8"))
-    except (OSError, json.JSONDecodeError) as exc:
-        findings.append(Finding("error", "image-config", "article-image-plan.json", str(exc)))
-        return
-
-    catalog_entries: dict[tuple[str, str], dict[str, object]] = {}
-    for article in catalog.get("articles", []):
-        if not isinstance(article, dict):
-            continue
-        key = f"{article.get('section', '')}/{article.get('slug', '')}"
-        for image in article.get("images", []):
-            if isinstance(image, dict):
-                catalog_entries[(key, str(image.get("slot", "")))] = image
-
-    finding_severity = severity(args.strict_images)
-    for key, config in plan.get("articles", {}).items():
-        section, _, slug = str(key).partition("/")
-        article_path = SITE_ROOT / section / f"{slug}.html"
-        if not article_path.exists():
-            findings.append(Finding("error", "image-plan-page", str(key), "Planned article does not exist"))
-            continue
-        source = article_path.read_text(encoding="utf-8")
-        for slot in config.get("slots", []):
-            marker = str(slot.get("marker", ""))
-            slot_id = str(slot.get("id", ""))
-            if f"<!-- ARTICLE_IMAGE:{marker} -->" not in source:
-                findings.append(
-                    Finding(finding_severity, "image-marker", article_path.relative_to(SITE_ROOT).as_posix(), marker)
-                )
-            if (key, slot_id) not in catalog_entries:
-                findings.append(
-                    Finding(finding_severity, "image-catalog", article_path.relative_to(SITE_ROOT).as_posix(), slot_id)
-                )
-
-    for (key, slot_id), entry in catalog_entries.items():
-        asset = SITE_ROOT / str(entry.get("path", ""))
-        if not asset.exists():
-            findings.append(Finding(finding_severity, "image-asset", str(key), f"{slot_id}: {asset}"))
-
-
 def baseline_payload(records: list[PageRecord]) -> dict[str, object]:
     return {
         "schema_version": 1,
@@ -695,7 +648,6 @@ def main() -> int:
     args = parse_args()
     records, findings, _ = audit_pages(args)
     audit_sitemap(records, findings)
-    audit_image_pipeline(args, findings)
     audit_theme_css(findings)
     audit_learn_fragments(findings)
     audit_governance(records, findings)

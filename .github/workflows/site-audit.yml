@@ -19,15 +19,14 @@ jobs:
         with:
           python-version: "3.12"
 
-      # editorial.json, content-clusters.json, EDITORIAL_REVIEW_QUEUE.md, and
-      # article-image-plan.json used to be git-ignored and fetched from the
-      # private repo with a PAT before every run. They are committed since
-      # August 2026: the first three are deterministic output of the public
-      # build_content_governance.py over the public articles.json, and the
-      # image plan is creative briefs, not strategy. Every check now runs from
-      # the checkout alone, on fork PRs and the weekly cron included.
+      # editorial.json, content-clusters.json, and EDITORIAL_REVIEW_QUEUE.md
+      # used to be git-ignored and fetched from the private repo with a PAT
+      # before every run. They are committed since August 2026: all three are
+      # deterministic output of the public build_content_governance.py over the
+      # public articles.json. Every check now runs from the checkout alone, on
+      # fork PRs and the weekly cron included.
       - name: Audit committed site
-        run: python3 scripts/audit_site.py --strict-semantics --strict-images --check-baseline _site-src/data/baseline.json
+        run: python3 scripts/audit_site.py --strict-semantics --check-baseline _site-src/data/baseline.json
       - name: Check generated article output
         run: |
           python3 scripts/build_residency_hub.py --check
@@ -41,10 +40,6 @@ jobs:
           python3 scripts/check_external_sources.py --check-config
       - name: Check social cards
         run: python3 scripts/generate_social_cards.py --check
-      - name: Check article image markers
-        run: python3 scripts/sync_article_image_markers.py --check
-      - name: Check article image assets
-        run: python3 scripts/insert_article_images.py --section all --dry-run --strict
       - name: Test audit tooling
         run: python3 -m unittest discover -s scripts/tests -p 'test_*.py'
 

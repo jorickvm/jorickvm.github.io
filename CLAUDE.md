@@ -25,7 +25,13 @@ Besides those, `index.html`, `support.html`, and `404.html` are genuinely hand-a
 
 Internal docs (strategy, brand and voice, editorial and release process, audits, and the full agent-instruction file) live in a separate private repo, not here. Do not create or commit them; `.gitignore` blocks them by name, including `AGENTS.md`.
 
-The build data used to be split the same way, but since August 2026 `_site-src/data/editorial.json`, `_site-src/data/content-clusters.json`, `EDITORIAL_REVIEW_QUEUE.md`, and `article-image-plan.json` are committed here (Jorick approved the change): the first three are deterministic output of the public `build_content_governance.py` over the public `articles.json`, so keeping them private protected nothing, and the image plan is creative briefs for illustrations, not strategy. The Site audit workflow runs entirely from the checkout — the private-repo fetch and its `INTERNAL_DATA_PAT` secret are gone. `conversion.json` was deleted outright; nothing read it.
+The build data used to be split the same way, but since August 2026 `_site-src/data/editorial.json`, `_site-src/data/content-clusters.json`, and `EDITORIAL_REVIEW_QUEUE.md` are committed here (Jorick approved the change): all three are deterministic output of the public `build_content_governance.py` over the public `articles.json`, so keeping them private protected nothing. The Site audit workflow runs entirely from the checkout — the private-repo fetch and its `INTERNAL_DATA_PAT` secret are gone. `conversion.json` was deleted outright; nothing read it.
+
+## Article images: only Help Center screenshots
+
+Learn articles carry no illustrations. The AI image generator (OpenAI-backed) and its plan, catalog, markers, and 24 generated Learn illustrations were removed in August 2026 — Jorick did not like the output, and reference articles about day-count rules do not need decoration. Do not reintroduce generated imagery.
+
+What remains under `assets/article-images/` is `help/` only: real product screenshots, declared as `screenshot_slots` on each Help record in `articles.json` and wired in by `scripts/sync_help_screenshots.py`. Country and jurisdiction articles carry a `title-flag` image beside the H1; that is the only illustration Learn uses.
 
 ## User-facing copy
 
