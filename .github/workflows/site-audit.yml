@@ -71,6 +71,7 @@ jobs:
         run: python3 scripts/audit_site.py --strict-semantics --strict-images --check-baseline _site-src/data/baseline.json
       - name: Check generated article output
         run: |
+          python3 scripts/build_residency_hub.py --check
           python3 scripts/build_site.py --check
           python3 scripts/build_route_outputs.py --check
       - name: Check generated governance and search data
