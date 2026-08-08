@@ -74,9 +74,9 @@ def collapse_whitespace(value: str) -> str:
 
 
 def clean_article_title(value: str) -> str:
-    cleaned = re.sub(r"\s+[—-]\s+AtlasDays Help$", "", value)
-    cleaned = re.sub(r"\s+[—-]\s+AtlasDays$", "", cleaned)
-    cleaned = re.sub(r"\s+[—-]\s+Help$", "", cleaned)
+    cleaned = re.sub(r"\s+[—–-]\s+AtlasDays Help$", "", value)
+    cleaned = re.sub(r"\s+[—–-]\s+AtlasDays$", "", cleaned)
+    cleaned = re.sub(r"\s+[—–-]\s+Help$", "", cleaned)
     return cleaned.strip()
 
 

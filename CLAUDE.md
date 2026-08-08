@@ -19,7 +19,7 @@ Besides those, `index.html`, `support.html`, and `404.html` are genuinely hand-a
 - Root HTML: homepage, about, privacy, terms, support
 - `learn/` long-form articles, `help/` how-to guides — both generated, see above
 - `_site-src/` the sources those are generated from
-- `assets/` images and CSS (`assets/obsolete/` is deprecated); `scripts/` Python dev tooling, not deployed
+- `assets/` images and CSS; `scripts/` Python dev tooling (like everything tracked in a Pages repo it is technically fetchable at atlasdays.app/scripts/…, just never linked)
 
 ## This repo is public — internal docs are git-ignored on purpose
 

@@ -39,7 +39,7 @@ def records() -> list[dict[str, str]]:
         {
             "path": "index.html",
             "section": "Product",
-            "title": "AtlasDays — Track Travel Days, Visa Limits & Residency",
+            "title": "AtlasDays – Track Travel Days, Visa Limits & Residency",
             "description": "Private travel-day tracking for visa limits, residency thresholds, and a reliable long-term trip history.",
         }
     ]
@@ -51,7 +51,7 @@ def records() -> list[dict[str, str]]:
                 {
                     "path": str(item["path"]),
                     "section": section.replace("-", " ").title(),
-                    "title": str(item["title"]).replace(" — AtlasDays Help Center", "").replace(" — AtlasDays", ""),
+                    "title": str(item["title"]).replace(" – AtlasDays Help Center", "").replace(" – AtlasDays", ""),
                     "description": description_for(item),
                 }
             )

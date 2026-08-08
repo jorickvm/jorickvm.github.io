@@ -67,7 +67,7 @@ def build() -> dict[str, object]:
         path = str(record["path"])
         section = str(record["section"])
         slug = Path(path).stem
-        title = str(record["title"]).replace(" — AtlasDays Help Center", "").replace(" — AtlasDays", "")
+        title = str(record["title"]).replace(" – AtlasDays Help Center", "").replace(" – AtlasDays", "")
         if section == "help":
             category = str(record.get("category", "trips-travel-days"))
             jurisdiction = ""

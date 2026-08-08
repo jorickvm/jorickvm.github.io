@@ -169,7 +169,7 @@ def render_cluster_related(article: dict[str, object]) -> str:
         return ""
     article_data = json.loads(DATA_PATH.read_text(encoding="utf-8"))["articles"]
     hub_data = json.loads(HUB_DATA_PATH.read_text(encoding="utf-8"))["hubs"] if HUB_DATA_PATH.exists() else []
-    titles = {item["path"]: str(item["title"]).replace(" — AtlasDays Help Center", "").replace(" — AtlasDays", "") for item in article_data + hub_data}
+    titles = {item["path"]: str(item["title"]).replace(" – AtlasDays Help Center", "").replace(" – AtlasDays", "") for item in article_data + hub_data}
     candidates = [item["path"] for item in assignments if item["cluster"] == current["cluster"] and item["path"] != article["path"]]
     pillar = current["pillar"]
     ordered = ([pillar] if pillar != article["path"] else []) + sorted(path for path in candidates if path != pillar)
