@@ -29,7 +29,7 @@ The build data used to be split the same way, but since August 2026 `_site-src/d
 
 ## User-facing copy
 
-Never use em dashes in anything a reader sees. Use periods or commas.
+Never use em dashes in anything a reader sees. Replace them with en dashes (`–`), or reword with periods or commas. Jorick's reasoning (2026-08): em dashes read as AI-written text; the en dash is deliberately kept even where an em dash would be the typographically correct choice.
 
 ## Translations
 
