@@ -24,7 +24,11 @@ HUB_TEMPLATE = SOURCE_ROOT / "templates" / "hub.html"
 HEADER_TEMPLATE = SOURCE_ROOT / "templates" / "partials" / "site-header.html"
 FOOTER_TEMPLATE = SOURCE_ROOT / "templates" / "partials" / "site-footer.html"
 CLUSTER_DATA_PATH = SOURCE_ROOT / "data" / "content-clusters.json"
-BUILD_VERSION = "20260802a"
+BUILD_VERSION = "20260808a"
+
+# Root class that drops the background wash from the app's `.medium` step to
+# `.subtle`, for pages carrying long-form text. See assets/css/tokens.css.
+WASH_SUBTLE = ' class="wash-subtle"'
 
 
 def parse_args() -> argparse.Namespace:
@@ -133,7 +137,10 @@ def render_structured_data(article: dict[str, object]) -> str:
 
 def render_styles(article: dict[str, object], family: str = "article", prefix: str = "../") -> str:
     asset_version = str(article.get("asset_version", BUILD_VERSION))
-    lines = [
+    # tokens.css first: it owns the palette, wash, and card surface for every
+    # page, and the variant stylesheets that follow carry layout only.
+    lines = [f'  <link rel="stylesheet" href="{prefix}assets/css/tokens.css?v={asset_version}" />']
+    lines += [
         f'  <link rel="stylesheet" href="{prefix}assets/css/{family}-variants/{style_id}.css?v={asset_version}" />'
         for style_id in article.get("style_variants", [])
     ]
@@ -256,6 +263,7 @@ def render_article(
     content_path = SOURCE_ROOT / str(article["content"])
     content = content_path.read_text(encoding="utf-8").rstrip()
     replacements = {
+        "{{HTML_CLASS}}": WASH_SUBTLE,
         "{{METADATA}}": render_metadata(article),
         "{{STRUCTURED_DATA}}": render_structured_data(article),
         "{{STYLESHEETS}}": render_styles(article),
@@ -285,6 +293,10 @@ def render_hub(
 ) -> str:
     content = (SOURCE_ROOT / str(hub["content"])).read_text(encoding="utf-8").rstrip()
     replacements = {
+        # Hubs are marketing surfaces and take the full wash; the legal and
+        # about pages built through this same template are long-form reading
+        # and step down with the articles.
+        "{{HTML_CLASS}}": WASH_SUBTLE if family == "page" else "",
         "{{METADATA}}": render_metadata(hub, prefix),
         "{{STRUCTURED_DATA}}": render_structured_data(hub),
         "{{STYLESHEETS}}": render_styles(hub, family, prefix),
