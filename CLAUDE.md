@@ -30,8 +30,11 @@ These are git-ignored deliberately but must stay on disk for the Python scripts 
 - `_site-src/data/conversion.json`
 - `_site-src/data/content-clusters.json`
 - `article-image-plan.json`
+- `EDITORIAL_REVIEW_QUEUE.md` (generated from `editorial.json`; `build_content_governance.py --check` reports its own output stale without it)
 
 Their only versioned copies live in the private repo. If you change them, back them up there.
+
+The Site audit workflow fetches four of them (all but `conversion.json`, which no check reads) from the private repo into the runner before it runs, because `audit_site.py`, `build_site.py`, `build_search_index.py` and `build_content_governance.py` all read them. Without that it could not run the editorial-governance or article-image checks at all and reported them as missing-file errors instead, which is how ten unmanaged Learn guides stayed invisible. They are still never committed here: the workflow is `contents: read`, it never pushes or deploys, and it asserts that staging left no tracked file modified.
 
 ## User-facing copy
 
