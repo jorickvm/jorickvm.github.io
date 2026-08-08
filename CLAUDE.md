@@ -10,7 +10,9 @@ Deploying has no build step, but **authoring does**, and this is the easy mistak
 
 Edit the source fragment under `_site-src/content/`, then rebuild. Editing a file in `learn/` or `help/` directly will be overwritten by the next build, and `python3 scripts/build_site.py --check` fails when committed HTML no longer matches what the sources produce.
 
-Only `index.html`, `support.html`, and `404.html` are genuinely hand-authored and go live as-is. `about.html`, `privacy.html`, and `terms.html` sit at the root but are generated too: they are listed in `_site-src/data/pages.json` and built from `_site-src/content/pages/`, so edit the fragment and rebuild. `changelog.html` is owned by the release workflow, which mirrors it from the AtlasDays repo.
+Not everything under `learn/` is generated, despite the above. Twelve files there are absent from `articles.json`, so a rebuild never touches them and `--check` never guards them: ten real articles (`bulgaria-`, `cyprus-`, `czech-republic-`, `indonesia-`, `italy-`, `malaysia-182-`, `montenegro-`, `poland-`, `serbia-`, `vietnam-183-day-tax-residency.html`) plus two meta-refresh redirect stubs (`how-to-use-atlasdays.html`, `icloud-sync-travel-tracking.html`). Edit those in place, and expect site-wide changes to miss them unless you handle them separately.
+
+Besides those, `index.html`, `support.html`, and `404.html` are genuinely hand-authored and go live as-is, as are the four in-app alias stubs under `app/` (`changelog/`, `help/`, `privacy/`, `terms/index.html`), which redirect via `assets/js/app-page-alias.js`. `about.html`, `privacy.html`, and `terms.html` sit at the root but are generated too: they are listed in `_site-src/data/pages.json` and built from `_site-src/content/pages/`, so edit the fragment and rebuild. `changelog.html` is owned by the release workflow, which mirrors it from the AtlasDays repo.
 
 ## Structure
 
