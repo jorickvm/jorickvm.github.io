@@ -80,11 +80,8 @@ jobs:
           python3 scripts/build_search_index.py --check
           python3 scripts/sync_help_screenshots.py --check
           python3 scripts/check_external_sources.py --check-config
-          python3 scripts/migrate_related_content.py --check
-      - name: Check social cards and dark-default CSS policy
-        run: |
-          python3 scripts/generate_social_cards.py --check
-          python3 scripts/remove_system_theme_css.py --check
+      - name: Check social cards
+        run: python3 scripts/generate_social_cards.py --check
       - name: Check article image markers
         run: python3 scripts/sync_article_image_markers.py --check
       - name: Check article image assets

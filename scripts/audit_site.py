@@ -485,6 +485,28 @@ def audit_theme_css(findings: list[Finding]) -> None:
             )
 
 
+LEGACY_RELATED_PATTERN = re.compile(r"<div class=\"related\">")
+
+
+def audit_learn_fragments(findings: list[Finding]) -> None:
+    """Learn fragments must not carry hand-authored related blocks.
+
+    The cluster migration replaced them with the generated related nav; a
+    reintroduced block would render alongside it. The page walk ignores
+    _site-src, so the fragments get their own pass.
+    """
+    for path in sorted((SITE_ROOT / "_site-src" / "content" / "learn").glob("*.html")):
+        if LEGACY_RELATED_PATTERN.search(path.read_text(encoding="utf-8")):
+            findings.append(
+                Finding(
+                    "error",
+                    "legacy-related-block",
+                    path.relative_to(SITE_ROOT).as_posix(),
+                    "Hand-authored related block; the cluster nav is generated from content-clusters.json",
+                )
+            )
+
+
 def audit_governance(records: list[PageRecord], findings: list[Finding]) -> None:
     editorial_path = SITE_ROOT / "_site-src" / "data" / "editorial.json"
     clusters_path = SITE_ROOT / "_site-src" / "data" / "content-clusters.json"
@@ -675,6 +697,7 @@ def main() -> int:
     audit_sitemap(records, findings)
     audit_image_pipeline(args, findings)
     audit_theme_css(findings)
+    audit_learn_fragments(findings)
     audit_governance(records, findings)
     if args.write_baseline:
         write_baseline(args.write_baseline, records)
