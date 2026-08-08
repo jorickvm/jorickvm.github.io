@@ -207,3 +207,17 @@ html {
     background-image: none;
   }
 }
+
+/* Jurisdiction flag beside an article H1. Defined here because every article
+   loads tokens.css, while the per-page variants that also declare it cover
+   only some of the pages that use one. */
+.title-flag {
+  display: inline-block;
+  width: 56px;
+  height: 42px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1px solid var(--line);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.14);
+  margin: 0 0 14px;
+}
