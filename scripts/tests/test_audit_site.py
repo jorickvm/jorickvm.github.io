@@ -70,6 +70,19 @@ class AuditSiteTests(unittest.TestCase):
         parser.feed("<header>Navigation</header><article><h1>Title</h1><p>Body.</p></article>")
         self.assertEqual(parser.content_text, "Title Body.")
 
+    def test_legacy_related_block_pattern_matches_only_hand_authored_blocks(self) -> None:
+        self.assertIsNotNone(
+            audit_site.LEGACY_RELATED_PATTERN.search('<div class="related">\n<h2>Related</h2>')
+        )
+        self.assertIsNone(
+            audit_site.LEGACY_RELATED_PATTERN.search('<nav class="related generated-related">')
+        )
+
+    def test_learn_fragments_carry_no_legacy_related_blocks(self) -> None:
+        findings: list[audit_site.Finding] = []
+        audit_site.audit_learn_fragments(findings)
+        self.assertEqual(findings, [])
+
     def test_root_content_pages_have_styles_and_single_shared_scripts(self) -> None:
         pages = json.loads((audit_site.SITE_ROOT / "_site-src/data/pages.json").read_text())["pages"]
         by_path = {page["path"]: page for page in pages}

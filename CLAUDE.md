@@ -10,7 +10,7 @@ Deploying has no build step, but **authoring does**, and this is the easy mistak
 
 Edit the source fragment under `_site-src/content/`, then rebuild. Editing a file in `learn/` or `help/` directly will be overwritten by the next build, and `python3 scripts/build_site.py --check` fails when committed HTML no longer matches what the sources produce.
 
-Not everything under `learn/` is generated, despite the above. Twelve files there are absent from `articles.json`, so a rebuild never touches them and `--check` never guards them: ten real articles (`bulgaria-`, `cyprus-`, `czech-republic-`, `indonesia-`, `italy-`, `malaysia-182-`, `montenegro-`, `poland-`, `serbia-`, `vietnam-183-day-tax-residency.html`) plus two meta-refresh redirect stubs (`how-to-use-atlasdays.html`, `icloud-sync-travel-tracking.html`). Edit those in place, and expect site-wide changes to miss them unless you handle them separately.
+Not everything under `learn/` is generated, despite the above. Two meta-refresh redirect stubs (`how-to-use-atlasdays.html`, `icloud-sync-travel-tracking.html`) are absent from `articles.json`, so a rebuild never touches them and `--check` never guards them. Edit those in place. (Ten tax-residency guides used to be in this state too; they were registered in `articles.json` in August 2026 and are now fully generated.)
 
 Besides those, `index.html`, `support.html`, and `404.html` are genuinely hand-authored and go live as-is, as are the four in-app alias stubs under `app/` (`changelog/`, `help/`, `privacy/`, `terms/index.html`), which redirect via `assets/js/app-page-alias.js`. `about.html`, `privacy.html`, and `terms.html` sit at the root but are generated too: they are listed in `_site-src/data/pages.json` and built from `_site-src/content/pages/`, so edit the fragment and rebuild. `changelog.html` is shared with the AtlasDays repo, which owns the release notes but not the page. Its `update-changelog.yml` workflow runs `scripts/sync_changelog.py` here, replacing only the contents of `<div class="release-stack">`. Everything else on that page (tokens, header, footer, social metadata, the `?theme=` bootstrap) is this repo's and survives a release. It used to `cp` the whole file across, which reverted all of that each time. The release-card markup must stay identical in both repos.
 
@@ -19,26 +19,17 @@ Besides those, `index.html`, `support.html`, and `404.html` are genuinely hand-a
 - Root HTML: homepage, about, privacy, terms, support
 - `learn/` long-form articles, `help/` how-to guides — both generated, see above
 - `_site-src/` the sources those are generated from
-- `assets/` images and CSS (`assets/obsolete/` is deprecated); `scripts/` Python dev tooling, not deployed
+- `assets/` images and CSS; `scripts/` Python dev tooling (like everything tracked in a Pages repo it is technically fetchable at atlasdays.app/scripts/…, just never linked)
 
-## This repo is public — some files are git-ignored on purpose
+## This repo is public — internal docs are git-ignored on purpose
 
 Internal docs (strategy, brand and voice, editorial and release process, audits, and the full agent-instruction file) live in a separate private repo, not here. Do not create or commit them; `.gitignore` blocks them by name, including `AGENTS.md`.
 
-These are git-ignored deliberately but must stay on disk for the Python scripts to run. Do not `git add -f` or commit them:
-- `_site-src/data/editorial.json`
-- `_site-src/data/conversion.json`
-- `_site-src/data/content-clusters.json`
-- `article-image-plan.json`
-- `EDITORIAL_REVIEW_QUEUE.md` (generated from `editorial.json`; `build_content_governance.py --check` reports its own output stale without it)
-
-Their only versioned copies live in the private repo. If you change them, back them up there.
-
-The Site audit workflow fetches four of them (all but `conversion.json`, which no check reads) from the private repo into the runner before it runs, because `audit_site.py`, `build_site.py`, `build_search_index.py` and `build_content_governance.py` all read them. Without that it could not run the editorial-governance or article-image checks at all and reported them as missing-file errors instead, which is how ten unmanaged Learn guides stayed invisible. They are still never committed here: the workflow is `contents: read`, it never pushes or deploys, and it asserts that staging left no tracked file modified.
+The build data used to be split the same way, but since August 2026 `_site-src/data/editorial.json`, `_site-src/data/content-clusters.json`, `EDITORIAL_REVIEW_QUEUE.md`, and `article-image-plan.json` are committed here (Jorick approved the change): the first three are deterministic output of the public `build_content_governance.py` over the public `articles.json`, so keeping them private protected nothing, and the image plan is creative briefs for illustrations, not strategy. The Site audit workflow runs entirely from the checkout — the private-repo fetch and its `INTERNAL_DATA_PAT` secret are gone. `conversion.json` was deleted outright; nothing read it.
 
 ## User-facing copy
 
-Never use em dashes in anything a reader sees. Use periods or commas.
+Never use em dashes in anything a reader sees. Replace them with en dashes (`–`), or reword with periods or commas. Jorick's reasoning (2026-08): em dashes read as AI-written text; the en dash is deliberately kept even where an em dash would be the typographically correct choice.
 
 ## Translations
 
