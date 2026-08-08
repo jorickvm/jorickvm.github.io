@@ -6,6 +6,9 @@ on:
     branches: [main]
   schedule:
     - cron: "23 7 * * 1"
+  # Lets the source monitor be run on demand from the Actions tab rather than
+  # only on the Monday cron.
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -43,10 +46,18 @@ jobs:
       - name: Test audit tooling
         run: python3 -m unittest discover -s scripts/tests -p 'test_*.py'
 
+  # Weekly link rot on the official sources the articles cite. The report used
+  # to go only to an artifact, which nobody opens, so a dead government page
+  # could sit uncorrected indefinitely on a site whose credibility rests on
+  # those citations. It now maintains a single issue: opened when sources need
+  # review, edited in place on later runs, and closed when everything resolves
+  # again. One issue rather than one per run, so it stays signal.
   source-monitor:
-    if: github.event_name == 'schedule'
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
     runs-on: ubuntu-latest
-    continue-on-error: true
+    permissions:
+      contents: read
+      issues: write
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -54,6 +65,30 @@ jobs:
           python-version: "3.12"
       - name: Check official sources
         run: python3 scripts/check_external_sources.py --output external-source-report.json
+      - name: Render findings
+        id: findings
+        run: python3 scripts/report_source_health.py --report external-source-report.json --body source-issue.md
+      - name: Open, update, or close the review issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ACTIONABLE: ${{ steps.findings.outputs.actionable }}
+        run: |
+          set -euo pipefail
+          gh label create source-monitor --description "Weekly official-source link check" --color BFD4F2 2>/dev/null || true
+          existing="$(gh issue list --state open --label source-monitor --limit 1 --json number --jq '.[0].number // empty')"
+          if [ "${ACTIONABLE:-0}" -gt 0 ]; then
+            if [ -n "$existing" ]; then
+              gh issue edit "$existing" --body-file source-issue.md
+              echo "Updated issue #$existing with $ACTIONABLE finding(s)."
+            else
+              gh issue create --title "Official sources need review" --body-file source-issue.md --label source-monitor
+            fi
+          elif [ -n "$existing" ]; then
+            gh issue close "$existing" --comment "Every cited source resolved cleanly on this run. Closing automatically."
+            echo "Closed issue #$existing."
+          else
+            echo "All sources clean; nothing to report."
+          fi
       - name: Upload classified source report
         if: always()
         uses: actions/upload-artifact@v4
