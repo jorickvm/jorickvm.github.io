@@ -19,54 +19,13 @@ jobs:
         with:
           python-version: "3.12"
 
-      # audit_site.py, build_site.py and build_search_index.py all read data
-      # this repo git-ignores on purpose, because it encodes strategy and the
-      # repo is public. Without it CI could not run the editorial-governance or
-      # article-image checks at all: it reported them as "file not found" and
-      # the ten unmanaged Learn guides went unnoticed for weeks. The only
-      # versioned copies live in the private repo, so fetch them read-only.
-      #
-      # Read-only in every sense: the job has `contents: read`, it never
-      # commits, pushes or deploys, and these three paths are git-ignored here,
-      # so nothing that lands on the runner can reach the published site.
-      # Pages deployment is a separate workflow and is untouched.
-      #
-      # Fork pull requests do not receive secrets, so the checkout fails there
-      # and the audit falls back to today's behaviour rather than erroring out.
-      - name: Fetch private site data
-        id: private-data
-        continue-on-error: true
-        uses: actions/checkout@v4
-        with:
-          repository: jorickvm/atlasdays-internal
-          token: ${{ secrets.INTERNAL_DATA_PAT }}
-          path: internal
-          persist-credentials: false
-
-      # Only the four files the checks actually read. conversion.json is not
-      # among them, and the rest of the private repo (brand, editorial process,
-      # audits) is deleted again immediately so no later step can read it.
-      #
-      # EDITORIAL_REVIEW_QUEUE.md is generated from editorial.json and lives in
-      # the private repo too; without it `build_content_governance.py --check`
-      # reports its own output as stale.
-      #
-      # The `git status` line is an assertion, not a diagnostic: all four paths
-      # are git-ignored here, so a clean result proves staging touched no
-      # tracked file. If that ever stops being true the check needs revisiting
-      # before this workflow can be trusted.
-      - name: Stage private site data
-        if: steps.private-data.outcome == 'success'
-        run: |
-          set -euo pipefail
-          cp internal/site-data/editorial.json _site-src/data/editorial.json
-          cp internal/site-data/content-clusters.json _site-src/data/content-clusters.json
-          cp internal/site-data/article-image-plan.json article-image-plan.json
-          cp internal/EDITORIAL_REVIEW_QUEUE.md EDITORIAL_REVIEW_QUEUE.md
-          rm -rf internal
-          test -z "$(git status --porcelain --ignored=no)" \
-            || { echo "Staging modified tracked files:"; git status --porcelain --ignored=no; exit 1; }
-
+      # editorial.json, content-clusters.json, EDITORIAL_REVIEW_QUEUE.md, and
+      # article-image-plan.json used to be git-ignored and fetched from the
+      # private repo with a PAT before every run. They are committed since
+      # August 2026: the first three are deterministic output of the public
+      # build_content_governance.py over the public articles.json, and the
+      # image plan is creative briefs, not strategy. Every check now runs from
+      # the checkout alone, on fork PRs and the weekly cron included.
       - name: Audit committed site
         run: python3 scripts/audit_site.py --strict-semantics --strict-images --check-baseline _site-src/data/baseline.json
       - name: Check generated article output

@@ -21,20 +21,11 @@ Besides those, `index.html`, `support.html`, and `404.html` are genuinely hand-a
 - `_site-src/` the sources those are generated from
 - `assets/` images and CSS (`assets/obsolete/` is deprecated); `scripts/` Python dev tooling, not deployed
 
-## This repo is public — some files are git-ignored on purpose
+## This repo is public — internal docs are git-ignored on purpose
 
 Internal docs (strategy, brand and voice, editorial and release process, audits, and the full agent-instruction file) live in a separate private repo, not here. Do not create or commit them; `.gitignore` blocks them by name, including `AGENTS.md`.
 
-These are git-ignored deliberately but must stay on disk for the Python scripts to run. Do not `git add -f` or commit them:
-- `_site-src/data/editorial.json`
-- `_site-src/data/conversion.json`
-- `_site-src/data/content-clusters.json`
-- `article-image-plan.json`
-- `EDITORIAL_REVIEW_QUEUE.md` (generated from `editorial.json`; `build_content_governance.py --check` reports its own output stale without it)
-
-Their only versioned copies live in the private repo. If you change them, back them up there.
-
-The Site audit workflow fetches four of them (all but `conversion.json`, which no check reads) from the private repo into the runner before it runs, because `audit_site.py`, `build_site.py`, `build_search_index.py` and `build_content_governance.py` all read them. Without that it could not run the editorial-governance or article-image checks at all and reported them as missing-file errors instead, which is how ten unmanaged Learn guides stayed invisible. They are still never committed here: the workflow is `contents: read`, it never pushes or deploys, and it asserts that staging left no tracked file modified.
+The build data used to be split the same way, but since August 2026 `_site-src/data/editorial.json`, `_site-src/data/content-clusters.json`, `EDITORIAL_REVIEW_QUEUE.md`, and `article-image-plan.json` are committed here (Jorick approved the change): the first three are deterministic output of the public `build_content_governance.py` over the public `articles.json`, so keeping them private protected nothing, and the image plan is creative briefs for illustrations, not strategy. The Site audit workflow runs entirely from the checkout — the private-repo fetch and its `INTERNAL_DATA_PAT` secret are gone. `conversion.json` was deleted outright; nothing read it.
 
 ## User-facing copy
 
