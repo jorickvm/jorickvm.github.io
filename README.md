@@ -23,6 +23,50 @@ _site-src/
 
 `_site-src/data/articles.json` is the single article registry. A page exists on the site because it has a record there; that record carries its title, metadata, JSON-LD, style variant, review tier, and, for jurisdiction pages, the `residency` object that puts it on the hub tables. `routes.json` drives `sitemap.xml` and `llms.txt`. Nothing reaches a generated surface without going through these files.
 
+## Languages
+
+The site is generated one locale at a time from the same templates and the same English registry. Everything that differs between languages is data:
+
+```
+_site-src/data/locales.json        which locales exist, and how each formats a route, date, and title
+_site-src/data/ui-strings.json     chrome copy (nav, footer, article furniture), keyed string-first
+_site-src/data/articles.ja.json    Japanese overlays, joined to articles.json by `source`
+_site-src/data/glossary.json       terminology snapshot, generated from the app repo
+_site-src/content/ja/…             translated fragments
+```
+
+Japanese Help Center pages are served at `/ja/help/…`. English stays unprefixed, so `en` is simply the locale whose `route_prefix` is empty.
+
+**A translation record supplies prose and nothing else.** Paths, canonicals, hreflang, JSON-LD, og tags, next-step URLs, and the rendered date are all derived from the English source record, and setting one of them in an overlay is a build error. That is deliberate: it means a translation cannot invent a URL or a JSON-LD graph in a language nobody here can proofread, and `validate_help_next_steps` keeps guarding the routes for free.
+
+Templates and partials carry two marker forms, both resolved by `scripts/locales.py`:
+
+```
+{{t:nav.help}}   a chrome string, from ui-strings.json
+{{r:/help/}}     an internal route, locale-prefixed only when that page exists in the locale
+```
+
+The `{{r:}}` fallback is what makes partial coverage legal: a Japanese Help page links to the Japanese Help hub but to the English Travel Rules hub, because no Japanese one exists. Localising a single Learn article later is a data change, not a code change.
+
+A locale carries `status: draft | published`. A draft locale builds and previews locally but is marked `noindex` and excluded from the sitemap, hreflang, `llms.txt`, and the language switcher. That is how a new language is verified end to end before it becomes discoverable.
+
+Adding the next language should be `locales.json` + a `ui-strings.json` column + an overlay registry + fragments. If it needs a change in `scripts/`, that is a bug in the machinery, not a missing feature.
+
+### Translating
+
+1. Refresh the terminology snapshot if the app repo has moved: `python3 scripts/sync_glossary.py`.
+2. Write `_site-src/content/<code>/help/<slug>.html`, keeping the English structure (see the checks below).
+3. Add the overlay record to `_site-src/data/articles.<code>.json`, including `source_hash` and `source_meta_hash`.
+4. Add a `routes.json` row per page, and rebuild as usual.
+
+`scripts/check_translations.py` gates all of it, and runs first in CI. It enforces terminology against the app's own shipped strings, structural parity with the English source (heading, list, figure, and internal-link counts), Japanese typography, and translation staleness.
+
+**Staleness**: each overlay records the hash of the English fragment and metadata it was translated from. Editing English copy fails the build until the translation catches up. When the edit genuinely does not change meaning, add a `stale_ack` carrying the new hash, a reason, and an `expires` date; it warns until that date and errors after it.
+
+**Screenshots**: `capture_website_screenshots.py --locale ja` captures in the app's Japanese interface and writes to `assets/article-images/ja/…`. `sync_help_screenshots.py` resolves per locale and falls back to the English file per slot, so a language can recapture gradually. iPad slots need their own run with `--device`.
+
+**Terminology comes from the app, not from this repo.** `glossary.json` is a generated snapshot of the AtlasDays app's shipped translations and its accepted-terminology tables. A help article is a set of instructions about the app's screens: if it names a button differently from the app, the article is worse than useless, and that mismatch is invisible to anyone who cannot read the language.
+
 ## Adding or editing an article
 
 1. Edit the fragment under `_site-src/content/<section>/`, or add a new one.
@@ -30,6 +74,7 @@ _site-src/
 3. Rebuild, in this order (each output feeds the next):
 
 ```bash
+python3 scripts/check_translations.py          # terminology, structure, typography, staleness
 python3 scripts/build_content_governance.py   # editorial + cluster records, review queue
 python3 scripts/generate_social_cards.py      # OG images + manifest
 python3 scripts/build_residency_hub.py        # hub tables, if a residency page changed
@@ -63,8 +108,11 @@ Serves the committed HTML with GitHub Pages' extensionless URLs, so links resolv
 | `build_residency_hub.py` | Fills the residency hub tables from the `residency` objects in `articles.json`. |
 | `build_search_index.py` | Builds `assets/search-index.json`. |
 | `generate_social_cards.py` | Renders the 1200x630 share images. |
-| `sync_help_screenshots.py` | Swaps a Help screenshot placeholder for a `<figure>` once its WebP lands. |
-| `capture_website_screenshots.py` | Drives the iOS Simulator to capture Help Center screenshots (macOS only). |
+| `sync_help_screenshots.py` | Swaps a Help screenshot placeholder for a `<figure>` once its WebP lands, in every locale. |
+| `capture_website_screenshots.py` | Drives the iOS Simulator to capture Help Center screenshots (macOS only). `--locale` captures in another interface language. |
+| `check_translations.py` | Gates translated pages on terminology, structural parity, typography, and staleness. |
+| `sync_glossary.py` | Snapshots product terminology from the app repo into `glossary.json`. |
+| `locales.py` | Shared locale registry, marker resolution, dates, and translation hashing. |
 | `check_external_sources.py` | Weekly link check over the official sources articles cite. |
 | `report_source_health.py` | Turns that report into the GitHub issue the weekly workflow maintains. |
 | `sync_changelog.py` | Copies release cards from the app repo into `changelog.html`. |
