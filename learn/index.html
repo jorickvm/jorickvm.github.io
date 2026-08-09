@@ -33,10 +33,10 @@
     }
   </script>
   <script>(function(){var d=document.documentElement,q=new URLSearchParams(location.search).get('theme'),t=null;if(q==='light'||q==='dark'){t=q;try{sessionStorage.setItem('theme',q)}catch(e){}}else{try{t=sessionStorage.getItem('theme')}catch(e){}if(!t)try{t=localStorage.getItem('theme')}catch(e){}}d.setAttribute('data-theme',t==='light'?'light':'dark')})()</script>
-  <link rel="stylesheet" href="../assets/css/tokens.css?v=20260808c" />
-  <link rel="stylesheet" href="../assets/css/hub-variants/a2023fe42813.css?v=20260808c" />
-  <link rel="stylesheet" href="../assets/css/site-header.css?v=20260808c" />
-  <link rel="stylesheet" href="../assets/css/site-footer.css?v=20260808c" />
+  <link rel="stylesheet" href="../assets/css/tokens.css?v=20260809a" />
+  <link rel="stylesheet" href="../assets/css/hub-variants/a2023fe42813.css?v=20260809a" />
+  <link rel="stylesheet" href="../assets/css/site-header.css?v=20260809a" />
+  <link rel="stylesheet" href="../assets/css/site-footer.css?v=20260809a" />
   <link rel="stylesheet" href="../assets/css/search.css?v=20260722a" />
 </head>
 <body>
@@ -54,6 +54,17 @@
         <a class="hide-mobile" href="/">Home</a>
         <a href="/help/">Help Center</a>
         <a href="/learn/" aria-current="page">Travel Rules</a>
+        <details class="nav-group hide-mobile">
+          <summary>
+            <span>Use cases</span>
+            <svg class="nav-group-caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <nav class="nav-group-panel" aria-label="Use case pages">
+            <a href="/visa-limits">Visa limits</a>
+            <a href="/residency-thresholds">Residency thresholds</a>
+            <a href="/travel-history">Travel history</a>
+          </nav>
+        </details>
         <a class="hide-mobile" href="/changelog">Changelog</a>
         <a class="top-cta" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">Get the app</a>
         <button class="theme-toggle" type="button" aria-label="Toggle theme" title="Toggle theme" onclick="toggleTheme()">
@@ -70,6 +81,10 @@
           <a href="/">Home</a>
           <a href="/help/">Help Center</a>
           <a href="/learn/" aria-current="page">Travel Rules</a>
+          <p class="mobile-group-label">Use cases</p>
+          <a class="mobile-group-item" href="/visa-limits">Visa limits</a>
+          <a class="mobile-group-item" href="/residency-thresholds">Residency thresholds</a>
+          <a class="mobile-group-item" href="/travel-history">Travel history</a>
           <a href="/changelog">Changelog</a>
           <a href="/about">About</a>
           <a href="/support">Support</a>
