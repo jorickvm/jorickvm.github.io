@@ -1,5 +1,11 @@
 (function () {
   var menus = document.querySelectorAll('.mobile-menu, .home-mobile-menu');
+  // Every disclosure in the header that should close on Escape or on an
+  // outside click. The mobile menus additionally relabel their summary; the
+  // use-cases dropdown does not, because its summary carries a visible label
+  // already and rewriting it would fight the translated string.
+  var disclosures = document.querySelectorAll('.mobile-menu, .home-mobile-menu, .nav-group');
+
   menus.forEach(function (menu) {
     menu.addEventListener('toggle', function () {
       var summary = menu.querySelector('summary');
@@ -11,7 +17,7 @@
 
   document.addEventListener('keydown', function (event) {
     if (event.key !== 'Escape') return;
-    menus.forEach(function (menu) {
+    disclosures.forEach(function (menu) {
       if (!menu.open) return;
       menu.open = false;
       var summary = menu.querySelector('summary');
@@ -20,7 +26,7 @@
   });
 
   document.addEventListener('click', function (event) {
-    menus.forEach(function (menu) {
+    disclosures.forEach(function (menu) {
       if (menu.open && !menu.contains(event.target)) menu.open = false;
     });
   });

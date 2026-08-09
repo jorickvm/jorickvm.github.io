@@ -118,6 +118,97 @@ button:focus-visible {
     border-radius: 8px;
   }
 }
+/* Use-cases dropdown. Mirrored from site-header.css, which the hand-authored
+   homepage does not load. The two copies must stay in step.
+
+   A `<details>` rather than a hover menu. Hover-only submenus are unreachable
+   by keyboard and by touch, and the site already uses `<details>` for the
+   mobile menu, so this is the same disclosure the codebase and the user
+   already know. It opens on click in every input mode, and Escape closes it
+   (see navigation.js).
+
+   The panel is `position: absolute` inside a `position: relative` summary
+   parent, so it never widens the bar. `.top-bar` sets its own stacking
+   context, hence the modest z-index. */
+.nav-group {
+  position: relative;
+}
+.nav-group > summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  color: inherit;
+  white-space: nowrap;
+  list-style: none;
+  transition: color 140ms ease;
+}
+.nav-group > summary::-webkit-details-marker { display: none; }
+.nav-group > summary::marker { content: ""; }
+.nav-group > summary:hover { color: var(--text); }
+.nav-group > summary:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+.nav-group[data-current] > summary {
+  color: var(--text);
+  font-weight: 600;
+}
+.nav-group-caret {
+  transition: transform 160ms ease;
+}
+.nav-group[open] .nav-group-caret {
+  transform: rotate(180deg);
+}
+.nav-group-panel {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 30;
+  min-width: 240px;
+  padding: 8px;
+  display: grid;
+  gap: 2px;
+  border: 1px solid var(--line-strong, var(--line));
+  border-radius: 16px;
+  background: var(--bg-card);
+  box-shadow: var(--shadow);
+}
+.nav-links .nav-group-panel a {
+  display: block;
+  padding: 9px 12px;
+  border-radius: 10px;
+  white-space: normal;
+  line-height: 1.35;
+}
+.nav-links .nav-group-panel a:hover {
+  color: var(--text);
+  background: var(--blue-soft);
+}
+.nav-group-panel a small {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.82rem;
+  color: var(--muted-2, var(--muted));
+}
+.nav-links .nav-group-panel a:hover small { color: inherit; }
+
+/* Inside the mobile panel the group is a flat labelled section: a dropdown
+   inside an already-open disclosure is a menu inside a menu. */
+.home-mobile-menu-panel .mobile-group-label {
+  padding: 12px 12px 4px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted-2, var(--muted));
+}
+.home-mobile-menu-panel .mobile-group-item {
+  padding-left: 22px;
+}
+
 .theme-toggle {
   background: none;
   border: 1px solid var(--line);
@@ -279,19 +370,113 @@ h1 {
   gap: 12px;
   max-width: 680px;
 }
+/* These are links now, one per use-case page, with the fourth going to
+   /privacy. Kept as a plain block rather than a flex row so the existing
+   two-column grid and the strong/text stacking are untouched. */
 .hero-point {
+  display: block;
   padding: 14px 16px;
   background: var(--bg-card);
   border: 1px solid var(--line);
   border-radius: var(--radius-button);
   color: var(--muted);
   font-size: 0.95rem;
+  transition: border-color 160ms ease, transform 160ms ease, background 160ms ease;
 }
+a.hero-point:hover {
+  border-color: var(--line-strong);
+  background: var(--bg-card-strong);
+  transform: translateY(-1px);
+}
+a.hero-point:hover strong { color: var(--blue); }
 .hero-point strong {
   display: block;
   color: var(--text);
   font-size: 0.98rem;
   margin-bottom: 3px;
+}
+
+/* iPhone frame.
+
+   `assets/home/iphone-frame-blue.webp` and `-orange.webp` are iPhone 17 Pro
+   Max overlays, 980x2000, with a transparent screen hole; the screenshot sits
+   behind and shows through. Both colours share identical geometry, so the
+   numbers below hold for either: the hole is 880x1912 at (50, 44), giving
+   5.102% side insets and 2.2% top and bottom.
+
+   The hole's aspect ratio is 2.1727, which is exactly the screenshots'
+   1320x2868, so `object-fit: cover` crops nothing.
+
+   The corner radius is deliberately NOT the hole's own radius. The hole is an
+   Apple squircle, and a circular `border-radius` large enough to match it at
+   the edges cuts inside it near the 45° diagonal – at the hole's 160px tangent
+   distance the clip ate 24px into the corner, which showed as screenshot
+   corners looking squarer than the bezel around them. So the clip is
+   deliberately squarer than the hole (120px, measured as the largest radius
+   with zero gap; 125 was the exact limit) and the opaque bezel masks the
+   overshoot. Erring squarer is safe, erring rounder is not.
+
+   The screenshots are raw device captures that already contain the status bar
+   and Dynamic Island. The frame draws its own island directly over that one,
+   black on black, so they read as a single element. Do not crop the island out
+   of the screenshots to compensate. The two islands agree to within a third of
+   a percent (frame 28.18% of screen width, Pro Max capture 28.48%), which is
+   sub-pixel at the sizes these render.
+
+   One exception: home-proof-widgets.webp is 1206x2622, a regular Pro capture,
+   where the same physical island covers 31.2%. It sits slightly wider than the
+   frame's. Recapture that one on a Pro Max if it ever shows. */
+.device {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 980 / 2000;
+  filter: var(--device-shadow);
+}
+.device-screen {
+  position: absolute;
+  top: 2.2%;
+  bottom: 2.2%;
+  left: 5.102%;
+  right: 5.102%;
+  overflow: hidden;
+  border-radius: 13.636% / 6.276%;
+  background: #000;
+}
+.device-screen img,
+.device-screen video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Per-theme screenshots. Same show/hide shape as `.logo-dark` / `.logo-light`
+   in the header, for the same reason: the theme is an attribute the user
+   toggles, not a media query, so `<picture>` and `prefers-color-scheme` cannot
+   reach it. Both files are fetched. That is the accepted cost of keeping the
+   alt text and the lazy loading that a CSS background would throw away.
+
+   The light captures carry no Dynamic Island – iOS does not draw one into a
+   light-appearance simulator capture – so the frame's own island lands on the
+   light wash and reads exactly like real hardware. Nothing to align there. */
+.device-screen picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+/* Scoped under `.device-screen` on purpose: the `img`/`video` rule above is
+   (0,1,1), so a bare `.shot-light` at (0,1,0) loses to it and both themes'
+   screenshots stack up visible. */
+.device-screen .shot-light { display: none; }
+html[data-theme="light"] .device-screen .shot-dark { display: none; }
+html[data-theme="light"] .device-screen .shot-light { display: block; }
+.device-body {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
 }
 
 .visual-wrap {
@@ -304,27 +489,6 @@ h1 {
 }
 .visual-card {
   position: absolute;
-  border-radius: var(--radius-card);
-  padding: 10px;
-  background: var(--bg-card);
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow);
-}
-.visual-card img,
-.visual-card video {
-  display: block;
-  border-radius: var(--radius-button);
-  width: 100%;
-  height: auto;
-}
-.hero-media {
-  position: relative;
-  width: 100%;
-}
-.hero-media-still {
-  display: block;
-  width: 100%;
-  height: auto;
 }
 .hero-media-video {
   position: absolute;
@@ -337,14 +501,23 @@ h1 {
 @media (prefers-reduced-motion: reduce) {
   .hero-media-video { display: none; }
 }
+/* The hero preview is a dark-mode recording and there is no light one, so in
+   light mode it would put a dark video in the phone standing next to a light
+   one. Falling back to the light still is the lesser loss: the animation is a
+   flourish, the mismatch reads as a bug. Delete this rule once a light
+   recording of `home-hero-preview.mp4` exists. */
+html[data-theme="light"] .hero-media-video { display: none; }
+/* Widths are the frame's outer width. The bezel eats 10.2%, so these run
+   about a ninth wider than the bare screenshots did to keep the app UI inside
+   at the same size. */
 .visual-card.primary {
-  width: min(338px, 72%);
+  width: min(354px, 76%);
   right: 0;
   top: 0;
   z-index: 2;
 }
 .visual-card.secondary {
-  width: min(276px, 58%);
+  width: min(285px, 61%);
   left: 0;
   bottom: 54px;
   z-index: 1;
@@ -529,21 +702,12 @@ code {
   max-width: 100%;
   margin: 0 auto;
   justify-self: center;
-  padding: 4px;
-  border-radius: var(--radius-button);
-  background: var(--bg-card);
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow);
 }
-.proof-shot img {
-  display: block;
-  width: auto;
-  max-width: 370px;
-  max-height: min(72svh, 760px);
-  height: auto;
-  border-radius: var(--radius-control);
-  border: 1px solid var(--line);
-  background: var(--bg-elevated);
+/* The height cap has to become a width cap: `.device` sizes from its width
+   through `aspect-ratio`, so a `max-height` would overflow rather than shrink
+   it. 2.041 is the frame's height/width. */
+.proof-shot .device {
+  width: min(412px, calc(min(72svh, 760px) / 2.041));
 }
 .proof-copy {
   max-width: 46ch;
@@ -628,9 +792,8 @@ code {
     scroll-snap-align: start;
     scroll-snap-stop: always;
   }
-  .proof-shot img {
-    max-width: 280px;
-    max-height: none;
+  .proof-shot .device {
+    width: 312px;
   }
   .proof-copy h3 {
     font-size: clamp(1.2rem, 1.4vw, 1.5rem);
@@ -672,24 +835,12 @@ code {
   gap: 22px;
   align-items: center;
 }
+/* The width lives on the wrapper, not on `.device`: a percentage width inside
+   a `fit-content` parent has nothing to resolve against and collapses to zero. */
 .privacy-visual {
   display: block;
-  width: fit-content;
-  max-width: 100%;
+  width: min(401px, 100%);
   justify-self: center;
-  padding: 8px;
-  border-radius: var(--radius-button);
-  background: var(--bg-card);
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow);
-}
-.privacy-visual img {
-  display: block;
-  width: 100%;
-  max-width: 360px;
-  height: auto;
-  border-radius: var(--radius-control);
-  border: 1px solid var(--line);
 }
 .privacy-panel h2 {
   margin: 0 0 10px;
@@ -916,32 +1067,23 @@ footer { padding-bottom: 36px; }
     max-width: none;
     margin: 20px auto 20px;
   }
-  .visual-card {
-    padding: 8px;
-    border-radius: var(--radius-card);
-  }
   .visual-card.primary {
-    width: 68%;
+    width: 72%;
     right: 0;
     top: 0;
     z-index: 2;
   }
   .visual-card.secondary {
-    width: 52%;
+    width: 55%;
     left: 0;
     bottom: 52px;
     z-index: 1;
   }
-  .visual-card img {
-    border-radius: var(--radius-button);
-    border: 1px solid var(--line);
-  }
 }
 
 @media (max-width: 960px) {
-  .proof-shot img {
-    max-width: 350px;
-    max-height: min(66svh, 680px);
+  .proof-shot .device {
+    width: min(390px, calc(min(66svh, 680px) / 2.041));
   }
 }
 
@@ -988,13 +1130,11 @@ footer { padding-bottom: 36px; }
   }
   .visual-card {
     position: relative;
-    padding: 8px;
-    border-radius: var(--radius-card);
     z-index: 1;
   }
   .visual-card.primary {
     width: 100%;
-    max-width: 340px;
+    max-width: 360px;
     inset: auto;
   }
   .visual-card.secondary { display: none; }
@@ -1009,14 +1149,8 @@ footer { padding-bottom: 36px; }
   .proof-story {
     gap: 14px;
   }
-  .proof-shot {
-    padding: 3px;
-    border-radius: var(--radius-button);
-  }
-  .proof-shot img {
-    max-width: 320px;
-    max-height: min(64svh, 600px);
-    border-radius: var(--radius-control);
+  .proof-shot .device {
+    width: min(356px, calc(min(64svh, 600px) / 2.041));
   }
   .proof-copy {
     text-align: left;
@@ -1099,9 +1233,9 @@ footer { padding-bottom: 36px; }
     min-height: 430px;
     margin: 12px auto;
   }
-  .visual-card.primary { width: 68%; }
+  .visual-card.primary { width: 72%; }
   .visual-card.secondary {
-    width: 52%;
+    width: 55%;
     bottom: 22px;
   }
   .proof-arrow {

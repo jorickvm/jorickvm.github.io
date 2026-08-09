@@ -72,6 +72,10 @@ html[data-theme="dark"] {
   --line: rgba(255, 255, 255, 0.10);
   --line-strong: rgba(255, 255, 255, 0.16);
   --shadow: 0 14px 32px rgba(0, 0, 0, 0.32);
+  /* Applied as `filter: drop-shadow()` on the iPhone frame, so it follows the
+     device silhouette instead of a bounding box. Two stops: a tight contact
+     shadow and a wide ambient one. */
+  --device-shadow: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.34)) drop-shadow(0 20px 38px rgba(0, 0, 0, 0.40));
 
   /* Wash, `.medium`. Dark mixes onto the canvas, where every point added is
      pure gain, so the numbers look small and still read. The top stop leans
@@ -123,6 +127,7 @@ html[data-theme="light"] {
   --line: rgba(12, 22, 40, 0.09);
   --line-strong: rgba(12, 22, 40, 0.14);
   --shadow: 0 12px 28px rgba(16, 28, 48, 0.08);
+  --device-shadow: drop-shadow(0 2px 5px rgba(16, 28, 48, 0.18)) drop-shadow(0 18px 34px rgba(16, 28, 48, 0.22));
 
   /* Wash, `.medium`. Light mixes toward a brightness-matched accent (#4EA8F7,
      the brand blue lifted to the canvas's own brightness) rather than the raw
@@ -130,12 +135,18 @@ html[data-theme="light"] {
      which near white is a bad exchange: the page goes dull before it goes
      colorful. Holding brightness fixed means a stronger step only widens the
      gap between channels, so the wash gains color and the page keeps its
-     lightness. Same rule the app's `washLightRGB255` follows. */
-  --wash-top: #DDE8F7;
-  --wash-mid: #E5ECF7;
+     lightness. Same rule the app's `washLightRGB255` follows.
+
+     Stepped up one notch in August 2026: light mode read washed-out next to
+     the app at the same `.medium` intensity. Each stop moved from a 13% / 8%
+     mix toward #4EA8F7 to 20% / 13%, so the new mid is exactly the old top.
+     Blue stays pinned at 247 and only red and green come down, which is the
+     brightness-holding rule above. */
+  --wash-top: #D1E3F7;
+  --wash-mid: #DDE8F7;
   --wash-mid-stop: 42%;
   --wash-end-stop: 84%;
-  --halo: rgba(78, 168, 247, 0.126);
+  --halo: rgba(78, 168, 247, 0.19);
 }
 
 html[data-theme="light"].wash-subtle {
@@ -156,13 +167,22 @@ html[data-theme="light"].wash-subtle {
 html {
   --header-bg: color-mix(in srgb, var(--wash-top) 82%, transparent);
 
-  /* `to bottom left` is the app's `.topTrailing` → `.bottomLeading`. The
-     hairline is an inset ring rather than a `border` so it sits inside the
+  /* Horizontal, not diagonal. This deliberately diverges from the app, whose
+     `AtlasActionStyle` runs `.topTrailing` → `.bottomLeading`: at the width a
+     web CTA gets, that diagonal put the bright band across one corner and read
+     as a lighting mistake rather than a curve. `to right` puts the bright stop
+     down the button's vertical centre line and fans it out to the left and
+     right edges, so a wide button reads as one lit surface across its length
+     rather than a band near one end. Jorick's call, August 2026. If the app's
+     button is ever revisited, this is the one token intentionally out of
+     parity.
+
+     The hairline is an inset ring rather than a `border` so it sits inside the
      fill the way SwiftUI's `strokeBorder` does, without shrinking the gradient
      box; the drop shadow rides in the same declaration. SwiftUI's shadow
      radius is roughly half a CSS blur, so radius 6 becomes 12px. */
   --action-gradient: linear-gradient(
-    to bottom left,
+    to right,
     var(--action-outer) 0%,
     var(--action-base) 50%,
     var(--action-outer) 100%

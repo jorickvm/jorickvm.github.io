@@ -129,8 +129,8 @@
   }
   </script>
   <script>(function(){var d=document.documentElement,q=new URLSearchParams(location.search).get('theme'),t=null;if(q==='light'||q==='dark'){t=q;try{sessionStorage.setItem('theme',q)}catch(e){}}else{try{t=sessionStorage.getItem('theme')}catch(e){}if(!t)try{t=localStorage.getItem('theme')}catch(e){}}d.setAttribute('data-theme',t==='light'?'light':'dark');d.classList.add('js')})()</script>
-  <link rel="stylesheet" href="assets/css/tokens.css?v=20260808c" />
-  <link rel="stylesheet" href="assets/css/home.css?v=20260808c" />
+  <link rel="stylesheet" href="assets/css/tokens.css?v=20260809j" />
+  <link rel="stylesheet" href="assets/css/home.css?v=20260809j" />
 </head>
 <body>
   <a class="skip-link" href="#top">Skip to content</a>
@@ -148,6 +148,17 @@
         <a class="hide-mobile" href="#privacy">Privacy</a>
         <a href="/help/">Help Center</a>
         <a href="/learn/">Travel Rules</a>
+        <details class="nav-group hide-mobile">
+          <summary>
+            <span>Use cases</span>
+            <svg class="nav-group-caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <nav class="nav-group-panel" aria-label="Use case pages">
+            <a href="/visa-limits">Visa limits</a>
+            <a href="/residency-thresholds">Residency thresholds</a>
+            <a href="/travel-history">Travel history</a>
+          </nav>
+        </details>
         <div class="nav-cta-wrap">
           <a class="nav-cta" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">Download</a>
           <div class="nav-qr-popup" aria-hidden="true">
@@ -169,6 +180,10 @@
           <a href="#privacy">Privacy</a>
           <a href="/help/">Help Center</a>
           <a href="/learn/">Travel Rules</a>
+          <p class="mobile-group-label">Use cases</p>
+          <a class="mobile-group-item" href="/visa-limits">Visa limits</a>
+          <a class="mobile-group-item" href="/residency-thresholds">Residency thresholds</a>
+          <a class="mobile-group-item" href="/travel-history">Travel history</a>
           <a href="/changelog">Changelog</a>
           <a href="/about">About</a>
         </nav>
@@ -192,26 +207,30 @@
 
         <div class="visual-wrap" aria-label="AtlasDays app previews">
           <div class="visual-card primary">
-            <div class="hero-media">
-              <picture>
-                <source srcset="assets/home/home-hero-dashboard-final.webp?v=20260808c" media="(prefers-reduced-motion: reduce)" />
-                <img class="hero-media-still" src="assets/home/home-hero-dashboard-poster.webp?v=20260808c" alt="AtlasDays dashboard showing the Schengen tracker, all-time stats, and the world map" width="1320" height="2868" />
-              </picture>
-              <video class="hero-media-video hero-video" muted playsinline preload="none" poster="assets/home/home-hero-preview-poster.webp?v=20260808c" width="886" height="1920" role="button" aria-label="Replay the AtlasDays app preview" tabindex="0">
-                <source src="assets/home/home-hero-preview.mp4?v=20260808c" type="video/mp4">
-              </video>
+            <div class="device">
+              <div class="device-screen">
+                <img class="shot-dark" src="assets/home/home-hero-dashboard-poster.webp?v=20260808c" alt="AtlasDays dashboard showing the Schengen tracker, all-time stats, and the world map" width="1320" height="2868" />
+                <img class="shot-light" src="assets/home/home-hero-dashboard-poster-light.webp?v=20260808c" alt="AtlasDays dashboard showing the Schengen tracker, all-time stats, and the world map" width="1320" height="2868" />
+              </div>
+              <img class="device-body" src="assets/home/iphone-frame-blue.webp?v=20260809j" alt="" width="980" height="2000" />
             </div>
           </div>
           <div class="visual-card secondary">
-            <img src="assets/home/home-hero-tracker-detail.webp?v=20260808c" alt="AtlasDays Schengen tracker detail showing 85 of 90 days used, 5 remaining, a rolling 180-day forecast, and the underlying trips" width="1320" height="2868" />
+            <div class="device">
+              <div class="device-screen">
+                <img class="shot-dark" src="assets/home/home-hero-tracker-detail.webp?v=20260808c" alt="AtlasDays Schengen tracker detail showing 85 of 90 days used, 5 remaining, a rolling 180-day forecast, and the underlying trips" width="1320" height="2868" />
+                <img class="shot-light" src="assets/home/home-hero-tracker-detail-light.webp?v=20260808c" alt="AtlasDays Schengen tracker detail showing 85 of 90 days used, 5 remaining, a rolling 180-day forecast, and the underlying trips" width="1320" height="2868" />
+              </div>
+              <img class="device-body" src="assets/home/iphone-frame-blue.webp?v=20260809j" alt="" width="980" height="2000" />
+            </div>
           </div>
         </div>
 
         <div class="hero-points" aria-label="Key benefits">
-          <div class="hero-point"><strong>Visa limits</strong>Schengen 90/180, per-stay limits, and rolling windows.</div>
-          <div class="hero-point"><strong>Residency thresholds</strong>183-day tests, calendar years, and fiscal-year trackers.</div>
-          <div class="hero-point"><strong>Travel history</strong>Exact trips where counts matter, year-only or unknown entries for older history.</div>
-          <div class="hero-point"><strong>Private by design</strong>On-device, no account required, optional iCloud sync.</div>
+          <a class="hero-point" href="/visa-limits"><strong>Visa limits</strong>Schengen 90/180, per-stay limits, and rolling windows.</a>
+          <a class="hero-point" href="/residency-thresholds"><strong>Residency thresholds</strong>183-day tests, calendar years, and fiscal-year trackers.</a>
+          <a class="hero-point" href="/travel-history"><strong>Travel history</strong>Exact trips where counts matter, year-only or unknown entries for older history.</a>
+          <a class="hero-point" href="/privacy"><strong>Private by design</strong>On-device, no account required, optional iCloud sync.</a>
         </div>
       </div>
     </section>
@@ -228,18 +247,30 @@
             <div class="proof-track" aria-label="AtlasDays product proof carousel" data-proof-track>
               <article class="proof-slide" data-proof-slide>
                 <div class="proof-shot">
-                  <img src="assets/home/home-hero-tracker-detail.webp?v=20260808c" alt="AtlasDays Schengen tracker detail showing 85 of 90 days used, 5 remaining, a rolling 180-day forecast, and the underlying trips" width="1320" height="2868" />
+                  <div class="device">
+                    <div class="device-screen">
+                      <img class="shot-dark" src="assets/home/home-proof-presets.webp?v=20260809j" alt="AtlasDays Add a Tracker screen listing presets for residence, Schengen, visa and entry limits, travel goals, and US states" width="1320" height="2868" />
+                      <img class="shot-light" src="assets/home/home-proof-presets-light.webp?v=20260809j" alt="AtlasDays Add a Tracker screen listing presets for residence, Schengen, visa and entry limits, travel goals, and US states" width="1320" height="2868" />
+                    </div>
+                    <img class="device-body" src="assets/home/iphone-frame-blue.webp?v=20260809j" alt="" width="980" height="2000" loading="lazy" />
+                  </div>
                 </div>
                 <div class="proof-copy">
-                  <p class="proof-label">Tracker detail</p>
-                  <h3>Days used, days left, and the rule</h3>
-                  <p>Threshold dates and counted trips stay in view.</p>
+                  <p class="proof-label">Tracker presets</p>
+                  <h3>Start from a rule, not a blank form</h3>
+                  <p>Schengen, residence tests, entry limits, and US states, or build your own.</p>
                 </div>
               </article>
 
               <article class="proof-slide" data-proof-slide>
                 <div class="proof-shot">
-                  <img src="assets/home/home-proof-timeline.webp?v=20260808c" alt="AtlasDays timeline showing ongoing, past, and upcoming trips" width="1320" height="2868" loading="lazy" />
+                  <div class="device">
+                    <div class="device-screen">
+                      <img class="shot-dark" src="assets/home/home-proof-timeline.webp?v=20260808c" alt="AtlasDays timeline showing ongoing, past, and upcoming trips" width="1320" height="2868" loading="lazy" />
+                      <img class="shot-light" src="assets/home/home-proof-timeline-light.webp?v=20260808c" alt="AtlasDays timeline showing ongoing, past, and upcoming trips" width="1320" height="2868" loading="lazy" />
+                    </div>
+                    <img class="device-body" src="assets/home/iphone-frame-blue.webp?v=20260809j" alt="" width="980" height="2000" loading="lazy" />
+                  </div>
                 </div>
                 <div class="proof-copy">
                   <p class="proof-label">Timeline</p>
@@ -250,7 +281,12 @@
 
               <article class="proof-slide" data-proof-slide>
                 <div class="proof-shot">
-                  <img src="assets/home/home-proof-map-country.webp?v=20260808c" alt="AtlasDays world map zoomed into Europe and Africa, with visited countries highlighted" width="1320" height="2868" loading="lazy" />
+                  <div class="device">
+                    <div class="device-screen">
+                      <img src="assets/home/home-proof-map-country.webp?v=20260808c" alt="AtlasDays world map zoomed into Europe and Africa, with visited countries highlighted" width="1320" height="2868" loading="lazy" />
+                    </div>
+                    <img class="device-body" src="assets/home/iphone-frame-blue.webp?v=20260809j" alt="" width="980" height="2000" loading="lazy" />
+                  </div>
                 </div>
                 <div class="proof-copy">
                   <p class="proof-label">Map and countries</p>
@@ -261,7 +297,13 @@
 
               <article class="proof-slide" data-proof-slide>
                 <div class="proof-shot">
-                  <img src="assets/home/home-proof-alerts.webp?v=20260808c" alt="AtlasDays tracker alerts settings with a delivery time and warnings from 30 days remaining down to limit reached" width="1320" height="2868" loading="lazy" />
+                  <div class="device">
+                    <div class="device-screen">
+                      <img class="shot-dark" src="assets/home/home-proof-alerts.webp?v=20260808c" alt="AtlasDays tracker alerts settings with a delivery time and warnings from 30 days remaining down to limit reached" width="1320" height="2868" loading="lazy" />
+                      <img class="shot-light" src="assets/home/home-proof-alerts-light.webp?v=20260808c" alt="AtlasDays tracker alerts settings with a delivery time and warnings from 30 days remaining down to limit reached" width="1320" height="2868" loading="lazy" />
+                    </div>
+                    <img class="device-body" src="assets/home/iphone-frame-blue.webp?v=20260809j" alt="" width="980" height="2000" loading="lazy" />
+                  </div>
                 </div>
                 <div class="proof-copy">
                   <p class="proof-label">Alerts</p>
@@ -272,18 +314,30 @@
 
               <article class="proof-slide" data-proof-slide>
                 <div class="proof-shot">
-                  <img src="assets/home/home-proof-import-preview.webp?v=20260808c" alt="AtlasDays CSV import preview showing selected trips before saving" width="1320" height="2868" loading="lazy" />
+                  <div class="device">
+                    <div class="device-screen">
+                      <img class="shot-dark" src="assets/home/home-proof-import-flighty.webp?v=20260809j" alt="AtlasDays import review of a Flighty flight history, flagging incomplete trips, US states, a merge candidate, and overlaps before saving" width="1320" height="2868" loading="lazy" />
+                      <img class="shot-light" src="assets/home/home-proof-import-flighty-light.webp?v=20260809j" alt="AtlasDays import review of a Flighty flight history, flagging incomplete trips, US states, a merge candidate, and overlaps before saving" width="1320" height="2868" loading="lazy" />
+                    </div>
+                    <img class="device-body" src="assets/home/iphone-frame-blue.webp?v=20260809j" alt="" width="980" height="2000" loading="lazy" />
+                  </div>
                 </div>
                 <div class="proof-copy">
                   <p class="proof-label">Import review</p>
-                  <h3>Import from photos or CSV</h3>
-                  <p>Draft trips from geotagged photos or a spreadsheet, then review before saving.</p>
+                  <h3>Import from Photos, CSV, or Flighty</h3>
+                  <p>Overlaps, gaps, and merge candidates are flagged before anything is saved.</p>
                 </div>
               </article>
 
               <article class="proof-slide" data-proof-slide>
                 <div class="proof-shot">
-                  <img src="assets/home/home-proof-pdf-export.webp?v=20260808c" alt="AtlasDays PDF Export preview showing a travel report with trip rows and summary counts" width="1320" height="2868" loading="lazy" />
+                  <div class="device">
+                    <div class="device-screen">
+                      <img class="shot-dark" src="assets/home/home-proof-pdf-export.webp?v=20260808c" alt="AtlasDays PDF Export preview showing a travel report with trip rows and summary counts" width="1320" height="2868" loading="lazy" />
+                      <img class="shot-light" src="assets/home/home-proof-pdf-export-light.webp?v=20260808c" alt="AtlasDays PDF Export preview showing a travel report with trip rows and summary counts" width="1320" height="2868" loading="lazy" />
+                    </div>
+                    <img class="device-body" src="assets/home/iphone-frame-blue.webp?v=20260809j" alt="" width="980" height="2000" loading="lazy" />
+                  </div>
                 </div>
                 <div class="proof-copy">
                   <p class="proof-label">PDF report</p>
@@ -294,7 +348,12 @@
 
               <article class="proof-slide" data-proof-slide>
                 <div class="proof-shot">
-                  <img src="assets/home/home-proof-widgets.webp?v=20260808c" alt="AtlasDays Home Screen widgets showing a Schengen tracker with days used and remaining at a glance" width="1206" height="2622" loading="lazy" />
+                  <div class="device">
+                    <div class="device-screen">
+                      <img src="assets/home/home-proof-widgets.webp?v=20260808c" alt="AtlasDays Home Screen widgets showing a Schengen tracker with days used and remaining at a glance" width="1206" height="2622" loading="lazy" />
+                    </div>
+                    <img class="device-body" src="assets/home/iphone-frame-blue.webp?v=20260809j" alt="" width="980" height="2000" loading="lazy" />
+                  </div>
                 </div>
                 <div class="proof-copy">
                   <p class="proof-label">Home screen widgets</p>
@@ -372,7 +431,13 @@
               <div class="disclaimer">Read the <a href="/privacy">App Privacy page</a>, <a href="/help/photo-import">Photo Import guide</a>, and <a href="/help/privacy-location-and-sync">Privacy, Location, and Sync guide</a> for the exact storage, location, Photos access, and sync model.</div>
             </div>
             <div class="privacy-visual">
-              <img src="assets/home/home-proof-privacy.webp?v=20260808c" alt="AtlasDays Privacy sheet explaining that travel data stays on the device with optional iCloud sync" width="1320" height="2868" loading="lazy" />
+              <div class="device">
+                <div class="device-screen">
+                  <img class="shot-dark" src="assets/home/home-proof-privacy.webp?v=20260808c" alt="AtlasDays Privacy sheet explaining that travel data stays on the device with optional iCloud sync" width="1320" height="2868" loading="lazy" />
+                  <img class="shot-light" src="assets/home/home-proof-privacy-light.webp?v=20260808c" alt="AtlasDays Privacy sheet explaining that travel data stays on the device with optional iCloud sync" width="1320" height="2868" loading="lazy" />
+                </div>
+                <img class="device-body" src="assets/home/iphone-frame-blue.webp?v=20260809j" alt="" width="980" height="2000" loading="lazy" />
+              </div>
             </div>
           </div>
         </div>
