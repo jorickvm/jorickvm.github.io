@@ -22,6 +22,8 @@ from pathlib import Path
 from urllib.parse import unquote, urlsplit
 
 
+from locales import default_locale_code, load_locales, load_ui_strings
+
 SITE_ROOT = Path(__file__).resolve().parents[1]
 SITE_ORIGIN = "https://atlasdays.app"
 SITEMAP_NS = "{http://www.sitemaps.org/schemas/sitemap/0.9}"
@@ -505,6 +507,114 @@ def audit_learn_fragments(findings: list[Finding]) -> None:
             )
 
 
+def source_path_of(path: str, registry: dict[str, dict], default: str) -> str:
+    """The English page a generated file corresponds to."""
+    head, _, rest = path.partition("/")
+    if head in registry and head != default and rest:
+        return rest
+    return path
+
+
+def alternate_map(parser: PageParser) -> dict[str, str]:
+    """hreflang -> href for every alternate link on a page."""
+    found: dict[str, str] = {}
+    for tag, attrs, _ in parser.tags:
+        if tag != "link" or "alternate" not in str(attrs.get("rel") or "").split():
+            continue
+        lang = str(attrs.get("hreflang") or "")
+        if lang:
+            found[lang] = str(attrs.get("href") or "")
+    return found
+
+
+def audit_translations(
+    records: list[PageRecord],
+    parsed: dict[Path, PageParser],
+    findings: list[Finding],
+) -> None:
+    """Locale registration, chrome-string coverage, and hreflang reciprocity.
+
+    Google discards an hreflang set whose members do not point back at each
+    other, so reciprocity is checked rather than assumed. A one-sided set is
+    not a partial win, it is the whole signal being ignored.
+    """
+    try:
+        registry = load_locales()
+        strings = load_ui_strings()
+        default = default_locale_code()
+    except (OSError, json.JSONDecodeError, KeyError) as exc:
+        findings.append(Finding("error", "locale-config", "_site-src/data", str(exc)))
+        return
+
+    published = {code for code, locale in registry.items() if locale.get("status") == "published"}
+    for key in sorted(strings):
+        for code in sorted(published):
+            if not strings[key].get(code):
+                findings.append(
+                    Finding("error", "ui-string-missing", "_site-src/data/ui-strings.json",
+                            f"{key} has no {code} value")
+                )
+
+    overlays: dict[str, set[str]] = {}
+    for code, locale in registry.items():
+        relative = locale.get("articles")
+        if not relative:
+            continue
+        try:
+            data = json.loads((SITE_ROOT / "_site-src" / str(relative)).read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError) as exc:
+            findings.append(Finding("error", "locale-config", str(relative), str(exc)))
+            continue
+        overlays[code] = {
+            str(entry["source"]) for entry in list(data.get("articles", [])) + list(data.get("hubs", []))
+        }
+
+    for record in records:
+        head, _, rest = record.path.partition("/")
+        if head in registry and head != default and rest not in overlays.get(head, set()):
+            findings.append(
+                Finding("error", "locale-orphan", record.path,
+                        f"No {head} translation record for {rest}")
+            )
+
+    alternates: dict[str, dict[str, str]] = {}
+    for path, parser in parsed.items():
+        mapping = alternate_map(parser)
+        if mapping:
+            alternates[path.relative_to(SITE_ROOT).as_posix()] = mapping
+
+    by_canonical = {record.canonical: record for record in records if record.indexable and record.canonical}
+    for relative in sorted(alternates):
+        mapping = alternates[relative]
+        own = expected_canonical(route_for_path(SITE_ROOT / relative))
+        if own not in mapping.values():
+            findings.append(
+                Finding("error", "hreflang-self", relative, "Page omits itself from its own alternate set")
+            )
+        if "x-default" not in mapping:
+            findings.append(Finding("error", "hreflang-x-default", relative, "Alternate set has no x-default"))
+        elif mapping["x-default"] not in mapping.values():
+            findings.append(
+                Finding("error", "hreflang-x-default", relative,
+                        f"x-default {mapping['x-default']} is not one of the alternates")
+            )
+        for lang in sorted(mapping):
+            if lang == "x-default":
+                continue
+            target = by_canonical.get(mapping[lang])
+            if target is None:
+                findings.append(
+                    Finding("error", "hreflang-target", relative,
+                            f"{lang} points at {mapping[lang]}, which is not an indexable page")
+                )
+                continue
+            if own not in alternates.get(target.path, {}).values():
+                findings.append(
+                    Finding("error", "hreflang-reciprocity", relative,
+                            f"{mapping[lang]} does not link back to {own}")
+                )
+
+
 def audit_governance(records: list[PageRecord], findings: list[Finding]) -> None:
     editorial_path = SITE_ROOT / "_site-src" / "data" / "editorial.json"
     clusters_path = SITE_ROOT / "_site-src" / "data" / "content-clusters.json"
@@ -514,10 +624,27 @@ def audit_governance(records: list[PageRecord], findings: list[Finding]) -> None
     except (OSError, json.JSONDecodeError, KeyError) as exc:
         findings.append(Finding("error", "governance-config", "_site-src/data", str(exc)))
         return
+    try:
+        registry = load_locales()
+        default = default_locale_code()
+    except (OSError, json.JSONDecodeError, KeyError):
+        registry, default = {}, "en"
     learn_paths = {
         record.path for record in records
         if record.indexable and record.path.startswith("learn/") and record.page_type == "article"
     }
+    # A translated Learn article inherits its source's editorial record rather
+    # than carrying its own, but it must not escape coverage: these are the
+    # tax and visa guides, the highest-consequence content on the site.
+    for record in records:
+        source = source_path_of(record.path, registry, default)
+        if source == record.path or not source.startswith("learn/"):
+            continue
+        if source not in {str(item.get("path", "")) for item in editorial}:
+            findings.append(
+                Finding("error", "editorial-missing", record.path,
+                        f"Translated Learn article whose source {source} has no editorial record")
+            )
     editorial_by_path = {str(item.get("path", "")): item for item in editorial}
     clusters_by_path = {str(item.get("path", "")): item for item in clusters}
     for path in sorted(learn_paths):
@@ -661,8 +788,9 @@ def print_report(records: list[PageRecord], findings: list[Finding], json_output
 
 def main() -> int:
     args = parse_args()
-    records, findings, _ = audit_pages(args)
+    records, findings, parsed = audit_pages(args)
     audit_sitemap(records, findings)
+    audit_translations(records, parsed, findings)
     audit_theme_css(findings)
     audit_learn_fragments(findings)
     audit_governance(records, findings)

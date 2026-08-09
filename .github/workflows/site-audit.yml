@@ -30,6 +30,13 @@ jobs:
       # fork PRs and the weekly cron included.
       - name: Audit committed site
         run: python3 scripts/audit_site.py --strict-semantics --check-baseline _site-src/data/baseline.json
+      # Terminology, structural parity with the English source, and typography
+      # for every translated page. Runs before the build because there is no
+      # point rendering a page that will not pass. glossary.json is a committed
+      # snapshot of the app repo's shipped strings, so this needs no checkout
+      # of that repo; scripts/sync_glossary.py refreshes it.
+      - name: Check translations
+        run: python3 scripts/check_translations.py --check
       - name: Check generated article output
         run: |
           python3 scripts/build_residency_hub.py --check

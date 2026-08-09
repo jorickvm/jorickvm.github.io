@@ -33,6 +33,20 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--list", action="store_true", help="List capture states and exit.")
     parser.add_argument("--device", help="Override the manifest Simulator name.")
+    parser.add_argument(
+        "--locale",
+        default="en",
+        help="Interface language to capture in. Non-default locales write to "
+             "assets/article-images/<code>/... so a translated page can show its own screens.",
+    )
+    parser.add_argument(
+        "--appearance",
+        default="dark",
+        choices=("dark", "light"),
+        help="Interface appearance to capture in. Light runs pass --light through to the "
+             "app harness and write alongside the dark file with a -light suffix, so the "
+             "site can serve a matching set per theme without a second manifest.",
+    )
     parser.add_argument("--app-repo", type=Path)
     parser.add_argument("--no-build", action="store_true")
     parser.add_argument("--dry-run", action="store_true")
@@ -77,10 +91,24 @@ def select_captures(manifest: dict, args: argparse.Namespace, device_name: str) 
     # A capture without a `device` belongs to the manifest default, so an iPad
     # run picks up only the entries that actually name the iPad. Without this
     # every run would try to capture the other device's slots on the wrong one.
+    other_device = [
+        capture for capture in captures
+        if not device_matches(capture.get("device", manifest["device"]["name"]), device_name)
+        and (not args.id_prefix or str(capture["id"]).startswith(args.id_prefix))
+    ]
     captures = [
         capture for capture in captures
         if device_matches(capture.get("device", manifest["device"]["name"]), device_name)
     ]
+    if other_device:
+        # Say what this run cannot reach. Silence here reads as "everything is
+        # captured", which is how a whole locale's iPad slots stayed English
+        # without anyone noticing.
+        families = sorted({str(c.get("device", "")) for c in other_device})
+        print(
+            f"skipping {len(other_device)} capture(s) that belong to another device "
+            f"({', '.join(families)}); rerun with --device to capture them"
+        )
     if args.all:
         if args.id_prefix:
             captures = [c for c in captures if str(c["id"]).startswith(args.id_prefix)]
@@ -170,6 +198,45 @@ def build_app(app_repo: Path, udid: str, derived_data: Path, env: dict[str, str]
     if not dry_run:
         subprocess.run(command, cwd=app_repo, env=env, check=True)
     return derived_data / "Build" / "Products" / "Debug-iphonesimulator" / "AtlasDays.app"
+
+
+# The Simulator language a locale captures in. Kept beside the path rule
+# because the two must agree: a Japanese screenshot written to the English
+# path would silently replace the English one.
+LOCALE_LAUNCH = {
+    "en": ("(en-US)", "en_US"),
+    "ja": ("(ja)", "ja_JP"),
+    "nl": ("(nl)", "nl_NL"),
+    "de": ("(de)", "de_DE"),
+    "es": ("(es)", "es_ES"),
+    "fr": ("(fr)", "fr_FR"),
+    "ru": ("(ru)", "ru_RU"),
+    "uk": ("(uk)", "uk_UA"),
+}
+
+
+def launch_locale_args(code: str) -> list[str]:
+    if code not in LOCALE_LAUNCH:
+        raise SystemExit(f"No Simulator language mapping for locale {code!r}")
+    languages, locale = LOCALE_LAUNCH[code]
+    return ["-AppleLanguages", languages, "-AppleLocale", locale]
+
+
+def output_path(relpath: str, code: str, appearance: str = "dark") -> Path:
+    """Where a capture lands.
+
+    Non-default locales get their own directory. Light-appearance runs instead
+    get a ``-light`` suffix on the filename, staying beside the dark file: the
+    site picks between the two with a CSS rule keyed on the theme attribute, so
+    the pair has to be siblings, and a directory split would put every
+    reference in the markup one level out of step with the other theme.
+    """
+    if appearance == "light":
+        relpath = re.sub(r"(\.[^./]+)$", r"-light\1", relpath)
+    if code == "en" or not relpath.startswith("assets/article-images/"):
+        return SITE_ROOT / relpath
+    tail = relpath[len("assets/article-images/"):]
+    return SITE_ROOT / f"assets/article-images/{code}/{tail}"
 
 
 def normalize_targets(capture: dict) -> list[dict]:
@@ -371,13 +438,20 @@ def main() -> int:
     # archived PNG rather than launched, and never reach the Simulator.
     manual = [c for c in captures if c.get("source")]
     captures = [c for c in captures if not c.get("source")]
+    if args.locale != "en" and manual:
+        # Manual captures are cut from archived English PNGs (an iOS Settings
+        # screen, a Home Screen). Re-cutting one into a ja/ path would publish
+        # English pixels under a Japanese filename, which is worse than the
+        # honest English fallback sync_help_screenshots.py already provides.
+        print(f"skipping {len(manual)} manual capture(s) for {args.locale}: archived source is English")
+        manual = []
     for capture in manual:
         source = SITE_ROOT / capture["source"]
         if not source.exists():
             raise SystemExit(f'Manual source missing for {capture["id"]}: {source}')
         for target in normalize_targets(capture):
             write_target(
-                source, SITE_ROOT / target["path"],
+                source, output_path(target["path"], args.locale, args.appearance),
                 width, height, target["crop"], env, args.dry_run,
             )
     if manual:
@@ -393,7 +467,7 @@ def main() -> int:
             for capture in group:
                 for target in normalize_targets(capture):
                     write_target(
-                        raw_png, SITE_ROOT / target["path"],
+                        raw_png, output_path(target["path"], args.locale, args.appearance),
                         width, height, target["crop"], env, args.dry_run,
                     )
                     recut += 1
@@ -446,10 +520,12 @@ def main() -> int:
                     "/usr/bin/xcrun", "simctl", "launch", "--terminate-running-process",
                     udid, BUNDLE_ID,
                     "--ui-testing", "--website-screenshot", scenario,
-                    "-AppleLanguages", "(en-US)", "-AppleLocale", "en_US",
+                    *launch_locale_args(args.locale),
                 ]
                 if any(capture.get("landscape") for capture in group):
                     launch.insert(-4, "--landscape")
+                if args.appearance == "light":
+                    launch.append("--light")
                 run(launch, env=env, dry_run=args.dry_run)
                 raw_png = raw_root / f"{scenario}.png"
                 capture_settled(
@@ -467,15 +543,23 @@ def main() -> int:
                         continue
                     for target in normalize_targets(capture):
                         write_target(
-                            raw_png, SITE_ROOT / target["path"],
+                            raw_png, output_path(target["path"], args.locale, args.appearance),
                             width, height, target["crop"], env, args.dry_run,
                         )
                     if not args.dry_run:
                         # Provenance is a timestamp and a device, deliberately
                         # not an app version: the site never refers to
                         # AtlasDays by version number, in copy or in metadata.
-                        capture["last_captured_at"] = captured_at
-                        capture["captured_device"] = device_name
+                        #
+                        # Light runs write their own key. They leave the dark
+                        # files untouched, so stamping the shared one would
+                        # claim a dark capture that never happened and hide a
+                        # genuinely stale screenshot behind a fresh date.
+                        if args.appearance == "light":
+                            capture["last_captured_light_at"] = captured_at
+                        else:
+                            capture["last_captured_at"] = captured_at
+                            capture["captured_device"] = device_name
     finally:
         # Always clear, including after a failed capture: a left-over override
         # silently stages every later screenshot taken on this simulator.

@@ -10,6 +10,7 @@ from collections import defaultdict
 from pathlib import Path
 
 from audit_site import PageParser, meta_content
+from locales import default_locale_code, load_locales
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -47,14 +48,49 @@ def render_sitemap(routes: list[dict[str, object]]) -> str:
     return '<?xml version="1.0" encoding="UTF-8"?>\n' + ET.tostring(root, encoding="unicode") + "\n"
 
 
+BASE_SECTIONS = ("Start Here", "Help", "Learn", "Site Information")
+
+
+def split_locale(path: str) -> tuple[str, str]:
+    """(locale code, English source path) for a generated file."""
+    locales = load_locales()
+    default = default_locale_code()
+    head, _, rest = path.partition("/")
+    if head in locales and head != default and rest:
+        return head, rest
+    return default, path
+
+
 def section_for(path: str) -> str:
-    if path == "index.html":
-        return "Start Here"
-    if path.startswith("help/"):
-        return "Help"
-    if path.startswith("learn/"):
-        return "Learn"
-    return "Site Information"
+    """The llms.txt heading a page belongs under.
+
+    Locale-aware so a Japanese page never gets filed as an English one: an LLM
+    reading llms.txt would otherwise present a translated page as the English
+    answer.
+    """
+    code, rest = split_locale(path)
+    if rest == "index.html":
+        base = "Start Here"
+    elif rest.startswith("help/"):
+        base = "Help"
+    elif rest.startswith("learn/"):
+        base = "Learn"
+    else:
+        base = "Site Information"
+    if code == default_locale_code():
+        return base
+    return f"{base} ({load_locales()[code]['native_name']})"
+
+
+def section_order() -> list[str]:
+    """English sections first, then each published translation's own sections."""
+    order = list(BASE_SECTIONS)
+    default = default_locale_code()
+    for code, locale in load_locales().items():
+        if code == default or locale.get("status") != "published":
+            continue
+        order += [f"{base} ({locale['native_name']})" for base in BASE_SECTIONS]
+    return order
 
 
 def render_llms(routes: list[dict[str, object]]) -> str:
@@ -69,7 +105,9 @@ def render_llms(routes: list[dict[str, object]]) -> str:
         "> AtlasDays is a private iPhone app and website for tracking visa limits, residency or tax presence days, and travel history.", "",
         "AtlasDays is a record-keeping and day-counting tool, not legal or tax advice. Official government guidance and professional advice remain authoritative for rule interpretation.", "",
     ]
-    for section in ("Start Here", "Help", "Learn", "Site Information"):
+    for section in section_order():
+        if section not in grouped and section not in BASE_SECTIONS:
+            continue
         lines.extend([f"## {section}", ""])
         for title, url, description in grouped.get(section, []):
             lines.append(f"- [{title}]({url}): {description}")

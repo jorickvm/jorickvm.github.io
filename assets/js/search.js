@@ -29,8 +29,24 @@
   var roots = Array.prototype.slice.call(document.querySelectorAll("[data-library-search]"));
   if (!roots.length) return;
 
+  // Kept characters include the CJK ranges. Before this, [^a-z0-9] stripped
+  // every Japanese character, so a Japanese query normalised to "" and scored
+  // every entry at 1 - the search silently returned the whole list.
+  var CJK = "\u3040-\u309f\u30a0-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uff66-\uff9f";
+  var STRIP = new RegExp("[^a-z0-9" + CJK + "]+", "g");
+  var HAS_ASCII_WORD = /[a-z0-9]/;
+
   function normalize(value) {
-    return String(value || "").toLowerCase().replace(/[^a-z0-9]+/g, " ").replace(/\bdays\b/g, "day").trim();
+    return String(value || "").toLowerCase().replace(STRIP, " ").replace(/\bdays\b/g, "day").trim();
+  }
+
+  // Japanese does not delimit words with spaces, so splitting on whitespace
+  // produces one long token and the stop-word pass is meaningless. Such a
+  // query is scored on substring containment alone. That gives exact and
+  // prefix matching rather than morphological search, which is enough for a
+  // few dozen articles carrying translated synonyms.
+  function isSpaceless(query) {
+    return query.length > 0 && !HAS_ASCII_WORD.test(query);
   }
 
   // Words that carry no signal on their own. Dropping them lets a natural
@@ -42,6 +58,7 @@
   ];
 
   function meaningfulTerms(query) {
+    if (isSpaceless(query)) return [];
     return query.split(" ").filter(function (term) {
       return term.length > 1 && STOP_WORDS.indexOf(term) === -1;
     });
@@ -61,6 +78,12 @@
     else if (title.indexOf(query) !== -1) value += 90;
     if (jurisdiction === query) value += 80;
     else if (jurisdiction.indexOf(query) !== -1) value += 45;
+    // An exact keyword beats a keyword that merely contains the query. This
+    // matters most in Japanese, where there are no word boundaries to break a
+    // false match: "リセット" (reset) is a substring of "プリセット" (preset),
+    // and "書き出し" of "書き出しの言語". Without this the collision outranks
+    // the article the reader actually wanted.
+    if (entry.keywords.some(function (word) { return normalize(word) === query; })) value += 45;
     if (keywords.indexOf(query) !== -1) value += 35;
     if (description.indexOf(query) !== -1) value += 20;
 
@@ -96,7 +119,12 @@
     .then(function (payload) {
       roots.forEach(function (root) {
         var section = root.getAttribute("data-section");
-        var entries = payload.entries.filter(function (entry) { return entry.section === section; });
+        // A hub only ever searches its own language: the Japanese Help hub
+        // must not return English articles it cannot link to sensibly.
+        var lang = root.getAttribute("data-lang") || "en";
+        var entries = payload.entries.filter(function (entry) {
+          return entry.section === section && (entry.lang || "en") === lang;
+        });
         var input = root.querySelector("[data-search-input]");
         var filter = root.querySelector("[data-search-filter]");
         var clear = root.querySelector("[data-search-clear]");

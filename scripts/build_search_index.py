@@ -8,6 +8,8 @@ import json
 from html.parser import HTMLParser
 from pathlib import Path
 
+from locales import default_locale_code, load_locales, route_for
+
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "_site-src" / "data"
@@ -41,6 +43,51 @@ def help_headings(record: dict[str, object]) -> list[str]:
     parser = HeadingParser()
     parser.feed((ROOT / "_site-src" / str(record["content"])).read_text(encoding="utf-8"))
     return parser.headings
+
+
+def translated_entries(sources: dict[str, dict]) -> list[dict[str, object]]:
+    """One search entry per translated page, tagged with its language.
+
+    The index stays a single file: 100-odd entries do not justify a second
+    fetch, and search.js already filters client-side.
+    """
+    entries: list[dict[str, object]] = []
+    default = default_locale_code()
+    for code, locale in load_locales().items():
+        registry = locale.get("articles")
+        if code == default or not registry or not (DATA.parent / str(registry)).exists():
+            continue
+        data = json.loads((DATA.parent / str(registry)).read_text(encoding="utf-8"))
+        for overlay in list(data.get("articles", [])) + list(data.get("hubs", [])):
+            source = sources.get(str(overlay["source"]))
+            if source is None or str(source.get("section", "help")) != "help":
+                continue
+            slug = Path(str(overlay["source"])).stem
+            entries.append(
+                {
+                    "section": "help",
+                    "lang": code,
+                    "category": str(source.get("category", "trips-travel-days")),
+                    "title": str(overlay["headline"]),
+                    "description": str(overlay["description"]),
+                    "jurisdiction": "",
+                    "keywords": sorted(
+                        {
+                            slug.replace("-", " "),
+                            # English aliases stay searchable: a Japanese reader
+                            # who knows the English term on their paperwork has
+                            # no other route to the page.
+                            *(str(value).lower() for value in source.get("search_synonyms", [])),
+                            *(str(value).lower() for value in overlay.get("search_synonyms", [])),
+                            *(value.lower() for value in help_headings(overlay)),
+                        }
+                        - {""}
+                    ),
+                    "url": f"/{code}" + route_for(str(overlay["source"])),
+                    "pillar": False,
+                }
+            )
+    return entries
 
 
 def arguments() -> argparse.Namespace:
@@ -99,6 +146,7 @@ def build() -> dict[str, object]:
                 "pillar": pillar,
             }
         )
+    entries.extend(translated_entries({str(r["path"]): r for r in articles}))
     return {"schema_version": 1, "generated_by": "scripts/build_search_index.py", "entries": entries}
 
 
