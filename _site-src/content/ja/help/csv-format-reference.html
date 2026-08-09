@@ -1,0 +1,44 @@
+    <nav class="breadcrumb" aria-label="パンくずリスト"><a href="/">AtlasDays</a> / <a href="/ja/help/">ヘルプセンター</a></nav>
+
+    <h1>CSV形式リファレンス</h1>
+<p class="article-answer">必須の列は <strong>Country</strong> だけです。AtlasDaysは対応する列をヘッダー名で見つけるため、列の並び順は自由です。</p>
+
+    <h2>推奨するヘッダー</h2>
+    <p><code>Country,State,Start Date,End Date,Purpose,Notes</code></p>
+    <ul>
+      <li><strong>Country:</strong> 英語の<a href="/ja/help/languages">国名</a>、ISOの2文字コード、または広く使われる別名。</li>
+      <li><strong>State:</strong> 米国の州名、郵便略号、または <code>US-CA</code> のようなISO細分区分コード（任意）。</li>
+      <li><strong>Start Date / End Date:</strong> 下記のルールに従って、正確な日付、年、または空欄。</li>
+      <li><strong>Purpose:</strong> Tourism、Business、Medical、<a href="/ja/help/history-and-import">Transit</a>、Personal のいずれか。Transit以外なら、カンマ区切りで複数指定できます。</li>
+      <li><strong>Notes:</strong> 自由に書けるテキスト（任意）。</li>
+    </ul>
+    <figure class="help-shot help-shot-control"><img src="/assets/article-images/ja/help/csv-format-reference/csv-reference.webp" alt="CSVインポートの「CSVの例」とテンプレートの操作" width="1320" height="1760" loading="lazy" decoding="async" /></figure>
+
+    <h2>日付の書き方</h2>
+    <h3>正確な日付</h3>
+    <p>どちらの日付列にも <code>yyyy-mm-dd</code> を使います。End Date を空にできるのは、滞在中の旅行だけです。</p>
+    <h3>年のみ</h3>
+    <p>Start Date に4桁の年を書きます。End Date には年を書くか、同じ年を表す空欄のままにできます。複数年にまたがる範囲は、1年につき1件の年のみの記録になります。</p>
+    <h3>不明</h3>
+    <p>日付のセルを両方とも空にします。その国は、日数を伴わない訪問として残ります。</p>
+
+    <h2>米国の州の行</h2>
+    <p>State を使うのは、米国の旅行だけです。1回の米国滞在で複数の州をまわり、州ごとの記録が必要な場合は、州ごとに1行ずつ書きます。国単位で記録するだけなら、州を空にした米国の行でもかまいません。</p>
+
+    <h2>乗り継ぎ（Transit）</h2>
+    <p>入国していない場合は、Purpose に <code>Transit</code> と書きます。Transitは排他的です。TourismやBusinessなど、ほかの目的と組み合わせないでください。</p>
+
+    <h2>記入例</h2>
+    <pre><code>Country,State,Start Date,End Date,Purpose,Notes
+France,,2026-03-01,2026-03-05,Tourism,
+United States,CA,2026-04-10,2026-04-15,Business,Conference
+Japan,,2024,,Tourism,Dates not known
+United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></pre>
+
+    <h2>区切り文字と引用符</h2>
+    <p>AtlasDaysは、ヘッダー行を見てカンマ区切り、セミコロン区切り、タブ区切りのいずれかを判別します。区切り文字や改行を含むフィールドは、通常のCSVのルールどおり引用符で囲んでください。</p>
+
+    <section class="if-needed">
+      <h2>値が認識されないとき</h2>
+      <p>ISOの国コード、まぎらわしくない英語の国名、ISO形式の日付、標準的な米国の州名またはコードを使ってください。元の行番号を残しておくと、インポートのプレビューと見比べやすくなります。</p>
+    </section>
