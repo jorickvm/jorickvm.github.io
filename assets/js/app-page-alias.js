@@ -2,6 +2,17 @@
   var target = window.AtlasDaysAppAliasTarget;
   if (!target) return;
 
+  // The app opens these aliases with ?lang=<its interface language>, so a
+  // reader running AtlasDays in Japanese lands on the Japanese page rather
+  // than the English one. Only languages the page actually has are listed;
+  // anything else falls through to the default target.
+  var locales = window.AtlasDaysAppAliasLocales;
+  if (locales) {
+    var requested = new URLSearchParams(location.search).get('lang') || '';
+    var base = requested.toLowerCase().split('-')[0];
+    if (locales[base]) target = locales[base];
+  }
+
   // How long the alias may stay blank before we admit something is happening.
   // On a warm same-origin fetch the swap lands well inside this, so the usual
   // case shows no message at all instead of a flashing "Loading" that appears
@@ -27,8 +38,9 @@
     var link = document.querySelector('[data-alias-target-link]');
     if (link) {
       // Carry ?theme= and ?lang= through, so the manual route keeps the
-      // appearance and language the app asked for.
-      if (location.search) link.href = link.getAttribute('href') + location.search;
+      // appearance and language the app asked for. The href follows the
+      // resolved target, so the fallback link is localized too.
+      link.href = target + (location.search || '');
     }
     if (fallback) {
       var note = fallback.querySelector('[data-alias-message]');
