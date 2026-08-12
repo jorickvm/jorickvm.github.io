@@ -25,7 +25,7 @@ window.AtlasDaysLegalTranslations = {
 
   <h2>2. Location</h2>
   <p><strong>Auto-Detect Trips</strong> is optional. It uses Apple’s significant-change location service, not continuous GPS tracking. Country and US state checks happen on your device. Raw coordinates are not stored or uploaded.</p>
-  <p>AtlasDays keeps a local log of detected places and dates to suggest trips and manage confirmed ongoing trips. It never creates a new trip from location data without your confirmation.</p>
+  <p>When enabled, AtlasDays keeps a local log of detected places and dates to add trips and manage ongoing trips.</p>
   <p>You can turn Auto-Detect off in AtlasDays or revoke location access in iOS Settings.</p>
 
   <h2>3. Photos</h2>
@@ -35,7 +35,7 @@ window.AtlasDaysLegalTranslations = {
   <p>You can revoke Photos access in iOS Settings.</p>
 
   <h2>4. Notifications</h2>
-  <p>Trip suggestions and tracker alerts are generated and scheduled on your device. Notification permission is optional.</p>
+  <p>Trip notifications and tracker alerts are generated and scheduled on your device. Notification permission is optional.</p>
 
   <h2>5. Imports, Exports, and Sharing</h2>
   <p>Imports, exports, and PDF reports are processed locally. AtlasDays does not upload them. Data you deliberately share is handled by the app or service you choose.</p>
@@ -140,7 +140,7 @@ window.AtlasDaysLegalTranslations = {
 
   <h2>2. Locatie</h2>
   <p><strong>Auto-detect</strong> is optioneel. Deze functie gebruikt de locatievoorziening van Apple die alleen grote locatieveranderingen meldt, niet voortdurende gps-tracking. De controle op landen en Amerikaanse staten gebeurt op je apparaat. Ruwe coördinaten worden niet opgeslagen of geüpload.</p>
-  <p>AtlasDays houdt op je apparaat een logboek bij van gedetecteerde plaatsen en datums om reizen voor te stellen en bevestigde lopende reizen te beheren. De app maakt nooit zonder jouw bevestiging een nieuwe reis aan op basis van locatiegegevens.</p>
+  <p>Als dit aanstaat, houdt AtlasDays op je apparaat een logboek bij van gedetecteerde plaatsen en datums om reizen toe te voegen en lopende reizen te beheren.</p>
   <p>Je kunt Auto-detect uitschakelen in AtlasDays of de locatietoegang intrekken in de iOS-instellingen.</p>
 
   <h2>3. Foto’s</h2>
@@ -150,7 +150,7 @@ window.AtlasDaysLegalTranslations = {
   <p>Je kunt de toegang tot Foto’s intrekken in de iOS-instellingen.</p>
 
   <h2>4. Meldingen</h2>
-  <p>Reissuggesties en trackerwaarschuwingen worden op je apparaat aangemaakt en gepland. Toestemming voor meldingen is optioneel.</p>
+  <p>Reismeldingen en trackerwaarschuwingen worden op je apparaat aangemaakt en gepland. Toestemming voor meldingen is optioneel.</p>
 
   <h2>5. Importeren, exporteren en delen</h2>
   <p>Imports, exports en pdf-rapporten worden lokaal verwerkt. AtlasDays uploadt ze niet. Gegevens die je bewust deelt, worden verwerkt door de app of dienst die je kiest.</p>
@@ -255,7 +255,7 @@ window.AtlasDaysLegalTranslations = {
 
   <h2>2. Standort</h2>
   <p><strong>Reisen automatisch erkennen</strong> ist optional. Die Funktion verwendet Apples Ortungsdienst für größere Standortänderungen und kein kontinuierliches GPS-Tracking. Die Prüfung von Ländern und US-Bundesstaaten erfolgt auf deinem Gerät. Rohe Koordinaten werden weder gespeichert noch hochgeladen.</p>
-  <p>AtlasDays führt auf deinem Gerät ein Protokoll erkannter Orte und Daten, um Reisen vorzuschlagen und bestätigte laufende Reisen zu verwalten. Die App erstellt niemals ohne deine Bestätigung eine neue Reise aus Standortdaten.</p>
+  <p>Wenn die Funktion aktiviert ist, führt AtlasDays auf deinem Gerät ein Protokoll erkannter Orte und Daten, um Reisen hinzuzufügen und laufende Reisen zu verwalten.</p>
   <p>Du kannst die automatische Reiseerkennung in AtlasDays deaktivieren oder den Standortzugriff in den iOS-Einstellungen entziehen.</p>
 
   <h2>3. Fotos</h2>
@@ -265,7 +265,7 @@ window.AtlasDaysLegalTranslations = {
   <p>Du kannst den Zugriff auf Fotos in den iOS-Einstellungen entziehen.</p>
 
   <h2>4. Mitteilungen</h2>
-  <p>Reisevorschläge und Tracker-Warnungen werden auf deinem Gerät erstellt und geplant. Die Erlaubnis für Mitteilungen ist optional.</p>
+  <p>Reisemitteilungen und Tracker-Warnungen werden auf deinem Gerät erstellt und geplant. Die Erlaubnis für Mitteilungen ist optional.</p>
 
   <h2>5. Import, Export und Teilen</h2>
   <p>Importe, Exporte und PDF-Berichte werden lokal verarbeitet. AtlasDays lädt sie nicht hoch. Daten, die du bewusst teilst, werden von der von dir gewählten App oder dem gewählten Dienst verarbeitet.</p>
@@ -370,7 +370,7 @@ window.AtlasDaysLegalTranslations = {
 
   <h2>2. Ubicación</h2>
   <p>La <strong>detección automática de viajes</strong> es opcional. Utiliza el servicio de cambios significativos de ubicación de Apple, no un seguimiento GPS continuo. Las comprobaciones de países y estados de EE. UU. se realizan en tu dispositivo. Las coordenadas sin procesar no se almacenan ni se suben.</p>
-  <p>AtlasDays guarda en tu dispositivo un registro de los lugares y las fechas detectados para sugerir viajes y gestionar los viajes en curso que hayas confirmado. La app nunca crea un viaje nuevo a partir de los datos de ubicación sin tu confirmación.</p>
+  <p>Cuando está activado, AtlasDays guarda en tu dispositivo un registro de los lugares y las fechas detectados para añadir viajes y gestionar los viajes en curso.</p>
   <p>Puedes desactivar la detección automática en AtlasDays o retirar el acceso a la ubicación en los ajustes de iOS.</p>
 
   <h2>3. Fotos</h2>
@@ -380,7 +380,7 @@ window.AtlasDaysLegalTranslations = {
   <p>Puedes retirar el acceso a Fotos en los ajustes de iOS.</p>
 
   <h2>4. Notificaciones</h2>
-  <p>Las sugerencias de viajes y las alertas de los controles se generan y programan en tu dispositivo. El permiso para enviar notificaciones es opcional.</p>
+  <p>Las notificaciones de viajes y las alertas de los controles se generan y programan en tu dispositivo. El permiso para enviar notificaciones es opcional.</p>
 
   <h2>5. Importación, exportación y uso compartido</h2>
   <p>Las importaciones, exportaciones y los informes en PDF se procesan localmente. AtlasDays no los sube. Los datos que compartas deliberadamente serán tratados por la app o el servicio que elijas.</p>
@@ -485,7 +485,7 @@ window.AtlasDaysLegalTranslations = {
 
   <h2>2. Position</h2>
   <p>La <strong>détection automatique des voyages</strong> est facultative. Elle utilise le service Apple de changements significatifs de position, et non un suivi GPS continu. Les vérifications de pays et d’États américains sont effectuées sur votre appareil. Les coordonnées brutes ne sont ni stockées ni téléversées.</p>
-  <p>AtlasDays conserve sur votre appareil un journal des lieux et des dates détectés afin de suggérer des voyages et de gérer les voyages en cours que vous avez confirmés. L’app ne crée jamais de nouveau voyage à partir de données de position sans votre confirmation.</p>
+  <p>Lorsque la fonction est activée, AtlasDays conserve sur votre appareil un journal des lieux et des dates détectés afin d’ajouter des voyages et de gérer les voyages en cours.</p>
   <p>Vous pouvez désactiver la détection automatique dans AtlasDays ou retirer l’accès à votre position dans les réglages d’iOS.</p>
 
   <h2>3. Photos</h2>
@@ -495,7 +495,7 @@ window.AtlasDaysLegalTranslations = {
   <p>Vous pouvez retirer l’accès aux photos dans les réglages d’iOS.</p>
 
   <h2>4. Notifications</h2>
-  <p>Les suggestions de voyage et les alertes de suivi sont générées et programmées sur votre appareil. L’autorisation d’envoyer des notifications est facultative.</p>
+  <p>Les notifications de voyage et les alertes de suivi sont générées et programmées sur votre appareil. L’autorisation d’envoyer des notifications est facultative.</p>
 
   <h2>5. Importation, exportation et partage</h2>
   <p>Les importations, les exportations et les rapports PDF sont traités localement. AtlasDays ne les téléverse pas. Les données que vous partagez volontairement sont traitées par l’app ou le service que vous choisissez.</p>
@@ -600,7 +600,7 @@ window.AtlasDaysLegalTranslations = {
 
   <h2>2. Местоположение</h2>
   <p><strong>Автоопределение поездок</strong> — необязательная функция. Она использует службу значимых изменений местоположения Apple, а не непрерывное GPS-отслеживание. Проверка стран и штатов США выполняется на вашем устройстве. Необработанные координаты не сохраняются и не загружаются.</p>
-  <p>AtlasDays хранит на вашем устройстве журнал обнаруженных мест и дат, чтобы предлагать поездки и управлять подтверждёнными текущими поездками. Приложение никогда не создаёт новую поездку на основе данных о местоположении без вашего подтверждения.</p>
+  <p>Когда функция включена, AtlasDays хранит на вашем устройстве журнал обнаруженных мест и дат, чтобы добавлять поездки и управлять текущими поездками.</p>
   <p>Автоопределение можно отключить в AtlasDays, а доступ к местоположению — в настройках iOS.</p>
 
   <h2>3. Фотографии</h2>
@@ -610,7 +610,7 @@ window.AtlasDaysLegalTranslations = {
   <p>Доступ к фотографиям можно отозвать в настройках iOS.</p>
 
   <h2>4. Уведомления</h2>
-  <p>Предложения поездок и предупреждения трекеров создаются и планируются на вашем устройстве. Разрешать уведомления необязательно.</p>
+  <p>Уведомления о поездках и предупреждения трекеров создаются и планируются на вашем устройстве. Разрешать уведомления необязательно.</p>
 
   <h2>5. Импорт, экспорт и передача данных</h2>
   <p>Импорт, экспорт и отчёты PDF обрабатываются локально. AtlasDays не загружает их. Данные, которыми вы намеренно делитесь, обрабатываются выбранным вами приложением или сервисом.</p>
@@ -714,7 +714,7 @@ window.AtlasDaysLegalTranslations = {
 
   <h2>2. Геопозиція</h2>
   <p><strong>Автовизначення поїздок</strong> є необов’язковим. Воно використовує службу Apple для відстеження суттєвих змін геопозиції, а не безперервне GPS-відстеження. Перевірка країни й штату США відбувається на вашому пристрої. Необроблені координати не зберігаються й не завантажуються.</p>
-  <p>AtlasDays зберігає на пристрої журнал визначених місць і дат, щоб пропонувати поїздки та керувати підтвердженими поточними поїздками. Програма ніколи не створює нову поїздку з даних геопозиції без вашого підтвердження.</p>
+  <p>Коли функцію ввімкнено, AtlasDays зберігає на пристрої журнал визначених місць і дат, щоб додавати поїздки та керувати поточними поїздками.</p>
   <p>Автовизначення можна вимкнути в AtlasDays, а доступ до геопозиції — скасувати в Налаштуваннях iOS.</p>
 
   <h2>3. Фото</h2>
@@ -724,7 +724,7 @@ window.AtlasDaysLegalTranslations = {
   <p>Доступ до Фото можна скасувати в Налаштуваннях iOS.</p>
 
   <h2>4. Сповіщення</h2>
-  <p>Пропозиції поїздок і сповіщення трекерів створюються та плануються на вашому пристрої. Дозвіл на сповіщення є необов’язковим.</p>
+  <p>Сповіщення про поїздки й оповіщення трекерів створюються та плануються на вашому пристрої. Дозвіл на сповіщення є необов’язковим.</p>
 
   <h2>5. Імпорт, експорт і поширення</h2>
   <p>Імпорт, експорт і звіти PDF обробляються локально. AtlasDays не завантажує їх. Дані, якими ви свідомо ділитеся, обробляє вибрана вами програма або служба.</p>
@@ -828,7 +828,7 @@ window.AtlasDaysLegalTranslations = {
 
   <h2>2. 位置情報</h2>
   <p><strong>旅行の自動検出</strong>は任意です。継続的なGPS追跡ではなく、Appleの大幅な位置情報の変更サービスを使用します。国と米国の州の判定はデバイス上で行われます。未加工の座標は保存もアップロードもされません。</p>
-  <p>AtlasDaysは、旅行を提案し、確認済みの進行中の旅行を管理するため、検出した場所と日付の履歴をデバイスに保存します。確認なしに位置情報から新しい旅行を作成することはありません。</p>
+  <p>この機能がオンのとき、AtlasDaysは、旅行を追加し、進行中の旅行を管理するため、検出した場所と日付の履歴をデバイスに保存します。</p>
   <p>旅行の自動検出はAtlasDaysでオフにできます。位置情報へのアクセスはiOSの「設定」で取り消せます。</p>
 
   <h2>3. 写真</h2>
@@ -838,7 +838,7 @@ window.AtlasDaysLegalTranslations = {
   <p>写真へのアクセスはiOSの「設定」で取り消せます。</p>
 
   <h2>4. 通知</h2>
-  <p>旅行候補とトラッカーのアラートは、デバイス上で作成およびスケジュールされます。通知の許可は任意です。</p>
+  <p>旅行の通知とトラッカーのアラートは、デバイス上で作成およびスケジュールされます。通知の許可は任意です。</p>
 
   <h2>5. インポート、エクスポート、共有</h2>
   <p>インポート、エクスポート、PDFレポートはデバイス上で処理されます。AtlasDaysがこれらをアップロードすることはありません。自分で共有したデータは、選択したアプリまたはサービスによって処理されます。</p>
