@@ -3,11 +3,7 @@
     <div class="hero-copy">
       <h1>Help Center</h1>
       <p class="subtitle">Find quick answers for setting up AtlasDays, recording trips, using trackers, and managing your data.</p>
-      <div class="library-search library-search-inline" data-library-search data-section="help" data-simple-search>
-        <div class="search-heading">
-          <p class="search-title">Search AtlasDays Help</p>
-          <button class="search-close" type="button" data-search-close>Done</button>
-        </div>
+      <div class="library-search library-search-inline" data-library-search data-section="help" data-simple-search aria-label="Search AtlasDays Help">
         <div class="search-controls">
           <div class="search-query">
             <label class="search-visually-hidden" for="help-search-input">Search the Help Center</label>
@@ -17,6 +13,9 @@
               <svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="m6 6 8 8M14 6l-8 8"></path></svg>
             </button>
           </div>
+          <button class="search-close" type="button" data-search-close aria-label="Close search">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="m5 5 14 14M19 5 5 19"></path></svg>
+          </button>
         </div>
         <p class="search-status search-visually-hidden" data-search-status aria-live="polite">Search all Help articles</p>
         <div class="search-results" data-search-results hidden></div>
@@ -61,8 +60,8 @@
             <p>Understand inclusive dates, overlaps, ongoing trips, approximate records, and Transit.</p>
           </a>
           <a class="help-item" data-filter-item href="/help/history-and-import">
-            <h3>Understanding Trip Modes</h3>
-            <p>Choose Exact Dates, Year, Unknown, Transit, or an ongoing trip.</p>
+            <h3>How Trip Dates Work</h3>
+            <p>Set start and end dates, keep a stay ongoing, or record just the year.</p>
           </a>
           <a class="help-item" data-filter-item href="/help/dashboard-and-map">
             <h3>Understanding the Dashboard and Map</h3>
@@ -101,7 +100,7 @@
         </div>
       </details>
 
-      <details class="help-topic" data-filter-group>
+      <details class="help-topic" id="import-and-export" data-filter-group>
         <summary><h2>Import and export</h2><span class="help-topic-count">5</span></summary>
         <div class="help-list">
           <a class="help-item" data-filter-item href="/help/photo-import">

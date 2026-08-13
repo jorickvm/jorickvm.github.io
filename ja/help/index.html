@@ -105,11 +105,7 @@
     <div class="hero-copy">
       <h1>ヘルプセンター</h1>
       <p class="subtitle">AtlasDaysの設定、旅行の記録、トラッカーの使い方、データの管理について、知りたいことをすぐに探せます。</p>
-      <div class="library-search library-search-inline" data-library-search data-section="help" data-lang="ja" data-simple-search>
-        <div class="search-heading">
-          <p class="search-title">AtlasDaysヘルプを検索</p>
-          <button class="search-close" type="button" data-search-close>完了</button>
-        </div>
+      <div class="library-search library-search-inline" data-library-search data-section="help" data-lang="ja" data-simple-search aria-label="AtlasDaysヘルプを検索">
         <div class="search-controls">
           <div class="search-query">
             <label class="search-visually-hidden" for="help-search-input">ヘルプセンターを検索</label>
@@ -119,6 +115,9 @@
               <svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="m6 6 8 8M14 6l-8 8"></path></svg>
             </button>
           </div>
+          <button class="search-close" type="button" data-search-close aria-label="検索を閉じる">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="m5 5 14 14M19 5 5 19"></path></svg>
+          </button>
         </div>
         <p class="search-status search-visually-hidden" data-search-status aria-live="polite">すべてのヘルプ記事を検索</p>
         <div class="search-results" data-search-results hidden></div>
@@ -163,8 +162,8 @@
             <p>両端を含む日付の扱い、重なり、滞在中の旅行、おおよその記録、乗り継ぎを説明します。</p>
           </a>
           <a class="help-item" data-filter-item href="/ja/help/history-and-import">
-            <h3>旅行の記録モード</h3>
-            <p>正確な日付、年のみ、不明、乗り継ぎ、滞在中から選びます。</p>
+            <h3>旅行の日付のしくみ</h3>
+            <p>開始日と終了日、滞在中の旅行、「年のみ」の記録について説明します。</p>
           </a>
           <a class="help-item" data-filter-item href="/ja/help/dashboard-and-map">
             <h3>概要とマップの見方</h3>
@@ -203,7 +202,7 @@
         </div>
       </details>
 
-      <details class="help-topic" data-filter-group>
+      <details class="help-topic" id="import-and-export" data-filter-group>
         <summary><h2>インポートとエクスポート</h2><span class="help-topic-count">5</span></summary>
         <div class="help-list">
           <a class="help-item" data-filter-item href="/ja/help/photo-import">

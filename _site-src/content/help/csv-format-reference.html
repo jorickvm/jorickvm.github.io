@@ -15,12 +15,12 @@
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/help/csv-format-reference/csv-reference.webp" alt="CSV Import example and template controls" width="1320" height="1760" loading="lazy" decoding="async" /></figure>
 
     <h2>Date formats</h2>
-    <h3>Exact Dates</h3>
+    <h3>Exact dates</h3>
     <p>Use <code>yyyy-mm-dd</code> in both date columns. Leave End Date empty only for an ongoing trip.</p>
     <h3>Year</h3>
-    <p>Use a four-digit year in Start Date. End Date can hold a year, or stay empty to mean the same year. A range spanning several years becomes one year-only record per year.</p>
-    <h3>Unknown</h3>
-    <p>Leave both date cells empty. The country is preserved as a visit without numeric days.</p>
+    <p>Use a four-digit year in Start Date. End Date can hold a year, or stay empty to mean the same year. A range spanning several years becomes one Year Only record per year.</p>
+    <h3>No dates at all</h3>
+    <p>Leave both date cells empty. The country is preserved as a visit without dates: it counts toward visited places but never toward day totals, and reports label it <strong>Unknown Date</strong>. This kind of record can only be created through CSV import.</p>
 
     <h2>US state rows</h2>
     <p>Use State only for a United States trip. If one US visit covered several states and you need state-level records, use one row per state. A plain US row is valid for country-level tracking.</p>
