@@ -30,6 +30,13 @@ Legacy articles expose only a verification month. The next substantive review mu
 | 2027-01-29 | 1 | [learn/turkiye-90-180-rule.html](/learn/turkiye-90-180-rule) | exact-date-required | 1 |
 | 2027-01-29 | 1 | [learn/us-visa-waiver-90-day-limit.html](/learn/us-visa-waiver-90-day-limit) | exact-date-required | 1 |
 
+## 2027-03
+
+| Due | Tier | Article | Status | Sources |
+|---|---|---|---|---:|
+| 2027-03-01 | 1 | [learn/canada-visitor-visa-6-month-limit.html](/learn/canada-visitor-visa-6-month-limit) | exact-date-required | 1 |
+| 2027-03-01 | 1 | [learn/georgia-visa-free-365-days.html](/learn/georgia-visa-free-365-days) | exact-date-required | 1 |
+
 ## 2027-06
 
 | Due | Tier | Article | Status | Sources |
