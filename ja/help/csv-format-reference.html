@@ -68,7 +68,7 @@
       "name": "AtlasDays"
     },
     "url": "https://atlasdays.app/ja/help/csv-format-reference",
-    "dateModified": "2026-08-02",
+    "dateModified": "2026-08-13",
     "inLanguage": "ja"
   }
   </script>
@@ -164,9 +164,9 @@
     <h3>正確な日付</h3>
     <p>どちらの日付列にも <code>yyyy-mm-dd</code> を使います。End Date を空にできるのは、滞在中の旅行だけです。</p>
     <h3>年のみ</h3>
-    <p>Start Date に4桁の年を書きます。End Date には年を書くか、同じ年を表す空欄のままにできます。複数年にまたがる範囲は、1年につき1件の年のみの記録になります。</p>
-    <h3>不明</h3>
-    <p>日付のセルを両方とも空にします。その国は、日数を伴わない訪問として残ります。</p>
+    <p>Start Date に4桁の年を書きます。End Date には年を書くか、同じ年を表す空欄のままにできます。複数年にまたがる範囲は、1年につき1件の「年のみ」の記録になります。</p>
+    <h3>日付をまったく書かない場合</h3>
+    <p>日付のセルを両方とも空にします。その国は日付のない訪問として残ります。訪問済みの場所には数えられますが日数の合計には一切入らず、レポートでは<strong>「不明な日付」</strong>と表示されます。この形の記録は、CSVインポートでしか作れません。</p>
 
     <h2>米国の州の行</h2>
     <p>State を使うのは、米国の旅行だけです。1回の米国滞在で複数の州をまわり、州ごとの記録が必要な場合は、州ごとに1行ずつ書きます。国単位で記録するだけなら、州を空にした米国の行でもかまいません。</p>
@@ -191,13 +191,17 @@ United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></p
     <nav class="help-next" aria-labelledby="next-csv-format-reference">
       <h2 id="next-csv-format-reference">次に読む</h2>
       <ul>
-        <li><a href="/ja/help/csv-import">
-          <strong>CSVインポート</strong>
-          <span>取り込みの手順に戻り、直したファイルをプレビューで確認します。</span>
-        </a></li>
         <li><a href="/ja/help/export-and-reports">
           <strong>エクスポートとレポート</strong>
-          <span>いまある記録を、再利用しやすい形式で書き出します。</span>
+          <span>履歴を表計算ファイルやPDFとして書き出します。</span>
+        </a></li>
+        <li><a href="/ja/help/csv-import">
+          <strong>CSVインポート</strong>
+          <span>この形式を読み込むインポートの手順です。</span>
+        </a></li>
+        <li><a href="/ja/help/flighty-import">
+          <strong>Flightyインポート</strong>
+          <span>かわりにFlightyからフライト履歴を取り込みます。</span>
         </a></li>
       </ul>
     </nav>
@@ -205,7 +209,7 @@ United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></p
       <h2>解決しない場合</h2>
       <p><a href="mailto:support@atlasdays.app">AtlasDaysサポートに問い合わせる</a>ときは、該当する日付、想定していた結果、実際に起きたことをお知らせください。</p>
     </aside>
-    <p class="help-updated">最終更新：2026年8月2日</p>
+    <p class="help-updated">最終更新：2026年8月13日</p>
   </article>
   </main>
 
