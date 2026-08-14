@@ -694,7 +694,7 @@ def render_hub(
         "{{SITE_FOOTER}}": footer_template.replace("{{ASSET_PREFIX}}", prefix).rstrip(),
         "{{PAGE_SCRIPTS}}": str(hub.get("page_scripts", "")).rstrip(),
         "{{SEARCH_STYLESHEET}}": (
-            f'  <link rel="stylesheet" href="{prefix}assets/css/search.css?v=20260722a" />'
+            f'  <link rel="stylesheet" href="{prefix}assets/css/search.css?v=20260814a" />'
             if family == "hub" else ""
         ),
         "{{SEARCH_SCRIPT}}": (

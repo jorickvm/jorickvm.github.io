@@ -196,7 +196,6 @@ def page_type_for(path: Path, indexable: bool, parser: PageParser) -> str:
     if rel.as_posix() in {"about.html", "privacy.html", "terms.html"}:
         return "legal"
     if rel.name == "index.html" or rel.as_posix() in {
-        "learn/day-limits.html",
         "learn/tax-residency-by-country.html",
         "learn/us-state-tax-residency.html",
     }:

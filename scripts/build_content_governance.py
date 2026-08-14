@@ -77,7 +77,11 @@ def cluster_for(slug: str, category: str) -> tuple[str, str]:
         return "product-and-import-workflows", "learn/how-to-use-atlasdays.html"
     if any(marker in slug for marker in ("country", "layover", "track-travel", "what-counts")):
         return "day-counting-and-country-models", "learn/how-to-track-travel-days.html"
-    return "country-stay-limits", "learn/day-limits.html"
+    # The pillar was the Day-Count Rule Directory until it was retired in
+    # August 2026; the filtered /learn/ index replaced it as navigation, but a
+    # cluster pillar has to be an article the related-links renderer can title
+    # and link, so the general stay-limit explainer took the role.
+    return "country-stay-limits", "learn/overstaying-a-visa-or-stay-limit.html"
 
 
 def jurisdiction(slug: str, cluster: str) -> str:

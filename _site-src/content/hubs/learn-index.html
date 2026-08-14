@@ -1,23 +1,25 @@
 <main class="page" id="main-content">
-    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">AtlasDays</a> / <span aria-current="page">Travel Rules</span></nav>
-
     <section class="hero hero-simple hub-hero">
       <div class="hero-copy">
-        <p class="eyebrow"><span class="dot"></span> AtlasDays Library</p>
         <h1>Travel Rules &amp; Guides</h1>
         <p class="subtitle">Browse rules by country or US state, or read general guides about day counting and travel history. Need help using the app? Visit the <a class="text-link" href="/help/">Help Center</a>.</p>
 
-        <div class="library-search library-search-inline" data-simple-search>
+        <div class="library-search library-search-inline" data-library-search data-section="learn" data-simple-search aria-label="Search AtlasDays travel rules">
           <div class="search-controls">
             <div class="search-query">
               <label class="search-visually-hidden" for="learn-search-input">Search all travel rules and guides</label>
               <svg class="search-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4 4"></path></svg>
-              <input id="learn-search-input" type="search" data-filter-input autocomplete="off" autocapitalize="none" enterkeyhint="search" spellcheck="false" placeholder="Search a place, rule, or topic…" />
-              <button class="search-clear" type="button" data-filter-clear hidden aria-label="Clear search">
+              <input id="learn-search-input" type="search" data-search-input autocomplete="off" autocapitalize="none" enterkeyhint="search" spellcheck="false" placeholder="Search a place, rule, or topic…" />
+              <button class="search-clear" type="button" data-search-clear hidden aria-label="Clear search">
                 <svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="m6 6 8 8M14 6l-8 8"></path></svg>
               </button>
             </div>
+            <button class="search-close" type="button" data-search-close aria-label="Close search">
+              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="m5 5 14 14M19 5 5 19"></path></svg>
+            </button>
           </div>
+          <p class="search-status search-visually-hidden" data-search-status aria-live="polite">Search all travel rules and guides</p>
+          <div class="search-results" data-search-results hidden></div>
         </div>
 
       </div>
@@ -30,15 +32,6 @@
         <button type="button" data-filter-chip="state" aria-pressed="false">US states</button>
         <button type="button" data-filter-chip="guides" aria-pressed="false">General guides</button>
       </div>
-
-      <section class="hub-section" id="directories" data-filter-section>
-        <p class="hub-label">Directories</p>
-        <div class="hub-grid">
-          <a class="hub-card" data-filter-item data-groups="country state guides" href="/learn/day-limits"><div class="q">Day-Count Rule Directory</div><div class="d">Visa, entry, and tax-residency day limits by country, US state, and shared regime.</div></a>
-          <a class="hub-card" data-filter-item data-groups="country guides" href="/learn/tax-residency-by-country"><div class="q">Tax Residency by Country</div><div class="d">Compare 183-day thresholds and counting windows, country by country.</div></a>
-          <a class="hub-card" data-filter-item data-groups="state guides" href="/learn/us-state-tax-residency"><div class="q">US State Tax Residency</div><div class="d">Statutory residency thresholds for US states, side by side.</div></a>
-        </div>
-      </section>
 
       <section class="hub-section" id="rules-by-place" data-filter-section>
         <p class="hub-label">Rules by place · <span class="hub-count" data-filter-count>0</span></p>

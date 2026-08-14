@@ -551,6 +551,10 @@
   .search-mobile-active .search-results {
     position: static;
     flex: 1 1 auto;
+    /* The panel fills the viewport, and a grid's default align-content
+       stretches its auto rows to match. Two results would each grow to half
+       the screen. Pack them at the top instead. */
+    align-content: start;
     min-height: 0;
     max-height: none;
     margin: 10px -4px 0;
