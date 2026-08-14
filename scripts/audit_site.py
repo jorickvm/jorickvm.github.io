@@ -639,6 +639,11 @@ def audit_governance(records: list[PageRecord], findings: list[Finding]) -> None
         source = source_path_of(record.path, registry, default)
         if source == record.path or not source.startswith("learn/"):
             continue
+        # Hubs are navigation, not guides, so they have no editorial record on
+        # either side. Testing page_type would not do here: a draft locale is
+        # noindex, which makes every one of its pages read as a redirect.
+        if source.endswith("/index.html"):
+            continue
         if source not in {str(item.get("path", "")) for item in editorial}:
             findings.append(
                 Finding("error", "editorial-missing", record.path,
