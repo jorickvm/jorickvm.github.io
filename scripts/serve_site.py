@@ -8,6 +8,7 @@ through the site locally does not work without this.
 
     python3 scripts/serve_site.py            # http://localhost:8899
     python3 scripts/serve_site.py --port 9000
+    python3 scripts/serve_site.py --host 0.0.0.0  # also reachable on your LAN
 
 Dev tooling only. Never deployed.
 """
@@ -56,13 +57,20 @@ def main() -> int:
     # (the agent preview runner) can start this without the flag, and 8899
     # stays the port you get when you just run it yourself.
     parser.add_argument("--port", type=int, default=int(os.environ.get("PORT") or 8899))
+    parser.add_argument(
+        "--host",
+        default=os.environ.get("HOST") or "127.0.0.1",
+        help="address to bind (use 0.0.0.0 to test from another device)",
+    )
     args = parser.parse_args()
 
     handler = partial(PagesHandler, directory=str(SITE_ROOT))
-    server = HTTPServer(("127.0.0.1", args.port), handler)
+    server = HTTPServer((args.host, args.port), handler)
     print(f"Serving {SITE_ROOT}")
     print(f"  http://localhost:{args.port}/")
     print(f"  http://localhost:{args.port}/help/")
+    if args.host == "0.0.0.0":
+        print(f"  LAN: http://<this Mac's local IP>:{args.port}/")
     print("Ctrl+C to stop. Only 4xx/5xx requests are logged.")
     try:
         server.serve_forever()

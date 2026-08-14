@@ -6,6 +6,7 @@ ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / "scripts"))
 
 import locales  # noqa: E402
+import build_site  # noqa: E402
 
 
 class LocaleRegistryTests(unittest.TestCase):
@@ -93,6 +94,41 @@ class RouteTests(unittest.TestCase):
     def test_falls_back_when_the_page_does_not_exist(self) -> None:
         """Partial coverage is legal, so an unlocalized page keeps its English link."""
         self.assertEqual(locales.localized_route("/learn/", self.JA, {"/help/"}), "/learn/")
+
+    def test_app_locale_routing_normalizes_a_regional_language_code(self) -> None:
+        """The app sends nl-NL/de-DE; page routing works with the base language."""
+        registry = {
+            "en": {
+                "code": "en",
+                "hreflang": "en",
+                "native_name": "English",
+                "status": "published",
+                "x_default": True,
+            },
+            "nl": {
+                "code": "nl",
+                "hreflang": "nl",
+                "native_name": "Nederlands",
+                "status": "published",
+            },
+        }
+        translations = {"nl": {"learn/example.html": {}}}
+        strings = {
+            "locale.offer": {"nl": "Lees deze pagina in het Nederlands"},
+            "locale.dismiss": {"nl": "Sluiten"},
+        }
+
+        markup = build_site.render_locale_routing(
+            "learn/example.html",
+            registry,
+            translations,
+            "en",
+            strings,
+            "../",
+        )
+
+        self.assertIn('"nl":{"url":"/nl/learn/example"', markup)
+        self.assertIn("q.toLowerCase().split('-')[0]", markup)
 
 
 class DateTests(unittest.TestCase):
