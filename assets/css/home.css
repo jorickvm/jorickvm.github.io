@@ -1097,6 +1097,9 @@ footer { padding-bottom: 36px; }
     padding: 10px 14px;
     border-radius: var(--radius-control);
   }
+  /* While the hero's own Get AtlasDays button is on screen, the header CTA
+     is a duplicate a thumb-width above it. home.js toggles the class. */
+  body.hero-cta-in-view .nav-cta-wrap { display: none; }
   .theme-toggle {
     width: 34px;
     height: 34px;

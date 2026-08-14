@@ -284,11 +284,6 @@
   color: var(--text);
   border-color: var(--blue);
 }
-.mobile-menu-lang {
-  display: flex;
-  flex-direction: column;
-}
-
 .mobile-menu { display: none; position: relative; }
 .mobile-menu summary {
   min-height: 44px;
@@ -329,30 +324,6 @@
   color: var(--muted);
   text-decoration: none;
 }
-.mobile-menu-theme {
-  width: 100%;
-  min-height: 44px;
-  padding: 0 12px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border: 0;
-  border-radius: 10px;
-  color: var(--muted);
-  background: transparent;
-  font: inherit;
-  cursor: pointer;
-}
-.mobile-menu-theme:hover {
-  color: var(--text);
-  background: color-mix(in srgb, var(--blue) 10%, transparent);
-}
-.mobile-menu-theme-icon {
-  width: 24px;
-  display: grid;
-  place-items: center;
-}
-.mobile-menu-theme-icon > * { grid-area: 1 / 1; }
 .mobile-menu-panel a:hover,
 .mobile-menu-panel a[aria-current="page"] { color: var(--text); background: color-mix(in srgb, var(--blue) 10%, transparent); }
 .mobile-menu-panel .mobile-menu-cta { margin-top: 4px; color: #fff; background: var(--action-gradient); box-shadow: var(--action-chrome); font-weight: 700; }
@@ -378,7 +349,14 @@
     gap: 14px;
   }
   .brand-mark { width: 32px; height: 32px; }
-  .top-links { display: none; }
+  /* The nav links collapse into the drawer, but the theme toggle and the
+     language switcher stay in the bar, pushed right against the Menu button.
+     They are one-tap controls; burying them a level deep made theme and
+     language look unavailable on a phone. */
+  .top-links > a,
+  .top-links > .nav-group,
+  .top-links > .nav-cta-wrap { display: none; }
+  .top-links { margin-left: auto; gap: 10px; }
   .mobile-menu { display: block; }
 }
 

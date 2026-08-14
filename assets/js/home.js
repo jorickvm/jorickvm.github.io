@@ -104,3 +104,14 @@ document.querySelectorAll('.hero-video').forEach((video) => {
   if (document.readyState === 'complete') playFromStart();
   else window.addEventListener('load', playFromStart, { once: true });
 });
+
+// On narrow screens the header CTA duplicates the hero CTA sitting right
+// below it. Hide the header one while the hero button is on screen; CSS
+// applies the class only under the mobile breakpoint, and with JS off the
+// header CTA simply stays visible.
+const heroCta = document.querySelector('.hero-actions .btn-primary');
+if (heroCta && 'IntersectionObserver' in window) {
+  new IntersectionObserver((entries) => {
+    document.body.classList.toggle('hero-cta-in-view', entries[0].isIntersecting);
+  }).observe(heroCta);
+}
