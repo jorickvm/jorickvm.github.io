@@ -280,11 +280,24 @@ def main() -> int:
             + list(data.get("hubs", []))
             + list(data.get("pages", []))
         )
+        # Pages this locale deliberately serves in English. Listing one is a
+        # decision, not an escape hatch for work in progress: the completeness
+        # check still covers every other page, and a stale entry here is an
+        # error rather than a silent exemption.
+        untranslated = {str(path) for path in locale.get("untranslated", [])}
+        for source_path in sorted(untranslated - set(sources)):
+            problems.append(
+                f"{code}: untranslated lists {source_path}, which is not an English source"
+            )
         if locale.get("coverage") == "complete":
             translated_sources = {str(entry["source"]) for entry in overlays}
-            missing = sorted(set(sources) - translated_sources)
+            missing = sorted(set(sources) - translated_sources - untranslated)
             for source_path in missing:
                 problems.append(f"{code}: complete locale is missing {source_path}")
+        for source_path in sorted(untranslated & {str(entry["source"]) for entry in overlays}):
+            problems.append(
+                f"{code}: {source_path} is listed as untranslated but still has an overlay"
+            )
         available = {route_for(str(entry["source"])) for entry in overlays}
         glossary = glossaries.get(code, {})
         for overlay in overlays:

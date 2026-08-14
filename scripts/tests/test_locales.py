@@ -22,6 +22,30 @@ class LocaleRegistryTests(unittest.TestCase):
         flagged = [code for code, entry in self.locales.items() if entry.get("x_default")]
         self.assertEqual(len(flagged), 1, flagged)
 
+    def test_untranslated_pages_have_no_overlay_and_no_output(self) -> None:
+        """A page served in English only must be absent from the locale entirely.
+
+        Leaving an overlay behind would keep pinning the English hash, which is
+        the coupling the exemption exists to remove.
+        """
+        import json
+
+        for code, entry in self.locales.items():
+            registry = entry.get("articles")
+            if not registry:
+                continue
+            data = json.loads((ROOT / "_site-src" / str(registry)).read_text(encoding="utf-8"))
+            overlays = {
+                str(item["source"])
+                for key in ("articles", "hubs", "pages")
+                for item in data.get(key, [])
+            }
+            prefix = str(entry.get("route_prefix", "")).strip("/")
+            for source in entry.get("untranslated", []):
+                with self.subTest(locale=code, source=source):
+                    self.assertNotIn(str(source), overlays)
+                    self.assertFalse((ROOT / prefix / str(source)).exists())
+
     def test_every_published_locale_has_every_string(self) -> None:
         published = [str(entry["code"]) for entry in locales.published_locales(self.locales)]
         missing = [
