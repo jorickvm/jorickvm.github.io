@@ -36,7 +36,7 @@ HUB_TEMPLATE = SOURCE_ROOT / "templates" / "hub.html"
 HEADER_TEMPLATE = SOURCE_ROOT / "templates" / "partials" / "site-header.html"
 FOOTER_TEMPLATE = SOURCE_ROOT / "templates" / "partials" / "site-footer.html"
 CLUSTER_DATA_PATH = SOURCE_ROOT / "data" / "content-clusters.json"
-BUILD_VERSION = "20260809a"
+BUILD_VERSION = "20260814a"
 
 # Root class that drops the background wash from the app's `.medium` step to
 # `.subtle`, for pages carrying long-form text. See assets/css/tokens.css.

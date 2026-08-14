@@ -99,6 +99,25 @@
     .callout p { margin: 0; }
     .callout strong { color: var(--text); }
 
+    .factbox {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: var(--bg-card);
+      padding: 6px 22px;
+      margin: 24px 0 8px;
+    }
+    .factbox dl { margin: 0; }
+    .factbox div {
+      display: flex;
+      gap: 16px;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .factbox div:last-child { border-bottom: 0; }
+    .factbox dt { color: var(--muted-2); font-size: 0.9rem; flex: 0 0 auto; }
+    .factbox dd { color: var(--text); font-size: 0.95rem; font-weight: 600; margin: 0; text-align: right; }
+
     .cta-box {
       padding: 28px;
       background: var(--bg-card);
@@ -107,11 +126,14 @@
       margin: 40px 0 0;
       text-align: center;
     }
-    .cta-box h3 { margin: 0 0 8px; color: var(--text); }
+    .cta-logo img { width: 52px; height: 52px; margin: 0 auto 14px; border-radius: 12px; }
+    .cta-box h2, .cta-box h3 { margin: 0 0 8px; color: var(--text); }
     .cta-box p { margin: 0 0 16px; }
+    .cta-btn svg { flex: 0 0 auto; }
     .cta-btn {
       display: inline-flex;
       align-items: center;
+      gap: 8px;
       padding: 12px 24px;
       background: var(--action-gradient);
       box-shadow: var(--action-chrome);
