@@ -96,7 +96,16 @@ def asset_prefix(path: str) -> str:
 
     Derived from the output path rather than passed in by the caller, so a page
     at any depth links its assets correctly without a call-site argument.
+
+    404.html is the exception, because it is the one page not served from where
+    it lives: Pages returns it for any missing URL, at any depth, with the
+    requested path still in the address bar. A hop computed from the file's own
+    location then resolves against the visitor's URL instead, so a miss at
+    /learn/typo would look for /learn/assets/css/tokens.css and render the page
+    unstyled. Root-absolute links resolve the same from every depth.
     """
+    if Path(str(path)).name == "404.html":
+        return "/"
     return "../" * (len(Path(str(path)).parts) - 1)
 
 
