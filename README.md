@@ -50,6 +50,8 @@ The `{{r:}}` fallback is what makes partial coverage legal: a Japanese Help page
 
 A locale carries `status: draft | published`. A draft locale builds and previews locally but is marked `noindex` and excluded from the sitemap, hreflang, `llms.txt`, and the language switcher. That is how a new language is verified end to end before it becomes discoverable.
 
+A locale also carries `coverage`. Under `complete`, every English page must have an overlay and a missing one is an error rather than a silent gap. Pages the locale deliberately serves in English go in `untranslated` instead, which is a decision rather than a to-do: `check_translations.py` rejects an entry that names something which is not an English source, and rejects one that still has an overlay, so the list cannot drift out of step with what is actually translated. `changelog.html` is the standing example. Its release cards are authored in the AtlasDays repo and synced here on every release, so a translated changelog would pin a hash that each release invalidates, blocking the build until someone retranslated the new cards.
+
 Adding the next language should be `locales.json` + a `ui-strings.json` column + an overlay registry + fragments. If it needs a change in `scripts/`, that is a bug in the machinery, not a missing feature.
 
 ### Translating
