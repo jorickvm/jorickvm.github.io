@@ -10,7 +10,7 @@ from collections import defaultdict
 from pathlib import Path
 
 from audit_site import PageParser, meta_content
-from locales import default_locale_code, load_locales
+from locales import default_locale_code, load_locales, route_for
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -49,6 +49,46 @@ def render_sitemap(routes: list[dict[str, object]]) -> str:
 
 
 BASE_SECTIONS = ("Start Here", "Help", "Learn", "Site Information")
+
+
+def expanded_routes(routes: list[dict[str, object]]) -> list[dict[str, object]]:
+    """Add every published translation to the English route manifest.
+
+    The manifest owns English editorial priorities. Localized paths are derived
+    from translation registries so publishing a complete locale cannot leave
+    its pages out of sitemap.xml or llms.txt.
+    """
+    expanded = list(routes)
+    by_source = {str(route["path"]): route for route in routes}
+    known_paths = set(by_source)
+    default = default_locale_code()
+    for code, locale in load_locales().items():
+        registry = locale.get("articles")
+        if code == default or locale.get("status") != "published" or not registry:
+            continue
+        data = json.loads((ROOT / "_site-src" / str(registry)).read_text(encoding="utf-8"))
+        for overlay in (
+            list(data.get("articles", []))
+            + list(data.get("hubs", []))
+            + list(data.get("pages", []))
+        ):
+            source = str(overlay["source"])
+            base = by_source.get(source)
+            if base is None or not base.get("indexable", True):
+                continue
+            localized_path = f"{code}/{source}"
+            if localized_path in known_paths:
+                continue
+            known_paths.add(localized_path)
+            expanded.append(
+                {
+                    **base,
+                    "path": localized_path,
+                    "canonical": "https://atlasdays.app" + f"/{code}" + route_for(source),
+                    "lastmod": str(overlay.get("translated_on", base.get("lastmod", ""))),
+                }
+            )
+    return expanded
 
 
 def split_locale(path: str) -> tuple[str, str]:
@@ -117,7 +157,7 @@ def render_llms(routes: list[dict[str, object]]) -> str:
 
 def main() -> int:
     options = arguments()
-    routes = json.loads(ROUTES.read_text(encoding="utf-8"))["routes"]
+    routes = expanded_routes(json.loads(ROUTES.read_text(encoding="utf-8"))["routes"])
     expected = {SITEMAP: render_sitemap(routes), LLMS: render_llms(routes)}
     stale = [path for path, value in expected.items() if not path.exists() or path.read_text(encoding="utf-8") != value]
     if options.check:

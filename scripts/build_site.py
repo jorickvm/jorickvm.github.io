@@ -11,7 +11,7 @@ import sys
 from datetime import date
 from pathlib import Path
 
-from build_route_outputs import LLMS, ROUTES, SITEMAP, render_llms, render_sitemap
+from build_route_outputs import LLMS, ROUTES, SITEMAP, expanded_routes, render_llms, render_sitemap
 from locales import (
     default_locale_code,
     load_locales,
@@ -33,10 +33,11 @@ PAGE_DATA_PATH = SOURCE_ROOT / "data" / "pages.json"
 SOCIAL_DATA_PATH = SOURCE_ROOT / "data" / "social-cards.json"
 ARTICLE_TEMPLATE = SOURCE_ROOT / "templates" / "article.html"
 HUB_TEMPLATE = SOURCE_ROOT / "templates" / "hub.html"
+STANDALONE_TEMPLATE = SOURCE_ROOT / "templates" / "standalone.html"
 HEADER_TEMPLATE = SOURCE_ROOT / "templates" / "partials" / "site-header.html"
 FOOTER_TEMPLATE = SOURCE_ROOT / "templates" / "partials" / "site-footer.html"
 CLUSTER_DATA_PATH = SOURCE_ROOT / "data" / "content-clusters.json"
-BUILD_VERSION = "20260814d"
+BUILD_VERSION = "20260814e"
 
 # Root class that drops the background wash from the app's `.medium` step to
 # `.subtle`, for pages carrying long-form text. See assets/css/tokens.css.
@@ -131,9 +132,9 @@ def render_metadata(article: dict[str, object], prefix: str = "../") -> str:
                     {"property": "og:image:type", "content": "image/png"},
                     {"property": "og:image:width", "content": str(social["width"])},
                     {"property": "og:image:height", "content": str(social["height"])},
-                    {"property": "og:image:alt", "content": str(social["alt"])},
+                    {"property": "og:image:alt", "content": str(article.get("social_alt", social["alt"]))},
                     {"name": "twitter:image", "content": image_url},
-                    {"name": "twitter:image:alt", "content": str(social["alt"])},
+                    {"name": "twitter:image:alt", "content": str(article.get("social_alt", social["alt"]))},
                 ]
             )
     for attrs in meta:
@@ -161,6 +162,11 @@ def render_structured_data(article: dict[str, object]) -> str:
 
 def render_styles(article: dict[str, object], family: str = "article", prefix: str = "../") -> str:
     asset_version = str(article.get("asset_version", BUILD_VERSION))
+    if article.get("stylesheets"):
+        return "\n".join(
+            f'  <link rel="stylesheet" href="{prefix}{path}" />'
+            for path in article["stylesheets"]
+        )
     # tokens.css first: it owns the palette, wash, and card surface for every
     # page, and the variant stylesheets that follow carry layout only.
     lines = [f'  <link rel="stylesheet" href="{prefix}assets/css/tokens.css?v={asset_version}" />']
@@ -305,11 +311,14 @@ def validate_help_next_steps(articles: list[dict[str, object]]) -> None:
 OVERLAY_FIELDS = {
     "source",
     "headline",
+    "page_title",
     "description",
     "content",
     "next_steps",
     "screenshot_alt",
     "search_synonyms",
+    "jsonld_replacements",
+    "social_alt",
     "source_hash",
     "source_meta_hash",
     "translated_on",
@@ -330,7 +339,11 @@ def load_translations(locales: dict[str, dict]) -> dict[str, dict[str, dict]]:
             raise SystemExit(f"Locale {code!r} points at a missing registry: {relative}")
         data = json.loads(path.read_text(encoding="utf-8"))
         overlays: dict[str, dict] = {}
-        for entry in list(data.get("articles", [])) + list(data.get("hubs", [])):
+        for entry in (
+            list(data.get("articles", []))
+            + list(data.get("hubs", []))
+            + list(data.get("pages", []))
+        ):
             unknown = sorted(set(entry) - OVERLAY_FIELDS)
             if unknown:
                 raise SystemExit(
@@ -415,6 +428,10 @@ def translate_jsonld(
     own_route = SITE_URL + localized_route(route_for(str(source["path"])), locale, available)
     hub_route = SITE_URL + localized_route("/help/", locale, available)
     graph = json.loads(raw)
+    replacements = {
+        str(key): str(value)
+        for key, value in dict(overlay.get("jsonld_replacements", {})).items()
+    }
 
     def walk(node: object) -> object:
         if isinstance(node, list):
@@ -424,9 +441,15 @@ def translate_jsonld(
         out: dict[str, object] = {}
         for key, value in node.items():
             if key in {"headline", "name"} and node.get("@type") != "ListItem":
-                out[key] = str(overlay["headline"]) if key == "headline" else value
+                out[key] = (
+                    str(overlay["headline"])
+                    if key == "headline"
+                    else replacements.get(str(value), value)
+                )
             elif key == "description":
-                out[key] = str(overlay["description"])
+                out[key] = replacements.get(str(value), str(overlay["description"]))
+            elif key == "text" and isinstance(value, str):
+                out[key] = replacements.get(value, value)
             elif key in {"url", "item"} and isinstance(value, str):
                 out[key] = localize_url(value, locale, available)
             else:
@@ -474,9 +497,15 @@ def derive_record(
         if kind == "article" and str(source.get("section", "")) == "help"
         else "site.title_suffix"
     )
-    title = f"{overlay['headline']}{locale['title_separator']}{strings[suffix_key][code]}"
+    title = str(overlay.get("page_title") or (
+        f"{overlay['headline']}{locale['title_separator']}{strings[suffix_key][code]}"
+    ))
     description = str(overlay["description"])
     record["title"] = title
+    record["social_alt"] = str(
+        overlay.get("social_alt")
+        or strings["social.card_alt"][code].format(title=str(overlay["headline"]))
+    )
 
     meta: list[dict[str, str]] = []
     for attrs in source.get("meta", []):
@@ -487,6 +516,12 @@ def derive_record(
             content = description
         elif key in {"og:title", "twitter:title"}:
             content = title
+        elif str(entry.get("http-equiv", "")).lower() == "refresh":
+            content = re.sub(
+                r"(?i)(url=)(/[^; ]*)",
+                lambda match: match.group(1) + localized_route(match.group(2), locale, available),
+                content,
+            )
         else:
             content = localize_url(content, locale, available)
         entry["content"] = content
@@ -503,7 +538,11 @@ def derive_record(
         {**link, "href": localize_url(str(link.get("href", "")), locale, available)}
         for link in source.get("links", [])
     ]
-    record["links"] = links + alternate_links(source_path, locales, translations)
+    record["links"] = links + (
+        alternate_links(source_path, locales, translations)
+        if source.get("locale_alternates") is not False
+        else []
+    )
 
     record["jsonld"] = [
         translate_jsonld(str(raw), overlay, source, locale, available, strings)
@@ -586,33 +625,99 @@ def render_language_switcher(
     mobile: bool = False,
     indent: str = "        ",
 ) -> str:
-    """Static links to this page's other languages.
+    """A compact menu of this page's available languages.
 
     Every page already knows its alternates because it emits hreflang for them,
-    so the switcher is those same links: crawlable, no flash, and correct with
-    JavaScript off.
+    so the menu is built from those same links: crawlable, no flash, and correct
+    with JavaScript off. One disclosure stays the same width as the site grows
+    from two languages to many.
     """
-    default_code = default_locale_code()
-    others = []
+    available = []
     for link in alternate_links(source_path, locales, translations):
         code = str(link["hreflang"])
-        if code in {"x-default", current}:
+        if code == "x-default":
             continue
         locale = locales.get(code)
         if locale:
-            others.append((locale, str(link["href"])))
-    if not others:
+            available.append((locale, str(link["href"])))
+    if len(available) < 2:
         return ""
     label = html.escape(str(strings["a11y.language"][current]))
-    rows = "".join(
-        f'<a href="{html.escape(url[len(SITE_URL):])}" lang="{locale["code"]}" '
-        f'hreflang="{locale["hreflang"]}">{html.escape(str(locale["native_name"]))}</a>'
-        for locale, url in others
-    )
+    current_locale = locales[current]
+    rows = []
+    for locale, url in available:
+        name = html.escape(str(locale["native_name"]))
+        code = str(locale["code"])
+        check = (
+            '<svg class="lang-switch-check" width="15" height="15" viewBox="0 0 24 24" '
+            'fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true">'
+            '<path d="m5 12 4 4L19 6"/></svg>'
+        )
+        if code == current:
+            rows.append(
+                f'<span class="lang-switch-option is-current" lang="{code}" '
+                f'aria-current="true">{check}<span>{name}</span></span>'
+            )
+        else:
+            rows.append(
+                f'<a class="lang-switch-option" href="{html.escape(url[len(SITE_URL):])}" '
+                f'lang="{code}" hreflang="{locale["hreflang"]}">'
+                f'<span class="lang-switch-check" aria-hidden="true"></span><span>{name}</span></a>'
+            )
     css = "mobile-menu-lang" if mobile else "lang-switch"
-    # Carries its own newline and indent so an untranslated page renders the
-    # header byte-for-byte as it did before the switcher existed.
-    return f'\n{indent}<nav class="{css}" aria-label="{label}">{rows}</nav>'
+    current_name = html.escape(str(current_locale["native_name"]))
+    globe = (
+        '<svg class="lang-switch-globe" width="16" height="16" viewBox="0 0 24 24" '
+        'fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true">'
+        '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>'
+    )
+    caret = (
+        '<svg class="lang-switch-caret" width="12" height="12" viewBox="0 0 24 24" '
+        'fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true">'
+        '<path d="m6 9 6 6 6-6"/></svg>'
+    )
+    # Carries its own leading newline and indentation so a page without
+    # alternates renders its surrounding header exactly as before.
+    return (
+        f'\n{indent}<details class="{css}">'
+        f'<summary aria-label="{label}" title="{label}">{globe}'
+        f'<span class="lang-switch-current">{current_name}</span>{caret}</summary>'
+        f'<nav class="lang-switch-panel" aria-label="{label}">{"".join(rows)}</nav>'
+        '</details>'
+    )
+
+
+def render_learn_disclaimer(
+    content: str,
+    article: dict[str, object],
+    locale: dict[str, object],
+    strings: dict[str, dict[str, str]],
+) -> str:
+    """Put one localized, prominent disclaimer near the start of every Learn article."""
+    if article.get("section") != "learn":
+        return content
+    code = str(locale["code"])
+    label = html.escape(str(strings["learn.disclaimer_label"][code]))
+    body = html.escape(str(strings["learn.disclaimer"][code]))
+    translation = ""
+    if code != default_locale_code():
+        note = html.escape(str(strings["learn.translation_note"][code]))
+        translation = f'\n      <p class="learn-translation-note">{note}</p>'
+    notice = (
+        f'\n\n    <aside class="learn-disclaimer" aria-label="{label}">'
+        f'\n      <p><strong>{label}:</strong> {body}</p>{translation}'
+        '\n    </aside>'
+    )
+    rendered, count = re.subn(
+        r'(<p class="verified">.*?</p>)',
+        rf'\1{notice}',
+        content,
+        count=1,
+        flags=re.DOTALL,
+    )
+    if count != 1:
+        raise SystemExit(f"Learn article has no unique verified marker: {article['path']}")
+    return rendered
 
 
 def render_locale_routing(
@@ -681,6 +786,7 @@ def render_article(
     prefix = asset_prefix(str(article["path"]))
     source_path = str(article.get("social_source_path", article["path"]))
     code = str(locale["code"])
+    content = render_learn_disclaimer(content, article, locale, strings)
     switcher = render_language_switcher(source_path, locales, translations, code, strings)
     switcher_mobile = render_language_switcher(
         source_path, locales, translations, code, strings, mobile=True, indent="          "
@@ -754,7 +860,10 @@ def render_hub(
         "{{METADATA}}": render_metadata(hub, prefix),
         "{{STRUCTURED_DATA}}": render_structured_data(hub),
         "{{STYLESHEETS}}": render_styles(hub, family, prefix),
+        "{{HEAD_EXTRA}}": str(hub.get("head_extra", "")).rstrip(),
         "{{SITE_HEADER}}": render_header(hub, header_template, prefix, switcher, switcher_mobile),
+        "{{LANGUAGE_SWITCHER}}": switcher,
+        "{{LANGUAGE_SWITCHER_MOBILE}}": switcher_mobile,
         "{{MAIN_CONTENT}}": content,
         "{{SITE_FOOTER}}": footer_template.replace("{{ASSET_PREFIX}}", prefix).rstrip(),
         "{{PAGE_SCRIPTS}}": str(hub.get("page_scripts", "")).rstrip(),
@@ -763,7 +872,7 @@ def render_hub(
             if family == "hub" else ""
         ),
         "{{SEARCH_SCRIPT}}": (
-            f'  <script src="{prefix}assets/js/search.js?v=20260802b"></script>'
+            f'  <script src="{prefix}assets/js/search.js?v=20260814a"></script>'
             if family == "hub" else ""
         ),
         "{{ASSET_PREFIX}}": prefix,
@@ -771,6 +880,11 @@ def render_hub(
     rendered = template
     for marker, value in replacements.items():
         rendered = rendered.replace(marker, value)
+    # Standalone page content can carry switcher slots inside its own custom
+    # header. MAIN_CONTENT is inserted after the first switcher pass, so resolve
+    # those two slots once more after all template markers have been expanded.
+    rendered = rendered.replace("{{LANGUAGE_SWITCHER}}", switcher)
+    rendered = rendered.replace("{{LANGUAGE_SWITCHER_MOBILE}}", switcher_mobile)
     rendered = localize(rendered, locale, strings, available_routes=available, context=str(hub["path"]))
     return rendered.rstrip() + "\n"
 
@@ -784,13 +898,17 @@ def main() -> int:
     strings = load_ui_strings()
     translations = load_translations(locales)
     hub_data = json.loads(HUB_DATA_PATH.read_text(encoding="utf-8")) if HUB_DATA_PATH.exists() else {"hubs": []}
+    page_data = json.loads(PAGE_DATA_PATH.read_text(encoding="utf-8")) if PAGE_DATA_PATH.exists() else {"pages": []}
     sources = {str(record["path"]): record for record in data.get("articles", [])}
     hub_sources = {str(record["path"]): record for record in hub_data.get("hubs", [])}
+    page_sources = {str(record["path"]): record for record in page_data.get("pages", [])}
 
     stale = [
         problem
         for code, overlays in translations.items()
-        for problem in check_translation_freshness(code, overlays, {**sources, **hub_sources}, date.today())
+        for problem in check_translation_freshness(
+            code, overlays, {**sources, **hub_sources, **page_sources}, date.today()
+        )
     ]
     if stale:
         print("Refusing to build: a translation no longer matches its English source.")
@@ -804,6 +922,8 @@ def main() -> int:
 
     def with_alternates(record: dict[str, object]) -> dict[str, object]:
         """English pages advertise their translations; untranslated ones stay bare."""
+        if record.get("locale_alternates") is False:
+            return record
         alternates = alternate_links(str(record["path"]), locales, translations)
         if not alternates:
             return record
@@ -813,6 +933,7 @@ def main() -> int:
     header_template = HEADER_TEMPLATE.read_text(encoding="utf-8")
     footer_template = FOOTER_TEMPLATE.read_text(encoding="utf-8")
     hub_template = HUB_TEMPLATE.read_text(encoding="utf-8")
+    standalone_template = STANDALONE_TEMPLATE.read_text(encoding="utf-8")
     changed: list[str] = []
     selected = 0
     # (output_path, rendered) queued until every de-listing check has passed, so
@@ -857,20 +978,21 @@ def main() -> int:
             )
 
     if args.section == "all" and PAGE_DATA_PATH.exists():
-        page_data = json.loads(PAGE_DATA_PATH.read_text(encoding="utf-8"))
         for page in page_data.get("pages", []):
+            page_template = standalone_template if page.get("template") == "standalone" else hub_template
+            page_family = "standalone" if page.get("template") == "standalone" else "page"
             queue(
                 SITE_ROOT / str(page["path"]),
                 render_hub(
-                    page,
-                    hub_template,
+                    with_alternates(page),
+                    page_template,
                     header_template,
                     footer_template,
                     locale,
                     strings,
                     locales,
                     translations,
-                    family="page",
+                    family=page_family,
                 ),
                 guard=True,
             )
@@ -881,8 +1003,12 @@ def main() -> int:
         target = locales[code]
         available = {route_for(path) for path in overlays}
         for source_path in sorted(overlays):
-            source = sources.get(source_path) or hub_sources[source_path]
-            kind = "article" if source_path in sources else "hub"
+            source = sources.get(source_path) or hub_sources.get(source_path) or page_sources[source_path]
+            kind = (
+                "article" if source_path in sources
+                else "hub" if source_path in hub_sources
+                else "page"
+            )
             if args.section != "all" and source.get("section") != args.section:
                 continue
             record = derive_record(
@@ -890,18 +1016,29 @@ def main() -> int:
                 available, strings, kind=kind,
             )
             renderer = render_article if kind == "article" else render_hub
+            localized_template = (
+                standalone_template
+                if kind == "page" and source.get("template") == "standalone"
+                else hub_template
+            )
+            localized_family = (
+                "standalone"
+                if kind == "page" and source.get("template") == "standalone"
+                else "page"
+            )
             queue(
                 SITE_ROOT / str(record["path"]),
                 renderer(
                     record,
-                    template if kind == "article" else hub_template,
+                    template if kind == "article" else localized_template,
                     header_template, footer_template,
                     target, strings, locales, translations,
+                    **({"family": localized_family} if kind == "page" else {}),
                 ),
             )
 
     if args.section == "all" and ROUTES.exists():
-        routes = json.loads(ROUTES.read_text(encoding="utf-8"))["routes"]
+        routes = expanded_routes(json.loads(ROUTES.read_text(encoding="utf-8"))["routes"])
         queue(SITEMAP, render_sitemap(routes), guard=True)
         queue(LLMS, render_llms(routes), guard=True)
 

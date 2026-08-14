@@ -4,7 +4,7 @@
   // outside click. The mobile menus additionally relabel their summary; the
   // use-cases dropdown does not, because its summary carries a visible label
   // already and rewriting it would fight the translated string.
-  var disclosures = document.querySelectorAll('.mobile-menu, .home-mobile-menu, .nav-group');
+  var disclosures = document.querySelectorAll('.mobile-menu, .home-mobile-menu, .nav-group, .lang-switch');
 
   menus.forEach(function (menu) {
     menu.addEventListener('toggle', function () {

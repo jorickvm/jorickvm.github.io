@@ -1,0 +1,44 @@
+    <nav class="breadcrumb" aria-label="Broodkruimelpad"><a href="/nl/">AtlasDays</a> / <a href="/nl/help/">Helpcentrum</a></nav>
+
+    <h1>CSV-formaatuitleg</h1>
+<p class="article-answer">Alleen de kolom <strong>Country</strong> is verplicht. AtlasDays herkent ondersteunde kolommen aan hun kop, dus de volgorde maakt niet uit.</p>
+
+    <h2>Aanbevolen kolomkoppen</h2>
+    <p><code>Country,State,Start Date,End Date,Purpose,Notes</code></p>
+    <ul>
+      <li><strong>Country:</strong> Engelse <a href="/nl/help/languages">landnaam</a>, ISO-landcode van twee letters of een herkende gangbare variant.</li>
+      <li><strong>State:</strong> optionele naam, postafkorting of ISO-deelcode van een Amerikaanse staat, zoals <code>US-CA</code>.</li>
+      <li><strong>Start Date / End Date:</strong> exacte datum, jaar of leeg volgens de regels hieronder.</li>
+      <li><strong>Purpose:</strong> Tourism, Business, Medical, <a href="/nl/help/history-and-import">Transit</a> of Personal; meerdere doelen behalve Transit mogen met komma's worden gescheiden.</li>
+      <li><strong>Notes:</strong> optionele tekst.</li>
+    </ul>
+    <figure class="help-shot help-shot-control"><img src="/assets/article-images/help/csv-format-reference/csv-reference.webp" alt="Voorbeeld en sjabloon voor een CSV-import" width="1320" height="1760" loading="lazy" decoding="async" /></figure>
+
+    <h2>Datumnotaties</h2>
+    <h3>Exacte datums</h3>
+    <p>Gebruik in beide datumkolommen <code>jjjj-mm-dd</code>. Laat End Date alleen leeg voor een lopende reis.</p>
+    <h3>Jaar</h3>
+    <p>Vul in Start Date een jaartal van vier cijfers in. End Date kan een jaartal bevatten of leeg blijven om hetzelfde jaar aan te geven. Een periode van meerdere jaren wordt één Alleen jaar-registratie per jaar.</p>
+    <h3>Helemaal geen datums</h3>
+    <p>Laat beide datumcellen leeg. Het land wordt bewaard als bezoek zonder datums: het telt mee als bezochte plek, maar nooit in dagtotalen. In rapporten staat <strong>Onbekende datum</strong>. Dit type registratie kan alleen via een CSV-import worden gemaakt.</p>
+
+    <h2>Rijen met Amerikaanse staten</h2>
+    <p>Gebruik State alleen voor een reis naar de Verenigde Staten. Ging één verblijf door meerdere staten en wil je per staat registreren, gebruik dan één rij per staat. Een gewone rij voor de VS is geldig voor trackers op landniveau.</p>
+
+    <h2>Transit</h2>
+    <p>Zet <code>Transit</code> in Purpose als je het land niet bent binnengekomen. Transit is exclusief: combineer het niet met Tourism, Business of een ander doel.</p>
+
+    <h2>Voorbeeld</h2>
+    <pre><code>Country,State,Start Date,End Date,Purpose,Notes
+France,,2026-03-01,2026-03-05,Tourism,
+United States,CA,2026-04-10,2026-04-15,Business,Conference
+Japan,,2024,,Tourism,Dates not known
+United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></pre>
+
+    <h2>Scheidingstekens en aanhalingstekens</h2>
+    <p>AtlasDays herkent aan de eerste rij bestanden met komma's, puntkomma's of tabs als scheidingsteken. Zet velden met het scheidingsteken of een regelafbreking tussen aanhalingstekens volgens de normale CSV-regels.</p>
+
+    <section class="if-needed">
+      <h2>Als een waarde niet wordt herkend</h2>
+      <p>Gebruik een ISO-landcode, een eenduidige Engelse landnaam, ISO-datums en een standaardnaam of -code voor een Amerikaanse staat. Bewaar het oorspronkelijke rijnummer, zodat je de rij gemakkelijk met de Importcontrole kunt vergelijken.</p>
+    </section>

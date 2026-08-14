@@ -40,6 +40,7 @@ SOURCE_ROOT = SITE_ROOT / "_site-src"
 GLOSSARY_PATH = SOURCE_ROOT / "data" / "glossary.json"
 ARTICLES_PATH = SOURCE_ROOT / "data" / "articles.json"
 HUBS_PATH = SOURCE_ROOT / "data" / "hubs.json"
+PAGES_PATH = SOURCE_ROOT / "data" / "pages.json"
 
 EM_DASH = "—"
 EN_DASH = "–"
@@ -235,9 +236,13 @@ def main() -> int:
     default = default_locale_code()
     strings = load_ui_strings()
 
-    published = {code for code, locale in locales.items() if locale.get("status") == "published"}
+    chrome_complete = {
+        code
+        for code, locale in locales.items()
+        if locale.get("status") == "published" or locale.get("coverage") == "complete"
+    }
     for key in sorted(strings):
-        for code in sorted(published):
+        for code in sorted(chrome_complete):
             if not strings[key].get(code):
                 problems.append(f"ui-strings.json: {key} has no {code} value")
         for code, value in strings[key].items():
@@ -245,7 +250,11 @@ def main() -> int:
                 problems.append(f"ui-strings.json: {key}:{code} contains markup or a quote")
 
     sources: dict[str, dict] = {}
-    for path, key in ((ARTICLES_PATH, "articles"), (HUBS_PATH, "hubs")):
+    for path, key in (
+        (ARTICLES_PATH, "articles"),
+        (HUBS_PATH, "hubs"),
+        (PAGES_PATH, "pages"),
+    ):
         if path.exists():
             for record in json.loads(path.read_text(encoding="utf-8"))[key]:
                 sources[str(record["path"])] = record
@@ -266,7 +275,16 @@ def main() -> int:
         if not registry.exists():
             continue
         data = json.loads(registry.read_text(encoding="utf-8"))
-        overlays = list(data.get("articles", [])) + list(data.get("hubs", []))
+        overlays = (
+            list(data.get("articles", []))
+            + list(data.get("hubs", []))
+            + list(data.get("pages", []))
+        )
+        if locale.get("coverage") == "complete":
+            translated_sources = {str(entry["source"]) for entry in overlays}
+            missing = sorted(set(sources) - translated_sources)
+            for source_path in missing:
+                problems.append(f"{code}: complete locale is missing {source_path}")
         available = {route_for(str(entry["source"])) for entry in overlays}
         glossary = glossaries.get(code, {})
         for overlay in overlays:

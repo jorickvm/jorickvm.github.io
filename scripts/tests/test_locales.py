@@ -130,6 +130,80 @@ class RouteTests(unittest.TestCase):
         self.assertIn('"nl":{"url":"/nl/learn/example"', markup)
         self.assertIn("q.toLowerCase().split('-')[0]", markup)
 
+    def test_language_switcher_uses_one_menu_for_all_available_locales(self) -> None:
+        registry = {
+            "en": {
+                "code": "en",
+                "hreflang": "en",
+                "native_name": "English",
+                "status": "published",
+                "x_default": True,
+            },
+            "nl": {
+                "code": "nl",
+                "hreflang": "nl",
+                "native_name": "Nederlands",
+                "status": "published",
+            },
+        }
+        translations = {"nl": {"learn/example.html": {}}}
+        strings = {"a11y.language": {"en": "Language", "nl": "Taal"}}
+
+        markup = build_site.render_language_switcher(
+            "learn/example.html", registry, translations, "nl", strings
+        )
+
+        self.assertIn('<details class="lang-switch">', markup)
+        self.assertIn('<span class="lang-switch-current">Nederlands</span>', markup)
+        self.assertIn('aria-current="true"', markup)
+        self.assertIn('href="/learn/example"', markup)
+        self.assertEqual(markup.count('class="lang-switch-panel"'), 1)
+
+
+class LearnDisclaimerTests(unittest.TestCase):
+    STRINGS = {
+        "learn.disclaimer_label": {"en": "Important", "nl": "Let op"},
+        "learn.disclaimer": {"en": "Check the source.", "nl": "Controleer de bron."},
+        "learn.translation_note": {
+            "en": "Translated from English.",
+            "nl": "Vertaald uit het Engels.",
+        },
+    }
+
+    def test_learn_article_gets_one_disclaimer_after_verification(self) -> None:
+        article = {"path": "learn/example.html", "section": "learn"}
+        content = '<h1>Example</h1>\n<p class="verified">Last verified: today</p>\n<p>Body</p>'
+
+        rendered = build_site.render_learn_disclaimer(
+            content, article, {"code": "nl"}, self.STRINGS
+        )
+
+        self.assertEqual(rendered.count('class="learn-disclaimer"'), 1)
+        self.assertIn("Controleer de bron.", rendered)
+        self.assertIn("Vertaald uit het Engels.", rendered)
+        self.assertLess(rendered.index("learn-disclaimer"), rendered.index("Body"))
+
+    def test_english_disclaimer_has_no_translation_note(self) -> None:
+        article = {"path": "learn/example.html", "section": "learn"}
+        content = '<p class="verified">Last verified: today</p>'
+
+        rendered = build_site.render_learn_disclaimer(
+            content, article, {"code": "en"}, self.STRINGS
+        )
+
+        self.assertIn("Check the source.", rendered)
+        self.assertNotIn("learn-translation-note", rendered)
+
+    def test_help_article_is_unchanged(self) -> None:
+        article = {"path": "help/example.html", "section": "help"}
+        content = "<p>Help copy</p>"
+        self.assertEqual(
+            build_site.render_learn_disclaimer(
+                content, article, {"code": "nl"}, self.STRINGS
+            ),
+            content,
+        )
+
 
 class DateTests(unittest.TestCase):
     def test_english_matches_the_committed_wording(self) -> None:

@@ -565,7 +565,12 @@ def audit_translations(
             findings.append(Finding("error", "locale-config", str(relative), str(exc)))
             continue
         overlays[code] = {
-            str(entry["source"]) for entry in list(data.get("articles", [])) + list(data.get("hubs", []))
+            str(entry["source"])
+            for entry in (
+                list(data.get("articles", []))
+                + list(data.get("hubs", []))
+                + list(data.get("pages", []))
+            )
         }
 
     for record in records:
@@ -632,6 +637,12 @@ def audit_governance(records: list[PageRecord], findings: list[Finding]) -> None
         record.path for record in records
         if record.indexable and record.path.startswith("learn/") and record.page_type == "article"
     }
+    hub_paths = {
+        str(item["path"])
+        for item in json.loads(
+            (SITE_ROOT / "_site-src" / "data" / "hubs.json").read_text(encoding="utf-8")
+        ).get("hubs", [])
+    }
     # A translated Learn article inherits its source's editorial record rather
     # than carrying its own, but it must not escape coverage: these are the
     # tax and visa guides, the highest-consequence content on the site.
@@ -642,7 +653,7 @@ def audit_governance(records: list[PageRecord], findings: list[Finding]) -> None
         # Hubs are navigation, not guides, so they have no editorial record on
         # either side. Testing page_type would not do here: a draft locale is
         # noindex, which makes every one of its pages read as a redirect.
-        if source.endswith("/index.html"):
+        if source in hub_paths:
             continue
         if source not in {str(item.get("path", "")) for item in editorial}:
             findings.append(

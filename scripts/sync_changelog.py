@@ -4,7 +4,7 @@
 The two repos own different halves of the same page. The app repo owns the
 **content**: `Docs/CHANGELOG.md` is written there at release time and its
 `changelog.html` is the rendered result, so the release cards are authored once,
-next to the code they describe. This repo owns the **page**: shared design
+next to the code they describe. This repo owns the **page source**: shared design
 tokens, the site header and footer, social card metadata, and the `?theme=`
 bootstrap that lets the app open `/app/changelog/` in its own appearance.
 
@@ -32,7 +32,7 @@ import sys
 from pathlib import Path
 
 SITE_ROOT = Path(__file__).resolve().parents[1]
-TARGET = SITE_ROOT / "changelog.html"
+TARGET = SITE_ROOT / "_site-src" / "content" / "pages" / "changelog.html"
 STACK_OPEN = '<div class="release-stack">'
 CARD_PATTERN = re.compile(r'<article class="release-card.*?</article>', re.S)
 

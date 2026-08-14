@@ -1,6 +1,7 @@
 import json
 import re
 import unittest
+import unicodedata
 from pathlib import Path
 
 
@@ -14,7 +15,10 @@ CJK = "\u3040-\u309f\u30a0-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uff66-\uff9f"
 
 
 def normalize(value: str) -> str:
-    return re.sub(r"\bdays\b", "day", re.sub(rf"[^a-z0-9{CJK}]+", " ", value.lower())).strip()
+    decomposed = unicodedata.normalize("NFD", value.lower())
+    latin_folded = re.sub(r"([a-z])[\u0300-\u036f]+", r"\1", decomposed)
+    recomposed = unicodedata.normalize("NFC", latin_folded)
+    return re.sub(r"\bdays\b", "day", re.sub(rf"[^a-z0-9{CJK}]+", " ", recomposed)).strip()
 
 
 def score(entry: dict[str, object], raw_query: str) -> int:
@@ -53,6 +57,15 @@ class SearchIndexTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls) -> None:
         cls.entries = json.loads((ROOT / "assets/search-index.json").read_text())["entries"]
+
+    def test_dutch_georgia_names_stay_distinct(self) -> None:
+        dutch = [entry for entry in self.entries if entry.get("lang") == "nl"]
+        country_matches = [entry for entry in dutch if score(entry, "Georgië") > 0]
+        self.assertTrue(any("Georgië" in entry["title"] for entry in country_matches))
+        self.assertFalse(any("Georgia" in entry["title"] for entry in country_matches))
+
+        state_matches = [entry for entry in dutch if score(entry, "Georgia") > 0]
+        self.assertTrue(any("Georgia" in entry["title"] for entry in state_matches))
 
     def first(self, query: str, section: str, lang: str = "en") -> str:
         matches = [

@@ -37,7 +37,13 @@
   var HAS_ASCII_WORD = /[a-z0-9]/;
 
   function normalize(value) {
-    return String(value || "").toLowerCase().replace(STRIP, " ").replace(/\bdays\b/g, "day").trim();
+    // Fold accents on Latin letters so Dutch queries such as "Georgië" and
+    // "georgie" behave alike, without decomposing Japanese kana into a
+    // different search term. Recompose non-Latin scripts before stripping.
+    var folded = String(value || "").toLowerCase().normalize("NFD")
+      .replace(/([a-z])[\u0300-\u036f]+/g, "$1")
+      .normalize("NFC");
+    return folded.replace(STRIP, " ").replace(/\bdays\b/g, "day").trim();
   }
 
   // Japanese does not delimit words with spaces, so splitting on whitespace
