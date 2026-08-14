@@ -2,7 +2,7 @@
 
 Marketing and support website for AtlasDays (`atlasdays.app`), served by GitHub Pages straight from committed HTML. No framework.
 
-This is the **public** repo, so this file is deliberately slim. The full working instructions live in the private `~/Projects/atlasdays-internal/CLAUDE.md` — read that one when you have it. It also carries a task-to-document table for the private guides: `RESIDENCY_ARTICLES.md` before writing a visa or tax-residency Learn article, `EDITORIAL_CHECKLIST.md` before a substantive fact update, `SCREENSHOT_GUIDE.md` before capturing a Help Center screenshot, `TRANSLATION_HANDOFF.md` before adding a language.
+This is the **public** repo, so this file is deliberately slim. The full working instructions live in the private `~/Projects/atlasdays-internal/CLAUDE.md` — read that one when you have it. It also carries a task-to-document table for the private guides: `RESIDENCY_ARTICLES.md` before writing a visa or tax-residency Learn article, `EDITORIAL_CHECKLIST.md` before a substantive fact update, `SCREENSHOT_GUIDE.md` before capturing a Help Center screenshot, `TRANSLATION_HANDOFF.md` before adding a language, `TRANSLATION_GUIDELINES.md` before writing or editing any translated copy on this site.
 
 Brand and voice live in the app repo: `~/Projects/AtlasDays/AtlasDays/Docs/reference/BRAND.md` is canonical for this site too.
 
