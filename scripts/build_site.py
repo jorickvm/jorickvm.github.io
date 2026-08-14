@@ -36,7 +36,7 @@ HUB_TEMPLATE = SOURCE_ROOT / "templates" / "hub.html"
 HEADER_TEMPLATE = SOURCE_ROOT / "templates" / "partials" / "site-header.html"
 FOOTER_TEMPLATE = SOURCE_ROOT / "templates" / "partials" / "site-footer.html"
 CLUSTER_DATA_PATH = SOURCE_ROOT / "data" / "content-clusters.json"
-BUILD_VERSION = "20260814c"
+BUILD_VERSION = "20260814d"
 
 # Root class that drops the background wash from the app's `.medium` step to
 # `.subtle`, for pages carrying long-form text. See assets/css/tokens.css.
@@ -607,6 +607,57 @@ def render_language_switcher(
     return f'\n{indent}<nav class="{css}" aria-label="{label}">{rows}</nav>'
 
 
+def render_locale_routing(
+    source_path: str,
+    locales: dict[str, dict],
+    translations: dict[str, dict[str, dict]],
+    current: str,
+    strings: dict[str, dict[str, str]],
+    prefix: str,
+) -> str:
+    """This page's other languages, as data the page can route on.
+
+    The AtlasDays app deep-links into Learn articles with URLs frozen into
+    App Store builds, so the app cannot be taught new per-language links: it
+    appends `?lang=<its interface language>` to the one URL it already has and
+    the page decides. The map is generated, so a locale that has not
+    translated this article simply has no entry and the reader stays on
+    English. A 404 is not reachable from here.
+
+    Only published locales appear, which is the same rule hreflang and the
+    switcher use. A draft locale is not somewhere to send a reader.
+
+    The redirect fires on an explicit `?lang=` and nothing else. Redirecting on
+    `navigator.language` would take a reader who searched in English off the
+    page they chose, and Google advises against it. That case gets the banner
+    in locale-route.js instead.
+    """
+    entries: dict[str, dict[str, str]] = {}
+    for link in alternate_links(source_path, locales, translations):
+        code = str(link["hreflang"])
+        if code in {"x-default", current}:
+            continue
+        locale = locales.get(code)
+        if not locale:
+            continue
+        entries[code] = {
+            "url": str(link["href"])[len(SITE_URL):],
+            "name": str(locale["native_name"]),
+            "label": str(strings["locale.offer"][code]),
+            "dismiss": str(strings["locale.dismiss"][code]),
+        }
+    if not entries:
+        return ""
+    payload = json.dumps(entries, ensure_ascii=False, separators=(",", ":"))
+    return (
+        f"\n  <script>window.AtlasDaysPageLocales={payload};"
+        "(function(){var q=new URLSearchParams(location.search).get('lang');if(!q)return;"
+        "var e=window.AtlasDaysPageLocales[q.toLowerCase().split('-')[0]];"
+        "if(e&&e.url!==location.pathname)location.replace(e.url+location.search+location.hash)})()</script>"
+        f'\n  <script defer src="{prefix}assets/js/locale-route.js?v=20260814b"></script>'
+    )
+
+
 def render_article(
     article: dict[str, object],
     template: str,
@@ -633,6 +684,9 @@ def render_article(
     replacements = {
         "{{HTML_LANG}}": str(locale["html_lang"]),
         "{{HTML_CLASS}}": WASH_SUBTLE,
+        "{{LOCALE_ROUTING}}": render_locale_routing(
+            source_path, locales, translations, code, strings, prefix
+        ),
         "{{METADATA}}": render_metadata(article, prefix),
         "{{STRUCTURED_DATA}}": render_structured_data(article),
         "{{STYLESHEETS}}": render_styles(article, "article", prefix),
@@ -686,6 +740,9 @@ def render_hub(
         # about pages built through this same template are long-form reading
         # and step down with the articles.
         "{{HTML_CLASS}}": WASH_SUBTLE if family == "page" else "",
+        "{{LOCALE_ROUTING}}": render_locale_routing(
+            source_path, locales, translations, code, strings, prefix
+        ),
         "{{METADATA}}": render_metadata(hub, prefix),
         "{{STRUCTURED_DATA}}": render_structured_data(hub),
         "{{STYLESHEETS}}": render_styles(hub, family, prefix),

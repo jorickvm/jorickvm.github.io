@@ -113,8 +113,23 @@ def check_terminology(
     translated: str,
     glossary: dict[str, object],
     problems: list[str],
+    *,
+    app_terms: bool = True,
 ) -> None:
-    terms = list(glossary.get("terms", []))
+    """Hold a translation to the app's own vocabulary, where that vocabulary rules.
+
+    `app_terms` is off for Learn. The term tables name buttons, sheets, and
+    settings, and they are authoritative because a Help article is a set of
+    instructions about those screens: calling a button something the app does
+    not is worse than not writing the article. A Learn article explains a
+    country's day-count rule and mostly never mentions the interface, so the
+    same table starts matching ordinary prose instead. `Custom` is the clearest
+    case: its generated plural `Customs` is border control in four articles,
+    and enforcing the tracker preset's wording there would corrupt the
+    sentence to satisfy a check. Brand and format names still have to survive
+    in every section, so those two rules always run.
+    """
+    terms = list(glossary.get("terms", [])) if app_terms else []
     triggered = [
         term for term in terms
         if any(re.search(rf"\b{re.escape(form)}\b", english) for form in term["match"])
@@ -284,7 +299,14 @@ def main() -> int:
             if code == "ja":
                 check_japanese_typography(label, prose, problems)
             if glossary:
-                check_terminology(label, visible_text(english), prose, glossary, problems)
+                check_terminology(
+                    label,
+                    visible_text(english),
+                    prose,
+                    glossary,
+                    problems,
+                    app_terms=source_path.startswith("help/"),
+                )
             check_structure(label, english, translated, locale, available, problems)
             checked += 1
 

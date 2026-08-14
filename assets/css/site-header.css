@@ -384,3 +384,50 @@ article a {
   text-underline-offset: 0.18em;
 }
 article .breadcrumb a { text-decoration: none; }
+
+/* Translation offer, injected by assets/js/locale-route.js on a page that has
+   a translation the reader's browser prefers. It sits under the header rather
+   than over the content: this is an offer, not an interruption, and the page
+   the reader asked for stays where they expect it. */
+.lang-offer {
+  border-bottom: 1px solid var(--line);
+  background: color-mix(in srgb, var(--blue) 8%, transparent);
+  font-size: 0.88rem;
+}
+.lang-offer-inner {
+  /* Same measure as .top-bar-inner, so the offer lines up with the nav above
+     it rather than with the viewport edge. */
+  width: min(var(--max, 1120px), calc(100% - 40px));
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 0;
+}
+.lang-offer-link {
+  flex: 1 1 auto;
+  min-width: 0;
+  color: var(--blue);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+.lang-offer-close {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+.lang-offer-close:hover { background: color-mix(in srgb, var(--text) 8%, transparent); color: var(--text); }
+
+@media (max-width: 760px) {
+  .lang-offer { font-size: 0.85rem; }
+  .lang-offer-inner { width: min(var(--max), calc(100% - 28px)); }
+}
