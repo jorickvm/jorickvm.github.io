@@ -8,6 +8,13 @@ article merge on this site silently 404s inside the app. This script reads
 the app's map and fails when any slug no longer resolves to
 `learn/<slug>.html`.
 
+Those URLs are also the language hook. Each generated page carries a map of
+its own translations and redirects when it is opened with `?lang=<code>`, so
+the app keeps one URL per preset and appends its interface language, exactly
+as it already does for the /app/ alias pages. A slug with no translation has
+no entry in its map and stays English, which is why this check still only
+has to prove the English article exists.
+
 Local-only guard: the app repo is private, so CI cannot run this. It is
 deliberately NOT wired into site-audit.yml. Run it before renaming, merging,
 or deleting any Learn article, and as part of the pre-release habit:
