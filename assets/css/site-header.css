@@ -199,6 +199,18 @@
 }
 .theme-toggle:focus-visible { border-color: var(--blue); }
 
+/* Theme controls always contain both icons so the switch can update without
+   replacing DOM. Visibility belongs here, in the shared header, rather than in
+   individual page variants: otherwise a page that omits the duplicate rule
+   displays the sun and moon at the same time. */
+.theme-toggle .icon-sun,
+.theme-toggle .icon-moon { grid-area: 1 / 1; }
+.theme-toggle .icon-moon { display: none; }
+html[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+html[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+html[data-theme="light"] .theme-toggle .icon-sun { display: none; }
+html[data-theme="light"] .theme-toggle .icon-moon { display: block; }
+
 .top-cta {
   display: inline-flex;
   align-items: center;

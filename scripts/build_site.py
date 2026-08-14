@@ -38,6 +38,7 @@ HEADER_TEMPLATE = SOURCE_ROOT / "templates" / "partials" / "site-header.html"
 FOOTER_TEMPLATE = SOURCE_ROOT / "templates" / "partials" / "site-footer.html"
 CLUSTER_DATA_PATH = SOURCE_ROOT / "data" / "content-clusters.json"
 BUILD_VERSION = "20260814e"
+SITE_HEADER_VERSION = "20260814f"
 
 # Root class that drops the background wash from the app's `.medium` step to
 # `.subtle`, for pages carrying long-form text. See assets/css/tokens.css.
@@ -174,7 +175,9 @@ def render_styles(article: dict[str, object], family: str = "article", prefix: s
         f'  <link rel="stylesheet" href="{prefix}assets/css/{family}-variants/{style_id}.css?v={asset_version}" />'
         for style_id in article.get("style_variants", [])
     ]
-    lines.append(f'  <link rel="stylesheet" href="{prefix}assets/css/site-header.css?v={asset_version}" />')
+    lines.append(
+        f'  <link rel="stylesheet" href="{prefix}assets/css/site-header.css?v={SITE_HEADER_VERSION}" />'
+    )
     lines.append(f'  <link rel="stylesheet" href="{prefix}assets/css/site-footer.css?v={asset_version}" />')
     return "\n".join(lines)
 
