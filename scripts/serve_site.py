@@ -9,6 +9,7 @@ through the site locally does not work without this.
     python3 scripts/serve_site.py            # http://localhost:8899
     python3 scripts/serve_site.py --port 9000
     python3 scripts/serve_site.py --host 0.0.0.0  # also reachable on your LAN
+    python3 scripts/serve_site.py --root /tmp/site-preview
 
 Dev tooling only. Never deployed.
 """
@@ -62,11 +63,21 @@ def main() -> int:
         default=os.environ.get("HOST") or "127.0.0.1",
         help="address to bind (use 0.0.0.0 to test from another device)",
     )
+    parser.add_argument(
+        "--root",
+        type=Path,
+        default=SITE_ROOT,
+        help="directory to serve (use a deploy-only staging directory for LAN previews)",
+    )
     args = parser.parse_args()
 
-    handler = partial(PagesHandler, directory=str(SITE_ROOT))
+    site_root = args.root.resolve()
+    if not site_root.is_dir():
+        parser.error(f"preview root is not a directory: {site_root}")
+
+    handler = partial(PagesHandler, directory=str(site_root))
     server = HTTPServer((args.host, args.port), handler)
-    print(f"Serving {SITE_ROOT}")
+    print(f"Serving {site_root}")
     print(f"  http://localhost:{args.port}/")
     print(f"  http://localhost:{args.port}/help/")
     if args.host == "0.0.0.0":
