@@ -265,6 +265,22 @@ target-language page whose neighbours are all English.
 3. The pillar articles the hub leads with.
 4. The rest, in clusters, so terminology settles cluster by cluster.
 
+### Keeping the hub honest while a section is partly translated
+
+A hub has to carry the same link set as its English source, so it lists every
+article whether or not that article exists in the target language yet. Which
+means the hub can lie: a translated title next to a link that lands on English.
+
+The rule is that **a card shows the target-language title only when the article
+behind it is translated, and the English title otherwise.** Translating an
+article is therefore two edits, not one: the fragment, and its card on the hub.
+
+The Dutch hub was produced by transforming the English fragment
+programmatically, which is worth repeating for the next language and the next
+batch: place names, types, and article titles are all data the build already
+has, so deriving them keeps the link set and the list counts identical by
+construction rather than by proofreading.
+
 Reread each finished article in the target language alone, without the English
 beside it. That pass catches copied capitalization, English word order that is
 grammatical but foreign, and sentences that only parse if you know the source.
