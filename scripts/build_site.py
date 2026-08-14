@@ -465,7 +465,15 @@ def derive_record(
     record["social_source_path"] = source_path
     record["content"] = str(overlay["content"])
 
-    suffix_key = "site.title_suffix_help" if kind == "article" else "site.title_suffix"
+    # The suffix follows the section, not the template. Japanese was the only
+    # translated locale for a while and it only had Help, so "article" and
+    # "Help Center" were the same thing; a Dutch Learn article is an article
+    # that is not Help.
+    suffix_key = (
+        "site.title_suffix_help"
+        if kind == "article" and str(source.get("section", "")) == "help"
+        else "site.title_suffix"
+    )
     title = f"{overlay['headline']}{locale['title_separator']}{strings[suffix_key][code]}"
     description = str(overlay["description"])
     record["title"] = title

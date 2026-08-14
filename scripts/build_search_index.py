@@ -45,11 +45,20 @@ def help_headings(record: dict[str, object]) -> list[str]:
     return parser.headings
 
 
-def translated_entries(sources: dict[str, dict]) -> list[dict[str, object]]:
+def translated_entries(
+    sources: dict[str, dict],
+    editorial: dict[str, dict],
+    clusters: dict[str, dict],
+) -> list[dict[str, object]]:
     """One search entry per translated page, tagged with its language.
 
     The index stays a single file: 100-odd entries do not justify a second
     fetch, and search.js already filters client-side.
+
+    Everything except the title, description, and synonyms is taken from the
+    English record, exactly as the rendered page is: a translation supplies
+    prose, so it cannot land in a different category, claim a different
+    jurisdiction, or promote itself to a pillar.
     """
     entries: list[dict[str, object]] = []
     default = default_locale_code()
@@ -60,31 +69,48 @@ def translated_entries(sources: dict[str, dict]) -> list[dict[str, object]]:
         data = json.loads((DATA.parent / str(registry)).read_text(encoding="utf-8"))
         for overlay in list(data.get("articles", [])) + list(data.get("hubs", [])):
             source = sources.get(str(overlay["source"]))
-            if source is None or str(source.get("section", "help")) != "help":
+            if source is None:
+                # A translated hub. Hubs are the search surface, not a result
+                # in it, so English has no entry for them either.
                 continue
-            slug = Path(str(overlay["source"])).stem
+            path = str(overlay["source"])
+            section = str(source.get("section", "help"))
+            slug = Path(path).stem
+            if section == "help":
+                category = str(source.get("category", "trips-travel-days"))
+                jurisdiction = ""
+                pillar = False
+            else:
+                category = str(editorial[path]["rule_category"])
+                jurisdiction = str(editorial[path]["jurisdiction"])
+                pillar = clusters[path]["relationship"] == "pillar"
             entries.append(
                 {
-                    "section": "help",
+                    "section": section,
                     "lang": code,
-                    "category": str(source.get("category", "trips-travel-days")),
+                    "category": category,
                     "title": str(overlay["headline"]),
                     "description": str(overlay["description"]),
-                    "jurisdiction": "",
+                    # The English jurisdiction name is a Latin-script place
+                    # name in the index either way; the translated one rides in
+                    # through the synonyms.
+                    "jurisdiction": jurisdiction,
                     "keywords": sorted(
                         {
                             slug.replace("-", " "),
-                            # English aliases stay searchable: a Japanese reader
-                            # who knows the English term on their paperwork has
-                            # no other route to the page.
+                            category.replace("-", " "),
+                            jurisdiction.lower(),
+                            # English aliases stay searchable: a reader who
+                            # knows the English term on their paperwork has no
+                            # other route to the page.
                             *(str(value).lower() for value in source.get("search_synonyms", [])),
                             *(str(value).lower() for value in overlay.get("search_synonyms", [])),
-                            *(value.lower() for value in help_headings(overlay)),
+                            *(value.lower() for value in help_headings(overlay) if section == "help"),
                         }
                         - {""}
                     ),
-                    "url": f"/{code}" + route_for(str(overlay["source"])),
-                    "pillar": False,
+                    "url": f"/{code}" + route_for(path),
+                    "pillar": pillar,
                 }
             )
     return entries
@@ -146,7 +172,7 @@ def build() -> dict[str, object]:
                 "pillar": pillar,
             }
         )
-    entries.extend(translated_entries({str(r["path"]): r for r in articles}))
+    entries.extend(translated_entries({str(r["path"]): r for r in articles}, editorial, clusters))
     return {"schema_version": 1, "generated_by": "scripts/build_search_index.py", "entries": entries}
 
 
