@@ -34,7 +34,16 @@ def description_for(record: dict[str, object]) -> str:
     return "Private travel-day tracking for iPhone."
 
 
+def is_noindex(record: dict[str, object]) -> bool:
+    for meta in record.get("meta", []):
+        if meta.get("name") == "robots" and "noindex" in str(meta.get("content", "")):
+            return True
+    return False
+
+
 def records() -> list[dict[str, str]]:
+    # The homepage card is curated rather than derived: pages.json carries the
+    # long SEO title, which does not lay out on a 1200x630 card.
     result = [
         {
             "path": "index.html",
@@ -43,13 +52,23 @@ def records() -> list[dict[str, str]]:
             "description": "Private travel-day tracking for visa limits, residency thresholds, and a reliable long-term trip history.",
         }
     ]
+    seen = {item["path"] for item in result}
     for filename, key in (("articles.json", "articles"), ("hubs.json", "hubs"), ("pages.json", "pages")):
         payload = json.loads((DATA / filename).read_text(encoding="utf-8"))
         for item in payload[key]:
+            path = str(item["path"])
+            # A card only exists to be unfurled from a shared link, and
+            # build_site.py gives an og:image to every page listed here. Pages
+            # that are noindex are not shared: 404.html and support.html joined
+            # pages.json for localization, and a share card for "Page not found"
+            # or for a redirect stub is not a thing anyone wants unfurled.
+            if path in seen or is_noindex(item):
+                continue
+            seen.add(path)
             section = str(item.get("section") or item.get("current_navigation") or "AtlasDays")
             result.append(
                 {
-                    "path": str(item["path"]),
+                    "path": path,
                     "section": section.replace("-", " ").title(),
                     "title": str(item["title"]).replace(" – AtlasDays Help Center", "").replace(" – AtlasDays", ""),
                     "description": description_for(item),
