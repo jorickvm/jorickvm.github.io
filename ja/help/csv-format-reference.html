@@ -73,10 +73,10 @@
   }
   </script>
   <script>(function(){var d=document.documentElement,q=new URLSearchParams(location.search).get('theme'),t=null;if(q==='light'||q==='dark'){t=q;try{sessionStorage.setItem('theme',q)}catch(e){}}else{try{t=sessionStorage.getItem('theme')}catch(e){}if(!t)try{t=localStorage.getItem('theme')}catch(e){}}d.setAttribute('data-theme',t==='light'?'light':'dark')})()</script>
-  <link rel="stylesheet" href="../../assets/css/tokens.css?v=20260814a" />
-  <link rel="stylesheet" href="../../assets/css/article-variants/help20260802.css?v=20260814a" />
-  <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260814a" />
-  <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260814a" />
+  <link rel="stylesheet" href="../../assets/css/tokens.css?v=20260814b" />
+  <link rel="stylesheet" href="../../assets/css/article-variants/help20260802.css?v=20260814b" />
+  <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260814b" />
+  <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260814b" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">本文へスキップ</a>
@@ -90,7 +90,6 @@
         <span>AtlasDays</span>
       </a>
       <nav class="top-links" aria-label="メインナビゲーション">
-        <a class="hide-mobile" href="/">ホーム</a>
         <a href="/ja/help/" aria-current="page">ヘルプセンター</a>
         <a href="/learn/">旅行ルール</a>
         <details class="nav-group hide-mobile">
@@ -104,8 +103,12 @@
             <a href="/travel-history">旅行履歴</a>
           </nav>
         </details>
-        <a class="hide-mobile" href="/changelog">変更履歴</a>
-        <a class="top-cta" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">アプリを入手</a>
+        <div class="nav-cta-wrap">
+          <a class="top-cta" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">AtlasDaysを入手</a>
+          <div class="nav-qr-popup" aria-hidden="true">
+            <img src="../../assets/qrcode-appstore.png" width="164" height="164" alt="">
+          </div>
+        </div>
         <nav class="lang-switch" aria-label="言語"><a href="/help/csv-format-reference" lang="en" hreflang="en">English</a></nav>
         <button class="theme-toggle" type="button" aria-label="外観を切り替える" title="外観を切り替える" onclick="toggleTheme()">
           <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
@@ -125,7 +128,6 @@
           <a class="mobile-group-item" href="/visa-limits">ビザの上限</a>
           <a class="mobile-group-item" href="/residency-thresholds">税務上の居住判定</a>
           <a class="mobile-group-item" href="/travel-history">旅行履歴</a>
-          <a href="/changelog">変更履歴</a>
           <a href="/about">AtlasDaysについて</a>
           <a href="/support">サポート</a>
           <button class="mobile-menu-theme" type="button" onclick="toggleTheme()">
@@ -135,7 +137,7 @@
               <svg class="icon-moon" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
             </span>
           </button>
-          <a class="mobile-menu-cta" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">アプリを入手</a>
+          <a class="mobile-menu-cta" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">AtlasDaysを入手</a>
           <nav class="mobile-menu-lang" aria-label="言語"><a href="/help/csv-format-reference" lang="en" hreflang="en">English</a></nav>
         </nav>
       </details>
