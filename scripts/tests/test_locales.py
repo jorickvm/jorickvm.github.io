@@ -45,6 +45,12 @@ class LocaleRegistryTests(unittest.TestCase):
                 self.assertNotIn('"', value, f"{key}:{code}")
                 self.assertNotIn("<", value, f"{key}:{code}")
 
+    def test_dutch_hub_embeds_localized_dynamic_search_copy(self) -> None:
+        rendered = (ROOT / "nl" / "learn" / "index.html").read_text(encoding="utf-8")
+        self.assertIn("window.AtlasDaysSearchStrings=", rendered)
+        self.assertIn("Geen passende regel of gids gevonden.", rendered)
+        self.assertIn("{count} resultaten gevonden", rendered)
+
 
 class MarkerTests(unittest.TestCase):
     def setUp(self) -> None:

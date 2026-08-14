@@ -28,6 +28,13 @@
 
   var roots = Array.prototype.slice.call(document.querySelectorAll("[data-library-search]"));
   if (!roots.length) return;
+  var copy = window.AtlasDaysSearchStrings || {
+    resultOne: "{count} result found",
+    resultMany: "{count} results found",
+    emptyHelp: "No matching Help article. Try a feature name, task, or shorter phrase.",
+    emptyLearn: "No matching rule or guide. Try a country, US state, region, or broader topic.",
+    unavailable: "Search is unavailable; browse the topics below."
+  };
 
   // Kept characters include the CJK ranges. Before this, [^a-z0-9] stripped
   // every Japanese character, so a Japanese query normalised to "" and scored
@@ -204,14 +211,14 @@
           results.hidden = !active || showResults === false;
           clear.hidden = !query;
           input.setAttribute("aria-expanded", String(active && showResults !== false));
-          status.textContent = active ? matches.length + (matches.length === 1 ? " result found" : " results found") : initialStatus;
+          status.textContent = active
+            ? (matches.length === 1 ? copy.resultOne : copy.resultMany).replace("{count}", matches.length)
+            : initialStatus;
           if (!active) return;
           if (!matches.length) {
             var empty = document.createElement("p");
             empty.className = "search-empty";
-            empty.textContent = section === "help"
-              ? "No matching Help article. Try a feature name, task, or shorter phrase."
-              : "No matching rule or guide. Try a country, US state, region, or broader topic.";
+            empty.textContent = section === "help" ? copy.emptyHelp : copy.emptyLearn;
             results.appendChild(empty);
             return;
           }
@@ -271,7 +278,7 @@
     })
     .catch(function () {
       roots.forEach(function (root) {
-        root.querySelector("[data-search-status]").textContent = "Search is unavailable; browse the topics below.";
+        root.querySelector("[data-search-status]").textContent = copy.unavailable;
       });
     });
 })();

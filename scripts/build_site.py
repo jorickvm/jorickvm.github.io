@@ -844,6 +844,17 @@ def render_hub(
     switcher_mobile = render_language_switcher(
         source_path, locales, translations, code, strings, mobile=True, indent="          "
     )
+    search_copy = json.dumps(
+        {
+            "resultOne": strings["search.result_one"][code],
+            "resultMany": strings["search.result_many"][code],
+            "emptyHelp": strings["search.empty_help"][code],
+            "emptyLearn": strings["search.empty_learn"][code],
+            "unavailable": strings["search.unavailable"][code],
+        },
+        ensure_ascii=False,
+        separators=(",", ":"),
+    ).replace("</", "<\\/")
     # Only routes this locale actually has may be prefixed; everything else
     # falls back to English. Without this the chrome links a Japanese page to
     # /ja/about and friends, which were never built.
@@ -872,7 +883,8 @@ def render_hub(
             if family == "hub" else ""
         ),
         "{{SEARCH_SCRIPT}}": (
-            f'  <script src="{prefix}assets/js/search.js?v=20260814a"></script>'
+            f"  <script>window.AtlasDaysSearchStrings={search_copy};</script>\n"
+            f'  <script src="{prefix}assets/js/search.js?v=20260814b"></script>'
             if family == "hub" else ""
         ),
         "{{ASSET_PREFIX}}": prefix,
