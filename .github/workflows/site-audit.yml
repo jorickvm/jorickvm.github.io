@@ -37,6 +37,13 @@ jobs:
       # of that repo; scripts/sync_glossary.py refreshes it.
       - name: Check translations
         run: python3 scripts/check_translations.py --check
+      # Separate from the check above because it asks a different question:
+      # that one verifies a translation has the right shape, this one verifies
+      # the words actually changed. A fully English fragment passes every other
+      # gate, which is how the Spanish Learn hub shipped with English filter
+      # pills and headings.
+      - name: Check for untranslated text
+        run: python3 scripts/check_untranslated.py --check
       - name: Check generated article output
         run: |
           python3 scripts/build_residency_hub.py --check
