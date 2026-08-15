@@ -1,0 +1,44 @@
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/de/">AtlasDays</a> / <a href="/de/help/">Hilfe</a></nav>
+
+    <h1>CSV-Format: Referenz</h1>
+<p class="article-answer">Nur die Spalte <strong>Country</strong> ist erforderlich. AtlasDays erkennt die unterstützten Spalten an ihrer Kopfzeile, die Reihenfolge spielt also keine Rolle.</p>
+
+    <h2>Empfohlene Kopfzeile</h2>
+    <p><code>Country,State,Start Date,End Date,Purpose,Notes</code></p>
+    <ul>
+      <li><strong>Country:</strong> englischer <a href="/de/help/languages">Ländername</a>, ISO-Ländercode aus zwei Buchstaben oder eine erkannte gängige Variante.</li>
+      <li><strong>State:</strong> optionaler Name eines US-Bundesstaats, seine Abkürzung oder der ISO-Code der Untereinheit, etwa <code>US-CA</code>.</li>
+      <li><strong>Start Date / End Date:</strong> genaues Datum, Jahr oder leer, nach den Regeln unten.</li>
+      <li><strong>Purpose:</strong> Tourism, Business, Medical, <a href="/de/help/history-and-import">Transit</a> oder Personal; mehrere Zwecke außer Transit lassen sich mit Komma trennen.</li>
+      <li><strong>Notes:</strong> beliebiger Text, optional.</li>
+    </ul>
+    <figure class="help-shot help-shot-control"><img src="/assets/article-images/help/csv-format-reference/csv-reference.webp" alt="Beispiel und Vorlagensteuerung für den CSV-Import" width="1320" height="1760" loading="lazy" decoding="async" /></figure>
+
+    <h2>Datumsformate</h2>
+    <h3>Genaue Reisedaten</h3>
+    <p>Für genaue Reisedaten nutzt du <code>yyyy-mm-dd</code> in beiden Datumsspalten. Lass End Date nur bei einer laufenden Reise leer.</p>
+    <h3>Jahr</h3>
+    <p>Trag in Start Date ein vierstelliges Jahr ein. End Date kann ein Jahr enthalten oder leer bleiben und meint dann dasselbe Jahr. Ein Zeitraum über mehrere Jahre wird zu je einem Eintrag mit Nur Jahr pro Jahr.</p>
+    <h3>Gar keine Datumsangaben</h3>
+    <p>Lass beide Datumsfelder leer. Das Land bleibt als Besuch ohne Datumsangaben erhalten: Es zählt für die besuchten Orte, aber nie für Tagessummen, und Berichte kennzeichnen es als <strong>Unknown Date</strong>. Ein solcher Eintrag lässt sich nur über den CSV-Import anlegen.</p>
+
+    <h2>Zeilen mit US-Bundesstaaten</h2>
+    <p>Nutz State nur bei einer Reise in die Vereinigten Staaten. Wenn ein US-Besuch mehrere Bundesstaaten umfasste und du Einträge auf Ebene der Bundesstaaten brauchst, nimm eine Zeile pro Bundesstaat. Eine schlichte US-Zeile ist für die Verfolgung auf Länderebene gültig.</p>
+
+    <h2>Transit</h2>
+    <p>Schreib <code>Transit</code> in Purpose, wenn du nicht ins Land eingereist bist. Transit schließt anderes aus: Kombinier es nicht mit Tourism, Business oder einem anderen Zweck.</p>
+
+    <h2>Beispiel</h2>
+    <pre><code>Country,State,Start Date,End Date,Purpose,Notes
+France,,2026-03-01,2026-03-05,Tourism,
+United States,CA,2026-04-10,2026-04-15,Business,Konferenz
+Japan,,2024,,Tourism,Datumsangaben nicht bekannt
+United Arab Emirates,,2026-05-01,2026-05-01,Transit,Umstieg am Flughafen</code></pre>
+
+    <h2>Trennzeichen und Anführungszeichen</h2>
+    <p>AtlasDays erkennt an der Kopfzeile Dateien, die mit Komma, Semikolon oder Tabulator getrennt sind. Setz Felder, die das Trennzeichen oder einen Zeilenumbruch enthalten, nach den üblichen CSV-Regeln in Anführungszeichen.</p>
+
+    <section class="if-needed">
+      <h2>Wenn ein Wert nicht erkannt wird</h2>
+      <p>Nutz einen ISO-Ländercode, einen eindeutigen englischen Ländernamen, Datumsangaben im ISO-Format und einen üblichen Namen oder Code eines US-Bundesstaats. Behalt die ursprüngliche Zeilennummer, damit sich der Vergleich mit der Importvorschau leicht ziehen lässt.</p>
+    </section>
