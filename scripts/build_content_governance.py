@@ -39,7 +39,10 @@ def classify(slug: str) -> str:
     entry_markers = ("schengen", "visa", "visitor", "eta", "ilr", "citizenship", "overstay", "japan-90", "turkiye-90")
     if any(marker in slug for marker in tax_markers):
         return "tax-residency"
-    if any(marker in slug for marker in ("travel-history", "prove-", "rebuild-", "export-")):
+    if any(
+        marker in slug
+        for marker in ("travel-history", "flight-history", "prove-", "rebuild-", "export-")
+    ):
         return "travel-record-evidence"
     if any(marker in slug for marker in entry_markers):
         return "immigration-and-entry"
@@ -123,6 +126,19 @@ def external_sources(content: str) -> list[str]:
     return sorted({url for url in urls if APP_STORE not in url and "atlasdays.app" not in url})
 
 
+def structured_sources(record: dict[str, object], content: str) -> list[str]:
+    """Source-owned URLs, with a compatibility fallback for unmigrated records."""
+    declared = record.get("sources")
+    if declared is None:
+        return external_sources(content)
+    urls = []
+    for source in declared:
+        if not isinstance(source, dict) or not source.get("url"):
+            raise SystemExit(f"{record['path']}: invalid sources entry")
+        urls.append(str(source["url"]))
+    return sorted(set(urls))
+
+
 def build() -> tuple[dict[str, object], dict[str, object], str]:
     source = json.loads(ARTICLES.read_text(encoding="utf-8"))
     editorial_entries = []
@@ -140,7 +156,7 @@ def build() -> tuple[dict[str, object], dict[str, object], str]:
         risk, interval, status = REVIEW_TIERS[tier]
         cluster, pillar = cluster_for(slug, category)
         month = verified_month(content)
-        sources = external_sources(content)
+        sources = structured_sources(record, content)
         editorial_entries.append(
             {
                 "path": path,

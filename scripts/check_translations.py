@@ -65,6 +65,7 @@ TAGS = re.compile(r"<[^>]+>")
 # Figures carry pixel dimensions, which are not facts about the article.
 FIGURES = re.compile(r"<figure.*?</figure>", re.DOTALL)
 NUMBER = re.compile(r"\d+")
+SOURCE_MARKER = re.compile(r"\{\{source:(\d+)\}\}")
 
 
 def parse_args() -> argparse.Namespace:
@@ -319,6 +320,18 @@ def main() -> int:
                 continue
             translated = translated_path.read_text(encoding="utf-8")
             label = f"{code}/{source_path}"
+            english_source_note = str(source.get("source_note", ""))
+            translated_source_note = str(overlay.get("source_note", ""))
+            if english_source_note and not translated_source_note:
+                problems.append(f"{label}: missing localized source_note")
+            elif not english_source_note and translated_source_note:
+                problems.append(f"{label}: source_note exists only in the translation")
+            elif SOURCE_MARKER.findall(english_source_note) != SOURCE_MARKER.findall(
+                translated_source_note
+            ):
+                problems.append(
+                    f"{label}: source_note must preserve the English {{source:n}} markers"
+                )
             # Checked here as well as in build_site.py, on purpose. A single
             # gate can be walked past by hand-editing the recorded hash; two
             # independent ones cannot, and this is the gate CI runs first.
@@ -331,20 +344,22 @@ def main() -> int:
                         f"{label}: {field} is stale; the English source changed since this "
                         "was translated"
                     )
-            prose = visible_text(translated)
+            english_for_checks = english + "\n" + english_source_note
+            translated_for_checks = translated + "\n" + translated_source_note
+            prose = visible_text(translated_for_checks)
             check_house_typography(label, prose, problems)
             if code == "ja":
                 check_japanese_typography(label, prose, problems)
             if glossary:
                 check_terminology(
                     label,
-                    visible_text(english),
+                    visible_text(english_for_checks),
                     prose,
                     glossary,
                     problems,
                     app_terms=source_path.startswith("help/"),
                 )
-            check_structure(label, english, translated, locale, available, problems)
+            check_structure(label, english_for_checks, translated_for_checks, locale, available, problems)
             checked += 1
 
     if problems:

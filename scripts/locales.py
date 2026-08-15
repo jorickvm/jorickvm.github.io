@@ -161,6 +161,8 @@ def meta_hash(source: dict) -> str:
     title and next-step labels only.
     """
     payload = [str(source.get("title", "")), description_of(source)]
+    if "source_note" in source:
+        payload.append(str(source["source_note"]))
     for step in source.get("next_steps", []):
         payload += [str(step.get("title", "")), str(step.get("description", ""))]
     for slot in source.get("screenshot_slots", []):

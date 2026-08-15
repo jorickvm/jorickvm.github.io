@@ -22,15 +22,15 @@ Legacy articles expose only a verification month. The next substantive review mu
 
 | Due | Tier | Article | Status | Sources |
 |---|---|---|---|---:|
-| 2027-03-01 | 1 | [learn/canada-visitor-visa-6-month-limit.html](/learn/canada-visitor-visa-6-month-limit) | exact-date-required | 1 |
+| 2027-03-01 | 1 | [learn/canada-visitor-visa-6-month-limit.html](/learn/canada-visitor-visa-6-month-limit) | exact-date-required | 2 |
 | 2027-03-01 | 1 | [learn/georgia-visa-free-365-days.html](/learn/georgia-visa-free-365-days) | exact-date-required | 1 |
 | 2027-03-01 | 1 | [learn/japan-90-day-rule.html](/learn/japan-90-day-rule) | exact-date-required | 1 |
-| 2027-03-01 | 1 | [learn/schengen-90-180-rule.html](/learn/schengen-90-180-rule) | exact-date-required | 2 |
-| 2027-03-01 | 1 | [learn/schengen-single-entry-visa.html](/learn/schengen-single-entry-visa) | exact-date-required | 1 |
-| 2027-03-01 | 1 | [learn/turkiye-90-180-rule.html](/learn/turkiye-90-180-rule) | exact-date-required | 1 |
+| 2027-03-01 | 1 | [learn/schengen-90-180-rule.html](/learn/schengen-90-180-rule) | exact-date-required | 3 |
+| 2027-03-01 | 1 | [learn/schengen-single-entry-visa.html](/learn/schengen-single-entry-visa) | exact-date-required | 2 |
+| 2027-03-01 | 1 | [learn/turkiye-90-180-rule.html](/learn/turkiye-90-180-rule) | exact-date-required | 2 |
 | 2027-03-01 | 1 | [learn/uk-standard-visitor-visa-180-day-rule.html](/learn/uk-standard-visitor-visa-180-day-rule) | exact-date-required | 3 |
-| 2027-03-01 | 1 | [learn/us-b1-b2-visa-180-day-limit.html](/learn/us-b1-b2-visa-180-day-limit) | exact-date-required | 3 |
-| 2027-03-01 | 1 | [learn/us-visa-waiver-90-day-limit.html](/learn/us-visa-waiver-90-day-limit) | exact-date-required | 1 |
+| 2027-03-01 | 1 | [learn/us-b1-b2-visa-180-day-limit.html](/learn/us-b1-b2-visa-180-day-limit) | exact-date-required | 4 |
+| 2027-03-01 | 1 | [learn/us-visa-waiver-90-day-limit.html](/learn/us-visa-waiver-90-day-limit) | exact-date-required | 2 |
 
 ## 2027-06
 

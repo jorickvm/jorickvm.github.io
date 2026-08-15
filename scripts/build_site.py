@@ -39,6 +39,7 @@ FOOTER_TEMPLATE = SOURCE_ROOT / "templates" / "partials" / "site-footer.html"
 CLUSTER_DATA_PATH = SOURCE_ROOT / "data" / "content-clusters.json"
 BUILD_VERSION = "20260815a"
 SITE_HEADER_VERSION = "20260815a"
+ARTICLE_COMPONENTS_VERSION = "20260815a"
 
 # Root class that drops the background wash from the app's `.medium` step to
 # `.subtle`, for pages carrying long-form text. See assets/css/tokens.css.
@@ -187,6 +188,10 @@ def render_styles(article: dict[str, object], family: str = "article", prefix: s
     lines.append(
         f'  <link rel="stylesheet" href="{prefix}assets/css/site-header.css?v={SITE_HEADER_VERSION}" />'
     )
+    if family == "article":
+        lines.append(
+            f'  <link rel="stylesheet" href="{prefix}assets/css/article-components.css?v={ARTICLE_COMPONENTS_VERSION}" />'
+        )
     lines.append(f'  <link rel="stylesheet" href="{prefix}assets/css/site-footer.css?v={asset_version}" />')
     return "\n".join(lines)
 
@@ -215,29 +220,37 @@ def render_header(
     ).rstrip()
 
 
-def render_cluster_related(article: dict[str, object]) -> str:
+def render_cluster_related(
+    article: dict[str, object],
+    locale: dict[str, object],
+    translations: dict[str, dict[str, dict]],
+) -> str:
     if article.get("section") != "learn" or not CLUSTER_DATA_PATH.exists():
         return ""
+    source_path = str(article.get("social_source_path", article["path"]))
     assignments = json.loads(CLUSTER_DATA_PATH.read_text(encoding="utf-8"))["clusters"]
-    current = next((item for item in assignments if item["path"] == article["path"]), None)
+    current = next((item for item in assignments if item["path"] == source_path), None)
     if not current:
         return ""
     article_data = json.loads(DATA_PATH.read_text(encoding="utf-8"))["articles"]
     hub_data = json.loads(HUB_DATA_PATH.read_text(encoding="utf-8"))["hubs"] if HUB_DATA_PATH.exists() else []
     titles = {item["path"]: str(item["title"]).replace(" – AtlasDays Help Center", "").replace(" – AtlasDays", "") for item in article_data + hub_data}
-    candidates = [item["path"] for item in assignments if item["cluster"] == current["cluster"] and item["path"] != article["path"]]
+    candidates = [item["path"] for item in assignments if item["cluster"] == current["cluster"] and item["path"] != source_path]
     pillar = current["pillar"]
-    ordered = ([pillar] if pillar != article["path"] else []) + sorted(path for path in candidates if path != pillar)
+    ordered = ([pillar] if pillar != source_path else []) + sorted(path for path in candidates if path != pillar)
+    code = str(locale["code"])
+    available = {route_for(path) for path in translations.get(code, {})}
     links = []
     for path in ordered[:5]:
-        title = titles.get(path)
+        overlay = translations.get(code, {}).get(path)
+        title = str(overlay["headline"]) if overlay else titles.get(path)
         if not title:
             continue
-        href = "/" + str(path).removesuffix(".html")
+        href = localized_route(route_for(str(path)), locale, available)
         links.append(f'        <li><a href="{html.escape(href)}">{html.escape(title)}</a></li>')
     if not links:
         return ""
-    identifier = "related-" + Path(str(article["path"])).stem
+    identifier = "related-" + Path(source_path).stem
     return "\n".join(
         [
             f'    <nav class="related generated-related" aria-labelledby="{identifier}">',
@@ -336,6 +349,7 @@ OVERLAY_FIELDS = {
     "translated_on",
     "translated_by",
     "stale_ack",
+    "source_note",
 }
 
 
@@ -608,6 +622,8 @@ def derive_record(
     # the English one by the path it was generated for.
     record["social_source_path"] = source_path
     record["content"] = str(overlay["content"])
+    if "source_note" in overlay:
+        record["source_note"] = str(overlay["source_note"])
 
     # The suffix follows the section, not the template. Japanese was the only
     # translated locale for a while and it only had Help, so "article" and
@@ -787,7 +803,7 @@ def render_language_switcher(
         else:
             rows.append(
                 f'<a class="lang-switch-option" href="{html.escape(url[len(SITE_URL):])}" '
-                f'lang="{code}" hreflang="{locale["hreflang"]}">'
+                f'lang="{code}" hreflang="{locale["hreflang"]}" data-language-choice="{code}">'
                 f'<span class="lang-switch-check" aria-hidden="true"></span><span>{name}</span></a>'
             )
     css = "mobile-menu-lang" if mobile else "lang-switch"
@@ -813,29 +829,128 @@ def render_language_switcher(
     )
 
 
-def render_learn_disclaimer(
+SOURCE_MARKER = re.compile(r"\{\{source:(\d+)\}\}")
+FACTBOX_PATTERN = re.compile(
+    r'(<div class="factbox">\s*<dl>)(.*?)(</dl>\s*</div>)', re.DOTALL
+)
+LEGAL_BASIS_PATTERN = re.compile(
+    r'(<div class="legal-basis">\s*<dt>.*?</dt>\s*<dd>)(.*?)(</dd>\s*</div>)',
+    re.DOTALL,
+)
+
+
+def official_source_urls(article: dict[str, object]) -> list[str]:
+    urls: list[str] = []
+    for source in article.get("sources", []):
+        if not isinstance(source, dict) or not source.get("url"):
+            raise SystemExit(f"Invalid official source metadata: {article['path']}")
+        urls.append(str(source["url"]))
+    return urls
+
+
+def hydrate_source_note(note: str, article: dict[str, object]) -> str:
+    urls = official_source_urls(article)
+
+    def replace(match: re.Match[str]) -> str:
+        index = int(match.group(1))
+        if index >= len(urls):
+            raise SystemExit(
+                f"Official source marker {index} is out of range: {article['path']}"
+            )
+        return html.escape(urls[index], quote=True)
+
+    rendered = SOURCE_MARKER.sub(replace, note)
+    if "{{source:" in rendered:
+        raise SystemExit(f"Unresolved official source marker: {article['path']}")
+    return rendered
+
+
+def render_factbox_legal_basis(
+    content: str,
+    article: dict[str, object],
+) -> str:
+    """Link an existing legal-basis row or add the source-owned missing row."""
+    if article.get("section") != "learn" or 'class="factbox"' not in content:
+        return content
+    urls = official_source_urls(article)
+    if not urls:
+        return content
+    index = int(article.get("legal_basis_source", 0))
+    if index >= len(urls):
+        raise SystemExit(f"Legal-basis source is out of range: {article['path']}")
+    url = html.escape(urls[index], quote=True)
+    icon = (
+        '<svg class="external-link-icon" width="14" height="14" viewBox="0 0 24 24" '
+        'fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">'
+        '<path d="M14 5h5v5M19 5l-9 9"/><path d="M19 13v6H5V5h6"/></svg>'
+    )
+
+    def update_factbox(match: re.Match[str]) -> str:
+        body = match.group(2)
+
+        def link_existing(row: re.Match[str]) -> str:
+            value = row.group(2).strip()
+            return (
+                row.group(1)
+                + f'<a href="{url}" rel="nofollow">{value}{icon}</a>'
+                + row.group(3)
+            )
+
+        body, count = LEGAL_BASIS_PATTERN.subn(link_existing, body, count=1)
+        if not count:
+            citation = article.get("legal_basis")
+            if not citation:
+                return match.group(0)
+            body = body.rstrip() + (
+                '\n        <div class="legal-basis"><dt>{{t:learn.legal_basis}}</dt>'
+                f'<dd><a href="{url}" rel="nofollow">{html.escape(str(citation))}{icon}</a></dd></div>\n      '
+            )
+        return match.group(1) + body + match.group(3)
+
+    return FACTBOX_PATTERN.sub(update_factbox, content, count=1)
+
+
+def render_learn_trust(
     content: str,
     article: dict[str, object],
     locale: dict[str, object],
     strings: dict[str, dict[str, str]],
 ) -> str:
-    """Close every Learn article with one localized disclaimer, as a footnote.
-
-    It used to sit directly under the verification date, in a bordered callout,
-    which made a legal caveat the first thing a reader met instead of the answer
-    they came for. It says the same thing at the end, where a footnote belongs.
-    """
+    """Close Learn with source provenance and the advice boundary as one unit."""
     if article.get("section") != "learn":
         return content
     code = str(locale["code"])
-    label = html.escape(str(strings["learn.disclaimer_label"][code]))
     body = html.escape(str(strings["learn.disclaimer"][code]))
-    # Not an insertion anchor any more, but still a real invariant: a Learn
-    # article without a verification date is a defect worth failing on.
     if not re.search(r'<p class="verified">.*?</p>', content, flags=re.DOTALL):
         raise SystemExit(f"Learn article has no verified marker: {article['path']}")
+    note = str(article.get("source_note", "")).strip()
+    source_block = ""
+    if note:
+        source_count = len({match.group(1) for match in SOURCE_MARKER.finditer(note)})
+        label_key = "learn.official_sources" if source_count > 1 else "learn.official_source"
+        label = html.escape(str(strings[label_key][code]))
+        source_block = (
+            '\n      <section class="article-trust-item article-source" aria-labelledby="official-source-heading">'
+            '\n        <span class="article-trust-icon" aria-hidden="true">'
+            '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">'
+            '<path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5z"/>'
+            '<path d="M4 5.5v16M8 7h8M8 11h7"/></svg></span>'
+            f'\n        <div><h2 id="official-source-heading">{label}</h2>'
+            f'\n          <p class="source-line">{hydrate_source_note(note, article)}</p></div>'
+            '\n      </section>'
+        )
+    context_label = html.escape(str(strings["learn.context_label"][code]))
     return content.rstrip() + (
-        f'\n\n    <p class="learn-disclaimer"><strong>{label}:</strong> {body}</p>\n'
+        '\n\n    <aside class="article-trust">'
+        f'{source_block}'
+        '\n      <section class="article-trust-item article-context" aria-labelledby="article-context-heading">'
+        '\n        <span class="article-trust-icon" aria-hidden="true">'
+        '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">'
+        '<circle cx="12" cy="12" r="9"/><path d="M12 10v6M12 7h.01"/></svg></span>'
+        f'\n        <div><h2 id="article-context-heading">{context_label}</h2>'
+        f'\n          <p class="learn-disclaimer">{body}</p></div>'
+        '\n      </section>'
+        '\n    </aside>\n'
     )
 
 
@@ -886,7 +1001,7 @@ def render_locale_routing(
         "(function(){var q=new URLSearchParams(location.search).get('lang');if(!q)return;"
         "var e=window.AtlasDaysPageLocales[q.toLowerCase().split('-')[0]];"
         "if(e&&e.url!==location.pathname)location.replace(e.url+location.search+location.hash)})()</script>"
-        f'\n  <script defer src="{prefix}assets/js/locale-route.js?v=20260814b"></script>'
+        f'\n  <script defer src="{prefix}assets/js/locale-route.js?v=20260815a"></script>'
     )
 
 
@@ -905,7 +1020,8 @@ def render_article(
     prefix = asset_prefix(str(article["path"]))
     source_path = str(article.get("social_source_path", article["path"]))
     code = str(locale["code"])
-    content = render_learn_disclaimer(content, article, locale, strings)
+    content = render_factbox_legal_basis(content, article)
+    content = render_learn_trust(content, article, locale, strings)
     switcher = render_language_switcher(source_path, locales, translations, code, strings)
     switcher_mobile = render_language_switcher(
         source_path, locales, translations, code, strings, mobile=True, indent="          "
@@ -929,7 +1045,8 @@ def render_article(
         "{{SITE_FOOTER}}": footer_template.replace("{{ASSET_PREFIX}}", prefix).rstrip(),
         "{{ARTICLE_CONTENT}}": content,
         "{{CLUSTER_RELATED}}": (
-            render_help_tail(article, locale, strings) or render_cluster_related(article)
+            render_help_tail(article, locale, strings)
+            or render_cluster_related(article, locale, translations)
         ),
         "{{ASSET_PREFIX}}": prefix,
     }

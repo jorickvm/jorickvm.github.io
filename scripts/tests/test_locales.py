@@ -191,44 +191,55 @@ class RouteTests(unittest.TestCase):
         self.assertIn('<span class="lang-switch-current">Nederlands</span>', markup)
         self.assertIn('aria-current="true"', markup)
         self.assertIn('href="/learn/example"', markup)
+        self.assertIn('data-language-choice="en"', markup)
         self.assertEqual(markup.count('class="lang-switch-panel"'), 1)
 
 
-class LearnDisclaimerTests(unittest.TestCase):
+class LearnTrustTests(unittest.TestCase):
     STRINGS = {
-        "learn.disclaimer_label": {"en": "Important", "nl": "Let op"},
+        "learn.official_source": {"en": "Official source", "nl": "Officiële bron"},
+        "learn.official_sources": {"en": "Official sources", "nl": "Officiële bronnen"},
+        "learn.context_label": {"en": "About this article", "nl": "Over dit artikel"},
         "learn.disclaimer": {"en": "Check the source.", "nl": "Controleer de bron."},
     }
 
-    def test_learn_article_ends_with_one_disclaimer(self) -> None:
-        article = {"path": "learn/example.html", "section": "learn"}
+    def test_learn_article_ends_with_source_and_context(self) -> None:
+        article = {
+            "path": "learn/example.html",
+            "section": "learn",
+            "sources": [{"url": "https://example.gov/rule"}],
+            "source_note": 'The <a href="{{source:0}}">official rule</a> explains the test.',
+        }
         content = '<h1>Example</h1>\n<p class="verified">Last verified: today</p>\n<p>Body</p>'
 
-        rendered = build_site.render_learn_disclaimer(
+        rendered = build_site.render_learn_trust(
             content, article, {"code": "nl"}, self.STRINGS
         )
 
+        self.assertEqual(rendered.count('class="article-trust"'), 1)
         self.assertEqual(rendered.count('class="learn-disclaimer"'), 1)
+        self.assertIn("Officiële bron", rendered)
+        self.assertIn('href="https://example.gov/rule"', rendered)
+        self.assertIn("Over dit artikel", rendered)
         self.assertIn("Controleer de bron.", rendered)
-        # A footnote, so it closes the article rather than interrupting it.
-        self.assertGreater(rendered.index("learn-disclaimer"), rendered.index("Body"))
+        self.assertGreater(rendered.index("article-trust"), rendered.index("Body"))
 
-    def test_translation_note_is_gone_in_every_locale(self) -> None:
+    def test_article_without_source_note_still_has_context(self) -> None:
         article = {"path": "learn/example.html", "section": "learn"}
         content = '<p class="verified">Last verified: today</p>'
 
-        for code in ("en", "nl"):
-            rendered = build_site.render_learn_disclaimer(
-                content, article, {"code": code}, self.STRINGS
-            )
-            self.assertNotIn("learn-translation-note", rendered)
-            self.assertNotIn("Translated from English", rendered)
+        rendered = build_site.render_learn_trust(
+            content, article, {"code": "en"}, self.STRINGS
+        )
+
+        self.assertNotIn("article-source", rendered)
+        self.assertIn("About this article", rendered)
 
     def test_learn_article_without_a_verified_date_fails(self) -> None:
         article = {"path": "learn/example.html", "section": "learn"}
 
         with self.assertRaises(SystemExit):
-            build_site.render_learn_disclaimer(
+            build_site.render_learn_trust(
                 "<h1>Example</h1>\n<p>Body</p>", article, {"code": "en"}, self.STRINGS
             )
 
@@ -236,11 +247,78 @@ class LearnDisclaimerTests(unittest.TestCase):
         article = {"path": "help/example.html", "section": "help"}
         content = "<p>Help copy</p>"
         self.assertEqual(
-            build_site.render_learn_disclaimer(
+            build_site.render_learn_trust(
                 content, article, {"code": "nl"}, self.STRINGS
             ),
             content,
         )
+
+    def test_existing_legal_basis_row_becomes_a_direct_link(self) -> None:
+        article = {
+            "path": "learn/example.html",
+            "section": "learn",
+            "sources": [{"url": "https://example.gov/law"}],
+        }
+        content = (
+            '<div class="factbox"><dl><div><dt>Threshold</dt><dd>90 days</dd></div>'
+            '<div class="legal-basis"><dt>Legal basis</dt><dd>Example Act, s. 1</dd></div>'
+            '</dl></div>'
+        )
+
+        rendered = build_site.render_factbox_legal_basis(content, article)
+
+        self.assertIn('href="https://example.gov/law"', rendered)
+        self.assertIn("Example Act, s. 1", rendered)
+        self.assertEqual(rendered.count('class="legal-basis"'), 1)
+
+    def test_missing_legal_basis_row_is_generated(self) -> None:
+        article = {
+            "path": "learn/example.html",
+            "section": "learn",
+            "sources": [{"url": "https://example.gov/law"}],
+            "legal_basis": "Example Act, s. 1",
+        }
+        content = (
+            '<div class="factbox"><dl>'
+            '<div><dt>Threshold</dt><dd>90 days</dd></div>'
+            '</dl></div>'
+        )
+
+        rendered = build_site.render_factbox_legal_basis(content, article)
+
+        self.assertIn("{{t:learn.legal_basis}}", rendered)
+        self.assertIn('href="https://example.gov/law"', rendered)
+        self.assertEqual(rendered.count('class="legal-basis"'), 1)
+
+
+class RelatedArticleTests(unittest.TestCase):
+    def test_localized_article_uses_localized_related_routes_and_titles(self) -> None:
+        registry = locales.load_locales()
+        translations = build_site.load_translations(registry)
+        article = {
+            "path": "es/learn/arizona-tax-residency.html",
+            "social_source_path": "learn/arizona-tax-residency.html",
+            "section": "learn",
+        }
+
+        rendered = build_site.render_cluster_related(article, registry["es"], translations)
+
+        self.assertIn('class="related generated-related"', rendered)
+        self.assertIn('href="/es/learn/', rendered)
+        self.assertIn("Residencia fiscal", rendered)
+
+    def test_flighty_article_has_related_articles(self) -> None:
+        registry = locales.load_locales()
+        translations = build_site.load_translations(registry)
+        article = {
+            "path": "learn/flighty-flight-history-day-count.html",
+            "section": "learn",
+        }
+
+        rendered = build_site.render_cluster_related(article, registry["en"], translations)
+
+        self.assertIn('class="related generated-related"', rendered)
+        self.assertIn("Travel History", rendered)
 
 
 class FaqGraphTests(unittest.TestCase):
@@ -370,6 +448,16 @@ class StalenessTests(unittest.TestCase):
 
     def test_figure_collapses_to_its_slot_key(self) -> None:
         self.assertIn("[figure:widget-gallery]", locales.translatable_source(self.FRAGMENT))
+
+    def test_source_note_changes_metadata_hash_only_when_present(self) -> None:
+        source = {"title": "Example", "meta": []}
+        before = locales.meta_hash(source)
+
+        self.assertEqual(before, locales.meta_hash({**source}))
+        self.assertNotEqual(
+            before,
+            locales.meta_hash({**source, "source_note": "See the official rule."}),
+        )
 
 
 if __name__ == "__main__":

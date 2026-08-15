@@ -23,7 +23,7 @@ _site-src/
   templates/                        page layout + header/footer partials
 ```
 
-`_site-src/data/articles.json` is the single article registry. A page exists on the site because it has a record there; that record carries its title, metadata, JSON-LD, style variant, review tier, and, for jurisdiction pages, the `residency` object that puts it on the hub tables. `routes.json` drives `sitemap.xml` and `llms.txt`. Nothing reaches a generated surface without going through these files.
+`_site-src/data/articles.json` is the single article registry. A page exists on the site because it has a record there; that record carries its title, metadata, JSON-LD, style variant, review tier, and, for jurisdiction pages, the `residency` object that puts it on the hub tables. Learn records also own their structured official-source URLs in `sources`, the explanatory `source_note`, and, where the fragment's factbox did not already name the law, `legal_basis`. The build turns those fields into a linked legal-basis row and a shared source/context panel; do not hand-author either component in a fragment. `routes.json` drives `sitemap.xml` and `llms.txt`. Nothing reaches a generated surface without going through these files.
 
 ## Languages
 
@@ -37,9 +37,11 @@ _site-src/data/glossary.json       terminology snapshot, generated from the app 
 _site-src/content/<code>/…          translated fragments
 ```
 
-Japanese covers the Help Center at `/ja/help/…`; Dutch covers the whole site at `/nl/…`; Spanish is a draft. English stays unprefixed, so `en` is simply the locale whose `route_prefix` is empty.
+Japanese covers the Help Center at `/ja/help/…`; Dutch and Spanish cover the whole site at `/nl/…` and `/es/…`; German is the current draft locale. English stays unprefixed, so `en` is simply the locale whose `route_prefix` is empty.
 
 **A translation record supplies prose and nothing else.** Paths, canonicals, hreflang, JSON-LD, og tags, next-step URLs, and the rendered date are all derived from the English source record, and setting one of them in an overlay is a build error. That is deliberate: it means a translation cannot invent a URL or a JSON-LD graph in a language nobody here can proofread, and `validate_help_next_steps` keeps guarding the routes for free.
+
+Official-source URLs are source-owned too. A localized `source_note` may translate the explanation and anchor text, but it refers to the English record's URLs with `{{source:0}}`, `{{source:1}}`, and so on. The legal-basis link, source panel, context disclaimer, and cluster-related navigation are template components, so one change propagates across every Learn article and every language on rebuild.
 
 Templates and partials carry two marker forms, both resolved by `scripts/locales.py`:
 
@@ -60,10 +62,10 @@ Adding the next language should be `locales.json` + a `ui-strings.json` column +
 
 1. Refresh the terminology snapshot if the app repo has moved: `python3 scripts/sync_glossary.py`. It covers every non-English locale in `locales.json`.
 2. Write `_site-src/content/<code>/<section>/<slug>.html`, keeping the English structure (see the checks below).
-3. Add the overlay record to `_site-src/data/articles.<code>.json`, including `source_hash`, `source_meta_hash`, and `jsonld_replacements` for any page whose JSON-LD carries prose.
+3. Add the overlay record to `_site-src/data/articles.<code>.json`, including a localized `source_note` when the English record has one, `source_hash`, `source_meta_hash`, and `jsonld_replacements` for any page whose JSON-LD carries prose. Keep the `{{source:n}}` markers unchanged; URLs never belong in the overlay.
 4. Rebuild as usual. Localized routes need no `routes.json` row: `build_route_outputs.py` derives them from the overlay registries, so a published locale cannot leave a page out of the sitemap.
 
-`scripts/check_translations.py` gates all of it, and runs first in CI. It enforces terminology against the app's own shipped strings, structural parity with the English source (heading, list, figure, and internal-link counts), Japanese typography, and translation staleness.
+`scripts/check_translations.py` gates terminology against the app's own shipped strings, structural parity with the English source (heading, list, figure, and internal-link counts), Japanese typography, and translation staleness. `scripts/check_untranslated.py` separately catches multi-word English copy that survived inside a translated fragment. Both run before the build in CI.
 
 **Staleness**: each overlay records the hash of the English fragment and metadata it was translated from. Editing English copy fails the build until the translation catches up. When the edit genuinely does not change meaning, add a `stale_ack` carrying the new hash, a reason, and an `expires` date; it warns until that date and errors after it.
 
@@ -74,7 +76,7 @@ Adding the next language should be `locales.json` + a `ui-strings.json` column +
 ## Adding or editing an article
 
 1. Edit the fragment under `_site-src/content/<section>/`, or add a new one.
-2. Register it in `_site-src/data/articles.json`, and add a route to `routes.json`.
+2. Register it in `_site-src/data/articles.json`, and add a route to `routes.json`. For Learn, put verified government URLs in `sources` and the prose that explains them in `source_note`; use `{{source:n}}` markers inside that note. A factbox must have a Legal basis row: use the row in the fragment, or set `legal_basis` and `legal_basis_source` for the build to add it.
 3. Rebuild, in this order (each output feeds the next):
 
 ```bash
@@ -115,6 +117,7 @@ Serves the committed HTML with GitHub Pages' extensionless URLs, so links resolv
 | `sync_help_screenshots.py` | Swaps a Help screenshot placeholder for a `<figure>` once its WebP lands, in every locale. |
 | `capture_website_screenshots.py` | Drives the iOS Simulator to capture Help Center screenshots (macOS only). `--locale` captures in another interface language. |
 | `check_translations.py` | Gates translated pages on terminology, structural parity, typography, and staleness. |
+| `check_untranslated.py` | Flags reader-facing English phrases left in translated fragments. |
 | `sync_glossary.py` | Snapshots product terminology from the app repo into `glossary.json`. |
 | `locales.py` | Shared locale registry, marker resolution, dates, and translation hashing. |
 | `check_external_sources.py` | Weekly link check over the official sources articles cite. |

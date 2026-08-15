@@ -12,9 +12,9 @@
   // away and is advised against for crawlable pages. Offer, do not move.
   var locales = window.AtlasDaysPageLocales;
   if (!locales) return;
-  if (new URLSearchParams(location.search).get("lang")) return;
 
   var STORE_PREFIX = "lang-offer-dismissed:";
+  var CHOICE_KEY = "site-language-choice";
 
   function stored(key) {
     try {
@@ -32,23 +32,45 @@
     }
   }
 
-  // First browser preference that this page actually has a translation for.
-  // navigator.languages is in the reader's own priority order, so someone who
-  // lists English above Dutch is not offered Dutch.
-  var preferred = (navigator.languages && navigator.languages.length
-    ? navigator.languages
-    : [navigator.language || ""]);
-  var match = null;
-  for (var i = 0; i < preferred.length; i += 1) {
-    var base = String(preferred[i] || "").toLowerCase().split("-")[0];
-    if (!base) continue;
-    if (locales[base]) {
-      match = { code: base, entry: locales[base] };
-      break;
+  // Browser preference is only a fallback. A language chosen in the site menu
+  // is a stronger signal and must not immediately trigger an offer to undo it.
+  document.addEventListener("click", function (event) {
+    var link = event.target.closest("[data-language-choice]");
+    if (!link) return;
+    try {
+      localStorage.setItem(CHOICE_KEY, link.getAttribute("data-language-choice"));
+    } catch (error) {
+      /* Navigation still works; only future offers lose the preference. */
     }
-    // The page's own language ranks above a translation of it: an English page
-    // is the right page for an en-GB reader, so stop looking.
-    if (base === String(document.documentElement.lang || "en").toLowerCase().split("-")[0]) return;
+  });
+
+  if (new URLSearchParams(location.search).get("lang")) return;
+
+  var currentLanguage = String(document.documentElement.lang || "en").toLowerCase().split("-")[0];
+  var explicitChoice = stored(CHOICE_KEY);
+  if (explicitChoice === currentLanguage) return;
+
+  var match = null;
+  if (explicitChoice && locales[explicitChoice]) {
+    match = { code: explicitChoice, entry: locales[explicitChoice] };
+  } else {
+    // First browser preference that this page actually has a translation for.
+    // navigator.languages is in the reader's own priority order, so someone who
+    // lists English above Dutch is not offered Dutch.
+    var preferred = (navigator.languages && navigator.languages.length
+      ? navigator.languages
+      : [navigator.language || ""]);
+    for (var i = 0; i < preferred.length; i += 1) {
+      var base = String(preferred[i] || "").toLowerCase().split("-")[0];
+      if (!base) continue;
+      if (locales[base]) {
+        match = { code: base, entry: locales[base] };
+        break;
+      }
+      // The page's own language ranks above a translation of it: an English page
+      // is the right page for an en-GB reader, so stop looking.
+      if (base === currentLanguage) return;
+    }
   }
   if (!match) return;
   if (match.entry.url === location.pathname) return;
@@ -64,6 +86,7 @@
     link.className = "lang-offer-link";
     link.href = match.entry.url;
     link.hreflang = match.code;
+    link.setAttribute("data-language-choice", match.code);
     link.textContent = match.entry.label;
 
     var close = document.createElement("button");

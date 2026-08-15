@@ -32,7 +32,7 @@
 
   <script>(function(){var d=document.documentElement,q=new URLSearchParams(location.search).get('theme'),t=null;if(q==='light'||q==='dark'){t=q;try{sessionStorage.setItem('theme',q)}catch(e){}}else{try{t=sessionStorage.getItem('theme')}catch(e){}if(!t)try{t=localStorage.getItem('theme')}catch(e){}}d.setAttribute('data-theme',t==='light'?'light':'dark')})()</script>
   <script>window.AtlasDaysPageLocales={"en":{"url":"/help/","name":"English","label":"Read this page in English","dismiss":"Dismiss"},"ja":{"url":"/ja/help/","name":"日本語","label":"このページを日本語で読む","dismiss":"閉じる"},"nl":{"url":"/nl/help/","name":"Nederlands","label":"Lees deze pagina in het Nederlands","dismiss":"Sluiten"}};(function(){var q=new URLSearchParams(location.search).get('lang');if(!q)return;var e=window.AtlasDaysPageLocales[q.toLowerCase().split('-')[0]];if(e&&e.url!==location.pathname)location.replace(e.url+location.search+location.hash)})()</script>
-  <script defer src="../../assets/js/locale-route.js?v=20260814b"></script>
+  <script defer src="../../assets/js/locale-route.js?v=20260815a"></script>
   <link rel="stylesheet" href="../../assets/css/tokens.css?v=20260815a" />
   <link rel="stylesheet" href="../../assets/css/hub-variants/a2023fe42813.css?v=20260815a" />
   <link rel="stylesheet" href="../../assets/css/hub-variants/bccad2bbae69.css?v=20260815a" />
@@ -71,7 +71,7 @@
             <img src="../../assets/qrcode-appstore.png" width="164" height="164" alt="">
           </div>
         </div>
-        <details class="lang-switch"><summary aria-label="Idioma" title="Idioma"><svg class="lang-switch-globe" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg><span class="lang-switch-current">Español</span><svg class="lang-switch-caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><nav class="lang-switch-panel" aria-label="Idioma"><a class="lang-switch-option" href="/help/" lang="en" hreflang="en"><span class="lang-switch-check" aria-hidden="true"></span><span>English</span></a><a class="lang-switch-option" href="/ja/help/" lang="ja" hreflang="ja"><span class="lang-switch-check" aria-hidden="true"></span><span>日本語</span></a><a class="lang-switch-option" href="/nl/help/" lang="nl" hreflang="nl"><span class="lang-switch-check" aria-hidden="true"></span><span>Nederlands</span></a><span class="lang-switch-option is-current" lang="es" aria-current="true"><svg class="lang-switch-check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg><span>Español</span></span></nav></details>
+        <details class="lang-switch"><summary aria-label="Idioma" title="Idioma"><svg class="lang-switch-globe" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg><span class="lang-switch-current">Español</span><svg class="lang-switch-caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><nav class="lang-switch-panel" aria-label="Idioma"><a class="lang-switch-option" href="/help/" lang="en" hreflang="en" data-language-choice="en"><span class="lang-switch-check" aria-hidden="true"></span><span>English</span></a><a class="lang-switch-option" href="/ja/help/" lang="ja" hreflang="ja" data-language-choice="ja"><span class="lang-switch-check" aria-hidden="true"></span><span>日本語</span></a><a class="lang-switch-option" href="/nl/help/" lang="nl" hreflang="nl" data-language-choice="nl"><span class="lang-switch-check" aria-hidden="true"></span><span>Nederlands</span></a><span class="lang-switch-option is-current" lang="es" aria-current="true"><svg class="lang-switch-check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg><span>Español</span></span></nav></details>
         <button class="theme-toggle" type="button" aria-label="Cambiar entre claro y oscuro" title="Cambiar entre claro y oscuro" onclick="toggleTheme()">
           <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
           <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -271,12 +271,12 @@
       </details>
     </section>
 
-    <p class="filter-empty" data-filter-empty hidden role="status"><strong>No matches</strong>Try a different word, or clear the search.</p>
+    <p class="filter-empty" data-filter-empty hidden role="status"><strong>Sin resultados</strong>Prueba con otra palabra o borra la búsqueda.</p>
 
     <a class="help-secondary-link" href="/es/learn/">
       <span>
-        <strong>Travel Rule Library</strong>
-        <small>Visa, residency, and day-count rules by place or topic</small>
+        <strong>Biblioteca de reglas de viaje</strong>
+        <small>Reglas de visado, residencia y recuento de días por lugar o tema</small>
       </span>
       <span aria-hidden="true">›</span>
     </a>
@@ -284,10 +284,10 @@
 
   <section class="support-note" id="support">
     <div>
-      <h2>Still need help?</h2>
-      <p>Tell us what you expected, what happened, and which dates are involved. Add a screenshot if it helps explain the issue.</p>
+      <h2>¿Necesitas más ayuda?</h2>
+      <p>Cuéntanos qué esperabas, qué ocurrió y qué fechas están implicadas. Añade una captura si ayuda a explicar el problema.</p>
     </div>
-    <a href="#support" id="support-email" data-email-user="support" data-email-domain="atlasdays.app">Contact support <span aria-hidden="true">→</span></a>
+    <a href="#support" id="support-email" data-email-user="support" data-email-domain="atlasdays.app">Contactar con soporte <span aria-hidden="true">→</span></a>
   </section>
 </main>
 
