@@ -37,8 +37,8 @@ STANDALONE_TEMPLATE = SOURCE_ROOT / "templates" / "standalone.html"
 HEADER_TEMPLATE = SOURCE_ROOT / "templates" / "partials" / "site-header.html"
 FOOTER_TEMPLATE = SOURCE_ROOT / "templates" / "partials" / "site-footer.html"
 CLUSTER_DATA_PATH = SOURCE_ROOT / "data" / "content-clusters.json"
-BUILD_VERSION = "20260814e"
-SITE_HEADER_VERSION = "20260814f"
+BUILD_VERSION = "20260815a"
+SITE_HEADER_VERSION = "20260815a"
 
 # Root class that drops the background wash from the app's `.medium` step to
 # `.subtle`, for pages carrying long-form text. See assets/css/tokens.css.
@@ -348,6 +348,13 @@ def load_translations(locales: dict[str, dict]) -> dict[str, dict[str, dict]]:
             continue
         path = SOURCE_ROOT / str(relative)
         if not path.exists():
+            # Registering the locale comes first and writing its registry comes
+            # later, so a draft locale legitimately points at a file that does
+            # not exist yet; `check_translations.py` has always tolerated that.
+            # Only a published locale must have one, because that is the point
+            # at which readers can reach the pages.
+            if locale.get("status") != "published":
+                continue
             raise SystemExit(f"Locale {code!r} points at a missing registry: {relative}")
         data = json.loads(path.read_text(encoding="utf-8"))
         overlays: dict[str, dict] = {}
@@ -423,6 +430,63 @@ def localize_url(url: str, locale: dict, available: set[str]) -> str:
     return SITE_URL + localized_route(route, locale, available)
 
 
+FAQ_PAIR = re.compile(r"<h3[^>]*>(.*?)</h3>\s*<p[^>]*>(.*?)</p>", re.DOTALL)
+MARKUP = re.compile(r"<[^>]+>")
+
+
+def faq_pairs(fragment: str) -> list[tuple[str, str]]:
+    """Every `<h3>` question and the `<p>` answer under it, in document order."""
+    return [
+        (" ".join(MARKUP.sub("", q).split()), " ".join(MARKUP.sub("", a).split()))
+        for q, a in FAQ_PAIR.findall(fragment)
+    ]
+
+
+def faq_strings(graph: object) -> list[str]:
+    """Every question and answer in a `FAQPage` graph, in order."""
+    if not isinstance(graph, dict) or graph.get("@type") != "FAQPage":
+        return []
+    out: list[str] = []
+    for question in graph.get("mainEntity", []):
+        if not isinstance(question, dict):
+            continue
+        out.append(str(question.get("name", "")))
+        answer = question.get("acceptedAnswer")
+        if isinstance(answer, dict):
+            out.append(str(answer.get("text", "")))
+    return [text for text in out if text]
+
+
+def derived_faq_replacements(overlay: dict, source: dict, label: str) -> dict[str, str]:
+    """Localized FAQ strings lifted out of the translated fragment.
+
+    The visible FAQ and the `FAQPage` graph are the same content. Asking a
+    translator to supply it twice, once as prose and once in the overlay, is how
+    the two drift: Dutch shipped 57 Learn pages whose visible FAQ was Dutch and
+    whose structured data was still English, because nothing fails when the
+    second copy is simply absent. Deriving it means the translation is written
+    once, in the fragment, and the graph follows it for free.
+
+    Positional, because the question text is exactly what changed. That is only
+    safe while the two fragments have the same shape, so a mismatch raises
+    instead of emitting a graph that is half translated.
+    """
+    english = faq_pairs((SOURCE_ROOT / str(source["content"])).read_text(encoding="utf-8"))
+    if not english:
+        return {}
+    translated = faq_pairs((SOURCE_ROOT / str(overlay["content"])).read_text(encoding="utf-8"))
+    if len(translated) != len(english):
+        raise SystemExit(
+            f"{label}: {len(english)} question-and-answer blocks in English, "
+            f"{len(translated)} in the translation; the FAQ graph cannot be derived"
+        )
+    pairs: dict[str, str] = {}
+    for (en_q, en_a), (loc_q, loc_a) in zip(english, translated):
+        pairs[en_q] = loc_q
+        pairs[en_a] = loc_a
+    return pairs
+
+
 def translate_jsonld(
     raw: str,
     overlay: dict,
@@ -438,11 +502,26 @@ def translate_jsonld(
     """
     code = str(locale["code"])
     own_route = SITE_URL + localized_route(route_for(str(source["path"])), locale, available)
-    hub_route = SITE_URL + localized_route("/help/", locale, available)
+    # Every hub a breadcrumb can point at, not just Help. Japanese was Help-only
+    # when this was written, so hardcoding /help/ was invisible until Dutch
+    # shipped Learn and 80 pages published a "Travel Rules" crumb inside
+    # otherwise-Dutch structured data. The name is localized even when the URL
+    # still resolves to English, because it has to match the visible breadcrumb.
+    hub_routes = {
+        SITE_URL + localized_route(route, locale, available): key
+        for route, key in (("/help/", "nav.help"), ("/learn/", "nav.learn"))
+    }
     graph = json.loads(raw)
+    label = f"{code}/{source['path']}"
+    # Derived first, so an explicit `jsonld_replacements` entry still wins: the
+    # homepage sets strings that are not FAQ prose, and any article can override
+    # a derived pair without giving up the derivation for the rest.
     replacements = {
-        str(key): str(value)
-        for key, value in dict(overlay.get("jsonld_replacements", {})).items()
+        **derived_faq_replacements(overlay, source, label),
+        **{
+            str(key): str(value)
+            for key, value in dict(overlay.get("jsonld_replacements", {})).items()
+        },
     }
 
     def walk(node: object) -> object:
@@ -470,13 +549,43 @@ def translate_jsonld(
             item = str(out.get("item", ""))
             if item == own_route:
                 out["name"] = str(overlay["headline"])
-            elif item == hub_route:
-                out["name"] = str(strings["nav.help"][code])
+            elif item in hub_routes:
+                out["name"] = str(strings[hub_routes[item]][code])
         if out.get("@type") == "Article":
             out["inLanguage"] = code
         return out
 
-    return json.dumps(walk(graph), indent=2, ensure_ascii=False)
+    rendered = walk(graph)
+    # The gate that makes any of this trustworthy, because the failure it
+    # catches is silent: an unreplaced key leaves English in the graph, and the
+    # page still builds and still reads correctly to anyone looking at it.
+    #
+    # It cannot be a plain hard failure yet. Dutch shipped 52 Learn pages whose
+    # FAQ graph is still English, and those need real translation rather than a
+    # code change, so they are enumerated in `faq_graph_english` and checked in
+    # both directions: a page not on the list may not strand English, and a page
+    # on the list must actually still strand some, so the list shrinks as the
+    # debt is paid and can never quietly grow. Same contract as `untranslated`.
+    if code != default_locale_code() and faq_strings(graph):
+        english = set(faq_strings(graph))
+        stranded = [
+            text
+            for text in faq_strings(rendered)
+            if text in english and replacements.get(text) != text
+        ]
+        known = str(source["path"]) in set(locale.get("faq_graph_english", []))
+        if stranded and not known:
+            raise SystemExit(
+                f"{label}: FAQ structured data is still English after translation: "
+                f"{stranded[0]!r}. Add the localized question and answer to this "
+                "overlay's jsonld_replacements."
+            )
+        if known and not stranded:
+            raise SystemExit(
+                f"{label}: listed in faq_graph_english for {code}, but its FAQ graph "
+                "is fully translated. Remove the entry."
+            )
+    return json.dumps(rendered, indent=2, ensure_ascii=False)
 
 
 def derive_record(
@@ -550,9 +659,14 @@ def derive_record(
         {**link, "href": localize_url(str(link.get("href", "")), locale, available)}
         for link in source.get("links", [])
     ]
+    # A draft locale emits no alternate set at all. `alternate_links` lists only
+    # published locales, so a draft page would otherwise advertise en and nl
+    # while omitting itself, and the published pages would not point back: a
+    # one-way hreflang cluster, which is a worse signal than none. noindex plus
+    # no alternates is what "invisible until verified" actually means.
     record["links"] = links + (
         alternate_links(source_path, locales, translations)
-        if source.get("locale_alternates") is not False
+        if source.get("locale_alternates") is not False and locale.get("status") == "published"
         else []
     )
 
@@ -705,31 +819,24 @@ def render_learn_disclaimer(
     locale: dict[str, object],
     strings: dict[str, dict[str, str]],
 ) -> str:
-    """Put one localized, prominent disclaimer near the start of every Learn article."""
+    """Close every Learn article with one localized disclaimer, as a footnote.
+
+    It used to sit directly under the verification date, in a bordered callout,
+    which made a legal caveat the first thing a reader met instead of the answer
+    they came for. It says the same thing at the end, where a footnote belongs.
+    """
     if article.get("section") != "learn":
         return content
     code = str(locale["code"])
     label = html.escape(str(strings["learn.disclaimer_label"][code]))
     body = html.escape(str(strings["learn.disclaimer"][code]))
-    translation = ""
-    if code != default_locale_code():
-        note = html.escape(str(strings["learn.translation_note"][code]))
-        translation = f'\n      <p class="learn-translation-note">{note}</p>'
-    notice = (
-        f'\n\n    <aside class="learn-disclaimer" aria-label="{label}">'
-        f'\n      <p><strong>{label}:</strong> {body}</p>{translation}'
-        '\n    </aside>'
+    # Not an insertion anchor any more, but still a real invariant: a Learn
+    # article without a verification date is a defect worth failing on.
+    if not re.search(r'<p class="verified">.*?</p>', content, flags=re.DOTALL):
+        raise SystemExit(f"Learn article has no verified marker: {article['path']}")
+    return content.rstrip() + (
+        f'\n\n    <p class="learn-disclaimer"><strong>{label}:</strong> {body}</p>\n'
     )
-    rendered, count = re.subn(
-        r'(<p class="verified">.*?</p>)',
-        rf'\1{notice}',
-        content,
-        count=1,
-        flags=re.DOTALL,
-    )
-    if count != 1:
-        raise SystemExit(f"Learn article has no unique verified marker: {article['path']}")
-    return rendered
 
 
 def render_locale_routing(

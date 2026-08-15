@@ -23,6 +23,8 @@ import json
 import re
 from pathlib import Path
 
+from locales import default_locale_code, load_locales
+
 SITE_ROOT = Path(__file__).resolve().parents[1]
 GLOSSARY_PATH = SITE_ROOT / "_site-src" / "data" / "glossary.json"
 DEFAULT_APP_REPO = Path.home() / "Projects" / "AtlasDays" / "AtlasDays"
@@ -53,6 +55,19 @@ FORBIDDEN_ALWAYS = {
 
 TABLE_HEADING = re.compile(r"^####\s+Accepted (\w+) terminology\s*$")
 BACKTICKED = re.compile(r"`([^`]+)`")
+
+
+def translated_locale_codes() -> list[str]:
+    """Every non-English locale, in locales.json order.
+
+    The default used to be a hardcoded `["ja"]`, from when Japanese was the only
+    translation. Because a run rewrites the whole snapshot, a bare invocation
+    after Dutch shipped would have quietly deleted Dutch terminology and left
+    `check_translations.py` enforcing nothing on `/nl/help/`. Deriving it means
+    adding a language stays a data change.
+    """
+    default = default_locale_code()
+    return [code for code in load_locales() if code != default]
 
 
 def parse_args() -> argparse.Namespace:
@@ -176,7 +191,7 @@ def main() -> int:
     if not app_repo.exists():
         print(f"App repo not found: {app_repo}")
         return 1
-    codes = args.locale or ["ja"]
+    codes = args.locale or translated_locale_codes()
     payload = json.dumps(build(app_repo, codes), indent=2, ensure_ascii=False) + "\n"
     if args.check:
         current = GLOSSARY_PATH.read_text(encoding="utf-8") if GLOSSARY_PATH.exists() else ""

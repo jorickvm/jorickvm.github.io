@@ -57,7 +57,10 @@ ORDERED_LIST = re.compile(r"<ol\b")
 IF_NEEDED = re.compile(r'<section class="if-needed"')
 FIGURE_SLOT = re.compile(r'<img src="[^"]*/([\w\-]+)\.webp"')
 DEFERRED_SLOT = re.compile(r"<!-- SCREENSHOT_DEFERRED: ([\w\-]+) \|")
-INTERNAL_HREF = re.compile(r'href="(/[\w\-./]*)"')
+# The fragment is part of the link. Without it here, an anchored href like
+# /help/#support was invisible to this check in every locale, and a Spanish
+# homepage shipped two links into the English Help Center that nothing caught.
+INTERNAL_HREF = re.compile(r'href="(/[\w\-./]*(?:#[\w\-]+)?)"')
 TAGS = re.compile(r"<[^>]+>")
 # Figures carry pixel dimensions, which are not facts about the article.
 FIGURES = re.compile(r"<figure.*?</figure>", re.DOTALL)
@@ -217,9 +220,12 @@ def check_structure(
             f"{label}: the translation drops number(s) present in English: {dict(lost)}"
         )
 
-    expected_links = {
-        localized_route(href, locale, available) for href in INTERNAL_HREF.findall(english)
-    }
+    def localize_href(href: str) -> str:
+        """Localize the path and put the fragment back on the end."""
+        path, sep, fragment = href.partition("#")
+        return localized_route(path, locale, available) + sep + fragment
+
+    expected_links = {localize_href(href) for href in INTERNAL_HREF.findall(english)}
     actual_links = set(INTERNAL_HREF.findall(translated))
     missing = expected_links - actual_links
     invented = actual_links - expected_links

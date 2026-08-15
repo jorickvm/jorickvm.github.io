@@ -6,9 +6,11 @@ Static HTML served straight from this repo by GitHub Pages. No framework, no bun
 
 ## Deploying has no build step. Authoring does.
 
-This is the one thing to know before editing anything. Pages under `learn/` and `help/`, the hub pages, and `about|privacy|terms.html` are **generated** by `scripts/build_site.py` from sources in `_site-src/`, and the rendered output is committed. Editing those files directly gets overwritten by the next build, and `build_site.py --check` fails when committed HTML no longer matches its sources.
+This is the one thing to know before editing anything. Pages under `learn/` and `help/`, the hub pages, and every root page listed in `_site-src/data/pages.json` are **generated** by `scripts/build_site.py` from sources in `_site-src/`, and the rendered output is committed. Editing those files directly gets overwritten by the next build, and `build_site.py --check` fails when committed HTML no longer matches its sources.
 
-Genuinely hand-authored: `index.html`, `support.html`, `404.html`, the `app/*/index.html` alias stubs, and two redirect stubs in `learn/`.
+All ten root pages are generated, `index.html`, `404.html`, and `support.html` included; they moved into `pages.json` when Dutch shipped, because a page that cannot be translated cannot be localized.
+
+Genuinely hand-authored: the `app/*/index.html` alias stubs, and three meta-refresh redirect stubs in `learn/`.
 
 `changelog.html` is shared with the AtlasDays app repo, which owns the release notes. `scripts/sync_changelog.py` replaces only the contents of `<div class="release-stack">`, so a release updates the cards and leaves this repo's header, footer, social metadata, and theme bootstrap intact.
 
@@ -30,12 +32,12 @@ The site is generated one locale at a time from the same templates and the same 
 ```
 _site-src/data/locales.json        which locales exist, and how each formats a route, date, and title
 _site-src/data/ui-strings.json     chrome copy (nav, footer, article furniture), keyed string-first
-_site-src/data/articles.ja.json    Japanese overlays, joined to articles.json by `source`
+_site-src/data/articles.<code>.json  overlays, joined to articles.json, hubs.json and pages.json by `source`
 _site-src/data/glossary.json       terminology snapshot, generated from the app repo
-_site-src/content/ja/…             translated fragments
+_site-src/content/<code>/…          translated fragments
 ```
 
-Japanese Help Center pages are served at `/ja/help/…`. English stays unprefixed, so `en` is simply the locale whose `route_prefix` is empty.
+Japanese covers the Help Center at `/ja/help/…`; Dutch covers the whole site at `/nl/…`; Spanish is a draft. English stays unprefixed, so `en` is simply the locale whose `route_prefix` is empty.
 
 **A translation record supplies prose and nothing else.** Paths, canonicals, hreflang, JSON-LD, og tags, next-step URLs, and the rendered date are all derived from the English source record, and setting one of them in an overlay is a build error. That is deliberate: it means a translation cannot invent a URL or a JSON-LD graph in a language nobody here can proofread, and `validate_help_next_steps` keeps guarding the routes for free.
 
@@ -56,10 +58,10 @@ Adding the next language should be `locales.json` + a `ui-strings.json` column +
 
 ### Translating
 
-1. Refresh the terminology snapshot if the app repo has moved: `python3 scripts/sync_glossary.py`.
-2. Write `_site-src/content/<code>/help/<slug>.html`, keeping the English structure (see the checks below).
-3. Add the overlay record to `_site-src/data/articles.<code>.json`, including `source_hash` and `source_meta_hash`.
-4. Add a `routes.json` row per page, and rebuild as usual.
+1. Refresh the terminology snapshot if the app repo has moved: `python3 scripts/sync_glossary.py`. It covers every non-English locale in `locales.json`.
+2. Write `_site-src/content/<code>/<section>/<slug>.html`, keeping the English structure (see the checks below).
+3. Add the overlay record to `_site-src/data/articles.<code>.json`, including `source_hash`, `source_meta_hash`, and `jsonld_replacements` for any page whose JSON-LD carries prose.
+4. Rebuild as usual. Localized routes need no `routes.json` row: `build_route_outputs.py` derives them from the overlay registries, so a published locale cannot leave a page out of the sitemap.
 
 `scripts/check_translations.py` gates all of it, and runs first in CI. It enforces terminology against the app's own shipped strings, structural parity with the English source (heading, list, figure, and internal-link counts), Japanese typography, and translation staleness.
 

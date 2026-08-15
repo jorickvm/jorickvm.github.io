@@ -1,5 +1,9 @@
+import json
+import shutil
 import sys
+import tempfile
 import unittest
+import unittest.mock
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -194,13 +198,9 @@ class LearnDisclaimerTests(unittest.TestCase):
     STRINGS = {
         "learn.disclaimer_label": {"en": "Important", "nl": "Let op"},
         "learn.disclaimer": {"en": "Check the source.", "nl": "Controleer de bron."},
-        "learn.translation_note": {
-            "en": "Translated from English.",
-            "nl": "Vertaald uit het Engels.",
-        },
     }
 
-    def test_learn_article_gets_one_disclaimer_after_verification(self) -> None:
+    def test_learn_article_ends_with_one_disclaimer(self) -> None:
         article = {"path": "learn/example.html", "section": "learn"}
         content = '<h1>Example</h1>\n<p class="verified">Last verified: today</p>\n<p>Body</p>'
 
@@ -210,19 +210,27 @@ class LearnDisclaimerTests(unittest.TestCase):
 
         self.assertEqual(rendered.count('class="learn-disclaimer"'), 1)
         self.assertIn("Controleer de bron.", rendered)
-        self.assertIn("Vertaald uit het Engels.", rendered)
-        self.assertLess(rendered.index("learn-disclaimer"), rendered.index("Body"))
+        # A footnote, so it closes the article rather than interrupting it.
+        self.assertGreater(rendered.index("learn-disclaimer"), rendered.index("Body"))
 
-    def test_english_disclaimer_has_no_translation_note(self) -> None:
+    def test_translation_note_is_gone_in_every_locale(self) -> None:
         article = {"path": "learn/example.html", "section": "learn"}
         content = '<p class="verified">Last verified: today</p>'
 
-        rendered = build_site.render_learn_disclaimer(
-            content, article, {"code": "en"}, self.STRINGS
-        )
+        for code in ("en", "nl"):
+            rendered = build_site.render_learn_disclaimer(
+                content, article, {"code": code}, self.STRINGS
+            )
+            self.assertNotIn("learn-translation-note", rendered)
+            self.assertNotIn("Translated from English", rendered)
 
-        self.assertIn("Check the source.", rendered)
-        self.assertNotIn("learn-translation-note", rendered)
+    def test_learn_article_without_a_verified_date_fails(self) -> None:
+        article = {"path": "learn/example.html", "section": "learn"}
+
+        with self.assertRaises(SystemExit):
+            build_site.render_learn_disclaimer(
+                "<h1>Example</h1>\n<p>Body</p>", article, {"code": "en"}, self.STRINGS
+            )
 
     def test_help_article_is_unchanged(self) -> None:
         article = {"path": "help/example.html", "section": "help"}
@@ -233,6 +241,104 @@ class LearnDisclaimerTests(unittest.TestCase):
             ),
             content,
         )
+
+
+class FaqGraphTests(unittest.TestCase):
+    """The FAQ graph is the one place a translation can silently stay English.
+
+    Nothing about a page looks wrong when it happens: the prose is translated,
+    every structural check passes, and only a reader of the page source would
+    notice. Dutch shipped 57 pages that way.
+    """
+
+    GRAPH = json.dumps(
+        {
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            "mainEntity": [
+                {
+                    "@type": "Question",
+                    "name": "Is Australia's test based on the calendar year?",
+                    "acceptedAnswer": {"@type": "Answer", "text": "No, the income year."},
+                }
+            ],
+        }
+    )
+    SOURCE = {"path": "learn/x.html", "content": "content/learn/x.html"}
+
+    def _write(self, english: str, translated: str) -> Path:
+        root = Path(tempfile.mkdtemp())
+        (root / "content" / "learn").mkdir(parents=True)
+        (root / "content" / "nl" / "learn").mkdir(parents=True)
+        (root / "content" / "learn" / "x.html").write_text(english, encoding="utf-8")
+        (root / "content" / "nl" / "learn" / "x.html").write_text(translated, encoding="utf-8")
+        self.addCleanup(shutil.rmtree, root)
+        return root
+
+    def _render(self, root: Path, overlay: dict, locale: dict) -> str:
+        with unittest.mock.patch.object(build_site, "SOURCE_ROOT", root):
+            return build_site.translate_jsonld(
+                self.GRAPH, overlay, self.SOURCE, locale, set(), {}
+            )
+
+    def test_matching_prose_is_derived_without_an_overlay_entry(self) -> None:
+        root = self._write(
+            "<h3>Is Australia's test based on the calendar year?</h3><p>No, the income year.</p>",
+            "<h3>Gaat de toets uit van het kalenderjaar?</h3><p>Nee, het inkomstenjaar.</p>",
+        )
+        overlay = {"content": "content/nl/learn/x.html", "headline": "H", "description": "D"}
+
+        rendered = self._render(root, overlay, {"code": "nl"})
+
+        self.assertIn("Gaat de toets uit van het kalenderjaar?", rendered)
+        self.assertIn("Nee, het inkomstenjaar.", rendered)
+
+    def test_standalone_graph_copy_must_be_translated_explicitly(self) -> None:
+        """The graph is written to stand alone in a rich result, so it is often
+        not the same sentence as the page. That cannot be derived, and going
+        unnoticed is exactly the bug."""
+        root = self._write(
+            "<h3>Is the test based on the calendar year?</h3><p>No, the income year.</p>",
+            "<h3>Gaat de toets uit van het kalenderjaar?</h3><p>Nee, het inkomstenjaar.</p>",
+        )
+        overlay = {"content": "content/nl/learn/x.html", "headline": "H", "description": "D"}
+
+        with self.assertRaises(SystemExit) as caught:
+            self._render(root, overlay, {"code": "nl"})
+        self.assertIn("still English", str(caught.exception))
+
+    def test_a_known_gap_is_allowed_only_while_it_is_real(self) -> None:
+        english = "<h3>Is the test based on the calendar year?</h3><p>No, the income year.</p>"
+        dutch = "<h3>Gaat de toets uit van het kalenderjaar?</h3><p>Nee, het inkomstenjaar.</p>"
+        root = self._write(english, dutch)
+        overlay = {"content": "content/nl/learn/x.html", "headline": "H", "description": "D"}
+        listed = {"code": "nl", "faq_graph_english": ["learn/x.html"]}
+
+        # Listed, and genuinely still English: allowed, so the build stays green.
+        # The answer derives from the matching prose; the standalone question
+        # is the part that cannot, and is what remains English here.
+        rendered = self._render(root, overlay, listed)
+        self.assertIn("Is Australia's test based on the calendar year?", rendered)
+        self.assertIn("Nee, het inkomstenjaar.", rendered)
+
+        # Listed, but now fully translated: the entry is stale and must go.
+        overlay["jsonld_replacements"] = {
+            "Is Australia's test based on the calendar year?": "Gaat de Australische toets uit van het kalenderjaar?",
+        }
+        with self.assertRaises(SystemExit) as caught:
+            self._render(root, overlay, listed)
+        self.assertIn("Remove the entry", str(caught.exception))
+
+    def test_a_shape_mismatch_fails_instead_of_guessing(self) -> None:
+        root = self._write(
+            "<h3>Q1</h3><p>A1</p><h3>Q2</h3><p>A2</p>",
+            "<h3>V1</h3><p>A1</p>",
+        )
+        overlay = {"content": "content/nl/learn/x.html", "headline": "H", "description": "D"}
+
+        with self.assertRaises(SystemExit) as caught:
+            self._render(root, overlay, {"code": "nl"})
+        self.assertIn("cannot be derived", str(caught.exception))
 
 
 class DateTests(unittest.TestCase):
