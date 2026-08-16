@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ja" class="wash-subtle">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>旅行の滞在日数を記録する方法：スプレッドシートが破綻する理由｜AtlasDays</title>
+  <meta name="description" content="滞在日数の記録が本当は何のためのものか、スプレッドシートや記憶が思うより早く破綻する理由、そして長く使える旅行記録の条件を解説します。" />
+  <meta property="og:title" content="旅行の滞在日数を記録する方法：スプレッドシートが破綻する理由｜AtlasDays" />
+  <meta property="og:description" content="滞在日数の記録が本当は何のためのものか、スプレッドシートや記憶が思うより早く破綻する理由、そして長く使える旅行記録の条件を解説します。" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://atlasdays.app/ja/learn/how-to-track-travel-days" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="旅行の滞在日数を記録する方法：スプレッドシートが破綻する理由｜AtlasDays" />
+  <meta name="twitter:description" content="滞在日数の記録が本当は何のためのものか、スプレッドシートや記憶が思うより早く破綻する理由、そして長く使える旅行記録の条件を解説します。" />
+  <meta name="apple-itunes-app" content="app-id=6760133544, app-argument=https://apps.apple.com/app/atlasdays-track-country-days/id6760133544" />
+  <meta property="og:locale" content="ja_JP" />
+  <meta property="og:image" content="https://atlasdays.app/assets/social/learn/how-to-track-travel-days.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="AtlasDaysの「旅行の滞在日数を記録する方法：スプレッドシートが破綻する理由」共有カード" />
+  <meta name="twitter:image" content="https://atlasdays.app/assets/social/learn/how-to-track-travel-days.png" />
+  <meta name="twitter:image:alt" content="AtlasDaysの「旅行の滞在日数を記録する方法：スプレッドシートが破綻する理由」共有カード" />
+  <link rel="canonical" href="https://atlasdays.app/ja/learn/how-to-track-travel-days" />
+  <link rel="alternate" hreflang="en" href="https://atlasdays.app/learn/how-to-track-travel-days" />
+  <link rel="alternate" hreflang="ja" href="https://atlasdays.app/ja/learn/how-to-track-travel-days" />
+  <link rel="alternate" hreflang="nl" href="https://atlasdays.app/nl/learn/how-to-track-travel-days" />
+  <link rel="alternate" hreflang="de" href="https://atlasdays.app/de/learn/how-to-track-travel-days" />
+  <link rel="alternate" hreflang="es" href="https://atlasdays.app/es/learn/how-to-track-travel-days" />
+  <link rel="alternate" hreflang="x-default" href="https://atlasdays.app/learn/how-to-track-travel-days" />
+  <link rel="icon" type="image/png" href="../../assets/brand/favicon_light.png?v=20260325a" media="(prefers-color-scheme: light)" />
+  <link rel="icon" type="image/png" href="../../assets/brand/favicon_dark.png?v=20260325a" media="(prefers-color-scheme: dark)" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "旅行の滞在日数を記録する方法：スプレッドシートが破綻する理由",
+    "description": "滞在日数の記録が本当は何のためのものか、スプレッドシートや記憶が思うより早く破綻する理由、そして長く使える旅行記録の条件を解説します。",
+    "author": {
+      "@type": "Organization",
+      "name": "AtlasDays"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "AtlasDays"
+    },
+    "url": "https://atlasdays.app/ja/learn/how-to-track-travel-days",
+    "datePublished": "2026-03-16",
+    "dateModified": "2026-06-13",
+    "inLanguage": "ja"
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "AtlasDays",
+        "item": "https://atlasdays.app/ja/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "旅行ルール",
+        "item": "https://atlasdays.app/ja/learn/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 3,
+        "name": "旅行の滞在日数を記録する方法：スプレッドシートが破綻する理由",
+        "item": "https://atlasdays.app/ja/learn/how-to-track-travel-days"
+      }
+    ]
+  }
+  </script>
+  <script>(function(){var d=document.documentElement,q=new URLSearchParams(location.search).get('theme'),t=null;if(q==='light'||q==='dark'){t=q;try{sessionStorage.setItem('theme',q)}catch(e){}}else{try{t=sessionStorage.getItem('theme')}catch(e){}if(!t)try{t=localStorage.getItem('theme')}catch(e){}}d.setAttribute('data-theme',t==='light'?'light':'dark')})()</script>
+  <script>window.AtlasDaysPageLocales={"en":{"url":"/learn/how-to-track-travel-days","name":"English","label":"Read this page in English","dismiss":"Dismiss"},"nl":{"url":"/nl/learn/how-to-track-travel-days","name":"Nederlands","label":"Lees deze pagina in het Nederlands","dismiss":"Sluiten"},"de":{"url":"/de/learn/how-to-track-travel-days","name":"Deutsch","label":"Diese Seite auf Deutsch lesen","dismiss":"Schließen"},"es":{"url":"/es/learn/how-to-track-travel-days","name":"Español","label":"Lee esta página en español","dismiss":"Cerrar"}};(function(){var q=new URLSearchParams(location.search).get('lang');if(!q)return;var e=window.AtlasDaysPageLocales[q.toLowerCase().split('-')[0]];if(e&&e.url!==location.pathname)location.replace(e.url+location.search+location.hash)})()</script>
+  <script defer src="../../assets/js/locale-route.js?v=20260815a"></script>
+  <link rel="stylesheet" href="../../assets/css/tokens.css?v=20260815a" />
+  <link rel="stylesheet" href="../../assets/css/article-variants/9e71d65b8f5b.css?v=20260815a" />
+  <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260815a" />
+  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20260815a" />
+  <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260815a" />
+</head>
+<body>
+  <a class="skip-link" href="#main-content">本文へスキップ</a>
+  <header class="top-bar">
+    <div class="top-bar-inner">
+      <a class="brand" href="/ja/" aria-label="AtlasDaysホーム">
+        <span class="brand-mark">
+          <img class="logo-dark" src="../../assets/brand/logo_dark.png?v=20260325a" alt="" width="1024" height="1024" />
+          <img class="logo-light" src="../../assets/brand/logo_light.png?v=20260325a" alt="" width="1024" height="1024" />
+        </span>
+        <span>AtlasDays</span>
+      </a>
+      <nav class="top-links" aria-label="メインナビゲーション">
+        <a href="/ja/help/">ヘルプセンター</a>
+        <a href="/ja/learn/" aria-current="page">旅行ルール</a>
+        <details class="nav-group hide-mobile">
+          <summary>
+            <span>活用例</span>
+            <svg class="nav-group-caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <nav class="nav-group-panel" aria-label="活用例のページ">
+            <a href="/ja/visa-limits">ビザの上限</a>
+            <a href="/ja/residency-thresholds">税務上の居住判定</a>
+            <a href="/ja/travel-history">旅行履歴</a>
+          </nav>
+        </details>
+        <div class="nav-cta-wrap">
+          <a class="top-cta" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">AtlasDaysを入手</a>
+          <div class="nav-qr-popup" aria-hidden="true">
+            <img src="../../assets/qrcode-appstore.png" width="164" height="164" alt="">
+          </div>
+        </div>
+        <details class="lang-switch"><summary aria-label="言語" title="言語"><svg class="lang-switch-globe" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg><span class="lang-switch-current">日本語</span><svg class="lang-switch-caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><nav class="lang-switch-panel" aria-label="言語"><a class="lang-switch-option" href="/learn/how-to-track-travel-days" lang="en" hreflang="en" data-language-choice="en"><span class="lang-switch-check" aria-hidden="true"></span><span>English</span></a><span class="lang-switch-option is-current" lang="ja" aria-current="true"><svg class="lang-switch-check" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="m5 12 4 4L19 6"/></svg><span>日本語</span></span><a class="lang-switch-option" href="/nl/learn/how-to-track-travel-days" lang="nl" hreflang="nl" data-language-choice="nl"><span class="lang-switch-check" aria-hidden="true"></span><span>Nederlands</span></a><a class="lang-switch-option" href="/de/learn/how-to-track-travel-days" lang="de" hreflang="de" data-language-choice="de"><span class="lang-switch-check" aria-hidden="true"></span><span>Deutsch</span></a><a class="lang-switch-option" href="/es/learn/how-to-track-travel-days" lang="es" hreflang="es" data-language-choice="es"><span class="lang-switch-check" aria-hidden="true"></span><span>Español</span></a></nav></details>
+        <button class="theme-toggle" type="button" aria-label="外観を切り替える" title="外観を切り替える" onclick="toggleTheme()">
+          <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </nav>
+      <details class="mobile-menu">
+        <summary aria-label="ナビゲーションメニューを開く">
+          <span class="mobile-menu-label">メニュー</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </summary>
+        <nav class="mobile-menu-panel" aria-label="モバイルナビゲーション">
+          <a href="/ja/">ホーム</a>
+          <a href="/ja/help/">ヘルプセンター</a>
+          <a href="/ja/learn/" aria-current="page">旅行ルール</a>
+          <p class="mobile-group-label">活用例</p>
+          <a class="mobile-group-item" href="/ja/visa-limits">ビザの上限</a>
+          <a class="mobile-group-item" href="/ja/residency-thresholds">税務上の居住判定</a>
+          <a class="mobile-group-item" href="/ja/travel-history">旅行履歴</a>
+          <a href="/ja/about">AtlasDaysについて</a>
+          <a class="mobile-menu-cta" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">AtlasDaysを入手</a>
+        </nav>
+      </details>
+    </div>
+  </header>
+
+  <main id="main-content">
+  <article>
+    <nav class="breadcrumb">
+      <a href="/ja/">AtlasDays</a> / <a href="/ja/learn/">旅行ルール</a>
+    </nav>
+
+    <h1>旅行の滞在日数を記録する方法：スプレッドシートが破綻する理由</h1>
+    <p class="subtitle">滞在日数の記録が本当は何のためのものか、その場しのぎの仕組みが時間とともに崩れるのはなぜか、そして後から使える旅行記録の条件は何かを、実務的に解説します。</p>
+    <p class="verified">最終確認：2026年6月</p>
+
+    <div class="callout">
+      <p><strong>要点：</strong>合計を記録しているつもりでも、実際に必要なのは、後からの問い合わせ、修正、異なる数え方に耐えられる、日付の入った旅行記録が1つあることです。合計はいつでも計算し直せます。旅行が抜け落ちた記録は、後から直せません。</p>
+    </div>
+
+    <h2>記録は本当は何のためか</h2>
+    <p>滞在日数の記録は、画面に出る数字のためのものではありません。いつどこにいたかを日付付きで残し、後から出てくる問いをすべて同じ記録から答えられるようにするためのものです。その問いは、それぞれ性質が違います。</p>
+    <ul>
+      <li>短期滞在ビザの上限日数は、ローリングの集計期間の中での滞在を見ます</li>
+      <li>税務上の居住の問題は、特定の年や判定における滞在を見ます</li>
+      <li>ビザ申請は、旅行履歴が網羅されていて、内部で矛盾していないかを見ます</li>
+    </ul>
+    <p>共通しているのは、たった1つの万能ルールではありません。その下にある旅行記録の質です。</p>
+
+    <h2>記憶、メモ、スプレッドシートが破綻する理由</h2>
+    <p>多くの人は、手元にあるものから始めます。記憶、メモアプリ、予約のメール、スプレッドシート、カレンダーです。目立つ旅行が数件なら、どれでも機能します。破綻するときも、一度に壊れるのではなく、少しずつ進みます。</p>
+    <ul>
+      <li><strong>記憶は短い旅行を圧縮します。</strong>週末の外出、乗り継ぎ、日帰りの国境越え、昔の経路変更から順に消えていきます。</li>
+      <li><strong>メモは分散します。</strong>スマートフォンのメモ、メールの検索結果、予約のフォルダ、途中まで更新したスプレッドシートは、合わせても1つの記録にはなりません。</li>
+      <li><strong>スプレッドシートは完璧な更新が前提です。</strong>旅行が1件抜けたり日付が1つ違ったりするだけで、その上に積み上げた合計が静かに狂います。</li>
+      <li><strong>修正は伝わりません。</strong>後から違う入国日が見つかると、そこから導いた数字をすべて確認し直すことになります。</li>
+      <li><strong>その場しのぎの仕組みは不確かさを隠します。</strong>元の記録が不完全でも、見た目だけは整った精度を出してしまいます。</li>
+    </ul>
+    <p>問題は、スプレッドシートが計算できないことではありません。スプレッドシートの質が、そこに入る旅行記録の質を超えられないことです。</p>
+
+    <h2>長く使える記録に必要なもの</h2>
+    <ul>
+      <li><strong>日付の入った旅行を主役にすること。</strong>長く使えるのは旅行そのものの記録であって、国ごとの合計ではありません。</li>
+      <li><strong>日付の確からしさを明示すること。</strong>正確な日付、おおよその日付、不明な日付を、黙って混ぜてはいけません。</li>
+      <li><strong>時系列としての整合。</strong>旅行が誤って重なったり、誰も気づかない矛盾を残したりしないようにします。</li>
+      <li><strong>唯一の拠りどころ。</strong>同じ記録で複数の問いに答えられるようにし、目的別の別版を作らないことです。</li>
+      <li><strong>直せる余地。</strong>旅行を1件直すために、全体を作り直してからでないと結果を信用できない、という状態は避けます。</li>
+    </ul>
+    <p>長く使える仕組みかどうかは、自動化の有無で決まりません。何年も旅行を重ね、問いが変わっていったあとでも、その記録を信用できるかどうかで決まります。</p>
+
+    <div class="midcta">
+      <p><strong>自分で記録していますか。</strong>AtlasDaysは、日付の入った旅行記録をiPhone内に非公開で保存し、必要な日数を数えます。ビザの上限日数、税務上の居住の基準日数、国ごとの合計に対応します。<a href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">アプリを入手 →</a></p>
+    </div>
+
+    <h2>記録の信用を損なうもの</h2>
+    <ul>
+      <li><strong>短い旅行の抜け。</strong>最初に抜け落ちる旅行であり、後の合計を静かに歪める旅行でもあります。</li>
+      <li><strong>乗り継ぎの扱いがあいまいなこと。</strong>実際に何があったかを記録していなければ、乗り継ぎを別扱いするルールを後から当てはめることはできません。</li>
+      <li><strong>気づかない重なりや重複。</strong>インポートの重複や日付範囲の重なりがあると、どの集計も信用しにくくなります。</li>
+      <li><strong>作り出した精度。</strong>おおよその月を正確な日付に仕立てると、根拠のない確信が生まれます。</li>
+      <li><strong>複数の版が並び立つこと。</strong>税務用のシート、ビザ用のリスト、申請用のエクスポートと分かれた時点で、矛盾が始まります。</li>
+    </ul>
+    <p>いったん信用が崩れると、負担は集計から再構成へと移ります。滞在日数の問いに答えるのではなく、自分の記録が信じるに足ることを示す作業になります。</p>
+
+    <div class="callout">
+      <p><strong>本当のリスク：</strong>問題が記録の側にあるのに、ルールのほうを疑ってしまうことがよくあります。旅行履歴が誤っていれば、その上に積み上げた集計は、正確に見えたまま使いものになりません。</p>
+    </div>
+
+    <h2>記録の役割が終わり、ルールが始まるところ</h2>
+    <p>ビザの上限日数、短期滞在ルール、税務上の居住の判定、申請書で求められる旅行履歴は、1つの制度ではありません。同じ旅行記録がそのすべてを支えられますが、滞在の数え方や解釈はそれぞれ異なります。だからこそ、2つの作業は分けておく価値があります。まず記録を保ち、それから該当するルールを当てはめる、という順序です。</p>
+    <p>このページが扱うのは記録であって、ルールそのものではありません。入国管理、法律、税務に関する助言でもありません。「このルールのもとで、この日はどう扱われるのか」が問いであれば、答えは一般的な記録の解説ではなく、そのルールの公式ガイダンスにあります。</p>
+
+    <div class="cta-box">
+      <h3>スプレッドシートより記録が効いてくるとき</h3>
+      <p>AtlasDaysは日付の入った旅行履歴を保ちます。新しい数え方の問いが出てくるたびに、メモや予約や記憶から同じ旅行を組み立て直す必要はありません。</p>
+      <a class="cta-btn" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> AtlasDaysを入手</a>
+    </div>
+
+    <aside class="article-trust">
+      <section class="article-trust-item article-context" aria-labelledby="article-context-heading">
+        <span class="article-trust-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M12 10v6M12 7h.01"/></svg></span>
+        <div><h2 id="article-context-heading">この記事について</h2>
+          <p class="learn-disclaimer">AtlasDaysは一般的な情報を提供するもので、法律・税務・移民に関する助言ではありません。規則は変わり、結果は個別の事情によって異なります。AtlasDaysだけに頼らず、リンク先の公的情報を確認するか、専門家に相談してください。</p></div>
+      </section>
+    </aside>
+
+    <nav class="related generated-related" aria-labelledby="related-how-to-track-travel-days">
+      <h2 id="related-how-to-track-travel-days">このトピックの関連記事</h2>
+      <ul>
+        <li><a href="/ja/learn/country-counting-rules-every-list-compared">国の数え方を比べる：主要なリストは何を数えているか</a></li>
+        <li><a href="/ja/learn/does-a-layover-count-as-visiting-a-country">乗り継ぎは訪問した国に数えるか：入国と滞在日数の考え方</a></li>
+        <li><a href="/ja/learn/what-counts-as-a-day-for-visa-purposes">ビザの日数で何が「1日」になるか：入国日、出国日、乗り継ぎの扱い</a></li>
+      </ul>
+    </nav>
+  </article>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer-inner">
+      <div class="site-footer-brand">
+        <a class="brand" href="/ja/" aria-label="AtlasDaysホーム">
+          <span class="brand-mark">
+            <img class="logo-dark" src="../../assets/brand/logo_dark.png?v=20260325a" alt="" width="1024" height="1024" loading="lazy" />
+            <img class="logo-light" src="../../assets/brand/logo_light.png?v=20260325a" alt="" width="1024" height="1024" loading="lazy" />
+          </span>
+          <span>AtlasDays</span>
+        </a>
+        <p>iPhoneで旅行日数をプライベートに記録。</p>
+      </div>
+      <nav class="site-footer-links" aria-label="フッター">
+        <div>
+          <h2>サイト内を見る</h2>
+          <a href="/ja/help/">ヘルプセンター</a>
+          <a href="/ja/learn/">旅行ルール</a>
+          <a href="/changelog">変更履歴</a>
+        </div>
+        <div>
+          <h2>AtlasDays</h2>
+          <a href="/ja/about">AtlasDaysについて</a>
+          <a href="/ja/privacy">プライバシー</a>
+          <a href="/ja/terms">利用規約</a>
+        </div>
+        <div>
+          <h2>ダウンロード</h2>
+          <a href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Storeで見る</a>
+        </div>
+      </nav>
+    </div>
+    <div class="site-footer-meta">© 2026 AtlasDays. 日付を正確に把握したい旅行者のために。</div>
+  </footer>
+
+  <script src="../../assets/js/theme.js?v=20260714a"></script>
+  <script src="../../assets/js/navigation.js?v=20260814a"></script>
+  <!-- Cloudflare Web Analytics -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;token&quot;: &quot;1488e163b83a4eee81b63340359b6566&quot;}"></script>
+  <!-- End Cloudflare Web Analytics -->
+</body>
+</html>

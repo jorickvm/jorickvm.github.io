@@ -93,6 +93,23 @@ MUST_TRANSLATE = {
         "Poland", "Romania", "Schengen Area", "Singapore", "Thailand",
         "Türkiye", "United Arab Emirates",
     },
+    # Japanese writes every place name in kana, so the whole set belongs here
+    # rather than the handful Spanish needed. The residency hub tables are why:
+    # a cell is a bare place name, which is one word, and the general check only
+    # looks at runs of two or more. Without this, an untranslated hub row would
+    # render, resolve, and be visible only to a reader of the language.
+    "ja": {
+        "Arizona", "Australia", "Bulgaria", "California", "Canada", "Colombia",
+        "Colorado", "Connecticut", "Cyprus", "Czech Republic", "Estonia",
+        "Georgia", "Greece", "Hawaii", "Idaho", "Indonesia", "Ireland", "Italy",
+        "Japan", "Maine", "Malaysia", "Malta", "Maryland", "Massachusetts",
+        "Mauritius", "Minnesota", "Montenegro", "Nebraska", "New Jersey",
+        "New York", "New Zealand", "North Dakota", "Ohio", "Oregon",
+        "Pennsylvania", "Poland", "Portugal", "Rhode Island", "Romania",
+        "Schengen", "Schengen Area", "Serbia", "Singapore", "Thailand",
+        "Türkiye", "United Arab Emirates", "United Kingdom", "United States",
+        "Vermont", "Vietnam", "Virginia",
+    },
 }
 
 # Numbered legal headings whose noun is spelled the same in the target
