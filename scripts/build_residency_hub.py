@@ -33,6 +33,7 @@ import argparse
 import json
 import re
 import sys
+import unicodedata
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -88,6 +89,27 @@ def build_table(entries: list[dict], locale: dict, existing: dict[str, dict]) ->
     # fragment renders one directory deeper, so it needs a root-absolute one.
     flag_base = "../assets/flags/" if is_default else "/assets/flags/"
 
+    def sort_key(row: tuple) -> tuple[str, str]:
+        """Alphabetical by the locale's own place name, Latin accents folded.
+
+        A plain `.lower()` is a code-point sort, so an accented initial lands
+        after `z`: French put `Émirats arabes unis` last and `Géorgie` after
+        `Grèce`. Folding diacritics for the comparison puts each name where a
+        reader of that language looks for it.
+
+        Only Latin-script names are folded. Japanese dakuten are combining
+        marks too, so folding them would reorder `シンガポール` and quietly
+        change a published locale's table as a side effect of a French fix.
+        (Dakuten-insensitive primary sorting is defensible Japanese collation;
+        it is simply not this function's business to decide that.) Cyrillic is
+        unaffected either way, since it sorts within its own block.
+        """
+        name = row[0].casefold()
+        if not all(c.isascii() or "LATIN" in unicodedata.name(c, "") for c in name if c.isalpha()):
+            return (name, name)
+        folded = unicodedata.normalize("NFD", name)
+        return ("".join(c for c in folded if not unicodedata.combining(c)), name)
+
     prepared, untranslated = [], []
     for e in entries:
         slug = str(e["slug"])
@@ -103,7 +125,7 @@ def build_table(entries: list[dict], locale: dict, existing: dict[str, dict]) ->
         prepared.append((name, data_name, threshold, window, str(e["code"]), slug))
 
     rows = []
-    for name, data_name, threshold, window, flag, slug in sorted(prepared, key=lambda r: r[0].lower()):
+    for name, data_name, threshold, window, flag, slug in sorted(prepared, key=sort_key):
         href = f"{prefix}/learn/{slug}"
         rows.append(
             f'        <tr class="hub-row" data-name="{data_name}" data-href="{href}">\n'

@@ -36,12 +36,17 @@
     unavailable: "Search is unavailable; browse the topics below."
   };
 
-  // Kept characters include the CJK ranges. Before this, [^a-z0-9] stripped
-  // every Japanese character, so a Japanese query normalised to "" and scored
-  // every entry at 1 - the search silently returned the whole list.
+  // Kept characters include the CJK and Cyrillic ranges. Before this,
+  // [^a-z0-9] stripped every Japanese character, so a Japanese query
+  // normalised to "" and scored every entry at 1 - the search silently
+  // returned the whole list. Cyrillic was the same bug waiting for Russian:
+  // "\u0442\u0440\u0435\u043a\u0435\u0440" also normalised to "".
   var CJK = "\u3040-\u309f\u30a0-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uff66-\uff9f";
-  var STRIP = new RegExp("[^a-z0-9" + CJK + "]+", "g");
-  var HAS_ASCII_WORD = /[a-z0-9]/;
+  var CYRILLIC = "\u0400-\u04ff\u0500-\u052f";
+  var STRIP = new RegExp("[^a-z0-9" + CJK + CYRILLIC + "]+", "g");
+  // Scripts that delimit words with spaces, so a query can be split into
+  // terms. Cyrillic belongs here; CJK deliberately does not.
+  var HAS_SEGMENTED_WORD = new RegExp("[a-z0-9" + CYRILLIC + "]");
 
   function normalize(value) {
     // Fold accents on Latin letters so Dutch queries such as "Georgië" and
@@ -50,6 +55,9 @@
     var folded = String(value || "").toLowerCase().normalize("NFD")
       .replace(/([a-z])[\u0300-\u036f]+/g, "$1")
       .normalize("NFC");
+    // The site writes ё where it belongs, per the app translation guidelines,
+    // but readers routinely type е for it. Fold so "счетчик" finds "счётчик".
+    folded = folded.replace(/ё/g, "е");
     return folded.replace(STRIP, " ").replace(/\bdays\b/g, "day").trim();
   }
 
@@ -59,7 +67,7 @@
   // prefix matching rather than morphological search, which is enough for a
   // few dozen articles carrying translated synonyms.
   function isSpaceless(query) {
-    return query.length > 0 && !HAS_ASCII_WORD.test(query);
+    return query.length > 0 && !HAS_SEGMENTED_WORD.test(query);
   }
 
   // Words that carry no signal on their own. Dropping them lets a natural

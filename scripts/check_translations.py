@@ -82,8 +82,25 @@ def visible_text(fragment: str) -> str:
     return TAGS.sub("\n", without_comments)
 
 
-def check_house_typography(label: str, text: str, problems: list[str]) -> None:
-    """The em-dash ban applies to every locale, including English."""
+# Languages whose own standard parenthetical mark IS the em dash, so the house
+# rule misfires on them exactly as it does on Japanese, just in the other
+# direction. Russian and Ukrainian тире is U+2014; writing an en dash there is
+# a foreign-looking substitution, not a correction. Ruled by Jorick 2026-08-17.
+EM_DASH_NATIVE_LOCALES = {"ru", "uk"}
+
+
+def check_house_typography(label: str, text: str, problems: list[str],
+                           code: str = "") -> None:
+    """The em-dash ban applies to every locale except the Cyrillic ones.
+
+    Russian and Ukrainian use U+2014 as their ordinary parenthetical dash
+    (`AtlasDays — это инструмент учёта`, `«ключ — значение»`). The house rule
+    was written for English, where an em dash reads as AI-authored text; it has
+    no such connotation in Cyrillic typography, where the mark is simply
+    correct. See the Russian entry in TRANSLATION_GUIDELINES-web.md.
+    """
+    if code in EM_DASH_NATIVE_LOCALES:
+        return
     if EM_DASH in text:
         problems.append(f"{label}: em dash (U+2014) in reader-facing copy; use an en dash or reword")
 
@@ -347,7 +364,7 @@ def main() -> int:
             english_for_checks = english + "\n" + english_source_note
             translated_for_checks = translated + "\n" + translated_source_note
             prose = visible_text(translated_for_checks)
-            check_house_typography(label, prose, problems)
+            check_house_typography(label, prose, problems, code)
             if code == "ja":
                 check_japanese_typography(label, prose, problems)
             if glossary:
