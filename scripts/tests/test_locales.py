@@ -197,10 +197,23 @@ class RouteTests(unittest.TestCase):
 
 class LearnTrustTests(unittest.TestCase):
     STRINGS = {
-        "learn.official_source": {"en": "Official source", "nl": "Officiële bron"},
-        "learn.official_sources": {"en": "Official sources", "nl": "Officiële bronnen"},
-        "learn.context_label": {"en": "About this article", "nl": "Over dit artikel"},
-        "learn.disclaimer": {"en": "Check the source.", "nl": "Controleer de bron."},
+        "learn.official_source": {"en": "Official source", "nl": "Officiële bron", "ja": "公式情報源"},
+        "learn.official_sources": {"en": "Official sources", "nl": "Officiële bronnen", "ja": "公式情報源"},
+        "learn.context_label": {
+            "en": "About this article",
+            "nl": "Over dit artikel",
+            "ja": "この記事について",
+        },
+        "learn.disclaimer": {
+            "en": "Check the source.",
+            "nl": "Controleer de bron.",
+            "ja": "情報源を確認してください。",
+        },
+    }
+    LOCALES = {
+        "en": {"code": "en", "label_colon": ":"},
+        "nl": {"code": "nl", "label_colon": ":"},
+        "ja": {"code": "ja", "label_colon": "："},
     }
 
     def test_learn_article_ends_with_source_and_context(self) -> None:
@@ -213,27 +226,44 @@ class LearnTrustTests(unittest.TestCase):
         content = '<h1>Example</h1>\n<p class="verified">Last verified: today</p>\n<p>Body</p>'
 
         rendered = build_site.render_learn_trust(
-            content, article, {"code": "nl"}, self.STRINGS
+            content, article, self.LOCALES["nl"], self.STRINGS
         )
 
         self.assertEqual(rendered.count('class="article-trust"'), 1)
         self.assertEqual(rendered.count('class="learn-disclaimer"'), 1)
         self.assertIn("Officiële bron", rendered)
         self.assertIn('href="https://example.gov/rule"', rendered)
-        self.assertIn("Over dit artikel", rendered)
-        self.assertIn("Controleer de bron.", rendered)
+        self.assertIn(
+            '<p class="learn-disclaimer"><strong>Over dit artikel:</strong> '
+            "Controleer de bron.</p>",
+            rendered,
+        )
         self.assertGreater(rendered.index("article-trust"), rendered.index("Body"))
+        # The advice boundary is prose after the citation card, not a row in it.
+        self.assertGreater(rendered.index("learn-disclaimer"), rendered.index("</aside>"))
 
-    def test_article_without_source_note_still_has_context(self) -> None:
+    def test_article_without_source_note_has_no_card_at_all(self) -> None:
         article = {"path": "learn/example.html", "section": "learn"}
         content = '<p class="verified">Last verified: today</p>'
 
         rendered = build_site.render_learn_trust(
-            content, article, {"code": "en"}, self.STRINGS
+            content, article, self.LOCALES["en"], self.STRINGS
         )
 
-        self.assertNotIn("article-source", rendered)
-        self.assertIn("About this article", rendered)
+        self.assertNotIn("article-trust", rendered)
+        self.assertIn("<strong>About this article:</strong> Check the source.", rendered)
+
+    def test_japanese_takes_the_full_width_colon_and_no_space(self) -> None:
+        article = {"path": "learn/example.html", "section": "learn"}
+        content = '<p class="verified">Last verified: today</p>'
+
+        rendered = build_site.render_learn_trust(
+            content, article, self.LOCALES["ja"], self.STRINGS
+        )
+
+        self.assertIn(
+            "<strong>この記事について：</strong>情報源を確認してください。", rendered
+        )
 
     def test_learn_article_without_a_verified_date_fails(self) -> None:
         article = {"path": "learn/example.html", "section": "learn"}
@@ -289,6 +319,48 @@ class LearnTrustTests(unittest.TestCase):
         self.assertIn("{{t:learn.legal_basis}}", rendered)
         self.assertIn('href="https://example.gov/law"', rendered)
         self.assertEqual(rendered.count('class="legal-basis"'), 1)
+
+
+class NavScriptTests(unittest.TestCase):
+    """navigation.js writes two labels at runtime, so it is handed them."""
+
+    STRINGS = {
+        "nav.menu_open": {"en": "Open navigation menu", "ja": "ナビゲーションメニューを開く"},
+        "nav.menu_close": {"en": "Close navigation menu", "ja": "ナビゲーションメニューを閉じる"},
+    }
+
+    def test_payload_carries_this_locale_and_precedes_the_script(self) -> None:
+        rendered = build_site.render_nav_script("../", "ja", self.STRINGS)
+
+        self.assertIn("ナビゲーションメニューを開く", rendered)
+        self.assertIn("ナビゲーションメニューを閉じる", rendered)
+        self.assertNotIn("Open navigation menu", rendered)
+        # The labels are useless to the script if it has already run.
+        self.assertLess(
+            rendered.index("AtlasDaysNavStrings"), rendered.index("navigation.js")
+        )
+
+    def test_every_published_locale_has_both_labels(self) -> None:
+        strings = locales.load_ui_strings()
+        for code, locale in locales.load_locales().items():
+            if locale.get("status") != "published":
+                continue
+            with self.subTest(locale=code):
+                # Would raise KeyError in the build, one locale at a time.
+                build_site.render_nav_script("../", code, strings)
+
+    def test_a_closing_tag_in_a_label_cannot_end_the_script_block(self) -> None:
+        rendered = build_site.render_nav_script(
+            "../",
+            "en",
+            {
+                "nav.menu_open": {"en": "</script> menu"},
+                "nav.menu_close": {"en": "Close navigation menu"},
+            },
+        )
+
+        self.assertNotIn("</script> menu", rendered)
+        self.assertIn("<\\/script>", rendered)
 
 
 class RelatedArticleTests(unittest.TestCase):

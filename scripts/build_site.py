@@ -38,8 +38,9 @@ HEADER_TEMPLATE = SOURCE_ROOT / "templates" / "partials" / "site-header.html"
 FOOTER_TEMPLATE = SOURCE_ROOT / "templates" / "partials" / "site-footer.html"
 CLUSTER_DATA_PATH = SOURCE_ROOT / "data" / "content-clusters.json"
 BUILD_VERSION = "20260815a"
-SITE_HEADER_VERSION = "20260815a"
-ARTICLE_COMPONENTS_VERSION = "20260815a"
+SITE_HEADER_VERSION = "20260817b"
+ARTICLE_COMPONENTS_VERSION = "20260817a"
+NAVIGATION_VERSION = "20260817b"
 
 # Root class that drops the background wash from the app's `.medium` step to
 # `.subtle`, for pages carrying long-form text. See assets/css/tokens.css.
@@ -201,13 +202,11 @@ def render_header(
     template: str,
     prefix: str = "../",
     switcher: str = "",
-    switcher_mobile: str = "",
 ) -> str:
     section = str(article.get("current_navigation", article.get("section", "")))
     return (
         template.replace("{{ASSET_PREFIX}}", prefix)
         .replace("{{LANGUAGE_SWITCHER}}", switcher)
-        .replace("{{LANGUAGE_SWITCHER_MOBILE}}", switcher_mobile)
         .replace("{{HELP_CURRENT}}", ' aria-current="page"' if section == "help" else "")
         .replace("{{LEARN_CURRENT}}", ' aria-current="page"' if section in {"learn", "day-limits"} else "")
         .replace("{{DAY_LIMITS_CURRENT}}", ' aria-current="page"' if section == "day-limits" else "")
@@ -218,6 +217,30 @@ def render_header(
         # page would announce the wrong thing.
         .replace("{{USE_CASES_CURRENT}}", ' data-current' if section == "use-cases" else "")
     ).rstrip()
+
+
+def render_nav_script(prefix: str, code: str, strings: dict[str, dict[str, str]]) -> str:
+    """navigation.js plus the two labels it cannot read from the DOM.
+
+    The drawer's summary carries a translated aria-label from the header
+    partial, and the script rewrites it on open/close so a screen reader is not
+    told to "open" a menu that is already open. Those two labels used to be
+    English literals in the script, which is one file served to every locale:
+    a Japanese reader's accessible name flipped to English on the first tap.
+    Same shape as the search strings, for the same reason.
+    """
+    copy = json.dumps(
+        {
+            "menuOpen": strings["nav.menu_open"][code],
+            "menuClose": strings["nav.menu_close"][code],
+        },
+        ensure_ascii=False,
+        separators=(",", ":"),
+    ).replace("</", "<\\/")
+    return (
+        f"  <script>window.AtlasDaysNavStrings={copy};</script>\n"
+        f'  <script src="{prefix}assets/js/navigation.js?v={NAVIGATION_VERSION}"></script>'
+    )
 
 
 def render_cluster_related(
@@ -764,7 +787,6 @@ def render_language_switcher(
     current: str,
     strings: dict[str, dict[str, str]],
     *,
-    mobile: bool = False,
     indent: str = "        ",
 ) -> str:
     """A compact menu of this page's available languages.
@@ -806,7 +828,6 @@ def render_language_switcher(
                 f'lang="{code}" hreflang="{locale["hreflang"]}" data-language-choice="{code}">'
                 f'<span class="lang-switch-check" aria-hidden="true"></span><span>{name}</span></a>'
             )
-    css = "mobile-menu-lang" if mobile else "lang-switch"
     current_name = html.escape(str(current_locale["native_name"]))
     globe = (
         '<svg class="lang-switch-globe" width="16" height="16" viewBox="0 0 24 24" '
@@ -821,7 +842,7 @@ def render_language_switcher(
     # Carries its own leading newline and indentation so a page without
     # alternates renders its surrounding header exactly as before.
     return (
-        f'\n{indent}<details class="{css}">'
+        f'\n{indent}<details class="lang-switch">'
         f'<summary aria-label="{label}" title="{label}">{globe}'
         f'<span class="lang-switch-current">{current_name}</span>{caret}</summary>'
         f'<nav class="lang-switch-panel" aria-label="{label}">{"".join(rows)}</nav>'
@@ -916,7 +937,14 @@ def render_learn_trust(
     locale: dict[str, object],
     strings: dict[str, dict[str, str]],
 ) -> str:
-    """Close Learn with source provenance and the advice boundary as one unit."""
+    """Close Learn with the source citation, then the advice boundary as prose.
+
+    The citation is a card because it is a claim about provenance the reader
+    may want to follow. The advice boundary is not: it is the same sentence on
+    every Learn page, and boxing it gave a standing disclaimer the same visual
+    weight as this article's actual sources. Below the card, as a bold lead-in
+    on a plain paragraph, it reads as a footer instead of as a second finding.
+    """
     if article.get("section") != "learn":
         return content
     code = str(locale["code"])
@@ -930,6 +958,7 @@ def render_learn_trust(
         label_key = "learn.official_sources" if source_count > 1 else "learn.official_source"
         label = html.escape(str(strings[label_key][code]))
         source_block = (
+            '\n\n    <aside class="article-trust">'
             '\n      <section class="article-trust-item article-source" aria-labelledby="official-source-heading">'
             '\n        <span class="article-trust-icon" aria-hidden="true">'
             '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">'
@@ -938,19 +967,18 @@ def render_learn_trust(
             f'\n        <div><h2 id="official-source-heading">{label}</h2>'
             f'\n          <p class="source-line">{hydrate_source_note(note, article)}</p></div>'
             '\n      </section>'
+            '\n    </aside>'
         )
-    context_label = html.escape(str(strings["learn.context_label"][code]))
-    return content.rstrip() + (
-        '\n\n    <aside class="article-trust">'
-        f'{source_block}'
-        '\n      <section class="article-trust-item article-context" aria-labelledby="article-context-heading">'
-        '\n        <span class="article-trust-icon" aria-hidden="true">'
-        '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">'
-        '<circle cx="12" cy="12" r="9"/><path d="M12 10v6M12 7h.01"/></svg></span>'
-        f'\n        <div><h2 id="article-context-heading">{context_label}</h2>'
-        f'\n          <p class="learn-disclaimer">{body}</p></div>'
-        '\n      </section>'
-        '\n    </aside>\n'
+    # The colon is locale typography, not translated copy: Japanese takes the
+    # full-width colon and French a nonbreaking space before it, so it comes
+    # from locales.json rather than being appended as ":" in code.
+    colon = str(locale["label_colon"])
+    context_label = html.escape(str(strings["learn.context_label"][code]) + colon)
+    # A full-width colon already carries its own trailing space in the glyph,
+    # so Japanese takes no space after it. Every half-width colon does.
+    gap = "" if colon == "：" else " "
+    return content.rstrip() + source_block + (
+        f'\n\n    <p class="learn-disclaimer"><strong>{context_label}</strong>{gap}{body}</p>\n'
     )
 
 
@@ -1023,9 +1051,6 @@ def render_article(
     content = render_factbox_legal_basis(content, article)
     content = render_learn_trust(content, article, locale, strings)
     switcher = render_language_switcher(source_path, locales, translations, code, strings)
-    switcher_mobile = render_language_switcher(
-        source_path, locales, translations, code, strings, mobile=True, indent="          "
-    )
     # Only routes this locale actually has may be prefixed; everything else
     # falls back to English. Without this the chrome links a Japanese page to
     # /ja/about and friends, which were never built.
@@ -1039,9 +1064,8 @@ def render_article(
         "{{METADATA}}": render_metadata(article, prefix),
         "{{STRUCTURED_DATA}}": render_structured_data(article),
         "{{STYLESHEETS}}": render_styles(article, "article", prefix),
-        "{{SITE_HEADER}}": render_header(
-            article, header_template, prefix, switcher, switcher_mobile
-        ),
+        "{{SITE_HEADER}}": render_header(article, header_template, prefix, switcher),
+        "{{NAV_SCRIPT}}": render_nav_script(prefix, code, strings),
         "{{SITE_FOOTER}}": footer_template.replace("{{ASSET_PREFIX}}", prefix).rstrip(),
         "{{ARTICLE_CONTENT}}": content,
         "{{CLUSTER_RELATED}}": (
@@ -1077,9 +1101,8 @@ def render_hub(
     source_path = str(hub.get("social_source_path", hub["path"]))
     code = str(locale["code"])
     switcher = render_language_switcher(source_path, locales, translations, code, strings)
-    switcher_mobile = render_language_switcher(
-        source_path, locales, translations, code, strings, mobile=True, indent="          "
-    )
+    header = render_header(hub, header_template, prefix, switcher)
+    nav_script = render_nav_script(prefix, code, strings)
     search_copy = json.dumps(
         {
             "resultOne": strings["search.result_one"][code],
@@ -1108,9 +1131,9 @@ def render_hub(
         "{{STRUCTURED_DATA}}": render_structured_data(hub),
         "{{STYLESHEETS}}": render_styles(hub, family, prefix),
         "{{HEAD_EXTRA}}": str(hub.get("head_extra", "")).rstrip(),
-        "{{SITE_HEADER}}": render_header(hub, header_template, prefix, switcher, switcher_mobile),
+        "{{SITE_HEADER}}": header,
+        "{{NAV_SCRIPT}}": nav_script,
         "{{LANGUAGE_SWITCHER}}": switcher,
-        "{{LANGUAGE_SWITCHER_MOBILE}}": switcher_mobile,
         "{{MAIN_CONTENT}}": content,
         "{{SITE_FOOTER}}": footer_template.replace("{{ASSET_PREFIX}}", prefix).rstrip(),
         "{{PAGE_SCRIPTS}}": str(hub.get("page_scripts", "")).rstrip(),
@@ -1128,11 +1151,13 @@ def render_hub(
     rendered = template
     for marker, value in replacements.items():
         rendered = rendered.replace(marker, value)
-    # Standalone page content can carry switcher slots inside its own custom
-    # header. MAIN_CONTENT is inserted after the first switcher pass, so resolve
-    # those two slots once more after all template markers have been expanded.
+    # The standalone template is a bare shell: its page fragment carries the
+    # header slot itself, not the template. MAIN_CONTENT is substituted after
+    # the header and switcher slots above, so resolve both once more now that
+    # the fragment is in place.
+    rendered = rendered.replace("{{SITE_HEADER}}", header)
+    rendered = rendered.replace("{{NAV_SCRIPT}}", nav_script)
     rendered = rendered.replace("{{LANGUAGE_SWITCHER}}", switcher)
-    rendered = rendered.replace("{{LANGUAGE_SWITCHER_MOBILE}}", switcher_mobile)
     rendered = localize(rendered, locale, strings, available_routes=available, context=str(hub["path"]))
     return rendered.rstrip() + "\n"
 

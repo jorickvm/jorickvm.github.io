@@ -1,8 +1,15 @@
-/* Shared site header for /help/ and /learn/ pages.
+/* Shared site header for every page on the site, homepage included.
    Each page defines its own --max, --bg, --blue, --line, --text, --muted
    CSS variables; this file uses them through var(). Loaded after the
    page's own <style> block so it wins the cascade against any legacy
-   inline header rules. */
+   inline header rules.
+
+   The homepage used to hand-roll a parallel copy of this header in
+   home.css (.site-header/.nav-links/.home-mobile-menu). The two drifted:
+   the language panel's row styles are scoped to .top-links, so on the
+   homepage they simply never applied, and the Menu button ended up a
+   different size from the controls beside it. There is one header now.
+   Do not reintroduce a page-specific copy. */
 
 .skip-link {
   position: fixed;
@@ -19,6 +26,11 @@
 .skip-link:focus { top: 14px; }
 
 .top-bar {
+  /* One size for every square control in the bar: the theme toggle, the
+     language button once it collapses to an icon, and the Menu button.
+     They sit next to each other, so a 44px Menu button beside a 36px
+     toggle reads as a mistake rather than as hierarchy. */
+  --toolbar-control: 36px;
   position: sticky;
   top: 0;
   z-index: 20;
@@ -166,28 +178,14 @@
 }
 .top-links .nav-group-panel a:hover small { color: inherit; }
 
-/* Inside the mobile panel the group is a flat labelled section: a dropdown
-   inside an already-open disclosure is a menu inside a menu. */
-.mobile-menu-panel .mobile-group-label {
-  padding: 12px 12px 4px;
-  font-size: 0.76rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--muted-2, var(--muted));
-}
-.mobile-menu-panel .mobile-group-item {
-  padding-left: 22px;
-}
-
 .theme-toggle {
   background: none;
   border: 1px solid var(--line);
   border-radius: 10px;
   color: var(--muted);
   cursor: pointer;
-  width: 36px;
-  height: 36px;
+  width: var(--toolbar-control);
+  height: var(--toolbar-control);
   display: inline-grid;
   place-items: center;
   padding: 0;
@@ -215,7 +213,9 @@ html[data-theme="light"] .theme-toggle .icon-moon { display: block; }
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 8px 16px;
+  gap: 7px;
+  min-height: var(--toolbar-control);
+  padding: 0 16px;
   border-radius: 999px;
   background: var(--action-gradient);
   box-shadow: var(--action-chrome);
@@ -230,13 +230,14 @@ html[data-theme="light"] .theme-toggle .icon-moon { display: block; }
   text-decoration: none;
 }
 .top-cta:hover { opacity: 0.92; }
+/* The glyph sits slightly high against a cap-height label without this. */
+.top-cta-glyph { margin-top: -2px; flex: none; }
 
 /* App Store QR popup on the CTA. Hover-only and desktop-only: on touch there
-   is no hover, and on a phone you would tap the link itself. Mirrored from
-   home.css for the hand-authored homepage; the two must stay in step. */
+   is no hover, and on a phone you would tap the link itself. */
 .nav-cta-wrap { position: relative; }
 .nav-qr-popup { display: none; }
-@media (min-width: 761px) and (hover: hover) {
+@media (min-width: 861px) and (hover: hover) {
   .nav-qr-popup {
     display: block;
     position: absolute;
@@ -272,7 +273,7 @@ html[data-theme="light"] .theme-toggle .icon-moon { display: block; }
    one disclosure so the header width stays constant as locales are added. */
 .lang-switch { position: relative; }
 .lang-switch > summary {
-  min-height: 36px;
+  min-height: var(--toolbar-control);
   padding: 0 9px;
   display: inline-flex;
   align-items: center;
@@ -318,7 +319,11 @@ html[data-theme="light"] .theme-toggle .icon-moon { display: block; }
   background: var(--bg-card);
   box-shadow: var(--shadow, 0 18px 48px rgba(0, 0, 0, 0.28));
 }
-.top-links .lang-switch-option {
+/* Scoped to the panel, not to .top-links. These rows used to be written
+   `.top-links .lang-switch-option`, which meant the homepage's own header
+   markup rendered the same menu with none of its row styling. The panel is
+   what owns the rows; ask it, not its ancestor. */
+.lang-switch-panel .lang-switch-option {
   min-height: 40px;
   padding: 0 10px;
   display: grid;
@@ -331,8 +336,8 @@ html[data-theme="light"] .theme-toggle .icon-moon { display: block; }
   text-decoration: none;
   white-space: nowrap;
 }
-.top-links a.lang-switch-option:hover,
-.top-links a.lang-switch-option:focus-visible {
+.lang-switch-panel a.lang-switch-option:hover,
+.lang-switch-panel a.lang-switch-option:focus-visible {
   color: var(--text);
   background: var(--blue-soft, color-mix(in srgb, var(--blue) 10%, transparent));
 }
@@ -343,22 +348,22 @@ html[data-theme="light"] .theme-toggle .icon-moon { display: block; }
 }
 .lang-switch-check { width: 15px; height: 15px; }
 .mobile-menu { display: none; position: relative; }
-.mobile-menu summary {
-  min-height: 44px;
-  padding: 0 12px;
+.mobile-menu > summary {
+  min-height: var(--toolbar-control);
+  padding: 0 10px;
   display: flex;
   align-items: center;
   gap: 8px;
   border: 1px solid var(--line);
-  border-radius: 12px;
+  border-radius: 10px;
   color: var(--text);
   cursor: pointer;
   list-style: none;
   font-weight: 600;
   font-size: 0.92rem;
 }
-.mobile-menu summary::-webkit-details-marker { display: none; }
-.mobile-menu summary:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+.mobile-menu > summary::-webkit-details-marker { display: none; }
+.mobile-menu > summary:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
 .mobile-menu-panel {
   position: absolute;
   z-index: 50;
@@ -384,10 +389,61 @@ html[data-theme="light"] .theme-toggle .icon-moon { display: block; }
 }
 .mobile-menu-panel a:hover,
 .mobile-menu-panel a[aria-current="page"] { color: var(--text); background: color-mix(in srgb, var(--blue) 10%, transparent); }
-.mobile-menu-panel .mobile-menu-cta { margin-top: 4px; color: #fff; background: var(--action-gradient); box-shadow: var(--action-chrome); font-weight: 700; }
-.mobile-menu-panel .mobile-menu-cta:hover { color: #fff; background: var(--action-gradient); opacity: 0.92; }
 
-@media (max-width: 760px) {
+/* Use cases inside the drawer. It was a flat uppercase label with three
+   indented links under it, which spent a third of the drawer's height on a
+   section most readers are not heading for. Desktop already collapses it
+   into a disclosure; this is the same control, so the two agree.
+   Nested <details> is fine here: the outer menu is open by the time this
+   one is reachable, and navigation.js closes both on Escape. */
+.mobile-nav-group > summary {
+  min-height: 44px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  border-radius: 10px;
+  color: var(--muted);
+  cursor: pointer;
+  list-style: none;
+}
+.mobile-nav-group > summary::-webkit-details-marker { display: none; }
+.mobile-nav-group > summary::marker { content: ""; }
+.mobile-nav-group > summary:hover { color: var(--text); background: color-mix(in srgb, var(--blue) 10%, transparent); }
+.mobile-nav-group > summary:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+.mobile-nav-group[data-current] > summary { color: var(--text); font-weight: 600; }
+.mobile-nav-group[open] .nav-group-caret { transform: rotate(180deg); }
+.mobile-nav-group-panel { display: grid; gap: 3px; }
+.mobile-nav-group-panel a { padding-left: 24px; }
+
+/* Above the drawer but below a full desktop, the bar sheds its two widest
+   optional pieces rather than overflowing: the brand wordmark (the logo mark
+   still links home) and the language name (the globe still says language).
+
+   This band is sized by the longest locale, not by English. Measured on the
+   Russian homepage at 862px: brand 121 + links 814 = 935 inside an 822px
+   inner, a horizontal scrollbar on a page that fit fine in English. Dropping
+   the wordmark and the language name returns ~165px, which clears every
+   locale the site ships. Doing it for all locales rather than :lang(ru) keeps
+   one bar to reason about, which is the whole point of this file.
+
+   1040px rather than 1000px: at 1002px Russian fits with 27px to spare, which
+   is inside the margin a different font stack could eat. */
+@media (max-width: 1040px) {
+  .brand > span:not(.brand-mark) { display: none; }
+  .lang-switch > summary {
+    width: var(--toolbar-control);
+    padding: 0;
+    justify-content: center;
+  }
+  .lang-switch-current,
+  .lang-switch-caret { display: none; }
+}
+
+/* The bar collapses to the drawer at 860px, not 760px: at 780px the children
+   totalled 763px inside a 740px inner even in English. */
+@media (max-width: 860px) {
   .top-bar {
     /* Not sticky on mobile, but still `relative` with a z-index: dropping to
        `static` removes the stacking context the open menu panel depends on,
@@ -407,27 +463,35 @@ html[data-theme="light"] .theme-toggle .icon-moon { display: block; }
     gap: 14px;
   }
   .brand-mark { width: 32px; height: 32px; }
-  /* The nav links collapse into the drawer, but the theme toggle and the
-     language switcher stay in the bar, pushed right against the Menu button.
-     They are one-tap controls; burying them a level deep made theme and
-     language look unavailable on a phone. */
+  /* The nav links collapse into the drawer, but the CTA, the theme toggle and
+     the language switcher stay in the bar, pushed right against the Menu
+     button. They are one-tap controls; burying them a level deep made theme,
+     language and the download look unavailable on a phone. */
   .top-links > a,
-  .top-links > .nav-group,
-  .top-links > .nav-cta-wrap { display: none; }
-  .top-links { margin-left: auto; gap: 10px; }
+  .top-links > .nav-group { display: none; }
+  .top-links { margin-left: auto; gap: 8px; }
   .mobile-menu { display: block; }
 }
 
+/* The wordmark and the language name are already gone by here; this is where
+   the Menu button drops its label and joins them as a square. */
 @media (max-width: 560px) {
-  .brand > span:not(.brand-mark) { display: none; }
   .mobile-menu-label { display: none; }
-  .lang-switch > summary {
-    width: 36px;
+  .mobile-menu > summary {
+    width: var(--toolbar-control);
     padding: 0;
     justify-content: center;
   }
-  .lang-switch-current,
-  .lang-switch-caret { display: none; }
+  .top-cta { padding: 0 13px; font-size: 0.9rem; }
+}
+
+/* Below ~380px the CTA label and three square controls stop fitting on one
+   line alongside the logo. The label goes and the glyph carries the button; the
+   anchor keeps its aria-label, so the accessible name does not go with it. */
+@media (max-width: 380px) {
+  .top-cta { padding: 0; width: var(--toolbar-control); border-radius: 10px; }
+  .top-cta-label { display: none; }
+  .top-cta-glyph { margin-top: 0; }
 }
 
 /* Inline mid-article CTA (learn/help article bodies) */

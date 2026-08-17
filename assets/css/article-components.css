@@ -37,6 +37,27 @@
   border-top: 1px solid var(--line);
 }
 
+/* The advice boundary, outside the citation card. It used to be a second row
+   inside it, which read as a finding of equal standing to this article's
+   sources. It is a standing footer, so it is set as one: plain paragraph, bold
+   lead-in, and reset in case an article variant styled .learn-disclaimer as a
+   box of its own. */
+article > .learn-disclaimer,
+.learn-disclaimer {
+  margin: 22px 0 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.6;
+}
+
+.learn-disclaimer strong {
+  color: var(--text);
+  font-weight: 650;
+}
+
 .article-trust-icon {
   display: grid;
   width: 28px;
