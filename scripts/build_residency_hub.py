@@ -57,6 +57,15 @@ ROW = re.compile(
     re.DOTALL,
 )
 
+# Primary collation order for Cyrillic place names, as a superset of the
+# Russian and Ukrainian alphabets: ґ sits after г, є after е, і and ї after и,
+# and Russian's ё, ъ, ы, э keep their own places. Neither language uses the
+# other's extra letters, so one table orders both correctly. See sort_key.
+CYRILLIC_ALPHABET = "абвгґдеёєжзиіїйклмнопрстуфхцчшщъыьэюя"
+# Mapped into a contiguous ascending range so the key stays a plain string and
+# compares against the Latin branch's key without a type error.
+CYRILLIC_ORDER = {ch: chr(0x100 + i) for i, ch in enumerate(CYRILLIC_ALPHABET)}
+
 
 def hub_targets(filename: str):
     """(locale, fragment path) for every locale whose hub fragment exists."""
@@ -90,22 +99,38 @@ def build_table(entries: list[dict], locale: dict, existing: dict[str, dict]) ->
     flag_base = "../assets/flags/" if is_default else "/assets/flags/"
 
     def sort_key(row: tuple) -> tuple[str, str]:
-        """Alphabetical by the locale's own place name, Latin accents folded.
+        """Alphabetical by the locale's own place name, per script.
 
         A plain `.lower()` is a code-point sort, so an accented initial lands
         after `z`: French put `Émirats arabes unis` last and `Géorgie` after
         `Grèce`. Folding diacritics for the comparison puts each name where a
         reader of that language looks for it.
 
+        Cyrillic needs the same treatment for a different reason, and the
+        earlier claim here that it "sorts within its own block" was true only
+        for Russian. The four letters unique to Ukrainian sit outside the а-я
+        run: `і` U+0456, `ї` U+0457, `є` U+0454 and `ґ` U+0491 all sort after
+        `я` U+044F, so a code-point sort drops Іспанія, Італія, Ірландія,
+        Індонезія and Єгипет to the bottom of the table. That is the French bug
+        in Cyrillic costume. CYRILLIC_ORDER below is a superset of the Russian
+        and Ukrainian alphabets, so one table serves both: it is a proven no-op
+        for all 25 rows Russian ships today, because Russian names contain none
+        of ґ є і ї and the letters it does use keep their relative order.
+
         Only Latin-script names are folded. Japanese dakuten are combining
         marks too, so folding them would reorder `シンガポール` and quietly
         change a published locale's table as a side effect of a French fix.
         (Dakuten-insensitive primary sorting is defensible Japanese collation;
-        it is simply not this function's business to decide that.) Cyrillic is
-        unaffected either way, since it sorts within its own block.
+        it is simply not this function's business to decide that.)
         """
         name = row[0].casefold()
-        if not all(c.isascii() or "LATIN" in unicodedata.name(c, "") for c in name if c.isalpha()):
+        letters = [c for c in name if c.isalpha()]
+        # Every branch returns a string primary, so a table that mixes scripts
+        # still compares. A locale with an untranslated row emits it in English
+        # and fails the check, but it has to sort before it can be reported.
+        if letters and all("CYRILLIC" in unicodedata.name(c, "") for c in letters):
+            return ("".join(CYRILLIC_ORDER.get(c, c) for c in name), name)
+        if not all(c.isascii() or "LATIN" in unicodedata.name(c, "") for c in letters):
             return (name, name)
         folded = unicodedata.normalize("NFD", name)
         return ("".join(c for c in folded if not unicodedata.combining(c)), name)

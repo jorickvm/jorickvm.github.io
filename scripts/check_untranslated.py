@@ -112,6 +112,14 @@ MUST_TRANSLATE = {
     },
 }
 
+# Cyrillic locales have exactly the property the Japanese entry above describes:
+# every place name is written in their own script, so a bare hub cell left in
+# English is a single Latin word that the two-word rule cannot see. Russian went
+# to production without this protection; it is added here alongside Ukrainian
+# rather than left for the next pass to rediscover.
+MUST_TRANSLATE["uk"] = set(MUST_TRANSLATE["ja"])
+MUST_TRANSLATE["ru"] = set(MUST_TRANSLATE["ja"])
+
 # Numbered legal headings whose noun is spelled the same in the target
 # language: Dutch "10. Contact" and "5. Privacy" are correct Dutch.
 NUMBERED_HEADING = re.compile(r"^\d+\.\s+[A-Z][\w'-]*$")
