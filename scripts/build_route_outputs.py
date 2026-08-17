@@ -1,5 +1,13 @@
 #!/usr/bin/env python3
-"""Generate sitemap.xml and llms.txt from the route manifest and committed HTML."""
+"""Generate the sitemap set and llms.txt from the route manifest and committed HTML.
+
+sitemap.xml is a sitemap index over one `sitemap-<code>.xml` per published
+locale. The split is for measurement, not ranking: Search Console reports
+discovery and indexing per submitted sitemap, so a locale nobody is indexing
+shows up as a number instead of a hunch. robots.txt and any existing Search
+Console registration keep pointing at sitemap.xml, which now resolves to the
+index and leads a crawler to the rest.
+"""
 
 from __future__ import annotations
 
@@ -17,6 +25,7 @@ ROOT = Path(__file__).resolve().parents[1]
 ROUTES = ROOT / "_site-src" / "data" / "routes.json"
 SITEMAP = ROOT / "sitemap.xml"
 LLMS = ROOT / "llms.txt"
+SITE_URL = "https://atlasdays.app"
 NS = "http://www.sitemaps.org/schemas/sitemap/0.9"
 ET.register_namespace("", NS)
 
@@ -46,6 +55,59 @@ def render_sitemap(routes: list[dict[str, object]]) -> str:
         ET.SubElement(node, f"{{{NS}}}priority").text = str(route.get("priority", "0.5"))
     ET.indent(root, space="  ")
     return '<?xml version="1.0" encoding="UTF-8"?>\n' + ET.tostring(root, encoding="unicode") + "\n"
+
+
+def sitemap_name(code: str) -> str:
+    return f"sitemap-{code}.xml"
+
+
+def routes_by_locale(routes: list[dict[str, object]]) -> dict[str, list[dict[str, object]]]:
+    """Indexable routes grouped by locale, default locale first, then registry order.
+
+    Grouping is by generated path rather than by the locale registry, so a
+    locale gets a sitemap only once it actually has pages: `expanded_routes`
+    never emits a draft locale, and a draft one must not get an empty file.
+    """
+    default = default_locale_code()
+    grouped: dict[str, list[dict[str, object]]] = {}
+    for route in routes:
+        if not route.get("indexable", True):
+            continue
+        grouped.setdefault(split_locale(str(route["path"]))[0], []).append(route)
+    order = [default] + [code for code in load_locales() if code != default]
+    return {code: grouped[code] for code in order if code in grouped}
+
+
+def render_sitemap_index(grouped: dict[str, list[dict[str, object]]]) -> str:
+    root = ET.Element(f"{{{NS}}}sitemapindex")
+    for code, routes in grouped.items():
+        node = ET.SubElement(root, f"{{{NS}}}sitemap")
+        ET.SubElement(node, f"{{{NS}}}loc").text = f"{SITE_URL}/{sitemap_name(code)}"
+        lastmods = [str(route["lastmod"]) for route in routes if route.get("lastmod")]
+        if lastmods:
+            # Newest page in the locale: it tells a crawler which children are
+            # worth refetching, which is the only reason an index carries dates.
+            ET.SubElement(node, f"{{{NS}}}lastmod").text = max(lastmods)
+    ET.indent(root, space="  ")
+    return '<?xml version="1.0" encoding="UTF-8"?>\n' + ET.tostring(root, encoding="unicode") + "\n"
+
+
+def sitemap_files(routes: list[dict[str, object]]) -> dict[Path, str]:
+    """Every sitemap document to write: the index, then one urlset per locale."""
+    grouped = routes_by_locale(routes)
+    files = {SITEMAP: render_sitemap_index(grouped)}
+    for code, locale_routes in grouped.items():
+        files[ROOT / sitemap_name(code)] = render_sitemap(locale_routes)
+    return files
+
+
+def orphan_sitemaps(expected: set[Path]) -> list[Path]:
+    """Per-locale sitemaps on disk that the registry no longer emits.
+
+    Retiring a locale would otherwise leave its sitemap served and crawlable,
+    pointing at pages that are now noindex or gone.
+    """
+    return sorted(path for path in ROOT.glob("sitemap-*.xml") if path not in expected)
 
 
 BASE_SECTIONS = ("Start Here", "Help", "Learn", "Site Information")
@@ -84,7 +146,7 @@ def expanded_routes(routes: list[dict[str, object]]) -> list[dict[str, object]]:
                 {
                     **base,
                     "path": localized_path,
-                    "canonical": "https://atlasdays.app" + f"/{code}" + route_for(source),
+                    "canonical": SITE_URL + f"/{code}" + route_for(source),
                     "lastmod": str(overlay.get("translated_on", base.get("lastmod", ""))),
                 }
             )
@@ -158,19 +220,28 @@ def render_llms(routes: list[dict[str, object]]) -> str:
 def main() -> int:
     options = arguments()
     routes = expanded_routes(json.loads(ROUTES.read_text(encoding="utf-8"))["routes"])
-    expected = {SITEMAP: render_sitemap(routes), LLMS: render_llms(routes)}
+    expected = {**sitemap_files(routes), LLMS: render_llms(routes)}
+    orphans = orphan_sitemaps(set(expected))
     stale = [path for path, value in expected.items() if not path.exists() or path.read_text(encoding="utf-8") != value]
     if options.check:
-        if stale:
-            print("Stale route output:")
-            for path in stale:
-                print(f"  {path.relative_to(ROOT)}")
+        if stale or orphans:
+            if stale:
+                print("Stale route output:")
+                for path in stale:
+                    print(f"  {path.relative_to(ROOT)}")
+            if orphans:
+                print("Sitemaps on disk that no locale claims:")
+                for path in orphans:
+                    print(f"  {path.relative_to(ROOT)}")
             return 1
-        print(f"Checked sitemap and llms.txt for {len(routes)} routes.")
+        print(f"Checked {len(expected) - 1} sitemaps and llms.txt for {len(routes)} routes.")
         return 0
     for path, value in expected.items():
         path.write_text(value, encoding="utf-8")
-    print(f"Built sitemap and llms.txt for {len(routes)} routes.")
+    for path in orphans:
+        path.unlink()
+        print(f"Removed {path.relative_to(ROOT)}: no locale claims it.")
+    print(f"Built {len(expected) - 1} sitemaps and llms.txt for {len(routes)} routes.")
     return 0
 
 

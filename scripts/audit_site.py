@@ -687,15 +687,45 @@ def audit_governance(records: list[PageRecord], findings: list[Finding]) -> None
         findings.append(Finding("error", "cluster-orphan", unexpected, "Assignment has no Learn article"))
 
 
+def sitemap_urls(findings: list[Finding]) -> list[str] | None:
+    """Every page URL across sitemap.xml, following it as an index when it is one.
+
+    The site splits its sitemap per locale, so the checks below have to see the
+    union: a page listed in no child is as unindexed as one listed nowhere at
+    all, and a page listed in two children is a duplicate the flat file could
+    never produce.
+    """
+
+    def parse(path: Path) -> ET.Element | None:
+        try:
+            return ET.parse(path).getroot()
+        except (ET.ParseError, OSError) as exc:
+            findings.append(Finding("error", "invalid-sitemap", path.name, str(exc)))
+            return None
+
+    root = parse(SITE_ROOT / "sitemap.xml")
+    if root is None:
+        return None
+    if root.tag != SITEMAP_NS + "sitemapindex":
+        return [str(node.text or "").strip() for node in root.iter(SITEMAP_NS + "loc")]
+
+    urls: list[str] = []
+    for entry in root.iter(SITEMAP_NS + "sitemap"):
+        loc = str(entry.findtext(SITEMAP_NS + "loc") or "").strip()
+        if not loc.startswith(SITE_ORIGIN + "/"):
+            findings.append(Finding("error", "sitemap-foreign-child", "sitemap.xml", loc))
+            continue
+        child = parse(SITE_ROOT / loc[len(SITE_ORIGIN) + 1 :])
+        if child is not None:
+            urls += [str(node.text or "").strip() for node in child.iter(SITEMAP_NS + "loc")]
+    return urls
+
+
 def audit_sitemap(records: list[PageRecord], findings: list[Finding]) -> None:
-    sitemap_path = SITE_ROOT / "sitemap.xml"
-    try:
-        root = ET.parse(sitemap_path).getroot()
-    except (ET.ParseError, OSError) as exc:
-        findings.append(Finding("error", "invalid-sitemap", "sitemap.xml", str(exc)))
+    urls = sitemap_urls(findings)
+    if urls is None:
         return
 
-    urls = [str(node.text or "").strip() for node in root.iter(SITEMAP_NS + "loc")]
     for duplicate, count in Counter(urls).items():
         if count > 1:
             findings.append(Finding("error", "sitemap-duplicate", "sitemap.xml", duplicate))

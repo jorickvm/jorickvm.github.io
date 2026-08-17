@@ -54,6 +54,8 @@ The `{{r:}}` fallback is what makes partial coverage legal: a Japanese Help page
 
 A locale carries `status: draft | published`. A draft locale builds and previews locally but is marked `noindex` and excluded from the sitemap, hreflang, `llms.txt`, and the language switcher. That is how a new language is verified end to end before it becomes discoverable.
 
+Each published locale gets its own `sitemap-<code>.xml`, with `sitemap.xml` as the sitemap index over them. The split buys nothing for ranking; it buys measurement, because Search Console reports discovery and indexing per submitted sitemap, so a locale that is not being indexed is a number rather than a hunch. `robots.txt` still points at `sitemap.xml`, so nothing needs resubmitting when a locale is added, and submitting the children individually in Search Console is what turns the per-locale reporting on. hreflang stays in the page head and is deliberately not repeated in the sitemap: two sources of truth for the same annotation is how a hreflang cluster gets discarded. Retiring a locale deletes its child file, and `--check` fails on a `sitemap-*.xml` that no locale claims.
+
 A locale also carries `coverage`. Under `complete`, every English page must have an overlay and a missing one is an error rather than a silent gap. Pages the locale deliberately serves in English go in `untranslated` instead, which is a decision rather than a to-do: `check_translations.py` rejects an entry that names something which is not an English source, and rejects one that still has an overlay, so the list cannot drift out of step with what is actually translated. `changelog.html` is the standing example. Its release cards are authored in the AtlasDays repo and synced here on every release, so a translated changelog would pin a hash that each release invalidates, blocking the build until someone retranslated the new cards.
 
 Adding the next language should be `locales.json` + a `ui-strings.json` column + an overlay registry + fragments. If it needs a change in `scripts/`, that is a bug in the machinery, not a missing feature.
@@ -109,7 +111,7 @@ Serves the committed HTML with GitHub Pages' extensionless URLs, so links resolv
 | Script | Purpose |
 |---|---|
 | `build_site.py` | Renders articles, hubs, and root pages from `_site-src/`. `--check` fails on drift. |
-| `build_route_outputs.py` | Generates `sitemap.xml` and `llms.txt` from `routes.json`. |
+| `build_route_outputs.py` | Generates the sitemap set (`sitemap.xml` index plus `sitemap-<code>.xml` per locale) and `llms.txt` from `routes.json`. |
 | `build_content_governance.py` | Derives editorial records, content clusters, and the review queue from `articles.json`. |
 | `build_residency_hub.py` | Fills the residency hub tables from the `residency` objects in `articles.json`. |
 | `build_search_index.py` | Builds `assets/search-index.json`. |

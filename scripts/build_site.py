@@ -11,7 +11,7 @@ import sys
 from datetime import date
 from pathlib import Path
 
-from build_route_outputs import LLMS, ROUTES, SITEMAP, expanded_routes, render_llms, render_sitemap
+from build_route_outputs import LLMS, ROUTES, expanded_routes, render_llms, sitemap_files
 from locales import (
     default_locale_code,
     load_locales,
@@ -1301,7 +1301,19 @@ def main() -> int:
 
     if args.section == "all" and ROUTES.exists():
         routes = expanded_routes(json.loads(ROUTES.read_text(encoding="utf-8"))["routes"])
-        queue(SITEMAP, render_sitemap(routes), guard=True)
+        sitemaps = sitemap_files(routes)
+        # The delisting guard runs over the sitemap set as one document. Per
+        # file it would misfire in both directions: sitemap.xml is now an index
+        # carrying no page URLs at all, and moving a page between locale
+        # children is not a delisting. Losing it from every sitemap is.
+        previous = "\n".join(
+            path.read_text(encoding="utf-8") for path in sitemaps if path.exists()
+        )
+        dropped = delisted_live_pages(previous, "\n".join(sitemaps.values())) if previous else []
+        if dropped:
+            delistings.append(("sitemap.xml", dropped))
+        for path, rendered in sitemaps.items():
+            queue(path, rendered)
         queue(LLMS, render_llms(routes), guard=True)
 
     if delistings and not args.allow_delisting:
