@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AtlasDays – приватний облік днів для віз, резидентства та історії поїздок</title>
+  <meta name="description" content="Приватна програма для iPhone: візові ліміти, дні для податкового резидентства та точна історія поїздок. Усе на пристрої, без облікового запису." />
+  <meta property="og:title" content="AtlasDays – приватний облік днів для віз, резидентства та історії поїздок" />
+  <meta property="og:description" content="Приватна програма для iPhone: візові ліміти, дні для податкового резидентства та точна історія поїздок. Усе на пристрої, без облікового запису." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://atlasdays.app/uk/" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AtlasDays – приватний облік днів для віз, резидентства та історії поїздок" />
+  <meta name="twitter:description" content="Приватна програма для iPhone: візові ліміти, дні для податкового резидентства та точна історія поїздок. Усе на пристрої, без облікового запису." />
+  <meta name="apple-itunes-app" content="app-id=6760133544, app-argument=https://apps.apple.com/app/atlasdays-track-country-days/id6760133544" />
+  <meta property="og:locale" content="uk_UA" />
+  <meta name="robots" content="noindex, nofollow" />
+  <meta property="og:image" content="https://atlasdays.app/assets/social/site-v1.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Картка AtlasDays: приватний облік днів у поїздках" />
+  <meta name="twitter:image" content="https://atlasdays.app/assets/social/site-v1.png" />
+  <meta name="twitter:image:alt" content="Картка AtlasDays: приватний облік днів у поїздках" />
+  <link rel="canonical" href="https://atlasdays.app/uk/" />
+  <link rel="icon" type="image/png" href="../assets/brand/favicon_light.png?v=20260325a" media="(prefers-color-scheme: light)" />
+  <link rel="icon" type="image/png" href="../assets/brand/favicon_dark.png?v=20260325a" media="(prefers-color-scheme: dark)" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "AtlasDays",
+    "operatingSystem": "iOS",
+    "applicationCategory": "TravelApplication",
+    "description": "Приватна програма для iPhone: візові ліміти, дні для податкового резидентства та точна історія поїздок. Усе на пристрої, без облікового запису.",
+    "url": "https://atlasdays.app/uk/",
+    "downloadUrl": "https://apps.apple.com/app/atlasdays-track-country-days/id6760133544",
+    "image": "https://atlasdays.app/assets/home/home-hero-dashboard.png",
+    "author": {
+      "@type": "Organization",
+      "name": "AtlasDays"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Чи рахує програма Шенген 90/180 і власні ліміти?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Так. AtlasDays підтримує ковзні вікна, ліміти на одне перебування, підрахунок за календарним роком і власні трекери."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "AtlasDays безкоштовний?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Так. Підрахунок днів, поїздки, один трекер і карта безкоштовні, обліковий запис не потрібен. AtlasDays Pro — необов’язкове розширення: квартальна чи річна підписка або разова покупка назавжди. Pro додає необмежені трекери, Розумні оповіщення, експорт і не тільки."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Чи є версія для Android?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ні. Поки що AtlasDays існує лише для iOS."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Чи є це юридичною або податковою консультацією?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ні. AtlasDays допомагає вести записи й рахувати дні. Тлумачення імміграційних чи податкових правил залишається вашою відповідальністю."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Чи зберігає програма мою точну геопозицію?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ні. Визначення країни — необов’язкова функція, і зроблена вона заради підказок щодо країн, а не заради постійного стеження за переміщеннями."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Чи можна імпортувати й експортувати історію поїздок?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Так. AtlasDays підтримує імпорт фото за метаданими геоміток, імпорт CSV, імпорт історії рейсів із Flighty, експорт CSV і звіти про поїздки у PDF. Імпорт фото, CSV і Flighty показує крок перевірки, перш ніж поїздки буде збережено."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Чи можна додати давні поїздки з неповними датами?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Так. AtlasDays підтримує поїздки з точними датами, записи лише з роком і візити без дати. Приблизна історія залишається корисною й не перетворюється на вигадану точність."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Чи працює програма без інтернету?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Так. Поїздки, трекери й карта залишаються доступними на пристрої без підключення до інтернету."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Чому доступ до геопозиції має бути в режимі «Завжди»?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Автовизначення країни спирається на значні зміни геопозиції iOS, а вони спрацьовують лише у фоні, коли ви справді перетинаєте кордон. Режим «Під час використання програми» працює, лише поки програму відкрито, тому більшість приїздів він пропустить. Функція необов’язкова: поїздки можна вносити повністю вручну."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Чи є віджети для Початкового екрана?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Так. AtlasDays має віджети для Початкового екрана в малому, середньому й великому розмірі. Можна додати віджет трекера, який показує використані дні, залишок і прогноз, або віджет карти світу. Кілька віджетів можна додати, щоб бачити різні трекери поруч."
+        }
+      }
+    ]
+  }
+  </script>
+  <script>(function(){var d=document.documentElement,q=new URLSearchParams(location.search).get('theme'),t=null;if(q==='light'||q==='dark'){t=q;try{sessionStorage.setItem('theme',q)}catch(e){}}else{try{t=sessionStorage.getItem('theme')}catch(e){}if(!t)try{t=localStorage.getItem('theme')}catch(e){}}d.setAttribute('data-theme',t==='light'?'light':'dark');d.classList.add('js')})()</script>
+  <script>window.AtlasDaysPageLocales={"en":{"url":"/","name":"English","label":"Read this page in English","dismiss":"Dismiss"},"ja":{"url":"/ja/","name":"日本語","label":"このページを日本語で読む","dismiss":"閉じる"},"nl":{"url":"/nl/","name":"Nederlands","label":"Lees deze pagina in het Nederlands","dismiss":"Sluiten"},"de":{"url":"/de/","name":"Deutsch","label":"Diese Seite auf Deutsch lesen","dismiss":"Schließen"},"es":{"url":"/es/","name":"Español","label":"Lee esta página en español","dismiss":"Cerrar"},"fr":{"url":"/fr/","name":"Français","label":"Lire cette page en français","dismiss":"Fermer"},"ru":{"url":"/ru/","name":"Русский","label":"Читать эту страницу на русском","dismiss":"Закрыть"}};(function(){var q=new URLSearchParams(location.search).get('lang');if(!q)return;var e=window.AtlasDaysPageLocales[q.toLowerCase().split('-')[0]];if(e&&e.url!==location.pathname)location.replace(e.url+location.search+location.hash)})()</script>
+  <script defer src="../assets/js/locale-route.js?v=20260815a"></script>
+  <link rel="stylesheet" href="../assets/css/tokens.css?v=20260809j" />
+  <link rel="stylesheet" href="../assets/css/home.css?v=20260817a" />
+  <link rel="stylesheet" href="../assets/css/site-header.css?v=20260817c" />
+
+</head>
+<body>
+<a class="skip-link" href="#top">Перейти до вмісту</a>
+  <header class="top-bar">
+    <div class="top-bar-inner">
+      <a class="brand" href="/uk/" aria-label="Головна сторінка AtlasDays">
+        <span class="brand-mark">
+          <img class="logo-dark" src="../assets/brand/logo_dark.png?v=20260325a" alt="" width="1024" height="1024" />
+          <img class="logo-light" src="../assets/brand/logo_light.png?v=20260325a" alt="" width="1024" height="1024" />
+        </span>
+        <span>AtlasDays</span>
+      </a>
+      <nav class="top-links" aria-label="Основна навігація">
+        <a href="/help/">Довідка</a>
+        <a href="/uk/learn/">Правила поїздок</a>
+        <details class="nav-group">
+          <summary>
+            <span>Приклади використання</span>
+            <svg class="nav-group-caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <nav class="nav-group-panel" aria-label="Сторінки прикладів використання">
+            <a href="/uk/visa-limits">Візові ліміти</a>
+            <a href="/uk/residency-thresholds">Податкове резидентство</a>
+            <a href="/uk/travel-history">Історія поїздок</a>
+          </nav>
+        </details>
+        <div class="nav-cta-wrap">
+          <a class="top-cta" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544" aria-label="Завантажити AtlasDays"><svg class="top-cta-glyph" width="13" height="16" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg><span class="top-cta-label">Завантажити AtlasDays</span></a>
+          <div class="nav-qr-popup" aria-hidden="true">
+            <img src="../assets/qrcode-appstore.png" width="164" height="164" alt="">
+          </div>
+        </div>
+        <details class="lang-switch"><summary aria-label="Мова" title="Мова"><svg class="lang-switch-globe" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg><span class="lang-switch-current">Українська</span><svg class="lang-switch-caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></summary><nav class="lang-switch-panel" aria-label="Мова"><a class="lang-switch-option" href="/" lang="en" hreflang="en" data-language-choice="en"><span class="lang-switch-check" aria-hidden="true"></span><span>English</span></a><a class="lang-switch-option" href="/ja/" lang="ja" hreflang="ja" data-language-choice="ja"><span class="lang-switch-check" aria-hidden="true"></span><span>日本語</span></a><a class="lang-switch-option" href="/nl/" lang="nl" hreflang="nl" data-language-choice="nl"><span class="lang-switch-check" aria-hidden="true"></span><span>Nederlands</span></a><a class="lang-switch-option" href="/de/" lang="de" hreflang="de" data-language-choice="de"><span class="lang-switch-check" aria-hidden="true"></span><span>Deutsch</span></a><a class="lang-switch-option" href="/es/" lang="es" hreflang="es" data-language-choice="es"><span class="lang-switch-check" aria-hidden="true"></span><span>Español</span></a><a class="lang-switch-option" href="/fr/" lang="fr" hreflang="fr" data-language-choice="fr"><span class="lang-switch-check" aria-hidden="true"></span><span>Français</span></a><a class="lang-switch-option" href="/ru/" lang="ru" hreflang="ru" data-language-choice="ru"><span class="lang-switch-check" aria-hidden="true"></span><span>Русский</span></a></nav></details>
+        <button class="theme-toggle" type="button" aria-label="Перемкнути оформлення" title="Перемкнути оформлення" onclick="toggleTheme()">
+          <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72 1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+          <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+      </nav>
+      <details class="mobile-menu">
+        <summary aria-label="Відкрити меню навігації">
+          <span class="mobile-menu-label">Меню</span>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </summary>
+        <nav class="mobile-menu-panel" aria-label="Мобільна навігація">
+          <a href="/uk/">Головна</a>
+          <a href="/help/">Довідка</a>
+          <a href="/uk/learn/">Правила поїздок</a>
+          <details class="mobile-nav-group">
+            <summary>
+              <span>Приклади використання</span>
+              <svg class="nav-group-caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <nav class="mobile-nav-group-panel" aria-label="Сторінки прикладів використання">
+              <a href="/uk/visa-limits">Візові ліміти</a>
+              <a href="/uk/residency-thresholds">Податкове резидентство</a>
+              <a href="/uk/travel-history">Історія поїздок</a>
+            </nav>
+          </details>
+          <a href="/uk/about">Про програму</a>
+        </nav>
+      </details>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-copy-main reveal visible">
+          <div class="eyebrow"><span class="dot"></span>Уже доступно для iPhone та iPad</div>
+          <h1>Точний підрахунок днів,<br class="mobile-break"> коли від дат<br class="mobile-break"> багато залежить.</h1>
+          <p class="hero-lead hero-lead-desktop">AtlasDays допомагає не вийти за візові ліміти, підтвердити дні перебування, коли їх запитають, і відновити історію поїздок за багато років — таку, якій можна довіряти. Усі записи залишаються у вашому iPhone: обліковий запис не потрібен, синхронізація з iCloud — за бажанням.</p>
+          <p class="hero-lead hero-lead-mobile">Не виходьте за візові ліміти, підтверджуйте дні перебування та відновіть історію поїздок, якій можна довіряти. Без облікового запису й без серверів AtlasDays.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> Завантажити AtlasDays</a>
+            <a class="btn btn-secondary" href="#proof">Подивитися, як це працює</a>
+          </div>
+        </div>
+
+        <div class="visual-wrap" aria-label="Екрани програми AtlasDays">
+          <div class="visual-card primary">
+            <div class="device">
+              <div class="device-screen">
+                <img class="shot-dark" src="/assets/home/home-hero-dashboard-poster.webp?v=20260808c" alt="Огляд AtlasDays: трекер Шенгену, статистика за весь час і карта світу" width="1320" height="2868" />
+                <img class="shot-light" src="/assets/home/home-hero-dashboard-poster-light.webp?v=20260808c" alt="Огляд AtlasDays: трекер Шенгену, статистика за весь час і карта світу" width="1320" height="2868" />
+              </div>
+              <img class="device-body" src="/assets/home/iphone-frame-blue.webp?v=20260809j" alt="" width="980" height="2000" />
+            </div>
+          </div>
+          <div class="visual-card secondary">
+            <div class="device">
+              <div class="device-screen">
+                <img class="shot-dark" src="/assets/home/home-hero-tracker-detail.webp?v=20260808c" alt="Трекер Шенгену в AtlasDays: використано 85 із 90 днів, залишилося 5, прогноз за ковзним 180-денним вікном і поїздки, з яких він складається" width="1320" height="2868" />
+                <img class="shot-light" src="/assets/home/home-hero-tracker-detail-light.webp?v=20260808c" alt="Трекер Шенгену в AtlasDays: використано 85 із 90 днів, залишилося 5, прогноз за ковзним 180-денним вікном і поїздки, з яких він складається" width="1320" height="2868" />
+              </div>
+              <img class="device-body" src="/assets/home/iphone-frame-blue.webp?v=20260809j" alt="" width="980" height="2000" />
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-points" aria-label="Головні переваги">
+          <a class="hero-point" href="/uk/visa-limits"><strong>Візові ліміти</strong>Шенген 90/180, ліміти на одне перебування та ковзні вікна.</a>
+          <a class="hero-point" href="/uk/residency-thresholds"><strong>Податкове резидентство</strong>Правило 183 днів, календарні роки та трекери під податковий рік.</a>
+          <a class="hero-point" href="/uk/travel-history"><strong>Історія поїздок</strong>Точні дати там, де важливий підрахунок; лише рік або запис без дати для давніх поїздок.</a>
+          <a class="hero-point" href="/uk/privacy"><strong>Приватність від початку</strong>На пристрої, без облікового запису, синхронізація з iCloud за бажанням.</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="proof" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-kicker">Програма зсередини</p>
+          <h2>Трекери, хронологія, карта, оповіщення — і поїздки, з яких складається кожне число</h2>
+          <p>Одні й ті самі записи стоять за візовою арифметикою, порогами резидентства та історією поїздок, на якій тримається і те, і інше.</p>
+        </div>
+        <div class="proof-story reveal" data-proof-carousel>
+          <div class="proof-carousel">
+            <div class="proof-track" aria-label="Карусель можливостей AtlasDays" data-proof-track>
+              <article class="proof-slide" data-proof-slide>
+                <div class="proof-shot">
+                  <div class="device">
+                    <div class="device-screen">
+                      <img class="shot-dark" src="/assets/home/home-proof-presets.webp?v=20260809j" alt="Екран додавання трекера в AtlasDays: шаблони для резидентства, Шенгену, візових лімітів і лімітів на в’їзд, цілей перебування та штатів США" width="1320" height="2868" />
+                      <img class="shot-light" src="/assets/home/home-proof-presets-light.webp?v=20260809j" alt="Екран додавання трекера в AtlasDays: шаблони для резидентства, Шенгену, візових лімітів і лімітів на в’їзд, цілей перебування та штатів США" width="1320" height="2868" />
+                    </div>
+                    <img class="device-body" src="/assets/home/iphone-frame-blue.webp?v=20260809j" alt="" width="980" height="2000" loading="lazy" />
+                  </div>
+                </div>
+                <div class="proof-copy">
+                  <p class="proof-label">Шаблони трекерів</p>
+                  <h3>Почніть із готового правила, а не з порожньої форми</h3>
+                  <p>Шенген, тести на резидентство, ліміти на в’їзд і штати США — або власний трекер з нуля.</p>
+                </div>
+              </article>
+
+              <article class="proof-slide" data-proof-slide>
+                <div class="proof-shot">
+                  <div class="device">
+                    <div class="device-screen">
+                      <img class="shot-dark" src="/assets/home/home-proof-timeline.webp?v=20260808c" alt="Хронологія AtlasDays: поточні, минулі та майбутні поїздки" width="1320" height="2868" loading="lazy" />
+                      <img class="shot-light" src="/assets/home/home-proof-timeline-light.webp?v=20260808c" alt="Хронологія AtlasDays: поточні, минулі та майбутні поїздки" width="1320" height="2868" loading="lazy" />
+                    </div>
+                    <img class="device-body" src="/assets/home/iphone-frame-blue.webp?v=20260809j" alt="" width="980" height="2000" loading="lazy" />
+                  </div>
+                </div>
+                <div class="proof-copy">
+                  <p class="proof-label">Хронологія</p>
+                  <h3>За кожним підсумком стоять поїздки, які видно</h3>
+                  <p>Минулі, поточні та майбутні записи легко читати.</p>
+                </div>
+              </article>
+
+              <article class="proof-slide" data-proof-slide>
+                <div class="proof-shot">
+                  <div class="device">
+                    <div class="device-screen">
+                      <img src="/assets/home/home-proof-map-country.webp?v=20260808c" alt="Карта світу AtlasDays із наближенням на Європу та Африку, відвідані країни виділені" width="1320" height="2868" loading="lazy" />
+                    </div>
+                    <img class="device-body" src="/assets/home/iphone-frame-blue.webp?v=20260809j" alt="" width="980" height="2000" loading="lazy" />
+                  </div>
+                </div>
+                <div class="proof-copy">
+                  <p class="proof-label">Карта і країни</p>
+                  <h3>Дивіться, як заповнюється ваша карта світу</h3>
+                  <p>Відкрийте будь-яку країну — і побачите точні дні та всі поїздки.</p>
+                </div>
+              </article>
+
+              <article class="proof-slide" data-proof-slide>
+                <div class="proof-shot">
+                  <div class="device">
+                    <div class="device-screen">
+                      <img class="shot-dark" src="/assets/home/home-proof-alerts.webp?v=20260808c" alt="Налаштування оповіщень трекера AtlasDays: час надсилання та попередження від «залишилося 30 днів» до вичерпаного ліміту" width="1320" height="2868" loading="lazy" />
+                      <img class="shot-light" src="/assets/home/home-proof-alerts-light.webp?v=20260808c" alt="Налаштування оповіщень трекера AtlasDays: час надсилання та попередження від «залишилося 30 днів» до вичерпаного ліміту" width="1320" height="2868" loading="lazy" />
+                    </div>
+                    <img class="device-body" src="/assets/home/iphone-frame-blue.webp?v=20260809j" alt="" width="980" height="2000" loading="lazy" />
+                  </div>
+                </div>
+                <div class="proof-copy">
+                  <p class="proof-label">Оповіщення</p>
+                  <h3>Попередження приходить до того, як ліміт вичерпано</h3>
+                  <p>Будь-яке оповіщення, для будь-якого трекера, на будь-якому порозі.</p>
+                </div>
+              </article>
+
+              <article class="proof-slide" data-proof-slide>
+                <div class="proof-shot">
+                  <div class="device">
+                    <div class="device-screen">
+                      <img class="shot-dark" src="/assets/home/home-proof-import-flighty.webp?v=20260809j" alt="Перевірка імпорту історії рейсів із Flighty в AtlasDays: позначено неповні поїздки, штати США, можливе об’єднання та перетини до збереження" width="1320" height="2868" loading="lazy" />
+                      <img class="shot-light" src="/assets/home/home-proof-import-flighty-light.webp?v=20260809j" alt="Перевірка імпорту історії рейсів із Flighty в AtlasDays: позначено неповні поїздки, штати США, можливе об’єднання та перетини до збереження" width="1320" height="2868" loading="lazy" />
+                    </div>
+                    <img class="device-body" src="/assets/home/iphone-frame-blue.webp?v=20260809j" alt="" width="980" height="2000" loading="lazy" />
+                  </div>
+                </div>
+                <div class="proof-copy">
+                  <p class="proof-label">Перевірка імпорту</p>
+                  <h3>Імпорт фото, CSV або Flighty</h3>
+                  <p>Перетини, прогалини та можливі об’єднання позначаються ще до того, як щось буде збережено.</p>
+                </div>
+              </article>
+
+              <article class="proof-slide" data-proof-slide>
+                <div class="proof-shot">
+                  <div class="device">
+                    <div class="device-screen">
+                      <img class="shot-dark" src="/assets/home/home-proof-pdf-export.webp?v=20260808c" alt="Попередній перегляд експорту PDF у AtlasDays: звіт про поїздки з рядками поїздок і підсумками" width="1320" height="2868" loading="lazy" />
+                      <img class="shot-light" src="/assets/home/home-proof-pdf-export-light.webp?v=20260808c" alt="Попередній перегляд експорту PDF у AtlasDays: звіт про поїздки з рядками поїздок і підсумками" width="1320" height="2868" loading="lazy" />
+                    </div>
+                    <img class="device-body" src="/assets/home/iphone-frame-blue.webp?v=20260809j" alt="" width="980" height="2000" loading="lazy" />
+                  </div>
+                </div>
+                <div class="proof-copy">
+                  <p class="proof-label">Звіт у PDF</p>
+                  <h3>Коли у вас попросять підтвердження</h3>
+                  <p>Акуратний PDF із поїздками, днями та країнами.</p>
+                </div>
+              </article>
+
+              <article class="proof-slide" data-proof-slide>
+                <div class="proof-shot">
+                  <div class="device">
+                    <div class="device-screen">
+                      <img src="/assets/home/home-proof-widgets.webp?v=20260808c" alt="Віджети AtlasDays на Початковому екрані: трекер Шенгену з використаними днями та днями, що залишилися" width="1206" height="2622" loading="lazy" />
+                    </div>
+                    <img class="device-body" src="/assets/home/iphone-frame-blue.webp?v=20260809j" alt="" width="980" height="2000" loading="lazy" />
+                  </div>
+                </div>
+                <div class="proof-copy">
+                  <p class="proof-label">Віджети на Початковому екрані</p>
+                  <h3>Ваш трекер на Початковому екрані</h3>
+                  <p>Малий, середній і великий розміри, з прогнозом трекера з одного погляду. Відкривати програму не потрібно.</p>
+                </div>
+              </article>
+            </div>
+
+            <div class="proof-controls">
+              <button class="proof-arrow" type="button" aria-label="Попередній слайд" data-proof-prev>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg>
+              </button>
+              <div class="proof-dots" aria-label="Слайди про програму">
+                <button class="proof-dot is-active" type="button" aria-label="Показати слайд про трекери" aria-current="true" aria-pressed="true" data-proof-dot="0"></button>
+                <button class="proof-dot" type="button" aria-label="Показати слайд про хронологію" aria-current="false" aria-pressed="false" data-proof-dot="1"></button>
+                <button class="proof-dot" type="button" aria-label="Показати слайд про карту й країни" aria-current="false" aria-pressed="false" data-proof-dot="2"></button>
+                <button class="proof-dot" type="button" aria-label="Показати слайд про оповіщення" aria-current="false" aria-pressed="false" data-proof-dot="3"></button>
+                <button class="proof-dot" type="button" aria-label="Показати слайд про перевірку імпорту" aria-current="false" aria-pressed="false" data-proof-dot="4"></button>
+                <button class="proof-dot" type="button" aria-label="Показати слайд про звіт у PDF" aria-current="false" aria-pressed="false" data-proof-dot="5"></button>
+                <button class="proof-dot" type="button" aria-label="Показати слайд про віджети" aria-current="false" aria-pressed="false" data-proof-dot="6"></button>
+              </div>
+              <button class="proof-arrow" type="button" aria-label="Наступний слайд" data-proof-next>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="loved" class="section">
+      <div class="container">
+        <div class="section-header">
+          <p class="section-kicker">Факти, а не обіцянки</p>
+          <h2>Те, що можна перевірити самому</h2>
+          <p>Жодних анонімних похвал і вигаданого рейтингу. Лише ті сторони AtlasDays, які видно в самій програмі та в її документації.</p>
+        </div>
+        <div class="trust-grid">
+          <article class="card trust-card">
+            <p class="trust-label">Усе на пристрої</p>
+            <h3>Без облікового запису AtlasDays</h3>
+            <p>Історія поїздок живе на вашому пристрої. Синхронізація за бажанням іде через ваш власний обліковий запис iCloud, а власного сервера з історією поїздок AtlasDays не має.</p>
+            <a href="/uk/privacy">Як влаштована приватність</a>
+          </article>
+          <article class="card trust-card">
+            <p class="trust-label">Перевірка перед збереженням</p>
+            <h3>Імпорт залишається під вашим контролем</h3>
+            <p>Імпорт фото, CSV і Flighty готує поїздки до перевірки. Що потрапить в історію, вирішуєте ви.</p>
+            <a href="/help/#import-and-export">Посібники з імпорту</a>
+          </article>
+          <article class="card trust-card">
+            <p class="trust-label">Незалежний проєкт</p>
+            <h3>Підтримку веде той, хто пише програму</h3>
+            <p>AtlasDays придумав, розробив, описав і підтримує Jorick — він сам рахує в ній власні дні для резидентства. Обмеження програми та застереження щодо правил залишаються на видноті.</p>
+            <a href="/uk/about">Про автора</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="privacy" class="section">
+      <div class="container">
+        <div class="privacy-panel reveal">
+          <div class="privacy-grid">
+            <div>
+              <p class="section-kicker">Конфіденційність</p>
+              <h2>Ваша історія поїздок залишається у вашому iPhone</h2>
+              <p>Візові ліміти, пороги резидентства та історія поїздок за роки — чутливі записи, тому модель проста: обов’язкового облікового запису немає, копії ваших поїздок на серверах AtlasDays немає, розрахунки відбуваються на пристрої. Синхронізація з iCloud, підказки країн та імпорт фото залишаються за бажанням.</p>
+              <div class="trust-row">
+                <span class="pill">Немає копії на серверах AtlasDays</span>
+                <span class="pill">Розрахунки на пристрої</span>
+                <span class="pill">Доступ до Фото за бажанням</span>
+              </div>
+              <div class="disclaimer">Точна модель зберігання, геопозиції, доступу до Фото та синхронізації описана на <a href="/uk/privacy">сторінці конфіденційності</a>, у <a href="/uk/help/photo-import">посібнику з імпорту фото</a> та в <a href="/uk/help/privacy-location-and-sync">посібнику з конфіденційності й дозволів</a>.</div>
+            </div>
+            <div class="privacy-visual">
+              <div class="device">
+                <div class="device-screen">
+                  <img class="shot-dark" src="/assets/home/home-proof-privacy.webp?v=20260808c" alt="Панель конфіденційності AtlasDays: дані про поїздки залишаються на пристрої, синхронізація з iCloud за бажанням" width="1320" height="2868" loading="lazy" />
+                  <img class="shot-light" src="/assets/home/home-proof-privacy-light.webp?v=20260808c" alt="Панель конфіденційності AtlasDays: дані про поїздки залишаються на пристрої, синхронізація з iCloud за бажанням" width="1320" height="2868" loading="lazy" />
+                </div>
+                <img class="device-body" src="/assets/home/iphone-frame-blue.webp?v=20260809j" alt="" width="980" height="2000" loading="lazy" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="mid-cta reveal">
+          <div class="mid-cta-copy">
+            <strong>Точне число під рукою саме тоді, коли воно потрібне.</strong>
+            <p>На кордоні, під час подання декларації або заповнення анкети на візу.</p>
+          </div>
+          <a class="btn btn-primary" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> Завантажити AtlasDays</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-kicker">Часті запитання</p>
+          <h2>Що питають, перш ніж довіритися підрахунку</h2>
+          <p>Практичні запитання, які виникають перед тим, як покластися на підрахунок днів, на імпорт або на історію поїздок за багато років.</p>
+        </div>
+        <div class="faq-grid">
+          <article class="faq reveal">
+            <h3>Чи рахує програма Шенген 90/180 і власні ліміти?</h3>
+            <p>Так. AtlasDays підтримує ковзні вікна, ліміти на одне перебування, підрахунок за календарним роком і власні трекери.</p>
+          </article>
+          <article class="faq reveal">
+            <h3>AtlasDays безкоштовний?</h3>
+            <p>Так. Підрахунок днів, поїздки, один трекер і карта безкоштовні, обліковий запис не потрібен. AtlasDays Pro — необов’язкове розширення: квартальна чи річна підписка або разова покупка назавжди. Pro додає необмежені трекери, Розумні оповіщення, експорт і не тільки. Подивіться, <a href="/uk/help/atlasdays-pro">що входить у Pro</a>.</p>
+          </article>
+          <article class="faq reveal">
+            <h3>Чи є версія для Android?</h3>
+            <p>Ні. Поки що AtlasDays існує лише для iOS.</p>
+          </article>
+          <article class="faq reveal">
+            <h3>Чи є це юридичною або податковою консультацією?</h3>
+            <p>Ні. AtlasDays допомагає вести записи й рахувати дні. Тлумачення імміграційних чи податкових правил залишається вашою відповідальністю.</p>
+          </article>
+          <article class="faq reveal">
+            <h3>Чи зберігає програма мою точну геопозицію?</h3>
+            <p>Ні. Визначення країни — необов’язкова функція, і зроблена вона заради підказок щодо країн, а не заради постійного стеження за переміщеннями.</p>
+          </article>
+          <article class="faq reveal">
+            <h3>Чи можна імпортувати й експортувати історію поїздок?</h3>
+            <p>Так. AtlasDays підтримує імпорт фото за метаданими геоміток, імпорт CSV, імпорт історії рейсів із Flighty, експорт CSV і звіти про поїздки у PDF. Імпорт фото, CSV і Flighty показує крок перевірки, перш ніж поїздки буде збережено.</p>
+          </article>
+          <article class="faq reveal">
+            <h3>Чи можна додати давні поїздки з неповними датами?</h3>
+            <p>Так. AtlasDays підтримує поїздки з точними датами, записи лише з роком і візити без дати. Приблизна історія залишається корисною й не перетворюється на вигадану точність.</p>
+          </article>
+          <article class="faq reveal">
+            <h3>Чи працює програма без інтернету?</h3>
+            <p>Так. Поїздки, трекери й карта залишаються доступними на пристрої без підключення до інтернету.</p>
+          </article>
+          <article class="faq reveal">
+            <h3>Чому доступ до геопозиції має бути в режимі «Завжди»?</h3>
+            <p>Автовизначення країни спирається на значні зміни геопозиції iOS, а вони спрацьовують лише у фоні — коли ви справді перетинаєте кордон. Режим «Під час використання програми» працює, лише поки програму відкрито, тому більшість приїздів він пропустить. Функція необов’язкова: поїздки можна вносити повністю вручну.</p>
+          </article>
+          <article class="faq reveal">
+            <h3>Чи є віджети для Початкового екрана?</h3>
+            <p>Так. AtlasDays має віджети для Початкового екрана в малому, середньому й великому розмірі. Додайте віджет трекера, щоб бачити використані дні, залишок і прогноз, не відкриваючи програму, або додайте віджет карти світу. Кілька віджетів можуть показувати різні трекери поруч.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="help" class="section">
+      <div class="container">
+        <div class="section-header reveal">
+          <p class="section-kicker">Матеріали</p>
+          <h2>Довідка та правила поїздок</h2>
+          <p>Розберіться з програмою або знайдіть потрібне правило за країною, штатом США, регіоном чи темою.</p>
+        </div>
+        <div class="doc-grid">
+          <article class="doc-card reveal">
+            <h3>Довідка</h3>
+            <p>Довідка AtlasDays охоплює трекери, дати поїздок, імпорт фото та CSV, конфіденційність, синхронізацію і те, як записи поводяться всередині програми.</p>
+            <div class="doc-links">
+              <a href="/help/">Відкрити довідку</a>
+              <a href="/uk/help/trackers-and-limits">Як рахуються підсумки трекера</a>
+              <a href="/uk/help/widgets">Віджети на Початковому екрані</a>
+              <a href="/uk/help/history-and-import">Як працюють дати поїздки</a>
+              <a href="/uk/help/privacy-location-and-sync">Конфіденційність і дозволи</a>
+              <a href="/help/#support">Написати в підтримку</a>
+            </div>
+          </article>
+          <article class="doc-card reveal">
+            <h3>Бібліотека правил поїздок</h3>
+            <p>Візові та податкові правила за місцями, а поруч — практичні посібники про ковзні вікна, підрахунок днів і підтвердження історії поїздок.</p>
+            <div class="doc-links">
+              <a href="/uk/learn/">Переглянути правила поїздок</a>
+              <a href="/uk/learn/tax-residency-by-country">Податкове резидентство за країнами</a>
+              <a href="/uk/learn/us-state-tax-residency">Правила резидентства за штатами США</a>
+              <a href="/uk/learn/schengen-90-180-rule">Що означає 90 днів за будь-які 180 днів?</a>
+              <a href="/uk/learn/183-day-tax-residency-rule">Правило 183 днів: що потрібно знати мандрівникові</a>
+              <a href="/uk/learn/travel-history-for-visa-applications">Як підготувати історію поїздок для візи</a>
+              <a href="/uk/learn/rebuild-travel-history-from-passport-stamps-emails-photos">Як відновити історію поїздок за штампами, листами та фото</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="download" class="section">
+      <div class="container">
+        <div class="cta-panel reveal">
+          <div class="cta-panel-copy">
+            <h2>Рахуйте свої дні приватно. Уже сьогодні.</h2>
+            <p>AtlasDays є в App Store для iPhone та iPad. Основне безкоштовно, без облікового запису й без серверів AtlasDays.</p>
+          </div>
+          <div class="cta-panel-actions">
+            <a class="btn btn-primary" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> Завантажити AtlasDays</a>
+            <a class="btn btn-secondary" href="/help/">Відкрити довідку</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-grid">
+      <div class="footer-box footer-primary reveal">
+        <div class="footer-copy">
+          <div class="brand">
+            <span class="brand-mark">
+              <img class="logo-dark" src="/assets/brand/logo_dark.png?v=20260325a" alt="Логотип AtlasDays" width="1024" height="1024" />
+              <img class="logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="Логотип AtlasDays" width="1024" height="1024" />
+            </span>
+            <span>AtlasDays</span>
+          </div>
+          <p>Приватний облік днів для візових лімітів, порогів резидентства та точної історії поїздок. На пристрої, без облікового запису.</p>
+          <div class="footer-points">
+            <div class="footer-point">Приватність від початку</div>
+            <div class="footer-point">iPhone та iPad</div>
+            <div class="footer-point">Точні дати й записи лише з роком</div>
+            <div class="footer-point">Трекери для візових лімітів і резидентства</div>
+          </div>
+        </div>
+        <div class="copyright">© 2026 AtlasDays</div>
+      </div>
+      <div class="footer-box footer-secondary reveal">
+        <div class="footer-nav">
+          <div class="footer-group">
+            <div class="footer-group-title">Програма</div>
+            <div class="footer-links">
+              <a href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">Завантажити в App Store</a>
+              <a href="/help/">Довідка</a>
+              <a href="/uk/learn/">Правила поїздок</a>
+            </div>
+          </div>
+          <div class="footer-group">
+            <div class="footer-group-title">Про проєкт</div>
+            <div class="footer-links">
+              <a href="/uk/about">Про AtlasDays</a>
+              <a href="/changelog">Що нового</a>
+              <a href="/uk/terms">Умови використання</a>
+              <a href="/uk/privacy">Конфіденційність</a>
+            </div>
+          </div>
+        </div>
+        <div class="footer-links">
+          <a class="muted-link" href="#top">Нагору</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="../assets/js/home.js?v=20260817b"></script>
+  <script>window.AtlasDaysNavStrings={"menuOpen":"Відкрити меню навігації","menuClose":"Закрити меню навігації"};</script>
+  <script src="../assets/js/navigation.js?v=20260817b"></script>
+  <!-- Cloudflare Web Analytics -->
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;token&quot;: &quot;1488e163b83a4eee81b63340359b6566&quot;}"></script>
+  <!-- End Cloudflare Web Analytics -->
+</body>
+</html>
