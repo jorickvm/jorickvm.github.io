@@ -36,8 +36,9 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument(
         "--locale",
         default="en",
-        help="Interface language to capture in. Non-default locales write to "
-             "assets/article-images/<code>/... so a translated page can show its own screens.",
+        help="Interface language to capture in. Non-default locales write to a <code>/ "
+             "directory under the asset root (assets/article-images/<code>/..., "
+             "assets/home/<code>/...) so a translated page can show its own screens.",
     )
     parser.add_argument(
         "--appearance",
@@ -46,6 +47,12 @@ def parse_args() -> argparse.Namespace:
         help="Interface appearance to capture in. Light runs pass --light through to the "
              "app harness and write alongside the dark file with a -light suffix, so the "
              "site can serve a matching set per theme without a second manifest.",
+    )
+    parser.add_argument(
+        "--residence",
+        help="Override the home country a capture is shot from (two-letter code, or "
+             "\"none\" to keep the harness default). Normally left unset: captures that "
+             "care declare it themselves in the manifest.",
     )
     parser.add_argument("--app-repo", type=Path)
     parser.add_argument("--no-build", action="store_true")
@@ -215,11 +222,64 @@ LOCALE_LAUNCH = {
 }
 
 
+# The residence a marketing capture is shot from, per language. This is not
+# cosmetic: `TrackerCatalog.entries` demotes the Schengen presets below the
+# curated visa rules when the home country is inside the Schengen area, on the
+# grounds that a Schengen resident has no 90/180 limit of their own. So a
+# Dutch or German reader should see the visa rules they would actually reach
+# for, and an English, Japanese, Russian or Ukrainian reader should see
+# Schengen leading, because that is the limit they are most likely counting.
+#
+# The rule is "the locale's own country". Spanish and French are the loose
+# ends, since both are spoken well beyond their Schengen homelands; they follow
+# the rule until there is a reason to split them by region.
+LOCALE_RESIDENCE = {
+    "en": "US",
+    "ja": "JP",
+    "ru": "RU",
+    "uk": "UA",
+    "nl": "NL",
+    "de": "DE",
+    "es": "ES",
+    "fr": "FR",
+}
+
+
 def launch_locale_args(code: str) -> list[str]:
     if code not in LOCALE_LAUNCH:
         raise SystemExit(f"No Simulator language mapping for locale {code!r}")
     languages, locale = LOCALE_LAUNCH[code]
     return ["-AppleLanguages", languages, "-AppleLocale", locale]
+
+
+def resolve_residence(group: list[dict], code: str, override: str | None) -> str | None:
+    """The residence to pin for one launch, or None to leave the app's default.
+
+    Declared per capture rather than per run so a later recapture cannot lose
+    the intent: a manifest entry asking for ``auto`` gets the language's own
+    country whoever runs it, and every other capture keeps the harness default.
+    """
+    if override:
+        return None if override == "none" else override
+    wanted = {c.get("residence") for c in group if c.get("residence")}
+    if not wanted:
+        return None
+    if len(wanted) > 1:
+        raise SystemExit(
+            f"captures sharing one scenario disagree about residence: {sorted(wanted)}"
+        )
+    value = wanted.pop()
+    if value != "auto":
+        return value
+    if code not in LOCALE_RESIDENCE:
+        raise SystemExit(f"No residence mapping for locale {code!r}")
+    return LOCALE_RESIDENCE[code]
+
+
+# Asset families that have a per-locale directory. A capture whose target
+# falls outside these writes to the same path in every language, which is only
+# correct for images with no text in them.
+LOCALE_ASSET_ROOTS = ("assets/article-images/", "assets/home/")
 
 
 def output_path(relpath: str, code: str, appearance: str = "dark") -> Path:
@@ -233,10 +293,16 @@ def output_path(relpath: str, code: str, appearance: str = "dark") -> Path:
     """
     if appearance == "light":
         relpath = re.sub(r"(\.[^./]+)$", r"-light\1", relpath)
-    if code == "en" or not relpath.startswith("assets/article-images/"):
+    if code == "en":
         return SITE_ROOT / relpath
-    tail = relpath[len("assets/article-images/"):]
-    return SITE_ROOT / f"assets/article-images/{code}/{tail}"
+    for root in LOCALE_ASSET_ROOTS:
+        if relpath.startswith(root):
+            return SITE_ROOT / f"{root}{code}/{relpath[len(root):]}"
+    raise SystemExit(
+        f"{relpath!r} has no per-locale path, so capturing it as {code!r} would "
+        f"overwrite the English file. Add its asset root to LOCALE_ASSET_ROOTS, "
+        f"or narrow the run with --capture/--id-prefix."
+    )
 
 
 def normalize_targets(capture: dict) -> list[dict]:
@@ -526,6 +592,9 @@ def main() -> int:
                     launch.insert(-4, "--landscape")
                 if args.appearance == "light":
                     launch.append("--light")
+                residence = resolve_residence(group, args.locale, args.residence)
+                if residence:
+                    launch += ["--residence", residence]
                 run(launch, env=env, dry_run=args.dry_run)
                 raw_png = raw_root / f"{scenario}.png"
                 capture_settled(
