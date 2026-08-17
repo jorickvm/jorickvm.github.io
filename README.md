@@ -82,7 +82,7 @@ Adding the next language should be `locales.json` + a `ui-strings.json` column +
 ```bash
 python3 scripts/check_translations.py          # terminology, structure, typography, staleness
 python3 scripts/build_content_governance.py   # editorial + cluster records, review queue
-python3 scripts/generate_social_cards.py      # OG images + manifest
+python3 scripts/generate_social_cards.py      # generic OG image manifest
 python3 scripts/build_residency_hub.py        # hub tables, if a residency page changed
 python3 scripts/build_site.py                 # renders every generated page
 python3 scripts/build_search_index.py         # on-site search
@@ -113,7 +113,7 @@ Serves the committed HTML with GitHub Pages' extensionless URLs, so links resolv
 | `build_content_governance.py` | Derives editorial records, content clusters, and the review queue from `articles.json`. |
 | `build_residency_hub.py` | Fills the residency hub tables from the `residency` objects in `articles.json`. |
 | `build_search_index.py` | Builds `assets/search-index.json`. |
-| `generate_social_cards.py` | Renders the 1200x630 share images. |
+| `generate_social_cards.py` | Assigns the generic 1200x630 share image site-wide. |
 | `sync_help_screenshots.py` | Swaps a Help screenshot placeholder for a `<figure>` once its WebP lands, in every locale. |
 | `capture_website_screenshots.py` | Drives the iOS Simulator to capture Help Center screenshots (macOS only). `--locale` captures in another interface language. |
 | `check_translations.py` | Gates translated pages on terminology, structural parity, typography, and staleness. |

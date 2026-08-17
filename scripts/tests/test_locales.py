@@ -283,7 +283,13 @@ class LearnTrustTests(unittest.TestCase):
             content,
         )
 
-    def test_existing_legal_basis_row_becomes_a_direct_link(self) -> None:
+    def test_existing_legal_basis_row_is_left_as_plain_text(self) -> None:
+        """The row names the statute; it does not link to it.
+
+        It used to. The factbox sits above the fold, so that link was the
+        earliest way off the page, competing with the download CTA before the
+        reader had reached it (Jorick, 2026-08-17).
+        """
         article = {
             "path": "learn/example.html",
             "section": "learn",
@@ -297,11 +303,11 @@ class LearnTrustTests(unittest.TestCase):
 
         rendered = build_site.render_factbox_legal_basis(content, article)
 
-        self.assertIn('href="https://example.gov/law"', rendered)
+        self.assertEqual(rendered, content)
+        self.assertNotIn("<a ", rendered)
         self.assertIn("Example Act, s. 1", rendered)
-        self.assertEqual(rendered.count('class="legal-basis"'), 1)
 
-    def test_missing_legal_basis_row_is_generated(self) -> None:
+    def test_missing_legal_basis_row_is_generated_unlinked(self) -> None:
         article = {
             "path": "learn/example.html",
             "section": "learn",
@@ -317,7 +323,8 @@ class LearnTrustTests(unittest.TestCase):
         rendered = build_site.render_factbox_legal_basis(content, article)
 
         self.assertIn("{{t:learn.legal_basis}}", rendered)
-        self.assertIn('href="https://example.gov/law"', rendered)
+        self.assertIn("<dd>Example Act, s. 1</dd>", rendered)
+        self.assertNotIn("<a ", rendered)
         self.assertEqual(rendered.count('class="legal-basis"'), 1)
 
 

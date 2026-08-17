@@ -444,19 +444,16 @@ html[data-theme="light"] .theme-toggle .icon-moon { display: block; }
 /* The bar collapses to the drawer at 860px, not 760px: at 780px the children
    totalled 763px inside a 740px inner even in English. */
 @media (max-width: 860px) {
-  .top-bar {
-    /* Not sticky on mobile, but still `relative` with a z-index: dropping to
-       `static` removes the stacking context the open menu panel depends on,
-       and the page content below then paints straight through it. */
-    position: relative;
-    z-index: 40;
-    /* Opaque here, so it takes the wash's top color rather than the canvas:
-       the bar is at the very top of the page and would otherwise cut the
-       same seam the sticky version used to. */
-    background: var(--wash-top);
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-  }
+  /* The bar stays sticky and translucent here, same as on desktop. It used to
+     drop to `position: relative` with an opaque background below this width,
+     which cost the phone the one place the nav and the download button are
+     always reachable, and made the homepage's reveal-on-scroll CTA pointless:
+     a control that appears once you scroll cannot appear in a bar that has
+     already scrolled away. `--header-bg` is derived from `--wash-top` for
+     exactly this, and BRAND.md sanctions the translucent sticky top-bar for
+     the marketing site with no mobile exception. Raised z-index because the
+     drawer panel is absolutely positioned beneath it. */
+  .top-bar { z-index: 40; }
   .top-bar-inner {
     width: min(var(--max), calc(100% - 28px));
     min-height: 56px;
@@ -471,6 +468,22 @@ html[data-theme="light"] .theme-toggle .icon-moon { display: block; }
   .top-links > .nav-group { display: none; }
   .top-links { margin-left: auto; gap: 8px; }
   .mobile-menu { display: block; }
+  /* Homepage only: while the hero's own Get AtlasDays button is on screen, the
+     bar's copy is a duplicate a thumb-width above it, so it waits until the
+     hero button scrolls away. home.js owns the body class; every other page
+     never sets it, and with JavaScript off the button simply stays visible.
+
+     Hidden with visibility rather than `display: none` so the button keeps its
+     space in the bar: the language, theme and Menu controls then sit where
+     they will stay, instead of sliding sideways mid-scroll when it appears. */
+  body.hero-cta-in-view .nav-cta-wrap {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .nav-cta-wrap {
+    transition: opacity 160ms ease, visibility 160ms ease;
+  }
 }
 
 /* The wordmark and the language name are already gone by here; this is where

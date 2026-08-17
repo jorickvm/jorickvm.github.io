@@ -38,8 +38,8 @@ HEADER_TEMPLATE = SOURCE_ROOT / "templates" / "partials" / "site-header.html"
 FOOTER_TEMPLATE = SOURCE_ROOT / "templates" / "partials" / "site-footer.html"
 CLUSTER_DATA_PATH = SOURCE_ROOT / "data" / "content-clusters.json"
 BUILD_VERSION = "20260815a"
-SITE_HEADER_VERSION = "20260817b"
-ARTICLE_COMPONENTS_VERSION = "20260817a"
+SITE_HEADER_VERSION = "20260817c"
+ARTICLE_COMPONENTS_VERSION = "20260817b"
 NAVIGATION_VERSION = "20260817b"
 
 # Root class that drops the background wash from the app's `.medium` step to
@@ -890,42 +890,31 @@ def render_factbox_legal_basis(
     content: str,
     article: dict[str, object],
 ) -> str:
-    """Link an existing legal-basis row or add the source-owned missing row."""
+    """Add the source-owned legal-basis row when the fragment lacks one.
+
+    The row is deliberately not a link. It used to carry one to the statute it
+    names, which made the factbox the earliest outbound link on the page, above
+    the fold and well before the download CTA: the citation a reader is most
+    likely to click is the one that sends them away before they have read the
+    article. Jorick's call (2026-08-17). The statute text stays, because naming
+    it is the point, and 50 of the 56 pages that show this row already link the
+    same URL further down in prose or in the Official source card, with the
+    remaining six linking four or more other official sources. Nothing loses
+    its citation trail; it just stops competing with the CTA from row one.
+    """
     if article.get("section") != "learn" or 'class="factbox"' not in content:
         return content
-    urls = official_source_urls(article)
-    if not urls:
+    if LEGAL_BASIS_PATTERN.search(content):
         return content
-    index = int(article.get("legal_basis_source", 0))
-    if index >= len(urls):
-        raise SystemExit(f"Legal-basis source is out of range: {article['path']}")
-    url = html.escape(urls[index], quote=True)
-    icon = (
-        '<svg class="external-link-icon" width="14" height="14" viewBox="0 0 24 24" '
-        'fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">'
-        '<path d="M14 5h5v5M19 5l-9 9"/><path d="M19 13v6H5V5h6"/></svg>'
-    )
+    citation = article.get("legal_basis")
+    if not citation:
+        return content
 
     def update_factbox(match: re.Match[str]) -> str:
-        body = match.group(2)
-
-        def link_existing(row: re.Match[str]) -> str:
-            value = row.group(2).strip()
-            return (
-                row.group(1)
-                + f'<a href="{url}" rel="nofollow">{value}{icon}</a>'
-                + row.group(3)
-            )
-
-        body, count = LEGAL_BASIS_PATTERN.subn(link_existing, body, count=1)
-        if not count:
-            citation = article.get("legal_basis")
-            if not citation:
-                return match.group(0)
-            body = body.rstrip() + (
-                '\n        <div class="legal-basis"><dt>{{t:learn.legal_basis}}</dt>'
-                f'<dd><a href="{url}" rel="nofollow">{html.escape(str(citation))}{icon}</a></dd></div>\n      '
-            )
+        body = match.group(2).rstrip() + (
+            '\n        <div class="legal-basis"><dt>{{t:learn.legal_basis}}</dt>'
+            f'<dd>{html.escape(str(citation))}</dd></div>\n      '
+        )
         return match.group(1) + body + match.group(3)
 
     return FACTBOX_PATTERN.sub(update_factbox, content, count=1)

@@ -105,10 +105,23 @@ document.querySelectorAll('.hero-video').forEach((video) => {
   else window.addEventListener('load', playFromStart, { once: true });
 });
 
-// The header CTA used to hide itself on narrow screens while the hero's own
-// Get AtlasDays button was on screen, because the two were near-identical wide
-// pills a thumb-width apart. It is now a 36px App Store glyph sitting with the
-// language and theme controls, and the mobile header is not sticky, so hiding
-// it there meant it was never reachable on a phone at all. Removed with the
-// header unification (2026-08-17); do not reintroduce homepage-only header
-// behavior, which is what made the two headers drift in the first place.
+// On narrow screens the header CTA waits for the hero's own Get AtlasDays
+// button to scroll off before it appears, so the first screen has one download
+// button rather than two a thumb-width apart. The bar is sticky, so the button
+// stays reachable from then on. CSS applies the class only under the mobile
+// breakpoint; with JavaScript off the header button simply stays visible.
+const heroCta = document.querySelector('.hero-actions .btn-primary');
+if (heroCta) {
+  // Set once synchronously, before the observer's first async callback, so the
+  // button is not painted and then faded out on load.
+  const heroCtaOnScreen = () => {
+    const box = heroCta.getBoundingClientRect();
+    return box.bottom > 0 && box.top < window.innerHeight;
+  };
+  document.body.classList.toggle('hero-cta-in-view', heroCtaOnScreen());
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver((entries) => {
+      document.body.classList.toggle('hero-cta-in-view', entries[0].isIntersecting);
+    }).observe(heroCta);
+  }
+}
