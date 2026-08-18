@@ -121,6 +121,27 @@ def review_due(month: str | None, interval: int) -> str | None:
     return (reviewed + timedelta(days=interval)).isoformat()
 
 
+def review_by(record: dict[str, object]) -> tuple[str, str] | None:
+    """A known date on which this page's facts are expected to go stale.
+
+    The tier cadence answers "how volatile is this kind of claim in general".
+    It cannot answer "this specific page says a thing starts in Q4 2026", and a
+    page that describes a scheduled change is wrong from the day that change
+    lands, not six months later. `review_by` lets a record name that date, and
+    the earlier of the two wins.
+    """
+    declared = record.get("review_by")
+    if declared is None:
+        return None
+    if not isinstance(declared, dict) or not declared.get("date") or not declared.get("reason"):
+        raise SystemExit(f"{record['path']}: review_by needs both a date and a reason")
+    try:
+        date.fromisoformat(str(declared["date"]))
+    except ValueError:
+        raise SystemExit(f"{record['path']}: review_by.date is not an ISO date: {declared['date']!r}")
+    return str(declared["date"]), str(declared["reason"])
+
+
 def external_sources(content: str) -> list[str]:
     urls = re.findall(r'href="(https?://[^"#]+)', content)
     return sorted({url for url in urls if APP_STORE not in url and "atlasdays.app" not in url})
@@ -157,6 +178,11 @@ def build() -> tuple[dict[str, object], dict[str, object], str]:
         cluster, pillar = cluster_for(slug, category)
         month = verified_month(content)
         sources = structured_sources(record, content)
+        cadence_due = review_due(month, interval)
+        scheduled = review_by(record)
+        due, trigger, trigger_reason = cadence_due, "tier-cadence", None
+        if scheduled and (cadence_due is None or scheduled[0] < cadence_due):
+            due, trigger, trigger_reason = scheduled[0], "known-change", scheduled[1]
         editorial_entries.append(
             {
                 "path": path,
@@ -167,7 +193,10 @@ def build() -> tuple[dict[str, object], dict[str, object], str]:
                 "review_interval_days": interval,
                 "last_fact_verified": month,
                 "verification_precision": "month" if month else None,
-                "next_review_due": review_due(month, interval),
+                "next_review_due": due,
+                "review_trigger": trigger,
+                "review_trigger_reason": trigger_reason,
+                "cadence_review_due": cadence_due,
                 "source_urls": sources,
                 "review_status": status if month else "verification-missing",
                 "review_notes": "Migrated from the visible month-level verification label; record an exact date at the next substantive source review.",
@@ -201,6 +230,20 @@ def build() -> tuple[dict[str, object], dict[str, object], str]:
         "Tier 1 (volatile entry/visa rules) re-verifies every 6 months and tier 2 (stable statutory thresholds) yearly, both against official sources with an exact date recorded. Tier 3 (evergreen guides) takes a yearly light pass; the weekly link-rot check covers its sources in between. Work the months in order - each heading is one sitting.", "",
         "Legacy articles expose only a verification month. The next substantive review must record an exact date; cosmetic edits must not change it.", "",
     ]
+    scheduled_entries = [entry for entry in ordered if entry["review_trigger"] == "known-change"]
+    if scheduled_entries:
+        queue_lines.extend([
+            "## Brought forward by a known change", "",
+            "These pages describe something scheduled to change. The tier cadence would review them later, which would leave them wrong in the meantime, so `review_by` in `articles.json` pulls the date forward.", "",
+            "| Due | Article | Cadence would say | Why earlier |", "|---|---|---|---|",
+        ])
+        for entry in scheduled_entries:
+            route = "/" + str(entry["path"]).removesuffix(".html")
+            queue_lines.append(
+                f"| {entry['next_review_due']} | [{entry['path']}]({route}) | "
+                f"{entry['cadence_review_due'] or 'n/a'} | {entry['review_trigger_reason']} |"
+            )
+        queue_lines.append("")
     current_month = None
     for entry in ordered:
         due = entry["next_review_due"]
