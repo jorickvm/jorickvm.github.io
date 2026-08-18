@@ -6,17 +6,30 @@ Tier 1 (volatile entry/visa rules) re-verifies every 6 months and tier 2 (stable
 
 Legacy articles expose only a verification month. The next substantive review must record an exact date; cosmetic edits must not change it.
 
+## Brought forward by a known change
+
+These pages describe something scheduled to change. The tier cadence would review them later, which would leave them wrong in the meantime, so `review_by` in `articles.json` pulls the date forward.
+
+| Due | Article | Cadence would say | Why earlier |
+|---|---|---|---|
+| 2026-10-01 | [learn/ees-etias-schengen-90-180.html](/learn/ees-etias-schengen-90-180) | 2027-03-01 | ETIAS is expected to start in the last quarter of 2026. Every ETIAS statement on this page (not in force, expected start, transitional and grace periods) is wrong the day it launches. |
+| 2026-10-01 | [learn/schengen-90-180-rule.html](/learn/schengen-90-180-rule) | 2027-03-01 | The EES and ETIAS section says ETIAS is not in force yet, which stops being true when it starts in the last quarter of 2026. |
+
+## 2026-10
+
+| Due | Tier | Article | Status | Sources |
+|---|---|---|---|---:|
+| 2026-10-01 | 1 | [learn/ees-etias-schengen-90-180.html](/learn/ees-etias-schengen-90-180) | exact-date-required | 3 |
+| 2026-10-01 | 1 | [learn/schengen-90-180-rule.html](/learn/schengen-90-180-rule) | exact-date-required | 5 |
+
 ## 2026-12
 
 | Due | Tier | Article | Status | Sources |
 |---|---|---|---|---:|
 | 2026-12-29 | 1 | [learn/digital-nomad-visa-day-limits.html](/learn/digital-nomad-visa-day-limits) | exact-date-required | 2 |
-| 2026-12-29 | 1 | [learn/schengen-countries-list-90-180-rule.html](/learn/schengen-countries-list-90-180-rule) | exact-date-required | 2 |
-| 2026-12-29 | 1 | [learn/schengen-rolling-window-walkthrough.html](/learn/schengen-rolling-window-walkthrough) | exact-date-required | 2 |
 | 2026-12-29 | 1 | [learn/uk-citizenship-absence-limits.html](/learn/uk-citizenship-absence-limits) | exact-date-required | 4 |
 | 2026-12-29 | 1 | [learn/uk-eta-vs-standard-visitor-visa.html](/learn/uk-eta-vs-standard-visitor-visa) | exact-date-required | 4 |
 | 2026-12-29 | 1 | [learn/uk-ilr-absence-limit.html](/learn/uk-ilr-absence-limit) | exact-date-required | 3 |
-| 2026-12-29 | 1 | [learn/when-do-you-get-schengen-days-back-after-90-day-stay.html](/learn/when-do-you-get-schengen-days-back-after-90-day-stay) | exact-date-required | 2 |
 
 ## 2027-03
 
@@ -25,12 +38,14 @@ Legacy articles expose only a verification month. The next substantive review mu
 | 2027-03-01 | 1 | [learn/canada-visitor-visa-6-month-limit.html](/learn/canada-visitor-visa-6-month-limit) | exact-date-required | 2 |
 | 2027-03-01 | 1 | [learn/georgia-visa-free-365-days.html](/learn/georgia-visa-free-365-days) | exact-date-required | 1 |
 | 2027-03-01 | 1 | [learn/japan-90-day-rule.html](/learn/japan-90-day-rule) | exact-date-required | 1 |
-| 2027-03-01 | 1 | [learn/schengen-90-180-rule.html](/learn/schengen-90-180-rule) | exact-date-required | 3 |
+| 2027-03-01 | 1 | [learn/schengen-countries-list-90-180-rule.html](/learn/schengen-countries-list-90-180-rule) | exact-date-required | 2 |
+| 2027-03-01 | 1 | [learn/schengen-rolling-window-walkthrough.html](/learn/schengen-rolling-window-walkthrough) | exact-date-required | 3 |
 | 2027-03-01 | 1 | [learn/schengen-single-entry-visa.html](/learn/schengen-single-entry-visa) | exact-date-required | 2 |
 | 2027-03-01 | 1 | [learn/turkiye-90-180-rule.html](/learn/turkiye-90-180-rule) | exact-date-required | 2 |
 | 2027-03-01 | 1 | [learn/uk-standard-visitor-visa-180-day-rule.html](/learn/uk-standard-visitor-visa-180-day-rule) | exact-date-required | 3 |
 | 2027-03-01 | 1 | [learn/us-b1-b2-visa-180-day-limit.html](/learn/us-b1-b2-visa-180-day-limit) | exact-date-required | 4 |
 | 2027-03-01 | 1 | [learn/us-visa-waiver-90-day-limit.html](/learn/us-visa-waiver-90-day-limit) | exact-date-required | 2 |
+| 2027-03-01 | 1 | [learn/when-do-you-get-schengen-days-back-after-90-day-stay.html](/learn/when-do-you-get-schengen-days-back-after-90-day-stay) | exact-date-required | 3 |
 
 ## 2027-06
 
