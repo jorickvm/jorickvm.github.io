@@ -305,6 +305,29 @@ def output_path(relpath: str, code: str, appearance: str = "dark") -> Path:
     )
 
 
+def manual_source(capture: dict, code: str, appearance: str) -> Path | None:
+    """The archived PNG a hand-captured entry is cut from, or None if absent.
+
+    Manual entries (the Home Screen widget gallery, the iOS Settings page) are
+    photographed outside the app, so a language or an appearance is a different
+    PNG rather than a different launch. Their filenames follow the same shape
+    the outputs do: ``widgets-gallery.png`` is English dark, ``.de`` marks the
+    language, ``-light`` the appearance.
+
+    Returns None when that file does not exist, and the caller skips the entry.
+    Skipping is the honest answer: publishing English pixels under a German
+    filename is worse than the English fallback the page already falls back to.
+    """
+    relpath = capture["source"]
+    stem, dot, ext = relpath.rpartition(".")
+    if code != "en":
+        stem = f"{stem}.{code}"
+    if appearance == "light":
+        stem = f"{stem}-light"
+    source = SITE_ROOT / f"{stem}{dot}{ext}"
+    return source if source.exists() else None
+
+
 def normalize_targets(capture: dict) -> list[dict]:
     """Accept both target spellings.
 
@@ -504,17 +527,18 @@ def main() -> int:
     # archived PNG rather than launched, and never reach the Simulator.
     manual = [c for c in captures if c.get("source")]
     captures = [c for c in captures if not c.get("source")]
-    if args.locale != "en" and manual:
-        # Manual captures are cut from archived English PNGs (an iOS Settings
-        # screen, a Home Screen). Re-cutting one into a ja/ path would publish
-        # English pixels under a Japanese filename, which is worse than the
-        # honest English fallback sync_help_screenshots.py already provides.
-        print(f"skipping {len(manual)} manual capture(s) for {args.locale}: archived source is English")
-        manual = []
-    for capture in manual:
-        source = SITE_ROOT / capture["source"]
-        if not source.exists():
-            raise SystemExit(f'Manual source missing for {capture["id"]}: {source}')
+    skipped = []
+    for capture in list(manual):
+        source = manual_source(capture, args.locale, args.appearance)
+        if source is None:
+            if args.locale == "en" and args.appearance == "dark":
+                raise SystemExit(
+                    f'Manual source missing for {capture["id"]}: '
+                    f'{SITE_ROOT / capture["source"]}'
+                )
+            manual.remove(capture)
+            skipped.append(capture["id"])
+            continue
         for target in normalize_targets(capture):
             write_target(
                 source, output_path(target["path"], args.locale, args.appearance),
@@ -522,6 +546,11 @@ def main() -> int:
             )
     if manual:
         print(f"cut {len(manual)} manual capture(s) from archived sources")
+    if skipped:
+        print(
+            f"skipping {len(skipped)} manual capture(s) with no "
+            f"{args.locale}/{args.appearance} source: {', '.join(skipped)}"
+        )
 
     if args.from_raw:
         recut = 0
