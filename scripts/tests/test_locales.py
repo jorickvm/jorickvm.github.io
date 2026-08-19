@@ -191,7 +191,7 @@ class RouteTests(unittest.TestCase):
         self.assertIn('<span class="lang-switch-current">Nederlands</span>', markup)
         self.assertIn('aria-current="true"', markup)
         self.assertIn('href="/learn/example"', markup)
-        self.assertIn('data-language-choice="en"', markup)
+        self.assertIn('hreflang="en"', markup)
         self.assertEqual(markup.count('class="lang-switch-panel"'), 1)
 
 

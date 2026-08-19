@@ -825,7 +825,7 @@ def render_language_switcher(
         else:
             rows.append(
                 f'<a class="lang-switch-option" href="{html.escape(url[len(SITE_URL):])}" '
-                f'lang="{code}" hreflang="{locale["hreflang"]}" data-language-choice="{code}">'
+                f'lang="{code}" hreflang="{locale["hreflang"]}">'
                 f'<span class="lang-switch-check" aria-hidden="true"></span><span>{name}</span></a>'
             )
     current_name = html.escape(str(current_locale["native_name"]))
@@ -991,10 +991,11 @@ def render_locale_routing(
     Only published locales appear, which is the same rule hreflang and the
     switcher use. A draft locale is not somewhere to send a reader.
 
-    The redirect fires on an explicit `?lang=` and nothing else. Redirecting on
-    `navigator.language` would take a reader who searched in English off the
-    page they chose, and Google advises against it. That case gets the banner
-    in locale-route.js instead.
+    The redirect fires on an explicit `?lang=` and nothing else, on every page
+    including the homepage. Redirecting on `navigator.language` would take a
+    reader who searched in English off the page they chose, and Google advises
+    against it. That case gets the offer banner in locale-route.js instead,
+    which suggests and never moves.
     """
     entries: dict[str, dict[str, str]] = {}
     for link in alternate_links(source_path, locales, translations):
@@ -1006,7 +1007,6 @@ def render_locale_routing(
             continue
         entries[code] = {
             "url": str(link["href"])[len(SITE_URL):],
-            "name": str(locale["native_name"]),
             "label": str(strings["locale.offer"][code]),
             "dismiss": str(strings["locale.dismiss"][code]),
         }
@@ -1018,7 +1018,7 @@ def render_locale_routing(
         "(function(){var q=new URLSearchParams(location.search).get('lang');if(!q)return;"
         "var e=window.AtlasDaysPageLocales[q.toLowerCase().split('-')[0]];"
         "if(e&&e.url!==location.pathname)location.replace(e.url+location.search+location.hash)})()</script>"
-        f'\n  <script defer src="{prefix}assets/js/locale-route.js?v=20260815a"></script>'
+        f'\n  <script defer src="{prefix}assets/js/locale-route.js?v=20260819a"></script>'
     )
 
 
