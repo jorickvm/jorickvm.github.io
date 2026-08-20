@@ -671,56 +671,45 @@
 }
 .hub-count { font-variant-numeric: tabular-nums; }
 
-.hub-grid {
+/* Two grids, deliberately different. The 51 place cards flow in CSS columns,
+   so a card with one guide is not stretched to the height of a neighbour with
+   six; the cost is that A-Z now reads down the left column and then down the
+   right. The three topic cards use a real grid instead, because with so few
+   cards of such different heights, column balancing put them in the wrong
+   reading order and reading order is what matters there. */
+.hub-places {
+  columns: 2;
+  column-gap: 12px;
+}
+.hub-places .hub-tile {
+  display: inline-block;
+  width: 100%;
+  margin: 0 0 12px;
+  vertical-align: top;
+  break-inside: avoid;
+}
+.hub-topics {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  align-items: start;
   gap: 12px;
 }
 
-/* Guide card — Help topics and Travel Rules general guides */
-.hub-card {
-  display: block;
-  padding: 16px 18px;
-  border: 1px solid var(--line);
-  border-radius: 16px;
-  background: var(--bg-card);
-  color: inherit;
-  text-decoration: none;
-  transition: border-color 140ms ease, background 140ms ease;
-}
-.hub-card:hover {
-  border-color: var(--line-strong);
-  background: color-mix(in srgb, var(--bg-elevated) 82%, var(--bg-card));
-}
-.hub-card .q {
-  margin: 0 0 5px;
-  color: var(--text);
-  font-size: 0.95rem;
-  font-weight: 650;
-  line-height: 1.35;
-  letter-spacing: -0.01em;
-}
-.hub-card .d {
-  margin: 0;
-  color: var(--muted);
-  font-size: 0.83rem;
-  line-height: 1.5;
-}
-.hub-card[hidden] { display: none !important; }
-
-/* Place card — flag + name + type + article links */
-.hub-place {
-  padding: 14px 16px;
+/* One card object for a place and for a guide topic: a header, then rows. The
+   hairline under the header is unconditional, and a card with a single guide
+   shows no count, so a place gaining a second guide needs no markup change. */
+.hub-tile {
+  overflow: hidden;
   border: 1px solid var(--line);
   border-radius: 16px;
   background: var(--bg-card);
 }
-.hub-place[hidden] { display: none !important; }
-.hub-place-head {
+.hub-tile[hidden] { display: none !important; }
+.hub-tile-head {
   display: flex;
   gap: 10px;
   align-items: center;
-  margin-bottom: 4px;
+  padding: 13px 16px 12px;
 }
 .hub-flag {
   flex-shrink: 0;
@@ -732,48 +721,83 @@
   background: var(--bg-elevated);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.16);
 }
-.hub-place-name {
+.hub-tile-name {
   color: var(--text);
   font-size: 0.9rem;
   font-weight: 650;
   letter-spacing: -0.01em;
 }
-.hub-place-type {
+/* Rendered where the localized display name collides (the two Georgias) or
+   where a namesake that is not in the library makes it ambiguous anyway: New
+   York against the city, the Schengen Area against the EU flag it borrows. */
+.hub-tile-qualifier {
   color: var(--muted-2);
-  font-size: 0.72rem;
+  font-size: 0.75rem;
 }
-.hub-article {
+.hub-tile-count {
+  margin-left: auto;
+  color: var(--muted-2);
+  font-size: 0.75rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+.hub-links { border-top: 1px solid var(--line); }
+/* The whole row is the link, so the tap target is the full width of the card
+   at any font size. The chevron is a pseudo-element: nothing to hide from a
+   screen reader, and no 79 inline SVGs in the fragment.
+
+   Not .hub-row: the residency hubs already use that for a table row, in a
+   variant stylesheet this file is linked after, so the name would silently
+   restyle their tables. */
+.hub-link {
+  position: relative;
   display: block;
-  padding: 9px 0;
-  color: var(--blue);
+  padding: 11px 34px 11px 16px;
+  color: var(--muted);
   font-size: 0.855rem;
   line-height: 1.4;
   text-decoration: none;
+  transition: background 140ms ease, color 140ms ease, border-color 140ms ease;
 }
-.hub-article + .hub-article { border-top: 1px solid var(--line); }
-.hub-article:hover { color: color-mix(in srgb, var(--blue) 68%, var(--text)); }
-
-/* Numbered general-guide groups (01 / 02 / 03) */
-.hub-guides-group { margin-bottom: 24px; }
-.hub-guides-group[hidden] { display: none !important; }
-.hub-guides-head {
-  display: flex;
-  gap: 12px;
-  align-items: baseline;
-  margin-bottom: 12px;
+.hub-link + .hub-link { border-top: 1px solid var(--line); }
+.hub-link::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 16px;
+  width: 6px;
+  height: 6px;
+  margin-top: -4px;
+  border-right: 1.5px solid var(--muted-2);
+  border-bottom: 1.5px solid var(--muted-2);
+  transform: rotate(-45deg);
+  transition: border-color 140ms ease, transform 140ms ease;
 }
-.hub-num {
+/* The same three moves a homepage use-case card makes: the surface lifts, the
+   divider brightens, the title goes brand blue. Kept on the shared tokens so
+   the two pages cannot drift apart. */
+.hub-link:hover {
+  background: var(--bg-card-strong);
   color: var(--blue);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  font-variant-numeric: tabular-nums;
+  border-top-color: var(--line-strong);
 }
-.hub-guides-name {
+.hub-link:hover + .hub-link { border-top-color: var(--line-strong); }
+.hub-link:hover::after {
+  border-color: var(--blue);
+  transform: translateX(2px) rotate(-45deg);
+}
+.hub-link:focus-visible { outline-offset: -2px; }
+
+/* The scannable phrase, weighted in place. A span rather than <strong>: it is
+   a visual scanning aid, not emphasis a screen reader should stress. Weight as
+   well as colour, so it survives greyscale. */
+.hub-key {
   color: var(--text);
-  font-size: 0.95rem;
-  font-weight: 700;
+  font-weight: 650;
+  transition: color 140ms ease;
 }
+.hub-link:hover .hub-key { color: color-mix(in srgb, var(--blue) 62%, var(--text)); }
 
 .hub-disclaimer {
   max-width: 76ch;
@@ -785,13 +809,20 @@
 }
 .hub-disclaimer strong { color: var(--muted); }
 
+@media (max-width: 760px) {
+  .hub-topics { grid-template-columns: minmax(0, 1fr); }
+}
+
 @media (max-width: 600px) {
   .hub-chips { gap: 6px; }
   .hub-chips button { min-height: 36px; padding: 7px 12px; font-size: 0.8rem; }
-  .hub-grid { grid-template-columns: minmax(0, 1fr); }
+  .hub-places { columns: 1; }
+  .hub-link { padding-top: 13px; padding-bottom: 13px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .hub-chips button,
-  .hub-card { transition: none; }
+  .hub-link,
+  .hub-link::after,
+  .hub-key { transition: none; }
 }

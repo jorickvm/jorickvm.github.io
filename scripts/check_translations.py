@@ -55,6 +55,11 @@ HEADING = re.compile(r"<h2\b")
 LIST_ITEM = re.compile(r"<li\b")
 ORDERED_LIST = re.compile(r"<ol\b")
 IF_NEEDED = re.compile(r'<section class="if-needed"')
+# The scannable phrase weighted inside a library card title. It is per locale
+# and chosen against that locale's own titles, so the check is a count, not a
+# comparison: a translation that drops the spans loses the scanning aid on
+# every row, and nothing else on the page would show it.
+EMPHASIS = re.compile(r'<span class="hub-key">')
 FIGURE_SLOT = re.compile(r'<img src="[^"]*/([\w\-]+)\.webp"')
 DEFERRED_SLOT = re.compile(r"<!-- SCREENSHOT_DEFERRED: ([\w\-]+) \|")
 # The fragment is part of the link. Without it here, an anchored href like
@@ -214,6 +219,7 @@ def check_structure(
         ("<ol> lists", ORDERED_LIST),
         ("<li> items", LIST_ITEM),
         ("troubleshooting blocks", IF_NEEDED),
+        ("emphasised title phrases", EMPHASIS),
     ):
         expected = len(pattern.findall(english))
         actual = len(pattern.findall(translated))

@@ -506,6 +506,38 @@ def audit_learn_fragments(findings: list[Finding]) -> None:
             )
 
 
+LIBRARY_TILE = re.compile(
+    r'<span class="hub-tile-name">(?P<name>[^<]+)</span>'
+    r'(?P<qualifier><span class="hub-tile-qualifier">)?'
+)
+
+
+def audit_library_qualifiers(findings: list[Finding]) -> None:
+    """Two places sharing a display name must both say which one they are.
+
+    The qualifier is otherwise editorial, set where an off-page namesake makes
+    a name ambiguous. A collision is the case nobody can be trusted to notice:
+    it is caused by adding an unrelated place, it reads as a duplicate rather
+    than as a defect, and it happens per locale, because two names that collide
+    in one language are two different words in another.
+    """
+    for path in sorted((SITE_ROOT / "_site-src" / "content").glob("**/hubs/learn-index.html")):
+        seen: dict[str, list[bool]] = {}
+        for match in LIBRARY_TILE.finditer(path.read_text(encoding="utf-8")):
+            seen.setdefault(match["name"], []).append(bool(match["qualifier"]))
+        for name, qualified in sorted(seen.items()):
+            if len(qualified) > 1 and not all(qualified):
+                findings.append(
+                    Finding(
+                        "error",
+                        "ambiguous-place-name",
+                        path.relative_to(SITE_ROOT).as_posix(),
+                        f"{name!r} names {len(qualified)} places and {qualified.count(False)} "
+                        "carry no qualifier",
+                    )
+                )
+
+
 def source_path_of(path: str, registry: dict[str, dict], default: str) -> str:
     """The English page a generated file corresponds to."""
     head, _, rest = path.partition("/")
@@ -857,6 +889,7 @@ def main() -> int:
     audit_translations(records, parsed, findings)
     audit_theme_css(findings)
     audit_learn_fragments(findings)
+    audit_library_qualifiers(findings)
     audit_governance(records, findings)
     if args.write_baseline:
         write_baseline(args.write_baseline, records)
