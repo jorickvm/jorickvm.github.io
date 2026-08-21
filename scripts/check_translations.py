@@ -91,12 +91,17 @@ def visible_text(fragment: str) -> str:
 # rule misfires on them exactly as it does on Japanese, just in the other
 # direction. Russian and Ukrainian тире is U+2014; writing an en dash there is
 # a foreign-looking substitution, not a correction. Ruled by Jorick 2026-08-17.
-EM_DASH_NATIVE_LOCALES = {"ru", "uk"}
+#
+# Spanish joined 2026-08-21. The raya is the standard mark for an inciso. That
+# case is weaker than the Cyrillic one, since Spanish can reword the way English
+# does; it is here so a translator writing correct Spanish is not stopped by a
+# gate, not because the mark is obligatory.
+EM_DASH_NATIVE_LOCALES = {"ru", "uk", "es"}
 
 
 def check_house_typography(label: str, text: str, problems: list[str],
                            code: str = "") -> None:
-    """The em-dash ban applies to every locale except the Cyrillic ones.
+    """The em-dash ban is an English rule, applied to every locale but a few.
 
     Russian and Ukrainian use U+2014 as their ordinary parenthetical dash
     (`AtlasDays — это инструмент учёта`, `«ключ — значение»`). The house rule
