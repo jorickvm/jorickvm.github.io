@@ -6,7 +6,7 @@
   var page = main.getAttribute('data-legal-page');
   var englishHTML = main.innerHTML;
   var englishTitle = document.title;
-  var supported = ['en-US', 'en-GB', 'nl', 'de', 'es', 'fr', 'ru', 'uk', 'ja'];
+  var supported = ['en-US', 'en-GB', 'nl', 'de', 'es', 'fr', 'ru', 'uk', 'ja', 'tr'];
   var languageNames = {
     'en-US': 'English (US)',
     'en-GB': 'English (UK)',
@@ -16,7 +16,8 @@
     fr: 'Français',
     ru: 'Русский',
     uk: 'Українська',
-    ja: '日本語'
+    ja: '日本語',
+    tr: 'Türkçe'
   };
   var languageLabels = {
     'en-US': 'Language',
@@ -27,7 +28,8 @@
     fr: 'Langue',
     ru: 'Язык',
     uk: 'Мова',
-    ja: '言語'
+    ja: '言語',
+    tr: 'Dil'
   };
 
   function normalizeLanguage(value) {

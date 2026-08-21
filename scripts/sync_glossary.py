@@ -129,7 +129,8 @@ def build_locale(app_repo: Path, code: str, language: str) -> dict[str, object]:
     catalog = catalog_values(app_repo, code)
     terms: list[dict[str, object]] = []
     for source, accepted_cell, rejected_cell in terminology_rows(guidelines, language):
-        accepted = [part.strip() for part in accepted_cell.split(" / ") if part.strip()]
+        backticked = [part.strip() for part in BACKTICKED.findall(accepted_cell) if part.strip()]
+        accepted = backticked or [part.strip() for part in accepted_cell.split(" / ") if part.strip()]
         accepted = [part for part in accepted if part and not part.startswith("%")]
         if not accepted:
             continue
@@ -163,7 +164,7 @@ def build_locale(app_repo: Path, code: str, language: str) -> dict[str, object]:
 
 def build(app_repo: Path, codes: list[str]) -> dict[str, object]:
     names = {"ja": "Japanese", "nl": "Dutch", "de": "German", "es": "Spanish",
-             "fr": "French", "ru": "Russian", "uk": "Ukrainian"}
+             "fr": "French", "ru": "Russian", "uk": "Ukrainian", "tr": "Turkish"}
     return {
         "schema_version": 1,
         "_comment": [

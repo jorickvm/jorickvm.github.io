@@ -915,5 +915,120 @@ window.AtlasDaysLegalTranslations = {
   <h2 id="contact">10. お問い合わせ</h2>
   <p>ご質問は、<a href="#contact" id="terms-email-contact" data-email-user="support" data-email-domain="atlasdays.app">AtlasDaysサポート</a>へお送りください。</p>`
     }
+  },
+
+  tr: {
+    privacy: {
+      title: 'AtlasDays Uygulama Gizliliği',
+      html: `<p><a href="/">&larr; AtlasDays</a></p>
+  <h1>AtlasDays Uygulama Gizliliği</h1>
+  <p class="updated">Son güncelleme: 7 Ağustos 2026</p>
+
+  <p class="lede">Seyahat geçmişiniz, fotoğraflarınız ve konumunuz aygıtınızda veya özel Apple iCloud hesabınızda kalır. AtlasDays'te kullanıcı hesabı yoktur ve seyahat geçmişinizin bir kopyası hiçbir AtlasDays sunucusunda tutulmaz.</p>
+
+  <div class="summary">
+    <strong>Kısaca</strong>
+    <ul>
+      <li><strong>Seyahat verileriniz, fotoğraflarınız ve konumunuz gizli ve sizin denetiminizde kalır.</strong></li>
+      <li><strong>Seyahat geçmişiniz aygıtınızda kalır.</strong> iCloud eşzamanlamayı etkinleştirirseniz AtlasDays bu geçmişi yalnızca özel Apple iCloud hesabınız üzerinden eşzamanlar.</li>
+      <li><strong>AtlasDays konum ve fotoğraf verilerini aygıtınızda işler.</strong> Fotoğraflarınızı veya ham konum verilerini yüklemez.</li>
+      <li><strong>Uygulamada kullanıcı hesabı, reklam veya takip yoktur.</strong> Anonim kullanım istatistikleri AtlasDays'i geliştirmeye yardımcı olur. Bu istatistikler hiçbir zaman seyahatlerinizi, tarihlerinizi, fotoğraflarınızı veya bulunduğunuz yerleri içermez. AtlasDays verilerinizi satmaz.</li>
+    </ul>
+  </div>
+
+  <h2>1. Depolama ve iCloud</h2>
+  <p>AtlasDays seyahatlerinizi, takiplerinizi, notlarınızı, ayarlarınızı ve yerel fotoğraf referanslarını aygıtınızda saklar. Bu verileri alan bir AtlasDays sunucusu yoktur.</p>
+  <p>Yeni kurulumlarda iCloud kullanılabiliyorsa <strong>iCloud eşzamanlama</strong> varsayılan olarak açıktır. Seyahatleri ve takipleri özel Apple iCloud hesabınız üzerinden eşzamanlar. Eşzamanlamayı AtlasDays Ayarları'ndan kapatabilirsiniz.</p>
+  <p>Bazı tercihler Apple'ın iCloud anahtar-değer depolaması üzerinden de eşzamanlanabilir. AtlasDays, bir ikamet ülkesi önermek için aygıt bölgenizi, tercih ettiğiniz dilleri ve App Store ülkenizi yerel olarak işleyebilir.</p>
+
+  <h2>2. Konum</h2>
+  <p><strong>Seyahatleri otomatik algıla</strong> isteğe bağlıdır. Sürekli GPS takibi yerine Apple'ın önemli konum değişikliği hizmetini kullanır. Ülke ve ABD eyaleti kontrolleri aygıtınızda yapılır. Ham koordinatlar saklanmaz veya yüklenmez.</p>
+  <p>Etkinleştirildiğinde AtlasDays, seyahat eklemek ve devam eden seyahatleri yönetmek için algılanan yerlerin ve tarihlerin yerel bir kaydını tutar.</p>
+  <p>Otomatik algılamayı AtlasDays içinde kapatabilir veya iOS Ayarları'ndan konum erişimini geri alabilirsiniz.</p>
+
+  <h2>3. Fotoğraflar</h2>
+  <p><strong>Fotoğraflardan içe aktarma</strong> isteğe bağlıdır. AtlasDays, geçmiş seyahatler önermek için tarihleri, konumları ve sınırlı fotoğraf meta verilerini aygıtınızda okur. Siz onaylayana kadar seyahat geçmişinize hiçbir şey eklemez.</p>
+  <p>AtlasDays fotoğraflarınızı veya fotoğrafların ham konumlarını yüklemez. Yerel fotoğraf tanımlayıcılarını saklayabilir ve küçük önizlemeleri aygıtınızda önbelleğe alabilir. Bu önizlemeler yüklenmez veya eşzamanlanmaz. Özgün fotoğraflar Apple Fotoğraflar'da kalır.</p>
+  <p>Yerel fotoğraf tanımlayıcıları bir seyahatle birlikte iCloud üzerinden eşzamanlanabilir ancak fotoğraf dosyaları eşzamanlanmaz. AtlasDays'te bir fotoğrafı favorilere ekler veya favorilerden çıkarırsanız bu işlem Apple Fotoğraflar'da da uygulanır.</p>
+  <p>Fotoğraflar erişimini iOS Ayarları'ndan geri alabilirsiniz.</p>
+
+  <h2>4. Bildirimler</h2>
+  <p>Seyahat bildirimleri ve takip uyarıları aygıtınızda oluşturulur ve planlanır. Bildirim izni isteğe bağlıdır.</p>
+
+  <h2>5. İçe aktarma, dışa aktarma ve paylaşma</h2>
+  <p>İçe aktarımlar, dışa aktarımlar ve PDF raporları yerel olarak işlenir. AtlasDays bunları yüklemez. Bilerek paylaştığınız veriler, seçtiğiniz uygulama veya hizmet tarafından işlenir.</p>
+
+  <h2>6. Satın almalar ve destek</h2>
+  <p>Satın alma ve abonelik işlemlerini Apple yürütür. AtlasDays ödeme bilgilerinizi değil, satın alınan özelliklere erişim durumunuzu alır.</p>
+  <p>Geri bildirim göndermek isteğe bağlıdır. AtlasDays sorunları tanılamaya yardımcı olmak için uygulama, aygıt, ayarlar, izinler ve kullanımla ilgili temel bilgiler içerebilen, düzenlenebilir bir e-posta hazırlar. Göndermeden önce bu bilgileri inceleyebilir veya kaldırabilirsiniz. E-postayı gönderirseniz içeriği yalnızca destek amacıyla kullanılır ve yalnızca makul ölçüde gerekli olduğu sürece saklanır. Destek ekibiyle iletişime geçerek silinmesini isteyebilirsiniz.</p>
+
+  <h2>7. Kullanım istatistikleri ve reklam</h2>
+  <p>AtlasDays'te reklam yoktur ve AtlasDays sizi uygulamalar veya web siteleri arasında takip etmez. Reklam tanımlayıcısı kullanmaz ve takip izni istemez.</p>
+  <p>Uygulamanın nasıl kullanıldığını ve nerelerde geliştirilebileceğini görmek için AtlasDays, Avrupa Birliği'ndeki bağımsız bir analiz sağlayıcısına anonim kullanım istatistikleri gönderir. Bir hesap yoktur ve bu verilerde sizi kişisel olarak tanımlayan hiçbir şey bulunmaz. Sağlayıcı, adınızla, e-posta adresinizle veya Apple Hesabı'nızla bağlantılı olmayan anonim bir aygıt tanımlayıcısı atar. Bu tanımlayıcı sizinle iletişim kurmak veya sizi başka uygulamalarda takip etmek için kullanılamaz.</p>
+  <p>Bu istatistikler uygulama içinde yapılan işlemleri, ayarlarınızı, temel aygıt ve uygulama bilgilerini ve yaklaşık ülkenizi kapsar. Satın almalar ve yenilemeler ürün, fiyat ve mağaza ülkesiyle birlikte sayılır. Kaç seyahatiniz olduğu gibi sayılar kesin değerler yerine aralık olarak gönderilir. İstatistikler hiçbir zaman seyahatlerinizi, tarihlerinizi, notlarınızı, fotoğraflarınızı veya koordinatlarınızı içermez.</p>
+
+  <h2>8. Denetimleriniz</h2>
+  <p>Seyahat verilerini Ayarlar'dan silebilir, izinleri iOS Ayarları'ndan geri alabilir ve iCloud eşzamanlamayı kapatabilirsiniz. Uygulama verilerini silmek Apple satın almalarını veya aboneliklerini iptal etmez.</p>
+
+  <h2>9. Daha fazla bilgi</h2>
+  <p><a href="/help/privacy-location-and-sync">Gizlilik ve izinler</a>, <a href="/help/photo-import">Fotoğraflardan içe aktarma</a>, <a href="/help/icloud-sync-and-restore">iCloud eşzamanlama ve geri yükleme</a> ve <a href="/terms">Kullanım Koşulları</a> sayfalarına bakın.</p>
+  <p>Uygulamanın gizlilik modeli değişirse bu sayfa ve güncelleme tarihi de değişir.</p>
+
+  <h2 id="contact">10. İletişim</h2>
+  <p>Sorularınızı veya silme taleplerinizi <a href="#contact" id="privacy-email" data-email-user="support" data-email-domain="atlasdays.app">AtlasDays destek ekibine</a> gönderin.</p>`
+    },
+    terms: {
+      title: 'AtlasDays Kullanım Koşulları',
+      html: `<p><a href="/">&larr; AtlasDays</a></p>
+  <h1>AtlasDays Kullanım Koşulları</h1>
+  <p class="updated">Son güncelleme: 20 Temmuz 2026</p>
+
+  <p class="lede">Bu koşullar AtlasDays uygulaması için geçerlidir. Uygulamayı kullanarak bu koşulları kabul etmiş olursunuz.</p>
+
+  <div class="summary">
+    <strong>Kısaca</strong>
+    <ul>
+      <li>AtlasDays kişisel kullanım için lisanslanır, satılmaz.</li>
+      <li>Apple'ın standart App Store lisans sözleşmesi de geçerlidir.</li>
+      <li>Üç aylık ve yıllık Pro abonelikleri iptal edilene kadar yenilenir. Ömür boyu satın alma tek seferlik bir ödemedir.</li>
+      <li>AtlasDays bir kayıt tutma aracıdır; hukuki, göçmenlik veya vergi danışmanlığı sunmaz.</li>
+    </ul>
+  </div>
+
+  <h2>1. Lisans</h2>
+  <p>AtlasDays lisanslanır, satılmaz. Uygulamayı kullanmak için sınırlı, kişisel ve münhasır olmayan bir lisans alırsınız. Apple'ın <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" rel="noopener noreferrer">Standart Lisanslı Uygulama Son Kullanıcı Lisans Sözleşmesi</a> de geçerlidir. Bu koşullar Apple'ın sözleşmesini tamamlar.</p>
+
+  <h2>2. AtlasDays Pro</h2>
+  <p>AtlasDays Pro, otomatik yenilenen üç aylık veya yıllık aboneliklerle ya da tek seferlik ömür boyu satın alma seçeneğiyle sunulur.</p>
+  <p>Abonelikler iptal edilene kadar yenilenir. Aboneliklerinizi <a href="https://apps.apple.com/account/subscriptions" rel="noopener noreferrer">Apple abonelik ayarlarından</a> yönetebilir veya iptal edebilirsiniz. Erişim, ödenmiş dönemin sonuna kadar sürer. AtlasDays'i silmek aboneliği iptal etmez.</p>
+  <p>Ürünler, fiyatlar, bölgeler, teklifler ve sunulan özellikler değişebilir. İlgili satın alma işlemi için satın alma ekranında gösterilen ayrıntılar geçerlidir. Faturalandırmayı ve geri ödemeleri Apple kendi koşulları uyarınca yürütür.</p>
+
+  <h2>3. Kayıtlar ve gün hesabı</h2>
+  <p>AtlasDays sonuçlarını uygulamadaki seyahatleri, tarihleri, ayarları ve kuralları kullanarak hesaplar. Kayıtlarınızın doğruluğunu korumak ve doğru ayarları seçmek sizin sorumluluğunuzdadır.</p>
+  <p>AtlasDays hukuki, göçmenlik veya vergi danışmanlığı sunmaz ve resmî makamlar adına bağlayıcı kararlar vermez. Sonuçlarına güvenmeden önce güncel resmî kuralları kontrol edin veya bir uzmandan danışmanlık alın.</p>
+
+  <h2>4. Kullanılabilirlik ve değişiklikler</h2>
+  <p>AtlasDays özellik ekleyebilir, değiştirebilir, askıya alabilir veya sonlandırabilir. Uygulama, desteklenen bir Apple işletim sistemi ve Apple hizmetlerine erişim gerektirebilir.</p>
+  <p>Güncellemelerin ve desteğin süresiz sunulacağı garanti edilmez. Güncel yardım için <a href="/help/">Yardım Merkezi'ni</a> kullanın.</p>
+
+  <h2>5. Gizlilik</h2>
+  <p><a href="/privacy">AtlasDays Uygulama Gizliliği sayfası</a>, uygulamanın verileri nasıl işlediğini açıklar. Apple hizmetleri ayrıca Apple'ın koşullarına ve gizlilik politikalarına tabidir.</p>
+
+  <h2>6. Garantiler ve sorumluluk</h2>
+  <p>Yasaların izin verdiği azami ölçüde AtlasDays, her zaman kullanılabilir, hatasız veya her amaca uygun olacağına dair garanti verilmeksizin “olduğu gibi” ve “mevcut olduğu ölçüde” sunulur. Buradaki hiçbir hüküm, hukuken feragat edilemeyen tüketici haklarını ortadan kaldırmaz.</p>
+  <p>Yasaların izin verdiği azami ölçüde AtlasDays; kullanımından doğan dolaylı, arızi, özel, sonuç niteliğindeki veya cezai zararlardan ya da kâr, gelir, veri veya ticari itibar kaybından sorumlu değildir.</p>
+
+  <h2>7. Fikrî mülkiyet</h2>
+  <p>AtlasDays uygulaması, markası ve içeriği fikrî mülkiyet yasalarıyla korunur. Açıkça verilmeyen tüm haklar saklıdır.</p>
+
+  <h2>8. Bu koşullardaki değişiklikler</h2>
+  <p>Bu koşullar değişebilir. Yukarıdaki tarih en son değişikliği gösterir. Değişiklikler yayımlandığında yürürlüğe girer. Yasaların gerektirdiği durumlarda AtlasDays önemli değişiklikleri size bildirir veya onayınızı ister.</p>
+
+  <h2>9. Çeviriler</h2>
+  <p>Çeviriler kolaylık sağlamak amacıyla sunulur. Bir çeviri İngilizce sürümden farklıysa yasaların izin verdiği ölçüde İngilizce sürüm geçerlidir.</p>
+
+  <h2 id="contact">10. İletişim</h2>
+  <p>Sorularınızı <a href="#contact" id="terms-email-contact" data-email-user="support" data-email-domain="atlasdays.app">AtlasDays destek ekibine</a> gönderin.</p>`
+    }
   }
 };
