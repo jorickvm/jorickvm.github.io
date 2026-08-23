@@ -58,6 +58,14 @@
     // The site writes ё where it belongs, per the app translation guidelines,
     // but readers routinely type е for it. Fold so "счетчик" finds "счётчик".
     folded = folded.replace(/ё/g, "е");
+    // Turkish dotless ı has no decomposition, so the Latin fold above skips it
+    // and STRIP then deletes it outright: "genel bakış" normalised to
+    // "genel bak s" and "sınır" to "s n r", which shredded 86 of the 103
+    // Turkish titles into single letters. Fold it to i, which keeps the word
+    // whole and lets an ASCII query ("genel bakis") reach it, exactly as ü and
+    // ş already fold. Dotted İ needs no rule of its own: toLowerCase leaves
+    // i + U+0307 and the combining-mark strip above removes the dot.
+    folded = folded.replace(/\u0131/g, "i");
     return folded.replace(STRIP, " ").replace(/\bdays\b/g, "day").trim();
   }
 
