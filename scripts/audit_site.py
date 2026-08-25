@@ -813,6 +813,7 @@ BASELINE_HAND_AUTHORED = {
     "learn/day-limits.html",
     "learn/how-to-use-atlasdays.html",
     "learn/icloud-sync-travel-tracking.html",
+    "shift/privacy/index.html",
 }
 
 
