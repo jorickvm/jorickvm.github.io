@@ -1,0 +1,44 @@
+    <nav class="breadcrumb" aria-label="Trilha de navegação"><a href="/">AtlasDays</a> / <a href="/help/">Central de ajuda</a></nav>
+
+    <h1>Referência do formato CSV</h1>
+<p class="article-answer">Só a coluna <strong>Country</strong> é obrigatória. O AtlasDays encontra as colunas suportadas pelo nome do cabeçalho, então a ordem delas não importa.</p>
+
+    <h2>Cabeçalhos recomendados</h2>
+    <p><code>Country,State,Start Date,End Date,Purpose,Notes</code></p>
+    <ul>
+      <li><strong>Country:</strong> <a href="/help/languages">nome do país</a> em inglês, código ISO de duas letras ou um apelido comum reconhecido.</li>
+      <li><strong>State:</strong> opcional; nome de estado dos EUA, sigla postal ou código ISO de subdivisão, como <code>US-CA</code>.</li>
+      <li><strong>Start Date / End Date:</strong> data exata, ano ou vazio, conforme as regras abaixo.</li>
+      <li><strong>Purpose:</strong> <code>Tourism</code> (Turismo), <code>Business</code> (Trabalho), <code>Medical</code> (Saúde), <a href="/help/history-and-import"><code>Transit</code></a> (Trânsito) ou <code>Personal</code> (Pessoal); vários motivos que não sejam Transit podem vir separados por vírgula. Os valores são escritos em inglês no arquivo.</li>
+      <li><strong>Notes:</strong> texto opcional.</li>
+    </ul>
+    <figure class="help-shot help-shot-control"><img src="/assets/article-images/help/csv-format-reference/csv-reference.webp" alt="Exemplo e controles de modelo da importação de CSV" width="1320" height="1760" loading="lazy" decoding="async" /></figure>
+
+    <h2>Formatos de data</h2>
+    <h3>Datas exatas</h3>
+    <p>Use <code>yyyy-mm-dd</code> nas duas colunas de data. Deixe End Date vazio somente quando a viagem estiver em andamento.</p>
+    <h3>Ano</h3>
+    <p>Coloque um ano de quatro dígitos em Start Date. End Date pode trazer um ano ou ficar vazio para indicar o mesmo ano. Um intervalo que abrange vários anos vira um registro com apenas o ano para cada ano.</p>
+    <h3>Sem nenhuma data</h3>
+    <p>Deixe as duas células de data vazias. O país é preservado como uma visita sem datas: conta como lugar visitado, mas nunca nos totais de dias, e os relatórios a identificam como <strong>Data desconhecida</strong>. Esse tipo de registro só pode ser criado pela importação de CSV.</p>
+
+    <h2>Linhas de estados dos EUA</h2>
+    <p>Use State apenas em uma viagem aos Estados Unidos. Se uma mesma visita aos EUA passou por vários estados e você precisa de registros por estado, use uma linha por estado. Uma linha só com o país é válida para o controle no nível do país.</p>
+
+    <h2>Trânsito</h2>
+    <p>Coloque <code>Transit</code> em Purpose quando você não chegou a entrar no país. Transit é exclusivo: não combine com Tourism, Business nem qualquer outro motivo.</p>
+
+    <h2>Exemplo</h2>
+    <pre><code>Country,State,Start Date,End Date,Purpose,Notes
+France,,2026-03-01,2026-03-05,Tourism,
+United States,CA,2026-04-10,2026-04-15,Business,Conference
+Japan,,2024,,Tourism,Dates not known
+United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></pre>
+
+    <h2>Delimitador e aspas</h2>
+    <p>O AtlasDays reconhece arquivos separados por vírgula, ponto e vírgula ou tabulação a partir da linha de cabeçalho. Coloque entre aspas os campos que contenham o delimitador ou uma quebra de linha, seguindo as regras normais de CSV.</p>
+
+    <section class="if-needed">
+      <h2>Se um valor não for reconhecido</h2>
+      <p>Use um código ISO de país, um nome de país em inglês sem ambiguidade, datas em formato ISO e um nome ou código padrão de estado dos EUA. Guarde o número original da linha para facilitar a comparação com a revisão da importação.</p>
+    </section>
