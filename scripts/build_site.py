@@ -153,11 +153,8 @@ def render_metadata(article: dict[str, object], prefix: str = "../") -> str:
         lines.append(f"  <meta {attrs_html(dict(attrs))} />")
     for attrs in article.get("links", []):
         lines.append(f"  <link {attrs_html(dict(attrs))} />")
-    lines.extend(
-        [
-            f'  <link rel="icon" type="image/png" href="{prefix}assets/brand/favicon_light.png?v=20260325a" media="(prefers-color-scheme: light)" />',
-            f'  <link rel="icon" type="image/png" href="{prefix}assets/brand/favicon_dark.png?v=20260325a" media="(prefers-color-scheme: dark)" />',
-        ]
+    lines.append(
+        f'  <link rel="icon" type="image/png" sizes="192x192" href="{prefix}assets/brand/favicon.png" />'
     )
     return "\n".join(lines)
 
