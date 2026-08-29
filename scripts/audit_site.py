@@ -506,6 +506,47 @@ def audit_learn_fragments(findings: list[Finding]) -> None:
             )
 
 
+SEARCH_ROOT = re.compile(r"<div class=\"library-search[^>]*data-library-search[^>]*>")
+SEARCH_LANG = re.compile(r'data-lang="([^"]*)"')
+
+
+def audit_search_index_language(findings: list[Finding]) -> None:
+    """A translated hub's search box must name its own index.
+
+    search.js reads `data-lang` off the search root and falls back to "en" when
+    the attribute is absent -- there is no fallback to the document's own lang.
+    So a hub that omits it does not fail, it quietly searches English, which
+    only a reader of that language would ever notice. The Portuguese pass
+    dropped it on both hubs and nothing caught it.
+
+    The default locale is exempt: "en" is what the fallback already produces,
+    and requiring the attribute there would be ceremony. Everyone else must
+    carry it and it must match the locale that owns the fragment.
+    """
+    default = default_locale_code()
+    for code, locale in sorted(load_locales().items()):
+        if code == default:
+            continue
+        prefix = str(locale.get("content_prefix", "content"))
+        for path in sorted((SITE_ROOT / "_site-src" / prefix / "hubs").glob("*-index.html")):
+            root = SEARCH_ROOT.search(path.read_text(encoding="utf-8"))
+            if not root:
+                continue
+            found = SEARCH_LANG.search(root.group(0))
+            if found and found.group(1) == code:
+                continue
+            findings.append(
+                Finding(
+                    "error",
+                    "hub-search-language",
+                    path.relative_to(SITE_ROOT).as_posix(),
+                    f"search root has data-lang={found.group(1)!r} but the fragment is {code!r}"
+                    if found
+                    else f"search root has no data-lang, so it searches the English index instead of {code!r}",
+                )
+            )
+
+
 LIBRARY_TILE = re.compile(
     r'<span class="hub-tile-name">(?P<name>[^<]+)</span>'
     r'(?P<qualifier><span class="hub-tile-qualifier">)?'
@@ -891,6 +932,7 @@ def main() -> int:
     audit_theme_css(findings)
     audit_learn_fragments(findings)
     audit_library_qualifiers(findings)
+    audit_search_index_language(findings)
     audit_governance(records, findings)
     if args.write_baseline:
         write_baseline(args.write_baseline, records)

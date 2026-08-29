@@ -33,10 +33,10 @@ import argparse
 import json
 import re
 import sys
-import unicodedata
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from hub_collation import sort_key, unresolved  # noqa: E402
 from locales import default_locale_code, load_locales  # noqa: E402
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -56,16 +56,6 @@ ROW = re.compile(
     r'<td>(?P<threshold>[^<]*)</td>\s*<td>(?P<window>[^<]*)</td>',
     re.DOTALL,
 )
-
-# Primary collation order for Cyrillic place names, as a superset of the
-# Russian and Ukrainian alphabets: ґ sits after г, є after е, і and ї after и,
-# and Russian's ё, ъ, ы, э keep their own places. Neither language uses the
-# other's extra letters, so one table orders both correctly. See sort_key.
-CYRILLIC_ALPHABET = "абвгґдеёєжзиіїйклмнопрстуфхцчшщъыьэюя"
-# Mapped into a contiguous ascending range so the key stays a plain string and
-# compares against the Latin branch's key without a type error.
-CYRILLIC_ORDER = {ch: chr(0x100 + i) for i, ch in enumerate(CYRILLIC_ALPHABET)}
-
 
 def hub_targets(filename: str):
     """(locale, fragment path) for every locale whose hub fragment exists."""
@@ -89,7 +79,8 @@ def build_table(entries: list[dict], locale: dict, existing: dict[str, dict]) ->
 
     Sort order follows the locale's own names, because a table presented as
     alphabetical that is not alphabetical in the reader's language reads as
-    broken.
+    broken. hub_collation owns the ordering rules, so this table and the
+    library tiles put a name in the same place.
     """
     code = str(locale["code"])
     is_default = code == default_locale_code()
@@ -97,43 +88,6 @@ def build_table(entries: list[dict], locale: dict, existing: dict[str, dict]) ->
     # English keeps the relative asset path it has always used; a translated
     # fragment renders one directory deeper, so it needs a root-absolute one.
     flag_base = "../assets/flags/" if is_default else "/assets/flags/"
-
-    def sort_key(row: tuple) -> tuple[str, str]:
-        """Alphabetical by the locale's own place name, per script.
-
-        A plain `.lower()` is a code-point sort, so an accented initial lands
-        after `z`: French put `Émirats arabes unis` last and `Géorgie` after
-        `Grèce`. Folding diacritics for the comparison puts each name where a
-        reader of that language looks for it.
-
-        Cyrillic needs the same treatment for a different reason, and the
-        earlier claim here that it "sorts within its own block" was true only
-        for Russian. The four letters unique to Ukrainian sit outside the а-я
-        run: `і` U+0456, `ї` U+0457, `є` U+0454 and `ґ` U+0491 all sort after
-        `я` U+044F, so a code-point sort drops Іспанія, Італія, Ірландія,
-        Індонезія and Єгипет to the bottom of the table. That is the French bug
-        in Cyrillic costume. CYRILLIC_ORDER below is a superset of the Russian
-        and Ukrainian alphabets, so one table serves both: it is a proven no-op
-        for all 25 rows Russian ships today, because Russian names contain none
-        of ґ є і ї and the letters it does use keep their relative order.
-
-        Only Latin-script names are folded. Japanese dakuten are combining
-        marks too, so folding them would reorder `シンガポール` and quietly
-        change a published locale's table as a side effect of a French fix.
-        (Dakuten-insensitive primary sorting is defensible Japanese collation;
-        it is simply not this function's business to decide that.)
-        """
-        name = row[0].casefold()
-        letters = [c for c in name if c.isalpha()]
-        # Every branch returns a string primary, so a table that mixes scripts
-        # still compares. A locale with an untranslated row emits it in English
-        # and fails the check, but it has to sort before it can be reported.
-        if letters and all("CYRILLIC" in unicodedata.name(c, "") for c in letters):
-            return ("".join(CYRILLIC_ORDER.get(c, c) for c in name), name)
-        if not all(c.isascii() or "LATIN" in unicodedata.name(c, "") for c in letters):
-            return (name, name)
-        folded = unicodedata.normalize("NFD", name)
-        return ("".join(c for c in folded if not unicodedata.combining(c)), name)
 
     prepared, untranslated = [], []
     for e in entries:
@@ -150,7 +104,17 @@ def build_table(entries: list[dict], locale: dict, existing: dict[str, dict]) ->
         prepared.append((name, data_name, threshold, window, str(e["code"]), slug))
 
     rows = []
-    for name, data_name, threshold, window, flag, slug in sorted(prepared, key=sort_key):
+    blocked = unresolved([row[0] for row in prepared], code)
+    if blocked:
+        # A Japanese name written in kanji has no order until someone supplies
+        # its reading, and guessing one silently mis-sorts the table. One line
+        # in hub_collation.JAPANESE_READINGS fixes it.
+        raise SystemExit(
+            f"No {code} reading for: {', '.join(blocked)}\n"
+            "  Add it to JAPANESE_READINGS in scripts/hub_collation.py."
+        )
+    ordered = sorted(prepared, key=lambda row: sort_key(row[0], code))
+    for name, data_name, threshold, window, flag, slug in ordered:
         href = f"{prefix}/learn/{slug}"
         rows.append(
             f'        <tr class="hub-row" data-name="{data_name}" data-href="{href}">\n'

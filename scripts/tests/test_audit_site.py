@@ -151,6 +151,36 @@ class AuditSiteTests(unittest.TestCase):
                 self.assertEqual(source.count("assets/js/theme.js"), 1)
                 self.assertEqual(source.count("assets/js/navigation.js"), 1)
 
+    def test_every_translated_hub_names_its_own_search_index(self) -> None:
+        """search.js falls back to "en", so a missing data-lang is silent.
+
+        Asserted over the real fragments rather than a fixture: the failure
+        mode is a fragment copied without the attribute, which a fixture would
+        never reproduce.
+        """
+        findings = []
+        audit_site.audit_search_index_language(findings)
+        self.assertEqual([f.detail for f in findings], [])
+
+    def test_the_search_index_check_catches_both_ways_it_breaks(self) -> None:
+        default = audit_site.default_locale_code()
+        code = next(c for c in sorted(audit_site.load_locales()) if c != default)
+        hub = audit_site.SITE_ROOT / f"_site-src/content/{code}/hubs/learn-index.html"
+        original = hub.read_text(encoding="utf-8")
+        for broken, expected in (
+            (original.replace(f' data-lang="{code}"', "", 1), "no data-lang"),
+            (original.replace(f'data-lang="{code}"', 'data-lang="en"', 1), "but the fragment is"),
+        ):
+            with self.subTest(expected=expected):
+                hub.write_text(broken, encoding="utf-8")
+                try:
+                    findings = []
+                    audit_site.audit_search_index_language(findings)
+                finally:
+                    hub.write_text(original, encoding="utf-8")
+                self.assertEqual(len(findings), 1, findings)
+                self.assertIn(expected, findings[0].detail)
+
 
 if __name__ == "__main__":
     unittest.main()
