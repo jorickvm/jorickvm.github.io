@@ -53,7 +53,22 @@ FORBIDDEN_ALWAYS = {
     "ja": ["アトラスデイズ", "アトラス・デイズ", "アトラスデイス"],
 }
 
-TABLE_HEADING = re.compile(r"^####\s+Accepted (\w+) terminology\s*$")
+# A site locale code is not always the app's catalog key. The site registry has
+# no regional codes, but the app ships some languages under a regional locale,
+# so the two have to be mapped rather than assumed equal. Identity otherwise.
+APP_CATALOG_CODE = {
+    "pt": "pt-BR",
+}
+
+# The language name that heads the app's accepted-terminology table, where it
+# differs from the registry's `english_name`. The site serves one Portuguese
+# locale written in Brazilian Portuguese, so `pt` reads the app's Brazilian
+# Portuguese table.
+APP_LANGUAGE_NAME = {
+    "pt": "Brazilian Portuguese",
+}
+
+TABLE_HEADING = re.compile(r"^####\s+Accepted ([\w ]+?) terminology\s*$")
 BACKTICKED = re.compile(r"`([^`]+)`")
 
 
@@ -89,8 +104,9 @@ def catalog_values(app_repo: Path, code: str) -> dict[str, str]:
         path = app_repo / relative
         if not path.exists():
             continue
+        catalog_code = APP_CATALOG_CODE.get(code, code)
         for key, entry in json.loads(path.read_text(encoding="utf-8"))["strings"].items():
-            unit = entry.get("localizations", {}).get(code, {}).get("stringUnit", {})
+            unit = entry.get("localizations", {}).get(catalog_code, {}).get("stringUnit", {})
             if unit.get("state") == "translated" and unit.get("value"):
                 values.setdefault(key, str(unit["value"]))
     return values
@@ -163,8 +179,11 @@ def build_locale(app_repo: Path, code: str, language: str) -> dict[str, object]:
 
 
 def build(app_repo: Path, codes: list[str]) -> dict[str, object]:
-    names = {"ja": "Japanese", "nl": "Dutch", "de": "German", "es": "Spanish",
-             "fr": "French", "ru": "Russian", "uk": "Ukrainian", "tr": "Turkish"}
+    registry = load_locales()
+    names = {
+        code: APP_LANGUAGE_NAME.get(code, str(registry[code].get("english_name", code)))
+        for code in codes
+    }
     return {
         "schema_version": 1,
         "_comment": [
