@@ -1030,5 +1030,119 @@ window.AtlasDaysLegalTranslations = {
   <h2 id="contact">10. İletişim</h2>
   <p>Sorularınızı <a href="#contact" id="terms-email-contact" data-email-user="support" data-email-domain="atlasdays.app">AtlasDays destek ekibine</a> gönderin.</p>`
     }
+  },
+  pt: {
+    privacy: {
+      title: 'Privacidade do app AtlasDays',
+      html: `<p><a href="/">&larr; AtlasDays</a></p>
+  <h1>Privacidade do app AtlasDays</h1>
+  <p class="updated">Última atualização: 7 de agosto de 2026</p>
+
+  <p class="lede">Seu histórico de viagens, suas fotos e sua localização permanecem no seu dispositivo ou na sua conta privada do iCloud da Apple. O AtlasDays não tem contas de usuário nem cópia do seu histórico de viagens em servidor.</p>
+
+  <div class="summary">
+    <strong>Resumo</strong>
+    <ul>
+      <li><strong>Seus dados de viagem, suas fotos e sua localização permanecem privados e sob o seu controle.</strong></li>
+      <li><strong>Seu histórico de viagens fica no seu dispositivo.</strong> Se você ativar a sincronização com o iCloud, o AtlasDays sincroniza esses dados apenas pela sua conta privada do iCloud da Apple.</li>
+      <li><strong>O AtlasDays processa os dados de localização e de fotos no seu dispositivo.</strong> Ele não envia as suas fotos nem os seus dados brutos de localização.</li>
+      <li><strong>O app não tem contas de usuário, publicidade nem rastreamento.</strong> Estatísticas de uso anônimas ajudam a melhorar o AtlasDays. Elas nunca incluem as suas viagens, datas, fotos nem os lugares onde você esteve. O AtlasDays não vende os seus dados.</li>
+    </ul>
+  </div>
+
+  <h2>1. Armazenamento e iCloud</h2>
+  <p>O AtlasDays guarda no seu dispositivo as suas viagens, os seus controles, as suas notas, os seus ajustes e as referências locais às fotos. Ele não tem servidor que receba esses dados.</p>
+  <p>Em instalações novas, a <strong>sincronização com o iCloud</strong> vem ativada quando o iCloud está disponível. Ela sincroniza viagens e controles pela sua conta privada do iCloud da Apple. Você pode desativar a sincronização nos ajustes do AtlasDays.</p>
+  <p>Algumas preferências também podem ser sincronizadas pelo armazenamento de chave-valor do iCloud da Apple. O AtlasDays pode processar localmente a região do seu dispositivo, os seus idiomas preferidos e o país da sua App Store para sugerir um país de residência.</p>
+
+  <h2>2. Localização</h2>
+  <p>A <strong>detecção automática de viagens</strong> é opcional. Ela usa o serviço de localização por mudanças significativas da Apple, não o rastreamento contínuo por GPS. As verificações de país e de estado dos EUA acontecem no seu dispositivo. As coordenadas brutas não são armazenadas nem enviadas.</p>
+  <p>Quando ativada, o AtlasDays mantém um registro local dos lugares detectados e das datas para adicionar viagens e administrar as viagens em andamento.</p>
+  <p>Você pode desativar a detecção automática no AtlasDays ou revogar o acesso à localização nos Ajustes do iOS.</p>
+
+  <h2>3. Fotos</h2>
+  <p>A <strong>importação de fotos</strong> é opcional. O AtlasDays lê datas, localizações e metadados limitados das fotos no seu dispositivo para sugerir viagens passadas. Ele não acrescenta nada ao seu histórico de viagens até você confirmar.</p>
+  <p>O AtlasDays não envia as suas fotos nem as localizações brutas delas. Ele pode guardar identificadores locais de fotos e armazenar pequenas prévias em cache no seu dispositivo. Essas prévias não são enviadas nem sincronizadas. Os originais permanecem no app Fotos da Apple.</p>
+  <p>Os identificadores locais das fotos podem ser sincronizados junto com uma viagem pelo iCloud, mas os arquivos das fotos não. Se você favoritar ou desfavoritar uma foto no AtlasDays, essa ação também vale no app Fotos da Apple.</p>
+  <p>Você pode revogar o acesso ao Fotos nos Ajustes do iOS.</p>
+
+  <h2>4. Notificações</h2>
+  <p>As notificações de viagem e os alertas dos controles são gerados e agendados no seu dispositivo. A permissão de notificações é opcional.</p>
+
+  <h2>5. Importações, exportações e compartilhamento</h2>
+  <p>Importações, exportações e relatórios em PDF são processados localmente. O AtlasDays não os envia para lugar nenhum. Os dados que você compartilhar deliberadamente passam a ser tratados pelo app ou serviço que você escolher.</p>
+
+  <h2>6. Compras e suporte</h2>
+  <p>A Apple cuida das compras e das assinaturas. O AtlasDays recebe o seu status de acesso, não os seus dados de pagamento.</p>
+  <p>Enviar comentários é opcional. O AtlasDays prepara um e-mail editável que pode incluir informações básicas do app, do dispositivo, dos ajustes, das permissões e do uso para ajudar a diagnosticar problemas. Você pode revisar ou remover essas informações antes de enviar. Se você enviar o e-mail, o conteúdo é usado apenas para suporte e guardado apenas pelo tempo razoavelmente necessário. Você pode solicitar a exclusão entrando em contato com o suporte.</p>
+
+  <h2>7. Estatísticas de uso e publicidade</h2>
+  <p>O AtlasDays não tem publicidade e não rastreia você entre apps ou sites. Ele não usa identificador de publicidade e não pede permissão de rastreamento.</p>
+  <p>Para entender como o app é usado e onde ele pode melhorar, o AtlasDays envia estatísticas de uso anônimas para um provedor de análise independente na União Europeia. Não há conta nem nada que identifique você pessoalmente. O provedor atribui um identificador de dispositivo anônimo que não está ligado ao seu nome, e-mail ou Conta Apple, e que não pode ser usado para entrar em contato com você nem para segui-lo em outros apps.</p>
+  <p>Essas estatísticas cobrem as ações realizadas no app, os seus ajustes, informações básicas do dispositivo e do app e o seu país aproximado. Compras e renovações são contabilizadas com o produto, o preço e o país da loja. Contagens, como quantas viagens você tem, são enviadas em faixas, e não em números exatos. Elas nunca incluem as suas viagens, datas, notas, fotos nem coordenadas.</p>
+
+  <h2>8. Seus controles</h2>
+  <p>Você pode excluir os dados de viagem nos ajustes, revogar permissões nos Ajustes do iOS e desativar a sincronização com o iCloud. Excluir os dados do app não cancela compras nem assinaturas da Apple.</p>
+
+  <h2>9. Mais informações</h2>
+  <p>Veja <a href="/help/privacy-location-and-sync">Privacidade e permissões</a>, <a href="/help/photo-import">Importação de fotos</a>, <a href="/help/icloud-sync-and-restore">Sincronização e restauração pelo iCloud</a> e os <a href="/terms">Termos de Uso</a>.</p>
+  <p>Se o modelo de privacidade do app mudar, esta página e a data de atualização dela mudam também.</p>
+
+  <h2 id="contact">10. Contato</h2>
+  <p>Envie dúvidas ou pedidos de exclusão para o <a href="#contact" id="privacy-email" data-email-user="support" data-email-domain="atlasdays.app">suporte do AtlasDays</a>.</p>`
+    },
+    terms: {
+      title: 'Termos de Uso do AtlasDays',
+      html: `<p><a href="/">&larr; AtlasDays</a></p>
+  <h1>Termos de Uso do AtlasDays</h1>
+  <p class="updated">Última atualização: 20 de julho de 2026</p>
+
+  <p class="lede">Estes termos se aplicam ao app AtlasDays. Ao usar o app, você concorda com eles.</p>
+
+  <div class="summary">
+    <strong>Resumo</strong>
+    <ul>
+      <li>O AtlasDays é licenciado, não vendido, para uso pessoal.</li>
+      <li>O contrato de licença padrão da App Store da Apple também se aplica.</li>
+      <li>As assinaturas trimestrais e anuais do Pro se renovam até serem canceladas. A compra vitalícia é um pagamento único.</li>
+      <li>O AtlasDays é uma ferramenta de registro e não oferece aconselhamento jurídico, de imigração ou fiscal.</li>
+    </ul>
+  </div>
+
+  <h2>1. Licença</h2>
+  <p>O AtlasDays é licenciado, não vendido. Você recebe uma licença limitada, pessoal e não exclusiva para usar o app. O <a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" rel="noopener noreferrer">Contrato de Licença de Usuário Final para Aplicativos Licenciados Padrão</a> da Apple também se aplica. Estes termos complementam o contrato da Apple.</p>
+
+  <h2>2. AtlasDays Pro</h2>
+  <p>O AtlasDays Pro está disponível por meio de assinaturas trimestrais ou anuais com renovação automática, ou como uma compra vitalícia única.</p>
+  <p>As assinaturas se renovam até serem canceladas. Você pode administrá-las ou cancelá-las nos <a href="https://apps.apple.com/account/subscriptions" rel="noopener noreferrer">ajustes de assinatura da Apple</a>. O acesso continua até o fim do período pago. Excluir o AtlasDays não cancela uma assinatura.</p>
+  <p>Produtos, preços, regiões, ofertas e recursos incluídos podem mudar. Valem para cada compra os detalhes exibidos na tela de compra. A Apple cuida da cobrança e dos reembolsos segundo os próprios termos.</p>
+
+  <h2>3. Registros e contagem de dias</h2>
+  <p>O AtlasDays calcula os resultados usando as viagens, as datas, os ajustes e as regras que estão no app. Você é responsável por manter os seus registros corretos e por escolher os ajustes adequados.</p>
+  <p>O AtlasDays não oferece aconselhamento jurídico, de imigração ou fiscal, nem faz determinações com autoridade governamental. Consulte as regras oficiais vigentes ou obtenha orientação profissional antes de confiar nos resultados dele.</p>
+
+  <h2>4. Disponibilidade e mudanças</h2>
+  <p>O AtlasDays pode acrescentar, alterar, suspender ou descontinuar recursos. O app pode exigir um sistema operacional compatível da Apple e acesso aos serviços da Apple.</p>
+  <p>Atualizações e suporte não são garantidos indefinidamente. Para ajuda atualizada, use a <a href="/help/">Central de ajuda</a>.</p>
+
+  <h2>5. Privacidade</h2>
+  <p>A <a href="/privacy">página de privacidade do app AtlasDays</a> explica como o app trata os dados. Os serviços da Apple também são regidos pelos termos e pelas políticas de privacidade da Apple.</p>
+
+  <h2>6. Garantias e responsabilidade</h2>
+  <p>Na máxima extensão permitida em lei, o AtlasDays é fornecido “no estado em que se encontra” e “conforme disponível”, sem garantia de que estará sempre disponível, livre de erros ou adequado a qualquer finalidade. Nada aqui afasta direitos do consumidor que não possam ser legalmente renunciados.</p>
+  <p>Na máxima extensão permitida em lei, o AtlasDays não responde por danos indiretos, incidentais, especiais, consequenciais ou punitivos, nem por lucros cessantes ou perda de receita, de dados ou de reputação decorrentes do seu uso.</p>
+
+  <h2>7. Propriedade intelectual</h2>
+  <p>O app AtlasDays, a marca e o conteúdo são protegidos por leis de propriedade intelectual. Todos os direitos não concedidos expressamente estão reservados.</p>
+
+  <h2>8. Alterações destes termos</h2>
+  <p>Estes termos podem mudar. A data acima indica a revisão mais recente. As alterações passam a valer quando publicadas. Quando a lei exigir, o AtlasDays avisará você sobre alterações relevantes ou solicitará o seu consentimento.</p>
+
+  <h2>9. Traduções</h2>
+  <p>As traduções são fornecidas por conveniência. Se uma tradução divergir da versão em inglês, prevalece a versão em inglês, na medida permitida em lei.</p>
+
+  <h2 id="contact">10. Contato</h2>
+  <p>Envie dúvidas para o <a href="#contact" id="terms-email-contact" data-email-user="support" data-email-domain="atlasdays.app">suporte do AtlasDays</a>.</p>`
+    }
   }
 };
