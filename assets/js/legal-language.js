@@ -6,7 +6,13 @@
   var page = main.getAttribute('data-legal-page');
   var englishHTML = main.innerHTML;
   var englishTitle = document.title;
-  var supported = ['en-US', 'en-GB', 'nl', 'de', 'es', 'fr', 'ru', 'uk', 'ja', 'tr'];
+  // Derived from the translation bundle rather than repeated here: adding a
+  // language to legal-translations.js used to leave this list behind, which
+  // silently dropped it from ?lang= and from the picker. Only the display name
+  // and the picker's own label below still need an entry.
+  var supported = ['en-US', 'en-GB'].concat(
+    Object.keys(translations).filter(function (code) { return code.indexOf('en') !== 0; })
+  );
   var languageNames = {
     'en-US': 'English (US)',
     'en-GB': 'English (UK)',
@@ -17,7 +23,8 @@
     ru: 'Русский',
     uk: 'Українська',
     ja: '日本語',
-    tr: 'Türkçe'
+    tr: 'Türkçe',
+    pt: 'Português'
   };
   var languageLabels = {
     'en-US': 'Language',
@@ -29,7 +36,8 @@
     ru: 'Язык',
     uk: 'Мова',
     ja: '言語',
-    tr: 'Dil'
+    tr: 'Dil',
+    pt: 'Idioma'
   };
 
   function normalizeLanguage(value) {
