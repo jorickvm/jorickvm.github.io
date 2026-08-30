@@ -26,6 +26,7 @@
     tr: 'Türkçe',
     pt: 'Português',
     ko: '한국어',
+    'zh-Hans': '简体中文',
     'zh-Hant': '繁體中文'
   };
   var languageLabels = {
@@ -41,6 +42,7 @@
     tr: 'Dil',
     pt: 'Idioma',
     ko: '언어',
+    'zh-Hans': '语言',
     'zh-Hant': '語言'
   };
 

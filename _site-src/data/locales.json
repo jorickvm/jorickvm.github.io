@@ -367,6 +367,27 @@
       "label_colon": "：",
       "date_format": "{y}年{m}月{d}日",
       "coverage": "complete"
+    },
+    {
+      "code": "zh-Hans",
+      "html_lang": "zh-Hans",
+      "og_locale": "zh_CN",
+      "native_name": "简体中文",
+      "english_name": "Simplified Chinese",
+      "route_prefix": "/zh-Hans",
+      "content_prefix": "content/zh-Hans",
+      "articles": "data/articles.zh-Hans.json",
+      "hreflang": "zh-Hans",
+      "status": "published",
+      "_locale_comment": "Mainland-standard Simplified Chinese, matching the app's zh-Hans catalog. Kept a separate locale from zh-Hant rather than a regional variant of it: Chinese splits by script, so a Simplified reader served Traditional text is reading the wrong script. The two Chinese locales never fall back to each other, only to English. og_locale is zh_CN because Open Graph requires a territory and Simplified's largest readership is there; it is a language signal, not a storefront claim, and there is deliberately no mainland App Store listing.",
+      "_untranslated_comment": "Same decision as every other locale: the release cards are authored in the AtlasDays repo and synced here on every release, so a translated changelog would pin a hash that each release invalidates and block the build until someone retranslated the new cards.",
+      "untranslated": [
+        "changelog.html"
+      ],
+      "title_separator": "｜",
+      "label_colon": "：",
+      "date_format": "{y}年{m}月{d}日",
+      "coverage": "complete"
     }
   ]
 }
