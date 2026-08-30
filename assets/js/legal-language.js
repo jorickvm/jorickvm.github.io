@@ -24,7 +24,8 @@
     uk: 'Українська',
     ja: '日本語',
     tr: 'Türkçe',
-    pt: 'Português'
+    pt: 'Português',
+    ko: '한국어'
   };
   var languageLabels = {
     'en-US': 'Language',
@@ -37,7 +38,8 @@
     uk: 'Мова',
     ja: '言語',
     tr: 'Dil',
-    pt: 'Idioma'
+    pt: 'Idioma',
+    ko: '언어'
   };
 
   function normalizeLanguage(value) {

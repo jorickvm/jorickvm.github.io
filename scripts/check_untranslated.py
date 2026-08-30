@@ -120,6 +120,12 @@ MUST_TRANSLATE = {
 MUST_TRANSLATE["uk"] = set(MUST_TRANSLATE["ja"])
 MUST_TRANSLATE["ru"] = set(MUST_TRANSLATE["ja"])
 
+# Korean has the identical property: every place name is written in Hangul, so
+# a single Latin word left in a hub cell renders, resolves, and is visible only
+# to a reader of the language. Added with the locale rather than after it, so
+# the gate protects the hubs while they are being written.
+MUST_TRANSLATE["ko"] = set(MUST_TRANSLATE["ja"])
+
 # Numbered legal headings whose noun is spelled the same in the target
 # language: Dutch "10. Contact" and "5. Privacy" are correct Dutch.
 NUMBERED_HEADING = re.compile(r"^\d+\.\s+[A-Z][\w'-]*$")
