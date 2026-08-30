@@ -143,15 +143,61 @@ class JapaneseTests(unittest.TestCase):
     def test_a_kanji_name_with_no_reading_is_reported_not_guessed(self):
         self.assertEqual(hub_collation.unresolved(["台湾", "日本"], "ja"), [])
         self.assertEqual(hub_collation.unresolved(["神奈川"], "ja"), ["神奈川"])
-        # Only Japanese can fail this way; every other branch orders whatever
-        # letters it is handed.
+        # Only Japanese and Traditional Chinese can fail this way; every other
+        # branch orders whatever letters it is handed.
         self.assertEqual(hub_collation.unresolved(["神奈川"], "de"), [])
+
+
+class ChineseTests(unittest.TestCase):
+    """Han characters carry no order, so every case here is a code-point sort."""
+
+    def test_names_sort_by_reading_not_by_code_point(self):
+        """The code-point order was 加拿大 喬治亞 希臘 捷克 日本 泰國 澳洲."""
+        self.assertEqual(
+            order(["澳洲", "捷克", "日本", "加拿大", "希臘", "泰國"], "zh-Hant"),
+            ["泰國", "加拿大", "捷克", "希臘", "日本", "澳洲"],
+        )
+
+    def test_bopomofo_order_is_not_pinyin_order(self):
+        """ㄐㄑㄒ follow ㄍㄎㄏ; alphabetical j/q/x would scatter these."""
+        self.assertEqual(
+            order(["希臘", "喬治亞", "哥倫比亞", "加拿大", "科羅拉多州"], "zh-Hant"),
+            ["哥倫比亞", "科羅拉多州", "加拿大", "喬治亞", "希臘"],
+        )
+
+    def test_medials_precede_finals_within_an_initial(self):
+        """ㄅㄧㄣ before ㄅㄛ before ㄅㄟ before ㄅㄠ, not the other way round."""
+        self.assertEqual(
+            order(["保加利亞", "北達科他州", "波蘭", "賓夕法尼亞州"], "zh-Hant"),
+            ["賓夕法尼亞州", "波蘭", "北達科他州", "保加利亞"],
+        )
+
+    def test_tone_is_only_a_tiebreak(self):
+        """馬 and 麻 are one syllable at two tones and interleave, as a
+        dictionary interleaves them."""
+        self.assertEqual(
+            order(["馬爾他", "麻薩諸塞州", "馬來西亞", "馬里蘭州"], "zh-Hant"),
+            ["馬里蘭州", "馬來西亞", "麻薩諸塞州", "馬爾他"],
+        )
+
+    def test_a_name_and_the_same_name_qualified_stay_adjacent(self):
+        """Chinese dissolves the Georgia ambiguity with 州 rather than a gloss."""
+        self.assertEqual(
+            order(["喬治亞州", "喬治亞"], "zh-Hant"),
+            ["喬治亞", "喬治亞州"],
+        )
+
+    def test_a_character_with_no_reading_is_reported_not_guessed(self):
+        self.assertEqual(hub_collation.unresolved(["台灣", "澳洲"], "zh-Hant"), [])
+        self.assertEqual(hub_collation.unresolved(["彰化"], "zh-Hant"), ["彰化"])
+        self.assertEqual(hub_collation.unresolved(["彰化"], "ja"), ["彰化"])
+        self.assertEqual(hub_collation.unresolved(["彰化"], "de"), [])
 
 
 class MixedScriptTests(unittest.TestCase):
     def test_an_untranslated_english_row_still_compares(self):
         """A hub emits English for a row awaiting translation; it must sort."""
-        for code in ("de", "tr", "ru", "uk", "ja"):
+        for code in ("de", "tr", "ru", "uk", "ja", "zh-Hant"):
             with self.subTest(code=code):
                 names = ["Vietnam", "Кипр", "オーストラリア", "Çekya"]
                 self.assertEqual(len(order(names, code)), len(names))

@@ -126,6 +126,13 @@ MUST_TRANSLATE["ru"] = set(MUST_TRANSLATE["ja"])
 # the gate protects the hubs while they are being written.
 MUST_TRANSLATE["ko"] = set(MUST_TRANSLATE["ja"])
 
+# Traditional Chinese writes every place name in Han characters, so the same
+# rule applies again: a bare `Cyprus` left in a hub cell is one Latin word that
+# the two-or-more-word rule cannot see. Added with the locale, before the hubs
+# exist, so the gate is protecting them while they are written rather than
+# after.
+MUST_TRANSLATE["zh-Hant"] = set(MUST_TRANSLATE["ja"])
+
 # Numbered legal headings whose noun is spelled the same in the target
 # language: Dutch "10. Contact" and "5. Privacy" are correct Dutch.
 NUMBERED_HEADING = re.compile(r"^\d+\.\s+[A-Z][\w'-]*$")

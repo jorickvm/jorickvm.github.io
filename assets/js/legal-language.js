@@ -25,7 +25,8 @@
     ja: '日本語',
     tr: 'Türkçe',
     pt: 'Português',
-    ko: '한국어'
+    ko: '한국어',
+    'zh-Hant': '繁體中文'
   };
   var languageLabels = {
     'en-US': 'Language',
@@ -39,7 +40,8 @@
     ja: '言語',
     tr: 'Dil',
     pt: 'Idioma',
-    ko: '언어'
+    ko: '언어',
+    'zh-Hant': '語言'
   };
 
   // The likely script of a tag, or null when Intl.Locale is unavailable.

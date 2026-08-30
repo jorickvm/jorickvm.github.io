@@ -144,6 +144,86 @@ def japanese_key(name: str) -> tuple[str, str]:
     return ("".join(primary), reading)
 
 
+# --- Traditional Chinese ----------------------------------------------------
+#
+# Han characters carry no order at all. A code point sort is not merely
+# imperfect the way the katakana block is, it is meaningless to a reader: the
+# 58 site place names come out as 加拿大 喬治亞 希臘 德國 愛爾蘭 捷克 日本 法國
+# 泰國 澳洲 義大利 葡萄牙 西班牙 賽普勒斯, which is an ordering by the historical
+# accident of block assignment.
+#
+# Taiwan indexes on the reading, in 注音 (Bopomofo) order, which is what
+# dictionaries, atlas indexes and library catalogues use and what every reader
+# was taught in school. Stroke count is the other Taiwan convention, but it
+# belongs to name rosters and ballots, where a phonetic order would look like a
+# ranking; pinyin is the mainland convention and orders differently (ㄐㄑㄒ sit
+# after ㄍㄎㄏ, while j/q/x interleave alphabetically), so it would be the wrong
+# signal for a Taiwan-first locale.
+#
+# This is the Japanese branch's shape: a reading table, a primary key at the
+# symbol level, and a name with an unreadable character reported by unresolved()
+# rather than sorted on a guess. Adding a place name is one line here.
+
+# 注音符號 in dictionary order: initials, then medials, then finals.
+BOPOMOFO = "ㄅㄆㄇㄈㄉㄊㄋㄌㄍㄎㄏㄐㄑㄒㄓㄔㄕㄖㄗㄘㄙㄧㄨㄩㄚㄛㄜㄝㄞㄟㄠㄡㄢㄣㄤㄥㄦ"
+BOPOMOFO_ORDER = _ranked(BOPOMOFO)
+# Second through fifth tone. First tone is unmarked, so it sorts first for free.
+TONES = "ˊˇˋ˙"
+
+# Readings for every Han character these hubs write, from the Taiwan MOE
+# standard. Countries are the CLDR zh-Hant names, which is what the app
+# displays; US states are the app's own CountrySubdivisions table.
+CHINESE_READINGS = {
+    "乃": "ㄋㄞˇ", "亞": "ㄧㄚˋ", "亥": "ㄏㄞˋ", "他": "ㄊㄚ", "伐": "ㄈㄚ",
+    "伯": "ㄅㄛˊ", "佛": "ㄈㄛˊ", "來": "ㄌㄞˊ", "俄": "ㄜˊ", "保": "ㄅㄠˇ",
+    "倫": "ㄌㄨㄣˊ", "克": "ㄎㄜˋ", "內": "ㄋㄟˋ", "公": "ㄍㄨㄥ", "其": "ㄑㄧˊ",
+    "利": "ㄌㄧˋ", "加": "ㄐㄧㄚ", "勒": "ㄌㄜˋ", "北": "ㄅㄟˇ", "區": "ㄑㄩ",
+    "南": "ㄋㄢˊ", "印": "ㄧㄣˋ", "台": "ㄊㄞˊ", "合": "ㄏㄜˊ", "吉": "ㄐㄧˊ",
+    "哥": "ㄍㄜ", "喬": "ㄑㄧㄠˊ", "因": "ㄧㄣ", "國": "ㄍㄨㄛˊ", "土": "ㄊㄨˇ",
+    "坡": "ㄆㄛ", "塞": "ㄙㄞ", "夏": "ㄒㄧㄚˋ", "夕": "ㄒㄧˊ", "多": "ㄉㄨㄛ",
+    "大": "ㄉㄚˋ", "夷": "ㄧˊ", "奧": "ㄠˋ", "威": "ㄨㄟ", "宛": "ㄨㄢˇ",
+    "尼": "ㄋㄧˊ", "岡": "ㄍㄤ", "島": "ㄉㄠˇ", "州": "ㄓㄡ", "巴": "ㄅㄚ",
+    "布": "ㄅㄨˋ", "希": "ㄒㄧ", "康": "ㄎㄤ", "德": "ㄉㄜˊ", "愛": "ㄞˋ",
+    "拉": "ㄌㄚ", "拿": "ㄋㄚˊ", "捷": "ㄐㄧㄝˊ", "摩": "ㄇㄛˊ", "斯": "ㄙ",
+    "新": "ㄒㄧㄣ", "日": "ㄖˋ", "明": "ㄇㄧㄥˊ", "普": "ㄆㄨˇ", "本": "ㄅㄣˇ",
+    "根": "ㄍㄣ", "桑": "ㄙㄤ", "模": "ㄇㄛˊ", "比": "ㄅㄧˇ", "沙": "ㄕㄚ",
+    "治": "ㄓˋ", "法": "ㄈㄚˇ", "波": "ㄅㄛ", "泰": "ㄊㄞˋ", "洛": "ㄌㄨㄛˋ",
+    "洲": "ㄓㄡ", "澤": "ㄗㄜˊ", "澳": "ㄠˋ", "灣": "ㄨㄢ", "爾": "ㄦˇ",
+    "牙": "ㄧㄚˊ", "特": "ㄊㄜˋ", "狄": "ㄉㄧˊ", "瓦": "ㄨㄚˇ", "申": "ㄕㄣ",
+    "福": "ㄈㄨˊ", "科": "ㄎㄜ", "立": "ㄌㄧˋ", "約": "ㄩㄝ", "紐": "ㄋㄧㄡˇ",
+    "維": "ㄨㄟˊ", "緬": "ㄇㄧㄢˇ", "羅": "ㄌㄨㄛˊ", "美": "ㄇㄟˇ", "義": "ㄧˋ",
+    "耳": "ㄦˇ", "聯": "ㄌㄧㄢˊ", "臘": "ㄌㄚˋ", "英": "ㄧㄥ", "荷": "ㄏㄜˊ",
+    "萄": "ㄊㄠˊ", "葡": "ㄆㄨˊ", "蒙": "ㄇㄥˊ", "薩": "ㄙㄚˋ", "蘇": "ㄙㄨ",
+    "蘭": "ㄌㄢˊ", "西": "ㄒㄧ", "諸": "ㄓㄨ", "賓": "ㄅㄧㄣ", "賽": "ㄙㄞˋ",
+    "越": "ㄩㄝˋ", "達": "ㄉㄚˊ", "那": "ㄋㄚˋ", "里": "ㄌㄧˇ", "阿": "ㄚ",
+    "陶": "ㄊㄠˊ", "馬": "ㄇㄚˇ", "麻": "ㄇㄚˊ",
+}
+
+
+def chinese_reading(name: str) -> str:
+    """`name` with each Han character replaced by its 注音 reading."""
+    return "".join(CHINESE_READINGS.get(c, c) for c in name)
+
+
+def is_bopomofo(text: str) -> bool:
+    """True if the reading is fully resolved, i.e. holds no Han character."""
+    return not any("\u4e00" <= c <= "\u9fff" for c in text)
+
+
+def chinese_key(name: str) -> tuple[str, str]:
+    """Primary: the reading with tones stripped. Secondary: the reading.
+
+    A character with no entry above is kept as itself, and because the 注音
+    range starts at U+0100 that puts a row still awaiting translation ahead of
+    every Chinese one instead of scattering it through them.
+    """
+    reading = chinese_reading(name)
+    primary = "".join(
+        BOPOMOFO_ORDER.get(c, c) for c in reading if c not in TONES
+    )
+    return (primary, reading)
+
+
 # --- Latin and Cyrillic -----------------------------------------------------
 
 
@@ -162,6 +242,8 @@ def sort_key(name: str, code: str) -> tuple[str, str]:
     """
     if code == "ja":
         return japanese_key(name)
+    if code == "zh-Hant":
+        return chinese_key(name)
     name = name.casefold().translate(IGNORABLE)
     letters = [c for c in name if c.isalpha()]
     is_latin = all(c.isascii() or "LATIN" in unicodedata.name(c, "") for c in letters)
@@ -179,10 +261,14 @@ def sort_key(name: str, code: str) -> tuple[str, str]:
 def unresolved(names, code: str) -> list[str]:
     """Names this module cannot order on merit, for the callers to report.
 
-    Only Japanese can fail this way today: every other branch orders whatever
-    letters it is given, while a Japanese name written in kanji has no order
-    until someone supplies its reading.
+    Japanese and Traditional Chinese can fail this way: every other branch
+    orders whatever letters it is given, while a name written in kanji or Han
+    characters has no order until someone supplies its reading. Chinese fails
+    for every unlisted character rather than only for the unusual ones, which
+    is the honest behaviour -- there is no Chinese equivalent of kana.
     """
-    if code != "ja":
-        return []
-    return sorted({n for n in names if not is_kana(japanese_reading(n))})
+    if code == "ja":
+        return sorted({n for n in names if not is_kana(japanese_reading(n))})
+    if code == "zh-Hant":
+        return sorted({n for n in names if not is_bopomofo(chinese_reading(n))})
+    return []

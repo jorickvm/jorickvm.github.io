@@ -346,6 +346,27 @@
       "label_colon": ":",
       "date_format": "{y}년 {m}월 {d}일",
       "coverage": "complete"
+    },
+    {
+      "code": "zh-Hant",
+      "html_lang": "zh-Hant",
+      "og_locale": "zh_TW",
+      "native_name": "繁體中文",
+      "english_name": "Traditional Chinese",
+      "route_prefix": "/zh-Hant",
+      "content_prefix": "content/zh-Hant",
+      "articles": "data/articles.zh-Hant.json",
+      "hreflang": "zh-Hant",
+      "status": "published",
+      "_locale_comment": "Taiwan-standard Traditional Chinese, matching the app's zh-Hant catalog. The code is not a bare `zh` because Chinese splits by script rather than by region: a Simplified reader served Traditional text is reading the wrong script, not a regional variant, and the app already shipped a bug where a base-code `zh` table served Simplified names to a Traditional interface. zh-Hans is planned separately and must never fall back to this locale.",
+      "_untranslated_comment": "Same decision as every other locale: the release cards are authored in the AtlasDays repo and synced here on every release, so a translated changelog would pin a hash that each release invalidates and block the build until someone retranslated the new cards.",
+      "untranslated": [
+        "changelog.html"
+      ],
+      "title_separator": "｜",
+      "label_colon": "：",
+      "date_format": "{y}年{m}月{d}日",
+      "coverage": "complete"
     }
   ]
 }
