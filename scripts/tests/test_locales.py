@@ -147,6 +147,28 @@ class RouteTests(unittest.TestCase):
         """Just which locale answered, without the preserved query string."""
         return self._redirect_url(markup, lang).split("?")[0]
 
+    def _match_locale(self, markup: str, tag: str) -> str:
+        """The locale code the emitted matcher picks for a browser tag.
+
+        This is the function assets/js/locale-route.js reuses for the
+        browser-language offer, so covering it here covers both consumers.
+        """
+        node = shutil.which("node")
+        if not node:  # pragma: no cover - depends on the host
+            self.skipTest("node is required to execute the emitted locale script")
+        body = markup.split("<script>", 1)[1].split("</script>", 1)[0]
+        harness = (
+            "globalThis.window=globalThis;"
+            "globalThis.location={search:'',pathname:'/',hash:'',replace:function(){}};"
+            "%s\nconsole.log(window.AtlasDaysMatchLocale(%s,window.AtlasDaysPageLocales));"
+            % (body, json.dumps(tag))
+        )
+        result = subprocess.run(
+            [node, "-e", harness], capture_output=True, text=True, timeout=30
+        )
+        self.assertEqual(result.returncode, 0, result.stderr)
+        return result.stdout.strip()
+
     def test_default_locale_routes_are_unprefixed(self) -> None:
         locale = locales.load_locales()[locales.default_locale_code()]
         self.assertEqual(locales.localized_route("/help/", locale), "/help/")
@@ -236,6 +258,25 @@ class RouteTests(unittest.TestCase):
         self.assertEqual(
             self._redirect_url(markup, "nl-NL"), "/nl/learn/example?lang=nl-NL"
         )
+
+        # locale-route.js reuses this matcher for the browser-language offer.
+        # It had its own copy that truncated the tag, so a zh-TW reader was
+        # never offered Chinese at all while ?lang= worked -- the same bug in a
+        # third place. Covering the shared function covers both consumers.
+        for tag, expected in [
+            ("zh-TW", "zh-Hant"),
+            ("zh-HK", "zh-Hant"),
+            ("zh-MO", "zh-Hant"),
+            ("zh-Hant", "zh-Hant"),
+            ("zh", ""),
+            ("zh-CN", ""),
+            ("nl-NL", "nl"),
+            ("nl", "nl"),
+            ("fr", ""),
+            ("", ""),
+        ]:
+            with self.subTest(browser_tag=tag):
+                self.assertEqual(self._match_locale(markup, tag), expected)
 
     def test_language_switcher_uses_one_menu_for_all_available_locales(self) -> None:
         registry = {

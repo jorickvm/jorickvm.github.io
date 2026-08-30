@@ -53,7 +53,26 @@
 
   if (new URLSearchParams(location.search).get("lang")) return;
 
-  var currentLanguage = String(document.documentElement.lang || "en").toLowerCase().split("-")[0];
+  // Matching a browser tag to a locale is shared with the ?lang= redirect that
+  // build_site.py inlines above this script, and must stay shared. This used to
+  // truncate the tag with split("-")[0] and look up locales[base], which was
+  // right while every locale code was two letters and silently broke the moment
+  // one carried a script: the map is keyed zh-Hant and the lookup asked for zh,
+  // so Taiwan, Hong Kong and Macau readers were never offered Chinese at all.
+  // The fallback is deliberately conservative -- no offer beats the wrong one.
+  var matchLocale = window.AtlasDaysMatchLocale || function (tag, map) {
+    var want = String(tag || "").trim().replace(/_/g, "-").toLowerCase();
+    for (var code in map) if (code.toLowerCase() === want) return code;
+    return "";
+  };
+
+  // The page's own language, as a one-entry map so the same matcher decides it.
+  // A plain base-code compare said an en-GB reader is home on an English page,
+  // which is right, and would also say a zh-Hans reader is home on a zh-Hant
+  // page, which is wrong and becomes reachable the moment Simplified ships.
+  var pageLanguage = String(document.documentElement.lang || "en");
+  var self = {};
+  self[pageLanguage] = true;
 
   // First browser preference that this page actually has a translation for.
   // navigator.languages is in the reader's own priority order, so someone who
@@ -63,13 +82,14 @@
     : [navigator.language || ""]);
   var match = null;
   for (var i = 0; i < preferred.length; i += 1) {
-    var base = String(preferred[i] || "").toLowerCase().split("-")[0];
-    if (!base) continue;
+    var tag = String(preferred[i] || "");
+    if (!tag) continue;
     // The page's own language ranks above a translation of it: an English page
     // is the right page for an en-GB reader, so stop looking.
-    if (base === currentLanguage) return;
-    if (locales[base]) {
-      match = { code: base, entry: locales[base] };
+    if (matchLocale(tag, self)) return;
+    var code = matchLocale(tag, locales);
+    if (code) {
+      match = { code: code, entry: locales[code] };
       break;
     }
   }
