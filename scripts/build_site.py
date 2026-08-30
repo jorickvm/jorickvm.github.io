@@ -1011,9 +1011,22 @@ def render_locale_routing(
         return ""
     payload = json.dumps(entries, ensure_ascii=False, separators=(",", ":"))
     return (
+        # Script-aware resolution, inlined because it runs before paint. A plain
+        # split('-')[0] was correct while every locale code was two letters and
+        # breaks both ways once one carries a script subtag: zh-Hant misses its
+        # own tag, and a bare `zh` -- which Intl maximizes to Hans -- would hit
+        # it. assets/js/legal-language.js carries the same logic for ?lang= on
+        # the legal pages; keep the two in step.
         f"\n  <script>window.AtlasDaysPageLocales={payload};"
         "(function(){var q=new URLSearchParams(location.search).get('lang');if(!q)return;"
-        "var e=window.AtlasDaysPageLocales[q.toLowerCase().split('-')[0]];"
+        "var m=window.AtlasDaysPageLocales,w=q.trim().replace(/_/g,'-').toLowerCase(),k='',c;"
+        "for(c in m)if(c.toLowerCase()===w){k=c;break}"
+        "if(!k){var s=function(t){try{return new Intl.Locale(t).maximize().script||''}"
+        "catch(err){return null}},b=w.split('-')[0],x=s(w);"
+        "for(c in m){if(c.toLowerCase().split('-')[0]!==b)continue;"
+        "if(x===null){if(c.indexOf('-')<0){k=c;break}continue}"
+        "if(s(c)===x){k=c;break}}}"
+        "var e=k&&m[k];"
         "if(e&&e.url!==location.pathname)location.replace(e.url+location.search+location.hash)})()</script>"
         f'\n  <script defer src="{prefix}assets/js/locale-route.js?v=20260819a"></script>'
     )

@@ -42,13 +42,53 @@
     ko: '언어'
   };
 
+  // The likely script of a tag, or null when Intl.Locale is unavailable.
+  // Intl gives the same answer Foundation gives the app, which is what lets the
+  // two platforms agree: bare `zh` maximizes to Hans, while zh-TW, zh-HK and
+  // zh-MO maximize to Hant.
+  function likelyScript(tag) {
+    try {
+      return new Intl.Locale(tag).maximize().script || '';
+    } catch (_) {
+      return null;
+    }
+  }
+
+  // Resolve a requested tag against `supported`, script-aware.
+  //
+  // A plain split('-')[0] was correct while every registered code was two
+  // letters, and stops being correct the moment one carries a script subtag:
+  // zh-Hant would not match its own tag, and a bare `zh` would match it even
+  // though Intl maximizes `zh` to Hans. The two Chinese scripts must never
+  // reach each other, only English -- the same ruling LanguageTableKey enforces
+  // in the app, for the same reason: a wrong-script page looks like a
+  // translation that worked.
+  //
+  // build_site.py carries an independent copy of this logic for the ?lang=
+  // page redirect, because that one is inlined before paint. Keep them in step.
   function normalizeLanguage(value) {
     if (!value) return '';
     var language = String(value).trim().replace(/_/g, '-').toLowerCase();
     if (language === 'en-gb') return 'en-GB';
     if (language === 'en' || language === 'en-us') return 'en-US';
-    var baseLanguage = language.split('-')[0];
-    return supported.indexOf(baseLanguage) === -1 ? '' : baseLanguage;
+    var index;
+    for (index = 0; index < supported.length; index += 1) {
+      if (supported[index].toLowerCase() === language) return supported[index];
+    }
+    var base = language.split('-')[0];
+    var wanted = likelyScript(language);
+    for (index = 0; index < supported.length; index += 1) {
+      var code = supported[index];
+      if (code.toLowerCase().split('-')[0] !== base) continue;
+      if (wanted === null) {
+        // No Intl: only a code that is exactly the base is safe to serve.
+        // Guessing across a script subtag is how a Hans reader gets Hant.
+        if (code.indexOf('-') === -1) return code;
+        continue;
+      }
+      if (likelyScript(code) === wanted) return code;
+    }
+    return '';
   }
 
   function storedLanguage() {

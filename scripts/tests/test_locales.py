@@ -1,5 +1,6 @@
 import json
 import shutil
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -117,6 +118,35 @@ class MarkerTests(unittest.TestCase):
 class RouteTests(unittest.TestCase):
     JA = {"code": "ja", "route_prefix": "/ja"}
 
+    def _redirect_url(self, markup: str, lang: str, pathname: str = "/learn/example") -> str:
+        """The full URL the emitted ?lang= script redirects to, or "" for none.
+
+        Runs the real inlined script under node with `location` stubbed, because
+        the interesting behaviour is script-aware locale matching and no Python
+        assertion on the source text can check it. Skips where node is absent;
+        CI's ubuntu-latest has it.
+        """
+        node = shutil.which("node")
+        if not node:  # pragma: no cover - depends on the host
+            self.skipTest("node is required to execute the emitted locale script")
+        body = markup.split("<script>", 1)[1].split("</script>", 1)[0]
+        harness = (
+            "globalThis.window=globalThis;let replaced=null;"
+            "globalThis.location={search:%s,pathname:%s,hash:'',"
+            "replace:function(u){replaced=u}};"
+            "%s\nconsole.log(replaced===null?'':replaced);"
+            % (json.dumps("?lang=" + lang), json.dumps(pathname), body)
+        )
+        result = subprocess.run(
+            [node, "-e", harness], capture_output=True, text=True, timeout=30
+        )
+        self.assertEqual(result.returncode, 0, result.stderr)
+        return result.stdout.strip()
+
+    def _redirect_path(self, markup: str, lang: str) -> str:
+        """Just which locale answered, without the preserved query string."""
+        return self._redirect_url(markup, lang).split("?")[0]
+
     def test_default_locale_routes_are_unprefixed(self) -> None:
         locale = locales.load_locales()[locales.default_locale_code()]
         self.assertEqual(locales.localized_route("/help/", locale), "/help/")
@@ -145,11 +175,23 @@ class RouteTests(unittest.TestCase):
                 "native_name": "Nederlands",
                 "status": "published",
             },
+            "zh-Hant": {
+                "code": "zh-Hant",
+                "hreflang": "zh-Hant",
+                "native_name": "繁體中文",
+                "status": "published",
+            },
         }
-        translations = {"nl": {"learn/example.html": {}}}
+        translations = {
+            "nl": {"learn/example.html": {}},
+            "zh-Hant": {"learn/example.html": {}},
+        }
         strings = {
-            "locale.offer": {"nl": "Lees deze pagina in het Nederlands"},
-            "locale.dismiss": {"nl": "Sluiten"},
+            "locale.offer": {
+                "nl": "Lees deze pagina in het Nederlands",
+                "zh-Hant": "以繁體中文閱讀本頁",
+            },
+            "locale.dismiss": {"nl": "Sluiten", "zh-Hant": "關閉"},
         }
 
         markup = build_site.render_locale_routing(
@@ -162,7 +204,38 @@ class RouteTests(unittest.TestCase):
         )
 
         self.assertIn('"nl":{"url":"/nl/learn/example"', markup)
-        self.assertIn("q.toLowerCase().split('-')[0]", markup)
+
+        # Asserting on the implementation string only pinned how the script was
+        # written, so it broke on a refactor while proving nothing. Run it
+        # instead. Cases below are the contract:
+        #
+        #   nl-NL   the app sends a regional code; the base locale answers
+        #   zh-TW   a script-bearing locale is reached by a tag that maximizes
+        #           to the same script
+        #   zh      maximizes to Hans, so it must NOT reach zh-Hant -- the two
+        #           Chinese scripts fall back only to English, matching
+        #           LanguageTableKey in the app
+        for tag, expected in [
+            ("nl", "/nl/learn/example"),
+            ("nl-NL", "/nl/learn/example"),
+            ("NL_nl", "/nl/learn/example"),
+            ("zh-Hant", "/zh-Hant/learn/example"),
+            ("zh-hant", "/zh-Hant/learn/example"),
+            ("zh-TW", "/zh-Hant/learn/example"),
+            ("zh-HK", "/zh-Hant/learn/example"),
+            ("zh", ""),
+            ("zh-CN", ""),
+            ("zh-Hans", ""),
+            ("fr", ""),
+        ]:
+            with self.subTest(lang=tag):
+                self.assertEqual(self._redirect_path(markup, tag), expected)
+
+        # The redirect carries the query and fragment across, so a deep link
+        # keeps whatever else it was holding.
+        self.assertEqual(
+            self._redirect_url(markup, "nl-NL"), "/nl/learn/example?lang=nl-NL"
+        )
 
     def test_language_switcher_uses_one_menu_for_all_available_locales(self) -> None:
         registry = {
