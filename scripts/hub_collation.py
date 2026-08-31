@@ -224,6 +224,85 @@ def chinese_key(name: str) -> tuple[str, str]:
     return (primary, reading)
 
 
+# --- Simplified Chinese -----------------------------------------------------
+#
+# Pinyin, and the reasoning is the mirror image of the Traditional branch's.
+# That branch chose 注音 and recorded why pinyin was wrong for Taiwan: ㄐㄑㄒ
+# follow ㄍㄎㄏ, while j/q/x interleave alphabetically, so the two orders
+# genuinely differ. For a mainland locale the same fact makes pinyin the right
+# answer, because it is the order a mainland reader has been taught to scan and
+# the one every mainland index uses.
+#
+# None of the Traditional table transfers. Its 113 entries are 注音 readings,
+# which is a different alphabet, and the characters themselves are Traditional.
+# This table is built from the Simplified names the hubs actually carry.
+#
+# Syllables are kept apart rather than concatenated, because pinyin collation is
+# syllable by syllable: run them together and 西安 (xi an) would sort as though
+# it were spelled "xian". The separator is a space, which sorts before every
+# letter, so a shorter first syllable wins exactly as it should.
+PINYIN_READINGS = {
+    "\u4e9a": "ya4", "\u4ea5": "hai4", "\u4ed6": "ta1", "\u4f10": "fa2", "\u4f26": "lun2",
+    "\u4f2f": "bo2", "\u4f50": "zuo3", "\u4f5b": "fo2", "\u4fc4": "e2", "\u4fdd": "bao3",
+    "\u514b": "ke4", "\u5170": "lan2", "\u5176": "qi2", "\u5185": "nei4", "\u5188": "gang1",
+    "\u5229": "li4", "\u52a0": "jia1", "\u52d2": "le4", "\u5317": "bei3", "\u533a": "qu1",
+    "\u5357": "nan2", "\u5370": "yin4", "\u53f0": "tai2", "\u5408": "he2", "\u5409": "ji2",
+    "\u54e5": "ge1", "\u56e0": "yin1", "\u56fd": "guo2", "\u571f": "tu3", "\u5761": "po1",
+    "\u585e": "sai1", "\u590f": "xia4", "\u5915": "xi1", "\u591a": "duo1", "\u5927": "da4",
+    "\u5937": "yi2", "\u5a01": "wei1", "\u5b9b": "wan3", "\u5bbe": "bin1", "\u5c14": "er3",
+    "\u5c3c": "ni2", "\u5c71": "shan1", "\u5c9b": "dao3", "\u5dde": "zhou1", "\u5df4": "ba1",
+    "\u5e03": "bu4", "\u5e0c": "xi1", "\u5ea6": "du4", "\u5eb7": "kang1", "\u5f17": "fu2",
+    "\u5f97": "de2", "\u610f": "yi4", "\u62c9": "la1", "\u62ff": "na2", "\u6377": "jie2",
+    "\u6469": "mo2", "\u6587": "wen2", "\u65af": "si1", "\u65b0": "xin1", "\u65e5": "ri4",
+    "\u660e": "ming2", "\u672c": "ben3", "\u6765": "lai2", "\u6839": "gen1", "\u683c": "ge2",
+    "\u6851": "sang1", "\u6bd4": "bi3", "\u6bdb": "mao2", "\u6c42": "qiu2", "\u6c99": "sha1",
+    "\u6cbb": "zhi4", "\u6cd5": "fa3", "\u6ce2": "bo1", "\u6cf0": "tai4", "\u6cfd": "ze2",
+    "\u6d1b": "luo4", "\u6d66": "pu3", "\u6d85": "nie4", "\u6e7e": "wan1", "\u6fb3": "ao4",
+    "\u7231": "ai4", "\u7259": "ya2", "\u7279": "te4", "\u72c4": "di2", "\u74e6": "wa3",
+    "\u7533": "shen1", "\u798f": "fu2", "\u79d1": "ke1", "\u7acb": "li4", "\u7ea6": "yue1",
+    "\u7ebd": "niu3", "\u7ef4": "wei2", "\u7f05": "mian3", "\u7f57": "luo2", "\u7f8e": "mei3",
+    "\u8033": "er3", "\u8054": "lian2", "\u814a": "la4", "\u82cf": "su1", "\u82f1": "ying1",
+    "\u8377": "he2", "\u8404": "tao2", "\u8428": "sa4", "\u8461": "pu2", "\u8499": "meng2",
+    "\u897f": "xi1", "\u8bf8": "zhu1", "\u8d8a": "yue4", "\u8def": "lu4", "\u8fbe": "da2",
+    "\u90a3": "na4", "\u914b": "qiu2", "\u91cc": "li3", "\u957f": "zhang3", "\u963f": "a1",
+    "\u9676": "tao2", "\u9a6c": "ma3", "\u9c81": "lu3", "\u9ed1": "hei1",
+}
+
+HAN = ("\u4e00", "\u9fff")
+
+
+def pinyin_syllables(name: str) -> list[str]:
+    """`name` as one toned syllable per character, unreadable ones kept as-is."""
+    return [PINYIN_READINGS.get(c, c) for c in name]
+
+
+def is_pinyin(syllables) -> bool:
+    """True if every character resolved, i.e. no Han character survives."""
+    return not any(HAN[0] <= c <= HAN[1] for s in syllables for c in s)
+
+
+def simplified_key(name: str) -> tuple[str, str]:
+    """Primary: the reading, tone included, one syllable at a time.
+
+    Keeping the tone digit inside the syllable is what makes a tie at the first
+    syllable break on tone before the second syllable is consulted, which is
+    what a mainland reader expects and what the platform's own zh-Hans collation
+    does: 哥伦比亚 (ge1) before 格鲁吉亚 (ge2), 台湾 (tai2) before 泰国 (tai4).
+    Comparing the toneless spelling across the whole name instead put both pairs
+    the other way round.
+
+    The digits are doing double duty as the syllable separator. A digit sorts
+    below every letter, so a shorter syllable still wins its comparison: jia1
+    before jian1, exactly as pinyin order requires.
+
+    A character with no entry above is kept as itself, and because Han sits far
+    above the Latin range that puts a row still awaiting a reading at the end of
+    the list rather than scattered plausibly through it.
+    """
+    syllables = pinyin_syllables(name)
+    return (" ".join(syllables), name)
+
+
 # --- Latin and Cyrillic -----------------------------------------------------
 
 
@@ -244,6 +323,8 @@ def sort_key(name: str, code: str) -> tuple[str, str]:
         return japanese_key(name)
     if code == "zh-Hant":
         return chinese_key(name)
+    if code == "zh-Hans":
+        return simplified_key(name)
     name = name.casefold().translate(IGNORABLE)
     letters = [c for c in name if c.isalpha()]
     is_latin = all(c.isascii() or "LATIN" in unicodedata.name(c, "") for c in letters)
@@ -261,7 +342,7 @@ def sort_key(name: str, code: str) -> tuple[str, str]:
 def unresolved(names, code: str) -> list[str]:
     """Names this module cannot order on merit, for the callers to report.
 
-    Japanese and Traditional Chinese can fail this way: every other branch
+    Japanese and both Chinese locales can fail this way: every other branch
     orders whatever letters it is given, while a name written in kanji or Han
     characters has no order until someone supplies its reading. Chinese fails
     for every unlisted character rather than only for the unusual ones, which
@@ -271,4 +352,6 @@ def unresolved(names, code: str) -> list[str]:
         return sorted({n for n in names if not is_kana(japanese_reading(n))})
     if code == "zh-Hant":
         return sorted({n for n in names if not is_bopomofo(chinese_reading(n))})
+    if code == "zh-Hans":
+        return sorted({n for n in names if not is_pinyin(pinyin_syllables(n))})
     return []

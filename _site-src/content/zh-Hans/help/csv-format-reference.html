@@ -1,0 +1,44 @@
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/zh-Hans/">AtlasDays</a> / <a href="/zh-Hans/help/">帮助中心</a></nav>
+
+    <h1>CSV 格式参考</h1>
+<p class="article-answer">只有 <strong>Country</strong>（国家）这一列是必填的。AtlasDays 按表头名称识别支持的列，所以列的先后顺序不影响结果。</p>
+
+    <h2>推荐的表头</h2>
+    <p><code>Country,State,Start Date,End Date,Purpose,Notes</code></p>
+    <ul>
+      <li><strong>Country：</strong>英文<a href="/zh-Hans/help/languages">国家名称</a>、ISO 两位字母代码，或可识别的常见别名。</li>
+      <li><strong>State：</strong>选填，美国的州名、邮政缩写，或 <code>US-CA</code> 这类 ISO 行政区代码。</li>
+      <li><strong>Start Date / End Date：</strong>确切日期、年份，或按下列规则留空。</li>
+      <li><strong>Purpose：</strong>Tourism（旅游）、Business（商务）、Medical（医疗）、<a href="/zh-Hans/help/history-and-import">Transit</a>（转机）或 Personal（个人）；除 Transit 以外的目的可以用逗号分隔并列多个。</li>
+      <li><strong>Notes：</strong>选填的文字。</li>
+    </ul>
+    <figure class="help-shot help-shot-control"><img src="/assets/article-images/help/csv-format-reference/csv-reference.webp" alt="CSV 导入界面上的示例文件和模板控件" width="1320" height="1760" loading="lazy" decoding="async" /></figure>
+
+    <h2>日期格式</h2>
+    <h3>确切日期</h3>
+    <p>两个日期列都使用 <code>yyyy-mm-dd</code>。只有行程仍在继续时，才把 End Date 留空。</p>
+    <h3>年份</h3>
+    <p>在 Start Date 填四位数的年份。End Date 可以填年份，也可以留空表示同一年。跨越多年的区间会变成每年一条仅年份记录。</p>
+    <h3>完全没有日期</h3>
+    <p>两个日期单元格都留空。这个国家会保存成没有日期的到访：计入到访过的地点，但完全不计入天数总计，报表中会标记为<strong>日期不明</strong>。这类记录只能通过 CSV 导入创建。</p>
+
+    <h2>美国各州的数据行</h2>
+    <p>只有美国的行程才使用 State。如果一次赴美去了好几个州，而且需要州一级的记录，就每个州各占一行。只填国家的美国数据行同样有效，可用于国家一级的记录。</p>
+
+    <h2>转机（Transit）</h2>
+    <p>没有实际入境时，在 Purpose 填入 <code>Transit</code>。Transit 具有排他性：不要和 Tourism、Business 或其他目的并用。</p>
+
+    <h2>示例</h2>
+    <pre><code>Country,State,Start Date,End Date,Purpose,Notes
+France,,2026-03-01,2026-03-05,Tourism,
+United States,CA,2026-04-10,2026-04-15,Business,Conference
+Japan,,2024,,Tourism,Dates not known
+United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></pre>
+
+    <h2>分隔符与引号</h2>
+    <p>AtlasDays 会从表头行判断文件是以逗号、分号还是制表符分隔。字段内含分隔符或换行时，请按通常的 CSV 规则加引号。</p>
+
+    <section class="if-needed">
+      <h2>某个值无法识别时</h2>
+      <p>请改用 ISO 国家代码、没有歧义的英文国家名称、ISO 日期格式，以及标准的美国州名或代码。保留原始的行号，方便和导入预览对照。</p>
+    </section>

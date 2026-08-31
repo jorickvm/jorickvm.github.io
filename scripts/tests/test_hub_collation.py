@@ -194,10 +194,66 @@ class ChineseTests(unittest.TestCase):
         self.assertEqual(hub_collation.unresolved(["彰化"], "de"), [])
 
 
+class SimplifiedChineseTests(unittest.TestCase):
+    """Pinyin, and every case here is one the 注音 branch cannot serve.
+
+    None of the Traditional table transfers: its readings are 注音, which is a
+    different alphabet, and its characters are Traditional. The order was
+    checked against the platform's own zh-Hans collation, which agrees on 56 of
+    the 58 names the hubs carry; the one deliberate divergence is pinned below.
+    """
+
+    def test_tone_breaks_a_tie_before_the_next_syllable(self):
+        """The defect a toneless key had, in both places it showed.
+
+        Comparing the toneless spelling across the whole name put both of these
+        the other way round, because a space sorts below every letter.
+        """
+        self.assertEqual(
+            order(["格鲁吉亚", "哥伦比亚"], "zh-Hans"),
+            ["哥伦比亚", "格鲁吉亚"],
+        )
+        self.assertEqual(order(["泰国", "台湾"], "zh-Hans"), ["台湾", "泰国"])
+
+    def test_a_shorter_syllable_still_wins_its_comparison(self):
+        """The tone digit doubles as the syllable separator; jia before jian."""
+        self.assertEqual(
+            order(["加拿大", "加利福尼亚州"], "zh-Hans"),
+            ["加利福尼亚州", "加拿大"],
+        )
+
+    def test_vermont_is_read_fo_not_fu(self):
+        """The one place this branch deliberately outranks the platform.
+
+        macOS reads 佛 as fú, which is its reading in 仿佛 and puts 佛蒙特州
+        after 弗吉尼亚州. Vermont is 佛蒙特 Fóméngtè, so fó is the reading a
+        mainland reader is scanning for and fo sorts before fu.
+        """
+        self.assertEqual(
+            order(["弗吉尼亚州", "佛蒙特州"], "zh-Hans"),
+            ["佛蒙特州", "弗吉尼亚州"],
+        )
+
+    def test_the_traditional_reading_table_does_not_serve_this_locale(self):
+        """A Traditional name has no Simplified reading and must say so."""
+        self.assertEqual(hub_collation.unresolved(["台湾", "澳大利亚"], "zh-Hans"), [])
+        self.assertEqual(hub_collation.unresolved(["賽普勒斯"], "zh-Hans"), ["賽普勒斯"])
+
+    def test_a_character_with_no_reading_is_reported_not_guessed(self):
+        self.assertEqual(hub_collation.unresolved(["彰化"], "zh-Hans"), ["彰化"])
+
+    def test_the_two_chinese_locales_do_not_share_an_order(self):
+        """Same rule, different alphabet: neither branch may answer for the other."""
+        self.assertNotEqual(
+            hub_collation.sort_key("台湾", "zh-Hans"),
+            hub_collation.sort_key("台湾", "zh-Hant"),
+        )
+
+
 class MixedScriptTests(unittest.TestCase):
     def test_an_untranslated_english_row_still_compares(self):
         """A hub emits English for a row awaiting translation; it must sort."""
-        for code in ("de", "tr", "ru", "uk", "ja", "zh-Hant"):
+        for code in ("de", "tr", "ru", "uk", "ja", "zh-Hant", "zh-Hans"):
             with self.subTest(code=code):
                 names = ["Vietnam", "Кипр", "オーストラリア", "Çekya"]
                 self.assertEqual(len(order(names, code)), len(names))

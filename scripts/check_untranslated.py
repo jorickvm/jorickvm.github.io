@@ -133,6 +133,13 @@ MUST_TRANSLATE["ko"] = set(MUST_TRANSLATE["ja"])
 # after.
 MUST_TRANSLATE["zh-Hant"] = set(MUST_TRANSLATE["ja"])
 
+# Simplified Chinese has the same property as Traditional, and the set is keyed
+# on the *English* source names, so aliasing carries no Chinese strings between
+# the two scripts. Verified rather than assumed: the two Chinese locales share
+# no vocabulary, and every place name in this list is spelled differently in
+# zh-Hans than in zh-Hant.
+MUST_TRANSLATE["zh-Hans"] = set(MUST_TRANSLATE["ja"])
+
 # Numbered legal headings whose noun is spelled the same in the target
 # language: Dutch "10. Contact" and "5. Privacy" are correct Dutch.
 NUMBERED_HEADING = re.compile(r"^\d+\.\s+[A-Z][\w'-]*$")

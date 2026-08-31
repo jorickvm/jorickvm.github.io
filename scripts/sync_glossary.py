@@ -68,6 +68,22 @@ APP_LANGUAGE_NAME = {
     "pt": "Brazilian Portuguese",
 }
 
+# A language whose accepted-terminology table deliberately lists only its
+# divergences from another language's table. The app's Simplified Chinese
+# section says so in as many words: "Where a row is absent, the Traditional
+# decision and its reasoning carry over with only the script changed."
+#
+# That convention is correct for a document a person reads and wrong for a gate,
+# which saw 17 enforced terms for zh-Hans against 31 for zh-Hant and silently
+# stopped protecting the difference. The carry-over is resolved here instead,
+# and only ever from the string the app actually ships in that language. It is
+# never resolved by converting the Traditional characters: phase one of the
+# Simplified pass proved a converter reproduces the prose and none of the
+# vocabulary, which is exactly what a terminology gate is for.
+TABLE_INHERITS = {
+    "zh-Hans": "Traditional Chinese",
+}
+
 TABLE_HEADING = re.compile(r"^####\s+Accepted ([\w ]+?) terminology\s*$")
 BACKTICKED = re.compile(r"`([^`]+)`")
 
@@ -121,7 +137,13 @@ def terminology_rows(guidelines: str, language: str) -> list[tuple[str, str, str
         if heading:
             collecting = heading.group(1).lower() == language.lower()
             continue
-        if collecting and line.startswith("###"):
+        # Any heading ends the table, not just a deeper one. This used to break
+        # only on "###", which was correct while every accepted-terminology
+        # table was followed by another language's "###" section. Simplified
+        # Chinese is the last section in the file, so its table ran on into the
+        # "## Decision Log Template" that follows and absorbed the template's
+        # own example row as if it were a real term.
+        if collecting and line.startswith("#"):
             break
         if not collecting or not line.startswith("|"):
             continue
@@ -138,6 +160,48 @@ def match_forms(term: str) -> list[str]:
     if " " not in term and term[-1:].isalpha():
         forms.add(term + "s" if not term.endswith("s") else term)
     return sorted(forms, key=len, reverse=True)
+
+
+
+def inherited_terms(
+    guidelines: str,
+    code: str,
+    catalog: dict[str, str],
+    own: list[dict[str, object]],
+) -> list[dict[str, object]]:
+    """Rows a divergences-only table leaves to its base language.
+
+    The accepted form always comes from the shipped catalog, never from the base
+    language's own value, so nothing here is a script conversion. A term the app
+    does not ship under this key is skipped rather than guessed at: an invented
+    accepted form would fail correct copy, which is worse than not checking it.
+    """
+    base_language = TABLE_INHERITS.get(code)
+    if base_language is None:
+        return []
+    seen = {str(entry["en"]) for entry in own}
+    extra: list[dict[str, object]] = []
+    for source, _accepted_cell, _rejected_cell in terminology_rows(guidelines, base_language):
+        if source in seen:
+            continue
+        shipped = catalog.get(source)
+        if not shipped:
+            continue
+        seen.add(source)
+        extra.append(
+            {
+                "en": source,
+                "match": match_forms(source),
+                "accepted": [shipped],
+                # The base language's rejected forms are written in its own
+                # script and would never appear in this one, so they are not
+                # carried across. The accepted form is the part that protects.
+                "forbidden": [],
+                "app_string": shipped,
+                "inherited_from": base_language,
+            }
+        )
+    return extra
 
 
 def build_locale(app_repo: Path, code: str, language: str) -> dict[str, object]:
@@ -170,6 +234,7 @@ def build_locale(app_repo: Path, code: str, language: str) -> dict[str, object]:
                 entry["accepted"] = [shipped] + accepted
                 entry["app_disagrees_with_table"] = True
         terms.append(entry)
+    terms.extend(inherited_terms(guidelines, code, catalog, terms))
     return {
         "terms": terms,
         "verbatim": [name for name in VERBATIM if name],

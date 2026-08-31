@@ -1259,6 +1259,120 @@ window.AtlasDaysLegalTranslations = {
   <p>문의는 <a href="#contact" id="terms-email-contact" data-email-user="support" data-email-domain="atlasdays.app">AtlasDays 지원팀</a>으로 보내 주십시오.</p>`
     }
   },
+  'zh-Hans': {
+    privacy: {
+      title: 'AtlasDays App 隐私',
+      html: `  <p><a href="/">&larr; AtlasDays</a></p>
+  <h1>AtlasDays App 隐私</h1>
+  <p class="updated">最后更新：2026 年 8 月 7 日</p>
+
+  <p class="lede">你的旅行记录、照片和位置信息，都留在自己的设备上，或者留在你私人的 Apple iCloud 账户中。AtlasDays 没有用户账户，服务器上也没有你旅行记录的副本。</p>
+
+  <div class="summary">
+    <strong>重点</strong>
+    <ul>
+      <li><strong>你的旅行数据、照片和位置信息都是私密的，由你自己掌控。</strong></li>
+      <li><strong>旅行记录留在自己的设备上。</strong>如果开启 iCloud 同步，AtlasDays 只会通过你私人的 Apple iCloud 账户同步。</li>
+      <li><strong>AtlasDays 在你的设备上处理位置和照片数据。</strong>它不会上传你的照片或原始位置数据。</li>
+      <li><strong>这个 App 没有用户账户，没有广告，也没有跟踪。</strong>匿名的使用统计有助于改进 AtlasDays，其中绝不包含你的行程、日期、照片或去过的地点。AtlasDays 不出售你的数据。</li>
+    </ul>
+  </div>
+
+  <h2>1. 存储与 iCloud</h2>
+  <p>AtlasDays 把你的行程、追踪器、备注、设置和本地照片引用存储在你的设备上。它没有任何接收这些数据的服务器。</p>
+  <p>在全新安装时，只要 iCloud 可用，<strong>iCloud 同步</strong>默认开启。它通过你私人的 Apple iCloud 账户同步行程和追踪器。你可以在 AtlasDays 设置中关闭同步。</p>
+  <p>部分偏好设置也可能通过 Apple 的 iCloud 键值存储同步。AtlasDays 可能在本地处理你的设备地区、首选语言和 App Store 国家或地区，用来推荐居住国。</p>
+
+  <h2>2. 位置</h2>
+  <p><strong>自动检测行程</strong>是可选功能。它使用 Apple 的显著位置变化服务，而不是持续的 GPS 跟踪。国家和美国州别的判断都在你的设备上完成。原始坐标不会被存储或上传。</p>
+  <p>开启后，AtlasDays 会在本地保留一份检测到的地点和日期的记录，用来添加行程和管理停留中的行程。</p>
+  <p>你可以在 AtlasDays 中关闭自动检测，或者在 iOS 设置中撤销位置权限。</p>
+
+  <h2>3. 照片</h2>
+  <p><strong>照片导入</strong>是可选功能。AtlasDays 在你的设备上读取日期、位置和有限的照片元数据，用来推荐过去的行程。在你确认之前，它不会向你的行程记录添加任何内容。</p>
+  <p>AtlasDays 不会上传你的照片或照片的原始位置。它可能会在你的设备上存储本地照片标识符并缓存小尺寸预览图。这些预览图不会被上传或同步。原始照片仍然留在 Apple 照片中。</p>
+  <p>本地照片标识符可能会随行程通过 iCloud 同步，但照片文件本身不会。如果你在 AtlasDays 中把一张照片加入或移出个人收藏，这个操作会同步更新到 Apple 照片。</p>
+  <p>你可以在 iOS 设置中撤销照片权限。</p>
+
+  <h2>4. 通知</h2>
+  <p>行程通知和追踪器提醒都在你的设备上生成和安排。通知权限是可选的。</p>
+
+  <h2>5. 导入、导出与分享</h2>
+  <p>导入、导出和 PDF 报表都在本地处理，AtlasDays 不会上传它们。你主动分享出去的数据，由你选择的那个 App 或服务负责处理。</p>
+
+  <h2>6. 购买与支持</h2>
+  <p>购买和订阅由 Apple 处理。AtlasDays 收到的是你的权益状态，不是你的支付信息。</p>
+  <p>发送反馈是可选的。AtlasDays 会准备一封可编辑的邮件，其中可能包含基本的 App、设备、设置、权限和使用信息，用来帮助诊断问题。发送之前，你可以查看或删除这些信息。如果你发送了这封邮件，其内容只用于支持用途，并且只保留合理必要的时间。你可以联系支持请求删除。</p>
+
+  <h2>7. 使用统计与广告</h2>
+  <p>AtlasDays 没有广告，也不会跨 App 或网站跟踪你。它不使用广告标识符，也不请求跟踪权限。</p>
+  <p>为了了解 App 的使用情况和可以改进的地方，AtlasDays 会向位于欧盟的一家独立分析服务商发送匿名使用统计。这里没有账户，也没有任何能识别你个人身份的信息。服务商会分配一个匿名的设备标识符，它与你的姓名、邮箱或 Apple 账户无关，无法用来联系你，也无法在其他 App 中追踪你。</p>
+  <p>这些统计涵盖在 App 中执行的操作、你的设置、基本的设备和 App 信息，以及你的大致国家或地区。购买和续订会连同产品、价格和商店所在国家或地区一并计数。诸如你有多少个行程这类数量，发送的是区间而不是精确数字。它们绝不包含你的行程、日期、备注、照片或坐标。</p>
+
+  <h2>8. 你的控制权</h2>
+  <p>你可以在设置中删除旅行数据，在 iOS 设置中撤销权限，也可以关闭 iCloud 同步。删除 App 数据不会取消 Apple 的购买或订阅。</p>
+
+  <h2>9. 更多信息</h2>
+  <p>请参阅<a href="/help/privacy-location-and-sync">隐私与权限</a>、<a href="/help/photo-import">照片导入</a>、<a href="/help/icloud-sync-and-restore">iCloud 同步与还原</a>，以及<a href="/terms">使用条款</a>。</p>
+  <p>如果 App 的隐私做法发生变化，本页面及其更新日期也会随之更新。</p>
+
+  <h2 id="contact">10. 联系方式</h2>
+  <p>如有问题或删除请求，请发送给 <a href="#contact" id="privacy-email" data-email-user="support" data-email-domain="atlasdays.app">AtlasDays 支持</a>。</p>`
+    },
+    terms: {
+      title: 'AtlasDays 使用条款',
+      html: `  <p><a href="/">&larr; AtlasDays</a></p>
+  <h1>AtlasDays 使用条款</h1>
+  <p class="updated">最后更新：2026 年 7 月 20 日</p>
+
+  <p class="lede">本条款适用于 AtlasDays App。使用本 App 即表示你同意这些条款。</p>
+
+  <div class="summary">
+    <strong>重点</strong>
+    <ul>
+      <li>AtlasDays 是授权使用，而非出售，仅供个人使用。</li>
+      <li>Apple 的标准 App Store 许可协议同样适用。</li>
+      <li>Pro 的季度和年度订阅在取消之前会自动续订。终身买断则是一次性付款。</li>
+      <li>AtlasDays 是一款记录工具，不提供法律、移民或税务方面的建议。</li>
+    </ul>
+  </div>
+
+  <h2>1. 授权</h2>
+  <p>AtlasDays 是授权使用，而非出售。你获得的是有限的、个人的、非独占的 App 使用授权。Apple 的<a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" rel="noopener noreferrer">标准授权应用程序最终用户许可协议</a>同样适用。本条款是对 Apple 该协议的补充。</p>
+
+  <h2>2. AtlasDays Pro</h2>
+  <p>AtlasDays Pro 可以通过季度或年度自动续订订阅获得，也可以一次性买断终身。</p>
+  <p>订阅在取消之前会持续续订。你可以在<a href="https://apps.apple.com/account/subscriptions" rel="noopener noreferrer">Apple 订阅设置</a>中管理或取消。已付费周期结束之前，使用权限继续有效。删除 AtlasDays 并不会取消订阅。</p>
+  <p>产品、价格、地区、优惠和所含功能可能变动。购买页面上显示的具体信息适用于该次购买。账单和退款由 Apple 依据其自身条款处理。</p>
+
+  <h2>3. 记录与天数计算</h2>
+  <p>AtlasDays 依据 App 中的行程、日期、设置和规则来计算结果。保持记录准确、选择正确的设置，是你自己的责任。</p>
+  <p>AtlasDays 不提供法律、移民或税务方面的建议，也不作出具有官方效力的认定。在依赖其结果之前，请查阅现行的官方规定或寻求专业意见。</p>
+
+  <h2>4. 可用性与变更</h2>
+  <p>AtlasDays 可能新增、变更、暂停或停止某些功能。本 App 可能需要受支持的 Apple 操作系统以及对 Apple 服务的访问。</p>
+  <p>更新和支持并不保证无限期提供。如需最新帮助，请使用<a href="/help/">帮助中心</a>。</p>
+
+  <h2>5. 隐私</h2>
+  <p><a href="/privacy">AtlasDays App 隐私</a>页面说明了本 App 如何处理数据。Apple 的服务同时受 Apple 自身的条款和隐私政策约束。</p>
+
+  <h2>6. 保证与责任</h2>
+  <p>在法律允许的最大范围内，AtlasDays 按“现状”和“现有”基础提供，不保证始终可用、没有错误，或适合任何特定用途。本条款中的任何内容都不会剥夺依法不可放弃的消费者权利。</p>
+  <p>在法律允许的最大范围内，对于因使用本 App 而产生的间接、附带、特殊、后果性或惩罚性损害，或利润、收入、数据或商誉的损失，AtlasDays 不承担责任。</p>
+
+  <h2>7. 知识产权</h2>
+  <p>AtlasDays 的 App、品牌标识和内容受知识产权法律保护。未明确授予的一切权利均予保留。</p>
+
+  <h2>8. 本条款的变更</h2>
+  <p>本条款可能变更。上方的日期表示最新的修订时间。变更自发布之时起生效。在法律要求的情况下，AtlasDays 会就重大变更通知你或征求你的同意。</p>
+
+  <h2>9. 翻译</h2>
+  <p>翻译仅为方便阅读而提供。如果译文与英文版本存在差异，在法律允许的范围内，以英文版本为准。</p>
+
+  <h2 id="contact">10. 联系方式</h2>
+  <p>如有问题，请发送给 <a href="#contact" id="terms-email-contact" data-email-user="support" data-email-domain="atlasdays.app">AtlasDays 支持</a>。</p>`
+    }
+  },
   'zh-Hant': {
     privacy: {
       title: 'AtlasDays App 隱私權',
