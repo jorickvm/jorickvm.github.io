@@ -56,11 +56,23 @@ p {
   margin: 0;
 }
 
+header {
+  --title: 34px;
+  display: grid;
+  gap: calc(var(--title) * 0.2156);
+}
+
+.dots {
+  display: block;
+  width: calc(var(--title) * 0.7541);
+  height: auto;
+}
+
 h1 {
-  font-size: 34px;
+  font-size: var(--title);
   font-weight: 700;
   line-height: 1.15;
-  letter-spacing: -1.2px;
+  letter-spacing: -0.0353em;
 }
 
 .policy {
@@ -118,5 +130,11 @@ a:focus-visible {
 @media (max-width: 420px) {
   main {
     padding-top: 20px;
+  }
+}
+
+@media (max-width: 359px) {
+  header {
+    --title: 30px;
   }
 }
