@@ -308,6 +308,60 @@ class RouteTests(unittest.TestCase):
         self.assertIn('hreflang="en"', markup)
         self.assertEqual(markup.count('class="lang-switch-panel"'), 1)
 
+    def test_language_switcher_has_stable_human_order_across_scripts(self) -> None:
+        registry = {
+            "fr": {
+                "code": "fr",
+                "hreflang": "fr",
+                "native_name": "Français",
+                "english_name": "French",
+                "status": "published",
+            },
+            "zh-Hant": {
+                "code": "zh-Hant",
+                "hreflang": "zh-Hant",
+                "native_name": "繁體中文",
+                "english_name": "Traditional Chinese",
+                "status": "published",
+            },
+            "en": {
+                "code": "en",
+                "hreflang": "en",
+                "native_name": "English",
+                "english_name": "English",
+                "status": "published",
+                "x_default": True,
+            },
+            "de": {
+                "code": "de",
+                "hreflang": "de",
+                "native_name": "Deutsch",
+                "english_name": "German",
+                "status": "published",
+            },
+            "zh-Hans": {
+                "code": "zh-Hans",
+                "hreflang": "zh-Hans",
+                "native_name": "简体中文",
+                "english_name": "Simplified Chinese",
+                "status": "published",
+            },
+        }
+        translations = {
+            code: {"learn/example.html": {}}
+            for code in ("fr", "zh-Hant", "de", "zh-Hans")
+        }
+        strings = {
+            "a11y.language": {code: "Language" for code in registry}
+        }
+
+        markup = build_site.render_language_switcher(
+            "learn/example.html", registry, translations, "en", strings
+        )
+
+        labels = ["English", "简体中文", "繁體中文", "Français", "Deutsch"]
+        self.assertEqual(sorted(labels, key=markup.index), labels)
+
 
 class LearnTrustTests(unittest.TestCase):
     STRINGS = {

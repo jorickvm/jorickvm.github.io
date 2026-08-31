@@ -801,6 +801,16 @@ def render_language_switcher(
         locale = locales.get(code)
         if locale:
             available.append((locale, str(link["href"])))
+    chinese_order = {"zh-Hans": "Chinese 0", "zh-Hant": "Chinese 1"}
+    available.sort(
+        key=lambda item: (
+            0 if item[0]["code"] == "en" else 1,
+            chinese_order.get(
+                str(item[0]["code"]), str(item[0].get("english_name", item[0]["native_name"]))
+            ).casefold(),
+            str(item[0]["code"]),
+        )
+    )
     if len(available) < 2:
         return ""
     label = html.escape(str(strings["a11y.language"][current]))
