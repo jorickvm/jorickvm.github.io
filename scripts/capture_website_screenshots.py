@@ -219,6 +219,14 @@ LOCALE_LAUNCH = {
     "fr": ("(fr)", "fr_FR"),
     "ru": ("(ru)", "ru_RU"),
     "uk": ("(uk)", "uk_UA"),
+    "tr": ("(tr)", "tr_TR"),
+    # The website locale is `pt`, but the app ships Brazilian Portuguese only
+    # (`InterfaceLocale.supportedAppLanguageCodes`), so the Simulator language
+    # is pt-BR. Launching "(pt)" would fall back to English silently.
+    "pt": ("(pt-BR)", "pt_BR"),
+    "ko": ("(ko)", "ko_KR"),
+    "zh-Hant": ("(zh-Hant)", "zh_TW"),
+    "zh-Hans": ("(zh-Hans)", "zh_CN"),
 }
 
 
@@ -242,6 +250,15 @@ LOCALE_RESIDENCE = {
     "de": "DE",
     "es": "ES",
     "fr": "FR",
+    "tr": "TR",
+    # `pt` is Brazilian Portuguese for a Brazilian reader, so the residence is
+    # BR, not PT. A Brazilian is a visa-free third-country national who counts
+    # Schengen; a Portuguese national is an EU citizen with no cap, and a PT
+    # residence would demote the presets this locale exists to show.
+    "pt": "BR",
+    "ko": "KR",
+    "zh-Hant": "TW",
+    "zh-Hans": "CN",
 }
 
 
