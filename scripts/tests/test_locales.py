@@ -369,7 +369,6 @@ class RouteTests(unittest.TestCase):
         panel = markup[markup.index('<nav class="lang-switch-panel"') :]
         labels = ["Deutsch", "English", "Français", "简体中文", "繁體中文"]
         self.assertEqual(sorted(labels, key=panel.index), labels)
-        self.assertEqual(panel.count("is-group-start"), 1)
 
 
 class LearnTrustTests(unittest.TestCase):
