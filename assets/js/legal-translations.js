@@ -1380,58 +1380,58 @@ window.AtlasDaysLegalTranslations = {
   <h1>AtlasDays App 隱私權</h1>
   <p class="updated">最後更新：2026 年 8 月 7 日</p>
 
-  <p class="lede">你的旅行紀錄、照片和位置資訊，都留在自己的裝置上，或留在你個人的 Apple iCloud 帳號中。AtlasDays 沒有使用者帳號，伺服器上也沒有你旅行紀錄的副本。</p>
+  <p class="lede">旅行紀錄、照片和位置資訊只會留在裝置上，或存放在個人的 iCloud 帳號中。AtlasDays 不設使用者帳號，自有伺服器也不會保留旅行紀錄副本。</p>
 
   <div class="summary">
     <strong>重點摘要</strong>
     <ul>
-      <li><strong>你的旅行資料、照片和位置資訊都是私密的，由你自己掌控。</strong></li>
-      <li><strong>旅行紀錄留在自己的裝置上。</strong>如果開啟 iCloud 同步，AtlasDays 只會透過你個人的 Apple iCloud 帳號同步。</li>
-      <li><strong>AtlasDays 在裝置上處理位置和照片資料。</strong>它不會上傳你的照片或原始位置資料。</li>
-      <li><strong>這個 App 沒有使用者帳號、沒有廣告，也沒有追蹤。</strong>匿名的使用統計有助於改善 AtlasDays，其中絕不包含你的行程、日期、照片，或你去過的地方。AtlasDays 不會出售你的資料。</li>
+      <li><strong>旅行資料、照片和位置資訊都會保持私密，且由使用者自行掌控。</strong></li>
+      <li><strong>旅行紀錄留在裝置上。</strong>若開啟 iCloud 同步，AtlasDays 只會透過個人的 iCloud 帳號同步。</li>
+      <li><strong>AtlasDays 在裝置上處理位置和照片資料。</strong>不會上傳照片或原始位置資料。</li>
+      <li><strong>這個 App 不設使用者帳號、不含廣告，也不會追蹤使用者。</strong>匿名使用統計有助於改善 AtlasDays，但絕不包含行程、日期、照片或曾到訪的地點。AtlasDays 不會出售資料。</li>
     </ul>
   </div>
 
   <h2>1. 儲存與 iCloud</h2>
-  <p>AtlasDays 把你的行程、追蹤器、備註、設定和本機照片參照存在你的裝置上。它沒有任何接收這些資料的伺服器。</p>
-  <p>在全新安裝時，只要 iCloud 可用，<strong>iCloud 同步</strong>預設為開啟。它會透過你個人的 Apple iCloud 帳號同步行程和追蹤器。你可以在 AtlasDays 的設定中關閉同步。</p>
-  <p>部分偏好設定也可能透過 Apple 的 iCloud 鍵值儲存空間同步。AtlasDays 可能會在本機處理你的裝置地區、偏好語言和 App Store 國家，以便建議居住國。</p>
+  <p>AtlasDays 會將行程、追蹤器、備註、設定和本機照片參照儲存在裝置上；這些資料不會傳送到 AtlasDays 的伺服器。</p>
+  <p>全新安裝時，只要 iCloud 可用，<strong>iCloud 同步</strong>便會預設開啟。行程與追蹤器只會透過個人的 iCloud 帳號同步。可在 AtlasDays 的「設定」中關閉同步。</p>
+  <p>部分偏好設定也可能透過 Apple 的 iCloud 鍵值儲存空間同步。AtlasDays 可能會在裝置上處理地區、偏好語言與 App Store 國家，以建議居住國。</p>
 
   <h2>2. 位置</h2>
-  <p><strong>自動偵測行程</strong>是選用功能。它使用 Apple 的顯著位置變更服務，而不是持續的 GPS 追蹤。國家和美國州別的判斷都在你的裝置上進行。原始座標不會被儲存或上傳。</p>
-  <p>開啟後，AtlasDays 會在本機保留一份偵測到的地點和日期紀錄，用來新增行程和管理停留中的行程。</p>
-  <p>你可以在 AtlasDays 中關閉自動偵測，或在 iOS 的設定中撤銷位置取用權限。</p>
+  <p><strong>自動偵測行程</strong>是選用功能。這項功能採用 Apple 的顯著位置變更服務，不會持續透過 GPS 追蹤位置。國家與美國州別都在裝置上判斷；不會儲存或上傳原始座標。</p>
+  <p>開啟後，AtlasDays 會在裝置上保留偵測到的地點與日期紀錄，以新增行程並管理停留中的行程。</p>
+  <p>可在 AtlasDays 中關閉自動偵測，或前往 iOS「設定」撤銷位置取用權限。</p>
 
   <h2>3. 照片</h2>
-  <p><strong>照片匯入</strong>是選用功能。AtlasDays 會在你的裝置上讀取日期、位置和有限的照片中繼資料，以便建議過去的行程。在你確認之前，它不會在行程紀錄中加入任何內容。</p>
-  <p>AtlasDays 不會上傳你的照片或照片的原始位置。它可能會在你的裝置上儲存本機照片識別碼並快取小尺寸預覽。這些預覽不會被上傳或同步。原始檔案仍留在「照片」中。</p>
-  <p>本機照片識別碼可能會隨行程透過 iCloud 同步，但照片檔案不會。如果你在 AtlasDays 中把一張照片加入或移出「最愛」，這個動作會同步更新到「照片」中。</p>
-  <p>你可以在 iOS 的設定中撤銷照片取用權限。</p>
+  <p><strong>照片匯入</strong>是選用功能。AtlasDays 會在裝置上讀取日期、位置與少量照片中繼資料，用來建議過去的行程。確認前，不會將任何內容加入行程紀錄。</p>
+  <p>AtlasDays 不會上傳照片或其中的原始位置資訊。可能會在裝置上儲存本機照片識別碼並快取小型預覽，但不會上傳或同步這些預覽。原始檔仍保留在 Apple「照片」中。</p>
+  <p>本機照片識別碼可能會隨行程透過 iCloud 同步，但照片檔案不會。在 AtlasDays 中將照片加入或移出「最愛」時，Apple「照片」中的狀態也會隨之更新。</p>
+  <p>可前往 iOS「設定」撤銷照片取用權限。</p>
 
   <h2>4. 通知</h2>
-  <p>行程通知和追蹤器提醒都在你的裝置上產生和排程。通知權限是選用的。</p>
+  <p>行程通知與追蹤器提醒都在裝置上產生並排程。通知權限並非必要。</p>
 
   <h2>5. 匯入、匯出與分享</h2>
-  <p>匯入、匯出和 PDF 報表都在本機處理，AtlasDays 不會上傳。你刻意分享出去的資料，則由你選擇的 App 或服務處理。</p>
+  <p>匯入、匯出與 PDF 報表都在裝置上處理，AtlasDays 不會上傳這些檔案。主動分享的資料，將由所選的 App 或服務處理。</p>
 
   <h2>6. 購買與支援</h2>
-  <p>購買和訂閱由 Apple 處理。AtlasDays 收到的是你的權限狀態，不是你的付款資訊。</p>
-  <p>傳送意見回饋是選用的。AtlasDays 會準備一封可以編輯的電子郵件，其中可能包含基本的 App、裝置、設定、權限和使用資訊，以協助診斷問題。你可以在寄出之前檢視或移除這些資訊。如果你寄出這封信，其內容只會用於支援用途，而且只會保存在合理必要的期間內。你可以聯絡支援要求刪除。</p>
+  <p>購買與訂閱由 Apple 處理。AtlasDays 只會收到使用資格狀態，不會取得付款資訊。</p>
+  <p>是否傳送意見回饋，可自行選擇。AtlasDays 會準備一封可編輯的電子郵件，其中可能包含基本的 App、裝置、設定、權限與使用資訊，以協助診斷問題。寄出前可檢視或移除這些資訊。若寄出郵件，內容只會用於支援，並僅在合理必要的期間內保留。如需刪除，可聯絡支援提出要求。</p>
 
   <h2>7. 使用統計與廣告</h2>
-  <p>AtlasDays 沒有廣告，也不會跨 App 或跨網站追蹤你。它不使用廣告識別碼，也不會要求追蹤權限。</p>
-  <p>為了解 App 的使用情形和可以改進的地方，AtlasDays 會把匿名的使用統計傳送給位於歐盟的獨立分析服務供應商。這裡沒有帳號，也沒有任何可以指認你個人身分的資料。該供應商會指派一個匿名的裝置識別碼，這個識別碼不會連結到你的姓名、電子郵件或 Apple 帳號，也無法用來聯絡你，或在其他 App 中追蹤你。</p>
-  <p>這些統計涵蓋在 App 中採取的動作、你的設定、基本的裝置和 App 資訊，以及你的大致所在國家。購買和續訂則會連同產品、價格和商店所在國家一併計數。像是你有多少趟行程這類數量，會以區間而不是確切數字傳送。其中絕不包含你的行程、日期、備註、照片或座標。</p>
+  <p>AtlasDays 不含廣告，也不會跨 App 或網站追蹤使用者。不使用廣告識別碼，也不會要求追蹤權限。</p>
+  <p>為了解 App 的使用情形及可改進之處，AtlasDays 會將匿名使用統計傳送至位於歐盟的獨立分析服務供應商。AtlasDays 不設帳號，統計資料也不含可識別個人身分的資訊。供應商會指派匿名裝置識別碼；該識別碼不會與姓名、電子郵件或 Apple 帳號連結，也無法用來聯絡使用者或跨 App 追蹤。</p>
+  <p>這些統計涵蓋 App 內操作、設定、基本裝置與 App 資訊，以及約略所在國家。購買與續訂事件會連同產品、價格和 App Store 國家一起計入統計。行程數量等計數會以區間而非確切數字傳送，絕不包含行程、日期、備註、照片或座標。</p>
 
-  <h2>8. 你可以控制的部分</h2>
-  <p>你可以在設定中刪除旅行資料、在 iOS 的設定中撤銷權限，以及關閉 iCloud 同步。刪除 App 資料不會取消 Apple 的購買或訂閱。</p>
+  <h2>8. 可自行控制的項目</h2>
+  <p>可在 AtlasDays「設定」中刪除旅行資料及關閉 iCloud 同步，也可前往 iOS「設定」撤銷權限。刪除 App 資料不會取消透過 Apple 購買的項目或訂閱。</p>
 
   <h2>9. 更多資訊</h2>
-  <p>請參閱<a href="/help/privacy-location-and-sync">隱私權與權限</a>、<a href="/help/photo-import">照片匯入</a>、<a href="/help/icloud-sync-and-restore">iCloud 同步與還原</a>，以及<a href="/terms">使用條款</a>。</p>
-  <p>如果這個 App 的隱私權架構有所變動，本頁面和它的更新日期也會隨之更新。</p>
+  <p>請參閱<a href="/help/privacy-location-and-sync">隱私權與權限</a>、<a href="/help/photo-import">照片匯入</a>、<a href="/help/icloud-sync-and-restore">iCloud 同步與還原</a>與<a href="/terms">使用條款</a>。</p>
+  <p>若 App 的隱私權架構有所變更，本頁內容與更新日期也會一併更新。</p>
 
   <h2 id="contact">10. 聯絡方式</h2>
-  <p>問題或刪除請求，請寄給 <a href="#contact" id="privacy-email" data-email-user="support" data-email-domain="atlasdays.app">AtlasDays 支援</a>。</p>`
+  <p>如有問題或要提出刪除要求，請聯絡 <a href="#contact" id="privacy-email" data-email-user="support" data-email-domain="atlasdays.app">AtlasDays 支援</a>。</p>`
     },
     terms: {
       title: 'AtlasDays 使用條款',
@@ -1439,52 +1439,52 @@ window.AtlasDaysLegalTranslations = {
   <h1>AtlasDays 使用條款</h1>
   <p class="updated">最後更新：2026 年 7 月 20 日</p>
 
-  <p class="lede">本條款適用於 AtlasDays App。使用本 App 即表示同意這些條款。</p>
+  <p class="lede">本條款適用於 AtlasDays App。使用本 App，即表示同意本條款。</p>
 
   <div class="summary">
     <strong>重點摘要</strong>
     <ul>
-      <li>AtlasDays 是授權使用，而非出售，僅供個人使用。</li>
-      <li>Apple 的標準 App Store 授權合約同時適用。</li>
-      <li>Pro 的季繳和年繳訂閱會持續續訂，直到取消為止。終身購買則是一次付清。</li>
-      <li>AtlasDays 是保存紀錄的工具，不提供法律、移民或稅務建議。</li>
+      <li>AtlasDays 採授權方式提供，並非出售，且僅限個人使用。</li>
+      <li>Apple 的 App Store 標準授權合約也適用。</li>
+      <li>Pro 季繳與年繳訂閱會自動續訂，直到取消為止；終身版則為一次性購買。</li>
+      <li>AtlasDays 是紀錄管理工具，不提供法律、移民或稅務建議。</li>
     </ul>
   </div>
 
   <h2>1. 授權</h2>
-  <p>AtlasDays 是授權使用，而非出售。你取得的是有限、個人、非專屬的 App 使用授權。Apple 的<a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" rel="noopener noreferrer">標準授權應用程式一般使用者授權合約</a>同時適用。本條款是對 Apple 合約的補充。</p>
+  <p>AtlasDays 採授權方式提供，並非出售。使用者取得有限、限個人使用且非專屬的 App 授權。Apple 的<a href="https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" rel="noopener noreferrer">標準終端使用者許可協議</a>也適用；本條款是 Apple 該協議的補充。</p>
 
   <h2>2. AtlasDays Pro</h2>
-  <p>AtlasDays Pro 可透過季繳或年繳的自動續訂訂閱取得，也可以一次付清終身購買。</p>
-  <p>訂閱會持續續訂，直到取消為止。你可以在<a href="https://apps.apple.com/account/subscriptions" rel="noopener noreferrer">Apple 訂閱項目設定</a>中管理或取消。使用權限會持續到已付費期間結束為止。刪除 AtlasDays 並不會取消訂閱。</p>
-  <p>產品、價格、地區、優惠和包含的功能都可能變動。購買畫面上顯示的細節，適用於該次購買。帳單和退款由 Apple 依其自身條款處理。</p>
+  <p>AtlasDays Pro 提供季繳與年繳的自動續訂方案，也可一次付費購買終身版。</p>
+  <p>訂閱會自動續訂，直到取消為止。可在<a href="https://apps.apple.com/account/subscriptions" rel="noopener noreferrer">Apple 訂閱項目設定</a>中管理或取消。取消後仍可使用至已付費期間結束。刪除 AtlasDays 不會取消訂閱。</p>
+  <p>產品、價格、地區、優惠與所含功能都可能變更。各次購買以購買畫面所示內容為準。Apple 會依其條款處理計費與退款。</p>
 
   <h2>3. 紀錄與天數計算</h2>
-  <p>AtlasDays 依據 App 中的行程、日期、設定和規則計算結果。維持紀錄正確、選擇正確設定，是你自己的責任。</p>
-  <p>AtlasDays 不提供法律、移民或稅務建議，也不做出具政府公信力的認定。在依賴其結果之前，請確認現行的官方規定，或尋求專業建議。</p>
+  <p>AtlasDays 會依據 App 中的行程、日期、設定與規則計算結果。使用者有責任確保紀錄正確，並選擇適當設定。</p>
+  <p>AtlasDays 不提供法律、移民或稅務建議，也不會作出具有政府權威的認定。在依據其結果採取行動前，請查閱現行官方規定或尋求專業建議。</p>
 
   <h2>4. 服務提供與變更</h2>
-  <p>AtlasDays 可能新增、變更、暫停或終止功能。本 App 可能需要受支援的 Apple 作業系統，以及 Apple 服務的存取權限。</p>
-  <p>更新和支援不保證無限期提供。需要最新的協助時，請使用<a href="/help/">說明中心</a>。</p>
+  <p>AtlasDays 可能新增、變更、暫停或終止功能。本 App 可能需要 Apple 仍支援的作業系統，並須能使用 Apple 服務。</p>
+  <p>不保證會無限期提供更新或支援。若需要最新協助，請使用<a href="/help/">說明中心</a>。</p>
 
   <h2>5. 隱私權</h2>
   <p><a href="/privacy">AtlasDays App 隱私權頁面</a>說明本 App 如何處理資料。Apple 的服務另受 Apple 自身的條款和隱私權政策規範。</p>
 
   <h2>6. 擔保與責任</h2>
-  <p>在法律允許的最大範圍內，AtlasDays 係以「現狀」和「現有」基礎提供，不保證隨時可用、沒有錯誤，或適用於任何特定目的。本條款不排除法律上不得拋棄的消費者權利。</p>
-  <p>在法律允許的最大範圍內，AtlasDays 對於因使用本 App 而產生的間接、附隨、特殊、衍生或懲罰性損害，或利潤、收入、資料或商譽的損失，均不負賠償責任。</p>
+  <p>在法律允許的最大範圍內，AtlasDays 係依「現狀」及「現有」狀態提供，不保證隨時可用、毫無錯誤或適合所有用途。本條款不影響依法不得排除或限制的消費者權利。</p>
+  <p>在法律允許的最大範圍內，AtlasDays 對於因使用本 App 而產生的間接、附帶、特殊、後果性或懲罰性損害，或利潤、收入、資料或商譽損失，均不負賠償責任。</p>
 
   <h2>7. 智慧財產權</h2>
-  <p>AtlasDays App、品牌識別和內容受智慧財產權法律保護。未明示授予的權利均予保留。</p>
+  <p>AtlasDays App、品牌識別與內容受智慧財產權法律保護。除明示授予者外，其餘權利均予保留。</p>
 
   <h2>8. 本條款的變更</h2>
-  <p>本條款可能變動。上方的日期顯示最新修訂日期。變更自公布時生效。在法律要求的情況下，AtlasDays 會就重大變更通知你，或徵求你的同意。</p>
+  <p>本條款可能變更，上方日期為最近一次修訂日期。變更自公布時生效。依法有需要時，AtlasDays 會就重大變更發出通知，或徵求同意。</p>
 
   <h2>9. 翻譯</h2>
   <p>翻譯僅為方便閱讀而提供。如果翻譯與英文版本有出入，在法律允許的範圍內，以英文版本為準。</p>
 
   <h2 id="contact">10. 聯絡方式</h2>
-  <p>如有問題，請寄給 <a href="#contact" id="terms-email-contact" data-email-user="support" data-email-domain="atlasdays.app">AtlasDays 支援</a>。</p>`
+  <p>如有問題，請聯絡 <a href="#contact" id="terms-email-contact" data-email-user="support" data-email-domain="atlasdays.app">AtlasDays 支援</a>。</p>`
     }
   }
 };
