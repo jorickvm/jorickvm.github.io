@@ -308,13 +308,14 @@ class RouteTests(unittest.TestCase):
         self.assertIn('hreflang="en"', markup)
         self.assertEqual(markup.count('class="lang-switch-panel"'), 1)
 
-    def test_language_switcher_has_stable_human_order_across_scripts(self) -> None:
+    def test_language_switcher_groups_scripts_and_sorts_visible_autonyms(self) -> None:
         registry = {
             "fr": {
                 "code": "fr",
                 "hreflang": "fr",
                 "native_name": "Français",
                 "english_name": "French",
+                "language_menu_group": "latin",
                 "status": "published",
             },
             "zh-Hant": {
@@ -322,6 +323,8 @@ class RouteTests(unittest.TestCase):
                 "hreflang": "zh-Hant",
                 "native_name": "繁體中文",
                 "english_name": "Traditional Chinese",
+                "language_menu_group": "east-asian",
+                "language_menu_rank": 1,
                 "status": "published",
             },
             "en": {
@@ -329,6 +332,7 @@ class RouteTests(unittest.TestCase):
                 "hreflang": "en",
                 "native_name": "English",
                 "english_name": "English",
+                "language_menu_group": "latin",
                 "status": "published",
                 "x_default": True,
             },
@@ -337,6 +341,7 @@ class RouteTests(unittest.TestCase):
                 "hreflang": "de",
                 "native_name": "Deutsch",
                 "english_name": "German",
+                "language_menu_group": "latin",
                 "status": "published",
             },
             "zh-Hans": {
@@ -344,6 +349,8 @@ class RouteTests(unittest.TestCase):
                 "hreflang": "zh-Hans",
                 "native_name": "简体中文",
                 "english_name": "Simplified Chinese",
+                "language_menu_group": "east-asian",
+                "language_menu_rank": 0,
                 "status": "published",
             },
         }
@@ -359,8 +366,10 @@ class RouteTests(unittest.TestCase):
             "learn/example.html", registry, translations, "en", strings
         )
 
-        labels = ["English", "简体中文", "繁體中文", "Français", "Deutsch"]
-        self.assertEqual(sorted(labels, key=markup.index), labels)
+        panel = markup[markup.index('<nav class="lang-switch-panel"') :]
+        labels = ["Deutsch", "English", "Français", "简体中文", "繁體中文"]
+        self.assertEqual(sorted(labels, key=panel.index), labels)
+        self.assertEqual(panel.count("is-group-start"), 1)
 
 
 class LearnTrustTests(unittest.TestCase):

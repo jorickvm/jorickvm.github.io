@@ -38,7 +38,7 @@ HEADER_TEMPLATE = SOURCE_ROOT / "templates" / "partials" / "site-header.html"
 FOOTER_TEMPLATE = SOURCE_ROOT / "templates" / "partials" / "site-footer.html"
 CLUSTER_DATA_PATH = SOURCE_ROOT / "data" / "content-clusters.json"
 BUILD_VERSION = "20260815a"
-SITE_HEADER_VERSION = "20260817c"
+SITE_HEADER_VERSION = "20260901a"
 ARTICLE_COMPONENTS_VERSION = "20260817b"
 NAVIGATION_VERSION = "20260817b"
 
@@ -801,13 +801,12 @@ def render_language_switcher(
         locale = locales.get(code)
         if locale:
             available.append((locale, str(link["href"])))
-    chinese_order = {"zh-Hans": "Chinese 0", "zh-Hant": "Chinese 1"}
+    group_order = {"latin": 0, "cyrillic": 1, "east-asian": 2}
     available.sort(
         key=lambda item: (
-            0 if item[0]["code"] == "en" else 1,
-            chinese_order.get(
-                str(item[0]["code"]), str(item[0].get("english_name", item[0]["native_name"]))
-            ).casefold(),
+            group_order.get(str(item[0].get("language_menu_group", "")), 99),
+            int(item[0].get("language_menu_rank", 0)),
+            str(item[0]["native_name"]).casefold(),
             str(item[0]["code"]),
         )
     )
@@ -816,9 +815,13 @@ def render_language_switcher(
     label = html.escape(str(strings["a11y.language"][current]))
     current_locale = locales[current]
     rows = []
+    previous_group = None
     for locale, url in available:
         name = html.escape(str(locale["native_name"]))
         code = str(locale["code"])
+        group = str(locale.get("language_menu_group", ""))
+        group_class = " is-group-start" if previous_group is not None and group != previous_group else ""
+        previous_group = group
         check = (
             '<svg class="lang-switch-check" width="15" height="15" viewBox="0 0 24 24" '
             'fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true">'
@@ -826,12 +829,12 @@ def render_language_switcher(
         )
         if code == current:
             rows.append(
-                f'<span class="lang-switch-option is-current" lang="{code}" '
+                f'<span class="lang-switch-option is-current{group_class}" lang="{code}" '
                 f'aria-current="true">{check}<span>{name}</span></span>'
             )
         else:
             rows.append(
-                f'<a class="lang-switch-option" href="{html.escape(url[len(SITE_URL):])}" '
+                f'<a class="lang-switch-option{group_class}" href="{html.escape(url[len(SITE_URL):])}" '
                 f'lang="{code}" hreflang="{locale["hreflang"]}">'
                 f'<span class="lang-switch-check" aria-hidden="true"></span><span>{name}</span></a>'
             )
