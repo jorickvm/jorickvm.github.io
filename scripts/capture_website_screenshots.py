@@ -432,15 +432,36 @@ def should_resize(raw_png: Path, width: int, height: int, env: dict[str, str]) -
 
 
 def rotate_to_landscape(raw_png: Path, env: dict[str, str], dry_run: bool) -> None:
-    """Turn a landscape capture the right way up.
+    """Turn a landscape capture the right way up, if it needs it.
 
-    The app rotates fine once the Simulator itself is rotated, but
-    `simctl io screenshot` always writes the framebuffer in the device's native
-    portrait, so landscape content arrives on its side. Rotating 90 degrees
-    clockwise puts the status bar back along the top edge.
+    The app rotates fine once the Simulator itself is rotated. What the
+    screenshot looks like afterwards depends on the runtime, and it changed
+    under us: `simctl io screenshot` used to always write the framebuffer in
+    the device's native portrait, so landscape content arrived on its side and
+    needed 90 degrees clockwise. On iOS 26.5 it writes the rotated orientation
+    directly, and the same unconditional rotation turns a correct landscape
+    capture into a broken portrait one (2026-09-02: it published three Japanese
+    iPad screenshots at 2064x2752 against English's 2752x2064).
+
+    So decide from the pixels rather than from the runtime: rotate only a raw
+    that is still taller than it is wide. That is correct under both
+    behaviours, and stays correct if a later runtime reverts.
     """
+    dimensions = raw_dimensions(raw_png, env)
+    if dimensions is None:
+        # Unreadable dimensions: rotate as before rather than silently skipping,
+        # since the old behaviour is the one that produced the shipped set.
+        if dry_run:
+            print(f"+ rotate {raw_png} 90 degrees clockwise (dimensions unknown)")
+            return
+        run(["/usr/bin/sips", "--rotate", "90", str(raw_png)], env=env, echo_output=False)
+        return
+    width, height = dimensions
+    if width >= height:
+        print(f"+ {raw_png} is already landscape ({width}x{height}), not rotating")
+        return
     if dry_run:
-        print(f"+ rotate {raw_png} 90 degrees clockwise")
+        print(f"+ rotate {raw_png} 90 degrees clockwise ({width}x{height})")
         return
     run(["/usr/bin/sips", "--rotate", "90", str(raw_png)], env=env, echo_output=False)
 
