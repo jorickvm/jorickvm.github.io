@@ -648,7 +648,12 @@ def audit_translations(
 
     for record in records:
         head, _, rest = record.path.partition("/")
-        if head in registry and head != default and rest not in overlays.get(head, set()):
+        if (
+            record.indexable
+            and head in registry
+            and head != default
+            and rest not in overlays.get(head, set())
+        ):
             findings.append(
                 Finding("error", "locale-orphan", record.path,
                         f"No {head} translation record for {rest}")
