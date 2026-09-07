@@ -98,6 +98,8 @@ def jurisdiction(slug: str, cluster: str) -> str:
         "uae": "United Arab Emirates", "turkiye": "Türkiye", "new-zealand": "New Zealand",
         "new-york": "New York", "new-jersey": "New Jersey", "north-dakota": "North Dakota",
         "rhode-island": "Rhode Island", "georgia-us": "Georgia (US state)",
+        "canada": "Canada", "australia": "Australia", "netherlands": "Netherlands",
+        "germany": "Germany", "india": "India", "norway": "Norway",
     }
     for prefix, name in sorted(names.items(), key=lambda item: len(item[0]), reverse=True):
         if slug.startswith(prefix + "-"):

@@ -95,6 +95,9 @@ JAPANESE_READINGS = {
     "英国": "エイコク",
     "圏": "ケン",
     "州": "シュウ",
+    # An English row in the Japanese table (a page not yet translated) still
+    # needs a place in the order; the reading is the name it will have.
+    "Norway": "ノルウェー",
 }
 
 

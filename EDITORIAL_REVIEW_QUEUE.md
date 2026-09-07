@@ -46,6 +46,16 @@ These pages describe something scheduled to change. The tier cadence would revie
 | 2027-03-01 | 1 | [learn/us-b1-b2-visa-180-day-limit.html](/learn/us-b1-b2-visa-180-day-limit) | exact-date-required | 4 |
 | 2027-03-01 | 1 | [learn/us-visa-waiver-90-day-limit.html](/learn/us-visa-waiver-90-day-limit) | exact-date-required | 2 |
 | 2027-03-01 | 1 | [learn/when-do-you-get-schengen-days-back-after-90-day-stay.html](/learn/when-do-you-get-schengen-days-back-after-90-day-stay) | exact-date-required | 3 |
+| 2027-03-31 | 1 | [learn/australia-citizenship-residence-requirement.html](/learn/australia-citizenship-residence-requirement) | exact-date-required | 2 |
+| 2027-03-31 | 1 | [learn/australia-resident-return-visa-residence.html](/learn/australia-resident-return-visa-residence) | exact-date-required | 3 |
+| 2027-03-31 | 1 | [learn/canada-citizenship-physical-presence.html](/learn/canada-citizenship-physical-presence) | exact-date-required | 3 |
+| 2027-03-31 | 1 | [learn/canada-pr-residency-obligation.html](/learn/canada-pr-residency-obligation) | exact-date-required | 3 |
+| 2027-03-31 | 1 | [learn/germany-naturalization-absence-limit.html](/learn/germany-naturalization-absence-limit) | exact-date-required | 3 |
+| 2027-03-31 | 1 | [learn/india-tourist-visa-stay-limits.html](/learn/india-tourist-visa-stay-limits) | exact-date-required | 3 |
+| 2027-03-31 | 1 | [learn/netherlands-residence-permit-absence-rules.html](/learn/netherlands-residence-permit-absence-rules) | exact-date-required | 3 |
+| 2027-03-31 | 1 | [learn/new-zealand-citizenship-presence-requirement.html](/learn/new-zealand-citizenship-presence-requirement) | exact-date-required | 3 |
+| 2027-03-31 | 1 | [learn/us-green-card-absence-limits.html](/learn/us-green-card-absence-limits) | exact-date-required | 3 |
+| 2027-03-31 | 1 | [learn/us-naturalization-physical-presence.html](/learn/us-naturalization-physical-presence) | exact-date-required | 2 |
 
 ## 2027-06
 
@@ -125,3 +135,9 @@ These pages describe something scheduled to change. The tier cadence would revie
 | 2027-08-31 | 2 | [learn/vermont-tax-residency.html](/learn/vermont-tax-residency) | exact-date-required | 1 |
 | 2027-08-31 | 2 | [learn/vietnam-183-day-tax-residency.html](/learn/vietnam-183-day-tax-residency) | exact-date-required | 1 |
 | 2027-08-31 | 2 | [learn/virginia-tax-residency.html](/learn/virginia-tax-residency) | exact-date-required | 1 |
+
+## 2027-09
+
+| Due | Tier | Article | Status | Sources |
+|---|---|---|---|---:|
+| 2027-09-30 | 2 | [learn/norway-183-day-tax-residency.html](/learn/norway-183-day-tax-residency) | exact-date-required | 2 |

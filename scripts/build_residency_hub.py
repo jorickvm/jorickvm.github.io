@@ -89,19 +89,48 @@ def build_table(entries: list[dict], locale: dict, existing: dict[str, dict]) ->
     # fragment renders one directory deeper, so it needs a root-absolute one.
     flag_base = "../assets/flags/" if is_default else "/assets/flags/"
 
+    # A row this locale has not translated yet keeps its English name, but
+    # its threshold and window cells are the same short labels other rows
+    # already carry in this language ("> 183 days", "Rolling 12 months"), so
+    # it borrows those rather than shipping English cells, and it links to
+    # the English page because no localized one exists.
+    label_map: dict[tuple[str, str], str] = {}
+    for e in entries:
+        prior = existing.get(str(e["slug"]))
+        if prior is not None:
+            label_map.setdefault(("threshold", str(e["threshold"])), prior["threshold"])
+            label_map.setdefault(("window", str(e["windowLabel"])), prior["window"])
+
+    # Whether this locale has the article is a fact of its registry, not of
+    # the table: a rerun must not mistake the English row it wrote last time
+    # for a translation.
+    translated_sources: set[str] = set()
+    registry = locale.get("articles")
+    if registry:
+        registry_path = SOURCE_ROOT / str(registry)
+        if registry_path.exists():
+            data = json.loads(registry_path.read_text(encoding="utf-8"))
+            for key in ("articles", "hubs", "pages"):
+                translated_sources.update(str(o["source"]) for o in data.get(key, []))
+
     prepared, untranslated = [], []
     for e in entries:
         slug = str(e["slug"])
-        prior = existing.get(slug)
-        if is_default or prior is None:
-            if not is_default:
-                untranslated.append(slug)
+        prior = existing.get(slug) if (is_default or f"learn/{slug}.html" in translated_sources) else None
+        translated = is_default or prior is not None
+        if not translated:
+            untranslated.append(slug)
+            name = esc(str(e["name"]))
+            data_name = name.lower()
+            threshold = label_map.get(("threshold", str(e["threshold"])), esc(str(e["threshold"])))
+            window = label_map.get(("window", str(e["windowLabel"])), esc(str(e["windowLabel"])))
+        elif is_default:
             name = esc(str(e["name"]))
             data_name, threshold, window = name.lower(), esc(str(e["threshold"])), esc(str(e["windowLabel"]))
         else:
             name, data_name = prior["name"], prior["data_name"]
             threshold, window = prior["threshold"], prior["window"]
-        prepared.append((name, data_name, threshold, window, str(e["code"]), slug))
+        prepared.append((name, data_name, threshold, window, str(e["code"]), slug, translated))
 
     rows = []
     blocked = unresolved([row[0] for row in prepared], code)
@@ -114,8 +143,8 @@ def build_table(entries: list[dict], locale: dict, existing: dict[str, dict]) ->
             "  Add it to JAPANESE_READINGS in scripts/hub_collation.py."
         )
     ordered = sorted(prepared, key=lambda row: sort_key(row[0], code))
-    for name, data_name, threshold, window, flag, slug in ordered:
-        href = f"{prefix}/learn/{slug}"
+    for name, data_name, threshold, window, flag, slug, translated in ordered:
+        href = f"{prefix}/learn/{slug}" if translated else f"/learn/{slug}"
         rows.append(
             f'        <tr class="hub-row" data-name="{data_name}" data-href="{href}">\n'
             f'          <td class="hub-td-country"><img class="hub-row-flag" '
@@ -159,7 +188,7 @@ def main() -> int:
     args = parser.parse_args()
 
     groups = load_entries()
-    stale, missing_translation, seen = [], [], 0
+    stale, missing_translation, declared_english, seen = [], [], [], 0
     for key, filename in HUB_FILES:
         entries = groups.get(key, [])
         if not entries:
@@ -176,8 +205,16 @@ def main() -> int:
                 flags=re.DOTALL,
             )
             rel = hub_path.relative_to(ROOT).as_posix()
+            # A page the locale lists under `untranslated` in locales.json is
+            # English by decision (the same declaration check_translations
+            # honours), so its English row is the expected state until the
+            # translation pass; an undeclared gap is still the error below.
+            declared = {str(path) for path in locale.get("untranslated", [])}
             for slug in untranslated:
-                missing_translation.append(f"{rel}: {slug} has no {code} row yet, English used")
+                if f"learn/{slug}.html" in declared:
+                    declared_english.append(f"{rel}: {slug} is English by decision (locales.json untranslated)")
+                else:
+                    missing_translation.append(f"{rel}: {slug} has no {code} row yet, English used")
             if args.check:
                 if rebuilt != html:
                     stale.append(rel)
@@ -190,6 +227,8 @@ def main() -> int:
     if stale:
         print("Hub fragments are stale; run scripts/build_residency_hub.py:\n  " + "\n  ".join(stale))
         return 1
+    if declared_english:
+        print("Hub rows kept in English by declaration:\n  " + "\n  ".join(declared_english))
     if missing_translation:
         # Deliberately an error, not a warning. A hub row is the one place a
         # missing translation looks like finished work: the table still renders,
