@@ -75,6 +75,12 @@ h1 {
   letter-spacing: -0.0353em;
 }
 
+/* Arabic and Hebrew are connected or unspaced scripts; tracking breaks them. */
+[dir="rtl"] h1,
+[dir="rtl"] .lede {
+  letter-spacing: 0;
+}
+
 .policy {
   display: grid;
   gap: 28px;
