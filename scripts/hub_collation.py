@@ -200,6 +200,8 @@ CHINESE_READINGS = {
     "蘭": "ㄌㄢˊ", "西": "ㄒㄧ", "諸": "ㄓㄨ", "賓": "ㄅㄧㄣ", "賽": "ㄙㄞˋ",
     "越": "ㄩㄝˋ", "達": "ㄉㄚˊ", "那": "ㄋㄚˋ", "里": "ㄌㄧˇ", "阿": "ㄚ",
     "陶": "ㄊㄠˊ", "馬": "ㄇㄚˇ", "麻": "ㄇㄚˊ",
+    # 2026-09: Norway and India joined the Learn hubs.
+    "挪": "ㄋㄨㄛˊ", "度": "ㄉㄨˋ",
 }
 
 
@@ -269,6 +271,8 @@ PINYIN_READINGS = {
     "\u897f": "xi1", "\u8bf8": "zhu1", "\u8d8a": "yue4", "\u8def": "lu4", "\u8fbe": "da2",
     "\u90a3": "na4", "\u914b": "qiu2", "\u91cc": "li3", "\u957f": "zhang3", "\u963f": "a1",
     "\u9676": "tao2", "\u9a6c": "ma3", "\u9c81": "lu3", "\u9ed1": "hei1",
+    # 2026-09: Norway and Germany joined the Learn hubs.
+    "\u632a": "nuo2", "\u5fb7": "de2",
 }
 
 HAN = ("\u4e00", "\u9fff")

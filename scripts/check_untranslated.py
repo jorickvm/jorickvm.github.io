@@ -58,6 +58,11 @@ ALLOW = (
     # require these to survive untranslated.
     "Substantial Presence Test", "Statutory Residence Test", "Publication",
     "Form ", "Appendix ", "Standard Visitor", "Visitor Visa", "ESTA", "eTA",
+    # Statute citations and an authority's official name survive as printed
+    # (added 2026-09 with the residence-permit and citizenship pages).
+    "INA ", " CFR ", "Resident Return", "Refugees and Citizenship Canada",
+    "Immigration and Refugee Protection Act", "Citizenship Act", "Migration Regulations",
+    "Staatsangehörigkeitsgesetz", "Bureau of Immigration",
     "Visa Waiver", "Nonresident Statement", "visitor record", "income year",
     "Income year", "resides test", "domicile test", "superannuation test",
     "exempt individual", "actual resident", "Closer Connection",
