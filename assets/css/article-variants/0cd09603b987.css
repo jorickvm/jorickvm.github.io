@@ -125,8 +125,12 @@
       border-bottom: 1px solid var(--line);
     }
     .factbox div:last-child { border-bottom: 0; }
-    .factbox dt { color: var(--muted-2); font-size: 0.9rem; flex: 0 0 auto; }
-    .factbox dd { color: var(--text); font-size: 0.95rem; font-weight: 600; margin: 0; text-align: right; }
+    /* The label may take at most half the row and wraps inside it; the value
+       fills the rest and may break a long token rather than escape the card.
+       A long translated label used to keep its full width and push the
+       value out of the box (Dutch, September 2026). */
+    .factbox dt { color: var(--muted-2); font-size: 0.9rem; flex: 0 0 auto; max-width: 48%; }
+    .factbox dd { color: var(--text); font-size: 0.95rem; font-weight: 600; margin: 0; text-align: right; flex: 1 1 auto; min-width: 0; overflow-wrap: anywhere; }
 
     .cta-box {
       padding: 28px;

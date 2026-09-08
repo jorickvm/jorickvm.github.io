@@ -158,6 +158,16 @@ html[data-theme="light"].wash-subtle {
   --halo: rgba(78, 168, 247, 0.06);
 }
 
+/* Safari on iOS inflates the text of blocks it decides are "long" when the
+   layout viewport is wider than the phone (landscape, or the aA text-size
+   menu at a reduced size). In a fact table that hits only the rows whose
+   value wraps, so neighbouring rows render at different sizes. 100% turns
+   the heuristic off; the reader's own text-size choice still applies. */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
 /* The sticky header sits IN the wash rather than across it. Mixing it from the
    canvas color cut a visible seam directly under the bar, because the top of
    the page is exactly where the wash is strongest and the canvas is furthest
