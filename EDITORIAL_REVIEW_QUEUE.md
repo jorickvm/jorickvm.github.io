@@ -50,10 +50,17 @@ These pages describe something scheduled to change. The tier cadence would revie
 | 2027-03-31 | 1 | [learn/australia-resident-return-visa-residence.html](/learn/australia-resident-return-visa-residence) | exact-date-required | 3 |
 | 2027-03-31 | 1 | [learn/canada-citizenship-physical-presence.html](/learn/canada-citizenship-physical-presence) | exact-date-required | 3 |
 | 2027-03-31 | 1 | [learn/canada-pr-residency-obligation.html](/learn/canada-pr-residency-obligation) | exact-date-required | 3 |
+| 2027-03-31 | 1 | [learn/cyprus-citizenship-final-year-absence.html](/learn/cyprus-citizenship-final-year-absence) | exact-date-required | 2 |
+| 2027-03-31 | 1 | [learn/france-resident-card-absence.html](/learn/france-resident-card-absence) | exact-date-required | 2 |
 | 2027-03-31 | 1 | [learn/germany-naturalization-absence-limit.html](/learn/germany-naturalization-absence-limit) | exact-date-required | 3 |
 | 2027-03-31 | 1 | [learn/india-tourist-visa-stay-limits.html](/learn/india-tourist-visa-stay-limits) | exact-date-required | 3 |
+| 2027-03-31 | 1 | [learn/italy-residence-permit-absence.html](/learn/italy-residence-permit-absence) | exact-date-required | 2 |
 | 2027-03-31 | 1 | [learn/netherlands-residence-permit-absence-rules.html](/learn/netherlands-residence-permit-absence-rules) | exact-date-required | 3 |
 | 2027-03-31 | 1 | [learn/new-zealand-citizenship-presence-requirement.html](/learn/new-zealand-citizenship-presence-requirement) | exact-date-required | 3 |
+| 2027-03-31 | 1 | [learn/nz-super-overseas-absence.html](/learn/nz-super-overseas-absence) | exact-date-required | 4 |
+| 2027-03-31 | 1 | [learn/qatar-residence-return-planning.html](/learn/qatar-residence-return-planning) | exact-date-required | 1 |
+| 2027-03-31 | 1 | [learn/spain-long-term-residence-eu-absence.html](/learn/spain-long-term-residence-eu-absence) | exact-date-required | 3 |
+| 2027-03-31 | 1 | [learn/switzerland-permit-absence.html](/learn/switzerland-permit-absence) | exact-date-required | 2 |
 | 2027-03-31 | 1 | [learn/us-green-card-absence-limits.html](/learn/us-green-card-absence-limits) | exact-date-required | 3 |
 | 2027-03-31 | 1 | [learn/us-naturalization-physical-presence.html](/learn/us-naturalization-physical-presence) | exact-date-required | 2 |
 
@@ -140,4 +147,5 @@ These pages describe something scheduled to change. The tier cadence would revie
 
 | Due | Tier | Article | Status | Sources |
 |---|---|---|---|---:|
+| 2027-09-30 | 2 | [learn/denmark-overseas-work-42-day-rule.html](/learn/denmark-overseas-work-42-day-rule) | exact-date-required | 1 |
 | 2027-09-30 | 2 | [learn/norway-183-day-tax-residency.html](/learn/norway-183-day-tax-residency) | exact-date-required | 2 |
