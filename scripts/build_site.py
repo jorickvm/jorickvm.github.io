@@ -11,7 +11,7 @@ import sys
 from datetime import date
 from pathlib import Path
 
-from build_route_outputs import LLMS, ROUTES, expanded_routes, render_llms, sitemap_files
+from build_route_outputs import ROUTES, expanded_routes, llms_files, sitemap_files
 from locales import (
     default_locale_code,
     load_locales,
@@ -1342,20 +1342,19 @@ def main() -> int:
 
     if args.section == "all" and ROUTES.exists():
         routes = expanded_routes(json.loads(ROUTES.read_text(encoding="utf-8"))["routes"])
-        sitemaps = sitemap_files(routes)
-        # The delisting guard runs over the sitemap set as one document. Per
-        # file it would misfire in both directions: sitemap.xml is now an index
+        # Each set's delisting guard runs over the set as one document. Per
+        # file it would misfire in both directions: sitemap.xml is an index
         # carrying no page URLs at all, and moving a page between locale
-        # children is not a delisting. Losing it from every sitemap is.
-        previous = "\n".join(
-            path.read_text(encoding="utf-8") for path in sitemaps if path.exists()
-        )
-        dropped = delisted_live_pages(previous, "\n".join(sitemaps.values())) if previous else []
-        if dropped:
-            delistings.append(("sitemap.xml", dropped))
-        for path, rendered in sitemaps.items():
-            queue(path, rendered)
-        queue(LLMS, render_llms(routes), guard=True)
+        # files is not a delisting. Losing it from every file in the set is.
+        for label, outputs in (("sitemap.xml", sitemap_files(routes)), ("llms.txt", llms_files(routes))):
+            previous = "\n".join(
+                path.read_text(encoding="utf-8") for path in outputs if path.exists()
+            )
+            dropped = delisted_live_pages(previous, "\n".join(outputs.values())) if previous else []
+            if dropped:
+                delistings.append((label, dropped))
+            for path, rendered in outputs.items():
+                queue(path, rendered)
 
     if delistings and not args.allow_delisting:
         print("Refusing to build: this would unlink pages that are still published.")

@@ -111,7 +111,7 @@ Serves the committed HTML with GitHub Pages' extensionless URLs, so links resolv
 | Script | Purpose |
 |---|---|
 | `build_site.py` | Renders articles, hubs, and root pages from `_site-src/`. `--check` fails on drift. |
-| `build_route_outputs.py` | Generates the sitemap set (`sitemap.xml` index plus `sitemap-<code>.xml` per locale) and `llms.txt` from `routes.json`. |
+| `build_route_outputs.py` | Generates the sitemap set (`sitemap.xml` index plus `sitemap-<code>.xml` per locale) and the `llms.txt` set (English at the root, `/<code>/llms.txt` per translation) from `routes.json`. |
 | `build_content_governance.py` | Derives editorial records, content clusters, and the review queue from `articles.json`. |
 | `build_residency_hub.py` | Fills the residency hub tables from the `residency` objects in `articles.json`. |
 | `build_search_index.py` | Builds `assets/search-index.json`. |

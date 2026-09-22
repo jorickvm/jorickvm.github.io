@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Generate the sitemap set and llms.txt from the route manifest and committed HTML.
+"""Generate the sitemap set and the llms.txt set from the route manifest and committed HTML.
 
 sitemap.xml is a sitemap index over one `sitemap-<code>.xml` per published
 locale. The split is for measurement, not ranking: Search Console reports
@@ -13,12 +13,13 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import xml.etree.ElementTree as ET
 from collections import defaultdict
 from pathlib import Path
 
 from audit_site import PageParser, meta_content
-from locales import default_locale_code, load_locales, route_for
+from locales import default_locale_code, load_locales, load_ui_strings, route_for
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -110,9 +111,6 @@ def orphan_sitemaps(expected: set[Path]) -> list[Path]:
     return sorted(path for path in ROOT.glob("sitemap-*.xml") if path not in expected)
 
 
-BASE_SECTIONS = ("Start Here", "Help", "Learn", "Site Information")
-
-
 def expanded_routes(routes: list[dict[str, object]]) -> list[dict[str, object]]:
     """Add every published translation to the English route manifest.
 
@@ -163,65 +161,134 @@ def split_locale(path: str) -> tuple[str, str]:
     return default, path
 
 
-def section_for(path: str) -> str:
-    """The llms.txt heading a page belongs under.
+SECTIONS = ("Start Here", "Use Cases", "Help", "Learn", "Site Information")
+PAGES = ROOT / "_site-src" / "data" / "pages.json"
+HUBS = ROOT / "_site-src" / "data" / "hubs.json"
+HEADER_PARTIAL = ROOT / "_site-src" / "templates" / "partials" / "site-header.html"
 
-    Locale-aware so a Japanese page never gets filed as an English one: an LLM
-    reading llms.txt would otherwise present a translated page as the English
-    answer.
+
+def llms_path(code: str) -> Path:
+    """Where a locale's llms.txt is served: the site root for English, else `/<code>/`.
+
+    Mirrors the page routing, so an agent that landed on `/ja/learn/...` finds
+    `/ja/llms.txt` by the same rule it found the page.
     """
-    code, rest = split_locale(path)
-    if rest == "index.html":
-        base = "Start Here"
-    elif rest.startswith("help/"):
-        base = "Help"
-    elif rest.startswith("learn/"):
-        base = "Learn"
-    else:
-        base = "Site Information"
-    if code == default_locale_code():
-        return base
-    return f"{base} ({load_locales()[code]['native_name']})"
+    return LLMS if code == default_locale_code() else ROOT / code / "llms.txt"
 
 
-def section_order() -> list[str]:
-    """English sections first, then each published translation's own sections."""
-    order = list(BASE_SECTIONS)
-    default = default_locale_code()
-    for code, locale in load_locales().items():
-        if code == default or locale.get("status") != "published":
-            continue
-        order += [f"{base} ({locale['native_name']})" for base in BASE_SECTIONS]
-    return order
+def llms_url(code: str) -> str:
+    return SITE_URL + "/" + llms_path(code).relative_to(ROOT).as_posix()
 
 
-def render_llms(routes: list[dict[str, object]]) -> str:
-    grouped: dict[str, list[tuple[str, str, str]]] = defaultdict(list)
-    for route in routes:
-        if not route.get("indexable", True):
-            continue
-        title, description = page_details(str(route["path"]))
-        grouped[section_for(str(route["path"]))].append((title, str(route["canonical"]), description))
-    lines = [
-        "# AtlasDays", "",
-        "> AtlasDays is a private iPhone app and website for tracking visa limits, residency or tax presence days, and travel history.", "",
-        "AtlasDays is a record-keeping and day-counting tool, not legal or tax advice. Official government guidance and professional advice remain authoritative for rule interpretation.", "",
-    ]
-    for section in section_order():
-        if section not in grouped and section not in BASE_SECTIONS:
-            continue
-        lines.extend([f"## {section}", ""])
-        for title, url, description in grouped.get(section, []):
-            lines.append(f"- [{title}]({url}): {description}")
-        lines.append("")
+def app_store_url() -> str:
+    """The one App Store URL, read from the header partial that every page renders."""
+    found = set(re.findall(r'https://apps\.apple\.com/[^"\s]+', HEADER_PARTIAL.read_text(encoding="utf-8")))
+    if len(found) != 1:
+        raise SystemExit(f"Expected one App Store URL in {HEADER_PARTIAL.name}, found {sorted(found)}")
+    return found.pop()
+
+
+def use_case_sources() -> set[str]:
+    pages = json.loads(PAGES.read_text(encoding="utf-8"))["pages"]
+    return {str(page["path"]) for page in pages if page.get("current_navigation") == "use-cases"}
+
+
+def hub_sources() -> set[str]:
+    return {str(hub["path"]) for hub in json.loads(HUBS.read_text(encoding="utf-8"))["hubs"]}
+
+
+def section_for(source: str, use_cases: set[str]) -> str:
+    """The llms.txt heading an English source path belongs under."""
+    if source == "index.html":
+        return "Start Here"
+    if source in use_cases:
+        return "Use Cases"
+    if source.startswith("help/"):
+        return "Help"
+    if source.startswith("learn/"):
+        return "Learn"
+    return "Site Information"
+
+
+def short_title(title: str, locale: dict, strings: dict[str, dict[str, str]]) -> str:
+    """A page title without the site suffix every entry would otherwise repeat.
+
+    The file's own `# AtlasDays` heading already names the site. The suffix is
+    the locale's separator plus a chrome string, so both come from the registry.
+    """
+    code = str(locale["code"])
+    separator = str(locale.get("title_separator", " – "))
+    for key in ("site.title_suffix_help", "site.title_suffix"):
+        suffix = separator + strings[key][code]
+        if title.endswith(suffix):
+            return title[: -len(suffix)]
+    return title
+
+
+def render_llms(code: str, routes: list[dict[str, object]], published: list[dict]) -> str:
+    """One locale's llms.txt, in that locale's own language apart from the headings.
+
+    Every sentence is already-reviewed site copy: the summary is the localized
+    homepage description and the disclaimer is the Learn disclaimer, so the
+    generator writes no prose of its own that would need translating.
+    """
+    locale = load_locales()[code]
+    strings = load_ui_strings()
+    use_cases, hubs = use_case_sources(), hub_sources()
+    grouped: dict[str, list[tuple[int, float, float, str]]] = defaultdict(list)
+    summary = ""
+    for index, route in enumerate(routes):
+        path = str(route["path"])
+        title, description = page_details(path)
+        source = split_locale(path)[1]
+        if source == "index.html":
+            summary = description
+        entry = f"- [{short_title(title, locale, strings)}]({route['canonical']}): {description}"
+        # Hubs lead their section because they link everything else in it,
+        # which is what a reader that truncates the file most needs to see.
+        rank = 0 if source in hubs else 1
+        grouped[section_for(source, use_cases)].append((rank, -float(route.get("priority", 0.5)), index, entry))
+        if source == "index.html":
+            store = f"- [{strings['footer.app_store'][code]}]({app_store_url()}): {strings['footer.tagline'][code]}"
+            grouped["Start Here"].append((rank, -float(route.get("priority", 0.5)), index + 0.5, store))
+    lines = ["# AtlasDays", "", f"> {summary}", "", strings["learn.disclaimer"][code], ""]
+    # Languages come before the page lists: they are the only way to reach the
+    # other files, and a fetch tool that truncates would never see them at the end.
+    lines.extend(["## Other Languages", ""])
+    for other in published:
+        if other["code"] != code:
+            lines.append(f"- [{other['native_name']} ({other['english_name']})]({llms_url(str(other['code']))})")
+    lines.append("")
+    for section in SECTIONS:
+        if section in grouped:
+            lines.extend([f"## {section}", ""])
+            lines.extend(entry for *_, entry in sorted(grouped[section]))
+            lines.append("")
     return "\n".join(lines).rstrip() + "\n"
+
+
+def llms_files(routes: list[dict[str, object]]) -> dict[Path, str]:
+    """Every llms.txt to write: English at the root, each translation under its prefix.
+
+    Split for the same reason the sitemap is: one file carrying all thirteen
+    languages was 93% translations, and fetch tools truncate long responses, so
+    an agent reading it saw the English head and never reached its own language.
+    """
+    grouped = routes_by_locale(routes)
+    published = [load_locales()[code] for code in grouped]
+    return {llms_path(code): render_llms(code, locale_routes, published) for code, locale_routes in grouped.items()}
+
+
+def orphan_llms(expected: set[Path]) -> list[Path]:
+    """Per-locale llms.txt files on disk that no published locale emits."""
+    return sorted(path for path in ROOT.glob("*/llms.txt") if path not in expected)
 
 
 def main() -> int:
     options = arguments()
     routes = expanded_routes(json.loads(ROUTES.read_text(encoding="utf-8"))["routes"])
-    expected = {**sitemap_files(routes), LLMS: render_llms(routes)}
-    orphans = orphan_sitemaps(set(expected))
+    expected = {**sitemap_files(routes), **llms_files(routes)}
+    orphans = orphan_sitemaps(set(expected)) + orphan_llms(set(expected))
     stale = [path for path, value in expected.items() if not path.exists() or path.read_text(encoding="utf-8") != value]
     if options.check:
         if stale or orphans:
@@ -230,18 +297,18 @@ def main() -> int:
                 for path in stale:
                     print(f"  {path.relative_to(ROOT)}")
             if orphans:
-                print("Sitemaps on disk that no locale claims:")
+                print("Route outputs on disk that no locale claims:")
                 for path in orphans:
                     print(f"  {path.relative_to(ROOT)}")
             return 1
-        print(f"Checked {len(expected) - 1} sitemaps and llms.txt for {len(routes)} routes.")
+        print(f"Checked {len(expected)} route outputs (sitemaps and llms.txt) for {len(routes)} routes.")
         return 0
     for path, value in expected.items():
         path.write_text(value, encoding="utf-8")
     for path in orphans:
         path.unlink()
         print(f"Removed {path.relative_to(ROOT)}: no locale claims it.")
-    print(f"Built {len(expected) - 1} sitemaps and llms.txt for {len(routes)} routes.")
+    print(f"Built {len(expected)} route outputs (sitemaps and llms.txt) for {len(routes)} routes.")
     return 0
 
 
