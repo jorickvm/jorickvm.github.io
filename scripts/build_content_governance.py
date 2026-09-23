@@ -35,6 +35,12 @@ def description(record: dict[str, object]) -> str:
 
 
 def classify(slug: str) -> str:
+    if slug == "denmark-overseas-work-42-day-rule":
+        return "tax-residency"
+    if slug in {"italy-residence-permit-absence", "switzerland-permit-absence",
+                "qatar-residence-return-planning", "france-resident-card-absence",
+                "spain-long-term-residence-eu-absence"}:
+        return "immigration-and-entry"
     tax_markers = ("tax-residency", "183-day", "180-day-tax", "substantial-presence", "statutory-residence")
     entry_markers = ("schengen", "visa", "visitor", "eta", "ilr", "citizenship", "overstay", "japan-90", "turkiye-90")
     if any(marker in slug for marker in tax_markers):
@@ -66,6 +72,8 @@ REVIEW_TIERS = {
 
 
 def cluster_for(slug: str, category: str) -> tuple[str, str]:
+    if slug == "nz-super-overseas-absence":
+        return "day-counting-and-country-models", "learn/how-to-track-travel-days.html"
     if "schengen" in slug:
         return "schengen-mechanics", "learn/schengen-90-180-rule.html"
     if slug.startswith("uk-"):
@@ -95,6 +103,9 @@ def jurisdiction(slug: str, cluster: str) -> str:
     if slug.startswith("us-"):
         return "United States"
     names = {
+        "nz-super": "New Zealand", "cyprus": "Cyprus", "denmark": "Denmark",
+        "france": "France", "italy": "Italy", "qatar": "Qatar", "spain": "Spain",
+        "switzerland": "Switzerland",
         "uae": "United Arab Emirates", "turkiye": "Türkiye", "new-zealand": "New Zealand",
         "new-york": "New York", "new-jersey": "New Jersey", "north-dakota": "North Dakota",
         "rhode-island": "Rhode Island", "georgia-us": "Georgia (US state)",
