@@ -61,6 +61,20 @@ def parse_args() -> argparse.Namespace:
 
 SITE_URL = "https://atlasdays.app"
 
+# Sources carry the plain App Store URL; the build swaps every clickable link to
+# it for an App Store Connect campaign link, so downloads from the site show up
+# under Sources > Campaigns. Done here rather than in the fragments because the
+# URL sits in every English fragment, and editing those would mark every
+# translation stale. Only `href` is rewritten: the smart-banner app-argument,
+# JSON-LD, and llms.txt keep the canonical URL. One campaign (`ct=web`) for the
+# whole site until traffic is high enough to split it past Apple's threshold.
+APP_STORE_URL = "https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"
+APP_STORE_CAMPAIGN_URL = "https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8"
+
+
+def with_campaign_links(rendered: str) -> str:
+    return rendered.replace(f'href="{APP_STORE_URL}"', f'href="{APP_STORE_CAMPAIGN_URL}"')
+
 
 def linked_paths(text: str) -> set[str]:
     """Repo-relative paths for every internal link in a generated file.
@@ -1247,6 +1261,8 @@ def main() -> int:
     def queue(output_path: Path, rendered: str, *, guard: bool = False) -> None:
         nonlocal selected
         selected += 1
+        if output_path.suffix == ".html":
+            rendered = with_campaign_links(rendered)
         current = output_path.read_text(encoding="utf-8") if output_path.exists() else ""
         if current == rendered:
             return
