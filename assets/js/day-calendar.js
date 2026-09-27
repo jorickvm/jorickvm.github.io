@@ -333,6 +333,8 @@
     updateMonth();
   }
 
-  window.AtlasDaysCalendar = { D: D, label: label, plural: plural };
+  // mount(root) lets a host page start a calendar it adds later (or inside a
+  // shadow root, which the automatic scan below cannot see).
+  window.AtlasDaysCalendar = { D: D, label: label, plural: plural, mount: DayCalendar };
   document.querySelectorAll("[data-day-calendar]").forEach(DayCalendar);
 })();

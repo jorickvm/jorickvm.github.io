@@ -7,7 +7,7 @@
     <p class="verified">Last verified: September 2026</p>
 
     <div class="tldr">
-      <p><strong>In short:</strong> download the template, add <strong>one row per stay in a country</strong>, and write every date as <strong>YYYY-MM-DD</strong>. The columns are Country, State, City, Start Date, End Date, Purpose, Evidence and Notes. When a form asks for your travel history, filter the rows to its window and copy them across. The same file imports into AtlasDays, which counts your days per country for you.</p>
+      <p><strong>In short:</strong> download the template, add <strong>one row per stay in a country</strong>, and write every date as <strong>YYYY-MM-DD</strong>. The columns are Country, State, Start Date, End Date, Purpose and Notes, exactly the ones AtlasDays imports. When a form asks for your travel history, filter the rows to its window and copy them across. Importing the same file into AtlasDays is free, and the app then counts your days per country for you.</p>
     </div>
 
     <p class="download"><a href="/assets/downloads/travel-history-template.csv" download><strong>Download the travel history template (CSV)</strong></a></p>
@@ -15,37 +15,35 @@
     <div class="factbox">
       <dl>
         <div><dt>File</dt><dd>travel-history-template.csv, a header row with no data, ready to fill in</dd></div>
-        <div><dt>Columns</dt><dd>Country, State, City, Start Date, End Date, Purpose, Evidence, Notes</dd></div>
+        <div><dt>Columns</dt><dd>Country, State, Start Date, End Date, Purpose, Notes</dd></div>
         <div><dt>Dates</dt><dd>YYYY-MM-DD, or a four-digit year when that is all you know</dd></div>
         <div><dt>Opens in</dt><dd>Excel, Numbers, Google Sheets and any other spreadsheet app</dd></div>
-        <div><dt>Imports into</dt><dd>AtlasDays, under Settings → Import → CSV File</dd></div>
+        <div><dt>Imports into</dt><dd>AtlasDays, for free, under Settings → Import → CSV File</dd></div>
       </dl>
     </div>
 
     <h2>What goes in each column</h2>
     <dl class="kv kv-text">
       <div><dt>Country</dt><dd>The country's English name (Portugal, United Kingdom) or its two-letter code (PT, GB). Required on every row.</dd></div>
-      <div><dt>State</dt><dd>US trips only: a state name, postal code (NY) or ISO code (US-NY). Leave it empty for every other country, and put regions elsewhere in City.</dd></div>
-      <div><dt>City</dt><dd>The main place you stayed. Canada's visitor visa form asks for a location on each trip.</dd></div>
+      <div><dt>State</dt><dd>US trips only: a state name, postal code (NY) or ISO code (US-NY). Leave it empty for every other country.</dd></div>
       <div><dt>Start Date</dt><dd>The day you arrived in that country.</dd></div>
       <div><dt>End Date</dt><dd>The day you left it. For a same-day visit, repeat the start date. Leave it empty only if you are still there.</dd></div>
       <div><dt>Purpose</dt><dd>Personal, Business, Study or Transit. Use Transit only when you stayed airside and did not enter the country.</dd></div>
-      <div><dt>Evidence</dt><dd>What the dates rest on: passport stamp, boarding pass, booking email, official record, or "estimated".</dd></div>
-      <div><dt>Notes</dt><dd>Anything else a form may want: the form's own purpose wording ("visiting my sister"), the route, or which dates are approximate.</dd></div>
+      <div><dt>Notes</dt><dd>Everything else a form may want: the city you stayed in (Canada's visitor visa form asks for one), the form's own purpose wording ("visiting my sister"), what the dates rest on (passport stamp, boarding pass, booking email), and which dates are estimated.</dd></div>
     </dl>
     <p>The file holds no example rows on purpose: rows you forget to delete would be imported as real trips. Here is what a filled-in file looks like.</p>
     <p class="data-table-hint">Swipe the example sideways to see every column.</p>
     <div class="data-table data-table-code">
       <table>
         <thead>
-          <tr><th>Country</th><th>State</th><th>City</th><th>Start Date</th><th>End Date</th><th>Purpose</th><th>Evidence</th><th>Notes</th></tr>
+          <tr><th>Country</th><th>State</th><th>Start Date</th><th>End Date</th><th>Purpose</th><th>Notes</th></tr>
         </thead>
         <tbody>
-          <tr><td>Portugal</td><td></td><td>Lisbon</td><td>2025-03-03</td><td>2025-03-10</td><td>Personal</td><td>Passport stamp, flight email</td><td>Visiting family</td></tr>
-          <tr><td>Spain</td><td></td><td>Madrid</td><td>2025-03-10</td><td>2025-03-16</td><td>Personal</td><td>Train ticket</td><td>Overland from Lisbon, no stamp</td></tr>
-          <tr><td>United Arab Emirates</td><td></td><td>Dubai</td><td>2025-01-12</td><td>2025-01-12</td><td>Transit</td><td>Boarding passes</td><td>Airside connection only</td></tr>
-          <tr><td>United States</td><td>NY</td><td>New York</td><td>2024-11-04</td><td>2024-11-08</td><td>Business</td><td>ESTA, hotel invoice</td><td>Conference</td></tr>
-          <tr><td>Japan</td><td></td><td>Osaka</td><td>2019</td><td></td><td>Personal</td><td>Photos</td><td>Month unknown, check photo dates</td></tr>
+          <tr><td>Portugal</td><td></td><td>2025-03-03</td><td>2025-03-10</td><td>Personal</td><td>Lisbon, family. Stamp</td></tr>
+          <tr><td>Spain</td><td></td><td>2025-03-10</td><td>2025-03-16</td><td>Personal</td><td>Madrid, by train. No stamp</td></tr>
+          <tr><td>United Arab Emirates</td><td></td><td>2025-01-12</td><td>2025-01-12</td><td>Transit</td><td>Dubai, airside only</td></tr>
+          <tr><td>United States</td><td>NY</td><td>2024-11-04</td><td>2024-11-08</td><td>Business</td><td>New York, conference</td></tr>
+          <tr><td>Japan</td><td></td><td>2019</td><td></td><td>Personal</td><td>Osaka, month unknown</td></tr>
         </tbody>
       </table>
     </div>
@@ -53,8 +51,8 @@
     <h2>Dates, including the ones you are not sure of</h2>
     <p>Write every exact date as YYYY-MM-DD. It sorts correctly, it cannot be misread as day-month or month-day, and it is the format AtlasDays imports. Keep both dates in a row at the same precision: two exact dates, or a year alone.</p>
     <ul>
-      <li><strong>You know the date.</strong> Enter it, and say in Evidence what it comes from.</li>
-      <li><strong>You can narrow it down.</strong> Enter your best supported estimate as a normal date and write "estimated" in Evidence, with the reasoning in Notes ("left the day after the wedding, 14th or 15th"). Do not put a tilde or "approx." inside a date cell: the cell stops being a date, and AtlasDays rejects the row on import.</li>
+      <li><strong>You know the date.</strong> Enter it, and say in Notes what it comes from.</li>
+      <li><strong>You can narrow it down.</strong> Enter your best supported estimate as a normal date and write "estimated" in Notes, with the reasoning ("left the day after the wedding, 14th or 15th"). Do not put a tilde or "approx." inside a date cell: the cell stops being a date, and AtlasDays rejects the row on import.</li>
       <li><strong>You only know the year.</strong> Put the four-digit year in Start Date and leave End Date empty (or put a later year if the stay ran into it). This is honest, but most forms need at least a month, so treat these rows as a list of gaps to close.</li>
     </ul>
     <p>One spreadsheet trap: Excel and other apps often turn 2025-03-03 into a date and may save it back in your regional style, such as 03/03/2025. Before you import the file anywhere, check that the date columns still read YYYY-MM-DD, and if not, set them to that format or to plain text.</p>
@@ -63,7 +61,7 @@
     <p>A row covers a continuous stay in one country. A trip through two countries is two rows, and the day you cross between them appears in both, as 10 March does in the example above: you were in Portugal and Spain that day. This layout works for every form, because rows are easy to combine and hard to split after the fact.</p>
     <div class="example">
       <p><strong>One trip, three forms.</strong> You live in the UK on a visa, fly to Lisbon on 3 March 2025, take the train to Madrid on 10 March and fly home on 16 March. Your template has two rows: Portugal 2025-03-03 to 2025-03-10 and Spain 2025-03-10 to 2025-03-16.</p>
-      <p>For a <strong>Canadian visitor visa</strong>, Schedule 1 wants each country with a year and month, so both rows go in as 2025-03 to 2025-03, with Lisbon and Madrid as the locations. For <strong>UK naturalisation</strong>, Form AN wants the absence from the UK, so the two rows become one: out on 3 March, back on 16 March, which is <strong>12 whole days</strong> away (4–15 March). For a <strong>Schengen visa</strong>, the form asks for no list of trips at all.</p>
+      <p>For a <strong>Canadian visitor visa</strong>, Schedule 1 wants each country with a year and month, so both rows go in as 2025-03 to 2025-03, with Lisbon and Madrid from your Notes as the locations. For <strong>UK naturalisation</strong>, Form AN wants the absence from the UK, so the two rows become one: out on 3 March, back on 16 March, which is <strong>12 whole days</strong> away (4–15 March). For a <strong>Schengen visa</strong>, the form asks for no list of trips at all.</p>
     </div>
     <p>When you combine rows into one absence, check the flights at both ends. An overnight departure puts the day you left your home country a day before the first arrival date in the file.</p>
 
@@ -71,20 +69,19 @@
     <ol class="steps">
       <li>Look up how far back the form goes in the <a href="/learn/travel-history-for-visa-applications">lookback table</a> (5 years for the DS-160, up to 10 for UK visitor and Canadian permanent residence applications, the whole qualifying period for citizenship).</li>
       <li>Sort by Start Date and hide the rows that ended before that window.</li>
-      <li>Resolve every row marked "estimated" or holding only a year, as far as the evidence allows.</li>
+      <li>Resolve every row noted as estimated or holding only a year, as far as the evidence allows.</li>
       <li>Shape the rows the way the form asks: country by country for visa forms, one line per absence for citizenship forms, year and month only where that is all the form wants.</li>
       <li>Save a copy of what you submitted, so the next application starts from the same dates.</li>
     </ol>
 
-    <h2>Using the same file in AtlasDays</h2>
-    <p>The template uses AtlasDays' own import headers, so the same file imports into the app. Open <strong>Settings → Import → CSV File</strong> and select it. AtlasDays shows a preview with any rows it cannot read, possible duplicates and overlaps, and saves nothing until you confirm. CSV import is free. From then on the app counts your days per country and against visa or residence limits as you add trips.</p>
+    <h2>Importing it into AtlasDays, free</h2>
+    <p>The template uses AtlasDays' own import columns, so the file you fill in is the file you import. Open <strong>Settings → Import → CSV File</strong> and select it. AtlasDays shows a preview with any rows it cannot read, possible duplicates and overlaps, and saves nothing until you confirm. Importing is free, and from then on the app counts your days per country and against visa or residence limits as you add trips.</p>
     <ul>
-      <li><strong>City and Evidence stay in your spreadsheet.</strong> AtlasDays ignores columns it does not recognize, so those two are skipped on import. If you want them in the app, copy them into Notes.</li>
       <li><strong>Purpose must be one of the four words.</strong> AtlasDays reads Personal, Business, Study and Transit (and treats Tourism as Personal). Anything else is ignored and the trip imports without a purpose, so keep the form's wording in Notes.</li>
-      <li><strong>State is for the United States only.</strong> A State value on a non-US row is reported as an error. US state tracking is part of AtlasDays Pro; without it, state rows import as plain United States trips.</li>
+      <li><strong>State is for the United States only.</strong> A State value on a non-US row is reported as an error.</li>
       <li><strong>Year-only rows are kept but not counted.</strong> They mark the country as visited but add no days until you give them exact dates.</li>
     </ul>
-    <p>It works the other way too. The Spreadsheet export (AtlasDays Pro) writes Country, State, Start Date, End Date, Days, Purpose and Notes as a CSV or Excel file, so you can start a template from trips you have already logged. The import screen also has a <strong>Build CSV with AI</strong> prompt for turning notes or an itinerary into AtlasDays' import columns with an AI assistant; bear in mind that whatever you paste into an AI tool is handled under that tool's privacy policy.</p>
+    <p>No file yet? The import screen also has a <strong>Build CSV with AI</strong> prompt that turns notes or an itinerary into these columns with an AI assistant. Whatever you paste into an AI tool is handled under that tool's privacy policy.</p>
 
     <h2>Beyond the template</h2>
     <p>A template organizes a record; it does not make it complete. Ten tidy rows for five years of travel usually means the short trips are missing, and a form's own wording always wins over any layout. For which forms ask what, see <a href="/learn/travel-history-for-visa-applications">travel history for visa applications</a>. For filling gaps from stamps, emails and photos, see <a href="/learn/rebuild-travel-history-from-passport-stamps-emails-photos">rebuilding your travel history</a>, and for government records of your own crossings, <a href="/learn/get-official-entry-exit-records">getting official entry and exit records</a>.</p>
@@ -95,7 +92,7 @@
         <img class="logo-light" src="../assets/brand/logo_light.png?v=20260325a" alt="AtlasDays logo" width="52" height="52" />
       </span>
       <h2>AtlasDays turns this spreadsheet into a live day count</h2>
-      <p>Import the template once and AtlasDays counts your days in every country, privately on your iPhone. Keep adding trips as you travel, and export the record as a spreadsheet or a <strong>Country Presence Report</strong> PDF with AtlasDays Pro when the next form asks.</p>
+      <p>Import the template for free and AtlasDays counts your days in every country, privately on your iPhone. Keep adding trips as you travel, and your travel history is already up to date when the next form asks for it.</p>
       <a class="cta-btn" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> Get AtlasDays</a>
     </div>
 
@@ -105,4 +102,4 @@
     <h3>What date format should a travel history use?</h3>
     <p>Use YYYY-MM-DD, for example 2025-03-03, in your own record. It cannot be confused between day-month and month-day, it sorts correctly, and it converts to whatever the form wants, such as mm/dd/yyyy on the N-400 or year and month on Canada's Schedule 1.</p>
     <h3>Can I import this template into AtlasDays?</h3>
-    <p>Yes. The headers match AtlasDays' CSV import, so you can fill in the file and choose it under Settings → Import → CSV File. The City and Evidence columns are skipped on import, and CSV import is free.</p>
+    <p>Yes. The headers match AtlasDays' CSV import, so you can fill in the file and choose it under Settings → Import → CSV File. Importing is free.</p>
