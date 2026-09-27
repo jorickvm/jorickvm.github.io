@@ -10,7 +10,7 @@ This is the one thing to know before editing anything. Pages under `learn/` and 
 
 All ten root pages are generated, `index.html`, `404.html`, and `support.html` included; they moved into `pages.json` when Dutch shipped, because a page that cannot be translated cannot be localized.
 
-Genuinely hand-authored: the `app/*/index.html` alias stubs, and three meta-refresh redirect stubs in `learn/`.
+Genuinely hand-authored: the `app/*/index.html` alias stubs, and the three legacy meta-refresh redirect stubs in `learn/` (`day-limits.html`, `how-to-use-atlasdays.html`, `icloud-sync-travel-tracking.html`). Merged Learn pages in `_site-src/data/redirects.json` generate redirect stubs for English and every locale; `build_site.py --check` covers them.
 
 `changelog.html` is shared with the AtlasDays app repo, which owns the release notes. `scripts/sync_changelog.py` replaces only the contents of `<div class="release-stack">`, so a release updates the cards and leaves this repo's header, footer, social metadata, and theme bootstrap intact.
 
@@ -37,7 +37,7 @@ _site-src/data/glossary.json       terminology snapshot, generated from the app 
 _site-src/content/<code>/…          translated fragments
 ```
 
-Japanese covers the Help Center at `/ja/help/…`; Dutch and Spanish cover the whole site at `/nl/…` and `/es/…`; German is the current draft locale. English stays unprefixed, so `en` is simply the locale whose `route_prefix` is empty.
+The published locales and their coverage are declared in `_site-src/data/locales.json`. Each non-English locale routes under its own code. English stays unprefixed, so `en` is simply the locale whose `route_prefix` is empty.
 
 **A translation record supplies prose and nothing else.** Paths, canonicals, hreflang, JSON-LD, og tags, next-step URLs, and the rendered date are all derived from the English source record, and setting one of them in an overlay is a build error. That is deliberate: it means a translation cannot invent a URL or a JSON-LD graph in a language nobody here can proofread, and `validate_help_next_steps` keeps guarding the routes for free.
 

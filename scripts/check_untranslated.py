@@ -34,6 +34,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from locales import default_locale_code, load_locales  # noqa: E402
 
+from calendar_strings import prose as cal_prose
+
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE_ROOT = ROOT / "_site-src"
 DATA = SOURCE_ROOT / "data"
@@ -162,6 +164,7 @@ def visible_runs(markup: str) -> set[str]:
     """Every non-empty rendered text run, prose and attributes alike."""
     body = STRIPPED.sub(" ", markup)
     found = {html.unescape(" ".join(chunk.split())) for chunk in TAG.split(body)}
+    found.update(cal_prose(markup))
     for match in RENDERED_ATTRS.finditer(body):
         found.add(html.unescape(" ".join(match.group(1).split())))
     return {text for text in found if text}

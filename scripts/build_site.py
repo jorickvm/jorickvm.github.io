@@ -47,6 +47,36 @@ NAVIGATION_VERSION = "20260817b"
 WASH_SUBTLE = ' class="wash-subtle"'
 
 
+def redirect_outputs(locales, translations, sources, strings):
+    """Merged Learn routes remain generated and covered by --check in each locale."""
+    registry = json.loads((SOURCE_ROOT / "data/redirects.json").read_text(encoding="utf-8"))
+    for code, locale in locales.items():
+        for old, target in registry.items():
+            record = sources[target] if code == default_locale_code() else translations.get(code, {}).get(target)
+            if not record:
+                raise ValueError(f"{code}: redirect target has no translation: {target}")
+            prefix = locale.get("route_prefix", "")
+            href = prefix + "/" + target.removesuffix(".html")
+            title = html.escape(record["headline"])
+            message = html.escape(strings["help.continue"][code])
+            rendered = f'''<!DOCTYPE html>
+<html lang="{html.escape(locale['html_lang'])}">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}{html.escape(locale['title_separator'])}AtlasDays</title>
+  <meta name="description" content="{html.escape(record['description'], quote=True)}" />
+  <meta name="robots" content="noindex,follow" />
+  <link rel="canonical" href="https://atlasdays.app{href}" />
+  <meta http-equiv="refresh" content="0;url={href}" />
+  <link rel="icon" href="/assets/brand/favicon.png" />
+</head>
+<body><p>{message}: <a href="{href}">{title}</a></p></body>
+</html>
+'''
+            yield SITE_ROOT / (prefix.lstrip("/") + "/" + old).lstrip("/"), rendered
+
+
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true", help="Fail if generated output differs from committed HTML")
@@ -1365,6 +1395,10 @@ def main() -> int:
                     **({"family": localized_family} if kind == "page" else {}),
                 ),
             )
+
+    if args.section in {"all", "learn"}:
+        for output_path, rendered in redirect_outputs(locales, translations, sources, strings):
+            queue(output_path, rendered)
 
     if args.section == "all" and ROUTES.exists():
         routes = expanded_routes(json.loads(ROUTES.read_text(encoding="utf-8"))["routes"])

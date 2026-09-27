@@ -35,6 +35,8 @@ from locales import (
     source_hash,
 )
 
+from calendar_strings import BLOCK as CAL_BLOCK, prose as cal_prose, check as check_cal_strings
+
 SITE_ROOT = Path(__file__).resolve().parents[1]
 SOURCE_ROOT = SITE_ROOT / "_site-src"
 GLOSSARY_PATH = SOURCE_ROOT / "data" / "glossary.json"
@@ -82,6 +84,7 @@ def parse_args() -> argparse.Namespace:
 def visible_text(fragment: str) -> str:
     """Prose only, so a rule never fires on markup or a URL."""
     without_comments = re.sub(r"<!--.*?-->", "\n", fragment, flags=re.DOTALL)
+    without_comments = CAL_BLOCK.sub("\n".join(cal_prose(fragment)), without_comments)
     # Newline rather than space, so text in two different elements never reads
     # as one sentence to the typography rules below.
     return TAGS.sub("\n", without_comments)
@@ -219,6 +222,10 @@ def check_structure(
     problems: list[str],
 ) -> None:
     """Shape must survive translation, because a missing step is invisible."""
+    try:
+        check_cal_strings(english, translated)
+    except (ValueError, TypeError) as error:
+        problems.append(f"{label}: {error}")
     for name, pattern in (
         ("<h2> sections", HEADING),
         ("<ol> lists", ORDERED_LIST),
@@ -242,8 +249,8 @@ def check_structure(
     # dropped digit is invisible to a reader who cannot compare the two. The
     # test is one-directional on purpose: Japanese legitimately adds numbers,
     # writing "6月1日、6月2日、6月3日" where English writes "June 1 to June 3".
-    english_numbers = Counter(NUMBER.findall(visible_text(FIGURES.sub(" ", english))))
-    lost = english_numbers - Counter(NUMBER.findall(visible_text(FIGURES.sub(" ", translated))))
+    english_numbers = Counter(NUMBER.findall(visible_text(FIGURES.sub(" ", CAL_BLOCK.sub(" ", english)))))
+    lost = english_numbers - Counter(NUMBER.findall(visible_text(FIGURES.sub(" ", CAL_BLOCK.sub(" ", translated)))))
     if lost:
         problems.append(
             f"{label}: the translation drops number(s) present in English: {dict(lost)}"

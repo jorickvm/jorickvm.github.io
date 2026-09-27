@@ -22,7 +22,7 @@
      travelDaysCount         false: bars start and end mid-day on travel days
                              (whole-days-away rules); true: full days (Schengen)
      singleDayTrips          true when a one-day trip counts for the rule
-     evaluate(trips, ctx)    { ok, status, headline, lines: [text] }
+     evaluate(trips, ctx)    { ok, total, remaining, status, from, to }
      tripLabel(trip, ctx)    short text for a trip in the list
      exportRows(trips, ctx)  rows for the AtlasDays CSV import
      strings                 labels shown by the engine
@@ -50,11 +50,18 @@
     monthStart: function (key) { return Math.round(Date.UTC(Math.floor(key / 12), key % 12, 1) / DAY); },
     monthEnd: function (key) { return D.monthStart(key + 1) - 1; }
   };
-  var MONTHS = ["January", "February", "March", "April", "May", "June", "July",
-    "August", "September", "October", "November", "December"];
-  function label(n) { var p = D.parts(n); return p.d + " " + MONTHS[p.m] + " " + p.y; }
-  function short(n, withYear) { var p = D.parts(n); return p.d + " " + MONTHS[p.m].slice(0, 3) + (withYear ? " " + p.y : ""); }
-  function plural(n, one, many) { return n + " " + (n === 1 ? one : many); }
+  var locale = document.documentElement.lang || "en";
+  var plurals = new Intl.PluralRules(locale);
+  function dateFormat(options) { return new Intl.DateTimeFormat(locale, Object.assign({ timeZone: "UTC" }, options)); }
+  var fullDate = dateFormat({ day: "numeric", month: "long", year: "numeric" });
+  var monthDate = dateFormat({ month: "long", year: "numeric" });
+  var shortMonth = dateFormat({ month: "short" });
+  var weekday = dateFormat({ weekday: "narrow" });
+  function label(n) { return fullDate.format(new Date(n * DAY)); }
+  function short(n, withYear) {
+    return dateFormat({ day: "numeric", month: "short", year: withYear ? "numeric" : undefined }).format(new Date(n * DAY));
+  }
+  function plural(n, variants) { return variants[plurals.select(n)] || variants.other; }
   function el(tag, attrs, text) {
     var node = document.createElement(tag);
     Object.keys(attrs || {}).forEach(function (k) { if (attrs[k] != null) node.setAttribute(k, attrs[k]); });
@@ -65,7 +72,23 @@
   function DayCalendar(root) {
     var rule = (window.AtlasDaysRules || {})[root.getAttribute("data-day-calendar")];
     if (!rule) return;
-    var S = rule.strings || {};
+    var S = Object.assign({}, rule.strings);
+    var stringsNode = root.querySelector("[data-cal-strings]");
+    if (stringsNode) {
+      try { Object.assign(S, JSON.parse(stringsNode.textContent)); }
+      catch (error) { console.error("Invalid calendar translations", error); }
+    }
+    function text(key, values) {
+      values = values || {};
+      var value = S[key];
+      if (value && typeof value === "object") value = plural(values.n, value);
+      return String(value == null ? "" : value).replace(/\{(\w+)\}/g, function (_, name) {
+        return values[name] == null ? "" : String(values[name]);
+      });
+    }
+    root.querySelectorAll(".cal-weekdays span").forEach(function (node, i) {
+      node.textContent = weekday.format(new Date(Date.UTC(2024, 0, 1 + i)));
+    });
     var $ = function (sel) { return root.querySelector(sel); };
     var win = $("[data-cal-window]"), head = $(".cal-head"), weeksBox = $("[data-cal-weeks]"), monthTitle = $("[data-cal-month]");
     var hint = $("[data-cal-hint]"), list = $("[data-cal-list]"), result = $("[data-cal-result]");
@@ -75,7 +98,7 @@
     var trips = [], pending = null, handle = null, hover = null, openTrip = -1;
     var rows = [], cells = {}, firstMonday = 0, activeMonth = null;
 
-    function ctx() { return { today: today, D: D, label: label, plural: plural }; }
+    function ctx() { return { today: today, D: D, label: label, plural: plural, text: text }; }
 
     // ---- trips -----------------------------------------------------------------
     function tripAt(day) {
@@ -152,7 +175,7 @@
         for (var c = 0; c < 7; c++) {
           var day = mon + c, p = D.parts(day);
           var b = el("button", { type: "button", "class": "cal-day" + (p.d === 1 ? " is-month-start" : "") + (day === today ? " is-today" : ""), "data-day": day });
-          b.appendChild(el("span", { "class": "cal-num" }, p.d === 1 ? MONTHS[p.m].slice(0, 3).toUpperCase() : String(p.d)));
+          b.appendChild(el("span", { "class": "cal-num" }, p.d === 1 ? shortMonth.format(new Date(day * DAY)) : String(p.d)));
           cells[day] = b;
           row.appendChild(b);
         }
@@ -221,7 +244,7 @@
         var card = el("div", { "class": "cal-trip" + (open ? " is-open" : "") });
         var main = el("button", { type: "button", "class": "cal-trip-main", "aria-expanded": open ? "true" : "false" });
         var sameYear = D.parts(t.start).y === D.parts(t.end).y;
-        main.appendChild(el("span", { "class": "cal-trip-dates" }, short(t.start, !sameYear) + " – " + short(t.end, true)));
+        main.appendChild(el("span", { "class": "cal-trip-dates" }, short(t.start, !sameYear) + (locale === "ja" ? "〜" : " – ") + short(t.end, true)));
         main.appendChild(el("span", { "class": "cal-trip-count" }, rule.tripLabel(t, ctx())));
         main.addEventListener("click", function () { openTrip = open ? -1 : idx; renderList(); if (!open) reveal(t.start - 7); });
         card.appendChild(main);
@@ -238,10 +261,10 @@
       var r = rule.evaluate(trips, ctx());
       result.textContent = "";
       var top = el("div", { "class": "cal-result-head" });
-      top.appendChild(el("p", { "class": "cal-headline" }, r.headline));
-      if (r.status) top.appendChild(el("span", { "class": "cal-status " + (r.ok ? "is-ok" : "is-over") }, r.status));
+      top.appendChild(el("p", { "class": "cal-headline" }, text(r.total ? "headline" : "headlineEmpty", { n: r.total })));
+      if (r.status) top.appendChild(el("span", { "class": "cal-status " + (r.ok ? "is-ok" : "is-over") }, text(r.status, { n: r.remaining })));
       result.appendChild(top);
-      (r.lines || []).forEach(function (line) { result.appendChild(el("p", { "class": "cal-line" }, line)); });
+      result.appendChild(el("p", { "class": "cal-line" }, r.total ? text("worstWindow", { from: label(r.from), to: label(r.to) }) : text("emptyResult")));
     }
 
     function render() { build(); paint(); renderList(); renderResult(); updateMonth(); }
@@ -285,7 +308,7 @@
       if (pick == null) keys.forEach(function (k) { if (pick == null || seen[k].days > seen[pick].days) pick = k; });
       if (pick === activeMonth) return;
       activeMonth = pick;
-      monthTitle.textContent = MONTHS[pick % 12] + " " + Math.floor(pick / 12);
+      monthTitle.textContent = monthDate.format(new Date(D.monthStart(pick) * DAY));
       Object.keys(cells).forEach(function (k) { cells[k].classList.toggle("is-other-month", D.monthKey(+k) !== pick); });
     }
 

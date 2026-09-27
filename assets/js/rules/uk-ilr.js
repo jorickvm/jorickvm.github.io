@@ -36,19 +36,18 @@
     },
 
     tripLabel: function (t, c) {
-      return c.plural(Math.max(0, t.end - t.start - 1), "day", "days") + " away";
+      return c.text("tripAway", { n: Math.max(0, t.end - t.start - 1) });
     },
 
     evaluate: function (trips, c) {
       var worst = worstWindow(c.D, absentDays(trips));
-      if (!worst.total) {
-        return { ok: true, headline: "0 of 180 days away", status: "", lines: ["Mark your trips outside the UK to see your worst 12 months."] };
-      }
       return {
         ok: worst.total <= 180,
-        headline: worst.total + " of 180 days away in any 12 months",
-        status: worst.total <= 180 ? (180 - worst.total) + " left" : c.plural(worst.total - 180, "day", "days") + " over",
-        lines: ["Your worst 12 months run from " + c.label(worst.from) + " to " + c.label(worst.to) + "."]
+        total: worst.total,
+        remaining: Math.abs(180 - worst.total),
+        status: !worst.total ? "" : worst.total <= 180 ? "left" : "over",
+        from: worst.from,
+        to: worst.to
       };
     },
 
@@ -77,7 +76,14 @@
       held: "trip end picked up",
       empty: "No trips yet.",
       deleteTrip: "Delete trip",
-      fileName: "atlasdays-uk-stays.csv"
+      fileName: "atlasdays-uk-stays.csv",
+      "tripAway": {"one": "{n} day away", "other": "{n} days away"},
+      "headline": "{n} of 180 days away in any 12 months",
+      "headlineEmpty": "0 of 180 days away",
+      "left": "{n} left",
+      "over": {"one": "{n} day over", "other": "{n} days over"},
+      "emptyResult": "Mark your trips outside the UK to see your worst 12 months.",
+      "worstWindow": "Your worst 12 months run from {from} to {to}."
     }
   };
 })();
