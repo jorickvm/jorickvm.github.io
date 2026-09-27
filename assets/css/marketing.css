@@ -360,7 +360,6 @@ html[data-theme="light"] .hx-map-schengen { background-image: url("../home/map/s
    above it. */
 .hx-uc-wrap { width: min(1000px, 100%); margin: 0 auto; }
 .hx-uc-section { padding: 64px var(--hx-gutter) 0; }
-.hx-uc-final { padding-bottom: 88px; }
 .hx-uc-h2 { font-size: clamp(1.6rem, 1.2rem + 1.4vw, 2.2rem); line-height: 1.1; font-weight: 700; letter-spacing: -0.03em; }
 .hx-uc-head { max-width: 62ch; }
 .hx-uc-head p { margin-top: 12px; font-size: 1.02rem; color: var(--muted); }
@@ -369,15 +368,13 @@ html[data-theme="light"] .hx-map-schengen { background-image: url("../home/map/s
 .hx-uc-hero { position: relative; overflow: hidden; padding: 28px var(--hx-gutter) 0; }
 .hx-uc-hero-copy,
 .hx-uc-hero-device { position: relative; z-index: 2; }
-.hx-uc-hero h1 { max-width: 15ch; font-size: clamp(2.1rem, 1.5rem + 2.8vw, 3rem); line-height: 1.05; font-weight: 700; letter-spacing: -0.04em; }
+.hx-uc-hero h1 { max-width: 13ch; font-size: clamp(2.1rem, 1.5rem + 2.8vw, 3rem); line-height: 1.05; font-weight: 700; letter-spacing: -0.04em; }
 .hx-uc-hero .hx-lede { max-width: 46ch; margin: 16px 0 0; }
 .hx-uc-hero .hx-actions { flex-wrap: wrap; justify-content: flex-start; align-items: center; gap: 12px 22px; }
-.hx-uc-jump { font-weight: 600; color: var(--blue); }
-.hx-uc-jump::after { content: " \2193"; }
 .hx-uc-hero-device { width: min(60vw, 250px); margin: 40px auto 0; }
 
 /* Supported rules, styled like the app's preset rows. */
-.hx-uc-rules { display: grid; gap: 10px; margin-top: 28px; }
+.hx-uc-rules { display: grid; gap: 10px; margin-top: 12px; }
 .hx-uc-rule {
   display: flex;
   align-items: center;
@@ -399,8 +396,10 @@ a.hx-uc-rule:hover { border-color: var(--brand); }
 .hx-uc-rule-text span { font-size: 0.86rem; color: var(--muted); }
 .hx-uc-rule-go { flex: none; font-size: 0.84rem; font-weight: 600; color: var(--blue); }
 .hx-uc-rule-go::after { content: " \2192"; }
-.hx-uc-rules-custom .hx-uc-rule { border-style: dashed; background: transparent; }
-.hx-uc-rule-plus { flex: none; display: grid; place-items: center; width: 36px; height: 27px; border: 1.5px dashed var(--line-strong); border-radius: 5px; font-weight: 600; color: var(--muted); }
+/* The open-ended option leads, so nobody reads the presets as the whole list. */
+.hx-uc-rule-any { margin-top: 28px; border-color: var(--brand); }
+.hx-uc-rules-label { margin-top: 28px; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted-2); }
+.hx-uc-rule-plus { flex: none; display: grid; place-items: center; width: 36px; height: 27px; border-radius: 5px; font-size: 1.1rem; font-weight: 600; color: var(--blue); background: var(--blue-soft); }
 
 /* How it works: three numbered steps, each with its real screen. On phones
    they sit in a row you swipe, so the page does not stack three phones. */
@@ -457,21 +456,6 @@ html[data-theme="light"] .hx-uc-card { background: var(--bg-card-strong); }
 .hx-uc-note h2 { font-size: 1rem; font-weight: 650; }
 .hx-uc-note p { margin-top: 8px; font-size: 0.92rem; color: var(--muted); }
 
-/* One compact close instead of a second homepage finale. */
-.hx-uc-cta {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px 32px;
-  padding: 28px;
-  border: 1px solid var(--line);
-  border-radius: 24px;
-  background: var(--bg-elevated);
-}
-html[data-theme="light"] .hx-uc-cta { background: var(--bg-card-strong); }
-.hx-uc-cta h2 { font-size: 1.45rem; font-weight: 700; letter-spacing: -0.02em; }
-.hx-uc-cta p { margin-top: 6px; color: var(--muted); }
 
 /* ---------- reveal (only what starts below the fold is pre-hidden) ---------- */
 [data-hx-reveal] { transition: opacity 700ms ease, transform 700ms var(--hx-ease); }
@@ -555,18 +539,15 @@ html[data-theme="light"] .hx-uc-cta { background: var(--bg-card-strong); }
 
   .hx-qr { display: flex; }
   .hx-uc-section { padding-top: 104px; }
-  .hx-uc-final { padding-bottom: 120px; }
   .hx-uc-hero { padding: 56px var(--hx-gutter) 16px; }
   .hx-uc-hero .hx-map { height: 100%; }
-  .hx-uc-hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) 280px; align-items: center; gap: 64px; }
+  .hx-uc-hero-grid { display: grid; grid-template-columns: minmax(0, 560px) 260px; justify-content: start; align-items: center; gap: 88px; }
   .hx-uc-hero h1 { font-size: clamp(2.6rem, 3.6vw, 3.3rem); }
   .hx-uc-hero .hx-lede { font-size: 1.12rem; }
-  .hx-uc-hero-device { width: 280px; margin: 0; }
+  .hx-uc-hero-device { width: 260px; margin: 0; }
   .hx-uc-rules { grid-template-columns: 1fr 1fr; }
-  .hx-uc-rules-custom { grid-column: 1 / -1; }
   .hx-uc-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 48px; }
   .hx-uc-cards { grid-template-columns: repeat(3, 1fr); }
-  .hx-uc-cta { padding: 32px 40px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
