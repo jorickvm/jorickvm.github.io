@@ -562,6 +562,10 @@ a.hx-uc-card strong::after { content: " \2192"; color: var(--blue); }
     transition: opacity 450ms ease;
   }
   html.js .hx-step.is-active { opacity: 1; }
+  /* The phone (about 655px tall, pinned with its centre on the viewport's
+     centre) is taller than a step, so the last step carries the extra height:
+     the phone only lets go once that step's text is near the top. */
+  html.js .hx-step:last-child { min-height: calc(60vh + 660px); }
   html.js .hx-step h3 { font-size: 2.1rem; }
   html.js .hx-step-body { max-width: 36ch; font-size: 1.12rem; }
   .hx-steps { text-align: left; }
