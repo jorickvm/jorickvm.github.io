@@ -9,7 +9,7 @@
       <li><strong>Country：</strong>英文<a href="/zh-Hant/help/languages">國家名稱</a>、ISO 兩碼代碼，或可辨識的常見別名。</li>
       <li><strong>State：</strong>選填，美國的州名、郵政縮寫，或 <code>US-CA</code> 這類 ISO 行政區代碼。</li>
       <li><strong>Start Date / End Date：</strong>精確日期、年份，或依下列規則留空。</li>
-      <li><strong>Purpose：</strong>Tourism（觀光）、Business（商務）、Medical（醫療）、<a href="/zh-Hant/help/history-and-import">Transit</a>（轉機）或 Personal（個人）；除 Transit 以外的目的可以用逗號分隔並列多個。</li>
+            <li><strong>Purpose：</strong>Personal（個人）、Business（商務）、Study（就學）或 <a href="/zh-Hant/help/history-and-import">Transit</a>（轉機）。Transit 以外的多個目的可以放在引號內，以逗號分隔，例如 <code>"Business, Personal"</code>。舊檔案中的 Tourism 或 Medical 仍可匯入，並會視為 Personal。</li>
       <li><strong>Notes：</strong>選填的文字。</li>
     </ul>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/zh-Hant/help/csv-format-reference/csv-reference.webp" alt="CSV 匯入的範例和範本控制項" width="1320" height="1760" loading="lazy" decoding="async" /></figure>
@@ -26,13 +26,13 @@
     <p>只有美國的行程才使用 State。如果一次美國行程去了好幾個州，而且需要州層級的紀錄，就每個州各寫一列。只填國家的美國資料列一樣有效，可用於國家層級的記錄。</p>
 
     <h2>轉機（Transit）</h2>
-    <p>沒有實際入境時，在 Purpose 填入 <code>Transit</code>。Transit 具有排他性：不要和 Tourism、Business 或其他目的並用。</p>
+    <p>沒有實際入境時，在 Purpose 填入 <code>Transit</code>。Transit 具有排他性：不要和 Personal、Business 或其他目的並用。</p>
 
     <h2>範例</h2>
     <pre><code>Country,State,Start Date,End Date,Purpose,Notes
-France,,2026-03-01,2026-03-05,Tourism,
+France,,2026-03-01,2026-03-05,Personal,
 United States,CA,2026-04-10,2026-04-15,Business,Conference
-Japan,,2024,,Tourism,Dates not known
+Japan,,2024,,Personal,Dates not known
 United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></pre>
 
     <h2>分隔符號與引號</h2>

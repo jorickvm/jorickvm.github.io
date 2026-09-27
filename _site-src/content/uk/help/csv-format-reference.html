@@ -9,7 +9,7 @@
       <li><strong>Country</strong> (Країна): <a href="/uk/help/languages">назва країни</a> англійською, дволітерний код ISO або поширена альтернативна назва, яку програма розпізнає.</li>
       <li><strong>State</strong> (Штат): необов’язкове поле — назва штату США, поштове скорочення або код регіону за ISO, наприклад <code>US-CA</code>.</li>
       <li><strong>Start Date / End Date</strong> (Дата початку та дата завершення): точна дата, рік або порожня клітинка за правилами нижче.</li>
-      <li><strong>Purpose</strong> (Мета): Tourism (Туризм), Business (Робота), Medical (Лікування), <a href="/uk/help/history-and-import">Transit</a> (Транзит) або Personal (Особисте); кілька цілей, окрім Transit, можна перелічити через кому.</li>
+      <li><strong>Purpose</strong> (Мета): Personal (Особисте), Business (Робота), Study (Навчання) або <a href="/uk/help/history-and-import">Transit</a> (Транзит). Кілька цілей, окрім Transit, можна вказати через кому в лапках, наприклад <code>"Business, Personal"</code>. Старі файли з Tourism або Medical і далі імпортуються як Personal.</li>
       <li><strong>Notes</strong> (Примітки): необов’язковий текст.</li>
     </ul>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/uk/help/csv-format-reference/csv-reference.webp" alt="Приклад CSV та елементи керування шаблоном на екрані імпорту" width="1320" height="1760" loading="lazy" decoding="async" /></figure>
@@ -26,13 +26,13 @@
     <p>Стовпець State використовуйте лише для поїздок до США. Якщо одна поїздка Сполученими Штатами охопила кілька штатів і вам потрібні записи по кожному з них, створіть окремий рядок для кожного штату. Для обліку на рівні країни достатньо звичайного рядка з США.</p>
 
     <h2>Транзит</h2>
-    <p>Укажіть у стовпці Purpose значення <code>Transit</code> (Транзит), якщо ви не в’їжджали до країни. Transit виключає інші цілі: не поєднуйте його з Tourism, Business або будь-якою іншою метою.</p>
+    <p>Укажіть у стовпці Purpose значення <code>Transit</code> (Транзит), якщо ви не в’їжджали до країни. Transit виключає інші цілі: не поєднуйте його з Personal, Business або будь-якою іншою метою.</p>
 
     <h2>Приклад</h2>
     <pre><code>Country,State,Start Date,End Date,Purpose,Notes
-France,,2026-03-01,2026-03-05,Tourism,
+France,,2026-03-01,2026-03-05,Personal,
 United States,CA,2026-04-10,2026-04-15,Business,Conference
-Japan,,2024,,Tourism,Dates not known
+Japan,,2024,,Personal,Dates not known
 United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></pre>
 
     <h2>Роздільники та лапки</h2>

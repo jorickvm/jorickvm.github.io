@@ -9,7 +9,7 @@
       <li><strong>Country</strong> (pays) : <a href="/fr/help/languages">nom de pays</a> en anglais, code ISO à deux lettres ou alias courant reconnu.</li>
       <li><strong>State</strong> (État) : facultatif, nom d’un État américain, abréviation postale ou code de subdivision ISO comme <code>US-CA</code>.</li>
       <li><strong>Start Date / End Date</strong> (dates de début et de fin) : date exacte, année ou champ vide, selon les règles ci-dessous.</li>
-      <li><strong>Purpose</strong> (motif) : Tourism (tourisme), Business (professionnel), Medical (médical), <a href="/fr/help/history-and-import">Transit</a> ou Personal (personnel) ; plusieurs motifs hors Transit peuvent être séparés par des virgules.</li>
+      <li><strong>Purpose</strong> (motif) : Personal (personnel), Business (professionnel), Study (études) ou <a href="/fr/help/history-and-import">Transit</a>. Plusieurs motifs autres que Transit peuvent être combinés, séparés par des virgules et entre guillemets, par exemple <code>"Business, Personal"</code>. Les anciens fichiers contenant Tourism ou Medical sont toujours importés comme Personal.</li>
       <li><strong>Notes</strong> : texte libre, facultatif.</li>
     </ul>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/fr/help/csv-format-reference/csv-reference.webp" alt="Commandes d’exemple et de modèle de l’import CSV" width="1320" height="1760" loading="lazy" decoding="async" /></figure>
@@ -26,13 +26,13 @@
     <p>N’utilisez State que pour un voyage aux États-Unis. Si une même visite aux États-Unis a couvert plusieurs États et que vous avez besoin d’enregistrements par État, utilisez une ligne par État. Une simple ligne US reste valide pour un suivi au niveau du pays.</p>
 
     <h2>Transit</h2>
-    <p>Inscrivez <code>Transit</code> dans Purpose pour un passage sans entrée dans le pays. Transit est exclusif : ne le combinez pas avec Tourism, Business ou un autre motif.</p>
+    <p>Inscrivez <code>Transit</code> dans Purpose pour un passage sans entrée dans le pays. Transit est exclusif : ne le combinez pas avec Personal, Business ou un autre motif.</p>
 
     <h2>Exemple</h2>
     <pre><code>Country,State,Start Date,End Date,Purpose,Notes
-France,,2026-03-01,2026-03-05,Tourism,
+France,,2026-03-01,2026-03-05,Personal,
 United States,CA,2026-04-10,2026-04-15,Business,Conference
-Japan,,2024,,Tourism,Dates not known
+Japan,,2024,,Personal,Dates not known
 United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></pre>
 
     <h2>Séparateur et guillemets</h2>

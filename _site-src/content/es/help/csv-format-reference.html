@@ -9,7 +9,7 @@
       <li><strong>Country:</strong> <a href="/es/help/languages">nombre del país</a> en inglés, código ISO de dos letras o un alias habitual reconocido.</li>
       <li><strong>State:</strong> opcional; nombre del estado de EE. UU., abreviatura postal o código ISO de subdivisión como <code>US-CA</code>.</li>
       <li><strong>Start Date / End Date:</strong> fecha exacta, año o vacío, según las reglas de más abajo.</li>
-      <li><strong>Purpose:</strong> <code>Tourism</code> (turismo), <code>Business</code> (Trabajo), <code>Medical</code> (médico), <a href="/es/help/history-and-import"><code>Transit</code></a> (Tránsito) o <code>Personal</code>; se pueden separar por comas varios motivos que no sean Transit. Los valores se escriben en inglés en el archivo.</li>
+      <li><strong>Purpose:</strong> <code>Personal</code> (personal), <code>Business</code> (Trabajo), <code>Study</code> (estudios) o <a href="/es/help/history-and-import"><code>Transit</code></a> (Tránsito). Puedes combinar varios motivos distintos de Transit, separados por comas y entre comillas, por ejemplo <code>"Business, Personal"</code>. Los archivos antiguos que indican Tourism o Medical se siguen importando como Personal. Los valores se escriben en inglés en el archivo.</li>
       <li><strong>Notes:</strong> texto opcional.</li>
     </ul>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/es/help/csv-format-reference/csv-reference.webp" alt="Ejemplo de Importar CSV y controles de la plantilla" width="1320" height="1760" loading="lazy" decoding="async" /></figure>
@@ -26,13 +26,13 @@
     <p>Usa State solo en un viaje a Estados Unidos. Si una misma visita a EE. UU. abarcó varios estados y necesitas registros por estado, usa una fila por estado. Una fila de EE. UU. sin estado es válida para el control a nivel de país.</p>
 
     <h2>Tránsito</h2>
-    <p>Pon <code>Transit</code> en Purpose cuando no llegaste a entrar en el país. Transit es exclusivo: no lo combines con Tourism, Business ni ningún otro motivo.</p>
+    <p>Escribe <code>Transit</code> en Purpose si no entraste en el país. Transit es exclusivo: no lo combines con Personal, Business ni otro motivo.</p>
 
     <h2>Ejemplo</h2>
     <pre><code>Country,State,Start Date,End Date,Purpose,Notes
-France,,2026-03-01,2026-03-05,Tourism,
+France,,2026-03-01,2026-03-05,Personal,
 United States,CA,2026-04-10,2026-04-15,Business,Conference
-Japan,,2024,,Tourism,Dates not known
+Japan,,2024,,Personal,Dates not known
 United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></pre>
 
     <h2>Separador y comillas</h2>

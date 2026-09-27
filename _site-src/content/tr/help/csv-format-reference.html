@@ -9,7 +9,7 @@
       <li><strong>Country:</strong> İngilizce <a href="/tr/help/languages">ülke adı</a>, iki harfli ISO kodu veya tanınan yaygın bir diğer ad.</li>
       <li><strong>State:</strong> isteğe bağlı ABD eyalet adı, posta kısaltması veya <code>US-CA</code> gibi bir ISO alt bölüm kodu.</li>
       <li><strong>Start Date / End Date:</strong> aşağıdaki kurallara göre kesin tarih, yıl veya boş değer.</li>
-      <li><strong>Purpose:</strong> <code>Tourism</code> (Turizm), <code>Business</code> (İş), <code>Medical</code> (Sağlık), <a href="/tr/help/history-and-import"><code>Transit</code></a> veya <code>Personal</code> (Kişisel). Transit dışındaki birden fazla amaç virgülle ayrılabilir.</li>
+            <li><strong>Purpose:</strong> <code>Personal</code> (Kişisel), <code>Business</code> (İş), <code>Study</code> (Eğitim) veya <a href="/tr/help/history-and-import"><code>Transit</code></a>. Transit dışındaki birkaç amaç, örneğin <code>"Business, Personal"</code> biçiminde tırnak içinde virgülle birleştirilebilir. Tourism veya Medical yazan eski dosyalar da Personal olarak içe aktarılır.</li>
       <li><strong>Notes:</strong> isteğe bağlı metin.</li>
     </ul>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/tr/help/csv-format-reference/csv-reference.webp" alt="CSV içe aktarımı örneği ve şablon denetimleri" width="1320" height="1760" loading="lazy" decoding="async" /></figure>
@@ -26,13 +26,13 @@
     <p><code>State</code> alanını yalnızca Amerika Birleşik Devletleri seyahatleri için kullanın. Tek bir ABD ziyareti birkaç eyaleti kapsıyorsa ve eyalet düzeyinde kayıtlara ihtiyacınız varsa her eyalet için ayrı bir satır kullanın. Eyalet içermeyen bir ABD satırı, ülke düzeyinde takip için geçerlidir.</p>
 
     <h2>Transit</h2>
-    <p>Ülkeye giriş yapmadıysanız <code>Purpose</code> alanına <code>Transit</code> yazın. Transit tek başına kullanılmalıdır; <code>Tourism</code>, <code>Business</code> veya başka bir amaçla birleştirmeyin.</p>
+    <p>Ülkeye giriş yapmadıysanız <code>Purpose</code> alanına <code>Transit</code> yazın. Transit tek başına kullanılmalıdır; <code>Personal</code>, <code>Business</code> veya başka bir amaçla birleştirmeyin.</p>
 
     <h2>Örnek</h2>
     <pre><code>Country,State,Start Date,End Date,Purpose,Notes
-France,,2026-03-01,2026-03-05,Tourism,
+France,,2026-03-01,2026-03-05,Personal,
 United States,CA,2026-04-10,2026-04-15,Business,Conference
-Japan,,2024,,Tourism,Dates not known
+Japan,,2024,,Personal,Dates not known
 United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></pre>
 
     <h2>Ayırıcı ve tırnak işaretleri</h2>
