@@ -18,7 +18,7 @@ These pages describe something scheduled to change. The tier cadence would revie
 | 2026-12-01 | [learn/uk-ilr-absence-limit.html](/learn/uk-ilr-absence-limit) | 2027-03-31 | Earned settlement consultation closed 12 February 2026 with no government response yet; a response or statement of changes would alter the qualifying-period section. |
 | 2026-12-15 | [learn/thailand-visa-exemption-30-days.html](/learn/thailand-visa-exemption-30-days) | 2027-03-31 | The 30-day and 15-day exemptions took effect on 15 September 2026; expect clarifications on the land-entry cap (whether it covers air entries and pre-15 September entries), transitional extensions and the country lists. |
 | 2027-01-31 | [learn/digital-nomad-visa-day-limits.html](/learn/digital-nomad-visa-day-limits) | 2027-03-31 | Income thresholds for Spain, Portugal, Colombia and Croatia are tied to minimum wages or average salaries that reset each January; recheck every figure in the table for 2027. |
-| 2027-03-01 | [learn/get-official-entry-exit-records.html](/learn/get-official-entry-exit-records) | 2027-03-31 | Request processes change often: CBP moved FOIA online-only on 22 January 2026, EES access and the stay checker are new (stay checker flagged as unreliable for some visa holders until 6 October 2026), and the UK SAR page carries a delay notice. |
+| 2027-03-01 | [learn/get-official-entry-exit-records.html](/learn/get-official-entry-exit-records) | 2027-03-31 | Request routes change often: CBP moved FOIA online-only on 22 January 2026, EES data access is new, and the UK SAR page carries a delay notice. Re-open every request link. |
 | 2027-03-01 | [learn/prove-you-were-not-in-a-country.html](/learn/prove-you-were-not-in-a-country) | 2027-03-31 | NY Nonresident Audit Guidelines (December 2021) and FTB Publication 1031 (2025 edition) are updated periodically; check for newer editions and for CBP I-94/FOIA process changes. |
 | 2027-03-25 | [learn/canadian-snowbird-day-limits.html](/learn/canadian-snowbird-day-limits) | 2027-03-31 | Six-monthly check of volatile rules: the US alien registration rule (final rule 29 June 2026, litigation around related rules), the Form 8840 revision and due date for the 2026 tax year, and provincial health absence limits. |
 
@@ -49,7 +49,7 @@ These pages describe something scheduled to change. The tier cadence would revie
 |---|---|---|---|---:|
 | 2027-03-01 | 1 | [learn/canada-visitor-visa-6-month-limit.html](/learn/canada-visitor-visa-6-month-limit) | exact-date-required | 2 |
 | 2027-03-01 | 1 | [learn/georgia-visa-free-365-days.html](/learn/georgia-visa-free-365-days) | exact-date-required | 1 |
-| 2027-03-01 | 1 | [learn/get-official-entry-exit-records.html](/learn/get-official-entry-exit-records) | exact-date-required | 15 |
+| 2027-03-01 | 1 | [learn/get-official-entry-exit-records.html](/learn/get-official-entry-exit-records) | exact-date-required | 13 |
 | 2027-03-01 | 1 | [learn/japan-90-day-rule.html](/learn/japan-90-day-rule) | exact-date-required | 1 |
 | 2027-03-01 | 1 | [learn/prove-you-were-not-in-a-country.html](/learn/prove-you-were-not-in-a-country) | exact-date-required | 12 |
 | 2027-03-01 | 1 | [learn/schengen-countries-list-90-180-rule.html](/learn/schengen-countries-list-90-180-rule) | exact-date-required | 2 |
@@ -150,7 +150,7 @@ These pages describe something scheduled to change. The tier cadence would revie
 | 2027-09-30 | 2 | [learn/183-day-tax-residency-rule.html](/learn/183-day-tax-residency-rule) | exact-date-required | 10 |
 | 2027-09-30 | 2 | [learn/denmark-overseas-work-42-day-rule.html](/learn/denmark-overseas-work-42-day-rule) | exact-date-required | 1 |
 | 2027-09-30 | 3 | [learn/does-a-layover-count-as-visiting-a-country.html](/learn/does-a-layover-count-as-visiting-a-country) | annual-light-pass | 10 |
-| 2027-09-30 | 3 | [learn/flighty-flight-history-day-count.html](/learn/flighty-flight-history-day-count) | annual-light-pass | 2 |
+| 2027-09-30 | 3 | [learn/flighty-flight-history-day-count.html](/learn/flighty-flight-history-day-count) | annual-light-pass | 3 |
 | 2027-09-30 | 3 | [learn/how-many-countries-in-the-world.html](/learn/how-many-countries-in-the-world) | annual-light-pass | 7 |
 | 2027-09-30 | 3 | [learn/how-to-track-travel-days.html](/learn/how-to-track-travel-days) | annual-light-pass | 5 |
 | 2027-09-30 | 2 | [learn/ireland-183-day-tax-residency.html](/learn/ireland-183-day-tax-residency) | exact-date-required | 2 |

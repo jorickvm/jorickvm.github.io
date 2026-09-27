@@ -703,6 +703,7 @@ def audit_governance(records: list[PageRecord], findings: list[Finding]) -> None
     try:
         editorial = json.loads(editorial_path.read_text(encoding="utf-8"))["articles"]
         clusters = json.loads(clusters_path.read_text(encoding="utf-8"))["clusters"]
+        redirects = json.loads((editorial_path.parent / "redirects.json").read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError, KeyError) as exc:
         findings.append(Finding("error", "governance-config", "_site-src/data", str(exc)))
         return
@@ -732,6 +733,10 @@ def audit_governance(records: list[PageRecord], findings: list[Finding]) -> None
         # either side. Testing page_type would not do here: a draft locale is
         # noindex, which makes every one of its pages read as a redirect.
         if source in hub_paths:
+            continue
+        # Only registered, non-indexable merged routes are exempt. A draft
+        # article is also noindex, but must still retain editorial coverage.
+        if source in redirects and not record.indexable:
             continue
         if source not in {str(item.get("path", "")) for item in editorial}:
             findings.append(

@@ -86,9 +86,9 @@
   <script>window.AtlasDaysPageLocales={"en":{"url":"/help/csv-format-reference","label":"Read this page in English","dismiss":"Dismiss"},"ja":{"url":"/ja/help/csv-format-reference","label":"このページを日本語で読む","dismiss":"閉じる"},"nl":{"url":"/nl/help/csv-format-reference","label":"Lees deze pagina in het Nederlands","dismiss":"Sluiten"},"de":{"url":"/de/help/csv-format-reference","label":"Diese Seite auf Deutsch lesen","dismiss":"Schließen"},"es":{"url":"/es/help/csv-format-reference","label":"Lee esta página en español","dismiss":"Cerrar"},"fr":{"url":"/fr/help/csv-format-reference","label":"Lire cette page en français","dismiss":"Fermer"},"ru":{"url":"/ru/help/csv-format-reference","label":"Читать эту страницу на русском","dismiss":"Закрыть"},"uk":{"url":"/uk/help/csv-format-reference","label":"Читати цю сторінку українською","dismiss":"Закрити"},"tr":{"url":"/tr/help/csv-format-reference","label":"Bu sayfayı Türkçe okuyun","dismiss":"Kapat"},"pt":{"url":"/pt/help/csv-format-reference","label":"Leia esta página em português","dismiss":"Fechar"},"zh-Hant":{"url":"/zh-Hant/help/csv-format-reference","label":"以繁體中文閱讀本頁","dismiss":"關閉"},"zh-Hans":{"url":"/zh-Hans/help/csv-format-reference","label":"以简体中文阅读本页","dismiss":"关闭"}};window.AtlasDaysMatchLocale=function(tag,m){var w=String(tag||'').trim().replace(/_/g,'-').toLowerCase(),c;if(!w)return '';for(c in m)if(c.toLowerCase()===w)return c;var s=function(t){try{return new Intl.Locale(t).maximize().script||''}catch(err){return null}},b=w.split('-')[0],x=s(w);for(c in m){if(c.toLowerCase().split('-')[0]!==b)continue;if(x===null){if(c.indexOf('-')<0)return c;continue}if(s(c)===x)return c}return ''};(function(){var q=new URLSearchParams(location.search).get('lang');if(!q)return;var m=window.AtlasDaysPageLocales,e=m[window.AtlasDaysMatchLocale(q,m)];if(e&&e.url!==location.pathname)location.replace(e.url+location.search+location.hash)})()</script>
   <script defer src="../../assets/js/locale-route.js?v=20260830c"></script>
   <link rel="stylesheet" href="../../assets/css/tokens.css?v=20260815a" />
-  <link rel="stylesheet" href="../../assets/css/article-variants/help20260802.css?v=20260815a" />
+  <link rel="stylesheet" href="../../assets/css/article-variants/help20260802.css?v=20260927a" />
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260901c" />
-  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20260817b" />
+  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20260925a" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260815a" />
 </head>
 <body>
@@ -167,7 +167,7 @@
       <li><strong>Country:</strong> 영어 <a href="/ko/help/languages">국가 이름</a>, ISO 두 글자 코드, 또는 널리 쓰이는 별칭입니다.</li>
       <li><strong>State:</strong> 미국 주 이름, 우편 약자, 또는 <code>US-CA</code> 같은 ISO 하위 구역 코드이며, 선택 항목입니다.</li>
       <li><strong>Start Date / End Date:</strong> 아래 규칙에 따라 정확한 날짜, 연도, 또는 빈 칸입니다.</li>
-      <li><strong>Purpose:</strong> Tourism(관광), Business(업무), Medical(의료), <a href="/ko/help/history-and-import">Transit</a>(환승), Personal(개인) 중에서 씁니다. Transit이 아닌 목적은 쉼표로 구분해 여러 개를 넣을 수 있습니다.</li>
+            <li><strong>Purpose:</strong> Personal(개인), Business(업무), Study(학업) 또는 <a href="/ko/help/history-and-import">Transit</a>(환승)을 사용합니다. Transit을 제외한 여러 목적은 <code>"Business, Personal"</code>처럼 따옴표 안에서 쉼표로 구분해 함께 쓸 수 있습니다. Tourism 또는 Medical이 적힌 이전 파일도 Personal로 가져옵니다.</li>
       <li><strong>Notes:</strong> 자유롭게 쓰는 텍스트이며, 선택 항목입니다.</li>
     </ul>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/ko/help/csv-format-reference/csv-reference.webp" alt="CSV 가져오기의 CSV 예시와 템플릿 항목" width="1320" height="1760" loading="lazy" decoding="async" /></figure>
@@ -184,13 +184,13 @@
     <p>State는 미국 여행에만 사용하십시오. 한 번의 미국 방문에서 여러 주를 다녔고 주 단위 기록이 필요하다면 주마다 한 행씩 쓰십시오. 국가 단위로만 관리한다면 주를 비운 미국 행으로도 충분합니다.</p>
 
     <h2>Transit(환승)</h2>
-    <p>국가에 입국하지 않았다면 Purpose에 <code>Transit</code>(환승)이라고 쓰십시오. Transit은 배타적입니다. Tourism(관광)이나 Business(업무)를 비롯한 다른 목적과 함께 쓰지 마십시오.</p>
+    <p>국가에 입국하지 않았다면 Purpose에 <code>Transit</code>(환승)이라고 쓰십시오. Transit은 다른 목적과 함께 쓸 수 없습니다. Personal이나 Business를 비롯한 다른 목적과 결합하지 마십시오.</p>
 
     <h2>기재 예시</h2>
     <pre><code>Country,State,Start Date,End Date,Purpose,Notes
-France,,2026-03-01,2026-03-05,Tourism,
+France,,2026-03-01,2026-03-05,Personal,
 United States,CA,2026-04-10,2026-04-15,Business,Conference
-Japan,,2024,,Tourism,Dates not known
+Japan,,2024,,Personal,Dates not known
 United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></pre>
 
     <h2>구분자와 따옴표</h2>

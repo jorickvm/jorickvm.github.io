@@ -48,3 +48,41 @@ class GeneratedRedirectTests(unittest.TestCase):
         self.locales['fr']['status'] = 'draft'
         self.overlays = {}
         self.assertEqual(set(self.outputs()), {self.root / 'learn/old.html'})
+
+
+class RedirectGovernanceTests(unittest.TestCase):
+    def setUp(self):
+        import audit_site
+        self.audit = audit_site
+        self.tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.tmp.cleanup)
+        self.root = Path(self.tmp.name)
+        data = self.root / '_site-src/data'
+        data.mkdir(parents=True)
+        for name, value in {
+            'editorial.json': {'articles': []},
+            'content-clusters.json': {'clusters': []},
+            'hubs.json': {'hubs': []},
+            'redirects.json': {'learn/old.html': 'learn/new.html'},
+        }.items():
+            (data / name).write_text(json.dumps(value))
+
+    def findings(self, source, indexable):
+        record = self.audit.PageRecord(
+            path='fr/' + source, route='/fr/' + source, page_type='redirect',
+            indexable=indexable, title='Title', description='Description',
+            canonical='https://atlasdays.app/fr/learn/new', h1=[], content_hash='',
+        )
+        findings = []
+        with patch.object(self.audit, 'SITE_ROOT', self.root), patch.object(self.audit, 'load_locales', return_value={'en': {}, 'fr': {}}), patch.object(self.audit, 'default_locale_code', return_value='en'):
+            self.audit.audit_governance([record], findings)
+        return findings
+
+    def test_registered_nonindexable_merge_needs_no_editorial_record(self):
+        self.assertEqual(self.findings('learn/old.html', False), [])
+
+    def test_draft_article_still_needs_editorial_coverage(self):
+        self.assertEqual([f.code for f in self.findings('learn/draft.html', False)], ['editorial-missing'])
+
+    def test_indexable_old_article_is_not_exempted(self):
+        self.assertEqual([f.code for f in self.findings('learn/old.html', True)], ['editorial-missing'])

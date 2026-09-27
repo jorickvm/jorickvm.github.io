@@ -86,9 +86,9 @@
   <script>window.AtlasDaysPageLocales={"en":{"url":"/help/csv-format-reference","label":"Read this page in English","dismiss":"Dismiss"},"nl":{"url":"/nl/help/csv-format-reference","label":"Lees deze pagina in het Nederlands","dismiss":"Sluiten"},"de":{"url":"/de/help/csv-format-reference","label":"Diese Seite auf Deutsch lesen","dismiss":"Schließen"},"es":{"url":"/es/help/csv-format-reference","label":"Lee esta página en español","dismiss":"Cerrar"},"fr":{"url":"/fr/help/csv-format-reference","label":"Lire cette page en français","dismiss":"Fermer"},"ru":{"url":"/ru/help/csv-format-reference","label":"Читать эту страницу на русском","dismiss":"Закрыть"},"uk":{"url":"/uk/help/csv-format-reference","label":"Читати цю сторінку українською","dismiss":"Закрити"},"tr":{"url":"/tr/help/csv-format-reference","label":"Bu sayfayı Türkçe okuyun","dismiss":"Kapat"},"pt":{"url":"/pt/help/csv-format-reference","label":"Leia esta página em português","dismiss":"Fechar"},"ko":{"url":"/ko/help/csv-format-reference","label":"이 페이지를 한국어로 읽기","dismiss":"닫기"},"zh-Hant":{"url":"/zh-Hant/help/csv-format-reference","label":"以繁體中文閱讀本頁","dismiss":"關閉"},"zh-Hans":{"url":"/zh-Hans/help/csv-format-reference","label":"以简体中文阅读本页","dismiss":"关闭"}};window.AtlasDaysMatchLocale=function(tag,m){var w=String(tag||'').trim().replace(/_/g,'-').toLowerCase(),c;if(!w)return '';for(c in m)if(c.toLowerCase()===w)return c;var s=function(t){try{return new Intl.Locale(t).maximize().script||''}catch(err){return null}},b=w.split('-')[0],x=s(w);for(c in m){if(c.toLowerCase().split('-')[0]!==b)continue;if(x===null){if(c.indexOf('-')<0)return c;continue}if(s(c)===x)return c}return ''};(function(){var q=new URLSearchParams(location.search).get('lang');if(!q)return;var m=window.AtlasDaysPageLocales,e=m[window.AtlasDaysMatchLocale(q,m)];if(e&&e.url!==location.pathname)location.replace(e.url+location.search+location.hash)})()</script>
   <script defer src="../../assets/js/locale-route.js?v=20260830c"></script>
   <link rel="stylesheet" href="../../assets/css/tokens.css?v=20260815a" />
-  <link rel="stylesheet" href="../../assets/css/article-variants/help20260802.css?v=20260815a" />
+  <link rel="stylesheet" href="../../assets/css/article-variants/help20260802.css?v=20260927a" />
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260901c" />
-  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20260817b" />
+  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20260925a" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260815a" />
 </head>
 <body>
@@ -167,7 +167,7 @@
       <li><strong>Country:</strong> 英語の<a href="/ja/help/languages">国名</a>、ISOの2文字コード、または広く使われる別名。</li>
       <li><strong>State:</strong> 米国の州名、郵便略号、または <code>US-CA</code> のようなISO細分区分コード（任意）。</li>
       <li><strong>Start Date / End Date:</strong> 下記のルールに従って、正確な日付、年、または空欄。</li>
-      <li><strong>Purpose:</strong> Tourism、Business、Medical、<a href="/ja/help/history-and-import">Transit</a>、Personal のいずれか。Transit以外なら、カンマ区切りで複数指定できます。</li>
+      <li><strong>Purpose:</strong> Personal、Business、Study、<a href="/ja/help/history-and-import">Transit</a>のいずれかです。Transit以外は、<code>"Business, Personal"</code>のように引用符で囲み、カンマで複数の目的を指定できます。旧形式のTourismやMedicalも、Personalとしてインポートできます。</li>
       <li><strong>Notes:</strong> 自由に書けるテキスト（任意）。</li>
     </ul>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/ja/help/csv-format-reference/csv-reference.webp" alt="CSVインポートの「CSVの例」とテンプレートの操作" width="1320" height="1760" loading="lazy" decoding="async" /></figure>
@@ -184,13 +184,13 @@
     <p>State を使うのは、米国の旅行だけです。1回の米国滞在で複数の州をまわり、州ごとの記録が必要な場合は、州ごとに1行ずつ書きます。国単位で記録するだけなら、州を空にした米国の行でもかまいません。</p>
 
     <h2>乗り継ぎ（Transit）</h2>
-    <p>入国していない場合は、Purpose に <code>Transit</code> と書きます。Transitは排他的です。TourismやBusinessなど、ほかの目的と組み合わせないでください。</p>
+    <p>入国していない場合は、Purposeに<code>Transit</code>と書きます。Transitはほかの目的と併用できません。PersonalやBusinessなどと組み合わせないでください。</p>
 
     <h2>記入例</h2>
     <pre><code>Country,State,Start Date,End Date,Purpose,Notes
-France,,2026-03-01,2026-03-05,Tourism,
+France,,2026-03-01,2026-03-05,Personal,
 United States,CA,2026-04-10,2026-04-15,Business,Conference
-Japan,,2024,,Tourism,Dates not known
+Japan,,2024,,Personal,Dates not known
 United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></pre>
 
     <h2>区切り文字と引用符</h2>
