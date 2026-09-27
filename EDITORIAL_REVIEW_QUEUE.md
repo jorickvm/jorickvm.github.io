@@ -12,23 +12,23 @@ These pages describe something scheduled to change. The tier cadence would revie
 
 | Due | Article | Cadence would say | Why earlier |
 |---|---|---|---|
-| 2026-10-01 | [learn/ees-etias-schengen-90-180.html](/learn/ees-etias-schengen-90-180) | 2027-03-01 | ETIAS is expected to start in the last quarter of 2026. Every ETIAS statement on this page (not in force, expected start, transitional and grace periods) is wrong the day it launches. |
 | 2026-10-01 | [learn/schengen-90-180-rule.html](/learn/schengen-90-180-rule) | 2027-03-01 | The EES and ETIAS section says ETIAS is not in force yet, which stops being true when it starts in the last quarter of 2026. |
+| 2026-12-01 | [learn/ees-etias-schengen-90-180.html](/learn/ees-etias-schengen-90-180) | 2027-03-01 | ETIAS has no confirmed start date (the last-quarter-2026 target was withdrawn in July 2026; eu-LISA was due to set a new timetable in September 2026). Every ETIAS status statement on this page changes when a date is announced. |
+| 2026-12-01 | [learn/uk-ilr-absence-limit.html](/learn/uk-ilr-absence-limit) | 2027-03-31 | Earned settlement consultation closed 12 February 2026 with no government response yet; a response or statement of changes would alter the qualifying-period section. |
 
 ## 2026-10
 
 | Due | Tier | Article | Status | Sources |
 |---|---|---|---|---:|
-| 2026-10-01 | 1 | [learn/ees-etias-schengen-90-180.html](/learn/ees-etias-schengen-90-180) | exact-date-required | 3 |
 | 2026-10-01 | 1 | [learn/schengen-90-180-rule.html](/learn/schengen-90-180-rule) | exact-date-required | 5 |
 
 ## 2026-12
 
 | Due | Tier | Article | Status | Sources |
 |---|---|---|---|---:|
+| 2026-12-01 | 1 | [learn/ees-etias-schengen-90-180.html](/learn/ees-etias-schengen-90-180) | exact-date-required | 3 |
+| 2026-12-01 | 1 | [learn/uk-ilr-absence-limit.html](/learn/uk-ilr-absence-limit) | exact-date-required | 4 |
 | 2026-12-29 | 1 | [learn/digital-nomad-visa-day-limits.html](/learn/digital-nomad-visa-day-limits) | exact-date-required | 2 |
-| 2026-12-29 | 1 | [learn/uk-eta-vs-standard-visitor-visa.html](/learn/uk-eta-vs-standard-visitor-visa) | exact-date-required | 4 |
-| 2026-12-29 | 1 | [learn/uk-ilr-absence-limit.html](/learn/uk-ilr-absence-limit) | exact-date-required | 3 |
 
 ## 2027-03
 
@@ -58,9 +58,12 @@ These pages describe something scheduled to change. The tier cadence would revie
 | 2027-03-31 | 1 | [learn/new-zealand-citizenship-presence-requirement.html](/learn/new-zealand-citizenship-presence-requirement) | exact-date-required | 3 |
 | 2027-03-31 | 1 | [learn/nz-super-overseas-absence.html](/learn/nz-super-overseas-absence) | exact-date-required | 4 |
 | 2027-03-31 | 1 | [learn/qatar-residence-return-planning.html](/learn/qatar-residence-return-planning) | exact-date-required | 1 |
+| 2027-03-31 | 1 | [learn/residence-permit-citizenship-absence-rules.html](/learn/residence-permit-citizenship-absence-rules) | exact-date-required | 18 |
 | 2027-03-31 | 1 | [learn/spain-long-term-residence-eu-absence.html](/learn/spain-long-term-residence-eu-absence) | exact-date-required | 3 |
 | 2027-03-31 | 1 | [learn/switzerland-permit-absence.html](/learn/switzerland-permit-absence) | exact-date-required | 2 |
+| 2027-03-31 | 1 | [learn/uk-absence-calculator.html](/learn/uk-absence-calculator) | exact-date-required | 4 |
 | 2027-03-31 | 1 | [learn/uk-citizenship-absence-limits.html](/learn/uk-citizenship-absence-limits) | exact-date-required | 4 |
+| 2027-03-31 | 1 | [learn/uk-eta-vs-standard-visitor-visa.html](/learn/uk-eta-vs-standard-visitor-visa) | exact-date-required | 4 |
 | 2027-03-31 | 1 | [learn/us-green-card-absence-limits.html](/learn/us-green-card-absence-limits) | exact-date-required | 3 |
 | 2027-03-31 | 1 | [learn/us-naturalization-physical-presence.html](/learn/us-naturalization-physical-presence) | exact-date-required | 2 |
 
@@ -72,16 +75,10 @@ These pages describe something scheduled to change. The tier cadence would revie
 | 2027-06-30 | 3 | [learn/country-counting-rules-every-list-compared.html](/learn/country-counting-rules-every-list-compared) | annual-light-pass | 0 |
 | 2027-06-30 | 3 | [learn/does-a-layover-count-as-visiting-a-country.html](/learn/does-a-layover-count-as-visiting-a-country) | annual-light-pass | 0 |
 | 2027-06-30 | 3 | [learn/export-travel-history-visa-application.html](/learn/export-travel-history-visa-application) | annual-light-pass | 0 |
-| 2027-06-30 | 3 | [learn/flighty-flight-history-day-count.html](/learn/flighty-flight-history-day-count) | annual-light-pass | 0 |
 | 2027-06-30 | 3 | [learn/how-many-countries-in-the-world.html](/learn/how-many-countries-in-the-world) | annual-light-pass | 0 |
 | 2027-06-30 | 3 | [learn/how-to-track-travel-days.html](/learn/how-to-track-travel-days) | annual-light-pass | 0 |
-| 2027-06-30 | 3 | [learn/overstaying-a-visa-or-stay-limit.html](/learn/overstaying-a-visa-or-stay-limit) | annual-light-pass | 2 |
 | 2027-06-30 | 3 | [learn/prove-time-spent-in-country-without-perfect-records.html](/learn/prove-time-spent-in-country-without-perfect-records) | annual-light-pass | 0 |
 | 2027-06-30 | 3 | [learn/prove-you-were-not-in-a-country.html](/learn/prove-you-were-not-in-a-country) | annual-light-pass | 5 |
-| 2027-06-30 | 3 | [learn/rebuild-travel-history-from-passport-stamps-emails-photos.html](/learn/rebuild-travel-history-from-passport-stamps-emails-photos) | annual-light-pass | 0 |
-| 2027-06-30 | 3 | [learn/travel-history-for-visa-applications.html](/learn/travel-history-for-visa-applications) | annual-light-pass | 3 |
-| 2027-06-30 | 3 | [learn/travel-history-template-visa-application.html](/learn/travel-history-template-visa-application) | annual-light-pass | 0 |
-| 2027-06-30 | 3 | [learn/what-counts-as-a-day-for-visa-purposes.html](/learn/what-counts-as-a-day-for-visa-purposes) | annual-light-pass | 5 |
 
 ## 2027-08
 
@@ -146,6 +143,12 @@ These pages describe something scheduled to change. The tier cadence would revie
 | Due | Tier | Article | Status | Sources |
 |---|---|---|---|---:|
 | 2027-09-30 | 2 | [learn/denmark-overseas-work-42-day-rule.html](/learn/denmark-overseas-work-42-day-rule) | exact-date-required | 1 |
+| 2027-09-30 | 3 | [learn/flighty-flight-history-day-count.html](/learn/flighty-flight-history-day-count) | annual-light-pass | 0 |
 | 2027-09-30 | 2 | [learn/ireland-183-day-tax-residency.html](/learn/ireland-183-day-tax-residency) | exact-date-required | 2 |
 | 2027-09-30 | 2 | [learn/norway-183-day-tax-residency.html](/learn/norway-183-day-tax-residency) | exact-date-required | 3 |
+| 2027-09-30 | 3 | [learn/overstaying-a-visa-or-stay-limit.html](/learn/overstaying-a-visa-or-stay-limit) | annual-light-pass | 2 |
+| 2027-09-30 | 3 | [learn/rebuild-travel-history-from-passport-stamps-emails-photos.html](/learn/rebuild-travel-history-from-passport-stamps-emails-photos) | annual-light-pass | 0 |
+| 2027-09-30 | 3 | [learn/travel-history-for-visa-applications.html](/learn/travel-history-for-visa-applications) | annual-light-pass | 3 |
+| 2027-09-30 | 3 | [learn/travel-history-template-visa-application.html](/learn/travel-history-template-visa-application) | annual-light-pass | 0 |
 | 2027-09-30 | 2 | [learn/us-substantial-presence-test.html](/learn/us-substantial-presence-test) | exact-date-required | 7 |
+| 2027-09-30 | 3 | [learn/what-counts-as-a-day-for-visa-purposes.html](/learn/what-counts-as-a-day-for-visa-purposes) | annual-light-pass | 5 |

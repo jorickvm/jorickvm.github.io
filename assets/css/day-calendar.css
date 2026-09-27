@@ -1,0 +1,181 @@
+/* AtlasDays day calendar (assets/js/day-calendar.js). Modelled on the app's
+   calendar: continuous week rows, the month name on the 1st, today as an
+   accent pill, one bar colour, a faint dot on days without a trip. */
+
+.daycal {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 290px;
+  gap: 16px;
+  width: min(900px, calc(100vw - 32px));
+  margin: 26px 0 30px calc(50% - min(450px, 50vw - 16px));
+}
+
+.cal-hint { grid-column: 1 / -1; margin: 0; color: var(--muted); font-size: 0.93rem; }
+
+.cal-window {
+  position: relative;
+  height: 520px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--bg-card);
+}
+
+.cal-head {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  padding: 12px 0 0;
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--line);
+}
+.cal-month-title { margin: 0 0 8px 14px; color: var(--text); font-size: 1rem; font-weight: 650; }
+.cal-weekdays { display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); padding: 0 0 6px; }
+.cal-weekdays span { color: var(--muted-2); font-size: 0.7rem; font-weight: 600; text-align: center; }
+
+.cal-week {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  height: 58px;
+  border-top: 1px solid var(--line);
+}
+.cal-week:first-child { border-top: 0; }
+
+.cal-day {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-width: 0;
+  height: 100%;
+  padding: 6px 0 0;
+  border: 0;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+  text-align: center;
+}
+.cal-day:focus-visible { outline: 2px solid var(--blue); outline-offset: -2px; border-radius: 8px; }
+.cal-num {
+  display: inline-block;
+  min-width: 26px;
+  padding: 1px 4px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 550;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.4;
+}
+.cal-day.is-month-start .cal-num { font-size: 0.74rem; font-weight: 700; letter-spacing: 0.02em; }
+.cal-day.is-today .cal-num { background: var(--blue); color: #fff; }
+.cal-day.is-pending .cal-num { box-shadow: 0 0 0 2px var(--blue); }
+
+/* the faint disc on the bar line of a day with no trip: the tap target */
+.cal-day::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 31px;
+  width: 16px;
+  height: 16px;
+  margin-left: -8px;
+  border-radius: 50%;
+  background: var(--line);
+}
+.cal-day.has-trip::after { display: none; }
+@media (hover: hover) { .cal-day:hover::after { background: var(--line-strong); } }
+
+.cal-bars { position: absolute; left: 0; right: 0; top: 31px; height: 16px; pointer-events: none; }
+.cal-bar { position: absolute; top: 0; height: 16px; background: var(--blue); }
+.cal-bar.starts { border-top-left-radius: 8px; border-bottom-left-radius: 8px; }
+.cal-bar.ends { border-top-right-radius: 8px; border-bottom-right-radius: 8px; }
+.cal-bar.is-preview { background: var(--blue); opacity: 0.35; }
+
+.cal-side { display: grid; gap: 12px; align-content: start; min-width: 0; }
+.cal-box {
+  padding: 14px 16px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--bg-card);
+}
+
+.cal-controls { display: grid; grid-template-columns: minmax(0, 1fr); gap: 8px; margin: 0 0 12px; }
+.daycal select,
+.daycal input[type="date"] {
+  width: 100%;
+  min-width: 0;
+  padding: 7px 9px;
+  border: 1px solid var(--line-strong);
+  border-radius: 10px;
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.88rem;
+  color-scheme: light dark;
+}
+.cal-controls label { display: flex; align-items: center; gap: 8px; color: var(--muted-2); font-size: 0.82rem; white-space: nowrap; }
+
+.cal-result-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 6px 10px; margin: 0 0 6px; }
+.cal-headline { margin: 0; color: var(--text); font-size: 0.98rem; font-weight: 650; line-height: 1.35; }
+.cal-status { padding: 2px 10px; border-radius: 999px; font-size: 0.76rem; font-weight: 650; white-space: nowrap; }
+.cal-status.is-ok { background: rgba(52, 168, 83, 0.14); color: var(--text); }
+.cal-status.is-over { background: rgba(217, 83, 79, 0.16); color: var(--text); }
+.cal-line { margin: 0 0 4px; color: var(--muted); font-size: 0.85rem; line-height: 1.5; }
+.cal-download {
+  margin: 10px 0 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: var(--blue);
+  font: inherit;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+}
+
+.cal-trips-head { display: flex; justify-content: space-between; align-items: baseline; margin: 0 0 6px; }
+.cal-trips-head h3 { margin: 0; font-size: 0.95rem; }
+.cal-undo { padding: 0; border: 0; background: none; color: var(--blue); font: inherit; font-size: 0.85rem; font-weight: 600; cursor: pointer; }
+.cal-undo[hidden] { display: none; }
+.cal-empty { margin: 4px 0 0; color: var(--muted); font-size: 0.86rem; }
+.cal-trip { border-top: 1px solid var(--line); }
+.cal-trip:first-child { border-top: 0; }
+.cal-trip-main {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  width: 100%;
+  padding: 9px 0;
+  border: 0;
+  background: none;
+  color: var(--text);
+  font: inherit;
+  font-size: 0.88rem;
+  cursor: pointer;
+  text-align: left;
+}
+.cal-trip-dates { font-weight: 600; }
+.cal-trip-count { color: var(--muted-2); white-space: nowrap; }
+.cal-delete {
+  margin: 0 0 10px;
+  padding: 6px 12px;
+  border: 1px solid rgba(217, 83, 79, 0.45);
+  border-radius: 999px;
+  background: rgba(217, 83, 79, 0.1);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+@media (max-width: 760px) {
+  .daycal { grid-template-columns: minmax(0, 1fr); width: auto; margin: 22px 0 28px; }
+  .cal-window { height: 62vh; }
+}
+.cal-private { margin: -16px 0 26px; color: var(--muted-2); font-size: 0.82rem; }

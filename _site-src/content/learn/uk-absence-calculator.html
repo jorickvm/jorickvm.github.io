@@ -1,0 +1,80 @@
+    <nav class="breadcrumb">
+      <a href="/">AtlasDays</a> / <a href="/learn/">Travel Rules</a> / United Kingdom
+    </nav>
+    <img class="title-flag" src="../assets/flags/gb.png" alt="Flag of the United Kingdom" width="56" height="42" />
+    <h1>UK Absence Calculator: ILR 180-Day and Citizenship 450/90-Day Checks</h1>
+    <p class="subtitle">Mark your trips on a calendar and set the date you plan to apply. The calculator checks the indefinite leave to remain limit of 180 days in any 12 months and the naturalisation limits of 450 days in five years and 90 in the final year.</p>
+    <p class="verified">Last verified: September 2026</p>
+
+    <div class="tldr">
+      <p><strong>In short:</strong> for <strong>ILR</strong> no 12-month period may contain more than <strong>180 whole days</strong> abroad. For <strong>citizenship</strong> the standard route allows <strong>450 days in five years and 90 in the final 12 months</strong> (270 in three years on the spouse route). Only whole days count: the dates you leave and return are not absence days.</p>
+    </div>
+
+    <h2>Check your absences</h2>
+    <div class="daycal" id="uk-absence" data-day-calendar="ukAbsence">
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div class="cal-controls">
+            <select data-cal-setting="mode" aria-label="Rule to check">
+              <option value="ilr-5" selected>ILR: 180 days in any 12 months</option>
+              <option value="ilr-10">ILR: 10-year Long Residence</option>
+              <option value="cit">Citizenship: 450 days in 5 years</option>
+              <option value="cit-spouse">Citizenship, spouse route: 270 in 3 years</option>
+            </select>
+            <label>Applying on <input type="date" data-cal-setting="ref" /></label>
+          </div>
+          <div data-cal-result></div>
+          <button type="button" class="cal-download" data-cal-download>Download your UK stays for AtlasDays</button>
+        </div>
+        <div class="cal-box">
+          <div class="cal-trips-head"><h3>Trips</h3><button type="button" class="cal-undo" data-cal-undo hidden>Undo</button></div>
+          <div data-cal-list></div>
+        </div>
+      </div>
+    </div>
+    <p class="cal-private">Everything stays in your browser: nothing you enter is sent or saved. For a count that keeps running as you travel, with alerts before you reach a limit, use the app.</p>
+
+    <h2>How the calculator counts</h2>
+    <ul>
+      <li><strong>Whole days only.</strong> That is why each bar starts halfway through the day you leave and ends halfway through the day you return. A trip from 1 June to 10 June is eight days abroad (2–9 June). Home Office guidance for both ILR and naturalisation leaves out the departure and return dates, and a trip of less than 24 hours adds nothing.</li>
+      <li><strong>ILR uses a rolling window.</strong> The calculator finds the 12-month period inside your qualifying period with the most days abroad, compares it with 180, and tells you where that window falls. If that fails, it also tries the dates up to 28 days after your application date, because the rules let the qualifying period run back from whichever date suits you best.</li>
+      <li><strong>Citizenship uses two fixed periods.</strong> Both run back from your application date: the full qualifying period and its final 12 months. Both limits must be met, and the final year counts inside the five-year total, not on top of it.</li>
+      <li><strong>Calendar dates, not 365-day blocks.</strong> Five years back from 5 January 2027 starts on 6 January 2022, leap days included, which matches the example in the Home Office's Form AN guidance.</li>
+    </ul>
+
+    <h2>What it does not check</h2>
+    <p>The calculator applies the current headline limits to the dates you enter. It does not know your immigration history, so check these yourself:</p>
+    <ul>
+      <li><strong>Permission granted before 11 January 2018.</strong> Absences in that period are tested in consecutive 12-month periods ending on your application date's anniversary, not on a rolling basis.</li>
+      <li><strong>Long Residence absences before 11 April 2024.</strong> The old limits of 548 days in total and 184 days for a single absence still apply to them.</li>
+      <li><strong>Permitted absences and discretion.</strong> Some absences for serious illness, travel disruption or crisis work can be disregarded for ILR, and the Home Office has discretion over some excess naturalisation absences. The calculator counts every day you enter.</li>
+      <li><strong>Where you were.</strong> For citizenship, days in the Channel Islands and the Isle of Man count as presence in the UK; Ireland does not. Enter only time outside the territory the rule counts.</li>
+      <li><strong>The rest of your application.</strong> Lawful residence, English and Life in the UK, suitability and good character are separate requirements.</li>
+    </ul>
+    <p>The rules behind each result are explained in <a href="/learn/uk-ilr-absence-limit">UK ILR Absence Rule: 180 Days in Any 12 Months</a> and <a href="/learn/uk-citizenship-absence-limits">UK Citizenship: The 450-Day and 90-Day Absence Limits</a>.</p>
+
+    <div class="cta-box">
+      <span class="cta-logo">
+        <img class="logo-dark" src="../assets/brand/logo_dark.png?v=20260325a" alt="AtlasDays logo" width="52" height="52" />
+        <img class="logo-light" src="../assets/brand/logo_light.png?v=20260325a" alt="AtlasDays logo" width="52" height="52" />
+      </span>
+      <h2>Keep the count running, not just once</h2>
+      <p>A calculator checks the trips you remember today. AtlasDays keeps the record as you travel: the <strong>UK Indefinite Leave to Remain</strong> and <strong>UK Citizenship Absence Limits</strong> presets count your days outside the UK privately on your iPhone and show how much room is left before you book the next trip.</p>
+      <a class="cta-btn" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> Get AtlasDays</a>
+    </div>
+
+    <h2>FAQ</h2>
+    <h3>Is the calculator's answer final?</h3>
+    <p>No. It applies the current headline limits to the dates you enter. Older permission, Long Residence history, permitted absences and Home Office discretion can change the outcome, and the decision is the Home Office's.</p>
+    <h3>Why does a two-week holiday show fewer than 14 days?</h3>
+    <p>Because only whole days abroad count. The day you leave and the day you return are not absence days, so a trip from 1 June to 15 June is 13 days.</p>
+    <h3>Is my data stored?</h3>
+    <p>No. The calculator runs in your browser and does not send, log or save the dates you enter. Closing or reloading the page clears them, so download the CSV if you want to keep your trips and import them into AtlasDays.</p>

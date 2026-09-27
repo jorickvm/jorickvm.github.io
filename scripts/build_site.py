@@ -39,7 +39,7 @@ FOOTER_TEMPLATE = SOURCE_ROOT / "templates" / "partials" / "site-footer.html"
 CLUSTER_DATA_PATH = SOURCE_ROOT / "data" / "content-clusters.json"
 BUILD_VERSION = "20260815a"
 SITE_HEADER_VERSION = "20260901c"
-ARTICLE_COMPONENTS_VERSION = "20260817b"
+ARTICLE_COMPONENTS_VERSION = "20260925a"
 NAVIGATION_VERSION = "20260817b"
 
 # Root class that drops the background wash from the app's `.medium` step to
@@ -1077,6 +1077,11 @@ def render_locale_routing(
     )
 
 
+def optional_block(value: object) -> str:
+    text = str(value or "").rstrip()
+    return "\n" + text if text else ""
+
+
 def render_article(
     article: dict[str, object],
     template: str,
@@ -1112,6 +1117,11 @@ def render_article(
         "{{NAV_SCRIPT}}": render_nav_script(prefix, code, strings),
         "{{SITE_FOOTER}}": footer_template.replace("{{ASSET_PREFIX}}", prefix).rstrip(),
         "{{ARTICLE_CONTENT}}": content,
+        # Optional per-article assets, for the few pages with an interactive
+        # component (the UK absence calculator). Inline markers, so every other
+        # page renders byte-for-byte as before.
+        "{{HEAD_EXTRA}}": optional_block(article.get("head_extra")),
+        "{{PAGE_SCRIPTS}}": optional_block(article.get("page_scripts")),
         "{{CLUSTER_RELATED}}": (
             render_help_tail(article, locale, strings)
             or render_cluster_related(article, locale, translations)

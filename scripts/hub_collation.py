@@ -98,6 +98,7 @@ JAPANESE_READINGS = {
     # An English row in the Japanese table (a page not yet translated) still
     # needs a place in the order; the reading is the name it will have.
     "Norway": "ノルウェー",
+    "Spain": "スペイン",
 }
 
 
