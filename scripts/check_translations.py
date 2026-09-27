@@ -223,7 +223,7 @@ def check_structure(
 ) -> None:
     """Shape must survive translation, because a missing step is invisible."""
     try:
-        check_cal_strings(english, translated)
+        check_cal_strings(english, translated, locale.get("code", "en"))
     except (ValueError, TypeError) as error:
         problems.append(f"{label}: {error}")
     for name, pattern in (

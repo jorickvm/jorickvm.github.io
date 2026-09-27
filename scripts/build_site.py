@@ -14,6 +14,7 @@ from pathlib import Path
 from build_route_outputs import ROUTES, expanded_routes, llms_files, sitemap_files
 from locales import (
     default_locale_code,
+    description_of,
     load_locales,
     load_ui_strings,
     localize,
@@ -57,21 +58,24 @@ def redirect_outputs(locales, translations, sources, strings):
                 raise ValueError(f"{code}: redirect target has no translation: {target}")
             prefix = locale.get("route_prefix", "")
             href = prefix + "/" + target.removesuffix(".html")
-            title = html.escape(record["headline"])
+            headline = record.get("headline") or str(record["title"]).removesuffix(" – AtlasDays")
+            title = html.escape(headline)
+            description = record.get("description") or description_of(record)
             message = html.escape(strings["help.continue"][code])
+            colon = html.escape(locale.get("label_colon", ":"))
             rendered = f'''<!DOCTYPE html>
 <html lang="{html.escape(locale['html_lang'])}">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>{title}{html.escape(locale['title_separator'])}AtlasDays</title>
-  <meta name="description" content="{html.escape(record['description'], quote=True)}" />
+  <meta name="description" content="{html.escape(description, quote=True)}" />
   <meta name="robots" content="noindex,follow" />
   <link rel="canonical" href="https://atlasdays.app{href}" />
   <meta http-equiv="refresh" content="0;url={href}" />
   <link rel="icon" href="/assets/brand/favicon.png" />
 </head>
-<body><p>{message}: <a href="{href}">{title}</a></p></body>
+<body><p>{message}{colon} <a href="{href}">{title}</a></p></body>
 </html>
 '''
             yield SITE_ROOT / (prefix.lstrip("/") + "/" + old).lstrip("/"), rendered
@@ -508,7 +512,7 @@ def localize_url(url: str, locale: dict, available: set[str]) -> str:
     return SITE_URL + localized_route(route, locale, available)
 
 
-FAQ_PAIR = re.compile(r"<h3[^>]*>(.*?)</h3>\s*<p[^>]*>(.*?)</p>", re.DOTALL)
+FAQ_PAIR = re.compile(r"<h3\b[^>]*>((?:(?!</h3>).)*)</h3>\s*<p\b[^>]*>(.*?)</p>", re.DOTALL)
 MARKUP = re.compile(r"<[^>]+>")
 
 

@@ -75,6 +75,8 @@ ALLOW = (
     "Tax Act", "Income Tax", "Act No", "Law No", "Consolidation Act",
     "Naturalisation as a British citizen by discretion",
     "US Customs and Border Protection",
+    "Internal Revenue Code", "Treasury Regulation", "Immigration and Nationality Act",
+    "Department of the Treasury Internal Revenue Service Center Austin TX",
     # Names of the country lists the counting articles compare. The list is the
     # identifier, so translating it would break the comparison it belongs to.
     "UN 195", "UN 193",
@@ -175,7 +177,16 @@ def visible_text(markup: str) -> set[str]:
     return {text for text in visible_runs(markup) if len(text.split()) >= 2}
 
 
-def is_allowed(text: str) -> bool:
+# These complete text runs are also correct native Dutch. Do not allow a
+# province token to exempt a surrounding untranslated sentence.
+LOCALE_ALLOW = {
+    "nl": {"Québec (RAMQ)", "Alberta (AHCIP)", "British Columbia (MSP)", "Ontario (OHIP)", "in Québec.", "Malta: Nomad Residence Permit", "Thailand: Destination Thailand Visa (DTV)"},
+}
+
+
+def is_allowed(text: str, code: str = "") -> bool:
+    if text in LOCALE_ALLOW.get(code, set()):
+        return True
     residual = text
     found_brand = False
     for token in sorted(BRAND_ALLOW, key=len, reverse=True):
@@ -269,7 +280,7 @@ def main() -> int:
             for text in sorted(english_runs & translated_runs & required):
                 problems.append(f"{code}/{overlay['source']}: still English: {text[:90]!r}")
             shared = {text for text in english_runs & translated_runs if len(text.split()) >= 2}
-            for text in sorted(t for t in shared if not is_allowed(t)):
+            for text in sorted(t for t in shared if not is_allowed(t, code)):
                 problems.append(f"{code}/{overlay['source']}: still English: {text[:90]!r}")
             for text in sorted(partial_english(english_runs, translated_runs)):
                 if text not in shared:

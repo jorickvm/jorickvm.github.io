@@ -27,11 +27,22 @@ def prose(markup):
     values = strings(markup).values()
     return [v for value in values for v in (value.values() if isinstance(value, dict) else [value])]
 
-def check(english, translated):
+REQUIRED_PLURALS = {
+    "ja": {"other"}, "ko": {"other"}, "zh-Hant": {"other"}, "zh-Hans": {"other"},
+    "ru": {"one", "few", "many", "other"}, "uk": {"one", "few", "many", "other"},
+    "fr": {"one", "many", "other"}, "es": {"one", "many", "other"},
+    "pt": {"one", "many", "other"},
+}
+
+def check(english, translated, locale="en"):
     source, target = strings(english), strings(translated)
     if source.keys() != target.keys():
         raise ValueError("calendar string keys differ from English")
     for key, original in source.items():
+        if isinstance(original, dict):
+            required = REQUIRED_PLURALS.get(locale, {"one", "other"})
+            if not isinstance(target[key], dict) or not required <= target[key].keys():
+                raise ValueError(f"{key}: missing plural variants for {locale}")
         original = original.get("other") if isinstance(original, dict) else original
         value = target[key]
         for variant in (value.values() if isinstance(value, dict) else [value]):
