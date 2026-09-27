@@ -542,12 +542,14 @@ a.hx-uc-card strong::after { content: " \2192"; color: var(--blue); }
     grid-column: 2;
     grid-row: 1;
     position: sticky;
-    top: calc(50vh - 330px);
+    /* Centred on tall windows; never higher than just under the floating header. */
+    top: max(calc(50vh - 330px), calc(var(--hx-sticky-top) + 8px));
     align-self: start;
     justify-self: center;
     margin-top: 0;
   }
-  .hx-story-device { height: auto; width: 320px; }
+  /* Scales down on short windows so it fits between the header and the bottom edge. */
+  .hx-story-device { height: auto; width: min(320px, calc((100vh - 124px) / 2.04)); }
   .hx-step-dots { display: none; }
   html.js .hx-steps { grid-column: 1; grid-row: 1; width: auto; height: auto; display: block; text-align: left; }
   html.js .hx-step {
