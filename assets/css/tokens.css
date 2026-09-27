@@ -251,3 +251,26 @@ html {
   box-shadow: 0 6px 16px rgba(0,0,0,0.14);
   margin: 0 0 14px;
 }
+
+/* Layout and type scale: one owner for every page.
+
+   The header and footer use the site width and gutter on every page, never a
+   page's own content width, so the frame stays still as you move between
+   pages. Pages set their content width with --max (720px for articles, the
+   full site width for marketing pages) inside that frame.
+
+   Headlines come in three tiers: display (homepage and use-case heroes), page
+   (hubs, About, Privacy, Terms, changelog), and article (Help and Learn).
+   Section headings come in two: marketing sections and article sections. */
+:root {
+  --site-max: 1120px;
+  --site-gutter: 20px;
+  --fs-display: clamp(2.3rem, 1.5rem + 3vw, 4rem);
+  --fs-page: clamp(2.1rem, 1.6rem + 1.8vw, 3rem);
+  --fs-article: clamp(1.9rem, 1.5rem + 1.3vw, 2.5rem);
+  --fs-section: clamp(1.75rem, 1.3rem + 1.5vw, 2.4rem);
+  --fs-subsection: clamp(1.3rem, 1.15rem + 0.5vw, 1.5rem);
+}
+@media (min-width: 900px) {
+  :root { --site-gutter: 40px; }
+}

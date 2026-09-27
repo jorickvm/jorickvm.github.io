@@ -12,7 +12,7 @@
    is the only accent, no gradients, glass, or glow on content surfaces. */
 
 .hx {
-  --hx-gutter: 20px;
+  --hx-gutter: var(--site-gutter);
   --hx-section: 76px;
   --hx-sticky-top: 76px;
   --hx-ease: cubic-bezier(.2, .7, .2, 1);
@@ -25,11 +25,11 @@
 :where(.hx) :where(p, figure, blockquote) { margin: 0; }
 :where(.hx) :where(ul, ol) { margin: 0; padding: 0; list-style: none; }
 
-.hx-wrap { width: min(1080px, 100%); margin: 0 auto; }
+.hx-wrap { width: min(var(--site-max), 100%); margin: 0 auto; }
 .hx-center { text-align: center; }
 .hx-section { padding: var(--hx-section) var(--hx-gutter); }
 .hx-h2 {
-  font-size: clamp(1.9rem, 1.2rem + 2.4vw, 3rem);
+  font-size: var(--fs-section);
   line-height: 1.08;
   font-weight: 700;
   letter-spacing: -0.03em;
@@ -131,7 +131,6 @@ html.hx-page.hx-scrolled .top-bar-inner {
   position: relative;
   overflow: hidden;
   padding: 30px var(--hx-gutter) 0;
-  text-align: center;
 }
 /* One quiet map behind the headline. Only the active theme's file is fetched
    because it is a background image, not two <img>s. It fades in once and then
@@ -153,19 +152,19 @@ html[data-theme="light"] .hx-map { background-image: url("../home/map/hero-map-l
 .hx-hero-copy { position: relative; z-index: 2; }
 .hx-hero h1 {
   max-width: 13ch;
-  margin: 0 auto;
-  font-size: clamp(2.3rem, 1.6rem + 3.2vw, 3rem);
+  margin: 0;
+  font-size: var(--fs-display);
   line-height: 1.04;
   font-weight: 700;
   letter-spacing: -0.04em;
 }
 .hx-lede {
   max-width: 44ch;
-  margin: 16px auto 0;
+  margin: 16px 0 0;
   font-size: 1.08rem;
   color: var(--muted);
 }
-.hx-actions { display: flex; justify-content: center; gap: 12px; margin-top: 24px; }
+.hx-actions { display: flex; justify-content: flex-start; gap: 12px; margin-top: 24px; }
 .hx-rating { margin-top: 6px; font-size: 0.84rem; color: var(--muted); }
 .hx-rating a { color: inherit; }
 .hx-rating a:hover { color: var(--text); }
@@ -310,7 +309,6 @@ html.js .hx-step-body { font-size: 0.95rem; }
 .hx-trust-body a { color: var(--blue); font-weight: 600; white-space: nowrap; }
 
 /* ---------- faq ---------- */
-.hx-faq-wrap { max-width: 740px; }
 .hx-faq { margin-top: 32px; border-top: 1px solid var(--line-strong); text-align: left; }
 .hx-faq details { border-bottom: 1px solid var(--line-strong); }
 .hx-faq summary {
@@ -349,13 +347,10 @@ html.js .hx-step-body { font-size: 0.95rem; }
 .hx-qr img { width: 84px; height: 84px; padding: 6px; border-radius: 12px; background: #fff; }
 
 /* ---------- use-case pages ---------- */
-/* Same header width as the homepage, so the bar does not jump between pages
-   (the old use-case stylesheet sets a narrower --max). It is also the
-   content width, so the bar and the page share one set of edges. */
-html:has(main.hx) { --max: 1080px; }
-/* At the top of the page the bar's edges line up with the content's: the
-   same 20px gutter on phones and 40px on desktop that the sections use. */
-html.hx-page:not(.hx-scrolled) .top-bar-inner { width: min(var(--max), calc(100% - 40px)); }
+/* Marketing content spans the full site width, so the header and every
+   section share one set of edges. (The old use-case stylesheet, still loaded
+   for the locale pages, sets a narrower --max.) */
+html:has(main.hx) { --max: var(--site-max); }
 html[data-theme="dark"] .hx-map-schengen { background-image: url("../home/map/schengen-map-dark.svg?v=20260927a"); }
 html[data-theme="light"] .hx-map-schengen { background-image: url("../home/map/schengen-map-light.svg?v=20260927a"); }
 .hx-map-schengen { background-position: center 30%; }
@@ -363,17 +358,17 @@ html[data-theme="light"] .hx-map-schengen { background-image: url("../home/map/s
 /* A reference page, not a second homepage: copy is left-aligned, and every
    section shares one content width, so nothing runs wider than the section
    above it. */
-.hx-uc-wrap { width: min(1080px, 100%); margin: 0 auto; }
+.hx-uc-wrap { width: min(var(--site-max), 100%); margin: 0 auto; }
 .hx-uc-section { padding: 64px var(--hx-gutter) 0; }
-.hx-uc-h2 { font-size: clamp(1.6rem, 1.2rem + 1.4vw, 2.2rem); line-height: 1.1; font-weight: 700; letter-spacing: -0.03em; }
+.hx-uc-h2 { font-size: var(--fs-section); line-height: 1.1; font-weight: 700; letter-spacing: -0.03em; }
 .hx-uc-head { max-width: 62ch; }
-.hx-uc-head p { margin-top: 12px; font-size: 1.02rem; color: var(--muted); }
+.hx-uc-head p { margin-top: 12px; font-size: 1.0625rem; color: var(--muted); }
 
 /* Hero: the promise, the button, and one phone. */
 .hx-uc-hero { position: relative; overflow: hidden; padding: 28px var(--hx-gutter) 0; }
 .hx-uc-hero-copy,
 .hx-uc-hero-device { position: relative; z-index: 2; }
-.hx-uc-hero h1 { max-width: 13ch; font-size: clamp(2.3rem, 1.6rem + 3vw, 3.2rem); line-height: 1.05; font-weight: 700; letter-spacing: -0.04em; }
+.hx-uc-hero h1 { max-width: 13ch; font-size: var(--fs-display); line-height: 1.05; font-weight: 700; letter-spacing: -0.04em; }
 .hx-uc-hero .hx-lede { max-width: 48ch; margin: 18px 0 0; font-size: 1.12rem; }
 .hx-uc-hero .hx-actions { flex-wrap: wrap; justify-content: flex-start; align-items: center; gap: 12px 22px; }
 .hx-uc-hero-device { width: min(60vw, 250px); margin: 40px auto 0; }
@@ -505,7 +500,7 @@ a.hx-uc-card strong::after { content: " \2192"; color: var(--blue); }
 
 /* ---------- desktop ---------- */
 @media (min-width: 900px) {
-  .hx { --hx-gutter: 40px; --hx-section: 120px; --hx-sticky-top: 96px; }
+  .hx { --hx-section: 120px; --hx-sticky-top: 96px; }
   /* Homepage hero: copy left, phones right, inside the same edges as the
      header and the sections below, like the use-case pages. */
   .hx-hero {
@@ -513,11 +508,11 @@ a.hx-uc-card strong::after { content: " \2192"; color: var(--blue); }
     grid-template-columns: minmax(0, 1fr) auto;
     align-items: center;
     gap: 64px;
-    padding: 64px max(var(--hx-gutter), calc((100% - var(--max, 1080px)) / 2)) 72px;
+    padding: 64px max(var(--hx-gutter), calc((100% - var(--site-max)) / 2)) 72px;
     text-align: left;
   }
   .hx-hero .hx-map { height: 100%; }
-  .hx-hero h1 { max-width: 12ch; margin: 0; font-size: clamp(3rem, 4.8vw, 4.1rem); }
+  .hx-hero h1 { max-width: 12ch; margin: 0; font-size: var(--fs-display); }
   .hx-hero .hx-lede { max-width: 40ch; margin: 18px 0 0; font-size: 1.28rem; }
   .hx-hero .hx-actions { justify-content: flex-start; }
   .hx-lede { max-width: 62ch; font-size: 1.12rem; }
@@ -535,7 +530,7 @@ a.hx-uc-card strong::after { content: " \2192"; color: var(--blue); }
     height: auto;
     display: grid;
     grid-template-columns: minmax(0, 440px) 320px;
-    justify-content: center;
+    justify-content: space-between;
     gap: clamp(64px, 9vw, 140px);
     margin-top: 32px;
   }
@@ -567,16 +562,20 @@ a.hx-uc-card strong::after { content: " \2192"; color: var(--blue); }
   html.js .hx-step-body { max-width: 36ch; font-size: 1.12rem; }
   .hx-steps { text-align: left; }
 
-  .hx-quotes { max-width: 880px; margin: 48px auto 0; gap: 20px; }
+  /* Reviews: the rating on the left, the quotes beside it. */
+  .hx-reviews .hx-wrap { display: grid; grid-template-columns: 240px minmax(0, 1fr); align-items: center; gap: 64px; }
+  .hx-quotes { margin: 0; gap: 20px; }
+  /* FAQ: the heading on the left, the questions beside it. */
+  .hx-faq-wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); align-items: start; gap: 64px; }
+  .hx-faq { margin-top: 0; }
   .hx-trust-list { grid-template-columns: repeat(4, 1fr); gap: 36px; margin-top: 48px; }
 
   .hx-qr { display: flex; }
   .hx-uc-section { padding-top: 104px; }
   .hx-uc-hero { padding: 72px var(--hx-gutter) 16px; }
   .hx-uc-hero .hx-map { height: 100%; }
-  html.hx-page:not(.hx-scrolled) .top-bar-inner { width: min(var(--max), calc(100% - 80px)); }
   .hx-uc-hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) 300px; align-items: center; gap: 80px; }
-  .hx-uc-hero h1 { font-size: clamp(3rem, 4.6vw, 4.1rem); }
+  .hx-uc-hero h1 { font-size: var(--fs-display); }
   .hx-uc-hero .hx-lede { font-size: 1.28rem; }
   .hx-uc-hero-device { width: 300px; margin: 0; }
   .hx-uc-rules { grid-template-columns: 1fr 1fr; }
