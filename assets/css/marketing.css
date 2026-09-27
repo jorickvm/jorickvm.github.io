@@ -489,6 +489,24 @@ a.hx-uc-card strong::after { content: " \2192"; color: var(--blue); }
 .hx-uc-more a { font-weight: 600; color: var(--blue); }
 
 
+/* ---------- CJK ----------
+   A CJK character is a full square, about twice a Latin letter, so the
+   Latin `ch` measure on the headlines would fit six characters a line, and
+   CJK text breaks between any two characters. Korean breaks at spaces
+   (keep-all is the standard Korean setting); Japanese and Chinese headlines
+   break only at the phrase boundaries marked with <wbr> in the markup, and
+   run a size smaller because the lines are denser. */
+html:lang(ko) .hx { word-break: keep-all; overflow-wrap: anywhere; }
+html:lang(ko) .hx h1,
+html:lang(ja) .hx h1,
+html:lang(zh) .hx h1 { max-width: none; word-break: keep-all; }
+html:lang(ja) .hx-hero h1,
+html:lang(zh) .hx-hero h1,
+html:lang(ko) .hx-hero h1 { font-size: calc(var(--fs-hero) * 0.74); letter-spacing: -0.02em; }
+html:lang(ja) .hx-uc-hero h1,
+html:lang(zh) .hx-uc-hero h1,
+html:lang(ko) .hx-uc-hero h1 { font-size: calc(var(--fs-display) * 0.8); letter-spacing: -0.02em; }
+
 /* ---------- reveal (only what starts below the fold is pre-hidden) ---------- */
 [data-hx-reveal] { transition: opacity 700ms ease, transform 700ms var(--hx-ease); }
 [data-hx-reveal].is-pre { opacity: 0; transform: translateY(18px); }
