@@ -1,98 +1,131 @@
-<main id="main-content">
+<main id="main-content" class="hx hx-usecase hx-uc">
 
-  <section class="uc-hero">
-    <p class="uc-kicker">Caso de uso</p>
-    <h1>Sabe cuántos días te quedan antes de reservar.</h1>
-    <p class="lede">Schengen 90/180, visados de una sola entrada, límites por estancia y períodos móviles. AtlasDays los calcula sobre tus viajes reales y te dice la fecha límite para salir.</p>
-    <div class="uc-actions">
-      <a class="btn btn-primary" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> Consigue AtlasDays</a>
-      <a class="btn btn-secondary" href="/es/learn/schengen-90-180-rule">Leer la regla de Schengen</a>
+  <section class="hx-uc-hero">
+    <div class="hx-map hx-map-schengen" aria-hidden="true"></div>
+    <div class="hx-uc-wrap hx-uc-hero-grid">
+      <div class="hx-uc-hero-copy">
+        <h1>Sabe exactamente cuánto tiempo puedes quedarte.</h1>
+        <p class="hx-lede">Schengen 90/180, un visado de una sola entrada, una estancia sin visado o el límite de tu propio visado. AtlasDays calcula tus viajes reales sobre esa regla y te dice la fecha en la que tienes que salir.</p>
+        <div class="hx-actions">
+          <a class="hx-btn" data-hx-hero-cta href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> Consigue AtlasDays</a>
+        </div>
+      </div>
+      <div class="hx-device hx-uc-hero-device">
+        <div class="hx-screen">
+          <img class="shot-dark" src="/assets/home/v2/uc-forecast.webp?v=20260927c" alt="El control de Schengen de AtlasDays en 85 de 90 días, con viajes planeados a Alemania, Italia, Francia y España, y la nota: Según tus planes de viaje, te mantendrás dentro del límite" width="1320" height="2868" fetchpriority="high" />
+          <img class="shot-light" src="/assets/home/v2/uc-forecast-light.webp?v=20260927c" alt="El control de Schengen de AtlasDays en 85 de 90 días, con viajes planeados a Alemania, Italia, Francia y España, y la nota: Según tus planes de viaje, te mantendrás dentro del límite" width="1320" height="2868" />
+        </div>
+        <img class="hx-frame" src="/assets/home/iphone-frame-blue.webp?v=20260809j" alt="" width="980" height="2000" />
+      </div>
     </div>
   </section>
 
-  <section class="uc-problem">
-    <h2>Por qué esto no se lleva de cabeza</h2>
-    <p>Un período móvil no se reinicia en una fecha que puedas marcar en el calendario. Cada día que pasas dentro de la zona cambia la respuesta, y cada día que pasas fuera te va devolviendo días poco a poco. Así que la pregunta nunca es solo cuántos días has gastado. Es cuántos llevarás gastados el día que aterrices y el día que pienses salir.</p>
-    <p>Las hojas de cálculo se equivocan en silencio. Y te enteras en la frontera, donde quedarse cerca no cuenta.</p>
-  </section>
-
-  <section class="uc-blocks">
-
-    <article class="uc-block">
-      <div class="uc-shot">
-        <div class="device">
-          <div class="device-screen">
-            <img class="shot-dark" src="/assets/home/es/home-proof-presets.webp?v=20260818a" alt="La pantalla Añadir un control de AtlasDays, con filtros de visado, residencia fiscal, estado de EE. UU. y objetivo de estancia sobre una lista de plantillas de límites de visado y entrada" width="1320" height="2868" />
-            <img class="shot-light" src="/assets/home/es/home-proof-presets-light.webp?v=20260818a" alt="La pantalla Añadir un control de AtlasDays, con filtros de visado, residencia fiscal, estado de EE. UU. y objetivo de estancia sobre una lista de plantillas de límites de visado y entrada" width="1320" height="2868" />
-          </div>
-          <img class="device-body" src="/assets/home/iphone-frame-blue.webp?v=20260809h" alt="" width="980" height="2000" />
-        </div>
+  <section class="hx-uc-section" id="visas" aria-labelledby="visas-title">
+    <div class="hx-uc-wrap">
+      <div class="hx-uc-head">
+        <h2 class="hx-uc-h2" id="visas-title">Controla cualquier visado</h2>
+        <p>Elige el país, indica los días que permite tu visado y elige cómo se cuentan: por entrada, por año o en un período móvil. Los más habituales vienen ya preparados, cada uno con su guía en lenguaje claro.</p>
       </div>
-      <div class="uc-copy">
-        <h3>Empieza por la regla, no por un formulario en blanco</h3>
-        <p>Elige Schengen 90/180, un visado de una sola entrada, un límite por estancia o el límite de entrada de un país concreto. La duración de la ventana, el comportamiento del reinicio y el método de recuento vienen ya configurados. No tienes que convertir un PDF oficial en aritmética y confiar en haberlo leído bien.</p>
-        <p>Si tu permiso es poco habitual, crea un control personalizado y define tú mismo la ventana.</p>
-      </div>
-    </article>
-
-    <article class="uc-block">
-      <div class="uc-shot">
-        <div class="device">
-          <div class="device-screen">
-            <img class="shot-dark" src="/assets/home/es/home-hero-tracker-detail.webp?v=20260819a" alt="Control de Schengen en AtlasDays con 85 de 90 días usados, 5 restantes, un gráfico de previsión del período móvil de 180 días y los viajes que cuentan para él" width="1320" height="2868" loading="lazy" />
-            <img class="shot-light" src="/assets/home/es/home-hero-tracker-detail-light.webp?v=20260819a" alt="Control de Schengen en AtlasDays con 85 de 90 días usados, 5 restantes, un gráfico de previsión del período móvil de 180 días y los viajes que cuentan para él" width="1320" height="2868" loading="lazy" />
-          </div>
-          <img class="device-body" src="/assets/home/iphone-frame-blue.webp?v=20260809h" alt="" width="980" height="2000" loading="lazy" />
-        </div>
-      </div>
-      <div class="uc-copy">
-        <h3>Ves la cifra y los viajes que hay detrás</h3>
-        <p>85 de 90 usados, 5 restantes, la fecha en la que la ventana vuelve a moverse y los viajes exactos que dan ese total. La línea de previsión te enseña qué les hacen al recuento los viajes que tienes planeados, antes de comprometerte con ellos.</p>
-        <p>Un recuento que no puedes revisar es un recuento que no puedes defender, así que las cuentas se quedan en pantalla, junto a la respuesta.</p>
-      </div>
-    </article>
-
-    <article class="uc-block">
-      <div class="uc-shot">
-        <div class="device">
-          <div class="device-screen">
-            <img class="shot-dark" src="/assets/home/es/home-proof-alerts.webp?v=20260819a" alt="Ajustes de avisos de un control de AtlasDays, con hora de entrega y advertencias desde 30 días restantes hasta el límite alcanzado" width="1320" height="2868" loading="lazy" />
-            <img class="shot-light" src="/assets/home/es/home-proof-alerts-light.webp?v=20260819a" alt="Ajustes de avisos de un control de AtlasDays, con hora de entrega y advertencias desde 30 días restantes hasta el límite alcanzado" width="1320" height="2868" loading="lazy" />
-          </div>
-          <img class="device-body" src="/assets/home/iphone-frame-blue.webp?v=20260809h" alt="" width="980" height="2000" loading="lazy" />
-        </div>
-      </div>
-      <div class="uc-copy">
-        <h3>Que te avisen antes de que importe, no después</h3>
-        <p>Configura advertencias a 30, 14, 7 o 1 día restante, en cualquier control y a la hora que elijas. El único aviso útil es el que llega cuando todavía puedes cambiar la reserva. Los avisos requieren AtlasDays Pro.</p>
-      </div>
-    </article>
-
-  </section>
-
-  <aside class="uc-limits">
-    <h2>Lo que no hace</h2>
-    <p>AtlasDays cuenta días y guarda registros. No interpreta la normativa de inmigración, no conoce las condiciones concretas de tu permiso y no es asesoramiento legal. Úsala para saber tus cifras y comprueba después la regla que se te aplica.</p>
-  </aside>
-
-  <section class="uc-next">
-    <h2>Para profundizar</h2>
-    <div class="uc-links">
-      <a href="/es/learn/schengen-90-180-rule">La regla Schengen 90/180</a>
-      <a href="/es/learn/schengen-rolling-window-walkthrough">Un período móvil, paso a paso</a>
-      <a href="/es/learn/when-do-you-get-schengen-days-back-after-90-day-stay">Cuándo recuperas días</a>
-      <a href="/es/learn/what-counts-as-a-day-for-visa-purposes">Qué cuenta como día</a>
-      <a href="/es/learn/overstaying-a-visa-or-stay-limit">Superar un límite de estancia</a>
-      <a href="/es/learn/us-visa-waiver-90-day-limit">Exención de visado de EE. UU., 90 días</a>
-      <a href="/es/learn/uk-standard-visitor-visa-180-day-rule">Visado de visitante estándar del Reino Unido</a>
-      <a href="/es/help/schengen-90-180">Crear un control de Schengen</a>
+      <ul class="hx-uc-rules">
+        <li><a class="hx-uc-rule" href="/es/learn/schengen-90-180-rule"><img src="/assets/flags/eu.png" alt="" width="240" height="180" loading="lazy" /><span class="hx-uc-rule-text"><strong>Schengen: regla de estancia corta 90/180</strong><span>Hasta 90 días dentro del espacio Schengen en cualquier período móvil de 180 días.</span></span><span class="hx-uc-rule-go">Guía</span></a></li>
+        <li><a class="hx-uc-rule" href="/es/learn/schengen-single-entry-visa"><img src="/assets/flags/eu.png" alt="" width="240" height="180" loading="lazy" /><span class="hx-uc-rule-text"><strong>Schengen: visado de una sola entrada</strong><span>Una única estancia continua, por los días impresos en tu visado.</span></span><span class="hx-uc-rule-go">Guía</span></a></li>
+        <li><a class="hx-uc-rule" href="/es/learn/canada-visitor-visa-6-month-limit"><img src="/assets/flags/ca.png" alt="" width="240" height="180" loading="lazy" /><span class="hx-uc-rule-text"><strong>Canadá: visado de visitante / eTA</strong><span>Hasta 6 meses por estancia.</span></span><span class="hx-uc-rule-go">Guía</span></a></li>
+        <li><a class="hx-uc-rule" href="/es/learn/georgia-visa-free-365-days"><img src="/assets/flags/ge.png" alt="" width="240" height="180" loading="lazy" /><span class="hx-uc-rule-text"><strong>Georgia: estancia sin visado</strong><span>Una única estancia continua de hasta un año completo.</span></span><span class="hx-uc-rule-go">Guía</span></a></li>
+        <li><a class="hx-uc-rule" href="/es/learn/india-tourist-visa-stay-limits"><img src="/assets/flags/in.png" alt="" width="240" height="180" loading="lazy" /><span class="hx-uc-rule-text"><strong>e-Tourist Visa de la India</strong><span>Hasta 180 días por año natural, contando cada visita.</span></span><span class="hx-uc-rule-go">Guía</span></a></li>
+        <li><a class="hx-uc-rule" href="/es/learn/japan-90-day-rule"><img src="/assets/flags/jp.png" alt="" width="240" height="180" loading="lazy" /><span class="hx-uc-rule-text"><strong>Japón: estancia temporal</strong><span>Hasta 90 días por entrada.</span></span><span class="hx-uc-rule-go">Guía</span></a></li>
+        <li><a class="hx-uc-rule" href="/es/learn/turkiye-90-180-rule"><img src="/assets/flags/tr.png" alt="" width="240" height="180" loading="lazy" /><span class="hx-uc-rule-text"><strong>Estancia corta en Turquía</strong><span>Hasta 90 días en cualquier período de 180 días.</span></span><span class="hx-uc-rule-go">Guía</span></a></li>
+        <li><a class="hx-uc-rule" href="/es/learn/uk-standard-visitor-visa-180-day-rule"><img src="/assets/flags/gb.png" alt="" width="240" height="180" loading="lazy" /><span class="hx-uc-rule-text"><strong>Reino Unido: Standard Visitor</strong><span>Hasta 6 meses por visita.</span></span><span class="hx-uc-rule-go">Guía</span></a></li>
+        <li><a class="hx-uc-rule" href="/es/learn/us-visa-waiver-90-day-limit"><img src="/assets/flags/us.png" alt="" width="240" height="180" loading="lazy" /><span class="hx-uc-rule-text"><strong>EE. UU.: ESTA</strong><span>Programa de Exención de Visado: hasta 90 días por visita.</span></span><span class="hx-uc-rule-go">Guía</span></a></li>
+        <li><a class="hx-uc-rule" href="/es/learn/us-b1-b2-visa-180-day-limit"><img src="/assets/flags/us.png" alt="" width="240" height="180" loading="lazy" /><span class="hx-uc-rule-text"><strong>EE. UU.: visado de visitante B-1/B-2</strong><span>Normalmente admitido hasta 6 meses por entrada.</span></span><span class="hx-uc-rule-go">Guía</span></a></li>
+        <li class="hx-uc-rules-any"><a class="hx-uc-rule" href="/es/help/create-a-tracker"><span class="hx-uc-rule-plus" aria-hidden="true">+</span><span class="hx-uc-rule-text"><strong>Cualquier otro visado o límite de entrada</strong><span>Cualquier país, cualquier número de días, contados como indique tu visado.</span></span><span class="hx-uc-rule-go">Cómo configurarlo</span></a></li>
+      </ul>
     </div>
   </section>
 
-  <section class="uc-cta">
-    <h2>Empieza a contar como es debido</h2>
-    <p>Gratis con un control y sin necesidad de cuenta. Tu historial de viajes se queda en tu iPhone.</p>
-    <a class="btn btn-primary" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> Consigue AtlasDays</a>
+  <section class="hx-uc-section" aria-labelledby="how-title">
+    <div class="hx-uc-wrap">
+      <div class="hx-uc-head">
+        <h2 class="hx-uc-h2" id="how-title">Cómo funciona</h2>
+        <p>Configúralo una vez. A partir de ahí, el recuento se mantiene al día con cada día que viajas y con cada viaje que planeas.</p>
+      </div>
+      <ol class="hx-uc-steps">
+        <li class="hx-uc-step">
+          <div class="hx-device hx-uc-step-device">
+            <div class="hx-screen">
+              <img class="shot-dark" src="/assets/home/v2/uc-presets.webp?v=20260927c" alt="La pantalla Añadir un control de AtlasDays, con filtros de visados, impuestos, residencia y nacionalidad sobre reglas ya preparadas de visado y límite de entrada" width="1320" height="2868" loading="lazy" />
+              <img class="shot-light" src="/assets/home/v2/uc-presets-light.webp?v=20260927c" alt="La pantalla Añadir un control de AtlasDays, con filtros de visados, impuestos, residencia y nacionalidad sobre reglas ya preparadas de visado y límite de entrada" width="1320" height="2868" loading="lazy" />
+            </div>
+            <img class="hx-frame" src="/assets/home/iphone-frame-blue.webp?v=20260809j" alt="" width="980" height="2000" loading="lazy" />
+          </div>
+          <span class="hx-uc-step-n" aria-hidden="true">1</span>
+          <h3>Elige tu regla</h3>
+          <div class="hx-uc-step-body">
+            <p>Elige la plantilla de tu visado, o define tú mismo cualquier límite. La ventana y el método de recuento vienen ya configurados.</p>
+            <a href="/es/help/schengen-90-180">Crear un control de Schengen</a>
+          </div>
+        </li>
+        <li class="hx-uc-step">
+          <div class="hx-device hx-uc-step-device">
+            <div class="hx-screen">
+              <img class="shot-dark" src="/assets/home/v2/step-photo-import.webp?v=20260927c" alt="Revisión de la importación desde Fotos: viajes encontrados en la fototeca, listos para comprobar antes de guardar" width="1320" height="2868" loading="lazy" />
+              <img class="shot-light" src="/assets/home/v2/step-photo-import-light.webp?v=20260927c" alt="Revisión de la importación desde Fotos: viajes encontrados en la fototeca, listos para comprobar antes de guardar" width="1320" height="2868" loading="lazy" />
+            </div>
+            <img class="hx-frame" src="/assets/home/iphone-frame-blue.webp?v=20260809j" alt="" width="980" height="2000" loading="lazy" />
+          </div>
+          <span class="hx-uc-step-n" aria-hidden="true">2</span>
+          <h3>Añade tus viajes</h3>
+          <div class="hx-uc-step-body">
+            <p>Importa tus viajes pasados desde tus fotos, Flighty o un archivo CSV, o añádelos a mano. Añade también los viajes planeados, para ver qué le hacen al recuento antes de reservar.</p>
+            <a href="/es/help/getting-started">Formas de añadir tus viajes</a>
+          </div>
+        </li>
+        <li class="hx-uc-step">
+          <div class="hx-device hx-uc-step-device">
+            <div class="hx-screen">
+              <img class="shot-dark" src="/assets/home/v2/step-visa-trackers.webp?v=20260927a" alt="El resumen de AtlasDays con tres controles de visado: Schengen en naranja a 85 de 90 días, una estancia temporal en Japón en rojo al llegar al límite, y Turquía en 5 de 90" width="1320" height="2868" loading="lazy" />
+              <img class="shot-light" src="/assets/home/v2/step-visa-trackers-light.webp?v=20260927a" alt="El resumen de AtlasDays con tres controles de visado: Schengen en naranja a 85 de 90 días, una estancia temporal en Japón en rojo al llegar al límite, y Turquía en 5 de 90" width="1320" height="2868" loading="lazy" />
+            </div>
+            <img class="hx-frame" src="/assets/home/iphone-frame-blue.webp?v=20260809j" alt="" width="980" height="2000" loading="lazy" />
+          </div>
+          <span class="hx-uc-step-n" aria-hidden="true">3</span>
+          <h3>Entérate antes de la frontera</h3>
+          <div class="hx-uc-step-body">
+            <p>Cada control se pone naranja cuando te acercas y rojo al llegar al límite. Los avisos inteligentes, parte de AtlasDays Pro, te avisan mientras todavía puedes cambiar la reserva.</p>
+            <a href="/es/help/smart-alerts">Sobre los avisos inteligentes</a>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="hx-uc-section hx-uc-guides" aria-labelledby="deeper-title">
+    <div class="hx-uc-wrap">
+      <div class="hx-uc-head">
+        <h2 class="hx-uc-h2" id="deeper-title">Para profundizar</h2>
+        <p>Guías en lenguaje claro sobre las reglas que hay detrás de las cifras.</p>
+      </div>
+      <ul class="hx-uc-cards">
+        <li><a class="hx-uc-card" href="/es/learn/schengen-rolling-window-walkthrough"><strong>Cómo funciona el período móvil</strong><span>Un ejemplo paso a paso de la ventana 90/180, y por qué los días se devuelven uno a uno.</span></a></li>
+        <li><a class="hx-uc-card" href="/es/learn/what-counts-as-a-day-for-visa-purposes"><strong>Qué cuenta como un día</strong><span>Entrada, salida y tránsito, y por qué la respuesta no es universal.</span></a></li>
+        <li><a class="hx-uc-card" href="/es/learn/schengen-countries-list-90-180-rule"><strong>Qué países cuentan</strong><span>Los países que comparten un mismo recuento 90/180, y por qué la UE no es lo mismo que Schengen.</span></a></li>
+        <li><a class="hx-uc-card" href="/es/learn/ees-etias-schengen-90-180"><strong>EES y ETIAS</strong><span>Qué cambian los nuevos sistemas fronterizos de la UE para tus días, y qué no cambian.</span></a></li>
+        <li><a class="hx-uc-card" href="/es/learn/overstaying-a-visa-or-stay-limit"><strong>Superar un límite de estancia</strong><span>Qué significa un exceso de estancia, y los malentendidos que llevan a él.</span></a></li>
+        <li><a class="hx-uc-card" href="/es/learn/travel-history-for-visa-applications"><strong>Historial de viajes para una solicitud</strong><span>Qué suele pedir el formulario, y cuándo mandan las instrucciones oficiales.</span></a></li>
+      </ul>
+      <p class="hx-uc-more"><a href="/es/learn/">Todas las reglas de viaje</a></p>
+    </div>
+  </section>
+
+  <section class="hx-section hx-final" id="download" aria-labelledby="download-title">
+    <div class="hx-wrap hx-center">
+      <h2 class="hx-h2" id="download-title">Empieza a contar como es debido.</h2>
+      <div class="hx-final-row">
+        <a class="hx-btn" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> Consigue AtlasDays</a>
+        <div class="hx-qr"><img src="/assets/qrcode-appstore.png" alt="Código QR que abre AtlasDays en el App Store" width="164" height="164" loading="lazy" /><span>Escanea con la<br />cámara de tu iPhone</span></div>
+      </div>
+      <p class="hx-micro">Gratis · Sin cuenta · iPhone y iPad</p>
+      <p class="hx-boundary">AtlasDays cuenta días y guarda registros. No interpreta la normativa de inmigración, no conoce las condiciones concretas de tu permiso y no es asesoramiento legal.</p>
+    </div>
   </section>
 
 </main>

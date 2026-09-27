@@ -3,23 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>旅行履歴：書き留めなかった年月を、あとから再現する｜AtlasDays</title>
-  <meta name="description" content="写真、CSV、Flightyのフライト履歴から旅行履歴を再現できます。重なりや抜けは保存前に確認でき、「年のみ」の記録も残せます。ビザ申請用にPDFや表計算ファイルへ書き出せます。" />
-  <meta property="og:title" content="旅行履歴：書き留めなかった年月を、あとから再現する｜AtlasDays" />
-  <meta property="og:description" content="写真、CSV、Flightyのフライト履歴から旅行履歴を再現できます。重なりや抜けは保存前に確認でき、「年のみ」の記録も残せます。ビザ申請用にPDFや表計算ファイルへ書き出せます。" />
+  <title>旅行履歴：訪れた国、州、大陸をひとつの地図に</title>
+  <meta name="description" content="写真、Flighty、CSVファイルから何年分もの旅行をインポート。訪れた国、米国の州、大陸を、統計と世界地図でひと目で確認できます。" />
+  <meta property="og:title" content="旅行履歴：訪れた国、州、大陸をひとつの地図に" />
+  <meta property="og:description" content="写真、Flighty、CSVファイルから何年分もの旅行をインポート。訪れた国、米国の州、大陸を、統計と世界地図でひと目で確認できます。" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://atlasdays.app/ja/travel-history" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="旅行履歴：書き留めなかった年月を、あとから再現する｜AtlasDays" />
-  <meta name="twitter:description" content="写真、CSV、Flightyのフライト履歴から旅行履歴を再現できます。重なりや抜けは保存前に確認でき、「年のみ」の記録も残せます。ビザ申請用にPDFや表計算ファイルへ書き出せます。" />
+  <meta name="twitter:title" content="旅行履歴：訪れた国、州、大陸をひとつの地図に" />
+  <meta name="twitter:description" content="写真、Flighty、CSVファイルから何年分もの旅行をインポート。訪れた国、米国の州、大陸を、統計と世界地図でひと目で確認できます。" />
   <meta property="og:locale" content="ja_JP" />
   <meta property="og:image" content="https://atlasdays.app/assets/social/site-v1.png" />
   <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="AtlasDaysの「旅行履歴：書き留めなかった年月を、あとから再現する」共有カード" />
+  <meta property="og:image:alt" content="AtlasDaysの「旅行履歴：訪れた国、州、大陸をひとつの地図に」共有カード" />
   <meta name="twitter:image" content="https://atlasdays.app/assets/social/site-v1.png" />
-  <meta name="twitter:image:alt" content="AtlasDaysの「旅行履歴：書き留めなかった年月を、あとから再現する」共有カード" />
+  <meta name="twitter:image:alt" content="AtlasDaysの「旅行履歴：訪れた国、州、大陸をひとつの地図に」共有カード" />
   <link rel="canonical" href="https://atlasdays.app/ja/travel-history" />
   <link rel="alternate" hreflang="en" href="https://atlasdays.app/travel-history" />
   <link rel="alternate" hreflang="ja" href="https://atlasdays.app/ja/travel-history" />
@@ -69,7 +69,7 @@
           <nav class="nav-group-panel" aria-label="活用例のページ">
             <a href="/ja/visa-limits">ビザの上限</a>
             <a href="/ja/residency-thresholds">税務上の居住判定</a>
-            <a href="/citizenship">帰化</a>
+            <a href="/ja/citizenship">帰化</a>
             <a href="/ja/travel-history">旅行履歴</a>
           </nav>
         </details>
@@ -102,8 +102,8 @@
             <nav class="mobile-nav-group-panel" aria-label="活用例のページ">
               <a href="/ja/visa-limits">ビザの上限</a>
               <a href="/ja/residency-thresholds">税務上の居住判定</a>
-              <a href="/citizenship">帰化</a>
-            <a href="/citizenship">帰化</a>
+              <a href="/ja/citizenship">帰化</a>
+            <a href="/ja/citizenship">帰化</a>
               <a href="/ja/travel-history">旅行履歴</a>
             </nav>
           </details>
@@ -113,99 +113,129 @@
     </div>
   </header>
 
-<main id="main-content">
+<main id="main-content" class="hx hx-usecase hx-uc hx-uc-history">
 
-  <section class="uc-hero">
-    <p class="uc-kicker">活用例</p>
-    <h1>旅行履歴：書き留めなかった年月を、あとから再現する</h1>
-    <p class="lede">写真、表計算ファイル、フライト履歴から取り込めます。誤りを直し、確かでない部分は確かでないまま残して、何年か経ってからの問いにも答えられる記録にします。</p>
-    <div class="uc-actions">
-      <a class="btn btn-primary" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> AtlasDaysを入手</a>
-      <a class="btn btn-secondary" href="/ja/learn/rebuild-travel-history-from-passport-stamps-emails-photos">旅行履歴を再現する手順</a>
+  <section class="hx-uc-hero">
+    <div class="hx-map" aria-hidden="true"></div>
+    <div class="hx-uc-wrap hx-uc-hero-grid">
+      <div class="hx-uc-hero-copy">
+        <h1>訪れたすべての国を、ひとつの地図に。</h1>
+        <p class="hx-lede">写真、Flighty、CSVファイルから何年分もの旅行をインポートすれば、訪れた国、米国の州、大陸の数が積み上がっていきます。その後も、旅をするたびに記録は最新のまま。</p>
+        <div class="hx-actions">
+          <a class="hx-btn" data-hx-hero-cta href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> AtlasDaysを入手</a>
+        </div>
+      </div>
+      <div class="hx-device hx-uc-hero-device">
+          <div class="hx-screen">
+            <img class="shot-dark" src="/assets/home/v2/uc-globe.webp?v=20260927b" alt="ヨーロッパ、アフリカ、中央アジアを正面にしたAtlasDaysの3D地球儀。訪れた国がすべて青く光っています" width="1320" height="2868" fetchpriority="high" />
+            <img class="shot-light" src="/assets/home/v2/uc-globe-light.webp?v=20260927b" alt="ヨーロッパ、アフリカ、中央アジアを正面にしたAtlasDaysの3D地球儀。訪れた国がすべて青く光っています" width="1320" height="2868" />
+          </div>
+          <img class="hx-frame" src="/assets/home/iphone-frame-blue.webp?v=20260809j" alt="" width="980" height="2000" />
+        </div>
     </div>
   </section>
 
-  <section class="uc-problem">
-    <h2>申請書は10年分、手元にあるのは写真ライブラリ</h2>
-    <p>ビザや市民権の申請では、すべての旅行を記載するよう求められます。対象が10年分を超えることもあります。手がかりになるのは、パスポートのスタンプ、古い搭乗券、うろ覚えの夏、そしてカメラロールです。</p>
-    <p>多くのツールは、正確さか網羅性かの二択を迫ります。だから人は推測で埋めてしまいます。つくった日付は、正直な空白より厄介です。審査する側が誤りを示せるのは、空白ではなく日付のほうだからです。</p>
-  </section>
-
-  <section class="uc-blocks">
-
-    <article class="uc-block">
-      <div class="uc-shot">
-        <div class="device">
-          <div class="device-screen">
-            <img class="shot-dark" src="/assets/home/ja/home-proof-import-flighty.webp?v=20260819a" alt="Flightyのフライト履歴を読み込み、保存前に未完了の旅行、米国の州、統合候補、重なりを示すAtlasDaysのインポート内容の確認画面" width="1320" height="2868" />
-            <img class="shot-light" src="/assets/home/ja/home-proof-import-flighty-light.webp?v=20260819a" alt="Flightyのフライト履歴を読み込み、保存前に未完了の旅行、米国の州、統合候補、重なりを示すAtlasDaysのインポート内容の確認画面" width="1320" height="2868" />
-          </div>
-          <img class="device-body" src="/assets/home/iphone-frame-blue.webp?v=20260809h" alt="" width="980" height="2000" />
-        </div>
+  <section class="hx-uc-section" id="history" aria-labelledby="history-title">
+    <div class="hx-uc-wrap">
+      <div class="hx-uc-head">
+        <h2 class="hx-uc-h2" id="history-title">これまでの旅のすべてを、ひとつの場所に</h2>
+        <p>統計、世界地図、タイムライン。手元にある旅行の記録からつくられ、旅をするたびに更新されます。</p>
       </div>
-      <div class="uc-copy">
-        <h3>まず取り込み、入力は最後に</h3>
-        <p>位置情報付きの写真、CSV、Flightyのフライト履歴は、まず旅行の候補になります。重なり、抜け、未完了の旅行、統合候補はその場で示され、確認して解消できます。承認するまで、記録には何も書き込まれません。</p>
-      </div>
-    </article>
-
-    <article class="uc-block">
-      <div class="uc-shot">
-        <div class="device">
-          <div class="device-screen">
-            <img class="shot-dark" src="/assets/home/ja/home-proof-timeline.webp?v=20260819a" alt="滞在中、過去、これからの旅行が国ごとに日数とともに並ぶAtlasDaysのタイムライン" width="1320" height="2868" loading="lazy" />
-            <img class="shot-light" src="/assets/home/ja/home-proof-timeline-light.webp?v=20260819a" alt="滞在中、過去、これからの旅行が国ごとに日数とともに並ぶAtlasDaysのタイムライン" width="1320" height="2868" loading="lazy" />
-          </div>
-          <img class="device-body" src="/assets/home/iphone-frame-blue.webp?v=20260809h" alt="" width="980" height="2000" loading="lazy" />
-        </div>
-      </div>
-      <div class="uc-copy">
-        <h3>日数が問われるところは正確に、それ以外はおおよそで</h3>
-        <p>2019年を「年のみ」で記録することも、日付なしで訪問国だけを残すこともできます。上限の判定にかかわる旅行には、正確な日付を入れておけます。おおよその履歴は、見せかけの精度にならないまま役に立ちますし、推測がいつのまにか事実へ格上げされることもありません。</p>
-      </div>
-    </article>
-
-    <article class="uc-block">
-      <div class="uc-shot">
-        <div class="device">
-          <div class="device-screen">
-            <img class="shot-dark" src="/assets/home/ja/home-proof-pdf-export.webp?v=20260819a" alt="旅行の一覧、日付、合計日数が並ぶ「旅行レポート」を示すAtlasDaysのPDF書き出しプレビュー" width="1320" height="2868" loading="lazy" />
-            <img class="shot-light" src="/assets/home/ja/home-proof-pdf-export-light.webp?v=20260819a" alt="旅行の一覧、日付、合計日数が並ぶ「旅行レポート」を示すAtlasDaysのPDF書き出しプレビュー" width="1320" height="2868" loading="lazy" />
-          </div>
-          <img class="device-body" src="/assets/home/iphone-frame-blue.webp?v=20260809h" alt="" width="980" height="2000" loading="lazy" />
-        </div>
-      </div>
-      <div class="uc-copy">
-        <h3>申請書が求める形のまま書き出す</h3>
-        <p>旅行、日数、訪問国を整理したPDFまたは表計算ファイル。申請書に打ち直すのではなく、そのまま添付できます。日数の集計に使っている記録が、そのまま提出する記録になります。</p>
-      </div>
-    </article>
-
-  </section>
-
-  <aside class="uc-limits">
-    <h2>できないこと</h2>
-    <p>インポートは出発点であって、正解ではありません。写真のメタデータが間違っていることもあり、フライトの記録には陸路での越境が残りません。どの旅行が抜けているかを知っているのは本人だけです。AtlasDaysは記録をつくりやすく、直しやすくします。その内容を代わりに検証することはできません。</p>
-  </aside>
-
-  <section class="uc-next">
-    <h2>さらに詳しく</h2>
-    <div class="uc-links">
-      <a href="/ja/learn/rebuild-travel-history-from-passport-stamps-emails-photos">パスポートのスタンプ、メール、写真から再現する</a>
-      <a href="/ja/learn/travel-history-for-visa-applications">ビザ申請用の旅行履歴を用意する</a>
-      <a href="/ja/learn/get-official-entry-exit-records">公式の出入国記録を取得する</a>
-      <a href="/ja/learn/prove-you-were-not-in-a-country">その国にいなかったことを証明する</a>
-      <a href="/ja/learn/travel-history-template-visa-application">無料の旅行履歴テンプレート</a>
-      <a href="/ja/learn/flighty-flight-history-day-count">Flightyのフライト履歴を使う</a>
-      <a href="/ja/help/photo-import">写真からインポート</a>
-      <a href="/ja/help/csv-import">CSVインポート</a>
+      <ul class="hx-uc-cards hx-uc-cards-plain">
+        <li><div class="hx-uc-card"><strong>すべての国を数える</strong><span>195か国のうち訪れた国の数と、それぞれで過ごした日数。</span></div></li>
+        <li><div class="hx-uc-card"><strong>米国の全州</strong><span>50州すべてについて、それぞれの旅行と日数。</span></div></li>
+        <li><div class="hx-uc-card"><strong>大陸と海外滞在日数</strong><span>世界のどれだけを巡ったか、どれだけの期間を海外で過ごしたか。</span></div></li>
+        <li><div class="hx-uc-card"><strong>埋まっていく地球儀</strong><span>訪れた国がすべて、3D地球儀と世界地図の上で光ります。</span></div></li>
+        <li><div class="hx-uc-card"><strong>タイムラインとカレンダー</strong><span>すべての旅行を順番に、または月ごとに並べて見られます。</span></div></li>
+        <li><div class="hx-uc-card"><strong>空白は空白のまま</strong><span>年だけ、または日付なしで国だけでも記録できます。ありもしない精度をつくる必要はありません。</span></div></li>
+      </ul>
     </div>
   </section>
 
-  <section class="uc-cta">
-    <h2>記録を、一度きちんと整える</h2>
-    <p>取り込んで、確認して、書き出す。アカウントは不要で、自分で書き出さないかぎり、記録がiPhoneから出ることはありません。</p>
-    <a class="btn btn-primary" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> AtlasDaysを入手</a>
+  <section class="hx-uc-section" aria-labelledby="how-title">
+    <div class="hx-uc-wrap">
+      <div class="hx-uc-head">
+        <h2 class="hx-uc-h2" id="how-title">使い方</h2>
+        <p>過去の旅行を取り込むのは一度だけ。その後は、新しい旅行がすべて同じ記録に加わっていきます。</p>
+      </div>
+      <ol class="hx-uc-steps">
+        <li class="hx-uc-step">
+          <div class="hx-device hx-uc-step-device">
+          <div class="hx-screen">
+            <img class="shot-dark" src="/assets/home/v2/step-photo-import.webp?v=20260927b" alt="「写真からインポート」の確認画面。写真ライブラリで見つかった旅行を、保存する前に確認できます" width="1320" height="2868" loading="lazy" />
+            <img class="shot-light" src="/assets/home/v2/step-photo-import-light.webp?v=20260927b" alt="「写真からインポート」の確認画面。写真ライブラリで見つかった旅行を、保存する前に確認できます" width="1320" height="2868" loading="lazy" />
+          </div>
+          <img class="hx-frame" src="/assets/home/iphone-frame-blue.webp?v=20260809j" alt="" width="980" height="2000" loading="lazy" />
+        </div>
+          <span class="hx-uc-step-n" aria-hidden="true">1</span>
+          <h3>過去の旅行を取り込む</h3>
+          <div class="hx-uc-step-body">
+            <p>何年分もの旅行を、写真、Flighty、CSVファイルからインポートするか、手動で追加します。インポートした内容は、すべて保存する前に確認できます。</p>
+            <a href="/ja/help/getting-started">旅行を追加する方法</a>
+          </div>
+        </li>
+        <li class="hx-uc-step">
+          <div class="hx-device hx-uc-step-device">
+          <div class="hx-screen">
+            <img class="shot-dark" src="/assets/home/v2/uc-stats-continents.webp?v=20260927b" alt="「概要」の統計から開いたAtlasDaysの「大陸」シート。7大陸のうち5大陸で、ヨーロッパ45か国中20か国、アジア47か国中16か国、北アメリカ23か国中5か国、南アメリカ12か国中7か国、アフリカ54か国中9か国" width="1320" height="2868" loading="lazy" />
+            <img class="shot-light" src="/assets/home/v2/uc-stats-continents-light.webp?v=20260927b" alt="「概要」の統計から開いたAtlasDaysの「大陸」シート。7大陸のうち5大陸で、ヨーロッパ45か国中20か国、アジア47か国中16か国、北アメリカ23か国中5か国、南アメリカ12か国中7か国、アフリカ54か国中9か国" width="1320" height="2868" loading="lazy" />
+          </div>
+          <img class="hx-frame" src="/assets/home/iphone-frame-blue.webp?v=20260809j" alt="" width="980" height="2000" loading="lazy" />
+        </div>
+          <span class="hx-uc-step-n" aria-hidden="true">2</span>
+          <h3>統計を開く</h3>
+          <div class="hx-uc-step-body">
+            <p>「概要」の数字をタップすると、大陸、国、米国の州、海外滞在日数の内訳が表示されます。</p>
+            <a href="/ja/help/dashboard-and-map">概要とマップについて</a>
+          </div>
+        </li>
+        <li class="hx-uc-step">
+          <div class="hx-device hx-uc-step-device">
+          <div class="hx-screen">
+            <img class="shot-dark" src="/assets/home/v2/uc-stats-countries.webp?v=20260927b" alt="AtlasDaysの「国」シート。195か国のうち57か国（29%）を滞在日数が多い順に並べ、先頭はジョージアの125日、次が米国の90日" width="1320" height="2868" loading="lazy" />
+            <img class="shot-light" src="/assets/home/v2/uc-stats-countries-light.webp?v=20260927b" alt="AtlasDaysの「国」シート。195か国のうち57か国（29%）を滞在日数が多い順に並べ、先頭はジョージアの125日、次が米国の90日" width="1320" height="2868" loading="lazy" />
+          </div>
+          <img class="hx-frame" src="/assets/home/iphone-frame-blue.webp?v=20260809j" alt="" width="980" height="2000" loading="lazy" />
+        </div>
+          <span class="hx-uc-step-n" aria-hidden="true">3</span>
+          <h3>どこで日々を過ごしたかを見る</h3>
+          <div class="hx-uc-step-body">
+            <p>訪れたすべての国を、滞在日数順または旅行回数順に表示。世界のどれだけを巡ったかもわかります。</p>
+            <a href="/ja/help/dashboard-and-map">概要とマップについて</a>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="hx-uc-section hx-uc-guides" aria-labelledby="deeper-title">
+    <div class="hx-uc-wrap">
+      <div class="hx-uc-head">
+        <h2 class="hx-uc-h2" id="deeper-title">さらに詳しく</h2>
+        <p>数字の背景にあるルールを、わかりやすく解説したガイドです。</p>
+      </div>
+      <ul class="hx-uc-cards">
+        <li><a class="hx-uc-card" href="/ja/learn/rebuild-travel-history-from-passport-stamps-emails-photos"><strong>旅行履歴を再構成する</strong><span>どの資料がいちばん確かか、空白を正直に扱う方法。</span></a></li>
+        <li><a class="hx-uc-card" href="/ja/learn/how-many-countries-in-the-world"><strong>世界に国はいくつある？</strong><span>195がよく使われる答えである理由と、旅行者がほかの数字に出会う理由。</span></a></li>
+        <li><a class="hx-uc-card" href="/ja/learn/travel-history-template-visa-application"><strong>無料の旅行履歴テンプレート</strong><span>1回の滞在を1行にまとめたCSV。ビザや帰化の申請書にそのまま書き写せます。</span></a></li>
+        <li><a class="hx-uc-card" href="/ja/learn/flighty-flight-history-day-count"><strong>Flightyの履歴を使う</strong><span>フライトの記録を、国ごとの滞在日数に変える方法。</span></a></li>
+        <li><a class="hx-uc-card" href="/ja/learn/does-a-layover-count-as-visiting-a-country"><strong>乗り継ぎは数に入る？</strong><span>入国審査、滞在日数の集計、訪問国のリストで、答えが変わる理由。</span></a></li>
+        <li><a class="hx-uc-card" href="/ja/learn/travel-history-for-visa-applications"><strong>申請用の旅行履歴</strong><span>記録に一般に求められることと、公式の案内が優先される場面。</span></a></li>
+      </ul>
+      <p class="hx-uc-more"><a href="/ja/learn/">旅行ルールの一覧</a></p>
+    </div>
+  </section>
+
+  <section class="hx-section hx-final" id="download" aria-labelledby="download-title">
+    <div class="hx-wrap hx-center">
+      <h2 class="hx-h2" id="download-title">自分の地図を、つくりはじめる。</h2>
+      <div class="hx-final-row">
+        <a class="hx-btn" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> AtlasDaysを入手</a>
+        <div class="hx-qr"><img src="/assets/qrcode-appstore.png" alt="App StoreでAtlasDaysを開くQRコード" width="164" height="164" loading="lazy" /><span>iPhoneのカメラで<br />読み取ってください</span></div>
+      </div>
+      <p class="hx-micro">基本無料 · アカウント不要 · iPhone・iPad対応</p>
+      <p class="hx-boundary">インポートは出発点にすぎません。写真のメタデータが間違っていることもあり、フライトの記録には陸路での越境が残りません。AtlasDaysは記録をつくりやすく、直しやすくしますが、内容を代わりに検証することはできません。</p>
+    </div>
   </section>
 
 </main>

@@ -198,11 +198,11 @@ EXACT_ALLOW = {"§ 10 StAG", "§ 12b StAG","Request for International Movement R
 
 LOCALE_ALLOW = {
     "pt": {"Alberta (AHCIP)", "Québec (RAMQ)", "Malta: Nomad Residence Permit", ". Portugal:"},
-    "tr": {"Ontario (OHIP)", "Alberta (AHCIP)", "Québec (RAMQ)", "Malta: Nomad Residence Permit"},
+    "tr": {"virtusopus · Türkiye", "Ontario (OHIP)", "Alberta (AHCIP)", "Québec (RAMQ)", "Malta: Nomad Residence Permit"},
     "de": {". Portugal:"},
     "es": {". Indonesia:", ". Portugal:", "Malta: Nomad Residence Permit", "Ontario (OHIP)", "Alberta (AHCIP)"},
-    "fr": {"Ontario (OHIP)", "Alberta (AHCIP)", "Québec (RAMQ)"},
-    "nl": {". Portugal:", "Québec (RAMQ)", "Alberta (AHCIP)", "British Columbia (MSP)", "Ontario (OHIP)", "in Québec.", "Malta: Nomad Residence Permit", "Thailand: Destination Thailand Visa (DTV)", "India, e-Tourist Visa", "Entry/Exit System (EES)"},
+    "fr": {"Basecampoversummit · Canada", "Ontario (OHIP)", "Alberta (AHCIP)", "Québec (RAMQ)"},
+    "nl": {"Basecampoversummit · Canada", ". Portugal:", "Québec (RAMQ)", "Alberta (AHCIP)", "British Columbia (MSP)", "Ontario (OHIP)", "in Québec.", "Malta: Nomad Residence Permit", "Thailand: Destination Thailand Visa (DTV)", "India, e-Tourist Visa", "Entry/Exit System (EES)"},
 }
 
 
