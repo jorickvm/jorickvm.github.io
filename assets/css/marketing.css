@@ -350,6 +350,90 @@ html.js .hx-step-body { font-size: 0.95rem; }
 .hx-qr img { width: 84px; height: 84px; padding: 6px; border-radius: 12px; background: #fff; }
 
 /* ---------- use-case pages ---------- */
+/* Same header width as the homepage, so the bar does not jump between pages
+   (the old use-case stylesheet sets a narrower --max). */
+html:has(main.hx) { --max: 1160px; }
+.hx-kicker-dot { display: inline-block; width: 7px; height: 7px; margin-right: 8px; border-radius: 50%; background: var(--brand); vertical-align: 1px; }
+.hx-eyebrow-label { margin-bottom: 10px; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); }
+html[data-theme="dark"] .hx-map-schengen { background-image: url("../home/map/schengen-map-dark.svg?v=20260927a"); }
+html[data-theme="light"] .hx-map-schengen { background-image: url("../home/map/schengen-map-light.svg?v=20260927a"); }
+.hx-map-schengen { background-position: center 30%; }
+
+/* Use-case hero on phones: copy left-aligned, phones centred below, so it
+   reads as its own page rather than as the homepage. */
+.hx-hero-split { text-align: left; }
+.hx-hero-split h1 { margin: 0; }
+.hx-hero-split .hx-lede { margin: 16px 0 0; }
+.hx-hero-split .hx-actions { justify-content: flex-start; }
+
+/* State colours follow the app: orange close to the limit, red at it. */
+.hx { --hx-warn: #E8913A; --hx-crit: #E5484D; }
+html[data-theme="light"] .hx { --hx-warn: #C4700F; --hx-crit: #D13438; }
+
+/* The rolling-window explainer */
+.hx-window {
+  margin: 40px auto 0;
+  padding: 22px 20px 20px;
+  max-width: 980px;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background: var(--bg-elevated);
+}
+html[data-theme="light"] .hx-window { background: var(--bg-card-strong); }
+.hx-window-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
+.hx-window-count p:first-child { font-size: 2.2rem; line-height: 1; font-weight: 700; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
+.hx-window-limit { color: var(--muted-2); font-weight: 600; }
+.hx-window-caption { margin-top: 8px; font-size: 0.88rem; color: var(--muted); }
+.hx-window-state { flex: none; padding: 6px 12px; border-radius: 999px; font-size: 0.84rem; font-weight: 650; white-space: nowrap; color: var(--blue); background: var(--blue-soft); transition: color 200ms ease, background-color 200ms ease; }
+.hx-window-state[data-tone="warn"] { color: var(--hx-warn); background: color-mix(in srgb, var(--hx-warn) 16%, transparent); }
+.hx-window-state[data-tone="crit"] { color: var(--hx-crit); background: color-mix(in srgb, var(--hx-crit) 16%, transparent); }
+.hx-window-used { transition: color 200ms ease; }
+.hx-window[data-tone="warn"] .hx-window-used { color: var(--hx-warn); }
+.hx-window[data-tone="crit"] .hx-window-used { color: var(--hx-crit); }
+.hx-window-chart { display: block; width: 100%; height: 132px; margin-top: 18px; overflow: visible; }
+.hx-window-chart .band { fill: var(--blue-soft); stroke: var(--brand); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.hx-window-chart .trip { fill: var(--line-strong); }
+.hx-window-chart .trip.is-in { fill: var(--brand); }
+.hx-window-chart .trip.is-planned { fill: transparent; stroke: var(--brand); stroke-width: 1.5; stroke-dasharray: 4 3; vector-effect: non-scaling-stroke; }
+.hx-window-chart .trip.is-planned.is-in { fill: var(--blue-soft); }
+.hx-window-chart .today { stroke: var(--text); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
+.hx-window-chart .tick { stroke: var(--line); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.hx-window-labels { position: relative; height: 18px; margin-top: 4px; font-size: 0.72rem; color: var(--muted-2); }
+.hx-window-labels span { position: absolute; transform: translateX(-50%); white-space: nowrap; }
+.hx-window-bottom { display: grid; gap: 8px; margin-top: 18px; }
+.hx-window-control { display: grid; gap: 8px; font-size: 0.84rem; font-weight: 600; color: var(--muted); }
+.hx-window-control input { width: 100%; accent-color: var(--brand); }
+.hx-window-range { font-size: 0.84rem; color: var(--muted-2); font-variant-numeric: tabular-nums; }
+.hx-window-legend { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 14px; font-size: 0.78rem; color: var(--muted-2); }
+.hx-window-legend i { display: inline-block; width: 16px; height: 8px; margin-right: 6px; border-radius: 2px; vertical-align: 1px; }
+.hx-window-legend .is-in { background: var(--brand); }
+.hx-window-legend .is-out { background: var(--line-strong); }
+.hx-window-legend .is-planned { border: 1.5px dashed var(--brand); }
+.hx-window-foot { max-width: 56ch; margin: 22px auto 0; text-align: center; font-size: 0.95rem; color: var(--muted); }
+
+/* Calculator vs AtlasDays */
+.hx-compare { display: grid; gap: 14px; max-width: 880px; margin: 40px auto 0; }
+.hx-compare-card { padding: 26px 24px; border: 1px solid var(--line); border-radius: 28px; }
+.hx-compare-card h3 { font-size: 1.1rem; font-weight: 650; }
+.hx-compare-card ul { display: grid; gap: 12px; margin-top: 16px; }
+.hx-compare-card li { position: relative; padding-left: 28px; color: var(--muted); }
+.hx-compare-card li::before { position: absolute; left: 0; top: 0; width: 18px; text-align: center; font-weight: 700; }
+.hx-compare-card.is-them li::before { content: "\2013"; color: var(--muted-2); }
+.hx-compare-card.is-us { background: var(--bg-elevated); border-color: color-mix(in srgb, var(--brand) 45%, transparent); }
+html[data-theme="light"] .hx-compare-card.is-us { background: var(--bg-card-strong); }
+.hx-compare-card.is-us li { color: var(--text); }
+.hx-compare-card.is-us li::before { content: "\2713"; color: var(--brand); }
+
+/* Feature rows */
+.hx-features .hx-wrap { display: grid; gap: 72px; }
+.hx-feature { display: grid; gap: 28px; justify-items: center; text-align: center; }
+.hx-feature-copy { max-width: 46ch; }
+.hx-feature-copy h3 { font-size: 1.5rem; line-height: 1.15; font-weight: 700; letter-spacing: -0.02em; }
+.hx-feature-copy p:not(.hx-eyebrow-label) { margin-top: 10px; color: var(--muted); }
+.hx-feature-copy a { display: inline-block; margin-top: 14px; color: var(--blue); font-weight: 600; }
+.hx-feature-device { width: min(62vw, 250px); }
+
+
 .hx-kicker { margin-bottom: 14px; font-size: 0.84rem; font-weight: 600; color: var(--muted); }
 .hx-kicker a { color: var(--blue); }
 .hx-usecase .hx-hero h1 { max-width: 16ch; font-size: clamp(2.1rem, 1.5rem + 2.8vw, 2.7rem); }
@@ -450,6 +534,27 @@ html.js .hx-step-body { font-size: 0.95rem; }
 
   .hx-qr { display: flex; }
   .hx-usecase .hx-hero h1 { max-width: 20em; font-size: clamp(2.5rem, 3.6vw, 3.2rem); }
+  /* Use-case hero: copy left, phones right, so it never reads as the homepage. */
+  .hx-hero-split {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    align-items: center;
+    gap: 40px;
+    padding: 48px max(var(--hx-gutter), calc((100% - 1080px) / 2)) 80px;
+    text-align: left;
+  }
+  .hx-hero-split .hx-map { height: 100%; }
+  .hx-hero-split h1 { margin: 0; max-width: 14ch; }
+  .hx-hero-split .hx-lede { margin: 18px 0 0; max-width: 46ch; }
+  .hx-hero-split .hx-actions { justify-content: flex-start; }
+  .hx-hero-split .hx-phones { margin-top: 0; padding-bottom: 0; --hx-phone: clamp(230px, 36vh, 300px); }
+  .hx-window { padding: 30px 32px 26px; }
+  .hx-window-chart { height: 150px; }
+  .hx-compare { grid-template-columns: 1fr 1fr; gap: 20px; }
+  .hx-features .hx-wrap { gap: 112px; }
+  .hx-feature { grid-template-columns: 1fr 1fr; gap: 64px; justify-items: stretch; align-items: center; text-align: left; }
+  .hx-feature-device { width: 270px; justify-self: center; }
+  .hx-feature:nth-child(even) .hx-feature-copy { order: 2; }
   .hx-deeper ul { grid-template-columns: repeat(3, 1fr); }
 }
 
