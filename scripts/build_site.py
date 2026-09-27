@@ -39,6 +39,7 @@ HEADER_TEMPLATE = SOURCE_ROOT / "templates" / "partials" / "site-header.html"
 FOOTER_TEMPLATE = SOURCE_ROOT / "templates" / "partials" / "site-footer.html"
 CLUSTER_DATA_PATH = SOURCE_ROOT / "data" / "content-clusters.json"
 BUILD_VERSION = "20260815a"
+VARIANT_VERSIONS = {("article", "help20260802"): "20260927a", ("hub", "92c3adc0daf3"): "20260927a"}
 SITE_HEADER_VERSION = "20260901c"
 ARTICLE_COMPONENTS_VERSION = "20260925a"
 NAVIGATION_VERSION = "20260817b"
@@ -228,7 +229,7 @@ def render_styles(article: dict[str, object], family: str = "article", prefix: s
     # page, and the variant stylesheets that follow carry layout only.
     lines = [f'  <link rel="stylesheet" href="{prefix}assets/css/tokens.css?v={asset_version}" />']
     lines += [
-        f'  <link rel="stylesheet" href="{prefix}assets/css/{family}-variants/{style_id}.css?v={asset_version}" />'
+        f'  <link rel="stylesheet" href="{prefix}assets/css/{family}-variants/{style_id}.css?v={VARIANT_VERSIONS.get((family, str(style_id)), asset_version)}" />'
         for style_id in article.get("style_variants", [])
     ]
     lines.append(
