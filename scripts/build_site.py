@@ -1166,8 +1166,10 @@ def render_hub(
         "{{HTML_LANG}}": str(locale["html_lang"]),
         # Hubs are marketing surfaces and take the full wash; the legal and
         # about pages built through this same template are long-form reading
-        # and step down with the articles.
-        "{{HTML_CLASS}}": WASH_SUBTLE if family == "page" else "",
+        # and step down with the articles. A page record can opt back into
+        # the full wash with "wash": "full" (the use-case pages, which share
+        # the homepage's marketing layout).
+        "{{HTML_CLASS}}": WASH_SUBTLE if family == "page" and hub.get("wash") != "full" else "",
         "{{LOCALE_ROUTING}}": render_locale_routing(
             source_path, locales, translations, code, strings, prefix
         ),
