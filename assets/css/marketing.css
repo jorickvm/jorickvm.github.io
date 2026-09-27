@@ -403,6 +403,31 @@ a.hx-uc-rule:hover { border-color: var(--brand); }
 .hx-uc-rule-go::after { content: " \2192"; }
 .hx-uc-rule-plus { flex: none; display: grid; place-items: center; width: 36px; height: 27px; border-radius: 5px; font-size: 1.1rem; font-weight: 600; color: var(--blue); background: var(--blue-soft); }
 
+/* Long catalogues: a label per group, and a compact grid of flag chips for
+   the plain rules, so forty countries do not become forty rows. */
+.hx-uc-sub { margin-top: 36px; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted-2); }
+.hx-uc-sub + .hx-uc-rules,
+.hx-uc-sub + .hx-uc-chips { margin-top: 12px; }
+.hx-uc-rules-after { margin-top: 24px; }
+.hx-uc-chips { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+.hx-uc-chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--bg-elevated);
+  color: var(--text);
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: border-color 160ms ease;
+}
+html[data-theme="light"] .hx-uc-chip { background: var(--bg-card-strong); }
+.hx-uc-chip:hover { border-color: var(--brand); }
+.hx-uc-chip img { flex: none; width: 26px; height: 19px; border-radius: 4px; object-fit: cover; }
+
 /* How it works: three numbered steps, each with its real screen. On phones
    they sit in a row you swipe, so the page does not stack three phones. */
 .hx-uc-steps { display: grid; gap: 40px; margin-top: 36px; }
@@ -448,9 +473,9 @@ a.hx-uc-rule:hover { border-color: var(--brand); }
   transition: border-color 160ms ease;
 }
 html[data-theme="light"] .hx-uc-card { background: var(--bg-card-strong); }
-.hx-uc-card:hover { border-color: var(--brand); }
+a.hx-uc-card:hover { border-color: var(--brand); }
 .hx-uc-card strong { font-weight: 650; }
-.hx-uc-card strong::after { content: " \2192"; color: var(--blue); }
+a.hx-uc-card strong::after { content: " \2192"; color: var(--blue); }
 .hx-uc-card span { font-size: 0.9rem; color: var(--muted); }
 .hx-uc-more { margin-top: 18px; }
 .hx-uc-more a { font-weight: 600; color: var(--blue); }
@@ -472,6 +497,7 @@ html[data-theme="light"] .hx-uc-card { background: var(--bg-card-strong); }
 
 /* ---------- tablet ---------- */
 @media (min-width: 640px) {
+  .hx-uc-chips { grid-template-columns: repeat(3, minmax(0, 1fr)); }
   .hx-uc-cards { grid-template-columns: 1fr 1fr; }
   .hx-quotes { grid-template-columns: 1fr 1fr; }
   .hx-trust-list { grid-template-columns: 1fr 1fr; gap: 28px 36px; }
@@ -550,6 +576,7 @@ html[data-theme="light"] .hx-uc-card { background: var(--bg-card-strong); }
   .hx-uc-rules-any { grid-column: 1 / -1; }
   .hx-uc-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 48px; }
   .hx-uc-cards { grid-template-columns: repeat(3, 1fr); }
+  .hx-uc-chips { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
 
 @media (prefers-reduced-motion: reduce) {
