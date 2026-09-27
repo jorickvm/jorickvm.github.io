@@ -167,10 +167,6 @@ html[data-theme="light"] .hx-map { background-image: url("../home/map/hero-map-l
 }
 .hx-actions { display: flex; justify-content: center; gap: 12px; margin-top: 24px; }
 .hx-rating { margin-top: 6px; font-size: 0.84rem; color: var(--muted); }
-/* One quiet line under the button on the use-case pages: rating, price, platform. */
-.hx-meta { margin-top: 14px; font-size: 0.84rem; color: var(--muted-2); }
-.hx-meta a { color: var(--muted); }
-.hx-meta a:hover { color: var(--text); }
 .hx-rating a { color: inherit; }
 .hx-rating a:hover { color: var(--text); }
 
@@ -205,8 +201,6 @@ html[data-theme="light"] .hx-map { background-image: url("../home/map/hero-map-l
   width: calc(var(--hx-phone) * 0.84);
   margin-top: calc(var(--hx-phone) * 0.3);
 }
-/* Use-case pages show one phone; it centres without the overlap offset. */
-.hx-phones-single .hx-phone-front { margin-left: 0; }
 html.js .hx-phones.is-pre .hx-phone-front { transform: translateY(56px); opacity: 0; }
 html.js .hx-phones.is-pre .hx-phone-back { transform: translateY(84px); opacity: 0; }
 
@@ -357,112 +351,127 @@ html.js .hx-step-body { font-size: 0.95rem; }
 /* Same header width as the homepage, so the bar does not jump between pages
    (the old use-case stylesheet sets a narrower --max). */
 html:has(main.hx) { --max: 1160px; }
-.hx-kicker-dot { display: inline-block; width: 7px; height: 7px; margin-right: 8px; border-radius: 50%; background: var(--brand); vertical-align: 1px; }
-.hx-eyebrow-label { margin-bottom: 10px; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); }
 html[data-theme="dark"] .hx-map-schengen { background-image: url("../home/map/schengen-map-dark.svg?v=20260927a"); }
 html[data-theme="light"] .hx-map-schengen { background-image: url("../home/map/schengen-map-light.svg?v=20260927a"); }
 .hx-map-schengen { background-position: center 30%; }
 
-/* Use-case hero on phones: copy left-aligned, phones centred below, so it
-   reads as its own page rather than as the homepage. */
-.hx-hero-split { text-align: left; }
-.hx-hero-split h1 { margin: 0; }
-.hx-hero-split .hx-lede { margin: 16px 0 0; }
-.hx-hero-split .hx-actions { justify-content: flex-start; }
+/* A reference page, not a second homepage: copy is left-aligned, and every
+   section shares one content width, so nothing runs wider than the section
+   above it. */
+.hx-uc-wrap { width: min(1000px, 100%); margin: 0 auto; }
+.hx-uc-section { padding: 64px var(--hx-gutter) 0; }
+.hx-uc-final { padding-bottom: 88px; }
+.hx-uc-h2 { font-size: clamp(1.6rem, 1.2rem + 1.4vw, 2.2rem); line-height: 1.1; font-weight: 700; letter-spacing: -0.03em; }
+.hx-uc-head { max-width: 62ch; }
+.hx-uc-head p { margin-top: 12px; font-size: 1.02rem; color: var(--muted); }
 
-/* State colours follow the app: orange close to the limit, red at it. */
-.hx { --hx-warn: #E8913A; --hx-crit: #E5484D; }
-html[data-theme="light"] .hx { --hx-warn: #C4700F; --hx-crit: #D13438; }
+/* Hero: the promise, the button, and one phone. */
+.hx-uc-hero { position: relative; overflow: hidden; padding: 28px var(--hx-gutter) 0; }
+.hx-uc-hero-copy,
+.hx-uc-hero-device { position: relative; z-index: 2; }
+.hx-uc-hero h1 { max-width: 15ch; font-size: clamp(2.1rem, 1.5rem + 2.8vw, 3rem); line-height: 1.05; font-weight: 700; letter-spacing: -0.04em; }
+.hx-uc-hero .hx-lede { max-width: 46ch; margin: 16px 0 0; }
+.hx-uc-hero .hx-actions { flex-wrap: wrap; justify-content: flex-start; align-items: center; gap: 12px 22px; }
+.hx-uc-jump { font-weight: 600; color: var(--blue); }
+.hx-uc-jump::after { content: " \2193"; }
+.hx-uc-hero-device { width: min(60vw, 250px); margin: 40px auto 0; }
 
-/* The rolling-window explainer */
-.hx-window {
-  position: relative;
-  margin: 40px auto 0;
-  padding: 22px 20px 20px;
-  max-width: 980px;
+/* Supported rules, styled like the app's preset rows. */
+.hx-uc-rules { display: grid; gap: 10px; margin-top: 28px; }
+.hx-uc-rule {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  height: 100%;
+  min-height: 72px;
+  padding: 14px 16px;
   border: 1px solid var(--line);
-  border-radius: 28px;
+  border-radius: 16px;
+  background: var(--bg-elevated);
+  color: var(--text);
+  transition: border-color 160ms ease;
+}
+html[data-theme="light"] .hx-uc-rule { background: var(--bg-card-strong); }
+a.hx-uc-rule:hover { border-color: var(--brand); }
+.hx-uc-rule img { flex: none; width: 36px; height: 27px; border-radius: 5px; object-fit: cover; }
+.hx-uc-rule-text { flex: 1; min-width: 0; display: grid; gap: 2px; }
+.hx-uc-rule-text strong { font-size: 0.98rem; font-weight: 650; }
+.hx-uc-rule-text span { font-size: 0.86rem; color: var(--muted); }
+.hx-uc-rule-go { flex: none; font-size: 0.84rem; font-weight: 600; color: var(--blue); }
+.hx-uc-rule-go::after { content: " \2192"; }
+.hx-uc-rules-custom .hx-uc-rule { border-style: dashed; background: transparent; }
+.hx-uc-rule-plus { flex: none; display: grid; place-items: center; width: 36px; height: 27px; border: 1.5px dashed var(--line-strong); border-radius: 5px; font-weight: 600; color: var(--muted); }
+
+/* How it works: three numbered steps, each with its real screen. On phones
+   they sit in a row you swipe, so the page does not stack three phones. */
+.hx-uc-steps { display: grid; gap: 40px; margin-top: 36px; }
+.hx-uc-step { min-width: 0; }
+.hx-uc-step-device { width: min(100%, 240px); margin-bottom: 24px; }
+.hx-uc-step-n { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; font-size: 0.86rem; font-weight: 700; color: var(--blue); background: var(--blue-soft); }
+.hx-uc-step h3 { margin-top: 12px; font-size: 1.25rem; font-weight: 700; letter-spacing: -0.02em; }
+.hx-uc-step-body p { margin-top: 8px; color: var(--muted); }
+.hx-uc-step-body a { display: inline-block; margin-top: 12px; font-weight: 600; color: var(--blue); }
+@media (max-width: 899px) {
+  .hx-uc-steps {
+    grid-auto-flow: column;
+    grid-auto-columns: min(76%, 300px);
+    gap: 20px;
+    margin-inline: calc(var(--hx-gutter) * -1);
+    padding: 0 var(--hx-gutter) 8px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--hx-gutter);
+    scrollbar-width: none;
+  }
+  .hx-uc-steps::-webkit-scrollbar { display: none; }
+  .hx-uc-step { scroll-snap-align: start; }
+  /* Only the arrow on narrow rows; the word stays for screen readers. */
+  .hx-uc-rule { padding-right: 14px; }
+  .hx-uc-rule-go { font-size: 0; }
+  .hx-uc-rule-go::after { content: "\2192"; font-size: 1.05rem; }
+  .hx-uc-step-device { width: 100%; max-width: 220px; }
+}
+
+/* Go deeper: guides as cards, then the legal boundary. */
+.hx-uc-cards { display: grid; gap: 12px; margin-top: 28px; }
+.hx-uc-card {
+  display: grid;
+  align-content: start;
+  gap: 6px;
+  height: 100%;
+  padding: 20px 22px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--bg-elevated);
+  color: var(--text);
+  transition: border-color 160ms ease;
+}
+html[data-theme="light"] .hx-uc-card { background: var(--bg-card-strong); }
+.hx-uc-card:hover { border-color: var(--brand); }
+.hx-uc-card strong { font-weight: 650; }
+.hx-uc-card strong::after { content: " \2192"; color: var(--blue); }
+.hx-uc-card span { font-size: 0.9rem; color: var(--muted); }
+.hx-uc-more { margin-top: 18px; }
+.hx-uc-more a { font-weight: 600; color: var(--blue); }
+.hx-uc-note { max-width: 70ch; margin-top: 48px; padding: 2px 0 2px 18px; border-left: 3px solid var(--line-strong); }
+.hx-uc-note h2 { font-size: 1rem; font-weight: 650; }
+.hx-uc-note p { margin-top: 8px; font-size: 0.92rem; color: var(--muted); }
+
+/* One compact close instead of a second homepage finale. */
+.hx-uc-cta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px 32px;
+  padding: 28px;
+  border: 1px solid var(--line);
+  border-radius: 24px;
   background: var(--bg-elevated);
 }
-html[data-theme="light"] .hx-window { background: var(--bg-card-strong); }
-.hx-window-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; }
-.hx-window-count p:first-child { font-size: 2.2rem; line-height: 1; font-weight: 700; letter-spacing: -0.02em; font-variant-numeric: tabular-nums; }
-.hx-window-limit { color: var(--muted-2); font-weight: 600; }
-.hx-window-caption { margin-top: 8px; font-size: 0.88rem; color: var(--muted); }
-.hx-window-state { flex: none; padding: 6px 12px; border-radius: 999px; font-size: 0.84rem; font-weight: 650; white-space: nowrap; color: var(--blue); background: var(--blue-soft); transition: color 200ms ease, background-color 200ms ease; }
-.hx-window-state[data-tone="warn"] { color: var(--hx-warn); background: color-mix(in srgb, var(--hx-warn) 16%, transparent); }
-.hx-window-state[data-tone="crit"] { color: var(--hx-crit); background: color-mix(in srgb, var(--hx-crit) 16%, transparent); }
-.hx-window-used { transition: color 200ms ease; }
-.hx-window[data-tone="warn"] .hx-window-used { color: var(--hx-warn); }
-.hx-window[data-tone="crit"] .hx-window-used { color: var(--hx-crit); }
-.hx-window-chart { display: block; width: 100%; height: 132px; margin-top: 18px; overflow: visible; cursor: grab; touch-action: pan-y; border-radius: 8px; }
-.hx-window.is-dragging .hx-window-chart { cursor: grabbing; }
-.hx-window-chart:focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; }
-/* The window's grab handle, sitting on its right edge. */
-.hx-window-handle {
-  position: absolute;
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  background: var(--bg-card-strong);
-  border: 2px solid var(--brand);
-  box-shadow: var(--shadow);
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-}
-.hx-window-handle::before {
-  content: "";
-  position: absolute;
-  inset: 5px 7px;
-  border-left: 2px solid var(--brand);
-  border-right: 2px solid var(--brand);
-}
-.hx-window-hint { font-weight: 600; color: var(--blue); }
-.hx-window-hint::before { content: "\2194"; margin-right: 6px; }
-.hx-window-chart .band { fill: var(--blue-soft); stroke: var(--brand); stroke-width: 1; vector-effect: non-scaling-stroke; }
-.hx-window-chart .trip { fill: var(--line-strong); }
-.hx-window-chart .trip.is-in { fill: var(--brand); }
-.hx-window-chart .trip.is-planned { fill: transparent; stroke: var(--brand); stroke-width: 1.5; stroke-dasharray: 4 3; vector-effect: non-scaling-stroke; }
-.hx-window-chart .trip.is-planned.is-in { fill: var(--blue-soft); }
-.hx-window-chart .today { stroke: var(--text); stroke-width: 1.5; vector-effect: non-scaling-stroke; }
-.hx-window-chart .tick { stroke: var(--line); stroke-width: 1; vector-effect: non-scaling-stroke; }
-.hx-window-labels { position: relative; height: 18px; margin-top: 4px; font-size: 0.72rem; color: var(--muted-2); }
-.hx-window-labels span { position: absolute; transform: translateX(-50%); white-space: nowrap; }
-.hx-window-legend { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 14px; font-size: 0.78rem; color: var(--muted-2); }
-.hx-window-legend i { display: inline-block; width: 16px; height: 8px; margin-right: 6px; border-radius: 2px; vertical-align: 1px; }
-.hx-window-legend .is-in { background: var(--brand); }
-.hx-window-legend .is-out { background: var(--line-strong); }
-.hx-window-legend .is-planned { border: 1.5px dashed var(--brand); }
-.hx-window-foot { max-width: 56ch; margin: 22px auto 0; text-align: center; font-size: 0.95rem; color: var(--muted); }
-
-/* Feature rows */
-.hx-features .hx-wrap { display: grid; gap: 72px; }
-.hx-feature { display: grid; gap: 28px; justify-items: center; text-align: center; }
-.hx-feature-copy { max-width: 46ch; }
-.hx-feature-copy h3 { font-size: 1.5rem; line-height: 1.15; font-weight: 700; letter-spacing: -0.02em; }
-.hx-feature-copy p:not(.hx-eyebrow-label) { margin-top: 10px; color: var(--muted); }
-.hx-feature-copy a { display: inline-block; margin-top: 14px; color: var(--blue); font-weight: 600; }
-.hx-feature-device { width: min(62vw, 250px); }
-
-
-.hx-kicker { margin-bottom: 14px; font-size: 0.84rem; font-weight: 600; color: var(--muted); }
-.hx-kicker a { color: var(--blue); }
-.hx-usecase .hx-hero h1 { max-width: 16ch; font-size: clamp(2.1rem, 1.5rem + 2.8vw, 2.7rem); }
-.hx-intro { max-width: 60ch; margin: 16px auto 0; font-size: 1.05rem; color: var(--muted); }
-.hx-visually-hidden {
-  position: absolute; width: 1px; height: 1px; overflow: hidden;
-  clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
-}
-.hx-reviews.hx-section:has(.hx-quote-solo) { padding-top: 0; }
-.hx-quote-solo { max-width: 620px; margin: 0 auto; padding: 32px; text-align: center; align-items: center; }
-.hx-quote-solo blockquote p:last-child { font-size: 1.1rem; color: var(--text); }
-.hx-quote-solo figcaption a { color: var(--blue); font-weight: 600; }
-.hx-boundary { max-width: 52ch; margin: 22px auto 0; font-size: 0.84rem; color: var(--muted-2); }
-.hx-deeper { margin-top: 72px; padding-top: 28px; border-top: 1px solid var(--line); text-align: left; }
-.hx-deeper h2 { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted-2); }
-.hx-deeper ul { display: grid; gap: 12px 32px; margin-top: 16px; }
-.hx-deeper a { color: var(--muted); transition: color 160ms ease; }
-.hx-deeper a:hover { color: var(--blue); }
+html[data-theme="light"] .hx-uc-cta { background: var(--bg-card-strong); }
+.hx-uc-cta h2 { font-size: 1.45rem; font-weight: 700; letter-spacing: -0.02em; }
+.hx-uc-cta p { margin-top: 6px; color: var(--muted); }
 
 /* ---------- reveal (only what starts below the fold is pre-hidden) ---------- */
 [data-hx-reveal] { transition: opacity 700ms ease, transform 700ms var(--hx-ease); }
@@ -480,6 +489,7 @@ html[data-theme="light"] .hx-window { background: var(--bg-card-strong); }
 
 /* ---------- tablet ---------- */
 @media (min-width: 640px) {
+  .hx-uc-cards { grid-template-columns: 1fr 1fr; }
   .hx-quotes { grid-template-columns: 1fr 1fr; }
   .hx-trust-list { grid-template-columns: 1fr 1fr; gap: 28px 36px; }
 }
@@ -544,28 +554,19 @@ html[data-theme="light"] .hx-window { background: var(--bg-card-strong); }
   .hx-trust-list { grid-template-columns: repeat(4, 1fr); gap: 36px; margin-top: 48px; }
 
   .hx-qr { display: flex; }
-  .hx-usecase .hx-hero h1 { max-width: 20em; font-size: clamp(2.5rem, 3.6vw, 3.2rem); }
-  /* Use-case hero: copy left, phones right, so it never reads as the homepage. */
-  .hx-hero-split {
-    display: grid;
-    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-    align-items: center;
-    gap: 40px;
-    padding: 48px max(var(--hx-gutter), calc((100% - 1080px) / 2)) 80px;
-    text-align: left;
-  }
-  .hx-hero-split .hx-map { height: 100%; }
-  .hx-hero-split h1 { margin: 0; max-width: 14ch; }
-  .hx-hero-split .hx-lede { margin: 18px 0 0; max-width: 46ch; }
-  .hx-hero-split .hx-actions { justify-content: flex-start; }
-  .hx-hero-split .hx-phones { margin-top: 0; padding-bottom: 0; --hx-phone: clamp(230px, 36vh, 300px); }
-  .hx-window { padding: 30px 32px 26px; }
-  .hx-window-chart { height: 150px; }
-  .hx-features .hx-wrap { gap: 112px; }
-  .hx-feature { grid-template-columns: 1fr 1fr; gap: 64px; justify-items: stretch; align-items: center; text-align: left; }
-  .hx-feature-device { width: 270px; justify-self: center; }
-  .hx-feature:nth-child(even) .hx-feature-copy { order: 2; }
-  .hx-deeper ul { grid-template-columns: repeat(3, 1fr); }
+  .hx-uc-section { padding-top: 104px; }
+  .hx-uc-final { padding-bottom: 120px; }
+  .hx-uc-hero { padding: 56px var(--hx-gutter) 16px; }
+  .hx-uc-hero .hx-map { height: 100%; }
+  .hx-uc-hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) 280px; align-items: center; gap: 64px; }
+  .hx-uc-hero h1 { font-size: clamp(2.6rem, 3.6vw, 3.3rem); }
+  .hx-uc-hero .hx-lede { font-size: 1.12rem; }
+  .hx-uc-hero-device { width: 280px; margin: 0; }
+  .hx-uc-rules { grid-template-columns: 1fr 1fr; }
+  .hx-uc-rules-custom { grid-column: 1 / -1; }
+  .hx-uc-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 48px; }
+  .hx-uc-cards { grid-template-columns: repeat(3, 1fr); }
+  .hx-uc-cta { padding: 32px 40px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
