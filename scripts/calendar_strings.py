@@ -39,7 +39,7 @@ def check(english, translated, locale="en"):
     if source.keys() != target.keys():
         raise ValueError("calendar string keys differ from English")
     for key, original in source.items():
-        if isinstance(original, dict):
+        if isinstance(original, dict) or isinstance(target[key], dict):
             required = REQUIRED_PLURALS.get(locale, {"one", "other"})
             if not isinstance(target[key], dict) or not required <= target[key].keys():
                 raise ValueError(f"{key}: missing plural variants for {locale}")

@@ -27,6 +27,11 @@ class CalendarStringsTests(unittest.TestCase):
             calendar_strings.check(source, block({'away': {'one': '{n} день', 'other': '{n} дней'}}), 'ru')
         calendar_strings.check(source, block({'away': {'one': '{n} день', 'few': '{n} дня', 'many': '{n} дней', 'other': '{n} дня'}}), 'ru')
 
+    def test_target_can_add_plurals_but_must_cover_its_language(self):
+        source = block({'left': '{n} left'})
+        with self.assertRaises(ValueError):
+            calendar_strings.check(source, block({'left': {'one': 'Остался {n} день', 'other': 'Осталось {n} дней'}}), 'ru')
+
     def test_japanese_single_plural_form_and_numbers(self):
         source = block({'away': {'one': '{n} of 180 days', 'other': '{n} of 180 days'}})
         calendar_strings.check(source, block({'away': {'other': '180日中{n}日'}}), 'ja')

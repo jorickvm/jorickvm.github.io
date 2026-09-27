@@ -196,6 +196,7 @@ def visible_text(markup: str) -> set[str]:
 EXACT_ALLOW = {"Destination Thailand Visa (DTV)", "Electronic Travel Authorisation (ETA)", "Long Residence UK Ancestry Hong Kong BN O"}
 
 LOCALE_ALLOW = {
+    "fr": {"Ontario (OHIP)", "Alberta (AHCIP)", "Québec (RAMQ)"},
     "nl": {"Québec (RAMQ)", "Alberta (AHCIP)", "British Columbia (MSP)", "Ontario (OHIP)", "in Québec.", "Malta: Nomad Residence Permit", "Thailand: Destination Thailand Visa (DTV)", "India, e-Tourist Visa", "Entry/Exit System (EES)"},
 }
 
