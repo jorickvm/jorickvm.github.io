@@ -153,7 +153,7 @@ html[data-theme="light"] .hx-map { background-image: url("../home/map/hero-map-l
 .hx-hero h1 {
   max-width: 13ch;
   margin: 0;
-  font-size: var(--fs-display);
+  font-size: var(--fs-hero);
   line-height: 1.04;
   font-weight: 700;
   letter-spacing: -0.04em;
@@ -164,10 +164,18 @@ html[data-theme="light"] .hx-map { background-image: url("../home/map/hero-map-l
   font-size: 1.08rem;
   color: var(--muted);
 }
-.hx-actions { display: flex; justify-content: flex-start; gap: 12px; margin-top: 24px; }
-.hx-rating { margin-top: 6px; font-size: 0.84rem; color: var(--muted); }
-.hx-rating a { color: inherit; }
-.hx-rating a:hover { color: var(--text); }
+.hx-actions { display: flex; flex-wrap: wrap; justify-content: flex-start; align-items: center; gap: 12px 22px; margin-top: 24px; }
+
+/* Hero pill and rating: availability above the headline, the App Store
+   rating beside the button, linking down to the reviews. */
+.hx-pill { display: inline-flex; align-items: center; gap: 10px; margin-bottom: 20px; padding: 7px 14px; border: 1px solid var(--line); border-radius: 999px; background: var(--bg-card); color: var(--muted); font-size: 0.88rem; }
+.hx-pill-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--blue); }
+.hx-hero-rating { display: inline-flex; align-items: center; gap: 4px; color: var(--brand); }
+.hx-hero-rating .hx-laurel { width: 22px; }
+.hx-hero-rating-core { display: flex; flex-direction: column; align-items: center; line-height: 1; }
+.hx-hero-rating-score { font-size: 1.65rem; font-weight: 700; letter-spacing: -0.02em; color: var(--text); font-variant-numeric: tabular-nums; }
+.hx-hero-rating-label { margin-top: 3px; font-size: 0.62rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted-2); }
+.hx-hero-rating:hover .hx-hero-rating-score { color: var(--blue); }
 
 /* Front phone (dashboard) right and larger, back phone (tracker) left and
    lower, overlapping like the previous hero. Widths follow the viewport, so
@@ -277,13 +285,9 @@ html.js .hx-step h3 { font-size: 1.25rem; }
 html.js .hx-step-body { font-size: 0.95rem; }
 
 /* ---------- reviews ---------- */
-.hx-rating-badge { display: flex; justify-content: center; align-items: center; gap: 14px; color: var(--brand); }
 .hx-laurel { flex: none; width: 50px; height: auto; }
 .hx-laurel-right { transform: scaleX(-1); }
-.hx-rating-core { text-align: center; color: var(--text); }
-.hx-rating-score { font-size: clamp(3rem, 2.2rem + 3vw, 4.25rem); line-height: 1; font-weight: 700; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
-.hx-rating-label { margin-top: 8px; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted-2); }
-.hx-quotes { display: grid; gap: 14px; margin-top: 40px; }
+.hx-quotes { display: grid; gap: 14px; margin-top: 32px; }
 .hx-quote {
   display: flex;
   flex-direction: column;
@@ -483,7 +487,7 @@ a.hx-uc-card strong::after { content: " \2192"; color: var(--blue); }
 /* ---------- short phones (iPhone SE and the like): tighter hero copy ---------- */
 @media (max-width: 899px) and (max-height: 720px) {
   .hx-hero { padding-top: 18px; }
-  .hx-hero h1 { font-size: 2rem; }
+  .hx-hero h1 { font-size: 2.3rem; }
   .hx-lede { margin-top: 12px; font-size: 0.98rem; }
   .hx-actions { margin-top: 18px; }
   .hx-micro { margin-top: 10px; }
@@ -512,7 +516,7 @@ a.hx-uc-card strong::after { content: " \2192"; color: var(--blue); }
     text-align: left;
   }
   .hx-hero .hx-map { height: 100%; }
-  .hx-hero h1 { max-width: 12ch; margin: 0; font-size: var(--fs-display); }
+  .hx-hero h1 { max-width: 12ch; margin: 0; font-size: var(--fs-hero); }
   .hx-hero .hx-lede { max-width: 42ch; margin: 20px 0 0; font-size: 1.3rem; }
   .hx-hero .hx-actions { justify-content: flex-start; }
   .hx-lede { max-width: 62ch; font-size: 1.12rem; }
@@ -531,7 +535,7 @@ a.hx-uc-card strong::after { content: " \2192"; color: var(--blue); }
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
     gap: 64px;
-    margin-top: 0;
+    margin-top: 48px;
   }
   html.js .hx-story-pin { display: contents; }
   html.js .hx-story-stage {
@@ -562,9 +566,7 @@ a.hx-uc-card strong::after { content: " \2192"; color: var(--blue); }
   html.js .hx-step-body { max-width: 36ch; font-size: 1.12rem; }
   .hx-steps { text-align: left; }
 
-  /* Reviews: the rating on the left, the quotes beside it. */
-  .hx-reviews .hx-wrap { display: grid; grid-template-columns: 240px minmax(0, 1fr); align-items: center; gap: 64px; }
-  .hx-quotes { margin: 0; gap: 20px; }
+  .hx-quotes { gap: 20px; }
   /* FAQ: the heading on the left, the questions beside it. */
   .hx-faq-wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); align-items: start; gap: 64px; }
   .hx-faq { margin-top: 0; }

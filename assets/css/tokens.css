@@ -259,13 +259,15 @@ html {
    pages. Pages set their content width with --max (720px for articles, the
    full site width for marketing pages) inside that frame.
 
-   Headlines come in three tiers: display (homepage and use-case heroes), page
+   Headlines come in four tiers: hero (the homepage only), display (use-case
+   heroes), page
    (hubs, About, Privacy, Terms, changelog), and article (Help and Learn).
    Section headings come in two: marketing sections and article sections. */
 :root {
   --site-max: 1120px;
   --site-gutter: 20px;
-  --fs-display: clamp(2.3rem, 1.4rem + 3.6vw, 4.5rem);
+  --fs-hero: clamp(2.65rem, 1.2rem + 4.6vw, 4.75rem);
+  --fs-display: clamp(2.3rem, 1.5rem + 3vw, 4rem);
   --fs-page: clamp(2.1rem, 1.6rem + 1.8vw, 3rem);
   --fs-article: clamp(1.9rem, 1.5rem + 1.3vw, 2.5rem);
   --fs-section: clamp(1.75rem, 1.3rem + 1.5vw, 2.4rem);
