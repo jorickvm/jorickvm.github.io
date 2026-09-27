@@ -114,7 +114,8 @@
   // The same arithmetic the app runs: look back `span` days from a date,
   // count every day inside a trip (arrival and departure included, overlaps
   // once), compare with `limit`. Tones follow the app: red at or over the
-  // limit, orange within 7 days or 15% of it.
+  // limit, orange within 7 days or 15% of it. The window itself is the
+  // control: drag it, or focus the chart and use the arrow keys.
   (function windowExplainer() {
     var box = page.querySelector('[data-hx-window]');
     if (!box) return;
@@ -127,11 +128,9 @@
     });
     var total = Math.round((to - from) / DAY) + 1;
     var svg = box.querySelector('[data-hx-chart]');
-    var slider = box.querySelector('[data-hx-slider]');
     var usedEl = box.querySelector('[data-hx-used]');
     var captionEl = box.querySelector('[data-hx-caption]');
     var stateEl = box.querySelector('[data-hx-state]');
-    var rangeEl = box.querySelector('[data-hx-range]');
     var lang = document.documentElement.lang || 'en';
     var dayFmt = new Intl.DateTimeFormat(lang, { day: 'numeric', month: 'short', timeZone: 'UTC' });
     var monthFmt = new Intl.DateTimeFormat(lang, { month: 'short', timeZone: 'UTC' });
@@ -173,6 +172,11 @@
     });
     var todayLine = node('line', { 'class': 'today', y1: 6, y2: 126 });
     svg.appendChild(todayLine);
+    // The grab handle is HTML, so it stays round while the chart stretches.
+    var handle = document.createElement('span');
+    handle.className = 'hx-window-handle';
+    handle.setAttribute('aria-hidden', 'true');
+    svg.parentNode.insertBefore(handle, svg.nextSibling);
 
     function used(date) {
       var start = date - (span - 1) * DAY, seen = {}, count = 0;
@@ -183,14 +187,20 @@
       });
       return count;
     }
+    var current = 0;
     function render(index) {
-      var date = from + index * DAY;
+      current = Math.max(0, Math.min(total - 1, index));
+      var date = from + current * DAY;
       var start = date - (span - 1) * DAY;
       var bandStart = Math.max(from, start);
       band.setAttribute('x', x(bandStart));
       band.setAttribute('width', Math.max(0, x(date + DAY) - x(bandStart)));
       todayLine.setAttribute('x1', x(date + DAY));
       todayLine.setAttribute('x2', x(date + DAY));
+      // SVG elements have no offsetLeft, so place the handle from measured boxes.
+      var sr = svg.getBoundingClientRect(), br = box.getBoundingClientRect();
+      handle.style.left = (sr.left - br.left + x(date + DAY) / 1000 * sr.width) + 'px';
+      handle.style.top = (sr.top - br.top + sr.height / 2) + 'px';
       tripNodes.forEach(function (n) {
         var a = Math.max(n.trip.a, start), b = Math.min(n.trip.b, date);
         if (b < a) { n.inside.setAttribute('width', 0); return; }
@@ -205,23 +215,52 @@
         : count === limit ? box.dataset.tAt
         : left === 1 ? box.dataset.tOneLeft : fill(box.dataset.tLeft, { n: left });
       usedEl.textContent = count;
-      var dateText = dayFmt.format(new Date(date));
-      captionEl.textContent = fill(box.dataset.tLabel, { used: count, date: dateText });
-      rangeEl.textContent = fill(box.dataset.tRange, { from: dayFmt.format(new Date(start)), to: dateText })
-        + (date > today ? ' · ' + box.dataset.tPlanned : '');
+      var caption = fill(box.dataset.tLabel, { used: count, date: dayFmt.format(new Date(date)) })
+        + (date > today ? ', ' + box.dataset.tPlanned : '');
+      captionEl.textContent = caption;
+      svg.setAttribute('aria-valuemin', 0);
+      svg.setAttribute('aria-valuemax', total - 1);
+      svg.setAttribute('aria-valuenow', current);
+      svg.setAttribute('aria-valuetext', caption);
     }
 
-    slider.min = 0;
-    slider.max = total - 1;
-    slider.step = 1;
     var todayIndex = Math.round((today - from) / DAY);
-    slider.value = todayIndex;
-    render(todayIndex);
     var playing = false;
-    slider.addEventListener('input', function () { playing = false; render(+slider.value); });
+    render(todayIndex);
+    window.addEventListener('resize', function () { render(current); });
+
+    // Drag anywhere on the chart: the window's right edge follows the pointer.
+    function indexAt(clientX) {
+      var r = svg.getBoundingClientRect();
+      return Math.round((clientX - r.left) / r.width * total) - 1;
+    }
+    var dragging = false;
+    svg.addEventListener('pointerdown', function (event) {
+      playing = false;
+      dragging = true;
+      svg.setPointerCapture(event.pointerId);
+      box.classList.add('is-dragging');
+      render(indexAt(event.clientX));
+    });
+    svg.addEventListener('pointermove', function (event) {
+      if (dragging) render(indexAt(event.clientX));
+    });
+    function stop() { dragging = false; box.classList.remove('is-dragging'); }
+    svg.addEventListener('pointerup', stop);
+    svg.addEventListener('pointercancel', stop);
+    svg.addEventListener('keydown', function (event) {
+      var step = event.shiftKey ? 7 : 1;
+      var next = event.key === 'ArrowRight' || event.key === 'ArrowUp' ? current + step
+        : event.key === 'ArrowLeft' || event.key === 'ArrowDown' ? current - step
+        : event.key === 'Home' ? 0 : event.key === 'End' ? total - 1 : null;
+      if (next === null) return;
+      event.preventDefault();
+      playing = false;
+      render(next);
+    });
 
     // Play once from early summer to today when the explainer first comes
-    // into view, so the window visibly slides. Touching the slider stops it.
+    // into view, so the window visibly slides. Touching it stops the play.
     if (reduceMotion || !hasObserver || !box.dataset.playFrom) return;
     var playIndex = Math.round((parse(box.dataset.playFrom) - from) / DAY);
     var played = false;
@@ -235,9 +274,7 @@
         if (t0 === null) t0 = ts;
         var p = Math.min(1, (ts - t0) / duration);
         var eased = 1 - Math.pow(1 - p, 3);
-        var index = Math.round(playIndex + (todayIndex - playIndex) * eased);
-        slider.value = index;
-        render(index);
+        render(Math.round(playIndex + (todayIndex - playIndex) * eased));
         if (p < 1) requestAnimationFrame(step);
       }
       requestAnimationFrame(step);

@@ -167,6 +167,10 @@ html[data-theme="light"] .hx-map { background-image: url("../home/map/hero-map-l
 }
 .hx-actions { display: flex; justify-content: center; gap: 12px; margin-top: 24px; }
 .hx-rating { margin-top: 6px; font-size: 0.84rem; color: var(--muted); }
+/* One quiet line under the button on the use-case pages: rating, price, platform. */
+.hx-meta { margin-top: 14px; font-size: 0.84rem; color: var(--muted-2); }
+.hx-meta a { color: var(--muted); }
+.hx-meta a:hover { color: var(--text); }
 .hx-rating a { color: inherit; }
 .hx-rating a:hover { color: var(--text); }
 
@@ -372,6 +376,7 @@ html[data-theme="light"] .hx { --hx-warn: #C4700F; --hx-crit: #D13438; }
 
 /* The rolling-window explainer */
 .hx-window {
+  position: relative;
   margin: 40px auto 0;
   padding: 22px 20px 20px;
   max-width: 980px;
@@ -390,7 +395,30 @@ html[data-theme="light"] .hx-window { background: var(--bg-card-strong); }
 .hx-window-used { transition: color 200ms ease; }
 .hx-window[data-tone="warn"] .hx-window-used { color: var(--hx-warn); }
 .hx-window[data-tone="crit"] .hx-window-used { color: var(--hx-crit); }
-.hx-window-chart { display: block; width: 100%; height: 132px; margin-top: 18px; overflow: visible; }
+.hx-window-chart { display: block; width: 100%; height: 132px; margin-top: 18px; overflow: visible; cursor: grab; touch-action: pan-y; border-radius: 8px; }
+.hx-window.is-dragging .hx-window-chart { cursor: grabbing; }
+.hx-window-chart:focus-visible { outline: 2px solid var(--blue); outline-offset: 4px; }
+/* The window's grab handle, sitting on its right edge. */
+.hx-window-handle {
+  position: absolute;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--bg-card-strong);
+  border: 2px solid var(--brand);
+  box-shadow: var(--shadow);
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.hx-window-handle::before {
+  content: "";
+  position: absolute;
+  inset: 5px 7px;
+  border-left: 2px solid var(--brand);
+  border-right: 2px solid var(--brand);
+}
+.hx-window-hint { font-weight: 600; color: var(--blue); }
+.hx-window-hint::before { content: "\2194"; margin-right: 6px; }
 .hx-window-chart .band { fill: var(--blue-soft); stroke: var(--brand); stroke-width: 1; vector-effect: non-scaling-stroke; }
 .hx-window-chart .trip { fill: var(--line-strong); }
 .hx-window-chart .trip.is-in { fill: var(--brand); }
@@ -400,29 +428,12 @@ html[data-theme="light"] .hx-window { background: var(--bg-card-strong); }
 .hx-window-chart .tick { stroke: var(--line); stroke-width: 1; vector-effect: non-scaling-stroke; }
 .hx-window-labels { position: relative; height: 18px; margin-top: 4px; font-size: 0.72rem; color: var(--muted-2); }
 .hx-window-labels span { position: absolute; transform: translateX(-50%); white-space: nowrap; }
-.hx-window-bottom { display: grid; gap: 8px; margin-top: 18px; }
-.hx-window-control { display: grid; gap: 8px; font-size: 0.84rem; font-weight: 600; color: var(--muted); }
-.hx-window-control input { width: 100%; accent-color: var(--brand); }
-.hx-window-range { font-size: 0.84rem; color: var(--muted-2); font-variant-numeric: tabular-nums; }
 .hx-window-legend { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 14px; font-size: 0.78rem; color: var(--muted-2); }
 .hx-window-legend i { display: inline-block; width: 16px; height: 8px; margin-right: 6px; border-radius: 2px; vertical-align: 1px; }
 .hx-window-legend .is-in { background: var(--brand); }
 .hx-window-legend .is-out { background: var(--line-strong); }
 .hx-window-legend .is-planned { border: 1.5px dashed var(--brand); }
 .hx-window-foot { max-width: 56ch; margin: 22px auto 0; text-align: center; font-size: 0.95rem; color: var(--muted); }
-
-/* Calculator vs AtlasDays */
-.hx-compare { display: grid; gap: 14px; max-width: 880px; margin: 40px auto 0; }
-.hx-compare-card { padding: 26px 24px; border: 1px solid var(--line); border-radius: 28px; }
-.hx-compare-card h3 { font-size: 1.1rem; font-weight: 650; }
-.hx-compare-card ul { display: grid; gap: 12px; margin-top: 16px; }
-.hx-compare-card li { position: relative; padding-left: 28px; color: var(--muted); }
-.hx-compare-card li::before { position: absolute; left: 0; top: 0; width: 18px; text-align: center; font-weight: 700; }
-.hx-compare-card.is-them li::before { content: "\2013"; color: var(--muted-2); }
-.hx-compare-card.is-us { background: var(--bg-elevated); border-color: color-mix(in srgb, var(--brand) 45%, transparent); }
-html[data-theme="light"] .hx-compare-card.is-us { background: var(--bg-card-strong); }
-.hx-compare-card.is-us li { color: var(--text); }
-.hx-compare-card.is-us li::before { content: "\2713"; color: var(--brand); }
 
 /* Feature rows */
 .hx-features .hx-wrap { display: grid; gap: 72px; }
@@ -550,7 +561,6 @@ html[data-theme="light"] .hx-compare-card.is-us { background: var(--bg-card-stro
   .hx-hero-split .hx-phones { margin-top: 0; padding-bottom: 0; --hx-phone: clamp(230px, 36vh, 300px); }
   .hx-window { padding: 30px 32px 26px; }
   .hx-window-chart { height: 150px; }
-  .hx-compare { grid-template-columns: 1fr 1fr; gap: 20px; }
   .hx-features .hx-wrap { gap: 112px; }
   .hx-feature { grid-template-columns: 1fr 1fr; gap: 64px; justify-items: stretch; align-items: center; text-align: left; }
   .hx-feature-device { width: 270px; justify-self: center; }
