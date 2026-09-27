@@ -47,6 +47,7 @@ jobs:
       - name: Check generated article output
         run: |
           python3 scripts/build_residency_hub.py --check
+          python3 scripts/build_hub_tile_order.py --check
           python3 scripts/build_site.py --check
           python3 scripts/build_route_outputs.py --check
       - name: Check generated governance and search data

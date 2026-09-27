@@ -193,12 +193,14 @@ def visible_text(markup: str) -> set[str]:
 
 # These complete text runs are also correct native Dutch. Do not allow a
 # province token to exempt a surrounding untranslated sentence.
-EXACT_ALLOW = {"Destination Thailand Visa (DTV)", "Electronic Travel Authorisation (ETA)", "Long Residence UK Ancestry Hong Kong BN O", "UK Immigration Rules Part Suitability SUI"}
+# Formal source-panel titles and statute identifiers are reference labels.
+EXACT_ALLOW = {"§ 10 StAG", "§ 12b StAG","Request for International Movement Records", "travel movements requests", "Entry/Exit System", "Boletín Oficial del Estado", "8 U.S.C. 1187(a)(7)", "8 U.S.C. 1202(g)", "IMM 5257 Schedule 1", "How to Calculate Physical Presence (CIT 0407)", "How to Calculate Physical Presence CIT", "deeming rule","Destination Thailand Visa (DTV)", "Electronic Travel Authorisation (ETA)", "Long Residence UK Ancestry Hong Kong BN O", "UK Immigration Rules Part Suitability SUI"}
 
 LOCALE_ALLOW = {
-    "es": {"Malta: Nomad Residence Permit", "Ontario (OHIP)", "Alberta (AHCIP)"},
+    "de": {". Portugal:"},
+    "es": {". Indonesia:", ". Portugal:", "Malta: Nomad Residence Permit", "Ontario (OHIP)", "Alberta (AHCIP)"},
     "fr": {"Ontario (OHIP)", "Alberta (AHCIP)", "Québec (RAMQ)"},
-    "nl": {"Québec (RAMQ)", "Alberta (AHCIP)", "British Columbia (MSP)", "Ontario (OHIP)", "in Québec.", "Malta: Nomad Residence Permit", "Thailand: Destination Thailand Visa (DTV)", "India, e-Tourist Visa", "Entry/Exit System (EES)"},
+    "nl": {". Portugal:", "Québec (RAMQ)", "Alberta (AHCIP)", "British Columbia (MSP)", "Ontario (OHIP)", "in Québec.", "Malta: Nomad Residence Permit", "Thailand: Destination Thailand Visa (DTV)", "India, e-Tourist Visa", "Entry/Exit System (EES)"},
 }
 
 

@@ -56,6 +56,8 @@ def redirect_outputs(locales, translations, sources, strings):
         for old, target in registry.items():
             record = sources[target] if code == default_locale_code() else translations.get(code, {}).get(target)
             if not record:
+                if locale.get("status") == "draft":
+                    continue
                 raise ValueError(f"{code}: redirect target has no translation: {target}")
             prefix = locale.get("route_prefix", "")
             href = prefix + "/" + target.removesuffix(".html")

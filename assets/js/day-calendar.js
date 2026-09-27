@@ -56,10 +56,12 @@
   var fullDate = dateFormat({ day: "numeric", month: "long", year: "numeric" });
   var monthDate = dateFormat({ month: "long", year: "numeric" });
   var shortMonth = dateFormat({ month: "short" });
+  var shortDate = dateFormat({ day: "numeric", month: "short" });
+  var shortDateYear = dateFormat({ day: "numeric", month: "short", year: "numeric" });
   var weekday = dateFormat({ weekday: "narrow" });
   function label(n) { return fullDate.format(new Date(n * DAY)); }
   function short(n, withYear) {
-    return dateFormat({ day: "numeric", month: "short", year: withYear ? "numeric" : undefined }).format(new Date(n * DAY));
+    return (withYear ? shortDateYear : shortDate).format(new Date(n * DAY));
   }
   function plural(n, variants) { return variants[plurals.select(n)] || variants.other; }
   function el(tag, attrs, text) {
