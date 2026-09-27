@@ -506,17 +506,25 @@ a.hx-uc-card strong::after { content: " \2192"; color: var(--blue); }
 /* ---------- desktop ---------- */
 @media (min-width: 900px) {
   .hx { --hx-gutter: 40px; --hx-section: 120px; --hx-sticky-top: 96px; }
-  .hx-hero { padding-top: 30px; }
-  /* Two lines on a laptop, so the phones start higher. */
-  .hx-hero h1 { max-width: 18.5em; font-size: clamp(2.6rem, 4.1vw, 3.6rem); }
+  /* Homepage hero: copy left, phones right, inside the same edges as the
+     header and the sections below, like the use-case pages. */
+  .hx-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: 64px;
+    padding: 64px max(var(--hx-gutter), calc((100% - var(--max, 1080px)) / 2)) 72px;
+    text-align: left;
+  }
+  .hx-hero .hx-map { height: 100%; }
+  .hx-hero h1 { max-width: 12ch; margin: 0; font-size: clamp(3rem, 4.8vw, 4.1rem); }
+  .hx-hero .hx-lede { max-width: 40ch; margin: 18px 0 0; font-size: 1.28rem; }
+  .hx-hero .hx-actions { justify-content: flex-start; }
   .hx-lede { max-width: 62ch; font-size: 1.12rem; }
   .hx-phones {
-    --hx-phone: clamp(230px, 33vh, 300px);
-    margin-top: 26px;
-    padding-bottom: 88px;
-  }
-  @supports (height: 1svh) {
-    .hx-phones { --hx-phone: clamp(230px, 33svh, 300px); }
+    --hx-phone: 290px;
+    margin-top: 0;
+    padding: 0 0 40px;
   }
 
   .hx-cases { grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 56px; }
