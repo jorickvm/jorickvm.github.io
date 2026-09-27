@@ -37,6 +37,7 @@ HUB_TEMPLATE = SOURCE_ROOT / "templates" / "hub.html"
 STANDALONE_TEMPLATE = SOURCE_ROOT / "templates" / "standalone.html"
 HEADER_TEMPLATE = SOURCE_ROOT / "templates" / "partials" / "site-header.html"
 FOOTER_TEMPLATE = SOURCE_ROOT / "templates" / "partials" / "site-footer.html"
+REDIRECT_TEMPLATE = SOURCE_ROOT / "templates" / "redirect.html"
 CLUSTER_DATA_PATH = SOURCE_ROOT / "data" / "content-clusters.json"
 BUILD_VERSION = "20260815a"
 VARIANT_VERSIONS = {("article", "help20260802"): "20260927a", ("hub", "92c3adc0daf3"): "20260927a"}
@@ -52,6 +53,7 @@ WASH_SUBTLE = ' class="wash-subtle"'
 def redirect_outputs(locales, translations, sources, strings):
     """Merged Learn routes remain generated and covered by --check in each locale."""
     registry = json.loads((SOURCE_ROOT / "data/redirects.json").read_text(encoding="utf-8"))
+    template = REDIRECT_TEMPLATE.read_text(encoding="utf-8")
     for code, locale in locales.items():
         for old, target in registry.items():
             record = sources[target] if code == default_locale_code() else translations.get(code, {}).get(target)
@@ -66,21 +68,18 @@ def redirect_outputs(locales, translations, sources, strings):
             description = record.get("description") or description_of(record)
             message = html.escape(strings["help.continue"][code])
             colon = html.escape(locale.get("label_colon", ":"))
-            rendered = f'''<!DOCTYPE html>
-<html lang="{html.escape(locale['html_lang'])}">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{title}{html.escape(locale['title_separator'])}AtlasDays</title>
-  <meta name="description" content="{html.escape(description, quote=True)}" />
-  <meta name="robots" content="noindex,follow" />
-  <link rel="canonical" href="https://atlasdays.app{href}" />
-  <meta http-equiv="refresh" content="0;url={href}" />
-  <link rel="icon" href="/assets/brand/favicon.png" />
-</head>
-<body><p>{message}{colon} <a href="{href}">{title}</a></p></body>
-</html>
-'''
+            replacements = {
+                "{{HTML_LANG}}": html.escape(locale["html_lang"]),
+                "{{TITLE}}": title + html.escape(locale["title_separator"]) + "AtlasDays",
+                "{{HEADLINE}}": title,
+                "{{DESCRIPTION}}": html.escape(description, quote=True),
+                "{{TARGET}}": html.escape(href, quote=True),
+                "{{CONTINUE}}": message,
+                "{{COLON}}": colon,
+            }
+            rendered = template
+            for marker, value in replacements.items():
+                rendered = rendered.replace(marker, value)
             yield SITE_ROOT / (prefix.lstrip("/") + "/" + old).lstrip("/"), rendered
 
 
