@@ -41,7 +41,9 @@ SOURCE_ROOT = ROOT / "_site-src"
 DATA = SOURCE_ROOT / "data"
 
 TAG = re.compile(r"<[^>]+>")
-STRIPPED = re.compile(r"<script.*?</script>|<svg.*?</svg>|<!--.*?-->|<pre.*?</pre>|<code.*?</code>", re.DOTALL)
+STRIPPED = re.compile(r"<script.*?</script>|<svg.*?</svg>|<!--.*?-->|<pre.*?</pre>|<code.*?</code>|<div\b[^>]*\blang=\"en\"[^>]*>.*?</div>", re.DOTALL)
+# A <div lang="en"> is English on purpose (a quoted original, such as an App
+# Store review shown beside its translation), so it is not "left in English".
 RENDERED_ATTRS = re.compile(r'(?:placeholder|aria-label|title|alt)="([^"]{4,})"')
 WORD = re.compile(r"[A-Za-z][A-Za-z'’.-]*")
 PARTIAL_RUN_WORDS = 6

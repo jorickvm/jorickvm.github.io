@@ -85,6 +85,9 @@ def parse_args() -> argparse.Namespace:
 def visible_text(fragment: str) -> str:
     """Prose only, so a rule never fires on markup or a URL."""
     without_comments = re.sub(r"<!--.*?-->", "\n", fragment, flags=re.DOTALL)
+    # English on purpose (a quoted original shown beside its translation):
+    # neither the target language's typography nor its terminology applies.
+    without_comments = re.sub(r'<div\b[^>]*\blang="en"[^>]*>.*?</div>', "\n", without_comments, flags=re.DOTALL)
     without_comments = CAL_BLOCK.sub("\n".join(cal_prose(fragment)), without_comments)
     # Newline rather than space, so text in two different elements never reads
     # as one sentence to the typography rules below.

@@ -305,6 +305,15 @@ html.js .hx-step-body { font-size: 0.95rem; }
 .hx-quote blockquote .hx-quote-stars { color: var(--brand); }
 .hx-quote figcaption { font-size: 0.84rem; color: var(--muted-2); }
 
+/* Translated pages: the original review first, with a button top-right that
+   swaps in the translation. Without JavaScript the button cannot work, so it
+   is not shown and the original stays. */
+.hx-quote[data-hx-review] { position: relative; }
+.hx-quote-toggle { position: absolute; top: 18px; right: 18px; padding: 4px 11px; border: 1px solid var(--line); border-radius: 999px; background: transparent; color: var(--blue); font: inherit; font-size: 0.76rem; font-weight: 600; cursor: pointer; }
+.hx-quote-toggle:hover { border-color: var(--brand); }
+html:not(.js) .hx-quote-toggle { display: none; }
+.hx-quote-text[hidden] { display: none; }
+
 /* ---------- privacy ---------- */
 .hx-trust-list { display: grid; gap: 22px; margin-top: 36px; }
 .hx-trust-list > div { padding-top: 16px; border-top: 1px solid var(--line-strong); }

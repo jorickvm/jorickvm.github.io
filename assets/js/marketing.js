@@ -109,4 +109,21 @@
     scrollHandlers.push(update);
     update();
   })();
+
+  // ---------- Reviews on translated pages ----------
+  // The reviewer's own words show first; the button swaps in the translation
+  // into the page's language and back. English pages have no button.
+  page.querySelectorAll('[data-hx-review]').forEach(function (review) {
+    var button = review.querySelector('.hx-quote-toggle');
+    var original = review.querySelector('[data-hx-original]');
+    var translation = review.querySelector('[data-hx-translation]');
+    if (!button || !original || !translation) return;
+    button.addEventListener('click', function () {
+      var translated = button.getAttribute('aria-pressed') !== 'true';
+      button.setAttribute('aria-pressed', String(translated));
+      original.hidden = translated;
+      translation.hidden = !translated;
+      button.textContent = translated ? button.dataset.hide : button.dataset.show;
+    });
+  });
 })();
