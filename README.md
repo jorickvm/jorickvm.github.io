@@ -50,7 +50,7 @@ Templates and partials carry two marker forms, both resolved by `scripts/locales
 {{r:/help/}}     an internal route, locale-prefixed only when that page exists in the locale
 ```
 
-The `{{r:}}` fallback is what makes partial coverage legal: a Japanese Help page links to the Japanese Help hub but to the English Travel Rules hub, because no Japanese one exists. Localising a single Learn article later is a data change, not a code change.
+The `{{r:}}` fallback supports a draft locale while its coverage grows: a link uses the locale route only when that translated page exists. Adding a translation is a data change, not a code change.
 
 A locale carries `status: draft | published`. A draft locale builds and previews locally but is marked `noindex` and excluded from the sitemap, hreflang, `llms.txt`, and the language switcher. That is how a new language is verified end to end before it becomes discoverable.
 
@@ -61,6 +61,8 @@ A locale also carries `coverage`. Under `complete`, every English page must have
 Adding the next language should be `locales.json` + a `ui-strings.json` column + an overlay registry + fragments. If it needs a change in `scripts/`, that is a bug in the machinery, not a missing feature.
 
 ### Translating
+
+Interactive day-calendar messages live in the article fragment’s `<script type="application/json" data-cal-strings>` block. Translate its values and plural variants; preserve the keys and placeholders. The checks validate these messages alongside the visible prose. Dates and weekdays use the document language through `Intl`, while downloaded CSV headers, country names and notes remain English for the AtlasDays importer.
 
 1. Refresh the terminology snapshot if the app repo has moved: `python3 scripts/sync_glossary.py`. It covers every non-English locale in `locales.json`.
 2. Write `_site-src/content/<code>/<section>/<slug>.html`, keeping the English structure (see the checks below).
@@ -124,7 +126,7 @@ Serves the committed HTML with GitHub Pages' extensionless URLs, so links resolv
 | `locales.py` | Shared locale registry, marker resolution, dates, and translation hashing. |
 | `check_external_sources.py` | Weekly link check over the official sources articles cite. |
 | `report_source_health.py` | Turns that report into the GitHub issue the weekly workflow maintains. |
-| `sync_changelog.py` | Copies release cards from the app repo into `changelog.html`. |
+| `sync_changelog.py` | Replaces release cards in the changelog source fragment; rebuild afterwards. |
 | `audit_site.py` | The site auditor, and the shared HTML parser other scripts import. |
 | `serve_site.py` | Local preview server. |
 

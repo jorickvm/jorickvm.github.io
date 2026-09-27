@@ -162,9 +162,23 @@ PROPER_NOUN = re.compile(r"^(?:[A-Z][\w'&.-]*\s+){1,3}[A-Z][\w'&.-]*$")
 BREADCRUMB_TAIL = re.compile(r"^/\s*(?:[A-Z][\w'&.-]*\s*){1,4}$")
 
 
+def without_csv_schema_cells(markup: str) -> str:
+    """CSV example schema values stay English; free-text Notes still translate."""
+    def table(match):
+        def row(match):
+            column = 0
+            def cell(match):
+                nonlocal column
+                column += 1
+                return match.group(1) + ("" if column <= 5 else match.group(2)) + match.group(3)
+            return re.sub(r"(<td\b[^>]*>)(.*?)(</td>)", cell, match.group(0), flags=re.DOTALL)
+        return re.sub(r"<tr\b[^>]*>.*?</tr>", row, match.group(0), flags=re.DOTALL)
+    return re.sub(r'<div\b[^>]*class="[^"]*\bdata-table-code\b[^"]*"[^>]*>.*?</div>', table, markup, flags=re.DOTALL)
+
+
 def visible_runs(markup: str) -> set[str]:
     """Every non-empty rendered text run, prose and attributes alike."""
-    body = STRIPPED.sub(" ", markup)
+    body = STRIPPED.sub(" ", without_csv_schema_cells(markup))
     found = {html.unescape(" ".join(chunk.split())) for chunk in TAG.split(body)}
     found.update(cal_prose(markup))
     for match in RENDERED_ATTRS.finditer(body):
@@ -179,13 +193,17 @@ def visible_text(markup: str) -> set[str]:
 
 # These complete text runs are also correct native Dutch. Do not allow a
 # province token to exempt a surrounding untranslated sentence.
+EXACT_ALLOW = {"Destination Thailand Visa (DTV)", "Electronic Travel Authorisation (ETA)", "Long Residence UK Ancestry Hong Kong BN O"}
+
 LOCALE_ALLOW = {
-    "nl": {"Québec (RAMQ)", "Alberta (AHCIP)", "British Columbia (MSP)", "Ontario (OHIP)", "in Québec.", "Malta: Nomad Residence Permit", "Thailand: Destination Thailand Visa (DTV)"},
+    "nl": {"Québec (RAMQ)", "Alberta (AHCIP)", "British Columbia (MSP)", "Ontario (OHIP)", "in Québec.", "Malta: Nomad Residence Permit", "Thailand: Destination Thailand Visa (DTV)", "India, e-Tourist Visa", "Entry/Exit System (EES)"},
 }
 
 
 def is_allowed(text: str, code: str = "") -> bool:
-    if text in LOCALE_ALLOW.get(code, set()):
+    if re.fullmatch(r"[A-Z]{3}\s+[0-9][0-9,.\u00a0\u202f ]*", text):
+        return True
+    if text in EXACT_ALLOW or text in LOCALE_ALLOW.get(code, set()):
         return True
     residual = text
     found_brand = False
