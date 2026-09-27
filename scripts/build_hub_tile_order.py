@@ -102,7 +102,7 @@ def main() -> int:
             # hub. One line in hub_collation.JAPANESE_READINGS fixes it.
             raise SystemExit(
                 f"No {code} reading for: {', '.join(blocked)}\n"
-                "  Add it to JAPANESE_READINGS in scripts/hub_collation.py."
+                "  Add the locale-specific reading in scripts/hub_collation.py."
             )
         ordered = sorted(tiles, key=lambda t: sort_key(name_of(t), code))
         rel = path.relative_to(ROOT).as_posix()

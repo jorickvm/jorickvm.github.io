@@ -1,0 +1,107 @@
+    <nav class="breadcrumb">
+      <a href="/ko/">AtlasDays</a> / <a href="/ko/learn/">여행 규정</a> / 영국
+    </nav>
+    <img class="title-flag" src="/assets/flags/gb.png" alt="영국 국기" width="56" height="42" />
+    <h1>영국 영주권(ILR) 해외 체류 계산기: 임의의 12개월 중 180일</h1>
+    <p class="subtitle">출국일과 귀국일을 선택해 12개월 중 해외 체류가 가장 많았던 기간을 영주권 한도와 비교하십시오. 예약 전에 예정된 여행을 추가해 계획을 확인할 수도 있습니다.</p>
+    <p class="verified">최종 확인: 2026년 9월</p>
+
+    <div class="tldr">
+      <p><strong>요약:</strong> 영국 영주권(ILR)의 연속 거주 요건을 유지하려면 어느 12개월 기간에도 영국 밖에서 보낸 날이 어느 12개월 기간에도 <strong>하루 전체 기준 180일을 초과해서는 안 됩니다</strong>. 하루 전체만 계산하므로 출국일과 귀국일은 해외 체류일에서 제외됩니다.</p>
+    </div>
+
+    <h2>해외 체류 일수 확인</h2>
+    <div class="daycal" id="uk-ilr" data-day-calendar="ukIlr">
+      <script type="application/json" data-cal-strings>
+{
+  "hintStart": "영국 출국일을 누른 다음 귀국일을 누르십시오.",
+  "hintEnd": "이제 여행의 다른 끝 날짜를 누르십시오. 취소하려면 {date} 날짜를 다시 누르십시오.",
+  "hintMove": "여행의 이쪽 끝 날짜를 바꾸려면 새 날짜를 누르십시오. 유지하려면 {date} 날짜를 다시 누르십시오.",
+  "inTrip": "영국 밖 체류",
+  "pending": "새 여행 시작",
+  "held": "여행 끝 날짜 선택됨",
+  "empty": "아직 여행이 없습니다.",
+  "deleteTrip": "여행 삭제",
+  "tripAway": {
+    "other": "{n}일 해외 체류"
+  },
+  "headline": "임의의 12개월 중 해외 체류 {n}일 / 180일",
+  "headlineEmpty": "해외 체류 0일 / 180일",
+  "left": "{n}일 남음",
+  "over": {
+    "other": "{n}일 초과"
+  },
+  "emptyResult": "영국 밖 여행을 표시하면 해외 체류일이 가장 많은 12개월을 확인할 수 있습니다.",
+  "worstWindow": "해외 체류일이 가장 많은 12개월은 {from}부터 {to}까지입니다."
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span><span>일</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+          <button type="button" class="cal-import" data-cal-import>AtlasDays로 가져오기</button>
+        </div>
+        <div class="cal-box">
+          <h3>여행</h3>
+          <div data-cal-list></div>
+        </div>
+      </div>
+      <dialog class="cal-dialog" data-cal-dialog aria-labelledby="uk-ilr-import-title">
+        <p class="cal-dialog-title" id="uk-ilr-import-title">AtlasDays로 가져오기</p>
+        <p>앱에서 계속 일수를 확인하십시오. 여행에 따라 계산이 갱신되며 예정된 여행으로 180일을 넘기 전에 알려 줍니다.</p>
+        <ol>
+          <li>과거 여행 사이에 영국에 머문 기간을 파일로 다운로드합니다.</li>
+          <li>iPhone의 AtlasDays에서 설정 → 가져오기 → CSV 파일로 이동해 파일을 선택합니다. 체류 기록을 추가하기 전에 모두 확인할 수 있습니다.</li>
+          <li>영국 영주권(ILR) 프리셋을 추가합니다. 예정된 여행은 파일에 포함되지 않으므로 예약한 뒤 앱에서 추가하십시오.</li>
+        </ol>
+        <div class="cal-dialog-actions">
+          <button type="button" data-cal-download>파일 다운로드</button>
+          <a class="cal-dialog-app" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">AtlasDays 받기</a>
+          <button type="button" data-cal-close>닫기</button>
+        </div>
+      </dialog>
+    </div>
+    <p class="cal-private">모든 내용은 브라우저에만 남습니다. 입력한 정보는 전송되거나 저장되지 않습니다.</p>
+
+    <h2>계산기의 일수 계산법</h2>
+    <ul>
+      <li><strong>하루 전체만 계산.</strong> 따라서 각 막대는 출국일의 중간부터 시작해 귀국일의 중간에 끝납니다. 6월 1일부터 10일까지 여행하면 해외 체류일은 6월 2~9일의 8일이며, 24시간 미만의 여행은 0일입니다.</li>
+      <li><strong>각 연도가 아니라 임의의 12개월.</strong> 계산기는 예정된 여행을 포함해 표시한 모든 여행에서 해외 체류일이 가장 많은 12개월 기간을 찾아 180일과 비교합니다. 서로 다른 해의 여행이 같은 기간에 들어올 수 있습니다.</li>
+      <li><strong>365일 단위가 아니라 실제 달.</strong> 2027년 1월 9일에 끝나는 기간은 윤일을 포함해 2026년 1월 10일에 시작합니다.</li>
+    </ul>
+
+    <h2>계산기가 확인하지 않는 사항</h2>
+    <p>계산기는 입력한 날짜에 현재의 기본 한도를 적용합니다. 이민 이력은 알 수 없으므로 다음 사항은 직접 확인해야 합니다.</p>
+    <ul>
+      <li><strong>자격 기간.</strong> 해당 기간 안의 해외 체류만 계산합니다. 오래된 여행이 아니라 신청에 쓰는 연도의 여행을 표시하십시오.</li>
+      <li><strong>2018년 1월 11일 이전에 허가된 체류 자격.</strong> 그 기간의 해외 체류는 롤링 방식이 아니라 신청일의 기념일에 끝나는 연속된 12개월 기간으로 판정합니다.</li>
+      <li><strong>2024년 4월 11일 이전의 장기 거주 해외 체류.</strong> 이 기간에는 총 548일, 한 번의 해외 체류당 184일이라는 종전 한도가 계속 적용됩니다.</li>
+      <li><strong>허용되는 해외 체류.</strong> 중병, 여행 차질 또는 위기 대응 업무로 인한 일부 해외 체류는 제외될 수 있습니다. 계산기는 표시한 모든 날을 계산합니다.</li>
+      <li><strong>그 밖의 신청 요건.</strong> 합법적 거주, 영어와 Life in the UK 시험, 적격성은 별도의 요건입니다.</li>
+    </ul>
+    <p>12개월을 어느 날짜부터 소급하는지를 포함한 규정은 <a href="/ko/learn/uk-ilr-absence-limit">영국 영주권(ILR) 해외 체류 규정: 임의의 12개월 중 180일</a>에서 설명합니다. 시민권에는 다른 한도가 적용됩니다. 자세한 내용은 <a href="/ko/learn/uk-citizenship-absence-limits">영국 시민권: 해외 체류 450일 및 90일 한도</a>를 참고하십시오.</p>
+
+    <div class="cta-box">
+      <span class="cta-logo">
+        <img class="logo-dark" src="/assets/brand/logo_dark.png?v=20260325a" alt="AtlasDays 로고" width="52" height="52" />
+        <img class="logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="AtlasDays 로고" width="52" height="52" />
+      </span>
+      <h2>한 번만 계산하지 말고 계속 확인</h2>
+      <p>계산기는 지금 기억하는 여행을 확인합니다. AtlasDays의 <strong>영국 영주권(ILR)</strong> 프리셋은 iPhone에서 비공개로 여행에 따라 계속 계산하고, 여행으로 180일을 초과하기 전에 알려 줍니다.</p>
+      <a class="cta-btn" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> AtlasDays 받기</a>
+    </div>
+
+    <h2>자주 묻는 질문</h2>
+    <h3>계산기 결과가 최종 판정입니까?</h3>
+    <p>아닙니다. 입력한 날짜에 기본 한도를 적용한 결과입니다. 과거에 허가된 체류 자격, 장기 거주 이력, 허용되는 해외 체류와 자격 기간에 따라 결과가 달라질 수 있으며 최종 결정은 영국 내무부가 합니다.</p>
+    <h3>2주 여행인데 왜 14일보다 적게 표시됩니까?</h3>
+    <p>해외에서 보낸 하루 전체만 계산하기 때문입니다. 출국일과 귀국일은 해외 체류일이 아니므로 6월 1일부터 15일까지의 여행은 13일입니다.</p>
+    <h3>입력한 데이터가 저장됩니까?</h3>
+    <p>아닙니다. 계산기는 브라우저에서 실행되며 입력한 날짜를 전송하거나 기록하거나 저장하지 않습니다. 페이지를 닫거나 새로고침하면 지워집니다. 보관하려면 AtlasDays로 가져오기를 이용하십시오.</p>

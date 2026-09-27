@@ -1,0 +1,111 @@
+    <nav class="breadcrumb">
+      <a href="/es/">AtlasDays</a> / <a href="/es/learn/">Reglas de viaje</a> / Reino Unido
+    </nav>
+    <img class="title-flag" src="/assets/flags/gb.png" alt="Bandera del Reino Unido" width="56" height="42" />
+    <h1>Calculadora de ausencias para el ILR: 180 días en cualquier período de 12 meses</h1>
+    <p class="subtitle">Marca los días en que saliste del Reino Unido y regresaste para ver el período de 12 meses con más ausencias frente al límite del permiso de residencia indefinido. Añade viajes previstos para comprobar tus planes antes de reservar.</p>
+    <p class="verified">Última comprobación: septiembre de 2026</p>
+
+    <div class="tldr">
+      <p><strong>En resumen:</strong> para mantener la residencia continua necesaria para el ILR, ningún período de 12 meses puede contener más de <strong>180 días completos</strong> fuera del Reino Unido. Solo cuentan los días completos: ni el día de salida ni el de regreso son días de ausencia.</p>
+    </div>
+
+    <h2>Comprueba tus ausencias</h2>
+    <div class="daycal" id="uk-ilr" data-day-calendar="ukIlr">
+      <script type="application/json" data-cal-strings>
+{
+  "hintStart": "Toca el día en que saliste del Reino Unido y después el día en que regresaste.",
+  "hintEnd": "Ahora toca el otro extremo del viaje o vuelve a tocar {date} para cancelar.",
+  "hintMove": "Toca otra fecha para este extremo del viaje o vuelve a tocar {date} para conservarlo.",
+  "inTrip": "fuera del Reino Unido",
+  "pending": "inicio de un nuevo viaje",
+  "held": "extremo del viaje seleccionado",
+  "empty": "Aún no hay viajes.",
+  "deleteTrip": "Eliminar viaje",
+  "tripAway": {
+    "one": "{n} día fuera",
+    "many": "{n} días fuera",
+    "other": "{n} días fuera"
+  },
+  "headline": "{n} de 180 días fuera en cualquier período de 12 meses",
+  "headlineEmpty": "0 de 180 días fuera",
+  "left": "Quedan {n}",
+  "over": {
+    "one": "{n} día de exceso",
+    "many": "{n} días de exceso",
+    "other": "{n} días de exceso"
+  },
+  "emptyResult": "Marca tus viajes fuera del Reino Unido para ver el período de 12 meses con más ausencias.",
+  "worstWindow": "Tu período de 12 meses con más ausencias va del {from} al {to}."
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>L</span><span>M</span><span>X</span><span>J</span><span>V</span><span>S</span><span>D</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+          <button type="button" class="cal-import" data-cal-import>Importar a AtlasDays</button>
+        </div>
+        <div class="cal-box">
+          <h3>Viajes</h3>
+          <div data-cal-list></div>
+        </div>
+      </div>
+      <dialog class="cal-dialog" data-cal-dialog aria-labelledby="uk-ilr-import-title">
+        <p class="cal-dialog-title" id="uk-ilr-import-title">Importar a AtlasDays</p>
+        <p>Mantén el recuento al día en la app. Se actualiza cuando viajas y te avisa antes de que un viaje te haga superar los 180 días.</p>
+        <ol>
+          <li>Descarga en un archivo el tiempo que pasaste en el Reino Unido entre viajes anteriores.</li>
+          <li>En AtlasDays, en tu iPhone, ve a Ajustes → Importar → Archivo CSV y elige el archivo. Verás todas las estancias antes de que se añada nada.</li>
+          <li>Añade la plantilla «Indefinite Leave to Remain (Reino Unido)». Los viajes previstos no figuran en el archivo; añádelos a la app cuando reserves.</li>
+        </ol>
+        <div class="cal-dialog-actions">
+          <button type="button" data-cal-download>Descargar archivo</button>
+          <a class="cal-dialog-app" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">Consigue AtlasDays</a>
+          <button type="button" data-cal-close>Cerrar</button>
+        </div>
+      </dialog>
+    </div>
+    <p class="cal-private">Todo permanece en tu navegador: no se envía ni se guarda lo que introduces.</p>
+
+    <h2>Cómo cuenta la calculadora</h2>
+    <ul>
+      <li><strong>Solo días completos.</strong> Por eso cada barra empieza a mitad del día de salida y termina a mitad del día de regreso. Un viaje del 1 al 10 de junio supone ocho días fuera (del 2 al 9 de junio), y un viaje de menos de 24 horas no suma ninguno.</li>
+      <li><strong>Cualquier período de 12 meses, no cada año natural.</strong> La calculadora busca, entre todos los viajes que marcas, incluidos los previstos, los 12 meses con más días fuera y los compara con 180. Los viajes de distintos años naturales pueden caer dentro de la misma ventana.</li>
+      <li><strong>Meses naturales, no bloques de 365 días.</strong> Una ventana que termina el 9 de enero de 2027 empieza el 10 de enero de 2026, incluidos los días bisiestos.</li>
+    </ul>
+
+    <h2>Qué no comprueba</h2>
+    <p>La calculadora aplica el límite general vigente a las fechas que introduces. No conoce tu historial migratorio, así que comprueba por tu cuenta lo siguiente:</p>
+    <ul>
+      <li><strong>Tu período computable.</strong> Solo cuentan las ausencias dentro de él. Marca los viajes de los años en los que basarás la solicitud, no los anteriores.</li>
+      <li><strong>Permiso concedido antes del 11 de enero de 2018.</strong> Las ausencias de ese período se examinan en períodos consecutivos de 12 meses que terminan en el aniversario de la fecha de solicitud, no mediante una ventana móvil.</li>
+      <li><strong>Ausencias de la vía de larga residencia anteriores al 11 de abril de 2024.</strong> Se siguen aplicando a ellas los antiguos límites de 548 días en total y 184 días para una sola ausencia.</li>
+      <li><strong>Ausencias permitidas.</strong> Algunas ausencias por enfermedad grave, interrupciones del viaje o trabajo durante una crisis pueden dejar de computarse. La calculadora cuenta todos los días que marques.</li>
+      <li><strong>El resto de la solicitud.</strong> La residencia legal, el inglés, la prueba Life in the UK y los requisitos de idoneidad son condiciones aparte.</li>
+    </ul>
+    <p>La norma, incluida la fecha desde la que se cuentan hacia atrás los 12 meses, se explica en <a href="/es/learn/uk-ilr-absence-limit">Ausencias para el ILR británico: 180 días en cualquier período de 12 meses</a>. La ciudadanía tiene otros límites: consulta <a href="/es/learn/uk-citizenship-absence-limits">la ciudadanía británica y los límites de ausencia de 450 y 90 días</a>.</p>
+
+    <div class="cta-box">
+      <span class="cta-logo">
+        <img class="logo-dark" src="/assets/brand/logo_dark.png?v=20260325a" alt="Logo de AtlasDays" width="52" height="52" />
+        <img class="logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="Logo de AtlasDays" width="52" height="52" />
+      </span>
+      <h2>Mantén el recuento al día, no solo una vez</h2>
+      <p>Una calculadora comprueba los viajes que recuerdas hoy. La plantilla <strong>«Indefinite Leave to Remain (Reino Unido)»</strong> de AtlasDays sigue contando mientras viajas, de forma privada en tu iPhone, y te avisa antes de que un viaje te haga superar los 180 días.</p>
+      <a class="cta-btn" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> Consigue AtlasDays</a>
+    </div>
+
+    <h2>Preguntas frecuentes</h2>
+    <h3>¿Es definitivo el resultado de la calculadora?</h3>
+    <p>No. Aplica el límite general a las fechas que introduces. Los permisos antiguos, el historial de larga residencia, las ausencias permitidas y tu período computable pueden cambiar el resultado. La decisión corresponde al Home Office.</p>
+    <h3>¿Por qué unas vacaciones de dos semanas muestran menos de 14 días?</h3>
+    <p>Porque solo cuentan los días completos fuera. Las fechas de salida y regreso no son días de ausencia, así que un viaje del 1 al 15 de junio suma 13 días.</p>
+    <h3>¿Se guardan mis datos?</h3>
+    <p>No. La calculadora funciona en tu navegador y no envía, registra ni guarda las fechas que introduces. Al cerrar o recargar la página se borran. Usa «Importar a AtlasDays» para conservarlas.</p>

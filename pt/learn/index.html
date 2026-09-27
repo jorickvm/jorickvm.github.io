@@ -49,10 +49,10 @@
   <script>(function(){var d=document.documentElement,q=new URLSearchParams(location.search).get('theme'),t=null;if(q==='light'||q==='dark'){t=q;try{sessionStorage.setItem('theme',q)}catch(e){}}else{try{t=sessionStorage.getItem('theme')}catch(e){}if(!t)try{t=localStorage.getItem('theme')}catch(e){}}d.setAttribute('data-theme',t==='light'?'light':'dark')})()</script>
   <script>window.AtlasDaysPageLocales={"en":{"url":"/learn/","label":"Read this page in English","dismiss":"Dismiss"},"ja":{"url":"/ja/learn/","label":"このページを日本語で読む","dismiss":"閉じる"},"nl":{"url":"/nl/learn/","label":"Lees deze pagina in het Nederlands","dismiss":"Sluiten"},"de":{"url":"/de/learn/","label":"Diese Seite auf Deutsch lesen","dismiss":"Schließen"},"es":{"url":"/es/learn/","label":"Lee esta página en español","dismiss":"Cerrar"},"fr":{"url":"/fr/learn/","label":"Lire cette page en français","dismiss":"Fermer"},"ru":{"url":"/ru/learn/","label":"Читать эту страницу на русском","dismiss":"Закрыть"},"uk":{"url":"/uk/learn/","label":"Читати цю сторінку українською","dismiss":"Закрити"},"tr":{"url":"/tr/learn/","label":"Bu sayfayı Türkçe okuyun","dismiss":"Kapat"},"ko":{"url":"/ko/learn/","label":"이 페이지를 한국어로 읽기","dismiss":"닫기"},"zh-Hant":{"url":"/zh-Hant/learn/","label":"以繁體中文閱讀本頁","dismiss":"關閉"},"zh-Hans":{"url":"/zh-Hans/learn/","label":"以简体中文阅读本页","dismiss":"关闭"}};window.AtlasDaysMatchLocale=function(tag,m){var w=String(tag||'').trim().replace(/_/g,'-').toLowerCase(),c;if(!w)return '';for(c in m)if(c.toLowerCase()===w)return c;var s=function(t){try{return new Intl.Locale(t).maximize().script||''}catch(err){return null}},b=w.split('-')[0],x=s(w);for(c in m){if(c.toLowerCase().split('-')[0]!==b)continue;if(x===null){if(c.indexOf('-')<0)return c;continue}if(s(c)===x)return c}return ''};(function(){var q=new URLSearchParams(location.search).get('lang');if(!q)return;var m=window.AtlasDaysPageLocales,e=m[window.AtlasDaysMatchLocale(q,m)];if(e&&e.url!==location.pathname)location.replace(e.url+location.search+location.hash)})()</script>
   <script defer src="../../assets/js/locale-route.js?v=20260830c"></script>
-  <link rel="stylesheet" href="../../assets/css/tokens.css?v=20260928e" />
-  <link rel="stylesheet" href="../../assets/css/hub-variants/a2023fe42813.css?v=20260928e" />
+  <link rel="stylesheet" href="../../assets/css/tokens.css?v=20260928f" />
+  <link rel="stylesheet" href="../../assets/css/hub-variants/a2023fe42813.css?v=20260928f" />
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260928e" />
-  <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928e" />
+  <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
   <link rel="stylesheet" href="../../assets/css/search.css?v=20260819a" />
 </head>
 <body>
@@ -204,10 +204,11 @@
             </div>
           </div>
           <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/ca.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Canadá</span><span class="hub-tile-count">4</span></div>
+            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/ca.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Canadá</span><span class="hub-tile-count">5</span></div>
             <div class="hub-links">
               <a class="hub-link" href="/pt/learn/canada-183-day-tax-residency">A regra dos <span class="hub-key">183 dias</span> de residência fiscal no Canadá</a>
               <a class="hub-link" href="/pt/learn/canada-visitor-visa-6-month-limit">O limite de <span class="hub-key">6 meses</span> para visitantes no Canadá</a>
+              <a class="hub-link" href="/pt/learn/canadian-snowbird-day-limits">Canadenses que passam o inverno nos EUA: <span class="hub-key">regra dos 182 dias</span>, Formulário 8840 e cobertura de saúde provincial</a>
               <a class="hub-link" href="/pt/learn/canada-pr-residency-obligation">A obrigação de residência do PR no Canadá: <span class="hub-key">730 dias</span></a>
               <a class="hub-link" href="/pt/learn/canada-citizenship-physical-presence">Presença física para a cidadania canadense: <span class="hub-key">1.095 dias</span></a>
             </div>
@@ -285,8 +286,9 @@
             </div>
           </div>
           <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/es.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Espanha</span></div>
+            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/es.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Espanha</span><span class="hub-tile-count">2</span></div>
             <div class="hub-links">
+              <a class="hub-link" href="/pt/learn/spain-183-day-tax-residency">Espanha: <span class="hub-key">regra dos 183 dias</span> para residência fiscal</a>
               <a class="hub-link" href="/pt/learn/spain-long-term-residence-eu-absence">Espanha: residência de longa duração e ausência da UE</a>
             </div>
           </div>
@@ -503,12 +505,13 @@
             </div>
           </div>
           <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/gb.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Reino Unido</span><span class="hub-tile-count">5</span></div>
+            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/gb.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Reino Unido</span><span class="hub-tile-count">6</span></div>
             <div class="hub-links">
               <a class="hub-link" href="/pt/learn/uk-standard-visitor-visa-180-day-rule">A “regra dos 180 dias” do <span class="hub-key">Standard Visitor</span> britânico</a>
-              <a class="hub-link" href="/pt/learn/uk-eta-vs-standard-visitor-visa"><span class="hub-key">ETA</span> do Reino Unido ou visto Standard Visitor: qual é a diferença?</a>
+              <a class="hub-link" href="/pt/learn/uk-eta-vs-standard-visitor-visa"><span class="hub-key">ETA</span> do Reino Unido ou visto Standard Visitor: qual você precisa?</a>
               <a class="hub-link" href="/pt/learn/uk-statutory-residence-test"><span class="hub-key">Statutory Residence Test</span> do Reino Unido: o que o viajante precisa saber</a>
-              <a class="hub-link" href="/pt/learn/uk-ilr-absence-limit">Limites de ausência para o <span class="hub-key">ILR</span> britânico: o que a residência contínua quer demonstrar</a>
+              <a class="hub-link" href="/pt/learn/uk-ilr-absence-limit">Reino Unido: <span class="hub-key">limite de ausência para ILR</span>, 180 dias em qualquer período de 12 meses</a>
+              <a class="hub-link" href="/pt/learn/uk-ilr-absence-calculator"><span class="hub-key">Calculadora de ausências para ILR</span>: 180 dias em qualquer período de 12 meses</a>
               <a class="hub-link" href="/pt/learn/uk-citizenship-absence-limits">Limites de ausência para a <span class="hub-key">cidadania britânica</span>: o que as regras de residência querem demonstrar</a>
             </div>
           </div>
@@ -543,9 +546,10 @@
             </div>
           </div>
           <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/th.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Tailândia</span></div>
+            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/th.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Tailândia</span><span class="hub-tile-count">2</span></div>
             <div class="hub-links">
               <a class="hub-link" href="/pt/learn/thailand-180-day-tax-residency">A regra dos <span class="hub-key">180 dias</span> de residência fiscal na Tailândia</a>
+              <a class="hub-link" href="/pt/learn/thailand-visa-exemption-30-days">Tailândia: isenção de visto de <span class="hub-key">30 dias</span></a>
             </div>
           </div>
           <div class="hub-tile" data-filter-item data-groups="country">
@@ -593,31 +597,30 @@
           <div class="hub-tile" data-filter-item data-groups="guides">
             <div class="hub-tile-head"><span class="hub-tile-name">Limites de dias e residência</span><span class="hub-tile-count">5</span></div>
             <div class="hub-links">
-              <a class="hub-link" href="/pt/learn/183-day-tax-residency-rule">A regra dos <span class="hub-key">183 dias</span> de residência fiscal: o que o viajante precisa saber</a>
-              <a class="hub-link" href="/pt/learn/what-counts-as-a-day-for-visa-purposes">O que conta como um <span class="hub-key">“dia”</span> para fins de visto?</a>
-              <a class="hub-link" href="/pt/learn/how-to-track-travel-days">Como <span class="hub-key">controlar</span> seus dias de viagem (e por que a planilha falha)</a>
-              <a class="hub-link" href="/pt/learn/digital-nomad-visa-day-limits">Limites de dias dos vistos de <span class="hub-key">nômade digital</span>: um panorama país a país</a>
-              <a class="hub-link" href="/pt/learn/overstaying-a-visa-or-stay-limit"><span class="hub-key">Ultrapassar</span> o visto ou o limite de estadia: o que significa e por que importa</a>
+              <a class="hub-link" href="/pt/learn/183-day-tax-residency-rule"><span class="hub-key">Regra dos 183 dias</span> para residência fiscal: como funciona a contagem</a>
+              <a class="hub-link" href="/pt/learn/what-counts-as-a-day-for-visa-purposes">O que conta como <span class="hub-key">um dia</span>? Chegada, saída e trânsito comparados</a>
+              <a class="hub-link" href="/pt/learn/digital-nomad-visa-day-limits"><span class="hub-key">Vistos de nômade digital</span> e residência fiscal: a regra dos 183 dias ainda vale?</a>
+              <a class="hub-link" href="/pt/learn/overstaying-a-visa-or-stay-limit"><span class="hub-key">Exceder o prazo de estadia</span>: consequências no espaço Schengen, Reino Unido e EUA</a>
+              <a class="hub-link" href="/pt/learn/residence-permit-citizenship-absence-rules"><span class="hub-key">Limites de ausência</span> para autorizações de residência e cidadania, por país</a>
             </div>
           </div>
           <div class="hub-tile" data-filter-item data-groups="guides">
-            <div class="hub-tile-head"><span class="hub-tile-name">Histórico de viagens e comprovação</span><span class="hub-tile-count">7</span></div>
+            <div class="hub-tile-head"><span class="hub-tile-name">Histórico de viagens e comprovação</span><span class="hub-tile-count">6</span></div>
             <div class="hub-links">
-              <a class="hub-link" href="/pt/learn/travel-history-for-visa-applications">Como <span class="hub-key">preparar</span> o histórico de viagens para um pedido de visto</a>
-              <a class="hub-link" href="/pt/learn/travel-history-template-visa-application"><span class="hub-key">Modelo</span> de histórico de viagens para pedidos de visto</a>
-              <a class="hub-link" href="/pt/learn/export-travel-history-visa-application">Como <span class="hub-key">exportar</span> seu histórico de viagens para um pedido de visto</a>
-              <a class="hub-link" href="/pt/learn/rebuild-travel-history-from-passport-stamps-emails-photos">Como <span class="hub-key">reconstruir</span> seu histórico de viagens a partir de carimbos, e-mails e fotos</a>
-              <a class="hub-link" href="/pt/learn/prove-time-spent-in-country-without-perfect-records">Como <span class="hub-key">comprovar o tempo</span> em um país quando os registros não são perfeitos</a>
-              <a class="hub-link" href="/pt/learn/prove-you-were-not-in-a-country">Como <span class="hub-key">comprovar que você não estava</span> em um país</a>
-              <a class="hub-link" href="/pt/learn/flighty-flight-history-day-count">Como transformar seu histórico de voos do <span class="hub-key">Flighty</span> em contagem de dias para visto e residência</a>
+              <a class="hub-link" href="/pt/learn/travel-history-for-visa-applications">Histórico de viagens para vistos: <span class="hub-key">quantos anos</span> cada formulário pede</a>
+              <a class="hub-link" href="/pt/learn/travel-history-template-visa-application"><span class="hub-key">Modelo gratuito</span> de histórico de viagens para pedidos de visto (CSV)</a>
+              <a class="hub-link" href="/pt/learn/get-official-entry-exit-records">Como obter seu <span class="hub-key">histórico oficial de viagens</span>: registros de entrada e saída</a>
+              <a class="hub-link" href="/pt/learn/rebuild-travel-history-from-passport-stamps-emails-photos">Como <span class="hub-key">reconstruir</span> seu histórico de viagens com carimbos, e-mails e fotos</a>
+              <a class="hub-link" href="/pt/learn/prove-you-were-not-in-a-country">Como provar que você <span class="hub-key">não estava em um país ou estado</span></a>
+              <a class="hub-link" href="/pt/learn/flighty-flight-history-day-count">Do histórico do <span class="hub-key">Flighty</span> à contagem de dias para vistos e residência fiscal</a>
             </div>
           </div>
           <div class="hub-tile" data-filter-item data-groups="guides">
             <div class="hub-tile-head"><span class="hub-tile-name">Países, visitas e contagem</span><span class="hub-tile-count">3</span></div>
             <div class="hub-links">
-              <a class="hub-link" href="/pt/learn/country-counting-rules-every-list-compared">Regras de <span class="hub-key">contagem de países</span>: todas as listas comparadas</a>
-              <a class="hub-link" href="/pt/learn/how-many-countries-in-the-world"><span class="hub-key">Quantos países</span> existem no mundo?</a>
-              <a class="hub-link" href="/pt/learn/does-a-layover-count-as-visiting-a-country">Uma <span class="hub-key">escala</span> conta como ter visitado o país?</a>
+              <a class="hub-link" href="/pt/learn/how-to-track-travel-days">Como contar os dias em cada país: comparação de <span class="hub-key">6 métodos</span></a>
+              <a class="hub-link" href="/pt/learn/how-many-countries-in-the-world"><span class="hub-key">Quantos países</span> existem no mundo? 195, e por que as listas diferem</a>
+              <a class="hub-link" href="/pt/learn/does-a-layover-count-as-visiting-a-country">Uma <span class="hub-key">escala</span> conta como visita a um país?</a>
             </div>
           </div>
         </div>

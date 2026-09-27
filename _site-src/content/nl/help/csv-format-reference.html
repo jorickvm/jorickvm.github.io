@@ -9,7 +9,7 @@
       <li><strong>Country:</strong> Engelse <a href="/nl/help/languages">landnaam</a>, ISO-landcode van twee letters of een herkende gangbare variant.</li>
       <li><strong>State:</strong> optionele naam, postafkorting of ISO-deelcode van een Amerikaanse staat, zoals <code>US-CA</code>.</li>
       <li><strong>Start Date / End Date:</strong> exacte datum, jaar of leeg volgens de regels hieronder.</li>
-      <li><strong>Purpose:</strong> Tourism, Business, Medical, <a href="/nl/help/history-and-import">Transit</a> of Personal; meerdere doelen behalve Transit mogen met komma's worden gescheiden.</li>
+      <li><strong>Purpose:</strong> Personal, Business, Study of <a href="/nl/help/history-and-import">Transit</a>. Je kunt meerdere doelen behalve Transit combineren met komma’s, tussen aanhalingstekens, bijvoorbeeld <code>"Business, Personal"</code>. Oudere bestanden met Tourism of Medical worden nog geïmporteerd, als Personal.</li>
       <li><strong>Notes:</strong> optionele tekst.</li>
     </ul>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/nl/help/csv-format-reference/csv-reference.webp" alt="Voorbeeld en sjabloon voor een CSV-import" width="1320" height="1760" loading="lazy" decoding="async" /></figure>
@@ -26,13 +26,13 @@
     <p>Gebruik State alleen voor een reis naar de Verenigde Staten. Ging één verblijf door meerdere staten en wil je per staat registreren, gebruik dan één rij per staat. Een gewone rij voor de VS is geldig voor trackers op landniveau.</p>
 
     <h2>Transit</h2>
-    <p>Zet <code>Transit</code> in Purpose als je het land niet bent binnengekomen. Transit is exclusief: combineer het niet met Tourism, Business of een ander doel.</p>
+    <p>Zet <code>Transit</code> in Purpose als je het land niet bent binnengekomen. Transit is exclusief: combineer het niet met Personal, Business of een ander doel.</p>
 
     <h2>Voorbeeld</h2>
     <pre><code>Country,State,Start Date,End Date,Purpose,Notes
-France,,2026-03-01,2026-03-05,Tourism,
+France,,2026-03-01,2026-03-05,Personal,
 United States,CA,2026-04-10,2026-04-15,Business,Conference
-Japan,,2024,,Tourism,Dates not known
+Japan,,2024,,Personal,Dates not known
 United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></pre>
 
     <h2>Scheidingstekens en aanhalingstekens</h2>

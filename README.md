@@ -10,7 +10,7 @@ This is the one thing to know before editing anything. Pages under `learn/` and 
 
 All ten root pages are generated, `index.html`, `404.html`, and `support.html` included; they moved into `pages.json` when Dutch shipped, because a page that cannot be translated cannot be localized.
 
-Genuinely hand-authored: the `app/*/index.html` alias stubs, and three meta-refresh redirect stubs in `learn/`.
+Genuinely hand-authored: the `app/*/index.html` alias stubs, and the three legacy meta-refresh redirect stubs in `learn/` (`day-limits.html`, `how-to-use-atlasdays.html`, `icloud-sync-travel-tracking.html`). Merged Learn pages in `_site-src/data/redirects.json` generate redirect stubs for English and every locale; `build_site.py --check` covers them.
 
 `changelog.html` is shared with the AtlasDays app repo, which owns the release notes. `scripts/sync_changelog.py` replaces only the contents of `<div class="release-stack">`, so a release updates the cards and leaves this repo's header, footer, social metadata, and theme bootstrap intact.
 
@@ -37,7 +37,7 @@ _site-src/data/glossary.json       terminology snapshot, generated from the app 
 _site-src/content/<code>/…          translated fragments
 ```
 
-Japanese covers the Help Center at `/ja/help/…`; Dutch and Spanish cover the whole site at `/nl/…` and `/es/…`; German is the current draft locale. English stays unprefixed, so `en` is simply the locale whose `route_prefix` is empty.
+The published locales and their coverage are declared in `_site-src/data/locales.json`. Each non-English locale routes under its own code. English stays unprefixed, so `en` is simply the locale whose `route_prefix` is empty.
 
 **A translation record supplies prose and nothing else.** Paths, canonicals, hreflang, JSON-LD, og tags, next-step URLs, and the rendered date are all derived from the English source record, and setting one of them in an overlay is a build error. That is deliberate: it means a translation cannot invent a URL or a JSON-LD graph in a language nobody here can proofread, and `validate_help_next_steps` keeps guarding the routes for free.
 
@@ -50,7 +50,7 @@ Templates and partials carry two marker forms, both resolved by `scripts/locales
 {{r:/help/}}     an internal route, locale-prefixed only when that page exists in the locale
 ```
 
-The `{{r:}}` fallback is what makes partial coverage legal: a Japanese Help page links to the Japanese Help hub but to the English Travel Rules hub, because no Japanese one exists. Localising a single Learn article later is a data change, not a code change.
+The `{{r:}}` fallback supports a draft locale while its coverage grows: a link uses the locale route only when that translated page exists. Adding a translation is a data change, not a code change.
 
 A locale carries `status: draft | published`. A draft locale builds and previews locally but is marked `noindex` and excluded from the sitemap, hreflang, `llms.txt`, and the language switcher. That is how a new language is verified end to end before it becomes discoverable.
 
@@ -61,6 +61,8 @@ A locale also carries `coverage`. Under `complete`, every English page must have
 Adding the next language should be `locales.json` + a `ui-strings.json` column + an overlay registry + fragments. If it needs a change in `scripts/`, that is a bug in the machinery, not a missing feature.
 
 ### Translating
+
+Interactive day-calendar messages live in the article fragment’s `<script type="application/json" data-cal-strings>` block. Translate its values and plural variants; preserve the keys and placeholders. The checks validate these messages alongside the visible prose. Dates and weekdays use the document language through `Intl`, while downloaded CSV headers, country names and notes remain English for the AtlasDays importer.
 
 1. Refresh the terminology snapshot if the app repo has moved: `python3 scripts/sync_glossary.py`. It covers every non-English locale in `locales.json`.
 2. Write `_site-src/content/<code>/<section>/<slug>.html`, keeping the English structure (see the checks below).
@@ -86,6 +88,7 @@ python3 scripts/check_translations.py          # terminology, structure, typogra
 python3 scripts/build_content_governance.py   # editorial + cluster records, review queue
 python3 scripts/generate_social_cards.py      # generic OG image manifest
 python3 scripts/build_residency_hub.py        # hub tables, if a residency page changed
+python3 scripts/build_hub_tile_order.py       # place tiles in each locale’s own order
 python3 scripts/build_site.py                 # renders every generated page
 python3 scripts/build_search_index.py         # on-site search
 ```
@@ -114,6 +117,7 @@ Serves the committed HTML with GitHub Pages' extensionless URLs, so links resolv
 | `build_route_outputs.py` | Generates the sitemap set (`sitemap.xml` index plus `sitemap-<code>.xml` per locale) and the `llms.txt` set (English at the root, `/<code>/llms.txt` per translation) from `routes.json`. |
 | `build_content_governance.py` | Derives editorial records, content clusters, and the review queue from `articles.json`. |
 | `build_residency_hub.py` | Fills the residency hub tables from the `residency` objects in `articles.json`. |
+| `build_hub_tile_order.py` | Sorts Learn place tiles in each locale’s own order without changing their copy. |
 | `build_search_index.py` | Builds `assets/search-index.json`. |
 | `generate_social_cards.py` | Assigns the generic 1200x630 share image site-wide. |
 | `sync_help_screenshots.py` | Swaps a Help screenshot placeholder for a `<figure>` once its WebP lands, in every locale. |
@@ -124,7 +128,7 @@ Serves the committed HTML with GitHub Pages' extensionless URLs, so links resolv
 | `locales.py` | Shared locale registry, marker resolution, dates, and translation hashing. |
 | `check_external_sources.py` | Weekly link check over the official sources articles cite. |
 | `report_source_health.py` | Turns that report into the GitHub issue the weekly workflow maintains. |
-| `sync_changelog.py` | Copies release cards from the app repo into `changelog.html`. |
+| `sync_changelog.py` | Replaces release cards in the changelog source fragment; rebuild afterwards. |
 | `audit_site.py` | The site auditor, and the shared HTML parser other scripts import. |
 | `serve_site.py` | Local preview server. |
 

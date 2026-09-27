@@ -47,7 +47,7 @@ def classify(slug: str) -> str:
         return "tax-residency"
     if any(
         marker in slug
-        for marker in ("travel-history", "flight-history", "prove-", "rebuild-", "export-")
+        for marker in ("travel-history", "flight-history", "prove-", "rebuild-", "export-", "entry-exit-records")
     ):
         return "travel-record-evidence"
     if any(marker in slug for marker in entry_markers):
@@ -71,9 +71,19 @@ REVIEW_TIERS = {
 }
 
 
+# Keeping a residence status or qualifying for citizenship, outside the UK and
+# US clusters (which keep their own national pillars). These rules share one
+# question, how long you can be away, so they share the comparison pillar
+# instead of hanging off the visitor overstay explainer.
+ABSENCE_RULE_MARKERS = (
+    "citizenship", "naturalization", "permit", "resident-card", "residence-return",
+    "residency-obligation", "resident-return", "long-term-residence", "super-overseas",
+)
+
+
 def cluster_for(slug: str, category: str) -> tuple[str, str]:
-    if slug == "nz-super-overseas-absence":
-        return "day-counting-and-country-models", "learn/how-to-track-travel-days.html"
+    if not slug.startswith(("uk-", "us-")) and any(marker in slug for marker in ABSENCE_RULE_MARKERS):
+        return "residence-and-citizenship-absence", "learn/residence-permit-citizenship-absence-rules.html"
     if "schengen" in slug:
         return "schengen-mechanics", "learn/schengen-90-180-rule.html"
     if slug.startswith("uk-"):
@@ -86,7 +96,7 @@ def cluster_for(slug: str, category: str) -> tuple[str, str]:
         return "travel-history-and-proof", "learn/travel-history-for-visa-applications.html"
     if category == "product-workflow":
         return "product-and-import-workflows", "learn/how-to-use-atlasdays.html"
-    if any(marker in slug for marker in ("country", "layover", "track-travel", "what-counts")):
+    if any(marker in slug for marker in ("country", "countries", "layover", "track-travel", "what-counts")):
         return "day-counting-and-country-models", "learn/how-to-track-travel-days.html"
     # The pillar was the Day-Count Rule Directory until it was retired in
     # August 2026; the filtered /learn/ index replaced it as navigation, but a

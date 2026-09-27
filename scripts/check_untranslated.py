@@ -34,6 +34,8 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from locales import default_locale_code, load_locales  # noqa: E402
 
+from calendar_strings import prose as cal_prose
+
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE_ROOT = ROOT / "_site-src"
 DATA = SOURCE_ROOT / "data"
@@ -73,6 +75,8 @@ ALLOW = (
     "Tax Act", "Income Tax", "Act No", "Law No", "Consolidation Act",
     "Naturalisation as a British citizen by discretion",
     "US Customs and Border Protection",
+    "Internal Revenue Code", "Treasury Regulation", "Immigration and Nationality Act",
+    "Department of the Treasury Internal Revenue Service Center Austin TX",
     # Names of the country lists the counting articles compare. The list is the
     # identifier, so translating it would break the comparison it belongs to.
     "UN 195", "UN 193",
@@ -158,10 +162,25 @@ PROPER_NOUN = re.compile(r"^(?:[A-Z][\w'&.-]*\s+){1,3}[A-Z][\w'&.-]*$")
 BREADCRUMB_TAIL = re.compile(r"^/\s*(?:[A-Z][\w'&.-]*\s*){1,4}$")
 
 
+def without_csv_schema_cells(markup: str) -> str:
+    """CSV example schema values stay English; free-text Notes still translate."""
+    def table(match):
+        def row(match):
+            column = 0
+            def cell(match):
+                nonlocal column
+                column += 1
+                return match.group(1) + ("" if column <= 5 else match.group(2)) + match.group(3)
+            return re.sub(r"(<td\b[^>]*>)(.*?)(</td>)", cell, match.group(0), flags=re.DOTALL)
+        return re.sub(r"<tr\b[^>]*>.*?</tr>", row, match.group(0), flags=re.DOTALL)
+    return re.sub(r'<div\b[^>]*class="[^"]*\bdata-table-code\b[^"]*"[^>]*>.*?</div>', table, markup, flags=re.DOTALL)
+
+
 def visible_runs(markup: str) -> set[str]:
     """Every non-empty rendered text run, prose and attributes alike."""
-    body = STRIPPED.sub(" ", markup)
+    body = STRIPPED.sub(" ", without_csv_schema_cells(markup))
     found = {html.unescape(" ".join(chunk.split())) for chunk in TAG.split(body)}
+    found.update(cal_prose(markup))
     for match in RENDERED_ATTRS.finditer(body):
         found.add(html.unescape(" ".join(match.group(1).split())))
     return {text for text in found if text}
@@ -172,7 +191,26 @@ def visible_text(markup: str) -> set[str]:
     return {text for text in visible_runs(markup) if len(text.split()) >= 2}
 
 
-def is_allowed(text: str) -> bool:
+# These complete text runs are also correct native Dutch. Do not allow a
+# province token to exempt a surrounding untranslated sentence.
+# Formal source-panel titles and statute identifiers are reference labels.
+EXACT_ALLOW = {"§ 10 StAG", "§ 12b StAG","Request for International Movement Records", "travel movements requests", "Entry/Exit System", "Boletín Oficial del Estado", "8 U.S.C. 1187(a)(7)", "8 U.S.C. 1202(g)", "IMM 5257 Schedule 1", "How to Calculate Physical Presence (CIT 0407)", "How to Calculate Physical Presence CIT", "deeming rule","Destination Thailand Visa (DTV)", "Electronic Travel Authorisation (ETA)", "Long Residence UK Ancestry Hong Kong BN O", "UK Immigration Rules Part Suitability SUI"}
+
+LOCALE_ALLOW = {
+    "pt": {"Alberta (AHCIP)", "Québec (RAMQ)", "Malta: Nomad Residence Permit", ". Portugal:"},
+    "tr": {"Ontario (OHIP)", "Alberta (AHCIP)", "Québec (RAMQ)", "Malta: Nomad Residence Permit"},
+    "de": {". Portugal:"},
+    "es": {". Indonesia:", ". Portugal:", "Malta: Nomad Residence Permit", "Ontario (OHIP)", "Alberta (AHCIP)"},
+    "fr": {"Ontario (OHIP)", "Alberta (AHCIP)", "Québec (RAMQ)"},
+    "nl": {". Portugal:", "Québec (RAMQ)", "Alberta (AHCIP)", "British Columbia (MSP)", "Ontario (OHIP)", "in Québec.", "Malta: Nomad Residence Permit", "Thailand: Destination Thailand Visa (DTV)", "India, e-Tourist Visa", "Entry/Exit System (EES)"},
+}
+
+
+def is_allowed(text: str, code: str = "") -> bool:
+    if re.fullmatch(r"[A-Z]{3}\s+[0-9][0-9,.\u00a0\u202f ]*", text):
+        return True
+    if text in EXACT_ALLOW or text in LOCALE_ALLOW.get(code, set()):
+        return True
     residual = text
     found_brand = False
     for token in sorted(BRAND_ALLOW, key=len, reverse=True):
@@ -266,7 +304,7 @@ def main() -> int:
             for text in sorted(english_runs & translated_runs & required):
                 problems.append(f"{code}/{overlay['source']}: still English: {text[:90]!r}")
             shared = {text for text in english_runs & translated_runs if len(text.split()) >= 2}
-            for text in sorted(t for t in shared if not is_allowed(t)):
+            for text in sorted(t for t in shared if not is_allowed(t, code)):
                 problems.append(f"{code}/{overlay['source']}: still English: {text[:90]!r}")
             for text in sorted(partial_english(english_runs, translated_runs)):
                 if text not in shared:

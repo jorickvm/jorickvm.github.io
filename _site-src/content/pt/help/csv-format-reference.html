@@ -9,7 +9,7 @@
       <li><strong>Country:</strong> <a href="/pt/help/languages">nome do país</a> em inglês, código ISO de duas letras ou um apelido comum reconhecido.</li>
       <li><strong>State:</strong> opcional; nome de estado dos EUA, sigla postal ou código ISO de subdivisão, como <code>US-CA</code>.</li>
       <li><strong>Start Date / End Date:</strong> data exata, ano ou vazio, conforme as regras abaixo.</li>
-      <li><strong>Purpose:</strong> <code>Tourism</code> (Turismo), <code>Business</code> (Trabalho), <code>Medical</code> (Saúde), <a href="/pt/help/history-and-import"><code>Transit</code></a> (Trânsito) ou <code>Personal</code> (Pessoal); vários motivos que não sejam Transit podem vir separados por vírgula. Os valores são escritos em inglês no arquivo.</li>
+            <li><strong>Purpose:</strong> <code>Personal</code> (Pessoal), <code>Business</code> (Trabalho), <code>Study</code> (Estudo) ou <a href="/pt/help/history-and-import"><code>Transit</code></a> (Trânsito). Vários motivos diferentes de Transit podem ser combinados com vírgulas, entre aspas, como <code>"Business, Personal"</code>. Arquivos antigos com Tourism ou Medical ainda são importados como Personal. Os valores são escritos em inglês no arquivo.</li>
       <li><strong>Notes:</strong> texto opcional.</li>
     </ul>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/pt/help/csv-format-reference/csv-reference.webp" alt="Exemplo e controles de modelo da importação de CSV" width="1320" height="1760" loading="lazy" decoding="async" /></figure>
@@ -26,13 +26,13 @@
     <p>Use State apenas em uma viagem aos Estados Unidos. Se uma mesma visita aos EUA passou por vários estados e você precisa de registros por estado, use uma linha por estado. Uma linha só com o país é válida para o controle no nível do país.</p>
 
     <h2>Trânsito</h2>
-    <p>Coloque <code>Transit</code> em Purpose quando você não chegou a entrar no país. Transit é exclusivo: não combine com Tourism, Business nem qualquer outro motivo.</p>
+    <p>Coloque <code>Transit</code> em Purpose quando você não chegou a entrar no país. Transit é exclusivo: não combine com Personal, Business nem qualquer outro motivo.</p>
 
     <h2>Exemplo</h2>
     <pre><code>Country,State,Start Date,End Date,Purpose,Notes
-France,,2026-03-01,2026-03-05,Tourism,
+France,,2026-03-01,2026-03-05,Personal,
 United States,CA,2026-04-10,2026-04-15,Business,Conference
-Japan,,2024,,Tourism,Dates not known
+Japan,,2024,,Personal,Dates not known
 United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></pre>
 
     <h2>Delimitador e aspas</h2>

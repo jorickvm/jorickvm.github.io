@@ -575,6 +575,10 @@ class RelatedArticleTests(unittest.TestCase):
 
 
 class FaqGraphTests(unittest.TestCase):
+    def test_card_heading_without_paragraph_does_not_swallow_first_question(self):
+        fragment = '<h3>Ontario (OHIP)</h3><ul><li>Rules</li></ul><h2>FAQ</h2><h3>How long?</h3><p>Six months.</p>'
+        self.assertEqual(build_site.faq_pairs(fragment), [('How long?', 'Six months.')])
+
     """The FAQ graph is the one place a translation can silently stay English.
 
     Nothing about a page looks wrong when it happens: the prose is translated,

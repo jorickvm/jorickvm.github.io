@@ -3,24 +3,24 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Flighty 航班紀錄如何變成簽證與稅務居民天數</title>
-  <meta name="description" content="Flighty 記錄航班但不算天數。說明如何把航班紀錄變成逐國停留，並對照申根 90/180 和 183 天門檻計算。" />
-  <meta property="og:title" content="Flighty 航班紀錄如何變成簽證與稅務居民天數" />
-  <meta property="og:description" content="Flighty 記錄航班但不算天數。說明如何把航班紀錄變成逐國停留，並對照申根 90/180 和 183 天門檻計算。" />
+  <title>如何把 Flighty 航班紀錄換算成簽證與稅務居民天數｜AtlasDays</title>
+  <meta name="description" content="Flighty 記錄航班，不計算各國停留天數。了解如何匯出 Flighty CSV、匯入 AtlasDays，並核對申根或 183 天門檻。" />
+  <meta property="og:title" content="如何把 Flighty 航班紀錄換算成簽證與稅務居民天數｜AtlasDays" />
+  <meta property="og:description" content="Flighty 記錄航班，不計算各國停留天數。了解如何匯出 Flighty CSV、匯入 AtlasDays，並核對申根或 183 天門檻。" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/zh-Hant/learn/flighty-flight-history-day-count" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Flighty 航班紀錄如何變成簽證與稅務居民天數" />
-  <meta name="twitter:description" content="Flighty 記錄航班但不算天數。說明如何把航班紀錄變成逐國停留，並對照申根 90/180 和 183 天門檻計算。" />
+  <meta name="twitter:title" content="如何把 Flighty 航班紀錄換算成簽證與稅務居民天數｜AtlasDays" />
+  <meta name="twitter:description" content="Flighty 記錄航班，不計算各國停留天數。了解如何匯出 Flighty CSV、匯入 AtlasDays，並核對申根或 183 天門檻。" />
   <meta name="apple-itunes-app" content="app-id=6760133544, app-argument=https://apps.apple.com/app/atlasdays-track-country-days/id6760133544" />
   <meta property="og:locale" content="zh_TW" />
   <meta property="og:image" content="https://atlasdays.app/assets/social/site-v1.png" />
   <meta property="og:image:type" content="image/png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
-  <meta property="og:image:alt" content="AtlasDays「如何把 Flighty 的航班紀錄變成簽證與居留天數統計」分享圖片" />
+  <meta property="og:image:alt" content="AtlasDays「如何把 Flighty 航班紀錄換算成簽證與稅務居民天數」分享圖片" />
   <meta name="twitter:image" content="https://atlasdays.app/assets/social/site-v1.png" />
-  <meta name="twitter:image:alt" content="AtlasDays「如何把 Flighty 的航班紀錄變成簽證與居留天數統計」分享圖片" />
+  <meta name="twitter:image:alt" content="AtlasDays「如何把 Flighty 航班紀錄換算成簽證與稅務居民天數」分享圖片" />
   <link rel="canonical" href="https://atlasdays.app/zh-Hant/learn/flighty-flight-history-day-count" />
   <link rel="alternate" hreflang="en" href="https://atlasdays.app/learn/flighty-flight-history-day-count" />
   <link rel="alternate" hreflang="ja" href="https://atlasdays.app/ja/learn/flighty-flight-history-day-count" />
@@ -41,8 +41,8 @@
   {
     "@context": "https://schema.org",
     "@type": "Article",
-    "headline": "如何把 Flighty 的航班紀錄變成簽證與居留天數統計",
-    "description": "Flighty 記錄航班但不算天數。說明如何把航班紀錄變成逐國停留，並對照申根 90/180 和 183 天門檻計算。",
+    "headline": "如何把 Flighty 航班紀錄換算成簽證與稅務居民天數",
+    "description": "Flighty 記錄航班，不計算各國停留天數。了解如何匯出 Flighty CSV、匯入 AtlasDays，並核對申根或 183 天門檻。",
     "author": {
       "@type": "Organization",
       "name": "AtlasDays"
@@ -53,48 +53,8 @@
     },
     "url": "https://atlasdays.app/zh-Hant/learn/flighty-flight-history-day-count",
     "datePublished": "2026-06-18",
-    "dateModified": "2026-06-18",
+    "dateModified": "2026-09-27",
     "inLanguage": "zh-Hant"
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "Flighty 會算在一個國家待了幾天嗎？",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "不會。Flighty 記錄搭過的航班並產生飛行統計，但不會加總在各國待了幾天，也不會拿去對照簽證或居留上限。天數是另外一次計算，以航班紀錄為來源資料。"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Flighty 能追蹤申根 90/180 規定嗎？",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "沒辦法直接做到。Flighty 是航班追蹤工具，不是簽證上限計算器，所以不會維護滾動式的申根 90/180 累計。可以拿航班紀錄當來源資料，再到會算天數的 App 裡對照規定計算。"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "要怎麼從 Flighty 匯出旅行紀錄？",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Flighty 可以把航班紀錄匯出成 CSV 檔案，儲存或分享到裝置上。之後可以用試算表打開，或匯入會算天數的 App，把航班變成註明日期的行程。"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "從航班紀錄到天數",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "AtlasDays 把 Flighty 的紀錄匯入一次，變成可以逐一確認、註明日期的行程，再從這一份紀錄重新計算滾動式期間和稅務居民門檻，全部在 iPhone 上私密處理。"
-        }
-      }
-    ]
   }
   </script>
   <script type="application/ld+json">
@@ -117,8 +77,40 @@
       {
         "@type": "ListItem",
         "position": 3,
-        "name": "如何把 Flighty 的航班紀錄變成簽證與居留天數統計",
+        "name": "如何把 Flighty 航班紀錄換算成簽證與稅務居民天數",
         "item": "https://atlasdays.app/zh-Hant/learn/flighty-flight-history-day-count"
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Flighty 會計算在一個國家待了幾天嗎？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "不會。Flighty 會記錄航班並產生飛行統計，但不會加總在各國停留的天數，也不會對照簽證或稅務居民門檻。必須先把航班轉成註明日期的停留紀錄；將 Flighty CSV 匯入天數計算 App，就是完成這一步。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "如何從 Flighty 匯出旅行紀錄？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "截至 2026 年 9 月，在 Flighty 開啟 Profile 分頁，依序點選 Settings、Account Data、Export Your Flights。將 CSV 檔案儲存至「檔案」App，並保留未編輯的原檔，因為用試算表重新儲存後可能不再符合 Flighty 的檔案格式。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "將 Flighty 航班匯入 AtlasDays 需要付費嗎？",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "不需要。Flighty 匯入屬於 AtlasDays 免費功能，包含停留、轉機、重複及重疊行程的確認。只有按州追蹤美國行程才需要 AtlasDays Pro。"
+        }
       }
     ]
   }
@@ -126,11 +118,11 @@
   <script>(function(){var d=document.documentElement,q=new URLSearchParams(location.search).get('theme'),t=null;if(q==='light'||q==='dark'){t=q;try{sessionStorage.setItem('theme',q)}catch(e){}}else{try{t=sessionStorage.getItem('theme')}catch(e){}if(!t)try{t=localStorage.getItem('theme')}catch(e){}}d.setAttribute('data-theme',t==='light'?'light':'dark')})()</script>
   <script>window.AtlasDaysPageLocales={"en":{"url":"/learn/flighty-flight-history-day-count","label":"Read this page in English","dismiss":"Dismiss"},"ja":{"url":"/ja/learn/flighty-flight-history-day-count","label":"このページを日本語で読む","dismiss":"閉じる"},"nl":{"url":"/nl/learn/flighty-flight-history-day-count","label":"Lees deze pagina in het Nederlands","dismiss":"Sluiten"},"de":{"url":"/de/learn/flighty-flight-history-day-count","label":"Diese Seite auf Deutsch lesen","dismiss":"Schließen"},"es":{"url":"/es/learn/flighty-flight-history-day-count","label":"Lee esta página en español","dismiss":"Cerrar"},"fr":{"url":"/fr/learn/flighty-flight-history-day-count","label":"Lire cette page en français","dismiss":"Fermer"},"ru":{"url":"/ru/learn/flighty-flight-history-day-count","label":"Читать эту страницу на русском","dismiss":"Закрыть"},"uk":{"url":"/uk/learn/flighty-flight-history-day-count","label":"Читати цю сторінку українською","dismiss":"Закрити"},"tr":{"url":"/tr/learn/flighty-flight-history-day-count","label":"Bu sayfayı Türkçe okuyun","dismiss":"Kapat"},"pt":{"url":"/pt/learn/flighty-flight-history-day-count","label":"Leia esta página em português","dismiss":"Fechar"},"ko":{"url":"/ko/learn/flighty-flight-history-day-count","label":"이 페이지를 한국어로 읽기","dismiss":"닫기"},"zh-Hans":{"url":"/zh-Hans/learn/flighty-flight-history-day-count","label":"以简体中文阅读本页","dismiss":"关闭"}};window.AtlasDaysMatchLocale=function(tag,m){var w=String(tag||'').trim().replace(/_/g,'-').toLowerCase(),c;if(!w)return '';for(c in m)if(c.toLowerCase()===w)return c;var s=function(t){try{return new Intl.Locale(t).maximize().script||''}catch(err){return null}},b=w.split('-')[0],x=s(w);for(c in m){if(c.toLowerCase().split('-')[0]!==b)continue;if(x===null){if(c.indexOf('-')<0)return c;continue}if(s(c)===x)return c}return ''};(function(){var q=new URLSearchParams(location.search).get('lang');if(!q)return;var m=window.AtlasDaysPageLocales,e=m[window.AtlasDaysMatchLocale(q,m)];if(e&&e.url!==location.pathname)location.replace(e.url+location.search+location.hash)})()</script>
   <script defer src="../../assets/js/locale-route.js?v=20260830c"></script>
-  <link rel="stylesheet" href="../../assets/css/tokens.css?v=20260928e" />
-  <link rel="stylesheet" href="../../assets/css/article-variants/9e71d65b8f5b.css?v=20260928e" />
+  <link rel="stylesheet" href="../../assets/css/tokens.css?v=20260928f" />
+  <link rel="stylesheet" href="../../assets/css/article-variants/49dd6e3e3ea5.css?v=20260928f" />
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260928e" />
-  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20260817b" />
-  <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928e" />
+  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20260925a" />
+  <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">跳至主要內容</a>
@@ -204,68 +196,83 @@
       <a href="/zh-Hant/">AtlasDays</a> / <a href="/zh-Hant/learn/">旅行規定</a>
     </nav>
 
-    <h1>如何把 Flighty 的航班紀錄變成簽證與居留天數統計</h1>
-    <p class="subtitle">Flighty 是拿來記錄航班的，簽證上限和居留判定看的卻是在一個國家待了幾天。以下說明怎麼把兩者接起來又不損失準確度。</p>
-    <p class="verified">最後查核：2026 年 6 月</p>
+    <h1>如何把 Flighty 航班紀錄換算成簽證與稅務居民天數</h1>
+    <p class="subtitle">從 Flighty 匯出航班 CSV，匯入 AtlasDays，再逐一確認建立的行程。</p>
+    <p class="verified">最後查核：2026 年 9 月</p>
 
-    <div class="callout">
-      <p><strong>重點：</strong>Flighty 把搭過的航班記得很好，但不會加總在各國待了幾天，也不會拿去對照簽證或居留上限。要得到天數，就要把每一趟航班當成一次入境，再把抵達和離開之間的日子加起來，而這件事，一個算天數的 App 可以直接讀 Flighty 匯出的檔案替你完成。</p>
+    <div class="tldr">
+      <p><strong>重點：</strong>Flighty 會記錄航班，但不會計算<strong>在各國停留的天數</strong>。將 Flighty 紀錄匯出為 <strong>CSV</strong> 並匯入 AtlasDays，即可把航班轉成註明日期的行程，對照申根 90/180 規定、183 天門檻及其他追蹤器計算。</p>
     </div>
 
-    <h2>航班紀錄為什麼是很好的起點</h2>
-    <p>Flighty 會記下搭過的航班、追蹤即時狀態和誤點，並把紀錄變成造訪過的機場、飛行里程、空中時數之類的統計。要回想自己何時飛去哪裡，很難找到更好的工具。它沒有要處理的，是簽證和居留規定會問的那些問題：最近 180 天內在申根區待了幾天、今年在某個國家有沒有待超過 183 天、下一趟行程會不會超過停留上限。那些問的是<strong>以天為單位、按國家計算的停留</strong>，不是航班。航班紀錄是原料，天數則是建立在原料之上、另外一次的計算。</p>
-    <p>而且是很好的原料。每一趟國際航班都是一次註明日期的過境：目的地機場告訴你入境的是哪一個國家，下一次出發則大致告訴你何時搭機離開。一份還算完整的航班紀錄，已經接近一副行蹤的骨架，日期都在，也比憑記憶回推可靠得多。要<a href="/zh-Hant/learn/rebuild-travel-history-from-passport-stamps-emails-photos">如何從護照入出境章、電子郵件和照片重建旅行紀錄</a>時，它是比較好用的來源之一。缺的是航班<em>之間</em>的一切：實際待了多久、轉機該不該算，還有在地面上的移動。</p>
-
-    <h2>從航班走到天數要經過哪些步驟</h2>
-    <ol>
-      <li><strong>機場對應到國家。</strong>每一個機場代碼都對應到一個國家，所以抵達 CDG 就是入境法國，抵達 NRT 就是入境日本。</li>
-      <li><strong>把航段串成行程。</strong>一趟旅程通常包含好幾段航班。來回的航段要還原成它們所代表的行程，而不是每一段航班各佔一列。</li>
-      <li><strong>轉機和停留的區別。</strong>當天經由第三國的轉接通常算轉機，不應該在那裡增加天數。過夜的轉機則需要判斷。請見<a href="/zh-Hant/learn/does-a-layover-count-as-visiting-a-country">轉機算不算造訪一個國家？</a></li>
-      <li><strong>對照計算期間。</strong>各國的停留日期都排好之後，就拿去對照相關的規定：<a href="/zh-Hant/learn/schengen-90-180-rule">任何 180 天內 90 天，到底是什麼意思？</a>用的是滾動式的 180 天期間，而且是回溯整個申根區而不是逐國計算；許多 <a href="/zh-Hant/learn/183-day-tax-residency-rule">183 天稅務居民規定：旅行者需要知道的事</a>則以日曆年或會計年度為準，各有各的例外。</li>
+    <h2>從 Flighty 匯出航班</h2>
+    <ol class="steps">
+      <li>開啟 Flighty，切換至 <strong>Profile</strong> 分頁。</li>
+      <li>點選 <strong>Settings</strong>（齒輪圖示）。</li>
+      <li>向下捲動至 <strong>Account Data</strong>，並點選。</li>
+      <li>點選 <strong>Export Your Flights</strong>。</li>
+      <li>將 CSV 檔案儲存到「檔案」App，例如 iCloud Drive 或「我的 iPhone」。不要先用試算表開啟再重新儲存。</li>
     </ol>
-    <p>實際上有兩條路。<strong>手動：</strong>把 Flighty 的航班匯出成 CSV，自己推算各國停留，再用試算表加總天數。做得到，但計畫一改就得重做一次，而試算表正是在這裡失守，詳見<a href="/zh-Hant/learn/how-to-track-travel-days">如何記錄旅行天數（以及試算表為什麼失敗）</a>。<strong>比較快：</strong>把同一份匯出檔案帶進一個會推斷行程並替你算天數的 App。AtlasDays 會讀 Flighty 的 CSV，把機場對應到國家，把航段串成行程，把 10 小時以內的停留標記為「轉機」，再把那些天數對照你正在追蹤的任何上限計算。逐步做法在說明中心的 <a href="/zh-Hant/help/flighty-import">Flighty 匯入</a>。</p>
+    <p>以上是截至 2026 年 9 月的選單路徑。Flighty 在 4.3 版加入匯出功能，日後更新可能調整選單名稱。</p>
+    <p>匯出檔案只包含 Flighty 中已有的航班。如果舊行程尚未加入，請在匯出前補齊：Flighty 可免費匯入過去一年的航班，<strong>更早的航班需要 Flighty Pro</strong>。</p>
 
-    <div class="callout">
-      <p><strong>不論走哪一條路，先確認再相信。</strong>自動處理能在幾秒內把幾百趟航班變成行程，但一次被誤判成停留的轉機，或漏掉的一段航班，都會改變天數。把第一次的結果當成一份不錯的草稿，然後把牽涉到你在意的上限的那些行程逐一核對。</p>
-    </div>
-
-    <div class="midcta">
-      <p><strong>想自己記錄嗎？</strong>AtlasDays 會在 iPhone 上保存一份私密而且註明日期的旅行紀錄，並算出真正要緊的天數：簽證停留上限、稅務居民門檻，以及各國累計天數。<a href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">取得 App →</a></p>
-    </div>
-
-    <h2>光靠航班紀錄不夠的地方</h2>
-    <p>簽證和居留問題的代價很高，所以值得誠實面對航班紀錄告訴不了你的事：</p>
+    <h2>匯入 AtlasDays</h2>
+    <ol class="steps">
+      <li>開啟 AtlasDays，前往<strong>「設定」→「匯入」→「Flighty」</strong>。</li>
+      <li>點選<strong>「選擇 Flighty CSV」</strong>，選擇剛才儲存的檔案。</li>
+      <li>AtlasDays 會在 iPhone 上解析檔案，並顯示匯入確認，列出轉機、過夜航班、資訊不完整的行程、重複行程與重疊行程的數量。點選任一類別即可逐一檢查。</li>
+      <li>取消勾選不想匯入的項目，接著點選<strong>「匯入」</strong>並確認。</li>
+    </ol>
+    <p><a href="/zh-Hant/help/flighty-import">說明中心的 Flighty 匯入指南</a>提供各畫面的截圖。匯入功能<strong>免費</strong>；只有將美國行程細分至各州時才需要 AtlasDays Pro。匯入時會進行以下處理：</p>
     <ul>
-      <li><strong>陸路過境看不見。</strong>從法國搭火車到西班牙，或開車越過陸地邊界，都不會出現在航班紀錄裡，所以在地面上結束的停留，日期可能需要調整。</li>
-      <li><strong>航班顯示的是移動，不是在哪裡過夜。</strong>轉機不是造訪，長時間的轉機則是灰色地帶。真正算不算一「天」，要看規定怎麼寫，請見<a href="/zh-Hant/learn/what-counts-as-a-day-for-visa-purposes">簽證上的一「天」怎麼算？</a></li>
-      <li><strong>它是佐證資料，不是證明。</strong>航班紀錄是關於行蹤的有力佐證，但官方的決定仍然建立在入出境章、許可和機關紀錄之上。如果是要為申請整理一份紀錄，請見<a href="/zh-Hant/learn/travel-history-for-visa-applications">如何為簽證申請準備旅行紀錄</a>。</li>
+      <li><strong>依機場判定國家。</strong>抵達一個國家後，到下一次從該國出發之間，視為一次停留；期間的國內航班仍歸在同一個行程中。</li>
+      <li><strong>未滿 10 小時的停留會標記為轉機</strong>，不計入任何天數。10 至 24 小時的停留會建立為行程並顯示長時間轉機提醒，供自行判斷。詳見<a href="/zh-Hant/learn/does-a-layover-count-as-visiting-a-country">轉機算不算造訪一個國家？</a></li>
+      <li><strong>航班細節會寫入行程備註：</strong>包括構成該次停留的日期、時間、航線及航班號碼。已取消的航班會略過。</li>
+      <li><strong>確認前不會儲存任何行程。</strong>若缺少抵達或離境航班，行程會列為資訊不完整，讓人補上日期，而不是接受猜測的結果。</li>
     </ul>
-    <p>從 Flighty 出發的意義在於：紀錄只建立一次，之後就拿同一組乾淨、註明日期的行程，去對照任何適用的上限。</p>
 
-    <h2>常見問題</h2>
-    <h3>Flighty 會算在一個國家待了幾天嗎？</h3>
-    <p>不會。Flighty 記錄搭過的航班並產生飛行統計，但不會加總在各國待了幾天，也不會拿去對照簽證或居留上限。天數是另外一次計算，以航班紀錄為來源資料。</p>
-    <h3>Flighty 能追蹤申根 90/180 規定嗎？</h3>
-    <p>沒辦法直接做到。Flighty 是航班追蹤工具，不是簽證上限計算器，所以不會維護滾動式的申根 90/180 累計。可以拿航班紀錄當來源資料，再到會算天數的 App 裡對照規定計算。</p>
-    <h3>要怎麼從 Flighty 匯出旅行紀錄？</h3>
-    <p>Flighty 可以把航班紀錄匯出成 CSV 檔案，儲存或分享到裝置上。之後可以用試算表打開，或匯入會算天數的 App，把航班變成註明日期的行程。</p>
+    <h2>採用計算結果前</h2>
+    <ul>
+      <li><strong>陸路越境不會出現在航班紀錄中。</strong>搭火車、渡輪或開車越過邊境的日期，必須手動補上。</li>
+      <li><strong>檢查影響上限的行程。</strong>一段誤判的轉機或漏掉的航段就會改變<a href="/zh-Hant/learn/schengen-90-180-rule">申根 90/180</a> 累計，因此要核對相關計算期間內的每次停留。</li>
+      <li><strong>補齊 Flighty 紀錄開始以前的空白。</strong>多年累計要有意義，就必須從其他資料補回未記錄於 Flighty 的年度。</li>
+    </ul>
 
     <div class="cta-box">
-      <h3>從航班紀錄到天數</h3>
-      <p>AtlasDays 把 Flighty 的紀錄匯入一次，變成可以逐一確認、註明日期的行程，再從這一份紀錄重新計算滾動式期間和稅務居民門檻，全部在 iPhone 上私密處理。</p>
+      <span class="cta-logo">
+        <img class="logo-dark" src="/assets/brand/logo_dark.png?v=20260325a" alt="AtlasDays 標誌" width="52" height="52" />
+        <img class="logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="AtlasDays 標誌" width="52" height="52" />
+      </span>
+      <h2>AtlasDays 把 Flighty 匯出檔案變成停留天數</h2>
+      <p>免費匯入 Flighty CSV，在儲存前確認停留與轉機，再交由<strong>申根 90/180 短期停留規定</strong>預設追蹤器及其他追蹤器計算天數。整個過程都在 iPhone 上私密完成。</p>
       <a class="cta-btn" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> 取得 AtlasDays</a>
     </div>
+
+    <h2>常見問題</h2>
+    <h3>Flighty 會計算在一個國家待了幾天嗎？</h3>
+    <p>不會。Flighty 會記錄航班並產生飛行統計，但不會加總在各國停留的天數，也不會對照簽證或稅務居民門檻。必須先把航班轉成註明日期的停留紀錄；將 Flighty CSV 匯入天數計算 App，就是完成這一步。</p>
+    <h3>如何從 Flighty 匯出旅行紀錄？</h3>
+    <p>截至 2026 年 9 月，在 Flighty 開啟 Profile 分頁，依序點選 Settings、Account Data、Export Your Flights。將 CSV 檔案儲存至「檔案」App，並保留未編輯的原檔，因為用試算表重新儲存後可能不再符合 Flighty 的檔案格式。</p>
+    <h3>將 Flighty 航班匯入 AtlasDays 需要付費嗎？</h3>
+    <p>不需要。Flighty 匯入屬於 AtlasDays 免費功能，包含停留、轉機、重複及重疊行程的確認。只有按州追蹤美國行程才需要 AtlasDays Pro。</p>
+
+    <aside class="article-trust">
+      <section class="article-trust-item article-source" aria-labelledby="official-source-heading">
+        <span class="article-trust-icon" aria-hidden="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H20v16H6.5A2.5 2.5 0 0 0 4 21.5z"/><path d="M4 5.5v16M8 7h8M8 11h7"/></svg></span>
+        <div><h2 id="official-source-heading">官方資料來源</h2>
+          <p class="source-line">Flighty 的<a href="https://flighty.com/help/importing-flights" rel="nofollow">航班匯入說明</a>指出，過去一年的航班可免費匯入，更早的航班需要 Flighty Pro。依 Flighty <a href="https://apps.apple.com/us/app/flighty-live-flight-tracker/id1358823008" rel="nofollow">App Store 頁面</a>的版本紀錄，航班資料匯出功能於 4.3 版推出；Flighty 未公開選單路徑，因此上述步驟反映截至 2026 年 9 月的 App 畫面。其 <a href="https://flighty.com/help/passport" rel="nofollow">Flighty Passport 說明</a>介紹了保留的飛行統計資料。AtlasDays 如何將匯出檔案轉為行程，請參閱說明中心的 Flighty 匯入指南。</p></div>
+      </section>
+    </aside>
 
     <p class="learn-disclaimer"><strong>關於本文：</strong>AtlasDays 僅提供一般資訊，不構成法律、稅務或移民建議。規定可能變更，結果也會因個人情況而異，因此不應只依賴 AtlasDays。請查看文中連結的官方資料來源，或諮詢合格專業人士。</p>
 
     <nav class="related generated-related" aria-labelledby="related-flighty-flight-history-day-count">
       <h2 id="related-flighty-flight-history-day-count">本主題的相關文章</h2>
       <ul>
-        <li><a href="/zh-Hant/learn/travel-history-for-visa-applications">如何為簽證申請準備旅行紀錄</a></li>
-        <li><a href="/zh-Hant/learn/export-travel-history-visa-application">如何為簽證申請匯出旅行紀錄</a></li>
-        <li><a href="/zh-Hant/learn/prove-time-spent-in-country-without-perfect-records">紀錄不完整時，如何證明在一個國家待了多久</a></li>
-        <li><a href="/zh-Hant/learn/prove-you-were-not-in-a-country">如何證明自己不在某個國家</a></li>
-        <li><a href="/zh-Hant/learn/rebuild-travel-history-from-passport-stamps-emails-photos">如何從護照入出境章、電子郵件和照片重建旅行紀錄</a></li>
+        <li><a href="/zh-Hant/learn/travel-history-for-visa-applications">簽證申請的旅行紀錄：各種表格要回溯多久</a></li>
+        <li><a href="/zh-Hant/learn/get-official-entry-exit-records">如何申請官方入出境紀錄</a></li>
+        <li><a href="/zh-Hant/learn/prove-you-were-not-in-a-country">如何證明自己不在某個國家或州</a></li>
+        <li><a href="/zh-Hant/learn/rebuild-travel-history-from-passport-stamps-emails-photos">如何用護照章、電子郵件與照片重建旅行紀錄</a></li>
+        <li><a href="/zh-Hant/learn/travel-history-template-visa-application">簽證申請旅行紀錄範本（免費 CSV）</a></li>
       </ul>
     </nav>
   </article>

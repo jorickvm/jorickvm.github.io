@@ -98,6 +98,7 @@ JAPANESE_READINGS = {
     # An English row in the Japanese table (a page not yet translated) still
     # needs a place in the order; the reading is the name it will have.
     "Norway": "ノルウェー",
+    "Spain": "スペイン",
 }
 
 
@@ -151,7 +152,7 @@ def japanese_key(name: str) -> tuple[str, str]:
 #
 # Han characters carry no order at all. A code point sort is not merely
 # imperfect the way the katakana block is, it is meaningless to a reader: the
-# 58 site place names come out as 加拿大 喬治亞 希臘 德國 愛爾蘭 捷克 日本 法國
+# site place names come out as 加拿大 喬治亞 希臘 德國 愛爾蘭 捷克 日本 法國
 # 泰國 澳洲 義大利 葡萄牙 西班牙 賽普勒斯, which is an ordering by the historical
 # accident of block assignment.
 #
@@ -177,6 +178,7 @@ TONES = "ˊˇˋ˙"
 # standard. Countries are the CLDR zh-Hant names, which is what the app
 # displays; US states are the app's own CountrySubdivisions table.
 CHINESE_READINGS = {
+    "丹": "ㄉㄢ", "卡": "ㄎㄚˇ", "士": "ㄕˋ", "班": "ㄅㄢ", "瑞": "ㄖㄨㄟˋ", "麥": "ㄇㄞˋ",
     "乃": "ㄋㄞˇ", "亞": "ㄧㄚˋ", "亥": "ㄏㄞˋ", "他": "ㄊㄚ", "伐": "ㄈㄚ",
     "伯": "ㄅㄛˊ", "佛": "ㄈㄛˊ", "來": "ㄌㄞˊ", "俄": "ㄜˊ", "保": "ㄅㄠˇ",
     "倫": "ㄌㄨㄣˊ", "克": "ㄎㄜˋ", "內": "ㄋㄟˋ", "公": "ㄍㄨㄥ", "其": "ㄑㄧˊ",
@@ -238,7 +240,7 @@ def chinese_key(name: str) -> tuple[str, str]:
 # answer, because it is the order a mainland reader has been taught to scan and
 # the one every mainland index uses.
 #
-# None of the Traditional table transfers. Its 113 entries are 注音 readings,
+# None of the Traditional table transfers. Its entries are 注音 readings,
 # which is a different alphabet, and the characters themselves are Traditional.
 # This table is built from the Simplified names the hubs actually carry.
 #
@@ -247,6 +249,7 @@ def chinese_key(name: str) -> tuple[str, str]:
 # it were spelled "xian". The separator is a space, which sorts before every
 # letter, so a shorter first syllable wins exactly as it should.
 PINYIN_READINGS = {
+    "丹": "dan1", "卡": "ka3", "塔": "ta3", "士": "shi4", "班": "ban1", "瑞": "rui4", "麦": "mai4",
     "\u4e9a": "ya4", "\u4ea5": "hai4", "\u4ed6": "ta1", "\u4f10": "fa2", "\u4f26": "lun2",
     "\u4f2f": "bo2", "\u4f50": "zuo3", "\u4f5b": "fo2", "\u4fc4": "e2", "\u4fdd": "bao3",
     "\u514b": "ke4", "\u5170": "lan2", "\u5176": "qi2", "\u5185": "nei4", "\u5188": "gang1",

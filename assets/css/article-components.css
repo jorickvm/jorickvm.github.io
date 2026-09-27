@@ -112,3 +112,250 @@ article > .learn-disclaimer,
     height: 26px;
   }
 }
+
+/* Data components for Learn articles (2026-09). Comparisons are set as cards,
+   short two-column facts as a key-value list, and only genuinely grid-shaped
+   short data as a table. Long prose in table cells does not survive a phone. */
+
+/* Cards: one per place, rule or option. Title first, then stacked
+   label/value rows, so a card reads the same at any width. */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  gap: 12px;
+  margin: 18px 0 26px;
+}
+
+.cards.cards-pair { grid-template-columns: repeat(auto-fit, minmax(270px, 1fr)); }
+.cards.cards-single { grid-template-columns: minmax(0, 1fr); }
+
+.card {
+  min-width: 0;
+  padding: 16px 18px 6px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--bg-card);
+}
+
+.card-kicker {
+  margin: 0 0 4px;
+  color: var(--muted-2);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.card h3 {
+  margin: 0 0 10px;
+  color: var(--text);
+  font-size: 1rem;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+}
+
+.card h3 a { color: var(--text); text-decoration: none; }
+.card h3 a:hover { color: var(--blue); }
+.card h3 a::after { content: " \2192"; color: var(--blue); font-weight: 500; }
+
+.card dl { margin: 0; }
+
+.card dl > div {
+  padding: 9px 0 10px;
+  border-top: 1px solid var(--line);
+}
+
+.card dt {
+  margin: 0 0 2px;
+  color: var(--muted-2);
+  font-size: 0.8rem;
+}
+
+.card dd {
+  margin: 0;
+  color: var(--text);
+  font-size: 0.93rem;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
+.card dd .card-sub {
+  display: block;
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+/* Key-value list: the factbox look, for a short two-column list mid-article. */
+.kv {
+  margin: 18px 0 26px;
+  padding: 2px 18px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--bg-card);
+}
+
+.kv > div {
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.kv > div:last-child { border-bottom: 0; }
+.kv dt { flex: 1 1 58%; min-width: 0; color: var(--muted); font-size: 0.93rem; }
+.kv dd { flex: 0 1 42%; min-width: 0; margin: 0; color: var(--text); font-size: 0.93rem; font-weight: 600; text-align: right; overflow-wrap: anywhere; }
+.kv.kv-text dt { flex: 0 0 30%; color: var(--text); font-weight: 600; }
+.kv.kv-text dd { flex: 1 1 70%; color: var(--muted); font-weight: 400; text-align: left; }
+
+/* Small data table, for short values only. */
+.data-table {
+  margin: 18px 0 26px;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--bg-card);
+}
+
+.data-table table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+
+.data-table th {
+  padding: 11px 14px 9px;
+  color: var(--muted-2);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-align: left;
+  white-space: nowrap;
+  border-bottom: 1px solid var(--line);
+}
+
+.data-table td {
+  padding: 10px 14px;
+  color: var(--muted);
+  vertical-align: top;
+  border-top: 1px solid var(--line);
+}
+
+.data-table tbody tr:first-child td { border-top: 0; }
+.data-table td:first-child { color: var(--text); font-weight: 600; }
+.data-table.data-table-code td { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.data-table.data-table-code td:last-child { white-space: normal; min-width: 9em; }
+
+/* Day strip: a short stay drawn as dated cells, counted days filled. */
+.day-methods {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 12px;
+  margin: 18px 0 26px;
+}
+
+.day-method {
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--bg-card);
+}
+
+.day-method h3 { margin: 0 0 4px; font-size: 1rem; }
+.day-method .day-method-rule { margin: 0 0 12px; color: var(--muted); font-size: 0.9rem; line-height: 1.55; }
+
+.daystrip {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 6px;
+  margin: 0 0 8px;
+}
+
+.daystrip span {
+  display: grid;
+  place-items: center;
+  height: 40px;
+  border: 1px dashed var(--line-strong);
+  border-radius: 9px;
+  color: var(--muted-2);
+  font-size: 0.85rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.daystrip span.on {
+  border: 1px solid rgba(66, 143, 210, 0.45);
+  background: var(--blue-soft);
+  color: var(--text);
+  font-weight: 650;
+}
+
+.daystrip-caption {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin: 0 0 10px;
+  color: var(--muted-2);
+  font-size: 0.78rem;
+}
+
+.day-method .day-method-total { margin: 0 0 12px; color: var(--text); font-size: 0.93rem; font-weight: 600; }
+
+.day-method ul { margin: 0; padding: 12px 0 0; list-style: none; border-top: 1px solid var(--line); }
+.day-method li { margin: 0 0 9px; font-size: 0.9rem; line-height: 1.5; }
+.day-method li:last-child { margin-bottom: 0; }
+.day-method li a { font-weight: 600; }
+.day-method .day-method-total { margin-bottom: 0; }
+
+@media (min-width: 640px) {
+  .day-method {
+    display: grid;
+    grid-template-columns: 250px minmax(0, 1fr);
+    gap: 0 22px;
+    align-items: start;
+  }
+  .day-method ul { padding: 0 0 0 22px; border-top: 0; border-left: 1px solid var(--line); }
+}
+
+@media (max-width: 639px) {
+  .day-method ul { margin-top: 14px; }
+}
+
+@media (max-width: 560px) {
+  .kv > div { flex-direction: column; gap: 2px; }
+  .kv dd, .kv.kv-text dd { text-align: left; }
+  .kv dt, .kv dd, .kv.kv-text dt, .kv.kv-text dd { flex: none; }
+  .card { padding: 14px 16px 4px; }
+}
+
+.data-table-hint { display: none; margin: 18px 0 -10px; color: var(--muted-2); font-size: 0.82rem; }
+@media (max-width: 720px) { .data-table-hint { display: block; } }
+.kv dt strong { display: block; color: var(--text); font-weight: 600; }
+.kv dt .kv-sub { display: block; margin-top: 2px; color: var(--muted); font-size: 0.86rem; line-height: 1.5; }
+.kv.kv-count dd { flex: 0 0 auto; font-size: 1.05rem; font-variant-numeric: tabular-nums; }
+@media (max-width: 560px) { .kv.kv-count > div { flex-direction: row; } .kv.kv-count > div { gap: 16px; } .kv.kv-count dt { flex: 1 1 auto; min-width: 0; } .kv.kv-count dd { flex: 0 0 auto; text-align: right; } }
+
+/* Flag chips: a set of places, grouped, instead of a two-column yes/no table. */
+.chip-groups {
+  margin: 18px 0 26px;
+  padding: 16px 18px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--bg-card);
+}
+.chip-group-label { margin: 0 0 10px; color: var(--muted-2); font-size: 0.8rem; font-weight: 600; }
+.chips + .chip-group-label { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--line); }
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.chips li {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  padding: 6px 12px 6px 8px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--text);
+  font-size: 0.9rem;
+}
+.chips img { width: 20px; height: 15px; border-radius: 3px; object-fit: cover; }

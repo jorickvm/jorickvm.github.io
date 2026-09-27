@@ -9,7 +9,7 @@
       <li><strong>Country:</strong> englischer <a href="/de/help/languages">Ländername</a>, ISO-Ländercode aus zwei Buchstaben oder eine erkannte gängige Variante.</li>
       <li><strong>State:</strong> optionaler Name eines US-Bundesstaats, seine Abkürzung oder der ISO-Code der Untereinheit, etwa <code>US-CA</code>.</li>
       <li><strong>Start Date / End Date:</strong> genaues Datum, Jahr oder leer, nach den Regeln unten.</li>
-      <li><strong>Purpose:</strong> Tourism, Business, Medical, <a href="/de/help/history-and-import">Transit</a> oder Personal; mehrere Zwecke außer Transit lassen sich mit Komma trennen.</li>
+      <li><strong>Purpose:</strong> Personal, Business, Study oder <a href="/de/help/history-and-import">Transit</a>. Mehrere Zwecke außer Transit kannst du in Anführungszeichen kommagetrennt angeben, etwa <code>"Business, Personal"</code>. Ältere Dateien mit Tourism oder Medical werden weiterhin importiert, und zwar als Personal.</li>
       <li><strong>Notes:</strong> beliebiger Text, optional.</li>
     </ul>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/de/help/csv-format-reference/csv-reference.webp" alt="Beispiel und Vorlagensteuerung für den CSV-Import" width="1320" height="1760" loading="lazy" decoding="async" /></figure>
@@ -26,14 +26,14 @@
     <p>Nutz State nur bei einer Reise in die Vereinigten Staaten. Wenn ein US-Besuch mehrere Bundesstaaten umfasste und du Einträge auf Ebene der Bundesstaaten brauchst, nimm eine Zeile pro Bundesstaat. Eine schlichte US-Zeile ist für die Verfolgung auf Länderebene gültig.</p>
 
     <h2>Transit</h2>
-    <p>Schreib <code>Transit</code> in Purpose, wenn du nicht ins Land eingereist bist. Transit schließt anderes aus: Kombinier es nicht mit Tourism, Business oder einem anderen Zweck.</p>
+    <p>Schreib <code>Transit</code> in Purpose, wenn du nicht ins Land eingereist bist. Transit schließt anderes aus: Kombinier es nicht mit Personal, Business oder einem anderen Zweck.</p>
 
     <h2>Beispiel</h2>
     <pre><code>Country,State,Start Date,End Date,Purpose,Notes
-France,,2026-03-01,2026-03-05,Tourism,
-United States,CA,2026-04-10,2026-04-15,Business,Konferenz
-Japan,,2024,,Tourism,Datumsangaben nicht bekannt
-United Arab Emirates,,2026-05-01,2026-05-01,Transit,Umstieg am Flughafen</code></pre>
+France,,2026-03-01,2026-03-05,Personal,
+United States,CA,2026-04-10,2026-04-15,Business,Conference
+Japan,,2024,,Personal,Dates not known
+United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></pre>
 
     <h2>Trennzeichen und Anführungszeichen</h2>
     <p>AtlasDays erkennt an der Kopfzeile Dateien, die mit Komma, Semikolon oder Tabulator getrennt sind. Setz Felder, die das Trennzeichen oder einen Zeilenumbruch enthalten, nach den üblichen CSV-Regeln in Anführungszeichen.</p>

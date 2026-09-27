@@ -19,6 +19,7 @@ pass.
 from __future__ import annotations
 
 import argparse
+import html
 import json
 import re
 import sys
@@ -34,6 +35,8 @@ from locales import (
     route_for,
     source_hash,
 )
+
+from calendar_strings import BLOCK as CAL_BLOCK, prose as cal_prose, check as check_cal_strings
 
 SITE_ROOT = Path(__file__).resolve().parents[1]
 SOURCE_ROOT = SITE_ROOT / "_site-src"
@@ -82,6 +85,7 @@ def parse_args() -> argparse.Namespace:
 def visible_text(fragment: str) -> str:
     """Prose only, so a rule never fires on markup or a URL."""
     without_comments = re.sub(r"<!--.*?-->", "\n", fragment, flags=re.DOTALL)
+    without_comments = CAL_BLOCK.sub("\n".join(cal_prose(fragment)), without_comments)
     # Newline rather than space, so text in two different elements never reads
     # as one sentence to the typography rules below.
     return TAGS.sub("\n", without_comments)
@@ -210,6 +214,23 @@ def slots(fragment: str) -> set[str]:
     return set(FIGURE_SLOT.findall(fragment)) | set(DEFERRED_SLOT.findall(fragment))
 
 
+def csv_schema_values(markup: str) -> list:
+    """Importer-facing example fields are literals; Notes are translatable prose."""
+    examples = []
+    blocks = re.findall(r'<div\b[^>]*class="[^"]*\bdata-table-code\b[^"]*"[^>]*>(.*?)</div>', markup, re.DOTALL)
+    def plain(value):
+        return " ".join(html.unescape(TAGS.sub("", value)).split())
+    for block in blocks:
+        headers = [plain(v) for v in re.findall(r'<th\b[^>]*>(.*?)</th>', block, re.DOTALL)]
+        rows = []
+        for row in re.findall(r'<tr\b[^>]*>(.*?)</tr>', block, re.DOTALL):
+            cells = re.findall(r'<td\b[^>]*>(.*?)</td>', row, re.DOTALL)
+            if cells:
+                rows.append([plain(v) for v in cells[:5]])
+        examples.append((headers, rows))
+    return examples
+
+
 def check_structure(
     label: str,
     english: str,
@@ -219,6 +240,12 @@ def check_structure(
     problems: list[str],
 ) -> None:
     """Shape must survive translation, because a missing step is invisible."""
+    if csv_schema_values(english) != csv_schema_values(translated):
+        problems.append(f"{label}: CSV example headers or importer-facing values differ; translate only Notes values")
+    try:
+        check_cal_strings(english, translated, locale.get("code", "en"))
+    except (ValueError, TypeError) as error:
+        problems.append(f"{label}: {error}")
     for name, pattern in (
         ("<h2> sections", HEADING),
         ("<ol> lists", ORDERED_LIST),
@@ -242,8 +269,8 @@ def check_structure(
     # dropped digit is invisible to a reader who cannot compare the two. The
     # test is one-directional on purpose: Japanese legitimately adds numbers,
     # writing "6月1日、6月2日、6月3日" where English writes "June 1 to June 3".
-    english_numbers = Counter(NUMBER.findall(visible_text(FIGURES.sub(" ", english))))
-    lost = english_numbers - Counter(NUMBER.findall(visible_text(FIGURES.sub(" ", translated))))
+    english_numbers = Counter(NUMBER.findall(visible_text(FIGURES.sub(" ", CAL_BLOCK.sub(" ", english)))))
+    lost = english_numbers - Counter(NUMBER.findall(visible_text(FIGURES.sub(" ", CAL_BLOCK.sub(" ", translated)))))
     if lost:
         problems.append(
             f"{label}: the translation drops number(s) present in English: {dict(lost)}"

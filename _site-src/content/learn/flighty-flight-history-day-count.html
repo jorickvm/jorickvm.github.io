@@ -2,54 +2,61 @@
       <a href="/">AtlasDays</a> / <a href="/learn/">Travel Rules</a>
     </nav>
 
-    <h1>How to Turn Your Flighty Flight History Into a Visa and Residency Day Count</h1>
-    <p class="subtitle">Flighty is built to track your flights. Visa limits and residency tests are about days in a country. Here is how to bridge the two without losing accuracy.</p>
-    <p class="verified">Last verified: June 2026</p>
+    <h1>How to Turn Your Flighty History Into a Visa and Residency Day Count</h1>
+    <p class="subtitle">Export your flights from Flighty as a CSV, import the file into AtlasDays, and review the trips it builds.</p>
+    <p class="verified">Last verified: September 2026</p>
 
-    <div class="callout">
-      <p><strong>In short:</strong> Flighty keeps an excellent log of the flights you have taken, but it does not total how many days you have spent in each country or check that against a visa or residency limit. To get a day count, you treat each flight as an arrival in a country and add up the days between arrivals and departures – work a day-counting app can do for you straight from a Flighty export.</p>
+    <div class="tldr">
+      <p><strong>In short:</strong> Flighty logs your flights, but it does not count <strong>days per country</strong>. Export your Flighty history as a <strong>CSV</strong> and import it into AtlasDays, which turns the flights into dated trips and counts them against Schengen 90/180, 183-day rules, and the rest.</p>
     </div>
 
-    <h2>Why your flight history is a strong starting point</h2>
-    <p>Flighty logs the flights you take, follows live status and delays, and turns your history into stats like airports visited, miles flown, and time in the air. For remembering exactly where and when you flew, it is hard to beat. What it is not built to do is answer the questions visa and residency rules ask: how many days you have spent in the Schengen area in the last 180 days, whether you have been in a country more than 183 days this year, or whether your next trip crosses a stay limit. Those are about <strong>presence measured in days per country</strong>, not about flights. Your flight history is the raw material; the day count is a separate calculation built on top of it.</p>
-    <p>It is good raw material. Each international flight is a dated border crossing: the destination airport tells you which country you entered, and your next departure tells you roughly when you left by air. A reasonably complete flight history is close to a skeleton of your movements, already dated and far more reliable than counting from memory. It is one of the better sources when you are <a href="/learn/rebuild-travel-history-from-passport-stamps-emails-photos">rebuilding a travel history from passport stamps, emails, and photos</a>. The gap is everything <em>between</em> the flights: how long you actually stayed, whether a connection should count, and any travel you did on the ground.</p>
-
-    <h2>What has to happen to get from flights to days</h2>
-    <ol>
-      <li><strong>Airport to country.</strong> Each airport code maps to a country, so an arrival into CDG is an arrival in France and an arrival into NRT is an arrival in Japan.</li>
-      <li><strong>Chaining legs into trips.</strong> A journey is usually several flights. Out-and-back legs need to become the trips they represent, not a separate row for every flight.</li>
-      <li><strong>Connections versus stays.</strong> A same-day connection through a third country is normally transit and should not add days there. An overnight layover is a judgement call. See <a href="/learn/does-a-layover-count-as-visiting-a-country">Does a Layover Count as Visiting a Country?</a></li>
-      <li><strong>Counting against a window.</strong> Once you have dated stays per country, the count is measured against the relevant rule – a rolling 180-day window for <a href="/learn/schengen-90-180-rule">Schengen 90/180</a>, which is a lookback across the whole Schengen area rather than per country, or a calendar or fiscal year for many <a href="/learn/183-day-tax-residency-rule">183-day residency tests</a>, each with their own exceptions.</li>
+    <h2>Export your flights from Flighty</h2>
+    <ol class="steps">
+      <li>Open Flighty and go to the <strong>Profile</strong> tab.</li>
+      <li>Tap <strong>Settings</strong> (the gear icon).</li>
+      <li>Scroll to <strong>Account Data</strong> and tap it.</li>
+      <li>Tap <strong>Export Your Flights</strong>.</li>
+      <li>Save the CSV file to the Files app, for example in iCloud Drive or On My iPhone. Do not open and resave it in a spreadsheet first.</li>
     </ol>
-    <p>There are two realistic routes. <strong>Manually:</strong> export your flights from Flighty as a CSV, then work out country stays and tally days in a spreadsheet. It is doable, but it has to be redone every time plans change, and that is where <a href="/learn/how-to-track-travel-days">spreadsheets tend to fail</a>. <strong>Faster:</strong> bring the same export into an app that infers trips and counts days for you. AtlasDays reads a Flighty CSV, maps airports to countries, chains the legs into trips, flags stops of 10 hours or less as transit, and counts those days against whatever limit you are tracking. The step-by-step is in <a href="/help/flighty-import">Help Center: Flighty Import</a>.</p>
+    <p>This is the menu path as of September 2026. Flighty added the export in version 4.3, and the labels may move in a later update.</p>
+    <p>The export only contains flights that are in Flighty. If your older trips never made it in, add them before you export: Flighty imports flights from the past year for free, while <strong>older flights require Flighty Pro</strong>.</p>
 
-    <div class="callout">
-      <p><strong>Either way, review before you trust it.</strong> An automated pass turns hundreds of flights into trips in seconds, but a connection misread as a stay, or a missing leg, changes the count. Treat the first result as a strong draft and check the trips that feed a limit you care about.</p>
-    </div>
-
-    <div class="midcta">
-      <p><strong>Tracking this yourself?</strong> AtlasDays keeps a private, dated travel record on your iPhone and counts the days that matter: visa limits, residency thresholds, and country totals. <a href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">Get the app →</a></p>
-    </div>
-
-    <h2>Where flight history alone is not enough</h2>
-    <p>Visa and residency questions are high-stakes, so it is worth being honest about what a flight log cannot tell you:</p>
+    <h2>Import it into AtlasDays</h2>
+    <ol class="steps">
+      <li>Open AtlasDays and go to <strong>Settings → Import → Flighty</strong>.</li>
+      <li>Tap <strong>Select Flighty CSV</strong> and choose the file you saved.</li>
+      <li>AtlasDays parses the file on your iPhone and shows a preview with counts for layovers, overnight flights, incomplete trips, duplicates, and overlaps. Tap any of them to review those trips.</li>
+      <li>Deselect anything you do not want, then tap <strong>Import</strong> and confirm.</li>
+    </ol>
+    <p>Screenshots of each screen are in <a href="/help/flighty-import">Help Center: Flighty Import</a>. The import is <strong>free</strong>; only splitting US trips by state needs AtlasDays Pro. What it does with your flights:</p>
     <ul>
-      <li><strong>Ground crossings are invisible.</strong> A train from France to Spain or a drive across a land border never appears in a flight history, so a stay that ended on the ground may need its dates adjusted.</li>
-      <li><strong>Flights show movement, not where you slept.</strong> A connection is not a visit, and a long layover is a grey area. What actually counts as a "day" depends on the rule – see <a href="/learn/what-counts-as-a-day-for-visa-purposes">What Counts as a 'Day' for Visa Purposes?</a></li>
-      <li><strong>It is evidence, not proof.</strong> A flight history is strong supporting evidence of your movements, but official decisions still rest on stamps, permits, and authority records. If you are assembling a record for an application, see <a href="/learn/travel-history-for-visa-applications">How to Prepare Travel History for a Visa Application</a>.</li>
+      <li><strong>Airports become countries.</strong> An arrival in a country and the next departure from it bracket one stay, and domestic flights in between stay inside that trip.</li>
+      <li><strong>Stops under 10 hours become Transit</strong>, which adds no days to any count. Stops of 10 to 24 hours become a stay with a long-transit warning, so you decide. See <a href="/learn/does-a-layover-count-as-visiting-a-country">Does a Layover Count as Visiting a Country?</a></li>
+      <li><strong>Flight details go into the trip notes:</strong> the date, time, route, and flight number behind each stay. Canceled flights are skipped.</li>
+      <li><strong>Nothing is saved until you approve it.</strong> Trips missing an arrival or departure flight are listed as incomplete, so you add the date instead of accepting a guess.</li>
     </ul>
-    <p>The point of starting from Flighty is that you build the record once, then check the same clean set of dated trips against whichever limit applies.</p>
+
+    <h2>Before you rely on the count</h2>
+    <ul>
+      <li><strong>Ground crossings are invisible.</strong> A train, ferry, or drive across a border never appears in a flight log, so set those dates by hand.</li>
+      <li><strong>Check the trips that feed a limit.</strong> One misread layover or missing leg changes a <a href="/learn/schengen-90-180-rule">Schengen 90/180</a> total, so review every stay inside the window you care about.</li>
+      <li><strong>Mind the gaps before your Flighty history.</strong> Years you never logged in Flighty need filling from other records before a multi-year total means anything.</li>
+    </ul>
+
+    <div class="cta-box">
+      <span class="cta-logo">
+        <img class="logo-dark" src="../assets/brand/logo_dark.png?v=20260325a" alt="AtlasDays logo" width="52" height="52" />
+        <img class="logo-light" src="../assets/brand/logo_light.png?v=20260325a" alt="AtlasDays logo" width="52" height="52" />
+      </span>
+      <h2>AtlasDays turns your Flighty export into a day count</h2>
+      <p>Import your Flighty CSV for free, review the stays and transits before anything is saved, and let the <strong>Schengen 90/180 Short-Stay Rule</strong> preset and your other trackers count the days, privately on your iPhone.</p>
+      <a class="cta-btn" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> Get AtlasDays</a>
+    </div>
 
     <h2>FAQ</h2>
     <h3>Does Flighty count your days in a country?</h3>
-    <p>No. Flighty logs the flights you take and builds flight stats, but it does not total how many days you have spent in each country or measure that against a visa or residency limit. Day counting is a separate calculation that uses your flight history as its source.</p>
-    <h3>Can Flighty track the Schengen 90/180 rule?</h3>
-    <p>Not directly. Flighty is a flight tracker, not a visa-limit calculator, so it does not keep a rolling 90/180 Schengen total. You can use your flight history as the source data and count it against the rule in a day-tracking app.</p>
+    <p>No. Flighty logs your flights and builds flight stats, but it does not total the days you spend in each country or check them against a visa or residency limit. You need to turn the flights into dated stays first, which is what importing the Flighty CSV into a day-counting app does.</p>
     <h3>How do I export my travel history from Flighty?</h3>
-    <p>Flighty can export your flight history to a CSV file, which you can save or share to your device. From there you can open it in a spreadsheet or import it into a day-counting app to turn the flights into dated trips.</p>
-
-    <div class="cta-box">
-      <h3>From flight log to day count</h3>
-      <p>AtlasDays imports your Flighty history once, turns it into dated trips you review, and recalculates rolling windows and residency thresholds from that single record – private, on your iPhone.</p>
-      <a class="cta-btn" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> Get AtlasDays</a>
-    </div>
+    <p>As of September 2026, open the Profile tab in Flighty, tap Settings, then Account Data, then Export Your Flights. Save the CSV file to the Files app and keep the original unedited, because a resaved spreadsheet may no longer match Flighty's format.</p>
+    <h3>Does it cost anything to import Flighty flights into AtlasDays?</h3>
+    <p>No. The Flighty import is part of the free version of AtlasDays, including the review of stays, transits, duplicates, and overlaps. Only tracking US trips state by state needs AtlasDays Pro.</p>

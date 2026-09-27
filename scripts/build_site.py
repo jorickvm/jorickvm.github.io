@@ -14,6 +14,7 @@ from pathlib import Path
 from build_route_outputs import ROUTES, expanded_routes, llms_files, sitemap_files
 from locales import (
     default_locale_code,
+    description_of,
     load_locales,
     load_ui_strings,
     localize,
@@ -36,15 +37,50 @@ HUB_TEMPLATE = SOURCE_ROOT / "templates" / "hub.html"
 STANDALONE_TEMPLATE = SOURCE_ROOT / "templates" / "standalone.html"
 HEADER_TEMPLATE = SOURCE_ROOT / "templates" / "partials" / "site-header.html"
 FOOTER_TEMPLATE = SOURCE_ROOT / "templates" / "partials" / "site-footer.html"
+REDIRECT_TEMPLATE = SOURCE_ROOT / "templates" / "redirect.html"
 CLUSTER_DATA_PATH = SOURCE_ROOT / "data" / "content-clusters.json"
-BUILD_VERSION = "20260928e"
+BUILD_VERSION = "20260928f"
+VARIANT_VERSIONS = {("article", "help20260802"): "20260928f", ("hub", "92c3adc0daf3"): "20260928f"}
 SITE_HEADER_VERSION = "20260928e"
-ARTICLE_COMPONENTS_VERSION = "20260817b"
+ARTICLE_COMPONENTS_VERSION = "20260925a"
 NAVIGATION_VERSION = "20260817b"
 
 # Root class that drops the background wash from the app's `.medium` step to
 # `.subtle`, for pages carrying long-form text. See assets/css/tokens.css.
 WASH_SUBTLE = ' class="wash-subtle"'
+
+
+def redirect_outputs(locales, translations, sources, strings):
+    """Merged Learn routes remain generated and covered by --check in each locale."""
+    registry = json.loads((SOURCE_ROOT / "data/redirects.json").read_text(encoding="utf-8"))
+    template = REDIRECT_TEMPLATE.read_text(encoding="utf-8")
+    for code, locale in locales.items():
+        for old, target in registry.items():
+            record = sources[target] if code == default_locale_code() else translations.get(code, {}).get(target)
+            if not record:
+                if locale.get("status") == "draft":
+                    continue
+                raise ValueError(f"{code}: redirect target has no translation: {target}")
+            prefix = locale.get("route_prefix", "")
+            href = prefix + "/" + target.removesuffix(".html")
+            headline = record.get("headline") or str(record["title"]).removesuffix(" – AtlasDays")
+            title = html.escape(headline)
+            description = record.get("description") or description_of(record)
+            message = html.escape(strings["help.continue"][code])
+            colon = html.escape(locale.get("label_colon", ":"))
+            replacements = {
+                "{{HTML_LANG}}": html.escape(locale["html_lang"]),
+                "{{TITLE}}": title + html.escape(locale["title_separator"]) + "AtlasDays",
+                "{{HEADLINE}}": title,
+                "{{DESCRIPTION}}": html.escape(description, quote=True),
+                "{{TARGET}}": html.escape(href, quote=True),
+                "{{CONTINUE}}": message,
+                "{{COLON}}": colon,
+            }
+            rendered = template
+            for marker, value in replacements.items():
+                rendered = rendered.replace(marker, value)
+            yield SITE_ROOT / (prefix.lstrip("/") + "/" + old).lstrip("/"), rendered
 
 
 def parse_args() -> argparse.Namespace:
@@ -194,7 +230,7 @@ def render_styles(article: dict[str, object], family: str = "article", prefix: s
     # page, and the variant stylesheets that follow carry layout only.
     lines = [f'  <link rel="stylesheet" href="{prefix}assets/css/tokens.css?v={asset_version}" />']
     lines += [
-        f'  <link rel="stylesheet" href="{prefix}assets/css/{family}-variants/{style_id}.css?v={asset_version}" />'
+        f'  <link rel="stylesheet" href="{prefix}assets/css/{family}-variants/{style_id}.css?v={VARIANT_VERSIONS.get((family, str(style_id)), asset_version)}" />'
         for style_id in article.get("style_variants", [])
     ]
     lines.append(
@@ -478,7 +514,7 @@ def localize_url(url: str, locale: dict, available: set[str]) -> str:
     return SITE_URL + localized_route(route, locale, available)
 
 
-FAQ_PAIR = re.compile(r"<h3[^>]*>(.*?)</h3>\s*<p[^>]*>(.*?)</p>", re.DOTALL)
+FAQ_PAIR = re.compile(r"<h3\b[^>]*>((?:(?!</h3>).)*)</h3>\s*<p\b[^>]*>(.*?)</p>", re.DOTALL)
 MARKUP = re.compile(r"<[^>]+>")
 
 
@@ -1077,6 +1113,11 @@ def render_locale_routing(
     )
 
 
+def optional_block(value: object) -> str:
+    text = str(value or "").rstrip()
+    return "\n" + text if text else ""
+
+
 def render_article(
     article: dict[str, object],
     template: str,
@@ -1112,6 +1153,11 @@ def render_article(
         "{{NAV_SCRIPT}}": render_nav_script(prefix, code, strings),
         "{{SITE_FOOTER}}": footer_template.replace("{{ASSET_PREFIX}}", prefix).rstrip(),
         "{{ARTICLE_CONTENT}}": content,
+        # Optional per-article assets, for the few pages with an interactive
+        # component (the UK absence calculator). Inline markers, so every other
+        # page renders byte-for-byte as before.
+        "{{HEAD_EXTRA}}": optional_block(article.get("head_extra")),
+        "{{PAGE_SCRIPTS}}": optional_block(article.get("page_scripts")),
         "{{CLUSTER_RELATED}}": (
             render_help_tail(article, locale, strings)
             or render_cluster_related(article, locale, translations)
@@ -1357,6 +1403,10 @@ def main() -> int:
                     **({"family": localized_family} if kind == "page" else {}),
                 ),
             )
+
+    if args.section in {"all", "learn"}:
+        for output_path, rendered in redirect_outputs(locales, translations, sources, strings):
+            queue(output_path, rendered)
 
     if args.section == "all" and ROUTES.exists():
         routes = expanded_routes(json.loads(ROUTES.read_text(encoding="utf-8"))["routes"])
