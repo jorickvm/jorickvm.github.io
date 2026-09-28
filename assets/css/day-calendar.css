@@ -196,7 +196,12 @@ html[data-theme="light"] .daycal {
 .cal-dialog-app { border: 1px solid var(--line-strong); background: transparent; color: var(--text); }
 .cal-dialog [data-cal-close] { margin-left: auto; border: 0; background: none; color: var(--muted); }
 
+/* On a phone the result sits above the calendar, so every tap shows its
+   effect without scrolling; the trip list follows the calendar. */
 @media (max-width: 640px) {
   .daycal { grid-template-columns: minmax(0, 1fr); }
-  .cal-window { height: 64vh; }
+  .cal-side { display: contents; }
+  .cal-side > .cal-box:first-child { order: 1; }
+  .cal-window { order: 2; height: 56vh; }
+  .cal-side > .cal-box:last-child { order: 3; }
 }

@@ -267,6 +267,9 @@
       if (r.status) top.appendChild(el("span", { "class": "cal-status " + (r.ok ? "is-ok" : "is-over") }, text(r.status, { n: r.remaining })));
       result.appendChild(top);
       result.appendChild(el("p", { "class": "cal-line" }, r.total ? text("worstWindow", { from: label(r.from), to: label(r.to) }) : text("emptyResult")));
+      // Offer the import only when there is something to put in the file.
+      var rows = rule.exportRows(trips, ctx()).length;
+      root.querySelectorAll("[data-cal-import]").forEach(function (btn) { btn.hidden = !rows; });
     }
 
     function render() { build(); paint(); renderList(); renderResult(); updateMonth(); }
