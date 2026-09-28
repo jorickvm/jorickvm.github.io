@@ -83,6 +83,27 @@ class AuditSiteTests(unittest.TestCase):
         audit_site.audit_learn_fragments(findings)
         self.assertEqual(findings, [])
 
+    def test_manual_sources_allow_declared_stems_per_locale_and_appearance(self) -> None:
+        folder = "assets/article-images/help/_manual-sources"
+        sources = {f"{folder}/widgets-gallery.png"}
+        files = [
+            f"{folder}/widgets-gallery.png",
+            f"{folder}/widgets-gallery-light.png",
+            f"{folder}/widgets-gallery.zh-Hans-light.png",
+            f"{folder}/widgets-gallery.xx.png",
+            f"{folder}/home-hero-pair.de.png",
+            f"{folder}/nested/widgets-gallery.png",
+        ]
+        self.assertEqual(
+            audit_site.stray_manual_sources(files, sources, {"de", "zh-Hans"}),
+            [f"{folder}/widgets-gallery.xx.png", f"{folder}/home-hero-pair.de.png", f"{folder}/nested/widgets-gallery.png"],
+        )
+
+    def test_committed_manual_sources_are_all_declared(self) -> None:
+        findings: list[audit_site.Finding] = []
+        audit_site.audit_manual_sources(findings)
+        self.assertEqual([item.path for item in findings], [])
+
     def test_library_tile_pattern_reads_the_qualifier_that_follows_a_name(self) -> None:
         markup = (
             '<span class="hub-tile-name">Georgia</span>'

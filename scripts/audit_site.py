@@ -506,6 +506,44 @@ def audit_learn_fragments(findings: list[Finding]) -> None:
             )
 
 
+def stray_manual_sources(files: list[str], sources: set[str], codes: set[str]) -> list[str]:
+    """Files under _manual-sources/ that no screenshots.json `source` accounts for.
+
+    Only hand-made captures the harness cannot regenerate belong there, each
+    declared as a capture's `source` and optionally varied per locale and
+    appearance (`<stem>[.<code>][-light].png`). Anything else is usually a
+    simulator raw: raws stay in a git-ignored folder, because every committed
+    PNG stays in the history forever.
+    """
+    allowed = {
+        f"{source.removesuffix('.png')}{locale}{appearance}.png"
+        for source in sources
+        for locale in ["", *(f".{code}" for code in codes)]
+        for appearance in ("", "-light")
+    }
+    return [path for path in files if path not in allowed]
+
+
+def audit_manual_sources(findings: list[Finding]) -> None:
+    manifest = json.loads((SITE_ROOT / "_site-src" / "data" / "screenshots.json").read_text(encoding="utf-8"))
+    sources = {str(c["source"]) for c in manifest["captures"] if c.get("source")}
+    files = sorted(
+        path.relative_to(SITE_ROOT).as_posix()
+        for folder in (SITE_ROOT / "assets").rglob("_manual-sources")
+        for path in folder.rglob("*")
+        if path.is_file() and path.name != ".DS_Store"
+    )
+    for path in stray_manual_sources(files, sources, set(load_locales())):
+        findings.append(
+            Finding(
+                "error",
+                "stray-manual-source",
+                path,
+                "Not a declared screenshots.json source; commit only the webp and keep raws out of git",
+            )
+        )
+
+
 SEARCH_ROOT = re.compile(r"<div class=\"library-search[^>]*data-library-search[^>]*>")
 SEARCH_LANG = re.compile(r'data-lang="([^"]*)"')
 
@@ -941,6 +979,7 @@ def main() -> int:
     audit_translations(records, parsed, findings)
     audit_theme_css(findings)
     audit_learn_fragments(findings)
+    audit_manual_sources(findings)
     audit_library_qualifiers(findings)
     audit_search_index_language(findings)
     audit_governance(records, findings)
