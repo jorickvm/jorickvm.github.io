@@ -27,13 +27,18 @@
       "id": "homepage-tracker-detail",
       "scenario": "tracker-detail-schengen",
       "status": "ready",
-      "settle_seconds": 6,
+      "settle_seconds": 10,
       "targets": [
         "assets/home/home-hero-tracker-detail.webp"
       ],
       "last_captured_at": "2026-09-01T13:07:40Z",
       "captured_device": "iPhone 17 Pro Max (Web Capture)",
-      "last_captured_light_at": "2026-09-01T13:10:08Z"
+      "last_captured_light_at": "2026-09-01T13:10:08Z",
+      "launch_args": [
+        "--screenshot-date",
+        "2026-09-23"
+      ],
+      "notes": "Harness recipe (launch_args). The fixtures and routes live in the app repo branch website-dashboard-alerts until it merges into alpha."
     },
     {
       "id": "homepage-timeline",
@@ -1244,14 +1249,19 @@
       "id": "homepage-presets",
       "scenario": "tracker-presets",
       "status": "ready",
-      "settle_seconds": 12,
+      "settle_seconds": 16,
       "residence": "auto",
       "targets": [
         "assets/home/home-proof-presets.webp"
       ],
       "last_captured_at": "2026-09-01T13:07:40Z",
       "captured_device": "iPhone 17 Pro Max (Web Capture)",
-      "last_captured_light_at": "2026-09-01T13:10:08Z"
+      "last_captured_light_at": "2026-09-01T13:10:08Z",
+      "launch_args": [
+        "--screenshot-date",
+        "2026-09-23"
+      ],
+      "notes": "Harness recipe (launch_args). The fixtures and routes live in the app repo branch website-dashboard-alerts until it merges into alpha."
     },
     {
       "id": "homepage-calendar",
@@ -1281,18 +1291,26 @@
       "id": "homepage-v2-hero-pair",
       "scenario": "dashboard-list",
       "status": "ready",
-      "source": "assets/article-images/help/_manual-sources/home-hero-pair.png",
       "targets": [
         "assets/home/v2/hero-pair.webp"
       ],
       "captured_device": "iPhone 17 Pro Max (Web Capture)",
       "last_captured_at": "2026-09-27T14:00:00Z",
-      "last_captured_light_at": "2026-09-27T14:00:00Z"
+      "last_captured_light_at": "2026-09-27T14:00:00Z",
+      "launch_args": [
+        "--screenshot-date",
+        "2026-09-23",
+        "--dashboard-display-date",
+        "2026-09-23",
+        "--dashboard-list-fixture",
+        "pair"
+      ],
+      "settle_seconds": 16,
+      "notes": "Harness recipe (launch_args). The fixtures and routes live in the app repo branch website-dashboard-alerts until it merges into alpha."
     },
     {
       "id": "homepage-v2-hero-list",
       "scenario": "dashboard-list",
-      "source": "assets/article-images/help/_manual-sources/home-hero-list.png",
       "targets": [
         {
           "path": "assets/home/v2/case-residency.webp",
@@ -1325,37 +1343,61 @@
       "status": "ready",
       "captured_device": "iPhone 17 Pro Max (Web Capture)",
       "last_captured_at": "2026-09-27T12:40:00Z",
-      "last_captured_light_at": "2026-09-27T12:40:00Z"
+      "last_captured_light_at": "2026-09-27T12:40:00Z",
+      "launch_args": [
+        "--screenshot-date",
+        "2026-09-23",
+        "--dashboard-display-date",
+        "2026-09-23"
+      ],
+      "settle_seconds": 16,
+      "notes": "Harness recipe (launch_args). The fixtures and routes live in the app repo branch website-dashboard-alerts until it merges into alpha."
     },
     {
       "id": "homepage-v2-alerts-list",
       "scenario": "dashboard-list",
-      "source": "assets/article-images/help/_manual-sources/home-alerts-list.png",
       "targets": [
         "assets/home/v2/step-alerts-list.webp"
       ],
       "status": "ready",
       "captured_device": "iPhone 17 Pro Max (Web Capture)",
       "last_captured_at": "2026-09-27T12:40:00Z",
-      "last_captured_light_at": "2026-09-27T12:40:00Z"
+      "last_captured_light_at": "2026-09-27T12:40:00Z",
+      "launch_args": [
+        "--screenshot-date",
+        "2026-09-23",
+        "--dashboard-display-date",
+        "2026-09-23",
+        "--dashboard-list-fixture",
+        "alerts"
+      ],
+      "settle_seconds": 16,
+      "notes": "Harness recipe (launch_args). The fixtures and routes live in the app repo branch website-dashboard-alerts until it merges into alpha."
     },
     {
       "id": "homepage-v2-visa-trackers",
       "scenario": "dashboard-list",
       "status": "ready",
-      "source": "assets/article-images/help/_manual-sources/home-visa-trackers.png",
       "targets": [
         "assets/home/v2/step-visa-trackers.webp"
       ],
       "captured_device": "iPhone 17 Pro Max (Web Capture)",
       "last_captured_at": "2026-09-27T18:00:00Z",
       "last_captured_light_at": "2026-09-27T18:00:00Z",
-      "notes": "--dashboard-display-date 2026-09-23 --dashboard-list-fixture visas (harness fixture on the app branch website-dashboard-alerts)"
+      "notes": "Harness recipe (launch_args). The fixtures and routes live in the app repo branch website-dashboard-alerts until it merges into alpha.",
+      "launch_args": [
+        "--screenshot-date",
+        "2026-09-23",
+        "--dashboard-display-date",
+        "2026-09-23",
+        "--dashboard-list-fixture",
+        "visas"
+      ],
+      "settle_seconds": 16
     },
     {
       "id": "homepage-v2-citizenship-card",
       "scenario": "combined-dashboard",
-      "source": "assets/article-images/help/_manual-sources/home-citizenship-dashboard.png",
       "targets": [
         {
           "path": "assets/home/v2/case-citizenship.webp",
@@ -1370,7 +1412,15 @@
       "status": "ready",
       "captured_device": "iPhone 17 Pro Max (Web Capture)",
       "last_captured_at": "2026-09-27T12:40:00Z",
-      "last_captured_light_at": "2026-09-27T12:40:00Z"
+      "last_captured_light_at": "2026-09-27T12:40:00Z",
+      "launch_args": [
+        "--screenshot-date",
+        "2026-09-23",
+        "--capture-preset-id",
+        "citizenship-uk-naturalisation-combined"
+      ],
+      "settle_seconds": 16,
+      "notes": "Harness recipe (launch_args). The fixtures and routes live in the app repo branch website-dashboard-alerts until it merges into alpha."
     },
     {
       "id": "homepage-v2-photo-import-review",
@@ -1382,7 +1432,12 @@
       "status": "ready",
       "captured_device": "iPhone 17 Pro Max (Web Capture)",
       "last_captured_at": "2026-09-27T12:40:00Z",
-      "last_captured_light_at": "2026-09-27T12:40:00Z"
+      "last_captured_light_at": "2026-09-27T12:40:00Z",
+      "launch_args": [
+        "--screenshot-date",
+        "2026-09-23"
+      ],
+      "notes": "Harness recipe (launch_args). The fixtures and routes live in the app repo branch website-dashboard-alerts until it merges into alpha."
     },
     {
       "id": "homepage-v2-forecast",
@@ -1394,7 +1449,12 @@
       "status": "ready",
       "captured_device": "iPhone 17 Pro Max (Web Capture)",
       "last_captured_at": "2026-09-27T12:40:00Z",
-      "last_captured_light_at": "2026-09-27T12:40:00Z"
+      "last_captured_light_at": "2026-09-27T12:40:00Z",
+      "launch_args": [
+        "--screenshot-date",
+        "2026-09-23"
+      ],
+      "notes": "Harness recipe (launch_args). The fixtures and routes live in the app repo branch website-dashboard-alerts until it merges into alpha."
     },
     {
       "id": "homepage-v2-presets",
@@ -1407,123 +1467,185 @@
       "status": "ready",
       "captured_device": "iPhone 17 Pro Max (Web Capture)",
       "last_captured_at": "2026-09-27T12:40:00Z",
-      "last_captured_light_at": "2026-09-27T12:40:00Z"
+      "last_captured_light_at": "2026-09-27T12:40:00Z",
+      "launch_args": [
+        "--screenshot-date",
+        "2026-09-23"
+      ],
+      "notes": "Harness recipe (launch_args). The fixtures and routes live in the app repo branch website-dashboard-alerts until it merges into alpha."
     },
     {
       "id": "homepage-v2-uc-residency-dashboard",
       "scenario": "dashboard-list",
       "status": "ready",
-      "source": "assets/article-images/help/_manual-sources/home-uc-residency-dashboard.png",
       "targets": [
         "assets/home/v2/uc-residency-dashboard.webp"
       ],
       "captured_device": "iPhone 17 Pro Max (Web Capture)",
       "last_captured_at": "2026-09-27T19:00:00Z",
       "last_captured_light_at": "2026-09-27T19:00:00Z",
-      "notes": "--dashboard-display-date 2026-09-23 --dashboard-list-fixture tax (harness fixture on the app branch website-dashboard-alerts)"
+      "notes": "Harness recipe (launch_args). The fixtures and routes live in the app repo branch website-dashboard-alerts until it merges into alpha.",
+      "launch_args": [
+        "--screenshot-date",
+        "2026-09-23",
+        "--dashboard-display-date",
+        "2026-09-23",
+        "--dashboard-list-fixture",
+        "tax"
+      ],
+      "settle_seconds": 16
     },
     {
       "id": "homepage-v2-uc-presets-tax",
       "scenario": "tracker-presets",
       "status": "ready",
-      "source": "assets/article-images/help/_manual-sources/home-uc-presets-tax.png",
       "targets": [
         "assets/home/v2/uc-presets-tax.webp"
       ],
       "captured_device": "iPhone 17 Pro Max (Web Capture)",
       "last_captured_at": "2026-09-27T19:00:00Z",
       "last_captured_light_at": "2026-09-27T19:00:00Z",
-      "notes": "--capture-preset-family tax"
+      "notes": "Harness recipe (launch_args). The fixtures and routes live in the app repo branch website-dashboard-alerts until it merges into alpha.",
+      "launch_args": [
+        "--screenshot-date",
+        "2026-09-23",
+        "--capture-preset-family",
+        "tax"
+      ],
+      "settle_seconds": 14
     },
     {
       "id": "homepage-v2-uc-pdf",
       "scenario": "export-pdf",
       "status": "ready",
-      "source": "assets/article-images/help/_manual-sources/home-uc-pdf.png",
       "targets": [
         "assets/home/v2/uc-pdf.webp"
       ],
       "captured_device": "iPhone 17 Pro Max (Web Capture)",
       "last_captured_at": "2026-09-27T19:00:00Z",
-      "last_captured_light_at": "2026-09-27T19:00:00Z"
+      "last_captured_light_at": "2026-09-27T19:00:00Z",
+      "launch_args": [
+        "--screenshot-date",
+        "2026-09-23"
+      ],
+      "settle_seconds": 18,
+      "notes": "Harness recipe (launch_args). The fixtures and routes live in the app repo branch website-dashboard-alerts until it merges into alpha."
     },
     {
       "id": "homepage-v2-uc-citizenship-dashboard",
       "scenario": "dashboard-list",
       "status": "ready",
-      "source": "assets/article-images/help/_manual-sources/home-uc-citizenship-dashboard.png",
       "targets": [
         "assets/home/v2/uc-citizenship-dashboard.webp"
       ],
       "captured_device": "iPhone 17 Pro Max (Web Capture)",
       "last_captured_at": "2026-09-27T19:00:00Z",
       "last_captured_light_at": "2026-09-27T19:00:00Z",
-      "notes": "--dashboard-display-date 2026-09-23 --dashboard-list-fixture citizenship (harness fixture on the app branch website-dashboard-alerts)"
+      "notes": "Harness recipe (launch_args). The fixtures and routes live in the app repo branch website-dashboard-alerts until it merges into alpha.",
+      "launch_args": [
+        "--screenshot-date",
+        "2026-09-23",
+        "--dashboard-display-date",
+        "2026-09-23",
+        "--dashboard-list-fixture",
+        "citizenship"
+      ],
+      "settle_seconds": 16
     },
     {
       "id": "homepage-v2-uc-presets-citizenship",
       "scenario": "tracker-presets",
       "status": "ready",
-      "source": "assets/article-images/help/_manual-sources/home-uc-presets-citizenship.png",
       "targets": [
         "assets/home/v2/uc-presets-citizenship.webp"
       ],
       "captured_device": "iPhone 17 Pro Max (Web Capture)",
       "last_captured_at": "2026-09-27T19:00:00Z",
       "last_captured_light_at": "2026-09-27T19:00:00Z",
-      "notes": "--capture-preset-family citizenship"
+      "notes": "Harness recipe (launch_args). The fixtures and routes live in the app repo branch website-dashboard-alerts until it merges into alpha.",
+      "launch_args": [
+        "--screenshot-date",
+        "2026-09-23",
+        "--capture-preset-family",
+        "citizenship"
+      ],
+      "settle_seconds": 14
     },
     {
       "id": "homepage-v2-uc-citizenship-uk",
       "scenario": "combined-detail",
       "status": "ready",
-      "source": "assets/article-images/help/_manual-sources/home-uc-citizenship-uk.png",
       "targets": [
         "assets/home/v2/uc-citizenship-uk.webp"
       ],
       "captured_device": "iPhone 17 Pro Max (Web Capture)",
       "last_captured_at": "2026-09-27T19:00:00Z",
       "last_captured_light_at": "2026-09-27T19:00:00Z",
-      "notes": "--capture-preset-id citizenship-uk-naturalisation-combined"
+      "notes": "Harness recipe (launch_args). The fixtures and routes live in the app repo branch website-dashboard-alerts until it merges into alpha.",
+      "launch_args": [
+        "--screenshot-date",
+        "2026-09-23",
+        "--capture-preset-id",
+        "citizenship-uk-naturalisation-combined"
+      ],
+      "settle_seconds": 16
     },
     {
       "id": "homepage-v2-uc-globe",
       "scenario": "globe-europe",
       "status": "ready",
-      "source": "assets/article-images/help/_manual-sources/home-uc-globe.png",
       "targets": [
         "assets/home/v2/uc-globe.webp"
       ],
       "captured_device": "iPhone 17 Pro Max (Web Capture)",
       "last_captured_at": "2026-09-27T20:30:00Z",
       "last_captured_light_at": "2026-09-27T20:30:00Z",
-      "notes": "harness route on the app branch website-dashboard-alerts; --capture-globe-camera 0.45,-0.45,1.6"
+      "notes": "Harness recipe (launch_args). The fixtures and routes live in the app repo branch website-dashboard-alerts until it merges into alpha.",
+      "launch_args": [
+        "--screenshot-date",
+        "2026-09-23",
+        "--capture-globe-camera",
+        "0.45,-0.45,1.6"
+      ],
+      "settle_seconds": 20
     },
     {
       "id": "homepage-v2-uc-stats-continents",
       "scenario": "stats-continents",
       "status": "ready",
-      "source": "assets/article-images/help/_manual-sources/home-uc-stats-continents.png",
       "targets": [
         "assets/home/v2/uc-stats-continents.webp"
       ],
       "captured_device": "iPhone 17 Pro Max (Web Capture)",
       "last_captured_at": "2026-09-27T20:30:00Z",
       "last_captured_light_at": "2026-09-27T20:30:00Z",
-      "notes": "harness route on the app branch website-dashboard-alerts; stats scenarios also pass --dashboard-display-date 2026-09-23"
+      "notes": "Harness recipe (launch_args). The fixtures and routes live in the app repo branch website-dashboard-alerts until it merges into alpha.",
+      "launch_args": [
+        "--screenshot-date",
+        "2026-09-23",
+        "--dashboard-display-date",
+        "2026-09-23"
+      ],
+      "settle_seconds": 18
     },
     {
       "id": "homepage-v2-uc-stats-countries",
       "scenario": "stats-countries",
       "status": "ready",
-      "source": "assets/article-images/help/_manual-sources/home-uc-stats-countries.png",
       "targets": [
         "assets/home/v2/uc-stats-countries.webp"
       ],
       "captured_device": "iPhone 17 Pro Max (Web Capture)",
       "last_captured_at": "2026-09-27T20:30:00Z",
       "last_captured_light_at": "2026-09-27T20:30:00Z",
-      "notes": "harness route on the app branch website-dashboard-alerts; stats scenarios also pass --dashboard-display-date 2026-09-23"
+      "notes": "Harness recipe (launch_args). The fixtures and routes live in the app repo branch website-dashboard-alerts until it merges into alpha.",
+      "launch_args": [
+        "--screenshot-date",
+        "2026-09-23",
+        "--dashboard-display-date",
+        "2026-09-23"
+      ],
+      "settle_seconds": 18
     }
   ]
 }

@@ -162,11 +162,24 @@ def device_matches(wanted: str, actual: str) -> bool:
 
 
 def group_by_scenario(captures: list[dict]) -> list[tuple[str, list[dict]]]:
-    """Group captures by scenario, preserving manifest order."""
-    grouped: dict[str, list[dict]] = {}
+    """Group captures by scenario and launch arguments, preserving manifest order.
+
+    Captures that share both are crops of one screen and share one launch.
+    `launch_args` carries harness options a scenario needs (a dashboard
+    fixture, a preset filter, a pinned date), so the same scenario with
+    different arguments is a different screen and a different launch.
+    """
+    grouped: dict[tuple[str, tuple[str, ...]], list[dict]] = {}
     for capture in captures:
-        grouped.setdefault(str(capture["scenario"]), []).append(capture)
-    return list(grouped.items())
+        key = (str(capture["scenario"]), tuple(str(a) for a in capture.get("launch_args", [])))
+        grouped.setdefault(key, []).append(capture)
+    return [(scenario, group) for (scenario, _), group in grouped.items()]
+
+
+def raw_name(scenario: str, group: list[dict]) -> str:
+    """A raw PNG name unique per launch, so two groups never overwrite each other."""
+    extra = "-".join(str(a).lstrip("-") for a in group[0].get("launch_args", []))
+    return re.sub(r"[^\w.-]+", "_", f"{scenario}-{extra}" if extra else scenario)
 
 
 def simulator_lookup(env: dict[str, str], name: str) -> tuple[str, str]:
@@ -593,7 +606,7 @@ def main() -> int:
     if args.from_raw:
         recut = 0
         for scenario, group in group_by_scenario(captures):
-            raw_png = args.from_raw / f"{scenario}.png"
+            raw_png = args.from_raw / f"{raw_name(scenario, group)}.png"
             if not raw_png.exists():
                 print(f"! no raw capture for {scenario}, skipping")
                 continue
@@ -662,8 +675,9 @@ def main() -> int:
                 residence = resolve_residence(group, args.locale, args.residence)
                 if residence:
                     launch += ["--residence", residence]
+                launch += [str(a) for a in group[0].get("launch_args", [])]
                 run(launch, env=env, dry_run=args.dry_run)
-                raw_png = raw_root / f"{scenario}.png"
+                raw_png = raw_root / f"{raw_name(scenario, group)}.png"
                 capture_settled(
                     udid,
                     raw_png,
