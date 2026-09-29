@@ -152,6 +152,33 @@ html[data-theme="light"] .daycal {
   text-align: left;
 }
 .cal-trip-dates { font-size: 0.9rem; font-weight: 600; }
+
+/* A trip as the app shows one: flag, dates, count. The flag doubles as the
+   country picker (a transparent select over it); an unknown country is an
+   empty flag outline. */
+.cal-trip-row { display: flex; align-items: center; gap: 12px; }
+.cal-trip-row .cal-trip-main { flex: 1 1 auto; min-width: 0; }
+.cal-flag {
+  position: relative;
+  flex: 0 0 auto;
+  width: 28px;
+  height: 21px;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px var(--line);
+}
+.cal-flag img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.cal-flag.is-empty { background: var(--cal-disc); box-shadow: inset 0 0 0 1.5px var(--line-strong); }
+.cal-flag-pick {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  font-size: 16px; /* keeps iOS from zooming when the list opens */
+}
+.cal-flag:has(.cal-flag-pick:focus-visible) { outline: 2px solid var(--blue); outline-offset: 2px; }
 .cal-trip-count { color: var(--muted-2); font-size: 0.82rem; }
 .cal-delete {
   margin: 0 0 12px;

@@ -31,6 +31,9 @@
     travelDaysCount: false,
     singleDayTrips: false,
 
+    // Trips are absences, so they can be anywhere but the UK.
+    countries: function (all) { return all.filter(function (code) { return code !== "GB"; }); },
+
     range: function (c) {
       return { from: c.D.shiftYears(c.today, -5), to: c.D.shiftYears(c.today, 1) };
     },
@@ -57,13 +60,17 @@
     // which AtlasDays does not treat as an overlap.
     exportRows: function (trips, c) {
       var past = trips.filter(function (t) { return t.start <= c.today; });
-      if (!past.length) return [];
+      if (!past.length) return trips.filter(function (t) { return t.country; }).map(function (t) { return { country: t.country, start: t.start, end: t.end, notes: "ILR absence calculator" }; });
       var rows = [], cursor = c.D.shiftYears(past[0].start, -1);
       past.forEach(function (t) {
         if (t.start > cursor) rows.push({ country: "United Kingdom", start: cursor, end: t.start, notes: "ILR absence calculator" });
         cursor = Math.max(cursor, t.end);
       });
       if (cursor <= c.today) rows.push({ country: "United Kingdom", start: cursor, end: null, notes: "ILR absence calculator" });
+      // Trips given a country go in too (past and planned), so the app shows
+      // where the time away was spent.
+      trips.forEach(function (t) { if (t.country) rows.push({ country: t.country, start: t.start, end: t.end, notes: "ILR absence calculator" }); });
+      rows.sort(function (x, y) { return x.start - y.start; });
       return rows;
     },
 
@@ -76,6 +83,7 @@
       held: "trip end picked up",
       empty: "No trips yet.",
       deleteTrip: "Delete trip",
+      country: "Country",
       fileName: "atlasdays-uk-stays.csv",
       "tripAway": {"one": "{n} day away", "other": "{n} days away"},
       "headline": "{n} of 180 days away in any 12 months",
