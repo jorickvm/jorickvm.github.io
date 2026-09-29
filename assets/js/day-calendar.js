@@ -7,15 +7,15 @@
    outside the month in view are dimmed, as in the app. Deliberately small:
    one rule per page, and anything beyond a quick check is what the app is for.
 
-   Tapping, as designed with Jorick:
-     - tap an empty day, then another: a new trip, in either order
-     - tap a trip's first or last day: that end is picked up; the next tap
-       moves it there (later extends, earlier shortens); tap it again to
-       put it down unchanged
-     - tap inside a trip: it shortens from the nearest end (the end when central)
-     - a new range that reaches into a trip extends that trip
-     - tapping the pending day again cancels, or makes a one-day trip when the
+   Tapping, as designed with Jorick (2026-09-30):
+     - make a trip: tap its first day (the circle turns trip-blue), then its
+       last; with a mouse, a half-strength bar previews the trip as you move
+     - tap the first day again to cancel, or to make a one-day trip when the
        rule counts single days (rule.singleDayTrips)
+     - a new trip that reaches into an existing one extends it
+     - tap a trip (bar or card) to select it: it turns darker and gets a drag
+       handle on each end; Delete sits in its card (or the Delete key)
+     - tap it again, tap outside, or press Escape to let go
 
    A rule plugs in through window.AtlasDaysRules[name]:
      range(ctx)              { from, to } day numbers the calendar must cover
@@ -25,6 +25,9 @@
      evaluate(trips, ctx)    { ok, total, remaining, status, from, to }
      tripLabel(trip, ctx)    short text for a trip in the list
      exportRows(trips, ctx)  rows for the AtlasDays CSV import
+     countries(all)          optional: the country codes a trip may have
+                             (one code: the country is fixed, no picker)
+     defaultCountry          optional: the country a new trip starts with
      strings                 labels shown by the engine
 
    Everything runs in the browser. Nothing is sent, logged or stored. */
@@ -130,10 +133,17 @@
     var dialog = $("[data-cal-dialog]");
 
     var today = D.today();
-    var trips = [], pending = null, handle = null, openTrip = -1;
+    // anchor: first day of a trip being made; hover: the day under the mouse
+    // while making one (desktop preview); selected: index of the trip being
+    // edited; drag: a handle being dragged.
+    var trips = [], anchor = null, hover = null, selected = -1, drag = null;
     var allowed = (rule.countries && rule.countries(PLACES)) || PLACES;
     var defaultCountry = allowed.length === 1 ? allowed[0] : (rule.defaultCountry || "");
+    var recent = [];
+    var finePointer = !!(window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches);
     var rows = [], cells = {}, firstMonday = 0, activeMonth = null;
+    var englishNames = null;
+    try { englishNames = new Intl.DisplayNames(["en"], { type: "region" }); } catch (e) {}
 
     function ctx() { return { today: today, D: D, label: label, plural: plural, text: text }; }
 
@@ -163,39 +173,44 @@
         return false;
       });
     }
+
+    // Tapping, as designed with Jorick (2026-09-30):
+    //   tap an empty day, then another: a new trip (the mouse previews it)
+    //   tap a trip: select it; drag its end handles to change the dates;
+    //   tap it again, tap elsewhere or press Escape to let go
     function tap(day) {
-      openTrip = -1;
-      if (handle) {
-        var t = trips[handle.index], fixed = handle.end === "start" ? t.end : t.start;
-        var moved = handle.end === "start" ? t.start : t.end;
-        handle = null;
-        if (day === moved) { paint(); return; }          // put it down unchanged
-        place(t, fixed, day);
-        return commit();
-      }
-      var i = tripAt(day);
-      if (pending != null) {
-        var from = pending;
-        pending = null;
+      if (anchor != null) {
+        var from = anchor;
+        anchor = null; hover = null;
         if (day === from) {
-          if (rule.singleDayTrips) { trips.push({ start: day, end: day, country: defaultCountry }); return commit(); }
-          return paint();
+          if (!rule.singleDayTrips) return refresh();
+          trips.push({ start: day, end: day, country: defaultCountry });
+          return created(day);
         }
+        var i = tripAt(day);
         var span = i >= 0 ? trips[i] : { start: day, end: day, country: defaultCountry };
         if (i < 0) trips.push(span);
         place(span, Math.min(span.start, from, day), Math.max(span.end, from, day));
-        return commit();
+        return created(span.start);
       }
-      if (i < 0) { pending = day; return paint(); }
-      var trip = trips[i];
-      if (day === trip.start || day === trip.end) {
-        handle = { index: i, end: day === trip.end ? "end" : "start" };
-        return paint();
-      }
-      if (day - trip.start < trip.end - day) trip.start = day; else trip.end = day;
-      commit();
+      var hit = tripAt(day);
+      if (hit >= 0) { selected = selected === hit ? -1 : hit; return refresh(); }
+      selected = -1;
+      anchor = day;
+      refresh();
     }
+    function created(day) {
+      selected = -1;
+      normalise();
+      render();
+      var i = tripAt(day);
+      // On a computer, go straight on to the country; on a phone the keyboard
+      // would cover the calendar, so the field waits for a tap.
+      if (finePointer && i >= 0 && !trips[i].country && allowed.length > 1) focusCountry(i);
+    }
+    function removeTrip(i) { trips.splice(i, 1); selected = -1; commit(); }
     function commit() { normalise(); render(); }
+    function refresh() { paint(); renderList(); }
 
     // ---- the calendar: continuous week rows ------------------------------------
     function build() {
@@ -226,82 +241,224 @@
     }
 
     // One bar per trip per week, drawn from the outer edge of the first day's
-    // circle to the outer edge of the last day's, so both end days read as part
-    // of the trip. How a rule counts the travel days lives in the rule, not in
-    // the drawing. A day picked as the first end of a new trip (or an end
-    // picked up to move) shows only as a light-blue circle; there is no preview.
+    // circle to the outer edge of the last day's. While a trip is being made
+    // with the mouse, a half-strength preview bar follows the pointer. The
+    // selected trip is darker and carries a drag handle on each end.
     var DISC = 10; // half the width of a day circle, in px (see .cal-day::after)
+    function segment(bars, mon, t, cls) {
+      var sun = mon + 6;
+      if (t.end < mon || t.start > sun) return;
+      var a = Math.max(t.start, mon), z = Math.min(t.end, sun);
+      var starts = a === t.start, ends = z === t.end;
+      var left = starts ? "calc(" + ((a - mon + 0.5) / 7 * 100) + "% - " + DISC + "px)" : "0px";
+      var right = ends ? "calc(" + ((z - mon + 0.5) / 7 * 100) + "% + " + DISC + "px)" : "100%";
+      var bar = el("span", { "class": "cal-bar" + cls + (starts ? " starts" : "") + (ends ? " ends" : "") });
+      bar.style.left = left;
+      bar.style.width = "calc(" + right + " - " + left + ")";
+      bars.appendChild(bar);
+    }
+    function handleAt(bars, mon, day, end) {
+      if (day < mon || day > mon + 6) return;
+      var h = el("span", { "class": "cal-handle", "data-end": end });
+      h.style.left = ((day - mon + 0.5) / 7 * 100) + "%";
+      h.addEventListener("pointerdown", startDrag);
+      bars.appendChild(h);
+    }
     function drawBars() {
+      var preview = anchor != null && hover != null && hover !== anchor
+        ? { start: Math.min(anchor, hover), end: Math.max(anchor, hover) } : null;
       rows.forEach(function (row) {
-        var mon = +row.dataset.monday, sun = mon + 6, bars = row.lastChild;
+        var mon = +row.dataset.monday, bars = row.lastChild;
         bars.textContent = "";
-        trips.forEach(function (t) {
-          if (t.end < mon || t.start > sun) return;
-          var a = Math.max(t.start, mon), z = Math.min(t.end, sun);
-          var starts = a === t.start, ends = z === t.end;
-          var left = starts ? "calc(" + ((a - mon + 0.5) / 7 * 100) + "% - " + DISC + "px)" : "0px";
-          var right = ends ? "calc(" + ((z - mon + 0.5) / 7 * 100) + "% + " + DISC + "px)" : "100%";
-          var bar = el("span", { "class": "cal-bar" + (starts ? " starts" : "") + (ends ? " ends" : "") });
-          bar.style.left = left;
-          bar.style.width = "calc(" + right + " - " + left + ")";
-          bars.appendChild(bar);
-        });
+        trips.forEach(function (t, i) { segment(bars, mon, t, i === selected ? " is-selected" : ""); });
+        if (preview) segment(bars, mon, preview, " is-preview");
+        if (selected >= 0 && trips[selected]) {
+          handleAt(bars, mon, trips[selected].start, "start");
+          handleAt(bars, mon, trips[selected].end, "end");
+        }
       });
+    }
+
+    // ---- dragging a trip end ---------------------------------------------------
+    // Pointer events cover mouse and touch alike. The handle refuses scrolling
+    // (touch-action: none), the window scrolls itself near its edges, and the
+    // day under the pointer is found by hit-testing, so a drag can cross weeks.
+    var lastPoint = null, autoScroll = 0;
+    function dayUnder(x, y) {
+      var node = document.elementFromPoint(x, y);
+      var b = node && node.closest && node.closest(".cal-day");
+      return b && weeksBox.contains(b) ? +b.getAttribute("data-day") : null;
+    }
+    function startDrag(e) {
+      if (selected < 0) return;
+      e.preventDefault(); e.stopPropagation();
+      var t = trips[selected], end = e.currentTarget.getAttribute("data-end");
+      drag = { trip: t, fixed: end === "start" ? t.end : t.start };
+      lastPoint = { x: e.clientX, y: e.clientY };
+      root.classList.add("is-dragging");
+      window.addEventListener("pointermove", moveDrag);
+      window.addEventListener("pointerup", endDrag);
+      window.addEventListener("pointercancel", endDrag);
+    }
+    function applyDrag() {
+      var day = dayUnder(lastPoint.x, lastPoint.y);
+      if (day == null) return;
+      var t = drag.trip, a = Math.min(drag.fixed, day), z = Math.max(drag.fixed, day);
+      if (a === t.start && z === t.end) return;
+      if (a === z && !rule.singleDayTrips) return;
+      t.start = a; t.end = z;
+      paint();
+    }
+    function moveDrag(e) {
+      if (!drag) return;
+      e.preventDefault();
+      lastPoint = { x: e.clientX, y: e.clientY };
+      applyDrag();
+      var box = win.getBoundingClientRect(), edge = 44;
+      var speed = e.clientY < box.top + head.offsetHeight + edge ? -1 : e.clientY > box.bottom - edge ? 1 : 0;
+      if (speed && !autoScroll) scrollLoop(speed);
+      autoScroll = speed;
+    }
+    function scrollLoop() {
+      if (!drag || !autoScroll) { autoScroll = 0; return; }
+      win.scrollTop += autoScroll * 8;
+      applyDrag();
+      requestAnimationFrame(scrollLoop);
+    }
+    function endDrag() {
+      if (!drag) return;
+      var t = drag.trip;
+      drag = null; autoScroll = 0;
+      root.classList.remove("is-dragging");
+      window.removeEventListener("pointermove", moveDrag);
+      window.removeEventListener("pointerup", endDrag);
+      window.removeEventListener("pointercancel", endDrag);
+      place(t, t.start, t.end);
+      normalise();
+      selected = tripAt(t.start);
+      render();
     }
 
     function paint() {
-      var held = handle ? (handle.end === "start" ? trips[handle.index].start : trips[handle.index].end) : null;
       Object.keys(cells).forEach(function (k) {
         var day = +k, b = cells[k], i = tripAt(day);
         b.classList.toggle("has-trip", i >= 0);
-        b.classList.toggle("is-pending", day === pending || day === held);
+        b.classList.toggle("is-anchor", day === anchor);
         b.setAttribute("aria-pressed", i >= 0 ? "true" : "false");
-        b.setAttribute("aria-label", label(day) + (i >= 0 ? ", " + S.inTrip : "") + (day === pending ? ", " + S.pending : "") + (day === held ? ", " + S.held : ""));
+        b.setAttribute("aria-label", label(day) + (i >= 0 ? ", " + S.inTrip : "") + (day === anchor ? ", " + S.pending : ""));
       });
       drawBars();
-      hint.textContent = handle ? S.hintMove.replace("{date}", label(held))
-        : pending != null ? S.hintEnd.replace("{date}", label(pending))
-        : S.hintStart;
+      hint.textContent = selected >= 0 ? text("hintSelected")
+        : anchor != null ? text("hintEnd", { date: label(anchor) })
+        : text("hintStart");
     }
 
-    // The flag is the country picker: a native select laid over the flag, so a
-    // tap opens the system list. When the rule allows one country only, the
-    // flag is fixed.
-    function flagFor(t, idx) {
-      var wrap = el("span", { "class": "cal-flag" + (t.country ? "" : " is-empty") });
-      if (t.country) wrap.appendChild(el("img", { src: FLAGS + t.country.toLowerCase() + ".png", alt: "", width: "28", height: "21", loading: "lazy" }));
-      if (allowed.length < 2) return wrap;
-      var pick = el("select", { "class": "cal-flag-pick", "aria-label": (t.country ? placeName(t.country) + ", " : "") + text("country") });
-      pick.appendChild(el("option", { value: "" }, text("country")));
-      allowed.map(function (c) { return [placeName(c), c]; })
-        .sort(function (a, b) { return a[0].localeCompare(b[0], locale); })
-        .forEach(function (n) { var o = el("option", { value: n[1] }, n[0]); if (n[1] === t.country) o.selected = true; pick.appendChild(o); });
-      pick.addEventListener("change", function () { trips[idx].country = pick.value; commit(); });
-      wrap.appendChild(pick);
+    // ---- trips list ---------------------------------------------------------------
+    // Each card: the flag, the country (or a field to add one), the dates and
+    // the count. Tapping a card selects its trip; the selected card offers Delete.
+    function fold(s) { return String(s).normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase(); }
+    var catalogue = null;
+    function places() {
+      if (!catalogue) catalogue = allowed.map(function (c) {
+        var name = placeName(c), en = englishNames ? (englishNames.of(c) || "") : "";
+        return { code: c, name: name, key: fold(name + " " + en + " " + c) };
+      }).sort(function (a, b) { return a.name.localeCompare(b.name, locale); });
+      return catalogue;
+    }
+    function matches(query) {
+      var q = fold(query.trim());
+      if (!q) {
+        var picked = recent.map(function (c) { return places().filter(function (p) { return p.code === c; })[0]; }).filter(Boolean);
+        return picked.length ? picked : places().slice(0, 8);
+      }
+      var first = [], rest = [];
+      places().forEach(function (p) {
+        var at = p.key.indexOf(q);
+        if (at < 0) return;
+        (at === 0 || p.key.charAt(at - 1) === " " ? first : rest).push(p);
+      });
+      return first.concat(rest).slice(0, 8);
+    }
+    function flagImg(code, size) {
+      return el("img", { src: FLAGS + code.toLowerCase() + ".png", alt: "", width: String(size), height: String(Math.round(size * 0.75)), loading: "lazy" });
+    }
+    function countryField(idx, current) {
+      var wrap = el("div", { "class": "cal-country-field" });
+      var input = el("input", { type: "text", "class": "cal-country-input", placeholder: text("addCountry"), "aria-label": text("country"), autocomplete: "off", spellcheck: "false", role: "combobox", "aria-expanded": "false", "aria-autocomplete": "list" });
+      if (current) input.value = placeName(current);
+      var box = el("ul", { "class": "cal-country-list", role: "listbox", hidden: "" });
+      var options = [], active = 0;
+      function choose(code) {
+        trips[idx].country = code;
+        recent = [code].concat(recent.filter(function (c) { return c !== code; })).slice(0, 3);
+        commit();
+      }
+      function show() {
+        options = matches(current && input.value === placeName(current) ? "" : input.value);
+        active = 0;
+        box.textContent = "";
+        if (!options.length) box.appendChild(el("li", { "class": "cal-country-none" }, text("noMatch")));
+        options.forEach(function (p, i) {
+          var li = el("li", { role: "option", "class": "cal-country-option" + (i === active ? " is-active" : "") });
+          li.appendChild(flagImg(p.code, 20));
+          li.appendChild(el("span", null, p.name));
+          li.addEventListener("mousedown", function (e) { e.preventDefault(); choose(p.code); });
+          box.appendChild(li);
+        });
+        box.hidden = false;
+        input.setAttribute("aria-expanded", "true");
+      }
+      function mark() { Array.prototype.forEach.call(box.children, function (li, i) { li.classList.toggle("is-active", i === active); }); }
+      input.addEventListener("focus", function () { if (current) input.select(); show(); });
+      input.addEventListener("input", show);
+      input.addEventListener("blur", function () { box.hidden = true; input.setAttribute("aria-expanded", "false"); if (current) input.value = placeName(current); });
+      input.addEventListener("keydown", function (e) {
+        if (e.key === "ArrowDown" || e.key === "ArrowUp") { e.preventDefault(); if (!options.length) return; active = (active + (e.key === "ArrowDown" ? 1 : options.length - 1)) % options.length; mark(); }
+        else if (e.key === "Enter") { e.preventDefault(); if (options[active]) choose(options[active].code); }
+        else if (e.key === "Escape") { input.blur(); }
+      });
+      input.addEventListener("click", function (e) { e.stopPropagation(); });
+      wrap.appendChild(input);
+      wrap.appendChild(box);
       return wrap;
+    }
+    function focusCountry(i) {
+      var input = list.querySelectorAll(".cal-trip")[i];
+      input = input && input.querySelector(".cal-country-input");
+      if (input) input.focus({ preventScroll: true });
     }
     function renderList() {
       list.textContent = "";
       // Import sits in the Trips card and shows once there is something to import.
-      var rows = trips.length ? rule.exportRows(trips, ctx()).length : 0;
-      root.querySelectorAll("[data-cal-import]").forEach(function (btn) { btn.hidden = !rows; });
+      var rowsOut = trips.length ? rule.exportRows(trips, ctx()).length : 0;
+      root.querySelectorAll("[data-cal-import]").forEach(function (btn) { btn.hidden = !rowsOut; });
       if (!trips.length) { list.appendChild(el("p", { "class": "cal-empty" }, S.empty)); return; }
       trips.forEach(function (t, idx) {
-        var open = idx === openTrip;
-        var card = el("div", { "class": "cal-trip" + (open ? " is-open" : "") });
-        var row = el("div", { "class": "cal-trip-row" });
-        row.appendChild(flagFor(t, idx));
-        var main = el("button", { type: "button", "class": "cal-trip-main", "aria-expanded": open ? "true" : "false" });
-        main.appendChild(el("span", { "class": "cal-trip-dates" }, dateRange(t.start, t.end)));
-        main.appendChild(el("span", { "class": "cal-trip-count" }, rule.tripLabel(t, ctx())));
-        main.addEventListener("click", function () { openTrip = open ? -1 : idx; renderList(); if (!open) reveal(t.start - 7); });
-        row.appendChild(main);
-        card.appendChild(row);
-        if (open) {
+        var isSel = idx === selected;
+        var card = el("div", { "class": "cal-trip" + (isSel ? " is-selected" : "") });
+        var flag = el("span", { "class": "cal-flag" + (t.country ? "" : " is-empty") });
+        if (t.country) flag.appendChild(flagImg(t.country, 28));
+        card.appendChild(flag);
+        var name = el("div", { "class": "cal-trip-country" });
+        if (allowed.length < 2) name.appendChild(el("span", null, placeName(t.country)));
+        else name.appendChild(countryField(idx, t.country));
+        card.appendChild(name);
+        var line = el("div", { "class": "cal-trip-line" });
+        line.appendChild(el("span", { "class": "cal-trip-dates" }, dateRange(t.start, t.end)));
+        line.appendChild(el("span", { "class": "cal-trip-count" }, rule.tripLabel(t, ctx())));
+        card.appendChild(line);
+        if (isSel) {
           var del = el("button", { type: "button", "class": "cal-delete" }, S.deleteTrip);
-          del.addEventListener("click", function () { trips.splice(idx, 1); openTrip = -1; handle = null; commit(); });
+          del.addEventListener("click", function (e) { e.stopPropagation(); removeTrip(idx); });
           card.appendChild(del);
         }
+        card.addEventListener("click", function (e) {
+          if (e.target.closest(".cal-country-field")) return;
+          selected = isSel ? -1 : idx;
+          anchor = null;
+          refresh();
+          if (!isSel) reveal(t.start - 7);
+        });
         list.appendChild(card);
       });
     }
@@ -374,8 +531,14 @@
 
     // ---- events ------------------------------------------------------------------------
     weeksBox.addEventListener("click", function (e) {
+      if (e.target.closest(".cal-handle")) return;
       var b = e.target.closest(".cal-day");
       if (b) tap(+b.getAttribute("data-day"));
+    });
+    weeksBox.addEventListener("mouseover", function (e) {
+      if (anchor == null || !finePointer) return;
+      var b = e.target.closest(".cal-day"), d = b ? +b.getAttribute("data-day") : null;
+      if (d != null && d !== hover) { hover = d; drawBars(); }
     });
     weeksBox.addEventListener("keydown", function (e) {
       var b = e.target.closest(".cal-day");
@@ -384,7 +547,17 @@
       var next = step && cells[+b.getAttribute("data-day") + step];
       if (next) {
         e.preventDefault(); next.focus();
-      } else if (e.key === "Escape" && (pending != null || handle)) { pending = null; handle = null; paint(); }
+        if (anchor != null) { hover = +next.getAttribute("data-day"); drawBars(); }
+      }
+    });
+    root.addEventListener("keydown", function (e) {
+      if (e.target.closest && e.target.closest("input, select, textarea")) return;
+      if (e.key === "Escape" && (anchor != null || selected >= 0)) { anchor = null; hover = null; selected = -1; refresh(); }
+      else if ((e.key === "Delete" || e.key === "Backspace") && selected >= 0) { e.preventDefault(); removeTrip(selected); }
+    });
+    // Tapping outside the calendar lets go of the selected trip.
+    document.addEventListener("pointerdown", function (e) {
+      if (selected >= 0 && !root.contains(e.target)) { selected = -1; refresh(); }
     });
     win.addEventListener("scroll", updateMonth, { passive: true });
     root.querySelectorAll("[data-cal-import]").forEach(function (btn) {
