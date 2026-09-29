@@ -19,8 +19,8 @@
 
    A rule plugs in through window.AtlasDaysRules[name]:
      range(ctx)              { from, to } day numbers the calendar must cover
-     travelDaysCount         false: bars start and end mid-day on travel days
-                             (whole-days-away rules); true: full days (Schengen)
+     travelDaysCount         whether the rule counts travel days (informational;
+                             bars always cover both end days)
      singleDayTrips          true when a one-day trip counts for the rule
      evaluate(trips, ctx)    { ok, total, remaining, status, from, to }
      tripLabel(trip, ctx)    short text for a trip in the list
@@ -97,7 +97,7 @@
     var dialog = $("[data-cal-dialog]");
 
     var today = D.today();
-    var trips = [], pending = null, handle = null, hover = null, openTrip = -1;
+    var trips = [], pending = null, handle = null, openTrip = -1;
     var rows = [], cells = {}, firstMonday = 0, activeMonth = null;
 
     function ctx() { return { today: today, D: D, label: label, plural: plural, text: text }; }
@@ -132,7 +132,7 @@
       if (handle) {
         var t = trips[handle.index], fixed = handle.end === "start" ? t.end : t.start;
         var moved = handle.end === "start" ? t.start : t.end;
-        handle = null; hover = null;
+        handle = null;
         if (day === moved) { paint(); return; }          // put it down unchanged
         place(t, fixed, day);
         return commit();
@@ -140,7 +140,7 @@
       var i = tripAt(day);
       if (pending != null) {
         var from = pending;
-        pending = null; hover = null;
+        pending = null;
         if (day === from) {
           if (rule.singleDayTrips) { trips.push({ start: day, end: day, country: "" }); return commit(); }
           return paint();
@@ -189,35 +189,25 @@
       if (anchor != null) reveal(anchor);
     }
 
-    // One bar per trip per week. On whole-days-away rules the bar starts and
-    // ends halfway through the travel days, as in the app; that is also how
-    // those rules count them.
-    function previewRange() {
-      if (handle && hover != null) {
-        var t = trips[handle.index];
-        return [handle.end === "start" ? t.end : t.start, hover];
-      }
-      if (pending != null) return [pending, hover == null ? pending : hover];
-      return null;
-    }
+    // One bar per trip per week, drawn from the outer edge of the first day's
+    // circle to the outer edge of the last day's, so both end days read as part
+    // of the trip. How a rule counts the travel days lives in the rule, not in
+    // the drawing. A day picked as the first end of a new trip (or an end
+    // picked up to move) shows only as a light-blue circle; there is no preview.
+    var DISC = 10; // half the width of a day circle, in px (see .cal-day::after)
     function drawBars() {
-      var half = !rule.travelDaysCount;
-      var ranges = trips.map(function (t, i) {
-        return handle && hover != null && handle.index === i ? null : { start: t.start, end: t.end, cls: "" };
-      }).filter(Boolean);
-      var pv = previewRange();
-      if (pv) ranges.push({ start: Math.min(pv[0], pv[1]), end: Math.max(pv[0], pv[1]), cls: " is-preview" });
       rows.forEach(function (row) {
         var mon = +row.dataset.monday, sun = mon + 6, bars = row.lastChild;
         bars.textContent = "";
-        ranges.forEach(function (t) {
+        trips.forEach(function (t) {
           if (t.end < mon || t.start > sun) return;
-          var a = Math.max(t.start, mon), z = Math.min(t.end, sun), single = t.start === t.end;
-          var left = (a - mon) + (half && a === t.start && !single ? 0.5 : 0);
-          var right = (z - mon + 1) - (half && z === t.end && !single ? 0.5 : 0);
-          var bar = el("span", { "class": "cal-bar" + t.cls + (a === t.start ? " starts" : "") + (z === t.end ? " ends" : "") });
-          bar.style.left = "calc(" + (left / 7 * 100) + "% + " + (a === t.start ? 2 : 0) + "px)";
-          bar.style.width = "calc(" + ((right - left) / 7 * 100) + "% - " + ((a === t.start ? 2 : 0) + (z === t.end ? 2 : 0)) + "px)";
+          var a = Math.max(t.start, mon), z = Math.min(t.end, sun);
+          var starts = a === t.start, ends = z === t.end;
+          var left = starts ? "calc(" + ((a - mon + 0.5) / 7 * 100) + "% - " + DISC + "px)" : "0px";
+          var right = ends ? "calc(" + ((z - mon + 0.5) / 7 * 100) + "% + " + DISC + "px)" : "100%";
+          var bar = el("span", { "class": "cal-bar" + (starts ? " starts" : "") + (ends ? " ends" : "") });
+          bar.style.left = left;
+          bar.style.width = "calc(" + right + " - " + left + ")";
           bars.appendChild(bar);
         });
       });
@@ -333,11 +323,6 @@
       var b = e.target.closest(".cal-day");
       if (b) tap(+b.getAttribute("data-day"));
     });
-    weeksBox.addEventListener("mouseover", function (e) {
-      if (pending == null && !handle) return;
-      var b = e.target.closest(".cal-day"), d = b ? +b.getAttribute("data-day") : null;
-      if (d != null && d !== hover) { hover = d; drawBars(); }
-    });
     weeksBox.addEventListener("keydown", function (e) {
       var b = e.target.closest(".cal-day");
       if (!b) return;
@@ -345,8 +330,7 @@
       var next = step && cells[+b.getAttribute("data-day") + step];
       if (next) {
         e.preventDefault(); next.focus();
-        if (pending != null || handle) { hover = +next.getAttribute("data-day"); drawBars(); }
-      } else if (e.key === "Escape" && (pending != null || handle)) { pending = null; handle = null; hover = null; paint(); }
+      } else if (e.key === "Escape" && (pending != null || handle)) { pending = null; handle = null; paint(); }
     });
     win.addEventListener("scroll", updateMonth, { passive: true });
     root.querySelectorAll("[data-cal-import]").forEach(function (btn) {

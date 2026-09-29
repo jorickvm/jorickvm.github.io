@@ -5,7 +5,7 @@
 
 .daycal {
   --cal-bar: #5B9ED9;
-  --cal-bar-soft: rgba(91, 158, 217, 0.38);
+  --cal-pick: #8ABBE6;
   --cal-disc: rgba(255, 255, 255, 0.07);
   display: grid;
   grid-template-columns: minmax(0, 1fr) 236px;
@@ -13,8 +13,8 @@
   margin: 18px 0 14px;
 }
 html[data-theme="light"] .daycal {
-  --cal-bar: #8ABBE6;
-  --cal-bar-soft: rgba(138, 187, 230, 0.55);
+  --cal-bar: #5B9ED9;
+  --cal-pick: #A9CDEE;
   --cal-disc: rgba(12, 22, 40, 0.07);
 }
 
@@ -82,7 +82,6 @@ html[data-theme="light"] .daycal {
 .cal-day.is-other-month .cal-num { color: var(--muted-2); font-weight: 500; }
 .cal-day.is-month-start .cal-num { font-size: 0.74rem; font-weight: 700; letter-spacing: 0.02em; }
 .cal-day.is-today .cal-num { background: var(--blue); color: #fff; }
-.cal-day.is-pending .cal-num { box-shadow: 0 0 0 2px var(--blue); }
 
 /* the disc on the bar line of a day with no trip: the tap target */
 .cal-day::after {
@@ -97,13 +96,15 @@ html[data-theme="light"] .daycal {
   background: var(--cal-disc);
 }
 .cal-day.has-trip::after { display: none; }
+/* The first day of a new trip, or a trip end picked up to move: just its
+   circle, light blue, drawn above any bar. */
+.cal-day.is-pending::after { display: block; z-index: 2; background: var(--cal-pick); box-shadow: 0 0 0 2px var(--bg-card); }
 @media (hover: hover) { .cal-day:not(.has-trip):hover::after { background: var(--line-strong); } }
 
-.cal-bars { position: absolute; left: 0; right: 0; top: 36px; height: 20px; pointer-events: none; }
+.cal-bars { position: absolute; left: 0; right: 0; top: 36px; height: 20px; z-index: 1; pointer-events: none; }
 .cal-bar { position: absolute; top: 0; height: 20px; background: var(--cal-bar); }
 .cal-bar.starts { border-top-left-radius: 10px; border-bottom-left-radius: 10px; }
 .cal-bar.ends { border-top-right-radius: 10px; border-bottom-right-radius: 10px; }
-.cal-bar.is-preview { background: var(--cal-bar-soft); }
 
 .cal-side { display: grid; gap: 12px; align-content: start; min-width: 0; }
 .cal-box {
