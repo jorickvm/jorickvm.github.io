@@ -4,6 +4,8 @@ Marketing and support website for [AtlasDays](https://atlasdays.app), a private 
 
 Static HTML served straight from this repo by GitHub Pages. No framework, no bundler, and the Python tooling is standard library only, so there is nothing to install.
 
+Accounts, DNS, analytics, automations, and where each credential lives are documented in the private `atlasdays-internal` repo, in `OPERATIONS.md`.
+
 ## Deploying has no build step. Authoring does.
 
 This is the one thing to know before editing anything. Pages under `learn/` and `help/`, the hub pages, and every root page listed in `_site-src/data/pages.json` are **generated** by `scripts/build_site.py` from sources in `_site-src/`, and the rendered output is committed. Editing those files directly gets overwritten by the next build, and `build_site.py --check` fails when committed HTML no longer matches its sources.
