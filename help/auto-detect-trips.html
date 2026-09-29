@@ -77,7 +77,7 @@
       "name": "AtlasDays"
     },
     "url": "https://atlasdays.app/help/auto-detect-trips",
-    "dateModified": "2026-08-02"
+    "dateModified": "2026-09-30"
   }
   </script>
   <script>(function(){var d=document.documentElement,q=new URLSearchParams(location.search).get('theme'),t=null;if(q==='light'||q==='dark'){t=q;try{sessionStorage.setItem('theme',q)}catch(e){}}else{try{t=sessionStorage.getItem('theme')}catch(e){}if(!t)try{t=localStorage.getItem('theme')}catch(e){}}d.setAttribute('data-theme',t==='light'?'light':'dark')})()</script>
@@ -160,29 +160,61 @@
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">AtlasDays</a> / <a href="/help/">Help Center</a></nav>
 
     <h1>Auto-Detect Trips</h1>
-<p class="article-answer">Auto-Detect uses low-power background location monitoring to notice new travel and add a trip to <a href="/help/timeline-and-calendar">Timeline</a> immediately. You can review, edit, or undo it.</p>
+<p class="article-answer">Auto-Detect uses low-power background location monitoring to notice when you enter a new country and adds the trip to <a href="/help/timeline-and-calendar">Timeline</a> right away. Nothing waits for approval, and you can edit or delete the trip afterwards.</p>
 
     <h2>Turn on Auto-Detect</h2>
     <ol>
-      <li>Open <strong>Settings → Auto-Detect Trips</strong>.</li>
+      <li>Open <strong>Settings → Tracking → Auto-Detect Trips</strong>.</li>
       <li>Turn on <strong>Auto-Detect Trips</strong>.</li>
-      <li>Grant Always location access when iOS asks. The toggle remains off until background access is available.</li>
-      <li>Optionally turn on notifications for new country detections.</li>
+      <li>iOS asks for location twice. Accept While Using the App first, then Always when the second prompt appears.</li>
+      <li>Optionally turn on <strong>New country detections</strong> under Notifications.</li>
     </ol>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/help/auto-detect-trips/auto-detect-settings.webp" alt="Auto-Detect Trips settings with location and notification controls" width="1320" height="1850" loading="lazy" decoding="async" /></figure>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/help/auto-detect-trips/auto-detect-settings.webp" alt="Auto-Detect Trips settings with location and notification controls" width="1320" height="1932" loading="lazy" decoding="async" /></figure>
+    <p>Detection only runs with Always access. If you stop at While Using, the toggle stays off. Turning it on from the Timeline card (see below) also offers the notification permission after the two location prompts; turning it on from Settings does not.</p>
+
+    <h2>What happens when a country is detected</h2>
+    <ul>
+      <li>The trip is added to Timeline immediately, starting on the detection date, with no end date until you leave.</li>
+      <li>If AtlasDays is open, a banner shows the place with <strong>Undo</strong>. It disappears after a few seconds, and no push notification is shown while the app is in the foreground.</li>
+      <li>If the app is closed, and notifications are on, you get <em>&lt;Place&gt; detected</em> with the start date. Tapping it opens Timeline.</li>
+    </ul>
+    <figure class="help-shot help-shot-control"><img src="/assets/article-images/help/auto-detect-trips/detected-banner.webp" alt="In-app banner announcing a detected country with an Undo button" width="1320" height="720" loading="lazy" decoding="async" /></figure>
+    <p>The notification has one action, <strong>Delete Trip</strong>. It removes the trip that was just added. It does not add the place to the Ignore list, and it leaves any trip whose start date you have already changed.</p>
+
+    <h2>Trips end and transit is marked automatically</h2>
+    <ul>
+      <li><strong>Auto-close.</strong> When a later detection shows you left a country, the earlier open trip gets an end date. If AtlasDays is open, a toast reads <strong>&lt;Country&gt; trip ended</strong> (or <strong>N trips ended</strong>) with <strong>Undo</strong> for a few seconds.</li>
+      <li><strong>Transit.</strong> A short stop between two other countries first appears as a normal trip. When the next detection arrives, AtlasDays changes it to <a href="/help/history-and-import">Transit</a>, so it does not count toward day totals. This only happens if you have not added a purpose, notes, or photos to it.</li>
+    </ul>
 
     <h2>Review detected trips</h2>
-    <p>The new trip appears in Timeline with the detected country and the dates AtlasDays inferred. Open it to check the country or US state and the boundary dates, then edit or delete it if needed. If you receive a detection notification, choosing <strong>Ignore</strong> removes the trip; you can still add it by hand later.</p>
+    <p>Open the trip in Timeline to check the country or US state and the dates. The start date is the day the location change was detected, so edit it where the exact day matters. US state detection is Pro; without Pro, a US trip is added as plain United States.</p>
 
     <h2>Ignore places you do not want detected</h2>
-    <p>Add countries to the Ignore list when recurring border proximity produces trips you never need. Pro users can also ignore individual US states. Ignored places can still be added manually.</p>
+    <p>Under <strong>Ignore</strong> in the Auto-Detect screen, choose <strong>Countries</strong> to skip places your phone keeps picking up near a border. Pro users also get <strong>US States</strong>. No trip is created for an ignored place, and the days stay with the surrounding country. You can still add those trips yourself.</p>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/help/auto-detect-trips/ignore-list.webp" alt="Auto-Detect ignore list with countries selected" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
-    <h2>Auto-Detect is not continuous GPS recording</h2>
-    <p>The feature uses low-power system location events rather than storing a detailed route. Detection timing depends on iOS, geography, connectivity, and the available boundary signal.</p>
+    <h2>Timeline prompts</h2>
+    <p>Timeline can show up to three cards at the top of the list. The X on a card hides it for good.</p>
+    <ul>
+      <li><strong>Track trips automatically</strong> offers <strong>Turn On Auto-Detect</strong> and <strong>How it works</strong>. It appears while Auto-Detect is off and you have at least one trip.</li>
+      <li><strong>Auto-detect is paused</strong> appears when Location is no longer set to Always. <strong>Open Settings</strong> takes you to iOS Settings to fix it.</li>
+      <li><strong>Stay updated</strong> appears after a trip was added on this device while notifications are off, and offers <strong>Turn On Notifications</strong>.</li>
+    </ul>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/help/auto-detect-trips/prompt-card.webp" alt="Timeline prompt card offering to turn on Auto-Detect" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <p>More about these cards and other Timeline controls is in <a href="/help/timeline-tools">Timeline tools</a>.</p>
+
+    <h2>Keep Auto-Detect working</h2>
+    <ul>
+      <li>Open AtlasDays now and then. If it stays closed for a long time, iOS may stop delivering location updates.</li>
+      <li>Do not force-quit the app from the app switcher. That stops monitoring until you open it again.</li>
+      <li>Keep Location on Always for AtlasDays. <strong>Learn more</strong> on the Auto-Detect screen shows this list.</li>
+    </ul>
+    <div class="callout"><p><strong>Not continuous GPS.</strong> Auto-Detect relies on iOS Significant Location Change events, not a stored route. Timing depends on iOS, geography, and connectivity, so a border crossing can be noticed late.</p></div>
 
     <section class="if-needed">
       <h2>If no trip appears</h2>
-      <p>Check that Auto-Detect is on, Location is set to Always, the place is not ignored, and AtlasDays notifications are allowed if you expect a notification. You can always add the trip manually.</p>
+      <p>Check that Auto-Detect is on, Location is set to Always, the place is not on the Ignore list, and the app has been opened recently and not force-quit. For a notification, also check that <strong>New country detections</strong> is on and iOS allows AtlasDays notifications. You can always add the trip manually.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-auto-detect-trips">
       <h2 id="next-auto-detect-trips">Continue with</h2>
@@ -205,7 +237,7 @@
       <h2>Still need help?</h2>
       <p><a href="mailto:support@atlasdays.app">Contact AtlasDays Support</a> with the relevant dates, what you expected, and what happened.</p>
     </aside>
-    <p class="help-updated">Last updated August 2, 2026</p>
+    <p class="help-updated">Last updated September 30, 2026</p>
   </article>
   </main>
 

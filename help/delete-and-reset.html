@@ -77,7 +77,7 @@
       "name": "AtlasDays"
     },
     "url": "https://atlasdays.app/help/delete-and-reset",
-    "dateModified": "2026-08-02"
+    "dateModified": "2026-09-30"
   }
   </script>
   <script>(function(){var d=document.documentElement,q=new URLSearchParams(location.search).get('theme'),t=null;if(q==='light'||q==='dark'){t=q;try{sessionStorage.setItem('theme',q)}catch(e){}}else{try{t=sessionStorage.getItem('theme')}catch(e){}if(!t)try{t=localStorage.getItem('theme')}catch(e){}}d.setAttribute('data-theme',t==='light'?'light':'dark')})()</script>
@@ -160,39 +160,49 @@
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">AtlasDays</a> / <a href="/help/">Help Center</a></nav>
 
     <h1>Delete Data or Start Over</h1>
-<p class="article-answer">Use Settings → Delete or Reset only after choosing the narrowest action that fits. Export important records first when you may need them later.</p>
+<p class="article-answer">Choose the narrowest action that fits: delete one trip or tracker, remove a whole import, or use Settings → Delete or Reset for larger changes. Create an AtlasDays Backup first if you may want the data again.</p>
 
-    <h2>Delete individual records first</h2>
-    <p>For one trip, open it in <a href="/help/timeline-and-calendar">Timeline</a> and choose <strong>Delete Trip</strong>. For one tracker, open its settings and use the tracker delete action. This preserves the rest of the app.</p>
+    <h2>Delete one record</h2>
+    <ul>
+      <li><strong>A trip:</strong> open it in <a href="/help/timeline-and-calendar">Timeline</a> and choose <strong>Delete Trip</strong>, or swipe the row left. A short <strong>Undo</strong> message appears after you delete from Timeline.</li>
+      <li><strong>A tracker:</strong> open its editor and choose <strong>Delete Tracker</strong>.</li>
+      <li><strong>An import:</strong> open <strong>Settings → Manage Imports</strong> to remove every trip that came from one import at once. See <a href="/help/import-trips">Import Trips</a>.</li>
+    </ul>
 
-    <h2>Use Delete or Reset for larger changes</h2>
-    <p>Open <strong>Settings → Delete or Reset</strong> to see the available trip, tracker, and full-reset actions. Read the confirmation carefully; each option lists what it removes.</p>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/help/delete-and-reset/delete-actions.webp" alt="Delete or Reset screen listing available actions" width="1320" height="1174" loading="lazy" decoding="async" /></figure>
+    <h2>Delete or reset in bulk</h2>
+    <p>Open <strong>Settings → Delete or Reset</strong>. Each row says what it removes:</p>
+    <ul>
+      <li><strong>Delete Trips</strong> removes all trips and keeps your trackers.</li>
+      <li><strong>Delete Trackers</strong> removes all trackers and keeps your trips.</li>
+      <li><strong>Reset AtlasDays</strong> deletes all data and settings and returns to setup.</li>
+    </ul>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/help/delete-and-reset/delete-actions.webp" alt="Delete or Reset screen listing available actions" width="1320" height="1253" loading="lazy" decoding="async" /></figure>
+    <p>Rows for trips and trackers appear only when there is something to delete. Every action asks for confirmation on a separate screen, and you can tap anywhere outside the red button to cancel. Purchases are never affected, so AtlasDays Pro stays active after a reset.</p>
+    <figure class="help-shot help-shot-control"><img src="/assets/article-images/help/delete-and-reset/delete-confirmation.webp" alt="Confirmation screen explaining what will be deleted" width="1320" height="1140" loading="lazy" decoding="async" /></figure>
 
     <h2>Consider iCloud before confirming</h2>
-    <p>With <a href="/help/icloud-sync-and-restore">iCloud Sync</a> enabled, deleting synced records can affect the shared record on your other devices. A full reset can also remove preferences and device setup that a normal trip deletion leaves alone.</p>
-    <figure class="help-shot help-shot-control"><img src="/assets/article-images/help/delete-and-reset/delete-confirmation.webp" alt="Destructive confirmation explaining what will be deleted" width="1320" height="1140" loading="lazy" decoding="async" /></figure>
+    <p>With <a href="/help/icloud-sync-and-restore">iCloud Sync</a> on, deleting trips or trackers also deletes them on your other devices, because sync carries deletions. Reset also clears preferences, including their iCloud copy, and stops alerts and widgets from showing the old data.</p>
 
-    <div class="callout"><p><strong>Deletion may be irreversible after the confirmation completes.</strong> An exported file is separate from the app and is not removed by resetting AtlasDays.</p></div>
+    <div class="callout"><p><strong>None of the bulk actions can be undone.</strong> An exported file is separate from the app and is not removed by a reset. To keep a way back, create an <a href="/help/backup-and-restore">AtlasDays Backup</a> before you confirm.</p></div>
 
     <section class="if-needed">
       <h2>If you are trying to fix sync</h2>
-      <p>Do not reset first. Check iCloud status and contact support while a device still contains the expected data.</p>
+      <p>Do not reset first. Check the iCloud Sync status and contact support while a device still holds the expected data.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-delete-and-reset">
       <h2 id="next-delete-and-reset">Continue with</h2>
       <ul>
-        <li><a href="/help/atlasdays-pro">
-          <strong>AtlasDays Pro</strong>
-          <span>See what the free app includes and what Pro adds.</span>
+        <li><a href="/help/backup-and-restore">
+          <strong>Back Up and Restore</strong>
+          <span>Keep a copy of trips, trackers and settings.</span>
         </a></li>
         <li><a href="/help/icloud-sync-and-restore">
           <strong>iCloud Sync and Restore</strong>
-          <span>What deletion means for synced devices.</span>
+          <span>How live sync works across devices.</span>
         </a></li>
-        <li><a href="/help/export-and-reports">
-          <strong>Export and Reports</strong>
-          <span>Keep an export before you reset.</span>
+        <li><a href="/help/atlasdays-pro">
+          <strong>AtlasDays Pro</strong>
+          <span>What is free and what Pro adds.</span>
         </a></li>
       </ul>
     </nav>
@@ -200,7 +210,7 @@
       <h2>Still need help?</h2>
       <p><a href="mailto:support@atlasdays.app">Contact AtlasDays Support</a> with the relevant dates, what you expected, and what happened.</p>
     </aside>
-    <p class="help-updated">Last updated August 2, 2026</p>
+    <p class="help-updated">Last updated September 30, 2026</p>
   </article>
   </main>
 

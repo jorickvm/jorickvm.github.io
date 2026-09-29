@@ -1,29 +1,34 @@
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">AtlasDays</a> / <a href="/help/">Help Center</a></nav>
 
     <h1>Smart Alerts</h1>
-<p class="article-answer">Smart Alerts notify you when a tracker reaches configured milestones. They depend on the tracker’s saved rule, qualifying trips, and notification permission.</p>
+<p class="article-answer">Smart Alerts notify you as a tracker approaches or reaches its limit or target. They are set per tracker, look ahead using your recorded and planned trips, and need notification permission.</p>
 
     <h2>Turn on alerts</h2>
     <ol>
-      <li>Open the tracker and choose its alert settings.</li>
-      <li>Turn on <strong>Alerts</strong>.</li>
-      <li>Under <strong>Alert when</strong>, choose the thresholds you want, and set the delivery <strong>Time</strong>.</li>
-      <li>Allow notifications when iOS asks.</li>
+      <li>Open the tracker’s editor: tap the sliders icon on its detail screen, or long-press its card on the <strong>Dashboard</strong> and choose <strong>Edit</strong>.</li>
+      <li>Tap the <strong>Alerts</strong> row. Its value reads <strong>Off</strong>, <strong>On</strong>, or the number of active alerts.</li>
+      <li>Turn on the <strong>Alerts</strong> toggle, and allow notifications when iOS asks.</li>
+      <li>Set the <strong>Time</strong> alerts are delivered. The default is 9:00.</li>
+      <li>Under <strong>Alert when</strong>, tap <strong>+</strong> to add a milestone, or tap the trash icon on one to remove it.</li>
+      <li>Go back and tap <strong>Save</strong>. Alert changes are stored with the tracker, so <strong>Cancel</strong> discards them.</li>
     </ol>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/help/smart-alerts/alert-settings.webp" alt="Tracker Alerts screen with the delivery time and threshold list" width="1320" height="1932" loading="lazy" decoding="async" /></figure>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/help/smart-alerts/alert-settings.webp" alt="Tracker Alerts screen with the delivery time and threshold list" width="1320" height="1969" loading="lazy" decoding="async" /></figure>
 
-    <h2>Alerts follow tracker calculations</h2>
-    <p>If you edit a trip, change the tracker window, or close an ongoing trip, AtlasDays recalculates the tracker and schedules eligible alerts from the updated result.</p>
+    <h2>Milestones</h2>
+    <p>On a <strong>Stay Below</strong> tracker a milestone reads <strong>N days remaining</strong>, and <strong>Limit reached</strong> is the final one. On a <strong>Reach Target</strong> tracker it reads <strong>N days to go</strong>, ending with <strong>Target reached</strong>. New trackers start with a set based on the limit; a Reach Target tracker starts with the finish line alone.</p>
+
+    <h2>Alerts look ahead</h2>
+    <p>AtlasDays projects the tracker about a year forward from your recorded trips, an ongoing trip, and planned trips. It schedules each alert for the date the milestone is expected to be reached, delivered at your chosen time. An alert can therefore arrive before the total has crossed the milestone, and a change to a trip or to the tracker’s rule moves the date. For a tracker with two limits, alerts follow whichever limit is nearest.</p>
 
     <h2>Notification permission is separate</h2>
-    <p>A tracker can have alerts configured while notifications are disabled in iOS. Open <strong>iOS Settings → Notifications → AtlasDays</strong> if AtlasDays cannot deliver them.</p>
+    <p>A tracker can have alerts configured while notifications are off in iOS. If you turn alerts on without permission, AtlasDays shows <strong>Notifications Disabled</strong> with an <strong>Open Settings</strong> button. You can also open <strong>iOS Settings → Notifications → AtlasDays</strong> yourself.</p>
 
     <h2>Smart Alerts and Auto-Detect are different</h2>
     <p>Smart Alerts concern tracker thresholds. <a href="/help/auto-detect-trips">Auto-Detect</a> notifications concern possible new border crossings. Each has its own purpose and settings.</p>
 
-    <div class="callout"><p><strong>Smart Alerts require <a href="/help/atlasdays-pro">AtlasDays Pro</a>.</strong> The tracker itself can still be reviewed without alerts.</p></div>
+    <div class="callout"><p><strong>The Alerts toggle requires <a href="/help/atlasdays-pro">AtlasDays Pro</a>.</strong> Without Pro you can still edit the milestone list, but the toggle stays off and shows an upgrade prompt. The tracker itself works without alerts.</p></div>
 
     <section class="if-needed">
       <h2>If an alert did not appear</h2>
-      <p>Check AtlasDays notification permission, confirm Smart Alerts are on for the intended tracker, and verify that its current total actually crossed the configured milestone.</p>
+      <p>Check AtlasDays notification permission in iOS, confirm the <strong>Alerts</strong> toggle is on for that tracker and that you saved it, and check the delivery <strong>Time</strong>. Then compare the milestone with the tracker’s forecast: the alert is scheduled for the date the milestone is expected, which may still be ahead.</p>
     </section>

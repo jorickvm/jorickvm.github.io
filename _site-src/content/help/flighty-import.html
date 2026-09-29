@@ -1,29 +1,40 @@
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">AtlasDays</a> / <a href="/help/">Help Center</a></nav>
 
     <h1>Flighty Import</h1>
-<p class="article-answer">Export your flight history from Flighty as CSV, select it in AtlasDays, and review the proposed trips before saving.</p>
+<p class="article-answer">Export your flight history from Flighty as CSV, select it in AtlasDays, and review the suggested trips before saving. It is one of the <a href="/help/import-trips">ways to add past trips</a>.</p>
 
     <h2>Export from Flighty</h2>
-    <p>Export your flight history from Flighty as CSV and save it somewhere the iOS Files picker can reach, such as iCloud Drive or On My iPhone.</p>
+    <p>In Flighty, open <strong>Settings → Account Data</strong> and export your flights as CSV. Save the file where the iOS Files picker can reach it, such as iCloud Drive or On My iPhone.</p>
 
     <h2>Import into AtlasDays</h2>
     <ol>
       <li>Open <strong>Settings → Import → Flighty</strong>.</li>
       <li>Tap <strong>Select Flighty CSV</strong> and choose the exported file.</li>
-      <li>Wait for AtlasDays to build its preview.</li>
-      <li>Review the proposed stays, <a href="/help/history-and-import">Transit</a> records, overnight cases, duplicates, and overlaps.</li>
-      <li>Save only the rows you want in <a href="/help/timeline-and-calendar">Timeline</a>.</li>
+      <li>Review the preview, <strong>Found in Flighty</strong>: suggested stays, layovers, overnight flights, incomplete trips, duplicates, and overlaps.</li>
+      <li>Use <strong>Select All</strong> or <strong>Deselect All</strong>, tap any entry to edit it, then tap <strong>Import</strong> and confirm.</li>
     </ol>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/help/flighty-import/flighty-setup.webp" alt="Import from Flighty setup screen" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <p>Parsing happens on the device, and nothing is saved until you confirm.</p>
 
     <h2>How flights become trips</h2>
-    <p>Arrival and departure airports provide evidence for a stay, while connections may become Transit. Overnight and closely connected flights can require judgment, so compare the preview with your actual entry into each country.</p>
+    <p>AtlasDays maps each airport to a country and creates a trip when a flight arrives in a country and a later flight departs from it. The rest of the preview follows from that:</p>
+    <ul>
+      <li><strong>Layovers</strong> under 24 hours are reviewed separately. Stops of 10 hours or less are marked <a href="/help/history-and-import">Transit</a> and excluded from day counts. Longer stops are assumed to mean you entered the country. Change this on a trip by toggling <strong>Transit</strong>.</li>
+      <li><strong>Overnight flights</strong> are recorded as International Airspace when you were in the air at midnight.</li>
+      <li><strong>Incomplete trips</strong> lack an arrival or a departure, for example after overland travel or a flight missing from Flighty. You can add the missing date in the entry, or leave it open-ended.</li>
+      <li><strong>Skipped rows</strong> are listed with a reason, such as a canceled flight or a missing airport code.</li>
+    </ul>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/help/flighty-import/flighty-review.webp" alt="Flighty Import preview with stays, transit, and warnings" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
+    <div class="callout"><p><strong>Flights only.</strong> Trains, ferries, and road trips do not appear, and neither do flights missing from the export. Compare the preview with where you actually spent your days before importing.</p></div>
+
+    <h2>Duplicates and overlaps</h2>
+    <p>Entries that repeat a trip already in <a href="/help/timeline-and-calendar">Timeline</a> are marked <strong>Duplicate</strong>. <strong>Merge</strong> means an entry covers an existing trip and would combine with it, and <strong>Overlap</strong> means the dates partly collide with another trip. Check these before importing.</p>
+
     <h2>Review US states</h2>
-    <p>When airport information supports a US state, AtlasDays can propose it. Confirm the state before saving if you rely on state-specific tracking.</p>
+    <p>When airport information supports a US state, AtlasDays proposes it. With Pro, each state imports as its own trip. Without Pro, the states import as plain United States trips. Confirm the state before saving if you rely on state-specific tracking.</p>
 
     <section class="if-needed">
       <h2>If the file is rejected</h2>
-      <p>Create a fresh Flighty CSV <a href="/help/export-and-reports">export</a> and select that original file. A spreadsheet that has resaved or rearranged the export may no longer match Flighty’s format.</p>
+      <p>The message <em>This does not look like a Flighty CSV export</em> means the file is not the original Flighty export. Export it again from Flighty and select that file, not one resaved or rearranged in a spreadsheet. AtlasDays CSV files go through <a href="/help/csv-import">CSV Import</a> instead. If the preview says <strong>No usable Flighty rows found</strong>, the export contained no flights AtlasDays could use.</p>
     </section>

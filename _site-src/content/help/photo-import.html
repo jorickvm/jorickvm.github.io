@@ -1,29 +1,38 @@
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">AtlasDays</a> / <a href="/help/">Help Center</a></nav>
 
     <h1>Photo Import</h1>
-<p class="article-answer">Photo Import scans location information in your photo library on the device, groups evidence into suggested trips, and lets you review everything before saving.</p>
+<p class="article-answer">Photo Import scans the dates and locations in your photo library on the device, groups them into suggested trips, and saves nothing until you review and confirm. It is one of the <a href="/help/import-trips">ways to add past trips</a>.</p>
 
     <h2>Start Photo Import</h2>
     <ol>
       <li>Open <strong>Settings → Import → Photos</strong>.</li>
-      <li>Allow Photos access if requested.</li>
-      <li>Start the scan and keep AtlasDays open while it examines your photo library.</li>
-      <li>Review the proposed trips before saving.</li>
+      <li>Tap <strong>Find Trips in Photos</strong>.</li>
+      <li>When iOS asks, choose <strong>Full Access</strong>. Trips cannot be inferred with Limited Access.</li>
+      <li>Keep AtlasDays open while it scans, then tap <strong>Review N Trips</strong>.</li>
     </ol>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/help/photo-import/photo-setup.webp" alt="Photo Import setup screen" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
     <h2>What AtlasDays examines</h2>
-    <p>AtlasDays uses photo timestamps and embedded location coordinates when available. The scan and country resolution happen on your device; the photos themselves are not uploaded to AtlasDays.</p>
-    <figure class="help-shot help-shot-control"><img src="/assets/article-images/help/photo-import/photo-scan.webp" alt="Photo Import scan in progress" width="1320" height="2100" loading="lazy" decoding="async" /></figure>
+    <p>AtlasDays reads the timestamp and location of photos and videos, and always scans the whole library. Screenshots and screen recordings are skipped. The scan and country lookup run on your device, work offline, and nothing is uploaded to AtlasDays. Saved trips keep local references to the photos and small cached previews; the originals stay in Photos.</p>
+    <figure class="help-shot help-shot-control"><img src="/assets/article-images/help/photo-import/photo-scan.webp" alt="Photo Import scan in progress" width="1320" height="2740" loading="lazy" decoding="async" /></figure>
 
     <h2>Review every proposal</h2>
-    <p>Check the country or US state, start and end dates, and any duplicate or overlap warning. A photo’s location is evidence, not proof of the exact moment you crossed a border.</p>
+    <p>The review screen, <strong>Found in Photos</strong>, lists the proposed trips. Summary rows show counts of duplicates, merge candidates, overlaps, possible transits and, for Pro, US states. Each trip can carry a pill such as <strong>Duplicate</strong>, <strong>Merge</strong>, <strong>Overlaps existing</strong>, <strong>Gap inferred</strong>, <strong>Near border</strong>, or <strong>Single photo</strong>.</p>
+    <ul>
+      <li>Tap a trip to change its country or dates, or to leave it out. Use <strong>Select All</strong> or <strong>Deselect All</strong> for the whole list.</li>
+      <li>A trip starts on the date of the first photo in a country and ends on the date of the last one, so the dates are estimates. A photo saved from a message or the web can add a country you never visited.</li>
+      <li>US states are proposed as separate trips for Pro. Without Pro, they import as plain United States trips.</li>
+      <li>If no Home Country is set, a row lets you confirm one so days abroad can be counted.</li>
+    </ul>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/help/photo-import/photo-review.webp" alt="Photo Import review with proposed trips and warnings" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <p>Tap <strong>Import</strong>, then confirm to save the selected trips to <a href="/help/timeline-and-calendar">Timeline</a>. <strong>Learn more</strong> on the review screen opens <strong>How trips are inferred</strong>.</p>
+
+    <div class="callout"><p><strong>Photos are evidence, not proof.</strong> Short stops between two nearby trips may be marked Transit, which never counts toward day totals. Turn Transit off for any stop where you spent time in the country.</p></div>
 
     <h2>Handle gaps conservatively</h2>
-    <p>Photos without location information cannot support a suggestion. Long gaps between geotagged photos may also produce boundaries that need manual correction. Edit the saved trip in <a href="/help/timeline-and-calendar">Timeline</a> when better evidence is available.</p>
+    <p>Photos without location cannot support a suggestion, and long gaps between geotagged photos may produce boundaries that need manual correction. Edit the saved trip in Timeline when you have better evidence. To attach photos to trips you already have, use <strong>Find Photos</strong> in the Timeline menu instead; see <a href="/help/timeline-tools">Timeline tools</a>.</p>
 
     <section class="if-needed">
       <h2>If no trips are found</h2>
-      <p>Confirm AtlasDays can access the intended photos and check that location was enabled when those photos were taken.</p>
+      <p>If <strong>Photo Access Needed</strong> appears, open iOS Settings and give AtlasDays Full Access to Photos. If the scan finishes with <strong>No trips found in your photos</strong>, check that location was on when the photos were taken; trips already in Timeline are flagged as duplicates rather than proposed again.</p>
     </section>

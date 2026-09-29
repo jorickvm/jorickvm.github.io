@@ -77,7 +77,7 @@
       "name": "AtlasDays"
     },
     "url": "https://atlasdays.app/help/dashboard-and-map",
-    "dateModified": "2026-08-13"
+    "dateModified": "2026-09-30"
   }
   </script>
   <script>(function(){var d=document.documentElement,q=new URLSearchParams(location.search).get('theme'),t=null;if(q==='light'||q==='dark'){t=q;try{sessionStorage.setItem('theme',q)}catch(e){}}else{try{t=sessionStorage.getItem('theme')}catch(e){}if(!t)try{t=localStorage.getItem('theme')}catch(e){}}d.setAttribute('data-theme',t==='light'?'light':'dark')})()</script>
@@ -160,44 +160,54 @@
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">AtlasDays</a> / <a href="/help/">Help Center</a></nav>
 
     <h1>Understanding the Dashboard and Map</h1>
-<p class="article-answer">The Dashboard summarizes your <a href="/help/timeline-and-calendar">Timeline</a> for the selected period. The map answers where you have been; numeric cards answer how many qualifying days are recorded.</p>
+<p class="article-answer">The Dashboard summarizes your <a href="/help/timeline-and-calendar">Timeline</a> for the selected period. The map answers where you have been; the numeric cards answer how many days are recorded.</p>
 
     <h2>Start with the selected period</h2>
-    <p>Use the period control on the Dashboard’s <strong>Statistics</strong> card before comparing a card with a trip or <a href="/help/export-and-reports">export</a>. A calendar year, recent period, and all-time view can legitimately show different results.</p>
+    <p>Tap the header of the <strong>Statistics</strong> card, which reads <strong>Statistics · </strong> followed by the period. It expands a control with <strong>Year</strong> and <strong>Range</strong>. Year offers <strong>All Time</strong> and one pill per year that has trips. Range offers recent spans of 7 to 365 days, and <strong>Custom</strong> for your own dates. Set the period before comparing a card with a trip or an <a href="/help/export-and-reports">export</a>; different periods legitimately show different results. The map follows the same period.</p>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/help/dashboard-and-map/period-selector.webp" alt="Dashboard Statistics card showing the selected period" width="1320" height="528" loading="lazy" decoding="async" /></figure>
 
-    <h2>Days Abroad uses Home Country</h2>
-    <p>With a <a href="/help/getting-started">Home Country</a> selected, Days Abroad reflects exact recorded days outside that country. With <strong>No fixed residence</strong>, it reflects exact recorded travel days without subtracting one home country.</p>
+    <h2>The four statistics</h2>
+    <p>Each cell opens a sheet with the detail behind it.</p>
+    <ul>
+      <li><strong>Countries</strong> (labeled <strong>Places</strong> when your list includes territories) counts visited places against your <a href="/help/country-count">Country Count</a> list. Tap <strong>of N</strong> in the sheet to change the list, and use the sort menu to order by most trips, most days, or alphabetically.</li>
+      <li><strong>Days Abroad</strong> counts the days in the period spent outside your Home Country.</li>
+      <li><strong>US states</strong> counts visited states. It needs Pro and state-tagged US trips.</li>
+      <li><strong>Continents</strong> counts continents out of seven. Transcontinental countries can be assigned in Country Count.</li>
+    </ul>
+
+    <h2>Home Country and Days Abroad</h2>
+    <p>Days Abroad counts days with exact dates in any place other than your Home Country. Set it in <strong>Settings → Tracking → Home Country</strong>, or from the Days Abroad sheet. Onboarding does not ask for it, so a new install starts as <strong>Not set</strong>, and the Days Abroad sheet then prompts you to set one. Choose <strong>No fixed residence</strong> to count every recorded day. Home Country also affects how the Add Tracker list is ordered and lets the Timeline hide home trips.</p>
 
     <h2>The map and totals answer different questions</h2>
-    <p>A non-<a href="/help/history-and-import">Transit</a> trip can highlight a country as visited even when it has no dates: a Year Only trip, or a visit imported without dates. Those trips do not create numeric day totals. Transit does neither.</p>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/help/dashboard-and-map/map-state.webp" alt="AtlasDays world map with visited countries highlighted" width="1320" height="2444" loading="lazy" decoding="async" /></figure>
+    <p>The map highlights every visited place that is not <a href="/help/history-and-import">Transit</a>, including places with no dates: a Year Only trip appears under All Time and for the year it names. Those trips create no day totals. The map can therefore show more places than the Countries statistic, which counts only your list.</p>
+    <p>Tap the map or pinch out to open the full-screen map. Drag to rotate the globe, pinch to zoom, and tap a country for its trips and days.</p>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/help/dashboard-and-map/map-state.webp" alt="AtlasDays world map with visited countries highlighted" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
     <h2>United States detail</h2>
-    <p>A country-level United States trip can highlight the US and contribute to US totals. State-level views require a state on the trip; an untagged US trip cannot be assigned to a state automatically.</p>
+    <p>A country-level United States trip highlights the US and contributes to US totals. State-level views need Pro and a state on the trip; an untagged US trip cannot be assigned to a state automatically.</p>
 
-    <h2>Share cards follow the Dashboard</h2>
-    <p>Review the period and visible result before sharing. You can choose the share-card appearance and language without changing the underlying trip record.</p>
+    <h2>Arrange the Dashboard and share it</h2>
+    <p>Long-press a tracker card to edit, reorder, or delete it. The share button at the top left opens cards you can save or send: Travel Map, Top Destinations, Continents, and Flags Collected. Review the period before sharing. The card appearance and language can be changed without touching your trips.</p>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/help/dashboard-and-map/share-cards.webp" alt="Share preview showing AtlasDays Dashboard cards" width="1320" height="1600" loading="lazy" decoding="async" /></figure>
 
     <section class="if-needed">
       <h2>If a Dashboard card is surprising</h2>
-      <p>Open the Timeline and inspect the period’s dated, Year Only, ongoing, and Transit trips. Then verify Home Country and any missing US state tags.</p>
+      <p>Check the selected period first. Then open the Timeline and inspect the period's dated, Year Only, open-ended, and Transit trips, and verify Home Country, Country Count, and any missing US state tags.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-dashboard-and-map">
       <h2 id="next-dashboard-and-map">Continue with</h2>
       <ul>
+        <li><a href="/help/country-count">
+          <strong>Choose What Counts as a Country</strong>
+          <span>Choose which places count as a country.</span>
+        </a></li>
         <li><a href="/help/create-a-tracker">
           <strong>Create a Tracker</strong>
-          <span>Set up the limit you actually need to watch.</span>
-        </a></li>
-        <li><a href="/help/day-counting">
-          <strong>How AtlasDays Counts Travel Days</strong>
-          <span>See exactly which travel days count toward a total.</span>
+          <span>Set up a tracker step by step.</span>
         </a></li>
         <li><a href="/help/timeline-and-calendar">
           <strong>Add, Edit, or Delete a Trip</strong>
-          <span>Correct the record behind the numbers.</span>
+          <span>Add, edit or delete a trip.</span>
         </a></li>
       </ul>
     </nav>
@@ -205,7 +215,7 @@
       <h2>Still need help?</h2>
       <p><a href="mailto:support@atlasdays.app">Contact AtlasDays Support</a> with the relevant dates, what you expected, and what happened.</p>
     </aside>
-    <p class="help-updated">Last updated August 13, 2026</p>
+    <p class="help-updated">Last updated September 30, 2026</p>
   </article>
   </main>
 

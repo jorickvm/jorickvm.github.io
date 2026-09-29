@@ -1,32 +1,43 @@
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">AtlasDays</a> / <a href="/help/">Help Center</a></nav>
 
     <h1>How Tracker Totals Are Calculated</h1>
-<p class="article-answer">A tracker selects qualifying <a href="/help/history-and-import">trip days</a> from its configured places, deduplicates overlapping calendar days, and applies its saved time window.</p>
+<p class="article-answer">A tracker selects the <a href="/help/history-and-import">dated trips</a> in its places, merges overlapping calendar days, and counts them inside its window. The result is compared with the limit you set.</p>
 
-    <h2>Four settings determine the result</h2>
+    <h2>Five settings determine the result</h2>
     <ol>
       <li><strong>Places:</strong> only trips in the selected countries or US states qualify.</li>
-      <li><strong>Window:</strong> rolling, year, and per-entry trackers examine different date ranges.</li>
-      <li><strong>Limit:</strong> the threshold determines the tracker’s progress and status.</li>
-      <li><strong>Trip precision:</strong> trips with dates can count; Year Only and Transit contribute zero days.</li>
+      <li><strong>Unit:</strong> the <strong>Limit</strong> row counts <strong>Days</strong>, <strong>Nights</strong>, or days <strong>Away</strong>.</li>
+      <li><strong>Window:</strong> <strong>Rolling</strong>, <strong>Year</strong>, and <strong>Per Entry</strong> trackers examine different date ranges.</li>
+      <li><strong>Limit:</strong> the threshold that sets the tracker’s progress and status. With the <strong>Reach Target</strong> goal it is a <strong>Target</strong> instead.</li>
+      <li><strong>Trip precision:</strong> trips with exact dates count. Year Only and Transit trips contribute zero days.</li>
     </ol>
 
+    <h2>Days and nights</h2>
+    <p>The <strong>Days</strong> unit counts the arrival day and the departure day in full, so a stay from 1 June to 3 June is three days. The <strong>Nights</strong> unit counts the nights between arrival and departure, so the same stay is two. Nights do not bridge back-to-back stays: the night between one trip’s departure day and the next trip’s arrival day counts for neither, even in the same country.</p>
+
+    <h2>Overlapping days count once</h2>
+    <p>Rolling, Year, and days-away trackers merge trips that cover the same calendar day, so an overlap in your <a href="/help/timeline-and-calendar">Timeline</a> does not count twice. A Per Entry tracker does not merge trips at all, as described below.</p>
+
     <h2>Rolling windows move every day</h2>
-    <p>A rolling tracker looks backward from its selected reference date. Older days leave the window while newer trip days enter it, so the total can change even when you do not edit a trip.</p>
+    <p>A rolling tracker always ends today. Its <strong>Length</strong> is either a fixed number of days, or a number of calendar months counted back from today. Older days leave the window while newer trip days enter it, so the total can change without any edit to a trip.</p>
 
-    <h2>Year trackers reset each year</h2>
-    <p>These trackers count qualifying days across the selected year, starting on the date set in the tracker's Starts row. A January 1 start makes it a calendar year running through December 31; any other start date makes it a fiscal year. Switching years changes the records in scope.</p>
+    <h2>Year trackers</h2>
+    <p>A Year tracker counts across one year, beginning on the date in its <strong>Starts</strong> row. A 1 January start makes it a calendar year; any other start date makes it a fiscal year.</p>
 
-    <h2>Per-entry trackers evaluate continuity</h2>
-    <p>A per-entry tracker focuses on a continuous stay within its places rather than combining unrelated visits into a single total.</p>
+    <h2>Per Entry trackers follow one stay</h2>
+    <p>A Per Entry tracker measures a single stay. It uses the ongoing stay when there is one, and otherwise the most recently ended stay. It does not add separate visits together. When the tracker has a <strong>Start</strong> date, days before that date are left out.</p>
 
-    <h2>Charts and forecasts</h2>
-    <p>The detail chart explains how the count changes across time. Planned future trips with dates can contribute to a forecast; Year Only trips cannot. <a href="/help/plan-a-trip">Checking whether a planned trip fits</a> covers the forecast in detail.</p>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/help/trackers-and-limits/detail-chart.webp" alt="Tracker detail chart across its active window" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
-    <p>The limit and window that shape that chart are set in the tracker editor.</p>
-    <figure class="help-shot help-shot-control"><img src="/assets/article-images/help/trackers-and-limits/goal-window.webp" alt="Tracker editor showing its limit and window controls" width="1320" height="1700" loading="lazy" decoding="async" /></figure>
+    <h2>Ongoing and planned trips</h2>
+    <p>A trip with no end date counts through today. A trip that starts in the future does not change the current total; it appears on the chart as planned travel, and the forecast uses it. <a href="/help/plan-a-trip">Checking whether a planned trip fits</a> covers the forecast.</p>
+
+    <h2>Read the detail chart</h2>
+    <p>Open a tracker to see how its count changes over time. The chart has two views: a scrollable close-up and a view of the whole period. Pinch or double-tap the chart to switch; each tracker remembers its own choice.</p>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/help/trackers-and-limits/detail-chart.webp" alt="Tracker detail chart across its active window" width="1320" height="2566" loading="lazy" decoding="async" /></figure>
+    <p>Rolling, Year, and days-away trackers also show a sentence under the chart when your plans change the outcome, such as the date you would reach the limit. Trackers with two limits show a chart for each limit instead; see <a href="/help/rule-trackers">trackers with two limits</a>.</p>
+    <p>The <strong>Goal</strong>, <strong>Limit</strong>, and <strong>Window</strong> rows that shape the chart are set in the tracker editor. Tap the sliders icon at the top of the tracker’s detail screen to open it.</p>
+    <figure class="help-shot help-shot-control"><img src="/assets/article-images/help/trackers-and-limits/goal-window.webp" alt="Tracker editor showing its limit and window controls" width="1320" height="1500" loading="lazy" decoding="async" /></figure>
 
     <section class="if-needed">
       <h2>Check which trips affect a tracker</h2>
-      <p>Open its detail view, confirm the places and window, then compare those settings with <a href="/help/timeline-and-calendar">Timeline</a>. Pay special attention to ongoing trips, Transit, Year Only records, overlaps, and missing US state tags.</p>
+      <p>Open its detail view and read the trips listed under the chart, then compare its places and window with your <a href="/help/timeline-and-calendar">Timeline</a>. Pay special attention to ongoing trips, Transit, Year Only records, overlaps, and missing US state tags. To add a trip for that tracker, tap <strong>+</strong> above its trip list.</p>
     </section>

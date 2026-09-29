@@ -77,7 +77,7 @@
       "name": "AtlasDays"
     },
     "url": "https://atlasdays.app/help/csv-format-reference",
-    "dateModified": "2026-08-13"
+    "dateModified": "2026-09-30"
   }
   </script>
   <script>(function(){var d=document.documentElement,q=new URLSearchParams(location.search).get('theme'),t=null;if(q==='light'||q==='dark'){t=q;try{sessionStorage.setItem('theme',q)}catch(e){}}else{try{t=sessionStorage.getItem('theme')}catch(e){}if(!t)try{t=localStorage.getItem('theme')}catch(e){}}d.setAttribute('data-theme',t==='light'?'light':'dark')})()</script>
@@ -160,32 +160,43 @@
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">AtlasDays</a> / <a href="/help/">Help Center</a></nav>
 
     <h1>CSV Format Reference</h1>
-<p class="article-answer">Only the <strong>Country</strong> column is required. AtlasDays finds supported columns by header name, so their order does not matter.</p>
+<p class="article-answer">Only the <strong>Country</strong> column is required. AtlasDays finds columns by their English header name, so column order does not matter. Steps for importing are in <a href="/help/csv-import">CSV Import</a>.</p>
 
-    <h2>Recommended headers</h2>
-    <p><code>Country,State,Start Date,End Date,Purpose,Notes</code></p>
-    <ul>
-      <li><strong>Country:</strong> English <a href="/help/languages">country name</a>, ISO two-letter code, or a recognized common alias.</li>
-      <li><strong>State:</strong> optional US state name, postal abbreviation, or ISO subdivision code such as <code>US-CA</code>.</li>
-      <li><strong>Start Date / End Date:</strong> exact date, year, or empty according to the rules below.</li>
-      <li><strong>Purpose:</strong> Personal, Business, Study, or <a href="/help/history-and-import">Transit</a>. Several non-Transit purposes may be combined with commas, in quotes, such as <code>"Business, Personal"</code>. Older files that say Tourism or Medical still import, as Personal.</li>
-      <li><strong>Notes:</strong> optional text.</li>
-    </ul>
-    <figure class="help-shot help-shot-control"><img src="/assets/article-images/help/csv-format-reference/csv-reference.webp" alt="CSV Import example and template controls" width="1320" height="1760" loading="lazy" decoding="async" /></figure>
+    <h2>Columns</h2>
+    <p>Recommended header row: <code>Country,State,Start Date,End Date,Purpose,Notes</code>. Header names are not case-sensitive. Unrecognized columns, such as <code>Days</code>, are ignored. If a header appears twice, the first one is used.</p>
+    <dl class="kv kv-text">
+      <div><dt><strong>Country</strong></dt><dd>Required. Country name in English or in the app language, ISO two-letter code, or a common alias such as <code>USA</code>, <code>UK</code>, or <code>Holland</code>. An alias that could mean two places is rejected.</dd></div>
+      <div><dt><strong>State</strong></dt><dd>Optional, United States trips only. State name, two-letter postal abbreviation, or ISO code such as <code>US-CA</code>. District of Columbia is accepted.</dd></div>
+      <div><dt><strong>Start Date</strong></dt><dd>Also accepted as <code>Start</code>. Date as <code>yyyy-mm-dd</code>, or a four-digit year.</dd></div>
+      <div><dt><strong>End Date</strong></dt><dd>Also accepted as <code>End</code>. Date as <code>yyyy-mm-dd</code>, or a four-digit year. Empty means ongoing (exact start) or the same year (year start).</dd></div>
+      <div><dt><strong>Purpose</strong></dt><dd><code>Personal</code>, <code>Business</code>, <code>Study</code>, or <code>Transit</code>, not case-sensitive. Combine non-Transit values with commas inside quotes, such as <code>"Business, Personal"</code>. Older <code>Tourism</code> and <code>Medical</code> import as Personal. A value that is not recognized is ignored without an error.</dd></div>
+      <div><dt><strong>Notes</strong></dt><dd>Also accepted as <code>Note</code>, <code>Notes (optional)</code>. Free text.</dd></div>
+      <div><dt><strong>Transit</strong></dt><dd>Legacy column. Read only when there is no Purpose column. <code>Yes</code>, <code>Y</code>, <code>True</code>, or <code>1</code> marks Transit; <code>No</code>, <code>N</code>, <code>False</code>, <code>0</code>, or empty does not.</dd></div>
+      <div><dt><strong>Start Year</strong>, <strong>End Year</strong></dt><dd>Legacy column. Four-digit years, used when the date cells hold no year. Cannot be combined with exact dates in the same row.</dd></div>
+    </dl>
+    <figure class="help-shot help-shot-control"><img src="/assets/article-images/help/csv-format-reference/csv-reference.webp" alt="CSV Import example and template controls" width="1320" height="1990" loading="lazy" decoding="async" /></figure>
 
     <h2>Date formats</h2>
-    <h3>Exact dates</h3>
-    <p>Use <code>yyyy-mm-dd</code> in both date columns. Leave End Date empty only for an ongoing trip.</p>
-    <h3>Year</h3>
-    <p>Use a four-digit year in Start Date. End Date can hold a year, or stay empty to mean the same year. A range spanning several years becomes one Year Only record per year.</p>
-    <h3>No dates at all</h3>
-    <p>Leave both date cells empty. The country is preserved as a visit without dates: it counts toward visited places but never toward day totals, and reports label it <strong>Unknown Date</strong>. This kind of record can only be created through CSV import.</p>
+    <div class="data-table">
+    <table>
+      <thead><tr><th>Start Date</th><th>End Date</th><th>Result</th></tr></thead>
+      <tbody>
+        <tr><td><code>2026-03-01</code></td><td><code>2026-03-05</code></td><td>Exact trip. Same-day trips use the same date twice.</td></tr>
+        <tr><td><code>2026-03-01</code></td><td>empty</td><td>Ongoing trip with no end date.</td></tr>
+        <tr><td><code>2019</code></td><td>empty</td><td><a href="/help/history-and-import">Year Only</a> trip for that year.</td></tr>
+        <tr><td><code>2018</code></td><td><code>2019</code></td><td>One Year Only trip covering 2018 to 2019.</td></tr>
+        <tr><td>empty</td><td>empty</td><td>Trip without dates.</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p>Years must fall between 1900 and eight years after the current year. Exact dates and year values cannot be mixed within one row. Year Only trips and trips without dates count toward visited places and the map, but never toward day counts or trackers. A trip without dates can only be created through CSV import.</p>
 
-    <h2>US state rows</h2>
-    <p>Use State only for a United States trip. If one US visit covered several states and you need state-level records, use one row per state. A plain US row is valid for country-level tracking.</p>
-
-    <h2>Transit</h2>
-    <p>Put <code>Transit</code> in Purpose when you did not enter the country. Transit is exclusive: do not combine it with Personal, Business, or another purpose.</p>
+    <h2>Special cases</h2>
+    <ul>
+      <li><strong>US states.</strong> Use one row per state when one US visit covered several states. A plain <code>United States</code> row is valid for country-level tracking. A state name in the Country column (<code>California</code>, <code>US-CA</code>) also gives a US trip, and an empty Country with a valid State does the same. Two-letter codes that are also country codes, such as <code>CA</code>, stay countries. Without Pro, state rows import as plain United States trips.</li>
+      <li><strong>Transit.</strong> Put <code>Transit</code> in Purpose when you did not enter the country. Transit is exclusive: if it appears with another purpose, only Transit is kept.</li>
+      <li><strong>Delimiter and quoting.</strong> Comma, semicolon, and tab are detected from the header row. Quote fields that contain the delimiter or a line break.</li>
+    </ul>
 
     <h2>Example</h2>
     <pre><code>Country,State,Start Date,End Date,Purpose,Notes
@@ -194,12 +205,28 @@ United States,CA,2026-04-10,2026-04-15,Business,Conference
 Japan,,2024,,Personal,Dates not known
 United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></pre>
 
-    <h2>Delimiter and quoting</h2>
-    <p>AtlasDays recognizes comma, semicolon, and tab-delimited files from the header row. Quote fields that contain the delimiter or a line break according to normal CSV rules.</p>
+    <h2>Error messages</h2>
+    <p>Each error appears in the preview with its row number, and the row is not imported. The row number counts the header as row 1.</p>
+    <dl class="kv kv-text">
+      <div><dt>Couldn't find a Country column</dt><dd>Put a header row first with a <strong>Country</strong> column.</dd></div>
+      <div><dt>Invalid country: '&lt;value&gt;'</dt><dd>Use an ISO code or an unambiguous country name.</dd></div>
+      <div><dt>Invalid state: '&lt;value&gt;'</dt><dd>Use a US state name, abbreviation, or <code>US-XX</code> code.</dd></div>
+      <div><dt>State '&lt;value&gt;' is only valid for United States trips</dt><dd>Clear State, or change Country to United States.</dd></div>
+      <div><dt>Conflicting states</dt><dd>The Country and State cells name different states. Keep one.</dd></div>
+      <div><dt>Invalid start date / Invalid end date</dt><dd>Use <code>yyyy-mm-dd</code> or a four-digit year.</dd></div>
+      <div><dt>Invalid start year / Invalid end year</dt><dd>Use a four-digit year in range.</dd></div>
+      <div><dt>Cannot have an end date without a start date</dt><dd>Add a Start Date.</dd></div>
+      <div><dt>Start date must be before or equal to end date</dt><dd>Swap or correct the dates.</dd></div>
+      <div><dt>End year must be after or equal to start year</dt><dd>Correct the years.</dd></div>
+      <div><dt>Cannot have an end year without a start year</dt><dd>Add a start year.</dd></div>
+      <div><dt>Cannot mix exact dates with approximate year fields</dt><dd>Use either dates or the legacy year columns.</dd></div>
+      <div><dt>Cannot mix exact start date with year-only end date, or year-only start with exact end date</dt><dd>Use two dates or two years in one row.</dd></div>
+      <div><dt>Invalid transit value</dt><dd>In the legacy Transit column use Yes/No, True/False, or 1/0.</dd></div>
+    </dl>
 
     <section class="if-needed">
       <h2>If a value is not recognized</h2>
-      <p>Use an ISO country code, an unambiguous English country name, ISO dates, and a standard US state name or code. Keep the original row number so it is easy to compare with the import preview.</p>
+      <p>Use an ISO country code, ISO dates, and a standard US state name or code. A file exported from a spreadsheet in another language may carry translated headers, which are not recognized: rename them to the English headers above.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-csv-format-reference">
       <h2 id="next-csv-format-reference">Continue with</h2>
@@ -222,7 +249,7 @@ United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></p
       <h2>Still need help?</h2>
       <p><a href="mailto:support@atlasdays.app">Contact AtlasDays Support</a> with the relevant dates, what you expected, and what happened.</p>
     </aside>
-    <p class="help-updated">Last updated August 13, 2026</p>
+    <p class="help-updated">Last updated September 30, 2026</p>
   </article>
   </main>
 

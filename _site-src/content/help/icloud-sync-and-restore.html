@@ -1,36 +1,43 @@
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">AtlasDays</a> / <a href="/help/">Help Center</a></nav>
 
     <h1>iCloud Sync and Restore</h1>
-<p class="article-answer">When iCloud Sync is enabled, AtlasDays stores trips and trackers in your private iCloud account and keeps them synchronized across devices using the same Apple Account.</p>
+<p class="article-answer">With iCloud Sync on, AtlasDays keeps your trips and trackers in your private iCloud account and in step across devices signed in to the same Apple Account. Sync is not a backup file, so keep a separate AtlasDays Backup as well.</p>
 
-    <h2>Set up a new device</h2>
+    <h2>Check that sync is on</h2>
     <ol>
-      <li>Sign in to the same Apple Account and make sure iCloud Drive is available.</li>
-      <li>Install AtlasDays and open <strong>Settings → iCloud Sync</strong>.</li>
-      <li>Confirm iCloud Sync is on and review the displayed status.</li>
-      <li>Leave AtlasDays open briefly while records arrive.</li>
+      <li>Open <strong>Settings → iCloud Sync</strong>. The toggle is on by default.</li>
+      <li>Read <strong>Status</strong>. <strong>Synced</strong> means this device is up to date.</li>
+      <li>Check <strong>Data</strong> for the number of trips and trackers this device holds, and <strong>Last Activity</strong> for the most recent sync.</li>
     </ol>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/help/icloud-sync-and-restore/icloud-status.webp" alt="iCloud Sync settings showing status, last activity, and data count" width="1320" height="772" loading="lazy" decoding="async" /></figure>
+    <p>After you turn sync on or off, AtlasDays asks you to close it from the app switcher and open it again. The change takes effect on the next launch.</p>
 
-    <h2>After reinstalling AtlasDays</h2>
-    <p>Trips and trackers held in iCloud come back once the app reconnects to its iCloud store, which can take a few minutes on first launch. Device-specific permissions, <a href="/help/widgets">widget</a> configuration, and some preferences have to be set again.</p>
-
-    <h2>Understand the status</h2>
-    <p>The iCloud Sync screen reports whether AtlasDays is checking, syncing, waiting, synced, not signed in, or using local storage. Enabling or disabling sync can require closing AtlasDays from the app switcher and reopening it.</p>
-
-    <h2>If data appears missing</h2>
+    <h2>Set up a new device or reinstall</h2>
     <ol>
-      <li>Do not reset or delete the app data while investigating.</li>
-      <li>Confirm the Apple Account and iCloud availability.</li>
-      <li>Check the iCloud Sync status and data count.</li>
-      <li>Keep the app open on a stable connection and check again.</li>
-      <li>Contact support before making destructive changes if another device still has the expected record.</li>
+      <li>Sign in to the same Apple Account in iOS Settings.</li>
+      <li>Install AtlasDays and open <strong>Settings → iCloud Sync</strong> to confirm it is on.</li>
+      <li>Leave AtlasDays open for a few minutes while trips and trackers arrive.</li>
     </ol>
+    <p>Device-specific choices come back separately. Location and notification permissions are granted per device, so <a href="/help/auto-detect-trips">Auto-Detect</a> and notifications only work once you allow them again, and <a href="/help/widgets">widgets</a> have to be added again. Preferences such as Home Country and appearance travel through iCloud on their own, even when trip sync is off.</p>
 
-    <h2>Sync is not the same as an export</h2>
-    <p>Sync keeps one evolving record across devices. An <a href="/help/export-and-reports">export</a> is a separate file you control and can retain as a point-in-time copy.</p>
+    <h2>What the status means</h2>
+    <ul>
+      <li><strong>Syncing...</strong>, <strong>Waiting to sync</strong>, and <strong>Waiting for iCloud</strong> are temporary. Keep AtlasDays open for a moment.</li>
+      <li><strong>Synced</strong> means nothing is pending.</li>
+      <li><strong>Not signed in</strong>, <strong>iCloud unavailable</strong>, and <strong>iCloud restricted</strong> point to the Apple Account, iCloud, or a Screen Time restriction on this device.</li>
+      <li><strong>Not syncing</strong> means AtlasDays could not open its iCloud data store, so this device is using local storage for now. Your data is still on the device.</li>
+      <li><strong>Sync issue</strong> means some changes have not reached iCloud yet. Tap <strong>Show Details</strong> for suggestions and diagnostics you can send to support.</li>
+    </ul>
+
+    <h2>Sync is not a backup</h2>
+    <p>Sync keeps one live record across devices, so a deletion on one device reaches the others. It cannot bring back something you removed. An <a href="/help/backup-and-restore">AtlasDays Backup</a> is a separate file you keep and restore when you need it. If you restore a backup while sync is on, the restored data replaces the data on every device, and AtlasDays waits until iCloud has finished syncing before it starts.</p>
 
     <section class="if-needed">
-      <h2>If the screen says AtlasDays is not syncing</h2>
-      <p>Follow the status message first. Check Apple Account sign-in, available iCloud storage, network access, and whether the app requests a restart after changing the toggle.</p>
+      <h2>If data appears missing</h2>
+      <ol>
+        <li>Do not reset the app or delete data while you investigate.</li>
+        <li>Confirm this device is signed in to the same Apple Account and that iCloud is available.</li>
+        <li>Check <strong>Status</strong> and <strong>Data</strong> on the iCloud Sync screen, and keep AtlasDays open on a stable connection for a few minutes.</li>
+        <li>If another device still shows the expected trips, contact support before changing anything. The <strong>Reference</strong> row on the iCloud Sync screen holds a support ID that you can tap to copy.</li>
+      </ol>
+      <p>If the screen says AtlasDays is not syncing, follow its message first: check Apple Account sign-in, available iCloud storage, and network access, then close AtlasDays fully and reopen it.</p>
     </section>

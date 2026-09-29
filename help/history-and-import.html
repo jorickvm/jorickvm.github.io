@@ -77,7 +77,7 @@
       "name": "AtlasDays"
     },
     "url": "https://atlasdays.app/help/history-and-import",
-    "dateModified": "2026-08-13"
+    "dateModified": "2026-09-30"
   }
   </script>
   <script>(function(){var d=document.documentElement,q=new URLSearchParams(location.search).get('theme'),t=null;if(q==='light'||q==='dark'){t=q;try{sessionStorage.setItem('theme',q)}catch(e){}}else{try{t=sessionStorage.getItem('theme')}catch(e){}if(!t)try{t=localStorage.getItem('theme')}catch(e){}}d.setAttribute('data-theme',t==='light'?'light':'dark')})()</script>
@@ -164,41 +164,41 @@
 
     <h2>A trip carries its dates</h2>
     <p>Adding a trip asks for a country, a start date, and an end date. Trips with dates feed <a href="/help/dashboard-and-map">Dashboard</a> totals, tracker calculations, <a href="/help/export-and-reports">exports</a>, and <a href="/help/plan-a-trip">forecasts</a>. <a href="/help/day-counting">Both boundary days count</a>.</p>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/help/history-and-import/mode-selector.webp" alt="Add Trip sheet with country, dates, and purpose" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/help/history-and-import/mode-selector.webp" alt="Add Trip sheet with country, dates, and purpose" width="1320" height="2668" loading="lazy" decoding="async" /></figure>
 
-    <h2>Ongoing trips</h2>
-    <p>Leave the end date empty only while a stay is genuinely ongoing. The trip shows as <strong>Ongoing</strong>, and AtlasDays counts through today until you add the departure date.</p>
+    <h2>Open-ended trips</h2>
+    <p>For a stay that has not ended, open the end date and tap the <strong>Open-ended</strong> pill instead of choosing a date. Once the trip has started, the Timeline shows it as <strong>Ongoing</strong> and AtlasDays counts through today until you add the departure date. A future open-ended trip shows as <strong>Open-ended</strong>.</p>
 
     <h2>Year Only</h2>
-    <p>When you know the year but not the dates, tap the start date and choose <strong>Year Only</strong> at the bottom of the date picker. The pickers switch to <strong>Start Year</strong> and <strong>End Year</strong>, and the trip keeps the year alone. As the app itself puts it: year-only trips count toward visited places and the map, but not day counts or trackers.</p>
-    <figure class="help-shot help-shot-control"><img src="/assets/article-images/help/history-and-import/mode-year.webp" alt="Year Only trip with a start and end year" width="1320" height="1070" loading="lazy" decoding="async" /></figure>
+    <p>When you know the year but not the dates, tap the start date and choose <strong>Year Only</strong> under the date picker. The pickers switch to <strong>Start Year</strong> and <strong>End Year</strong>, and the end year is optional. As the app itself puts it: year-only trips count toward visited places and the map, but not day counts or trackers.</p>
+    <figure class="help-shot help-shot-control"><img src="/assets/article-images/help/history-and-import/mode-year.webp" alt="Year Only trip with a start and end year" width="1320" height="1250" loading="lazy" decoding="async" /></figure>
     <p>Year Only exists for the visited-places record and the map, mostly for older history. Anything that feeds a limit you rely on needs real dates.</p>
 
     <h2>Transit</h2>
-    <p>Transit is a purpose, not a date setting. Select the <strong>Transit</strong> chip when you passed through without entering the country, such as an airside connection. Transits are excluded from day counts and do not mark the country as visited.</p>
-    <figure class="help-shot help-shot-control"><img src="/assets/article-images/help/history-and-import/mode-transit.webp" alt="Trip with the Transit purpose selected" width="1320" height="1070" loading="lazy" decoding="async" /></figure>
+    <p>Transit is a purpose, not a date setting. Select the <strong>Transit</strong> chip when you passed through without entering the country, such as an airside connection. Choosing it clears the other purposes, and choosing another purpose clears it. International airspace and waters select it automatically. Transit trips are excluded from day counts and do not mark the country as visited.</p>
+    <figure class="help-shot help-shot-control"><img src="/assets/article-images/help/history-and-import/mode-transit.webp" alt="Trip with the Transit purpose selected" width="1320" height="1250" loading="lazy" decoding="async" /></figure>
 
     <h2>Choose conservatively</h2>
     <p>Keep a half-remembered trip as Year Only for now, and give it dates once a passport stamp, booking, photo, or other record confirms the boundaries. A year that is honest about what you know is more useful than dates you had to guess.</p>
 
     <section class="if-needed">
       <h2>If a trip is missing from a total</h2>
-      <p>That is expected for Year Only trips: they mark the place as visited but create no calendar days. The same applies to trips imported from a <a href="/help/csv-format-reference">CSV without dates</a>. Give a trip real dates only when you can support them.</p>
+      <p>That is expected for Year Only trips: they mark the place as visited but create no calendar days. The same applies to trips imported with only a year, as in a <a href="/help/csv-format-reference">CSV</a> that has no full dates. Also check for a Transit trip. Give a trip real dates only when you can support them.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-history-and-import">
       <h2 id="next-history-and-import">Continue with</h2>
       <ul>
+        <li><a href="/help/import-trips">
+          <strong>Import Trips</strong>
+          <span>Choose an import source and review before saving.</span>
+        </a></li>
+        <li><a href="/help/day-counting">
+          <strong>How AtlasDays Counts Travel Days</strong>
+          <span>Exactly which days count toward a total.</span>
+        </a></li>
         <li><a href="/help/dashboard-and-map">
           <strong>Understanding the Dashboard and Map</strong>
-          <span>See what your trips add up to.</span>
-        </a></li>
-        <li><a href="/help/csv-import">
-          <strong>CSV Import</strong>
-          <span>Import a prepared history while preserving date precision.</span>
-        </a></li>
-        <li><a href="/help/photo-import">
-          <strong>Photo Import</strong>
-          <span>Use photo evidence to pin down trip boundaries.</span>
+          <span>What your trips add up to.</span>
         </a></li>
       </ul>
     </nav>
@@ -206,7 +206,7 @@
       <h2>Still need help?</h2>
       <p><a href="mailto:support@atlasdays.app">Contact AtlasDays Support</a> with the relevant dates, what you expected, and what happened.</p>
     </aside>
-    <p class="help-updated">Last updated August 13, 2026</p>
+    <p class="help-updated">Last updated September 30, 2026</p>
   </article>
   </main>
 
