@@ -95,9 +95,11 @@
       var shared = pa.y !== pb.y ? 0 : pa.m !== pb.m ? 1 : 2;
       return hanziDate(pa, 0) + sep + hanziDate(pb, shared);
     }
-    if (a === b) return rangeFormat.format(new Date(a * DAY));
-    if (!rangeFormat.formatRange) return short(a, true) + " – " + short(b, true);
-    return rangeFormat.formatRange(new Date(a * DAY), new Date(b * DAY));
+    var out = a === b ? rangeFormat.format(new Date(a * DAY))
+      : rangeFormat.formatRange ? rangeFormat.formatRange(new Date(a * DAY), new Date(b * DAY))
+      : short(a, true) + " – " + short(b, true);
+    // en-GB writes September as "Sept"; the app writes "Sep".
+    return locale === "en" ? out.replace(/\bSept\b/g, "Sep") : out;
   }
   function plural(n, variants) { return variants[plurals.select(n)] || variants.other; }
   function el(tag, attrs, text) {
@@ -203,10 +205,6 @@
       selected = -1;
       normalise();
       render();
-      var i = tripAt(day);
-      // On a computer, go straight on to the country; on a phone the keyboard
-      // would cover the calendar, so the field waits for a tap.
-      if (finePointer && i >= 0 && !trips[i].country && allowed.length > 1) focusCountry(i);
     }
     function removeTrip(i) { trips.splice(i, 1); selected = -1; commit(); }
     function commit() { normalise(); render(); }
@@ -228,7 +226,7 @@
         for (var c = 0; c < 7; c++) {
           var day = mon + c, p = D.parts(day);
           var b = el("button", { type: "button", "class": "cal-day" + (p.d === 1 ? " is-month-start" : "") + (day === today ? " is-today" : ""), "data-day": day });
-          b.appendChild(el("span", { "class": "cal-num" }, p.d === 1 ? shortMonth.format(new Date(day * DAY)) : String(p.d)));
+          b.appendChild(el("span", { "class": "cal-num" }, p.d === 1 ? shortMonth.format(new Date(day * DAY)).toLocaleUpperCase(locale) : String(p.d)));
           cells[day] = b;
           row.appendChild(b);
         }
@@ -421,11 +419,6 @@
       wrap.appendChild(input);
       wrap.appendChild(box);
       return wrap;
-    }
-    function focusCountry(i) {
-      var input = list.querySelectorAll(".cal-trip")[i];
-      input = input && input.querySelector(".cal-country-input");
-      if (input) input.focus({ preventScroll: true });
     }
     function renderList() {
       list.textContent = "";

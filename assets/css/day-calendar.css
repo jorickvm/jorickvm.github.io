@@ -108,7 +108,8 @@ html[data-theme="light"] .daycal { --cal-disc: rgba(12, 22, 40, 0.07); }
 }
 .cal-day.has-trip::after { display: none; }
 @media (hover: hover) and (pointer: fine) { .cal-day:not(.has-trip):hover::after { background: var(--cal-hover); } }
-.cal-day.is-anchor::after { display: block; z-index: 2; background: var(--cal-bar); }
+/* also while the mouse is still on it, so the click shows at once */
+.cal-day.is-anchor::after, .cal-day.is-anchor:not(.has-trip):hover::after { display: block; z-index: 2; background: var(--cal-bar); }
 
 .cal-bars { position: absolute; left: 0; right: 0; top: 36px; height: 20px; z-index: 1; pointer-events: none; }
 .cal-bar { position: absolute; top: 0; height: 20px; background: var(--cal-bar); }
