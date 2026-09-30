@@ -147,33 +147,49 @@
     var englishNames = null;
     try { englishNames = new Intl.DisplayNames(["en"], { type: "region" }); } catch (e) {}
 
-    function ctx() { return { today: today, D: D, label: label, plural: plural, text: text }; }
+    function ctx() { return { today: today, D: D, label: label, plural: plural, text: text, trips: trips }; }
 
     // ---- trips -----------------------------------------------------------------
     function tripAt(day) {
       for (var i = 0; i < trips.length; i++) if (day >= trips[i].start && day <= trips[i].end) return i;
       return -1;
     }
+    // Two trips that share only a travel day (a handoff: out of one country,
+    // into the next) stay two trips. Trips that share a night are one trip when
+    // their countries agree (or one has none).
+    function compatible(a, b) { return !a.country || !b.country || a.country === b.country; }
     function normalise() {
-      trips.sort(function (a, b) { return a.start - b.start; });
+      trips.sort(function (a, b) { return a.start - b.start || a.end - b.end; });
       var out = [];
       trips.forEach(function (t) {
         var last = out[out.length - 1];
-        // Trips sharing a night merge; a shared travel day alone does not.
-        if (last && t.start < last.end) { last.end = Math.max(last.end, t.end); if (!last.country) last.country = t.country || ""; }
+        if (last && t.start < last.end && compatible(last, t)) { last.end = Math.max(last.end, t.end); if (!last.country) last.country = t.country || ""; }
         else out.push({ start: t.start, end: t.end, country: t.country || "" });
       });
       trips = out;
     }
-    // Set a trip to [a, b] and let it absorb every trip it now overlaps.
+    // Set a trip to [a, b]. A trip it now shares a night with is absorbed when
+    // the countries agree; when they differ, the edited trip wins and the other
+    // is trimmed back to the shared day (or dropped if nothing of it is left).
     function place(span, a, b) {
       span.start = Math.min(a, b); span.end = Math.max(a, b);
-      trips = trips.filter(function (t) {
-        if (t === span || t.end < span.start || t.start > span.end) return true;
-        span.start = Math.min(span.start, t.start); span.end = Math.max(span.end, t.end);
-        if (!span.country) span.country = t.country || "";
-        return false;
-      });
+      var again = true;
+      while (again) {
+        again = false;
+        trips = trips.filter(function (t) {
+          if (t === span || t.end <= span.start || t.start >= span.end) return true;   // apart, or a handoff
+          if (compatible(span, t)) {
+            var grew = t.start < span.start || t.end > span.end;
+            span.start = Math.min(span.start, t.start); span.end = Math.max(span.end, t.end);
+            if (!span.country) span.country = t.country || "";
+            if (grew) again = true;
+            return false;
+          }
+          if (t.start < span.start) { t.end = span.start; return true; }
+          if (t.end > span.end) { t.start = span.end; return true; }
+          return false;
+        });
+      }
     }
 
     // Tapping, as designed with Jorick (2026-09-30):
@@ -189,10 +205,9 @@
           trips.push({ start: day, end: day, country: defaultCountry });
           return created(day);
         }
-        var i = tripAt(day);
-        var span = i >= 0 ? trips[i] : { start: day, end: day, country: defaultCountry };
-        if (i < 0) trips.push(span);
-        place(span, Math.min(span.start, from, day), Math.max(span.end, from, day));
+        var span = { start: from, end: day, country: defaultCountry };
+        trips.push(span);
+        place(span, from, day);
         return created(span.start);
       }
       var hit = tripAt(day);
@@ -243,14 +258,20 @@
     // with the mouse, a half-strength preview bar follows the pointer. The
     // selected trip is darker and carries a drag handle on each end.
     var DISC = 10; // half the width of a day circle, in px (see .cal-day::after)
-    function segment(bars, mon, t, cls) {
+    var GAP = 1.5; // half the gap between two bars meeting at a handoff, as in the app
+    // At its start a trip is handed over when another trip ends that day; at
+    // its end, when another trip starts that day.
+    function handoff(t, atStart) { return trips.some(function (o) { return o !== t && (atStart ? o.end === t.start : o.start === t.end); }); }
+    function segment(bars, mon, t, cls, real) {
       var sun = mon + 6;
       if (t.end < mon || t.start > sun) return;
       var a = Math.max(t.start, mon), z = Math.min(t.end, sun);
       var starts = a === t.start, ends = z === t.end;
-      var left = starts ? "calc(" + ((a - mon + 0.5) / 7 * 100) + "% - " + DISC + "px)" : "0px";
-      var right = ends ? "calc(" + ((z - mon + 0.5) / 7 * 100) + "% + " + DISC + "px)" : "100%";
-      var bar = el("span", { "class": "cal-bar" + cls + (starts ? " starts" : "") + (ends ? " ends" : "") });
+      var cutStart = real && starts && t.start !== t.end && handoff(t, true);
+      var cutEnd = real && ends && t.start !== t.end && handoff(t, false);
+      var left = !starts ? "0px" : "calc(" + ((a - mon + 0.5) / 7 * 100) + "% " + (cutStart ? "+ " + GAP : "- " + DISC) + "px)";
+      var right = !ends ? "100%" : "calc(" + ((z - mon + 0.5) / 7 * 100) + "% " + (cutEnd ? "- " + GAP : "+ " + DISC) + "px)";
+      var bar = el("span", { "class": "cal-bar" + cls + (starts && !cutStart ? " starts" : "") + (ends && !cutEnd ? " ends" : "") });
       bar.style.left = left;
       bar.style.width = "calc(" + right + " - " + left + ")";
       bars.appendChild(bar);
@@ -268,8 +289,8 @@
       rows.forEach(function (row) {
         var mon = +row.dataset.monday, bars = row.lastChild;
         bars.textContent = "";
-        trips.forEach(function (t, i) { segment(bars, mon, t, i === selected ? " is-selected" : ""); });
-        if (preview) segment(bars, mon, preview, " is-preview");
+        trips.forEach(function (t, i) { segment(bars, mon, t, i === selected ? " is-selected" : "", true); });
+        if (preview) segment(bars, mon, preview, " is-preview", false);
         if (selected >= 0 && trips[selected]) {
           handleAt(bars, mon, trips[selected].start, "start");
           handleAt(bars, mon, trips[selected].end, "end");
@@ -369,13 +390,15 @@
         var picked = recent.map(function (c) { return places().filter(function (p) { return p.code === c; })[0]; }).filter(Boolean);
         return picked.length ? picked : places().slice(0, 8);
       }
-      var first = [], rest = [];
+      // Best first: the name starts with what was typed, then a word in it
+      // does (or the English name or the code), then it appears anywhere.
+      var lead = [], word = [], rest = [];
       places().forEach(function (p) {
         var at = p.key.indexOf(q);
         if (at < 0) return;
-        (at === 0 || p.key.charAt(at - 1) === " " ? first : rest).push(p);
+        (at === 0 ? lead : p.key.charAt(at - 1) === " " ? word : rest).push(p);
       });
-      return first.concat(rest).slice(0, 8);
+      return lead.concat(word, rest).slice(0, 8);
     }
     function flagImg(code, size) {
       return el("img", { src: FLAGS + code.toLowerCase() + ".png", alt: "", width: String(size), height: String(Math.round(size * 0.75)), loading: "lazy" });
@@ -450,7 +473,7 @@
           selected = isSel ? -1 : idx;
           anchor = null;
           refresh();
-          if (!isSel) reveal(t.start - 7);
+          if (!isSel && finePointer) reveal(t.start - 7);
         });
         list.appendChild(card);
       });

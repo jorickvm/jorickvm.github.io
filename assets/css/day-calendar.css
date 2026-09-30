@@ -34,8 +34,7 @@ html[data-theme="light"] .daycal { --cal-disc: rgba(12, 22, 40, 0.07); }
   grid-area: cal;
   position: relative;
   height: 548px;
-  overflow-y: auto;
-  overscroll-behavior: contain;
+  overflow-y: auto; /* no overscroll containment: at either end the page scrolls on */
   border: 1px solid var(--line);
   border-radius: 16px;
   background: var(--bg-card);
@@ -293,6 +292,6 @@ html[data-theme="light"] .daycal { --cal-disc: rgba(12, 22, 40, 0.07); }
 /* On a phone: hint, result, calendar, trips, one under the other. */
 @media (max-width: 640px) {
   .daycal { grid-template-columns: minmax(0, 1fr); grid-template-areas: "hint" "result" "cal" "trips"; }
-  .cal-window { height: 56vh; }
+  .cal-window { height: min(50vh, 460px); } /* leaves page to swipe on above and below */
   .cal-country-input { font-size: 16px; } /* keeps iOS from zooming in on focus */
 }
