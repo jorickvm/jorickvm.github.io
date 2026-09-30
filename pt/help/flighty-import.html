@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Importação do Flighty – Central de ajuda do AtlasDays</title>
-  <meta name="description" content="Importe um CSV do Flighty no AtlasDays e revise as estadias, os dias em trânsito e os pernoites deduzidos dos seus voos." />
+  <meta name="description" content="Importe um CSV do Flighty no AtlasDays e revise as estadias, os dias em trânsito e as viagens noturnas deduzidos dos seus voos." />
   <meta property="og:title" content="Importação do Flighty – Central de ajuda do AtlasDays" />
-  <meta property="og:description" content="Importe um CSV do Flighty no AtlasDays e revise as estadias, os dias em trânsito e os pernoites deduzidos dos seus voos." />
+  <meta property="og:description" content="Importe um CSV do Flighty no AtlasDays e revise as estadias, os dias em trânsito e as viagens noturnas deduzidos dos seus voos." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/pt/help/flighty-import" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Importação do Flighty – Central de ajuda do AtlasDays" />
-  <meta name="twitter:description" content="Importe um CSV do Flighty no AtlasDays e revise as estadias, os dias em trânsito e os pernoites deduzidos dos seus voos." />
+  <meta name="twitter:description" content="Importe um CSV do Flighty no AtlasDays e revise as estadias, os dias em trânsito e as viagens noturnas deduzidos dos seus voos." />
   <meta name="apple-itunes-app" content="app-id=6760133544, app-argument=https://apps.apple.com/app/atlasdays-track-country-days/id6760133544" />
   <meta property="og:locale" content="pt_BR" />
   <meta property="og:image" content="https://atlasdays.app/assets/social/site-v1.png" />
@@ -68,7 +68,7 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "Importação do Flighty",
-    "description": "Importe um CSV do Flighty no AtlasDays e revise as estadias, os dias em trânsito e os pernoites deduzidos dos seus voos.",
+    "description": "Importe um CSV do Flighty no AtlasDays e revise as estadias, os dias em trânsito e as viagens noturnas deduzidos dos seus voos.",
     "author": {
       "@type": "Organization",
       "name": "AtlasDays"
@@ -78,7 +78,7 @@
       "name": "AtlasDays"
     },
     "url": "https://atlasdays.app/pt/help/flighty-import",
-    "dateModified": "2026-08-02",
+    "dateModified": "2026-09-30",
     "inLanguage": "pt"
   }
   </script>
@@ -162,46 +162,57 @@
     <nav class="breadcrumb" aria-label="Trilha de navegação"><a href="/pt/">AtlasDays</a> / <a href="/pt/help/">Central de ajuda</a></nav>
 
     <h1>Importação do Flighty</h1>
-<p class="article-answer">Exporte o seu histórico de voos do Flighty em CSV, selecione o arquivo no AtlasDays e revise as viagens propostas antes de salvar.</p>
+<p class="article-answer">Exporte o seu histórico de voos do Flighty em CSV, selecione o arquivo no AtlasDays e revise as viagens sugeridas antes de salvar. É uma das <a href="/pt/help/import-trips">formas de adicionar viagens passadas</a>.</p>
 
     <h2>Exportar do Flighty</h2>
-    <p>Exporte o seu histórico de voos do Flighty em CSV e salve o arquivo em um lugar que o seletor de arquivos do iOS alcance, como o iCloud Drive ou a pasta “No meu iPhone”.</p>
+    <p>No Flighty, abra <strong>Settings → Account Data</strong> (os nomes ficam em inglês no Flighty) e exporte seus voos em CSV. Salve o arquivo em um lugar que o seletor de arquivos do iOS alcance, como o iCloud Drive ou a pasta “No meu iPhone”.</p>
 
     <h2>Importar no AtlasDays</h2>
     <ol>
       <li>Abra <strong>Ajustes → Importar → Flighty</strong>.</li>
       <li>Toque em <strong>Selecionar CSV do Flighty</strong> e escolha o arquivo exportado.</li>
-      <li>Espere o AtlasDays montar a revisão da importação.</li>
-      <li>Revise as estadias propostas, os registros de <a href="/pt/help/history-and-import">Trânsito</a>, os casos de pernoite, as duplicadas e as sobreposições.</li>
-      <li>Salve na <a href="/pt/help/timeline-and-calendar">Linha do tempo</a> apenas as linhas que você quiser.</li>
+      <li>Revise a prévia, <strong>Encontradas no Flighty</strong>: estadias, escalas, voos noturnos, viagens incompletas, duplicadas e sobreposições sugeridas.</li>
+      <li>Use <strong>Selecionar tudo</strong> ou <strong>Desmarcar tudo</strong>, toque em qualquer item para editá-lo, depois toque em <strong>Importar</strong> e confirme.</li>
     </ol>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/pt/help/flighty-import/flighty-setup.webp" alt="Tela inicial da importação do Flighty" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <p>A leitura do arquivo acontece no dispositivo, e nada é salvo até você confirmar.</p>
 
     <h2>Como os voos viram viagens</h2>
-    <p>Os aeroportos de chegada e de partida servem de evidência para uma estadia, e as conexões podem virar Trânsito. Voos noturnos e voos muito emendados exigem bom senso, então compare a revisão da importação com a sua entrada real em cada país.</p>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/pt/help/flighty-import/flighty-review.webp" alt="Revisão da importação do Flighty com estadias, trânsito e avisos" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <p>O AtlasDays associa cada aeroporto a um país e cria uma viagem quando um voo chega a um país e um voo posterior parte dele. O restante da prévia decorre disso:</p>
+    <ul>
+      <li>As <strong>escalas</strong> de menos de 24 horas são revisadas à parte. Paradas de até 10 horas são marcadas como <a href="/pt/help/history-and-import">Trânsito</a> e ficam fora da contagem de dias. Em paradas mais longas, considera-se que você entrou no país. Para mudar isso em uma viagem, ative ou desative <strong>Trânsito</strong>.</li>
+      <li>Os <strong>voos noturnos</strong> são registrados como Espaço aéreo internacional quando você estava no ar à meia-noite.</li>
+      <li>As <strong>viagens incompletas</strong> não têm uma chegada ou uma partida, por exemplo depois de um deslocamento por terra ou de um voo que falta no Flighty. Você pode informar a data que falta no item ou deixá-lo em aberto.</li>
+      <li>As <strong>linhas ignoradas</strong> aparecem com o motivo, como um voo cancelado ou um código de aeroporto ausente.</li>
+    </ul>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/pt/help/flighty-import/flighty-review.webp" alt="Prévia da importação do Flighty com estadias, trânsito e avisos" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+
+    <div class="callout"><p><strong>Somente voos.</strong> Trens, balsas e viagens de carro não aparecem, nem os voos que faltam na exportação. Compare a prévia com onde você realmente passou seus dias antes de importar.</p></div>
+
+    <h2>Duplicadas e sobreposições</h2>
+    <p>Os itens que repetem uma viagem que já está na <a href="/pt/help/timeline-and-calendar">Linha do tempo</a> são marcados como <strong>Duplicada</strong>. <strong>Mesclar</strong> significa que um item cobre uma viagem existente e seria combinado com ela, e <strong>Sobreposição</strong> significa que as datas colidem em parte com outra viagem. Confira isso antes de importar.</p>
 
     <h2>Confira os estados dos EUA</h2>
-    <p>Quando as informações do aeroporto sustentam um estado dos EUA, o AtlasDays pode propor esse estado. Confirme o estado antes de salvar, se você depende do controle por estado.</p>
+    <p>Quando as informações do aeroporto sustentam um estado dos EUA, o AtlasDays o sugere. Com o Pro, cada estado é importado como uma viagem própria. Sem o Pro, os estados são importados como viagens comuns aos Estados Unidos. Confirme o estado antes de salvar se você depende do controle por estado.</p>
 
     <section class="if-needed">
       <h2>Se o arquivo for recusado</h2>
-      <p>Gere uma <a href="/pt/help/export-and-reports">exportação</a> CSV nova no Flighty e selecione esse arquivo original. Uma planilha que salvou de novo ou reorganizou a exportação pode não corresponder mais ao formato do Flighty.</p>
+      <p>A mensagem <em>Este arquivo não parece ser uma exportação CSV do Flighty</em> significa que o arquivo não é a exportação original do Flighty. Exporte de novo pelo Flighty e selecione esse arquivo, não um que tenha sido salvo de novo ou reorganizado em uma planilha. Os arquivos CSV do AtlasDays passam pela <a href="/pt/help/csv-import">Importação de CSV</a>. Se a prévia disser <strong>Nenhuma linha utilizável no Flighty</strong>, a exportação não continha voos que o AtlasDays pudesse usar.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-flighty-import">
       <h2 id="next-flighty-import">Continue com</h2>
       <ul>
         <li><a href="/pt/help/csv-import">
           <strong>Importação de CSV</strong>
-          <span>Importe uma planilha já preparada com o seu histórico.</span>
+          <span>O fluxo de importação que lê este formato.</span>
         </a></li>
-        <li><a href="/pt/help/photo-import">
-          <strong>Importação de fotos</strong>
-          <span>Reconstrua o histórico antigo a partir da sua fototeca.</span>
+        <li><a href="/pt/help/import-trips">
+          <strong>Importar viagens</strong>
+          <span>Escolha uma fonte de importação e revise antes de salvar.</span>
         </a></li>
-        <li><a href="/pt/help/history-and-import">
-          <strong>Como funcionam as datas das viagens</strong>
-          <span>Datas, estadias em andamento e Apenas o ano, explicados.</span>
+        <li><a href="/pt/help/csv-format-reference">
+          <strong>Referência do formato CSV</strong>
+          <span>Todas as colunas, os formatos de data e os erros compatíveis.</span>
         </a></li>
       </ul>
     </nav>
@@ -209,7 +220,7 @@
       <h2>Ainda precisa de ajuda?</h2>
       <p><a href="mailto:support@atlasdays.app">Fale com o suporte do AtlasDays</a> e informe as datas, o que você esperava e o que aconteceu.</p>
     </aside>
-    <p class="help-updated">Última atualização: 2 de agosto de 2026</p>
+    <p class="help-updated">Última atualização: 30 de setembro de 2026</p>
   </article>
   </main>
 

@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>プライバシーと許可｜AtlasDaysヘルプセンター</title>
-  <meta name="description" content="AtlasDaysが旅行のデータをどこに保存するか、写真と位置情報へのアクセス、通知、利用統計、iCloudでの保存について説明します。" />
+  <meta name="description" content="AtlasDaysが旅行データを端末に保管するしくみ、写真と位置情報へのアクセス、通知、分析、iCloudへの保存について説明します。" />
   <meta property="og:title" content="プライバシーと許可｜AtlasDaysヘルプセンター" />
-  <meta property="og:description" content="AtlasDaysが旅行のデータをどこに保存するか、写真と位置情報へのアクセス、通知、利用統計、iCloudでの保存について説明します。" />
+  <meta property="og:description" content="AtlasDaysが旅行データを端末に保管するしくみ、写真と位置情報へのアクセス、通知、分析、iCloudへの保存について説明します。" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/ja/help/privacy-location-and-sync" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="プライバシーと許可｜AtlasDaysヘルプセンター" />
-  <meta name="twitter:description" content="AtlasDaysが旅行のデータをどこに保存するか、写真と位置情報へのアクセス、通知、利用統計、iCloudでの保存について説明します。" />
+  <meta name="twitter:description" content="AtlasDaysが旅行データを端末に保管するしくみ、写真と位置情報へのアクセス、通知、分析、iCloudへの保存について説明します。" />
   <meta name="apple-itunes-app" content="app-id=6760133544, app-argument=https://apps.apple.com/app/atlasdays-track-country-days/id6760133544" />
   <meta property="og:locale" content="ja_JP" />
   <meta property="og:image" content="https://atlasdays.app/assets/social/site-v1.png" />
@@ -68,7 +68,7 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "プライバシーと許可",
-    "description": "AtlasDaysが旅行のデータをどこに保存するか、写真と位置情報へのアクセス、通知、利用統計、iCloudでの保存について説明します。",
+    "description": "AtlasDaysが旅行データを端末に保管するしくみ、写真と位置情報へのアクセス、通知、分析、iCloudへの保存について説明します。",
     "author": {
       "@type": "Organization",
       "name": "AtlasDays"
@@ -78,7 +78,7 @@
       "name": "AtlasDays"
     },
     "url": "https://atlasdays.app/ja/help/privacy-location-and-sync",
-    "dateModified": "2026-08-02",
+    "dateModified": "2026-09-30",
     "inLanguage": "ja"
   }
   </script>
@@ -162,48 +162,49 @@
     <nav class="breadcrumb" aria-label="パンくずリスト"><a href="/ja/">AtlasDays</a> / <a href="/ja/help/">ヘルプセンター</a></nav>
 
     <h1>プライバシーと許可</h1>
-<p class="article-answer">AtlasDaysは、旅行履歴をアプリのデータとして保存します。写真の解析はデバイス上で行われ、位置情報へのアクセスはオプションです。<a href="/ja/help/icloud-sync-and-restore">iCloud同期</a>をオンにすると、アプリのデータは個人用のiCloudアカウントに保存されます。</p>
+<p class="article-answer">AtlasDaysは旅行履歴を端末内に保管し、アカウントは不要です。写真は端末上でスキャンされ、位置情報へのアクセスは任意です。<a href="/ja/help/icloud-sync-and-restore">iCloud同期</a>をオンにした場合、旅行とトラッカーはご自身のプライベートなiCloudアカウントに保存されます。</p>
 
     <h2>旅行履歴</h2>
-    <p>旅行、トラッカー、メモは、いずれもアプリのデータです。iCloud同期がオフのあいだは、デバイスの中だけに残ります。オンにすると、CloudKitが対応するレコードを個人用のiCloudアカウントに保存し、お使いのデバイス間で同期します。</p>
+    <p>旅行、トラッカー、メモは、アプリのデータです。iCloud同期がオフの間は、端末内にとどまります。オンにすると、CloudKitがご自身のプライベートなiCloudアカウントに保管し、同じApple アカウントでサインインしているデバイス間で同期します。居住国や外観などの一部の設定は、iCloudのキー・バリュー・ストレージを使うため、旅行の同期がオフでも同期されることがあります。<a href="/ja/help/export-and-reports">エクスポート</a>で作成したファイル（<a href="/ja/help/backup-and-restore">AtlasDaysバックアップ</a>を含む）は端末上で作られ、ご自身が送信した先にのみ渡ります。</p>
 
     <h2>写真</h2>
-    <p><a href="/ja/help/photo-import">写真からインポート</a>は、アクセスを許可した「写真」ライブラリから、撮影日時と写真に埋め込まれた座標を読み取ります。国の判定はデバイス上で行われ、写真そのものがAtlasDaysにアップロードされることはありません。</p>
+    <p><a href="/ja/help/photo-import">写真からインポート</a>は、ライブラリにある写真とビデオの日付と埋め込まれた位置情報を読み取ります。写真へのフルアクセスが必要で、スキャンと国の判定は端末上で行われます。AtlasDaysが写真をアップロードすることはありません。</p>
+    <p>写真のスキャンから保存された旅行には、元の写真への参照と、小さなキャッシュ済みプレビューが端末内に残ります。プレビューは<strong>「設定」→「外観」→「プレビューを表示」</strong>で非表示にできます。元の写真は「写真」アプリに残ります。iOSには、追加のみの別の「写真」の許可が表示されることもあります。AtlasDaysはこれを、共有した旅のカードをフォトライブラリに保存するためだけに使います。</p>
 
     <h2>位置情報</h2>
-    <p><a href="/ja/help/auto-detect-trips">旅行の自動検出</a>が省電力の位置情報監視を使うのは、自分で明示的にオンにし、位置情報のアクセスを「常に」で許可した場合だけです。検出されると旅行が追加され、確認、編集、取り消しができます。移動経路が常時記録されることはありません。</p>
+    <p><a href="/ja/help/auto-detect-trips">旅行の自動検出</a>は、ご自身が明示的にオンにして、位置情報へのアクセスを「常に」許可した場合にのみ、省電力の位置情報監視を使います。検出されると旅行が追加されますが、確認、編集、取り消しができます。経路を常時記録することはありません。</p>
 
     <h2>通知</h2>
-    <p>通知は、オンにしている「旅行の自動検出」の検出と、<a href="/ja/help/smart-alerts">スマートアラート</a>に使われます。AtlasDaysで該当の機能をオフにするか、iOSの「設定」で通知の許可を変更できます。</p>
+    <p>通知は、オンにした自動検出のイベントと<a href="/ja/help/smart-alerts">スマートアラート</a>に使われます。AtlasDaysで関連する機能をオフにするか、iOSの設定で通知の許可を変更できます。</p>
 
-    <h2>アクセス許可を確認する、取り消す</h2>
-    <p>iOSの「設定」でAtlasDaysを開くと、「写真」「位置情報」「通知」の許可をいつでも変更できます。一覧に許可の項目が並ぶのは、AtlasDaysが一度その許可を求めたあとです。まだ開いたことのない機能は、そこにまだ表示されません。</p>
-    <figure class="help-shot help-shot-control"><img src="/assets/article-images/help/privacy-location-and-sync/privacy-permissions.webp" alt="「位置情報」「写真」などの許可が並ぶ、iOSの設定内のAtlasDaysのページ" width="1320" height="1880" loading="lazy" decoding="async" /></figure>
+    <h2>アクセスを確認・取り消す</h2>
+    <p>AtlasDaysの「写真」「位置情報」「通知」の許可は、iOSの設定でいつでも変更できます。許可はAtlasDaysが一度求めたあとで初めてそのリストに表示されるため、まだ開いたことのない機能は、リストに載っていない場合があります。</p>
+    <figure class="help-shot help-shot-control"><img src="/assets/article-images/help/privacy-location-and-sync/privacy-permissions.webp" alt="位置情報、写真などの許可が並ぶ、AtlasDaysのiOS設定ページ" width="1320" height="1880" loading="lazy" decoding="async" /></figure>
 
     <h2>利用統計</h2>
-    <p>アプリがどのように使われ、どこを改善できるかを把握するため、AtlasDaysは匿名の利用統計を欧州連合内にある独立した解析サービスに送信します。アカウントはなく、個人を特定できる情報も含まれません。</p>
-    <p>この統計に含まれるのは、アプリ内での操作、設定、デバイスとアプリの基本情報、おおよその国です。旅行の件数などの数値は、正確な数ではなく範囲で送信されます。旅行の記録、日付、メモ、写真、座標が含まれることはありません。</p>
-    <p>AtlasDaysに広告はなく、広告識別子も使用せず、トラッキングの許可も求めません。完全な内容は<a href="/ja/privacy">プライバシーポリシー</a>に記載しています。</p>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/ja/help/privacy-location-and-sync/privacy-overview.webp" alt="データと許可の状況をまとめたAtlasDaysのプライバシー画面" width="1320" height="2494" loading="lazy" decoding="async" /></figure>
+    <p>AtlasDaysは、アプリの使われ方と改善点を把握するため、欧州連合にある独立した分析事業者に、匿名の利用統計を送信します。アカウントはなく、個人を特定できる情報も含まれません。</p>
+    <p>統計の対象は、アプリ内での操作、設定、デバイスとアプリの基本情報、おおよその国です。旅行の件数などの数は、正確な数ではなく範囲として送信されます。旅行、日付、メモ、写真、座標が含まれることはありません。</p>
+    <p>AtlasDaysに広告はなく、広告識別子も使わず、トラッキングの許可も求めません。詳しくは<a href="/ja/privacy">プライバシーポリシー</a>をご覧ください。</p>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/ja/help/privacy-location-and-sync/privacy-overview.webp" alt="データと許可の概要を示すAtlasDaysのプライバシー画面" width="1320" height="2494" loading="lazy" decoding="async" /></figure>
 
     <section class="if-needed">
       <h2>機能が動かなくなったとき</h2>
-      <p>その機能が使う許可を、iOSの「設定」で確認してください。「写真からインポート」には「写真」へのアクセス、「旅行の自動検出」には「常に」の位置情報、アラートには通知が必要です。アクセスを許可し直せば、どの機能もそのまま元どおりに動作します。</p>
+      <p>その機能が必要とする許可を、iOSの設定で確認してください。写真からのインポートには「写真」へのアクセス、旅行の自動検出には位置情報の「常に」、アラートには通知が必要です。アクセスを再び許可すれば、どの機能も通常どおり動作します。</p>
     </section>
     <nav class="help-next" aria-labelledby="next-privacy-location-and-sync">
       <h2 id="next-privacy-location-and-sync">次に読む</h2>
       <ul>
-        <li><a href="/ja/help/auto-detect-trips">
-          <strong>旅行の自動検出</strong>
-          <span>確認や取り消しができる旅行を追加する、省電力の検出機能です。</span>
+        <li><a href="/ja/help/icloud-sync-and-restore">
+          <strong>iCloud同期とデータの復元</strong>
+          <span>デバイス間のリアルタイム同期のしくみ。</span>
         </a></li>
         <li><a href="/ja/help/photo-import">
           <strong>写真からインポート</strong>
-          <span>昔の履歴のための、デバイス上での写真スキャンです。</span>
+          <span>写真ライブラリから過去の旅行を見つけます。</span>
         </a></li>
-        <li><a href="/ja/help/icloud-sync-and-restore">
-          <strong>iCloud同期とデータの復元</strong>
-          <span>デバイス間で同期される内容と、復元のしくみを説明します。</span>
+        <li><a href="/ja/help/delete-and-reset">
+          <strong>データを削除する、または最初からやり直す</strong>
+          <span>旅行やトラッカーを削除する、または完全にリセットします。</span>
         </a></li>
       </ul>
     </nav>
@@ -211,7 +212,7 @@
       <h2>解決しない場合</h2>
       <p><a href="mailto:support@atlasdays.app">AtlasDaysサポートに問い合わせる</a>ときは、該当する日付、想定していた結果、実際に起きたことをお知らせください。</p>
     </aside>
-    <p class="help-updated">最終更新：2026年8月2日</p>
+    <p class="help-updated">最終更新：2026年9月30日</p>
   </article>
   </main>
 

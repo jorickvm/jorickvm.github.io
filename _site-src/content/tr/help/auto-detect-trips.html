@@ -1,27 +1,59 @@
     <nav class="breadcrumb" aria-label="İçerik yolu"><a href="/tr/">AtlasDays</a> / <a href="/tr/help/">Yardım Merkezi</a></nav>
 
     <h1>Seyahatleri otomatik algıla</h1>
-<p class="article-answer">Otomatik algılama, yeni seyahatleri fark etmek ve hemen <a href="/tr/help/timeline-and-calendar">zaman çizelgesine</a> eklemek için arka planda düşük güç tüketen konum izlemeyi kullanır. Seyahati inceleyebilir, düzenleyebilir veya geri alabilirsiniz.</p>
+<p class="article-answer">Otomatik algılama, yeni bir ülkeye girdiğinizi fark etmek için düşük güç tüketen arka plan konum izlemesini kullanır ve seyahati hemen <a href="/tr/help/timeline-and-calendar">zaman çizelgesine</a> ekler. Hiçbir şey onay beklemez; seyahati sonradan düzenleyebilir veya silebilirsiniz.</p>
 
     <h2>Otomatik algılamayı açın</h2>
     <ol>
-      <li><strong>Ayarlar → Seyahatleri otomatik algıla</strong> yolunu açın.</li>
+      <li><strong>Ayarlar → Seyahat takibi → Seyahatleri otomatik algıla</strong> yolunu açın.</li>
       <li><strong>Seyahatleri otomatik algıla</strong> seçeneğini açın.</li>
-      <li>iOS istediğinde Her Zaman konum erişimi verin. Arka plan erişimi sağlanana kadar seçenek kapalı kalır.</li>
-      <li>İsterseniz yeni ülke algılamaları için bildirimleri açın.</li>
+      <li>iOS konum için iki kez sorar. Önce Uygulamayı Kullanırken seçeneğini, ikinci istem göründüğünde ise Her Zaman seçeneğini kabul edin.</li>
+      <li>İsterseniz Bildirimler altında <strong>Yeni ülke algılamaları</strong> seçeneğini açın.</li>
     </ol>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/tr/help/auto-detect-trips/auto-detect-settings.webp" alt="Konum ve bildirim denetimlerinin bulunduğu Seyahatleri otomatik algıla ayarları" width="1320" height="1850" loading="lazy" decoding="async" /></figure>
+    <p>Algılama yalnızca Her Zaman erişimiyle çalışır. Uygulamayı Kullanırken seçeneğinde bırakırsanız anahtar kapalı kalır. Bunu zaman çizelgesi kartından açmak (aşağıya bakın), iki konum isteminden sonra bildirim iznini de sunar; Ayarlar'dan açmak sunmaz.</p>
+
+    <h2>Bir ülke algılandığında ne olur?</h2>
+    <ul>
+      <li>Seyahat, algılama tarihinde başlayacak ve siz ayrılana kadar bitiş tarihi olmayacak şekilde hemen zaman çizelgesine eklenir.</li>
+      <li>AtlasDays açıksa bir afiş, yeri <strong>Geri al</strong> düğmesiyle birlikte gösterir. Birkaç saniye sonra kaybolur ve uygulama ön plandayken anlık bildirim gösterilmez.</li>
+      <li>Uygulama kapalıysa ve bildirimler açıksa başlangıç tarihiyle birlikte <em>Algılanan yer: &lt;Yer&gt;</em> bildirimi alırsınız. Ona dokunmak zaman çizelgesini açar.</li>
+    </ul>
+    <figure class="help-shot help-shot-control"><img src="/assets/article-images/help/auto-detect-trips/detected-banner.webp" alt="Algılanan bir ülkeyi Geri al düğmesiyle duyuran uygulama içi afiş" width="1320" height="720" loading="lazy" decoding="async" /></figure>
+    <p>Bildirimin tek bir eylemi vardır: <strong>Seyahati sil</strong>. Bu eylem, az önce eklenen seyahati kaldırır. Yeri Yok sayılanlar listesine eklemez ve başlangıç tarihini zaten değiştirdiğiniz bir seyahate dokunmaz.</p>
+
+    <h2>Seyahatler biter ve transit otomatik işaretlenir</h2>
+    <ul>
+      <li><strong>Otomatik kapanma.</strong> Sonraki bir algılama bir ülkeden ayrıldığınızı gösterdiğinde, önceki açık seyahate bir bitiş tarihi verilir. AtlasDays açıksa birkaç saniyeliğine <strong>Geri al</strong> düğmeli, <strong>&lt;Ülke&gt; seyahati sona erdi</strong> (veya <strong>N seyahat sona erdi</strong>) yazan bir bildirim şeridi görünür.</li>
+      <li><strong>Transit.</strong> Diğer iki ülke arasındaki kısa bir duraklama önce normal bir seyahat olarak görünür. Sonraki algılama geldiğinde AtlasDays bunu <a href="/tr/help/history-and-import">Transit</a> olarak değiştirir, böylece gün toplamlarına sayılmaz. Bu yalnızca ona bir amaç, not veya fotoğraf eklemediyseniz olur.</li>
+    </ul>
 
     <h2>Algılanan seyahatleri inceleyin</h2>
-    <p>Yeni seyahat, AtlasDays'in belirlediği ülke ve tarihlerle zaman çizelgesinde görünür. Ülkeyi veya ABD eyaletini ve sınır tarihlerini denetlemek için seyahati açın; gerekirse düzenleyin ya da silin. Algılama bildirimi alırsanız <strong>Yok say</strong> seçeneği seyahati kaldırır. Daha sonra elle eklemeniz yine mümkündür.</p>
+    <p>Ülkeyi veya ABD eyaletini ve tarihleri kontrol etmek için seyahati zaman çizelgesinde açın. Başlangıç tarihi, konum değişikliğinin algılandığı gündür; bu yüzden kesin günün önemli olduğu yerlerde düzenleyin. ABD eyaleti algılama Pro özelliğidir; Pro olmadan bir ABD seyahati sıradan Amerika Birleşik Devletleri olarak eklenir.</p>
 
     <h2>Algılanmasını istemediğiniz yerleri yok sayın</h2>
-    <p>Sınıra sürekli yakın olmanız, ihtiyaç duymadığınız seyahatler oluşturuyorsa bu ülkeleri Yok sayılanlar listesine ekleyin. Pro kullanıcıları ABD eyaletlerini de ayrı ayrı yok sayabilir. Yok sayılan yerler elle eklenebilir.</p>
+    <p>Otomatik algılama ekranında <strong>Yok sayılanlar</strong> altında, telefonunuzun bir sınır yakınında sürekli algıladığı yerleri atlamak için <strong>Ülkeler</strong> seçeneğini seçin. Pro kullanıcıları ayrıca <strong>ABD eyaletleri</strong> seçeneğine sahiptir. Yok sayılan bir yer için seyahat oluşturulmaz ve günler çevredeki ülkeye ait kalır. Bu seyahatleri yine de kendiniz ekleyebilirsiniz.</p>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/help/auto-detect-trips/ignore-list.webp" alt="Ülkelerin seçili olduğu otomatik algılama yok sayma listesi" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
-    <h2>Otomatik algılama sürekli GPS kaydı değildir</h2>
-    <p>Özellik ayrıntılı bir rota saklamak yerine düşük güç tüketen sistem konum olaylarını kullanır. Algılama zamanı iOS'e, coğrafyaya, bağlantıya ve mevcut sınır sinyaline bağlıdır.</p>
+    <h2>Zaman çizelgesi istemleri</h2>
+    <p>Zaman çizelgesi, listenin en üstünde en fazla üç kart gösterebilir. Bir karttaki X onu kalıcı olarak gizler.</p>
+    <ul>
+      <li><strong>Seyahatleri otomatik algılayın</strong>, <strong>Otomatik algılamayı aç</strong> ve <strong>Nasıl çalışır</strong> seçeneklerini sunar. Otomatik algılama kapalıyken ve en az bir seyahatiniz varken görünür.</li>
+      <li><strong>Otomatik algılama duraklatıldı</strong>, Konum artık Her Zaman olarak ayarlı olmadığında görünür. <strong>Ayarlar'ı aç</strong> sizi sorunu gidermek için iOS Ayarlar'a götürür.</li>
+      <li><strong>Bildirim alın</strong>, bildirimler kapalıyken bu aygıtta bir seyahat eklendikten sonra görünür ve <strong>Bildirimleri aç</strong> seçeneğini sunar.</li>
+    </ul>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/help/auto-detect-trips/prompt-card.webp" alt="Otomatik algılamayı açmayı öneren zaman çizelgesi istem kartı" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <p>Bu kartlar ve diğer zaman çizelgesi denetimleri hakkında daha fazla bilgi <a href="/tr/help/timeline-tools">Zaman çizelgesinde arama, filtreleme ve özelleştirme</a> makalesindedir.</p>
+
+    <h2>Otomatik algılamayı çalışır tutun</h2>
+    <ul>
+      <li>AtlasDays'i ara sıra açın. Uzun süre kapalı kalırsa iOS konum güncellemelerini iletmeyi durdurabilir.</li>
+      <li>Uygulamayı uygulama değiştiriciden zorla kapatmayın. Bu, siz onu yeniden açana kadar izlemeyi durdurur.</li>
+      <li>AtlasDays için Konum'u Her Zaman olarak tutun. Otomatik algılama ekranındaki <strong>Daha fazla bilgi</strong> bu listeyi gösterir.</li>
+    </ul>
+    <div class="callout"><p><strong>Sürekli GPS değildir.</strong> Otomatik algılama, kayıtlı bir rotaya değil, iOS'in Önemli Konum Değişikliği olaylarına dayanır. Zamanlama iOS'e, coğrafyaya ve bağlantıya bağlıdır; bu yüzden bir sınır geçişi geç fark edilebilir.</p></div>
 
     <section class="if-needed">
-      <h2>Seyahat görünmüyorsa</h2>
-      <p>Otomatik algılamanın açık, Konum izninin Her Zaman olarak ayarlı ve yerin yok sayılmamış olduğunu denetleyin. Bildirim bekliyorsanız AtlasDays bildirimlerine de izin verildiğinden emin olun. Seyahati her zaman elle ekleyebilirsiniz.</p>
+      <h2>Hiçbir seyahat görünmüyorsa</h2>
+      <p>Otomatik algılamanın açık olduğunu, Konum'un Her Zaman olarak ayarlandığını, yerin Yok sayılanlar listesinde bulunmadığını ve uygulamanın yakın zamanda açıldığını, zorla kapatılmadığını kontrol edin. Bildirim için ayrıca <strong>Yeni ülke algılamaları</strong> seçeneğinin açık olduğunu ve iOS'in AtlasDays bildirimlerine izin verdiğini kontrol edin. Seyahati her zaman elle ekleyebilirsiniz.</p>
     </section>

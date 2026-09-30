@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Import CSV – Centre d’aide AtlasDays</title>
-  <meta name="description" content="Importez un historique de voyages CSV dans AtlasDays et vérifiez lignes valides, erreurs, doublons et chevauchements avant d’enregistrer." />
+  <meta name="description" content="Importez un historique de voyages CSV préparé et vérifiez lignes valides, erreurs, doublons et chevauchements avant d’enregistrer." />
   <meta property="og:title" content="Import CSV – Centre d’aide AtlasDays" />
-  <meta property="og:description" content="Importez un historique de voyages CSV dans AtlasDays et vérifiez lignes valides, erreurs, doublons et chevauchements avant d’enregistrer." />
+  <meta property="og:description" content="Importez un historique de voyages CSV préparé et vérifiez lignes valides, erreurs, doublons et chevauchements avant d’enregistrer." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/fr/help/csv-import" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Import CSV – Centre d’aide AtlasDays" />
-  <meta name="twitter:description" content="Importez un historique de voyages CSV dans AtlasDays et vérifiez lignes valides, erreurs, doublons et chevauchements avant d’enregistrer." />
+  <meta name="twitter:description" content="Importez un historique de voyages CSV préparé et vérifiez lignes valides, erreurs, doublons et chevauchements avant d’enregistrer." />
   <meta name="apple-itunes-app" content="app-id=6760133544, app-argument=https://apps.apple.com/app/atlasdays-track-country-days/id6760133544" />
   <meta property="og:locale" content="fr_FR" />
   <meta property="og:image" content="https://atlasdays.app/assets/social/site-v1.png" />
@@ -68,7 +68,7 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "Import CSV",
-    "description": "Importez un historique de voyages CSV dans AtlasDays et vérifiez lignes valides, erreurs, doublons et chevauchements avant d’enregistrer.",
+    "description": "Importez un historique de voyages CSV préparé et vérifiez lignes valides, erreurs, doublons et chevauchements avant d’enregistrer.",
     "author": {
       "@type": "Organization",
       "name": "AtlasDays"
@@ -78,7 +78,7 @@
       "name": "AtlasDays"
     },
     "url": "https://atlasdays.app/fr/help/csv-import",
-    "dateModified": "2026-08-02",
+    "dateModified": "2026-09-30",
     "inLanguage": "fr"
   }
   </script>
@@ -162,46 +162,55 @@
     <nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="/fr/">AtlasDays</a> / <a href="/fr/help/">Centre d’aide</a></nav>
 
     <h1>Import CSV</h1>
-<p class="article-answer">Préparez un CSV avec une ligne d’en-têtes, choisissez-le dans Réglages → Importer → Fichier CSV, puis traitez la vérification de l’import avant d’enregistrer le moindre voyage.</p>
+<p class="article-answer">Ajoutez des voyages en masse depuis un tableur enregistré au format CSV. AtlasDays valide chaque ligne, affiche une vérification et n’enregistre rien avant votre confirmation. C’est l’une des <a href="/fr/help/import-trips">façons d’ajouter d’anciens voyages</a>.</p>
 
     <h2>Importer le fichier</h2>
     <ol>
       <li>Ouvrez <strong>Réglages → Importer → Fichier CSV</strong>.</li>
-      <li>Appuyez-vous sur l’exemple ou sur la référence du format pour préparer le fichier.</li>
-      <li>Sélectionnez le CSV dans Fichiers.</li>
-      <li>Vérifiez les lignes valides, les lignes non valides, les doublons et les avertissements de chevauchement.</li>
-      <li>Importez les lignes que vous acceptez.</li>
+      <li>Préparez le fichier dans Sheets, Numbers ou Excel et exportez-le au format CSV. <strong>Exemple de CSV</strong> montre les en-têtes exacts avec des lignes d’exemple, et son bouton de partage enregistre le fichier comme point de départ.</li>
+      <li>Touchez <strong>Sélectionner un fichier CSV</strong> et choisissez le fichier dans Fichiers.</li>
+      <li>Parcourez la vérification, <strong>Voyages trouvés dans le CSV</strong>.</li>
+      <li>Touchez <strong>Importer</strong> et confirmez.</li>
     </ol>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/fr/help/csv-import/csv-setup.webp" alt="Écran de configuration de l’import CSV avec les commandes de fichier d’exemple" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/fr/help/csv-import/csv-setup.webp" alt="Configuration de l’import CSV et commandes du fichier d’exemple" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <p><strong>Créer un CSV avec l’IA</strong> copie une consigne prête à l’emploi pour ChatGPT, Claude ou un autre assistant. Collez-y vos notes de voyage à la suite et enregistrez la réponse au format CSV. Ces outils traitent votre texte selon leur propre politique de confidentialité : ne collez rien que vous ne colleriez pas ailleurs.</p>
 
-    <h2>Corrigez les erreurs dans le fichier source</h2>
-    <p>La vérification de l’import indique le numéro de ligne et la raison quand elle ne peut pas reconnaître un pays, un État, une date ou un en-tête requis. Corrigez cette ligne dans le CSV, puis importez de nouveau le fichier.</p>
-
-    <h2>Les avertissements sont des invitations à vérifier</h2>
-    <p>Un doublon peut répéter un voyage déjà présent dans la <a href="/fr/help/timeline-and-calendar">chronologie</a>. Un chevauchement peut être légitime ou représenter deux versions du même séjour. Contrôlez les dates et les lieux au lieu d’accepter toutes les lignes automatiquement.</p>
+    <h2>Lire la vérification</h2>
+    <p>La vérification liste les lignes valides et affiche des compteurs sur lesquels vous pouvez toucher pour filtrer. Utilisez <strong>Tout sélectionner</strong> ou <strong>Tout désélectionner</strong> pour choisir ce qui sera importé.</p>
+    <ul>
+      <li><strong>Doublon :</strong> la ligne se situe à l’intérieur d’un voyage que vous avez déjà, ou répète une ligne précédente. Elle est ignorée.</li>
+      <li><strong>Fusionner :</strong> la ligne couvre un voyage que vous avez déjà dans le même pays. À l’import, ce voyage est élargi pour inclure les dates de la ligne, et les notes et les motifs sont combinés. <strong>Candidats à la fusion dans le fichier</strong> désigne les lignes du fichier qui se rejoignent entre elles.</li>
+      <li><strong>Chevauchement :</strong> la ligne chevauche en partie un autre voyage. Il peut s’agir d’un véritable second séjour ou d’une seconde version du même, alors comparez les dates avant de la conserver.</li>
+      <li><strong>Transits</strong> et <strong>États américains</strong> comptent les lignes de ces types. Sans Pro, les lignes d’État sont importées comme de simples voyages aux États-Unis.</li>
+    </ul>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/fr/help/csv-import/csv-review.webp" alt="Vérification de l’import CSV avec lignes valides, non valides, doublons et chevauchements" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
-    <h2>Seul l’enregistrement modifie votre chronologie</h2>
-    <p>Sélectionner un fichier et consulter la vérification de l’import n’ajoute aucun voyage. AtlasDays n’écrit les lignes acceptées qu’après l’action d’import finale.</p>
+    <h2>Corriger les erreurs dans le fichier source</h2>
+    <p>Les lignes qu’AtlasDays ne peut pas lire apparaissent sous <strong>N lignes avec erreurs</strong>, avec le numéro de ligne et la raison. Les lignes non valides ne sont jamais importées. Corrigez-les dans le tableur, exportez de nouveau, puis sélectionnez de nouveau le fichier.</p>
+
+    <div class="callout"><p><strong>Rien ne change avant Importer.</strong> Sélectionner un fichier et consulter la vérification n’ajoute aucun voyage.</p></div>
+
+    <h2>Réimporter un export</h2>
+    <p>Un <a href="/fr/help/export-and-reports">export</a> Feuille de calcul enregistré au format CSV peut être réimporté, à condition d’avoir été exporté en anglais : les en-têtes de colonnes ne sont lus qu’en anglais. Pour une copie complète des voyages, des suivis et des réglages, utilisez plutôt une <a href="/fr/help/backup-and-restore">sauvegarde</a>.</p>
 
     <section class="if-needed">
       <h2>Si toutes les lignes sont non valides</h2>
-      <p>Confirmez que la première ligne contient un en-tête <strong>Country</strong> et vérifiez le format exact des dates. Consultez la <a href="/fr/help/csv-format-reference">référence du format CSV</a> pour les colonnes prises en charge et des exemples.</p>
+      <p>Vérifiez que la première ligne est une ligne d’en-têtes et contient <strong>Country</strong>, et que les dates utilisent <code>yyyy-mm-dd</code> ou une année à quatre chiffres. La <a href="/fr/help/csv-format-reference">Référence du format CSV</a> liste les colonnes et les valeurs prises en charge, ainsi que chaque message d’erreur.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-csv-import">
       <h2 id="next-csv-import">Continuer avec</h2>
       <ul>
         <li><a href="/fr/help/csv-format-reference">
           <strong>Référence du format CSV</strong>
-          <span>Consultez les colonnes prises en charge, les dates et des exemples.</span>
+          <span>Chaque colonne, format de date et message d’erreur pris en charge.</span>
         </a></li>
-        <li><a href="/fr/help/history-and-import">
-          <strong>Comment fonctionnent les dates de voyage</strong>
-          <span>Comment les enregistrements importés portent leurs dates.</span>
+        <li><a href="/fr/help/import-trips">
+          <strong>Importer des voyages</strong>
+          <span>Choisissez une source d’import et vérifiez avant d’enregistrer.</span>
         </a></li>
-        <li><a href="/fr/help/export-and-reports">
-          <strong>Exports et rapports</strong>
-          <span>Exportez votre historique en feuille de calcul ou en PDF.</span>
+        <li><a href="/fr/help/backup-and-restore">
+          <strong>Sauvegarde et restauration</strong>
+          <span>Conservez une copie de vos voyages, suivis et réglages.</span>
         </a></li>
       </ul>
     </nav>
@@ -209,7 +218,7 @@
       <h2>Besoin d’aide supplémentaire ?</h2>
       <p><a href="mailto:support@atlasdays.app">Contactez l’assistance AtlasDays</a> en précisant les dates concernées, ce que vous attendiez et ce qui s’est produit.</p>
     </aside>
-    <p class="help-updated">Dernière mise à jour le 2 août 2026</p>
+    <p class="help-updated">Dernière mise à jour le 30 septembre 2026</p>
   </article>
   </main>
 

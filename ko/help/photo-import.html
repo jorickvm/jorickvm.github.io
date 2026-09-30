@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>사진 가져오기 – AtlasDays 도움말 센터</title>
-  <meta name="description" content="기기의 사진 위치 정보를 검사해 지난 여행을 복원하는 방법. 검사 시작, 제안 확인, 중복과 겹침 경고 처리, 사진이 비는 구간을 다루는 요령까지 설명합니다." />
+  <meta name="description" content="사진의 위치 정보로 AtlasDays 여행을 제안받고, 저장하기 전에 날짜, 국가, 중복, 겹침을 확인합니다." />
   <meta property="og:title" content="사진 가져오기 – AtlasDays 도움말 센터" />
-  <meta property="og:description" content="기기의 사진 위치 정보를 검사해 지난 여행을 복원하는 방법. 검사 시작, 제안 확인, 중복과 겹침 경고 처리, 사진이 비는 구간을 다루는 요령까지 설명합니다." />
+  <meta property="og:description" content="사진의 위치 정보로 AtlasDays 여행을 제안받고, 저장하기 전에 날짜, 국가, 중복, 겹침을 확인합니다." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/ko/help/photo-import" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="사진 가져오기 – AtlasDays 도움말 센터" />
-  <meta name="twitter:description" content="기기의 사진 위치 정보를 검사해 지난 여행을 복원하는 방법. 검사 시작, 제안 확인, 중복과 겹침 경고 처리, 사진이 비는 구간을 다루는 요령까지 설명합니다." />
+  <meta name="twitter:description" content="사진의 위치 정보로 AtlasDays 여행을 제안받고, 저장하기 전에 날짜, 국가, 중복, 겹침을 확인합니다." />
   <meta name="apple-itunes-app" content="app-id=6760133544, app-argument=https://apps.apple.com/app/atlasdays-track-country-days/id6760133544" />
   <meta property="og:locale" content="ko_KR" />
   <meta property="og:image" content="https://atlasdays.app/assets/social/site-v1.png" />
@@ -68,7 +68,7 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "사진 가져오기",
-    "description": "기기의 사진 위치 정보를 검사해 지난 여행을 복원하는 방법. 검사 시작, 제안 확인, 중복과 겹침 경고 처리, 사진이 비는 구간을 다루는 요령까지 설명합니다.",
+    "description": "사진의 위치 정보로 AtlasDays 여행을 제안받고, 저장하기 전에 날짜, 국가, 중복, 겹침을 확인합니다.",
     "author": {
       "@type": "Organization",
       "name": "AtlasDays"
@@ -78,7 +78,7 @@
       "name": "AtlasDays"
     },
     "url": "https://atlasdays.app/ko/help/photo-import",
-    "dateModified": "2026-08-02",
+    "dateModified": "2026-09-30",
     "inLanguage": "ko"
   }
   </script>
@@ -162,46 +162,55 @@
     <nav class="breadcrumb" aria-label="탐색 경로"><a href="/ko/">AtlasDays</a> / <a href="/ko/help/">도움말 센터</a></nav>
 
     <h1>사진 가져오기</h1>
-<p class="article-answer">사진 가져오기는 기기에 있는 사진 보관함의 위치 정보를 검사해 근거를 여행 제안으로 묶고, 저장하기 전에 전부 확인할 수 있게 합니다.</p>
+<p class="article-answer">사진 가져오기는 기기에 있는 사진 보관함의 날짜와 위치 정보를 검사해 여행 제안으로 묶으며, 확인하고 확정하기 전에는 아무것도 저장하지 않습니다. 지난 여행을 추가하는 <a href="/ko/help/import-trips">방법</a> 중 하나입니다.</p>
 
     <h2>사진 가져오기 시작</h2>
     <ol>
       <li><strong>설정 → 가져오기 → 사진</strong>을 여십시오.</li>
-      <li>사진 접근 권한을 요청하면 허용하십시오.</li>
-      <li>검사를 시작하고, 사진 보관함을 살펴보는 동안 AtlasDays를 열어 두십시오.</li>
-      <li>저장하기 전에 제안된 여행을 확인하십시오.</li>
+      <li><strong>사진에서 여행 찾기</strong>를 탭하십시오.</li>
+      <li>iOS에서 권한을 요청하면 <strong>전체 접근</strong>을 선택하십시오. '제한된 접근'으로는 여행을 추정할 수 없습니다.</li>
+      <li>검사하는 동안 AtlasDays를 열어 두었다가 <strong>여행 N건 확인</strong>을 탭하십시오.</li>
     </ol>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/ko/help/photo-import/photo-setup.webp" alt="사진 가져오기 설정 화면" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
     <h2>AtlasDays가 살펴보는 정보</h2>
-    <p>AtlasDays는 사진의 촬영 시각과, 사진에 들어 있는 위치 좌표가 있을 때 그 좌표를 사용합니다. 검사와 국가 판별은 모두 기기에서 이루어지며, 사진 자체가 AtlasDays로 업로드되지는 않습니다.</p>
+    <p>AtlasDays는 사진과 동영상의 촬영 시각과 위치를 읽으며, 항상 보관함 전체를 검사합니다. 스크린샷과 화면 기록은 건너뜁니다. 검사와 국가 판별은 기기에서 이루어지고 오프라인에서도 작동하며, AtlasDays로 업로드되는 것은 없습니다. 저장된 여행에는 사진에 대한 로컬 참조와 작은 캐시 미리보기가 남고, 원본은 사진 앱에 그대로 있습니다.</p>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/ko/help/photo-import/photo-scan.webp" alt="진행 중인 사진 가져오기 검사" width="1320" height="2100" loading="lazy" decoding="async" /></figure>
 
     <h2>모든 제안 확인</h2>
-    <p>국가 또는 미국 주, 시작일과 종료일, 그리고 중복이나 겹침 경고가 있는지 살펴보십시오. 사진의 위치는 근거일 뿐, 국경을 넘은 정확한 시점을 증명하지는 않습니다.</p>
+    <p>확인 화면인 <strong>사진에서 찾은 여행</strong>에는 제안된 여행이 나열됩니다. 요약 행에는 중복, 병합 후보, 겹침, 환승 가능성이 있는 항목의 수가 표시되며, Pro에서는 미국 주의 수도 표시됩니다. 각 여행에는 <strong>중복</strong>, <strong>병합</strong>, <strong>기존 여행과 겹침</strong>, <strong>공백 기간 추정</strong>, <strong>국경 인근</strong>, <strong>사진 1장</strong> 같은 표시가 붙을 수 있습니다.</p>
+    <ul>
+      <li>여행을 탭하면 국가나 날짜를 바꾸거나 제외할 수 있습니다. 목록 전체에는 <strong>모두 선택</strong> 또는 <strong>모두 선택 해제</strong>를 사용하십시오.</li>
+      <li>여행은 한 국가에서 찍은 첫 사진의 날짜에 시작해 마지막 사진의 날짜에 끝나므로, 날짜는 추정치입니다. 메시지나 웹에서 저장한 사진 때문에 가 본 적 없는 국가가 추가될 수 있습니다.</li>
+      <li>미국 주는 Pro에서 별도의 여행으로 제안됩니다. Pro가 없으면 일반 미국 여행으로 가져옵니다.</li>
+      <li>거주국이 설정되어 있지 않으면 한 행에서 거주국을 확인할 수 있으며, 그래야 해외 체류 일수를 셀 수 있습니다.</li>
+    </ul>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/ko/help/photo-import/photo-review.webp" alt="제안된 여행과 경고가 표시된 사진 가져오기 확인 화면" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <p><strong>가져오기</strong>를 탭한 다음 확정하면 선택한 여행이 <a href="/ko/help/timeline-and-calendar">타임라인</a>에 저장됩니다. 확인 화면의 <strong>자세히 알아보기</strong>를 탭하면 <strong>여행 추정 방식</strong>이 열립니다.</p>
 
-    <h2>기록이 비는 구간 처리</h2>
-    <p>위치 정보가 없는 사진은 제안의 근거가 되지 못합니다. 위치 정보가 있는 사진 사이의 간격이 길면 직접 고쳐야 하는 경계 날짜가 만들어질 수도 있습니다. 더 나은 근거가 생기면 <a href="/ko/help/timeline-and-calendar">타임라인</a>에서 저장된 여행을 편집하십시오.</p>
+    <div class="callout"><p><strong>사진은 근거일 뿐, 증명은 아닙니다.</strong> 가까운 두 여행 사이의 짧은 체류는 환승으로 표시될 수 있으며, 환승은 일수 합계에 포함되지 않습니다. 그 나라에서 실제로 시간을 보낸 체류라면 환승을 끄십시오.</p></div>
+
+    <h2>공백은 보수적으로 처리</h2>
+    <p>위치 정보가 없는 사진은 제안의 근거가 되지 못하며, 위치 정보가 있는 사진 사이의 간격이 길면 직접 고쳐야 하는 경계 날짜가 만들어질 수 있습니다. 더 나은 근거가 생기면 타임라인에서 저장된 여행을 편집하십시오. 이미 있는 여행에 사진을 연결하려면 대신 타임라인 메뉴의 <strong>사진 찾기</strong>를 사용하십시오. <a href="/ko/help/timeline-tools">타임라인 도구</a>를 참고하십시오.</p>
 
     <section class="if-needed">
       <h2>여행을 하나도 찾지 못한 경우</h2>
-      <p>AtlasDays가 원하는 사진에 접근할 수 있는지 확인하고, 그 사진을 찍을 때 위치 정보가 켜져 있었는지도 확인하십시오.</p>
+      <p><strong>사진 접근 권한 필요</strong>가 나타나면 iOS 설정을 열어 AtlasDays에 사진 전체 접근을 허용하십시오. 검사가 <strong>사진에서 여행을 찾지 못했습니다</strong>로 끝났다면 사진을 찍을 때 위치 정보가 켜져 있었는지 확인하십시오. 이미 타임라인에 있는 여행은 다시 제안되지 않고 중복으로 표시됩니다.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-photo-import">
       <h2 id="next-photo-import">이어서 읽기</h2>
       <ul>
         <li><a href="/ko/help/flighty-import">
           <strong>Flighty 가져오기</strong>
-          <span>Flighty의 항공편 기록을 여행으로 바꿉니다.</span>
+          <span>대신 Flighty의 항공편 기록을 가져옵니다.</span>
         </a></li>
         <li><a href="/ko/help/auto-detect-trips">
           <strong>여행 자동 감지</strong>
-          <span>새로운 이동이 자동으로 추가되게 합니다.</span>
+          <span>새 여행이 자동으로 추가되게 합니다.</span>
         </a></li>
-        <li><a href="/ko/help/privacy-location-and-sync">
-          <strong>개인정보 보호 및 권한</strong>
-          <span>AtlasDays가 무엇을 볼 수 있고 무엇이 기기를 떠나지 않는지 설명합니다.</span>
+        <li><a href="/ko/help/csv-import">
+          <strong>CSV 가져오기</strong>
+          <span>이 형식을 읽어 들이는 가져오기 절차입니다.</span>
         </a></li>
       </ul>
     </nav>
@@ -209,7 +218,7 @@
       <h2>해결되지 않은 경우</h2>
       <p><a href="mailto:support@atlasdays.app">AtlasDays 지원팀에 문의</a>할 때 해당 날짜, 예상한 결과, 실제로 일어난 상황을 함께 알려 주십시오.</p>
     </aside>
-    <p class="help-updated">최종 업데이트: 2026년 8월 2일</p>
+    <p class="help-updated">최종 업데이트: 2026년 9월 30일</p>
   </article>
   </main>
 

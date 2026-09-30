@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Confidentialité et autorisations – Centre d’aide AtlasDays</title>
-  <meta name="description" content="Ce qu’AtlasDays garde sur l’appareil, ce que change la synchronisation iCloud et comment gérer les autorisations Photos, Localisation et Notifications." />
+  <meta name="description" content="Comprenez les données de voyage locales d’AtlasDays, l’accès à Photos et à la localisation, les notifications, les statistiques et le stockage iCloud." />
   <meta property="og:title" content="Confidentialité et autorisations – Centre d’aide AtlasDays" />
-  <meta property="og:description" content="Ce qu’AtlasDays garde sur l’appareil, ce que change la synchronisation iCloud et comment gérer les autorisations Photos, Localisation et Notifications." />
+  <meta property="og:description" content="Comprenez les données de voyage locales d’AtlasDays, l’accès à Photos et à la localisation, les notifications, les statistiques et le stockage iCloud." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/fr/help/privacy-location-and-sync" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Confidentialité et autorisations – Centre d’aide AtlasDays" />
-  <meta name="twitter:description" content="Ce qu’AtlasDays garde sur l’appareil, ce que change la synchronisation iCloud et comment gérer les autorisations Photos, Localisation et Notifications." />
+  <meta name="twitter:description" content="Comprenez les données de voyage locales d’AtlasDays, l’accès à Photos et à la localisation, les notifications, les statistiques et le stockage iCloud." />
   <meta name="apple-itunes-app" content="app-id=6760133544, app-argument=https://apps.apple.com/app/atlasdays-track-country-days/id6760133544" />
   <meta property="og:locale" content="fr_FR" />
   <meta property="og:image" content="https://atlasdays.app/assets/social/site-v1.png" />
@@ -68,7 +68,7 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "Confidentialité et autorisations",
-    "description": "Ce qu’AtlasDays garde sur l’appareil, ce que change la synchronisation iCloud et comment gérer les autorisations Photos, Localisation et Notifications.",
+    "description": "Comprenez les données de voyage locales d’AtlasDays, l’accès à Photos et à la localisation, les notifications, les statistiques et le stockage iCloud.",
     "author": {
       "@type": "Organization",
       "name": "AtlasDays"
@@ -78,7 +78,7 @@
       "name": "AtlasDays"
     },
     "url": "https://atlasdays.app/fr/help/privacy-location-and-sync",
-    "dateModified": "2026-08-02",
+    "dateModified": "2026-09-30",
     "inLanguage": "fr"
   }
   </script>
@@ -162,16 +162,17 @@
     <nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="/fr/">AtlasDays</a> / <a href="/fr/help/">Centre d’aide</a></nav>
 
     <h1>Confidentialité et autorisations</h1>
-<p class="article-answer">AtlasDays conserve l’historique de voyages dans les données de l’app. Les photos sont analysées sur l’appareil, l’accès à la localisation est facultatif, et la <a href="/fr/help/icloud-sync-and-restore">synchronisation iCloud</a>, si vous l’activez, stocke les données de l’app dans votre compte iCloud privé.</p>
+<p class="article-answer">AtlasDays conserve votre historique de voyages sur votre appareil et n’exige aucun compte. Les photos sont analysées sur l’appareil, l’accès à la localisation est facultatif, et la <a href="/fr/help/icloud-sync-and-restore">synchronisation iCloud</a>, quand elle est activée, stocke les voyages et les suivis dans votre propre compte iCloud privé.</p>
 
     <h2>Historique de voyages</h2>
-    <p>Vos voyages, vos suivis et vos notes sont des données de l’app. Quand la synchronisation iCloud est désactivée, ils restent sur l’appareil. Quand elle est activée, CloudKit conserve les enregistrements pris en charge dans votre compte iCloud privé et les synchronise entre vos appareils.</p>
+    <p>Vos voyages, vos suivis et vos notes sont des données de l’app. Quand la synchronisation iCloud est désactivée, ils restent sur l’appareil. Quand elle est activée, CloudKit les conserve dans votre compte iCloud privé et les synchronise entre les appareils connectés au même compte Apple. Certaines préférences, comme le pays de résidence et l’apparence, utilisent le stockage clé-valeur d’iCloud et peuvent se synchroniser même quand la synchronisation des voyages est désactivée. Les fichiers que vous créez avec l’<a href="/fr/help/export-and-reports">export</a>, y compris une <a href="/fr/help/backup-and-restore">Sauvegarde AtlasDays</a>, sont créés sur l’appareil et ne vont que là où vous les envoyez.</p>
 
     <h2>Photos</h2>
-    <p><a href="/fr/help/photo-import">Import Photos</a> lit les horodatages et les coordonnées intégrées dans la photothèque que vous autorisez. L’identification du pays se fait sur l’appareil ; AtlasDays ne téléverse pas les photos elles-mêmes.</p>
+    <p>L’<a href="/fr/help/photo-import">import de photos</a> lit les dates et les localisations intégrées des photos et des vidéos de votre photothèque. Il exige l’accès complet aux photos, et l’analyse ainsi que l’identification du pays se font sur l’appareil. AtlasDays ne téléverse pas vos photos.</p>
+    <p>Les voyages enregistrés à partir d’une analyse de photos conservent des références vers les photos d’origine et de petits aperçus en cache sur l’appareil, que <strong>Réglages → Apparence → Afficher les aperçus</strong> permet de masquer. Les originaux restent dans Photos. iOS peut aussi afficher une autorisation Photos distincte, en ajout uniquement, qu’AtlasDays utilise seulement pour enregistrer dans votre photothèque les cartes de voyage que vous partagez.</p>
 
     <h2>Localisation</h2>
-    <p>La <a href="/fr/help/auto-detect-trips">détection automatique des voyages</a> n’utilise une surveillance de localisation à faible consommation que si vous l’activez explicitement et accordez l’accès à la localisation « Toujours ». Une détection ajoute un voyage que vous pouvez vérifier, modifier ou annuler ; elle n’enregistre pas votre itinéraire en continu.</p>
+    <p>La <a href="/fr/help/auto-detect-trips">détection automatique des voyages</a> n’utilise une surveillance de localisation à faible consommation que si vous l’activez explicitement et accordez l’accès à la localisation Toujours. Une détection ajoute un voyage que vous pouvez vérifier, modifier ou annuler ; elle n’enregistre pas votre itinéraire en continu.</p>
 
     <h2>Notifications</h2>
     <p>Les notifications servent aux événements de détection automatique que vous avez activés et aux <a href="/fr/help/smart-alerts">alertes intelligentes</a>. Vous pouvez désactiver la fonctionnalité concernée dans AtlasDays ou modifier l’autorisation de notifications dans les Réglages iOS.</p>
@@ -184,26 +185,26 @@
     <p>AtlasDays envoie des statistiques d’utilisation anonymes à un prestataire d’analyse indépendant situé dans l’Union européenne, afin de voir comment l’app est utilisée et ce qui peut être amélioré. Il n’y a pas de compte, et rien qui vous identifie personnellement.</p>
     <p>Ces statistiques couvrent les actions effectuées dans l’app, vos réglages, des informations de base sur l’appareil et l’app, ainsi que votre pays approximatif. Les quantités, comme le nombre de voyages que vous avez, sont transmises sous forme de fourchettes plutôt que de chiffres exacts. Elles n’incluent jamais vos voyages, vos dates, vos notes, vos photos ni vos coordonnées.</p>
     <p>AtlasDays n’affiche aucune publicité, n’utilise aucun identifiant publicitaire et ne demande aucune autorisation de suivi publicitaire. La <a href="/fr/privacy">Politique de confidentialité</a> est la déclaration complète.</p>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/fr/help/privacy-location-and-sync/privacy-overview.webp" alt="Vue d’ensemble de la confidentialité dans AtlasDays résumant les données et les autorisations" width="1320" height="2494" loading="lazy" decoding="async" /></figure>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/fr/help/privacy-location-and-sync/privacy-overview.webp" alt="Vue d’ensemble de la confidentialité dans AtlasDays résumant les données et les autorisations" width="1320" height="2562" loading="lazy" decoding="async" /></figure>
 
     <section class="if-needed">
       <h2>Si une fonctionnalité cesse de fonctionner</h2>
-      <p>Vérifiez dans les Réglages iOS l’autorisation dont elle dépend. Import Photos a besoin de l’accès à Photos, la détection automatique a besoin d’un accès à la position réglé sur « Toujours », et les alertes ont besoin des notifications. Chacune refonctionne normalement dès que l’accès est de nouveau autorisé.</p>
+      <p>Vérifiez dans les Réglages iOS l’autorisation dont elle dépend. L’import de photos a besoin de l’accès à Photos, la détection automatique a besoin d’un accès à la localisation réglé sur Toujours, et les alertes ont besoin des notifications. Chacune refonctionne normalement dès que l’accès est de nouveau autorisé.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-privacy-location-and-sync">
       <h2 id="next-privacy-location-and-sync">Continuer avec</h2>
       <ul>
-        <li><a href="/fr/help/auto-detect-trips">
-          <strong>Détection automatique des voyages</strong>
-          <span>Une détection basse consommation qui ajoute des voyages que vous pouvez vérifier ou annuler.</span>
+        <li><a href="/fr/help/icloud-sync-and-restore">
+          <strong>Synchronisation iCloud et restauration</strong>
+          <span>Comment la synchronisation en direct fonctionne entre vos appareils.</span>
         </a></li>
         <li><a href="/fr/help/photo-import">
           <strong>Import de photos</strong>
-          <span>Analyse des photos sur l’appareil pour reconstituer l’historique plus ancien.</span>
+          <span>Retrouvez d’anciens voyages dans votre photothèque.</span>
         </a></li>
-        <li><a href="/fr/help/icloud-sync-and-restore">
-          <strong>Synchronisation iCloud et restauration</strong>
-          <span>Ce qui se synchronise entre les appareils, et comment fonctionne la restauration.</span>
+        <li><a href="/fr/help/delete-and-reset">
+          <strong>Supprimer des données ou repartir de zéro</strong>
+          <span>Supprimez des voyages ou des suivis, ou réinitialisez tout.</span>
         </a></li>
       </ul>
     </nav>
@@ -211,7 +212,7 @@
       <h2>Besoin d’aide supplémentaire ?</h2>
       <p><a href="mailto:support@atlasdays.app">Contactez l’assistance AtlasDays</a> en précisant les dates concernées, ce que vous attendiez et ce qui s’est produit.</p>
     </aside>
-    <p class="help-updated">Dernière mise à jour le 2 août 2026</p>
+    <p class="help-updated">Dernière mise à jour le 30 septembre 2026</p>
   </article>
   </main>
 

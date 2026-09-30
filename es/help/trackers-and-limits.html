@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cómo se calculan los totales de un control – Centro de ayuda de AtlasDays</title>
-  <meta name="description" content="Entiende cómo combina un control de AtlasDays los lugares seleccionados, los días exactos de viaje, el tipo de ventana y el límite." />
+  <meta name="description" content="Entiende cómo un control de AtlasDays combina los lugares elegidos, los días exactos de viaje, el tipo de ventana y el límite." />
   <meta property="og:title" content="Cómo se calculan los totales de un control – Centro de ayuda de AtlasDays" />
-  <meta property="og:description" content="Entiende cómo combina un control de AtlasDays los lugares seleccionados, los días exactos de viaje, el tipo de ventana y el límite." />
+  <meta property="og:description" content="Entiende cómo un control de AtlasDays combina los lugares elegidos, los días exactos de viaje, el tipo de ventana y el límite." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/es/help/trackers-and-limits" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Cómo se calculan los totales de un control – Centro de ayuda de AtlasDays" />
-  <meta name="twitter:description" content="Entiende cómo combina un control de AtlasDays los lugares seleccionados, los días exactos de viaje, el tipo de ventana y el límite." />
+  <meta name="twitter:description" content="Entiende cómo un control de AtlasDays combina los lugares elegidos, los días exactos de viaje, el tipo de ventana y el límite." />
   <meta name="apple-itunes-app" content="app-id=6760133544, app-argument=https://apps.apple.com/app/atlasdays-track-country-days/id6760133544" />
   <meta property="og:locale" content="es_ES" />
   <meta property="og:image" content="https://atlasdays.app/assets/social/site-v1.png" />
@@ -68,7 +68,7 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "Cómo se calculan los totales de un control",
-    "description": "Entiende cómo combina un control de AtlasDays los lugares seleccionados, los días exactos de viaje, el tipo de ventana y el límite.",
+    "description": "Entiende cómo un control de AtlasDays combina los lugares elegidos, los días exactos de viaje, el tipo de ventana y el límite.",
     "author": {
       "@type": "Organization",
       "name": "AtlasDays"
@@ -78,7 +78,7 @@
       "name": "AtlasDays"
     },
     "url": "https://atlasdays.app/es/help/trackers-and-limits",
-    "dateModified": "2026-08-13",
+    "dateModified": "2026-09-30",
     "inLanguage": "es"
   }
   </script>
@@ -162,49 +162,60 @@
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/es/">AtlasDays</a> / <a href="/es/help/">Centro de ayuda</a></nav>
 
     <h1>Cómo se calculan los totales de un control</h1>
-<p class="article-answer">Un control selecciona los <a href="/es/help/history-and-import">días de viaje</a> que cumplen la regla en los lugares configurados, elimina los días naturales duplicados y aplica su ventana temporal guardada.</p>
+<p class="article-answer">Un control selecciona los <a href="/es/help/history-and-import">viajes con fechas</a> de sus lugares, fusiona los días naturales solapados y los cuenta dentro de su ventana. El resultado se compara con el límite que hayas definido.</p>
 
-    <h2>El resultado depende de cuatro ajustes</h2>
+    <h2>Cinco ajustes determinan el resultado</h2>
     <ol>
       <li><strong>Lugares:</strong> solo cuentan los viajes a los países o estados de EE. UU. seleccionados.</li>
-      <li><strong>Ventana:</strong> los controles de ventana móvil, de año y por entrada examinan intervalos de fechas distintos.</li>
-      <li><strong>Límite:</strong> el umbral determina el progreso y el estado del control.</li>
-      <li><strong>Precisión del viaje:</strong> los viajes con fechas pueden contar; los de Solo año y Tránsito aportan cero días.</li>
+      <li><strong>Unidad:</strong> la fila <strong>Límite</strong> cuenta <strong>Días</strong>, <strong>Noches</strong> o días <strong>Fuera</strong>.</li>
+      <li><strong>Ventana:</strong> los controles <strong>Móvil</strong>, <strong>Año</strong> y <strong>Por entrada</strong> examinan intervalos de fechas distintos.</li>
+      <li><strong>Límite:</strong> el umbral que determina el progreso y el estado del control. Con el objetivo <strong>Alcanzar objetivo</strong> es un <strong>Objetivo</strong>.</li>
+      <li><strong>Precisión del viaje:</strong> cuentan los viajes con fechas exactas. Los viajes de Solo año y de Tránsito aportan cero días.</li>
     </ol>
 
+    <h2>Días y noches</h2>
+    <p>La unidad <strong>Días</strong> cuenta enteros el día de llegada y el de salida, así que una estancia del 1 al 3 de junio son tres días. La unidad <strong>Noches</strong> cuenta las noches entre la llegada y la salida, así que la misma estancia son dos. Las noches no unen estancias consecutivas: la noche entre el día de salida de un viaje y el día de llegada del siguiente no cuenta para ninguno, ni siquiera en el mismo país.</p>
+
+    <h2>Los días solapados cuentan una vez</h2>
+    <p>Los controles móviles, por año y de días fuera fusionan los viajes que cubren el mismo día natural, así que un solapamiento en tu <a href="/es/help/timeline-and-calendar">Cronología</a> no cuenta dos veces. Un control Por entrada no fusiona ningún viaje, como se explica más abajo.</p>
+
     <h2>Las ventanas móviles se mueven cada día</h2>
-    <p>Un control de ventana móvil mira hacia atrás desde la fecha de referencia seleccionada. Los días antiguos salen de la ventana mientras entran días de viaje más recientes, así que el total puede cambiar aunque no edites ningún viaje.</p>
+    <p>Un control móvil siempre termina hoy. Su <strong>Duración</strong> es un número fijo de días, o un número de meses naturales contados hacia atrás desde hoy. Los días antiguos salen de la ventana mientras entran días de viaje más recientes, así que el total puede cambiar sin que edites ningún viaje.</p>
 
-    <h2>Los controles por año se reinician cada año</h2>
-    <p>Estos controles cuentan los días que cumplen la regla a lo largo del año seleccionado, a partir de la fecha indicada en la fila Empieza del control. Si empieza el 1 de enero, es un año natural que llega hasta el 31 de diciembre; cualquier otra fecha de inicio lo convierte en un año fiscal. Cambiar de año cambia los registros que entran en el cálculo.</p>
+    <h2>Controles por año</h2>
+    <p>Un control por año cuenta a lo largo de un año, que empieza en la fecha de su fila <strong>Inicio</strong>. Si empieza el 1 de enero, es un año natural; cualquier otra fecha de inicio lo convierte en un año fiscal.</p>
 
-    <h2>Los controles por entrada evalúan la continuidad</h2>
-    <p>Un control por entrada se centra en una estancia continua dentro de sus lugares, en vez de sumar en un mismo total visitas que no tienen relación entre sí.</p>
+    <h2>Los controles por entrada siguen una estancia</h2>
+    <p>Un control Por entrada mide una sola estancia. Usa la estancia en curso si la hay y, si no, la estancia terminada más reciente. No suma visitas separadas. Cuando el control tiene una fecha de <strong>Inicio</strong>, los días anteriores a esa fecha quedan fuera.</p>
 
-    <h2>Gráficos y previsiones</h2>
-    <p>El gráfico de detalle explica cómo cambia el recuento a lo largo del tiempo. Los viajes futuros ya planificados y con fechas pueden alimentar una previsión; los de Solo año no. <a href="/es/help/plan-a-trip">Comprobar si un viaje planeado cabe</a> explica la previsión en detalle.</p>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/es/help/trackers-and-limits/detail-chart.webp" alt="Gráfico de detalle de un control a lo largo de su ventana activa" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
-    <p>El límite y la ventana que dan forma a ese gráfico se definen en el editor del control.</p>
-    <figure class="help-shot help-shot-control"><img src="/assets/article-images/es/help/trackers-and-limits/goal-window.webp" alt="Editor de un control con los ajustes de límite y de ventana" width="1320" height="1700" loading="lazy" decoding="async" /></figure>
+    <h2>Viajes en curso y planificados</h2>
+    <p>Un viaje sin fecha de fin, que la Cronología muestra como <strong>En curso</strong>, cuenta hasta hoy. Un viaje que empieza en el futuro no cambia el total actual; aparece en el gráfico como viaje planificado, y la previsión lo usa. <a href="/es/help/plan-a-trip">Comprobar si un viaje planeado cabe</a> explica la previsión.</p>
+
+    <h2>Leer el gráfico de detalle</h2>
+    <p>Abre un control para ver cómo cambia su recuento a lo largo del tiempo. El gráfico tiene dos vistas: un primer plano desplazable y una vista de todo el período. Pellizca o toca dos veces el gráfico para cambiar; cada control recuerda su propia elección.</p>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/es/help/trackers-and-limits/detail-chart.webp" alt="Gráfico de detalle de un control a lo largo de su ventana activa" width="1320" height="2566" loading="lazy" decoding="async" /></figure>
+    <p>Los controles móviles, por año y de días fuera también muestran una frase bajo el gráfico cuando tus planes cambian el resultado, como la fecha en que alcanzarías el límite. Los controles con dos límites muestran en cambio un gráfico para cada límite; consulta <a href="/es/help/rule-trackers">controles con dos límites</a>.</p>
+    <p>Las filas <strong>Objetivo</strong>, <strong>Límite</strong> y <strong>Ventana</strong> que dan forma al gráfico se definen en el editor del control. Toca el icono de controles deslizantes de la parte superior de la pantalla de detalle del control para abrirlo.</p>
+    <figure class="help-shot help-shot-control"><img src="/assets/article-images/es/help/trackers-and-limits/goal-window.webp" alt="Editor de un control con los ajustes de límite y de ventana" width="1320" height="1500" loading="lazy" decoding="async" /></figure>
 
     <section class="if-needed">
       <h2>Comprobar qué viajes afectan a un control</h2>
-      <p>Abre su vista de detalle, confirma los lugares y la ventana y compara después esos ajustes con la <a href="/es/help/timeline-and-calendar">Cronología</a>. Presta especial atención a los viajes en curso, los de Tránsito, los registros de Solo año, los solapamientos y las etiquetas de estado de EE. UU. que falten.</p>
+      <p>Abre su vista de detalle y lee los viajes que aparecen bajo el gráfico; compara después sus lugares y su ventana con tu <a href="/es/help/timeline-and-calendar">Cronología</a>. Presta especial atención a los viajes en curso, los de Tránsito, los registros de Solo año, los solapamientos y las etiquetas de estado de EE. UU. que falten. Para añadir un viaje a ese control, toca <strong>+</strong> sobre su lista de viajes.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-trackers-and-limits">
       <h2 id="next-trackers-and-limits">Continúa con</h2>
       <ul>
+        <li><a href="/es/help/days-away">
+          <strong>Contar los días fuera de un lugar</strong>
+          <span>Cuenta los días fuera de un lugar, no dentro.</span>
+        </a></li>
         <li><a href="/es/help/smart-alerts">
           <strong>Avisos inteligentes</strong>
-          <span>Que te avisen antes de llegar al límite.</span>
-        </a></li>
-        <li><a href="/es/help/day-counting">
-          <strong>Cómo cuenta AtlasDays los días de viaje</strong>
-          <span>Las reglas de recuento de días detrás de cada total.</span>
+          <span>Recibe un aviso antes de alcanzar un límite.</span>
         </a></li>
         <li><a href="/es/help/plan-a-trip">
           <strong>Comprobar si un viaje planeado cabe</strong>
-          <span>Comprueba las fechas futuras frente al límite antes de reservar.</span>
+          <span>Comprueba si un viaje planeado cabe.</span>
         </a></li>
       </ul>
     </nav>
@@ -212,7 +223,7 @@
       <h2>¿Necesitas más ayuda?</h2>
       <p><a href="mailto:support@atlasdays.app">Escribe al soporte de AtlasDays</a> e indica las fechas, lo que esperabas y lo que ocurrió.</p>
     </aside>
-    <p class="help-updated">Última actualización: 13 de agosto de 2026</p>
+    <p class="help-updated">Última actualización: 30 de septiembre de 2026</p>
   </article>
   </main>
 

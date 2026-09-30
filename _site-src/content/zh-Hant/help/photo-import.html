@@ -1,29 +1,38 @@
     <nav class="breadcrumb" aria-label="導覽路徑"><a href="/zh-Hant/">AtlasDays</a> / <a href="/zh-Hant/help/">說明中心</a></nav>
 
     <h1>照片匯入</h1>
-<p class="article-answer">照片匯入會在裝置上掃描照片圖庫的位置資訊，將照片提供的線索整理為行程建議；所有內容都會先經確認再儲存。</p>
+<p class="article-answer">照片匯入會在裝置上掃描照片圖庫中的日期與位置，整理成行程建議，經你確認之前不會儲存任何內容。這是<a href="/zh-Hant/help/import-trips">新增過去行程的方式</a>之一。</p>
 
     <h2>開始照片匯入</h2>
     <ol>
       <li>開啟<strong>設定 → 匯入 → 照片</strong>。</li>
-      <li>出現詢問時，允許 AtlasDays 取用照片。</li>
-      <li>開始掃描，並在分析照片圖庫期間讓 AtlasDays 保持開啟。</li>
-      <li>逐一檢查行程建議，再儲存。</li>
+      <li>點一下<strong>在照片中尋找行程</strong>。</li>
+      <li>iOS 詢問時，請選擇<strong>完整取用權限</strong>。「有限取用權限」無法用來推測行程。</li>
+      <li>掃描期間請讓 AtlasDays 保持開啟，然後點一下<strong>確認 N 個行程</strong>。</li>
     </ol>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/zh-Hant/help/photo-import/photo-setup.webp" alt="照片匯入的設定畫面" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
-    <h2>AtlasDays 會分析哪些資料</h2>
-    <p>AtlasDays 會使用照片的拍攝時間及內嵌位置座標（若有）。掃描與國家判定都在裝置上完成；照片本身不會上傳至 AtlasDays。</p>
+    <h2>AtlasDays 會檢查什麼</h2>
+    <p>AtlasDays 會讀取照片與影片的時間戳記與位置，並且一律掃描整個圖庫。螢幕截圖與螢幕錄影會被略過。掃描與國家判定都在裝置上執行，離線也能使用，不會上傳任何內容給 AtlasDays。儲存的行程會保留照片的本機參照與小型快取預覽，原始檔案仍留在「照片」中。</p>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/zh-Hant/help/photo-import/photo-scan.webp" alt="照片匯入掃描進行中" width="1320" height="2100" loading="lazy" decoding="async" /></figure>
 
-    <h2>逐一檢查行程建議</h2>
-    <p>檢查國家或美國州別、起訖日期，以及重複或重疊警示。照片位置只是佐證，無法證明實際跨越國界的確切時間。</p>
+    <h2>逐一確認每個建議</h2>
+    <p>確認畫面<strong>照片中找到的行程</strong>會列出建議的行程。摘要列會顯示重複、可合併、重疊、可能的轉機，以及（Pro 才有的）美國州別的數量。每個行程可能帶有標籤，例如<strong>重複</strong>、<strong>合併</strong>、<strong>與現有行程重疊</strong>、<strong>中間日期為推估</strong>、<strong>國界附近</strong>或<strong>單張照片</strong>。</p>
+    <ul>
+      <li>點一下行程即可更改國家或日期，或將它排除。要處理整份清單，可使用<strong>全選</strong>或<strong>取消全選</strong>。</li>
+      <li>行程從該國第一張照片的日期開始，到最後一張照片的日期結束，所以日期只是推估。從訊息或網頁儲存的照片，可能會多出一個你從未造訪的國家。</li>
+      <li>美國各州在 Pro 中會建議為個別的行程；沒有 Pro 時，則匯入為一般的美國行程。</li>
+      <li>若尚未設定居住國，會出現一列讓你確認，以便計算海外天數。</li>
+    </ul>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/zh-Hant/help/photo-import/photo-review.webp" alt="照片匯入確認畫面，含行程建議與警示" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <p>點一下<strong>匯入</strong>並確認，即可將選取的行程儲存到<a href="/zh-Hant/help/timeline-and-calendar">時間軸</a>。確認畫面上的<strong>瞭解更多</strong>會開啟<strong>行程建議的產生方式</strong>。</p>
+
+    <div class="callout"><p><strong>照片是佐證，不是證明。</strong>兩趟相近行程之間的短暫停留，可能被標為轉機，而轉機不會計入天數總計。若某次停留確實在該國待過，請將該筆的轉機關閉。</p></div>
 
     <h2>保守處理紀錄空白</h2>
-    <p>沒有位置資訊的照片無法作為行程建議的依據。含地理標記的照片之間若間隔過久，也可能推算出需要手動修正的行程邊界。日後取得更可靠的佐證時，可在<a href="/zh-Hant/help/timeline-and-calendar">時間軸</a>編輯已儲存的行程。</p>
+    <p>沒有位置資訊的照片無法作為行程建議的依據，含地理標記的照片之間若間隔過久，也可能推算出需要手動修正的行程邊界。取得更可靠的佐證後，可在時間軸編輯已儲存的行程。若想將照片附加到已有的行程，請改用時間軸選單中的<strong>尋找照片</strong>，詳見<a href="/zh-Hant/help/timeline-tools">搜尋、篩選與自訂時間軸</a>。</p>
 
     <section class="if-needed">
       <h2>找不到任何行程時</h2>
-      <p>確認 AtlasDays 可以取用要掃描的照片，也請檢查拍攝時是否有記錄位置資訊。</p>
+      <p>若出現<strong>需要照片取用權限</strong>，請開啟 iOS 的「設定」，讓 AtlasDays 擁有「照片」的完整取用權限。若掃描結束後顯示<strong>照片中找不到行程</strong>，請確認拍照時有開啟定位；時間軸中已有的行程會標示為重複，不會再次建議。</p>
     </section>

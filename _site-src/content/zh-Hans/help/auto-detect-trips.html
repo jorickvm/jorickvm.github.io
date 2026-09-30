@@ -1,27 +1,59 @@
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/zh-Hans/">AtlasDays</a> / <a href="/zh-Hans/help/">帮助中心</a></nav>
 
     <h1>自动检测行程</h1>
-<p class="article-answer">自动检测行程以低耗电的后台位置监测察觉新的旅程，并立刻把行程加入<a href="/zh-Hans/help/timeline-and-calendar">时间轴</a>。加进来之后仍然可以查看、编辑或撤销。</p>
+<p class="article-answer">自动检测行程通过低功耗的后台定位监测，发现你进入新的国家，并立即把行程加入<a href="/zh-Hans/help/timeline-and-calendar">时间轴</a>。不需要等待批准，事后可以编辑或删除该行程。</p>
 
-    <h2>开启自动检测</h2>
+    <h2>开启自动检测行程</h2>
     <ol>
-      <li>打开<strong>设置 → 自动检测行程</strong>。</li>
-      <li>打开<strong>自动检测行程</strong>。</li>
-      <li>iOS 询问时，请授予“始终”的位置访问权限。在后台访问权限到位之前，开关会保持关闭。</li>
-      <li>也可以视需要开启检测到新国家时的通知。</li>
+      <li>打开<strong>设置 → 行程记录 → 自动检测行程</strong>。</li>
+      <li>开启<strong>自动检测行程</strong>。</li>
+      <li>iOS 会两次询问定位权限。先选择“使用 App 期间”，第二次询问出现时再选择“始终”。</li>
+      <li>也可以在“通知”下开启<strong>检测到新的国家</strong>。</li>
     </ol>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/zh-Hans/help/auto-detect-trips/auto-detect-settings.webp" alt="自动检测行程设置界面，含位置和通知控件" width="1320" height="1850" loading="lazy" decoding="async" /></figure>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/zh-Hans/help/auto-detect-trips/auto-detect-settings.webp" alt="自动检测行程的设置，含定位和通知控件" width="1320" height="1850" loading="lazy" decoding="async" /></figure>
+    <p>只有在“始终”权限下才会进行检测。如果只选到“使用 App 期间”，开关会保持关闭。从时间轴的卡片开启时（见下文），在两次定位询问之后还会询问通知权限；从设置开启则不会。</p>
 
-    <h2>查看检测到的行程</h2>
-    <p>新行程会出现在时间轴上，带着检测到的国家和 AtlasDays 推断的日期。打开这条行程，核对国家或美国的州以及起止日期，需要时再编辑或删除。如果收到检测通知，选择<strong>忽略</strong>会移除这条行程，之后仍然可以手动添加。</p>
+    <h2>检测到国家时会发生什么</h2>
+    <ul>
+      <li>行程会立即加入时间轴，从检测当天开始，在你离开之前没有结束日期。</li>
+      <li>如果 AtlasDays 正开着，会弹出显示该地点的横幅，附带<strong>撤销</strong>。几秒后横幅消失，App 在前台时不会显示推送通知。</li>
+      <li>如果 App 已关闭且通知已开启，会收到<em>已检测到 &lt;地点&gt;</em>，并附带开始日期。轻点它会打开时间轴。</li>
+    </ul>
+    <figure class="help-shot help-shot-control"><img src="/assets/article-images/help/auto-detect-trips/detected-banner.webp" alt="App 内横幅，提示已检测到某个国家，带有撤销按钮" width="1320" height="720" loading="lazy" decoding="async" /></figure>
+    <p>通知只有一个操作：<strong>删除行程</strong>。它会移除刚刚添加的行程，但不会把该地点加入忽略列表；如果你已经改过某条行程的开始日期，它也不会删除那条行程。</p>
+
+    <h2>行程自动结束，转机自动标记</h2>
+    <ul>
+      <li><strong>自动结束。</strong>之后的检测显示你已离开某个国家时，之前未结束的那条行程会补上结束日期。如果 AtlasDays 正开着，会有几秒钟显示提示<strong>&lt;国家&gt; 的行程已结束</strong>（或 <strong>N 个行程已结束</strong>），并附带<strong>撤销</strong>。</li>
+      <li><strong>转机。</strong>夹在另外两个国家之间的短暂停留，起初会显示为普通行程。下一次检测到达时，AtlasDays 会把它改为<a href="/zh-Hans/help/history-and-import">转机</a>，因此不计入天数总计。只有你没有给它添加目的、备注或照片时，才会这样处理。</li>
+    </ul>
+
+    <h2>核对检测到的行程</h2>
+    <p>在时间轴中打开该行程，核对国家或美国的州以及日期。开始日期是检测到位置变化的那一天，所以在精确到哪一天很重要时，请自行编辑。检测美国各州是 Pro 功能；没有 Pro 时，美国行程会作为普通的美国行程添加。</p>
 
     <h2>忽略不想被检测的地点</h2>
-    <p>如果经常靠近边境、因而产生了用不上的行程，可以把国家加入忽略的地点。Pro 用户还能单独忽略美国的某个州。已忽略的地点仍然可以手动添加行程。</p>
+    <p>在自动检测屏幕的<strong>忽略的地点</strong>下，选择<strong>国家</strong>，可以跳过手机在边境附近总会识别到的地方。Pro 用户还可以选择<strong>美国各州</strong>。已忽略的地点不会创建行程，那些天数仍归属于周围的国家。你仍然可以自己添加这些行程。</p>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/help/auto-detect-trips/ignore-list.webp" alt="自动检测的忽略列表，已选中若干国家" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
-    <h2>自动检测不是持续记录 GPS</h2>
-    <p>这项功能使用系统的低耗电位置事件，不会保存详细路线。检测的时机取决于 iOS、地理环境、网络连接，以及可用的边界信号。</p>
+    <h2>时间轴上的提示</h2>
+    <p>时间轴顶部最多可以显示三张卡片。卡片上的 X 会将它永久隐藏。</p>
+    <ul>
+      <li><strong>自动检测行程</strong>卡片提供<strong>开启自动检测</strong>和<strong>运行方式</strong>。它在自动检测关闭、且至少有一条行程时出现。</li>
+      <li><strong>自动检测已暂停</strong>在定位权限不再是“始终”时出现。<strong>前往“设置”</strong>会带你到 iOS 设置里修复。</li>
+      <li><strong>随时掌握动态</strong>在这台设备上添加了行程、而通知处于关闭状态时出现，并提供<strong>开启通知</strong>。</li>
+    </ul>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/help/auto-detect-trips/prompt-card.webp" alt="时间轴上的提示卡片，提供开启自动检测" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <p>关于这些卡片和时间轴其他控件的更多内容，见<a href="/zh-Hans/help/timeline-tools">搜索、筛选与自定义时间轴</a>。</p>
+
+    <h2>让自动检测持续运行</h2>
+    <ul>
+      <li>时不时打开一下 AtlasDays。如果长时间不打开，iOS 可能会停止推送位置更新。</li>
+      <li>不要在应用切换器中强制退出 App。那样会停止监测，直到你再次打开它。</li>
+      <li>让 AtlasDays 的定位权限保持为“始终”。自动检测屏幕上的<strong>了解更多</strong>会显示这份清单。</li>
+    </ul>
+    <div class="callout"><p><strong>不是持续的 GPS。</strong>自动检测依赖 iOS 的“显著位置变化”事件，并不保存行进路线。时机取决于 iOS、地理位置和网络连接，所以过境可能会较晚才被发现。</p></div>
 
     <section class="if-needed">
-      <h2>没有出现行程时</h2>
-      <p>请确认自动检测已开启、位置访问权限设为“始终”、该地点没有被忽略；如果预期会收到通知，也要确认已允许 AtlasDays 的通知。行程随时都可以手动添加。</p>
+      <h2>如果没有出现行程</h2>
+      <p>请检查：自动检测是否已开启，定位权限是否为“始终”，该地点是否在忽略列表中，以及 App 最近是否打开过、没有被强制退出。若是通知没有出现，还要检查<strong>检测到新的国家</strong>是否已开启，以及 iOS 是否允许 AtlasDays 发送通知。你随时可以手动添加行程。</p>
     </section>

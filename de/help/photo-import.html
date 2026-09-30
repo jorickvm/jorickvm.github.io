@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Fotoimport – AtlasDays-Hilfe</title>
-  <meta name="description" content="Der Fotoimport durchsucht auf dem Gerät die Standortangaben deiner Fotos, schlägt daraus Reisen vor und lässt dich alles prüfen, bevor etwas gesichert wird." />
+  <meta name="description" content="Nutze die Standortdaten deiner Fotos für Reisevorschläge und prüfe Reisedaten, Länder, Duplikate und Überschneidungen vor dem Sichern." />
   <meta property="og:title" content="Fotoimport – AtlasDays-Hilfe" />
-  <meta property="og:description" content="Der Fotoimport durchsucht auf dem Gerät die Standortangaben deiner Fotos, schlägt daraus Reisen vor und lässt dich alles prüfen, bevor etwas gesichert wird." />
+  <meta property="og:description" content="Nutze die Standortdaten deiner Fotos für Reisevorschläge und prüfe Reisedaten, Länder, Duplikate und Überschneidungen vor dem Sichern." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/de/help/photo-import" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Fotoimport – AtlasDays-Hilfe" />
-  <meta name="twitter:description" content="Der Fotoimport durchsucht auf dem Gerät die Standortangaben deiner Fotos, schlägt daraus Reisen vor und lässt dich alles prüfen, bevor etwas gesichert wird." />
+  <meta name="twitter:description" content="Nutze die Standortdaten deiner Fotos für Reisevorschläge und prüfe Reisedaten, Länder, Duplikate und Überschneidungen vor dem Sichern." />
   <meta name="apple-itunes-app" content="app-id=6760133544, app-argument=https://apps.apple.com/app/atlasdays-track-country-days/id6760133544" />
   <meta property="og:locale" content="de_DE" />
   <meta property="og:image" content="https://atlasdays.app/assets/social/site-v1.png" />
@@ -68,7 +68,7 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "Fotoimport",
-    "description": "Der Fotoimport durchsucht auf dem Gerät die Standortangaben deiner Fotos, schlägt daraus Reisen vor und lässt dich alles prüfen, bevor etwas gesichert wird.",
+    "description": "Nutze die Standortdaten deiner Fotos für Reisevorschläge und prüfe Reisedaten, Länder, Duplikate und Überschneidungen vor dem Sichern.",
     "author": {
       "@type": "Organization",
       "name": "AtlasDays"
@@ -78,7 +78,7 @@
       "name": "AtlasDays"
     },
     "url": "https://atlasdays.app/de/help/photo-import",
-    "dateModified": "2026-08-02",
+    "dateModified": "2026-09-30",
     "inLanguage": "de"
   }
   </script>
@@ -162,46 +162,55 @@
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/de/">AtlasDays</a> / <a href="/de/help/">Hilfe</a></nav>
 
     <h1>Fotoimport</h1>
-<p class="article-answer">Der Fotoimport durchsucht auf dem Gerät die Standortangaben in deiner Fotomediathek, fasst die Hinweise zu vorgeschlagenen Reisen zusammen und lässt dich alles prüfen, bevor etwas gesichert wird.</p>
+<p class="article-answer">Der Fotoimport durchsucht auf dem Gerät die Aufnahmedaten und Standorte deiner Fotomediathek, fasst sie zu Reisevorschlägen zusammen und sichert nichts, bevor du alles geprüft und bestätigt hast. Er ist eine der <a href="/de/help/import-trips">Möglichkeiten, vergangene Reisen hinzuzufügen</a>.</p>
 
     <h2>Den Fotoimport starten</h2>
     <ol>
-      <li>Öffne <strong>Einstellungen → Import → Fotos</strong>.</li>
-      <li>Erlaub den Zugriff auf Fotos, wenn du danach gefragt wirst.</li>
-      <li>Starte den Scan und lass AtlasDays geöffnet, während deine Mediathek durchsucht wird.</li>
-      <li>Prüf die vorgeschlagenen Reisen, bevor du sicherst.</li>
+      <li>Öffne <strong>Einstellungen → Importieren → Fotos</strong>.</li>
+      <li>Tipp auf <strong>Reisen in Fotos finden</strong>.</li>
+      <li>Wähle bei der iOS-Abfrage <strong>Vollzugriff</strong>. Mit eingeschränktem Zugriff können keine Reisen abgeleitet werden.</li>
+      <li>Lass AtlasDays während des Scans geöffnet und tipp dann auf <strong>N Reisen prüfen</strong>.</li>
     </ol>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/de/help/photo-import/photo-setup.webp" alt="Der Einrichtungsbildschirm für den Fotoimport" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
     <h2>Was AtlasDays auswertet</h2>
-    <p>AtlasDays nutzt die Zeitstempel der Fotos und, sofern vorhanden, die eingebetteten Standortkoordinaten. Der Scan und die Zuordnung zu Ländern laufen auf deinem Gerät; die Fotos selbst werden nicht zu AtlasDays hochgeladen.</p>
-    <figure class="help-shot help-shot-control"><img src="/assets/article-images/de/help/photo-import/photo-scan.webp" alt="Der laufende Scan des Fotoimports" width="1320" height="2100" loading="lazy" decoding="async" /></figure>
+    <p>AtlasDays liest Zeitstempel und Standort von Fotos und Videos und durchsucht immer die gesamte Mediathek. Bildschirmfotos und Bildschirmaufnahmen werden übersprungen. Der Scan und die Zuordnung zu Ländern laufen auf deinem Gerät, funktionieren offline, und nichts wird zu AtlasDays hochgeladen. Gesicherte Reisen behalten lokale Verweise auf die Fotos und kleine zwischengespeicherte Vorschaubilder; die Originale bleiben in Fotos.</p>
+    <figure class="help-shot help-shot-control"><img src="/assets/article-images/de/help/photo-import/photo-scan.webp" alt="Der laufende Scan des Fotoimports" width="1320" height="2740" loading="lazy" decoding="async" /></figure>
 
     <h2>Prüf jeden Vorschlag</h2>
-    <p>Sieh dir Land oder US-Bundesstaat, Start- und Enddatum sowie jede Warnung zu Duplikaten oder Überschneidungen an. Der Standort eines Fotos ist ein Hinweis, kein Beleg für den genauen Moment, in dem du eine Grenze überquert hast.</p>
+    <p>Der Prüfbildschirm <strong>In Fotos gefunden</strong> listet die vorgeschlagenen Reisen. Übersichtszeilen zeigen die Anzahl von Duplikaten, Reisen zum Zusammenführen, Überschneidungen, möglichen Transitaufenthalten und, mit Pro, US-Bundesstaaten. Jede Reise kann eine Markierung tragen, zum Beispiel <strong>Duplikat</strong>, <strong>Zusammenführen</strong>, <strong>Überschneidung mit bestehender Reise</strong>, <strong>Zeitraum teilweise geschätzt</strong>, <strong>Grenznah</strong> oder <strong>Einzelnes Foto</strong>.</p>
+    <ul>
+      <li>Tipp eine Reise an, um ihr Land oder ihre Reisedaten zu ändern oder sie wegzulassen. Mit <strong>Alle auswählen</strong> oder <strong>Alle abwählen</strong> bearbeitest du die ganze Liste.</li>
+      <li>Eine Reise beginnt am Tag des ersten Fotos in einem Land und endet am Tag des letzten. Die Reisedaten sind also Schätzungen. Ein Foto, das aus einer Nachricht oder dem Web gesichert wurde, kann ein Land hinzufügen, in dem du nie warst.</li>
+      <li>US-Bundesstaaten werden mit Pro als eigene Reisen vorgeschlagen. Ohne Pro werden sie als gewöhnliche Reisen in die Vereinigten Staaten importiert.</li>
+      <li>Ist kein Wohnsitzland festgelegt, lässt dich eine Zeile eines bestätigen, damit die Tage im Ausland gezählt werden können.</li>
+    </ul>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/de/help/photo-import/photo-review.webp" alt="Die Prüfung des Fotoimports mit vorgeschlagenen Reisen und Warnungen" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <p>Tipp auf <strong>Importieren</strong> und bestätige, um die ausgewählten Reisen in der <a href="/de/help/timeline-and-calendar">Zeitleiste</a> zu sichern. <strong>Mehr erfahren</strong> auf dem Prüfbildschirm öffnet <strong>So erkennt AtlasDays Reisen</strong>.</p>
+
+    <div class="callout"><p><strong>Fotos sind Indizien, kein Beweis.</strong> Kurze Stopps zwischen zwei nahen Reisen können als Transit markiert sein, der nie in die Tagessummen einfließt. Schalte Transit für jeden Stopp aus, bei dem du dich im Land aufgehalten hast.</p></div>
 
     <h2>Geh mit Lücken vorsichtig um</h2>
-    <p>Fotos ohne Standortangaben können keinen Vorschlag tragen. Auch längere Lücken zwischen Fotos mit Geodaten können zu Grenzen führen, die du von Hand korrigieren musst. Bearbeite die gesicherte Reise in der <a href="/de/help/timeline-and-calendar">Zeitleiste</a>, sobald du bessere Belege hast.</p>
+    <p>Fotos ohne Standort können keinen Vorschlag stützen, und lange Lücken zwischen Fotos mit Geodaten können Grenzen ergeben, die du von Hand korrigieren musst. Bearbeite die gesicherte Reise in der Zeitleiste, sobald du bessere Belege hast. Um Fotos an Reisen anzuhängen, die du schon hast, nutze stattdessen <strong>Fotos suchen</strong> im Zeitleistenmenü; siehe <a href="/de/help/timeline-tools">Die Zeitleiste durchsuchen, filtern und anpassen</a>.</p>
 
     <section class="if-needed">
       <h2>Wenn keine Reisen gefunden werden</h2>
-      <p>Prüf, ob AtlasDays auf die gewünschten Fotos zugreifen darf und ob der Standort beim Aufnehmen dieser Fotos aktiviert war.</p>
+      <p>Erscheint <strong>Fotozugriff erforderlich</strong>, öffne die iOS-Einstellungen und gib AtlasDays Vollzugriff auf Fotos. Endet der Scan mit <strong>Keine Reisen in deinen Fotos gefunden</strong>, prüf, ob der Standort beim Aufnehmen der Fotos eingeschaltet war; Reisen, die schon in der Zeitleiste stehen, werden als Duplikate markiert und nicht erneut vorgeschlagen.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-photo-import">
       <h2 id="next-photo-import">Weiter mit</h2>
       <ul>
         <li><a href="/de/help/flighty-import">
           <strong>Flighty-Import</strong>
-          <span>Mach aus deiner Flighty-Flughistorie Reisen.</span>
+          <span>Stattdessen den Flugverlauf aus Flighty importieren.</span>
         </a></li>
         <li><a href="/de/help/auto-detect-trips">
           <strong>Reisen automatisch erkennen</strong>
-          <span>Lass neue Reisen automatisch anlegen.</span>
+          <span>Neue Reisen automatisch hinzufügen lassen.</span>
         </a></li>
-        <li><a href="/de/help/privacy-location-and-sync">
-          <strong>Datenschutz und Berechtigungen</strong>
-          <span>Was AtlasDays sehen kann und was das Gerät nie verlässt.</span>
+        <li><a href="/de/help/csv-import">
+          <strong>CSV-Import</strong>
+          <span>Der Import, der dieses Format liest.</span>
         </a></li>
       </ul>
     </nav>
@@ -209,7 +218,7 @@
       <h2>Brauchst du noch Hilfe?</h2>
       <p><a href="mailto:support@atlasdays.app">Wende dich an den AtlasDays-Support</a> und nenne die betreffenden Reisedaten, was du erwartet hast und was passiert ist.</p>
     </aside>
-    <p class="help-updated">Zuletzt aktualisiert am 2. August 2026</p>
+    <p class="help-updated">Zuletzt aktualisiert am 30. September 2026</p>
   </article>
   </main>
 

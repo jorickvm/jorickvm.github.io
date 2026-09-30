@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>隐私与权限｜AtlasDays 帮助中心</title>
-  <meta name="description" content="AtlasDays 的旅行记录存放在哪里，照片、定位和通知权限各自做什么，以及匿名使用统计包含和不包含什么。" />
+  <meta name="description" content="了解 AtlasDays 以本地为先的旅行数据、照片与定位权限、通知、统计信息和 iCloud 存储。" />
   <meta property="og:title" content="隐私与权限｜AtlasDays 帮助中心" />
-  <meta property="og:description" content="AtlasDays 的旅行记录存放在哪里，照片、定位和通知权限各自做什么，以及匿名使用统计包含和不包含什么。" />
+  <meta property="og:description" content="了解 AtlasDays 以本地为先的旅行数据、照片与定位权限、通知、统计信息和 iCloud 存储。" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/zh-Hans/help/privacy-location-and-sync" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="隐私与权限｜AtlasDays 帮助中心" />
-  <meta name="twitter:description" content="AtlasDays 的旅行记录存放在哪里，照片、定位和通知权限各自做什么，以及匿名使用统计包含和不包含什么。" />
+  <meta name="twitter:description" content="了解 AtlasDays 以本地为先的旅行数据、照片与定位权限、通知、统计信息和 iCloud 存储。" />
   <meta name="apple-itunes-app" content="app-id=6760133544, app-argument=https://apps.apple.com/app/atlasdays-track-country-days/id6760133544" />
   <meta property="og:locale" content="zh_CN" />
   <meta property="og:image" content="https://atlasdays.app/assets/social/site-v1.png" />
@@ -68,7 +68,7 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "隐私与权限",
-    "description": "AtlasDays 的旅行记录存放在哪里，照片、定位和通知权限各自做什么，以及匿名使用统计包含和不包含什么。",
+    "description": "了解 AtlasDays 以本地为先的旅行数据、照片与定位权限、通知、统计信息和 iCloud 存储。",
     "author": {
       "@type": "Organization",
       "name": "AtlasDays"
@@ -78,7 +78,7 @@
       "name": "AtlasDays"
     },
     "url": "https://atlasdays.app/zh-Hans/help/privacy-location-and-sync",
-    "dateModified": "2026-08-02",
+    "dateModified": "2026-09-30",
     "inLanguage": "zh-Hans"
   }
   </script>
@@ -162,48 +162,49 @@
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/zh-Hans/">AtlasDays</a> / <a href="/zh-Hans/help/">帮助中心</a></nav>
 
     <h1>隐私与权限</h1>
-<p class="article-answer">AtlasDays 把旅行记录保存在 App 自己的数据存储空间里。照片在设备上扫描，位置权限是可选的，开启 <a href="/zh-Hans/help/icloud-sync-and-restore">iCloud 同步</a>后，App 数据会存放在私人 iCloud 账户中。</p>
+<p class="article-answer">AtlasDays 把旅行记录保存在设备上，不需要账户。照片在设备上扫描，定位权限是可选的；开启 <a href="/zh-Hans/help/icloud-sync-and-restore">iCloud 同步</a>时，行程和追踪器会存放在你自己的私人 iCloud 账户中。</p>
 
     <h2>旅行记录</h2>
-    <p>行程、追踪器和备注都属于 App 数据。iCloud 同步关闭时，它们只留在设备上。开启后，CloudKit 会把支持同步的记录保存在私人 iCloud 账户里，并在各台设备之间同步。</p>
+    <p>行程、追踪器和备注属于 App 数据。关闭 iCloud 同步时，它们只留在设备上；开启后，CloudKit 会把它们保存在你的私人 iCloud 账户中，并在登录同一个 Apple 账户的各台设备之间同步。居住国、外观等部分偏好设置使用 iCloud 键值存储，即使行程同步处于关闭状态，也可能同步。用<a href="/zh-Hans/help/export-and-reports">导出</a>创建的文件，包括 <a href="/zh-Hans/help/backup-and-restore">AtlasDays 备份</a>，都在设备上生成，只会去往你发送的地方。</p>
 
     <h2>照片</h2>
-    <p><a href="/zh-Hans/help/photo-import">照片导入</a>会从已授权的照片图库中读取时间戳和内嵌坐标。判断国家的过程在设备上完成，AtlasDays 不会上传照片本身。</p>
+    <p><a href="/zh-Hans/help/photo-import">照片导入</a>会读取图库中照片和视频的日期与内嵌位置。它需要完全访问照片的权限，扫描和国家判断都在设备上进行。AtlasDays 不会上传你的照片。</p>
+    <p>从照片扫描存储下来的行程，会保留对原始照片的引用和设备上的小尺寸预览缓存，可以在<strong>设置 → 外观 → 显示预览</strong>中隐藏预览。原始照片仍留在“照片”中。iOS 还可能列出一项单独的“仅添加”照片权限，AtlasDays 只用它把你分享的旅行卡片存进照片图库。</p>
 
-    <h2>位置</h2>
-    <p><a href="/zh-Hans/help/auto-detect-trips">自动检测</a>行程只有在明确开启、并把位置权限设为“始终”时，才会使用低功耗的位置监测。检测到之后会添加一条行程，可以审核、编辑或撤销；它不会持续记录路线。</p>
+    <h2>定位</h2>
+    <p><a href="/zh-Hans/help/auto-detect-trips">自动检测行程</a>只有在你明确开启并授予“始终”定位权限时，才会使用低功耗的位置监测。每次检测会添加一条行程，你可以确认、编辑或撤销；它不会持续记录你的行进路线。</p>
 
     <h2>通知</h2>
-    <p>通知用于已开启的自动检测事件和<a href="/zh-Hans/help/smart-alerts">智能提醒</a>。可以在 AtlasDays 里关闭相应的功能，也可以在 iOS 的设置中更改通知权限。</p>
+    <p>通知用于已开启的自动检测事件和<a href="/zh-Hans/help/smart-alerts">智能提醒</a>。你可以在 AtlasDays 中关闭相关功能，也可以在 iOS 设置中更改通知权限。</p>
 
     <h2>查看或撤销权限</h2>
-    <p>打开 iOS 中 AtlasDays 的设置页，随时可以更改照片、定位和通知权限。某项权限只有在 AtlasDays 请求过之后才会出现在那个列表里，所以从未打开过的功能暂时不会列在那里。</p>
-    <figure class="help-shot help-shot-control"><img src="/assets/article-images/help/privacy-location-and-sync/privacy-permissions.webp" alt="iOS 中 AtlasDays 的设置页，列出定位、照片等各项权限" width="1320" height="1880" loading="lazy" decoding="async" /></figure>
+    <p>随时可以打开 AtlasDays 的 iOS 设置，更改照片、定位和通知权限。某项权限只有在 AtlasDays 询问过之后，才会出现在那份列表里，所以从未打开过的功能暂时不会列出。</p>
+    <figure class="help-shot help-shot-control"><img src="/assets/article-images/help/privacy-location-and-sync/privacy-permissions.webp" alt="AtlasDays 的 iOS 设置页面，列出定位、照片等权限" width="1320" height="1880" loading="lazy" decoding="async" /></figure>
 
     <h2>使用统计</h2>
-    <p>AtlasDays 会把匿名的使用统计发送给位于欧盟的独立分析服务商，以便了解 App 的使用情况和还能改进的地方。这里没有账户，也没有任何能识别个人身份的内容。</p>
-    <p>这些统计涵盖在 App 内的操作、各项设置、设备和 App 的基本信息，以及大致所在的国家。像行程数量这样的计数以区间发送，而不是精确数字。其中绝不包含行程、日期、备注、照片或坐标。</p>
-    <p>AtlasDays 不含广告，不使用广告标识符，也不申请跟踪权限。完整的说明见<a href="/zh-Hans/privacy">隐私政策</a>。</p>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/zh-Hans/help/privacy-location-and-sync/privacy-overview.webp" alt="AtlasDays 的隐私总览界面，汇总数据与权限情况" width="1320" height="2494" loading="lazy" decoding="async" /></figure>
+    <p>AtlasDays 会把匿名的使用统计发送给欧盟境内一家独立的分析服务商，以便了解 App 的使用情况和可以改进的地方。没有账户，也没有任何能识别你个人的信息。</p>
+    <p>这些统计涵盖 App 内的操作、你的设置、基本的设备和 App 信息，以及你所在的大致国家。行程数量等计数以区间而不是确切数字发送。它们绝不包含你的行程、日期、备注、照片或坐标。</p>
+    <p>AtlasDays 不含广告，不使用广告标识符，也不请求跟踪权限。完整的说明见<a href="/zh-Hans/privacy">隐私政策</a>。</p>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/zh-Hans/help/privacy-location-and-sync/privacy-overview.webp" alt="AtlasDays 隐私概览，显示数据和权限摘要" width="1320" height="2494" loading="lazy" decoding="async" /></figure>
 
     <section class="if-needed">
-      <h2>如果某项功能不工作了</h2>
-      <p>在 iOS 的设置中检查它依赖的权限。照片导入需要照片权限，自动检测需要设为“始终”的定位权限，提醒需要通知权限。重新允许之后，各项功能都会照常工作。</p>
+      <h2>如果某项功能停止工作</h2>
+      <p>请在 iOS 设置中检查它所依赖的权限。照片导入需要照片访问权限，自动检测需要“始终”定位，提醒需要通知权限。权限重新开启后，各项功能都会恢复正常。</p>
     </section>
     <nav class="help-next" aria-labelledby="next-privacy-location-and-sync">
       <h2 id="next-privacy-location-and-sync">接着阅读</h2>
       <ul>
-        <li><a href="/zh-Hans/help/auto-detect-trips">
-          <strong>自动检测行程</strong>
-          <span>低功耗检测，添加的行程可以审核或撤销。</span>
+        <li><a href="/zh-Hans/help/icloud-sync-and-restore">
+          <strong>iCloud 同步与还原</strong>
+          <span>实时同步如何在各设备间运作。</span>
         </a></li>
         <li><a href="/zh-Hans/help/photo-import">
           <strong>照片导入</strong>
-          <span>在设备上扫描照片，补回更早的记录。</span>
+          <span>从照片图库中找出过去的行程。</span>
         </a></li>
-        <li><a href="/zh-Hans/help/icloud-sync-and-restore">
-          <strong>iCloud 同步与还原</strong>
-          <span>设备之间同步什么，还原又是怎么运作的。</span>
+        <li><a href="/zh-Hans/help/delete-and-reset">
+          <strong>删除数据或重新开始</strong>
+          <span>删除行程或追踪器，或彻底重置。</span>
         </a></li>
       </ul>
     </nav>
@@ -211,7 +212,7 @@
       <h2>仍需要帮助吗？</h2>
       <p><a href="mailto:support@atlasdays.app">联系 AtlasDays 支持</a>时，请一并提供相关日期、原本预期的结果，以及实际发生的情况。</p>
     </aside>
-    <p class="help-updated">最后更新：2026年8月2日</p>
+    <p class="help-updated">最后更新：2026年9月30日</p>
   </article>
   </main>
 

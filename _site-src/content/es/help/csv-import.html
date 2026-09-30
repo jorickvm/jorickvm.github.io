@@ -1,29 +1,38 @@
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/es/">AtlasDays</a> / <a href="/es/help/">Centro de ayuda</a></nav>
 
     <h1>Importar CSV</h1>
-<p class="article-answer">Prepara un CSV con encabezados, elígelo en Ajustes → Importar → Archivo CSV y resuelve la vista previa antes de guardar ningún viaje.</p>
+<p class="article-answer">Añade viajes de golpe desde una hoja de cálculo guardada como CSV. AtlasDays valida cada fila, muestra una vista previa y no guarda nada hasta que lo confirmes. Es una de las <a href="/es/help/import-trips">formas de añadir viajes pasados</a>.</p>
 
-    <h2>Importar el archivo</h2>
+    <h2>Importa el archivo</h2>
     <ol>
       <li>Abre <strong>Ajustes → Importar → Archivo CSV</strong>.</li>
-      <li>Usa el ejemplo o la referencia de formato para preparar el archivo.</li>
-      <li>Selecciona el CSV desde Archivos.</li>
-      <li>Revisa las filas válidas, las no válidas, los duplicados y los avisos de solapamiento.</li>
-      <li>Importa las filas que aceptes.</li>
+      <li>Prepara el archivo en Sheets, Numbers o Excel y expórtalo como CSV. <strong>CSV de ejemplo</strong> muestra los encabezados exactos con filas de muestra, y su botón de compartir guarda el archivo como punto de partida.</li>
+      <li>Toca <strong>Seleccionar archivo CSV</strong> y elige el archivo en Archivos.</li>
+      <li>Comprueba la vista previa, <strong>Encontrado en CSV</strong>.</li>
+      <li>Toca <strong>Importar</strong> y confirma.</li>
     </ol>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/es/help/csv-import/csv-setup.webp" alt="Configuración de Importar CSV y controles del archivo de ejemplo" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <p><strong>Crear CSV con IA</strong> copia unas instrucciones ya preparadas para ChatGPT, Claude u otro asistente. Pega debajo tus notas de viaje y guarda la respuesta como CSV. Esas herramientas tratan tu texto según sus propias políticas de privacidad, así que deja fuera todo lo que no pegarías en otro sitio.</p>
 
-    <h2>Corrige los errores en el archivo de origen</h2>
-    <p>La vista previa indica el número de fila y el motivo cuando no consigue resolver un país, un estado, una fecha o un encabezado obligatorio. Corrige esa fila en el CSV y vuelve a importar el archivo.</p>
-
-    <h2>Los avisos son invitaciones a revisar</h2>
-    <p>Un duplicado puede repetir un viaje que ya está en la <a href="/es/help/timeline-and-calendar">Cronología</a>. Un solapamiento puede ser legítimo o representar dos versiones de la misma estancia. Comprueba las fechas y los lugares en lugar de aceptar todas las filas automáticamente.</p>
+    <h2>Lee la vista previa</h2>
+    <p>La vista previa enumera las filas válidas y muestra recuentos que puedes tocar para filtrar. Usa <strong>Seleccionar todo</strong> o <strong>Deseleccionar todo</strong> para elegir qué importar.</p>
+    <ul>
+      <li><strong>Duplicado:</strong> la fila queda dentro de un viaje que ya tienes, o repite una fila anterior. Se omite.</li>
+      <li><strong>Fusionar:</strong> la fila abarca un viaje que ya tienes en el mismo país. Al importar, ese viaje se amplía para incluir las fechas de la fila, y las notas y los motivos se combinan. <strong>Posibles fusiones en el archivo</strong> se refiere a filas del propio archivo que se unen entre sí.</li>
+      <li><strong>Solapamiento:</strong> la fila se solapa en parte con otro viaje. Puede ser una segunda estancia real o una segunda versión de la misma, así que compara las fechas antes de conservarla.</li>
+      <li><strong>Tránsitos</strong> y <strong>Estados de EE. UU.</strong> cuentan las filas de esos tipos. Sin Pro, las filas de estados se importan como viajes normales a Estados Unidos.</li>
+    </ul>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/es/help/csv-import/csv-review.webp" alt="Vista previa de Importar CSV con filas válidas, no válidas, duplicadas y solapadas" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
-    <h2>Tu Cronología solo cambia al guardar</h2>
-    <p>Seleccionar un archivo y ver la vista previa no añade viajes. AtlasDays escribe las filas aceptadas solo después de la acción final de importar.</p>
+    <h2>Corrige los errores en el archivo de origen</h2>
+    <p>Las filas que AtlasDays no puede leer aparecen en <strong>N filas con errores</strong>, con el número de fila y el motivo. Las filas no válidas nunca se importan. Corrígelas en la hoja de cálculo, vuelve a exportar y selecciona el archivo de nuevo.</p>
+
+    <div class="callout"><p><strong>Nada cambia hasta que pulsas Importar.</strong> Seleccionar un archivo y ver la vista previa no añade viajes.</p></div>
+
+    <h2>Volver a importar una exportación</h2>
+    <p>Una <a href="/es/help/export-and-reports">exportación</a> de hoja de cálculo guardada como CSV se puede volver a importar, siempre que se exportara en inglés: los encabezados de las columnas se leen solo en inglés. Para una copia completa de viajes, controles y ajustes, usa en cambio una <a href="/es/help/backup-and-restore">copia de seguridad</a>.</p>
 
     <section class="if-needed">
-      <h2>Si todas las filas son no válidas</h2>
-      <p>Confirma que la primera fila contiene un encabezado <strong>Country</strong> y comprueba los formatos exactos de fecha. Consulta la <a href="/es/help/csv-format-reference">referencia de formato CSV</a> para ver las columnas admitidas y algunos ejemplos.</p>
+      <h2>Si todas las filas no son válidas</h2>
+      <p>Comprueba que la primera fila sea una fila de encabezados y contenga <strong>Country</strong>, y que las fechas usen <code>yyyy-mm-dd</code> o un año de cuatro cifras. La <a href="/es/help/csv-format-reference">Referencia de formato CSV</a> enumera las columnas admitidas, los valores y todos los mensajes de error.</p>
     </section>

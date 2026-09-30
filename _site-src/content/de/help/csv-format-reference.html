@@ -1,32 +1,43 @@
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/de/">AtlasDays</a> / <a href="/de/help/">Hilfe</a></nav>
 
     <h1>CSV-Format: Referenz</h1>
-<p class="article-answer">Nur die Spalte <strong>Country</strong> ist erforderlich. AtlasDays erkennt die unterstützten Spalten an ihrer Kopfzeile, die Reihenfolge spielt also keine Rolle.</p>
+<p class="article-answer">Nur die Spalte <strong>Country</strong> ist erforderlich. AtlasDays findet Spalten anhand ihres englischen Spaltenkopfs, die Reihenfolge der Spalten spielt also keine Rolle. Die Schritte zum Importieren stehen unter <a href="/de/help/csv-import">CSV-Import</a>.</p>
 
-    <h2>Empfohlene Kopfzeile</h2>
-    <p><code>Country,State,Start Date,End Date,Purpose,Notes</code></p>
-    <ul>
-      <li><strong>Country:</strong> englischer <a href="/de/help/languages">Ländername</a>, ISO-Ländercode aus zwei Buchstaben oder eine erkannte gängige Variante.</li>
-      <li><strong>State:</strong> optionaler Name eines US-Bundesstaats, seine Abkürzung oder der ISO-Code der Untereinheit, etwa <code>US-CA</code>.</li>
-      <li><strong>Start Date / End Date:</strong> genaues Datum, Jahr oder leer, nach den Regeln unten.</li>
-      <li><strong>Purpose:</strong> Personal, Business, Study oder <a href="/de/help/history-and-import">Transit</a>. Mehrere Zwecke außer Transit kannst du in Anführungszeichen kommagetrennt angeben, etwa <code>"Business, Personal"</code>. Ältere Dateien mit Tourism oder Medical werden weiterhin importiert, und zwar als Personal.</li>
-      <li><strong>Notes:</strong> beliebiger Text, optional.</li>
-    </ul>
-    <figure class="help-shot help-shot-control"><img src="/assets/article-images/de/help/csv-format-reference/csv-reference.webp" alt="Beispiel und Vorlagensteuerung für den CSV-Import" width="1320" height="1760" loading="lazy" decoding="async" /></figure>
+    <h2>Spalten</h2>
+    <p>Empfohlene Kopfzeile: <code>Country,State,Start Date,End Date,Purpose,Notes</code>. Bei den Spaltenköpfen wird Groß- und Kleinschreibung nicht beachtet. Nicht erkannte Spalten wie <code>Days</code> werden ignoriert. Kommt ein Spaltenkopf doppelt vor, wird der erste verwendet.</p>
+    <dl class="kv kv-text">
+      <div><dt><strong>Country</strong></dt><dd>Erforderlich. Ländername auf Englisch oder in der App-Sprache, ISO-Ländercode aus zwei Buchstaben oder ein gängiger Alias wie <code>USA</code>, <code>UK</code> oder <code>Holland</code>. Ein Alias, der zwei Orte meinen könnte, wird abgelehnt.</dd></div>
+      <div><dt><strong>State</strong></dt><dd>Optional, nur für Reisen in die Vereinigten Staaten. Name des Bundesstaats, zweistellige Postabkürzung oder ISO-Code wie <code>US-CA</code>. Der District of Columbia wird akzeptiert.</dd></div>
+      <div><dt><strong>Start Date</strong></dt><dd>Wird auch als <code>Start</code> akzeptiert. Datum als <code>yyyy-mm-dd</code> oder vierstellige Jahreszahl.</dd></div>
+      <div><dt><strong>End Date</strong></dt><dd>Wird auch als <code>End</code> akzeptiert. Datum als <code>yyyy-mm-dd</code> oder vierstellige Jahreszahl. Leer bedeutet: noch unterwegs (bei genauem Beginn) oder dasselbe Jahr (bei Beginn mit Jahreszahl).</dd></div>
+      <div><dt><strong>Purpose</strong></dt><dd><code>Personal</code>, <code>Business</code>, <code>Study</code> oder <code>Transit</code>, Groß- und Kleinschreibung egal. Werte außer Transit kombinierst du mit Kommas in Anführungszeichen, etwa <code>"Business, Personal"</code>. Ältere Werte <code>Tourism</code> und <code>Medical</code> werden als Personal importiert. Ein nicht erkannter Wert wird ohne Fehlermeldung ignoriert.</dd></div>
+      <div><dt><strong>Notes</strong></dt><dd>Wird auch als <code>Note</code> oder <code>Notes (optional)</code> akzeptiert. Freitext.</dd></div>
+      <div><dt><strong>Transit</strong></dt><dd>Ältere Spalte. Wird nur gelesen, wenn es keine Spalte Purpose gibt. <code>Yes</code>, <code>Y</code>, <code>True</code> oder <code>1</code> markiert Transit; <code>No</code>, <code>N</code>, <code>False</code>, <code>0</code> oder leer nicht.</dd></div>
+      <div><dt><strong>Start Year</strong>, <strong>End Year</strong></dt><dd>Ältere Spalten. Vierstellige Jahreszahlen, die verwendet werden, wenn die Datumszellen kein Jahr enthalten. Lassen sich in derselben Zeile nicht mit genauen Reisedaten kombinieren.</dd></div>
+    </dl>
+    <figure class="help-shot help-shot-control"><img src="/assets/article-images/de/help/csv-format-reference/csv-reference.webp" alt="Beispiel und Vorlagensteuerung für den CSV-Import" width="1320" height="1990" loading="lazy" decoding="async" /></figure>
 
     <h2>Datumsformate</h2>
-    <h3>Genaue Reisedaten</h3>
-    <p>Für genaue Reisedaten nutzt du <code>yyyy-mm-dd</code> in beiden Datumsspalten. Lass End Date nur bei einer laufenden Reise leer.</p>
-    <h3>Jahr</h3>
-    <p>Trag in Start Date ein vierstelliges Jahr ein. End Date kann ein Jahr enthalten oder leer bleiben und meint dann dasselbe Jahr. Ein Zeitraum über mehrere Jahre wird zu je einem Eintrag mit Nur Jahr pro Jahr.</p>
-    <h3>Gar keine Datumsangaben</h3>
-    <p>Lass beide Datumsfelder leer. Das Land bleibt als Besuch ohne Datumsangaben erhalten: Es zählt für die besuchten Orte, aber nie für Tagessummen, und Berichte kennzeichnen es als <strong>Unknown Date</strong>. Ein solcher Eintrag lässt sich nur über den CSV-Import anlegen.</p>
+    <div class="data-table">
+    <table>
+      <thead><tr><th>Start Date</th><th>End Date</th><th>Ergebnis</th></tr></thead>
+      <tbody>
+        <tr><td><code>2026-03-01</code></td><td><code>2026-03-05</code></td><td>Reise mit genauen Reisedaten. Eintägige Reisen verwenden dasselbe Datum zweimal.</td></tr>
+        <tr><td><code>2026-03-01</code></td><td>leer</td><td>Laufende Reise ohne Enddatum.</td></tr>
+        <tr><td><code>2019</code></td><td>leer</td><td>Reise vom Typ <a href="/de/help/history-and-import">Nur Jahr</a> für dieses Jahr.</td></tr>
+        <tr><td><code>2018</code></td><td><code>2019</code></td><td>Eine Reise vom Typ Nur Jahr, die 2018 bis 2019 umfasst.</td></tr>
+        <tr><td>leer</td><td>leer</td><td>Reise ohne Reisedaten.</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p>Jahreszahlen müssen zwischen 1900 und acht Jahren nach dem aktuellen Jahr liegen. Jahreszahlen und genaue Reisedaten lassen sich in einer Zeile nicht mischen. Reisen vom Typ Nur Jahr und Reisen ohne Reisedaten zählen für besuchte Orte und die Karte, nie aber für die Tageszählung oder Tracker. Eine Reise ohne Reisedaten lässt sich nur über den CSV-Import anlegen.</p>
 
-    <h2>Zeilen mit US-Bundesstaaten</h2>
-    <p>Nutz State nur bei einer Reise in die Vereinigten Staaten. Wenn ein US-Besuch mehrere Bundesstaaten umfasste und du Einträge auf Ebene der Bundesstaaten brauchst, nimm eine Zeile pro Bundesstaat. Eine schlichte US-Zeile ist für die Verfolgung auf Länderebene gültig.</p>
-
-    <h2>Transit</h2>
-    <p>Schreib <code>Transit</code> in Purpose, wenn du nicht ins Land eingereist bist. Transit schließt anderes aus: Kombinier es nicht mit Personal, Business oder einem anderen Zweck.</p>
+    <h2>Sonderfälle</h2>
+    <ul>
+      <li><strong>US-Bundesstaaten.</strong> Nimm eine Zeile pro Bundesstaat, wenn ein US-Besuch mehrere Bundesstaaten umfasste. Eine einfache Zeile mit <code>United States</code> ist für die Erfassung auf Länderebene gültig. Ein Name eines Bundesstaats in der Spalte Country (<code>California</code>, <code>US-CA</code>) ergibt ebenfalls eine US-Reise, ebenso ein leeres Country mit gültigem State. Zweistellige Codes, die zugleich Ländercodes sind, etwa <code>CA</code>, bleiben Länder. Ohne Pro werden Bundesstaaten-Zeilen als gewöhnliche Reisen in die Vereinigten Staaten importiert.</li>
+      <li><strong>Transit.</strong> Trag <code>Transit</code> bei Purpose ein, wenn du nicht in das Land eingereist bist. Transit schließt andere Werte aus: Steht er neben einem anderen Zweck, bleibt nur Transit erhalten.</li>
+      <li><strong>Trennzeichen und Anführungszeichen.</strong> Komma, Semikolon und Tabulator werden anhand der Kopfzeile erkannt. Setz Felder in Anführungszeichen, die das Trennzeichen oder einen Zeilenumbruch enthalten.</li>
+    </ul>
 
     <h2>Beispiel</h2>
     <pre><code>Country,State,Start Date,End Date,Purpose,Notes
@@ -35,10 +46,26 @@ United States,CA,2026-04-10,2026-04-15,Business,Conference
 Japan,,2024,,Personal,Dates not known
 United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></pre>
 
-    <h2>Trennzeichen und Anführungszeichen</h2>
-    <p>AtlasDays erkennt an der Kopfzeile Dateien, die mit Komma, Semikolon oder Tabulator getrennt sind. Setz Felder, die das Trennzeichen oder einen Zeilenumbruch enthalten, nach den üblichen CSV-Regeln in Anführungszeichen.</p>
+    <h2>Fehlermeldungen</h2>
+    <p>Jeder Fehler erscheint in der Vorschau mit seiner Zeilennummer, und die Zeile wird nicht importiert. Die Zeilennummer zählt die Kopfzeile als Zeile 1.</p>
+    <dl class="kv kv-text">
+      <div><dt>Die Spalte „Country“ wurde nicht gefunden</dt><dd>Setz eine Kopfzeile an den Anfang, die eine Spalte <strong>Country</strong> enthält.</dd></div>
+      <div><dt>Ungültiges Land: „&lt;value&gt;“</dt><dd>Verwende einen ISO-Code oder einen eindeutigen Ländernamen.</dd></div>
+      <div><dt>Ungültiger Bundesstaat: „&lt;value&gt;“</dt><dd>Verwende den Namen eines US-Bundesstaats, eine Abkürzung oder einen Code der Form <code>US-XX</code>.</dd></div>
+      <div><dt>Bundesstaat „&lt;value&gt;“ ist nur bei USA-Reisen gültig</dt><dd>Leere State oder ändere Country in United States.</dd></div>
+      <div><dt>Widersprüchliche Angaben</dt><dd>Die Zellen Country und State nennen verschiedene Bundesstaaten. Behalte nur eine Angabe.</dd></div>
+      <div><dt>Ungültiges Startdatum / Ungültiges Enddatum</dt><dd>Verwende <code>yyyy-mm-dd</code> oder eine vierstellige Jahreszahl.</dd></div>
+      <div><dt>Ungültiges Startjahr / Ungültiges Endjahr</dt><dd>Verwende eine vierstellige Jahreszahl im zulässigen Bereich.</dd></div>
+      <div><dt>Ein Enddatum ist ohne Startdatum nicht möglich</dt><dd>Ergänze ein Start Date.</dd></div>
+      <div><dt>Das Startdatum muss vor dem Enddatum liegen oder ihm entsprechen</dt><dd>Vertausche die Daten oder korrigiere sie.</dd></div>
+      <div><dt>Das Endjahr muss nach dem Startjahr liegen oder ihm entsprechen</dt><dd>Korrigiere die Jahreszahlen.</dd></div>
+      <div><dt>Ein Endjahr ist ohne Startjahr nicht möglich</dt><dd>Ergänze ein Startjahr.</dd></div>
+      <div><dt>Genaue Daten können nicht mit ungefähren Jahresangaben kombiniert werden</dt><dd>Verwende entweder Datumsangaben oder die älteren Jahresspalten.</dd></div>
+      <div><dt>Ein genaues Startdatum kann nicht mit einem Endjahr kombiniert werden, und ein Startjahr nicht mit einem genauen Enddatum</dt><dd>Verwende in einer Zeile entweder zwei Datumsangaben oder zwei Jahreszahlen.</dd></div>
+      <div><dt>Ungültiger Transitwert</dt><dd>Verwende in der älteren Spalte Transit Yes/No, True/False oder 1/0.</dd></div>
+    </dl>
 
     <section class="if-needed">
       <h2>Wenn ein Wert nicht erkannt wird</h2>
-      <p>Nutz einen ISO-Ländercode, einen eindeutigen englischen Ländernamen, Datumsangaben im ISO-Format und einen üblichen Namen oder Code eines US-Bundesstaats. Behalt die ursprüngliche Zeilennummer, damit sich der Vergleich mit der Importvorschau leicht ziehen lässt.</p>
+      <p>Verwende einen ISO-Ländercode, ISO-Datumsangaben und einen gängigen Namen oder Code eines US-Bundesstaats. Eine aus einer Tabellenkalkulation in einer anderen Sprache exportierte Datei kann übersetzte Spaltenköpfe tragen, die nicht erkannt werden: Benenne sie in die oben genannten englischen Spaltenköpfe um.</p>
     </section>

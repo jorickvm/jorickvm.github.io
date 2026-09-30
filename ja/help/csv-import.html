@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CSVインポート｜AtlasDaysヘルプセンター</title>
-  <meta name="description" content="用意したCSVの旅行履歴をAtlasDaysに取り込み、保存する前に有効な行、エラー、重複、重なりを確認する手順を説明します。" />
+  <meta name="description" content="用意したCSVの旅行履歴をAtlasDaysに取り込み、保存前に有効な行、エラー、重複、重なりを確認します。" />
   <meta property="og:title" content="CSVインポート｜AtlasDaysヘルプセンター" />
-  <meta property="og:description" content="用意したCSVの旅行履歴をAtlasDaysに取り込み、保存する前に有効な行、エラー、重複、重なりを確認する手順を説明します。" />
+  <meta property="og:description" content="用意したCSVの旅行履歴をAtlasDaysに取り込み、保存前に有効な行、エラー、重複、重なりを確認します。" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/ja/help/csv-import" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="CSVインポート｜AtlasDaysヘルプセンター" />
-  <meta name="twitter:description" content="用意したCSVの旅行履歴をAtlasDaysに取り込み、保存する前に有効な行、エラー、重複、重なりを確認する手順を説明します。" />
+  <meta name="twitter:description" content="用意したCSVの旅行履歴をAtlasDaysに取り込み、保存前に有効な行、エラー、重複、重なりを確認します。" />
   <meta name="apple-itunes-app" content="app-id=6760133544, app-argument=https://apps.apple.com/app/atlasdays-track-country-days/id6760133544" />
   <meta property="og:locale" content="ja_JP" />
   <meta property="og:image" content="https://atlasdays.app/assets/social/site-v1.png" />
@@ -68,7 +68,7 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "CSVインポート",
-    "description": "用意したCSVの旅行履歴をAtlasDaysに取り込み、保存する前に有効な行、エラー、重複、重なりを確認する手順を説明します。",
+    "description": "用意したCSVの旅行履歴をAtlasDaysに取り込み、保存前に有効な行、エラー、重複、重なりを確認します。",
     "author": {
       "@type": "Organization",
       "name": "AtlasDays"
@@ -78,7 +78,7 @@
       "name": "AtlasDays"
     },
     "url": "https://atlasdays.app/ja/help/csv-import",
-    "dateModified": "2026-08-02",
+    "dateModified": "2026-09-30",
     "inLanguage": "ja"
   }
   </script>
@@ -162,46 +162,55 @@
     <nav class="breadcrumb" aria-label="パンくずリスト"><a href="/ja/">AtlasDays</a> / <a href="/ja/help/">ヘルプセンター</a></nav>
 
     <h1>CSVインポート</h1>
-<p class="article-answer">ヘッダー行のあるCSVを用意し、「設定」→「インポート」→「CSVファイル」から選びます。旅行を保存する前に、プレビューに出た問題を片付けてください。</p>
+<p class="article-answer">CSVとして保存したスプレッドシートから、旅行をまとめて追加します。AtlasDaysはすべての行を検証して確認画面を表示し、確定するまで何も保存しません。過去の旅行を追加する<a href="/ja/help/import-trips">方法</a>の1つです。</p>
 
-    <h2>ファイルを取り込む</h2>
+    <h2>ファイルをインポートする</h2>
     <ol>
       <li><strong>「設定」→「インポート」→「CSVファイル」</strong>を開きます。</li>
-      <li>「CSVの例」や形式リファレンスを参考に、ファイルを用意します。</li>
-      <li>「ファイル」からCSVを選びます。</li>
-      <li>有効な行、エラーのある行、「重複」、「重なり」の警告を確認します。</li>
-      <li>問題のない行だけをインポートします。</li>
+      <li>Sheets、Numbers、Excelでファイルを用意し、CSVとしてエクスポートします。<strong>「CSVの例」</strong>には、正確な見出しとサンプル行が表示されます。共有ボタンからファイルを保存して、ひな形として使えます。</li>
+      <li><strong>「CSVファイルを選択」</strong>をタップし、「ファイル」からファイルを選びます。</li>
+      <li>確認画面<strong>「CSVで見つかりました」</strong>の内容をチェックします。</li>
+      <li><strong>「インポート」</strong>をタップして確定します。</li>
     </ol>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/ja/help/csv-import/csv-setup.webp" alt="CSVインポートの設定画面と「CSVの例」の操作" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/ja/help/csv-import/csv-setup.webp" alt="CSVインポートの設定画面とサンプルファイルの操作" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <p><strong>「AIでCSVを作成」</strong>は、ChatGPTやClaudeなどのアシスタント向けのプロンプトをコピーします。その後ろに旅行のメモを貼り付け、返ってきた内容をCSVとして保存します。これらのツールは、それぞれのプライバシーポリシーに従って入力を扱います。ほかの場所に貼り付けたくない情報は含めないでください。</p>
 
-    <h2>元のファイルでエラーを直す</h2>
-    <p>国、州、日付、必要なヘッダーを判別できないときは、プレビューに行番号と理由が表示されます。CSV側でその行を直してから、もう一度ファイルをインポートしてください。</p>
+    <h2>確認画面の見方</h2>
+    <p>確認画面には有効な行が並び、タップして絞り込める件数が表示されます。インポートする行は、<strong>「すべて選択」</strong>または<strong>「すべて選択解除」</strong>で選びます。</p>
+    <ul>
+      <li><strong>「重複」：</strong>すでにある旅行の中に収まっている行、または前の行と同じ行です。スキップされます。</li>
+      <li><strong>「統合」：</strong>同じ国にすでにある旅行を含んでいる行です。インポートすると、その旅行は行の日付を含むように広がり、メモと目的もまとめられます。<strong>「ファイル内の統合候補」</strong>は、ファイル内で互いにつながる行のことです。</li>
+      <li><strong>「重なり」：</strong>ほかの旅行と一部が重なっている行です。本当に2回目の滞在である場合も、同じ滞在の別バージョンである場合もあるため、残す前に日付を見比べてください。</li>
+      <li><strong>「乗り継ぎ」</strong>と<strong>「米国の州」</strong>は、その種類の行の件数です。Proでない場合、州の行は通常の米国の旅行としてインポートされます。</li>
+    </ul>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/ja/help/csv-import/csv-review.webp" alt="有効な行、無効な行、重複、重なりが含まれるCSVインポートの確認画面" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
-    <h2>警告は確認をうながす合図</h2>
-    <p>「重複」は、すでに<a href="/ja/help/timeline-and-calendar">タイムライン</a>にある旅行を繰り返している可能性を示します。「重なり」は、実際に正しいこともあれば、同じ滞在を二重に記録していることもあります。すべての行をそのまま受け入れず、日付と場所を確かめてください。</p>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/ja/help/csv-import/csv-review.webp" alt="有効な行、エラーのある行、「重複」、「重なり」が並ぶCSVインポートのプレビュー" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <h2>元のファイルのエラーを直す</h2>
+    <p>AtlasDaysが読み取れない行は、行番号と理由とともに<strong>「エラーのある行：N件」</strong>に表示されます。無効な行はインポートされません。スプレッドシートで修正し、もう一度エクスポートして、ファイルを選び直してください。</p>
 
-    <h2>タイムラインが変わるのは保存したときだけ</h2>
-    <p>ファイルを選んでプレビューを見ただけでは、旅行は追加されません。AtlasDaysが受け入れた行を書き込むのは、最後にインポートを実行したあとだけです。</p>
+    <div class="callout"><p><strong>「インポート」をタップするまで、何も変更されません。</strong>ファイルを選んで確認画面を見ただけでは、旅行は追加されません。</p></div>
+
+    <h2>エクスポートしたファイルを再インポートする</h2>
+    <p>スプレッドシートの<a href="/ja/help/export-and-reports">エクスポート</a>をCSVとして保存したものは、英語でエクスポートしたものに限り、再びインポートできます。列見出しは英語でしか読み取れません。旅行、トラッカー、設定をまるごとコピーしたい場合は、代わりに<a href="/ja/help/backup-and-restore">バックアップ</a>を使ってください。</p>
 
     <section class="if-needed">
-      <h2>すべての行がエラーになるとき</h2>
-      <p>1行目に <strong>Country</strong> ヘッダーがあるかを確認し、日付の書き方が正確かどうかも見直してください。使える列と記入例は<a href="/ja/help/csv-format-reference">CSV形式リファレンス</a>で確認できます。</p>
+      <h2>すべての行が無効になるとき</h2>
+      <p>1行目が見出し行で、<strong>Country</strong>が含まれていること、そして日付が<code>yyyy-mm-dd</code>または4桁の西暦になっていることを確認してください。対応している列、値、すべてのエラーメッセージは、<a href="/ja/help/csv-format-reference">CSV形式リファレンス</a>にまとめてあります。</p>
     </section>
     <nav class="help-next" aria-labelledby="next-csv-import">
       <h2 id="next-csv-import">次に読む</h2>
       <ul>
         <li><a href="/ja/help/csv-format-reference">
           <strong>CSV形式リファレンス</strong>
-          <span>対応する列名、日付、記入例を確認します。</span>
+          <span>対応しているすべての列、日付の形式、エラー。</span>
         </a></li>
-        <li><a href="/ja/help/history-and-import">
-          <strong>旅行の日付のしくみ</strong>
-          <span>取り込んだ記録が日付をどう保持するかを説明します。</span>
+        <li><a href="/ja/help/import-trips">
+          <strong>旅行をインポート</strong>
+          <span>インポートのソースを選び、保存する前に確認します。</span>
         </a></li>
-        <li><a href="/ja/help/export-and-reports">
-          <strong>エクスポートとレポート</strong>
-          <span>履歴を表計算ファイルやPDFとして書き出します。</span>
+        <li><a href="/ja/help/backup-and-restore">
+          <strong>バックアップと復元</strong>
+          <span>旅行、トラッカー、設定のコピーを保管します。</span>
         </a></li>
       </ul>
     </nav>
@@ -209,7 +218,7 @@
       <h2>解決しない場合</h2>
       <p><a href="mailto:support@atlasdays.app">AtlasDaysサポートに問い合わせる</a>ときは、該当する日付、想定していた結果、実際に起きたことをお知らせください。</p>
     </aside>
-    <p class="help-updated">最終更新：2026年8月2日</p>
+    <p class="help-updated">最終更新：2026年9月30日</p>
   </article>
   </main>
 

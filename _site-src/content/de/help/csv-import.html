@@ -1,29 +1,38 @@
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/de/">AtlasDays</a> / <a href="/de/help/">Hilfe</a></nav>
 
     <h1>CSV-Import</h1>
-<p class="article-answer">Bereite eine CSV-Datei mit Kopfzeile vor, wähl sie unter Einstellungen → Import → CSV-Datei aus und klär die Vorschau, bevor du Reisen sicherst.</p>
+<p class="article-answer">Füg Reisen aus einer als CSV gespeicherten Tabelle gesammelt hinzu. AtlasDays prüft jede Zeile, zeigt eine Vorschau und sichert nichts, bevor du bestätigst. Er ist eine der <a href="/de/help/import-trips">Möglichkeiten, vergangene Reisen hinzuzufügen</a>.</p>
 
     <h2>Die Datei importieren</h2>
     <ol>
-      <li>Öffne <strong>Einstellungen → Import → CSV-Datei</strong>.</li>
-      <li>Nutz das Beispiel oder die Formatreferenz, um die Datei vorzubereiten.</li>
-      <li>Wähl die CSV-Datei in „Dateien“ aus.</li>
-      <li>Prüf gültige Zeilen, ungültige Zeilen, Duplikate und Warnungen zu Überschneidungen.</li>
-      <li>Importier die Zeilen, die du übernehmen willst.</li>
+      <li>Öffne <strong>Einstellungen → Importieren → CSV-Datei</strong>.</li>
+      <li>Bereite die Datei in Google Tabellen, Numbers oder Excel vor und exportiere sie als CSV. <strong>Beispiel-CSV</strong> zeigt die genauen Spaltenköpfe mit Beispielzeilen, und über die Teilen-Taste sicherst du die Datei als Ausgangspunkt.</li>
+      <li>Tipp auf <strong>CSV-Datei auswählen</strong> und wähle die Datei in Dateien aus.</li>
+      <li>Sieh dir die Vorschau <strong>In CSV gefunden</strong> an.</li>
+      <li>Tipp auf <strong>Importieren</strong> und bestätige.</li>
     </ol>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/de/help/csv-import/csv-setup.webp" alt="Die Einrichtung des CSV-Imports mit den Bedienelementen für die Beispieldatei" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/de/help/csv-import/csv-setup.webp" alt="Der Einrichtungsbildschirm des CSV-Imports mit den Bedienelementen für die Beispieldatei" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <p><strong>CSV mit KI erstellen</strong> kopiert einen fertigen Prompt für ChatGPT, Claude oder einen anderen Assistenten. Füg danach deine Reisenotizen ein und speichere die Antwort als CSV. Diese Tools verarbeiten deinen Text nach ihren eigenen Datenschutzbestimmungen, lass also weg, was du nicht auch anderswo einfügen würdest.</p>
+
+    <h2>Die Vorschau lesen</h2>
+    <p>Die Vorschau listet gültige Zeilen und zeigt Zähler, die du antippen kannst, um zu filtern. Mit <strong>Alle auswählen</strong> oder <strong>Alle abwählen</strong> legst du fest, was importiert wird.</p>
+    <ul>
+      <li><strong>Duplikat:</strong> Die Zeile liegt innerhalb einer Reise, die du schon hast, oder wiederholt eine frühere Zeile. Sie wird übersprungen.</li>
+      <li><strong>Zusammenführen:</strong> Die Zeile deckt eine Reise ab, die du im selben Land schon hast. Beim Import wird diese Reise um die Reisedaten der Zeile erweitert, und Notizen und Zwecke werden kombiniert. <strong>Reisen zum Zusammenführen in der Datei</strong> steht für Zeilen innerhalb der Datei, die sich miteinander verbinden.</li>
+      <li><strong>Überschneidung:</strong> Die Zeile überschneidet sich teilweise mit einer anderen Reise. Das kann ein echter zweiter Aufenthalt sein oder eine zweite Fassung desselben, vergleiche also die Reisedaten, bevor du sie behältst.</li>
+      <li><strong>Transits</strong> und <strong>US-Bundesstaaten</strong> zählen Zeilen dieser Art. Ohne Pro werden Bundesstaaten-Zeilen als gewöhnliche Reisen in die Vereinigten Staaten importiert.</li>
+    </ul>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/de/help/csv-import/csv-review.webp" alt="Die Vorschau des CSV-Imports mit gültigen, ungültigen, doppelten und sich überschneidenden Zeilen" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
     <h2>Fehler in der Quelldatei beheben</h2>
-    <p>Die Vorschau nennt Zeilennummer und Grund, wenn sie ein Land, einen Bundesstaat, ein Datum oder eine erforderliche Spalte nicht auflösen kann. Korrigier diese Zeile in der CSV-Datei und importier die Datei erneut.</p>
+    <p>Zeilen, die AtlasDays nicht lesen kann, erscheinen unter <strong>N Zeilen mit Fehlern</strong>, mit Zeilennummer und Grund. Ungültige Zeilen werden nie importiert. Korrigiere sie in der Tabelle, exportiere erneut und wähle die Datei noch einmal aus.</p>
 
-    <h2>Warnungen sind Aufforderungen zum Prüfen</h2>
-    <p>Ein Duplikat kann eine Reise wiederholen, die schon in der <a href="/de/help/timeline-and-calendar">Zeitleiste</a> steht. Eine Überschneidung kann berechtigt sein oder zwei Fassungen desselben Aufenthalts darstellen. Prüf Datumsangaben und Orte, statt jede Zeile ungesehen zu übernehmen.</p>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/de/help/csv-import/csv-review.webp" alt="Die Vorschau des CSV-Imports mit gültigen, ungültigen, doppelten und überschneidenden Zeilen" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <div class="callout"><p><strong>Nichts ändert sich vor dem Import.</strong> Eine Datei auszuwählen und die Vorschau anzusehen, fügt keine Reisen hinzu.</p></div>
 
-    <h2>Erst das Sichern ändert deine Zeitleiste</h2>
-    <p>Eine Datei auszuwählen und die Vorschau anzusehen, fügt noch keine Reisen hinzu. AtlasDays schreibt die übernommenen Zeilen erst nach dem abschließenden Import.</p>
+    <h2>Einen Export erneut importieren</h2>
+    <p>Ein als CSV gespeicherter Tabellen-<a href="/de/help/export-and-reports">Export</a> lässt sich wieder importieren, sofern er auf Englisch exportiert wurde: Spaltenköpfe werden nur auf Englisch gelesen. Für eine vollständige Kopie von Reisen, Trackern und Einstellungen nimm stattdessen ein <a href="/de/help/backup-and-restore">Backup</a>.</p>
 
     <section class="if-needed">
       <h2>Wenn jede Zeile ungültig ist</h2>
-      <p>Prüf, ob die erste Zeile eine Spalte <strong>Country</strong> enthält, und kontrollier die genauen Datumsformate. Die <a href="/de/help/csv-format-reference">CSV-Format: Referenz</a> zeigt die unterstützten Spalten und Beispiele.</p>
+      <p>Prüf, ob die erste Zeile eine Kopfzeile ist und <strong>Country</strong> enthält, und ob die Reisedaten <code>yyyy-mm-dd</code> oder ein vierstelliges Jahr verwenden. Die <a href="/de/help/csv-format-reference">CSV-Format: Referenz</a> listet unterstützte Spalten, Werte und jede Fehlermeldung.</p>
     </section>

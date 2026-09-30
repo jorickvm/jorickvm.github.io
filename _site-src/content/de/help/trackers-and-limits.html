@@ -1,32 +1,43 @@
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/de/">AtlasDays</a> / <a href="/de/help/">Hilfe</a></nav>
 
     <h1>Wie Tracker-Summen berechnet werden</h1>
-<p class="article-answer">Ein Tracker wählt die passenden <a href="/de/help/history-and-import">Reisetage</a> aus seinen eingestellten Orten aus, zählt überschneidende Kalendertage nur einmal und wendet darauf seinen gesicherten Zeitraum an.</p>
+<p class="article-answer">Ein Tracker wählt die <a href="/de/help/history-and-import">Reisen mit Datum</a> an seinen Orten aus, führt sich überschneidende Kalendertage zusammen und zählt sie innerhalb seines Zeitraums. Das Ergebnis wird mit dem Limit verglichen, das du festgelegt hast.</p>
 
-    <h2>Vier Einstellungen bestimmen das Ergebnis</h2>
+    <h2>Fünf Einstellungen bestimmen das Ergebnis</h2>
     <ol>
       <li><strong>Orte:</strong> Nur Reisen in den gewählten Ländern oder US-Bundesstaaten kommen infrage.</li>
-      <li><strong>Zeitraum:</strong> Tracker mit gleitendem Zeitraum, mit Jahr und pro Einreise betrachten unterschiedliche Zeitspannen.</li>
-      <li><strong>Limit:</strong> Die Schwelle bestimmt Fortschritt und Status des Trackers.</li>
-      <li><strong>Genauigkeit der Reise:</strong> Reisen mit Datumsangaben können zählen; Nur Jahr und Transit ergeben null Tage.</li>
+      <li><strong>Einheit:</strong> Die Zeile <strong>Limit</strong> zählt <strong>Tage</strong>, <strong>Nächte</strong> oder Tage, an denen du <strong>Abwesend</strong> bist.</li>
+      <li><strong>Zeitraum:</strong> Tracker mit <strong>Gleitend</strong>, <strong>Jahr</strong> und <strong>Pro Einreise</strong> prüfen verschiedene Zeitspannen.</li>
+      <li><strong>Limit:</strong> die Schwelle, die Fortschritt und Status des Trackers bestimmt. Beim Ziel <strong>Ziel erreichen</strong> ist es stattdessen ein <strong>Ziel</strong>.</li>
+      <li><strong>Genauigkeit der Reise:</strong> Reisen mit genauen Reisedaten zählen. Reisen als Nur Jahr und Transit tragen null Tage bei.</li>
     </ol>
 
-    <h2>Gleitende Zeiträume verschieben sich jeden Tag</h2>
-    <p>Ein Tracker mit gleitendem Zeitraum blickt von seinem gewählten Stichtag aus zurück. Ältere Tage verlassen den Zeitraum, während neuere Reisetage hineinwandern, sodass sich die Summe ändern kann, ohne dass du eine Reise bearbeitest.</p>
+    <h2>Tage und Nächte</h2>
+    <p>Die Einheit <strong>Tage</strong> zählt Anreisetag und Abreisetag voll, ein Aufenthalt vom 1. Juni bis zum 3. Juni sind also drei Tage. Die Einheit <strong>Nächte</strong> zählt die Nächte zwischen An- und Abreise, derselbe Aufenthalt sind also zwei. Nächte überbrücken keine direkt aufeinanderfolgenden Aufenthalte: Die Nacht zwischen dem Abreisetag einer Reise und dem Anreisetag der nächsten zählt für keine von beiden, auch im selben Land.</p>
 
-    <h2>Tracker mit Jahr setzen sich jährlich zurück</h2>
-    <p>Diese Tracker zählen die passenden Tage über das gewählte Jahr, beginnend mit dem Datum in der Zeile „Beginnt“ des Trackers. Beginnt es am 1. Januar, ist es ein Kalenderjahr bis zum 31. Dezember; jedes andere Startdatum ergibt ein Geschäftsjahr. Ein Wechsel des Jahres ändert, welche Einträge betrachtet werden.</p>
+    <h2>Überlappende Tage zählen einmal</h2>
+    <p>Tracker mit gleitendem Zeitraum, Jahr und Tage-abwesend führen Reisen zusammen, die denselben Kalendertag abdecken, eine Überschneidung in deiner <a href="/de/help/timeline-and-calendar">Zeitleiste</a> zählt also nicht doppelt. Ein Tracker mit Pro Einreise führt Reisen gar nicht zusammen, wie unten beschrieben.</p>
 
-    <h2>Tracker pro Einreise prüfen den Zusammenhang</h2>
-    <p>Ein Tracker pro Einreise betrachtet einen zusammenhängenden Aufenthalt innerhalb seiner Orte, statt voneinander unabhängige Besuche zu einer Summe zusammenzufassen.</p>
+    <h2>Gleitende Zeiträume wandern jeden Tag</h2>
+    <p>Ein gleitender Tracker endet immer heute. Seine <strong>Dauer</strong> ist entweder eine feste Zahl von Tagen oder eine Zahl von Kalendermonaten, von heute zurückgezählt. Ältere Tage verlassen den Zeitraum, während neuere Reisetage hineinkommen, die Summe kann sich also ändern, ohne dass eine Reise bearbeitet wurde.</p>
 
-    <h2>Grafiken und Prognosen</h2>
-    <p>Die Detailgrafik zeigt, wie sich die Zahl im Lauf der Zeit ändert. Geplante künftige Reisen mit Datumsangaben können in eine Prognose einfließen, Reisen mit Nur Jahr nicht. <a href="/de/help/plan-a-trip">Prüfen, ob eine geplante Reise passt</a> geht ausführlich auf die Prognose ein.</p>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/de/help/trackers-and-limits/detail-chart.webp" alt="Die Detailgrafik eines Trackers über seinen aktiven Zeitraum" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
-    <p>Limit und Zeitraum, die diese Grafik prägen, stellst du im Tracker-Editor ein.</p>
-    <figure class="help-shot help-shot-control"><img src="/assets/article-images/de/help/trackers-and-limits/goal-window.webp" alt="Der Tracker-Editor mit den Einstellungen für Limit und Zeitraum" width="1320" height="1700" loading="lazy" decoding="async" /></figure>
+    <h2>Jahr-Tracker</h2>
+    <p>Ein Jahr-Tracker zählt über ein Jahr, das an dem Datum in seiner Zeile <strong>Beginn</strong> anfängt. Ein Beginn am 1. Januar ergibt ein Kalenderjahr; jedes andere Beginndatum macht daraus ein Steuerjahr.</p>
+
+    <h2>Tracker mit Pro Einreise folgen einem Aufenthalt</h2>
+    <p>Ein Tracker mit Pro Einreise misst einen einzelnen Aufenthalt. Er nimmt den laufenden Aufenthalt, wenn es einen gibt, sonst den zuletzt beendeten. Einzelne Besuche addiert er nicht. Hat der Tracker ein <strong>Beginn</strong>-Datum, bleiben Tage vor diesem Datum unberücksichtigt.</p>
+
+    <h2>Laufende und geplante Reisen</h2>
+    <p>Eine Reise ohne Enddatum zählt bis heute. Eine Reise, die in der Zukunft beginnt, ändert die aktuelle Summe nicht; sie erscheint im Diagramm als geplante Reise, und die Prognose nutzt sie. <a href="/de/help/plan-a-trip">Prüfen, ob eine geplante Reise passt</a> behandelt die Prognose.</p>
+
+    <h2>Das Detaildiagramm lesen</h2>
+    <p>Öffne einen Tracker, um zu sehen, wie sich seine Zählung im Lauf der Zeit verändert. Das Diagramm hat zwei Ansichten: eine scrollbare Nahansicht und eine Ansicht des gesamten Zeitraums. Zoome mit zwei Fingern oder tippe doppelt auf das Diagramm, um zu wechseln; jeder Tracker merkt sich seine eigene Wahl.</p>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/de/help/trackers-and-limits/detail-chart.webp" alt="Detaildiagramm eines Trackers über seinen aktiven Zeitraum" width="1320" height="2566" loading="lazy" decoding="async" /></figure>
+    <p>Tracker mit gleitendem Zeitraum, Jahr und Tage-abwesend zeigen unter dem Diagramm außerdem einen Satz, wenn deine Pläne das Ergebnis ändern, etwa das Datum, an dem du das Limit erreichen würdest. Tracker mit zwei Limits zeigen stattdessen für jedes Limit ein Diagramm; siehe <a href="/de/help/rule-trackers">Tracker mit zwei Limits</a>.</p>
+    <p>Die Zeilen <strong>Ziel</strong>, <strong>Limit</strong> und <strong>Zeitraum</strong>, die das Diagramm bestimmen, stellst du im Tracker-Editor ein. Tippe oben auf dem Detailbildschirm des Trackers auf das Regler-Symbol, um ihn zu öffnen.</p>
+    <figure class="help-shot help-shot-control"><img src="/assets/article-images/de/help/trackers-and-limits/goal-window.webp" alt="Der Tracker-Editor mit den Steuerungen für Limit und Zeitraum" width="1320" height="1500" loading="lazy" decoding="async" /></figure>
 
     <section class="if-needed">
-      <h2>Prüfen, welche Reisen auf einen Tracker wirken</h2>
-      <p>Öffne seine Detailansicht, prüf Orte und Zeitraum und vergleich diese Einstellungen dann mit der <a href="/de/help/timeline-and-calendar">Zeitleiste</a>. Achte besonders auf laufende Reisen, Transit, Einträge mit Nur Jahr, Überschneidungen und fehlende Angaben zu US-Bundesstaaten.</p>
+      <h2>Prüfen, welche Reisen einen Tracker beeinflussen</h2>
+      <p>Öffne seine Detailansicht und lies die Reisen, die unter dem Diagramm aufgelistet sind, und vergleich dann seine Orte und seinen Zeitraum mit deiner <a href="/de/help/timeline-and-calendar">Zeitleiste</a>. Achte besonders auf laufende Reisen, Transit, Einträge als Nur Jahr, Überschneidungen und fehlende US-Bundesstaaten. Um für diesen Tracker eine Reise hinzuzufügen, tippe über seiner Reiseliste auf <strong>+</strong>.</p>
     </section>

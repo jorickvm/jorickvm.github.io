@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Імпорт CSV – Довідковий центр AtlasDays</title>
-  <meta name="description" content="Підготуйте CSV із заголовками, виберіть його в «Налаштування» → «Імпорт» → «Файл CSV» і розберіть попередній перегляд до збереження поїздок." />
+  <meta name="description" content="Імпортуйте підготовлену історію поїздок у форматі CSV в AtlasDays і перевірте коректні рядки, помилки, дублікати й перетини перед збереженням." />
   <meta property="og:title" content="Імпорт CSV – Довідковий центр AtlasDays" />
-  <meta property="og:description" content="Підготуйте CSV із заголовками, виберіть його в «Налаштування» → «Імпорт» → «Файл CSV» і розберіть попередній перегляд до збереження поїздок." />
+  <meta property="og:description" content="Імпортуйте підготовлену історію поїздок у форматі CSV в AtlasDays і перевірте коректні рядки, помилки, дублікати й перетини перед збереженням." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/uk/help/csv-import" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Імпорт CSV – Довідковий центр AtlasDays" />
-  <meta name="twitter:description" content="Підготуйте CSV із заголовками, виберіть його в «Налаштування» → «Імпорт» → «Файл CSV» і розберіть попередній перегляд до збереження поїздок." />
+  <meta name="twitter:description" content="Імпортуйте підготовлену історію поїздок у форматі CSV в AtlasDays і перевірте коректні рядки, помилки, дублікати й перетини перед збереженням." />
   <meta name="apple-itunes-app" content="app-id=6760133544, app-argument=https://apps.apple.com/app/atlasdays-track-country-days/id6760133544" />
   <meta property="og:locale" content="uk_UA" />
   <meta property="og:image" content="https://atlasdays.app/assets/social/site-v1.png" />
@@ -68,7 +68,7 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "Імпорт CSV",
-    "description": "Підготуйте CSV із заголовками, виберіть його в «Налаштування» → «Імпорт» → «Файл CSV» і розберіть попередній перегляд до збереження поїздок.",
+    "description": "Імпортуйте підготовлену історію поїздок у форматі CSV в AtlasDays і перевірте коректні рядки, помилки, дублікати й перетини перед збереженням.",
     "author": {
       "@type": "Organization",
       "name": "AtlasDays"
@@ -78,7 +78,7 @@
       "name": "AtlasDays"
     },
     "url": "https://atlasdays.app/uk/help/csv-import",
-    "dateModified": "2026-08-02",
+    "dateModified": "2026-09-30",
     "inLanguage": "uk"
   }
   </script>
@@ -162,46 +162,55 @@
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/uk/">AtlasDays</a> / <a href="/uk/help/">Довідка</a></nav>
 
     <h1>Імпорт CSV</h1>
-<p class="article-answer">Підготуйте CSV із рядком заголовків, виберіть його в розділі «Налаштування» → «Імпорт» → «Файл CSV» і розберіться з попереднім переглядом, перш ніж зберігати поїздки.</p>
+<p class="article-answer">Масово додавайте поїздки з таблиці, збереженої як CSV. AtlasDays перевіряє кожен рядок, показує попередній перегляд і нічого не зберігає, доки ви не підтвердите. Це один зі <a href="/uk/help/import-trips">способів додати минулі поїздки</a>.</p>
 
     <h2>Імпорт файлу</h2>
     <ol>
       <li>Відкрийте <strong>Налаштування → Імпорт → Файл CSV</strong>.</li>
-      <li>Підготуйте файл за прикладом або за довідником формату.</li>
-      <li>Торкніться <strong>Вибрати файл CSV</strong> і вкажіть файл у програмі «Файли».</li>
-      <li>Перевірте коректні та помилкові рядки, дублікати й попередження про перетини.</li>
-      <li>Імпортуйте ті рядки, які ви прийняли.</li>
+      <li>Підготуйте файл у Google Таблицях, Numbers або Excel і експортуйте його як CSV. <strong>Приклад CSV</strong> показує точні заголовки із зразками рядків, а кнопка «Поділитися» зберігає файл як основу.</li>
+      <li>Торкніться <strong>Вибрати файл CSV</strong> і виберіть файл у «Файлах».</li>
+      <li>Перевірте попередній перегляд, <strong>Знайдено в CSV</strong>.</li>
+      <li>Торкніться <strong>Імпорт</strong> і підтвердьте.</li>
     </ol>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/uk/help/csv-import/csv-setup.webp" alt="Екран імпорту CSV із прикладом файлу та елементами керування" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/uk/help/csv-import/csv-setup.webp" alt="Початковий екран імпорту CSV із кнопками прикладу файлу" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <p><strong>Створити CSV за допомогою ШІ</strong> копіює готовий запит для ChatGPT, Claude чи іншого асистента. Вставте після нього свої нотатки про подорожі й збережіть відповідь як CSV. Ці інструменти обробляють ваш текст за власними політиками конфіденційності, тому не додавайте нічого, чого ви не вставили б деінде.</p>
 
-    <h2>Виправляйте помилки у вихідному файлі</h2>
-    <p>Якщо не вдається розпізнати країну, штат, дату або обов’язковий заголовок, у попередньому перегляді вказано номер рядка та причину. Виправте цей рядок у CSV й імпортуйте файл ще раз.</p>
+    <h2>Як читати попередній перегляд</h2>
+    <p>У попередньому перегляді наведено коректні рядки та лічильники, на які можна торкнутися, щоб відфільтрувати список. Кнопки <strong>Вибрати все</strong> і <strong>Зняти вибір</strong> визначають, що імпортувати.</p>
+    <ul>
+      <li><strong>Дублікат:</strong> рядок міститься в поїздці, яка вже є, або повторює попередній рядок. Його буде пропущено.</li>
+      <li><strong>Об’єднати:</strong> рядок охоплює поїздку, яка вже є в тій самій країні. Під час імпорту цю поїздку розширюють, щоб вона включала дати рядка, а нотатки й цілі поєднують. <strong>Кандидати на об’єднання у файлі</strong> означає рядки всередині файлу, які поєднуються між собою.</li>
+      <li><strong>Перетин:</strong> рядок частково перетинається з іншою поїздкою. Це може бути справді друге перебування або друга версія того самого, тому порівняйте дати, перш ніж залишати його.</li>
+      <li><strong>Транзити</strong> і <strong>Штати США</strong> показують кількість рядків цих типів. Без Pro рядки зі штатами імпортуються як звичайні поїздки до Сполучених Штатів.</li>
+    </ul>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/uk/help/csv-import/csv-review.webp" alt="Попередній перегляд імпорту CSV із коректними, некоректними рядками, дублікатами й перетинами" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
-    <h2>Попередження — це привід перевірити</h2>
-    <p>Дублікат може повторювати поїздку, яка вже є в розділі <a href="/uk/help/timeline-and-calendar">«Хронологія»</a>. Перетин буває і виправданим, і ознакою двох версій одного перебування. Звірте дати й місця, а не приймайте всі рядки поспіль.</p>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/uk/help/csv-import/csv-review.webp" alt="Попередній перегляд імпорту CSV із коректними та помилковими рядками, дублікатами й перетинами" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <h2>Виправлення помилок у вихідному файлі</h2>
+    <p>Рядки, які AtlasDays не може прочитати, з’являються в розділі <strong>N рядків із помилками</strong> з номером рядка та причиною. Некоректні рядки ніколи не імпортуються. Виправте їх у таблиці, експортуйте знову й ще раз виберіть файл.</p>
 
-    <h2>Хронологія змінюється лише під час збереження</h2>
-    <p>Поки ви вибираєте файл і дивитеся попередній перегляд, поїздки не додаються. AtlasDays записує прийняті рядки лише після підтвердження імпорту.</p>
+    <div class="callout"><p><strong>Нічого не змінюється до натискання «Імпорт».</strong> Вибір файлу й перегляд не додають поїздок.</p></div>
+
+    <h2>Повторний імпорт експорту</h2>
+    <p><a href="/uk/help/export-and-reports">Експорт</a> у таблицю, збережений як CSV, можна імпортувати знову, якщо його зроблено англійською: заголовки стовпців читаються лише англійською. Для повної копії поїздок, трекерів і налаштувань скористайтеся натомість <a href="/uk/help/backup-and-restore">резервною копією</a>.</p>
 
     <section class="if-needed">
-      <h2>Якщо всі рядки помилкові</h2>
-      <p>Переконайтеся, що в першому рядку є заголовок <strong>Country</strong> (Країна), і перевірте точні формати дат. Підтримувані стовпці та приклади наведено в <a href="/uk/help/csv-format-reference">довіднику з формату CSV</a>.</p>
+      <h2>Якщо всі рядки некоректні</h2>
+      <p>Перевірте, що перший рядок є рядком заголовків і містить <strong>Country</strong>, а дати мають вигляд <code>yyyy-mm-dd</code> або чотиризначний рік. У статті <a href="/uk/help/csv-format-reference">Довідник із формату CSV</a> наведено підтримувані стовпці, значення й усі повідомлення про помилки.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-csv-import">
       <h2 id="next-csv-import">Далі</h2>
       <ul>
         <li><a href="/uk/help/csv-format-reference">
           <strong>Довідник із формату CSV</strong>
-          <span>Перевірте підтримувані стовпці, дати й приклади.</span>
+          <span>Усі підтримувані стовпці, формати дат і помилки.</span>
         </a></li>
-        <li><a href="/uk/help/history-and-import">
-          <strong>Як працюють дати поїздок</strong>
-          <span>Як імпортовані записи зберігають свої дати.</span>
+        <li><a href="/uk/help/import-trips">
+          <strong>Імпорт поїздок</strong>
+          <span>Виберіть джерело імпорту й перевірте поїздки перед збереженням.</span>
         </a></li>
-        <li><a href="/uk/help/export-and-reports">
-          <strong>Експорт і звіти</strong>
-          <span>Експортуйте історію в таблицю або PDF.</span>
+        <li><a href="/uk/help/backup-and-restore">
+          <strong>Резервні копії та відновлення</strong>
+          <span>Збережіть копію поїздок, трекерів і налаштувань.</span>
         </a></li>
       </ul>
     </nav>
@@ -209,7 +218,7 @@
       <h2>Залишилися запитання?</h2>
       <p><a href="mailto:support@atlasdays.app">Напишіть у підтримку AtlasDays</a> і вкажіть потрібні дати, що ви очікували та що сталося.</p>
     </aside>
-    <p class="help-updated">Оновлено 2 серпня 2026 р.</p>
+    <p class="help-updated">Оновлено 30 вересня 2026 р.</p>
   </article>
   </main>
 

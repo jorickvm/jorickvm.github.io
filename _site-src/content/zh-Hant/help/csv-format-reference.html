@@ -1,32 +1,43 @@
     <nav class="breadcrumb" aria-label="導覽路徑"><a href="/zh-Hant/">AtlasDays</a> / <a href="/zh-Hant/help/">說明中心</a></nav>
 
     <h1>CSV 格式參考</h1>
-<p class="article-answer">只有 <strong>Country</strong>（國家）欄位是必填。AtlasDays 依標題名稱辨識支援的欄位，所以欄位的先後順序不影響結果。</p>
+<p class="article-answer">只有 <strong>Country</strong> 欄位是必填。AtlasDays 依英文標題名稱辨識欄位，所以欄位的先後順序不影響結果。匯入的步驟請見<a href="/zh-Hant/help/csv-import">CSV 匯入</a>。</p>
 
-    <h2>建議的標題列</h2>
-    <p><code>Country,State,Start Date,End Date,Purpose,Notes</code></p>
-    <ul>
-      <li><strong>Country：</strong>英文<a href="/zh-Hant/help/languages">國家名稱</a>、ISO 兩碼代碼，或可辨識的常見別名。</li>
-      <li><strong>State：</strong>選填，美國的州名、郵政縮寫，或 <code>US-CA</code> 這類 ISO 行政區代碼。</li>
-      <li><strong>Start Date / End Date：</strong>精確日期、年份，或依下列規則留空。</li>
-            <li><strong>Purpose：</strong>Personal（個人）、Business（商務）、Study（就學）或 <a href="/zh-Hant/help/history-and-import">Transit</a>（轉機）。Transit 以外的多個目的可以放在引號內，以逗號分隔，例如 <code>"Business, Personal"</code>。舊檔案中的 Tourism 或 Medical 仍可匯入，並會視為 Personal。</li>
-      <li><strong>Notes：</strong>選填的文字。</li>
-    </ul>
+    <h2>欄位</h2>
+    <p>建議的標題列：<code>Country,State,Start Date,End Date,Purpose,Notes</code>。標題名稱不分大小寫。無法辨識的欄位（例如 <code>Days</code>）會被忽略。若標題出現兩次，則採用第一個。</p>
+    <dl class="kv kv-text">
+      <div><dt><strong>Country</strong></dt><dd>必填。可填英文或 App 語言的國家名稱、ISO 兩碼代碼，或常見別名，例如 <code>USA</code>、<code>UK</code> 或 <code>Holland</code>。可能指兩個地方的別名會被拒絕。</dd></div>
+      <div><dt><strong>State</strong></dt><dd>選填，僅限美國行程。可填州名、兩碼郵政縮寫，或 <code>US-CA</code> 這類 ISO 代碼。也接受哥倫比亞特區（District of Columbia）。</dd></div>
+      <div><dt><strong>Start Date</strong></dt><dd>也可寫成 <code>Start</code>。日期格式為 <code>yyyy-mm-dd</code>，或四位數的年份。</dd></div>
+      <div><dt><strong>End Date</strong></dt><dd>也可寫成 <code>End</code>。日期格式為 <code>yyyy-mm-dd</code>，或四位數的年份。留空表示<strong>停留中</strong>（開始日期為精確日期），或同一年（開始日期為年份）。</dd></div>
+      <div><dt><strong>Purpose</strong></dt><dd><code>Personal</code>（個人）、<code>Business</code>（商務）、<code>Study</code>（就學）或 <code>Transit</code>（轉機），不分大小寫。Transit 以外的多個值可放在引號內，以逗號分隔，例如 <code>"Business, Personal"</code>。舊有的 <code>Tourism</code> 與 <code>Medical</code> 會匯入為 Personal。無法辨識的值會被忽略，不會產生錯誤。</dd></div>
+      <div><dt><strong>Notes</strong></dt><dd>也可寫成 <code>Note</code> 或 <code>Notes (optional)</code>。自由文字。</dd></div>
+      <div><dt><strong>Transit</strong></dt><dd>舊版欄位。只有在沒有 Purpose 欄時才會讀取。<code>Yes</code>、<code>Y</code>、<code>True</code> 或 <code>1</code> 代表轉機；<code>No</code>、<code>N</code>、<code>False</code>、<code>0</code> 或留空則不是。</dd></div>
+      <div><dt><strong>Start Year</strong>、<strong>End Year</strong></dt><dd>舊版欄位。四位數的年份，用於日期欄位沒有年份的情況。同一列不能與精確日期並用。</dd></div>
+    </dl>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/zh-Hant/help/csv-format-reference/csv-reference.webp" alt="CSV 匯入的範例和範本控制項" width="1320" height="1760" loading="lazy" decoding="async" /></figure>
 
     <h2>日期格式</h2>
-    <h3>精確日期</h3>
-    <p>兩個日期欄位都使用 <code>yyyy-mm-dd</code>。只有行程還在進行時，才把 End Date 留空。</p>
-    <h3>年份</h3>
-    <p>在 Start Date 填入四位數的年份。End Date 可以填年份，也可以留空表示同一年。跨越多年的區間，會變成每年一筆僅年份的紀錄。</p>
-    <h3>完全沒有日期</h3>
-    <p>兩個日期欄位都留空。該國家會保存成沒有日期的到訪：計入造訪過的地點，但完全不計入天數總計，報表中會標示為<strong>日期不明</strong>。這種紀錄只能透過 CSV 匯入建立。</p>
+    <div class="data-table">
+    <table>
+      <thead><tr><th>Start Date</th><th>End Date</th><th>結果</th></tr></thead>
+      <tbody>
+        <tr><td><code>2026-03-01</code></td><td><code>2026-03-05</code></td><td>精確日期的行程。同一天的行程，日期要寫兩次。</td></tr>
+        <tr><td><code>2026-03-01</code></td><td>留空</td><td>沒有結束日期、停留中的行程。</td></tr>
+        <tr><td><code>2019</code></td><td>留空</td><td>該年的<a href="/zh-Hant/help/history-and-import">僅年份</a>行程。</td></tr>
+        <tr><td><code>2018</code></td><td><code>2019</code></td><td>涵蓋 2018 至 2019 年的一筆僅年份行程。</td></tr>
+        <tr><td>留空</td><td>留空</td><td>沒有日期的行程。</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p>年份必須介於 1900 與目前年份之後第 8 年之間。同一列不能混用精確日期與年份值。僅年份的行程與沒有日期的行程，會計入造訪過的地點與地圖，但不會計入天數或追蹤器。沒有日期的行程只能透過 CSV 匯入建立。</p>
 
-    <h2>美國州別的資料列</h2>
-    <p>只有美國的行程才使用 State。如果一次美國行程去了好幾個州，而且需要州層級的紀錄，就每個州各寫一列。只填國家的美國資料列一樣有效，可用於國家層級的記錄。</p>
-
-    <h2>轉機（Transit）</h2>
-    <p>沒有實際入境時，在 Purpose 填入 <code>Transit</code>。Transit 具有排他性：不要和 Personal、Business 或其他目的並用。</p>
+    <h2>特殊情況</h2>
+    <ul>
+      <li><strong>美國各州。</strong>一次美國行程去了好幾個州時，每個州各寫一列。只寫 <code>United States</code> 的資料列有效，可用於國家層級的追蹤。在 Country 欄填州名（<code>California</code>、<code>US-CA</code>）同樣會得到美國行程，Country 留空但 State 有效時也一樣。同時也是國家代碼的兩碼代碼，例如 <code>CA</code>，仍視為國家。沒有 Pro 時，州別資料列會匯入為一般的美國行程。</li>
+      <li><strong>轉機。</strong>沒有實際入境時，在 Purpose 填入 <code>Transit</code>。Transit 具有排他性：若與其他目的並用，只會保留 Transit。</li>
+      <li><strong>分隔符號與引號。</strong>逗號、分號與 Tab 會從標題列自動判斷。內含分隔符號或換行的欄位，請加上引號。</li>
+    </ul>
 
     <h2>範例</h2>
     <pre><code>Country,State,Start Date,End Date,Purpose,Notes
@@ -35,10 +46,26 @@ United States,CA,2026-04-10,2026-04-15,Business,Conference
 Japan,,2024,,Personal,Dates not known
 United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></pre>
 
-    <h2>分隔符號與引號</h2>
-    <p>AtlasDays 會從標題列判斷檔案是以逗號、分號還是 Tab 分隔。欄位內含分隔符號或換行時，請依一般的 CSV 規則加上引號。</p>
+    <h2>錯誤訊息</h2>
+    <p>每個錯誤都會在預覽中連同列號一起顯示，該列不會匯入。列號以標題列為第 1 列。</p>
+    <dl class="kv kv-text">
+      <div><dt>找不到 Country 欄位</dt><dd>請在最前面放一列標題列，並包含 <strong>Country</strong> 欄。</dd></div>
+      <div><dt>無效的國家：「&lt;值&gt;」</dt><dd>請使用 ISO 代碼或不會混淆的國家名稱。</dd></div>
+      <div><dt>無效的州別：「&lt;值&gt;」</dt><dd>請使用美國的州名、縮寫或 <code>US-XX</code> 代碼。</dd></div>
+      <div><dt>州別「&lt;值&gt;」只適用於美國行程</dt><dd>清除 State，或將 Country 改為 United States。</dd></div>
+      <div><dt>國家與州別不一致</dt><dd>Country 與 State 儲存格指向不同的州，請只保留一個。</dd></div>
+      <div><dt>無效的開始日期／無效的結束日期</dt><dd>請使用 <code>yyyy-mm-dd</code> 或四位數的年份。</dd></div>
+      <div><dt>無效的開始年份／無效的結束年份</dt><dd>請使用範圍內的四位數年份。</dd></div>
+      <div><dt>沒有開始日期就不能填寫結束日期</dt><dd>請補上 Start Date。</dd></div>
+      <div><dt>開始日期必須等於或早於結束日期</dt><dd>請對調或更正日期。</dd></div>
+      <div><dt>結束年份必須等於或晚於開始年份</dt><dd>請更正年份。</dd></div>
+      <div><dt>沒有開始年份就不能填寫結束年份</dt><dd>請補上開始年份。</dd></div>
+      <div><dt>精確日期和大約年份欄位不能混用</dt><dd>請只使用日期，或只使用舊版的年份欄位。</dd></div>
+      <div><dt>精確的開始日期不能搭配只有年份的結束日期（反之亦然）</dt><dd>同一列請使用兩個日期，或兩個年份。</dd></div>
+      <div><dt>Transit 欄的值無效</dt><dd>舊版 Transit 欄請使用 Yes/No、True/False 或 1/0。</dd></div>
+    </dl>
 
     <section class="if-needed">
       <h2>某個值無法辨識時</h2>
-      <p>請改用 ISO 國家代碼、明確的英文國家名稱、ISO 日期格式，以及標準的美國州名或代碼。保留原本的列號，方便和匯入確認畫面對照。</p>
+      <p>請使用 ISO 國家代碼、ISO 日期，以及標準的美國州名或代碼。以其他語言的試算表匯出的檔案，標題可能被翻譯而無法辨識，請改回上述英文標題。</p>
     </section>

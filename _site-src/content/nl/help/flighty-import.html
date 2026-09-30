@@ -1,29 +1,40 @@
     <nav class="breadcrumb" aria-label="Broodkruimelpad"><a href="/nl/">AtlasDays</a> / <a href="/nl/help/">Helpcentrum</a></nav>
 
     <h1>Importeren uit Flighty</h1>
-<p class="article-answer">Exporteer je vluchtgeschiedenis uit Flighty als CSV, selecteer het bestand in AtlasDays en controleer de voorgestelde reizen voordat je ze opslaat.</p>
+<p class="article-answer">Exporteer je vluchtgeschiedenis uit Flighty als CSV, selecteer het bestand in AtlasDays en controleer de voorgestelde reizen voordat je ze opslaat. Het is een van de <a href="/nl/help/import-trips">manieren om eerdere reizen toe te voegen</a>.</p>
 
     <h2>Exporteren uit Flighty</h2>
-    <p>Exporteer je vluchtgeschiedenis uit Flighty als CSV en bewaar het bestand op een plek die bereikbaar is vanuit de iOS-bestandskiezer, zoals iCloud Drive of Op mijn iPhone.</p>
+    <p>Open in Flighty de instellingen, kies <strong>Account Data</strong> en exporteer je vluchten als CSV. Bewaar het bestand op een plek die bereikbaar is vanuit de iOS-bestandskiezer, zoals iCloud Drive of Op mijn iPhone.</p>
 
     <h2>Importeren in AtlasDays</h2>
     <ol>
       <li>Open <strong>Instellingen → Importeren → Flighty</strong>.</li>
-      <li>Tik op <strong>Selecteer Flighty-CSV</strong> en kies het geëxporteerde bestand.</li>
-      <li>Wacht totdat AtlasDays de Importcontrole heeft opgebouwd.</li>
-      <li>Controleer de voorgestelde verblijven, <a href="/nl/help/history-and-import">transit</a>, overnachtingen, duplicaten en overlappingen.</li>
-      <li>Sla alleen de rijen op die je in de <a href="/nl/help/timeline-and-calendar">Tijdlijn</a> wilt bewaren.</li>
+      <li>Tik op <strong>Kies Flighty-CSV</strong> en kies het geëxporteerde bestand.</li>
+      <li>Bekijk de controle, <strong>Gevonden in Flighty</strong>: voorgestelde verblijven, tussenstops, nachtvluchten, onvolledige reizen, duplicaten en overlappingen.</li>
+      <li>Gebruik <strong>Selecteer alles</strong> of <strong>Deselecteer alles</strong>, tik op een item om het te bewerken, tik dan op <strong>Importeren</strong> en bevestig.</li>
     </ol>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/nl/help/flighty-import/flighty-setup.webp" alt="Instelscherm voor importeren uit Flighty" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <p>De verwerking gebeurt op het apparaat en er wordt niets opgeslagen voordat je bevestigt.</p>
 
     <h2>Hoe vluchten reizen worden</h2>
-    <p>Aankomst- en vertrekluchthavens leveren aanwijzingen voor een verblijf, terwijl overstappen als Transit kunnen worden geregistreerd. Bij nachtvluchten en vluchten die kort op elkaar volgen kan beoordeling nodig zijn. Vergelijk de Importcontrole daarom met je werkelijke inreis in elk land.</p>
+    <p>AtlasDays koppelt elke luchthaven aan een land en maakt een reis aan wanneer een vlucht in een land aankomt en een latere vlucht daar vertrekt. De rest van de controle volgt daaruit:</p>
+    <ul>
+      <li><strong>Tussenstops</strong> korter dan 24 uur worden apart getoond. Stops van 10 uur of minder worden gemarkeerd als <a href="/nl/help/history-and-import">Transit</a> en tellen niet mee in de dagentelling. Bij langere stops wordt aangenomen dat je het land bent binnengekomen. Wijzig dit bij een reis met de schakelaar <strong>Transit</strong>.</li>
+      <li><strong>Nachtvluchten</strong> worden vastgelegd als Internationaal luchtruim wanneer je om middernacht in de lucht was.</li>
+      <li><strong>Onvolledige reizen</strong> missen een aankomst of een vertrek, bijvoorbeeld na reizen over land of bij een vlucht die in Flighty ontbreekt. Je kunt de ontbrekende datum in het item toevoegen of de reis open laten.</li>
+      <li><strong>Overgeslagen rijen</strong> worden met een reden vermeld, zoals een geannuleerde vlucht of een ontbrekende luchthavencode.</li>
+    </ul>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/nl/help/flighty-import/flighty-review.webp" alt="Importcontrole voor Flighty met verblijven, transit en waarschuwingen" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
+    <div class="callout"><p><strong>Alleen vluchten.</strong> Treinen, veerboten en autoreizen komen er niet in voor, en vluchten die in de export ontbreken evenmin. Vergelijk de controle met waar je je dagen echt hebt doorgebracht voordat je importeert.</p></div>
+
+    <h2>Duplicaten en overlappingen</h2>
+    <p>Items die een reis herhalen die al in de <a href="/nl/help/timeline-and-calendar">Tijdlijn</a> staat, krijgen het label <strong>Duplicaat</strong>. <strong>Samenvoegen</strong> betekent dat een item een bestaande reis dekt en ermee zou worden gecombineerd, en <strong>Overlap</strong> betekent dat de datums deels botsen met een andere reis. Controleer deze voordat je importeert.</p>
+
     <h2>Amerikaanse staten controleren</h2>
-    <p>Als de luchthaveninformatie een Amerikaanse staat ondersteunt, kan AtlasDays die voorstellen. Controleer de staat voordat je opslaat als je staatsspecifieke trackers gebruikt.</p>
+    <p>Als de luchthaveninformatie een Amerikaanse staat ondersteunt, stelt AtlasDays die voor. Met Pro wordt elke staat als aparte reis geïmporteerd. Zonder Pro worden de staten geïmporteerd als gewone reizen naar de Verenigde Staten. Controleer de staat voordat je opslaat als je staatsspecifiek bijhoudt.</p>
 
     <section class="if-needed">
       <h2>Als het bestand wordt geweigerd</h2>
-      <p>Maak een nieuwe Flighty-CSV-<a href="/nl/help/export-and-reports">export</a> en selecteer het oorspronkelijke bestand. Een spreadsheetprogramma dat de export opnieuw heeft opgeslagen of de kolommen heeft gewijzigd, kan het Flighty-formaat onbruikbaar maken.</p>
+      <p>De melding <em>Dit lijkt geen CSV-export van Flighty</em> betekent dat het bestand niet de originele Flighty-export is. Exporteer opnieuw uit Flighty en kies dat bestand, niet een bestand dat in een spreadsheet is opgeslagen of herschikt. CSV-bestanden van AtlasDays gaan via <a href="/nl/help/csv-import">Importeren uit CSV</a>. Zegt de controle <strong>Geen bruikbare Flighty-rijen gevonden</strong>, dan bevatte de export geen vluchten die AtlasDays kon gebruiken.</p>
     </section>

@@ -1,27 +1,59 @@
     <nav class="breadcrumb" aria-label="Trilha de navegação"><a href="/pt/">AtlasDays</a> / <a href="/pt/help/">Central de ajuda</a></nav>
 
     <h1>Detecção automática de viagens</h1>
-<p class="article-answer">A detecção automática usa o monitoramento de localização em segundo plano, de baixo consumo, para perceber uma viagem nova e adicioná-la na hora à <a href="/pt/help/timeline-and-calendar">Linha do tempo</a>. Você pode conferir, editar ou desfazer.</p>
+<p class="article-answer">A detecção automática usa o monitoramento de localização em segundo plano, de baixo consumo, para perceber quando você entra em um país novo e adiciona a viagem na hora à <a href="/pt/help/timeline-and-calendar">Linha do tempo</a>. Nada fica esperando aprovação, e você pode editar ou excluir a viagem depois.</p>
 
     <h2>Ative a detecção automática</h2>
     <ol>
-      <li>Abra <strong>Ajustes → Detecção automática</strong>.</li>
-      <li>Ative a chave <strong>Detecção automática</strong>.</li>
-      <li>Conceda o acesso à localização <strong>Sempre</strong> quando o iOS pedir. A chave continua desativada enquanto o acesso em segundo plano não estiver disponível.</li>
-      <li>Se quiser, ative as notificações de detecção de novos países.</li>
+      <li>Abra <strong>Ajustes → Registro de viagens → Detecção automática</strong>.</li>
+      <li>Ative <strong>Detecção automática</strong>.</li>
+      <li>O iOS pede a localização duas vezes. Aceite primeiro Durante o Uso do App e depois Sempre, quando o segundo pedido aparecer.</li>
+      <li>Se quiser, ative <strong>Avisos de mudança de país</strong> em Notificações.</li>
     </ol>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/pt/help/auto-detect-trips/auto-detect-settings.webp" alt="Ajustes da detecção automática de viagens com os controles de localização e de notificações" width="1320" height="1850" loading="lazy" decoding="async" /></figure>
+    <p>A detecção só funciona com o acesso Sempre. Se você parar em Durante o Uso do App, a chave continua desativada. Ativá-la pelo cartão da Linha do tempo (veja abaixo) também oferece a permissão de notificações depois dos dois pedidos de localização; ativá-la pelos Ajustes não oferece.</p>
 
-    <h2>Confira as viagens detectadas</h2>
-    <p>A viagem nova aparece na Linha do tempo com o país detectado e com as datas que o AtlasDays deduziu. Abra a viagem para verificar o país ou o estado dos EUA e as datas de início e de término, e depois edite ou exclua, se precisar. Se você receber uma notificação de detecção, tocar em <strong>Ignorar</strong> remove a viagem; mesmo assim, você pode adicioná-la manualmente depois.</p>
+    <h2>O que acontece quando um país é detectado</h2>
+    <ul>
+      <li>A viagem é adicionada à Linha do tempo na hora, começando na data da detecção, sem data de término até você sair.</li>
+      <li>Se o AtlasDays estiver aberto, um aviso mostra o lugar com <strong>Desfazer</strong>. Ele some depois de alguns segundos, e nenhuma notificação push aparece enquanto o app está em primeiro plano.</li>
+      <li>Se o app estiver fechado e as notificações estiverem ativadas, você recebe <em>Local detectado: &lt;lugar&gt;</em> com a data de início. Tocar nela abre a Linha do tempo.</li>
+    </ul>
+    <figure class="help-shot help-shot-control"><img src="/assets/article-images/help/auto-detect-trips/detected-banner.webp" alt="Aviso no app anunciando um país detectado, com o botão Desfazer" width="1320" height="720" loading="lazy" decoding="async" /></figure>
+    <p>A notificação tem uma única ação, <strong>Excluir viagem</strong>. Ela remove a viagem que acabou de ser adicionada. Não coloca o lugar na lista de ignorados e não mexe em nenhuma viagem cuja data de início você já tenha mudado.</p>
+
+    <h2>As viagens terminam e o trânsito é marcado automaticamente</h2>
+    <ul>
+      <li><strong>Encerramento automático.</strong> Quando uma detecção posterior mostra que você saiu de um país, a viagem anterior que estava em aberto recebe uma data de término. Se o AtlasDays estiver aberto, um aviso diz <strong>Viagem encerrada: &lt;país&gt;</strong> (ou <strong>N viagens encerradas</strong>) com <strong>Desfazer</strong> por alguns segundos.</li>
+      <li><strong>Trânsito.</strong> Uma parada curta entre dois outros países aparece primeiro como uma viagem normal. Quando a detecção seguinte chega, o AtlasDays a muda para <a href="/pt/help/history-and-import">Trânsito</a>, para que ela não entre nos totais de dias. Isso só acontece se você não tiver acrescentado a ela um motivo, notas ou fotos.</li>
+    </ul>
+
+    <h2>Revise as viagens detectadas</h2>
+    <p>Abra a viagem na Linha do tempo para conferir o país ou o estado dos EUA e as datas. A data de início é o dia em que a mudança de localização foi detectada, então edite-a onde o dia exato importar. A detecção de estados dos EUA é do Pro; sem o Pro, uma viagem aos EUA é adicionada como Estados Unidos, sem o estado.</p>
 
     <h2>Ignore lugares que você não quer detectar</h2>
-    <p>Adicione países à lista de ignorados quando a proximidade constante de uma fronteira gerar viagens de que você nunca precisa. Quem tem Pro também pode ignorar estados dos EUA específicos. Lugares ignorados continuam podendo ser adicionados manualmente.</p>
+    <p>Em <strong>Ignorados</strong>, na tela da detecção automática, escolha <strong>Países</strong> para pular lugares que o seu celular vive captando perto de uma fronteira. Quem tem o Pro também vê <strong>Estados dos EUA</strong>. Nenhuma viagem é criada para um lugar ignorado, e os dias ficam com o país ao redor. Você ainda pode adicionar essas viagens manualmente.</p>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/help/auto-detect-trips/ignore-list.webp" alt="Lista de ignorados da detecção automática com países selecionados" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
-    <h2>A detecção automática não é uma gravação contínua de GPS</h2>
-    <p>O recurso usa eventos de localização do sistema, de baixo consumo, em vez de guardar uma rota detalhada. O momento da detecção depende do iOS, da geografia, da conectividade e do sinal de fronteira disponível.</p>
+    <h2>Avisos na Linha do tempo</h2>
+    <p>A Linha do tempo pode mostrar até três cartões no topo da lista. O X em um cartão o oculta para sempre.</p>
+    <ul>
+      <li><strong>Registre viagens automaticamente</strong> oferece <strong>Ativar detecção automática</strong> e <strong>Como funciona</strong>. Aparece enquanto a detecção automática está desativada e você tem pelo menos uma viagem.</li>
+      <li><strong>Detecção automática em pausa</strong> aparece quando a Localização deixa de estar em Sempre. <strong>Abrir Ajustes</strong> leva você aos Ajustes do iOS para corrigir.</li>
+      <li><strong>Fique por dentro</strong> aparece depois que uma viagem foi adicionada neste dispositivo com as notificações desativadas, e oferece <strong>Ativar notificações</strong>.</li>
+    </ul>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/help/auto-detect-trips/prompt-card.webp" alt="Cartão da Linha do tempo que oferece ativar a detecção automática" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <p>Há mais sobre esses cartões e outros controles da Linha do tempo em <a href="/pt/help/timeline-tools">Ferramentas da linha do tempo</a>.</p>
+
+    <h2>Mantenha a detecção automática funcionando</h2>
+    <ul>
+      <li>Abra o AtlasDays de vez em quando. Se ele ficar fechado por muito tempo, o iOS pode parar de entregar atualizações de localização.</li>
+      <li>Não force o encerramento do app pelo alternador de apps. Isso interrompe o monitoramento até você abri-lo de novo.</li>
+      <li>Mantenha a Localização em Sempre para o AtlasDays. <strong>Saiba mais</strong>, na tela da detecção automática, mostra esta lista.</li>
+    </ul>
+    <div class="callout"><p><strong>Não é um GPS contínuo.</strong> A detecção automática se baseia nos eventos de Mudança Significativa de Localização do iOS, não em uma rota guardada. O momento depende do iOS, da geografia e da conectividade, então uma passagem de fronteira pode ser notada com atraso.</p></div>
 
     <section class="if-needed">
       <h2>Se nenhuma viagem aparecer</h2>
-      <p>Verifique se a detecção automática está ativada, se a localização está definida como Sempre, se o lugar não está na lista de ignorados e se as notificações do AtlasDays estão permitidas, caso você espere receber uma. Você sempre pode adicionar a viagem manualmente.</p>
+      <p>Verifique se a detecção automática está ativada, se a Localização está em Sempre, se o lugar não está na lista de ignorados e se o app foi aberto recentemente e não teve o encerramento forçado. Para receber uma notificação, verifique também se <strong>Avisos de mudança de país</strong> está ativado e se o iOS permite as notificações do AtlasDays. Você sempre pode adicionar a viagem manualmente.</p>
     </section>

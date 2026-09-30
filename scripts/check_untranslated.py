@@ -196,7 +196,11 @@ def visible_text(markup: str) -> set[str]:
 # These complete text runs are also correct native Dutch. Do not allow a
 # province token to exempt a surrounding untranslated sentence.
 # Formal source-panel titles and statute identifiers are reference labels.
-EXACT_ALLOW = {"§ 10 StAG", "§ 12b StAG","Request for International Movement Records", "travel movements requests", "Entry/Exit System", "Boletín Oficial del Estado", "8 U.S.C. 1187(a)(7)", "8 U.S.C. 1202(g)", "IMM 5257 Schedule 1", "How to Calculate Physical Presence (CIT 0407)", "How to Calculate Physical Presence CIT", "deeming rule","Destination Thailand Visa (DTV)", "Electronic Travel Authorisation (ETA)", "Long Residence UK Ancestry Hong Kong BN O", "UK Immigration Rules Part Suitability SUI"}
+# Help: Flighty's own menu path, which Flighty shows in English, and the
+# languages page's list of interface languages, each named in itself.
+HELP_EXACT_ALLOW = {"Settings → Account Data",
+                    "English US English UK Nederlands Espa ol Deutsch Fran ais T rk e Portugu s Brasil"}
+EXACT_ALLOW = HELP_EXACT_ALLOW | {"§ 10 StAG", "§ 12b StAG","Request for International Movement Records", "travel movements requests", "Entry/Exit System", "Boletín Oficial del Estado", "8 U.S.C. 1187(a)(7)", "8 U.S.C. 1202(g)", "IMM 5257 Schedule 1", "How to Calculate Physical Presence (CIT 0407)", "How to Calculate Physical Presence CIT", "deeming rule","Destination Thailand Visa (DTV)", "Electronic Travel Authorisation (ETA)", "Long Residence UK Ancestry Hong Kong BN O", "UK Immigration Rules Part Suitability SUI"}
 
 LOCALE_ALLOW = {
     "pt": {"Alberta (AHCIP)", "Québec (RAMQ)", "Malta: Nomad Residence Permit", ". Portugal:"},

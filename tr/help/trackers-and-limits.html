@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Takip toplamları nasıl hesaplanır? – AtlasDays Yardım Merkezi</title>
-  <meta name="description" content="AtlasDays takibinin seçilen yerleri, kesin seyahat günlerini, dönem türünü ve sınırı nasıl birleştirdiğini öğrenin." />
+  <meta name="description" content="AtlasDays takibinin seçili yerleri, kesin seyahat günlerini, pencere türünü ve sınırı nasıl birleştirdiğini anlayın." />
   <meta property="og:title" content="Takip toplamları nasıl hesaplanır? – AtlasDays Yardım Merkezi" />
-  <meta property="og:description" content="AtlasDays takibinin seçilen yerleri, kesin seyahat günlerini, dönem türünü ve sınırı nasıl birleştirdiğini öğrenin." />
+  <meta property="og:description" content="AtlasDays takibinin seçili yerleri, kesin seyahat günlerini, pencere türünü ve sınırı nasıl birleştirdiğini anlayın." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/tr/help/trackers-and-limits" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Takip toplamları nasıl hesaplanır? – AtlasDays Yardım Merkezi" />
-  <meta name="twitter:description" content="AtlasDays takibinin seçilen yerleri, kesin seyahat günlerini, dönem türünü ve sınırı nasıl birleştirdiğini öğrenin." />
+  <meta name="twitter:description" content="AtlasDays takibinin seçili yerleri, kesin seyahat günlerini, pencere türünü ve sınırı nasıl birleştirdiğini anlayın." />
   <meta name="apple-itunes-app" content="app-id=6760133544, app-argument=https://apps.apple.com/app/atlasdays-track-country-days/id6760133544" />
   <meta property="og:locale" content="tr_TR" />
   <meta property="og:image" content="https://atlasdays.app/assets/social/site-v1.png" />
@@ -68,7 +68,7 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "Takip toplamları nasıl hesaplanır?",
-    "description": "AtlasDays takibinin seçilen yerleri, kesin seyahat günlerini, dönem türünü ve sınırı nasıl birleştirdiğini öğrenin.",
+    "description": "AtlasDays takibinin seçili yerleri, kesin seyahat günlerini, pencere türünü ve sınırı nasıl birleştirdiğini anlayın.",
     "author": {
       "@type": "Organization",
       "name": "AtlasDays"
@@ -78,7 +78,7 @@
       "name": "AtlasDays"
     },
     "url": "https://atlasdays.app/tr/help/trackers-and-limits",
-    "dateModified": "2026-08-13",
+    "dateModified": "2026-09-30",
     "inLanguage": "tr"
   }
   </script>
@@ -162,49 +162,60 @@
     <nav class="breadcrumb" aria-label="İçerik yolu"><a href="/tr/">AtlasDays</a> / <a href="/tr/help/">Yardım Merkezi</a></nav>
 
     <h1>Takip toplamları nasıl hesaplanır?</h1>
-<p class="article-answer">Takip, yapılandırılmış yerlerindeki uygun <a href="/tr/help/history-and-import">seyahat günlerini</a> seçer, çakışan takvim günlerinin tekrarını kaldırır ve kayıtlı hesaplama dönemini uygular.</p>
+<p class="article-answer">Bir takip, yerlerindeki <a href="/tr/help/history-and-import">tarihli seyahatleri</a> seçer, çakışan takvim günlerini birleştirir ve bunları penceresi içinde sayar. Sonuç, belirlediğiniz sınırla karşılaştırılır.</p>
 
-    <h2>Sonucu dört ayar belirler</h2>
+    <h2>Sonucu beş ayar belirler</h2>
     <ol>
       <li><strong>Yerler:</strong> yalnızca seçilen ülkelerdeki veya ABD eyaletlerindeki seyahatler uygundur.</li>
-      <li><strong>Dönem:</strong> kayan, yıl ve giriş başına takipler farklı tarih aralıklarını inceler.</li>
-      <li><strong>Sınır:</strong> eşik, takibin ilerlemesini ve durumunu belirler.</li>
-      <li><strong>Seyahat kesinliği:</strong> tarihli seyahatler sayılabilir; Yalnızca yıl ve Transit sıfır gün katkıda bulunur.</li>
+      <li><strong>Birim:</strong> <strong>Sınır</strong> satırı <strong>Günler</strong>, <strong>Geceler</strong> veya <strong>Dışarıda</strong> geçen günleri sayar.</li>
+      <li><strong>Pencere:</strong> <strong>Kayan</strong>, <strong>Yıl</strong> ve <strong>Giriş başına</strong> takipleri farklı tarih aralıklarını inceler.</li>
+      <li><strong>Sınır:</strong> takibin ilerlemesini ve durumunu belirleyen eşik. <strong>Hedefe ulaş</strong> hedefiyle bunun yerine bir <strong>Hedef</strong> olur.</li>
+      <li><strong>Seyahat kesinliği:</strong> kesin tarihli seyahatler sayılır. Yalnızca yıl ve Transit seyahatleri sıfır gün katar.</li>
     </ol>
 
-    <h2>Kayan dönemler her gün ilerler</h2>
-    <p>Kayan takip, seçili başvuru tarihinden geriye doğru bakar. Eski günler dönemden çıkarken yeni seyahat günleri döneme girer. Bu nedenle bir seyahati düzenlemeseniz bile toplam değişebilir.</p>
+    <h2>Günler ve geceler</h2>
+    <p><strong>Günler</strong> birimi varış ve ayrılış günlerini tam olarak sayar; bu yüzden 1 Haziran ile 3 Haziran arasındaki kalış üç gündür. <strong>Geceler</strong> birimi varış ile ayrılış arasındaki geceleri sayar; aynı kalış iki gecedir. Geceler art arda gelen kalışları köprülemez: bir seyahatin ayrılış günü ile sonrakinin varış günü arasındaki gece, aynı ülkede bile hiçbirine sayılmaz.</p>
 
-    <h2>Yıl takipleri her yıl sıfırlanır</h2>
-    <p>Bu takipler seçilen yıl boyunca uygun günleri, takibin Başlangıç satırında ayarlanan tarihten itibaren sayar. 1 Ocak başlangıcı, 31 Aralık’a kadar süren bir takvim yılı olur; başka bir başlangıç tarihi ise mali yıl anlamına gelir. Yılı değiştirmek kapsamdaki kayıtları değiştirir.</p>
+    <h2>Çakışan günler bir kez sayılır</h2>
+    <p>Kayan, Yıl ve dışarıda günleri takipleri, aynı takvim gününü kapsayan seyahatleri birleştirir; bu yüzden <a href="/tr/help/timeline-and-calendar">zaman çizelgesindeki</a> bir çakışma iki kez sayılmaz. Giriş başına takibi ise aşağıda anlatıldığı gibi seyahatleri hiç birleştirmez.</p>
 
-    <h2>Giriş başına takipler sürekliliği değerlendirir</h2>
-    <p>Giriş başına takip, bağımsız ziyaretleri tek bir toplamda birleştirmek yerine yerlerindeki kesintisiz kalışa odaklanır.</p>
+    <h2>Kayan pencereler her gün ilerler</h2>
+    <p>Kayan bir takip her zaman bugün biter. <strong>Uzunluğu</strong> ya sabit bir gün sayısıdır ya da bugünden geriye doğru sayılan takvim ayı sayısıdır. Eski günler pencereden çıkarken yeni seyahat günleri girer; bu yüzden bir seyahati düzenlemeseniz bile toplam değişebilir.</p>
 
-    <h2>Grafikler ve tahminler</h2>
-    <p>Ayrıntı grafiği, hesabın zaman içinde nasıl değiştiğini açıklar. Tarihleri bulunan planlanmış gelecek seyahatler bir tahmine katılabilir; Yalnızca yıl seyahatleri katılamaz. <a href="/tr/help/plan-a-trip">Planlanan bir seyahatin sınıra uyup uymadığını kontrol etme</a> sayfası tahmini ayrıntılı biçimde açıklar.</p>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/tr/help/trackers-and-limits/detail-chart.webp" alt="Takibin etkin dönemini kapsayan ayrıntı grafiği" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
-    <p>Bu grafiği biçimlendiren sınır ve dönem, takip düzenleyicisinde ayarlanır.</p>
-    <figure class="help-shot help-shot-control"><img src="/assets/article-images/tr/help/trackers-and-limits/goal-window.webp" alt="Sınır ve dönem denetimlerini gösteren takip düzenleyicisi" width="1320" height="1700" loading="lazy" decoding="async" /></figure>
+    <h2>Yıl takipleri</h2>
+    <p>Yıl takibi bir yıl boyunca sayar ve <strong>Başlangıç</strong> satırındaki tarihte başlar. 1 Ocak başlangıcı takvim yılı olur; başka her başlangıç tarihi mali yıl olur.</p>
+
+    <h2>Giriş başına takipleri tek bir kalışı izler</h2>
+    <p>Giriş başına takibi tek bir kalışı ölçer. Devam eden bir kalış varsa onu, yoksa en son biten kalışı kullanır. Ayrı ziyaretleri toplamaz. Takibin bir <strong>Başlangıç</strong> tarihi varsa bu tarihten önceki günler dışarıda bırakılır.</p>
+
+    <h2>Devam eden ve planlanan seyahatler</h2>
+    <p>Bitiş tarihi olmayan bir seyahat bugüne kadar sayılır. Gelecekte başlayacak bir seyahat mevcut toplamı değiştirmez; grafikte planlanan seyahat olarak görünür ve tahmin onu kullanır. Tahmin için <a href="/tr/help/plan-a-trip">Planlanan seyahat sınıra uygun mu?</a> sayfasına bakın.</p>
+
+    <h2>Ayrıntı grafiğini okuyun</h2>
+    <p>Sayımın zaman içinde nasıl değiştiğini görmek için bir takibi açın. Grafiğin iki görünümü vardır: kaydırılabilir bir yakın görünüm ve tüm dönemin görünümü. Geçiş yapmak için grafiği iki parmakla sıkıştırın veya çift dokunun; her takip kendi seçimini hatırlar.</p>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/tr/help/trackers-and-limits/detail-chart.webp" alt="Takibin etkin penceresini kapsayan ayrıntı grafiği" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <p>Kayan, Yıl ve dışarıda günleri takipleri, planlarınız sonucu değiştirdiğinde grafiğin altında ayrıca bir cümle gösterir; örneğin sınıra ulaşacağınız tarih. İki sınırlı takipler bunun yerine her sınır için bir grafik gösterir; bkz. <a href="/tr/help/rule-trackers">İki sınırlı takipler</a>.</p>
+    <p>Grafiği biçimlendiren <strong>Hedef</strong>, <strong>Sınır</strong> ve <strong>Pencere</strong> satırları takip düzenleyicisinde ayarlanır. Düzenleyiciyi açmak için takibin ayrıntı ekranının üstündeki kaydırıcılar simgesine dokunun.</p>
+    <figure class="help-shot help-shot-control"><img src="/assets/article-images/tr/help/trackers-and-limits/goal-window.webp" alt="Sınır ve pencere denetimlerini gösteren takip düzenleyicisi" width="1320" height="1700" loading="lazy" decoding="async" /></figure>
 
     <section class="if-needed">
       <h2>Bir takibi hangi seyahatlerin etkilediğini kontrol edin</h2>
-      <p>Ayrıntı görünümünü açıp yerleri ve dönemi doğrulayın, ardından bu ayarları <a href="/tr/help/timeline-and-calendar">zaman çizelgesiyle</a> karşılaştırın. Devam eden seyahatlere, Transit ve Yalnızca yıl kayıtlarına, çakışmalara ve eksik ABD eyaleti etiketlerine özellikle dikkat edin.</p>
+      <p>Ayrıntı görünümünü açıp grafiğin altında listelenen seyahatleri okuyun, ardından takibin yerlerini ve penceresini <a href="/tr/help/timeline-and-calendar">zaman çizelgesiyle</a> karşılaştırın. Devam eden seyahatlere, Transit ve Yalnızca yıl kayıtlarına, çakışmalara ve eksik ABD eyaleti etiketlerine özellikle dikkat edin. O takip için bir seyahat eklemek üzere seyahat listesinin üstündeki <strong>+</strong> düğmesine dokunun.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-trackers-and-limits">
       <h2 id="next-trackers-and-limits">Buradan devam edin</h2>
       <ul>
+        <li><a href="/tr/help/days-away">
+          <strong>Bir yerden uzakta geçen günleri sayma</strong>
+          <span>Bir yerin içinde değil, dışında geçen günleri sayın.</span>
+        </a></li>
         <li><a href="/tr/help/smart-alerts">
           <strong>Akıllı uyarılar</strong>
-          <span>Sınıra ulaşmadan önce bildirim alın.</span>
-        </a></li>
-        <li><a href="/tr/help/day-counting">
-          <strong>AtlasDays seyahat günlerini nasıl hesaplar?</strong>
-          <span>Her toplamın arkasındaki gün hesabı kurallarını öğrenin.</span>
+          <span>Sınıra ulaşılmadan önce bildirim alın.</span>
         </a></li>
         <li><a href="/tr/help/plan-a-trip">
-          <strong>Planlanan seyahat sınıra uyuyor mu?</strong>
-          <span>Rezervasyon yapmadan önce gelecek tarihleri sınıra göre kontrol edin.</span>
+          <strong>Planlanan seyahat sınıra uygun mu?</strong>
+          <span>Planlanan bir seyahatin sınıra uyup uymadığını kontrol edin.</span>
         </a></li>
       </ul>
     </nav>
@@ -212,7 +223,7 @@
       <h2>Yine de yardıma mı ihtiyacınız var?</h2>
       <p>İlgili tarihleri, beklediğiniz sonucu ve ne olduğunu belirterek <a href="mailto:support@atlasdays.app">AtlasDays Destek ekibiyle iletişime geçin</a>.</p>
     </aside>
-    <p class="help-updated">Son güncelleme: 13 Ağustos 2026</p>
+    <p class="help-updated">Son güncelleme: 30 Eylül 2026</p>
   </article>
   </main>
 

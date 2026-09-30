@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Alertas inteligentes – Central de ajuda do AtlasDays</title>
-  <meta name="description" content="Configure os alertas inteligentes do AtlasDays para os limites dos controles e entenda quando as notificações podem aparecer." />
+  <meta name="description" content="Configure os alertas inteligentes do AtlasDays para os marcos de um controle e entenda quando as notificações podem aparecer." />
   <meta property="og:title" content="Alertas inteligentes – Central de ajuda do AtlasDays" />
-  <meta property="og:description" content="Configure os alertas inteligentes do AtlasDays para os limites dos controles e entenda quando as notificações podem aparecer." />
+  <meta property="og:description" content="Configure os alertas inteligentes do AtlasDays para os marcos de um controle e entenda quando as notificações podem aparecer." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/pt/help/smart-alerts" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Alertas inteligentes – Central de ajuda do AtlasDays" />
-  <meta name="twitter:description" content="Configure os alertas inteligentes do AtlasDays para os limites dos controles e entenda quando as notificações podem aparecer." />
+  <meta name="twitter:description" content="Configure os alertas inteligentes do AtlasDays para os marcos de um controle e entenda quando as notificações podem aparecer." />
   <meta name="apple-itunes-app" content="app-id=6760133544, app-argument=https://apps.apple.com/app/atlasdays-track-country-days/id6760133544" />
   <meta property="og:locale" content="pt_BR" />
   <meta property="og:image" content="https://atlasdays.app/assets/social/site-v1.png" />
@@ -68,7 +68,7 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "Alertas inteligentes",
-    "description": "Configure os alertas inteligentes do AtlasDays para os limites dos controles e entenda quando as notificações podem aparecer.",
+    "description": "Configure os alertas inteligentes do AtlasDays para os marcos de um controle e entenda quando as notificações podem aparecer.",
     "author": {
       "@type": "Organization",
       "name": "AtlasDays"
@@ -78,7 +78,7 @@
       "name": "AtlasDays"
     },
     "url": "https://atlasdays.app/pt/help/smart-alerts",
-    "dateModified": "2026-08-02",
+    "dateModified": "2026-09-30",
     "inLanguage": "pt"
   }
   </script>
@@ -162,46 +162,51 @@
     <nav class="breadcrumb" aria-label="Trilha de navegação"><a href="/pt/">AtlasDays</a> / <a href="/pt/help/">Central de ajuda</a></nav>
 
     <h1>Alertas inteligentes</h1>
-<p class="article-answer">Os alertas inteligentes avisam você quando um controle chega aos marcos configurados. Eles dependem da regra salva no controle, das viagens que entram na conta e da permissão de notificações.</p>
+<p class="article-answer">Os alertas inteligentes avisam quando um controle se aproxima ou chega ao limite ou à meta dele. São definidos por controle, olham para a frente com base nas suas viagens registradas e planejadas e exigem permissão de notificações.</p>
 
     <h2>Ative os alertas</h2>
     <ol>
-      <li>Abra o controle e vá para os ajustes de alerta dele.</li>
-      <li>Ative os <strong>Alertas</strong>.</li>
-      <li>Em <strong>Alertar quando</strong>, escolha os limites que quiser e defina o <strong>Horário</strong> de envio.</li>
-      <li>Permita as notificações quando o iOS pedir.</li>
+      <li>Abra o editor do controle: toque no ícone de controles deslizantes na tela de detalhe dele, ou mantenha o cartão dele pressionado no <strong>Painel</strong> e escolha <strong>Editar</strong>.</li>
+      <li>Toque na linha <strong>Alertas</strong>. O valor dela mostra <strong>Desativado</strong>, <strong>Ativado</strong> ou o número de alertas ativos.</li>
+      <li>Ative a chave <strong>Alertas</strong> e permita as notificações quando o iOS pedir.</li>
+      <li>Defina o <strong>Horário</strong> de entrega dos alertas. O padrão é 9:00.</li>
+      <li>Em <strong>Alertar quando</strong>, toque em <strong>+</strong> para adicionar um marco, ou toque no ícone de lixeira de um marco para removê-lo.</li>
+      <li>Volte e toque em <strong>Salvar</strong>. As mudanças nos alertas ficam guardadas com o controle, então <strong>Cancelar</strong> as descarta.</li>
     </ol>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/pt/help/smart-alerts/alert-settings.webp" alt="Tela de alertas do controle com o horário de envio e a lista de limites" width="1320" height="1932" loading="lazy" decoding="async" /></figure>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/pt/help/smart-alerts/alert-settings.webp" alt="Tela de alertas do controle com o horário de entrega e a lista de marcos" width="1320" height="1932" loading="lazy" decoding="async" /></figure>
 
-    <h2>Os alertas acompanham os cálculos do controle</h2>
-    <p>Se você editar uma viagem, mudar a janela do controle ou encerrar uma viagem em andamento, o AtlasDays recalcula o controle e agenda os alertas cabíveis a partir do novo resultado.</p>
+    <h2>Marcos</h2>
+    <p>Em um controle <strong>Ficar abaixo</strong>, um marco aparece como <strong>N dias restantes</strong>, e <strong>Limite atingido</strong> é o último. Em um controle <strong>Atingir meta</strong>, aparece como <strong>Faltam N dias</strong>, terminando com <strong>Meta atingida</strong>. Os controles novos começam com um conjunto baseado no limite; um controle Atingir meta começa apenas com a linha de chegada.</p>
+
+    <h2>Os alertas olham para a frente</h2>
+    <p>O AtlasDays projeta o controle cerca de um ano adiante a partir das suas viagens registradas, de uma viagem em andamento e das viagens planejadas. Ele agenda cada alerta para a data em que se espera atingir o marco, entregue no horário que você escolheu. Por isso um alerta pode chegar antes de o total ter cruzado o marco, e uma mudança em uma viagem ou na regra do controle move a data. Em um controle com dois limites, os alertas seguem o limite mais próximo.</p>
 
     <h2>A permissão de notificações é separada</h2>
-    <p>Um controle pode ter alertas configurados mesmo com as notificações desativadas no iOS. Abra <strong>Ajustes do iOS → Notificações → AtlasDays</strong> se o AtlasDays não conseguir entregá-los.</p>
+    <p>Um controle pode ter alertas configurados mesmo com as notificações desativadas no iOS. Se você ativar os alertas sem permissão, o AtlasDays mostra <strong>Notificações desativadas</strong> com um botão <strong>Abrir Ajustes</strong>. Você também pode abrir <strong>Ajustes do iOS → Notificações → AtlasDays</strong> por conta própria.</p>
 
     <h2>Alertas inteligentes e detecção automática são coisas diferentes</h2>
     <p>Os alertas inteligentes tratam dos limites dos controles. As notificações da <a href="/pt/help/auto-detect-trips">detecção automática</a> tratam de possíveis novas passagens de fronteira. Cada um tem a sua finalidade e os seus próprios ajustes.</p>
 
-    <div class="callout"><p><strong>Os alertas inteligentes exigem o <a href="/pt/help/atlasdays-pro">AtlasDays Pro</a>.</strong> O controle em si continua podendo ser consultado sem alertas.</p></div>
+    <div class="callout"><p><strong>A chave Alertas exige o <a href="/pt/help/atlasdays-pro">AtlasDays Pro</a>.</strong> Sem o Pro, você ainda pode editar a lista de marcos, mas a chave continua desativada e mostra um aviso de assinatura. O controle em si funciona sem alertas.</p></div>
 
     <section class="if-needed">
       <h2>Se um alerta não apareceu</h2>
-      <p>Verifique a permissão de notificações do AtlasDays, confirme que os alertas inteligentes estão ativados no controle certo e confira se o total atual dele realmente passou do marco configurado.</p>
+      <p>Verifique a permissão de notificações do AtlasDays no iOS, confirme que a chave <strong>Alertas</strong> está ativada nesse controle e que você o salvou, e confira o <strong>Horário</strong> de entrega. Depois compare o marco com a previsão do controle: o alerta é agendado para a data em que se espera o marco, que ainda pode estar adiante.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-smart-alerts">
       <h2 id="next-smart-alerts">Continue com</h2>
       <ul>
         <li><a href="/pt/help/widgets">
           <strong>Widgets na Tela de Início</strong>
-          <span>Deixe um controle ou o mapa na Tela de Início.</span>
+          <span>Coloque controles e o mapa na Tela de Início.</span>
+        </a></li>
+        <li><a href="/pt/help/rule-trackers">
+          <strong>Controles com dois limites</strong>
+          <span>Controles com dois limites ou um teste especial.</span>
         </a></li>
         <li><a href="/pt/help/trackers-and-limits">
           <strong>Como os totais dos controles são calculados</strong>
-          <span>Como um controle transforma viagens em um total.</span>
-        </a></li>
-        <li><a href="/pt/help/auto-detect-trips">
-          <strong>Detecção automática de viagens</strong>
-          <span>Deixe as viagens novas serem adicionadas sozinhas.</span>
+          <span>Como janelas, unidades e limites geram um total.</span>
         </a></li>
       </ul>
     </nav>
@@ -209,7 +214,7 @@
       <h2>Ainda precisa de ajuda?</h2>
       <p><a href="mailto:support@atlasdays.app">Fale com o suporte do AtlasDays</a> e informe as datas, o que você esperava e o que aconteceu.</p>
     </aside>
-    <p class="help-updated">Última atualização: 2 de agosto de 2026</p>
+    <p class="help-updated">Última atualização: 30 de setembro de 2026</p>
   </article>
   </main>
 

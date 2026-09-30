@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Flighty-Import – AtlasDays-Hilfe</title>
-  <meta name="description" content="Exportier deine Flughistorie aus Flighty als CSV-Datei, wähl sie in AtlasDays aus und prüf die vorgeschlagenen Aufenthalte, Transitfälle und Überschneidungen vor dem Sichern." />
+  <meta name="description" content="Importiere eine Flighty-CSV in AtlasDays und prüfe die Aufenthalte, Transittage und Nachtflüge, die aus deinen Flügen abgeleitet werden." />
   <meta property="og:title" content="Flighty-Import – AtlasDays-Hilfe" />
-  <meta property="og:description" content="Exportier deine Flughistorie aus Flighty als CSV-Datei, wähl sie in AtlasDays aus und prüf die vorgeschlagenen Aufenthalte, Transitfälle und Überschneidungen vor dem Sichern." />
+  <meta property="og:description" content="Importiere eine Flighty-CSV in AtlasDays und prüfe die Aufenthalte, Transittage und Nachtflüge, die aus deinen Flügen abgeleitet werden." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/de/help/flighty-import" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Flighty-Import – AtlasDays-Hilfe" />
-  <meta name="twitter:description" content="Exportier deine Flughistorie aus Flighty als CSV-Datei, wähl sie in AtlasDays aus und prüf die vorgeschlagenen Aufenthalte, Transitfälle und Überschneidungen vor dem Sichern." />
+  <meta name="twitter:description" content="Importiere eine Flighty-CSV in AtlasDays und prüfe die Aufenthalte, Transittage und Nachtflüge, die aus deinen Flügen abgeleitet werden." />
   <meta name="apple-itunes-app" content="app-id=6760133544, app-argument=https://apps.apple.com/app/atlasdays-track-country-days/id6760133544" />
   <meta property="og:locale" content="de_DE" />
   <meta property="og:image" content="https://atlasdays.app/assets/social/site-v1.png" />
@@ -68,7 +68,7 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "Flighty-Import",
-    "description": "Exportier deine Flughistorie aus Flighty als CSV-Datei, wähl sie in AtlasDays aus und prüf die vorgeschlagenen Aufenthalte, Transitfälle und Überschneidungen vor dem Sichern.",
+    "description": "Importiere eine Flighty-CSV in AtlasDays und prüfe die Aufenthalte, Transittage und Nachtflüge, die aus deinen Flügen abgeleitet werden.",
     "author": {
       "@type": "Organization",
       "name": "AtlasDays"
@@ -78,7 +78,7 @@
       "name": "AtlasDays"
     },
     "url": "https://atlasdays.app/de/help/flighty-import",
-    "dateModified": "2026-08-02",
+    "dateModified": "2026-09-30",
     "inLanguage": "de"
   }
   </script>
@@ -162,46 +162,57 @@
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/de/">AtlasDays</a> / <a href="/de/help/">Hilfe</a></nav>
 
     <h1>Flighty-Import</h1>
-<p class="article-answer">Exportier deine Flughistorie aus Flighty als CSV-Datei, wähl sie in AtlasDays aus und prüf die vorgeschlagenen Reisen, bevor du sicherst.</p>
+<p class="article-answer">Exportiere deinen Flugverlauf aus Flighty als CSV, wähle die Datei in AtlasDays aus und prüfe die vorgeschlagenen Reisen, bevor du sie sicherst. Er ist eine der <a href="/de/help/import-trips">Möglichkeiten, vergangene Reisen hinzuzufügen</a>.</p>
 
     <h2>Aus Flighty exportieren</h2>
-    <p>Exportier deine Flughistorie aus Flighty als CSV-Datei und sicher sie an einem Ort, den die Dateiauswahl von iOS erreicht, etwa in iCloud Drive oder unter „Auf meinem iPhone“.</p>
+    <p>Öffne in Flighty <strong>Einstellungen → Account Data</strong> und exportiere deine Flüge als CSV. Speichere die Datei dort, wo die iOS-Dateiauswahl sie erreicht, etwa in iCloud Drive oder auf dem iPhone.</p>
 
     <h2>In AtlasDays importieren</h2>
     <ol>
-      <li>Öffne <strong>Einstellungen → Import → Flighty</strong>.</li>
-      <li>Tipp auf <strong>Flighty-CSV auswählen</strong> und wähl die exportierte Datei.</li>
-      <li>Warte, bis AtlasDays die Vorschau aufgebaut hat.</li>
-      <li>Prüf die vorgeschlagenen Aufenthalte, die Einträge mit <a href="/de/help/history-and-import">Transit</a>, die Fälle über Nacht, Duplikate und Überschneidungen.</li>
-      <li>Sicher nur die Zeilen, die du in der <a href="/de/help/timeline-and-calendar">Zeitleiste</a> haben möchtest.</li>
+      <li>Öffne <strong>Einstellungen → Importieren → Flighty</strong>.</li>
+      <li>Tipp auf <strong>Flighty-CSV auswählen</strong> und wähle die exportierte Datei.</li>
+      <li>Sieh dir die Vorschau <strong>In Flighty gefunden</strong> an: vorgeschlagene Aufenthalte, Zwischenstopps, Nachtflüge, unvollständige Reisen, Duplikate und Überschneidungen.</li>
+      <li>Nutze <strong>Alle auswählen</strong> oder <strong>Alle abwählen</strong>, tipp einen Eintrag an, um ihn zu bearbeiten, tipp dann auf <strong>Importieren</strong> und bestätige.</li>
     </ol>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/de/help/flighty-import/flighty-setup.webp" alt="Der Einrichtungsbildschirm für den Import aus Flighty" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <p>Die Auswertung läuft auf dem Gerät, und nichts wird gesichert, bevor du bestätigst.</p>
 
     <h2>Wie aus Flügen Reisen werden</h2>
-    <p>Die Flughäfen von An- und Abflug liefern die Hinweise für einen Aufenthalt, während aus Umstiegen Einträge mit Transit werden können. Flüge über Nacht und eng aufeinanderfolgende Flüge brauchen manchmal eine eigene Einschätzung, vergleich die Vorschau also mit deiner tatsächlichen Einreise in jedes Land.</p>
+    <p>AtlasDays ordnet jeden Flughafen einem Land zu und legt eine Reise an, wenn ein Flug in einem Land ankommt und ein späterer Flug von dort abgeht. Der Rest der Vorschau ergibt sich daraus:</p>
+    <ul>
+      <li><strong>Zwischenstopps</strong> unter 24 Stunden werden gesondert geprüft. Stopps von 10 Stunden oder weniger werden als <a href="/de/help/history-and-import">Transit</a> markiert und aus der Tageszählung ausgenommen. Bei längeren Stopps wird angenommen, dass du eingereist bist. Ändere das bei einer Reise, indem du <strong>Transit</strong> umschaltest.</li>
+      <li><strong>Nachtflüge</strong> werden als internationaler Luftraum erfasst, wenn du um Mitternacht in der Luft warst.</li>
+      <li><strong>Unvollständige Reisen</strong> haben keine Ankunft oder keine Abreise, zum Beispiel nach einer Überlandreise oder wenn ein Flug in Flighty fehlt. Du kannst das fehlende Datum im Eintrag ergänzen oder die Reise ohne Enddatum lassen.</li>
+      <li><strong>Übersprungene Zeilen</strong> werden mit einem Grund aufgeführt, etwa ein stornierter Flug oder ein fehlender Flughafencode.</li>
+    </ul>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/de/help/flighty-import/flighty-review.webp" alt="Die Vorschau des Flighty-Imports mit Aufenthalten, Transit und Warnungen" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
-    <h2>Prüf die US-Bundesstaaten</h2>
-    <p>Wenn die Angaben zum Flughafen einen US-Bundesstaat stützen, kann AtlasDays ihn vorschlagen. Bestätige den Bundesstaat vor dem Sichern, wenn du dich auf die Verfolgung einzelner Bundesstaaten verlässt.</p>
+    <div class="callout"><p><strong>Nur Flüge.</strong> Züge, Fähren und Autoreisen erscheinen nicht, ebenso wenig Flüge, die im Export fehlen. Vergleiche die Vorschau vor dem Import damit, wo du deine Tage tatsächlich verbracht hast.</p></div>
+
+    <h2>Duplikate und Überschneidungen</h2>
+    <p>Einträge, die eine Reise wiederholen, die schon in der <a href="/de/help/timeline-and-calendar">Zeitleiste</a> steht, sind mit <strong>Duplikat</strong> markiert. <strong>Zusammenführen</strong> heißt: Ein Eintrag deckt eine vorhandene Reise ab und würde sich mit ihr verbinden. <strong>Überschneidung</strong> heißt: Die Reisedaten kollidieren teilweise mit einer anderen Reise. Prüf das vor dem Import.</p>
+
+    <h2>US-Bundesstaaten prüfen</h2>
+    <p>Wenn die Flughafendaten einen US-Bundesstaat hergeben, schlägt AtlasDays ihn vor. Mit Pro wird jeder Bundesstaat als eigene Reise importiert. Ohne Pro werden die Bundesstaaten als gewöhnliche Reisen in die Vereinigten Staaten importiert. Bestätige den Bundesstaat vor dem Sichern, wenn du auf bundesstaatenspezifische Erfassung angewiesen bist.</p>
 
     <section class="if-needed">
       <h2>Wenn die Datei abgelehnt wird</h2>
-      <p>Erstell einen frischen <a href="/de/help/export-and-reports">Export</a> als CSV-Datei aus Flighty und wähl genau diese Originaldatei. Eine Tabelle, die den Export neu gesichert oder umsortiert hat, passt möglicherweise nicht mehr zum Format von Flighty.</p>
+      <p>Die Meldung <em>Diese Datei scheint kein Flighty-CSV-Export zu sein</em> bedeutet, dass die Datei nicht der Originalexport von Flighty ist. Exportiere sie erneut aus Flighty und wähle genau diese Datei aus, nicht eine, die in einer Tabellenkalkulation neu gespeichert oder umgestellt wurde. AtlasDays-CSV-Dateien laufen stattdessen über den <a href="/de/help/csv-import">CSV-Import</a>. Steht in der Vorschau <strong>Keine nutzbaren Flighty-Zeilen gefunden</strong>, enthielt der Export keine Flüge, die AtlasDays verwenden konnte.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-flighty-import">
       <h2 id="next-flighty-import">Weiter mit</h2>
       <ul>
         <li><a href="/de/help/csv-import">
           <strong>CSV-Import</strong>
-          <span>Importier eine vorbereitete Tabelle deines Verlaufs.</span>
+          <span>Der Import, der dieses Format liest.</span>
         </a></li>
-        <li><a href="/de/help/photo-import">
-          <strong>Fotoimport</strong>
-          <span>Rekonstruier ältere Reisen aus deiner Fotomediathek.</span>
+        <li><a href="/de/help/import-trips">
+          <strong>Reisen importieren</strong>
+          <span>Eine Importquelle wählen und vor dem Sichern prüfen.</span>
         </a></li>
-        <li><a href="/de/help/history-and-import">
-          <strong>Wie Reisedaten funktionieren</strong>
-          <span>Datumsangaben, laufende Aufenthalte und Nur Jahr, erklärt.</span>
+        <li><a href="/de/help/csv-format-reference">
+          <strong>CSV-Format: Referenz</strong>
+          <span>Jede unterstützte Spalte, jedes Datumsformat und jeder Fehler.</span>
         </a></li>
       </ul>
     </nav>
@@ -209,7 +220,7 @@
       <h2>Brauchst du noch Hilfe?</h2>
       <p><a href="mailto:support@atlasdays.app">Wende dich an den AtlasDays-Support</a> und nenne die betreffenden Reisedaten, was du erwartet hast und was passiert ist.</p>
     </aside>
-    <p class="help-updated">Zuletzt aktualisiert am 2. August 2026</p>
+    <p class="help-updated">Zuletzt aktualisiert am 30. September 2026</p>
   </article>
   </main>
 

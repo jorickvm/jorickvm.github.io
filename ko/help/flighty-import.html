@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Flighty 가져오기 – AtlasDays 도움말 센터</title>
-  <meta name="description" content="Flighty의 항공편 기록을 CSV로 내보내 AtlasDays로 가져오는 방법. 항공편이 체류와 환승으로 바뀌는 방식, 미국 주 확인, 파일이 거부될 때의 대처를 설명합니다." />
+  <meta name="description" content="Flighty CSV를 AtlasDays로 가져오고, 항공편에서 추정한 체류, 환승일, 야간 이동을 확인합니다." />
   <meta property="og:title" content="Flighty 가져오기 – AtlasDays 도움말 센터" />
-  <meta property="og:description" content="Flighty의 항공편 기록을 CSV로 내보내 AtlasDays로 가져오는 방법. 항공편이 체류와 환승으로 바뀌는 방식, 미국 주 확인, 파일이 거부될 때의 대처를 설명합니다." />
+  <meta property="og:description" content="Flighty CSV를 AtlasDays로 가져오고, 항공편에서 추정한 체류, 환승일, 야간 이동을 확인합니다." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/ko/help/flighty-import" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Flighty 가져오기 – AtlasDays 도움말 센터" />
-  <meta name="twitter:description" content="Flighty의 항공편 기록을 CSV로 내보내 AtlasDays로 가져오는 방법. 항공편이 체류와 환승으로 바뀌는 방식, 미국 주 확인, 파일이 거부될 때의 대처를 설명합니다." />
+  <meta name="twitter:description" content="Flighty CSV를 AtlasDays로 가져오고, 항공편에서 추정한 체류, 환승일, 야간 이동을 확인합니다." />
   <meta name="apple-itunes-app" content="app-id=6760133544, app-argument=https://apps.apple.com/app/atlasdays-track-country-days/id6760133544" />
   <meta property="og:locale" content="ko_KR" />
   <meta property="og:image" content="https://atlasdays.app/assets/social/site-v1.png" />
@@ -68,7 +68,7 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "Flighty 가져오기",
-    "description": "Flighty의 항공편 기록을 CSV로 내보내 AtlasDays로 가져오는 방법. 항공편이 체류와 환승으로 바뀌는 방식, 미국 주 확인, 파일이 거부될 때의 대처를 설명합니다.",
+    "description": "Flighty CSV를 AtlasDays로 가져오고, 항공편에서 추정한 체류, 환승일, 야간 이동을 확인합니다.",
     "author": {
       "@type": "Organization",
       "name": "AtlasDays"
@@ -78,7 +78,7 @@
       "name": "AtlasDays"
     },
     "url": "https://atlasdays.app/ko/help/flighty-import",
-    "dateModified": "2026-08-02",
+    "dateModified": "2026-09-30",
     "inLanguage": "ko"
   }
   </script>
@@ -162,46 +162,57 @@
     <nav class="breadcrumb" aria-label="탐색 경로"><a href="/ko/">AtlasDays</a> / <a href="/ko/help/">도움말 센터</a></nav>
 
     <h1>Flighty 가져오기</h1>
-<p class="article-answer">Flighty에서 항공편 기록을 CSV로 내보내 AtlasDays에서 선택한 다음, 저장하기 전에 제안된 여행을 확인하십시오.</p>
+<p class="article-answer">Flighty에서 항공편 기록을 CSV로 내보내 AtlasDays에서 선택한 다음, 저장하기 전에 제안된 여행을 확인하십시오. 지난 여행을 추가하는 <a href="/ko/help/import-trips">방법</a> 중 하나입니다.</p>
 
     <h2>Flighty에서 내보내기</h2>
-    <p>Flighty에서 항공편 기록을 CSV로 내보내고, iCloud Drive나 '나의 iPhone'처럼 iOS 파일 선택기가 접근할 수 있는 위치에 저장하십시오.</p>
+    <p>Flighty의 <strong>Settings</strong>에서 <strong>Account Data</strong>를 열고 항공편을 CSV로 내보내십시오. 파일은 iCloud Drive나 '나의 iPhone'처럼 iOS 파일 선택기가 접근할 수 있는 위치에 저장하십시오.</p>
 
     <h2>AtlasDays로 가져오기</h2>
     <ol>
       <li><strong>설정 → 가져오기 → Flighty</strong>를 여십시오.</li>
       <li><strong>Flighty CSV 선택</strong>을 탭하고 내보낸 파일을 고르십시오.</li>
-      <li>AtlasDays가 확인 화면을 만들 때까지 기다리십시오.</li>
-      <li>제안된 체류, <a href="/ko/help/history-and-import">환승</a> 기록, 밤을 넘긴 경우, 중복, 겹침을 살펴보십시오.</li>
-      <li><a href="/ko/help/timeline-and-calendar">타임라인</a>에 남기고 싶은 행만 저장하십시오.</li>
+      <li>확인 화면인 <strong>Flighty에서 찾은 여행</strong>을 살펴보십시오. 제안된 체류, 경유, 야간 항공편, 불완전한 여행, 중복, 겹침이 나옵니다.</li>
+      <li><strong>모두 선택</strong> 또는 <strong>모두 선택 해제</strong>를 사용하고, 항목을 탭해 편집한 다음 <strong>가져오기</strong>를 탭하고 확정하십시오.</li>
     </ol>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/ko/help/flighty-import/flighty-setup.webp" alt="Flighty에서 가져오기 설정 화면" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <p>파일 분석은 기기에서 이루어지며, 확정하기 전에는 아무것도 저장되지 않습니다.</p>
 
     <h2>항공편이 여행이 되는 방식</h2>
-    <p>도착 공항과 출발 공항은 체류의 근거가 되고, 연결 항공편은 환승으로 처리되기도 합니다. 밤을 넘기거나 간격이 촘촘한 항공편은 판단이 필요하므로, 확인 화면을 각 국가에 실제로 입국한 시점과 비교해 보십시오.</p>
+    <p>AtlasDays는 각 공항을 국가에 대응시키고, 어떤 국가에 항공편이 도착한 뒤 이어서 그 국가에서 출발하는 항공편이 있으면 여행을 만듭니다. 확인 화면의 나머지 항목은 이 원리에서 나옵니다.</p>
+    <ul>
+      <li>24시간 미만의 <strong>경유</strong>는 따로 확인합니다. 10시간 이하의 체류는 <a href="/ko/help/history-and-import">환승</a>으로 표시되어 일수 계산에서 제외됩니다. 그보다 긴 체류는 그 국가에 입국한 것으로 봅니다. 이 설정은 여행에서 <strong>환승</strong>을 켜거나 꺼서 바꿀 수 있습니다.</li>
+      <li><strong>야간 항공편</strong>은 자정에 비행 중이었을 때 국제 공역으로 기록됩니다.</li>
+      <li><strong>불완전한 여행</strong>은 육로 이동이나 Flighty에 없는 항공편 때문에 도착 또는 출발 기록이 없는 여행입니다. 항목에서 빠진 날짜를 추가하거나, 종료일 없이 열어 둘 수 있습니다.</li>
+      <li><strong>건너뛴 행</strong>은 결항된 항공편이나 공항 코드 누락 같은 사유와 함께 나열됩니다.</li>
+    </ul>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/ko/help/flighty-import/flighty-review.webp" alt="체류, 환승, 경고가 표시된 Flighty 가져오기 확인 화면" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
+    <div class="callout"><p><strong>항공편만 해당됩니다.</strong> 기차, 페리, 자동차 여행은 나타나지 않으며, 내보내기에 없는 항공편도 마찬가지입니다. 가져오기 전에 확인 화면을 실제로 지낸 곳과 비교해 보십시오.</p></div>
+
+    <h2>중복과 겹침</h2>
+    <p><a href="/ko/help/timeline-and-calendar">타임라인</a>에 이미 있는 여행과 같은 항목은 <strong>중복</strong>으로 표시됩니다. <strong>병합</strong>은 항목이 기존 여행을 포함해 그 여행과 합쳐진다는 뜻이고, <strong>겹침</strong>은 날짜가 다른 여행과 일부 충돌한다는 뜻입니다. 가져오기 전에 확인하십시오.</p>
+
     <h2>미국 주 확인</h2>
-    <p>공항 정보로 미국 주를 알 수 있으면 AtlasDays가 주를 제안하기도 합니다. 주 단위로 관리하고 있다면 저장하기 전에 주를 확인하십시오.</p>
+    <p>공항 정보로 미국 주를 알 수 있으면 AtlasDays가 주를 제안합니다. Pro에서는 각 주가 별도의 여행으로 가져와집니다. Pro가 없으면 주는 일반 미국 여행으로 가져옵니다. 주 단위 관리를 사용한다면 저장하기 전에 주를 확인하십시오.</p>
 
     <section class="if-needed">
       <h2>파일이 거부되는 경우</h2>
-      <p>Flighty CSV <a href="/ko/help/export-and-reports">내보내기</a>를 새로 실행하고, 그렇게 만들어진 원본 파일을 선택하십시오. 스프레드시트에서 다시 저장했거나 순서를 바꾼 파일은 Flighty 형식과 맞지 않을 수 있습니다.</p>
+      <p><em>Flighty에서 내보낸 CSV가 아닌 것 같습니다</em>라는 메시지는 Flighty 원본 내보내기 파일이 아니라는 뜻입니다. Flighty에서 다시 내보내고, 스프레드시트에서 다시 저장했거나 순서를 바꾼 파일이 아니라 그 파일을 선택하십시오. AtlasDays CSV 파일은 대신 <a href="/ko/help/csv-import">CSV 가져오기</a>로 가져옵니다. 확인 화면에 <strong>사용할 수 있는 Flighty 행이 없습니다</strong>가 나타난다면 내보낸 파일에 AtlasDays가 쓸 수 있는 항공편이 없다는 뜻입니다.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-flighty-import">
       <h2 id="next-flighty-import">이어서 읽기</h2>
       <ul>
         <li><a href="/ko/help/csv-import">
           <strong>CSV 가져오기</strong>
-          <span>미리 준비한 기록 스프레드시트를 가져옵니다.</span>
+          <span>이 형식을 읽어 들이는 가져오기 절차입니다.</span>
         </a></li>
-        <li><a href="/ko/help/photo-import">
-          <strong>사진 가져오기</strong>
-          <span>사진 보관함으로 오래된 기록을 되살립니다.</span>
+        <li><a href="/ko/help/import-trips">
+          <strong>여행 가져오기</strong>
+          <span>가져오기 소스를 고르고 저장하기 전에 확인합니다.</span>
         </a></li>
-        <li><a href="/ko/help/history-and-import">
-          <strong>여행 날짜가 처리되는 방식</strong>
-          <span>날짜, 체류 중인 여행, 연도만 기록을 설명합니다.</span>
+        <li><a href="/ko/help/csv-format-reference">
+          <strong>CSV 형식 참조</strong>
+          <span>지원하는 모든 열, 날짜 형식, 오류 메시지를 정리했습니다.</span>
         </a></li>
       </ul>
     </nav>
@@ -209,7 +220,7 @@
       <h2>해결되지 않은 경우</h2>
       <p><a href="mailto:support@atlasdays.app">AtlasDays 지원팀에 문의</a>할 때 해당 날짜, 예상한 결과, 실제로 일어난 상황을 함께 알려 주십시오.</p>
     </aside>
-    <p class="help-updated">최종 업데이트: 2026년 8월 2일</p>
+    <p class="help-updated">최종 업데이트: 2026년 9월 30일</p>
   </article>
   </main>
 

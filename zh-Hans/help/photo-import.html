@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>照片导入｜AtlasDays 帮助中心</title>
-  <meta name="description" content="AtlasDays 在设备上扫描照片的时间和位置信息，把线索整理成建议的行程供审核。照片不会上传，缺少定位的照片撑不起建议。" />
+  <meta name="description" content="利用照片的位置元数据生成 AtlasDays 行程建议，存储之前先核对日期、国家、重复和重叠。" />
   <meta property="og:title" content="照片导入｜AtlasDays 帮助中心" />
-  <meta property="og:description" content="AtlasDays 在设备上扫描照片的时间和位置信息，把线索整理成建议的行程供审核。照片不会上传，缺少定位的照片撑不起建议。" />
+  <meta property="og:description" content="利用照片的位置元数据生成 AtlasDays 行程建议，存储之前先核对日期、国家、重复和重叠。" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/zh-Hans/help/photo-import" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="照片导入｜AtlasDays 帮助中心" />
-  <meta name="twitter:description" content="AtlasDays 在设备上扫描照片的时间和位置信息，把线索整理成建议的行程供审核。照片不会上传，缺少定位的照片撑不起建议。" />
+  <meta name="twitter:description" content="利用照片的位置元数据生成 AtlasDays 行程建议，存储之前先核对日期、国家、重复和重叠。" />
   <meta name="apple-itunes-app" content="app-id=6760133544, app-argument=https://apps.apple.com/app/atlasdays-track-country-days/id6760133544" />
   <meta property="og:locale" content="zh_CN" />
   <meta property="og:image" content="https://atlasdays.app/assets/social/site-v1.png" />
@@ -68,7 +68,7 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "照片导入",
-    "description": "AtlasDays 在设备上扫描照片的时间和位置信息，把线索整理成建议的行程供审核。照片不会上传，缺少定位的照片撑不起建议。",
+    "description": "利用照片的位置元数据生成 AtlasDays 行程建议，存储之前先核对日期、国家、重复和重叠。",
     "author": {
       "@type": "Organization",
       "name": "AtlasDays"
@@ -78,7 +78,7 @@
       "name": "AtlasDays"
     },
     "url": "https://atlasdays.app/zh-Hans/help/photo-import",
-    "dateModified": "2026-08-02",
+    "dateModified": "2026-09-30",
     "inLanguage": "zh-Hans"
   }
   </script>
@@ -162,46 +162,55 @@
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/zh-Hans/">AtlasDays</a> / <a href="/zh-Hans/help/">帮助中心</a></nav>
 
     <h1>照片导入</h1>
-<p class="article-answer">照片导入会在设备上扫描照片图库里的位置信息，把线索整理成建议的行程，存储之前可以逐一核对。</p>
+<p class="article-answer">照片导入会在设备上扫描照片图库中的日期和位置，把它们整理成建议的行程，经你确认之前不会存储任何内容。这是补录过往行程的<a href="/zh-Hans/help/import-trips">方式之一</a>。</p>
 
     <h2>开始照片导入</h2>
     <ol>
       <li>打开<strong>设置 → 导入 → 照片</strong>。</li>
-      <li>出现询问时，允许访问照片。</li>
-      <li>开始扫描，并在分析图库期间让 AtlasDays 保持打开。</li>
-      <li>存储之前先审核提出的行程。</li>
+      <li>轻点<strong>在照片中查找行程</strong>。</li>
+      <li>iOS 询问时，请选择<strong>完全访问权限</strong>。使用有限访问权限无法推断行程。</li>
+      <li>扫描期间保持 AtlasDays 打开，然后轻点<strong>确认 N 个行程</strong>。</li>
     </ol>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/zh-Hans/help/photo-import/photo-setup.webp" alt="照片导入的设置界面" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/zh-Hans/help/photo-import/photo-setup.webp" alt="照片导入的设置屏幕" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
-    <h2>AtlasDays 会分析哪些数据</h2>
-    <p>AtlasDays 会使用照片的时间戳，以及内嵌的位置坐标（有的话）。扫描和判断国家都在你的设备上进行，照片本身不会上传到 AtlasDays。</p>
+    <h2>AtlasDays 会读取什么</h2>
+    <p>AtlasDays 读取照片和视频的时间戳与位置，并且总是扫描整个图库。屏幕截图和屏幕录制会被跳过。扫描和国家判断都在设备上进行，无需网络，也不会向 AtlasDays 上传任何内容。存储下来的行程只保留照片的本地引用和小尺寸预览缓存，原始照片仍留在“照片”中。</p>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/zh-Hans/help/photo-import/photo-scan.webp" alt="照片导入扫描进行中" width="1320" height="2100" loading="lazy" decoding="async" /></figure>
 
     <h2>每一项建议都要核对</h2>
-    <p>检查国家或美国的州、开始和结束日期，以及任何重复或重叠提示。照片的位置是佐证，并不能证明确切在哪一刻跨过了边境。</p>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/zh-Hans/help/photo-import/photo-review.webp" alt="照片导入的审核界面，含建议的行程和提示" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <p>确认屏幕<strong>照片中找到的行程</strong>列出所有建议的行程。摘要行会显示重复、待合并、重叠、可能的转机的数量，Pro 用户还会显示美国各州的数量。每条行程上可能带有标签，例如<strong>重复</strong>、<strong>合并</strong>、<strong>与现有行程重叠</strong>、<strong>已推断间隔</strong>、<strong>靠近边界</strong>或<strong>单张照片</strong>。</p>
+    <ul>
+      <li>轻点行程可以更改国家或日期，也可以把它排除在外。整个列表可用<strong>全选</strong>或<strong>取消全选</strong>。</li>
+      <li>行程从某个国家的第一张照片的日期开始，到最后一张照片的日期结束，所以日期只是估计。从消息或网页保存的照片，可能带来你从未去过的国家。</li>
+      <li>美国各州对 Pro 用户会作为单独的行程提出建议。没有 Pro 时，它们会作为普通的美国行程导入。</li>
+      <li>如果还没有设置居住国，会有一行让你确认，以便计算海外天数。</li>
+    </ul>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/zh-Hans/help/photo-import/photo-review.webp" alt="照片导入的确认屏幕，含建议的行程和提示" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <p>轻点<strong>导入</strong>并确认，即可把所选行程存储到<a href="/zh-Hans/help/timeline-and-calendar">时间轴</a>。确认屏幕上的<strong>了解更多</strong>会打开<strong>行程如何推断</strong>。</p>
+
+    <div class="callout"><p><strong>照片是佐证，不是证明。</strong>夹在两趟相近行程之间的短暂停留，可能被标记为转机，而转机永远不计入天数总计。凡是在该国确实待过一段时间的停留，请关闭转机。</p></div>
 
     <h2>空档要保守处理</h2>
-    <p>没有位置信息的照片撑不起任何建议。带地理位置的照片之间间隔太久时，也可能产生需要手动更正的起止日期。之后有了更好的佐证，可以在<a href="/zh-Hans/help/timeline-and-calendar">时间轴</a>里编辑已存储的行程。</p>
+    <p>没有位置信息的照片撑不起任何建议。带地理位置的照片之间间隔太久时，也可能产生需要手动更正的起止日期。之后有了更好的佐证，可以在时间轴里编辑已存储的行程。若想把照片关联到已有的行程，请改用时间轴菜单里的<strong>查找照片</strong>，详见<a href="/zh-Hans/help/timeline-tools">搜索、筛选与自定义时间轴</a>。</p>
 
     <section class="if-needed">
       <h2>找不到任何行程时</h2>
-      <p>确认 AtlasDays 能访问你要扫描的照片，并检查拍那些照片时是否开启了位置信息。</p>
+      <p>如果出现<strong>需要照片访问权限</strong>，请打开 iOS“设置”，给予 AtlasDays 对“照片”的完全访问权限。如果扫描结束时显示<strong>照片中找不到行程</strong>，请检查拍照时是否开启了位置信息。时间轴中已有的行程会被标记为重复，不会再次提出建议。</p>
     </section>
     <nav class="help-next" aria-labelledby="next-photo-import">
       <h2 id="next-photo-import">接着阅读</h2>
       <ul>
         <li><a href="/zh-Hans/help/flighty-import">
           <strong>Flighty 导入</strong>
-          <span>把 Flighty 的航班记录变成行程。</span>
+          <span>改为从 Flighty 导入飞行记录。</span>
         </a></li>
         <li><a href="/zh-Hans/help/auto-detect-trips">
           <strong>自动检测行程</strong>
-          <span>让新的旅程自动加进来。</span>
+          <span>让新行程自动添加。</span>
         </a></li>
-        <li><a href="/zh-Hans/help/privacy-location-and-sync">
-          <strong>隐私与权限</strong>
-          <span>AtlasDays 能看到什么，什么永远留在设备上。</span>
+        <li><a href="/zh-Hans/help/csv-import">
+          <strong>CSV 导入</strong>
+          <span>读取这种格式的导入流程。</span>
         </a></li>
       </ul>
     </nav>
@@ -209,7 +218,7 @@
       <h2>仍需要帮助吗？</h2>
       <p><a href="mailto:support@atlasdays.app">联系 AtlasDays 支持</a>时，请一并提供相关日期、原本预期的结果，以及实际发生的情况。</p>
     </aside>
-    <p class="help-updated">最后更新：2026年8月2日</p>
+    <p class="help-updated">最后更新：2026年9月30日</p>
   </article>
   </main>
 

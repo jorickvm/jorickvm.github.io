@@ -1,44 +1,71 @@
     <nav class="breadcrumb" aria-label="パンくずリスト"><a href="/ja/">AtlasDays</a> / <a href="/ja/help/">ヘルプセンター</a></nav>
 
     <h1>CSV形式リファレンス</h1>
-<p class="article-answer">必須の列は <strong>Country</strong> だけです。AtlasDaysは対応する列をヘッダー名で見つけるため、列の並び順は自由です。</p>
+<p class="article-answer">必須の列は<strong>Country</strong>だけです。AtlasDaysは列を英語のヘッダー名で見つけるため、列の並び順は自由です。インポートの手順は<a href="/ja/help/csv-import">CSVインポート</a>にあります。</p>
 
-    <h2>推奨するヘッダー</h2>
-    <p><code>Country,State,Start Date,End Date,Purpose,Notes</code></p>
-    <ul>
-      <li><strong>Country:</strong> 英語の<a href="/ja/help/languages">国名</a>、ISOの2文字コード、または広く使われる別名。</li>
-      <li><strong>State:</strong> 米国の州名、郵便略号、または <code>US-CA</code> のようなISO細分区分コード（任意）。</li>
-      <li><strong>Start Date / End Date:</strong> 下記のルールに従って、正確な日付、年、または空欄。</li>
-      <li><strong>Purpose:</strong> Personal、Business、Study、<a href="/ja/help/history-and-import">Transit</a>のいずれかです。Transit以外は、<code>"Business, Personal"</code>のように引用符で囲み、カンマで複数の目的を指定できます。旧形式のTourismやMedicalも、Personalとしてインポートできます。</li>
-      <li><strong>Notes:</strong> 自由に書けるテキスト（任意）。</li>
-    </ul>
+    <h2>列</h2>
+    <p>推奨するヘッダー行は<code>Country,State,Start Date,End Date,Purpose,Notes</code>です。ヘッダー名は大文字と小文字を区別しません。<code>Days</code>のように認識されない列は無視されます。同じヘッダーが2つある場合は、最初のものが使われます。</p>
+    <dl class="kv kv-text">
+      <div><dt><strong>Country</strong></dt><dd>必須。英語またはアプリの言語での国名、ISOの2文字コード、または<code>USA</code>、<code>UK</code>、<code>Holland</code>のように広く使われる別名。2つの場所を指しうる別名は受け付けられません。</dd></div>
+      <div><dt><strong>State</strong></dt><dd>任意。米国の旅行のみ。州名、郵便の2文字略号、または<code>US-CA</code>のようなISOコード。District of Columbiaも使えます。</dd></div>
+      <div><dt><strong>Start Date</strong></dt><dd><code>Start</code>でも受け付けられます。<code>yyyy-mm-dd</code>形式の日付、または4桁の年。</dd></div>
+      <div><dt><strong>End Date</strong></dt><dd><code>End</code>でも受け付けられます。<code>yyyy-mm-dd</code>形式の日付、または4桁の年。空欄の場合、開始が正確な日付なら滞在中、開始が年なら同じ年になります。</dd></div>
+      <div><dt><strong>Purpose</strong></dt><dd><code>Personal</code>、<code>Business</code>、<code>Study</code>、<code>Transit</code>のいずれかで、大文字と小文字は区別しません。Transit以外の値は、<code>"Business, Personal"</code>のように引用符の中でカンマで区切って組み合わせられます。旧形式の<code>Tourism</code>と<code>Medical</code>はPersonalとしてインポートされます。認識されない値は、エラーにならず無視されます。</dd></div>
+      <div><dt><strong>Notes</strong></dt><dd><code>Note</code>、<code>Notes (optional)</code>でも受け付けられます。自由に書けるテキスト。</dd></div>
+      <div><dt><strong>Transit</strong></dt><dd>旧形式の列。Purpose列がない場合のみ読み取られます。<code>Yes</code>、<code>Y</code>、<code>True</code>、<code>1</code>は乗り継ぎとして扱われ、<code>No</code>、<code>N</code>、<code>False</code>、<code>0</code>、または空欄はそうなりません。</dd></div>
+      <div><dt><strong>Start Year</strong>、<strong>End Year</strong></dt><dd>旧形式の列。日付のセルに年が入っていない場合に使われる4桁の年。同じ行の正確な日付と併用できません。</dd></div>
+    </dl>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/ja/help/csv-format-reference/csv-reference.webp" alt="CSVインポートの「CSVの例」とテンプレートの操作" width="1320" height="1760" loading="lazy" decoding="async" /></figure>
 
-    <h2>日付の書き方</h2>
-    <h3>正確な日付</h3>
-    <p>どちらの日付列にも <code>yyyy-mm-dd</code> を使います。End Date を空にできるのは、滞在中の旅行だけです。</p>
-    <h3>年のみ</h3>
-    <p>Start Date に4桁の年を書きます。End Date には年を書くか、同じ年を表す空欄のままにできます。複数年にまたがる範囲は、1年につき1件の「年のみ」の記録になります。</p>
-    <h3>日付をまったく書かない場合</h3>
-    <p>日付のセルを両方とも空にします。その国は日付のない訪問として残ります。訪問済みの場所には数えられますが日数の合計には一切入らず、レポートでは<strong>「不明な日付」</strong>と表示されます。この形の記録は、CSVインポートでしか作れません。</p>
+    <h2>日付の形式</h2>
+    <div class="data-table">
+    <table>
+      <thead><tr><th>Start Date</th><th>End Date</th><th>結果</th></tr></thead>
+      <tbody>
+        <tr><td><code>2026-03-01</code></td><td><code>2026-03-05</code></td><td>正確な日付の旅行。日帰りの旅行は同じ日付を2回書きます。</td></tr>
+        <tr><td><code>2026-03-01</code></td><td>空欄</td><td>終了日のない、滞在中の旅行。</td></tr>
+        <tr><td><code>2019</code></td><td>空欄</td><td>その年の<a href="/ja/help/history-and-import">「年のみ」</a>の旅行。</td></tr>
+        <tr><td><code>2018</code></td><td><code>2019</code></td><td>2018年から2019年までをカバーする、1件の「年のみ」の旅行。</td></tr>
+        <tr><td>空欄</td><td>空欄</td><td>日付のない旅行。</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p>年は、1900年から現在の年の8年後までの範囲でなければなりません。1つの行で、正確な日付と年の値を混在させることはできません。「年のみ」の旅行と日付のない旅行は、訪問済みの場所とマップには数えられますが、滞在日数やトラッカーには数えられません。日付のない旅行は、CSVインポートでしか作成できません。</p>
 
-    <h2>米国の州の行</h2>
-    <p>State を使うのは、米国の旅行だけです。1回の米国滞在で複数の州をまわり、州ごとの記録が必要な場合は、州ごとに1行ずつ書きます。国単位で記録するだけなら、州を空にした米国の行でもかまいません。</p>
+    <h2>特別なケース</h2>
+    <ul>
+      <li><strong>米国の州。</strong>1回の米国滞在で複数の州をまわった場合は、州ごとに1行ずつ書きます。国単位で記録するだけなら、通常の<code>United States</code>の行で問題ありません。Country列に州名（<code>California</code>、<code>US-CA</code>）を書いても米国の旅行になり、Countryが空で有効なStateがある場合も同様です。<code>CA</code>のように国コードとしても使われる2文字コードは、国として扱われます。Proでない場合、州の行は通常の米国の旅行としてインポートされます。</li>
+      <li><strong>乗り継ぎ。</strong>入国していない場合は、Purposeに<code>Transit</code>と書きます。Transitはほかの目的と併用できません。ほかの目的と一緒に書かれている場合は、Transitだけが残ります。</li>
+      <li><strong>区切り文字と引用符。</strong>カンマ、セミコロン、タブは、ヘッダー行から自動的に判別されます。区切り文字や改行を含むフィールドは、引用符で囲んでください。</li>
+    </ul>
 
-    <h2>乗り継ぎ（Transit）</h2>
-    <p>入国していない場合は、Purposeに<code>Transit</code>と書きます。Transitはほかの目的と併用できません。PersonalやBusinessなどと組み合わせないでください。</p>
-
-    <h2>記入例</h2>
+    <h2>例</h2>
     <pre><code>Country,State,Start Date,End Date,Purpose,Notes
 France,,2026-03-01,2026-03-05,Personal,
 United States,CA,2026-04-10,2026-04-15,Business,Conference
 Japan,,2024,,Personal,Dates not known
 United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></pre>
 
-    <h2>区切り文字と引用符</h2>
-    <p>AtlasDaysは、ヘッダー行を見てカンマ区切り、セミコロン区切り、タブ区切りのいずれかを判別します。区切り文字や改行を含むフィールドは、通常のCSVのルールどおり引用符で囲んでください。</p>
+    <h2>エラーメッセージ</h2>
+    <p>エラーは行番号とともに確認画面に表示され、その行はインポートされません。行番号は、ヘッダーを1行目として数えます。</p>
+    <dl class="kv kv-text">
+      <div><dt>「Country」列が見つかりませんでした</dt><dd>1行目にヘッダー行を置き、<strong>Country</strong>列を含めてください。</dd></div>
+      <div><dt>無効な国：「&lt;値&gt;」</dt><dd>ISOコード、または紛らわしくない国名を使ってください。</dd></div>
+      <div><dt>無効な州：「&lt;値&gt;」</dt><dd>米国の州名、略号、または<code>US-XX</code>形式のコードを使ってください。</dd></div>
+      <div><dt>「&lt;値&gt;」は米国旅行のみ有効です。</dt><dd>Stateを空にするか、Countryを米国に変更してください。</dd></div>
+      <div><dt>州が一致しません</dt><dd>CountryのセルとStateのセルが別の州を示しています。どちらかに合わせてください。</dd></div>
+      <div><dt>無効な開始日／無効な終了日</dt><dd><code>yyyy-mm-dd</code>または4桁の年を使ってください。</dd></div>
+      <div><dt>無効な開始年／無効な終了年</dt><dd>範囲内の4桁の年を使ってください。</dd></div>
+      <div><dt>開始日がないと終了日を設定できません。</dt><dd>Start Dateを追加してください。</dd></div>
+      <div><dt>開始日は終了日よりも前または同等の日付でなければなりません。</dt><dd>日付を入れ替えるか、修正してください。</dd></div>
+      <div><dt>終了年は開始年以降にしてください。</dt><dd>年を修正してください。</dd></div>
+      <div><dt>開始年がない場合、終了年は設定できません。</dt><dd>開始年を追加してください。</dd></div>
+      <div><dt>正確な日付と年のみの入力は併用できません。</dt><dd>日付か、旧形式の年の列のどちらか一方を使ってください。</dd></div>
+      <div><dt>正確な開始日と年のみの終了日は併用できません。／年のみの開始日と正確な終了日は併用できません。</dt><dd>1つの行では、日付2つか、年2つのどちらかにそろえてください。</dd></div>
+      <div><dt>乗り継ぎの値が無効です</dt><dd>旧形式のTransit列では、Yes/No、True/False、または1/0を使ってください。</dd></div>
+    </dl>
 
     <section class="if-needed">
       <h2>値が認識されないとき</h2>
-      <p>ISOの国コード、まぎらわしくない英語の国名、ISO形式の日付、標準的な米国の州名またはコードを使ってください。元の行番号を残しておくと、インポートのプレビューと見比べやすくなります。</p>
+      <p>ISOの国コード、ISO形式の日付、標準的な米国の州名またはコードを使ってください。ほかの言語のスプレッドシートから書き出したファイルには、翻訳されたヘッダーが含まれていることがあり、認識されません。上記の英語のヘッダーに書き換えてください。</p>
     </section>

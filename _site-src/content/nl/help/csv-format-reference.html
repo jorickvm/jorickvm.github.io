@@ -1,32 +1,43 @@
     <nav class="breadcrumb" aria-label="Broodkruimelpad"><a href="/nl/">AtlasDays</a> / <a href="/nl/help/">Helpcentrum</a></nav>
 
     <h1>CSV-formaatuitleg</h1>
-<p class="article-answer">Alleen de kolom <strong>Country</strong> is verplicht. AtlasDays herkent ondersteunde kolommen aan hun kop, dus de volgorde maakt niet uit.</p>
+<p class="article-answer">Alleen de kolom <strong>Country</strong> is verplicht. AtlasDays vindt kolommen aan hun Engelse kolomkop, dus de volgorde van de kolommen maakt niet uit. De stappen voor het importeren staan in <a href="/nl/help/csv-import">Importeren uit CSV</a>.</p>
 
-    <h2>Aanbevolen kolomkoppen</h2>
-    <p><code>Country,State,Start Date,End Date,Purpose,Notes</code></p>
-    <ul>
-      <li><strong>Country:</strong> Engelse <a href="/nl/help/languages">landnaam</a>, ISO-landcode van twee letters of een herkende gangbare variant.</li>
-      <li><strong>State:</strong> optionele naam, postafkorting of ISO-deelcode van een Amerikaanse staat, zoals <code>US-CA</code>.</li>
-      <li><strong>Start Date / End Date:</strong> exacte datum, jaar of leeg volgens de regels hieronder.</li>
-      <li><strong>Purpose:</strong> Personal, Business, Study of <a href="/nl/help/history-and-import">Transit</a>. Je kunt meerdere doelen behalve Transit combineren met komma’s, tussen aanhalingstekens, bijvoorbeeld <code>"Business, Personal"</code>. Oudere bestanden met Tourism of Medical worden nog geïmporteerd, als Personal.</li>
-      <li><strong>Notes:</strong> optionele tekst.</li>
-    </ul>
-    <figure class="help-shot help-shot-control"><img src="/assets/article-images/nl/help/csv-format-reference/csv-reference.webp" alt="Voorbeeld en sjabloon voor een CSV-import" width="1320" height="1760" loading="lazy" decoding="async" /></figure>
+    <h2>Kolommen</h2>
+    <p>Aanbevolen kopregel: <code>Country,State,Start Date,End Date,Purpose,Notes</code>. Hoofdletters in kolomkoppen maken niet uit. Onbekende kolommen, zoals <code>Days</code>, worden genegeerd. Komt een kolomkop twee keer voor, dan wordt de eerste gebruikt.</p>
+    <dl class="kv kv-text">
+      <div><dt><strong>Country</strong></dt><dd>Verplicht. Landnaam in het Engels of in de app-taal, ISO-landcode van twee letters of een gangbare variant zoals <code>USA</code>, <code>UK</code> of <code>Holland</code>. Een variant die twee plaatsen kan betekenen, wordt geweigerd.</dd></div>
+      <div><dt><strong>State</strong></dt><dd>Optioneel, alleen voor reizen naar de Verenigde Staten. Naam van de staat, postafkorting van twee letters of ISO-code zoals <code>US-CA</code>. District of Columbia wordt geaccepteerd.</dd></div>
+      <div><dt><strong>Start Date</strong></dt><dd>Ook geaccepteerd als <code>Start</code>. Datum als <code>jjjj-mm-dd</code> of een jaartal van vier cijfers.</dd></div>
+      <div><dt><strong>End Date</strong></dt><dd>Ook geaccepteerd als <code>End</code>. Datum als <code>jjjj-mm-dd</code> of een jaartal van vier cijfers. Leeg betekent nog bezig (bij een exacte startdatum) of hetzelfde jaar (bij een startjaar).</dd></div>
+      <div><dt><strong>Purpose</strong></dt><dd><code>Personal</code>, <code>Business</code>, <code>Study</code> of <code>Transit</code>, hoofdletters maken niet uit. Combineer waarden behalve Transit met komma's tussen aanhalingstekens, zoals <code>"Business, Personal"</code>. Oudere waarden <code>Tourism</code> en <code>Medical</code> worden geïmporteerd als Personal. Een waarde die niet wordt herkend, wordt zonder foutmelding genegeerd.</dd></div>
+      <div><dt><strong>Notes</strong></dt><dd>Ook geaccepteerd als <code>Note</code> of <code>Notes (optional)</code>. Vrije tekst.</dd></div>
+      <div><dt><strong>Transit</strong></dt><dd>Verouderde kolom. Wordt alleen gelezen als er geen kolom Purpose is. <code>Yes</code>, <code>Y</code>, <code>True</code> of <code>1</code> markeert Transit; <code>No</code>, <code>N</code>, <code>False</code>, <code>0</code> of leeg niet.</dd></div>
+      <div><dt><strong>Start Year</strong>, <strong>End Year</strong></dt><dd>Verouderde kolom. Jaartallen van vier cijfers, gebruikt als de datumcellen geen jaar bevatten. Kan in dezelfde rij niet worden gecombineerd met exacte datums.</dd></div>
+    </dl>
+    <figure class="help-shot help-shot-control"><img src="/assets/article-images/nl/help/csv-format-reference/csv-reference.webp" alt="Voorbeeld en sjabloon voor een CSV-import" width="1320" height="1990" loading="lazy" decoding="async" /></figure>
 
     <h2>Datumnotaties</h2>
-    <h3>Exacte datums</h3>
-    <p>Gebruik in beide datumkolommen <code>jjjj-mm-dd</code>. Laat End Date alleen leeg voor een lopende reis.</p>
-    <h3>Jaar</h3>
-    <p>Vul in Start Date een jaartal van vier cijfers in. End Date kan een jaartal bevatten of leeg blijven om hetzelfde jaar aan te geven. Een periode van meerdere jaren wordt één Alleen jaar-registratie per jaar.</p>
-    <h3>Helemaal geen datums</h3>
-    <p>Laat beide datumcellen leeg. Het land wordt bewaard als bezoek zonder datums: het telt mee als bezochte plek, maar nooit in dagtotalen. In rapporten staat <strong>Onbekende datum</strong>. Dit type registratie kan alleen via een CSV-import worden gemaakt.</p>
+    <div class="data-table">
+    <table>
+      <thead><tr><th>Start Date</th><th>End Date</th><th>Resultaat</th></tr></thead>
+      <tbody>
+        <tr><td><code>2026-03-01</code></td><td><code>2026-03-05</code></td><td>Reis met exacte datums. Bij een reis van één dag komt dezelfde datum twee keer voor.</td></tr>
+        <tr><td><code>2026-03-01</code></td><td>leeg</td><td>Nog bezig: reis zonder einddatum.</td></tr>
+        <tr><td><code>2019</code></td><td>leeg</td><td>Reis met <a href="/nl/help/history-and-import">alleen een jaar</a> voor dat jaar.</td></tr>
+        <tr><td><code>2018</code></td><td><code>2019</code></td><td>Eén reis met alleen een jaar, van 2018 tot 2019.</td></tr>
+        <tr><td>leeg</td><td>leeg</td><td>Reis zonder datums.</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p>Jaartallen moeten tussen 1900 en acht jaar na het huidige jaar liggen. Exacte datums en jaartallen kunnen niet in dezelfde rij worden gemengd. Reizen met alleen een jaar en reizen zonder datums tellen mee voor bezochte plekken en de kaart, maar nooit voor de dagentelling of trackers. Een reis zonder datums kun je alleen via een CSV-import maken.</p>
 
-    <h2>Rijen met Amerikaanse staten</h2>
-    <p>Gebruik State alleen voor een reis naar de Verenigde Staten. Ging één verblijf door meerdere staten en wil je per staat registreren, gebruik dan één rij per staat. Een gewone rij voor de VS is geldig voor trackers op landniveau.</p>
-
-    <h2>Transit</h2>
-    <p>Zet <code>Transit</code> in Purpose als je het land niet bent binnengekomen. Transit is exclusief: combineer het niet met Personal, Business of een ander doel.</p>
+    <h2>Bijzondere gevallen</h2>
+    <ul>
+      <li><strong>Amerikaanse staten.</strong> Gebruik één rij per staat als één bezoek aan de VS meerdere staten omvatte. Een gewone rij <code>United States</code> is geldig voor bijhouden op landniveau. Een staatnaam in de kolom Country (<code>California</code>, <code>US-CA</code>) levert ook een reis naar de VS op, en een lege Country met een geldige State doet hetzelfde. Codes van twee letters die ook landcodes zijn, zoals <code>CA</code>, blijven landen. Zonder Pro worden staatrijen geïmporteerd als gewone reizen naar de Verenigde Staten.</li>
+      <li><strong>Transit.</strong> Zet <code>Transit</code> in Purpose als je het land niet bent binnengekomen. Transit is exclusief: staat het naast een ander doel, dan blijft alleen Transit over.</li>
+      <li><strong>Scheidingsteken en aanhalingstekens.</strong> Komma, puntkomma en tab worden herkend aan de kopregel. Zet velden die het scheidingsteken of een regelafbreking bevatten tussen aanhalingstekens.</li>
+    </ul>
 
     <h2>Voorbeeld</h2>
     <pre><code>Country,State,Start Date,End Date,Purpose,Notes
@@ -35,10 +46,26 @@ United States,CA,2026-04-10,2026-04-15,Business,Conference
 Japan,,2024,,Personal,Dates not known
 United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></pre>
 
-    <h2>Scheidingstekens en aanhalingstekens</h2>
-    <p>AtlasDays herkent aan de eerste rij bestanden met komma's, puntkomma's of tabs als scheidingsteken. Zet velden met het scheidingsteken of een regelafbreking tussen aanhalingstekens volgens de normale CSV-regels.</p>
+    <h2>Foutmeldingen</h2>
+    <p>Elke fout verschijnt in de controle met het rijnummer, en de rij wordt niet geïmporteerd. In het rijnummer telt de kopregel als rij 1.</p>
+    <dl class="kv kv-text">
+      <div><dt>De kolom Country ontbreekt</dt><dd>Zet een kopregel met een kolom <strong>Country</strong> vooraan.</dd></div>
+      <div><dt>Ongeldig land: '&lt;waarde&gt;'</dt><dd>Gebruik een ISO-code of een eenduidige landnaam.</dd></div>
+      <div><dt>Ongeldige staat: '&lt;waarde&gt;'</dt><dd>Gebruik de naam of afkorting van een Amerikaanse staat, of een code als <code>US-XX</code>.</dd></div>
+      <div><dt>Staat '&lt;waarde&gt;' is alleen geldig voor reizen naar de Verenigde Staten</dt><dd>Maak State leeg of zet Country op United States.</dd></div>
+      <div><dt>Tegenstrijdige staten</dt><dd>De cellen Country en State noemen verschillende staten. Houd er één over.</dd></div>
+      <div><dt>Ongeldige startdatum / Ongeldige einddatum</dt><dd>Gebruik <code>jjjj-mm-dd</code> of een jaartal van vier cijfers.</dd></div>
+      <div><dt>Ongeldig startjaar / Ongeldig eindjaar</dt><dd>Gebruik een jaartal van vier cijfers binnen het toegestane bereik.</dd></div>
+      <div><dt>Een einddatum vereist een startdatum</dt><dd>Voeg een Start Date toe.</dd></div>
+      <div><dt>De startdatum moet vóór of op de einddatum liggen</dt><dd>Wissel de datums om of corrigeer ze.</dd></div>
+      <div><dt>Het eindjaar moet gelijk zijn aan of na het startjaar liggen</dt><dd>Corrigeer de jaartallen.</dd></div>
+      <div><dt>Een eindjaar vereist een startjaar</dt><dd>Voeg een startjaar toe.</dd></div>
+      <div><dt>Exacte datums en jaartallen kunnen niet worden gecombineerd</dt><dd>Gebruik óf datums óf de verouderde jaarkolommen.</dd></div>
+      <div><dt>Een exacte startdatum kan niet worden gecombineerd met alleen een eindjaar, en alleen een startjaar niet met een exacte einddatum</dt><dd>Gebruik in één rij twee datums of twee jaartallen.</dd></div>
+      <div><dt>Ongeldige transitwaarde</dt><dd>Gebruik in de verouderde kolom Transit Yes/No, True/False of 1/0.</dd></div>
+    </dl>
 
     <section class="if-needed">
       <h2>Als een waarde niet wordt herkend</h2>
-      <p>Gebruik een ISO-landcode, een eenduidige Engelse landnaam, ISO-datums en een standaardnaam of -code voor een Amerikaanse staat. Bewaar het oorspronkelijke rijnummer, zodat je de rij gemakkelijk met de Importcontrole kunt vergelijken.</p>
+      <p>Gebruik een ISO-landcode, ISO-datums en de standaardnaam of -code van een Amerikaanse staat. Een bestand dat uit een spreadsheet in een andere taal is geëxporteerd, kan vertaalde kolomkoppen hebben, en die worden niet herkend: hernoem ze naar de Engelse kolomkoppen hierboven.</p>
     </section>

@@ -1,29 +1,38 @@
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/zh-Hans/">AtlasDays</a> / <a href="/zh-Hans/help/">帮助中心</a></nav>
 
     <h1>CSV 导入</h1>
-<p class="article-answer">先按表头格式准备好 CSV，在设置 → 导入 → CSV 文件中选择它，处理完预览里的问题之后再存储行程。</p>
+<p class="article-answer">把存为 CSV 的电子表格批量添加为行程。AtlasDays 会逐行验证并显示预览，确认之前不会存储任何内容。这是补录过往行程的<a href="/zh-Hans/help/import-trips">方式之一</a>。</p>
 
     <h2>导入文件</h2>
     <ol>
       <li>打开<strong>设置 → 导入 → CSV 文件</strong>。</li>
-      <li>用示例文件或格式参考准备好文件。</li>
-      <li>从“文件”中选择这个 CSV。</li>
-      <li>查看有效的数据行、无效的数据行、重复和重叠提示。</li>
-      <li>把认可的数据行导入进来。</li>
+      <li>在 Sheets、Numbers 或 Excel 中准备好文件，并导出为 CSV。<strong>CSV 示例</strong>会显示带示例行的准确表头，它的分享按钮可以把文件存下来作为起点。</li>
+      <li>轻点<strong>选择 CSV 文件</strong>，从“文件”中选中该文件。</li>
+      <li>查看预览<strong>CSV 中找到的行程</strong>。</li>
+      <li>轻点<strong>导入</strong>并确认。</li>
     </ol>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/zh-Hans/help/csv-import/csv-setup.webp" alt="CSV 导入的设置界面和示例文件控件" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/zh-Hans/help/csv-import/csv-setup.webp" alt="CSV 导入的设置屏幕和示例文件控件" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <p><strong>用 AI 创建 CSV</strong>会拷贝一段现成的提示词，可交给 ChatGPT、Claude 或其他助手。把自己的旅行记录粘贴在提示词后面，再把回复存为 CSV。这些工具按各自的隐私政策处理文本，因此凡是不愿粘贴到别处的内容，请不要放进去。</p>
 
-    <h2>在源文件里改正错误</h2>
-    <p>预览无法识别国家、州、日期或必需的表头时，会给出行号和原因。在 CSV 里改正那一行，再重新导入文件。</p>
-
-    <h2>提示是让人复核的</h2>
-    <p>重复可能是<a href="/zh-Hans/help/timeline-and-calendar">时间轴</a>里已有行程的又一份。重叠可能是合理的，也可能是同一段停留的两个版本。请核对日期和地点，不要不加分辨地接受每一行。</p>
+    <h2>读懂预览</h2>
+    <p>预览会列出有效的数据行，并显示可轻点筛选的数量。用<strong>全选</strong>或<strong>取消全选</strong>来选择要导入的内容。</p>
+    <ul>
+      <li><strong>重复：</strong>该行落在你已有的行程之内，或与前面的某一行重复，会被跳过。</li>
+      <li><strong>合并：</strong>该行涵盖了你已有的同一国家的行程。导入时，那条行程会扩展到包含这一行的日期，备注和目的也会合并。<strong>文件内可合并</strong>指文件内部可以相互合并的数据行。</li>
+      <li><strong>重叠：</strong>该行与另一条行程部分重叠。它可能是真正的第二次停留，也可能是同一次停留的另一个版本，保留之前请对照日期。</li>
+      <li><strong>转机</strong>和<strong>美国各州</strong>统计这两类数据行的数量。没有 Pro 时，州的数据行会作为普通的美国行程导入。</li>
+    </ul>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/zh-Hans/help/csv-import/csv-review.webp" alt="CSV 导入预览，包含有效、无效、重复和重叠的数据行" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
-    <h2>只有存储才会改变时间轴</h2>
-    <p>选择文件、查看预览都不会添加行程。只有在最后执行导入之后，AtlasDays 才会写入接受的数据行。</p>
+    <h2>在源文件里改正错误</h2>
+    <p>AtlasDays 无法读取的数据行会显示在<strong>N 行有错误</strong>之下，并附上行号和原因。无效的数据行永远不会导入。请在电子表格里改正，重新导出，再重新选择文件。</p>
+
+    <div class="callout"><p><strong>导入之前不会有任何改变。</strong>选择文件和查看预览都不会添加行程。</p></div>
+
+    <h2>重新导入导出的文件</h2>
+    <p>存为 CSV 的电子表格<a href="/zh-Hans/help/export-and-reports">导出</a>文件可以再次导入，前提是导出时使用的是英文：列标题只按英文读取。若要完整复制行程、追踪器和设置，请改用<a href="/zh-Hans/help/backup-and-restore">备份</a>。</p>
 
     <section class="if-needed">
       <h2>如果每一行都无效</h2>
-      <p>确认第一行含有 <strong>Country</strong> 表头，并核对日期格式是否完全正确。支持的列和示例见 <a href="/zh-Hans/help/csv-format-reference">CSV 格式参考</a>。</p>
+      <p>确认第一行是标题行且含有 <strong>Country</strong>，并核对日期是否采用 <code>yyyy-mm-dd</code> 或四位数的年份。支持的列、取值和所有错误信息，见 <a href="/zh-Hans/help/csv-format-reference">CSV 格式参考</a>。</p>
     </section>

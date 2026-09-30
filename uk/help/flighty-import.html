@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Імпорт із Flighty – Довідковий центр AtlasDays</title>
-  <meta name="description" content="Як експортувати історію польотів із Flighty у CSV, імпортувати її в AtlasDays і перевірити перебування, транзит і дублікати перед збереженням." />
+  <meta name="description" content="Імпортуйте CSV із Flighty в AtlasDays і перевірте перебування, транзитні дні та нічні перельоти, визначені за вашими рейсами." />
   <meta property="og:title" content="Імпорт із Flighty – Довідковий центр AtlasDays" />
-  <meta property="og:description" content="Як експортувати історію польотів із Flighty у CSV, імпортувати її в AtlasDays і перевірити перебування, транзит і дублікати перед збереженням." />
+  <meta property="og:description" content="Імпортуйте CSV із Flighty в AtlasDays і перевірте перебування, транзитні дні та нічні перельоти, визначені за вашими рейсами." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/uk/help/flighty-import" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Імпорт із Flighty – Довідковий центр AtlasDays" />
-  <meta name="twitter:description" content="Як експортувати історію польотів із Flighty у CSV, імпортувати її в AtlasDays і перевірити перебування, транзит і дублікати перед збереженням." />
+  <meta name="twitter:description" content="Імпортуйте CSV із Flighty в AtlasDays і перевірте перебування, транзитні дні та нічні перельоти, визначені за вашими рейсами." />
   <meta name="apple-itunes-app" content="app-id=6760133544, app-argument=https://apps.apple.com/app/atlasdays-track-country-days/id6760133544" />
   <meta property="og:locale" content="uk_UA" />
   <meta property="og:image" content="https://atlasdays.app/assets/social/site-v1.png" />
@@ -68,7 +68,7 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "Імпорт із Flighty",
-    "description": "Як експортувати історію польотів із Flighty у CSV, імпортувати її в AtlasDays і перевірити перебування, транзит і дублікати перед збереженням.",
+    "description": "Імпортуйте CSV із Flighty в AtlasDays і перевірте перебування, транзитні дні та нічні перельоти, визначені за вашими рейсами.",
     "author": {
       "@type": "Organization",
       "name": "AtlasDays"
@@ -78,7 +78,7 @@
       "name": "AtlasDays"
     },
     "url": "https://atlasdays.app/uk/help/flighty-import",
-    "dateModified": "2026-08-02",
+    "dateModified": "2026-09-30",
     "inLanguage": "uk"
   }
   </script>
@@ -162,46 +162,57 @@
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/uk/">AtlasDays</a> / <a href="/uk/help/">Довідка</a></nav>
 
     <h1>Імпорт із Flighty</h1>
-<p class="article-answer">Експортуйте історію польотів із Flighty у CSV, виберіть цей файл в AtlasDays і перевірте запропоновані поїздки, перш ніж зберігати їх.</p>
+<p class="article-answer">Експортуйте історію польотів із Flighty у форматі CSV, виберіть файл в AtlasDays і перевірте запропоновані поїздки, перш ніж зберігати. Це один зі <a href="/uk/help/import-trips">способів додати минулі поїздки</a>.</p>
 
     <h2>Експорт із Flighty</h2>
-    <p>Експортуйте історію польотів із Flighty у CSV і збережіть файл там, звідки його зможе відкрити програма «Файли» в iOS: наприклад, в iCloud Drive або «На iPhone».</p>
+    <p>У Flighty відкрийте <strong>Налаштування → Дані облікового запису</strong> (в англомовному інтерфейсі Flighty це Settings → Account Data) і експортуйте польоти у форматі CSV. Збережіть файл там, куди дотягнеться вибір файлів iOS, наприклад в iCloud Drive або «На iPhone».</p>
 
     <h2>Імпорт в AtlasDays</h2>
     <ol>
       <li>Відкрийте <strong>Налаштування → Імпорт → Flighty</strong>.</li>
-      <li>Торкніться <strong>Вибрати CSV із Flighty</strong> і вкажіть експортований файл.</li>
-      <li>Зачекайте, доки AtlasDays побудує попередній перегляд.</li>
-      <li>Перевірте запропоновані перебування, записи <a href="/uk/help/history-and-import">«Транзит»</a>, нічні перельоти, дублікати та перетини.</li>
-      <li>Збережіть лише ті рядки, які вам потрібні. <a href="/uk/help/timeline-and-calendar">Хронологія</a> поповнюється тільки після збереження.</li>
+      <li>Торкніться <strong>Вибрати CSV із Flighty</strong> і виберіть експортований файл.</li>
+      <li>Перегляньте попередній перегляд, <strong>Знайдено у Flighty</strong>: запропоновані перебування, пересадки, нічні рейси, неповні поїздки, дублікати й перетини.</li>
+      <li>Скористайтеся <strong>Вибрати все</strong> або <strong>Зняти вибір</strong>, торкніться будь-якого запису, щоб змінити його, потім торкніться <strong>Імпорт</strong> і підтвердьте.</li>
     </ol>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/uk/help/flighty-import/flighty-setup.webp" alt="Екран налаштування імпорту з Flighty" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/uk/help/flighty-import/flighty-setup.webp" alt="Початковий екран імпорту з Flighty" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <p>Файл обробляється на пристрої, і нічого не зберігається, доки ви не підтвердите.</p>
 
-    <h2>Як рейси стають поїздками</h2>
-    <p>Аеропорти прильоту та вильоту дають підстави вважати, що ви перебували в країні, а стикувальні рейси можуть отримати статус «Транзит». Нічні перельоти та рейси з короткими стикуваннями потребують оцінки, тому звірте попередній перегляд із тим, коли ви справді в’їжджали до кожної країни.</p>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/uk/help/flighty-import/flighty-review.webp" alt="Попередній перегляд імпорту з Flighty: перебування, транзит і попередження" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <h2>Як польоти стають поїздками</h2>
+    <p>AtlasDays зіставляє кожен аеропорт із країною й створює поїздку, коли рейс прилітає до країни, а наступний вилітає з неї. Решта попереднього перегляду випливає з цього:</p>
+    <ul>
+      <li><strong>Пересадки</strong> до 24 годин перевіряються окремо. Зупинки до 10 годин включно позначаються як <a href="/uk/help/history-and-import">Транзит</a> і не входять до підрахунку днів. Довші зупинки вважаються в’їздом до країни. Змінити це можна в поїздці перемикачем <strong>Транзит</strong>.</li>
+      <li><strong>Нічні рейси</strong> записуються як «Міжнародний повітряний простір», якщо опівночі ви були в повітрі.</li>
+      <li><strong>Неповні поїздки</strong> не мають прильоту або вильоту, наприклад після сухопутної подорожі чи коли рейсу немає у Flighty. Можна додати відсутню дату в записі або залишити поїздку без дати завершення.</li>
+      <li><strong>Пропущені рядки</strong> наведено з причиною, наприклад скасований рейс або відсутній код аеропорту.</li>
+    </ul>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/uk/help/flighty-import/flighty-review.webp" alt="Попередній перегляд імпорту з Flighty із перебуваннями, транзитом і попередженнями" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
-    <h2>Перевірка штатів США</h2>
-    <p>Якщо дані про аеропорт дають змогу визначити штат США, AtlasDays може його запропонувати. Перед збереженням підтвердьте штат, якщо ви ведете облік на рівні штатів.</p>
+    <div class="callout"><p><strong>Лише польоти.</strong> Потяги, пороми та поїздки автомобілем не відображаються, як і рейси, яких немає в експорті. Перш ніж імпортувати, порівняйте попередній перегляд із тим, де ви справді проводили дні.</p></div>
+
+    <h2>Дублікати й перетини</h2>
+    <p>Записи, що повторюють поїздку, яка вже є в <a href="/uk/help/timeline-and-calendar">«Хронологія»</a>, позначаються як <strong>Дублікат</strong>. <strong>Об’єднати</strong> означає, що запис охоплює наявну поїздку й поєднається з нею, а <strong>Перетин</strong> означає, що дати частково збігаються з іншою поїздкою. Перевірте їх перед імпортом.</p>
+
+    <h2>Перевірте штати США</h2>
+    <p>Коли дані про аеропорт вказують на штат США, AtlasDays пропонує його. З Pro кожен штат імпортується як окрема поїздка. Без Pro штати імпортуються як звичайні поїздки до Сполучених Штатів. Якщо ви покладаєтеся на відстеження за штатами, підтвердьте штат перед збереженням.</p>
 
     <section class="if-needed">
-      <h2>Якщо файл не приймається</h2>
-      <p>Створіть у Flighty новий <a href="/uk/help/export-and-reports">експорт</a> CSV і виберіть саме цей вихідний файл. Якщо експорт повторно зберегли або переупорядкували в табличному редакторі, він може вже не відповідати формату Flighty.</p>
+      <h2>Якщо файл відхилено</h2>
+      <p>Повідомлення <em>Це не схоже на експорт Flighty CSV</em> означає, що файл не є оригінальним експортом Flighty. Експортуйте його з Flighty ще раз і виберіть саме цей файл, а не той, який ви пересохранили чи змінили в таблиці. Файли CSV від AtlasDays потрібно імпортувати через <a href="/uk/help/csv-import">Імпорт CSV</a>. Якщо в попередньому перегляді є <strong>У Flighty немає придатних рядків</strong>, експорт не містив польотів, які AtlasDays міг би використати.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-flighty-import">
       <h2 id="next-flighty-import">Далі</h2>
       <ul>
         <li><a href="/uk/help/csv-import">
           <strong>Імпорт CSV</strong>
-          <span>Імпортуйте готову таблицю з вашою історією.</span>
+          <span>Процес імпорту, який читає цей формат.</span>
         </a></li>
-        <li><a href="/uk/help/photo-import">
-          <strong>Імпорт фото</strong>
-          <span>Відновіть давнішу історію з медіатеки.</span>
+        <li><a href="/uk/help/import-trips">
+          <strong>Імпорт поїздок</strong>
+          <span>Виберіть джерело імпорту й перевірте поїздки перед збереженням.</span>
         </a></li>
-        <li><a href="/uk/help/history-and-import">
-          <strong>Як працюють дати поїздок</strong>
-          <span>Дати, поїздки, що тривають, і «Тільки рік».</span>
+        <li><a href="/uk/help/csv-format-reference">
+          <strong>Довідник із формату CSV</strong>
+          <span>Усі підтримувані стовпці, формати дат і помилки.</span>
         </a></li>
       </ul>
     </nav>
@@ -209,7 +220,7 @@
       <h2>Залишилися запитання?</h2>
       <p><a href="mailto:support@atlasdays.app">Напишіть у підтримку AtlasDays</a> і вкажіть потрібні дати, що ви очікували та що сталося.</p>
     </aside>
-    <p class="help-updated">Оновлено 2 серпня 2026 р.</p>
+    <p class="help-updated">Оновлено 30 вересня 2026 р.</p>
   </article>
   </main>
 

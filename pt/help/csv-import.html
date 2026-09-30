@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Importação de CSV – Central de ajuda do AtlasDays</title>
-  <meta name="description" content="Importe um histórico de viagens em CSV para o AtlasDays e revise linhas válidas, erros, duplicadas e sobreposições antes de salvar." />
+  <meta name="description" content="Importe um histórico de viagens preparado em CSV para o AtlasDays e revise linhas válidas, erros, duplicadas e sobreposições antes de salvar." />
   <meta property="og:title" content="Importação de CSV – Central de ajuda do AtlasDays" />
-  <meta property="og:description" content="Importe um histórico de viagens em CSV para o AtlasDays e revise linhas válidas, erros, duplicadas e sobreposições antes de salvar." />
+  <meta property="og:description" content="Importe um histórico de viagens preparado em CSV para o AtlasDays e revise linhas válidas, erros, duplicadas e sobreposições antes de salvar." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/pt/help/csv-import" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Importação de CSV – Central de ajuda do AtlasDays" />
-  <meta name="twitter:description" content="Importe um histórico de viagens em CSV para o AtlasDays e revise linhas válidas, erros, duplicadas e sobreposições antes de salvar." />
+  <meta name="twitter:description" content="Importe um histórico de viagens preparado em CSV para o AtlasDays e revise linhas válidas, erros, duplicadas e sobreposições antes de salvar." />
   <meta name="apple-itunes-app" content="app-id=6760133544, app-argument=https://apps.apple.com/app/atlasdays-track-country-days/id6760133544" />
   <meta property="og:locale" content="pt_BR" />
   <meta property="og:image" content="https://atlasdays.app/assets/social/site-v1.png" />
@@ -68,7 +68,7 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "Importação de CSV",
-    "description": "Importe um histórico de viagens em CSV para o AtlasDays e revise linhas válidas, erros, duplicadas e sobreposições antes de salvar.",
+    "description": "Importe um histórico de viagens preparado em CSV para o AtlasDays e revise linhas válidas, erros, duplicadas e sobreposições antes de salvar.",
     "author": {
       "@type": "Organization",
       "name": "AtlasDays"
@@ -78,7 +78,7 @@
       "name": "AtlasDays"
     },
     "url": "https://atlasdays.app/pt/help/csv-import",
-    "dateModified": "2026-08-02",
+    "dateModified": "2026-09-30",
     "inLanguage": "pt"
   }
   </script>
@@ -162,46 +162,55 @@
     <nav class="breadcrumb" aria-label="Trilha de navegação"><a href="/pt/">AtlasDays</a> / <a href="/pt/help/">Central de ajuda</a></nav>
 
     <h1>Importação de CSV</h1>
-<p class="article-answer">Prepare um CSV com linha de cabeçalho, escolha o arquivo em Ajustes → Importar → Arquivo CSV e resolva a revisão da importação antes de salvar qualquer viagem.</p>
+<p class="article-answer">Adicione viagens em massa a partir de uma planilha salva como CSV. O AtlasDays valida cada linha, mostra uma prévia e não salva nada até você confirmar. É uma das <a href="/pt/help/import-trips">formas de adicionar viagens passadas</a>.</p>
 
     <h2>Importe o arquivo</h2>
     <ol>
       <li>Abra <strong>Ajustes → Importar → Arquivo CSV</strong>.</li>
-      <li>Use o exemplo ou a referência de formato para preparar o arquivo.</li>
-      <li>Selecione o CSV no app Arquivos.</li>
-      <li>Revise as linhas válidas, as linhas inválidas, as duplicadas e os avisos de sobreposição.</li>
-      <li>Importe as linhas que você aceitar.</li>
+      <li>Prepare o arquivo no Sheets, no Numbers ou no Excel e exporte-o como CSV. <strong>CSV de exemplo</strong> mostra os cabeçalhos exatos com linhas de amostra, e o botão de compartilhar dele salva o arquivo como ponto de partida.</li>
+      <li>Toque em <strong>Selecionar arquivo CSV</strong> e escolha o arquivo no app Arquivos.</li>
+      <li>Confira a prévia, <strong>Encontradas no CSV</strong>.</li>
+      <li>Toque em <strong>Importar</strong> e confirme.</li>
     </ol>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/pt/help/csv-import/csv-setup.webp" alt="Tela inicial da importação de CSV com os controles do arquivo de exemplo" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <p><strong>Criar CSV com IA</strong> copia um prompt pronto para o ChatGPT, o Claude ou outro assistente. Cole suas anotações de viagem depois dele e salve a resposta como CSV. Essas ferramentas tratam o seu texto conforme as próprias políticas de privacidade, então deixe de fora tudo o que você não colaria em outro lugar.</p>
+
+    <h2>Leia a prévia</h2>
+    <p>A prévia lista as linhas válidas e mostra contagens em que você pode tocar para filtrar. Use <strong>Selecionar tudo</strong> ou <strong>Desmarcar tudo</strong> para escolher o que importar.</p>
+    <ul>
+      <li><strong>Duplicada:</strong> a linha está dentro de uma viagem que você já tem ou repete uma linha anterior. Ela é ignorada.</li>
+      <li><strong>Mesclar:</strong> a linha cobre uma viagem que você já tem no mesmo país. Na importação, essa viagem é ampliada para incluir as datas da linha, e as anotações e os motivos são combinados. <strong>Possíveis mesclagens no arquivo</strong> são linhas do próprio arquivo que se unem entre si.</li>
+      <li><strong>Sobreposição:</strong> a linha se sobrepõe em parte a outra viagem. Pode ser uma segunda estadia de verdade ou uma segunda versão da mesma, então compare as datas antes de mantê-la.</li>
+      <li><strong>Trânsitos</strong> e <strong>Estados dos EUA</strong> contam as linhas desses tipos. Sem o Pro, as linhas de estados são importadas como viagens comuns aos Estados Unidos.</li>
+    </ul>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/pt/help/csv-import/csv-review.webp" alt="Prévia da importação de CSV com linhas válidas, inválidas, duplicadas e com sobreposição" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
     <h2>Corrija os erros no arquivo de origem</h2>
-    <p>A revisão da importação informa o número da linha e o motivo quando não consegue identificar um país, um estado, uma data ou um cabeçalho obrigatório. Corrija essa linha no CSV e importe o arquivo de novo.</p>
+    <p>As linhas que o AtlasDays não consegue ler aparecem em <strong>N linhas com erros</strong>, com o número da linha e o motivo. Linhas inválidas nunca são importadas. Corrija-as na planilha, exporte de novo e selecione o arquivo outra vez.</p>
 
-    <h2>Os avisos pedem conferência</h2>
-    <p>Uma duplicada pode repetir uma viagem que já está na <a href="/pt/help/timeline-and-calendar">Linha do tempo</a>. Uma sobreposição pode ser legítima ou representar duas versões da mesma estadia. Confira as datas e os lugares em vez de aceitar todas as linhas automaticamente.</p>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/pt/help/csv-import/csv-review.webp" alt="Revisão da importação de CSV com linhas válidas, inválidas, duplicadas e com sobreposição" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <div class="callout"><p><strong>Nada muda até você tocar em Importar.</strong> Selecionar um arquivo e ver a prévia não adiciona viagens.</p></div>
 
-    <h2>Nada muda na Linha do tempo até você salvar</h2>
-    <p>Selecionar um arquivo e ver a revisão não adiciona nenhuma viagem. O AtlasDays grava as linhas aceitas somente depois da ação final de importar.</p>
+    <h2>Importar de novo uma exportação</h2>
+    <p>Uma <a href="/pt/help/export-and-reports">exportação</a> Planilha salva como CSV pode ser importada de novo, desde que tenha sido exportada em inglês: os cabeçalhos das colunas só são lidos em inglês. Para uma cópia completa de viagens, controles e ajustes, use um <a href="/pt/help/backup-and-restore">backup</a>.</p>
 
     <section class="if-needed">
       <h2>Se todas as linhas estiverem inválidas</h2>
-      <p>Confirme que a primeira linha traz o cabeçalho <strong>Country</strong> e verifique os formatos exatos de data. Veja a <a href="/pt/help/csv-format-reference">Referência do formato CSV</a> para conhecer as colunas suportadas e os exemplos.</p>
+      <p>Confirme que a primeira linha é um cabeçalho e contém <strong>Country</strong>, e que as datas usam <code>yyyy-mm-dd</code> ou um ano de quatro dígitos. A <a href="/pt/help/csv-format-reference">Referência do formato CSV</a> lista as colunas, os valores e todas as mensagens de erro compatíveis.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-csv-import">
       <h2 id="next-csv-import">Continue com</h2>
       <ul>
         <li><a href="/pt/help/csv-format-reference">
           <strong>Referência do formato CSV</strong>
-          <span>Veja as colunas suportadas, os formatos de data e os exemplos.</span>
+          <span>Todas as colunas, os formatos de data e os erros compatíveis.</span>
         </a></li>
-        <li><a href="/pt/help/history-and-import">
-          <strong>Como funcionam as datas das viagens</strong>
-          <span>Como os registros importados guardam as próprias datas.</span>
+        <li><a href="/pt/help/import-trips">
+          <strong>Importar viagens</strong>
+          <span>Escolha uma fonte de importação e revise antes de salvar.</span>
         </a></li>
-        <li><a href="/pt/help/export-and-reports">
-          <strong>Exportações e relatórios</strong>
-          <span>Exporte o seu histórico como planilha ou PDF.</span>
+        <li><a href="/pt/help/backup-and-restore">
+          <strong>Backup e restauração</strong>
+          <span>Guarde uma cópia de viagens, controles e ajustes.</span>
         </a></li>
       </ul>
     </nav>
@@ -209,7 +218,7 @@
       <h2>Ainda precisa de ajuda?</h2>
       <p><a href="mailto:support@atlasdays.app">Fale com o suporte do AtlasDays</a> e informe as datas, o que você esperava e o que aconteceu.</p>
     </aside>
-    <p class="help-updated">Última atualização: 2 de agosto de 2026</p>
+    <p class="help-updated">Última atualização: 30 de setembro de 2026</p>
   </article>
   </main>
 

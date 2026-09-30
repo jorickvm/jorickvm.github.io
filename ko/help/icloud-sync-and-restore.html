@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>iCloud 동기화 및 복원 – AtlasDays 도움말 센터</title>
-  <meta name="description" content="같은 Apple 계정을 쓰는 기기에서 여행과 트래커를 동기화하는 방법, 새 기기 설정 순서, 상태 표시의 의미, 데이터가 보이지 않을 때의 확인 순서." />
+  <meta name="description" content="AtlasDays iCloud 동기화를 설정하고 상태를 확인하며, 새 기기, 재설치, 데이터가 보이지 않는 경우의 동작을 이해합니다." />
   <meta property="og:title" content="iCloud 동기화 및 복원 – AtlasDays 도움말 센터" />
-  <meta property="og:description" content="같은 Apple 계정을 쓰는 기기에서 여행과 트래커를 동기화하는 방법, 새 기기 설정 순서, 상태 표시의 의미, 데이터가 보이지 않을 때의 확인 순서." />
+  <meta property="og:description" content="AtlasDays iCloud 동기화를 설정하고 상태를 확인하며, 새 기기, 재설치, 데이터가 보이지 않는 경우의 동작을 이해합니다." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/ko/help/icloud-sync-and-restore" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="iCloud 동기화 및 복원 – AtlasDays 도움말 센터" />
-  <meta name="twitter:description" content="같은 Apple 계정을 쓰는 기기에서 여행과 트래커를 동기화하는 방법, 새 기기 설정 순서, 상태 표시의 의미, 데이터가 보이지 않을 때의 확인 순서." />
+  <meta name="twitter:description" content="AtlasDays iCloud 동기화를 설정하고 상태를 확인하며, 새 기기, 재설치, 데이터가 보이지 않는 경우의 동작을 이해합니다." />
   <meta name="apple-itunes-app" content="app-id=6760133544, app-argument=https://apps.apple.com/app/atlasdays-track-country-days/id6760133544" />
   <meta property="og:locale" content="ko_KR" />
   <meta property="og:image" content="https://atlasdays.app/assets/social/site-v1.png" />
@@ -68,7 +68,7 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "iCloud 동기화 및 복원",
-    "description": "같은 Apple 계정을 쓰는 기기에서 여행과 트래커를 동기화하는 방법, 새 기기 설정 순서, 상태 표시의 의미, 데이터가 보이지 않을 때의 확인 순서.",
+    "description": "AtlasDays iCloud 동기화를 설정하고 상태를 확인하며, 새 기기, 재설치, 데이터가 보이지 않는 경우의 동작을 이해합니다.",
     "author": {
       "@type": "Organization",
       "name": "AtlasDays"
@@ -78,7 +78,7 @@
       "name": "AtlasDays"
     },
     "url": "https://atlasdays.app/ko/help/icloud-sync-and-restore",
-    "dateModified": "2026-08-02",
+    "dateModified": "2026-09-30",
     "inLanguage": "ko"
   }
   </script>
@@ -162,53 +162,60 @@
     <nav class="breadcrumb" aria-label="탐색 경로"><a href="/ko/">AtlasDays</a> / <a href="/ko/help/">도움말 센터</a></nav>
 
     <h1>iCloud 동기화 및 복원</h1>
-<p class="article-answer">iCloud 동기화를 켜면 AtlasDays가 여행과 트래커를 개인 iCloud 계정에 저장하고, 같은 Apple 계정을 사용하는 기기 사이에서 동기화된 상태로 유지합니다.</p>
+<p class="article-answer">iCloud 동기화를 켜면 AtlasDays가 여행과 트래커를 개인 iCloud 계정에 저장하고, 같은 Apple 계정으로 로그인한 기기 사이에서 최신 상태로 유지합니다. 동기화는 백업 파일이 아니므로 AtlasDays 백업도 따로 보관하십시오.</p>
 
-    <h2>새 기기 설정</h2>
+    <h2>동기화가 켜져 있는지 확인</h2>
     <ol>
-      <li>같은 Apple 계정으로 로그인하고 iCloud Drive를 사용할 수 있는지 확인하십시오.</li>
-      <li>AtlasDays를 설치한 다음 <strong>설정 → iCloud 동기화</strong>를 여십시오.</li>
-      <li>iCloud 동기화가 켜져 있는지 확인하고 표시된 상태를 살펴보십시오.</li>
-      <li>기록이 도착하는 동안 AtlasDays를 잠시 열어 두십시오.</li>
+      <li><strong>설정 → iCloud 동기화</strong>를 여십시오. 스위치는 기본적으로 켜져 있습니다.</li>
+      <li><strong>상태</strong>를 확인하십시오. <strong>동기화됨</strong>은 이 기기가 최신 상태라는 뜻입니다.</li>
+      <li><strong>데이터</strong>에서 이 기기가 가진 여행과 트래커의 수를, <strong>최근 활동</strong>에서 가장 최근의 동기화를 확인하십시오.</li>
     </ol>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/ko/help/icloud-sync-and-restore/icloud-status.webp" alt="상태, 최근 활동, 데이터 개수가 표시된 iCloud 동기화 설정 화면" width="1320" height="772" loading="lazy" decoding="async" /></figure>
+    <p>동기화를 켜거나 끄고 나면 AtlasDays가 앱 전환기에서 앱을 종료했다가 다시 열도록 안내합니다. 변경은 다음 실행부터 적용됩니다.</p>
 
-    <h2>AtlasDays를 다시 설치한 후</h2>
-    <p>iCloud에 보관된 여행과 트래커는 앱이 iCloud 저장소에 다시 연결되면 돌아오며, 첫 실행에서는 몇 분이 걸릴 수 있습니다. 기기별 권한, <a href="/ko/help/widgets">위젯</a> 구성, 일부 환경설정은 다시 지정해야 합니다.</p>
-
-    <h2>상태 이해하기</h2>
-    <p>iCloud 동기화 화면에는 AtlasDays가 확인 중인지, 동기화 중인지, 대기 중인지, 동기화됨 상태인지, 로그인 안 됨 상태인지, 로컬 저장 공간을 사용 중인지가 표시됩니다. 동기화를 켜거나 끌 때는 앱 전환기에서 AtlasDays를 완전히 종료했다가 다시 열어야 할 수 있습니다.</p>
-
-    <h2>데이터가 보이지 않는 경우</h2>
+    <h2>새 기기 설정 또는 앱 재설치</h2>
     <ol>
-      <li>원인을 확인하는 동안에는 앱 데이터를 재설정하거나 삭제하지 마십시오.</li>
-      <li>Apple 계정과 iCloud 사용 가능 여부를 확인하십시오.</li>
-      <li>iCloud 동기화 상태와 데이터 개수를 확인하십시오.</li>
-      <li>연결이 안정된 상태에서 앱을 열어 두고 다시 확인하십시오.</li>
-      <li>다른 기기에 해당 기록이 아직 남아 있다면, 되돌릴 수 없는 변경을 하기 전에 지원팀에 문의하십시오.</li>
+      <li>iOS 설정에서 같은 Apple 계정으로 로그인하십시오.</li>
+      <li>AtlasDays를 설치하고 <strong>설정 → iCloud 동기화</strong>를 열어 켜져 있는지 확인하십시오.</li>
+      <li>여행과 트래커가 도착하는 동안 AtlasDays를 몇 분 동안 열어 두십시오.</li>
     </ol>
+    <p>기기별 선택 사항은 따로 돌아옵니다. 위치와 알림 권한은 기기마다 허용하므로 <a href="/ko/help/auto-detect-trips">여행 자동 감지</a>와 알림은 다시 허용해야 작동하며, <a href="/ko/help/widgets">위젯</a>도 다시 추가해야 합니다. 거주국이나 화면 모드 같은 환경설정은 여행 동기화가 꺼져 있어도 iCloud를 통해 따로 전달됩니다.</p>
 
-    <h2>동기화와 내보내기는 다릅니다</h2>
-    <p>동기화는 여러 기기에서 하나의 기록을 계속 최신 상태로 유지합니다. <a href="/ko/help/export-and-reports">내보내기</a>는 직접 관리하는 별도의 파일이며, 특정 시점의 사본으로 보관할 수 있습니다.</p>
+    <h2>상태의 의미</h2>
+    <ul>
+      <li><strong>동기화 중…</strong>, <strong>동기화 대기 중</strong>, <strong>iCloud 대기 중</strong>은 일시적인 상태입니다. AtlasDays를 잠시 열어 두십시오.</li>
+      <li><strong>동기화됨</strong>은 대기 중인 항목이 없다는 뜻입니다.</li>
+      <li><strong>로그인 안 됨</strong>, <strong>iCloud 사용 불가</strong>, <strong>iCloud 제한됨</strong>은 이 기기의 Apple 계정, iCloud, 또는 스크린 타임 제한을 확인하라는 뜻입니다.</li>
+      <li><strong>동기화 안 됨</strong>은 AtlasDays가 iCloud 데이터 저장소를 열지 못해 이 기기가 당분간 로컬 저장소를 사용한다는 뜻입니다. 데이터는 기기에 그대로 있습니다.</li>
+      <li><strong>동기화 문제</strong>는 일부 변경 사항이 아직 iCloud에 도달하지 못했다는 뜻입니다. <strong>세부 정보 보기</strong>를 탭하면 해결 방법과, 지원팀에 보낼 수 있는 진단 정보가 나옵니다.</li>
+    </ul>
+
+    <h2>동기화는 백업이 아닙니다</h2>
+    <p>동기화는 기기 간에 하나의 최신 기록을 유지하므로, 한 기기에서 한 삭제는 다른 기기에도 전달됩니다. 삭제한 것을 되돌릴 수는 없습니다. <a href="/ko/help/backup-and-restore">AtlasDays 백업</a>은 직접 보관하다가 필요할 때 복원하는 별도의 파일입니다. 동기화가 켜진 상태에서 백업을 복원하면 복원된 데이터가 모든 기기의 데이터를 대체하며, AtlasDays는 iCloud 동기화가 끝날 때까지 기다린 뒤에 복원을 시작합니다.</p>
 
     <section class="if-needed">
-      <h2>화면에 동기화 안 됨으로 표시되는 경우</h2>
-      <p>먼저 상태 메시지의 안내를 따르십시오. Apple 계정 로그인 상태, 사용 가능한 iCloud 저장 공간, 네트워크 연결, 그리고 스위치를 바꾼 뒤 앱이 재실행을 요청하는지 확인하십시오.</p>
+      <h2>데이터가 보이지 않는 경우</h2>
+      <ol>
+        <li>원인을 확인하는 동안에는 앱을 재설정하거나 데이터를 삭제하지 마십시오.</li>
+        <li>이 기기가 같은 Apple 계정으로 로그인되어 있고 iCloud를 사용할 수 있는지 확인하십시오.</li>
+        <li>iCloud 동기화 화면의 <strong>상태</strong>와 <strong>데이터</strong>를 확인하고, 안정적인 연결에서 AtlasDays를 몇 분 동안 열어 두십시오.</li>
+        <li>다른 기기에 예상한 여행이 아직 남아 있다면 어떤 것도 바꾸기 전에 지원팀에 문의하십시오. iCloud 동기화 화면의 <strong>참조 번호</strong> 행에는 탭해서 복사할 수 있는 지원용 ID가 있습니다.</li>
+      </ol>
+      <p>화면에 AtlasDays가 동기화되지 않는다고 표시되면 먼저 그 메시지를 따르십시오. Apple 계정 로그인, 사용 가능한 iCloud 저장 공간, 네트워크 연결을 확인한 다음 AtlasDays를 완전히 종료했다가 다시 여십시오.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-icloud-sync-and-restore">
       <h2 id="next-icloud-sync-and-restore">이어서 읽기</h2>
       <ul>
-        <li><a href="/ko/help/privacy-location-and-sync">
-          <strong>개인정보 보호 및 권한</strong>
-          <span>AtlasDays가 무엇을 볼 수 있고 무엇이 기기를 떠나지 않는지 알아봅니다.</span>
-        </a></li>
-        <li><a href="/ko/help/export-and-reports">
-          <strong>내보내기 및 보고서</strong>
-          <span>추가 백업으로 내보낸 파일을 보관합니다.</span>
-        </a></li>
         <li><a href="/ko/help/delete-and-reset">
           <strong>데이터 삭제 및 재설정</strong>
-          <span>여행이나 트래커를 지우거나 전체를 재설정합니다.</span>
+          <span>여행이나 트래커를 삭제하거나 완전히 재설정합니다.</span>
+        </a></li>
+        <li><a href="/ko/help/backup-and-restore">
+          <strong>백업 및 복원</strong>
+          <span>여행, 트래커, 설정의 사본을 보관합니다.</span>
+        </a></li>
+        <li><a href="/ko/help/appearance-and-personalization">
+          <strong>화면 모드 및 맞춤 설정</strong>
+          <span>테마, 강조 색상, 앱 아이콘을 바꿉니다.</span>
         </a></li>
       </ul>
     </nav>
@@ -216,7 +223,7 @@
       <h2>해결되지 않은 경우</h2>
       <p><a href="mailto:support@atlasdays.app">AtlasDays 지원팀에 문의</a>할 때 해당 날짜, 예상한 결과, 실제로 일어난 상황을 함께 알려 주십시오.</p>
     </aside>
-    <p class="help-updated">최종 업데이트: 2026년 8월 2일</p>
+    <p class="help-updated">최종 업데이트: 2026년 9월 30일</p>
   </article>
   </main>
 

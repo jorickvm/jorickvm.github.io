@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Reizen automatisch detecteren – AtlasDays-helpcentrum</title>
-  <meta name="description" content="Automatische detectie gebruikt energiezuinige locatiecontrole op de achtergrond om nieuwe reizen op te merken, direct aan je Tijdlijn toe te voegen en je ze te laten controleren of ongedaan maken." />
+  <meta name="description" content="Schakel Auto-detect in, geef de vereiste locatietoegang en controleer reizen die na een grensovergang automatisch zijn toegevoegd." />
   <meta property="og:title" content="Reizen automatisch detecteren – AtlasDays-helpcentrum" />
-  <meta property="og:description" content="Automatische detectie gebruikt energiezuinige locatiecontrole op de achtergrond om nieuwe reizen op te merken, direct aan je Tijdlijn toe te voegen en je ze te laten controleren of ongedaan maken." />
+  <meta property="og:description" content="Schakel Auto-detect in, geef de vereiste locatietoegang en controleer reizen die na een grensovergang automatisch zijn toegevoegd." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/nl/help/auto-detect-trips" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Reizen automatisch detecteren – AtlasDays-helpcentrum" />
-  <meta name="twitter:description" content="Automatische detectie gebruikt energiezuinige locatiecontrole op de achtergrond om nieuwe reizen op te merken, direct aan je Tijdlijn toe te voegen en je ze te laten controleren of ongedaan maken." />
+  <meta name="twitter:description" content="Schakel Auto-detect in, geef de vereiste locatietoegang en controleer reizen die na een grensovergang automatisch zijn toegevoegd." />
   <meta name="apple-itunes-app" content="app-id=6760133544, app-argument=https://apps.apple.com/app/atlasdays-track-country-days/id6760133544" />
   <meta property="og:locale" content="nl_NL" />
   <meta property="og:image" content="https://atlasdays.app/assets/social/site-v1.png" />
@@ -68,7 +68,7 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "Reizen automatisch detecteren",
-    "description": "Automatische detectie gebruikt energiezuinige locatiecontrole op de achtergrond om nieuwe reizen op te merken, direct aan je Tijdlijn toe te voegen en je ze te laten controleren of ongedaan maken.",
+    "description": "Schakel Auto-detect in, geef de vereiste locatietoegang en controleer reizen die na een grensovergang automatisch zijn toegevoegd.",
     "author": {
       "@type": "Organization",
       "name": "AtlasDays"
@@ -78,7 +78,7 @@
       "name": "AtlasDays"
     },
     "url": "https://atlasdays.app/nl/help/auto-detect-trips",
-    "dateModified": "2026-08-02",
+    "dateModified": "2026-09-30",
     "inLanguage": "nl"
   }
   </script>
@@ -162,44 +162,76 @@
     <nav class="breadcrumb" aria-label="Broodkruimelpad"><a href="/nl/">AtlasDays</a> / <a href="/nl/help/">Helpcentrum</a></nav>
 
     <h1>Reizen automatisch detecteren</h1>
-<p class="article-answer">Automatische detectie gebruikt energiezuinige locatiecontrole op de achtergrond om nieuwe reizen op te merken en direct aan je <a href="/nl/help/timeline-and-calendar">Tijdlijn</a> toe te voegen. Je kunt ze controleren, bewerken of ongedaan maken.</p>
+<p class="article-answer">Auto-detect gebruikt energiezuinige locatiecontrole op de achtergrond om op te merken wanneer je een nieuw land binnengaat, en voegt de reis direct toe aan de <a href="/nl/help/timeline-and-calendar">Tijdlijn</a>. Er wacht niets op goedkeuring, en je kunt de reis daarna bewerken of verwijderen.</p>
 
-    <h2>Automatische detectie inschakelen</h2>
+    <h2>Auto-detect inschakelen</h2>
     <ol>
-      <li>Open <strong>Instellingen → Detecteer reizen automatisch</strong>.</li>
-      <li>Schakel <strong>Detecteer reizen automatisch</strong> in.</li>
-      <li>Geef altijd toegang tot je locatie wanneer iOS daarom vraagt. De schakelaar blijft uit zolang achtergrondtoegang ontbreekt.</li>
-      <li>Schakel desgewenst meldingen voor nieuw gedetecteerde landen in.</li>
+      <li>Open <strong>Instellingen → Detectie → Auto-detect</strong>.</li>
+      <li>Schakel <strong>Auto-detect</strong> in.</li>
+      <li>iOS vraagt twee keer om locatietoegang. Kies eerst Bij gebruik van app en daarna Altijd wanneer de tweede vraag verschijnt.</li>
+      <li>Schakel desgewenst <strong>Nieuw gedetecteerde landen</strong> in onder Meldingen.</li>
     </ol>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/nl/help/auto-detect-trips/auto-detect-settings.webp" alt="Instellingen voor automatische reisdetectie met locatie- en meldingsopties" width="1320" height="1850" loading="lazy" decoding="async" /></figure>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/nl/help/auto-detect-trips/auto-detect-settings.webp" alt="Instellingen voor automatische reisdetectie met locatie- en meldingsopties" width="1320" height="1932" loading="lazy" decoding="async" /></figure>
+    <p>Detectie werkt alleen met toegang op Altijd. Blijf je bij Bij gebruik van app steken, dan blijft de schakelaar uit. Als je het inschakelt via de kaart in de Tijdlijn (zie hieronder), wordt na de twee locatievragen ook om toestemming voor meldingen gevraagd; via Instellingen gebeurt dat niet.</p>
+
+    <h2>Wat er gebeurt als een land wordt gedetecteerd</h2>
+    <ul>
+      <li>De reis wordt direct aan de Tijdlijn toegevoegd, met de detectiedatum als begin en zonder einddatum totdat je vertrekt.</li>
+      <li>Als AtlasDays open is, toont een banner de plek met <strong>Herstel</strong>. Die verdwijnt na een paar seconden, en er verschijnt geen pushmelding zolang de app op de voorgrond staat.</li>
+      <li>Is de app gesloten en staan meldingen aan, dan krijg je <em>&lt;Plaats&gt; gedetecteerd</em> met de begindatum. Tik erop om de Tijdlijn te openen.</li>
+    </ul>
+    <figure class="help-shot help-shot-control"><img src="/assets/article-images/nl/help/auto-detect-trips/detected-banner.webp" alt="Banner in de app die een gedetecteerd land meldt met een knop Herstel" width="1320" height="720" loading="lazy" decoding="async" /></figure>
+    <p>De melding heeft één actie, <strong>Verwijder reis</strong>. Daarmee verwijder je de reis die net is toegevoegd. De plek komt daardoor niet op de negeerlijst, en een reis waarvan je de begindatum al hebt gewijzigd blijft staan.</p>
+
+    <h2>Reizen worden automatisch afgesloten en transit wordt gemarkeerd</h2>
+    <ul>
+      <li><strong>Automatisch afsluiten.</strong> Wanneer een latere detectie laat zien dat je een land hebt verlaten, krijgt de eerdere open reis een einddatum. Als AtlasDays open is, verschijnt een melding <strong>Reis naar &lt;Land&gt; beëindigd</strong> (of <strong>N reizen beëindigd</strong>) met <strong>Herstel</strong>, een paar seconden lang.</li>
+      <li><strong>Transit.</strong> Een korte stop tussen twee andere landen verschijnt eerst als gewone reis. Zodra de volgende detectie binnenkomt, verandert AtlasDays hem in <a href="/nl/help/history-and-import">Transit</a>, zodat hij niet meetelt in de dagtotalen. Dit gebeurt alleen als je er geen soort reis, notities of foto's aan hebt toegevoegd.</li>
+    </ul>
 
     <h2>Gedetecteerde reizen controleren</h2>
-    <p>De nieuwe reis verschijnt in de Tijdlijn met het gedetecteerde land en de datums die AtlasDays heeft afgeleid. Open de reis, controleer het land of de Amerikaanse staat en de grensdatums en bewerk of verwijder hem zo nodig. Als je een detectiemelding ontvangt, verwijdert <strong>Negeren</strong> de reis. Je kunt hem later nog altijd handmatig toevoegen.</p>
+    <p>Open de reis in de Tijdlijn om het land of de Amerikaanse staat en de datums te controleren. De begindatum is de dag waarop de locatiewijziging werd gedetecteerd, dus pas hem aan waar de exacte dag ertoe doet. Detectie van Amerikaanse staten is er met Pro; zonder Pro wordt een reis naar de VS als gewone reis naar de Verenigde Staten toegevoegd.</p>
 
     <h2>Plaatsen negeren die je niet wilt detecteren</h2>
-    <p>Voeg landen toe aan de negeerlijst als nabijheid van een grens steeds reizen oplevert die je niet nodig hebt. Pro-gebruikers kunnen ook afzonderlijke Amerikaanse staten negeren. Genegeerde plekken kun je nog steeds handmatig toevoegen.</p>
+    <p>Kies onder <strong>Negeren</strong> in het scherm Auto-detect voor <strong>Landen</strong> om plekken over te slaan die je telefoon steeds oppikt vlak bij een grens. Met Pro heb je ook <strong>Amerikaanse staten</strong>. Voor een genegeerde plek wordt geen reis gemaakt, en de dagen blijven bij het omliggende land. Je kunt zulke reizen nog steeds zelf toevoegen.</p>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/nl/help/auto-detect-trips/ignore-list.webp" alt="Negeerlijst van Auto-detect met geselecteerde landen" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
-    <h2>Automatische detectie registreert geen doorlopende GPS-route</h2>
-    <p>De functie gebruikt energiezuinige locatiegebeurtenissen van het systeem en slaat geen gedetailleerde route op. Het moment van detectie hangt af van iOS, de omgeving, je verbinding en het beschikbare grenssignaal.</p>
+    <h2>Tips in de Tijdlijn</h2>
+    <p>De Tijdlijn kan bovenaan de lijst maximaal drie kaarten tonen. Met het kruisje op een kaart verberg je die voorgoed.</p>
+    <ul>
+      <li><strong>Reizen automatisch bijhouden</strong> biedt <strong>Schakel auto-detect in</strong> en <strong>Hoe het werkt</strong>. De kaart verschijnt zolang Auto-detect uit staat en je minstens één reis hebt.</li>
+      <li><strong>Auto-detect is gepauzeerd</strong> verschijnt wanneer Locatie niet meer op Altijd staat. Met <strong>Open Instellingen</strong> ga je naar de iOS-instellingen om dat te herstellen.</li>
+      <li><strong>Ontvang meldingen</strong> verschijnt nadat op dit apparaat een reis is toegevoegd terwijl meldingen uit staan, en biedt <strong>Schakel meldingen in</strong>.</li>
+    </ul>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/nl/help/auto-detect-trips/prompt-card.webp" alt="Tijdlijnkaart die aanbiedt om Auto-detect in te schakelen" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <p>Meer over deze kaarten en andere bediening van de Tijdlijn staat in <a href="/nl/help/timeline-tools">De Tijdlijn doorzoeken, filteren en aanpassen</a>.</p>
+
+    <h2>Zorg dat Auto-detect blijft werken</h2>
+    <ul>
+      <li>Open AtlasDays af en toe. Blijft de app lange tijd gesloten, dan stopt iOS mogelijk met het doorgeven van locatie-updates.</li>
+      <li>Sluit de app niet geforceerd af via de appkiezer. Daarmee stopt de controle totdat je de app weer opent.</li>
+      <li>Houd Locatie voor AtlasDays op Altijd. <strong>Meer info</strong> in het scherm Auto-detect toont deze lijst.</li>
+    </ul>
+    <div class="callout"><p><strong>Geen doorlopende GPS.</strong> Auto-detect leunt op de iOS-gebeurtenissen voor belangrijke locatiewijzigingen, niet op een opgeslagen route. Het tijdstip hangt af van iOS, geografie en verbinding, dus een grensovergang kan te laat worden opgemerkt.</p></div>
 
     <section class="if-needed">
       <h2>Als er geen reis verschijnt</h2>
-      <p>Controleer of automatische detectie aanstaat, Locatie op Altijd is ingesteld, het land niet wordt genegeerd en AtlasDays meldingen mag tonen als je een melding verwacht. Je kunt de reis altijd handmatig toevoegen.</p>
+      <p>Controleer of Auto-detect aanstaat, Locatie op Altijd staat, de plek niet op de negeerlijst staat en de app recent is geopend en niet geforceerd is afgesloten. Controleer voor een melding ook of <strong>Nieuw gedetecteerde landen</strong> aanstaat en of iOS meldingen van AtlasDays toestaat. Je kunt de reis altijd handmatig toevoegen.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-auto-detect-trips">
       <h2 id="next-auto-detect-trips">Ga verder met</h2>
       <ul>
+        <li><a href="/nl/help/privacy-location-and-sync">
+          <strong>Privacy en toestemmingen</strong>
+          <span>Wat AtlasDays leest, bewaart en verstuurt.</span>
+        </a></li>
         <li><a href="/nl/help/delete-and-reset">
           <strong>Gegevens verwijderen of opnieuw beginnen</strong>
-          <span>Verwijder reizen of trackers, of stel AtlasDays volledig opnieuw in.</span>
+          <span>Verwijder reizen of trackers, of reset alles.</span>
         </a></li>
         <li><a href="/nl/help/timeline-and-calendar">
           <strong>Een reis toevoegen, bewerken of verwijderen</strong>
-          <span>Gebruik de Tijdlijn en Kalender om je reisgeschiedenis op te bouwen en bij te houden.</span>
-        </a></li>
-        <li><a href="/nl/help/smart-alerts">
-          <strong>Slimme meldingen</strong>
-          <span>Kies mijlpalen voor een tracker en stel meldingen in.</span>
+          <span>Controleer en bewerk automatisch gedetecteerde reizen.</span>
         </a></li>
       </ul>
     </nav>
@@ -207,7 +239,7 @@
       <h2>Kom je er niet uit?</h2>
       <p><a href="mailto:support@atlasdays.app">Neem contact op met AtlasDays Support</a> en vermeld de datums, wat je verwachtte en wat er gebeurde.</p>
     </aside>
-    <p class="help-updated">Laatst bijgewerkt op 2 augustus 2026</p>
+    <p class="help-updated">Laatst bijgewerkt op 30 september 2026</p>
   </article>
   </main>
 

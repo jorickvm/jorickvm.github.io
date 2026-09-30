@@ -1,39 +1,44 @@
     <nav class="breadcrumb" aria-label="パンくずリスト"><a href="/ja/">AtlasDays</a> / <a href="/ja/help/">ヘルプセンター</a></nav>
 
     <h1>トラッカーを作成する</h1>
-<p class="article-answer">集計対象の旅行を<a href="/ja/help/history-and-import">実際の日付</a>とともに<a href="/ja/help/timeline-and-calendar">タイムライン</a>に入れてからトラッカーを作成し、結果を使う前にルールの場所、集計期間、上限を確認します。</p>
+<p class="article-answer"><strong>「概要」</strong>で <strong>+</strong> をタップし、プリセットまたは<strong>「カスタム」</strong>を選び、エディタでルールを確認して<strong>「保存」</strong>をタップします。トラッカーが数えるのは、<a href="/ja/help/timeline-and-calendar">タイムライン</a>にすでにある旅行のうち、<a href="/ja/help/history-and-import">正確な日付</a>のあるものだけです。</p>
 
     <h2>トラッカーを追加する</h2>
     <ol>
-      <li><strong>「概要」</strong>を開き、<strong>+</strong> をタップします。</li>
-      <li><strong>「ビザ」</strong>、<strong>「税務上の居住」</strong>、<strong>「米国の州」</strong>、<strong>「滞在目標」</strong>のフィルタでリストを絞り込みます。ルール名で検索することもできます。</li>
-      <li>目的に合うプリセットがあれば選び、なければ<strong>「カスタム設定」</strong>を選びます。</li>
-      <li>名前、国または米国の州、集計期間、上限を確認します。</li>
-      <li>トラッカーを保存します。</li>
+      <li><strong>「概要」</strong>を開き、右上の <strong>+</strong> をタップします。<strong>「トラッカーを追加」</strong>シートが開きます。</li>
+      <li>フィルタのピルのいずれかをタップするか、虫眼鏡をタップしてルール名や国名で検索します。一覧の詳細は<a href="/ja/help/tracker-presets">トラッカーのプリセットを選ぶ</a>で説明しています。</li>
+      <li>プリセットをタップするか、上部に固定されている<strong>「カスタム」</strong>カードをタップして、ルールを自分で組み立てます。</li>
+      <li>エディタでルールを確認します。行の下の文が、そのトラッカーが数える内容の説明です。<strong>「詳しく見る」</strong>をタップすると、そのルールのガイドが開きます。</li>
+      <li><strong>「保存」</strong>をタップします。</li>
     </ol>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/ja/help/create-a-tracker/category-picker.webp" alt="プリセット一覧の上に「ビザ」「税務上の居住」「米国の州」「滞在目標」のフィルタが並ぶ「トラッカーを追加」画面" width="1320" height="2134" loading="lazy" decoding="async" /></figure>
-    <p>フィルタを使うと、リストの表示が絞り込まれます。<strong>「すべて」</strong>のままにすると、セクションごとに分かれたすべてのルールを見られます。</p>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/ja/help/create-a-tracker/preset-picker.webp" alt="選んだフィルタで表示されるルールが並ぶトラッカーのプリセット一覧" width="1320" height="2134" loading="lazy" decoding="async" /></figure>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/ja/help/create-a-tracker/preset-picker.webp" alt="フィルタのピル、「カスタム」カード、最初のプリセットのセクションが並ぶ「トラッカーを追加」シート" width="1320" height="2134" loading="lazy" decoding="async" /></figure>
+    <p>トラッカーの名前は、数える場所から付けられます。名前やサブタイトル、国を変えるには、エディタの上部にあるカードをタップします。</p>
 
-    <h2>集計期間を理解する</h2>
+    <h2>ルールを設定する</h2>
+    <p>エディタには、ルールが短い行のリストとして表示されます。プリセットを選ぶと自動で入力され、<strong>「カスタム」</strong>では自分の選択から始まります。</p>
     <ul>
-      <li><strong>「ローリング」</strong>は、選んだ日から決まった日数分さかのぼって集計します。</li>
-      <li><strong>「年」</strong>は、選んだ年を通して集計します。起点はトラッカーの「開始」で設定した日付です。1月1日始まりなら12月31日までの暦年になり、それ以外の日付なら会計年度になります。</li>
-      <li><strong>「入国ごと」</strong>は、別々の滞在を合算せず、連続した1回の滞在を見ます。</li>
+      <li><strong>「目標」：</strong><strong>「上限未満に抑える」</strong>は、数値を超えないようにする<strong>「上限」</strong>として扱います。<strong>「目標を達成」</strong>は、数値を目指して達成する<strong>「目標」</strong>として扱います。</li>
+      <li><strong>「上限」</strong>（または<strong>「目標」</strong>）：数値と、その数える対象です。<strong>「日数」</strong>は到着日と出発日を丸ごと数え、<strong>「泊数」</strong>は到着から出発までの夜を数え、<strong>「不在」</strong>はトラッカーの対象地域の外で過ごした日を数えます。最後の単位については<a href="/ja/help/days-away">特定の場所から離れていた日数を数える</a>で説明しています。</li>
+      <li><strong>「期間」：</strong>数える期間です。下記で説明します。</li>
+    </ul>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/ja/help/create-a-tracker/configured-editor.webp" alt="場所、目標、上限、期間の行が並ぶトラッカーのエディタ" width="1320" height="2136" loading="lazy" decoding="async" /></figure>
+
+    <h2>期間を選ぶ</h2>
+    <ul>
+      <li><strong>「ローリング」</strong>は、シェンゲンの90/180ルールのように、今日で終わる動く期間です。<strong>「長さ」</strong>の行で、日数または暦の月数で設定します。</li>
+      <li><strong>「年」</strong>は、<strong>「開始」</strong>の行の日付から始まる1年を数えます。開始が1月1日なら暦年になり、それ以外の日付なら会計年度になります。</li>
+      <li><strong>「入国ごと」</strong>は、<strong>「開始」</strong>の行の日付から日数を数え、別々の訪問を合算せず、1回の滞在ごとに追います。それぞれの期間が何を測るかは、<a href="/ja/help/trackers-and-limits">トラッカーの集計方法</a>で説明しています。</li>
     </ul>
 
-    <p>シェンゲンの90/180ルールを管理したい場合は、手作業で組み立てずに<a href="/ja/help/schengen-90-180">専用の手順</a>をご覧ください。</p>
-
     <h2>場所を確認する</h2>
-    <p>複数の国を選んだトラッカーは、選択したすべての国を対象に、条件を満たす日数を集計します。米国の州のトラッカーには、州を設定した米国の旅行が必要です。州のない米国の記録は、特定の州の集計には使えません。</p>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/ja/help/create-a-tracker/configured-editor.webp" alt="場所、集計期間、上限が設定されたトラッカーの編集画面" width="1320" height="2136" loading="lazy" decoding="async" /></figure>
+    <p>複数の国を選んだトラッカーは、選択したすべての国を対象に、条件を満たす日数を集計します。米国の州のトラッカーには、州を設定した米国の旅行が必要です。州を指定せずに保存した米国の旅行は州のトラッカーには反映されず、その場合、行の表示は<strong>「国」</strong>ではなく<strong>「州」</strong>になります。</p>
 
     <h2>プリセットはあくまで出発点です</h2>
-    <p>プリセットは設定の手間を省くためのものです。実際に自分へ適用されるルールが変わるわけではありません。数値を頼りにする前に、自分の国籍、入国時に認められた条件、渡航目的、現在の状況に合っているか確認してください。</p>
+    <p>プリセットは設定の手間を省くためのものです。実際に自分へ適用されるルールが変わるわけではありません。数値を頼りにする前に、自分の国籍、認められた条件、渡航目的、現在の状況に合っているか確認してください。シェンゲンの90/180ルールを管理したい場合は、手作業で組み立てるよりも<a href="/ja/help/schengen-90-180">専用の手順</a>のほうが早く済みます。</p>
 
-    <div class="callout"><p><strong>無料のAtlasDaysで使えるトラッカーは1つです。</strong><a href="/ja/help/atlasdays-pro">AtlasDays Pro</a>にすると、トラッカーを無制限に追加でき、<a href="/ja/help/smart-alerts">スマートアラート</a>も使えます。</p></div>
+    <div class="callout"><p><strong>1つの上限を管理するトラッカーは無料です。</strong>2つ目のトラッカー、米国の州のトラッカー、<a href="/ja/help/rule-trackers">2つの上限を持つトラッカー</a>には<a href="/ja/help/atlasdays-pro">AtlasDays Pro</a>が必要です。Proがなくても、どれも設定できます。アップグレードの案内は<strong>「保存」</strong>をタップしたときに表示されます。</p></div>
 
     <section class="if-needed">
-      <h2>新しいトラッカーに日数が出ないとき</h2>
-      <p>トラッカーの場所が自分の旅行と合っているか、対象の旅行が「年のみ」ではなく開始日と終了日で記録されているか、「乗り継ぎ」になっていないかを確認してください。</p>
+      <h2>新しいトラッカーの日数が0のとき</h2>
+      <p>トラッカーの対象地域が旅行と合っているか、該当する旅行に「年のみ」ではなく開始日と終了日があるか、「乗り継ぎ」になっていないかを確認してください。これから始まる旅行は、その日付が来るまで数えられません。</p>
     </section>

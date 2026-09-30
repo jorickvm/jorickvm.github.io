@@ -1,32 +1,43 @@
     <nav class="breadcrumb" aria-label="導覽路徑"><a href="/zh-Hant/">AtlasDays</a> / <a href="/zh-Hant/help/">說明中心</a></nav>
 
     <h1>追蹤器總計的計算方式</h1>
-<p class="article-answer">追蹤器會依地點設定篩選符合條件的<a href="/zh-Hant/help/history-and-import">行程天數</a>，同一日有重疊時只計一次，再套用已儲存的計算期間。</p>
+<p class="article-answer">追蹤器會挑出所選地點內<a href="/zh-Hant/help/history-and-import">有日期的行程</a>，合併重疊的日曆日，再在計算期間內計算天數。結果會與你設定的上限比較。</p>
 
-    <h2>四項設定決定結果</h2>
+    <h2>五項設定決定結果</h2>
     <ol>
-      <li><strong>地點：</strong>只有位於所選國家或美國州別的行程才符合條件。</li>
-      <li><strong>計算期間：</strong>滾動、年份和每次入境的追蹤器，檢視的日期範圍各不相同。</li>
-      <li><strong>上限：</strong>門檻決定追蹤器的進度和狀態。</li>
-      <li><strong>行程精確度：</strong>有日期的行程才會計入；「僅年份」與「轉機」行程均計為 0 天。</li>
+      <li><strong>地點</strong>：只有位於所選國家或美國州別的行程才符合條件。</li>
+      <li><strong>單位</strong>：<strong>上限</strong>這一列計算的是<strong>天數</strong>、<strong>晚數</strong>，或<strong>不在</strong>的天數。</li>
+      <li><strong>計算期間</strong>：<strong>滾動</strong>、<strong>年份</strong>和<strong>每次入境</strong>的追蹤器，檢視的日期範圍各不相同。</li>
+      <li><strong>上限</strong>：這個門檻決定追蹤器的進度和狀態。選擇<strong>達成目標</strong>時，它會變成<strong>目標</strong>。</li>
+      <li><strong>行程精確度</strong>：有精確日期的行程才會計入。僅年份和轉機行程計為 0 天。</li>
     </ol>
 
-    <h2>滾動式期間每天向前推進</h2>
-    <p>滾動式追蹤器會從所選基準日往回計算。較早的天數會移出計算期間，新的行程天數則會進入，因此即使沒有編輯任何行程，總計仍可能改變。</p>
+    <h2>天數與晚數</h2>
+    <p><strong>天數</strong>單位會完整計入入境日和出境日，所以 6 月 1 日到 6 月 3 日的停留是 3 天。<strong>晚數</strong>單位計算入境與出境之間的夜晚，同一段停留是 2 晚。晚數不會跨越前後相接的停留：一筆行程的出境日和下一筆行程的入境日之間的那一晚，兩邊都不算，即使是同一個國家也一樣。</p>
 
-    <h2>年份型追蹤器每年重新計算</h2>
-    <p>這類追蹤器會計算所選年度內符合條件的天數，起點由追蹤器的「起始日」設定決定。從 1 月 1 日開始就是日曆年，一路算到 12 月 31 日；設成其他日期則是會計年度。切換年度時，納入計算的紀錄也會改變。</p>
+    <h2>重疊的日子只算一次</h2>
+    <p>滾動、年份和不在天數的追蹤器，會合併涵蓋同一個日曆日的行程，所以<a href="/zh-Hant/help/timeline-and-calendar">時間軸</a>中的重疊不會重複計算。每次入境追蹤器完全不合併行程，說明見下方。</p>
 
-    <h2>每次入境追蹤器判斷連續停留</h2>
-    <p>每次入境追蹤器會計算地點範圍內的一段連續停留，不會將彼此無關的造訪合併為單一總計。</p>
+    <h2>滾動期間每天都在移動</h2>
+    <p>滾動式追蹤器永遠在今天結束。它的<strong>長度</strong>可以是固定的天數，也可以是從今天往回推的日曆月份數。較早的天數會離開計算期間，較新的行程天數則會進入，所以即使沒有編輯任何行程，總計仍可能改變。</p>
 
-    <h2>圖表與預測</h2>
-    <p>詳細圖表會呈現天數如何隨時間變化。有日期的未來行程可納入預測，「僅年份」行程則不行。預測的完整說明，請參閱<a href="/zh-Hant/help/plan-a-trip">確認預定行程是否仍在上限內</a>。</p>
+    <h2>年份型追蹤器</h2>
+    <p>年份型追蹤器計算一整年，從<strong>起始日</strong>那一列的日期開始。1 月 1 日開始就是日曆年；其他任何開始日期則是會計年度。</p>
+
+    <h2>每次入境追蹤器判斷單次停留</h2>
+    <p>每次入境追蹤器衡量的是單次停留。有停留中的行程就用它，否則使用最近結束的那一段停留。它不會把各次拜訪加總。追蹤器設有<strong>開始</strong>日期時，該日期之前的天數不會計入。</p>
+
+    <h2>停留中與預定的行程</h2>
+    <p>沒有結束日期的行程會算到今天。尚未開始的行程不會改變目前的總計；它會在圖表上顯示為預定的旅行，預測也會用到它。<a href="/zh-Hant/help/plan-a-trip">確認預定行程是否還在上限內</a>會說明預測。</p>
+
+    <h2>閱讀詳細圖表</h2>
+    <p>開啟追蹤器，可以看到它的天數如何隨時間變化。圖表有兩種檢視：可捲動的近距離檢視，以及涵蓋整段期間的檢視。用雙指捏合或連按兩下圖表即可切換，每個追蹤器都會記住自己的選擇。</p>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/zh-Hant/help/trackers-and-limits/detail-chart.webp" alt="追蹤器詳細圖表，涵蓋目前生效的計算期間" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
-    <p>圖表採用的上限與計算期間，都可在追蹤器編輯畫面中設定。</p>
+    <p>滾動、年份和不在天數的追蹤器，在你的計畫會改變結果時，圖表下方也會顯示一句話，例如你將達到上限的日期。有兩項上限的追蹤器則改為每項上限各一張圖表；請參閱<a href="/zh-Hant/help/rule-trackers">有兩項上限的追蹤器</a>。</p>
+    <p>塑造圖表的<strong>目標類型</strong>、<strong>上限</strong>和<strong>計算期間</strong>這幾列，都在追蹤器編輯畫面中設定。輕點追蹤器詳細畫面頂端的滑桿圖示即可開啟。</p>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/zh-Hant/help/trackers-and-limits/goal-window.webp" alt="追蹤器編輯畫面，顯示上限和計算期間的控制項" width="1320" height="1700" loading="lazy" decoding="async" /></figure>
 
     <section class="if-needed">
       <h2>確認哪些行程會影響追蹤器</h2>
-      <p>開啟追蹤器詳細資料，確認地點與計算期間，再與<a href="/zh-Hant/help/timeline-and-calendar">時間軸</a>中的行程比對。特別檢查停留中行程、轉機、「僅年份」紀錄、重疊日期，以及未標註美國州別的行程。</p>
+      <p>開啟詳細畫面，查看圖表下方列出的行程，再拿它的地點和計算期間與<a href="/zh-Hant/help/timeline-and-calendar">時間軸</a>比對。請特別檢查停留中的行程、轉機、僅年份紀錄、重疊，以及未標註的美國州別。若要為該追蹤器新增行程，輕點行程清單上方的 <strong>+</strong>。</p>
     </section>

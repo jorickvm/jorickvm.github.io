@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Flighty 匯入｜AtlasDays 說明中心</title>
-  <meta name="description" content="將 Flighty 航班紀錄匯出為 CSV 後匯入 AtlasDays，並檢查推算出的停留、轉機與跨夜行程。" />
+  <meta name="description" content="匯入 Flighty CSV，並確認由航班推算出的停留、轉機日與跨夜行程。" />
   <meta property="og:title" content="Flighty 匯入｜AtlasDays 說明中心" />
-  <meta property="og:description" content="將 Flighty 航班紀錄匯出為 CSV 後匯入 AtlasDays，並檢查推算出的停留、轉機與跨夜行程。" />
+  <meta property="og:description" content="匯入 Flighty CSV，並確認由航班推算出的停留、轉機日與跨夜行程。" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/zh-Hant/help/flighty-import" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Flighty 匯入｜AtlasDays 說明中心" />
-  <meta name="twitter:description" content="將 Flighty 航班紀錄匯出為 CSV 後匯入 AtlasDays，並檢查推算出的停留、轉機與跨夜行程。" />
+  <meta name="twitter:description" content="匯入 Flighty CSV，並確認由航班推算出的停留、轉機日與跨夜行程。" />
   <meta name="apple-itunes-app" content="app-id=6760133544, app-argument=https://apps.apple.com/app/atlasdays-track-country-days/id6760133544" />
   <meta property="og:locale" content="zh_TW" />
   <meta property="og:image" content="https://atlasdays.app/assets/social/site-v1.png" />
@@ -68,7 +68,7 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "Flighty 匯入",
-    "description": "將 Flighty 航班紀錄匯出為 CSV 後匯入 AtlasDays，並檢查推算出的停留、轉機與跨夜行程。",
+    "description": "匯入 Flighty CSV，並確認由航班推算出的停留、轉機日與跨夜行程。",
     "author": {
       "@type": "Organization",
       "name": "AtlasDays"
@@ -78,7 +78,7 @@
       "name": "AtlasDays"
     },
     "url": "https://atlasdays.app/zh-Hant/help/flighty-import",
-    "dateModified": "2026-08-02",
+    "dateModified": "2026-09-30",
     "inLanguage": "zh-Hant"
   }
   </script>
@@ -162,46 +162,57 @@
     <nav class="breadcrumb" aria-label="導覽路徑"><a href="/zh-Hant/">AtlasDays</a> / <a href="/zh-Hant/help/">說明中心</a></nav>
 
     <h1>Flighty 匯入</h1>
-<p class="article-answer">將 Flighty 航班紀錄匯出為 CSV，在 AtlasDays 中選取檔案，儲存前再逐一檢查行程建議。</p>
+<p class="article-answer">將 Flighty 的航班紀錄匯出為 CSV，在 AtlasDays 中選取檔案，儲存前先確認建議的行程。這是<a href="/zh-Hant/help/import-trips">新增過去行程的方式</a>之一。</p>
 
     <h2>從 Flighty 匯出</h2>
-    <p>在 Flighty 中將航班紀錄匯出為 CSV，並存到 iOS「檔案」選取器能開啟的位置，例如 iCloud Drive 或「我的 iPhone」。</p>
+    <p>在 Flighty 中開啟 <strong>設定 → Account Data</strong>，將航班匯出為 CSV。請把檔案存到 iOS「檔案」選取器能開啟的位置，例如 iCloud Drive 或「我的 iPhone」。</p>
 
     <h2>匯入 AtlasDays</h2>
     <ol>
       <li>開啟<strong>設定 → 匯入 → Flighty</strong>。</li>
-      <li>輕點<strong>選擇 Flighty CSV</strong>，選取剛才匯出的檔案。</li>
-      <li>等待 AtlasDays 產生預覽。</li>
-      <li>檢查建議停留、<a href="/zh-Hant/help/history-and-import">轉機</a>紀錄、跨夜行程、重複與重疊。</li>
-      <li>只將需要的資料列存入<a href="/zh-Hant/help/timeline-and-calendar">時間軸</a>。</li>
+      <li>點一下<strong>選擇 Flighty CSV</strong>，選取匯出的檔案。</li>
+      <li>檢查預覽畫面<strong>Flighty 中找到的行程</strong>：建議的停留、轉機停留、跨夜航班、資料不全的行程、重複與重疊。</li>
+      <li>可使用<strong>全選</strong>或<strong>取消全選</strong>，點一下任一項目即可編輯，再點<strong>匯入</strong>並確認。</li>
     </ol>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/zh-Hant/help/flighty-import/flighty-setup.webp" alt="從 Flighty 匯入的設定畫面" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <p>解析在裝置上進行，經你確認之前不會儲存任何內容。</p>
 
     <h2>航班如何變成行程</h2>
-    <p>抵達與出發機場可作為停留佐證，中途轉機則可能會標為「轉機」。遇到跨夜或銜接時間很短的航班時，仍需自行判斷；請將預覽與每次實際入境的情況比對。</p>
+    <p>AtlasDays 會將每個機場對應到國家；當某個航班抵達一個國家，之後又有航班從該國出發時，就會建立一個行程。預覽中的其他內容都由此而來：</p>
+    <ul>
+      <li>不到 24 小時的<strong>轉機停留</strong>會另外列出檢查。10 小時以內的停留會標為<a href="/zh-Hant/help/history-and-import">轉機</a>，不計入天數。更長的停留則視為已入境該國。要更改時，可在該行程切換<strong>轉機</strong>。</li>
+      <li>午夜時仍在空中的<strong>跨夜航班</strong>，會記錄為「國際空域」。</li>
+      <li><strong>資料不全的行程</strong>缺少抵達或出發紀錄，例如經陸路移動，或 Flighty 缺少某個航班。可以在該項目補上缺少的日期，或保持未結束的狀態。</li>
+      <li><strong>略過的資料列</strong>會列出原因，例如航班已取消，或缺少機場代碼。</li>
+    </ul>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/zh-Hant/help/flighty-import/flighty-review.webp" alt="Flighty 匯入預覽畫面，含停留、轉機與警示" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
+    <div class="callout"><p><strong>僅限航班。</strong>火車、渡輪與公路行程都不會出現，匯出檔中缺少的航班也不會出現。匯入之前，請將預覽與你實際停留的天數比對。</p></div>
+
+    <h2>重複與重疊</h2>
+    <p>與<a href="/zh-Hant/help/timeline-and-calendar">時間軸</a>中既有行程相同的項目會標為<strong>重複</strong>。<strong>合併</strong>表示該項目涵蓋既有行程，並會與它合併；<strong>重疊</strong>則表示日期與其他行程部分衝突。匯入之前請先檢查這些項目。</p>
+
     <h2>確認美國州別</h2>
-    <p>如果機場資訊足以判斷美國州別，AtlasDays 會建議對應州別。若使用州別追蹤，儲存前務必確認。</p>
+    <p>當機場資訊足以判斷美國州別時，AtlasDays 會建議該州。有 Pro 時，每個州會匯入為各自的行程；沒有 Pro 時，這些州會匯入為一般的美國行程。若你依賴各州的追蹤，儲存前請先確認州別。</p>
 
     <section class="if-needed">
-      <h2>無法匯入檔案時</h2>
-      <p>重新從 Flighty <a href="/zh-Hant/help/export-and-reports">匯出</a>一份 CSV，並選取原始檔案。若曾用試算表重新儲存或重排內容，檔案可能不再符合 Flighty 格式。</p>
+      <h2>檔案遭拒絕時</h2>
+      <p>若顯示「這似乎不是 Flighty 匯出的 CSV」，表示該檔案不是 Flighty 的原始匯出檔。請從 Flighty 重新匯出並選取該檔案，而不是在試算表中重新儲存或重新排列過的檔案。AtlasDays 的 CSV 檔案請改用<a href="/zh-Hant/help/csv-import">CSV 匯入</a>。若預覽顯示<strong>Flighty CSV 中沒有可匯入的資料</strong>，表示匯出檔中沒有 AtlasDays 可用的航班。</p>
     </section>
     <nav class="help-next" aria-labelledby="next-flighty-import">
       <h2 id="next-flighty-import">接著閱讀</h2>
       <ul>
         <li><a href="/zh-Hant/help/csv-import">
           <strong>CSV 匯入</strong>
-          <span>匯入已經整理好的行程試算表。</span>
+          <span>讀取這種格式的匯入流程。</span>
         </a></li>
-        <li><a href="/zh-Hant/help/photo-import">
-          <strong>照片匯入</strong>
-          <span>用照片圖庫重建較早的旅行紀錄。</span>
+        <li><a href="/zh-Hant/help/import-trips">
+          <strong>匯入行程</strong>
+          <span>選擇匯入來源，並在儲存前確認。</span>
         </a></li>
-        <li><a href="/zh-Hant/help/history-and-import">
-          <strong>行程日期的運作方式</strong>
-          <span>了解日期、停留中行程與「僅年份」紀錄。</span>
+        <li><a href="/zh-Hant/help/csv-format-reference">
+          <strong>CSV 格式參考</strong>
+          <span>所有支援的欄位、日期格式與錯誤訊息。</span>
         </a></li>
       </ul>
     </nav>
@@ -209,7 +220,7 @@
       <h2>仍需要協助嗎？</h2>
       <p><a href="mailto:support@atlasdays.app">聯絡 AtlasDays 支援</a>時，請一併提供相關日期、預期結果和實際情況。</p>
     </aside>
-    <p class="help-updated">最後更新：2026年8月2日</p>
+    <p class="help-updated">最後更新：2026年9月30日</p>
   </article>
   </main>
 

@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Alertes intelligentes – Centre d’aide AtlasDays</title>
-  <meta name="description" content="Configurez les Alertes intelligentes d’AtlasDays pour les seuils de vos suivis et sachez quand les notifications peuvent apparaître." />
+  <meta name="description" content="Configurez les Alertes intelligentes d’AtlasDays pour les seuils d’un suivi et comprenez quand les notifications peuvent apparaître." />
   <meta property="og:title" content="Alertes intelligentes – Centre d’aide AtlasDays" />
-  <meta property="og:description" content="Configurez les Alertes intelligentes d’AtlasDays pour les seuils de vos suivis et sachez quand les notifications peuvent apparaître." />
+  <meta property="og:description" content="Configurez les Alertes intelligentes d’AtlasDays pour les seuils d’un suivi et comprenez quand les notifications peuvent apparaître." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/fr/help/smart-alerts" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Alertes intelligentes – Centre d’aide AtlasDays" />
-  <meta name="twitter:description" content="Configurez les Alertes intelligentes d’AtlasDays pour les seuils de vos suivis et sachez quand les notifications peuvent apparaître." />
+  <meta name="twitter:description" content="Configurez les Alertes intelligentes d’AtlasDays pour les seuils d’un suivi et comprenez quand les notifications peuvent apparaître." />
   <meta name="apple-itunes-app" content="app-id=6760133544, app-argument=https://apps.apple.com/app/atlasdays-track-country-days/id6760133544" />
   <meta property="og:locale" content="fr_FR" />
   <meta property="og:image" content="https://atlasdays.app/assets/social/site-v1.png" />
@@ -68,7 +68,7 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "Alertes intelligentes",
-    "description": "Configurez les Alertes intelligentes d’AtlasDays pour les seuils de vos suivis et sachez quand les notifications peuvent apparaître.",
+    "description": "Configurez les Alertes intelligentes d’AtlasDays pour les seuils d’un suivi et comprenez quand les notifications peuvent apparaître.",
     "author": {
       "@type": "Organization",
       "name": "AtlasDays"
@@ -78,7 +78,7 @@
       "name": "AtlasDays"
     },
     "url": "https://atlasdays.app/fr/help/smart-alerts",
-    "dateModified": "2026-08-02",
+    "dateModified": "2026-09-30",
     "inLanguage": "fr"
   }
   </script>
@@ -162,46 +162,51 @@
     <nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="/fr/">AtlasDays</a> / <a href="/fr/help/">Centre d’aide</a></nav>
 
     <h1>Alertes intelligentes</h1>
-<p class="article-answer">Les Alertes intelligentes vous préviennent quand un suivi atteint les paliers configurés. Elles dépendent de la règle enregistrée du suivi, des voyages pris en compte et de l’autorisation de notification.</p>
+<p class="article-answer">Les Alertes intelligentes vous préviennent quand un suivi approche de sa limite ou de son objectif, ou l’atteint. Elles se règlent suivi par suivi, anticipent à partir de vos voyages enregistrés et planifiés, et demandent l’autorisation d’envoyer des notifications.</p>
 
     <h2>Activer les alertes</h2>
     <ol>
-      <li>Ouvrez le suivi et accédez à ses réglages d’alerte.</li>
-      <li>Activez <strong>Alertes</strong>.</li>
-      <li>Sous <strong>Alerter quand</strong>, choisissez les seuils voulus, puis réglez l’<strong>Heure</strong> d’envoi.</li>
-      <li>Autorisez les notifications quand iOS vous le demande.</li>
+      <li>Ouvrez l’éditeur du suivi : touchez l’icône de curseurs sur son écran de détail, ou maintenez le doigt sur sa carte dans l’<strong>Aperçu</strong> et choisissez <strong>Modifier</strong>.</li>
+      <li>Touchez la ligne <strong>Alertes</strong>. Sa valeur indique <strong>Désactivé</strong>, <strong>Activé</strong> ou le nombre d’alertes actives.</li>
+      <li>Activez l’interrupteur <strong>Alertes</strong>, et autorisez les notifications quand iOS le demande.</li>
+      <li>Réglez l’<strong>Heure</strong> d’envoi des alertes. Par défaut, c’est 9 h 00.</li>
+      <li>Sous <strong>Alerter quand</strong>, touchez <strong>+</strong> pour ajouter un palier, ou touchez l’icône de corbeille d’un palier pour le supprimer.</li>
+      <li>Revenez en arrière et touchez <strong>Enregistrer</strong>. Les changements d’alertes sont enregistrés avec le suivi : <strong>Annuler</strong> les abandonne donc.</li>
     </ol>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/fr/help/smart-alerts/alert-settings.webp" alt="Écran des alertes du suivi avec l’heure d’envoi et la liste des seuils" width="1320" height="1932" loading="lazy" decoding="async" /></figure>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/fr/help/smart-alerts/alert-settings.webp" alt="Écran Alertes d’un suivi avec l’heure d’envoi et la liste des seuils" width="1320" height="1969" loading="lazy" decoding="async" /></figure>
 
-    <h2>Les alertes suivent les calculs du suivi</h2>
-    <p>Si vous modifiez un voyage, changez la fenêtre du suivi ou clôturez un voyage en cours, AtlasDays recalcule le suivi et programme les alertes concernées à partir du résultat mis à jour.</p>
+    <h2>Paliers</h2>
+    <p>Sur un suivi <strong>Rester en dessous</strong>, un palier s’affiche <strong>Encore N jours</strong>, et <strong>Limite atteinte</strong> est le dernier. Sur un suivi <strong>Atteindre l’objectif</strong>, il s’affiche <strong>Encore N jours</strong>, et se termine par <strong>Objectif atteint</strong>. Les nouveaux suivis démarrent avec un ensemble fondé sur la limite ; un suivi Atteindre l’objectif démarre avec la ligne d’arrivée seule.</p>
+
+    <h2>Les alertes anticipent</h2>
+    <p>AtlasDays projette le suivi environ un an à l’avance à partir de vos voyages enregistrés, d’un voyage en cours et des voyages planifiés. Il programme chaque alerte à la date où le palier devrait être atteint, envoyée à l’heure que vous avez choisie. Une alerte peut donc arriver avant que le total n’ait franchi le palier, et une modification d’un voyage ou de la règle du suivi déplace la date. Pour un suivi à deux limites, les alertes suivent la limite la plus proche.</p>
 
     <h2>L’autorisation de notification est distincte</h2>
-    <p>Un suivi peut avoir des alertes configurées alors que les notifications sont désactivées dans iOS. Ouvrez <strong>Réglages iOS → Notifications → AtlasDays</strong> si AtlasDays ne parvient pas à les envoyer.</p>
+    <p>Un suivi peut avoir des alertes configurées alors que les notifications sont désactivées dans iOS. Si vous activez les alertes sans autorisation, AtlasDays affiche <strong>Notifications désactivées</strong> avec un bouton <strong>Ouvrir Réglages</strong>. Vous pouvez aussi ouvrir vous-même <strong>Réglages iOS → Notifications → AtlasDays</strong>.</p>
 
-    <h2>Alertes intelligentes et détection automatique sont deux choses différentes</h2>
-    <p>Les Alertes intelligentes concernent les seuils des suivis. Les notifications de la <a href="/fr/help/auto-detect-trips">détection automatique</a> concernent de possibles nouveaux passages de frontière. Chacune a son propre rôle et ses propres réglages.</p>
+    <h2>Alertes intelligentes et détection automatique : deux choses différentes</h2>
+    <p>Les Alertes intelligentes concernent les seuils des suivis. Les notifications de la <a href="/fr/help/auto-detect-trips">détection automatique</a> concernent d’éventuels nouveaux passages de frontière. Chacune a son propre objet et ses propres réglages.</p>
 
-    <div class="callout"><p><strong>Les Alertes intelligentes nécessitent <a href="/fr/help/atlasdays-pro">AtlasDays Pro</a>.</strong> Le suivi lui-même reste consultable sans alertes.</p></div>
+    <div class="callout"><p><strong>L’interrupteur Alertes demande <a href="/fr/help/atlasdays-pro">AtlasDays Pro</a>.</strong> Sans Pro, vous pouvez toujours modifier la liste des paliers, mais l’interrupteur reste désactivé et affiche une invitation à passer à Pro. Le suivi lui-même fonctionne sans alertes.</p></div>
 
     <section class="if-needed">
       <h2>Si une alerte n’est pas apparue</h2>
-      <p>Vérifiez l’autorisation de notification d’AtlasDays, confirmez que les Alertes intelligentes sont activées pour le suivi visé et vérifiez que son total actuel a réellement franchi le palier configuré.</p>
+      <p>Vérifiez l’autorisation de notification d’AtlasDays dans iOS, confirmez que l’interrupteur <strong>Alertes</strong> est activé pour ce suivi et que vous l’avez enregistré, et vérifiez l’<strong>Heure</strong> d’envoi. Comparez ensuite le palier avec la prévision du suivi : l’alerte est programmée à la date où le palier est attendu, qui peut être encore à venir.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-smart-alerts">
       <h2 id="next-smart-alerts">Continuer avec</h2>
       <ul>
         <li><a href="/fr/help/widgets">
           <strong>Widgets sur l’écran d’accueil</strong>
-          <span>Gardez un suivi ou la carte sur votre écran d’accueil.</span>
+          <span>Placez vos suivis et la carte sur l’écran d’accueil.</span>
+        </a></li>
+        <li><a href="/fr/help/rule-trackers">
+          <strong>Suivis à deux limites</strong>
+          <span>Suivis à deux limites ou à test particulier.</span>
         </a></li>
         <li><a href="/fr/help/trackers-and-limits">
           <strong>Comment le total d’un suivi est calculé</strong>
-          <span>Comment un suivi transforme vos voyages en total.</span>
-        </a></li>
-        <li><a href="/fr/help/auto-detect-trips">
-          <strong>Détection automatique des voyages</strong>
-          <span>Laissez vos nouveaux voyages s’ajouter automatiquement.</span>
+          <span>Comment fenêtres, unités et limites produisent un total.</span>
         </a></li>
       </ul>
     </nav>
@@ -209,7 +214,7 @@
       <h2>Besoin d’aide supplémentaire ?</h2>
       <p><a href="mailto:support@atlasdays.app">Contactez l’assistance AtlasDays</a> en précisant les dates concernées, ce que vous attendiez et ce qui s’est produit.</p>
     </aside>
-    <p class="help-updated">Dernière mise à jour le 2 août 2026</p>
+    <p class="help-updated">Dernière mise à jour le 30 septembre 2026</p>
   </article>
   </main>
 

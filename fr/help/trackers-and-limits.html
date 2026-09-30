@@ -78,7 +78,7 @@
       "name": "AtlasDays"
     },
     "url": "https://atlasdays.app/fr/help/trackers-and-limits",
-    "dateModified": "2026-08-13",
+    "dateModified": "2026-09-30",
     "inLanguage": "fr"
   }
   </script>
@@ -162,49 +162,60 @@
     <nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="/fr/">AtlasDays</a> / <a href="/fr/help/">Centre d’aide</a></nav>
 
     <h1>Comment le total d’un suivi est calculé</h1>
-<p class="article-answer">Un suivi sélectionne les <a href="/fr/help/history-and-import">jours de voyage</a> admissibles dans les lieux configurés, déduplique les jours civils qui se chevauchent, puis applique la fenêtre de temps enregistrée.</p>
+<p class="article-answer">Un suivi sélectionne les <a href="/fr/help/history-and-import">voyages datés</a> dans ses lieux, fusionne les jours civils qui se chevauchent, puis les compte à l’intérieur de sa fenêtre. Le résultat est comparé à la limite que vous avez fixée.</p>
 
-    <h2>Quatre réglages déterminent le résultat</h2>
+    <h2>Cinq réglages déterminent le résultat</h2>
     <ol>
-      <li><strong>Lieux :</strong> seuls les voyages dans les pays ou États américains sélectionnés sont pris en compte.</li>
-      <li><strong>Fenêtre :</strong> les suivis glissants, en année et par entrée examinent des plages de dates différentes.</li>
-      <li><strong>Limite :</strong> le seuil détermine la progression et le statut du suivi.</li>
-      <li><strong>Précision du voyage :</strong> les voyages datés peuvent compter ; Année uniquement et Transit apportent zéro jour.</li>
+      <li><strong>Lieux :</strong> seuls les voyages dans les pays ou les États américains sélectionnés sont pris en compte.</li>
+      <li><strong>Unité :</strong> la ligne <strong>Limite</strong> compte des <strong>Jours</strong>, des <strong>Nuits</strong> ou des jours d’<strong>Absence</strong>.</li>
+      <li><strong>Fenêtre :</strong> les suivis <strong>Glissant</strong>, <strong>Année</strong> et <strong>Par entrée</strong> examinent des plages de dates différentes.</li>
+      <li><strong>Limite :</strong> le seuil qui fixe la progression et l’état du suivi. Avec l’objectif <strong>Atteindre l’objectif</strong>, c’est un <strong>Objectif</strong> à la place.</li>
+      <li><strong>Précision des voyages :</strong> les voyages aux dates exactes comptent. Les voyages Année uniquement et Transit comptent pour zéro jour.</li>
     </ol>
 
-    <h2>Les fenêtres glissantes avancent chaque jour</h2>
-    <p>Un suivi glissant remonte dans le temps à partir de sa date de référence sélectionnée. Les jours les plus anciens sortent de la fenêtre pendant que de nouveaux jours de voyage y entrent : le total peut donc changer même quand vous ne modifiez aucun voyage.</p>
+    <h2>Jours et nuits</h2>
+    <p>L’unité <strong>Jours</strong> compte en entier le jour d’arrivée et le jour de départ : un séjour du 1er juin au 3 juin fait donc trois jours. L’unité <strong>Nuits</strong> compte les nuits entre l’arrivée et le départ : le même séjour en fait deux. Les nuits ne font pas le pont entre deux séjours qui se suivent : la nuit entre le jour de départ d’un voyage et le jour d’arrivée du suivant ne compte pour aucun des deux, même dans le même pays.</p>
 
-    <h2>Les suivis en année se réinitialisent chaque année</h2>
-    <p>Ces suivis comptent les jours admissibles sur l’année sélectionnée, à partir de la date indiquée dans la ligne « Commence » du suivi. Un début au 1er janvier donne une année civile qui court jusqu’au 31 décembre ; toute autre date de début en fait un exercice fiscal. Changer d’année change les enregistrements pris en compte.</p>
+    <h2>Les jours qui se chevauchent comptent une fois</h2>
+    <p>Les suivis à fenêtre glissante, annuels et de jours d’absence fusionnent les voyages qui couvrent le même jour civil : un chevauchement dans votre <a href="/fr/help/timeline-and-calendar">Chronologie</a> ne compte donc pas deux fois. Un suivi Par entrée ne fusionne pas du tout les voyages, comme décrit plus bas.</p>
 
-    <h2>Les suivis par entrée évaluent la continuité</h2>
-    <p>Un suivi par entrée s’intéresse à un séjour continu dans ses lieux plutôt que d’additionner des visites sans lien en un seul total.</p>
+    <h2>Les fenêtres glissantes se déplacent chaque jour</h2>
+    <p>Un suivi glissant se termine toujours aujourd’hui. Sa <strong>Durée</strong> est soit un nombre fixe de jours, soit un nombre de mois civils comptés en arrière à partir d’aujourd’hui. Les jours anciens quittent la fenêtre pendant que les jours de voyage récents y entrent : le total peut donc changer sans qu’aucun voyage ne soit modifié.</p>
 
-    <h2>Graphiques et prévisions</h2>
-    <p>Le graphique détaillé explique comment le décompte évolue dans le temps. Les voyages futurs planifiés avec des dates peuvent alimenter une prévision ; les voyages Année uniquement ne le peuvent pas. <a href="/fr/help/plan-a-trip">Vérifier si un voyage planifié respecte la limite</a> couvre la prévision en détail.</p>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/fr/help/trackers-and-limits/detail-chart.webp" alt="Graphique détaillé d’un suivi sur sa fenêtre active" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
-    <p>La limite et la fenêtre qui façonnent ce graphique se règlent dans l’éditeur du suivi.</p>
-    <figure class="help-shot help-shot-control"><img src="/assets/article-images/fr/help/trackers-and-limits/goal-window.webp" alt="Éditeur de suivi avec ses réglages de limite et de fenêtre" width="1320" height="1700" loading="lazy" decoding="async" /></figure>
+    <h2>Suivis annuels</h2>
+    <p>Un suivi Année compte sur une année, qui commence à la date de sa ligne <strong>Début</strong>. Un début au 1er janvier en fait une année civile ; toute autre date de début en fait une année fiscale.</p>
+
+    <h2>Les suivis Par entrée suivent un seul séjour</h2>
+    <p>Un suivi Par entrée mesure un seul séjour. Il utilise le séjour en cours s’il y en a un, et sinon le séjour terminé le plus récemment. Il n’additionne pas des visites distinctes. Quand le suivi a une date de <strong>Début</strong>, les jours antérieurs à cette date sont écartés.</p>
+
+    <h2>Voyages en cours et voyages planifiés</h2>
+    <p>Un voyage sans date de fin compte jusqu’à aujourd’hui. Un voyage qui commence dans le futur ne change pas le total actuel ; il apparaît sur le graphique comme voyage planifié, et la prévision l’utilise. <a href="/fr/help/plan-a-trip">Vérifier si un voyage planifié respecte la limite</a> traite de la prévision.</p>
+
+    <h2>Lire le graphique détaillé</h2>
+    <p>Ouvrez un suivi pour voir comment son décompte évolue dans le temps. Le graphique a deux vues : un gros plan défilant et une vue de toute la période. Pincez ou touchez deux fois le graphique pour passer de l’une à l’autre ; chaque suivi retient son propre choix.</p>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/fr/help/trackers-and-limits/detail-chart.webp" alt="Graphique détaillé d’un suivi sur sa fenêtre active" width="1320" height="2566" loading="lazy" decoding="async" /></figure>
+    <p>Les suivis à fenêtre glissante, annuels et de jours d’absence affichent aussi une phrase sous le graphique quand vos projets changent le résultat, par exemple la date à laquelle vous atteindriez la limite. Les suivis à deux limites affichent à la place un graphique pour chaque limite ; voir <a href="/fr/help/rule-trackers">suivis à deux limites</a>.</p>
+    <p>Les lignes <strong>Objectif</strong>, <strong>Limite</strong> et <strong>Fenêtre</strong> qui façonnent le graphique se règlent dans l’éditeur du suivi. Touchez l’icône de curseurs en haut de l’écran de détail du suivi pour l’ouvrir.</p>
+    <figure class="help-shot help-shot-control"><img src="/assets/article-images/fr/help/trackers-and-limits/goal-window.webp" alt="Éditeur de suivi montrant ses commandes de limite et de fenêtre" width="1320" height="1500" loading="lazy" decoding="async" /></figure>
 
     <section class="if-needed">
-      <h2>Vérifier quels voyages influencent un suivi</h2>
-      <p>Ouvrez sa vue détaillée, confirmez les lieux et la fenêtre, puis comparez ces réglages avec la <a href="/fr/help/timeline-and-calendar">Chronologie</a>. Prêtez une attention particulière aux voyages en cours, aux enregistrements Transit et Année uniquement, aux chevauchements et aux étiquettes d’État américain manquantes.</p>
+      <h2>Vérifier quels voyages affectent un suivi</h2>
+      <p>Ouvrez sa vue détaillée et lisez les voyages listés sous le graphique, puis comparez ses lieux et sa fenêtre avec votre <a href="/fr/help/timeline-and-calendar">Chronologie</a>. Portez une attention particulière aux voyages en cours, au Transit, aux enregistrements Année uniquement, aux chevauchements et aux États américains manquants. Pour ajouter un voyage à ce suivi, touchez <strong>+</strong> au-dessus de sa liste de voyages.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-trackers-and-limits">
       <h2 id="next-trackers-and-limits">Continuer avec</h2>
       <ul>
+        <li><a href="/fr/help/days-away">
+          <strong>Compter les jours passés loin d’un lieu</strong>
+          <span>Comptez les jours passés hors d’un lieu, pas dans ce lieu.</span>
+        </a></li>
         <li><a href="/fr/help/smart-alerts">
           <strong>Alertes intelligentes</strong>
-          <span>Soyez prévenu avant qu’une limite soit atteinte.</span>
-        </a></li>
-        <li><a href="/fr/help/day-counting">
-          <strong>Comment AtlasDays compte les jours de voyage</strong>
-          <span>Les règles de décompte derrière chaque total.</span>
+          <span>Soyez prévenu avant d’atteindre une limite.</span>
         </a></li>
         <li><a href="/fr/help/plan-a-trip">
           <strong>Vérifier si un voyage planifié respecte la limite</strong>
-          <span>Vérifiez des dates futures par rapport à la limite avant de réserver.</span>
+          <span>Vérifiez si un voyage planifié respecte la limite.</span>
         </a></li>
       </ul>
     </nav>
@@ -212,7 +223,7 @@
       <h2>Besoin d’aide supplémentaire ?</h2>
       <p><a href="mailto:support@atlasdays.app">Contactez l’assistance AtlasDays</a> en précisant les dates concernées, ce que vous attendiez et ce qui s’est produit.</p>
     </aside>
-    <p class="help-updated">Dernière mise à jour le 13 août 2026</p>
+    <p class="help-updated">Dernière mise à jour le 30 septembre 2026</p>
   </article>
   </main>
 

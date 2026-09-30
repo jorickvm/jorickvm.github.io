@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>了解總覽與地圖｜AtlasDays 說明中心</title>
-  <meta name="description" content="了解總覽的期間、居住國、行程日期精確度和到訪規則，如何影響 AtlasDays 的總計和地圖標示。" />
+  <meta name="description" content="了解總覽期間、居住國、行程精確度和造訪規則，如何決定 AtlasDays 的總計與地圖標示。" />
   <meta property="og:title" content="了解總覽與地圖｜AtlasDays 說明中心" />
-  <meta property="og:description" content="了解總覽的期間、居住國、行程日期精確度和到訪規則，如何影響 AtlasDays 的總計和地圖標示。" />
+  <meta property="og:description" content="了解總覽期間、居住國、行程精確度和造訪規則，如何決定 AtlasDays 的總計與地圖標示。" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/zh-Hant/help/dashboard-and-map" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="了解總覽與地圖｜AtlasDays 說明中心" />
-  <meta name="twitter:description" content="了解總覽的期間、居住國、行程日期精確度和到訪規則，如何影響 AtlasDays 的總計和地圖標示。" />
+  <meta name="twitter:description" content="了解總覽期間、居住國、行程精確度和造訪規則，如何決定 AtlasDays 的總計與地圖標示。" />
   <meta name="apple-itunes-app" content="app-id=6760133544, app-argument=https://apps.apple.com/app/atlasdays-track-country-days/id6760133544" />
   <meta property="og:locale" content="zh_TW" />
   <meta property="og:image" content="https://atlasdays.app/assets/social/site-v1.png" />
@@ -68,7 +68,7 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "了解總覽與地圖",
-    "description": "了解總覽的期間、居住國、行程日期精確度和到訪規則，如何影響 AtlasDays 的總計和地圖標示。",
+    "description": "了解總覽期間、居住國、行程精確度和造訪規則，如何決定 AtlasDays 的總計與地圖標示。",
     "author": {
       "@type": "Organization",
       "name": "AtlasDays"
@@ -78,7 +78,7 @@
       "name": "AtlasDays"
     },
     "url": "https://atlasdays.app/zh-Hant/help/dashboard-and-map",
-    "dateModified": "2026-08-13",
+    "dateModified": "2026-09-30",
     "inLanguage": "zh-Hant"
   }
   </script>
@@ -162,44 +162,54 @@
     <nav class="breadcrumb" aria-label="導覽路徑"><a href="/zh-Hant/">AtlasDays</a> / <a href="/zh-Hant/help/">說明中心</a></nav>
 
     <h1>了解總覽與地圖</h1>
-<p class="article-answer">總覽會依所選期間彙整<a href="/zh-Hant/help/timeline-and-calendar">時間軸</a>的內容。地圖回答的是去過哪裡，數字卡片回答的是記錄了多少符合條件的天數。</p>
+<p class="article-answer">總覽會依所選期間彙整<a href="/zh-Hant/help/timeline-and-calendar">時間軸</a>的內容。地圖回答的是去過哪裡，數字卡片回答的是記錄了多少天。</p>
 
     <h2>先從所選期間看起</h2>
-    <p>拿卡片和行程或<a href="/zh-Hant/help/export-and-reports">匯出</a>對照之前，先用總覽<strong>統計</strong>卡片上的期間控制項選好範圍。日曆年、近期和全部時間三種檢視顯示不同的結果，都是正常的。</p>
+    <p>輕點<strong>統計</strong>卡片的標題，上面顯示<strong>統計 · </strong>加上目前的期間。標題會展開一個控制項，有<strong>年份</strong>和<strong>自訂期間</strong>兩種選擇。年份提供<strong>歷年</strong>，以及每個有行程的年份各一個標籤。自訂期間提供最近 7 至 365 天的區間，也可以選<strong>自訂</strong>來指定自己的日期。拿卡片和行程或<a href="/zh-Hant/help/export-and-reports">匯出</a>對照之前，請先設定好期間；不同的期間顯示不同的結果，都是正常的。地圖也跟著同一個期間。</p>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/zh-Hant/help/dashboard-and-map/period-selector.webp" alt="總覽的統計卡片，顯示所選期間" width="1320" height="528" loading="lazy" decoding="async" /></figure>
 
-    <h2>海外天數依居住國計算</h2>
-    <p>設定了<a href="/zh-Hant/help/getting-started">居住國</a>之後，海外天數呈現的是實際記錄在該國以外的天數。選擇<strong>無固定住所</strong>時，呈現的是實際記錄的所有停留天數，不扣掉任何一個居住國。</p>
+    <h2>四項統計</h2>
+    <p>每個格子都可以開啟一個面板，查看背後的明細。</p>
+    <ul>
+      <li><strong>國家</strong>（清單包含屬地時，標示為<strong>地點</strong>）依你的<a href="/zh-Hant/help/country-count">國家計算方式</a>清單，計算造訪過的地點。在面板中輕點<strong>共 N 個</strong>可以更改清單，也可以用排序選單依行程數、天數或名稱排列。</li>
+      <li><strong>海外天數</strong>計算所選期間內，停留在居住國以外的天數。</li>
+      <li><strong>美國各州</strong>計算造訪過的州。需要 Pro，以及帶有州別的美國行程。</li>
+      <li><strong>大洲</strong>計算 7 大洲中造訪過的洲數。橫跨兩洲的國家可以在國家計算方式中指定歸屬。</li>
+    </ul>
+
+    <h2>居住國與海外天數</h2>
+    <p>海外天數計算有精確日期、且位於居住國以外任何地點的天數。請在<strong>設定 → 行程記錄 → 居住國</strong>中設定，或從海外天數面板設定。初始設定不會詢問，所以新安裝時居住國是<strong>未設定</strong>，海外天數面板會提示你設定。選擇<strong>無固定居住地</strong>，則會計入所有已記錄的天數。居住國也會影響「新增追蹤器」清單的排序，並讓時間軸可以隱藏居住國的行程。</p>
 
     <h2>地圖和總計回答的是不同的問題</h2>
-    <p>非<a href="/zh-Hant/help/history-and-import">轉機</a>的行程即使沒有日期，也可以把國家標示為造訪過，例如僅年份的行程，或匯入時就沒有日期的到訪。這類行程不會產生數字天數總計。轉機則兩者都不會。</p>
+    <p>地圖會標示每個非<a href="/zh-Hant/help/history-and-import">轉機</a>的造訪地點，包括沒有日期的地點：僅年份的行程會顯示在歷年，以及它所寫的那一年。這類行程不會產生天數總計。因此地圖顯示的地點可能比國家統計更多，因為國家統計只計算你清單中的項目。</p>
+    <p>輕點地圖或以雙指張開，可開啟全螢幕地圖。拖曳可旋轉地球，雙指縮放可放大縮小，輕點某個國家可查看該國的行程和天數。</p>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/zh-Hant/help/dashboard-and-map/map-state.webp" alt="AtlasDays 的世界地圖，標示出造訪過的國家" width="1320" height="2444" loading="lazy" decoding="async" /></figure>
 
     <h2>美國的細項</h2>
-    <p>國家層級的美國行程可以把美國標示出來，也會計入美國的總計。州層級的檢視則需要行程上帶有州別；沒有標註州別的美國行程，無法自動歸到某一州。</p>
+    <p>國家層級的美國行程會標示出美國，也會計入美國的總計。州層級的檢視需要 Pro，且行程上要有州別；沒有標註州別的美國行程，無法自動歸到某一州。</p>
 
-    <h2>分享卡片跟著總覽走</h2>
-    <p>分享之前，先確認期間和畫面上看到的結果。分享卡片的外觀和語言可以自行選擇，不會改變底下的行程紀錄。</p>
+    <h2>調整總覽並分享</h2>
+    <p>長按追蹤器卡片可編輯、重新排序或刪除。左上角的分享按鈕會開啟可儲存或傳送的卡片：旅行地圖、停留最久的國家、大洲和國旗收藏。分享之前，請先確認期間。卡片的外觀和語言可以更改，不會動到你的行程。</p>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/zh-Hant/help/dashboard-and-map/share-cards.webp" alt="分享預覽，顯示 AtlasDays 的總覽卡片" width="1320" height="1600" loading="lazy" decoding="async" /></figure>
 
     <section class="if-needed">
       <h2>總覽卡片的數字不如預期時</h2>
-      <p>開啟時間軸，檢查這段期間內有日期、僅年份、停留中和轉機的行程。接著確認居住國，以及是否有美國行程漏了州別。</p>
+      <p>先檢查所選期間。接著開啟時間軸，檢視這段期間內有日期、僅年份、未定和轉機的行程，並確認居住國、國家計算方式，以及是否有美國行程漏了州別。</p>
     </section>
     <nav class="help-next" aria-labelledby="next-dashboard-and-map">
       <h2 id="next-dashboard-and-map">接著閱讀</h2>
       <ul>
         <li><a href="/zh-Hant/help/create-a-tracker">
           <strong>建立追蹤器</strong>
-          <span>設定真正需要留意的上限。</span>
+          <span>一步一步設定追蹤器。</span>
         </a></li>
-        <li><a href="/zh-Hant/help/day-counting">
-          <strong>AtlasDays 如何計算旅行天數</strong>
-          <span>看清楚哪些旅行天數會計入總計。</span>
+        <li><a href="/zh-Hant/help/country-count">
+          <strong>選擇哪些算作一個國家</strong>
+          <span>選擇哪些地點算作一個國家。</span>
         </a></li>
         <li><a href="/zh-Hant/help/timeline-and-calendar">
           <strong>新增、編輯或刪除行程</strong>
-          <span>修正數字背後的紀錄。</span>
+          <span>檢視並編輯自動偵測到的行程。</span>
         </a></li>
       </ul>
     </nav>
@@ -207,7 +217,7 @@
       <h2>仍需要協助嗎？</h2>
       <p><a href="mailto:support@atlasdays.app">聯絡 AtlasDays 支援</a>時，請一併提供相關日期、預期結果和實際情況。</p>
     </aside>
-    <p class="help-updated">最後更新：2026年8月13日</p>
+    <p class="help-updated">最後更新：2026年9月30日</p>
   </article>
   </main>
 

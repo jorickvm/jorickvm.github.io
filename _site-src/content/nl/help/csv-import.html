@@ -1,29 +1,38 @@
     <nav class="breadcrumb" aria-label="Broodkruimelpad"><a href="/nl/">AtlasDays</a> / <a href="/nl/help/">Helpcentrum</a></nav>
 
     <h1>Importeren uit CSV</h1>
-<p class="article-answer">Maak een CSV met kolomkoppen, kies het bestand via Instellingen → Importeren → CSV-bestand en los eventuele problemen in de Importcontrole op voordat je reizen opslaat.</p>
+<p class="article-answer">Voeg in één keer veel reizen toe vanuit een spreadsheet die als CSV is opgeslagen. AtlasDays controleert elke rij, toont een voorbeeld en slaat niets op voordat je bevestigt. Het is een van de <a href="/nl/help/import-trips">manieren om eerdere reizen toe te voegen</a>.</p>
 
     <h2>Het bestand importeren</h2>
     <ol>
       <li>Open <strong>Instellingen → Importeren → CSV-bestand</strong>.</li>
-      <li>Gebruik het voorbeeldbestand of de formaatuitleg om je bestand voor te bereiden.</li>
-      <li>Selecteer de CSV in Bestanden.</li>
-      <li>Controleer geldige en ongeldige rijen, duplicaten en waarschuwingen voor overlappingen.</li>
-      <li>Importeer de rijen die je wilt bewaren.</li>
+      <li>Maak het bestand klaar in Sheets, Numbers of Excel en exporteer het als CSV. <strong>CSV-voorbeeld</strong> toont de exacte kolomkoppen met voorbeeldrijen, en met de deelknop bewaar je dat bestand als beginpunt.</li>
+      <li>Tik op <strong>Kies CSV-bestand</strong> en kies het bestand in Bestanden.</li>
+      <li>Bekijk de controle, <strong>Gevonden in CSV</strong>.</li>
+      <li>Tik op <strong>Importeren</strong> en bevestig.</li>
     </ol>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/nl/help/csv-import/csv-setup.webp" alt="Instelscherm voor een CSV-import met voorbeeldbestand" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <p><strong>Maak CSV met AI</strong> kopieert een kant-en-klare prompt voor ChatGPT, Claude of een andere assistent. Plak je reisnotities eronder en bewaar het antwoord als CSV. Die diensten verwerken je tekst onder hun eigen privacybeleid, dus laat weg wat je nergens anders zou plakken.</p>
 
-    <h2>Fouten in het bronbestand oplossen</h2>
-    <p>De Importcontrole vermeldt het rijnummer en de reden als een land, staat, datum of verplichte kolomkop niet kan worden verwerkt. Corrigeer die rij in de CSV en importeer het bestand opnieuw.</p>
-
-    <h2>Waarschuwingen vragen om controle</h2>
-    <p>Een duplicaat kan een reis herhalen die al in de <a href="/nl/help/timeline-and-calendar">Tijdlijn</a> staat. Een overlap kan kloppen, maar kan ook twee versies van hetzelfde verblijf voorstellen. Controleer de datums en landen in plaats van iedere rij automatisch te accepteren.</p>
+    <h2>De controle lezen</h2>
+    <p>De controle toont de geldige rijen en toont aantallen waarop je kunt tikken om te filteren. Gebruik <strong>Selecteer alles</strong> of <strong>Deselecteer alles</strong> om te kiezen wat je importeert.</p>
+    <ul>
+      <li><strong>Duplicaat:</strong> de rij valt binnen een reis die je al hebt, of herhaalt een eerdere rij. Ze wordt overgeslagen.</li>
+      <li><strong>Samenvoegen:</strong> de rij dekt een reis die je al hebt in hetzelfde land. Bij het importeren wordt die reis verbreed tot de datums van de rij, en notities en doelen worden gecombineerd. <strong>Reizen om samen te voegen in bestand</strong> zijn rijen binnen het bestand die met elkaar samenkomen.</li>
+      <li><strong>Overlap:</strong> de rij overlapt deels met een andere reis. Dat kan een echt tweede verblijf zijn of een tweede versie van hetzelfde verblijf, dus vergelijk de datums voordat je de rij bewaart.</li>
+      <li><strong>Transits</strong> en <strong>Amerikaanse staten</strong> tellen rijen van die soort. Zonder Pro worden staatrijen geïmporteerd als gewone reizen naar de Verenigde Staten.</li>
+    </ul>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/nl/help/csv-import/csv-review.webp" alt="Importcontrole voor een CSV met geldige, ongeldige, dubbele en overlappende rijen" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
-    <h2>Je Tijdlijn verandert pas na het opslaan</h2>
-    <p>Door een bestand te selecteren en de Importcontrole te bekijken voeg je nog geen reizen toe. AtlasDays schrijft de geaccepteerde rijen pas weg na de laatste importactie.</p>
+    <h2>Fouten in het bronbestand oplossen</h2>
+    <p>Rijen die AtlasDays niet kan lezen staan onder <strong>N rijen met fouten</strong>, met het rijnummer en de reden. Ongeldige rijen worden nooit geïmporteerd. Corrigeer ze in de spreadsheet, exporteer opnieuw en kies het bestand nog eens.</p>
+
+    <div class="callout"><p><strong>Er verandert niets voordat je importeert.</strong> Een bestand kiezen en de controle bekijken voegt geen reizen toe.</p></div>
+
+    <h2>Een export opnieuw importeren</h2>
+    <p>Een Spreadsheet-<a href="/nl/help/export-and-reports">export</a> die als CSV is opgeslagen, kun je opnieuw importeren, mits hij in het Engels is geëxporteerd: kolomkoppen worden alleen in het Engels gelezen. Voor een volledige kopie van reizen, trackers en instellingen gebruik je in plaats daarvan een <a href="/nl/help/backup-and-restore">back-up</a>.</p>
 
     <section class="if-needed">
       <h2>Als iedere rij ongeldig is</h2>
-      <p>Controleer of de eerste rij de kolomkop <strong>Country</strong> bevat en of de datums exact het juiste formaat hebben. Bekijk de <a href="/nl/help/csv-format-reference">CSV-formaatuitleg</a> voor ondersteunde kolommen en voorbeelden.</p>
+      <p>Controleer of de eerste rij een kopregel is die <strong>Country</strong> bevat, en of datums <code>jjjj-mm-dd</code> of een jaartal van vier cijfers gebruiken. De <a href="/nl/help/csv-format-reference">CSV-formaatuitleg</a> somt de ondersteunde kolommen, waarden en alle foutmeldingen op.</p>
     </section>

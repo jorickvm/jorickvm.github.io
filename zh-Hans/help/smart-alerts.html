@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>智能提醒｜AtlasDays 帮助中心</title>
-  <meta name="description" content="为追踪器设置智能提醒：选择门槛和发送时间，了解提醒何时重新计算，以及为什么需要通知权限和 AtlasDays Pro。" />
+  <meta name="description" content="为追踪器的门槛设置 AtlasDays 智能提醒，并了解通知何时会出现。" />
   <meta property="og:title" content="智能提醒｜AtlasDays 帮助中心" />
-  <meta property="og:description" content="为追踪器设置智能提醒：选择门槛和发送时间，了解提醒何时重新计算，以及为什么需要通知权限和 AtlasDays Pro。" />
+  <meta property="og:description" content="为追踪器的门槛设置 AtlasDays 智能提醒，并了解通知何时会出现。" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/zh-Hans/help/smart-alerts" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="智能提醒｜AtlasDays 帮助中心" />
-  <meta name="twitter:description" content="为追踪器设置智能提醒：选择门槛和发送时间，了解提醒何时重新计算，以及为什么需要通知权限和 AtlasDays Pro。" />
+  <meta name="twitter:description" content="为追踪器的门槛设置 AtlasDays 智能提醒，并了解通知何时会出现。" />
   <meta name="apple-itunes-app" content="app-id=6760133544, app-argument=https://apps.apple.com/app/atlasdays-track-country-days/id6760133544" />
   <meta property="og:locale" content="zh_CN" />
   <meta property="og:image" content="https://atlasdays.app/assets/social/site-v1.png" />
@@ -68,7 +68,7 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "智能提醒",
-    "description": "为追踪器设置智能提醒：选择门槛和发送时间，了解提醒何时重新计算，以及为什么需要通知权限和 AtlasDays Pro。",
+    "description": "为追踪器的门槛设置 AtlasDays 智能提醒，并了解通知何时会出现。",
     "author": {
       "@type": "Organization",
       "name": "AtlasDays"
@@ -78,7 +78,7 @@
       "name": "AtlasDays"
     },
     "url": "https://atlasdays.app/zh-Hans/help/smart-alerts",
-    "dateModified": "2026-08-02",
+    "dateModified": "2026-09-30",
     "inLanguage": "zh-Hans"
   }
   </script>
@@ -162,46 +162,51 @@
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/zh-Hans/">AtlasDays</a> / <a href="/zh-Hans/help/">帮助中心</a></nav>
 
     <h1>智能提醒</h1>
-<p class="article-answer">追踪器达到设定的节点时，智能提醒会发出通知。它取决于追踪器保存的规则、符合条件的行程和通知权限。</p>
+<p class="article-answer">智能提醒会在追踪器接近或达到上限或目标时通知。它们按追踪器分别设置，依据已记录和预定的行程向前推算，并且需要通知权限。</p>
 
     <h2>开启提醒</h2>
     <ol>
-      <li>打开追踪器，进入它的提醒设置。</li>
-      <li>开启<strong>提醒</strong>。</li>
-      <li>在<strong>提醒时机</strong>下选择需要的门槛，并设置发送<strong>时间</strong>。</li>
-      <li>iOS 询问时允许通知。</li>
+      <li>打开追踪器的编辑器：在详情页轻点滑块图标，或者在<strong>总览</strong>上长按它的卡片并选择<strong>编辑</strong>。</li>
+      <li>轻点<strong>提醒</strong>一行。它的值显示为<strong>关闭</strong>、<strong>开启</strong>，或者启用的提醒数量。</li>
+      <li>打开<strong>提醒</strong>开关，iOS 询问时允许通知。</li>
+      <li>设置提醒发送的<strong>时间</strong>。默认是 9:00。</li>
+      <li>在<strong>提醒时机</strong>下，轻点 <strong>+</strong> 添加一个节点，或轻点某个节点上的垃圾桶图标将其移除。</li>
+      <li>返回并轻点<strong>存储</strong>。提醒的更改是随追踪器一起存储的，所以<strong>取消</strong>会将其放弃。</li>
     </ol>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/zh-Hans/help/smart-alerts/alert-settings.webp" alt="追踪器的提醒界面，含发送时间和门槛列表" width="1320" height="1932" loading="lazy" decoding="async" /></figure>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/zh-Hans/help/smart-alerts/alert-settings.webp" alt="追踪器提醒界面，带有发送时间和节点列表" width="1320" height="1932" loading="lazy" decoding="async" /></figure>
 
-    <h2>提醒跟着追踪器的计算走</h2>
-    <p>编辑行程、更改追踪器的计算期间，或者结束一条停留中的行程之后，AtlasDays 会重新计算这个追踪器，并按更新后的结果排定符合条件的提醒。</p>
+    <h2>提醒节点</h2>
+    <p>在<strong>低于上限</strong>的追踪器上，节点显示为<strong>剩余 N 天</strong>，最后一个是<strong>已达上限</strong>。在<strong>达成目标</strong>的追踪器上，节点显示为<strong>还差 N 天</strong>，以<strong>目标达成</strong>收尾。新建的追踪器会按上限带一组默认节点；达成目标的追踪器则只带终点线这一个节点。</p>
+
+    <h2>提醒会向前推算</h2>
+    <p>AtlasDays 依据已记录的行程、正在进行的行程和预定行程，把追踪器向前推算大约一年。它会把每个提醒排在预计到达该节点的那天，并在你选定的时间发送。因此提醒可能在总计越过节点之前就到了，而行程或追踪器规则的改动也会让日期移动。对于两项上限的追踪器，提醒跟随最接近的那项上限。</p>
 
     <h2>通知权限是另一回事</h2>
-    <p>追踪器可以配置好提醒，而 iOS 里的通知却是关着的。如果 AtlasDays 发不出提醒，打开 <strong>iOS 设置 → 通知 → AtlasDays</strong>。</p>
+    <p>追踪器可以配置了提醒，而 iOS 里的通知却是关闭的。如果在没有权限的情况下开启提醒，AtlasDays 会显示<strong>通知已关闭</strong>，并带一个<strong>前往“设置”</strong>按钮。你也可以自己打开 <strong>iOS 设置 → 通知 → AtlasDays</strong>。</p>
 
-    <h2>智能提醒和自动检测不一样</h2>
-    <p>智能提醒关心的是追踪器的门槛。<a href="/zh-Hans/help/auto-detect-trips">自动检测</a>的通知关心的是可能新发生的跨境事件。两者各有各的用途和设置。</p>
+    <h2>智能提醒与自动检测不同</h2>
+    <p>智能提醒针对的是追踪器的门槛。<a href="/zh-Hans/help/auto-detect-trips">自动检测行程</a>的通知针对的是可能出现的新跨境。两者各有自己的用途和设置。</p>
 
-    <div class="callout"><p><strong>智能提醒需要 <a href="/zh-Hans/help/atlasdays-pro">AtlasDays Pro</a>。</strong>没有提醒，追踪器本身仍然可以查看。</p></div>
+    <div class="callout"><p><strong>提醒开关需要 <a href="/zh-Hans/help/atlasdays-pro">AtlasDays Pro</a>。</strong>没有 Pro 时仍然可以编辑节点列表，但开关保持关闭，并显示升级提示。追踪器本身不用提醒也能正常使用。</p></div>
 
     <section class="if-needed">
-      <h2>如果提醒没有出现</h2>
-      <p>检查 AtlasDays 的通知权限，确认目标追踪器上的智能提醒已经开启，再核对它当前的总计是不是真的越过了设定的节点。</p>
+      <h2>如果没有收到提醒</h2>
+      <p>检查 iOS 中 AtlasDays 的通知权限，确认这个追踪器的<strong>提醒</strong>开关已打开并且已经存储，再检查发送的<strong>时间</strong>。然后把节点与追踪器的预测对照：提醒排在预计到达节点的那天，这一天可能还在后面。</p>
     </section>
     <nav class="help-next" aria-labelledby="next-smart-alerts">
       <h2 id="next-smart-alerts">接着阅读</h2>
       <ul>
         <li><a href="/zh-Hans/help/widgets">
           <strong>主屏幕小组件</strong>
-          <span>把追踪器或地图放在主屏幕上。</span>
+          <span>把追踪器和地图放到主屏幕上。</span>
+        </a></li>
+        <li><a href="/zh-Hans/help/rule-trackers">
+          <strong>两项上限的追踪器</strong>
+          <span>带两项上限或特殊判定的追踪器。</span>
         </a></li>
         <li><a href="/zh-Hans/help/trackers-and-limits">
           <strong>追踪器总计的计算方式</strong>
-          <span>追踪器如何把行程变成一个总计。</span>
-        </a></li>
-        <li><a href="/zh-Hans/help/auto-detect-trips">
-          <strong>自动检测行程</strong>
-          <span>让新的旅程自动加进来。</span>
+          <span>计算期间、单位和上限如何得出总计。</span>
         </a></li>
       </ul>
     </nav>
@@ -209,7 +214,7 @@
       <h2>仍需要帮助吗？</h2>
       <p><a href="mailto:support@atlasdays.app">联系 AtlasDays 支持</a>时，请一并提供相关日期、原本预期的结果，以及实际发生的情况。</p>
     </aside>
-    <p class="help-updated">最后更新：2026年8月2日</p>
+    <p class="help-updated">最后更新：2026年9月30日</p>
   </article>
   </main>
 

@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Référence du format CSV – Centre d’aide AtlasDays</title>
-  <meta name="description" content="Les en-têtes CSV pris en charge par AtlasDays : dates exactes, années, États américains, Transit, motifs, notes et exemples." />
+  <meta name="description" content="Consultez les en-têtes CSV pris en charge, les formats de date exacte et d’année, les États américains, le Transit, les motifs, les notes et des exemples." />
   <meta property="og:title" content="Référence du format CSV – Centre d’aide AtlasDays" />
-  <meta property="og:description" content="Les en-têtes CSV pris en charge par AtlasDays : dates exactes, années, États américains, Transit, motifs, notes et exemples." />
+  <meta property="og:description" content="Consultez les en-têtes CSV pris en charge, les formats de date exacte et d’année, les États américains, le Transit, les motifs, les notes et des exemples." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/fr/help/csv-format-reference" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Référence du format CSV – Centre d’aide AtlasDays" />
-  <meta name="twitter:description" content="Les en-têtes CSV pris en charge par AtlasDays : dates exactes, années, États américains, Transit, motifs, notes et exemples." />
+  <meta name="twitter:description" content="Consultez les en-têtes CSV pris en charge, les formats de date exacte et d’année, les États américains, le Transit, les motifs, les notes et des exemples." />
   <meta name="apple-itunes-app" content="app-id=6760133544, app-argument=https://apps.apple.com/app/atlasdays-track-country-days/id6760133544" />
   <meta property="og:locale" content="fr_FR" />
   <meta property="og:image" content="https://atlasdays.app/assets/social/site-v1.png" />
@@ -68,7 +68,7 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "Référence du format CSV",
-    "description": "Les en-têtes CSV pris en charge par AtlasDays : dates exactes, années, États américains, Transit, motifs, notes et exemples.",
+    "description": "Consultez les en-têtes CSV pris en charge, les formats de date exacte et d’année, les États américains, le Transit, les motifs, les notes et des exemples.",
     "author": {
       "@type": "Organization",
       "name": "AtlasDays"
@@ -78,7 +78,7 @@
       "name": "AtlasDays"
     },
     "url": "https://atlasdays.app/fr/help/csv-format-reference",
-    "dateModified": "2026-08-13",
+    "dateModified": "2026-09-30",
     "inLanguage": "fr"
   }
   </script>
@@ -162,32 +162,43 @@
     <nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="/fr/">AtlasDays</a> / <a href="/fr/help/">Centre d’aide</a></nav>
 
     <h1>Référence du format CSV</h1>
-<p class="article-answer">Seule la colonne <strong>Country</strong> (pays) est requise. AtlasDays repère les colonnes prises en charge par le nom de leur en-tête, leur ordre n’a donc pas d’importance.</p>
+<p class="article-answer">Seule la colonne <strong>Country</strong> est requise. AtlasDays repère les colonnes par leur nom d’en-tête en anglais, l’ordre des colonnes n’a donc pas d’importance. Les étapes de l’import figurent dans <a href="/fr/help/csv-import">Import CSV</a>.</p>
 
-    <h2>En-têtes recommandés</h2>
-    <p><code>Country,State,Start Date,End Date,Purpose,Notes</code></p>
-    <ul>
-      <li><strong>Country</strong> (pays) : <a href="/fr/help/languages">nom de pays</a> en anglais, code ISO à deux lettres ou alias courant reconnu.</li>
-      <li><strong>State</strong> (État) : facultatif, nom d’un État américain, abréviation postale ou code de subdivision ISO comme <code>US-CA</code>.</li>
-      <li><strong>Start Date / End Date</strong> (dates de début et de fin) : date exacte, année ou champ vide, selon les règles ci-dessous.</li>
-      <li><strong>Purpose</strong> (motif) : Personal (personnel), Business (professionnel), Study (études) ou <a href="/fr/help/history-and-import">Transit</a>. Plusieurs motifs autres que Transit peuvent être combinés, séparés par des virgules et entre guillemets, par exemple <code>"Business, Personal"</code>. Les anciens fichiers contenant Tourism ou Medical sont toujours importés comme Personal.</li>
-      <li><strong>Notes</strong> : texte libre, facultatif.</li>
-    </ul>
-    <figure class="help-shot help-shot-control"><img src="/assets/article-images/fr/help/csv-format-reference/csv-reference.webp" alt="Commandes d’exemple et de modèle de l’import CSV" width="1320" height="1760" loading="lazy" decoding="async" /></figure>
+    <h2>Colonnes</h2>
+    <p>Ligne d’en-têtes recommandée : <code>Country,State,Start Date,End Date,Purpose,Notes</code>. Les noms d’en-têtes ne tiennent pas compte des majuscules. Les colonnes non reconnues, comme <code>Days</code>, sont ignorées. Si un en-tête apparaît deux fois, le premier est utilisé.</p>
+    <dl class="kv kv-text">
+      <div><dt><strong>Country</strong></dt><dd>Requis. Nom du pays en anglais ou dans la langue de l’app, code ISO à deux lettres, ou alias courant comme <code>USA</code>, <code>UK</code> ou <code>Holland</code>. Un alias pouvant désigner deux lieux est rejeté.</dd></div>
+      <div><dt><strong>State</strong></dt><dd>Facultatif, voyages aux États-Unis uniquement. Nom de l’État, abréviation postale à deux lettres ou code ISO comme <code>US-CA</code>. Le district de Columbia est accepté.</dd></div>
+      <div><dt><strong>Start Date</strong></dt><dd>Aussi accepté sous la forme <code>Start</code>. Date au format <code>yyyy-mm-dd</code>, ou année à quatre chiffres.</dd></div>
+      <div><dt><strong>End Date</strong></dt><dd>Aussi accepté sous la forme <code>End</code>. Date au format <code>yyyy-mm-dd</code>, ou année à quatre chiffres. Vide signifie en cours (début exact) ou la même année (début en année).</dd></div>
+      <div><dt><strong>Purpose</strong></dt><dd><code>Personal</code>, <code>Business</code>, <code>Study</code> ou <code>Transit</code>, sans distinction de majuscules. Combinez les valeurs autres que Transit avec des virgules, entre guillemets, par exemple <code>"Business, Personal"</code>. Les anciennes valeurs <code>Tourism</code> et <code>Medical</code> sont importées comme Personal. Une valeur non reconnue est ignorée sans erreur.</dd></div>
+      <div><dt><strong>Notes</strong></dt><dd>Aussi accepté sous les formes <code>Note</code> et <code>Notes (optional)</code>. Texte libre.</dd></div>
+      <div><dt><strong>Transit</strong></dt><dd>Colonne héritée. Lue uniquement en l’absence de colonne Purpose. <code>Yes</code>, <code>Y</code>, <code>True</code> ou <code>1</code> marque un transit ; <code>No</code>, <code>N</code>, <code>False</code>, <code>0</code> ou une cellule vide n’en marque pas.</dd></div>
+      <div><dt><strong>Start Year</strong>, <strong>End Year</strong></dt><dd>Colonne héritée. Années à quatre chiffres, utilisées quand les cellules de date ne contiennent pas d’année. Ne peut pas être combinée avec des dates exactes sur la même ligne.</dd></div>
+    </dl>
+    <figure class="help-shot help-shot-control"><img src="/assets/article-images/fr/help/csv-format-reference/csv-reference.webp" alt="Commandes d’exemple et de modèle de l’import CSV" width="1320" height="1990" loading="lazy" decoding="async" /></figure>
 
     <h2>Formats de date</h2>
-    <h3>Dates exactes</h3>
-    <p>Utilisez <code>yyyy-mm-dd</code> dans les deux colonnes de dates. Ne laissez End Date vide que pour un voyage en cours.</p>
-    <h3>Année</h3>
-    <p>Indiquez une année à quatre chiffres dans Start Date. End Date peut contenir une année, ou rester vide pour signifier la même année. Une plage couvrant plusieurs années devient, pour chaque année, un enregistrement Année uniquement.</p>
-    <h3>Aucune date</h3>
-    <p>Laissez les deux cellules de date vides. Le pays est conservé comme une visite sans dates : il compte pour les lieux visités mais jamais dans les totaux de jours, et les rapports l’étiquettent <strong>Date inconnue</strong>. Ce type d’enregistrement ne peut être créé que par l’import CSV.</p>
+    <div class="data-table">
+    <table>
+      <thead><tr><th>Start Date</th><th>End Date</th><th>Résultat</th></tr></thead>
+      <tbody>
+        <tr><td><code>2026-03-01</code></td><td><code>2026-03-05</code></td><td>Voyage aux dates exactes. Un voyage d’un seul jour utilise deux fois la même date.</td></tr>
+        <tr><td><code>2026-03-01</code></td><td>vide</td><td>Voyage en cours, sans date de fin.</td></tr>
+        <tr><td><code>2019</code></td><td>vide</td><td>Voyage <a href="/fr/help/history-and-import">Année uniquement</a> pour cette année.</td></tr>
+        <tr><td><code>2018</code></td><td><code>2019</code></td><td>Un voyage Année uniquement couvrant 2018 à 2019.</td></tr>
+        <tr><td>vide</td><td>vide</td><td>Voyage sans dates.</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p>Les années doivent se situer entre 1900 et huit ans après l’année en cours. Les dates exactes et les années ne peuvent pas être mélangées sur une même ligne. Les voyages Année uniquement et les voyages sans dates comptent pour les lieux visités et la carte, mais jamais pour les décomptes de jours ni les suivis. Un voyage sans dates ne peut être créé que par l’import CSV.</p>
 
-    <h2>Lignes avec un État américain</h2>
-    <p>N’utilisez State que pour un voyage aux États-Unis. Si une même visite aux États-Unis a couvert plusieurs États et que vous avez besoin d’enregistrements par État, utilisez une ligne par État. Une simple ligne US reste valide pour un suivi au niveau du pays.</p>
-
-    <h2>Transit</h2>
-    <p>Inscrivez <code>Transit</code> dans Purpose pour un passage sans entrée dans le pays. Transit est exclusif : ne le combinez pas avec Personal, Business ou un autre motif.</p>
+    <h2>Cas particuliers</h2>
+    <ul>
+      <li><strong>États américains.</strong> Utilisez une ligne par État quand un même séjour aux États-Unis a couvert plusieurs États. Une simple ligne <code>United States</code> est valide pour un suivi au niveau du pays. Un nom d’État dans la colonne Country (<code>California</code>, <code>US-CA</code>) donne aussi un voyage aux États-Unis, tout comme une colonne Country vide avec un State valide. Les codes à deux lettres qui sont aussi des codes de pays, comme <code>CA</code>, restent des pays. Sans Pro, les lignes d’État sont importées comme de simples voyages aux États-Unis.</li>
+      <li><strong>Transit.</strong> Inscrivez <code>Transit</code> dans Purpose quand vous n’êtes pas entré dans le pays. Transit est exclusif : s’il apparaît avec un autre motif, seul Transit est conservé.</li>
+      <li><strong>Séparateur et guillemets.</strong> La virgule, le point-virgule et la tabulation sont détectés à partir de la ligne d’en-têtes. Placez entre guillemets les champs qui contiennent le séparateur ou un saut de ligne.</li>
+    </ul>
 
     <h2>Exemple</h2>
     <pre><code>Country,State,Start Date,End Date,Purpose,Notes
@@ -196,12 +207,28 @@ United States,CA,2026-04-10,2026-04-15,Business,Conference
 Japan,,2024,,Personal,Dates not known
 United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></pre>
 
-    <h2>Séparateur et guillemets</h2>
-    <p>AtlasDays reconnaît, à partir de la ligne d’en-têtes, les fichiers séparés par des virgules, des points-virgules ou des tabulations. Placez entre guillemets les champs qui contiennent le séparateur ou un saut de ligne, selon les règles CSV habituelles.</p>
+    <h2>Messages d’erreur</h2>
+    <p>Chaque erreur apparaît dans la vérification avec son numéro de ligne, et la ligne n’est pas importée. Le numéro de ligne compte l’en-tête comme la ligne 1. Les messages s’affichent dans la langue de l’app.</p>
+    <dl class="kv kv-text">
+      <div><dt>Colonne Country introuvable</dt><dd>Placez d’abord une ligne d’en-têtes avec une colonne <strong>Country</strong>.</dd></div>
+      <div><dt>Pays non valide : « &lt;valeur&gt; »</dt><dd>Utilisez un code ISO ou un nom de pays sans ambiguïté.</dd></div>
+      <div><dt>État non valide : « &lt;valeur&gt; »</dt><dd>Utilisez un nom d’État américain, une abréviation ou un code <code>US-XX</code>.</dd></div>
+      <div><dt>L’État « &lt;valeur&gt; » est valide uniquement pour les voyages aux États-Unis</dt><dd>Videz State, ou remplacez Country par United States.</dd></div>
+      <div><dt>États contradictoires</dt><dd>Les cellules Country et State désignent des États différents. N’en gardez qu’un.</dd></div>
+      <div><dt>Date de début non valide / Date de fin non valide</dt><dd>Utilisez <code>yyyy-mm-dd</code> ou une année à quatre chiffres.</dd></div>
+      <div><dt>Année de début non valide / Année de fin non valide</dt><dd>Utilisez une année à quatre chiffres dans la plage admise.</dd></div>
+      <div><dt>Une date de fin nécessite une date de début</dt><dd>Ajoutez une Start Date.</dd></div>
+      <div><dt>La date de début doit être antérieure ou égale à la date de fin</dt><dd>Inversez ou corrigez les dates.</dd></div>
+      <div><dt>L’année de fin doit être postérieure ou égale à l’année de début</dt><dd>Corrigez les années.</dd></div>
+      <div><dt>Une année de fin nécessite une année de début</dt><dd>Ajoutez une année de début.</dd></div>
+      <div><dt>Impossible de combiner des dates exactes et des champs d’année approximative</dt><dd>Utilisez soit des dates, soit les colonnes d’année héritées.</dd></div>
+      <div><dt>Impossible de combiner une date de début exacte et une année de fin seule, ou une année de début seule et une date de fin exacte</dt><dd>Utilisez deux dates ou deux années sur une même ligne.</dd></div>
+      <div><dt>Valeur de transit non valide</dt><dd>Dans la colonne Transit héritée, utilisez Yes/No, True/False ou 1/0.</dd></div>
+    </dl>
 
     <section class="if-needed">
       <h2>Si une valeur n’est pas reconnue</h2>
-      <p>Utilisez un code de pays ISO, un nom de pays anglais sans ambiguïté, des dates ISO et un nom ou un code d’État américain standard. Conservez le numéro de ligne d’origine pour faciliter la comparaison avec la vérification de l’import.</p>
+      <p>Utilisez un code de pays ISO, des dates ISO et un nom ou un code d’État américain standard. Un fichier exporté depuis un tableur dans une autre langue peut contenir des en-têtes traduits, qui ne sont pas reconnus : renommez-les avec les en-têtes anglais ci-dessus.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-csv-format-reference">
       <h2 id="next-csv-format-reference">Continuer avec</h2>
@@ -210,13 +237,13 @@ United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></p
           <strong>Exports et rapports</strong>
           <span>Exportez votre historique en feuille de calcul ou en PDF.</span>
         </a></li>
-        <li><a href="/fr/help/csv-import">
-          <strong>Import CSV</strong>
-          <span>Le parcours d’import qui lit ce format.</span>
-        </a></li>
         <li><a href="/fr/help/flighty-import">
           <strong>Import Flighty</strong>
           <span>Importez plutôt votre historique de vols depuis Flighty.</span>
+        </a></li>
+        <li><a href="/fr/help/backup-and-restore">
+          <strong>Sauvegarde et restauration</strong>
+          <span>Conservez une copie de vos voyages, suivis et réglages.</span>
         </a></li>
       </ul>
     </nav>
@@ -224,7 +251,7 @@ United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></p
       <h2>Besoin d’aide supplémentaire ?</h2>
       <p><a href="mailto:support@atlasdays.app">Contactez l’assistance AtlasDays</a> en précisant les dates concernées, ce que vous attendiez et ce qui s’est produit.</p>
     </aside>
-    <p class="help-updated">Dernière mise à jour le 13 août 2026</p>
+    <p class="help-updated">Dernière mise à jour le 30 septembre 2026</p>
   </article>
   </main>
 

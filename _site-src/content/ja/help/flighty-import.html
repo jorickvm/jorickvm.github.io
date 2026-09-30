@@ -1,29 +1,40 @@
     <nav class="breadcrumb" aria-label="パンくずリスト"><a href="/ja/">AtlasDays</a> / <a href="/ja/help/">ヘルプセンター</a></nav>
 
     <h1>Flightyインポート</h1>
-<p class="article-answer">Flightyでフライト履歴をCSVとして書き出し、AtlasDaysでそのファイルを選びます。保存する前に、提案された旅行を確認できます。</p>
+<p class="article-answer">Flightyからフライト履歴をCSVでエクスポートし、AtlasDaysで選択して、提案された旅行を確認してから保存します。過去の旅行を追加する<a href="/ja/help/import-trips">方法</a>の1つです。</p>
 
     <h2>Flightyからエクスポートする</h2>
-    <p>Flightyでフライト履歴をCSVとして書き出し、iOSの「ファイル」から選べる場所に保存します。iCloud Driveや「このiPhone内」などが使えます。</p>
+    <p>Flightyで<strong>「Settings → Account Data」</strong>を開き、フライトをCSVとしてエクスポートします。iCloud Driveや「このiPhone内」など、iOSの「ファイル」から選べる場所にファイルを保存してください。</p>
 
-    <h2>AtlasDaysに取り込む</h2>
+    <h2>AtlasDaysにインポートする</h2>
     <ol>
       <li><strong>「設定」→「インポート」→「Flighty」</strong>を開きます。</li>
-      <li><strong>「FlightyのCSVを選択」</strong>をタップし、書き出したファイルを選びます。</li>
-      <li>AtlasDaysがプレビューを準備し終えるまで待ちます。</li>
-      <li>提案された滞在、<a href="/ja/help/history-and-import">乗り継ぎ</a>の記録、日をまたぐケース、「重複」、「重なり」を確認します。</li>
-      <li><a href="/ja/help/timeline-and-calendar">タイムライン</a>に残したい行だけを保存します。</li>
+      <li><strong>「FlightyのCSVを選択」</strong>をタップし、エクスポートしたファイルを選びます。</li>
+      <li>確認画面<strong>「Flightyで見つかりました」</strong>で、提案された滞在、乗り継ぎ、夜間便、未完了の旅行、重複、重なりを確認します。</li>
+      <li><strong>「すべて選択」</strong>または<strong>「すべて選択解除」</strong>を使い、項目をタップして編集したら、<strong>「インポート」</strong>をタップして確定します。</li>
     </ol>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/ja/help/flighty-import/flighty-setup.webp" alt="「Flightyからインポート」の設定画面" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/ja/help/flighty-import/flighty-setup.webp" alt="Flightyからインポートする設定画面" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <p>解析は端末上で行われ、確定するまで何も保存されません。</p>
 
-    <h2>フライトが旅行になる仕組み</h2>
-    <p>到着空港と出発空港は滞在の手がかりになり、乗り換えは「乗り継ぎ」になることがあります。日をまたぐ便や、間隔の短い乗り継ぎは判断が難しいため、プレビューの内容と、実際に各国へ入国したタイミングを見比べてください。</p>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/ja/help/flighty-import/flighty-review.webp" alt="滞在、乗り継ぎ、警告が並ぶFlightyインポートのプレビュー" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <h2>フライトが旅行になるしくみ</h2>
+    <p>AtlasDaysは各空港を国に対応付け、ある国に到着するフライトと、そこから出発する後のフライトがそろうと、旅行を作成します。確認画面の残りの項目は、これに沿って決まります。</p>
+    <ul>
+      <li>24時間未満の<strong>「乗り継ぎ」</strong>は、別に確認します。10時間以内の滞在は<a href="/ja/help/history-and-import">乗り継ぎ</a>として扱われ、滞在日数から除外されます。それより長い滞在は、入国したものと見なされます。旅行ごとに<strong>「乗り継ぎ」</strong>のオン・オフを切り替えて変更できます。</li>
+      <li><strong>「夜間便」</strong>は、深夜0時に飛行中だった場合、国際空域として記録されます。</li>
+      <li><strong>「未完了の旅行」</strong>は、陸路の移動やFlightyにないフライトなどで、到着か出発のどちらかが欠けています。項目で足りない日付を追加するか、終了日を決めずにおくこともできます。</li>
+      <li><strong>「スキップされた行」</strong>は、欠航や空港コードの欠落など、理由とともに一覧表示されます。</li>
+    </ul>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/ja/help/flighty-import/flighty-review.webp" alt="滞在、乗り継ぎ、警告が並ぶFlightyインポートの確認画面" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+
+    <div class="callout"><p><strong>対象はフライトのみです。</strong>列車、フェリー、車での移動は表示されず、エクスポートに含まれないフライトも表示されません。インポートする前に、確認画面の内容が実際に過ごした場所と合っているかを確かめてください。</p></div>
+
+    <h2>重複と重なり</h2>
+    <p><a href="/ja/help/timeline-and-calendar">タイムライン</a>にすでにある旅行と同じ項目には、<strong>「重複」</strong>のラベルが付きます。<strong>「統合」</strong>は、項目が既存の旅行を含んでいて、その旅行とまとめられることを表します。<strong>「重なり」</strong>は、日付が別の旅行と一部ぶつかっていることを表します。インポートする前に確認してください。</p>
 
     <h2>米国の州を確認する</h2>
-    <p>空港の情報から米国の州が分かる場合、AtlasDaysはその州を候補として提案します。州ごとの記録を使っているときは、保存する前に州が正しいかを確認してください。</p>
+    <p>空港の情報から米国の州が特定できる場合、AtlasDaysはその州を提案します。Proでは、州ごとに別の旅行としてインポートされます。Proでない場合は、通常の米国の旅行としてインポートされます。州ごとの記録を利用する場合は、保存する前に州を確認してください。</p>
 
     <section class="if-needed">
       <h2>ファイルが受け付けられないとき</h2>
-      <p>FlightyでCSVを新しく<a href="/ja/help/export-and-reports">エクスポート</a>し直し、その元のファイルをそのまま選んでください。表計算アプリで保存し直したり、列を並べ替えたりしたファイルは、Flightyの形式と一致しなくなることがあります。</p>
+      <p>「これはFlightyから書き出したCSVではないようです」と表示された場合、Flightyの元のエクスポートファイルではありません。Flightyからもう一度エクスポートし、スプレッドシートで保存し直したり並べ替えたりしていないファイルを選んでください。AtlasDaysのCSVファイルは、代わりに<a href="/ja/help/csv-import">CSVインポート</a>を使います。確認画面に<strong>「使用可能なFlighty行が見つかりません」</strong>と表示された場合は、エクスポートにAtlasDaysで使えるフライトが含まれていませんでした。</p>
     </section>

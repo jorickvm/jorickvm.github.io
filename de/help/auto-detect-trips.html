@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Reisen automatisch erkennen – AtlasDays-Hilfe</title>
-  <meta name="description" content="Die automatische Erkennung bemerkt über eine stromsparende Standortüberwachung neue Reisen, legt sie sofort in der Zeitleiste an und lässt dich die Einträge prüfen oder rückgängig machen." />
+  <meta name="description" content="Schalte „Reisen automatisch erkennen“ ein, erlaube den nötigen Standortzugriff und prüfe Reisen, die nach Grenzübertritten hinzugefügt wurden." />
   <meta property="og:title" content="Reisen automatisch erkennen – AtlasDays-Hilfe" />
-  <meta property="og:description" content="Die automatische Erkennung bemerkt über eine stromsparende Standortüberwachung neue Reisen, legt sie sofort in der Zeitleiste an und lässt dich die Einträge prüfen oder rückgängig machen." />
+  <meta property="og:description" content="Schalte „Reisen automatisch erkennen“ ein, erlaube den nötigen Standortzugriff und prüfe Reisen, die nach Grenzübertritten hinzugefügt wurden." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/de/help/auto-detect-trips" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Reisen automatisch erkennen – AtlasDays-Hilfe" />
-  <meta name="twitter:description" content="Die automatische Erkennung bemerkt über eine stromsparende Standortüberwachung neue Reisen, legt sie sofort in der Zeitleiste an und lässt dich die Einträge prüfen oder rückgängig machen." />
+  <meta name="twitter:description" content="Schalte „Reisen automatisch erkennen“ ein, erlaube den nötigen Standortzugriff und prüfe Reisen, die nach Grenzübertritten hinzugefügt wurden." />
   <meta name="apple-itunes-app" content="app-id=6760133544, app-argument=https://apps.apple.com/app/atlasdays-track-country-days/id6760133544" />
   <meta property="og:locale" content="de_DE" />
   <meta property="og:image" content="https://atlasdays.app/assets/social/site-v1.png" />
@@ -68,7 +68,7 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "Reisen automatisch erkennen",
-    "description": "Die automatische Erkennung bemerkt über eine stromsparende Standortüberwachung neue Reisen, legt sie sofort in der Zeitleiste an und lässt dich die Einträge prüfen oder rückgängig machen.",
+    "description": "Schalte „Reisen automatisch erkennen“ ein, erlaube den nötigen Standortzugriff und prüfe Reisen, die nach Grenzübertritten hinzugefügt wurden.",
     "author": {
       "@type": "Organization",
       "name": "AtlasDays"
@@ -78,7 +78,7 @@
       "name": "AtlasDays"
     },
     "url": "https://atlasdays.app/de/help/auto-detect-trips",
-    "dateModified": "2026-08-02",
+    "dateModified": "2026-09-30",
     "inLanguage": "de"
   }
   </script>
@@ -162,44 +162,76 @@
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/de/">AtlasDays</a> / <a href="/de/help/">Hilfe</a></nav>
 
     <h1>Reisen automatisch erkennen</h1>
-<p class="article-answer">Die automatische Erkennung nutzt eine stromsparende Standortüberwachung im Hintergrund, um neue Reisen zu bemerken, und legt sie sofort in der <a href="/de/help/timeline-and-calendar">Zeitleiste</a> an. Du kannst sie prüfen, bearbeiten oder rückgängig machen.</p>
+<p class="article-answer">Die automatische Erkennung nutzt energiesparende Standortüberwachung im Hintergrund, um zu bemerken, wenn du in ein neues Land einreist, und fügt die Reise sofort der <a href="/de/help/timeline-and-calendar">Zeitleiste</a> hinzu. Nichts wartet auf eine Freigabe, und du kannst die Reise danach bearbeiten oder löschen.</p>
 
-    <h2>Die automatische Erkennung aktivieren</h2>
+    <h2>Die automatische Erkennung einschalten</h2>
     <ol>
-      <li>Öffne <strong>Einstellungen → Reisen automatisch erkennen</strong>.</li>
-      <li>Aktivier <strong>Reisen automatisch erkennen</strong>.</li>
-      <li>Erlaub den Standortzugriff auf „Immer“, wenn iOS danach fragt. Der Schalter bleibt aus, solange der Zugriff im Hintergrund nicht verfügbar ist.</li>
-      <li>Aktivier bei Bedarf Mitteilungen für neu erkannte Länder.</li>
+      <li>Öffne <strong>Einstellungen → Reiseerfassung → Reisen automatisch erkennen</strong>.</li>
+      <li>Schalte <strong>Reisen automatisch erkennen</strong> ein.</li>
+      <li>iOS fragt zweimal nach deinem Standort. Wähle zuerst „Beim Verwenden der App“ und dann „Immer“, wenn die zweite Abfrage erscheint.</li>
+      <li>Schalte optional unter Mitteilungen <strong>Neu erkannte Länder</strong> ein.</li>
     </ol>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/de/help/auto-detect-trips/auto-detect-settings.webp" alt="Die Einstellungen für „Reisen automatisch erkennen“ mit den Optionen für Standort und Mitteilungen" width="1320" height="1850" loading="lazy" decoding="async" /></figure>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/de/help/auto-detect-trips/auto-detect-settings.webp" alt="Die Einstellungen von „Reisen automatisch erkennen“ mit Optionen für Standort und Mitteilungen" width="1320" height="1932" loading="lazy" decoding="async" /></figure>
+    <p>Die Erkennung läuft nur mit dem Zugriff „Immer“. Bleibst du bei „Beim Verwenden der App“ stehen, bleibt der Schalter aus. Schaltest du sie über die Karte in der Zeitleiste ein (siehe unten), wird nach den beiden Standortabfragen auch die Berechtigung für Mitteilungen angeboten; über die Einstellungen geschieht das nicht.</p>
+
+    <h2>Was passiert, wenn ein Land erkannt wird</h2>
+    <ul>
+      <li>Die Reise wird sofort der Zeitleiste hinzugefügt, beginnend am Erkennungstag und ohne Enddatum, bis du das Land verlässt.</li>
+      <li>Ist AtlasDays geöffnet, zeigt ein Banner den Ort mit <strong>Rückgängig</strong>. Es verschwindet nach wenigen Sekunden, und solange die App im Vordergrund ist, erscheint keine Push-Mitteilung.</li>
+      <li>Ist die App geschlossen und sind Mitteilungen eingeschaltet, erhältst du <em>Erkannt: &lt;Ort&gt;</em> mit dem Startdatum. Ein Tipp darauf öffnet die Zeitleiste.</li>
+    </ul>
+    <figure class="help-shot help-shot-control"><img src="/assets/article-images/de/help/auto-detect-trips/detected-banner.webp" alt="Banner in der App, das ein erkanntes Land mit der Taste „Rückgängig“ anzeigt" width="1320" height="720" loading="lazy" decoding="async" /></figure>
+    <p>Die Mitteilung hat eine einzige Aktion, <strong>Reise löschen</strong>. Sie entfernt die Reise, die gerade hinzugefügt wurde. Sie nimmt den Ort nicht in die Liste der Ausnahmen auf, und sie lässt jede Reise unberührt, deren Startdatum du schon geändert hast.</p>
+
+    <h2>Reisen enden und Transit wird automatisch markiert</h2>
+    <ul>
+      <li><strong>Automatisches Beenden.</strong> Zeigt eine spätere Erkennung, dass du ein Land verlassen hast, bekommt die frühere offene Reise ein Enddatum. Ist AtlasDays geöffnet, erscheint für einige Sekunden ein Hinweis <strong>Reise beendet: &lt;Land&gt;</strong> (oder <strong>N Reisen beendet</strong>) mit <strong>Rückgängig</strong>.</li>
+      <li><strong>Transit.</strong> Ein kurzer Stopp zwischen zwei anderen Ländern erscheint zuerst als gewöhnliche Reise. Sobald die nächste Erkennung eintrifft, stuft AtlasDays sie als <a href="/de/help/history-and-import">Transit</a> um, sodass sie nicht in die Tagessummen einfließt. Das geschieht nur, wenn du ihr keinen Zweck, keine Notizen und keine Fotos hinzugefügt hast.</li>
+    </ul>
 
     <h2>Erkannte Reisen prüfen</h2>
-    <p>Die neue Reise erscheint in der Zeitleiste mit dem erkannten Land und den Datumsangaben, die AtlasDays abgeleitet hat. Öffne sie, prüf Land oder US-Bundesstaat und die Randdaten und bearbeite oder lösch sie bei Bedarf. Wenn du eine Mitteilung zur Erkennung erhältst, entfernt <strong>Ignorieren</strong> die Reise. Du kannst sie später trotzdem von Hand eintragen.</p>
+    <p>Öffne die Reise in der Zeitleiste, um Land oder US-Bundesstaat und die Reisedaten zu prüfen. Das Startdatum ist der Tag, an dem der Ortswechsel erkannt wurde. Bearbeite es also, wo es auf den genauen Tag ankommt. Die Erkennung von US-Bundesstaaten gehört zu Pro; ohne Pro wird eine US-Reise als gewöhnliche Reise in die Vereinigten Staaten hinzugefügt.</p>
 
     <h2>Orte ausschließen, die nicht erkannt werden sollen</h2>
-    <p>Nimm Länder in die Liste der Ausnahmen auf, wenn wiederkehrende Grenznähe Reisen erzeugt, die du nie brauchst. Mit Pro kannst du auch einzelne US-Bundesstaaten ausschließen. Ausgeschlossene Orte lassen sich weiterhin von Hand hinzufügen.</p>
+    <p>Wähle unter <strong>Ausnahmen</strong> auf dem Bildschirm der automatischen Erkennung <strong>Länder</strong>, um Orte zu überspringen, die dein Telefon in Grenznähe immer wieder erfasst. Mit Pro gibt es zusätzlich <strong>US-Bundesstaaten</strong>. Für einen ausgeschlossenen Ort wird keine Reise angelegt, und die Tage bleiben beim umgebenden Land. Solche Reisen kannst du weiterhin selbst hinzufügen.</p>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/de/help/auto-detect-trips/ignore-list.webp" alt="Liste der Ausnahmen der automatischen Erkennung mit ausgewählten Ländern" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
-    <h2>Die automatische Erkennung zeichnet kein durchgehendes GPS auf</h2>
-    <p>Die Funktion nutzt stromsparende Standortereignisse des Systems, statt eine detaillierte Route zu speichern. Wann etwas erkannt wird, hängt von iOS, der Geografie, der Verbindung und dem verfügbaren Signal an der Grenze ab.</p>
+    <h2>Hinweise in der Zeitleiste</h2>
+    <p>Die Zeitleiste kann bis zu drei Karten oben in der Liste zeigen. Das X auf einer Karte blendet sie dauerhaft aus.</p>
+    <ul>
+      <li><strong>Reisen automatisch erfassen</strong> bietet <strong>Automatische Erkennung aktivieren</strong> und <strong>So funktioniert’s</strong> an. Sie erscheint, solange die automatische Erkennung aus ist und du mindestens eine Reise hast.</li>
+      <li><strong>Automatische Erkennung pausiert</strong> erscheint, wenn der Standort nicht mehr auf „Immer“ steht. <strong>Einstellungen öffnen</strong> führt dich zu den iOS-Einstellungen, um das zu beheben.</li>
+      <li><strong>Bleib informiert</strong> erscheint, wenn auf diesem Gerät eine Reise hinzugefügt wurde, während Mitteilungen aus sind, und bietet <strong>Mitteilungen aktivieren</strong> an.</li>
+    </ul>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/de/help/auto-detect-trips/prompt-card.webp" alt="Hinweiskarte in der Zeitleiste, die anbietet, die automatische Erkennung einzuschalten" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <p>Mehr zu diesen Karten und weiteren Bedienelementen der Zeitleiste steht unter <a href="/de/help/timeline-tools">Die Zeitleiste durchsuchen, filtern und anpassen</a>.</p>
+
+    <h2>Die automatische Erkennung am Laufen halten</h2>
+    <ul>
+      <li>Öffne AtlasDays ab und zu. Bleibt die App lange geschlossen, stellt iOS möglicherweise keine Standortaktualisierungen mehr zu.</li>
+      <li>Beende die App nicht im App-Umschalter. Das stoppt die Überwachung, bis du sie wieder öffnest.</li>
+      <li>Lass den Standort für AtlasDays auf „Immer“ stehen. <strong>Mehr erfahren</strong> auf dem Bildschirm der automatischen Erkennung zeigt diese Liste.</li>
+    </ul>
+    <div class="callout"><p><strong>Kein dauerhaftes GPS.</strong> Die automatische Erkennung stützt sich auf die signifikanten Standortänderungen von iOS, nicht auf eine gespeicherte Route. Der Zeitpunkt hängt von iOS, der Geografie und der Verbindung ab, ein Grenzübertritt kann also verspätet bemerkt werden.</p></div>
 
     <section class="if-needed">
       <h2>Wenn keine Reise erscheint</h2>
-      <p>Prüf, ob die automatische Erkennung aktiv ist, der Standort auf „Immer“ steht, der Ort nicht ausgeschlossen ist und Mitteilungen von AtlasDays erlaubt sind, falls du eine erwartest. Die Reise von Hand einzutragen, geht immer.</p>
+      <p>Prüf, ob die automatische Erkennung eingeschaltet ist, der Standort auf „Immer“ steht, der Ort nicht in der Liste der Ausnahmen steht und die App kürzlich geöffnet und nicht beendet wurde. Prüf bei einer Mitteilung außerdem, ob <strong>Neu erkannte Länder</strong> eingeschaltet ist und iOS Mitteilungen von AtlasDays erlaubt. Du kannst die Reise jederzeit manuell hinzufügen.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-auto-detect-trips">
       <h2 id="next-auto-detect-trips">Weiter mit</h2>
       <ul>
+        <li><a href="/de/help/privacy-location-and-sync">
+          <strong>Datenschutz und Berechtigungen</strong>
+          <span>Was AtlasDays liest, speichert und sendet.</span>
+        </a></li>
         <li><a href="/de/help/delete-and-reset">
           <strong>Daten löschen oder neu anfangen</strong>
-          <span>Lösch Reisen oder Tracker, oder setz alles zurück.</span>
+          <span>Reisen oder Tracker löschen oder komplett zurücksetzen.</span>
         </a></li>
         <li><a href="/de/help/timeline-and-calendar">
           <strong>Eine Reise hinzufügen, bearbeiten oder löschen</strong>
-          <span>Prüf und bearbeite automatisch erkannte Reisen.</span>
-        </a></li>
-        <li><a href="/de/help/smart-alerts">
-          <strong>Intelligente Warnungen</strong>
-          <span>Lass dich benachrichtigen, bevor ein Limit erreicht ist.</span>
+          <span>Automatisch erkannte Reisen prüfen und bearbeiten.</span>
         </a></li>
       </ul>
     </nav>
@@ -207,7 +239,7 @@
       <h2>Brauchst du noch Hilfe?</h2>
       <p><a href="mailto:support@atlasdays.app">Wende dich an den AtlasDays-Support</a> und nenne die betreffenden Reisedaten, was du erwartet hast und was passiert ist.</p>
     </aside>
-    <p class="help-updated">Zuletzt aktualisiert am 2. August 2026</p>
+    <p class="help-updated">Zuletzt aktualisiert am 30. September 2026</p>
   </article>
   </main>
 

@@ -1,27 +1,59 @@
     <nav class="breadcrumb" aria-label="パンくずリスト"><a href="/ja/">AtlasDays</a> / <a href="/ja/help/">ヘルプセンター</a></nav>
 
     <h1>旅行の自動検出</h1>
-<p class="article-answer">自動検出は、省電力のバックグラウンド位置情報監視で新しい旅行を見つけ、すぐに<a href="/ja/help/timeline-and-calendar">タイムライン</a>へ追加します。追加された旅行は、確認、編集、取り消しができます。</p>
+<p class="article-answer">自動検出は、省電力のバックグラウンド位置情報監視で新しい国への入国を見つけ、すぐに<a href="/ja/help/timeline-and-calendar">タイムライン</a>へ旅行を追加します。承認を待つ必要はなく、追加された旅行はあとから編集や削除ができます。</p>
 
     <h2>自動検出をオンにする</h2>
     <ol>
-      <li><strong>「設定」＞「旅行の自動検出」</strong>を開きます。</li>
+      <li><strong>「設定」→「追跡」→「旅行の自動検出」</strong>を開きます。</li>
       <li><strong>「旅行の自動検出」</strong>をオンにします。</li>
-      <li>iOSに求められたら、位置情報のアクセスを「常に」で許可します。バックグラウンドでのアクセスが使えるようになるまで、スイッチはオフのままです。</li>
-      <li>必要に応じて、「新しい国の検出」の通知をオンにします。</li>
+      <li>iOSから位置情報の許可を2回求められます。最初に「このアプリの使用中」を許可し、2回目の確認が表示されたら「常に」を許可します。</li>
+      <li>必要に応じて、通知の項目で<strong>「新しい国の検出」</strong>をオンにします。</li>
     </ol>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/ja/help/auto-detect-trips/auto-detect-settings.webp" alt="位置情報と通知の設定が並ぶ「旅行の自動検出」の設定画面" width="1320" height="1850" loading="lazy" decoding="async" /></figure>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/ja/help/auto-detect-trips/auto-detect-settings.webp" alt="位置情報と通知の設定がある「旅行の自動検出」の設定画面" width="1320" height="1850" loading="lazy" decoding="async" /></figure>
+    <p>検出は、位置情報のアクセスが「常に」のときにだけ動作します。「このアプリの使用中」までしか許可しない場合、スイッチはオフのままです。タイムラインのカード（後述）からオンにした場合は、2回の位置情報の確認に続いて通知の許可も求められます。「設定」からオンにした場合は求められません。</p>
+
+    <h2>国が検出されたときの動作</h2>
+    <ul>
+      <li>旅行はただちにタイムラインに追加され、検出した日が開始日になります。終了日は、その国を出るまで設定されません。</li>
+      <li>AtlasDaysを開いているときは、場所を示すバナーが<strong>「取り消す」</strong>とともに表示されます。数秒で消え、アプリが前面にある間はプッシュ通知は表示されません。</li>
+      <li>アプリを閉じていて通知がオンの場合は、開始日とともに<em>「&lt;場所&gt;検出済み」</em>という通知が届きます。タップするとタイムラインが開きます。</li>
+    </ul>
+    <figure class="help-shot help-shot-control"><img src="/assets/article-images/help/auto-detect-trips/detected-banner.webp" alt="検出された国を知らせる、「取り消す」ボタン付きのアプリ内バナー" width="1320" height="720" loading="lazy" decoding="async" /></figure>
+    <p>通知のアクションは<strong>「旅行を削除」</strong>の1つだけです。追加されたばかりの旅行を削除します。その場所を無視リストに追加することはなく、すでに開始日を変更した旅行には影響しません。</p>
+
+    <h2>旅行の終了と乗り継ぎは自動で反映される</h2>
+    <ul>
+      <li><strong>自動で終了。</strong>あとの検出で国を出たことが分かると、先に開いていた旅行に終了日が設定されます。AtlasDaysを開いているときは、トーストに<strong>「&lt;国&gt;の旅行を終了しました」</strong>（または<strong>「N件の旅行が終了しました」</strong>）と表示され、数秒間、<strong>「取り消す」</strong>を使えます。</li>
+      <li><strong>乗り継ぎ。</strong>ほかの2か国の間の短い滞在は、最初は通常の旅行として表示されます。次の検出があると、AtlasDaysはそれを<a href="/ja/help/history-and-import">乗り継ぎ</a>に切り替え、滞在日数には数えません。これは、目的、メモ、写真を追加していない場合に限ります。</li>
+    </ul>
 
     <h2>検出された旅行を確認する</h2>
-    <p>新しい旅行は、検出された国とAtlasDaysが推定した日付とともにタイムラインへ表示されます。開いて国または米国の州、開始日、終了日を確認し、必要に応じて編集または削除してください。検出の通知が届いた場合は、<strong>「無視」</strong>を選ぶと旅行が削除されます。あとから手動で追加することもできます。</p>
+    <p>タイムラインで旅行を開き、国または米国の州と、日付を確認します。開始日は位置の変化が検出された日なので、正確な日が重要な場合は編集してください。米国の州の検出はProの機能です。Proでない場合、米国の旅行は通常の米国として追加されます。</p>
 
     <h2>検出したくない場所を無視する</h2>
-    <p>国境の近くにいることで必要のない旅行が繰り返し作成される場合は、その国を「無視する国」に追加します。Proでは、米国の州を個別に無視することもできます。無視した場所も、手動でなら追加できます。</p>
+    <p>自動検出の画面の<strong>「無視」</strong>で<strong>「国」</strong>を選ぶと、国境の近くでスマートフォンが何度も拾ってしまう場所を除外できます。Proでは<strong>「米国の州」</strong>も選べます。無視した場所では旅行は作成されず、その日数は前後の国のものとして残ります。それらの旅行を自分で追加することもできます。</p>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/help/auto-detect-trips/ignore-list.webp" alt="国が選択された、自動検出の無視リスト" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
-    <h2>自動検出はGPSの常時記録ではありません</h2>
-    <p>この機能は、詳しい経路を保存するのではなく、省電力のシステムの位置情報イベントを使います。検出のタイミングは、iOS、地理的な条件、通信状況、そして得られる国境の信号によって変わります。</p>
+    <h2>タイムラインのお知らせ</h2>
+    <p>タイムラインには、リストの上部に最大3枚のカードが表示されます。カードの×をタップすると、そのカードは今後表示されません。</p>
+    <ul>
+      <li><strong>「旅行を自動で記録」</strong>には、<strong>「自動検出をオンにする」</strong>と<strong>「仕組み」</strong>が表示されます。自動検出がオフで、旅行が1件以上あるときに表示されます。</li>
+      <li><strong>「自動検出は一時停止中です」</strong>は、位置情報が「常に」でなくなったときに表示されます。<strong>「設定を開く」</strong>から、iOSの設定で修正できます。</li>
+      <li><strong>「通知を受け取る」</strong>は、通知がオフの状態でこの端末に旅行が追加されたあとに表示され、<strong>「通知をオンにする」</strong>が使えます。</li>
+    </ul>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/help/auto-detect-trips/prompt-card.webp" alt="自動検出をオンにするよう促すタイムラインのカード" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <p>これらのカードやタイムラインのその他の操作については、<a href="/ja/help/timeline-tools">タイムラインのツール</a>をご覧ください。</p>
+
+    <h2>自動検出を働かせ続けるために</h2>
+    <ul>
+      <li>ときどきAtlasDaysを開いてください。長い間閉じたままにすると、iOSが位置情報の更新を届けなくなることがあります。</li>
+      <li>App スイッチャーからアプリを強制終了しないでください。もう一度開くまで、監視が止まります。</li>
+      <li>AtlasDaysの位置情報は「常に」にしておいてください。自動検出の画面の<strong>「詳しく見る」</strong>に、この一覧が表示されます。</li>
+    </ul>
+    <div class="callout"><p><strong>GPSの常時記録ではありません。</strong>自動検出は、保存された経路ではなく、iOSの大幅位置情報変更イベントを利用します。タイミングはiOS、地理的な条件、通信状況によって変わるため、国境を越えたことに気づくのが遅れる場合があります。</p></div>
 
     <section class="if-needed">
       <h2>旅行が表示されないとき</h2>
-      <p>自動検出がオンになっているか、位置情報が「常に」に設定されているか、その場所を無視していないかを確認してください。通知を待っている場合は、AtlasDaysの通知が許可されているかも確認します。旅行はいつでも手動で追加できます。</p>
+      <p>自動検出がオンになっているか、位置情報が「常に」に設定されているか、その場所が無視リストに入っていないか、アプリを最近開いていて強制終了していないかを確認してください。通知が届かない場合は、<strong>「新しい国の検出」</strong>がオンになっているか、iOSでAtlasDaysの通知が許可されているかも確認します。旅行は、いつでも手動で追加できます。</p>
     </section>

@@ -1,36 +1,43 @@
     <nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="/fr/">AtlasDays</a> / <a href="/fr/help/">Centre d’aide</a></nav>
 
     <h1>Synchronisation iCloud et restauration</h1>
-<p class="article-answer">Quand la synchronisation iCloud est activée, AtlasDays stocke les voyages et les suivis dans votre compte iCloud privé et les garde synchronisés entre les appareils utilisant le même compte Apple.</p>
+<p class="article-answer">Quand la synchronisation iCloud est activée, AtlasDays stocke vos voyages et vos suivis dans votre compte iCloud privé et les garde à jour sur les appareils connectés au même compte Apple. La synchronisation n’est pas un fichier de sauvegarde : conservez aussi une Sauvegarde AtlasDays à part.</p>
 
-    <h2>Configurer un nouvel appareil</h2>
+    <h2>Vérifier que la synchronisation est activée</h2>
     <ol>
-      <li>Connectez-vous au même compte Apple et vérifiez qu’iCloud Drive est disponible.</li>
-      <li>Installez AtlasDays et ouvrez <strong>Réglages → Synchronisation iCloud</strong>.</li>
-      <li>Confirmez que la synchronisation iCloud est activée et consultez l’état affiché.</li>
-      <li>Laissez AtlasDays ouvert quelques instants pendant que les enregistrements arrivent.</li>
+      <li>Ouvrez <strong>Réglages → Synchronisation iCloud</strong>. L’interrupteur est activé par défaut.</li>
+      <li>Lisez <strong>État</strong>. <strong>Synchronisé</strong> signifie que cet appareil est à jour.</li>
+      <li>Consultez <strong>Données</strong> pour le nombre de voyages et de suivis que cet appareil contient, et <strong>Dernière activité</strong> pour la synchronisation la plus récente.</li>
     </ol>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/fr/help/icloud-sync-and-restore/icloud-status.webp" alt="Réglages de la synchronisation iCloud affichant l’état, la dernière activité et le nombre de données" width="1320" height="772" loading="lazy" decoding="async" /></figure>
+    <p>Après avoir activé ou désactivé la synchronisation, AtlasDays vous demande de la fermer depuis le sélecteur d’apps puis de la rouvrir. Le changement prend effet au lancement suivant.</p>
 
-    <h2>Après une réinstallation d’AtlasDays</h2>
-    <p>Les voyages et les suivis conservés dans iCloud reviennent dès que l’app se reconnecte à son espace iCloud, ce qui peut prendre quelques minutes au premier lancement. Les autorisations propres à l’appareil, la configuration des <a href="/fr/help/widgets">widgets</a> et certaines préférences doivent être définies à nouveau.</p>
-
-    <h2>Comprendre l’état</h2>
-    <p>L’écran Synchronisation iCloud indique si AtlasDays vérifie, synchronise, attend, est synchronisé, n’est pas connecté ou utilise le stockage local. Activer ou désactiver la synchronisation peut nécessiter de fermer AtlasDays depuis le sélecteur d’apps, puis de le rouvrir.</p>
-
-    <h2>Si des données semblent manquer</h2>
+    <h2>Configurer un nouvel appareil ou réinstaller</h2>
     <ol>
-      <li>Ne réinitialisez pas et ne supprimez pas les données de l’app pendant que vous cherchez la cause.</li>
-      <li>Confirmez le compte Apple et la disponibilité d’iCloud.</li>
-      <li>Vérifiez l’état de la synchronisation iCloud et le nombre de données.</li>
-      <li>Gardez l’app ouverte sur une connexion stable, puis vérifiez à nouveau.</li>
-      <li>Contactez l’assistance avant toute modification destructrice si un autre appareil contient encore l’enregistrement attendu.</li>
+      <li>Connectez-vous au même compte Apple dans les Réglages iOS.</li>
+      <li>Installez AtlasDays et ouvrez <strong>Réglages → Synchronisation iCloud</strong> pour confirmer qu’elle est activée.</li>
+      <li>Laissez AtlasDays ouverte quelques minutes pendant que les voyages et les suivis arrivent.</li>
     </ol>
+    <p>Les choix propres à l’appareil reviennent séparément. Les autorisations de localisation et de notifications sont accordées appareil par appareil : la <a href="/fr/help/auto-detect-trips">détection automatique</a> et les notifications ne fonctionnent donc qu’une fois que vous les avez autorisées de nouveau, et les <a href="/fr/help/widgets">widgets</a> doivent être ajoutés de nouveau. Les préférences comme le pays de résidence et l’apparence transitent d’elles-mêmes par iCloud, même quand la synchronisation des voyages est désactivée.</p>
 
-    <h2>La synchronisation n’est pas un export</h2>
-    <p>La synchronisation maintient un seul enregistrement évolutif entre les appareils. Un <a href="/fr/help/export-and-reports">export</a> est un fichier distinct, que vous contrôlez et pouvez conserver comme copie à un instant donné.</p>
+    <h2>Ce que signifient les états</h2>
+    <ul>
+      <li><strong>Synchronisation…</strong>, <strong>En attente de synchronisation</strong> et <strong>En attente d’iCloud</strong> sont temporaires. Gardez AtlasDays ouverte un instant.</li>
+      <li><strong>Synchronisé</strong> signifie que rien n’est en attente.</li>
+      <li><strong>Non connecté</strong>, <strong>iCloud indisponible</strong> et <strong>iCloud restreint</strong> renvoient au compte Apple, à iCloud ou à une restriction Temps d’écran sur cet appareil.</li>
+      <li><strong>Non synchronisé</strong> signifie qu’AtlasDays n’a pas pu ouvrir son magasin de données iCloud : cet appareil utilise donc pour l’instant le stockage local. Vos données sont toujours sur l’appareil.</li>
+      <li><strong>Problème de synchronisation</strong> signifie que certaines modifications ne sont pas encore arrivées dans iCloud. Touchez <strong>Afficher les détails</strong> pour obtenir des suggestions et des informations de diagnostic que vous pouvez envoyer à l’assistance.</li>
+    </ul>
+
+    <h2>La synchronisation n’est pas une sauvegarde</h2>
+    <p>La synchronisation maintient un seul enregistrement à jour sur tous les appareils : une suppression faite sur un appareil atteint donc les autres. Elle ne peut pas ramener ce que vous avez retiré. Une <a href="/fr/help/backup-and-restore">Sauvegarde AtlasDays</a> est un fichier distinct que vous conservez et restaurez quand vous en avez besoin. Si vous restaurez une sauvegarde alors que la synchronisation est activée, les données restaurées remplacent celles de tous les appareils, et AtlasDays attend la fin de la synchronisation iCloud avant de commencer.</p>
 
     <section class="if-needed">
-      <h2>Si l’écran indique qu’AtlasDays ne synchronise pas</h2>
-      <p>Suivez d’abord le message d’état. Vérifiez la connexion au compte Apple, l’espace iCloud disponible, l’accès au réseau, et si l’app demande un redémarrage après le changement du réglage.</p>
+      <h2>Si des données semblent manquer</h2>
+      <ol>
+        <li>Ne réinitialisez pas l’app et ne supprimez pas de données pendant que vous cherchez la cause.</li>
+        <li>Confirmez que cet appareil est connecté au même compte Apple et qu’iCloud est disponible.</li>
+        <li>Vérifiez <strong>État</strong> et <strong>Données</strong> dans l’écran Synchronisation iCloud, et gardez AtlasDays ouverte sur une connexion stable pendant quelques minutes.</li>
+        <li>Si un autre appareil affiche toujours les voyages attendus, contactez l’assistance avant de modifier quoi que ce soit. La ligne <strong>Référence</strong> de l’écran Synchronisation iCloud contient un identifiant d’assistance que vous pouvez toucher pour le copier.</li>
+      </ol>
+      <p>Si l’écran indique qu’AtlasDays ne synchronise pas, suivez d’abord son message : vérifiez la connexion au compte Apple, l’espace iCloud disponible et l’accès au réseau, puis fermez complètement AtlasDays et rouvrez-la.</p>
     </section>
