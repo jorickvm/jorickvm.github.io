@@ -254,7 +254,9 @@
     }
 
     // One bar per trip per week, drawn from the outer edge of the first day's
-    // circle to the outer edge of the last day's. While a trip is being made
+    // circle to the outer edge of the last day's (at a handoff, to the middle
+    // of the shared day, leaving a small gap). A trip with a country carries
+    // its flag at the start of its bar. While a trip is being made
     // with the mouse, a half-strength preview bar follows the pointer. The
     // selected trip is darker and carries a drag handle on each end.
     var DISC = 10; // half the width of a day circle, in px (see .cal-day::after)
@@ -271,10 +273,16 @@
       var cutEnd = real && ends && t.start !== t.end && handoff(t, false);
       var left = !starts ? "0px" : "calc(" + ((a - mon + 0.5) / 7 * 100) + "% " + (cutStart ? "+ " + GAP : "- " + DISC) + "px)";
       var right = !ends ? "100%" : "calc(" + ((z - mon + 0.5) / 7 * 100) + "% " + (cutEnd ? "- " + GAP : "+ " + DISC) + "px)";
-      var bar = el("span", { "class": "cal-bar" + cls + (starts && !cutStart ? " starts" : "") + (ends && !cutEnd ? " ends" : "") });
+      var bar = el("span", { "class": "cal-bar" + cls + (starts ? " starts" : "") + (ends ? " ends" : "") });
       bar.style.left = left;
       bar.style.width = "calc(" + right + " - " + left + ")";
       bars.appendChild(bar);
+      // The trip's flag stamped on the start of its bar, as in the app.
+      if (real && starts && t.country) {
+        var flag = el("img", { "class": "cal-bar-flag", src: FLAGS + t.country.toLowerCase() + ".png", alt: "" });
+        flag.style.left = left;
+        bars.appendChild(flag);
+      }
     }
     function handleAt(bars, mon, day, end) {
       if (day < mon || day > mon + 6) return;

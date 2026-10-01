@@ -116,6 +116,16 @@ html[data-theme="light"] .daycal { --cal-disc: rgba(12, 22, 40, 0.07); }
 .cal-bar.ends { border-top-right-radius: 10px; border-bottom-right-radius: 10px; }
 .cal-bar.is-preview { background: color-mix(in srgb, var(--cal-bar) 50%, var(--bg-card)); }
 .cal-bar.is-selected { background: var(--cal-sel); }
+/* the trip's flag on the start of its bar: bar height, the app's 0.7 ratio */
+.cal-bar-flag {
+  position: absolute;
+  top: 0;
+  width: 28px;
+  height: 20px;
+  border-radius: 3px;
+  object-fit: cover;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.18);
+}
 
 /* Drag handles on the selected trip: 22px to see, 44px to touch. */
 .cal-handle {
