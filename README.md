@@ -120,6 +120,7 @@ Serves the committed HTML with GitHub Pages' extensionless URLs, so links resolv
 | Script | Purpose |
 |---|---|
 | `build_site.py` | Renders articles, hubs, and root pages from `_site-src/`. `--check` fails on drift. |
+| `check_app_learn_links.py` | Fails when an address the app opens (Learn slugs, `/app/open/`, the aliases, the legal pages) no longer exists. CI checks the committed snapshot `_site-src/data/app-links.json`; after the app changes a slug or link, refresh it with `--sync` (needs the app checkout) and commit it. |
 | `build_route_outputs.py` | Generates the sitemap set (`sitemap.xml` index plus `sitemap-<code>.xml` per locale) and the `llms.txt` set (English at the root, `/<code>/llms.txt` per translation) from `routes.json`. |
 | `build_content_governance.py` | Derives editorial records, content clusters, and the review queue from `articles.json`. |
 | `build_residency_hub.py` | Fills the residency hub tables from the `residency` objects in `articles.json`. |
