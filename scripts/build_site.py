@@ -311,6 +311,10 @@ def render_cluster_related(
     code = str(locale["code"])
     available = {route_for(path) for path in translations.get(code, {})}
     links = []
+    if code != "en":
+        # A page this locale has not translated yet (published English first,
+        # or listed under `untranslated`) is not offered here in English.
+        ordered = [path for path in ordered if path in translations.get(code, {})]
     for path in ordered[:5]:
         overlay = translations.get(code, {}).get(path)
         title = str(overlay["headline"]) if overlay else titles.get(path)

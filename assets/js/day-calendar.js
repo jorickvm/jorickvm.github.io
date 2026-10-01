@@ -22,12 +22,16 @@
      travelDaysCount         whether the rule counts travel days (informational;
                              bars always cover both end days)
      singleDayTrips          true when a one-day trip counts for the rule
-     evaluate(trips, ctx)    { ok, total, remaining, status, from, to }
+     evaluate(trips, ctx)    { ok, total, remaining, status, from, to }, or the
+                             result written out: { headlineText, statusText,
+                             ok, lines: [] }
      tripLabel(trip, ctx)    short text for a trip in the list
      exportRows(trips, ctx)  rows for the AtlasDays CSV import
      countries(all)          optional: the country codes a trip may have
                              (one code: the country is fixed, no picker)
      defaultCountry          optional: the country a new trip starts with
+     carryCountry            optional: a new trip starts with the last country
+                             picked
      strings                 labels shown by the engine
 
    Everything runs in the browser. Nothing is sent, logged or stored. */
@@ -147,7 +151,10 @@
     var englishNames = null;
     try { englishNames = new Intl.DisplayNames(["en"], { type: "region" }); } catch (e) {}
 
-    function ctx() { return { today: today, D: D, label: label, plural: plural, text: text, trips: trips }; }
+    function ctx() { return { today: today, D: D, label: label, plural: plural, text: text, trips: trips, placeName: placeName }; }
+    // A new trip starts with the rule's fixed country, or (rule.carryCountry)
+    // the country picked last, so a run of stays in one country is quick.
+    function newCountry() { return defaultCountry || (rule.carryCountry && recent[0]) || ""; }
 
     // ---- trips -----------------------------------------------------------------
     function tripAt(day) {
@@ -202,10 +209,10 @@
         anchor = null; hover = null;
         if (day === from) {
           if (!rule.singleDayTrips) return refresh();
-          trips.push({ start: day, end: day, country: defaultCountry });
+          trips.push({ start: day, end: day, country: newCountry() });
           return created(day);
         }
-        var span = { start: from, end: day, country: defaultCountry };
+        var span = { start: from, end: day, country: newCountry() };
         trips.push(span);
         place(span, from, day);
         return created(span.start);
@@ -490,6 +497,14 @@
     function renderResult() {
       var r = rule.evaluate(trips, ctx());
       result.textContent = "";
+      if (r.headlineText != null) {
+        var head = el("div", { "class": "cal-result-head" });
+        head.appendChild(el("p", { "class": "cal-headline" }, r.headlineText));
+        if (r.statusText) head.appendChild(el("span", { "class": "cal-status " + (r.ok ? "is-ok" : "is-over") }, r.statusText));
+        result.appendChild(head);
+        (r.lines || []).forEach(function (line) { result.appendChild(el("p", { "class": "cal-line" }, line)); });
+        return;
+      }
       var top = el("div", { "class": "cal-result-head" });
       top.appendChild(el("p", { "class": "cal-headline" }, text(r.total ? "headline" : "headlineEmpty", { n: r.total })));
       if (r.status) top.appendChild(el("span", { "class": "cal-status " + (r.ok ? "is-ok" : "is-over") }, text(r.status, { n: r.remaining })));
