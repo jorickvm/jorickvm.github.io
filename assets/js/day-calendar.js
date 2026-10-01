@@ -24,7 +24,12 @@
      singleDayTrips          true when a one-day trip counts for the rule
      evaluate(trips, ctx)    { ok, total, remaining, status, from, to }, or the
                              result written out: { headlineText, statusText,
-                             ok, lines: [] }
+                             ok, lines: [], controls: [] }. A control is a menu
+                             in the result box: { key, prefix, label, value,
+                             options: [{ value, label, group }], moveCalendar };
+                             its choice lands in ctx.settings[key]
+     fixedRange              optional: the calendar shows range() only, even
+                             when a trip runs past it
      tripLabel(trip, ctx)    short text for a trip in the list
      exportRows(trips, ctx)  rows for the AtlasDays CSV import
      countries(all)          optional: the country codes a trip may have
@@ -146,12 +151,13 @@
     var allowed = (rule.countries && rule.countries(PLACES)) || PLACES;
     var defaultCountry = allowed.length === 1 ? allowed[0] : (rule.defaultCountry || "");
     var recent = [];
+    var settings = {}; // choices made in the rule's result menus (rule.evaluate -> controls)
     var finePointer = !!(window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches);
     var rows = [], cells = {}, firstMonday = 0, activeMonth = null;
     var englishNames = null;
     try { englishNames = new Intl.DisplayNames(["en"], { type: "region" }); } catch (e) {}
 
-    function ctx() { return { today: today, D: D, label: label, plural: plural, text: text, trips: trips, placeName: placeName }; }
+    function ctx() { return { today: today, D: D, label: label, plural: plural, text: text, trips: trips, placeName: placeName, settings: settings, dateRange: dateRange }; }
     // A new trip starts with the rule's fixed country, or (rule.carryCountry)
     // the country picked last, so a run of stays in one country is quick.
     function newCountry() { return defaultCountry || (rule.carryCountry && recent[0]) || ""; }
@@ -235,7 +241,7 @@
     // ---- the calendar: continuous week rows ------------------------------------
     function build() {
       var r = rule.range(ctx()), from = r.from, to = r.to;
-      trips.forEach(function (t) { from = Math.min(from, t.start); to = Math.max(to, t.end); });
+      if (!rule.fixedRange) trips.forEach(function (t) { from = Math.min(from, t.start); to = Math.max(to, t.end); });
       var first = D.monday(from), last = D.monday(to) + 6;
       if (rows.length && first === firstMonday && rows.length === (last - first + 1) / 7) return;
       var anchor = rows.length ? topDay() : null;
@@ -497,6 +503,34 @@
     function renderResult() {
       var r = rule.evaluate(trips, ctx());
       result.textContent = "";
+      if (r.controls && r.controls.length) {
+        var bar = el("div", { "class": "cal-controls" });
+        r.controls.forEach(function (ctl) {
+          var wrap = el("label", { "class": "cal-control" });
+          if (ctl.prefix) wrap.appendChild(el("span", { "class": "cal-control-prefix" }, ctl.prefix));
+          var pick = el("select", { "aria-label": ctl.label || ctl.prefix || "" });
+          var groups = {};
+          ctl.options.forEach(function (o) {
+            var parent = pick;
+            if (o.group) {
+              if (!groups[o.group]) { groups[o.group] = el("optgroup", { label: o.group }); pick.appendChild(groups[o.group]); }
+              parent = groups[o.group];
+            }
+            var opt = el("option", { value: o.value }, o.label);
+            if (o.value === ctl.value) opt.selected = true;
+            parent.appendChild(opt);
+          });
+          pick.addEventListener("change", function () {
+            settings[ctl.key] = pick.value;
+            var moved = rule.fixedRange && ctl.moveCalendar;
+            render();
+            if (moved) { var rr = rule.range(ctx()); reveal(today >= rr.from && today <= rr.to ? today - 21 : rr.from); updateMonth(); }
+          });
+          wrap.appendChild(pick);
+          bar.appendChild(wrap);
+        });
+        result.appendChild(bar);
+      }
       if (r.headlineText != null) {
         var head = el("div", { "class": "cal-result-head" });
         head.appendChild(el("p", { "class": "cal-headline" }, r.headlineText));
@@ -612,7 +646,8 @@
     if (dialog) dialog.addEventListener("click", function (e) { if (e.target === dialog) dialog.close(); });
 
     render();
-    reveal(today - 21);
+    var start = rule.range(ctx());
+    reveal(today >= start.from && today <= start.to ? today - 21 : start.from);
     updateMonth();
   }
 
