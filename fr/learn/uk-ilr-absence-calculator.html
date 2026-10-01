@@ -207,13 +207,14 @@
 {
   "hintStart": "Touchez le jour où vous avez quitté le Royaume-Uni, puis celui de votre retour.",
   "hintEnd": "Touchez maintenant l’autre extrémité du voyage, ou {date} à nouveau pour annuler.",
-  "hintMove": "Touchez une autre date pour cette extrémité du voyage, ou {date} à nouveau pour la conserver.",
   "inTrip": "hors du Royaume-Uni",
   "pending": "début d’un nouveau voyage",
-  "held": "fin du voyage sélectionnée",
   "empty": "Aucun voyage pour l’instant.",
   "deleteTrip": "Supprimer le voyage",
   "country": "Pays",
+  "addCountry": "Ajouter un pays",
+  "noMatch": "Aucun pays correspondant",
+  "hintSelected": "Faites glisser l’une des extrémités du voyage pour modifier ses dates, ou supprimez-le ci-dessous.",
   "tripAway": {
     "one": "{n} jour d’absence",
     "many": "{n} jours d’absence",
@@ -241,16 +242,11 @@
       </div>
       <div class="cal-side">
         <div class="cal-box" aria-live="polite"><div data-cal-result></div></div>
-        <div class="cal-box"><h3>Voyages</h3><div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Importer dans AtlasDays</button></div>
+        <div class="cal-box"><h3>Voyages</h3><div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Importer gratuitement dans AtlasDays</button></div>
       </div>
       <dialog class="cal-dialog" data-cal-dialog aria-labelledby="uk-ilr-import-title">
-        <p class="cal-dialog-title" id="uk-ilr-import-title">Importer dans AtlasDays</p>
-        <p>Continuez à suivre ce décompte dans l’app. Il se met à jour au fil des voyages et vous avertit avant qu’un voyage ne vous fasse dépasser 180 jours.</p>
-        <ol>
-          <li>Téléchargez dans un fichier vos périodes passées au Royaume-Uni entre les voyages.</li>
-          <li>Dans AtlasDays sur votre iPhone, ouvrez Réglages → Importer → Fichier CSV et choisissez ce fichier. Vous vérifiez chaque séjour avant tout ajout.</li>
-          <li>Ajoutez la règle préréglée Indefinite Leave to Remain (Royaume-Uni). Les voyages prévus ne figurent pas dans le fichier : ajoutez-les dans l’app une fois réservés.</li>
-        </ol>
+        <p class="cal-dialog-title" id="uk-ilr-import-title">Continuer dans AtlasDays</p>
+        <p>Téléchargez le fichier et ouvrez-le dans AtlasDays : Réglages → Importer → Fichier CSV.</p>
         <div class="cal-dialog-actions">
           <button type="button" data-cal-download>Télécharger le fichier</button>
           <a class="cal-dialog-app" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">Télécharger AtlasDays</a>
@@ -353,7 +349,7 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"Ouvrir le menu de navigation","menuClose":"Fermer le menu de navigation"};</script>
   <script src="../../assets/js/navigation.js?v=20260817b"></script>
-  <script defer src="../../assets/js/rules/uk-ilr.js?v=20260930f"></script>
+  <script defer src="../../assets/js/rules/uk-ilr.js?v=20261001a"></script>
   <script defer src="../../assets/js/day-calendar.js?v=20261001b"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */

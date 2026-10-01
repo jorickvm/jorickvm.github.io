@@ -92,10 +92,8 @@
     strings: {
       hintStart: "Tap the day you left the UK, then the day you came back.",
       hintEnd: "Now tap the other end of the trip, or {date} again to cancel.",
-      hintMove: "Tap a new date for this end of the trip, or {date} again to keep it.",
       inTrip: "outside the UK",
       pending: "start of a new trip",
-      held: "trip end picked up",
       empty: "No trips yet.",
       deleteTrip: "Delete trip",
       country: "Country",

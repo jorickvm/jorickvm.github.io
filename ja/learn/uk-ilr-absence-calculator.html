@@ -206,13 +206,14 @@
 {
   "hintStart": "英国を出国した日をタップし、次に帰国した日をタップしてください。",
   "hintEnd": "旅行のもう一方の日付をタップしてください。{date}を再度タップすると取り消します。",
-  "hintMove": "新しい日付をタップして変更します。{date}を再度タップすると元の日付を維持します。",
   "inTrip": "英国外に滞在",
   "pending": "新しい旅行の開始日",
-  "held": "旅行の終了日を選択中",
   "empty": "旅行はまだありません。",
   "deleteTrip": "旅行を削除",
   "country": "国",
+  "addCountry": "国を追加",
+  "noMatch": "一致する国はありません",
+  "hintSelected": "旅行のどちらかの端をドラッグして日付を変更するか、下で削除してください。",
   "tripAway": {"other": "不在{n}日"},
   "headline": "任意の12か月間の不在日数：180日中{n}日",
   "headlineEmpty": "不在日数：180日中0日",
@@ -229,16 +230,11 @@
       </div>
       <div class="cal-side">
         <div class="cal-box" aria-live="polite"><div data-cal-result></div></div>
-        <div class="cal-box"><h3>旅行</h3><div data-cal-list></div><button type="button" class="cal-import" data-cal-import>AtlasDaysにインポート</button></div>
+        <div class="cal-box"><h3>旅行</h3><div data-cal-list></div><button type="button" class="cal-import" data-cal-import>AtlasDaysに無料でインポート</button></div>
       </div>
       <dialog class="cal-dialog" data-cal-dialog aria-labelledby="uk-ilr-import-title">
-        <p class="cal-dialog-title" id="uk-ilr-import-title">AtlasDaysにインポート</p>
-        <p>アプリで集計を続けられます。旅行を追加すると更新され、180日を超える予定の旅行があると事前に知らせます。</p>
-        <ol>
-          <li>過去の旅行の間に英国で過ごした期間をファイルとしてダウンロードします。</li>
-          <li>iPhoneのAtlasDaysで「設定」→「インポート」→「CSVファイル」に進み、ファイルを選びます。追加前にすべての滞在を確認できます。</li>
-          <li>「英国の永住許可（ILR）」のプリセットを追加します。予定している旅行はファイルに含まれないため、予約後にアプリで追加してください。</li>
-        </ol>
+        <p class="cal-dialog-title" id="uk-ilr-import-title">AtlasDaysで続ける</p>
+        <p>ファイルをダウンロードし、AtlasDaysの「設定」→「インポート」→「CSVファイル」で開いてください。</p>
         <div class="cal-dialog-actions"><button type="button" data-cal-download>ファイルをダウンロード</button><a class="cal-dialog-app" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">AtlasDaysを入手</a><button type="button" data-cal-close>閉じる</button></div>
       </dialog>
     </div>
@@ -334,7 +330,7 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"ナビゲーションメニューを開く","menuClose":"ナビゲーションメニューを閉じる"};</script>
   <script src="../../assets/js/navigation.js?v=20260817b"></script>
-  <script defer src="../../assets/js/rules/uk-ilr.js?v=20260930f"></script>
+  <script defer src="../../assets/js/rules/uk-ilr.js?v=20261001a"></script>
   <script defer src="../../assets/js/day-calendar.js?v=20261001b"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */

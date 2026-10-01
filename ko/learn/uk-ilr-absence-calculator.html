@@ -206,13 +206,14 @@
 {
   "hintStart": "영국 출국일을 누른 다음 귀국일을 누르십시오.",
   "hintEnd": "이제 여행의 다른 끝 날짜를 누르십시오. 취소하려면 {date} 날짜를 다시 누르십시오.",
-  "hintMove": "여행의 이쪽 끝 날짜를 바꾸려면 새 날짜를 누르십시오. 유지하려면 {date} 날짜를 다시 누르십시오.",
   "inTrip": "영국 밖 체류",
   "pending": "새 여행 시작",
-  "held": "여행 끝 날짜 선택됨",
   "empty": "아직 여행이 없습니다.",
   "deleteTrip": "여행 삭제",
   "country": "국가",
+  "addCountry": "국가 추가",
+  "noMatch": "일치하는 국가가 없습니다",
+  "hintSelected": "여행의 양쪽 끝 중 하나를 드래그해 날짜를 변경하거나 아래에서 여행을 삭제하십시오.",
   "tripAway": {
     "other": "{n}일 해외 체류"
   },
@@ -240,17 +241,12 @@
         </div>
         <div class="cal-box">
           <h3>여행</h3>
-          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>AtlasDays로 가져오기</button>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>AtlasDays에 무료로 가져오기</button>
         </div>
       </div>
       <dialog class="cal-dialog" data-cal-dialog aria-labelledby="uk-ilr-import-title">
-        <p class="cal-dialog-title" id="uk-ilr-import-title">AtlasDays로 가져오기</p>
-        <p>앱에서 계속 일수를 확인하십시오. 여행에 따라 계산이 갱신되며 예정된 여행으로 180일을 넘기 전에 알려 줍니다.</p>
-        <ol>
-          <li>과거 여행 사이에 영국에 머문 기간을 파일로 다운로드합니다.</li>
-          <li>iPhone의 AtlasDays에서 설정 → 가져오기 → CSV 파일로 이동해 파일을 선택합니다. 체류 기록을 추가하기 전에 모두 확인할 수 있습니다.</li>
-          <li>영국 영주권(ILR) 프리셋을 추가합니다. 예정된 여행은 파일에 포함되지 않으므로 예약한 뒤 앱에서 추가하십시오.</li>
-        </ol>
+        <p class="cal-dialog-title" id="uk-ilr-import-title">AtlasDays에서 계속하기</p>
+        <p>파일을 다운로드한 뒤 AtlasDays의 설정 → 가져오기 → CSV 파일에서 여십시오.</p>
         <div class="cal-dialog-actions">
           <button type="button" data-cal-download>파일 다운로드</button>
           <a class="cal-dialog-app" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">AtlasDays 받기</a>
@@ -359,7 +355,7 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"탐색 메뉴 열기","menuClose":"탐색 메뉴 닫기"};</script>
   <script src="../../assets/js/navigation.js?v=20260817b"></script>
-  <script defer src="../../assets/js/rules/uk-ilr.js?v=20260930f"></script>
+  <script defer src="../../assets/js/rules/uk-ilr.js?v=20261001a"></script>
   <script defer src="../../assets/js/day-calendar.js?v=20261001b"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */

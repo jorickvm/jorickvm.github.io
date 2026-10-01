@@ -206,13 +206,14 @@
 {
   "hintStart": "Toca el día en que saliste del Reino Unido y después el día en que regresaste.",
   "hintEnd": "Ahora toca el otro extremo del viaje o vuelve a tocar {date} para cancelar.",
-  "hintMove": "Toca otra fecha para este extremo del viaje o vuelve a tocar {date} para conservarlo.",
   "inTrip": "fuera del Reino Unido",
   "pending": "inicio de un nuevo viaje",
-  "held": "extremo del viaje seleccionado",
   "empty": "Aún no hay viajes.",
   "deleteTrip": "Eliminar viaje",
   "country": "País",
+  "addCountry": "Añadir país",
+  "noMatch": "Ningún país coincide",
+  "hintSelected": "Arrastra cualquiera de los extremos del viaje para cambiar sus fechas o elimínalo más abajo.",
   "tripAway": {
     "one": "{n} día fuera",
     "many": "{n} días fuera",
@@ -244,17 +245,12 @@
         </div>
         <div class="cal-box">
           <h3>Viajes</h3>
-          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Importar a AtlasDays</button>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Importar gratis a AtlasDays</button>
         </div>
       </div>
       <dialog class="cal-dialog" data-cal-dialog aria-labelledby="uk-ilr-import-title">
-        <p class="cal-dialog-title" id="uk-ilr-import-title">Importar a AtlasDays</p>
-        <p>Mantén el recuento al día en la app. Se actualiza cuando viajas y te avisa antes de que un viaje te haga superar los 180 días.</p>
-        <ol>
-          <li>Descarga en un archivo el tiempo que pasaste en el Reino Unido entre viajes anteriores.</li>
-          <li>En AtlasDays, en tu iPhone, ve a Ajustes → Importar → Archivo CSV y elige el archivo. Verás todas las estancias antes de que se añada nada.</li>
-          <li>Añade la plantilla «Indefinite Leave to Remain (Reino Unido)». Los viajes previstos no figuran en el archivo; añádelos a la app cuando reserves.</li>
-        </ol>
+        <p class="cal-dialog-title" id="uk-ilr-import-title">Continuar en AtlasDays</p>
+        <p>Descarga el archivo y ábrelo en AtlasDays: Ajustes → Importar → Archivo CSV.</p>
         <div class="cal-dialog-actions">
           <button type="button" data-cal-download>Descargar archivo</button>
           <a class="cal-dialog-app" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">Consigue AtlasDays</a>
@@ -363,7 +359,7 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"Abrir el menú de navegación","menuClose":"Cerrar el menú de navegación"};</script>
   <script src="../../assets/js/navigation.js?v=20260817b"></script>
-  <script defer src="../../assets/js/rules/uk-ilr.js?v=20260930f"></script>
+  <script defer src="../../assets/js/rules/uk-ilr.js?v=20261001a"></script>
   <script defer src="../../assets/js/day-calendar.js?v=20261001b"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */

@@ -12,13 +12,14 @@
 {
   "hintStart": "先点选离开英国的日期，再点选返回日期。",
   "hintEnd": "再点选行程的另一端日期，或再次点选 {date} 取消。",
-  "hintMove": "为行程这一端点选新日期，或再次点选 {date} 保留原日期。",
   "inTrip": "在英国境外",
   "pending": "新行程起点",
-  "held": "已选取行程终点",
   "empty": "尚无行程。",
   "deleteTrip": "删除行程",
   "country": "国家或地区",
+  "addCountry": "添加国家或地区",
+  "noMatch": "找不到符合的国家或地区",
+  "hintSelected": "拖移行程任一端可更改日期，也可以在下方删除行程。",
   "tripAway": {
     "other": "离境 {n} 天"
   },
@@ -46,17 +47,12 @@
         </div>
         <div class="cal-box">
           <h3>行程</h3>
-          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>导入 AtlasDays</button>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>免费导入 AtlasDays</button>
         </div>
       </div>
       <dialog class="cal-dialog" data-cal-dialog aria-labelledby="uk-ilr-import-title">
-        <p class="cal-dialog-title" id="uk-ilr-import-title">导入 AtlasDays</p>
-        <p>在 App 中持续计算离境天数。随着行程增加，统计会更新，并在计划的行程可能使离境天数超过 180 天时提醒。</p>
-        <ol>
-          <li>将过往行程之间在英国停留的时间下载为文件。</li>
-          <li>在 iPhone 上打开 AtlasDays，进入“设置 → 导入 → CSV 文件”，选取该文件。添加任何停留前都可以逐一预览。</li>
-          <li>添加“英国永久居留（ILR）”预设追踪器。计划中的行程不在文件内，请在预订时于 App 中添加。</li>
-        </ol>
+        <p class="cal-dialog-title" id="uk-ilr-import-title">在 AtlasDays 中继续</p>
+        <p>下载文件，然后在 AtlasDays 中打开：“设置 → 导入 → CSV 文件”。</p>
         <div class="cal-dialog-actions">
           <button type="button" data-cal-download>下载文件</button>
           <a class="cal-dialog-app" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">获取 AtlasDays</a>

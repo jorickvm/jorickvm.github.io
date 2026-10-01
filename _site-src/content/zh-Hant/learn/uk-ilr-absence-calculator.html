@@ -12,13 +12,14 @@
 {
   "hintStart": "先點選離開英國的日期，再點選返回日期。",
   "hintEnd": "接著點選行程的另一端，或再次點選 {date} 取消。",
-  "hintMove": "點選新日期以移動這一端，或再次點選 {date} 保持原樣。",
   "inTrip": "在英國境外",
   "pending": "新行程的起點",
-  "held": "已選取行程終點",
   "empty": "還沒有行程。",
   "deleteTrip": "刪除行程",
   "country": "國家或地區",
+  "addCountry": "新增國家或地區",
+  "noMatch": "找不到符合的國家或地區",
+  "hintSelected": "拖曳行程任一端可更改日期，也可以在下方刪除行程。",
   "tripAway": {
     "other": "離境 {n} 天"
   },
@@ -46,17 +47,12 @@
         </div>
         <div class="cal-box">
           <h3>行程</h3>
-          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>匯入 AtlasDays</button>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>免費匯入 AtlasDays</button>
         </div>
       </div>
       <dialog class="cal-dialog" data-cal-dialog aria-labelledby="uk-ilr-import-title">
-        <p class="cal-dialog-title" id="uk-ilr-import-title">匯入 AtlasDays</p>
-        <p>在 App 中持續計算離境天數。每次旅行後都會更新，也會在預定行程可能使天數超過 180 天時提醒。</p>
-        <ol>
-          <li>下載過去各次行程之間在英國停留的日期檔案。</li>
-          <li>在 iPhone 上開啟 AtlasDays，前往「設定」→「匯入」→「CSV 檔案」，選擇該檔案。新增任何資料前，可先檢查每段停留。</li>
-          <li>加入「英國永久居留（ILR）」預設追蹤器。預定行程不會包含在檔案中，訂票後請在 App 內新增。</li>
-        </ol>
+        <p class="cal-dialog-title" id="uk-ilr-import-title">在 AtlasDays 中繼續</p>
+        <p>下載檔案，然後在 AtlasDays 中開啟：「設定」→「匯入」→「CSV 檔案」。</p>
         <div class="cal-dialog-actions">
           <button type="button" data-cal-download>下載檔案</button>
           <a class="cal-dialog-app" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">取得 AtlasDays</a>
