@@ -579,9 +579,14 @@
       if (e.key === "Escape" && (anchor != null || selected >= 0)) { anchor = null; hover = null; selected = -1; refresh(); }
       else if ((e.key === "Delete" || e.key === "Backspace") && selected >= 0) { e.preventDefault(); removeTrip(selected); }
     });
-    // Tapping outside the calendar lets go of the selected trip.
+    // Tapping anywhere but a trip card, a day or the import dialog lets go of
+    // the selected trip (days and cards handle their own taps).
     document.addEventListener("pointerdown", function (e) {
-      if (selected >= 0 && !root.contains(e.target)) { selected = -1; refresh(); }
+      if (selected < 0) return;
+      var t = e.target;
+      if (t.closest && t.closest(".cal-trip, .cal-week, .cal-dialog")) return;
+      selected = -1;
+      refresh();
     });
     win.addEventListener("scroll", updateMonth, { passive: true });
     root.querySelectorAll("[data-cal-import]").forEach(function (btn) {
