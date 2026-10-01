@@ -52,6 +52,8 @@
 
   function removeCloudflareBeacon(html) {
     return html
+      // Generated pages load the beacon through an inline loader between these markers.
+      .replace(/\s*<!-- Cloudflare Web Analytics -->[\s\S]*?<!-- End Cloudflare Web Analytics -->\s*/gi, '')
       .replace(/\s*<!-- Cloudflare Web Analytics -->\s*/gi, '')
       .replace(/\s*<script\b[^>]*src=["']https:\/\/static\.cloudflareinsights\.com\/beacon\.min\.js["'][^>]*><\/script>\s*/gi, '')
       .replace(/\s*<!-- End Cloudflare Web Analytics -->\s*/gi, '');

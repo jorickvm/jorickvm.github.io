@@ -12,7 +12,7 @@ This is the one thing to know before editing anything. Pages under `learn/` and 
 
 All ten root pages are generated, `index.html`, `404.html`, and `support.html` included; they moved into `pages.json` when Dutch shipped, because a page that cannot be translated cannot be localized.
 
-Genuinely hand-authored: the `app/*/index.html` alias stubs, and the three legacy meta-refresh redirect stubs in `learn/` (`day-limits.html`, `how-to-use-atlasdays.html`, `icloud-sync-travel-tracking.html`). Merged Learn pages in `_site-src/data/redirects.json` generate redirect stubs for English and every locale; `build_site.py --check` covers them.
+Genuinely hand-authored: the `app/*/index.html` alias stubs, the in-app link hop `app/open/index.html` (the app opens Learn articles through it so Cloudflare can tell in-app visits apart), and the three legacy meta-refresh redirect stubs in `learn/` (`day-limits.html`, `how-to-use-atlasdays.html`, `icloud-sync-travel-tracking.html`). Merged Learn pages in `_site-src/data/redirects.json` generate redirect stubs for English and every locale; `build_site.py --check` covers them.
 
 `changelog.html` is shared with the AtlasDays app repo, which owns the release notes. `scripts/sync_changelog.py` replaces only the contents of `<div class="release-stack">`, so a release updates the cards and leaves this repo's header, footer, social metadata, and theme bootstrap intact.
 
@@ -102,6 +102,10 @@ python3 scripts/audit_site.py --strict-semantics --check-baseline _site-src/data
 ```
 
 The audit is the main safety net: it checks canonicals, sitemap agreement, JSON-LD, internal links, social images, editorial coverage, and diffs every page against a committed baseline. If a change is intentional, re-arm the baseline with `--write-baseline` and check that the diff lists only the pages you meant to touch.
+
+## Analytics
+
+Every generated page loads Cloudflare Web Analytics (cookieless, aggregate) through a small inline loader in the three page templates, between the `Cloudflare Web Analytics` comment markers. Opening any page with `?notrack` switches analytics off in that browser (a `localStorage` flag, never sent anywhere); `?notrack=off` switches it back on. It exists so the site owner's own visits are not counted. The in-app browser keeps its own storage, so it needs the link opened there separately. `assets/js/app-page-alias.js` strips everything between the markers from pages it renders, so an alias never counts twice.
 
 ## Local preview
 
