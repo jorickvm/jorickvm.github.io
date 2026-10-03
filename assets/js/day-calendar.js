@@ -28,9 +28,9 @@
                              in the result box: { key, prefix, label, value,
                              options: [{ value, label, group }], moveCalendar };
                              its choice lands in ctx.settings[key]
-     quietHint               optional: no idle hint (the page's intro says it);
-                             the hint shows only while making or editing a trip,
-                             and each one only the first time
+     quietHint               optional: the hint floats in the calendar, the
+                             idle one only while there are no trips, the others
+                             only the first time
      fixedRange              optional: the calendar shows range() only, even
                              when a trip runs past it
      tripLabel(trip, ctx)    short text for a trip in the list
@@ -78,8 +78,7 @@
     target: '<circle cx="10" cy="10" r="7.25"/><circle cx="10" cy="10" r="4"/><circle cx="10" cy="10" r="0.9" fill="currentColor"/>',
     calendar: '<rect x="3" y="4.5" width="14" height="12.5" rx="2.5"/><path d="M3 8.5h14M7 2.75v3M13 2.75v3"/>',
     starts: '<rect x="3" y="4.5" width="11" height="11" rx="2.5"/><path d="M3 8.5h11M6.5 2.75v3M10.5 2.75v3"/><circle cx="14.25" cy="14.25" r="3.6" fill="var(--bg-card)"/><path d="M14.25 12.6v1.8l1.2.8"/>',
-    updown: '<path d="M6.5 7.5L10 4l3.5 3.5M6.5 12.5L10 16l3.5-3.5"/>',
-    down: '<path d="M6 8l4 4 4-4"/>'
+    updown: '<path d="M6.5 7.5L10 4l3.5 3.5M6.5 12.5L10 16l3.5-3.5"/>'
   };
   function icon(name, cls) {
     var span = document.createElement("span");
@@ -442,8 +441,10 @@
         b.setAttribute("aria-label", label(day) + (i >= 0 ? ", " + S.inTrip : "") + (day === anchor ? ", " + S.pending : ""));
       });
       drawBars();
-      var hintKey = selected >= 0 ? "hintSelected" : anchor != null ? "hintEnd" : rule.quietHint ? "" : "hintStart";
-      // A quiet rule shows each hint once: the first stay, the first selection.
+      var hintKey = selected >= 0 ? "hintSelected" : anchor != null ? "hintEnd"
+        : rule.quietHint && trips.length ? "" : "hintStart";
+      // A quiet rule shows the idle hint only while the calendar is empty, and
+      // the others once each: the first stay, the first selection.
       if (rule.quietHint && hintKey !== lastHint) { if (lastHint) hintsSeen[lastHint] = true; lastHint = hintKey; }
       if (rule.quietHint && hintsSeen[hintKey]) hintKey = "";
       hint.textContent = hintKey === "hintEnd" ? text("hintEnd", { date: label(anchor) }) : hintKey ? text(hintKey) : "";
@@ -580,11 +581,6 @@
         var fieldInput = field.querySelector("input");
         fieldInput.addEventListener("input", function () { fitInput(fieldInput); });
         pill.appendChild(field);
-        if (ctl.value) {
-          var chevron = icon("down", "cal-chevron");
-          chevron.addEventListener("click", function () { fieldInput.focus(); });
-          pill.appendChild(chevron);
-        }
         wrap.appendChild(pill);
         return wrap;
       }
@@ -616,8 +612,7 @@
       wrap.appendChild(pick);
       return wrap;
     }
-    // The country in the card header is as wide as its name, so the chevron
-    // sits right after it.
+    // The country in the card header is as wide as its name.
     function fitInput(input) {
       var probe = el("span", { "class": "cal-measure" }, input.value || input.placeholder || "");
       probe.style.font = getComputedStyle(input).font;

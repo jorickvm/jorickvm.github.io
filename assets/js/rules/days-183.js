@@ -119,8 +119,8 @@
     },
 
     strings: {
-      hintStart: "Tap the day you arrived in a country, then the day you left.",
-      hintEnd: "Now tap the other end of the stay, or {date} again to make it one day.",
+      hintStart: "Tap a day to add a stay.",
+      hintEnd: "Tap the other end of the stay.",
       hintSelected: "Drag either end of the stay to change its dates, or delete it below.",
       inTrip: "in a country",
       pending: "start of a new stay",
