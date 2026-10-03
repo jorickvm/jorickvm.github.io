@@ -573,7 +573,11 @@
         var fieldInput = field.querySelector("input");
         fieldInput.addEventListener("input", function () { fitInput(fieldInput); });
         pill.appendChild(field);
-        if (ctl.value) pill.appendChild(icon("down", "cal-chevron"));
+        if (ctl.value) {
+          var chevron = icon("down", "cal-chevron");
+          chevron.addEventListener("click", function () { fieldInput.focus(); });
+          pill.appendChild(chevron);
+        }
         wrap.appendChild(pill);
         return wrap;
       }
@@ -611,7 +615,8 @@
       var probe = el("span", { "class": "cal-measure" }, input.value || input.placeholder || "");
       probe.style.font = getComputedStyle(input).font;
       document.body.appendChild(probe);
-      input.style.width = Math.ceil(probe.getBoundingClientRect().width) + 14 + "px";
+      // padding and border (14px) plus a little slack, so rounding never truncates
+      input.style.width = Math.ceil(probe.getBoundingClientRect().width) + 18 + "px";
       probe.remove();
     }
     function renderResult() {
