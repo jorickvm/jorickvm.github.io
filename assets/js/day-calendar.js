@@ -28,6 +28,8 @@
                              in the result box: { key, prefix, label, value,
                              options: [{ value, label, group }], moveCalendar };
                              its choice lands in ctx.settings[key]
+     quietHint               optional: no idle hint (the page's intro says it);
+                             the hint shows only while making or editing a trip
      fixedRange              optional: the calendar shows range() only, even
                              when a trip runs past it
      tripLabel(trip, ctx)    short text for a trip in the list
@@ -421,7 +423,8 @@
       drawBars();
       hint.textContent = selected >= 0 ? text("hintSelected")
         : anchor != null ? text("hintEnd", { date: label(anchor) })
-        : text("hintStart");
+        : rule.quietHint ? "" : text("hintStart");
+      hint.hidden = !hint.textContent;
     }
 
     // ---- trips list ---------------------------------------------------------------
@@ -579,16 +582,26 @@
       result.textContent = "";
       settingsRow.textContent = "";
       settingsRow.hidden = !(r.controls && r.controls.length);
-      (r.controls || []).forEach(function (ctl) { settingsRow.appendChild(control(ctl)); });
+      (r.controls || []).forEach(function (ctl) {
+        var row = el("div", { "class": "cal-setting" });
+        row.appendChild(el("span", { "class": "cal-setting-label" }, ctl.label || ""));
+        row.appendChild(control(ctl));
+        if (ctl.caption) row.appendChild(el("span", { "class": "cal-setting-caption" }, ctl.caption));
+        settingsRow.appendChild(row);
+      });
       if (r.meter) {
         var m = r.meter;
         // The app's card header: flag and title on the left, status pill on the right.
         if (m.title != null) {
           var head = el("div", { "class": "cal-card-head" });
-          var flag = el("span", { "class": "cal-flag" + (m.flag ? "" : " is-empty") });
-          if (m.flag) flag.appendChild(flagImg(m.flag, 28));
-          head.appendChild(flag);
-          head.appendChild(el("span", { "class": "cal-card-title" + (m.flag ? "" : " is-placeholder") }, m.title));
+          if (m.countryKey) {
+            head.appendChild(control({ type: "country", key: m.countryKey, value: m.flag || "", label: m.title }));
+          } else {
+            var flag = el("span", { "class": "cal-flag" + (m.flag ? "" : " is-empty") });
+            if (m.flag) flag.appendChild(flagImg(m.flag, 28));
+            head.appendChild(flag);
+            head.appendChild(el("span", { "class": "cal-card-title" + (m.flag ? "" : " is-placeholder") }, m.title));
+          }
           if (r.statusText) head.appendChild(el("span", { "class": "cal-pill tone-" + m.tone }, r.statusText));
           result.appendChild(head);
         }

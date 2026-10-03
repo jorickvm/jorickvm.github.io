@@ -35,8 +35,28 @@ html[data-theme="light"] .daycal { --cal-disc: rgba(12, 22, 40, 0.07); --tone-wa
 .cal-side > .cal-box:last-child { grid-area: trips; }
 
 .cal-hint { grid-area: hint; margin: 0; color: var(--muted); font-size: 0.93rem; }
-/* the rule's choices, above the result card */
-.cal-settings { grid-area: settings; display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: center; }
+/* the rule's choices, above the tracker card: a settings card of rows,
+   label left and choice right, as in the app's tracker editor */
+.cal-settings {
+  grid-area: settings;
+  padding: 2px 16px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--bg-card);
+}
+.cal-setting {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4px 12px;
+  padding: 10px 0;
+  border-top: 1px solid var(--line);
+}
+.cal-setting:first-child { border-top: 0; }
+.cal-setting-label { color: var(--text); font-size: 0.95rem; font-weight: 600; }
+.cal-setting .cal-control { margin-left: auto; }
+.cal-setting-caption { flex-basis: 100%; margin-top: -2px; color: var(--muted-2); font-size: 0.82rem; }
 
 .cal-window {
   grid-area: cal;
@@ -214,7 +234,14 @@ html[data-theme="light"] .daycal { --cal-disc: rgba(12, 22, 40, 0.07); --tone-wa
 .cal-card-head .cal-flag { width: 28px; height: 21px; }
 .cal-card-title { flex: 1 1 auto; min-width: 0; color: var(--text); font-size: 1.02rem; font-weight: 650; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .cal-card-title.is-placeholder { color: var(--muted); font-weight: 500; }
-.cal-card-head .cal-pill { flex: 0 0 auto; margin: 0; }
+.cal-card-head .cal-pill { flex: 0 0 auto; margin: 0 0 0 auto; }
+/* the country picker as the card's title */
+.cal-card-head .cal-control.is-country { flex: 1 1 auto; min-width: 0; }
+.cal-card-head .cal-control.is-country .cal-control-pill { padding: 0; border: 0; background: none; gap: 10px; }
+.cal-card-head .cal-control.is-country .cal-flag { width: 28px; height: 21px; border-radius: 4px; }
+.cal-card-head .cal-control.is-country .cal-country-input { width: 100%; max-width: 15em; padding: 3px 6px; margin-left: -6px; border: 1px solid transparent; border-radius: 8px; font-size: 1.02rem; }
+.cal-card-head .cal-control.is-country .cal-country-input:hover { border-color: var(--line); }
+.cal-card-head .cal-control.is-country .cal-country-input:focus { border-color: var(--blue); }
 .cal-meter { display: grid; gap: 7px; margin: 2px 0 10px; }
 .cal-meter-row { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
 .cal-meter-period { color: var(--muted); font-size: 0.9rem; }

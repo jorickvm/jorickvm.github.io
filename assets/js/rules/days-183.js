@@ -53,6 +53,7 @@
     travelDaysCount: true,
     singleDayTrips: true,
     fixedRange: true,
+    quietHint: true,
 
     range: function (c) { return bounds(c); },
     newTripCountry: function (c) { return c.settings.country || ""; },
@@ -76,21 +77,22 @@
       var y = c.D.parts(c.today).y, years = [];
       for (var k = y + 1; k >= y - 5; k--) years.push({ value: String(k), label: String(k) });
       var type = setting(c, "periodType"), target = setting(c, "goal") === "reach";
+      // The settings card, as the app's tracker editor: Goal (with its
+      // residence captions), Window, then Year or Starts.
       var controls = [
-        { type: "country", key: "country", label: c.text("country"), value: country },
-        { key: "goal", label: c.text("goal"), value: setting(c, "goal"), options: [
+        { key: "goal", label: c.text("goal"), value: setting(c, "goal"), caption: target ? c.text("captionReach") : c.text("captionStay"), options: [
           { value: "stay", label: c.text("goalStay") },
           { value: "reach", label: c.text("goalReach") }
         ] },
-        { key: "periodType", label: c.text("period"), value: type, moveCalendar: true, options: [
+        { key: "periodType", label: c.text("window"), value: type, moveCalendar: true, options: [
           { value: "calendar", label: c.text("periodCalendar") },
           { value: "tax", label: c.text("periodTax") },
           { value: "rolling", label: c.text("periodRolling") }
         ] }
       ];
       if (type === "calendar") controls.push({ key: "year", label: c.text("year"), value: setting(c, "year"), options: years, moveCalendar: true });
-      if (type === "tax") controls.push({ type: "date", key: "taxStart", label: c.text("taxStart"), value: setting(c, "taxStart"),
-        display: c.text("taxFrom", { date: c.dateRange(b.from, b.from) }), moveCalendar: true });
+      if (type === "tax") controls.push({ type: "date", key: "taxStart", label: c.text("starts"), value: setting(c, "taxStart"),
+        display: c.dateRange(b.from, b.from), moveCalendar: true });
 
       var days = country && byCountry[country] ? byCountry[country].size : 0;
       var loose = byCountry[""] ? byCountry[""].size : 0, lines = [];
@@ -103,7 +105,7 @@
         : (left > 0 ? c.text("remaining", { n: left }) : left === 0 ? c.text("atLimit") : c.text("overBy", { n: -left }));
       return {
         controls: controls,
-        meter: { title: country ? c.placeName(country) : c.text("chooseCountry"), flag: country, label: c.dateRange(b.from, b.to), days: days, limit: LIMIT, tone: c.tone(days, LIMIT, target) },
+        meter: { countryKey: "country", title: c.text("country"), flag: country, label: c.dateRange(b.from, b.to), days: days, limit: LIMIT, tone: c.tone(days, LIMIT, target) },
         statusText: status,
         lines: lines
       };
@@ -128,16 +130,16 @@
       addCountry: "Add country",
       noMatch: "No matching country",
       goal: "Goal",
-      goalStay: "Stay under 183 days",
-      goalReach: "Reach 183 days",
-      chooseCountry: "Choose a country",
-      taxFrom: "from {date}",
-      period: "Period",
+      goalStay: "Stay below",
+      goalReach: "Reach target",
+      captionStay: "Avoid tax residency.",
+      captionReach: "Become a tax resident.",
+      window: "Window",
+      starts: "Starts",
       periodCalendar: "Calendar year",
       periodTax: "Tax year",
       periodRolling: "Last 12 months",
       year: "Year",
-      taxStart: "First day of the tax year",
       tripDays: { one: "{n} day", other: "{n} days" },
       remaining: { one: "{n} day remaining", other: "{n} days remaining" },
       atLimit: "At limit",
