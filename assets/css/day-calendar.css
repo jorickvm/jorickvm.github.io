@@ -16,6 +16,11 @@
   --cal-sel: #3F7FC0;
   --cal-hover: rgba(91, 158, 217, 0.25);
   --cal-disc: rgba(255, 255, 255, 0.07);
+  /* the app's tracker tones (iOS system colours) */
+  --tone-normal: #5B9ED9;
+  --tone-warning: #FF9F0A;
+  --tone-critical: #FF453A;
+  --cal-track: rgba(120, 120, 128, 0.32);
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   grid-template-areas: "hint hint" "result result" "cal trips";
@@ -23,7 +28,7 @@
   align-items: start;
   margin: 18px 0 14px;
 }
-html[data-theme="light"] .daycal { --cal-disc: rgba(12, 22, 40, 0.07); }
+html[data-theme="light"] .daycal { --cal-disc: rgba(12, 22, 40, 0.07); --tone-warning: #FF9500; --tone-critical: #FF3B30; --cal-track: rgba(120, 120, 128, 0.2); }
 .cal-side { display: contents; }
 .cal-side > .cal-box:first-child { grid-area: result; }
 .cal-side > .cal-box:last-child { grid-area: trips; }
@@ -168,6 +173,62 @@ html[data-theme="light"] .daycal { --cal-disc: rgba(12, 22, 40, 0.07); }
   -webkit-appearance: none;
   cursor: pointer;
 }
+/* the country being checked: its flag and a type-ahead field in one pill */
+.cal-control.is-country .cal-control-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 3px 12px 3px 6px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: var(--bg);
+}
+.cal-control.is-country .cal-flag { width: 24px; height: 18px; border-radius: 3px; }
+.cal-control.is-country .cal-country-input { width: 11em; margin: 0; padding: 3px 0; border: 0; background: transparent; font-weight: 650; }
+.cal-control.is-country .cal-country-input:focus { background: transparent; }
+.cal-control.is-country .cal-country-list { left: -30px; right: auto; width: 16em; }
+.cal-control.is-date input {
+  padding: 5px 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 650;
+  color-scheme: light dark;
+}
+
+/* the result as an app tracker: period and count, a bar, a status pill */
+.cal-meter { display: grid; gap: 7px; margin: 2px 0 10px; }
+.cal-meter-row { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+.cal-meter-period { color: var(--muted); font-size: 0.9rem; }
+.cal-meter-count { color: var(--muted); font-size: 1.25rem; font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.cal-meter-count b { color: var(--text); }
+.cal-meter-track { height: 10px; border-radius: 999px; background: var(--cal-track); overflow: hidden; }
+.cal-meter-fill { display: block; height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--tone), color-mix(in srgb, var(--tone) 75%, transparent)); transition: width 0.2s ease; }
+.cal-meter, .cal-pill { --tone: var(--tone-normal); }
+.tone-warning { --tone: var(--tone-warning); }
+.tone-critical { --tone: var(--tone-critical); }
+.cal-meter.tone-warning .cal-meter-count b, .cal-meter.tone-critical .cal-meter-count b { color: var(--tone); }
+.cal-pill {
+  display: inline-block;
+  margin: 0 0 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--tone) 15%, transparent);
+  color: var(--tone);
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* days outside the chosen period: shown for the week's sake, not tappable */
+.cal-day.is-outside { cursor: default; }
+.cal-day.is-outside .cal-num { opacity: 0.28; }
+.cal-day.is-outside::after { display: none; }
+.cal-trip.is-outside { opacity: 0.45; }
+
 .cal-result-head { display: grid; gap: 8px; justify-items: start; margin: 0 0 8px; }
 .cal-headline { margin: 0; color: var(--text); font-size: 1rem; font-weight: 650; line-height: 1.35; }
 .cal-status { padding: 3px 10px; border-radius: 999px; font-size: 0.78rem; font-weight: 650; white-space: nowrap; color: var(--text); }

@@ -153,14 +153,28 @@
     var recent = [];
     var settings = {}; // choices made in the rule's result menus (rule.evaluate -> controls)
     var finePointer = !!(window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches);
-    var rows = [], cells = {}, firstMonday = 0, activeMonth = null;
+    var rows = [], cells = {}, firstMonday = 0, activeMonth = null, clipFrom = null, clipTo = null;
     var englishNames = null;
     try { englishNames = new Intl.DisplayNames(["en"], { type: "region" }); } catch (e) {}
 
-    function ctx() { return { today: today, D: D, label: label, plural: plural, text: text, trips: trips, placeName: placeName, settings: settings, dateRange: dateRange }; }
+    function ctx() { return { today: today, D: D, label: label, plural: plural, text: text, trips: trips, placeName: placeName, settings: settings, dateRange: dateRange, tone: tone }; }
     // A new trip starts with the rule's fixed country, or (rule.carryCountry)
     // the country picked last, so a run of stays in one country is quick.
-    function newCountry() { return defaultCountry || (rule.carryCountry && recent[0]) || ""; }
+    function newCountry() {
+      if (defaultCountry) return defaultCountry;
+      if (rule.newTripCountry) return rule.newTripCountry(ctx()) || "";
+      return (rule.carryCountry && recent[0]) || "";
+    }
+    function remember(code) { recent = [code].concat(recent.filter(function (c) { return c !== code; })).slice(0, 3); }
+    // The app's tracker colours: blue, orange when 7 or fewer days (or 15% of
+    // the limit) are left, red at or over the limit (TrackerMeterTone).
+    function tone(days, limit) {
+      var left = limit - days;
+      return left <= 0 ? "critical" : (left <= 7 || left / limit <= 0.15) ? "warning" : "normal";
+    }
+    // With rule.fixedRange the calendar shows range() only; days outside it are
+    // shown for the week's sake but cannot be tapped, and bars stop at its edge.
+    function span() { return rule.fixedRange ? rule.range(ctx()) : null; }
 
     // ---- trips -----------------------------------------------------------------
     function tripAt(day) {
@@ -240,10 +254,11 @@
 
     // ---- the calendar: continuous week rows ------------------------------------
     function build() {
-      var r = rule.range(ctx()), from = r.from, to = r.to;
+      var r = rule.range(ctx()), from = r.from, to = r.to, clip = span();
       if (!rule.fixedRange) trips.forEach(function (t) { from = Math.min(from, t.start); to = Math.max(to, t.end); });
       var first = D.monday(from), last = D.monday(to) + 6;
-      if (rows.length && first === firstMonday && rows.length === (last - first + 1) / 7) return;
+      if (rows.length && first === firstMonday && rows.length === (last - first + 1) / 7 && (!clip || (clip.from === clipFrom && clip.to === clipTo))) return;
+      clipFrom = clip ? clip.from : null; clipTo = clip ? clip.to : null;
       var anchor = rows.length ? topDay() : null;
       firstMonday = first;
       rows = []; cells = {};
@@ -253,7 +268,9 @@
         row.dataset.monday = mon;
         for (var c = 0; c < 7; c++) {
           var day = mon + c, p = D.parts(day);
-          var b = el("button", { type: "button", "class": "cal-day" + (p.d === 1 ? " is-month-start" : "") + (day === today ? " is-today" : ""), "data-day": day });
+          var out = clip && (day < clip.from || day > clip.to);
+          var b = el("button", { type: "button", "class": "cal-day" + (p.d === 1 ? " is-month-start" : "") + (day === today ? " is-today" : "") + (out ? " is-outside" : ""), "data-day": day });
+          if (out) b.disabled = true;
           b.appendChild(el("span", { "class": "cal-num" }, p.d === 1 ? shortMonth.format(new Date(day * DAY)).toLocaleUpperCase(locale) : String(p.d)));
           cells[day] = b;
           row.appendChild(b);
@@ -277,15 +294,18 @@
     // At its start a trip is handed over when another trip ends that day; at
     // its end, when another trip starts that day.
     function handoff(t, atStart) { return trips.some(function (o) { return o !== t && (atStart ? o.end === t.start : o.start === t.end); }); }
-    function segment(bars, mon, t, cls, real) {
+    function segment(bars, mon, t, cls, real, clip) {
       var sun = mon + 6;
-      if (t.end < mon || t.start > sun) return;
-      var a = Math.max(t.start, mon), z = Math.min(t.end, sun);
-      var starts = a === t.start, ends = z === t.end;
-      var cutStart = real && starts && t.start !== t.end && handoff(t, true);
-      var cutEnd = real && ends && t.start !== t.end && handoff(t, false);
-      var left = !starts ? "0px" : "calc(" + ((a - mon + 0.5) / 7 * 100) + "% " + (cutStart ? "+ " + GAP : "- " + DISC) + "px)";
-      var right = !ends ? "100%" : "calc(" + ((z - mon + 0.5) / 7 * 100) + "% " + (cutEnd ? "- " + GAP : "+ " + DISC) + "px)";
+      var s0 = clip ? Math.max(t.start, clip.from) : t.start, e0 = clip ? Math.min(t.end, clip.to) : t.end;
+      if (s0 > e0 || e0 < mon || s0 > sun) return;
+      var a = Math.max(s0, mon), z = Math.min(e0, sun);
+      var starts = a === s0, ends = z === e0;
+      var cutS = starts && s0 > t.start, cutE = ends && e0 < t.end;   // stopped by the period's edge: square
+      var cutStart = real && starts && !cutS && t.start !== t.end && handoff(t, true);
+      var cutEnd = real && ends && !cutE && t.start !== t.end && handoff(t, false);
+      var left = !starts ? "0px" : cutS ? ((a - mon) / 7 * 100) + "%" : "calc(" + ((a - mon + 0.5) / 7 * 100) + "% " + (cutStart ? "+ " + GAP : "- " + DISC) + "px)";
+      var right = !ends ? "100%" : cutE ? ((z - mon + 1) / 7 * 100) + "%" : "calc(" + ((z - mon + 0.5) / 7 * 100) + "% " + (cutEnd ? "- " + GAP : "+ " + DISC) + "px)";
+      starts = starts && !cutS; ends = ends && !cutE;
       var bar = el("span", { "class": "cal-bar" + cls + (starts ? " starts" : "") + (ends ? " ends" : "") });
       bar.style.left = left;
       bar.style.width = "calc(" + right + " - " + left + ")";
@@ -297,8 +317,8 @@
         bars.appendChild(flag);
       }
     }
-    function handleAt(bars, mon, day, end) {
-      if (day < mon || day > mon + 6) return;
+    function handleAt(bars, mon, day, end, clip) {
+      if (day < mon || day > mon + 6 || (clip && (day < clip.from || day > clip.to))) return;
       var h = el("span", { "class": "cal-handle", "data-end": end });
       h.style.left = ((day - mon + 0.5) / 7 * 100) + "%";
       h.addEventListener("pointerdown", startDrag);
@@ -307,14 +327,15 @@
     function drawBars() {
       var preview = anchor != null && hover != null && hover !== anchor
         ? { start: Math.min(anchor, hover), end: Math.max(anchor, hover) } : null;
+      var clip = span();
       rows.forEach(function (row) {
         var mon = +row.dataset.monday, bars = row.lastChild;
         bars.textContent = "";
-        trips.forEach(function (t, i) { segment(bars, mon, t, i === selected ? " is-selected" : "", true); });
-        if (preview) segment(bars, mon, preview, " is-preview", false);
+        trips.forEach(function (t, i) { segment(bars, mon, t, i === selected ? " is-selected" : "", true, clip); });
+        if (preview) segment(bars, mon, preview, " is-preview", false, clip);
         if (selected >= 0 && trips[selected]) {
-          handleAt(bars, mon, trips[selected].start, "start");
-          handleAt(bars, mon, trips[selected].end, "end");
+          handleAt(bars, mon, trips[selected].start, "start", clip);
+          handleAt(bars, mon, trips[selected].end, "end", clip);
         }
       });
     }
@@ -343,6 +364,8 @@
     function applyDrag() {
       var day = dayUnder(lastPoint.x, lastPoint.y);
       if (day == null) return;
+      var clip = span();
+      if (clip) day = Math.min(Math.max(day, clip.from), clip.to);
       var t = drag.trip, a = Math.min(drag.fixed, day), z = Math.max(drag.fixed, day);
       if (a === t.start && z === t.end) return;
       if (a === z && !rule.singleDayTrips) return;
@@ -424,17 +447,13 @@
     function flagImg(code, size) {
       return el("img", { src: FLAGS + code.toLowerCase() + ".png", alt: "", width: String(size), height: String(Math.round(size * 0.75)), loading: "lazy" });
     }
-    function countryField(idx, current) {
+    function countryField(current, onChoose) {
       var wrap = el("div", { "class": "cal-country-field" });
       var input = el("input", { type: "text", "class": "cal-country-input", placeholder: text("addCountry"), "aria-label": text("country"), autocomplete: "off", spellcheck: "false", role: "combobox", "aria-expanded": "false", "aria-autocomplete": "list" });
       if (current) input.value = placeName(current);
       var box = el("ul", { "class": "cal-country-list", role: "listbox", hidden: "" });
       var options = [], active = 0;
-      function choose(code) {
-        trips[idx].country = code;
-        recent = [code].concat(recent.filter(function (c) { return c !== code; })).slice(0, 3);
-        commit();
-      }
+      function choose(code) { remember(code); onChoose(code); }
       function show() {
         options = matches(current && input.value === placeName(current) ? "" : input.value);
         active = 0;
@@ -470,15 +489,17 @@
       var rowsOut = trips.length ? rule.exportRows(trips, ctx()).length : 0;
       root.querySelectorAll("[data-cal-import]").forEach(function (btn) { btn.hidden = !rowsOut; });
       if (!trips.length) { list.appendChild(el("p", { "class": "cal-empty" }, S.empty)); return; }
+      var clip = span();
       trips.forEach(function (t, idx) {
         var isSel = idx === selected;
-        var card = el("div", { "class": "cal-trip" + (isSel ? " is-selected" : "") });
+        var away = clip && (t.end < clip.from || t.start > clip.to);
+        var card = el("div", { "class": "cal-trip" + (isSel ? " is-selected" : "") + (away ? " is-outside" : "") });
         var flag = el("span", { "class": "cal-flag" + (t.country ? "" : " is-empty") });
         if (t.country) flag.appendChild(flagImg(t.country, 28));
         card.appendChild(flag);
         var name = el("div", { "class": "cal-trip-country" });
         if (allowed.length < 2) name.appendChild(el("span", null, placeName(t.country)));
-        else name.appendChild(countryField(idx, t.country));
+        else name.appendChild(countryField(t.country, function (code) { trips[idx].country = code; commit(); }));
         card.appendChild(name);
         var line = el("div", { "class": "cal-trip-line" });
         line.appendChild(el("span", { "class": "cal-trip-dates" }, dateRange(t.start, t.end)));
@@ -500,36 +521,70 @@
       });
     }
 
+    // A rule's result can carry menus (controls), an app-style meter and a
+    // status pill; or the older headline form (ILR).
+    function changed(ctl) {
+      render();
+      if (rule.fixedRange && ctl.moveCalendar) { var rr = rule.range(ctx()); reveal(today >= rr.from && today <= rr.to ? today - 21 : rr.from); updateMonth(); }
+    }
+    function control(ctl) {
+      var wrap = el(ctl.type === "country" ? "div" : "label", { "class": "cal-control" + (ctl.type ? " is-" + ctl.type : "") });
+      if (ctl.prefix) wrap.appendChild(el("span", { "class": "cal-control-prefix" }, ctl.prefix));
+      if (ctl.type === "country") {
+        var pill = el("span", { "class": "cal-control-pill" });
+        var flag = el("span", { "class": "cal-flag" + (ctl.value ? "" : " is-empty") });
+        if (ctl.value) flag.appendChild(flagImg(ctl.value, 28));
+        pill.appendChild(flag);
+        pill.appendChild(countryField(ctl.value, function (code) {
+          settings[ctl.key] = code;
+          // stays marked before a country was chosen take it now
+          trips.forEach(function (t) { if (!t.country) t.country = code; });
+          commit();
+        }));
+        wrap.appendChild(pill);
+        return wrap;
+      }
+      if (ctl.type === "date") {
+        var input = el("input", { type: "date", value: ctl.value, "aria-label": ctl.label || ctl.prefix || "" });
+        input.addEventListener("change", function () { if (input.value) { settings[ctl.key] = input.value; changed(ctl); } });
+        wrap.appendChild(input);
+        return wrap;
+      }
+      var pick = el("select", { "aria-label": ctl.label || ctl.prefix || "" });
+      ctl.options.forEach(function (o) {
+        var opt = el("option", { value: o.value }, o.label);
+        if (o.value === ctl.value) opt.selected = true;
+        pick.appendChild(opt);
+      });
+      pick.addEventListener("change", function () { settings[ctl.key] = pick.value; changed(ctl); });
+      wrap.appendChild(pick);
+      return wrap;
+    }
     function renderResult() {
       var r = rule.evaluate(trips, ctx());
       result.textContent = "";
       if (r.controls && r.controls.length) {
         var bar = el("div", { "class": "cal-controls" });
-        r.controls.forEach(function (ctl) {
-          var wrap = el("label", { "class": "cal-control" });
-          if (ctl.prefix) wrap.appendChild(el("span", { "class": "cal-control-prefix" }, ctl.prefix));
-          var pick = el("select", { "aria-label": ctl.label || ctl.prefix || "" });
-          var groups = {};
-          ctl.options.forEach(function (o) {
-            var parent = pick;
-            if (o.group) {
-              if (!groups[o.group]) { groups[o.group] = el("optgroup", { label: o.group }); pick.appendChild(groups[o.group]); }
-              parent = groups[o.group];
-            }
-            var opt = el("option", { value: o.value }, o.label);
-            if (o.value === ctl.value) opt.selected = true;
-            parent.appendChild(opt);
-          });
-          pick.addEventListener("change", function () {
-            settings[ctl.key] = pick.value;
-            var moved = rule.fixedRange && ctl.moveCalendar;
-            render();
-            if (moved) { var rr = rule.range(ctx()); reveal(today >= rr.from && today <= rr.to ? today - 21 : rr.from); updateMonth(); }
-          });
-          wrap.appendChild(pick);
-          bar.appendChild(wrap);
-        });
+        r.controls.forEach(function (ctl) { bar.appendChild(control(ctl)); });
         result.appendChild(bar);
+      }
+      if (r.meter) {
+        var m = r.meter, meter = el("div", { "class": "cal-meter tone-" + m.tone });
+        var row = el("div", { "class": "cal-meter-row" });
+        row.appendChild(el("span", { "class": "cal-meter-period" }, m.label));
+        var count = el("span", { "class": "cal-meter-count" });
+        count.appendChild(el("b", null, String(m.days)));
+        count.appendChild(document.createTextNode(" / " + m.limit));
+        row.appendChild(count);
+        meter.appendChild(row);
+        var track = el("div", { "class": "cal-meter-track" }), fill = el("span", { "class": "cal-meter-fill" });
+        fill.style.width = Math.min(100, Math.max(0, m.days / m.limit * 100)) + "%";
+        track.appendChild(fill);
+        meter.appendChild(track);
+        result.appendChild(meter);
+        if (r.statusText) result.appendChild(el("span", { "class": "cal-pill tone-" + m.tone }, r.statusText));
+        (r.lines || []).forEach(function (line) { result.appendChild(el("p", { "class": "cal-line" }, line)); });
+        return;
       }
       if (r.headlineText != null) {
         var head = el("div", { "class": "cal-result-head" });
@@ -610,7 +665,7 @@
     });
     weeksBox.addEventListener("mouseover", function (e) {
       if (anchor == null || !finePointer) return;
-      var b = e.target.closest(".cal-day"), d = b ? +b.getAttribute("data-day") : null;
+      var b = e.target.closest(".cal-day"), d = b && !b.disabled ? +b.getAttribute("data-day") : null;
       if (d != null && d !== hover) { hover = d; drawBars(); }
     });
     weeksBox.addEventListener("keydown", function (e) {
