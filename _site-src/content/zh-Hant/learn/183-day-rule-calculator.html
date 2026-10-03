@@ -66,22 +66,31 @@
           <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>在 AtlasDays 中繼續追蹤</button>
         </div>
       </div>
-      <dialog class="cal-dialog" data-cal-dialog aria-labelledby="days-183-import-title">
-        <p class="cal-dialog-title" id="days-183-import-title">在 AtlasDays 中繼續追蹤</p>
-        <div data-cal-on="phone">
-          <p>停留紀錄會在 AtlasDays 中開啟，可以先確認再決定。輕點「匯入」之前，不會儲存任何資料。</p>
-          <div class="cal-dialog-actions"><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">在 AtlasDays 中開啟</a></div>
-          <p class="cal-dialog-note" data-cal-store>還沒有 AtlasDays？先<a href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">到 App Store 免費下載</a>，再輕點一次「在 AtlasDays 中開啟」。</p>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="days-183-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="days-183-import-title">在 AtlasDays 中繼續追蹤</p>
+            <p class="cal-dialog-sub">免費 iPhone App，旅行途中持續計算停留天數。</p>
+          </div>
         </div>
-        <div data-cal-on="computer">
-          <p>用 iPhone 相機掃描 QR 碼，即可在 AtlasDays 中開啟停留紀錄。</p>
+        <div class="cal-dialog-scan" data-cal-on="computer">
           <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>用 iPhone 掃描</strong><span>還沒有 AtlasDays 的話，會先前往 App Store 下載。</span></li>
+            <li><strong>輕點「在 AtlasDays 中開啟」</strong><span>確認停留紀錄後，輕點「匯入」。</span></li>
+          </ol>
         </div>
-        <div data-cal-on="file">
-          <p>停留紀錄太多，連結裝不下。請下載檔案，再用 AtlasDays 開啟。</p>
-        </div>
-        <div class="cal-dialog-actions">
-          <button type="button" data-cal-download>下載檔案</button>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>取得 AtlasDays</strong><span>在 App Store 免費下載。已經有了？直接跳到第 2 步。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+          <li><strong>在 App 中開啟停留紀錄</strong><span>確認無誤後輕點「匯入」。在此之前，不會儲存任何資料。</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">在 AtlasDays 中開啟</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>取得 AtlasDays</strong><span>iPhone 版，可在 App Store 免費下載。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+          <li><strong>用檔案匯入停留紀錄</strong><span>停留紀錄太多，連結裝不下。請下載檔案，然後在 iPhone 上用 AtlasDays 開啟。</span><button type="button" class="cal-dialog-primary" data-cal-download>下載檔案</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>改用檔案匯入</button><span data-cal-downloaded hidden>請在 iPhone 上用 AtlasDays 開啟檔案。</span></p>
           <button type="button" data-cal-close>關閉</button>
         </div>
       </dialog>

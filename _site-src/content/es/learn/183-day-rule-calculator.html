@@ -76,22 +76,31 @@
           <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Llevar el control en AtlasDays</button>
         </div>
       </div>
-      <dialog class="cal-dialog" data-cal-dialog aria-labelledby="days-183-import-title">
-        <p class="cal-dialog-title" id="days-183-import-title">Llevar el control en AtlasDays</p>
-        <div data-cal-on="phone">
-          <p>Tus estancias se abren en AtlasDays para que las revises. No se guarda nada hasta que toques «Importar».</p>
-          <div class="cal-dialog-actions"><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Abrir en AtlasDays</a></div>
-          <p class="cal-dialog-note" data-cal-store>¿Aún no tienes AtlasDays? <a href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">Descárgalo gratis en el App Store</a> y vuelve a tocar «Abrir en AtlasDays».</p>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="days-183-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="days-183-import-title">Llevar el control en AtlasDays</p>
+            <p class="cal-dialog-sub">Sigue contando tus días mientras viajas. App gratuita para iPhone.</p>
+          </div>
         </div>
-        <div data-cal-on="computer">
-          <p>Escanea el código con la cámara de tu iPhone para abrir tus estancias en AtlasDays.</p>
+        <div class="cal-dialog-scan" data-cal-on="computer">
           <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>Escanea el código con tu iPhone</strong><span>¿Aún no tienes AtlasDays? Primero lo descargas del App Store.</span></li>
+            <li><strong>Toca «Abrir en AtlasDays»</strong><span>Revisa tus estancias y luego toca «Importar».</span></li>
+          </ol>
         </div>
-        <div data-cal-on="file">
-          <p>Son más estancias de las que caben en un enlace. Descarga el archivo y ábrelo en AtlasDays.</p>
-        </div>
-        <div class="cal-dialog-actions">
-          <button type="button" data-cal-download>Descargar archivo</button>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>Consigue AtlasDays</strong><span>Gratis en el App Store. ¿Ya lo tienes? Salta al paso 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+          <li><strong>Abre tus estancias en la app</strong><span>Revísalas y luego toca «Importar». Hasta entonces no se guarda nada.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Abrir en AtlasDays</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>Consigue AtlasDays</strong><span>Gratis en el App Store para iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+          <li><strong>Importa tus estancias con un archivo</strong><span>Son más estancias de las que caben en un enlace. Descarga el archivo y ábrelo en tu iPhone con AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Descargar archivo</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>O importa con un archivo</button><span data-cal-downloaded hidden>Ábrelo en tu iPhone con AtlasDays.</span></p>
           <button type="button" data-cal-close>Cerrar</button>
         </div>
       </dialog>

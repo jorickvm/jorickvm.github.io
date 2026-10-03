@@ -71,22 +71,31 @@
           <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Houd dit bij in AtlasDays</button>
         </div>
       </div>
-      <dialog class="cal-dialog" data-cal-dialog aria-labelledby="days-183-import-title">
-        <p class="cal-dialog-title" id="days-183-import-title">Houd dit bij in AtlasDays</p>
-        <div data-cal-on="phone">
-          <p>AtlasDays opent je verblijven, zodat je ze kunt controleren. Er wordt pas iets bewaard als je op Importeren tikt.</p>
-          <div class="cal-dialog-actions"><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Open AtlasDays</a></div>
-          <p class="cal-dialog-note" data-cal-store>Nog geen AtlasDays? <a href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">Download de app gratis in de App Store</a> en tik daarna opnieuw op Open AtlasDays.</p>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="days-183-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="days-183-import-title">Houd dit bij in AtlasDays</p>
+            <p class="cal-dialog-sub">Tel je dagen door terwijl je reist. Gratis iPhone-app.</p>
+          </div>
         </div>
-        <div data-cal-on="computer">
-          <p>Scan de code met de camera van je iPhone om je verblijven in AtlasDays te openen.</p>
+        <div class="cal-dialog-scan" data-cal-on="computer">
           <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>Scan met je iPhone</strong><span>Nog geen AtlasDays? Dan download je de app eerst in de App Store.</span></li>
+            <li><strong>Tik op Open AtlasDays</strong><span>Controleer je verblijven en tik dan op Importeren.</span></li>
+          </ol>
         </div>
-        <div data-cal-on="file">
-          <p>Dat zijn meer verblijven dan er in een link passen. Download het bestand en open het in AtlasDays.</p>
-        </div>
-        <div class="cal-dialog-actions">
-          <button type="button" data-cal-download>Download bestand</button>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>Download AtlasDays</strong><span>Gratis in de App Store. Heb je de app al? Ga door naar stap 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+          <li><strong>Open je verblijven in de app</strong><span>Controleer ze en tik dan op Importeren. Tot die tijd wordt er niets bewaard.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Open AtlasDays</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>Download AtlasDays</strong><span>Gratis in de App Store voor iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+          <li><strong>Importeer je verblijven met een bestand</strong><span>Dat zijn meer verblijven dan er in een link passen. Download het bestand en open het op je iPhone met AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Download bestand</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Importeer liever met een bestand</button><span data-cal-downloaded hidden>Open het op je iPhone met AtlasDays.</span></p>
           <button type="button" data-cal-close>Sluit</button>
         </div>
       </dialog>

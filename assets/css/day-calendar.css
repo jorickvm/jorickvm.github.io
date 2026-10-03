@@ -435,11 +435,40 @@ html[data-theme="light"] .daycal { --cal-disc: rgba(12, 22, 40, 0.07); --tone-wa
    alternative, unless the file is all there is. */
 .cal-dialog-primary,
 .cal-dialog.is-file [data-cal-download] { border: 1px solid rgba(66, 143, 210, 0.45); background: var(--blue); color: #fff; }
-.cal-dialog:has([data-cal-on]):not(.is-file) [data-cal-download] { border: 1px solid var(--line-strong); background: transparent; color: var(--text); }
 .cal-dialog [data-cal-on] .cal-dialog-actions { margin: 0 0 14px; }
 .cal-dialog-primary { display: inline-block; }
 .cal-dialog .cal-dialog-note { font-size: 0.84rem; }
 .cal-dialog-note a { color: var(--blue); }
+/* The step-by-step dialog (183-day calculator): the app icon and a one-line
+   pitch, then numbered steps; the file is a quiet link in the footer. */
+.cal-dialog-steps { width: min(540px, calc(100vw - 32px)); padding: 20px 22px 16px; }
+.cal-dialog-steps:focus { outline: none; }
+.cal-dialog-steps [hidden] { display: none !important; }
+.cal-dialog-steps .cal-dialog-title { color: var(--text); }
+.cal-dialog-head { display: flex; gap: 12px; align-items: center; margin: 0 0 16px; }
+.cal-dialog-icon { width: 44px; height: 44px; border-radius: 10px; flex: none; }
+.cal-dialog-steps .cal-dialog-title { margin: 0; }
+.cal-dialog-steps .cal-dialog-sub { margin: 2px 0 0; font-size: 0.88rem; }
+.cal-dialog-scan { display: flex; flex-wrap: wrap; gap: 18px; align-items: center; margin: 0 0 6px; }
+.cal-dialog-scan .cal-qr { margin: 0; flex: none; }
+.cal-dialog-scan .cal-steps { flex: 1 1 200px; }
+.cal-steps { list-style: none; counter-reset: cal-step; margin: 0 0 6px; padding: 0; }
+.cal-steps > li { counter-increment: cal-step; position: relative; padding: 0 0 14px 34px; margin: 0; color: var(--muted); font-size: 0.88rem; line-height: 1.5; }
+.cal-steps > li::before {
+  content: counter(cal-step); position: absolute; left: 0; top: 0;
+  width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center;
+  background: rgba(91, 158, 217, 0.18); color: var(--blue); font-size: 0.78rem; font-weight: 700;
+}
+.cal-steps.is-single > li { padding-left: 0; }
+.cal-steps.is-single > li::before { content: none; }
+.cal-steps > li > strong { display: block; color: var(--text); font-size: 0.95rem; font-weight: 650; }
+.cal-steps > li > span { display: block; margin: 1px 0 0; }
+.cal-steps > li > a, .cal-steps > li > button { display: inline-block; margin: 9px 0 0; padding: 8px 16px; border-radius: 999px; font: inherit; font-size: 0.88rem; font-weight: 650; text-decoration: none; cursor: pointer; }
+.cal-dialog-store { border: 1px solid var(--line-strong); color: var(--text); }
+.cal-dialog-foot { display: flex; align-items: center; gap: 12px; border-top: 1px solid var(--line); padding: 12px 0 0; }
+.cal-dialog-foot p { margin: 0; flex: 1; font-size: 0.86rem; }
+.cal-dialog-steps .cal-dialog-foot .cal-dialog-link { padding: 0; border: 0; border-radius: 0; background: none; color: var(--blue); font: inherit; font-weight: 600; cursor: pointer; }
+.cal-dialog-foot [data-cal-close] { padding: 6px 4px; border: 0; background: none; color: var(--muted); font: inherit; font-size: 0.9rem; font-weight: 650; cursor: pointer; }
 .cal-qr { width: 208px; max-width: 100%; margin: 2px 0 16px; border-radius: 14px; overflow: hidden; background: #ebebeb; }
 .cal-qr:empty { aspect-ratio: 1; }
 .cal-qr svg { display: block; width: 100%; height: auto; }
@@ -452,3 +481,6 @@ html[data-theme="light"] .daycal { --cal-disc: rgba(12, 22, 40, 0.07); --tone-wa
   .cal-window { height: min(50vh, 460px); } /* leaves page to swipe on above and below */
   .cal-country-input, .cal-control select { font-size: 16px; } /* keeps iOS from zooming in on focus */
 }
+
+/* Japanese breaks at phrase boundaries where the browser can (Chrome, Edge). */
+html:lang(ja) .cal-dialog-steps { word-break: auto-phrase; }

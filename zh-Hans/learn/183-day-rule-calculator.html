@@ -123,7 +123,7 @@
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20260925a" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
-  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261003m" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261003r" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">跳到主要内容</a>
@@ -260,22 +260,31 @@
           <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>在 AtlasDays 中继续追踪</button>
         </div>
       </div>
-      <dialog class="cal-dialog" data-cal-dialog aria-labelledby="days-183-import-title">
-        <p class="cal-dialog-title" id="days-183-import-title">在 AtlasDays 中继续追踪</p>
-        <div data-cal-on="phone">
-          <p>停留记录会在 AtlasDays 中打开，先核对再决定。轻点“导入”之前，不会存储任何内容。</p>
-          <div class="cal-dialog-actions"><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">在 AtlasDays 中打开</a></div>
-          <p class="cal-dialog-note" data-cal-store>还没有安装 AtlasDays？先<a href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">在 App Store 免费下载</a>，然后再次轻点“在 AtlasDays 中打开”。</p>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="days-183-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="days-183-import-title">在 AtlasDays 中继续追踪</p>
+            <p class="cal-dialog-sub">免费 iPhone App，旅途中持续计算停留天数。</p>
+          </div>
         </div>
-        <div data-cal-on="computer">
-          <p>用 iPhone 相机扫描二维码，即可在 AtlasDays 中打开停留记录。</p>
+        <div class="cal-dialog-scan" data-cal-on="computer">
           <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>用 iPhone 扫描</strong><span>如果还没有 AtlasDays，会先从 App Store 下载。</span></li>
+            <li><strong>轻点“在 AtlasDays 中打开”</strong><span>核对停留记录，然后轻点“导入”。</span></li>
+          </ol>
         </div>
-        <div data-cal-on="file">
-          <p>停留记录太多，链接放不下。请下载文件，再在 AtlasDays 中打开。</p>
-        </div>
-        <div class="cal-dialog-actions">
-          <button type="button" data-cal-download>下载文件</button>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>获取 AtlasDays</strong><span>在 App Store 免费下载。已经安装？直接跳到第 2 步。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>在 App 中打开停留记录</strong><span>核对无误后轻点“导入”。在此之前，不会存储任何内容。</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">在 AtlasDays 中打开</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>获取 AtlasDays</strong><span>可在 App Store 免费下载 iPhone 版。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>用文件导入停留记录</strong><span>停留记录太多，链接放不下。请下载文件，然后在 iPhone 上用 AtlasDays 打开。</span><button type="button" class="cal-dialog-primary" data-cal-download>下载文件</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>改用文件导入</button><span data-cal-downloaded hidden>请在 iPhone 上用 AtlasDays 打开文件。</span></p>
           <button type="button" data-cal-close>关闭</button>
         </div>
       </dialog>
@@ -378,7 +387,7 @@
   <script>window.AtlasDaysNavStrings={"menuOpen":"打开导航菜单","menuClose":"关闭导航菜单"};</script>
   <script src="../../assets/js/navigation.js?v=20260817b"></script>
   <script defer src="../../assets/js/rules/days-183.js?v=20261003g"></script>
-  <script defer src="../../assets/js/day-calendar.js?v=20261003m"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261003q"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

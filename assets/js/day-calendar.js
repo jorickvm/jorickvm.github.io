@@ -836,8 +836,17 @@
       });
       // Inside the app there is nothing to install.
       dialog.querySelectorAll("[data-cal-store]").forEach(function (part) { part.hidden = inApp; });
+      // A single step needs no number.
+      dialog.querySelectorAll(".cal-steps").forEach(function (list) {
+        var visible = [].filter.call(list.children, function (li) { return !li.hidden; }).length;
+        list.classList.toggle("is-single", visible === 1);
+      });
       dialog.querySelectorAll("[data-cal-open]").forEach(function (a) { a.href = (inApp ? LINK.scheme : LINK.universal) + frag; });
       dialog.classList.toggle("is-file", mode === "file");
+      // "Import with a file instead" is the quiet alternative, unless the file
+      // is all there is; its follow-up line shows once the file is saved.
+      dialog.querySelectorAll("[data-cal-alt]").forEach(function (part) { part.hidden = mode === "file"; });
+      dialog.querySelectorAll("[data-cal-downloaded]").forEach(function (part) { part.hidden = true; part.previousElementSibling.hidden = false; });
       var box = dialog.querySelector("[data-cal-qr]");
       if (box) {
         box.textContent = "";
@@ -848,6 +857,9 @@
         });
       }
       dialog.showModal();
+      // Focus the dialog itself, so no button looks preselected.
+      dialog.setAttribute("tabindex", "-1");
+      dialog.focus();
     }
     function downloadCsv() {
       var lines = ["Country,Start Date,End Date,Notes"].concat(rule.exportRows(trips, ctx()).map(function (r) {
@@ -897,7 +909,13 @@
     root.querySelectorAll("[data-cal-import]").forEach(function (btn) {
       btn.addEventListener("click", openImport);
     });
-    root.querySelectorAll("[data-cal-download]").forEach(function (btn) { btn.addEventListener("click", downloadCsv); });
+    root.querySelectorAll("[data-cal-download]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        downloadCsv();
+        var done = btn.nextElementSibling;
+        if (done && done.hasAttribute("data-cal-downloaded")) { btn.hidden = true; done.hidden = false; }
+      });
+    });
     root.querySelectorAll("[data-cal-close]").forEach(function (btn) { btn.addEventListener("click", function () { dialog.close(); }); });
     if (dialog) dialog.addEventListener("click", function (e) { if (e.target === dialog) dialog.close(); });
 

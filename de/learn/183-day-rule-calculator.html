@@ -123,7 +123,7 @@
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20260925a" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
-  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261003m" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261003r" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
@@ -265,22 +265,31 @@
           <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>In AtlasDays übernehmen</button>
         </div>
       </div>
-      <dialog class="cal-dialog" data-cal-dialog aria-labelledby="days-183-import-title">
-        <p class="cal-dialog-title" id="days-183-import-title">In AtlasDays übernehmen</p>
-        <div data-cal-on="phone">
-          <p>AtlasDays öffnet deine Aufenthalte, damit du sie prüfen kannst. Gespeichert wird erst, wenn du auf „Importieren“ tippst.</p>
-          <div class="cal-dialog-actions"><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">In AtlasDays öffnen</a></div>
-          <p class="cal-dialog-note" data-cal-store>Noch kein AtlasDays? <a href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">Lade die App kostenlos im App Store</a> und tippe dann erneut auf „In AtlasDays öffnen“.</p>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="days-183-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="days-183-import-title">In AtlasDays übernehmen</p>
+            <p class="cal-dialog-sub">Zähl deine Tage unterwegs weiter. Kostenlose iPhone-App.</p>
+          </div>
         </div>
-        <div data-cal-on="computer">
-          <p>Scanne den Code mit der Kamera deines iPhone, um deine Aufenthalte in AtlasDays zu öffnen.</p>
+        <div class="cal-dialog-scan" data-cal-on="computer">
           <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>Mit dem iPhone scannen</strong><span>Noch kein AtlasDays? Dann lädst du es zuerst aus dem App Store.</span></li>
+            <li><strong>Auf „In AtlasDays öffnen“ tippen</strong><span>Prüfe deine Aufenthalte und tippe dann auf „Importieren“.</span></li>
+          </ol>
         </div>
-        <div data-cal-on="file">
-          <p>Das sind mehr Aufenthalte, als ein Link fassen kann. Lade die Datei herunter und öffne sie in AtlasDays.</p>
-        </div>
-        <div class="cal-dialog-actions">
-          <button type="button" data-cal-download>Datei herunterladen</button>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>AtlasDays laden</strong><span>Kostenlos im App Store. Schon installiert? Weiter mit Schritt 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>Aufenthalte in der App öffnen</strong><span>Prüfe sie und tippe dann auf „Importieren“. Vorher wird nichts gespeichert.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">In AtlasDays öffnen</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>AtlasDays laden</strong><span>Kostenlos im App Store für iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>Aufenthalte per Datei importieren</strong><span>Das sind mehr Aufenthalte, als ein Link fassen kann. Lade die Datei herunter und öffne sie auf deinem iPhone mit AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Datei herunterladen</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Stattdessen per Datei importieren</button><span data-cal-downloaded hidden>Öffne sie auf deinem iPhone mit AtlasDays.</span></p>
           <button type="button" data-cal-close>Schließen</button>
         </div>
       </dialog>
@@ -383,7 +392,7 @@
   <script>window.AtlasDaysNavStrings={"menuOpen":"Navigationsmenü öffnen","menuClose":"Navigationsmenü schließen"};</script>
   <script src="../../assets/js/navigation.js?v=20260817b"></script>
   <script defer src="../../assets/js/rules/days-183.js?v=20261003g"></script>
-  <script defer src="../../assets/js/day-calendar.js?v=20261003m"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261003q"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

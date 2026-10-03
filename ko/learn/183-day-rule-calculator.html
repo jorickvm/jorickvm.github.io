@@ -123,7 +123,7 @@
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20260925a" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
-  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261003m" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261003r" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">본문으로 건너뛰기</a>
@@ -260,22 +260,31 @@
           <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>AtlasDays에서 관리하기</button>
         </div>
       </div>
-      <dialog class="cal-dialog" data-cal-dialog aria-labelledby="days-183-import-title">
-        <p class="cal-dialog-title" id="days-183-import-title">AtlasDays에서 관리하기</p>
-        <div data-cal-on="phone">
-          <p>입력한 체류가 AtlasDays에서 열리면 내용을 확인할 수 있습니다. '가져오기'를 누르기 전까지는 아무것도 저장되지 않습니다.</p>
-          <div class="cal-dialog-actions"><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">AtlasDays에서 열기</a></div>
-          <p class="cal-dialog-note" data-cal-store>아직 AtlasDays가 없습니까? <a href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store에서 무료로 받으십시오</a>. 그런 다음 'AtlasDays에서 열기'를 다시 누르십시오.</p>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="days-183-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="days-183-import-title">AtlasDays에서 관리하기</p>
+            <p class="cal-dialog-sub">여행하는 동안 체류 일수를 계속 계산하는 무료 iPhone 앱입니다.</p>
+          </div>
         </div>
-        <div data-cal-on="computer">
-          <p>iPhone 카메라로 QR 코드를 스캔하면 입력한 체류가 AtlasDays에서 열립니다.</p>
+        <div class="cal-dialog-scan" data-cal-on="computer">
           <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>iPhone으로 스캔</strong><span>아직 AtlasDays가 없다면 먼저 App Store에서 받게 됩니다.</span></li>
+            <li><strong>'AtlasDays에서 열기' 누르기</strong><span>체류를 확인한 다음 '가져오기'를 누르십시오.</span></li>
+          </ol>
         </div>
-        <div data-cal-on="file">
-          <p>체류가 너무 많아 링크에 담을 수 없습니다. 파일을 다운로드해 AtlasDays에서 여십시오.</p>
-        </div>
-        <div class="cal-dialog-actions">
-          <button type="button" data-cal-download>파일 다운로드</button>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>AtlasDays 받기</strong><span>App Store에서 무료로 받을 수 있습니다. 이미 있다면 2단계로 넘어가십시오.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>앱에서 체류 열기</strong><span>확인한 다음 '가져오기'를 누르십시오. 그 전에는 아무것도 저장되지 않습니다.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">AtlasDays에서 열기</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>AtlasDays 받기</strong><span>App Store에서 무료로 받을 수 있는 iPhone 앱입니다.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>파일로 체류 가져오기</strong><span>체류가 너무 많아 링크에 담을 수 없습니다. 파일을 다운로드해 iPhone의 AtlasDays에서 여십시오.</span><button type="button" class="cal-dialog-primary" data-cal-download>파일 다운로드</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>대신 파일로 가져오기</button><span data-cal-downloaded hidden>iPhone의 AtlasDays에서 파일을 여십시오.</span></p>
           <button type="button" data-cal-close>닫기</button>
         </div>
       </dialog>
@@ -378,7 +387,7 @@
   <script>window.AtlasDaysNavStrings={"menuOpen":"탐색 메뉴 열기","menuClose":"탐색 메뉴 닫기"};</script>
   <script src="../../assets/js/navigation.js?v=20260817b"></script>
   <script defer src="../../assets/js/rules/days-183.js?v=20261003g"></script>
-  <script defer src="../../assets/js/day-calendar.js?v=20261003m"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261003q"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

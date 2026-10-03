@@ -66,22 +66,31 @@
           <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>AtlasDaysで記録する</button>
         </div>
       </div>
-      <dialog class="cal-dialog" data-cal-dialog aria-labelledby="days-183-import-title">
-        <p class="cal-dialog-title" id="days-183-import-title">AtlasDaysで記録する</p>
-        <div data-cal-on="phone">
-          <p>入力した滞在がAtlasDaysで開き、内容を確認できます。「インポート」をタップするまで何も保存されません。</p>
-          <div class="cal-dialog-actions"><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">AtlasDaysで開く</a></div>
-          <p class="cal-dialog-note" data-cal-store>AtlasDaysをまだお持ちでない場合は、<a href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Storeから無料で入手</a>してから、もう一度「AtlasDaysで開く」をタップしてください。</p>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="days-183-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="days-183-import-title">AtlasDaysで記録する</p>
+            <p class="cal-dialog-sub">旅行中もそのまま日数を数えられる、iPhone向けの無料アプリです。</p>
+          </div>
         </div>
-        <div data-cal-on="computer">
-          <p>iPhoneのカメラでQRコードを読み取ると、入力した滞在をAtlasDaysで開けます。</p>
+        <div class="cal-dialog-scan" data-cal-on="computer">
           <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>iPhoneのカメラで読み取る</strong><span>AtlasDaysをまだお持ちでない場合は、先にApp Storeで入手します。</span></li>
+            <li><strong>「AtlasDaysで開く」をタップ</strong><span>滞在を確認してから「インポート」をタップします。</span></li>
+          </ol>
         </div>
-        <div data-cal-on="file">
-          <p>滞在の数が多く、リンクでは送れません。ファイルをダウンロードして、AtlasDaysで開いてください。</p>
-        </div>
-        <div class="cal-dialog-actions">
-          <button type="button" data-cal-download>ファイルをダウンロード</button>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>AtlasDaysを入手</strong><span>App Storeから無料で入手できます。お持ちの場合は2へ進んでください。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+          <li><strong>アプリで滞在を開く</strong><span>確認してから「インポート」をタップします。それまで何も保存されません。</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">AtlasDaysで開く</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>AtlasDaysを入手</strong><span>iPhone向けにApp Storeで無料で提供しています。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+          <li><strong>ファイルで滞在をインポート</strong><span>滞在の数が多く、リンクでは送れません。ファイルをダウンロードして、iPhoneのAtlasDaysで開いてください。</span><button type="button" class="cal-dialog-primary" data-cal-download>ファイルをダウンロード</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>ファイルでインポートする</button><span data-cal-downloaded hidden>iPhoneのAtlasDaysで開いてください。</span></p>
           <button type="button" data-cal-close>閉じる</button>
         </div>
       </dialog>
