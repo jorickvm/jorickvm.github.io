@@ -1,0 +1,38 @@
+    <nav class="breadcrumb" aria-label="Ścieżka nawigacji"><a href="/pl/">AtlasDays</a> / <a href="/pl/help/">Centrum pomocy</a></nav>
+
+    <h1>Import z CSV</h1>
+<p class="article-answer">Hurtowo dodawaj podróże z arkusza kalkulacyjnego zapisanego jako CSV. AtlasDays sprawdza każdy wiersz, pokazuje podgląd i niczego nie zapisuje, dopóki nie potwierdzisz. To jeden ze <a href="/pl/help/import-trips">sposobów dodawania dawnych podróży</a>.</p>
+
+    <h2>Importowanie pliku</h2>
+    <ol>
+      <li>Otwórz <strong>Ustawienia → Import → Plik CSV</strong>.</li>
+      <li>Przygotuj plik w Sheets, Numbers lub Excelu i wyeksportuj go jako CSV. <strong>Przykładowy CSV</strong> pokazuje dokładne nagłówki z przykładowymi wierszami, a jego przycisk udostępniania zapisuje plik, od którego możesz zacząć.</li>
+      <li>Stuknij <strong>Wybierz plik CSV</strong> i wskaż plik w aplikacji Pliki.</li>
+      <li>Sprawdź podgląd, <strong>Znaleziono w CSV</strong>.</li>
+      <li>Stuknij <strong>Importuj</strong> i potwierdź.</li>
+    </ol>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/help/csv-import/csv-setup.webp" alt="Ekran konfiguracji importu z CSV z przyciskami przykładowego pliku" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <p><strong>Utwórz CSV z AI</strong> kopiuje gotowy prompt dla ChatGPT, Claude lub innego asystenta. Wklej po nim swoje notatki z podróży i zapisz odpowiedź jako CSV. Te narzędzia przetwarzają twój tekst zgodnie z własnymi zasadami prywatności, więc pomiń wszystko, czego nie chcesz wklejać nigdzie indziej.</p>
+
+    <h2>Czytanie podglądu</h2>
+    <p>Podgląd wymienia prawidłowe wiersze i pokazuje liczniki, które można stuknąć, aby filtrować. Za pomocą <strong>Zaznacz wszystko</strong> lub <strong>Odznacz wszystko</strong> wybierz, co zaimportować.</p>
+    <ul>
+      <li><strong>Duplikat:</strong> wiersz mieści się w podróży, którą już masz, albo powtarza wcześniejszy wiersz. Zostaje pominięty.</li>
+      <li><strong>Scal:</strong> wiersz obejmuje podróż, którą już masz w tym samym kraju. Przy imporcie ta podróż zostaje poszerzona o daty z wiersza, a notatki i cele podróży zostają połączone. <strong>Podróże do scalenia w pliku</strong> to wiersze w pliku, które łączą się ze sobą nawzajem.</li>
+      <li><strong>Kolizja:</strong> wiersz częściowo nakłada się na inną podróż. Może to być rzeczywisty drugi pobyt albo druga wersja tego samego, więc porównaj daty, zanim go zostawisz.</li>
+      <li><strong>Tranzyty</strong> i <strong>Stany USA</strong> liczą wiersze tego rodzaju. Bez wersji Pro wiersze ze stanami importują się jako zwykłe podróże do Stanów Zjednoczonych.</li>
+    </ul>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/help/csv-import/csv-review.webp" alt="Podgląd importu z CSV z prawidłowymi i nieprawidłowymi wierszami, duplikatami i kolizjami" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+
+    <h2>Poprawianie błędów w pliku źródłowym</h2>
+    <p>Wiersze, których AtlasDays nie potrafi odczytać, pojawiają się w sekcji <strong>N wierszy z błędami</strong> z numerem wiersza i przyczyną. Nieprawidłowe wiersze nigdy nie są importowane. Popraw je w arkuszu, wyeksportuj plik ponownie i wybierz go jeszcze raz.</p>
+
+    <div class="callout"><p><strong>Nic się nie zmienia przed stuknięciem Importuj.</strong> Wybranie pliku i obejrzenie podglądu nie dodaje podróży.</p></div>
+
+    <h2>Ponowny import eksportu</h2>
+    <p>Plik z <a href="/pl/help/export-and-reports">eksportu</a> Arkusz kalkulacyjny zapisany jako CSV można zaimportować ponownie, pod warunkiem że eksport wykonano w języku angielskim: nagłówki kolumn są odczytywane tylko po angielsku. Aby mieć pełną kopię podróży, trackerów i ustawień, użyj zamiast tego <a href="/pl/help/backup-and-restore">kopii zapasowej</a>.</p>
+
+    <section class="if-needed">
+      <h2>Jeśli każdy wiersz jest nieprawidłowy</h2>
+      <p>Sprawdź, czy pierwszy wiersz jest wierszem nagłówków i zawiera kolumnę <strong>Country</strong>, a daty mają format <code>yyyy-mm-dd</code> lub są czterocyfrowym rokiem. Artykuł <a href="/pl/help/csv-format-reference">Format pliku CSV</a> wymienia obsługiwane kolumny, wartości i wszystkie komunikaty o błędach.</p>
+    </section>

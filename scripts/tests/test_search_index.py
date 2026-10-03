@@ -18,6 +18,7 @@ def normalize(value: str) -> str:
     decomposed = unicodedata.normalize("NFD", value.lower())
     latin_folded = re.sub(r"([a-z])[\u0300-\u036f]+", r"\1", decomposed)
     recomposed = unicodedata.normalize("NFC", latin_folded)
+    recomposed = recomposed.replace("\u0131", "i").replace("\u0142", "l")
     return re.sub(r"\bdays\b", "day", re.sub(rf"[^a-z0-9{CJK}]+", " ", recomposed)).strip()
 
 
@@ -121,6 +122,27 @@ class SearchIndexTests(unittest.TestCase):
         for query, url in expected.items():
             with self.subTest(query=query):
                 self.assertEqual(self.first(query, "help", "ja"), url)
+
+    def test_expected_polish_queries(self) -> None:
+        """Polish queries, typed with and without diacritics.
+
+        `slowacja` is the ł case: ł has no Unicode decomposition, so without
+        its own fold it was stripped and "Słowacja" indexed as "s owacja".
+        """
+        expected = {
+            ("rezydencja podatkowa polska", "learn"): "/pl/learn/poland-183-day-tax-residency",
+            ("183 dni hiszpania", "learn"): "/pl/learn/spain-183-day-tax-residency",
+            ("slowacja podatki", "learn"): "/pl/learn/slovakia-183-day-tax-residency",
+            ("zielona karta", "learn"): "/pl/learn/us-green-card-absence-limits",
+            ("przesiadka", "learn"): "/pl/learn/does-a-layover-count-as-visiting-a-country",
+            ("import zdjęć", "help"): "/pl/help/photo-import",
+            ("kopia zapasowa", "help"): "/pl/help/backup-and-restore",
+            ("inteligentne alerty", "help"): "/pl/help/smart-alerts",
+            ("jezyk aplikacji", "help"): "/pl/help/languages",
+        }
+        for (query, section), url in expected.items():
+            with self.subTest(query=query):
+                self.assertEqual(self.first(query, section, "pl"), url)
 
     def test_index_covers_every_article_in_every_locale(self) -> None:
         articles = json.loads((ROOT / "_site-src/data/articles.json").read_text())["articles"]

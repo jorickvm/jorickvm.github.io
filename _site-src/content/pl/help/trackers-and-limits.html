@@ -1,0 +1,43 @@
+    <nav class="breadcrumb" aria-label="Ścieżka nawigacji"><a href="/pl/">AtlasDays</a> / <a href="/pl/help/">Centrum pomocy</a></nav>
+
+    <h1>Jak obliczane są sumy w trackerach</h1>
+<p class="article-answer">Tracker wybiera <a href="/pl/help/history-and-import">podróże z datami</a> w swoich miejscach, łączy nakładające się dni kalendarzowe i liczy je w swoim oknie. Wynik jest porównywany z ustawionym limitem.</p>
+
+    <h2>Wynik zależy od pięciu ustawień</h2>
+    <ol>
+      <li><strong>Miejsca:</strong> liczą się tylko podróże do wybranych krajów lub stanów USA.</li>
+      <li><strong>Jednostka:</strong> wiersz <strong>Limit</strong> liczy <strong>Dni</strong>, <strong>Noce</strong> albo dni nieobecności (<strong>Poza</strong>).</li>
+      <li><strong>Okno:</strong> trackery z oknem <strong>Kroczące</strong>, <strong>Rok</strong> i <strong>Na wjazd</strong> obejmują różne zakresy dat.</li>
+      <li><strong>Limit:</strong> próg, który wyznacza postęp i status trackera. Przy celu <strong>Osiągnij cel</strong> jego miejsce zajmuje <strong>Cel</strong>.</li>
+      <li><strong>Dokładność dat podróży:</strong> liczą się podróże z dokładnymi datami. Podróże Tylko rok i Tranzyt dają zero dni.</li>
+    </ol>
+
+    <h2>Dni i noce</h2>
+    <p>Jednostka <strong>Dni</strong> liczy dzień przyjazdu i dzień wyjazdu w całości, więc pobyt od 1 do 3 czerwca to trzy dni. Jednostka <strong>Noce</strong> liczy noce między przyjazdem a wyjazdem, więc ten sam pobyt to dwie noce. Noce nie łączą pobytów następujących bezpośrednio po sobie: noc między dniem wyjazdu z jednej podróży a dniem przyjazdu w kolejnej nie liczy się do żadnej z nich, nawet w tym samym kraju.</p>
+
+    <h2>Nakładające się dni liczą się raz</h2>
+    <p>Trackery z oknem Kroczące i Rok oraz trackery dni nieobecności łączą podróże obejmujące ten sam dzień kalendarzowy, więc kolizja na ekranie <a href="/pl/help/timeline-and-calendar">Oś czasu</a> nie liczy się podwójnie. Tracker Na wjazd w ogóle nie łączy podróży, co opisano niżej.</p>
+
+    <h2>Okna kroczące przesuwają się codziennie</h2>
+    <p>Tracker kroczący zawsze kończy się dzisiaj. Jego <strong>Długość</strong> to albo stała liczba dni, albo liczba miesięcy kalendarzowych liczona wstecz od dzisiaj. Starsze dni wypadają z okna, a nowsze dni podróży do niego wchodzą, więc suma może się zmienić bez żadnej edycji podróży.</p>
+
+    <h2>Trackery roczne</h2>
+    <p>Tracker z oknem Rok liczy jeden rok, począwszy od daty w wierszu <strong>Początek</strong>. Początek 1 stycznia oznacza rok kalendarzowy, a każda inna data początkowa rok podatkowy.</p>
+
+    <h2>Tracker Na wjazd śledzi jeden pobyt</h2>
+    <p>Tracker Na wjazd mierzy pojedynczy pobyt. Bierze trwający pobyt, jeśli taki jest, a w przeciwnym razie ostatnio zakończony. Nie sumuje osobnych wizyt. Gdy tracker ma datę w wierszu <strong>Początek</strong>, dni sprzed tej daty są pomijane.</p>
+
+    <h2>Podróże trwające i zaplanowane</h2>
+    <p>Podróż bez daty końcowej liczy się do dzisiaj. Podróż, która zaczyna się w przyszłości, nie zmienia bieżącej sumy; pojawia się na wykresie jako zaplanowana podróż i jest uwzględniana w prognozie. Prognozę opisuje artykuł <a href="/pl/help/plan-a-trip">Czy zaplanowana podróż się zmieści</a>.</p>
+
+    <h2>Jak czytać wykres szczegółów</h2>
+    <p>Otwórz tracker, aby zobaczyć, jak jego liczba zmienia się w czasie. Wykres ma dwa widoki: przewijane zbliżenie i widok całego okresu. Aby przełączyć widok, zsuń lub rozsuń palce na wykresie albo stuknij go dwukrotnie; każdy tracker pamięta swój wybór.</p>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/help/trackers-and-limits/detail-chart.webp" alt="Wykres szczegółów trackera w jego aktywnym oknie" width="1320" height="2566" loading="lazy" decoding="async" /></figure>
+    <p>Trackery z oknem Kroczące i Rok oraz trackery dni nieobecności pokazują też pod wykresem zdanie, gdy twoje plany zmieniają wynik, na przykład datę, w której osiągniesz limit. Trackery z dwoma limitami pokazują zamiast tego wykres dla każdego limitu; zobacz <a href="/pl/help/rule-trackers">trackery z dwoma limitami</a>.</p>
+    <p>Wiersze <strong>Cel</strong>, <strong>Limit</strong> i <strong>Okno</strong>, od których zależy wykres, ustawia się w edytorze trackera. Aby go otworzyć, stuknij ikonę suwaków u góry ekranu szczegółów trackera.</p>
+    <figure class="help-shot help-shot-control"><img src="/assets/article-images/help/trackers-and-limits/goal-window.webp" alt="Edytor trackera z ustawieniami limitu i okna" width="1320" height="1500" loading="lazy" decoding="async" /></figure>
+
+    <section class="if-needed">
+      <h2>Sprawdź, które podróże wpływają na tracker</h2>
+      <p>Otwórz widok szczegółów i przejrzyj podróże wymienione pod wykresem, a potem porównaj miejsca i okno trackera z ekranem <a href="/pl/help/timeline-and-calendar">Oś czasu</a>. Zwróć szczególną uwagę na trwające podróże, wpisy Tranzyt i Tylko rok, kolizje oraz brakujące oznaczenia stanów USA. Aby dodać podróż do tego trackera, stuknij <strong>+</strong> nad jego listą podróży.</p>
+    </section>
