@@ -120,10 +120,10 @@
   <script defer src="../../assets/js/locale-route.js?v=20260830c"></script>
   <link rel="stylesheet" href="../../assets/css/tokens.css?v=20260928f" />
   <link rel="stylesheet" href="../../assets/css/article-variants/49dd6e3e3ea5.css?v=20260928f" />
-  <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260928e" />
+  <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20260925a" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
-  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20260929a" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261003c" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
@@ -181,7 +181,6 @@
               <a href="/de/visa-limits">Visumlimits</a>
               <a href="/de/residency-thresholds">Steuerwohnsitz</a>
               <a href="/de/citizenship">Einbürgerung</a>
-            <a href="/de/citizenship">Einbürgerung</a>
               <a href="/de/travel-history">Reiseverlauf</a>
             </nav>
           </details>
@@ -207,12 +206,14 @@
 {
   "hintStart": "Tippe auf den Tag, an dem du das Vereinigte Königreich verlassen hast, und dann auf den Tag deiner Rückkehr.",
   "hintEnd": "Tippe jetzt auf das andere Ende der Reise oder erneut auf {date}, um abzubrechen.",
-  "hintMove": "Tippe auf ein neues Datum für dieses Ende der Reise oder erneut auf {date}, um es beizubehalten.",
   "inTrip": "außerhalb des Vereinigten Königreichs",
   "pending": "Beginn einer neuen Reise",
-  "held": "Reiseende ausgewählt",
   "empty": "Noch keine Reisen.",
   "deleteTrip": "Reise löschen",
+  "country": "Land",
+  "addCountry": "Land hinzufügen",
+  "noMatch": "Kein passendes Land gefunden",
+  "hintSelected": "Ziehe an einem der beiden Enden der Reise, um die Reisedaten zu ändern, oder lösche sie unten.",
   "tripAway": {
     "one": "{n} Tag abwesend",
     "other": "{n} Tage abwesend"
@@ -239,21 +240,15 @@
       <div class="cal-side">
         <div class="cal-box" aria-live="polite">
           <div data-cal-result></div>
-          <button type="button" class="cal-import" data-cal-import>In AtlasDays importieren</button>
         </div>
         <div class="cal-box">
           <h3>Reisen</h3>
-          <div data-cal-list></div>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Kostenlos in AtlasDays importieren</button>
         </div>
       </div>
       <dialog class="cal-dialog" data-cal-dialog aria-labelledby="uk-ilr-import-title">
-        <p class="cal-dialog-title" id="uk-ilr-import-title">In AtlasDays importieren</p>
-        <p>Lass die App weiterzählen. Sie aktualisiert den Stand auf deinen Reisen und warnt dich, bevor eine Reise dich über 180 Tage bringen würde.</p>
-        <ol>
-          <li>Lade deine Aufenthalte im Vereinigten Königreich zwischen den markierten Reisen als Datei herunter.</li>
-          <li>Öffne AtlasDays auf deinem iPhone und wähle Einstellungen → Import → CSV-Datei. Wähle die Datei aus. Du siehst jeden Aufenthalt, bevor etwas hinzugefügt wird.</li>
-          <li>Füge die Vorlage „Britische Indefinite Leave to Remain“ hinzu. Geplante Reisen sind nicht in der Datei. Trage sie in der App ein, sobald du gebucht hast.</li>
-        </ol>
+        <p class="cal-dialog-title" id="uk-ilr-import-title">Weiter in AtlasDays</p>
+        <p>Lade die Datei herunter und öffne sie in AtlasDays: Einstellungen → Importieren → CSV-Datei.</p>
         <div class="cal-dialog-actions">
           <button type="button" data-cal-download>Datei laden</button>
           <a class="cal-dialog-app" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">AtlasDays laden</a>
@@ -362,10 +357,12 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"Navigationsmenü öffnen","menuClose":"Navigationsmenü schließen"};</script>
   <script src="../../assets/js/navigation.js?v=20260817b"></script>
-  <script defer src="../../assets/js/rules/uk-ilr.js?v=20260928a"></script>
-  <script defer src="../../assets/js/day-calendar.js?v=20260929a"></script>
+  <script defer src="../../assets/js/rules/uk-ilr.js?v=20261001a"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261003c"></script>
   <!-- Cloudflare Web Analytics -->
-  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;token&quot;: &quot;1488e163b83a4eee81b63340359b6566&quot;}"></script>
+  <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
+  (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();
+  </script>
   <!-- End Cloudflare Web Analytics -->
 </body>
 </html>

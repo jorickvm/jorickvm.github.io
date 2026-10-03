@@ -12,12 +12,14 @@
 {
   "hintStart": "Tippe auf den Tag, an dem du das Vereinigte Königreich verlassen hast, und dann auf den Tag deiner Rückkehr.",
   "hintEnd": "Tippe jetzt auf das andere Ende der Reise oder erneut auf {date}, um abzubrechen.",
-  "hintMove": "Tippe auf ein neues Datum für dieses Ende der Reise oder erneut auf {date}, um es beizubehalten.",
   "inTrip": "außerhalb des Vereinigten Königreichs",
   "pending": "Beginn einer neuen Reise",
-  "held": "Reiseende ausgewählt",
   "empty": "Noch keine Reisen.",
   "deleteTrip": "Reise löschen",
+  "country": "Land",
+  "addCountry": "Land hinzufügen",
+  "noMatch": "Kein passendes Land gefunden",
+  "hintSelected": "Ziehe an einem der beiden Enden der Reise, um die Reisedaten zu ändern, oder lösche sie unten.",
   "tripAway": {
     "one": "{n} Tag abwesend",
     "other": "{n} Tage abwesend"
@@ -44,21 +46,15 @@
       <div class="cal-side">
         <div class="cal-box" aria-live="polite">
           <div data-cal-result></div>
-          <button type="button" class="cal-import" data-cal-import>In AtlasDays importieren</button>
         </div>
         <div class="cal-box">
           <h3>Reisen</h3>
-          <div data-cal-list></div>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Kostenlos in AtlasDays importieren</button>
         </div>
       </div>
       <dialog class="cal-dialog" data-cal-dialog aria-labelledby="uk-ilr-import-title">
-        <p class="cal-dialog-title" id="uk-ilr-import-title">In AtlasDays importieren</p>
-        <p>Lass die App weiterzählen. Sie aktualisiert den Stand auf deinen Reisen und warnt dich, bevor eine Reise dich über 180 Tage bringen würde.</p>
-        <ol>
-          <li>Lade deine Aufenthalte im Vereinigten Königreich zwischen den markierten Reisen als Datei herunter.</li>
-          <li>Öffne AtlasDays auf deinem iPhone und wähle Einstellungen → Import → CSV-Datei. Wähle die Datei aus. Du siehst jeden Aufenthalt, bevor etwas hinzugefügt wird.</li>
-          <li>Füge die Vorlage „Britische Indefinite Leave to Remain“ hinzu. Geplante Reisen sind nicht in der Datei. Trage sie in der App ein, sobald du gebucht hast.</li>
-        </ol>
+        <p class="cal-dialog-title" id="uk-ilr-import-title">Weiter in AtlasDays</p>
+        <p>Lade die Datei herunter und öffne sie in AtlasDays: Einstellungen → Importieren → CSV-Datei.</p>
         <div class="cal-dialog-actions">
           <button type="button" data-cal-download>Datei laden</button>
           <a class="cal-dialog-app" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">AtlasDays laden</a>

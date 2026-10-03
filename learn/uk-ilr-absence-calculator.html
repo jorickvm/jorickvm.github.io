@@ -118,10 +118,10 @@
   <script defer src="../assets/js/locale-route.js?v=20260830c"></script>
   <link rel="stylesheet" href="../assets/css/tokens.css?v=20260928f" />
   <link rel="stylesheet" href="../assets/css/article-variants/49dd6e3e3ea5.css?v=20260928f" />
-  <link rel="stylesheet" href="../assets/css/site-header.css?v=20260928e" />
+  <link rel="stylesheet" href="../assets/css/site-header.css?v=20260930a" />
   <link rel="stylesheet" href="../assets/css/article-components.css?v=20260925a" />
   <link rel="stylesheet" href="../assets/css/site-footer.css?v=20260928f" />
-  <link rel="stylesheet" href="../assets/css/day-calendar.css?v=20260929a" />
+  <link rel="stylesheet" href="../assets/css/day-calendar.css?v=20261003c" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
@@ -179,7 +179,6 @@
               <a href="/visa-limits">Visa limits</a>
               <a href="/residency-thresholds">Residency thresholds</a>
               <a href="/citizenship">Citizenship</a>
-            <a href="/citizenship">Citizenship</a>
               <a href="/travel-history">Travel history</a>
             </nav>
           </details>
@@ -205,12 +204,14 @@
 {
   "hintStart": "Tap the day you left the UK, then the day you came back.",
   "hintEnd": "Now tap the other end of the trip, or {date} again to cancel.",
-  "hintMove": "Tap a new date for this end of the trip, or {date} again to keep it.",
   "inTrip": "outside the UK",
   "pending": "start of a new trip",
-  "held": "trip end picked up",
   "empty": "No trips yet.",
   "deleteTrip": "Delete trip",
+  "country": "Country",
+  "addCountry": "Add country",
+  "noMatch": "No matching country",
+  "hintSelected": "Drag either end of the trip to change its dates, or delete it below.",
   "tripAway": {
     "one": "{n} day away",
     "other": "{n} days away"
@@ -237,21 +238,15 @@
       <div class="cal-side">
         <div class="cal-box" aria-live="polite">
           <div data-cal-result></div>
-          <button type="button" class="cal-import" data-cal-import>Import to AtlasDays</button>
         </div>
         <div class="cal-box">
           <h3>Trips</h3>
-          <div data-cal-list></div>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Import into AtlasDays for free</button>
         </div>
       </div>
       <dialog class="cal-dialog" data-cal-dialog aria-labelledby="uk-ilr-import-title">
-        <p class="cal-dialog-title" id="uk-ilr-import-title">Import to AtlasDays</p>
-        <p>Keep this count running in the app. It updates as you travel and warns you before a trip would take you over 180 days.</p>
-        <ol>
-          <li>Download your time in the UK between past trips as a file.</li>
-          <li>In AtlasDays on your iPhone, go to Settings → Import → CSV File and choose the file. You see every stay before anything is added.</li>
-          <li>Add the UK Indefinite Leave to Remain preset. Planned trips are not in the file; add them in the app when you book.</li>
-        </ol>
+        <p class="cal-dialog-title" id="uk-ilr-import-title">Continue in AtlasDays</p>
+        <p>Download the file and open it in AtlasDays: Settings → Import → CSV File.</p>
         <div class="cal-dialog-actions">
           <button type="button" data-cal-download>Download file</button>
           <a class="cal-dialog-app" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">Get AtlasDays</a>
@@ -360,10 +355,12 @@
   <script src="../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"Open navigation menu","menuClose":"Close navigation menu"};</script>
   <script src="../assets/js/navigation.js?v=20260817b"></script>
-  <script defer src="../assets/js/rules/uk-ilr.js?v=20260928a"></script>
-  <script defer src="../assets/js/day-calendar.js?v=20260929a"></script>
+  <script defer src="../assets/js/rules/uk-ilr.js?v=20261001a"></script>
+  <script defer src="../assets/js/day-calendar.js?v=20261003c"></script>
   <!-- Cloudflare Web Analytics -->
-  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;token&quot;: &quot;1488e163b83a4eee81b63340359b6566&quot;}"></script>
+  <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
+  (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();
+  </script>
   <!-- End Cloudflare Web Analytics -->
 </body>
 </html>

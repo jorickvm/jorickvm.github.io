@@ -44,6 +44,12 @@ jobs:
       # pills and headings.
       - name: Check for untranslated text
         run: python3 scripts/check_untranslated.py --check
+      # Every address the AtlasDays app opens (Learn slugs, the in-app hop, the
+      # Help/changelog aliases, the legal pages) must still exist: shipped app
+      # builds keep those URLs for years. app-links.json is a committed snapshot
+      # of the private app repo, refreshed with `check_app_learn_links.py --sync`.
+      - name: Check addresses the app opens
+        run: python3 scripts/check_app_learn_links.py
       - name: Check generated article output
         run: |
           python3 scripts/build_residency_hub.py --check

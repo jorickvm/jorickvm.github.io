@@ -12,12 +12,14 @@
 {
   "hintStart": "Tik op de dag waarop je het VK verliet en daarna op de dag waarop je terugkwam.",
   "hintEnd": "Tik nu op de andere datum van de reis, of nogmaals op {date} om te annuleren.",
-  "hintMove": "Tik op een nieuwe datum voor dit uiteinde van de reis, of nogmaals op {date} om het te laten staan.",
   "inTrip": "buiten het VK",
   "pending": "begin van een nieuwe reis",
-  "held": "einddatum van de reis geselecteerd",
   "empty": "Nog geen reizen.",
   "deleteTrip": "Verwijder reis",
+  "country": "Land",
+  "addCountry": "Voeg land toe",
+  "noMatch": "Geen land gevonden",
+  "hintSelected": "Sleep een van beide uiteinden van de reis om de datums te wijzigen, of verwijder de reis hieronder.",
   "tripAway": {
     "one": "{n} dag afwezig",
     "other": "{n} dagen afwezig"
@@ -44,21 +46,15 @@
       <div class="cal-side">
         <div class="cal-box" aria-live="polite">
           <div data-cal-result></div>
-          <button type="button" class="cal-import" data-cal-import>Importeer in AtlasDays</button>
         </div>
         <div class="cal-box">
           <h3>Reizen</h3>
-          <div data-cal-list></div>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Importeer gratis in AtlasDays</button>
         </div>
       </div>
       <dialog class="cal-dialog" data-cal-dialog aria-labelledby="uk-ilr-import-title">
-        <p class="cal-dialog-title" id="uk-ilr-import-title">Importeer in AtlasDays</p>
-        <p>Houd de telling bij in de app. Die wordt tijdens je reizen bijgewerkt en waarschuwt voordat een reis je boven 180 dagen brengt.</p>
-        <ol>
-          <li>Download je verblijven in het VK tussen eerdere reizen als bestand.</li>
-          <li>Ga op je iPhone in AtlasDays naar Instellingen → Importeren → CSV-bestand en kies het bestand. Je ziet elk verblijf voordat er iets wordt toegevoegd.</li>
-          <li>Voeg de preset voor Britse Indefinite Leave to Remain toe. Geplande reizen staan niet in het bestand; voeg ze in de app toe wanneer je boekt.</li>
-        </ol>
+        <p class="cal-dialog-title" id="uk-ilr-import-title">Ga verder in AtlasDays</p>
+        <p>Download het bestand en open het in AtlasDays: Instellingen → Importeren → CSV-bestand.</p>
         <div class="cal-dialog-actions">
           <button type="button" data-cal-download>Download bestand</button>
           <a class="cal-dialog-app" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">Download AtlasDays</a>

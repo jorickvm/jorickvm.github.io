@@ -125,6 +125,18 @@ html.hx-page.hx-scrolled .top-bar-inner {
   -webkit-backdrop-filter: blur(18px) saturate(1.4);
   box-shadow: var(--shadow);
 }
+/* The pill is 880px wide, narrower than the 1040px flat bar, so it takes the
+   compact controls the flat bar only uses below 1040px (site-header.css).
+   Without them seven locales pushed the theme toggle out of the pill, Ukrainian
+   by 110px; dropping the wordmark and the language name returns ~165px. */
+html.hx-page.hx-scrolled .brand > span:not(.brand-mark) { display: none; }
+html.hx-page.hx-scrolled .lang-switch > summary {
+  width: var(--toolbar-control);
+  padding: 0;
+  justify-content: center;
+}
+html.hx-page.hx-scrolled .lang-switch-current,
+html.hx-page.hx-scrolled .lang-switch-caret { display: none; }
 
 /* ---------- hero ---------- */
 .hx-hero {

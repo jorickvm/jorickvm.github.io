@@ -120,10 +120,10 @@
   <script defer src="../../assets/js/locale-route.js?v=20260830c"></script>
   <link rel="stylesheet" href="../../assets/css/tokens.css?v=20260928f" />
   <link rel="stylesheet" href="../../assets/css/article-variants/49dd6e3e3ea5.css?v=20260928f" />
-  <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260928e" />
+  <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20260925a" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
-  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20260929a" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261003c" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">跳至主要內容</a>
@@ -181,7 +181,6 @@
               <a href="/zh-Hant/visa-limits">簽證停留上限</a>
               <a href="/zh-Hant/residency-thresholds">稅務居民門檻</a>
               <a href="/zh-Hant/citizenship">歸化</a>
-            <a href="/zh-Hant/citizenship">歸化</a>
               <a href="/zh-Hant/travel-history">旅行紀錄</a>
             </nav>
           </details>
@@ -207,12 +206,14 @@
 {
   "hintStart": "先點選離開英國的日期，再點選返回日期。",
   "hintEnd": "接著點選行程的另一端，或再次點選 {date} 取消。",
-  "hintMove": "點選新日期以移動這一端，或再次點選 {date} 保持原樣。",
   "inTrip": "在英國境外",
   "pending": "新行程的起點",
-  "held": "已選取行程終點",
   "empty": "還沒有行程。",
   "deleteTrip": "刪除行程",
+  "country": "國家或地區",
+  "addCountry": "新增國家或地區",
+  "noMatch": "找不到符合的國家或地區",
+  "hintSelected": "拖曳行程任一端可更改日期，也可以在下方刪除行程。",
   "tripAway": {
     "other": "離境 {n} 天"
   },
@@ -237,21 +238,15 @@
       <div class="cal-side">
         <div class="cal-box" aria-live="polite">
           <div data-cal-result></div>
-          <button type="button" class="cal-import" data-cal-import>匯入 AtlasDays</button>
         </div>
         <div class="cal-box">
           <h3>行程</h3>
-          <div data-cal-list></div>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>免費匯入 AtlasDays</button>
         </div>
       </div>
       <dialog class="cal-dialog" data-cal-dialog aria-labelledby="uk-ilr-import-title">
-        <p class="cal-dialog-title" id="uk-ilr-import-title">匯入 AtlasDays</p>
-        <p>在 App 中持續計算離境天數。每次旅行後都會更新，也會在預定行程可能使天數超過 180 天時提醒。</p>
-        <ol>
-          <li>下載過去各次行程之間在英國停留的日期檔案。</li>
-          <li>在 iPhone 上開啟 AtlasDays，前往「設定」→「匯入」→「CSV 檔案」，選擇該檔案。新增任何資料前，可先檢查每段停留。</li>
-          <li>加入「英國永久居留（ILR）」預設追蹤器。預定行程不會包含在檔案中，訂票後請在 App 內新增。</li>
-        </ol>
+        <p class="cal-dialog-title" id="uk-ilr-import-title">在 AtlasDays 中繼續</p>
+        <p>下載檔案，然後在 AtlasDays 中開啟：「設定」→「匯入」→「CSV 檔案」。</p>
         <div class="cal-dialog-actions">
           <button type="button" data-cal-download>下載檔案</button>
           <a class="cal-dialog-app" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">取得 AtlasDays</a>
@@ -360,10 +355,12 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"開啟導覽選單","menuClose":"關閉導覽選單"};</script>
   <script src="../../assets/js/navigation.js?v=20260817b"></script>
-  <script defer src="../../assets/js/rules/uk-ilr.js?v=20260928a"></script>
-  <script defer src="../../assets/js/day-calendar.js?v=20260929a"></script>
+  <script defer src="../../assets/js/rules/uk-ilr.js?v=20261001a"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261003c"></script>
   <!-- Cloudflare Web Analytics -->
-  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;token&quot;: &quot;1488e163b83a4eee81b63340359b6566&quot;}"></script>
+  <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
+  (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();
+  </script>
   <!-- End Cloudflare Web Analytics -->
 </body>
 </html>

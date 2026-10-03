@@ -12,12 +12,14 @@
 {
   "hintStart": "Tap the day you left the UK, then the day you came back.",
   "hintEnd": "Now tap the other end of the trip, or {date} again to cancel.",
-  "hintMove": "Tap a new date for this end of the trip, or {date} again to keep it.",
   "inTrip": "outside the UK",
   "pending": "start of a new trip",
-  "held": "trip end picked up",
   "empty": "No trips yet.",
   "deleteTrip": "Delete trip",
+  "country": "Country",
+  "addCountry": "Add country",
+  "noMatch": "No matching country",
+  "hintSelected": "Drag either end of the trip to change its dates, or delete it below.",
   "tripAway": {
     "one": "{n} day away",
     "other": "{n} days away"
@@ -44,21 +46,15 @@
       <div class="cal-side">
         <div class="cal-box" aria-live="polite">
           <div data-cal-result></div>
-          <button type="button" class="cal-import" data-cal-import>Import to AtlasDays</button>
         </div>
         <div class="cal-box">
           <h3>Trips</h3>
-          <div data-cal-list></div>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Import into AtlasDays for free</button>
         </div>
       </div>
       <dialog class="cal-dialog" data-cal-dialog aria-labelledby="uk-ilr-import-title">
-        <p class="cal-dialog-title" id="uk-ilr-import-title">Import to AtlasDays</p>
-        <p>Keep this count running in the app. It updates as you travel and warns you before a trip would take you over 180 days.</p>
-        <ol>
-          <li>Download your time in the UK between past trips as a file.</li>
-          <li>In AtlasDays on your iPhone, go to Settings → Import → CSV File and choose the file. You see every stay before anything is added.</li>
-          <li>Add the UK Indefinite Leave to Remain preset. Planned trips are not in the file; add them in the app when you book.</li>
-        </ol>
+        <p class="cal-dialog-title" id="uk-ilr-import-title">Continue in AtlasDays</p>
+        <p>Download the file and open it in AtlasDays: Settings → Import → CSV File.</p>
         <div class="cal-dialog-actions">
           <button type="button" data-cal-download>Download file</button>
           <a class="cal-dialog-app" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">Get AtlasDays</a>

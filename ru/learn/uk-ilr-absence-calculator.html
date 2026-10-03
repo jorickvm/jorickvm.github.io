@@ -120,10 +120,10 @@
   <script defer src="../../assets/js/locale-route.js?v=20260830c"></script>
   <link rel="stylesheet" href="../../assets/css/tokens.css?v=20260928f" />
   <link rel="stylesheet" href="../../assets/css/article-variants/49dd6e3e3ea5.css?v=20260928f" />
-  <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260928e" />
+  <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20260925a" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
-  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20260929a" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261003c" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Перейти к содержимому</a>
@@ -181,7 +181,6 @@
               <a href="/ru/visa-limits">Визовые лимиты</a>
               <a href="/ru/residency-thresholds">Налоговое резидентство</a>
               <a href="/ru/citizenship">Гражданство</a>
-            <a href="/ru/citizenship">Гражданство</a>
               <a href="/ru/travel-history">История поездок</a>
             </nav>
           </details>
@@ -207,12 +206,14 @@
 {
   "hintStart": "Нажмите день выезда из Великобритании, затем день возвращения.",
   "hintEnd": "Теперь нажмите второй край поездки или повторно {date}, чтобы отменить.",
-  "hintMove": "Нажмите новую дату для этого края поездки или повторно {date}, чтобы оставить прежнюю.",
   "inTrip": "вне Великобритании",
   "pending": "начало новой поездки",
-  "held": "конец поездки выбран для переноса",
   "empty": "Поездок пока нет.",
   "deleteTrip": "Удалить поездку",
+  "country": "Страна",
+  "addCountry": "Добавить страну",
+  "noMatch": "Страна не найдена",
+  "hintSelected": "Перетащите любой край поездки, чтобы изменить даты, или удалите её ниже.",
   "tripAway": {
     "one": "{n} день за границей",
     "few": "{n} дня за границей",
@@ -243,21 +244,15 @@
       <div class="cal-side">
         <div class="cal-box" aria-live="polite">
           <div data-cal-result></div>
-          <button type="button" class="cal-import" data-cal-import>Импортировать в AtlasDays</button>
         </div>
         <div class="cal-box">
           <h3>Поездки</h3>
-          <div data-cal-list></div>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Бесплатно импортировать в AtlasDays</button>
         </div>
       </div>
       <dialog class="cal-dialog" data-cal-dialog aria-labelledby="uk-ilr-import-title">
-        <p class="cal-dialog-title" id="uk-ilr-import-title">Импортировать в AtlasDays</p>
-        <p>Продолжайте подсчёт в приложении. Оно обновляется по мере поездок и предупреждает, если следующая поездка приведёт к превышению 180 дней.</p>
-        <ol>
-          <li>Скачайте файл с периодами вашего пребывания в Великобритании между прошлыми поездками.</li>
-          <li>На iPhone откройте AtlasDays → «Настройки» → «Импорт» → «Файл CSV» и выберите файл. Вы увидите каждое пребывание до добавления.</li>
-          <li>Добавьте готовый трекер «Британский ILR (бессрочный ВНЖ)». Запланированных поездок в файле нет; внесите их в приложение после бронирования.</li>
-        </ol>
+        <p class="cal-dialog-title" id="uk-ilr-import-title">Продолжить в AtlasDays</p>
+        <p>Скачайте файл и откройте его в AtlasDays: «Настройки» → «Импорт» → «Файл CSV».</p>
         <div class="cal-dialog-actions">
           <button type="button" data-cal-download>Скачать файл</button>
           <a class="cal-dialog-app" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">Загрузить AtlasDays</a>
@@ -366,10 +361,12 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"Открыть меню навигации","menuClose":"Закрыть меню навигации"};</script>
   <script src="../../assets/js/navigation.js?v=20260817b"></script>
-  <script defer src="../../assets/js/rules/uk-ilr.js?v=20260928a"></script>
-  <script defer src="../../assets/js/day-calendar.js?v=20260929a"></script>
+  <script defer src="../../assets/js/rules/uk-ilr.js?v=20261001a"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261003c"></script>
   <!-- Cloudflare Web Analytics -->
-  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;token&quot;: &quot;1488e163b83a4eee81b63340359b6566&quot;}"></script>
+  <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
+  (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();
+  </script>
   <!-- End Cloudflare Web Analytics -->
 </body>
 </html>

@@ -146,6 +146,7 @@ class AuditSiteTests(unittest.TestCase):
             {
                 "app/changelog/index.html",
                 "app/help/index.html",
+                "app/open/index.html",
                 "app/privacy/index.html",
                 "app/terms/index.html",
                 "learn/day-limits.html",

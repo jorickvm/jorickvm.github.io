@@ -1,98 +1,117 @@
 #!/usr/bin/env python3
-"""Verify every Learn slug the AtlasDays app links to exists in learn/.
+"""Verify every website address the AtlasDays app opens still exists on this site.
 
-The iOS app's tracker editor links each curated preset to its Learn article
-via the slug map in `TrackerLearnLinks.swift` (app repo). Those URLs are
-shipped in App Store builds and cannot be taken back, so a slug rename or an
-article merge on this site silently 404s inside the app. This script reads
-the app's map and fails when any slug no longer resolves to
-`learn/<slug>.html`.
+App builds ship URLs that cannot be taken back: old versions stay on phones for
+years. A renamed, merged-without-redirect, or deleted page therefore turns into
+a dead link inside the app. The app opens two kinds of address:
 
-Those URLs are also the language hook. Each generated page carries a map of
-its own translations and redirects when it is opened with `?lang=<code>`, so
-the app keeps one URL per preset and appends its interface language, exactly
-as it already does for the /app/ alias pages. A slug with no translation has
-no entry in its map and stays English, which is why this check still only
-has to prove the English article exists.
+- Learn articles, by slug: the map in `TrackerLearnLinks.swift` plus any slug
+  written literally at an `AppLinks.learnArticle(slug: "...")` call site (the
+  Ireland and Substantial Presence Test links are). They open through the
+  in-app hop `/app/open/?to=/learn/<slug>`, which falls back to the English
+  article, so the English `learn/<slug>.html` must exist. A merged article's
+  redirect stub counts: it is a file at that path and forwards to the new page.
+- Fixed pages named in `AppLinks` (`SafariSheet.swift`): the hop itself, the
+  Help and changelog aliases, the legal pages.
 
-Local-only guard: the app repo is private, so CI cannot run this. It is
-deliberately NOT wired into site-audit.yml. Run it before renaming, merging,
-or deleting any Learn article, and as part of the pre-release habit:
+The app repo is private, so CI cannot read it. Instead this repo keeps a
+committed snapshot, `_site-src/data/app-links.json`, and CI checks the site
+against that. Refresh the snapshot whenever the app changes a slug or a link:
 
-    python3 scripts/check_app_learn_links.py
+    python3 scripts/check_app_learn_links.py --sync     # app repo -> snapshot, then check
+    python3 scripts/check_app_learn_links.py            # check the site against the snapshot (CI)
 
-Exits 0 with a skip message when the app repo is absent (e.g. a machine
-that only has the website checkout).
+Run locally with the app checkout present, the check also reports a snapshot
+that no longer matches the app, so a forgotten sync shows up before a push.
 """
 
 from __future__ import annotations
 
 import argparse
+import json
 import re
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-DEFAULT_APP_FILE = (
-    Path.home()
-    / "Projects/AtlasDays/AtlasDays/AtlasDays/Trackers/TrackerLearnLinks.swift"
-)
+SNAPSHOT = ROOT / "_site-src/data/app-links.json"
+DEFAULT_APP_ROOT = Path.home() / "Projects/AtlasDays/AtlasDays/AtlasDays"
 
 # The slug map is the dictionary literal assigned to slugsByPresetID; only
-# parse inside it (the same quoted-pair shape appears elsewhere in the file,
-# e.g. in a ternary inside the matcher).
-MAP_RE = re.compile(
-    r"slugsByPresetID:\s*\[String:\s*String\]\s*=\s*\[(.*?)\n    \]",
-    re.DOTALL,
-)
-# One map entry per line: "preset-id": "article-slug",
+# parse inside it (the same quoted-pair shape appears elsewhere in the file).
+MAP_RE = re.compile(r"slugsByPresetID:\s*\[String:\s*String\]\s*=\s*\[(.*?)\n    \]", re.DOTALL)
 ENTRY_RE = re.compile(r'"([a-z0-9-]+)"\s*:\s*"([a-z0-9-]+)"\s*,')
+# Literal slugs at call sites: every quoted slug inside learnArticle(slug: ...).
+CALL_RE = re.compile(r"learnArticle\(slug:([^)\n]*)\)")
+LITERAL_RE = re.compile(r'"([a-z0-9-]+)"')
+# Fixed site paths in AppLinks: localizedURL(path: "...") / websiteURL(path: "...").
+PATH_RE = re.compile(r'(?:localizedURL|websiteURL)\(path:\s*"(/[^"\\]*)"')
+
+
+def read_app(app_root: Path) -> dict:
+    links = app_root / "Trackers/TrackerLearnLinks.swift"
+    block = MAP_RE.search(links.read_text(encoding="utf-8"))
+    if not block:
+        raise SystemExit(f"error: slugsByPresetID dictionary not found in {links}")
+    slugs = {slug for _, slug in ENTRY_RE.findall(block.group(1))}
+    if not slugs:
+        raise SystemExit(f"error: no map entries parsed from {links}")
+    for swift in sorted(app_root.rglob("*.swift")):
+        for args in CALL_RE.findall(swift.read_text(encoding="utf-8")):
+            slugs.update(LITERAL_RE.findall(args))
+    sheet = app_root / "Shared/SafariSheet.swift"
+    pages = sorted(set(PATH_RE.findall(sheet.read_text(encoding="utf-8"))))
+    if not pages:
+        raise SystemExit(f"error: no AppLinks paths parsed from {sheet}")
+    return {"learn_slugs": sorted(slugs), "pages": pages}
+
+
+def page_file(path: str) -> Path:
+    """The committed file GitHub Pages serves for a site path."""
+    rel = path.strip("/")
+    if path.endswith("/"):
+        return ROOT / rel / "index.html"
+    return ROOT / f"{rel}.html"
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument(
-        "--app-file",
-        type=Path,
-        default=DEFAULT_APP_FILE,
-        help="Path to TrackerLearnLinks.swift (default: the main app checkout)",
-    )
+    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser.add_argument("--sync", action="store_true", help="refresh the snapshot from the app repo, then check")
+    parser.add_argument("--app-root", type=Path, default=DEFAULT_APP_ROOT,
+                        help="the app's source folder (default: the main app checkout)")
     args = parser.parse_args()
 
-    if not args.app_file.exists():
-        print(f"skip: app repo not found at {args.app_file}")
-        return 0
+    app_present = (args.app_root / "Trackers/TrackerLearnLinks.swift").exists()
+    if args.sync:
+        if not app_present:
+            print(f"error: app source not found at {args.app_root}")
+            return 1
+        data = read_app(args.app_root)
+        SNAPSHOT.write_text(json.dumps({
+            "_comment": "Every website address the AtlasDays app opens. Generated by "
+                        "scripts/check_app_learn_links.py --sync from the app repo; do not edit by hand.",
+            **data,
+        }, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+        print(f"synced: {len(data['learn_slugs'])} Learn slugs, {len(data['pages'])} pages")
 
-    source = args.app_file.read_text(encoding="utf-8")
-    map_block = MAP_RE.search(source)
-    if not map_block:
-        print(f"error: slugsByPresetID dictionary not found in {args.app_file}")
+    if not SNAPSHOT.exists():
+        print(f"error: {SNAPSHOT.relative_to(ROOT)} is missing; run with --sync on a machine with the app repo")
         return 1
-    entries = ENTRY_RE.findall(map_block.group(1))
-    if not entries:
-        print(f"error: no map entries parsed from {args.app_file}")
+    snap = json.loads(SNAPSHOT.read_text(encoding="utf-8"))
+
+    problems = [f"learn/{s}.html (Learn article)" for s in snap["learn_slugs"]
+                if not (ROOT / "learn" / f"{s}.html").exists()]
+    problems += [f"{page_file(p).relative_to(ROOT)} (app page {p})" for p in snap["pages"] if not page_file(p).exists()]
+    if problems:
+        print(f"error: {len(problems)} addresses the app opens no longer exist on the site:")
+        for p in problems:
+            print(f"  {p}")
+        print("Restore the page or add a redirect (_site-src/data/redirects.json); shipped app builds keep these URLs.")
         return 1
 
-    missing = [
-        (preset_id, slug)
-        for preset_id, slug in entries
-        if not (ROOT / "learn" / f"{slug}.html").exists()
-    ]
-    if missing:
-        print(f"error: {len(missing)} app-linked slugs have no article:")
-        for preset_id, slug in missing:
-            print(f"  {preset_id} -> learn/{slug}.html")
-        return 1
-
-    linked = {slug for _, slug in entries}
-    unlinked = sorted(
-        p.stem
-        for p in (ROOT / "learn").glob("*.html")
-        if p.stem not in linked and p.stem != "index"
-    )
-    print(f"OK: all {len(entries)} app-linked slugs resolve to learn/ articles.")
-    if unlinked:
-        print(f"note: {len(unlinked)} learn articles have no app link (informational).")
+    if app_present and not args.sync and read_app(args.app_root) != {k: snap[k] for k in ("learn_slugs", "pages")}:
+        print("warning: app-links.json differs from the app repo; run with --sync and commit it")
+    print(f"OK: all {len(snap['learn_slugs'])} app-linked Learn slugs and {len(snap['pages'])} app pages exist.")
     return 0
 
 

@@ -12,12 +12,14 @@
 {
   "hintStart": "Торкніться дня від’їзду з Великої Британії, а потім дня повернення.",
   "hintEnd": "Тепер торкніться іншої дати поїздки або ще раз {date}, щоб скасувати.",
-  "hintMove": "Торкніться нової дати для цього краю поїздки або ще раз {date}, щоб залишити його.",
   "inTrip": "поза Великою Британією",
   "pending": "початок нової поїздки",
-  "held": "вибрано кінець поїздки",
   "empty": "Поїздок поки немає.",
   "deleteTrip": "Видалити поїздку",
+  "country": "Країна",
+  "addCountry": "Додати країну",
+  "noMatch": "Країну не знайдено",
+  "hintSelected": "Перетягніть будь-який край поїздки, щоб змінити дати, або видаліть її нижче.",
   "tripAway": {
     "one": "{n} день відсутності",
     "few": "{n} дні відсутності",
@@ -48,21 +50,15 @@
       <div class="cal-side">
         <div class="cal-box" aria-live="polite">
           <div data-cal-result></div>
-          <button type="button" class="cal-import" data-cal-import>Імпортувати в AtlasDays</button>
         </div>
         <div class="cal-box">
           <h3>Поїздки</h3>
-          <div data-cal-list></div>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Безкоштовно імпортувати в AtlasDays</button>
         </div>
       </div>
       <dialog class="cal-dialog" data-cal-dialog aria-labelledby="uk-ilr-import-title">
-        <p class="cal-dialog-title" id="uk-ilr-import-title">Імпортувати в AtlasDays</p>
-        <p>Продовжуйте облік у програмі. Вона оновлює підрахунок під час поїздок і попереджає, якщо нова поїздка перевищить ліміт 180 днів.</p>
-        <ol>
-          <li>Завантажте файл зі своїм часом перебування у Великій Британії між минулими поїздками.</li>
-          <li>В AtlasDays на iPhone відкрийте Налаштування → Імпорт → Файл CSV і виберіть його. Перед додаванням ви побачите кожне перебування.</li>
-          <li>Додайте шаблон «Британський ILR (безстрокова посвідка)». Заплановані поїздки не входять до файлу; додайте їх у програмі після бронювання.</li>
-        </ol>
+        <p class="cal-dialog-title" id="uk-ilr-import-title">Продовжити в AtlasDays</p>
+        <p>Завантажте файл і відкрийте його в AtlasDays: Налаштування → Імпорт → Файл CSV.</p>
         <div class="cal-dialog-actions">
           <button type="button" data-cal-download>Завантажити файл</button>
           <a class="cal-dialog-app" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">Завантажити AtlasDays</a>

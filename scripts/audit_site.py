@@ -897,6 +897,7 @@ def write_baseline(path: Path, records: list[PageRecord]) -> None:
 BASELINE_HAND_AUTHORED = {
     "app/changelog/index.html",
     "app/help/index.html",
+    "app/open/index.html",
     "app/privacy/index.html",
     "app/terms/index.html",
     "learn/day-limits.html",

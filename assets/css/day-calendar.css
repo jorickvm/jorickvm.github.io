@@ -1,30 +1,48 @@
 /* AtlasDays day calendar (assets/js/day-calendar.js). Modelled on the app's
    calendar view: continuous week rows, the month name on the 1st, today as an
-   accent pill, one bar colour (the app's trip-bar tint), a faint disc on days
-   without a trip, other months dimmed. Sits inside the article column. */
+   accent pill, trips as bars in the app's trip blue, a faint disc on days
+   without a trip, other months dimmed. The result spans the top; calendar and
+   trips sit side by side at equal width, stacked on a phone.
+
+   Colours (Jorick, 2026-09-30), all from the app's trip blue #5B9ED9:
+     hover over a free day   25% blue circle (mouse only)
+     first day of a new trip solid blue circle
+     preview while choosing  50% blue bar (mouse only)
+     a trip                  solid blue bar
+     the selected trip       darker #3F7FC0, white drag handles on its ends */
 
 .daycal {
   --cal-bar: #5B9ED9;
-  --cal-pick: #8ABBE6;
+  --cal-sel: #3F7FC0;
+  --cal-hover: rgba(91, 158, 217, 0.25);
   --cal-disc: rgba(255, 255, 255, 0.07);
+  /* the app's tracker tones (iOS system colours) */
+  --tone-normal: #5B9ED9;
+  --tone-warning: #FF9F0A;
+  --tone-critical: #FF453A;
+  --tone-achieved: #30D158;
+  --cal-track: rgba(120, 120, 128, 0.32);
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 236px;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  grid-template-areas: "settings settings" "result result" "hint hint" "cal trips";
   gap: 14px;
+  align-items: start;
   margin: 18px 0 14px;
 }
-html[data-theme="light"] .daycal {
-  --cal-bar: #5B9ED9;
-  --cal-pick: #A9CDEE;
-  --cal-disc: rgba(12, 22, 40, 0.07);
-}
+html[data-theme="light"] .daycal { --cal-disc: rgba(12, 22, 40, 0.07); --tone-warning: #FF9500; --tone-critical: #FF3B30; --tone-achieved: #34C759; --cal-track: rgba(120, 120, 128, 0.2); }
+.cal-side { display: contents; }
+.cal-side > .cal-box:first-child { grid-area: result; }
+.cal-side > .cal-box:last-child { grid-area: trips; }
 
-.cal-hint { grid-column: 1 / -1; margin: 0; color: var(--muted); font-size: 0.93rem; }
+.cal-hint { grid-area: hint; margin: 0; color: var(--muted); font-size: 0.93rem; }
+/* the rule's choices, above the result card */
+.cal-settings { grid-area: settings; display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: center; }
 
 .cal-window {
+  grid-area: cal;
   position: relative;
   height: 548px;
-  overflow-y: auto;
-  overscroll-behavior: contain;
+  overflow-y: auto; /* no overscroll containment: at either end the page scrolls on */
   border: 1px solid var(--line);
   border-radius: 16px;
   background: var(--bg-card);
@@ -50,6 +68,8 @@ html[data-theme="light"] .daycal {
   border-top: 1px solid var(--line);
 }
 .cal-week:first-child { border-top: 0; }
+/* the month in view: an accent line over its days, 3px at 28%, as in the app */
+.cal-month-line { position: absolute; top: -2px; height: 3px; background: color-mix(in srgb, var(--cal-bar) 28%, transparent); pointer-events: none; }
 
 .cal-day {
   position: relative;
@@ -96,23 +116,134 @@ html[data-theme="light"] .daycal {
   background: var(--cal-disc);
 }
 .cal-day.has-trip::after { display: none; }
-/* The first day of a new trip, or a trip end picked up to move: just its
-   circle, light blue, drawn above any bar. */
-.cal-day.is-pending::after { display: block; z-index: 2; background: var(--cal-pick); box-shadow: 0 0 0 2px var(--bg-card); }
-@media (hover: hover) { .cal-day:not(.has-trip):hover::after { background: var(--line-strong); } }
+@media (hover: hover) and (pointer: fine) { .cal-day:not(.has-trip):hover::after { background: var(--cal-hover); } }
+/* also while the mouse is still on it, so the click shows at once */
+.cal-day.is-anchor::after, .cal-day.is-anchor:not(.has-trip):hover::after { display: block; z-index: 2; background: var(--cal-bar); }
 
 .cal-bars { position: absolute; left: 0; right: 0; top: 36px; height: 20px; z-index: 1; pointer-events: none; }
 .cal-bar { position: absolute; top: 0; height: 20px; background: var(--cal-bar); }
 .cal-bar.starts { border-top-left-radius: 10px; border-bottom-left-radius: 10px; }
 .cal-bar.ends { border-top-right-radius: 10px; border-bottom-right-radius: 10px; }
+.cal-bar.is-preview { background: color-mix(in srgb, var(--cal-bar) 50%, var(--bg-card)); }
+.cal-bar.is-selected { background: var(--cal-sel); }
+/* the trip's flag on the start of its bar: bar height, the app's 0.7 ratio */
+.cal-bar-flag {
+  position: absolute;
+  top: 0;
+  width: 28px;
+  height: 20px;
+  border-radius: 3px;
+  object-fit: cover;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.18);
+}
 
-.cal-side { display: grid; gap: 12px; align-content: start; min-width: 0; }
+/* Drag handles on the selected trip: 22px to see, 44px to touch. */
+.cal-handle {
+  position: absolute;
+  top: -1px;
+  z-index: 3;
+  width: 22px;
+  height: 22px;
+  margin-left: -11px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 0 3px var(--cal-sel), 0 2px 6px rgba(0, 0, 0, 0.35);
+  cursor: ew-resize;
+  pointer-events: auto;
+  touch-action: none;
+}
+.cal-handle::before { content: ""; position: absolute; inset: -11px; border-radius: 50%; }
+.daycal.is-dragging, .daycal.is-dragging * { cursor: ew-resize !important; user-select: none; }
 .cal-box {
   padding: 16px;
   border: 1px solid var(--line);
   border-radius: 16px;
   background: var(--bg-card);
 }
+
+/* menus a rule puts in the result box, e.g. "Days in [Spain] [2026]" */
+.cal-controls { display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: center; margin: 0 0 12px; }
+.cal-control { display: inline-flex; align-items: center; gap: 8px; min-width: 0; color: var(--muted); font-size: 0.9rem; }
+.cal-control select {
+  max-width: 100%;
+  padding: 6px 30px 6px 12px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: var(--bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' fill='none' stroke='%235B9ED9' stroke-width='1.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 12px center;
+  color: var(--text);
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 650;
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+/* the country being checked: its flag and a type-ahead field in one pill */
+.cal-control.is-country .cal-control-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 3px 12px 3px 6px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: var(--bg);
+}
+.cal-control.is-country .cal-flag { width: 24px; height: 18px; border-radius: 3px; }
+.cal-control.is-country .cal-country-input { width: 11em; margin: 0; padding: 3px 0; border: 0; background: transparent; font-weight: 650; }
+.cal-control.is-country .cal-country-input:focus { background: transparent; }
+.cal-control.is-country .cal-country-list { left: -30px; right: auto; width: 16em; }
+.cal-control.is-date { position: relative; }
+.cal-date-text {
+  display: inline-block;
+  padding: 6px 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 0.9rem;
+  font-weight: 650;
+  white-space: nowrap;
+}
+/* the native picker, invisible, over the pill: a tap opens the system calendar */
+.cal-control.is-date input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; color-scheme: light dark; }
+.cal-control.is-date:focus-within .cal-date-text { outline: 2px solid var(--blue); outline-offset: 2px; }
+
+/* the result as the app's tracker card: flag and title with the status pill,
+   then period and count, then the bar */
+.cal-card-head { display: flex; align-items: center; gap: 10px; margin: 0 0 12px; }
+.cal-card-head .cal-flag { width: 28px; height: 21px; }
+.cal-card-title { flex: 1 1 auto; min-width: 0; color: var(--text); font-size: 1.02rem; font-weight: 650; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cal-card-title.is-placeholder { color: var(--muted); font-weight: 500; }
+.cal-card-head .cal-pill { flex: 0 0 auto; margin: 0; }
+.cal-meter { display: grid; gap: 7px; margin: 2px 0 10px; }
+.cal-meter-row { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+.cal-meter-period { color: var(--muted); font-size: 0.9rem; }
+.cal-meter-count { color: var(--muted); font-size: 1.25rem; font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.cal-meter-count b { color: var(--text); }
+.cal-meter-track { height: 10px; border-radius: 999px; background: var(--cal-track); overflow: hidden; }
+.cal-meter-fill { display: block; height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--tone), color-mix(in srgb, var(--tone) 75%, transparent)); transition: width 0.2s ease; }
+.cal-meter, .cal-pill { --tone: var(--tone-normal); }
+.tone-warning { --tone: var(--tone-warning); }
+.tone-critical { --tone: var(--tone-critical); }
+.tone-achieved { --tone: var(--tone-achieved); }
+.cal-meter:not(.tone-normal) .cal-meter-count b { color: var(--tone); }
+.cal-pill {
+  display: inline-block;
+  margin: 0 0 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--tone) 15%, transparent);
+  color: var(--tone);
+  font-size: 0.8rem;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+}
+
+/* days outside the chosen period: shown for the week's sake, not tappable */
+.cal-day.is-outside { cursor: default; }
+.cal-day.is-outside .cal-num { opacity: 0.28; }
+.cal-day.is-outside::after { display: none; }
+.cal-trip.is-outside { opacity: 0.45; }
 
 .cal-result-head { display: grid; gap: 8px; justify-items: start; margin: 0 0 8px; }
 .cal-headline { margin: 0; color: var(--text); font-size: 1rem; font-weight: 650; line-height: 1.35; }
@@ -137,24 +268,43 @@ html[data-theme="light"] .daycal {
 
 .cal-box h3 { margin: 0 0 4px; font-size: 0.95rem; }
 .cal-empty { margin: 4px 0 0; color: var(--muted); font-size: 0.86rem; }
-.cal-trip { border-top: 1px solid var(--line); }
-.cal-trip:first-child { border-top: 0; }
-.cal-trip-main {
+/* A trip card, as the app shows one:
+     [flag]  Country (or a field to add one)
+             1 – 10 Jul 2026                    9 days away   */
+.cal-trip {
   display: grid;
-  gap: 1px;
-  width: 100%;
-  padding: 10px 0;
-  border: 0;
-  background: none;
-  color: var(--text);
-  font: inherit;
+  grid-template-columns: 28px minmax(0, 1fr);
+  grid-template-areas: "flag country" "flag line" ". delete";
+  column-gap: 12px;
+  row-gap: 2px;
+  align-items: center;
+  margin: 0 -8px;
+  padding: 10px 8px;
+  border-top: 1px solid var(--line);
+  border-radius: 12px;
   cursor: pointer;
-  text-align: left;
 }
-.cal-trip-dates { font-size: 0.9rem; font-weight: 600; }
-.cal-trip-count { color: var(--muted-2); font-size: 0.82rem; }
+.cal-trip:first-child { border-top-color: transparent; }
+.cal-trip.is-selected { background: rgba(91, 158, 217, 0.12); box-shadow: inset 0 0 0 1px rgba(91, 158, 217, 0.5); border-top-color: transparent; }
+.cal-trip.is-selected + .cal-trip { border-top-color: transparent; }
+.cal-flag {
+  grid-area: flag;
+  width: 28px;
+  height: 21px;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 0 0 1px var(--line);
+}
+.cal-flag img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.cal-flag.is-empty { background: var(--cal-disc); box-shadow: inset 0 0 0 1.5px var(--line-strong); }
+.cal-trip-country { grid-area: country; min-width: 0; font-size: 0.92rem; font-weight: 650; }
+.cal-trip-line { grid-area: line; display: flex; justify-content: space-between; gap: 10px; align-items: baseline; }
+.cal-trip-dates { color: var(--muted); font-size: 0.85rem; font-variant-numeric: tabular-nums; }
+.cal-trip-count { color: var(--muted-2); font-size: 0.82rem; white-space: nowrap; }
 .cal-delete {
-  margin: 0 0 12px;
+  grid-area: delete;
+  justify-self: start;
+  margin: 8px 0 2px;
   padding: 6px 14px;
   border: 1px solid rgba(217, 83, 79, 0.45);
   border-radius: 999px;
@@ -165,6 +315,52 @@ html[data-theme="light"] .daycal {
   font-weight: 600;
   cursor: pointer;
 }
+
+/* The country: a type-ahead field that reads like plain text until focused. */
+.cal-country-field { position: relative; }
+.cal-country-input {
+  width: 100%;
+  margin: -3px 0 -3px -6px;
+  padding: 3px 6px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-weight: 650;
+}
+.cal-country-input::placeholder { color: var(--blue); font-weight: 600; opacity: 1; }
+.cal-country-input:hover { border-color: var(--line); }
+.cal-country-input:focus { border-color: var(--blue); background: var(--bg); outline: none; font-weight: 500; }
+.cal-country-list {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: -6px;
+  right: 0;
+  z-index: 5;
+  max-height: 260px;
+  overflow-y: auto;
+  margin: 0;
+  padding: 4px;
+  list-style: none;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--bg-card);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+.cal-country-option {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 7px 8px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+.cal-country-option img { flex: 0 0 auto; width: 20px; height: 15px; border-radius: 3px; object-fit: cover; box-shadow: 0 0 0 1px var(--line); }
+.cal-country-option.is-active, .cal-country-option:hover { background: rgba(91, 158, 217, 0.16); }
+.cal-country-none { padding: 7px 8px; color: var(--muted); font-size: 0.86rem; }
 
 .cal-private { margin: 0 0 26px; color: var(--muted-2); font-size: 0.82rem; }
 
@@ -197,12 +393,9 @@ html[data-theme="light"] .daycal {
 .cal-dialog-app { border: 1px solid var(--line-strong); background: transparent; color: var(--text); }
 .cal-dialog [data-cal-close] { margin-left: auto; border: 0; background: none; color: var(--muted); }
 
-/* On a phone the result sits above the calendar, so every tap shows its
-   effect without scrolling; the trip list follows the calendar. */
+/* On a phone: hint, result, calendar, trips, one under the other. */
 @media (max-width: 640px) {
-  .daycal { grid-template-columns: minmax(0, 1fr); }
-  .cal-side { display: contents; }
-  .cal-side > .cal-box:first-child { order: 1; }
-  .cal-window { order: 2; height: 56vh; }
-  .cal-side > .cal-box:last-child { order: 3; }
+  .daycal { grid-template-columns: minmax(0, 1fr); grid-template-areas: "settings" "result" "hint" "cal" "trips"; }
+  .cal-window { height: min(50vh, 460px); } /* leaves page to swipe on above and below */
+  .cal-country-input, .cal-control select { font-size: 16px; } /* keeps iOS from zooming in on focus */
 }

@@ -120,10 +120,10 @@
   <script defer src="../../assets/js/locale-route.js?v=20260830c"></script>
   <link rel="stylesheet" href="../../assets/css/tokens.css?v=20260928f" />
   <link rel="stylesheet" href="../../assets/css/article-variants/49dd6e3e3ea5.css?v=20260928f" />
-  <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260928e" />
+  <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20260925a" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
-  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20260929a" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261003c" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Ga naar de inhoud</a>
@@ -181,7 +181,6 @@
               <a href="/nl/visa-limits">Visumlimieten</a>
               <a href="/nl/residency-thresholds">Fiscaal inwonerschap</a>
               <a href="/nl/citizenship">Nationaliteit</a>
-            <a href="/nl/citizenship">Nationaliteit</a>
               <a href="/nl/travel-history">Reisgeschiedenis</a>
             </nav>
           </details>
@@ -207,12 +206,14 @@
 {
   "hintStart": "Tik op de dag waarop je het VK verliet en daarna op de dag waarop je terugkwam.",
   "hintEnd": "Tik nu op de andere datum van de reis, of nogmaals op {date} om te annuleren.",
-  "hintMove": "Tik op een nieuwe datum voor dit uiteinde van de reis, of nogmaals op {date} om het te laten staan.",
   "inTrip": "buiten het VK",
   "pending": "begin van een nieuwe reis",
-  "held": "einddatum van de reis geselecteerd",
   "empty": "Nog geen reizen.",
   "deleteTrip": "Verwijder reis",
+  "country": "Land",
+  "addCountry": "Voeg land toe",
+  "noMatch": "Geen land gevonden",
+  "hintSelected": "Sleep een van beide uiteinden van de reis om de datums te wijzigen, of verwijder de reis hieronder.",
   "tripAway": {
     "one": "{n} dag afwezig",
     "other": "{n} dagen afwezig"
@@ -239,21 +240,15 @@
       <div class="cal-side">
         <div class="cal-box" aria-live="polite">
           <div data-cal-result></div>
-          <button type="button" class="cal-import" data-cal-import>Importeer in AtlasDays</button>
         </div>
         <div class="cal-box">
           <h3>Reizen</h3>
-          <div data-cal-list></div>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Importeer gratis in AtlasDays</button>
         </div>
       </div>
       <dialog class="cal-dialog" data-cal-dialog aria-labelledby="uk-ilr-import-title">
-        <p class="cal-dialog-title" id="uk-ilr-import-title">Importeer in AtlasDays</p>
-        <p>Houd de telling bij in de app. Die wordt tijdens je reizen bijgewerkt en waarschuwt voordat een reis je boven 180 dagen brengt.</p>
-        <ol>
-          <li>Download je verblijven in het VK tussen eerdere reizen als bestand.</li>
-          <li>Ga op je iPhone in AtlasDays naar Instellingen → Importeren → CSV-bestand en kies het bestand. Je ziet elk verblijf voordat er iets wordt toegevoegd.</li>
-          <li>Voeg de preset voor Britse Indefinite Leave to Remain toe. Geplande reizen staan niet in het bestand; voeg ze in de app toe wanneer je boekt.</li>
-        </ol>
+        <p class="cal-dialog-title" id="uk-ilr-import-title">Ga verder in AtlasDays</p>
+        <p>Download het bestand en open het in AtlasDays: Instellingen → Importeren → CSV-bestand.</p>
         <div class="cal-dialog-actions">
           <button type="button" data-cal-download>Download bestand</button>
           <a class="cal-dialog-app" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">Download AtlasDays</a>
@@ -362,10 +357,12 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"Open het navigatiemenu","menuClose":"Sluit het navigatiemenu"};</script>
   <script src="../../assets/js/navigation.js?v=20260817b"></script>
-  <script defer src="../../assets/js/rules/uk-ilr.js?v=20260928a"></script>
-  <script defer src="../../assets/js/day-calendar.js?v=20260929a"></script>
+  <script defer src="../../assets/js/rules/uk-ilr.js?v=20261001a"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261003c"></script>
   <!-- Cloudflare Web Analytics -->
-  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;token&quot;: &quot;1488e163b83a4eee81b63340359b6566&quot;}"></script>
+  <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
+  (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();
+  </script>
   <!-- End Cloudflare Web Analytics -->
 </body>
 </html>

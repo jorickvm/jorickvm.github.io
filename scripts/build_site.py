@@ -41,7 +41,7 @@ REDIRECT_TEMPLATE = SOURCE_ROOT / "templates" / "redirect.html"
 CLUSTER_DATA_PATH = SOURCE_ROOT / "data" / "content-clusters.json"
 BUILD_VERSION = "20260928f"
 VARIANT_VERSIONS = {("article", "help20260802"): "20260928f", ("hub", "92c3adc0daf3"): "20260928f"}
-SITE_HEADER_VERSION = "20260928e"
+SITE_HEADER_VERSION = "20260930a"
 ARTICLE_COMPONENTS_VERSION = "20260925a"
 NAVIGATION_VERSION = "20260817b"
 
@@ -311,6 +311,10 @@ def render_cluster_related(
     code = str(locale["code"])
     available = {route_for(path) for path in translations.get(code, {})}
     links = []
+    if code != "en":
+        # A page this locale has not translated yet (published English first,
+        # or listed under `untranslated`) is not offered here in English.
+        ordered = [path for path in ordered if path in translations.get(code, {})]
     for path in ordered[:5]:
         overlay = translations.get(code, {}).get(path)
         title = str(overlay["headline"]) if overlay else titles.get(path)

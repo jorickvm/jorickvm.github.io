@@ -12,12 +12,14 @@
 {
   "hintStart": "Önce Birleşik Krallık’tan ayrıldığınız günü, ardından döndüğünüz günü seçin.",
   "hintEnd": "Şimdi seyahatin diğer uç tarihini seçin veya iptal etmek için yeniden {date} tarihine dokunun.",
-  "hintMove": "Seyahatin bu ucu için yeni bir tarih seçin veya olduğu gibi bırakmak için yeniden {date} tarihine dokunun.",
   "inTrip": "Birleşik Krallık dışında",
   "pending": "yeni seyahatin başlangıcı",
-  "held": "seyahatin bitiş tarihi seçildi",
   "empty": "Henüz seyahat yok.",
   "deleteTrip": "Seyahati sil",
+  "country": "Ülke",
+  "addCountry": "Ülke ekle",
+  "noMatch": "Eşleşen ülke yok",
+  "hintSelected": "Tarihlerini değiştirmek için seyahatin iki ucundan birini sürükleyin veya seyahati aşağıdan silin.",
   "tripAway": {
     "one": "{n} gün yurt dışında",
     "other": "{n} gün yurt dışında"
@@ -44,21 +46,15 @@
       <div class="cal-side">
         <div class="cal-box" aria-live="polite">
           <div data-cal-result></div>
-          <button type="button" class="cal-import" data-cal-import>AtlasDays’e aktar</button>
         </div>
         <div class="cal-box">
           <h3>Seyahatler</h3>
-          <div data-cal-list></div>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>AtlasDays’e ücretsiz aktar</button>
         </div>
       </div>
       <dialog class="cal-dialog" data-cal-dialog aria-labelledby="uk-ilr-import-title">
-        <p class="cal-dialog-title" id="uk-ilr-import-title">AtlasDays’e aktar</p>
-        <p>Bu hesabı uygulamada sürdürün. Siz seyahat ettikçe güncellenir ve bir seyahat sizi 180 günün üzerine çıkaracaksa önceden uyarır.</p>
-        <ol>
-          <li>Geçmiş seyahatleriniz arasındaki Birleşik Krallık’ta kalış sürelerini dosya olarak indirin.</li>
-          <li>iPhone’unuzdaki AtlasDays’de Ayarlar → İçe aktarma → CSV dosyası yolunu izleyip dosyayı seçin. Herhangi bir kayıt eklenmeden önce tüm kalışları görebilirsiniz.</li>
-          <li>Birleşik Krallık süresiz oturma izni (ILR) hazır ayarını ekleyin. Planlı seyahatler dosyada yer almaz; rezervasyon yaptığınızda bunları uygulamaya ekleyin.</li>
-        </ol>
+        <p class="cal-dialog-title" id="uk-ilr-import-title">AtlasDays’de devam edin</p>
+        <p>Dosyayı indirin ve AtlasDays’de açın: Ayarlar → İçe aktarma → CSV dosyası.</p>
         <div class="cal-dialog-actions">
           <button type="button" data-cal-download>Dosyayı indir</button>
           <a class="cal-dialog-app" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">AtlasDays’i indirin</a>

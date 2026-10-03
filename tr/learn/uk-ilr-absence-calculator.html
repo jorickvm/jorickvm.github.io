@@ -120,10 +120,10 @@
   <script defer src="../../assets/js/locale-route.js?v=20260830c"></script>
   <link rel="stylesheet" href="../../assets/css/tokens.css?v=20260928f" />
   <link rel="stylesheet" href="../../assets/css/article-variants/49dd6e3e3ea5.css?v=20260928f" />
-  <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260928e" />
+  <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20260925a" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
-  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20260929a" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261003c" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">İçeriğe geç</a>
@@ -181,7 +181,6 @@
               <a href="/tr/visa-limits">Vize sınırları</a>
               <a href="/tr/residency-thresholds">Vergi ikameti eşikleri</a>
               <a href="/tr/citizenship">Vatandaşlık</a>
-            <a href="/tr/citizenship">Vatandaşlık</a>
               <a href="/tr/travel-history">Seyahat geçmişi</a>
             </nav>
           </details>
@@ -207,12 +206,14 @@
 {
   "hintStart": "Önce Birleşik Krallık’tan ayrıldığınız günü, ardından döndüğünüz günü seçin.",
   "hintEnd": "Şimdi seyahatin diğer uç tarihini seçin veya iptal etmek için yeniden {date} tarihine dokunun.",
-  "hintMove": "Seyahatin bu ucu için yeni bir tarih seçin veya olduğu gibi bırakmak için yeniden {date} tarihine dokunun.",
   "inTrip": "Birleşik Krallık dışında",
   "pending": "yeni seyahatin başlangıcı",
-  "held": "seyahatin bitiş tarihi seçildi",
   "empty": "Henüz seyahat yok.",
   "deleteTrip": "Seyahati sil",
+  "country": "Ülke",
+  "addCountry": "Ülke ekle",
+  "noMatch": "Eşleşen ülke yok",
+  "hintSelected": "Tarihlerini değiştirmek için seyahatin iki ucundan birini sürükleyin veya seyahati aşağıdan silin.",
   "tripAway": {
     "one": "{n} gün yurt dışında",
     "other": "{n} gün yurt dışında"
@@ -239,21 +240,15 @@
       <div class="cal-side">
         <div class="cal-box" aria-live="polite">
           <div data-cal-result></div>
-          <button type="button" class="cal-import" data-cal-import>AtlasDays’e aktar</button>
         </div>
         <div class="cal-box">
           <h3>Seyahatler</h3>
-          <div data-cal-list></div>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>AtlasDays’e ücretsiz aktar</button>
         </div>
       </div>
       <dialog class="cal-dialog" data-cal-dialog aria-labelledby="uk-ilr-import-title">
-        <p class="cal-dialog-title" id="uk-ilr-import-title">AtlasDays’e aktar</p>
-        <p>Bu hesabı uygulamada sürdürün. Siz seyahat ettikçe güncellenir ve bir seyahat sizi 180 günün üzerine çıkaracaksa önceden uyarır.</p>
-        <ol>
-          <li>Geçmiş seyahatleriniz arasındaki Birleşik Krallık’ta kalış sürelerini dosya olarak indirin.</li>
-          <li>iPhone’unuzdaki AtlasDays’de Ayarlar → İçe aktarma → CSV dosyası yolunu izleyip dosyayı seçin. Herhangi bir kayıt eklenmeden önce tüm kalışları görebilirsiniz.</li>
-          <li>Birleşik Krallık süresiz oturma izni (ILR) hazır ayarını ekleyin. Planlı seyahatler dosyada yer almaz; rezervasyon yaptığınızda bunları uygulamaya ekleyin.</li>
-        </ol>
+        <p class="cal-dialog-title" id="uk-ilr-import-title">AtlasDays’de devam edin</p>
+        <p>Dosyayı indirin ve AtlasDays’de açın: Ayarlar → İçe aktarma → CSV dosyası.</p>
         <div class="cal-dialog-actions">
           <button type="button" data-cal-download>Dosyayı indir</button>
           <a class="cal-dialog-app" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">AtlasDays’i indirin</a>
@@ -362,10 +357,12 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"Gezinme menüsünü aç","menuClose":"Gezinme menüsünü kapat"};</script>
   <script src="../../assets/js/navigation.js?v=20260817b"></script>
-  <script defer src="../../assets/js/rules/uk-ilr.js?v=20260928a"></script>
-  <script defer src="../../assets/js/day-calendar.js?v=20260929a"></script>
+  <script defer src="../../assets/js/rules/uk-ilr.js?v=20261001a"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261003c"></script>
   <!-- Cloudflare Web Analytics -->
-  <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon="{&quot;token&quot;: &quot;1488e163b83a4eee81b63340359b6566&quot;}"></script>
+  <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
+  (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();
+  </script>
   <!-- End Cloudflare Web Analytics -->
 </body>
 </html>

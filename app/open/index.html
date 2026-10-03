@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex" />
+  <title>AtlasDays</title>
+  <!--
+    In-app link hop. The app opens /app/open/?to=<site path>&lang=<interface language>&theme=<...>.
+    This page loads no analytics and forwards at once to the reader's language version of <path>,
+    so the page that loads records /app/open/ as its referrer path: that is how in-app visits are
+    told apart from everything else in Cloudflare Web Analytics.
+
+    It finds the language version by asking the server, not from a list of locales, so a new locale
+    needs nothing here: it tries the full language tag, then shorter ones (pt-BR, then pt), and
+    falls back to the English page. Only same-site paths are accepted, so it cannot be used to
+    redirect anywhere else. Hand-authored: no build step touches it.
+  -->
+  <script>
+  (function () {
+    var q = new URLSearchParams(location.search);
+    var to = q.get('to') || '/';
+    if (!/^\/(?!\/)[A-Za-z0-9\-._~\/]*$/.test(to)) to = '/';
+    var theme = q.get('theme');
+    var suffix = theme === 'light' || theme === 'dark' ? '?theme=' + theme : '';
+
+    var tags = (q.get('lang') || '').replace(/_/g, '-').split('-').filter(Boolean);
+    var candidates = [];
+    for (var n = tags.length; n > 0; n--) {
+      var tag = tags.slice(0, n).join('-');
+      if (/^en$/i.test(tags[0])) break;
+      if (/^[A-Za-z]{2,3}(-[A-Za-z0-9]{2,8})*$/.test(tag)) candidates.push('/' + tag + (to === '/' ? '/' : to));
+    }
+
+    var done = false;
+    function go(path) {
+      if (done) return;
+      done = true;
+      location.replace(path + suffix);
+    }
+    // A slow network must not strand the reader on a blank page.
+    setTimeout(function () { go(to); }, 1500);
+    (function next(i) {
+      if (i >= candidates.length) return go(to);
+      fetch(candidates[i], { method: 'HEAD', credentials: 'same-origin' })
+        .then(function (r) { if (r.ok) go(candidates[i]); else next(i + 1); })
+        .catch(function () { next(i + 1); });
+    })(0);
+  })();
+  </script>
+</head>
+<body>
+  <noscript><p><a href="/">AtlasDays</a></p></noscript>
+</body>
+</html>

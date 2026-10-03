@@ -85,6 +85,12 @@ These pages describe something scheduled to change. The tier cadence would revie
 | 2027-03-31 | 1 | [learn/us-green-card-absence-limits.html](/learn/us-green-card-absence-limits) | exact-date-required | 3 |
 | 2027-03-31 | 1 | [learn/us-naturalization-physical-presence.html](/learn/us-naturalization-physical-presence) | exact-date-required | 2 |
 
+## 2027-05
+
+| Due | Tier | Article | Status | Sources |
+|---|---|---|---|---:|
+| 2027-05-01 | 1 | [learn/183-day-rule-calculator.html](/learn/183-day-rule-calculator) | exact-date-required | 5 |
+
 ## 2027-08
 
 | Due | Tier | Article | Status | Sources |

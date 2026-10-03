@@ -512,6 +512,15 @@ html[data-theme="light"] .theme-toggle .icon-moon { display: block; }
   .top-cta { padding: 0 13px; font-size: 0.9rem; }
 }
 
+/* Between the 380px label cut-off below and ~400px, the longest download
+   labels (Ukrainian, Dutch, Spanish) overflowed the bar by up to 14px, on the
+   most common iPhone widths. Tighter gaps return ~18px, so every label stays. */
+@media (max-width: 420px) {
+  .top-bar-inner { gap: 10px; }
+  .top-links { gap: 6px; }
+  .top-cta { padding: 0 10px; gap: 5px; }
+}
+
 /* Below ~380px the CTA label and three square controls stop fitting on one
    line alongside the logo. The label goes and the glyph carries the button; the
    anchor keeps its aria-label, so the accessible name does not go with it. */
