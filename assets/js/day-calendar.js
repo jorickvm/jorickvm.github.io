@@ -70,6 +70,23 @@
   // Every place AtlasDays tracks (the app's CountryLists: 197 countries and 53
   // territories). A rule may narrow it with countries().
   var PLACES = "AD AE AF AG AI AL AM AO AQ AR AS AT AU AW AX AZ BA BB BD BE BF BG BH BI BJ BL BM BN BO BQ BR BS BT BV BW BY BZ CA CC CD CF CG CH CI CK CL CM CN CO CR CU CV CW CX CY CZ DE DJ DK DM DO DZ EC EE EG EH ER ES ET FI FJ FK FM FO FR GA GB GD GE GF GG GH GI GL GM GN GP GQ GR GS GT GU GW GY HK HM HN HR HT HU ID IE IL IM IN IO IQ IR IS IT JE JM JO JP KE KG KH KI KM KN KP KR KW KY KZ LA LB LC LI LK LL LR LS LT LU LV LY MA MC MD ME MF MG MH MK ML MM MN MO MP MQ MR MS MT MU MV MW MX MY MZ NA NC NE NF NG NI NL NO NP NR NU NZ OM PA PE PF PG PH PK PL PM PN PR PS PT PW PY QA RE RO RS RU RW SA SB SC SD SE SG SH SI SJ SK SL SM SN SO SR SS ST SV SX SY SZ TC TD TF TG TH TJ TK TL TM TN TO TR TT TV TW TZ UA UG US UY UZ VA VC VE VG VI VN VU WF WS XK YE YT ZA ZM ZW".split(" ");
+  // Line icons in the spirit of the app's SF Symbols (target, calendar,
+  // calendar.badge.clock); SF Symbols themselves are licensed for Apple
+  // platforms only, so these are drawn here.
+  var ICONS = {
+    target: '<circle cx="10" cy="10" r="7.25"/><circle cx="10" cy="10" r="4"/><circle cx="10" cy="10" r="0.9" fill="currentColor"/>',
+    calendar: '<rect x="3" y="4.5" width="14" height="12.5" rx="2.5"/><path d="M3 8.5h14M7 2.75v3M13 2.75v3"/>',
+    starts: '<rect x="3" y="4.5" width="11" height="11" rx="2.5"/><path d="M3 8.5h11M6.5 2.75v3M10.5 2.75v3"/><circle cx="14.25" cy="14.25" r="3.6" fill="var(--bg-card)"/><path d="M14.25 12.6v1.8l1.2.8"/>',
+    updown: '<path d="M6.5 7.5L10 4l3.5 3.5M6.5 12.5L10 16l3.5-3.5"/>',
+    down: '<path d="M6 8l4 4 4-4"/>'
+  };
+  function icon(name, cls) {
+    var span = document.createElement("span");
+    span.className = "cal-icon" + (cls ? " " + cls : "");
+    span.setAttribute("aria-hidden", "true");
+    span.innerHTML = '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">' + ICONS[name] + '</svg>';
+    return span;
+  }
   var regionNames = null;
   try { regionNames = new Intl.DisplayNames([locale], { type: "region" }); } catch (e) {}
   function placeName(code) {
@@ -147,6 +164,7 @@
     // A rule's choices (country, goal, period) sit in their own row above the
     // result card, so the card itself reads like the app's tracker card.
     var settingsRow = el("div", { "class": "cal-settings", hidden: "" });
+    if (rule.quietHint) { hint.classList.add("is-floating"); win.appendChild(hint); root.classList.add("has-floating-hint"); }
     root.insertBefore(settingsRow, root.querySelector(".cal-side") || win);
 
     var today = D.today();
@@ -546,12 +564,16 @@
         var flag = el("span", { "class": "cal-flag" + (ctl.value ? "" : " is-empty") });
         if (ctl.value) flag.appendChild(flagImg(ctl.value, 28));
         pill.appendChild(flag);
-        pill.appendChild(countryField(ctl.value, function (code) {
+        var field = countryField(ctl.value, function (code) {
           settings[ctl.key] = code;
           // stays marked before a country was chosen take it now
           trips.forEach(function (t) { if (!t.country) t.country = code; });
           commit();
-        }));
+        });
+        var fieldInput = field.querySelector("input");
+        fieldInput.addEventListener("input", function () { fitInput(fieldInput); });
+        pill.appendChild(field);
+        if (ctl.value) pill.appendChild(icon("down", "cal-chevron"));
         wrap.appendChild(pill);
         return wrap;
       }
@@ -559,7 +581,8 @@
         // A native date field shows the browser's own format (04/06/2026 in
         // the US), so the pill shows the page's format and the native picker
         // sits invisibly over it: a tap opens the system calendar.
-        var shown = el("span", { "class": "cal-date-text" }, ctl.display || ctl.value);
+        var shown = el("span", { "class": "cal-value" }, ctl.display || ctl.value);
+        shown.appendChild(icon("updown", "cal-chevron"));
         var input = el("input", { type: "date", value: ctl.value, "aria-label": ctl.label || ctl.prefix || "", title: ctl.label || "" });
         input.addEventListener("click", function () { try { if (input.showPicker) input.showPicker(); } catch (e) {} });
         input.addEventListener("change", function () { if (input.value) { settings[ctl.key] = input.value; changed(ctl); } });
@@ -568,14 +591,28 @@
         return wrap;
       }
       var pick = el("select", { "aria-label": ctl.label || ctl.prefix || "" });
+      var current = ctl.options.filter(function (o) { return o.value === ctl.value; })[0] || ctl.options[0];
       ctl.options.forEach(function (o) {
-        var opt = el("option", { value: o.value }, o.label);
+        var opt = el("option", { value: o.value }, o.detail ? o.label + " · " + o.detail.replace(/[.。]$/, "") : o.label);
         if (o.value === ctl.value) opt.selected = true;
         pick.appendChild(opt);
       });
       pick.addEventListener("change", function () { settings[ctl.key] = pick.value; changed(ctl); });
+      var shownValue = el("span", { "class": "cal-value" }, current ? current.label : "");
+      shownValue.appendChild(icon("updown", "cal-chevron"));
+      wrap.classList.add("is-select");
+      wrap.appendChild(shownValue);
       wrap.appendChild(pick);
       return wrap;
+    }
+    // The country in the card header is as wide as its name, so the chevron
+    // sits right after it.
+    function fitInput(input) {
+      var probe = el("span", { "class": "cal-measure" }, input.value || input.placeholder || "");
+      probe.style.font = getComputedStyle(input).font;
+      document.body.appendChild(probe);
+      input.style.width = Math.ceil(probe.getBoundingClientRect().width) + 14 + "px";
+      probe.remove();
     }
     function renderResult() {
       var r = rule.evaluate(trips, ctx());
@@ -584,9 +621,9 @@
       settingsRow.hidden = !(r.controls && r.controls.length);
       (r.controls || []).forEach(function (ctl) {
         var row = el("div", { "class": "cal-setting" });
+        if (ctl.icon) row.appendChild(icon(ctl.icon));
         row.appendChild(el("span", { "class": "cal-setting-label" }, ctl.label || ""));
         row.appendChild(control(ctl));
-        if (ctl.caption) row.appendChild(el("span", { "class": "cal-setting-caption" }, ctl.caption));
         settingsRow.appendChild(row);
       });
       if (r.meter) {
@@ -604,6 +641,8 @@
           }
           if (r.statusText) head.appendChild(el("span", { "class": "cal-pill tone-" + m.tone }, r.statusText));
           result.appendChild(head);
+          var titleInput = head.querySelector(".cal-country-input");
+          if (titleInput) fitInput(titleInput);
         }
         var meter = el("div", { "class": "cal-meter tone-" + m.tone });
         var row = el("div", { "class": "cal-meter-row" });

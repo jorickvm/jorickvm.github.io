@@ -80,18 +80,18 @@
       // The settings card, as the app's tracker editor: Goal (with its
       // residence captions), Window, then Year or Starts.
       var controls = [
-        { key: "goal", label: c.text("goal"), value: setting(c, "goal"), caption: target ? c.text("captionReach") : c.text("captionStay"), options: [
-          { value: "stay", label: c.text("goalStay") },
-          { value: "reach", label: c.text("goalReach") }
+        { key: "goal", icon: "target", label: c.text("goal"), value: setting(c, "goal"), options: [
+          { value: "stay", label: c.text("goalStay"), detail: c.text("captionStay") },
+          { value: "reach", label: c.text("goalReach"), detail: c.text("captionReach") }
         ] },
-        { key: "periodType", label: c.text("window"), value: type, moveCalendar: true, options: [
+        { key: "periodType", icon: "calendar", label: c.text("window"), value: type, moveCalendar: true, options: [
           { value: "calendar", label: c.text("periodCalendar") },
           { value: "tax", label: c.text("periodTax") },
           { value: "rolling", label: c.text("periodRolling") }
         ] }
       ];
-      if (type === "calendar") controls.push({ key: "year", label: c.text("year"), value: setting(c, "year"), options: years, moveCalendar: true });
-      if (type === "tax") controls.push({ type: "date", key: "taxStart", label: c.text("starts"), value: setting(c, "taxStart"),
+      if (type === "calendar") controls.push({ key: "year", icon: "calendar", label: c.text("year"), value: setting(c, "year"), options: years, moveCalendar: true });
+      if (type === "tax") controls.push({ type: "date", key: "taxStart", icon: "starts", label: c.text("starts"), value: setting(c, "taxStart"),
         display: c.dateRange(b.from, b.from), moveCalendar: true });
 
       var days = country && byCountry[country] ? byCountry[country].size : 0;
