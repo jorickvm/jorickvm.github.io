@@ -29,7 +29,8 @@
                              options: [{ value, label, group }], moveCalendar };
                              its choice lands in ctx.settings[key]
      quietHint               optional: no idle hint (the page's intro says it);
-                             the hint shows only while making or editing a trip
+                             the hint shows only while making or editing a trip,
+                             and each one only the first time
      fixedRange              optional: the calendar shows range() only, even
                              when a trip runs past it
      tripLabel(trip, ctx)    short text for a trip in the list
@@ -96,7 +97,8 @@
   }
   var plurals = new Intl.PluralRules(locale);
   function dateFormat(options) { return new Intl.DateTimeFormat(locale, Object.assign({ timeZone: "UTC" }, options)); }
-  var fullDate = dateFormat({ day: "numeric", month: "long", year: "numeric" });
+  // English pages write dates the British way, as the app does: 25 December 2026.
+  var fullDate = new Intl.DateTimeFormat(locale === "en" ? "en-GB" : locale, { timeZone: "UTC", day: "numeric", month: "long", year: "numeric" });
   var monthDate = dateFormat({ month: "long", year: "numeric" });
   var shortMonth = dateFormat({ month: "short" });
   var shortDate = dateFormat({ day: "numeric", month: "short" });
@@ -430,6 +432,7 @@
       render();
     }
 
+    var hintsSeen = {}, lastHint = "";
     function paint() {
       Object.keys(cells).forEach(function (k) {
         var day = +k, b = cells[k], i = tripAt(day);
@@ -439,9 +442,11 @@
         b.setAttribute("aria-label", label(day) + (i >= 0 ? ", " + S.inTrip : "") + (day === anchor ? ", " + S.pending : ""));
       });
       drawBars();
-      hint.textContent = selected >= 0 ? text("hintSelected")
-        : anchor != null ? text("hintEnd", { date: label(anchor) })
-        : rule.quietHint ? "" : text("hintStart");
+      var hintKey = selected >= 0 ? "hintSelected" : anchor != null ? "hintEnd" : rule.quietHint ? "" : "hintStart";
+      // A quiet rule shows each hint once: the first stay, the first selection.
+      if (rule.quietHint && hintKey !== lastHint) { if (lastHint) hintsSeen[lastHint] = true; lastHint = hintKey; }
+      if (rule.quietHint && hintsSeen[hintKey]) hintKey = "";
+      hint.textContent = hintKey === "hintEnd" ? text("hintEnd", { date: label(anchor) }) : hintKey ? text(hintKey) : "";
       hint.hidden = !hint.textContent;
     }
 
@@ -478,7 +483,9 @@
     }
     function countryField(current, onChoose) {
       var wrap = el("div", { "class": "cal-country-field" });
-      var input = el("input", { type: "text", "class": "cal-country-input", placeholder: text("addCountry"), "aria-label": text("country"), autocomplete: "off", spellcheck: "false", role: "combobox", "aria-expanded": "false", "aria-autocomplete": "list" });
+      var input = el("input", { type: "text", "class": "cal-country-input", placeholder: text("addCountry"), "aria-label": text("country"), autocomplete: "off",
+        // "search" in the name keeps Safari from offering contact AutoFill here
+        name: "cal-place-search", spellcheck: "false", role: "combobox", "aria-expanded": "false", "aria-autocomplete": "list" });
       if (current) input.value = placeName(current);
       var box = el("ul", { "class": "cal-country-list", role: "listbox", hidden: "" });
       var options = [], active = 0;
@@ -615,8 +622,8 @@
       var probe = el("span", { "class": "cal-measure" }, input.value || input.placeholder || "");
       probe.style.font = getComputedStyle(input).font;
       document.body.appendChild(probe);
-      // padding and border (14px) plus a little slack, so rounding never truncates
-      input.style.width = Math.ceil(probe.getBoundingClientRect().width) + 18 + "px";
+      // padding and border (14px) plus generous slack, so no font size truncates it
+      input.style.width = Math.ceil(probe.getBoundingClientRect().width) + 32 + "px";
       probe.remove();
     }
     function renderResult() {

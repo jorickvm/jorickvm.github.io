@@ -248,7 +248,7 @@ html[data-theme="light"] .daycal { --cal-disc: rgba(12, 22, 40, 0.07); --tone-wa
 .cal-card-head .cal-control.is-country .cal-flag { width: 28px; height: 21px; border-radius: 4px; }
 .cal-card-head .cal-control.is-country .cal-control-pill { min-width: 0; max-width: 100%; }
 .cal-card-head .cal-control.is-country .cal-country-field { min-width: 0; }
-.cal-card-head .cal-control.is-country .cal-country-input { max-width: min(15em, 52vw); padding: 3px 6px; margin-left: -6px; border: 1px solid transparent; border-radius: 8px; font-size: 1.02rem; text-overflow: ellipsis; }
+.cal-card-head .cal-control.is-country .cal-country-input { max-width: min(18em, 60vw); padding: 3px 6px; margin-left: -6px; border: 1px solid transparent; border-radius: 8px; font-size: 1.02rem; text-overflow: ellipsis; }
 .cal-card-head .cal-control.is-country .cal-country-input:hover { border-color: transparent; background: color-mix(in srgb, var(--cal-bar) 10%, transparent); }
 .cal-measure { position: absolute; visibility: hidden; white-space: pre; }
 .cal-card-head .cal-control.is-country .cal-chevron { position: relative; z-index: 1; color: var(--cal-bar); margin-left: -8px; padding: 4px; box-sizing: content-box; cursor: pointer; }
@@ -367,6 +367,9 @@ html[data-theme="light"] .daycal { --cal-disc: rgba(12, 22, 40, 0.07); --tone-wa
   font: inherit;
   font-weight: 650;
 }
+/* Safari's contact AutoFill button would sit inside the field and eat its width */
+.cal-country-input::-webkit-contacts-auto-fill-button,
+.cal-country-input::-webkit-credentials-auto-fill-button { visibility: hidden; display: none !important; pointer-events: none; width: 0; }
 .cal-country-input::placeholder { color: var(--blue); font-weight: 600; opacity: 1; }
 .cal-country-input:hover { border-color: var(--line); }
 .cal-country-input:focus { border-color: var(--blue); background: var(--bg); outline: none; font-weight: 500; }
