@@ -20,6 +20,7 @@
   --tone-normal: #5B9ED9;
   --tone-warning: #FF9F0A;
   --tone-critical: #FF453A;
+  --tone-achieved: #30D158;
   --cal-track: rgba(120, 120, 128, 0.32);
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -28,7 +29,7 @@
   align-items: start;
   margin: 18px 0 14px;
 }
-html[data-theme="light"] .daycal { --cal-disc: rgba(12, 22, 40, 0.07); --tone-warning: #FF9500; --tone-critical: #FF3B30; --cal-track: rgba(120, 120, 128, 0.2); }
+html[data-theme="light"] .daycal { --cal-disc: rgba(12, 22, 40, 0.07); --tone-warning: #FF9500; --tone-critical: #FF3B30; --tone-achieved: #34C759; --cal-track: rgba(120, 120, 128, 0.2); }
 .cal-side { display: contents; }
 .cal-side > .cal-box:first-child { grid-area: result; }
 .cal-side > .cal-box:last-child { grid-area: trips; }
@@ -187,17 +188,21 @@ html[data-theme="light"] .daycal { --cal-disc: rgba(12, 22, 40, 0.07); --tone-wa
 .cal-control.is-country .cal-country-input { width: 11em; margin: 0; padding: 3px 0; border: 0; background: transparent; font-weight: 650; }
 .cal-control.is-country .cal-country-input:focus { background: transparent; }
 .cal-control.is-country .cal-country-list { left: -30px; right: auto; width: 16em; }
-.cal-control.is-date input {
-  padding: 5px 12px;
+.cal-control.is-date { position: relative; }
+.cal-date-text {
+  display: inline-block;
+  padding: 6px 14px;
   border: 1px solid var(--line-strong);
   border-radius: 999px;
   background: var(--bg);
   color: var(--text);
-  font: inherit;
   font-size: 0.9rem;
   font-weight: 650;
-  color-scheme: light dark;
+  white-space: nowrap;
 }
+/* the native picker, invisible, over the pill: a tap opens the system calendar */
+.cal-control.is-date input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; color-scheme: light dark; }
+.cal-control.is-date:focus-within .cal-date-text { outline: 2px solid var(--blue); outline-offset: 2px; }
 
 /* the result as an app tracker: period and count, a bar, a status pill */
 .cal-meter { display: grid; gap: 7px; margin: 2px 0 10px; }
@@ -210,7 +215,8 @@ html[data-theme="light"] .daycal { --cal-disc: rgba(12, 22, 40, 0.07); --tone-wa
 .cal-meter, .cal-pill { --tone: var(--tone-normal); }
 .tone-warning { --tone: var(--tone-warning); }
 .tone-critical { --tone: var(--tone-critical); }
-.cal-meter.tone-warning .cal-meter-count b, .cal-meter.tone-critical .cal-meter-count b { color: var(--tone); }
+.tone-achieved { --tone: var(--tone-achieved); }
+.cal-meter:not(.tone-normal) .cal-meter-count b { color: var(--tone); }
 .cal-pill {
   display: inline-block;
   margin: 0 0 6px;

@@ -5,7 +5,7 @@
    in that country, and a travel day between two countries counts for both.
 
    The result box (Jorick, 2026-10-03) reads like an app tracker:
-     Days in [flag Country]  [Calendar year | Tax year | Last 12 months] [2026 | first day]
+     [flag Country] [Stay below | Reach target] [Calendar year | Tax year | Last 12 months] [2026 | from 6 Apr 2026]
      6 Apr 2026 – 5 Apr 2027                                  108 / 183
      ======================-----------
      [75 days remaining]
@@ -13,7 +13,10 @@
    year comes with a year menu (next year back to five years ago), a tax year
    with a date field for its first day, the last 12 months with nothing more.
    The calendar shows that period only. The pill and colours are the app's
-   (TrackerCard: "N days remaining", "At limit", "Over limit by N days"). */
+   (TrackerCard: "N days remaining", "At limit", "Over limit by N days"; for a
+   target, "N more days needed" and "Target reached" in green), as is the
+   choice between a limit and a target (the tracker editor's "Stay Below" /
+   "Reach Target"): some people want to become resident somewhere. */
 (function () {
   "use strict";
 
@@ -22,6 +25,7 @@
   function defaults(c) {
     var p = c.D.parts(c.today), aprilSixth = c.D.fromParts(p.y, 4, 6);
     return {
+      goal: "stay",
       periodType: "calendar",
       year: String(p.y),
       // the UK tax year as the starting point: 6 April of the current one
@@ -68,9 +72,13 @@
       var country = c.settings.country || "";
       var y = c.D.parts(c.today).y, years = [];
       for (var k = y + 1; k >= y - 5; k--) years.push({ value: String(k), label: String(k) });
-      var type = setting(c, "periodType");
+      var type = setting(c, "periodType"), target = setting(c, "goal") === "reach";
       var controls = [
-        { type: "country", key: "country", prefix: c.text("daysIn"), label: c.text("country"), value: country },
+        { type: "country", key: "country", label: c.text("country"), value: country },
+        { key: "goal", label: c.text("goal"), value: setting(c, "goal"), options: [
+          { value: "stay", label: c.text("goalStay") },
+          { value: "reach", label: c.text("goalReach") }
+        ] },
         { key: "periodType", label: c.text("period"), value: type, moveCalendar: true, options: [
           { value: "calendar", label: c.text("periodCalendar") },
           { value: "tax", label: c.text("periodTax") },
@@ -78,17 +86,22 @@
         ] }
       ];
       if (type === "calendar") controls.push({ key: "year", label: c.text("year"), value: setting(c, "year"), options: years, moveCalendar: true });
-      if (type === "tax") controls.push({ type: "date", key: "taxStart", prefix: c.text("taxStart"), value: setting(c, "taxStart"), moveCalendar: true });
+      if (type === "tax") controls.push({ type: "date", key: "taxStart", label: c.text("taxStart"), value: setting(c, "taxStart"),
+        display: c.text("taxFrom", { date: c.dateRange(b.from, b.from) }), moveCalendar: true });
 
       var days = country && byCountry[country] ? byCountry[country].size : 0;
       var loose = byCountry[""] ? byCountry[""].size : 0, lines = [];
       if (loose) lines.push(c.text("lineNoCountry", { n: loose }));
-      if (!trips.length) lines.push(c.text("emptyResult"));
       var left = LIMIT - days;
+      // The app's wording: a limit counts down to "At limit"; a target counts
+      // the days still needed until "Target reached".
+      var status = target
+        ? (left > 0 ? c.text("needed", { n: left }) : c.text("reachedTarget"))
+        : (left > 0 ? c.text("remaining", { n: left }) : left === 0 ? c.text("atLimit") : c.text("overBy", { n: -left }));
       return {
         controls: controls,
-        meter: { label: c.dateRange(b.from, b.to), days: days, limit: LIMIT, tone: c.tone(days, LIMIT) },
-        statusText: left > 0 ? c.text("remaining", { n: left }) : left === 0 ? c.text("atLimit") : c.text("overBy", { n: -left }),
+        meter: { label: c.dateRange(b.from, b.to), days: days, limit: LIMIT, tone: c.tone(days, LIMIT, target) },
+        statusText: status,
         lines: lines
       };
     },
@@ -111,7 +124,10 @@
       country: "Country",
       addCountry: "Add country",
       noMatch: "No matching country",
-      daysIn: "Days in",
+      goal: "Goal",
+      goalStay: "Stay below",
+      goalReach: "Reach target",
+      taxFrom: "from {date}",
       period: "Period",
       periodCalendar: "Calendar year",
       periodTax: "Tax year",
@@ -121,9 +137,10 @@
       tripDays: { one: "{n} day", other: "{n} days" },
       remaining: { one: "{n} day remaining", other: "{n} days remaining" },
       atLimit: "At limit",
+      needed: { one: "{n} more day needed", other: "{n} more days needed" },
+      reachedTarget: "Target reached",
       overBy: { one: "Over limit by {n} day", other: "Over limit by {n} days" },
       lineNoCountry: { one: "{n} day without a country", other: "{n} days without a country" },
-      emptyResult: "Mark the days you spent in a country to count them.",
       fileName: "atlasdays-stays.csv"
     }
   };

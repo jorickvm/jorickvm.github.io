@@ -166,9 +166,11 @@
       return (rule.carryCountry && recent[0]) || "";
     }
     function remember(code) { recent = [code].concat(recent.filter(function (c) { return c !== code; })).slice(0, 3); }
-    // The app's tracker colours: blue, orange when 7 or fewer days (or 15% of
-    // the limit) are left, red at or over the limit (TrackerMeterTone).
-    function tone(days, limit) {
+    // The app's tracker colours (TrackerMeterTone): for a limit, blue, orange
+    // when 7 or fewer days (or 15% of it) are left, red at or over it; for a
+    // target, blue until it is reached, then green.
+    function tone(days, limit, target) {
+      if (target) return days >= limit ? "achieved" : "normal";   // a target only turns green
       var left = limit - days;
       return left <= 0 ? "critical" : (left <= 7 || left / limit <= 0.15) ? "warning" : "normal";
     }
@@ -545,8 +547,14 @@
         return wrap;
       }
       if (ctl.type === "date") {
-        var input = el("input", { type: "date", value: ctl.value, "aria-label": ctl.label || ctl.prefix || "" });
+        // A native date field shows the browser's own format (04/06/2026 in
+        // the US), so the pill shows the page's format and the native picker
+        // sits invisibly over it: a tap opens the system calendar.
+        var shown = el("span", { "class": "cal-date-text" }, ctl.display || ctl.value);
+        var input = el("input", { type: "date", value: ctl.value, "aria-label": ctl.label || ctl.prefix || "", title: ctl.label || "" });
+        input.addEventListener("click", function () { try { if (input.showPicker) input.showPicker(); } catch (e) {} });
         input.addEventListener("change", function () { if (input.value) { settings[ctl.key] = input.value; changed(ctl); } });
+        wrap.appendChild(shown);
         wrap.appendChild(input);
         return wrap;
       }
