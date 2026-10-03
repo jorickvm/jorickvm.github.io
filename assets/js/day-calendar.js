@@ -40,7 +40,15 @@
      defaultCountry          optional: the country a new trip starts with
      carryCountry            optional: a new trip starts with the last country
                              picked
+     linkId                  optional: the calculator's `c` in the import link
      strings                 labels shown by the engine
+
+   "Track this in AtlasDays" opens the page's dialog, which shows one of its
+   [data-cal-on] parts: "phone" on an iPhone or iPad, or inside the app's own
+   browser (from=app), with [data-cal-open] linking the stays into the app;
+   "computer" elsewhere, with a QR code of the same link in [data-cal-qr];
+   "file" when there are too many stays for a link. The link format and its
+   limits are owned by the app repo: AtlasDays/Docs/reference/IMPORT_LINK.md.
 
    Everything runs in the browser. Nothing is sent, logged or stored. */
 (function () {
@@ -136,6 +144,52 @@
     Object.keys(attrs || {}).forEach(function (k) { if (attrs[k] != null) node.setAttribute(k, attrs[k]); });
     if (text != null) node.textContent = text;
     return node;
+  }
+
+  // ---- the import link (AtlasDays/Docs/reference/IMPORT_LINK.md) ----------------------
+  var ENGINE_SRC = (document.currentScript && document.currentScript.src) || "";
+  var LINK = { universal: "https://go.atlasdays.app/import/#", scheme: "atlasdays://import#", maxStays: 150, maxQrStays: 60 };
+  var appleTouch = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  // The app adds from=app to every atlasdays.app address it opens; a page one
+  // tap further still sees it in its referrer. Kept for the browser session.
+  var inApp = (function () {
+    var seen = false, here = false, before = false;
+    try { seen = sessionStorage.getItem("atlasdays-from") === "app"; } catch (e) {}
+    try { here = new URLSearchParams(location.search).get("from") === "app"; } catch (e) {}
+    try { var r = new URL(document.referrer); before = r.origin === location.origin && r.searchParams.get("from") === "app"; } catch (e) {}
+    if (here || before) { seen = true; try { sessionStorage.setItem("atlasdays-from", "app"); } catch (e) {} }
+    return seen;
+  })();
+  // v=1&c=183&b=2026-01-05&n=…&s=ES:0:19,PT:19:8: each stay is its country,
+  // its first day counted from b, and its length in days after that day.
+  function importFragment(rows, linkId) {
+    var base = Math.min.apply(null, rows.map(function (r) { return r.start; }));
+    var parts = ["v=1"];
+    if (linkId) parts.push("c=" + encodeURIComponent(linkId));
+    parts.push("b=" + D.iso(base));
+    var note = rows.length && rows[0].notes;
+    if (note && rows.every(function (r) { return r.notes === note; })) parts.push("n=" + encodeURIComponent(note.slice(0, 100)));
+    parts.push("s=" + rows.map(function (r) {
+      return String(r.country).toUpperCase() + ":" + (r.start - base) + ":" + (r.end == null ? "" : r.end - r.start);
+    }).join(","));
+    return parts.join("&");
+  }
+  function loadQr(done) {
+    if (window.qrcode) return done();
+    var s = document.createElement("script");
+    s.src = ENGINE_SRC.replace(/day-calendar\.js(\?[^#]*)?$/, "vendor/qrcode-generator.js$1");
+    s.onload = done;
+    document.head.appendChild(s);
+  }
+  // Black on white in both themes: not every camera reads an inverted code.
+  function qrSvg(text) {
+    var q = window.qrcode(0, "M");
+    q.addData(text);
+    q.make();
+    var n = q.getModuleCount(), m = 4, size = n + 2 * m, d = "";
+    for (var r = 0; r < n; r++) for (var c = 0; c < n; c++) if (q.isDark(r, c)) d += "M" + (c + m) + " " + (r + m) + "h1v1h-1z";
+    return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + size + " " + size + '" shape-rendering="crispEdges" role="img" aria-hidden="true">' +
+      '<rect width="' + size + '" height="' + size + '" fill="#fff"/><path d="' + d + '" fill="#000"/></svg>';
   }
 
   function DayCalendar(root) {
@@ -737,6 +791,27 @@
 
     // ---- import into AtlasDays -----------------------------------------------------
     function csvField(v) { v = String(v == null ? "" : v); return /[",\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; }
+    function openImport() {
+      var rows = rule.exportRows(trips, ctx()).slice().sort(function (a, b) { return a.start - b.start; });
+      if (!dialog || !dialog.showModal) return downloadCsv();
+      var frag = rows.length ? importFragment(rows, rule.linkId) : "";
+      var mode = rows.length > LINK.maxStays ? "file"
+        : inApp || appleTouch ? "phone"
+        : rows.length <= LINK.maxQrStays ? "computer" : "file";
+      dialog.querySelectorAll("[data-cal-on]").forEach(function (part) {
+        part.hidden = part.getAttribute("data-cal-on").split(" ").indexOf(mode) < 0;
+      });
+      // Inside the app there is nothing to install.
+      dialog.querySelectorAll("[data-cal-store]").forEach(function (part) { part.hidden = inApp; });
+      dialog.querySelectorAll("[data-cal-open]").forEach(function (a) { a.href = (inApp ? LINK.scheme : LINK.universal) + frag; });
+      dialog.classList.toggle("is-file", mode === "file");
+      var box = dialog.querySelector("[data-cal-qr]");
+      if (box) {
+        box.textContent = "";
+        if (mode === "computer") loadQr(function () { box.innerHTML = qrSvg(LINK.universal + frag); });
+      }
+      dialog.showModal();
+    }
     function downloadCsv() {
       var lines = ["Country,Start Date,End Date,Notes"].concat(rule.exportRows(trips, ctx()).map(function (r) {
         return [r.country, D.iso(r.start), r.end == null ? "" : D.iso(r.end), r.notes || ""].map(csvField).join(",");
@@ -783,7 +858,7 @@
     });
     win.addEventListener("scroll", updateMonth, { passive: true });
     root.querySelectorAll("[data-cal-import]").forEach(function (btn) {
-      btn.addEventListener("click", function () { if (dialog && dialog.showModal) dialog.showModal(); else downloadCsv(); });
+      btn.addEventListener("click", openImport);
     });
     root.querySelectorAll("[data-cal-download]").forEach(function (btn) { btn.addEventListener("click", downloadCsv); });
     root.querySelectorAll("[data-cal-close]").forEach(function (btn) { btn.addEventListener("click", function () { dialog.close(); }); });

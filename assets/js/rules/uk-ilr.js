@@ -73,15 +73,16 @@
     // so the file carries your time in the UK between past trips, starting a
     // year before the first one. Stays share the travel days with the trips,
     // which AtlasDays does not treat as an overlap.
+    linkId: "uk-ilr",
     exportRows: function (trips, c) {
       var past = trips.filter(function (t) { return t.start <= c.today; });
       if (!past.length) return trips.filter(function (t) { return t.country; }).map(function (t) { return { country: t.country, start: t.start, end: t.end, notes: "ILR absence calculator" }; });
       var rows = [], cursor = c.D.shiftYears(past[0].start, -1);
       past.forEach(function (t) {
-        if (t.start > cursor) rows.push({ country: "United Kingdom", start: cursor, end: t.start, notes: "ILR absence calculator" });
+        if (t.start > cursor) rows.push({ country: "GB", start: cursor, end: t.start, notes: "ILR absence calculator" });
         cursor = Math.max(cursor, t.end);
       });
-      if (cursor <= c.today) rows.push({ country: "United Kingdom", start: cursor, end: null, notes: "ILR absence calculator" });
+      if (cursor <= c.today) rows.push({ country: "GB", start: cursor, end: null, notes: "ILR absence calculator" });
       // Trips given a country go in too (past and planned), so the app shows
       // where the time away was spent.
       trips.forEach(function (t) { if (t.country) rows.push({ country: t.country, start: t.start, end: t.end, notes: "ILR absence calculator" }); });

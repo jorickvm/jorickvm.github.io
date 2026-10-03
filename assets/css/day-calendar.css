@@ -431,6 +431,18 @@ html[data-theme="light"] .daycal { --cal-disc: rgba(12, 22, 40, 0.07); --tone-wa
 }
 .cal-dialog [data-cal-download] { border: 1px solid rgba(66, 143, 210, 0.45); background: var(--blue); color: #fff; }
 .cal-dialog-app { border: 1px solid var(--line-strong); background: transparent; color: var(--text); }
+/* The Open in AtlasDays dialog: Open (or the QR code) leads, the file is the
+   alternative, unless the file is all there is. */
+.cal-dialog-primary,
+.cal-dialog.is-file [data-cal-download] { border: 1px solid rgba(66, 143, 210, 0.45); background: var(--blue); color: #fff; }
+.cal-dialog:has([data-cal-on]):not(.is-file) [data-cal-download] { border: 1px solid var(--line-strong); background: transparent; color: var(--text); }
+.cal-dialog [data-cal-on] .cal-dialog-actions { margin: 0 0 14px; }
+.cal-dialog-primary { display: inline-block; }
+.cal-dialog .cal-dialog-note { font-size: 0.84rem; }
+.cal-dialog-note a { color: var(--blue); }
+.cal-qr { width: 184px; margin: 2px 0 16px; border-radius: 10px; overflow: hidden; background: #fff; }
+.cal-qr:empty { height: 184px; }
+.cal-qr svg { display: block; width: 100%; height: auto; }
 .cal-dialog [data-cal-close] { margin-left: auto; border: 0; background: none; color: var(--muted); }
 
 /* On a phone: hint, result, calendar, trips, one under the other. */

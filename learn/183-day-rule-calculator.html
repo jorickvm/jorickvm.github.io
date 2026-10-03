@@ -105,7 +105,7 @@
   <link rel="stylesheet" href="../assets/css/site-header.css?v=20260930a" />
   <link rel="stylesheet" href="../assets/css/article-components.css?v=20260925a" />
   <link rel="stylesheet" href="../assets/css/site-footer.css?v=20260928f" />
-  <link rel="stylesheet" href="../assets/css/day-calendar.css?v=20261003k" />
+  <link rel="stylesheet" href="../assets/css/day-calendar.css?v=20261003l" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
@@ -247,11 +247,21 @@
         </div>
       </div>
       <dialog class="cal-dialog" data-cal-dialog aria-labelledby="days-183-import-title">
-        <p class="cal-dialog-title" id="days-183-import-title">Continue in AtlasDays</p>
-        <p>Download the file and open it in AtlasDays: Settings → Import → CSV File.</p>
+        <p class="cal-dialog-title" id="days-183-import-title">Track this in AtlasDays</p>
+        <div data-cal-on="phone">
+          <p>Your stays open in AtlasDays for you to check. Nothing is saved until you tap Import.</p>
+          <div class="cal-dialog-actions"><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Open in AtlasDays</a></div>
+          <p class="cal-dialog-note" data-cal-store>No AtlasDays yet? <a href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">Get it free on the App Store</a>, then tap Open in AtlasDays again.</p>
+        </div>
+        <div data-cal-on="computer">
+          <p>Scan the code with your iPhone's camera to open your stays in AtlasDays.</p>
+          <div class="cal-qr" data-cal-qr></div>
+        </div>
+        <div data-cal-on="file">
+          <p>That is more stays than a link can carry. Download the file and open it in AtlasDays.</p>
+        </div>
         <div class="cal-dialog-actions">
           <button type="button" data-cal-download>Download file</button>
-          <a class="cal-dialog-app" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">Get AtlasDays</a>
           <button type="button" data-cal-close>Close</button>
         </div>
       </dialog>
@@ -270,7 +280,6 @@
     <p>Most countries count days the way this calculator does. Where yours has its own rule, its guide explains it, and AtlasDays has a ready-made tracker that counts it exactly:</p>
     <ul>
       <li><strong>Midnights.</strong> The UK counts the days you are there at midnight. See the <a href="/learn/uk-statutory-residence-test">UK Statutory Residence Test</a>; the AtlasDays UK tracker counts midnights.</li>
-      <li><strong>Any 12 months.</strong> New Zealand and Norway look at every 12-month period, not one year. See <a href="/learn/new-zealand-183-day-tax-residency">New Zealand</a> and <a href="/learn/norway-183-day-tax-residency">Norway</a>; AtlasDays checks every window as you travel.</li>
       <li><strong>More than 183.</strong> Spain needs more than 183 days, not 183. See <a href="/learn/spain-183-day-tax-residency">Spain</a>; each AtlasDays tracker uses its country's exact threshold.</li>
       <li><strong>Three years at once.</strong> The US Substantial Presence Test also counts part of the two previous years. See the <a href="/learn/us-substantial-presence-test">Substantial Presence Test</a>; AtlasDays has a tracker that does the weighting.</li>
     </ul>
@@ -354,8 +363,8 @@
   <script src="../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"Open navigation menu","menuClose":"Close navigation menu"};</script>
   <script src="../assets/js/navigation.js?v=20260817b"></script>
-  <script defer src="../assets/js/rules/days-183.js?v=20261003f"></script>
-  <script defer src="../assets/js/day-calendar.js?v=20261003k"></script>
+  <script defer src="../assets/js/rules/days-183.js?v=20261003g"></script>
+  <script defer src="../assets/js/day-calendar.js?v=20261003l"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

@@ -54,6 +54,7 @@
     singleDayTrips: true,
     fixedRange: true,
     quietHint: true,
+    linkId: "183",
 
     range: function (c) { return bounds(c); },
     newTripCountry: function (c) { return c.settings.country || ""; },
