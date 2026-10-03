@@ -1,0 +1,124 @@
+    <nav class="breadcrumb">
+      <a href="/zh-Hans/">AtlasDays</a> / <a href="/zh-Hans/learn/">旅行规定</a>
+    </nav>
+    <h1>183 天规则计算器：统计在任一国家的停留天数</h1>
+    <p class="subtitle">选择国家和年度，再点选到达和离开的日期。追踪器会显示距离 183 天还有多远，计划中的停留也一并计入。</p>
+    <p class="verified">最后核实：2026 年 10 月</p>
+
+    <h2>计算停留天数</h2>
+    <div class="daycal" id="days-183" data-day-calendar="days183">
+      <script type="application/json" data-cal-strings>
+{
+  "hintStart": "点选日期，添加一段停留。",
+  "hintEnd": "再点选这段停留的另一端日期。",
+  "hintSelected": "拖移停留的任一端可更改日期，也可以在下方删除。",
+  "inTrip": "在某个国家停留",
+  "pending": "新一段停留的起点",
+  "empty": "尚无停留记录。",
+  "deleteTrip": "删除停留",
+  "country": "国家或地区",
+  "goal": "目标类型",
+  "goalStay": "低于上限",
+  "goalReach": "达成目标",
+  "captionStay": "避免成为税务居民。",
+  "captionReach": "以成为税务居民为目标。",
+  "window": "计算期间",
+  "addCountry": "添加国家或地区",
+  "noMatch": "找不到符合的国家或地区",
+  "periodCalendar": "日历年",
+  "periodTax": "纳税年度",
+  "periodRolling": "最近 12 个月",
+  "year": "年份",
+  "starts": "起始日",
+  "tripDays": {
+    "other": "{n} 天"
+  },
+  "remaining": {
+    "other": "剩余 {n} 天"
+  },
+  "atLimit": "已达上限",
+  "needed": {
+    "other": "还需 {n} 天"
+  },
+  "reachedTarget": "目标达成",
+  "overBy": {
+    "other": "超过上限 {n} 天"
+  },
+  "lineNoCountry": {
+    "other": "有 {n} 天未选择国家或地区"
+  }
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>时间轴</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>在 AtlasDays 中继续追踪</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog" data-cal-dialog aria-labelledby="days-183-import-title">
+        <p class="cal-dialog-title" id="days-183-import-title">在 AtlasDays 中继续追踪</p>
+        <div data-cal-on="phone">
+          <p>停留记录会在 AtlasDays 中打开，先核对再决定。轻点“导入”之前，不会存储任何内容。</p>
+          <div class="cal-dialog-actions"><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">在 AtlasDays 中打开</a></div>
+          <p class="cal-dialog-note" data-cal-store>还没有安装 AtlasDays？先<a href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">在 App Store 免费下载</a>，然后再次轻点“在 AtlasDays 中打开”。</p>
+        </div>
+        <div data-cal-on="computer">
+          <p>用 iPhone 相机扫描二维码，即可在 AtlasDays 中打开停留记录。</p>
+          <div class="cal-qr" data-cal-qr></div>
+        </div>
+        <div data-cal-on="file">
+          <p>停留记录太多，链接放不下。请下载文件，再在 AtlasDays 中打开。</p>
+        </div>
+        <div class="cal-dialog-actions">
+          <button type="button" data-cal-download>下载文件</button>
+          <button type="button" data-cal-close>关闭</button>
+        </div>
+      </dialog>
+    </div>
+    <p class="cal-private">所有内容仅在浏览器中处理：输入的内容不会发送或存储。</p>
+
+    <h2>计算器如何计算</h2>
+    <ul>
+      <li><strong>只要在当地待过，当天就算一天。</strong>到达当天和离开当天都计入在该国的天数，因此 6 月 1 日至 10 日共 10 天。从一国前往另一国的那一天，两国都会计入。</li>
+      <li><strong>一个国家，一个年度。</strong>在追踪器中选择国家，并在上方选择计算期间：日历年、从起始日算起的纳税年度（英国为 4 月 6 日，澳大利亚为 7 月 1 日，新西兰和印度为 4 月 1 日），或最近 12 个月。只有计算期间内的天数才会计入。</li>
+      <li><strong>低于上限，或达到 183 天。</strong>多数人希望停留少于 183 天。如果需要停留 183 天才能成为某地的税务居民，把目标类型设为“达成目标”：达到后，进度条会变成绿色。</li>
+      <li><strong>计划中的停留也会计入。</strong>标记尚未预订的行程，看看它会不会让天数超过 183 天。</li>
+    </ul>
+
+    <h2>如果当地的计算方式不同</h2>
+    <p>大多数国家的计算方式与本计算器相同。如果当地有自己的规定，对应的指南会加以说明，AtlasDays 也有现成的追踪器可以准确计算：</p>
+    <ul>
+      <li><strong>按午夜计算。</strong>英国计算的是午夜时身在英国的天数。参见<a href="/zh-Hans/learn/uk-statutory-residence-test">英国法定居住判定</a>；AtlasDays 的英国追踪器按午夜计算。</li>
+      <li><strong>超过 183 天。</strong>西班牙要求停留超过 183 天，刚好 183 天还不够。参见<a href="/zh-Hans/learn/spain-183-day-tax-residency">西班牙</a>；AtlasDays 的每个追踪器都采用该国的确切门槛。</li>
+      <li><strong>同时看三年。</strong>美国实质居留判定还会计入前两年的部分天数。参见<a href="/zh-Hans/learn/us-substantial-presence-test">实质居留判定</a>；AtlasDays 有追踪器会自动完成加权计算。</li>
+    </ul>
+    <p>天数并不是唯一的标准：即使天数较少，在当地有住所或家人，也可能成为税务居民。<a href="/zh-Hans/learn/183-day-tax-residency-rule">183 天规则</a>说明了这些关联因素，<a href="/zh-Hans/learn/tax-residency-by-country">各国税务居民规定</a>收录了每个国家的指南。</p>
+
+    <div class="cta-box">
+      <span class="cta-logo">
+        <img class="logo-dark" src="/assets/brand/logo_dark.png?v=20260325a" alt="AtlasDays 标志" width="52" height="52" />
+        <img class="logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="AtlasDays 标志" width="52" height="52" />
+      </span>
+      <h2>旅途中持续计算天数</h2>
+      <p>计算器只能核对目前记得的天数。AtlasDays 会在旅途中持续计算在各个国家的停留天数，数据私密地保存在 iPhone 上；如果某次行程会让天数超过上限，也会提前提醒。</p>
+      <a class="cta-btn" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> 获取 AtlasDays</a>
+    </div>
+
+    <h2>常见问题</h2>
+    <h3>到达当天算在该国的天数里吗？</h3>
+    <p>在本计算器中算：只要在当地待过，当天就算一天，因此到达当天和离开当天都计为在该国的天数。许多国家都这样计算。英国则按午夜计算，具体做法见<a href="/zh-Hans/learn/uk-statutory-residence-test">英国指南</a>。</p>
+    <h3>在一个国家停留 183 天，就会成为税务居民吗？</h3>
+    <p>通常会，但不一定。许多国家把纳税年度内停留 183 天视为税务居民，也有国家采用不同的门槛或期间；此外，住所或家人等其他关联因素，也可能让停留天数较少的人成为税务居民。计算器显示的是天数，而不是判定结果。</p>
+    <h3>输入的数据会被存储吗？</h3>
+    <p>不会。计算器在浏览器中运行，不会发送、记录或存储输入的日期。关闭或重新加载页面后，日期就会清除。如需保留，请轻点“在 AtlasDays 中继续追踪”。</p>

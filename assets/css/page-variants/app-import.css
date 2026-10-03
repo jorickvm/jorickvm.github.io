@@ -33,3 +33,5 @@ html[data-theme="light"] .logo-dark { display: none; }
 html[data-theme="light"] .logo-light { display: block; }
 html[data-theme="dark"] { --bg: #0D1117; --bg-card: rgba(255,255,255,0.05); --text: #f4f7fb; --muted: #b2b9c5; --muted-2: #8790a0; --line: rgba(255,255,255,0.14); }
 html[data-theme="light"] { --bg: #f6f8fc; --bg-card: rgba(255,255,255,0.88); --text: #0d1422; --muted: #526075; --muted-2: #6c788b; --blue: #246ca8; --line: rgba(12,22,40,0.14); }
+/* Korean breaks between words, as the homepage headlines do (marketing.css). */
+html:lang(ko) h1, html:lang(ko) p { word-break: keep-all; overflow-wrap: anywhere; }

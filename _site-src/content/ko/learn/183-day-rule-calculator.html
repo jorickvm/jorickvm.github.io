@@ -1,0 +1,124 @@
+    <nav class="breadcrumb">
+      <a href="/ko/">AtlasDays</a> / <a href="/ko/learn/">여행 규정</a>
+    </nav>
+    <h1>183일 규정 계산기: 모든 국가의 체류 일수 계산</h1>
+    <p class="subtitle">국가와 연도를 선택한 다음 도착한 날과 떠난 날을 누르십시오. 예정된 체류를 포함해 183일에 얼마나 가까워졌는지 트래커에 표시됩니다.</p>
+    <p class="verified">최종 확인: 2026년 10월</p>
+
+    <h2>체류 일수 계산</h2>
+    <div class="daycal" id="days-183" data-day-calendar="days183">
+      <script type="application/json" data-cal-strings>
+{
+  "hintStart": "날짜를 눌러 체류를 추가하십시오.",
+  "hintEnd": "체류의 다른 끝 날짜를 누르십시오.",
+  "hintSelected": "체류의 양쪽 끝 중 하나를 드래그해 날짜를 변경하거나 아래에서 삭제하십시오.",
+  "inTrip": "체류일",
+  "pending": "새 체류 시작",
+  "empty": "아직 체류가 없습니다.",
+  "deleteTrip": "체류 삭제",
+  "country": "국가",
+  "goal": "목표 유형",
+  "goalStay": "한도 미만 유지",
+  "goalReach": "목표 달성",
+  "captionStay": "세법상 비거주 상태를 유지합니다.",
+  "captionReach": "세법상 거주 기준 일수를 채웁니다.",
+  "window": "기간",
+  "addCountry": "국가 추가",
+  "noMatch": "일치하는 국가가 없습니다",
+  "periodCalendar": "연간",
+  "periodTax": "과세 연도",
+  "periodRolling": "최근 12개월",
+  "year": "연도",
+  "starts": "시작일",
+  "tripDays": {
+    "other": "{n}일"
+  },
+  "remaining": {
+    "other": "{n}일 남음"
+  },
+  "atLimit": "한도 도달",
+  "needed": {
+    "other": "{n}일 더 필요"
+  },
+  "reachedTarget": "목표 달성",
+  "overBy": {
+    "other": "한도 {n}일 초과"
+  },
+  "lineNoCountry": {
+    "other": "국가 미지정 {n}일"
+  }
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span><span>일</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>타임라인</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>AtlasDays에서 관리하기</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog" data-cal-dialog aria-labelledby="days-183-import-title">
+        <p class="cal-dialog-title" id="days-183-import-title">AtlasDays에서 관리하기</p>
+        <div data-cal-on="phone">
+          <p>입력한 체류가 AtlasDays에서 열리면 내용을 확인할 수 있습니다. '가져오기'를 누르기 전까지는 아무것도 저장되지 않습니다.</p>
+          <div class="cal-dialog-actions"><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">AtlasDays에서 열기</a></div>
+          <p class="cal-dialog-note" data-cal-store>아직 AtlasDays가 없습니까? <a href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store에서 무료로 받으십시오</a>. 그런 다음 'AtlasDays에서 열기'를 다시 누르십시오.</p>
+        </div>
+        <div data-cal-on="computer">
+          <p>iPhone 카메라로 QR 코드를 스캔하면 입력한 체류가 AtlasDays에서 열립니다.</p>
+          <div class="cal-qr" data-cal-qr></div>
+        </div>
+        <div data-cal-on="file">
+          <p>체류가 너무 많아 링크에 담을 수 없습니다. 파일을 다운로드해 AtlasDays에서 여십시오.</p>
+        </div>
+        <div class="cal-dialog-actions">
+          <button type="button" data-cal-download>파일 다운로드</button>
+          <button type="button" data-cal-close>닫기</button>
+        </div>
+      </dialog>
+    </div>
+    <p class="cal-private">모든 내용은 브라우저에만 남습니다. 입력한 정보는 전송되거나 저장되지 않습니다.</p>
+
+    <h2>계산기의 일수 계산법</h2>
+    <ul>
+      <li><strong>하루 중 일부만 있어도 1일로 계산.</strong> 도착한 날과 떠난 날 모두 그 나라에서 보낸 날이므로 6월 1일부터 10일까지는 10일입니다. 두 나라 사이를 이동한 날은 두 나라 모두에서 1일로 계산합니다.</li>
+      <li><strong>한 국가, 한 해.</strong> 트래커에서 국가를, 그 위에서 기간을 선택합니다. 기간은 한 해, 시작일부터 세는 과세 연도(영국 4월 6일, 호주 7월 1일, 뉴질랜드와 인도 4월 1일), 최근 12개월 중에서 고를 수 있습니다. 그 기간 안의 날만 계산합니다.</li>
+      <li><strong>183일 미만 유지 또는 183일 달성.</strong> 대부분은 183일 미만으로 머무르려 합니다. 어떤 나라에서 거주자가 되려면 183일이 필요한 경우 목표 유형을 '목표 달성'으로 설정하십시오. 목표에 도달하면 막대가 초록색으로 바뀝니다.</li>
+      <li><strong>예정된 체류도 계산.</strong> 아직 예약하지 않은 여행을 표시해 그 여행으로 183일을 넘게 되는지 확인할 수 있습니다.</li>
+    </ul>
+
+    <h2>나라마다 계산 방식이 다른 경우</h2>
+    <p>대부분의 나라는 이 계산기와 같은 방식으로 일수를 셉니다. 고유한 규정이 있는 나라는 해당 가이드에서 설명하며, AtlasDays에는 그 규정대로 정확히 세는 프리셋 트래커가 있습니다.</p>
+    <ul>
+      <li><strong>자정 기준.</strong> 영국은 자정에 영국에 있었던 날을 셉니다. <a href="/ko/learn/uk-statutory-residence-test">영국 법정 거주 판정</a>을 참고하십시오. AtlasDays의 영국 트래커는 자정을 기준으로 셉니다.</li>
+      <li><strong>183일 초과.</strong> 스페인은 183일이 아니라 183일 초과가 기준입니다. <a href="/ko/learn/spain-183-day-tax-residency">스페인</a> 가이드를 참고하십시오. AtlasDays의 각 트래커는 국가별로 정확한 기준 일수를 적용합니다.</li>
+      <li><strong>3년을 함께 계산.</strong> 미국 실질적 체류 기준(Substantial Presence Test)은 직전 2년의 일수 일부도 계산합니다. <a href="/ko/learn/us-substantial-presence-test">실질적 체류 기준</a>을 참고하십시오. AtlasDays에는 이 가중치 계산을 처리하는 트래커가 있습니다.</li>
+    </ul>
+    <p>일수만이 기준은 아닙니다. 주거지나 가족이 있으면 더 적은 일수로도 거주자가 될 수 있습니다. 이러한 관계는 <a href="/ko/learn/183-day-tax-residency-rule">183일 규정</a>에서 설명하며, 모든 국가의 가이드는 <a href="/ko/learn/tax-residency-by-country">국가별 세법상 거주</a>에서 볼 수 있습니다.</p>
+
+    <div class="cta-box">
+      <span class="cta-logo">
+        <img class="logo-dark" src="/assets/brand/logo_dark.png?v=20260325a" alt="AtlasDays 로고" width="52" height="52" />
+        <img class="logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="AtlasDays 로고" width="52" height="52" />
+      </span>
+      <h2>여행하는 동안에도 계속 계산</h2>
+      <p>계산기는 오늘 기억나는 날을 확인합니다. AtlasDays는 여행하는 동안 iPhone에서 비공개로 국가별 체류 일수를 계속 계산하고, 여행으로 한도를 넘기 전에 알려 줍니다.</p>
+      <a class="cta-btn" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> AtlasDays 받기</a>
+    </div>
+
+    <h2>자주 묻는 질문</h2>
+    <h3>도착한 날도 그 나라에서 보낸 날로 계산됩니까?</h3>
+    <p>이 계산기에서는 그렇습니다. 하루 중 일부만 있어도 계산하므로 도착한 날과 떠난 날 모두 그 나라에서 보낸 날입니다. 많은 나라가 이 방식으로 셉니다. 영국은 대신 자정을 기준으로 세며, 자세한 방법은 <a href="/ko/learn/uk-statutory-residence-test">영국 가이드</a>에서 설명합니다.</p>
+    <h3>한 나라에서 183일을 보내면 세법상 거주자가 됩니까?</h3>
+    <p>대개 그렇지만 항상 그렇지는 않습니다. 많은 나라가 과세 연도 중 183일 체류를 거주로 보지만, 다른 기준 일수나 기간을 쓰는 나라도 있습니다. 또한 주거지나 가족 같은 다른 관계 때문에 더 적은 일수로도 거주자가 될 수 있습니다. 계산기는 일수를 보여 줄 뿐 판정을 내리지 않습니다.</p>
+    <h3>입력한 데이터가 저장됩니까?</h3>
+    <p>아닙니다. 계산기는 브라우저에서 실행되며 입력한 날짜를 전송하거나 기록하거나 저장하지 않습니다. 페이지를 닫거나 새로고침하면 지워집니다. 보관하려면 'AtlasDays에서 관리하기'를 누르십시오.</p>

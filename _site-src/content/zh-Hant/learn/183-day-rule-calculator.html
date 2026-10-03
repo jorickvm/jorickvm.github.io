@@ -1,0 +1,124 @@
+    <nav class="breadcrumb">
+      <a href="/zh-Hant/">AtlasDays</a> / <a href="/zh-Hant/learn/">旅行規定</a>
+    </nav>
+    <h1>183 天規則計算器：算出在任一國家的停留天數</h1>
+    <p class="subtitle">選擇國家與年度，再點選抵達和離開的日期。追蹤器會顯示距離 183 天還差多少，預定的停留也一併計入。</p>
+    <p class="verified">最後查核：2026 年 10 月</p>
+
+    <h2>計算停留天數</h2>
+    <div class="daycal" id="days-183" data-day-calendar="days183">
+      <script type="application/json" data-cal-strings>
+{
+  "hintStart": "點選日期，新增一段停留。",
+  "hintEnd": "接著點選這段停留的另一端。",
+  "hintSelected": "拖曳停留的任一端可更改日期，也可以在下方刪除。",
+  "inTrip": "在某個國家停留",
+  "pending": "新一段停留的起點",
+  "empty": "還沒有停留紀錄。",
+  "deleteTrip": "刪除停留",
+  "country": "國家或地區",
+  "goal": "目標類型",
+  "goalStay": "低於上限",
+  "goalReach": "達成目標",
+  "captionStay": "避免成為稅務居民。",
+  "captionReach": "達到成為稅務居民所需的停留天數。",
+  "window": "計算期間",
+  "addCountry": "新增國家或地區",
+  "noMatch": "找不到符合的國家或地區",
+  "periodCalendar": "日曆年",
+  "periodTax": "課稅年度",
+  "periodRolling": "最近 12 個月",
+  "year": "年份",
+  "starts": "起始日",
+  "tripDays": {
+    "other": "{n} 天"
+  },
+  "remaining": {
+    "other": "剩餘 {n} 天"
+  },
+  "atLimit": "已達上限",
+  "needed": {
+    "other": "還需 {n} 天"
+  },
+  "reachedTarget": "目標達成",
+  "overBy": {
+    "other": "超過上限 {n} 天"
+  },
+  "lineNoCountry": {
+    "other": "有 {n} 天未選擇國家或地區"
+  }
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>時間軸</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>在 AtlasDays 中繼續追蹤</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog" data-cal-dialog aria-labelledby="days-183-import-title">
+        <p class="cal-dialog-title" id="days-183-import-title">在 AtlasDays 中繼續追蹤</p>
+        <div data-cal-on="phone">
+          <p>停留紀錄會在 AtlasDays 中開啟，可以先確認再決定。輕點「匯入」之前，不會儲存任何資料。</p>
+          <div class="cal-dialog-actions"><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">在 AtlasDays 中開啟</a></div>
+          <p class="cal-dialog-note" data-cal-store>還沒有 AtlasDays？先<a href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">到 App Store 免費下載</a>，再輕點一次「在 AtlasDays 中開啟」。</p>
+        </div>
+        <div data-cal-on="computer">
+          <p>用 iPhone 相機掃描 QR 碼，即可在 AtlasDays 中開啟停留紀錄。</p>
+          <div class="cal-qr" data-cal-qr></div>
+        </div>
+        <div data-cal-on="file">
+          <p>停留紀錄太多，連結裝不下。請下載檔案，再用 AtlasDays 開啟。</p>
+        </div>
+        <div class="cal-dialog-actions">
+          <button type="button" data-cal-download>下載檔案</button>
+          <button type="button" data-cal-close>關閉</button>
+        </div>
+      </dialog>
+    </div>
+    <p class="cal-private">所有操作都留在瀏覽器內：輸入的資料不會傳送或儲存。</p>
+
+    <h2>計算器如何計算</h2>
+    <ul>
+      <li><strong>只要在當地待過，當天就算一天。</strong>抵達當天與離開當天都算在該國的天數，所以 6 月 1 日至 10 日共 10 天。從一國前往另一國的那一天，兩國都會計入。</li>
+      <li><strong>一個國家，一個年度。</strong>在追蹤器中選擇國家，並在上方選擇計算期間：日曆年、從起始日起算的課稅年度（英國為 4 月 6 日，澳洲為 7 月 1 日，紐西蘭與印度為 4 月 1 日），或最近 12 個月。只有計算期間內的天數才會計入。</li>
+      <li><strong>低於上限，或達到 183 天。</strong>多數人希望停留少於 183 天。若需要停留 183 天才能成為某地的稅務居民，請把目標類型設為「達成目標」：達到之後，進度條就會變成綠色。</li>
+      <li><strong>預定的停留也會計入。</strong>標記還沒訂票的行程，看看會不會讓天數超過 183 天。</li>
+    </ul>
+
+    <h2>如果當地的計算方式不同</h2>
+    <p>大多數國家的計算方式與這個計算器相同。若當地有自己的規定，對應的指南會說明清楚，AtlasDays 也有現成的追蹤器能準確計算：</p>
+    <ul>
+      <li><strong>以午夜計算。</strong>英國計算的是午夜時人在英國的天數，詳見<a href="/zh-Hant/learn/uk-statutory-residence-test">英國法定居住判定</a>；AtlasDays 的英國追蹤器以午夜計算。</li>
+      <li><strong>超過 183 天。</strong>西班牙要求停留超過 183 天，剛好 183 天並不算。詳見<a href="/zh-Hant/learn/spain-183-day-tax-residency">西班牙</a>；AtlasDays 的每個追蹤器都採用該國的確切門檻。</li>
+      <li><strong>同時看三年。</strong>美國實質居留判定也會計入前兩年的部分天數。詳見<a href="/zh-Hant/learn/us-substantial-presence-test">實質居留判定</a>；AtlasDays 有追蹤器會自動完成加權計算。</li>
+    </ul>
+    <p>天數不是唯一的標準：即使天數較少，在當地有住所或家人，也可能成為稅務居民。<a href="/zh-Hant/learn/183-day-tax-residency-rule">183 天規則</a>說明了這些居住聯繫，<a href="/zh-Hant/learn/tax-residency-by-country">各國稅務居民規定</a>則收錄了每個國家的指南。</p>
+
+    <div class="cta-box">
+      <span class="cta-logo">
+        <img class="logo-dark" src="/assets/brand/logo_dark.png?v=20260325a" alt="AtlasDays 標誌" width="52" height="52" />
+        <img class="logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="AtlasDays 標誌" width="52" height="52" />
+      </span>
+      <h2>旅途中持續計算天數</h2>
+      <p>計算器只能檢查今天記得的天數。AtlasDays 會在旅途中持續計算在各國的停留天數，資料私密保存在 iPhone 上；若某趟行程可能讓天數超過上限，也會事先提醒。</p>
+      <a class="cta-btn" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> 取得 AtlasDays</a>
+    </div>
+
+    <h2>常見問題</h2>
+    <h3>抵達當天算在該國的天數內嗎？</h3>
+    <p>在這個計算器中會算：只要在當地待過，當天就算一天，所以抵達當天和離開當天都算在該國的天數。許多國家都這樣計算。英國則以午夜計算，做法詳見<a href="/zh-Hant/learn/uk-statutory-residence-test">英國指南</a>。</p>
+    <h3>在一個國家停留 183 天，就會成為稅務居民嗎？</h3>
+    <p>通常會，但不一定。許多國家以課稅年度內停留 183 天作為稅務居民的標準，有些國家則採用不同的門檻或期間；住所或家人等其他居住聯繫，也可能讓停留天數較少的人成為稅務居民。計算器顯示的是天數，不是判定結果。</p>
+    <h3>輸入的資料會儲存嗎？</h3>
+    <p>不會。計算器在瀏覽器內執行，不會傳送、記錄或儲存輸入的日期。關閉或重新載入頁面就會清除。若要保留，請輕點「在 AtlasDays 中繼續追蹤」。</p>
