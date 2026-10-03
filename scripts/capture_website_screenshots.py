@@ -240,6 +240,7 @@ LOCALE_LAUNCH = {
     "ko": ("(ko)", "ko_KR"),
     "zh-Hant": ("(zh-Hant)", "zh_TW"),
     "zh-Hans": ("(zh-Hans)", "zh_CN"),
+    "pl": ("(pl)", "pl_PL"),
 }
 
 
@@ -272,6 +273,7 @@ LOCALE_RESIDENCE = {
     "ko": "KR",
     "zh-Hant": "TW",
     "zh-Hans": "CN",
+    "pl": "PL",
 }
 
 

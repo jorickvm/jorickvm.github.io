@@ -66,6 +66,10 @@
     // ş already fold. Dotted İ needs no rule of its own: toLowerCase leaves
     // i + U+0307 and the combining-mark strip above removes the dot.
     folded = folded.replace(/\u0131/g, "i");
+    // Polish ł has the same problem: no decomposition, so STRIP deleted it and
+    // "Włochy" indexed as "w ochy". Fold it to l, the letter Polish readers
+    // type in its place on a keyboard without the Polish layout.
+    folded = folded.replace(/\u0142/g, "l");
     return folded.replace(STRIP, " ").replace(/\bdays\b/g, "day").trim();
   }
 

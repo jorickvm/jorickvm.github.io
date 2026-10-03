@@ -73,6 +73,38 @@ class TurkishTests(unittest.TestCase):
         )
 
 
+class PolishTests(unittest.TestCase):
+    def test_l_stroke_sorts_after_l_not_after_z(self):
+        """ł has no decomposition, so a diacritic fold left it after z."""
+        self.assertEqual(
+            order(["Szwajcaria", "Słowenia", "Słowacja", "Serbia"], "pl"),
+            ["Serbia", "Słowacja", "Słowenia", "Szwajcaria"],
+        )
+        self.assertEqual(
+            order(["Łotwa", "Luizjana", "Malta", "Litwa"], "pl"),
+            ["Litwa", "Luizjana", "Łotwa", "Malta"],
+        )
+
+    def test_accented_letters_follow_their_whole_base_block(self):
+        """ś is a letter after s, so every s- name precedes it."""
+        self.assertEqual(
+            order(["Świat", "Szwecja", "Serbia"], "pl"),
+            ["Serbia", "Szwecja", "Świat"],
+        )
+
+    def test_z_acute_precedes_z_dot(self):
+        self.assertEqual(
+            order(["Żywiec", "Źródło", "Zjednoczone Emiraty Arabskie"], "pl"),
+            ["Zjednoczone Emiraty Arabskie", "Źródło", "Żywiec"],
+        )
+
+    def test_retained_foreign_v_keeps_its_latin_place(self):
+        self.assertEqual(
+            order(["Wietnam", "Vermont", "Teksas"], "pl"),
+            ["Teksas", "Vermont", "Wietnam"],
+        )
+
+
 class CyrillicTests(unittest.TestCase):
     def test_ukrainian_letters_outside_the_a_ya_run(self):
         """і, ї, є and ґ have code points above я."""
