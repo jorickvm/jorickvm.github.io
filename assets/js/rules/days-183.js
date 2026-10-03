@@ -5,7 +5,10 @@
    in that country, and a travel day between two countries counts for both.
 
    The result box (Jorick, 2026-10-03) reads like an app tracker:
-     [flag Country] [Stay below | Reach target] [Calendar year | Tax year | Last 12 months] [2026 | from 6 Apr 2026]
+     choices, above the card:
+       [flag Country] [Stay under 183 days | Reach 183 days] [Calendar year | Tax year | Last 12 months] [2026 | from 6 Apr 2026]
+     the card, as the app's tracker card:
+       flag Country                                   [75 days remaining]
      6 Apr 2026 – 5 Apr 2027                                  108 / 183
      ======================-----------
      [75 days remaining]
@@ -100,7 +103,7 @@
         : (left > 0 ? c.text("remaining", { n: left }) : left === 0 ? c.text("atLimit") : c.text("overBy", { n: -left }));
       return {
         controls: controls,
-        meter: { label: c.dateRange(b.from, b.to), days: days, limit: LIMIT, tone: c.tone(days, LIMIT, target) },
+        meter: { title: country ? c.placeName(country) : c.text("chooseCountry"), flag: country, label: c.dateRange(b.from, b.to), days: days, limit: LIMIT, tone: c.tone(days, LIMIT, target) },
         statusText: status,
         lines: lines
       };
@@ -125,8 +128,9 @@
       addCountry: "Add country",
       noMatch: "No matching country",
       goal: "Goal",
-      goalStay: "Stay below",
-      goalReach: "Reach target",
+      goalStay: "Stay under 183 days",
+      goalReach: "Reach 183 days",
+      chooseCountry: "Choose a country",
       taxFrom: "from {date}",
       period: "Period",
       periodCalendar: "Calendar year",

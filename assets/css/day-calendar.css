@@ -24,7 +24,7 @@
   --cal-track: rgba(120, 120, 128, 0.32);
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-  grid-template-areas: "hint hint" "result result" "cal trips";
+  grid-template-areas: "settings settings" "result result" "hint hint" "cal trips";
   gap: 14px;
   align-items: start;
   margin: 18px 0 14px;
@@ -35,6 +35,8 @@ html[data-theme="light"] .daycal { --cal-disc: rgba(12, 22, 40, 0.07); --tone-wa
 .cal-side > .cal-box:last-child { grid-area: trips; }
 
 .cal-hint { grid-area: hint; margin: 0; color: var(--muted); font-size: 0.93rem; }
+/* the rule's choices, above the result card */
+.cal-settings { grid-area: settings; display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: center; }
 
 .cal-window {
   grid-area: cal;
@@ -66,6 +68,8 @@ html[data-theme="light"] .daycal { --cal-disc: rgba(12, 22, 40, 0.07); --tone-wa
   border-top: 1px solid var(--line);
 }
 .cal-week:first-child { border-top: 0; }
+/* the month in view: an accent line over its days, 3px at 28%, as in the app */
+.cal-month-line { position: absolute; top: -2px; height: 3px; background: color-mix(in srgb, var(--cal-bar) 28%, transparent); pointer-events: none; }
 
 .cal-day {
   position: relative;
@@ -204,7 +208,13 @@ html[data-theme="light"] .daycal { --cal-disc: rgba(12, 22, 40, 0.07); --tone-wa
 .cal-control.is-date input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; color-scheme: light dark; }
 .cal-control.is-date:focus-within .cal-date-text { outline: 2px solid var(--blue); outline-offset: 2px; }
 
-/* the result as an app tracker: period and count, a bar, a status pill */
+/* the result as the app's tracker card: flag and title with the status pill,
+   then period and count, then the bar */
+.cal-card-head { display: flex; align-items: center; gap: 10px; margin: 0 0 12px; }
+.cal-card-head .cal-flag { width: 28px; height: 21px; }
+.cal-card-title { flex: 1 1 auto; min-width: 0; color: var(--text); font-size: 1.02rem; font-weight: 650; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cal-card-title.is-placeholder { color: var(--muted); font-weight: 500; }
+.cal-card-head .cal-pill { flex: 0 0 auto; margin: 0; }
 .cal-meter { display: grid; gap: 7px; margin: 2px 0 10px; }
 .cal-meter-row { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
 .cal-meter-period { color: var(--muted); font-size: 0.9rem; }
@@ -385,7 +395,7 @@ html[data-theme="light"] .daycal { --cal-disc: rgba(12, 22, 40, 0.07); --tone-wa
 
 /* On a phone: hint, result, calendar, trips, one under the other. */
 @media (max-width: 640px) {
-  .daycal { grid-template-columns: minmax(0, 1fr); grid-template-areas: "hint" "result" "cal" "trips"; }
+  .daycal { grid-template-columns: minmax(0, 1fr); grid-template-areas: "settings" "result" "hint" "cal" "trips"; }
   .cal-window { height: min(50vh, 460px); } /* leaves page to swipe on above and below */
   .cal-country-input, .cal-control select { font-size: 16px; } /* keeps iOS from zooming in on focus */
 }

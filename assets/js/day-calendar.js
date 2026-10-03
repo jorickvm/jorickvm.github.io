@@ -142,6 +142,10 @@
     var win = $("[data-cal-window]"), head = $(".cal-head"), weeksBox = $("[data-cal-weeks]"), monthTitle = $("[data-cal-month]");
     var hint = $("[data-cal-hint]"), list = $("[data-cal-list]"), result = $("[data-cal-result]");
     var dialog = $("[data-cal-dialog]");
+    // A rule's choices (country, goal, period) sit in their own row above the
+    // result card, so the card itself reads like the app's tracker card.
+    var settingsRow = el("div", { "class": "cal-settings", hidden: "" });
+    root.insertBefore(settingsRow, root.querySelector(".cal-side") || win);
 
     var today = D.today();
     // anchor: first day of a trip being made; hover: the day under the mouse
@@ -277,6 +281,8 @@
           cells[day] = b;
           row.appendChild(b);
         }
+        // the month in view gets an accent line over its days, as in the app
+        row.appendChild(el("span", { "class": "cal-month-line", "aria-hidden": "true" }));
         row.appendChild(el("div", { "class": "cal-bars", "aria-hidden": "true" }));
         weeksBox.appendChild(row);
         rows.push(row);
@@ -571,13 +577,22 @@
     function renderResult() {
       var r = rule.evaluate(trips, ctx());
       result.textContent = "";
-      if (r.controls && r.controls.length) {
-        var bar = el("div", { "class": "cal-controls" });
-        r.controls.forEach(function (ctl) { bar.appendChild(control(ctl)); });
-        result.appendChild(bar);
-      }
+      settingsRow.textContent = "";
+      settingsRow.hidden = !(r.controls && r.controls.length);
+      (r.controls || []).forEach(function (ctl) { settingsRow.appendChild(control(ctl)); });
       if (r.meter) {
-        var m = r.meter, meter = el("div", { "class": "cal-meter tone-" + m.tone });
+        var m = r.meter;
+        // The app's card header: flag and title on the left, status pill on the right.
+        if (m.title != null) {
+          var head = el("div", { "class": "cal-card-head" });
+          var flag = el("span", { "class": "cal-flag" + (m.flag ? "" : " is-empty") });
+          if (m.flag) flag.appendChild(flagImg(m.flag, 28));
+          head.appendChild(flag);
+          head.appendChild(el("span", { "class": "cal-card-title" + (m.flag ? "" : " is-placeholder") }, m.title));
+          if (r.statusText) head.appendChild(el("span", { "class": "cal-pill tone-" + m.tone }, r.statusText));
+          result.appendChild(head);
+        }
+        var meter = el("div", { "class": "cal-meter tone-" + m.tone });
         var row = el("div", { "class": "cal-meter-row" });
         row.appendChild(el("span", { "class": "cal-meter-period" }, m.label));
         var count = el("span", { "class": "cal-meter-count" });
@@ -590,7 +605,7 @@
         track.appendChild(fill);
         meter.appendChild(track);
         result.appendChild(meter);
-        if (r.statusText) result.appendChild(el("span", { "class": "cal-pill tone-" + m.tone }, r.statusText));
+        if (r.statusText && m.title == null) result.appendChild(el("span", { "class": "cal-pill tone-" + m.tone }, r.statusText));
         (r.lines || []).forEach(function (line) { result.appendChild(el("p", { "class": "cal-line" }, line)); });
         return;
       }
@@ -652,6 +667,13 @@
       activeMonth = pick;
       monthTitle.textContent = monthDate.format(new Date(D.monthStart(pick) * DAY));
       Object.keys(cells).forEach(function (k) { cells[k].classList.toggle("is-other-month", D.monthKey(+k) !== pick); });
+      rows.forEach(function (r) {
+        var mon = +r.dataset.monday, first = -1, last = -1;
+        for (var c = 0; c < 7; c++) if (D.monthKey(mon + c) === pick) { if (first < 0) first = c; last = c; }
+        var line = r.querySelector(".cal-month-line");
+        line.hidden = first < 0;
+        if (first >= 0) { line.style.left = (first / 7 * 100) + "%"; line.style.width = ((last - first + 1) / 7 * 100) + "%"; }
+      });
     }
 
     // ---- import into AtlasDays -----------------------------------------------------

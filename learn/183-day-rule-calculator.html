@@ -105,7 +105,7 @@
   <link rel="stylesheet" href="../assets/css/site-header.css?v=20260930a" />
   <link rel="stylesheet" href="../assets/css/article-components.css?v=20260925a" />
   <link rel="stylesheet" href="../assets/css/site-footer.css?v=20260928f" />
-  <link rel="stylesheet" href="../assets/css/day-calendar.css?v=20261003b" />
+  <link rel="stylesheet" href="../assets/css/day-calendar.css?v=20261003c" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
@@ -193,10 +193,11 @@
   "deleteTrip": "Delete stay",
   "country": "Country",
   "goal": "Goal",
-  "goalStay": "Stay below",
-  "goalReach": "Reach target",
+  "goalStay": "Stay under 183 days",
+  "goalReach": "Reach 183 days",
   "addCountry": "Add country",
   "noMatch": "No matching country",
+  "chooseCountry": "Choose a country",
   "period": "Period",
   "periodCalendar": "Calendar year",
   "periodTax": "Tax year",
@@ -265,7 +266,7 @@
       <li><strong>Any part of a day counts.</strong> The day you arrive and the day you leave are both days in that country. A stay from 1 June to 10 June is ten days.</li>
       <li><strong>Travel days count for both countries.</strong> If you fly from Spain to Portugal on 10 June, that day counts once for Spain and once for Portugal.</li>
       <li><strong>One country, one year.</strong> Pick the country and the period above the result. The period is always a year: a calendar year, a tax year from the first day you enter (6 April in the UK, 1 July in Australia, 1 April in New Zealand and India), or the last 12 months. New stays start with the country you picked, and a stay that crosses the edge of the period counts only its days inside it.</li>
-      <li><strong>Stay below, or reach 183.</strong> Most people want to stay under 183 days somewhere. If you need 183 days to become resident in a country, choose Reach target: the bar turns green once you get there.</li>
+      <li><strong>Stay below, or reach 183.</strong> Most people want to stay under 183 days somewhere. If you need 183 days to become resident in a country, choose Reach 183 days: the bar turns green once you get there.</li>
       <li><strong>Planned stays count too.</strong> Mark a trip you have not booked yet to see whether it would take you past 183.</li>
     </ul>
 
@@ -357,8 +358,8 @@
   <script src="../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"Open navigation menu","menuClose":"Close navigation menu"};</script>
   <script src="../assets/js/navigation.js?v=20260817b"></script>
-  <script defer src="../assets/js/rules/days-183.js?v=20261003b"></script>
-  <script defer src="../assets/js/day-calendar.js?v=20261003b"></script>
+  <script defer src="../assets/js/rules/days-183.js?v=20261003c"></script>
+  <script defer src="../assets/js/day-calendar.js?v=20261003c"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();
