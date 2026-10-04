@@ -37,7 +37,7 @@ html[data-theme="light"] .daycal { --cal-disc: rgba(12, 22, 40, 0.07); --tone-wa
 .cal-side > .cal-box:first-child { grid-area: result; }
 .cal-side > .cal-box:last-child { grid-area: trips; }
 /* A long timeline scrolls inside its card, so the page keeps its height. */
-[data-cal-list] { max-height: 430px; overflow-y: auto; overscroll-behavior: contain; }
+[data-cal-list] { max-height: 430px; overflow-y: auto; }
 
 .cal-hint { grid-area: hint; margin: 0; color: var(--muted); font-size: 0.93rem; }
 /* a quiet hint floats at the bottom of the calendar window instead of taking
@@ -459,6 +459,11 @@ html[data-theme="light"] .daycal { --cal-disc: rgba(12, 22, 40, 0.07); --tone-wa
 .cal-dialog-scan .cal-qr { margin: 0; flex: none; cursor: zoom-in; }
 .cal-dialog-scan .cal-qr.is-large { cursor: zoom-out; }
 .cal-dialog-scan.is-large { flex-direction: column; align-items: flex-start; }
+/* Code above the steps: it lines up with the text, not the dialog edge
+   (title after the 44px icon + 12px gap; step text after the 34px number). */
+.cal-dialog-scan.is-stacked .cal-qr { margin-left: 56px; max-width: calc(100% - 56px); }
+/* Step text starts where the title does: 22px + the 34px number column. */
+.cal-dialog .cal-steps { padding: 0 0 0 22px; }
 .cal-dialog-scan .cal-steps { flex: 1 1 200px; }
 .cal-steps { list-style: none; counter-reset: cal-step; margin: 0 0 6px; padding: 0; }
 .cal-steps > li { counter-increment: cal-step; position: relative; padding: 0 0 14px 34px; margin: 0; color: var(--muted); font-size: 0.88rem; line-height: 1.5; }

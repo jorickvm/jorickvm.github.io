@@ -145,7 +145,7 @@
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20260925a" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
-  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261004d" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261004f" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Aller au contenu</a>
@@ -219,7 +219,7 @@
     </nav>
     <img class="title-flag" src="/assets/flags/gb.png" alt="Drapeau du Royaume-Uni" width="56" height="42" />
     <h1>Calculateur d’absences pour l’ILR : 180 jours sur toute période de 12 mois</h1>
-    <p class="subtitle">Pour chaque voyage, touchez le jour où vous avez quitté le Royaume-Uni et celui de votre retour. Le suivi indique vos jours à l’étranger sur les 12 mois qui mènent à la date de votre choix et signale vos 12 mois les plus défavorables s’ils en comptent davantage, voyages prévus compris.</p>
+    <p class="subtitle">Pour chaque voyage, touchez le jour où vous avez quitté le Royaume-Uni et celui de votre retour. Le suivi indique vos jours à l’étranger sur les 12 mois qui mènent à la date de votre choix, voyages prévus compris.</p>
     <p class="verified">Dernière vérification : octobre 2026</p>
 
     <h2>Vérifiez vos absences</h2>
@@ -253,11 +253,6 @@
     "one": "Dépassement de {n} jour",
     "many": "Dépassement de {n} jours",
     "other": "Dépassement de {n} jours"
-  },
-  "lineWorst": {
-    "one": "12 mois les plus défavorables : {n} jour d’absence, {from}.",
-    "many": "12 mois les plus défavorables : {n} jours d’absence, {from}.",
-    "other": "12 mois les plus défavorables : {n} jours d’absence, {from}."
   }
 }
       </script>
@@ -313,7 +308,6 @@
     <ul>
       <li><strong>Uniquement les journées entières.</strong> Le jour du départ et celui du retour ne sont pas des jours à l’étranger : un voyage du 1er au 10 juin représente donc huit jours d’absence (du 2 au 9 juin), et un voyage de moins de 24 heures n’en ajoute aucun.</li>
       <li><strong>Les 12 mois qui mènent à une date.</strong> Le suivi compte vos jours à l’étranger sur les 12 mois qui mènent à la « Date de calcul », aujourd’hui sauf si vous en choisissez une autre. Vous prévoyez un voyage ? Réglez « Date de calcul » sur le jour de votre retour.</li>
-      <li><strong>Et chaque période de 12 mois.</strong> La limite s’applique à toute période de 12 mois comprise dans votre période requise : le calculateur vérifie donc aussi chaque période de 12 mois couverte par les voyages que vous marquez. Si l’une d’elles compte plus de jours à l’étranger que le suivi n’en affiche, la ligne en dessous indique la plus défavorable.</li>
       <li><strong>Des mois civils, pas des blocs de 365 jours.</strong> Une fenêtre se terminant le 9 janvier 2027 commence le 10 janvier 2026, jours bissextiles compris.</li>
     </ul>
 
@@ -407,8 +401,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"Ouvrir le menu de navigation","menuClose":"Fermer le menu de navigation"};</script>
   <script src="../../assets/js/navigation.js?v=20260817b"></script>
-  <script defer src="../../assets/js/rules/uk-ilr.js?v=20261004a"></script>
-  <script defer src="../../assets/js/day-calendar.js?v=20261004d"></script>
+  <script defer src="../../assets/js/rules/uk-ilr.js?v=20261004b"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261004e"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

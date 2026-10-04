@@ -232,6 +232,15 @@
     box.style.width = Math.round(box.classList.contains("is-large")
       ? Math.min(492, Math.max(260, modules * 4.4))
       : Math.min(240, Math.max(200, modules * 3))) + "px";
+    stackQr(box);
+  }
+  // When the steps no longer fit beside the code they go under it, and the
+  // code moves in to line up with the text.
+  function stackQr(box) {
+    var scan = box.parentNode;
+    scan.classList.remove("is-stacked");
+    var stacked = scan.classList.contains("is-large") || scan.clientWidth < box.offsetWidth + 18 + 200;
+    scan.classList.toggle("is-stacked", stacked);
   }
 
   function DayCalendar(root) {
@@ -954,6 +963,7 @@
     root.querySelectorAll("[data-cal-close]").forEach(function (btn) { btn.addEventListener("click", function () { dialog.close(); }); });
     if (dialog) dialog.addEventListener("click", function (e) { if (e.target === dialog) dialog.close(); });
     var qrBox = dialog && dialog.querySelector("[data-cal-qr]");
+    window.addEventListener("resize", function () { if (dialog.open && qrBox && qrBox.firstChild) stackQr(qrBox); });
     if (qrBox) qrBox.addEventListener("click", function () {
       if (!qrBox.firstChild) return;
       qrBox.classList.toggle("is-large");

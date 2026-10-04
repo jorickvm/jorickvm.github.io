@@ -143,7 +143,7 @@
   <link rel="stylesheet" href="../assets/css/site-header.css?v=20260930a" />
   <link rel="stylesheet" href="../assets/css/article-components.css?v=20260925a" />
   <link rel="stylesheet" href="../assets/css/site-footer.css?v=20260928f" />
-  <link rel="stylesheet" href="../assets/css/day-calendar.css?v=20261004d" />
+  <link rel="stylesheet" href="../assets/css/day-calendar.css?v=20261004f" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
@@ -217,7 +217,7 @@
     </nav>
     <img class="title-flag" src="../assets/flags/gb.png" alt="Flag of the United Kingdom" width="56" height="42" />
     <h1>ILR Absence Calculator: 180 Days in Any 12 Months</h1>
-    <p class="subtitle">Tap the day you left the UK and the day you came back for each trip. The tracker shows your days abroad in the 12 months up to any date, and names your worst 12 months if they hold more, planned trips included.</p>
+    <p class="subtitle">Tap the day you left the UK and the day you came back for each trip. The tracker shows your days abroad in the 12 months up to any date, planned trips included.</p>
     <p class="verified">Last verified: October 2026</p>
 
     <h2>Check your absences</h2>
@@ -248,10 +248,6 @@
   "overBy": {
     "one": "Over limit by {n} day",
     "other": "Over limit by {n} days"
-  },
-  "lineWorst": {
-    "one": "Worst 12 months: {n} day away, {from}.",
-    "other": "Worst 12 months: {n} days away, {from}."
   }
 }
       </script>
@@ -307,7 +303,6 @@
     <ul>
       <li><strong>Whole days only.</strong> The day you leave and the day you come back are not days abroad, so a trip from 1 June to 10 June is eight days away (2 to 9 June), and a trip of less than 24 hours adds nothing.</li>
       <li><strong>The 12 months up to one date.</strong> The tracker counts your days abroad in the 12 months up to Check on, today unless you pick another date. Planning a trip? Set Check on to the day you come back.</li>
-      <li><strong>Every 12 months, too.</strong> The limit applies to any 12 months in your qualifying period, so the calculator also checks every 12-month stretch across the trips you mark. If one holds more days abroad than the tracker shows, the line under it names the worst.</li>
       <li><strong>Calendar months, not 365-day blocks.</strong> A window running to 9 January 2027 starts on 10 January 2026, leap days included.</li>
     </ul>
 
@@ -401,8 +396,8 @@
   <script src="../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"Open navigation menu","menuClose":"Close navigation menu"};</script>
   <script src="../assets/js/navigation.js?v=20260817b"></script>
-  <script defer src="../assets/js/rules/uk-ilr.js?v=20261004a"></script>
-  <script defer src="../assets/js/day-calendar.js?v=20261004d"></script>
+  <script defer src="../assets/js/rules/uk-ilr.js?v=20261004b"></script>
+  <script defer src="../assets/js/day-calendar.js?v=20261004e"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();
