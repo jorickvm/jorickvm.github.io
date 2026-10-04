@@ -145,7 +145,7 @@
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20260925a" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
-  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261004i" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261004j" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Ir al contenido</a>
@@ -242,7 +242,8 @@
     "other": "{n} días fuera"
   },
   "title": "Días fuera del Reino Unido",
-  "checkOn": "Fecha de cálculo",
+  "checkOn": "Contar hasta",
+  "checkOnCaption": "Tus días fuera en los 12 meses hasta esta fecha. Para un viaje previsto, elige el día en que regresas.",
   "remaining": {
     "one": "Queda {n} día",
     "many": "Quedan {n} días",
@@ -307,7 +308,7 @@
     <h2>Cómo cuenta la calculadora</h2>
     <ul>
       <li><strong>Solo días completos.</strong> Ni el día de salida ni el de regreso son días fuera, así que un viaje del 1 al 10 de junio supone ocho días fuera (del 2 al 9 de junio), y un viaje de menos de 24 horas no suma ninguno.</li>
-      <li><strong>Los 12 meses hasta una fecha.</strong> El control cuenta tus días fuera en los 12 meses que terminan en la «Fecha de cálculo», que es hoy salvo que elijas otra. ¿Planeas un viaje? Pon «Fecha de cálculo» en el día en que regresas.</li>
+      <li><strong>Los 12 meses hasta una fecha.</strong> El control cuenta tus días fuera en los 12 meses que terminan en la fecha hasta la que cuentas, que es hoy salvo que elijas otra. ¿Planeas un viaje? Cuenta hasta el día en que regresas.</li>
       <li><strong>Meses naturales, no bloques de 365 días.</strong> Una ventana que termina el 9 de enero de 2027 empieza el 10 de enero de 2026, incluidos los días bisiestos.</li>
     </ul>
 
@@ -402,7 +403,7 @@
   <script>window.AtlasDaysNavStrings={"menuOpen":"Abrir el menú de navegación","menuClose":"Cerrar el menú de navegación"};</script>
   <script src="../../assets/js/navigation.js?v=20260817b"></script>
   <script defer src="../../assets/js/rules/uk-ilr.js?v=20261004c"></script>
-  <script defer src="../../assets/js/day-calendar.js?v=20261004h"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261004j"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

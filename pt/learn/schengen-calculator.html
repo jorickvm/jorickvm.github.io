@@ -123,7 +123,7 @@
         "name": "Quando recupero meus dias Schengen?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Um dia de cada vez: cada dia que você passou no espaço Schengen deixa de contar 180 dias depois. Escolha uma Data de referência mais adiante para ver quantos dias você terá então, ou leia quando você recupera os dias Schengen."
+          "text": "Um dia de cada vez: cada dia que você passou no espaço Schengen deixa de contar 180 dias depois. Escolha uma data mais adiante em “Contar até” para ver quantos dias você terá então, ou leia quando você recupera os dias Schengen."
         }
       },
       {
@@ -153,7 +153,7 @@
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20260925a" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
-  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261004i" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261004j" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Pular para o conteúdo</a>
@@ -244,7 +244,8 @@
   "addCountry": "Adicionar país",
   "noMatch": "Nenhum país Schengen encontrado",
   "area": "Espaço Schengen",
-  "checkOn": "Data de referência",
+  "checkOn": "Contar até",
+  "checkOnCaption": "Seus dias nos 180 dias até esta data. Para uma viagem planejada, escolha o último dia dela.",
   "tripDays": {
     "one": "{n} dia",
     "other": "{n} dias",
@@ -320,8 +321,8 @@
     <ul>
       <li><strong>Qualquer parte de um dia conta.</strong> O dia da entrada e o dia da saída contam como dias no espaço Schengen, então de 1º a 10 de junho são dez dias.</li>
       <li><strong>Uma só cota para todo o espaço.</strong> Os 90 dias valem para todos os países Schengen juntos, não para cada país separadamente. Um dia passado em dois países Schengen conta uma vez só.</li>
-      <li><strong>Os 180 dias até uma data.</strong> O calendário mostra os 180 dias até a Data de referência, que é hoje, a menos que você escolha outra data, e o controle conta seus dias nesse período. Cada dia mais antigo que sai da janela libera um dia.</li>
-      <li><strong>Planejando uma viagem?</strong> Defina a Data de referência como o último dia dela. Durante uma estadia, sua contagem só pode subir; então, se o último dia couber, a viagem inteira cabe.</li>
+      <li><strong>Os 180 dias até uma data.</strong> O calendário mostra os 180 dias até a data em “Contar até”, que é hoje, a menos que você escolha outra, e o controle conta seus dias nesse período. Cada dia mais antigo que sai da janela libera um dia.</li>
+      <li><strong>Planejando uma viagem?</strong> Em “Contar até”, escolha o último dia dela. Durante uma estadia, sua contagem só pode subir; então, se o último dia couber, a viagem inteira cabe.</li>
     </ul>
 
     <h2>Quando valem outras regras</h2>
@@ -347,7 +348,7 @@
     <h3>O dia da entrada e o dia da saída contam os dois?</h3>
     <p>Sim. O dia da entrada é o primeiro dia da sua estadia e o dia da saída é o último, mesmo que você chegue tarde da noite ou saia de manhã cedo. A calculadora conta os dois.</p>
     <h3>Quando recupero meus dias Schengen?</h3>
-    <p>Um dia de cada vez: cada dia que você passou no espaço Schengen deixa de contar 180 dias depois. Escolha uma Data de referência mais adiante para ver quantos dias você terá então, ou leia <a href="/pt/learn/when-do-you-get-schengen-days-back-after-90-day-stay">quando você recupera os dias Schengen</a>.</p>
+    <p>Um dia de cada vez: cada dia que você passou no espaço Schengen deixa de contar 180 dias depois. Escolha uma data mais adiante em “Contar até” para ver quantos dias você terá então, ou leia <a href="/pt/learn/when-do-you-get-schengen-days-back-after-90-day-stay">quando você recupera os dias Schengen</a>.</p>
     <h3>Esta é a calculadora oficial da UE?</h3>
     <p>Não. A Comissão Europeia publica a própria calculadora de estadia curta. Esta conta do mesmo jeito, 90 dias em qualquer período de 180 com os dias de entrada e saída incluídos, e permite guardar suas estadias no AtlasDays. A decisão é das autoridades de fronteira e de vistos.</p>
     <h3>Meus dados ficam salvos?</h3>
@@ -415,7 +416,7 @@
   <script>window.AtlasDaysNavStrings={"menuOpen":"Abrir o menu de navegação","menuClose":"Fechar o menu de navegação"};</script>
   <script src="../../assets/js/navigation.js?v=20260817b"></script>
   <script defer src="../../assets/js/rules/schengen.js?v=20261004c"></script>
-  <script defer src="../../assets/js/day-calendar.js?v=20261004h"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261004j"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

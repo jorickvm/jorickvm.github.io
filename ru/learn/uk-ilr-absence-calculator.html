@@ -145,7 +145,7 @@
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20260925a" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
-  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261004i" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261004j" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Перейти к содержимому</a>
@@ -243,7 +243,8 @@
     "other": "{n} дня за границей"
   },
   "title": "Дни вне Великобритании",
-  "checkOn": "Дата проверки",
+  "checkOn": "Считать до",
+  "checkOnCaption": "Ваши дни за границей за 12 месяцев до этой даты. Для запланированной поездки выберите день возвращения.",
   "remaining": {
     "one": "Остался {n} день",
     "few": "Осталось {n} дня",
@@ -310,7 +311,7 @@
     <h2>Как считает калькулятор</h2>
     <ul>
       <li><strong>Только полные дни.</strong> Дни выезда и возвращения не считаются днями за границей, поэтому поездка с 1 по 10 июня — это восемь дней отсутствия (со 2 по 9 июня), а поездка менее чем на 24 часа не добавит ни дня.</li>
-      <li><strong>12 месяцев до одной даты.</strong> Трекер считает ваши дни за границей за 12 месяцев до даты в поле «Дата проверки» — сегодняшней, если не выбрать другую. Планируете поездку? Укажите в поле «Дата проверки» день возвращения.</li>
+      <li><strong>12 месяцев до одной даты.</strong> Трекер считает ваши дни за границей за 12 месяцев до даты в поле «Считать до» — сегодняшней, если не выбрать другую. Планируете поездку? Укажите в поле «Считать до» день возвращения.</li>
       <li><strong>Календарные месяцы, а не блоки по 365 дней.</strong> Окно, заканчивающееся 9 января 2027 года, начинается 10 января 2026 года; високосные дни учитываются.</li>
     </ul>
 
@@ -405,7 +406,7 @@
   <script>window.AtlasDaysNavStrings={"menuOpen":"Открыть меню навигации","menuClose":"Закрыть меню навигации"};</script>
   <script src="../../assets/js/navigation.js?v=20260817b"></script>
   <script defer src="../../assets/js/rules/uk-ilr.js?v=20261004c"></script>
-  <script defer src="../../assets/js/day-calendar.js?v=20261004h"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261004j"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();
