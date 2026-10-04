@@ -567,12 +567,22 @@
     // ---- trips list ---------------------------------------------------------------
     // Each card: the flag, the country (or a field to add one), the dates and
     // the count. Tapping a card selects its trip; the selected card offers Delete.
-    function fold(s) { return String(s).normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase(); }
+    // Apostrophes vary by keyboard (В’єтнам, Вʼєтнам), so they fold to one.
+    function fold(s) { return String(s).normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[’ʼ‘`]/g, "'").toLowerCase(); }
+    // Names people type that the browser's region names leave out: the short
+    // or long form the site's own articles use where Intl picks the other one.
+    var ALIASES = {
+      AE: "UAE ОАЭ ОАЕ Объединённые Арабские Эмираты Обʼєднані Арабські Емірати",
+      AU: "호주 澳洲 澳大利亚",
+      CZ: "Czech Republic",
+      GB: "UK Great Britain",
+      US: "USA"
+    };
     var catalogue = null;
     function places() {
       if (!catalogue) catalogue = allowed.map(function (c) {
         var name = placeName(c), en = englishNames ? (englishNames.of(c) || "") : "";
-        return { code: c, name: name, key: fold(name + " " + en + " " + c) };
+        return { code: c, name: name, key: fold(name + " " + en + " " + c + " " + (ALIASES[c] || "")) };
       }).sort(function (a, b) { return a.name.localeCompare(b.name, locale); });
       return catalogue;
     }
