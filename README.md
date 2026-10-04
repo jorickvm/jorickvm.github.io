@@ -105,7 +105,7 @@ The audit is the main safety net: it checks canonicals, sitemap agreement, JSON-
 
 ## Analytics
 
-Every generated page loads Cloudflare Web Analytics (cookieless, aggregate) through a small inline loader in the three page templates, between the `Cloudflare Web Analytics` comment markers. Opening any page with `?notrack` switches analytics off in that browser (a `localStorage` flag, never sent anywhere); `?notrack=off` switches it back on. It exists so the site owner's own visits are not counted. The in-app browser keeps its own storage, so it needs the link opened there separately. `assets/js/app-page-alias.js` strips everything between the markers from pages it renders, so an alias never counts twice.
+Every generated page loads Cloudflare Web Analytics (cookieless, aggregate) through a small inline loader in the three page templates, between the `Cloudflare Web Analytics` comment markers. Opening any page with `?notrack` switches analytics off in that browser (a `localStorage` flag, never sent anywhere); `?notrack=off` switches it back on. It exists so the site owner's own visits are not counted. The app's in-app browser keeps its own storage and has no address bar, so the app adds `notrack=1` to every atlasdays.app link when its hidden analytics opt-out is on; the hand-authored `app/*/index.html` pages, including the in-app hop, honour it too. `assets/js/app-page-alias.js` strips everything between the markers from pages it renders, so an alias never counts twice.
 
 ## Local preview
 

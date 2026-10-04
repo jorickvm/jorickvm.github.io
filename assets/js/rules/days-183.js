@@ -36,10 +36,16 @@
     };
   }
   function setting(c, key) { return c.settings[key] || defaults(c)[key]; }
+  function countUpTo(c) {
+    var iso = c.settings.checkOn;
+    if (!iso) return c.today;
+    var p = iso.split("-").map(Number);
+    return c.D.fromParts(p[0], p[1], p[2]) || c.today;
+  }
 
   function bounds(c) {
     var D = c.D, type = setting(c, "periodType");
-    if (type === "rolling") return { from: D.shiftYears(c.today, -1) + 1, to: c.today };
+    if (type === "rolling") { var on = countUpTo(c); return { from: D.shiftYears(on, -1) + 1, to: on }; }
     if (type === "tax") {
       var iso = setting(c, "taxStart").split("-").map(Number), from = D.fromParts(iso[0], iso[1], iso[2]);
       return { from: from, to: D.shiftYears(from, 1) - 1 };
@@ -53,19 +59,23 @@
     travelDaysCount: true,
     singleDayTrips: true,
     fixedRange: true,
+    quietHint: true,
+    linkId: "183",
 
     range: function (c) { return bounds(c); },
     newTripCountry: function (c) { return c.settings.country || ""; },
 
+    // A country that counts nights (Portugal) leaves out the day you leave.
     tripLabel: function (t, c) {
-      return c.text("tripDays", { n: t.end - t.start + 1 });
+      return c.text("tripDays", { n: t.end - t.start + (c.settings.nights ? 0 : 1) });
     },
 
     evaluate: function (trips, c) {
       var b = bounds(c), byCountry = {};
       trips.forEach(function (t) {
         var code = t.country || "";
-        for (var d = Math.max(t.start, b.from); d <= Math.min(t.end, b.to); d++) (byCountry[code] = byCountry[code] || new Set()).add(d);
+        var last = c.settings.nights ? t.end - 1 : t.end;
+        for (var d = Math.max(t.start, b.from); d <= Math.min(last, b.to); d++) (byCountry[code] = byCountry[code] || new Set()).add(d);
       });
       // Without a choice yet, check the country with the most days.
       if (!c.settings.country) {
@@ -76,34 +86,43 @@
       var y = c.D.parts(c.today).y, years = [];
       for (var k = y + 1; k >= y - 5; k--) years.push({ value: String(k), label: String(k) });
       var type = setting(c, "periodType"), target = setting(c, "goal") === "reach";
+      // The settings card, as the app's tracker editor: Goal (with its
+      // residence captions), Window, then Year or Starts.
       var controls = [
-        { type: "country", key: "country", label: c.text("country"), value: country },
-        { key: "goal", label: c.text("goal"), value: setting(c, "goal"), options: [
-          { value: "stay", label: c.text("goalStay") },
-          { value: "reach", label: c.text("goalReach") }
+        { key: "goal", icon: "target", label: c.text("goal"), value: setting(c, "goal"), options: [
+          { value: "stay", label: c.text("goalStay"), detail: c.text("captionStay") },
+          { value: "reach", label: c.text("goalReach"), detail: c.text("captionReach") }
         ] },
-        { key: "periodType", label: c.text("period"), value: type, moveCalendar: true, options: [
+        { key: "periodType", icon: "calendar", label: c.text("window"), value: type, moveCalendar: true, options: [
           { value: "calendar", label: c.text("periodCalendar") },
           { value: "tax", label: c.text("periodTax") },
           { value: "rolling", label: c.text("periodRolling") }
         ] }
       ];
-      if (type === "calendar") controls.push({ key: "year", label: c.text("year"), value: setting(c, "year"), options: years, moveCalendar: true });
-      if (type === "tax") controls.push({ type: "date", key: "taxStart", label: c.text("taxStart"), value: setting(c, "taxStart"),
-        display: c.text("taxFrom", { date: c.dateRange(b.from, b.from) }), moveCalendar: true });
+      if (type === "calendar") controls.push({ key: "year", icon: "calendar", label: c.text("year"), value: setting(c, "year"), options: years, moveCalendar: true });
+      if (type === "rolling") controls.push({ type: "date", key: "checkOn", icon: "calendar", label: c.text("checkOn"), caption: c.text("checkOnCaption"),
+        value: c.D.iso(b.to), display: c.dateRange(b.to, b.to), moveCalendar: true });
+      if (type === "tax") controls.push({ type: "date", key: "taxStart", icon: "starts", label: c.text("starts"), value: setting(c, "taxStart"),
+        display: c.dateRange(b.from, b.from), moveCalendar: true });
 
       var days = country && byCountry[country] ? byCountry[country].size : 0;
       var loose = byCountry[""] ? byCountry[""].size : 0, lines = [];
       if (loose) lines.push(c.text("lineNoCountry", { n: loose }));
-      var left = LIMIT - days;
+      // An embedded calculator knows its country's exact threshold
+      // (residentAt: 184 for "more than 183", 183 for "183 or more"); the
+      // generic page counts against 183.
+      var residentAt = +c.settings.residentAt || 0;
+      var limit = +c.settings.limit || LIMIT;
+      var safe = residentAt ? residentAt - 1 : limit, left = safe - days;
+      var needed = (residentAt || limit) - days;
       // The app's wording: a limit counts down to "At limit"; a target counts
       // the days still needed until "Target reached".
       var status = target
-        ? (left > 0 ? c.text("needed", { n: left }) : c.text("reachedTarget"))
+        ? (needed > 0 ? c.text("needed", { n: needed }) : c.text("reachedTarget"))
         : (left > 0 ? c.text("remaining", { n: left }) : left === 0 ? c.text("atLimit") : c.text("overBy", { n: -left }));
       return {
         controls: controls,
-        meter: { title: country ? c.placeName(country) : c.text("chooseCountry"), flag: country, label: c.dateRange(b.from, b.to), days: days, limit: LIMIT, tone: c.tone(days, LIMIT, target) },
+        meter: { countryKey: "country", title: c.text("country"), flag: country, label: c.dateRange(b.from, b.to), days: days, limit: limit, tone: target ? c.tone(days, residentAt || limit, true) : c.tone(days, safe, false) },
         statusText: status,
         lines: lines
       };
@@ -117,8 +136,8 @@
     },
 
     strings: {
-      hintStart: "Tap the day you arrived in a country, then the day you left.",
-      hintEnd: "Now tap the other end of the stay, or {date} again to make it one day.",
+      hintStart: "Tap a day to add a stay.",
+      hintEnd: "Tap the other end of the stay.",
       hintSelected: "Drag either end of the stay to change its dates, or delete it below.",
       inTrip: "in a country",
       pending: "start of a new stay",
@@ -128,16 +147,16 @@
       addCountry: "Add country",
       noMatch: "No matching country",
       goal: "Goal",
-      goalStay: "Stay under 183 days",
-      goalReach: "Reach 183 days",
-      chooseCountry: "Choose a country",
-      taxFrom: "from {date}",
-      period: "Period",
+      goalStay: "Stay below",
+      goalReach: "Reach target",
+      captionStay: "Avoid tax residency.",
+      captionReach: "Become a tax resident.",
+      window: "Window",
+      starts: "Starts",
       periodCalendar: "Calendar year",
       periodTax: "Tax year",
       periodRolling: "Last 12 months",
       year: "Year",
-      taxStart: "First day of the tax year",
       tripDays: { one: "{n} day", other: "{n} days" },
       remaining: { one: "{n} day remaining", other: "{n} days remaining" },
       atLimit: "At limit",
@@ -145,6 +164,8 @@
       reachedTarget: "Target reached",
       overBy: { one: "Over limit by {n} day", other: "Over limit by {n} days" },
       lineNoCountry: { one: "{n} day without a country", other: "{n} days without a country" },
+      checkOn: "Count up to",
+      checkOnCaption: "Your days in the 12 months up to this date. For a planned trip, pick its last day.",
       fileName: "atlasdays-stays.csv"
     }
   };

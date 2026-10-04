@@ -123,6 +123,7 @@
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20260925a" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261004l" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">跳至主要內容</a>
@@ -227,6 +228,101 @@
       <p><strong>一天之差。</strong>2026 年在西班牙停留 184 天，例如從 1 月初待到 6 月底，再於 12 月待三天，就符合 2026 年的天數判定。若只停留 183 天，則不符合。</p>
     </div>
 
+    <h2 id="calculator">西班牙 183 天計算器</h2>
+    <p>點選在西班牙的日子（預定的停留也算在內），看看今年距離 183 天門檻還差多少。零星短暫離境也可能算作在西班牙的日子，下文會說明。</p>
+    <div class="daycal" id="embed-183" data-day-calendar="days183" data-cal-preset="{&quot;settings&quot;:{&quot;country&quot;:&quot;ES&quot;,&quot;goal&quot;:&quot;stay&quot;,&quot;periodType&quot;:&quot;calendar&quot;,&quot;limit&quot;:183,&quot;residentAt&quot;:184},&quot;lock&quot;:[&quot;country&quot;,&quot;goal&quot;,&quot;periodType&quot;],&quot;link&quot;:&quot;183-es&quot;}">
+      <script type="application/json" data-cal-strings>
+{
+  "hintStart": "點選日期，新增一段停留。",
+  "hintEnd": "接著點選這段停留的另一端。",
+  "hintSelected": "拖曳停留的任一端可更改日期，也可以在下方刪除。",
+  "inTrip": "在某個國家停留",
+  "pending": "新一段停留的起點",
+  "empty": "還沒有停留紀錄。",
+  "deleteTrip": "刪除停留",
+  "country": "國家或地區",
+  "goal": "目標類型",
+  "goalStay": "低於上限",
+  "goalReach": "達成目標",
+  "captionStay": "避免成為稅務居民。",
+  "captionReach": "達到成為稅務居民所需的停留天數。",
+  "window": "計算期間",
+  "addCountry": "新增國家或地區",
+  "noMatch": "找不到符合的國家或地區",
+  "periodCalendar": "日曆年",
+  "periodTax": "課稅年度",
+  "periodRolling": "最近 12 個月",
+  "year": "年份",
+  "starts": "起始日",
+  "checkOn": "截至日期",
+  "checkOnCaption": "截至這一天的 12 個月內停留的天數。規劃行程時，選擇行程的最後一天。",
+  "tripDays": {
+    "other": "{n} 天"
+  },
+  "remaining": {
+    "other": "剩餘 {n} 天"
+  },
+  "atLimit": "已達上限",
+  "needed": {
+    "other": "還需 {n} 天"
+  },
+  "reachedTarget": "目標達成",
+  "overBy": {
+    "other": "超過上限 {n} 天"
+  },
+  "lineNoCountry": {
+    "other": "有 {n} 天未選擇國家或地區"
+  }
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>時間軸</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>在 AtlasDays 中繼續追蹤</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="embed-183-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="embed-183-import-title">在 AtlasDays 中繼續追蹤</p>
+            <p class="cal-dialog-sub">適用於 iPhone 和 iPad 的免費 App，旅行途中持續計算停留天數。</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>確認 iPhone 或 iPad 已安裝 AtlasDays</strong><span>可在 App Store 免費下載。</span></li>
+            <li><strong>掃描 QR 碼，把所有行程載入 AtlasDays</strong><span>確認無誤後，輕點「匯入」。</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>取得 AtlasDays</strong><span>在 App Store 免費下載。已經有了？直接跳到第 2 步。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>在 App 中開啟停留紀錄</strong><span>確認無誤後輕點「匯入」。在此之前，不會儲存任何資料。</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">在 AtlasDays 中開啟</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>取得 AtlasDays</strong><span>iPhone 版，可在 App Store 免費下載。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>用檔案匯入停留紀錄</strong><span>停留紀錄太多，連結裝不下。請下載檔案，然後在 iPhone 上用 AtlasDays 開啟。</span><button type="button" class="cal-dialog-primary" data-cal-download>下載檔案</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>將行程下載為 CSV 檔案</button><span data-cal-downloaded hidden>請在 iPhone 上用 AtlasDays 開啟這個檔案。</span></p>
+          <button type="button" data-cal-close>關閉</button>
+        </div>
+      </dialog>
+    </div>
+    <p class="cal-private">所有操作都留在瀏覽器內：輸入的資料不會傳送或儲存。</p>
+
     <h2>零星短暫離境也可能算作在西班牙的日子</h2>
     <p>這是西班牙規定最容易讓人意外的地方。加總在西班牙的天數時，零星短暫離境也算作在西班牙的時間，除非能證明在另一國具有稅務居民身分。常見佐證是該國稅務機關核發的稅務居民證明，西班牙稅務局將其視為有效一年。法律並未界定離境可持續多久，仍算「零星短暫」。</p>
     <p>若另一國列於西班牙的非合作司法管轄區（避稅天堂）名單，西班牙稅務機關也可能要求證明該日曆年內曾在該地停留 183 天。</p>
@@ -280,10 +376,10 @@
       <h2 id="related-spain-183-day-tax-residency">本主題的相關文章</h2>
       <ul>
         <li><a href="/zh-Hant/learn/tax-residency-by-country">各國稅務居民規定</a></li>
+        <li><a href="/zh-Hant/learn/183-day-rule-calculator">183 天規則計算器：算出在任一國家的停留天數</a></li>
         <li><a href="/zh-Hant/learn/183-day-tax-residency-rule">183 天稅務居民規定：天數怎麼算</a></li>
         <li><a href="/zh-Hant/learn/albania-183-day-tax-residency">阿爾巴尼亞的 183 天稅務居民規定</a></li>
         <li><a href="/zh-Hant/learn/arizona-tax-residency">亞利桑那州的 9 個月居民推定</a></li>
-        <li><a href="/zh-Hant/learn/armenia-183-day-tax-residency">亞美尼亞的 183 天稅務居民規定</a></li>
       </ul>
     </nav>
   </article>
@@ -306,6 +402,7 @@
           <h2>探索</h2>
           <a href="/zh-Hant/help/">說明中心</a>
           <a href="/zh-Hant/learn/">旅行規定</a>
+          <a href="/zh-Hant/learn/calculators">計算器</a>
           <a href="/changelog">更新紀錄</a>
         </div>
         <div>
@@ -326,6 +423,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"開啟導覽選單","menuClose":"關閉導覽選單"};</script>
   <script src="../../assets/js/navigation.js?v=20260817b"></script>
+  <script defer src="../../assets/js/rules/days-183.js?v=20261004a"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261004k"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

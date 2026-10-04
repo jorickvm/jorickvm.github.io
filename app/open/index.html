@@ -19,6 +19,13 @@
   <script>
   (function () {
     var q = new URLSearchParams(location.search);
+    // The app adds notrack when its own analytics opt-out is on (Jorick's devices). Saved here,
+    // in the in-app browser's storage, the page it forwards to then loads no analytics either.
+    try {
+      var nt = q.get('notrack');
+      if (nt === 'off') localStorage.removeItem('atlasdays-notrack');
+      else if (nt !== null) localStorage.setItem('atlasdays-notrack', '1');
+    } catch (e) {}
     var to = q.get('to') || '/';
     if (!/^\/(?!\/)[A-Za-z0-9\-._~\/]*$/.test(to)) to = '/';
     var theme = q.get('theme');

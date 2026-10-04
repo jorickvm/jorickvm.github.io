@@ -28,6 +28,9 @@
                              in the result box: { key, prefix, label, value,
                              options: [{ value, label, group }], moveCalendar };
                              its choice lands in ctx.settings[key]
+     quietHint               optional: the hint floats in the calendar, the
+                             idle one only while there are no trips, the others
+                             only the first time
      fixedRange              optional: the calendar shows range() only, even
                              when a trip runs past it
      tripLabel(trip, ctx)    short text for a trip in the list
@@ -37,7 +40,15 @@
      defaultCountry          optional: the country a new trip starts with
      carryCountry            optional: a new trip starts with the last country
                              picked
+     linkId                  optional: the calculator's `c` in the import link
      strings                 labels shown by the engine
+
+   "Track this in AtlasDays" opens the page's dialog, which shows one of its
+   [data-cal-on] parts: "phone" on an iPhone or iPad, or inside the app's own
+   browser (from=app), with [data-cal-open] linking the stays into the app;
+   "computer" elsewhere, with a QR code of the same link in [data-cal-qr];
+   "file" when there are too many stays for a link. The link format and its
+   limits are owned by the app repo: AtlasDays/Docs/reference/IMPORT_LINK.md.
 
    Everything runs in the browser. Nothing is sent, logged or stored. */
 (function () {
@@ -68,6 +79,23 @@
   // Every place AtlasDays tracks (the app's CountryLists: 197 countries and 53
   // territories). A rule may narrow it with countries().
   var PLACES = "AD AE AF AG AI AL AM AO AQ AR AS AT AU AW AX AZ BA BB BD BE BF BG BH BI BJ BL BM BN BO BQ BR BS BT BV BW BY BZ CA CC CD CF CG CH CI CK CL CM CN CO CR CU CV CW CX CY CZ DE DJ DK DM DO DZ EC EE EG EH ER ES ET FI FJ FK FM FO FR GA GB GD GE GF GG GH GI GL GM GN GP GQ GR GS GT GU GW GY HK HM HN HR HT HU ID IE IL IM IN IO IQ IR IS IT JE JM JO JP KE KG KH KI KM KN KP KR KW KY KZ LA LB LC LI LK LL LR LS LT LU LV LY MA MC MD ME MF MG MH MK ML MM MN MO MP MQ MR MS MT MU MV MW MX MY MZ NA NC NE NF NG NI NL NO NP NR NU NZ OM PA PE PF PG PH PK PL PM PN PR PS PT PW PY QA RE RO RS RU RW SA SB SC SD SE SG SH SI SJ SK SL SM SN SO SR SS ST SV SX SY SZ TC TD TF TG TH TJ TK TL TM TN TO TR TT TV TW TZ UA UG US UY UZ VA VC VE VG VI VN VU WF WS XK YE YT ZA ZM ZW".split(" ");
+  // Line icons in the spirit of the app's SF Symbols (target, calendar,
+  // calendar.badge.clock); SF Symbols themselves are licensed for Apple
+  // platforms only, so these are drawn here.
+  var ICONS = {
+    trash: '<path d="M4.5 6h11M8 6V4.5h4V6M6 6l.7 9.5h6.6L14 6"/>',
+    target: '<circle cx="10" cy="10" r="7.25"/><circle cx="10" cy="10" r="4"/><circle cx="10" cy="10" r="0.9" fill="currentColor"/>',
+    calendar: '<rect x="3" y="4.5" width="14" height="12.5" rx="2.5"/><path d="M3 8.5h14M7 2.75v3M13 2.75v3"/>',
+    starts: '<rect x="3" y="4.5" width="11" height="11" rx="2.5"/><path d="M3 8.5h11M6.5 2.75v3M10.5 2.75v3"/><circle cx="14.25" cy="14.25" r="3.6" fill="var(--bg-card)"/><path d="M14.25 12.6v1.8l1.2.8"/>',
+    updown: '<path d="M6.5 7.5L10 4l3.5 3.5M6.5 12.5L10 16l3.5-3.5"/>'
+  };
+  function icon(name, cls) {
+    var span = document.createElement("span");
+    span.className = "cal-icon" + (cls ? " " + cls : "");
+    span.setAttribute("aria-hidden", "true");
+    span.innerHTML = '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">' + ICONS[name] + '</svg>';
+    return span;
+  }
   var regionNames = null;
   try { regionNames = new Intl.DisplayNames([locale], { type: "region" }); } catch (e) {}
   function placeName(code) {
@@ -77,7 +105,8 @@
   }
   var plurals = new Intl.PluralRules(locale);
   function dateFormat(options) { return new Intl.DateTimeFormat(locale, Object.assign({ timeZone: "UTC" }, options)); }
-  var fullDate = dateFormat({ day: "numeric", month: "long", year: "numeric" });
+  // English pages write dates the British way, as the app does: 25 December 2026.
+  var fullDate = new Intl.DateTimeFormat(locale === "en" ? "en-GB" : locale, { timeZone: "UTC", day: "numeric", month: "long", year: "numeric" });
   var monthDate = dateFormat({ month: "long", year: "numeric" });
   var shortMonth = dateFormat({ month: "short" });
   var shortDate = dateFormat({ day: "numeric", month: "short" });
@@ -118,6 +147,103 @@
     return node;
   }
 
+  // ---- the import link (AtlasDays/Docs/reference/IMPORT_LINK.md) ----------------------
+  var ENGINE_SRC = (document.currentScript && document.currentScript.src) || "";
+  var LINK = { universal: "https://go.atlasdays.app/import/#", scheme: "atlasdays://import#", maxStays: 150, maxQrStays: 60 };
+  var appleTouch = /iPhone|iPad|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+  // The app adds from=app to every atlasdays.app address it opens; a page one
+  // tap further still sees it in its referrer. Kept for the browser session.
+  var inApp = (function () {
+    var seen = false, here = false, before = false;
+    try { seen = sessionStorage.getItem("atlasdays-from") === "app"; } catch (e) {}
+    try { here = new URLSearchParams(location.search).get("from") === "app"; } catch (e) {}
+    try { var r = new URL(document.referrer); before = r.origin === location.origin && r.searchParams.get("from") === "app"; } catch (e) {}
+    if (here || before) { seen = true; try { sessionStorage.setItem("atlasdays-from", "app"); } catch (e) {} }
+    return seen;
+  })();
+  // v=1&c=183&b=2026-01-05&n=…&s=ES:0:19,PT:19:8: each stay is its country,
+  // its first day counted from b, and its length in days after that day.
+  function importFragment(rows, linkId) {
+    var base = Math.min.apply(null, rows.map(function (r) { return r.start; }));
+    var parts = ["v=1"];
+    if (linkId) parts.push("c=" + encodeURIComponent(linkId));
+    parts.push("b=" + D.iso(base));
+    var note = rows.length && rows[0].notes;
+    if (note && rows.every(function (r) { return r.notes === note; })) parts.push("n=" + encodeURIComponent(note.slice(0, 100)));
+    parts.push("s=" + rows.map(function (r) {
+      return String(r.country).toUpperCase() + ":" + (r.start - base) + ":" + (r.end == null ? "" : r.end - r.start);
+    }).join(","));
+    return parts.join("&");
+  }
+  function loadQr(done) {
+    if (window.qrcode) return done();
+    var s = document.createElement("script");
+    s.src = ENGINE_SRC.replace(/day-calendar\.js(\?[^#]*)?$/, "vendor/qrcode-generator.js$1");
+    s.onload = done;
+    document.head.appendChild(s);
+  }
+  // Styled like the homepage's App Store code (Jorick's QR tool, 2026-10-03):
+  // navy connected-rounded modules on light grey in both themes, rounded finder
+  // eyes, the app icon in a cleared centre. Q error correction carries the icon;
+  // on bigger codes the icon shrinks so the cleared area stays a small share.
+  var QR = { dark: "#0a1420", light: "#ebebeb", quiet: 2, round: 0.9 };
+  function qrSvg(text) {
+    var q = window.qrcode(0, "Q");
+    q.addData(text);
+    q.make();
+    // Past version 13 (69 modules), M error correction keeps the code a size
+    // smaller; the icon is small enough there for M to carry it.
+    if (q.getModuleCount() > 69) { q = window.qrcode(0, "M"); q.addData(text); q.make(); }
+    var n = q.getModuleCount(), m = QR.quiet, total = n + 2 * m;
+    var img = total * (n <= 45 ? 0.3 : n <= 69 ? 0.24 : 0.17), box = img * 1.12, at = (total - box) / 2, imgAt = (total - img) / 2;
+    function finder(r, c) { return (r < 7 && c < 7) || (r < 7 && c >= n - 7) || (r >= n - 7 && c < 7); }
+    function cleared(r, c) { var x = c + m + 0.5, y = r + m + 0.5; return x >= at && x <= at + box && y >= at && y <= at + box; }
+    function on(r, c) { return r >= 0 && c >= 0 && r < n && c < n && q.isDark(r, c) && !finder(r, c) && !cleared(r, c); }
+    // One cell, its corners rounded only where no neighbour touches them.
+    function cell(x, y, tl, tr, br, bl) {
+      return "M" + (x + tl) + " " + y + "H" + (x + 1 - tr) + (tr ? "Q" + (x + 1) + " " + y + " " + (x + 1) + " " + (y + tr) : "") +
+        "V" + (y + 1 - br) + (br ? "Q" + (x + 1) + " " + (y + 1) + " " + (x + 1 - br) + " " + (y + 1) : "") +
+        "H" + (x + bl) + (bl ? "Q" + x + " " + (y + 1) + " " + x + " " + (y + 1 - bl) : "") +
+        "V" + (y + tl) + (tl ? "Q" + x + " " + y + " " + (x + tl) + " " + y : "") + "Z";
+    }
+    // Big codes have small modules on screen: softer rounding keeps them sharp.
+    var rad = 0.5 * (n <= 69 ? QR.round : 0.4), d = "";
+    for (var r = 0; r < n; r++) for (var c = 0; c < n; c++) {
+      if (!on(r, c)) continue;
+      var up = on(r - 1, c), right = on(r, c + 1), down = on(r + 1, c), left = on(r, c - 1);
+      d += cell(c + m, r + m, !up && !left ? rad : 0, !up && !right ? rad : 0, !down && !right ? rad : 0, !down && !left ? rad : 0);
+    }
+    function rect(x, y, w, k, fill) { return '<rect x="' + x + '" y="' + y + '" width="' + w + '" height="' + w + '" rx="' + w * k + '" fill="' + fill + '"/>'; }
+    var eyes = "";
+    [[m, m], [m + n - 7, m], [m, m + n - 7]].forEach(function (o) {
+      eyes += rect(o[0], o[1], 7, 0.23, QR.dark) + rect(o[0] + 1, o[1] + 1, 5, 0.24, QR.light) + rect(o[0] + 2, o[1] + 2, 3, 0.28, QR.dark);
+    });
+    var icon = ENGINE_SRC.replace(/js\/day-calendar\.js(\?[^#]*)?$/, "brand/app-icon-qr.webp");
+    return '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ' + total + " " + total + '" role="img" aria-hidden="true">' +
+      '<rect width="' + total + '" height="' + total + '" fill="' + QR.light + '"/>' +
+      '<path d="' + d + '" fill="' + QR.dark + '"/>' + eyes + rect(at, at, box, 0.18, QR.light) +
+      '<defs><clipPath id="cal-qr-icon"><rect x="' + imgAt + '" y="' + imgAt + '" width="' + img + '" height="' + img + '" rx="' + img * 0.22 + '"/></clipPath></defs>' +
+      '<image href="' + icon + '" x="' + imgAt + '" y="' + imgAt + '" width="' + img + '" height="' + img + '" clip-path="url(#cal-qr-icon)"/></svg>';
+  }
+
+  // The code sits beside the steps at a compact size. On a 1x screen a big code
+  // opens larger (about 4 px a module), because a camera cannot read it smaller.
+  function sizeQr(box) {
+    var modules = box.firstChild.viewBox.baseVal.width;
+    box.style.width = Math.round(box.classList.contains("is-large")
+      ? Math.min(492, Math.max(260, modules * 4.4))
+      : Math.min(240, Math.max(200, modules * 3))) + "px";
+    stackQr(box);
+  }
+  // When the steps no longer fit beside the code they go under it, and the
+  // code moves in to line up with the text.
+  function stackQr(box) {
+    var scan = box.parentNode;
+    scan.classList.remove("is-stacked");
+    var stacked = scan.classList.contains("is-large") || scan.clientWidth < box.offsetWidth + 18 + 200;
+    scan.classList.toggle("is-stacked", stacked);
+  }
+
   function DayCalendar(root) {
     var rule = (window.AtlasDaysRules || {})[root.getAttribute("data-day-calendar")];
     if (!rule) return;
@@ -145,6 +271,7 @@
     // A rule's choices (country, goal, period) sit in their own row above the
     // result card, so the card itself reads like the app's tracker card.
     var settingsRow = el("div", { "class": "cal-settings", hidden: "" });
+    if (rule.quietHint) { hint.classList.add("is-floating"); win.appendChild(hint); root.classList.add("has-floating-hint"); }
     root.insertBefore(settingsRow, root.querySelector(".cal-side") || win);
 
     var today = D.today();
@@ -155,13 +282,20 @@
     var allowed = (rule.countries && rule.countries(PLACES)) || PLACES;
     var defaultCountry = allowed.length === 1 ? allowed[0] : (rule.defaultCountry || "");
     var recent = [];
-    var settings = {}; // choices made in the rule's result menus (rule.evaluate -> controls)
+    // An article can embed a calculator preset to its own rule:
+    // data-cal-preset = { settings, lock, link }. Locked choices show no
+    // control, a locked country shows as a plain title, and link replaces the
+    // rule's own `c` in the import link (e.g. 183-es).
+    var preset = {};
+    try { preset = JSON.parse(root.getAttribute("data-cal-preset") || "{}"); } catch (e) { preset = {}; }
+    var locked = preset.lock || [];
+    var settings = Object.assign({}, preset.settings || {}); // choices made in the rule's result menus (rule.evaluate -> controls)
     var finePointer = !!(window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches);
     var rows = [], cells = {}, firstMonday = 0, activeMonth = null, clipFrom = null, clipTo = null;
     var englishNames = null;
     try { englishNames = new Intl.DisplayNames(["en"], { type: "region" }); } catch (e) {}
 
-    function ctx() { return { today: today, D: D, label: label, plural: plural, text: text, trips: trips, placeName: placeName, settings: settings, dateRange: dateRange, tone: tone }; }
+    function ctx() { return { today: today, D: D, label: label, plural: plural, text: text, trips: trips, placeName: placeName, settings: settings, dateRange: dateRange, tone: tone, embedded: !!preset.settings }; }
     // A new trip starts with the rule's fixed country, or (rule.carryCountry)
     // the country picked last, so a run of stays in one country is quick.
     function newCountry() {
@@ -410,6 +544,7 @@
       render();
     }
 
+    var hintsSeen = {}, lastHint = "";
     function paint() {
       Object.keys(cells).forEach(function (k) {
         var day = +k, b = cells[k], i = tripAt(day);
@@ -419,9 +554,14 @@
         b.setAttribute("aria-label", label(day) + (i >= 0 ? ", " + S.inTrip : "") + (day === anchor ? ", " + S.pending : ""));
       });
       drawBars();
-      hint.textContent = selected >= 0 ? text("hintSelected")
-        : anchor != null ? text("hintEnd", { date: label(anchor) })
-        : text("hintStart");
+      var hintKey = selected >= 0 ? "hintSelected" : anchor != null ? "hintEnd"
+        : rule.quietHint && trips.length ? "" : "hintStart";
+      // A quiet rule shows the idle hint only while the calendar is empty, and
+      // the others once each: the first stay, the first selection.
+      if (rule.quietHint && hintKey !== lastHint) { if (lastHint) hintsSeen[lastHint] = true; lastHint = hintKey; }
+      if (rule.quietHint && hintsSeen[hintKey]) hintKey = "";
+      hint.textContent = hintKey === "hintEnd" ? text("hintEnd", { date: label(anchor) }) : hintKey ? text(hintKey) : "";
+      hint.hidden = !hint.textContent;
     }
 
     // ---- trips list ---------------------------------------------------------------
@@ -457,11 +597,13 @@
     }
     function countryField(current, onChoose) {
       var wrap = el("div", { "class": "cal-country-field" });
-      var input = el("input", { type: "text", "class": "cal-country-input", placeholder: text("addCountry"), "aria-label": text("country"), autocomplete: "off", spellcheck: "false", role: "combobox", "aria-expanded": "false", "aria-autocomplete": "list" });
+      var input = el("input", { type: "text", "class": "cal-country-input", placeholder: text("addCountry"), "aria-label": text("country"), autocomplete: "off",
+        // "search" in the name keeps Safari from offering contact AutoFill here
+        name: "cal-place-search", spellcheck: "false", role: "combobox", "aria-expanded": "false", "aria-autocomplete": "list" });
       if (current) input.value = placeName(current);
       var box = el("ul", { "class": "cal-country-list", role: "listbox", hidden: "" });
       var options = [], active = 0;
-      function choose(code) { remember(code); onChoose(code); }
+      function choose(code) { close(); remember(code); onChoose(code); }
       function show() {
         options = matches(current && input.value === placeName(current) ? "" : input.value);
         active = 0;
@@ -476,11 +618,40 @@
         });
         box.hidden = false;
         input.setAttribute("aria-expanded", "true");
+        place();
+        window.addEventListener("scroll", place, true);
+        window.addEventListener("resize", place);
+      }
+      // The list floats over the page (position: fixed), so a scrolling
+      // Timeline or a card edge can never cut it off. It opens below the field,
+      // or above it when the screen has no room below.
+      function place() {
+        if (box.hidden) return;
+        var r = input.getBoundingClientRect(), head = wrap.closest(".cal-card-head");
+        var left = head ? r.left - 30 : r.left - 6, width = head ? Math.max(r.width + 30, 256) : r.width + 6;
+        width = Math.min(width, window.innerWidth - 16);
+        left = Math.max(8, Math.min(left, window.innerWidth - width - 8));
+        box.style.left = left + "px";
+        box.style.width = width + "px";
+        width = Math.max(width, Math.min(256, window.innerWidth - 16));
+        left = Math.max(8, Math.min(left, window.innerWidth - width - 8));
+        box.style.left = left + "px";
+        box.style.width = width + "px";
+        var below = window.innerHeight - r.bottom - 12, h = Math.min(box.scrollHeight, 260);
+        box.style.top = (below >= Math.min(h, 160) || below >= r.top ? r.bottom + 6 : Math.max(8, r.top - 6 - h)) + "px";
+      }
+      function close() {
+        box.hidden = true;
+        input.setAttribute("aria-expanded", "false");
+        window.removeEventListener("scroll", place, true);
+        window.removeEventListener("resize", place);
       }
       function mark() { Array.prototype.forEach.call(box.children, function (li, i) { li.classList.toggle("is-active", i === active); }); }
       input.addEventListener("focus", function () { if (current) input.select(); show(); });
       input.addEventListener("input", show);
-      input.addEventListener("blur", function () { box.hidden = true; input.setAttribute("aria-expanded", "false"); if (current) input.value = placeName(current); });
+      input.addEventListener("blur", function () { close(); if (current) input.value = placeName(current); fitInput(input); });
+      // The field is as wide as the name, so only the name itself opens the list.
+      input.addEventListener("input", function () { fitInput(input); });
       input.addEventListener("keydown", function (e) {
         if (e.key === "ArrowDown" || e.key === "ArrowUp") { e.preventDefault(); if (!options.length) return; active = (active + (e.key === "ArrowDown" ? 1 : options.length - 1)) % options.length; mark(); }
         else if (e.key === "Enter") { e.preventDefault(); if (options[active]) choose(options[active].code); }
@@ -511,13 +682,18 @@
         card.appendChild(name);
         var line = el("div", { "class": "cal-trip-line" });
         line.appendChild(el("span", { "class": "cal-trip-dates" }, dateRange(t.start, t.end)));
-        line.appendChild(el("span", { "class": "cal-trip-count" }, rule.tripLabel(t, ctx())));
-        card.appendChild(line);
+        // The selected card swaps its day count for Delete, on the same line,
+        // so nothing opens up below it.
         if (isSel) {
-          var del = el("button", { type: "button", "class": "cal-delete" }, S.deleteTrip);
+          var del = el("button", { type: "button", "class": "cal-delete" });
+          del.appendChild(icon("trash"));
+          del.appendChild(document.createTextNode(S.deleteTrip));
           del.addEventListener("click", function (e) { e.stopPropagation(); removeTrip(idx); });
-          card.appendChild(del);
+          line.appendChild(del);
+        } else {
+          line.appendChild(el("span", { "class": "cal-trip-count" }, rule.tripLabel(t, ctx())));
         }
+        card.appendChild(line);
         card.addEventListener("click", function (e) {
           if (e.target.closest(".cal-country-field")) return;
           selected = isSel ? -1 : idx;
@@ -527,6 +703,7 @@
         });
         list.appendChild(card);
       });
+      list.querySelectorAll(".cal-country-input").forEach(fitInput);
     }
 
     // A rule's result can carry menus (controls), an app-style meter and a
@@ -543,12 +720,15 @@
         var flag = el("span", { "class": "cal-flag" + (ctl.value ? "" : " is-empty") });
         if (ctl.value) flag.appendChild(flagImg(ctl.value, 28));
         pill.appendChild(flag);
-        pill.appendChild(countryField(ctl.value, function (code) {
+        var field = countryField(ctl.value, function (code) {
           settings[ctl.key] = code;
           // stays marked before a country was chosen take it now
           trips.forEach(function (t) { if (!t.country) t.country = code; });
           commit();
-        }));
+        });
+        var fieldInput = field.querySelector("input");
+        fieldInput.addEventListener("input", function () { fitInput(fieldInput); });
+        pill.appendChild(field);
         wrap.appendChild(pill);
         return wrap;
       }
@@ -556,7 +736,8 @@
         // A native date field shows the browser's own format (04/06/2026 in
         // the US), so the pill shows the page's format and the native picker
         // sits invisibly over it: a tap opens the system calendar.
-        var shown = el("span", { "class": "cal-date-text" }, ctl.display || ctl.value);
+        var shown = el("span", { "class": "cal-value" }, ctl.display || ctl.value);
+        shown.appendChild(icon("updown", "cal-chevron"));
         var input = el("input", { type: "date", value: ctl.value, "aria-label": ctl.label || ctl.prefix || "", title: ctl.label || "" });
         input.addEventListener("click", function () { try { if (input.showPicker) input.showPicker(); } catch (e) {} });
         input.addEventListener("change", function () { if (input.value) { settings[ctl.key] = input.value; changed(ctl); } });
@@ -565,32 +746,61 @@
         return wrap;
       }
       var pick = el("select", { "aria-label": ctl.label || ctl.prefix || "" });
+      var current = ctl.options.filter(function (o) { return o.value === ctl.value; })[0] || ctl.options[0];
       ctl.options.forEach(function (o) {
-        var opt = el("option", { value: o.value }, o.label);
+        var opt = el("option", { value: o.value }, o.detail ? o.label + " · " + o.detail.replace(/[.。]$/, "") : o.label);
         if (o.value === ctl.value) opt.selected = true;
         pick.appendChild(opt);
       });
       pick.addEventListener("change", function () { settings[ctl.key] = pick.value; changed(ctl); });
+      var shownValue = el("span", { "class": "cal-value" }, current ? current.label : "");
+      shownValue.appendChild(icon("updown", "cal-chevron"));
+      wrap.classList.add("is-select");
+      wrap.appendChild(shownValue);
       wrap.appendChild(pick);
       return wrap;
+    }
+    // The country in the card header is as wide as its name.
+    function fitInput(input) {
+      var probe = el("span", { "class": "cal-measure" }, input.value || input.placeholder || "");
+      probe.style.font = getComputedStyle(input).font;
+      document.body.appendChild(probe);
+      // padding and border (14px) plus generous slack, so no font size truncates it
+      input.style.width = Math.ceil(probe.getBoundingClientRect().width) + 32 + "px";
+      probe.remove();
     }
     function renderResult() {
       var r = rule.evaluate(trips, ctx());
       result.textContent = "";
       settingsRow.textContent = "";
-      settingsRow.hidden = !(r.controls && r.controls.length);
-      (r.controls || []).forEach(function (ctl) { settingsRow.appendChild(control(ctl)); });
+      var shown = (r.controls || []).filter(function (ctl) { return locked.indexOf(ctl.key) < 0; });
+      settingsRow.hidden = !shown.length;
+      shown.forEach(function (ctl) {
+        var row = el("div", { "class": "cal-setting" });
+        if (ctl.icon) row.appendChild(icon(ctl.icon));
+        row.appendChild(el("span", { "class": "cal-setting-label" }, ctl.label || ""));
+        row.appendChild(control(ctl));
+        settingsRow.appendChild(row);
+        // A setting can explain itself in one quiet line under its row.
+        if (ctl.caption) settingsRow.appendChild(el("p", { "class": "cal-setting-caption" }, ctl.caption));
+      });
       if (r.meter) {
         var m = r.meter;
         // The app's card header: flag and title on the left, status pill on the right.
         if (m.title != null) {
           var head = el("div", { "class": "cal-card-head" });
-          var flag = el("span", { "class": "cal-flag" + (m.flag ? "" : " is-empty") });
-          if (m.flag) flag.appendChild(flagImg(m.flag, 28));
-          head.appendChild(flag);
-          head.appendChild(el("span", { "class": "cal-card-title" + (m.flag ? "" : " is-placeholder") }, m.title));
+          if (m.countryKey && locked.indexOf(m.countryKey) < 0) {
+            head.appendChild(control({ type: "country", key: m.countryKey, value: m.flag || "", label: m.title }));
+          } else {
+            var flag = el("span", { "class": "cal-flag" + (m.flag ? "" : " is-empty") });
+            if (m.flag) flag.appendChild(flagImg(m.flag, 28));
+            head.appendChild(flag);
+            head.appendChild(el("span", { "class": "cal-card-title" + (m.flag ? "" : " is-placeholder") }, m.countryKey && m.flag ? placeName(m.flag) : m.title));
+          }
           if (r.statusText) head.appendChild(el("span", { "class": "cal-pill tone-" + m.tone }, r.statusText));
           result.appendChild(head);
+          var titleInput = head.querySelector(".cal-country-input");
+          if (titleInput) fitInput(titleInput);
         }
         var meter = el("div", { "class": "cal-meter tone-" + m.tone });
         var row = el("div", { "class": "cal-meter-row" });
@@ -678,6 +888,46 @@
 
     // ---- import into AtlasDays -----------------------------------------------------
     function csvField(v) { v = String(v == null ? "" : v); return /[",\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; }
+    function openImport() {
+      var rows = rule.exportRows(trips, ctx()).slice().sort(function (a, b) { return a.start - b.start; });
+      if (!dialog || !dialog.showModal) return downloadCsv();
+      var frag = rows.length ? importFragment(rows, preset.link || rule.linkId) : "";
+      var mode = rows.length > LINK.maxStays ? "file"
+        : inApp || appleTouch ? "phone"
+        : rows.length <= LINK.maxQrStays ? "computer" : "file";
+      dialog.querySelectorAll("[data-cal-on]").forEach(function (part) {
+        part.hidden = part.getAttribute("data-cal-on").split(" ").indexOf(mode) < 0;
+      });
+      // Inside the app there is nothing to install.
+      dialog.querySelectorAll("[data-cal-store]").forEach(function (part) { part.hidden = inApp; });
+      // A single step needs no number.
+      dialog.querySelectorAll(".cal-steps").forEach(function (list) {
+        var visible = [].filter.call(list.children, function (li) { return !li.hidden; }).length;
+        list.classList.toggle("is-single", visible === 1);
+      });
+      dialog.querySelectorAll("[data-cal-open]").forEach(function (a) { a.href = (inApp ? LINK.scheme : LINK.universal) + frag; });
+      dialog.classList.toggle("is-file", mode === "file");
+      // "Import with a file instead" is the quiet alternative, unless the file
+      // is all there is; its follow-up line shows once the file is saved.
+      dialog.querySelectorAll("[data-cal-alt]").forEach(function (part) { part.hidden = mode === "file"; });
+      dialog.querySelectorAll("[data-cal-downloaded]").forEach(function (part) { part.hidden = true; part.previousElementSibling.hidden = false; });
+      var box = dialog.querySelector("[data-cal-qr]");
+      if (box) {
+        box.textContent = "";
+        if (mode === "computer") loadQr(function () {
+          box.innerHTML = qrSvg(LINK.universal + frag);
+          // On a 1x screen a big code is too fine at the compact size: start large.
+          var big = (window.devicePixelRatio || 1) < 1.5 && box.firstChild.viewBox.baseVal.width * 3 > 240;
+          box.classList.toggle("is-large", big);
+          box.parentNode.classList.toggle("is-large", big);
+          sizeQr(box);
+        });
+      }
+      dialog.showModal();
+      // Focus the dialog itself, so no button looks preselected.
+      dialog.setAttribute("tabindex", "-1");
+      dialog.focus();
+    }
     function downloadCsv() {
       var lines = ["Country,Start Date,End Date,Notes"].concat(rule.exportRows(trips, ctx()).map(function (r) {
         return [r.country, D.iso(r.start), r.end == null ? "" : D.iso(r.end), r.notes || ""].map(csvField).join(",");
@@ -724,11 +974,19 @@
     });
     win.addEventListener("scroll", updateMonth, { passive: true });
     root.querySelectorAll("[data-cal-import]").forEach(function (btn) {
-      btn.addEventListener("click", function () { if (dialog && dialog.showModal) dialog.showModal(); else downloadCsv(); });
+      btn.addEventListener("click", openImport);
     });
-    root.querySelectorAll("[data-cal-download]").forEach(function (btn) { btn.addEventListener("click", downloadCsv); });
+    root.querySelectorAll("[data-cal-download]").forEach(function (btn) {
+      btn.addEventListener("click", function () {
+        downloadCsv();
+        var done = btn.nextElementSibling;
+        if (done && done.hasAttribute("data-cal-downloaded")) { btn.hidden = true; done.hidden = false; }
+      });
+    });
     root.querySelectorAll("[data-cal-close]").forEach(function (btn) { btn.addEventListener("click", function () { dialog.close(); }); });
     if (dialog) dialog.addEventListener("click", function (e) { if (e.target === dialog) dialog.close(); });
+    var qrBox = dialog && dialog.querySelector("[data-cal-qr]");
+    window.addEventListener("resize", function () { if (dialog.open && qrBox && qrBox.firstChild) stackQr(qrBox); });
 
     render();
     var start = rule.range(ctx());

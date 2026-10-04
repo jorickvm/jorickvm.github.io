@@ -2,15 +2,15 @@
       <a href="/">AtlasDays</a> / <a href="/learn/">Travel Rules</a>
     </nav>
     <h1>183-Day Rule Calculator: Count Your Days in Any Country</h1>
-    <p class="subtitle">Tap the days you spent in a country, then pick the country and the year to see how close you are to 183. Add planned stays to check a plan before you book it.</p>
+    <p class="subtitle">Pick a country and a year, then tap the day you arrived and the day you left. The tracker shows how close you are to 183 days, planned stays included.</p>
     <p class="verified">Last verified: October 2026</p>
 
     <h2>Count your days</h2>
     <div class="daycal" id="days-183" data-day-calendar="days183">
       <script type="application/json" data-cal-strings>
 {
-  "hintStart": "Tap the day you arrived in a country, then the day you left.",
-  "hintEnd": "Now tap the other end of the stay, or {date} again to make it one day.",
+  "hintStart": "Tap a day to add a stay.",
+  "hintEnd": "Tap the other end of the stay.",
   "hintSelected": "Drag either end of the stay to change its dates, or delete it below.",
   "inTrip": "in a country",
   "pending": "start of a new stay",
@@ -18,18 +18,20 @@
   "deleteTrip": "Delete stay",
   "country": "Country",
   "goal": "Goal",
-  "goalStay": "Stay under 183 days",
-  "goalReach": "Reach 183 days",
+  "goalStay": "Stay below",
+  "goalReach": "Reach target",
+  "captionStay": "Avoid tax residency.",
+  "captionReach": "Become a tax resident.",
+  "window": "Window",
   "addCountry": "Add country",
   "noMatch": "No matching country",
-  "chooseCountry": "Choose a country",
-  "period": "Period",
   "periodCalendar": "Calendar year",
   "periodTax": "Tax year",
   "periodRolling": "Last 12 months",
   "year": "Year",
-  "taxStart": "First day of the tax year",
-  "taxFrom": "from {date}",
+  "starts": "Starts",
+  "checkOn": "Count up to",
+  "checkOnCaption": "Your days in the 12 months up to this date. For a planned trip, pick its last day.",
   "tripDays": {
     "one": "{n} day",
     "other": "{n} days"
@@ -67,43 +69,57 @@
           <div data-cal-result></div>
         </div>
         <div class="cal-box">
-          <h3>Stays</h3>
-          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Import into AtlasDays for free</button>
+          <h3>Timeline</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Track this in AtlasDays</button>
         </div>
       </div>
-      <dialog class="cal-dialog" data-cal-dialog aria-labelledby="days-183-import-title">
-        <p class="cal-dialog-title" id="days-183-import-title">Continue in AtlasDays</p>
-        <p>Download the file and open it in AtlasDays: Settings → Import → CSV File.</p>
-        <div class="cal-dialog-actions">
-          <button type="button" data-cal-download>Download file</button>
-          <a class="cal-dialog-app" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">Get AtlasDays</a>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="days-183-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="days-183-import-title">Track this in AtlasDays</p>
+            <p class="cal-dialog-sub">Keep counting as you travel. Free app for iPhone and iPad.</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>Make sure AtlasDays is installed on your iPhone or iPad</strong><span>Free on the App Store.</span></li>
+            <li><strong>Scan the QR code to load all trips into AtlasDays</strong><span>Check them, then tap Import.</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>Get AtlasDays</strong><span>Free on the App Store. Already have it? Skip to 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+          <li><strong>Open your stays in the app</strong><span>Check them, then tap Import. Nothing is saved before that.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Open in AtlasDays</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>Get AtlasDays</strong><span>Free on the App Store for iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+          <li><strong>Import your stays with a file</strong><span>That is more stays than a link can carry. Download the file and open it on your iPhone with AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Download file</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Download trips as a CSV file</button><span data-cal-downloaded hidden>Open this file on your iPhone with AtlasDays.</span></p>
           <button type="button" data-cal-close>Close</button>
         </div>
       </dialog>
     </div>
     <p class="cal-private">Everything stays in your browser: nothing you enter is sent or saved.</p>
-    <div class="tldr">
-      <p><strong>In short:</strong> many countries can treat you as <strong>tax resident</strong> once you spend <strong>183 days</strong> there in a tax year. This calculator counts the days you mark in one country over one year: a calendar year, a tax year starting 6 April, 1 July or 1 April, or the last 12 months. The day you arrive and the day you leave both count.</p>
-    </div>
 
     <h2>How the calculator counts</h2>
     <ul>
-      <li><strong>Any part of a day counts.</strong> The day you arrive and the day you leave are both days in that country. A stay from 1 June to 10 June is ten days.</li>
-      <li><strong>Travel days count for both countries.</strong> If you fly from Spain to Portugal on 10 June, that day counts once for Spain and once for Portugal.</li>
-      <li><strong>One country, one year.</strong> Pick the country and the period above the result. The period is always a year: a calendar year, a tax year from the first day you enter (6 April in the UK, 1 July in Australia, 1 April in New Zealand and India), or the last 12 months. New stays start with the country you picked, and a stay that crosses the edge of the period counts only its days inside it.</li>
-      <li><strong>Stay below, or reach 183.</strong> Most people want to stay under 183 days somewhere. If you need 183 days to become resident in a country, choose Reach 183 days: the bar turns green once you get there.</li>
+      <li><strong>Any part of a day counts.</strong> The day you arrive and the day you leave are both days in the country, so 1 to 10 June is ten days. A travel day between two countries counts for both.</li>
+      <li><strong>One country, one year.</strong> Pick the country in the tracker and the window above it: a calendar year, a tax year from the day it starts (6 April in the UK, 1 July in Australia, 1 April in New Zealand and India), or the last 12 months. Only days inside that window count.</li>
+      <li><strong>Stay below, or reach 183.</strong> Most people want to stay under 183 days. If you need 183 days to become resident somewhere, set the goal to Reach target: the bar turns green once you get there.</li>
       <li><strong>Planned stays count too.</strong> Mark a trip you have not booked yet to see whether it would take you past 183.</li>
     </ul>
 
-    <h2>What it does not check</h2>
-    <p>The 183-day count is where most residence tests start, not where they end. Check these against your country's own rule:</p>
+    <h2>When your country counts differently</h2>
+    <p>Most countries count days the way this calculator does. Where yours has its own rule, its guide explains it, and AtlasDays has a ready-made tracker that counts it exactly:</p>
     <ul>
-      <li><strong>Midnights instead of days.</strong> The UK counts the days you are in the country at midnight, so arrival and departure days do not always count.</li>
-      <li><strong>Every 12-month period.</strong> New Zealand counts 183 days in any 12-month period. The calculator checks one period at a time, so try the last 12 months and the tax years around your stays.</li>
-      <li><strong>"183 or more" or "more than 183".</strong> The exact threshold differs by country, and a few use a different number.</li>
-      <li><strong>Other tests.</strong> A home, a family or your main economic interests can make you resident with fewer days, and the US Substantial Presence Test weights days from the two previous years.</li>
+      <li><strong>Midnights.</strong> The UK counts the days you are there at midnight. See the <a href="/learn/uk-statutory-residence-test">UK Statutory Residence Test</a>; the AtlasDays UK tracker counts midnights.</li>
+      <li><strong>More than 183.</strong> Spain needs more than 183 days, not 183. See <a href="/learn/spain-183-day-tax-residency">Spain</a>; each AtlasDays tracker uses its country's exact threshold.</li>
+      <li><strong>Three years at once.</strong> The US Substantial Presence Test also counts part of the two previous years. See the <a href="/learn/us-substantial-presence-test">Substantial Presence Test</a>; AtlasDays has a tracker that does the weighting.</li>
     </ul>
-    <p>The rule itself is explained in <a href="/learn/183-day-tax-residency-rule">183-Day Tax Residency Rule: How the Count Works</a>, and each country's version is in <a href="/learn/tax-residency-by-country">tax residency by country</a>.</p>
+    <p>Days are not the only test: a home or family can make you resident with fewer. <a href="/learn/183-day-tax-residency-rule">The 183-day rule</a> explains these ties, and <a href="/learn/tax-residency-by-country">tax residency by country</a> has every country's guide.</p>
 
     <div class="cta-box">
       <span class="cta-logo">
@@ -111,14 +127,14 @@
         <img class="logo-light" src="../assets/brand/logo_light.png?v=20260325a" alt="AtlasDays logo" width="52" height="52" />
       </span>
       <h2>Keep counting as you travel</h2>
-      <p>A calculator checks the days you remember today. AtlasDays keeps counting your days in every country as you travel, privately on your iPhone, and warns you before a trip would take you past the limit of a country you track.</p>
+      <p>The calculator checks the days you remember today. AtlasDays keeps counting your days in every country as you travel, privately on your iPhone, and warns you before a trip would take you past a limit.</p>
       <a class="cta-btn" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> Get AtlasDays</a>
     </div>
 
     <h2>FAQ</h2>
     <h3>Does the day I arrive count as a day in the country?</h3>
-    <p>In this calculator, yes: any part of a day counts, so both the day you arrive and the day you leave are days in that country. Many countries count this way. The UK counts midnights instead, so check your country's rule.</p>
+    <p>In this calculator, yes: any part of a day counts, so both the day you arrive and the day you leave are days in that country. Many countries count this way. The UK counts midnights instead, and the <a href="/learn/uk-statutory-residence-test">UK guide</a> explains how.</p>
     <h3>Does spending 183 days in a country make me tax resident?</h3>
     <p>Often, but not always. Many countries treat 183 days in their tax year as residence, some use a different threshold or period, and other ties such as a home or family can make you resident with fewer days. The calculator shows the count, not the decision.</p>
     <h3>Is my data stored?</h3>
-    <p>No. The calculator runs in your browser and does not send, log or save the dates you enter. Closing or reloading the page clears them. Import them into AtlasDays to keep them.</p>
+    <p>No. The calculator runs in your browser and does not send, log or save the dates you enter. Closing or reloading the page clears them. To keep them, tap Track this in AtlasDays.</p>

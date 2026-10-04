@@ -111,12 +111,12 @@
     else if (title.indexOf(query) !== -1) value += 90;
     if (jurisdiction === query) value += 80;
     else if (jurisdiction.indexOf(query) !== -1) value += 45;
-    // An exact keyword beats a keyword that merely contains the query. This
+    // An exact keyword beats incidental matches in titles and keywords. This
     // matters most in Japanese, where there are no word boundaries to break a
     // false match: "リセット" (reset) is a substring of "プリセット" (preset),
     // and "書き出し" of "書き出しの言語". Without this the collision outranks
     // the article the reader actually wanted.
-    if (entry.keywords.some(function (word) { return normalize(word) === query; })) value += 45;
+    if (entry.keywords.some(function (word) { return normalize(word) === query; })) value += 110;
     if (keywords.indexOf(query) !== -1) value += 35;
     if (description.indexOf(query) !== -1) value += 20;
 

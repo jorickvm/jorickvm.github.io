@@ -1,0 +1,123 @@
+    <nav class="breadcrumb">
+      <a href="/ja/">AtlasDays</a> / <a href="/ja/learn/">旅行ルール</a>
+    </nav>
+    <h1>シェンゲン計算機：90/180ルールの滞在日数を確認</h1>
+    <p class="subtitle">滞在ごとに、入国した日と出国した日をタップしてください。予定している旅行も含めて、任意の日付までの180日間に90日のうち何日を使ったかをトラッカーが表示します。</p>
+    <p class="verified">最終確認：2026年10月</p>
+
+    <h2>滞在日数を数える</h2>
+    <div class="daycal" id="schengen" data-day-calendar="schengen">
+      <script type="application/json" data-cal-strings>
+{
+  "hintStart": "日付をタップすると滞在を追加できます。",
+  "hintEnd": "滞在のもう一方の日付をタップしてください。",
+  "hintSelected": "滞在のどちらかの端をドラッグして日付を変更するか、下で削除してください。",
+  "inTrip": "シェンゲン圏に滞在",
+  "pending": "新しい滞在の開始日",
+  "empty": "滞在はまだありません。",
+  "deleteTrip": "滞在を削除",
+  "country": "国",
+  "addCountry": "国を追加",
+  "noMatch": "一致するシェンゲンの国はありません",
+  "area": "シェンゲン圏",
+  "checkOn": "集計終了日",
+  "checkOnCaption": "この日までの180日間にシェンゲン圏に滞在した日数です。予定している旅行を確認するときは、旅行の最終日を選んでください。",
+  "tripDays": {
+    "other": "{n}日"
+  },
+  "remaining": {
+    "other": "残り{n}日"
+  },
+  "atLimit": "上限到達",
+  "overBy": {
+    "other": "上限を{n}日超過"
+  },
+  "lineNoCountry": {
+    "other": "国が未設定の日：{n}日"
+  }
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>月</span><span>火</span><span>水</span><span>木</span><span>金</span><span>土</span><span>日</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>タイムライン</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>AtlasDaysで記録する</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="schengen-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="schengen-import-title">AtlasDaysで記録する</p>
+            <p class="cal-dialog-sub">旅行中もそのまま日数を数えられる、iPhoneとiPad向けの無料アプリです。</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>iPhoneまたはiPadにAtlasDaysをインストールしておく</strong><span>App Storeで無料で入手できます。</span></li>
+            <li><strong>QRコードを読み取り、すべての旅行をAtlasDaysに読み込む</strong><span>確認してから「インポート」をタップします。</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>AtlasDaysを入手</strong><span>App Storeから無料で入手できます。お持ちの場合は2へ進んでください。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+          <li><strong>アプリで滞在を開く</strong><span>確認してから「インポート」をタップします。それまで何も保存されません。</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">AtlasDaysで開く</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>AtlasDaysを入手</strong><span>iPhone向けにApp Storeで無料で提供しています。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+          <li><strong>ファイルで滞在をインポート</strong><span>滞在の数が多く、リンクでは送れません。ファイルをダウンロードして、iPhoneのAtlasDaysで開いてください。</span><button type="button" class="cal-dialog-primary" data-cal-download>ファイルをダウンロード</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>旅行をCSVファイルでダウンロード</button><span data-cal-downloaded hidden>このファイルをiPhoneのAtlasDaysで開いてください。</span></p>
+          <button type="button" data-cal-close>閉じる</button>
+        </div>
+      </dialog>
+    </div>
+    <p class="cal-private">入力した内容はすべてブラウザ内にとどまります。送信も保存もされません。</p>
+
+    <h2>計算機の日数の数え方</h2>
+    <ul>
+      <li><strong>1日の一部でもいれば1日と数えます。</strong>入国日と出国日はどちらもシェンゲン圏での滞在日になるため、6月1日から10日までは10日です。</li>
+      <li><strong>シェンゲン圏全体で1つの枠。</strong>90日は国ごとに別々ではなく、すべてのシェンゲン加盟国に共通です。シェンゲンの2か国で過ごした日も1日と数えます。</li>
+      <li><strong>ある日付までの180日間。</strong>カレンダーには「集計終了日」までの180日間が表示され、その期間の滞在日数をトラッカーが数えます。集計終了日は、別の日付を選ばない限り今日です。古い日が集計期間から外れるたびに、1日ずつ枠が空きます。</li>
+      <li><strong>旅行を計画中の場合。</strong>「集計終了日」を旅行の最終日に設定してください。滞在中に日数が減ることはないため、最終日が上限内に収まれば、旅行全体も収まります。</li>
+    </ul>
+
+    <h2>ほかのルールが適用される場合</h2>
+    <p>90/180ルールの計算は短期滞在が対象です。独自のルールに従う場合もいくつかあり、それぞれのガイドで説明しています。</p>
+    <ul>
+      <li><strong>長期滞在ビザと居住許可。</strong>各国の長期滞在ビザやEUの居住許可で滞在した日は、90日に数えません。<a href="/ja/learn/schengen-90-180-rule">90/180ルール</a>を参照してください。</li>
+      <li><strong>90日より短いビザ。</strong>ビザで認められた滞在日数が90日未満の場合は、その短いほうの日数が適用されます。<a href="/ja/learn/schengen-single-entry-visa">シェンゲンの一次入国ビザ</a>を参照してください。AtlasDaysには、ビザで認められた日数を数えるトラッカーがあります。</li>
+      <li><strong>対象となる国。</strong>シェンゲン圏はEUと同じではありません。キプロスとアイルランドは圏外で、ノルウェーとスイスは圏内です。<a href="/ja/learn/schengen-countries-list-90-180-rule">シェンゲン圏の国一覧</a>を参照してください。</li>
+    </ul>
+    <p>集計期間が1日ずつ動く様子は<a href="/ja/learn/schengen-rolling-window-walkthrough">ローリングの集計期間の計算例</a>で、日数がいつ戻るかは<a href="/ja/learn/when-do-you-get-schengen-days-back-after-90-day-stay">シェンゲンの日数はいつ戻るか</a>で確認できます。</p>
+
+    <div class="cta-box">
+      <span class="cta-logo">
+        <img class="logo-dark" src="/assets/brand/logo_dark.png?v=20260325a" alt="AtlasDaysのロゴ" width="52" height="52" />
+        <img class="logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="AtlasDaysのロゴ" width="52" height="52" />
+      </span>
+      <h2>旅をしながら日数を数え続ける</h2>
+      <p>計算機で確認できるのは、今日思い出せる滞在です。AtlasDaysは旅行のたびにシェンゲン圏での滞在日数をiPhone内で非公開に数え続け、旅行で90日を超えそうなときは事前に知らせます。</p>
+      <a class="cta-btn" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> AtlasDaysを入手</a>
+    </div>
+
+    <h2>よくある質問</h2>
+    <h3>入国した日と出国した日は、どちらも数えますか？</h3>
+    <p>はい。夜遅くに到着した場合や朝早くに出発した場合でも、入国した日が滞在の初日、出国した日が最終日です。計算機はどちらも数えます。</p>
+    <h3>シェンゲンの日数はいつ戻りますか？</h3>
+    <p>1日ずつ戻ります。シェンゲン圏で過ごした日は、それぞれ180日後に数えられなくなります。「集計終了日」を先の日付に設定すると、その時点で残っている日数を確認できます。詳しくは<a href="/ja/learn/when-do-you-get-schengen-days-back-after-90-day-stay">シェンゲンの日数はいつ戻るか</a>をご覧ください。</p>
+    <h3>これはEUの公式計算ツールですか？</h3>
+    <p>いいえ。欧州委員会は独自の短期滞在計算ツールを公開しています。この計算機も入国日と出国日を含めて任意の180日間に90日という同じ方法で数え、さらに滞在をAtlasDaysに残しておけます。判断を下すのは入国審査当局とビザ発給当局です。</p>
+    <h3>入力したデータは保存されますか？</h3>
+    <p>いいえ。計算機はブラウザ内で動作し、入力した日付を送信、記録、保存しません。ページを閉じるか再読み込みすると消えます。残しておくには「AtlasDaysで記録する」をタップしてください。</p>

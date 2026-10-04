@@ -1,0 +1,131 @@
+    <nav class="breadcrumb">
+      <a href="/pt/">AtlasDays</a> / <a href="/pt/learn/">Regras de viagem</a>
+    </nav>
+    <h1>Calculadora Schengen: confira seus dias na regra 90/180</h1>
+    <p class="subtitle">Toque no dia em que você entrou e no dia em que saiu em cada estadia. O controle mostra quantos dos seus 90 dias você usou nos 180 dias até qualquer data, incluindo as viagens planejadas.</p>
+    <p class="verified">Última verificação: outubro de 2026</p>
+
+    <h2>Conte seus dias</h2>
+    <div class="daycal" id="schengen" data-day-calendar="schengen">
+      <script type="application/json" data-cal-strings>
+{
+  "hintStart": "Toque em um dia para adicionar uma estadia.",
+  "hintEnd": "Toque na outra ponta da estadia.",
+  "hintSelected": "Arraste qualquer uma das pontas da estadia para mudar as datas ou exclua-a abaixo.",
+  "inTrip": "no espaço Schengen",
+  "pending": "início de uma nova estadia",
+  "empty": "Nenhuma estadia ainda.",
+  "deleteTrip": "Excluir estadia",
+  "country": "País",
+  "addCountry": "Adicionar país",
+  "noMatch": "Nenhum país Schengen encontrado",
+  "area": "Espaço Schengen",
+  "checkOn": "Contar até",
+  "checkOnCaption": "Seus dias nos 180 dias até esta data. Para uma viagem planejada, escolha o último dia dela.",
+  "tripDays": {
+    "one": "{n} dia",
+    "other": "{n} dias",
+    "many": "{n} dias"
+  },
+  "remaining": {
+    "one": "{n} dia restante",
+    "other": "{n} dias restantes",
+    "many": "{n} dias restantes"
+  },
+  "atLimit": "No limite",
+  "overBy": {
+    "one": "{n} dia acima do limite",
+    "other": "{n} dias acima do limite",
+    "many": "{n} dias acima do limite"
+  },
+  "lineNoCountry": {
+    "one": "{n} dia sem país",
+    "other": "{n} dias sem país",
+    "many": "{n} dias sem país"
+  }
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>S</span><span>T</span><span>Q</span><span>Q</span><span>S</span><span>S</span><span>D</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>Linha do tempo</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Acompanhar no AtlasDays</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="schengen-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="schengen-import-title">Acompanhar no AtlasDays</p>
+            <p class="cal-dialog-sub">Continue contando seus dias enquanto viaja. App gratuito para iPhone e iPad.</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>Verifique se o AtlasDays está instalado no seu iPhone ou iPad</strong><span>Grátis na App Store.</span></li>
+            <li><strong>Escaneie o código QR para carregar todas as viagens no AtlasDays</strong><span>Confira e toque em Importar.</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>Baixe o AtlasDays</strong><span>Grátis na App Store. Já tem o app? Pule para o passo 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+          <li><strong>Abra suas estadias no app</strong><span>Confira e toque em Importar. Nada é salvo antes disso.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Abrir no AtlasDays</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>Baixe o AtlasDays</strong><span>Grátis na App Store, para iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+          <li><strong>Importe suas estadias com um arquivo</strong><span>São estadias demais para caber em um link. Baixe o arquivo e abra-o no iPhone com o AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Baixar arquivo</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Baixar as viagens em um arquivo CSV</button><span data-cal-downloaded hidden>Abra este arquivo no iPhone com o AtlasDays.</span></p>
+          <button type="button" data-cal-close>Fechar</button>
+        </div>
+      </dialog>
+    </div>
+    <p class="cal-private">Tudo fica no navegador: os dados que você informa não são enviados nem salvos.</p>
+
+    <h2>Como a calculadora faz a contagem</h2>
+    <ul>
+      <li><strong>Qualquer parte de um dia conta.</strong> O dia da entrada e o dia da saída contam como dias no espaço Schengen, então de 1º a 10 de junho são dez dias.</li>
+      <li><strong>Uma só cota para todo o espaço.</strong> Os 90 dias valem para todos os países Schengen juntos, não para cada país separadamente. Um dia passado em dois países Schengen conta uma vez só.</li>
+      <li><strong>Os 180 dias até uma data.</strong> O calendário mostra os 180 dias até a data em “Contar até”, que é hoje, a menos que você escolha outra, e o controle conta seus dias nesse período. Cada dia mais antigo que sai da janela libera um dia.</li>
+      <li><strong>Planejando uma viagem?</strong> Em “Contar até”, escolha o último dia dela. Durante uma estadia, sua contagem só pode subir; então, se o último dia couber, a viagem inteira cabe.</li>
+    </ul>
+
+    <h2>Quando valem outras regras</h2>
+    <p>A contagem 90/180 vale para estadias curtas. Algumas situações seguem regras próprias, e cada guia explica como:</p>
+    <ul>
+      <li><strong>Vistos de longa duração e autorizações de residência.</strong> Os dias com um visto nacional de longa duração ou uma autorização de residência da UE não contam para os 90. Veja <a href="/pt/learn/schengen-90-180-rule">a regra 90/180</a>.</li>
+      <li><strong>Um visto com menos dias.</strong> Se o seu visto autoriza menos de 90 dias, vale essa estadia mais curta. Veja <a href="/pt/learn/schengen-single-entry-visa">vistos Schengen de entrada única</a>; o AtlasDays tem um controle para os dias do seu visto.</li>
+      <li><strong>Quais países contam.</strong> Schengen não é o mesmo que a UE: Chipre e Irlanda ficam fora, Noruega e Suíça fazem parte. Veja a <a href="/pt/learn/schengen-countries-list-90-180-rule">lista de países Schengen</a>.</li>
+    </ul>
+    <p>Para ver a janela se mover dia a dia, leia o <a href="/pt/learn/schengen-rolling-window-walkthrough">passo a passo da janela móvel</a> e, para saber quando os dias voltam, <a href="/pt/learn/when-do-you-get-schengen-days-back-after-90-day-stay">quando você recupera os dias Schengen</a>.</p>
+
+    <div class="cta-box">
+      <span class="cta-logo">
+        <img class="logo-dark" src="/assets/brand/logo_dark.png?v=20260325a" alt="Logo do AtlasDays" width="52" height="52" />
+        <img class="logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="Logo do AtlasDays" width="52" height="52" />
+      </span>
+      <h2>A contagem continua enquanto você viaja</h2>
+      <p>A calculadora confere as estadias de que você se lembra hoje. O AtlasDays continua contando seus dias Schengen enquanto você viaja, com privacidade no iPhone, e avisa antes que uma viagem leve você além dos 90.</p>
+      <a class="cta-btn" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> Obter o AtlasDays</a>
+    </div>
+
+    <h2>Perguntas frequentes</h2>
+    <h3>O dia da entrada e o dia da saída contam os dois?</h3>
+    <p>Sim. O dia da entrada é o primeiro dia da sua estadia e o dia da saída é o último, mesmo que você chegue tarde da noite ou saia de manhã cedo. A calculadora conta os dois.</p>
+    <h3>Quando recupero meus dias Schengen?</h3>
+    <p>Um dia de cada vez: cada dia que você passou no espaço Schengen deixa de contar 180 dias depois. Escolha uma data mais adiante em “Contar até” para ver quantos dias você terá então, ou leia <a href="/pt/learn/when-do-you-get-schengen-days-back-after-90-day-stay">quando você recupera os dias Schengen</a>.</p>
+    <h3>Esta é a calculadora oficial da UE?</h3>
+    <p>Não. A Comissão Europeia publica a própria calculadora de estadia curta. Esta conta do mesmo jeito, 90 dias em qualquer período de 180 com os dias de entrada e saída incluídos, e permite guardar suas estadias no AtlasDays. A decisão é das autoridades de fronteira e de vistos.</p>
+    <h3>Meus dados ficam salvos?</h3>
+    <p>Não. A calculadora funciona no navegador e não envia, registra nem salva as datas que você informa. Fechar ou recarregar a página apaga os dados. Para guardá-los, toque em Acompanhar no AtlasDays.</p>

@@ -3,15 +3,15 @@
     </nav>
     <img class="title-flag" src="../assets/flags/gb.png" alt="Flag of the United Kingdom" width="56" height="42" />
     <h1>ILR Absence Calculator: 180 Days in Any 12 Months</h1>
-    <p class="subtitle">Tap the days you left and came back to see your worst 12 months against the indefinite leave to remain limit. Add planned trips to check a plan before you book it.</p>
-    <p class="verified">Last verified: September 2026</p>
+    <p class="subtitle">Tap the day you left the UK and the day you came back for each trip. The tracker shows your days abroad in the 12 months up to any date, planned trips included.</p>
+    <p class="verified">Last verified: October 2026</p>
 
     <h2>Check your absences</h2>
     <div class="daycal" id="uk-ilr" data-day-calendar="ukIlr">
       <script type="application/json" data-cal-strings>
 {
   "hintStart": "Tap the day you left the UK, then the day you came back.",
-  "hintEnd": "Now tap the other end of the trip, or {date} again to cancel.",
+  "hintEnd": "Tap the other end of the trip.",
   "inTrip": "outside the UK",
   "pending": "start of a new trip",
   "empty": "No trips yet.",
@@ -24,15 +24,18 @@
     "one": "{n} day away",
     "other": "{n} days away"
   },
-  "headline": "{n} of 180 days away in any 12 months",
-  "headlineEmpty": "0 of 180 days away",
-  "left": "{n} left",
-  "over": {
-    "one": "{n} day over",
-    "other": "{n} days over"
+  "title": "Days outside the UK",
+  "checkOn": "Count up to",
+  "checkOnCaption": "Your days abroad in the 12 months up to this date. For a planned trip, pick the day you come back.",
+  "remaining": {
+    "one": "{n} day remaining",
+    "other": "{n} days remaining"
   },
-  "emptyResult": "Mark your trips outside the UK to see your worst 12 months.",
-  "worstWindow": "Your worst 12 months run from {from} to {to}."
+  "atLimit": "At limit",
+  "overBy": {
+    "one": "Over limit by {n} day",
+    "other": "Over limit by {n} days"
+  }
 }
       </script>
       <p class="cal-hint" data-cal-hint aria-live="polite"></p>
@@ -48,34 +51,50 @@
           <div data-cal-result></div>
         </div>
         <div class="cal-box">
-          <h3>Trips</h3>
-          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Import into AtlasDays for free</button>
+          <h3>Timeline</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Track this in AtlasDays</button>
         </div>
       </div>
-      <dialog class="cal-dialog" data-cal-dialog aria-labelledby="uk-ilr-import-title">
-        <p class="cal-dialog-title" id="uk-ilr-import-title">Continue in AtlasDays</p>
-        <p>Download the file and open it in AtlasDays: Settings → Import → CSV File.</p>
-        <div class="cal-dialog-actions">
-          <button type="button" data-cal-download>Download file</button>
-          <a class="cal-dialog-app" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">Get AtlasDays</a>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="uk-ilr-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="uk-ilr-import-title">Track this in AtlasDays</p>
+            <p class="cal-dialog-sub">Keep counting as you travel. Free app for iPhone and iPad.</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>Make sure AtlasDays is installed on your iPhone or iPad</strong><span>Free on the App Store.</span></li>
+            <li><strong>Scan the QR code to load all trips into AtlasDays</strong><span>Check them, then tap Import.</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>Get AtlasDays</strong><span>Free on the App Store. Already have it? Skip to 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+          <li><strong>Open your stays in the app</strong><span>Check them, then tap Import. Nothing is saved before that.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Open in AtlasDays</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>Get AtlasDays</strong><span>Free on the App Store for iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+          <li><strong>Import your stays with a file</strong><span>That is more stays than a link can carry. Download the file and open it on your iPhone with AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Download file</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Download trips as a CSV file</button><span data-cal-downloaded hidden>Open this file on your iPhone with AtlasDays.</span></p>
           <button type="button" data-cal-close>Close</button>
         </div>
       </dialog>
     </div>
     <p class="cal-private">Everything stays in your browser: nothing you enter is sent or saved.</p>
-    <div class="tldr">
-      <p><strong>In short:</strong> to keep continuous residence for ILR, no 12-month period may contain more than <strong>180 whole days</strong> outside the UK. Only whole days count, so the day you leave and the day you come back are not absence days.</p>
-    </div>
 
     <h2>How the calculator counts</h2>
     <ul>
-      <li><strong>Whole days only.</strong> That is why each bar starts halfway through the day you leave and ends halfway through the day you come back. A trip from 1 June to 10 June is eight days abroad (2–9 June), and a trip of less than 24 hours adds nothing.</li>
-      <li><strong>Any 12 months, not each calendar year.</strong> The calculator finds the 12-month stretch with the most days abroad across all the trips you mark, planned ones included, and compares it with 180. Trips in different calendar years can fall inside one window.</li>
+      <li><strong>Whole days only.</strong> The day you leave and the day you come back are not days abroad, so a trip from 1 June to 10 June is eight days away (2 to 9 June), and a trip of less than 24 hours adds nothing.</li>
+      <li><strong>The 12 months up to one date.</strong> The tracker counts your days abroad in the 12 months up to the date you count up to, today unless you pick another. Planning a trip? Count up to the day you come back.</li>
       <li><strong>Calendar months, not 365-day blocks.</strong> A window running to 9 January 2027 starts on 10 January 2026, leap days included.</li>
     </ul>
 
-    <h2>What it does not check</h2>
-    <p>The calculator applies the current headline limit to the dates you enter. It does not know your immigration history, so check these yourself:</p>
+    <h2>When other rules apply</h2>
+    <p>The calculator applies the current 180-day limit to the dates you enter. A few situations follow their own rules, and the ILR guide explains them:</p>
     <ul>
       <li><strong>Your qualifying period.</strong> Only absences inside it count. Mark the trips from the years you are applying on, not older ones.</li>
       <li><strong>Permission granted before 11 January 2018.</strong> Absences in that period are tested in consecutive 12-month periods ending on your application date's anniversary, not on a rolling basis.</li>
@@ -101,4 +120,4 @@
     <h3>Why does a two-week holiday show fewer than 14 days?</h3>
     <p>Because only whole days abroad count. The day you leave and the day you come back are not absence days, so a trip from 1 June to 15 June is 13 days.</p>
     <h3>Is my data stored?</h3>
-    <p>No. The calculator runs in your browser and does not send, log or save the dates you enter. Closing or reloading the page clears them. Use Import to AtlasDays to keep them.</p>
+    <p>No. The calculator runs in your browser and does not send, log or save the dates you enter. Closing or reloading the page clears them. To keep them, tap Track this in AtlasDays.</p>

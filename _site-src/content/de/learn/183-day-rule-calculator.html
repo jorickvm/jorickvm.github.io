@@ -1,0 +1,140 @@
+    <nav class="breadcrumb">
+      <a href="/de/">AtlasDays</a> / <a href="/de/learn/">Reiseregeln</a>
+    </nav>
+    <h1>183-Tage-Rechner: Zähle deine Tage in jedem Land</h1>
+    <p class="subtitle">Wähle ein Land und ein Jahr und tippe dann auf den Tag deiner Ankunft und den Tag deiner Abreise. Der Tracker zeigt dir, wie nah du an 183 Tagen bist, geplante Aufenthalte eingeschlossen.</p>
+    <p class="verified">Zuletzt geprüft: Oktober 2026</p>
+
+    <h2>Zähle deine Tage</h2>
+    <div class="daycal" id="days-183" data-day-calendar="days183">
+      <script type="application/json" data-cal-strings>
+{
+  "hintStart": "Tippe auf einen Tag, um einen Aufenthalt hinzuzufügen.",
+  "hintEnd": "Tippe jetzt auf das andere Ende des Aufenthalts.",
+  "hintSelected": "Ziehe an einem der beiden Enden, um die Reisedaten zu ändern, oder lösche den Aufenthalt unten.",
+  "inTrip": "in einem Land",
+  "pending": "Beginn eines neuen Aufenthalts",
+  "empty": "Noch keine Aufenthalte.",
+  "deleteTrip": "Aufenthalt löschen",
+  "country": "Land",
+  "goal": "Ziel",
+  "goalStay": "Limit einhalten",
+  "goalReach": "Ziel erreichen",
+  "captionStay": "Steuerwohnsitz vermeiden.",
+  "captionReach": "Steuerlich ansässig werden.",
+  "window": "Zeitraum",
+  "addCountry": "Land hinzufügen",
+  "noMatch": "Kein passendes Land gefunden",
+  "periodCalendar": "Kalenderjahr",
+  "periodTax": "Steuerjahr",
+  "periodRolling": "Letzte 12 Monate",
+  "year": "Jahr",
+  "starts": "Beginn",
+  "checkOn": "Zählen bis",
+  "checkOnCaption": "Deine Tage in den 12 Monaten bis zu diesem Datum. Für eine geplante Reise wähl ihren letzten Tag.",
+  "tripDays": {
+    "one": "{n} Tag",
+    "other": "{n} Tage"
+  },
+  "remaining": {
+    "one": "Noch {n} Tag",
+    "other": "Noch {n} Tage"
+  },
+  "atLimit": "Am Limit",
+  "needed": {
+    "one": "Noch {n} Tag nötig",
+    "other": "Noch {n} Tage nötig"
+  },
+  "reachedTarget": "Ziel erreicht",
+  "overBy": {
+    "one": "{n} Tag über dem Limit",
+    "other": "{n} Tage über dem Limit"
+  },
+  "lineNoCountry": {
+    "one": "{n} Tag ohne Land",
+    "other": "{n} Tage ohne Land"
+  }
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>M</span><span>D</span><span>M</span><span>D</span><span>F</span><span>S</span><span>S</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>Zeitleiste</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>In AtlasDays übernehmen</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="days-183-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="days-183-import-title">In AtlasDays übernehmen</p>
+            <p class="cal-dialog-sub">Zähl deine Tage unterwegs weiter. Kostenlose App für iPhone und iPad.</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>AtlasDays auf deinem iPhone oder iPad installieren</strong><span>Kostenlos im App Store.</span></li>
+            <li><strong>QR-Code scannen, um alle Reisen in AtlasDays zu laden</strong><span>Prüfe sie und tippe dann auf „Importieren“.</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>AtlasDays laden</strong><span>Kostenlos im App Store. Schon installiert? Weiter mit Schritt 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+          <li><strong>Aufenthalte in der App öffnen</strong><span>Prüfe sie und tippe dann auf „Importieren“. Vorher wird nichts gespeichert.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">In AtlasDays öffnen</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>AtlasDays laden</strong><span>Kostenlos im App Store für iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+          <li><strong>Aufenthalte per Datei importieren</strong><span>Das sind mehr Aufenthalte, als ein Link fassen kann. Lade die Datei herunter und öffne sie auf deinem iPhone mit AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Datei herunterladen</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Reisen als CSV-Datei herunterladen</button><span data-cal-downloaded hidden>Öffne diese Datei auf deinem iPhone mit AtlasDays.</span></p>
+          <button type="button" data-cal-close>Schließen</button>
+        </div>
+      </dialog>
+    </div>
+    <p class="cal-private">Alles bleibt in deinem Browser: Deine Eingaben werden weder übertragen noch gespeichert.</p>
+
+    <h2>So zählt der Rechner</h2>
+    <ul>
+      <li><strong>Jeder angebrochene Tag zählt.</strong> Der Tag der Anreise und der Tag der Abreise sind beide Tage im Land, vom 1. bis 10. Juni sind es also zehn Tage. Ein Reisetag zwischen zwei Ländern zählt für beide.</li>
+      <li><strong>Ein Land, ein Jahr.</strong> Wähle im Tracker das Land und darüber den Zeitraum: ein Kalenderjahr, ein Steuerjahr ab seinem ersten Tag (6. April im Vereinigten Königreich, 1. Juli in Australien, 1. April in Neuseeland und Indien) oder die letzten 12 Monate. Nur Tage innerhalb dieses Zeitraums zählen.</li>
+      <li><strong>Unter 183 bleiben oder 183 erreichen.</strong> Die meisten wollen unter 183 Tagen bleiben. Wenn du 183 Tage brauchst, um irgendwo ansässig zu werden, stell das Ziel auf „Ziel erreichen“: Der Balken wird grün, sobald du es geschafft hast.</li>
+      <li><strong>Geplante Aufenthalte zählen mit.</strong> Markiere auch eine Reise, die du noch nicht gebucht hast, und sieh nach, ob sie dich über 183 bringen würde.</li>
+    </ul>
+
+    <h2>Wenn dein Land anders zählt</h2>
+    <p>Die meisten Länder zählen Tage so wie dieser Rechner. Hat dein Land eine eigene Regel, erklärt sie der Leitfaden zu diesem Land, und AtlasDays hat einen fertigen Tracker, der genau danach zählt:</p>
+    <ul>
+      <li><strong>Mitternächte.</strong> Das Vereinigte Königreich zählt die Tage, an denen du um Mitternacht dort bist. Siehe den <a href="/de/learn/uk-statutory-residence-test">Statutory Residence Test des Vereinigten Königreichs</a>; der Tracker für das Vereinigte Königreich in AtlasDays zählt Mitternächte.</li>
+      <li><strong>Mehr als 183.</strong> Spanien verlangt mehr als 183 Tage, nicht 183. Siehe <a href="/de/learn/spain-183-day-tax-residency">Spanien</a>; jeder Tracker in AtlasDays verwendet die genaue Schwelle seines Landes.</li>
+      <li><strong>Drei Jahre auf einmal.</strong> Der Substantial Presence Test der USA zählt auch einen Teil der beiden Vorjahre mit. Siehe den <a href="/de/learn/us-substantial-presence-test">Substantial Presence Test</a>; AtlasDays hat einen Tracker, der die Gewichtung übernimmt.</li>
+    </ul>
+    <p>Tage sind nicht der einzige Test: Eine Wohnung oder Familie kann dich auch mit weniger Tagen ansässig machen. <a href="/de/learn/183-day-tax-residency-rule">Die 183-Tage-Regel</a> erklärt diese Bindungen, und unter <a href="/de/learn/tax-residency-by-country">Steuerwohnsitz nach Ländern</a> findest du den Leitfaden zu jedem Land.</p>
+
+    <div class="cta-box">
+      <span class="cta-logo">
+        <img class="logo-dark" src="/assets/brand/logo_dark.png?v=20260325a" alt="AtlasDays-Logo" width="52" height="52" />
+        <img class="logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="AtlasDays-Logo" width="52" height="52" />
+      </span>
+      <h2>Weiterzählen, während du reist</h2>
+      <p>Der Rechner prüft die Tage, an die du dich heute erinnerst. AtlasDays zählt deine Tage in jedem Land weiter, während du reist, privat auf deinem iPhone, und warnt dich, bevor eine Reise dich über ein Limit bringen würde.</p>
+      <a class="cta-btn" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> AtlasDays laden</a>
+    </div>
+
+    <h2>FAQ</h2>
+    <h3>Zählt der Tag der Ankunft als Tag im Land?</h3>
+    <p>In diesem Rechner ja: Jeder angebrochene Tag zählt, also sind sowohl der Tag der Anreise als auch der Tag der Abreise Tage in diesem Land. Viele Länder zählen so. Das Vereinigte Königreich zählt stattdessen Mitternächte, und der <a href="/de/learn/uk-statutory-residence-test">Leitfaden zum Vereinigten Königreich</a> erklärt, wie.</p>
+    <h3>Macht mich ein Aufenthalt von 183 Tagen in einem Land steuerlich ansässig?</h3>
+    <p>Oft, aber nicht immer. Viele Länder werten 183 Tage in ihrem Steuerjahr als Ansässigkeit, manche verwenden eine andere Schwelle oder einen anderen Zeitraum, und andere Bindungen wie eine Wohnung oder Familie können dich schon mit weniger Tagen ansässig machen. Der Rechner zeigt die Zählung, nicht die Entscheidung.</p>
+    <h3>Werden meine Eingaben gespeichert?</h3>
+    <p>Nein. Der Rechner läuft in deinem Browser und sendet, protokolliert oder speichert die eingegebenen Reisedaten nicht. Wenn du die Seite schließt oder neu lädst, sind sie weg. Um sie zu behalten, tippe auf „In AtlasDays übernehmen“.</p>

@@ -1,0 +1,150 @@
+    <nav class="breadcrumb">
+      <a href="/ru/">AtlasDays</a> / <a href="/ru/learn/">Правила поездок</a>
+    </nav>
+    <h1>Калькулятор правила 183 дней: подсчёт дней в любой стране</h1>
+    <p class="subtitle">Выберите страну и год, затем нажмите на день въезда и день выезда. Трекер покажет, сколько осталось до 183 дней, с учётом запланированных поездок.</p>
+    <p class="verified">Последняя проверка: октябрь 2026 года</p>
+
+    <h2>Посчитайте свои дни</h2>
+    <div class="daycal" id="days-183" data-day-calendar="days183">
+      <script type="application/json" data-cal-strings>
+{
+  "hintStart": "Нажмите на день, чтобы добавить поездку.",
+  "hintEnd": "Теперь нажмите на другой край поездки.",
+  "hintSelected": "Перетащите любой край поездки, чтобы изменить даты, или удалите её ниже.",
+  "inTrip": "в стране",
+  "pending": "начало новой поездки",
+  "empty": "Поездок пока нет.",
+  "deleteTrip": "Удалить поездку",
+  "country": "Страна",
+  "goal": "Цель",
+  "goalStay": "Не превышать",
+  "goalReach": "Достичь цели",
+  "captionStay": "Не стать налоговым резидентом.",
+  "captionReach": "Стать налоговым резидентом.",
+  "window": "Период",
+  "addCountry": "Добавить страну",
+  "noMatch": "Страна не найдена",
+  "periodCalendar": "Календарный год",
+  "periodTax": "Налоговый год",
+  "periodRolling": "Последние 12 месяцев",
+  "year": "Год",
+  "starts": "Начало",
+  "checkOn": "Считать до",
+  "checkOnCaption": "Ваши дни за 12 месяцев до этой даты. Для запланированной поездки выберите её последний день.",
+  "tripDays": {
+    "one": "{n} день",
+    "few": "{n} дня",
+    "many": "{n} дней",
+    "other": "{n} дня"
+  },
+  "remaining": {
+    "one": "Остался {n} день",
+    "few": "Осталось {n} дня",
+    "many": "Осталось {n} дней",
+    "other": "Осталось {n} дня"
+  },
+  "atLimit": "Лимит достигнут",
+  "needed": {
+    "one": "Нужен ещё {n} день",
+    "few": "Нужно ещё {n} дня",
+    "many": "Нужно ещё {n} дней",
+    "other": "Нужно ещё {n} дня"
+  },
+  "reachedTarget": "Цель достигнута",
+  "overBy": {
+    "one": "Лимит превышен на {n} день",
+    "few": "Лимит превышен на {n} дня",
+    "many": "Лимит превышен на {n} дней",
+    "other": "Лимит превышен на {n} дня"
+  },
+  "lineNoCountry": {
+    "one": "{n} день без указанной страны",
+    "few": "{n} дня без указанной страны",
+    "many": "{n} дней без указанной страны",
+    "other": "{n} дня без указанной страны"
+  }
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>П</span><span>В</span><span>С</span><span>Ч</span><span>П</span><span>С</span><span>В</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>Хронология</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Отслеживать в AtlasDays</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="days-183-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="days-183-import-title">Отслеживать в AtlasDays</p>
+            <p class="cal-dialog-sub">Продолжайте подсчёт дней в дороге. Бесплатное приложение для iPhone и iPad.</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>Убедитесь, что AtlasDays установлено на вашем iPhone или iPad</strong><span>Бесплатно в App Store.</span></li>
+            <li><strong>Отсканируйте QR-код, чтобы загрузить все поездки в AtlasDays</strong><span>Проверьте их и нажмите «Импортировать».</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>Скачайте AtlasDays</strong><span>Бесплатно в App Store. Уже установлено? Переходите к шагу 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+          <li><strong>Откройте поездки в приложении</strong><span>Проверьте их и нажмите «Импортировать». До этого ничего не сохраняется.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Открыть в AtlasDays</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>Скачайте AtlasDays</strong><span>Бесплатно в App Store для iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+          <li><strong>Импортируйте поездки из файла</strong><span>Столько поездок не поместится в ссылку. Скачайте файл и откройте его в AtlasDays на iPhone.</span><button type="button" class="cal-dialog-primary" data-cal-download>Скачать файл</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Скачать поездки в файле CSV</button><span data-cal-downloaded hidden>Откройте этот файл в AtlasDays на iPhone.</span></p>
+          <button type="button" data-cal-close>Закрыть</button>
+        </div>
+      </dialog>
+    </div>
+    <p class="cal-private">Всё остаётся в вашем браузере: введённые данные никуда не отправляются и не сохраняются.</p>
+
+    <h2>Как считает калькулятор</h2>
+    <ul>
+      <li><strong>Засчитывается любая часть дня.</strong> И день въезда, и день выезда считаются днями в стране, поэтому с 1 по 10 июня — это десять дней. День переезда из одной страны в другую засчитывается для обеих стран.</li>
+      <li><strong>Одна страна, один год.</strong> Выберите страну в трекере, а над ним — период: календарный год, налоговый год с даты его начала (6 апреля в Великобритании, 1 июля в Австралии, 1 апреля в Новой Зеландии и Индии) или последние 12 месяцев. Учитываются только дни внутри этого периода.</li>
+      <li><strong>Остаться ниже или набрать 183.</strong> Большинство хочет провести в стране меньше 183 дней. Если же вам нужно набрать 183 дня, чтобы стать где-то резидентом, выберите в поле «Цель» вариант «Достичь цели»: полоса станет зелёной, как только вы их наберёте.</li>
+      <li><strong>Запланированные поездки тоже учитываются.</strong> Отметьте поездку, которую ещё не забронировали, и проверьте, не выйдете ли вы за 183 дня.</li>
+    </ul>
+
+    <h2>Если ваша страна считает иначе</h2>
+    <p>Большинство стран считают дни так же, как этот калькулятор. Если у вашей страны своё правило, его объясняет отдельное руководство, а в AtlasDays есть готовый трекер, который считает точно по нему:</p>
+    <ul>
+      <li><strong>Правило полуночи.</strong> Великобритания засчитывает дни, в которые вы находитесь в стране в полночь. Подробнее — в статье о <a href="/ru/learn/uk-statutory-residence-test">британском тесте налогового резидентства (SRT)</a>; трекер AtlasDays для Великобритании тоже считает дни по правилу полуночи.</li>
+      <li><strong>Более 183.</strong> В Испании нужно более 183 дней, а не 183. Подробнее: <a href="/ru/learn/spain-183-day-tax-residency">Испания</a>; каждый трекер AtlasDays использует точный порог своей страны.</li>
+      <li><strong>Три года сразу.</strong> Американский тест существенного присутствия учитывает и часть дней за два предыдущих года. Подробнее — в статье <a href="/ru/learn/us-substantial-presence-test">«Тест существенного присутствия»</a>; в AtlasDays есть трекер, который сам применяет эти коэффициенты.</li>
+    </ul>
+    <p>Дни — не единственный критерий: жильё или семья могут сделать вас резидентом и при меньшем числе дней. Об этих связях рассказывает статья о <a href="/ru/learn/183-day-tax-residency-rule">правиле 183 дней</a>, а руководства по каждой стране собраны в обзоре <a href="/ru/learn/tax-residency-by-country">налогового резидентства по странам</a>.</p>
+
+    <div class="cta-box">
+      <span class="cta-logo">
+        <img class="logo-dark" src="/assets/brand/logo_dark.png?v=20260325a" alt="Логотип AtlasDays" width="52" height="52" />
+        <img class="logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="Логотип AtlasDays" width="52" height="52" />
+      </span>
+      <h2>Продолжайте считать дни в поездках</h2>
+      <p>Калькулятор проверяет дни, которые вы помните сегодня. AtlasDays считает ваши дни в каждой стране по ходу поездок — конфиденциально, на вашем iPhone — и заранее предупреждает, если поездка выведет вас за лимит.</p>
+      <a class="cta-btn" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> Скачать AtlasDays</a>
+    </div>
+
+    <h2>Частые вопросы</h2>
+    <h3>Считается ли день въезда днём в стране?</h3>
+    <p>В этом калькуляторе — да: засчитывается любая часть дня, поэтому и день въезда, и день выезда считаются днями в этой стране. Так считают многие страны. Великобритания же считает дни по правилу полуночи, и <a href="/ru/learn/uk-statutory-residence-test">руководство по Великобритании</a> объясняет, как именно.</p>
+    <h3>Становлюсь ли я налоговым резидентом после 183 дней в стране?</h3>
+    <p>Часто, но не всегда. Многие страны считают 183 дня в своём налоговом году основанием для резидентства, некоторые используют другой порог или период, а другие связи, например жильё или семья, могут сделать вас резидентом и при меньшем числе дней. Калькулятор показывает количество дней, а не решение.</p>
+    <h3>Сохраняются ли мои данные?</h3>
+    <p>Нет. Калькулятор работает в браузере и не отправляет, не записывает и не сохраняет введённые даты. При закрытии или обновлении страницы они исчезнут. Чтобы сохранить их, нажмите «Отслеживать в AtlasDays».</p>
