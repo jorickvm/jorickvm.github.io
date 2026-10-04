@@ -1127,6 +1127,64 @@ def optional_block(value: object) -> str:
     return "\n" + text if text else ""
 
 
+# A country article can embed the 183-day calculator, preset to its own rule.
+# The article's record says `"calculator": {}` (optionally with `settings`,
+# e.g. {"nights": true}); the preset comes from its `residency` data, so the
+# rule is written down once. The markup, strings and dialog are copied from the
+# same locale's calculator page, so an embed is translated wherever that page
+# is, and the page's own scripts and styles are reused at their current stamps.
+CALCULATOR_PAGE = "learn/183-day-rule-calculator.html"
+_calculator_assets: dict[str, str] = {}
+
+
+def calculator_assets() -> dict[str, str]:
+    if not _calculator_assets:
+        records = json.loads(DATA_PATH.read_text(encoding="utf-8"))["articles"]
+        page = next(record for record in records if record["path"] == CALCULATOR_PAGE)
+        _calculator_assets.update(head_extra=str(page.get("head_extra", "")), page_scripts=str(page.get("page_scripts", "")))
+    return _calculator_assets
+
+
+def calculator_preset(article: dict[str, object]) -> dict[str, object]:
+    residency = dict(article.get("residency") or {})
+    match = re.match(r"\s*(>|≥)\s*(\d+)", str(residency.get("threshold", "")))
+    window = {"calendar": "calendar", "rolling": "rolling"}.get(str(residency.get("window", "")))
+    if not match or not window or not residency.get("code"):
+        raise SystemExit(f"{article['path']}: calculator needs residency code, a > or ≥ threshold, and a calendar or rolling window")
+    number = int(match.group(2))
+    settings = {
+        "country": str(residency["code"]).upper(),
+        "goal": "stay",
+        "periodType": window,
+        "limit": number,
+        "residentAt": number + 1 if match.group(1) == ">" else number,
+    }
+    settings.update(dict(dict(article["calculator"]).get("settings", {})))
+    return {"settings": settings, "lock": ["country", "goal", "periodType"], "link": f"183-{residency['code']}"}
+
+
+def render_embedded_calculator(content: str, article: dict[str, object], code: str) -> str:
+    if article.get("calculator") is None:
+        return content
+    folder = "learn" if code == default_locale_code() else f"{code}/learn"
+    page = (SOURCE_ROOT / "content" / folder / Path(CALCULATOR_PAGE).name).read_text(encoding="utf-8")
+    heading = re.search(r"<h2>.*?</h2>", page, re.S).group(0)
+    start = page.index('<div class="daycal"')
+    privacy = re.search(r'<p class="cal-private">.*?</p>', page, re.S)
+    block = page[start:privacy.start()].rstrip() + "\n    " + privacy.group(0)
+    preset = html.escape(json.dumps(calculator_preset(article), ensure_ascii=False, separators=(",", ":")), quote=True)
+    block = block.replace('id="days-183"', 'id="embed-183"', 1).replace("days-183-import-title", "embed-183-import-title")
+    block = block.replace('data-day-calendar="days183"', f'data-day-calendar="days183" data-cal-preset="{preset}"', 1)
+    # After the opening summary and its fact box, before the first section.
+    after = content.find('<div class="factbox">')
+    if after < 0:
+        after = content.find('<div class="tldr">')
+    at = content.find("<h2", max(after, 0))
+    if at < 0:
+        raise SystemExit(f"{article['path']}: no section heading to place the calculator before")
+    return content[:at] + heading + "\n    " + block + "\n\n    " + content[at:]
+
+
 def render_article(
     article: dict[str, object],
     template: str,
@@ -1144,6 +1202,7 @@ def render_article(
     code = str(locale["code"])
     content = render_factbox_legal_basis(content, article)
     content = render_learn_trust(content, article, locale, strings)
+    content = render_embedded_calculator(content, article, code)
     switcher = render_language_switcher(source_path, locales, translations, code, strings)
     # Only routes this locale actually has may be prefixed; everything else
     # falls back to English. Without this the chrome links a Japanese page to
@@ -1165,8 +1224,8 @@ def render_article(
         # Optional per-article assets, for the few pages with an interactive
         # component (the UK absence calculator). Inline markers, so every other
         # page renders byte-for-byte as before.
-        "{{HEAD_EXTRA}}": optional_block(article.get("head_extra")),
-        "{{PAGE_SCRIPTS}}": optional_block(article.get("page_scripts")),
+        "{{HEAD_EXTRA}}": optional_block(article.get("head_extra") or (calculator_assets()["head_extra"] if article.get("calculator") is not None else "")),
+        "{{PAGE_SCRIPTS}}": optional_block(article.get("page_scripts") or (calculator_assets()["page_scripts"] if article.get("calculator") is not None else "")),
         "{{CLUSTER_RELATED}}": (
             render_help_tail(article, locale, strings)
             or render_cluster_related(article, locale, translations)

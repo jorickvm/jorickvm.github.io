@@ -282,13 +282,20 @@
     var allowed = (rule.countries && rule.countries(PLACES)) || PLACES;
     var defaultCountry = allowed.length === 1 ? allowed[0] : (rule.defaultCountry || "");
     var recent = [];
-    var settings = {}; // choices made in the rule's result menus (rule.evaluate -> controls)
+    // An article can embed a calculator preset to its own rule:
+    // data-cal-preset = { settings, lock, link }. Locked choices show no
+    // control, a locked country shows as a plain title, and link replaces the
+    // rule's own `c` in the import link (e.g. 183-es).
+    var preset = {};
+    try { preset = JSON.parse(root.getAttribute("data-cal-preset") || "{}"); } catch (e) { preset = {}; }
+    var locked = preset.lock || [];
+    var settings = Object.assign({}, preset.settings || {}); // choices made in the rule's result menus (rule.evaluate -> controls)
     var finePointer = !!(window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches);
     var rows = [], cells = {}, firstMonday = 0, activeMonth = null, clipFrom = null, clipTo = null;
     var englishNames = null;
     try { englishNames = new Intl.DisplayNames(["en"], { type: "region" }); } catch (e) {}
 
-    function ctx() { return { today: today, D: D, label: label, plural: plural, text: text, trips: trips, placeName: placeName, settings: settings, dateRange: dateRange, tone: tone }; }
+    function ctx() { return { today: today, D: D, label: label, plural: plural, text: text, trips: trips, placeName: placeName, settings: settings, dateRange: dateRange, tone: tone, embedded: !!preset.settings }; }
     // A new trip starts with the rule's fixed country, or (rule.carryCountry)
     // the country picked last, so a run of stays in one country is quick.
     function newCountry() {
@@ -766,8 +773,9 @@
       var r = rule.evaluate(trips, ctx());
       result.textContent = "";
       settingsRow.textContent = "";
-      settingsRow.hidden = !(r.controls && r.controls.length);
-      (r.controls || []).forEach(function (ctl) {
+      var shown = (r.controls || []).filter(function (ctl) { return locked.indexOf(ctl.key) < 0; });
+      settingsRow.hidden = !shown.length;
+      shown.forEach(function (ctl) {
         var row = el("div", { "class": "cal-setting" });
         if (ctl.icon) row.appendChild(icon(ctl.icon));
         row.appendChild(el("span", { "class": "cal-setting-label" }, ctl.label || ""));
@@ -781,13 +789,13 @@
         // The app's card header: flag and title on the left, status pill on the right.
         if (m.title != null) {
           var head = el("div", { "class": "cal-card-head" });
-          if (m.countryKey) {
+          if (m.countryKey && locked.indexOf(m.countryKey) < 0) {
             head.appendChild(control({ type: "country", key: m.countryKey, value: m.flag || "", label: m.title }));
           } else {
             var flag = el("span", { "class": "cal-flag" + (m.flag ? "" : " is-empty") });
             if (m.flag) flag.appendChild(flagImg(m.flag, 28));
             head.appendChild(flag);
-            head.appendChild(el("span", { "class": "cal-card-title" + (m.flag ? "" : " is-placeholder") }, m.title));
+            head.appendChild(el("span", { "class": "cal-card-title" + (m.flag ? "" : " is-placeholder") }, m.countryKey && m.flag ? placeName(m.flag) : m.title));
           }
           if (r.statusText) head.appendChild(el("span", { "class": "cal-pill tone-" + m.tone }, r.statusText));
           result.appendChild(head);
@@ -883,7 +891,7 @@
     function openImport() {
       var rows = rule.exportRows(trips, ctx()).slice().sort(function (a, b) { return a.start - b.start; });
       if (!dialog || !dialog.showModal) return downloadCsv();
-      var frag = rows.length ? importFragment(rows, rule.linkId) : "";
+      var frag = rows.length ? importFragment(rows, preset.link || rule.linkId) : "";
       var mode = rows.length > LINK.maxStays ? "file"
         : inApp || appleTouch ? "phone"
         : rows.length <= LINK.maxQrStays ? "computer" : "file";

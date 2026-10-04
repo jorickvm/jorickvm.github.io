@@ -36,10 +36,16 @@
     };
   }
   function setting(c, key) { return c.settings[key] || defaults(c)[key]; }
+  function countUpTo(c) {
+    var iso = c.settings.checkOn;
+    if (!iso) return c.today;
+    var p = iso.split("-").map(Number);
+    return c.D.fromParts(p[0], p[1], p[2]) || c.today;
+  }
 
   function bounds(c) {
     var D = c.D, type = setting(c, "periodType");
-    if (type === "rolling") return { from: D.shiftYears(c.today, -1) + 1, to: c.today };
+    if (type === "rolling") { var on = countUpTo(c); return { from: D.shiftYears(on, -1) + 1, to: on }; }
     if (type === "tax") {
       var iso = setting(c, "taxStart").split("-").map(Number), from = D.fromParts(iso[0], iso[1], iso[2]);
       return { from: from, to: D.shiftYears(from, 1) - 1 };
@@ -59,15 +65,17 @@
     range: function (c) { return bounds(c); },
     newTripCountry: function (c) { return c.settings.country || ""; },
 
+    // A country that counts nights (Portugal) leaves out the day you leave.
     tripLabel: function (t, c) {
-      return c.text("tripDays", { n: t.end - t.start + 1 });
+      return c.text("tripDays", { n: t.end - t.start + (c.settings.nights ? 0 : 1) });
     },
 
     evaluate: function (trips, c) {
       var b = bounds(c), byCountry = {};
       trips.forEach(function (t) {
         var code = t.country || "";
-        for (var d = Math.max(t.start, b.from); d <= Math.min(t.end, b.to); d++) (byCountry[code] = byCountry[code] || new Set()).add(d);
+        var last = c.settings.nights ? t.end - 1 : t.end;
+        for (var d = Math.max(t.start, b.from); d <= Math.min(last, b.to); d++) (byCountry[code] = byCountry[code] || new Set()).add(d);
       });
       // Without a choice yet, check the country with the most days.
       if (!c.settings.country) {
@@ -92,21 +100,29 @@
         ] }
       ];
       if (type === "calendar") controls.push({ key: "year", icon: "calendar", label: c.text("year"), value: setting(c, "year"), options: years, moveCalendar: true });
+      if (type === "rolling") controls.push({ type: "date", key: "checkOn", icon: "calendar", label: c.text("checkOn"), caption: c.text("checkOnCaption"),
+        value: c.D.iso(b.to), display: c.dateRange(b.to, b.to), moveCalendar: true });
       if (type === "tax") controls.push({ type: "date", key: "taxStart", icon: "starts", label: c.text("starts"), value: setting(c, "taxStart"),
         display: c.dateRange(b.from, b.from), moveCalendar: true });
 
       var days = country && byCountry[country] ? byCountry[country].size : 0;
       var loose = byCountry[""] ? byCountry[""].size : 0, lines = [];
       if (loose) lines.push(c.text("lineNoCountry", { n: loose }));
-      var left = LIMIT - days;
+      // An embedded calculator knows its country's exact threshold
+      // (residentAt: 184 for "more than 183", 183 for "183 or more"); the
+      // generic page counts against 183.
+      var residentAt = +c.settings.residentAt || 0;
+      var limit = +c.settings.limit || LIMIT;
+      var safe = residentAt ? residentAt - 1 : limit, left = safe - days;
+      var needed = (residentAt || limit) - days;
       // The app's wording: a limit counts down to "At limit"; a target counts
       // the days still needed until "Target reached".
       var status = target
-        ? (left > 0 ? c.text("needed", { n: left }) : c.text("reachedTarget"))
+        ? (needed > 0 ? c.text("needed", { n: needed }) : c.text("reachedTarget"))
         : (left > 0 ? c.text("remaining", { n: left }) : left === 0 ? c.text("atLimit") : c.text("overBy", { n: -left }));
       return {
         controls: controls,
-        meter: { countryKey: "country", title: c.text("country"), flag: country, label: c.dateRange(b.from, b.to), days: days, limit: LIMIT, tone: c.tone(days, LIMIT, target) },
+        meter: { countryKey: "country", title: c.text("country"), flag: country, label: c.dateRange(b.from, b.to), days: days, limit: limit, tone: target ? c.tone(days, residentAt || limit, true) : c.tone(days, safe, false) },
         statusText: status,
         lines: lines
       };
@@ -148,6 +164,8 @@
       reachedTarget: "Target reached",
       overBy: { one: "Over limit by {n} day", other: "Over limit by {n} days" },
       lineNoCountry: { one: "{n} day without a country", other: "{n} days without a country" },
+      checkOn: "Count up to",
+      checkOnCaption: "Your days in the 12 months up to this date. For a planned trip, pick its last day.",
       fileName: "atlasdays-stays.csv"
     }
   };
