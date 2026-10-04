@@ -114,7 +114,7 @@ def check_house_typography(label: str, text: str, problems: list[str],
     (`AtlasDays — это инструмент учёта`, `«ключ — значение»`). The house rule
     was written for English, where an em dash reads as AI-authored text; it has
     no such connotation in Cyrillic typography, where the mark is simply
-    correct. See the Russian entry in TRANSLATION_GUIDELINES-web.md.
+    correct. See translation-web/ru.md in the internal repo.
     """
     if code in EM_DASH_NATIVE_LOCALES:
         return

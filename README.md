@@ -12,7 +12,11 @@ This is the one thing to know before editing anything. Pages under `learn/` and 
 
 All ten root pages are generated, `index.html`, `404.html`, and `support.html` included; they moved into `pages.json` when Dutch shipped, because a page that cannot be translated cannot be localized.
 
-Genuinely hand-authored: the `app/*/index.html` alias stubs, the in-app link hop `app/open/index.html` (the app opens Learn articles through it so Cloudflare can tell in-app visits apart), and the three legacy meta-refresh redirect stubs in `learn/` (`day-limits.html`, `how-to-use-atlasdays.html`, `icloud-sync-travel-tracking.html`). Merged Learn pages in `_site-src/data/redirects.json` generate redirect stubs for English and every locale; `build_site.py --check` covers them.
+Genuinely hand-authored: the `app/*/index.html` alias stubs, the in-app link hop `app/open/index.html` (the app opens Learn articles through it so Cloudflare can tell in-app visits apart), the three legacy meta-refresh redirect stubs in `learn/` (`day-limits.html`, `how-to-use-atlasdays.html`, `icloud-sync-travel-tracking.html`), and the Shift pages (below). Merged Learn pages in `_site-src/data/redirects.json` generate redirect stubs for English and every locale; `build_site.py --check` covers them.
+
+### The Shift folders
+
+`shift/` and the `<code>/shift/` folders hold the privacy and support pages for Shift, a separate iOS app. They sit outside the build and deliberately do not use the AtlasDays design. Shift ships in more languages than this site, so some root folders (`it/`, `ka/`, `pt-PT/`, …) exist only for Shift.
 
 `changelog.html` is shared with the AtlasDays app repo, which owns the release notes. `scripts/sync_changelog.py` replaces only the contents of `<div class="release-stack">`, so a release updates the cards and leaves this repo's header, footer, social metadata, and theme bootstrap intact.
 
@@ -39,7 +43,7 @@ _site-src/data/glossary.json       terminology snapshot, generated from the app 
 _site-src/content/<code>/…          translated fragments
 ```
 
-The published locales and their coverage are declared in `_site-src/data/locales.json`. Each non-English locale routes under its own code. English stays unprefixed, so `en` is simply the locale whose `route_prefix` is empty.
+The published locales and their coverage are declared in `_site-src/data/locales.json`. Each non-English locale routes under its own code. English stays unprefixed, so `en` is simply the locale whose `route_prefix` is empty. The privacy and terms pages are ordinary generated pages in every locale; a `?lang=<code>` query on the English page redirects to that locale's copy before paint, which is how the app's deep links reach them.
 
 **A translation record supplies prose and nothing else.** Paths, canonicals, hreflang, JSON-LD, og tags, next-step URLs, and the rendered date are all derived from the English source record, and setting one of them in an overlay is a build error. That is deliberate: it means a translation cannot invent a URL or a JSON-LD graph in a language nobody here can proofread, and `validate_help_next_steps` keeps guarding the routes for free.
 
@@ -91,9 +95,11 @@ python3 scripts/build_content_governance.py   # editorial + cluster records, rev
 python3 scripts/generate_social_cards.py      # generic OG image manifest
 python3 scripts/build_residency_hub.py        # hub tables, if a residency page changed
 python3 scripts/build_hub_tile_order.py       # place tiles in each locale’s own order
-python3 scripts/build_site.py                 # renders every generated page
+python3 scripts/build_site.py                 # every generated page, sitemaps, and llms.txt
 python3 scripts/build_search_index.py         # on-site search
 ```
+
+A brand-new page crashes its first `build_site.py` with `FileNotFoundError`, because `llms.txt` is rendered from the pages already on disk. Seed the output path with `<title>x</title>`, then build twice.
 
 4. Verify, and review the diff before committing:
 
@@ -101,7 +107,7 @@ python3 scripts/build_search_index.py         # on-site search
 python3 scripts/audit_site.py --strict-semantics --check-baseline _site-src/data/baseline.json
 ```
 
-The audit is the main safety net: it checks canonicals, sitemap agreement, JSON-LD, internal links, social images, editorial coverage, and diffs every page against a committed baseline. If a change is intentional, re-arm the baseline with `--write-baseline` and check that the diff lists only the pages you meant to touch.
+The audit is the main safety net: it checks canonicals, sitemap agreement, JSON-LD, internal links, social images, editorial coverage, and diffs every page against a committed baseline. For generated pages the baseline pins structure (route, indexability, title, description, canonical, H1) rather than body text, since `build_site.py --check` already guards the body; hand-authored pages are pinned in full. If a structural change is intentional, re-arm the baseline with `--write-baseline` and check that the diff lists only the pages you meant to touch.
 
 ## Analytics
 
@@ -125,6 +131,7 @@ Serves the committed HTML with GitHub Pages' extensionless URLs, so links resolv
 | `build_content_governance.py` | Derives editorial records, content clusters, and the review queue from `articles.json`. |
 | `build_residency_hub.py` | Fills the residency hub tables from the `residency` objects in `articles.json`. |
 | `build_hub_tile_order.py` | Sorts Learn place tiles in each locale’s own order without changing their copy. |
+| `hub_collation.py` | Per-language alphabetical sort keys, shared by the two hub scripts above. |
 | `build_search_index.py` | Builds `assets/search-index.json`. |
 | `generate_social_cards.py` | Assigns the generic 1200x630 share image site-wide. |
 | `sync_help_screenshots.py` | Swaps a Help screenshot placeholder for a `<figure>` once its WebP lands, in every locale. |

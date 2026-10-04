@@ -5,8 +5,7 @@ _site-src/content/<code>/hubs/learn-index.html is hand-authored per locale, not
 generated, so its tiles were translated in place and kept the English running
 order: every locale displayed translated names in English alphabetical
 positions, with Chipre between Colorado and Chequia in Spanish and Tsjechië
-after Cyprus in Dutch. That is the defect
-TRANSLATION_GUIDELINES-web.md section 7 records for the residency tables, which
+after Cyprus in Dutch. That is the defect the residency tables had, which
 build_residency_hub.py fixes by sorting on the locale's own names; because this
 hub is written by hand rather than generated, the fix never reached it.
 

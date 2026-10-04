@@ -85,8 +85,8 @@ ALLOW = (
     # CSV column names and cell values, which are literals in the file the
     # importer reads. The guidelines say to gloss these, never translate them.
     "Start Date", "End Date", "Tourism, Business", "Country,State",
-    # Terms of art a translator deliberately kept, recorded in section 8 of
-    # TRANSLATION_GUIDELINES-web.md. Adding to this group needs that entry too.
+    # Terms of art a translator deliberately kept, recorded in that language's
+    # translation-web/<code>.md. Adding to this group needs that entry too.
     "deemed resident", "safe harbors",
     # Comparison operators rendered as literal glyphs in hub legends.
     "≥ ", "> ", "&gt; ",

@@ -24,7 +24,7 @@ Besides those, the four in-app alias stubs under `app/` (`changelog/`, `help/`, 
 - `learn/` long-form articles, `help/` how-to guides — both generated, see above
 - `_site-src/` the sources those are generated from
 - `assets/` images and CSS; `scripts/` Python dev tooling (like everything tracked in a Pages repo it is technically fetchable at atlasdays.app/scripts/…, just never linked)
-- `shift/privacy/` the privacy page for **Shift**, a different iOS app of Jorick's (`~/Projects/Shift/`). Hand-authored, outside the build, and deliberately *not* AtlasDays-branded: no site header, no legal-page layout, no shared tokens, no brand chrome. The rules live in `~/Projects/Shift/Shift/CLAUDE.md`, which names that repo's `Shift/PrivacyPolicyView.swift` as the source of truth for the policy's claims.
+- `shift/privacy/` the privacy page for **Shift**, a different iOS app of Jorick's (`~/Projects/Shift/`). Hand-authored, outside the build, and deliberately *not* AtlasDays-branded: no site header, no legal-page layout, no shared tokens, no brand chrome. The rules live in `~/Projects/Shift/Shift/CLAUDE.md`, which names that repo's `Shift/Views/PrivacyPolicyView.swift` as the source of truth for the policy's claims.
 
 ## This repo is public — internal docs are git-ignored on purpose
 
@@ -63,7 +63,7 @@ The house rule below says to replace an em dash with an en dash. That was writte
 - U+2013 is also banned inside Japanese copy. Japanese uses neither dash: split the sentence with `。`, or use `（…）` / `「…」`.
 - Title separator is per locale: `" – "` in English, `"｜"` in Japanese.
 
-The localized privacy and terms pages are generated locale pages like every other translation: `/<code>/privacy` and `/<code>/terms`, built from `_site-src/content/<code>/pages/`. The iOS app deep-links to the English URL with `?lang=`, and the page head redirects that to the locale route for a published locale. The English pages also still load an older runtime switcher (`assets/js/legal-translations.js`, registry in `assets/js/legal-language.js`) that swaps `main.innerHTML` for the languages that predate the generated pages. It takes no new languages; retiring it needs app-repo coordination and is Jorick's call. Its Japanese legal text is a useful reviewed reference for register and terminology.
+The localized privacy and terms pages are generated locale pages like every other translation: `/<code>/privacy` and `/<code>/terms`, built from `_site-src/content/<code>/pages/`. The iOS app deep-links to the English URL with `?lang=`, and the page head redirects that to the locale route for a published locale. The support address in their contact link is assembled by `assets/js/navigation.js`, which every locale loads.
 
 Before writing or editing any translation here, read `~/Projects/AtlasDays/AtlasDays/Docs/reference/translation-guidelines.md` and follow it. It lives in the app repo but explicitly covers this surface, under "Website legal pages (separate repo)". It sets legal text as its narrowest-freedom category (translate faithfully, do not shorten or soften), fixes the form of address per language, and carries typography rules that are easy to destroy with a scripted edit, such as the nonbreaking space French requires before `:`. Copying the register of the text already on the page is not a substitute for reading it.
 
