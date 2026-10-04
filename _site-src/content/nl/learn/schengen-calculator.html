@@ -1,0 +1,127 @@
+    <nav class="breadcrumb">
+      <a href="/nl/">AtlasDays</a> / <a href="/nl/learn/">Reisregels</a>
+    </nav>
+    <h1>Schengencalculator: tel je dagen voor de 90/180-regel</h1>
+    <p class="subtitle">Tik voor elk verblijf op de dag van inreis en de dag van uitreis. De tracker laat zien hoeveel van je 90 dagen je hebt gebruikt in de 180 dagen tot een willekeurige datum, geplande reizen meegerekend.</p>
+    <p class="verified">Laatst gecontroleerd: oktober 2026</p>
+
+    <h2>Tel je dagen</h2>
+    <div class="daycal" id="schengen" data-day-calendar="schengen">
+      <script type="application/json" data-cal-strings>
+{
+  "hintStart": "Tik op een dag om een verblijf toe te voegen.",
+  "hintEnd": "Tik nu op het andere uiteinde van het verblijf.",
+  "hintSelected": "Sleep een van beide uiteinden om de datums te wijzigen, of verwijder het verblijf hieronder.",
+  "inTrip": "in het Schengengebied",
+  "pending": "begin van een nieuw verblijf",
+  "empty": "Nog geen verblijven.",
+  "deleteTrip": "Verwijder verblijf",
+  "country": "Land",
+  "addCountry": "Voeg land toe",
+  "noMatch": "Geen Schengenland gevonden",
+  "area": "Schengengebied",
+  "checkOn": "Peildatum",
+  "tripDays": {
+    "one": "{n} dag",
+    "other": "{n} dagen"
+  },
+  "remaining": {
+    "one": "{n} dag resterend",
+    "other": "{n} dagen resterend"
+  },
+  "atLimit": "Limiet bereikt",
+  "overBy": {
+    "one": "{n} dag boven de limiet",
+    "other": "{n} dagen boven de limiet"
+  },
+  "lineOver": "Op {date} kom je boven de 90 dagen uit.",
+  "lineNoCountry": {
+    "one": "{n} dag zonder land",
+    "other": "{n} dagen zonder land"
+  }
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>M</span><span>D</span><span>W</span><span>D</span><span>V</span><span>Z</span><span>Z</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>Tijdlijn</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Houd dit bij in AtlasDays</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="schengen-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="schengen-import-title">Houd dit bij in AtlasDays</p>
+            <p class="cal-dialog-sub">Tel je dagen door terwijl je reist. Gratis app voor iPhone en iPad.</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>Zorg dat AtlasDays op je iPhone of iPad staat</strong><span>Gratis in de App Store.</span></li>
+            <li><strong>Scan de QR-code om alle reizen in AtlasDays te laden</strong><span>Controleer ze en tik dan op Importeren.</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>Download AtlasDays</strong><span>Gratis in de App Store. Heb je de app al? Ga door naar stap 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+          <li><strong>Open je verblijven in de app</strong><span>Controleer ze en tik dan op Importeren. Tot die tijd wordt er niets bewaard.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Open AtlasDays</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>Download AtlasDays</strong><span>Gratis in de App Store voor iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+          <li><strong>Importeer je verblijven met een bestand</strong><span>Dat zijn meer verblijven dan er in een link passen. Download het bestand en open het op je iPhone met AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Download bestand</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Importeer via een bestand</button><span data-cal-downloaded hidden>Open het op je iPhone met AtlasDays.</span></p>
+          <button type="button" data-cal-close>Sluit</button>
+        </div>
+      </dialog>
+    </div>
+    <p class="cal-private">Alles blijft in je browser: wat je invult, wordt niet verzonden of opgeslagen.</p>
+
+    <h2>Zo telt de calculator</h2>
+    <ul>
+      <li><strong>Elk deel van een dag telt.</strong> De dag van inreis en de dag van uitreis zijn allebei dagen in het Schengengebied, dus 1 tot en met 10 juni is tien dagen.</li>
+      <li><strong>Eén tegoed voor het hele gebied.</strong> De 90 dagen gelden voor alle Schengenlanden samen, niet voor elk land apart. Een dag die je in twee Schengenlanden doorbrengt, telt één keer.</li>
+      <li><strong>Elke periode van 180 dagen.</strong> Zet de peildatum op een datum, vandaag of een geplande inreis, en de tracker telt je dagen in de 180 dagen tot en met die datum. Elke oudere dag die uit die periode valt, maakt één dag vrij.</li>
+      <li><strong>Geplande reizen tellen ook mee.</strong> Komen de verblijven die je markeert ooit boven de 90 dagen binnen 180 uit, dan zie je in de melding onder de tracker op welke datum.</li>
+    </ul>
+
+    <h2>Als er andere regels gelden</h2>
+    <p>De 90/180-telling geldt voor kort verblijf. Voor een paar situaties gelden eigen regels, en de bijbehorende gids legt ze uit:</p>
+    <ul>
+      <li><strong>Visa voor verblijf van langere duur en verblijfsvergunningen.</strong> Dagen op een nationaal visum voor verblijf van langere duur of een EU-verblijfsvergunning tellen niet mee voor de 90. Zie <a href="/nl/learn/schengen-90-180-rule">de 90/180-regel</a>.</li>
+      <li><strong>Een visum voor minder dagen.</strong> Staat je visum minder dan 90 dagen toe, dan geldt dat kortere verblijf. Zie <a href="/nl/learn/schengen-single-entry-visa">Schengenvisum voor één inreis</a>; AtlasDays heeft een tracker voor de dagen op je visum.</li>
+      <li><strong>Welke landen meetellen.</strong> Schengen is niet hetzelfde als de EU: Cyprus en Ierland vallen erbuiten, Noorwegen en Zwitserland horen erbij. Zie de <a href="/nl/learn/schengen-countries-list-90-180-rule">lijst met Schengenlanden</a>.</li>
+    </ul>
+    <p>Wil je de periode dag voor dag zien opschuiven, lees dan de <a href="/nl/learn/schengen-rolling-window-walkthrough">uitleg van de voortschrijdende periode</a>. Wanneer dagen weer vrijkomen, lees je in <a href="/nl/learn/when-do-you-get-schengen-days-back-after-90-day-stay">wanneer je je Schengendagen terugkrijgt</a>.</p>
+
+    <div class="cta-box">
+      <span class="cta-logo">
+        <img class="logo-dark" src="/assets/brand/logo_dark.png?v=20260325a" alt="AtlasDays-logo" width="52" height="52" />
+        <img class="logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="AtlasDays-logo" width="52" height="52" />
+      </span>
+      <h2>Blijf tellen terwijl je reist</h2>
+      <p>De calculator controleert de verblijven die je je vandaag herinnert. AtlasDays telt je Schengendagen door terwijl je reist, privé op je iPhone, en waarschuwt je voordat een reis je over de 90 brengt.</p>
+      <a class="cta-btn" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> Download AtlasDays</a>
+    </div>
+
+    <h2>Veelgestelde vragen</h2>
+    <h3>Tellen de dag van inreis en de dag van uitreis allebei mee?</h3>
+    <p>Ja. De dag van inreis is de eerste dag van je verblijf en de dag van uitreis de laatste, ook als je laat op de avond aankomt of vroeg in de ochtend vertrekt. De calculator telt ze allebei.</p>
+    <h3>Wanneer krijg ik mijn Schengendagen terug?</h3>
+    <p>Dag voor dag: elke dag die je in het gebied was, telt 180 dagen later niet meer mee. Zet de peildatum op een latere datum om te zien hoeveel dagen je dan hebt, of lees <a href="/nl/learn/when-do-you-get-schengen-days-back-after-90-day-stay">wanneer je je Schengendagen terugkrijgt</a>.</p>
+    <h3>Is dit de officiële calculator van de EU?</h3>
+    <p>Nee. De Europese Commissie publiceert haar eigen rekenhulp voor kort verblijf. Deze calculator telt op dezelfde manier, 90 dagen in elke periode van 180 met de dagen van in- en uitreis meegerekend, en laat je je verblijven bewaren in AtlasDays. De beslissing ligt bij de grens- en visumautoriteiten.</p>
+    <h3>Worden mijn gegevens opgeslagen?</h3>
+    <p>Nee. De calculator draait in je browser en verzendt, registreert of bewaart de ingevoerde datums niet. Als je de pagina sluit of opnieuw laadt, verdwijnen ze. Tik op Houd dit bij in AtlasDays om ze te bewaren.</p>
