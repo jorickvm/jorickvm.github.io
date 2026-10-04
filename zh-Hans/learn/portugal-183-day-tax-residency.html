@@ -124,7 +124,7 @@
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20260925a" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
-  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261004k" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261004l" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">跳到主要内容</a>
@@ -217,8 +217,28 @@
       </dl>
     </div>
 
-    <h2>计算停留天数</h2>
-    <div class="daycal" id="embed-183" data-day-calendar="days183" data-cal-preset="{&quot;settings&quot;:{&quot;country&quot;:&quot;PT&quot;,&quot;goal&quot;:&quot;stay&quot;,&quot;periodType&quot;:&quot;rolling&quot;,&quot;limit&quot;:183,&quot;residentAt&quot;:184,&quot;nights&quot;:true},&quot;lock&quot;:[&quot;country&quot;,&quot;goal&quot;,&quot;periodType&quot;],&quot;link&quot;:&quot;183-pt&quot;}">
+    <h2>规定内容</h2>
+    <p>只要在任何 12 个月期间内于葡萄牙停留超过 183 天，就会在该期间被视为葡萄牙的税务居民。实际情形大多由以下两点决定：</p>
+    <ul>
+      <li><strong>计算期间会滚动。</strong>这 183 天是在任何一段起始或结束于该年度的 12 个月期间内计算，而不是从 1 月 1 日算到 12 月 31 日。分处两个日历年的两段停留，可能落在同一个期间内合并计算。</li>
+      <li><strong>一天指的是一晚。</strong>只要当天在葡萄牙过夜就计入，因此只要含过夜，入境当天和出境当天都算。</li>
+    </ul>
+
+    <h2>怎么计算</h2>
+    <ol class="steps">
+      <li>列出每一趟葡萄牙行程的入境和出境日期。</li>
+      <li>把每一个有过夜的日子都算进去，包括入境当天和出境当天。</li>
+      <li>先合计单一 12 个月期间内的天数，再把这个期间沿着整段旅行记录逐步推移。</li>
+      <li>只要<strong>任何一个</strong> 12 个月期间超过 183 天，就符合天数判定。</li>
+    </ol>
+    <div class="example">
+      <p><strong>举例。</strong>10 月到 12 月在葡萄牙 100 天，接着 2 月到 5 月再 100 天。</p>
+      <p>单看任何一个日历年都到不了 183 天。但这两段停留落在同一个滚动期间内（10 月到次年 10 月），合计 200 天，因此符合判定。</p>
+    </div>
+
+    <h2 id="calculator">葡萄牙 183 天计算器</h2>
+    <p>点选在葡萄牙的停留。追踪器会统计到所选日期为止的 12 个月；把“截至日期”改为计划行程的最后一天等其他日子，就能查看另一个期间。</p>
+    <div class="daycal" id="embed-183" data-day-calendar="days183" data-cal-preset="{&quot;settings&quot;:{&quot;country&quot;:&quot;PT&quot;,&quot;goal&quot;:&quot;stay&quot;,&quot;periodType&quot;:&quot;rolling&quot;,&quot;limit&quot;:183,&quot;residentAt&quot;:184},&quot;lock&quot;:[&quot;country&quot;,&quot;goal&quot;,&quot;periodType&quot;],&quot;link&quot;:&quot;183-pt&quot;}">
       <script type="application/json" data-cal-strings>
 {
   "hintStart": "点选日期，添加一段停留。",
@@ -310,25 +330,6 @@
       </dialog>
     </div>
     <p class="cal-private">所有内容仅在浏览器中处理：输入的内容不会发送或存储。</p>
-
-    <h2>规定内容</h2>
-    <p>只要在任何 12 个月期间内于葡萄牙停留超过 183 天，就会在该期间被视为葡萄牙的税务居民。实际情形大多由以下两点决定：</p>
-    <ul>
-      <li><strong>计算期间会滚动。</strong>这 183 天是在任何一段起始或结束于该年度的 12 个月期间内计算，而不是从 1 月 1 日算到 12 月 31 日。分处两个日历年的两段停留，可能落在同一个期间内合并计算。</li>
-      <li><strong>一天指的是一晚。</strong>只要当天在葡萄牙过夜就计入，因此只要含过夜，入境当天和出境当天都算。</li>
-    </ul>
-
-    <h2>怎么计算</h2>
-    <ol class="steps">
-      <li>列出每一趟葡萄牙行程的入境和出境日期。</li>
-      <li>把每一个有过夜的日子都算进去，包括入境当天和出境当天。</li>
-      <li>先合计单一 12 个月期间内的天数，再把这个期间沿着整段旅行记录逐步推移。</li>
-      <li>只要<strong>任何一个</strong> 12 个月期间超过 183 天，就符合天数判定。</li>
-    </ol>
-    <div class="example">
-      <p><strong>举例。</strong>10 月到 12 月在葡萄牙 100 天，接着 2 月到 5 月再 100 天。</p>
-      <p>单看任何一个日历年都到不了 183 天。但这两段停留落在同一个滚动期间内（10 月到次年 10 月），合计 200 天，因此符合判定。</p>
-    </div>
 
     <h2>天数之外</h2>
     <p>183 天的计算只是其中一条途径，不是唯一的一条。如果在该期间的任何一天于葡萄牙保有住所，且情况显示有意把它当作惯常居所来居住，葡萄牙同样可以视你为税务居民。如果另一个国家同时主张你是它的居民，则由税收协定通过永久住所、重要利益中心等顺序判定规则来决定居民身份。</p>

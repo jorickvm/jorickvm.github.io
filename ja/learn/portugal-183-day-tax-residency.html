@@ -124,7 +124,7 @@
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20260925a" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
-  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261004k" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261004l" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">本文へスキップ</a>
@@ -217,8 +217,28 @@
       </dl>
     </div>
 
-    <h2>滞在日数を数える</h2>
-    <div class="daycal" id="embed-183" data-day-calendar="days183" data-cal-preset="{&quot;settings&quot;:{&quot;country&quot;:&quot;PT&quot;,&quot;goal&quot;:&quot;stay&quot;,&quot;periodType&quot;:&quot;rolling&quot;,&quot;limit&quot;:183,&quot;residentAt&quot;:184,&quot;nights&quot;:true},&quot;lock&quot;:[&quot;country&quot;,&quot;goal&quot;,&quot;periodType&quot;],&quot;link&quot;:&quot;183-pt&quot;}">
+    <h2>ルールの内容</h2>
+    <p>ポルトガルは、任意の12か月間に183日を超えて滞在した場合、その期間について税務上の居住者として扱います。実際の判断は、次の2点でほぼ決まります。</p>
+    <ul>
+      <li><strong>集計期間は動きます。</strong>183日は、対象となる年に始まるか終わる任意の12か月間で数えます。1月1日から12月31日までではありません。暦年をまたぐ2回の滞在が、同じ集計期間に収まることもあります。</li>
+      <li><strong>1日とは宿泊のことです。</strong>ポルトガルで宿泊した日はすべて数えるため、到着日と出発日も、その夜を過ごしていれば両方数えます。</li>
+    </ul>
+
+    <h2>数え方</h2>
+    <ol class="steps">
+      <li>ポルトガルへの旅行を、到着日と出発日とあわせてすべて書き出します。</li>
+      <li>宿泊した日を、到着日と出発日も含めて数えます。</li>
+      <li>1つの12か月間に収まる日数を合計し、その集計期間を旅行履歴全体にわたってずらしていきます。</li>
+      <li><strong>いずれか</strong>の12か月間が183日を超えていれば、日数による判定を満たします。</li>
+    </ol>
+    <div class="example">
+      <p><strong>例。</strong>10月から12月にポルトガルで100日、続いて2月から5月にさらに100日滞在した場合。</p>
+      <p>どの暦年でも183日には届きません。しかし、どちらの滞在も同じ集計期間（10月から翌年の10月まで）に収まり、合計200日となるため、判定を満たします。</p>
+    </div>
+
+    <h2 id="calculator">ポルトガルの183日ルール計算機</h2>
+    <p>ポルトガルでの滞在をタップしてください。トラッカーは「集計終了日」までの12か月間を集計します。この日付を予定している旅行の最終日などに動かすと、その日までの期間を確認できます。</p>
+    <div class="daycal" id="embed-183" data-day-calendar="days183" data-cal-preset="{&quot;settings&quot;:{&quot;country&quot;:&quot;PT&quot;,&quot;goal&quot;:&quot;stay&quot;,&quot;periodType&quot;:&quot;rolling&quot;,&quot;limit&quot;:183,&quot;residentAt&quot;:184},&quot;lock&quot;:[&quot;country&quot;,&quot;goal&quot;,&quot;periodType&quot;],&quot;link&quot;:&quot;183-pt&quot;}">
       <script type="application/json" data-cal-strings>
 {
   "hintStart": "日付をタップすると滞在を追加できます。",
@@ -310,25 +330,6 @@
       </dialog>
     </div>
     <p class="cal-private">入力した内容はすべてブラウザ内にとどまります。送信も保存もされません。</p>
-
-    <h2>ルールの内容</h2>
-    <p>ポルトガルは、任意の12か月間に183日を超えて滞在した場合、その期間について税務上の居住者として扱います。実際の判断は、次の2点でほぼ決まります。</p>
-    <ul>
-      <li><strong>集計期間は動きます。</strong>183日は、対象となる年に始まるか終わる任意の12か月間で数えます。1月1日から12月31日までではありません。暦年をまたぐ2回の滞在が、同じ集計期間に収まることもあります。</li>
-      <li><strong>1日とは宿泊のことです。</strong>ポルトガルで宿泊した日はすべて数えるため、到着日と出発日も、その夜を過ごしていれば両方数えます。</li>
-    </ul>
-
-    <h2>数え方</h2>
-    <ol class="steps">
-      <li>ポルトガルへの旅行を、到着日と出発日とあわせてすべて書き出します。</li>
-      <li>宿泊した日を、到着日と出発日も含めて数えます。</li>
-      <li>1つの12か月間に収まる日数を合計し、その集計期間を旅行履歴全体にわたってずらしていきます。</li>
-      <li><strong>いずれか</strong>の12か月間が183日を超えていれば、日数による判定を満たします。</li>
-    </ol>
-    <div class="example">
-      <p><strong>例。</strong>10月から12月にポルトガルで100日、続いて2月から5月にさらに100日滞在した場合。</p>
-      <p>どの暦年でも183日には届きません。しかし、どちらの滞在も同じ集計期間（10月から翌年の10月まで）に収まり、合計200日となるため、判定を満たします。</p>
-    </div>
 
     <h2>日数だけで決まるわけではありません</h2>
     <p>183日の集計は入口の一つで、唯一の道ではありません。ポルトガルは、その期間のいずれかの日に住居を維持しており、その状況から常居所として使う意思がうかがえる場合にも、居住者として扱うことがあります。さらに、別の国も居住者だと主張する場合は、租税条約の振り分け規定（タイブレーカー）が、恒久的な住居や重要な利害関係の中心といった基準で居住地を決めます。</p>

@@ -1129,8 +1129,11 @@ def optional_block(value: object) -> str:
 
 # A country article can embed the 183-day calculator, preset to its own rule.
 # The article's record says `"calculator": {}` (optionally with `settings`,
-# e.g. {"nights": true}); the preset comes from its `residency` data, so the
-# rule is written down once. The markup, strings and dialog are copied from the
+# e.g. {"nights": true} for a country that counts midnights); the preset comes
+# from its `residency` data, so the rule is written down once. The article
+# itself decides where: its fragment carries a heading, an intro sentence and
+# `<div class="calculator-slot" data-calculator></div>`, so placement and
+# context are written, and translated, per article (Jorick, 2026-10-04). The markup, strings and dialog are copied from the
 # same locale's calculator page, so an embed is translated wherever that page
 # is, and the page's own scripts and styles are reused at their current stamps.
 CALCULATOR_PAGE = "learn/183-day-rule-calculator.html"
@@ -1168,21 +1171,16 @@ def render_embedded_calculator(content: str, article: dict[str, object], code: s
         return content
     folder = "learn" if code == default_locale_code() else f"{code}/learn"
     page = (SOURCE_ROOT / "content" / folder / Path(CALCULATOR_PAGE).name).read_text(encoding="utf-8")
-    heading = re.search(r"<h2>.*?</h2>", page, re.S).group(0)
     start = page.index('<div class="daycal"')
     privacy = re.search(r'<p class="cal-private">.*?</p>', page, re.S)
     block = page[start:privacy.start()].rstrip() + "\n    " + privacy.group(0)
     preset = html.escape(json.dumps(calculator_preset(article), ensure_ascii=False, separators=(",", ":")), quote=True)
     block = block.replace('id="days-183"', 'id="embed-183"', 1).replace("days-183-import-title", "embed-183-import-title")
     block = block.replace('data-day-calendar="days183"', f'data-day-calendar="days183" data-cal-preset="{preset}"', 1)
-    # After the opening summary and its fact box, before the first section.
-    after = content.find('<div class="factbox">')
-    if after < 0:
-        after = content.find('<div class="tldr">')
-    at = content.find("<h2", max(after, 0))
-    if at < 0:
-        raise SystemExit(f"{article['path']}: no section heading to place the calculator before")
-    return content[:at] + heading + "\n    " + block + "\n\n    " + content[at:]
+    slot = '<div class="calculator-slot" data-calculator></div>'
+    if content.count(slot) != 1:
+        raise SystemExit(f"{article['path']} ({code}): needs exactly one {slot} where the calculator goes")
+    return content.replace(slot, block)
 
 
 def render_article(
