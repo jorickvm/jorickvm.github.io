@@ -43,7 +43,7 @@ BUILD_VERSION = "20260928f"
 VARIANT_VERSIONS = {("article", "help20260802"): "20260928f", ("hub", "92c3adc0daf3"): "20260928f"}
 SITE_HEADER_VERSION = "20260930a"
 ARTICLE_COMPONENTS_VERSION = "20260925a"
-NAVIGATION_VERSION = "20260817b"
+NAVIGATION_VERSION = "20261005a"
 
 # Root class that drops the background wash from the app's `.medium` step to
 # `.subtle`, for pages carrying long-form text. See assets/css/tokens.css.
@@ -1098,8 +1098,7 @@ def render_locale_routing(
         # split('-')[0] was correct while every locale code was two letters and
         # breaks both ways once one carries a script subtag: zh-Hant misses its
         # own tag, and a bare `zh` -- which Intl maximizes to Hans -- would hit
-        # it. assets/js/legal-language.js carries the same logic for ?lang= on
-        # the legal pages; keep the two in step.
+        # it.
         f"\n  <script>window.AtlasDaysPageLocales={payload};"
         # Exposed rather than kept private because locale-route.js needs exactly
         # the same answer over exactly the same map, and a second copy of this

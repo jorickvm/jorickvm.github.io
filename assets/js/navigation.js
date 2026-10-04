@@ -47,4 +47,14 @@
       if (menu.open && !menu.contains(event.target)) menu.open = false;
     });
   });
+
+  // Contact links ship without an address (data-email-user plus
+  // data-email-domain) so the markup carries no scrapeable email. The privacy
+  // and terms pages use them in every locale, and this file is the one script
+  // every locale loads, so the address is assembled here.
+  document.querySelectorAll('[data-email-user][data-email-domain]').forEach(function (link) {
+    var address = link.getAttribute('data-email-user') + '@' + link.getAttribute('data-email-domain');
+    link.textContent = address;
+    link.href = 'mai' + 'lto:' + address;
+  });
 })();
