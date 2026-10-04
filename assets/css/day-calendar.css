@@ -77,6 +77,14 @@ html[data-theme="light"] .daycal { --cal-disc: rgba(12, 22, 40, 0.07); --tone-wa
 .cal-value { display: inline-flex; align-items: center; gap: 3px; color: var(--cal-bar); font-size: 0.95rem; font-weight: 600; white-space: nowrap; }
 .cal-chevron { width: 13px; height: 13px; }
 .cal-control.is-select select, .cal-control.is-date input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
+/* Safari sizes a native select to its longest option (and a date field to its
+   own minimum) unless its native look is off, and that box then widens the
+   page on iPhone. The invisible controls take exactly their label's size. */
+.cal-control.is-select select, .cal-control.is-date input {
+  -webkit-appearance: none; appearance: none; box-sizing: border-box;
+  min-width: 0; max-width: 100%; margin: 0; padding: 0; border: 0; background: none; font-size: 16px;
+}
+.cal-settings { overflow: hidden; }
 .cal-control.is-select:focus-within .cal-value, .cal-control.is-date:focus-within .cal-value { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 6px; }
 
 .cal-window {
