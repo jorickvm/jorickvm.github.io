@@ -61,7 +61,7 @@
     evaluate: function (trips, c) {
       var on = checkOn(c), set = daysIn(trips), used = usedOn(set, on), left = LIMIT - used;
       var controls = [
-        { type: "date", key: "checkOn", icon: "calendar", label: c.text("checkOn"), value: c.D.iso(on),
+        { type: "date", key: "checkOn", icon: "calendar", label: c.text("checkOn"), caption: c.text("checkOnCaption"), value: c.D.iso(on),
           display: c.dateRange(on, on), moveCalendar: true }
       ];
       var lines = [];
@@ -95,7 +95,8 @@
       addCountry: "Add country",
       noMatch: "No matching Schengen country",
       area: "Schengen Area",
-      checkOn: "Check on",
+      checkOn: "Count up to",
+      checkOnCaption: "Your days in the 180 days up to this date. For a planned trip, pick its last day.",
       tripDays: { one: "{n} day", other: "{n} days" },
       remaining: { one: "{n} day remaining", other: "{n} days remaining" },
       atLimit: "At limit",

@@ -37,7 +37,9 @@ html[data-theme="light"] .daycal { --cal-disc: rgba(12, 22, 40, 0.07); --tone-wa
 .cal-side > .cal-box:first-child { grid-area: result; }
 .cal-side > .cal-box:last-child { grid-area: trips; }
 /* A long timeline scrolls inside its card, so the page keeps its height. */
-[data-cal-list] { max-height: 430px; overflow-y: auto; }
+/* The cards bleed 8px past the text for their highlight; the list makes room
+   for that bleed, so it can hide sideways scrolling without clipping them. */
+[data-cal-list] { max-height: 430px; overflow-y: auto; overflow-x: hidden; margin: 0 -8px; padding: 0 8px; }
 
 .cal-hint { grid-area: hint; margin: 0; color: var(--muted); font-size: 0.93rem; }
 /* a quiet hint floats at the bottom of the calendar window instead of taking
@@ -69,6 +71,7 @@ html[data-theme="light"] .daycal { --cal-disc: rgba(12, 22, 40, 0.07); --tone-wa
 .cal-setting > .cal-icon { color: var(--cal-bar); }
 .cal-setting-label { color: var(--text); font-size: 0.95rem; font-weight: 500; }
 .cal-setting .cal-control { margin-left: auto; }
+.cal-setting-caption { margin: -4px 0 8px 32px; color: var(--muted); font-size: 0.82rem; line-height: 1.45; }
 
 /* line icons (after the app's SF Symbols) */
 .cal-icon { display: inline-flex; flex: 0 0 auto; width: 20px; height: 20px; }
@@ -320,7 +323,7 @@ html[data-theme="light"] .daycal { --cal-disc: rgba(12, 22, 40, 0.07); --tone-wa
 .cal-trip {
   display: grid;
   grid-template-columns: 28px minmax(0, 1fr);
-  grid-template-areas: "flag country" "flag line" ". delete";
+  grid-template-areas: "flag country" "flag line";
   column-gap: 12px;
   row-gap: 2px;
   align-items: center;
@@ -348,19 +351,22 @@ html[data-theme="light"] .daycal { --cal-disc: rgba(12, 22, 40, 0.07); --tone-wa
 .cal-trip-dates { color: var(--muted); font-size: 0.85rem; font-variant-numeric: tabular-nums; }
 .cal-trip-count { color: var(--muted-2); font-size: 0.82rem; white-space: nowrap; }
 .cal-delete {
-  grid-area: delete;
-  justify-self: start;
-  margin: 8px 0 2px;
-  padding: 6px 14px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  flex: 0 0 auto;
+  margin: 0;
+  padding: 3px 10px 3px 8px;
   border: 1px solid rgba(217, 83, 79, 0.45);
   border-radius: 999px;
   background: rgba(217, 83, 79, 0.1);
   color: var(--text);
   font: inherit;
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 600;
   cursor: pointer;
 }
+.cal-delete .cal-icon { width: 14px; height: 14px; color: #E5534B; }
 
 /* The country: a type-ahead field that reads like plain text until focused. */
 .cal-country-field { position: relative; }

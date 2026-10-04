@@ -83,6 +83,7 @@
   // calendar.badge.clock); SF Symbols themselves are licensed for Apple
   // platforms only, so these are drawn here.
   var ICONS = {
+    trash: '<path d="M4.5 6h11M8 6V4.5h4V6M6 6l.7 9.5h6.6L14 6"/>',
     target: '<circle cx="10" cy="10" r="7.25"/><circle cx="10" cy="10" r="4"/><circle cx="10" cy="10" r="0.9" fill="currentColor"/>',
     calendar: '<rect x="3" y="4.5" width="14" height="12.5" rx="2.5"/><path d="M3 8.5h14M7 2.75v3M13 2.75v3"/>',
     starts: '<rect x="3" y="4.5" width="11" height="11" rx="2.5"/><path d="M3 8.5h11M6.5 2.75v3M10.5 2.75v3"/><circle cx="14.25" cy="14.25" r="3.6" fill="var(--bg-card)"/><path d="M14.25 12.6v1.8l1.2.8"/>',
@@ -668,13 +669,18 @@
         card.appendChild(name);
         var line = el("div", { "class": "cal-trip-line" });
         line.appendChild(el("span", { "class": "cal-trip-dates" }, dateRange(t.start, t.end)));
-        line.appendChild(el("span", { "class": "cal-trip-count" }, rule.tripLabel(t, ctx())));
-        card.appendChild(line);
+        // The selected card swaps its day count for Delete, on the same line,
+        // so nothing opens up below it.
         if (isSel) {
-          var del = el("button", { type: "button", "class": "cal-delete" }, S.deleteTrip);
+          var del = el("button", { type: "button", "class": "cal-delete" });
+          del.appendChild(icon("trash"));
+          del.appendChild(document.createTextNode(S.deleteTrip));
           del.addEventListener("click", function (e) { e.stopPropagation(); removeTrip(idx); });
-          card.appendChild(del);
+          line.appendChild(del);
+        } else {
+          line.appendChild(el("span", { "class": "cal-trip-count" }, rule.tripLabel(t, ctx())));
         }
+        card.appendChild(line);
         card.addEventListener("click", function (e) {
           if (e.target.closest(".cal-country-field")) return;
           selected = isSel ? -1 : idx;
@@ -760,6 +766,8 @@
         row.appendChild(el("span", { "class": "cal-setting-label" }, ctl.label || ""));
         row.appendChild(control(ctl));
         settingsRow.appendChild(row);
+        // A setting can explain itself in one quiet line under its row.
+        if (ctl.caption) settingsRow.appendChild(el("p", { "class": "cal-setting-caption" }, ctl.caption));
       });
       if (r.meter) {
         var m = r.meter;

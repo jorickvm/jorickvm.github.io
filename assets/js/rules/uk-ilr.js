@@ -6,7 +6,7 @@
    day you return are not absences.
 
    The card reads like the app's tracker card (Jorick, 2026-10-04): days away
-   in the 12 months up to a "Check on" date (today unless the visitor picks
+   in the 12 months up to a "Count up to" date (today unless the visitor picks
    another), against 180, with the app's pill. Like the Schengen calculator,
    the calendar shows exactly those 12 months and the visitor picks the date
    to check (Jorick, 2026-10-04): a planned trip is checked on the day of
@@ -67,7 +67,7 @@
       var left = LIMIT - away;
       return {
         controls: [
-          { type: "date", key: "checkOn", icon: "calendar", label: c.text("checkOn"), value: c.D.iso(on), display: c.dateRange(on, on), moveCalendar: true }
+          { type: "date", key: "checkOn", icon: "calendar", label: c.text("checkOn"), caption: c.text("checkOnCaption"), value: c.D.iso(on), display: c.dateRange(on, on), moveCalendar: true }
         ],
         meter: { title: c.text("title"), flag: "GB", label: c.dateRange(from, on), days: away, limit: LIMIT, tone: c.tone(away, LIMIT, false) },
         statusText: left > 0 ? c.text("remaining", { n: left }) : left === 0 ? c.text("atLimit") : c.text("overBy", { n: -left }),
@@ -110,7 +110,8 @@
       fileName: "atlasdays-uk-stays.csv",
       tripAway: { one: "{n} day away", other: "{n} days away" },
       title: "Days outside the UK",
-      checkOn: "Check on",
+      checkOn: "Count up to",
+      checkOnCaption: "Your days abroad in the 12 months up to this date. For a planned trip, pick the day you come back.",
       remaining: { one: "{n} day remaining", other: "{n} days remaining" },
       atLimit: "At limit",
       overBy: { one: "Over limit by {n} day", other: "Over limit by {n} days" }
