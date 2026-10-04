@@ -225,8 +225,8 @@
       '<image href="' + icon + '" x="' + imgAt + '" y="' + imgAt + '" width="' + img + '" height="' + img + '" clip-path="url(#cal-qr-icon)"/></svg>';
   }
 
-  // The code sits beside the steps at a compact size. A click enlarges it to
-  // about 4 px a module, for a screen where a big code is hard to scan.
+  // The code sits beside the steps at a compact size. On a 1x screen a big code
+  // opens larger (about 4 px a module), because a camera cannot read it smaller.
   function sizeQr(box) {
     var modules = box.firstChild.viewBox.baseVal.width;
     box.style.width = Math.round(box.classList.contains("is-large")
@@ -964,12 +964,6 @@
     if (dialog) dialog.addEventListener("click", function (e) { if (e.target === dialog) dialog.close(); });
     var qrBox = dialog && dialog.querySelector("[data-cal-qr]");
     window.addEventListener("resize", function () { if (dialog.open && qrBox && qrBox.firstChild) stackQr(qrBox); });
-    if (qrBox) qrBox.addEventListener("click", function () {
-      if (!qrBox.firstChild) return;
-      qrBox.classList.toggle("is-large");
-      qrBox.parentNode.classList.toggle("is-large", qrBox.classList.contains("is-large"));
-      sizeQr(qrBox);
-    });
 
     render();
     var start = rule.range(ctx());
