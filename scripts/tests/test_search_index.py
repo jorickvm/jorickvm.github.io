@@ -42,7 +42,7 @@ def score(entry: dict[str, object], raw_query: str) -> int:
     # query. Japanese has no word boundaries, so "リセット" is a substring of
     # "プリセット" and would otherwise win on a shorter title.
     if any(normalize(word) == query for word in entry["keywords"]):
-        value += 45
+        value += 110
     if query in keywords:
         value += 35
     if query in description:
