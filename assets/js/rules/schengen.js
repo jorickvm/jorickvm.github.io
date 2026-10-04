@@ -8,8 +8,11 @@
    The card reads like the app's tracker card: days used in the 180 days
    that end on the date being checked (today unless the visitor picks another,
    such as a planned entry), against 90, with the app's pill ("N days
-   remaining", "At limit", "Over limit by N days"). A line under it warns
-   when the stays marked, planned ones included, go over 90 on some day. */
+   remaining", "At limit", "Over limit by N days"). The calendar shows exactly
+   those 180 days (Jorick, 2026-10-04), like the EU's own calculator. During a
+   stay the count can only rise (each day in the area adds one, at most one
+   old day drops out), so checking a planned trip's last day checks the whole
+   trip. */
 (function () {
   "use strict";
 
@@ -34,19 +37,13 @@
     for (var d = day - WINDOW + 1; d <= day; d++) if (set.has(d)) n++;
     return n;
   }
-  // The first day on which the 180 days ending there hold more than 90.
-  // Only a day in the area can push the count up, so only those are checked.
-  function firstOver(set) {
-    var days = Array.from(set).sort(function (a, b) { return a - b; });
-    for (var i = 0; i < days.length; i++) if (usedOn(set, days[i]) > LIMIT) return days[i];
-    return null;
-  }
 
   window.AtlasDaysRules = window.AtlasDaysRules || {};
   window.AtlasDaysRules.schengen = {
     travelDaysCount: true,
     singleDayTrips: true,
     quietHint: true,
+    fixedRange: true,
     carryCountry: true,
     linkId: "schengen",
 
@@ -54,7 +51,7 @@
 
     range: function (c) {
       var on = checkOn(c);
-      return { from: Math.min(c.D.shiftYears(c.today, -1), on - WINDOW + 1), to: Math.max(c.D.shiftYears(c.today, 1), on) };
+      return { from: on - WINDOW + 1, to: on };
     },
 
     tripLabel: function (t, c) {
@@ -67,8 +64,7 @@
         { type: "date", key: "checkOn", icon: "calendar", label: c.text("checkOn"), value: c.D.iso(on),
           display: c.dateRange(on, on), moveCalendar: true }
       ];
-      var lines = [], over = firstOver(set);
-      if (over != null) lines.push(c.text("lineOver", { date: c.dateRange(over, over) }));
+      var lines = [];
       var loose = trips.filter(function (t) { return !t.country; }).reduce(function (n, t) { return n + t.end - t.start + 1; }, 0);
       if (loose) lines.push(c.text("lineNoCountry", { n: loose }));
       var status = left > 0 ? c.text("remaining", { n: left }) : left === 0 ? c.text("atLimit") : c.text("overBy", { n: -left });
@@ -104,7 +100,6 @@
       remaining: { one: "{n} day remaining", other: "{n} days remaining" },
       atLimit: "At limit",
       overBy: { one: "Over limit by {n} day", other: "Over limit by {n} days" },
-      lineOver: "Your stays go over 90 days on {date}.",
       lineNoCountry: { one: "{n} day without a country", other: "{n} days without a country" },
       fileName: "atlasdays-schengen-stays.csv"
     }

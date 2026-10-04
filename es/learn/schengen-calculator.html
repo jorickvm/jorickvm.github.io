@@ -153,7 +153,7 @@
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20260925a" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
-  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261004b" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261004d" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Ir al contenido</a>
@@ -261,7 +261,6 @@
     "many": "{n} días de más",
     "other": "{n} días de más"
   },
-  "lineOver": "Tus estancias superan los 90 días el {date}.",
   "lineNoCountry": {
     "one": "{n} día sin país",
     "many": "{n} días sin país",
@@ -310,7 +309,7 @@
           <li><strong>Importa tus estancias con un archivo</strong><span>Son más estancias de las que caben en un enlace. Descarga el archivo y ábrelo en tu iPhone con AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Descargar archivo</button></li>
         </ol>
         <div class="cal-dialog-foot">
-          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>O importa con un archivo</button><span data-cal-downloaded hidden>Ábrelo en tu iPhone con AtlasDays.</span></p>
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Descargar los viajes en un archivo CSV</button><span data-cal-downloaded hidden>Abre este archivo en tu iPhone con AtlasDays.</span></p>
           <button type="button" data-cal-close>Cerrar</button>
         </div>
       </dialog>
@@ -321,8 +320,8 @@
     <ul>
       <li><strong>Cuenta cualquier parte de un día.</strong> El día en que entras y el día en que sales son días en el espacio Schengen, así que del 1 al 10 de junio son diez días.</li>
       <li><strong>Un solo cupo para todo el espacio.</strong> Los 90 días abarcan todos los países Schengen en conjunto, no cada país por separado. Un día pasado en dos países Schengen cuenta una sola vez.</li>
-      <li><strong>Cualquier período de 180 días.</strong> Pon «Fecha de cálculo» en una fecha, hoy o una entrada prevista, y el control cuenta tus días en los 180 días hasta esa fecha. Cada día antiguo que sale de esa ventana te devuelve un día.</li>
-      <li><strong>Los viajes previstos también cuentan.</strong> Si las estancias que marcas llegan a sumar más de 90 días en 180, la línea bajo el control indica en qué fecha.</li>
+      <li><strong>Los 180 días hasta una fecha.</strong> El calendario muestra los 180 días que terminan en la «Fecha de cálculo», que es hoy salvo que elijas otra, y el control cuenta tus días en ellos. Cada día antiguo que sale de la ventana te devuelve un día.</li>
+      <li><strong>¿Planeas un viaje?</strong> Pon «Fecha de cálculo» en su último día. Durante una estancia tu recuento solo puede subir, así que si el último día cabe, cabe todo el viaje.</li>
     </ul>
 
     <h2>Cuando se aplican otras normas</h2>
@@ -415,8 +414,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"Abrir el menú de navegación","menuClose":"Cerrar el menú de navegación"};</script>
   <script src="../../assets/js/navigation.js?v=20260817b"></script>
-  <script defer src="../../assets/js/rules/schengen.js?v=20261004a"></script>
-  <script defer src="../../assets/js/day-calendar.js?v=20261004c"></script>
+  <script defer src="../../assets/js/rules/schengen.js?v=20261004b"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261004d"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

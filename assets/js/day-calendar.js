@@ -586,7 +586,7 @@
       if (current) input.value = placeName(current);
       var box = el("ul", { "class": "cal-country-list", role: "listbox", hidden: "" });
       var options = [], active = 0;
-      function choose(code) { remember(code); onChoose(code); }
+      function choose(code) { close(); remember(code); onChoose(code); }
       function show() {
         options = matches(current && input.value === placeName(current) ? "" : input.value);
         active = 0;
@@ -601,11 +601,34 @@
         });
         box.hidden = false;
         input.setAttribute("aria-expanded", "true");
+        place();
+        window.addEventListener("scroll", place, true);
+        window.addEventListener("resize", place);
+      }
+      // The list floats over the page (position: fixed), so a scrolling
+      // Timeline or a card edge can never cut it off. It opens below the field,
+      // or above it when the screen has no room below.
+      function place() {
+        if (box.hidden) return;
+        var r = input.getBoundingClientRect(), head = wrap.closest(".cal-card-head");
+        var left = head ? r.left - 30 : r.left - 6, width = head ? Math.max(r.width + 30, 256) : r.width + 6;
+        width = Math.min(width, window.innerWidth - 16);
+        left = Math.max(8, Math.min(left, window.innerWidth - width - 8));
+        box.style.left = left + "px";
+        box.style.width = width + "px";
+        var below = window.innerHeight - r.bottom - 12, h = Math.min(box.scrollHeight, 260);
+        box.style.top = (below >= Math.min(h, 160) || below >= r.top ? r.bottom + 6 : Math.max(8, r.top - 6 - h)) + "px";
+      }
+      function close() {
+        box.hidden = true;
+        input.setAttribute("aria-expanded", "false");
+        window.removeEventListener("scroll", place, true);
+        window.removeEventListener("resize", place);
       }
       function mark() { Array.prototype.forEach.call(box.children, function (li, i) { li.classList.toggle("is-active", i === active); }); }
       input.addEventListener("focus", function () { if (current) input.select(); show(); });
       input.addEventListener("input", show);
-      input.addEventListener("blur", function () { box.hidden = true; input.setAttribute("aria-expanded", "false"); if (current) input.value = placeName(current); });
+      input.addEventListener("blur", function () { close(); if (current) input.value = placeName(current); });
       input.addEventListener("keydown", function (e) {
         if (e.key === "ArrowDown" || e.key === "ArrowUp") { e.preventDefault(); if (!options.length) return; active = (active + (e.key === "ArrowDown" ? 1 : options.length - 1)) % options.length; mark(); }
         else if (e.key === "Enter") { e.preventDefault(); if (options[active]) choose(options[active].code); }

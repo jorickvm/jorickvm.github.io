@@ -3,8 +3,14 @@
    Continuous residence for indefinite leave to remain: no more than 180 whole
    days outside the UK in any 12-month period (Immigration Rules, Appendix
    Continuous Residence, CR 3.1). Whole days only: the day you leave and the
-   day you return are not absences. The check runs over every trip marked,
-   planned ones included, so a future trip shows at once whether it fits. */
+   day you return are not absences.
+
+   The card reads like the app's tracker card (Jorick, 2026-10-04): days away
+   in the 12 months up to a "Check on" date (today unless the visitor picks
+   another), against 180, with the app's pill. The rule covers every 12
+   months of the qualifying period, so the calendar keeps five years and a
+   line under the card names the worst 12 months when they hold more days
+   away than the window being checked. */
 (function () {
   "use strict";
 
@@ -38,16 +44,26 @@
     return best;
   }
 
+  var LIMIT = 180;
+  function checkOn(c) {
+    var iso = c.settings.checkOn;
+    if (!iso) return c.today;
+    var p = iso.split("-").map(Number);
+    return c.D.fromParts(p[0], p[1], p[2]) || c.today;
+  }
+
   window.AtlasDaysRules = window.AtlasDaysRules || {};
   window.AtlasDaysRules.ukIlr = {
     travelDaysCount: false,
     singleDayTrips: false,
+    quietHint: true,
 
     // Trips are absences, so they can be anywhere but the UK.
     countries: function (all) { return all.filter(function (code) { return code !== "GB"; }); },
 
     range: function (c) {
-      return { from: c.D.shiftYears(c.today, -5), to: c.D.shiftYears(c.today, 1) };
+      var on = checkOn(c);
+      return { from: Math.min(c.D.shiftYears(c.today, -5), c.D.shiftYears(on, -1) + 1), to: Math.max(c.D.shiftYears(c.today, 1), on) };
     },
 
     // A trip's own whole days away. The day it takes over from another trip
@@ -58,14 +74,18 @@
     },
 
     evaluate: function (trips, c) {
-      var worst = worstWindow(c.D, absentDays(trips));
+      var set = absentDays(trips), on = checkOn(c), from = c.D.shiftYears(on, -1) + 1, away = 0;
+      set.forEach(function (d) { if (d >= from && d <= on) away++; });
+      var left = LIMIT - away, worst = worstWindow(c.D, set), lines = [];
+      // The rule is any 12 months: say so when another stretch is worse.
+      if (worst.total > away) lines.push(c.text("lineWorst", { n: worst.total, from: c.dateRange(worst.from, worst.to) }));
       return {
-        ok: worst.total <= 180,
-        total: worst.total,
-        remaining: Math.abs(180 - worst.total),
-        status: !worst.total ? "" : worst.total <= 180 ? "left" : "over",
-        from: worst.from,
-        to: worst.to
+        controls: [
+          { type: "date", key: "checkOn", icon: "calendar", label: c.text("checkOn"), value: c.D.iso(on), display: c.dateRange(on, on), moveCalendar: true }
+        ],
+        meter: { title: c.text("title"), flag: "GB", label: c.dateRange(from, on), days: away, limit: LIMIT, tone: c.tone(away, LIMIT, false) },
+        statusText: left > 0 ? c.text("remaining", { n: left }) : left === 0 ? c.text("atLimit") : c.text("overBy", { n: -left }),
+        lines: lines
       };
     },
 
@@ -92,7 +112,7 @@
 
     strings: {
       hintStart: "Tap the day you left the UK, then the day you came back.",
-      hintEnd: "Now tap the other end of the trip, or {date} again to cancel.",
+      hintEnd: "Tap the other end of the trip.",
       inTrip: "outside the UK",
       pending: "start of a new trip",
       empty: "No trips yet.",
@@ -102,13 +122,13 @@
       noMatch: "No matching country",
       hintSelected: "Drag either end of the trip to change its dates, or delete it below.",
       fileName: "atlasdays-uk-stays.csv",
-      "tripAway": {"one": "{n} day away", "other": "{n} days away"},
-      "headline": "{n} of 180 days away in any 12 months",
-      "headlineEmpty": "0 of 180 days away",
-      "left": "{n} left",
-      "over": {"one": "{n} day over", "other": "{n} days over"},
-      "emptyResult": "Mark your trips outside the UK to see your worst 12 months.",
-      "worstWindow": "Your worst 12 months run from {from} to {to}."
+      tripAway: { one: "{n} day away", other: "{n} days away" },
+      title: "Days outside the UK",
+      checkOn: "Check on",
+      remaining: { one: "{n} day remaining", other: "{n} days remaining" },
+      atLimit: "At limit",
+      overBy: { one: "Over limit by {n} day", other: "Over limit by {n} days" },
+      lineWorst: { one: "Worst 12 months: {n} day away, {from}.", other: "Worst 12 months: {n} days away, {from}." }
     }
   };
 })();

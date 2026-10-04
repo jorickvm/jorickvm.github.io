@@ -3,15 +3,15 @@
     </nav>
     <img class="title-flag" src="/assets/flags/gb.png" alt="Birleşik Krallık bayrağı" width="56" height="42" />
     <h1>ILR yurt dışında kalış hesaplayıcısı: Herhangi bir 12 ayda 180 gün</h1>
-    <p class="subtitle">Ayrıldığınız ve döndüğünüz günleri seçerek süresiz oturma izni sınırı açısından en fazla yurt dışında kaldığınız 12 ayı görün. Rezervasyon yapmadan önce planlı seyahatlerinizi de ekleyin.</p>
-    <p class="verified">Son doğrulama: Eylül 2026</p>
+    <p class="subtitle">Her seyahat için Birleşik Krallık'tan ayrıldığınız güne ve döndüğünüz güne dokunun. Takip kartı, planladığınız seyahatler dahil, seçtiğiniz herhangi bir tarihe kadarki 12 ayda yurt dışında geçirdiğiniz günleri gösterir; en çok yurt dışında kaldığınız 12 ay daha fazla gün içeriyorsa onu da belirtir.</p>
+    <p class="verified">Son doğrulama: Ekim 2026</p>
 
     <h2>Yurt dışında kaldığınız günleri hesaplayın</h2>
     <div class="daycal" id="uk-ilr" data-day-calendar="ukIlr">
       <script type="application/json" data-cal-strings>
 {
-  "hintStart": "Önce Birleşik Krallık’tan ayrıldığınız günü, ardından döndüğünüz günü seçin.",
-  "hintEnd": "Şimdi seyahatin diğer uç tarihini seçin veya iptal etmek için yeniden {date} tarihine dokunun.",
+  "hintStart": "Önce Birleşik Krallık'tan ayrıldığınız günü, ardından döndüğünüz günü seçin.",
+  "hintEnd": "Seyahatin diğer uç gününe dokunun.",
   "inTrip": "Birleşik Krallık dışında",
   "pending": "yeni seyahatin başlangıcı",
   "empty": "Henüz seyahat yok.",
@@ -24,15 +24,21 @@
     "one": "{n} gün yurt dışında",
     "other": "{n} gün yurt dışında"
   },
-  "headline": "Herhangi bir 12 ayda 180 günün {n} günü yurt dışında",
-  "headlineEmpty": "180 günün 0 günü yurt dışında",
-  "left": "{n} gün kaldı",
-  "over": {
-    "one": "{n} gün aşıldı",
-    "other": "{n} gün aşıldı"
+  "title": "Birleşik Krallık dışındaki günler",
+  "checkOn": "Kontrol tarihi",
+  "remaining": {
+    "one": "{n} gün kaldı",
+    "other": "{n} gün kaldı"
   },
-  "emptyResult": "En fazla yurt dışında kaldığınız 12 ayı görmek için Birleşik Krallık dışındaki seyahatlerinizi işaretleyin.",
-  "worstWindow": "En fazla yurt dışında kaldığınız 12 ay: {from} – {to}."
+  "atLimit": "Sınırda",
+  "overBy": {
+    "one": "Sınır {n} gün aşıldı",
+    "other": "Sınır {n} gün aşıldı"
+  },
+  "lineWorst": {
+    "one": "En çok yurt dışında kalınan 12 ay: {n} gün, {from}.",
+    "other": "En çok yurt dışında kalınan 12 ay: {n} gün, {from}."
+  }
 }
       </script>
       <p class="cal-hint" data-cal-hint aria-live="polite"></p>
@@ -48,38 +54,55 @@
           <div data-cal-result></div>
         </div>
         <div class="cal-box">
-          <h3>Seyahatler</h3>
-          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>AtlasDays’e ücretsiz aktar</button>
+          <h3>Zaman çizelgesi</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>AtlasDays'de takip et</button>
         </div>
       </div>
-      <dialog class="cal-dialog" data-cal-dialog aria-labelledby="uk-ilr-import-title">
-        <p class="cal-dialog-title" id="uk-ilr-import-title">AtlasDays’de devam edin</p>
-        <p>Dosyayı indirin ve AtlasDays’de açın: Ayarlar → İçe aktarma → CSV dosyası.</p>
-        <div class="cal-dialog-actions">
-          <button type="button" data-cal-download>Dosyayı indir</button>
-          <a class="cal-dialog-app" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">AtlasDays’i indirin</a>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="uk-ilr-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="uk-ilr-import-title">AtlasDays'de takip et</p>
+            <p class="cal-dialog-sub">Seyahat ederken günlerinizi saymaya devam edin. iPhone ve iPad için ücretsiz uygulama.</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>AtlasDays'in iPhone veya iPad'inizde yüklü olduğundan emin olun</strong><span>App Store'da ücretsiz.</span></li>
+            <li><strong>Tüm seyahatleri AtlasDays'e aktarmak için QR kodunu tarayın</strong><span>Kontrol edin, ardından İçe aktar düğmesine dokunun.</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>AtlasDays'i indirin</strong><span>App Store'da ücretsiz. Zaten yüklü mü? 2. adıma geçin.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+          <li><strong>Kalışlarınızı uygulamada açın</strong><span>Kontrol edin, ardından İçe aktar düğmesine dokunun. O zamana kadar hiçbir şey kaydedilmez.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">AtlasDays'de aç</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>AtlasDays'i indirin</strong><span>iPhone için App Store'da ücretsiz.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+          <li><strong>Kalışlarınızı dosyayla içe aktarın</strong><span>Bu kadar çok kalış bir bağlantıya sığmıyor. Dosyayı indirin ve iPhone'unuzda AtlasDays ile açın.</span><button type="button" class="cal-dialog-primary" data-cal-download>Dosyayı indir</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Seyahatleri CSV dosyası olarak indir</button><span data-cal-downloaded hidden>Bu dosyayı iPhone'unuzda AtlasDays ile açın.</span></p>
           <button type="button" data-cal-close>Kapat</button>
         </div>
       </dialog>
     </div>
     <p class="cal-private">Her şey tarayıcınızda kalır: Girdiğiniz hiçbir bilgi gönderilmez veya kaydedilmez.</p>
-    <div class="tldr">
-      <p><strong>Kısaca:</strong> ILR için kesintisiz ikameti korumak üzere, herhangi bir 12 aylık dönemde Birleşik Krallık dışında geçirilen süre <strong>180 tam günü</strong> aşmamalıdır. Yalnızca tam günler sayılır; ayrılış ve dönüş günleri devamsızlık günü değildir.</p>
-    </div>
 
     <h2>Hesaplayıcı günleri nasıl sayar?</h2>
     <ul>
-      <li><strong>Yalnızca tam günler.</strong> Bu nedenle her çubuk ayrıldığınız günün ortasında başlar ve döndüğünüz günün ortasında biter. 1 Haziran ile 10 Haziran arasındaki bir seyahat, yurt dışında sekiz gündür (2–9 Haziran); 24 saatten kısa bir seyahat ise hesaba gün eklemez.</li>
-      <li><strong>Herhangi bir 12 ay; her takvim yılı ayrı ayrı değil.</strong> Hesaplayıcı, planlı seyahatler dahil işaretlediğiniz tüm seyahatler içinde yurt dışında en çok gün geçirdiğiniz 12 aylık dönemi bulur ve 180 ile karşılaştırır. Farklı takvim yıllarındaki seyahatler aynı döneme girebilir.</li>
-      <li><strong>365 günlük bloklar değil, takvim ayları.</strong> 9 Ocak 2027’de biten dönem 10 Ocak 2026’da başlar; artık günler de hesaba dahildir.</li>
+      <li><strong>Yalnızca tam günler.</strong> Ayrıldığınız gün ve döndüğünüz gün yurt dışında geçirilmiş gün sayılmaz; bu nedenle 1 Haziran ile 10 Haziran arasındaki bir seyahat yurt dışında sekiz gündür (2 ile 9 Haziran arası) ve 24 saatten kısa bir seyahat hesaba gün eklemez.</li>
+      <li><strong>Bir tarihe kadarki 12 ay.</strong> Takip kartı, Kontrol tarihine kadarki 12 ayda yurt dışında geçirdiğiniz günleri sayar; başka bir tarih seçmediğiniz sürece bu tarih bugündür. Seyahat mi planlıyorsunuz? Kontrol tarihini döndüğünüz gün olarak ayarlayın.</li>
+      <li><strong>Her 12 ay için de.</strong> Sınır, hak kazanma döneminizdeki herhangi bir 12 ay için geçerlidir; bu nedenle hesaplayıcı, işaretlediğiniz seyahatler boyunca her 12 aylık dönemi de kontrol eder. Bunlardan biri takip kartının gösterdiğinden daha fazla yurt dışı gün içeriyorsa kartın altındaki satır en çok gün içeren dönemi belirtir.</li>
+      <li><strong>365 günlük bloklar değil, takvim ayları.</strong> 9 Ocak 2027'de biten dönem 10 Ocak 2026'da başlar; artık günler de hesaba dahildir.</li>
     </ul>
 
-    <h2>Hesaplayıcının kontrol etmedikleri</h2>
-    <p>Hesaplayıcı, girdiğiniz tarihlere güncel temel sınırı uygular. Göçmenlik geçmişinizi bilmediğinden şu konuları kendiniz kontrol edin:</p>
+    <h2>Başka kurallar geçerli olduğunda</h2>
+    <p>Hesaplayıcı, girdiğiniz tarihlere güncel 180 günlük sınırı uygular. Bazı durumlar kendi kurallarına tabidir ve ILR rehberi bunları açıklar:</p>
     <ul>
       <li><strong>Hak kazanma döneminiz.</strong> Yalnızca bu dönemdeki devamsızlıklar sayılır. Daha eski seyahatleri değil, başvurunuza esas olan yıllardaki seyahatleri işaretleyin.</li>
-      <li><strong>11 Ocak 2018’den önce verilen izin.</strong> Bu dönemdeki devamsızlıklar kayan dönem esasına göre değil, başvuru tarihinizin yıl dönümünde sona eren ardışık 12 aylık dönemlerde değerlendirilir.</li>
-      <li><strong>11 Nisan 2024’ten önceki Long Residence devamsızlıkları.</strong> Toplam 548 gün ve tek bir devamsızlık için 184 gün şeklindeki eski sınırlar bunlara hâlâ uygulanır.</li>
+      <li><strong>11 Ocak 2018'den önce verilen izin.</strong> Bu dönemdeki devamsızlıklar kayan dönem esasına göre değil, başvuru tarihinizin yıl dönümünde sona eren ardışık 12 aylık dönemlerde değerlendirilir.</li>
+      <li><strong>11 Nisan 2024'ten önceki Long Residence devamsızlıkları.</strong> Toplam 548 gün ve tek bir devamsızlık için 184 gün şeklindeki eski sınırlar bunlara hâlâ uygulanır.</li>
       <li><strong>İzin verilen devamsızlıklar.</strong> Ağır hastalık, seyahat aksaklığı veya kriz çalışması nedeniyle gerçekleşen bazı devamsızlıklar dikkate alınmayabilir. Hesaplayıcı işaretlediğiniz her günü sayar.</li>
       <li><strong>Başvurunuzun diğer koşulları.</strong> Hukuka uygun ikamet, İngilizce ve Life in the UK ile uygunluk ayrı şartlardır.</li>
     </ul>
@@ -91,14 +114,14 @@
         <img class="logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="AtlasDays logosu" width="52" height="52" />
       </span>
       <h2>Gün hesabını sürekli güncel tutun</h2>
-      <p>Hesaplayıcı bugün hatırladığınız seyahatleri kontrol eder. AtlasDays’deki <strong>Birleşik Krallık süresiz oturma izni (ILR)</strong> hazır ayarı, iPhone’unuzda gizliliğinizi koruyarak seyahat ettikçe hesabı sürdürür ve bir seyahat sizi 180 günün üzerine çıkaracaksa önceden uyarır.</p>
-      <a class="cta-btn" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> AtlasDays’i indirin</a>
+      <p>Hesaplayıcı bugün hatırladığınız seyahatleri kontrol eder. AtlasDays'deki <strong>Birleşik Krallık süresiz oturma izni (ILR)</strong> hazır ayarı, iPhone'unuzda gizliliğinizi koruyarak seyahat ettikçe hesabı sürdürür ve bir seyahat sizi 180 günün üzerine çıkaracaksa önceden uyarır.</p>
+      <a class="cta-btn" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> AtlasDays'i indirin</a>
     </div>
 
     <h2>Sık sorulan sorular</h2>
     <h3>Hesaplayıcının sonucu kesin mi?</h3>
     <p>Hayır. Girdiğiniz tarihlere temel sınırı uygular. Daha eski izinler, Long Residence geçmişi, izin verilen devamsızlıklar ve hak kazanma döneminiz sonucu değiştirebilir; kararı Home Office verir.</p>
     <h3>İki haftalık tatil neden 14 günden az görünüyor?</h3>
-    <p>Çünkü yalnızca yurt dışında geçirilen tam günler sayılır. Ayrılış ve dönüş günleri devamsızlık günü değildir; dolayısıyla 1 Haziran’dan 15 Haziran’a kadar bir seyahat 13 gündür.</p>
+    <p>Çünkü yalnızca yurt dışında geçirilen tam günler sayılır. Ayrılış ve dönüş günleri devamsızlık günü değildir; dolayısıyla 1 Haziran'dan 15 Haziran'a kadar bir seyahat 13 gündür.</p>
     <h3>Verilerim saklanıyor mu?</h3>
-    <p>Hayır. Hesaplayıcı tarayıcınızda çalışır; girdiğiniz tarihleri göndermez, kayda almaz veya saklamaz. Sayfayı kapatmak ya da yeniden yüklemek tarihleri siler. Saklamak için AtlasDays’e aktar özelliğini kullanın.</p>
+    <p>Hayır. Hesaplayıcı tarayıcınızda çalışır; girdiğiniz tarihleri göndermez, kayda almaz veya saklamaz. Sayfayı kapatmak ya da yeniden yüklemek tarihleri siler. Saklamak için AtlasDays'de takip et düğmesine dokunun.</p>

@@ -242,7 +242,6 @@ html[data-theme="light"] .daycal { --cal-disc: rgba(12, 22, 40, 0.07); --tone-wa
 .cal-control.is-country .cal-flag { width: 24px; height: 18px; border-radius: 3px; }
 .cal-control.is-country .cal-country-input { width: 11em; margin: 0; padding: 3px 0; border: 0; background: transparent; font-weight: 650; }
 .cal-control.is-country .cal-country-input:focus { background: transparent; }
-.cal-control.is-country .cal-country-list { left: -30px; right: auto; width: 16em; }
 .cal-control.is-date input { color-scheme: light dark; }
 
 /* the result as the app's tracker card: flag and title with the status pill,
@@ -383,11 +382,8 @@ html[data-theme="light"] .daycal { --cal-disc: rgba(12, 22, 40, 0.07); --tone-wa
 .cal-country-input:hover { border-color: var(--line); }
 .cal-country-input:focus { border-color: var(--blue); background: var(--bg); outline: none; font-weight: 500; }
 .cal-country-list {
-  position: absolute;
-  top: calc(100% + 6px);
-  left: -6px;
-  right: 0;
-  z-index: 5;
+  position: fixed; /* placed by the engine, so no scrolling card clips it */
+  z-index: 50;
   max-height: 260px;
   overflow-y: auto;
   margin: 0;

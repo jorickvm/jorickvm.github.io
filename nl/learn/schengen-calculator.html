@@ -153,7 +153,7 @@
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20260925a" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
-  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261004b" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261004d" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Ga naar de inhoud</a>
@@ -258,7 +258,6 @@
     "one": "{n} dag boven de limiet",
     "other": "{n} dagen boven de limiet"
   },
-  "lineOver": "Op {date} kom je boven de 90 dagen uit.",
   "lineNoCountry": {
     "one": "{n} dag zonder land",
     "other": "{n} dagen zonder land"
@@ -306,7 +305,7 @@
           <li><strong>Importeer je verblijven met een bestand</strong><span>Dat zijn meer verblijven dan er in een link passen. Download het bestand en open het op je iPhone met AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Download bestand</button></li>
         </ol>
         <div class="cal-dialog-foot">
-          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Importeer via een bestand</button><span data-cal-downloaded hidden>Open het op je iPhone met AtlasDays.</span></p>
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Download je reizen als CSV-bestand</button><span data-cal-downloaded hidden>Open dit bestand op je iPhone met AtlasDays.</span></p>
           <button type="button" data-cal-close>Sluit</button>
         </div>
       </dialog>
@@ -317,8 +316,8 @@
     <ul>
       <li><strong>Elk deel van een dag telt.</strong> De dag van inreis en de dag van uitreis zijn allebei dagen in het Schengengebied, dus 1 tot en met 10 juni is tien dagen.</li>
       <li><strong>Eén tegoed voor het hele gebied.</strong> De 90 dagen gelden voor alle Schengenlanden samen, niet voor elk land apart. Een dag die je in twee Schengenlanden doorbrengt, telt één keer.</li>
-      <li><strong>Elke periode van 180 dagen.</strong> Zet de peildatum op een datum, vandaag of een geplande inreis, en de tracker telt je dagen in de 180 dagen tot en met die datum. Elke oudere dag die uit die periode valt, maakt één dag vrij.</li>
-      <li><strong>Geplande reizen tellen ook mee.</strong> Komen de verblijven die je markeert ooit boven de 90 dagen binnen 180 uit, dan zie je in de melding onder de tracker op welke datum.</li>
+      <li><strong>De 180 dagen tot en met één datum.</strong> De kalender toont de 180 dagen tot en met de peildatum, vandaag tenzij je een andere datum kiest, en de tracker telt je dagen daarin. Elke oudere dag die uit de periode valt, maakt één dag vrij.</li>
+      <li><strong>Plan je een reis?</strong> Zet de peildatum op de laatste dag ervan. Tijdens een verblijf kan je telling alleen maar oplopen, dus als de laatste dag past, past de hele reis.</li>
     </ul>
 
     <h2>Als er andere regels gelden</h2>
@@ -411,8 +410,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"Open het navigatiemenu","menuClose":"Sluit het navigatiemenu"};</script>
   <script src="../../assets/js/navigation.js?v=20260817b"></script>
-  <script defer src="../../assets/js/rules/schengen.js?v=20261004a"></script>
-  <script defer src="../../assets/js/day-calendar.js?v=20261004c"></script>
+  <script defer src="../../assets/js/rules/schengen.js?v=20261004b"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261004d"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

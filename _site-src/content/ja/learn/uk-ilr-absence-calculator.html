@@ -1,17 +1,17 @@
-    <nav class="breadcrumb"><a href="/ja/">AtlasDays</a> / <a href="/ja/learn/">旅行ルール</a> / 英国</nav>
+    <nav class="breadcrumb">
+      <a href="/ja/">AtlasDays</a> / <a href="/ja/learn/">旅行ルール</a> / 英国
+    </nav>
     <img class="title-flag" src="/assets/flags/gb.png" alt="英国の国旗" width="56" height="42" />
     <h1>英国ILRの不在日数計算機：任意の12か月間で180日</h1>
-    <p class="subtitle">英国からの出国日と帰国日を選ぶと、永住許可の上限に照らして不在日数が最も多い12か月間を確認できます。予約前に予定している旅行も追加できます。</p>
-    <p class="verified">最終確認：2026年9月</p>
-    <p class="cal-private">入力した内容はすべてブラウザ内にとどまります。送信も保存もされません。</p>
-    <div class="tldr"><p><strong>要点：</strong>ILRの継続居住を維持するには、どの12か月間にも英国外で過ごした<strong>丸1日の不在が180日を超えない</strong>必要があります。出国日と帰国日は不在日数に含めません。</p></div>
+    <p class="subtitle">旅行ごとに、英国を出国した日と帰国した日をタップしてください。任意の日付までの12か月間の不在日数をトラッカーが表示します。予定している旅行も含めて、それより不在日数が多い12か月間があれば、その期間も示します。</p>
+    <p class="verified">最終確認：2026年10月</p>
 
     <h2>不在日数を確認</h2>
     <div class="daycal" id="uk-ilr" data-day-calendar="ukIlr">
       <script type="application/json" data-cal-strings>
 {
   "hintStart": "英国を出国した日をタップし、次に帰国した日をタップしてください。",
-  "hintEnd": "旅行のもう一方の日付をタップしてください。{date}を再度タップすると取り消します。",
+  "hintEnd": "旅行のもう一方の日付をタップしてください。",
   "inTrip": "英国外に滞在",
   "pending": "新しい旅行の開始日",
   "empty": "旅行はまだありません。",
@@ -20,40 +20,81 @@
   "addCountry": "国を追加",
   "noMatch": "一致する国はありません",
   "hintSelected": "旅行のどちらかの端をドラッグして日付を変更するか、下で削除してください。",
-  "tripAway": {"other": "不在{n}日"},
-  "headline": "任意の12か月間の不在日数：180日中{n}日",
-  "headlineEmpty": "不在日数：180日中0日",
-  "left": "残り{n}日",
-  "over": {"other": "{n}日超過"},
-  "emptyResult": "英国外への旅行を記録すると、不在日数が最も多い12か月間を確認できます。",
-  "worstWindow": "不在日数が最も多い12か月間：{from}から{to}まで。"
+  "tripAway": {
+    "other": "不在{n}日"
+  },
+  "title": "英国外で過ごした日数",
+  "checkOn": "基準日",
+  "remaining": {
+    "other": "残り{n}日"
+  },
+  "atLimit": "上限到達",
+  "overBy": {
+    "other": "上限を{n}日超過"
+  },
+  "lineWorst": {
+    "other": "不在日数が最も多い12か月間：{from}（不在{n}日）。"
+  }
 }
       </script>
       <p class="cal-hint" data-cal-hint aria-live="polite"></p>
       <div class="cal-window" data-cal-window>
-        <div class="cal-head"><p class="cal-month-title" data-cal-month></p><div class="cal-weekdays" aria-hidden="true"><span>月</span><span>火</span><span>水</span><span>木</span><span>金</span><span>土</span><span>日</span></div></div>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>月</span><span>火</span><span>水</span><span>木</span><span>金</span><span>土</span><span>日</span></div>
+        </div>
         <div data-cal-weeks></div>
       </div>
       <div class="cal-side">
-        <div class="cal-box" aria-live="polite"><div data-cal-result></div></div>
-        <div class="cal-box"><h3>旅行</h3><div data-cal-list></div><button type="button" class="cal-import" data-cal-import>AtlasDaysに無料でインポート</button></div>
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>タイムライン</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>AtlasDaysで記録する</button>
+        </div>
       </div>
-      <dialog class="cal-dialog" data-cal-dialog aria-labelledby="uk-ilr-import-title">
-        <p class="cal-dialog-title" id="uk-ilr-import-title">AtlasDaysで続ける</p>
-        <p>ファイルをダウンロードし、AtlasDaysの「設定」→「インポート」→「CSVファイル」で開いてください。</p>
-        <div class="cal-dialog-actions"><button type="button" data-cal-download>ファイルをダウンロード</button><a class="cal-dialog-app" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">AtlasDaysを入手</a><button type="button" data-cal-close>閉じる</button></div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="uk-ilr-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="uk-ilr-import-title">AtlasDaysで記録する</p>
+            <p class="cal-dialog-sub">旅行中もそのまま日数を数えられる、iPhoneとiPad向けの無料アプリです。</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>iPhoneまたはiPadにAtlasDaysをインストールしておく</strong><span>App Storeで無料で入手できます。</span></li>
+            <li><strong>QRコードを読み取り、すべての旅行をAtlasDaysに読み込む</strong><span>確認してから「インポート」をタップします。</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>AtlasDaysを入手</strong><span>App Storeから無料で入手できます。お持ちの場合は2へ進んでください。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+          <li><strong>アプリで滞在を開く</strong><span>確認してから「インポート」をタップします。それまで何も保存されません。</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">AtlasDaysで開く</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>AtlasDaysを入手</strong><span>iPhone向けにApp Storeで無料で提供しています。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+          <li><strong>ファイルで滞在をインポート</strong><span>滞在の数が多く、リンクでは送れません。ファイルをダウンロードして、iPhoneのAtlasDaysで開いてください。</span><button type="button" class="cal-dialog-primary" data-cal-download>ファイルをダウンロード</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>旅行をCSVファイルでダウンロード</button><span data-cal-downloaded hidden>このファイルをiPhoneのAtlasDaysで開いてください。</span></p>
+          <button type="button" data-cal-close>閉じる</button>
+        </div>
       </dialog>
     </div>
+    <p class="cal-private">入力した内容はすべてブラウザ内にとどまります。送信も保存もされません。</p>
 
     <h2>計算機の日数の数え方</h2>
     <ul>
-      <li><strong>丸1日だけを数えます。</strong>そのため各バーは出国日の半ばから始まり、帰国日の半ばで終わります。6月1日から6月10日までの旅行では国外滞在は8日（6月2日から9日）、24時間未満の旅行では0日です。</li>
-      <li><strong>各暦年ではなく、任意の12か月間です。</strong>予定を含めて記録したすべての旅行から、国外滞在日数が最多になる12か月間を探し、180日と比較します。異なる暦年の旅行も同じ集計期間に入る場合があります。</li>
+      <li><strong>丸1日だけを数えます。</strong>出国日と帰国日は国外滞在日に含めないため、6月1日から6月10日までの旅行の不在日数は8日（6月2日から9日）です。24時間未満の旅行では日数は増えません。</li>
+      <li><strong>ある日付までの12か月間。</strong>トラッカーは「基準日」までの12か月間の不在日数を数えます。基準日は、別の日付を選ばない限り今日です。旅行を計画している場合は、「基準日」を帰国日に設定してください。</li>
+      <li><strong>どの12か月間も対象です。</strong>上限は資格取得期間内の任意の12か月間に適用されるため、計算機は記録したすべての旅行について、あらゆる12か月間も確認します。トラッカーの表示より不在日数が多い期間があれば、その下の行に最も多い期間が表示されます。</li>
       <li><strong>365日単位ではなく暦月です。</strong>2027年1月9日までの集計期間は2026年1月10日から始まり、うるう日も含まれます。</li>
     </ul>
 
-    <h2>計算機で確認できないこと</h2>
-    <p>計算機は入力した日付に現行の主な上限を適用します。過去の在留資格は分からないため、次の点は別途確認してください。</p>
+    <h2>ほかのルールが適用される場合</h2>
+    <p>計算機は、入力した日付に現行の180日の上限を適用します。独自のルールに従う場合もいくつかあり、ILRのガイドで説明しています。</p>
     <ul>
       <li><strong>資格取得期間。</strong>期間内の不在だけが算入されます。もっと古い旅行ではなく、申請に使う年の旅行を記録してください。</li>
       <li><strong>2018年1月11日より前に付与された許可。</strong>その期間の不在は、申請日の応当日で終わる連続した12か月間で判定され、ローリング方式ではありません。</li>
@@ -63,15 +104,20 @@
     </ul>
     <p>12か月間をどの日からさかのぼるかを含むルールの詳細は<a href="/ja/learn/uk-ilr-absence-limit">英国ILRの不在日数ルール：任意の12か月間で180日</a>をご覧ください。市民権には別の上限があります。<a href="/ja/learn/uk-citizenship-absence-limits">英国市民権：不在日数450日と90日の上限</a>を参照してください。</p>
 
-    <div class="cta-box"><span class="cta-logo"><img class="logo-dark" src="/assets/brand/logo_dark.png?v=20260325a" alt="AtlasDaysのロゴ" width="52" height="52" /><img class="logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="AtlasDaysのロゴ" width="52" height="52" /></span>
+    <div class="cta-box">
+      <span class="cta-logo">
+        <img class="logo-dark" src="/assets/brand/logo_dark.png?v=20260325a" alt="AtlasDaysのロゴ" width="52" height="52" />
+        <img class="logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="AtlasDaysのロゴ" width="52" height="52" />
+      </span>
       <h2>一度きりではなく、継続して集計</h2>
       <p>計算機で確認できるのは、今日思い出して入力した旅行です。AtlasDaysの<strong>英国の永住許可（ILR）</strong>プリセットは、旅行のたびにiPhone内で非公開に集計を続け、予定した旅行で180日を超える前に知らせます。</p>
       <a class="cta-btn" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> AtlasDaysを入手</a>
     </div>
+
     <h2>よくある質問</h2>
     <h3>計算機の結果で確定しますか？</h3>
     <p>いいえ。入力した日付に主な上限を適用した結果です。以前の許可、長期居住の履歴、認められる不在、資格取得期間によって結果は変わり、判断は英国内務省が行います。</p>
     <h3>2週間の休暇なのに14日より少なく表示されるのはなぜですか？</h3>
     <p>国外で過ごした丸1日だけを数えるためです。出国日と帰国日は不在日ではないので、6月1日から6月15日までの旅行は13日です。</p>
     <h3>入力したデータは保存されますか？</h3>
-    <p>いいえ。計算機はブラウザ内で動作し、入力した日付を送信、記録、保存しません。ページを閉じるか再読み込みすると消えます。残す場合はAtlasDaysへのインポートを使ってください。</p>
+    <p>いいえ。計算機はブラウザ内で動作し、入力した日付を送信、記録、保存しません。ページを閉じるか再読み込みすると消えます。残す場合は「AtlasDaysで記録する」をタップしてください。</p>

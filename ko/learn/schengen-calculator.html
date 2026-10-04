@@ -153,7 +153,7 @@
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20260925a" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
-  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261004b" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261004d" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">본문으로 건너뛰기</a>
@@ -255,7 +255,6 @@
   "overBy": {
     "other": "한도 {n}일 초과"
   },
-  "lineOver": "{date}에 체류가 90일을 초과합니다.",
   "lineNoCountry": {
     "other": "국가 미지정 {n}일"
   }
@@ -302,7 +301,7 @@
           <li><strong>파일로 체류 가져오기</strong><span>체류가 너무 많아 링크에 담을 수 없습니다. 파일을 다운로드해 iPhone의 AtlasDays에서 여십시오.</span><button type="button" class="cal-dialog-primary" data-cal-download>파일 다운로드</button></li>
         </ol>
         <div class="cal-dialog-foot">
-          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>대신 파일로 가져오기</button><span data-cal-downloaded hidden>iPhone의 AtlasDays에서 파일을 여십시오.</span></p>
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>여행을 CSV 파일로 다운로드</button><span data-cal-downloaded hidden>iPhone의 AtlasDays에서 이 파일을 여십시오.</span></p>
           <button type="button" data-cal-close>닫기</button>
         </div>
       </dialog>
@@ -313,8 +312,8 @@
     <ul>
       <li><strong>하루 중 일부만 있어도 1일로 계산.</strong> 입국한 날과 출국한 날 모두 솅겐 지역에서 보낸 날이므로 6월 1일부터 10일까지는 10일입니다.</li>
       <li><strong>지역 전체에 하나의 한도.</strong> 90일은 국가마다 따로 적용되지 않고 모든 솅겐 국가를 합쳐 적용됩니다. 솅겐 국가 두 곳에서 보낸 날도 1일로 계산합니다.</li>
-      <li><strong>임의의 180일.</strong> '기준일'을 오늘이나 예정된 입국일 등으로 설정하면 트래커가 그날까지의 180일 동안의 체류 일수를 셉니다. 오래된 날이 그 기간에서 빠질 때마다 하루씩 다시 쓸 수 있게 됩니다.</li>
-      <li><strong>예정된 여행도 계산.</strong> 표시한 체류가 180일 중 90일을 초과하게 되면 트래커 아래에 그 날짜가 표시됩니다.</li>
+      <li><strong>특정 날짜까지의 180일.</strong> 달력에는 '기준일'까지의 180일이 표시되고, 트래커가 그 기간의 체류 일수를 셉니다. 기준일은 다른 날짜를 고르지 않으면 오늘입니다. 오래된 날이 그 기간에서 빠질 때마다 하루씩 다시 쓸 수 있게 됩니다.</li>
+      <li><strong>여행 계획 확인.</strong> '기준일'을 여행 마지막 날로 설정하십시오. 체류하는 동안 일수는 줄어들지 않으므로 마지막 날이 한도 안에 들면 여행 전체가 한도 안에 듭니다.</li>
     </ul>
 
     <h2>다른 규정이 적용되는 경우</h2>
@@ -407,8 +406,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"탐색 메뉴 열기","menuClose":"탐색 메뉴 닫기"};</script>
   <script src="../../assets/js/navigation.js?v=20260817b"></script>
-  <script defer src="../../assets/js/rules/schengen.js?v=20261004a"></script>
-  <script defer src="../../assets/js/day-calendar.js?v=20261004c"></script>
+  <script defer src="../../assets/js/rules/schengen.js?v=20261004b"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261004d"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

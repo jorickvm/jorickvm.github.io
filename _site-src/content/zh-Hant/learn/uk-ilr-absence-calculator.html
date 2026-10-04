@@ -3,15 +3,15 @@
     </nav>
     <img class="title-flag" src="/assets/flags/gb.png" alt="英國國旗" width="56" height="42" />
     <h1>英國永久居留離境天數計算器：任一 12 個月不得超過 180 天</h1>
-    <p class="subtitle">點選離開英國與返回的日期，查看離境天數最多的 12 個月是否超過永久居留上限。也可以加入預定行程，在訂票前先試算。</p>
-    <p class="verified">最後查核：2026 年 9 月</p>
+    <p class="subtitle">為每趟行程點選離開英國與返回的日期。追蹤器會顯示截至任一日期的 12 個月內的離境天數；若另有 12 個月離境更多，也會指出離境天數最多的那 12 個月。預定行程也一併計入。</p>
+    <p class="verified">最後查核：2026 年 10 月</p>
 
     <h2>檢查離境天數</h2>
     <div class="daycal" id="uk-ilr" data-day-calendar="ukIlr">
       <script type="application/json" data-cal-strings>
 {
   "hintStart": "先點選離開英國的日期，再點選返回日期。",
-  "hintEnd": "接著點選行程的另一端，或再次點選 {date} 取消。",
+  "hintEnd": "接著點選行程的另一端。",
   "inTrip": "在英國境外",
   "pending": "新行程的起點",
   "empty": "還沒有行程。",
@@ -23,14 +23,18 @@
   "tripAway": {
     "other": "離境 {n} 天"
   },
-  "headline": "任一 12 個月內離境 {n} 天，上限 180 天",
-  "headlineEmpty": "離境 0 天，上限 180 天",
-  "left": "剩餘 {n} 天",
-  "over": {
-    "other": "超出 {n} 天"
+  "title": "英國境外天數",
+  "checkOn": "截至日期",
+  "remaining": {
+    "other": "剩餘 {n} 天"
   },
-  "emptyResult": "標記英國境外行程，查看離境天數最多的 12 個月。",
-  "worstWindow": "離境天數最多的 12 個月為 {from} 至 {to}。"
+  "atLimit": "已達上限",
+  "overBy": {
+    "other": "超過上限 {n} 天"
+  },
+  "lineWorst": {
+    "other": "離境天數最多的 12 個月：{from}，離境 {n} 天。"
+  }
 }
       </script>
       <p class="cal-hint" data-cal-hint aria-live="polite"></p>
@@ -46,34 +50,51 @@
           <div data-cal-result></div>
         </div>
         <div class="cal-box">
-          <h3>行程</h3>
-          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>免費匯入 AtlasDays</button>
+          <h3>時間軸</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>在 AtlasDays 中繼續追蹤</button>
         </div>
       </div>
-      <dialog class="cal-dialog" data-cal-dialog aria-labelledby="uk-ilr-import-title">
-        <p class="cal-dialog-title" id="uk-ilr-import-title">在 AtlasDays 中繼續</p>
-        <p>下載檔案，然後在 AtlasDays 中開啟：「設定」→「匯入」→「CSV 檔案」。</p>
-        <div class="cal-dialog-actions">
-          <button type="button" data-cal-download>下載檔案</button>
-          <a class="cal-dialog-app" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">取得 AtlasDays</a>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="uk-ilr-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="uk-ilr-import-title">在 AtlasDays 中繼續追蹤</p>
+            <p class="cal-dialog-sub">適用於 iPhone 和 iPad 的免費 App，旅行途中持續計算停留天數。</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>確認 iPhone 或 iPad 已安裝 AtlasDays</strong><span>可在 App Store 免費下載。</span></li>
+            <li><strong>掃描 QR 碼，把所有行程載入 AtlasDays</strong><span>確認無誤後，輕點「匯入」。</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>取得 AtlasDays</strong><span>在 App Store 免費下載。已經有了？直接跳到第 2 步。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+          <li><strong>在 App 中開啟停留紀錄</strong><span>確認無誤後輕點「匯入」。在此之前，不會儲存任何資料。</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">在 AtlasDays 中開啟</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>取得 AtlasDays</strong><span>iPhone 版，可在 App Store 免費下載。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+          <li><strong>用檔案匯入停留紀錄</strong><span>停留紀錄太多，連結裝不下。請下載檔案，然後在 iPhone 上用 AtlasDays 開啟。</span><button type="button" class="cal-dialog-primary" data-cal-download>下載檔案</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>將行程下載為 CSV 檔案</button><span data-cal-downloaded hidden>請在 iPhone 上用 AtlasDays 開啟這個檔案。</span></p>
           <button type="button" data-cal-close>關閉</button>
         </div>
       </dialog>
     </div>
     <p class="cal-private">所有操作都留在瀏覽器內：輸入的資料不會傳送或儲存。</p>
-    <div class="tldr">
-      <p><strong>重點：</strong>若要維持申請英國永久居留（ILR）所需的連續居留資格，任一 12 個月期間內離開英國不得超過 <strong>180 個完整日</strong>。只計算完整日，因此離境當天與返英當天都不算離境日。</p>
-    </div>
 
     <h2>計算器如何計算</h2>
     <ul>
-      <li><strong>只計算完整日。</strong>因此每條行程色帶從離境當天中段開始，到返英當天中段結束。6 月 1 日離境、6 月 10 日返回，境外天數為八天（6 月 2 日至 9 日）；未滿 24 小時的行程不增加天數。</li>
-      <li><strong>任一 12 個月，而非各個日曆年。</strong>計算器會在標記的所有行程中，找出離境天數最多的 12 個月期間，包含預定行程，再與 180 天比較。不同日曆年的行程可能落在同一期間內。</li>
+      <li><strong>只計算完整日。</strong>離境當天與返英當天都不算離境日，因此 6 月 1 日離境、6 月 10 日返回，離境天數為八天（6 月 2 日至 9 日）；未滿 24 小時的行程不增加天數。</li>
+      <li><strong>截至某一天的 12 個月。</strong>追蹤器會計算到「截至日期」為止 12 個月內的離境天數（預設為今天，也可以另選日期）。正在規劃行程？把「截至日期」設為返英當天。</li>
+      <li><strong>每段 12 個月都會檢查。</strong>上限適用於符合資格的期間內任一 12 個月，因此計算器也會檢查標記的行程所涵蓋的每一段 12 個月期間。若其中某段的離境天數多於追蹤器顯示的天數，追蹤器下方會註明離境天數最多的那 12 個月。</li>
       <li><strong>以日曆月計算，不是固定的 365 天。</strong>若期間結束於 2027 年 1 月 9 日，起點便是 2026 年 1 月 10 日；閏日也計入。</li>
     </ul>
 
-    <h2>計算器不會檢查的事項</h2>
-    <p>計算器只將現行主要上限套用到輸入的日期。它不知道個人的移民紀錄，因此還須自行核對：</p>
+    <h2>適用其他規定的情況</h2>
+    <p>計算器會將現行的 180 天上限套用到輸入的日期。少數情況有各自的規定，英國永久居留指南會加以說明：</p>
     <ul>
       <li><strong>符合資格的期間。</strong>只有該期間內的離境才算。請標記申請所依據年度的行程，勿把更早的行程算進去。</li>
       <li><strong>2018 年 1 月 11 日前獲准的居留許可。</strong>該期間的離境依申請日期每週年結束的連續 12 個月期間判定，而非滾動式計算。</li>
@@ -99,4 +120,4 @@
     <h3>為什麼兩週假期顯示少於 14 天？</h3>
     <p>因為只計算在境外的完整日。離境當天與返英當天不算，因此 6 月 1 日離境、6 月 15 日返回的行程，離境天數是 13 天。</p>
     <h3>輸入的資料會儲存嗎？</h3>
-    <p>不會。計算器在瀏覽器內執行，不會傳送、記錄或儲存輸入的日期。關閉或重新載入頁面就會清除。若要保留，可使用「匯入 AtlasDays」。</p>
+    <p>不會。計算器在瀏覽器內執行，不會傳送、記錄或儲存輸入的日期。關閉或重新載入頁面就會清除。若要保留，請輕點「在 AtlasDays 中繼續追蹤」。</p>
