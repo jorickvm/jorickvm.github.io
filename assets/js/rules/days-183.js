@@ -63,6 +63,27 @@
     linkId: "183",
 
     range: function (c) { return bounds(c); },
+
+    // ?country=BG&period=calendar|tax|rolling&start=07-01&resident=184: an
+    // article's link opens the calculator set to its own rule. `start` is the
+    // tax year's first day (the latest one not after today); `resident` is
+    // the first day count that makes you resident (184 for "more than 183").
+    fromQuery: function (q, c) {
+      var code = (q.get("country") || "").toUpperCase();
+      if (!/^[A-Z]{2}$/.test(code) || c.allowed.indexOf(code) < 0) return null;
+      var s = { country: code, linkedCountry: code };
+      var period = q.get("period");
+      if (period === "calendar" || period === "tax" || period === "rolling") s.periodType = period;
+      var start = /^(\d\d)-(\d\d)$/.exec(q.get("start") || "");
+      if (start && s.periodType === "tax") {
+        var y = c.D.parts(c.today).y, from = c.D.fromParts(y, +start[1], +start[2]);
+        if (from !== null && from > c.today) from = c.D.fromParts(y - 1, +start[1], +start[2]);
+        if (from !== null) s.taxStart = c.D.iso(from);
+      }
+      var resident = Math.round(+q.get("resident"));
+      if (resident >= 1 && resident <= 366) s.residentAt = resident;
+      return { settings: s, link: "183-" + code.toLowerCase() };
+    },
     newTripCountry: function (c) { return c.settings.country || ""; },
 
     // A country that counts nights (Portugal) leaves out the day you leave.
@@ -111,7 +132,8 @@
       // An embedded calculator knows its country's exact threshold
       // (residentAt: 184 for "more than 183", 183 for "183 or more"); the
       // generic page counts against 183.
-      var residentAt = +c.settings.residentAt || 0;
+      // A linked threshold belongs to the linked country only.
+      var residentAt = c.settings.linkedCountry && c.settings.linkedCountry !== country ? 0 : +c.settings.residentAt || 0;
       var limit = +c.settings.limit || LIMIT;
       var safe = residentAt ? residentAt - 1 : limit, left = safe - days;
       var needed = (residentAt || limit) - days;

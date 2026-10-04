@@ -290,6 +290,20 @@
     try { preset = JSON.parse(root.getAttribute("data-cal-preset") || "{}"); } catch (e) { preset = {}; }
     var locked = preset.lock || [];
     var settings = Object.assign({}, preset.settings || {}); // choices made in the rule's result menus (rule.evaluate -> controls)
+    // A link can open the full calculator already set up, e.g. from an
+    // article: ?country=BG&period=rolling (rule.fromQuery reads and checks
+    // the values). While the country stays the linked one, imports carry the
+    // rule's id for that setup (183-bg), so they can be told apart.
+    var linked = null;
+    if (!preset.settings && rule.fromQuery) {
+      try { linked = rule.fromQuery(new URLSearchParams(location.search), { D: D, today: today, allowed: allowed }); } catch (e) { linked = null; }
+      if (linked) Object.assign(settings, linked.settings);
+    }
+    function linkId() {
+      if (preset.link) return preset.link;
+      if (linked && linked.link && settings.country === linked.settings.country) return linked.link;
+      return rule.linkId;
+    }
     var finePointer = !!(window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches);
     var rows = [], cells = {}, firstMonday = 0, activeMonth = null, clipFrom = null, clipTo = null;
     var englishNames = null;
@@ -904,7 +918,7 @@
     function openImport() {
       var rows = rule.exportRows(trips, ctx()).slice().sort(function (a, b) { return a.start - b.start; });
       if (!dialog || !dialog.showModal) return downloadCsv();
-      var frag = rows.length ? importFragment(rows, preset.link || rule.linkId) : "";
+      var frag = rows.length ? importFragment(rows, linkId()) : "";
       var mode = rows.length > LINK.maxStays ? "file"
         : inApp || appleTouch ? "phone"
         : rows.length <= LINK.maxQrStays ? "computer" : "file";

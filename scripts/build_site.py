@@ -1165,6 +1165,42 @@ def calculator_preset(article: dict[str, object]) -> dict[str, object]:
     return {"settings": settings, "lock": ["country", "goal", "periodType"], "link": f"183-{residency['code']}"}
 
 
+def calculator_link_query(article: dict[str, object]) -> str:
+    """The query that opens the 183-day calculator set to an article's rule.
+
+    A country article's link to the calculator carries its country, window and
+    exact threshold, so the reader lands on a calculator already set up, and an
+    import from it reports `183-<code>` (assets/js/rules/days-183.js fromQuery).
+    Empty when the record's rule is not one the calculator models.
+    """
+    residency = dict(article.get("residency") or {})
+    code = str(residency.get("code", ""))
+    # "> 183 days", "≥ 183 days", or a bare "183 days …", which means 183 or more.
+    match = re.match(r"\s*(>|≥)?\s*(\d+) days", str(residency.get("threshold", "")))
+    if not match or not re.fullmatch(r"[a-z]{2}", code):
+        return ""
+    window = str(residency.get("window", ""))
+    params = {"calendar": "period=calendar", "rolling": "period=rolling"}.get(window)
+    if window == "income":
+        start = str(residency.get("taxYearStart", ""))
+        if not re.fullmatch(r"\d\d-\d\d", start):
+            raise SystemExit(f"{article['path']}: an income-year rule needs residency.taxYearStart (MM-DD) for its calculator link")
+        params = f"period=tax&start={start}"
+    if not params:
+        return ""
+    number = int(match.group(2))
+    resident = number + 1 if match.group(1) == ">" else number
+    return f"?country={code.upper()}&{params}&resident={resident}"
+
+
+def link_calculator_to_rule(content: str, article: dict[str, object]) -> str:
+    query = calculator_link_query(article)
+    if not query:
+        return content
+    pattern = re.compile(r'href="((?:/[A-Za-z-]+)?/learn/183-day-rule-calculator)"')
+    return pattern.sub(lambda m: f'href="{m.group(1)}{html.escape(query, quote=True)}"', content)
+
+
 def render_embedded_calculator(content: str, article: dict[str, object], code: str) -> str:
     if article.get("calculator") is None:
         return content
@@ -1200,6 +1236,7 @@ def render_article(
     content = render_factbox_legal_basis(content, article)
     content = render_learn_trust(content, article, locale, strings)
     content = render_embedded_calculator(content, article, code)
+    content = link_calculator_to_rule(content, article)
     switcher = render_language_switcher(source_path, locales, translations, code, strings)
     # Only routes this locale actually has may be prefixed; everything else
     # falls back to English. Without this the chrome links a Japanese page to
