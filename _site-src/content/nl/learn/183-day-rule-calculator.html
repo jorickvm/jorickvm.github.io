@@ -1,0 +1,138 @@
+    <nav class="breadcrumb">
+      <a href="/nl/">AtlasDays</a> / <a href="/nl/learn/">Reisregels</a>
+    </nav>
+    <h1>Calculator voor de 183-dagenregel: tel je dagen in elk land</h1>
+    <p class="subtitle">Kies een land en een jaar en tik dan op de dag van aankomst en de dag van vertrek. De tracker laat zien hoe dicht je bij 183 dagen zit, geplande verblijven meegerekend.</p>
+    <p class="verified">Laatst gecontroleerd: oktober 2026</p>
+
+    <h2>Tel je dagen</h2>
+    <div class="daycal" id="days-183" data-day-calendar="days183">
+      <script type="application/json" data-cal-strings>
+{
+  "hintStart": "Tik op een dag om een verblijf toe te voegen.",
+  "hintEnd": "Tik nu op het andere uiteinde van het verblijf.",
+  "hintSelected": "Sleep een van beide uiteinden om de datums te wijzigen, of verwijder het verblijf hieronder.",
+  "inTrip": "in een land",
+  "pending": "begin van een nieuw verblijf",
+  "empty": "Nog geen verblijven.",
+  "deleteTrip": "Verwijder verblijf",
+  "country": "Land",
+  "goal": "Doelstelling",
+  "goalStay": "Onder limiet blijven",
+  "goalReach": "Doel bereiken",
+  "captionStay": "Vermijd fiscaal inwonerschap.",
+  "captionReach": "Word fiscaal inwoner.",
+  "window": "Periode",
+  "addCountry": "Voeg land toe",
+  "noMatch": "Geen land gevonden",
+  "periodCalendar": "Kalenderjaar",
+  "periodTax": "Belastingjaar",
+  "periodRolling": "Laatste 12 maanden",
+  "year": "Jaar",
+  "starts": "Start",
+  "tripDays": {
+    "one": "{n} dag",
+    "other": "{n} dagen"
+  },
+  "remaining": {
+    "one": "{n} dag resterend",
+    "other": "{n} dagen resterend"
+  },
+  "atLimit": "Limiet bereikt",
+  "needed": {
+    "one": "Nog {n} dag nodig",
+    "other": "Nog {n} dagen nodig"
+  },
+  "reachedTarget": "Doel bereikt",
+  "overBy": {
+    "one": "{n} dag boven de limiet",
+    "other": "{n} dagen boven de limiet"
+  },
+  "lineNoCountry": {
+    "one": "{n} dag zonder land",
+    "other": "{n} dagen zonder land"
+  }
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>M</span><span>D</span><span>W</span><span>D</span><span>V</span><span>Z</span><span>Z</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>Tijdlijn</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Houd dit bij in AtlasDays</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="days-183-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="days-183-import-title">Houd dit bij in AtlasDays</p>
+            <p class="cal-dialog-sub">Tel je dagen door terwijl je reist. Gratis iPhone-app.</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>Scan met je iPhone</strong><span>Nog geen AtlasDays? Dan download je de app eerst in de App Store.</span></li>
+            <li><strong>Tik op Open AtlasDays</strong><span>Controleer je verblijven en tik dan op Importeren.</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>Download AtlasDays</strong><span>Gratis in de App Store. Heb je de app al? Ga door naar stap 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+          <li><strong>Open je verblijven in de app</strong><span>Controleer ze en tik dan op Importeren. Tot die tijd wordt er niets bewaard.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Open AtlasDays</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>Download AtlasDays</strong><span>Gratis in de App Store voor iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+          <li><strong>Importeer je verblijven met een bestand</strong><span>Dat zijn meer verblijven dan er in een link passen. Download het bestand en open het op je iPhone met AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Download bestand</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Importeer via een bestand</button><span data-cal-downloaded hidden>Open het op je iPhone met AtlasDays.</span></p>
+          <button type="button" data-cal-close>Sluit</button>
+        </div>
+      </dialog>
+    </div>
+    <p class="cal-private">Alles blijft in je browser: wat je invult, wordt niet verzonden of opgeslagen.</p>
+
+    <h2>Zo telt de calculator</h2>
+    <ul>
+      <li><strong>Elk deel van een dag telt.</strong> De dag van aankomst en de dag van vertrek zijn allebei dagen in het land, dus 1 tot en met 10 juni is tien dagen. Een reisdag tussen twee landen telt voor allebei.</li>
+      <li><strong>Eén land, één jaar.</strong> Kies in de tracker het land en daarboven de periode: een kalenderjaar, een belastingjaar vanaf de dag waarop het begint (6 april in het Verenigd Koninkrijk, 1 juli in Australië, 1 april in Nieuw-Zeeland en India) of de laatste 12 maanden. Alleen dagen binnen die periode tellen mee.</li>
+      <li><strong>Onder de 183 blijven of 183 halen.</strong> De meeste mensen willen onder de 183 dagen blijven. Heb je 183 dagen nodig om ergens inwoner te worden, zet de doelstelling dan op Doel bereiken: de balk wordt groen zodra je dat aantal haalt.</li>
+      <li><strong>Geplande verblijven tellen ook mee.</strong> Markeer een reis die je nog niet hebt geboekt en zie of je daarmee boven de 183 uitkomt.</li>
+    </ul>
+
+    <h2>Als jouw land anders telt</h2>
+    <p>De meeste landen tellen dagen zoals deze calculator. Heeft jouw land een eigen regel, dan legt de gids over dat land die uit, en heeft AtlasDays een kant-en-klare tracker die precies zo telt:</p>
+    <ul>
+      <li><strong>Middernacht.</strong> Het VK telt de dagen waarop je er om middernacht bent. Zie de <a href="/nl/learn/uk-statutory-residence-test">Statutory Residence Test van het VK</a>; de Britse tracker in AtlasDays telt middernachten.</li>
+      <li><strong>Meer dan 183.</strong> Spanje vraagt meer dan 183 dagen, niet 183. Zie <a href="/nl/learn/spain-183-day-tax-residency">Spanje</a>; elke tracker in AtlasDays gebruikt de exacte drempel van zijn land.</li>
+      <li><strong>Drie jaar tegelijk.</strong> De Amerikaanse Substantial Presence Test telt ook een deel van de twee voorgaande jaren mee. Zie de <a href="/nl/learn/us-substantial-presence-test">Substantial Presence Test</a>; AtlasDays heeft een tracker die de weging voor je doet.</li>
+    </ul>
+    <p>Dagen zijn niet de enige toets: met een woning of gezin kun je ook met minder dagen inwoner worden. <a href="/nl/learn/183-day-tax-residency-rule">De 183-dagenregel</a> legt die banden uit, en <a href="/nl/learn/tax-residency-by-country">fiscaal inwonerschap per land</a> heeft de gids voor elk land.</p>
+
+    <div class="cta-box">
+      <span class="cta-logo">
+        <img class="logo-dark" src="/assets/brand/logo_dark.png?v=20260325a" alt="AtlasDays-logo" width="52" height="52" />
+        <img class="logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="AtlasDays-logo" width="52" height="52" />
+      </span>
+      <h2>Blijf tellen terwijl je reist</h2>
+      <p>De calculator controleert de dagen die je je vandaag herinnert. AtlasDays telt je dagen in elk land door terwijl je reist, privé op je iPhone, en waarschuwt je voordat een reis je over een limiet brengt.</p>
+      <a class="cta-btn" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> Download AtlasDays</a>
+    </div>
+
+    <h2>Veelgestelde vragen</h2>
+    <h3>Telt de dag van aankomst als dag in het land?</h3>
+    <p>In deze calculator wel: elk deel van een dag telt, dus zowel de dag van aankomst als de dag van vertrek zijn dagen in dat land. Veel landen tellen zo. Het VK telt in plaats daarvan middernachten, en de <a href="/nl/learn/uk-statutory-residence-test">gids over het VK</a> legt uit hoe.</p>
+    <h3>Word ik fiscaal inwoner als ik 183 dagen in een land ben?</h3>
+    <p>Vaak, maar niet altijd. Veel landen zien 183 dagen in hun belastingjaar als inwonerschap, sommige gebruiken een andere drempel of periode, en andere banden zoals een woning of gezin kunnen je met minder dagen al inwoner maken. De calculator laat de telling zien, niet de beslissing.</p>
+    <h3>Worden mijn gegevens opgeslagen?</h3>
+    <p>Nee. De calculator draait in je browser en verzendt, registreert of bewaart de ingevoerde datums niet. Als je de pagina sluit of opnieuw laadt, verdwijnen ze. Tik op Houd dit bij in AtlasDays om ze te bewaren.</p>

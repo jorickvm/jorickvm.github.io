@@ -25,6 +25,9 @@
   display: grid;
   grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   grid-template-areas: "settings settings" "result result" "hint hint" "cal trips";
+}
+.daycal.has-floating-hint { grid-template-areas: "settings settings" "result result" "cal trips"; }
+.daycal {
   gap: 14px;
   align-items: start;
   margin: 18px 0 14px;
@@ -35,8 +38,46 @@ html[data-theme="light"] .daycal { --cal-disc: rgba(12, 22, 40, 0.07); --tone-wa
 .cal-side > .cal-box:last-child { grid-area: trips; }
 
 .cal-hint { grid-area: hint; margin: 0; color: var(--muted); font-size: 0.93rem; }
-/* the rule's choices, above the result card */
-.cal-settings { grid-area: settings; display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: center; }
+/* a quiet hint floats at the bottom of the calendar window instead of taking
+   a row, so the cards keep even gaps and nothing moves when it appears */
+.cal-hint.is-floating {
+  position: sticky;
+  bottom: 10px;
+  z-index: 4;
+  margin: 0 10px;
+  padding: 9px 12px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--bg-card);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.22);
+  color: var(--text);
+  font-size: 0.86rem;
+}
+/* the rule's choices, above the tracker card: a settings card of rows,
+   label left and choice right, as in the app's tracker editor */
+.cal-settings {
+  grid-area: settings;
+  padding: 2px 16px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--bg-card);
+}
+.cal-settings { padding: 6px 16px; }
+.cal-setting { display: flex; align-items: center; gap: 12px; padding: 9px 0; }
+.cal-setting > .cal-icon { color: var(--cal-bar); }
+.cal-setting-label { color: var(--text); font-size: 0.95rem; font-weight: 500; }
+.cal-setting .cal-control { margin-left: auto; }
+
+/* line icons (after the app's SF Symbols) */
+.cal-icon { display: inline-flex; flex: 0 0 auto; width: 20px; height: 20px; }
+.cal-icon svg { width: 100%; height: 100%; }
+/* a choice reads as accent text with a small chevron; the native menu sits
+   invisibly over it, so a tap opens the system list */
+.cal-control.is-select, .cal-control.is-date { position: relative; }
+.cal-value { display: inline-flex; align-items: center; gap: 3px; color: var(--cal-bar); font-size: 0.95rem; font-weight: 600; white-space: nowrap; }
+.cal-chevron { width: 13px; height: 13px; }
+.cal-control.is-select select, .cal-control.is-date input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
+.cal-control.is-select:focus-within .cal-value, .cal-control.is-date:focus-within .cal-value { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 6px; }
 
 .cal-window {
   grid-area: cal;
@@ -192,21 +233,7 @@ html[data-theme="light"] .daycal { --cal-disc: rgba(12, 22, 40, 0.07); --tone-wa
 .cal-control.is-country .cal-country-input { width: 11em; margin: 0; padding: 3px 0; border: 0; background: transparent; font-weight: 650; }
 .cal-control.is-country .cal-country-input:focus { background: transparent; }
 .cal-control.is-country .cal-country-list { left: -30px; right: auto; width: 16em; }
-.cal-control.is-date { position: relative; }
-.cal-date-text {
-  display: inline-block;
-  padding: 6px 14px;
-  border: 1px solid var(--line-strong);
-  border-radius: 999px;
-  background: var(--bg);
-  color: var(--text);
-  font-size: 0.9rem;
-  font-weight: 650;
-  white-space: nowrap;
-}
-/* the native picker, invisible, over the pill: a tap opens the system calendar */
-.cal-control.is-date input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; color-scheme: light dark; }
-.cal-control.is-date:focus-within .cal-date-text { outline: 2px solid var(--blue); outline-offset: 2px; }
+.cal-control.is-date input { color-scheme: light dark; }
 
 /* the result as the app's tracker card: flag and title with the status pill,
    then period and count, then the bar */
@@ -214,7 +241,17 @@ html[data-theme="light"] .daycal { --cal-disc: rgba(12, 22, 40, 0.07); --tone-wa
 .cal-card-head .cal-flag { width: 28px; height: 21px; }
 .cal-card-title { flex: 1 1 auto; min-width: 0; color: var(--text); font-size: 1.02rem; font-weight: 650; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .cal-card-title.is-placeholder { color: var(--muted); font-weight: 500; }
-.cal-card-head .cal-pill { flex: 0 0 auto; margin: 0; }
+.cal-card-head .cal-pill { flex: 0 0 auto; margin: 0 0 0 auto; }
+/* the country picker as the card's title */
+.cal-card-head .cal-control.is-country { flex: 1 1 auto; min-width: 0; }
+.cal-card-head .cal-control.is-country .cal-control-pill { padding: 0; border: 0; background: none; gap: 10px; }
+.cal-card-head .cal-control.is-country .cal-flag { width: 28px; height: 21px; border-radius: 4px; }
+.cal-card-head .cal-control.is-country .cal-control-pill { min-width: 0; max-width: 100%; }
+.cal-card-head .cal-control.is-country .cal-country-field { min-width: 0; }
+.cal-card-head .cal-control.is-country .cal-country-input { max-width: min(18em, 60vw); padding: 3px 6px; margin-left: -6px; border: 1px solid transparent; border-radius: 8px; font-size: 1.02rem; text-overflow: ellipsis; }
+.cal-card-head .cal-control.is-country .cal-country-input:hover { border-color: transparent; background: color-mix(in srgb, var(--cal-bar) 10%, transparent); }
+.cal-measure { position: absolute; visibility: hidden; white-space: pre; }
+.cal-card-head .cal-control.is-country .cal-country-input:focus { border-color: var(--blue); }
 .cal-meter { display: grid; gap: 7px; margin: 2px 0 10px; }
 .cal-meter-row { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
 .cal-meter-period { color: var(--muted); font-size: 0.9rem; }
@@ -329,6 +366,9 @@ html[data-theme="light"] .daycal { --cal-disc: rgba(12, 22, 40, 0.07); --tone-wa
   font: inherit;
   font-weight: 650;
 }
+/* Safari's contact AutoFill button would sit inside the field and eat its width */
+.cal-country-input::-webkit-contacts-auto-fill-button,
+.cal-country-input::-webkit-credentials-auto-fill-button { visibility: hidden; display: none !important; pointer-events: none; width: 0; }
 .cal-country-input::placeholder { color: var(--blue); font-weight: 600; opacity: 1; }
 .cal-country-input:hover { border-color: var(--line); }
 .cal-country-input:focus { border-color: var(--blue); background: var(--bg); outline: none; font-weight: 500; }
@@ -391,11 +431,56 @@ html[data-theme="light"] .daycal { --cal-disc: rgba(12, 22, 40, 0.07); --tone-wa
 }
 .cal-dialog [data-cal-download] { border: 1px solid rgba(66, 143, 210, 0.45); background: var(--blue); color: #fff; }
 .cal-dialog-app { border: 1px solid var(--line-strong); background: transparent; color: var(--text); }
+/* The Open in AtlasDays dialog: Open (or the QR code) leads, the file is the
+   alternative, unless the file is all there is. */
+.cal-dialog-primary,
+.cal-dialog.is-file [data-cal-download] { border: 1px solid rgba(66, 143, 210, 0.45); background: var(--blue); color: #fff; }
+.cal-dialog [data-cal-on] .cal-dialog-actions { margin: 0 0 14px; }
+.cal-dialog-primary { display: inline-block; }
+.cal-dialog .cal-dialog-note { font-size: 0.84rem; }
+.cal-dialog-note a { color: var(--blue); }
+/* The step-by-step dialog (183-day calculator): the app icon and a one-line
+   pitch, then numbered steps; the file is a quiet link in the footer. */
+.cal-dialog-steps { width: min(540px, calc(100vw - 32px)); padding: 20px 22px 16px; }
+.cal-dialog-steps:focus { outline: none; }
+.cal-dialog-steps [hidden] { display: none !important; }
+.cal-dialog-steps .cal-dialog-title { color: var(--text); }
+.cal-dialog-head { display: flex; gap: 12px; align-items: center; margin: 0 0 16px; }
+.cal-dialog-icon { width: 44px; height: 44px; border-radius: 10px; flex: none; }
+.cal-dialog-steps .cal-dialog-title { margin: 0; }
+.cal-dialog-steps .cal-dialog-sub { margin: 2px 0 0; font-size: 0.88rem; }
+.cal-dialog-scan { display: flex; flex-wrap: wrap; gap: 18px; align-items: center; margin: 0 0 6px; }
+.cal-dialog-scan .cal-qr { margin: 0; flex: none; }
+.cal-dialog-scan .cal-steps { flex: 1 1 200px; }
+.cal-steps { list-style: none; counter-reset: cal-step; margin: 0 0 6px; padding: 0; }
+.cal-steps > li { counter-increment: cal-step; position: relative; padding: 0 0 14px 34px; margin: 0; color: var(--muted); font-size: 0.88rem; line-height: 1.5; }
+.cal-steps > li::before {
+  content: counter(cal-step); position: absolute; left: 0; top: 0;
+  width: 22px; height: 22px; border-radius: 50%; display: grid; place-items: center;
+  background: rgba(91, 158, 217, 0.18); color: var(--blue); font-size: 0.78rem; font-weight: 700;
+}
+.cal-steps.is-single > li { padding-left: 0; }
+.cal-steps.is-single > li::before { content: none; }
+.cal-steps > li > strong { display: block; color: var(--text); font-size: 0.95rem; font-weight: 650; }
+.cal-steps > li > span { display: block; margin: 1px 0 0; }
+.cal-steps > li > a, .cal-steps > li > button { display: inline-block; margin: 9px 0 0; padding: 8px 16px; border-radius: 999px; font: inherit; font-size: 0.88rem; font-weight: 650; text-decoration: none; cursor: pointer; }
+.cal-dialog-store { border: 1px solid var(--line-strong); color: var(--text); }
+.cal-dialog-foot { display: flex; align-items: center; gap: 12px; border-top: 1px solid var(--line); padding: 12px 0 0; }
+.cal-dialog-foot p { margin: 0; flex: 1; font-size: 0.86rem; }
+.cal-dialog-steps .cal-dialog-foot .cal-dialog-link { padding: 0; border: 0; border-radius: 0; background: none; color: var(--blue); font: inherit; font-weight: 600; cursor: pointer; }
+.cal-dialog-foot [data-cal-close] { padding: 6px 4px; border: 0; background: none; color: var(--muted); font: inherit; font-size: 0.9rem; font-weight: 650; cursor: pointer; }
+.cal-qr { width: 208px; max-width: 100%; margin: 2px 0 16px; border-radius: 14px; overflow: hidden; background: #ebebeb; }
+.cal-qr:empty { aspect-ratio: 1; }
+.cal-qr svg { display: block; width: 100%; height: auto; }
 .cal-dialog [data-cal-close] { margin-left: auto; border: 0; background: none; color: var(--muted); }
 
 /* On a phone: hint, result, calendar, trips, one under the other. */
 @media (max-width: 640px) {
   .daycal { grid-template-columns: minmax(0, 1fr); grid-template-areas: "settings" "result" "hint" "cal" "trips"; }
+  .daycal.has-floating-hint { grid-template-areas: "settings" "result" "cal" "trips"; }
   .cal-window { height: min(50vh, 460px); } /* leaves page to swipe on above and below */
   .cal-country-input, .cal-control select { font-size: 16px; } /* keeps iOS from zooming in on focus */
 }
+
+/* Japanese breaks at phrase boundaries where the browser can (Chrome, Edge). */
+html:lang(ja) .cal-dialog-steps { word-break: auto-phrase; }
