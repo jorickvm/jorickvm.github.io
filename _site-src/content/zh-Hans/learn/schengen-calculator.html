@@ -1,0 +1,123 @@
+    <nav class="breadcrumb">
+      <a href="/zh-Hans/">AtlasDays</a> / <a href="/zh-Hans/learn/">旅行规定</a>
+    </nav>
+    <h1>申根计算器：核对 90/180 规定下的停留天数</h1>
+    <p class="subtitle">为每段停留点选入境日和出境日。追踪器会显示截至任一日期的 180 天内，90 天额度已经用了多少天，计划中的行程也一并计入。</p>
+    <p class="verified">最后核实：2026 年 10 月</p>
+
+    <h2>计算停留天数</h2>
+    <div class="daycal" id="schengen" data-day-calendar="schengen">
+      <script type="application/json" data-cal-strings>
+{
+  "hintStart": "点选日期，添加一段停留。",
+  "hintEnd": "再点选这段停留的另一端日期。",
+  "hintSelected": "拖移停留的任一端可更改日期，也可以在下方删除。",
+  "inTrip": "在申根区",
+  "pending": "新一段停留的起点",
+  "empty": "尚无停留记录。",
+  "deleteTrip": "删除停留",
+  "country": "国家",
+  "addCountry": "添加国家",
+  "noMatch": "找不到符合的申根国家",
+  "area": "申根区",
+  "checkOn": "截至日期",
+  "tripDays": {
+    "other": "{n} 天"
+  },
+  "remaining": {
+    "other": "剩余 {n} 天"
+  },
+  "atLimit": "已达上限",
+  "overBy": {
+    "other": "超过上限 {n} 天"
+  },
+  "lineOver": "标记的停留会在 {date}超过 90 天。",
+  "lineNoCountry": {
+    "other": "有 {n} 天未选择国家"
+  }
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>时间轴</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>在 AtlasDays 中继续追踪</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="schengen-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="schengen-import-title">在 AtlasDays 中继续追踪</p>
+            <p class="cal-dialog-sub">适用于 iPhone 和 iPad 的免费 App，旅途中持续计算停留天数。</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>确认 iPhone 或 iPad 上已安装 AtlasDays</strong><span>可在 App Store 免费下载。</span></li>
+            <li><strong>扫描二维码，把所有行程加载到 AtlasDays</strong><span>核对无误后，轻点“导入”。</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>获取 AtlasDays</strong><span>在 App Store 免费下载。已经安装？直接跳到第 2 步。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+          <li><strong>在 App 中打开停留记录</strong><span>核对无误后轻点“导入”。在此之前，不会存储任何内容。</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">在 AtlasDays 中打开</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>获取 AtlasDays</strong><span>可在 App Store 免费下载 iPhone 版。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+          <li><strong>用文件导入停留记录</strong><span>停留记录太多，链接放不下。请下载文件，然后在 iPhone 上用 AtlasDays 打开。</span><button type="button" class="cal-dialog-primary" data-cal-download>下载文件</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>改用文件导入</button><span data-cal-downloaded hidden>请在 iPhone 上用 AtlasDays 打开文件。</span></p>
+          <button type="button" data-cal-close>关闭</button>
+        </div>
+      </dialog>
+    </div>
+    <p class="cal-private">所有内容仅在浏览器中处理：输入的内容不会发送或存储。</p>
+
+    <h2>计算器如何计算</h2>
+    <ul>
+      <li><strong>只要在申根区待过，当天就算一天。</strong>入境当天和出境当天都算作在申根区的天数，因此 6 月 1 日至 10 日共 10 天。</li>
+      <li><strong>整个申根区共用一份额度。</strong>90 天是所有申根国家合计，而不是每个国家分开计算。同一天去过两个申根国家，只算一天。</li>
+      <li><strong>任何 180 天。</strong>把“截至日期”设为某一天，例如今天或计划入境的日期，追踪器就会计算截至该日的 180 天内的停留天数。每有一个较早的日子移出这段期间，就多出一天额度。</li>
+      <li><strong>计划中的行程也会计入。</strong>如果标记的停留在某个 180 天期间内合计超过 90 天，追踪器下方会指出是哪一天。</li>
+    </ul>
+
+    <h2>适用其他规定的情况</h2>
+    <p>90/180 的计算适用于短期停留。少数情况有各自的规定，相关指南会分别说明：</p>
+    <ul>
+      <li><strong>长期签证和居留许可。</strong>持国家长期签证或欧盟居留许可停留的天数，不计入 90 天。参见 <a href="/zh-Hans/learn/schengen-90-180-rule">90/180 规定</a>。</li>
+      <li><strong>签证批准的天数较少。</strong>如果签证批准的停留少于 90 天，就以较短的停留期为准。参见<a href="/zh-Hans/learn/schengen-single-entry-visa">申根单次入境签证</a>；AtlasDays 有追踪器可以计算签证上的天数。</li>
+      <li><strong>哪些国家计入。</strong>申根区不等于欧盟：塞浦路斯和爱尔兰不在申根区内，挪威和瑞士则在。参见<a href="/zh-Hans/learn/schengen-countries-list-90-180-rule">申根国家清单</a>。</li>
+    </ul>
+    <p>想逐日看计算期间如何移动，请阅读<a href="/zh-Hans/learn/schengen-rolling-window-walkthrough">申根滚动期间实际上如何运作</a>；想知道天数何时恢复，请看<a href="/zh-Hans/learn/when-do-you-get-schengen-days-back-after-90-day-stay">申根天数什么时候恢复</a>。</p>
+
+    <div class="cta-box">
+      <span class="cta-logo">
+        <img class="logo-dark" src="/assets/brand/logo_dark.png?v=20260325a" alt="AtlasDays 标志" width="52" height="52" />
+        <img class="logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="AtlasDays 标志" width="52" height="52" />
+      </span>
+      <h2>旅途中持续计算天数</h2>
+      <p>计算器只能核对目前记得的停留。AtlasDays 会在旅途中持续计算申根天数，数据私密地保存在 iPhone 上；如果某次行程会让天数超过 90 天，也会提前提醒。</p>
+      <a class="cta-btn" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> 获取 AtlasDays</a>
+    </div>
+
+    <h2>常见问题</h2>
+    <h3>入境当天和出境当天都算吗？</h3>
+    <p>都算。入境当天是停留的第一天，出境当天是最后一天，即使深夜才抵达或清晨就离开也一样。计算器两天都会计入。</p>
+    <h3>申根天数什么时候恢复？</h3>
+    <p>一天一天地恢复：在申根区的每一天，180 天后就不再计入。把“截至日期”设为较晚的日期，就能看到届时还有多少天可用；也可以阅读<a href="/zh-Hans/learn/when-do-you-get-schengen-days-back-after-90-day-stay">申根天数什么时候恢复</a>。</p>
+    <h3>这是欧盟官方的计算器吗？</h3>
+    <p>不是。欧盟委员会另有自己的短期停留计算器。本计算器的计算方式相同，即任何 180 天内 90 天，入境日和出境日都计入，还可以把停留记录保存到 AtlasDays。最终由边境和签证主管机关决定。</p>
+    <h3>输入的数据会被存储吗？</h3>
+    <p>不会。计算器在浏览器中运行，不会发送、记录或存储输入的日期。关闭或重新加载页面后，日期就会清除。如需保留，请轻点“在 AtlasDays 中继续追踪”。</p>

@@ -1,0 +1,135 @@
+    <nav class="breadcrumb">
+      <a href="/ru/">AtlasDays</a> / <a href="/ru/learn/">Правила поездок</a>
+    </nav>
+    <h1>Шенгенский калькулятор: проверьте свои дни по правилу 90/180</h1>
+    <p class="subtitle">Для каждой поездки нажмите на день въезда и день выезда. Трекер покажет, сколько из ваших 90 дней использовано за 180 дней до любой выбранной даты, с учётом запланированных поездок.</p>
+    <p class="verified">Последняя проверка: октябрь 2026 года</p>
+
+    <h2>Посчитайте свои дни</h2>
+    <div class="daycal" id="schengen" data-day-calendar="schengen">
+      <script type="application/json" data-cal-strings>
+{
+  "hintStart": "Нажмите на день, чтобы добавить поездку.",
+  "hintEnd": "Теперь нажмите на другой край поездки.",
+  "hintSelected": "Перетащите любой край поездки, чтобы изменить даты, или удалите её ниже.",
+  "inTrip": "в Шенгенской зоне",
+  "pending": "начало новой поездки",
+  "empty": "Поездок пока нет.",
+  "deleteTrip": "Удалить поездку",
+  "country": "Страна",
+  "addCountry": "Добавить страну",
+  "noMatch": "Шенгенская страна не найдена",
+  "area": "Шенгенская зона",
+  "checkOn": "Дата проверки",
+  "tripDays": {
+    "one": "{n} день",
+    "few": "{n} дня",
+    "many": "{n} дней",
+    "other": "{n} дня"
+  },
+  "remaining": {
+    "one": "Остался {n} день",
+    "few": "Осталось {n} дня",
+    "many": "Осталось {n} дней",
+    "other": "Осталось {n} дня"
+  },
+  "atLimit": "Лимит достигнут",
+  "overBy": {
+    "one": "Лимит превышен на {n} день",
+    "few": "Лимит превышен на {n} дня",
+    "many": "Лимит превышен на {n} дней",
+    "other": "Лимит превышен на {n} дня"
+  },
+  "lineOver": "Ваши поездки превышают лимит 90 дней {date}.",
+  "lineNoCountry": {
+    "one": "{n} день без указанной страны",
+    "few": "{n} дня без указанной страны",
+    "many": "{n} дней без указанной страны",
+    "other": "{n} дня без указанной страны"
+  }
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>П</span><span>В</span><span>С</span><span>Ч</span><span>П</span><span>С</span><span>В</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>Хронология</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Отслеживать в AtlasDays</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="schengen-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="schengen-import-title">Отслеживать в AtlasDays</p>
+            <p class="cal-dialog-sub">Продолжайте подсчёт дней в дороге. Бесплатное приложение для iPhone и iPad.</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>Убедитесь, что AtlasDays установлено на вашем iPhone или iPad</strong><span>Бесплатно в App Store.</span></li>
+            <li><strong>Отсканируйте QR-код, чтобы загрузить все поездки в AtlasDays</strong><span>Проверьте их и нажмите «Импортировать».</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>Скачайте AtlasDays</strong><span>Бесплатно в App Store. Уже установлено? Переходите к шагу 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+          <li><strong>Откройте поездки в приложении</strong><span>Проверьте их и нажмите «Импортировать». До этого ничего не сохраняется.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Открыть в AtlasDays</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>Скачайте AtlasDays</strong><span>Бесплатно в App Store для iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+          <li><strong>Импортируйте поездки из файла</strong><span>Столько поездок не поместится в ссылку. Скачайте файл и откройте его в AtlasDays на iPhone.</span><button type="button" class="cal-dialog-primary" data-cal-download>Скачать файл</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Или импортировать из файла</button><span data-cal-downloaded hidden>Откройте его в AtlasDays на iPhone.</span></p>
+          <button type="button" data-cal-close>Закрыть</button>
+        </div>
+      </dialog>
+    </div>
+    <p class="cal-private">Всё остаётся в вашем браузере: введённые данные никуда не отправляются и не сохраняются.</p>
+
+    <h2>Как считает калькулятор</h2>
+    <ul>
+      <li><strong>Засчитывается любая часть дня.</strong> И день въезда, и день выезда считаются днями в Шенгенской зоне, поэтому с 1 по 10 июня — это десять дней.</li>
+      <li><strong>Один лимит на всю зону.</strong> Эти 90 дней действуют для всех шенгенских стран вместе, а не для каждой страны отдельно. День, проведённый в двух шенгенских странах, засчитывается один раз.</li>
+      <li><strong>Любые 180 дней.</strong> Укажите в поле «Дата проверки» нужную дату — сегодняшнюю или дату запланированного въезда, — и трекер посчитает ваши дни за 180 дней, которые заканчиваются этой датой. Каждый более ранний день, который выпадает из этого окна, освобождает один день.</li>
+      <li><strong>Запланированные поездки тоже учитываются.</strong> Если отмеченные поездки когда-либо дают в сумме более 90 дней за 180, строка под трекером назовёт эту дату.</li>
+    </ul>
+
+    <h2>Когда действуют другие правила</h2>
+    <p>Правило 90/180 касается краткосрочного пребывания. В некоторых ситуациях действуют свои правила, и их объясняют отдельные руководства:</p>
+    <ul>
+      <li><strong>Долгосрочные визы и виды на жительство.</strong> Дни, проведённые по национальной долгосрочной визе или виду на жительство в ЕС, не входят в эти 90. Подробнее — в статье о <a href="/ru/learn/schengen-90-180-rule">правиле 90/180</a>.</li>
+      <li><strong>Виза на меньший срок.</strong> Если ваша виза разрешает менее 90 дней, действует этот более короткий срок. Подробнее — в статье об <a href="/ru/learn/schengen-single-entry-visa">однократных шенгенских визах</a>; в AtlasDays есть трекер для дней по вашей визе.</li>
+      <li><strong>Какие страны учитываются.</strong> Шенген — не то же самое, что ЕС: Кипр и Ирландия в него не входят, а Норвегия и Швейцария входят. Смотрите <a href="/ru/learn/schengen-countries-list-90-180-rule">список стран Шенгенской зоны</a>.</li>
+    </ul>
+    <p>Как окно сдвигается день за днём, показывает <a href="/ru/learn/schengen-rolling-window-walkthrough">разбор скользящего окна</a>, а когда дни возвращаются — статья <a href="/ru/learn/when-do-you-get-schengen-days-back-after-90-day-stay">«Когда возвращаются шенгенские дни»</a>.</p>
+
+    <div class="cta-box">
+      <span class="cta-logo">
+        <img class="logo-dark" src="/assets/brand/logo_dark.png?v=20260325a" alt="Логотип AtlasDays" width="52" height="52" />
+        <img class="logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="Логотип AtlasDays" width="52" height="52" />
+      </span>
+      <h2>Продолжайте считать дни в поездках</h2>
+      <p>Калькулятор проверяет поездки, которые вы помните сегодня. AtlasDays считает ваши шенгенские дни по ходу поездок — конфиденциально, на вашем iPhone — и заранее предупреждает, если поездка выведет вас за 90 дней.</p>
+      <a class="cta-btn" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> Скачать AtlasDays</a>
+    </div>
+
+    <h2>Частые вопросы</h2>
+    <h3>Засчитываются ли и день въезда, и день выезда?</h3>
+    <p>Да. День въезда — первый день пребывания, а день выезда — последний, даже если вы прибыли поздно ночью или уехали рано утром. Калькулятор засчитывает оба.</p>
+    <h3>Когда возвращаются шенгенские дни?</h3>
+    <p>По одному: каждый день, проведённый в зоне, перестаёт учитываться через 180 дней. Укажите в поле «Дата проверки» более позднюю дату, чтобы увидеть, сколько дней у вас будет тогда, или прочитайте статью <a href="/ru/learn/when-do-you-get-schengen-days-back-after-90-day-stay">«Когда возвращаются шенгенские дни»</a>.</p>
+    <h3>Это официальный калькулятор ЕС?</h3>
+    <p>Нет. Европейская комиссия публикует собственный калькулятор краткосрочного пребывания. Этот считает так же — 90 дней за любые 180, включая дни въезда и выезда, — и позволяет сохранить поездки в AtlasDays. Решение принимают пограничные и визовые власти.</p>
+    <h3>Сохраняются ли мои данные?</h3>
+    <p>Нет. Калькулятор работает в браузере и не отправляет, не записывает и не сохраняет введённые даты. При закрытии или обновлении страницы они исчезнут. Чтобы сохранить их, нажмите «Отслеживать в AtlasDays».</p>

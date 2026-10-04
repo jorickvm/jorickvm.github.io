@@ -1,0 +1,131 @@
+    <nav class="breadcrumb">
+      <a href="/fr/">AtlasDays</a> / <a href="/fr/learn/">Règles de voyage</a>
+    </nav>
+    <h1>Calculateur Schengen : vérifiez vos 90 jours sur 180</h1>
+    <p class="subtitle">Pour chaque séjour, touchez le jour de votre entrée et celui de votre sortie. Le suivi indique combien de vos 90 jours vous avez utilisés sur les 180 jours qui mènent à la date de votre choix, voyages prévus compris.</p>
+    <p class="verified">Dernière vérification : octobre 2026</p>
+
+    <h2>Comptez vos jours</h2>
+    <div class="daycal" id="schengen" data-day-calendar="schengen">
+      <script type="application/json" data-cal-strings>
+{
+  "hintStart": "Touchez un jour pour ajouter un séjour.",
+  "hintEnd": "Touchez maintenant l’autre extrémité du séjour.",
+  "hintSelected": "Faites glisser l’une des extrémités du séjour pour modifier ses dates, ou supprimez-le ci-dessous.",
+  "inTrip": "dans l’espace Schengen",
+  "pending": "début d’un nouveau séjour",
+  "empty": "Aucun séjour pour l’instant.",
+  "deleteTrip": "Supprimer le séjour",
+  "country": "Pays",
+  "addCountry": "Ajouter un pays",
+  "noMatch": "Aucun pays Schengen correspondant",
+  "area": "Espace Schengen",
+  "checkOn": "Date de calcul",
+  "tripDays": {
+    "one": "{n} jour",
+    "many": "{n} jours",
+    "other": "{n} jours"
+  },
+  "remaining": {
+    "one": "Encore {n} jour",
+    "many": "Encore {n} jours",
+    "other": "Encore {n} jours"
+  },
+  "atLimit": "Limite atteinte",
+  "overBy": {
+    "one": "Dépassement de {n} jour",
+    "many": "Dépassement de {n} jours",
+    "other": "Dépassement de {n} jours"
+  },
+  "lineOver": "Vos séjours dépassent les 90 jours le {date}.",
+  "lineNoCountry": {
+    "one": "{n} jour sans pays",
+    "many": "{n} jours sans pays",
+    "other": "{n} jours sans pays"
+  }
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>Chronologie</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Suivre ces séjours dans AtlasDays</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="schengen-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="schengen-import-title">Suivre ces séjours dans AtlasDays</p>
+            <p class="cal-dialog-sub">Continuez à compter vos jours en voyage. App gratuite pour iPhone et iPad.</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>Assurez-vous d’avoir AtlasDays sur votre iPhone ou iPad</strong><span>Gratuit sur l’App Store.</span></li>
+            <li><strong>Scannez le code QR pour charger tous les voyages dans AtlasDays</strong><span>Vérifiez-les, puis touchez « Importer ».</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>Téléchargez AtlasDays</strong><span>Gratuit sur l’App Store. Vous l’avez déjà ? Passez à l’étape 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+          <li><strong>Ouvrez vos séjours dans l’app</strong><span>Vérifiez-les, puis touchez « Importer ». Rien n’est enregistré avant.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Ouvrir dans AtlasDays</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>Téléchargez AtlasDays</strong><span>Gratuit sur l’App Store, pour iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+          <li><strong>Importez vos séjours avec un fichier</strong><span>Il y a trop de séjours pour qu’un lien puisse tous les transmettre. Téléchargez le fichier et ouvrez-le sur votre iPhone avec AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Télécharger le fichier</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Importer plutôt avec un fichier</button><span data-cal-downloaded hidden>Ouvrez-le sur votre iPhone avec AtlasDays.</span></p>
+          <button type="button" data-cal-close>Fermer</button>
+        </div>
+      </dialog>
+    </div>
+    <p class="cal-private">Tout reste dans votre navigateur : rien de ce que vous saisissez n’est envoyé ni enregistré.</p>
+
+    <h2>Comment le calculateur compte les jours</h2>
+    <ul>
+      <li><strong>Toute fraction de journée compte.</strong> Le jour d’entrée et le jour de sortie sont tous deux des jours dans l’espace Schengen : du 1er au 10 juin, cela fait dix jours.</li>
+      <li><strong>Un seul total pour tout l’espace.</strong> Les 90 jours valent pour l’ensemble des pays Schengen, et non pour chaque pays séparément. Un jour passé dans deux pays Schengen ne compte qu’une fois.</li>
+      <li><strong>Sur toute période de 180 jours.</strong> Réglez « Date de calcul » sur aujourd’hui ou sur une entrée prévue, et le suivi compte vos jours sur les 180 jours qui mènent à cette date. Chaque jour plus ancien qui sort de cette fenêtre vous libère un jour.</li>
+      <li><strong>Les voyages prévus comptent aussi.</strong> Si les séjours que vous marquez dépassent à un moment 90 jours sur 180, la ligne sous le suivi indique à quelle date.</li>
+    </ul>
+
+    <h2>Quand d’autres règles s’appliquent</h2>
+    <p>Le décompte du 90/180 concerne les courts séjours. Certaines situations obéissent à leurs propres règles, que chaque guide explique :</p>
+    <ul>
+      <li><strong>Visas de long séjour et titres de séjour.</strong> Les jours passés sous couvert d’un visa national de long séjour ou d’un titre de séjour délivré dans l’UE ne comptent pas dans les 90. Voir <a href="/fr/learn/schengen-90-180-rule">la règle du 90/180</a>.</li>
+      <li><strong>Un visa pour moins de jours.</strong> Si votre visa autorise moins de 90 jours, c’est ce séjour plus court qui s’applique. Voir <a href="/fr/learn/schengen-single-entry-visa">les visas Schengen à entrée unique</a> ; AtlasDays propose un suivi pour les jours de votre visa.</li>
+      <li><strong>Quels pays comptent.</strong> L’espace Schengen ne se confond pas avec l’UE : Chypre et l’Irlande n’en font pas partie, la Norvège et la Suisse si. Voir la <a href="/fr/learn/schengen-countries-list-90-180-rule">liste des pays Schengen</a>.</li>
+    </ul>
+    <p>Pour voir la fenêtre avancer jour après jour, lisez <a href="/fr/learn/schengen-rolling-window-walkthrough">l’explication pas à pas de la fenêtre glissante</a> et, pour savoir quand les jours reviennent, <a href="/fr/learn/when-do-you-get-schengen-days-back-after-90-day-stay">quand vous récupérez vos jours Schengen</a>.</p>
+
+    <div class="cta-box">
+      <span class="cta-logo">
+        <img class="logo-dark" src="/assets/brand/logo_dark.png?v=20260325a" alt="Logo AtlasDays" width="52" height="52" />
+        <img class="logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="Logo AtlasDays" width="52" height="52" />
+      </span>
+      <h2>Continuez le décompte au fil des voyages</h2>
+      <p>Le calculateur vérifie les séjours dont vous vous souvenez aujourd’hui. AtlasDays continue de compter vos jours Schengen au fil de vos voyages, en privé sur votre iPhone, et vous prévient avant qu’un voyage ne vous fasse dépasser les 90 jours.</p>
+      <a class="cta-btn" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> Télécharger AtlasDays</a>
+    </div>
+
+    <h2>Questions fréquentes</h2>
+    <h3>Le jour d’entrée et le jour de sortie comptent-ils tous les deux ?</h3>
+    <p>Oui. Le jour d’entrée est le premier jour de votre séjour et le jour de sortie le dernier, même si vous arrivez tard le soir ou repartez tôt le matin. Le calculateur compte les deux.</p>
+    <h3>Quand est-ce que je récupère mes jours Schengen ?</h3>
+    <p>Un jour à la fois : chaque jour passé dans l’espace Schengen cesse de compter 180 jours plus tard. Réglez « Date de calcul » sur une date ultérieure pour voir combien de jours vous aurez alors, ou lisez <a href="/fr/learn/when-do-you-get-schengen-days-back-after-90-day-stay">quand vous récupérez vos jours Schengen</a>.</p>
+    <h3>Est-ce le calculateur officiel de l’UE ?</h3>
+    <p>Non. La Commission européenne publie son propre calculateur de court séjour. Celui-ci compte de la même manière, 90 jours sur toute période de 180 jours, jours d’entrée et de sortie compris, et vous permet de conserver vos séjours dans AtlasDays. La décision revient aux autorités chargées des frontières et des visas.</p>
+    <h3>Mes données sont-elles enregistrées ?</h3>
+    <p>Non. Le calculateur fonctionne dans votre navigateur et n’envoie, ne journalise ni n’enregistre les dates saisies. Elles disparaissent à la fermeture ou au rechargement de la page. Pour les conserver, touchez « Suivre ces séjours dans AtlasDays ».</p>

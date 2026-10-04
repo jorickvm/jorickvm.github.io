@@ -225,6 +225,15 @@
       '<image href="' + icon + '" x="' + imgAt + '" y="' + imgAt + '" width="' + img + '" height="' + img + '" clip-path="url(#cal-qr-icon)"/></svg>';
   }
 
+  // The code sits beside the steps at a compact size. A click enlarges it to
+  // about 4 px a module, for a screen where a big code is hard to scan.
+  function sizeQr(box) {
+    var modules = box.firstChild.viewBox.baseVal.width;
+    box.style.width = Math.round(box.classList.contains("is-large")
+      ? Math.min(492, Math.max(260, modules * 4.4))
+      : Math.min(240, Math.max(200, modules * 3))) + "px";
+  }
+
   function DayCalendar(root) {
     var rule = (window.AtlasDaysRules || {})[root.getAttribute("data-day-calendar")];
     if (!rule) return;
@@ -852,8 +861,11 @@
         box.textContent = "";
         if (mode === "computer") loadQr(function () {
           box.innerHTML = qrSvg(LINK.universal + frag);
-          // Bigger codes get more room, so a module stays at about 4 px where the dialog allows.
-          box.style.width = Math.round(Math.min(396, Math.max(208, box.firstChild.viewBox.baseVal.width * 4))) + "px";
+          // On a 1x screen a big code is too fine at the compact size: start large.
+          var big = (window.devicePixelRatio || 1) < 1.5 && box.firstChild.viewBox.baseVal.width * 3 > 240;
+          box.classList.toggle("is-large", big);
+          box.parentNode.classList.toggle("is-large", big);
+          sizeQr(box);
         });
       }
       dialog.showModal();
@@ -918,6 +930,13 @@
     });
     root.querySelectorAll("[data-cal-close]").forEach(function (btn) { btn.addEventListener("click", function () { dialog.close(); }); });
     if (dialog) dialog.addEventListener("click", function (e) { if (e.target === dialog) dialog.close(); });
+    var qrBox = dialog && dialog.querySelector("[data-cal-qr]");
+    if (qrBox) qrBox.addEventListener("click", function () {
+      if (!qrBox.firstChild) return;
+      qrBox.classList.toggle("is-large");
+      qrBox.parentNode.classList.toggle("is-large", qrBox.classList.contains("is-large"));
+      sizeQr(qrBox);
+    });
 
     render();
     var start = rule.range(ctx());

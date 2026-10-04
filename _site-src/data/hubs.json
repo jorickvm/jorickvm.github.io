@@ -269,6 +269,70 @@
       ],
       "current_navigation": "learn",
       "page_scripts": "<script>\n(function () {\n    var input = document.getElementById('hubSearch');\n    var rows = Array.prototype.slice.call(document.querySelectorAll('.hub-row'));\n    var noResults = document.getElementById('hubNoResults');\n    // Whole-row click opens the article (the country name stays a real link for\n    // accessibility and crawlers; this just widens the tap target).\n    rows.forEach(function (r) {\n      r.addEventListener('click', function (e) {\n        if (e.target.closest('a')) return;\n        var href = r.getAttribute('data-href');\n        if (href) window.location.href = href;\n      });\n    });\n    if (!input) return;\n    function apply() {\n      var q = input.value.trim().toLowerCase();\n      var shown = 0;\n      rows.forEach(function (r) {\n        var match = !q || r.getAttribute('data-name').indexOf(q) !== -1;\n        r.hidden = !match;\n        if (match) shown++;\n      });\n      if (noResults) noResults.hidden = shown !== 0;\n    }\n    input.addEventListener('input', apply);\n  })();\n  </script>"
+    },
+    {
+      "path": "learn/calculators.html",
+      "title": "Travel Day Calculators: Schengen, 183 Days and More – AtlasDays",
+      "meta": [
+        {
+          "name": "description",
+          "content": "Free travel day calculators: the Schengen 90/180 rule, the 183-day rule in any country and UK ILR absences. Mark your stays and see where you stand."
+        },
+        {
+          "property": "og:title",
+          "content": "Travel Day Calculators: Schengen, 183 Days and More – AtlasDays"
+        },
+        {
+          "property": "og:description",
+          "content": "Free travel day calculators: the Schengen 90/180 rule, the 183-day rule in any country and UK ILR absences. Mark your stays and see where you stand."
+        },
+        {
+          "property": "og:type",
+          "content": "website"
+        },
+        {
+          "property": "og:url",
+          "content": "https://atlasdays.app/learn/calculators"
+        },
+        {
+          "property": "og:image",
+          "content": "https://atlasdays.app/assets/home/home-hero-dashboard.png"
+        },
+        {
+          "name": "twitter:card",
+          "content": "summary_large_image"
+        },
+        {
+          "name": "twitter:title",
+          "content": "Travel Day Calculators: Schengen, 183 Days and More – AtlasDays"
+        },
+        {
+          "name": "twitter:description",
+          "content": "Free travel day calculators: the Schengen 90/180 rule, the 183-day rule in any country and UK ILR absences. Mark your stays and see where you stand."
+        },
+        {
+          "name": "twitter:image",
+          "content": "https://atlasdays.app/assets/home/home-hero-dashboard.png"
+        },
+        {
+          "name": "apple-itunes-app",
+          "content": "app-id=6760133544, app-argument=https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"
+        }
+      ],
+      "links": [
+        {
+          "rel": "canonical",
+          "href": "https://atlasdays.app/learn/calculators"
+        }
+      ],
+      "jsonld": [
+        "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"CollectionPage\",\n  \"name\": \"Travel Day Calculators: Schengen, 183 Days and More\",\n  \"url\": \"https://atlasdays.app/learn/calculators\",\n  \"description\": \"Free travel day calculators: the Schengen 90/180 rule, the 183-day rule in any country and UK ILR absences.\",\n  \"isPartOf\": {\n    \"@type\": \"WebSite\",\n    \"name\": \"AtlasDays\",\n    \"url\": \"https://atlasdays.app\"\n  },\n  \"mainEntity\": {\n    \"@type\": \"ItemList\",\n    \"itemListElement\": [\n      {\n        \"@type\": \"ListItem\",\n        \"position\": 1,\n        \"url\": \"https://atlasdays.app/learn/schengen-calculator\"\n      },\n      {\n        \"@type\": \"ListItem\",\n        \"position\": 2,\n        \"url\": \"https://atlasdays.app/learn/183-day-rule-calculator\"\n      },\n      {\n        \"@type\": \"ListItem\",\n        \"position\": 3,\n        \"url\": \"https://atlasdays.app/learn/uk-ilr-absence-calculator\"\n      }\n    ]\n  }\n}"
+      ],
+      "content": "content/hubs/learn-calculators.html",
+      "style_variants": [
+        "a2023fe42813"
+      ],
+      "current_navigation": "learn"
     }
   ]
 }
