@@ -875,7 +875,10 @@
       if (pick == null) keys.forEach(function (k) { if (pick == null || seen[k].days > seen[pick].days) pick = k; });
       if (pick === activeMonth) return;
       activeMonth = pick;
-      monthTitle.textContent = monthDate.format(new Date(D.monthStart(pick) * DAY));
+      // A heading starts with a capital, though Dutch, Polish or Russian write
+      // month names lowercase in running text ("wrzesień 2026").
+      var title = monthDate.format(new Date(D.monthStart(pick) * DAY));
+      monthTitle.textContent = title.charAt(0).toLocaleUpperCase(locale) + title.slice(1);
       Object.keys(cells).forEach(function (k) { cells[k].classList.toggle("is-other-month", D.monthKey(+k) !== pick); });
       rows.forEach(function (r) {
         var mon = +r.dataset.monday, first = -1, last = -1;
