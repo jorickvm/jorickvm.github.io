@@ -123,7 +123,7 @@
         "name": "Schengen günlerim ne zaman geri gelir?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Her seferinde bir gün: Bölgede geçirdiğiniz her gün 180 gün sonra sayılmaz olur. O tarihte kaç gününüz olacağını görmek için Kontrol tarihi olarak ileri bir tarih seçin veya Schengen günlerinin ne zaman geri geldiğini okuyun."
+          "text": "Her seferinde bir gün: Bölgede geçirdiğiniz her gün 180 gün sonra sayılmaz olur. O tarihte kaç gününüz olacağını görmek için Dönem sonu olarak ileri bir tarih seçin veya Schengen günlerinin ne zaman geri geldiğini okuyun."
         }
       },
       {
@@ -153,7 +153,7 @@
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20260925a" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
-  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261004d" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261004l" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">İçeriğe geç</a>
@@ -244,7 +244,8 @@
   "addCountry": "Ülke ekle",
   "noMatch": "Eşleşen Schengen ülkesi yok",
   "area": "Schengen Bölgesi",
-  "checkOn": "Kontrol tarihi",
+  "checkOn": "Dönem sonu",
+  "checkOnCaption": "Bu tarihe kadarki 180 gün içindeki günleriniz. Planladığınız bir seyahat için seyahatin son gününü seçin.",
   "tripDays": {
     "one": "{n} gün",
     "other": "{n} gün"
@@ -316,8 +317,8 @@
     <ul>
       <li><strong>Günün herhangi bir kısmı sayılır.</strong> Girdiğiniz gün de çıktığınız gün de Schengen Bölgesi'nde geçirilmiş gün sayılır; bu nedenle 1 Haziran ile 10 Haziran arası on gündür.</li>
       <li><strong>Bölgenin tamamı için tek bir izinli süre.</strong> 90 gün, her ülke için ayrı ayrı değil, tüm Schengen ülkeleri için birlikte geçerlidir. İki Schengen ülkesinde geçirilen bir gün yalnızca bir kez sayılır.</li>
-      <li><strong>Bir tarihe kadarki 180 gün.</strong> Takvim, Kontrol tarihine kadarki 180 günü gösterir; başka bir tarih seçmediğiniz sürece bu tarih bugündür. Takip kartı bu süre içindeki günlerinizi sayar. Dönemin dışına çıkan her eski gün size bir gün geri kazandırır.</li>
-      <li><strong>Seyahat mi planlıyorsunuz?</strong> Kontrol tarihini seyahatin son günü olarak ayarlayın. Bir kalış sırasında gün sayınız yalnızca artabilir; dolayısıyla son gün sınıra sığıyorsa seyahatin tamamı da sığar.</li>
+      <li><strong>Bir tarihe kadarki 180 gün.</strong> Takvim, Dönem sonuna kadarki 180 günü gösterir; başka bir tarih seçmediğiniz sürece bu tarih bugündür. Takip kartı bu süre içindeki günlerinizi sayar. Dönemin dışına çıkan her eski gün size bir gün geri kazandırır.</li>
+      <li><strong>Seyahat mi planlıyorsunuz?</strong> Dönem sonu olarak seyahatin son gününü seçin. Bir kalış sırasında gün sayınız yalnızca artabilir; dolayısıyla son gün sınıra sığıyorsa seyahatin tamamı da sığar.</li>
     </ul>
 
     <h2>Başka kurallar geçerli olduğunda</h2>
@@ -343,7 +344,7 @@
     <h3>Giriş ve çıkış günlerinin ikisi de sayılır mı?</h3>
     <p>Evet. Girdiğiniz gün kalışınızın ilk günü, çıktığınız gün ise son günüdür; gece geç saatte varsanız veya sabah erkenden ayrılsanız bile. Hesaplayıcı ikisini de sayar.</p>
     <h3>Schengen günlerim ne zaman geri gelir?</h3>
-    <p>Her seferinde bir gün: Bölgede geçirdiğiniz her gün 180 gün sonra sayılmaz olur. O tarihte kaç gününüz olacağını görmek için Kontrol tarihi olarak ileri bir tarih seçin veya <a href="/tr/learn/when-do-you-get-schengen-days-back-after-90-day-stay">Schengen günlerinin ne zaman geri geldiğini</a> okuyun.</p>
+    <p>Her seferinde bir gün: Bölgede geçirdiğiniz her gün 180 gün sonra sayılmaz olur. O tarihte kaç gününüz olacağını görmek için Dönem sonu olarak ileri bir tarih seçin veya <a href="/tr/learn/when-do-you-get-schengen-days-back-after-90-day-stay">Schengen günlerinin ne zaman geri geldiğini</a> okuyun.</p>
     <h3>Bu, AB'nin resmî hesaplayıcısı mı?</h3>
     <p>Hayır. Avrupa Komisyonu kendi kısa kalış hesaplayıcısını yayımlar. Bu hesaplayıcı da aynı şekilde sayar (giriş ve çıkış günleri dahil, herhangi bir 180 günde 90 gün) ve kalışlarınızı AtlasDays'de saklamanızı sağlar. Kararı sınır ve vize makamları verir.</p>
     <h3>Verilerim saklanıyor mu?</h3>
@@ -410,8 +411,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"Gezinme menüsünü aç","menuClose":"Gezinme menüsünü kapat"};</script>
   <script src="../../assets/js/navigation.js?v=20260817b"></script>
-  <script defer src="../../assets/js/rules/schengen.js?v=20261004b"></script>
-  <script defer src="../../assets/js/day-calendar.js?v=20261004d"></script>
+  <script defer src="../../assets/js/rules/schengen.js?v=20261004c"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261004k"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

@@ -145,7 +145,7 @@
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20260925a" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
-  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261004d" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261004l" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">本文へスキップ</a>
@@ -219,7 +219,7 @@
     </nav>
     <img class="title-flag" src="/assets/flags/gb.png" alt="英国の国旗" width="56" height="42" />
     <h1>英国ILRの不在日数計算機：任意の12か月間で180日</h1>
-    <p class="subtitle">旅行ごとに、英国を出国した日と帰国した日をタップしてください。任意の日付までの12か月間の不在日数をトラッカーが表示します。予定している旅行も含めて、それより不在日数が多い12か月間があれば、その期間も示します。</p>
+    <p class="subtitle">旅行ごとに、英国を出国した日と帰国した日をタップしてください。予定している旅行も含めて、任意の日付までの12か月間の不在日数をトラッカーが表示します。</p>
     <p class="verified">最終確認：2026年10月</p>
 
     <h2>不在日数を確認</h2>
@@ -240,16 +240,14 @@
     "other": "不在{n}日"
   },
   "title": "英国外で過ごした日数",
-  "checkOn": "基準日",
+  "checkOn": "集計終了日",
+  "checkOnCaption": "この日までの12か月間の不在日数です。予定している旅行を確認するときは、帰国日を選んでください。",
   "remaining": {
     "other": "残り{n}日"
   },
   "atLimit": "上限到達",
   "overBy": {
     "other": "上限を{n}日超過"
-  },
-  "lineWorst": {
-    "other": "不在日数が最も多い12か月間：{from}（不在{n}日）。"
   }
 }
       </script>
@@ -304,8 +302,7 @@
     <h2>計算機の日数の数え方</h2>
     <ul>
       <li><strong>丸1日だけを数えます。</strong>出国日と帰国日は国外滞在日に含めないため、6月1日から6月10日までの旅行の不在日数は8日（6月2日から9日）です。24時間未満の旅行では日数は増えません。</li>
-      <li><strong>ある日付までの12か月間。</strong>トラッカーは「基準日」までの12か月間の不在日数を数えます。基準日は、別の日付を選ばない限り今日です。旅行を計画している場合は、「基準日」を帰国日に設定してください。</li>
-      <li><strong>どの12か月間も対象です。</strong>上限は資格取得期間内の任意の12か月間に適用されるため、計算機は記録したすべての旅行について、あらゆる12か月間も確認します。トラッカーの表示より不在日数が多い期間があれば、その下の行に最も多い期間が表示されます。</li>
+      <li><strong>ある日付までの12か月間。</strong>トラッカーは「集計終了日」までの12か月間の不在日数を数えます。集計終了日は、別の日付を選ばない限り今日です。旅行を計画している場合は、「集計終了日」を帰国日に設定してください。</li>
       <li><strong>365日単位ではなく暦月です。</strong>2027年1月9日までの集計期間は2026年1月10日から始まり、うるう日も含まれます。</li>
     </ul>
 
@@ -399,8 +396,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"ナビゲーションメニューを開く","menuClose":"ナビゲーションメニューを閉じる"};</script>
   <script src="../../assets/js/navigation.js?v=20260817b"></script>
-  <script defer src="../../assets/js/rules/uk-ilr.js?v=20261004a"></script>
-  <script defer src="../../assets/js/day-calendar.js?v=20261004d"></script>
+  <script defer src="../../assets/js/rules/uk-ilr.js?v=20261004c"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261004k"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

@@ -6,11 +6,11 @@
    day you return are not absences.
 
    The card reads like the app's tracker card (Jorick, 2026-10-04): days away
-   in the 12 months up to a "Check on" date (today unless the visitor picks
-   another), against 180, with the app's pill. The rule covers every 12
-   months of the qualifying period, so the calendar keeps five years and a
-   line under the card names the worst 12 months when they hold more days
-   away than the window being checked. */
+   in the 12 months up to a "Count up to" date (today unless the visitor picks
+   another), against 180, with the app's pill. Like the Schengen calculator,
+   the calendar shows exactly those 12 months and the visitor picks the date
+   to check (Jorick, 2026-10-04): a planned trip is checked on the day of
+   return, when its count is highest. */
 (function () {
   "use strict";
 
@@ -31,19 +31,6 @@
     absences(trips).forEach(function (t) { for (var d = t.start + 1; d < t.end; d++) set.add(d); });
     return set;
   }
-  // Highest total in any 12-month window; the worst window always ends on an
-  // absence day, so only those are checked.
-  function worstWindow(D, set) {
-    var days = Array.from(set).sort(function (a, b) { return a - b; });
-    var best = { total: 0, from: null, to: null };
-    days.forEach(function (e) {
-      var from = D.shiftYears(e, -1) + 1, total = 0;
-      for (var i = 0; i < days.length; i++) if (days[i] >= from && days[i] <= e) total++;
-      if (total > best.total) best = { total: total, from: from, to: e };
-    });
-    return best;
-  }
-
   var LIMIT = 180;
   function checkOn(c) {
     var iso = c.settings.checkOn;
@@ -57,13 +44,14 @@
     travelDaysCount: false,
     singleDayTrips: false,
     quietHint: true,
+    fixedRange: true,
 
     // Trips are absences, so they can be anywhere but the UK.
     countries: function (all) { return all.filter(function (code) { return code !== "GB"; }); },
 
     range: function (c) {
       var on = checkOn(c);
-      return { from: Math.min(c.D.shiftYears(c.today, -5), c.D.shiftYears(on, -1) + 1), to: Math.max(c.D.shiftYears(c.today, 1), on) };
+      return { from: c.D.shiftYears(on, -1) + 1, to: on };
     },
 
     // A trip's own whole days away. The day it takes over from another trip
@@ -76,16 +64,14 @@
     evaluate: function (trips, c) {
       var set = absentDays(trips), on = checkOn(c), from = c.D.shiftYears(on, -1) + 1, away = 0;
       set.forEach(function (d) { if (d >= from && d <= on) away++; });
-      var left = LIMIT - away, worst = worstWindow(c.D, set), lines = [];
-      // The rule is any 12 months: say so when another stretch is worse.
-      if (worst.total > away) lines.push(c.text("lineWorst", { n: worst.total, from: c.dateRange(worst.from, worst.to) }));
+      var left = LIMIT - away;
       return {
         controls: [
-          { type: "date", key: "checkOn", icon: "calendar", label: c.text("checkOn"), value: c.D.iso(on), display: c.dateRange(on, on), moveCalendar: true }
+          { type: "date", key: "checkOn", icon: "calendar", label: c.text("checkOn"), caption: c.text("checkOnCaption"), value: c.D.iso(on), display: c.dateRange(on, on), moveCalendar: true }
         ],
         meter: { title: c.text("title"), flag: "GB", label: c.dateRange(from, on), days: away, limit: LIMIT, tone: c.tone(away, LIMIT, false) },
         statusText: left > 0 ? c.text("remaining", { n: left }) : left === 0 ? c.text("atLimit") : c.text("overBy", { n: -left }),
-        lines: lines
+        lines: []
       };
     },
 
@@ -124,11 +110,11 @@
       fileName: "atlasdays-uk-stays.csv",
       tripAway: { one: "{n} day away", other: "{n} days away" },
       title: "Days outside the UK",
-      checkOn: "Check on",
+      checkOn: "Count up to",
+      checkOnCaption: "Your days abroad in the 12 months up to this date. For a planned trip, pick the day you come back.",
       remaining: { one: "{n} day remaining", other: "{n} days remaining" },
       atLimit: "At limit",
-      overBy: { one: "Over limit by {n} day", other: "Over limit by {n} days" },
-      lineWorst: { one: "Worst 12 months: {n} day away, {from}.", other: "Worst 12 months: {n} days away, {from}." }
+      overBy: { one: "Over limit by {n} day", other: "Over limit by {n} days" }
     }
   };
 })();

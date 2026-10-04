@@ -3,7 +3,7 @@
     </nav>
     <img class="title-flag" src="/assets/flags/gb.png" alt="Bandeira do Reino Unido" width="56" height="42" />
     <h1>Calculadora de ausências para ILR: 180 dias em qualquer período de 12 meses</h1>
-    <p class="subtitle">Em cada viagem, toque no dia em que saiu do Reino Unido e no dia em que voltou. O controle mostra seus dias no exterior nos 12 meses até qualquer data, incluindo as viagens planejadas, e indica o seu pior período de 12 meses quando ele tem mais dias.</p>
+    <p class="subtitle">Em cada viagem, toque no dia em que saiu do Reino Unido e no dia em que voltou. O controle mostra seus dias no exterior nos 12 meses até qualquer data, incluindo as viagens planejadas.</p>
     <p class="verified">Última verificação: outubro de 2026</p>
 
     <h2>Confira suas ausências</h2>
@@ -26,7 +26,8 @@
     "many": "{n} dias fora"
   },
   "title": "Dias fora do Reino Unido",
-  "checkOn": "Data de referência",
+  "checkOn": "Contar até",
+  "checkOnCaption": "Seus dias no exterior nos 12 meses até esta data. Para uma viagem planejada, escolha o dia da volta.",
   "remaining": {
     "one": "{n} dia restante",
     "other": "{n} dias restantes",
@@ -37,11 +38,6 @@
     "one": "{n} dia acima do limite",
     "other": "{n} dias acima do limite",
     "many": "{n} dias acima do limite"
-  },
-  "lineWorst": {
-    "one": "Pior período de 12 meses: {n} dia fora, {from}.",
-    "other": "Pior período de 12 meses: {n} dias fora, {from}.",
-    "many": "Pior período de 12 meses: {n} dias fora, {from}."
   }
 }
       </script>
@@ -96,8 +92,7 @@
     <h2>Como a calculadora faz a contagem</h2>
     <ul>
       <li><strong>Só dias inteiros.</strong> O dia da partida e o dia da volta não contam como dias no exterior, então uma viagem de 1º a 10 de junho representa oito dias fora (2 a 9 de junho), e uma viagem de menos de 24 horas não soma nenhum dia.</li>
-      <li><strong>Os 12 meses até uma data.</strong> O controle conta seus dias no exterior nos 12 meses até a Data de referência, que é hoje, a menos que você escolha outra data. Planejando uma viagem? Defina a Data de referência como o dia da volta.</li>
-      <li><strong>E também cada período de 12 meses.</strong> O limite vale para quaisquer 12 meses do seu período de qualificação, então a calculadora também confere cada intervalo de 12 meses nas viagens que você marcar. Se algum tiver mais dias fora do que o controle mostra, a linha abaixo dele indica o pior.</li>
+      <li><strong>Os 12 meses até uma data.</strong> O controle conta seus dias no exterior nos 12 meses até a data em “Contar até”, que é hoje, a menos que você escolha outra. Planejando uma viagem? Em “Contar até”, escolha o dia da volta.</li>
       <li><strong>Meses de calendário, não blocos de 365 dias.</strong> A janela encerrada em 9 de janeiro de 2027 começa em 10 de janeiro de 2026; dias de ano bissexto entram quando houver.</li>
     </ul>
 

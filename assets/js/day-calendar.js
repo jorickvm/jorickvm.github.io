@@ -83,6 +83,7 @@
   // calendar.badge.clock); SF Symbols themselves are licensed for Apple
   // platforms only, so these are drawn here.
   var ICONS = {
+    trash: '<path d="M4.5 6h11M8 6V4.5h4V6M6 6l.7 9.5h6.6L14 6"/>',
     target: '<circle cx="10" cy="10" r="7.25"/><circle cx="10" cy="10" r="4"/><circle cx="10" cy="10" r="0.9" fill="currentColor"/>',
     calendar: '<rect x="3" y="4.5" width="14" height="12.5" rx="2.5"/><path d="M3 8.5h14M7 2.75v3M13 2.75v3"/>',
     starts: '<rect x="3" y="4.5" width="11" height="11" rx="2.5"/><path d="M3 8.5h11M6.5 2.75v3M10.5 2.75v3"/><circle cx="14.25" cy="14.25" r="3.6" fill="var(--bg-card)"/><path d="M14.25 12.6v1.8l1.2.8"/>',
@@ -225,13 +226,22 @@
       '<image href="' + icon + '" x="' + imgAt + '" y="' + imgAt + '" width="' + img + '" height="' + img + '" clip-path="url(#cal-qr-icon)"/></svg>';
   }
 
-  // The code sits beside the steps at a compact size. A click enlarges it to
-  // about 4 px a module, for a screen where a big code is hard to scan.
+  // The code sits beside the steps at a compact size. On a 1x screen a big code
+  // opens larger (about 4 px a module), because a camera cannot read it smaller.
   function sizeQr(box) {
     var modules = box.firstChild.viewBox.baseVal.width;
     box.style.width = Math.round(box.classList.contains("is-large")
       ? Math.min(492, Math.max(260, modules * 4.4))
       : Math.min(240, Math.max(200, modules * 3))) + "px";
+    stackQr(box);
+  }
+  // When the steps no longer fit beside the code they go under it, and the
+  // code moves in to line up with the text.
+  function stackQr(box) {
+    var scan = box.parentNode;
+    scan.classList.remove("is-stacked");
+    var stacked = scan.classList.contains("is-large") || scan.clientWidth < box.offsetWidth + 18 + 200;
+    scan.classList.toggle("is-stacked", stacked);
   }
 
   function DayCalendar(root) {
@@ -272,13 +282,20 @@
     var allowed = (rule.countries && rule.countries(PLACES)) || PLACES;
     var defaultCountry = allowed.length === 1 ? allowed[0] : (rule.defaultCountry || "");
     var recent = [];
-    var settings = {}; // choices made in the rule's result menus (rule.evaluate -> controls)
+    // An article can embed a calculator preset to its own rule:
+    // data-cal-preset = { settings, lock, link }. Locked choices show no
+    // control, a locked country shows as a plain title, and link replaces the
+    // rule's own `c` in the import link (e.g. 183-es).
+    var preset = {};
+    try { preset = JSON.parse(root.getAttribute("data-cal-preset") || "{}"); } catch (e) { preset = {}; }
+    var locked = preset.lock || [];
+    var settings = Object.assign({}, preset.settings || {}); // choices made in the rule's result menus (rule.evaluate -> controls)
     var finePointer = !!(window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches);
     var rows = [], cells = {}, firstMonday = 0, activeMonth = null, clipFrom = null, clipTo = null;
     var englishNames = null;
     try { englishNames = new Intl.DisplayNames(["en"], { type: "region" }); } catch (e) {}
 
-    function ctx() { return { today: today, D: D, label: label, plural: plural, text: text, trips: trips, placeName: placeName, settings: settings, dateRange: dateRange, tone: tone }; }
+    function ctx() { return { today: today, D: D, label: label, plural: plural, text: text, trips: trips, placeName: placeName, settings: settings, dateRange: dateRange, tone: tone, embedded: !!preset.settings }; }
     // A new trip starts with the rule's fixed country, or (rule.carryCountry)
     // the country picked last, so a run of stays in one country is quick.
     function newCountry() {
@@ -616,6 +633,10 @@
         left = Math.max(8, Math.min(left, window.innerWidth - width - 8));
         box.style.left = left + "px";
         box.style.width = width + "px";
+        width = Math.max(width, Math.min(256, window.innerWidth - 16));
+        left = Math.max(8, Math.min(left, window.innerWidth - width - 8));
+        box.style.left = left + "px";
+        box.style.width = width + "px";
         var below = window.innerHeight - r.bottom - 12, h = Math.min(box.scrollHeight, 260);
         box.style.top = (below >= Math.min(h, 160) || below >= r.top ? r.bottom + 6 : Math.max(8, r.top - 6 - h)) + "px";
       }
@@ -628,7 +649,9 @@
       function mark() { Array.prototype.forEach.call(box.children, function (li, i) { li.classList.toggle("is-active", i === active); }); }
       input.addEventListener("focus", function () { if (current) input.select(); show(); });
       input.addEventListener("input", show);
-      input.addEventListener("blur", function () { close(); if (current) input.value = placeName(current); });
+      input.addEventListener("blur", function () { close(); if (current) input.value = placeName(current); fitInput(input); });
+      // The field is as wide as the name, so only the name itself opens the list.
+      input.addEventListener("input", function () { fitInput(input); });
       input.addEventListener("keydown", function (e) {
         if (e.key === "ArrowDown" || e.key === "ArrowUp") { e.preventDefault(); if (!options.length) return; active = (active + (e.key === "ArrowDown" ? 1 : options.length - 1)) % options.length; mark(); }
         else if (e.key === "Enter") { e.preventDefault(); if (options[active]) choose(options[active].code); }
@@ -659,13 +682,18 @@
         card.appendChild(name);
         var line = el("div", { "class": "cal-trip-line" });
         line.appendChild(el("span", { "class": "cal-trip-dates" }, dateRange(t.start, t.end)));
-        line.appendChild(el("span", { "class": "cal-trip-count" }, rule.tripLabel(t, ctx())));
-        card.appendChild(line);
+        // The selected card swaps its day count for Delete, on the same line,
+        // so nothing opens up below it.
         if (isSel) {
-          var del = el("button", { type: "button", "class": "cal-delete" }, S.deleteTrip);
+          var del = el("button", { type: "button", "class": "cal-delete" });
+          del.appendChild(icon("trash"));
+          del.appendChild(document.createTextNode(S.deleteTrip));
           del.addEventListener("click", function (e) { e.stopPropagation(); removeTrip(idx); });
-          card.appendChild(del);
+          line.appendChild(del);
+        } else {
+          line.appendChild(el("span", { "class": "cal-trip-count" }, rule.tripLabel(t, ctx())));
         }
+        card.appendChild(line);
         card.addEventListener("click", function (e) {
           if (e.target.closest(".cal-country-field")) return;
           selected = isSel ? -1 : idx;
@@ -675,6 +703,7 @@
         });
         list.appendChild(card);
       });
+      list.querySelectorAll(".cal-country-input").forEach(fitInput);
     }
 
     // A rule's result can carry menus (controls), an app-style meter and a
@@ -744,26 +773,29 @@
       var r = rule.evaluate(trips, ctx());
       result.textContent = "";
       settingsRow.textContent = "";
-      settingsRow.hidden = !(r.controls && r.controls.length);
-      (r.controls || []).forEach(function (ctl) {
+      var shown = (r.controls || []).filter(function (ctl) { return locked.indexOf(ctl.key) < 0; });
+      settingsRow.hidden = !shown.length;
+      shown.forEach(function (ctl) {
         var row = el("div", { "class": "cal-setting" });
         if (ctl.icon) row.appendChild(icon(ctl.icon));
         row.appendChild(el("span", { "class": "cal-setting-label" }, ctl.label || ""));
         row.appendChild(control(ctl));
         settingsRow.appendChild(row);
+        // A setting can explain itself in one quiet line under its row.
+        if (ctl.caption) settingsRow.appendChild(el("p", { "class": "cal-setting-caption" }, ctl.caption));
       });
       if (r.meter) {
         var m = r.meter;
         // The app's card header: flag and title on the left, status pill on the right.
         if (m.title != null) {
           var head = el("div", { "class": "cal-card-head" });
-          if (m.countryKey) {
+          if (m.countryKey && locked.indexOf(m.countryKey) < 0) {
             head.appendChild(control({ type: "country", key: m.countryKey, value: m.flag || "", label: m.title }));
           } else {
             var flag = el("span", { "class": "cal-flag" + (m.flag ? "" : " is-empty") });
             if (m.flag) flag.appendChild(flagImg(m.flag, 28));
             head.appendChild(flag);
-            head.appendChild(el("span", { "class": "cal-card-title" + (m.flag ? "" : " is-placeholder") }, m.title));
+            head.appendChild(el("span", { "class": "cal-card-title" + (m.flag ? "" : " is-placeholder") }, m.countryKey && m.flag ? placeName(m.flag) : m.title));
           }
           if (r.statusText) head.appendChild(el("span", { "class": "cal-pill tone-" + m.tone }, r.statusText));
           result.appendChild(head);
@@ -859,7 +891,7 @@
     function openImport() {
       var rows = rule.exportRows(trips, ctx()).slice().sort(function (a, b) { return a.start - b.start; });
       if (!dialog || !dialog.showModal) return downloadCsv();
-      var frag = rows.length ? importFragment(rows, rule.linkId) : "";
+      var frag = rows.length ? importFragment(rows, preset.link || rule.linkId) : "";
       var mode = rows.length > LINK.maxStays ? "file"
         : inApp || appleTouch ? "phone"
         : rows.length <= LINK.maxQrStays ? "computer" : "file";
@@ -954,12 +986,7 @@
     root.querySelectorAll("[data-cal-close]").forEach(function (btn) { btn.addEventListener("click", function () { dialog.close(); }); });
     if (dialog) dialog.addEventListener("click", function (e) { if (e.target === dialog) dialog.close(); });
     var qrBox = dialog && dialog.querySelector("[data-cal-qr]");
-    if (qrBox) qrBox.addEventListener("click", function () {
-      if (!qrBox.firstChild) return;
-      qrBox.classList.toggle("is-large");
-      qrBox.parentNode.classList.toggle("is-large", qrBox.classList.contains("is-large"));
-      sizeQr(qrBox);
-    });
+    window.addEventListener("resize", function () { if (dialog.open && qrBox && qrBox.firstChild) stackQr(qrBox); });
 
     render();
     var start = rule.range(ctx());

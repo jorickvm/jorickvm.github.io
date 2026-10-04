@@ -145,7 +145,7 @@
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20260925a" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
-  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261004d" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261004l" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">跳至主要內容</a>
@@ -219,7 +219,7 @@
     </nav>
     <img class="title-flag" src="/assets/flags/gb.png" alt="英國國旗" width="56" height="42" />
     <h1>英國永久居留離境天數計算器：任一 12 個月不得超過 180 天</h1>
-    <p class="subtitle">為每趟行程點選離開英國與返回的日期。追蹤器會顯示截至任一日期的 12 個月內的離境天數；若另有 12 個月離境更多，也會指出離境天數最多的那 12 個月。預定行程也一併計入。</p>
+    <p class="subtitle">為每趟行程點選離開英國與返回的日期。追蹤器會顯示截至任一日期的 12 個月內的離境天數。預定行程也一併計入。</p>
     <p class="verified">最後查核：2026 年 10 月</p>
 
     <h2>檢查離境天數</h2>
@@ -241,15 +241,13 @@
   },
   "title": "英國境外天數",
   "checkOn": "截至日期",
+  "checkOnCaption": "截至這一天的 12 個月內的離境天數。規劃行程時，選擇返英當天。",
   "remaining": {
     "other": "剩餘 {n} 天"
   },
   "atLimit": "已達上限",
   "overBy": {
     "other": "超過上限 {n} 天"
-  },
-  "lineWorst": {
-    "other": "離境天數最多的 12 個月：{from}，離境 {n} 天。"
   }
 }
       </script>
@@ -305,7 +303,6 @@
     <ul>
       <li><strong>只計算完整日。</strong>離境當天與返英當天都不算離境日，因此 6 月 1 日離境、6 月 10 日返回，離境天數為八天（6 月 2 日至 9 日）；未滿 24 小時的行程不增加天數。</li>
       <li><strong>截至某一天的 12 個月。</strong>追蹤器會計算到「截至日期」為止 12 個月內的離境天數（預設為今天，也可以另選日期）。正在規劃行程？把「截至日期」設為返英當天。</li>
-      <li><strong>每段 12 個月都會檢查。</strong>上限適用於符合資格的期間內任一 12 個月，因此計算器也會檢查標記的行程所涵蓋的每一段 12 個月期間。若其中某段的離境天數多於追蹤器顯示的天數，追蹤器下方會註明離境天數最多的那 12 個月。</li>
       <li><strong>以日曆月計算，不是固定的 365 天。</strong>若期間結束於 2027 年 1 月 9 日，起點便是 2026 年 1 月 10 日；閏日也計入。</li>
     </ul>
 
@@ -399,8 +396,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"開啟導覽選單","menuClose":"關閉導覽選單"};</script>
   <script src="../../assets/js/navigation.js?v=20260817b"></script>
-  <script defer src="../../assets/js/rules/uk-ilr.js?v=20261004a"></script>
-  <script defer src="../../assets/js/day-calendar.js?v=20261004d"></script>
+  <script defer src="../../assets/js/rules/uk-ilr.js?v=20261004c"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261004k"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

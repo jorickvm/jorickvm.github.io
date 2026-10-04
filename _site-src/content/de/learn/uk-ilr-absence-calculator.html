@@ -3,7 +3,7 @@
     </nav>
     <img class="title-flag" src="/assets/flags/gb.png" alt="Flagge des Vereinigten Königreichs" width="56" height="42" />
     <h1>ILR-Abwesenheitsrechner: 180 Tage in beliebigen 12 Monaten</h1>
-    <p class="subtitle">Tippe bei jeder Reise auf den Tag, an dem du das Vereinigte Königreich verlassen hast, und auf den Tag deiner Rückkehr. Der Tracker zeigt deine Abwesenheitstage in den 12 Monaten bis zu einem beliebigen Datum und nennt deine ungünstigsten 12 Monate, falls sie mehr enthalten, geplante Reisen eingeschlossen.</p>
+    <p class="subtitle">Tippe bei jeder Reise auf den Tag, an dem du das Vereinigte Königreich verlassen hast, und auf den Tag deiner Rückkehr. Der Tracker zeigt deine Abwesenheitstage in den 12 Monaten bis zu einem beliebigen Datum, geplante Reisen eingeschlossen.</p>
     <p class="verified">Zuletzt geprüft: Oktober 2026</p>
 
     <h2>Prüfe deine Abwesenheiten</h2>
@@ -25,7 +25,8 @@
     "other": "{n} Tage abwesend"
   },
   "title": "Abwesenheitstage",
-  "checkOn": "Stichtag",
+  "checkOn": "Zählen bis",
+  "checkOnCaption": "Deine Abwesenheitstage in den 12 Monaten bis zu diesem Datum. Für eine geplante Reise wähl den Tag deiner Rückkehr.",
   "remaining": {
     "one": "Noch {n} Tag",
     "other": "Noch {n} Tage"
@@ -34,10 +35,6 @@
   "overBy": {
     "one": "{n} Tag über dem Limit",
     "other": "{n} Tage über dem Limit"
-  },
-  "lineWorst": {
-    "one": "Ungünstigste 12 Monate: {n} Tag abwesend, {from}.",
-    "other": "Ungünstigste 12 Monate: {n} Tage abwesend, {from}."
   }
 }
       </script>
@@ -92,8 +89,7 @@
     <h2>So zählt der Rechner</h2>
     <ul>
       <li><strong>Nur volle Tage.</strong> Der Tag der Abreise und der Tag der Rückkehr sind keine Tage im Ausland. Eine Reise vom 1. bis zum 10. Juni umfasst also acht Abwesenheitstage (2. bis 9. Juni), und eine Reise von weniger als 24 Stunden fügt keinen Tag hinzu.</li>
-      <li><strong>Die 12 Monate bis zu einem Datum.</strong> Der Tracker zählt deine Abwesenheitstage in den 12 Monaten bis zum Stichtag, also bis heute, wenn du kein anderes Datum wählst. Du planst eine Reise? Stell den Stichtag auf den Tag deiner Rückkehr.</li>
-      <li><strong>Jeder 12-Monats-Zeitraum zählt.</strong> Das Limit gilt für beliebige 12 Monate in deinem anrechenbaren Zeitraum. Deshalb prüft der Rechner zusätzlich jeden 12-Monats-Zeitraum über alle markierten Reisen hinweg. Enthält einer mehr Abwesenheitstage, als der Tracker anzeigt, nennt der Hinweis darunter den ungünstigsten.</li>
+      <li><strong>Die 12 Monate bis zu einem Datum.</strong> Der Tracker zählt deine Abwesenheitstage in den 12 Monaten bis zu dem Datum, bis zu dem du zählst, also bis heute, wenn du kein anderes wählst. Du planst eine Reise? Zähl bis zum Tag deiner Rückkehr.</li>
       <li><strong>Kalendermonate, keine Blöcke von 365 Tagen.</strong> Ein Zeitraum, der am 9. Januar 2027 endet, beginnt am 10. Januar 2026. Schalttage sind eingeschlossen.</li>
     </ul>
 
