@@ -4,7 +4,7 @@ window.AtlasDaysLegalTranslations = {
       title: 'AtlasDays App Privacy',
       html: `<p><a href="/">&larr; AtlasDays</a></p>
   <h1>AtlasDays App Privacy</h1>
-  <p class="updated">Last updated: 7 August 2026</p>
+  <p class="updated">Last updated: 5 October 2026</p>
 
   <p class="lede">Your travel history, photos, and location remain on your device or in your private Apple iCloud account. AtlasDays has no user accounts and no server copy of your travel history.</p>
 
@@ -48,6 +48,7 @@ window.AtlasDaysLegalTranslations = {
   <p>AtlasDays has no advertising and does not track you across apps or websites. It uses no advertising identifier and asks for no tracking permission.</p>
   <p>To see how the app is used and where it can be better, AtlasDays sends anonymous usage statistics to an independent analytics provider in the European Union. There is no account and nothing that identifies you personally. The provider assigns an anonymous device identifier that is not connected to your name, email, or Apple Account, and cannot be used to contact you or follow you into other apps.</p>
   <p>These statistics cover actions taken in the app, your settings, basic device and app information, and your approximate country. Purchases and renewals are counted with the product, price, and store country. Counts, such as how many trips you have, are sent as ranges rather than exact numbers. They never include your trips, dates, notes, photos, or coordinates.</p>
+  <p>If you came to AtlasDays through an ad on the App Store, Apple can tell the app which ad campaign the download came from. This uses Apple’s privacy-friendly ad attribution: it identifies the ad, not you, needs no tracking permission, and is never connected to your trips or personal details.</p>
 
   <h2>8. Your Controls</h2>
   <p>You can delete travel data in Settings, revoke permissions in iOS Settings, and turn off iCloud Sync. Deleting app data does not cancel Apple purchases or subscriptions.</p>
@@ -119,7 +120,7 @@ window.AtlasDaysLegalTranslations = {
       title: 'Privacybeleid van AtlasDays',
       html: `<p><a href="/">&larr; AtlasDays</a></p>
   <h1>Privacybeleid van AtlasDays</h1>
-  <p class="updated">Laatst bijgewerkt: 7 augustus 2026</p>
+  <p class="updated">Laatst bijgewerkt: 5 oktober 2026</p>
 
   <p class="lede">Je reisgeschiedenis, foto’s en locatie blijven op je apparaat of in je eigen iCloud-account. AtlasDays heeft geen gebruikersaccounts en geen serverkopie van je reisgeschiedenis.</p>
 
@@ -163,6 +164,7 @@ window.AtlasDaysLegalTranslations = {
   <p>AtlasDays bevat geen advertenties en volgt je niet in andere apps of op websites. De app gebruikt geen advertentie-identificatie en vraagt geen toestemming om je te volgen.</p>
   <p>Om te zien hoe de app wordt gebruikt en waar die beter kan, stuurt AtlasDays anonieme gebruiksstatistieken naar een onafhankelijke analyseprovider in de Europese Unie. Er is geen account en niets waarmee je persoonlijk te identificeren bent. De provider kent een anonieme apparaat-identificatie toe die niet gekoppeld is aan je naam, e-mailadres of Apple Account, en die niet gebruikt kan worden om contact met je op te nemen of je naar andere apps te volgen.</p>
   <p>Deze statistieken gaan over handelingen in de app, je instellingen, algemene apparaat- en app-informatie en je land bij benadering. Aankopen en verlengingen worden meegeteld met het product, de prijs en het winkelland. Aantallen, zoals hoeveel reizen je hebt, worden verstuurd als bereik in plaats van exacte getallen. Ze bevatten nooit je reizen, datums, notities, foto’s of coördinaten.</p>
+  <p>Ben je via een advertentie in de App Store bij AtlasDays gekomen, dan kan Apple de app laten weten uit welke advertentiecampagne de download kwam. Daarvoor gebruikt de app de privacyvriendelijke advertentietoewijzing van Apple: die herkent de advertentie, niet jou, vraagt geen toestemming om je te volgen en wordt nooit gekoppeld aan je reizen of persoonlijke gegevens.</p>
 
   <h2>8. Jouw keuzes</h2>
   <p>Je kunt reisgegevens verwijderen in de instellingen, machtigingen intrekken in de iOS-instellingen en iCloud-synchronisatie uitschakelen. Het verwijderen van appgegevens beëindigt geen aankopen of abonnementen bij Apple.</p>
@@ -234,7 +236,7 @@ window.AtlasDaysLegalTranslations = {
       title: 'Datenschutz bei AtlasDays',
       html: `<p><a href="/">&larr; AtlasDays</a></p>
   <h1>Datenschutz bei AtlasDays</h1>
-  <p class="updated">Zuletzt aktualisiert: 7. August 2026</p>
+  <p class="updated">Zuletzt aktualisiert: 5. Oktober 2026</p>
 
   <p class="lede">Dein Reiseverlauf, deine Fotos und dein Standort bleiben auf deinem Gerät oder in deinem persönlichen iCloud-Account. AtlasDays hat keine Benutzerkonten und keine Serverkopie deines Reiseverlaufs.</p>
 
@@ -278,6 +280,7 @@ window.AtlasDaysLegalTranslations = {
   <p>AtlasDays enthält keine Werbung und verfolgt dich nicht über Apps und Websites hinweg. Die App verwendet keine Werbe-ID und fragt keine Tracking-Erlaubnis ab.</p>
   <p>Um zu sehen, wie die App genutzt wird und wo sie besser werden kann, sendet AtlasDays anonyme Nutzungsstatistiken an einen unabhängigen Analyseanbieter in der Europäischen Union. Es gibt kein Konto und nichts, was dich persönlich identifiziert. Der Anbieter vergibt eine anonyme Gerätekennung, die nicht mit deinem Namen, deiner E-Mail-Adresse oder deinem Apple Account verknüpft ist und mit der man dich weder kontaktieren noch in andere Apps verfolgen kann.</p>
   <p>Diese Statistiken umfassen Aktionen in der App, deine Einstellungen, allgemeine Geräte- und App-Informationen sowie dein ungefähres Land. Käufe und Verlängerungen werden mit Produkt, Preis und Store-Land erfasst. Anzahlen, etwa wie viele Reisen du hast, werden als Bereiche statt als genaue Zahlen übermittelt. Sie enthalten nie deine Reisen, Datumsangaben, Notizen, Fotos oder Koordinaten.</p>
+  <p>Wenn du über eine Anzeige im App Store zu AtlasDays gekommen bist, kann Apple der App mitteilen, aus welcher Werbekampagne der Download stammt. Dafür nutzt die App Apples datenschutzfreundliche Anzeigenzuordnung: Sie erkennt die Anzeige, nicht dich, braucht keine Tracking-Erlaubnis und wird nie mit deinen Reisen oder persönlichen Angaben verknüpft.</p>
 
   <h2>8. Deine Möglichkeiten</h2>
   <p>Du kannst Reisedaten in den Einstellungen löschen, Berechtigungen in den iOS-Einstellungen entziehen und die iCloud-Synchronisierung deaktivieren. Das Löschen von App-Daten beendet keine Käufe oder Abonnements bei Apple.</p>
@@ -349,7 +352,7 @@ window.AtlasDaysLegalTranslations = {
       title: 'Política de privacidad de AtlasDays',
       html: `<p><a href="/">&larr; AtlasDays</a></p>
   <h1>Política de privacidad de AtlasDays</h1>
-  <p class="updated">Última actualización: 7 de agosto de 2026</p>
+  <p class="updated">Última actualización: 5 de octubre de 2026</p>
 
   <p class="lede">Tu historial de viajes, tus fotos y tu ubicación permanecen en tu dispositivo o en tu propia cuenta de iCloud. AtlasDays no tiene cuentas de usuario ni una copia de tu historial de viajes en sus servidores.</p>
 
@@ -393,6 +396,7 @@ window.AtlasDaysLegalTranslations = {
   <p>AtlasDays no incluye publicidad y no te rastrea entre apps ni sitios web. No utiliza ningún identificador publicitario ni solicita permiso de seguimiento.</p>
   <p>Para saber cómo se usa la app y en qué puede mejorar, AtlasDays envía estadísticas de uso anónimas a un proveedor de análisis independiente situado en la Unión Europea. No hay cuenta ni nada que te identifique personalmente. El proveedor asigna un identificador de dispositivo anónimo que no está vinculado a tu nombre, tu correo electrónico ni tu cuenta de Apple, y que no puede usarse para contactar contigo ni para seguirte a otras apps.</p>
   <p>Estas estadísticas incluyen acciones realizadas en la app, tus ajustes, información básica del dispositivo y de la app, y tu país aproximado. Las compras y renovaciones se contabilizan con el producto, el precio y el país de la tienda. Las cantidades, como cuántos viajes tienes, se envían como rangos en lugar de cifras exactas. Nunca incluyen tus viajes, fechas, notas, fotos ni coordenadas.</p>
+  <p>Si llegaste a AtlasDays a través de un anuncio en el App Store, Apple puede indicar a la app de qué campaña publicitaria procede la descarga. Para ello se usa la atribución publicitaria de Apple, respetuosa con la privacidad: identifica el anuncio, no a ti, no necesita permiso de seguimiento y nunca se vincula con tus viajes ni con tus datos personales.</p>
 
   <h2>8. Tus opciones</h2>
   <p>Puedes eliminar los datos de viaje en los ajustes, retirar permisos en los ajustes de iOS y desactivar la sincronización con iCloud. Eliminar los datos de la app no cancela las compras ni las suscripciones de Apple.</p>
@@ -464,7 +468,7 @@ window.AtlasDaysLegalTranslations = {
       title: 'Politique de confidentialité d’AtlasDays',
       html: `<p><a href="/">&larr; AtlasDays</a></p>
   <h1>Politique de confidentialité d’AtlasDays</h1>
-  <p class="updated">Dernière mise à jour : 7 août 2026</p>
+  <p class="updated">Dernière mise à jour : 5 octobre 2026</p>
 
   <p class="lede">Votre historique de voyage, vos photos et votre position restent sur votre appareil ou dans votre compte iCloud personnel. AtlasDays ne possède aucun compte utilisateur ni copie de votre historique de voyage sur ses serveurs.</p>
 
@@ -508,6 +512,7 @@ window.AtlasDaysLegalTranslations = {
   <p>AtlasDays ne contient aucune publicité et ne vous suit pas d’une app ou d’un site à l’autre. L’app n’utilise aucun identifiant publicitaire et ne demande aucune autorisation de suivi.</p>
   <p>Pour voir comment l’app est utilisée et ce qui peut être amélioré, AtlasDays envoie des statistiques d’utilisation anonymes à un prestataire d’analyse indépendant situé dans l’Union européenne. Il n’y a ni compte ni élément qui vous identifie personnellement. Le prestataire attribue un identifiant d’appareil anonyme, sans lien avec votre nom, votre adresse e-mail ou votre compte Apple, et qui ne permet ni de vous contacter ni de vous suivre dans d’autres apps.</p>
   <p>Ces statistiques portent sur les actions effectuées dans l’app, vos réglages, des informations générales sur l’appareil et l’app, ainsi que votre pays approximatif. Les achats et renouvellements sont comptabilisés avec le produit, le prix et le pays de la boutique. Les totaux, comme le nombre de voyages enregistrés, sont envoyés sous forme de plages plutôt que de chiffres exacts. Elles n’incluent jamais vos voyages, vos dates, vos notes, vos photos ni vos coordonnées.</p>
+  <p>Si vous avez découvert AtlasDays grâce à une publicité sur l’App Store, Apple peut indiquer à l’app de quelle campagne publicitaire provient le téléchargement. Cela passe par l’attribution publicitaire d’Apple, respectueuse de la vie privée : elle identifie la publicité, pas vous, ne demande aucune autorisation de suivi et n’est jamais reliée à vos voyages ni à vos informations personnelles.</p>
 
   <h2>8. Vos choix</h2>
   <p>Vous pouvez supprimer vos données de voyage dans les réglages, retirer les autorisations dans les réglages d’iOS et désactiver la synchronisation iCloud. La suppression des données de l’app n’annule pas les achats ou abonnements Apple.</p>
@@ -579,7 +584,7 @@ window.AtlasDaysLegalTranslations = {
       title: 'Политика конфиденциальности AtlasDays',
       html: `<p><a href="/">&larr; AtlasDays</a></p>
   <h1>Политика конфиденциальности AtlasDays</h1>
-  <p class="updated">Последнее обновление: 7 августа 2026 г.</p>
+  <p class="updated">Последнее обновление: 5 октября 2026 г.</p>
 
   <p class="lede">Ваша история поездок, фотографии и данные о местоположении остаются на вашем устройстве или в вашей личной учётной записи iCloud. В AtlasDays нет учётных записей пользователей и серверной копии вашей истории поездок.</p>
 
@@ -623,6 +628,7 @@ window.AtlasDaysLegalTranslations = {
   <p>В AtlasDays нет рекламы, и приложение не отслеживает вас в других приложениях и на сайтах. Оно не использует рекламный идентификатор и не запрашивает разрешение на отслеживание.</p>
   <p>Чтобы понимать, как используется приложение и что можно улучшить, AtlasDays отправляет анонимную статистику использования независимому аналитическому сервису в Европейском союзе. Учётной записи нет, как и данных, которые позволяют вас идентифицировать. Сервис присваивает анонимный идентификатор устройства, не связанный с вашим именем, адресом электронной почты или Apple Account. С его помощью нельзя связаться с вами или отследить вас в других приложениях.</p>
   <p>Такая статистика охватывает действия в приложении, ваши настройки, общие сведения об устройстве и приложении, а также вашу страну приблизительно. Покупки и продления учитываются вместе с продуктом, ценой и страной магазина. Количества, например число поездок, передаются диапазонами, а не точными числами. Статистика никогда не включает ваши поездки, даты, заметки, фотографии и координаты.</p>
+  <p>Если вы нашли AtlasDays через рекламу в App Store, Apple может сообщить приложению, из какой рекламной кампании пришла загрузка. Для этого используется атрибуция рекламы Apple, бережная к конфиденциальности: она определяет объявление, а не вас, не требует разрешения на отслеживание и никогда не связывается с вашими поездками или личными данными.</p>
 
   <h2>8. Ваши возможности</h2>
   <p>В настройках можно удалить данные о поездках, отозвать разрешения в настройках iOS и отключить синхронизацию с iCloud. Удаление данных приложения не отменяет покупки или подписки Apple.</p>
@@ -693,7 +699,7 @@ window.AtlasDaysLegalTranslations = {
       title: 'Конфіденційність у AtlasDays',
       html: `<p><a href="/">&larr; AtlasDays</a></p>
   <h1>Конфіденційність у AtlasDays</h1>
-  <p class="updated">Останнє оновлення: 7 серпня 2026 року</p>
+  <p class="updated">Останнє оновлення: 5 жовтня 2026 року</p>
 
   <p class="lede">Історія подорожей, фото й геопозиція залишаються на вашому пристрої або у вашому приватному обліковому записі Apple iCloud. AtlasDays не має облікових записів користувачів і не зберігає копію історії подорожей на сервері.</p>
 
@@ -737,6 +743,7 @@ window.AtlasDaysLegalTranslations = {
   <p>AtlasDays не містить реклами й не стежить за вами в інших програмах чи на сайтах. Програма не використовує рекламний ідентифікатор і не запитує дозвіл на відстеження.</p>
   <p>Щоб бачити, як програму використовують і що можна вдосконалити, AtlasDays надсилає анонімну статистику використання незалежному аналітичному сервісу в Європейському Союзі. Облікового запису немає, як і даних, які вас особисто ідентифікують. Сервіс призначає анонімний ідентифікатор пристрою, не пов’язаний з вашим іменем, електронною поштою чи Apple Account. За ним не можна зв’язатися з вами або простежити вас в інших програмах.</p>
   <p>Ця статистика охоплює дії в програмі, ваші налаштування, загальні відомості про пристрій і програму, а також вашу приблизну країну. Покупки та поновлення враховуються разом із продуктом, ціною та країною магазину. Кількості, наприклад скільки у вас подорожей, надсилаються діапазонами, а не точними числами. Вона ніколи не містить ваших подорожей, дат, приміток, фото чи координат.</p>
+  <p>Якщо ви знайшли AtlasDays через рекламу в App Store, Apple може повідомити програмі, з якої рекламної кампанії надійшло завантаження. Для цього використовується атрибуція реклами Apple, яка дбає про конфіденційність: вона визначає оголошення, а не вас, не потребує дозволу на відстеження й ніколи не пов’язується з вашими поїздками чи особистими даними.</p>
 
   <h2>8. Ваші засоби керування</h2>
   <p>У Налаштуваннях можна видалити дані про подорожі, скасувати дозволи в Налаштуваннях iOS і вимкнути синхронізацію з iCloud. Видалення даних програми не скасовує покупки або підписки Apple.</p>
@@ -807,7 +814,7 @@ window.AtlasDaysLegalTranslations = {
       title: 'AtlasDaysアプリのプライバシー',
       html: `<p><a href="/">&larr; AtlasDays</a></p>
   <h1>AtlasDaysアプリのプライバシー</h1>
-  <p class="updated">最終更新日：2026年8月7日</p>
+  <p class="updated">最終更新日：2026年10月5日</p>
 
   <p class="lede">旅行履歴、写真、位置情報は、デバイスまたは個人用のApple iCloudアカウントに保存されます。AtlasDaysにユーザーアカウントはなく、旅行履歴のコピーをサーバーに保存することもありません。</p>
 
@@ -851,6 +858,7 @@ window.AtlasDaysLegalTranslations = {
   <p>AtlasDaysに広告はなく、他のアプリやWebサイトをまたいでユーザーを追跡することもありません。広告識別子は使用せず、トラッキングの許可も求めません。</p>
   <p>アプリがどのように使われ、どこを改善できるかを把握するため、AtlasDaysは匿名の利用統計を欧州連合内にある独立した解析サービスに送信します。アカウントはなく、個人を特定できる情報も含まれません。解析サービスは匿名のデバイス識別子を割り当てますが、これは氏名、メールアドレス、Apple Accountとは結び付いておらず、連絡を取ったり他のアプリで追跡したりするために使うことはできません。</p>
   <p>この統計に含まれるのは、アプリ内での操作、設定、デバイスとアプリの基本情報、おおよその国です。購入と更新は、製品、価格、ストアの国とあわせて記録されます。旅行の件数などの数値は、正確な数ではなく範囲で送信されます。旅行の記録、日付、メモ、写真、座標が含まれることはありません。</p>
+  <p>App Storeの広告からAtlasDaysをダウンロードした場合、Appleはそのダウンロードがどの広告キャンペーンによるものかをアプリに伝えることがあります。これはプライバシーに配慮したAppleの広告アトリビューションによるもので、特定されるのは広告であってユーザーではありません。トラッキングの許可は不要で、旅行や個人情報と結び付けられることもありません。</p>
 
   <h2>8. 管理方法</h2>
   <p>「設定」で旅行データを削除し、iOSの「設定」で許可を取り消し、iCloud同期をオフにできます。アプリのデータを削除しても、Appleでの購入やサブスクリプションは解約されません。</p>
@@ -922,7 +930,7 @@ window.AtlasDaysLegalTranslations = {
       title: 'AtlasDays Uygulama Gizliliği',
       html: `<p><a href="/">&larr; AtlasDays</a></p>
   <h1>AtlasDays Uygulama Gizliliği</h1>
-  <p class="updated">Son güncelleme: 7 Ağustos 2026</p>
+  <p class="updated">Son güncelleme: 5 Ekim 2026</p>
 
   <p class="lede">Seyahat geçmişiniz, fotoğraflarınız ve konumunuz aygıtınızda veya özel Apple iCloud hesabınızda kalır. AtlasDays'te kullanıcı hesabı yoktur ve seyahat geçmişinizin bir kopyası hiçbir AtlasDays sunucusunda tutulmaz.</p>
 
@@ -966,6 +974,7 @@ window.AtlasDaysLegalTranslations = {
   <p>AtlasDays'te reklam yoktur ve AtlasDays sizi uygulamalar veya web siteleri arasında takip etmez. Reklam tanımlayıcısı kullanmaz ve takip izni istemez.</p>
   <p>Uygulamanın nasıl kullanıldığını ve nerelerde geliştirilebileceğini görmek için AtlasDays, Avrupa Birliği'ndeki bağımsız bir analiz sağlayıcısına anonim kullanım istatistikleri gönderir. Bir hesap yoktur ve bu verilerde sizi kişisel olarak tanımlayan hiçbir şey bulunmaz. Sağlayıcı, adınızla, e-posta adresinizle veya Apple Hesabı'nızla bağlantılı olmayan anonim bir aygıt tanımlayıcısı atar. Bu tanımlayıcı sizinle iletişim kurmak veya sizi başka uygulamalarda takip etmek için kullanılamaz.</p>
   <p>Bu istatistikler uygulama içinde yapılan işlemleri, ayarlarınızı, temel aygıt ve uygulama bilgilerini ve yaklaşık ülkenizi kapsar. Satın almalar ve yenilemeler ürün, fiyat ve mağaza ülkesiyle birlikte sayılır. Kaç seyahatiniz olduğu gibi sayılar kesin değerler yerine aralık olarak gönderilir. İstatistikler hiçbir zaman seyahatlerinizi, tarihlerinizi, notlarınızı, fotoğraflarınızı veya koordinatlarınızı içermez.</p>
+  <p>AtlasDays'e App Store'daki bir reklam aracılığıyla geldiyseniz Apple, indirmenin hangi reklam kampanyasından geldiğini uygulamaya bildirebilir. Bunun için Apple'ın gizliliğe saygılı reklam ilişkilendirmesi kullanılır: Bu yöntem sizi değil reklamı tanımlar, takip izni gerektirmez ve seyahatlerinizle ya da kişisel bilgilerinizle asla ilişkilendirilmez.</p>
 
   <h2>8. Denetimleriniz</h2>
   <p>Seyahat verilerini Ayarlar'dan silebilir, izinleri iOS Ayarları'ndan geri alabilir ve iCloud eşzamanlamayı kapatabilirsiniz. Uygulama verilerini silmek Apple satın almalarını veya aboneliklerini iptal etmez.</p>
@@ -1036,7 +1045,7 @@ window.AtlasDaysLegalTranslations = {
       title: 'Privacidade do app AtlasDays',
       html: `<p><a href="/">&larr; AtlasDays</a></p>
   <h1>Privacidade do app AtlasDays</h1>
-  <p class="updated">Última atualização: 7 de agosto de 2026</p>
+  <p class="updated">Última atualização: 5 de outubro de 2026</p>
 
   <p class="lede">Seu histórico de viagens, suas fotos e sua localização permanecem no seu dispositivo ou na sua conta privada do iCloud da Apple. O AtlasDays não tem contas de usuário nem cópia do seu histórico de viagens em servidor.</p>
 
@@ -1080,6 +1089,7 @@ window.AtlasDaysLegalTranslations = {
   <p>O AtlasDays não tem publicidade e não rastreia você entre apps ou sites. Ele não usa identificador de publicidade e não pede permissão de rastreamento.</p>
   <p>Para entender como o app é usado e onde ele pode melhorar, o AtlasDays envia estatísticas de uso anônimas para um provedor de análise independente na União Europeia. Não há conta nem nada que identifique você pessoalmente. O provedor atribui um identificador de dispositivo anônimo que não está ligado ao seu nome, e-mail ou Conta Apple, e que não pode ser usado para entrar em contato com você nem para segui-lo em outros apps.</p>
   <p>Essas estatísticas cobrem as ações realizadas no app, os seus ajustes, informações básicas do dispositivo e do app e o seu país aproximado. Compras e renovações são contabilizadas com o produto, o preço e o país da loja. Contagens, como quantas viagens você tem, são enviadas em faixas, e não em números exatos. Elas nunca incluem as suas viagens, datas, notas, fotos nem coordenadas.</p>
+  <p>Se você chegou ao AtlasDays por um anúncio na App Store, a Apple pode informar ao app de qual campanha publicitária veio o download. Isso usa a atribuição de anúncios da Apple, que respeita a privacidade: ela identifica o anúncio, não você, não precisa de permissão de rastreamento e nunca é ligada às suas viagens ou aos seus dados pessoais.</p>
 
   <h2>8. Seus controles</h2>
   <p>Você pode excluir os dados de viagem nos ajustes, revogar permissões nos Ajustes do iOS e desativar a sincronização com o iCloud. Excluir os dados do app não cancela compras nem assinaturas da Apple.</p>
@@ -1150,7 +1160,7 @@ window.AtlasDaysLegalTranslations = {
       title: 'AtlasDays 앱 개인정보 처리방침',
       html: `<p><a href="/">&larr; AtlasDays</a></p>
   <h1>AtlasDays 앱 개인정보 처리방침</h1>
-  <p class="updated">최종 업데이트: 2026년 8월 7일</p>
+  <p class="updated">최종 업데이트: 2026년 10월 5일</p>
 
   <p class="lede">여행 기록, 사진, 위치 정보는 사용자의 기기 또는 본인의 비공개 Apple iCloud 계정에 남습니다. AtlasDays에는 사용자 계정이 없으며, 여행 기록의 서버 사본도 없습니다.</p>
 
@@ -1194,6 +1204,7 @@ window.AtlasDaysLegalTranslations = {
   <p>AtlasDays에는 광고가 없으며, 여러 앱이나 웹사이트에 걸쳐 사용자를 추적하지 않습니다. 광고 식별자를 사용하지 않고 추적 권한도 요청하지 않습니다.</p>
   <p>앱이 어떻게 사용되고 어디를 개선할 수 있는지 파악하기 위해, AtlasDays는 유럽 연합에 있는 독립 분석 제공업체에 익명 사용 통계를 전송합니다. 계정은 없으며 개인을 식별할 수 있는 정보도 없습니다. 제공업체는 익명 기기 식별자를 부여하는데, 이는 이름, 이메일, Apple 계정과 연결되지 않으며 사용자에게 연락하거나 다른 앱에서 사용자를 추적하는 데 쓸 수 없습니다.</p>
   <p>이 통계는 앱에서 수행한 동작, 설정, 기본 기기 및 앱 정보, 그리고 대략적인 국가를 포함합니다. 구입과 갱신은 상품, 가격, 스토어 국가와 함께 집계됩니다. 여행 건수처럼 개수에 해당하는 값은 정확한 숫자가 아니라 구간으로 전송됩니다. 여기에는 여행, 날짜, 메모, 사진, 좌표가 결코 포함되지 않습니다.</p>
+  <p>App Store 광고를 통해 AtlasDays를 받은 경우, Apple은 다운로드가 어떤 광고 캠페인에서 왔는지 앱에 알려 줄 수 있습니다. 이는 개인정보를 보호하는 Apple의 광고 기여 분석을 이용하는 것으로, 사용자가 아닌 광고를 식별하고, 추적 권한이 필요 없으며, 여행 기록이나 개인 정보와 연결되지 않습니다.</p>
 
   <h2>8. 사용자의 통제 수단</h2>
   <p>설정에서 여행 데이터를 삭제할 수 있고, iOS 설정에서 권한을 해제할 수 있으며, iCloud 동기화를 끌 수 있습니다. 앱 데이터를 삭제해도 Apple의 구입이나 구독은 취소되지 않습니다.</p>
@@ -1264,7 +1275,7 @@ window.AtlasDaysLegalTranslations = {
       title: 'AtlasDays App 隐私',
       html: `  <p><a href="/">&larr; AtlasDays</a></p>
   <h1>AtlasDays App 隐私</h1>
-  <p class="updated">最后更新：2026 年 8 月 7 日</p>
+  <p class="updated">最后更新：2026 年 10 月 5 日</p>
 
   <p class="lede">你的旅行记录、照片和位置信息，都留在自己的设备上，或者留在你私人的 Apple iCloud 账户中。AtlasDays 没有用户账户，服务器上也没有你旅行记录的副本。</p>
 
@@ -1308,6 +1319,7 @@ window.AtlasDaysLegalTranslations = {
   <p>AtlasDays 没有广告，也不会跨 App 或网站跟踪你。它不使用广告标识符，也不请求跟踪权限。</p>
   <p>为了了解 App 的使用情况和可以改进的地方，AtlasDays 会向位于欧盟的一家独立分析服务商发送匿名使用统计。这里没有账户，也没有任何能识别你个人身份的信息。服务商会分配一个匿名的设备标识符，它与你的姓名、邮箱或 Apple 账户无关，无法用来联系你，也无法在其他 App 中追踪你。</p>
   <p>这些统计涵盖在 App 中执行的操作、你的设置、基本的设备和 App 信息，以及你的大致国家或地区。购买和续订会连同产品、价格和商店所在国家或地区一并计数。诸如你有多少个行程这类数量，发送的是区间而不是精确数字。它们绝不包含你的行程、日期、备注、照片或坐标。</p>
+  <p>如果你是通过 App Store 上的广告找到 AtlasDays 的，Apple 可以告诉 App 这次下载来自哪个广告系列。这使用的是 Apple 注重隐私的广告归因：它识别的是广告，而不是你；不需要跟踪权限，也绝不会与你的行程或个人信息相关联。</p>
 
   <h2>8. 你的控制权</h2>
   <p>你可以在设置中删除旅行数据，在 iOS 设置中撤销权限，也可以关闭 iCloud 同步。删除 App 数据不会取消 Apple 的购买或订阅。</p>
@@ -1378,7 +1390,7 @@ window.AtlasDaysLegalTranslations = {
       title: 'AtlasDays App 隱私權',
       html: `  <p><a href="/">&larr; AtlasDays</a></p>
   <h1>AtlasDays App 隱私權</h1>
-  <p class="updated">最後更新：2026 年 8 月 7 日</p>
+  <p class="updated">最後更新：2026 年 10 月 5 日</p>
 
   <p class="lede">旅行紀錄、照片和位置資訊只會留在裝置上，或存放在個人的 iCloud 帳號中。AtlasDays 不設使用者帳號，自有伺服器也不會保留旅行紀錄副本。</p>
 
@@ -1422,6 +1434,7 @@ window.AtlasDaysLegalTranslations = {
   <p>AtlasDays 不含廣告，也不會跨 App 或網站追蹤使用者。不使用廣告識別碼，也不會要求追蹤權限。</p>
   <p>為了解 App 的使用情形及可改進之處，AtlasDays 會將匿名使用統計傳送至位於歐盟的獨立分析服務供應商。AtlasDays 不設帳號，統計資料也不含可識別個人身分的資訊。供應商會指派匿名裝置識別碼；該識別碼不會與姓名、電子郵件或 Apple 帳號連結，也無法用來聯絡使用者或跨 App 追蹤。</p>
   <p>這些統計涵蓋 App 內操作、設定、基本裝置與 App 資訊，以及約略所在國家。購買與續訂事件會連同產品、價格和 App Store 國家一起計入統計。行程數量等計數會以區間而非確切數字傳送，絕不包含行程、日期、備註、照片或座標。</p>
+  <p>若是透過 App Store 上的廣告找到 AtlasDays，Apple 可以告知 App 這次下載來自哪個廣告活動。此功能採用 Apple 重視隱私的廣告歸因：識別的是廣告而非使用者，不需要追蹤權限，也絕不會與行程或個人資料連結。</p>
 
   <h2>8. 可自行控制的項目</h2>
   <p>可在 AtlasDays「設定」中刪除旅行資料及關閉 iCloud 同步，也可前往 iOS「設定」撤銷權限。刪除 App 資料不會取消透過 Apple 購買的項目或訂閱。</p>
