@@ -626,6 +626,10 @@
         left = Math.max(8, Math.min(left, window.innerWidth - width - 8));
         box.style.left = left + "px";
         box.style.width = width + "px";
+        width = Math.max(width, Math.min(256, window.innerWidth - 16));
+        left = Math.max(8, Math.min(left, window.innerWidth - width - 8));
+        box.style.left = left + "px";
+        box.style.width = width + "px";
         var below = window.innerHeight - r.bottom - 12, h = Math.min(box.scrollHeight, 260);
         box.style.top = (below >= Math.min(h, 160) || below >= r.top ? r.bottom + 6 : Math.max(8, r.top - 6 - h)) + "px";
       }
@@ -638,7 +642,9 @@
       function mark() { Array.prototype.forEach.call(box.children, function (li, i) { li.classList.toggle("is-active", i === active); }); }
       input.addEventListener("focus", function () { if (current) input.select(); show(); });
       input.addEventListener("input", show);
-      input.addEventListener("blur", function () { close(); if (current) input.value = placeName(current); });
+      input.addEventListener("blur", function () { close(); if (current) input.value = placeName(current); fitInput(input); });
+      // The field is as wide as the name, so only the name itself opens the list.
+      input.addEventListener("input", function () { fitInput(input); });
       input.addEventListener("keydown", function (e) {
         if (e.key === "ArrowDown" || e.key === "ArrowUp") { e.preventDefault(); if (!options.length) return; active = (active + (e.key === "ArrowDown" ? 1 : options.length - 1)) % options.length; mark(); }
         else if (e.key === "Enter") { e.preventDefault(); if (options[active]) choose(options[active].code); }
@@ -690,6 +696,7 @@
         });
         list.appendChild(card);
       });
+      list.querySelectorAll(".cal-country-input").forEach(fitInput);
     }
 
     // A rule's result can carry menus (controls), an app-style meter and a
