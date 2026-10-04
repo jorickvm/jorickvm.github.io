@@ -36,6 +36,8 @@ html[data-theme="light"] .daycal { --cal-disc: rgba(12, 22, 40, 0.07); --tone-wa
 .cal-side { display: contents; }
 .cal-side > .cal-box:first-child { grid-area: result; }
 .cal-side > .cal-box:last-child { grid-area: trips; }
+/* A long timeline scrolls inside its card, so the page keeps its height. */
+[data-cal-list] { max-height: 430px; overflow-y: auto; overscroll-behavior: contain; }
 
 .cal-hint { grid-area: hint; margin: 0; color: var(--muted); font-size: 0.93rem; }
 /* a quiet hint floats at the bottom of the calendar window instead of taking
@@ -458,7 +460,9 @@ html[data-theme="light"] .daycal { --cal-disc: rgba(12, 22, 40, 0.07); --tone-wa
 .cal-dialog-steps .cal-dialog-title { margin: 0; }
 .cal-dialog-steps .cal-dialog-sub { margin: 2px 0 0; font-size: 0.88rem; }
 .cal-dialog-scan { display: flex; flex-wrap: wrap; gap: 18px; align-items: center; margin: 0 0 6px; }
-.cal-dialog-scan .cal-qr { margin: 0; flex: none; }
+.cal-dialog-scan .cal-qr { margin: 0; flex: none; cursor: zoom-in; }
+.cal-dialog-scan .cal-qr.is-large { cursor: zoom-out; }
+.cal-dialog-scan.is-large { flex-direction: column; align-items: flex-start; }
 .cal-dialog-scan .cal-steps { flex: 1 1 200px; }
 .cal-steps { list-style: none; counter-reset: cal-step; margin: 0 0 6px; padding: 0; }
 .cal-steps > li { counter-increment: cal-step; position: relative; padding: 0 0 14px 34px; margin: 0; color: var(--muted); font-size: 0.88rem; line-height: 1.5; }
@@ -484,6 +488,7 @@ html[data-theme="light"] .daycal { --cal-disc: rgba(12, 22, 40, 0.07); --tone-wa
 
 /* On a phone: hint, result, calendar, trips, one under the other. */
 @media (max-width: 640px) {
+  [data-cal-list] { max-height: min(380px, 55vh); }
   .daycal { grid-template-columns: minmax(0, 1fr); grid-template-areas: "settings" "result" "hint" "cal" "trips"; }
   .daycal.has-floating-hint { grid-template-areas: "settings" "result" "cal" "trips"; }
   .cal-window { height: min(50vh, 460px); } /* leaves page to swipe on above and below */

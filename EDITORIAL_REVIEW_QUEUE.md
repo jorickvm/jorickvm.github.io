@@ -90,6 +90,7 @@ These pages describe something scheduled to change. The tier cadence would revie
 | Due | Tier | Article | Status | Sources |
 |---|---|---|---|---:|
 | 2027-05-01 | 1 | [learn/183-day-rule-calculator.html](/learn/183-day-rule-calculator) | exact-date-required | 5 |
+| 2027-05-01 | 1 | [learn/schengen-calculator.html](/learn/schengen-calculator) | exact-date-required | 3 |
 
 ## 2027-08
 

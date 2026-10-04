@@ -601,6 +601,9 @@ def translate_jsonld(
     }
     graph = json.loads(raw)
     label = f"{code}/{source['path']}"
+    # The English headline is the page title without its " – AtlasDays" suffix;
+    # each JSON-LD block is rewritten on its own, so it cannot come from the graph.
+    english_headline = str(source.get("title", "")).rsplit(" – ", 1)[0]
     # Derived first, so an explicit `jsonld_replacements` entry still wins: the
     # homepage sets strings that are not FAQ prose, and any article can override
     # a derived pair without giving up the derivation for the rest.
@@ -620,9 +623,11 @@ def translate_jsonld(
         out: dict[str, object] = {}
         for key, value in node.items():
             if key in {"headline", "name"} and node.get("@type") != "ListItem":
+                # A name that is the page's own English headline (a calculator's
+                # WebApplication) takes the translated headline, like `headline`.
                 out[key] = (
                     str(overlay["headline"])
-                    if key == "headline"
+                    if key == "headline" or str(value) == english_headline
                     else replacements.get(str(value), value)
                 )
             elif key == "description":
