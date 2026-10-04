@@ -38,6 +38,14 @@ CYRILLIC_ALPHABET = "абвгґдеёєжзиіїйклмнопрстуфхцч�
 # places, which is where a reader scanning for "New" looks.
 TURKISH_ALPHABET = "abcçdefgğhıijklmnoöpqrsştuüvwxyz"
 
+# Polish is the same shape as Turkish: ą ć ę ł ń ó ś ź ż are letters, each
+# sorting after its base letter, with ź before ż. Folding gets ł wrong in the
+# opposite direction from the others: it has no decomposition, so it survives
+# the fold as U+0142 and sorts after z, which put Słowacja after Szwajcaria.
+# q, v and x are not Polish letters; they appear in retained foreign names
+# (Vermont) and take their Latin-alphabet places.
+POLISH_ALPHABET = "aąbcćdeęfghijklłmnńoópqrsśtuvwxyzźż"
+
 # casefold maps İ to i followed by U+0307; the dot is not a Turkish letter.
 COMBINING_DOT_ABOVE = "̇"
 
@@ -53,6 +61,7 @@ def _ranked(alphabet: str) -> dict[str, str]:
 
 CYRILLIC_ORDER = _ranked(CYRILLIC_ALPHABET)
 TURKISH_ORDER = _ranked(TURKISH_ALPHABET)
+POLISH_ORDER = _ranked(POLISH_ALPHABET)
 
 # --- Japanese ---------------------------------------------------------------
 #
@@ -343,6 +352,8 @@ def sort_key(name: str, code: str) -> tuple[str, str]:
     if code == "tr" and is_latin:
         turkish = name.replace(COMBINING_DOT_ABOVE, "")
         return ("".join(TURKISH_ORDER.get(c, c) for c in turkish), name)
+    if code == "pl" and is_latin:
+        return ("".join(POLISH_ORDER.get(c, c) for c in name), name)
     if not is_latin:
         return (name, name)
     folded = unicodedata.normalize("NFD", name)

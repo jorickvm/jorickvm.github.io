@@ -1,0 +1,135 @@
+    <nav class="breadcrumb">
+      <a href="/pl/">AtlasDays</a> / <a href="/pl/learn/">Przepisy dla podróżnych</a>
+    </nav>
+    <h1>Kalkulator Schengen: sprawdź swoje dni według zasady 90/180</h1>
+    <p class="subtitle">Przy każdym pobycie stuknij dzień wjazdu i dzień wyjazdu. Tracker pokazuje, ile z 90 dni wykorzystano w okresie 180 dni do dowolnej daty, z uwzględnieniem planowanych podróży.</p>
+    <p class="verified">Ostatnio sprawdzono: październik 2026</p>
+
+    <h2>Policz swoje dni</h2>
+    <div class="daycal" id="schengen" data-day-calendar="schengen">
+      <script type="application/json" data-cal-strings>
+{
+  "hintStart": "Stuknij dzień, aby dodać pobyt.",
+  "hintEnd": "Stuknij drugi koniec pobytu.",
+  "hintSelected": "Przeciągnij jeden z końców pobytu, aby zmienić daty, albo usuń go poniżej.",
+  "inTrip": "w strefie Schengen",
+  "pending": "początek nowego pobytu",
+  "empty": "Brak pobytów.",
+  "deleteTrip": "Usuń pobyt",
+  "country": "Kraj",
+  "addCountry": "Dodaj kraj",
+  "noMatch": "Brak pasującego kraju strefy Schengen",
+  "area": "Strefa Schengen",
+  "checkOn": "Licz do",
+  "checkOnCaption": "Twoje dni w okresie 180 dni do tej daty. Przy planowanej podróży wybierz jej ostatni dzień.",
+  "tripDays": {
+    "one": "{n} dzień",
+    "few": "{n} dni",
+    "many": "{n} dni",
+    "other": "{n} dnia"
+  },
+  "remaining": {
+    "one": "{n} dzień w zapasie",
+    "few": "{n} dni w zapasie",
+    "many": "{n} dni w zapasie",
+    "other": "{n} dnia w zapasie"
+  },
+  "atLimit": "Limit osiągnięty",
+  "overBy": {
+    "one": "Limit przekroczony o {n} dzień",
+    "few": "Limit przekroczony o {n} dni",
+    "many": "Limit przekroczony o {n} dni",
+    "other": "Limit przekroczony o {n} dnia"
+  },
+  "lineNoCountry": {
+    "one": "{n} dzień bez kraju",
+    "few": "{n} dni bez kraju",
+    "many": "{n} dni bez kraju",
+    "other": "{n} dnia bez kraju"
+  }
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>P</span><span>W</span><span>Ś</span><span>C</span><span>P</span><span>S</span><span>N</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>Oś czasu</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Śledź w AtlasDays</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="schengen-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="schengen-import-title">Śledź w AtlasDays</p>
+            <p class="cal-dialog-sub">Licz dni dalej w trakcie podróży. Darmowa aplikacja na iPhone’a i iPada.</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>Upewnij się, że AtlasDays jest zainstalowane na telefonie iPhone lub tablecie iPad</strong><span>Za darmo w App Store.</span></li>
+            <li><strong>Zeskanuj kod QR, aby wczytać wszystkie podróże do AtlasDays</strong><span>Sprawdź je, a potem stuknij „Importuj”.</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>Pobierz AtlasDays</strong><span>Za darmo w App Store. Masz już aplikację? Przejdź do kroku 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+          <li><strong>Otwórz swoje pobyty w aplikacji</strong><span>Sprawdź je, a potem stuknij „Importuj”. Wcześniej nic nie zostanie zapisane.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Otwórz w AtlasDays</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>Pobierz AtlasDays</strong><span>Za darmo w App Store, na iPhone’a.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+          <li><strong>Zaimportuj pobyty z pliku</strong><span>To więcej pobytów, niż zmieści się w linku. Pobierz plik i otwórz go w AtlasDays na telefonie iPhone.</span><button type="button" class="cal-dialog-primary" data-cal-download>Pobierz plik</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Pobierz podróże jako plik CSV</button><span data-cal-downloaded hidden>Otwórz ten plik w AtlasDays na telefonie iPhone.</span></p>
+          <button type="button" data-cal-close>Zamknij</button>
+        </div>
+      </dialog>
+    </div>
+    <p class="cal-private">Wszystko zostaje w twojej przeglądarce: nic, co wpiszesz, nie jest wysyłane ani zapisywane.</p>
+
+    <h2>Jak liczy kalkulator</h2>
+    <ul>
+      <li><strong>Liczy się każda część dnia.</strong> Dzień wjazdu i dzień wyjazdu to dni spędzone w strefie Schengen, więc okres od 1 do 10 czerwca to dziesięć dni.</li>
+      <li><strong>Jeden limit dla całej strefy.</strong> 90 dni obejmuje łącznie wszystkie kraje strefy Schengen, a nie każdy kraj osobno. Dzień spędzony w dwóch krajach strefy Schengen liczy się raz.</li>
+      <li><strong>180 dni do jednej daty.</strong> Kalendarz pokazuje 180 dni do daty wybranej w polu „Licz do” (domyślnie dzisiejszej), a tracker liczy w nich twoje dni. Każdy starszy dzień, który wypada z okresu, zwalnia jeden dzień.</li>
+      <li><strong>Planujesz podróż?</strong> Licz do jej ostatniego dnia. W trakcie pobytu liczba dni może tylko rosnąć, więc jeśli mieści się ostatni dzień, mieści się cała podróż.</li>
+    </ul>
+
+    <h2>Kiedy obowiązują inne zasady</h2>
+    <p>Liczenie 90/180 dotyczy krótkich pobytów. Kilka sytuacji podlega własnym zasadom, a wyjaśniają je osobne poradniki:</p>
+    <ul>
+      <li><strong>Wizy długoterminowe i zezwolenia na pobyt.</strong> Dni spędzone na podstawie krajowej wizy długoterminowej lub zezwolenia na pobyt wydanego przez państwo UE nie wliczają się do 90. Zobacz artykuł <a href="/pl/learn/schengen-90-180-rule">o zasadzie 90/180</a>.</li>
+      <li><strong>Wiza na mniej dni.</strong> Jeśli twoja wiza pozwala na mniej niż 90 dni, obowiązuje ten krótszy pobyt. Zobacz artykuł <a href="/pl/learn/schengen-single-entry-visa">o wizach Schengen jednokrotnego wjazdu</a>; AtlasDays ma tracker dla dni z twojej wizy.</li>
+      <li><strong>Które kraje się liczą.</strong> Strefa Schengen to nie to samo co UE: Cypr i Irlandia są poza nią, a Norwegia i Szwajcaria do niej należą. Zobacz <a href="/pl/learn/schengen-countries-list-90-180-rule">listę krajów strefy Schengen</a>.</li>
+    </ul>
+    <p>Jak okres przesuwa się dzień po dniu, pokazuje artykuł <a href="/pl/learn/schengen-rolling-window-walkthrough">o kroczącym okresie Schengen</a>, a kiedy dni wracają, wyjaśnia artykuł <a href="/pl/learn/when-do-you-get-schengen-days-back-after-90-day-stay">Kiedy odzyskujesz dni Schengen</a>.</p>
+
+    <div class="cta-box">
+      <span class="cta-logo">
+        <img class="logo-dark" src="/assets/brand/logo_dark.png?v=20260325a" alt="Logo AtlasDays" width="52" height="52" />
+        <img class="logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="Logo AtlasDays" width="52" height="52" />
+      </span>
+      <h2>Licz dalej w trakcie podróży</h2>
+      <p>Kalkulator sprawdza pobyty, które pamiętasz dzisiaj. AtlasDays liczy twoje dni w strefie Schengen na bieżąco w trakcie podróży, prywatnie na twoim telefonie iPhone, i ostrzega cię, zanim podróż wyniesie cię ponad 90.</p>
+      <a class="cta-btn" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> Pobierz AtlasDays</a>
+    </div>
+
+    <h2>Najczęstsze pytania</h2>
+    <h3>Czy liczą się zarówno dzień wjazdu, jak i dzień wyjazdu?</h3>
+    <p>Tak. Dzień wjazdu to pierwszy dzień pobytu, a dzień wyjazdu ostatni, nawet przy przyjeździe późno w nocy albo wyjeździe wcześnie rano. Kalkulator liczy oba.</p>
+    <h3>Kiedy odzyskuję dni Schengen?</h3>
+    <p>Po jednym dniu: każdy dzień spędzony w strefie przestaje się liczyć po 180 dniach. Ustaw późniejszą datę w polu „Licz do”, aby zobaczyć, ile dni będziesz mieć wtedy, albo przeczytaj artykuł <a href="/pl/learn/when-do-you-get-schengen-days-back-after-90-day-stay">Kiedy odzyskujesz dni Schengen</a>.</p>
+    <h3>Czy to oficjalny kalkulator UE?</h3>
+    <p>Nie. Komisja Europejska publikuje własny kalkulator krótkich pobytów. Ten liczy w ten sam sposób, 90 dni w dowolnym okresie 180 dni z uwzględnieniem dnia wjazdu i dnia wyjazdu, a do tego pozwala zachować pobyty w AtlasDays. Decyzję podejmują służby graniczne i organy wizowe.</p>
+    <h3>Czy moje dane są przechowywane?</h3>
+    <p>Nie. Kalkulator działa w twojej przeglądarce i nie wysyła, nie rejestruje ani nie zapisuje wpisanych dat. Zamknięcie lub odświeżenie strony je usuwa. Aby je zachować, stuknij „Śledź w AtlasDays”.</p>

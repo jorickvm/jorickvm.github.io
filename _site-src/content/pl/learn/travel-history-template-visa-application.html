@@ -1,0 +1,105 @@
+    <nav class="breadcrumb">
+      <a href="/pl/">AtlasDays</a> / <a href="/pl/learn/">Przepisy dla podróżnych</a>
+    </nav>
+
+    <h1>Szablon historii podróży do wniosku wizowego (darmowy plik CSV)</h1>
+    <p class="subtitle">Darmowy, pusty arkusz historii podróży: jeden wiersz na pobyt i daty w formacie ISO. Otwiera się w Excelu, Numbers i Arkuszach Google, łatwo go przenieść do DS-160 oraz formularzy brytyjskich i kanadyjskich, a do AtlasDays importuje się bez przeróbek.</p>
+    <p class="verified">Ostatnio sprawdzono: wrzesień 2026</p>
+
+    <div class="tldr">
+      <p><strong>W skrócie:</strong> pobierz szablon, dodaj <strong>jeden wiersz na każdy pobyt w danym kraju</strong> i zapisuj każdą datę jako <strong>YYYY-MM-DD</strong> (rok-miesiąc-dzień). Kolumny to Country, State, Start Date, End Date, Purpose i Notes (kraj, stan, data początkowa, data końcowa, cel, notatki), czyli dokładnie te, które importuje AtlasDays. Gdy formularz pyta o historię podróży, przefiltruj wiersze do jego okresu i przepisz je. Import tego samego pliku do AtlasDays jest bezpłatny, a aplikacja liczy potem za ciebie dni w każdym kraju.</p>
+    </div>
+
+    <p class="download"><a href="/assets/downloads/travel-history-template.csv" download><strong>Pobierz szablon historii podróży (CSV)</strong></a></p>
+
+    <div class="factbox">
+      <dl>
+        <div><dt>Plik</dt><dd>travel-history-template.csv, wiersz nagłówków bez danych, gotowy do wypełnienia</dd></div>
+        <div><dt>Kolumny</dt><dd>Country, State, Start Date, End Date, Purpose, Notes (nagłówki zostają po angielsku, bo tak czyta je import)</dd></div>
+        <div><dt>Daty</dt><dd>YYYY-MM-DD albo czterocyfrowy rok, jeśli tylko tyle wiadomo</dd></div>
+        <div><dt>Otwiera się w</dt><dd>Excelu, Numbers, Arkuszach Google i każdej innej aplikacji do arkuszy kalkulacyjnych</dd></div>
+        <div><dt>Importuje się do</dt><dd>AtlasDays, bezpłatnie, w Ustawienia → Importuj → Plik CSV</dd></div>
+      </dl>
+    </div>
+
+    <h2>Co wpisać w każdej kolumnie</h2>
+    <dl class="kv kv-text">
+      <div><dt>Country (kraj)</dt><dd>Angielska nazwa kraju (Portugal, United Kingdom) albo jego dwuliterowy kod (PT, GB). Wymagana w każdym wierszu.</dd></div>
+      <div><dt>State (stan)</dt><dd>Tylko podróże do USA: nazwa stanu, kod pocztowy (NY) lub kod ISO (US-NY). Dla każdego innego kraju zostaw puste.</dd></div>
+      <div><dt>Start Date (data początkowa)</dt><dd>Dzień przyjazdu do danego kraju.</dd></div>
+      <div><dt>End Date (data końcowa)</dt><dd>Dzień wyjazdu z niego. Przy wizycie jednodniowej powtórz datę początkową. Zostaw puste tylko wtedy, gdy nadal tam jesteś.</dd></div>
+      <div><dt>Purpose (cel)</dt><dd><code>Personal</code> (Prywatne), <code>Business</code> (Praca), <code>Study</code> (Nauka) lub <code>Transit</code> (Tranzyt). Transit wpisuj tylko wtedy, gdy pobyt ograniczał się do strefy tranzytowej lotniska, bez wjazdu do kraju.</dd></div>
+      <div><dt>Notes (notatki)</dt><dd>Wszystko inne, czego może chcieć formularz: miasto pobytu (pyta o nie kanadyjski formularz wizy turystycznej), cel podróży w brzmieniu z formularza („odwiedziny u siostry”), na czym opierają się daty (pieczątka w paszporcie, karta pokładowa, e-mail z rezerwacją) oraz które daty są szacunkowe.</dd></div>
+    </dl>
+    <p>Plik celowo nie zawiera przykładowych wierszy: te, których zapomnisz usunąć, zostałyby zaimportowane jako prawdziwe podróże. Tak wygląda wypełniony plik.</p>
+    <p class="data-table-hint">Przesuń przykład w bok, aby zobaczyć wszystkie kolumny.</p>
+    <div class="data-table data-table-code">
+      <table>
+        <thead>
+          <tr><th>Country</th><th>State</th><th>Start Date</th><th>End Date</th><th>Purpose</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Portugal</td><td></td><td>2025-03-03</td><td>2025-03-10</td><td>Personal</td><td>Lizbona, rodzina. Pieczątka</td></tr>
+          <tr><td>Spain</td><td></td><td>2025-03-10</td><td>2025-03-16</td><td>Personal</td><td>Madryt, pociągiem. Bez pieczątki</td></tr>
+          <tr><td>United Arab Emirates</td><td></td><td>2025-01-12</td><td>2025-01-12</td><td>Transit</td><td>Dubaj, tylko strefa tranzytowa</td></tr>
+          <tr><td>United States</td><td>NY</td><td>2024-11-04</td><td>2024-11-08</td><td>Business</td><td>Nowy Jork, konferencja</td></tr>
+          <tr><td>Japan</td><td></td><td>2019</td><td></td><td>Personal</td><td>Osaka, miesiąc nieznany</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Daty, także te niepewne</h2>
+    <p>Każdą dokładną datę zapisuj jako YYYY-MM-DD. Taki zapis poprawnie się sortuje, nie da się go pomylić z układem dzień-miesiąc ani miesiąc-dzień i właśnie w tym formacie importuje AtlasDays. Obie daty w wierszu trzymaj z tą samą dokładnością: dwie dokładne daty albo sam rok.</p>
+    <ul>
+      <li><strong>Znasz datę.</strong> Wpisz ją, a w Notes zapisz, skąd pochodzi.</li>
+      <li><strong>Możesz ją zawęzić.</strong> Wpisz najlepiej uzasadniony szacunek jako zwykłą datę, a w Notes dopisz „szacunkowo” wraz z uzasadnieniem („wyjazd dzień po weselu, 14 lub 15”). Nie wpisuj w komórce z datą tyldy ani „ok.”: komórka przestaje być datą, a AtlasDays odrzuca taki wiersz przy imporcie.</li>
+      <li><strong>Znasz tylko rok.</strong> Wpisz czterocyfrowy rok w Start Date, a End Date zostaw puste (albo wpisz późniejszy rok, jeśli pobyt na niego zachodził). To uczciwe, ale większość formularzy wymaga co najmniej miesiąca, więc traktuj te wiersze jako listę luk do zamknięcia.</li>
+    </ul>
+    <p>Jedna pułapka arkuszy: Excel i inne aplikacje często zamieniają 2025-03-03 na datę i mogą zapisać ją z powrotem w formacie regionalnym, na przykład 03/03/2025 albo 03.03.2025. Zanim gdziekolwiek zaimportujesz plik, sprawdź, czy kolumny dat nadal mają postać YYYY-MM-DD, a jeśli nie, ustaw im ten format albo zwykły tekst.</p>
+
+    <h2>Jeden wiersz na pobyt, a nie na podróż</h2>
+    <p>Wiersz obejmuje nieprzerwany pobyt w jednym kraju. Podróż przez dwa kraje to dwa wiersze, a dzień przejazdu z jednego do drugiego pojawia się w obu, tak jak 10 marca w przykładzie powyżej: tego dnia jesteś zarówno w Portugalii, jak i w Hiszpanii. Taki układ sprawdza się przy każdym formularzu, bo wiersze łatwo połączyć, a trudno je później rozdzielić.</p>
+    <div class="example">
+      <p><strong>Jedna podróż, trzy formularze.</strong> Mieszkasz w Wielkiej Brytanii na podstawie wizy, 3 marca 2025 lecisz do Lizbony, 10 marca jedziesz pociągiem do Madrytu, a 16 marca wracasz samolotem do domu. W szablonie masz dwa wiersze: Portugal od 2025-03-03 do 2025-03-10 i Spain od 2025-03-10 do 2025-03-16.</p>
+      <p>Przy <strong>kanadyjskiej wizie turystycznej</strong> Schedule 1 wymaga każdego kraju z rokiem i miesiącem, więc oba wiersze trafiają tam jako 2025-03 do 2025-03, a jako miejscowości wpisujesz Lizbonę i Madryt z notatek. Przy <strong>naturalizacji w Wielkiej Brytanii</strong> Form AN pyta o nieobecność w Wielkiej Brytanii, więc dwa wiersze stają się jednym: wyjazd 3 marca, powrót 16 marca, czyli <strong>12 pełnych dni</strong> poza krajem (4–15 marca). Przy <strong>wizie Schengen</strong> formularz w ogóle nie pyta o listę podróży.</p>
+    </div>
+    <p>Łącząc wiersze w jedną nieobecność, sprawdź loty na obu końcach. Przy wylocie nocnym dzień opuszczenia kraju zamieszkania wypada dzień przed pierwszą datą przyjazdu w pliku.</p>
+
+    <h2>Jak przepisać go do formularza</h2>
+    <ol class="steps">
+      <li>Sprawdź w <a href="/pl/learn/travel-history-for-visa-applications">tabeli okresów</a>, jak daleko wstecz sięga formularz (5 lat dla DS-160, do 10 lat dla brytyjskich wniosków wizowych dla odwiedzających i kanadyjskiego pobytu stałego, cały okres kwalifikujący przy obywatelstwie).</li>
+      <li>Posortuj według Start Date i ukryj wiersze, które zakończyły się przed tym okresem.</li>
+      <li>Rozstrzygnij każdy wiersz oznaczony jako szacunkowy albo zawierający tylko rok, na ile pozwalają dowody.</li>
+      <li>Ułóż wiersze tak, jak chce formularz: kraj po kraju w formularzach wizowych, jedna linia na każdą nieobecność w formularzach obywatelskich, tylko rok i miesiąc tam, gdzie formularz nie chce więcej.</li>
+      <li>Zachowaj kopię tego, co złożono, żeby kolejny wniosek zaczynał się od tych samych dat.</li>
+    </ol>
+
+    <h2>Bezpłatny import do AtlasDays</h2>
+    <p>Szablon używa kolumn importu samego AtlasDays, więc plik, który wypełniasz, jest plikiem, który importujesz. Otwórz <strong>Ustawienia → Importuj → Plik CSV</strong> i wybierz go. AtlasDays pokazuje podgląd z wierszami, których nie umie odczytać, możliwymi duplikatami i kolizjami, i niczego nie zapisuje, dopóki nie potwierdzisz. Import jest bezpłatny, a od tej chwili aplikacja liczy twoje dni w każdym kraju i porównuje je z limitami wizowymi lub rezydencyjnymi, w miarę jak dodajesz podróże.</p>
+    <ul>
+      <li><strong>Purpose musi być jednym z czterech słów.</strong> AtlasDays odczytuje <code>Personal</code>, <code>Business</code>, <code>Study</code> i <code>Transit</code> (a <code>Tourism</code> traktuje jak <code>Personal</code>). Wszystko inne jest pomijane i podróż importuje się bez celu, więc brzmienie z formularza zachowaj w Notes.</li>
+      <li><strong>State dotyczy tylko Stanów Zjednoczonych.</strong> Wartość w State w wierszu spoza USA jest zgłaszana jako błąd.</li>
+      <li><strong>Wiersze z samym rokiem są zachowywane, ale nieliczone.</strong> Oznaczają kraj jako odwiedzony, ale nie dodają dni, dopóki nie dostaną dokładnych dat.</li>
+    </ul>
+    <p>Nie masz jeszcze pliku? Ekran importu ma też polecenie <strong>Utwórz CSV z AI</strong>, które za pomocą asystenta AI zamienia notatki lub plan podróży na te kolumny. Wszystko, co wkleisz do narzędzia AI, jest przetwarzane zgodnie z polityką prywatności tego narzędzia.</p>
+
+    <h2>Poza szablonem</h2>
+    <p>Szablon porządkuje dokumentację, ale nie czyni jej kompletną. Dziesięć schludnych wierszy na pięć lat podróży zwykle oznacza, że brakuje krótkich wyjazdów, a brzmienie samego formularza zawsze ma pierwszeństwo przed jakimkolwiek układem. Które formularze o co pytają, opisuje artykuł o <a href="/pl/learn/travel-history-for-visa-applications">historii podróży we wnioskach wizowych</a>. O uzupełnianiu luk z pieczątek, e-maili i zdjęć przeczytasz w artykule o <a href="/pl/learn/rebuild-travel-history-from-passport-stamps-emails-photos">odtwarzaniu historii podróży</a>, a o rządowych zapisach twoich przekroczeń granicy w artykule o <a href="/pl/learn/get-official-entry-exit-records">uzyskaniu oficjalnych zapisów wjazdów i wyjazdów</a>.</p>
+
+    <div class="cta-box">
+      <span class="cta-logo">
+        <img class="logo-dark" src="/assets/brand/logo_dark.png?v=20260325a" alt="Logo AtlasDays" width="52" height="52" />
+        <img class="logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="Logo AtlasDays" width="52" height="52" />
+      </span>
+      <h2>AtlasDays zamienia ten arkusz w liczbę dni aktualizowaną na bieżąco</h2>
+      <p>Zaimportuj szablon bezpłatnie, a AtlasDays policzy twoje dni w każdym kraju, prywatnie na twoim telefonie iPhone. Dodawaj kolejne podróże w trakcie wyjazdów, a gdy następny formularz zapyta o historię podróży, będzie już aktualna.</p>
+      <a class="cta-btn" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> Pobierz AtlasDays</a>
+    </div>
+
+    <h2>Najczęstsze pytania</h2>
+    <h3>Czy istnieje oficjalny szablon historii podróży?</h3>
+    <p>Nie ma jednego uniwersalnego. Niektóre formularze mają własną tabelę podróży, na przykład kanadyjskie IMM 5257 Schedule 1 i IMM 5562 albo część 8 (Part 8) amerykańskiego N-400, i to je się składa. Szablon taki jak ten to twoja robocza dokumentacja, z której przepisujesz dane do każdego formularza.</p>
+    <h3>Jakiego formatu dat używać w historii podróży?</h3>
+    <p>We własnej dokumentacji używaj YYYY-MM-DD, na przykład 2025-03-03. Nie da się go pomylić między układem dzień-miesiąc i miesiąc-dzień, poprawnie się sortuje i łatwo go zamienić na to, czego chce formularz, na przykład mm/dd/yyyy w N-400 albo rok i miesiąc w kanadyjskim Schedule 1.</p>
+    <h3>Czy ten szablon można zaimportować do AtlasDays?</h3>
+    <p>Tak. Nagłówki odpowiadają importowi CSV w AtlasDays, więc wystarczy wypełnić plik i wybrać go w Ustawienia → Importuj → Plik CSV. Import jest bezpłatny.</p>

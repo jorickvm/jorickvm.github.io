@@ -30,6 +30,7 @@ def prose(markup):
 REQUIRED_PLURALS = {
     "ja": {"other"}, "ko": {"other"}, "zh-Hant": {"other"}, "zh-Hans": {"other"},
     "ru": {"one", "few", "many", "other"}, "uk": {"one", "few", "many", "other"},
+    "pl": {"one", "few", "many", "other"},
     "fr": {"one", "many", "other"}, "es": {"one", "many", "other"},
     "pt": {"one", "many", "other"},
 }
