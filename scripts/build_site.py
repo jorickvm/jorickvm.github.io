@@ -1559,7 +1559,7 @@ def render_hub(
         ),
         "{{SEARCH_SCRIPT}}": (
             f"  <script>window.AtlasDaysSearchStrings={search_copy};</script>\n"
-            f'  <script src="{prefix}assets/js/search.js?v=20261004a"></script>'
+            f'  <script src="{prefix}assets/js/search.js?v=20261006a"></script>'
             if family == "hub" else ""
         ),
         "{{ASSET_PREFIX}}": prefix,

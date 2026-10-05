@@ -193,6 +193,22 @@
 
 .search-result strong { font-size: 0.91rem; line-height: 1.4; }
 .search-result span { color: var(--muted); font-size: 0.82rem; line-height: 1.4; }
+/* Learn search results read like the cards they lead to: flag (or a book
+   for a guide), title, one-line rule. Rows, not cards: the panel is already
+   the frame. */
+.search-result.search-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px;
+  text-align: left;
+}
+.search-card .search-text { display: grid; gap: 3px; min-width: 0; }
+.search-card strong { font-size: 0.97rem; font-weight: 600; }
+.search-card .search-text span { font-size: 0.86rem; }
+.search-flag { flex: none; width: 32px; height: 22px; border-radius: 4px; object-fit: cover; box-shadow: 0 0 0 1px var(--line); }
+.search-guide { flex: none; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 9px; background: var(--blue-soft); color: var(--blue); }
+.search-guide svg { width: 18px; height: 18px; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
 .search-empty { margin: 0; padding: 13px 12px; color: var(--muted); font-size: 0.88rem; }
 
 .search-visually-hidden {
@@ -837,23 +853,24 @@
 }
 
 /* Learn index: each rule as the app's preset card (flag, title, one-line
-   rule, chevron), grouped by the app's sections (build: render_learn_rules). */
+   rule, chevron), grouped by the app's sections (build: render_learn_rules).
+   Spacing is the app's (TrackerPresetSheet): 12 between cards, 14 padding
+   and corner radius, 14 between icon and text, 3 between title and rule. */
 .rule-section { margin-top: 26px; }
 .rule-cards, .rule-tools {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 10px;
+  gap: 12px;
 }
 .rule-tools { margin: 18px 0 8px; }
 .rule-card {
   display: flex;
   align-items: center;
   gap: 14px;
-  min-height: 72px;
-  padding: 14px 16px;
+  padding: 14px;
   background: var(--bg-card);
   border: 1px solid var(--line);
-  border-radius: 16px;
+  border-radius: 14px;
   color: var(--text);
   text-decoration: none;
   transition: border-color 0.15s ease, background 0.15s ease;

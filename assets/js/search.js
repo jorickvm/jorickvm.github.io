@@ -99,7 +99,8 @@
 
   function score(entry, query) {
     if (!query) return entry.pillar ? 2 : 1;
-    var title = normalize(entry.title);
+    // A rule article also answers to its card's title ("Albania Tax Residency").
+    var title = normalize(entry.title + (entry.card ? " " + entry.card : ""));
     var jurisdiction = normalize(entry.jurisdiction);
     var keywords = normalize(entry.keywords.join(" "));
     var description = normalize(entry.description);
@@ -247,10 +248,34 @@
             link.className = "search-result";
             link.href = item.entry.url;
             var heading = document.createElement("strong");
-            heading.textContent = item.entry.title;
             var copy = document.createElement("span");
-            copy.textContent = item.entry.description;
-            link.append(heading, copy);
+            if (section === "learn") {
+              // As the card the result leads to: flag (a book for a guide),
+              // the card's title and its one-line rule.
+              link.className += " search-card";
+              var mark;
+              if (item.entry.flag) {
+                mark = document.createElement("img");
+                mark.className = "search-flag";
+                mark.src = "/assets/flags/" + item.entry.flag + ".png";
+                mark.alt = "";
+              } else {
+                mark = document.createElement("span");
+                mark.className = "search-guide";
+                mark.innerHTML = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg>';
+              }
+              heading.textContent = item.entry.card || item.entry.title;
+              copy.textContent = item.entry.line || "";
+              var text = document.createElement("span");
+              text.className = "search-text";
+              text.append(heading);
+              if (item.entry.line) text.append(copy);
+              link.append(mark, text);
+            } else {
+              heading.textContent = item.entry.title;
+              copy.textContent = item.entry.description;
+              link.append(heading, copy);
+            }
             results.appendChild(link);
           });
         }

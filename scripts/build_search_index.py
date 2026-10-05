@@ -45,6 +45,26 @@ def help_headings(record: dict[str, object]) -> list[str]:
     return parser.headings
 
 
+def card_for(record: dict[str, object], code: str) -> dict[str, str]:
+    """The Learn index card a rule article shows as (flag, title, one-line
+    rule), so a search result looks like the card it leads to. Empty for
+    pages without one (guides, Help)."""
+    if not CARDS:
+        CARDS["catalog"] = json.loads((DATA / "app-catalog.json").read_text(encoding="utf-8"))
+        CARDS["own"] = json.loads((DATA / "learn-cards.json").read_text(encoding="utf-8"))["cards"]
+    preset_id = record.get("app_preset")
+    if preset_id:
+        preset = CARDS["catalog"]["presets"][str(preset_id)]
+        return {"flag": preset["flag"].lower(), "card": preset["title"][code], "line": preset["line"][code]}
+    own = CARDS["own"].get(str(record["path"]))
+    if own and own["title"].get(code):
+        return {"flag": own["flag"].lower(), "card": own["title"][code], "line": own["line"][code]}
+    return {}
+
+
+CARDS: dict[str, object] = {}
+
+
 def translated_entries(
     sources: dict[str, dict],
     editorial: dict[str, dict],
@@ -111,6 +131,7 @@ def translated_entries(
                     ),
                     "url": f"/{code}" + route_for(path),
                     "pillar": pillar,
+                    **card_for(source, code),
                 }
             )
     return entries
@@ -170,6 +191,7 @@ def build() -> dict[str, object]:
                 ),
                 "url": route(path),
                 "pillar": pillar,
+                **card_for(record, default_locale_code()),
             }
         )
     entries.extend(translated_entries({str(r["path"]): r for r in articles}, editorial, clusters))
