@@ -128,7 +128,7 @@
   <link rel="stylesheet" href="../../assets/css/tokens.css?v=20260928f" />
   <link rel="stylesheet" href="../../assets/css/article-variants/49dd6e3e3ea5.css?v=20261005a" />
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
-  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261005a" />
+  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261006a" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
 </head>
 <body>
@@ -198,6 +198,16 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="本页内容">
+      <p class="toc-title">本页内容</p>
+      <ul>
+        <li><a href="#flighty">从 Flighty 导出航班</a></li>
+        <li><a href="#atlasdays">导入 AtlasDays</a></li>
+        <li><a href="#section-3">采信天数统计前</a></li>
+        <li><a href="#section-4">常见问题</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb">
       <a href="/zh-Hans/">AtlasDays</a> / <a href="/zh-Hans/learn/">旅行规定</a> / <a href="/zh-Hans/learn/guides">指南</a>
     </nav>
@@ -210,14 +220,14 @@
       <p><strong>简要说明：</strong>Flighty 记录航班，但不会计算<strong>在各国停留的天数</strong>。将 Flighty 记录导出为 <strong>CSV</strong> 并导入 AtlasDays，就能把航班整理成带日期的行程，再按申根 90/180、183 天规定等追踪器计算天数。</p>
     </div>
 
-    <h2>从 Flighty 导出航班</h2>
+    <h2 id="flighty">从 Flighty 导出航班</h2>
     <ol class="steps">
       <li>在 Flighty 中打开<strong>设置（Settings）→ 账户数据（Account Data）</strong>，导出航班。</li>
       <li>将 CSV 文件存入“文件”App，例如 iCloud 云盘或“我的 iPhone”。不要先用电子表格打开并重新存储。</li>
     </ol>
     <p>导出的只有 Flighty 中已有的航班。如果旧行程尚未录入，请在导出前补齐：Flighty 可免费导入过去一年的航班，<strong>更早的航班需要 Flighty Pro</strong>。</p>
 
-    <h2>导入 AtlasDays</h2>
+    <h2 id="atlasdays">导入 AtlasDays</h2>
     <ol class="steps">
       <li>打开 AtlasDays，进入<strong>设置 → 导入 → Flighty</strong>。</li>
       <li>轻点<strong>选择 Flighty CSV</strong>，选取刚才存储的文件。</li>
@@ -232,7 +242,7 @@
       <li><strong>确认前不会存储任何行程。</strong>缺少抵达或出发航班的行程会列为“不完整”，由使用者补充日期，而不是接受猜测的日期。</li>
     </ul>
 
-    <h2>采信天数统计前</h2>
+    <h2 id="section-3">采信天数统计前</h2>
     <ul>
       <li><strong>陆路出入境不会出现在记录中。</strong>跨境火车、渡轮和自驾行程都不会出现在航班记录里，需要手动补充日期。</li>
       <li><strong>核对影响上限的行程。</strong>误判一次转机或漏掉一段航班，就可能改变<a href="/zh-Hans/learn/schengen-90-180-rule">申根 90/180</a> 的总数，因此要复核所关心期间内的每次停留。</li>
@@ -249,7 +259,7 @@
       <a class="cta-btn" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> 获取 AtlasDays</a>
     </div>
 
-    <h2>常见问题</h2>
+    <h2 id="section-4">常见问题</h2>
     <h3>Flighty 会计算在一个国家停留的天数吗？</h3>
     <p>不会。Flighty 记录航班并生成航班统计，但不会汇总在各国停留的天数，也不会按签证或税务居民门槛核对。需要先将航班整理成带日期的停留；将 Flighty CSV 导入 AtlasDays 就可以完成这一步。</p>
     <h3>如何从 Flighty 导出旅行记录？</h3>

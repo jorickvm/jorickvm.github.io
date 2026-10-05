@@ -43,7 +43,7 @@ CLUSTER_DATA_PATH = SOURCE_ROOT / "data" / "content-clusters.json"
 BUILD_VERSION = "20260928f"
 VARIANT_VERSIONS = {("article", "help20260802"): "20260928f", ("hub", "92c3adc0daf3"): "20260928f", ("article", "49dd6e3e3ea5"): "20261005a", ("article", "88b8694b8f2d"): "20261005a"}
 SITE_HEADER_VERSION = "20260930a"
-ARTICLE_COMPONENTS_VERSION = "20261005a"
+ARTICLE_COMPONENTS_VERSION = "20261006a"
 NAVIGATION_VERSION = "20261005a"
 
 # Root class that drops the background wash from the app's `.medium` step to
@@ -1256,28 +1256,36 @@ def mark_calculator_callout(content: str, article: dict[str, object]) -> str:
     return pattern.sub('<p class="calc-callout">', content, count=1)
 
 
+# The inline list (phones and tablets) only earns its place above a long
+# article; the sidebar on wide screens sits in empty margin, so every Learn
+# article with sections gets it.
 TOC_MIN_SECTIONS = 7
+TOC_SIDE_MIN_SECTIONS = 2
 
-# Opens the list on wider screens (it stays a one-line <details> on phones)
-# and marks the section being read, for the sticky sidebar.
-TOC_SCRIPT = (
-    "<script>(function(){var t=document.currentScript.previousElementSibling;"
-    "if(matchMedia('(min-width: 760px)').matches)t.open=true;"
-    "var a=[].slice.call(t.querySelectorAll('a'));"
+# Marks the section being read in the wide-screen sidebar.
+TOC_SIDE_SCRIPT = (
+    "<script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));"
     # The headings come after this script, so they are looked up on each pass.
     "function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});"
     "a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}"
     "addEventListener('scroll',on,{passive:true});on()})();</script>"
 )
+# Opens the inline list on tablets; it stays a one-line <details> on phones.
+TOC_SCRIPT = (
+    "<script>(function(){var t=document.currentScript.previousElementSibling;"
+    "if(matchMedia('(min-width: 760px)').matches)t.open=true})();</script>"
+)
 
 
 def render_toc(content: str, article: dict[str, object]) -> str:
-    """An "On this page" list for a long Learn article, after its summary.
+    """"On this page" for a Learn article.
 
     Sections are the <h2>s outside the closing app box and the build's source
-    panel; each gets an id from its text if it has none. A one-line <details>
-    on phones, an open list on tablets, a sticky sidebar on wide screens
-    (assets/css/article-components.css, .toc).
+    panel; each gets an id from its text if it has none. Wide screens get a
+    sticky sidebar from the top of the page on every article (.toc-side);
+    phones and tablets get the list after the summary on long articles only,
+    a one-line <details> on phones and an open list on tablets (.toc). CSS
+    shows one or the other (assets/css/article-components.css).
     """
     if article.get("section") != "learn":
         return content
@@ -1288,7 +1296,7 @@ def render_toc(content: str, article: dict[str, object]) -> str:
         m for m in heading.finditer(content)
         if (cta < 0 or not _inside_cta(content, cta, m.start())) and 'id="official-source-heading"' not in m.group("attrs")
     ]
-    if len(found) < TOC_MIN_SECTIONS:
+    if len(found) < TOC_SIDE_MIN_SECTIONS:
         return content
     used: set[str] = set()
     items, out, last = [], [], 0
@@ -1307,18 +1315,32 @@ def render_toc(content: str, article: dict[str, object]) -> str:
         used.add(ident)
         items.append(f'        <li><a href="#{ident}">{re.sub(r"<[^>]+>", "", text).strip()}</a></li>')
     content = "".join(out) + content[last:]
-    first = heading.search(content)
-    block = "\n".join([
-        '<details class="toc">',
-        "      <summary>{{t:toc.heading}}</summary>",
+    if len(found) >= TOC_MIN_SECTIONS:
+        first = heading.search(content)
+        block = "\n".join([
+            '<details class="toc">',
+            "      <summary>{{t:toc.heading}}</summary>",
+            "      <ul>",
+            *items,
+            "      </ul>",
+            "    </details>",
+            "    " + TOC_SCRIPT,
+            "    ",
+        ])
+        content = content[:first.start()] + block + content[first.start():]
+    side = "\n".join([
+        '<nav class="toc-side" aria-label="{{t:toc.heading}}">',
+        '      <p class="toc-title">{{t:toc.heading}}</p>',
         "      <ul>",
         *items,
         "      </ul>",
-        "    </details>",
-        "    " + TOC_SCRIPT,
+        "    </nav>",
+        "    " + TOC_SIDE_SCRIPT,
         "    ",
     ])
-    return content[:first.start()] + block + content[first.start():]
+    top = content.find('<nav class="breadcrumb">')
+    top = top if top >= 0 else len(content) - len(content.lstrip())
+    return content[:top] + side + content[top:]
 
 
 def _inside_cta(content: str, cta: int, position: int) -> bool:

@@ -158,7 +158,7 @@
   <link rel="stylesheet" href="../../assets/css/tokens.css?v=20260928f" />
   <link rel="stylesheet" href="../../assets/css/article-variants/49dd6e3e3ea5.css?v=20261005a" />
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
-  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261005a" />
+  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261006a" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
   <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261006a" />
 </head>
@@ -229,6 +229,16 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="目次">
+      <p class="toc-title">目次</p>
+      <ul>
+        <li><a href="#section-1">滞在日数を数える</a></li>
+        <li><a href="#section-2">計算機の日数の数え方</a></li>
+        <li><a href="#section-3">ほかのルールが適用される場合</a></li>
+        <li><a href="#section-4">よくある質問</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb">
       <a href="/ja/">AtlasDays</a> / <a href="/ja/learn/">旅行ルール</a> / <a href="/ja/learn/calculators">計算機</a>
     </nav>
@@ -236,7 +246,7 @@
     <p class="subtitle">滞在ごとに、入国した日と出国した日をタップしてください。予定している旅行も含めて、任意の日付までの180日間に90日のうち何日を使ったかをトラッカーが表示します。</p>
     <p class="verified">最終確認：2026年10月</p>
 
-    <h2>滞在日数を数える</h2>
+    <h2 id="section-1">滞在日数を数える</h2>
     <div class="daycal" id="schengen" data-day-calendar="schengen">
       <script type="application/json" data-cal-strings>
 {
@@ -316,7 +326,7 @@
     </div>
     <p class="cal-private">入力した内容はすべてブラウザ内にとどまります。送信も保存もされません。</p>
 
-    <h2>計算機の日数の数え方</h2>
+    <h2 id="section-2">計算機の日数の数え方</h2>
     <ul>
       <li><strong>1日の一部でもいれば1日と数えます。</strong>入国日と出国日はどちらもシェンゲン圏での滞在日になるため、6月1日から10日までは10日です。</li>
       <li><strong>シェンゲン圏全体で1つの枠。</strong>90日は国ごとに別々ではなく、すべてのシェンゲン加盟国に共通です。シェンゲンの2か国で過ごした日も1日と数えます。</li>
@@ -324,7 +334,7 @@
       <li><strong>旅行を計画中の場合。</strong>「集計終了日」を旅行の最終日に設定してください。滞在中に日数が減ることはないため、最終日が上限内に収まれば、旅行全体も収まります。</li>
     </ul>
 
-    <h2>ほかのルールが適用される場合</h2>
+    <h2 id="section-3">ほかのルールが適用される場合</h2>
     <p>90/180ルールの計算は短期滞在が対象です。独自のルールに従う場合もいくつかあり、それぞれのガイドで説明しています。</p>
     <ul>
       <li><strong>長期滞在ビザと居住許可。</strong>各国の長期滞在ビザやEUの居住許可で滞在した日は、90日に数えません。<a href="/ja/learn/schengen-90-180-rule">90/180ルール</a>を参照してください。</li>
@@ -343,7 +353,7 @@
       <a class="cta-btn" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> AtlasDaysを入手</a>
     </div>
 
-    <h2>よくある質問</h2>
+    <h2 id="section-4">よくある質問</h2>
     <h3>入国した日と出国した日は、どちらも数えますか？</h3>
     <p>はい。夜遅くに到着した場合や朝早くに出発した場合でも、入国した日が滞在の初日、出国した日が最終日です。計算機はどちらも数えます。</p>
     <h3>シェンゲンの日数はいつ戻りますか？</h3>

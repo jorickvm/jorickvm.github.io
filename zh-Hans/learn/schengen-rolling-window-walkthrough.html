@@ -96,7 +96,7 @@
   <link rel="stylesheet" href="../../assets/css/tokens.css?v=20260928f" />
   <link rel="stylesheet" href="../../assets/css/article-variants/9cf80a439c8f.css?v=20260928f" />
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
-  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261005a" />
+  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261006a" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
 </head>
 <body>
@@ -166,6 +166,18 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="本页内容">
+      <p class="toc-title">本页内容</p>
+      <ul>
+        <li><a href="#section-1">核心思路</a></li>
+        <li><a href="#section-2">算例</a></li>
+        <li><a href="#section-3">检查日期为什么会改变答案</a></li>
+        <li><a href="#section-4">天数怎么回来</a></li>
+        <li><a href="#section-5">常见的计算错误</a></li>
+        <li><a href="#section-6">实用提醒与官方界限</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb">
       <a href="/zh-Hans/">AtlasDays</a> / <a href="/zh-Hans/learn/">旅行规定</a> / <a href="/zh-Hans/learn/guides">指南</a>
     </nav>
@@ -179,11 +191,11 @@
       <p><strong>重点：</strong>滚动期间是针对某一个日期套用的，不是针对一趟行程。选定关心的那个日期，往回看 180 天，数出这个期间内在申根区停留的每一天。这个期间每天都会往前挪，所以已用的天数是一天一天掉出来，而不是一次全部重置；同一份行程记录，在两个不同的检查日期可能给出两个不同的答案。</p>
     </div>
 
-    <h2>核心思路</h2>
+    <h2 id="section-1">核心思路</h2>
     <p>在任何一个关心的日期，往回看 180 天，数出这个期间内在申根区停留的每一天。如果结果是 90 天或更少，就在短期停留上限之内；如果超过 90 天，就不在。</p>
     <p>关键在于这个期间<strong>每天都在移动</strong>。没有固定的季度重置，也没有每个申根国家各自的额度。同一个共用计数会跟着你走遍整个申根区。</p>
 
-    <h2>算例</h2>
+    <h2 id="section-2">算例</h2>
     <p>假设行程记录是这样的：</p>
     <ul>
       <li><strong>行程 1：</strong>1 月 15 日至 2 月 13 日，共 30 个申根停留日</li>
@@ -191,7 +203,7 @@
     </ul>
     <p>两趟合计是 75 天。光有这个数字还不够，还得再问一句：<strong>是哪一个 180 天期间内的 75 天？</strong></p>
 
-    <h2>检查日期为什么会改变答案</h2>
+    <h2 id="section-3">检查日期为什么会改变答案</h2>
     <p>如果在 <strong>7 月 1 日</strong>检查，180 天的回溯期会一直回到 1 月，两趟行程都还在期间之内。也就是说 75 天全部照算，只剩 15 天可用。</p>
     <p>如果在 <strong>9 月 1 日</strong>检查，180 天的回溯期从 3 月开始算起。1 月至 2 月那趟行程已经完全掉出期间，只剩 4 月至 5 月的 45 天还算数。在那个日期，可用的天数是 45 天。</p>
 
@@ -199,11 +211,11 @@
       <p><strong>关键在于：</strong>这项规定问的从来不是“我离开多久了？”，而是“在我检查的那个日期，最近 180 天里还留着多少个申根停留日？”</p>
     </div>
     <p class="calc-callout"><a href="/zh-Hans/learn/schengen-calculator">申根计算器</a>可以用你自己的日期呈现这个过程：点选你的停留，再移动“截至日期”。</p>
-    <h2>天数怎么回来</h2>
+    <h2 id="section-4">天数怎么回来</h2>
     <p>天数不会整块一次回来，而是按当初使用的顺序依次回来。最早的那一天一旦比 180 天的回溯期还要早，这一天就掉出期间，同时释放出一天可用。</p>
     <p>所以很多人以为自己“等得够久了”，结果还是算错。一趟长期停留不会带来一次干净的重置，而是让天数随时间逐步释放。</p>
 
-    <h2>常见的计算错误</h2>
+    <h2 id="section-5">常见的计算错误</h2>
     <ul>
       <li><strong>把申根当成简单的进 90 天、出 90 天循环。</strong>它不是。</li>
       <li><strong>忘了入境和出境当天都要算。</strong>接近上限时，差一天就是差一天。</li>
@@ -211,7 +223,7 @@
       <li><strong>去数“在外面待了几天”，而不是数 180 天回溯期内的停留天数。</strong>在外面的时间之所以有意义，只是因为它把更早的境内停留日推出了期间。</li>
     </ul>
 
-    <h2>实用提醒与官方界限</h2>
+    <h2 id="section-6">实用提醒与官方界限</h2>
     <p>本页讲的是这套逻辑，不是你个人的法律处境。申根短期停留的官方指引，请使用欧盟委员会的<a href="https://home-affairs.ec.europa.eu/policies/schengen/border-crossing/short-stay-calculator_en">短期停留计算器</a>和<a href="https://home-affairs.ec.europa.eu/policies/schengen/schengen-area_en">申根区概览</a>。需要正式框架而不只是直觉理解时，这两处才是合适的依据。</p>
     <p>最稳妥的实用原则是：如果行程模式很重要，就不要靠记忆，也不要以为大致估算就够接近了。</p>
 

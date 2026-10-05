@@ -150,7 +150,7 @@
   <link rel="stylesheet" href="../../assets/css/tokens.css?v=20260928f" />
   <link rel="stylesheet" href="../../assets/css/article-variants/49dd6e3e3ea5.css?v=20261005a" />
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
-  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261005a" />
+  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261006a" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
   <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261006a" />
 </head>
@@ -221,6 +221,16 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="本页内容">
+      <p class="toc-title">本页内容</p>
+      <ul>
+        <li><a href="#section-1">计算停留天数</a></li>
+        <li><a href="#section-2">计算器如何计算</a></li>
+        <li><a href="#section-3">如果当地的计算方式不同</a></li>
+        <li><a href="#section-4">常见问题</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb">
       <a href="/zh-Hans/">AtlasDays</a> / <a href="/zh-Hans/learn/">旅行规定</a> / <a href="/zh-Hans/learn/calculators">计算器</a>
     </nav>
@@ -228,7 +238,7 @@
     <p class="subtitle">选择国家和年度，再点选到达和离开的日期。追踪器会显示距离 183 天还有多远，计划中的停留也一并计入。</p>
     <p class="verified">最后核实：2026 年 10 月</p>
 
-    <h2>计算停留天数</h2>
+    <h2 id="section-1">计算停留天数</h2>
     <div class="daycal" id="days-183" data-day-calendar="days183">
       <script type="application/json" data-cal-strings>
 {
@@ -322,7 +332,7 @@
     </div>
     <p class="cal-private">所有内容仅在浏览器中处理：输入的内容不会发送或存储。</p>
 
-    <h2>计算器如何计算</h2>
+    <h2 id="section-2">计算器如何计算</h2>
     <ul>
       <li><strong>只要在当地待过，当天就算一天。</strong>到达当天和离开当天都计入在该国的天数，因此 6 月 1 日至 10 日共 10 天。从一国前往另一国的那一天，两国都会计入。</li>
       <li><strong>一个国家，一个年度。</strong>在追踪器中选择国家，并在上方选择计算期间：日历年、从起始日算起的纳税年度（英国为 4 月 6 日，澳大利亚为 7 月 1 日，新西兰和印度为 4 月 1 日），或最近 12 个月。只有计算期间内的天数才会计入。</li>
@@ -330,7 +340,7 @@
       <li><strong>计划中的停留也会计入。</strong>标记尚未预订的行程，看看它会不会让天数超过 183 天。</li>
     </ul>
 
-    <h2>如果当地的计算方式不同</h2>
+    <h2 id="section-3">如果当地的计算方式不同</h2>
     <p>大多数国家的计算方式与本计算器相同。如果当地有自己的规定，对应的指南会加以说明，AtlasDays 也有现成的追踪器可以准确计算：</p>
     <ul>
       <li><strong>按午夜计算。</strong>英国计算的是午夜时身在英国的天数。参见<a href="/zh-Hans/learn/uk-statutory-residence-test">英国法定居住判定</a>；AtlasDays 的英国追踪器按午夜计算。</li>
@@ -349,7 +359,7 @@
       <a class="cta-btn" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> 获取 AtlasDays</a>
     </div>
 
-    <h2>常见问题</h2>
+    <h2 id="section-4">常见问题</h2>
     <h3>到达当天算在该国的天数里吗？</h3>
     <p>在本计算器中算：只要在当地待过，当天就算一天，因此到达当天和离开当天都计为在该国的天数。许多国家都这样计算。英国则按午夜计算，具体做法见<a href="/zh-Hans/learn/uk-statutory-residence-test">英国指南</a>。</p>
     <h3>在一个国家停留 183 天，就会成为税务居民吗？</h3>

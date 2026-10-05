@@ -128,7 +128,7 @@
   <link rel="stylesheet" href="../../assets/css/tokens.css?v=20260928f" />
   <link rel="stylesheet" href="../../assets/css/article-variants/49dd6e3e3ea5.css?v=20261005a" />
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
-  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261005a" />
+  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261006a" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
 </head>
 <body>
@@ -198,6 +198,16 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="Nesta página">
+      <p class="toc-title">Nesta página</p>
+      <ul>
+        <li><a href="#exporte-seus-voos-do-flighty">Exporte seus voos do Flighty</a></li>
+        <li><a href="#importe-o-arquivo-no-atlasdays">Importe o arquivo no AtlasDays</a></li>
+        <li><a href="#antes-de-confiar-na-contagem">Antes de confiar na contagem</a></li>
+        <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb">
       <a href="/pt/">AtlasDays</a> / <a href="/pt/learn/">Regras de viagem</a> / <a href="/pt/learn/guides">Guias</a>
     </nav>
@@ -210,14 +220,14 @@
       <p><strong>Em resumo:</strong> o Flighty registra voos, mas não calcula <strong>dias por país</strong>. Exporte o histórico do Flighty em <strong>CSV</strong> e importe-o no AtlasDays. O app transforma os voos em viagens com datas e conta os dias para a regra Schengen 90/180, regras fiscais dos 183 dias e outros limites.</p>
     </div>
 
-    <h2>Exporte seus voos do Flighty</h2>
+    <h2 id="exporte-seus-voos-do-flighty">Exporte seus voos do Flighty</h2>
     <ol class="steps">
       <li>No Flighty, abra <strong>Settings</strong> → <strong>Account Data</strong> (Ajustes → Dados da conta) e exporte seus voos.</li>
       <li>Salve o CSV no app Arquivos, por exemplo no iCloud Drive ou na pasta “No Meu iPhone”. Não abra e salve o arquivo novamente em uma planilha antes da importação.</li>
     </ol>
     <p>A exportação contém apenas os voos registrados no Flighty. Se viagens antigas não estão lá, adicione-as antes de exportar: o Flighty permite importar gratuitamente voos do último ano; <strong>voos mais antigos exigem Flighty Pro</strong>.</p>
 
-    <h2>Importe o arquivo no AtlasDays</h2>
+    <h2 id="importe-o-arquivo-no-atlasdays">Importe o arquivo no AtlasDays</h2>
     <ol class="steps">
       <li>Abra o AtlasDays e acesse <strong>Ajustes → Importar → Flighty</strong>.</li>
       <li>Toque em <strong>Selecionar CSV do Flighty</strong> e escolha o arquivo salvo.</li>
@@ -232,7 +242,7 @@
       <li><strong>Nada é salvo antes da sua aprovação.</strong> Viagens sem voo de chegada ou partida aparecem como incompletas; você acrescenta a data em vez de aceitar uma estimativa.</li>
     </ul>
 
-    <h2>Antes de confiar na contagem</h2>
+    <h2 id="antes-de-confiar-na-contagem">Antes de confiar na contagem</h2>
     <ul>
       <li><strong>Travessias por terra ou mar não aparecem.</strong> Deslocamentos de trem, balsa ou carro pela fronteira não constam do histórico de voos. Registre essas datas manualmente.</li>
       <li><strong>Confira as viagens que entram no limite.</strong> Uma escala interpretada de forma errada ou um trecho ausente altera o total da <a href="/pt/learn/schengen-90-180-rule">regra Schengen 90/180</a>. Revise cada estadia dentro do período que importa para você.</li>
@@ -249,7 +259,7 @@
       <a class="cta-btn" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> Obter o AtlasDays</a>
     </div>
 
-    <h2>Perguntas frequentes</h2>
+    <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
     <h3>O Flighty conta os dias que você passa em cada país?</h3>
     <p>Não. O Flighty registra voos e produz estatísticas de voo, mas não soma seus dias em cada país nem os compara com limites de visto ou residência fiscal. Primeiro é preciso transformar os voos em estadias com datas, como faz a importação do CSV do Flighty no AtlasDays.</p>
     <h3>Como exportar meu histórico de viagens do Flighty?</h3>
