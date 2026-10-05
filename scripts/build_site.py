@@ -1204,13 +1204,13 @@ def link_calculator_to_rule(content: str, article: dict[str, object]) -> str:
 def mark_calculator_callout(content: str, article: dict[str, object]) -> str:
     """Give the paragraph that links a calculator the `calc-callout` class.
 
-    A plain <p> in a Learn article that links the 183-day or Schengen
+    A plain <p> in a Learn article that links the 183-day, Schengen or ILR
     calculator is the reader's way to count their own dates, so it is set off
     as the article's one blue callout (assets/css/article-components.css).
     """
     if article.get("section") != "learn":
         return content
-    pattern = re.compile(r'<p>(?=(?:(?!</p>).)*href="(?:/[A-Za-z-]+)?/learn/(?:183-day-rule|schengen)-calculator[?"])', re.S)
+    pattern = re.compile(r'<p>(?=(?:(?!</p>).)*href="(?:/[A-Za-z-]+)?/learn/(?:183-day-rule|schengen|uk-ilr-absence)-calculator[?"])', re.S)
     return pattern.sub('<p class="calc-callout">', content, count=1)
 
 
