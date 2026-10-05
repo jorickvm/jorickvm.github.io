@@ -598,7 +598,12 @@ def translate_jsonld(
     # still resolves to English, because it has to match the visible breadcrumb.
     hub_routes = {
         SITE_URL + localized_route(route, locale, available): key
-        for route, key in (("/help/", "nav.help"), ("/learn/", "nav.learn"))
+        for route, key in (
+            ("/help/", "nav.help"),
+            ("/learn/", "nav.learn"),
+            ("/learn/guides", "nav.guides"),
+            ("/learn/calculators", "nav.calculators"),
+        )
     }
     graph = json.loads(raw)
     label = f"{code}/{source['path']}"

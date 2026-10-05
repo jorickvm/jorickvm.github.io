@@ -293,6 +293,10 @@ html[data-theme="light"] .daycal { --cal-disc: rgba(12, 22, 40, 0.07); --tone-wa
 .cal-day.is-outside .cal-num { opacity: 0.28; }
 .cal-day.is-outside::after { display: none; }
 .cal-trip.is-outside { opacity: 0.45; }
+/* Opacity puts the row on its own layer, which would draw the floating country
+   list faint and under the rows and button after it. A row being edited is
+   not dimmed. */
+.cal-trip.is-outside:focus-within { opacity: 1; }
 
 .cal-result-head { display: grid; gap: 8px; justify-items: start; margin: 0 0 8px; }
 .cal-headline { margin: 0; color: var(--text); font-size: 1rem; font-weight: 650; line-height: 1.35; }
