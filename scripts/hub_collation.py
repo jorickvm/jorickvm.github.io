@@ -4,9 +4,7 @@
 A hub presented as alphabetical that is not alphabetical in the reader's
 language reads as broken, so every hub that lists places sorts on the names it
 actually displays. This module is the single answer to "where does this name
-belong", shared by the generated residency tables
-(scripts/build_residency_hub.py) and the hand-authored library tiles
-(scripts/build_hub_tile_order.py) so the two hubs cannot disagree.
+belong" for the generated residency tables (scripts/build_residency_hub.py).
 
 Collation is per language, not per script, because the same Latin letters are
 ordered differently by different languages. `sort_key(name, code)` takes the

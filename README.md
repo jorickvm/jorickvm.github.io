@@ -94,7 +94,6 @@ python3 scripts/check_translations.py          # terminology, structure, typogra
 python3 scripts/build_content_governance.py   # editorial + cluster records, review queue
 python3 scripts/generate_social_cards.py      # generic OG image manifest
 python3 scripts/build_residency_hub.py        # hub tables, if a residency page changed
-python3 scripts/build_hub_tile_order.py       # place tiles in each locale’s own order
 python3 scripts/build_site.py                 # every generated page, sitemaps, and llms.txt
 python3 scripts/build_search_index.py         # on-site search
 ```
@@ -130,8 +129,7 @@ Serves the committed HTML with GitHub Pages' extensionless URLs, so links resolv
 | `build_route_outputs.py` | Generates the sitemap set (`sitemap.xml` index plus `sitemap-<code>.xml` per locale) and the `llms.txt` set (English at the root, `/<code>/llms.txt` per translation) from `routes.json`. |
 | `build_content_governance.py` | Derives editorial records, content clusters, and the review queue from `articles.json`. |
 | `build_residency_hub.py` | Fills the residency hub tables from the `residency` objects in `articles.json`. |
-| `build_hub_tile_order.py` | Sorts Learn place tiles in each locale’s own order without changing their copy. |
-| `hub_collation.py` | Per-language alphabetical sort keys, shared by the two hub scripts above. |
+| `hub_collation.py` | Per-language alphabetical sort keys for the residency hub tables. |
 | `build_search_index.py` | Builds `assets/search-index.json`. |
 | `generate_social_cards.py` | Assigns the generic 1200x630 share image site-wide. |
 | `sync_help_screenshots.py` | Swaps a Help screenshot placeholder for a `<figure>` once its WebP lands, in every locale. |
