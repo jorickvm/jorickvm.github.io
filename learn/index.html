@@ -53,7 +53,8 @@
   <link rel="stylesheet" href="../assets/css/hub-variants/a2023fe42813.css?v=20260928f" />
   <link rel="stylesheet" href="../assets/css/site-header.css?v=20260930a" />
   <link rel="stylesheet" href="../assets/css/site-footer.css?v=20260928f" />
-  <link rel="stylesheet" href="../assets/css/search.css?v=20260819a" />
+  <link rel="stylesheet" href="../assets/css/search.css?v=20261006a" />
+  <link rel="stylesheet" href="../assets/css/rule-cards.css?v=20261006a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
@@ -124,7 +125,7 @@
     <section class="hero hero-simple hub-hero">
       <div class="hero-copy">
         <h1>Travel Rules &amp; Guides</h1>
-        <p class="subtitle">Browse rules by country or US state, or read general guides about day counting and travel history. Need help using the app? Visit the <a class="text-link" href="/help/">Help Center</a>.</p>
+        <p class="subtitle">Every day rule AtlasDays tracks, explained: visas, tax residence, residence permits and citizenship. Need help using the app? Visit the <a class="text-link" href="/help/">Help Center</a>.</p>
 
         <div class="library-search library-search-inline" data-library-search data-section="learn" data-simple-search aria-label="Search AtlasDays travel rules">
           <div class="search-controls">
@@ -149,479 +150,127 @@
 
     <div class="hub-content">
       <div class="hub-chips" role="group" aria-label="Filter travel rules">
-        <button type="button" data-filter-chip="all" aria-pressed="true">All places</button>
-        <button type="button" data-filter-chip="country" aria-pressed="false">Countries &amp; regions</button>
-        <button type="button" data-filter-chip="state" aria-pressed="false">US states</button>
-        <button type="button" data-filter-chip="guides" aria-pressed="false">General guides</button>
+        <button type="button" data-filter-chip="visa" aria-pressed="false">Visas</button>
+        <button type="button" data-filter-chip="tax" aria-pressed="false">Tax</button>
+        <button type="button" data-filter-chip="residence" aria-pressed="false">Residence</button>
+        <button type="button" data-filter-chip="citizenship" aria-pressed="false">Citizenship</button>
       </div>
 
-      <section class="hub-section" id="rules-by-place" data-filter-section>
-        <p class="hub-label">Rules by place · <span class="hub-count" data-filter-count>0</span></p>
-        <div class="hub-places">
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/al.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Albania</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/albania-183-day-tax-residency">Albania's <span class="hub-key">183-Day</span> Tax Residency Rule</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="state">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/us-az.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Arizona</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/arizona-tax-residency">Arizona's <span class="hub-key">9-Month</span> Residency Presumption</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/am.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Armenia</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/armenia-183-day-tax-residency">Armenia's <span class="hub-key">183-Day</span> Tax Residency Rule</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/au.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Australia</span><span class="hub-tile-count">3</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/australia-183-day-tax-residency">Australia's <span class="hub-key">183-Day</span> Tax Residency Rule</a>
-              <a class="hub-link" href="/learn/australia-citizenship-residence-requirement">Australia's <span class="hub-key">90-Day</span> Citizenship Absence Limit</a>
-              <a class="hub-link" href="/learn/australia-resident-return-visa-residence">Australia's <span class="hub-key">Resident Return Visa</span>: The 730-Day Rule</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/bg.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Bulgaria</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/bulgaria-183-day-tax-residency">Bulgaria's <span class="hub-key">183-Day</span> Tax Residency Rule</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="state">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/us-ca.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">California</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/california-tax-residency">California Tax Residency and the <span class="hub-key">Nine-Month</span> Presumption</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/ca.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Canada</span><span class="hub-tile-count">5</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/canada-183-day-tax-residency">Canada's <span class="hub-key">183-Day</span> Tax Residency Rule</a>
-              <a class="hub-link" href="/learn/canada-visitor-visa-6-month-limit">Canada's <span class="hub-key">6-Month</span> Visitor Limit</a>
-              <a class="hub-link" href="/learn/canadian-snowbird-day-limits">Canadian <span class="hub-key">Snowbirds</span>: US Stays, Form 8840 and Provincial Health Limits</a>
-              <a class="hub-link" href="/learn/canada-pr-residency-obligation">Canada's <span class="hub-key">730-Day</span> PR Residency Obligation</a>
-              <a class="hub-link" href="/learn/canada-citizenship-physical-presence">Canada's <span class="hub-key">1,095-Day</span> Citizenship Physical Presence Rule</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/co.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Colombia</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/colombia-183-day-tax-residency">Colombia's <span class="hub-key">183-Day</span> Tax Residency Rule</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="state">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/us-co.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Colorado</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/colorado-tax-residency">Colorado's <span class="hub-key">Six-Month</span> (183-Day) Statutory Residency Rule</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="state">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/us-ct.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Connecticut</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/connecticut-tax-residency">Connecticut's <span class="hub-key">183-Day</span> Statutory Residency Rule</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/cy.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Cyprus</span><span class="hub-tile-count">2</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/cyprus-183-day-tax-residency">Cyprus's <span class="hub-key">183-Day</span> Tax Residency Rule</a>
-              <a class="hub-link" href="/learn/cyprus-citizenship-final-year-absence">Cyprus Citizenship Final-Year Absence</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/cz.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Czech Republic</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/czech-republic-183-day-tax-residency">The Czech Republic's <span class="hub-key">183-Day</span> Tax Residency Rule</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/dk.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Denmark</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/denmark-overseas-work-42-day-rule">Denmark Overseas Work 42-Day Limit</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/ee.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Estonia</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/estonia-183-day-tax-residency">Estonia's <span class="hub-key">183-Day</span> Tax Residency Rule</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/fr.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">France</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/france-resident-card-absence">France Ten-Year Card Absence</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/ge.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Georgia</span><span class="hub-tile-qualifier">the country</span><span class="hub-tile-count">2</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/georgia-183-day-tax-residency">Georgia (the Country): the <span class="hub-key">183-Day</span> Tax Residency Rule</a>
-              <a class="hub-link" href="/learn/georgia-visa-free-365-days">Georgia's <span class="hub-key">One-Year</span> Visa-Free Stay</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="state">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/us-ga.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Georgia</span><span class="hub-tile-qualifier">US state</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/georgia-us-tax-residency">Georgia's <span class="hub-key">183-Day</span> Tax Residency Rule (the US State)</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/de.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Germany</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/germany-naturalization-absence-limit">Germany's <span class="hub-key">Six-Month</span> Naturalisation Absence Limit</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/gr.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Greece</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/greece-183-day-tax-residency">Greece's <span class="hub-key">183-Day</span> Tax Residency Rule</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="state">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/us-hi.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Hawaii</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/hawaii-tax-residency">Hawaii's <span class="hub-key">200-Day</span> Tax Residency Presumption</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="state">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/us-id.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Idaho</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/idaho-tax-residency">Idaho's <span class="hub-key">270-Day</span> Residency Rule</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/in.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">India</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/india-tourist-visa-stay-limits">India's <span class="hub-key">e-Tourist Visa</span> 180-Day Stay Limits</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/id.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Indonesia</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/indonesia-183-day-tax-residency">Indonesia's <span class="hub-key">183-Day</span> Tax Residency Rule</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/ie.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Ireland</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/ireland-183-day-tax-residency">Ireland's <span class="hub-key">183-Day</span> Tax Residency Rule</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/it.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Italy</span><span class="hub-tile-count">2</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/italy-183-day-tax-residency">Italy's <span class="hub-key">183-Day</span> Tax Residency Rule</a>
-              <a class="hub-link" href="/learn/italy-residence-permit-absence">Italy Residence Permit Absence</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/jp.svg" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Japan</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/japan-90-day-rule">Japan's <span class="hub-key">90-Day</span> Rule Explained</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/lt.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Lithuania</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/lithuania-183-day-tax-residency">Lithuania's <span class="hub-key">183-Day</span> Tax Residency Rule</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="state">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/us-me.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Maine</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/maine-tax-residency">Maine's <span class="hub-key">183-Day</span> Statutory Residency Rule</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/my.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Malaysia</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/malaysia-182-day-tax-residency">Malaysia's <span class="hub-key">182-Day</span> Tax Residency Rule</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/mt.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Malta</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/malta-183-day-tax-residency">Malta's <span class="hub-key">183-Day</span> Tax Residency Rule</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="state">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/us-md.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Maryland</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/maryland-tax-residency">Maryland's <span class="hub-key">183-Day</span> Statutory Residency Rule</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="state">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/us-ma.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Massachusetts</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/massachusetts-tax-residency">Massachusetts's <span class="hub-key">183-Day</span> Statutory Residency Rule</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/mu.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Mauritius</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/mauritius-183-day-tax-residency">Mauritius's <span class="hub-key">183-Day</span> Tax Residency Rule</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="state">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/us-mn.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Minnesota</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/minnesota-tax-residency">Minnesota's <span class="hub-key">183-Day</span> Statutory Residency Rule</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/md.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Moldova</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/moldova-183-day-tax-residency">Moldova's <span class="hub-key">183-Day</span> Tax Residency Rule</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/me.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Montenegro</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/montenegro-183-day-tax-residency">Montenegro's <span class="hub-key">183-Day</span> Tax Residency Rule</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="state">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/us-ne.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Nebraska</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/nebraska-tax-residency">Nebraska's <span class="hub-key">183-Day</span> Statutory Residency Rule</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/nl.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Netherlands</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/netherlands-residence-permit-absence-rules">Netherlands <span class="hub-key">6-Month</span> Residence Permit Absence Rules</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="state">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/us-nj.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">New Jersey</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/new-jersey-tax-residency">New Jersey's <span class="hub-key">183-Day</span> Statutory Residency Rule</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="state">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/us-ny.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">New York</span><span class="hub-tile-qualifier">US state</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/new-york-tax-residency">New York's <span class="hub-key">183-Day</span> Statutory Residency Rule</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/nz.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">New Zealand</span><span class="hub-tile-count">3</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/new-zealand-183-day-tax-residency">New Zealand's <span class="hub-key">183-Day</span> Tax Residency Rule</a>
-              <a class="hub-link" href="/learn/new-zealand-citizenship-presence-requirement">New Zealand's <span class="hub-key">1,350-Day</span> Citizenship Presence Requirement</a>
-              <a class="hub-link" href="/learn/nz-super-overseas-absence">NZ Super Overseas Absence</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="state">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/us-nd.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">North Dakota</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/north-dakota-tax-residency">North Dakota's <span class="hub-key">7-Month</span> (210-Day) Statutory Residency Rule</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/no.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Norway</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/norway-183-day-tax-residency">Norway's <span class="hub-key">183-Day</span> Tax Residency Rule</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="state">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/us-oh.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Ohio</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/ohio-tax-residency">Ohio's <span class="hub-key">212 Contact-Period</span> Residency Rule</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="state">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/us-or.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Oregon</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/oregon-tax-residency">Oregon's <span class="hub-key">200-Day</span> Statutory Residency Rule</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="state">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/us-pa.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Pennsylvania</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/pennsylvania-tax-residency">Pennsylvania's <span class="hub-key">183-Day</span> Statutory Residency Rule</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/pl.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Poland</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/poland-183-day-tax-residency">Poland's <span class="hub-key">183-Day</span> Tax Residency Rule</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/pt.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Portugal</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/portugal-183-day-tax-residency">Portugal's <span class="hub-key">183-Day</span> Tax Residency Rule</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/qa.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Qatar</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/qatar-residence-return-planning">Qatar Residence Return Planning</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="state">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/us-ri.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Rhode Island</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/rhode-island-tax-residency">Rhode Island's <span class="hub-key">183-Day</span> Statutory Residency Rule</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/ro.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Romania</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/romania-183-day-tax-residency">Romania's <span class="hub-key">183-Day</span> Tax Residency Rule</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/eu.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Schengen Area</span><span class="hub-tile-qualifier">region</span><span class="hub-tile-count">6</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/schengen-90-180-rule">What Does <span class="hub-key">90 Days in Any 180-Day Period</span> Mean?</a>
-              <a class="hub-link" href="/learn/schengen-countries-list-90-180-rule">Schengen <span class="hub-key">Countries List</span> for the 90/180 Rule</a>
-              <a class="hub-link" href="/learn/schengen-rolling-window-walkthrough">How the Schengen <span class="hub-key">Rolling Window</span> Actually Works</a>
-              <a class="hub-link" href="/learn/when-do-you-get-schengen-days-back-after-90-day-stay">When Do You Get Schengen <span class="hub-key">Days Back</span> After a 90-Day Stay?</a>
-              <a class="hub-link" href="/learn/schengen-single-entry-visa">Schengen <span class="hub-key">Single-Entry Visa</span>: Entries vs Duration of Stay</a>
-              <a class="hub-link" href="/learn/ees-etias-schengen-90-180"><span class="hub-key">EES and ETIAS</span>: What They Mean for Your Schengen Days</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/rs.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Serbia</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/serbia-183-day-tax-residency">Serbia's <span class="hub-key">183-Day</span> Tax Residency Rule</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/sg.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Singapore</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/singapore-183-day-tax-residency">Singapore's <span class="hub-key">183-Day</span> Tax Residency Rule</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/sk.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Slovakia</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/slovakia-183-day-tax-residency">Slovakia's <span class="hub-key">183-Day</span> Tax Residency Rule</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/si.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Slovenia</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/slovenia-183-day-tax-residency">Slovenia's <span class="hub-key">183-Day</span> Tax Residency Rule</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/es.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Spain</span><span class="hub-tile-count">2</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/spain-183-day-tax-residency">Spain's <span class="hub-key">183-Day</span> Tax Residency Rule</a>
-              <a class="hub-link" href="/learn/spain-long-term-residence-eu-absence">Spain Long-Term Residence EU Absence</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/ch.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Switzerland</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/switzerland-permit-absence">Switzerland B/C Permit Absence</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/tw.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Taiwan</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/taiwan-183-day-tax-residency">Taiwan's <span class="hub-key">183-Day</span> Tax Residency Rule</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/th.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Thailand</span><span class="hub-tile-count">2</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/thailand-180-day-tax-residency">Thailand's <span class="hub-key">180-Day</span> Tax Residency Rule</a>
-              <a class="hub-link" href="/learn/thailand-visa-exemption-30-days">Thailand's <span class="hub-key">30-Day</span> Visa Exemption</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/tr.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Türkiye</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/turkiye-90-180-rule">Türkiye's <span class="hub-key">90/180</span> Rule</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/ae.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">United Arab Emirates</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/uae-183-day-tax-residency">The UAE's <span class="hub-key">183-Day</span> Tax Residency Rule</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/gb.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">United Kingdom</span><span class="hub-tile-count">6</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/uk-standard-visitor-visa-180-day-rule">The UK <span class="hub-key">Standard Visitor</span> "180-Day Rule"</a>
-              <a class="hub-link" href="/learn/uk-eta-vs-standard-visitor-visa">UK <span class="hub-key">ETA</span> vs Standard Visitor Visa: Which One Do You Need?</a>
-              <a class="hub-link" href="/learn/uk-statutory-residence-test">UK <span class="hub-key">Statutory Residence Test</span>: What Travelers Need to Know</a>
-              <a class="hub-link" href="/learn/uk-ilr-absence-limit">UK <span class="hub-key">ILR Absence Rule</span>: 180 Days in Any 12 Months</a>
-              <a class="hub-link" href="/learn/uk-ilr-absence-calculator"><span class="hub-key">ILR Absence Calculator</span>: 180 Days in Any 12 Months</a>
-              <a class="hub-link" href="/learn/uk-citizenship-absence-limits">UK <span class="hub-key">Citizenship Absence Limits</span>: What Naturalisation Residence Rules Are Trying to Show</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/us.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">United States</span><span class="hub-tile-count">5</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/us-visa-waiver-90-day-limit">The US <span class="hub-key">Visa Waiver Program</span> 90-Day Limit</a>
-              <a class="hub-link" href="/learn/us-b1-b2-visa-180-day-limit">US <span class="hub-key">B1/B2 Visa</span>: Understanding the 180-Day Stay Limit</a>
-              <a class="hub-link" href="/learn/us-substantial-presence-test">US <span class="hub-key">Substantial Presence Test</span>: What Travelers Need to Know</a>
-              <a class="hub-link" href="/learn/us-green-card-absence-limits">US <span class="hub-key">Green Card</span> Absence Limits: Six Months and One Year</a>
-              <a class="hub-link" href="/learn/us-naturalization-physical-presence">US <span class="hub-key">Naturalisation</span>: The 30-Month Physical Presence Rule</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="state">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/us-vt.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Vermont</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/vermont-tax-residency">Vermont's <span class="hub-key">183-Day</span> Statutory Residency Rule</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/vn.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Vietnam</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/vietnam-183-day-tax-residency">Vietnam's <span class="hub-key">183-Day</span> Tax Residency Rule</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="state">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/us-va.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Virginia</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/virginia-tax-residency">Virginia's <span class="hub-key">183-Day</span> Actual Residency Rule</a>
-            </div>
-          </div>
+      <div class="rule-tools">
+        <a class="rule-card rule-tool" href="/learn/calculators"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5.5" width="16" height="14.5" rx="3"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/></svg></span><span class="rule-text"><strong>Day calculators</strong><span>Count your days for Schengen, the 183-day rule and residence or citizenship.</span></span></a>
+        <a class="rule-card rule-tool" href="/learn/guides"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>Guides</strong><span>How day counting works, travel history and proof, Schengen in depth.</span></span></a>
+      </div>
+
+      <section class="hub-section rule-section" id="rules-visa" data-filter-section>
+        <p class="hub-label">Visa &amp; Entry Limits</p>
+        <div class="rule-cards">
+          <a class="rule-card" href="/learn/schengen-90-180-rule" data-filter-item data-groups="visa"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Schengen 90/180 Short-Stay Rule</strong><span>Up to 90 days in any 180 days.</span></span></a>
+          <a class="rule-card" href="/learn/schengen-single-entry-visa" data-filter-item data-groups="visa"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Schengen Single-Entry Visa</strong><span>One stay, with the days granted on your visa.</span></span></a>
+          <a class="rule-card" href="/learn/canada-visitor-visa-6-month-limit" data-filter-item data-groups="visa"><img class="rule-flag" src="/assets/flags/ca.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Canada Visitor Visa / eTA</strong><span>Up to six months per stay, tracked as 180 days.</span></span></a>
+          <a class="rule-card" href="/learn/georgia-visa-free-365-days" data-filter-item data-groups="visa"><img class="rule-flag" src="/assets/flags/ge.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Georgia Visa-Free Stay</strong><span>Up to one year per stay, tracked as 365 days.</span></span></a>
+          <a class="rule-card" href="/learn/india-tourist-visa-stay-limits" data-filter-item data-groups="visa"><img class="rule-flag" src="/assets/flags/in.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>India e-Tourist Visa</strong><span>Up to 180 days per calendar year, across all visits.</span></span></a>
+          <a class="rule-card" href="/learn/japan-90-day-rule" data-filter-item data-groups="visa"><img class="rule-flag" src="/assets/flags/jp.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Japan Temporary Visitor</strong><span>Up to 90 days per stay.</span></span></a>
+          <a class="rule-card" href="/learn/thailand-visa-exemption-30-days" data-filter-item data-groups="visa"><img class="rule-flag" src="/assets/flags/th.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Thailand Visa Exemption</strong><span>Up to 30 days per stay.</span></span></a>
+          <a class="rule-card" href="/learn/turkiye-90-180-rule" data-filter-item data-groups="visa"><img class="rule-flag" src="/assets/flags/tr.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Türkiye Short Stay</strong><span>Up to 90 days in any 180 days.</span></span></a>
+          <a class="rule-card" href="/learn/uk-standard-visitor-visa-180-day-rule" data-filter-item data-groups="visa"><img class="rule-flag" src="/assets/flags/gb.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>UK Standard Visitor</strong><span>Up to six months per stay, tracked as 180 days.</span></span></a>
+          <a class="rule-card" href="/learn/us-visa-waiver-90-day-limit" data-filter-item data-groups="visa"><img class="rule-flag" src="/assets/flags/us.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>US ESTA</strong><span>Up to 90 days per stay.</span></span></a>
+          <a class="rule-card" href="/learn/us-b1-b2-visa-180-day-limit" data-filter-item data-groups="visa"><img class="rule-flag" src="/assets/flags/us.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>US B-1/B-2 Visitor Visa</strong><span>Usually six months per stay, tracked as 180 days.</span></span></a>
         </div>
       </section>
-
-      <section class="hub-section" id="general-guides" data-filter-section>
-        <p class="hub-label">General guides</p>
-        <div class="hub-topics">
-          <div class="hub-tile" data-filter-item data-groups="guides">
-            <div class="hub-tile-head"><span class="hub-tile-name">Day limits &amp; residency</span><span class="hub-tile-count">5</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/183-day-tax-residency-rule"><span class="hub-key">183-Day</span> Tax Residency Rule: How the Count Works</a>
-              <a class="hub-link" href="/learn/what-counts-as-a-day-for-visa-purposes">What Counts as a <span class="hub-key">Day</span>? Arrival, Departure and Transit Days Compared</a>
-              <a class="hub-link" href="/learn/digital-nomad-visa-day-limits"><span class="hub-key">Digital Nomad</span> Visas and Tax Residency: Does the 183-Day Rule Still Apply?</a>
-              <a class="hub-link" href="/learn/overstaying-a-visa-or-stay-limit"><span class="hub-key">Overstaying</span> a Visa: What Happens in Schengen, the UK and the US</a>
-              <a class="hub-link" href="/learn/residence-permit-citizenship-absence-rules"><span class="hub-key">Residence Permit</span> and Citizenship Absence Rules by Country</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="guides">
-            <div class="hub-tile-head"><span class="hub-tile-name">Travel history &amp; evidence</span><span class="hub-tile-count">6</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/travel-history-for-visa-applications">Travel History for Visa Applications: How Far Back <span class="hub-key">Each Form</span> Asks</a>
-              <a class="hub-link" href="/learn/travel-history-template-visa-application">Travel History <span class="hub-key">Template</span> for Visa Applications (Free CSV)</a>
-              <a class="hub-link" href="/learn/get-official-entry-exit-records">How to Get Your <span class="hub-key">Official Travel History</span>: Entry and Exit Records by Country</a>
-              <a class="hub-link" href="/learn/rebuild-travel-history-from-passport-stamps-emails-photos">How to <span class="hub-key">Rebuild</span> Your Travel History From Passport Stamps, Emails, and Photos</a>
-              <a class="hub-link" href="/learn/prove-you-were-not-in-a-country">How to <span class="hub-key">Prove You Were Not</span> in a Country or State</a>
-              <a class="hub-link" href="/learn/flighty-flight-history-day-count">How to Turn Your <span class="hub-key">Flighty</span> Flight History Into a Visa and Residency Day Count</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="guides">
-            <div class="hub-tile-head"><span class="hub-tile-name">Countries, visits &amp; counting</span><span class="hub-tile-count">3</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/how-to-track-travel-days">How to <span class="hub-key">Track Days</span> in Each Country: 6 Methods Compared</a>
-              <a class="hub-link" href="/learn/how-many-countries-in-the-world"><span class="hub-key">How Many Countries</span> Are There in the World? 195, and Why Lists Differ</a>
-              <a class="hub-link" href="/learn/does-a-layover-count-as-visiting-a-country">Does a <span class="hub-key">Layover</span> Count as Visiting a Country?</a>
-            </div>
-          </div>
+      <section class="hub-section rule-section" id="rules-tax" data-filter-section>
+        <p class="hub-label">Tax Residence</p>
+        <div class="rule-cards">
+          <a class="rule-card" href="/learn/albania-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/al.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Albania Tax Residency</strong><span>183 days or more in a calendar year.</span></span></a>
+          <a class="rule-card" href="/learn/armenia-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/am.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Armenia Tax Residency</strong><span>183 days or more in a calendar year.</span></span></a>
+          <a class="rule-card" href="/learn/australia-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/au.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Australia Tax Residency</strong><span>Over half the tax year.</span></span></a>
+          <a class="rule-card" href="/learn/bulgaria-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/bg.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Bulgaria Tax Residency</strong><span>More than 183 days in any 12 months.</span></span></a>
+          <a class="rule-card" href="/learn/canada-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/ca.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Canada Tax Residency</strong><span>183 days or more in a calendar year.</span></span></a>
+          <a class="rule-card" href="/learn/colombia-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/co.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Colombia Tax Residency</strong><span>More than 183 days in any 365 days.</span></span></a>
+          <a class="rule-card" href="/learn/cyprus-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/cy.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Cyprus Tax Residency</strong><span>More than 183 days in a calendar year.</span></span></a>
+          <a class="rule-card" href="/learn/czech-republic-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/cz.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Czechia Tax Residency</strong><span>183 days or more in a calendar year.</span></span></a>
+          <a class="rule-card" href="/learn/estonia-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/ee.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Estonia Tax Residency</strong><span>183 days or more in any 12 months.</span></span></a>
+          <a class="rule-card" href="/learn/georgia-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/ge.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Georgia Tax Residency</strong><span>183 days or more in any 12 months.</span></span></a>
+          <a class="rule-card" href="/learn/greece-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/gr.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Greece Tax Residency</strong><span>More than 183 days in any 12 months.</span></span></a>
+          <a class="rule-card" href="/learn/indonesia-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/id.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Indonesia Tax Residency</strong><span>More than 183 days in any 12 months.</span></span></a>
+          <a class="rule-card" href="/learn/ireland-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/ie.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Ireland Tax Residency</strong><span>183 days in one year or 280 across two years.</span></span></a>
+          <a class="rule-card" href="/learn/italy-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/it.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Italy Tax Residency</strong><span>Over half the calendar year.</span></span></a>
+          <a class="rule-card" href="/learn/lithuania-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/lt.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Lithuania Tax Residency</strong><span>183 days or more in a calendar year.</span></span></a>
+          <a class="rule-card" href="/learn/malaysia-182-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/my.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Malaysia Tax Residency</strong><span>182 days or more in a calendar year.</span></span></a>
+          <a class="rule-card" href="/learn/malta-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/mt.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Malta Tax Residency</strong><span>More than 183 days in a calendar year.</span></span></a>
+          <a class="rule-card" href="/learn/mauritius-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/mu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Mauritius Tax Residency</strong><span>183 days or more in a tax year.</span></span></a>
+          <a class="rule-card" href="/learn/moldova-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/md.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Moldova Tax Residency</strong><span>183 days or more in a calendar year.</span></span></a>
+          <a class="rule-card" href="/learn/montenegro-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/me.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Montenegro Tax Residency</strong><span>More than 183 days in a calendar year.</span></span></a>
+          <a class="rule-card" href="/learn/new-zealand-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/nz.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>New Zealand Tax Residency</strong><span>More than 183 days in any 12 months.</span></span></a>
+          <a class="rule-card" href="/learn/norway-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/no.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Norway Tax Residency</strong><span>Over 183 days in 12 months or over 270 in 36 months.</span></span></a>
+          <a class="rule-card" href="/learn/poland-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/pl.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Poland Tax Residency</strong><span>More than 183 days in a calendar year.</span></span></a>
+          <a class="rule-card" href="/learn/portugal-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/pt.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Portugal Tax Residency</strong><span>More than 183 nights in any 12 months.</span></span></a>
+          <a class="rule-card" href="/learn/romania-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/ro.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Romania Tax Residency</strong><span>More than 183 days in any 12 months.</span></span></a>
+          <a class="rule-card" href="/learn/serbia-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/rs.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Serbia Tax Residency</strong><span>183 days or more in any 12 months.</span></span></a>
+          <a class="rule-card" href="/learn/singapore-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/sg.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Singapore Tax Residency</strong><span>183 days or more in a calendar year.</span></span></a>
+          <a class="rule-card" href="/learn/slovakia-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/sk.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Slovakia Tax Residency</strong><span>183 days or more in a calendar year.</span></span></a>
+          <a class="rule-card" href="/learn/slovenia-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/si.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Slovenia Tax Residency</strong><span>More than 183 days in a calendar year.</span></span></a>
+          <a class="rule-card" href="/learn/taiwan-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/tw.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Taiwan Tax Residency</strong><span>183 days or more in a calendar year.</span></span></a>
+          <a class="rule-card" href="/learn/thailand-180-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/th.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Thailand Tax Residency</strong><span>180 days or more in a calendar year.</span></span></a>
+          <a class="rule-card" href="/learn/uae-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/ae.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>United Arab Emirates Tax Residency</strong><span>183 days or more in any 12 months.</span></span></a>
+          <a class="rule-card" href="/learn/uk-statutory-residence-test" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/gb.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>United Kingdom Tax Residency</strong><span>183 days or more in a tax year.</span></span></a>
+          <a class="rule-card" href="/learn/vietnam-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/vn.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Vietnam Tax Residency</strong><span>183 days or more in any 12 months.</span></span></a>
+          <a class="rule-card" href="/learn/us-substantial-presence-test" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/us.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>US Substantial Presence Test</strong><span>31 days this year and 183 weighted across three years.</span></span></a>
+          <a class="rule-card" href="/learn/denmark-overseas-work-42-day-rule" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/dk.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Denmark Overseas Work 42-Day Limit</strong><span>42 days in Denmark in any six months.</span></span></a>
+          <a class="rule-card" href="/learn/spain-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/es.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Spain Tax Residency</strong><span>More than 183 days in a calendar year.</span></span></a>
+        </div>
+      </section>
+      <section class="hub-section rule-section" id="rules-usstate" data-filter-section>
+        <p class="hub-label">US State</p>
+        <div class="rule-cards">
+          <a class="rule-card" href="/learn/arizona-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/us-az.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Arizona Tax Residency</strong><span>More than 270 days per calendar year: residency presumed.</span></span></a>
+          <a class="rule-card" href="/learn/california-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/us-ca.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>California Tax Residency</strong><span>More than 270 days per calendar year: residency presumed.</span></span></a>
+          <a class="rule-card" href="/learn/colorado-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/us-co.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Colorado Tax Residency</strong><span>More than 183 days in a calendar year.</span></span></a>
+          <a class="rule-card" href="/learn/connecticut-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/us-ct.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Connecticut Tax Residency</strong><span>More than 183 days in a calendar year.</span></span></a>
+          <a class="rule-card" href="/learn/georgia-us-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/us-ga.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Georgia State Tax Residency</strong><span>183 days or more in the 365 days ending on 31 December.</span></span></a>
+          <a class="rule-card" href="/learn/hawaii-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/us-hi.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Hawaii Tax Residency</strong><span>More than 200 days per calendar year: residency presumed.</span></span></a>
+          <a class="rule-card" href="/learn/idaho-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/us-id.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Idaho Tax Residency</strong><span>More than 270 days in a calendar year.</span></span></a>
+          <a class="rule-card" href="/learn/maine-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/us-me.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Maine Tax Residency</strong><span>More than 183 days in a calendar year.</span></span></a>
+          <a class="rule-card" href="/learn/maryland-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/us-md.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Maryland Tax Residency</strong><span>183 days or more in a calendar year.</span></span></a>
+          <a class="rule-card" href="/learn/massachusetts-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/us-ma.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Massachusetts Tax Residency</strong><span>More than 183 days in a calendar year.</span></span></a>
+          <a class="rule-card" href="/learn/minnesota-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/us-mn.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Minnesota Tax Residency</strong><span>183 days or more in a calendar year.</span></span></a>
+          <a class="rule-card" href="/learn/nebraska-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/us-ne.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Nebraska Tax Residency</strong><span>183 days or more in a calendar year.</span></span></a>
+          <a class="rule-card" href="/learn/new-jersey-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/us-nj.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>New Jersey Tax Residency</strong><span>More than 183 days in a calendar year.</span></span></a>
+          <a class="rule-card" href="/learn/new-york-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/us-ny.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>New York Tax Residency</strong><span>More than 183 days in a calendar year.</span></span></a>
+          <a class="rule-card" href="/learn/north-dakota-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/us-nd.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>North Dakota Tax Residency</strong><span>More than 210 days in a calendar year.</span></span></a>
+          <a class="rule-card" href="/learn/ohio-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/us-oh.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Ohio Tax Residency</strong><span>More than 212 nights in a calendar year.</span></span></a>
+          <a class="rule-card" href="/learn/oregon-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/us-or.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Oregon Tax Residency</strong><span>More than 200 days per calendar year: residency presumed.</span></span></a>
+          <a class="rule-card" href="/learn/pennsylvania-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/us-pa.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Pennsylvania Tax Residency</strong><span>More than 183 days in a calendar year.</span></span></a>
+          <a class="rule-card" href="/learn/rhode-island-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/us-ri.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Rhode Island Tax Residency</strong><span>More than 183 days in a calendar year.</span></span></a>
+          <a class="rule-card" href="/learn/vermont-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/us-vt.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Vermont Tax Residency</strong><span>More than 183 days in a calendar year.</span></span></a>
+          <a class="rule-card" href="/learn/virginia-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/us-va.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Virginia Tax Residency</strong><span>More than 183 days in a calendar year.</span></span></a>
+        </div>
+      </section>
+      <section class="hub-section rule-section" id="rules-residence" data-filter-section>
+        <p class="hub-label">Residence Status</p>
+        <div class="rule-cards">
+          <a class="rule-card" href="/learn/australia-resident-return-visa-residence" data-filter-item data-groups="residence"><img class="rule-flag" src="/assets/flags/au.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Australia Resident Return Visa</strong><span>Two years in five, tracked as a 730-day target.</span></span></a>
+          <a class="rule-card" href="/learn/canada-pr-residency-obligation" data-filter-item data-groups="residence"><img class="rule-flag" src="/assets/flags/ca.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Canada PR Residency Obligation</strong><span>730 days or more in any five years.</span></span></a>
+          <a class="rule-card" href="/learn/france-resident-card-absence" data-filter-item data-groups="residence"><img class="rule-flag" src="/assets/flags/fr.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>France Ten-Year Card Absence</strong><span>1095 days away per absence, for planning.</span></span></a>
+          <a class="rule-card" href="/learn/italy-residence-permit-absence" data-filter-item data-groups="residence"><img class="rule-flag" src="/assets/flags/it.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Italy Residence Permit Absence</strong><span>180 days away per absence, for planning.</span></span></a>
+          <a class="rule-card" href="/learn/nz-super-overseas-absence" data-filter-item data-groups="residence"><img class="rule-flag" src="/assets/flags/nz.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>NZ Super Overseas Absence</strong><span>26 weeks (182 days) away per temporary absence.</span></span></a>
+          <a class="rule-card" href="/learn/netherlands-residence-permit-absence-rules" data-filter-item data-groups="residence"><img class="rule-flag" src="/assets/flags/nl.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Netherlands Residence Permit Absence</strong><span>More than six continuous months away in a year.</span></span></a>
+          <a class="rule-card" href="/learn/qatar-residence-return-planning" data-filter-item data-groups="residence"><img class="rule-flag" src="/assets/flags/qa.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Qatar Residence Return Planning</strong><span>180 days away per absence, for planning.</span></span></a>
+          <a class="rule-card" href="/learn/spain-long-term-residence-eu-absence" data-filter-item data-groups="residence"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Spain Long-Term Residence EU Absence</strong><span>365 days outside the EU per absence, for planning.</span></span></a>
+          <a class="rule-card" href="/learn/switzerland-permit-absence" data-filter-item data-groups="residence"><img class="rule-flag" src="/assets/flags/ch.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Switzerland B/C Permit Absence</strong><span>180 days away per absence, for planning.</span></span></a>
+          <a class="rule-card" href="/learn/us-green-card-absence-limits" data-filter-item data-groups="residence"><img class="rule-flag" src="/assets/flags/us.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>US Green Card Absence Limit</strong><span>Six months away can break continuous residence.</span></span></a>
+        </div>
+      </section>
+      <section class="hub-section rule-section" id="rules-citizenship" data-filter-section>
+        <p class="hub-label">Settlement &amp; Citizenship</p>
+        <div class="rule-cards">
+          <a class="rule-card" href="/learn/australia-citizenship-residence-requirement" data-filter-item data-groups="citizenship"><img class="rule-flag" src="/assets/flags/au.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Australia Citizenship Absence Limits</strong><span>365 days away in four years, 90 in the final year.</span></span></a>
+          <a class="rule-card" href="/learn/canada-citizenship-physical-presence" data-filter-item data-groups="citizenship"><img class="rule-flag" src="/assets/flags/ca.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Canada Citizenship Physical Presence</strong><span>1095 days or more in five years toward citizenship.</span></span></a>
+          <a class="rule-card" href="/learn/cyprus-citizenship-final-year-absence" data-filter-item data-groups="citizenship"><img class="rule-flag" src="/assets/flags/cy.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Cyprus Citizenship Final-Year Absence</strong><span>Up to 90 days away in the year before applying.</span></span></a>
+          <a class="rule-card" href="/learn/germany-naturalization-absence-limit" data-filter-item data-groups="citizenship"><img class="rule-flag" src="/assets/flags/de.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Germany Naturalization Absence Limit</strong><span>Up to six months away, tracked as 180 days.</span></span></a>
+          <a class="rule-card" href="/learn/new-zealand-citizenship-presence-requirement" data-filter-item data-groups="citizenship"><img class="rule-flag" src="/assets/flags/nz.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>New Zealand Citizenship Presence</strong><span>1350 days or more in five years toward citizenship.</span></span></a>
+          <a class="rule-card" href="/learn/uk-citizenship-absence-limits" data-filter-item data-groups="citizenship"><img class="rule-flag" src="/assets/flags/gb.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>UK Citizenship Absence Limits</strong><span>450 days away in five years, 90 in the final year.</span></span></a>
+          <a class="rule-card" href="/learn/uk-ilr-absence-limit" data-filter-item data-groups="citizenship"><img class="rule-flag" src="/assets/flags/gb.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>UK Indefinite Leave to Remain</strong><span>Up to 180 days away in any 12 months.</span></span></a>
+          <a class="rule-card" href="/learn/us-naturalization-physical-presence" data-filter-item data-groups="citizenship"><img class="rule-flag" src="/assets/flags/us.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>US Naturalization Physical Presence</strong><span>30 months in five years, tracked as a 913-day target.</span></span></a>
         </div>
       </section>
 
@@ -649,6 +298,7 @@
           <a href="/help/">Help Center</a>
           <a href="/learn/">Travel Rules</a>
           <a href="/learn/calculators">Calculators</a>
+          <a href="/learn/guides">Guides</a>
           <a href="/changelog">Changelog</a>
         </div>
         <div>
@@ -670,8 +320,8 @@
   <script>window.AtlasDaysNavStrings={"menuOpen":"Open navigation menu","menuClose":"Close navigation menu"};</script>
   <script src="../assets/js/navigation.js?v=20261005a"></script>
   <script>window.AtlasDaysSearchStrings={"resultOne":"{count} result found","resultMany":"{count} results found","emptyHelp":"No matching Help article. Try a feature name, task, or shorter phrase.","emptyLearn":"No matching rule or guide. Try a country, US state, region, or broader topic.","unavailable":"Search is unavailable; browse the topics below."};</script>
-  <script src="../assets/js/search.js?v=20261004a"></script>
-  <script src="../assets/js/library-filter.js?v=20260722a"></script>
+  <script src="../assets/js/search.js?v=20261006a"></script>
+  <script src="../assets/js/library-filter.js?v=20261006a"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

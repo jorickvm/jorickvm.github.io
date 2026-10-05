@@ -125,6 +125,7 @@
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261005a" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261004l" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">İçeriğe geç</a>
@@ -241,6 +242,97 @@
     </div>
     <p>Dönem başvuru tarihiyle birlikte kayar; bu yüzden beklemek kendiliğinden bir iyileşme değildir. ABD'de geçirdiğiniz her ek gün yakın uçtan bir gün ekler ve uzak uçtan bir gün düşürür; toplam ise yalnızca dönemden düşen gün dışarıda geçen bir günse artar.</p>
 
+    <h2 id="calculator">ABD vatandaşlığı fiziksel bulunma hesaplama</h2>
+    <p>ABD'deki kalışlarınızı eklemek için günlere dokunun ve başvurmayı planladığınız tarihi seçin. Hesaplayıcı, bu tarihe kadarki beş yılı 913 güne karşı sayar.</p>
+    <div class="daycal" id="embed-presence" data-day-calendar="presence" data-cal-preset="{&quot;settings&quot;:{&quot;country&quot;:&quot;US&quot;,&quot;need&quot;:913,&quot;note&quot;:&quot;US naturalization calculator&quot;},&quot;lock&quot;:[],&quot;link&quot;:&quot;citizenship-us&quot;}">
+      <script type="application/json" data-cal-strings>
+{
+  "hintEnd": "Kalışın diğer uç gününe dokunun.",
+  "hintSelected": "Tarihlerini değiştirmek için kalışın iki ucundan birini sürükleyin veya kalışı aşağıdan silin.",
+  "pending": "yeni kalışın başlangıcı",
+  "empty": "Henüz kalış yok.",
+  "deleteTrip": "Kalışı sil",
+  "country": "Ülke",
+  "goal": "Hedef",
+  "goalStay": "Sınırın altında kal",
+  "goalReach": "Hedefe ulaş",
+  "addCountry": "Ülke ekle",
+  "noMatch": "Eşleşen ülke yok",
+  "year": "Yıl",
+  "starts": "Başlangıç",
+  "tripDays": {
+    "one": "{n} gün",
+    "other": "{n} gün"
+  },
+  "remaining": {
+    "one": "{n} gün kaldı",
+    "other": "{n} gün kaldı"
+  },
+  "atLimit": "Sınırda",
+  "needed": {
+    "one": "{n} gün daha gerekli",
+    "other": "{n} gün daha gerekli"
+  },
+  "reachedTarget": "Hedefe ulaşıldı",
+  "overBy": {
+    "one": "Sınır {n} gün aşıldı",
+    "other": "Sınır {n} gün aşıldı"
+  },
+  "hintStart": "ABD'deki bir kalışın başladığı güne, ardından bittiği güne dokunun.",
+  "inTrip": "ABD'de",
+  "title": "ABD",
+  "checkOn": "Başvuru tarihi",
+  "checkOnCaption": "Bu tarihe kadarki beş yıl sayılır. Başvurmayı planladığınız günü seçin."
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>P</span><span>S</span><span>Ç</span><span>P</span><span>C</span><span>C</span><span>P</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>Zaman çizelgesi</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>AtlasDays'de takip et</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="embed-presence-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="embed-presence-import-title">AtlasDays'de takip et</p>
+            <p class="cal-dialog-sub">Seyahat ederken günlerinizi saymaya devam edin. iPhone ve iPad için ücretsiz uygulama.</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>AtlasDays'in iPhone veya iPad'inizde yüklü olduğundan emin olun</strong><span>App Store'da ücretsiz.</span></li>
+            <li><strong>Tüm seyahatleri AtlasDays'e aktarmak için QR kodunu tarayın</strong><span>Kontrol edin, ardından İçe aktar düğmesine dokunun.</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>AtlasDays'i indirin</strong><span>App Store'da ücretsiz. Zaten yüklü mü? 2. adıma geçin.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>Kalışlarınızı uygulamada açın</strong><span>Kontrol edin, ardından İçe aktar düğmesine dokunun. O zamana kadar hiçbir şey kaydedilmez.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">AtlasDays'de aç</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>AtlasDays'i indirin</strong><span>iPhone için App Store'da ücretsiz.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>Kalışlarınızı dosyayla içe aktarın</strong><span>Bu kadar çok kalış bir bağlantıya sığmıyor. Dosyayı indirin ve iPhone'unuzda AtlasDays ile açın.</span><button type="button" class="cal-dialog-primary" data-cal-download>Dosyayı indir</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Seyahatleri CSV dosyası olarak indir</button><span data-cal-downloaded hidden>Bu dosyayı iPhone'unuzda AtlasDays ile açın.</span></p>
+          <button type="button" data-cal-close>Kapat</button>
+        </div>
+      </dialog>
+    </div>
+    <p class="cal-private">Her şey tarayıcınızda kalır: Girdiğiniz hiçbir bilgi gönderilmez veya kaydedilmez.</p>
+
     <h2>Gün hesabının ötesinde</h2>
     <p>Fiziksel bulunma, bu koşulların ölçülmesi en kolay olanı ve bir vakayı tek başına belirlemesi en az olasıdır. Kesintisiz ikamet onunla yan yana işler: altı aydan uzun ancak bir yıldan kısa süren bir ülke dışında kalma, aksini ispat edemezseniz bu ikameti bozabilir; bir yıl veya daha uzun süren bir ülke dışında kalma ise onaylı bir Form N-470 geçerli değilse doğrudan bozar. 913 günün çok ötesinde olup yine de tek bir uzun seyahatle kesintisiz ikameti bozmuş olabilirsiniz. AtlasDays fiziksel bulunma hesabını izler; kesintisiz ikamet koşulunu şimdilik kendiniz kontrol edersiniz ve <a href="/tr/learn/us-green-card-absence-limits">ABD Green Card ülke dışında kalma sınırları</a> bu sürelerin nasıl değerlendirildiğini anlatır. USCIS ayrıca başvuruyu yaptığınız eyalette veya USCIS bölgesinde üç aylık ikamet bekler.</p>
     <p>Bunların hiçbiri vergi hesabı değildir: <a href="/tr/learn/us-substantial-presence-test">Substantial Presence Test</a>, kendi ağırlıkları ve istisnaları olan ayrı bir IRS testidir. İşin içine uzun bir ülke dışında kalma, bir yeniden giriş izni veya bozulmuş olabilecek bir yeterlilik dönemi girdiği anda dosya, bir hesap makinesinden çok bir göçmenlik avukatına aittir.</p>
@@ -306,6 +398,7 @@
           <a href="/tr/help/">Yardım Merkezi</a>
           <a href="/tr/learn/">Seyahat kuralları</a>
           <a href="/tr/learn/calculators">Hesaplayıcılar</a>
+          <a href="/tr/learn/guides">Rehberler</a>
           <a href="/changelog">Yenilikler</a>
         </div>
         <div>
@@ -326,6 +419,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"Gezinme menüsünü aç","menuClose":"Gezinme menüsünü kapat"};</script>
   <script src="../../assets/js/navigation.js?v=20261005a"></script>
+  <script defer src="../../assets/js/rules/presence.js?v=20261006a"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261006a"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

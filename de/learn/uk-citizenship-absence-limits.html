@@ -124,6 +124,7 @@
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261005a" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261004l" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
@@ -220,6 +221,7 @@
         <li><a href="#beginne-mit-dem-richtigen-einb-rgerungsweg">Beginne mit dem richtigen Einbürgerungsweg</a></li>
         <li><a href="#zwei-grenzen-die-gemeinsam-gepr-ft-werden-m-ssen">Zwei Grenzen, die gemeinsam geprüft werden müssen</a></li>
         <li><a href="#volle-tage-z-hlen-nicht-die-reisetage">Volle Tage zählen, nicht die Reisetage</a></li>
+        <li><a href="#calculator">Abwesenheitsrechner für die britische Einbürgerung</a></li>
         <li><a href="#warum-kanalinseln-und-isle-of-man-z-hlen">Warum Kanalinseln und Isle of Man zählen</a></li>
         <li><a href="#der-erste-tag-ist-eine-eigene-voraussetzung">Der erste Tag ist eine eigene Voraussetzung</a></li>
         <li><a href="#mehr-als-die-tagesz-hlung">Mehr als die Tageszählung</a></li>
@@ -252,6 +254,91 @@
       <p><strong>Eine Reise.</strong> Du reist am 1. Juni ab und kehrst am 10. Juni zurück. Die Abwesenheitstage sind der 2. bis 9. Juni, also <strong>acht Tage</strong>. Abreise am 1. Juni und Rückkehr am 2. Juni ergeben keinen vollen Abwesenheitstag.</p>
       <p><strong>Eine Reise über den Beginn eines Zählzeitraums hinweg.</strong> Beginnt der Zeitraum des letzten Jahres am 6. Januar, zählen von einer Abwesenheit vom 2. bis 10. Januar fünf Tage zu diesem Zeitraum: der 6., 7., 8., 9. und 10. Januar. Die früheren Tage können weiterhin im längeren maßgeblichen Zeitraum zählen. Das setzt voraus, dass es volle Abwesenheitstage sind, mit einer Abreise vor dem 2. Januar und einer Rückkehr nach dem 10. Januar.</p>
     </div>
+
+    <h2 id="calculator">Abwesenheitsrechner für die britische Einbürgerung</h2>
+    <p>Tippe deine Reisen ins Ausland an und wähl den Tag, an dem du den Antrag stellen willst. Der Rechner prüft beide Grenzen zusammen: deine Abwesenheiten über den gesamten Zeitraum und die 90 Tage in den letzten 12 Monaten.</p>
+    <div class="daycal" id="embed-ukIlr" data-day-calendar="ukIlr" data-cal-preset="{&quot;settings&quot;:{&quot;citizenship&quot;:true,&quot;note&quot;:&quot;UK citizenship absence calculator&quot;},&quot;lock&quot;:[],&quot;link&quot;:&quot;citizenship-uk&quot;}">
+      <script type="application/json" data-cal-strings>
+{
+  "hintStart": "Tippe auf den Tag, an dem du das Vereinigte Königreich verlassen hast, und dann auf den Tag deiner Rückkehr.",
+  "hintEnd": "Tippe auf das andere Ende der Reise.",
+  "inTrip": "außerhalb des Vereinigten Königreichs",
+  "pending": "Beginn einer neuen Reise",
+  "empty": "Noch keine Reisen.",
+  "deleteTrip": "Reise löschen",
+  "country": "Land",
+  "addCountry": "Land hinzufügen",
+  "noMatch": "Kein passendes Land gefunden",
+  "hintSelected": "Ziehe an einem der beiden Enden der Reise, um die Reisedaten zu ändern, oder lösche sie unten.",
+  "tripAway": {
+    "one": "{n} Tag abwesend",
+    "other": "{n} Tage abwesend"
+  },
+  "title": "Abwesenheitstage",
+  "checkOn": "Antragsdatum",
+  "checkOnCaption": "Deine Tage im Ausland in den fünf Jahren bis zu diesem Datum, beim Weg über Ehe oder Lebenspartnerschaft in den drei Jahren.",
+  "remaining": {
+    "one": "Noch {n} Tag",
+    "other": "Noch {n} Tage"
+  },
+  "atLimit": "Am Limit",
+  "overBy": {
+    "one": "{n} Tag über dem Limit",
+    "other": "{n} Tage über dem Limit"
+  },
+  "route": "Weg",
+  "routeStandard": "Regulär",
+  "routeSpouse": "Ehe oder Lebenspartnerschaft",
+  "barRecent": "Letzte 12 Monate"
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>M</span><span>D</span><span>M</span><span>D</span><span>F</span><span>S</span><span>S</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>Zeitleiste</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>In AtlasDays übernehmen</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="embed-ukIlr-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="embed-ukIlr-import-title">In AtlasDays übernehmen</p>
+            <p class="cal-dialog-sub">Zähl deine Tage unterwegs weiter. Kostenlose App für iPhone und iPad.</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>AtlasDays auf deinem iPhone oder iPad installieren</strong><span>Kostenlos im App Store.</span></li>
+            <li><strong>QR-Code scannen, um alle Reisen in AtlasDays zu laden</strong><span>Prüfe sie und tippe dann auf „Importieren“.</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>AtlasDays laden</strong><span>Kostenlos im App Store. Schon installiert? Weiter mit Schritt 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>Aufenthalte in der App öffnen</strong><span>Prüfe sie und tippe dann auf „Importieren“. Vorher wird nichts gespeichert.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">In AtlasDays öffnen</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>AtlasDays laden</strong><span>Kostenlos im App Store für iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>Aufenthalte per Datei importieren</strong><span>Das sind mehr Aufenthalte, als ein Link fassen kann. Lade die Datei herunter und öffne sie auf deinem iPhone mit AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Datei herunterladen</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Reisen als CSV-Datei herunterladen</button><span data-cal-downloaded hidden>Öffne diese Datei auf deinem iPhone mit AtlasDays.</span></p>
+          <button type="button" data-cal-close>Schließen</button>
+        </div>
+      </dialog>
+    </div>
+    <p class="cal-private">Alles bleibt in deinem Browser: Deine Eingaben werden weder übertragen noch gespeichert.</p>
 
     <h2 id="warum-kanalinseln-und-isle-of-man-z-hlen">Warum Kanalinseln und Isle of Man zählen</h2>
     <p>Für das Staatsangehörigkeitsrecht umfasst das maßgebliche britische Gebiet die Kanalinseln und die Isle of Man. Diese Crown Dependencies gehören geografisch nicht zum Vereinigten Königreich, Tage dort zählen für diesen Test aber als Anwesenheit. Dazu gehören die Vogteien Jersey und Guernsey sowie die Isle of Man.</p>
@@ -324,6 +411,7 @@
           <a href="/de/help/">Hilfe</a>
           <a href="/de/learn/">Reiseregeln</a>
           <a href="/de/learn/calculators">Rechner</a>
+          <a href="/de/learn/guides">Anleitungen</a>
           <a href="/changelog">Neuigkeiten</a>
         </div>
         <div>
@@ -344,6 +432,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"Navigationsmenü öffnen","menuClose":"Navigationsmenü schließen"};</script>
   <script src="../../assets/js/navigation.js?v=20261005a"></script>
+  <script defer src="../../assets/js/rules/uk-ilr.js?v=20261006a"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261006a"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

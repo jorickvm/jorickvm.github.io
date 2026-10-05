@@ -54,7 +54,8 @@
   <link rel="stylesheet" href="../../assets/css/hub-variants/a2023fe42813.css?v=20260928f" />
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
-  <link rel="stylesheet" href="../../assets/css/search.css?v=20260819a" />
+  <link rel="stylesheet" href="../../assets/css/search.css?v=20261006a" />
+  <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
@@ -125,7 +126,7 @@
     <section class="hero hero-simple hub-hero">
       <div class="hero-copy">
         <h1>Reiseregeln und Anleitungen</h1>
-        <p class="subtitle">Durchsuch die Regeln nach Land oder US-Bundesstaat, oder lies allgemeine Anleitungen zu Tageszählung und Reiseverlauf. Brauchst du Hilfe zur App? Dann geh zur <a class="text-link" href="/de/help/">Hilfe</a>.</p>
+        <p class="subtitle">Alle Tagesregeln, die AtlasDays verfolgt, erklärt: Visa, Steuerwohnsitz, Aufenthaltstitel und Staatsbürgerschaft. Brauchst du Hilfe zur App? Dann geh zur <a class="text-link" href="/de/help/">Hilfe</a>.</p>
 
         <div class="library-search library-search-inline" data-library-search data-lang="de" data-section="learn" data-simple-search aria-label="Die Reiseregeln von AtlasDays durchsuchen">
           <div class="search-controls">
@@ -150,479 +151,127 @@
 
     <div class="hub-content">
       <div class="hub-chips" role="group" aria-label="Reiseregeln filtern">
-        <button type="button" data-filter-chip="all" aria-pressed="true">Alle Orte</button>
-        <button type="button" data-filter-chip="country" aria-pressed="false">Länder und Regionen</button>
-        <button type="button" data-filter-chip="state" aria-pressed="false">US-Bundesstaaten</button>
-        <button type="button" data-filter-chip="guides" aria-pressed="false">Allgemeine Anleitungen</button>
+        <button type="button" data-filter-chip="visa" aria-pressed="false">Visa</button>
+        <button type="button" data-filter-chip="tax" aria-pressed="false">Steuer</button>
+        <button type="button" data-filter-chip="residence" aria-pressed="false">Aufenthalt</button>
+        <button type="button" data-filter-chip="citizenship" aria-pressed="false">Einbürgerung</button>
       </div>
 
-      <section class="hub-section" id="rules-by-place" data-filter-section>
-        <p class="hub-label">Regeln nach Ort · <span class="hub-count" data-filter-count>0</span></p>
-        <div class="hub-places">
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/al.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Albanien</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/albania-183-day-tax-residency">Albaniens <span class="hub-key">183-Tage</span>-Regel für den Steuerwohnsitz</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="state">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/us-az.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Arizona</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/arizona-tax-residency">Arizonas <span class="hub-key">9-Monats</span>-Vermutung für den Steuerwohnsitz</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/am.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Armenien</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/armenia-183-day-tax-residency">Armeniens <span class="hub-key">183-Tage</span>-Regel für den Steuerwohnsitz</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/au.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Australien</span><span class="hub-tile-count">3</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/australia-183-day-tax-residency">Australiens <span class="hub-key">183-Tage</span>-Regel für den Steuerwohnsitz</a>
-              <a class="hub-link" href="/de/learn/australia-citizenship-residence-requirement">Australiens Einbürgerung: höchstens <span class="hub-key">90 Tage</span> Abwesenheit im letzten Jahr</a>
-              <a class="hub-link" href="/de/learn/australia-resident-return-visa-residence"><span class="hub-key">Resident Return Visa</span> für Australien: die 730-Tage-Regel</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/bg.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Bulgarien</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/bulgaria-183-day-tax-residency">Bulgariens <span class="hub-key">183-Tage</span>-Regel für den Steuerwohnsitz</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="state">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/us-co.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Colorado</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/colorado-tax-residency">Colorados <span class="hub-key">6-Monats</span>-Regel (183 Tage) für den Steuerwohnsitz</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="state">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/us-ct.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Connecticut</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/connecticut-tax-residency">Connecticuts <span class="hub-key">183-Tage</span>-Regel für den Steuerwohnsitz</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/dk.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Dänemark</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/denmark-overseas-work-42-day-rule">Dänemark: 42-Tage-Grenze bei Auslandsarbeit</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/de.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Deutschland</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/germany-naturalization-absence-limit">Deutsche Einbürgerung: die <span class="hub-key">6-Monats</span>-Grenze für Abwesenheit</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/ee.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Estland</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/estonia-183-day-tax-residency">Estlands <span class="hub-key">183-Tage</span>-Regel für den Steuerwohnsitz</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/fr.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Frankreich</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/france-resident-card-absence">Frankreich: Abwesenheit mit Zehnjahreskarte</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/ge.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Georgien</span><span class="hub-tile-qualifier">Land</span><span class="hub-tile-count">2</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/georgia-183-day-tax-residency">Georgiens <span class="hub-key">183-Tage</span>-Regel für den Steuerwohnsitz</a>
-              <a class="hub-link" href="/de/learn/georgia-visa-free-365-days"><span class="hub-key">Ein Jahr</span> visumfrei in Georgien</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="state">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/us-ga.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Georgien</span><span class="hub-tile-qualifier">US-Bundesstaat</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/georgia-us-tax-residency">Georgias <span class="hub-key">183-Tage</span>-Regel für den Steuerwohnsitz</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/gr.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Griechenland</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/greece-183-day-tax-residency">Griechenlands <span class="hub-key">183-Tage</span>-Regel für den Steuerwohnsitz</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="state">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/us-hi.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Hawaii</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/hawaii-tax-residency">Hawaiis <span class="hub-key">200-Tage</span>-Vermutung für den Steuerwohnsitz</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="state">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/us-id.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Idaho</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/idaho-tax-residency">Idahos <span class="hub-key">270-Tage</span>-Regel für den Steuerwohnsitz</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/in.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Indien</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/india-tourist-visa-stay-limits">Indiens e-Tourist Visa: das <span class="hub-key">180-Tage</span>-Limit</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/id.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Indonesien</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/indonesia-183-day-tax-residency">Indonesiens <span class="hub-key">183-Tage</span>-Regel für den Steuerwohnsitz</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/ie.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Irland</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/ireland-183-day-tax-residency">Irlands <span class="hub-key">183-Tage</span>-Regel für den Steuerwohnsitz</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/it.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Italien</span><span class="hub-tile-count">2</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/italy-183-day-tax-residency">Italiens <span class="hub-key">183-Tage</span>-Regel für den Steuerwohnsitz</a>
-              <a class="hub-link" href="/de/learn/italy-residence-permit-absence">Italien: Abwesenheit mit Aufenthaltstitel</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/jp.svg" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Japan</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/japan-90-day-rule">Japans <span class="hub-key">90-Tage</span>-Regel erklärt</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="state">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/us-ca.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Kalifornien</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/california-tax-residency">Steuerwohnsitz in Kalifornien und die <span class="hub-key">9-Monats</span>-Vermutung</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/ca.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Kanada</span><span class="hub-tile-count">5</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/canada-183-day-tax-residency">Kanadas <span class="hub-key">183-Tage</span>-Regel für den Steuerwohnsitz</a>
-              <a class="hub-link" href="/de/learn/canada-visitor-visa-6-month-limit">Das <span class="hub-key">6-Monats</span>-Limit für Besuche in Kanada</a>
-              <a class="hub-link" href="/de/learn/canadian-snowbird-day-limits">Kanadische <span class="hub-key">Snowbirds</span>: USA-Aufenthalte, Formular 8840 und Provinzgrenzen für die Krankenversicherung</a>
-              <a class="hub-link" href="/de/learn/canada-pr-residency-obligation">Kanadas <span class="hub-key">Residenzpflicht</span> für Permanent Residents: 730 Tage</a>
-              <a class="hub-link" href="/de/learn/canada-citizenship-physical-presence"><span class="hub-key">Staatsbürgerschaft</span> in Kanada: 1.095 Tage Anwesenheit</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/qa.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Katar</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/qatar-residence-return-planning">Katar: Rückkehr mit Aufenthaltstitel planen</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/co.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Kolumbien</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/colombia-183-day-tax-residency">Kolumbiens <span class="hub-key">183-Tage</span>-Regel für den Steuerwohnsitz</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/lt.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Litauen</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/lithuania-183-day-tax-residency">Litauens <span class="hub-key">183-Tage</span>-Regel für den Steuerwohnsitz</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="state">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/us-me.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Maine</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/maine-tax-residency">Maine: die <span class="hub-key">183-Tage</span>-Regel für den Steuerwohnsitz</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/my.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Malaysia</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/malaysia-182-day-tax-residency">Malaysias <span class="hub-key">182-Tage</span>-Regel für den Steuerwohnsitz</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/mt.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Malta</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/malta-183-day-tax-residency">Maltas <span class="hub-key">183-Tage</span>-Regel für den Steuerwohnsitz</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="state">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/us-md.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Maryland</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/maryland-tax-residency">Maryland: die <span class="hub-key">183-Tage</span>-Regel für den Steuerwohnsitz</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="state">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/us-ma.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Massachusetts</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/massachusetts-tax-residency">Massachusetts: die <span class="hub-key">183-Tage</span>-Regel für den Steuerwohnsitz</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/mu.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Mauritius</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/mauritius-183-day-tax-residency">Die <span class="hub-key">183-Tage</span>-Regel für den Steuerwohnsitz auf Mauritius</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="state">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/us-mn.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Minnesota</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/minnesota-tax-residency">Minnesota: die <span class="hub-key">183-Tage</span>-Regel für den Steuerwohnsitz</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/md.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Moldau</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/moldova-183-day-tax-residency">Moldau: die <span class="hub-key">183-Tage</span>-Regel für den Steuerwohnsitz</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/me.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Montenegro</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/montenegro-183-day-tax-residency">Montenegros <span class="hub-key">183-Tage</span>-Regel für den Steuerwohnsitz</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="state">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/us-ne.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Nebraska</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/nebraska-tax-residency">Nebraska: die <span class="hub-key">183-Tage</span>-Regel für den Steuerwohnsitz</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/nz.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Neuseeland</span><span class="hub-tile-count">3</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/new-zealand-183-day-tax-residency">Neuseelands <span class="hub-key">183-Tage</span>-Regel für den Steuerwohnsitz</a>
-              <a class="hub-link" href="/de/learn/new-zealand-citizenship-presence-requirement">Neuseelands <span class="hub-key">1.350-Tage</span>-Erfordernis für die Staatsbürgerschaft</a>
-              <a class="hub-link" href="/de/learn/nz-super-overseas-absence">NZ Super: Auslandsaufenthalt</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="state">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/us-nj.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">New Jersey</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/new-jersey-tax-residency">New Jersey: die <span class="hub-key">183-Tage</span>-Regel für den Steuerwohnsitz</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="state">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/us-ny.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">New York</span><span class="hub-tile-qualifier">US-Bundesstaat</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/new-york-tax-residency">New York: die <span class="hub-key">183-Tage</span>-Regel für den Steuerwohnsitz</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/nl.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Niederlande</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/netherlands-residence-permit-absence-rules">Niederländischer Aufenthaltstitel: die <span class="hub-key">6-Monats</span>-Grenze für Abwesenheit</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="state">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/us-nd.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">North Dakota</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/north-dakota-tax-residency">North Dakotas <span class="hub-key">7-Monats</span>-Regel (210 Tage) für den Steuerwohnsitz</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/no.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Norwegen</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/norway-183-day-tax-residency">Norwegens <span class="hub-key">183-Tage</span>-Regel für den Steuerwohnsitz</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="state">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/us-oh.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Ohio</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/ohio-tax-residency">Ohios Regel der <span class="hub-key">212 Kontaktzeiträume</span> für die Ansässigkeit</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="state">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/us-or.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Oregon</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/oregon-tax-residency">Oregons <span class="hub-key">200-Tage</span>-Regel für den Steuerwohnsitz</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="state">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/us-pa.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Pennsylvania</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/pennsylvania-tax-residency">Pennsylvanias <span class="hub-key">183-Tage</span>-Regel für den Steuerwohnsitz</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/pl.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Polen</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/poland-183-day-tax-residency">Polens <span class="hub-key">183-Tage</span>-Regel für den Steuerwohnsitz</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/pt.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Portugal</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/portugal-183-day-tax-residency">Portugals <span class="hub-key">183-Tage</span>-Regel für den Steuerwohnsitz</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="state">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/us-ri.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Rhode Island</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/rhode-island-tax-residency">Rhode Islands <span class="hub-key">183-Tage</span>-Regel für den Steuerwohnsitz</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/ro.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Rumänien</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/romania-183-day-tax-residency">Rumäniens <span class="hub-key">183-Tage</span>-Regel für den Steuerwohnsitz</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/eu.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Schengen-Raum</span><span class="hub-tile-qualifier">Region</span><span class="hub-tile-count">6</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/schengen-90-180-rule">Was bedeuten <span class="hub-key">90 Tage in einem Zeitraum von 180 Tagen</span>?</a>
-              <a class="hub-link" href="/de/learn/schengen-countries-list-90-180-rule"><span class="hub-key">Länderliste</span> zu Schengen für die 90/180-Regel</a>
-              <a class="hub-link" href="/de/learn/schengen-rolling-window-walkthrough">Wie der <span class="hub-key">gleitende Zeitraum</span> bei Schengen wirklich funktioniert</a>
-              <a class="hub-link" href="/de/learn/when-do-you-get-schengen-days-back-after-90-day-stay">Wann bekommst du nach 90 Tagen wieder <span class="hub-key">Schengen-Tage zurück</span>?</a>
-              <a class="hub-link" href="/de/learn/schengen-single-entry-visa">Schengen-Visum zur <span class="hub-key">einmaligen Einreise</span>: Einreisen und Aufenthaltsdauer</a>
-              <a class="hub-link" href="/de/learn/ees-etias-schengen-90-180"><span class="hub-key">EES und ETIAS</span>: Was sie für deine Schengen-Tage bedeuten</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/ch.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Schweiz</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/switzerland-permit-absence">Schweiz: Abwesenheit mit Ausweis B/C</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/rs.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Serbien</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/serbia-183-day-tax-residency">Serbiens <span class="hub-key">183-Tage</span>-Regel für den Steuerwohnsitz</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/sg.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Singapur</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/singapore-183-day-tax-residency">Singapurs <span class="hub-key">183-Tage</span>-Regel für den Steuerwohnsitz</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/sk.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Slowakei</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/slovakia-183-day-tax-residency">Die <span class="hub-key">183-Tage</span>-Regel der Slowakei für den Steuerwohnsitz</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/si.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Slowenien</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/slovenia-183-day-tax-residency">Sloweniens <span class="hub-key">183-Tage</span>-Regel für den Steuerwohnsitz</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/es.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Spanien</span><span class="hub-tile-count">2</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/spain-183-day-tax-residency">Spaniens <span class="hub-key">183-Tage-Regel</span> für den Steuerwohnsitz</a>
-              <a class="hub-link" href="/de/learn/spain-long-term-residence-eu-absence">Spanien: Daueraufenthalt und Abwesenheit aus der EU</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/tw.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Taiwan</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/taiwan-183-day-tax-residency">Taiwans <span class="hub-key">183-Tage</span>-Regel für den Steuerwohnsitz</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/th.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Thailand</span><span class="hub-tile-count">2</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/thailand-180-day-tax-residency">Thailands <span class="hub-key">180-Tage</span>-Regel für den Steuerwohnsitz</a>
-              <a class="hub-link" href="/de/learn/thailand-visa-exemption-30-days">Thailands <span class="hub-key">30-Tage</span>-Visumbefreiung</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/cz.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Tschechien</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/czech-republic-183-day-tax-residency">Tschechiens <span class="hub-key">183-Tage</span>-Regel für den Steuerwohnsitz</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/tr.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Türkei</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/turkiye-90-180-rule">Die <span class="hub-key">90/180</span>-Regel der Türkei</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/ae.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Vereinigte Arabische Emirate</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/uae-183-day-tax-residency">Die <span class="hub-key">183-Tage</span>-Regel der VAE für den Steuerwohnsitz</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/us.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Vereinigte Staaten</span><span class="hub-tile-count">5</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/us-visa-waiver-90-day-limit">Das Limit von 90 Tagen im US <span class="hub-key">Visa Waiver Program</span></a>
-              <a class="hub-link" href="/de/learn/us-b1-b2-visa-180-day-limit">US-Visum <span class="hub-key">B1/B2</span>: das Aufenthaltslimit von 180 Tagen verstehen</a>
-              <a class="hub-link" href="/de/learn/us-substantial-presence-test"><span class="hub-key">Substantial Presence Test</span> der USA: Was Reisende wissen müssen</a>
-              <a class="hub-link" href="/de/learn/us-green-card-absence-limits">US-<span class="hub-key">Green-Card</span>: Abwesenheitsgrenzen bei sechs Monaten und einem Jahr</a>
-              <a class="hub-link" href="/de/learn/us-naturalization-physical-presence">US-<span class="hub-key">Einbürgerung</span>: 30 Monate tatsächliche Anwesenheit</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/gb.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Vereinigtes Königreich</span><span class="hub-tile-count">6</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/uk-standard-visitor-visa-180-day-rule">Die „180-Tage-Regel“ für <span class="hub-key">Standard Visitor</span> im Vereinigten Königreich</a>
-              <a class="hub-link" href="/de/learn/uk-eta-vs-standard-visitor-visa">Britische <span class="hub-key">ETA</span> oder Standard Visitor Visa: Was brauchst du?</a>
-              <a class="hub-link" href="/de/learn/uk-statutory-residence-test">Der <span class="hub-key">Statutory Residence Test</span>: Steuerwohnsitz im Vereinigten Königreich</a>
-              <a class="hub-link" href="/de/learn/uk-ilr-absence-limit"><span class="hub-key">ILR-Abwesenheitsregel</span>: 180 Tage in beliebigen 12 Monaten</a>
-              <a class="hub-link" href="/de/learn/uk-ilr-absence-calculator"><span class="hub-key">ILR-Abwesenheitsrechner</span>: 180 Tage in beliebigen 12 Monaten</a>
-              <a class="hub-link" href="/de/learn/uk-citizenship-absence-limits">Britische <span class="hub-key">Staatsangehörigkeit</span>: Abwesenheitsgrenzen bei der Einbürgerung</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="state">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/us-vt.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Vermont</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/vermont-tax-residency">Vermonts <span class="hub-key">183-Tage</span>-Regel für den Steuerwohnsitz</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/vn.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Vietnam</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/vietnam-183-day-tax-residency">Vietnams <span class="hub-key">183-Tage</span>-Regel für den Steuerwohnsitz</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="state">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/us-va.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Virginia</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/virginia-tax-residency">Virginias <span class="hub-key">183-Tage</span>-Regel für die tatsächliche Ansässigkeit</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="country">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/cy.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Zypern</span><span class="hub-tile-count">2</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/cyprus-183-day-tax-residency">Zyperns <span class="hub-key">183-Tage</span>-Regel für den Steuerwohnsitz</a>
-              <a class="hub-link" href="/de/learn/cyprus-citizenship-final-year-absence">Zypern: Einbürgerung und Abwesenheit im letzten Jahr</a>
-            </div>
-          </div>
+      <div class="rule-tools">
+        <a class="rule-card rule-tool" href="/de/learn/calculators"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5.5" width="16" height="14.5" rx="3"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/></svg></span><span class="rule-text"><strong>Tagesrechner</strong><span>Zähl deine Tage für Schengen, die 183-Tage-Regel und Aufenthalt oder Einbürgerung.</span></span></a>
+        <a class="rule-card rule-tool" href="/de/learn/guides"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>Anleitungen</strong><span>Wie die Tageszählung funktioniert, Reiseverlauf und Nachweise, Schengen im Detail.</span></span></a>
+      </div>
+
+      <section class="hub-section rule-section" id="rules-visa" data-filter-section>
+        <p class="hub-label">Visa- und Einreiselimits</p>
+        <div class="rule-cards">
+          <a class="rule-card" href="/de/learn/schengen-90-180-rule" data-filter-item data-groups="visa"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Schengen: 90/180-Kurzaufenthaltsregel</strong><span>Bis zu 90 Tage in beliebigen 180 Tagen.</span></span></a>
+          <a class="rule-card" href="/de/learn/schengen-single-entry-visa" data-filter-item data-groups="visa"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Schengen: Visum zur einmaligen Einreise</strong><span>Ein Aufenthalt mit den im Visum gewährten Tagen.</span></span></a>
+          <a class="rule-card" href="/de/learn/canada-visitor-visa-6-month-limit" data-filter-item data-groups="visa"><img class="rule-flag" src="/assets/flags/ca.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Kanada: Besuchervisum / eTA</strong><span>Bis zu sechs Monate je Aufenthalt, erfasst als 180 Tage.</span></span></a>
+          <a class="rule-card" href="/de/learn/georgia-visa-free-365-days" data-filter-item data-groups="visa"><img class="rule-flag" src="/assets/flags/ge.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Georgien: visumfreier Aufenthalt</strong><span>Bis zu ein Jahr je Aufenthalt, erfasst als 365 Tage.</span></span></a>
+          <a class="rule-card" href="/de/learn/india-tourist-visa-stay-limits" data-filter-item data-groups="visa"><img class="rule-flag" src="/assets/flags/in.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>e-Tourist Visa für Indien</strong><span>Bis zu 180 Tage im Kalenderjahr, alle Besuche zusammen.</span></span></a>
+          <a class="rule-card" href="/de/learn/japan-90-day-rule" data-filter-item data-groups="visa"><img class="rule-flag" src="/assets/flags/jp.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Japan: Kurzzeitaufenthalt</strong><span>Bis zu 90 Tage je Aufenthalt.</span></span></a>
+          <a class="rule-card" href="/de/learn/thailand-visa-exemption-30-days" data-filter-item data-groups="visa"><img class="rule-flag" src="/assets/flags/th.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Thailand: visumfreier Aufenthalt</strong><span>Bis zu 30 Tage je Aufenthalt.</span></span></a>
+          <a class="rule-card" href="/de/learn/turkiye-90-180-rule" data-filter-item data-groups="visa"><img class="rule-flag" src="/assets/flags/tr.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Türkei-Kurzaufenthalt</strong><span>Bis zu 90 Tage in beliebigen 180 Tagen.</span></span></a>
+          <a class="rule-card" href="/de/learn/uk-standard-visitor-visa-180-day-rule" data-filter-item data-groups="visa"><img class="rule-flag" src="/assets/flags/gb.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>UK: Standard Visitor</strong><span>Bis zu sechs Monate je Aufenthalt, erfasst als 180 Tage.</span></span></a>
+          <a class="rule-card" href="/de/learn/us-visa-waiver-90-day-limit" data-filter-item data-groups="visa"><img class="rule-flag" src="/assets/flags/us.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>USA: ESTA</strong><span>Bis zu 90 Tage je Aufenthalt.</span></span></a>
+          <a class="rule-card" href="/de/learn/us-b1-b2-visa-180-day-limit" data-filter-item data-groups="visa"><img class="rule-flag" src="/assets/flags/us.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>USA: B-1/B-2-Besuchervisum</strong><span>Meist sechs Monate je Aufenthalt, erfasst als 180 Tage.</span></span></a>
         </div>
       </section>
-
-      <section class="hub-section" id="general-guides" data-filter-section>
-        <p class="hub-label">Allgemeine Anleitungen</p>
-        <div class="hub-topics">
-          <div class="hub-tile" data-filter-item data-groups="guides">
-            <div class="hub-tile-head"><span class="hub-tile-name">Tageslimits und Steuerwohnsitz</span><span class="hub-tile-count">5</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/183-day-tax-residency-rule"><span class="hub-key">183-Tage-Regel</span> für den Steuerwohnsitz: So werden die Tage gezählt</a>
-              <a class="hub-link" href="/de/learn/what-counts-as-a-day-for-visa-purposes">Was zählt als <span class="hub-key">Tag</span>? Anreise, Abreise und Transit im Vergleich</a>
-              <a class="hub-link" href="/de/learn/digital-nomad-visa-day-limits"><span class="hub-key">Visa für digitale Nomaden</span> und Steuerwohnsitz: Gilt die 183-Tage-Regel?</a>
-              <a class="hub-link" href="/de/learn/overstaying-a-visa-or-stay-limit">Visum oder Aufenthaltsdauer <span class="hub-key">überschritten</span>: Folgen in Schengen, UK und USA</a>
-              <a class="hub-link" href="/de/learn/residence-permit-citizenship-absence-rules">Abwesenheitsregeln für <span class="hub-key">Aufenthaltstitel</span> und Einbürgerung nach Land</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="guides">
-            <div class="hub-tile-head"><span class="hub-tile-name">Reiseverlauf und Nachweise</span><span class="hub-tile-count">6</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/travel-history-for-visa-applications">Reiseverlauf für Visumanträge: Welche <span class="hub-key">Zeiträume</span> abgefragt werden</a>
-              <a class="hub-link" href="/de/learn/travel-history-template-visa-application"><span class="hub-key">Vorlage</span> für den Reiseverlauf bei Visumanträgen (kostenlose CSV)</a>
-              <a class="hub-link" href="/de/learn/get-official-entry-exit-records"><span class="hub-key">Offiziellen Reiseverlauf</span> anfordern: Ein- und Ausreisedaten nach Ländern</a>
-              <a class="hub-link" href="/de/learn/rebuild-travel-history-from-passport-stamps-emails-photos">Reiseverlauf aus Passstempeln, E-Mails und Fotos <span class="hub-key">rekonstruieren</span></a>
-              <a class="hub-link" href="/de/learn/prove-you-were-not-in-a-country">So belegst du, dass du <span class="hub-key">nicht in einem Land oder Bundesstaat</span> warst</a>
-              <a class="hub-link" href="/de/learn/flighty-flight-history-day-count">Von der <span class="hub-key">Flighty</span>-Flughistorie zur Tageszählung für Visum und Steuerwohnsitz</a>
-            </div>
-          </div>
-          <div class="hub-tile" data-filter-item data-groups="guides">
-            <div class="hub-tile-head"><span class="hub-tile-name">Länder, Besuche und Zählweisen</span><span class="hub-tile-count">3</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/de/learn/how-to-track-travel-days"><span class="hub-key">Aufenthaltstage pro Land</span> erfassen: 6 Methoden im Vergleich</a>
-              <a class="hub-link" href="/de/learn/how-many-countries-in-the-world"><span class="hub-key">Wie viele Länder</span> gibt es auf der Welt? 195 und warum Listen abweichen</a>
-              <a class="hub-link" href="/de/learn/does-a-layover-count-as-visiting-a-country">Zählt ein <span class="hub-key">Zwischenstopp</span> als Besuch in einem Land?</a>
-            </div>
-          </div>
+      <section class="hub-section rule-section" id="rules-tax" data-filter-section>
+        <p class="hub-label">Steuerwohnsitz</p>
+        <div class="rule-cards">
+          <a class="rule-card" href="/de/learn/albania-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/al.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Albanien: Steuerwohnsitz</strong><span>Mindestens 183 Tage im Kalenderjahr.</span></span></a>
+          <a class="rule-card" href="/de/learn/armenia-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/am.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Armenien: Steuerwohnsitz</strong><span>Mindestens 183 Tage im Kalenderjahr.</span></span></a>
+          <a class="rule-card" href="/de/learn/australia-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/au.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Australien: Steuerwohnsitz</strong><span>Mehr als das halbe Steuerjahr.</span></span></a>
+          <a class="rule-card" href="/de/learn/bulgaria-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/bg.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Bulgarien: Steuerwohnsitz</strong><span>Mehr als 183 Tage in beliebigen 12 Monaten.</span></span></a>
+          <a class="rule-card" href="/de/learn/canada-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/ca.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Kanada: Steuerwohnsitz</strong><span>Mindestens 183 Tage im Kalenderjahr.</span></span></a>
+          <a class="rule-card" href="/de/learn/colombia-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/co.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Kolumbien: Steuerwohnsitz</strong><span>Mehr als 183 Tage in beliebigen 365 Tagen.</span></span></a>
+          <a class="rule-card" href="/de/learn/cyprus-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/cy.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Zypern: Steuerwohnsitz</strong><span>Mehr als 183 Tage im Kalenderjahr.</span></span></a>
+          <a class="rule-card" href="/de/learn/czech-republic-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/cz.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Tschechien: Steuerwohnsitz</strong><span>Mindestens 183 Tage im Kalenderjahr.</span></span></a>
+          <a class="rule-card" href="/de/learn/estonia-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/ee.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Estland: Steuerwohnsitz</strong><span>Mindestens 183 Tage in beliebigen 12 Monaten.</span></span></a>
+          <a class="rule-card" href="/de/learn/georgia-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/ge.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Georgien: Steuerwohnsitz</strong><span>Mindestens 183 Tage in beliebigen 12 Monaten.</span></span></a>
+          <a class="rule-card" href="/de/learn/greece-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/gr.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Griechenland: Steuerwohnsitz</strong><span>Mehr als 183 Tage in beliebigen 12 Monaten.</span></span></a>
+          <a class="rule-card" href="/de/learn/indonesia-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/id.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Indonesien: Steuerwohnsitz</strong><span>Mehr als 183 Tage in beliebigen 12 Monaten.</span></span></a>
+          <a class="rule-card" href="/de/learn/ireland-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/ie.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Irland: Steuerwohnsitz</strong><span>183 Tage in einem Jahr oder 280 in zwei Jahren.</span></span></a>
+          <a class="rule-card" href="/de/learn/italy-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/it.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Italien: Steuerwohnsitz</strong><span>Mehr als das halbe Kalenderjahr.</span></span></a>
+          <a class="rule-card" href="/de/learn/lithuania-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/lt.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Litauen: Steuerwohnsitz</strong><span>Mindestens 183 Tage im Kalenderjahr.</span></span></a>
+          <a class="rule-card" href="/de/learn/malaysia-182-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/my.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Malaysia: Steuerwohnsitz</strong><span>Mindestens 182 Tage im Kalenderjahr.</span></span></a>
+          <a class="rule-card" href="/de/learn/malta-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/mt.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Malta: Steuerwohnsitz</strong><span>Mehr als 183 Tage im Kalenderjahr.</span></span></a>
+          <a class="rule-card" href="/de/learn/mauritius-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/mu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Mauritius: Steuerwohnsitz</strong><span>Mindestens 183 Tage im Steuerjahr.</span></span></a>
+          <a class="rule-card" href="/de/learn/moldova-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/md.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Republik Moldau: Steuerwohnsitz</strong><span>Mindestens 183 Tage im Kalenderjahr.</span></span></a>
+          <a class="rule-card" href="/de/learn/montenegro-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/me.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Montenegro: Steuerwohnsitz</strong><span>Mehr als 183 Tage im Kalenderjahr.</span></span></a>
+          <a class="rule-card" href="/de/learn/new-zealand-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/nz.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Neuseeland: Steuerwohnsitz</strong><span>Mehr als 183 Tage in beliebigen 12 Monaten.</span></span></a>
+          <a class="rule-card" href="/de/learn/norway-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/no.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Norwegen: Steuerwohnsitz</strong><span>Über 183 Tage in 12 Monaten oder über 270 in 36 Monaten.</span></span></a>
+          <a class="rule-card" href="/de/learn/poland-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/pl.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Polen: Steuerwohnsitz</strong><span>Mehr als 183 Tage im Kalenderjahr.</span></span></a>
+          <a class="rule-card" href="/de/learn/portugal-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/pt.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Portugal: Steuerwohnsitz</strong><span>Mehr als 183 Nächte in beliebigen 12 Monaten.</span></span></a>
+          <a class="rule-card" href="/de/learn/romania-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/ro.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Rumänien: Steuerwohnsitz</strong><span>Mehr als 183 Tage in beliebigen 12 Monaten.</span></span></a>
+          <a class="rule-card" href="/de/learn/serbia-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/rs.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Serbien: Steuerwohnsitz</strong><span>Mindestens 183 Tage in beliebigen 12 Monaten.</span></span></a>
+          <a class="rule-card" href="/de/learn/singapore-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/sg.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Singapur: Steuerwohnsitz</strong><span>Mindestens 183 Tage im Kalenderjahr.</span></span></a>
+          <a class="rule-card" href="/de/learn/slovakia-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/sk.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Slowakei: Steuerwohnsitz</strong><span>Mindestens 183 Tage im Kalenderjahr.</span></span></a>
+          <a class="rule-card" href="/de/learn/slovenia-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/si.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Slowenien: Steuerwohnsitz</strong><span>Mehr als 183 Tage im Kalenderjahr.</span></span></a>
+          <a class="rule-card" href="/de/learn/taiwan-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/tw.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Taiwan: Steuerwohnsitz</strong><span>Mindestens 183 Tage im Kalenderjahr.</span></span></a>
+          <a class="rule-card" href="/de/learn/thailand-180-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/th.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Thailand: Steuerwohnsitz</strong><span>Mindestens 180 Tage im Kalenderjahr.</span></span></a>
+          <a class="rule-card" href="/de/learn/uae-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/ae.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Vereinigte Arabische Emirate: Steuerwohnsitz</strong><span>Mindestens 183 Tage in beliebigen 12 Monaten.</span></span></a>
+          <a class="rule-card" href="/de/learn/uk-statutory-residence-test" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/gb.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Vereinigtes Königreich: Steuerwohnsitz</strong><span>Mindestens 183 Tage im Steuerjahr.</span></span></a>
+          <a class="rule-card" href="/de/learn/vietnam-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/vn.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Vietnam: Steuerwohnsitz</strong><span>Mindestens 183 Tage in beliebigen 12 Monaten.</span></span></a>
+          <a class="rule-card" href="/de/learn/us-substantial-presence-test" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/us.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>US-Test auf wesentliche Anwesenheit</strong><span>31 Tage dieses Jahr und 183 gewichtet über drei Jahre.</span></span></a>
+          <a class="rule-card" href="/de/learn/denmark-overseas-work-42-day-rule" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/dk.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Dänemark: 42-Tage-Grenze bei Auslandsarbeit</strong><span>42 Tage in Dänemark in beliebigen sechs Monaten.</span></span></a>
+          <a class="rule-card" href="/de/learn/spain-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/es.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Spanien: Steuerwohnsitz</strong><span>Mehr als 183 Tage im Kalenderjahr.</span></span></a>
+        </div>
+      </section>
+      <section class="hub-section rule-section" id="rules-usstate" data-filter-section>
+        <p class="hub-label">US-Bundesstaat</p>
+        <div class="rule-cards">
+          <a class="rule-card" href="/de/learn/arizona-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/us-az.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Arizona: Steuerwohnsitz</strong><span>Über 270 Tage im Kalenderjahr: Steuerwohnsitz vermutet.</span></span></a>
+          <a class="rule-card" href="/de/learn/colorado-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/us-co.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Colorado: Steuerwohnsitz</strong><span>Mehr als 183 Tage im Kalenderjahr.</span></span></a>
+          <a class="rule-card" href="/de/learn/connecticut-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/us-ct.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Connecticut: Steuerwohnsitz</strong><span>Mehr als 183 Tage im Kalenderjahr.</span></span></a>
+          <a class="rule-card" href="/de/learn/georgia-us-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/us-ga.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Georgia: Steuerwohnsitz</strong><span>Mindestens 183 Tage in den 365 Tagen bis 31. Dezember.</span></span></a>
+          <a class="rule-card" href="/de/learn/hawaii-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/us-hi.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Hawaii: Steuerwohnsitz</strong><span>Über 200 Tage im Kalenderjahr: Steuerwohnsitz vermutet.</span></span></a>
+          <a class="rule-card" href="/de/learn/idaho-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/us-id.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Idaho: Steuerwohnsitz</strong><span>Mehr als 270 Tage im Kalenderjahr.</span></span></a>
+          <a class="rule-card" href="/de/learn/california-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/us-ca.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Kalifornien: Steuerwohnsitz</strong><span>Über 270 Tage im Kalenderjahr: Steuerwohnsitz vermutet.</span></span></a>
+          <a class="rule-card" href="/de/learn/maine-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/us-me.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Maine: Steuerwohnsitz</strong><span>Mehr als 183 Tage im Kalenderjahr.</span></span></a>
+          <a class="rule-card" href="/de/learn/maryland-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/us-md.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Maryland: Steuerwohnsitz</strong><span>Mindestens 183 Tage im Kalenderjahr.</span></span></a>
+          <a class="rule-card" href="/de/learn/massachusetts-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/us-ma.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Massachusetts: Steuerwohnsitz</strong><span>Mehr als 183 Tage im Kalenderjahr.</span></span></a>
+          <a class="rule-card" href="/de/learn/minnesota-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/us-mn.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Minnesota: Steuerwohnsitz</strong><span>Mindestens 183 Tage im Kalenderjahr.</span></span></a>
+          <a class="rule-card" href="/de/learn/nebraska-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/us-ne.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Nebraska: Steuerwohnsitz</strong><span>Mindestens 183 Tage im Kalenderjahr.</span></span></a>
+          <a class="rule-card" href="/de/learn/new-jersey-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/us-nj.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>New Jersey: Steuerwohnsitz</strong><span>Mehr als 183 Tage im Kalenderjahr.</span></span></a>
+          <a class="rule-card" href="/de/learn/new-york-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/us-ny.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>New York: Steuerwohnsitz</strong><span>Mehr als 183 Tage im Kalenderjahr.</span></span></a>
+          <a class="rule-card" href="/de/learn/north-dakota-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/us-nd.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>North Dakota: Steuerwohnsitz</strong><span>Mehr als 210 Tage im Kalenderjahr.</span></span></a>
+          <a class="rule-card" href="/de/learn/ohio-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/us-oh.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Ohio: Steuerwohnsitz</strong><span>Mehr als 212 Nächte im Kalenderjahr.</span></span></a>
+          <a class="rule-card" href="/de/learn/oregon-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/us-or.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Oregon: Steuerwohnsitz</strong><span>Über 200 Tage im Kalenderjahr: Steuerwohnsitz vermutet.</span></span></a>
+          <a class="rule-card" href="/de/learn/pennsylvania-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/us-pa.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Pennsylvania: Steuerwohnsitz</strong><span>Mehr als 183 Tage im Kalenderjahr.</span></span></a>
+          <a class="rule-card" href="/de/learn/rhode-island-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/us-ri.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Rhode Island: Steuerwohnsitz</strong><span>Mehr als 183 Tage im Kalenderjahr.</span></span></a>
+          <a class="rule-card" href="/de/learn/vermont-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/us-vt.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Vermont: Steuerwohnsitz</strong><span>Mehr als 183 Tage im Kalenderjahr.</span></span></a>
+          <a class="rule-card" href="/de/learn/virginia-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/us-va.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Virginia: Steuerwohnsitz</strong><span>Mehr als 183 Tage im Kalenderjahr.</span></span></a>
+        </div>
+      </section>
+      <section class="hub-section rule-section" id="rules-residence" data-filter-section>
+        <p class="hub-label">Aufenthaltsstatus</p>
+        <div class="rule-cards">
+          <a class="rule-card" href="/de/learn/us-green-card-absence-limits" data-filter-item data-groups="residence"><img class="rule-flag" src="/assets/flags/us.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Abwesenheit mit US-Green-Card</strong><span>6 Monate weg können den ununterbrochenen Aufenthalt beenden.</span></span></a>
+          <a class="rule-card" href="/de/learn/france-resident-card-absence" data-filter-item data-groups="residence"><img class="rule-flag" src="/assets/flags/fr.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Frankreich: Abwesenheit mit Zehnjahreskarte</strong><span>1095 Tage je Abwesenheit als Planungswert.</span></span></a>
+          <a class="rule-card" href="/de/learn/italy-residence-permit-absence" data-filter-item data-groups="residence"><img class="rule-flag" src="/assets/flags/it.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Italien: Abwesenheit mit Aufenthaltstitel</strong><span>180 Tage je Abwesenheit als Planungswert.</span></span></a>
+          <a class="rule-card" href="/de/learn/qatar-residence-return-planning" data-filter-item data-groups="residence"><img class="rule-flag" src="/assets/flags/qa.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Katar: Rückkehr mit Aufenthaltstitel planen</strong><span>180 Tage je Abwesenheit als Planungswert.</span></span></a>
+          <a class="rule-card" href="/de/learn/nz-super-overseas-absence" data-filter-item data-groups="residence"><img class="rule-flag" src="/assets/flags/nz.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>NZ Super: Auslandsaufenthalt</strong><span>26 Wochen (182 Tage) je vorübergehender Abwesenheit.</span></span></a>
+          <a class="rule-card" href="/de/learn/australia-resident-return-visa-residence" data-filter-item data-groups="residence"><img class="rule-flag" src="/assets/flags/au.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Resident Return Visa für Australien</strong><span>Zwei von fünf Jahren, erfasst als Ziel von 730 Tagen.</span></span></a>
+          <a class="rule-card" href="/de/learn/canada-pr-residency-obligation" data-filter-item data-groups="residence"><img class="rule-flag" src="/assets/flags/ca.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Residenzpflicht für Permanent Residents in Kanada</strong><span>Mindestens 730 Tage in beliebigen fünf Jahren.</span></span></a>
+          <a class="rule-card" href="/de/learn/netherlands-residence-permit-absence-rules" data-filter-item data-groups="residence"><img class="rule-flag" src="/assets/flags/nl.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Abwesenheit mit niederländischem Aufenthaltstitel</strong><span>Mehr als sechs zusammenhängende Monate Abwesenheit im Jahr.</span></span></a>
+          <a class="rule-card" href="/de/learn/switzerland-permit-absence" data-filter-item data-groups="residence"><img class="rule-flag" src="/assets/flags/ch.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Schweiz: Abwesenheit mit Ausweis B/C</strong><span>180 Tage je Abwesenheit als Planungswert.</span></span></a>
+          <a class="rule-card" href="/de/learn/spain-long-term-residence-eu-absence" data-filter-item data-groups="residence"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Spanien: Daueraufenthalt und Abwesenheit aus der EU</strong><span>365 Tage außerhalb der EU je Abwesenheit als Planungswert.</span></span></a>
+        </div>
+      </section>
+      <section class="hub-section rule-section" id="rules-citizenship" data-filter-section>
+        <p class="hub-label">Niederlassung und Einbürgerung</p>
+        <div class="rule-cards">
+          <a class="rule-card" href="/de/learn/germany-naturalization-absence-limit" data-filter-item data-groups="citizenship"><img class="rule-flag" src="/assets/flags/de.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Abwesenheit vor der deutschen Einbürgerung</strong><span>Bis zu sechs Monate Abwesenheit, erfasst als 180 Tage.</span></span></a>
+          <a class="rule-card" href="/de/learn/us-naturalization-physical-presence" data-filter-item data-groups="citizenship"><img class="rule-flag" src="/assets/flags/us.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Anwesenheit für die Einbürgerung in den USA</strong><span>30 Monate in fünf Jahren, erfasst als Ziel von 913 Tagen.</span></span></a>
+          <a class="rule-card" href="/de/learn/new-zealand-citizenship-presence-requirement" data-filter-item data-groups="citizenship"><img class="rule-flag" src="/assets/flags/nz.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Anwesenheit für die neuseeländische Staatsbürgerschaft</strong><span>Mindestens 1350 Tage in fünf Jahren für die Einbürgerung.</span></span></a>
+          <a class="rule-card" href="/de/learn/australia-citizenship-residence-requirement" data-filter-item data-groups="citizenship"><img class="rule-flag" src="/assets/flags/au.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Australische Einbürgerung: Abwesenheitsgrenzen</strong><span>365 Tage Abwesenheit in vier Jahren, 90 im letzten Jahr.</span></span></a>
+          <a class="rule-card" href="/de/learn/canada-citizenship-physical-presence" data-filter-item data-groups="citizenship"><img class="rule-flag" src="/assets/flags/ca.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Anwesenheit für die kanadische Staatsbürgerschaft</strong><span>Mindestens 1095 Tage in fünf Jahren für die Einbürgerung.</span></span></a>
+          <a class="rule-card" href="/de/learn/uk-citizenship-absence-limits" data-filter-item data-groups="citizenship"><img class="rule-flag" src="/assets/flags/gb.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Britische Einbürgerung: Abwesenheitsgrenzen</strong><span>450 Tage Abwesenheit in fünf Jahren, 90 im letzten Jahr.</span></span></a>
+          <a class="rule-card" href="/de/learn/uk-ilr-absence-limit" data-filter-item data-groups="citizenship"><img class="rule-flag" src="/assets/flags/gb.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Britische Indefinite Leave to Remain</strong><span>Bis zu 180 Tage Abwesenheit in beliebigen 12 Monaten.</span></span></a>
+          <a class="rule-card" href="/de/learn/cyprus-citizenship-final-year-absence" data-filter-item data-groups="citizenship"><img class="rule-flag" src="/assets/flags/cy.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Zypern: Einbürgerung und Abwesenheit im letzten Jahr</strong><span>Bis zu 90 Tage Abwesenheit im Jahr vor dem Antrag.</span></span></a>
         </div>
       </section>
 
@@ -650,6 +299,7 @@
           <a href="/de/help/">Hilfe</a>
           <a href="/de/learn/">Reiseregeln</a>
           <a href="/de/learn/calculators">Rechner</a>
+          <a href="/de/learn/guides">Anleitungen</a>
           <a href="/changelog">Neuigkeiten</a>
         </div>
         <div>
@@ -671,8 +321,8 @@
   <script>window.AtlasDaysNavStrings={"menuOpen":"Navigationsmenü öffnen","menuClose":"Navigationsmenü schließen"};</script>
   <script src="../../assets/js/navigation.js?v=20261005a"></script>
   <script>window.AtlasDaysSearchStrings={"resultOne":"{count} Ergebnis gefunden","resultMany":"{count} Ergebnisse gefunden","emptyHelp":"Kein passender Hilfe-Artikel gefunden. Versuch es mit einem Funktionsnamen, einer Aufgabe oder einem kürzeren Suchbegriff.","emptyLearn":"Keine passende Regel oder Anleitung gefunden. Versuch es mit einem Land, einem US-Bundesstaat, einer Region oder einem allgemeineren Thema.","unavailable":"Die Suche ist nicht verfügbar. Sieh dir die Themen unten an."};</script>
-  <script src="../../assets/js/search.js?v=20261004a"></script>
-  <script src="../../assets/js/library-filter.js?v=20260722a"></script>
+  <script src="../../assets/js/search.js?v=20261006a"></script>
+  <script src="../../assets/js/library-filter.js?v=20261006a"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

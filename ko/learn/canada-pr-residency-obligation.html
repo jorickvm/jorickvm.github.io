@@ -125,6 +125,7 @@
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261005a" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261004l" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">본문으로 건너뛰기</a>
@@ -239,6 +240,93 @@
       <p>집계 기간이 굴러가기 때문에, 2026년에 캐나다에서 하루를 더 보낼 때마다 앞쪽에 하루가 더해지고 2021년의 하루가 뒤쪽에서 빠집니다. 그런데 그 2021년의 날들은 이미 그에게 유리하게 세어지고 있었습니다. 따라서 합계는 2026년 12월 말에 그 날들이 모두 기간 밖으로 나갈 때까지 671일에 머무릅니다. 2027년 1월 1일부터는 뒤에서 빠지는 날이 해외에 있던 날이 되므로 캐나다에서 보내는 하루마다 합계가 하루씩 늘고, 2027년 2월 28일에 730일에 도달합니다.</p>
     </div>
 
+    <h2 id="calculator">캐나다 영주권 거주 의무 계산기</h2>
+    <p>캐나다 체류 날짜를 누르십시오. 계산기는 선택한 날짜까지의 5년을 집계하고 730일까지 얼마나 남았는지 보여 줍니다.</p>
+    <div class="daycal" id="embed-presence" data-day-calendar="presence" data-cal-preset="{&quot;settings&quot;:{&quot;country&quot;:&quot;CA&quot;,&quot;need&quot;:730,&quot;note&quot;:&quot;Canada PR presence calculator&quot;},&quot;lock&quot;:[],&quot;link&quot;:&quot;pr-ca&quot;}">
+      <script type="application/json" data-cal-strings>
+{
+  "hintEnd": "체류의 다른 끝 날짜를 누르십시오.",
+  "hintSelected": "체류의 양쪽 끝 중 하나를 드래그해 날짜를 변경하거나 아래에서 삭제하십시오.",
+  "pending": "새 체류 시작",
+  "empty": "아직 체류가 없습니다.",
+  "deleteTrip": "체류 삭제",
+  "country": "국가",
+  "goal": "목표 유형",
+  "goalStay": "한도 미만 유지",
+  "goalReach": "목표 달성",
+  "addCountry": "국가 추가",
+  "noMatch": "일치하는 국가가 없습니다",
+  "year": "연도",
+  "starts": "시작일",
+  "tripDays": {
+    "other": "{n}일"
+  },
+  "remaining": {
+    "other": "{n}일 남음"
+  },
+  "atLimit": "한도 도달",
+  "needed": {
+    "other": "{n}일 더 필요"
+  },
+  "reachedTarget": "목표 달성",
+  "overBy": {
+    "other": "한도 {n}일 초과"
+  },
+  "hintStart": "캐나다 체류가 시작된 날을 누른 다음 끝난 날을 누르십시오.",
+  "inTrip": "캐나다 체류",
+  "title": "캐나다",
+  "checkOn": "계산 종료일",
+  "checkOnCaption": "이 날짜까지 다섯 해 동안 캐나다에 체류한 일수입니다."
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span><span>일</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>타임라인</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>AtlasDays에서 관리하기</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="embed-presence-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="embed-presence-import-title">AtlasDays에서 관리하기</p>
+            <p class="cal-dialog-sub">여행하는 동안 체류 일수를 계속 계산하는 iPhone 및 iPad용 무료 앱입니다.</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>iPhone 또는 iPad에 AtlasDays 설치 확인</strong><span>App Store에서 무료로 받을 수 있습니다.</span></li>
+            <li><strong>QR 코드를 스캔해 모든 여행을 AtlasDays에 불러오기</strong><span>확인한 다음 '가져오기'를 누르십시오.</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>AtlasDays 받기</strong><span>App Store에서 무료로 받을 수 있습니다. 이미 있다면 2단계로 넘어가십시오.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>앱에서 체류 열기</strong><span>확인한 다음 '가져오기'를 누르십시오. 그 전에는 아무것도 저장되지 않습니다.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">AtlasDays에서 열기</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>AtlasDays 받기</strong><span>App Store에서 무료로 받을 수 있는 iPhone 앱입니다.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>파일로 체류 가져오기</strong><span>체류가 너무 많아 링크에 담을 수 없습니다. 파일을 다운로드해 iPhone의 AtlasDays에서 여십시오.</span><button type="button" class="cal-dialog-primary" data-cal-download>파일 다운로드</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>여행을 CSV 파일로 다운로드</button><span data-cal-downloaded hidden>iPhone의 AtlasDays에서 이 파일을 여십시오.</span></p>
+          <button type="button" data-cal-close>닫기</button>
+        </div>
+      </dialog>
+    </div>
+    <p class="cal-private">모든 내용은 브라우저에만 남습니다. 입력한 정보는 전송되거나 저장되지 않습니다.</p>
+
     <h2>일수 계산 외의 기준</h2>
     <p>730일을 채우지 못한 것과 자격을 잃는 것은 같지 않습니다. 심사관의 결정이 있기 전까지는 계속 영주권자이며, 거부 결정에는 이의를 제기할 수 있습니다. 인도적 사유와 동정할 만한 사정이 있으면 위반에도 불구하고 자격이 유지될 수 있습니다. 영주권자가 된 지 5년이 지나지 않았다면, 대신 5주년까지 730일에 도달할 수 있는지를 봅니다.</p>
     <p>이 의무는 캐나다의 다른 모든 일수 계산과도 별개입니다. 세법상 거주가 아닙니다. 세법상 거주는 <a href="/ko/learn/canada-183-day-tax-residency">한 해 183일</a>과 거주 관련 유대 관계에 달려 있습니다. <a href="/ko/learn/canada-visitor-visa-6-month-limit">방문자 6개월 한도</a>도 아닙니다. 그것은 영주권자가 아니라 방문자로 입국이 허가된 사람에게 적용됩니다. 캐나다 시민권에는 또 별도의 실제 체류 요건이 있으므로, 거주 의무를 충족했다고 해서 그 요건까지 충족한 것은 아닙니다. 사안이 인정되는 해외 기간이나 이미 내려진 결정에 달려 있다면, 해당 사건 자체에 대한 조언을 받으십시오.</p>
@@ -305,6 +393,7 @@
           <a href="/ko/help/">도움말 센터</a>
           <a href="/ko/learn/">여행 규정</a>
           <a href="/ko/learn/calculators">계산기</a>
+          <a href="/ko/learn/guides">가이드</a>
           <a href="/changelog">변경 내역</a>
         </div>
         <div>
@@ -325,6 +414,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"탐색 메뉴 열기","menuClose":"탐색 메뉴 닫기"};</script>
   <script src="../../assets/js/navigation.js?v=20261005a"></script>
+  <script defer src="../../assets/js/rules/presence.js?v=20261006a"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261006a"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

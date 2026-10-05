@@ -125,6 +125,7 @@
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261005a" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261004l" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Pular para o conteúdo</a>
@@ -239,6 +240,101 @@
       <p>Como a janela se move, cada dia a mais que ela passar no Canadá em 2026 acrescenta um dia na frente e derruba um dia de 2021 no fim, e esses dias de 2021 estavam contando a favor dela. O total dela, portanto, fica parado em 671 até o último deles sair da janela no fim de dezembro de 2026. A partir de 1º de janeiro de 2027, os dias que caem no fim são dias em que ela esteve fora, então cada dia no Canadá soma um, e ela chega a 730 em 28 de fevereiro de 2027.</p>
     </div>
 
+    <h2 id="calculator">Calculadora da obrigação de residência do PR no Canadá</h2>
+    <p>Marque suas estadias no Canadá. A calculadora conta os cinco anos até a data escolhida e mostra sua situação em relação aos 730 dias.</p>
+    <div class="daycal" id="embed-presence" data-day-calendar="presence" data-cal-preset="{&quot;settings&quot;:{&quot;country&quot;:&quot;CA&quot;,&quot;need&quot;:730,&quot;note&quot;:&quot;Canada PR presence calculator&quot;},&quot;lock&quot;:[],&quot;link&quot;:&quot;pr-ca&quot;}">
+      <script type="application/json" data-cal-strings>
+{
+  "hintEnd": "Toque na outra ponta da estadia.",
+  "hintSelected": "Arraste qualquer uma das pontas da estadia para mudar as datas ou exclua-a abaixo.",
+  "pending": "início de uma nova estadia",
+  "empty": "Nenhuma estadia ainda.",
+  "deleteTrip": "Excluir estadia",
+  "country": "País",
+  "goal": "Objetivo",
+  "goalStay": "Ficar abaixo",
+  "goalReach": "Atingir meta",
+  "addCountry": "Adicionar país",
+  "noMatch": "Nenhum país encontrado",
+  "year": "Ano",
+  "starts": "Início",
+  "tripDays": {
+    "one": "{n} dia",
+    "other": "{n} dias",
+    "many": "{n} dias"
+  },
+  "remaining": {
+    "one": "{n} dia restante",
+    "other": "{n} dias restantes",
+    "many": "{n} dias restantes"
+  },
+  "atLimit": "No limite",
+  "needed": {
+    "one": "Ainda falta {n} dia",
+    "other": "Ainda faltam {n} dias",
+    "many": "Ainda faltam {n} dias"
+  },
+  "reachedTarget": "Meta atingida",
+  "overBy": {
+    "one": "{n} dia acima do limite",
+    "other": "{n} dias acima do limite",
+    "many": "{n} dias acima do limite"
+  },
+  "hintStart": "Toque no dia em que uma estadia no Canadá começou e depois no dia em que terminou.",
+  "inTrip": "no Canadá",
+  "title": "Canadá",
+  "checkOn": "Contar até",
+  "checkOnCaption": "Seus dias no Canadá nos cinco anos até esta data."
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>S</span><span>T</span><span>Q</span><span>Q</span><span>S</span><span>S</span><span>D</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>Linha do tempo</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Acompanhar no AtlasDays</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="embed-presence-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="embed-presence-import-title">Acompanhar no AtlasDays</p>
+            <p class="cal-dialog-sub">Continue contando seus dias enquanto viaja. App gratuito para iPhone e iPad.</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>Verifique se o AtlasDays está instalado no seu iPhone ou iPad</strong><span>Grátis na App Store.</span></li>
+            <li><strong>Escaneie o código QR para carregar todas as viagens no AtlasDays</strong><span>Confira e toque em Importar.</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>Baixe o AtlasDays</strong><span>Grátis na App Store. Já tem o app? Pule para o passo 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>Abra suas estadias no app</strong><span>Confira e toque em Importar. Nada é salvo antes disso.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Abrir no AtlasDays</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>Baixe o AtlasDays</strong><span>Grátis na App Store, para iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>Importe suas estadias com um arquivo</strong><span>São estadias demais para caber em um link. Baixe o arquivo e abra-o no iPhone com o AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Baixar arquivo</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Baixar as viagens em um arquivo CSV</button><span data-cal-downloaded hidden>Abra este arquivo no iPhone com o AtlasDays.</span></p>
+          <button type="button" data-cal-close>Fechar</button>
+        </div>
+      </dialog>
+    </div>
+    <p class="cal-private">Tudo fica no navegador: os dados que você informa não são enviados nem salvos.</p>
+
     <h2>Além da contagem de dias</h2>
     <p>Não alcançar os 730 dias não é a mesma coisa que perder o status. Você continua residente permanente até que um agente tome uma decisão, e uma recusa pode ser recorrida; razões humanitárias e de compaixão podem preservar o status apesar do descumprimento. Se você é residente permanente há menos de cinco anos, o teste passa a ser se você ainda conseguirá alcançar 730 dias até o seu quinto aniversário de status.</p>
     <p>Essa obrigação também é separada de qualquer outra contagem de dias canadense. Ela não é a residência fiscal, que depende de <a href="/pt/learn/canada-183-day-tax-residency">183 dias em um ano civil</a> e dos vínculos residenciais. Não é o <a href="/pt/learn/canada-visitor-visa-6-month-limit">limite de seis meses para visitantes</a>, que vale para quem é admitido como visitante e não como residente permanente. E a cidadania canadense tem a sua própria exigência de presença física, então cumprir a obrigação de residência não significa ter cumprido aquela. Quando o seu caso depende de tempo creditado no exterior ou de uma decisão já tomada, busque orientação sobre o processo em si.</p>
@@ -305,6 +401,7 @@
           <a href="/pt/help/">Central de ajuda</a>
           <a href="/pt/learn/">Regras de viagem</a>
           <a href="/pt/learn/calculators">Calculadoras</a>
+          <a href="/pt/learn/guides">Guias</a>
           <a href="/changelog">Novidades</a>
         </div>
         <div>
@@ -325,6 +422,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"Abrir o menu de navegação","menuClose":"Fechar o menu de navegação"};</script>
   <script src="../../assets/js/navigation.js?v=20261005a"></script>
+  <script defer src="../../assets/js/rules/presence.js?v=20261006a"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261006a"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

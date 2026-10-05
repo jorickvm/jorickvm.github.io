@@ -124,6 +124,7 @@
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261005a" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261004l" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">跳至主要內容</a>
@@ -202,24 +203,116 @@
       <ul>
         <li><a href="#section-1">加權計算方式</a></li>
         <li><a href="#section-2">比較前保留分數</a></li>
-        <li><a href="#section-3">哪些日子可以排除？</a></li>
-        <li><a href="#section-4">排除需要文件或證據嗎？</a></li>
-        <li><a href="#section-5">常見的三個錯誤</a></li>
-        <li><a href="#section-6">原始日數不是最後答案的情況</a></li>
-        <li><a href="#section-7">常見問題</a></li>
+        <li><a href="#calculator">美國實質居留判定計算器</a></li>
+        <li><a href="#section-4">哪些日子可以排除？</a></li>
+        <li><a href="#section-5">排除需要文件或證據嗎？</a></li>
+        <li><a href="#section-6">常見的三個錯誤</a></li>
+        <li><a href="#section-7">原始日數不是最後答案的情況</a></li>
+        <li><a href="#section-8">常見問題</a></li>
       </ul>
     </details>
     <script>(function(){var t=document.currentScript.previousElementSibling;if(matchMedia('(min-width: 760px)').matches)t.open=true;var a=[].slice.call(t.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <h2 id="section-1">加權計算方式</h2><p>公式採用<strong>當年度</strong>及之前兩個日曆年。</p><ol><li>計算當年度所有符合條件的美國停留日。</li><li>加上前一年度符合條件日數的三分之一。</li><li>再加上兩年前該年度符合條件日數的六分之一。</li></ol><p>一般起點是當年度在美國停留至少 31 天，<em>而且</em>三年加權總數至少達 183 天。</p><p>IRS Publication 519 的例子說明權重為何重要：連續三年每年 120 天，依公式只有 180 天，因此<strong>不符合</strong>判定。重點不是算術有多難，而是前兩年的日數仍會加入。</p>
     <div class="example"><p><strong>兩項要求都重要。</strong>三年各 122 天時，總數是 122 + 40⅔ + 20⅓ = 183，當年度 31 天條件也符合。但當年度 30 天、前一年 365 天、再前一年 365 天，不符合實質居留判定：加權總數夠高，但當年度最低日數不足。</p></div>
     <h2 id="section-2">比較前保留分數</h2><p>財政部規則 301.7701(b)-1(c)(1) 規定，加權產生的部分日數不四捨五入成最接近的整數。例如當年度 122 天、前一年 122 天、再前一年 121 天，結果是 182⅚，仍低於 183。把每一年的加權結果先取整數再相加，也可能改變答案。</p>
-    <h2 id="section-3">哪些日子可以排除？</h2><p>一天內只要有部分時間人在美國，通常就計一天。Publication 519 列出以下排除類別，每一類都有自己的條件：</p><ul><li><strong>固定跨境通勤。</strong>從加拿大或墨西哥住家通勤的符合條件工作日。IRS 有特定的固定通勤者判定，偶爾出差不會自動符合。</li><li><strong>不滿 24 小時的過境。</strong>在美國境外兩地之間移動，且活動與完成該旅程有實質關聯。到機場開商務會議不算過境。</li><li><strong>外國船舶船員。</strong>在從事國際運輸的外國船艇上擔任固定船員的符合條件日子；在美國進行其他營業或業務會受到限制。</li><li><strong>因醫療原因無法離境。</strong>在美國停留期間發生健康狀況，導致無法按計畫離境的日子。這不是生病或接受治療的一般豁免。</li><li><strong>特定 NATO 人員。</strong>以部隊或文職單位成員身分持符合條件 NATO 簽證的日子。隨行受扶養家屬不適用。</li><li><strong>Exempt individual。</strong>符合條件的外國政府相關人員；持 J/Q 身分的教師或受訓人員；持 F/J/M/Q 身分的學生；參加符合條件慈善賽事的職業運動員。簽證條件、過往年度限制與合資格家人的規則各有不同。只有簽證名稱，不代表可無限期排除。</li></ul>
+    <h2 id="calculator">美國實質居留判定計算器</h2>
+    <p>點選在美國的日子，並選擇要判定的年度。計算器會同時檢查兩個條件：該年度至少 31 天，以及三年加權合計 183 天。</p>
+    <div class="daycal" id="embed-spt" data-day-calendar="spt" data-cal-preset="{&quot;settings&quot;:{},&quot;lock&quot;:[],&quot;link&quot;:&quot;spt&quot;}">
+      <script type="application/json" data-cal-strings>
+{
+  "hintEnd": "接著點選這段停留的另一端。",
+  "hintSelected": "拖曳停留的任一端可更改日期，也可以在下方刪除。",
+  "pending": "新一段停留的起點",
+  "empty": "還沒有停留紀錄。",
+  "deleteTrip": "刪除停留",
+  "country": "國家或地區",
+  "goal": "目標類型",
+  "goalStay": "低於上限",
+  "goalReach": "達成目標",
+  "addCountry": "新增國家或地區",
+  "noMatch": "找不到符合的國家或地區",
+  "year": "年份",
+  "starts": "起始日",
+  "tripDays": {
+    "other": "{n} 天"
+  },
+  "remaining": {
+    "other": "剩餘 {n} 天"
+  },
+  "atLimit": "已達上限",
+  "needed": {
+    "other": "還需 {n} 天"
+  },
+  "reachedTarget": "目標達成",
+  "overBy": {
+    "other": "超過上限 {n} 天"
+  },
+  "hintStart": "點選日期，新增一段在美國的停留。",
+  "inTrip": "在美國",
+  "title": "美國",
+  "captionStay": "維持美國非稅務居民身分。",
+  "captionReach": "符合判定標準。",
+  "met": "已達日數門檻",
+  "barYear": "{year} 年的日數",
+  "barWeighted": "加權日數",
+  "notMet": "未達日數門檻"
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>時間軸</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>在 AtlasDays 中繼續追蹤</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="embed-spt-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="embed-spt-import-title">在 AtlasDays 中繼續追蹤</p>
+            <p class="cal-dialog-sub">適用於 iPhone 和 iPad 的免費 App，旅行途中持續計算停留天數。</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>確認 iPhone 或 iPad 已安裝 AtlasDays</strong><span>可在 App Store 免費下載。</span></li>
+            <li><strong>掃描 QR 碼，把所有行程載入 AtlasDays</strong><span>確認無誤後，輕點「匯入」。</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>取得 AtlasDays</strong><span>在 App Store 免費下載。已經有了？直接跳到第 2 步。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>在 App 中開啟停留紀錄</strong><span>確認無誤後輕點「匯入」。在此之前，不會儲存任何資料。</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">在 AtlasDays 中開啟</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>取得 AtlasDays</strong><span>iPhone 版，可在 App Store 免費下載。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>用檔案匯入停留紀錄</strong><span>停留紀錄太多，連結裝不下。請下載檔案，然後在 iPhone 上用 AtlasDays 開啟。</span><button type="button" class="cal-dialog-primary" data-cal-download>下載檔案</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>將行程下載為 CSV 檔案</button><span data-cal-downloaded hidden>請在 iPhone 上用 AtlasDays 開啟這個檔案。</span></p>
+          <button type="button" data-cal-close>關閉</button>
+        </div>
+      </dialog>
+    </div>
+    <p class="cal-private">所有操作都留在瀏覽器內：輸入的資料不會傳送或儲存。</p>
+
+    <h2 id="section-4">哪些日子可以排除？</h2><p>一天內只要有部分時間人在美國，通常就計一天。Publication 519 列出以下排除類別，每一類都有自己的條件：</p><ul><li><strong>固定跨境通勤。</strong>從加拿大或墨西哥住家通勤的符合條件工作日。IRS 有特定的固定通勤者判定，偶爾出差不會自動符合。</li><li><strong>不滿 24 小時的過境。</strong>在美國境外兩地之間移動，且活動與完成該旅程有實質關聯。到機場開商務會議不算過境。</li><li><strong>外國船舶船員。</strong>在從事國際運輸的外國船艇上擔任固定船員的符合條件日子；在美國進行其他營業或業務會受到限制。</li><li><strong>因醫療原因無法離境。</strong>在美國停留期間發生健康狀況，導致無法按計畫離境的日子。這不是生病或接受治療的一般豁免。</li><li><strong>特定 NATO 人員。</strong>以部隊或文職單位成員身分持符合條件 NATO 簽證的日子。隨行受扶養家屬不適用。</li><li><strong>Exempt individual。</strong>符合條件的外國政府相關人員；持 J/Q 身分的教師或受訓人員；持 F/J/M/Q 身分的學生；參加符合條件慈善賽事的職業運動員。簽證條件、過往年度限制與合資格家人的規則各有不同。只有簽證名稱，不代表可無限期排除。</li></ul>
     <p>「Exempt individual」表示某些日子可從這項判定中排除，不代表該人免除所有美國稅務。以上只是類別摘要，不是判定特定停留必然符合。<a href="#official-source-heading">下方官方資料</a>會直接連到 Publication 519 的排除日規則與相關申報說明。</p><p>在這項判定中，美國包括 50 州、哥倫比亞特區，以及指定領海與外海區域；美國屬地和美國領空不包括在內。</p>
-    <h2 id="section-4">排除需要文件或證據嗎？</h2><p>視排除類別而定。符合條件的學生、教師或受訓人員、慈善賽事運動員，以及主張醫療排除的人，通常必須提交 <strong>Form 8843</strong>，即使不必另行提交所得稅申報表。這不是每種排除都適用的共同申報要求；外國政府相關人員不受該表格這項申報要求約束。</p><p>表格會要求說明主張依據。醫療排除需附醫師簽名聲明；慈善賽事運動員需附活動淨收益聲明；學生、教師與受訓人員要提供學校或計畫資料與簽證歷史，部分情況還需額外聲明。請保留支持相關日期與情況的紀錄，並使用正確課稅年度的指示。個人旅行紀錄可支持時間序，但不能取代必要的申報或證明。</p>
-    <h2 id="section-5">常見的三個錯誤</h2><ul><li><strong>「只看當年度。」</strong>前兩個日曆年仍會加入當年度的判定。</li><li><strong>「當年度少於 183 天就沒事。」</strong>當年度從未達 183 天，也可能符合加權判定。</li><li><strong>「移民與稅務是同一套制度。」</strong>簽證類別、I-94 日期或 B1/B2 停留模式本身，不能回答稅務居民問題。IRS 另有綠卡判定。</li></ul>
-    <h2 id="section-6">原始日數不是最後答案的情況</h2><p>符合日數判定，不代表身分自動確定。較密切聯繫的主張、租稅協定下的居民身分與順序判定規則、居民身分起訖日期，以及申報後果，都可能依個別事實而有影響。一般的較密切聯繫例外有自己的條件，包括當年度在美國停留少於 183 天、在外國有稅務住所（tax home），以及具備所需的較密切聯繫；也有 Form 8840 申報要求。它不是任何符合加權日數判定者都自動適用的豁免。</p>
+    <h2 id="section-5">排除需要文件或證據嗎？</h2><p>視排除類別而定。符合條件的學生、教師或受訓人員、慈善賽事運動員，以及主張醫療排除的人，通常必須提交 <strong>Form 8843</strong>，即使不必另行提交所得稅申報表。這不是每種排除都適用的共同申報要求；外國政府相關人員不受該表格這項申報要求約束。</p><p>表格會要求說明主張依據。醫療排除需附醫師簽名聲明；慈善賽事運動員需附活動淨收益聲明；學生、教師與受訓人員要提供學校或計畫資料與簽證歷史，部分情況還需額外聲明。請保留支持相關日期與情況的紀錄，並使用正確課稅年度的指示。個人旅行紀錄可支持時間序，但不能取代必要的申報或證明。</p>
+    <h2 id="section-6">常見的三個錯誤</h2><ul><li><strong>「只看當年度。」</strong>前兩個日曆年仍會加入當年度的判定。</li><li><strong>「當年度少於 183 天就沒事。」</strong>當年度從未達 183 天，也可能符合加權判定。</li><li><strong>「移民與稅務是同一套制度。」</strong>簽證類別、I-94 日期或 B1/B2 停留模式本身，不能回答稅務居民問題。IRS 另有綠卡判定。</li></ul>
+    <h2 id="section-7">原始日數不是最後答案的情況</h2><p>符合日數判定，不代表身分自動確定。較密切聯繫的主張、租稅協定下的居民身分與順序判定規則、居民身分起訖日期，以及申報後果，都可能依個別事實而有影響。一般的較密切聯繫例外有自己的條件，包括當年度在美國停留少於 183 天、在外國有稅務住所（tax home），以及具備所需的較密切聯繫；也有 Form 8840 申報要求。它不是任何符合加權日數判定者都自動適用的豁免。</p>
     <div class="cta-box"><span class="cta-logo"><img class="logo-dark" src="/assets/brand/logo_dark.png?v=20260325a" alt="AtlasDays 標誌" width="52" height="52" /><img class="logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="AtlasDays 標誌" width="52" height="52" /></span><h2>用 AtlasDays 追蹤美國日數門檻</h2><p><strong>美國實質居留測試</strong>預設會依旅行紀錄自動追蹤兩項日數門檻。IRS 的日數排除不會自動套用。</p><a class="cta-btn" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> 取得 AtlasDays</a></div>
-    <h2 id="section-7">常見問題</h2><h3>評估年度必須實際在美國停留 183 天嗎？</h3><p>不必。前兩年度會加入，因此當年度較少也可能讓加權總數達 183 天；但仍須符合當年度至少 31 天的獨立條件。</p><h3>加權後的部分日數會進位嗎？</h3><p>不會。規則在比較時保留分數。加權總數 182⅚ 不符合 183 天門檻。</p><h3>所有過境日都會排除嗎？</h3><p>不會。IRS 過境例外涵蓋在美國境外兩地間旅行、且在美國停留不滿 24 小時的情況。把行程稱為過境，不代表自動符合規定。</p>
+    <h2 id="section-8">常見問題</h2><h3>評估年度必須實際在美國停留 183 天嗎？</h3><p>不必。前兩年度會加入，因此當年度較少也可能讓加權總數達 183 天；但仍須符合當年度至少 31 天的獨立條件。</p><h3>加權後的部分日數會進位嗎？</h3><p>不會。規則在比較時保留分數。加權總數 182⅚ 不符合 183 天門檻。</p><h3>所有過境日都會排除嗎？</h3><p>不會。IRS 過境例外涵蓋在美國境外兩地間旅行、且在美國停留不滿 24 小時的情況。把行程稱為過境，不代表自動符合規定。</p>
 
     <aside class="article-trust">
       <section class="article-trust-item article-source" aria-labelledby="official-source-heading">
@@ -261,6 +354,7 @@
           <a href="/zh-Hant/help/">說明中心</a>
           <a href="/zh-Hant/learn/">旅行規定</a>
           <a href="/zh-Hant/learn/calculators">計算器</a>
+          <a href="/zh-Hant/learn/guides">指南</a>
           <a href="/changelog">更新紀錄</a>
         </div>
         <div>
@@ -281,6 +375,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"開啟導覽選單","menuClose":"關閉導覽選單"};</script>
   <script src="../../assets/js/navigation.js?v=20261005a"></script>
+  <script defer src="../../assets/js/rules/spt.js?v=20261006a"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261006a"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

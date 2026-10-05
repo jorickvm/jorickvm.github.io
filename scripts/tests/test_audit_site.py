@@ -104,29 +104,15 @@ class AuditSiteTests(unittest.TestCase):
         audit_site.audit_manual_sources(findings)
         self.assertEqual([item.path for item in findings], [])
 
-    def test_library_tile_pattern_reads_the_qualifier_that_follows_a_name(self) -> None:
+    def test_two_cards_with_one_title_are_found(self) -> None:
         markup = (
-            '<span class="hub-tile-name">Georgia</span>'
-            '<span class="hub-tile-qualifier">the country</span>'
-            '<span class="hub-tile-name">Australia</span>'
+            '<a class="rule-card" href="/learn/a"><img /><span class="rule-text"><strong>Georgia Tax Residency</strong></span></a>'
+            '<a class="rule-card" href="/learn/b"><img /><span class="rule-text"><strong>Georgia Tax Residency</strong></span></a>'
+            '<a class="rule-card" href="/learn/c"><img /><span class="rule-text"><strong>Georgia State Tax Residency</strong></span></a>'
         )
-        found = [(m["name"], bool(m["qualifier"])) for m in audit_site.LIBRARY_TILE.finditer(markup)]
-        self.assertEqual(found, [("Georgia", True), ("Australia", False)])
+        self.assertEqual(audit_site.ambiguous_card_titles(markup), ["Georgia Tax Residency"])
 
-    def test_colliding_place_name_without_a_qualifier_is_an_error(self) -> None:
-        findings: list[audit_site.Finding] = []
-        fragment = Path(audit_site.SITE_ROOT / "_site-src/content/hubs/learn-index.html")
-        original = fragment.read_text(encoding="utf-8")
-        stripped = original.replace('<span class="hub-tile-qualifier">US state</span>', "", 1)
-        self.assertNotEqual(stripped, original)
-        try:
-            fragment.write_text(stripped, encoding="utf-8")
-            audit_site.audit_library_qualifiers(findings)
-        finally:
-            fragment.write_text(original, encoding="utf-8")
-        self.assertEqual([finding.code for finding in findings], ["ambiguous-place-name"])
-
-    def test_shipped_library_fragments_qualify_every_collision(self) -> None:
+    def test_shipped_learn_indexes_have_no_colliding_titles(self) -> None:
         findings: list[audit_site.Finding] = []
         audit_site.audit_library_qualifiers(findings)
         self.assertEqual(findings, [])

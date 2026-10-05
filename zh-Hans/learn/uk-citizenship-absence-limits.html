@@ -124,6 +124,7 @@
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261005a" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261004l" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">跳到主要内容</a>
@@ -212,10 +213,11 @@
         <li><a href="#section-1">先确认适用的归化途径</a></li>
         <li><a href="#section-2">两项上限必须一起检查</a></li>
         <li><a href="#section-3">计算整天离境，不计旅行日</a></li>
-        <li><a href="#section-4">海峡群岛和马恩岛为何计入</a></li>
-        <li><a href="#section-5">期间第一天是另一项要求</a></li>
-        <li><a href="#section-6">不只计算天数</a></li>
-        <li><a href="#section-7">常见问题</a></li>
+        <li><a href="#calculator">英国入籍离境天数计算器</a></li>
+        <li><a href="#section-5">海峡群岛和马恩岛为何计入</a></li>
+        <li><a href="#section-6">期间第一天是另一项要求</a></li>
+        <li><a href="#section-7">不只计算天数</a></li>
+        <li><a href="#section-8">常见问题</a></li>
       </ul>
     </details>
     <script>(function(){var t=document.currentScript.previousElementSibling;if(matchMedia('(min-width: 760px)').matches)t.open=true;var a=[].slice.call(t.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
@@ -242,13 +244,95 @@
       <p><strong>一趟旅行。</strong>6 月 1 日出境、6 月 10 日入境，整天在境外的日子是 6 月 2 日至 9 日，共<strong>八天</strong>。6 月 1 日出境、6 月 2 日入境，整天离境为 0 天。</p>
       <p><strong>跨越期间边界的旅行。</strong>如果最后一年从 1 月 6 日开始，1 月 2 日至 10 日的离境会有五天落入该期间：1 月 6、7、8、9、10 日。较早的日子仍可能计入较长的资格期间。这里假设 1 月 2 日之前已出境、1 月 10 日之后才入境，因此列出的日期都是整天离境。</p>
     </div>
-    <h2 id="section-4">海峡群岛和马恩岛为何计入</h2>
+    <h2 id="calculator">英国入籍离境天数计算器</h2>
+    <p>点选出国的行程，并选择计划提交申请的日期。计算器会同时检查两个上限：整个期间的离境天数，以及最近 12 个月内的 90 天。</p>
+    <div class="daycal" id="embed-ukIlr" data-day-calendar="ukIlr" data-cal-preset="{&quot;settings&quot;:{&quot;citizenship&quot;:true,&quot;note&quot;:&quot;UK citizenship absence calculator&quot;},&quot;lock&quot;:[],&quot;link&quot;:&quot;citizenship-uk&quot;}">
+      <script type="application/json" data-cal-strings>
+{
+  "hintStart": "先点选离开英国的日期，再点选返回日期。",
+  "hintEnd": "再点选行程的另一端日期。",
+  "inTrip": "在英国境外",
+  "pending": "新行程起点",
+  "empty": "尚无行程。",
+  "deleteTrip": "删除行程",
+  "country": "国家或地区",
+  "addCountry": "添加国家或地区",
+  "noMatch": "找不到符合的国家或地区",
+  "hintSelected": "拖移行程任一端可更改日期，也可以在下方删除行程。",
+  "tripAway": {
+    "other": "离境 {n} 天"
+  },
+  "title": "英国境外天数",
+  "checkOn": "申请日期",
+  "checkOnCaption": "截至这一天的五年内（配偶途径为三年内）离境的天数。",
+  "remaining": {
+    "other": "剩余 {n} 天"
+  },
+  "atLimit": "已达上限",
+  "overBy": {
+    "other": "超过上限 {n} 天"
+  },
+  "route": "途径",
+  "routeStandard": "一般",
+  "routeSpouse": "配偶或民事伴侣",
+  "barRecent": "最近 12 个月"
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>时间轴</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>在 AtlasDays 中继续追踪</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="embed-ukIlr-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="embed-ukIlr-import-title">在 AtlasDays 中继续追踪</p>
+            <p class="cal-dialog-sub">适用于 iPhone 和 iPad 的免费 App，旅途中持续计算停留天数。</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>确认 iPhone 或 iPad 上已安装 AtlasDays</strong><span>可在 App Store 免费下载。</span></li>
+            <li><strong>扫描二维码，把所有行程加载到 AtlasDays</strong><span>核对无误后，轻点“导入”。</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>获取 AtlasDays</strong><span>在 App Store 免费下载。已经安装？直接跳到第 2 步。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>在 App 中打开停留记录</strong><span>核对无误后轻点“导入”。在此之前，不会存储任何内容。</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">在 AtlasDays 中打开</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>获取 AtlasDays</strong><span>可在 App Store 免费下载 iPhone 版。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>用文件导入停留记录</strong><span>停留记录太多，链接放不下。请下载文件，然后在 iPhone 上用 AtlasDays 打开。</span><button type="button" class="cal-dialog-primary" data-cal-download>下载文件</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>将行程下载为 CSV 文件</button><span data-cal-downloaded hidden>请在 iPhone 上用 AtlasDays 打开这个文件。</span></p>
+          <button type="button" data-cal-close>关闭</button>
+        </div>
+      </dialog>
+    </div>
+    <p class="cal-private">所有内容仅在浏览器中处理：输入的内容不会发送或存储。</p>
+
+    <h2 id="section-5">海峡群岛和马恩岛为何计入</h2>
     <p>就国籍法而言，相关英国领土包括海峡群岛和马恩岛。这些王室属地在一般地理意义上不是英国的一部分，但在这项判定中，在当地的日子计为境内停留。包括泽西与根西两个行政区，以及马恩岛。</p>
     <p>爱尔兰共和国和直布罗陀不在这个领土内。不能只因共同旅行区安排或与英国国籍的关联，就把当地停留当成英国境内停留。若同一天的行程涉及多个地点，问题在于是否整天都在所列领土之外。</p>
-    <h2 id="section-5">期间第一天是另一项要求</h2>
+    <h2 id="section-6">期间第一天是另一项要求</h2>
     <p>离境总数低，不代表资格期间开始时人在英国。Form AN 举例说明：一般途径的申请若在 2022 年 1 月 5 日收到，申请人应在 2017 年 1 月 6 日人在英国。请依预定申请日确认资格期间的确切起始日，不要只用大约相隔 5 年的日期。</p>
     <p>提交前要同时检查总数和起始日记录。更改申请日期就要重新检查期间。即使数字上有充足余裕，申请仍可能涉及时间点或身份问题。</p>
-    <h2 id="section-6">不只计算天数</h2>
+    <h2 id="section-7">不只计算天数</h2>
     <p>内政部可对部分超额离境与其他居住问题行使裁量。超过一般上限本身不等于最终拒绝，但裁量也不是自动增加的额度。必须根据官方指引考虑相关情况与佐证材料。</p>
     <p>合法居住、移民身份、语言与知识要求、良好品格，以及该途径的其他条件仍需分别符合。入籍离境上限也不同于 <a href="/zh-Hans/learn/uk-ilr-absence-limit">ILR 连续居住</a>、<a href="/zh-Hans/learn/uk-standard-visitor-visa-180-day-rule">访客停留规定</a>和<a href="/zh-Hans/learn/uk-statutory-residence-test">税务上的法定居住判定</a>。同一份旅行记录可支持不同判定，不代表这些规定可以互换。</p>
     <div class="cta-box">
@@ -257,7 +341,7 @@
       <p>行程只要记录一次，<strong>英国入籍离境天数上限</strong>预设就会同时检查 5 年与最后一年的额度。数据在 iPhone 上私密处理，任一额度快用完时就会提醒。</p>
       <a class="cta-btn" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> 获取 AtlasDays</a>
     </div>
-    <h2 id="section-7">常见问题</h2>
+    <h2 id="section-8">常见问题</h2>
     <h3>出境日和入境日计入境外停留天数吗？</h3>
     <p>不算。归化只计算整天都在相关领土之外的日子。某天离境、隔天返回，不会产生整天离境。</p>
     <h3>海峡群岛和马恩岛是否包括在内？</h3>
@@ -306,6 +390,7 @@
           <a href="/zh-Hans/help/">帮助中心</a>
           <a href="/zh-Hans/learn/">旅行规定</a>
           <a href="/zh-Hans/learn/calculators">计算器</a>
+          <a href="/zh-Hans/learn/guides">指南</a>
           <a href="/changelog">更新记录</a>
         </div>
         <div>
@@ -326,6 +411,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"打开导航菜单","menuClose":"关闭导航菜单"};</script>
   <script src="../../assets/js/navigation.js?v=20261005a"></script>
+  <script defer src="../../assets/js/rules/uk-ilr.js?v=20261006a"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261006a"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

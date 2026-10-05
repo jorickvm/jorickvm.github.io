@@ -17,6 +17,7 @@ import xml.etree.ElementTree as ET
 from collections import Counter
 from dataclasses import asdict, dataclass, field
 from datetime import date
+import html
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote, urlsplit
@@ -585,36 +586,37 @@ def audit_search_index_language(findings: list[Finding]) -> None:
             )
 
 
-LIBRARY_TILE = re.compile(
-    r'<span class="hub-tile-name">(?P<name>[^<]+)</span>'
-    r'(?P<qualifier><span class="hub-tile-qualifier">)?'
-)
+RULE_CARD_TITLE = re.compile(r'<a class="rule-card"[^>]*>.*?<strong>(?P<name>.*?)</strong>', re.S)
+
+
+def ambiguous_card_titles(markup: str) -> list[str]:
+    """Card titles that appear more than once on one page."""
+    names = [html.unescape(match["name"]) for match in RULE_CARD_TITLE.finditer(markup)]
+    return sorted({name for name in names if names.count(name) > 1})
 
 
 def audit_library_qualifiers(findings: list[Finding]) -> None:
-    """Two places sharing a display name must both say which one they are.
+    """Two rules on the Learn index must never show the same title.
 
-    The qualifier is otherwise editorial, set where an off-page namesake makes
-    a name ambiguous. A collision is the case nobody can be trusted to notice:
-    it is caused by adding an unrelated place, it reads as a duplicate rather
-    than as a defect, and it happens per locale, because two names that collide
-    in one language are two different words in another.
+    The cards take the app's preset titles, which keep namesakes apart
+    ("Georgia Tax Residency", "Georgia State Tax Residency"). A collision is
+    the case nobody can be trusted to notice: it is caused by adding an
+    unrelated rule, it reads as a duplicate rather than as a defect, and it
+    happens per locale, because two titles that differ in one language can
+    coincide in another. Checked on the built pages, one per locale.
     """
-    for path in sorted((SITE_ROOT / "_site-src" / "content").glob("**/hubs/learn-index.html")):
-        seen: dict[str, list[bool]] = {}
-        for match in LIBRARY_TILE.finditer(path.read_text(encoding="utf-8")):
-            seen.setdefault(match["name"], []).append(bool(match["qualifier"]))
-        for name, qualified in sorted(seen.items()):
-            if len(qualified) > 1 and not all(qualified):
-                findings.append(
-                    Finding(
-                        "error",
-                        "ambiguous-place-name",
-                        path.relative_to(SITE_ROOT).as_posix(),
-                        f"{name!r} names {len(qualified)} places and {qualified.count(False)} "
-                        "carry no qualifier",
-                    )
+    for path in sorted(SITE_ROOT.glob("**/learn/index.html")):
+        if "_site-src" in path.parts or "-worktrees" in str(path.relative_to(SITE_ROOT)):
+            continue
+        for name in ambiguous_card_titles(path.read_text(encoding="utf-8")):
+            findings.append(
+                Finding(
+                    "error",
+                    "ambiguous-place-name",
+                    path.relative_to(SITE_ROOT).as_posix(),
+                    f"{name!r} is the title of more than one rule card",
                 )
+            )
 
 
 def source_path_of(path: str, registry: dict[str, dict], default: str) -> str:

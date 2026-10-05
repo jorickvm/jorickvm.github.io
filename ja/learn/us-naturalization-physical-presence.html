@@ -125,6 +125,7 @@
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261005a" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261004l" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">本文へスキップ</a>
@@ -241,6 +242,93 @@
     </div>
     <p>集計期間は提出日とともに動くため、待てば自動的によくなるわけではありません。米国で1日過ごすたびに、新しい側に1日が加わり、古い側から1日が落ちます。合計が増えるのは、落ちた日が不在の日だった場合だけです。</p>
 
+    <h2 id="calculator">米国帰化の滞在日数計算機</h2>
+    <p>米国での滞在をタップし、申請する予定の日を選んでください。計算機はその日までの5年間の滞在日数を913日と比べて数えます。</p>
+    <div class="daycal" id="embed-presence" data-day-calendar="presence" data-cal-preset="{&quot;settings&quot;:{&quot;country&quot;:&quot;US&quot;,&quot;need&quot;:913,&quot;note&quot;:&quot;US naturalization calculator&quot;},&quot;lock&quot;:[],&quot;link&quot;:&quot;citizenship-us&quot;}">
+      <script type="application/json" data-cal-strings>
+{
+  "hintEnd": "滞在のもう一方の日付をタップしてください。",
+  "hintSelected": "滞在のどちらかの端をドラッグして日付を変更するか、下で削除してください。",
+  "pending": "新しい滞在の開始日",
+  "empty": "滞在はまだありません。",
+  "deleteTrip": "滞在を削除",
+  "country": "国",
+  "goal": "目標",
+  "goalStay": "上限未満に抑える",
+  "goalReach": "目標を達成",
+  "addCountry": "国を追加",
+  "noMatch": "一致する国はありません",
+  "year": "年",
+  "starts": "開始",
+  "tripDays": {
+    "other": "{n}日"
+  },
+  "remaining": {
+    "other": "残り{n}日"
+  },
+  "atLimit": "上限到達",
+  "needed": {
+    "other": "あと{n}日必要"
+  },
+  "reachedTarget": "目標達成",
+  "overBy": {
+    "other": "上限を{n}日超過"
+  },
+  "hintStart": "米国での滞在が始まった日をタップし、次に終わった日をタップしてください。",
+  "inTrip": "米国に滞在",
+  "title": "米国",
+  "checkOn": "申請日",
+  "checkOnCaption": "この日までの五年間が対象です。申請する予定の日を選んでください。"
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>月</span><span>火</span><span>水</span><span>木</span><span>金</span><span>土</span><span>日</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>タイムライン</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>AtlasDaysで記録する</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="embed-presence-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="embed-presence-import-title">AtlasDaysで記録する</p>
+            <p class="cal-dialog-sub">旅行中もそのまま日数を数えられる、iPhoneとiPad向けの無料アプリです。</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>iPhoneまたはiPadにAtlasDaysをインストールしておく</strong><span>App Storeで無料で入手できます。</span></li>
+            <li><strong>QRコードを読み取り、すべての旅行をAtlasDaysに読み込む</strong><span>確認してから「インポート」をタップします。</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>AtlasDaysを入手</strong><span>App Storeから無料で入手できます。お持ちの場合は2へ進んでください。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>アプリで滞在を開く</strong><span>確認してから「インポート」をタップします。それまで何も保存されません。</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">AtlasDaysで開く</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>AtlasDaysを入手</strong><span>iPhone向けにApp Storeで無料で提供しています。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>ファイルで滞在をインポート</strong><span>滞在の数が多く、リンクでは送れません。ファイルをダウンロードして、iPhoneのAtlasDaysで開いてください。</span><button type="button" class="cal-dialog-primary" data-cal-download>ファイルをダウンロード</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>旅行をCSVファイルでダウンロード</button><span data-cal-downloaded hidden>このファイルをiPhoneのAtlasDaysで開いてください。</span></p>
+          <button type="button" data-cal-close>閉じる</button>
+        </div>
+      </dialog>
+    </div>
+    <p class="cal-private">入力した内容はすべてブラウザ内にとどまります。送信も保存もされません。</p>
+
     <h2>日数だけで決まるわけではありません</h2>
     <p>滞在要件は、これらの条件のうち最も測りやすく、それだけで結論が決まることは最も少ない条件です。継続居住はその横で並行して走ります。6か月を超え1年に満たない不在は、反証できない限り継続居住を断ち切ることがあり、1年以上の不在は、承認されたForm N-470がない限り、そのまま断ち切ります。913日をはるかに超えていても、1回の長い旅行で継続居住が断ち切られていることはありえます。AtlasDaysが数えるのは滞在日数です。継続居住の条件は今のところ自分で確認することになり、その不在がどう扱われるかは<a href="/ja/learn/us-green-card-absence-limits">米国グリーンカードの不在上限</a>で説明しています。USCISはさらに、申請する州またはUSCIS管轄区での3か月の居住も求めます。</p>
     <p>これらはいずれも税務の数え方ではありません。<a href="/ja/learn/us-substantial-presence-test">Substantial Presence Test（実質的滞在テスト）</a>は、独自の加重と除外を持つIRSの別の判定です。長期の不在、再入国許可証、あるいは対象期間が断ち切られた可能性が関わってきた時点で、その件は計算ツールではなく移民弁護士の領域です。</p>
@@ -306,6 +394,7 @@
           <a href="/ja/help/">ヘルプセンター</a>
           <a href="/ja/learn/">旅行ルール</a>
           <a href="/ja/learn/calculators">計算機</a>
+          <a href="/ja/learn/guides">ガイド</a>
           <a href="/changelog">変更履歴</a>
         </div>
         <div>
@@ -326,6 +415,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"ナビゲーションメニューを開く","menuClose":"ナビゲーションメニューを閉じる"};</script>
   <script src="../../assets/js/navigation.js?v=20261005a"></script>
+  <script defer src="../../assets/js/rules/presence.js?v=20261006a"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261006a"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

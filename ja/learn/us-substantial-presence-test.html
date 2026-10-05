@@ -124,6 +124,7 @@
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261005a" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261004l" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">本文へスキップ</a>
@@ -208,11 +209,12 @@
       <ul>
         <li><a href="#section-1">加重計算の仕組み</a></li>
         <li><a href="#section-2">比較するまで端数を残す</a></li>
-        <li><a href="#section-3">除外できる日は？</a></li>
-        <li><a href="#section-4">除外には書類や証拠が必要ですか？</a></li>
+        <li><a href="#calculator">米国の実質的滞在テスト計算機</a></li>
+        <li><a href="#section-4">除外できる日は？</a></li>
+        <li><a href="#section-5">除外には書類や証拠が必要ですか？</a></li>
         <li><a href="#3">よくある3つの誤解</a></li>
-        <li><a href="#section-6">単純な日数だけでは決まらない場合</a></li>
-        <li><a href="#section-7">よくある質問</a></li>
+        <li><a href="#section-7">単純な日数だけでは決まらない場合</a></li>
+        <li><a href="#section-8">よくある質問</a></li>
       </ul>
     </details>
     <script>(function(){var t=document.currentScript.previousElementSibling;if(matchMedia('(min-width: 760px)').matches)t.open=true;var a=[].slice.call(t.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
@@ -224,7 +226,98 @@
     <div class="example"><p><strong>両方の条件が必要です。</strong>3年間それぞれ122日なら、122＋40⅔＋20⅓＝183となり、当年31日の条件も満たします。一方、当年30日、前年365日、前々年365日なら、加重合計は十分でも当年の最低日数を満たさないため、判定を満たしません。</p></div>
     <h2 id="section-2">比較するまで端数を残す</h2>
     <p>財務省規則301.7701(b)-1(c)(1)では、加重で生じた日数の端数を最も近い整数に丸めないと定めています。例えば当年122日、前年122日、前々年121日なら182⅚です。183日に達しません。各年の寄与を先に丸めても結果が変わることがあります。</p>
-    <h2 id="section-3">除外できる日は？</h2>
+    <h2 id="calculator">米国の実質的滞在テスト計算機</h2>
+    <p>米国にいた日をタップし、判定する年を選んでください。計算機は2つの条件を両方確認します。その年に31日以上滞在していること、そして3年間の加重日数が183日に達していることです。</p>
+    <div class="daycal" id="embed-spt" data-day-calendar="spt" data-cal-preset="{&quot;settings&quot;:{},&quot;lock&quot;:[],&quot;link&quot;:&quot;spt&quot;}">
+      <script type="application/json" data-cal-strings>
+{
+  "hintEnd": "滞在のもう一方の日付をタップしてください。",
+  "hintSelected": "滞在のどちらかの端をドラッグして日付を変更するか、下で削除してください。",
+  "pending": "新しい滞在の開始日",
+  "empty": "滞在はまだありません。",
+  "deleteTrip": "滞在を削除",
+  "country": "国",
+  "goal": "目標",
+  "goalStay": "上限未満に抑える",
+  "goalReach": "目標を達成",
+  "addCountry": "国を追加",
+  "noMatch": "一致する国はありません",
+  "year": "年",
+  "starts": "開始",
+  "tripDays": {
+    "other": "{n}日"
+  },
+  "remaining": {
+    "other": "残り{n}日"
+  },
+  "atLimit": "上限到達",
+  "needed": {
+    "other": "あと{n}日必要"
+  },
+  "reachedTarget": "目標達成",
+  "overBy": {
+    "other": "上限を{n}日超過"
+  },
+  "hintStart": "日付をタップすると米国での滞在を追加できます。",
+  "inTrip": "米国に滞在",
+  "title": "米国",
+  "captionStay": "米国の税務上の非居住者にとどまります。",
+  "captionReach": "テストの基準を満たします。",
+  "met": "日数基準に到達",
+  "barYear": "{year}年の滞在日数",
+  "barWeighted": "加重日数",
+  "notMet": "日数基準に未到達"
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>月</span><span>火</span><span>水</span><span>木</span><span>金</span><span>土</span><span>日</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>タイムライン</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>AtlasDaysで記録する</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="embed-spt-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="embed-spt-import-title">AtlasDaysで記録する</p>
+            <p class="cal-dialog-sub">旅行中もそのまま日数を数えられる、iPhoneとiPad向けの無料アプリです。</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>iPhoneまたはiPadにAtlasDaysをインストールしておく</strong><span>App Storeで無料で入手できます。</span></li>
+            <li><strong>QRコードを読み取り、すべての旅行をAtlasDaysに読み込む</strong><span>確認してから「インポート」をタップします。</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>AtlasDaysを入手</strong><span>App Storeから無料で入手できます。お持ちの場合は2へ進んでください。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>アプリで滞在を開く</strong><span>確認してから「インポート」をタップします。それまで何も保存されません。</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">AtlasDaysで開く</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>AtlasDaysを入手</strong><span>iPhone向けにApp Storeで無料で提供しています。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>ファイルで滞在をインポート</strong><span>滞在の数が多く、リンクでは送れません。ファイルをダウンロードして、iPhoneのAtlasDaysで開いてください。</span><button type="button" class="cal-dialog-primary" data-cal-download>ファイルをダウンロード</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>旅行をCSVファイルでダウンロード</button><span data-cal-downloaded hidden>このファイルをiPhoneのAtlasDaysで開いてください。</span></p>
+          <button type="button" data-cal-close>閉じる</button>
+        </div>
+      </dialog>
+    </div>
+    <p class="cal-private">入力した内容はすべてブラウザ内にとどまります。送信も保存もされません。</p>
+
+    <h2 id="section-4">除外できる日は？</h2>
     <p>米国に1日の一部でもいれば通常は数えます。Publication 519は、条件付きで次の除外区分を示しています。</p>
     <ul>
       <li><strong>日常的な国境通勤。</strong>カナダまたはメキシコの自宅から通勤する対象勤務日。IRSには定期的な通勤者に関する判定基準があり、時折の出張が自動的に対象になるわけではありません。</li>
@@ -236,17 +329,17 @@
     </ul>
     <p>「Exempt individual」は、この判定から特定の日を除外できるという意味で、すべての米国税から免除されるという意味ではありません。これは区分の概要であり、特定の滞在が該当するとの判定ではありません。<a href="#official-source-heading">以下の公式資料</a>から、Publication 519の除外日規定と関連する申告手続へ直接移動できます。</p>
     <p>この判定で米国に含まれるのは50州、コロンビア特別区、指定された領海・沖合地域です。米国の海外領土と領空は含まれません。</p>
-    <h2 id="section-4">除外には書類や証拠が必要ですか？</h2>
+    <h2 id="section-5">除外には書類や証拠が必要ですか？</h2>
     <p>除外によっては必要です。対象となる学生、教師・研修生、チャリティーイベントの選手、医療上の除外を主張する人は、所得税申告書が不要な場合でも原則として<strong>Form 8843</strong>を提出します。すべての除外に共通する提出要件ではなく、外国政府関係者はフォームの提出指示から除外されています。</p>
     <p>フォームでは主張の根拠を求めます。医療上の除外には医師の署名付き証明書が必要です。チャリティーイベントの選手は純収益に関する説明を添付し、学生と教師・研修生は教育機関やプログラムの情報、ビザ履歴を記載し、場合によって追加説明を添えます。対象日と事情を裏付ける記録を残し、該当する課税年度の指示を使ってください。個人の旅行記録は時系列の裏付けになりますが、必要な申告や証明の代わりにはなりません。</p>
     <h2 id="3">よくある3つの誤解</h2>
     <ul><li><strong>「当年だけが重要」。</strong>直前2暦年も当年の判定に入ります。</li><li><strong>「当年が183日未満なら終わり」。</strong>当年に183日なくても加重判定を満たすことがあります。</li><li><strong>「移民と税務は同じ制度」。</strong>ビザ区分、I-94の日付、B1/B2の滞在傾向だけでは税務上の居住は決まりません。IRSには別にグリーンカード判定もあります。</li></ul>
-    <h2 id="section-6">単純な日数だけでは決まらない場合</h2>
+    <h2 id="section-7">単純な日数だけでは決まらない場合</h2>
     <p>日数判定を満たしても、資格が必ず確定するわけではありません。より密接な関係に基づく主張、租税条約上の居住と振り分け規定、居住の開始日・終了日、申告上の影響が事実関係に応じて問題になります。通常のcloser-connection exceptionにも、当年の米国滞在が183日未満、国外のtax home、必要な密接な関係など独自の条件があります。Form 8840の提出要件もあり、加重判定を満たした人すべてに自動適用される例外ではありません。</p>
     <div class="cta-box"><span class="cta-logo"><img class="logo-dark" src="/assets/brand/logo_dark.png?v=20260325a" alt="AtlasDaysのロゴ" width="52" height="52" /><img class="logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="AtlasDaysのロゴ" width="52" height="52" /></span>
       <h2>AtlasDaysで米国の2つの日数基準を確認</h2><p><strong>米国実質滞在テスト</strong>プリセットを使うと、旅行記録から2つの日数基準を自動で確認できます。IRSの日数除外は適用されません。</p>
       <a class="cta-btn" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> AtlasDaysを入手</a></div>
-    <h2 id="section-7">よくある質問</h2>
+    <h2 id="section-8">よくある質問</h2>
     <h3>対象年に米国で実際に183日滞在する必要がありますか？</h3><p>いいえ。直前2年の寄与により、当年がそれより少なくても加重合計は183日に達します。ただし、当年31日という別の最低条件は必要です。</p>
     <h3>加重後の日数の端数は切り上げますか？</h3><p>いいえ。規則では比較の際も端数を残します。加重合計182⅚は183日の基準に達しません。</p>
     <h3>乗り継ぎ日はすべて除外されますか？</h3><p>いいえ。IRSの乗り継ぎ例外は、米国外の2地点間の移動中に米国内にいる時間が24時間未満の場合を対象とします。乗り継ぎと呼ばれる旅程が自動的に条件を満たすわけではありません。</p>
@@ -291,6 +384,7 @@
           <a href="/ja/help/">ヘルプセンター</a>
           <a href="/ja/learn/">旅行ルール</a>
           <a href="/ja/learn/calculators">計算機</a>
+          <a href="/ja/learn/guides">ガイド</a>
           <a href="/changelog">変更履歴</a>
         </div>
         <div>
@@ -311,6 +405,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"ナビゲーションメニューを開く","menuClose":"ナビゲーションメニューを閉じる"};</script>
   <script src="../../assets/js/navigation.js?v=20261005a"></script>
+  <script defer src="../../assets/js/rules/spt.js?v=20261006a"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261006a"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

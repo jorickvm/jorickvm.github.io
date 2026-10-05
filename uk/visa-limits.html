@@ -44,6 +44,7 @@
   <link rel="stylesheet" href="../assets/css/tokens.css?v=20260928e" />
   <link rel="stylesheet" href="../assets/css/page-variants/use-case.css?v=20260928a" />
   <link rel="stylesheet" href="../assets/css/marketing.css?v=20260930a" />
+  <link rel="stylesheet" href="../assets/css/rule-cards.css?v=20261006a" />
   <link rel="stylesheet" href="../assets/css/site-header.css?v=20260930a" />
   <link rel="stylesheet" href="../assets/css/site-footer.css?v=20260928e" />
 
@@ -141,19 +142,19 @@
         <h2 class="hx-uc-h2" id="visas-title">Ведіть облік будь-якої візи</h2>
         <p>Виберіть країну, вкажіть дні, які дозволяє ваша віза, і оберіть спосіб підрахунку: за в’їзд, за рік або у ковзному вікні. Поширені візи вже готові до використання, і кожна супроводжує зрозумілий посібник.</p>
       </div>
-      <ul class="hx-uc-rules">
-        <li><a class="hx-uc-rule" href="/uk/learn/schengen-90-180-rule"><img src="/assets/flags/eu.png" alt="" width="240" height="180" loading="lazy" /><span class="hx-uc-rule-text"><strong>Шенген: правило короткострокового перебування 90/180</strong><span>До 90 днів у Шенгенській зоні за будь-який ковзний період 180 днів.</span></span><span class="hx-uc-rule-go">Посібник</span></a></li>
-        <li><a class="hx-uc-rule" href="/uk/learn/schengen-single-entry-visa"><img src="/assets/flags/eu.png" alt="" width="240" height="180" loading="lazy" /><span class="hx-uc-rule-text"><strong>Шенген: одноразова віза</strong><span>Одне безперервне перебування, на кількість днів, вказану у вашій візі.</span></span><span class="hx-uc-rule-go">Посібник</span></a></li>
-        <li><a class="hx-uc-rule" href="/uk/learn/canada-visitor-visa-6-month-limit"><img src="/assets/flags/ca.png" alt="" width="240" height="180" loading="lazy" /><span class="hx-uc-rule-text"><strong>Канада: гостьова віза / eTA</strong><span>До 6 місяців за одне перебування.</span></span><span class="hx-uc-rule-go">Посібник</span></a></li>
-        <li><a class="hx-uc-rule" href="/uk/learn/georgia-visa-free-365-days"><img src="/assets/flags/ge.png" alt="" width="240" height="180" loading="lazy" /><span class="hx-uc-rule-text"><strong>Грузія: безвізове перебування</strong><span>Одне безперервне перебування тривалістю до цілого року.</span></span><span class="hx-uc-rule-go">Посібник</span></a></li>
-        <li><a class="hx-uc-rule" href="/uk/learn/india-tourist-visa-stay-limits"><img src="/assets/flags/in.png" alt="" width="240" height="180" loading="lazy" /><span class="hx-uc-rule-text"><strong>Електронна туристична віза Індії</strong><span>До 180 днів за календарний рік, з урахуванням кожного відвідування.</span></span><span class="hx-uc-rule-go">Посібник</span></a></li>
-        <li><a class="hx-uc-rule" href="/uk/learn/japan-90-day-rule"><img src="/assets/flags/jp.png" alt="" width="240" height="180" loading="lazy" /><span class="hx-uc-rule-text"><strong>Японія: короткострокове перебування</strong><span>До 90 днів за в’їзд.</span></span><span class="hx-uc-rule-go">Посібник</span></a></li>
-        <li><a class="hx-uc-rule" href="/uk/learn/turkiye-90-180-rule"><img src="/assets/flags/tr.png" alt="" width="240" height="180" loading="lazy" /><span class="hx-uc-rule-text"><strong>Коротке перебування в Туреччині</strong><span>До 90 днів за будь-який період 180 днів.</span></span><span class="hx-uc-rule-go">Посібник</span></a></li>
-        <li><a class="hx-uc-rule" href="/uk/learn/uk-standard-visitor-visa-180-day-rule"><img src="/assets/flags/gb.png" alt="" width="240" height="180" loading="lazy" /><span class="hx-uc-rule-text"><strong>Велика Британія: Standard Visitor</strong><span>До 6 місяців за один візит.</span></span><span class="hx-uc-rule-go">Посібник</span></a></li>
-        <li><a class="hx-uc-rule" href="/uk/learn/us-visa-waiver-90-day-limit"><img src="/assets/flags/us.png" alt="" width="240" height="180" loading="lazy" /><span class="hx-uc-rule-text"><strong>США: ESTA</strong><span>Програма безвізового в’їзду (VWP): до 90 днів за один візит.</span></span><span class="hx-uc-rule-go">Посібник</span></a></li>
-        <li><a class="hx-uc-rule" href="/uk/learn/us-b1-b2-visa-180-day-limit"><img src="/assets/flags/us.png" alt="" width="240" height="180" loading="lazy" /><span class="hx-uc-rule-text"><strong>США: віза B-1/B-2</strong><span>Зазвичай дозволяють перебування до 6 місяців за в’їзд.</span></span><span class="hx-uc-rule-go">Посібник</span></a></li>
-        <li class="hx-uc-rules-any"><a class="hx-uc-rule" href="/uk/help/create-a-tracker"><span class="hx-uc-rule-plus" aria-hidden="true">+</span><span class="hx-uc-rule-text"><strong>Будь-яка інша віза чи ліміт в’їзду</strong><span>Будь-яка країна, будь-яка кількість днів, підрахунок за правилами вашої візи.</span></span><span class="hx-uc-rule-go">Як налаштувати</span></a></li>
-      </ul>
+      <div class="rule-cards">
+                  <a class="rule-card" href="/uk/learn/schengen-90-180-rule" data-filter-item data-groups="visa"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Шенген: правило короткострокового перебування 90/180</strong><span>До 90 днів за будь-які 180 днів.</span></span></a>
+          <a class="rule-card" href="/uk/learn/schengen-single-entry-visa" data-filter-item data-groups="visa"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Шенген: одноразова віза</strong><span>Одне перебування на кількість днів, дозволену візою.</span></span></a>
+          <a class="rule-card" href="/uk/learn/canada-visitor-visa-6-month-limit" data-filter-item data-groups="visa"><img class="rule-flag" src="/assets/flags/ca.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Канада: гостьова віза / eTA</strong><span>До шести місяців за перебування; у трекері 180 днів.</span></span></a>
+          <a class="rule-card" href="/uk/learn/georgia-visa-free-365-days" data-filter-item data-groups="visa"><img class="rule-flag" src="/assets/flags/ge.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Грузія: безвізове перебування</strong><span>До року за перебування; у трекері 365 днів.</span></span></a>
+          <a class="rule-card" href="/uk/learn/india-tourist-visa-stay-limits" data-filter-item data-groups="visa"><img class="rule-flag" src="/assets/flags/in.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Електронна туристична віза Індії</strong><span>Загалом до 180 днів за календарний рік за всі візити.</span></span></a>
+          <a class="rule-card" href="/uk/learn/japan-90-day-rule" data-filter-item data-groups="visa"><img class="rule-flag" src="/assets/flags/jp.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Японія: короткострокове перебування</strong><span>До 90 днів за одне перебування.</span></span></a>
+          <a class="rule-card" href="/uk/learn/turkiye-90-180-rule" data-filter-item data-groups="visa"><img class="rule-flag" src="/assets/flags/tr.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Коротке перебування в Туреччині</strong><span>До 90 днів за будь-які 180 днів.</span></span></a>
+          <a class="rule-card" href="/uk/learn/uk-standard-visitor-visa-180-day-rule" data-filter-item data-groups="visa"><img class="rule-flag" src="/assets/flags/gb.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Велика Британія: Standard Visitor</strong><span>До шести місяців за перебування; у трекері 180 днів.</span></span></a>
+          <a class="rule-card" href="/uk/learn/us-visa-waiver-90-day-limit" data-filter-item data-groups="visa"><img class="rule-flag" src="/assets/flags/us.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>США: ESTA</strong><span>До 90 днів за одне перебування.</span></span></a>
+          <a class="rule-card" href="/uk/learn/us-b1-b2-visa-180-day-limit" data-filter-item data-groups="visa"><img class="rule-flag" src="/assets/flags/us.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>США: віза B-1/B-2</strong><span>Зазвичай шість місяців за перебування; у трекері 180 днів.</span></span></a>
+        <a class="rule-card rule-card-wide" href="/uk/help/create-a-tracker"><span class="rule-icon rule-icon-plus" aria-hidden="true">+</span><span class="rule-text"><strong>Будь-яка інша віза чи ліміт в’їзду</strong><span>Будь-яка країна, будь-яка кількість днів, підрахунок за правилами вашої візи.</span></span></a>
+      </div>
     </div>
   </section>
 
@@ -219,14 +220,14 @@
         <h2 class="hx-uc-h2" id="deeper-title">Розібратися глибше</h2>
         <p>Зрозумілі посібники про правила, які стоять за цифрами.</p>
       </div>
-      <ul class="hx-uc-cards">
-        <li><a class="hx-uc-card" href="/uk/learn/schengen-rolling-window-walkthrough"><strong>Як працює ковзне вікно</strong><span>Приклад вікна 90/180 і чому дні повертаються по одному.</span></a></li>
-        <li><a class="hx-uc-card" href="/uk/learn/what-counts-as-a-day-for-visa-purposes"><strong>Що вважається днем</strong><span>Дні прибуття, від’їзду й транзиту — і чому відповідь не універсальна.</span></a></li>
-        <li><a class="hx-uc-card" href="/uk/learn/schengen-countries-list-90-180-rule"><strong>Які країни враховуються</strong><span>Країни, що входять до єдиного підрахунку 90/180, і чому ЄС — це не Шенген.</span></a></li>
-        <li><a class="hx-uc-card" href="/uk/learn/ees-etias-schengen-90-180"><strong>EES і ETIAS</strong><span>Що змінюють нові прикордонні системи ЄС для ваших днів, а що — ні.</span></a></li>
-        <li><a class="hx-uc-card" href="/uk/learn/overstaying-a-visa-or-stay-limit"><strong>Перевищення строку перебування</strong><span>Що означає перевищення строку і які непорозуміння до нього призводять.</span></a></li>
-        <li><a class="hx-uc-card" href="/uk/learn/travel-history-for-visa-applications"><strong>Історія поїздок для заяви</strong><span>Що зазвичай потрібно для запису і де пріоритет мають офіційні інструкції.</span></a></li>
-      </ul>
+      <div class="rule-cards">
+        <a class="rule-card" href="/uk/learn/schengen-rolling-window-walkthrough"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>Як працює ковзне вікно</strong><span>Приклад вікна 90/180 і чому дні повертаються по одному.</span></span></a>
+        <a class="rule-card" href="/uk/learn/what-counts-as-a-day-for-visa-purposes"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>Що вважається днем</strong><span>Дні прибуття, від’їзду й транзиту — і чому відповідь не універсальна.</span></span></a>
+        <a class="rule-card" href="/uk/learn/schengen-countries-list-90-180-rule"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>Які країни враховуються</strong><span>Країни, що входять до єдиного підрахунку 90/180, і чому ЄС — це не Шенген.</span></span></a>
+        <a class="rule-card" href="/uk/learn/ees-etias-schengen-90-180"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>EES і ETIAS</strong><span>Що змінюють нові прикордонні системи ЄС для ваших днів, а що — ні.</span></span></a>
+        <a class="rule-card" href="/uk/learn/overstaying-a-visa-or-stay-limit"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>Перевищення строку перебування</strong><span>Що означає перевищення строку і які непорозуміння до нього призводять.</span></span></a>
+        <a class="rule-card" href="/uk/learn/travel-history-for-visa-applications"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>Історія поїздок для заяви</strong><span>Що зазвичай потрібно для запису і де пріоритет мають офіційні інструкції.</span></span></a>
+      </div>
       <p class="hx-uc-more"><a href="/uk/learn/">Усі правила поїздок</a></p>
     </div>
   </section>
@@ -263,6 +264,7 @@
           <a href="/uk/help/">Довідка</a>
           <a href="/uk/learn/">Правила поїздок</a>
           <a href="/uk/learn/calculators">Калькулятори</a>
+          <a href="/uk/learn/guides">Посібники</a>
           <a href="/changelog">Що нового</a>
         </div>
         <div>

@@ -125,6 +125,7 @@
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261005a" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261004l" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">跳至主要內容</a>
@@ -238,6 +239,87 @@
       <p>在打算再入境的那一天往回推 180 天。如果先前那 60 天裡還有 45 天落在期間內，就是已經用掉 45 天，距離 90 天只剩 <strong>45 天</strong>。隨著期間往前滾動，較舊的天數逐一掉出去，額度也一天一天恢復，所以兩趟之間等得越久，回來的天數就越多。</p>
     </div>
 
+    <h2 id="calculator">土耳其 90/180 計算器</h2>
+    <p>點選在土耳其的停留。計算器會計算到所選日期為止的 180 天；預定的行程，請以行程的最後一天查看。</p>
+    <div class="daycal" id="embed-schengen" data-day-calendar="schengen" data-cal-preset="{&quot;settings&quot;:{&quot;only&quot;:&quot;TR&quot;,&quot;note&quot;:&quot;Turkiye 90/180 calculator&quot;},&quot;lock&quot;:[],&quot;link&quot;:&quot;90-180-tr&quot;}">
+      <script type="application/json" data-cal-strings>
+{
+  "hintStart": "點選日期，新增一段停留。",
+  "hintEnd": "接著點選這段停留的另一端。",
+  "hintSelected": "拖曳停留的任一端可更改日期，也可以在下方刪除。",
+  "inTrip": "在土耳其",
+  "pending": "新一段停留的起點",
+  "empty": "還沒有停留紀錄。",
+  "deleteTrip": "刪除停留",
+  "country": "國家",
+  "addCountry": "新增國家",
+  "noMatch": "找不到符合的申根國家",
+  "area": "土耳其",
+  "checkOn": "截至日期",
+  "checkOnCaption": "截至這一天的 180 天內，在申根區停留的天數。規劃行程時，選擇行程的最後一天。",
+  "tripDays": {
+    "other": "{n} 天"
+  },
+  "remaining": {
+    "other": "剩餘 {n} 天"
+  },
+  "atLimit": "已達上限",
+  "overBy": {
+    "other": "超過上限 {n} 天"
+  },
+  "lineNoCountry": {
+    "other": "有 {n} 天未選擇國家"
+  }
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>時間軸</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>在 AtlasDays 中繼續追蹤</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="embed-schengen-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="embed-schengen-import-title">在 AtlasDays 中繼續追蹤</p>
+            <p class="cal-dialog-sub">適用於 iPhone 和 iPad 的免費 App，旅行途中持續計算停留天數。</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>確認 iPhone 或 iPad 已安裝 AtlasDays</strong><span>可在 App Store 免費下載。</span></li>
+            <li><strong>掃描 QR 碼，把所有行程載入 AtlasDays</strong><span>確認無誤後，輕點「匯入」。</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>取得 AtlasDays</strong><span>在 App Store 免費下載。已經有了？直接跳到第 2 步。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>在 App 中開啟停留紀錄</strong><span>確認無誤後輕點「匯入」。在此之前，不會儲存任何資料。</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">在 AtlasDays 中開啟</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>取得 AtlasDays</strong><span>iPhone 版，可在 App Store 免費下載。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>用檔案匯入停留紀錄</strong><span>停留紀錄太多，連結裝不下。請下載檔案，然後在 iPhone 上用 AtlasDays 開啟。</span><button type="button" class="cal-dialog-primary" data-cal-download>下載檔案</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>將行程下載為 CSV 檔案</button><span data-cal-downloaded hidden>請在 iPhone 上用 AtlasDays 開啟這個檔案。</span></p>
+          <button type="button" data-cal-close>關閉</button>
+        </div>
+      </dialog>
+    </div>
+    <p class="cal-private">所有操作都留在瀏覽器內：輸入的資料不會傳送或儲存。</p>
+
     <h2>天數之外</h2>
     <p>對持簽證或免簽的人來說，90/180 是一道硬上限，在境內無法延長。想停留超過 90 天的外國人，必須向省級移民管理局申請短期居留證，取得之後這段停留就完全不再適用短期停留規定。逾期停留可能導致罰鍰和入境禁令，所以請追蹤滾動式的累計天數，不要以為每次離境之後就重新有 90 天。</p>
 
@@ -303,6 +385,7 @@
           <a href="/zh-Hant/help/">說明中心</a>
           <a href="/zh-Hant/learn/">旅行規定</a>
           <a href="/zh-Hant/learn/calculators">計算器</a>
+          <a href="/zh-Hant/learn/guides">指南</a>
           <a href="/changelog">更新紀錄</a>
         </div>
         <div>
@@ -323,6 +406,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"開啟導覽選單","menuClose":"關閉導覽選單"};</script>
   <script src="../../assets/js/navigation.js?v=20261005a"></script>
+  <script defer src="../../assets/js/rules/schengen.js?v=20261006a"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261006a"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();
