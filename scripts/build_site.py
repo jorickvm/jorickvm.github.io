@@ -462,21 +462,34 @@ def related_paths(path: str) -> list[str]:
 
 
 def related_card(path: str, locale: dict[str, object], available: set[str], title: str) -> str:
-    """A related page as the hub's card: a rule's app card, a guide's or a
-    calculator's card from that hub page in this language, else icon and title."""
-    code = str(locale["code"])
-    card = rule_card(path, code, locale, available)
-    if card:
-        return re.sub(r' data-filter-item data-groups="[^"]*"', "", card[2]).strip()
+    """A related page as a card with the article's own title and nothing under
+    it: a guide or calculator keeps the icon or flag its hub page gives it, a
+    rule article shows its flag, anything else a page icon."""
     slug = Path(path).stem
     for hub in ("learn-guides.html", "learn-calculators.html"):
         fragment = SOURCE_ROOT / str(locale.get("content_prefix", "content")) / "hubs" / hub
         if fragment.exists():
             found = re.search(r'<a class="rule-card[^"]*" href="[^"#]*/learn/' + re.escape(slug) + r'">.*?</a>', fragment.read_text(encoding="utf-8"), re.S)
             if found:
-                return found.group(0)
+                return re.sub(r"<strong>.*?</strong>(<span>.*?</span>)?", lambda _: f"<strong>{html.escape(title)}</strong>", found.group(0), count=1, flags=re.S)
     href = html.escape(localized_route(route_for(path), locale, available), quote=True)
-    return f'<a class="rule-card" href="{href}">{RELATED_ICON}<span class="rule-text"><strong>{html.escape(title)}</strong></span></a>'
+    flag = _related_index()["info"].get(path, {}).get("flag")  # type: ignore[union-attr]
+    image = (
+        f'<img class="rule-flag" src="/assets/flags/{str(flag).lower()}.png" alt="" width="36" height="25" loading="lazy" />'
+        if flag else RELATED_ICON
+    )
+    return f'<a class="rule-card" href="{href}">{image}<span class="rule-text"><strong>{html.escape(title)}</strong></span></a>'
+
+
+def english_h1(record: dict[str, object]) -> str:
+    """The English page's visible title: the <h1> of its fragment, else its
+    <title> without the site suffix."""
+    content = record.get("content")
+    if content and (SOURCE_ROOT / str(content)).exists():
+        found = re.search(r"<h1[^>]*>(.*?)</h1>", (SOURCE_ROOT / str(content)).read_text(encoding="utf-8"), re.S)
+        if found:
+            return html.unescape(re.sub(r"<[^>]+>", "", found.group(1))).strip()
+    return str(record["title"]).replace(" – AtlasDays Help Center", "").replace(" – AtlasDays", "")
 
 
 def render_cluster_related(
@@ -489,7 +502,7 @@ def render_cluster_related(
     source_path = str(article.get("social_source_path", article["path"]))
     article_data = json.loads(DATA_PATH.read_text(encoding="utf-8"))["articles"]
     hub_data = json.loads(HUB_DATA_PATH.read_text(encoding="utf-8"))["hubs"] if HUB_DATA_PATH.exists() else []
-    titles = {item["path"]: str(item["title"]).replace(" – AtlasDays Help Center", "").replace(" – AtlasDays", "") for item in article_data + hub_data}
+    titles = {item["path"]: english_h1(item) for item in article_data + hub_data}
     ordered = related_paths(source_path)
     code = str(locale["code"])
     available = {route_for(path) for path in translations.get(code, {})}
