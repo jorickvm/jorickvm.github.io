@@ -89,7 +89,14 @@ These pages describe something scheduled to change. The tier cadence would revie
 | Due | Tier | Article | Status | Sources |
 |---|---|---|---|---:|
 | 2027-05-01 | 1 | [learn/183-day-rule-calculator.html](/learn/183-day-rule-calculator) | exact-date-required | 5 |
+| 2027-05-01 | 1 | [learn/colombia-visitor-180-days-per-year.html](/learn/colombia-visitor-180-days-per-year) | exact-date-required | 2 |
+| 2027-05-01 | 1 | [learn/destination-thailand-visa-180-days.html](/learn/destination-thailand-visa-180-days) | exact-date-required | 4 |
+| 2027-05-01 | 1 | [learn/germany-residence-permit-6-month-absence.html](/learn/germany-residence-permit-6-month-absence) | exact-date-required | 1 |
+| 2027-05-01 | 1 | [learn/indonesia-visa-on-arrival-30-days.html](/learn/indonesia-visa-on-arrival-30-days) | exact-date-required | 2 |
+| 2027-05-01 | 1 | [learn/ireland-citizenship-70-day-absence.html](/learn/ireland-citizenship-70-day-absence) | exact-date-required | 2 |
+| 2027-05-01 | 1 | [learn/mexico-fmm-180-day-visitor-stay.html](/learn/mexico-fmm-180-day-visitor-stay) | exact-date-required | 3 |
 | 2027-05-01 | 1 | [learn/schengen-calculator.html](/learn/schengen-calculator) | exact-date-required | 3 |
+| 2027-05-01 | 1 | [learn/uae-residence-visa-6-months-outside.html](/learn/uae-residence-visa-6-months-outside) | exact-date-required | 1 |
 | 2027-05-01 | 1 | [learn/uk-ilr-absence-calculator.html](/learn/uk-ilr-absence-calculator) | exact-date-required | 2 |
 
 ## 2027-08
@@ -166,3 +173,9 @@ These pages describe something scheduled to change. The tier cadence would revie
 | 2027-09-30 | 2 | [learn/spain-183-day-tax-residency.html](/learn/spain-183-day-tax-residency) | exact-date-required | 3 |
 | 2027-09-30 | 3 | [learn/travel-history-template-visa-application.html](/learn/travel-history-template-visa-application) | annual-light-pass | 3 |
 | 2027-09-30 | 2 | [learn/us-substantial-presence-test.html](/learn/us-substantial-presence-test) | exact-date-required | 7 |
+
+## 2027-10
+
+| Due | Tier | Article | Status | Sources |
+|---|---|---|---|---:|
+| 2027-10-31 | 2 | [learn/india-182-day-tax-residency.html](/learn/india-182-day-tax-residency) | exact-date-required | 3 |

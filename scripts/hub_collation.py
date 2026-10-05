@@ -106,6 +106,7 @@ JAPANESE_READINGS = {
     # needs a place in the order; the reading is the name it will have.
     "Norway": "ノルウェー",
     "Spain": "スペイン",
+    "India": "インド",
 }
 
 

@@ -78,6 +78,7 @@ REVIEW_TIERS = {
 ABSENCE_RULE_MARKERS = (
     "citizenship", "naturalization", "permit", "resident-card", "residence-return",
     "residency-obligation", "resident-return", "long-term-residence", "super-overseas",
+    "residence-visa",
 )
 
 
@@ -121,6 +122,8 @@ def jurisdiction(slug: str, cluster: str) -> str:
         "rhode-island": "Rhode Island", "georgia-us": "Georgia (US state)",
         "canada": "Canada", "australia": "Australia", "netherlands": "Netherlands",
         "germany": "Germany", "india": "India", "norway": "Norway",
+        "colombia": "Colombia", "indonesia": "Indonesia", "ireland": "Ireland",
+        "mexico": "Mexico", "thailand": "Thailand", "destination-thailand": "Thailand",
     }
     for prefix, name in sorted(names.items(), key=lambda item: len(item[0]), reverse=True):
         if slug.startswith(prefix + "-"):
