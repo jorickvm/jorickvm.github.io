@@ -15,8 +15,8 @@
    Naturalisation uses the same whole-day absences over a longer window
    (British Nationality Act 1981, Schedule 1): an embed with `citizenship`
    set counts the 5 years up to the date against 450 (the spouse or civil
-   partner route: 3 years, 270), and a line checks the final 12 months
-   against 90. `note` (English, for the importer) labels exported rows. */
+   partner route: 3 years, 270), and a second bar checks the final 12
+   months against 90. `note` (English, for the importer) labels exported rows. */
 (function () {
   "use strict";
 
@@ -79,20 +79,24 @@
         if (d >= from && d <= on) away++;
         if (d >= recentFrom && d <= on) recent++;
       });
-      var left = r.limit - away, controls = [], lines = [];
+      var left = r.limit - away, controls = [], more = [];
       if (c.settings.citizenship) {
         controls.push({ key: "route", icon: "target", label: c.text("route"), value: c.settings.route || "standard", moveCalendar: true, options: [
           { value: "standard", label: c.text("routeStandard") },
           { value: "spouse", label: c.text("routeSpouse") }
         ] });
-        lines.push(recent <= RECENT ? c.text("lineRecent", { n: recent }) : c.text("lineRecentOver", { n: recent - RECENT }));
+        // The final 12 months as a second bar; the pill follows whichever
+        // limit leaves less room.
+        more.push({ label: c.text("barRecent"), days: recent, limit: RECENT, tone: c.tone(recent, RECENT, false) });
+        left = Math.min(left, RECENT - recent);
       }
       controls.push({ type: "date", key: "checkOn", icon: "calendar", label: c.text("checkOn"), caption: c.text("checkOnCaption"), value: c.D.iso(on), display: c.dateRange(on, on), moveCalendar: true });
       return {
         controls: controls,
-        meter: { title: c.text("title"), flag: "GB", label: c.dateRange(from, on), days: away, limit: r.limit, tone: c.tone(away, r.limit, false) },
+        meter: { title: c.text("title"), flag: "GB", label: c.dateRange(from, on), days: away, limit: r.limit, tone: c.tone(away, r.limit, false), more: more },
         statusText: left > 0 ? c.text("remaining", { n: left }) : left === 0 ? c.text("atLimit") : c.text("overBy", { n: -left }),
-        lines: lines
+        statusTone: c.settings.citizenship ? c.tone(r.limit - left, r.limit, false) : undefined,
+        lines: []
       };
     },
 
@@ -139,8 +143,7 @@
       route: "Route",
       routeStandard: "Standard",
       routeSpouse: "Spouse or civil partner",
-      lineRecent: { one: "Last 12 months: {n} day away, of 90", other: "Last 12 months: {n} days away, of 90" },
-      lineRecentOver: { one: "Last 12 months: over 90 by {n} day", other: "Last 12 months: over 90 by {n} days" }
+      barRecent: "Last 12 months"
     }
   };
 })();

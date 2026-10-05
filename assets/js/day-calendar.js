@@ -24,7 +24,9 @@
      singleDayTrips          true when a one-day trip counts for the rule
      evaluate(trips, ctx)    { ok, total, remaining, status, from, to }, or the
                              result written out: { headlineText, statusText,
-                             ok, lines: [], controls: [] }. A control is a menu
+                             ok, lines: [], controls: [] }, or the app's card:
+                             { meter: { title, flag, label, days, limit, tone,
+                             more: [further bars] }, statusText, statusTone }. A control is a menu
                              in the result box: { key, prefix, label, value,
                              options: [{ value, label, group }], moveCalendar };
                              its choice lands in ctx.settings[key]
@@ -824,24 +826,28 @@
             head.appendChild(flag);
             head.appendChild(el("span", { "class": "cal-card-title" + (m.flag ? "" : " is-placeholder") }, m.countryKey && m.flag ? placeName(m.flag) : m.title));
           }
-          if (r.statusText) head.appendChild(el("span", { "class": "cal-pill tone-" + m.tone }, r.statusText));
+          if (r.statusText) head.appendChild(el("span", { "class": "cal-pill tone-" + (r.statusTone || m.tone) }, r.statusText));
           result.appendChild(head);
           var titleInput = head.querySelector(".cal-country-input");
           if (titleInput) fitInput(titleInput);
         }
-        var meter = el("div", { "class": "cal-meter tone-" + m.tone });
-        var row = el("div", { "class": "cal-meter-row" });
-        row.appendChild(el("span", { "class": "cal-meter-period" }, m.label));
-        var count = el("span", { "class": "cal-meter-count" });
-        count.appendChild(el("b", null, String(m.days)));
-        count.appendChild(document.createTextNode(" / " + m.limit));
-        row.appendChild(count);
-        meter.appendChild(row);
-        var track = el("div", { "class": "cal-meter-track" }), fill = el("span", { "class": "cal-meter-fill" });
-        fill.style.width = Math.min(100, Math.max(0, m.days / m.limit * 100)) + "%";
-        track.appendChild(fill);
-        meter.appendChild(track);
-        result.appendChild(meter);
+        // One bar per condition, as the app's card shows a rule with two
+        // (the substantial presence test: this year's days, the weighted days).
+        [m].concat(m.more || []).forEach(function (bar) {
+          var meter = el("div", { "class": "cal-meter tone-" + bar.tone });
+          var row = el("div", { "class": "cal-meter-row" });
+          row.appendChild(el("span", { "class": "cal-meter-period" }, bar.label));
+          var count = el("span", { "class": "cal-meter-count" });
+          count.appendChild(el("b", null, String(bar.days)));
+          count.appendChild(document.createTextNode(" / " + bar.limit));
+          row.appendChild(count);
+          meter.appendChild(row);
+          var track = el("div", { "class": "cal-meter-track" }), fill = el("span", { "class": "cal-meter-fill" });
+          fill.style.width = Math.min(100, Math.max(0, (bar.progress != null ? bar.progress : bar.days / bar.limit) * 100)) + "%";
+          track.appendChild(fill);
+          meter.appendChild(track);
+          result.appendChild(meter);
+        });
         if (r.statusText && m.title == null) result.appendChild(el("span", { "class": "cal-pill tone-" + m.tone }, r.statusText));
         (r.lines || []).forEach(function (line) { result.appendChild(el("p", { "class": "cal-line" }, line)); });
         return;

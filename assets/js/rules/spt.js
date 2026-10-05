@@ -7,10 +7,10 @@
    comparison (120 + 40 + 20 = 180 does not meet it; 120 + 40 + 25 = 185 does).
 
    The calendar shows the three calendar years; the reader picks the year to
-   test. Goal works as on the 183-day calculator: staying below shows the
-   days left before the test is met (182 is the last weighted total that does
-   not meet it), reaching shows the days still needed. Days a visa class or
-   medical condition exempts are left out by not marking them. */
+   test. The card is the app's (SPTTrackerPresentation.swift): a bar for the
+   year's days against 31, a bar for the weighted days against 183, and one
+   pill saying whether both are met. Days a visa class or medical condition
+   exempts are left out by not marking them. */
 (function () {
   "use strict";
 
@@ -26,9 +26,6 @@
     trips.forEach(function (t) { for (var d = Math.max(t.start, b.from); d <= Math.min(t.end, b.to); d++) set.add(d); });
     return set.size;
   }
-  // One decimal where a third or a sixth leaves a fraction, so the total
-  // shown is the one compared.
-  function show(x) { return Math.abs(x - Math.round(x)) < 1e-9 ? String(Math.round(x)) : (Math.floor(x * 10) / 10).toFixed(1); }
 
   window.AtlasDaysRules = window.AtlasDaysRules || {};
   window.AtlasDaysRules.spt = {
@@ -52,19 +49,11 @@
       var thisYear = c.D.parts(c.today).y;
       for (var k = thisYear + 1; k >= thisYear - 5; k--) years.push({ value: String(k), label: String(k) });
       var d0 = daysIn(trips, yearBounds(c, y)), d1 = daysIn(trips, yearBounds(c, y - 1)), d2 = daysIn(trips, yearBounds(c, y - 2));
-      var total = d0 + d1 / 3 + d2 / 6;
-      // Days still to add in the tested year until both minimums are met.
-      var toMeet = Math.max(CURRENT_MIN - d0, Math.ceil(NEED - total - 1e-9), 0);
-      var met = toMeet === 0;
-      var lines = [
-        c.text("lineYear0", { year: y, n: d0 }),
-        c.text("lineYear1", { year: y - 1, n: d1, x: show(d1 / 3) }),
-        c.text("lineYear2", { year: y - 2, n: d2, x: show(d2 / 6) }),
-        c.text(d0 >= CURRENT_MIN ? "lineMinMet" : "lineMinShort", { n: d0 })
-      ];
-      var status, shownLimit = target ? NEED : NEED - 1;
-      if (target) status = met ? c.text("reachedTarget") : c.text("needed", { n: toMeet });
-      else status = met ? c.text("met") : toMeet === 1 ? c.text("atLimit") : c.text("remaining", { n: toMeet - 1 });
+      // Sixths keep the comparison exact: 6 × (d0 + d1/3 + d2/6).
+      var sixths = 6 * d0 + 2 * d1 + d2, met = d0 >= CURRENT_MIN && sixths >= NEED * 6;
+      // As the app's card: one bar per condition, the thresholds themselves
+      // (both must be met, so neither bar alone is a limit), and one pill.
+      var tone = met ? (target ? "achieved" : "critical") : "normal";
       return {
         controls: [
           { key: "goal", icon: "target", label: c.text("goal"), value: setting(c, "goal"), options: [
@@ -73,10 +62,15 @@
           ] },
           { key: "year", icon: "calendar", label: c.text("year"), value: String(y), options: years, moveCalendar: true }
         ],
-        meter: { title: c.text("title"), flag: "US", label: c.text("meterLabel", { total: show(total), year: y }), days: Math.floor(total + 1e-9), limit: shownLimit,
-          tone: target ? c.tone(total, NEED, true) : c.tone(total, NEED - 1, false) },
-        statusText: status,
-        lines: lines
+        meter: {
+          title: c.text("title"), flag: "US", label: c.text("barYear", { year: y }), days: d0, limit: CURRENT_MIN,
+          tone: d0 >= CURRENT_MIN ? (target ? "achieved" : "warning") : "normal",
+          more: [{ label: c.text("barWeighted"), days: Math.floor(sixths / 6), limit: NEED, progress: sixths / (NEED * 6),
+            tone: sixths >= NEED * 6 ? (target ? "achieved" : "warning") : "normal" }]
+        },
+        statusText: c.text(met ? "met" : "notMet"),
+        statusTone: tone,
+        lines: []
       };
     },
 
@@ -92,8 +86,7 @@
       pending: "start of a new stay",
       empty: "No stays yet.",
       deleteTrip: "Delete stay",
-      title: "Weighted days",
-      meterLabel: "{total} weighted days for {year}",
+      title: "United States",
       goal: "Goal",
       goalStay: "Stay below",
       goalReach: "Reach target",
@@ -101,16 +94,11 @@
       captionReach: "Meet the test.",
       year: "Year",
       tripDays: { one: "{n} day", other: "{n} days" },
-      lineYear0: { one: "{year}: {n} day, counted in full", other: "{year}: {n} days, counted in full" },
-      lineYear1: { one: "{year}: {n} day, a third is {x}", other: "{year}: {n} days, a third is {x}" },
-      lineYear2: { one: "{year}: {n} day, a sixth is {x}", other: "{year}: {n} days, a sixth is {x}" },
-      lineMinMet: "At least 31 days in the year tested: yes",
-      lineMinShort: "At least 31 days in the year tested: not yet",
-      remaining: { one: "{n} day remaining", other: "{n} days remaining" },
-      atLimit: "At limit",
-      met: "Test met",
-      needed: { one: "{n} day needed", other: "{n} days needed" },
-      reachedTarget: "Test met",
+      // The app's wording (SPTTrackerRule.swift)
+      barYear: "Days in {year}",
+      barWeighted: "Weighted days",
+      met: "Day thresholds met",
+      notMet: "Day thresholds not met",
       fileName: "atlasdays-us-stays.csv"
     }
   };
