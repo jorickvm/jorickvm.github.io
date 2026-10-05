@@ -1429,6 +1429,74 @@ def render_article(
     return rendered.rstrip() + "\n"
 
 
+APP_CATALOG_PATH = SOURCE_ROOT / "data" / "app-catalog.json"
+LEARN_CARDS_PATH = SOURCE_ROOT / "data" / "learn-cards.json"
+
+
+def render_learn_rules(content: str, code: str, locale: dict[str, object], available: set[str]) -> str:
+    """The Learn index's rules as the app's preset cards.
+
+    `<!-- LEARN_CHIPS -->` becomes the app's filter pills and
+    `<!-- LEARN_RULES -->` one section per app family, each article a card
+    with the preset's flag, title and one-line rule in this locale, in the
+    order the app shows them (app-catalog.json, synced from the app by
+    scripts/sync_app_catalog.py). Articles name their preset with
+    `app_preset`; the few without one have a card in learn-cards.json, placed
+    by its English title among the app's rows.
+    """
+    if "<!-- LEARN_RULES -->" not in content:
+        return content
+    catalog = json.loads(APP_CATALOG_PATH.read_text(encoding="utf-8"))
+    own = json.loads(LEARN_CARDS_PATH.read_text(encoding="utf-8"))["cards"]
+    records = json.loads(DATA_PATH.read_text(encoding="utf-8"))["articles"]
+    default = default_locale_code()
+    cards: dict[str, list[tuple[float, str]]] = {}
+    for record in records:
+        path = str(record["path"])
+        preset_id = record.get("app_preset")
+        if preset_id:
+            preset = catalog["presets"][preset_id]
+            family, flag, rank = preset["family"], preset["flag"], float(preset["rank"][code])
+            title, line = preset["title"][code], preset["line"][code]
+        elif path in own:
+            card = own[path]
+            family, flag = card["family"], card["flag"]
+            title, line = card["title"].get(code), card["line"].get(code)
+            if not title or not line:
+                raise SystemExit(f"learn-cards.json: {path} has no {code} title or line")
+            # Between the app rows whose English titles sort around it.
+            english = card["title"][default]
+            ranks = [p["rank"][code] for p in catalog["presets"].values() if p["family"] == family and p["title"][default] < english]
+            rank = (max(ranks) if ranks else -1) + 0.5
+        else:
+            continue
+        href = html.escape(localized_route(route_for(path), locale, available), quote=True)
+        image = f"/assets/flags/{flag.lower()}.png" if flag else "/assets/brand/hub-any-country.webp"
+        pill = next(s["family"] for s in catalog["sections"] if s["family"] == family)
+        pill = "tax" if pill == "usState" else pill
+        cards.setdefault(family, []).append((rank, (
+            f'          <a class="rule-card" href="{href}" data-filter-item data-groups="{pill}">'
+            f'<img class="rule-flag" src="{image}" alt="" width="36" height="25" loading="lazy" />'
+            f'<span class="rule-text"><strong>{html.escape(title)}</strong><span>{html.escape(line)}</span></span></a>'
+        )))
+    sections = []
+    for section in catalog["sections"]:
+        family = section["family"]
+        if family not in cards:
+            continue
+        rows = "\n".join(markup for _, markup in sorted(cards[family], key=lambda item: item[0]))
+        sections.append(
+            f'      <section class="hub-section rule-section" id="rules-{family.lower()}" data-filter-section>\n'
+            f'        <p class="hub-label">{html.escape(section["title"][code])}</p>\n'
+            f'        <div class="rule-cards">\n{rows}\n        </div>\n      </section>'
+        )
+    chips = "\n".join(
+        f'        <button type="button" data-filter-chip="{section["family"]}" aria-pressed="false">{html.escape(section["pill"][code])}</button>'
+        for section in catalog["sections"] if section["family"] != "usState" and section["family"] in cards
+    )
+    return content.replace("<!-- LEARN_RULES -->", "\n".join(sections)).replace("<!-- LEARN_CHIPS -->", chips)
+
+
 def render_hub(
     hub: dict[str, object],
     template: str,
@@ -1463,6 +1531,7 @@ def render_hub(
     # falls back to English. Without this the chrome links a Japanese page to
     # /ja/about and friends, which were never built.
     available = {route_for(path) for path in translations.get(code, {})}
+    content = render_learn_rules(content, code, locale, available)
     replacements = {
         "{{HTML_LANG}}": str(locale["html_lang"]),
         # Hubs are marketing surfaces and take the full wash; the legal and

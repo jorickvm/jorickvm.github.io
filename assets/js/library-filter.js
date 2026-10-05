@@ -78,11 +78,14 @@
     });
   }
 
+  // As the app's filter pills: no pill selected shows everything, and
+  // tapping the selected pill again clears it.
   chips.forEach(function (chip) {
     chip.addEventListener("click", function () {
-      category = chip.getAttribute("data-filter-chip") || "all";
+      var on = chip.getAttribute("aria-pressed") !== "true";
+      category = on ? (chip.getAttribute("data-filter-chip") || "all") : "all";
       chips.forEach(function (other) {
-        other.setAttribute("aria-pressed", String(other === chip));
+        other.setAttribute("aria-pressed", String(on && other === chip));
       });
       apply();
     });
