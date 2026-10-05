@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import html
 import json
+import os
 import re
 import sys
 from datetime import date
@@ -1136,15 +1137,50 @@ def optional_block(value: object) -> str:
 # same locale's calculator page, so an embed is translated wherever that page
 # is, and the page's own scripts and styles are reused at their current stamps.
 CALCULATOR_PAGE = "learn/183-day-rule-calculator.html"
-_calculator_assets: dict[str, str] = {}
+_calculator_assets: dict[str, object] = {}
 
 
-def calculator_assets() -> dict[str, str]:
+# The rule plug-ins an article can embed (article record: "calculator":
+# {"rule": ..., "settings": ..., "lock": [...], "link": ...}; the 183-day rule
+# needs only {}, its preset comes from the record's residency). An embed on a
+# rule with its own calculator page borrows that page's labels in each
+# locale; the others borrow the shared ones from the 183-day page and bring
+# the rest in a <script type="application/json" data-cal-strings> inside the
+# article's calculator slot.
+CALCULATOR_RULES = {
+    "days183": {"script": "days-183.js", "page": "learn/183-day-rule-calculator.html"},
+    "schengen": {"script": "schengen.js", "page": "learn/schengen-calculator.html"},
+    "ukIlr": {"script": "uk-ilr.js", "page": "learn/uk-ilr-absence-calculator.html"},
+    "presence": {"script": "presence.js", "version": "20261006a"},
+    "spt": {"script": "spt.js", "version": "20261006a"},
+}
+SHARED_CALCULATOR_STRINGS = {
+    "hintEnd", "hintSelected", "pending", "empty", "deleteTrip", "country", "addCountry", "noMatch",
+    "goal", "goalStay", "goalReach", "year", "starts", "tripDays", "remaining", "atLimit", "needed",
+    "reachedTarget", "overBy",
+}
+
+
+def calculator_assets(rule: str = "days183") -> dict[str, str]:
+    """The 183-day page's styles and scripts, with the rule's own script."""
     if not _calculator_assets:
         records = json.loads(DATA_PATH.read_text(encoding="utf-8"))["articles"]
-        page = next(record for record in records if record["path"] == CALCULATOR_PAGE)
-        _calculator_assets.update(head_extra=str(page.get("head_extra", "")), page_scripts=str(page.get("page_scripts", "")))
-    return _calculator_assets
+        _calculator_assets["records"] = {str(record["path"]): record for record in records}
+    records = _calculator_assets["records"]
+    page = records[CALCULATOR_PAGE]
+    scripts = str(page.get("page_scripts", ""))
+    if rule != "days183":
+        spec = CALCULATOR_RULES[rule]
+        version = spec.get("version")
+        if not version:
+            own = re.search(re.escape(spec["script"]) + r"\?v=(\w+)", str(records[spec["page"]].get("page_scripts", "")))
+            version = own.group(1)
+        scripts = re.sub(r"rules/days-183\.js\?v=\w+", f"rules/{spec['script']}?v={version}", scripts)
+    return {"head_extra": str(page.get("head_extra", "")), "page_scripts": scripts}
+
+
+def calculator_rule(article: dict[str, object]) -> str:
+    return str(dict(article.get("calculator") or {}).get("rule", "days183"))
 
 
 def calculator_preset(article: dict[str, object]) -> dict[str, object]:
@@ -1190,7 +1226,8 @@ def calculator_link_query(article: dict[str, object]) -> str:
         return ""
     number = int(match.group(2))
     resident = number + 1 if match.group(1) == ">" else number
-    return f"?country={code.upper()}&{params}&resident={resident}"
+    limit = "" if number == 183 else f"&limit={number}"
+    return f"?country={code.upper()}&{params}&resident={resident}{limit}"
 
 
 def link_calculator_to_rule(content: str, article: dict[str, object]) -> str:
@@ -1292,18 +1329,44 @@ def _inside_cta(content: str, cta: int, position: int) -> bool:
 def render_embedded_calculator(content: str, article: dict[str, object], code: str) -> str:
     if article.get("calculator") is None:
         return content
+    rule = calculator_rule(article)
     folder = "learn" if code == default_locale_code() else f"{code}/learn"
     page = (SOURCE_ROOT / "content" / folder / Path(CALCULATOR_PAGE).name).read_text(encoding="utf-8")
     start = page.index('<div class="daycal"')
     privacy = re.search(r'<p class="cal-private">.*?</p>', page, re.S)
     block = page[start:privacy.start()].rstrip() + "\n    " + privacy.group(0)
-    preset = html.escape(json.dumps(calculator_preset(article), ensure_ascii=False, separators=(",", ":")), quote=True)
-    block = block.replace('id="days-183"', 'id="embed-183"', 1).replace("days-183-import-title", "embed-183-import-title")
-    block = block.replace('data-day-calendar="days183"', f'data-day-calendar="days183" data-cal-preset="{preset}"', 1)
-    slot = '<div class="calculator-slot" data-calculator></div>'
-    if content.count(slot) != 1:
-        raise SystemExit(f"{article['path']} ({code}): needs exactly one {slot} where the calculator goes")
-    return content.replace(slot, block)
+    slot = re.compile(r'<div class="calculator-slot" data-calculator>(.*?)</div>', re.S)
+    slots = slot.findall(content)
+    if len(slots) != 1:
+        # _devtest/preview_build.py previews English before the translations
+        # have their slot; a real build never skips one.
+        if not slots and code != default_locale_code() and os.environ.get("ATLASDAYS_PREVIEW_BUILD"):
+            return content
+        raise SystemExit(f"{article['path']} ({code}): needs exactly one calculator slot where the calculator goes")
+    if rule == "days183":
+        preset = calculator_preset(article)
+    else:
+        calc = dict(article["calculator"])
+        preset = {"settings": calc.get("settings", {}), "lock": calc.get("lock", []), "link": calc["link"]}
+        # Labels: the rule's own page (or the shared 183-day ones), then the article's.
+        cal_strings = re.compile(r'(<script type="application/json" data-cal-strings>)(.*?)(</script>)', re.S)
+        own_page = CALCULATOR_RULES[rule].get("page")
+        if own_page:
+            source = (SOURCE_ROOT / "content" / folder / Path(own_page).name).read_text(encoding="utf-8")
+            labels = json.loads(cal_strings.search(source).group(2))
+        else:
+            labels = {key: value for key, value in json.loads(cal_strings.search(page).group(2)).items() if key in SHARED_CALCULATOR_STRINGS}
+        mine = cal_strings.search(slots[0])
+        if not mine:
+            raise SystemExit(f"{article['path']} ({code}): a {rule} calculator brings its labels in the slot's data-cal-strings")
+        labels.update(json.loads(mine.group(2)))
+        text = json.dumps(labels, ensure_ascii=False, indent=2)
+        block = cal_strings.sub(lambda m: m.group(1) + "\n" + text + "\n      " + m.group(3), block, count=1)
+        block = block.replace('data-day-calendar="days183"', f'data-day-calendar="{rule}"', 1)
+    encoded = html.escape(json.dumps(preset, ensure_ascii=False, separators=(",", ":")), quote=True)
+    block = block.replace('id="days-183"', f'id="embed-{rule}"', 1).replace("days-183-import-title", f"embed-{rule}-import-title")
+    block = block.replace(f'data-day-calendar="{rule}"', f'data-day-calendar="{rule}" data-cal-preset="{encoded}"', 1)
+    return slot.sub(lambda m: block, content, count=1)
 
 
 def render_article(
@@ -1348,8 +1411,8 @@ def render_article(
         # Optional per-article assets, for the few pages with an interactive
         # component (the UK absence calculator). Inline markers, so every other
         # page renders byte-for-byte as before.
-        "{{HEAD_EXTRA}}": optional_block(article.get("head_extra") or (calculator_assets()["head_extra"] if article.get("calculator") is not None else "")),
-        "{{PAGE_SCRIPTS}}": optional_block(article.get("page_scripts") or (calculator_assets()["page_scripts"] if article.get("calculator") is not None else "")),
+        "{{HEAD_EXTRA}}": optional_block(article.get("head_extra") or (calculator_assets(calculator_rule(article))["head_extra"] if article.get("calculator") is not None else "")),
+        "{{PAGE_SCRIPTS}}": optional_block(article.get("page_scripts") or (calculator_assets(calculator_rule(article))["page_scripts"] if article.get("calculator") is not None else "")),
         "{{CLUSTER_RELATED}}": (
             render_help_tail(article, locale, strings)
             or render_cluster_related(article, locale, translations)
@@ -1422,7 +1485,7 @@ def render_hub(
         "{{SITE_FOOTER}}": footer_template.replace("{{ASSET_PREFIX}}", prefix).rstrip(),
         "{{PAGE_SCRIPTS}}": str(hub.get("page_scripts", "")).rstrip(),
         "{{SEARCH_STYLESHEET}}": (
-            f'  <link rel="stylesheet" href="{prefix}assets/css/search.css?v=20260819a" />'
+            f'  <link rel="stylesheet" href="{prefix}assets/css/search.css?v=20261006a" />'
             if family == "hub" else ""
         ),
         "{{SEARCH_SCRIPT}}": (

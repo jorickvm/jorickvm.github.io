@@ -10,7 +10,13 @@
    another), against 180, with the app's pill. Like the Schengen calculator,
    the calendar shows exactly those 12 months and the visitor picks the date
    to check (Jorick, 2026-10-04): a planned trip is checked on the day of
-   return, when its count is highest. */
+   return, when its count is highest.
+
+   Naturalisation uses the same whole-day absences over a longer window
+   (British Nationality Act 1981, Schedule 1): an embed with `citizenship`
+   set counts the 5 years up to the date against 450 (the spouse or civil
+   partner route: 3 years, 270), and a line checks the final 12 months
+   against 90. `note` (English, for the importer) labels exported rows. */
 (function () {
   "use strict";
 
@@ -32,6 +38,11 @@
     return set;
   }
   var LIMIT = 180;
+  var ROUTES = { standard: { years: 5, limit: 450 }, spouse: { years: 3, limit: 270 } }, RECENT = 90;
+  function rule(c) {
+    if (!c.settings.citizenship) return { years: 1, limit: LIMIT };
+    return ROUTES[c.settings.route] || ROUTES.standard;
+  }
   function checkOn(c) {
     var iso = c.settings.checkOn;
     if (!iso) return c.today;
@@ -51,7 +62,7 @@
 
     range: function (c) {
       var on = checkOn(c);
-      return { from: c.D.shiftYears(on, -1) + 1, to: on };
+      return { from: c.D.shiftYears(on, -rule(c).years) + 1, to: on };
     },
 
     // A trip's own whole days away. The day it takes over from another trip
@@ -62,16 +73,26 @@
     },
 
     evaluate: function (trips, c) {
-      var set = absentDays(trips), on = checkOn(c), from = c.D.shiftYears(on, -1) + 1, away = 0;
-      set.forEach(function (d) { if (d >= from && d <= on) away++; });
-      var left = LIMIT - away;
+      var r = rule(c), set = absentDays(trips), on = checkOn(c), from = c.D.shiftYears(on, -r.years) + 1;
+      var recentFrom = c.D.shiftYears(on, -1) + 1, away = 0, recent = 0;
+      set.forEach(function (d) {
+        if (d >= from && d <= on) away++;
+        if (d >= recentFrom && d <= on) recent++;
+      });
+      var left = r.limit - away, controls = [], lines = [];
+      if (c.settings.citizenship) {
+        controls.push({ key: "route", icon: "target", label: c.text("route"), value: c.settings.route || "standard", moveCalendar: true, options: [
+          { value: "standard", label: c.text("routeStandard") },
+          { value: "spouse", label: c.text("routeSpouse") }
+        ] });
+        lines.push(recent <= RECENT ? c.text("lineRecent", { n: recent }) : c.text("lineRecentOver", { n: recent - RECENT }));
+      }
+      controls.push({ type: "date", key: "checkOn", icon: "calendar", label: c.text("checkOn"), caption: c.text("checkOnCaption"), value: c.D.iso(on), display: c.dateRange(on, on), moveCalendar: true });
       return {
-        controls: [
-          { type: "date", key: "checkOn", icon: "calendar", label: c.text("checkOn"), caption: c.text("checkOnCaption"), value: c.D.iso(on), display: c.dateRange(on, on), moveCalendar: true }
-        ],
-        meter: { title: c.text("title"), flag: "GB", label: c.dateRange(from, on), days: away, limit: LIMIT, tone: c.tone(away, LIMIT, false) },
+        controls: controls,
+        meter: { title: c.text("title"), flag: "GB", label: c.dateRange(from, on), days: away, limit: r.limit, tone: c.tone(away, r.limit, false) },
         statusText: left > 0 ? c.text("remaining", { n: left }) : left === 0 ? c.text("atLimit") : c.text("overBy", { n: -left }),
-        lines: []
+        lines: lines
       };
     },
 
@@ -82,16 +103,16 @@
     linkId: "uk-ilr",
     exportRows: function (trips, c) {
       var past = trips.filter(function (t) { return t.start <= c.today; });
-      if (!past.length) return trips.filter(function (t) { return t.country; }).map(function (t) { return { country: t.country, start: t.start, end: t.end, notes: "ILR absence calculator" }; });
+      if (!past.length) return trips.filter(function (t) { return t.country; }).map(function (t) { return { country: t.country, start: t.start, end: t.end, notes: c.settings.note || "ILR absence calculator" }; });
       var rows = [], cursor = c.D.shiftYears(past[0].start, -1);
       past.forEach(function (t) {
-        if (t.start > cursor) rows.push({ country: "GB", start: cursor, end: t.start, notes: "ILR absence calculator" });
+        if (t.start > cursor) rows.push({ country: "GB", start: cursor, end: t.start, notes: c.settings.note || "ILR absence calculator" });
         cursor = Math.max(cursor, t.end);
       });
-      if (cursor <= c.today) rows.push({ country: "GB", start: cursor, end: null, notes: "ILR absence calculator" });
+      if (cursor <= c.today) rows.push({ country: "GB", start: cursor, end: null, notes: c.settings.note || "ILR absence calculator" });
       // Trips given a country go in too (past and planned), so the app shows
       // where the time away was spent.
-      trips.forEach(function (t) { if (t.country) rows.push({ country: t.country, start: t.start, end: t.end, notes: "ILR absence calculator" }); });
+      trips.forEach(function (t) { if (t.country) rows.push({ country: t.country, start: t.start, end: t.end, notes: c.settings.note || "ILR absence calculator" }); });
       rows.sort(function (x, y) { return x.start - y.start; });
       return rows;
     },
@@ -114,7 +135,12 @@
       checkOnCaption: "Your days abroad in the 12 months up to this date. For a planned trip, pick the day you come back.",
       remaining: { one: "{n} day remaining", other: "{n} days remaining" },
       atLimit: "At limit",
-      overBy: { one: "Over limit by {n} day", other: "Over limit by {n} days" }
+      overBy: { one: "Over limit by {n} day", other: "Over limit by {n} days" },
+      route: "Route",
+      routeStandard: "Standard",
+      routeSpouse: "Spouse or civil partner",
+      lineRecent: { one: "Last 12 months: {n} day away, of 90", other: "Last 12 months: {n} days away, of 90" },
+      lineRecentOver: { one: "Last 12 months: over 90 by {n} day", other: "Last 12 months: over 90 by {n} days" }
     }
   };
 })();

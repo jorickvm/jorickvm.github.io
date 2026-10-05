@@ -35,8 +35,9 @@
                              when a trip runs past it
      tripLabel(trip, ctx)    short text for a trip in the list
      exportRows(trips, ctx)  rows for the AtlasDays CSV import
-     countries(all)          optional: the country codes a trip may have
-                             (one code: the country is fixed, no picker)
+     countries(all, preset)  optional: the country codes a trip may have
+                             (one code: the country is fixed, no picker);
+                             preset is an embed's settings, if any
      defaultCountry          optional: the country a new trip starts with
      carryCountry            optional: a new trip starts with the last country
                              picked
@@ -279,15 +280,17 @@
     // while making one (desktop preview); selected: index of the trip being
     // edited; drag: a handle being dragged.
     var trips = [], anchor = null, hover = null, selected = -1, drag = null;
-    var allowed = (rule.countries && rule.countries(PLACES)) || PLACES;
-    var defaultCountry = allowed.length === 1 ? allowed[0] : (rule.defaultCountry || "");
-    var recent = [];
     // An article can embed a calculator preset to its own rule:
     // data-cal-preset = { settings, lock, link }. Locked choices show no
     // control, a locked country shows as a plain title, and link replaces the
     // rule's own `c` in the import link (e.g. 183-es).
     var preset = {};
     try { preset = JSON.parse(root.getAttribute("data-cal-preset") || "{}"); } catch (e) { preset = {}; }
+    // A rule whose country comes from the embed (a presence calculator set to
+    // Canada) reads it from the preset's settings.
+    var allowed = (rule.countries && rule.countries(PLACES, preset.settings || {})) || PLACES;
+    var defaultCountry = allowed.length === 1 ? allowed[0] : (rule.defaultCountry || "");
+    var recent = [];
     var locked = preset.lock || [];
     var settings = Object.assign({}, preset.settings || {}); // choices made in the rule's result menus (rule.evaluate -> controls)
     // A link can open the full calculator already set up, e.g. from an
@@ -734,7 +737,7 @@
     // status pill; or the older headline form (ILR).
     function changed(ctl) {
       render();
-      if (rule.fixedRange && ctl.moveCalendar) { var rr = rule.range(ctx()); reveal(today >= rr.from && today <= rr.to ? today - 21 : rr.from); updateMonth(); }
+      if (rule.fixedRange && ctl.moveCalendar) { revealNear(rule.range(ctx())); updateMonth(); }
     }
     function control(ctl) {
       var wrap = el(ctl.type === "country" ? "div" : "label", { "class": "cal-control" + (ctl.type ? " is-" + ctl.type : "") });
@@ -873,6 +876,12 @@
     function reveal(day) {
       var row = rows[Math.floor((D.monday(day) - firstMonday) / 7)];
       if (row) win.scrollTop = Math.max(0, row.offsetTop - head.offsetHeight);
+    }
+    // Open on today when the range holds it, otherwise on the range's edge
+    // nearest to today (a window that ends the day before an application date
+    // opens on its last weeks, not five years back).
+    function revealNear(range) {
+      reveal(today < range.from ? range.from : Math.min(today, range.to) - 21);
     }
     // The title names the latest month that is completely in view, so it
     // changes as soon as a whole month has scrolled in from below; when no
@@ -1017,7 +1026,7 @@
 
     render();
     var start = rule.range(ctx());
-    reveal(today >= start.from && today <= start.to ? today - 21 : start.from);
+    revealNear(start);
     updateMonth();
   }
 

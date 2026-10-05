@@ -688,6 +688,15 @@
   vertical-align: top;
   break-inside: avoid;
 }
+/* The calculators overview: a few cards per section, read across. */
+.hub-places.hub-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  columns: auto;
+}
+.hub-places.hub-grid .hub-tile { margin: 0; }
+@media (max-width: 720px) { .hub-places.hub-grid { grid-template-columns: 1fr; } }
 .hub-topics {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));

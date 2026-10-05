@@ -12,7 +12,12 @@
    those 180 days (Jorick, 2026-10-04), like the EU's own calculator. During a
    stay the count can only rise (each day in the area adds one, at most one
    old day drops out), so checking a planned trip's last day checks the whole
-   trip. */
+   trip.
+
+   The same 90/180 rule applies elsewhere: an embed sets `only` to one country
+   (Türkiye, Law No. 6458 Article 11(1)), which fixes every stay to it and
+   shows its flag; the article's strings rename the card, and `note` (English,
+   for the importer) labels the exported stays. */
 (function () {
   "use strict";
 
@@ -47,7 +52,10 @@
     carryCountry: true,
     linkId: "schengen",
 
-    countries: function (all) { return all.filter(function (code) { return SCHENGEN.indexOf(code) >= 0; }); },
+    countries: function (all, preset) {
+      if (preset && preset.only) return [preset.only];
+      return all.filter(function (code) { return SCHENGEN.indexOf(code) >= 0; });
+    },
 
     range: function (c) {
       var on = checkOn(c);
@@ -70,16 +78,16 @@
       var status = left > 0 ? c.text("remaining", { n: left }) : left === 0 ? c.text("atLimit") : c.text("overBy", { n: -left });
       return {
         controls: controls,
-        meter: { title: c.text("area"), flag: "EU", label: c.dateRange(on - WINDOW + 1, on), days: used, limit: LIMIT, tone: c.tone(used, LIMIT, false) },
+        meter: { title: c.text("area"), flag: c.settings.only || "EU", label: c.dateRange(on - WINDOW + 1, on), days: used, limit: LIMIT, tone: c.tone(used, LIMIT, false) },
         statusText: status,
         lines: lines
       };
     },
 
     // Every stay with a country, past and planned.
-    exportRows: function (trips) {
+    exportRows: function (trips, c) {
       return trips.filter(function (t) { return t.country; }).map(function (t) {
-        return { country: t.country, start: t.start, end: t.end, notes: "Schengen calculator" };
+        return { country: t.country, start: t.start, end: t.end, notes: c.settings.note || "Schengen calculator" };
       });
     },
 

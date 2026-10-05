@@ -64,7 +64,8 @@
 
     range: function (c) { return bounds(c); },
 
-    // ?country=BG&period=calendar|tax|rolling&start=07-01&resident=184: an
+    // ?country=BG&period=calendar|tax|rolling&start=07-01&resident=184
+    // (&limit=182 where the rule's number is not 183, Malaysia): an
     // article's link opens the calculator set to its own rule. `start` is the
     // tax year's first day (the latest one not after today); `resident` is
     // the first day count that makes you resident (184 for "more than 183").
@@ -82,6 +83,8 @@
       }
       var resident = Math.round(+q.get("resident"));
       if (resident >= 1 && resident <= 366) s.residentAt = resident;
+      var limit = Math.round(+q.get("limit"));
+      if (limit >= 1 && limit <= 366) s.limit = limit;
       return { settings: s, link: "183-" + code.toLowerCase() };
     },
     newTripCountry: function (c) { return c.settings.country || ""; },
