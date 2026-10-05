@@ -40,9 +40,9 @@ FOOTER_TEMPLATE = SOURCE_ROOT / "templates" / "partials" / "site-footer.html"
 REDIRECT_TEMPLATE = SOURCE_ROOT / "templates" / "redirect.html"
 CLUSTER_DATA_PATH = SOURCE_ROOT / "data" / "content-clusters.json"
 BUILD_VERSION = "20260928f"
-VARIANT_VERSIONS = {("article", "help20260802"): "20260928f", ("hub", "92c3adc0daf3"): "20260928f"}
+VARIANT_VERSIONS = {("article", "help20260802"): "20260928f", ("hub", "92c3adc0daf3"): "20260928f", ("article", "49dd6e3e3ea5"): "20261005a", ("article", "88b8694b8f2d"): "20261005a"}
 SITE_HEADER_VERSION = "20260930a"
-ARTICLE_COMPONENTS_VERSION = "20260925a"
+ARTICLE_COMPONENTS_VERSION = "20261005a"
 NAVIGATION_VERSION = "20261005a"
 
 # Root class that drops the background wash from the app's `.medium` step to
@@ -1201,6 +1201,94 @@ def link_calculator_to_rule(content: str, article: dict[str, object]) -> str:
     return pattern.sub(lambda m: f'href="{m.group(1)}{html.escape(query, quote=True)}"', content)
 
 
+def mark_calculator_callout(content: str, article: dict[str, object]) -> str:
+    """Give the paragraph that links a calculator the `calc-callout` class.
+
+    A plain <p> in a Learn article that links the 183-day or Schengen
+    calculator is the reader's way to count their own dates, so it is set off
+    as the article's one blue callout (assets/css/article-components.css).
+    """
+    if article.get("section") != "learn":
+        return content
+    pattern = re.compile(r'<p>(?=(?:(?!</p>).)*href="(?:/[A-Za-z-]+)?/learn/(?:183-day-rule|schengen)-calculator[?"])', re.S)
+    return pattern.sub('<p class="calc-callout">', content, count=1)
+
+
+TOC_MIN_SECTIONS = 7
+
+# Opens the list on wider screens (it stays a one-line <details> on phones)
+# and marks the section being read, for the sticky sidebar.
+TOC_SCRIPT = (
+    "<script>(function(){var t=document.currentScript.previousElementSibling;"
+    "if(matchMedia('(min-width: 760px)').matches)t.open=true;"
+    "var a=[].slice.call(t.querySelectorAll('a'));"
+    # The headings come after this script, so they are looked up on each pass.
+    "function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});"
+    "a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}"
+    "addEventListener('scroll',on,{passive:true});on()})();</script>"
+)
+
+
+def render_toc(content: str, article: dict[str, object]) -> str:
+    """An "On this page" list for a long Learn article, after its summary.
+
+    Sections are the <h2>s outside the closing app box and the build's source
+    panel; each gets an id from its text if it has none. A one-line <details>
+    on phones, an open list on tablets, a sticky sidebar on wide screens
+    (assets/css/article-components.css, .toc).
+    """
+    if article.get("section") != "learn":
+        return content
+    cta = content.find('<div class="cta-box"')
+    heading = re.compile(r"<h2(?P<attrs>[^>]*)>(?P<text>.*?)</h2>", re.S)
+    # The closing app box and the build's source panel are furniture, not sections.
+    found = [
+        m for m in heading.finditer(content)
+        if (cta < 0 or not _inside_cta(content, cta, m.start())) and 'id="official-source-heading"' not in m.group("attrs")
+    ]
+    if len(found) < TOC_MIN_SECTIONS:
+        return content
+    used: set[str] = set()
+    items, out, last = [], [], 0
+    for index, m in enumerate(found, 1):
+        attrs, text = m.group("attrs"), m.group("text")
+        existing = re.search(r'\bid="([^"]+)"', attrs)
+        if existing:
+            ident = existing.group(1)
+        else:
+            plain = re.sub(r"<[^>]+>", "", html.unescape(text))
+            ident = re.sub(r"[^a-z0-9]+", "-", plain.lower()).strip("-") or f"section-{index}"
+            while ident in used:
+                ident += "-2"
+            out.append(content[last:m.start()] + f'<h2 id="{ident}"{attrs}>{text}</h2>')
+            last = m.end()
+        used.add(ident)
+        items.append(f'        <li><a href="#{ident}">{re.sub(r"<[^>]+>", "", text).strip()}</a></li>')
+    content = "".join(out) + content[last:]
+    first = heading.search(content)
+    block = "\n".join([
+        '<details class="toc">',
+        "      <summary>{{t:toc.heading}}</summary>",
+        "      <ul>",
+        *items,
+        "      </ul>",
+        "    </details>",
+        "    " + TOC_SCRIPT,
+        "    ",
+    ])
+    return content[:first.start()] + block + content[first.start():]
+
+
+def _inside_cta(content: str, cta: int, position: int) -> bool:
+    """Whether a position falls inside the closing app box (a nested <div>)."""
+    depth = 0
+    for tag in re.finditer(r"<(/?)div\b", content[cta:]):
+        depth += -1 if tag.group(1) else 1
+        if depth == 0:
+            return cta <= position < cta + tag.end()
+    return position >= cta
+
+
 def render_embedded_calculator(content: str, article: dict[str, object], code: str) -> str:
     if article.get("calculator") is None:
         return content
@@ -1237,6 +1325,8 @@ def render_article(
     content = render_learn_trust(content, article, locale, strings)
     content = render_embedded_calculator(content, article, code)
     content = link_calculator_to_rule(content, article)
+    content = mark_calculator_callout(content, article)
+    content = render_toc(content, article)
     switcher = render_language_switcher(source_path, locales, translations, code, strings)
     # Only routes this locale actually has may be prefixed; everything else
     # falls back to English. Without this the chrome links a Japanese page to

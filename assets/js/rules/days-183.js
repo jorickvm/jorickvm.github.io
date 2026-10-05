@@ -137,6 +137,12 @@
       var limit = +c.settings.limit || LIMIT;
       var safe = residentAt ? residentAt - 1 : limit, left = safe - days;
       var needed = (residentAt || limit) - days;
+      // The meter shows the number that matters for the goal, and the pill is
+      // that number minus the days (Jorick, 2026-10-05; the app follows): the
+      // last safe day when staying below (182 under "183 or more"), the day
+      // that makes you resident when reaching it. The article that links here
+      // explains the rule itself.
+      var shown = target ? (residentAt || limit) : safe;
       // The app's wording: a limit counts down to "At limit"; a target counts
       // the days still needed until "Target reached".
       var status = target
@@ -144,7 +150,7 @@
         : (left > 0 ? c.text("remaining", { n: left }) : left === 0 ? c.text("atLimit") : c.text("overBy", { n: -left }));
       return {
         controls: controls,
-        meter: { countryKey: "country", title: c.text("country"), flag: country, label: c.dateRange(b.from, b.to), days: days, limit: limit, tone: target ? c.tone(days, residentAt || limit, true) : c.tone(days, safe, false) },
+        meter: { countryKey: "country", title: c.text("country"), flag: country, label: c.dateRange(b.from, b.to), days: days, limit: shown, tone: target ? c.tone(days, residentAt || limit, true) : c.tone(days, safe, false) },
         statusText: status,
         lines: lines
       };

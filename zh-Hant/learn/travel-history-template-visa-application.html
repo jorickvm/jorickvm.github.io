@@ -120,9 +120,9 @@
   <script>window.AtlasDaysPageLocales={"en":{"url":"/learn/travel-history-template-visa-application","label":"Read this page in English","dismiss":"Dismiss"},"ja":{"url":"/ja/learn/travel-history-template-visa-application","label":"このページを日本語で読む","dismiss":"閉じる"},"nl":{"url":"/nl/learn/travel-history-template-visa-application","label":"Lees deze pagina in het Nederlands","dismiss":"Sluiten"},"de":{"url":"/de/learn/travel-history-template-visa-application","label":"Diese Seite auf Deutsch lesen","dismiss":"Schließen"},"es":{"url":"/es/learn/travel-history-template-visa-application","label":"Lee esta página en español","dismiss":"Cerrar"},"fr":{"url":"/fr/learn/travel-history-template-visa-application","label":"Lire cette page en français","dismiss":"Fermer"},"ru":{"url":"/ru/learn/travel-history-template-visa-application","label":"Читать эту страницу на русском","dismiss":"Закрыть"},"uk":{"url":"/uk/learn/travel-history-template-visa-application","label":"Читати цю сторінку українською","dismiss":"Закрити"},"tr":{"url":"/tr/learn/travel-history-template-visa-application","label":"Bu sayfayı Türkçe okuyun","dismiss":"Kapat"},"pt":{"url":"/pt/learn/travel-history-template-visa-application","label":"Leia esta página em português","dismiss":"Fechar"},"ko":{"url":"/ko/learn/travel-history-template-visa-application","label":"이 페이지를 한국어로 읽기","dismiss":"닫기"},"zh-Hans":{"url":"/zh-Hans/learn/travel-history-template-visa-application","label":"以简体中文阅读本页","dismiss":"关闭"},"pl":{"url":"/pl/learn/travel-history-template-visa-application","label":"Przeczytaj tę stronę po polsku","dismiss":"Zamknij"}};window.AtlasDaysMatchLocale=function(tag,m){var w=String(tag||'').trim().replace(/_/g,'-').toLowerCase(),c;if(!w)return '';for(c in m)if(c.toLowerCase()===w)return c;var s=function(t){try{return new Intl.Locale(t).maximize().script||''}catch(err){return null}},b=w.split('-')[0],x=s(w);for(c in m){if(c.toLowerCase().split('-')[0]!==b)continue;if(x===null){if(c.indexOf('-')<0)return c;continue}if(s(c)===x)return c}return ''};(function(){var q=new URLSearchParams(location.search).get('lang');if(!q)return;var m=window.AtlasDaysPageLocales,e=m[window.AtlasDaysMatchLocale(q,m)];if(e&&e.url!==location.pathname)location.replace(e.url+location.search+location.hash)})()</script>
   <script defer src="../../assets/js/locale-route.js?v=20260830c"></script>
   <link rel="stylesheet" href="../../assets/css/tokens.css?v=20260928f" />
-  <link rel="stylesheet" href="../../assets/css/article-variants/49dd6e3e3ea5.css?v=20260928f" />
+  <link rel="stylesheet" href="../../assets/css/article-variants/49dd6e3e3ea5.css?v=20261005a" />
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
-  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20260925a" />
+  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261005a" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
 </head>
 <body>
@@ -216,7 +216,20 @@
       </dl>
     </div>
 
-    <h2>各欄位要填什麼</h2>
+    <details class="toc">
+      <summary>本頁內容</summary>
+      <ul>
+        <li><a href="#section-1">各欄位要填什麼</a></li>
+        <li><a href="#section-2">日期，包括無法確定的日期</a></li>
+        <li><a href="#section-3">每次停留一列，而非每趟旅行一列</a></li>
+        <li><a href="#section-4">將紀錄抄入申請表</a></li>
+        <li><a href="#atlasdays">免費匯入 AtlasDays</a></li>
+        <li><a href="#section-6">範本以外仍需留意</a></li>
+        <li><a href="#section-7">常見問題</a></li>
+      </ul>
+    </details>
+    <script>(function(){var t=document.currentScript.previousElementSibling;if(matchMedia('(min-width: 760px)').matches)t.open=true;var a=[].slice.call(t.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
+    <h2 id="section-1">各欄位要填什麼</h2>
     <dl class="kv kv-text">
       <div><dt>Country</dt><dd>國家的英文名稱（Portugal、United Kingdom）或雙字母代碼（PT、GB）。每一列都必須填寫。</dd></div>
       <div><dt>State</dt><dd>僅限美國行程：填州名、郵政縮寫（NY）或 ISO 代碼（US-NY）。其他國家一律留空。</dd></div>
@@ -242,7 +255,7 @@
       </table>
     </div>
 
-    <h2>日期，包括無法確定的日期</h2>
+    <h2 id="section-2">日期，包括無法確定的日期</h2>
     <p>確切日期一律寫成 YYYY-MM-DD。這種格式能正確排序，不會混淆日月順序，也是 AtlasDays 匯入的格式。同一列的兩個日期應採相同精度：都填確切日期，或只填年份。</p>
     <ul>
       <li><strong>知道日期。</strong>直接填入，並在 Notes 說明根據什麼資料。</li>
@@ -251,7 +264,7 @@
     </ul>
     <p>試算表有個常見陷阱：Excel 等 App 往往把 2025-03-03 辨識成日期，重新儲存時可能轉為地區格式，例如 03/03/2025。把檔案匯入任何地方之前，先確認日期欄仍顯示 YYYY-MM-DD；若不是，請設定成該格式或純文字。</p>
 
-    <h2>每次停留一列，而非每趟旅行一列</h2>
+    <h2 id="section-3">每次停留一列，而非每趟旅行一列</h2>
     <p>每一列代表在同一個國家的連續停留。一次旅行經過兩國，就填兩列；跨越兩國邊境的那一天會出現在兩列，如上例的 3 月 10 日，因為當天人在葡萄牙也在西班牙。這種格式適用各種表格，因為多列容易合併，事後卻很難拆開。</p>
     <div class="example">
       <p><strong>一趟旅行，三種表格。</strong>持簽證住在英國，2025 年 3 月 3 日飛往里斯本，3 月 10 日搭火車到馬德里，3 月 16 日飛回英國。範本有兩列：Portugal，2025-03-03 至 2025-03-10；Spain，2025-03-10 至 2025-03-16。</p>
@@ -259,7 +272,7 @@
     </div>
     <p>將多列合併成一次離境時，應核對前後兩端的航班。若是過夜航班，離開居住國的日期可能比檔案中的第一個抵達日早一天。</p>
 
-    <h2>將紀錄抄入申請表</h2>
+    <h2 id="section-4">將紀錄抄入申請表</h2>
     <ol class="steps">
       <li>查閱<a href="/zh-Hant/learn/travel-history-for-visa-applications">回溯期間表</a>，確認表格要求多久以前的資料（DS-160 為 5 年；英國訪客及加拿大永久居民申請最多 10 年；入籍則為整個符合資格期間）。</li>
       <li>按 Start Date 排序，隱藏在要求期間開始前就已結束的列。</li>
@@ -268,7 +281,7 @@
       <li>保留已提交內容的副本，讓下次申請能以同一組日期為起點。</li>
     </ol>
 
-    <h2>免費匯入 AtlasDays</h2>
+    <h2 id="atlasdays">免費匯入 AtlasDays</h2>
     <p>範本使用 AtlasDays 自己的匯入欄位，因此填好的檔案可直接匯入。開啟<strong>「設定」→「匯入」→「CSV 檔案」</strong>並選取檔案。AtlasDays 會先顯示確認畫面，列出無法讀取的列、可能重複及重疊的行程；確認前不會儲存任何資料。匯入免費，此後新增行程時，App 會持續計算各國天數及簽證或居留上限。</p>
     <ul>
       <li><strong>Purpose 必須是四個指定字詞之一。</strong>AtlasDays 讀取 Personal、Business、Study 與 Transit（Tourism 也視為 Personal）。其他值會被忽略，行程匯入後沒有目的，因此應將申請表自己的描述寫在 Notes。</li>
@@ -277,7 +290,7 @@
     </ul>
     <p>還沒有檔案？匯入畫面也有<strong>「用 AI 建立 CSV」</strong>提示詞，可透過 AI 助理將筆記或行程表轉成這些欄位。貼到 AI 工具的內容會依該工具的隱私權政策處理。</p>
 
-    <h2>範本以外仍需留意</h2>
+    <h2 id="section-6">範本以外仍需留意</h2>
     <p>範本能整理紀錄，不能保證紀錄完整。五年旅行只有十列整齊資料，通常表示短途旅行漏掉了；申請表自己的用語也始終優先。各表格要求的資料見<a href="/zh-Hant/learn/travel-history-for-visa-applications">簽證申請旅行紀錄</a>；如何從入出境章、電子郵件及照片補足空白，見<a href="/zh-Hant/learn/rebuild-travel-history-from-passport-stamps-emails-photos">重建旅行紀錄</a>；政府保存的越境資料則見<a href="/zh-Hant/learn/get-official-entry-exit-records">申請官方入出境紀錄</a>。</p>
 
     <div class="cta-box">
@@ -290,7 +303,7 @@
       <a class="cta-btn" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> 取得 AtlasDays</a>
     </div>
 
-    <h2>常見問題</h2>
+    <h2 id="section-7">常見問題</h2>
     <h3>有官方的旅行紀錄範本嗎？</h3>
     <p>沒有通用版本。有些表格自帶旅行紀錄欄，例如加拿大的 IMM 5257 Schedule 1、IMM 5562，以及美國 N-400 的第 8 部分；最後提交的應是官方表格。這份範本則是供自行整理，再把資料抄入各表格的工作紀錄。</p>
     <h3>旅行紀錄該用什麼日期格式？</h3>

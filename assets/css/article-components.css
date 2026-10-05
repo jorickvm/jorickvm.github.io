@@ -359,3 +359,80 @@ article > .learn-disclaimer,
   font-size: 0.9rem;
 }
 .chips img { width: 20px; height: 15px; border-radius: 3px; object-fit: cover; }
+
+/* The paragraph that sends a reader to a calculator (build: calc-callout).
+   The whole box is the link's hit area; the calendar mark matches the
+   calculators' own settings icons. */
+.calc-callout {
+  position: relative;
+  margin: 20px 0;
+  padding: 16px 18px 16px 62px;
+  background: var(--blue-soft);
+  border: 1px solid rgba(66, 143, 210, 0.28);
+  border-radius: 14px;
+  color: var(--text);
+}
+.calc-callout::before {
+  content: "";
+  position: absolute;
+  left: 18px;
+  top: 17px;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: var(--blue);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'%3E%3Crect width='28' height='28' rx='8' fill='black'/%3E%3Cg fill='none' stroke='white' stroke-width='1.8' stroke-linecap='round'%3E%3Crect x='7.5' y='8.5' width='13' height='12' rx='2.5'/%3E%3Cpath d='M7.5 12.5h13M11 6.5v4M17 6.5v4'/%3E%3C/g%3E%3C/svg%3E") center / contain no-repeat luminance;
+          mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 28 28'%3E%3Crect width='28' height='28' rx='8' fill='black'/%3E%3Cg fill='none' stroke='white' stroke-width='1.8' stroke-linecap='round'%3E%3Crect x='7.5' y='8.5' width='13' height='12' rx='2.5'/%3E%3Cpath d='M7.5 12.5h13M11 6.5v4M17 6.5v4'/%3E%3C/g%3E%3C/svg%3E") center / contain no-repeat luminance;
+}
+.calc-callout a { font-weight: 650; }
+.calc-callout a::after { content: ""; position: absolute; inset: 0; border-radius: inherit; }
+.calc-callout:hover { border-color: var(--blue); }
+.calc-callout:has(a:focus-visible) { outline: 2px solid var(--blue); outline-offset: 3px; }
+.calc-callout a:focus-visible { outline: none; }
+
+/* "On this page" (build: render_toc), for long Learn articles. No card:
+   phones get one collapsed line, tablets an open list between thin rules,
+   wide screens a sticky list in the empty margin beside the 720px column,
+   marking the section being read. */
+.toc {
+  margin: 28px 0 8px;
+  padding: 12px 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.toc summary {
+  cursor: pointer;
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 650;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  list-style: none;
+}
+.toc summary::-webkit-details-marker { display: none; }
+.toc summary::after { content: " +"; }
+.toc[open] summary::after { content: ""; }
+.toc ul { margin: 10px 0 2px; padding: 0; list-style: none; columns: 2; column-gap: 32px; }
+.toc li { margin: 0 0 7px; break-inside: avoid; font-size: 0.95rem; line-height: 1.4; }
+.toc a { color: var(--text); text-decoration: none; }
+.toc a:hover { color: var(--blue); }
+@media (max-width: 759px) { .toc ul { columns: 1; } }
+@media (min-width: 1260px) {
+  .toc {
+    float: right;
+    position: sticky;
+    top: 104px;
+    width: 200px;
+    margin: 0 -248px 0 0;
+    padding: 0;
+    border: 0;
+  }
+  .toc summary { pointer-events: none; }
+  .toc summary::after { content: none; }
+  .toc ul { columns: 1; margin-top: 12px; border-left: 1px solid var(--line); }
+  .toc li { margin: 0; font-size: 0.86rem; }
+  .toc a { display: block; margin-left: -1px; padding: 5px 0 5px 14px; border-left: 2px solid transparent; color: var(--muted); }
+  .toc a:hover { color: var(--text); }
+  .toc a[aria-current="true"] { color: var(--text); border-left-color: var(--blue); }
+}
+h2[id] { scroll-margin-top: 96px; }

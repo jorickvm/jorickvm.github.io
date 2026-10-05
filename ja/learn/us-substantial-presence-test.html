@@ -120,9 +120,9 @@
   <script>window.AtlasDaysPageLocales={"en":{"url":"/learn/us-substantial-presence-test","label":"Read this page in English","dismiss":"Dismiss"},"nl":{"url":"/nl/learn/us-substantial-presence-test","label":"Lees deze pagina in het Nederlands","dismiss":"Sluiten"},"de":{"url":"/de/learn/us-substantial-presence-test","label":"Diese Seite auf Deutsch lesen","dismiss":"Schließen"},"es":{"url":"/es/learn/us-substantial-presence-test","label":"Lee esta página en español","dismiss":"Cerrar"},"fr":{"url":"/fr/learn/us-substantial-presence-test","label":"Lire cette page en français","dismiss":"Fermer"},"ru":{"url":"/ru/learn/us-substantial-presence-test","label":"Читать эту страницу на русском","dismiss":"Закрыть"},"uk":{"url":"/uk/learn/us-substantial-presence-test","label":"Читати цю сторінку українською","dismiss":"Закрити"},"tr":{"url":"/tr/learn/us-substantial-presence-test","label":"Bu sayfayı Türkçe okuyun","dismiss":"Kapat"},"pt":{"url":"/pt/learn/us-substantial-presence-test","label":"Leia esta página em português","dismiss":"Fechar"},"ko":{"url":"/ko/learn/us-substantial-presence-test","label":"이 페이지를 한국어로 읽기","dismiss":"닫기"},"zh-Hant":{"url":"/zh-Hant/learn/us-substantial-presence-test","label":"以繁體中文閱讀本頁","dismiss":"關閉"},"zh-Hans":{"url":"/zh-Hans/learn/us-substantial-presence-test","label":"以简体中文阅读本页","dismiss":"关闭"},"pl":{"url":"/pl/learn/us-substantial-presence-test","label":"Przeczytaj tę stronę po polsku","dismiss":"Zamknij"}};window.AtlasDaysMatchLocale=function(tag,m){var w=String(tag||'').trim().replace(/_/g,'-').toLowerCase(),c;if(!w)return '';for(c in m)if(c.toLowerCase()===w)return c;var s=function(t){try{return new Intl.Locale(t).maximize().script||''}catch(err){return null}},b=w.split('-')[0],x=s(w);for(c in m){if(c.toLowerCase().split('-')[0]!==b)continue;if(x===null){if(c.indexOf('-')<0)return c;continue}if(s(c)===x)return c}return ''};(function(){var q=new URLSearchParams(location.search).get('lang');if(!q)return;var m=window.AtlasDaysPageLocales,e=m[window.AtlasDaysMatchLocale(q,m)];if(e&&e.url!==location.pathname)location.replace(e.url+location.search+location.hash)})()</script>
   <script defer src="../../assets/js/locale-route.js?v=20260830c"></script>
   <link rel="stylesheet" href="../../assets/css/tokens.css?v=20260928f" />
-  <link rel="stylesheet" href="../../assets/css/article-variants/49dd6e3e3ea5.css?v=20260928f" />
+  <link rel="stylesheet" href="../../assets/css/article-variants/49dd6e3e3ea5.css?v=20261005a" />
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
-  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20260925a" />
+  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261005a" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
 </head>
 <body>
@@ -203,15 +203,28 @@
       <div><dt>加重率</dt><dd>当年は全日、前年は3分の1、前々年は6分の1</dd></div><div><dt>条件の組み合わせ</dt><dd>両方の最低日数を満たす必要がある</dd></div>
       <div class="legal-basis"><dt>法的根拠</dt><dd>内国歳入法§7701(b)(3)、財務省規則§301.7701(b)-1</dd></div>
     </dl></div>
-    <h2>加重計算の仕組み</h2>
+    <details class="toc">
+      <summary>目次</summary>
+      <ul>
+        <li><a href="#section-1">加重計算の仕組み</a></li>
+        <li><a href="#section-2">比較するまで端数を残す</a></li>
+        <li><a href="#section-3">除外できる日は？</a></li>
+        <li><a href="#section-4">除外には書類や証拠が必要ですか？</a></li>
+        <li><a href="#3">よくある3つの誤解</a></li>
+        <li><a href="#section-6">単純な日数だけでは決まらない場合</a></li>
+        <li><a href="#section-7">よくある質問</a></li>
+      </ul>
+    </details>
+    <script>(function(){var t=document.currentScript.previousElementSibling;if(matchMedia('(min-width: 760px)').matches)t.open=true;var a=[].slice.call(t.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
+    <h2 id="section-1">加重計算の仕組み</h2>
     <p>計算式は<strong>当暦年</strong>と、その前の2暦年を使います。</p>
     <ol><li>当年の対象となる米国滞在日をすべて数えます。</li><li>前年の対象日数の3分の1を加えます。</li><li>前々年の対象日数の6分の1を加えます。</li></ol>
     <p>通常は、当年に米国で31日以上滞在し、<em>かつ</em>3年間の加重合計が183日以上なら判定を満たします。</p>
     <p>IRSのPublication 519の例は加重の意味を示しています。3年連続で各120日滞在しても、計算式では合計180日にしかならないため、判定を<strong>満たしません</strong>。計算が難しいのではなく、過去の年も寄与し続ける点が重要です。</p>
     <div class="example"><p><strong>両方の条件が必要です。</strong>3年間それぞれ122日なら、122＋40⅔＋20⅓＝183となり、当年31日の条件も満たします。一方、当年30日、前年365日、前々年365日なら、加重合計は十分でも当年の最低日数を満たさないため、判定を満たしません。</p></div>
-    <h2>比較するまで端数を残す</h2>
+    <h2 id="section-2">比較するまで端数を残す</h2>
     <p>財務省規則301.7701(b)-1(c)(1)では、加重で生じた日数の端数を最も近い整数に丸めないと定めています。例えば当年122日、前年122日、前々年121日なら182⅚です。183日に達しません。各年の寄与を先に丸めても結果が変わることがあります。</p>
-    <h2>除外できる日は？</h2>
+    <h2 id="section-3">除外できる日は？</h2>
     <p>米国に1日の一部でもいれば通常は数えます。Publication 519は、条件付きで次の除外区分を示しています。</p>
     <ul>
       <li><strong>日常的な国境通勤。</strong>カナダまたはメキシコの自宅から通勤する対象勤務日。IRSには定期的な通勤者に関する判定基準があり、時折の出張が自動的に対象になるわけではありません。</li>
@@ -223,17 +236,17 @@
     </ul>
     <p>「Exempt individual」は、この判定から特定の日を除外できるという意味で、すべての米国税から免除されるという意味ではありません。これは区分の概要であり、特定の滞在が該当するとの判定ではありません。<a href="#official-source-heading">以下の公式資料</a>から、Publication 519の除外日規定と関連する申告手続へ直接移動できます。</p>
     <p>この判定で米国に含まれるのは50州、コロンビア特別区、指定された領海・沖合地域です。米国の海外領土と領空は含まれません。</p>
-    <h2>除外には書類や証拠が必要ですか？</h2>
+    <h2 id="section-4">除外には書類や証拠が必要ですか？</h2>
     <p>除外によっては必要です。対象となる学生、教師・研修生、チャリティーイベントの選手、医療上の除外を主張する人は、所得税申告書が不要な場合でも原則として<strong>Form 8843</strong>を提出します。すべての除外に共通する提出要件ではなく、外国政府関係者はフォームの提出指示から除外されています。</p>
     <p>フォームでは主張の根拠を求めます。医療上の除外には医師の署名付き証明書が必要です。チャリティーイベントの選手は純収益に関する説明を添付し、学生と教師・研修生は教育機関やプログラムの情報、ビザ履歴を記載し、場合によって追加説明を添えます。対象日と事情を裏付ける記録を残し、該当する課税年度の指示を使ってください。個人の旅行記録は時系列の裏付けになりますが、必要な申告や証明の代わりにはなりません。</p>
-    <h2>よくある3つの誤解</h2>
+    <h2 id="3">よくある3つの誤解</h2>
     <ul><li><strong>「当年だけが重要」。</strong>直前2暦年も当年の判定に入ります。</li><li><strong>「当年が183日未満なら終わり」。</strong>当年に183日なくても加重判定を満たすことがあります。</li><li><strong>「移民と税務は同じ制度」。</strong>ビザ区分、I-94の日付、B1/B2の滞在傾向だけでは税務上の居住は決まりません。IRSには別にグリーンカード判定もあります。</li></ul>
-    <h2>単純な日数だけでは決まらない場合</h2>
+    <h2 id="section-6">単純な日数だけでは決まらない場合</h2>
     <p>日数判定を満たしても、資格が必ず確定するわけではありません。より密接な関係に基づく主張、租税条約上の居住と振り分け規定、居住の開始日・終了日、申告上の影響が事実関係に応じて問題になります。通常のcloser-connection exceptionにも、当年の米国滞在が183日未満、国外のtax home、必要な密接な関係など独自の条件があります。Form 8840の提出要件もあり、加重判定を満たした人すべてに自動適用される例外ではありません。</p>
     <div class="cta-box"><span class="cta-logo"><img class="logo-dark" src="/assets/brand/logo_dark.png?v=20260325a" alt="AtlasDaysのロゴ" width="52" height="52" /><img class="logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="AtlasDaysのロゴ" width="52" height="52" /></span>
       <h2>AtlasDaysで米国の2つの日数基準を確認</h2><p><strong>米国実質滞在テスト</strong>プリセットを使うと、旅行記録から2つの日数基準を自動で確認できます。IRSの日数除外は適用されません。</p>
       <a class="cta-btn" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> AtlasDaysを入手</a></div>
-    <h2>よくある質問</h2>
+    <h2 id="section-7">よくある質問</h2>
     <h3>対象年に米国で実際に183日滞在する必要がありますか？</h3><p>いいえ。直前2年の寄与により、当年がそれより少なくても加重合計は183日に達します。ただし、当年31日という別の最低条件は必要です。</p>
     <h3>加重後の日数の端数は切り上げますか？</h3><p>いいえ。規則では比較の際も端数を残します。加重合計182⅚は183日の基準に達しません。</p>
     <h3>乗り継ぎ日はすべて除外されますか？</h3><p>いいえ。IRSの乗り継ぎ例外は、米国外の2地点間の移動中に米国内にいる時間が24時間未満の場合を対象とします。乗り継ぎと呼ばれる旅程が自動的に条件を満たすわけではありません。</p>

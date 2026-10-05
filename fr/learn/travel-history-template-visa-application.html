@@ -120,9 +120,9 @@
   <script>window.AtlasDaysPageLocales={"en":{"url":"/learn/travel-history-template-visa-application","label":"Read this page in English","dismiss":"Dismiss"},"ja":{"url":"/ja/learn/travel-history-template-visa-application","label":"このページを日本語で読む","dismiss":"閉じる"},"nl":{"url":"/nl/learn/travel-history-template-visa-application","label":"Lees deze pagina in het Nederlands","dismiss":"Sluiten"},"de":{"url":"/de/learn/travel-history-template-visa-application","label":"Diese Seite auf Deutsch lesen","dismiss":"Schließen"},"es":{"url":"/es/learn/travel-history-template-visa-application","label":"Lee esta página en español","dismiss":"Cerrar"},"ru":{"url":"/ru/learn/travel-history-template-visa-application","label":"Читать эту страницу на русском","dismiss":"Закрыть"},"uk":{"url":"/uk/learn/travel-history-template-visa-application","label":"Читати цю сторінку українською","dismiss":"Закрити"},"tr":{"url":"/tr/learn/travel-history-template-visa-application","label":"Bu sayfayı Türkçe okuyun","dismiss":"Kapat"},"pt":{"url":"/pt/learn/travel-history-template-visa-application","label":"Leia esta página em português","dismiss":"Fechar"},"ko":{"url":"/ko/learn/travel-history-template-visa-application","label":"이 페이지를 한국어로 읽기","dismiss":"닫기"},"zh-Hant":{"url":"/zh-Hant/learn/travel-history-template-visa-application","label":"以繁體中文閱讀本頁","dismiss":"關閉"},"zh-Hans":{"url":"/zh-Hans/learn/travel-history-template-visa-application","label":"以简体中文阅读本页","dismiss":"关闭"},"pl":{"url":"/pl/learn/travel-history-template-visa-application","label":"Przeczytaj tę stronę po polsku","dismiss":"Zamknij"}};window.AtlasDaysMatchLocale=function(tag,m){var w=String(tag||'').trim().replace(/_/g,'-').toLowerCase(),c;if(!w)return '';for(c in m)if(c.toLowerCase()===w)return c;var s=function(t){try{return new Intl.Locale(t).maximize().script||''}catch(err){return null}},b=w.split('-')[0],x=s(w);for(c in m){if(c.toLowerCase().split('-')[0]!==b)continue;if(x===null){if(c.indexOf('-')<0)return c;continue}if(s(c)===x)return c}return ''};(function(){var q=new URLSearchParams(location.search).get('lang');if(!q)return;var m=window.AtlasDaysPageLocales,e=m[window.AtlasDaysMatchLocale(q,m)];if(e&&e.url!==location.pathname)location.replace(e.url+location.search+location.hash)})()</script>
   <script defer src="../../assets/js/locale-route.js?v=20260830c"></script>
   <link rel="stylesheet" href="../../assets/css/tokens.css?v=20260928f" />
-  <link rel="stylesheet" href="../../assets/css/article-variants/49dd6e3e3ea5.css?v=20260928f" />
+  <link rel="stylesheet" href="../../assets/css/article-variants/49dd6e3e3ea5.css?v=20261005a" />
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
-  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20260925a" />
+  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261005a" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
 </head>
 <body>
@@ -209,7 +209,20 @@
       <div><dt>S’importe dans</dt><dd>AtlasDays gratuitement, sous Réglages → Importer → Fichier CSV</dd></div>
     </dl></div>
 
-    <h2>Que saisir dans chaque colonne ?</h2>
+    <details class="toc">
+      <summary>Sur cette page</summary>
+      <ul>
+        <li><a href="#que-saisir-dans-chaque-colonne">Que saisir dans chaque colonne ?</a></li>
+        <li><a href="#les-dates-m-me-incertaines">Les dates, même incertaines</a></li>
+        <li><a href="#une-ligne-par-s-jour-pas-par-voyage">Une ligne par séjour, pas par voyage</a></li>
+        <li><a href="#recopier-les-donn-es-dans-un-formulaire">Recopier les données dans un formulaire</a></li>
+        <li><a href="#importer-gratuitement-le-fichier-dans-atlasdays">Importer gratuitement le fichier dans AtlasDays</a></li>
+        <li><a href="#au-del-du-mod-le">Au-delà du modèle</a></li>
+        <li><a href="#questions-fr-quentes">Questions fréquentes</a></li>
+      </ul>
+    </details>
+    <script>(function(){var t=document.currentScript.previousElementSibling;if(matchMedia('(min-width: 760px)').matches)t.open=true;var a=[].slice.call(t.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
+    <h2 id="que-saisir-dans-chaque-colonne">Que saisir dans chaque colonne ?</h2>
     <dl class="kv kv-text">
       <div><dt>Country</dt><dd>Le nom anglais du pays (Portugal, United Kingdom) ou son code à deux lettres (PT, GB). Obligatoire sur chaque ligne.</dd></div>
       <div><dt>State</dt><dd>Uniquement pour les voyages aux États-Unis : nom de l’État, abréviation postale (NY) ou code ISO (US-NY). Laissez vide pour tous les autres pays.</dd></div>
@@ -230,7 +243,7 @@
       <tr><td>Japan</td><td></td><td>2019</td><td></td><td>Personal</td><td>Osaka, mois inconnu</td></tr>
     </tbody></table></div>
 
-    <h2>Les dates, même incertaines</h2>
+    <h2 id="les-dates-m-me-incertaines">Les dates, même incertaines</h2>
     <p>Écrivez chaque date exacte au format YYYY-MM-DD. Il se trie correctement, ne prête pas à confusion entre jour et mois et correspond au format importé par AtlasDays. Gardez la même précision pour les deux dates d’une ligne : deux dates exactes, ou seulement une année.</p>
     <ul>
       <li><strong>Vous connaissez la date.</strong> Saisissez-la et précisez dans Notes d’où elle vient.</li>
@@ -239,7 +252,7 @@
     </ul>
     <p>Piège courant des tableurs : Excel et d’autres apps convertissent souvent 2025-03-03 en date et peuvent l’enregistrer à nouveau selon vos paramètres régionaux, par exemple 03/03/2025. Avant d’importer le fichier, vérifiez que les colonnes de dates affichent toujours YYYY-MM-DD. Sinon, réglez-les à ce format ou en texte brut.</p>
 
-    <h2>Une ligne par séjour, pas par voyage</h2>
+    <h2 id="une-ligne-par-s-jour-pas-par-voyage">Une ligne par séjour, pas par voyage</h2>
     <p>Une ligne correspond à un séjour continu dans un pays. Un voyage traversant deux pays prend deux lignes. Le jour du passage de l’un à l’autre figure sur les deux, comme le 10 mars dans l’exemple : vous étiez ce jour-là au Portugal et en Espagne. Cette structure convient à tous les formulaires, car il est facile de regrouper les lignes, mais difficile de les scinder après coup.</p>
     <div class="example">
       <p><strong>Un voyage, trois formulaires.</strong> Vous vivez au Royaume-Uni avec un visa, prenez l’avion pour Lisbonne le 3 mars 2025, le train pour Madrid le 10 mars et rentrez en avion le 16 mars. Le modèle contient deux lignes : Portugal du 2025-03-03 au 2025-03-10 et Espagne du 2025-03-10 au 2025-03-16.</p>
@@ -247,7 +260,7 @@
     </div>
     <p>Lorsque vous réunissez plusieurs lignes en une absence, vérifiez les vols aux deux extrémités. Un départ de nuit peut placer le jour de sortie de votre pays de résidence un jour avant la première date d’arrivée dans le fichier.</p>
 
-    <h2>Recopier les données dans un formulaire</h2>
+    <h2 id="recopier-les-donn-es-dans-un-formulaire">Recopier les données dans un formulaire</h2>
     <ol class="steps">
       <li>Vérifiez jusqu’où le formulaire remonte dans le <a href="/fr/learn/travel-history-for-visa-applications">tableau des périodes demandées</a> (5 ans pour le DS-160, jusqu’à 10 pour certaines demandes britanniques de visa de visiteur et canadiennes de résidence permanente, toute la période requise pour la citoyenneté).</li>
       <li>Triez selon Start Date et masquez les lignes terminées avant cette période.</li>
@@ -256,7 +269,7 @@
       <li>Gardez une copie de la demande déposée afin que la suivante parte des mêmes dates.</li>
     </ol>
 
-    <h2>Importer gratuitement le fichier dans AtlasDays</h2>
+    <h2 id="importer-gratuitement-le-fichier-dans-atlasdays">Importer gratuitement le fichier dans AtlasDays</h2>
     <p>Le modèle utilise les colonnes d’importation d’AtlasDays : le fichier que vous remplissez est donc celui que vous importez. Ouvrez <strong>Réglages → Importer → Fichier CSV</strong> et sélectionnez-le. AtlasDays affiche une vérification avec les lignes illisibles, les doublons possibles et les chevauchements, sans rien enregistrer avant votre confirmation. L’importation est gratuite. Ensuite, l’app calcule vos jours par pays et selon les limites de visa ou de résidence au fil des voyages ajoutés.</p>
     <ul>
       <li><strong>Purpose doit être l’un des quatre mots prévus.</strong> AtlasDays lit Personal, Business, Study et Transit (et traite Tourism comme Personal). Toute autre valeur est ignorée et le voyage est importé sans motif : gardez les termes du formulaire dans Notes.</li>
@@ -265,7 +278,7 @@
     </ul>
     <p>Vous n’avez pas encore de fichier ? L’écran d’importation propose aussi le prompt <strong>Créer un CSV avec l’IA</strong>, qui transforme des notes ou un itinéraire en ces colonnes avec un assistant IA. Le contenu collé dans cet outil est soumis à sa propre politique de confidentialité.</p>
 
-    <h2>Au-delà du modèle</h2>
+    <h2 id="au-del-du-mod-le">Au-delà du modèle</h2>
     <p>Un modèle organise le relevé, mais ne le rend pas complet. Dix lignes bien rangées pour cinq ans de voyages peuvent indiquer que les courts déplacements manquent. Le libellé du formulaire fait toujours foi. Pour savoir ce que chaque formulaire demande, voir <a href="/fr/learn/travel-history-for-visa-applications">l’historique de voyages pour les demandes de visa</a>. Pour combler les lacunes avec les tampons, e-mails et photos, voir <a href="/fr/learn/rebuild-travel-history-from-passport-stamps-emails-photos">la reconstitution de l’historique</a> ; pour les données officielles de passage, <a href="/fr/learn/get-official-entry-exit-records">les relevés d’entrée et de sortie</a>.</p>
 
     <div class="cta-box"><span class="cta-logo">
@@ -276,7 +289,7 @@
       <a class="cta-btn" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> Télécharger AtlasDays</a>
     </div>
 
-    <h2>Questions fréquentes</h2>
+    <h2 id="questions-fr-quentes">Questions fréquentes</h2>
     <h3>Existe-t-il un modèle officiel d’historique de voyages ?</h3>
     <p>Il n’en existe pas d’universel. Certains formulaires ont leur propre tableau, comme l’annexe 1 du IMM 5257 et le IMM 5562 canadiens, ou la partie 8 du N-400 américain : c’est leur version qu’il faut déposer. Un modèle comme celui-ci est votre relevé de travail, dont vous recopiez les données dans chaque formulaire.</p>
     <h3>Quel format de date utiliser pour un historique de voyages ?</h3>

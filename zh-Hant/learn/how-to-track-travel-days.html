@@ -120,9 +120,9 @@
   <script>window.AtlasDaysPageLocales={"en":{"url":"/learn/how-to-track-travel-days","label":"Read this page in English","dismiss":"Dismiss"},"ja":{"url":"/ja/learn/how-to-track-travel-days","label":"このページを日本語で読む","dismiss":"閉じる"},"nl":{"url":"/nl/learn/how-to-track-travel-days","label":"Lees deze pagina in het Nederlands","dismiss":"Sluiten"},"de":{"url":"/de/learn/how-to-track-travel-days","label":"Diese Seite auf Deutsch lesen","dismiss":"Schließen"},"es":{"url":"/es/learn/how-to-track-travel-days","label":"Lee esta página en español","dismiss":"Cerrar"},"fr":{"url":"/fr/learn/how-to-track-travel-days","label":"Lire cette page en français","dismiss":"Fermer"},"ru":{"url":"/ru/learn/how-to-track-travel-days","label":"Читать эту страницу на русском","dismiss":"Закрыть"},"uk":{"url":"/uk/learn/how-to-track-travel-days","label":"Читати цю сторінку українською","dismiss":"Закрити"},"tr":{"url":"/tr/learn/how-to-track-travel-days","label":"Bu sayfayı Türkçe okuyun","dismiss":"Kapat"},"pt":{"url":"/pt/learn/how-to-track-travel-days","label":"Leia esta página em português","dismiss":"Fechar"},"ko":{"url":"/ko/learn/how-to-track-travel-days","label":"이 페이지를 한국어로 읽기","dismiss":"닫기"},"zh-Hans":{"url":"/zh-Hans/learn/how-to-track-travel-days","label":"以简体中文阅读本页","dismiss":"关闭"},"pl":{"url":"/pl/learn/how-to-track-travel-days","label":"Przeczytaj tę stronę po polsku","dismiss":"Zamknij"}};window.AtlasDaysMatchLocale=function(tag,m){var w=String(tag||'').trim().replace(/_/g,'-').toLowerCase(),c;if(!w)return '';for(c in m)if(c.toLowerCase()===w)return c;var s=function(t){try{return new Intl.Locale(t).maximize().script||''}catch(err){return null}},b=w.split('-')[0],x=s(w);for(c in m){if(c.toLowerCase().split('-')[0]!==b)continue;if(x===null){if(c.indexOf('-')<0)return c;continue}if(s(c)===x)return c}return ''};(function(){var q=new URLSearchParams(location.search).get('lang');if(!q)return;var m=window.AtlasDaysPageLocales,e=m[window.AtlasDaysMatchLocale(q,m)];if(e&&e.url!==location.pathname)location.replace(e.url+location.search+location.hash)})()</script>
   <script defer src="../../assets/js/locale-route.js?v=20260830c"></script>
   <link rel="stylesheet" href="../../assets/css/tokens.css?v=20260928f" />
-  <link rel="stylesheet" href="../../assets/css/article-variants/49dd6e3e3ea5.css?v=20260928f" />
+  <link rel="stylesheet" href="../../assets/css/article-variants/49dd6e3e3ea5.css?v=20261005a" />
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
-  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20260925a" />
+  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261005a" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
 </head>
 <body>
@@ -204,7 +204,23 @@
       <p><strong>重點：</strong>可靠的方法是邊旅行邊保留一份<strong>註明日期的行程清單</strong>，再按國家及計算期間加總天數。試算表也能做到，但須<strong>每個日曆日各占一列</strong>。<strong>AtlasDays</strong> 會代為計算：手動新增行程，或讓「自動偵測行程」新增，所有天數就會更新。位置紀錄、照片及航班紀錄適合重建過去，官方紀錄是最有力的佐證資料，但這四者本身都不會持續顯示累計天數。</p>
     </div>
 
-    <h2>六種方法並列比較</h2>
+    <details class="toc">
+      <summary>本頁內容</summary>
+      <ul>
+        <li><a href="#section-1">六種方法並列比較</a></li>
+        <li><a href="#1">1. 試算表</a></li>
+        <li><a href="#2">2. 手機位置紀錄</a></li>
+        <li><a href="#3">3. 照片</a></li>
+        <li><a href="#4">4. 航班紀錄</a></li>
+        <li><a href="#5">5. 官方紀錄</a></li>
+        <li><a href="#6-atlasdays">6. AtlasDays</a></li>
+        <li><a href="#section-8">可靠記錄方法的共同點</a></li>
+        <li><a href="#section-9">天數以外仍有其他問題</a></li>
+        <li><a href="#section-10">常見問題</a></li>
+      </ul>
+    </details>
+    <script>(function(){var t=document.currentScript.previousElementSibling;if(matchMedia('(min-width: 760px)').matches)t.open=true;var a=[].slice.call(t.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
+    <h2 id="section-1">六種方法並列比較</h2>
     <div class="cards">
       <section class="card">
         <h3>試算表</h3>
@@ -263,7 +279,7 @@
     </div>
     <p>這些方法可以一起使用。常見做法是先靠位置紀錄、照片、航班與官方資料重建過去，再從今天起維護一份持續更新的清單。</p>
 
-    <h2>1. 試算表</h2>
+    <h2 id="1">1. 試算表</h2>
     <p>試算表免費、透明，也完全由自己掌控。弱點不在算術，而在維護：每次行程都要手動填入；漏掉一趟或寫錯日期，所有依此計算的總數都會跟著變，卻不會自動提醒。</p>
     <p>格式決定它能否處理滾動式期間。若每趟行程一列，每項總數都必須截取行程落在期間邊界內的部分；重疊的兩列還會把相同日子重複計入。若<strong>每個日曆日各占一列</strong>，計算期間就只是日期篩選：</p>
     <ol class="steps">
@@ -276,23 +292,23 @@
     </div>
     <p>這會計入所有標記日，包括抵達與離境當天。但並非每項規定都這樣計算，應查閱所追蹤規定的<a href="/zh-Hant/learn/what-counts-as-a-day-for-visa-purposes">計日方式</a>。<a href="/zh-Hant/learn/schengen-rolling-window-walkthrough">申根滾動式期間逐日說明</a>示範期間如何每天移動。</p>
 
-    <h2>2. 手機位置紀錄</h2>
+    <h2 id="2">2. 手機位置紀錄</h2>
     <p>若當時已啟用位置紀錄，就能查找已忘記的日期曾在何處。它最適合用來重建過去，而非直接計算天數。</p>
     <ul>
       <li><strong>Google 地圖時間軸</strong>現在把資料儲存在裝置上。截至 2026 年 9 月，Google 的說明頁指出，電腦版 Google 地圖已無法使用時間軸。在 iPhone 上，可從 Google 地圖 App 設定將其匯出為名為 <code>location-history.json</code> 的檔案，也可以啟用加密備份。自動刪除可設為 3、18 或 36 個月，因此較舊的紀錄可能已不在。匯出的是原始的造訪地點與路線，仍須自行整理成各國天數。</li>
       <li><strong>iPhone 的重要位置</strong>，依 Apple 說明，是近期造訪地點的紀錄，用於個人化「照片」回憶等功能。它不是可供直接計算的旅行日誌，也無法回溯多年。</li>
     </ul>
 
-    <h2>3. 照片</h2>
+    <h2 id="3">3. 照片</h2>
     <p>啟用定位時拍攝的照片會帶有時間與座標，使圖庫成為意外好用的行蹤日記。缺口包括沒拍照的日子、缺少位置資料的照片，以及照片很少能記錄的確切越境時刻。AtlasDays 可在裝置上掃描圖庫，將位置分組為建議行程，並在確認前不儲存任何資料。詳見<a href="/zh-Hant/help/photo-import">說明中心：照片匯入</a>。</p>
 
-    <h2>4. 航班紀錄</h2>
+    <h2 id="4">4. 航班紀錄</h2>
     <p>App 或航空公司帳戶中的航班紀錄，是按日期列出的空中越境資料，幾乎可作為行蹤骨架。但它漏掉所有火車、開車與渡輪旅程，轉機也不等於停留。<a href="/zh-Hant/learn/flighty-flight-history-day-count">如何把 Flighty 航班紀錄換算成停留天數</a>說明做法，包括如何處理轉機。</p>
 
-    <h2>5. 官方紀錄</h2>
+    <h2 id="5">5. 官方紀錄</h2>
     <p>有些政府允許查閱或申請個人的入出境紀錄。對保存紀錄的國家而言，它是最有力的佐證，也是核對有爭議日期的首選。但紀錄須逐國取得，而且只涵蓋過去，無法判斷下個月行程是否仍在上限內。<a href="/zh-Hant/learn/get-official-entry-exit-records">如何申請官方入出境紀錄</a>列出申請處。</p>
 
-    <h2>6. AtlasDays</h2>
+    <h2 id="6-atlasdays">6. AtlasDays</h2>
     <p>AtlasDays 保留行程清單，並代為計算已完成與預定行程的期間天數。它同時計算滾動式期間與日曆年，將不確定日期與精確日期區分，在儲存前顯示匯入行程，申請需要時也能匯出紀錄。各步驟如下：</p>
     <ul>
       <li><strong>加入行程。</strong>可手動新增，從照片、CSV 檔案或 Flighty 匯入，或啟用「自動偵測行程」，讓 iPhone 發現已跨入另一國時新增行程。偵測到的行程可復原、編輯或刪除；匯入行程則在確認前不會儲存。</li>
@@ -304,7 +320,7 @@
       <li><strong>隱私權。</strong>不需帳號。行程資料保留在裝置上；若啟用 iCloud 同步，則儲存在自己的 iCloud 帳號。</li>
     </ul>
 
-    <h2>可靠記錄方法的共同點</h2>
+    <h2 id="section-8">可靠記錄方法的共同點</h2>
     <ul>
       <li><strong>有日期的行程才是原始紀錄。</strong>各國總天數總能從註明日期的行程重新計算；只有總數、沒有背後的行程，就無法查核或修正。</li>
       <li><strong>把不確定日期標明為不確定。</strong>猜出的精確日期看起來與真正確定的日期一樣可靠。應將「2019 年某段時間」與有佐證的日期分開。</li>
@@ -312,7 +328,7 @@
       <li><strong>維持一份主要紀錄。</strong>一份稅務試算表、一份簽證清單，再加一份申請匯出檔，遲早會互相矛盾。保留一份清單，按不同規定計算。</li>
     </ul>
 
-    <h2>天數以外仍有其他問題</h2>
+    <h2 id="section-9">天數以外仍有其他問題</h2>
     <p>整齊的紀錄能回答「幾天」，但哪些日子算數，仍由個別規定決定。<a href="/zh-Hant/learn/schengen-90-180-rule">申根 90/180 規定</a>、<a href="/zh-Hant/learn/183-day-tax-residency-rule">183 天稅務居民規定</a>及居留許可的離境規定，會以不同方式計算同樣的行程。若申請要用旅行紀錄，<a href="/zh-Hant/learn/travel-history-for-visa-applications">準備簽證申請旅行紀錄</a>說明審查人員希望看到什麼。</p>
 
     <div class="cta-box">
@@ -325,7 +341,7 @@
       <a class="cta-btn" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> 取得 AtlasDays</a>
     </div>
 
-    <h2>常見問題</h2>
+    <h2 id="section-10">常見問題</h2>
     <h3>記錄在各國停留天數，最簡單的方法是什麼？</h3>
     <p>保留一份包含入境與出境日期的行程清單，再交由工具計算。AtlasDays 需要維護的工作較少，因為新增行程時就會計算每個期間；試算表也可行，但須每日一列，並在每次旅行後更新。較早年度可用照片、航班紀錄、位置紀錄與官方資料重建。</p>
     <h3>Google 地圖時間軸能算出在某國待了幾天嗎？</h3>

@@ -120,9 +120,9 @@
   <script>window.AtlasDaysPageLocales={"en":{"url":"/learn/how-to-track-travel-days","label":"Read this page in English","dismiss":"Dismiss"},"nl":{"url":"/nl/learn/how-to-track-travel-days","label":"Lees deze pagina in het Nederlands","dismiss":"Sluiten"},"de":{"url":"/de/learn/how-to-track-travel-days","label":"Diese Seite auf Deutsch lesen","dismiss":"Schließen"},"es":{"url":"/es/learn/how-to-track-travel-days","label":"Lee esta página en español","dismiss":"Cerrar"},"fr":{"url":"/fr/learn/how-to-track-travel-days","label":"Lire cette page en français","dismiss":"Fermer"},"ru":{"url":"/ru/learn/how-to-track-travel-days","label":"Читать эту страницу на русском","dismiss":"Закрыть"},"uk":{"url":"/uk/learn/how-to-track-travel-days","label":"Читати цю сторінку українською","dismiss":"Закрити"},"tr":{"url":"/tr/learn/how-to-track-travel-days","label":"Bu sayfayı Türkçe okuyun","dismiss":"Kapat"},"pt":{"url":"/pt/learn/how-to-track-travel-days","label":"Leia esta página em português","dismiss":"Fechar"},"ko":{"url":"/ko/learn/how-to-track-travel-days","label":"이 페이지를 한국어로 읽기","dismiss":"닫기"},"zh-Hant":{"url":"/zh-Hant/learn/how-to-track-travel-days","label":"以繁體中文閱讀本頁","dismiss":"關閉"},"zh-Hans":{"url":"/zh-Hans/learn/how-to-track-travel-days","label":"以简体中文阅读本页","dismiss":"关闭"},"pl":{"url":"/pl/learn/how-to-track-travel-days","label":"Przeczytaj tę stronę po polsku","dismiss":"Zamknij"}};window.AtlasDaysMatchLocale=function(tag,m){var w=String(tag||'').trim().replace(/_/g,'-').toLowerCase(),c;if(!w)return '';for(c in m)if(c.toLowerCase()===w)return c;var s=function(t){try{return new Intl.Locale(t).maximize().script||''}catch(err){return null}},b=w.split('-')[0],x=s(w);for(c in m){if(c.toLowerCase().split('-')[0]!==b)continue;if(x===null){if(c.indexOf('-')<0)return c;continue}if(s(c)===x)return c}return ''};(function(){var q=new URLSearchParams(location.search).get('lang');if(!q)return;var m=window.AtlasDaysPageLocales,e=m[window.AtlasDaysMatchLocale(q,m)];if(e&&e.url!==location.pathname)location.replace(e.url+location.search+location.hash)})()</script>
   <script defer src="../../assets/js/locale-route.js?v=20260830c"></script>
   <link rel="stylesheet" href="../../assets/css/tokens.css?v=20260928f" />
-  <link rel="stylesheet" href="../../assets/css/article-variants/49dd6e3e3ea5.css?v=20260928f" />
+  <link rel="stylesheet" href="../../assets/css/article-variants/49dd6e3e3ea5.css?v=20261005a" />
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
-  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20260925a" />
+  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261005a" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
 </head>
 <body>
@@ -198,7 +198,23 @@
     <p class="verified">最終確認：2026年9月</p>
     <div class="tldr"><p><strong>要点：</strong>頼りになるのは、旅行のたびに残す<strong>日付付きの旅行一覧</strong>と、国ごと・集計期間ごとに日数を数える計算方法です。スプレッドシートでも<strong>1日につき1行</strong>なら実現できます。<strong>AtlasDays</strong>では旅行を追加するか「旅行の自動検出」に任せれば、すべての集計が更新されます。位置情報履歴、写真、フライト記録は過去の再構成に向き、公的記録は最も強い証拠ですが、この4つだけでは継続的な日数の集計はできません。</p></div>
 
-    <h2>6つの方法を比較</h2>
+    <details class="toc">
+      <summary>目次</summary>
+      <ul>
+        <li><a href="#6">6つの方法を比較</a></li>
+        <li><a href="#1">1. スプレッドシート</a></li>
+        <li><a href="#2">2. スマートフォンの位置情報履歴</a></li>
+        <li><a href="#3">3. 写真</a></li>
+        <li><a href="#4">4. フライト履歴</a></li>
+        <li><a href="#5">5. 公的記録</a></li>
+        <li><a href="#6-atlasdays">6. AtlasDays</a></li>
+        <li><a href="#section-8">どの方法でも信頼性を高める条件</a></li>
+        <li><a href="#section-9">滞在日数以外に確認すること</a></li>
+        <li><a href="#section-10">よくある質問</a></li>
+      </ul>
+    </details>
+    <script>(function(){var t=document.currentScript.previousElementSibling;if(matchMedia('(min-width: 760px)').matches)t.open=true;var a=[].slice.call(t.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
+    <h2 id="6">6つの方法を比較</h2>
     <div class="cards">
       <section class="card"><h3>スプレッドシート</h3><dl><div><dt>手間</dt><dd>高い。旅行のたびに必要</dd></div><div><dt>正確さ</dt><dd>入力の質による</dd></div><div><dt>主な欠落</dt><dd>記録を忘れた旅行</dd></div><div><dt>ローリングの集計期間</dt><dd>対応可能。1日1行と期間の計算式が必要</dd></div></dl></section>
       <section class="card"><h3>スマートフォンの位置情報履歴</h3><dl><div><dt>手間</dt><dd>有効化後は低い</dd></div><div><dt>正確さ</dt><dd>いた場所の確認に向く</dd></div><div><dt>主な欠落</dt><dd>無効だった期間、自動削除された履歴、処理が必要な生データ</dd></div><div><dt>ローリングの集計期間</dt><dd>非対応。自分で数える必要がある</dd></div></dl></section>
@@ -209,7 +225,7 @@
     </div>
     <p>これらの方法は競合するものではありません。位置情報履歴、写真、フライト、公的記録から過去を再構成し、今後は1つの一覧を更新し続けるのが一般的です。</p>
 
-    <h2>1. スプレッドシート</h2>
+    <h2 id="1">1. スプレッドシート</h2>
     <p>スプレッドシートは無料で、計算内容が見え、自分で完全に管理できます。弱点は計算ではなく維持です。旅行を毎回手入力する必要があり、1件の記録漏れや日付の誤りが、警告なしにそこから作るすべての合計を変えます。</p>
     <p>ローリングの集計期間に対応できるかは表の構造で決まります。旅行1件につき1行では、集計期間の端で旅行を切り分ける必要があり、重なる2行を二重に数えるおそれもあります。<strong>暦日ごとに1行</strong>なら、期間は日付で絞るだけです。</p>
     <ol class="steps">
@@ -220,23 +236,23 @@
     <div class="example"><p><strong>2026年6月30日を確認。</strong>180日間の集計期間は2026年1月2日から6月30日までです。シェンゲン圏に2025年12月1日から2026年1月5日、3月10日から31日、5月15日から6月30日に滞在したとします。最初の旅行のうち期間内に入るのは1月2日から5日の4日だけです。3月に22日、5月から6月に47日を加えると、式の結果は<strong>73日</strong>です。3旅行の全期間を合計すると105日となり、90日を既に超えたと誤解します。</p></div>
     <p>この方法は到着日と出発日を含む、印をつけたすべての日を数えます。すべてのルールがそうとは限りません。対象ルールの<a href="/ja/learn/what-counts-as-a-day-for-visa-purposes">1日の数え方</a>を確認してください。<a href="/ja/learn/schengen-rolling-window-walkthrough">シェンゲンのローリングの集計期間の解説</a>では、期間が日ごとに動く様子を示しています。</p>
 
-    <h2>2. スマートフォンの位置情報履歴</h2>
+    <h2 id="2">2. スマートフォンの位置情報履歴</h2>
     <p>位置情報履歴を有効にしていれば、覚えていない日付にいた場所を確認できます。日数の集計より、過去の再構成に適しています。</p>
     <ul>
       <li><strong>Googleマップのタイムライン</strong>は現在、データを端末に保存します。2026年9月時点のGoogleのヘルプによると、パソコン上のマップではタイムラインを利用できません。iPhoneではマップアプリの設定から<code>location-history.json</code>というファイルとして書き出し、暗号化バックアップを有効にできます。自動削除は3、18、36か月に設定できるため、古い履歴は既に消えている場合があります。書き出されるのは訪問や経路の生データで、国ごとの日数には自分で変換する必要があります。</li>
       <li><strong>iPhoneの利用頻度の高い場所</strong>は、写真のメモリーなどを個人向けに調整するため、最近訪れた場所の記録だとAppleが説明する機能です。日数を集計できる旅行記録ではなく、何年も前までさかのぼれるものでもありません。</li>
     </ul>
 
-    <h2>3. 写真</h2>
+    <h2 id="3">3. 写真</h2>
     <p>位置情報を有効にして撮った写真には時刻と座標があるため、写真ライブラリは滞在場所を思い出す日記になります。ただし写真を撮らなかった日、位置情報のない写真、写真からは通常分からない正確な国境通過時刻には空白が残ります。AtlasDaysは端末内で写真ライブラリを調べ、位置情報を旅行の候補としてまとめます。確認するまで何も保存しません。<a href="/ja/help/photo-import">ヘルプセンター：写真のインポート</a>をご覧ください。</p>
 
-    <h2>4. フライト履歴</h2>
+    <h2 id="4">4. フライト履歴</h2>
     <p>アプリや航空会社のアカウントに残るフライト記録は、空路の国境越えを日付付きで示し、移動の骨格になります。ただし列車、車、フェリーでの移動はなく、乗り継ぎは滞在とは限りません。<a href="/ja/learn/flighty-flight-history-day-count">Flightyのフライト履歴を滞在日数に変換する方法</a>では、乗り継ぎの扱いも説明しています。</p>
 
-    <h2>5. 公的記録</h2>
+    <h2 id="5">5. 公的記録</h2>
     <p>政府によっては、自分の出入国記録を閲覧・請求できます。記録を保有する国については最も強い証拠で、争いのある日付を照合するのに適しています。ただし1回に1か国ずつで、過去しか示さないため、来月の旅行が上限内かは分かりません。請求先は<a href="/ja/learn/get-official-entry-exit-records">公的な出入国記録の取得方法</a>にまとめています。</p>
 
-    <h2>6. AtlasDays</h2>
+    <h2 id="6-atlasdays">6. AtlasDays</h2>
     <p>AtlasDaysは旅行の一覧を管理し、過去と予定の旅行について集計期間の日数を計算します。ローリングの集計期間と暦年の両方に対応し、不確かな日付を正確な日付と区別し、インポートする旅行は保存前に表示し、申請書が求めるときには記録を書き出せます。各段階の扱いは次のとおりです。</p>
     <ul>
       <li><strong>旅行の入力。</strong>手動で追加するか、写真、CSV、Flightyからインポートできます。「旅行の自動検出」を有効にすると、iPhoneが別の国への移動に気づいたときに旅行を追加します。検出された旅行は取り消し、編集、削除ができます。インポートは確定するまで何も保存しません。</li>
@@ -248,7 +264,7 @@
       <li><strong>プライバシー。</strong>アカウントは不要です。iCloud同期を有効にしない限り、旅行は端末内にとどまります。有効にすると自分のiCloudアカウントに保存されます。</li>
     </ul>
 
-    <h2>どの方法でも信頼性を高める条件</h2>
+    <h2 id="section-8">どの方法でも信頼性を高める条件</h2>
     <ul>
       <li><strong>日付付きの旅行を元の記録にする。</strong>国ごとの合計は、日付付きの旅行からいつでも再計算できます。元の旅行がない合計は確認も訂正もできません。</li>
       <li><strong>不確かな日付を明示する。</strong>推測した正確な日付は、本当の日付と同じくらい確実に見えてしまいます。「2019年のどこか」を証拠のある日付と分けてください。</li>
@@ -256,7 +272,7 @@
       <li><strong>元になる記録を1つにする。</strong>税務用のシート、ビザ用の一覧、申請用の書き出しは、いずれ矛盾します。1つの一覧を複数の方法で数えてください。</li>
     </ul>
 
-    <h2>滞在日数以外に確認すること</h2>
+    <h2 id="section-9">滞在日数以外に確認すること</h2>
     <p>整った記録は「何日いたか」に答えますが、どの日を算入するかはルールが決めます。<a href="/ja/learn/schengen-90-180-rule">シェンゲン90/180ルール</a>、<a href="/ja/learn/183-day-tax-residency-rule">税務上の居住を決める183日ルール</a>、在留許可の不在ルールは同じ旅行を別々に数えます。申請書に履歴が必要な場合は、<a href="/ja/learn/travel-history-for-visa-applications">ビザ申請の旅行履歴の準備</a>で審査官が期待する内容を説明しています。</p>
 
     <div class="cta-box"><span class="cta-logo"><img class="logo-dark" src="/assets/brand/logo_dark.png?v=20260325a" alt="AtlasDaysのロゴ" width="52" height="52" /><img class="logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="AtlasDaysのロゴ" width="52" height="52" /></span>
@@ -264,7 +280,7 @@
       <p>手動で旅行を追加するか、写真やFlightyからインポートするか、国境を越えたときの「旅行の自動検出」に任せます。AtlasDaysはiPhone内で日付付きの記録を1つ、非公開で管理し、<strong>シェンゲン：90/180短期滞在ルール</strong>などの上限に照らして数えます。</p>
       <a class="cta-btn" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> AtlasDaysを入手</a>
     </div>
-    <h2>よくある質問</h2>
+    <h2 id="section-10">よくある質問</h2>
     <h3>国ごとの滞在日数を記録する最も簡単な方法は？</h3>
     <p>出入国日付きの旅行一覧を1つ作り、集計はツールに任せます。AtlasDaysなら旅行を追加するたびに各集計期間を数えるため維持の手間が少なく、スプレッドシートも1日1行で旅行後に更新すれば使えます。古い年は写真、フライト記録、位置情報履歴、公的記録から再構成します。</p>
     <h3>Googleマップのタイムラインで国ごとの滞在日数が分かりますか？</h3>
