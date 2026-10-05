@@ -52,3 +52,10 @@
    other lists. */
 .hx-uc-wrap > .rule-cards { margin-top: 28px; }
 .hx-uc-sub + .rule-cards { margin-top: 14px; }
+
+/* The related cards at the foot of a Learn article. The article variants
+   style `.related a` as blue text links; a card keeps the card look. */
+.related .rule-cards { margin-top: 14px; }
+.related a.rule-card { color: var(--text); font-size: inherit; text-decoration: none; }
+/* An odd last related card spans the row instead of standing alone. */
+@media (min-width: 721px) { .related .rule-cards > :last-child:nth-child(odd) { grid-column: 1 / -1; } }
