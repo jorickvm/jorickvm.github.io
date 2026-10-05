@@ -1433,52 +1433,88 @@ APP_CATALOG_PATH = SOURCE_ROOT / "data" / "app-catalog.json"
 LEARN_CARDS_PATH = SOURCE_ROOT / "data" / "learn-cards.json"
 
 
+def rule_card(path: str, code: str, locale: dict[str, object], available: set[str], preset_id: str | None = None) -> tuple[str, float, str] | None:
+    """One rule article as the app's preset card, in this locale: (family,
+    rank in the app's order, markup), or None when it has no card.
+
+    The card text is the app's (app-catalog.json, synced from the app by
+    scripts/sync_app_catalog.py) for articles with an `app_preset`; the few
+    without one have a card in learn-cards.json, ranked by its English title
+    among the app's rows. Used by the Learn index and the use-case pages.
+    """
+    if not _card_data:
+        _card_data["catalog"] = json.loads(APP_CATALOG_PATH.read_text(encoding="utf-8"))
+        _card_data["own"] = json.loads(LEARN_CARDS_PATH.read_text(encoding="utf-8"))["cards"]
+        _card_data["records"] = {str(r["path"]): r for r in json.loads(DATA_PATH.read_text(encoding="utf-8"))["articles"]}
+    catalog, own = _card_data["catalog"], _card_data["own"]
+    record = _card_data["records"].get(path, {})
+    default = default_locale_code()
+    preset_id = preset_id or record.get("app_preset")
+    if preset_id:
+        preset = catalog["presets"][preset_id]
+        family, flag, rank = preset["family"], preset["flag"], float(preset["rank"][code])
+        title, line = preset["title"][code], preset["line"][code]
+    elif path in own:
+        card = own[path]
+        family, flag = card["family"], card["flag"]
+        title, line = card["title"].get(code), card["line"].get(code)
+        if (not title or not line) and os.environ.get("ATLASDAYS_PREVIEW_BUILD"):
+            title, line = card["title"][default], card["line"][default]
+        if not title or not line:
+            raise SystemExit(f"learn-cards.json: {path} has no {code} title or line")
+        english = card["title"][default]
+        ranks = [p["rank"][code] for p in catalog["presets"].values() if p["family"] == family and p["title"][default] < english]
+        rank = (max(ranks) if ranks else -1) + 0.5
+    else:
+        return None
+    href = html.escape(localized_route(route_for(path), locale, available), quote=True)
+    image = f"/assets/flags/{flag.lower()}.png" if flag else "/assets/brand/hub-any-country.webp"
+    pill = "tax" if family == "usState" else family
+    markup = (
+        f'          <a class="rule-card" href="{href}" data-filter-item data-groups="{pill}">'
+        f'<img class="rule-flag" src="{image}" alt="" width="36" height="25" loading="lazy" />'
+        f'<span class="rule-text"><strong>{html.escape(title)}</strong><span>{html.escape(line)}</span></span></a>'
+    )
+    return family, rank, markup
+
+
+_card_data: dict[str, object] = {}
+
+
+def render_rule_cards(content: str, code: str, locale: dict[str, object], available: set[str]) -> str:
+    """`<!-- RULE_CARDS: learn/a.html learn/b.html -->` becomes those articles'
+    cards, in the order given (the use-case pages pick their own; they list
+    only rules the app offers as presets)."""
+    def cards(match: re.Match) -> str:
+        rows = []
+        for token in match.group(1).split():
+            # path@preset: that preset's card, linking to that article (the
+            # EU long-term resident preset has no article of its own).
+            path, _, preset = token.partition("@")
+            card = rule_card(path, code, locale, available, preset or None)
+            if card is None:
+                raise SystemExit(f"RULE_CARDS: {path} has no card (no app_preset, not in learn-cards.json)")
+            rows.append(card[2])
+        return "\n".join(rows)
+    return re.sub(r"<!-- RULE_CARDS: ([^>]*?) -->", cards, content)
+
+
 def render_learn_rules(content: str, code: str, locale: dict[str, object], available: set[str]) -> str:
     """The Learn index's rules as the app's preset cards.
 
     `<!-- LEARN_CHIPS -->` becomes the app's filter pills and
-    `<!-- LEARN_RULES -->` one section per app family, each article a card
-    with the preset's flag, title and one-line rule in this locale, in the
-    order the app shows them (app-catalog.json, synced from the app by
-    scripts/sync_app_catalog.py). Articles name their preset with
-    `app_preset`; the few without one have a card in learn-cards.json, placed
-    by its English title among the app's rows.
+    `<!-- LEARN_RULES -->` one section per app family with every rule
+    article's card (rule_card), in the order the app shows them.
     """
     if "<!-- LEARN_RULES -->" not in content:
         return content
     catalog = json.loads(APP_CATALOG_PATH.read_text(encoding="utf-8"))
-    own = json.loads(LEARN_CARDS_PATH.read_text(encoding="utf-8"))["cards"]
     records = json.loads(DATA_PATH.read_text(encoding="utf-8"))["articles"]
-    default = default_locale_code()
     cards: dict[str, list[tuple[float, str]]] = {}
     for record in records:
-        path = str(record["path"])
-        preset_id = record.get("app_preset")
-        if preset_id:
-            preset = catalog["presets"][preset_id]
-            family, flag, rank = preset["family"], preset["flag"], float(preset["rank"][code])
-            title, line = preset["title"][code], preset["line"][code]
-        elif path in own:
-            card = own[path]
-            family, flag = card["family"], card["flag"]
-            title, line = card["title"].get(code), card["line"].get(code)
-            if not title or not line:
-                raise SystemExit(f"learn-cards.json: {path} has no {code} title or line")
-            # Between the app rows whose English titles sort around it.
-            english = card["title"][default]
-            ranks = [p["rank"][code] for p in catalog["presets"].values() if p["family"] == family and p["title"][default] < english]
-            rank = (max(ranks) if ranks else -1) + 0.5
-        else:
-            continue
-        href = html.escape(localized_route(route_for(path), locale, available), quote=True)
-        image = f"/assets/flags/{flag.lower()}.png" if flag else "/assets/brand/hub-any-country.webp"
-        pill = next(s["family"] for s in catalog["sections"] if s["family"] == family)
-        pill = "tax" if pill == "usState" else pill
-        cards.setdefault(family, []).append((rank, (
-            f'          <a class="rule-card" href="{href}" data-filter-item data-groups="{pill}">'
-            f'<img class="rule-flag" src="{image}" alt="" width="36" height="25" loading="lazy" />'
-            f'<span class="rule-text"><strong>{html.escape(title)}</strong><span>{html.escape(line)}</span></span></a>'
-        )))
+        card = rule_card(str(record["path"]), code, locale, available)
+        if card:
+            cards.setdefault(card[0], []).append((card[1], card[2]))
     sections = []
     for section in catalog["sections"]:
         family = section["family"]
@@ -1532,6 +1568,7 @@ def render_hub(
     # /ja/about and friends, which were never built.
     available = {route_for(path) for path in translations.get(code, {})}
     content = render_learn_rules(content, code, locale, available)
+    content = render_rule_cards(content, code, locale, available)
     replacements = {
         "{{HTML_LANG}}": str(locale["html_lang"]),
         # Hubs are marketing surfaces and take the full wash; the legal and
@@ -1554,7 +1591,8 @@ def render_hub(
         "{{SITE_FOOTER}}": footer_template.replace("{{ASSET_PREFIX}}", prefix).rstrip(),
         "{{PAGE_SCRIPTS}}": str(hub.get("page_scripts", "")).rstrip(),
         "{{SEARCH_STYLESHEET}}": (
-            f'  <link rel="stylesheet" href="{prefix}assets/css/search.css?v=20261006a" />'
+            f'  <link rel="stylesheet" href="{prefix}assets/css/search.css?v=20261006a" />\n'
+            f'  <link rel="stylesheet" href="{prefix}assets/css/rule-cards.css?v=20261006a" />'
             if family == "hub" else ""
         ),
         "{{SEARCH_SCRIPT}}": (
