@@ -409,34 +409,12 @@ html[data-theme="light"] .hx-uc-chip { background: var(--bg-card-strong); }
 .hx-uc-chip:hover { border-color: var(--brand); }
 .hx-uc-chip img { flex: none; width: 26px; height: 19px; border-radius: 4px; object-fit: cover; }
 
-/* How it works: three numbered steps, each with its real screen. On phones
-   they sit in a row you swipe, so the page does not stack three phones. */
-.hx-uc-steps { display: grid; gap: 40px; margin-top: 36px; }
-.hx-uc-step { min-width: 0; }
-.hx-uc-step-device { width: min(100%, 240px); margin-bottom: 24px; }
-.hx-uc-step-n { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; font-size: 0.86rem; font-weight: 700; color: var(--blue); background: var(--blue-soft); }
-.hx-uc-step h3 { margin-top: 12px; font-size: 1.25rem; font-weight: 700; letter-spacing: -0.02em; }
-.hx-uc-step-body p { margin-top: 8px; color: var(--muted); }
-.hx-uc-step-body a { display: inline-block; margin-top: 12px; font-weight: 600; color: var(--blue); }
+/* How it works: the homepage's story (.hx-story), shared. */
 @media (max-width: 899px) {
-  .hx-uc-steps {
-    grid-auto-flow: column;
-    grid-auto-columns: min(76%, 300px);
-    gap: 20px;
-    margin-inline: calc(var(--hx-gutter) * -1);
-    padding: 0 var(--hx-gutter) 8px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-padding-inline: var(--hx-gutter);
-    scrollbar-width: none;
-  }
-  .hx-uc-steps::-webkit-scrollbar { display: none; }
-  .hx-uc-step { scroll-snap-align: start; }
   /* Only the arrow on narrow rows; the word stays for screen readers. */
   .hx-uc-rule { padding-right: 14px; }
   .hx-uc-rule-go { font-size: 0; }
   .hx-uc-rule-go::after { content: "\2192"; font-size: 1.05rem; }
-  .hx-uc-step-device { width: 100%; max-width: 220px; }
 }
 
 /* Go deeper: guides as cards. */
@@ -612,7 +590,6 @@ html:lang(ko) .hx-uc-hero h1 { font-size: calc(var(--fs-display) * 0.8); letter-
   .hx-uc-rules { grid-template-columns: 1fr 1fr; }
   /* The open-ended card closes the list across both columns. */
   .hx-uc-rules-any { grid-column: 1 / -1; }
-  .hx-uc-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 48px; }
   .hx-uc-cards { grid-template-columns: repeat(3, 1fr); }
   .hx-uc-chips { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }
