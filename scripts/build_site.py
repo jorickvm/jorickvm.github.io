@@ -1425,6 +1425,10 @@ def calculator_preset(article: dict[str, object]) -> dict[str, object]:
         "residentAt": number + 1 if match.group(1) == ">" else number,
     }
     settings.update(dict(dict(article["calculator"]).get("settings", {})))
+    # A country that counts only days with an overnight stay (Portugal): the
+    # rule needs the country the setting belongs to.
+    if settings.get("overnight") is True:
+        settings["overnight"] = settings["country"]
     return {"settings": settings, "lock": ["country", "goal", "periodType", "limitInput"], "link": f"183-{residency['code']}"}
 
 
@@ -1454,7 +1458,8 @@ def calculator_link_query(article: dict[str, object]) -> str:
     number = int(match.group(2))
     resident = number + 1 if match.group(1) == ">" else number
     limit = "" if number == 183 else f"&limit={number}"
-    return f"?country={code.upper()}&{params}&resident={resident}{limit}"
+    overnight = "&overnight=1" if dict(dict(article.get("calculator") or {}).get("settings", {})).get("overnight") else ""
+    return f"?country={code.upper()}&{params}&resident={resident}{limit}{overnight}"
 
 
 def link_calculator_to_rule(content: str, article: dict[str, object]) -> str:

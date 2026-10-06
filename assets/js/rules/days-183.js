@@ -35,6 +35,8 @@
       taxStart: c.D.iso(c.today >= aprilSixth ? aprilSixth : c.D.fromParts(p.y - 1, 4, 6))
     };
   }
+  // A same-day stay in a country whose rule needs an overnight stay.
+  function dayTrip(t, c) { return !!c.settings.overnight && t.country === c.settings.overnight && t.start === t.end; }
   function setting(c, key) { return c.settings[key] || defaults(c)[key]; }
   function countUpTo(c) {
     var iso = c.settings.checkOn;
@@ -85,12 +87,16 @@
       if (resident >= 1 && resident <= 366) s.residentAt = resident;
       var limit = Math.round(+q.get("limit"));
       if (limit >= 1 && limit <= 366) s.limit = limit;
+      if (q.get("overnight") === "1") s.overnight = code;
       return { settings: s, link: "183-" + code.toLowerCase() };
     },
     newTripCountry: function (c) { return c.settings.country || ""; },
 
-    // A country that counts nights (Portugal) leaves out the day you leave.
+    // A country that counts nights leaves out the day you leave; one that
+    // counts only days with an overnight stay (Portugal: "qualquer dia [...]
+    // que inclua dormida") counts a same-day visit as none.
     tripLabel: function (t, c) {
+      if (dayTrip(t, c)) return c.text("tripDays", { n: 0 });
       return c.text("tripDays", { n: t.end - t.start + (c.settings.nights ? 0 : 1) });
     },
 
@@ -98,6 +104,7 @@
       var b = bounds(c), byCountry = {};
       trips.forEach(function (t) {
         var code = t.country || "";
+        if (dayTrip(t, c)) return;
         var last = c.settings.nights ? t.end - 1 : t.end;
         for (var d = Math.max(t.start, b.from); d <= Math.min(last, b.to); d++) (byCountry[code] = byCountry[code] || new Set()).add(d);
       });
