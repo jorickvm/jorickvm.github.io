@@ -10,7 +10,7 @@
   var hasObserver = 'IntersectionObserver' in window;
   root.classList.add('hx-page');
 
-  // ---------- Scroll: one rAF-throttled handler for the effects below ----------
+  // ---------- Header: floats as a pill once the page scrolls ----------
   var ticking = false;
   var scrollHandlers = [];
   function onScroll() {
