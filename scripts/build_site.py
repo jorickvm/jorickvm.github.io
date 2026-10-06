@@ -1425,7 +1425,7 @@ def calculator_preset(article: dict[str, object]) -> dict[str, object]:
         "residentAt": number + 1 if match.group(1) == ">" else number,
     }
     settings.update(dict(dict(article["calculator"]).get("settings", {})))
-    return {"settings": settings, "lock": ["country", "goal", "periodType"], "link": f"183-{residency['code']}"}
+    return {"settings": settings, "lock": ["country", "goal", "periodType", "limitInput"], "link": f"183-{residency['code']}"}
 
 
 def calculator_link_query(article: dict[str, object]) -> str:

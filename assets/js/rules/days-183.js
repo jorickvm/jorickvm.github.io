@@ -107,6 +107,12 @@
         if (top) c.settings.country = top;
       }
       var country = c.settings.country || "";
+      // The day count (Jorick, 2026-10-06), as the app's tracker editor sets
+      // it (labelled with the app's "Days": its Limit and Target rows share a
+      // word with Goal in several languages): a typed number overrides the page's 183, or a
+      // linked country's threshold, and that country's exact "resident from"
+      // day moves with it. Embedded calculators lock it (calculator_preset).
+      var base = +c.settings.limit || LIMIT, limit = +c.settings.limitInput || base;
       var y = c.D.parts(c.today).y, years = [];
       for (var k = y + 1; k >= y - 5; k--) years.push({ value: String(k), label: String(k) });
       var type = setting(c, "periodType"), target = setting(c, "goal") === "reach";
@@ -117,6 +123,7 @@
           { value: "stay", label: c.text("goalStay"), detail: c.text("captionStay") },
           { value: "reach", label: c.text("goalReach"), detail: c.text("captionReach") }
         ] },
+        { type: "number", key: "limitInput", icon: "number", label: c.text("days"), value: limit, min: 1, max: 366 },
         { key: "periodType", icon: "calendar", label: c.text("window"), value: type, moveCalendar: true, options: [
           { value: "calendar", label: c.text("periodCalendar") },
           { value: "tax", label: c.text("periodTax") },
@@ -136,8 +143,8 @@
       // (residentAt: 184 for "more than 183", 183 for "183 or more"); the
       // generic page counts against 183.
       // A linked threshold belongs to the linked country only.
-      var residentAt = c.settings.linkedCountry && c.settings.linkedCountry !== country ? 0 : +c.settings.residentAt || 0;
-      var limit = +c.settings.limit || LIMIT;
+      var linkedResident = c.settings.linkedCountry && c.settings.linkedCountry !== country ? 0 : +c.settings.residentAt || 0;
+      var residentAt = linkedResident ? linkedResident + (limit - base) : 0;
       var safe = residentAt ? residentAt - 1 : limit, left = safe - days;
       var needed = (residentAt || limit) - days;
       // The meter shows the number that matters for the goal, and the pill is
@@ -167,6 +174,7 @@
     },
 
     strings: {
+      days: "Days",
       hintStart: "Tap a day to add a stay.",
       hintEnd: "Tap the other end of the stay.",
       hintSelected: "Drag either end of the stay to change its dates, or delete it below.",

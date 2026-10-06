@@ -90,7 +90,8 @@
     target: '<circle cx="10" cy="10" r="7.25"/><circle cx="10" cy="10" r="4"/><circle cx="10" cy="10" r="0.9" fill="currentColor"/>',
     calendar: '<rect x="3" y="4.5" width="14" height="12.5" rx="2.5"/><path d="M3 8.5h14M7 2.75v3M13 2.75v3"/>',
     starts: '<rect x="3" y="4.5" width="11" height="11" rx="2.5"/><path d="M3 8.5h11M6.5 2.75v3M10.5 2.75v3"/><circle cx="14.25" cy="14.25" r="3.6" fill="var(--bg-card)"/><path d="M14.25 12.6v1.8l1.2.8"/>',
-    updown: '<path d="M6.5 7.5L10 4l3.5 3.5M6.5 12.5L10 16l3.5-3.5"/>'
+    updown: '<path d="M6.5 7.5L10 4l3.5 3.5M6.5 12.5L10 16l3.5-3.5"/>',
+    number: '<path d="M8 3.5L6.5 16.5M13.5 3.5L12 16.5M4 7.5h12.5M3.5 12.5h12.5"/>'
   };
   function icon(name, cls) {
     var span = document.createElement("span");
@@ -759,6 +760,19 @@
         fieldInput.addEventListener("input", function () { fitInput(fieldInput); });
         pill.appendChild(field);
         wrap.appendChild(pill);
+        return wrap;
+      }
+      if (ctl.type === "number") {
+        // A day count typed in, as the app's tracker editor sets its limit;
+        // it applies on Enter or when the field is left.
+        var min = ctl.min || 1, max = ctl.max || 366;
+        var num = el("input", { type: "number", inputmode: "numeric", min: String(min), max: String(max), step: "1", value: String(ctl.value), "class": "cal-number", "aria-label": ctl.label || "" });
+        num.addEventListener("change", function () {
+          var n = Math.round(+num.value);
+          if (n >= min && n <= max) { settings[ctl.key] = n; changed(ctl); } else num.value = String(ctl.value);
+        });
+        num.addEventListener("keydown", function (e) { if (e.key === "Enter") num.blur(); });
+        wrap.appendChild(num);
         return wrap;
       }
       if (ctl.type === "date") {

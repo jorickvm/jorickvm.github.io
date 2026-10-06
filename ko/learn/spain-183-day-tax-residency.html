@@ -125,7 +125,7 @@
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261006a" />
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261006a" />
-  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261006a" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261006b" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">본문으로 건너뛰기</a>
@@ -260,9 +260,10 @@
 
     <h2 id="calculator">스페인 183일 계산기</h2>
     <p>예정된 체류를 포함해 스페인에 있었던 날을 누르면 올해 183일 기준에 얼마나 가까워졌는지 확인할 수 있습니다. 간헐적인 해외 체류도 스페인 체류일로 계산될 수 있으며, 이 내용은 아래에서 설명합니다.</p>
-    <div class="daycal" id="embed-days183" data-day-calendar="days183" data-cal-preset="{&quot;settings&quot;:{&quot;country&quot;:&quot;ES&quot;,&quot;goal&quot;:&quot;stay&quot;,&quot;periodType&quot;:&quot;calendar&quot;,&quot;limit&quot;:183,&quot;residentAt&quot;:184},&quot;lock&quot;:[&quot;country&quot;,&quot;goal&quot;,&quot;periodType&quot;],&quot;link&quot;:&quot;183-es&quot;}">
+    <div class="daycal" id="embed-days183" data-day-calendar="days183" data-cal-preset="{&quot;settings&quot;:{&quot;country&quot;:&quot;ES&quot;,&quot;goal&quot;:&quot;stay&quot;,&quot;periodType&quot;:&quot;calendar&quot;,&quot;limit&quot;:183,&quot;residentAt&quot;:184},&quot;lock&quot;:[&quot;country&quot;,&quot;goal&quot;,&quot;periodType&quot;,&quot;limitInput&quot;],&quot;link&quot;:&quot;183-es&quot;}">
       <script type="application/json" data-cal-strings>
 {
+  "days": "일수",
   "hintStart": "날짜를 눌러 체류를 추가하십시오.",
   "hintEnd": "체류의 다른 끝 날짜를 누르십시오.",
   "hintSelected": "체류의 양쪽 끝 중 하나를 드래그해 날짜를 변경하거나 아래에서 삭제하십시오.",
@@ -451,8 +452,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"탐색 메뉴 열기","menuClose":"탐색 메뉴 닫기"};</script>
   <script src="../../assets/js/navigation.js?v=20261005a"></script>
-  <script defer src="../../assets/js/rules/days-183.js?v=20261006a"></script>
-  <script defer src="../../assets/js/day-calendar.js?v=20261006a"></script>
+  <script defer src="../../assets/js/rules/days-183.js?v=20261006c"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261006b"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();
