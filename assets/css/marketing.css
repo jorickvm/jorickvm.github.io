@@ -561,9 +561,15 @@ html:lang(ko) .hx-uc-hero h1 { font-size: calc(var(--fs-display) * 0.8); letter-
   .hx-hero .hx-actions { justify-content: flex-start; }
   .hx-lede { max-width: 62ch; font-size: 1.12rem; }
   .hx-phones {
-    --hx-phone: 330px;
+    /* As wide as the window's height allows (a phone is 2.04 times as tall
+       as it is wide), so the whole phone fits under the header on a 13-inch
+       laptop at 100% (Jorick, 2026-10-06); 330px on taller screens. */
+    --hx-phone: clamp(250px, calc((100vh - 190px) / 2.04), 330px);
     margin-top: 0;
     padding: 0 0 24px;
+  }
+  @supports (height: 1svh) {
+    .hx-phones { --hx-phone: clamp(250px, calc((100svh - 190px) / 2.04), 330px); }
   }
 
   .hx-cases { grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 56px; }
