@@ -912,9 +912,13 @@ def derive_record(
         if kind == "article" and str(source.get("section", "")) == "help"
         else "site.title_suffix"
     )
-    title = str(overlay.get("page_title") or (
-        f"{overlay['headline']}{locale['title_separator']}{strings[suffix_key][code]}"
-    ))
+    suffix = f"{locale['title_separator']}{strings[suffix_key][code]}"
+    title = str(overlay.get("page_title") or f"{overlay['headline']}{suffix}")
+    # A hand-written search title still carries the brand, as every English
+    # one does (Jorick, 2026-10-06); the translator need not remember it. A
+    # title that already names AtlasDays (the homepage leads with it) is left.
+    if "AtlasDays" not in title:
+        title += suffix
     description = str(overlay["description"])
     record["title"] = title
     record["social_alt"] = str(
