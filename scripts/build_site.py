@@ -45,6 +45,7 @@ CLUSTER_DATA_PATH = SOURCE_ROOT / "data" / "content-clusters.json"
 BUILD_VERSION = "20260928f"
 VARIANT_VERSIONS = {("article", "help20260802"): "20260928f", ("hub", "92c3adc0daf3"): "20260928f", ("article", "49dd6e3e3ea5"): "20261005a", ("article", "88b8694b8f2d"): "20261005a"}
 SITE_HEADER_VERSION = "20260930a"
+SITE_FOOTER_VERSION = "20261006a"
 ARTICLE_COMPONENTS_VERSION = "20261006a"
 RULE_CARDS_VERSION = "20261006b"
 NAVIGATION_VERSION = "20261005a"
@@ -246,7 +247,7 @@ def render_styles(article: dict[str, object], family: str = "article", prefix: s
         )
         if article.get("section") == "learn":
             lines.append(f'  <link rel="stylesheet" href="{prefix}assets/css/rule-cards.css?v={RULE_CARDS_VERSION}" />')
-    lines.append(f'  <link rel="stylesheet" href="{prefix}assets/css/site-footer.css?v={asset_version}" />')
+    lines.append(f'  <link rel="stylesheet" href="{prefix}assets/css/site-footer.css?v={SITE_FOOTER_VERSION}" />')
     return "\n".join(lines)
 
 
@@ -309,6 +310,10 @@ TOPIC_GUIDES = {
     "citizenship": "learn/residence-permit-citizenship-absence-rules.html",
 }
 FAMILY_ORDER = ("visa", "tax", "usState", "residence", "citizenship")
+GLOBE_ICON = (
+    '<span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/>'
+    '<path d="M3.5 12h17M12 3.5c2.5 2.6 3.5 5.4 3.5 8.5s-1 5.9-3.5 8.5c-2.5-2.6-3.5-5.4-3.5-8.5s1-5.9 3.5-8.5Z"/></svg></span>'
+)
 RELATED_ICON = (
     '<span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true">'
     '<path d="M6 4.5h9l3 3v12H6z"/><path d="M9 11h6M9 14.5h6"/></svg></span>'
@@ -1712,11 +1717,15 @@ def rule_card(path: str, code: str, locale: dict[str, object], available: set[st
     else:
         return None
     href = html.escape(localized_route(route_for(path), locale, available), quote=True)
-    image = f"/assets/flags/{flag.lower()}.png" if flag else "/assets/brand/hub-any-country.webp"
+    # A rule for any country gets the globe icon, not the AtlasDays logo.
+    image = (
+        f'<img class="rule-flag" src="/assets/flags/{flag.lower()}.png" alt="" width="36" height="25" loading="lazy" />'
+        if flag else GLOBE_ICON
+    )
     pill = "tax" if family == "usState" else family
     markup = (
         f'          <a class="rule-card" href="{href}" data-filter-item data-groups="{pill}">'
-        f'<img class="rule-flag" src="{image}" alt="" width="36" height="25" loading="lazy" />'
+        f'{image}'
         f'<span class="rule-text"><strong>{html.escape(title)}</strong><span>{html.escape(line)}</span></span></a>'
     )
     return family, rank, markup
@@ -1835,13 +1844,13 @@ def render_hub(
         "{{SITE_FOOTER}}": footer_template.replace("{{ASSET_PREFIX}}", prefix).rstrip(),
         "{{PAGE_SCRIPTS}}": str(hub.get("page_scripts", "")).rstrip(),
         "{{SEARCH_STYLESHEET}}": (
-            f'  <link rel="stylesheet" href="{prefix}assets/css/search.css?v=20261006a" />\n'
+            f'  <link rel="stylesheet" href="{prefix}assets/css/search.css?v=20261006b" />\n'
             f'  <link rel="stylesheet" href="{prefix}assets/css/rule-cards.css?v={RULE_CARDS_VERSION}" />'
             if family == "hub" else ""
         ),
         "{{SEARCH_SCRIPT}}": (
             f"  <script>window.AtlasDaysSearchStrings={search_copy};</script>\n"
-            f'  <script src="{prefix}assets/js/search.js?v=20261006a"></script>'
+            f'  <script src="{prefix}assets/js/search.js?v=20261006b"></script>'
             if family == "hub" else ""
         ),
         "{{ASSET_PREFIX}}": prefix,
