@@ -78,6 +78,12 @@
       {
         "@type": "ListItem",
         "position": 3,
+        "name": "指南",
+        "item": "https://atlasdays.app/zh-Hans/learn/guides"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
         "name": "申根滚动期间实际上如何运作",
         "item": "https://atlasdays.app/zh-Hans/learn/schengen-rolling-window-walkthrough"
       }
@@ -90,8 +96,9 @@
   <link rel="stylesheet" href="../../assets/css/tokens.css?v=20260928f" />
   <link rel="stylesheet" href="../../assets/css/article-variants/9cf80a439c8f.css?v=20260928f" />
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
-  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261005a" />
-  <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
+  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261006a" />
+  <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
+  <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261006a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">跳到主要内容</a>
@@ -160,8 +167,20 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="本页内容">
+      <p class="toc-title">本页内容</p>
+      <ul>
+        <li><a href="#section-1">核心思路</a></li>
+        <li><a href="#section-2">算例</a></li>
+        <li><a href="#section-3">检查日期为什么会改变答案</a></li>
+        <li><a href="#section-4">天数怎么回来</a></li>
+        <li><a href="#section-5">常见的计算错误</a></li>
+        <li><a href="#section-6">实用提醒与官方界限</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb">
-      <a href="/zh-Hans/">AtlasDays</a> / <a href="/zh-Hans/learn/">旅行规定</a>
+      <a href="/zh-Hans/">AtlasDays</a> / <a href="/zh-Hans/learn/">旅行规定</a> / <a href="/zh-Hans/learn/guides">指南</a>
     </nav>
 
     <img class="title-flag" src="/assets/flags/eu.png" alt="欧盟旗帜" width="56" height="42" />
@@ -173,11 +192,11 @@
       <p><strong>重点：</strong>滚动期间是针对某一个日期套用的，不是针对一趟行程。选定关心的那个日期，往回看 180 天，数出这个期间内在申根区停留的每一天。这个期间每天都会往前挪，所以已用的天数是一天一天掉出来，而不是一次全部重置；同一份行程记录，在两个不同的检查日期可能给出两个不同的答案。</p>
     </div>
 
-    <h2>核心思路</h2>
+    <h2 id="section-1">核心思路</h2>
     <p>在任何一个关心的日期，往回看 180 天，数出这个期间内在申根区停留的每一天。如果结果是 90 天或更少，就在短期停留上限之内；如果超过 90 天，就不在。</p>
     <p>关键在于这个期间<strong>每天都在移动</strong>。没有固定的季度重置，也没有每个申根国家各自的额度。同一个共用计数会跟着你走遍整个申根区。</p>
 
-    <h2>算例</h2>
+    <h2 id="section-2">算例</h2>
     <p>假设行程记录是这样的：</p>
     <ul>
       <li><strong>行程 1：</strong>1 月 15 日至 2 月 13 日，共 30 个申根停留日</li>
@@ -185,7 +204,7 @@
     </ul>
     <p>两趟合计是 75 天。光有这个数字还不够，还得再问一句：<strong>是哪一个 180 天期间内的 75 天？</strong></p>
 
-    <h2>检查日期为什么会改变答案</h2>
+    <h2 id="section-3">检查日期为什么会改变答案</h2>
     <p>如果在 <strong>7 月 1 日</strong>检查，180 天的回溯期会一直回到 1 月，两趟行程都还在期间之内。也就是说 75 天全部照算，只剩 15 天可用。</p>
     <p>如果在 <strong>9 月 1 日</strong>检查，180 天的回溯期从 3 月开始算起。1 月至 2 月那趟行程已经完全掉出期间，只剩 4 月至 5 月的 45 天还算数。在那个日期，可用的天数是 45 天。</p>
 
@@ -193,11 +212,11 @@
       <p><strong>关键在于：</strong>这项规定问的从来不是“我离开多久了？”，而是“在我检查的那个日期，最近 180 天里还留着多少个申根停留日？”</p>
     </div>
     <p class="calc-callout"><a href="/zh-Hans/learn/schengen-calculator">申根计算器</a>可以用你自己的日期呈现这个过程：点选你的停留，再移动“截至日期”。</p>
-    <h2>天数怎么回来</h2>
+    <h2 id="section-4">天数怎么回来</h2>
     <p>天数不会整块一次回来，而是按当初使用的顺序依次回来。最早的那一天一旦比 180 天的回溯期还要早，这一天就掉出期间，同时释放出一天可用。</p>
     <p>所以很多人以为自己“等得够久了”，结果还是算错。一趟长期停留不会带来一次干净的重置，而是让天数随时间逐步释放。</p>
 
-    <h2>常见的计算错误</h2>
+    <h2 id="section-5">常见的计算错误</h2>
     <ul>
       <li><strong>把申根当成简单的进 90 天、出 90 天循环。</strong>它不是。</li>
       <li><strong>忘了入境和出境当天都要算。</strong>接近上限时，差一天就是差一天。</li>
@@ -205,7 +224,7 @@
       <li><strong>去数“在外面待了几天”，而不是数 180 天回溯期内的停留天数。</strong>在外面的时间之所以有意义，只是因为它把更早的境内停留日推出了期间。</li>
     </ul>
 
-    <h2>实用提醒与官方界限</h2>
+    <h2 id="section-6">实用提醒与官方界限</h2>
     <p>本页讲的是这套逻辑，不是你个人的法律处境。申根短期停留的官方指引，请使用欧盟委员会的<a href="https://home-affairs.ec.europa.eu/policies/schengen/border-crossing/short-stay-calculator_en">短期停留计算器</a>和<a href="https://home-affairs.ec.europa.eu/policies/schengen/schengen-area_en">申根区概览</a>。需要正式框架而不只是直觉理解时，这两处才是合适的依据。</p>
     <p>最稳妥的实用原则是：如果行程模式很重要，就不要靠记忆，也不要以为大致估算就够接近了。</p>
 
@@ -218,14 +237,15 @@
     <p class="learn-disclaimer"><strong>关于本文：</strong>AtlasDays 提供的是一般信息，并非法律、税务或移民方面的建议。规定会变动，结果也取决于个人情况，因此不要只依赖 AtlasDays：请查阅链接的官方资料来源，或咨询合格的专业人士。</p>
 
     <nav class="related generated-related" aria-labelledby="related-schengen-rolling-window-walkthrough">
-      <h2 id="related-schengen-rolling-window-walkthrough">本主题的相关文章</h2>
-      <ul>
-        <li><a href="/zh-Hans/learn/schengen-90-180-rule">任何 180 天内 90 天，到底是什么意思？</a></li>
-        <li><a href="/zh-Hans/learn/ees-etias-schengen-90-180">EES 与 ETIAS：对申根天数有什么影响</a></li>
-        <li><a href="/zh-Hans/learn/schengen-calculator">申根计算器：核对 90/180 规定下的停留天数</a></li>
-        <li><a href="/zh-Hans/learn/schengen-countries-list-90-180-rule">适用 90/180 规定的申根国家清单</a></li>
-        <li><a href="/zh-Hans/learn/schengen-single-entry-visa">申根单次入境签证：入境次数与停留时长的区别</a></li>
-      </ul>
+      <h2 id="related-schengen-rolling-window-walkthrough">相关文章</h2>
+      <div class="rule-cards">
+        <a class="rule-card" href="/zh-Hans/learn/schengen-90-180-rule"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>任何 180 天内 90 天，到底是什么意思？</strong></span></a>
+        <a class="rule-card" href="/zh-Hans/learn/schengen-single-entry-visa"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>申根单次入境签证：入境次数与停留时长的区别</strong></span></a>
+        <a class="rule-card" href="/zh-Hans/learn/schengen-calculator"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>申根计算器：核对 90/180 规定下的停留天数</strong></span></a>
+        <a class="rule-card" href="/zh-Hans/learn/ees-etias-schengen-90-180"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>EES 与 ETIAS：对申根天数有什么影响</strong></span></a>
+        <a class="rule-card" href="/zh-Hans/learn/schengen-countries-list-90-180-rule"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>适用 90/180 规定的申根国家清单</strong></span></a>
+        <a class="rule-card" href="/zh-Hans/learn/when-do-you-get-schengen-days-back-after-90-day-stay"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>停留 90 天之后，申根天数什么时候恢复？</strong></span></a>
+      </div>
     </nav>
   </article>
   </main>
@@ -249,17 +269,13 @@
           <a href="/zh-Hans/learn/">旅行规定</a>
           <a href="/zh-Hans/learn/calculators">计算器</a>
           <a href="/zh-Hans/learn/guides">指南</a>
-          <a href="/changelog">更新记录</a>
         </div>
         <div>
           <h2>AtlasDays</h2>
           <a href="/zh-Hans/about">关于 AtlasDays</a>
           <a href="/zh-Hans/privacy">隐私</a>
           <a href="/zh-Hans/terms">使用条款</a>
-        </div>
-        <div>
-          <h2>下载</h2>
-          <a href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">在 App Store 上查看</a>
+          <a href="/changelog">更新记录</a>
         </div>
       </nav>
     </div>

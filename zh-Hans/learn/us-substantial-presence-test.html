@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>美国实质居留判定｜AtlasDays</title>
+  <title>美国税务居民实质居留判定计算器｜AtlasDays</title>
   <meta name="description" content="说明美国实质居留判定的 31 天与 183 天条件、三年加权算法、排除日、Form 8843，以及税收协定何时重要。" />
-  <meta property="og:title" content="美国实质居留判定｜AtlasDays" />
+  <meta property="og:title" content="美国税务居民实质居留判定计算器｜AtlasDays" />
   <meta property="og:description" content="说明美国实质居留判定的 31 天与 183 天条件、三年加权算法、排除日、Form 8843，以及税收协定何时重要。" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/zh-Hans/learn/us-substantial-presence-test" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="美国实质居留判定｜AtlasDays" />
+  <meta name="twitter:title" content="美国税务居民实质居留判定计算器｜AtlasDays" />
   <meta name="twitter:description" content="说明美国实质居留判定的 31 天与 183 天条件、三年加权算法、排除日、Form 8843，以及税收协定何时重要。" />
   <meta name="apple-itunes-app" content="app-id=6760133544, app-argument=https://apps.apple.com/app/atlasdays-track-country-days/id6760133544" />
   <meta property="og:locale" content="zh_CN" />
@@ -122,9 +122,10 @@
   <link rel="stylesheet" href="../../assets/css/tokens.css?v=20260928f" />
   <link rel="stylesheet" href="../../assets/css/article-variants/49dd6e3e3ea5.css?v=20261005a" />
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
-  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261005a" />
-  <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
-  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261004l" />
+  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261006a" />
+  <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
+  <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261006a" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261006b" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">跳到主要内容</a>
@@ -193,6 +194,20 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="本页内容">
+      <p class="toc-title">本页内容</p>
+      <ul>
+        <li><a href="#section-1">加权计算方式</a></li>
+        <li><a href="#section-2">比较前保留分数</a></li>
+        <li><a href="#calculator">美国实质居留判定计算器</a></li>
+        <li><a href="#section-4">哪些日子可以排除？</a></li>
+        <li><a href="#section-5">排除需要文件或证据吗？</a></li>
+        <li><a href="#section-6">常见的三个错误</a></li>
+        <li><a href="#section-7">原始天数不是最后答案的情况</a></li>
+        <li><a href="#section-8">常见问题</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb"><a href="/zh-Hans/">AtlasDays</a> / <a href="/zh-Hans/learn/">旅行规定</a></nav>
     <img class="title-flag" src="/assets/flags/us.png" alt="美国国旗" width="56" height="42" />
     <h1>美国实质居留判定</h1><p class="subtitle">说明美国实质居留判定要确认什么、为何跨三年加权计算，以及例外与税收协定在何处重要。</p><p class="verified">最后核实：2026 年 9 月</p>
@@ -211,7 +226,7 @@
         <li><a href="#section-8">常见问题</a></li>
       </ul>
     </details>
-    <script>(function(){var t=document.currentScript.previousElementSibling;if(matchMedia('(min-width: 760px)').matches)t.open=true;var a=[].slice.call(t.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
+    <script>(function(){var t=document.currentScript.previousElementSibling;if(matchMedia('(min-width: 760px)').matches)t.open=true})();</script>
     <h2 id="section-1">加权计算方式</h2><p>公式采用<strong>当年度</strong>及之前两个日历年。</p><ol><li>计算当年度所有符合条件的美国停留日。</li><li>加上前一年度符合条件天数的三分之一。</li><li>再加上两年前该年度符合条件天数的六分之一。</li></ol><p>一般起点是当年度在美国停留至少 31 天，<em>而且</em>三年加权总数至少达 183 天。</p><p>IRS Publication 519 的例子说明权重为何重要：连续三年每年 120 天，依公式只有 180 天，因此<strong>不符合</strong>判定。重点不是算术有多难，而是前两年的天数仍会加入。</p>
     <div class="example"><p><strong>两项要求都重要。</strong>三年各 122 天时，总数是 122 + 40⅔ + 20⅓ = 183，当年度 31 天条件也符合。但当年度 30 天、前一年 365 天、再前一年 365 天，不符合实质居留判定：加权总数够高，但当年度最低天数不足。</p></div>
     <h2 id="section-2">比较前保留分数</h2><p>财政部规则 301.7701(b)-1(c)(1) 规定，加权产生的部分天数不四舍五入成最接近的整数。例如当年度 122 天、前一年 122 天、再前一年 121 天，结果是 182⅚，仍低于 183。把每一年的加权结果先取整数再相加，也可能改变答案。</p>
@@ -325,13 +340,15 @@
     <p class="learn-disclaimer"><strong>关于本文：</strong>AtlasDays 提供的是一般信息，并非法律、税务或移民方面的建议。规定会变动，结果也取决于个人情况，因此不要只依赖 AtlasDays：请查阅链接的官方资料来源，或咨询合格的专业人士。</p>
 
     <nav class="related generated-related" aria-labelledby="related-us-substantial-presence-test">
-      <h2 id="related-us-substantial-presence-test">本主题的相关文章</h2>
-      <ul>
-        <li><a href="/zh-Hans/learn/us-b1-b2-visa-180-day-limit">美国 B1/B2 签证：了解 180 天停留上限</a></li>
-        <li><a href="/zh-Hans/learn/us-green-card-absence-limits">美国绿卡的离境天数上限：六个月和一年两条线</a></li>
-        <li><a href="/zh-Hans/learn/us-naturalization-physical-presence">美国入籍的 30 个月实际居住要求</a></li>
-        <li><a href="/zh-Hans/learn/us-visa-waiver-90-day-limit">美国免签证计划的 90 天上限</a></li>
-      </ul>
+      <h2 id="related-us-substantial-presence-test">相关文章</h2>
+      <div class="rule-cards">
+        <a class="rule-card" href="/zh-Hans/learn/us-b1-b2-visa-180-day-limit"><img class="rule-flag" src="/assets/flags/us.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>美国 B1/B2 签证：了解 180 天停留上限</strong></span></a>
+        <a class="rule-card" href="/zh-Hans/learn/us-visa-waiver-90-day-limit"><img class="rule-flag" src="/assets/flags/us.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>美国免签证计划的 90 天上限</strong></span></a>
+        <a class="rule-card" href="/zh-Hans/learn/us-green-card-absence-limits"><img class="rule-flag" src="/assets/flags/us.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>美国绿卡的离境天数上限：六个月和一年两条线</strong></span></a>
+        <a class="rule-card" href="/zh-Hans/learn/183-day-tax-residency-rule"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5.5" width="16" height="14.5" rx="3"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/></svg></span><span class="rule-text"><strong>183 天税务居民规定：天数如何计算</strong></span></a>
+        <a class="rule-card" href="/zh-Hans/learn/canada-183-day-tax-residency"><img class="rule-flag" src="/assets/flags/ca.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>加拿大的 183 天税务居民规定</strong></span></a>
+        <a class="rule-card" href="/zh-Hans/learn/colombia-183-day-tax-residency"><img class="rule-flag" src="/assets/flags/co.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>哥伦比亚的 183 天税务居民规定</strong></span></a>
+      </div>
     </nav>
   </article>
   </main>
@@ -355,17 +372,13 @@
           <a href="/zh-Hans/learn/">旅行规定</a>
           <a href="/zh-Hans/learn/calculators">计算器</a>
           <a href="/zh-Hans/learn/guides">指南</a>
-          <a href="/changelog">更新记录</a>
         </div>
         <div>
           <h2>AtlasDays</h2>
           <a href="/zh-Hans/about">关于 AtlasDays</a>
           <a href="/zh-Hans/privacy">隐私</a>
           <a href="/zh-Hans/terms">使用条款</a>
-        </div>
-        <div>
-          <h2>下载</h2>
-          <a href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">在 App Store 上查看</a>
+          <a href="/changelog">更新记录</a>
         </div>
       </nav>
     </div>
@@ -376,7 +389,7 @@
   <script>window.AtlasDaysNavStrings={"menuOpen":"打开导航菜单","menuClose":"关闭导航菜单"};</script>
   <script src="../../assets/js/navigation.js?v=20261005a"></script>
   <script defer src="../../assets/js/rules/spt.js?v=20261006a"></script>
-  <script defer src="../../assets/js/day-calendar.js?v=20261006a"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261006b"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

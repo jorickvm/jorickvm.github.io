@@ -78,6 +78,12 @@
       {
         "@type": "ListItem",
         "position": 3,
+        "name": "指南",
+        "item": "https://atlasdays.app/zh-Hans/learn/guides"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
         "name": "如何获取官方旅行记录（出入境记录）",
         "item": "https://atlasdays.app/zh-Hans/learn/get-official-entry-exit-records"
       }
@@ -122,8 +128,9 @@
   <link rel="stylesheet" href="../../assets/css/tokens.css?v=20260928f" />
   <link rel="stylesheet" href="../../assets/css/article-variants/49dd6e3e3ea5.css?v=20261005a" />
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
-  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261005a" />
-  <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
+  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261006a" />
+  <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
+  <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261006a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">跳到主要内容</a>
@@ -192,8 +199,18 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="本页内容">
+      <p class="toc-title">本页内容</p>
+      <ul>
+        <li><a href="#section-1">从哪里申请记录</a></li>
+        <li><a href="#atlasdays">导入 AtlasDays，或以后不再等待记录</a></li>
+        <li><a href="#section-3">官方记录与记忆不符时</a></li>
+        <li><a href="#section-4">常见问题</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb">
-      <a href="/zh-Hans/">AtlasDays</a> / <a href="/zh-Hans/learn/">旅行规定</a>
+      <a href="/zh-Hans/">AtlasDays</a> / <a href="/zh-Hans/learn/">旅行规定</a> / <a href="/zh-Hans/learn/guides">指南</a>
     </nav>
 
     <h1>如何获取官方旅行记录（出入境记录）</h1>
@@ -204,7 +221,7 @@
       <p><strong>简要说明：</strong>各国只记录自己边境的出入境情况，所以需要分别申请。赴美访客可<strong>即时查询过去 10 年的 I-94 旅行记录</strong>；其他记录可能需要<strong>最长一个月</strong>，或没有公布处理期限。</p>
     </div>
 
-    <h2>从哪里申请记录</h2>
+    <h2 id="section-1">从哪里申请记录</h2>
     <p>以下信息截至 2026 年 9 月：</p>
     <div class="cards">
       <section class="card">
@@ -279,14 +296,14 @@
       </section>
     </div>
 
-    <h2>导入 AtlasDays，或以后不再等待记录</h2>
+    <h2 id="atlasdays">导入 AtlasDays，或以后不再等待记录</h2>
     <p>官方记录需要逐个边境申请。AtlasDays 可将记录整理成行程，再按追踪的上限计算天数；两项功能均免费。</p>
     <ol class="steps">
       <li><strong>导入收到的记录。</strong>进入“设置 → 导入 → CSV 文件”，轻点“用 AI 创建 CSV”。将提示词及记录文字粘贴到 ChatGPT 等 AI 助手中，把生成的结果存为 CSV，再选择文件并复核预览。也可在时间轴中轻点“+”手动添加行程。参见<a href="/zh-Hans/help/csv-import">CSV 导入说明</a>。</li>
       <li><strong>或从现在起自行保存记录。</strong>开启“设置 → 自动检测行程”。iPhone 检测到跨境时，AtlasDays 会将行程加入时间轴。下次填写表格时，记录就已备好。参见<a href="/zh-Hans/help/auto-detect-trips">自动检测说明</a>。</li>
     </ol>
 
-    <h2>官方记录与记忆不符时</h2>
+    <h2 id="section-3">官方记录与记忆不符时</h2>
     <ul>
       <li><strong>缺少一次过境。</strong>通常是陆路过境。下一个国家的入境记录可填补缺口。</li>
       <li><strong>日期差一天。</strong>核对过夜航班和时区；边境记录使用当地日期。</li>
@@ -303,7 +320,7 @@
       <a class="cta-btn" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> 获取 AtlasDays</a>
     </div>
 
-    <h2>常见问题</h2>
+    <h2 id="section-4">常见问题</h2>
     <h3>美国公民如何取得赴美出入境记录？</h3>
     <p>通过 SecureRelease 或 FOIA.gov 向 CBP 提交 FOIA 申请，索取赴美和离美旅行记录。I-94 网站不提供美国公民或绿卡持有人的记录。</p>
     <h3>可以取得申根区的出入境清单吗？</h3>
@@ -322,14 +339,14 @@
     <p class="learn-disclaimer"><strong>关于本文：</strong>AtlasDays 提供的是一般信息，并非法律、税务或移民方面的建议。规定会变动，结果也取决于个人情况，因此不要只依赖 AtlasDays：请查阅链接的官方资料来源，或咨询合格的专业人士。</p>
 
     <nav class="related generated-related" aria-labelledby="related-get-official-entry-exit-records">
-      <h2 id="related-get-official-entry-exit-records">本主题的相关文章</h2>
-      <ul>
-        <li><a href="/zh-Hans/learn/travel-history-for-visa-applications">签证申请旅行记录：各表格要求追溯多久</a></li>
-        <li><a href="/zh-Hans/learn/flighty-flight-history-day-count">如何用 Flighty 航班记录计算签证与居留天数</a></li>
-        <li><a href="/zh-Hans/learn/prove-you-were-not-in-a-country">如何证明自己不在某个国家或州</a></li>
-        <li><a href="/zh-Hans/learn/rebuild-travel-history-from-passport-stamps-emails-photos">如何通过护照出入境章、邮件和照片重建旅行记录</a></li>
-        <li><a href="/zh-Hans/learn/travel-history-template-visa-application">签证申请旅行记录模板（免费 CSV）</a></li>
-      </ul>
+      <h2 id="related-get-official-entry-exit-records">相关文章</h2>
+      <div class="rule-cards">
+        <a class="rule-card" href="/zh-Hans/learn/travel-history-for-visa-applications"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10A.5.5 0 0 1 7 20V3.5Z"/><path d="M14 3.5V8h4M10 12h5M10 15.5h5"/></svg></span><span class="rule-text"><strong>签证申请旅行记录：各表格要求追溯多久</strong></span></a>
+        <a class="rule-card" href="/zh-Hans/learn/travel-history-template-visa-application"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10A.5.5 0 0 1 7 20V3.5Z"/><path d="M14 3.5V8h4M10 12h5M10 15.5h5"/></svg></span><span class="rule-text"><strong>签证申请旅行记录模板（免费 CSV）</strong></span></a>
+        <a class="rule-card" href="/zh-Hans/learn/rebuild-travel-history-from-passport-stamps-emails-photos"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10A.5.5 0 0 1 7 20V3.5Z"/><path d="M14 3.5V8h4M10 12h5M10 15.5h5"/></svg></span><span class="rule-text"><strong>如何通过护照出入境章、邮件和照片重建旅行记录</strong></span></a>
+        <a class="rule-card" href="/zh-Hans/learn/prove-you-were-not-in-a-country"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10A.5.5 0 0 1 7 20V3.5Z"/><path d="M14 3.5V8h4M10 12h5M10 15.5h5"/></svg></span><span class="rule-text"><strong>如何证明自己不在某个国家或州</strong></span></a>
+        <a class="rule-card" href="/zh-Hans/learn/flighty-flight-history-day-count"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10A.5.5 0 0 1 7 20V3.5Z"/><path d="M14 3.5V8h4M10 12h5M10 15.5h5"/></svg></span><span class="rule-text"><strong>如何用 Flighty 航班记录计算签证与税务居民天数</strong></span></a>
+      </div>
     </nav>
   </article>
   </main>
@@ -353,17 +370,13 @@
           <a href="/zh-Hans/learn/">旅行规定</a>
           <a href="/zh-Hans/learn/calculators">计算器</a>
           <a href="/zh-Hans/learn/guides">指南</a>
-          <a href="/changelog">更新记录</a>
         </div>
         <div>
           <h2>AtlasDays</h2>
           <a href="/zh-Hans/about">关于 AtlasDays</a>
           <a href="/zh-Hans/privacy">隐私</a>
           <a href="/zh-Hans/terms">使用条款</a>
-        </div>
-        <div>
-          <h2>下载</h2>
-          <a href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">在 App Store 上查看</a>
+          <a href="/changelog">更新记录</a>
         </div>
       </nav>
     </div>

@@ -123,8 +123,9 @@
   <link rel="stylesheet" href="../../assets/css/tokens.css?v=20260928f" />
   <link rel="stylesheet" href="../../assets/css/article-variants/49dd6e3e3ea5.css?v=20261005a" />
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
-  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261005a" />
-  <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
+  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261006a" />
+  <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
+  <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261006a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">本文へスキップ</a>
@@ -193,6 +194,16 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="目次">
+      <p class="toc-title">目次</p>
+      <ul>
+        <li><a href="#section-1">ルールの内容</a></li>
+        <li><a href="#section-2">数え方</a></li>
+        <li><a href="#section-3">日数だけで決まるわけではありません</a></li>
+        <li><a href="#section-4">よくある質問</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb">
       <a href="/ja/">AtlasDays</a> / <a href="/ja/learn/">旅行ルール</a> / 台湾
     </nav>
@@ -217,7 +228,7 @@
       </dl>
     </div>
 
-    <h2>ルールの内容</h2>
+    <h2 id="section-1">ルールの内容</h2>
     <p>台湾の所得税法は居住者を2つの類型で定めており、日数による判定は、台湾に住所がない人に適用されるほうです。実際の判断は、次の3点でほぼ決まります。</p>
     <ul>
       <li><strong>基準日数はその日を含みます。</strong>正文である中国語は、通算して183日に満ちる滞在を求めており、税務当局も「183日以上」として公表しているため、183日目で線を越えます。法務部の英訳は「more than 183 days」としていますが、これは拘束力のある中国語の正文をゆるく訳したもので、1日ずれています。</li>
@@ -225,7 +236,7 @@
       <li><strong>複数回の入国は合算します。</strong>1つの課税年度に何度も出入国した場合、日数は積み上がります。連続している必要はありません。</li>
     </ul>
 
-    <h2>数え方</h2>
+    <h2 id="section-2">数え方</h2>
     <p>到着日を除いて出発日を含めるため、この集計は台湾で過ごした宿泊数を数えるのと同じ結果になります。課税年度は1月1日から12月31日までです。</p>
     <ol class="steps">
       <li>台湾への旅行を、入国日と出国日とあわせてすべて書き出します。</li>
@@ -239,7 +250,7 @@
     </div>
     <p class="calc-callout"><a href="/ja/learn/183-day-rule-calculator?country=TW&amp;period=calendar&amp;resident=183">183日ルール計算機</a>で滞在日数を数える。台湾のルールがあらかじめ設定されているので、滞在した日をタップしてください。</p>
 
-    <h2>日数だけで決まるわけではありません</h2>
+    <h2 id="section-3">日数だけで決まるわけではありません</h2>
     <p>この183日の判定は2つの類型のうちの一つにすぎず、どちらが適用されるかは住所の有無で決まります。台湾に戸籍がある場合は、財政部の解釈により、これよりずっと低い基準が適用されます。課税年度に31日以上滞在すれば居住者となり、1日から30日の滞在でも、家族、仕事、資産などのつながりから判断して生活および経済的利害の中心が台湾にあれば、居住者となり得ます。183日という数字をこの場合に当てはめて読まないでください。これとは別の90日ルールは居住の判定と混同されがちですが、居住の判定ではまったくありません。非居住者が台湾で行った勤務について外国の雇用主から受け取る給与が、台湾を源泉とする所得にあたるかどうかを決めるもので、しかも向きが逆です。滞在が90日を超えない場合に適用されます。別の国も居住者だと主張する場合は、租税条約の振り分け規定（タイブレーカー）が、恒久的な住居や重要な利害関係の中心といった基準で居住地を決めることがあります。</p>
 
     <div class="cta-box">
@@ -255,7 +266,7 @@
       </a>
     </div>
 
-    <h2>よくある質問</h2>
+    <h2 id="section-4">よくある質問</h2>
     <h3>税務上の居住者にならずに台湾に滞在できる日数は？</h3>
     <p>台湾に住所がない場合、課税年度に数えられる日数は182日までです。183日に達すれば足り、到着日を除いて数えるため、183泊の滞在がこれにあたります。</p>
     <h3>台湾では到着日も数えますか？</h3>
@@ -274,14 +285,15 @@
     <p class="learn-disclaimer"><strong>この記事について：</strong>AtlasDaysは一般的な情報を提供するもので、法律・税務・移民に関する助言ではありません。規則は変わり、結果は個別の事情によって異なります。AtlasDaysだけに頼らず、リンク先の公的情報を確認するか、専門家に相談してください。</p>
 
     <nav class="related generated-related" aria-labelledby="related-taiwan-183-day-tax-residency">
-      <h2 id="related-taiwan-183-day-tax-residency">このトピックの関連記事</h2>
-      <ul>
-        <li><a href="/ja/learn/tax-residency-by-country">国別の税務上の居住</a></li>
-        <li><a href="/ja/learn/183-day-rule-calculator">183日ルール計算機：どの国でも滞在日数をカウント</a></li>
-        <li><a href="/ja/learn/183-day-tax-residency-rule">税務上の居住を決める183日ルールと日数の数え方</a></li>
-        <li><a href="/ja/learn/albania-183-day-tax-residency">アルバニアの183日ルール：税務上の居住はいつ発生するか</a></li>
-        <li><a href="/ja/learn/arizona-tax-residency">アリゾナ州の9か月ルール：税務上の居住者と推定されるのはいつか</a></li>
-      </ul>
+      <h2 id="related-taiwan-183-day-tax-residency">関連記事</h2>
+      <div class="rule-cards">
+        <a class="rule-card" href="/ja/learn/183-day-rule-calculator"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.5 2.6 3.5 5.4 3.5 8.5s-1 5.9-3.5 8.5c-2.5-2.6-3.5-5.4-3.5-8.5s1-5.9 3.5-8.5Z"/></svg></span><span class="rule-text"><strong>183日ルール計算機：どの国でも滞在日数をカウント</strong></span></a>
+        <a class="rule-card" href="/ja/learn/183-day-tax-residency-rule"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5.5" width="16" height="14.5" rx="3"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/></svg></span><span class="rule-text"><strong>税務上の居住を決める183日ルールと日数の数え方</strong></span></a>
+        <a class="rule-card" href="/ja/learn/tax-residency-by-country"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 4.5h9l3 3v12H6z"/><path d="M9 11h6M9 14.5h6"/></svg></span><span class="rule-text"><strong>国別の税務上の居住</strong></span></a>
+        <a class="rule-card" href="/ja/learn/vietnam-183-day-tax-residency"><img class="rule-flag" src="/assets/flags/vn.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>ベトナムの183日ルール：暦年と12か月間、2つの集計期間</strong></span></a>
+        <a class="rule-card" href="/ja/learn/indonesia-183-day-tax-residency"><img class="rule-flag" src="/assets/flags/id.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>インドネシアの183日ルール：税務上の居住はいつ発生するか</strong></span></a>
+        <a class="rule-card" href="/ja/learn/singapore-183-day-tax-residency"><img class="rule-flag" src="/assets/flags/sg.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>シンガポールの183日ルール：暦年の滞在日数と賦課年度</strong></span></a>
+      </div>
     </nav>
   </article>
   </main>
@@ -305,17 +317,13 @@
           <a href="/ja/learn/">旅行ルール</a>
           <a href="/ja/learn/calculators">計算機</a>
           <a href="/ja/learn/guides">ガイド</a>
-          <a href="/changelog">変更履歴</a>
         </div>
         <div>
           <h2>AtlasDays</h2>
           <a href="/ja/about">AtlasDaysについて</a>
           <a href="/ja/privacy">プライバシー</a>
           <a href="/ja/terms">利用規約</a>
-        </div>
-        <div>
-          <h2>ダウンロード</h2>
-          <a href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Storeで見る</a>
+          <a href="/changelog">変更履歴</a>
         </div>
       </nav>
     </div>

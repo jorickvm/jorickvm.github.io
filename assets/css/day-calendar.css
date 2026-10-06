@@ -79,6 +79,23 @@ html[data-theme="light"] .daycal { --cal-disc: rgba(12, 22, 40, 0.07); --tone-wa
 /* a choice reads as accent text with a small chevron; the native menu sits
    invisibly over it, so a tap opens the system list */
 .cal-control.is-select, .cal-control.is-date { position: relative; }
+.cal-number {
+  width: 4.6ch;
+  padding: 3px 7px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--cal-bar);
+  font: inherit;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+.cal-number::-webkit-inner-spin-button, .cal-number::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+.cal-number:focus { outline: 2px solid var(--blue); outline-offset: 2px; border-color: transparent; }
 .cal-value { display: inline-flex; align-items: center; gap: 3px; color: var(--cal-bar); font-size: 0.95rem; font-weight: 600; white-space: nowrap; }
 .cal-chevron { width: 13px; height: 13px; }
 .cal-control.is-select select, .cal-control.is-date input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
@@ -293,6 +310,10 @@ html[data-theme="light"] .daycal { --cal-disc: rgba(12, 22, 40, 0.07); --tone-wa
 .cal-day.is-outside .cal-num { opacity: 0.28; }
 .cal-day.is-outside::after { display: none; }
 .cal-trip.is-outside { opacity: 0.45; }
+/* Opacity puts the row on its own layer, which would draw the floating country
+   list faint and under the rows and button after it. A row being edited is
+   not dimmed. */
+.cal-trip.is-outside:focus-within { opacity: 1; }
 
 .cal-result-head { display: grid; gap: 8px; justify-items: start; margin: 0 0 8px; }
 .cal-headline { margin: 0; color: var(--text); font-size: 1rem; font-weight: 650; line-height: 1.35; }

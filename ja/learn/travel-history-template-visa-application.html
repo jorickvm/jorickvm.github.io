@@ -78,6 +78,12 @@
       {
         "@type": "ListItem",
         "position": 3,
+        "name": "ガイド",
+        "item": "https://atlasdays.app/ja/learn/guides"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
         "name": "ビザ申請用の旅行履歴テンプレート（無料CSV）",
         "item": "https://atlasdays.app/ja/learn/travel-history-template-visa-application"
       }
@@ -122,8 +128,9 @@
   <link rel="stylesheet" href="../../assets/css/tokens.css?v=20260928f" />
   <link rel="stylesheet" href="../../assets/css/article-variants/49dd6e3e3ea5.css?v=20261005a" />
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
-  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261005a" />
-  <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
+  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261006a" />
+  <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
+  <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261006a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">本文へスキップ</a>
@@ -192,7 +199,20 @@
 
   <main id="main-content">
   <article>
-    <nav class="breadcrumb"><a href="/ja/">AtlasDays</a> / <a href="/ja/learn/">旅行ルール</a></nav>
+    <nav class="toc-side" aria-label="目次">
+      <p class="toc-title">目次</p>
+      <ul>
+        <li><a href="#section-1">各列に入力する内容</a></li>
+        <li><a href="#section-2">不確かな日付を含めた記入方法</a></li>
+        <li><a href="#1-1-1-1">1旅行につき1行ではなく、1滞在につき1行</a></li>
+        <li><a href="#section-4">申請書への転記</a></li>
+        <li><a href="#atlasdays">AtlasDaysへの無料インポート</a></li>
+        <li><a href="#section-6">テンプレート以外に確認すること</a></li>
+        <li><a href="#section-7">よくある質問</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
+    <nav class="breadcrumb"><a href="/ja/">AtlasDays</a> / <a href="/ja/learn/">旅行ルール</a> / <a href="/ja/learn/guides">ガイド</a></nav>
     <h1>ビザ申請用の旅行履歴テンプレート（無料CSV）</h1>
     <p class="subtitle">国での滞在ごとに1行を使い、ISO形式の日付を記入する無料の旅行履歴シートです。Excel、Numbers、Googleスプレッドシートで開け、DS-160、英国、カナダの申請書に転記でき、AtlasDaysにも直接インポートできます。</p>
     <p class="verified">最終確認：2026年9月</p>
@@ -218,7 +238,7 @@
         <li><a href="#section-7">よくある質問</a></li>
       </ul>
     </details>
-    <script>(function(){var t=document.currentScript.previousElementSibling;if(matchMedia('(min-width: 760px)').matches)t.open=true;var a=[].slice.call(t.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
+    <script>(function(){var t=document.currentScript.previousElementSibling;if(matchMedia('(min-width: 760px)').matches)t.open=true})();</script>
     <h2 id="section-1">各列に入力する内容</h2>
     <dl class="kv kv-text">
       <div><dt>Country</dt><dd>国名の英語表記（Portugal、United Kingdom）または2文字のコード（PT、GB）。すべての行に必須です。</dd></div>
@@ -300,14 +320,14 @@
     <p class="learn-disclaimer"><strong>この記事について：</strong>AtlasDaysは一般的な情報を提供するもので、法律・税務・移民に関する助言ではありません。規則は変わり、結果は個別の事情によって異なります。AtlasDaysだけに頼らず、リンク先の公的情報を確認するか、専門家に相談してください。</p>
 
     <nav class="related generated-related" aria-labelledby="related-travel-history-template-visa-application">
-      <h2 id="related-travel-history-template-visa-application">このトピックの関連記事</h2>
-      <ul>
-        <li><a href="/ja/learn/travel-history-for-visa-applications">ビザ申請の旅行履歴：申請書ごとに何年分が必要か</a></li>
-        <li><a href="/ja/learn/flighty-flight-history-day-count">Flightyの履歴からビザと税務上の居住の日数を集計する方法</a></li>
-        <li><a href="/ja/learn/get-official-entry-exit-records">公的な旅行履歴（出入国記録）を取得する方法</a></li>
-        <li><a href="/ja/learn/prove-you-were-not-in-a-country">ある国や州にいなかったことを証明する方法</a></li>
-        <li><a href="/ja/learn/rebuild-travel-history-from-passport-stamps-emails-photos">パスポートのスタンプ、メール、写真から旅行履歴を再構成する方法</a></li>
-      </ul>
+      <h2 id="related-travel-history-template-visa-application">関連記事</h2>
+      <div class="rule-cards">
+        <a class="rule-card" href="/ja/learn/travel-history-for-visa-applications"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10A.5.5 0 0 1 7 20V3.5Z"/><path d="M14 3.5V8h4M10 12h5M10 15.5h5"/></svg></span><span class="rule-text"><strong>ビザ申請の旅行履歴：申請書ごとに何年分が必要か</strong></span></a>
+        <a class="rule-card" href="/ja/learn/get-official-entry-exit-records"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10A.5.5 0 0 1 7 20V3.5Z"/><path d="M14 3.5V8h4M10 12h5M10 15.5h5"/></svg></span><span class="rule-text"><strong>公的な旅行履歴（出入国記録）を取得する方法</strong></span></a>
+        <a class="rule-card" href="/ja/learn/rebuild-travel-history-from-passport-stamps-emails-photos"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10A.5.5 0 0 1 7 20V3.5Z"/><path d="M14 3.5V8h4M10 12h5M10 15.5h5"/></svg></span><span class="rule-text"><strong>パスポートのスタンプ、メール、写真から旅行履歴を再構成する方法</strong></span></a>
+        <a class="rule-card" href="/ja/learn/prove-you-were-not-in-a-country"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10A.5.5 0 0 1 7 20V3.5Z"/><path d="M14 3.5V8h4M10 12h5M10 15.5h5"/></svg></span><span class="rule-text"><strong>ある国や州にいなかったことを証明する方法</strong></span></a>
+        <a class="rule-card" href="/ja/learn/flighty-flight-history-day-count"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10A.5.5 0 0 1 7 20V3.5Z"/><path d="M14 3.5V8h4M10 12h5M10 15.5h5"/></svg></span><span class="rule-text"><strong>Flightyの履歴からビザと税務上の居住の日数を集計する方法</strong></span></a>
+      </div>
     </nav>
   </article>
   </main>
@@ -331,17 +351,13 @@
           <a href="/ja/learn/">旅行ルール</a>
           <a href="/ja/learn/calculators">計算機</a>
           <a href="/ja/learn/guides">ガイド</a>
-          <a href="/changelog">変更履歴</a>
         </div>
         <div>
           <h2>AtlasDays</h2>
           <a href="/ja/about">AtlasDaysについて</a>
           <a href="/ja/privacy">プライバシー</a>
           <a href="/ja/terms">利用規約</a>
-        </div>
-        <div>
-          <h2>ダウンロード</h2>
-          <a href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Storeで見る</a>
+          <a href="/changelog">変更履歴</a>
         </div>
       </nav>
     </div>

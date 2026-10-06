@@ -47,15 +47,15 @@
     "url": "https://atlasdays.app/ja/learn/"
   }
   </script>
-  <script>(function(){var d=document.documentElement,q=new URLSearchParams(location.search).get('theme'),t=null;if(q==='light'||q==='dark'){t=q;try{sessionStorage.setItem('theme',q)}catch(e){}}else{try{t=sessionStorage.getItem('theme')}catch(e){}if(!t)try{t=localStorage.getItem('theme')}catch(e){}}d.setAttribute('data-theme',t==='light'?'light':'dark')})()</script>
+  <script>(function(){var d=document.documentElement,q=new URLSearchParams(location.search).get('theme'),t=null;if(q==='light'||q==='dark'){t=q;try{sessionStorage.setItem('theme',q)}catch(e){}}else{try{t=sessionStorage.getItem('theme')}catch(e){}if(!t)try{t=localStorage.getItem('theme')}catch(e){}}d.setAttribute('data-theme',t==='light'?'light':'dark');d.classList.add('js')})()</script>
   <script>window.AtlasDaysPageLocales={"en":{"url":"/learn/","label":"Read this page in English","dismiss":"Dismiss"},"nl":{"url":"/nl/learn/","label":"Lees deze pagina in het Nederlands","dismiss":"Sluiten"},"de":{"url":"/de/learn/","label":"Diese Seite auf Deutsch lesen","dismiss":"Schließen"},"es":{"url":"/es/learn/","label":"Lee esta página en español","dismiss":"Cerrar"},"fr":{"url":"/fr/learn/","label":"Lire cette page en français","dismiss":"Fermer"},"ru":{"url":"/ru/learn/","label":"Читать эту страницу на русском","dismiss":"Закрыть"},"uk":{"url":"/uk/learn/","label":"Читати цю сторінку українською","dismiss":"Закрити"},"tr":{"url":"/tr/learn/","label":"Bu sayfayı Türkçe okuyun","dismiss":"Kapat"},"pt":{"url":"/pt/learn/","label":"Leia esta página em português","dismiss":"Fechar"},"ko":{"url":"/ko/learn/","label":"이 페이지를 한국어로 읽기","dismiss":"닫기"},"zh-Hant":{"url":"/zh-Hant/learn/","label":"以繁體中文閱讀本頁","dismiss":"關閉"},"zh-Hans":{"url":"/zh-Hans/learn/","label":"以简体中文阅读本页","dismiss":"关闭"},"pl":{"url":"/pl/learn/","label":"Przeczytaj tę stronę po polsku","dismiss":"Zamknij"}};window.AtlasDaysMatchLocale=function(tag,m){var w=String(tag||'').trim().replace(/_/g,'-').toLowerCase(),c;if(!w)return '';for(c in m)if(c.toLowerCase()===w)return c;var s=function(t){try{return new Intl.Locale(t).maximize().script||''}catch(err){return null}},b=w.split('-')[0],x=s(w);for(c in m){if(c.toLowerCase().split('-')[0]!==b)continue;if(x===null){if(c.indexOf('-')<0)return c;continue}if(s(c)===x)return c}return ''};(function(){var q=new URLSearchParams(location.search).get('lang');if(!q)return;var m=window.AtlasDaysPageLocales,e=m[window.AtlasDaysMatchLocale(q,m)];if(e&&e.url!==location.pathname)location.replace(e.url+location.search+location.hash)})()</script>
   <script defer src="../../assets/js/locale-route.js?v=20260830c"></script>
   <link rel="stylesheet" href="../../assets/css/tokens.css?v=20260928f" />
   <link rel="stylesheet" href="../../assets/css/hub-variants/a2023fe42813.css?v=20260928f" />
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
-  <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
-  <link rel="stylesheet" href="../../assets/css/search.css?v=20261006a" />
-  <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006a" />
+  <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261006a" />
+  <link rel="stylesheet" href="../../assets/css/search.css?v=20261006b" />
+  <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">本文へスキップ</a>
@@ -168,10 +168,14 @@
           <a class="rule-card" href="/ja/learn/schengen-90-180-rule" data-filter-item data-groups="visa"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>シェンゲン：90/180短期滞在ルール</strong><span>任意の180日間で最大90日。</span></span></a>
           <a class="rule-card" href="/ja/learn/schengen-single-entry-visa" data-filter-item data-groups="visa"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>シェンゲン：一次入国ビザ</strong><span>1回の滞在で、ビザに記載された日数まで。</span></span></a>
           <a class="rule-card" href="/ja/learn/canada-visitor-visa-6-month-limit" data-filter-item data-groups="visa"><img class="rule-flag" src="/assets/flags/ca.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>カナダ：訪問者ビザ／eTA</strong><span>1回の滞在は最長6か月。180日として計算。</span></span></a>
+          <a class="rule-card" href="/ja/learn/colombia-visitor-180-days-per-year" data-filter-item data-groups="visa"><img class="rule-flag" src="/assets/flags/co.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>コロンビア：訪問者滞在</strong><span>暦年で全滞在を合計して最大180日。</span></span></a>
           <a class="rule-card" href="/ja/learn/georgia-visa-free-365-days" data-filter-item data-groups="visa"><img class="rule-flag" src="/assets/flags/ge.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>ジョージア：ビザなし滞在</strong><span>1回の滞在は最長1年。365日として計算。</span></span></a>
           <a class="rule-card" href="/ja/learn/india-tourist-visa-stay-limits" data-filter-item data-groups="visa"><img class="rule-flag" src="/assets/flags/in.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>インドの電子観光ビザ</strong><span>暦年で全滞在を合計して最大180日。</span></span></a>
+          <a class="rule-card" href="/ja/learn/indonesia-visa-on-arrival-30-days" data-filter-item data-groups="visa"><img class="rule-flag" src="/assets/flags/id.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>インドネシア：到着ビザ</strong><span>1回の滞在で最大30日、延長は1回。</span></span></a>
           <a class="rule-card" href="/ja/learn/japan-90-day-rule" data-filter-item data-groups="visa"><img class="rule-flag" src="/assets/flags/jp.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>日本：短期滞在</strong><span>1回の滞在で最大90日。</span></span></a>
-          <a class="rule-card" href="/ja/learn/thailand-visa-exemption-30-days" data-filter-item data-groups="visa"><img class="rule-flag" src="/assets/flags/th.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>タイ：ビザ免除</strong><span>1回の滞在で最大30日。</span></span></a>
+          <a class="rule-card" href="/ja/learn/mexico-fmm-180-day-visitor-stay" data-filter-item data-groups="visa"><img class="rule-flag" src="/assets/flags/mx.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>メキシコ：訪問者滞在（FMM）</strong><span>1回の滞在で最大180日、入国時に認められた日数まで。</span></span></a>
+          <a class="rule-card" href="/ja/learn/thailand-visa-exemption-30-days" data-filter-item data-groups="visa"><img class="rule-flag" src="/assets/flags/th.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>タイ：ビザ免除</strong><span>1回の滞在で最大30日、延長は1回。</span></span></a>
+          <a class="rule-card" href="/ja/learn/destination-thailand-visa-180-days" data-filter-item data-groups="visa"><img class="rule-flag" src="/assets/flags/th.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>タイ：DTVビザ</strong><span>1回の滞在で最大180日、延長は1回。</span></span></a>
           <a class="rule-card" href="/ja/learn/turkiye-90-180-rule" data-filter-item data-groups="visa"><img class="rule-flag" src="/assets/flags/tr.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>トルコ短期滞在</strong><span>任意の180日間で最大90日。</span></span></a>
           <a class="rule-card" href="/ja/learn/uk-standard-visitor-visa-180-day-rule" data-filter-item data-groups="visa"><img class="rule-flag" src="/assets/flags/gb.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>英国：Standard Visitor</strong><span>1回の滞在は最長6か月。180日として計算。</span></span></a>
           <a class="rule-card" href="/ja/learn/us-visa-waiver-90-day-limit" data-filter-item data-groups="visa"><img class="rule-flag" src="/assets/flags/us.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>米国：ESTA</strong><span>1回の滞在で最大90日。</span></span></a>
@@ -192,13 +196,14 @@
           <a class="rule-card" href="/ja/learn/estonia-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/ee.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>エストニア：税務上の居住</strong><span>任意の12か月間で183日以上。</span></span></a>
           <a class="rule-card" href="/ja/learn/georgia-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/ge.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>ジョージア：税務上の居住</strong><span>任意の12か月間で183日以上。</span></span></a>
           <a class="rule-card" href="/ja/learn/greece-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/gr.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>ギリシャ：税務上の居住</strong><span>任意の12か月間で183日超。</span></span></a>
+          <a class="rule-card" href="/ja/learn/india-182-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/in.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>インド：税務上の居住</strong><span>課税年度で182日、または4年間で365日の後に60日か120日。</span></span></a>
           <a class="rule-card" href="/ja/learn/indonesia-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/id.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>インドネシア：税務上の居住</strong><span>任意の12か月間で183日超。</span></span></a>
           <a class="rule-card" href="/ja/learn/ireland-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/ie.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>アイルランド：税務上の居住</strong><span>1年間で183日、または2年間で280日。</span></span></a>
           <a class="rule-card" href="/ja/learn/italy-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/it.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>イタリア：税務上の居住</strong><span>暦年の半分を超える滞在。</span></span></a>
           <a class="rule-card" href="/ja/learn/lithuania-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/lt.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>リトアニア：税務上の居住</strong><span>暦年で183日以上。</span></span></a>
           <a class="rule-card" href="/ja/learn/malaysia-182-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/my.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>マレーシア：税務上の居住</strong><span>暦年で182日以上。</span></span></a>
           <a class="rule-card" href="/ja/learn/malta-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/mt.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>マルタ：税務上の居住</strong><span>暦年で183日超。</span></span></a>
-          <a class="rule-card" href="/ja/learn/mauritius-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/mu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>モーリシャス：税務上の居住</strong><span>課税年度で183日以上。</span></span></a>
+          <a class="rule-card" href="/ja/learn/mauritius-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/mu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>モーリシャス：税務上の居住</strong><span>1年間で183日、または3年間で270日。</span></span></a>
           <a class="rule-card" href="/ja/learn/moldova-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/md.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>モルドバ：税務上の居住</strong><span>暦年で183日以上。</span></span></a>
           <a class="rule-card" href="/ja/learn/montenegro-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/me.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>モンテネグロ：税務上の居住</strong><span>暦年で183日超。</span></span></a>
           <a class="rule-card" href="/ja/learn/new-zealand-183-day-tax-residency" data-filter-item data-groups="tax"><img class="rule-flag" src="/assets/flags/nz.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>ニュージーランド：税務上の居住</strong><span>任意の12か月間で183日超。</span></span></a>
@@ -250,12 +255,14 @@
         <p class="hub-label">在留資格の維持</p>
         <div class="rule-cards">
           <a class="rule-card" href="/ja/learn/nz-super-overseas-absence" data-filter-item data-groups="residence"><img class="rule-flag" src="/assets/flags/nz.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>NZ Superの国外滞在</strong><span>一時出国1回につき26週間（182日）。</span></span></a>
+          <a class="rule-card" href="/ja/learn/uae-residence-visa-6-months-outside" data-filter-item data-groups="residence"><img class="rule-flag" src="/assets/flags/ae.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>UAE居住ビザの不在上限</strong><span>出国1回につき国外滞在は最大180日。</span></span></a>
           <a class="rule-card" href="/ja/learn/italy-residence-permit-absence" data-filter-item data-groups="residence"><img class="rule-flag" src="/assets/flags/it.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>イタリア在留許可の国外滞在</strong><span>計画上の目安は、出国1回につき180日。</span></span></a>
           <a class="rule-card" href="/ja/learn/australia-resident-return-visa-residence" data-filter-item data-groups="residence"><img class="rule-flag" src="/assets/flags/au.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>オーストラリアの再入国ビザ（RRV）</strong><span>5年間で2年。730日を目標として計算。</span></span></a>
           <a class="rule-card" href="/ja/learn/qatar-residence-return-planning" data-filter-item data-groups="residence"><img class="rule-flag" src="/assets/flags/qa.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>カタール居住者の帰国計画</strong><span>計画上の目安は、出国1回につき180日。</span></span></a>
           <a class="rule-card" href="/ja/learn/canada-pr-residency-obligation" data-filter-item data-groups="residence"><img class="rule-flag" src="/assets/flags/ca.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>カナダ永住者の居住義務</strong><span>任意の5年間で730日以上。</span></span></a>
           <a class="rule-card" href="/ja/learn/switzerland-permit-absence" data-filter-item data-groups="residence"><img class="rule-flag" src="/assets/flags/ch.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>スイスB/C許可の国外滞在</strong><span>計画上の目安は、出国1回につき180日。</span></span></a>
           <a class="rule-card" href="/ja/learn/spain-long-term-residence-eu-absence" data-filter-item data-groups="residence"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>スペイン長期居住者のEU域外滞在</strong><span>計画上の目安は、1回のEU域外滞在で365日。</span></span></a>
+          <a class="rule-card" href="/ja/learn/germany-residence-permit-6-month-absence" data-filter-item data-groups="residence"><img class="rule-flag" src="/assets/flags/de.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>ドイツ在留資格の不在上限</strong><span>計画上の目安は、出国1回につき180日。</span></span></a>
           <a class="rule-card" href="/ja/learn/france-resident-card-absence" data-filter-item data-groups="residence"><img class="rule-flag" src="/assets/flags/fr.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>フランス10年居住者カードの国外滞在</strong><span>計画上の目安は、出国1回につき1095日。</span></span></a>
           <a class="rule-card" href="/ja/learn/netherlands-residence-permit-absence-rules" data-filter-item data-groups="residence"><img class="rule-flag" src="/assets/flags/nl.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>オランダ在留資格の不在上限</strong><span>1年のうち連続6か月を超える国外滞在。</span></span></a>
           <a class="rule-card" href="/ja/learn/us-green-card-absence-limits" data-filter-item data-groups="residence"><img class="rule-flag" src="/assets/flags/us.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>米国グリーンカードの不在上限</strong><span>6か月の国外滞在で継続居住が途切れる可能性。</span></span></a>
@@ -264,6 +271,7 @@
       <section class="hub-section rule-section" id="rules-citizenship" data-filter-section>
         <p class="hub-label">永住・帰化</p>
         <div class="rule-cards">
+          <a class="rule-card" href="/ja/learn/ireland-citizenship-70-day-absence" data-filter-item data-groups="citizenship"><img class="rule-flag" src="/assets/flags/ie.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>アイルランド国籍取得：申請前1年間の国外滞在</strong><span>申請前の1年間で国外滞在は最大70日。</span></span></a>
           <a class="rule-card" href="/ja/learn/australia-citizenship-residence-requirement" data-filter-item data-groups="citizenship"><img class="rule-flag" src="/assets/flags/au.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>オーストラリア帰化の国外滞在日数制限</strong><span>国外滞在は4年間で365日、最後の1年で90日。</span></span></a>
           <a class="rule-card" href="/ja/learn/canada-citizenship-physical-presence" data-filter-item data-groups="citizenship"><img class="rule-flag" src="/assets/flags/ca.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>カナダ市民権の滞在要件</strong><span>市民権取得に向け、5年間で1095日以上。</span></span></a>
           <a class="rule-card" href="/ja/learn/cyprus-citizenship-final-year-absence" data-filter-item data-groups="citizenship"><img class="rule-flag" src="/assets/flags/cy.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>キプロス国籍取得：申請前1年間の国外滞在</strong><span>申請前の1年間で国外滞在は最大90日。</span></span></a>
@@ -300,17 +308,13 @@
           <a href="/ja/learn/">旅行ルール</a>
           <a href="/ja/learn/calculators">計算機</a>
           <a href="/ja/learn/guides">ガイド</a>
-          <a href="/changelog">変更履歴</a>
         </div>
         <div>
           <h2>AtlasDays</h2>
           <a href="/ja/about">AtlasDaysについて</a>
           <a href="/ja/privacy">プライバシー</a>
           <a href="/ja/terms">利用規約</a>
-        </div>
-        <div>
-          <h2>ダウンロード</h2>
-          <a href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Storeで見る</a>
+          <a href="/changelog">変更履歴</a>
         </div>
       </nav>
     </div>
@@ -321,7 +325,7 @@
   <script>window.AtlasDaysNavStrings={"menuOpen":"ナビゲーションメニューを開く","menuClose":"ナビゲーションメニューを閉じる"};</script>
   <script src="../../assets/js/navigation.js?v=20261005a"></script>
   <script>window.AtlasDaysSearchStrings={"resultOne":"{count}件見つかりました","resultMany":"{count}件見つかりました","emptyHelp":"一致するヘルプ記事が見つかりません。機能名や操作、より短い語句で検索してください。","emptyLearn":"一致するルールやガイドが見つかりません。国、米国の州、地域、または一般的なトピックで検索してください。","unavailable":"検索を利用できません。下のトピックから選んでください。"};</script>
-  <script src="../../assets/js/search.js?v=20261006a"></script>
+  <script src="../../assets/js/search.js?v=20261006b"></script>
   <script src="../../assets/js/library-filter.js?v=20261006a"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */

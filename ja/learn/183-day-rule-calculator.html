@@ -100,6 +100,12 @@
       {
         "@type": "ListItem",
         "position": 3,
+        "name": "計算機",
+        "item": "https://atlasdays.app/ja/learn/calculators"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
         "name": "183日ルール計算機：どの国でも滞在日数をカウント",
         "item": "https://atlasdays.app/ja/learn/183-day-rule-calculator"
       }
@@ -144,9 +150,10 @@
   <link rel="stylesheet" href="../../assets/css/tokens.css?v=20260928f" />
   <link rel="stylesheet" href="../../assets/css/article-variants/49dd6e3e3ea5.css?v=20261005a" />
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
-  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261005a" />
-  <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
-  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261004l" />
+  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261006a" />
+  <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
+  <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261006a" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261006b" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">本文へスキップ</a>
@@ -215,17 +222,28 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="目次">
+      <p class="toc-title">目次</p>
+      <ul>
+        <li><a href="#section-1">滞在日数を数える</a></li>
+        <li><a href="#section-2">計算機の日数の数え方</a></li>
+        <li><a href="#section-3">数え方が異なる国</a></li>
+        <li><a href="#section-4">よくある質問</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb">
-      <a href="/ja/">AtlasDays</a> / <a href="/ja/learn/">旅行ルール</a>
+      <a href="/ja/">AtlasDays</a> / <a href="/ja/learn/">旅行ルール</a> / <a href="/ja/learn/calculators">計算機</a>
     </nav>
     <h1>183日ルール計算機：どの国でも滞在日数をカウント</h1>
     <p class="subtitle">国と年を選び、到着した日と出発した日をタップしてください。予定している滞在も含めて、183日にどこまで近づいているかをトラッカーが表示します。</p>
     <p class="verified">最終確認：2026年10月</p>
 
-    <h2>滞在日数を数える</h2>
+    <h2 id="section-1">滞在日数を数える</h2>
     <div class="daycal" id="days-183" data-day-calendar="days183">
       <script type="application/json" data-cal-strings>
 {
+  "days": "日数",
   "hintStart": "日付をタップすると滞在を追加できます。",
   "hintEnd": "滞在のもう一方の日付をタップしてください。",
   "hintSelected": "滞在のどちらかの端をドラッグして日付を変更するか、下で削除してください。",
@@ -316,7 +334,7 @@
     </div>
     <p class="cal-private">入力した内容はすべてブラウザ内にとどまります。送信も保存もされません。</p>
 
-    <h2>計算機の日数の数え方</h2>
+    <h2 id="section-2">計算機の日数の数え方</h2>
     <ul>
       <li><strong>1日の一部でもいれば1日と数えます。</strong>到着日と出発日はどちらもその国での滞在日になるため、6月1日から10日までは10日です。2か国の間を移動した日は、両方の国で1日と数えます。</li>
       <li><strong>1か国、1年間。</strong>トラッカーで国を、その上で期間を選びます。期間は暦年、開始日から1年間の課税年度（英国は4月6日、オーストラリアは7月1日、ニュージーランドとインドは4月1日に開始）、直近12か月から選べます。数えるのはその期間内の日だけです。</li>
@@ -324,7 +342,7 @@
       <li><strong>予定の滞在も数えます。</strong>まだ予約していない旅行も入力すれば、それで183日を超えるかどうかを確認できます。</li>
     </ul>
 
-    <h2>数え方が異なる国</h2>
+    <h2 id="section-3">数え方が異なる国</h2>
     <p>多くの国は、この計算機と同じ方法で日数を数えます。独自のルールがある国については各国のガイドで説明しており、AtlasDaysにはそのルールどおりに数えるプリセットのトラッカーがあります。</p>
     <ul>
       <li><strong>深夜0時。</strong>英国では、深夜0時の時点で国内にいた日を数えます。<a href="/ja/learn/uk-statutory-residence-test">英国のStatutory Residence Test（法定居住判定）</a>を参照してください。AtlasDaysの英国のトラッカーは深夜0時に国内にいた日を数えます。</li>
@@ -343,7 +361,7 @@
       <a class="cta-btn" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> AtlasDaysを入手</a>
     </div>
 
-    <h2>よくある質問</h2>
+    <h2 id="section-4">よくある質問</h2>
     <h3>到着した日は、その国での滞在日に数えますか？</h3>
     <p>この計算機では数えます。1日の一部でもいればその日を数えるため、到着日と出発日はどちらもその国での滞在日です。多くの国がこの方法で数えます。英国は代わりに深夜0時に国内にいた日を数えます。詳しくは<a href="/ja/learn/uk-statutory-residence-test">英国のガイド</a>で説明しています。</p>
     <h3>ある国に183日滞在すると、税務上の居住者になりますか？</h3>
@@ -362,14 +380,14 @@
     <p class="learn-disclaimer"><strong>この記事について：</strong>AtlasDaysは一般的な情報を提供するもので、法律・税務・移民に関する助言ではありません。規則は変わり、結果は個別の事情によって異なります。AtlasDaysだけに頼らず、リンク先の公的情報を確認するか、専門家に相談してください。</p>
 
     <nav class="related generated-related" aria-labelledby="related-183-day-rule-calculator">
-      <h2 id="related-183-day-rule-calculator">このトピックの関連記事</h2>
-      <ul>
-        <li><a href="/ja/learn/tax-residency-by-country">国別の税務上の居住</a></li>
-        <li><a href="/ja/learn/183-day-tax-residency-rule">税務上の居住を決める183日ルールと日数の数え方</a></li>
-        <li><a href="/ja/learn/albania-183-day-tax-residency">アルバニアの183日ルール：税務上の居住はいつ発生するか</a></li>
-        <li><a href="/ja/learn/arizona-tax-residency">アリゾナ州の9か月ルール：税務上の居住者と推定されるのはいつか</a></li>
-        <li><a href="/ja/learn/armenia-183-day-tax-residency">アルメニアの183日ルール：税務上の居住はいつ発生するか</a></li>
-      </ul>
+      <h2 id="related-183-day-rule-calculator">関連記事</h2>
+      <div class="rule-cards">
+        <a class="rule-card" href="/ja/learn/us-substantial-presence-test"><img class="rule-flag" src="/assets/flags/us.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>米国のSubstantial Presence Test（実質的滞在テスト）</strong></span></a>
+        <a class="rule-card" href="/ja/learn/malaysia-182-day-tax-residency"><img class="rule-flag" src="/assets/flags/my.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>マレーシアの182日ルール：183日ではない基準日数と数え方</strong></span></a>
+        <a class="rule-card" href="/ja/learn/thailand-180-day-tax-residency"><img class="rule-flag" src="/assets/flags/th.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>タイの180日ルール：税務上の居住はいつ発生するか</strong></span></a>
+        <a class="rule-card" href="/ja/learn/183-day-tax-residency-rule"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5.5" width="16" height="14.5" rx="3"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/></svg></span><span class="rule-text"><strong>税務上の居住を決める183日ルールと日数の数え方</strong></span></a>
+        <a class="rule-card" href="/ja/learn/tax-residency-by-country"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 4.5h9l3 3v12H6z"/><path d="M9 11h6M9 14.5h6"/></svg></span><span class="rule-text"><strong>国別の税務上の居住</strong></span></a>
+      </div>
     </nav>
   </article>
   </main>
@@ -393,17 +411,13 @@
           <a href="/ja/learn/">旅行ルール</a>
           <a href="/ja/learn/calculators">計算機</a>
           <a href="/ja/learn/guides">ガイド</a>
-          <a href="/changelog">変更履歴</a>
         </div>
         <div>
           <h2>AtlasDays</h2>
           <a href="/ja/about">AtlasDaysについて</a>
           <a href="/ja/privacy">プライバシー</a>
           <a href="/ja/terms">利用規約</a>
-        </div>
-        <div>
-          <h2>ダウンロード</h2>
-          <a href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Storeで見る</a>
+          <a href="/changelog">変更履歴</a>
         </div>
       </nav>
     </div>
@@ -413,8 +427,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"ナビゲーションメニューを開く","menuClose":"ナビゲーションメニューを閉じる"};</script>
   <script src="../../assets/js/navigation.js?v=20261005a"></script>
-  <script defer src="../../assets/js/rules/days-183.js?v=20261006a"></script>
-  <script defer src="../../assets/js/day-calendar.js?v=20261006a"></script>
+  <script defer src="../../assets/js/rules/days-183.js?v=20261006c"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261006b"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

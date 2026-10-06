@@ -70,6 +70,12 @@
         {
           "@type": "ListItem",
           "position": 3,
+          "name": "Guides",
+          "item": "https://atlasdays.app/learn/guides"
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
           "name": "How the Schengen Rolling Window Actually Works",
           "item": "https://atlasdays.app/learn/schengen-rolling-window-walkthrough"
         }
@@ -82,8 +88,9 @@
   <link rel="stylesheet" href="../assets/css/tokens.css?v=20260928f" />
   <link rel="stylesheet" href="../assets/css/article-variants/9cf80a439c8f.css?v=20260928f" />
   <link rel="stylesheet" href="../assets/css/site-header.css?v=20260930a" />
-  <link rel="stylesheet" href="../assets/css/article-components.css?v=20261005a" />
-  <link rel="stylesheet" href="../assets/css/site-footer.css?v=20260928f" />
+  <link rel="stylesheet" href="../assets/css/article-components.css?v=20261006a" />
+  <link rel="stylesheet" href="../assets/css/rule-cards.css?v=20261006b" />
+  <link rel="stylesheet" href="../assets/css/site-footer.css?v=20261006a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
@@ -152,8 +159,20 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="On this page">
+      <p class="toc-title">On this page</p>
+      <ul>
+        <li><a href="#the-core-mental-model">The Core Mental Model</a></li>
+        <li><a href="#worked-example">Worked Example</a></li>
+        <li><a href="#why-the-check-date-changes-the-answer">Why the Check Date Changes the Answer</a></li>
+        <li><a href="#how-days-come-back">How Days Come Back</a></li>
+        <li><a href="#common-counting-mistakes">Common Counting Mistakes</a></li>
+        <li><a href="#practical-caution-and-official-boundary">Practical Caution and Official Boundary</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb">
-      <a href="/">AtlasDays</a> / <a href="/learn/">Travel Rules</a>
+      <a href="/">AtlasDays</a> / <a href="/learn/">Travel Rules</a> / <a href="/learn/guides">Guides</a>
     </nav>
 
     <img class="title-flag" src="../assets/flags/eu.png" alt="European Union flag" width="56" height="42" />
@@ -165,11 +184,11 @@
       <p><strong>In short:</strong> the rolling window is applied on a date, not over a trip. Pick the date you care about, look backward 180 days, and count every day of Schengen presence inside that window. The window moves forward every day, so used days drop off one at a time instead of resetting all at once, and the same trip history can give two different answers on two different check dates.</p>
     </div>
 
-    <h2>The Core Mental Model</h2>
+    <h2 id="the-core-mental-model">The Core Mental Model</h2>
     <p>On any date you care about, look backward 180 days and count every day of Schengen presence inside that window. If the count is 90 or fewer, you are within the short-stay limit. If it exceeds 90, you are not.</p>
     <p>The important part is that the window <strong>moves every day</strong>. There is no fixed quarterly reset and no separate pool for each Schengen country. The same shared counter follows you across the whole area.</p>
 
-    <h2>Worked Example</h2>
+    <h2 id="worked-example">Worked Example</h2>
     <p>Suppose your trip history looks like this:</p>
     <ul>
       <li><strong>Trip 1:</strong> 15 January to 13 February – 30 Schengen days</li>
@@ -177,7 +196,7 @@
     </ul>
     <p>Your combined total is 75 days. That number by itself is not enough. You still need to ask: <strong>75 days inside which 180-day window?</strong></p>
 
-    <h2>Why the Check Date Changes the Answer</h2>
+    <h2 id="why-the-check-date-changes-the-answer">Why the Check Date Changes the Answer</h2>
     <p>If you check on <strong>1 July</strong>, the 180-day lookback reaches into January, so both trips are still inside the window. That means the full 75 days still count, leaving only 15 days available.</p>
     <p>If you check on <strong>1 September</strong>, the 180-day lookback starts in March. The January–February trip has dropped out completely, so only the 45 days from April–May still count. On that date, you would have 45 days available.</p>
 
@@ -186,11 +205,11 @@
     </div>
     <p class="calc-callout">The <a href="/learn/schengen-calculator">Schengen calculator</a> shows this with your own dates: tap your stays, then move the date it counts up to.</p>
 
-    <h2>How Days Come Back</h2>
+    <h2 id="how-days-come-back">How Days Come Back</h2>
     <p>Days do not come back in one block. They return in the same order they were used. Once the oldest day becomes older than the 180-day lookback, that one day drops out and one day becomes available again.</p>
     <p>That is why people often think they have “waited long enough” and still miscount. A long trip does not create a clean reset. It creates a gradual release of days over time.</p>
 
-    <h2>Common Counting Mistakes</h2>
+    <h2 id="common-counting-mistakes">Common Counting Mistakes</h2>
     <ul>
       <li><strong>Treating Schengen like a simple 90 days in, 90 days out cycle.</strong> It is not.</li>
       <li><strong>Forgetting that entry and exit days both count.</strong> Off-by-one errors matter near the limit.</li>
@@ -198,7 +217,7 @@
       <li><strong>Counting “days outside” instead of counting days inside the 180-day lookback.</strong> Time outside only matters because it pushes older inside-days out of the window.</li>
     </ul>
 
-    <h2>Practical Caution and Official Boundary</h2>
+    <h2 id="practical-caution-and-official-boundary">Practical Caution and Official Boundary</h2>
     <p>This page explains the logic, not your specific legal position. For official Schengen short-stay guidance, use the European Commission’s <a href="https://home-affairs.ec.europa.eu/policies/schengen/border-crossing/short-stay-calculator_en">short-stay calculator</a> and its <a href="https://home-affairs.ec.europa.eu/policies/schengen/schengen-area_en">Schengen area overview</a>. They are the right sources when you need the formal framework rather than the intuition.</p>
     <p>The safest practical rule is: if the trip pattern is important, do not rely on memory and do not assume a rough estimate is close enough.</p>
 
@@ -211,14 +230,15 @@
     <p class="learn-disclaimer"><strong>About this article:</strong> AtlasDays provides general information, not legal, tax, or immigration advice. Rules change and outcomes depend on your circumstances, so never rely on it alone: check the linked official source or ask a qualified professional.</p>
 
     <nav class="related generated-related" aria-labelledby="related-schengen-rolling-window-walkthrough">
-      <h2 id="related-schengen-rolling-window-walkthrough">Related in this topic</h2>
-      <ul>
-        <li><a href="/learn/schengen-90-180-rule">What Does 90 Days in Any 180-Day Period Mean?</a></li>
-        <li><a href="/learn/ees-etias-schengen-90-180">EES and ETIAS: What They Mean for Your Schengen Days</a></li>
-        <li><a href="/learn/schengen-calculator">Schengen Calculator: Check Your 90/180 Days</a></li>
-        <li><a href="/learn/schengen-countries-list-90-180-rule">Schengen Countries List for the 90/180 Rule</a></li>
-        <li><a href="/learn/schengen-single-entry-visa">Schengen Single-Entry Visa: Entries vs Duration of Stay</a></li>
-      </ul>
+      <h2 id="related-schengen-rolling-window-walkthrough">Related articles</h2>
+      <div class="rule-cards">
+        <a class="rule-card" href="/learn/schengen-90-180-rule"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>What Does 90 Days in Any 180-Day Period Mean?</strong></span></a>
+        <a class="rule-card" href="/learn/schengen-single-entry-visa"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Schengen Single-Entry Visa: Entries vs Duration of Stay</strong></span></a>
+        <a class="rule-card" href="/learn/schengen-calculator"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Schengen Calculator: Check Your 90/180 Days</strong></span></a>
+        <a class="rule-card" href="/learn/ees-etias-schengen-90-180"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>EES and ETIAS: What They Mean for Your Schengen Days</strong></span></a>
+        <a class="rule-card" href="/learn/schengen-countries-list-90-180-rule"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Schengen Countries List for the 90/180 Rule</strong></span></a>
+        <a class="rule-card" href="/learn/when-do-you-get-schengen-days-back-after-90-day-stay"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>When Do You Get Schengen Days Back After a 90-Day Stay?</strong></span></a>
+      </div>
     </nav>
   </article>
   </main>
@@ -242,17 +262,13 @@
           <a href="/learn/">Travel Rules</a>
           <a href="/learn/calculators">Calculators</a>
           <a href="/learn/guides">Guides</a>
-          <a href="/changelog">Changelog</a>
         </div>
         <div>
           <h2>AtlasDays</h2>
           <a href="/about">About</a>
           <a href="/privacy">Privacy</a>
           <a href="/terms">Terms</a>
-        </div>
-        <div>
-          <h2>Download</h2>
-          <a href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">View on the App Store</a>
+          <a href="/changelog">Changelog</a>
         </div>
       </nav>
     </div>

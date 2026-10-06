@@ -272,9 +272,17 @@
               if (item.entry.line) text.append(copy);
               link.append(mark, text);
             } else {
+              // A Help result is its title only, as a row like Learn's
+              // (Jorick, 2026-10-06: descriptions made the list too dense).
+              link.className += " search-card";
+              var icon = document.createElement("span");
+              icon.className = "search-guide";
+              icon.innerHTML = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10A.5.5 0 0 1 7 20V3.5Z"/><path d="M14 3.5V8h4M10 12h5M10 15.5h5"/></svg>';
               heading.textContent = item.entry.title;
-              copy.textContent = item.entry.description;
-              link.append(heading, copy);
+              var label = document.createElement("span");
+              label.className = "search-text";
+              label.append(heading);
+              link.append(icon, label);
             }
             results.appendChild(link);
           });

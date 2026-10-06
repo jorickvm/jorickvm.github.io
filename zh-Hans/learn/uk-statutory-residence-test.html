@@ -122,8 +122,9 @@
   <link rel="stylesheet" href="../../assets/css/tokens.css?v=20260928f" />
   <link rel="stylesheet" href="../../assets/css/article-variants/9e71d65b8f5b.css?v=20260928f" />
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
-  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261005a" />
-  <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
+  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261006a" />
+  <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
+  <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261006a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">跳到主要内容</a>
@@ -192,6 +193,17 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="本页内容">
+      <p class="toc-title">本页内容</p>
+      <ul>
+        <li><a href="#section-1">三段式结构</a></li>
+        <li><a href="#section-2">先前的居民身份为什么会改变答案</a></li>
+        <li><a href="#section-3">天数不那么显而易见的地方</a></li>
+        <li><a href="#2025-4">2025 年 4 月有什么变化</a></li>
+        <li><a href="#section-5">常见问题</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb">
       <a href="/zh-Hans/">AtlasDays</a> / <a href="/zh-Hans/learn/">旅行规定</a>
     </nav>
@@ -215,13 +227,13 @@
       </dl>
     </div>
 
-    <h2>三段式结构</h2>
+    <h2 id="section-1">三段式结构</h2>
     <p>HMRC 是按顺序适用 SRT 的。先看自动海外判定，再看自动英国判定，只有在两边都没有直接决定这一年时，才会走到充分联系判定。</p>
     <p><strong>自动海外判定</strong>不需要分析任何联系，就能让人成为非英国税务居民。如果此前三个纳税年度中有一年或多年是英国税务居民，在英国停留少于 16 天就可能足够。如果此前三个纳税年度都不是英国税务居民，门槛是少于 46 个英国天数。此外还有一项全职海外工作判定，带有自己的英国天数上限和英国工作日上限。</p>
     <p>接下来是<strong>自动英国判定</strong>。最清楚的一条是在该纳税年度内在英国停留 183 天以上。在符合详细条件时，英国住宅也可以在不到 183 天的情况下造成自动居民身份，在合格期间内于英国全职工作同样可以。</p>
     <p><strong>充分联系判定</strong>决定剩下的所有情况。HMRC 会看家庭、住处、工作、以往在英国停留的时间这类英国联系；如果此前三个纳税年度中有一年或多年是英国税务居民，还会加上一项国家联系。背后的逻辑很简单：与英国的联系越多，成为居民之前能在英国待的天数就越少。</p>
 
-    <h2>先前的居民身份为什么会改变答案</h2>
+    <h2 id="section-2">先前的居民身份为什么会改变答案</h2>
     <p>先前是不是居民，决定适用哪一张充分联系对照表，而两张表相差很远。</p>
     <ul>
       <li>此前三个纳税年度中有一年或多年是居民：对于有四项联系的人，表上可以低到 16 至 45 个英国天数。</li>
@@ -229,7 +241,7 @@
     </ul>
     <p>两个人的旅行完全相同，却可能仅仅因为其中一人近期曾是英国税务居民，就落在这条线的两侧。</p>
 
-    <h2>天数不那么显而易见的地方</h2>
+    <h2 id="section-3">天数不那么显而易见的地方</h2>
     <ul>
       <li><strong>这里的一年是英国纳税年度，不是 1 月到 12 月。</strong>在日历年上看起来无害的模式，仍然可能有影响。</li>
       <li><strong>天数一般按当日结束时人是否在英国来计算，</strong>但<a href="https://www.gov.uk/hmrc-internal-manuals/residence-and-fig-regime-manual/rfig20720">拟制</a>规则和特殊情况规则可能改变实际的总数。</li>
@@ -238,7 +250,7 @@
       <li><strong>访客规定是另一套框架。</strong>Standard Visitor 的停留模式和英国税务居民身份回答的是不同的问题。</li>
     </ul>
 
-    <h2>2025 年 4 月有什么变化</h2>
+    <h2 id="2025-4">2025 年 4 月有什么变化</h2>
     <p>SRT 本身没有变。变的是被认定为英国税务居民之后会发生什么。自 2025 年 4 月 6 日起，针对非英国住所（non-dom）人士的汇入制征税被废除，改为<strong>境外收入与收益（FIG）制度</strong>。在成为英国税务居民之前，紧接着连续至少 10 个纳税年度不是英国税务居民的人，可以选择让境外收入与收益在成为英国税务居民的前四个纳税年度内免于英国税。这个四年窗口结束后，那些境外收入与收益就按通常方式征税。HMRC 的现行指引见 <a href="https://www.gov.uk/government/publications/residence-domicile-and-remittance-basis-rules-uk-tax-liability/guidance-note-for-residence-domicile-and-the-remittance-basis-rdr1">RDR1</a>，以及现在标注为“Residence and FIG Regime Manual”的手册章节。</p>
     <p>如果是在长期居住海外之后最近才成为英国税务居民、以前依靠汇入制，或者正处在这个四年窗口内，SRT 的结论仍然是第一步，但这个结论带来的后果与旧的 non-dom 规定所产生的结果有实质差别。</p>
 
@@ -255,7 +267,7 @@
       </a>
     </div>
 
-    <h2>常见问题</h2>
+    <h2 id="section-5">常见问题</h2>
     <h3>英国是不是简单的 183 天规则？</h3>
     <p>不是。在一个纳税年度内停留 183 天以上会自动成为税务居民，但通过英国住宅、在英国全职工作，或在充分联系判定下与英国有足够的联系，天数远低于 183 天也可能成为居民。</p>
     <h3>英国的天数是怎么计算的？</h3>
@@ -274,14 +286,15 @@
     <p class="learn-disclaimer"><strong>关于本文：</strong>AtlasDays 提供的是一般信息，并非法律、税务或移民方面的建议。规定会变动，结果也取决于个人情况，因此不要只依赖 AtlasDays：请查阅链接的官方资料来源，或咨询合格的专业人士。</p>
 
     <nav class="related generated-related" aria-labelledby="related-uk-statutory-residence-test">
-      <h2 id="related-uk-statutory-residence-test">本主题的相关文章</h2>
-      <ul>
-        <li><a href="/zh-Hans/learn/uk-standard-visitor-visa-180-day-rule">英国 Standard Visitor 的“180 天规定”</a></li>
-        <li><a href="/zh-Hans/learn/uk-citizenship-absence-limits">英国入籍：离境 450 天与 90 天上限</a></li>
-        <li><a href="/zh-Hans/learn/uk-eta-vs-standard-visitor-visa">英国 ETA 与 Standard Visitor 签证：需要哪一种？</a></li>
-        <li><a href="/zh-Hans/learn/uk-ilr-absence-calculator">英国永久居留（ILR）离境天数计算器：任意 12 个月内 180 天</a></li>
-        <li><a href="/zh-Hans/learn/uk-ilr-absence-limit">英国永久居留（ILR）离境规定：任意 12 个月内不得超过 180 天</a></li>
-      </ul>
+      <h2 id="related-uk-statutory-residence-test">相关文章</h2>
+      <div class="rule-cards">
+        <a class="rule-card" href="/zh-Hans/learn/uk-standard-visitor-visa-180-day-rule"><img class="rule-flag" src="/assets/flags/gb.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>英国 Standard Visitor 的“180 天规定”</strong></span></a>
+        <a class="rule-card" href="/zh-Hans/learn/uk-citizenship-absence-limits"><img class="rule-flag" src="/assets/flags/gb.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>英国入籍：离境 450 天与 90 天上限</strong></span></a>
+        <a class="rule-card" href="/zh-Hans/learn/uk-ilr-absence-limit"><img class="rule-flag" src="/assets/flags/gb.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>英国永久居留（ILR）离境规定：任意 12 个月内不得超过 180 天</strong></span></a>
+        <a class="rule-card" href="/zh-Hans/learn/183-day-rule-calculator"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.5 2.6 3.5 5.4 3.5 8.5s-1 5.9-3.5 8.5c-2.5-2.6-3.5-5.4-3.5-8.5s1-5.9 3.5-8.5Z"/></svg></span><span class="rule-text"><strong>183 天规则计算器：统计在任一国家的停留天数</strong></span></a>
+        <a class="rule-card" href="/zh-Hans/learn/183-day-tax-residency-rule"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5.5" width="16" height="14.5" rx="3"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/></svg></span><span class="rule-text"><strong>183 天税务居民规定：天数如何计算</strong></span></a>
+        <a class="rule-card" href="/zh-Hans/learn/uk-ilr-absence-calculator"><img class="rule-flag" src="/assets/flags/gb.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>英国永久居留（ILR）离境天数计算器：任意 12 个月内 180 天</strong></span></a>
+      </div>
     </nav>
   </article>
   </main>
@@ -305,17 +318,13 @@
           <a href="/zh-Hans/learn/">旅行规定</a>
           <a href="/zh-Hans/learn/calculators">计算器</a>
           <a href="/zh-Hans/learn/guides">指南</a>
-          <a href="/changelog">更新记录</a>
         </div>
         <div>
           <h2>AtlasDays</h2>
           <a href="/zh-Hans/about">关于 AtlasDays</a>
           <a href="/zh-Hans/privacy">隐私</a>
           <a href="/zh-Hans/terms">使用条款</a>
-        </div>
-        <div>
-          <h2>下载</h2>
-          <a href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">在 App Store 上查看</a>
+          <a href="/changelog">更新记录</a>
         </div>
       </nav>
     </div>

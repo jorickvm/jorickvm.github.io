@@ -123,8 +123,9 @@
   <link rel="stylesheet" href="../../assets/css/tokens.css?v=20260928f" />
   <link rel="stylesheet" href="../../assets/css/article-variants/49dd6e3e3ea5.css?v=20261005a" />
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
-  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261005a" />
-  <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
+  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261006a" />
+  <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
+  <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261006a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">跳到主要内容</a>
@@ -193,6 +194,16 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="本页内容">
+      <p class="toc-title">本页内容</p>
+      <ul>
+        <li><a href="#section-1">规定内容</a></li>
+        <li><a href="#section-2">怎么计算</a></li>
+        <li><a href="#section-3">天数之外</a></li>
+        <li><a href="#section-4">常见问题</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb">
       <a href="/zh-Hans/">AtlasDays</a> / <a href="/zh-Hans/learn/">旅行规定</a> / 美国
     </nav>
@@ -218,7 +229,7 @@
       </dl>
     </div>
 
-    <h2>规定内容</h2>
+    <h2 id="section-1">规定内容</h2>
     <p>绿卡不是每趟行程都带着有效期的签证，所以没有一个盖在护照上的数字可以盯着看。真正要紧的是一次连续离境有多长，而 USCIS 在这上面读出两条线。</p>
     <ul>
       <li><strong>六个月或以上。</strong>离境超过 180 天但不满一年，会被推定为中断了入籍所要求的连续居住。这个推定是可以反驳的：你可以用证据来回答，例如在美国保留的工作、留在美国的直系亲属，以及一直可以住回去的住所。同一次离境也会把是否放弃永久居民身份的问题，摆到入境时查验你的官员面前。</li>
@@ -227,7 +238,7 @@
     <p>两条线衡量的都不是这些年在境外的总时间，而是同一趟行程。一年里六趟各两个月的行程，两条门槛都不会碰到；而一趟七个月的行程，第一条就过了。</p>
     <p>这里的 180 不是访客持 B-1 或 B-2 签证通常获得的 180 天停留期，那一个衡量的是在<em>境内</em>的时间，而不是在境外的时间：那条规定见 <a href="/zh-Hans/learn/us-b1-b2-visa-180-day-limit">B-1/B-2 的 180 天停留上限</a>。</p>
 
-    <h2>怎么计算</h2>
+    <h2 id="section-2">怎么计算</h2>
     <ol class="steps">
       <li>取你上一次在美国的停留结束的日期，也就是飞出去的那一天。</li>
       <li>把这一天之后每一个完全不在美国境内的日子都数进去。</li>
@@ -240,7 +251,7 @@
     </div>
     <p>出境当天和返回当天都不算作不在境内的日子，因为这两天你有一部分时间在境内。如果算出来的天数就在 180 天上下一两天，那就当作接近临界，而不是安全过关。</p>
 
-    <h2>天数之外</h2>
+    <h2 id="section-3">天数之外</h2>
     <p>长度是意图的证据，而不是判定标准本身。USCIS 会看这趟行程的原因、原本打算离开多久、离境时的具体情形，以及有没有把行程拖长的意外事件。再入境许可的意义也正在文书之外：它显示你把这次离境规划成暂时性的。如果离开超过两年，出境前签发的许可已经过期，回来的途径就是向美国领事馆申请回美居民（SB-1）签证。N-470 表格是另一条针对入籍的补救途径，而且只适用于在境外为美国政府、美国公司、受认可的国际组织或宗教机构工作的合资格情形。一旦个案取决于怎么反驳这个推定，或者某次离境是不是暂时性的，移民律师就比任何天数计算都更有价值。</p>
 
     <div class="cta-box">
@@ -256,7 +267,7 @@
       </a>
     </div>
 
-    <h2>常见问题</h2>
+    <h2 id="section-4">常见问题</h2>
     <h3>绿卡持有人可以在美国境外待多久？</h3>
     <p>短期行程没有问题。从六个月起，这次离境会被推定为中断入籍所需的连续居住，在口岸也会引出是否放弃永久居民身份的问题。从一年起，连续居住自动中断，而且你本应在出境前就取得再入境许可。</p>
     <h3>再入境许可能保住我的入籍之路吗？</h3>
@@ -275,13 +286,14 @@
     <p class="learn-disclaimer"><strong>关于本文：</strong>AtlasDays 提供的是一般信息，并非法律、税务或移民方面的建议。规定会变动，结果也取决于个人情况，因此不要只依赖 AtlasDays：请查阅链接的官方资料来源，或咨询合格的专业人士。</p>
 
     <nav class="related generated-related" aria-labelledby="related-us-green-card-absence-limits">
-      <h2 id="related-us-green-card-absence-limits">本主题的相关文章</h2>
-      <ul>
-        <li><a href="/zh-Hans/learn/us-b1-b2-visa-180-day-limit">美国 B1/B2 签证：了解 180 天停留上限</a></li>
-        <li><a href="/zh-Hans/learn/us-naturalization-physical-presence">美国入籍的 30 个月实际居住要求</a></li>
-        <li><a href="/zh-Hans/learn/us-substantial-presence-test">美国实质居留判定</a></li>
-        <li><a href="/zh-Hans/learn/us-visa-waiver-90-day-limit">美国免签证计划的 90 天上限</a></li>
-      </ul>
+      <h2 id="related-us-green-card-absence-limits">相关文章</h2>
+      <div class="rule-cards">
+        <a class="rule-card" href="/zh-Hans/learn/us-b1-b2-visa-180-day-limit"><img class="rule-flag" src="/assets/flags/us.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>美国 B1/B2 签证：了解 180 天停留上限</strong></span></a>
+        <a class="rule-card" href="/zh-Hans/learn/us-visa-waiver-90-day-limit"><img class="rule-flag" src="/assets/flags/us.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>美国免签证计划的 90 天上限</strong></span></a>
+        <a class="rule-card" href="/zh-Hans/learn/us-substantial-presence-test"><img class="rule-flag" src="/assets/flags/us.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>美国实质居留判定</strong></span></a>
+        <a class="rule-card" href="/zh-Hans/learn/residence-permit-citizenship-absence-rules"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5.5" width="16" height="14.5" rx="3"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/></svg></span><span class="rule-text"><strong>各国居留许可与入籍离境规定</strong></span></a>
+        <a class="rule-card" href="/zh-Hans/learn/canada-pr-residency-obligation"><img class="rule-flag" src="/assets/flags/ca.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>加拿大永久居民的居住义务：730 天</strong></span></a>
+      </div>
     </nav>
   </article>
   </main>
@@ -305,17 +317,13 @@
           <a href="/zh-Hans/learn/">旅行规定</a>
           <a href="/zh-Hans/learn/calculators">计算器</a>
           <a href="/zh-Hans/learn/guides">指南</a>
-          <a href="/changelog">更新记录</a>
         </div>
         <div>
           <h2>AtlasDays</h2>
           <a href="/zh-Hans/about">关于 AtlasDays</a>
           <a href="/zh-Hans/privacy">隐私</a>
           <a href="/zh-Hans/terms">使用条款</a>
-        </div>
-        <div>
-          <h2>下载</h2>
-          <a href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">在 App Store 上查看</a>
+          <a href="/changelog">更新记录</a>
         </div>
       </nav>
     </div>

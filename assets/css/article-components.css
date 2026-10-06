@@ -390,25 +390,27 @@ article > .learn-disclaimer,
 .calc-callout:has(a:focus-visible) { outline: 2px solid var(--blue); outline-offset: 3px; }
 .calc-callout a:focus-visible { outline: none; }
 
-/* "On this page" (build: render_toc), for long Learn articles. No card:
-   phones get one collapsed line, tablets an open list between thin rules,
-   wide screens a sticky list in the empty margin beside the 720px column,
-   marking the section being read. */
+/* "On this page" (build: render_toc). No card. Wide screens: a sticky list
+   in the empty margin beside the 720px column, from the top of every Learn
+   article, marking the section being read (.toc-side). Narrower screens: on
+   long articles only, after the summary, one collapsed line on phones and an
+   open list between thin rules on tablets (.toc). */
+.toc-side { display: none; }
 .toc {
   margin: 28px 0 8px;
   padding: 12px 0;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }
-.toc summary {
-  cursor: pointer;
+.toc summary,
+.toc-title {
   color: var(--muted);
   font-size: 0.78rem;
   font-weight: 650;
   letter-spacing: 0.07em;
   text-transform: uppercase;
-  list-style: none;
 }
+.toc summary { cursor: pointer; list-style: none; }
 .toc summary::-webkit-details-marker { display: none; }
 .toc summary::after { content: " +"; }
 .toc[open] summary::after { content: ""; }
@@ -418,21 +420,20 @@ article > .learn-disclaimer,
 .toc a:hover { color: var(--blue); }
 @media (max-width: 759px) { .toc ul { columns: 1; } }
 @media (min-width: 1260px) {
-  .toc {
+  .toc { display: none; }
+  .toc-side {
+    display: block;
     float: right;
     position: sticky;
     top: 104px;
     width: 200px;
     margin: 0 -248px 0 0;
-    padding: 0;
-    border: 0;
   }
-  .toc summary { pointer-events: none; }
-  .toc summary::after { content: none; }
-  .toc ul { columns: 1; margin-top: 12px; border-left: 1px solid var(--line); }
-  .toc li { margin: 0; font-size: 0.86rem; }
-  .toc a { display: block; margin-left: -1px; padding: 5px 0 5px 14px; border-left: 2px solid transparent; color: var(--muted); }
-  .toc a:hover { color: var(--text); }
-  .toc a[aria-current="true"] { color: var(--text); border-left-color: var(--blue); }
+  .toc-title { margin: 0; }
+  .toc-side ul { margin: 12px 0 0; padding: 0; list-style: none; border-left: 1px solid var(--line); }
+  .toc-side li { margin: 0; font-size: 0.86rem; line-height: 1.4; }
+  .toc-side a { display: block; margin-left: -1px; padding: 5px 0 5px 14px; border-left: 2px solid transparent; color: var(--muted); text-decoration: none; }
+  .toc-side a:hover { color: var(--text); }
+  .toc-side a[aria-current="true"] { color: var(--text); border-left-color: var(--blue); }
 }
 h2[id] { scroll-margin-top: 96px; }

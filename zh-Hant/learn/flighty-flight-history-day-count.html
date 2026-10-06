@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>如何把 Flighty 航班紀錄換算成簽證與稅務居民天數｜AtlasDays</title>
+  <title>用 Flighty 航班紀錄計算停留天數｜AtlasDays</title>
   <meta name="description" content="Flighty 記錄航班，不計算各國停留天數。了解如何匯出 Flighty CSV、匯入 AtlasDays，並核對申根或 183 天門檻。" />
-  <meta property="og:title" content="如何把 Flighty 航班紀錄換算成簽證與稅務居民天數｜AtlasDays" />
+  <meta property="og:title" content="用 Flighty 航班紀錄計算停留天數｜AtlasDays" />
   <meta property="og:description" content="Flighty 記錄航班，不計算各國停留天數。了解如何匯出 Flighty CSV、匯入 AtlasDays，並核對申根或 183 天門檻。" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/zh-Hant/learn/flighty-flight-history-day-count" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="如何把 Flighty 航班紀錄換算成簽證與稅務居民天數｜AtlasDays" />
+  <meta name="twitter:title" content="用 Flighty 航班紀錄計算停留天數｜AtlasDays" />
   <meta name="twitter:description" content="Flighty 記錄航班，不計算各國停留天數。了解如何匯出 Flighty CSV、匯入 AtlasDays，並核對申根或 183 天門檻。" />
   <meta name="apple-itunes-app" content="app-id=6760133544, app-argument=https://apps.apple.com/app/atlasdays-track-country-days/id6760133544" />
   <meta property="og:locale" content="zh_TW" />
@@ -78,6 +78,12 @@
       {
         "@type": "ListItem",
         "position": 3,
+        "name": "指南",
+        "item": "https://atlasdays.app/zh-Hant/learn/guides"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
         "name": "如何把 Flighty 航班紀錄換算成簽證與稅務居民天數",
         "item": "https://atlasdays.app/zh-Hant/learn/flighty-flight-history-day-count"
       }
@@ -122,8 +128,9 @@
   <link rel="stylesheet" href="../../assets/css/tokens.css?v=20260928f" />
   <link rel="stylesheet" href="../../assets/css/article-variants/49dd6e3e3ea5.css?v=20261005a" />
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
-  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261005a" />
-  <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
+  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261006a" />
+  <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
+  <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261006a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">跳至主要內容</a>
@@ -192,8 +199,18 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="本頁內容">
+      <p class="toc-title">本頁內容</p>
+      <ul>
+        <li><a href="#flighty">從 Flighty 匯出航班</a></li>
+        <li><a href="#atlasdays">匯入 AtlasDays</a></li>
+        <li><a href="#section-3">採用計算結果前</a></li>
+        <li><a href="#section-4">常見問題</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb">
-      <a href="/zh-Hant/">AtlasDays</a> / <a href="/zh-Hant/learn/">旅行規定</a>
+      <a href="/zh-Hant/">AtlasDays</a> / <a href="/zh-Hant/learn/">旅行規定</a> / <a href="/zh-Hant/learn/guides">指南</a>
     </nav>
 
     <h1>如何把 Flighty 航班紀錄換算成簽證與稅務居民天數</h1>
@@ -204,14 +221,14 @@
       <p><strong>重點：</strong>Flighty 會記錄航班，但不會計算<strong>在各國停留的天數</strong>。將 Flighty 紀錄匯出為 <strong>CSV</strong> 並匯入 AtlasDays，即可把航班轉成註明日期的行程，對照申根 90/180 規定、183 天門檻及其他追蹤器計算。</p>
     </div>
 
-    <h2>從 Flighty 匯出航班</h2>
+    <h2 id="flighty">從 Flighty 匯出航班</h2>
     <ol class="steps">
       <li>在 Flighty 開啟<strong>「Settings」→「Account Data」</strong>，匯出航班。</li>
       <li>將 CSV 檔案儲存到「檔案」App，例如 iCloud Drive 或「我的 iPhone」。不要先用試算表開啟再重新儲存。</li>
     </ol>
     <p>匯出檔案只包含 Flighty 中已有的航班。如果舊行程尚未加入，請在匯出前補齊：Flighty 可免費匯入過去一年的航班，<strong>更早的航班需要 Flighty Pro</strong>。</p>
 
-    <h2>匯入 AtlasDays</h2>
+    <h2 id="atlasdays">匯入 AtlasDays</h2>
     <ol class="steps">
       <li>開啟 AtlasDays，前往<strong>「設定」→「匯入」→「Flighty」</strong>。</li>
       <li>點選<strong>「選擇 Flighty CSV」</strong>，選擇剛才儲存的檔案。</li>
@@ -226,7 +243,7 @@
       <li><strong>確認前不會儲存任何行程。</strong>若缺少抵達或離境航班，行程會列為資訊不完整，讓人補上日期，而不是接受猜測的結果。</li>
     </ul>
 
-    <h2>採用計算結果前</h2>
+    <h2 id="section-3">採用計算結果前</h2>
     <ul>
       <li><strong>陸路越境不會出現在航班紀錄中。</strong>搭火車、渡輪或開車越過邊境的日期，必須手動補上。</li>
       <li><strong>檢查影響上限的行程。</strong>一段誤判的轉機或漏掉的航段就會改變<a href="/zh-Hant/learn/schengen-90-180-rule">申根 90/180</a> 累計，因此要核對相關計算期間內的每次停留。</li>
@@ -243,7 +260,7 @@
       <a class="cta-btn" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> 取得 AtlasDays</a>
     </div>
 
-    <h2>常見問題</h2>
+    <h2 id="section-4">常見問題</h2>
     <h3>Flighty 會計算在一個國家待了幾天嗎？</h3>
     <p>不會。Flighty 會記錄航班並產生飛行統計，但不會加總在各國停留的天數，也不會對照簽證或稅務居民門檻。必須先把航班轉成註明日期的停留紀錄；將 Flighty CSV 匯入 AtlasDays，就是完成這一步。</p>
     <h3>如何從 Flighty 匯出旅行紀錄？</h3>
@@ -262,14 +279,14 @@
     <p class="learn-disclaimer"><strong>關於本文：</strong>AtlasDays 僅提供一般資訊，不構成法律、稅務或移民建議。規定可能變更，結果也會因個人情況而異，因此不應只依賴 AtlasDays。請查看文中連結的官方資料來源，或諮詢合格專業人士。</p>
 
     <nav class="related generated-related" aria-labelledby="related-flighty-flight-history-day-count">
-      <h2 id="related-flighty-flight-history-day-count">本主題的相關文章</h2>
-      <ul>
-        <li><a href="/zh-Hant/learn/travel-history-for-visa-applications">簽證申請的旅行紀錄：各種表格要回溯多久</a></li>
-        <li><a href="/zh-Hant/learn/get-official-entry-exit-records">如何申請官方入出境紀錄</a></li>
-        <li><a href="/zh-Hant/learn/prove-you-were-not-in-a-country">如何證明自己不在某個國家或州</a></li>
-        <li><a href="/zh-Hant/learn/rebuild-travel-history-from-passport-stamps-emails-photos">如何用護照章、電子郵件與照片重建旅行紀錄</a></li>
-        <li><a href="/zh-Hant/learn/travel-history-template-visa-application">簽證申請旅行紀錄範本（免費 CSV）</a></li>
-      </ul>
+      <h2 id="related-flighty-flight-history-day-count">相關文章</h2>
+      <div class="rule-cards">
+        <a class="rule-card" href="/zh-Hant/learn/travel-history-for-visa-applications"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10A.5.5 0 0 1 7 20V3.5Z"/><path d="M14 3.5V8h4M10 12h5M10 15.5h5"/></svg></span><span class="rule-text"><strong>簽證申請的旅行紀錄：各種表格要回溯多久</strong></span></a>
+        <a class="rule-card" href="/zh-Hant/learn/travel-history-template-visa-application"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10A.5.5 0 0 1 7 20V3.5Z"/><path d="M14 3.5V8h4M10 12h5M10 15.5h5"/></svg></span><span class="rule-text"><strong>簽證申請旅行紀錄範本（免費 CSV）</strong></span></a>
+        <a class="rule-card" href="/zh-Hant/learn/get-official-entry-exit-records"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10A.5.5 0 0 1 7 20V3.5Z"/><path d="M14 3.5V8h4M10 12h5M10 15.5h5"/></svg></span><span class="rule-text"><strong>如何申請官方入出境紀錄</strong></span></a>
+        <a class="rule-card" href="/zh-Hant/learn/rebuild-travel-history-from-passport-stamps-emails-photos"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10A.5.5 0 0 1 7 20V3.5Z"/><path d="M14 3.5V8h4M10 12h5M10 15.5h5"/></svg></span><span class="rule-text"><strong>如何用護照章、電子郵件與照片重建旅行紀錄</strong></span></a>
+        <a class="rule-card" href="/zh-Hant/learn/prove-you-were-not-in-a-country"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10A.5.5 0 0 1 7 20V3.5Z"/><path d="M14 3.5V8h4M10 12h5M10 15.5h5"/></svg></span><span class="rule-text"><strong>如何證明自己不在某個國家或州</strong></span></a>
+      </div>
     </nav>
   </article>
   </main>
@@ -291,19 +308,15 @@
           <h2>探索</h2>
           <a href="/zh-Hant/help/">說明中心</a>
           <a href="/zh-Hant/learn/">旅行規定</a>
-          <a href="/zh-Hant/learn/calculators">計算器</a>
+          <a href="/zh-Hant/learn/calculators">計算機</a>
           <a href="/zh-Hant/learn/guides">指南</a>
-          <a href="/changelog">更新紀錄</a>
         </div>
         <div>
           <h2>AtlasDays</h2>
           <a href="/zh-Hant/about">關於 AtlasDays</a>
           <a href="/zh-Hant/privacy">隱私權</a>
           <a href="/zh-Hant/terms">使用條款</a>
-        </div>
-        <div>
-          <h2>下載</h2>
-          <a href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">在 App Store 查看</a>
+          <a href="/changelog">更新紀錄</a>
         </div>
       </nav>
     </div>

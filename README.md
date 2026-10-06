@@ -83,10 +83,19 @@ Interactive day-calendar messages live in the article fragment’s `<script type
 
 **Terminology comes from the app, not from this repo.** `glossary.json` is a generated snapshot of the AtlasDays app's shipped translations and its accepted-terminology tables. A help article is a set of instructions about the app's screens: if it names a button differently from the app, the article is worse than useless, and that mismatch is invisible to anyone who cannot read the language.
 
+## How Learn is put together
+
+- **Rule articles appear as the app's preset cards** on the Learn index, the use-case pages and in related links: the flag, title, section and one-line rule come from the app. An article names its preset with `app_preset` in `articles.json`; `_site-src/data/app-catalog.json` is the committed snapshot of the app's catalogue, refreshed with `scripts/sync_app_catalog.py`. A rule the app has no preset for gets its own card in `_site-src/data/learn-cards.json`. An article with neither is left off the Learn index without an error.
+- **Guides and calculators have their own pages,** `/learn/guides` and `/learn/calculators` (`_site-src/content/hubs/learn-guides.html`, `learn-calculators.html`, one per locale), and sit under them in the breadcrumb ("Travel Rules / Guides"), in the fragment and in the `BreadcrumbList`. A new guide goes on the guides page in every locale.
+- **Related articles** at the foot of every Learn article are chosen by the build (`related_paths()` in `build_site.py`): the same country's other rules, the rule's calculator and guide, the topic overview, then the same kind of rule in nearby countries. Neighbours come from `_site-src/data/regions.json`; add a new country there.
+- **"On this page"** (`render_toc()`) is a sidebar on wide screens on every Learn article, and an inline list on phones and tablets for long articles only.
+- **Search** matches titles, descriptions and `search_synonyms`; put the abbreviations and form numbers people type (SPT, ILR, N-400) in the English record's `search_synonyms`, and every language inherits them.
+- **Day calculators** are described in the private repo's `CALCULATORS_HANDOFF.md`.
+
 ## Adding or editing an article
 
 1. Edit the fragment under `_site-src/content/<section>/`, or add a new one.
-2. Register it in `_site-src/data/articles.json`, and add a route to `routes.json`. For Learn, put verified government URLs in `sources` and the prose that explains them in `source_note`; use `{{source:n}}` markers inside that note. A factbox must have a Legal basis row: use the row in the fragment, or set `legal_basis` and `legal_basis_source` for the build to add it.
+2. Register it in `_site-src/data/articles.json`, and add a route to `routes.json`. A rule article needs its card: `app_preset`, or an entry in `learn-cards.json` (see How Learn is put together). For Learn, put verified government URLs in `sources` and the prose that explains them in `source_note`; use `{{source:n}}` markers inside that note. A factbox must have a Legal basis row: use the row in the fragment, or set `legal_basis` and `legal_basis_source` for the build to add it.
 3. Rebuild, in this order (each output feeds the next):
 
 ```bash
@@ -137,6 +146,7 @@ Serves the committed HTML with GitHub Pages' extensionless URLs, so links resolv
 | `check_translations.py` | Gates translated pages on terminology, structural parity, typography, and staleness. |
 | `check_untranslated.py` | Flags reader-facing English phrases left in translated fragments. |
 | `sync_glossary.py` | Snapshots product terminology from the app repo into `glossary.json`. |
+| `sync_app_catalog.py` | Snapshots the app's tracker catalogue (preset cards, per language) into `app-catalog.json`, from the app's `WebsiteCatalogExportTests` output. |
 | `locales.py` | Shared locale registry, marker resolution, dates, and translation hashing. |
 | `check_external_sources.py` | Weekly link check over the official sources articles cite. |
 | `report_source_health.py` | Turns that report into the GitHub issue the weekly workflow maintains. |

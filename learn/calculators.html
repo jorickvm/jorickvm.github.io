@@ -111,15 +111,15 @@
     }
   }
   </script>
-  <script>(function(){var d=document.documentElement,q=new URLSearchParams(location.search).get('theme'),t=null;if(q==='light'||q==='dark'){t=q;try{sessionStorage.setItem('theme',q)}catch(e){}}else{try{t=sessionStorage.getItem('theme')}catch(e){}if(!t)try{t=localStorage.getItem('theme')}catch(e){}}d.setAttribute('data-theme',t==='light'?'light':'dark')})()</script>
+  <script>(function(){var d=document.documentElement,q=new URLSearchParams(location.search).get('theme'),t=null;if(q==='light'||q==='dark'){t=q;try{sessionStorage.setItem('theme',q)}catch(e){}}else{try{t=sessionStorage.getItem('theme')}catch(e){}if(!t)try{t=localStorage.getItem('theme')}catch(e){}}d.setAttribute('data-theme',t==='light'?'light':'dark');d.classList.add('js')})()</script>
   <script>window.AtlasDaysPageLocales={"ja":{"url":"/ja/learn/calculators","label":"このページを日本語で読む","dismiss":"閉じる"},"nl":{"url":"/nl/learn/calculators","label":"Lees deze pagina in het Nederlands","dismiss":"Sluiten"},"de":{"url":"/de/learn/calculators","label":"Diese Seite auf Deutsch lesen","dismiss":"Schließen"},"es":{"url":"/es/learn/calculators","label":"Lee esta página en español","dismiss":"Cerrar"},"fr":{"url":"/fr/learn/calculators","label":"Lire cette page en français","dismiss":"Fermer"},"ru":{"url":"/ru/learn/calculators","label":"Читать эту страницу на русском","dismiss":"Закрыть"},"uk":{"url":"/uk/learn/calculators","label":"Читати цю сторінку українською","dismiss":"Закрити"},"tr":{"url":"/tr/learn/calculators","label":"Bu sayfayı Türkçe okuyun","dismiss":"Kapat"},"pt":{"url":"/pt/learn/calculators","label":"Leia esta página em português","dismiss":"Fechar"},"ko":{"url":"/ko/learn/calculators","label":"이 페이지를 한국어로 읽기","dismiss":"닫기"},"zh-Hant":{"url":"/zh-Hant/learn/calculators","label":"以繁體中文閱讀本頁","dismiss":"關閉"},"zh-Hans":{"url":"/zh-Hans/learn/calculators","label":"以简体中文阅读本页","dismiss":"关闭"},"pl":{"url":"/pl/learn/calculators","label":"Przeczytaj tę stronę po polsku","dismiss":"Zamknij"}};window.AtlasDaysMatchLocale=function(tag,m){var w=String(tag||'').trim().replace(/_/g,'-').toLowerCase(),c;if(!w)return '';for(c in m)if(c.toLowerCase()===w)return c;var s=function(t){try{return new Intl.Locale(t).maximize().script||''}catch(err){return null}},b=w.split('-')[0],x=s(w);for(c in m){if(c.toLowerCase().split('-')[0]!==b)continue;if(x===null){if(c.indexOf('-')<0)return c;continue}if(s(c)===x)return c}return ''};(function(){var q=new URLSearchParams(location.search).get('lang');if(!q)return;var m=window.AtlasDaysPageLocales,e=m[window.AtlasDaysMatchLocale(q,m)];if(e&&e.url!==location.pathname)location.replace(e.url+location.search+location.hash)})()</script>
   <script defer src="../assets/js/locale-route.js?v=20260830c"></script>
   <link rel="stylesheet" href="../assets/css/tokens.css?v=20260928f" />
   <link rel="stylesheet" href="../assets/css/hub-variants/a2023fe42813.css?v=20260928f" />
   <link rel="stylesheet" href="../assets/css/site-header.css?v=20260930a" />
-  <link rel="stylesheet" href="../assets/css/site-footer.css?v=20260928f" />
-  <link rel="stylesheet" href="../assets/css/search.css?v=20261006a" />
-  <link rel="stylesheet" href="../assets/css/rule-cards.css?v=20261006a" />
+  <link rel="stylesheet" href="../assets/css/site-footer.css?v=20261006a" />
+  <link rel="stylesheet" href="../assets/css/search.css?v=20261006b" />
+  <link rel="stylesheet" href="../assets/css/rule-cards.css?v=20261006b" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
@@ -200,83 +200,28 @@
     <div class="hub-content">
       <section class="hub-section" id="stay-limits">
         <p class="hub-label">Stay limits</p>
-        <div class="hub-places hub-grid">
-          <div class="hub-tile">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/eu.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Schengen 90/180</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/schengen-calculator"><span class="hub-key">90 days</span> in any 180 across the Schengen Area</a>
-            </div>
-          </div>
-          <div class="hub-tile">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/tr.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Turkiye 90/180</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/turkiye-90-180-rule#calculator"><span class="hub-key">90 days</span> in any 180 in Turkiye</a>
-            </div>
-          </div>
+        <div class="rule-cards">
+          <a class="rule-card" href="/learn/schengen-calculator"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Schengen 90/180</strong><span>90 days in any 180 across the Schengen Area</span></span></a>
+          <a class="rule-card" href="/learn/turkiye-90-180-rule#calculator"><img class="rule-flag" src="/assets/flags/tr.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Turkiye 90/180</strong><span>90 days in any 180 in Turkiye</span></span></a>
         </div>
       </section>
       <section class="hub-section" id="tax-residency">
         <p class="hub-label">Tax residency</p>
-        <div class="hub-places hub-grid">
-          <div class="hub-tile">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/brand/hub-any-country.webp" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">183-day rule</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/183-day-rule-calculator"><span class="hub-key">183 days</span> in any country, by calendar or tax year</a>
-            </div>
-          </div>
-          <div class="hub-tile">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/us.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">US substantial presence test</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/us-substantial-presence-test#calculator"><span class="hub-key">183 days</span> weighted over three years</a>
-            </div>
-          </div>
-          <div class="hub-tile">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/my.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Malaysia</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/malaysia-182-day-tax-residency#calculator"><span class="hub-key">182 days</span> in Malaysia in a calendar year</a>
-            </div>
-          </div>
-          <div class="hub-tile">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/th.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Thailand</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/thailand-180-day-tax-residency#calculator"><span class="hub-key">180 days</span> in Thailand in a calendar year</a>
-            </div>
-          </div>
+        <div class="rule-cards">
+          <a class="rule-card" href="/learn/183-day-rule-calculator"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.5 2.6 3.5 5.4 3.5 8.5s-1 5.9-3.5 8.5c-2.5-2.6-3.5-5.4-3.5-8.5s1-5.9 3.5-8.5Z"/></svg></span><span class="rule-text"><strong>183-day rule</strong><span>183 days in any country, by calendar or tax year</span></span></a>
+          <a class="rule-card" href="/learn/us-substantial-presence-test#calculator"><img class="rule-flag" src="/assets/flags/us.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>US substantial presence test</strong><span>183 days weighted over three years</span></span></a>
+          <a class="rule-card" href="/learn/malaysia-182-day-tax-residency#calculator"><img class="rule-flag" src="/assets/flags/my.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Malaysia</strong><span>182 days in Malaysia in a calendar year</span></span></a>
+          <a class="rule-card" href="/learn/thailand-180-day-tax-residency#calculator"><img class="rule-flag" src="/assets/flags/th.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Thailand</strong><span>180 days in Thailand in a calendar year</span></span></a>
         </div>
       </section>
       <section class="hub-section" id="residence-citizenship">
         <p class="hub-label">Residence and citizenship</p>
-        <div class="hub-places hub-grid">
-          <div class="hub-tile">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/gb.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">UK ILR absences</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/uk-ilr-absence-calculator"><span class="hub-key">180 days</span> outside the UK in any 12 months</a>
-            </div>
-          </div>
-          <div class="hub-tile">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/gb.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">UK citizenship absences</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/uk-citizenship-absence-limits#calculator"><span class="hub-key">450 days</span> away in five years, 90 in the last 12 months</a>
-            </div>
-          </div>
-          <div class="hub-tile">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/ca.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Canada PR residency</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/canada-pr-residency-obligation#calculator"><span class="hub-key">730 days</span> in Canada in any five years</a>
-            </div>
-          </div>
-          <div class="hub-tile">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/ca.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">Canada citizenship</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/canada-citizenship-physical-presence#calculator"><span class="hub-key">1,095 days</span> in the five years before you sign</a>
-            </div>
-          </div>
-          <div class="hub-tile">
-            <div class="hub-tile-head"><img class="hub-flag" src="/assets/flags/us.png" alt="" width="28" height="19" loading="lazy" /><span class="hub-tile-name">US citizenship</span></div>
-            <div class="hub-links">
-              <a class="hub-link" href="/learn/us-naturalization-physical-presence#calculator"><span class="hub-key">913 days</span> in the five years before you file</a>
-            </div>
-          </div>
+        <div class="rule-cards">
+          <a class="rule-card" href="/learn/uk-ilr-absence-calculator"><img class="rule-flag" src="/assets/flags/gb.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>UK ILR absences</strong><span>180 days outside the UK in any 12 months</span></span></a>
+          <a class="rule-card" href="/learn/uk-citizenship-absence-limits#calculator"><img class="rule-flag" src="/assets/flags/gb.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>UK citizenship absences</strong><span>450 days away in five years, 90 in the last 12 months</span></span></a>
+          <a class="rule-card" href="/learn/canada-pr-residency-obligation#calculator"><img class="rule-flag" src="/assets/flags/ca.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Canada PR residency</strong><span>730 days in Canada in any five years</span></span></a>
+          <a class="rule-card" href="/learn/canada-citizenship-physical-presence#calculator"><img class="rule-flag" src="/assets/flags/ca.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Canada citizenship</strong><span>1,095 days in the five years before you sign</span></span></a>
+          <a class="rule-card" href="/learn/us-naturalization-physical-presence#calculator"><img class="rule-flag" src="/assets/flags/us.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>US citizenship</strong><span>913 days in the five years before you file</span></span></a>
         </div>
       </section>
     </div>
@@ -301,17 +246,13 @@
           <a href="/learn/">Travel Rules</a>
           <a href="/learn/calculators">Calculators</a>
           <a href="/learn/guides">Guides</a>
-          <a href="/changelog">Changelog</a>
         </div>
         <div>
           <h2>AtlasDays</h2>
           <a href="/about">About</a>
           <a href="/privacy">Privacy</a>
           <a href="/terms">Terms</a>
-        </div>
-        <div>
-          <h2>Download</h2>
-          <a href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">View on the App Store</a>
+          <a href="/changelog">Changelog</a>
         </div>
       </nav>
     </div>
@@ -322,7 +263,7 @@
   <script>window.AtlasDaysNavStrings={"menuOpen":"Open navigation menu","menuClose":"Close navigation menu"};</script>
   <script src="../assets/js/navigation.js?v=20261005a"></script>
   <script>window.AtlasDaysSearchStrings={"resultOne":"{count} result found","resultMany":"{count} results found","emptyHelp":"No matching Help article. Try a feature name, task, or shorter phrase.","emptyLearn":"No matching rule or guide. Try a country, US state, region, or broader topic.","unavailable":"Search is unavailable; browse the topics below."};</script>
-  <script src="../assets/js/search.js?v=20261006a"></script>
+  <script src="../assets/js/search.js?v=20261006b"></script>
 
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */

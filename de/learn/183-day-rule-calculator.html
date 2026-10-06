@@ -100,6 +100,12 @@
       {
         "@type": "ListItem",
         "position": 3,
+        "name": "Rechner",
+        "item": "https://atlasdays.app/de/learn/calculators"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
         "name": "183-Tage-Rechner: Zähle deine Tage in jedem Land",
         "item": "https://atlasdays.app/de/learn/183-day-rule-calculator"
       }
@@ -144,9 +150,10 @@
   <link rel="stylesheet" href="../../assets/css/tokens.css?v=20260928f" />
   <link rel="stylesheet" href="../../assets/css/article-variants/49dd6e3e3ea5.css?v=20261005a" />
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
-  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261005a" />
-  <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
-  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261004l" />
+  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261006a" />
+  <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
+  <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261006a" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261006b" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
@@ -215,17 +222,28 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="Auf dieser Seite">
+      <p class="toc-title">Auf dieser Seite</p>
+      <ul>
+        <li><a href="#z-hle-deine-tage">Zähle deine Tage</a></li>
+        <li><a href="#so-z-hlt-der-rechner">So zählt der Rechner</a></li>
+        <li><a href="#wenn-dein-land-anders-z-hlt">Wenn dein Land anders zählt</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb">
-      <a href="/de/">AtlasDays</a> / <a href="/de/learn/">Reiseregeln</a>
+      <a href="/de/">AtlasDays</a> / <a href="/de/learn/">Reiseregeln</a> / <a href="/de/learn/calculators">Rechner</a>
     </nav>
     <h1>183-Tage-Rechner: Zähle deine Tage in jedem Land</h1>
     <p class="subtitle">Wähle ein Land und ein Jahr und tippe dann auf den Tag deiner Ankunft und den Tag deiner Abreise. Der Tracker zeigt dir, wie nah du an 183 Tagen bist, geplante Aufenthalte eingeschlossen.</p>
     <p class="verified">Zuletzt geprüft: Oktober 2026</p>
 
-    <h2>Zähle deine Tage</h2>
+    <h2 id="z-hle-deine-tage">Zähle deine Tage</h2>
     <div class="daycal" id="days-183" data-day-calendar="days183">
       <script type="application/json" data-cal-strings>
 {
+  "days": "Tage",
   "hintStart": "Tippe auf einen Tag, um einen Aufenthalt hinzuzufügen.",
   "hintEnd": "Tippe jetzt auf das andere Ende des Aufenthalts.",
   "hintSelected": "Ziehe an einem der beiden Enden, um die Reisedaten zu ändern, oder lösche den Aufenthalt unten.",
@@ -321,7 +339,7 @@
     </div>
     <p class="cal-private">Alles bleibt in deinem Browser: Deine Eingaben werden weder übertragen noch gespeichert.</p>
 
-    <h2>So zählt der Rechner</h2>
+    <h2 id="so-z-hlt-der-rechner">So zählt der Rechner</h2>
     <ul>
       <li><strong>Jeder angebrochene Tag zählt.</strong> Der Tag der Anreise und der Tag der Abreise sind beide Tage im Land, vom 1. bis 10. Juni sind es also zehn Tage. Ein Reisetag zwischen zwei Ländern zählt für beide.</li>
       <li><strong>Ein Land, ein Jahr.</strong> Wähle im Tracker das Land und darüber den Zeitraum: ein Kalenderjahr, ein Steuerjahr ab seinem ersten Tag (6. April im Vereinigten Königreich, 1. Juli in Australien, 1. April in Neuseeland und Indien) oder die letzten 12 Monate. Nur Tage innerhalb dieses Zeitraums zählen.</li>
@@ -329,7 +347,7 @@
       <li><strong>Geplante Aufenthalte zählen mit.</strong> Markiere auch eine Reise, die du noch nicht gebucht hast, und sieh nach, ob sie dich über 183 bringen würde.</li>
     </ul>
 
-    <h2>Wenn dein Land anders zählt</h2>
+    <h2 id="wenn-dein-land-anders-z-hlt">Wenn dein Land anders zählt</h2>
     <p>Die meisten Länder zählen Tage so wie dieser Rechner. Hat dein Land eine eigene Regel, erklärt sie der Leitfaden zu diesem Land, und AtlasDays hat einen fertigen Tracker, der genau danach zählt:</p>
     <ul>
       <li><strong>Mitternächte.</strong> Das Vereinigte Königreich zählt die Tage, an denen du um Mitternacht dort bist. Siehe den <a href="/de/learn/uk-statutory-residence-test">Statutory Residence Test des Vereinigten Königreichs</a>; der Tracker für das Vereinigte Königreich in AtlasDays zählt Mitternächte.</li>
@@ -348,7 +366,7 @@
       <a class="cta-btn" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> AtlasDays laden</a>
     </div>
 
-    <h2>FAQ</h2>
+    <h2 id="faq">FAQ</h2>
     <h3>Zählt der Tag der Ankunft als Tag im Land?</h3>
     <p>In diesem Rechner ja: Jeder angebrochene Tag zählt, also sind sowohl der Tag der Anreise als auch der Tag der Abreise Tage in diesem Land. Viele Länder zählen so. Das Vereinigte Königreich zählt stattdessen Mitternächte, und der <a href="/de/learn/uk-statutory-residence-test">Leitfaden zum Vereinigten Königreich</a> erklärt, wie.</p>
     <h3>Macht mich ein Aufenthalt von 183 Tagen in einem Land steuerlich ansässig?</h3>
@@ -367,14 +385,14 @@
     <p class="learn-disclaimer"><strong>Über diesen Artikel:</strong> AtlasDays bietet allgemeine Informationen, keine Rechts-, Steuer- oder Einwanderungsberatung. Regeln ändern sich und das Ergebnis hängt von deinen Umständen ab, verlass dich also nie allein darauf: Prüfe die verlinkte offizielle Quelle oder wende dich an eine qualifizierte Fachperson.</p>
 
     <nav class="related generated-related" aria-labelledby="related-183-day-rule-calculator">
-      <h2 id="related-183-day-rule-calculator">Mehr zu diesem Thema</h2>
-      <ul>
-        <li><a href="/de/learn/tax-residency-by-country">Steuerwohnsitz nach Ländern</a></li>
-        <li><a href="/de/learn/183-day-tax-residency-rule">183-Tage-Regel für den Steuerwohnsitz: So werden die Tage gezählt</a></li>
-        <li><a href="/de/learn/albania-183-day-tax-residency">Albaniens 183-Tage-Regel für den Steuerwohnsitz</a></li>
-        <li><a href="/de/learn/arizona-tax-residency">Arizonas 9-Monats-Vermutung für den Steuerwohnsitz</a></li>
-        <li><a href="/de/learn/armenia-183-day-tax-residency">Armeniens 183-Tage-Regel für den Steuerwohnsitz</a></li>
-      </ul>
+      <h2 id="related-183-day-rule-calculator">Verwandte Artikel</h2>
+      <div class="rule-cards">
+        <a class="rule-card" href="/de/learn/us-substantial-presence-test"><img class="rule-flag" src="/assets/flags/us.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Substantial Presence Test der USA: Was Reisende wissen müssen</strong></span></a>
+        <a class="rule-card" href="/de/learn/malaysia-182-day-tax-residency"><img class="rule-flag" src="/assets/flags/my.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Malaysias 182-Tage-Regel für den Steuerwohnsitz</strong></span></a>
+        <a class="rule-card" href="/de/learn/thailand-180-day-tax-residency"><img class="rule-flag" src="/assets/flags/th.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Thailands 180-Tage-Regel für den Steuerwohnsitz</strong></span></a>
+        <a class="rule-card" href="/de/learn/183-day-tax-residency-rule"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5.5" width="16" height="14.5" rx="3"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/></svg></span><span class="rule-text"><strong>183-Tage-Regel für den Steuerwohnsitz: So werden die Tage gezählt</strong></span></a>
+        <a class="rule-card" href="/de/learn/tax-residency-by-country"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 4.5h9l3 3v12H6z"/><path d="M9 11h6M9 14.5h6"/></svg></span><span class="rule-text"><strong>Steuerwohnsitz nach Ländern</strong></span></a>
+      </div>
     </nav>
   </article>
   </main>
@@ -398,17 +416,13 @@
           <a href="/de/learn/">Reiseregeln</a>
           <a href="/de/learn/calculators">Rechner</a>
           <a href="/de/learn/guides">Anleitungen</a>
-          <a href="/changelog">Neuigkeiten</a>
         </div>
         <div>
           <h2>AtlasDays</h2>
           <a href="/de/about">Über AtlasDays</a>
           <a href="/de/privacy">Datenschutz</a>
           <a href="/de/terms">Nutzungsbedingungen</a>
-        </div>
-        <div>
-          <h2>Download</h2>
-          <a href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">Im App Store ansehen</a>
+          <a href="/changelog">Neuigkeiten</a>
         </div>
       </nav>
     </div>
@@ -418,8 +432,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"Navigationsmenü öffnen","menuClose":"Navigationsmenü schließen"};</script>
   <script src="../../assets/js/navigation.js?v=20261005a"></script>
-  <script defer src="../../assets/js/rules/days-183.js?v=20261006a"></script>
-  <script defer src="../../assets/js/day-calendar.js?v=20261006a"></script>
+  <script defer src="../../assets/js/rules/days-183.js?v=20261006c"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261006b"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

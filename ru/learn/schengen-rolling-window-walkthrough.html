@@ -78,6 +78,12 @@
       {
         "@type": "ListItem",
         "position": 3,
+        "name": "Руководства",
+        "item": "https://atlasdays.app/ru/learn/guides"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
         "name": "Как на самом деле работает скользящее окно в Шенгене",
         "item": "https://atlasdays.app/ru/learn/schengen-rolling-window-walkthrough"
       }
@@ -90,8 +96,9 @@
   <link rel="stylesheet" href="../../assets/css/tokens.css?v=20260928f" />
   <link rel="stylesheet" href="../../assets/css/article-variants/9cf80a439c8f.css?v=20260928f" />
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
-  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261005a" />
-  <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
+  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261006a" />
+  <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
+  <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261006a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Перейти к содержимому</a>
@@ -160,8 +167,20 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="На этой странице">
+      <p class="toc-title">На этой странице</p>
+      <ul>
+        <li><a href="#section-1">Базовая модель подсчёта</a></li>
+        <li><a href="#section-2">Разбор примера</a></li>
+        <li><a href="#section-3">Почему дата проверки меняет ответ</a></li>
+        <li><a href="#section-4">Как возвращаются дни</a></li>
+        <li><a href="#section-5">Частые ошибки подсчёта</a></li>
+        <li><a href="#section-6">Практическая оговорка и граница официального</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb">
-      <a href="/ru/">AtlasDays</a> / <a href="/ru/learn/">Правила поездок</a>
+      <a href="/ru/">AtlasDays</a> / <a href="/ru/learn/">Правила поездок</a> / <a href="/ru/learn/guides">Руководства</a>
     </nav>
 
     <img class="title-flag" src="/assets/flags/eu.png" alt="Флаг Европейского союза" width="56" height="42" />
@@ -173,11 +192,11 @@
       <p><strong>Коротко:</strong> скользящее окно применяется к дате, а не к поездке. Выберите нужную дату, отсчитайте назад 180 дней и посчитайте каждый день присутствия в Шенгене внутри этого окна. Окно сдвигается вперёд каждый день, поэтому израсходованные дни выходят из него по одному, а не обнуляются разом, и одна и та же история поездок на две разные даты проверки даёт два разных ответа.</p>
     </div>
 
-    <h2>Базовая модель подсчёта</h2>
+    <h2 id="section-1">Базовая модель подсчёта</h2>
     <p>На любую интересующую вас дату отсчитайте назад 180 дней и посчитайте каждый день присутствия в Шенгене внутри этого окна. Если получилось 90 дней или меньше, вы укладываетесь в лимит краткосрочного пребывания. Если больше 90 — нет.</p>
     <p>Важно, что окно <strong>сдвигается каждый день</strong>. Нет ни фиксированного ежеквартального обнуления, ни отдельного запаса дней для каждой шенгенской страны. Один и тот же общий счётчик следует за вами по всей зоне.</p>
 
-    <h2>Разбор примера</h2>
+    <h2 id="section-2">Разбор примера</h2>
     <p>Допустим, ваша история поездок выглядит так:</p>
     <ul>
       <li><strong>Поездка 1:</strong> с 15 января по 13 февраля — 30 шенгенских дней</li>
@@ -185,7 +204,7 @@
     </ul>
     <p>Суммарно получается 75 дней. Само по себе это число ничего не решает. Остаётся вопрос: <strong>75 дней внутри какого именно 180-дневного окна?</strong></p>
 
-    <h2>Почему дата проверки меняет ответ</h2>
+    <h2 id="section-3">Почему дата проверки меняет ответ</h2>
     <p>Если проверять на <strong>1 июля</strong>, отсчёт назад на 180 дней достаёт до января, поэтому обе поездки всё ещё внутри окна. Значит, засчитываются все 75 дней и доступными остаются лишь 15.</p>
     <p>Если проверять на <strong>1 сентября</strong>, отсчёт назад на 180 дней начинается в марте. Январско-февральская поездка выпала полностью, поэтому засчитываются только 45 дней апреля и мая. На эту дату вам доступны 45 дней.</p>
 
@@ -194,11 +213,11 @@
     </div>
     <p class="calc-callout"><a href="/ru/learn/schengen-calculator">Шенгенский калькулятор</a> покажет это на ваших датах: отметьте свои поездки, а затем меняйте дату в поле «Считать до».</p>
 
-    <h2>Как возвращаются дни</h2>
+    <h2 id="section-4">Как возвращаются дни</h2>
     <p>Дни не возвращаются одним блоком. Они возвращаются в том же порядке, в каком были израсходованы. Как только самый ранний день оказывается старше 180-дневного периода отсчёта, именно он выходит из окна и один день снова становится доступен.</p>
     <p>Именно поэтому люди часто считают, что «выждали достаточно», и всё равно ошибаются в подсчёте. Долгая поездка не даёт чистого обнуления. Она даёт постепенное высвобождение дней во времени.</p>
 
-    <h2>Частые ошибки подсчёта</h2>
+    <h2 id="section-5">Частые ошибки подсчёта</h2>
     <ul>
       <li><strong>Считать Шенген простым циклом «90 дней внутри, 90 дней снаружи».</strong> Это не так.</li>
       <li><strong>Забывать, что день въезда и день выезда считаются оба.</strong> Ошибка на один день у самого лимита имеет значение.</li>
@@ -206,7 +225,7 @@
       <li><strong>Считать «дни снаружи» вместо дней внутри 180-дневного периода отсчёта.</strong> Время вне зоны важно только тем, что выталкивает из окна более ранние дни, проведённые внутри.</li>
     </ul>
 
-    <h2>Практическая оговорка и граница официального</h2>
+    <h2 id="section-6">Практическая оговорка и граница официального</h2>
     <p>Эта страница объясняет логику, а не ваше конкретное правовое положение. За официальными разъяснениями по шенгенскому краткосрочному пребыванию обращайтесь к <a href="https://home-affairs.ec.europa.eu/policies/schengen/border-crossing/short-stay-calculator_en">калькулятору краткосрочного пребывания</a> Европейской комиссии и её <a href="https://home-affairs.ec.europa.eu/policies/schengen/schengen-area_en">обзору Шенгенской зоны</a>. Это верные источники, когда нужна формальная рамка, а не интуиция.</p>
     <p>Самое безопасное практическое правило: если график поездок важен, не полагайтесь на память и не считайте, что грубой оценки достаточно.</p>
 
@@ -219,14 +238,15 @@
     <p class="learn-disclaimer"><strong>Об этой статье:</strong> AtlasDays предоставляет общую информацию и не является юридической, налоговой или иммиграционной консультацией. Правила меняются, а результат зависит от ваших обстоятельств, поэтому не полагайтесь только на неё: проверьте официальный источник по ссылке или обратитесь к квалифицированному специалисту.</p>
 
     <nav class="related generated-related" aria-labelledby="related-schengen-rolling-window-walkthrough">
-      <h2 id="related-schengen-rolling-window-walkthrough">По этой теме</h2>
-      <ul>
-        <li><a href="/ru/learn/schengen-90-180-rule">Шенген 90/180: что означает 90 дней за любой период в 180 дней</a></li>
-        <li><a href="/ru/learn/ees-etias-schengen-90-180">EES и ETIAS: что они означают для ваших шенгенских дней</a></li>
-        <li><a href="/ru/learn/schengen-calculator">Шенгенский калькулятор: проверьте свои дни по правилу 90/180</a></li>
-        <li><a href="/ru/learn/schengen-countries-list-90-180-rule">Список стран Шенгенской зоны для правила 90/180</a></li>
-        <li><a href="/ru/learn/schengen-single-entry-visa">Однократная шенгенская виза: количество въездов и срок пребывания</a></li>
-      </ul>
+      <h2 id="related-schengen-rolling-window-walkthrough">Похожие статьи</h2>
+      <div class="rule-cards">
+        <a class="rule-card" href="/ru/learn/schengen-90-180-rule"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Шенген 90/180: что означает 90 дней за любой период в 180 дней</strong></span></a>
+        <a class="rule-card" href="/ru/learn/schengen-single-entry-visa"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Однократная шенгенская виза: количество въездов и срок пребывания</strong></span></a>
+        <a class="rule-card" href="/ru/learn/schengen-calculator"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Шенгенский калькулятор: проверьте свои дни по правилу 90/180</strong></span></a>
+        <a class="rule-card" href="/ru/learn/ees-etias-schengen-90-180"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>EES и ETIAS: что они означают для ваших шенгенских дней</strong></span></a>
+        <a class="rule-card" href="/ru/learn/schengen-countries-list-90-180-rule"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Список стран Шенгенской зоны для правила 90/180</strong></span></a>
+        <a class="rule-card" href="/ru/learn/when-do-you-get-schengen-days-back-after-90-day-stay"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Когда возвращаются шенгенские дни после 90 дней пребывания</strong></span></a>
+      </div>
     </nav>
   </article>
   </main>
@@ -250,17 +270,13 @@
           <a href="/ru/learn/">Правила поездок</a>
           <a href="/ru/learn/calculators">Калькуляторы</a>
           <a href="/ru/learn/guides">Руководства</a>
-          <a href="/changelog">Что нового</a>
         </div>
         <div>
           <h2>AtlasDays</h2>
           <a href="/ru/about">О приложении</a>
           <a href="/ru/privacy">Конфиденциальность</a>
           <a href="/ru/terms">Условия использования</a>
-        </div>
-        <div>
-          <h2>Загрузка</h2>
-          <a href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">Открыть в App Store</a>
+          <a href="/changelog">Что нового</a>
         </div>
       </nav>
     </div>

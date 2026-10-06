@@ -94,49 +94,10 @@ html[data-theme="light"] .hx .shot-light { display: block; }
   pointer-events: none;
 }
 
-/* ---------- floating header (marketing pages only; the class is set by marketing.js) ---------- */
-html.hx-page .top-bar {
-  transition: background-color 300ms ease, border-color 300ms ease, padding 350ms var(--hx-ease);
-}
-html.hx-page .top-bar-inner {
-  transition: min-height 350ms var(--hx-ease), padding 350ms var(--hx-ease), border-radius 350ms var(--hx-ease),
-    box-shadow 350ms ease, background-color 300ms ease, border-color 300ms ease, margin 350ms var(--hx-ease),
-    width 350ms var(--hx-ease);
-  border: 1px solid transparent;
-}
-/* The gap above the pill is padding on the sticky bar, not a margin on the
-   pill: a child margin collapses through the bar, and once the bar is stuck at
-   top: 0 the pill would sit flush against the edge of the window. */
-html.hx-page.hx-scrolled .top-bar {
-  padding-top: 16px;
-  background: transparent;
-  border-bottom-color: transparent;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-}
-html.hx-page.hx-scrolled .top-bar-inner {
-  width: min(880px, calc(100% - 24px));
-  min-height: 56px;
-  padding: 0 8px 0 18px;
-  border-radius: 999px;
-  border-color: var(--line);
-  background: var(--header-bg);
-  backdrop-filter: blur(18px) saturate(1.4);
-  -webkit-backdrop-filter: blur(18px) saturate(1.4);
-  box-shadow: var(--shadow);
-}
-/* The pill is 880px wide, narrower than the 1040px flat bar, so it takes the
-   compact controls the flat bar only uses below 1040px (site-header.css).
-   Without them seven locales pushed the theme toggle out of the pill, Ukrainian
-   by 110px; dropping the wordmark and the language name returns ~165px. */
-html.hx-page.hx-scrolled .brand > span:not(.brand-mark) { display: none; }
-html.hx-page.hx-scrolled .lang-switch > summary {
-  width: var(--toolbar-control);
-  padding: 0;
-  justify-content: center;
-}
-html.hx-page.hx-scrolled .lang-switch-current,
-html.hx-page.hx-scrolled .lang-switch-caret { display: none; }
+/* ---------- header ----------
+   The marketing pages use the same sticky bar as every other page
+   (site-header.css). It used to turn into a floating pill on scroll; Jorick
+   dropped that on 2026-10-06. */
 
 /* ---------- hero ---------- */
 .hx-hero {
@@ -448,34 +409,12 @@ html[data-theme="light"] .hx-uc-chip { background: var(--bg-card-strong); }
 .hx-uc-chip:hover { border-color: var(--brand); }
 .hx-uc-chip img { flex: none; width: 26px; height: 19px; border-radius: 4px; object-fit: cover; }
 
-/* How it works: three numbered steps, each with its real screen. On phones
-   they sit in a row you swipe, so the page does not stack three phones. */
-.hx-uc-steps { display: grid; gap: 40px; margin-top: 36px; }
-.hx-uc-step { min-width: 0; }
-.hx-uc-step-device { width: min(100%, 240px); margin-bottom: 24px; }
-.hx-uc-step-n { display: inline-grid; place-items: center; width: 28px; height: 28px; border-radius: 50%; font-size: 0.86rem; font-weight: 700; color: var(--blue); background: var(--blue-soft); }
-.hx-uc-step h3 { margin-top: 12px; font-size: 1.25rem; font-weight: 700; letter-spacing: -0.02em; }
-.hx-uc-step-body p { margin-top: 8px; color: var(--muted); }
-.hx-uc-step-body a { display: inline-block; margin-top: 12px; font-weight: 600; color: var(--blue); }
+/* How it works: the homepage's story (.hx-story), shared. */
 @media (max-width: 899px) {
-  .hx-uc-steps {
-    grid-auto-flow: column;
-    grid-auto-columns: min(76%, 300px);
-    gap: 20px;
-    margin-inline: calc(var(--hx-gutter) * -1);
-    padding: 0 var(--hx-gutter) 8px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-padding-inline: var(--hx-gutter);
-    scrollbar-width: none;
-  }
-  .hx-uc-steps::-webkit-scrollbar { display: none; }
-  .hx-uc-step { scroll-snap-align: start; }
   /* Only the arrow on narrow rows; the word stays for screen readers. */
   .hx-uc-rule { padding-right: 14px; }
   .hx-uc-rule-go { font-size: 0; }
   .hx-uc-rule-go::after { content: "\2192"; font-size: 1.05rem; }
-  .hx-uc-step-device { width: 100%; max-width: 220px; }
 }
 
 /* Go deeper: guides as cards. */
@@ -519,6 +458,29 @@ html:lang(ja) .hx-uc-hero h1,
 html:lang(zh) .hx-uc-hero h1,
 html:lang(ko) .hx-uc-hero h1 { font-size: calc(var(--fs-display) * 0.8); letter-spacing: -0.02em; }
 
+/* ---------- phone hero (Jorick, 2026-10-06) ----------
+   Centered, with a headline sized to the screen, and the download button and
+   the rating on one row at any text size: the rating gives way first. */
+@media (max-width: 899px) {
+  .hx-hero-copy { display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .hx-hero h1 { max-width: 11ch; font-size: min(4.4rem, 16vw); }
+  .hx-hero .hx-lede { margin-inline: auto; }
+  .hx-hero .hx-actions { flex-wrap: nowrap; justify-content: center; gap: 14px; max-width: 100%; }
+  .hx-hero .hx-btn { flex: 0 1 auto; min-width: 0; padding-inline: 20px; white-space: nowrap; }
+  .hx-hero .hx-hero-rating { flex: 0 1 auto; min-width: 0; }
+  .hx-hero .hx-btn svg { flex: none; }
+  .hx-hero .hx-hero-rating-label { white-space: nowrap; }
+  .hx-hero h1, .hx-hero .hx-lede { text-wrap: balance; }
+  /* Headlines with long words or many lines run a step smaller. */
+  html:lang(nl) .hx-hero h1,
+  html:lang(fr) .hx-hero h1,
+  html:lang(ru) .hx-hero h1,
+  html:lang(uk) .hx-hero h1 { font-size: min(3.5rem, 13.5vw); }
+}
+@media (max-width: 899px) and (max-height: 720px) {
+  .hx-hero h1 { font-size: clamp(3rem, 14vw, 3.6rem); }
+}
+
 /* ---------- reveal (only what starts below the fold is pre-hidden) ---------- */
 [data-hx-reveal] { transition: opacity 700ms ease, transform 700ms var(--hx-ease); }
 [data-hx-reveal].is-pre { opacity: 0; transform: translateY(18px); }
@@ -560,9 +522,15 @@ html:lang(ko) .hx-uc-hero h1 { font-size: calc(var(--fs-display) * 0.8); letter-
   .hx-hero .hx-actions { justify-content: flex-start; }
   .hx-lede { max-width: 62ch; font-size: 1.12rem; }
   .hx-phones {
-    --hx-phone: 330px;
+    /* As wide as the window's height allows (a phone is 2.04 times as tall
+       as it is wide), so the whole phone fits under the header on a 13-inch
+       laptop at 100% (Jorick, 2026-10-06); 330px on taller screens. */
+    --hx-phone: clamp(250px, calc((100vh - 190px) / 2.04), 330px);
     margin-top: 0;
     padding: 0 0 24px;
+  }
+  @supports (height: 1svh) {
+    .hx-phones { --hx-phone: clamp(250px, calc((100svh - 190px) / 2.04), 330px); }
   }
 
   .hx-cases { grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 56px; }
@@ -628,7 +596,6 @@ html:lang(ko) .hx-uc-hero h1 { font-size: calc(var(--fs-display) * 0.8); letter-
   .hx-uc-rules { grid-template-columns: 1fr 1fr; }
   /* The open-ended card closes the list across both columns. */
   .hx-uc-rules-any { grid-column: 1 / -1; }
-  .hx-uc-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 48px; }
   .hx-uc-cards { grid-template-columns: repeat(3, 1fr); }
   .hx-uc-chips { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 }

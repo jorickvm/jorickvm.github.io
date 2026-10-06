@@ -78,6 +78,12 @@
       {
         "@type": "ListItem",
         "position": 3,
+        "name": "ガイド",
+        "item": "https://atlasdays.app/ja/learn/guides"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
         "name": "公的な旅行履歴（出入国記録）を取得する方法",
         "item": "https://atlasdays.app/ja/learn/get-official-entry-exit-records"
       }
@@ -122,8 +128,9 @@
   <link rel="stylesheet" href="../../assets/css/tokens.css?v=20260928f" />
   <link rel="stylesheet" href="../../assets/css/article-variants/49dd6e3e3ea5.css?v=20261005a" />
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
-  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261005a" />
-  <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
+  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261006a" />
+  <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
+  <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261006a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">本文へスキップ</a>
@@ -192,8 +199,18 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="目次">
+      <p class="toc-title">目次</p>
+      <ul>
+        <li><a href="#section-1">記録の請求先</a></li>
+        <li><a href="#atlasdays">AtlasDaysに取り込む。次回からは届くのを待たずに済むように</a></li>
+        <li><a href="#section-3">記録と記憶が食い違う場合</a></li>
+        <li><a href="#section-4">よくある質問</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb">
-      <a href="/ja/">AtlasDays</a> / <a href="/ja/learn/">旅行ルール</a>
+      <a href="/ja/">AtlasDays</a> / <a href="/ja/learn/">旅行ルール</a> / <a href="/ja/learn/guides">ガイド</a>
     </nav>
 
     <h1>公的な旅行履歴（出入国記録）を取得する方法</h1>
@@ -204,7 +221,7 @@
     <p><strong>要点：</strong>各国が記録するのは自国の国境だけなので、下記のリンクからそれぞれ請求します。米国の訪問者は<strong>過去10年のI-94履歴をすぐに取得</strong>できます。ほかの記録は<strong>最長1か月</strong>かかるか、処理期間が公表されていません。</p>
     </div>
 
-    <h2>記録の請求先</h2>
+    <h2 id="section-1">記録の請求先</h2>
     <p>2026年9月時点の情報です。</p>
     <div class="cards">
       <section class="card">
@@ -279,14 +296,14 @@
       </section>
     </div>
 
-    <h2>AtlasDaysに取り込む。次回からは届くのを待たずに済むように</h2>
+    <h2 id="atlasdays">AtlasDaysに取り込む。次回からは届くのを待たずに済むように</h2>
     <p>公的な記録は国境ごとに届きます。AtlasDaysではそれを旅行に変換し、上限に照らして日数を数えられます。どちらも無料です。</p>
     <ol class="steps">
     <li><strong>受け取った記録をインポート。</strong>「設定 → インポート → CSVファイル」を開き、「AIでCSVを作成」をタップします。プロンプトと記録のテキストをChatGPTなどのAIアシスタントに貼り付け、回答をCSVとして保存します。そのファイルを選んで内容を確認してください。タイムラインの＋をタップし、旅行を手動で追加する方法もあります。<a href="/ja/help/csv-import">CSVインポートの仕組み</a></li>
     <li><strong>今後は自分でも記録を残す。</strong>「設定 → 旅行の自動検出」をオンにします。iPhoneが国境を越えたことを検出すると、AtlasDaysが旅行をタイムラインに追加します。次に申請書で履歴を求められたときには、記録がそろっています。<a href="/ja/help/auto-detect-trips">旅行の自動検出の仕組み</a></li>
     </ol>
 
-    <h2>記録と記憶が食い違う場合</h2>
+    <h2 id="section-3">記録と記憶が食い違う場合</h2>
     <ul>
     <li><strong>国境通過が抜けている。</strong>よくあるのは陸路の国境です。次の国の入国記録で補えます。</li>
     <li><strong>日付が1日ずれている。</strong>日付をまたぐフライトと時差を確認します。国境の記録は現地日付を使います。</li>
@@ -303,7 +320,7 @@
       <a class="cta-btn" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> AtlasDaysを入手</a>
     </div>
 
-    <h2>よくある質問</h2>
+    <h2 id="section-4">よくある質問</h2>
     <h3>米国市民が米国の旅行履歴を取得するには？</h3>
     <p>SecureReleaseまたはFOIA.govからCBPにFOIA請求を行い、米国への出入国記録を求めます。I-94サイトは米国市民やグリーンカード保有者を対象にしていません。</p>
     <h3>シェンゲン圏への入国・出国一覧は取得できますか？</h3>
@@ -322,14 +339,14 @@
     <p class="learn-disclaimer"><strong>この記事について：</strong>AtlasDaysは一般的な情報を提供するもので、法律・税務・移民に関する助言ではありません。規則は変わり、結果は個別の事情によって異なります。AtlasDaysだけに頼らず、リンク先の公的情報を確認するか、専門家に相談してください。</p>
 
     <nav class="related generated-related" aria-labelledby="related-get-official-entry-exit-records">
-      <h2 id="related-get-official-entry-exit-records">このトピックの関連記事</h2>
-      <ul>
-        <li><a href="/ja/learn/travel-history-for-visa-applications">ビザ申請の旅行履歴：申請書ごとに何年分が必要か</a></li>
-        <li><a href="/ja/learn/flighty-flight-history-day-count">Flightyの履歴からビザと税務上の居住の日数を集計する方法</a></li>
-        <li><a href="/ja/learn/prove-you-were-not-in-a-country">ある国や州にいなかったことを証明する方法</a></li>
-        <li><a href="/ja/learn/rebuild-travel-history-from-passport-stamps-emails-photos">パスポートのスタンプ、メール、写真から旅行履歴を再構成する方法</a></li>
-        <li><a href="/ja/learn/travel-history-template-visa-application">ビザ申請用の旅行履歴テンプレート（無料CSV）</a></li>
-      </ul>
+      <h2 id="related-get-official-entry-exit-records">関連記事</h2>
+      <div class="rule-cards">
+        <a class="rule-card" href="/ja/learn/travel-history-for-visa-applications"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10A.5.5 0 0 1 7 20V3.5Z"/><path d="M14 3.5V8h4M10 12h5M10 15.5h5"/></svg></span><span class="rule-text"><strong>ビザ申請の旅行履歴：申請書ごとに何年分が必要か</strong></span></a>
+        <a class="rule-card" href="/ja/learn/travel-history-template-visa-application"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10A.5.5 0 0 1 7 20V3.5Z"/><path d="M14 3.5V8h4M10 12h5M10 15.5h5"/></svg></span><span class="rule-text"><strong>ビザ申請用の旅行履歴テンプレート（無料CSV）</strong></span></a>
+        <a class="rule-card" href="/ja/learn/rebuild-travel-history-from-passport-stamps-emails-photos"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10A.5.5 0 0 1 7 20V3.5Z"/><path d="M14 3.5V8h4M10 12h5M10 15.5h5"/></svg></span><span class="rule-text"><strong>パスポートのスタンプ、メール、写真から旅行履歴を再構成する方法</strong></span></a>
+        <a class="rule-card" href="/ja/learn/prove-you-were-not-in-a-country"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10A.5.5 0 0 1 7 20V3.5Z"/><path d="M14 3.5V8h4M10 12h5M10 15.5h5"/></svg></span><span class="rule-text"><strong>ある国や州にいなかったことを証明する方法</strong></span></a>
+        <a class="rule-card" href="/ja/learn/flighty-flight-history-day-count"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10A.5.5 0 0 1 7 20V3.5Z"/><path d="M14 3.5V8h4M10 12h5M10 15.5h5"/></svg></span><span class="rule-text"><strong>Flightyの履歴からビザと税務上の居住の日数を集計する方法</strong></span></a>
+      </div>
     </nav>
   </article>
   </main>
@@ -353,17 +370,13 @@
           <a href="/ja/learn/">旅行ルール</a>
           <a href="/ja/learn/calculators">計算機</a>
           <a href="/ja/learn/guides">ガイド</a>
-          <a href="/changelog">変更履歴</a>
         </div>
         <div>
           <h2>AtlasDays</h2>
           <a href="/ja/about">AtlasDaysについて</a>
           <a href="/ja/privacy">プライバシー</a>
           <a href="/ja/terms">利用規約</a>
-        </div>
-        <div>
-          <h2>ダウンロード</h2>
-          <a href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Storeで見る</a>
+          <a href="/changelog">変更履歴</a>
         </div>
       </nav>
     </div>

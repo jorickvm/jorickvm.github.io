@@ -100,6 +100,12 @@
       {
         "@type": "ListItem",
         "position": 3,
+        "name": "계산기",
+        "item": "https://atlasdays.app/ko/learn/calculators"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
         "name": "솅겐 계산기: 90/180 규정 체류 일수 확인",
         "item": "https://atlasdays.app/ko/learn/schengen-calculator"
       }
@@ -152,9 +158,10 @@
   <link rel="stylesheet" href="../../assets/css/tokens.css?v=20260928f" />
   <link rel="stylesheet" href="../../assets/css/article-variants/49dd6e3e3ea5.css?v=20261005a" />
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
-  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261005a" />
-  <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
-  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261004l" />
+  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261006a" />
+  <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
+  <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261006a" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261006b" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">본문으로 건너뛰기</a>
@@ -223,14 +230,24 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="목차">
+      <p class="toc-title">목차</p>
+      <ul>
+        <li><a href="#section-1">체류 일수 계산</a></li>
+        <li><a href="#section-2">계산기의 일수 계산법</a></li>
+        <li><a href="#section-3">다른 규정이 적용되는 경우</a></li>
+        <li><a href="#section-4">자주 묻는 질문</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb">
-      <a href="/ko/">AtlasDays</a> / <a href="/ko/learn/">여행 규정</a>
+      <a href="/ko/">AtlasDays</a> / <a href="/ko/learn/">여행 규정</a> / <a href="/ko/learn/calculators">계산기</a>
     </nav>
     <h1>솅겐 계산기: 90/180 규정 체류 일수 확인</h1>
     <p class="subtitle">체류마다 입국한 날과 출국한 날을 누르십시오. 예정된 여행을 포함해 원하는 날짜까지의 180일 동안 90일 중 며칠을 사용했는지 트래커에 표시됩니다.</p>
     <p class="verified">최종 확인: 2026년 10월</p>
 
-    <h2>체류 일수 계산</h2>
+    <h2 id="section-1">체류 일수 계산</h2>
     <div class="daycal" id="schengen" data-day-calendar="schengen">
       <script type="application/json" data-cal-strings>
 {
@@ -310,7 +327,7 @@
     </div>
     <p class="cal-private">모든 내용은 브라우저에만 남습니다. 입력한 정보는 전송되거나 저장되지 않습니다.</p>
 
-    <h2>계산기의 일수 계산법</h2>
+    <h2 id="section-2">계산기의 일수 계산법</h2>
     <ul>
       <li><strong>하루 중 일부만 있어도 1일로 계산.</strong> 입국한 날과 출국한 날 모두 솅겐 지역에서 보낸 날이므로 6월 1일부터 10일까지는 10일입니다.</li>
       <li><strong>지역 전체에 하나의 한도.</strong> 90일은 국가마다 따로 적용되지 않고 모든 솅겐 국가를 합쳐 적용됩니다. 솅겐 국가 두 곳에서 보낸 날도 1일로 계산합니다.</li>
@@ -318,7 +335,7 @@
       <li><strong>여행 계획 확인.</strong> '계산 종료일'을 여행 마지막 날로 설정하십시오. 체류하는 동안 일수는 줄어들지 않으므로 마지막 날이 한도 안에 들면 여행 전체가 한도 안에 듭니다.</li>
     </ul>
 
-    <h2>다른 규정이 적용되는 경우</h2>
+    <h2 id="section-3">다른 규정이 적용되는 경우</h2>
     <p>90/180 계산은 단기 체류에 적용됩니다. 몇 가지 경우에는 별도의 규정이 적용되며, 각 가이드에서 설명합니다.</p>
     <ul>
       <li><strong>장기 체류 비자와 거주 허가.</strong> 국가별 장기 체류 비자나 EU 거주 허가로 체류한 날은 90일에 포함되지 않습니다. <a href="/ko/learn/schengen-90-180-rule">90/180 규정</a>을 참고하십시오.</li>
@@ -337,7 +354,7 @@
       <a class="cta-btn" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> AtlasDays 받기</a>
     </div>
 
-    <h2>자주 묻는 질문</h2>
+    <h2 id="section-4">자주 묻는 질문</h2>
     <h3>입국한 날과 출국한 날 모두 계산됩니까?</h3>
     <p>그렇습니다. 밤늦게 도착하거나 이른 아침에 떠나더라도 입국한 날이 체류 첫날이고 출국한 날이 마지막 날입니다. 계산기는 두 날을 모두 셉니다.</p>
     <h3>솅겐 일수는 언제 회복됩니까?</h3>
@@ -358,14 +375,15 @@
     <p class="learn-disclaimer"><strong>이 문서에 대하여:</strong> AtlasDays는 일반적인 정보를 제공할 뿐이며, 법률, 세무, 이민에 관한 자문이 아닙니다. 규정은 바뀌고 결과는 개인의 상황에 따라 달라지므로, AtlasDays에만 의존하지 말고 링크된 공식 출처를 확인하거나 자격을 갖춘 전문가에게 문의하십시오.</p>
 
     <nav class="related generated-related" aria-labelledby="related-schengen-calculator">
-      <h2 id="related-schengen-calculator">이 주제의 관련 문서</h2>
-      <ul>
-        <li><a href="/ko/learn/schengen-90-180-rule">&#x27;임의의 180일 중 90일&#x27;은 무슨 뜻인가?</a></li>
-        <li><a href="/ko/learn/ees-etias-schengen-90-180">EES와 ETIAS가 솅겐 체류 일수에 미치는 영향</a></li>
-        <li><a href="/ko/learn/schengen-countries-list-90-180-rule">90/180 규정이 적용되는 솅겐 국가 목록</a></li>
-        <li><a href="/ko/learn/schengen-rolling-window-walkthrough">솅겐 롤링 기간의 실제 작동 방식</a></li>
-        <li><a href="/ko/learn/schengen-single-entry-visa">솅겐 단수 입국 비자</a></li>
-      </ul>
+      <h2 id="related-schengen-calculator">관련 문서</h2>
+      <div class="rule-cards">
+        <a class="rule-card" href="/ko/learn/turkiye-90-180-rule"><img class="rule-flag" src="/assets/flags/tr.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>튀르키예 90/180 규정</strong></span></a>
+        <a class="rule-card" href="/ko/learn/schengen-90-180-rule"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>&#x27;임의의 180일 중 90일&#x27;은 무슨 뜻인가?</strong></span></a>
+        <a class="rule-card" href="/ko/learn/schengen-single-entry-visa"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>솅겐 단수 입국 비자</strong></span></a>
+        <a class="rule-card" href="/ko/learn/ees-etias-schengen-90-180"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>EES와 ETIAS가 솅겐 체류 일수에 미치는 영향</strong></span></a>
+        <a class="rule-card" href="/ko/learn/schengen-countries-list-90-180-rule"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>90/180 규정이 적용되는 솅겐 국가 목록</strong></span></a>
+        <a class="rule-card" href="/ko/learn/schengen-rolling-window-walkthrough"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>솅겐 롤링 기간의 실제 작동 방식</strong></span></a>
+      </div>
     </nav>
   </article>
   </main>
@@ -389,17 +407,13 @@
           <a href="/ko/learn/">여행 규정</a>
           <a href="/ko/learn/calculators">계산기</a>
           <a href="/ko/learn/guides">가이드</a>
-          <a href="/changelog">변경 내역</a>
         </div>
         <div>
           <h2>AtlasDays</h2>
           <a href="/ko/about">소개</a>
           <a href="/ko/privacy">개인정보 보호</a>
           <a href="/ko/terms">이용 약관</a>
-        </div>
-        <div>
-          <h2>다운로드</h2>
-          <a href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store에서 보기</a>
+          <a href="/changelog">변경 내역</a>
         </div>
       </nav>
     </div>
@@ -410,7 +424,7 @@
   <script>window.AtlasDaysNavStrings={"menuOpen":"탐색 메뉴 열기","menuClose":"탐색 메뉴 닫기"};</script>
   <script src="../../assets/js/navigation.js?v=20261005a"></script>
   <script defer src="../../assets/js/rules/schengen.js?v=20261006a"></script>
-  <script defer src="../../assets/js/day-calendar.js?v=20261006a"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261006b"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

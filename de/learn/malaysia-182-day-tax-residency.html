@@ -123,9 +123,10 @@
   <link rel="stylesheet" href="../../assets/css/tokens.css?v=20260928f" />
   <link rel="stylesheet" href="../../assets/css/article-variants/49dd6e3e3ea5.css?v=20261005a" />
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
-  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261005a" />
-  <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
-  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261004l" />
+  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261006a" />
+  <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
+  <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261006a" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261006b" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
@@ -194,6 +195,17 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="Auf dieser Seite">
+      <p class="toc-title">Auf dieser Seite</p>
+      <ul>
+        <li><a href="#die-regel">Die Regel</a></li>
+        <li><a href="#so-z-hlst-du">So zählst du</a></li>
+        <li><a href="#calculator">182-Tage-Rechner für Malaysia</a></li>
+        <li><a href="#ber-die-zahl-der-tage-hinaus">Über die Zahl der Tage hinaus</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb">
       <a href="/de/">AtlasDays</a> / <a href="/de/learn/">Reiseregeln</a> / Malaysia
     </nav>
@@ -218,7 +230,7 @@
       </dl>
     </div>
 
-    <h2>Die Regel</h2>
+    <h2 id="die-regel">Die Regel</h2>
     <p>Malaysia behandelt dich für ein Jahr als steuerlich ansässig, wenn du dich in diesem Kalenderjahr 182 Tage oder mehr im Land aufhältst. Section 7(1)(a) des Income Tax Act 1967 formuliert das als einen Zeitraum oder mehrere Zeiträume, die insgesamt einhundertzweiundachtzig Tage oder mehr ergeben. Drei Punkte entscheiden die meisten realen Fälle:</p>
     <ul>
       <li><strong>Es sind 182, nicht 183.</strong> Malaysias Schwelle liegt bei mindestens 182 Tagen, einen Tag unter der 183-Tage-Regel, die die meisten Länder anwenden. Erreichst du 182, bist du ansässig; bei 181 oder weniger ist der primäre Test nicht erfüllt.</li>
@@ -226,7 +238,7 @@
       <li><strong>Die Tage müssen nicht aufeinanderfolgen.</strong> Die Zählung addiert getrennte Besuche über das Kalenderjahr hinweg; ein Tag zählt unabhängig davon, ob er Teil eines durchgehenden Aufenthalts ist.</li>
     </ul>
 
-    <h2>So zählst du</h2>
+    <h2 id="so-z-hlst-du">So zählst du</h2>
     <ol class="steps">
       <li>Liste jede Malaysia-Reise mit Anreise- und Abreisedatum auf.</li>
       <li>Zähl jeden Tag, an dem du anwesend warst, einschließlich der Tage von An- und Abreise, denn jeder angebrochene Tag zählt als ganzer Tag.</li>
@@ -240,9 +252,10 @@
 
     <h2 id="calculator">182-Tage-Rechner für Malaysia</h2>
     <p>Tippe die Tage an, die du in Malaysia verbracht hast oder noch verbringen willst, und sieh, wie nah du in diesem Jahr den 182 Tagen kommst.</p>
-    <div class="daycal" id="embed-days183" data-day-calendar="days183" data-cal-preset="{&quot;settings&quot;:{&quot;country&quot;:&quot;MY&quot;,&quot;goal&quot;:&quot;stay&quot;,&quot;periodType&quot;:&quot;calendar&quot;,&quot;limit&quot;:182,&quot;residentAt&quot;:182},&quot;lock&quot;:[&quot;country&quot;,&quot;goal&quot;,&quot;periodType&quot;],&quot;link&quot;:&quot;183-my&quot;}">
+    <div class="daycal" id="embed-days183" data-day-calendar="days183" data-cal-preset="{&quot;settings&quot;:{&quot;country&quot;:&quot;MY&quot;,&quot;goal&quot;:&quot;stay&quot;,&quot;periodType&quot;:&quot;calendar&quot;,&quot;limit&quot;:182,&quot;residentAt&quot;:182},&quot;lock&quot;:[&quot;country&quot;,&quot;goal&quot;,&quot;periodType&quot;,&quot;limitInput&quot;],&quot;link&quot;:&quot;183-my&quot;}">
       <script type="application/json" data-cal-strings>
 {
+  "days": "Tage",
   "hintStart": "Tippe auf einen Tag, um einen Aufenthalt hinzuzufügen.",
   "hintEnd": "Tippe jetzt auf das andere Ende des Aufenthalts.",
   "hintSelected": "Ziehe an einem der beiden Enden, um die Reisedaten zu ändern, oder lösche den Aufenthalt unten.",
@@ -338,7 +351,7 @@
     </div>
     <p class="cal-private">Alles bleibt in deinem Browser: Deine Eingaben werden weder übertragen noch gespeichert.</p>
 
-    <h2>Über die Zahl der Tage hinaus</h2>
+    <h2 id="ber-die-zahl-der-tage-hinaus">Über die Zahl der Tage hinaus</h2>
     <p>Die Zählung über 182 Tage ist der primäre Weg hinein, Section 7(1) hat aber drei weitere Alternativen. Nach dem Test über verknüpfte Zeiträume (b) kann ein Aufenthalt von weniger als 182 Tagen dich trotzdem ansässig machen, wenn er mit einem Zeitraum von 182 oder mehr aufeinanderfolgenden Tagen im unmittelbar vorangehenden oder folgenden Jahr verknüpft ist. Nach den mehrjährigen Tests kannst du ansässig sein, wenn du 90 Tage oder mehr im Jahr verbringst und in drei der vier vorangegangenen Jahre ansässig oder 90 Tage und länger anwesend warst (c), oder wenn du in den drei vorangegangenen Jahren und im Folgejahr ansässig warst (d). Und wenn ein weiteres Land ebenfalls Anspruch auf dich erhebt, entscheidet ein Doppelbesteuerungsabkommen die Ansässigkeit über Tie-Breaker-Regeln wie ständige Wohnstätte und Mittelpunkt der Lebensinteressen.</p>
 
     <div class="cta-box">
@@ -354,7 +367,7 @@
       </a>
     </div>
 
-    <h2>FAQ</h2>
+    <h2 id="faq">FAQ</h2>
     <h3>Wie viele Tage darfst du in Malaysia bleiben, ohne steuerlich ansässig zu werden?</h3>
     <p>Bis zu 181 Tage in einem Kalenderjahr. Erreichst du 182 Tage oder mehr, ist der primäre Test über die Zahl der Tage nach Section 7 erfüllt.</p>
     <h3>Sind es in Malaysia 182 oder 183 Tage?</h3>
@@ -373,14 +386,15 @@
     <p class="learn-disclaimer"><strong>Über diesen Artikel:</strong> AtlasDays bietet allgemeine Informationen, keine Rechts-, Steuer- oder Einwanderungsberatung. Regeln ändern sich und das Ergebnis hängt von deinen Umständen ab, verlass dich also nie allein darauf: Prüfe die verlinkte offizielle Quelle oder wende dich an eine qualifizierte Fachperson.</p>
 
     <nav class="related generated-related" aria-labelledby="related-malaysia-182-day-tax-residency">
-      <h2 id="related-malaysia-182-day-tax-residency">Mehr zu diesem Thema</h2>
-      <ul>
-        <li><a href="/de/learn/tax-residency-by-country">Steuerwohnsitz nach Ländern</a></li>
-        <li><a href="/de/learn/183-day-rule-calculator">183-Tage-Rechner: Zähle deine Tage in jedem Land</a></li>
-        <li><a href="/de/learn/183-day-tax-residency-rule">183-Tage-Regel für den Steuerwohnsitz: So werden die Tage gezählt</a></li>
-        <li><a href="/de/learn/albania-183-day-tax-residency">Albaniens 183-Tage-Regel für den Steuerwohnsitz</a></li>
-        <li><a href="/de/learn/arizona-tax-residency">Arizonas 9-Monats-Vermutung für den Steuerwohnsitz</a></li>
-      </ul>
+      <h2 id="related-malaysia-182-day-tax-residency">Verwandte Artikel</h2>
+      <div class="rule-cards">
+        <a class="rule-card" href="/de/learn/183-day-tax-residency-rule"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5.5" width="16" height="14.5" rx="3"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/></svg></span><span class="rule-text"><strong>183-Tage-Regel für den Steuerwohnsitz: So werden die Tage gezählt</strong></span></a>
+        <a class="rule-card" href="/de/learn/tax-residency-by-country"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 4.5h9l3 3v12H6z"/><path d="M9 11h6M9 14.5h6"/></svg></span><span class="rule-text"><strong>Steuerwohnsitz nach Ländern</strong></span></a>
+        <a class="rule-card" href="/de/learn/singapore-183-day-tax-residency"><img class="rule-flag" src="/assets/flags/sg.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Singapurs 183-Tage-Regel für den Steuerwohnsitz</strong></span></a>
+        <a class="rule-card" href="/de/learn/thailand-180-day-tax-residency"><img class="rule-flag" src="/assets/flags/th.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Thailands 180-Tage-Regel für den Steuerwohnsitz</strong></span></a>
+        <a class="rule-card" href="/de/learn/india-182-day-tax-residency"><img class="rule-flag" src="/assets/flags/in.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Steuerwohnsitz in Indien: die 182-Tage-Regel für NRIs</strong></span></a>
+        <a class="rule-card" href="/de/learn/indonesia-183-day-tax-residency"><img class="rule-flag" src="/assets/flags/id.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Indonesiens 183-Tage-Regel für den Steuerwohnsitz</strong></span></a>
+      </div>
     </nav>
   </article>
   </main>
@@ -404,17 +418,13 @@
           <a href="/de/learn/">Reiseregeln</a>
           <a href="/de/learn/calculators">Rechner</a>
           <a href="/de/learn/guides">Anleitungen</a>
-          <a href="/changelog">Neuigkeiten</a>
         </div>
         <div>
           <h2>AtlasDays</h2>
           <a href="/de/about">Über AtlasDays</a>
           <a href="/de/privacy">Datenschutz</a>
           <a href="/de/terms">Nutzungsbedingungen</a>
-        </div>
-        <div>
-          <h2>Download</h2>
-          <a href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">Im App Store ansehen</a>
+          <a href="/changelog">Neuigkeiten</a>
         </div>
       </nav>
     </div>
@@ -424,8 +434,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"Navigationsmenü öffnen","menuClose":"Navigationsmenü schließen"};</script>
   <script src="../../assets/js/navigation.js?v=20261005a"></script>
-  <script defer src="../../assets/js/rules/days-183.js?v=20261006a"></script>
-  <script defer src="../../assets/js/day-calendar.js?v=20261006a"></script>
+  <script defer src="../../assets/js/rules/days-183.js?v=20261006c"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261006b"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

@@ -3,14 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Do histórico do Flighty à contagem de dias para vistos e residência fiscal – AtlasDays</title>
+  <title>Exportação do Flighty: seus voos em contagem de dias – AtlasDays</title>
   <meta name="description" content="O Flighty registra voos, mas não soma dias por país. Veja como exportar seu histórico em CSV e importá-lo no AtlasDays para acompanhar a regra Schengen ou os 183 dias." />
-  <meta property="og:title" content="Do histórico do Flighty à contagem de dias para vistos e residência fiscal – AtlasDays" />
+  <meta property="og:title" content="Exportação do Flighty: seus voos em contagem de dias – AtlasDays" />
   <meta property="og:description" content="O Flighty registra voos, mas não soma dias por país. Veja como exportar seu histórico em CSV e importá-lo no AtlasDays para acompanhar a regra Schengen ou os 183 dias." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/pt/learn/flighty-flight-history-day-count" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Do histórico do Flighty à contagem de dias para vistos e residência fiscal – AtlasDays" />
+  <meta name="twitter:title" content="Exportação do Flighty: seus voos em contagem de dias – AtlasDays" />
   <meta name="twitter:description" content="O Flighty registra voos, mas não soma dias por país. Veja como exportar seu histórico em CSV e importá-lo no AtlasDays para acompanhar a regra Schengen ou os 183 dias." />
   <meta name="apple-itunes-app" content="app-id=6760133544, app-argument=https://apps.apple.com/app/atlasdays-track-country-days/id6760133544" />
   <meta property="og:locale" content="pt_BR" />
@@ -78,6 +78,12 @@
       {
         "@type": "ListItem",
         "position": 3,
+        "name": "Guias",
+        "item": "https://atlasdays.app/pt/learn/guides"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
         "name": "Do histórico do Flighty à contagem de dias para vistos e residência fiscal",
         "item": "https://atlasdays.app/pt/learn/flighty-flight-history-day-count"
       }
@@ -122,8 +128,9 @@
   <link rel="stylesheet" href="../../assets/css/tokens.css?v=20260928f" />
   <link rel="stylesheet" href="../../assets/css/article-variants/49dd6e3e3ea5.css?v=20261005a" />
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
-  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261005a" />
-  <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
+  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261006a" />
+  <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
+  <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261006a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Pular para o conteúdo</a>
@@ -192,8 +199,18 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="Nesta página">
+      <p class="toc-title">Nesta página</p>
+      <ul>
+        <li><a href="#exporte-seus-voos-do-flighty">Exporte seus voos do Flighty</a></li>
+        <li><a href="#importe-o-arquivo-no-atlasdays">Importe o arquivo no AtlasDays</a></li>
+        <li><a href="#antes-de-confiar-na-contagem">Antes de confiar na contagem</a></li>
+        <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb">
-      <a href="/pt/">AtlasDays</a> / <a href="/pt/learn/">Regras de viagem</a>
+      <a href="/pt/">AtlasDays</a> / <a href="/pt/learn/">Regras de viagem</a> / <a href="/pt/learn/guides">Guias</a>
     </nav>
 
     <h1>Do histórico do Flighty à contagem de dias para vistos e residência fiscal</h1>
@@ -204,14 +221,14 @@
       <p><strong>Em resumo:</strong> o Flighty registra voos, mas não calcula <strong>dias por país</strong>. Exporte o histórico do Flighty em <strong>CSV</strong> e importe-o no AtlasDays. O app transforma os voos em viagens com datas e conta os dias para a regra Schengen 90/180, regras fiscais dos 183 dias e outros limites.</p>
     </div>
 
-    <h2>Exporte seus voos do Flighty</h2>
+    <h2 id="exporte-seus-voos-do-flighty">Exporte seus voos do Flighty</h2>
     <ol class="steps">
       <li>No Flighty, abra <strong>Settings</strong> → <strong>Account Data</strong> (Ajustes → Dados da conta) e exporte seus voos.</li>
       <li>Salve o CSV no app Arquivos, por exemplo no iCloud Drive ou na pasta “No Meu iPhone”. Não abra e salve o arquivo novamente em uma planilha antes da importação.</li>
     </ol>
     <p>A exportação contém apenas os voos registrados no Flighty. Se viagens antigas não estão lá, adicione-as antes de exportar: o Flighty permite importar gratuitamente voos do último ano; <strong>voos mais antigos exigem Flighty Pro</strong>.</p>
 
-    <h2>Importe o arquivo no AtlasDays</h2>
+    <h2 id="importe-o-arquivo-no-atlasdays">Importe o arquivo no AtlasDays</h2>
     <ol class="steps">
       <li>Abra o AtlasDays e acesse <strong>Ajustes → Importar → Flighty</strong>.</li>
       <li>Toque em <strong>Selecionar CSV do Flighty</strong> e escolha o arquivo salvo.</li>
@@ -226,7 +243,7 @@
       <li><strong>Nada é salvo antes da sua aprovação.</strong> Viagens sem voo de chegada ou partida aparecem como incompletas; você acrescenta a data em vez de aceitar uma estimativa.</li>
     </ul>
 
-    <h2>Antes de confiar na contagem</h2>
+    <h2 id="antes-de-confiar-na-contagem">Antes de confiar na contagem</h2>
     <ul>
       <li><strong>Travessias por terra ou mar não aparecem.</strong> Deslocamentos de trem, balsa ou carro pela fronteira não constam do histórico de voos. Registre essas datas manualmente.</li>
       <li><strong>Confira as viagens que entram no limite.</strong> Uma escala interpretada de forma errada ou um trecho ausente altera o total da <a href="/pt/learn/schengen-90-180-rule">regra Schengen 90/180</a>. Revise cada estadia dentro do período que importa para você.</li>
@@ -243,7 +260,7 @@
       <a class="cta-btn" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> Obter o AtlasDays</a>
     </div>
 
-    <h2>Perguntas frequentes</h2>
+    <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
     <h3>O Flighty conta os dias que você passa em cada país?</h3>
     <p>Não. O Flighty registra voos e produz estatísticas de voo, mas não soma seus dias em cada país nem os compara com limites de visto ou residência fiscal. Primeiro é preciso transformar os voos em estadias com datas, como faz a importação do CSV do Flighty no AtlasDays.</p>
     <h3>Como exportar meu histórico de viagens do Flighty?</h3>
@@ -262,14 +279,14 @@
     <p class="learn-disclaimer"><strong>Sobre este artigo:</strong> O AtlasDays oferece informações gerais, não aconselhamento jurídico, fiscal ou de imigração. As regras mudam e o resultado depende da sua situação, então nunca confie somente nele: consulte a fonte oficial indicada ou fale com um profissional qualificado.</p>
 
     <nav class="related generated-related" aria-labelledby="related-flighty-flight-history-day-count">
-      <h2 id="related-flighty-flight-history-day-count">Mais sobre este tema</h2>
-      <ul>
-        <li><a href="/pt/learn/travel-history-for-visa-applications">Histórico de viagens para vistos: quantos anos cada formulário pede</a></li>
-        <li><a href="/pt/learn/get-official-entry-exit-records">Como obter seu histórico oficial de viagens: registros de entrada e saída</a></li>
-        <li><a href="/pt/learn/prove-you-were-not-in-a-country">Como provar que você não estava em um país ou estado</a></li>
-        <li><a href="/pt/learn/rebuild-travel-history-from-passport-stamps-emails-photos">Como reconstruir seu histórico de viagens com carimbos, e-mails e fotos</a></li>
-        <li><a href="/pt/learn/travel-history-template-visa-application">Modelo gratuito de histórico de viagens para pedidos de visto (CSV)</a></li>
-      </ul>
+      <h2 id="related-flighty-flight-history-day-count">Artigos relacionados</h2>
+      <div class="rule-cards">
+        <a class="rule-card" href="/pt/learn/travel-history-for-visa-applications"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10A.5.5 0 0 1 7 20V3.5Z"/><path d="M14 3.5V8h4M10 12h5M10 15.5h5"/></svg></span><span class="rule-text"><strong>Histórico de viagens para vistos: quantos anos cada formulário pede</strong></span></a>
+        <a class="rule-card" href="/pt/learn/travel-history-template-visa-application"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10A.5.5 0 0 1 7 20V3.5Z"/><path d="M14 3.5V8h4M10 12h5M10 15.5h5"/></svg></span><span class="rule-text"><strong>Modelo gratuito de histórico de viagens para pedidos de visto (CSV)</strong></span></a>
+        <a class="rule-card" href="/pt/learn/get-official-entry-exit-records"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10A.5.5 0 0 1 7 20V3.5Z"/><path d="M14 3.5V8h4M10 12h5M10 15.5h5"/></svg></span><span class="rule-text"><strong>Como obter seu histórico oficial de viagens: registros de entrada e saída</strong></span></a>
+        <a class="rule-card" href="/pt/learn/rebuild-travel-history-from-passport-stamps-emails-photos"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10A.5.5 0 0 1 7 20V3.5Z"/><path d="M14 3.5V8h4M10 12h5M10 15.5h5"/></svg></span><span class="rule-text"><strong>Como reconstruir seu histórico de viagens com carimbos, e-mails e fotos</strong></span></a>
+        <a class="rule-card" href="/pt/learn/prove-you-were-not-in-a-country"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10A.5.5 0 0 1 7 20V3.5Z"/><path d="M14 3.5V8h4M10 12h5M10 15.5h5"/></svg></span><span class="rule-text"><strong>Como provar que você não estava em um país ou estado</strong></span></a>
+      </div>
     </nav>
   </article>
   </main>
@@ -293,17 +310,13 @@
           <a href="/pt/learn/">Regras de viagem</a>
           <a href="/pt/learn/calculators">Calculadoras</a>
           <a href="/pt/learn/guides">Guias</a>
-          <a href="/changelog">Novidades</a>
         </div>
         <div>
           <h2>AtlasDays</h2>
           <a href="/pt/about">Sobre o AtlasDays</a>
           <a href="/pt/privacy">Privacidade</a>
           <a href="/pt/terms">Termos</a>
-        </div>
-        <div>
-          <h2>Baixar</h2>
-          <a href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">Ver na App Store</a>
+          <a href="/changelog">Novidades</a>
         </div>
       </nav>
     </div>

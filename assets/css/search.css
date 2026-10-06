@@ -193,8 +193,8 @@
 
 .search-result strong { font-size: 0.91rem; line-height: 1.4; }
 .search-result span { color: var(--muted); font-size: 0.82rem; line-height: 1.4; }
-/* Learn search results read like the cards they lead to: flag (or a book
-   for a guide), title, one-line rule. Rows, not cards: the panel is already
+/* Search results read like the cards they lead to: Learn shows the flag (or
+   a book for a guide), title and one-line rule; Help an icon and the title. Rows, not cards: the panel is already
    the frame. */
 .search-result.search-card {
   display: flex;
@@ -204,10 +204,10 @@
   text-align: left;
 }
 .search-card .search-text { display: grid; gap: 3px; min-width: 0; }
-.search-card strong { font-size: 0.97rem; font-weight: 600; }
+.search-card strong { color: var(--text); font-size: 0.97rem; font-weight: 600; }
 .search-card .search-text span { font-size: 0.86rem; }
 .search-flag { flex: none; width: 32px; height: 22px; border-radius: 4px; object-fit: cover; box-shadow: 0 0 0 1px var(--line); }
-.search-guide { flex: none; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 9px; background: var(--blue-soft); color: var(--blue); }
+.search-result .search-guide { flex: none; display: grid; place-items: center; width: 32px; height: 32px; border-radius: 9px; background: var(--blue-soft); color: var(--blue); }
 .search-guide svg { width: 18px; height: 18px; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
 .search-empty { margin: 0; padding: 13px 12px; color: var(--muted); font-size: 0.88rem; }
 

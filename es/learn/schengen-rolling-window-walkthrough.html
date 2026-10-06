@@ -78,6 +78,12 @@
       {
         "@type": "ListItem",
         "position": 3,
+        "name": "Guías",
+        "item": "https://atlasdays.app/es/learn/guides"
+      },
+      {
+        "@type": "ListItem",
+        "position": 4,
         "name": "Cómo funciona de verdad el período móvil de Schengen",
         "item": "https://atlasdays.app/es/learn/schengen-rolling-window-walkthrough"
       }
@@ -90,8 +96,9 @@
   <link rel="stylesheet" href="../../assets/css/tokens.css?v=20260928f" />
   <link rel="stylesheet" href="../../assets/css/article-variants/9cf80a439c8f.css?v=20260928f" />
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20260930a" />
-  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261005a" />
-  <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20260928f" />
+  <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261006a" />
+  <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
+  <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261006a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Ir al contenido</a>
@@ -160,8 +167,20 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="En esta página">
+      <p class="toc-title">En esta página</p>
+      <ul>
+        <li><a href="#el-modelo-mental-b-sico">El modelo mental básico</a></li>
+        <li><a href="#un-ejemplo-resuelto">Un ejemplo resuelto</a></li>
+        <li><a href="#por-qu-la-fecha-de-comprobaci-n-cambia-la-respuesta">Por qué la fecha de comprobación cambia la respuesta</a></li>
+        <li><a href="#c-mo-se-recuperan-los-d-as">Cómo se recuperan los días</a></li>
+        <li><a href="#errores-de-recuento-habituales">Errores de recuento habituales</a></li>
+        <li><a href="#cautela-pr-ctica-y-d-nde-empieza-lo-oficial">Cautela práctica y dónde empieza lo oficial</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb">
-      <a href="/es/">AtlasDays</a> / <a href="/es/learn/">Reglas de viaje</a>
+      <a href="/es/">AtlasDays</a> / <a href="/es/learn/">Reglas de viaje</a> / <a href="/es/learn/guides">Guías</a>
     </nav>
 
     <img class="title-flag" src="/assets/flags/eu.png" alt="Bandera de la Unión Europea" width="56" height="42" />
@@ -173,11 +192,11 @@
       <p><strong>En resumen:</strong> el período móvil se aplica sobre una fecha, no sobre un viaje. Elige la fecha que te interesa, mira 180 días hacia atrás y cuenta todos los días de presencia en Schengen dentro de esa ventana. La ventana avanza cada día, así que los días usados van cayendo de uno en uno en lugar de reiniciarse todos a la vez, y un mismo historial de viajes puede dar dos respuestas distintas en dos fechas de comprobación distintas.</p>
     </div>
 
-    <h2>El modelo mental básico</h2>
+    <h2 id="el-modelo-mental-b-sico">El modelo mental básico</h2>
     <p>En cualquier fecha que te interese, mira 180 días hacia atrás y cuenta todos los días de presencia en Schengen dentro de esa ventana. Si el total es de 90 o menos, estás dentro del límite de estancia corta. Si supera 90, no lo estás.</p>
     <p>Lo importante es que la ventana <strong>se mueve cada día</strong>. No hay un reinicio trimestral fijo ni una bolsa aparte para cada país Schengen. El mismo contador compartido te sigue por todo el espacio.</p>
 
-    <h2>Un ejemplo resuelto</h2>
+    <h2 id="un-ejemplo-resuelto">Un ejemplo resuelto</h2>
     <p>Supongamos que tu historial de viajes es este:</p>
     <ul>
       <li><strong>Viaje 1:</strong> del 15 de enero al 13 de febrero – 30 días en Schengen</li>
@@ -185,7 +204,7 @@
     </ul>
     <p>Tu total combinado es de 75 días. Ese número por sí solo no basta. Todavía tienes que preguntarte: <strong>¿75 días dentro de qué ventana de 180 días?</strong></p>
 
-    <h2>Por qué la fecha de comprobación cambia la respuesta</h2>
+    <h2 id="por-qu-la-fecha-de-comprobaci-n-cambia-la-respuesta">Por qué la fecha de comprobación cambia la respuesta</h2>
     <p>Si compruebas el <strong>1 de julio</strong>, los 180 días anteriores llegan hasta enero, así que los dos viajes siguen dentro de la ventana. Eso significa que los 75 días completos siguen contando y solo te quedan 15 días disponibles.</p>
     <p>Si compruebas el <strong>1 de septiembre</strong>, los 180 días anteriores empiezan en marzo. El viaje de enero-febrero ha salido por completo, así que solo cuentan los 45 días de abril-mayo. En esa fecha tendrías 45 días disponibles.</p>
 
@@ -194,11 +213,11 @@
     </div>
     <p class="calc-callout">La <a href="/es/learn/schengen-calculator">calculadora Schengen</a> lo muestra con tus propias fechas: toca el calendario para añadir tus estancias y luego mueve la fecha de «Contar hasta».</p>
 
-    <h2>Cómo se recuperan los días</h2>
+    <h2 id="c-mo-se-recuperan-los-d-as">Cómo se recuperan los días</h2>
     <p>Los días no vuelven en bloque. Se recuperan en el mismo orden en que se usaron. En cuanto el día más antiguo pasa a quedar fuera de los 180 días anteriores, ese día concreto sale del recuento y se libera un día.</p>
     <p>Por eso mucha gente cree que ya ha «esperado lo suficiente» y aun así cuenta mal. Un viaje largo no crea un reinicio limpio. Crea una liberación gradual de días a lo largo del tiempo.</p>
 
-    <h2>Errores de recuento habituales</h2>
+    <h2 id="errores-de-recuento-habituales">Errores de recuento habituales</h2>
     <ul>
       <li><strong>Tratar Schengen como un ciclo simple de 90 días dentro y 90 días fuera.</strong> No lo es.</li>
       <li><strong>Olvidar que el día de entrada y el día de salida cuentan los dos.</strong> Un error de un día importa mucho cerca del límite.</li>
@@ -206,7 +225,7 @@
       <li><strong>Contar «días fuera» en lugar de contar los días dentro de los 180 días anteriores.</strong> El tiempo fuera solo importa porque empuja fuera de la ventana los días antiguos que estaban dentro.</li>
     </ul>
 
-    <h2>Cautela práctica y dónde empieza lo oficial</h2>
+    <h2 id="cautela-pr-ctica-y-d-nde-empieza-lo-oficial">Cautela práctica y dónde empieza lo oficial</h2>
     <p>Esta página explica la lógica, no tu situación jurídica concreta. Para la orientación oficial sobre estancias cortas en Schengen, usa la <a href="https://home-affairs.ec.europa.eu/policies/schengen/border-crossing/short-stay-calculator_en">calculadora de estancia corta</a> de la Comisión Europea y su <a href="https://home-affairs.ec.europa.eu/policies/schengen/schengen-area_en">información sobre el espacio Schengen</a>. Son las fuentes adecuadas cuando necesitas el marco formal y no la intuición.</p>
     <p>La regla práctica más segura es esta: si el patrón de viajes importa, no te fíes de la memoria ni des por hecho que una estimación aproximada se acerca lo suficiente.</p>
 
@@ -219,14 +238,15 @@
     <p class="learn-disclaimer"><strong>Sobre este artículo:</strong> AtlasDays ofrece información general, no asesoramiento legal, fiscal ni de inmigración. Las normas cambian y el resultado depende de tu situación, así que no te fíes solo de AtlasDays: consulta la fuente oficial enlazada o pregunta a un profesional cualificado.</p>
 
     <nav class="related generated-related" aria-labelledby="related-schengen-rolling-window-walkthrough">
-      <h2 id="related-schengen-rolling-window-walkthrough">Más sobre este tema</h2>
-      <ul>
-        <li><a href="/es/learn/schengen-90-180-rule">¿Qué significa 90 días dentro de cualquier período de 180 días?</a></li>
-        <li><a href="/es/learn/ees-etias-schengen-90-180">EES y ETIAS: qué significan para tus días Schengen</a></li>
-        <li><a href="/es/learn/schengen-calculator">Calculadora Schengen: comprueba tus días de la regla 90/180</a></li>
-        <li><a href="/es/learn/schengen-countries-list-90-180-rule">Lista de países Schengen para la regla 90/180</a></li>
-        <li><a href="/es/learn/schengen-single-entry-visa">Visado Schengen de una sola entrada: entradas frente a duración de la estancia</a></li>
-      </ul>
+      <h2 id="related-schengen-rolling-window-walkthrough">Artículos relacionados</h2>
+      <div class="rule-cards">
+        <a class="rule-card" href="/es/learn/schengen-90-180-rule"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>¿Qué significa 90 días dentro de cualquier período de 180 días?</strong></span></a>
+        <a class="rule-card" href="/es/learn/schengen-single-entry-visa"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Visado Schengen de una sola entrada: entradas frente a duración de la estancia</strong></span></a>
+        <a class="rule-card" href="/es/learn/schengen-calculator"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Calculadora Schengen: comprueba tus días de la regla 90/180</strong></span></a>
+        <a class="rule-card" href="/es/learn/ees-etias-schengen-90-180"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>EES y ETIAS: qué significan para tus días Schengen</strong></span></a>
+        <a class="rule-card" href="/es/learn/schengen-countries-list-90-180-rule"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Lista de países Schengen para la regla 90/180</strong></span></a>
+        <a class="rule-card" href="/es/learn/when-do-you-get-schengen-days-back-after-90-day-stay"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>¿Cuándo recuperas días de Schengen tras una estancia de 90 días?</strong></span></a>
+      </div>
     </nav>
   </article>
   </main>
@@ -250,17 +270,13 @@
           <a href="/es/learn/">Reglas de viaje</a>
           <a href="/es/learn/calculators">Calculadoras</a>
           <a href="/es/learn/guides">Guías</a>
-          <a href="/changelog">Novedades</a>
         </div>
         <div>
           <h2>AtlasDays</h2>
           <a href="/es/about">Acerca de AtlasDays</a>
           <a href="/es/privacy">Privacidad</a>
           <a href="/es/terms">Términos</a>
-        </div>
-        <div>
-          <h2>Descargar</h2>
-          <a href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">Ver en el App Store</a>
+          <a href="/changelog">Novedades</a>
         </div>
       </nav>
     </div>

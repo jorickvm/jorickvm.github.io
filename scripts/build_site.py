@@ -9,6 +9,8 @@ import json
 import os
 import re
 import sys
+import unicodedata
+from collections import Counter
 from datetime import date
 from pathlib import Path
 
@@ -43,7 +45,9 @@ CLUSTER_DATA_PATH = SOURCE_ROOT / "data" / "content-clusters.json"
 BUILD_VERSION = "20260928f"
 VARIANT_VERSIONS = {("article", "help20260802"): "20260928f", ("hub", "92c3adc0daf3"): "20260928f", ("article", "49dd6e3e3ea5"): "20261005a", ("article", "88b8694b8f2d"): "20261005a"}
 SITE_HEADER_VERSION = "20260930a"
-ARTICLE_COMPONENTS_VERSION = "20261005a"
+SITE_FOOTER_VERSION = "20261006a"
+ARTICLE_COMPONENTS_VERSION = "20261006a"
+RULE_CARDS_VERSION = "20261006b"
 NAVIGATION_VERSION = "20261005a"
 
 # Root class that drops the background wash from the app's `.medium` step to
@@ -241,7 +245,9 @@ def render_styles(article: dict[str, object], family: str = "article", prefix: s
         lines.append(
             f'  <link rel="stylesheet" href="{prefix}assets/css/article-components.css?v={ARTICLE_COMPONENTS_VERSION}" />'
         )
-    lines.append(f'  <link rel="stylesheet" href="{prefix}assets/css/site-footer.css?v={asset_version}" />')
+        if article.get("section") == "learn":
+            lines.append(f'  <link rel="stylesheet" href="{prefix}assets/css/rule-cards.css?v={RULE_CARDS_VERSION}" />')
+    lines.append(f'  <link rel="stylesheet" href="{prefix}assets/css/site-footer.css?v={SITE_FOOTER_VERSION}" />')
     return "\n".join(lines)
 
 
@@ -291,48 +297,256 @@ def render_nav_script(prefix: str, code: str, strings: dict[str, dict[str, str]]
     )
 
 
+RELATED_LIMIT = 6
+REGIONS_PATH = SOURCE_ROOT / "data" / "regions.json"
+EDITORIAL_DATA_PATH = SOURCE_ROOT / "data" / "editorial.json"
+CALCULATOR_PAGES = ("learn/183-day-rule-calculator.html", "learn/schengen-calculator.html", "learn/uk-ilr-absence-calculator.html")
+# The guide that explains how each kind of rule counts.
+TOPIC_GUIDES = {
+    "tax": "learn/183-day-tax-residency-rule.html",
+    "usState": "learn/183-day-tax-residency-rule.html",
+    "visa": "learn/what-counts-as-a-day-for-visa-purposes.html",
+    "residence": "learn/residence-permit-citizenship-absence-rules.html",
+    "citizenship": "learn/residence-permit-citizenship-absence-rules.html",
+}
+FAMILY_ORDER = ("visa", "tax", "usState", "residence", "citizenship")
+GLOBE_ICON = (
+    '<span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/>'
+    '<path d="M3.5 12h17M12 3.5c2.5 2.6 3.5 5.4 3.5 8.5s-1 5.9-3.5 8.5c-2.5-2.6-3.5-5.4-3.5-8.5s1-5.9 3.5-8.5Z"/></svg></span>'
+)
+RELATED_ICON = (
+    '<span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true">'
+    '<path d="M6 4.5h9l3 3v12H6z"/><path d="M9 11h6M9 14.5h6"/></svg></span>'
+)
+_related: dict[str, object] = {}
+
+
+def _hub_sections(name: str) -> list[list[str]]:
+    """The article paths a hub fragment lists, section by section, in page order."""
+    text = (SOURCE_ROOT / "content" / "hubs" / name).read_text(encoding="utf-8")
+    return [
+        [f"learn/{slug}.html" for slug in re.findall(r'href="/learn/([^"#/]+)', section)]
+        for section in re.split(r"<section\b", text)[1:]
+    ]
+
+
+def _related_index() -> dict[str, object]:
+    """Family, country and region of every Learn article, read once."""
+    if _related:
+        return _related
+    records = json.loads(DATA_PATH.read_text(encoding="utf-8"))["articles"]
+    presets = json.loads(APP_CATALOG_PATH.read_text(encoding="utf-8"))["presets"]
+    own = json.loads(LEARN_CARDS_PATH.read_text(encoding="utf-8"))["cards"]
+    editorial = {e["path"]: e for e in json.loads(EDITORIAL_DATA_PATH.read_text(encoding="utf-8"))["articles"]}
+    clusters = {c["path"]: c for c in json.loads(CLUSTER_DATA_PATH.read_text(encoding="utf-8"))["clusters"]}
+    regions = json.loads(REGIONS_PATH.read_text(encoding="utf-8"))["regions"]
+    region_of = {code: name for name, codes in regions.items() for code in codes}
+    # Each region lists its countries roughly in geographic order.
+    place_of = {code: place for codes in regions.values() for place, code in enumerate(codes)}
+    info: dict[str, dict[str, object]] = {}
+    for record in records:
+        path = str(record["path"])
+        if record.get("section") != "learn":
+            continue
+        family = flag = rank = None
+        if record.get("app_preset"):
+            preset = presets[record["app_preset"]]
+            family, flag, rank = preset["family"], preset["flag"], preset["rank"]["en"]
+        elif path in own:
+            family, flag = own[path]["family"], own[path]["flag"]
+        info[path] = {
+            "family": family,
+            "flag": flag,
+            "jurisdiction": str(editorial.get(path, {}).get("jurisdiction", "")),
+            "embedded": record.get("calculator") is not None,
+            "pillar": clusters.get(path, {}).get("pillar"),
+            "cluster": clusters.get(path, {}).get("cluster"),
+            # The app's catalogue order, which puts the most used rules first.
+            "rank": rank,
+        }
+    # A country is its flag; an article flagged EU for a national rule (Spain's
+    # EU long-term residence) and a guide without a flag take the country its
+    # jurisdiction names.
+    country_of = {"Schengen Area": "EU"}
+    for item in info.values():
+        if item["flag"] and item["flag"] != "EU" and item["jurisdiction"] != "Multiple jurisdictions":
+            country_of.setdefault(item["jurisdiction"], item["flag"])
+    for item in info.values():
+        item["country"] = country_of.get(item["jurisdiction"]) or item["flag"]
+        item["region"] = region_of.get(str(item["country"]))
+        item["place"] = place_of.get(str(item["country"]), 0)
+    _related.update(info=info, guides=_hub_sections("learn-guides.html"), calculators=_hub_sections("learn-calculators.html"))
+    return _related
+
+
+def related_paths(path: str) -> list[str]:
+    """The Learn pages most related to one, best first.
+
+    Rule articles: the same country's other rules (the same kind of rule
+    first), the calculator for the rule, the guide that explains how it
+    counts, the country's guides and calculators, the topic overview, then the
+    same kind of rule in the same region (regions.json, nearest first), and
+    elsewhere only to reach four. Guides: the same country's pages, their section of the guides
+    page, then their topic cluster when it is small. Calculator pages: their
+    section of the calculators page, the country's pages, the topic guide.
+    """
+    index = _related_index()
+    info: dict[str, dict[str, object]] = index["info"]  # type: ignore[assignment]
+    me = info.get(path)
+    if not me:
+        return []
+    out: list[str] = []
+
+    def add(candidate: object) -> None:
+        if candidate and candidate != path and candidate not in out:
+            out.append(str(candidate))
+
+    family, country = me["family"], me["country"]
+
+    def ranked(paths: list[str]) -> list[str]:
+        return sorted(paths, key=lambda p: (
+            info[p]["family"] != family,
+            FAMILY_ORDER.index(info[p]["family"]) if info[p]["family"] in FAMILY_ORDER else len(FAMILY_ORDER),
+            p,
+        ))
+
+    cluster_size = Counter(i["cluster"] for i in info.values())
+
+    def by_app_order(paths: object) -> list[str]:
+        return sorted(paths, key=lambda p: (info[p]["rank"] is None, info[p]["rank"] or 0, p))  # type: ignore[arg-type, union-attr]
+    same_country = ranked([p for p, i in info.items() if p != path and country and i["country"] == country and i["family"]])
+    # The country's calculator first, then its guides.
+    country_pages = sorted(
+        (p for p, i in info.items() if p != path and country and i["country"] == country and not i["family"]),
+        key=lambda p: (p not in CALCULATOR_PAGES, p),
+    )
+    if path in CALCULATOR_PAGES:
+        for section in index["calculators"]:  # type: ignore[union-attr]
+            if path in section:
+                for candidate in section:
+                    add(candidate)
+        for candidate in same_country + country_pages:
+            add(candidate)
+        if path == "learn/183-day-rule-calculator.html":
+            add(TOPIC_GUIDES["tax"])
+            add(me["pillar"])
+        elif path == "learn/schengen-calculator.html":
+            add("learn/schengen-rolling-window-walkthrough.html")
+    elif not family:
+        for candidate in same_country + country_pages:
+            add(candidate)
+        for section in index["guides"]:  # type: ignore[union-attr]
+            if path in section:
+                for candidate in section:
+                    add(candidate)
+        if cluster_size[me["cluster"]] <= 10:
+            add(me["pillar"])
+            for candidate in sorted(p for p, i in info.items() if i["cluster"] == me["cluster"]):
+                add(candidate)
+    else:
+        for candidate in same_country[:3]:
+            add(candidate)
+        if not me["embedded"]:
+            if family in ("tax", "usState"):
+                add("learn/183-day-rule-calculator.html")
+            elif country == "EU":
+                add("learn/schengen-calculator.html")
+            elif country == "GB" and family in ("residence", "citizenship"):
+                add("learn/uk-ilr-absence-calculator.html")
+        add("learn/schengen-rolling-window-walkthrough.html" if country == "EU" else TOPIC_GUIDES.get(str(family)))
+        for candidate in country_pages:
+            add(candidate)
+        add(me["pillar"])
+        neighbours = [p for p, i in info.items() if i["family"] == family and me["region"] and i["region"] == me["region"]]
+        for candidate in sorted(by_app_order(neighbours), key=lambda p: abs(info[p]["place"] - me["place"])):  # type: ignore[operator]
+            add(candidate)
+        for candidate in by_app_order(p for p, i in info.items() if i["family"] == family):
+            if len(out) >= 4:
+                break
+            add(candidate)
+    return out[:RELATED_LIMIT]
+
+
+def related_card(path: str, locale: dict[str, object], available: set[str], title: str) -> str:
+    """A related page as a card with the article's own title and nothing under
+    it: a guide or calculator keeps the icon or flag its hub page gives it, a
+    rule article shows its flag, anything else a page icon."""
+    slug = Path(path).stem
+    for hub in ("learn-guides.html", "learn-calculators.html"):
+        fragment = SOURCE_ROOT / str(locale.get("content_prefix", "content")) / "hubs" / hub
+        if fragment.exists():
+            found = re.search(r'<a class="rule-card[^"]*" href="[^"#]*/learn/' + re.escape(slug) + r'">.*?</a>', fragment.read_text(encoding="utf-8"), re.S)
+            if found:
+                return re.sub(r"<strong>.*?</strong>(<span>.*?</span>)?", lambda _: f"<strong>{html.escape(title)}</strong>", found.group(0), count=1, flags=re.S)
+    href = html.escape(localized_route(route_for(path), locale, available), quote=True)
+    flag = _related_index()["info"].get(path, {}).get("flag")  # type: ignore[union-attr]
+    image = (
+        f'<img class="rule-flag" src="/assets/flags/{str(flag).lower()}.png" alt="" width="36" height="25" loading="lazy" />'
+        if flag else RELATED_ICON
+    )
+    return f'<a class="rule-card" href="{href}">{image}<span class="rule-text"><strong>{html.escape(title)}</strong></span></a>'
+
+
+def english_h1(record: dict[str, object]) -> str:
+    """The English page's visible title: the <h1> of its fragment, else its
+    <title> without the site suffix."""
+    content = record.get("content")
+    if content and (SOURCE_ROOT / str(content)).exists():
+        found = re.search(r"<h1[^>]*>(.*?)</h1>", (SOURCE_ROOT / str(content)).read_text(encoding="utf-8"), re.S)
+        if found:
+            return html.unescape(re.sub(r"<[^>]+>", "", found.group(1))).strip()
+    return str(record["title"]).replace(" – AtlasDays Help Center", "").replace(" – AtlasDays", "")
+
+
+TITLE_WIDTH = 65
+
+
+def title_width(title: str) -> int:
+    """Roughly what a title occupies in a search result: a CJK or Hangul
+    character takes the room of two Latin ones."""
+    return sum(2 if unicodedata.east_asian_width(char) in "WF" else 1 for char in title)
+
+
+def title_budget(source: dict[str, object]) -> int:
+    """How long a translated title may be: what Google shows, or the English
+    title's own length when that is longer."""
+    return max(TITLE_WIDTH, len(str(source.get("title", ""))))
+
+
 def render_cluster_related(
     article: dict[str, object],
     locale: dict[str, object],
     translations: dict[str, dict[str, dict]],
 ) -> str:
-    if article.get("section") != "learn" or not CLUSTER_DATA_PATH.exists():
+    if article.get("section") != "learn":
         return ""
     source_path = str(article.get("social_source_path", article["path"]))
-    assignments = json.loads(CLUSTER_DATA_PATH.read_text(encoding="utf-8"))["clusters"]
-    current = next((item for item in assignments if item["path"] == source_path), None)
-    if not current:
-        return ""
     article_data = json.loads(DATA_PATH.read_text(encoding="utf-8"))["articles"]
     hub_data = json.loads(HUB_DATA_PATH.read_text(encoding="utf-8"))["hubs"] if HUB_DATA_PATH.exists() else []
-    titles = {item["path"]: str(item["title"]).replace(" – AtlasDays Help Center", "").replace(" – AtlasDays", "") for item in article_data + hub_data}
-    candidates = [item["path"] for item in assignments if item["cluster"] == current["cluster"] and item["path"] != source_path]
-    pillar = current["pillar"]
-    ordered = ([pillar] if pillar != source_path else []) + sorted(path for path in candidates if path != pillar)
+    titles = {item["path"]: english_h1(item) for item in article_data + hub_data}
+    ordered = related_paths(source_path)
     code = str(locale["code"])
     available = {route_for(path) for path in translations.get(code, {})}
-    links = []
     if code != "en":
         # A page this locale has not translated yet (published English first,
         # or listed under `untranslated`) is not offered here in English.
         ordered = [path for path in ordered if path in translations.get(code, {})]
-    for path in ordered[:5]:
+    cards = []
+    for path in ordered:
         overlay = translations.get(code, {}).get(path)
-        title = str(overlay["headline"]) if overlay else titles.get(path)
-        if not title:
-            continue
-        href = localized_route(route_for(str(path)), locale, available)
-        links.append(f'        <li><a href="{html.escape(href)}">{html.escape(title)}</a></li>')
-    if not links:
+        title = str(overlay["headline"]) if overlay else titles.get(path, "")
+        if title:
+            cards.append("        " + related_card(path, locale, available, title))
+    if not cards:
         return ""
     identifier = "related-" + Path(source_path).stem
     return "\n".join(
         [
             f'    <nav class="related generated-related" aria-labelledby="{identifier}">',
             f'      <h2 id="{identifier}">{{{{t:related.heading}}}}</h2>',
-            "      <ul>",
-            *links,
-            "      </ul>",
+            '      <div class="rule-cards">',
+            *cards,
+            "      </div>",
             "    </nav>",
         ]
     )
@@ -598,7 +812,12 @@ def translate_jsonld(
     # still resolves to English, because it has to match the visible breadcrumb.
     hub_routes = {
         SITE_URL + localized_route(route, locale, available): key
-        for route, key in (("/help/", "nav.help"), ("/learn/", "nav.learn"))
+        for route, key in (
+            ("/help/", "nav.help"),
+            ("/learn/", "nav.learn"),
+            ("/learn/guides", "nav.guides"),
+            ("/learn/calculators", "nav.calculators"),
+        )
     }
     graph = json.loads(raw)
     label = f"{code}/{source['path']}"
@@ -626,9 +845,11 @@ def translate_jsonld(
             if key in {"headline", "name"} and node.get("@type") != "ListItem":
                 # A name that is the page's own English headline (a calculator's
                 # WebApplication) takes the translated headline, like `headline`.
+                # The brand is a name, never a headline to translate: the
+                # homepage title leads with it, so it can look like one.
                 out[key] = (
                     str(overlay["headline"])
-                    if key == "headline" or str(value) == english_headline
+                    if key == "headline" or (str(value) == english_headline and str(value) != "AtlasDays")
                     else replacements.get(str(value), value)
                 )
             elif key == "description":
@@ -714,9 +935,15 @@ def derive_record(
         if kind == "article" and str(source.get("section", "")) == "help"
         else "site.title_suffix"
     )
-    title = str(overlay.get("page_title") or (
-        f"{overlay['headline']}{locale['title_separator']}{strings[suffix_key][code]}"
-    ))
+    # Search words first, the brand only where it fits (Jorick, 2026-10-06):
+    # Google shows the site name on its own line, so the " – AtlasDays" suffix
+    # is added only while the title stays within what Google shows, never at
+    # the cost of a search word. A title that already names AtlasDays (the
+    # homepage leads with it) is left as written.
+    suffix = f"{locale['title_separator']}{strings[suffix_key][code]}"
+    title = str(overlay.get("page_title") or overlay["headline"])
+    if "AtlasDays" not in title and title_width(title + suffix) <= title_budget(source):
+        title += suffix
     description = str(overlay["description"])
     record["title"] = title
     record["social_alt"] = str(
@@ -1198,7 +1425,7 @@ def calculator_preset(article: dict[str, object]) -> dict[str, object]:
         "residentAt": number + 1 if match.group(1) == ">" else number,
     }
     settings.update(dict(dict(article["calculator"]).get("settings", {})))
-    return {"settings": settings, "lock": ["country", "goal", "periodType"], "link": f"183-{residency['code']}"}
+    return {"settings": settings, "lock": ["country", "goal", "periodType", "limitInput"], "link": f"183-{residency['code']}"}
 
 
 def calculator_link_query(article: dict[str, object]) -> str:
@@ -1251,28 +1478,36 @@ def mark_calculator_callout(content: str, article: dict[str, object]) -> str:
     return pattern.sub('<p class="calc-callout">', content, count=1)
 
 
+# The inline list (phones and tablets) only earns its place above a long
+# article; the sidebar on wide screens sits in empty margin, so every Learn
+# article with sections gets it.
 TOC_MIN_SECTIONS = 7
+TOC_SIDE_MIN_SECTIONS = 2
 
-# Opens the list on wider screens (it stays a one-line <details> on phones)
-# and marks the section being read, for the sticky sidebar.
-TOC_SCRIPT = (
-    "<script>(function(){var t=document.currentScript.previousElementSibling;"
-    "if(matchMedia('(min-width: 760px)').matches)t.open=true;"
-    "var a=[].slice.call(t.querySelectorAll('a'));"
+# Marks the section being read in the wide-screen sidebar.
+TOC_SIDE_SCRIPT = (
+    "<script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));"
     # The headings come after this script, so they are looked up on each pass.
     "function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});"
     "a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}"
     "addEventListener('scroll',on,{passive:true});on()})();</script>"
 )
+# Opens the inline list on tablets; it stays a one-line <details> on phones.
+TOC_SCRIPT = (
+    "<script>(function(){var t=document.currentScript.previousElementSibling;"
+    "if(matchMedia('(min-width: 760px)').matches)t.open=true})();</script>"
+)
 
 
 def render_toc(content: str, article: dict[str, object]) -> str:
-    """An "On this page" list for a long Learn article, after its summary.
+    """"On this page" for a Learn article.
 
     Sections are the <h2>s outside the closing app box and the build's source
-    panel; each gets an id from its text if it has none. A one-line <details>
-    on phones, an open list on tablets, a sticky sidebar on wide screens
-    (assets/css/article-components.css, .toc).
+    panel; each gets an id from its text if it has none. Wide screens get a
+    sticky sidebar from the top of the page on every article (.toc-side);
+    phones and tablets get the list after the summary on long articles only,
+    a one-line <details> on phones and an open list on tablets (.toc). CSS
+    shows one or the other (assets/css/article-components.css).
     """
     if article.get("section") != "learn":
         return content
@@ -1283,7 +1518,7 @@ def render_toc(content: str, article: dict[str, object]) -> str:
         m for m in heading.finditer(content)
         if (cta < 0 or not _inside_cta(content, cta, m.start())) and 'id="official-source-heading"' not in m.group("attrs")
     ]
-    if len(found) < TOC_MIN_SECTIONS:
+    if len(found) < TOC_SIDE_MIN_SECTIONS:
         return content
     used: set[str] = set()
     items, out, last = [], [], 0
@@ -1302,18 +1537,32 @@ def render_toc(content: str, article: dict[str, object]) -> str:
         used.add(ident)
         items.append(f'        <li><a href="#{ident}">{re.sub(r"<[^>]+>", "", text).strip()}</a></li>')
     content = "".join(out) + content[last:]
-    first = heading.search(content)
-    block = "\n".join([
-        '<details class="toc">',
-        "      <summary>{{t:toc.heading}}</summary>",
+    if len(found) >= TOC_MIN_SECTIONS:
+        first = heading.search(content)
+        block = "\n".join([
+            '<details class="toc">',
+            "      <summary>{{t:toc.heading}}</summary>",
+            "      <ul>",
+            *items,
+            "      </ul>",
+            "    </details>",
+            "    " + TOC_SCRIPT,
+            "    ",
+        ])
+        content = content[:first.start()] + block + content[first.start():]
+    side = "\n".join([
+        '<nav class="toc-side" aria-label="{{t:toc.heading}}">',
+        '      <p class="toc-title">{{t:toc.heading}}</p>',
         "      <ul>",
         *items,
         "      </ul>",
-        "    </details>",
-        "    " + TOC_SCRIPT,
+        "    </nav>",
+        "    " + TOC_SIDE_SCRIPT,
         "    ",
     ])
-    return content[:first.start()] + block + content[first.start():]
+    top = content.find('<nav class="breadcrumb">')
+    top = top if top >= 0 else len(content) - len(content.lstrip())
+    return content[:top] + side + content[top:]
 
 
 def _inside_cta(content: str, cta: int, position: int) -> bool:
@@ -1468,11 +1717,15 @@ def rule_card(path: str, code: str, locale: dict[str, object], available: set[st
     else:
         return None
     href = html.escape(localized_route(route_for(path), locale, available), quote=True)
-    image = f"/assets/flags/{flag.lower()}.png" if flag else "/assets/brand/hub-any-country.webp"
+    # A rule for any country gets the globe icon, not the AtlasDays logo.
+    image = (
+        f'<img class="rule-flag" src="/assets/flags/{flag.lower()}.png" alt="" width="36" height="25" loading="lazy" />'
+        if flag else GLOBE_ICON
+    )
     pill = "tax" if family == "usState" else family
     markup = (
         f'          <a class="rule-card" href="{href}" data-filter-item data-groups="{pill}">'
-        f'<img class="rule-flag" src="{image}" alt="" width="36" height="25" loading="lazy" />'
+        f'{image}'
         f'<span class="rule-text"><strong>{html.escape(title)}</strong><span>{html.escape(line)}</span></span></a>'
     )
     return family, rank, markup
@@ -1591,13 +1844,13 @@ def render_hub(
         "{{SITE_FOOTER}}": footer_template.replace("{{ASSET_PREFIX}}", prefix).rstrip(),
         "{{PAGE_SCRIPTS}}": str(hub.get("page_scripts", "")).rstrip(),
         "{{SEARCH_STYLESHEET}}": (
-            f'  <link rel="stylesheet" href="{prefix}assets/css/search.css?v=20261006a" />\n'
-            f'  <link rel="stylesheet" href="{prefix}assets/css/rule-cards.css?v=20261006a" />'
+            f'  <link rel="stylesheet" href="{prefix}assets/css/search.css?v=20261006b" />\n'
+            f'  <link rel="stylesheet" href="{prefix}assets/css/rule-cards.css?v={RULE_CARDS_VERSION}" />'
             if family == "hub" else ""
         ),
         "{{SEARCH_SCRIPT}}": (
             f"  <script>window.AtlasDaysSearchStrings={search_copy};</script>\n"
-            f'  <script src="{prefix}assets/js/search.js?v=20261006a"></script>'
+            f'  <script src="{prefix}assets/js/search.js?v=20261006b"></script>'
             if family == "hub" else ""
         ),
         "{{ASSET_PREFIX}}": prefix,
