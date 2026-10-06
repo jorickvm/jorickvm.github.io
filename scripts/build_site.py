@@ -9,6 +9,7 @@ import json
 import os
 import re
 import sys
+import unicodedata
 from collections import Counter
 from datetime import date
 from pathlib import Path
@@ -492,6 +493,21 @@ def english_h1(record: dict[str, object]) -> str:
     return str(record["title"]).replace(" – AtlasDays Help Center", "").replace(" – AtlasDays", "")
 
 
+TITLE_WIDTH = 65
+
+
+def title_width(title: str) -> int:
+    """Roughly what a title occupies in a search result: a CJK or Hangul
+    character takes the room of two Latin ones."""
+    return sum(2 if unicodedata.east_asian_width(char) in "WF" else 1 for char in title)
+
+
+def title_budget(source: dict[str, object]) -> int:
+    """How long a translated title may be: what Google shows, or the English
+    title's own length when that is longer."""
+    return max(TITLE_WIDTH, len(str(source.get("title", ""))))
+
+
 def render_cluster_related(
     article: dict[str, object],
     locale: dict[str, object],
@@ -824,9 +840,11 @@ def translate_jsonld(
             if key in {"headline", "name"} and node.get("@type") != "ListItem":
                 # A name that is the page's own English headline (a calculator's
                 # WebApplication) takes the translated headline, like `headline`.
+                # The brand is a name, never a headline to translate: the
+                # homepage title leads with it, so it can look like one.
                 out[key] = (
                     str(overlay["headline"])
-                    if key == "headline" or str(value) == english_headline
+                    if key == "headline" or (str(value) == english_headline and str(value) != "AtlasDays")
                     else replacements.get(str(value), value)
                 )
             elif key == "description":
@@ -912,12 +930,14 @@ def derive_record(
         if kind == "article" and str(source.get("section", "")) == "help"
         else "site.title_suffix"
     )
+    # Search words first, the brand only where it fits (Jorick, 2026-10-06):
+    # Google shows the site name on its own line, so the " – AtlasDays" suffix
+    # is added only while the title stays within what Google shows, never at
+    # the cost of a search word. A title that already names AtlasDays (the
+    # homepage leads with it) is left as written.
     suffix = f"{locale['title_separator']}{strings[suffix_key][code]}"
-    title = str(overlay.get("page_title") or f"{overlay['headline']}{suffix}")
-    # A hand-written search title still carries the brand, as every English
-    # one does (Jorick, 2026-10-06); the translator need not remember it. A
-    # title that already names AtlasDays (the homepage leads with it) is left.
-    if "AtlasDays" not in title:
+    title = str(overlay.get("page_title") or overlay["headline"])
+    if "AtlasDays" not in title and title_width(title + suffix) <= title_budget(source):
         title += suffix
     description = str(overlay["description"])
     record["title"] = title
