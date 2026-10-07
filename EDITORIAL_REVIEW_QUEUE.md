@@ -12,7 +12,6 @@ These pages describe something scheduled to change. The tier cadence would revie
 
 | Due | Article | Cadence would say | Why earlier |
 |---|---|---|---|
-| 2026-10-07 | [learn/what-counts-as-a-day-for-visa-purposes.html](/learn/what-counts-as-a-day-for-visa-purposes) | 2027-03-31 | The EES stay checker caveat for single- and double-entry visa holders runs until 6 October 2026; remove or update that sentence once the date has passed, and recheck the pre-10 April 2026 caveat. |
 | 2026-12-01 | [learn/ees-etias-schengen-90-180.html](/learn/ees-etias-schengen-90-180) | 2027-03-01 | ETIAS has no confirmed start date (the last-quarter-2026 target was withdrawn in July 2026; eu-LISA was due to set a new timetable in September 2026). Every ETIAS status statement on this page changes when a date is announced. |
 | 2026-12-01 | [learn/uk-ilr-absence-limit.html](/learn/uk-ilr-absence-limit) | 2027-03-31 | Earned settlement consultation closed 12 February 2026 with no government response yet; a response or statement of changes would alter the qualifying-period section. |
 | 2026-12-15 | [learn/thailand-visa-exemption-30-days.html](/learn/thailand-visa-exemption-30-days) | 2027-03-31 | The 30-day and 15-day exemptions took effect on 15 September 2026; expect clarifications on the land-entry cap (whether it covers air entries and pre-15 September entries), transitional extensions and the country lists. |
@@ -21,12 +20,6 @@ These pages describe something scheduled to change. The tier cadence would revie
 | 2027-03-01 | [learn/get-official-entry-exit-records.html](/learn/get-official-entry-exit-records) | 2027-03-31 | Request routes change often: CBP moved FOIA online-only on 22 January 2026, EES data access is new, and the UK SAR page carries a delay notice. Re-open every request link. |
 | 2027-03-01 | [learn/prove-you-were-not-in-a-country.html](/learn/prove-you-were-not-in-a-country) | 2027-03-31 | NY Nonresident Audit Guidelines (December 2021) and FTB Publication 1031 (2025 edition) are updated periodically; check for newer editions and for CBP I-94/FOIA process changes. |
 | 2027-03-25 | [learn/canadian-snowbird-day-limits.html](/learn/canadian-snowbird-day-limits) | 2027-03-31 | Six-monthly check of volatile rules: the US alien registration rule (final rule 29 June 2026, litigation around related rules), the Form 8840 revision and due date for the 2026 tax year, and provincial health absence limits. |
-
-## 2026-10
-
-| Due | Tier | Article | Status | Sources |
-|---|---|---|---|---:|
-| 2026-10-07 | 1 | [learn/what-counts-as-a-day-for-visa-purposes.html](/learn/what-counts-as-a-day-for-visa-purposes) | exact-date-required | 21 |
 
 ## 2026-12
 
@@ -98,6 +91,7 @@ These pages describe something scheduled to change. The tier cadence would revie
 | 2027-05-01 | 1 | [learn/schengen-calculator.html](/learn/schengen-calculator) | exact-date-required | 3 |
 | 2027-05-01 | 1 | [learn/uae-residence-visa-6-months-outside.html](/learn/uae-residence-visa-6-months-outside) | exact-date-required | 1 |
 | 2027-05-01 | 1 | [learn/uk-ilr-absence-calculator.html](/learn/uk-ilr-absence-calculator) | exact-date-required | 2 |
+| 2027-05-01 | 1 | [learn/what-counts-as-a-day-for-visa-purposes.html](/learn/what-counts-as-a-day-for-visa-purposes) | exact-date-required | 21 |
 
 ## 2027-08
 
