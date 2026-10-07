@@ -117,6 +117,9 @@
   var shortDateYear = dateFormat({ day: "numeric", month: "short", year: "numeric" });
   var weekday = dateFormat({ weekday: "narrow" });
   function label(n) { return fullDate.format(new Date(n * DAY)); }
+  // "7 Oct", day first in English as the site's other dates (a rule's caption).
+  var dayMonthFormat = new Intl.DateTimeFormat(locale === "en" ? "en-GB" : locale, { timeZone: "UTC", day: "numeric", month: "short" });
+  function dayMonth(n) { return dayMonthFormat.format(new Date(n * DAY)); }
   function short(n, withYear) {
     return (withYear ? shortDateYear : shortDate).format(new Date(n * DAY));
   }
@@ -315,7 +318,7 @@
     var englishNames = null;
     try { englishNames = new Intl.DisplayNames(["en"], { type: "region" }); } catch (e) {}
 
-    function ctx() { return { today: today, D: D, label: label, plural: plural, text: text, trips: trips, placeName: placeName, settings: settings, dateRange: dateRange, tone: tone, embedded: !!preset.settings }; }
+    function ctx() { return { today: today, D: D, label: label, plural: plural, text: text, trips: trips, placeName: placeName, settings: settings, dateRange: dateRange, dayMonth: dayMonth, tone: tone, embedded: !!preset.settings }; }
     // A new trip starts with the rule's fixed country, or (rule.carryCountry)
     // the country picked last, so a run of stays in one country is quick.
     function newCountry() {

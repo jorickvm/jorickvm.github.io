@@ -20,6 +20,8 @@
    show under the application date with their days against 240, a short one
    in orange. Moving the date moves all five, which is how a split absence
    is found (Jorick: always visible, not only once the total is reached).
+   The rows carry their years ("2025–26"); the caption names the boundary
+   once ("each from 7 Oct to 6 Oct").
 
    Any day a stay touches counts, arrival and departure included: the rules
    either count any part of a day (Canada PR, New Zealand) or subtract only
@@ -69,20 +71,26 @@
     evaluate: function (trips, c) {
       var w = window5(c), set = presentDays(trips), need = +c.settings.need || 1095;
       var days = count(set, w.from, w.to);
+      var perYear = +c.settings.perYear || 0;
+      // With yearly rows the caption names the years' boundary once, so the
+      // rows can carry just their years (Jorick, 2026-10-07: less dense).
+      var caption = perYear ? c.text("yearsCaption", { from: c.dayMonth(w.from), to: c.dayMonth(w.to) }) : c.text("checkOnCaption");
       var controls = [
-        { type: "date", key: "checkOn", icon: "calendar", label: c.text("checkOn"), caption: c.text("checkOnCaption"), value: c.D.iso(w.on), display: c.dateRange(w.on, w.on), moveCalendar: true }
+        { type: "date", key: "checkOn", icon: "calendar", label: c.text("checkOn"), caption: caption, value: c.D.iso(w.on), display: c.dateRange(w.on, w.on), moveCalendar: true }
       ];
       var needed = need - days;
       // The five years as 12-month blocks back from the date: year 1 ends on
       // the window's last day, each starts the day after the same date a
       // year earlier, as the app's TrackerPresenceFloor does.
-      var short = false, perYear = +c.settings.perYear || 0;
+      var short = false;
       if (perYear) {
         for (var k = 1; k <= 5; k++) {
           var to = c.D.shiftYears(w.to, -(k - 1)), from = c.D.shiftYears(w.to, -k) + 1;
           var n = count(set, from, to);
           if (n < perYear) short = true;   // the pill, once the total is there
-          controls.push({ type: "value", key: "year" + k, label: c.dateRange(from, to), value: n + " / " + perYear,
+          var y1 = c.D.parts(from).y, y2 = c.D.parts(to).y;
+          var years = y1 === y2 ? String(y1) : y1 + "\u2013" + String(y2).slice(-2);   // 2025–26
+          controls.push({ type: "value", key: "year" + k, label: years, value: n + " / " + perYear,
                           tone: n < perYear && trips.length ? "warning" : undefined });
         }
       }
@@ -118,6 +126,7 @@
       needed: { one: "{n} day needed", other: "{n} days needed" },
       reachedTarget: "Target reached",
       yearShortStatus: "A year is short",
+      yearsCaption: "The five years before this date count, each from {from} to {to}.",
       fileName: "atlasdays-presence-stays.csv"
     }
   };
