@@ -35,7 +35,8 @@ def description(record: dict[str, object]) -> str:
 
 
 def classify(slug: str) -> str:
-    if slug == "denmark-overseas-work-42-day-rule":
+    if slug in {"denmark-overseas-work-42-day-rule", "china-90-day-tax-exemption",
+                "hong-kong-60-day-salaries-tax-exemption"}:
         return "tax-residency"
     if slug in {"italy-residence-permit-absence", "switzerland-permit-absence",
                 "qatar-residence-return-planning", "france-resident-card-absence",
@@ -116,7 +117,8 @@ def jurisdiction(slug: str, cluster: str) -> str:
     names = {
         "nz-super": "New Zealand", "cyprus": "Cyprus", "denmark": "Denmark",
         "france": "France", "italy": "Italy", "qatar": "Qatar", "spain": "Spain",
-        "switzerland": "Switzerland",
+        "switzerland": "Switzerland", "oman": "Oman", "hong-kong": "Hong Kong",
+        "puerto-rico": "Puerto Rico",
         "uae": "United Arab Emirates", "turkiye": "Türkiye", "new-zealand": "New Zealand",
         "new-york": "New York", "new-jersey": "New Jersey", "north-dakota": "North Dakota",
         "rhode-island": "Rhode Island", "georgia-us": "Georgia (US state)",

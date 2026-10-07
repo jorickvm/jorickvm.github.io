@@ -107,6 +107,12 @@ JAPANESE_READINGS = {
     "Norway": "ノルウェー",
     "Spain": "スペイン",
     "India": "インド",
+    "Brazil": "ブラジル",
+    "China": "チュウゴク",
+    "Kazakhstan": "カザフスタン",
+    "Latvia": "ラトビア",
+    "Puerto Rico (US territory)": "プエルトリコ",
+    "Russia": "ロシア",
 }
 
 
