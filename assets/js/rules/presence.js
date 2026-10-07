@@ -15,10 +15,11 @@
    It counts what the app's presets count, every day in full (Jorick,
    2026-10-06: the website does not run ahead of the app). Canada's half-day
    credit before permanent residence waits for the app; the article explains
-   it. New Zealand's 240 days in each year follow the app's insight line
-   (2026-10-07): the card keeps one bar, "Target reached" needs the total and
-   every year, and once the total is reached a short year is named on one
-   line, the lowest only.
+   it. New Zealand's 240 days in each year (2026-10-07): the card keeps one
+   bar, "Target reached" needs the total and every year, and the five years
+   show under the application date with their days against 240, a short one
+   in orange. Moving the date moves all five, which is how a split absence
+   is found (Jorick: always visible, not only once the total is reached).
 
    Any day a stay touches counts, arrival and departure included: the rules
    either count any part of a day (Canada PR, New Zealand) or subtract only
@@ -75,16 +76,15 @@
       // The five years as 12-month blocks back from the date: year 1 ends on
       // the window's last day, each starts the day after the same date a
       // year earlier, as the app's TrackerPresenceFloor does.
-      // Named only once the total is there, when it is what stands in the
-      // way, as the app's insight line does; before that "N days needed" says it.
-      var lines = [], short = null, perYear = +c.settings.perYear || 0;
-      if (perYear && needed <= 0) {
+      var short = false, perYear = +c.settings.perYear || 0;
+      if (perYear) {
         for (var k = 1; k <= 5; k++) {
           var to = c.D.shiftYears(w.to, -(k - 1)), from = c.D.shiftYears(w.to, -k) + 1;
           var n = count(set, from, to);
-          if (n < perYear && (!short || n < short.n)) short = { from: from, to: to, n: n };
+          if (n < perYear) short = true;   // the pill, once the total is there
+          controls.push({ type: "value", key: "year" + k, label: c.dateRange(from, to), value: n + " / " + perYear,
+                          tone: n < perYear && trips.length ? "warning" : undefined });
         }
-        if (short) lines.push(c.text("yearShort", { period: c.dateRange(short.from, short.to), n: short.n, min: perYear }));
       }
       var status = needed > 0 ? c.text("needed", { n: needed }) : short ? c.text("yearShortStatus") : c.text("reachedTarget");
       return {
@@ -93,7 +93,7 @@
         meter: { title: c.text("title"), flag: c.settings.country, label: c.dateRange(w.from, w.to), days: days, limit: need, tone: c.tone(days, need, true) },
         statusText: status,
         statusTone: short && needed <= 0 ? "warning" : undefined,
-        lines: lines
+        lines: []
       };
     },
 
@@ -118,7 +118,6 @@
       needed: { one: "{n} day needed", other: "{n} days needed" },
       reachedTarget: "Target reached",
       yearShortStatus: "A year is short",
-      yearShort: "{period} has {n} days, under {min}.",
       fileName: "atlasdays-presence-stays.csv"
     }
   };

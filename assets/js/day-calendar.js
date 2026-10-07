@@ -743,7 +743,7 @@
       if (rule.fixedRange && ctl.moveCalendar) { revealNear(rule.range(ctx())); updateMonth(); }
     }
     function control(ctl) {
-      var wrap = el(ctl.type === "country" ? "div" : "label", { "class": "cal-control" + (ctl.type ? " is-" + ctl.type : "") });
+      var wrap = el(ctl.type === "country" || ctl.type === "value" ? "div" : "label", { "class": "cal-control" + (ctl.type ? " is-" + ctl.type : "") });
       if (ctl.prefix) wrap.appendChild(el("span", { "class": "cal-control-prefix" }, ctl.prefix));
       if (ctl.type === "country") {
         var pill = el("span", { "class": "cal-control-pill" });
@@ -760,6 +760,12 @@
         fieldInput.addEventListener("input", function () { fitInput(fieldInput); });
         pill.appendChild(field);
         wrap.appendChild(pill);
+        return wrap;
+      }
+      // A figure the rule works out, not a choice: New Zealand's days in
+      // each of the five years. Same row as a setting, no input.
+      if (ctl.type === "value") {
+        wrap.appendChild(el("span", { "class": "cal-readout" + (ctl.tone ? " tone-" + ctl.tone : "") }, ctl.value));
         return wrap;
       }
       if (ctl.type === "number") {
@@ -819,7 +825,7 @@
       var shown = (r.controls || []).filter(function (ctl) { return locked.indexOf(ctl.key) < 0; });
       settingsRow.hidden = !shown.length;
       shown.forEach(function (ctl) {
-        var row = el("div", { "class": "cal-setting" });
+        var row = el("div", { "class": "cal-setting" + (ctl.type === "value" ? " is-readout" : "") });
         if (ctl.icon) row.appendChild(icon(ctl.icon));
         row.appendChild(el("span", { "class": "cal-setting-label" }, ctl.label || ""));
         row.appendChild(control(ctl));

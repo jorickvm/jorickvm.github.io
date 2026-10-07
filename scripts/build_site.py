@@ -1378,7 +1378,7 @@ CALCULATOR_RULES = {
     "days183": {"script": "days-183.js", "page": "learn/183-day-rule-calculator.html"},
     "schengen": {"script": "schengen.js", "page": "learn/schengen-calculator.html"},
     "ukIlr": {"script": "uk-ilr.js", "page": "learn/uk-ilr-absence-calculator.html"},
-    "presence": {"script": "presence.js", "version": "20261007a"},
+    "presence": {"script": "presence.js", "version": "20261007c"},
     "spt": {"script": "spt.js", "version": "20261006a"},
 }
 SHARED_CALCULATOR_STRINGS = {
