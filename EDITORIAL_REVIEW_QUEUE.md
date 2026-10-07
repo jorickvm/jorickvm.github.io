@@ -95,6 +95,7 @@ These pages describe something scheduled to change. The tier cadence would revie
 | 2027-05-01 | 1 | [learn/indonesia-visa-on-arrival-30-days.html](/learn/indonesia-visa-on-arrival-30-days) | exact-date-required | 2 |
 | 2027-05-01 | 1 | [learn/ireland-citizenship-70-day-absence.html](/learn/ireland-citizenship-70-day-absence) | exact-date-required | 2 |
 | 2027-05-01 | 1 | [learn/mexico-fmm-180-day-visitor-stay.html](/learn/mexico-fmm-180-day-visitor-stay) | exact-date-required | 3 |
+| 2027-05-01 | 1 | [learn/oman-residence-visa-6-months-outside.html](/learn/oman-residence-visa-6-months-outside) | exact-date-required | 1 |
 | 2027-05-01 | 1 | [learn/schengen-calculator.html](/learn/schengen-calculator) | exact-date-required | 3 |
 | 2027-05-01 | 1 | [learn/uae-residence-visa-6-months-outside.html](/learn/uae-residence-visa-6-months-outside) | exact-date-required | 1 |
 | 2027-05-01 | 1 | [learn/uk-ilr-absence-calculator.html](/learn/uk-ilr-absence-calculator) | exact-date-required | 2 |
@@ -178,4 +179,12 @@ These pages describe something scheduled to change. The tier cadence would revie
 
 | Due | Tier | Article | Status | Sources |
 |---|---|---|---|---:|
+| 2027-10-31 | 2 | [learn/brazil-183-day-tax-residency.html](/learn/brazil-183-day-tax-residency) | exact-date-required | 1 |
+| 2027-10-31 | 2 | [learn/china-183-day-tax-residency.html](/learn/china-183-day-tax-residency) | exact-date-required | 3 |
+| 2027-10-31 | 2 | [learn/china-90-day-tax-exemption.html](/learn/china-90-day-tax-exemption) | exact-date-required | 3 |
+| 2027-10-31 | 2 | [learn/hong-kong-60-day-salaries-tax-exemption.html](/learn/hong-kong-60-day-salaries-tax-exemption) | exact-date-required | 2 |
 | 2027-10-31 | 2 | [learn/india-182-day-tax-residency.html](/learn/india-182-day-tax-residency) | exact-date-required | 3 |
+| 2027-10-31 | 2 | [learn/kazakhstan-183-day-tax-residency.html](/learn/kazakhstan-183-day-tax-residency) | exact-date-required | 2 |
+| 2027-10-31 | 2 | [learn/latvia-183-day-tax-residency.html](/learn/latvia-183-day-tax-residency) | exact-date-required | 1 |
+| 2027-10-31 | 2 | [learn/puerto-rico-183-day-bona-fide-residence.html](/learn/puerto-rico-183-day-bona-fide-residence) | exact-date-required | 2 |
+| 2027-10-31 | 2 | [learn/russia-183-day-tax-residency.html](/learn/russia-183-day-tax-residency) | exact-date-required | 2 |

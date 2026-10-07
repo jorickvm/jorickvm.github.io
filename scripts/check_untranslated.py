@@ -178,6 +178,30 @@ def without_csv_schema_cells(markup: str) -> str:
     return re.sub(r'<div\b[^>]*class="[^"]*\bdata-table-code\b[^"]*"[^>]*>.*?</div>', table, markup, flags=re.DOTALL)
 
 
+def without_declared_english_hub_names(markup: str, locale: dict, records: dict) -> str:
+    """Only generated country names may fall back to explicitly deferred English.
+
+    Keep checking the threshold/window cells and all surrounding prose. A
+    declaration must identify a real residency record and its exact name/link.
+    """
+    allowed = {}
+    for path in locale.get("untranslated", []):
+        record = records.get(path, {})
+        name = record.get("residency", {}).get("name")
+        if name:
+            allowed["/" + path.removesuffix(".html")] = name
+
+    def row(match):
+        def link(match):
+            href, text = html.unescape(match.group(2)), html.unescape(match.group(3))
+            if allowed.get(href) == text:
+                return match.group(1) + match.group(4)
+            return match.group(0)
+        return re.sub(r'(<a href="([^"]+)">)([^<]*)(</a>)', link, match.group(0))
+
+    return re.sub(r'<tr class="hub-row"[^>]*>.*?</tr>', row, markup, flags=re.DOTALL)
+
+
 def visible_runs(markup: str) -> set[str]:
     """Every non-empty rendered text run, prose and attributes alike."""
     body = STRIPPED.sub(" ", without_csv_schema_cells(markup))
@@ -305,7 +329,9 @@ def main() -> int:
             english_runs = visible_runs(
                 (SOURCE_ROOT / str(source["content"])).read_text(encoding="utf-8")
             )
-            translated_runs = visible_runs(translated.read_text(encoding="utf-8"))
+            translated_runs = visible_runs(without_declared_english_hub_names(
+                translated.read_text(encoding="utf-8"), locale, english
+            ))
             required = MUST_TRANSLATE.get(code, set())
             for text in sorted(english_runs & translated_runs & required):
                 problems.append(f"{code}/{overlay['source']}: still English: {text[:90]!r}")
