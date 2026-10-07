@@ -97,6 +97,8 @@ PROLONGED = "ー"
 JAPANESE_READINGS = {
     "首長国連邦": "シュチョウコクレンポウ",
     "台湾": "タイワン",
+    "中国": "チュウゴク",
+    "プエルトリコ（米国領）": "プエルトリコ",
     "日本": "ニホン",
     "米国": "ベイコク",
     "英国": "エイコク",
@@ -221,6 +223,13 @@ CHINESE_READINGS = {
 }
 
 
+# Additional countries in preset batch 2; pronunciation, not display copy.
+CHINESE_READINGS.update({
+    "中": "ㄓㄨㄥ", "各": "ㄍㄜˋ", "哈": "ㄏㄚ", "脫": "ㄊㄨㄛ",
+    "黎": "ㄌㄧˊ", "屬": "ㄕㄨˇ", "地": "ㄉㄧˋ",
+})
+
+
 def chinese_reading(name: str) -> str:
     """`name` with each Han character replaced by its 注音 reading."""
     return "".join(CHINESE_READINGS.get(c, c) for c in name)
@@ -291,6 +300,12 @@ PINYIN_READINGS = {
     # 2026-09: Norway and Germany joined the Learn hubs.
     "\u632a": "nuo2", "\u5fb7": "de2",
 }
+
+# Additional countries and the Puerto Rico territory qualifier.
+PINYIN_READINGS.update({
+    "中": "zhong1", "各": "ge4", "哈": "ha1", "地": "di4",
+    "坦": "tan3", "属": "shu3", "脱": "tuo1", "黎": "li2",
+})
 
 HAN = ("\u4e00", "\u9fff")
 

@@ -43,10 +43,12 @@
   // "\u0442\u0440\u0435\u043a\u0435\u0440" also normalised to "".
   var CJK = "\u3040-\u309f\u30a0-\u30ff\u3400-\u4dbf\u4e00-\u9fff\uff66-\uff9f";
   var CYRILLIC = "\u0400-\u04ff\u0500-\u052f";
-  var STRIP = new RegExp("[^a-z0-9" + CJK + CYRILLIC + "]+", "g");
+  // Preserve Hangul syllables and jamo; otherwise Korean queries vanish.
+  var HANGUL = "\u1100-\u11ff\u3130-\u318f\uac00-\ud7a3";
+  var STRIP = new RegExp("[^a-z0-9" + CJK + CYRILLIC + HANGUL + "]+", "g");
   // Scripts that delimit words with spaces, so a query can be split into
-  // terms. Cyrillic belongs here; CJK deliberately does not.
-  var HAS_SEGMENTED_WORD = new RegExp("[a-z0-9" + CYRILLIC + "]");
+  // terms. Cyrillic and Hangul belong here; CJK deliberately does not.
+  var HAS_SEGMENTED_WORD = new RegExp("[a-z0-9" + CYRILLIC + HANGUL + "]");
 
   function normalize(value) {
     // Fold accents on Latin letters so Dutch queries such as "Georgië" and

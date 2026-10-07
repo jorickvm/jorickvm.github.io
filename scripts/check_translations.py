@@ -91,7 +91,7 @@ def visible_text(fragment: str) -> str:
     without_comments = CAL_BLOCK.sub("\n".join(cal_prose(fragment)), without_comments)
     # Newline rather than space, so text in two different elements never reads
     # as one sentence to the typography rules below.
-    return TAGS.sub("\n", without_comments)
+    return html.unescape(TAGS.sub("\n", without_comments))
 
 
 # Languages whose own standard parenthetical mark IS the em dash, so the house
