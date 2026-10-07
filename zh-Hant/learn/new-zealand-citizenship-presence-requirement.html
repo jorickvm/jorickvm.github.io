@@ -126,6 +126,7 @@
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261006a" />
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261006a" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261007b" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">跳至主要內容</a>
@@ -199,8 +200,9 @@
       <ul>
         <li><a href="#section-1">規定內容</a></li>
         <li><a href="#section-2">怎麼計算</a></li>
-        <li><a href="#section-3">天數之外</a></li>
-        <li><a href="#section-4">常見問題</a></li>
+        <li><a href="#calculator">紐西蘭入籍天數計算機</a></li>
+        <li><a href="#section-4">天數之外</a></li>
+        <li><a href="#section-5">常見問題</a></li>
       </ul>
     </nav>
     <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
@@ -250,7 +252,95 @@
       <p>但這份申請仍然不符合居住要求，因為第三段只有 200 天，距離 240 天還差 40 天。其他四年再怎麼樣都補不回來。</p>
     </div>
 
-    <h2 id="section-3">天數之外</h2>
+    <h2 id="calculator">紐西蘭入籍天數計算機</h2>
+    <p>點選取得居留簽證之後在紐西蘭的停留，並選擇預計申請的日期。計算機會同時核對 1,350 天和每一年 240 天這兩項條件。</p>
+    <div class="daycal" id="embed-presence" data-day-calendar="presence" data-cal-preset="{&quot;settings&quot;:{&quot;country&quot;:&quot;NZ&quot;,&quot;need&quot;:1350,&quot;perYear&quot;:240,&quot;before&quot;:true,&quot;note&quot;:&quot;NZ citizenship calculator&quot;},&quot;lock&quot;:[],&quot;link&quot;:&quot;citizenship-nz&quot;}">
+      <script type="application/json" data-cal-strings>
+{
+  "hintEnd": "接著點選這段停留的另一端。",
+  "hintSelected": "拖曳停留的任一端可更改日期，也可以在下方刪除。",
+  "pending": "新一段停留的起點",
+  "empty": "還沒有停留紀錄。",
+  "deleteTrip": "刪除停留",
+  "country": "國家或地區",
+  "goal": "目標類型",
+  "goalStay": "低於上限",
+  "goalReach": "達成目標",
+  "addCountry": "新增國家或地區",
+  "noMatch": "找不到符合的國家或地區",
+  "year": "年份",
+  "starts": "起始日",
+  "tripDays": {
+    "other": "{n} 天"
+  },
+  "remaining": {
+    "other": "剩餘 {n} 天"
+  },
+  "atLimit": "已達上限",
+  "needed": {
+    "other": "還需 {n} 天"
+  },
+  "reachedTarget": "目標達成",
+  "overBy": {
+    "other": "超過上限 {n} 天"
+  },
+  "hintStart": "先點選在紐西蘭停留的開始日，再點選結束日。",
+  "inTrip": "在紐西蘭",
+  "title": "紐西蘭",
+  "checkOn": "申請日期",
+  "yearsCaption": "計算這一天之前的五年，每一年從 {from} 到 {to}。",
+  "yearShortStatus": "有一年天數不足"
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>時間軸</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>在 AtlasDays 中繼續追蹤</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="embed-presence-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="embed-presence-import-title">在 AtlasDays 中繼續追蹤</p>
+            <p class="cal-dialog-sub">適用於 iPhone 和 iPad 的免費 App，旅行途中持續計算停留天數。</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>確認 iPhone 或 iPad 已安裝 AtlasDays</strong><span>可在 App Store 免費下載。</span></li>
+            <li><strong>掃描 QR 碼，把所有行程載入 AtlasDays</strong><span>確認無誤後，輕點「匯入」。</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>取得 AtlasDays</strong><span>在 App Store 免費下載。已經有了？直接跳到第 2 步。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>在 App 中開啟停留紀錄</strong><span>確認無誤後輕點「匯入」。在此之前，不會儲存任何資料。</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">在 AtlasDays 中開啟</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>取得 AtlasDays</strong><span>iPhone 版，可在 App Store 免費下載。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>用檔案匯入停留紀錄</strong><span>停留紀錄太多，連結裝不下。請下載檔案，然後在 iPhone 上用 AtlasDays 開啟。</span><button type="button" class="cal-dialog-primary" data-cal-download>下載檔案</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>將行程下載為 CSV 檔案</button><span data-cal-downloaded hidden>請在 iPhone 上用 AtlasDays 開啟這個檔案。</span></p>
+          <button type="button" data-cal-close>關閉</button>
+        </div>
+      </dialog>
+    </div>
+    <p class="cal-private">所有操作都留在瀏覽器內：輸入的資料不會傳送或儲存。</p>
+
+    <h2 id="section-4">天數之外</h2>
     <p>居住天數只是幾項要求之一。授予公民身分還取決於品格良好、英語能力足夠，以及打算繼續住在紐西蘭；而在海外為紐西蘭政府執行王室公務的時間，也可以算成居住。稅務居民是另一個問題，由它自己的天數計算決定，說明在<a href="/zh-Hant/learn/new-zealand-183-day-tax-residency">紐西蘭的 183 天稅務居民規定</a>。如果你的日期靠近任何一個門檻，或居留身分在這五年中途改變過，申請前值得找顧問核對確切的時序。</p>
 
     <div class="cta-box">
@@ -259,14 +349,14 @@
         <img class="logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="AtlasDays 標誌" width="52" height="52" />
       </span>
       <h2>AtlasDays 會自動追蹤紐西蘭的 1,350 天居住要求</h2>
-      <p>行程只要記錄一次。「紐西蘭公民居住天數」追蹤器會在滾動式 60 個月期間內計算你待在紐西蘭的天數，全部在 iPhone 上私密處理，並在達到 1,350 天時告訴你。AtlasDays 追蹤的是 1,350 天的總數；每一年 240 天這個條件，目前要自己用居住天數計算工具確認。</p>
+      <p>行程只要記錄一次。「紐西蘭公民居住天數」追蹤器會在滾動式 60 個月期間內計算你待在紐西蘭的天數，全部在 iPhone 上私密處理，同時核對每一年 240 天的條件。它會告訴你最早可以申請的日期，並在預定行程會讓某一年天數不足時提醒你。設定取得居留簽證的日期後，在那之前的天數不計入。</p>
       <a class="cta-btn" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">
         <svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
         取得 AtlasDays
       </a>
     </div>
 
-    <h2 id="section-4">常見問題</h2>
+    <h2 id="section-5">常見問題</h2>
     <h3>申請紐西蘭公民需要在境內待滿幾天？</h3>
     <p>申請前緊接的五年內至少 1,350 天，而且那五年裡每一年至少 240 天。</p>
     <h3>某一年多待的天數可以補另一年的不足嗎？</h3>
@@ -331,6 +421,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"開啟導覽選單","menuClose":"關閉導覽選單"};</script>
   <script src="../../assets/js/navigation.js?v=20261005a"></script>
+  <script defer src="../../assets/js/rules/presence.js?v=20261007f"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261007c"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

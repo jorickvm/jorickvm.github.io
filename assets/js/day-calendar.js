@@ -120,6 +120,12 @@
   // "7 Oct", day first in English as the site's other dates (a rule's caption).
   var dayMonthFormat = new Intl.DateTimeFormat(locale === "en" ? "en-GB" : locale, { timeZone: "UTC", day: "numeric", month: "short" });
   function dayMonth(n) { return dayMonthFormat.format(new Date(n * DAY)); }
+  // Two years as one label, "2025–26"; Japanese uses neither dash (its
+  // ranges take ～, as dateRange does), so "2025年～2026年" there.
+  function yearSpan(y1, y2) {
+    if (y1 === y2) return String(y1);
+    return locale === "ja" ? y1 + "年～" + y2 + "年" : y1 + "\u2013" + String(y2).slice(-2);
+  }
   function short(n, withYear) {
     return (withYear ? shortDateYear : shortDate).format(new Date(n * DAY));
   }
@@ -318,7 +324,7 @@
     var englishNames = null;
     try { englishNames = new Intl.DisplayNames(["en"], { type: "region" }); } catch (e) {}
 
-    function ctx() { return { today: today, D: D, label: label, plural: plural, text: text, trips: trips, placeName: placeName, settings: settings, dateRange: dateRange, dayMonth: dayMonth, tone: tone, embedded: !!preset.settings }; }
+    function ctx() { return { today: today, D: D, label: label, plural: plural, text: text, trips: trips, placeName: placeName, settings: settings, dateRange: dateRange, dayMonth: dayMonth, yearSpan: yearSpan, tone: tone, embedded: !!preset.settings }; }
     // A new trip starts with the rule's fixed country, or (rule.carryCountry)
     // the country picked last, so a run of stays in one country is quick.
     function newCountry() {

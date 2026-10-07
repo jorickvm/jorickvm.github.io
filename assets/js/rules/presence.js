@@ -74,7 +74,9 @@
       var perYear = +c.settings.perYear || 0;
       // With yearly rows the caption names the years' boundary once, so the
       // rows can carry just their years (Jorick, 2026-10-07: less dense).
-      var caption = perYear ? c.text("yearsCaption", { from: c.dayMonth(w.from), to: c.dayMonth(w.to) }) : c.text("checkOnCaption");
+      // An abbreviated month ends in its own dot in some languages ("6. Okt."),
+      // so a sentence that ends on the date would read "Okt..".
+      var caption = perYear ? c.text("yearsCaption", { from: c.dayMonth(w.from), to: c.dayMonth(w.to) }).replace(/\.\.$/, ".") : c.text("checkOnCaption");
       var controls = [
         { type: "date", key: "checkOn", icon: "calendar", label: c.text("checkOn"), caption: caption, value: c.D.iso(w.on), display: c.dateRange(w.on, w.on), moveCalendar: true }
       ];
@@ -88,8 +90,7 @@
           var to = c.D.shiftYears(w.to, -(k - 1)), from = c.D.shiftYears(w.to, -k) + 1;
           var n = count(set, from, to);
           if (n < perYear) short = true;   // the pill, once the total is there
-          var y1 = c.D.parts(from).y, y2 = c.D.parts(to).y;
-          var years = y1 === y2 ? String(y1) : y1 + "\u2013" + String(y2).slice(-2);   // 2025–26
+          var years = c.yearSpan(c.D.parts(from).y, c.D.parts(to).y);   // 2025–26
           controls.push({ type: "value", key: "year" + k, label: years, value: n + " / " + perYear,
                           tone: n < perYear && trips.length ? "warning" : undefined });
         }

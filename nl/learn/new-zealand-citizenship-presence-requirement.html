@@ -126,6 +126,7 @@
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261006a" />
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261006a" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261007b" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Ga naar de inhoud</a>
@@ -199,6 +200,7 @@
       <ul>
         <li><a href="#de-regel">De regel</a></li>
         <li><a href="#zo-tel-je-het">Zo tel je het</a></li>
+        <li><a href="#calculator">Calculator voor het Nieuw-Zeelandse staatsburgerschap</a></li>
         <li><a href="#meer-dan-de-dagentelling-alleen">Meer dan de dagentelling alleen</a></li>
         <li><a href="#veelgestelde-vragen">Veelgestelde vragen</a></li>
       </ul>
@@ -250,6 +252,98 @@
       <p>De aanvraag zakt toch voor de aanwezigheidseis, omdat het derde blok maar 200 dagen telt en daarmee 40 dagen tekortkomt voor 240. Niets in de andere vier jaren maakt dat goed.</p>
     </div>
 
+    <h2 id="calculator">Calculator voor het Nieuw-Zeelandse staatsburgerschap</h2>
+    <p>Tik je verblijven in Nieuw-Zeeland aan sinds je een resident visa hebt, en kies de datum waarop je wilt aanvragen. De calculator controleert zowel de 1.350 dagen als de 240 dagen in elk jaar.</p>
+    <div class="daycal" id="embed-presence" data-day-calendar="presence" data-cal-preset="{&quot;settings&quot;:{&quot;country&quot;:&quot;NZ&quot;,&quot;need&quot;:1350,&quot;perYear&quot;:240,&quot;before&quot;:true,&quot;note&quot;:&quot;NZ citizenship calculator&quot;},&quot;lock&quot;:[],&quot;link&quot;:&quot;citizenship-nz&quot;}">
+      <script type="application/json" data-cal-strings>
+{
+  "hintEnd": "Tik nu op het andere uiteinde van het verblijf.",
+  "hintSelected": "Sleep een van beide uiteinden om de datums te wijzigen, of verwijder het verblijf hieronder.",
+  "pending": "begin van een nieuw verblijf",
+  "empty": "Nog geen verblijven.",
+  "deleteTrip": "Verwijder verblijf",
+  "country": "Land",
+  "goal": "Doelstelling",
+  "goalStay": "Onder limiet blijven",
+  "goalReach": "Doel bereiken",
+  "addCountry": "Voeg land toe",
+  "noMatch": "Geen land gevonden",
+  "year": "Jaar",
+  "starts": "Start",
+  "tripDays": {
+    "one": "{n} dag",
+    "other": "{n} dagen"
+  },
+  "remaining": {
+    "one": "{n} dag resterend",
+    "other": "{n} dagen resterend"
+  },
+  "atLimit": "Limiet bereikt",
+  "needed": {
+    "one": "Nog {n} dag nodig",
+    "other": "Nog {n} dagen nodig"
+  },
+  "reachedTarget": "Doel bereikt",
+  "overBy": {
+    "one": "{n} dag boven de limiet",
+    "other": "{n} dagen boven de limiet"
+  },
+  "hintStart": "Tik op de dag waarop een verblijf in Nieuw-Zeeland begon en daarna op de dag waarop het eindigde.",
+  "inTrip": "aanwezig in Nieuw-Zeeland",
+  "title": "Nieuw-Zeeland",
+  "checkOn": "Aanvraagdatum",
+  "yearsCaption": "De vijf jaar vóór deze datum tellen, elk jaar van {from} tot en met {to}.",
+  "yearShortStatus": "Een jaar komt tekort"
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>M</span><span>D</span><span>W</span><span>D</span><span>V</span><span>Z</span><span>Z</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>Tijdlijn</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Houd dit bij in AtlasDays</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="embed-presence-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="embed-presence-import-title">Houd dit bij in AtlasDays</p>
+            <p class="cal-dialog-sub">Tel je dagen door terwijl je reist. Gratis app voor iPhone en iPad.</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>Zorg dat AtlasDays op je iPhone of iPad staat</strong><span>Gratis in de App Store.</span></li>
+            <li><strong>Scan de QR-code om alle reizen in AtlasDays te laden</strong><span>Controleer ze en tik dan op Importeren.</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>Download AtlasDays</strong><span>Gratis in de App Store. Heb je de app al? Ga door naar stap 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>Open je verblijven in de app</strong><span>Controleer ze en tik dan op Importeren. Tot die tijd wordt er niets bewaard.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Open AtlasDays</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>Download AtlasDays</strong><span>Gratis in de App Store voor iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>Importeer je verblijven met een bestand</strong><span>Dat zijn meer verblijven dan er in een link passen. Download het bestand en open het op je iPhone met AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Download bestand</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Download je reizen als CSV-bestand</button><span data-cal-downloaded hidden>Open dit bestand op je iPhone met AtlasDays.</span></p>
+          <button type="button" data-cal-close>Sluit</button>
+        </div>
+      </dialog>
+    </div>
+    <p class="cal-private">Alles blijft in je browser: wat je invult, wordt niet verzonden of opgeslagen.</p>
+
     <h2 id="meer-dan-de-dagentelling-alleen">Meer dan de dagentelling alleen</h2>
     <p>Aanwezigheid is één eis van meerdere. Voor de toekenning van het staatsburgerschap telt ook of je van goed gedrag bent, of je voldoende Engels beheerst en of je van plan bent in Nieuw-Zeeland te blijven wonen, en tijd in het buitenland in Crown service voor de Nieuw-Zeelandse overheid kan als aanwezigheid meetellen. Fiscaal inwonerschap is een aparte vraag met een eigen telling, beschreven in <a href="/nl/learn/new-zealand-183-day-tax-residency">de 183-dagenregel voor fiscaal inwonerschap in Nieuw-Zeeland</a>. Liggen je datums dicht bij een van beide drempels, of veranderde je verblijfsstatus halverwege de vijf jaar, dan is het de moeite waard om de precieze chronologie met een adviseur na te lopen voordat je aanvraagt.</p>
 
@@ -259,7 +353,7 @@
         <img class="logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="AtlasDays-logo" width="52" height="52" />
       </span>
       <h2>AtlasDays houdt de Nieuw-Zeelandse eis van 1.350 dagen automatisch bij</h2>
-      <p>Leg je reizen één keer vast. De tracker Aanwezigheid voor Nieuw-Zeelands staatsburgerschap telt je dagen in Nieuw-Zeeland over een voortschrijdende periode van 60 maanden, privé op je iPhone, en zegt wanneer je de 1.350 haalt. AtlasDays houdt het totaal van 1.350 dagen bij; de voorwaarde van 240 dagen per jaar controleer je voorlopig zelf met de aanwezigheidscalculator.</p>
+      <p>Leg je reizen één keer vast. De tracker Aanwezigheid voor Nieuw-Zeelands staatsburgerschap telt je dagen in Nieuw-Zeeland over een voortschrijdende periode van 60 maanden, privé op je iPhone, en controleert ook de 240 dagen in elk jaar. Hij laat zien vanaf welke dag je kunt aanvragen, en waarschuwt als een geplande reis een jaar tekort laat komen. Vul in sinds wanneer je een resident visa hebt, dan tellen de dagen daarvoor niet mee.</p>
       <a class="cta-btn" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">
         <svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
         Download AtlasDays
@@ -331,6 +425,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"Open het navigatiemenu","menuClose":"Sluit het navigatiemenu"};</script>
   <script src="../../assets/js/navigation.js?v=20261005a"></script>
+  <script defer src="../../assets/js/rules/presence.js?v=20261007f"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261007c"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

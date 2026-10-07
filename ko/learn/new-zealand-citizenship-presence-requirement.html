@@ -126,6 +126,7 @@
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261006a" />
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261006a" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261007b" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">본문으로 건너뛰기</a>
@@ -199,8 +200,9 @@
       <ul>
         <li><a href="#section-1">규정 내용</a></li>
         <li><a href="#section-2">계산 방법</a></li>
-        <li><a href="#section-3">일수 계산 외의 기준</a></li>
-        <li><a href="#section-4">자주 묻는 질문</a></li>
+        <li><a href="#calculator">뉴질랜드 시민권 체류 일수 계산기</a></li>
+        <li><a href="#section-4">일수 계산 외의 기준</a></li>
+        <li><a href="#section-5">자주 묻는 질문</a></li>
       </ul>
     </nav>
     <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
@@ -250,7 +252,95 @@
       <p>그래도 이 신청은 체류 요건에서 탈락합니다. 세 번째 구간이 200일에 그쳐 240일에서 40일이 모자라기 때문입니다. 나머지 네 해의 어떤 숫자도 이것을 메워 주지 못합니다.</p>
     </div>
 
-    <h2 id="section-3">일수 계산 외의 기준</h2>
+    <h2 id="calculator">뉴질랜드 시민권 체류 일수 계산기</h2>
+    <p>거주 비자를 받은 이후의 뉴질랜드 체류 날짜를 누르고, 신청할 예정인 날짜를 선택하십시오. 계산기는 1,350일과 각 해 240일 조건을 모두 확인합니다.</p>
+    <div class="daycal" id="embed-presence" data-day-calendar="presence" data-cal-preset="{&quot;settings&quot;:{&quot;country&quot;:&quot;NZ&quot;,&quot;need&quot;:1350,&quot;perYear&quot;:240,&quot;before&quot;:true,&quot;note&quot;:&quot;NZ citizenship calculator&quot;},&quot;lock&quot;:[],&quot;link&quot;:&quot;citizenship-nz&quot;}">
+      <script type="application/json" data-cal-strings>
+{
+  "hintEnd": "체류의 다른 끝 날짜를 누르십시오.",
+  "hintSelected": "체류의 양쪽 끝 중 하나를 드래그해 날짜를 변경하거나 아래에서 삭제하십시오.",
+  "pending": "새 체류 시작",
+  "empty": "아직 체류가 없습니다.",
+  "deleteTrip": "체류 삭제",
+  "country": "국가",
+  "goal": "목표 유형",
+  "goalStay": "한도 미만 유지",
+  "goalReach": "목표 달성",
+  "addCountry": "국가 추가",
+  "noMatch": "일치하는 국가가 없습니다",
+  "year": "연도",
+  "starts": "시작일",
+  "tripDays": {
+    "other": "{n}일"
+  },
+  "remaining": {
+    "other": "{n}일 남음"
+  },
+  "atLimit": "한도 도달",
+  "needed": {
+    "other": "{n}일 더 필요"
+  },
+  "reachedTarget": "목표 달성",
+  "overBy": {
+    "other": "한도 {n}일 초과"
+  },
+  "hintStart": "뉴질랜드 체류가 시작된 날을 누른 다음 끝난 날을 누르십시오.",
+  "inTrip": "뉴질랜드 체류",
+  "title": "뉴질랜드",
+  "checkOn": "신청일",
+  "yearsCaption": "이 날짜 이전 다섯 해가 계산 대상이며, 각 해는 {from}부터 {to}까지입니다.",
+  "yearShortStatus": "일수가 부족한 해가 있음"
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span><span>일</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>타임라인</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>AtlasDays에서 관리하기</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="embed-presence-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="embed-presence-import-title">AtlasDays에서 관리하기</p>
+            <p class="cal-dialog-sub">여행하는 동안 체류 일수를 계속 계산하는 iPhone 및 iPad용 무료 앱입니다.</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>iPhone 또는 iPad에 AtlasDays 설치 확인</strong><span>App Store에서 무료로 받을 수 있습니다.</span></li>
+            <li><strong>QR 코드를 스캔해 모든 여행을 AtlasDays에 불러오기</strong><span>확인한 다음 '가져오기'를 누르십시오.</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>AtlasDays 받기</strong><span>App Store에서 무료로 받을 수 있습니다. 이미 있다면 2단계로 넘어가십시오.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>앱에서 체류 열기</strong><span>확인한 다음 '가져오기'를 누르십시오. 그 전에는 아무것도 저장되지 않습니다.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">AtlasDays에서 열기</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>AtlasDays 받기</strong><span>App Store에서 무료로 받을 수 있는 iPhone 앱입니다.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>파일로 체류 가져오기</strong><span>체류가 너무 많아 링크에 담을 수 없습니다. 파일을 다운로드해 iPhone의 AtlasDays에서 여십시오.</span><button type="button" class="cal-dialog-primary" data-cal-download>파일 다운로드</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>여행을 CSV 파일로 다운로드</button><span data-cal-downloaded hidden>iPhone의 AtlasDays에서 이 파일을 여십시오.</span></p>
+          <button type="button" data-cal-close>닫기</button>
+        </div>
+      </dialog>
+    </div>
+    <p class="cal-private">모든 내용은 브라우저에만 남습니다. 입력한 정보는 전송되거나 저장되지 않습니다.</p>
+
+    <h2 id="section-4">일수 계산 외의 기준</h2>
     <p>체류는 여러 요건 중 하나입니다. 시민권 수여는 선량한 품성, 충분한 영어 능력, 그리고 뉴질랜드에서 계속 살 의사에도 달려 있으며, 뉴질랜드 정부를 위한 국왕 공무로 해외에서 보낸 기간은 체류로 인정될 수 있습니다. 세법상 거주는 자체 계산으로 판단되는 별개의 문제이며, <a href="/ko/learn/new-zealand-183-day-tax-residency">뉴질랜드 183일 세법상 거주 규정</a>에서 설명합니다. 날짜가 두 기준 중 어느 쪽에든 가깝게 놓이거나 5년 도중에 거주 자격이 바뀌었다면, 신청 전에 정확한 시간 순서를 전문가와 함께 확인하는 것이 좋습니다.</p>
 
     <div class="cta-box">
@@ -259,14 +349,14 @@
         <img class="logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="AtlasDays 로고" width="52" height="52" />
       </span>
       <h2>AtlasDays는 뉴질랜드 1,350일 체류 요건을 자동으로 관리합니다</h2>
-      <p>여행을 한 번만 기록해 두십시오. 뉴질랜드 시민권 체류 트래커가 롤링 60개월 기간의 뉴질랜드 체류 일수를 iPhone 안에서 비공개로 세고, 1,350일에 도달하면 알려 줍니다. AtlasDays가 관리하는 것은 1,350일 합계이며, 각 해 240일 조건은 당분간 체류 계산기로 직접 확인하셔야 합니다.</p>
+      <p>여행을 한 번만 기록해 두십시오. 뉴질랜드 시민권 체류 트래커가 롤링 60개월 기간의 뉴질랜드 체류 일수를 iPhone 안에서 비공개로 세고, 각 해 240일 조건도 확인합니다. 신청할 수 있는 첫날을 알려 주고, 계획한 여행 때문에 일수가 부족해지는 해가 생기면 경고합니다. 거주 비자를 받은 날짜를 설정하면 그 이전의 날은 계산하지 않습니다.</p>
       <a class="cta-btn" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">
         <svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
         AtlasDays 받기
       </a>
     </div>
 
-    <h2 id="section-4">자주 묻는 질문</h2>
+    <h2 id="section-5">자주 묻는 질문</h2>
     <h3>뉴질랜드 시민권을 신청하려면 며칠이 필요합니까?</h3>
     <p>신청 직전 5년 동안 최소 1,350일, 그리고 그 5년 각각의 해마다 최소 240일입니다.</p>
     <h3>어느 해에 더 머문 일수로 모자란 해를 메울 수 있습니까?</h3>
@@ -331,6 +421,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"탐색 메뉴 열기","menuClose":"탐색 메뉴 닫기"};</script>
   <script src="../../assets/js/navigation.js?v=20261005a"></script>
+  <script defer src="../../assets/js/rules/presence.js?v=20261007f"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261007c"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();
