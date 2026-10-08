@@ -8,12 +8,20 @@
      before       true when the five years end the day before the date
                   (Canadian citizenship: the eligibility period runs to the
                   day before you sign)
+     perYear      a minimum in each of the five 12-month years counted back
+                  from the date (New Zealand: 240), on top of `need`
      note         English label for exported stays (read by the importer)
 
    It counts what the app's presets count, every day in full (Jorick,
    2026-10-06: the website does not run ahead of the app). Canada's half-day
-   credit before permanent residence and New Zealand's 240 days in each year
-   wait for the app; the articles explain both.
+   credit before permanent residence waits for the app; the article explains
+   it. New Zealand's 240 days in each year (2026-10-07): the card keeps one
+   bar, "Target reached" needs the total and every year, and the five years
+   show under the application date with their days against 240, a short one
+   in orange. Moving the date moves all five, which is how a split absence
+   is found (Jorick: always visible, not only once the total is reached).
+   The rows carry their years ("2025–26"); the caption names the boundary
+   once ("each from 7 Oct to 6 Oct").
 
    Any day a stay touches counts, arrival and departure included: the rules
    either count any part of a day (Canada PR, New Zealand) or subtract only
@@ -63,14 +71,37 @@
     evaluate: function (trips, c) {
       var w = window5(c), set = presentDays(trips), need = +c.settings.need || 1095;
       var days = count(set, w.from, w.to);
+      var perYear = +c.settings.perYear || 0;
+      // With yearly rows the caption names the years' boundary once, so the
+      // rows can carry just their years (Jorick, 2026-10-07: less dense).
+      // An abbreviated month ends in its own dot in some languages ("6. Okt."),
+      // so a sentence that ends on the date would read "Okt..".
+      var caption = perYear ? c.text("yearsCaption", { from: c.dayMonth(w.from), to: c.dayMonth(w.to) }).replace(/\.\.$/, ".") : c.text("checkOnCaption");
       var controls = [
-        { type: "date", key: "checkOn", icon: "calendar", label: c.text("checkOn"), caption: c.text("checkOnCaption"), value: c.D.iso(w.on), display: c.dateRange(w.on, w.on), moveCalendar: true }
+        { type: "date", key: "checkOn", icon: "calendar", label: c.text("checkOn"), caption: caption, value: c.D.iso(w.on), display: c.dateRange(w.on, w.on), moveCalendar: true }
       ];
       var needed = need - days;
+      // The five years as 12-month blocks back from the date: year 1 ends on
+      // the window's last day, each starts the day after the same date a
+      // year earlier, as the app's TrackerPresenceFloor does.
+      var short = false;
+      if (perYear) {
+        for (var k = 1; k <= 5; k++) {
+          var to = c.D.shiftYears(w.to, -(k - 1)), from = c.D.shiftYears(w.to, -k) + 1;
+          var n = count(set, from, to);
+          if (n < perYear) short = true;   // the pill, once the total is there
+          var years = c.yearSpan(c.D.parts(from).y, c.D.parts(to).y);   // 2025–26
+          controls.push({ type: "value", key: "year" + k, label: years, value: n + " / " + perYear,
+                          tone: n < perYear && trips.length ? "warning" : undefined });
+        }
+      }
+      var status = needed > 0 ? c.text("needed", { n: needed }) : short ? c.text("yearShortStatus") : c.text("reachedTarget");
       return {
         controls: controls,
+        // The bar is the total, as on the app's card; the pill says a year is short.
         meter: { title: c.text("title"), flag: c.settings.country, label: c.dateRange(w.from, w.to), days: days, limit: need, tone: c.tone(days, need, true) },
-        statusText: needed > 0 ? c.text("needed", { n: needed }) : c.text("reachedTarget"),
+        statusText: status,
+        statusTone: short && needed <= 0 ? "warning" : undefined,
         lines: []
       };
     },
@@ -95,6 +126,8 @@
       tripDays: { one: "{n} day", other: "{n} days" },
       needed: { one: "{n} day needed", other: "{n} days needed" },
       reachedTarget: "Target reached",
+      yearShortStatus: "A year is short",
+      yearsCaption: "The five years before this date count, each from {from} to {to}.",
       fileName: "atlasdays-presence-stays.csv"
     }
   };

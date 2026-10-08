@@ -117,6 +117,15 @@
   var shortDateYear = dateFormat({ day: "numeric", month: "short", year: "numeric" });
   var weekday = dateFormat({ weekday: "narrow" });
   function label(n) { return fullDate.format(new Date(n * DAY)); }
+  // "7 Oct", day first in English as the site's other dates (a rule's caption).
+  var dayMonthFormat = new Intl.DateTimeFormat(locale === "en" ? "en-GB" : locale, { timeZone: "UTC", day: "numeric", month: "short" });
+  function dayMonth(n) { return dayMonthFormat.format(new Date(n * DAY)); }
+  // Two years as one label, "2025–26"; Japanese uses neither dash (its
+  // ranges take ～, as dateRange does), so "2025年～2026年" there.
+  function yearSpan(y1, y2) {
+    if (y1 === y2) return String(y1);
+    return locale === "ja" ? y1 + "年～" + y2 + "年" : y1 + "\u2013" + String(y2).slice(-2);
+  }
   function short(n, withYear) {
     return (withYear ? shortDateYear : shortDate).format(new Date(n * DAY));
   }
@@ -315,7 +324,7 @@
     var englishNames = null;
     try { englishNames = new Intl.DisplayNames(["en"], { type: "region" }); } catch (e) {}
 
-    function ctx() { return { today: today, D: D, label: label, plural: plural, text: text, trips: trips, placeName: placeName, settings: settings, dateRange: dateRange, tone: tone, embedded: !!preset.settings }; }
+    function ctx() { return { today: today, D: D, label: label, plural: plural, text: text, trips: trips, placeName: placeName, settings: settings, dateRange: dateRange, dayMonth: dayMonth, yearSpan: yearSpan, tone: tone, embedded: !!preset.settings }; }
     // A new trip starts with the rule's fixed country, or (rule.carryCountry)
     // the country picked last, so a run of stays in one country is quick.
     function newCountry() {
@@ -743,7 +752,7 @@
       if (rule.fixedRange && ctl.moveCalendar) { revealNear(rule.range(ctx())); updateMonth(); }
     }
     function control(ctl) {
-      var wrap = el(ctl.type === "country" ? "div" : "label", { "class": "cal-control" + (ctl.type ? " is-" + ctl.type : "") });
+      var wrap = el(ctl.type === "country" || ctl.type === "value" ? "div" : "label", { "class": "cal-control" + (ctl.type ? " is-" + ctl.type : "") });
       if (ctl.prefix) wrap.appendChild(el("span", { "class": "cal-control-prefix" }, ctl.prefix));
       if (ctl.type === "country") {
         var pill = el("span", { "class": "cal-control-pill" });
@@ -760,6 +769,12 @@
         fieldInput.addEventListener("input", function () { fitInput(fieldInput); });
         pill.appendChild(field);
         wrap.appendChild(pill);
+        return wrap;
+      }
+      // A figure the rule works out, not a choice: New Zealand's days in
+      // each of the five years. Same row as a setting, no input.
+      if (ctl.type === "value") {
+        wrap.appendChild(el("span", { "class": "cal-readout" + (ctl.tone ? " tone-" + ctl.tone : "") }, ctl.value));
         return wrap;
       }
       if (ctl.type === "number") {
@@ -819,7 +834,7 @@
       var shown = (r.controls || []).filter(function (ctl) { return locked.indexOf(ctl.key) < 0; });
       settingsRow.hidden = !shown.length;
       shown.forEach(function (ctl) {
-        var row = el("div", { "class": "cal-setting" });
+        var row = el("div", { "class": "cal-setting" + (ctl.type === "value" ? " is-readout" : "") });
         if (ctl.icon) row.appendChild(icon(ctl.icon));
         row.appendChild(el("span", { "class": "cal-setting-label" }, ctl.label || ""));
         row.appendChild(control(ctl));

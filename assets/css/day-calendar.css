@@ -72,6 +72,13 @@ html[data-theme="light"] .daycal { --cal-disc: rgba(12, 22, 40, 0.07); --tone-wa
 .cal-setting-label { color: var(--text); font-size: 0.95rem; font-weight: 500; }
 .cal-setting .cal-control { margin-left: auto; }
 .cal-setting-caption { margin: -4px 0 8px 32px; color: var(--muted); font-size: 0.82rem; line-height: 1.45; }
+/* a worked-out figure under a setting (New Zealand's five years): quieter
+   rows, indented to the labels above, the number in the tone it is in */
+.cal-setting.is-readout { padding: 3px 0 3px 32px; }
+.cal-setting.is-readout .cal-setting-label { color: var(--muted); font-size: 0.85rem; font-weight: 400; }
+.cal-readout { color: var(--text); font-size: 0.85rem; font-weight: 600; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.cal-readout.tone-warning { color: var(--tone-warning); }
+.cal-setting.is-readout:last-child { padding-bottom: 9px; }
 
 /* line icons (after the app's SF Symbols) */
 .cal-icon { display: inline-flex; flex: 0 0 auto; width: 20px; height: 20px; }
@@ -266,9 +273,9 @@ html[data-theme="light"] .daycal { --cal-disc: rgba(12, 22, 40, 0.07); --tone-wa
 
 /* the result as the app's tracker card: flag and title with the status pill,
    then period and count, then the bar */
-.cal-card-head { display: flex; align-items: center; gap: 10px; margin: 0 0 12px; }
+.cal-card-head { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 0 0 12px; }
 .cal-card-head .cal-flag { width: 28px; height: 21px; }
-.cal-card-title { flex: 1 1 auto; min-width: 0; color: var(--text); font-size: 1.02rem; font-weight: 650; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cal-card-title { flex: 1 0 auto; max-width: 100%; min-width: 0; color: var(--text); font-size: 1.02rem; font-weight: 650; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .cal-card-title.is-placeholder { color: var(--muted); font-weight: 500; }
 .cal-card-head .cal-pill { flex: 0 0 auto; margin: 0 0 0 auto; }
 /* the country picker as the card's title */

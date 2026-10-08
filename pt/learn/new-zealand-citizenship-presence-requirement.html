@@ -126,6 +126,7 @@
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261006a" />
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261006a" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261007b" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Pular para o conteúdo</a>
@@ -199,6 +200,7 @@
       <ul>
         <li><a href="#a-regra">A regra</a></li>
         <li><a href="#como-fazer-a-contagem">Como fazer a contagem</a></li>
+        <li><a href="#calculator">Calculadora de presença para a cidadania neozelandesa</a></li>
         <li><a href="#al-m-da-contagem-de-dias">Além da contagem de dias</a></li>
         <li><a href="#perguntas-frequentes">Perguntas frequentes</a></li>
       </ul>
@@ -250,6 +252,102 @@
       <p>Ainda assim, o pedido não cumpre a exigência de presença, porque o terceiro bloco tem apenas 200 dias e fica 40 abaixo de 240. Nada nos outros quatro anos conserta isso.</p>
     </div>
 
+    <h2 id="calculator">Calculadora de presença para a cidadania neozelandesa</h2>
+    <p>Marque suas estadias na Nova Zelândia desde que você recebeu o visto de residente e escolha a data em que pretende fazer o pedido. A calculadora verifica tanto os 1.350 dias quanto os 240 dias de cada ano.</p>
+    <div class="daycal" id="embed-presence" data-day-calendar="presence" data-cal-preset="{&quot;settings&quot;:{&quot;country&quot;:&quot;NZ&quot;,&quot;need&quot;:1350,&quot;perYear&quot;:240,&quot;before&quot;:true,&quot;note&quot;:&quot;NZ citizenship calculator&quot;},&quot;lock&quot;:[],&quot;link&quot;:&quot;citizenship-nz&quot;}">
+      <script type="application/json" data-cal-strings>
+{
+  "hintEnd": "Toque na outra ponta da estadia.",
+  "hintSelected": "Arraste qualquer uma das pontas da estadia para mudar as datas ou exclua-a abaixo.",
+  "pending": "início de uma nova estadia",
+  "empty": "Nenhuma estadia ainda.",
+  "deleteTrip": "Excluir estadia",
+  "country": "País",
+  "goal": "Objetivo",
+  "goalStay": "Ficar abaixo",
+  "goalReach": "Atingir meta",
+  "addCountry": "Adicionar país",
+  "noMatch": "Nenhum país encontrado",
+  "year": "Ano",
+  "starts": "Início",
+  "tripDays": {
+    "one": "{n} dia",
+    "other": "{n} dias",
+    "many": "{n} dias"
+  },
+  "remaining": {
+    "one": "{n} dia restante",
+    "other": "{n} dias restantes",
+    "many": "{n} dias restantes"
+  },
+  "atLimit": "No limite",
+  "needed": {
+    "one": "Ainda falta {n} dia",
+    "other": "Ainda faltam {n} dias",
+    "many": "Ainda faltam {n} dias"
+  },
+  "reachedTarget": "Meta atingida",
+  "overBy": {
+    "one": "{n} dia acima do limite",
+    "other": "{n} dias acima do limite",
+    "many": "{n} dias acima do limite"
+  },
+  "hintStart": "Toque no dia em que uma estadia na Nova Zelândia começou e depois no dia em que terminou.",
+  "inTrip": "na Nova Zelândia",
+  "title": "Nova Zelândia",
+  "checkOn": "Data do pedido",
+  "yearsCaption": "Contam os cinco anos anteriores a esta data, cada um de {from} a {to}.",
+  "yearShortStatus": "Um ano ficou abaixo"
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>S</span><span>T</span><span>Q</span><span>Q</span><span>S</span><span>S</span><span>D</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>Linha do tempo</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Acompanhar no AtlasDays</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="embed-presence-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="embed-presence-import-title">Acompanhar no AtlasDays</p>
+            <p class="cal-dialog-sub">Continue contando seus dias enquanto viaja. App gratuito para iPhone e iPad.</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>Verifique se o AtlasDays está instalado no seu iPhone ou iPad</strong><span>Grátis na App Store.</span></li>
+            <li><strong>Escaneie o código QR para carregar todas as viagens no AtlasDays</strong><span>Confira e toque em Importar.</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>Baixe o AtlasDays</strong><span>Grátis na App Store. Já tem o app? Pule para o passo 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>Abra suas estadias no app</strong><span>Confira e toque em Importar. Nada é salvo antes disso.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Abrir no AtlasDays</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>Baixe o AtlasDays</strong><span>Grátis na App Store, para iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>Importe suas estadias com um arquivo</strong><span>São estadias demais para caber em um link. Baixe o arquivo e abra-o no iPhone com o AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Baixar arquivo</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Baixar as viagens em um arquivo CSV</button><span data-cal-downloaded hidden>Abra este arquivo no iPhone com o AtlasDays.</span></p>
+          <button type="button" data-cal-close>Fechar</button>
+        </div>
+      </dialog>
+    </div>
+    <p class="cal-private">Tudo fica no navegador: os dados que você informa não são enviados nem salvos.</p>
+
     <h2 id="al-m-da-contagem-de-dias">Além da contagem de dias</h2>
     <p>A presença é uma exigência entre várias. A concessão da cidadania também depende de boa conduta, de conhecimento suficiente de inglês e da intenção de continuar morando na Nova Zelândia, e o tempo passado no exterior a serviço da Coroa para o governo neozelandês pode contar como presença. A residência fiscal é uma questão separada, decidida por uma contagem própria, descrita em <a href="/pt/learn/new-zealand-183-day-tax-residency">a regra dos 183 dias de residência fiscal na Nova Zelândia</a>. Se as suas datas ficam perto de qualquer um dos limites, ou se o seu status de residência mudou no meio dos cinco anos, vale conferir a cronologia exata com um consultor antes de fazer o pedido.</p>
 
@@ -259,7 +357,7 @@
         <img class="logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="Logo do AtlasDays" width="52" height="52" />
       </span>
       <h2>O AtlasDays acompanha a exigência de 1.350 dias de presença da Nova Zelândia automaticamente</h2>
-      <p>Registre suas viagens uma vez. O controle Presença para a cidadania neozelandesa conta os seus dias na Nova Zelândia em uma janela móvel de 60 meses, de forma privada no seu iPhone, e avisa quando você chega a 1.350. O AtlasDays acompanha o total de 1.350 dias; a condição dos 240 dias em cada ano você verifica por conta própria com a calculadora de presença, por enquanto.</p>
+      <p>Registre suas viagens uma vez. O controle Presença para a cidadania neozelandesa conta os seus dias na Nova Zelândia em uma janela móvel de 60 meses, de forma privada no seu iPhone, e verifica também os 240 dias de cada ano. Ele mostra o primeiro dia em que você pode fazer o pedido e avisa quando uma viagem planejada deixaria um ano abaixo do mínimo. Informe a data em que você recebeu o visto de residente, e os dias anteriores ficam fora da contagem.</p>
       <a class="cta-btn" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">
         <svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
         Obter o AtlasDays
@@ -331,6 +429,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"Abrir o menu de navegação","menuClose":"Fechar o menu de navegação"};</script>
   <script src="../../assets/js/navigation.js?v=20261005a"></script>
+  <script defer src="../../assets/js/rules/presence.js?v=20261007f"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261007c"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

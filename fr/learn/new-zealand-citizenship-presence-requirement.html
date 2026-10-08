@@ -126,6 +126,7 @@
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261006a" />
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261006a" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261007b" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Aller au contenu</a>
@@ -199,6 +200,7 @@
       <ul>
         <li><a href="#la-r-gle">La règle</a></li>
         <li><a href="#comment-le-compter">Comment le compter</a></li>
+        <li><a href="#calculator">Calculateur de présence pour la citoyenneté néo-zélandaise</a></li>
         <li><a href="#au-del-du-d-compte-des-jours">Au-delà du décompte des jours</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
@@ -250,6 +252,102 @@
       <p>La demande échoue malgré tout à la condition de présence, parce que le troisième bloc ne compte que 200 jours et qu’il lui en manque 40 pour atteindre 240. Rien dans les quatre autres années ne corrige cela.</p>
     </div>
 
+    <h2 id="calculator">Calculateur de présence pour la citoyenneté néo-zélandaise</h2>
+    <p>Touchez les dates de vos séjours en Nouvelle-Zélande depuis l’obtention de votre visa de résident, puis choisissez la date à laquelle vous prévoyez de déposer votre demande. Le calculateur vérifie à la fois les 1 350 jours et les 240 jours de chaque année.</p>
+    <div class="daycal" id="embed-presence" data-day-calendar="presence" data-cal-preset="{&quot;settings&quot;:{&quot;country&quot;:&quot;NZ&quot;,&quot;need&quot;:1350,&quot;perYear&quot;:240,&quot;before&quot;:true,&quot;note&quot;:&quot;NZ citizenship calculator&quot;},&quot;lock&quot;:[],&quot;link&quot;:&quot;citizenship-nz&quot;}">
+      <script type="application/json" data-cal-strings>
+{
+  "hintEnd": "Touchez maintenant l’autre extrémité du séjour.",
+  "hintSelected": "Faites glisser l’une des extrémités du séjour pour modifier ses dates, ou supprimez-le ci-dessous.",
+  "pending": "début d’un nouveau séjour",
+  "empty": "Aucun séjour pour l’instant.",
+  "deleteTrip": "Supprimer le séjour",
+  "country": "Pays",
+  "goal": "Objectif",
+  "goalStay": "Rester en dessous",
+  "goalReach": "Atteindre l’objectif",
+  "addCountry": "Ajouter un pays",
+  "noMatch": "Aucun pays correspondant",
+  "year": "Année",
+  "starts": "Début",
+  "tripDays": {
+    "one": "{n} jour",
+    "many": "{n} jours",
+    "other": "{n} jours"
+  },
+  "remaining": {
+    "one": "Encore {n} jour",
+    "many": "Encore {n} jours",
+    "other": "Encore {n} jours"
+  },
+  "atLimit": "Limite atteinte",
+  "needed": {
+    "one": "Encore {n} jour nécessaire",
+    "many": "Encore {n} jours nécessaires",
+    "other": "Encore {n} jours nécessaires"
+  },
+  "reachedTarget": "Objectif atteint",
+  "overBy": {
+    "one": "Dépassement de {n} jour",
+    "many": "Dépassement de {n} jours",
+    "other": "Dépassement de {n} jours"
+  },
+  "hintStart": "Touchez le jour où un séjour en Nouvelle-Zélande a commencé, puis celui où il s’est terminé.",
+  "inTrip": "en Nouvelle-Zélande",
+  "title": "Nouvelle-Zélande",
+  "checkOn": "Date de la demande",
+  "yearsCaption": "Les cinq années qui précèdent cette date comptent, chacune du {from} au {to}.",
+  "yearShortStatus": "Une année est insuffisante"
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>Chronologie</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Suivre ces séjours dans AtlasDays</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="embed-presence-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="embed-presence-import-title">Suivre ces séjours dans AtlasDays</p>
+            <p class="cal-dialog-sub">Continuez à compter vos jours en voyage. App gratuite pour iPhone et iPad.</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>Assurez-vous d’avoir AtlasDays sur votre iPhone ou iPad</strong><span>Gratuit sur l’App Store.</span></li>
+            <li><strong>Scannez le code QR pour charger tous les voyages dans AtlasDays</strong><span>Vérifiez-les, puis touchez « Importer ».</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>Téléchargez AtlasDays</strong><span>Gratuit sur l’App Store. Vous l’avez déjà ? Passez à l’étape 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>Ouvrez vos séjours dans l’app</strong><span>Vérifiez-les, puis touchez « Importer ». Rien n’est enregistré avant.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Ouvrir dans AtlasDays</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>Téléchargez AtlasDays</strong><span>Gratuit sur l’App Store, pour iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>Importez vos séjours avec un fichier</strong><span>Il y a trop de séjours pour qu’un lien puisse tous les transmettre. Téléchargez le fichier et ouvrez-le sur votre iPhone avec AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Télécharger le fichier</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Télécharger les voyages au format CSV</button><span data-cal-downloaded hidden>Ouvrez ce fichier sur votre iPhone avec AtlasDays.</span></p>
+          <button type="button" data-cal-close>Fermer</button>
+        </div>
+      </dialog>
+    </div>
+    <p class="cal-private">Tout reste dans votre navigateur : rien de ce que vous saisissez n’est envoyé ni enregistré.</p>
+
     <h2 id="au-del-du-d-compte-des-jours">Au-delà du décompte des jours</h2>
     <p>La présence est une condition parmi plusieurs. L’attribution de la citoyenneté dépend aussi de la bonne moralité, d’une connaissance suffisante de l’anglais et de l’intention de continuer à vivre en Nouvelle-Zélande, et le temps passé à l’étranger au service de la Couronne pour le gouvernement néo-zélandais peut compter comme présence. La résidence fiscale est une question distincte, tranchée par son propre décompte, décrite dans <a href="/fr/learn/new-zealand-183-day-tax-residency">la règle des 183 jours pour la résidence fiscale en Nouvelle-Zélande</a>. Si vos dates se situent près de l’un ou l’autre seuil, ou si votre statut de résidence a changé en cours de route, la chronologie exacte mérite d’être vérifiée avec un conseiller avant de déposer.</p>
 
@@ -259,7 +357,7 @@
         <img class="logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="Logo AtlasDays" width="52" height="52" />
       </span>
       <h2>AtlasDays suit automatiquement la condition de présence de 1 350 jours en Nouvelle-Zélande</h2>
-      <p>Enregistrez vos voyages une seule fois. Le suivi « Présence pour la citoyenneté néo-zélandaise » compte vos jours en Nouvelle-Zélande sur une fenêtre glissante de 60 mois, en privé sur votre iPhone, et vous dit quand vous atteignez 1 350. AtlasDays suit le total de 1 350 jours ; la condition des 240 jours dans chaque année, vous la vérifiez vous-même avec le calculateur de présence pour l’instant.</p>
+      <p>Enregistrez vos voyages une seule fois. Le suivi « Présence pour la citoyenneté néo-zélandaise » compte vos jours en Nouvelle-Zélande sur une fenêtre glissante de 60 mois, en privé sur votre iPhone, et vérifie aussi les 240 jours de chaque année. Il vous indique le premier jour où vous pouvez déposer votre demande et vous prévient quand un voyage prévu laisserait une année en dessous. Indiquez la date d’obtention de votre visa de résident, et les jours d’avant restent hors du décompte.</p>
       <a class="cta-btn" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">
         <svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
         Télécharger AtlasDays
@@ -331,6 +429,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"Ouvrir le menu de navigation","menuClose":"Fermer le menu de navigation"};</script>
   <script src="../../assets/js/navigation.js?v=20261005a"></script>
+  <script defer src="../../assets/js/rules/presence.js?v=20261007f"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261007c"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();
