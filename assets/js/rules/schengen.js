@@ -23,7 +23,8 @@
 
   var LIMIT = 90, WINDOW = 180;
   var SCHENGEN = ["AT", "BE", "BG", "HR", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IS", "IT", "LV", "LI",
-    "LT", "LU", "MC", "MT", "NL", "NO", "PL", "PT", "RO", "SK", "SI", "SM", "ES", "SE", "CH", "VA"];
+    "LT", "LU", "MC", "MT", "NL", "NO", "PL", "PT", "RO", "SK", "SI", "SM", "ES", "SE", "CH", "VA",
+    "GI"];
 
   function checkOn(c) {
     var iso = c.settings.checkOn;

@@ -45,7 +45,7 @@ These pages describe something scheduled to change. The tier cadence would revie
 | 2027-03-01 | 1 | [learn/get-official-entry-exit-records.html](/learn/get-official-entry-exit-records) | exact-date-required | 13 |
 | 2027-03-01 | 1 | [learn/japan-90-day-rule.html](/learn/japan-90-day-rule) | exact-date-required | 1 |
 | 2027-03-01 | 1 | [learn/prove-you-were-not-in-a-country.html](/learn/prove-you-were-not-in-a-country) | exact-date-required | 12 |
-| 2027-03-01 | 1 | [learn/schengen-countries-list-90-180-rule.html](/learn/schengen-countries-list-90-180-rule) | exact-date-required | 2 |
+| 2027-03-01 | 1 | [learn/schengen-countries-list-90-180-rule.html](/learn/schengen-countries-list-90-180-rule) | exact-date-required | 4 |
 | 2027-03-01 | 1 | [learn/schengen-rolling-window-walkthrough.html](/learn/schengen-rolling-window-walkthrough) | exact-date-required | 3 |
 | 2027-03-01 | 1 | [learn/schengen-single-entry-visa.html](/learn/schengen-single-entry-visa) | exact-date-required | 2 |
 | 2027-03-01 | 1 | [learn/turkiye-90-180-rule.html](/learn/turkiye-90-180-rule) | exact-date-required | 2 |
