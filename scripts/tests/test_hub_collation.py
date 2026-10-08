@@ -282,6 +282,18 @@ class SimplifiedChineseTests(unittest.TestCase):
         )
 
 
+class BatchTwoNamesTests(unittest.TestCase):
+    def test_new_chinese_country_names_have_readings(self):
+        for code, names in {
+            "zh-Hant": ["中國", "哈薩克", "拉脫維亞", "波多黎各（美國屬地）"],
+            "zh-Hans": ["中国", "哈萨克斯坦", "拉脱维亚", "波多黎各（美国属地）"],
+        }.items():
+            with self.subTest(code=code):
+                self.assertEqual(hub_collation.unresolved(names, code), [])
+        self.assertEqual(order(["拉脱维亚", "哈萨克斯坦", "中国"], "zh-Hans"),
+                         ["哈萨克斯坦", "拉脱维亚", "中国"])
+
+
 class MixedScriptTests(unittest.TestCase):
     def test_an_untranslated_english_row_still_compares(self):
         """A hub emits English for a row awaiting translation; it must sort."""

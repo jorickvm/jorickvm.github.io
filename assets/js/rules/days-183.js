@@ -66,7 +66,7 @@
 
     range: function (c) { return bounds(c); },
 
-    // ?country=BG&period=calendar|tax|rolling&start=07-01&resident=184
+    // ?country=BG&period=calendar|tax|rolling&start=07-01&resident=184&goal=stay|reach
     // (&limit=182 where the rule's number is not 183, Malaysia): an
     // article's link opens the calculator set to its own rule. `start` is the
     // tax year's first day (the latest one not after today); `resident` is
@@ -75,6 +75,8 @@
       var code = (q.get("country") || "").toUpperCase();
       if (!/^[A-Z]{2}$/.test(code) || c.allowed.indexOf(code) < 0) return null;
       var s = { country: code, linkedCountry: code };
+      var goal = q.get("goal");
+      if (goal === "stay" || goal === "reach") s.goal = goal;
       var period = q.get("period");
       if (period === "calendar" || period === "tax" || period === "rolling") s.periodType = period;
       var start = /^(\d\d)-(\d\d)$/.exec(q.get("start") || "");

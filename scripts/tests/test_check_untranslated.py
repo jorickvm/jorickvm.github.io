@@ -21,6 +21,22 @@ class CheckUntranslatedTests(unittest.TestCase):
         self.assertNotIn('Personal', runs)
 
 
+    def test_declared_english_hub_name_does_not_hide_untranslated_cells(self):
+        path = "learn/puerto-rico-183-day-bona-fide-residence.html"
+        name = "Puerto Rico (US territory)"
+        markup = ('<p>' + name + '</p><tr class="hub-row"><td><a href="/' +
+                  path.removesuffix(".html") + '">' + name +
+                  '</a></td><td>Calendar year</td></tr>')
+        records = {path: {"residency": {"name": name}}}
+        result = check.without_declared_english_hub_names(
+            markup, {"untranslated": [path]}, records)
+        self.assertEqual(result.count(name), 1)  # Prose outside the row is still checked.
+        self.assertIn("Calendar year", check.visible_runs(result))
+        self.assertIn('<a href="/' + path.removesuffix(".html") + '"></a>', result)
+        self.assertEqual(check.without_declared_english_hub_names(markup, {}, records), markup)
+        self.assertEqual(check.without_declared_english_hub_names(
+            markup, {"untranslated": [path]}, {}), markup)
+
     def test_brand_name_does_not_exempt_an_english_sentence(self) -> None:
         self.assertFalse(
             check.is_allowed("Get AtlasDays on the App Store")

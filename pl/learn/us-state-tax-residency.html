@@ -353,7 +353,7 @@
   <script>window.AtlasDaysNavStrings={"menuOpen":"Otwórz menu nawigacji","menuClose":"Zamknij menu nawigacji"};</script>
   <script src="../../assets/js/navigation.js?v=20261005a"></script>
   <script>window.AtlasDaysSearchStrings={"resultOne":"Wyniki: {count}","resultMany":"Wyniki: {count}","emptyHelp":"Brak pasującego artykułu pomocy. Wpisz nazwę funkcji, zadanie lub krótszą frazę.","emptyLearn":"Brak pasującej zasady lub przewodnika. Wpisz kraj, stan USA, region lub szerszy temat.","unavailable":"Wyszukiwanie jest niedostępne. Przejrzyj tematy poniżej."};</script>
-  <script src="../../assets/js/search.js?v=20261006b"></script>
+  <script src="../../assets/js/search.js?v=20261007a"></script>
 <script>
 (function () {
     var input = document.getElementById('hubSearch');
@@ -373,7 +373,7 @@
       var q = input.value.trim().toLowerCase();
       var shown = 0;
       rows.forEach(function (r) {
-        var match = !q || r.getAttribute('data-name').indexOf(q) !== -1;
+        var match = !q || (r.getAttribute('data-name') + ' ' + r.querySelector('a').textContent).toLowerCase().indexOf(q) !== -1;
         r.hidden = !match;
         if (match) shown++;
       });
