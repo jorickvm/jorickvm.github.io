@@ -72,7 +72,6 @@ These pages describe something scheduled to change. The tier cadence would revie
 | 2027-03-31 | 1 | [learn/spain-long-term-residence-eu-absence.html](/learn/spain-long-term-residence-eu-absence) | exact-date-required | 3 |
 | 2027-03-31 | 1 | [learn/switzerland-permit-absence.html](/learn/switzerland-permit-absence) | exact-date-required | 2 |
 | 2027-03-31 | 1 | [learn/travel-history-for-visa-applications.html](/learn/travel-history-for-visa-applications) | exact-date-required | 10 |
-| 2027-03-31 | 1 | [learn/uk-citizenship-absence-limits.html](/learn/uk-citizenship-absence-limits) | exact-date-required | 4 |
 | 2027-03-31 | 1 | [learn/uk-eta-vs-standard-visitor-visa.html](/learn/uk-eta-vs-standard-visitor-visa) | exact-date-required | 11 |
 | 2027-03-31 | 1 | [learn/us-green-card-absence-limits.html](/learn/us-green-card-absence-limits) | exact-date-required | 3 |
 | 2027-03-31 | 1 | [learn/us-naturalization-physical-presence.html](/learn/us-naturalization-physical-presence) | exact-date-required | 2 |
@@ -91,6 +90,7 @@ These pages describe something scheduled to change. The tier cadence would revie
 | 2027-05-01 | 1 | [learn/oman-residence-visa-6-months-outside.html](/learn/oman-residence-visa-6-months-outside) | exact-date-required | 1 |
 | 2027-05-01 | 1 | [learn/schengen-calculator.html](/learn/schengen-calculator) | exact-date-required | 3 |
 | 2027-05-01 | 1 | [learn/uae-residence-visa-6-months-outside.html](/learn/uae-residence-visa-6-months-outside) | exact-date-required | 1 |
+| 2027-05-01 | 1 | [learn/uk-citizenship-absence-limits.html](/learn/uk-citizenship-absence-limits) | exact-date-required | 4 |
 | 2027-05-01 | 1 | [learn/uk-ilr-absence-calculator.html](/learn/uk-ilr-absence-calculator) | exact-date-required | 2 |
 | 2027-05-01 | 1 | [learn/what-counts-as-a-day-for-visa-purposes.html](/learn/what-counts-as-a-day-for-visa-purposes) | exact-date-required | 21 |
 
