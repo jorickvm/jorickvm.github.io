@@ -9,20 +9,23 @@
   <meta name="theme-color" content="#101722" media="(prefers-color-scheme: dark)" />
   <link rel="canonical" href="https://atlasdays.app/steed/" />
   <title>Steed – Privacy and Support</title>
+  <link rel="preload" href="Nunito.ttf" as="font" type="font/ttf" crossorigin />
   <style>
+    /* Nunito, Steed's typeface, served from this folder (SIL Open Font License, OFL.txt). */
+    @font-face { font-family: "Nunito"; src: url("Nunito.ttf") format("truetype"); font-weight: 200 1000; font-display: swap; }
     :root { --bg: #FAFBFF; --card: #EDF1FA; --text: #141A24; --muted: #5C6273; --accent: #255DDD; color-scheme: light; }
     @media (prefers-color-scheme: dark) {
       :root { --bg: #101722; --card: #1A2333; --text: #EEF1F7; --muted: #9AA3B5; --accent: #88ABFF; color-scheme: dark; }
     }
     * { box-sizing: border-box; }
-    body { margin: 0; background: var(--bg); color: var(--text); font: 17px/1.55 ui-rounded, "SF Pro Rounded", -apple-system, system-ui, sans-serif; }
+    body { margin: 0; background: var(--bg); color: var(--text); font: 17px/1.55 "Nunito", ui-rounded, -apple-system, system-ui, sans-serif; }
     main { max-width: 680px; margin: 0 auto; padding: 48px 20px 64px; }
     header { text-align: center; margin-bottom: 36px; }
     header img { width: 132px; height: auto; }
-    h1 { font-size: 30px; margin: 18px 0 6px; }
+    h1 { font-size: 30px; font-weight: 700; margin: 18px 0 6px; }
     .lede { color: var(--muted); margin: 0; }
     section { background: var(--card); border-radius: 16px; padding: 4px 20px 8px; margin: 0 0 16px; }
-    h2 { font-size: 20px; margin: 18px 0 6px; }
+    h2 { font-size: 20px; font-weight: 700; margin: 18px 0 6px; }
     p, li { margin: 0 0 12px; }
     ul { padding-left: 20px; margin: 0 0 12px; }
     a { color: var(--accent); }
