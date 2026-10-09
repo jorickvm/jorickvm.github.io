@@ -906,6 +906,7 @@ BASELINE_HAND_AUTHORED = {
     "learn/how-to-use-atlasdays.html",
     "learn/icloud-sync-travel-tracking.html",
     "shift/privacy/index.html",
+    "steed/index.html",
 }
 
 
