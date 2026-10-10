@@ -24,7 +24,7 @@ Besides those, the four in-app alias stubs under `app/` (`changelog/`, `help/`, 
 - `learn/` long-form articles, `help/` how-to guides — both generated, see above
 - `_site-src/` the sources those are generated from
 - `assets/` images and CSS; `scripts/` Python dev tooling (like everything tracked in a Pages repo it is technically fetchable at atlasdays.app/scripts/…, just never linked)
-- `shift/privacy/` the privacy page for **Shift**, a different iOS app of Jorick's (`~/Projects/Shift/`). Hand-authored, outside the build, and deliberately *not* AtlasDays-branded: no site header, no legal-page layout, no shared tokens, no brand chrome. The rules live in `~/Projects/Shift/Shift/CLAUDE.md`, which names that repo's `Shift/Views/PrivacyPolicyView.swift` as the source of truth for the policy's claims.
+- `shift/` and `<code>/shift/`: frozen legacy copies of the privacy and support pages for **Shift**, a different iOS app of Jorick's (`~/Projects/Shift/`). The live pages are on bysteed.com (`~/Projects/bysteed/shift/`). These copies stay up only until Jorick removes them (planned for about November 2026); do not edit them, and do not add new ones.
 
 ## This repo is public — internal docs are git-ignored on purpose
 

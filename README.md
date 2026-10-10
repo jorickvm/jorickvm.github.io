@@ -16,7 +16,7 @@ Genuinely hand-authored: the `app/*/index.html` alias stubs, the in-app link hop
 
 ### The Shift folders
 
-`shift/` and the `<code>/shift/` folders hold the privacy and support pages for Shift, a separate iOS app. They sit outside the build and deliberately do not use the AtlasDays design. Shift ships in more languages than this site, so some root folders (`it/`, `ka/`, `pt-PT/`, …) exist only for Shift.
+`shift/` and the `<code>/shift/` folders are frozen legacy copies of the privacy and support pages for Shift, a separate iOS app. They sit outside the build and are `noindex`. The live pages moved to bysteed.com; these stay only until they are removed (planned for about November 2026), and some root folders (`it/`, `ka/`, `pt-PT/`, …) exist only for them.
 
 `changelog.html` is shared with the AtlasDays app repo, which owns the release notes. `scripts/sync_changelog.py` replaces only the contents of `<div class="release-stack">`, so a release updates the cards and leaves this repo's header, footer, social metadata, and theme bootstrap intact.
 
