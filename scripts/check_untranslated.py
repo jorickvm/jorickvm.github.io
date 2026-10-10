@@ -54,6 +54,8 @@ PARTIAL_RUN_WORDS = 6
 BRAND_ALLOW = (
     "AtlasDays", "App Store", "iPhone", "iPad", "iCloud", "Apple", "Flighty",
     "CSV", "PDF", "Excel", "iOS", "Stage Manager", "Schengen",
+    # The footer link to bysteed.com, named after that English-only site.
+    "Apps by Steed",
 )
 
 # Text that is correctly identical in every language.
