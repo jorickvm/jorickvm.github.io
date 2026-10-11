@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>AtlasDays for iPhone Duo</title>
+  <meta name="description" content="A preview of AtlasDays on iPhone Duo, closed and opened." />
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/brand/favicon.png" />
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #05080d;
+      --text: #f2f5f8;
+      --muted: #9aa6b4;
+      --line: rgba(255, 255, 255, 0.10);
+      --blue: #4f9dee;
+      --max: 1120px;
+      --gutter: 20px;
+    }
+    * { box-sizing: border-box; }
+    html { background: var(--bg); }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(1200px 600px at 50% -200px, rgba(79, 157, 238, 0.18), transparent 70%),
+        var(--bg);
+      color: var(--text);
+      font: 17px/1.55 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+    .skip-link { position: absolute; left: -9999px; }
+    .skip-link:focus { left: var(--gutter); top: 12px; background: var(--text); color: var(--bg); padding: 8px 12px; border-radius: 8px; }
+    a { color: var(--blue); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
+
+    header.brand { padding: 28px 0 0; }
+    header.brand a { display: inline-flex; align-items: center; gap: 10px; color: var(--text); font-weight: 600; font-size: 17px; }
+    header.brand img { width: 32px; height: 32px; border-radius: 8px; }
+
+    .hero { text-align: center; padding: 64px 0 24px; }
+    .eyebrow { color: var(--blue); font-weight: 600; font-size: 15px; letter-spacing: 0.02em; margin: 0 0 12px; }
+    h1 { font-size: clamp(36px, 6vw, 60px); line-height: 1.05; letter-spacing: -0.02em; margin: 0 0 18px; }
+    .lede { color: var(--muted); font-size: clamp(18px, 2.2vw, 21px); max-width: 660px; margin: 0 auto; }
+
+    section { padding: 56px 0; border-top: 1px solid var(--line); }
+    section:first-of-type { border-top: 0; }
+    h2 { font-size: clamp(26px, 3.4vw, 36px); line-height: 1.15; letter-spacing: -0.015em; margin: 0 0 12px; text-align: center; }
+    .section-copy { color: var(--muted); max-width: 640px; margin: 0 auto 36px; text-align: center; }
+
+    figure { margin: 0; }
+    figure img { display: block; width: 100%; height: auto; }
+    figcaption { color: var(--muted); font-size: 14px; text-align: center; margin-top: 12px; }
+
+    /* Closed beside opened at one scale: the frames are 1574 and 3093 px wide at the
+       same pixel density, so the closed width is 0.509 of the opened one. */
+    .pair { display: flex; align-items: flex-end; justify-content: center; gap: 4%; }
+    .pair .closed { flex: 0 0 auto; width: 30.5%; }
+    .pair .open { flex: 0 0 auto; width: 60%; }
+    .single { max-width: 900px; margin: 0 auto; }
+    .single.portrait { max-width: 520px; }
+
+    .facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; max-width: 900px; margin: 8px auto 0; }
+    .fact { background: rgba(255, 255, 255, 0.04); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; }
+    .fact h3 { font-size: 17px; margin: 0 0 6px; }
+    .fact p { color: var(--muted); font-size: 15px; margin: 0; }
+
+    .about { max-width: 680px; margin: 0 auto; }
+    .about p { margin: 0 0 16px; }
+    .about .muted { color: var(--muted); }
+
+    footer { padding: 40px 0 56px; color: var(--muted); font-size: 14px; text-align: center; border-top: 1px solid var(--line); }
+
+    @media (max-width: 720px) {
+      .pair { flex-direction: column; align-items: center; gap: 28px; }
+      .pair .closed { width: 51%; }
+      .pair .open { width: 100%; }
+      section { padding: 44px 0; }
+      .hero { padding-top: 44px; }
+      .facts { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+  <div class="wrap">
+    <header class="brand">
+      <a href="/"><img src="/assets/brand/logo_dark.png?v=20260325a" alt="" width="1024" height="1024" />AtlasDays</a>
+    </header>
+
+    <main id="main-content">
+      <div class="hero">
+        <p class="eyebrow">Coming in the next update</p>
+        <h1>AtlasDays for iPhone&nbsp;Duo</h1>
+        <p class="lede">Closed, it is the iPhone app people know. Open it, and your trips and your calendar sit side by side.</p>
+      </div>
+
+      <section aria-labelledby="timeline">
+        <h2 id="timeline">Unfold and keep your place</h2>
+        <p class="section-copy">The Timeline splits on the crease: the calendar on the left, trips on the right. The right pane continues what the closed display showed, so unfolding never jumps or reloads. Fold it again and the right pane is what stays.</p>
+        <div class="pair">
+          <figure class="closed">
+            <img src="/assets/press/iphone-duo/timeline-closed.webp" alt="AtlasDays Timeline on the closed iPhone Duo: a list of trips with flags, dates and day counts" width="760" height="1059" />
+            <figcaption>Closed</figcaption>
+          </figure>
+          <figure class="open">
+            <img src="/assets/press/iphone-duo/timeline-open.webp" alt="AtlasDays Timeline on the opened iPhone Duo in landscape: the month calendar on the left and the trip list on the right" width="1600" height="1162" />
+            <figcaption>Opened</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section aria-labelledby="dashboard">
+        <h2 id="dashboard">Room for the whole picture</h2>
+        <p class="section-copy">On the opened display, trackers sit side by side and every statistic gets its own bar: countries, US states, days at home and abroad, continents.</p>
+        <div class="pair">
+          <figure class="closed">
+            <img src="/assets/press/iphone-duo/dashboard-closed.webp" alt="AtlasDays dashboard on the closed iPhone Duo with a Georgia residency tracker and a Schengen tracker" width="760" height="1059" />
+            <figcaption>Closed</figcaption>
+          </figure>
+          <figure class="open">
+            <img src="/assets/press/iphone-duo/dashboard-open.webp" alt="AtlasDays dashboard on the opened iPhone Duo in landscape with two trackers side by side and four statistics with progress bars" width="1600" height="1162" />
+            <figcaption>Opened</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section aria-labelledby="forecast">
+        <h2 id="forecast">Know where you stand before you go</h2>
+        <p class="section-copy">Trackers forecast your planned trips. Here it is the Schengen 90/180 rule, with the dashed line showing the days still to come.</p>
+        <figure class="single portrait">
+          <img src="/assets/press/iphone-duo/tracker-open.webp" alt="Schengen tracker on the opened iPhone Duo in portrait: 85 of 90 days used, a chart with a dashed forecast, and the trips that count" width="1100" height="1514" />
+          <figcaption>Opened, portrait</figcaption>
+        </figure>
+      </section>
+
+      <section aria-labelledby="globe">
+        <h2 id="globe">Every country you've been to</h2>
+        <p class="section-copy">The 3D globe fills the opened display and turns under your finger. AtlasDays can build it for you from the photos already in your library.</p>
+        <figure class="single">
+          <img src="/assets/press/iphone-duo/globe-open.webp" alt="A 3D globe on the opened iPhone Duo with visited countries in Europe, Africa and Asia highlighted in blue" width="1600" height="1162" />
+          <figcaption>Opened, landscape</figcaption>
+        </figure>
+      </section>
+
+      <section aria-labelledby="built">
+        <h2 id="built">Built for the fold, not stretched to it</h2>
+        <p class="section-copy">AtlasDays reads the device's posture and window, not the device type, so every screen gets the layout that fits it.</p>
+        <div class="facts">
+          <div class="fact">
+            <h3>Follows the hinge</h3>
+            <p>Partly open in landscape, the panes divide on the crease, so opening the last few degrees never reflows the calendar.</p>
+          </div>
+          <div class="fact">
+            <h3>Works with the side rail</h3>
+            <p>On the closed display, toolbar buttons move into the system rail one by one, and content stops where the rail begins.</p>
+          </div>
+          <div class="fact">
+            <h3>Every orientation when open</h3>
+            <p>Closed, it stays portrait like an iPhone. Opened, it turns freely, and folding never forces a rotation.</p>
+          </div>
+          <div class="fact">
+            <h3>Settings as a sidebar</h3>
+            <p>Opened, Settings becomes a sidebar with a detail pane, the way Apple's own Settings works.</p>
+          </div>
+        </div>
+      </section>
+
+      <section aria-labelledby="about">
+        <h2 id="about">About AtlasDays</h2>
+        <div class="about">
+          <p>AtlasDays answers a question every traveler is eventually asked: where were you, and for how many days? It logs trips by country and by US state, counts days against rules like Schengen 90/180, tax residency and the US Substantial Presence Test, adds trips automatically when you cross a border, and builds past trips from your photos.</p>
+          <p>Unlimited trip logging, auto-detect, every import, the dashboard statistics and one tracker are free. There are no ads and no account, and your trips stay on your device and in your own iCloud.</p>
+          <p class="muted">Made by <a href="/about">Jorick</a>, an independent developer in Tbilisi. Questions or a TestFlight invite: <a href="mailto:hello@atlasdays.app">hello@atlasdays.app</a>. AtlasDays is on the <a href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=press-duo&amp;mt=8">App Store</a>.</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <footer>
+    <div class="wrap">Screenshots from the iPhone Duo build of AtlasDays, in Apple's iPhone Duo device frames.</div>
+  </footer>
+
+  <!-- Cloudflare Web Analytics -->
+  <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
+  (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();
+  </script>
+  <!-- End Cloudflare Web Analytics -->
+</body>
+</html>

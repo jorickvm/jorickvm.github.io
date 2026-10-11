@@ -12,7 +12,7 @@ This is the one thing to know before editing anything. Pages under `learn/` and 
 
 All ten root pages are generated, `index.html`, `404.html`, and `support.html` included; they moved into `pages.json` when Dutch shipped, because a page that cannot be translated cannot be localized.
 
-Genuinely hand-authored: the `app/*/index.html` alias stubs, the in-app link hop `app/open/index.html` (the app opens Learn articles through it so Cloudflare can tell in-app visits apart), the three legacy meta-refresh redirect stubs in `learn/` (`day-limits.html`, `how-to-use-atlasdays.html`, `icloud-sync-travel-tracking.html`), and the Shift pages (below). Merged Learn pages in `_site-src/data/redirects.json` generate redirect stubs for English and every locale; `build_site.py --check` covers them.
+Genuinely hand-authored: the `app/*/index.html` alias stubs, the in-app link hop `app/open/index.html` (the app opens Learn articles through it so Cloudflare can tell in-app visits apart), the three legacy meta-refresh redirect stubs in `learn/` (`day-limits.html`, `how-to-use-atlasdays.html`, `icloud-sync-travel-tracking.html`), the Shift pages (below), and the press pages under `press/` (noindex, linked from nowhere on the site; `press/iphone-duo/` is the App Store featuring nomination's showcase, with its images in `assets/press/iphone-duo/`). Merged Learn pages in `_site-src/data/redirects.json` generate redirect stubs for English and every locale; `build_site.py --check` covers them.
 
 ### The Shift folders
 
