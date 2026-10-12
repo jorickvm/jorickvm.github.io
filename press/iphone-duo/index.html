@@ -59,7 +59,6 @@
     .pair .closed { flex: 0 0 auto; width: 30.5%; }
     .pair .open { flex: 0 0 auto; width: 60%; }
     .single { max-width: 900px; margin: 0 auto; }
-    .single.portrait { max-width: 520px; }
 
     .facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; max-width: 900px; margin: 8px auto 0; }
     .fact { background: rgba(255, 255, 255, 0.04); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; }
@@ -128,11 +127,17 @@
 
       <section aria-labelledby="forecast">
         <h2 id="forecast">Know where you stand before you go</h2>
-        <p class="section-copy">Trackers forecast your planned trips. Here it is the Schengen 90/180 rule, with the dashed line showing the days still to come.</p>
-        <figure class="single portrait">
-          <img src="/assets/press/iphone-duo/tracker-open.webp" alt="Schengen tracker on the opened iPhone Duo in portrait: 85 of 90 days used, a chart with a dashed forecast, and the trips that count" width="1100" height="1514" />
-          <figcaption>Opened, portrait</figcaption>
-        </figure>
+        <p class="section-copy">Trackers forecast your planned trips. Here it is the Schengen 90/180 rule, with the dashed line showing the days still to come. Opened, the summary and chart sit beside the trips that count.</p>
+        <div class="pair">
+          <figure class="closed">
+            <img src="/assets/press/iphone-duo/tracker-closed.webp" alt="Schengen tracker on the closed iPhone Duo: 85 of 90 days used and a chart with a dashed forecast" width="760" height="1059" />
+            <figcaption>Closed</figcaption>
+          </figure>
+          <figure class="open">
+            <img src="/assets/press/iphone-duo/tracker-open.webp" alt="Schengen tracker on the opened iPhone Duo in landscape: the summary and forecast chart on the left, the trips that count on the right" width="1600" height="1162" />
+            <figcaption>Opened</figcaption>
+          </figure>
+        </div>
       </section>
 
       <section aria-labelledby="globe">
