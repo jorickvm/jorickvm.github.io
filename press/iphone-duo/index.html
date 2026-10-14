@@ -44,6 +44,8 @@
     h1 { font-size: clamp(36px, 6vw, 60px); line-height: 1.05; letter-spacing: -0.02em; margin: 0 0 18px; }
     .byline { color: var(--muted); font-size: 15px; margin: 20px 0 0; }
     .byline a { color: inherit; }
+    .hero-pair { margin-top: 48px; }
+    .fact code { font: 14px ui-monospace, "SF Mono", Menlo, monospace; color: var(--text); }
     .lede { color: var(--muted); font-size: clamp(18px, 2.2vw, 21px); max-width: 660px; margin: 0 auto; }
 
     section { padding: 56px 0; border-top: 1px solid var(--line); }
@@ -93,10 +95,20 @@
 
     <main id="main-content">
       <div class="hero">
-        <p class="eyebrow">Coming in the next update</p>
+        <p class="eyebrow">Coming in AtlasDays 2.7</p>
         <h1>AtlasDays for iPhone&nbsp;Duo</h1>
-        <p class="lede">Closed, it is the iPhone app people know. Open it, and your trips and your calendar sit side by side.</p>
-        <p class="byline">By <a href="/about">Jorick van Meijeren</a> · Updated <time datetime="2026-10-13">13 October 2026</time></p>
+        <p class="lede">Open it, and your trackers, your statistics and your map sit side by side, right where you left them.</p>
+        <p class="byline">By <a href="/about">Jorick van Meijeren</a> · Updated <time datetime="2026-10-14">14 October 2026</time></p>
+        <div class="pair hero-pair">
+          <figure class="closed">
+            <img src="/assets/press/iphone-duo/dashboard-closed.webp" alt="AtlasDays dashboard on the closed iPhone Duo: a Schengen tracker with 85 of 90 days used, four statistics and a world map of visited countries" width="760" height="1061" />
+            <figcaption>Closed</figcaption>
+          </figure>
+          <figure class="open">
+            <img src="/assets/press/iphone-duo/dashboard-open.webp" alt="AtlasDays dashboard on the opened iPhone Duo in landscape: four statistics and a world map of visited countries in the left column, Schengen, Georgia and United Kingdom trackers in the right" width="1600" height="1147" />
+            <figcaption>Opened</figcaption>
+          </figure>
+        </div>
       </div>
 
       <section aria-labelledby="timeline">
@@ -114,20 +126,6 @@
         </div>
       </section>
 
-      <section aria-labelledby="dashboard">
-        <h2 id="dashboard">Room for the whole picture</h2>
-        <p class="section-copy">Closed, your trackers, the statistics and the map share one column. Open it and the dashboard splits along the fold: your trackers on one side, the statistics and the map on the other.</p>
-        <div class="pair">
-          <figure class="closed">
-            <img src="/assets/press/iphone-duo/dashboard-closed.webp" alt="AtlasDays dashboard on the closed iPhone Duo: a Schengen tracker with 85 of 90 days used, four statistics and a world map of visited countries" width="760" height="1061" />
-            <figcaption>Closed</figcaption>
-          </figure>
-          <figure class="open">
-            <img src="/assets/press/iphone-duo/dashboard-open.webp" alt="AtlasDays dashboard on the opened iPhone Duo in landscape: three trackers in the left column, four statistics and a world map of visited countries in the right" width="1600" height="1147" />
-            <figcaption>Opened</figcaption>
-          </figure>
-        </div>
-      </section>
 
       <section aria-labelledby="forecast">
         <h2 id="forecast">Know where you stand before you go</h2>
@@ -153,28 +151,14 @@
         </figure>
       </section>
 
-      <section aria-labelledby="settings">
-        <h2 id="settings">Settings, the way Apple's own works</h2>
-        <p class="section-copy">Closed, Settings is the familiar list. Opened, it becomes a sidebar with the page you picked beside it, so changing auto-detect or your home country never takes you away from the list.</p>
-        <div class="pair">
-          <figure class="closed">
-            <img src="/assets/press/iphone-duo/settings-closed.webp" alt="AtlasDays Settings on the closed iPhone Duo: Tracking, Appearance and Data sections in a list" width="760" height="1061" />
-            <figcaption>Closed</figcaption>
-          </figure>
-          <figure class="open">
-            <img src="/assets/press/iphone-duo/settings-open.webp" alt="AtlasDays Settings on the opened iPhone Duo in landscape: the settings list as a sidebar on the left and the Auto-Detect Trips page on the right" width="1600" height="1147" />
-            <figcaption>Opened</figcaption>
-          </figure>
-        </div>
-      </section>
 
       <section aria-labelledby="built">
         <h2 id="built">Built for the fold, not stretched to it</h2>
         <p class="section-copy">AtlasDays reads the device's posture and window, not the device type, so every screen gets the layout that fits it.</p>
         <div class="facts">
           <div class="fact">
-            <h3>Follows the hinge</h3>
-            <p>Partly open in landscape, the panes divide on the crease, so opening the last few degrees never reflows the calendar.</p>
+            <h3>Reads the hinge</h3>
+            <p>AtlasDays uses <code>UIHingeInteraction</code> from iOS&nbsp;27.1. Partly open in landscape, the panes divide on the crease, so opening the last few degrees never reflows the calendar.</p>
           </div>
           <div class="fact">
             <h3>Works with the side rail</h3>
@@ -185,8 +169,8 @@
             <p>Closed, it stays portrait like an iPhone. Opened, it turns freely, and folding never forces a rotation.</p>
           </div>
           <div class="fact">
-            <h3>Globes centered on the content</h3>
-            <p>On the closed display, the 3D globes in onboarding and import center on the content beside the side rail, not on the whole display.</p>
+            <h3>Settings as a sidebar</h3>
+            <p>Closed, Settings is the familiar list. Opened, the list becomes a sidebar with the page you picked beside it.</p>
           </div>
         </div>
       </section>
