@@ -44,7 +44,7 @@
     h1 { font-size: clamp(36px, 6vw, 60px); line-height: 1.05; letter-spacing: -0.02em; margin: 0 0 18px; }
     .byline { color: var(--muted); font-size: 15px; margin: 20px 0 0; }
     .byline a { color: inherit; }
-    .hero-pair { margin-top: 48px; }
+    .hero-media { margin-top: 48px; }
     .fact code { font: 14px ui-monospace, "SF Mono", Menlo, monospace; color: var(--text); }
     .lede { color: var(--muted); font-size: clamp(18px, 2.2vw, 21px); max-width: 660px; margin: 0 auto; }
 
@@ -54,7 +54,7 @@
     .section-copy { color: var(--muted); max-width: 640px; margin: 0 auto 36px; text-align: center; }
 
     figure { margin: 0; }
-    figure img { display: block; width: 100%; height: auto; }
+    figure img, figure video { display: block; width: 100%; height: auto; }
     figcaption { color: var(--muted); font-size: 14px; text-align: center; margin-top: 12px; }
 
     /* Closed beside opened at one scale: the images are cropped to the device
@@ -97,9 +97,21 @@
       <div class="hero">
         <p class="eyebrow">Coming in AtlasDays 2.7</p>
         <h1>AtlasDays for iPhone&nbsp;Duo</h1>
-        <p class="lede">Open it, and your trackers, your statistics and your map sit side by side, right where you left them.</p>
-        <p class="byline">By <a href="/about">Jorick van Meijeren</a> · Updated <time datetime="2026-10-14">14 October 2026</time></p>
-        <div class="pair hero-pair">
+        <p class="lede">Unfold it, and AtlasDays picks up right where you left off: your trackers, your trips and your calendar, side by side.</p>
+        <p class="byline">By <a href="/about">Jorick van Meijeren</a> · Updated <time datetime="2026-10-15">15 October 2026</time></p>
+        <figure class="single hero-media">
+          <video class="unfold" autoplay muted loop playsinline preload="metadata" poster="/assets/press/iphone-duo/unfold-poster.webp" width="1200" height="906" aria-label="AtlasDays on iPhone Duo: the Dashboard and then the Timeline, each unfolding from the closed display to the opened one and folding back">
+            <source src="/assets/press/iphone-duo/unfold.mp4" type="video/mp4" />
+          </video>
+          <figcaption>Unfolded and folded in the iPhone Duo simulator</figcaption>
+        </figure>
+      </div>
+
+
+      <section aria-labelledby="dashboard">
+        <h2 id="dashboard">Room for the whole picture</h2>
+        <p class="section-copy">Closed, your trackers, the statistics and the map share one column. Open it and the Dashboard splits along the fold: the statistics and the map on the left, your trackers on the right, where the closed display left them.</p>
+        <div class="pair">
           <figure class="closed">
             <img src="/assets/press/iphone-duo/dashboard-closed.webp" alt="AtlasDays dashboard on the closed iPhone Duo: a Schengen tracker with 85 of 90 days used, four statistics and a world map of visited countries" width="760" height="1061" />
             <figcaption>Closed</figcaption>
@@ -109,11 +121,11 @@
             <figcaption>Opened</figcaption>
           </figure>
         </div>
-      </div>
+      </section>
 
       <section aria-labelledby="timeline">
-        <h2 id="timeline">Unfold and keep your place</h2>
-        <p class="section-copy">The Timeline splits on the crease: the calendar on the left, trips on the right. The right pane continues what the closed display showed, so unfolding never jumps or reloads. Fold it again and the right pane is what stays.</p>
+        <h2 id="timeline">Your calendar beside your trips</h2>
+        <p class="section-copy">The Timeline splits on the crease: the calendar on the left, trips on the right. The right pane continues what the closed display showed, and when you fold it again, the right pane is what stays.</p>
         <div class="pair">
           <figure class="closed">
             <img src="/assets/press/iphone-duo/timeline-closed.webp" alt="AtlasDays Timeline on the closed iPhone Duo: a list of trips with flags, dates and day counts" width="760" height="1061" />
@@ -186,8 +198,15 @@
     </main>
   </div>
 
+  <script>
+    // Respect Reduce Motion: no autoplay, the viewer starts it.
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      for (const v of document.querySelectorAll('video.unfold')) { v.pause(); v.removeAttribute('autoplay'); v.controls = true; }
+    }
+  </script>
+
   <footer>
-    <div class="wrap">Screenshots from the iPhone Duo build of AtlasDays, in Apple's iPhone Duo device frames.</div>
+    <div class="wrap">Screenshots from the iPhone Duo build of AtlasDays, in Apple's iPhone Duo device frames. The video is recorded in Xcode's Device Hub.</div>
   </footer>
 
   <!-- Cloudflare Web Analytics -->
