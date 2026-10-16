@@ -39,7 +39,7 @@
     header.brand a { display: inline-flex; align-items: center; gap: 10px; color: var(--text); font-weight: 600; font-size: 17px; }
     header.brand img { width: 32px; height: 32px; border-radius: 8px; }
 
-    .hero { text-align: center; padding: 64px 0 24px; }
+    .hero { text-align: center; padding: 40px 0 24px; }
     .eyebrow { color: var(--blue); font-weight: 600; font-size: 15px; letter-spacing: 0.02em; margin: 0 0 12px; }
     h1 { font-size: clamp(36px, 6vw, 60px); line-height: 1.05; letter-spacing: -0.02em; margin: 0 0 18px; }
     .byline { color: var(--muted); font-size: 15px; margin: 20px 0 0; }
@@ -64,6 +64,9 @@
     .pair .closed { flex: 0 0 auto; width: 30.77%; }
     .pair .open { flex: 0 0 auto; width: 60%; }
     .single { max-width: 900px; margin: 0 auto; }
+    /* A single figure never outgrows the window, so the whole device fits on
+       one screen once scrolled to; on large screens the 900 px cap wins. */
+    .single img, .single video { width: auto; max-width: 100%; max-height: calc(100vh - 64px); max-height: calc(100svh - 64px); margin: 0 auto; }
 
     .facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; max-width: 900px; margin: 8px auto 0; }
     .fact { background: rgba(255, 255, 255, 0.04); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; }
@@ -95,10 +98,10 @@
 
     <main id="main-content">
       <div class="hero">
-        <p class="eyebrow">Coming in AtlasDays 2.7</p>
+        <p class="eyebrow">On the App Store now</p>
         <h1>AtlasDays for iPhone&nbsp;Duo</h1>
         <p class="lede">Unfold it, and AtlasDays picks up right where you left off: your trackers, your trips and your calendar, side by side.</p>
-        <p class="byline">By <a href="/about">Jorick van Meijeren</a> · Updated <time datetime="2026-10-15">15 October 2026</time></p>
+        <p class="byline">By <a href="/about">Jorick van Meijeren</a> · Updated <time datetime="2026-10-16">16 October 2026</time></p>
         <figure class="single hero-media">
           <video class="unfold" autoplay muted loop playsinline preload="metadata" poster="/assets/press/iphone-duo/unfold-poster.webp" width="1200" height="906" aria-label="AtlasDays on iPhone Duo: the Dashboard and then the Timeline, each unfolding from the closed display to the opened one and folding back">
             <source src="/assets/press/iphone-duo/unfold.mp4" type="video/mp4" />
@@ -192,7 +195,7 @@
         <div class="about">
           <p>AtlasDays answers a question every traveler is eventually asked: where were you, and for how many days? It logs trips by country and by US state, counts days against rules like Schengen 90/180, tax residency and the US Substantial Presence Test, adds trips automatically when you cross a border, and builds past trips from your photos.</p>
           <p>Unlimited trip logging, auto-detect, every import, the dashboard statistics and one tracker are free. There are no ads and no account, and your trips stay on your device and in your own iCloud.</p>
-          <p class="muted">Made by <a href="/about">Jorick</a>, an independent developer in Tbilisi. Questions or a TestFlight invite: <a href="mailto:hello@atlasdays.app">hello@atlasdays.app</a>. AtlasDays is on the <a href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=press-duo&amp;mt=8">App Store</a>.</p>
+          <p class="muted">Made by <a href="/about">Jorick</a>, an independent developer in Tbilisi. Questions: <a href="mailto:hello@atlasdays.app">hello@atlasdays.app</a>. AtlasDays is on the <a href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=press-duo&amp;mt=8">App Store</a>.</p>
         </div>
       </section>
     </main>
