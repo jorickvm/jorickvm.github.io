@@ -35,16 +35,27 @@
     a:hover { text-decoration: underline; }
     .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
 
-    header.brand { padding: 28px 0 0; }
+    header.brand { padding: 28px 0 0; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
     header.brand a { display: inline-flex; align-items: center; gap: 10px; color: var(--text); font-weight: 600; font-size: 17px; }
     header.brand img { width: 32px; height: 32px; border-radius: 8px; }
+    /* The site header's "Get AtlasDays" pill (assets/css/site-header.css .top-cta)
+       with the dark --action-* token values inlined: this page loads no site CSS. */
+    header.brand a.top-cta {
+      gap: 7px; min-height: 36px; padding: 0 16px; border-radius: 999px; color: #fff; font-size: 15px; line-height: 1; white-space: nowrap;
+      background: linear-gradient(to right, #2C5E8B 0%, #428FD2 50%, #2C5E8B 100%);
+      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12), 0 2px 12px rgba(0, 0, 0, 0.08);
+      transition: opacity 140ms ease;
+    }
+    header.brand a.top-cta:hover { opacity: 0.92; text-decoration: none; }
+    .top-cta-glyph { margin-top: -2px; flex: none; }
 
-    .hero { text-align: center; padding: 40px 0 24px; }
+    .hero { text-align: center; padding: 36px 0 24px; }
     .eyebrow { color: var(--blue); font-weight: 600; font-size: 15px; letter-spacing: 0.02em; margin: 0 0 12px; }
-    h1 { font-size: clamp(36px, 6vw, 60px); line-height: 1.05; letter-spacing: -0.02em; margin: 0 0 18px; }
-    .byline { color: var(--muted); font-size: 15px; margin: 20px 0 0; }
+    h1 { font-size: clamp(36px, 6vw, 60px); line-height: 1.05; letter-spacing: -0.02em; margin: 0 0 14px; }
+    .byline { color: var(--muted); font-size: 15px; margin: 14px 0 0; }
     .byline a { color: inherit; }
-    .hero-media { margin-top: 48px; }
+    .byline time { white-space: nowrap; }
+    .hero-media { margin-top: 28px; }
     .fact code { font: 14px ui-monospace, "SF Mono", Menlo, monospace; color: var(--text); }
     .lede { color: var(--muted); font-size: clamp(18px, 2.2vw, 21px); max-width: 660px; margin: 0 auto; }
 
@@ -84,7 +95,7 @@
       .pair .closed { width: 51.3%; }
       .pair .open { width: 100%; }
       section { padding: 44px 0; }
-      .hero { padding-top: 44px; }
+      .hero { padding-top: 28px; }
       .facts { grid-template-columns: 1fr; }
     }
   </style>
@@ -94,6 +105,7 @@
   <div class="wrap">
     <header class="brand">
       <a href="/"><img src="/assets/brand/logo_dark.png?v=20260325a" alt="" width="1024" height="1024" />AtlasDays</a>
+      <a class="top-cta" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=press-duo&amp;mt=8"><svg class="top-cta-glyph" width="13" height="16" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg><span>Get AtlasDays</span></a>
     </header>
 
     <main id="main-content">
