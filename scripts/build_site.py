@@ -214,9 +214,35 @@ def render_metadata(article: dict[str, object], prefix: str = "../") -> str:
     return "\n".join(lines)
 
 
+ARTICLE_IMAGE = "https://atlasdays.app/assets/social/site-v1.png"
+PUBLISHER_LOGO = "https://atlasdays.app/assets/brand/favicon.png"
+
+
+def with_article_defaults(raw: str) -> str:
+    """Article graphs get the fields Google recommends and the registry does
+    not carry: an image, the publisher's logo, and the author's About page.
+    The author stays the AtlasDays organization (Jorick, 2026-10-17)."""
+    try:
+        graph = json.loads(raw)
+    except json.JSONDecodeError:
+        return raw
+    if not isinstance(graph, dict) or graph.get("@type") != "Article":
+        return raw
+    graph.setdefault("image", ARTICLE_IMAGE)
+    for role, extra in (
+        ("author", {"url": "https://atlasdays.app/about"}),
+        ("publisher", {"logo": {"@type": "ImageObject", "url": PUBLISHER_LOGO}}),
+    ):
+        if isinstance(graph.get(role), dict):
+            for key, value in extra.items():
+                graph[role].setdefault(key, value)
+    return json.dumps(graph, indent=2, ensure_ascii=False)
+
+
 def render_structured_data(article: dict[str, object]) -> str:
     lines: list[str] = []
     for raw in article.get("jsonld", []):
+        raw = with_article_defaults(str(raw))
         lines.append('  <script type="application/ld+json">')
         for line in str(raw).strip().splitlines():
             lines.append("  " + line)
@@ -310,6 +336,13 @@ TOPIC_GUIDES = {
     "citizenship": "learn/residence-permit-citizenship-absence-rules.html",
 }
 FAMILY_ORDER = ("visa", "tax", "usState", "residence", "citizenship")
+US_STATE_HUB = "learn/us-state-tax-residency.html"
+USE_CASE_CRUMBS = (
+    ("/visa-limits", "nav.visa_limits"),
+    ("/residency-thresholds", "nav.residency_thresholds"),
+    ("/citizenship", "nav.citizenship"),
+    ("/travel-history", "nav.travel_history"),
+)
 GLOBE_ICON = (
     '<span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/>'
     '<path d="M3.5 12h17M12 3.5c2.5 2.6 3.5 5.4 3.5 8.5s-1 5.9-3.5 8.5c-2.5-2.6-3.5-5.4-3.5-8.5s1-5.9 3.5-8.5Z"/></svg></span>'
@@ -456,7 +489,9 @@ def related_paths(path: str) -> list[str]:
         add("learn/schengen-rolling-window-walkthrough.html" if country == "EU" else TOPIC_GUIDES.get(str(family)))
         for candidate in country_pages:
             add(candidate)
-        add(me["pillar"])
+        # A state's parent is the state directory: the tax pillar lists
+        # countries only, and nothing else links the directory.
+        add(US_STATE_HUB if family == "usState" else me["pillar"])
         neighbours = [p for p, i in info.items() if i["family"] == family and me["region"] and i["region"] == me["region"]]
         for candidate in sorted(by_app_order(neighbours), key=lambda p: abs(info[p]["place"] - me["place"])):  # type: ignore[operator]
             add(candidate)
@@ -507,10 +542,25 @@ def title_width(title: str) -> int:
     return sum(2 if unicodedata.east_asian_width(char) in "WF" else 1 for char in title)
 
 
+def fitted_title(title: str) -> str:
+    """The English <title> as published: the same brand-only-where-it-fits
+    rule derive_record applies to translations. The registry keeps the full
+    title, so translations stay pinned to it and nothing goes stale."""
+    if title_width(title) <= TITLE_WIDTH:
+        return title
+    for suffix in (" – AtlasDays Help Center", " – AtlasDays"):
+        if title.endswith(suffix):
+            shorter = title.removesuffix(" Help Center")
+            if suffix != " – AtlasDays" and title_width(shorter) <= TITLE_WIDTH:
+                return shorter
+            return title.removesuffix(suffix)
+    return title
+
+
 def title_budget(source: dict[str, object]) -> int:
-    """How long a translated title may be: what Google shows, or the English
-    title's own length when that is longer."""
-    return max(TITLE_WIDTH, len(str(source.get("title", ""))))
+    """How long a translated title may be: what Google shows, or the published
+    English title's own length when that is longer."""
+    return max(TITLE_WIDTH, len(fitted_title(str(source.get("title", "")))))
 
 
 def render_cluster_related(
@@ -819,6 +869,11 @@ def translate_jsonld(
             ("/learn/calculators", "nav.calculators"),
         )
     }
+    # A use-case page's crumb is its short nav label, not its long headline.
+    use_case_routes = {
+        SITE_URL + localized_route(route, locale, available): key
+        for route, key in USE_CASE_CRUMBS
+    }
     graph = json.loads(raw)
     label = f"{code}/{source['path']}"
     # The English headline is the page title without its " – AtlasDays" suffix;
@@ -862,7 +917,9 @@ def translate_jsonld(
                 out[key] = walk(value)
         if out.get("@type") == "ListItem":
             item = str(out.get("item", ""))
-            if item == own_route:
+            if item in use_case_routes:
+                out["name"] = str(strings[use_case_routes[item]][code])
+            elif item == own_route:
                 out["name"] = str(overlay["headline"])
             elif item in hub_routes:
                 out["name"] = str(strings[hub_routes[item]][code])
@@ -1906,7 +1963,9 @@ def main() -> int:
         return 1
 
     def with_alternates(record: dict[str, object]) -> dict[str, object]:
-        """English pages advertise their translations; untranslated ones stay bare."""
+        """English pages advertise their translations; untranslated ones stay bare.
+        The <title> is fitted here too, the one place every English page passes."""
+        record = {**record, "title": fitted_title(str(record["title"]))}
         if record.get("locale_alternates") is False:
             return record
         alternates = alternate_links(str(record["path"]), locales, translations)
