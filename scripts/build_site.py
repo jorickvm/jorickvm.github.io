@@ -1542,7 +1542,7 @@ def mark_calculator_callout(content: str, article: dict[str, object]) -> str:
 
 # The inline list (phones and tablets) only earns its place above a long
 # article; the sidebar on wide screens sits in empty margin, so every Learn
-# article with sections gets it.
+# and Help article with sections gets it.
 TOC_MIN_SECTIONS = 7
 TOC_SIDE_MIN_SECTIONS = 2
 
@@ -1562,7 +1562,7 @@ TOC_SCRIPT = (
 
 
 def render_toc(content: str, article: dict[str, object]) -> str:
-    """"On this page" for a Learn article.
+    """"On this page" for a Learn or Help article.
 
     Sections are the <h2>s outside the closing app box and the build's source
     panel; each gets an id from its text if it has none. Wide screens get a
@@ -1571,7 +1571,7 @@ def render_toc(content: str, article: dict[str, object]) -> str:
     a one-line <details> on phones and an open list on tablets (.toc). CSS
     shows one or the other (assets/css/article-components.css).
     """
-    if article.get("section") != "learn":
+    if article.get("section") not in {"learn", "help"}:
         return content
     cta = content.find('<div class="cta-box"')
     heading = re.compile(r"<h2(?P<attrs>[^>]*)>(?P<text>.*?)</h2>", re.S)

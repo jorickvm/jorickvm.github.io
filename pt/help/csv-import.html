@@ -165,12 +165,23 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="Nesta página">
+      <p class="toc-title">Nesta página</p>
+      <ul>
+        <li><a href="#importe-o-arquivo">Importe o arquivo</a></li>
+        <li><a href="#leia-a-pr-via">Leia a prévia</a></li>
+        <li><a href="#corrija-os-erros-no-arquivo-de-origem">Corrija os erros no arquivo de origem</a></li>
+        <li><a href="#importar-de-novo-uma-exporta-o">Importar de novo uma exportação</a></li>
+        <li><a href="#se-todas-as-linhas-estiverem-inv-lidas">Se todas as linhas estiverem inválidas</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="Trilha de navegação"><a href="/pt/">AtlasDays</a> / <a href="/pt/help/">Central de ajuda</a></nav>
 
     <h1>Importação de CSV</h1>
 <p class="article-answer">Adicione viagens em massa a partir de uma planilha salva como CSV. O AtlasDays valida cada linha, mostra uma prévia e não salva nada até você confirmar. É uma das <a href="/pt/help/import-trips">formas de adicionar viagens passadas</a>.</p>
 
-    <h2>Importe o arquivo</h2>
+    <h2 id="importe-o-arquivo">Importe o arquivo</h2>
     <ol>
       <li>Abra <strong>Ajustes → Importar → Arquivo CSV</strong>.</li>
       <li>Prepare o arquivo no Sheets, no Numbers ou no Excel e exporte-o como CSV. <strong>CSV de exemplo</strong> mostra os cabeçalhos exatos com linhas de amostra, e o botão de compartilhar dele salva o arquivo como ponto de partida.</li>
@@ -183,7 +194,7 @@
 
     <p>Você também pode começar pelo próprio arquivo. Compartilhe um arquivo CSV pelo app Arquivos, pelos downloads do Safari ou pelo Mail e escolha <strong>AtlasDays</strong>: a mesma prévia será aberta. O AtlasDays aparece como uma opção para abrir arquivos CSV, mas não é definido como o app padrão para esses arquivos.</p>
 
-    <h2>Leia a prévia</h2>
+    <h2 id="leia-a-pr-via">Leia a prévia</h2>
     <p>A prévia lista as linhas válidas e mostra contagens em que você pode tocar para filtrar. Use <strong>Selecionar tudo</strong> ou <strong>Desmarcar tudo</strong> para escolher o que importar.</p>
     <ul>
       <li><strong>Duplicada:</strong> a linha está dentro de uma viagem que você já tem ou repete uma linha anterior. Ela é ignorada.</li>
@@ -193,16 +204,16 @@
     </ul>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/pt/help/csv-import/csv-review.webp" alt="Prévia da importação de CSV com linhas válidas, inválidas, duplicadas e com sobreposição" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
-    <h2>Corrija os erros no arquivo de origem</h2>
+    <h2 id="corrija-os-erros-no-arquivo-de-origem">Corrija os erros no arquivo de origem</h2>
     <p>As linhas que o AtlasDays não consegue ler aparecem em <strong>N linhas com erros</strong>, com o número da linha e o motivo. Linhas inválidas nunca são importadas. Corrija-as na planilha, exporte de novo e selecione o arquivo outra vez.</p>
 
     <div class="callout"><p><strong>Nada muda até você tocar em Importar.</strong> Selecionar um arquivo e ver a prévia não adiciona viagens.</p></div>
 
-    <h2>Importar de novo uma exportação</h2>
+    <h2 id="importar-de-novo-uma-exporta-o">Importar de novo uma exportação</h2>
     <p>Uma <a href="/pt/help/export-and-reports">exportação</a> Planilha salva como CSV pode ser importada de novo, desde que tenha sido exportada em inglês: os cabeçalhos das colunas só são lidos em inglês. Para uma cópia completa de viagens, controles e ajustes, use um <a href="/pt/help/backup-and-restore">backup</a>.</p>
 
     <section class="if-needed">
-      <h2>Se todas as linhas estiverem inválidas</h2>
+      <h2 id="se-todas-as-linhas-estiverem-inv-lidas">Se todas as linhas estiverem inválidas</h2>
       <p>Confirme que a primeira linha é um cabeçalho e contém <strong>Country</strong>, e que as datas usam <code>yyyy-mm-dd</code> ou um ano de quatro dígitos. A <a href="/pt/help/csv-format-reference">Referência do formato CSV</a> lista as colunas, os valores e todas as mensagens de erro compatíveis.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-csv-import">

@@ -165,12 +165,42 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="本页内容">
+      <p class="toc-title">本页内容</p>
+      <ul>
+        <li><a href="#section-1">五项设置决定结果</a></li>
+        <li><a href="#section-2">天数与晚数</a></li>
+        <li><a href="#section-3">重叠的天数只算一次</a></li>
+        <li><a href="#section-4">滚动期间每天都在移动</a></li>
+        <li><a href="#section-5">年份追踪器</a></li>
+        <li><a href="#section-6">每次入境的追踪器只看一次停留</a></li>
+        <li><a href="#section-7">停留中和预定的行程</a></li>
+        <li><a href="#section-8">阅读明细图表</a></li>
+        <li><a href="#section-9">检查哪些行程影响了追踪器</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/zh-Hans/">AtlasDays</a> / <a href="/zh-Hans/help/">帮助中心</a></nav>
 
     <h1>追踪器总计的计算方式</h1>
 <p class="article-answer">追踪器会挑出所选地点内<a href="/zh-Hans/help/history-and-import">有日期的行程</a>，合并重叠的日历日，并在计算期间内计数。结果再与设定的上限对比。</p>
 
-    <h2>五项设置决定结果</h2>
+    <details class="toc">
+      <summary>本页内容</summary>
+      <ul>
+        <li><a href="#section-1">五项设置决定结果</a></li>
+        <li><a href="#section-2">天数与晚数</a></li>
+        <li><a href="#section-3">重叠的天数只算一次</a></li>
+        <li><a href="#section-4">滚动期间每天都在移动</a></li>
+        <li><a href="#section-5">年份追踪器</a></li>
+        <li><a href="#section-6">每次入境的追踪器只看一次停留</a></li>
+        <li><a href="#section-7">停留中和预定的行程</a></li>
+        <li><a href="#section-8">阅读明细图表</a></li>
+        <li><a href="#section-9">检查哪些行程影响了追踪器</a></li>
+      </ul>
+    </details>
+    <script>(function(){var t=document.currentScript.previousElementSibling;if(matchMedia('(min-width: 760px)').matches)t.open=true})();</script>
+    <h2 id="section-1">五项设置决定结果</h2>
     <ol>
       <li><strong>地点：</strong>只有在所选国家或美国各州内的行程才符合条件。</li>
       <li><strong>单位：</strong><strong>上限</strong>一行计算的是<strong>天数</strong>、<strong>晚数</strong>、<strong>不在天数</strong>，或<strong>整天</strong>。</li>
@@ -179,26 +209,26 @@
       <li><strong>行程精度：</strong>有精确日期的行程才计入。仅年份和转机的行程贡献零天。</li>
     </ol>
 
-    <h2>天数与晚数</h2>
+    <h2 id="section-2">天数与晚数</h2>
     <p><strong>天数</strong>单位把入境日和离境日完整计入，所以从 6 月 1 日到 6 月 3 日的停留是三天。<strong>晚数</strong>单位计算入境与离境之间的夜晚，同一次停留就是两晚。晚数不会把首尾相接的停留连起来：前一条行程的离境日与后一条行程的入境日之间的那一晚，两边都不算，即使是在同一个国家。<strong>整天</strong>单位只计算完整的一天，不含入境日和离境日：6 月 1 日到 6 月 3 日的停留算 1 个整天，当日往返或只住一晚则完全不计入。</p>
 
-    <h2>重叠的天数只算一次</h2>
+    <h2 id="section-3">重叠的天数只算一次</h2>
     <p>滚动、年份和按不在天数计算的追踪器，会合并覆盖同一个日历日的行程，所以<a href="/zh-Hans/help/timeline-and-calendar">时间轴</a>里的重叠不会重复计算。每次入境追踪器则完全不合并行程，见下文。</p>
 
-    <h2>滚动期间每天都在移动</h2>
+    <h2 id="section-4">滚动期间每天都在移动</h2>
     <p>滚动追踪器始终以今天为终点。它的<strong>长度</strong>是固定的天数，或者从今天往回数的若干个日历月。较早的天数移出计算期间，较新的行程天数移入，所以即使没有编辑任何行程，总计也可能变化。</p>
     <p>新西兰入籍追踪器多了一行<strong>居留签证起始日</strong>：这个日期之前的停留不计入，设置下方的一行会说明从哪天开始计算。它的详情页面还会检查五年中每一年所需的 240 天，并告诉你最早可以申请的日期。</p>
 
-    <h2>年份追踪器</h2>
+    <h2 id="section-5">年份追踪器</h2>
     <p>年份追踪器在一年之内计数，从<strong>起始日</strong>一行的日期开始。1 月 1 日开始就是日历年，其他任何开始日期则是会计年度。</p>
 
-    <h2>每次入境的追踪器只看一次停留</h2>
+    <h2 id="section-6">每次入境的追踪器只看一次停留</h2>
     <p>每次入境的追踪器衡量的是单次停留。有正在进行的停留时用它，否则用最近结束的那次停留。它不会把互不相关的到访加在一起。追踪器设有<strong>开始</strong>日期时，这个日期之前的天数不计。</p>
 
-    <h2>停留中和预定的行程</h2>
+    <h2 id="section-7">停留中和预定的行程</h2>
     <p>没有结束日期的行程算到今天。开始日期在未来的行程不会改变当前总计；它在图表上显示为预定行程，预测会用到它。<a href="/zh-Hans/help/plan-a-trip">确认预定行程是否还在上限内</a>介绍了预测。</p>
 
-    <h2>阅读明细图表</h2>
+    <h2 id="section-8">阅读明细图表</h2>
     <p>打开追踪器，可以看到计数随时间的变化。图表有两种视图：可滚动的特写，以及整个期间的全景。双指捏合或轻点两下图表即可切换；每个追踪器会记住自己的选择。</p>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/zh-Hans/help/trackers-and-limits/detail-chart.webp" alt="追踪器明细图表，覆盖其生效的计算期间" width="1320" height="2566" loading="lazy" decoding="async" /></figure>
     <p>滚动、年份和按不在天数计算的追踪器，在你的计划改变结果时，图表下方还会显示一句话，比如你将达到上限的日期。带两项上限的追踪器则为每项上限各显示一张图表，见<a href="/zh-Hans/help/rule-trackers">两项上限的追踪器</a>。</p>
@@ -206,7 +236,7 @@
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/zh-Hans/help/trackers-and-limits/goal-window.webp" alt="追踪器编辑器，显示上限和计算期间的控件" width="1320" height="1500" loading="lazy" decoding="async" /></figure>
 
     <section class="if-needed">
-      <h2>检查哪些行程影响了追踪器</h2>
+      <h2 id="section-9">检查哪些行程影响了追踪器</h2>
       <p>打开它的详情视图，查看图表下方列出的行程，再把它的地点和计算期间与你的<a href="/zh-Hans/help/timeline-and-calendar">时间轴</a>对照。要特别留意停留中的行程、转机、仅年份的记录、重叠，以及缺失的美国州标注。想为这个追踪器添加行程，轻点行程列表上方的 <strong>+</strong>。</p>
     </section>
     <nav class="help-next" aria-labelledby="next-trackers-and-limits">

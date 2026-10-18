@@ -165,12 +165,24 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="本頁內容">
+      <p class="toc-title">本頁內容</p>
+      <ul>
+        <li><a href="#section-1">欄位</a></li>
+        <li><a href="#section-2">日期格式</a></li>
+        <li><a href="#section-3">特殊情況</a></li>
+        <li><a href="#section-4">範例</a></li>
+        <li><a href="#section-5">錯誤訊息</a></li>
+        <li><a href="#section-6">某個值無法辨識時</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="導覽路徑"><a href="/zh-Hant/">AtlasDays</a> / <a href="/zh-Hant/help/">說明中心</a></nav>
 
     <h1>CSV 格式參考</h1>
 <p class="article-answer">只有 <strong>Country</strong> 欄位是必填。AtlasDays 依英文標題名稱辨識欄位，所以欄位的先後順序不影響結果。匯入的步驟請見<a href="/zh-Hant/help/csv-import">CSV 匯入</a>。</p>
 
-    <h2>欄位</h2>
+    <h2 id="section-1">欄位</h2>
     <p>建議的標題列：<code>Country,State,Start Date,End Date,Purpose,Notes</code>。標題名稱不分大小寫。無法辨識的欄位（例如 <code>Days</code>）會被忽略。若標題出現兩次，則採用第一個。</p>
     <dl class="kv kv-text">
       <div><dt><strong>Country</strong></dt><dd>必填。可填英文或 App 語言的國家名稱、ISO 兩碼代碼，或常見別名，例如 <code>USA</code>、<code>UK</code> 或 <code>Holland</code>。可能指兩個地方的別名會被拒絕。</dd></div>
@@ -184,7 +196,7 @@
     </dl>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/zh-Hant/help/csv-format-reference/csv-reference.webp" alt="CSV 匯入的範例和範本控制項" width="1320" height="1990" loading="lazy" decoding="async" /></figure>
 
-    <h2>日期格式</h2>
+    <h2 id="section-2">日期格式</h2>
     <div class="data-table">
     <table>
       <thead><tr><th>Start Date</th><th>End Date</th><th>結果</th></tr></thead>
@@ -199,21 +211,21 @@
     </div>
     <p>年份必須介於 1900 與目前年份之後第 8 年之間。同一列不能混用精確日期與年份值。僅年份的行程與沒有日期的行程，會計入造訪過的地點與地圖，但不會計入天數或追蹤器。沒有日期的行程只能透過 CSV 匯入建立。</p>
 
-    <h2>特殊情況</h2>
+    <h2 id="section-3">特殊情況</h2>
     <ul>
       <li><strong>美國各州。</strong>一次美國行程去了好幾個州時，每個州各寫一列。只寫 <code>United States</code> 的資料列有效，可用於國家層級的追蹤。在 Country 欄填州名（<code>California</code>、<code>US-CA</code>）同樣會得到美國行程，Country 留空但 State 有效時也一樣。同時也是國家代碼的兩碼代碼，例如 <code>CA</code>，仍視為國家。沒有 Pro 時，州別資料列會匯入為一般的美國行程。</li>
       <li><strong>轉機。</strong>沒有實際入境時，在 Purpose 填入 <code>Transit</code>。Transit 具有排他性：若與其他目的並用，只會保留 Transit。</li>
       <li><strong>分隔符號與引號。</strong>逗號、分號與 Tab 會從標題列自動判斷。內含分隔符號或換行的欄位，請加上引號。</li>
     </ul>
 
-    <h2>範例</h2>
+    <h2 id="section-4">範例</h2>
     <pre><code>Country,State,Start Date,End Date,Purpose,Notes
 France,,2026-03-01,2026-03-05,Personal,
 United States,CA,2026-04-10,2026-04-15,Business,Conference
 Japan,,2024,,Personal,Dates not known
 United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></pre>
 
-    <h2>錯誤訊息</h2>
+    <h2 id="section-5">錯誤訊息</h2>
     <p>每個錯誤都會在預覽中連同列號一起顯示，該列不會匯入。列號以標題列為第 1 列。</p>
     <dl class="kv kv-text">
       <div><dt>找不到 Country 欄位</dt><dd>請在最前面放一列標題列，並包含 <strong>Country</strong> 欄。</dd></div>
@@ -233,7 +245,7 @@ United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></p
     </dl>
 
     <section class="if-needed">
-      <h2>某個值無法辨識時</h2>
+      <h2 id="section-6">某個值無法辨識時</h2>
       <p>請使用 ISO 國家代碼、ISO 日期，以及標準的美國州名或代碼。以其他語言的試算表匯出的檔案，標題可能被翻譯而無法辨識，請改回上述英文標題。</p>
     </section>
     <nav class="help-next" aria-labelledby="next-csv-format-reference">

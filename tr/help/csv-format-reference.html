@@ -165,12 +165,24 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="Bu sayfada">
+      <p class="toc-title">Bu sayfada</p>
+      <ul>
+        <li><a href="#s-tunlar">Sütunlar</a></li>
+        <li><a href="#tarih-bi-imleri">Tarih biçimleri</a></li>
+        <li><a href="#zel-durumlar">Özel durumlar</a></li>
+        <li><a href="#rnek">Örnek</a></li>
+        <li><a href="#hata-iletileri">Hata iletileri</a></li>
+        <li><a href="#bir-de-er-tan-nm-yorsa">Bir değer tanınmıyorsa</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="İçerik yolu"><a href="/tr/">AtlasDays</a> / <a href="/tr/help/">Yardım Merkezi</a></nav>
 
     <h1>CSV biçimi başvuru kılavuzu</h1>
 <p class="article-answer">Yalnızca <strong>Country</strong> sütunu zorunludur. AtlasDays sütunları İngilizce başlık adlarına göre bulduğu için sütun sırası önemli değildir. İçe aktarma adımları <a href="/tr/help/csv-import">CSV ile içe aktarma</a> makalesindedir.</p>
 
-    <h2>Sütunlar</h2>
+    <h2 id="s-tunlar">Sütunlar</h2>
     <p>Önerilen başlık satırı: <code>Country,State,Start Date,End Date,Purpose,Notes</code>. Başlık adlarında büyük/küçük harf ayrımı yoktur. <code>Days</code> gibi tanınmayan sütunlar yok sayılır. Bir başlık iki kez geçerse ilki kullanılır.</p>
     <dl class="kv kv-text">
       <div><dt><strong>Country</strong></dt><dd>Zorunlu. İngilizce veya uygulama dilinde ülke adı, iki harfli ISO kodu ya da <code>USA</code>, <code>UK</code> veya <code>Holland</code> gibi yaygın bir diğer ad. İki farklı yere işaret edebilecek bir diğer ad reddedilir.</dd></div>
@@ -184,7 +196,7 @@
     </dl>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/tr/help/csv-format-reference/csv-reference.webp" alt="CSV içe aktarımı örneği ve şablon denetimleri" width="1320" height="1990" loading="lazy" decoding="async" /></figure>
 
-    <h2>Tarih biçimleri</h2>
+    <h2 id="tarih-bi-imleri">Tarih biçimleri</h2>
     <div class="data-table">
     <table>
       <thead><tr><th>Start Date</th><th>End Date</th><th>Sonuç</th></tr></thead>
@@ -199,21 +211,21 @@
     </div>
     <p>Yıllar 1900 ile geçerli yıldan sekiz yıl sonrası arasında olmalıdır. Kesin tarihler ve yıl değerleri aynı satırda birlikte kullanılamaz. Yalnızca yıl seyahatleri ve tarihsiz seyahatler ziyaret edilen yerlere ve haritaya sayılır, ancak gün sayımlarına veya takiplere hiçbir zaman sayılmaz. Tarihsiz bir seyahat yalnızca CSV ile içe aktarma yoluyla oluşturulabilir.</p>
 
-    <h2>Özel durumlar</h2>
+    <h2 id="zel-durumlar">Özel durumlar</h2>
     <ul>
       <li><strong>ABD eyaletleri.</strong> Tek bir ABD ziyareti birkaç eyaleti kapsadığında her eyalet için bir satır kullanın. Ülke düzeyinde takip için düz bir <code>United States</code> satırı geçerlidir. Country sütununa yazılan bir eyalet adı (<code>California</code>, <code>US-CA</code>) de bir ABD seyahati verir; geçerli bir State ile boş bir Country de aynı sonucu verir. <code>CA</code> gibi aynı zamanda ülke kodu olan iki harfli kodlar ülke olarak kalır. Pro olmadan eyalet satırları sıradan Amerika Birleşik Devletleri seyahatleri olarak içe aktarılır.</li>
       <li><strong>Transit.</strong> Ülkeye girmediyseniz Purpose alanına <code>Transit</code> yazın. Transit diğer amaçlarla birlikte kullanılamaz: başka bir amaçla birlikte yazılırsa yalnızca Transit korunur.</li>
       <li><strong>Ayırıcı ve tırnak işaretleri.</strong> Virgül, noktalı virgül ve sekme başlık satırından algılanır. Ayırıcı veya satır sonu içeren alanları tırnak içine alın.</li>
     </ul>
 
-    <h2>Örnek</h2>
+    <h2 id="rnek">Örnek</h2>
     <pre><code>Country,State,Start Date,End Date,Purpose,Notes
 France,,2026-03-01,2026-03-05,Personal,
 United States,CA,2026-04-10,2026-04-15,Business,Conference
 Japan,,2024,,Personal,Dates not known
 United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></pre>
 
-    <h2>Hata iletileri</h2>
+    <h2 id="hata-iletileri">Hata iletileri</h2>
     <p>Her hata, satır numarasıyla birlikte önizlemede görünür ve o satır içe aktarılmaz. Satır numarası, başlığı 1. satır sayar.</p>
     <dl class="kv kv-text">
       <div><dt>Country sütunu bulunamadı</dt><dd>En başa <strong>Country</strong> sütunu olan bir başlık satırı koyun.</dd></div>
@@ -233,7 +245,7 @@ United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></p
     </dl>
 
     <section class="if-needed">
-      <h2>Bir değer tanınmıyorsa</h2>
+      <h2 id="bir-de-er-tan-nm-yorsa">Bir değer tanınmıyorsa</h2>
       <p>Bir ISO ülke kodu, ISO tarihleri ve standart bir ABD eyalet adı veya kodu kullanın. Başka bir dildeki elektronik tablodan dışa aktarılan bir dosyada çevrilmiş başlıklar bulunabilir ve bunlar tanınmaz: bunları yukarıdaki İngilizce başlıklarla yeniden adlandırın.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-csv-format-reference">

@@ -165,19 +165,29 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="目次">
+      <p class="toc-title">目次</p>
+      <ul>
+        <li><a href="#1">記録を1件削除する</a></li>
+        <li><a href="#section-2">まとめて削除する、またはリセットする</a></li>
+        <li><a href="#icloud">確定する前にiCloudについて考える</a></li>
+        <li><a href="#section-4">同期の問題を解決しようとしているとき</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="パンくずリスト"><a href="/ja/">AtlasDays</a> / <a href="/ja/help/">ヘルプセンター</a></nav>
 
     <h1>データを削除する、または最初からやり直す</h1>
 <p class="article-answer">状況に合った、いちばん範囲の狭い操作を選びます。旅行またはトラッカーを1件削除する、インポート全体を取り消す、より大きな変更には<strong>「設定」→「削除とリセット」</strong>を使う、の3通りです。あとで必要になるかもしれない場合は、先にAtlasDaysバックアップを作成してください。</p>
 
-    <h2>記録を1件削除する</h2>
+    <h2 id="1">記録を1件削除する</h2>
     <ul>
       <li><strong>旅行：</strong><a href="/ja/help/timeline-and-calendar">タイムライン</a>で旅行を開いて<strong>「旅行を削除」</strong>を選ぶか、その行を左にスワイプします。タイムラインから削除すると、短い<strong>「取り消す」</strong>のメッセージが表示されます。</li>
       <li><strong>トラッカー：</strong>編集画面を開き、<strong>「トラッカーを削除」</strong>を選びます。</li>
       <li><strong>インポート：</strong><strong>「設定」→「インポートの管理」</strong>を開くと、1回のインポートで取り込まれた旅行をまとめて削除できます。詳しくは<a href="/ja/help/import-trips">旅行をインポート</a>をご覧ください。</li>
     </ul>
 
-    <h2>まとめて削除する、またはリセットする</h2>
+    <h2 id="section-2">まとめて削除する、またはリセットする</h2>
     <p><strong>「設定」→「削除とリセット」</strong>を開きます。各行に、削除される内容が書かれています。</p>
     <ul>
       <li><strong>「旅行を削除」</strong>は、すべての旅行を削除し、トラッカーは残します。</li>
@@ -188,13 +198,13 @@
     <p>旅行とトラッカーの行は、削除できるものがあるときにだけ表示されます。どの操作も別の画面で確認が求められ、赤いボタン以外の場所をタップすればキャンセルできます。購入内容には影響しないため、リセットしてもAtlasDays Proは有効なままです。</p>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/ja/help/delete-and-reset/delete-confirmation.webp" alt="削除される内容を説明する確認画面" width="1320" height="1140" loading="lazy" decoding="async" /></figure>
 
-    <h2>確定する前にiCloudについて考える</h2>
+    <h2 id="icloud">確定する前にiCloudについて考える</h2>
     <p><a href="/ja/help/icloud-sync-and-restore">iCloud同期</a>がオンの場合、旅行やトラッカーを削除すると、同期によって削除も伝わるため、ほかのデバイスでも削除されます。リセットでは、iCloud上のコピーを含む設定も消去され、アラートやウィジェットに古いデータが表示されなくなります。</p>
 
     <div class="callout"><p><strong>まとめて行う操作は、どれも取り消せません。</strong>書き出したファイルはアプリとは別のもので、リセットしても削除されません。元に戻せる手段を残しておくには、確定する前に<a href="/ja/help/backup-and-restore">AtlasDaysバックアップ</a>を作成してください。</p></div>
 
     <section class="if-needed">
-      <h2>同期の問題を解決しようとしているとき</h2>
+      <h2 id="section-4">同期の問題を解決しようとしているとき</h2>
       <p>最初にリセットしないでください。iCloud同期の状況を確認し、期待するデータがまだ手元のデバイスにあるうちに、サポートへ連絡してください。</p>
     </section>
     <nav class="help-next" aria-labelledby="next-delete-and-reset">

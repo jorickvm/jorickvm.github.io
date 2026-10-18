@@ -165,15 +165,27 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="목차">
+      <p class="toc-title">목차</p>
+      <ul>
+        <li><a href="#flighty">Flighty에서 내보내기</a></li>
+        <li><a href="#atlasdays">AtlasDays로 가져오기</a></li>
+        <li><a href="#section-3">항공편이 여행이 되는 방식</a></li>
+        <li><a href="#section-4">중복과 겹침</a></li>
+        <li><a href="#section-5">미국 주 확인</a></li>
+        <li><a href="#section-6">파일이 거부되는 경우</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="탐색 경로"><a href="/ko/">AtlasDays</a> / <a href="/ko/help/">도움말 센터</a></nav>
 
     <h1>Flighty 가져오기</h1>
 <p class="article-answer">Flighty에서 항공편 기록을 CSV로 내보내 AtlasDays에서 선택한 다음, 저장하기 전에 제안된 여행을 확인하십시오. 지난 여행을 추가하는 <a href="/ko/help/import-trips">방법</a> 중 하나입니다.</p>
 
-    <h2>Flighty에서 내보내기</h2>
+    <h2 id="flighty">Flighty에서 내보내기</h2>
     <p>Flighty의 <strong>Settings</strong>에서 <strong>Account Data</strong>를 열고 항공편을 CSV로 내보내십시오. 파일은 iCloud Drive나 '나의 iPhone'처럼 iOS 파일 선택기가 접근할 수 있는 위치에 저장하십시오.</p>
 
-    <h2>AtlasDays로 가져오기</h2>
+    <h2 id="atlasdays">AtlasDays로 가져오기</h2>
     <ol>
       <li><strong>설정 → 가져오기 → Flighty</strong>를 여십시오.</li>
       <li><strong>Flighty CSV 선택</strong>을 탭하고 내보낸 파일을 고르십시오.</li>
@@ -183,7 +195,7 @@
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/ko/help/flighty-import/flighty-setup.webp" alt="Flighty에서 가져오기 설정 화면" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
     <p>파일 분석은 기기에서 이루어지며, 확정하기 전에는 아무것도 저장되지 않습니다.</p>
 
-    <h2>항공편이 여행이 되는 방식</h2>
+    <h2 id="section-3">항공편이 여행이 되는 방식</h2>
     <p>AtlasDays는 각 공항을 국가에 대응시키고, 어떤 국가에 항공편이 도착한 뒤 이어서 그 국가에서 출발하는 항공편이 있으면 여행을 만듭니다. 확인 화면의 나머지 항목은 이 원리에서 나옵니다.</p>
     <ul>
       <li>24시간 미만의 <strong>경유</strong>는 따로 확인합니다. 10시간 이하의 체류는 <a href="/ko/help/history-and-import">환승</a>으로 표시되어 일수 계산에서 제외됩니다. 그보다 긴 체류는 그 국가에 입국한 것으로 봅니다. 이 설정은 여행에서 <strong>환승</strong>을 켜거나 꺼서 바꿀 수 있습니다.</li>
@@ -195,14 +207,14 @@
 
     <div class="callout"><p><strong>항공편만 해당됩니다.</strong> 기차, 페리, 자동차 여행은 나타나지 않으며, 내보내기에 없는 항공편도 마찬가지입니다. 가져오기 전에 확인 화면을 실제로 지낸 곳과 비교해 보십시오.</p></div>
 
-    <h2>중복과 겹침</h2>
+    <h2 id="section-4">중복과 겹침</h2>
     <p><a href="/ko/help/timeline-and-calendar">타임라인</a>에 이미 있는 여행과 같은 항목은 <strong>중복</strong>으로 표시됩니다. <strong>병합</strong>은 항목이 기존 여행을 포함해 그 여행과 합쳐진다는 뜻이고, <strong>겹침</strong>은 날짜가 다른 여행과 일부 충돌한다는 뜻입니다. 가져오기 전에 확인하십시오.</p>
 
-    <h2>미국 주 확인</h2>
+    <h2 id="section-5">미국 주 확인</h2>
     <p>공항 정보로 미국 주를 알 수 있으면 AtlasDays가 주를 제안합니다. Pro에서는 각 주가 별도의 여행으로 가져와집니다. Pro가 없으면 주는 일반 미국 여행으로 가져옵니다. 주 단위 관리를 사용한다면 저장하기 전에 주를 확인하십시오.</p>
 
     <section class="if-needed">
-      <h2>파일이 거부되는 경우</h2>
+      <h2 id="section-6">파일이 거부되는 경우</h2>
       <p><em>Flighty에서 내보낸 CSV가 아닌 것 같습니다</em>라는 메시지는 Flighty 원본 내보내기 파일이 아니라는 뜻입니다. Flighty에서 다시 내보내고, 스프레드시트에서 다시 저장했거나 순서를 바꾼 파일이 아니라 그 파일을 선택하십시오. AtlasDays CSV 파일은 대신 <a href="/ko/help/csv-import">CSV 가져오기</a>로 가져옵니다. 확인 화면에 <strong>사용할 수 있는 Flighty 행이 없습니다</strong>가 나타난다면 내보낸 파일에 AtlasDays가 쓸 수 있는 항공편이 없다는 뜻입니다.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-flighty-import">

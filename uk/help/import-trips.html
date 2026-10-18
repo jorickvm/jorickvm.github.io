@@ -165,12 +165,22 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="На цій сторінці">
+      <p class="toc-title">На цій сторінці</p>
+      <ul>
+        <li><a href="#section-1">Виберіть джерело</a></li>
+        <li><a href="#section-2">Перевірка перед збереженням</a></li>
+        <li><a href="#section-3">Видалення небажаного імпорту</a></li>
+        <li><a href="#section-4">Якщо очікуваної поїздки немає</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/uk/">AtlasDays</a> / <a href="/uk/help/">Довідка</a></nav>
 
     <h1>Імпорт поїздок</h1>
 <p class="article-answer">Відкрийте «Налаштування → Імпорт» і виберіть джерело, яке відповідає вашим даним: Фото, Flighty, файл CSV або резервну копію AtlasDays. Усі джерела, крім резервної копії, спершу показують поїздки для перевірки, і нічого не зберігається, доки ви не підтвердите.</p>
 
-    <h2>Виберіть джерело</h2>
+    <h2 id="section-1">Виберіть джерело</h2>
     <p>На екрані <strong>Імпортувати поїздки</strong> є чотири джерела. Імпорт безкоштовний і відбувається на вашому пристрої.</p>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/uk/help/import-trips/import-hub.webp" alt="Екран «Імпортувати поїздки» із джерелами: резервна копія AtlasDays, Фото, Flighty і файл CSV" width="1320" height="1730" loading="lazy" decoding="async" /></figure>
     <ul>
@@ -180,12 +190,12 @@
       <li><strong>Резервна копія AtlasDays</strong> відновлює поїздки, трекери та налаштування з файлу копії й замінює те, що є на пристрої. Це відновлення, а не перевірка. Див. <a href="/uk/help/backup-and-restore">Резервні копії та відновлення</a>.</li>
     </ul>
 
-    <h2>Перевірка перед збереженням</h2>
+    <h2 id="section-2">Перевірка перед збереженням</h2>
     <p>Імпорт із Фото, Flighty і CSV завершується екраном перевірки з окремою карткою для кожної запропонованої поїздки. Торкніться поїздки, щоб виправити її, або зніміть її позначку, щоб не додавати, а потім підтвердьте імпорт. Сам вибір файлу чи завершення сканування нічого не додає до <a href="/uk/help/timeline-and-calendar">«Хронологія»</a>.</p>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/uk/help/import-trips/import-review-pills.webp" alt="Перевірка імпорту з позначками «Дублікат», «Об’єднати» й «Перетин» на картках поїздок" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
     <p>На картках може бути маленька позначка, яка порівнює поїздку з тим, що у вас уже є. <strong>Дублікат</strong> означає ту саму країну й ті самі дати або діапазон, який уже покриває наявна поїздка в цій країні. Дублікати неможливо вибрати, тому їх ніколи не імпортують двічі. <strong>Об’єднати</strong> означає, що поїздка охоплює ширший діапазон, ніж наявна поїздка в тій самій країні, і AtlasDays поєднує їх, а не додає ще одну. <strong>Перетин</strong> означає, що дати збігаються з наявною поїздкою хоча б в один день, але це не дублікат і не об’єднання. Перш ніж залишати таку поїздку, перевірте дати й місця. Додаткові перевірки кожного джерела описано в окремих статтях.</p>
 
-    <h2>Видалення небажаного імпорту</h2>
+    <h2 id="section-3">Видалення небажаного імпорту</h2>
     <p>Якщо імпорт приніс поїздки, які ви не хочете залишати, відкрийте <strong>Налаштування → Керування імпортом</strong>. Цей рядок з’являється, лише коли серед ваших поїздок є імпортовані.</p>
     <ol>
       <li>Знайдіть потрібний імпорт. Кожен указано за датою й часом створення, з кількістю поїздок і країн. Старіші імпорти без записаної дати мають позначку <strong>Застарілі</strong>.</li>
@@ -196,7 +206,7 @@
     <p>Видаляються лише поїздки з цього імпорту. Поїздки, які ви додали вручну або які додало автовизначення, не зачіпаються. Щоб видалити лише одну поїздку, див. <a href="/uk/help/delete-and-reset">Видалення даних або початок з нуля</a>.</p>
 
     <section class="if-needed">
-      <h2>Якщо очікуваної поїздки немає</h2>
+      <h2 id="section-4">Якщо очікуваної поїздки немає</h2>
       <p>Перевірте, чи вона не мала позначки <strong>Дублікат</strong> або <strong>Об’єднати</strong>: це означає, що в AtlasDays уже була поїздка, яка її покриває. Поїздки без точних дат не додаються до підрахунку днів, як описано в статті <a href="/uk/help/history-and-import">Як працюють дати поїздки</a>.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-import-trips">

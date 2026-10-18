@@ -165,15 +165,27 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="Bu sayfada">
+      <p class="toc-title">Bu sayfada</p>
+      <ul>
+        <li><a href="#flighty-den-d-a-aktar-n">Flighty'den dışa aktarın</a></li>
+        <li><a href="#atlasdays-e-aktar-n">AtlasDays'e aktarın</a></li>
+        <li><a href="#u-u-lar-nas-l-seyahate-d-n-r">Uçuşlar nasıl seyahate dönüşür?</a></li>
+        <li><a href="#yinelenenler-ve-ak-malar">Yinelenenler ve çakışmalar</a></li>
+        <li><a href="#abd-eyaletlerini-inceleyin">ABD eyaletlerini inceleyin</a></li>
+        <li><a href="#dosya-reddedilirse">Dosya reddedilirse</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="İçerik yolu"><a href="/tr/">AtlasDays</a> / <a href="/tr/help/">Yardım Merkezi</a></nav>
 
     <h1>Flighty ile içe aktarma</h1>
 <p class="article-answer">Uçuş geçmişinizi Flighty'den CSV olarak dışa aktarın, AtlasDays'de seçin ve kaydetmeden önce önerilen seyahatleri inceleyin. Geçmiş seyahatleri eklemenin <a href="/tr/help/import-trips">yollarından</a> biridir.</p>
 
-    <h2>Flighty'den dışa aktarın</h2>
+    <h2 id="flighty-den-d-a-aktar-n">Flighty'den dışa aktarın</h2>
     <p>Flighty'de <strong>Settings → Account Data</strong> bölümünü açın ve uçuşlarınızı CSV olarak dışa aktarın. Dosyayı iOS Dosyalar seçicisinin erişebileceği bir konuma, örneğin iCloud Drive'a veya iPhone'unuza kaydedin.</p>
 
-    <h2>AtlasDays'e aktarın</h2>
+    <h2 id="atlasdays-e-aktar-n">AtlasDays'e aktarın</h2>
     <ol>
       <li><strong>Ayarlar → İçe aktar → Flighty</strong> yolunu açın.</li>
       <li><strong>Flighty CSV'sini seç</strong> düğmesine dokunup dışa aktarılan dosyayı seçin.</li>
@@ -183,7 +195,7 @@
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/tr/help/flighty-import/flighty-setup.webp" alt="Flighty'den içe aktarma kurulum ekranı" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
     <p>Dosya aygıt üzerinde işlenir ve siz onaylayana kadar hiçbir şey kaydedilmez.</p>
 
-    <h2>Uçuşlar nasıl seyahate dönüşür?</h2>
+    <h2 id="u-u-lar-nas-l-seyahate-d-n-r">Uçuşlar nasıl seyahate dönüşür?</h2>
     <p>AtlasDays her havalimanını bir ülkeyle eşleştirir ve bir uçuş bir ülkeye vardığında ve sonraki bir uçuş o ülkeden kalktığında bir seyahat oluşturur. Önizlemenin geri kalanı bundan çıkar:</p>
     <ul>
       <li>24 saatten kısa <strong>aktarmalar</strong> ayrı olarak incelenir. 10 saat veya daha kısa duraklar <a href="/tr/help/history-and-import">Transit</a> olarak işaretlenir ve gün sayımlarının dışında tutulur. Daha uzun duraklarda ülkeye girdiğiniz varsayılır. Bunu bir seyahatte <strong>Transit</strong> anahtarını değiştirerek değiştirebilirsiniz.</li>
@@ -195,14 +207,14 @@
 
     <div class="callout"><p><strong>Yalnızca uçuşlar.</strong> Trenler, feribotlar ve kara yolu seyahatleri görünmez; dışa aktarımda bulunmayan uçuşlar da görünmez. İçe aktarmadan önce önizlemeyi günlerinizi gerçekte nerede geçirdiğinizle karşılaştırın.</p></div>
 
-    <h2>Yinelenenler ve çakışmalar</h2>
+    <h2 id="yinelenenler-ve-ak-malar">Yinelenenler ve çakışmalar</h2>
     <p><a href="/tr/help/timeline-and-calendar">Zaman çizelgesinde</a> zaten bulunan bir seyahati tekrarlayan kayıtlar <strong>Yinelenen</strong> olarak işaretlenir. <strong>Birleştir</strong>, bir kaydın mevcut bir seyahati kapsadığını ve onunla birleşeceğini; <strong>Çakışma</strong> ise tarihlerin başka bir seyahatle kısmen çakıştığını gösterir. İçe aktarmadan önce bunları kontrol edin.</p>
 
-    <h2>ABD eyaletlerini inceleyin</h2>
+    <h2 id="abd-eyaletlerini-inceleyin">ABD eyaletlerini inceleyin</h2>
     <p>Havalimanı bilgisi bir ABD eyaletini destekliyorsa AtlasDays bu eyaleti önerir. Pro ile her eyalet ayrı bir seyahat olarak içe aktarılır. Pro olmadan eyaletler sıradan Amerika Birleşik Devletleri seyahatleri olarak içe aktarılır. Eyalete özgü takibe güveniyorsanız kaydetmeden önce eyaleti doğrulayın.</p>
 
     <section class="if-needed">
-      <h2>Dosya reddedilirse</h2>
+      <h2 id="dosya-reddedilirse">Dosya reddedilirse</h2>
       <p><em>Bu dosya Flighty CSV dışa aktarımına benzemiyor</em> mesajı, dosyanın özgün Flighty dışa aktarımı olmadığı anlamına gelir. Dosyayı Flighty'den yeniden dışa aktarın ve bir elektronik tabloda yeniden kaydedilmiş ya da düzenlenmiş bir dosyayı değil, bu dosyayı seçin. AtlasDays CSV dosyaları bunun yerine <a href="/tr/help/csv-import">CSV ile içe aktarma</a> ile içe aktarılır. Önizlemede <strong>Kullanılabilir Flighty satırı bulunamadı</strong> yazıyorsa, dışa aktarımda AtlasDays'in kullanabileceği uçuş yoktu.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-flighty-import">

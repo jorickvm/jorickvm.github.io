@@ -165,12 +165,23 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="На этой странице">
+      <p class="toc-title">На этой странице</p>
+      <ul>
+        <li><a href="#section-1">Как начать импорт из Фото</a></li>
+        <li><a href="#atlasdays">Что анализирует AtlasDays</a></li>
+        <li><a href="#section-3">Проверьте каждое предложение</a></li>
+        <li><a href="#section-4">Осторожнее с пробелами в данных</a></li>
+        <li><a href="#section-5">Если поездки не найдены</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/ru/">AtlasDays</a> / <a href="/ru/help/">Справка</a></nav>
 
     <h1>Импорт из Фото</h1>
 <p class="article-answer">Импорт из Фото анализирует даты и места съёмки в медиатеке прямо на устройстве, объединяет найденное в предлагаемые поездки и ничего не сохраняет, пока вы не проверите и не подтвердите результат. Это один из <a href="/ru/help/import-trips">способов добавить прошлые поездки</a>.</p>
 
-    <h2>Как начать импорт из Фото</h2>
+    <h2 id="section-1">Как начать импорт из Фото</h2>
     <ol>
       <li>Откройте <strong>«Настройки» → «Импорт» → «Фото»</strong>.</li>
       <li>Нажмите <strong>Найти поездки по фото</strong>.</li>
@@ -179,11 +190,11 @@
     </ol>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/ru/help/photo-import/photo-setup.webp" alt="Экран настройки импорта из Фото" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
-    <h2>Что анализирует AtlasDays</h2>
+    <h2 id="atlasdays">Что анализирует AtlasDays</h2>
     <p>AtlasDays считывает время съёмки и место фото и видео и всегда сканирует всю медиатеку. Скриншоты и записи экрана пропускаются. Сканирование и определение страны выполняются на вашем устройстве, работают без интернета, и ничего не загружается в AtlasDays. Сохранённые поездки хранят локальные ссылки на фото и небольшие кэшированные превью, а оригиналы остаются в приложении «Фото».</p>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/ru/help/photo-import/photo-scan.webp" alt="Идёт сканирование в импорте из Фото" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
-    <h2>Проверьте каждое предложение</h2>
+    <h2 id="section-3">Проверьте каждое предложение</h2>
     <p>Экран проверки, <strong>Найдено в Фото</strong>, показывает предлагаемые поездки. В сводных строках указано число дубликатов, кандидатов на объединение, пересечений, возможных транзитов и, для Pro, штатов США. На каждой поездке может быть метка, например <strong>Дубликат</strong>, <strong>Объединить</strong>, <strong>Пересекается с существующей</strong> (пересечение дат), <strong>Промежуток определён</strong>, <strong>У границы</strong> или <strong>Одно фото</strong>.</p>
     <ul>
       <li>Нажмите поездку, чтобы изменить страну или даты либо исключить её из импорта. Кнопки <strong>Выбрать всё</strong> и <strong>Снять выбор</strong> действуют на весь список.</li>
@@ -196,11 +207,11 @@
 
     <div class="callout"><p><strong>Фото — это свидетельство, а не доказательство.</strong> Короткие остановки между двумя близкими поездками могут быть помечены как «Транзит», а транзит никогда не входит в итоговое число дней. Выключите «Транзит» для каждой остановки, во время которой вы провели время в стране.</p></div>
 
-    <h2>Осторожнее с пробелами в данных</h2>
+    <h2 id="section-4">Осторожнее с пробелами в данных</h2>
     <p>Фото без данных о месте не могут подтвердить предложение, а большие промежутки между снимками с геометками могут дать границы поездок, которые придётся исправить вручную. Когда появятся более надёжные данные, отредактируйте сохранённую поездку в «Хронологии». Чтобы прикрепить фото к уже существующим поездкам, используйте в меню «Хронологии» пункт <strong>Поиск фото</strong>; см. <a href="/ru/help/timeline-tools">Поиск, фильтры и настройка хронологии</a>.</p>
 
     <section class="if-needed">
-      <h2>Если поездки не найдены</h2>
+      <h2 id="section-5">Если поездки не найдены</h2>
       <p>Если появилось сообщение <strong>Нужен доступ к Фото</strong>, откройте «Настройки» iOS и дайте AtlasDays полный доступ к Фото. Если сканирование завершилось сообщением <strong>На фото поездки не найдены</strong>, проверьте, была ли включена геопозиция во время съёмки. Поездки, которые уже есть в «Хронологии», помечаются как дубликаты и повторно не предлагаются.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-photo-import">

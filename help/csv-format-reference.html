@@ -163,12 +163,24 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="On this page">
+      <p class="toc-title">On this page</p>
+      <ul>
+        <li><a href="#columns">Columns</a></li>
+        <li><a href="#date-formats">Date formats</a></li>
+        <li><a href="#special-cases">Special cases</a></li>
+        <li><a href="#example">Example</a></li>
+        <li><a href="#error-messages">Error messages</a></li>
+        <li><a href="#if-a-value-is-not-recognized">If a value is not recognized</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">AtlasDays</a> / <a href="/help/">Help Center</a></nav>
 
     <h1>CSV Format Reference</h1>
 <p class="article-answer">Only the <strong>Country</strong> column is required. AtlasDays finds columns by their English header name, so column order does not matter. Steps for importing are in <a href="/help/csv-import">CSV Import</a>.</p>
 
-    <h2>Columns</h2>
+    <h2 id="columns">Columns</h2>
     <p>Recommended header row: <code>Country,State,Start Date,End Date,Purpose,Notes</code>. Header names are not case-sensitive. Unrecognized columns, such as <code>Days</code>, are ignored. If a header appears twice, the first one is used.</p>
     <dl class="kv kv-text">
       <div><dt><strong>Country</strong></dt><dd>Required. Country name in English or in the app language, ISO two-letter code, or a common alias such as <code>USA</code>, <code>UK</code>, or <code>Holland</code>. An alias that could mean two places is rejected.</dd></div>
@@ -182,7 +194,7 @@
     </dl>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/help/csv-format-reference/csv-reference.webp" alt="CSV Import example and template controls" width="1320" height="1990" loading="lazy" decoding="async" /></figure>
 
-    <h2>Date formats</h2>
+    <h2 id="date-formats">Date formats</h2>
     <div class="data-table">
     <table>
       <thead><tr><th>Start Date</th><th>End Date</th><th>Result</th></tr></thead>
@@ -197,21 +209,21 @@
     </div>
     <p>Years must fall between 1900 and eight years after the current year. Exact dates and year values cannot be mixed within one row. Year Only trips and trips without dates count toward visited places and the map, but never toward day counts or trackers. A trip without dates can only be created through CSV import.</p>
 
-    <h2>Special cases</h2>
+    <h2 id="special-cases">Special cases</h2>
     <ul>
       <li><strong>US states.</strong> Use one row per state when one US visit covered several states. A plain <code>United States</code> row is valid for country-level tracking. A state name in the Country column (<code>California</code>, <code>US-CA</code>) also gives a US trip, and an empty Country with a valid State does the same. Two-letter codes that are also country codes, such as <code>CA</code>, stay countries. Without Pro, state rows import as plain United States trips.</li>
       <li><strong>Transit.</strong> Put <code>Transit</code> in Purpose when you did not enter the country. Transit is exclusive: if it appears with another purpose, only Transit is kept.</li>
       <li><strong>Delimiter and quoting.</strong> Comma, semicolon, and tab are detected from the header row. Quote fields that contain the delimiter or a line break.</li>
     </ul>
 
-    <h2>Example</h2>
+    <h2 id="example">Example</h2>
     <pre><code>Country,State,Start Date,End Date,Purpose,Notes
 France,,2026-03-01,2026-03-05,Personal,
 United States,CA,2026-04-10,2026-04-15,Business,Conference
 Japan,,2024,,Personal,Dates not known
 United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></pre>
 
-    <h2>Error messages</h2>
+    <h2 id="error-messages">Error messages</h2>
     <p>Each error appears in the preview with its row number, and the row is not imported. The row number counts the header as row 1.</p>
     <dl class="kv kv-text">
       <div><dt>Couldn't find a Country column</dt><dd>Put a header row first with a <strong>Country</strong> column.</dd></div>
@@ -231,7 +243,7 @@ United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></p
     </dl>
 
     <section class="if-needed">
-      <h2>If a value is not recognized</h2>
+      <h2 id="if-a-value-is-not-recognized">If a value is not recognized</h2>
       <p>Use an ISO country code, ISO dates, and a standard US state name or code. A file exported from a spreadsheet in another language may carry translated headers, which are not recognized: rename them to the English headers above.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-csv-format-reference">

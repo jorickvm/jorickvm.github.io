@@ -165,19 +165,29 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="На цій сторінці">
+      <p class="toc-title">На цій сторінці</p>
+      <ul>
+        <li><a href="#section-1">Видалення одного запису</a></li>
+        <li><a href="#section-2">Масове видалення або скидання</a></li>
+        <li><a href="#icloud">Подумайте про iCloud, перш ніж підтверджувати</a></li>
+        <li><a href="#section-4">Якщо ви намагаєтеся виправити синхронізацію</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/uk/">AtlasDays</a> / <a href="/uk/help/">Довідка</a></nav>
 
     <h1>Видалення даних або початок з нуля</h1>
 <p class="article-answer">Виберіть найвужчу дію, що підходить: видаліть одну поїздку чи трекер, приберіть цілий імпорт або скористайтеся «Налаштування → Видалення та скидання» для більших змін. Спершу створіть резервну копію AtlasDays, якщо дані можуть знадобитися знову.</p>
 
-    <h2>Видалення одного запису</h2>
+    <h2 id="section-1">Видалення одного запису</h2>
     <ul>
       <li><strong>Поїздка:</strong> відкрийте її в <a href="/uk/help/timeline-and-calendar">«Хронологія»</a> і виберіть <strong>Видалити поїздку</strong> або проведіть по рядку ліворуч. Після видалення з «Хронологія» з’являється коротке повідомлення з кнопкою <strong>Повернути</strong>.</li>
       <li><strong>Трекер:</strong> відкрийте його редактор і виберіть <strong>Видалити трекер</strong>.</li>
       <li><strong>Імпорт:</strong> відкрийте <strong>Налаштування → Керування імпортом</strong>, щоб одразу видалити всі поїздки з одного імпорту. Див. <a href="/uk/help/import-trips">Імпорт поїздок</a>.</li>
     </ul>
 
-    <h2>Масове видалення або скидання</h2>
+    <h2 id="section-2">Масове видалення або скидання</h2>
     <p>Відкрийте <strong>Налаштування → Видалення та скидання</strong>. Кожен рядок пояснює, що він видаляє:</p>
     <ul>
       <li><strong>Видалити поїздки</strong> видаляє всі поїздки й залишає ваші трекери.</li>
@@ -188,13 +198,13 @@
     <p>Рядки для поїздок і трекерів з’являються, лише коли є що видаляти. Кожна дія просить підтвердження на окремому екрані, і скасувати її можна торкнувшись будь-де поза червоною кнопкою. Покупки ніколи не зачіпаються, тож AtlasDays Pro залишається активним після скидання.</p>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/uk/help/delete-and-reset/delete-confirmation.webp" alt="Екран підтвердження з поясненням, що буде видалено" width="1320" height="1140" loading="lazy" decoding="async" /></figure>
 
-    <h2>Подумайте про iCloud, перш ніж підтверджувати</h2>
+    <h2 id="icloud">Подумайте про iCloud, перш ніж підтверджувати</h2>
     <p>Якщо ввімкнено <a href="/uk/help/icloud-sync-and-restore">синхронізацію з iCloud</a> (розділ «Синхронізація з iCloud» у налаштуваннях), видалення поїздок чи трекерів видаляє їх і на ваших інших пристроях, адже синхронізація переносить видалення. Скидання також очищає параметри, зокрема їхню копію в iCloud, і припиняє показ старих даних в оповіщеннях та віджетах.</p>
 
     <div class="callout"><p><strong>Жодну з масових дій не можна скасувати.</strong> Експортований файл окремий від програми й не видаляється скиданням. Щоб мати шлях назад, створіть <a href="/uk/help/backup-and-restore">резервну копію AtlasDays</a>, перш ніж підтверджувати.</p></div>
 
     <section class="if-needed">
-      <h2>Якщо ви намагаєтеся виправити синхронізацію</h2>
+      <h2 id="section-4">Якщо ви намагаєтеся виправити синхронізацію</h2>
       <p>Не скидайте дані першими. Перевірте статус синхронізації з iCloud і зверніться до підтримки, поки якийсь пристрій ще зберігає очікувані дані.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-delete-and-reset">

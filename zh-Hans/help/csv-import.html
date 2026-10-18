@@ -165,12 +165,23 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="本页内容">
+      <p class="toc-title">本页内容</p>
+      <ul>
+        <li><a href="#section-1">导入文件</a></li>
+        <li><a href="#section-2">读懂预览</a></li>
+        <li><a href="#section-3">在源文件里改正错误</a></li>
+        <li><a href="#section-4">重新导入导出的文件</a></li>
+        <li><a href="#section-5">如果每一行都无效</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/zh-Hans/">AtlasDays</a> / <a href="/zh-Hans/help/">帮助中心</a></nav>
 
     <h1>CSV 导入</h1>
 <p class="article-answer">把存为 CSV 的电子表格批量添加为行程。AtlasDays 会逐行验证并显示预览，确认之前不会存储任何内容。这是补录过往行程的<a href="/zh-Hans/help/import-trips">方式之一</a>。</p>
 
-    <h2>导入文件</h2>
+    <h2 id="section-1">导入文件</h2>
     <ol>
       <li>打开<strong>设置 → 导入 → CSV 文件</strong>。</li>
       <li>在 Sheets、Numbers 或 Excel 中准备好文件，并导出为 CSV。<strong>CSV 示例</strong>会显示带示例行的准确表头，它的分享按钮可以把文件存下来作为起点。</li>
@@ -183,7 +194,7 @@
 
     <p>也可以直接从文件开始。在“文件”App、Safari 的下载项或“邮件”中分享 CSV 文件，然后选择 <strong>AtlasDays</strong>，就会打开同样的预览界面。AtlasDays 会作为打开 CSV 文件的选项，但不会被设为这类文件的默认 App。</p>
 
-    <h2>读懂预览</h2>
+    <h2 id="section-2">读懂预览</h2>
     <p>预览会列出有效的数据行，并显示可轻点筛选的数量。用<strong>全选</strong>或<strong>取消全选</strong>来选择要导入的内容。</p>
     <ul>
       <li><strong>重复：</strong>该行落在你已有的行程之内，或与前面的某一行重复，会被跳过。</li>
@@ -193,16 +204,16 @@
     </ul>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/zh-Hans/help/csv-import/csv-review.webp" alt="CSV 导入预览，包含有效、无效、重复和重叠的数据行" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
-    <h2>在源文件里改正错误</h2>
+    <h2 id="section-3">在源文件里改正错误</h2>
     <p>AtlasDays 无法读取的数据行会显示在<strong>N 行有错误</strong>之下，并附上行号和原因。无效的数据行永远不会导入。请在电子表格里改正，重新导出，再重新选择文件。</p>
 
     <div class="callout"><p><strong>导入之前不会有任何改变。</strong>选择文件和查看预览都不会添加行程。</p></div>
 
-    <h2>重新导入导出的文件</h2>
+    <h2 id="section-4">重新导入导出的文件</h2>
     <p>存为 CSV 的电子表格<a href="/zh-Hans/help/export-and-reports">导出</a>文件可以再次导入，前提是导出时使用的是英文：列标题只按英文读取。若要完整复制行程、追踪器和设置，请改用<a href="/zh-Hans/help/backup-and-restore">备份</a>。</p>
 
     <section class="if-needed">
-      <h2>如果每一行都无效</h2>
+      <h2 id="section-5">如果每一行都无效</h2>
       <p>确认第一行是标题行且含有 <strong>Country</strong>，并核对日期是否采用 <code>yyyy-mm-dd</code> 或四位数的年份。支持的列、取值和所有错误信息，见 <a href="/zh-Hans/help/csv-format-reference">CSV 格式参考</a>。</p>
     </section>
     <nav class="help-next" aria-labelledby="next-csv-import">

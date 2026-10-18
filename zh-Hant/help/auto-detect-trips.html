@@ -165,12 +165,40 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="本頁內容">
+      <p class="toc-title">本頁內容</p>
+      <ul>
+        <li><a href="#section-1">開啟自動偵測</a></li>
+        <li><a href="#section-2">偵測到國家時會發生什麼事</a></li>
+        <li><a href="#section-3">行程會自動結束，轉機也會自動標示</a></li>
+        <li><a href="#section-4">檢視偵測到的行程</a></li>
+        <li><a href="#section-5">忽略不想偵測的地點</a></li>
+        <li><a href="#section-6">時間軸上的提示卡</a></li>
+        <li><a href="#section-7">讓自動偵測持續運作</a></li>
+        <li><a href="#section-8">沒有出現行程時</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="導覽路徑"><a href="/zh-Hant/">AtlasDays</a> / <a href="/zh-Hant/help/">說明中心</a></nav>
 
     <h1>自動偵測行程</h1>
 <p class="article-answer">自動偵測行程會利用低耗電的背景定位，察覺你進入新的國家，並立即將行程加入<a href="/zh-Hant/help/timeline-and-calendar">時間軸</a>。不需要等待核准，之後也能編輯或刪除該行程。</p>
 
-    <h2>開啟自動偵測</h2>
+    <details class="toc">
+      <summary>本頁內容</summary>
+      <ul>
+        <li><a href="#section-1">開啟自動偵測</a></li>
+        <li><a href="#section-2">偵測到國家時會發生什麼事</a></li>
+        <li><a href="#section-3">行程會自動結束，轉機也會自動標示</a></li>
+        <li><a href="#section-4">檢視偵測到的行程</a></li>
+        <li><a href="#section-5">忽略不想偵測的地點</a></li>
+        <li><a href="#section-6">時間軸上的提示卡</a></li>
+        <li><a href="#section-7">讓自動偵測持續運作</a></li>
+        <li><a href="#section-8">沒有出現行程時</a></li>
+      </ul>
+    </details>
+    <script>(function(){var t=document.currentScript.previousElementSibling;if(matchMedia('(min-width: 760px)').matches)t.open=true})();</script>
+    <h2 id="section-1">開啟自動偵測</h2>
     <ol>
       <li>開啟<strong>設定 → 行程記錄 → 自動偵測行程</strong>。</li>
       <li>開啟<strong>自動偵測行程</strong>。</li>
@@ -180,7 +208,7 @@
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/zh-Hant/help/auto-detect-trips/auto-detect-settings.webp" alt="自動偵測行程設定畫面，含位置和通知控制項" width="1320" height="2100" loading="lazy" decoding="async" /></figure>
     <p>只有在「永遠」的取用權限下，偵測才會運作。若只停在「使用 App 期間」，開關會維持關閉。從時間軸的卡片開啟（見下方）時，在兩次位置提示之後還會詢問通知權限；從「設定」開啟則不會。</p>
 
-    <h2>偵測到國家時會發生什麼事</h2>
+    <h2 id="section-2">偵測到國家時會發生什麼事</h2>
     <ul>
       <li>行程會立即加入時間軸，從偵測當天開始，在你離開之前沒有結束日期。</li>
       <li>若 AtlasDays 正開啟著，畫面會出現顯示該地點的橫幅，並附有<strong>還原</strong>按鈕。橫幅幾秒後會消失，而且 App 在前景時不會顯示推播通知。</li>
@@ -189,20 +217,20 @@
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/zh-Hant/help/auto-detect-trips/detected-banner.webp" alt="App 內橫幅，顯示已偵測到國家，並附有還原按鈕" width="1320" height="720" loading="lazy" decoding="async" /></figure>
     <p>通知只有一個動作：<strong>刪除行程</strong>，會移除剛剛新增的行程。它不會把該地點加入忽略清單，也不會刪除你已更改過開始日期的行程。</p>
 
-    <h2>行程會自動結束，轉機也會自動標示</h2>
+    <h2 id="section-3">行程會自動結束，轉機也會自動標示</h2>
     <ul>
       <li><strong>自動結束。</strong>之後的偵測顯示你已離開某個國家時，先前尚未結束的行程會獲得結束日期。若 AtlasDays 正開啟著，畫面會短暫出現提示<strong>&lt;國家&gt; 的行程已結束</strong>（或 <strong>N 個行程已結束</strong>），並附有<strong>還原</strong>。</li>
       <li><strong>轉機。</strong>兩個其他國家之間的短暫停留，一開始會顯示為一般行程。下一次偵測到達時，AtlasDays 會將它改為<a href="/zh-Hant/help/history-and-import">轉機</a>，所以不會計入天數。只有在你尚未為它加上目的、備註或照片時，才會這樣處理。</li>
     </ul>
 
-    <h2>檢視偵測到的行程</h2>
+    <h2 id="section-4">檢視偵測到的行程</h2>
     <p>在時間軸中開啟行程，確認國家或美國州別，以及日期。開始日期是偵測到位置變更的那一天，所以在確切日期很重要時，請自行編輯。偵測美國州別是 Pro 功能；沒有 Pro 時，美國行程會以一般的美國行程新增。</p>
 
-    <h2>忽略不想偵測的地點</h2>
+    <h2 id="section-5">忽略不想偵測的地點</h2>
     <p>在自動偵測畫面的<strong>已忽略的地點</strong>中，選擇<strong>國家</strong>，即可略過手機在國界附近一再偵測到的地點。Pro 使用者還可以選擇<strong>美國各州</strong>。已忽略的地點不會建立行程，天數仍歸於周邊的國家。你仍然可以自行新增這些行程。</p>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/zh-Hant/help/auto-detect-trips/ignore-list.webp" alt="自動偵測的忽略清單，已選取多個國家" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
-    <h2>時間軸上的提示卡</h2>
+    <h2 id="section-6">時間軸上的提示卡</h2>
     <p>時間軸最多可在清單頂端顯示三張卡片。卡片上的 X 會將它永久隱藏。</p>
     <ul>
       <li><strong>自動偵測行程</strong>卡片提供<strong>開啟自動偵測</strong>與<strong>運作方式</strong>。它在自動偵測關閉且你至少有一個行程時出現。</li>
@@ -212,7 +240,7 @@
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/zh-Hant/help/auto-detect-trips/prompt-card.webp" alt="時間軸上的提示卡，提供開啟自動偵測" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
     <p>關於這些卡片與其他時間軸控制項的更多說明，請見<a href="/zh-Hant/help/timeline-tools">搜尋、篩選與自訂時間軸</a>。</p>
 
-    <h2>讓自動偵測持續運作</h2>
+    <h2 id="section-7">讓自動偵測持續運作</h2>
     <ul>
       <li>不時開啟 AtlasDays。若長時間都不開啟，iOS 可能會停止傳送位置更新。</li>
       <li>不要從 App 切換器強制結束 App，否則在你再次開啟之前，監控都會停止。</li>
@@ -221,7 +249,7 @@
     <div class="callout"><p><strong>不會持續使用 GPS。</strong>自動偵測依靠的是 iOS 的「重要位置變更」事件，不會儲存行進路線。偵測時間取決於 iOS、地理環境與連線狀況，所以越過國界後，可能較晚才被察覺。</p></div>
 
     <section class="if-needed">
-      <h2>沒有出現行程時</h2>
+      <h2 id="section-8">沒有出現行程時</h2>
       <p>確認自動偵測已開啟、位置設為「永遠」、該地點不在忽略清單中，而且 App 最近開啟過、沒有被強制結束。若預期會收到通知，也請確認<strong>偵測到新國家時通知</strong>已開啟，且 iOS 允許 AtlasDays 傳送通知。行程隨時都能手動新增。</p>
     </section>
     <nav class="help-next" aria-labelledby="next-auto-detect-trips">

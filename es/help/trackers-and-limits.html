@@ -165,12 +165,42 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="En esta página">
+      <p class="toc-title">En esta página</p>
+      <ul>
+        <li><a href="#cinco-ajustes-determinan-el-resultado">Cinco ajustes determinan el resultado</a></li>
+        <li><a href="#d-as-y-noches">Días y noches</a></li>
+        <li><a href="#los-d-as-solapados-cuentan-una-vez">Los días solapados cuentan una vez</a></li>
+        <li><a href="#las-ventanas-m-viles-se-mueven-cada-d-a">Las ventanas móviles se mueven cada día</a></li>
+        <li><a href="#controles-por-a-o">Controles por año</a></li>
+        <li><a href="#los-controles-por-entrada-siguen-una-estancia">Los controles por entrada siguen una estancia</a></li>
+        <li><a href="#viajes-en-curso-y-planificados">Viajes en curso y planificados</a></li>
+        <li><a href="#leer-el-gr-fico-de-detalle">Leer el gráfico de detalle</a></li>
+        <li><a href="#comprobar-qu-viajes-afectan-a-un-control">Comprobar qué viajes afectan a un control</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/es/">AtlasDays</a> / <a href="/es/help/">Centro de ayuda</a></nav>
 
     <h1>Cómo se calculan los totales de un control</h1>
 <p class="article-answer">Un control selecciona los <a href="/es/help/history-and-import">viajes con fechas</a> de sus lugares, fusiona los días naturales solapados y los cuenta dentro de su ventana. El resultado se compara con el límite que hayas definido.</p>
 
-    <h2>Cinco ajustes determinan el resultado</h2>
+    <details class="toc">
+      <summary>En esta página</summary>
+      <ul>
+        <li><a href="#cinco-ajustes-determinan-el-resultado">Cinco ajustes determinan el resultado</a></li>
+        <li><a href="#d-as-y-noches">Días y noches</a></li>
+        <li><a href="#los-d-as-solapados-cuentan-una-vez">Los días solapados cuentan una vez</a></li>
+        <li><a href="#las-ventanas-m-viles-se-mueven-cada-d-a">Las ventanas móviles se mueven cada día</a></li>
+        <li><a href="#controles-por-a-o">Controles por año</a></li>
+        <li><a href="#los-controles-por-entrada-siguen-una-estancia">Los controles por entrada siguen una estancia</a></li>
+        <li><a href="#viajes-en-curso-y-planificados">Viajes en curso y planificados</a></li>
+        <li><a href="#leer-el-gr-fico-de-detalle">Leer el gráfico de detalle</a></li>
+        <li><a href="#comprobar-qu-viajes-afectan-a-un-control">Comprobar qué viajes afectan a un control</a></li>
+      </ul>
+    </details>
+    <script>(function(){var t=document.currentScript.previousElementSibling;if(matchMedia('(min-width: 760px)').matches)t.open=true})();</script>
+    <h2 id="cinco-ajustes-determinan-el-resultado">Cinco ajustes determinan el resultado</h2>
     <ol>
       <li><strong>Lugares:</strong> solo cuentan los viajes a los países o estados de EE. UU. seleccionados.</li>
       <li><strong>Unidad:</strong> la fila <strong>Límite</strong> cuenta <strong>Días</strong>, <strong>Noches</strong>, <strong>Días fuera</strong> o <strong>Días completos</strong>.</li>
@@ -179,26 +209,26 @@
       <li><strong>Precisión del viaje:</strong> cuentan los viajes con fechas exactas. Los viajes de Solo año y de Tránsito aportan cero días.</li>
     </ol>
 
-    <h2>Días y noches</h2>
+    <h2 id="d-as-y-noches">Días y noches</h2>
     <p>La unidad <strong>Días</strong> cuenta enteros el día de llegada y el de salida, así que una estancia del 1 al 3 de junio son tres días. La unidad <strong>Noches</strong> cuenta las noches entre la llegada y la salida, así que la misma estancia son dos. Las noches no unen estancias consecutivas: la noche entre el día de salida de un viaje y el día de llegada del siguiente no cuenta para ninguno, ni siquiera en el mismo país. La unidad <strong>Días completos</strong> cuenta solo días enteros, sin el día de llegada ni el de salida: una estancia del 1 al 3 de junio es un día completo, y una visita de un día o una sola noche no cuenta nada.</p>
 
-    <h2>Los días solapados cuentan una vez</h2>
+    <h2 id="los-d-as-solapados-cuentan-una-vez">Los días solapados cuentan una vez</h2>
     <p>Los controles móviles, por año y de días fuera fusionan los viajes que cubren el mismo día natural, así que un solapamiento en tu <a href="/es/help/timeline-and-calendar">Cronología</a> no cuenta dos veces. Un control Por entrada no fusiona ningún viaje, como se explica más abajo.</p>
 
-    <h2>Las ventanas móviles se mueven cada día</h2>
+    <h2 id="las-ventanas-m-viles-se-mueven-cada-d-a">Las ventanas móviles se mueven cada día</h2>
     <p>Un control móvil siempre termina hoy. Su <strong>Duración</strong> es un número fijo de días, o un número de meses naturales contados hacia atrás desde hoy. Los días antiguos salen de la ventana mientras entran días de viaje más recientes, así que el total puede cambiar sin que edites ningún viaje.</p>
     <p>El control de ciudadanía de Nueva Zelanda añade la fila <strong>Residencia desde</strong>: las estancias anteriores a esa fecha no cuentan, y la línea bajo las filas indica desde cuándo se cuenta. Su pantalla de detalle también comprueba los 240 días exigidos en cada uno de los cinco años e indica el primer día en que puedes presentar la solicitud.</p>
 
-    <h2>Controles por año</h2>
+    <h2 id="controles-por-a-o">Controles por año</h2>
     <p>Un control por año cuenta a lo largo de un año, que empieza en la fecha de su fila <strong>Inicio</strong>. Si empieza el 1 de enero, es un año natural; cualquier otra fecha de inicio lo convierte en un año fiscal.</p>
 
-    <h2>Los controles por entrada siguen una estancia</h2>
+    <h2 id="los-controles-por-entrada-siguen-una-estancia">Los controles por entrada siguen una estancia</h2>
     <p>Un control Por entrada mide una sola estancia. Usa la estancia en curso si la hay y, si no, la estancia terminada más reciente. No suma visitas separadas. Cuando el control tiene una fecha de <strong>Inicio</strong>, los días anteriores a esa fecha quedan fuera.</p>
 
-    <h2>Viajes en curso y planificados</h2>
+    <h2 id="viajes-en-curso-y-planificados">Viajes en curso y planificados</h2>
     <p>Un viaje sin fecha de fin, que la Cronología muestra como <strong>En curso</strong>, cuenta hasta hoy. Un viaje que empieza en el futuro no cambia el total actual; aparece en el gráfico como viaje planificado, y la previsión lo usa. <a href="/es/help/plan-a-trip">Comprobar si un viaje planeado cabe</a> explica la previsión.</p>
 
-    <h2>Leer el gráfico de detalle</h2>
+    <h2 id="leer-el-gr-fico-de-detalle">Leer el gráfico de detalle</h2>
     <p>Abre un control para ver cómo cambia su recuento a lo largo del tiempo. El gráfico tiene dos vistas: un primer plano desplazable y una vista de todo el período. Pellizca o toca dos veces el gráfico para cambiar; cada control recuerda su propia elección.</p>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/es/help/trackers-and-limits/detail-chart.webp" alt="Gráfico de detalle de un control a lo largo de su ventana activa" width="1320" height="2566" loading="lazy" decoding="async" /></figure>
     <p>Los controles móviles, por año y de días fuera también muestran una frase bajo el gráfico cuando tus planes cambian el resultado, como la fecha en que alcanzarías el límite. Los controles con dos límites muestran en cambio un gráfico para cada límite; consulta <a href="/es/help/rule-trackers">controles con dos límites</a>.</p>
@@ -206,7 +236,7 @@
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/es/help/trackers-and-limits/goal-window.webp" alt="Editor de un control con los ajustes de límite y de ventana" width="1320" height="1500" loading="lazy" decoding="async" /></figure>
 
     <section class="if-needed">
-      <h2>Comprobar qué viajes afectan a un control</h2>
+      <h2 id="comprobar-qu-viajes-afectan-a-un-control">Comprobar qué viajes afectan a un control</h2>
       <p>Abre su vista de detalle y lee los viajes que aparecen bajo el gráfico; compara después sus lugares y su ventana con tu <a href="/es/help/timeline-and-calendar">Cronología</a>. Presta especial atención a los viajes en curso, los de Tránsito, los registros de Solo año, los solapamientos y las etiquetas de estado de EE. UU. que falten. Para añadir un viaje a ese control, toca <strong>+</strong> sobre su lista de viajes.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-trackers-and-limits">

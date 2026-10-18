@@ -165,12 +165,23 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="Auf dieser Seite">
+      <p class="toc-title">Auf dieser Seite</p>
+      <ul>
+        <li><a href="#pr-fen-ob-die-synchronisierung-eingeschaltet-ist">Prüfen, ob die Synchronisierung eingeschaltet ist</a></li>
+        <li><a href="#ein-neues-ger-t-einrichten-oder-neu-installieren">Ein neues Gerät einrichten oder neu installieren</a></li>
+        <li><a href="#was-der-status-bedeutet">Was der Status bedeutet</a></li>
+        <li><a href="#synchronisierung-ist-kein-backup">Synchronisierung ist kein Backup</a></li>
+        <li><a href="#wenn-daten-zu-fehlen-scheinen">Wenn Daten zu fehlen scheinen</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/de/">AtlasDays</a> / <a href="/de/help/">Hilfe</a></nav>
 
     <h1>iCloud-Synchronisierung und Wiederherstellung</h1>
 <p class="article-answer">Mit eingeschalteter iCloud-Synchronisierung hält AtlasDays deine Reisen und Tracker in deinem privaten iCloud-Account und zwischen allen Geräten, die mit demselben Apple-Account angemeldet sind, auf dem gleichen Stand. Die Synchronisierung ist keine Backup-Datei, bewahre also zusätzlich ein eigenes AtlasDays-Backup auf.</p>
 
-    <h2>Prüfen, ob die Synchronisierung eingeschaltet ist</h2>
+    <h2 id="pr-fen-ob-die-synchronisierung-eingeschaltet-ist">Prüfen, ob die Synchronisierung eingeschaltet ist</h2>
     <ol>
       <li>Öffne <strong>Einstellungen → iCloud-Synchronisierung</strong>. Der Schalter ist standardmäßig an.</li>
       <li>Lies den <strong>Status</strong>. <strong>Synchronisiert</strong> heißt: Dieses Gerät ist auf dem neuesten Stand.</li>
@@ -178,7 +189,7 @@
     </ol>
     <p>Nachdem du die Synchronisierung ein- oder ausgeschaltet hast, bittet AtlasDays dich, die App im App-Umschalter zu beenden und neu zu öffnen. Die Änderung gilt ab dem nächsten Start.</p>
 
-    <h2>Ein neues Gerät einrichten oder neu installieren</h2>
+    <h2 id="ein-neues-ger-t-einrichten-oder-neu-installieren">Ein neues Gerät einrichten oder neu installieren</h2>
     <ol>
       <li>Melde dich in den iOS-Einstellungen mit demselben Apple-Account an.</li>
       <li>Installiere AtlasDays und öffne <strong>Einstellungen → iCloud-Synchronisierung</strong>, um zu bestätigen, dass sie eingeschaltet ist.</li>
@@ -186,7 +197,7 @@
     </ol>
     <p>Gerätespezifische Entscheidungen kommen getrennt zurück. Berechtigungen für Standort und Mitteilungen werden pro Gerät erteilt, sodass die <a href="/de/help/auto-detect-trips">automatische Erkennung</a> und Mitteilungen erst wieder funktionieren, wenn du sie erneut erlaubst, und <a href="/de/help/widgets">Widgets</a> neu hinzugefügt werden müssen. Einstellungen wie das Wohnsitzland und das Erscheinungsbild wandern von selbst über iCloud, auch wenn die Reisesynchronisierung aus ist.</p>
 
-    <h2>Was der Status bedeutet</h2>
+    <h2 id="was-der-status-bedeutet">Was der Status bedeutet</h2>
     <ul>
       <li><strong>Synchronisierung …</strong>, <strong>Warten auf Synchronisierung</strong> und <strong>Warten auf iCloud</strong> sind vorübergehend. Lass AtlasDays einen Moment geöffnet.</li>
       <li><strong>Synchronisiert</strong> heißt: Nichts steht mehr aus.</li>
@@ -195,11 +206,11 @@
       <li><strong>Synchronisierungsproblem</strong> heißt: Einige Änderungen haben iCloud noch nicht erreicht. Tipp auf <strong>Details anzeigen</strong> für Vorschläge und Diagnosedaten, die du an den Support schicken kannst.</li>
     </ul>
 
-    <h2>Synchronisierung ist kein Backup</h2>
+    <h2 id="synchronisierung-ist-kein-backup">Synchronisierung ist kein Backup</h2>
     <p>Die Synchronisierung hält einen gemeinsamen Datenbestand über alle Geräte, sodass eine Löschung auf einem Gerät die anderen erreicht. Sie kann nichts zurückholen, was du entfernt hast. Ein <a href="/de/help/backup-and-restore">AtlasDays-Backup</a> ist eine eigene Datei, die du aufbewahrst und bei Bedarf wiederherstellst. Stellst du ein Backup bei eingeschalteter Synchronisierung wieder her, ersetzen die wiederhergestellten Daten die Daten auf jedem Gerät, und AtlasDays wartet, bis iCloud die Synchronisierung abgeschlossen hat, bevor es beginnt.</p>
 
     <section class="if-needed">
-      <h2>Wenn Daten zu fehlen scheinen</h2>
+      <h2 id="wenn-daten-zu-fehlen-scheinen">Wenn Daten zu fehlen scheinen</h2>
       <ol>
         <li>Setz die App nicht zurück und lösche keine Daten, während du der Sache nachgehst.</li>
         <li>Bestätige, dass dieses Gerät mit demselben Apple-Account angemeldet und iCloud verfügbar ist.</li>

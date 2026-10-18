@@ -165,12 +165,24 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="Bu sayfada">
+      <p class="toc-title">Bu sayfada</p>
+      <ul>
+        <li><a href="#d-ar-da-birimini-ayarlay-n">Dışarıda birimini ayarlayın</a></li>
+        <li><a href="#neyin-d-ar-da-say-ld">Neyin dışarıda sayıldığı</a></li>
+        <li><a href="#evdeki-kal-lar-n-z-da-kaydedin">Evdeki kalışlarınızı da kaydedin</a></li>
+        <li><a href="#pencere-ve-yokluk-ba-na-say-m">Pencere ve yokluk başına sayım</a></li>
+        <li><a href="#listenin-hangi-seyahatleri-g-sterece-ini-se-in">Listenin hangi seyahatleri göstereceğini seçin</a></li>
+        <li><a href="#d-ar-da-say-s-yanl-g-r-n-yorsa">Dışarıda sayısı yanlış görünüyorsa</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="İçerik yolu"><a href="/tr/">AtlasDays</a> / <a href="/tr/help/">Yardım Merkezi</a></nav>
 
     <h1>Bir yerden uzakta geçen günleri sayma</h1>
 <p class="article-answer">Bazı kurallar ne kadar bulunduğunuzu değil, ne kadar uzak kaldığınızı sınırlar. Takibin <strong>Sınır</strong> birimini <strong>Dışarıda</strong> olarak ayarlarsanız takip, yerlerindeki hiçbir kalışın kapsamadığı günleri sayar.</p>
 
-    <h2>Dışarıda birimini ayarlayın</h2>
+    <h2 id="d-ar-da-birimini-ayarlay-n">Dışarıda birimini ayarlayın</h2>
     <ol>
       <li>Takip düzenleyicisini açın ya da <a href="/tr/help/create-a-tracker">yeni bir takip</a> başlatın ve uzak kalacağınız yerleri seçin.</li>
       <li><strong>Sınır</strong> satırına dokunun.</li>
@@ -179,24 +191,24 @@
     </ol>
     <p>Birçok hazır ayar bunu zaten kullanır; örneğin <strong>ABD Green Card devamsızlık sınırı</strong> ve <strong>Birleşik Krallık süresiz oturma izni (ILR)</strong>. Bunları <a href="/tr/help/tracker-presets">Takip ekle</a> sayfasında <strong>İkamet</strong> ve <strong>Vatandaşlık</strong> düğmelerinin altında bulabilirsiniz.</p>
 
-    <h2>Neyin dışarıda sayıldığı</h2>
+    <h2 id="neyin-d-ar-da-say-ld">Neyin dışarıda sayıldığı</h2>
     <p>Takibin yerlerindeki tarihli hiçbir kalış bir güne denk gelmiyorsa o gün dışarıda sayılır. Bu, başka ülkelerdeki günleri ve hiç seyahat kaydı bulunmayan günleri kapsar. Varış ve ayrılış günleri kalışa aittir; bu yüzden dışarıda günü değildir. Çakışan seyahatler birleştirilir.</p>
 
-    <h2>Evdeki kalışlarınızı da kaydedin</h2>
+    <h2 id="evdeki-kal-lar-n-z-da-kaydedin">Evdeki kalışlarınızı da kaydedin</h2>
     <p>Kayıtlı kalışı olmayan bir gün dışarıda sayıldığından, yaşadığınız yer için bir takip, orada geçirdiğiniz süreyi <a href="/tr/help/timeline-and-calendar">zaman çizelgesinde</a> gerektirir. Evde geçen bir ay eksikse o ay dışarıda geçen süre olarak görünür.</p>
 
     <div class="callout"><p><strong>Transit ve Yalnızca yıl seyahatleri kalış değildir.</strong> İzlenen bir yerdeki Transit veya Yalnızca yıl seyahati bulunma sayılmaz; bu yüzden o günler dışarıda görünebilir. O yerde geçirilen süre olarak sayılması gerekiyorsa kalışı kesin tarihlerle ve Transit olmadan kaydedin.</p></div>
 
-    <h2>Pencere ve yokluk başına sayım</h2>
+    <h2 id="pencere-ve-yokluk-ba-na-say-m">Pencere ve yokluk başına sayım</h2>
     <p><strong>Kayan</strong> veya <strong>Yıl</strong> penceresiyle takip, o pencere içindeki tüm dışarıda günlerini sayar; örneğin herhangi bir 12 ayda 180 gün dışarıda.</p>
     <p><strong>Giriş başına</strong> penceresiyle takip, <strong>Yokluk başına</strong> etiketli, yokluk başına çalışan bir takibe dönüşür. Bu takip, yerdeki son kalışınızın bitmesinden bu yana süren dışarıda günleri ya da geri döndüğünüzde en son tamamlanan yokluğu ölçer. Ardışık günlerdeki iki kalışın arasında yokluk kalmaz. <strong>Başlangıç</strong> tarihi izlemenin ne zaman başlayacağını belirler ve bu tarihten önce hiçbir şey sayılmaz; hâlâ gelecekte olan bir başlangıç <strong>N gün sonra başlar</strong> olarak görünür.</p>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/tr/help/days-away/per-absence-detail.webp" alt="Yokluk grafiği ve seyahat listesini gösteren dışarıda günleri takibi ayrıntısı" width="1320" height="1903" loading="lazy" decoding="async" /></figure>
 
-    <h2>Listenin hangi seyahatleri göstereceğini seçin</h2>
+    <h2 id="listenin-hangi-seyahatleri-g-sterece-ini-se-in">Listenin hangi seyahatleri göstereceğini seçin</h2>
     <p>Dışarıda günleri takibinin ayrıntı ekranında, seyahat listesinin üstündeki menüde <strong>Bölge içinde</strong>, <strong>Bölge dışında</strong> ve <strong>Tüm seyahatler</strong> seçenekleriyle bir <strong>Gösterilecek seyahatler</strong> bölümü bulunur. Varsayılan, yokluğunuzu oluşturan seyahatleri listeleyen <strong>Bölge dışında</strong> seçeneğidir. Seçim o takip için bu aygıtta saklanır ve yalnızca listeyi değiştirir, sayımı asla değiştirmez.</p>
 
     <section class="if-needed">
-      <h2>Dışarıda sayısı yanlış görünüyorsa</h2>
+      <h2 id="d-ar-da-say-s-yanl-g-r-n-yorsa">Dışarıda sayısı yanlış görünüyorsa</h2>
       <p>Pencere içinde zaman çizelgesinde boşluk olup olmadığına bakın; kaydedilmemiş günler dışarıda sayılır. Ardından izlenen yerlerde Transit veya Yalnızca yıl seyahati olup olmadığını kontrol edin ve hâlâ sürmekte olan kalışların bitiş tarihinin bulunmadığını, böylece bugüne kadar sürdüğünü doğrulayın.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-days-away">

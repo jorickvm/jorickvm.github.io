@@ -163,15 +163,27 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="On this page">
+      <p class="toc-title">On this page</p>
+      <ul>
+        <li><a href="#export-from-flighty">Export from Flighty</a></li>
+        <li><a href="#import-into-atlasdays">Import into AtlasDays</a></li>
+        <li><a href="#how-flights-become-trips">How flights become trips</a></li>
+        <li><a href="#duplicates-and-overlaps">Duplicates and overlaps</a></li>
+        <li><a href="#review-us-states">Review US states</a></li>
+        <li><a href="#if-the-file-is-rejected">If the file is rejected</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">AtlasDays</a> / <a href="/help/">Help Center</a></nav>
 
     <h1>Flighty Import</h1>
 <p class="article-answer">Export your flight history from Flighty as CSV, select it in AtlasDays, and review the suggested trips before saving. It is one of the <a href="/help/import-trips">ways to add past trips</a>.</p>
 
-    <h2>Export from Flighty</h2>
+    <h2 id="export-from-flighty">Export from Flighty</h2>
     <p>In Flighty, open <strong>Settings → Account Data</strong> and export your flights as CSV. Save the file where the iOS Files picker can reach it, such as iCloud Drive or On My iPhone.</p>
 
-    <h2>Import into AtlasDays</h2>
+    <h2 id="import-into-atlasdays">Import into AtlasDays</h2>
     <ol>
       <li>Open <strong>Settings → Import → Flighty</strong>.</li>
       <li>Tap <strong>Select Flighty CSV</strong> and choose the exported file.</li>
@@ -181,7 +193,7 @@
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/help/flighty-import/flighty-setup.webp" alt="Import from Flighty setup screen" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
     <p>Parsing happens on the device, and nothing is saved until you confirm.</p>
 
-    <h2>How flights become trips</h2>
+    <h2 id="how-flights-become-trips">How flights become trips</h2>
     <p>AtlasDays maps each airport to a country and creates a trip when a flight arrives in a country and a later flight departs from it. The rest of the preview follows from that:</p>
     <ul>
       <li><strong>Layovers</strong> under 24 hours are reviewed separately. Stops of 10 hours or less are marked <a href="/help/history-and-import">Transit</a> and excluded from day counts. Longer stops are assumed to mean you entered the country. Change this on a trip by toggling <strong>Transit</strong>.</li>
@@ -193,14 +205,14 @@
 
     <div class="callout"><p><strong>Flights only.</strong> Trains, ferries, and road trips do not appear, and neither do flights missing from the export. Compare the preview with where you actually spent your days before importing.</p></div>
 
-    <h2>Duplicates and overlaps</h2>
+    <h2 id="duplicates-and-overlaps">Duplicates and overlaps</h2>
     <p>Entries that repeat a trip already in <a href="/help/timeline-and-calendar">Timeline</a> are marked <strong>Duplicate</strong>. <strong>Merge</strong> means an entry covers an existing trip and would combine with it, and <strong>Overlap</strong> means the dates partly collide with another trip. Check these before importing.</p>
 
-    <h2>Review US states</h2>
+    <h2 id="review-us-states">Review US states</h2>
     <p>When airport information supports a US state, AtlasDays proposes it. With Pro, each state imports as its own trip. Without Pro, the states import as plain United States trips. Confirm the state before saving if you rely on state-specific tracking.</p>
 
     <section class="if-needed">
-      <h2>If the file is rejected</h2>
+      <h2 id="if-the-file-is-rejected">If the file is rejected</h2>
       <p>The message <em>This does not look like a Flighty CSV export</em> means the file is not the original Flighty export. Export it again from Flighty and select that file, not one resaved or rearranged in a spreadsheet. AtlasDays CSV files go through <a href="/help/csv-import">CSV Import</a> instead. If the preview says <strong>No usable Flighty rows found</strong>, the export contained no flights AtlasDays could use.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-flighty-import">

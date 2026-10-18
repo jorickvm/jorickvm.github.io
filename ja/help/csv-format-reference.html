@@ -165,12 +165,24 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="目次">
+      <p class="toc-title">目次</p>
+      <ul>
+        <li><a href="#section-1">列</a></li>
+        <li><a href="#section-2">日付の形式</a></li>
+        <li><a href="#section-3">特別なケース</a></li>
+        <li><a href="#section-4">例</a></li>
+        <li><a href="#section-5">エラーメッセージ</a></li>
+        <li><a href="#section-6">値が認識されないとき</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="パンくずリスト"><a href="/ja/">AtlasDays</a> / <a href="/ja/help/">ヘルプセンター</a></nav>
 
     <h1>CSV形式リファレンス</h1>
 <p class="article-answer">必須の列は<strong>Country</strong>だけです。AtlasDaysは列を英語のヘッダー名で見つけるため、列の並び順は自由です。インポートの手順は<a href="/ja/help/csv-import">CSVインポート</a>にあります。</p>
 
-    <h2>列</h2>
+    <h2 id="section-1">列</h2>
     <p>推奨するヘッダー行は<code>Country,State,Start Date,End Date,Purpose,Notes</code>です。ヘッダー名は大文字と小文字を区別しません。<code>Days</code>のように認識されない列は無視されます。同じヘッダーが2つある場合は、最初のものが使われます。</p>
     <dl class="kv kv-text">
       <div><dt><strong>Country</strong></dt><dd>必須。英語またはアプリの言語での国名、ISOの2文字コード、または<code>USA</code>、<code>UK</code>、<code>Holland</code>のように広く使われる別名。2つの場所を指しうる別名は受け付けられません。</dd></div>
@@ -184,7 +196,7 @@
     </dl>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/ja/help/csv-format-reference/csv-reference.webp" alt="CSVインポートの「CSVの例」とテンプレートの操作" width="1320" height="1990" loading="lazy" decoding="async" /></figure>
 
-    <h2>日付の形式</h2>
+    <h2 id="section-2">日付の形式</h2>
     <div class="data-table">
     <table>
       <thead><tr><th>Start Date</th><th>End Date</th><th>結果</th></tr></thead>
@@ -199,21 +211,21 @@
     </div>
     <p>年は、1900年から現在の年の8年後までの範囲でなければなりません。1つの行で、正確な日付と年の値を混在させることはできません。「年のみ」の旅行と日付のない旅行は、訪問済みの場所とマップには数えられますが、滞在日数やトラッカーには数えられません。日付のない旅行は、CSVインポートでしか作成できません。</p>
 
-    <h2>特別なケース</h2>
+    <h2 id="section-3">特別なケース</h2>
     <ul>
       <li><strong>米国の州。</strong>1回の米国滞在で複数の州をまわった場合は、州ごとに1行ずつ書きます。国単位で記録するだけなら、通常の<code>United States</code>の行で問題ありません。Country列に州名（<code>California</code>、<code>US-CA</code>）を書いても米国の旅行になり、Countryが空で有効なStateがある場合も同様です。<code>CA</code>のように国コードとしても使われる2文字コードは、国として扱われます。Proでない場合、州の行は通常の米国の旅行としてインポートされます。</li>
       <li><strong>乗り継ぎ。</strong>入国していない場合は、Purposeに<code>Transit</code>と書きます。Transitはほかの目的と併用できません。ほかの目的と一緒に書かれている場合は、Transitだけが残ります。</li>
       <li><strong>区切り文字と引用符。</strong>カンマ、セミコロン、タブは、ヘッダー行から自動的に判別されます。区切り文字や改行を含むフィールドは、引用符で囲んでください。</li>
     </ul>
 
-    <h2>例</h2>
+    <h2 id="section-4">例</h2>
     <pre><code>Country,State,Start Date,End Date,Purpose,Notes
 France,,2026-03-01,2026-03-05,Personal,
 United States,CA,2026-04-10,2026-04-15,Business,Conference
 Japan,,2024,,Personal,Dates not known
 United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></pre>
 
-    <h2>エラーメッセージ</h2>
+    <h2 id="section-5">エラーメッセージ</h2>
     <p>エラーは行番号とともに確認画面に表示され、その行はインポートされません。行番号は、ヘッダーを1行目として数えます。</p>
     <dl class="kv kv-text">
       <div><dt>「Country」列が見つかりませんでした</dt><dd>1行目にヘッダー行を置き、<strong>Country</strong>列を含めてください。</dd></div>
@@ -233,7 +245,7 @@ United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></p
     </dl>
 
     <section class="if-needed">
-      <h2>値が認識されないとき</h2>
+      <h2 id="section-6">値が認識されないとき</h2>
       <p>ISOの国コード、ISO形式の日付、標準的な米国の州名またはコードを使ってください。ほかの言語のスプレッドシートから書き出したファイルには、翻訳されたヘッダーが含まれていることがあり、認識されません。上記の英語のヘッダーに書き換えてください。</p>
     </section>
     <nav class="help-next" aria-labelledby="next-csv-format-reference">

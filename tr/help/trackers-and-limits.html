@@ -165,12 +165,42 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="Bu sayfada">
+      <p class="toc-title">Bu sayfada</p>
+      <ul>
+        <li><a href="#sonucu-be-ayar-belirler">Sonucu beş ayar belirler</a></li>
+        <li><a href="#g-nler-ve-geceler">Günler ve geceler</a></li>
+        <li><a href="#ak-an-g-nler-bir-kez-say-l-r">Çakışan günler bir kez sayılır</a></li>
+        <li><a href="#kayan-pencereler-her-g-n-ilerler">Kayan pencereler her gün ilerler</a></li>
+        <li><a href="#y-l-takipleri">Yıl takipleri</a></li>
+        <li><a href="#giri-ba-na-takipleri-tek-bir-kal-izler">Giriş başına takipleri tek bir kalışı izler</a></li>
+        <li><a href="#devam-eden-ve-planlanan-seyahatler">Devam eden ve planlanan seyahatler</a></li>
+        <li><a href="#ayr-nt-grafi-ini-okuyun">Ayrıntı grafiğini okuyun</a></li>
+        <li><a href="#bir-takibi-hangi-seyahatlerin-etkiledi-ini-kontrol-edin">Bir takibi hangi seyahatlerin etkilediğini kontrol edin</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="İçerik yolu"><a href="/tr/">AtlasDays</a> / <a href="/tr/help/">Yardım Merkezi</a></nav>
 
     <h1>Takip toplamları nasıl hesaplanır?</h1>
 <p class="article-answer">Bir takip, yerlerindeki <a href="/tr/help/history-and-import">tarihli seyahatleri</a> seçer, çakışan takvim günlerini birleştirir ve bunları penceresi içinde sayar. Sonuç, belirlediğiniz sınırla karşılaştırılır.</p>
 
-    <h2>Sonucu beş ayar belirler</h2>
+    <details class="toc">
+      <summary>Bu sayfada</summary>
+      <ul>
+        <li><a href="#sonucu-be-ayar-belirler">Sonucu beş ayar belirler</a></li>
+        <li><a href="#g-nler-ve-geceler">Günler ve geceler</a></li>
+        <li><a href="#ak-an-g-nler-bir-kez-say-l-r">Çakışan günler bir kez sayılır</a></li>
+        <li><a href="#kayan-pencereler-her-g-n-ilerler">Kayan pencereler her gün ilerler</a></li>
+        <li><a href="#y-l-takipleri">Yıl takipleri</a></li>
+        <li><a href="#giri-ba-na-takipleri-tek-bir-kal-izler">Giriş başına takipleri tek bir kalışı izler</a></li>
+        <li><a href="#devam-eden-ve-planlanan-seyahatler">Devam eden ve planlanan seyahatler</a></li>
+        <li><a href="#ayr-nt-grafi-ini-okuyun">Ayrıntı grafiğini okuyun</a></li>
+        <li><a href="#bir-takibi-hangi-seyahatlerin-etkiledi-ini-kontrol-edin">Bir takibi hangi seyahatlerin etkilediğini kontrol edin</a></li>
+      </ul>
+    </details>
+    <script>(function(){var t=document.currentScript.previousElementSibling;if(matchMedia('(min-width: 760px)').matches)t.open=true})();</script>
+    <h2 id="sonucu-be-ayar-belirler">Sonucu beş ayar belirler</h2>
     <ol>
       <li><strong>Yerler:</strong> yalnızca seçilen ülkelerdeki veya ABD eyaletlerindeki seyahatler uygundur.</li>
       <li><strong>Birim:</strong> <strong>Sınır</strong> satırı <strong>Günler</strong>, <strong>Geceler</strong>, <strong>Dışarıda geçen günler</strong> veya <strong>Tam günler</strong> sayar.</li>
@@ -179,25 +209,25 @@
       <li><strong>Seyahat kesinliği:</strong> kesin tarihli seyahatler sayılır. Yalnızca yıl ve Transit seyahatleri sıfır gün katar.</li>
     </ol>
 
-    <h2>Günler ve geceler</h2>
+    <h2 id="g-nler-ve-geceler">Günler ve geceler</h2>
     <p><strong>Günler</strong> birimi varış ve ayrılış günlerini tam olarak sayar; bu yüzden 1 Haziran ile 3 Haziran arasındaki kalış üç gündür. <strong>Geceler</strong> birimi varış ile ayrılış arasındaki geceleri sayar; aynı kalış iki gecedir. Geceler art arda gelen kalışları köprülemez: bir seyahatin ayrılış günü ile sonrakinin varış günü arasındaki gece, aynı ülkede bile hiçbirine sayılmaz. <strong>Tam günler</strong> birimi, varış ve ayrılış günleri olmadan yalnızca tam günleri sayar: 1 Haziran ile 3 Haziran arasındaki bir kalış bir tam gündür, günübirlik bir ziyaret ya da tek bir gecelik konaklama ise hiç sayılmaz.</p>
 
-    <h2>Çakışan günler bir kez sayılır</h2>
+    <h2 id="ak-an-g-nler-bir-kez-say-l-r">Çakışan günler bir kez sayılır</h2>
     <p>Kayan, Yıl ve dışarıda günleri takipleri, aynı takvim gününü kapsayan seyahatleri birleştirir; bu yüzden <a href="/tr/help/timeline-and-calendar">zaman çizelgesindeki</a> bir çakışma iki kez sayılmaz. Giriş başına takibi ise aşağıda anlatıldığı gibi seyahatleri hiç birleştirmez.</p>
 
-    <h2>Kayan pencereler her gün ilerler</h2>
+    <h2 id="kayan-pencereler-her-g-n-ilerler">Kayan pencereler her gün ilerler</h2>
     <p>Kayan bir takip her zaman bugün biter. <strong>Uzunluğu</strong> ya sabit bir gün sayısıdır ya da bugünden geriye doğru sayılan takvim ayı sayısıdır. Eski günler pencereden çıkarken yeni seyahat günleri girer; bu yüzden bir seyahati düzenlemeseniz bile toplam değişebilir.</p><p>Yeni Zelanda vatandaşlığı takibi ayrıca <strong>Oturum izni tarihi</strong> satırını ekler: bu tarihten önceki kalışlar sayılmaz ve satırların altındaki cümle sayımın nereden başladığını söyler. Ayrıntı ekranı da beş yılın her birinde gereken 240 günü kontrol eder ve başvurabileceğiniz ilk günü gösterir.</p>
 
-    <h2>Yıl takipleri</h2>
+    <h2 id="y-l-takipleri">Yıl takipleri</h2>
     <p>Yıl takibi bir yıl boyunca sayar ve <strong>Başlangıç</strong> satırındaki tarihte başlar. 1 Ocak başlangıcı takvim yılı olur; başka her başlangıç tarihi mali yıl olur.</p>
 
-    <h2>Giriş başına takipleri tek bir kalışı izler</h2>
+    <h2 id="giri-ba-na-takipleri-tek-bir-kal-izler">Giriş başına takipleri tek bir kalışı izler</h2>
     <p>Giriş başına takibi tek bir kalışı ölçer. Devam eden bir kalış varsa onu, yoksa en son biten kalışı kullanır. Ayrı ziyaretleri toplamaz. Takibin bir <strong>Başlangıç</strong> tarihi varsa bu tarihten önceki günler dışarıda bırakılır.</p>
 
-    <h2>Devam eden ve planlanan seyahatler</h2>
+    <h2 id="devam-eden-ve-planlanan-seyahatler">Devam eden ve planlanan seyahatler</h2>
     <p>Bitiş tarihi olmayan bir seyahat bugüne kadar sayılır. Gelecekte başlayacak bir seyahat mevcut toplamı değiştirmez; grafikte planlanan seyahat olarak görünür ve tahmin onu kullanır. Tahmin için <a href="/tr/help/plan-a-trip">Planlanan seyahat sınıra uygun mu?</a> sayfasına bakın.</p>
 
-    <h2>Ayrıntı grafiğini okuyun</h2>
+    <h2 id="ayr-nt-grafi-ini-okuyun">Ayrıntı grafiğini okuyun</h2>
     <p>Sayımın zaman içinde nasıl değiştiğini görmek için bir takibi açın. Grafiğin iki görünümü vardır: kaydırılabilir bir yakın görünüm ve tüm dönemin görünümü. Geçiş yapmak için grafiği iki parmakla sıkıştırın veya çift dokunun; her takip kendi seçimini hatırlar.</p>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/tr/help/trackers-and-limits/detail-chart.webp" alt="Takibin etkin penceresini kapsayan ayrıntı grafiği" width="1320" height="2566" loading="lazy" decoding="async" /></figure>
     <p>Kayan, Yıl ve dışarıda günleri takipleri, planlarınız sonucu değiştirdiğinde grafiğin altında ayrıca bir cümle gösterir; örneğin sınıra ulaşacağınız tarih. İki sınırlı takipler bunun yerine her sınır için bir grafik gösterir; bkz. <a href="/tr/help/rule-trackers">İki sınırlı takipler</a>.</p>
@@ -205,7 +235,7 @@
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/tr/help/trackers-and-limits/goal-window.webp" alt="Sınır ve pencere denetimlerini gösteren takip düzenleyicisi" width="1320" height="1500" loading="lazy" decoding="async" /></figure>
 
     <section class="if-needed">
-      <h2>Bir takibi hangi seyahatlerin etkilediğini kontrol edin</h2>
+      <h2 id="bir-takibi-hangi-seyahatlerin-etkiledi-ini-kontrol-edin">Bir takibi hangi seyahatlerin etkilediğini kontrol edin</h2>
       <p>Ayrıntı görünümünü açıp grafiğin altında listelenen seyahatleri okuyun, ardından takibin yerlerini ve penceresini <a href="/tr/help/timeline-and-calendar">zaman çizelgesiyle</a> karşılaştırın. Devam eden seyahatlere, Transit ve Yalnızca yıl kayıtlarına, çakışmalara ve eksik ABD eyaleti etiketlerine özellikle dikkat edin. O takip için bir seyahat eklemek üzere seyahat listesinin üstündeki <strong>+</strong> düğmesine dokunun.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-trackers-and-limits">

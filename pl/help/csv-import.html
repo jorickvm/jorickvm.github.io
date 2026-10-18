@@ -165,12 +165,23 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="Na tej stronie">
+      <p class="toc-title">Na tej stronie</p>
+      <ul>
+        <li><a href="#importowanie-pliku">Importowanie pliku</a></li>
+        <li><a href="#czytanie-podgl-du">Czytanie podglądu</a></li>
+        <li><a href="#poprawianie-b-d-w-w-pliku-r-d-owym">Poprawianie błędów w pliku źródłowym</a></li>
+        <li><a href="#ponowny-import-eksportu">Ponowny import eksportu</a></li>
+        <li><a href="#je-li-ka-dy-wiersz-jest-nieprawid-owy">Jeśli każdy wiersz jest nieprawidłowy</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="Ścieżka nawigacji"><a href="/pl/">AtlasDays</a> / <a href="/pl/help/">Centrum pomocy</a></nav>
 
     <h1>Import z CSV</h1>
 <p class="article-answer">Hurtowo dodawaj podróże z arkusza kalkulacyjnego zapisanego jako CSV. AtlasDays sprawdza każdy wiersz, pokazuje podgląd i niczego nie zapisuje, dopóki nie potwierdzisz. To jeden ze <a href="/pl/help/import-trips">sposobów dodawania dawnych podróży</a>.</p>
 
-    <h2>Importowanie pliku</h2>
+    <h2 id="importowanie-pliku">Importowanie pliku</h2>
     <ol>
       <li>Otwórz <strong>Ustawienia → Import → Plik CSV</strong>.</li>
       <li>Przygotuj plik w Sheets, Numbers lub Excelu i wyeksportuj go jako CSV. <strong>Przykładowy CSV</strong> pokazuje dokładne nagłówki z przykładowymi wierszami, a jego przycisk udostępniania zapisuje plik, od którego możesz zacząć.</li>
@@ -183,7 +194,7 @@
 
     <p>Możesz też zacząć od samego pliku. Udostępnij plik CSV z aplikacji Pliki, z pobranych rzeczy w Safari lub z aplikacji Mail i wybierz <strong>AtlasDays</strong>: otworzy się ten sam podgląd. AtlasDays pojawia się jako jedna z opcji dla plików CSV, ale nigdy nie zostaje ich domyślną aplikacją.</p>
 
-    <h2>Czytanie podglądu</h2>
+    <h2 id="czytanie-podgl-du">Czytanie podglądu</h2>
     <p>Podgląd wymienia prawidłowe wiersze i pokazuje liczniki, które można stuknąć, aby filtrować. Za pomocą <strong>Zaznacz wszystko</strong> lub <strong>Odznacz wszystko</strong> wybierz, co zaimportować.</p>
     <ul>
       <li><strong>Duplikat:</strong> wiersz mieści się w podróży, którą już masz, albo powtarza wcześniejszy wiersz. Zostaje pominięty.</li>
@@ -193,16 +204,16 @@
     </ul>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/pl/help/csv-import/csv-review.webp" alt="Podgląd importu z CSV z prawidłowymi i nieprawidłowymi wierszami, duplikatami i kolizjami" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
-    <h2>Poprawianie błędów w pliku źródłowym</h2>
+    <h2 id="poprawianie-b-d-w-w-pliku-r-d-owym">Poprawianie błędów w pliku źródłowym</h2>
     <p>Wiersze, których AtlasDays nie potrafi odczytać, pojawiają się w sekcji <strong>N wierszy z błędami</strong> z numerem wiersza i przyczyną. Nieprawidłowe wiersze nigdy nie są importowane. Popraw je w arkuszu, wyeksportuj plik ponownie i wybierz go jeszcze raz.</p>
 
     <div class="callout"><p><strong>Nic się nie zmienia przed stuknięciem Importuj.</strong> Wybranie pliku i obejrzenie podglądu nie dodaje podróży.</p></div>
 
-    <h2>Ponowny import eksportu</h2>
+    <h2 id="ponowny-import-eksportu">Ponowny import eksportu</h2>
     <p>Plik z <a href="/pl/help/export-and-reports">eksportu</a> Arkusz kalkulacyjny zapisany jako CSV można zaimportować ponownie, pod warunkiem że eksport wykonano w języku angielskim: nagłówki kolumn są odczytywane tylko po angielsku. Aby mieć pełną kopię podróży, trackerów i ustawień, użyj zamiast tego <a href="/pl/help/backup-and-restore">kopii zapasowej</a>.</p>
 
     <section class="if-needed">
-      <h2>Jeśli każdy wiersz jest nieprawidłowy</h2>
+      <h2 id="je-li-ka-dy-wiersz-jest-nieprawid-owy">Jeśli każdy wiersz jest nieprawidłowy</h2>
       <p>Sprawdź, czy pierwszy wiersz jest wierszem nagłówków i zawiera kolumnę <strong>Country</strong>, a daty mają format <code>yyyy-mm-dd</code> lub są czterocyfrowym rokiem. Artykuł <a href="/pl/help/csv-format-reference">Format pliku CSV</a> wymienia obsługiwane kolumny, wartości i wszystkie komunikaty o błędach.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-csv-import">

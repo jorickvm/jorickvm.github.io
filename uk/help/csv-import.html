@@ -165,12 +165,23 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="На цій сторінці">
+      <p class="toc-title">На цій сторінці</p>
+      <ul>
+        <li><a href="#section-1">Імпорт файлу</a></li>
+        <li><a href="#section-2">Як читати попередній перегляд</a></li>
+        <li><a href="#section-3">Виправлення помилок у вихідному файлі</a></li>
+        <li><a href="#section-4">Повторний імпорт експорту</a></li>
+        <li><a href="#section-5">Якщо всі рядки некоректні</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/uk/">AtlasDays</a> / <a href="/uk/help/">Довідка</a></nav>
 
     <h1>Імпорт CSV</h1>
 <p class="article-answer">Масово додавайте поїздки з таблиці, збереженої як CSV. AtlasDays перевіряє кожен рядок, показує попередній перегляд і нічого не зберігає, доки ви не підтвердите. Це один зі <a href="/uk/help/import-trips">способів додати минулі поїздки</a>.</p>
 
-    <h2>Імпорт файлу</h2>
+    <h2 id="section-1">Імпорт файлу</h2>
     <ol>
       <li>Відкрийте <strong>Налаштування → Імпорт → Файл CSV</strong>.</li>
       <li>Підготуйте файл у Google Таблицях, Numbers або Excel і експортуйте його як CSV. <strong>Приклад CSV</strong> показує точні заголовки із зразками рядків, а кнопка «Поділитися» зберігає файл як основу.</li>
@@ -183,7 +194,7 @@
 
     <p>Можна почати й із самого файлу. Поширте файл CSV із програми «Файли», завантажень Safari або програми «Пошта» й виберіть <strong>AtlasDays</strong>: відкриється той самий попередній перегляд. AtlasDays пропонується як один із варіантів для відкриття файлів CSV, але не стає типовою програмою для них.</p>
 
-    <h2>Як читати попередній перегляд</h2>
+    <h2 id="section-2">Як читати попередній перегляд</h2>
     <p>У попередньому перегляді наведено коректні рядки та лічильники, на які можна торкнутися, щоб відфільтрувати список. Кнопки <strong>Вибрати все</strong> і <strong>Зняти вибір</strong> визначають, що імпортувати.</p>
     <ul>
       <li><strong>Дублікат:</strong> рядок міститься в поїздці, яка вже є, або повторює попередній рядок. Його буде пропущено.</li>
@@ -193,16 +204,16 @@
     </ul>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/uk/help/csv-import/csv-review.webp" alt="Попередній перегляд імпорту CSV із коректними, некоректними рядками, дублікатами й перетинами" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
-    <h2>Виправлення помилок у вихідному файлі</h2>
+    <h2 id="section-3">Виправлення помилок у вихідному файлі</h2>
     <p>Рядки, які AtlasDays не може прочитати, з’являються в розділі <strong>N рядків із помилками</strong> з номером рядка та причиною. Некоректні рядки ніколи не імпортуються. Виправте їх у таблиці, експортуйте знову й ще раз виберіть файл.</p>
 
     <div class="callout"><p><strong>Нічого не змінюється до натискання «Імпорт».</strong> Вибір файлу й перегляд не додають поїздок.</p></div>
 
-    <h2>Повторний імпорт експорту</h2>
+    <h2 id="section-4">Повторний імпорт експорту</h2>
     <p><a href="/uk/help/export-and-reports">Експорт</a> у таблицю, збережений як CSV, можна імпортувати знову, якщо його зроблено англійською: заголовки стовпців читаються лише англійською. Для повної копії поїздок, трекерів і налаштувань скористайтеся натомість <a href="/uk/help/backup-and-restore">резервною копією</a>.</p>
 
     <section class="if-needed">
-      <h2>Якщо всі рядки некоректні</h2>
+      <h2 id="section-5">Якщо всі рядки некоректні</h2>
       <p>Перевірте, що перший рядок є рядком заголовків і містить <strong>Country</strong>, а дати мають вигляд <code>yyyy-mm-dd</code> або чотиризначний рік. У статті <a href="/uk/help/csv-format-reference">Довідник із формату CSV</a> наведено підтримувані стовпці, значення й усі повідомлення про помилки.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-csv-import">

@@ -163,12 +163,24 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="On this page">
+      <p class="toc-title">On this page</p>
+      <ul>
+        <li><a href="#add-a-tracker">Add a tracker</a></li>
+        <li><a href="#set-the-rule">Set the rule</a></li>
+        <li><a href="#choose-the-window">Choose the window</a></li>
+        <li><a href="#review-the-places">Review the places</a></li>
+        <li><a href="#presets-are-starting-configurations">Presets are starting configurations</a></li>
+        <li><a href="#if-the-new-tracker-has-no-days">If the new tracker has no days</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">AtlasDays</a> / <a href="/help/">Help Center</a></nav>
 
     <h1>Create a Tracker</h1>
 <p class="article-answer">On the <strong>Dashboard</strong>, tap <strong>+</strong>, choose a preset or <strong>Custom</strong>, check the rule in the editor, and tap <strong>Save</strong>. A tracker counts only trips already in your <a href="/help/timeline-and-calendar">Timeline</a> that have <a href="/help/history-and-import">exact dates</a>.</p>
 
-    <h2>Add a tracker</h2>
+    <h2 id="add-a-tracker">Add a tracker</h2>
     <ol>
       <li>Open the <strong>Dashboard</strong> and tap <strong>+</strong> at the top right. The <strong>Add a Tracker</strong> sheet opens.</li>
       <li>Tap one of the filter pills, or tap the magnifier and search for a rule or a country. <a href="/help/tracker-presets">Choose a tracker preset</a> covers the list in detail.</li>
@@ -179,7 +191,7 @@
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/help/create-a-tracker/preset-picker.webp" alt="Add a Tracker sheet with the filter pills, the Custom card, and the first preset section" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
     <p>The tracker takes its name from the places it counts. Tap the card at the top of the editor to change the name or subtitle, or to change the countries.</p>
 
-    <h2>Set the rule</h2>
+    <h2 id="set-the-rule">Set the rule</h2>
     <p>The editor shows the rule as a short list of rows. A preset fills them in; <strong>Custom</strong> starts with your own choices.</p>
     <ul>
       <li><strong>Goal:</strong> <strong>Stay Below</strong> treats the number as a <strong>Limit</strong> you should not pass. <strong>Reach Target</strong> treats it as a <strong>Target</strong> you are working toward. On tax residence and US state trackers the two options carry a line each: <strong>Avoid tax residency.</strong> and <strong>Become a tax resident.</strong></li>
@@ -188,23 +200,23 @@
     </ul>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/help/create-a-tracker/configured-editor.webp" alt="Tracker editor showing the places, goal, limit, and window rows" width="1320" height="2146" loading="lazy" decoding="async" /></figure>
 
-    <h2>Choose the window</h2>
+    <h2 id="choose-the-window">Choose the window</h2>
     <ul>
       <li><strong>Rolling</strong> is a sliding window that ends today, like the Schengen 90/180. The <strong>Length</strong> row sets it in days or in calendar months.</li>
       <li><strong>Year</strong> counts one year, beginning on the date in the <strong>Starts</strong> row. A 1 January start is a calendar year; any other date makes it a fiscal year.</li>
       <li><strong>Per Entry</strong> counts days from the date in the <strong>Start</strong> row and follows one stay at a time instead of adding separate visits. <a href="/help/trackers-and-limits">How tracker totals are calculated</a> explains what each window measures.</li>
     </ul>
 
-    <h2>Review the places</h2>
+    <h2 id="review-the-places">Review the places</h2>
     <p>A tracker with several countries counts qualifying days across all of them. A US state tracker needs state-tagged United States trips: a US trip saved without a state cannot feed a state tracker, and the row then reads <strong>States</strong> instead of <strong>Countries</strong>.</p>
 
-    <h2>Presets are starting configurations</h2>
+    <h2 id="presets-are-starting-configurations">Presets are starting configurations</h2>
     <p>A preset saves setup time. It does not change the rule you are actually subject to, so confirm it matches your nationality, permission, purpose, and current situation before relying on the number. Want the Schengen 90/180 rule? <a href="/help/schengen-90-180">The dedicated walkthrough</a> is quicker than building it by hand.</p>
 
     <div class="callout"><p><strong>Tracking one limit is free.</strong> A second tracker, US state trackers, and <a href="/help/rule-trackers">trackers with two limits</a> need <a href="/help/atlasdays-pro">AtlasDays Pro</a>. You can set up any of them without Pro; the upgrade prompt appears when you tap <strong>Save</strong>.</p></div>
 
     <section class="if-needed">
-      <h2>If the new tracker has no days</h2>
+      <h2 id="if-the-new-tracker-has-no-days">If the new tracker has no days</h2>
       <p>Confirm that its places match your trips, and that the relevant trips have start and end dates rather than Year Only, and are not marked Transit. A trip that starts in the future does not count until its dates arrive.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-create-a-tracker">

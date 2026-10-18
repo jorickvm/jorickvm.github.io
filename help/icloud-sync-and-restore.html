@@ -163,12 +163,23 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="On this page">
+      <p class="toc-title">On this page</p>
+      <ul>
+        <li><a href="#check-that-sync-is-on">Check that sync is on</a></li>
+        <li><a href="#set-up-a-new-device-or-reinstall">Set up a new device or reinstall</a></li>
+        <li><a href="#what-the-status-means">What the status means</a></li>
+        <li><a href="#sync-is-not-a-backup">Sync is not a backup</a></li>
+        <li><a href="#if-data-appears-missing">If data appears missing</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">AtlasDays</a> / <a href="/help/">Help Center</a></nav>
 
     <h1>iCloud Sync and Restore</h1>
 <p class="article-answer">With iCloud Sync on, AtlasDays keeps your trips and trackers in your private iCloud account and in step across devices signed in to the same Apple Account. Sync is not a backup file, so keep a separate AtlasDays Backup as well.</p>
 
-    <h2>Check that sync is on</h2>
+    <h2 id="check-that-sync-is-on">Check that sync is on</h2>
     <ol>
       <li>Open <strong>Settings → iCloud Sync</strong>. The toggle is on by default.</li>
       <li>Read <strong>Status</strong>. <strong>Synced</strong> means this device is up to date.</li>
@@ -176,7 +187,7 @@
     </ol>
     <p>After you turn sync on or off, AtlasDays asks you to close it from the app switcher and open it again. The change takes effect on the next launch.</p>
 
-    <h2>Set up a new device or reinstall</h2>
+    <h2 id="set-up-a-new-device-or-reinstall">Set up a new device or reinstall</h2>
     <ol>
       <li>Sign in to the same Apple Account in iOS Settings.</li>
       <li>Install AtlasDays and open <strong>Settings → iCloud Sync</strong> to confirm it is on.</li>
@@ -184,7 +195,7 @@
     </ol>
     <p>Device-specific choices come back separately. Location and notification permissions are granted per device, so <a href="/help/auto-detect-trips">Auto-Detect</a> and notifications only work once you allow them again, and <a href="/help/widgets">widgets</a> have to be added again. Preferences such as Home Country and appearance travel through iCloud on their own, even when trip sync is off.</p>
 
-    <h2>What the status means</h2>
+    <h2 id="what-the-status-means">What the status means</h2>
     <ul>
       <li><strong>Syncing...</strong>, <strong>Waiting to sync</strong>, and <strong>Waiting for iCloud</strong> are temporary. Keep AtlasDays open for a moment.</li>
       <li><strong>Synced</strong> means nothing is pending.</li>
@@ -193,11 +204,11 @@
       <li><strong>Sync issue</strong> means some changes have not reached iCloud yet. Tap <strong>Show Details</strong> for suggestions and diagnostics you can send to support.</li>
     </ul>
 
-    <h2>Sync is not a backup</h2>
+    <h2 id="sync-is-not-a-backup">Sync is not a backup</h2>
     <p>Sync keeps one live record across devices, so a deletion on one device reaches the others. It cannot bring back something you removed. An <a href="/help/backup-and-restore">AtlasDays Backup</a> is a separate file you keep and restore when you need it. If you restore a backup while sync is on, the restored data replaces the data on every device, and AtlasDays waits until iCloud has finished syncing before it starts.</p>
 
     <section class="if-needed">
-      <h2>If data appears missing</h2>
+      <h2 id="if-data-appears-missing">If data appears missing</h2>
       <ol>
         <li>Do not reset the app or delete data while you investigate.</li>
         <li>Confirm this device is signed in to the same Apple Account and that iCloud is available.</li>

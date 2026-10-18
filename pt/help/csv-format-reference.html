@@ -165,12 +165,24 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="Nesta página">
+      <p class="toc-title">Nesta página</p>
+      <ul>
+        <li><a href="#colunas">Colunas</a></li>
+        <li><a href="#formatos-de-data">Formatos de data</a></li>
+        <li><a href="#casos-especiais">Casos especiais</a></li>
+        <li><a href="#exemplo">Exemplo</a></li>
+        <li><a href="#mensagens-de-erro">Mensagens de erro</a></li>
+        <li><a href="#se-um-valor-n-o-for-reconhecido">Se um valor não for reconhecido</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="Trilha de navegação"><a href="/pt/">AtlasDays</a> / <a href="/pt/help/">Central de ajuda</a></nav>
 
     <h1>Referência do formato CSV</h1>
 <p class="article-answer">Só a coluna <strong>Country</strong> é obrigatória. O AtlasDays encontra as colunas pelo nome do cabeçalho em inglês, então a ordem delas não importa. Os passos da importação estão em <a href="/pt/help/csv-import">Importação de CSV</a>.</p>
 
-    <h2>Colunas</h2>
+    <h2 id="colunas">Colunas</h2>
     <p>Linha de cabeçalho recomendada: <code>Country,State,Start Date,End Date,Purpose,Notes</code>. Os nomes dos cabeçalhos não diferenciam maiúsculas de minúsculas. Colunas não reconhecidas, como <code>Days</code>, são ignoradas. Se um cabeçalho aparecer duas vezes, vale o primeiro.</p>
     <dl class="kv kv-text">
       <div><dt><strong>Country</strong></dt><dd>Obrigatória. Nome do país em inglês ou no idioma do app, código ISO de duas letras ou um apelido comum, como <code>USA</code>, <code>UK</code> ou <code>Holland</code>. Um apelido que possa significar dois lugares é recusado.</dd></div>
@@ -184,7 +196,7 @@
     </dl>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/pt/help/csv-format-reference/csv-reference.webp" alt="Exemplo de CSV e controles de modelo da importação de CSV" width="1320" height="1990" loading="lazy" decoding="async" /></figure>
 
-    <h2>Formatos de data</h2>
+    <h2 id="formatos-de-data">Formatos de data</h2>
     <div class="data-table">
     <table>
       <thead><tr><th>Start Date</th><th>End Date</th><th>Resultado</th></tr></thead>
@@ -199,21 +211,21 @@
     </div>
     <p>Os anos devem ficar entre 1900 e oito anos depois do ano atual. Datas exatas e valores de ano não podem ser misturados na mesma linha. Viagens Apenas o ano e viagens sem datas contam nos lugares visitados e no mapa, mas nunca nos totais de dias nem nos controles. Uma viagem sem datas só pode ser criada pela importação de CSV.</p>
 
-    <h2>Casos especiais</h2>
+    <h2 id="casos-especiais">Casos especiais</h2>
     <ul>
       <li><strong>Estados dos EUA.</strong> Use uma linha por estado quando uma mesma visita aos EUA passou por vários estados. Uma linha comum com <code>United States</code> é válida para o controle no nível do país. Um nome de estado na coluna Country (<code>California</code>, <code>US-CA</code>) também gera uma viagem aos EUA, e uma coluna Country vazia com um State válido faz o mesmo. Códigos de duas letras que também são códigos de país, como <code>CA</code>, continuam sendo países. Sem o Pro, as linhas de estados são importadas como viagens comuns aos Estados Unidos.</li>
       <li><strong>Trânsito.</strong> Coloque <code>Transit</code> em Purpose quando você não entrou no país. Transit é exclusivo: se aparecer com outro motivo, só Transit é mantido.</li>
       <li><strong>Delimitador e aspas.</strong> Vírgula, ponto e vírgula e tabulação são detectados a partir da linha de cabeçalho. Coloque entre aspas os campos que contenham o delimitador ou uma quebra de linha.</li>
     </ul>
 
-    <h2>Exemplo</h2>
+    <h2 id="exemplo">Exemplo</h2>
     <pre><code>Country,State,Start Date,End Date,Purpose,Notes
 France,,2026-03-01,2026-03-05,Personal,
 United States,CA,2026-04-10,2026-04-15,Business,Conference
 Japan,,2024,,Personal,Dates not known
 United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></pre>
 
-    <h2>Mensagens de erro</h2>
+    <h2 id="mensagens-de-erro">Mensagens de erro</h2>
     <p>Cada erro aparece na prévia com o número da linha, e a linha não é importada. O número da linha conta o cabeçalho como linha 1.</p>
     <dl class="kv kv-text">
       <div><dt>A coluna Country não foi encontrada</dt><dd>Coloque primeiro uma linha de cabeçalho com uma coluna <strong>Country</strong>.</dd></div>
@@ -233,7 +245,7 @@ United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></p
     </dl>
 
     <section class="if-needed">
-      <h2>Se um valor não for reconhecido</h2>
+      <h2 id="se-um-valor-n-o-for-reconhecido">Se um valor não for reconhecido</h2>
       <p>Use um código ISO de país, datas no formato ISO e um nome ou código padrão de estado dos EUA. Um arquivo exportado de uma planilha em outro idioma pode trazer cabeçalhos traduzidos, que não são reconhecidos: renomeie-os para os cabeçalhos em inglês acima.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-csv-format-reference">

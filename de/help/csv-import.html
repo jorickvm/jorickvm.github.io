@@ -165,12 +165,23 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="Auf dieser Seite">
+      <p class="toc-title">Auf dieser Seite</p>
+      <ul>
+        <li><a href="#die-datei-importieren">Die Datei importieren</a></li>
+        <li><a href="#die-vorschau-lesen">Die Vorschau lesen</a></li>
+        <li><a href="#fehler-in-der-quelldatei-beheben">Fehler in der Quelldatei beheben</a></li>
+        <li><a href="#einen-export-erneut-importieren">Einen Export erneut importieren</a></li>
+        <li><a href="#wenn-jede-zeile-ung-ltig-ist">Wenn jede Zeile ungültig ist</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/de/">AtlasDays</a> / <a href="/de/help/">Hilfe</a></nav>
 
     <h1>CSV-Import</h1>
 <p class="article-answer">Füg Reisen aus einer als CSV gespeicherten Tabelle gesammelt hinzu. AtlasDays prüft jede Zeile, zeigt eine Vorschau und sichert nichts, bevor du bestätigst. Er ist eine der <a href="/de/help/import-trips">Möglichkeiten, vergangene Reisen hinzuzufügen</a>.</p>
 
-    <h2>Die Datei importieren</h2>
+    <h2 id="die-datei-importieren">Die Datei importieren</h2>
     <ol>
       <li>Öffne <strong>Einstellungen → Importieren → CSV-Datei</strong>.</li>
       <li>Bereite die Datei in Google Tabellen, Numbers oder Excel vor und exportiere sie als CSV. <strong>Beispiel-CSV</strong> zeigt die genauen Spaltenköpfe mit Beispielzeilen, und über die Teilen-Taste sicherst du die Datei als Ausgangspunkt.</li>
@@ -183,7 +194,7 @@
 
     <p>Du kannst auch direkt mit der Datei beginnen. Teile eine CSV-Datei aus Dateien, den Safari-Downloads oder Mail und wähle <strong>AtlasDays</strong>: Es öffnet sich dieselbe Vorschau. AtlasDays wird als Option für CSV-Dateien angeboten, aber nicht als Standard-App dafür festgelegt.</p>
 
-    <h2>Die Vorschau lesen</h2>
+    <h2 id="die-vorschau-lesen">Die Vorschau lesen</h2>
     <p>Die Vorschau listet gültige Zeilen und zeigt Zähler, die du antippen kannst, um zu filtern. Mit <strong>Alle auswählen</strong> oder <strong>Alle abwählen</strong> legst du fest, was importiert wird.</p>
     <ul>
       <li><strong>Duplikat:</strong> Die Zeile liegt innerhalb einer Reise, die du schon hast, oder wiederholt eine frühere Zeile. Sie wird übersprungen.</li>
@@ -193,16 +204,16 @@
     </ul>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/de/help/csv-import/csv-review.webp" alt="Die Vorschau des CSV-Imports mit gültigen, ungültigen, doppelten und sich überschneidenden Zeilen" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
-    <h2>Fehler in der Quelldatei beheben</h2>
+    <h2 id="fehler-in-der-quelldatei-beheben">Fehler in der Quelldatei beheben</h2>
     <p>Zeilen, die AtlasDays nicht lesen kann, erscheinen unter <strong>N Zeilen mit Fehlern</strong>, mit Zeilennummer und Grund. Ungültige Zeilen werden nie importiert. Korrigiere sie in der Tabelle, exportiere erneut und wähle die Datei noch einmal aus.</p>
 
     <div class="callout"><p><strong>Nichts ändert sich vor dem Import.</strong> Eine Datei auszuwählen und die Vorschau anzusehen, fügt keine Reisen hinzu.</p></div>
 
-    <h2>Einen Export erneut importieren</h2>
+    <h2 id="einen-export-erneut-importieren">Einen Export erneut importieren</h2>
     <p>Ein als CSV gespeicherter Tabellen-<a href="/de/help/export-and-reports">Export</a> lässt sich wieder importieren, sofern er auf Englisch exportiert wurde: Spaltenköpfe werden nur auf Englisch gelesen. Für eine vollständige Kopie von Reisen, Trackern und Einstellungen nimm stattdessen ein <a href="/de/help/backup-and-restore">Backup</a>.</p>
 
     <section class="if-needed">
-      <h2>Wenn jede Zeile ungültig ist</h2>
+      <h2 id="wenn-jede-zeile-ung-ltig-ist">Wenn jede Zeile ungültig ist</h2>
       <p>Prüf, ob die erste Zeile eine Kopfzeile ist und <strong>Country</strong> enthält, und ob die Reisedaten <code>yyyy-mm-dd</code> oder ein vierstelliges Jahr verwenden. Die <a href="/de/help/csv-format-reference">CSV-Format: Referenz</a> listet unterstützte Spalten, Werte und jede Fehlermeldung.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-csv-import">

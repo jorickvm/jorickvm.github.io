@@ -163,32 +163,44 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="On this page">
+      <p class="toc-title">On this page</p>
+      <ul>
+        <li><a href="#a-trip-carries-its-dates">A trip carries its dates</a></li>
+        <li><a href="#open-ended-trips">Open-ended trips</a></li>
+        <li><a href="#year-only">Year Only</a></li>
+        <li><a href="#transit">Transit</a></li>
+        <li><a href="#choose-conservatively">Choose conservatively</a></li>
+        <li><a href="#if-a-trip-is-missing-from-a-total">If a trip is missing from a total</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">AtlasDays</a> / <a href="/help/">Help Center</a></nav>
 
     <h1>How Trip Dates Work</h1>
 <p class="article-answer">A trip is recorded with its arrival and departure dates, and those dates drive every total. When you only know the year, save the trip as <strong>Year Only</strong> instead of guessing.</p>
 
-    <h2>A trip carries its dates</h2>
+    <h2 id="a-trip-carries-its-dates">A trip carries its dates</h2>
     <p>Adding a trip asks for a country, a start date, and an end date. Trips with dates feed <a href="/help/dashboard-and-map">Dashboard</a> totals, tracker calculations, <a href="/help/export-and-reports">exports</a>, and <a href="/help/plan-a-trip">forecasts</a>. <a href="/help/day-counting">Both boundary days count</a>.</p>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/help/history-and-import/mode-selector.webp" alt="Add Trip sheet with country, dates, and purpose" width="1320" height="2668" loading="lazy" decoding="async" /></figure>
 
-    <h2>Open-ended trips</h2>
+    <h2 id="open-ended-trips">Open-ended trips</h2>
     <p>For a stay that has not ended, open the end date and tap the <strong>Open-ended</strong> pill instead of choosing a date. Once the trip has started, the Timeline shows it as <strong>Ongoing</strong> and AtlasDays counts through today until you add the departure date. A future open-ended trip shows as <strong>Open-ended</strong>.</p>
 
-    <h2>Year Only</h2>
+    <h2 id="year-only">Year Only</h2>
     <p>When you know the year but not the dates, tap the start date and choose <strong>Year Only</strong> under the date picker. The pickers switch to <strong>Start Year</strong> and <strong>End Year</strong>, and the end year is optional. As the app itself puts it: year-only trips count toward visited places and the map, but not day counts or trackers.</p>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/help/history-and-import/mode-year.webp" alt="Year Only trip with a start and end year" width="1320" height="1250" loading="lazy" decoding="async" /></figure>
     <p>Year Only exists for the visited-places record and the map, mostly for older history. Anything that feeds a limit you rely on needs real dates.</p>
 
-    <h2>Transit</h2>
+    <h2 id="transit">Transit</h2>
     <p>Transit is a purpose, not a date setting. Select the <strong>Transit</strong> chip when you passed through without entering the country, such as an airside connection. Choosing it clears the other purposes, and choosing another purpose clears it. International airspace and waters select it automatically. Transit trips are excluded from day counts and do not mark the country as visited.</p>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/help/history-and-import/mode-transit.webp" alt="Trip with the Transit purpose selected" width="1320" height="1250" loading="lazy" decoding="async" /></figure>
 
-    <h2>Choose conservatively</h2>
+    <h2 id="choose-conservatively">Choose conservatively</h2>
     <p>Keep a half-remembered trip as Year Only for now, and give it dates once a passport stamp, booking, photo, or other record confirms the boundaries. A year that is honest about what you know is more useful than dates you had to guess.</p>
 
     <section class="if-needed">
-      <h2>If a trip is missing from a total</h2>
+      <h2 id="if-a-trip-is-missing-from-a-total">If a trip is missing from a total</h2>
       <p>That is expected for Year Only trips: they mark the place as visited but create no calendar days. The same applies to trips imported with only a year, as in a <a href="/help/csv-format-reference">CSV</a> that has no full dates. Also check for a Transit trip. Give a trip real dates only when you can support them.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-history-and-import">

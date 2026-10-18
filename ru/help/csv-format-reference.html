@@ -165,12 +165,24 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="На этой странице">
+      <p class="toc-title">На этой странице</p>
+      <ul>
+        <li><a href="#section-1">Столбцы</a></li>
+        <li><a href="#section-2">Форматы дат</a></li>
+        <li><a href="#section-3">Особые случаи</a></li>
+        <li><a href="#section-4">Пример</a></li>
+        <li><a href="#section-5">Сообщения об ошибках</a></li>
+        <li><a href="#section-6">Если значение не распознано</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/ru/">AtlasDays</a> / <a href="/ru/help/">Справка</a></nav>
 
     <h1>Справочник по формату CSV</h1>
 <p class="article-answer">Обязателен только столбец <strong>Country</strong>. AtlasDays находит столбцы по английским названиям заголовков, поэтому порядок столбцов не важен. Пошаговая инструкция по импорту — в статье <a href="/ru/help/csv-import">Импорт CSV</a>.</p>
 
-    <h2>Столбцы</h2>
+    <h2 id="section-1">Столбцы</h2>
     <p>Рекомендуемая строка заголовков: <code>Country,State,Start Date,End Date,Purpose,Notes</code>. Регистр в названиях заголовков не важен. Нераспознанные столбцы, например <code>Days</code>, игнорируются. Если заголовок встречается дважды, используется первый.</p>
     <dl class="kv kv-text">
       <div><dt><strong>Country</strong></dt><dd>Обязательный. Название страны по-английски или на языке приложения, двухбуквенный код ISO либо распространённое сокращение, например <code>USA</code>, <code>UK</code> или <code>Holland</code>. Сокращение, которое может означать два разных места, отклоняется.</dd></div>
@@ -184,7 +196,7 @@
     </dl>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/ru/help/csv-format-reference/csv-reference.webp" alt="Пример CSV и элементы шаблона на экране импорта CSV" width="1320" height="1990" loading="lazy" decoding="async" /></figure>
 
-    <h2>Форматы дат</h2>
+    <h2 id="section-2">Форматы дат</h2>
     <div class="data-table">
     <table>
       <thead><tr><th>Start Date</th><th>End Date</th><th>Результат</th></tr></thead>
@@ -199,21 +211,21 @@
     </div>
     <p>Годы должны быть в диапазоне от 1900 до года, который наступит через восемь лет после текущего. Точные даты и значения-годы нельзя смешивать в одной строке. Поездки «Только год» и поездки без дат учитываются в посещённых местах и на карте, но никогда не входят в подсчёт дней и не влияют на трекеры. Поездку без дат можно создать только импортом из CSV.</p>
 
-    <h2>Особые случаи</h2>
+    <h2 id="section-3">Особые случаи</h2>
     <ul>
       <li><strong>Штаты США.</strong> Если одна поездка в США охватывала несколько штатов, используйте по одной строке на штат. Обычная строка <code>United States</code> подходит для учёта на уровне страны. Название штата в столбце Country (<code>California</code>, <code>US-CA</code>) тоже даёт поездку в США, как и пустой Country при корректном State. Двухбуквенные коды, которые одновременно являются кодами стран, например <code>CA</code>, остаются странами. Без Pro строки со штатами импортируются как обычные поездки в Соединённые Штаты.</li>
       <li><strong>Транзит.</strong> Укажите <code>Transit</code> в Purpose, если вы не въезжали в страну. Транзит исключает другие цели: если он указан вместе с другой целью, сохраняется только Transit.</li>
       <li><strong>Разделитель и кавычки.</strong> Запятая, точка с запятой и табуляция определяются по строке заголовков. Заключайте в кавычки поля, содержащие разделитель или перенос строки.</li>
     </ul>
 
-    <h2>Пример</h2>
+    <h2 id="section-4">Пример</h2>
     <pre><code>Country,State,Start Date,End Date,Purpose,Notes
 France,,2026-03-01,2026-03-05,Personal,
 United States,CA,2026-04-10,2026-04-15,Business,Conference
 Japan,,2024,,Personal,Dates not known
 United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></pre>
 
-    <h2>Сообщения об ошибках</h2>
+    <h2 id="section-5">Сообщения об ошибках</h2>
     <p>Каждая ошибка показывается в списке проверки с номером строки, и такая строка не импортируется. В номере строки заголовок считается строкой 1.</p>
     <dl class="kv kv-text">
       <div><dt>Не найден столбец Country</dt><dd>Начните файл со строки заголовков, в которой есть столбец <strong>Country</strong>.</dd></div>
@@ -233,7 +245,7 @@ United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></p
     </dl>
 
     <section class="if-needed">
-      <h2>Если значение не распознано</h2>
+      <h2 id="section-6">Если значение не распознано</h2>
       <p>Используйте код страны ISO, даты ISO и стандартное название или код штата США. Файл, экспортированный из таблицы на другом языке, может содержать переведённые заголовки, которые не распознаются: переименуйте их в английские заголовки, приведённые выше.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-csv-format-reference">

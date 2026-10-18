@@ -165,12 +165,42 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="Sur cette page">
+      <p class="toc-title">Sur cette page</p>
+      <ul>
+        <li><a href="#cinq-r-glages-d-terminent-le-r-sultat">Cinq réglages déterminent le résultat</a></li>
+        <li><a href="#jours-et-nuits">Jours et nuits</a></li>
+        <li><a href="#les-jours-qui-se-chevauchent-comptent-une-fois">Les jours qui se chevauchent comptent une fois</a></li>
+        <li><a href="#les-fen-tres-glissantes-se-d-placent-chaque-jour">Les fenêtres glissantes se déplacent chaque jour</a></li>
+        <li><a href="#suivis-annuels">Suivis annuels</a></li>
+        <li><a href="#les-suivis-par-entr-e-suivent-un-seul-s-jour">Les suivis Par entrée suivent un seul séjour</a></li>
+        <li><a href="#voyages-en-cours-et-voyages-planifi-s">Voyages en cours et voyages planifiés</a></li>
+        <li><a href="#lire-le-graphique-d-taill">Lire le graphique détaillé</a></li>
+        <li><a href="#v-rifier-quels-voyages-affectent-un-suivi">Vérifier quels voyages affectent un suivi</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="/fr/">AtlasDays</a> / <a href="/fr/help/">Centre d’aide</a></nav>
 
     <h1>Comment le total d’un suivi est calculé</h1>
 <p class="article-answer">Un suivi sélectionne les <a href="/fr/help/history-and-import">voyages datés</a> dans ses lieux, fusionne les jours civils qui se chevauchent, puis les compte à l’intérieur de sa fenêtre. Le résultat est comparé à la limite que vous avez fixée.</p>
 
-    <h2>Cinq réglages déterminent le résultat</h2>
+    <details class="toc">
+      <summary>Sur cette page</summary>
+      <ul>
+        <li><a href="#cinq-r-glages-d-terminent-le-r-sultat">Cinq réglages déterminent le résultat</a></li>
+        <li><a href="#jours-et-nuits">Jours et nuits</a></li>
+        <li><a href="#les-jours-qui-se-chevauchent-comptent-une-fois">Les jours qui se chevauchent comptent une fois</a></li>
+        <li><a href="#les-fen-tres-glissantes-se-d-placent-chaque-jour">Les fenêtres glissantes se déplacent chaque jour</a></li>
+        <li><a href="#suivis-annuels">Suivis annuels</a></li>
+        <li><a href="#les-suivis-par-entr-e-suivent-un-seul-s-jour">Les suivis Par entrée suivent un seul séjour</a></li>
+        <li><a href="#voyages-en-cours-et-voyages-planifi-s">Voyages en cours et voyages planifiés</a></li>
+        <li><a href="#lire-le-graphique-d-taill">Lire le graphique détaillé</a></li>
+        <li><a href="#v-rifier-quels-voyages-affectent-un-suivi">Vérifier quels voyages affectent un suivi</a></li>
+      </ul>
+    </details>
+    <script>(function(){var t=document.currentScript.previousElementSibling;if(matchMedia('(min-width: 760px)').matches)t.open=true})();</script>
+    <h2 id="cinq-r-glages-d-terminent-le-r-sultat">Cinq réglages déterminent le résultat</h2>
     <ol>
       <li><strong>Lieux :</strong> seuls les voyages dans les pays ou les États américains sélectionnés sont pris en compte.</li>
       <li><strong>Unité :</strong> la ligne <strong>Limite</strong> compte des <strong>Jours</strong>, des <strong>Nuits</strong>, des <strong>Jours d’absence</strong> ou des <strong>Jours complets</strong>.</li>
@@ -179,26 +209,26 @@
       <li><strong>Précision des voyages :</strong> les voyages aux dates exactes comptent. Les voyages Année uniquement et Transit comptent pour zéro jour.</li>
     </ol>
 
-    <h2>Jours et nuits</h2>
+    <h2 id="jours-et-nuits">Jours et nuits</h2>
     <p>L’unité <strong>Jours</strong> compte en entier le jour d’arrivée et le jour de départ : un séjour du 1er juin au 3 juin fait donc trois jours. L’unité <strong>Nuits</strong> compte les nuits entre l’arrivée et le départ : le même séjour en fait deux. Les nuits ne font pas le pont entre deux séjours qui se suivent : la nuit entre le jour de départ d’un voyage et le jour d’arrivée du suivant ne compte pour aucun des deux, même dans le même pays. L’unité <strong>Jours complets</strong> ne compte que les jours entiers, sans le jour d’arrivée ni le jour de départ : un séjour du 1er au 3 juin fait un jour complet, et une visite d’une journée ou une seule nuit ne compte rien.</p>
 
-    <h2>Les jours qui se chevauchent comptent une fois</h2>
+    <h2 id="les-jours-qui-se-chevauchent-comptent-une-fois">Les jours qui se chevauchent comptent une fois</h2>
     <p>Les suivis à fenêtre glissante, annuels et de jours d’absence fusionnent les voyages qui couvrent le même jour civil : un chevauchement dans votre <a href="/fr/help/timeline-and-calendar">Chronologie</a> ne compte donc pas deux fois. Un suivi Par entrée ne fusionne pas du tout les voyages, comme décrit plus bas.</p>
 
-    <h2>Les fenêtres glissantes se déplacent chaque jour</h2>
+    <h2 id="les-fen-tres-glissantes-se-d-placent-chaque-jour">Les fenêtres glissantes se déplacent chaque jour</h2>
     <p>Un suivi glissant se termine toujours aujourd’hui. Sa <strong>Durée</strong> est soit un nombre fixe de jours, soit un nombre de mois civils comptés en arrière à partir d’aujourd’hui. Les jours anciens quittent la fenêtre pendant que les jours de voyage récents y entrent : le total peut donc changer sans qu’aucun voyage ne soit modifié.</p>
     <p>Le suivi de la citoyenneté néo-zélandaise ajoute la ligne <strong>Résident depuis</strong> : les séjours antérieurs à cette date ne comptent pas, et la ligne sous les réglages indique à partir de quand le décompte commence. Son écran de détail vérifie aussi les 240 jours exigés pour chacune des cinq années et indique le premier jour où vous pouvez déposer votre demande.</p>
 
-    <h2>Suivis annuels</h2>
+    <h2 id="suivis-annuels">Suivis annuels</h2>
     <p>Un suivi Année compte sur une année, qui commence à la date de sa ligne <strong>Début</strong>. Un début au 1er janvier en fait une année civile ; toute autre date de début en fait une année fiscale.</p>
 
-    <h2>Les suivis Par entrée suivent un seul séjour</h2>
+    <h2 id="les-suivis-par-entr-e-suivent-un-seul-s-jour">Les suivis Par entrée suivent un seul séjour</h2>
     <p>Un suivi Par entrée mesure un seul séjour. Il utilise le séjour en cours s’il y en a un, et sinon le séjour terminé le plus récemment. Il n’additionne pas des visites distinctes. Quand le suivi a une date de <strong>Début</strong>, les jours antérieurs à cette date sont écartés.</p>
 
-    <h2>Voyages en cours et voyages planifiés</h2>
+    <h2 id="voyages-en-cours-et-voyages-planifi-s">Voyages en cours et voyages planifiés</h2>
     <p>Un voyage sans date de fin compte jusqu’à aujourd’hui. Un voyage qui commence dans le futur ne change pas le total actuel ; il apparaît sur le graphique comme voyage planifié, et la prévision l’utilise. <a href="/fr/help/plan-a-trip">Vérifier si un voyage planifié respecte la limite</a> traite de la prévision.</p>
 
-    <h2>Lire le graphique détaillé</h2>
+    <h2 id="lire-le-graphique-d-taill">Lire le graphique détaillé</h2>
     <p>Ouvrez un suivi pour voir comment son décompte évolue dans le temps. Le graphique a deux vues : un gros plan défilant et une vue de toute la période. Pincez ou touchez deux fois le graphique pour passer de l’une à l’autre ; chaque suivi retient son propre choix.</p>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/fr/help/trackers-and-limits/detail-chart.webp" alt="Graphique détaillé d’un suivi sur sa fenêtre active" width="1320" height="2566" loading="lazy" decoding="async" /></figure>
     <p>Les suivis à fenêtre glissante, annuels et de jours d’absence affichent aussi une phrase sous le graphique quand vos projets changent le résultat, par exemple la date à laquelle vous atteindriez la limite. Les suivis à deux limites affichent à la place un graphique pour chaque limite ; voir <a href="/fr/help/rule-trackers">suivis à deux limites</a>.</p>
@@ -206,7 +236,7 @@
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/fr/help/trackers-and-limits/goal-window.webp" alt="Éditeur de suivi montrant ses commandes de limite et de fenêtre" width="1320" height="1500" loading="lazy" decoding="async" /></figure>
 
     <section class="if-needed">
-      <h2>Vérifier quels voyages affectent un suivi</h2>
+      <h2 id="v-rifier-quels-voyages-affectent-un-suivi">Vérifier quels voyages affectent un suivi</h2>
       <p>Ouvrez sa vue détaillée et lisez les voyages listés sous le graphique, puis comparez ses lieux et sa fenêtre avec votre <a href="/fr/help/timeline-and-calendar">Chronologie</a>. Portez une attention particulière aux voyages en cours, au Transit, aux enregistrements Année uniquement, aux chevauchements et aux États américains manquants. Pour ajouter un voyage à ce suivi, touchez <strong>+</strong> au-dessus de sa liste de voyages.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-trackers-and-limits">

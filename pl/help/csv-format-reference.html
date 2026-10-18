@@ -165,12 +165,24 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="Na tej stronie">
+      <p class="toc-title">Na tej stronie</p>
+      <ul>
+        <li><a href="#kolumny">Kolumny</a></li>
+        <li><a href="#formaty-dat">Formaty dat</a></li>
+        <li><a href="#przypadki-szczeg-lne">Przypadki szczególne</a></li>
+        <li><a href="#przyk-ad">Przykład</a></li>
+        <li><a href="#komunikaty-o-b-dach">Komunikaty o błędach</a></li>
+        <li><a href="#je-li-warto-nie-jest-rozpoznawana">Jeśli wartość nie jest rozpoznawana</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="Ścieżka nawigacji"><a href="/pl/">AtlasDays</a> / <a href="/pl/help/">Centrum pomocy</a></nav>
 
     <h1>Format pliku CSV</h1>
 <p class="article-answer">Wymagana jest tylko kolumna <strong>Country</strong> (kraj). AtlasDays rozpoznaje kolumny po ich angielskich nagłówkach, więc kolejność kolumn nie ma znaczenia. Kroki importu opisuje artykuł <a href="/pl/help/csv-import">Import z CSV</a>.</p>
 
-    <h2>Kolumny</h2>
+    <h2 id="kolumny">Kolumny</h2>
     <p>Zalecany wiersz nagłówków: <code>Country,State,Start Date,End Date,Purpose,Notes</code>. Wielkość liter w nagłówkach nie ma znaczenia. Nierozpoznane kolumny, na przykład <code>Days</code>, są pomijane. Jeśli nagłówek występuje dwa razy, używany jest pierwszy.</p>
     <dl class="kv kv-text">
       <div><dt><strong>Country</strong></dt><dd>Kraj, kolumna wymagana. Nazwa kraju po angielsku lub w języku aplikacji, dwuliterowy kod ISO albo popularna nazwa zastępcza, na przykład <code>USA</code>, <code>UK</code> lub <code>Holland</code>. Nazwa zastępcza, która może oznaczać dwa miejsca, jest odrzucana.</dd></div>
@@ -184,7 +196,7 @@
     </dl>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/pl/help/csv-format-reference/csv-reference.webp" alt="Przykład i szablon w imporcie z CSV" width="1320" height="1990" loading="lazy" decoding="async" /></figure>
 
-    <h2>Formaty dat</h2>
+    <h2 id="formaty-dat">Formaty dat</h2>
     <div class="data-table">
     <table>
       <thead><tr><th>Start Date</th><th>End Date</th><th>Wynik</th></tr></thead>
@@ -199,21 +211,21 @@
     </div>
     <p>Lata muszą mieścić się w zakresie od 1900 do ośmiu lat po bieżącym roku. W jednym wierszu nie można łączyć dokładnych dat z samymi latami. Podróże z opcją Tylko rok i podróże bez dat liczą się do odwiedzonych miejsc i mapy, ale nigdy do liczby dni ani trackerów. Podróż bez dat można utworzyć wyłącznie przez import z CSV.</p>
 
-    <h2>Przypadki szczególne</h2>
+    <h2 id="przypadki-szczeg-lne">Przypadki szczególne</h2>
     <ul>
       <li><strong>Stany USA.</strong> Jeśli jedna wizyta w USA obejmowała kilka stanów, użyj osobnego wiersza dla każdego stanu. Zwykły wiersz <code>United States</code> jest prawidłowy przy śledzeniu na poziomie kraju. Nazwa stanu w kolumnie Country (<code>California</code>, <code>US-CA</code>) również daje podróż do USA, podobnie jak puste pole Country z prawidłowym polem State. Dwuliterowe kody, które są też kodami krajów, na przykład <code>CA</code>, pozostają krajami. Bez wersji Pro wiersze ze stanami importują się jako zwykłe podróże do Stanów Zjednoczonych.</li>
       <li><strong>Tranzyt.</strong> Wpisz <code>Transit</code> w kolumnie Purpose, jeśli podróż odbyła się bez wjazdu do kraju. Tranzyt wyklucza inne cele: jeśli występuje razem z innym celem, zachowany zostaje tylko Tranzyt.</li>
       <li><strong>Separator i cudzysłowy.</strong> Przecinek, średnik i tabulator są rozpoznawane na podstawie wiersza nagłówków. Pola zawierające separator lub znak nowego wiersza ujmij w cudzysłów.</li>
     </ul>
 
-    <h2>Przykład</h2>
+    <h2 id="przyk-ad">Przykład</h2>
     <pre><code>Country,State,Start Date,End Date,Purpose,Notes
 France,,2026-03-01,2026-03-05,Personal,
 United States,CA,2026-04-10,2026-04-15,Business,Konferencja
 Japan,,2024,,Personal,Daty nieznane
 United Arab Emirates,,2026-05-01,2026-05-01,Transit,Przesiadka na lotnisku</code></pre>
 
-    <h2>Komunikaty o błędach</h2>
+    <h2 id="komunikaty-o-b-dach">Komunikaty o błędach</h2>
     <p>Każdy błąd pojawia się w podglądzie z numerem wiersza, a wiersz nie jest importowany. Numeracja wierszy liczy nagłówek jako wiersz 1.</p>
     <dl class="kv kv-text">
       <div><dt>Nie znaleziono kolumny Country</dt><dd>Umieść na początku wiersz nagłówków z kolumną <strong>Country</strong>.</dd></div>
@@ -233,7 +245,7 @@ United Arab Emirates,,2026-05-01,2026-05-01,Transit,Przesiadka na lotnisku</code
     </dl>
 
     <section class="if-needed">
-      <h2>Jeśli wartość nie jest rozpoznawana</h2>
+      <h2 id="je-li-warto-nie-jest-rozpoznawana">Jeśli wartość nie jest rozpoznawana</h2>
       <p>Użyj kodu kraju ISO, dat w formacie ISO i standardowej nazwy lub kodu stanu USA. Plik wyeksportowany z arkusza kalkulacyjnego w innym języku może mieć przetłumaczone nagłówki, które nie są rozpoznawane: zmień je na podane wyżej angielskie nagłówki.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-csv-format-reference">

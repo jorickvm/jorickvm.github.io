@@ -165,16 +165,42 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="本頁內容">
+      <p class="toc-title">本頁內容</p>
+      <ul>
+        <li><a href="#section-1">先從所選期間看起</a></li>
+        <li><a href="#section-2">四項統計</a></li>
+        <li><a href="#section-3">居住國與海外天數</a></li>
+        <li><a href="#section-4">地圖和總計回答的是不同的問題</a></li>
+        <li><a href="#section-5">美國的細項</a></li>
+        <li><a href="#section-6">調整總覽並分享</a></li>
+        <li><a href="#section-7">總覽卡片的數字不如預期時</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="導覽路徑"><a href="/zh-Hant/">AtlasDays</a> / <a href="/zh-Hant/help/">說明中心</a></nav>
 
     <h1>了解總覽與地圖</h1>
 <p class="article-answer">總覽會依所選期間彙整<a href="/zh-Hant/help/timeline-and-calendar">時間軸</a>的內容。地圖回答的是去過哪裡，數字卡片回答的是記錄了多少天。</p>
 
-    <h2>先從所選期間看起</h2>
+    <details class="toc">
+      <summary>本頁內容</summary>
+      <ul>
+        <li><a href="#section-1">先從所選期間看起</a></li>
+        <li><a href="#section-2">四項統計</a></li>
+        <li><a href="#section-3">居住國與海外天數</a></li>
+        <li><a href="#section-4">地圖和總計回答的是不同的問題</a></li>
+        <li><a href="#section-5">美國的細項</a></li>
+        <li><a href="#section-6">調整總覽並分享</a></li>
+        <li><a href="#section-7">總覽卡片的數字不如預期時</a></li>
+      </ul>
+    </details>
+    <script>(function(){var t=document.currentScript.previousElementSibling;if(matchMedia('(min-width: 760px)').matches)t.open=true})();</script>
+    <h2 id="section-1">先從所選期間看起</h2>
     <p>輕點<strong>統計</strong>卡片的標題，上面顯示<strong>統計 · </strong>加上目前的期間。標題會展開一個控制項，有<strong>年份</strong>和<strong>自訂期間</strong>兩種選擇。年份提供<strong>歷年</strong>，以及每個有行程的年份各一個標籤。自訂期間提供最近 7 至 365 天的區間，也可以選<strong>自訂</strong>來指定自己的日期。拿卡片和行程或<a href="/zh-Hant/help/export-and-reports">匯出</a>對照之前，請先設定好期間；不同的期間顯示不同的結果，都是正常的。地圖也跟著同一個期間。</p>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/zh-Hant/help/dashboard-and-map/period-selector.webp" alt="總覽的統計卡片，顯示所選期間" width="1320" height="528" loading="lazy" decoding="async" /></figure>
 
-    <h2>四項統計</h2>
+    <h2 id="section-2">四項統計</h2>
     <p>每個格子都可以開啟一個面板，查看背後的明細。</p>
     <ul>
       <li><strong>國家</strong>（清單包含屬地時，標示為<strong>地點</strong>）依你的<a href="/zh-Hant/help/country-count">國家計算方式</a>清單，計算造訪過的地點。在面板中輕點<strong>共 N</strong>可以更改清單，也可以用排序選單依行程數、天數或名稱排列。</li>
@@ -183,23 +209,23 @@
       <li><strong>大洲</strong>計算 7 大洲中造訪過的洲數。橫跨兩洲的國家可以在國家計算方式中指定歸屬。</li>
     </ul>
 
-    <h2>居住國與海外天數</h2>
+    <h2 id="section-3">居住國與海外天數</h2>
     <p>海外天數計算有精確日期、且位於居住國以外任何地點的天數。請在<strong>設定 → 行程記錄 → 居住國</strong>中設定，或從海外天數面板設定。初始設定不會詢問，所以新安裝時居住國是<strong>未設定</strong>，海外天數面板會提示你設定。選擇<strong>無固定居住地</strong>，則會計入所有已記錄的天數。居住國也會影響「新增追蹤器」清單的排序，並讓時間軸可以隱藏居住國的行程。</p>
 
-    <h2>地圖和總計回答的是不同的問題</h2>
+    <h2 id="section-4">地圖和總計回答的是不同的問題</h2>
     <p>地圖會標示每個非<a href="/zh-Hant/help/history-and-import">轉機</a>的造訪地點，包括沒有日期的地點：僅年份的行程會顯示在歷年，以及它所寫的那一年。這類行程不會產生天數總計。因此地圖顯示的地點可能比國家統計更多，因為國家統計只計算你清單中的項目。</p>
     <p>輕點地圖或以雙指張開，可開啟全螢幕地圖。拖曳可旋轉地球，雙指縮放可放大縮小，輕點某個國家可查看該國的行程和天數。</p>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/zh-Hant/help/dashboard-and-map/map-state.webp" alt="AtlasDays 的世界地圖，標示出造訪過的國家" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
-    <h2>美國的細項</h2>
+    <h2 id="section-5">美國的細項</h2>
     <p>國家層級的美國行程會標示出美國，也會計入美國的總計。州層級的檢視需要 Pro，且行程上要有州別；沒有標註州別的美國行程，無法自動歸到某一州。</p>
 
-    <h2>調整總覽並分享</h2>
+    <h2 id="section-6">調整總覽並分享</h2>
     <p>輕點追蹤器卡片的任何位置，即可開啟詳細資料。長按追蹤器卡片可編輯、重新排序或刪除。左上角的分享按鈕會開啟可儲存或傳送的卡片：旅行地圖、停留最久的國家、大洲和國旗收藏。分享之前，請先確認期間。卡片的外觀和語言可以更改，不會動到你的行程。</p>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/zh-Hant/help/dashboard-and-map/share-cards.webp" alt="分享預覽，顯示 AtlasDays 的總覽卡片" width="1320" height="1600" loading="lazy" decoding="async" /></figure>
 
     <section class="if-needed">
-      <h2>總覽卡片的數字不如預期時</h2>
+      <h2 id="section-7">總覽卡片的數字不如預期時</h2>
       <p>先檢查所選期間。接著開啟時間軸，檢視這段期間內有日期、僅年份、未定和轉機的行程，並確認居住國、國家計算方式，以及是否有美國行程漏了州別。</p>
     </section>
     <nav class="help-next" aria-labelledby="next-dashboard-and-map">

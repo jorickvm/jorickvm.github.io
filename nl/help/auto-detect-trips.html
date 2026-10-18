@@ -165,12 +165,40 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="Op deze pagina">
+      <p class="toc-title">Op deze pagina</p>
+      <ul>
+        <li><a href="#auto-detect-inschakelen">Auto-detect inschakelen</a></li>
+        <li><a href="#wat-er-gebeurt-als-een-land-wordt-gedetecteerd">Wat er gebeurt als een land wordt gedetecteerd</a></li>
+        <li><a href="#reizen-worden-automatisch-afgesloten-en-transit-wordt-gemarkeerd">Reizen worden automatisch afgesloten en transit wordt gemarkeerd</a></li>
+        <li><a href="#gedetecteerde-reizen-controleren">Gedetecteerde reizen controleren</a></li>
+        <li><a href="#plaatsen-negeren-die-je-niet-wilt-detecteren">Plaatsen negeren die je niet wilt detecteren</a></li>
+        <li><a href="#tips-in-de-tijdlijn">Tips in de Tijdlijn</a></li>
+        <li><a href="#zorg-dat-auto-detect-blijft-werken">Zorg dat Auto-detect blijft werken</a></li>
+        <li><a href="#als-er-geen-reis-verschijnt">Als er geen reis verschijnt</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="Broodkruimelpad"><a href="/nl/">AtlasDays</a> / <a href="/nl/help/">Helpcentrum</a></nav>
 
     <h1>Reizen automatisch detecteren</h1>
 <p class="article-answer">Auto-detect gebruikt energiezuinige locatiecontrole op de achtergrond om op te merken wanneer je een nieuw land binnengaat, en voegt de reis direct toe aan de <a href="/nl/help/timeline-and-calendar">Tijdlijn</a>. Er wacht niets op goedkeuring, en je kunt de reis daarna bewerken of verwijderen.</p>
 
-    <h2>Auto-detect inschakelen</h2>
+    <details class="toc">
+      <summary>Op deze pagina</summary>
+      <ul>
+        <li><a href="#auto-detect-inschakelen">Auto-detect inschakelen</a></li>
+        <li><a href="#wat-er-gebeurt-als-een-land-wordt-gedetecteerd">Wat er gebeurt als een land wordt gedetecteerd</a></li>
+        <li><a href="#reizen-worden-automatisch-afgesloten-en-transit-wordt-gemarkeerd">Reizen worden automatisch afgesloten en transit wordt gemarkeerd</a></li>
+        <li><a href="#gedetecteerde-reizen-controleren">Gedetecteerde reizen controleren</a></li>
+        <li><a href="#plaatsen-negeren-die-je-niet-wilt-detecteren">Plaatsen negeren die je niet wilt detecteren</a></li>
+        <li><a href="#tips-in-de-tijdlijn">Tips in de Tijdlijn</a></li>
+        <li><a href="#zorg-dat-auto-detect-blijft-werken">Zorg dat Auto-detect blijft werken</a></li>
+        <li><a href="#als-er-geen-reis-verschijnt">Als er geen reis verschijnt</a></li>
+      </ul>
+    </details>
+    <script>(function(){var t=document.currentScript.previousElementSibling;if(matchMedia('(min-width: 760px)').matches)t.open=true})();</script>
+    <h2 id="auto-detect-inschakelen">Auto-detect inschakelen</h2>
     <ol>
       <li>Open <strong>Instellingen → Detectie → Auto-detect</strong>.</li>
       <li>Schakel <strong>Auto-detect</strong> in.</li>
@@ -180,7 +208,7 @@
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/nl/help/auto-detect-trips/auto-detect-settings.webp" alt="Instellingen voor automatische reisdetectie met locatie- en meldingsopties" width="1320" height="2100" loading="lazy" decoding="async" /></figure>
     <p>Detectie werkt alleen met toegang op Altijd. Blijf je bij Bij gebruik van app steken, dan blijft de schakelaar uit. Als je het inschakelt via de kaart in de Tijdlijn (zie hieronder), wordt na de twee locatievragen ook om toestemming voor meldingen gevraagd; via Instellingen gebeurt dat niet.</p>
 
-    <h2>Wat er gebeurt als een land wordt gedetecteerd</h2>
+    <h2 id="wat-er-gebeurt-als-een-land-wordt-gedetecteerd">Wat er gebeurt als een land wordt gedetecteerd</h2>
     <ul>
       <li>De reis wordt direct aan de Tijdlijn toegevoegd, met de detectiedatum als begin en zonder einddatum totdat je vertrekt.</li>
       <li>Als AtlasDays open is, toont een banner de plek met <strong>Herstel</strong>. Die verdwijnt na een paar seconden, en er verschijnt geen pushmelding zolang de app op de voorgrond staat.</li>
@@ -189,20 +217,20 @@
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/nl/help/auto-detect-trips/detected-banner.webp" alt="Banner in de app die een gedetecteerd land meldt met een knop Herstel" width="1320" height="720" loading="lazy" decoding="async" /></figure>
     <p>De melding heeft één actie, <strong>Verwijder reis</strong>. Daarmee verwijder je de reis die net is toegevoegd. De plek komt daardoor niet op de negeerlijst, en een reis waarvan je de begindatum al hebt gewijzigd blijft staan.</p>
 
-    <h2>Reizen worden automatisch afgesloten en transit wordt gemarkeerd</h2>
+    <h2 id="reizen-worden-automatisch-afgesloten-en-transit-wordt-gemarkeerd">Reizen worden automatisch afgesloten en transit wordt gemarkeerd</h2>
     <ul>
       <li><strong>Automatisch afsluiten.</strong> Wanneer een latere detectie laat zien dat je een land hebt verlaten, krijgt de eerdere open reis een einddatum. Als AtlasDays open is, verschijnt een melding <strong>Reis naar &lt;Land&gt; beëindigd</strong> (of <strong>N reizen beëindigd</strong>) met <strong>Herstel</strong>, een paar seconden lang.</li>
       <li><strong>Transit.</strong> Een korte stop tussen twee andere landen verschijnt eerst als gewone reis. Zodra de volgende detectie binnenkomt, verandert AtlasDays hem in <a href="/nl/help/history-and-import">Transit</a>, zodat hij niet meetelt in de dagtotalen. Dit gebeurt alleen als je er geen soort reis, notities of foto's aan hebt toegevoegd.</li>
     </ul>
 
-    <h2>Gedetecteerde reizen controleren</h2>
+    <h2 id="gedetecteerde-reizen-controleren">Gedetecteerde reizen controleren</h2>
     <p>Open de reis in de Tijdlijn om het land of de Amerikaanse staat en de datums te controleren. De begindatum is de dag waarop de locatiewijziging werd gedetecteerd, dus pas hem aan waar de exacte dag ertoe doet. Detectie van Amerikaanse staten is er met Pro; zonder Pro wordt een reis naar de VS als gewone reis naar de Verenigde Staten toegevoegd.</p>
 
-    <h2>Plaatsen negeren die je niet wilt detecteren</h2>
+    <h2 id="plaatsen-negeren-die-je-niet-wilt-detecteren">Plaatsen negeren die je niet wilt detecteren</h2>
     <p>Kies onder <strong>Negeren</strong> in het scherm Auto-detect voor <strong>Landen</strong> om plekken over te slaan die je telefoon steeds oppikt vlak bij een grens. Met Pro heb je ook <strong>Amerikaanse staten</strong>. Voor een genegeerde plek wordt geen reis gemaakt, en de dagen blijven bij het omliggende land. Je kunt zulke reizen nog steeds zelf toevoegen.</p>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/nl/help/auto-detect-trips/ignore-list.webp" alt="Negeerlijst van Auto-detect met geselecteerde landen" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
-    <h2>Tips in de Tijdlijn</h2>
+    <h2 id="tips-in-de-tijdlijn">Tips in de Tijdlijn</h2>
     <p>De Tijdlijn kan bovenaan de lijst maximaal drie kaarten tonen. Met het kruisje op een kaart verberg je die voorgoed.</p>
     <ul>
       <li><strong>Reizen automatisch bijhouden</strong> biedt <strong>Schakel auto-detect in</strong> en <strong>Hoe het werkt</strong>. De kaart verschijnt zolang Auto-detect uit staat en je minstens één reis hebt.</li>
@@ -212,7 +240,7 @@
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/nl/help/auto-detect-trips/prompt-card.webp" alt="Tijdlijnkaart die aanbiedt om Auto-detect in te schakelen" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
     <p>Meer over deze kaarten en andere bediening van de Tijdlijn staat in <a href="/nl/help/timeline-tools">De Tijdlijn doorzoeken, filteren en aanpassen</a>.</p>
 
-    <h2>Zorg dat Auto-detect blijft werken</h2>
+    <h2 id="zorg-dat-auto-detect-blijft-werken">Zorg dat Auto-detect blijft werken</h2>
     <ul>
       <li>Open AtlasDays af en toe. Blijft de app lange tijd gesloten, dan stopt iOS mogelijk met het doorgeven van locatie-updates.</li>
       <li>Sluit de app niet geforceerd af via de appkiezer. Daarmee stopt de controle totdat je de app weer opent.</li>
@@ -221,7 +249,7 @@
     <div class="callout"><p><strong>Geen doorlopende GPS.</strong> Auto-detect leunt op de iOS-gebeurtenissen voor belangrijke locatiewijzigingen, niet op een opgeslagen route. Het tijdstip hangt af van iOS, geografie en verbinding, dus een grensovergang kan te laat worden opgemerkt.</p></div>
 
     <section class="if-needed">
-      <h2>Als er geen reis verschijnt</h2>
+      <h2 id="als-er-geen-reis-verschijnt">Als er geen reis verschijnt</h2>
       <p>Controleer of Auto-detect aanstaat, Locatie op Altijd staat, de plek niet op de negeerlijst staat en de app recent is geopend en niet geforceerd is afgesloten. Controleer voor een melding ook of <strong>Nieuw gedetecteerde landen</strong> aanstaat en of iOS meldingen van AtlasDays toestaat. Je kunt de reis altijd handmatig toevoegen.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-auto-detect-trips">

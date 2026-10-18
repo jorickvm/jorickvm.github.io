@@ -165,15 +165,27 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="На этой странице">
+      <p class="toc-title">На этой странице</p>
+      <ul>
+        <li><a href="#flighty">Экспорт из Flighty</a></li>
+        <li><a href="#atlasdays">Импорт в AtlasDays</a></li>
+        <li><a href="#section-3">Как перелёты превращаются в поездки</a></li>
+        <li><a href="#section-4">Дубликаты и пересечения</a></li>
+        <li><a href="#section-5">Проверьте штаты США</a></li>
+        <li><a href="#section-6">Если файл отклонён</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/ru/">AtlasDays</a> / <a href="/ru/help/">Справка</a></nav>
 
     <h1>Импорт из Flighty</h1>
 <p class="article-answer">Экспортируйте историю перелётов из Flighty в CSV, выберите файл в AtlasDays и проверьте предлагаемые поездки до сохранения. Это один из <a href="/ru/help/import-trips">способов добавить прошлые поездки</a>.</p>
 
-    <h2>Экспорт из Flighty</h2>
+    <h2 id="flighty">Экспорт из Flighty</h2>
     <p>Во Flighty откройте <strong>Settings</strong> → <strong>Account Data</strong> (интерфейс Flighty на английском) и экспортируйте перелёты в CSV. Сохраните файл там, откуда его сможет открыть приложение «Файлы» в iOS: например, в iCloud Drive или «На iPhone».</p>
 
-    <h2>Импорт в AtlasDays</h2>
+    <h2 id="atlasdays">Импорт в AtlasDays</h2>
     <ol>
       <li>Откройте <strong>«Настройки» → «Импорт» → «Flighty»</strong>.</li>
       <li>Нажмите <strong>Выбрать CSV из Flighty</strong> и укажите экспортированный файл.</li>
@@ -183,7 +195,7 @@
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/ru/help/flighty-import/flighty-setup.webp" alt="Экран настройки импорта из Flighty" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
     <p>Файл обрабатывается на устройстве, и ничего не сохраняется, пока вы не подтвердите импорт.</p>
 
-    <h2>Как перелёты превращаются в поездки</h2>
+    <h2 id="section-3">Как перелёты превращаются в поездки</h2>
     <p>AtlasDays сопоставляет каждый аэропорт со страной и создаёт поездку, когда рейс прилетает в страну, а более поздний рейс вылетает из неё. Остальное в результате следует из этого:</p>
     <ul>
       <li><strong>Пересадки</strong> короче 24 часов проверяются отдельно. Остановки до 10 часов помечаются как <a href="/ru/help/history-and-import">транзит</a> и не входят в подсчёт дней. При более долгих остановках предполагается, что вы въехали в страну. Изменить это можно в поездке переключателем <strong>Транзит</strong>.</li>
@@ -195,14 +207,14 @@
 
     <div class="callout"><p><strong>Только перелёты.</strong> Поезда, паромы и поездки на машине в списке не появляются, как и рейсы, которых нет в экспорте. Перед импортом сравните результат с тем, где вы на самом деле проводили дни.</p></div>
 
-    <h2>Дубликаты и пересечения</h2>
+    <h2 id="section-4">Дубликаты и пересечения</h2>
     <p>Записи, повторяющие поездку, которая уже есть в разделе <a href="/ru/help/timeline-and-calendar">«Хронология»</a>, помечаются как <strong>Дубликат</strong>. <strong>Объединить</strong> означает, что запись охватывает существующую поездку и будет объединена с ней, а <strong>Пересечение</strong> — что даты частично совпадают с другой поездкой. Проверьте такие записи до импорта.</p>
 
-    <h2>Проверьте штаты США</h2>
+    <h2 id="section-5">Проверьте штаты США</h2>
     <p>Если данные об аэропорте позволяют определить штат США, AtlasDays предлагает его. С Pro каждый штат импортируется отдельной поездкой. Без Pro штаты импортируются как обычные поездки в Соединённые Штаты. Если вы полагаетесь на учёт по штатам, подтвердите штат перед сохранением.</p>
 
     <section class="if-needed">
-      <h2>Если файл отклонён</h2>
+      <h2 id="section-6">Если файл отклонён</h2>
       <p>Сообщение <em>Этот файл не похож на экспорт CSV из Flighty</em> означает, что файл — не исходный экспорт Flighty. Сделайте экспорт во Flighty заново и выберите именно этот файл, а не пересохранённый или изменённый в табличном редакторе. Файлы CSV, созданные AtlasDays, открываются через <a href="/ru/help/csv-import">Импорт CSV</a>. Если в результате написано <strong>В файле нет подходящих строк</strong>, в экспорте не оказалось перелётов, которые AtlasDays мог бы использовать.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-flighty-import">

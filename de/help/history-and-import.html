@@ -165,32 +165,44 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="Auf dieser Seite">
+      <p class="toc-title">Auf dieser Seite</p>
+      <ul>
+        <li><a href="#eine-reise-tr-gt-ihre-reisedaten">Eine Reise trägt ihre Reisedaten</a></li>
+        <li><a href="#reisen-ohne-enddatum">Reisen ohne Enddatum</a></li>
+        <li><a href="#nur-jahr">Nur Jahr</a></li>
+        <li><a href="#transit">Transit</a></li>
+        <li><a href="#im-zweifel-vorsichtig-w-hlen">Im Zweifel vorsichtig wählen</a></li>
+        <li><a href="#wenn-eine-reise-in-einer-summe-fehlt">Wenn eine Reise in einer Summe fehlt</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/de/">AtlasDays</a> / <a href="/de/help/">Hilfe</a></nav>
 
     <h1>Wie Reisedaten funktionieren</h1>
 <p class="article-answer">Eine Reise wird mit ihrem An- und Abreisedatum erfasst, und diese Reisedaten bestimmen jede Summe. Kennst du nur das Jahr, sichere die Reise als <strong>Nur Jahr</strong>, statt zu raten.</p>
 
-    <h2>Eine Reise trägt ihre Reisedaten</h2>
+    <h2 id="eine-reise-tr-gt-ihre-reisedaten">Eine Reise trägt ihre Reisedaten</h2>
     <p>Beim Hinzufügen einer Reise werden ein Land, ein Startdatum und ein Enddatum abgefragt. Reisen mit Reisedaten fließen in die Summen der <a href="/de/help/dashboard-and-map">Übersicht</a>, in Tracker-Berechnungen, <a href="/de/help/export-and-reports">Exporte</a> und <a href="/de/help/plan-a-trip">Prognosen</a> ein. <a href="/de/help/day-counting">Beide Randtage zählen mit</a>.</p>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/de/help/history-and-import/mode-selector.webp" alt="Das Blatt zum Hinzufügen einer Reise mit Land, Reisedaten und Zweck" width="1320" height="2668" loading="lazy" decoding="async" /></figure>
 
-    <h2>Reisen ohne Enddatum</h2>
+    <h2 id="reisen-ohne-enddatum">Reisen ohne Enddatum</h2>
     <p>Für einen Aufenthalt, der noch nicht zu Ende ist, öffne das Enddatum und tippe auf die Taste <strong>Ohne Enddatum</strong>, statt ein Datum zu wählen. Sobald die Reise begonnen hat, zeigt die Zeitleiste sie als <strong>Unterwegs</strong>, und AtlasDays zählt bis heute, bis du das Abreisedatum ergänzt. Eine künftige Reise ohne Enddatum erscheint als <strong>Ohne Enddatum</strong>.</p>
 
-    <h2>Nur Jahr</h2>
+    <h2 id="nur-jahr">Nur Jahr</h2>
     <p>Kennst du das Jahr, aber nicht die Reisedaten, tippe auf das Startdatum und wähl unter der Datumsauswahl <strong>Nur Jahr</strong>. Die Auswahl wechselt zu <strong>Startjahr</strong> und <strong>Endjahr</strong>; das Endjahr ist optional. Wie es in der App selbst heißt: Reisen mit reiner Jahresangabe werden bei besuchten Orten und auf der Karte berücksichtigt, nicht aber bei Tageszählungen oder Trackern.</p>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/de/help/history-and-import/mode-year.webp" alt="Eine Reise als Nur Jahr mit Startjahr und Endjahr" width="1320" height="1250" loading="lazy" decoding="async" /></figure>
     <p>Nur Jahr gibt es für die Aufzeichnung besuchter Orte und für die Karte, vor allem bei älterem Verlauf. Alles, was in ein Limit einfließt, auf das du dich verlässt, braucht echte Reisedaten.</p>
 
-    <h2>Transit</h2>
+    <h2 id="transit">Transit</h2>
     <p>Transit ist ein Zweck, keine Datumseinstellung. Wähl das Feld <strong>Transit</strong>, wenn du durchgereist bist, ohne in das Land einzureisen, etwa bei einem Anschluss im Transitbereich. Damit werden die anderen Zwecke abgewählt, und die Wahl eines anderen Zwecks wählt Transit ab. Internationaler Luftraum und internationale Gewässer wählen ihn automatisch. Transit-Reisen zählen nicht zu den Tagessummen und markieren das Land nicht als besucht.</p>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/de/help/history-and-import/mode-transit.webp" alt="Eine Reise mit dem gewählten Zweck Transit" width="1320" height="1250" loading="lazy" decoding="async" /></figure>
 
-    <h2>Im Zweifel vorsichtig wählen</h2>
+    <h2 id="im-zweifel-vorsichtig-w-hlen">Im Zweifel vorsichtig wählen</h2>
     <p>Lass eine nur halb erinnerte Reise vorerst als Nur Jahr stehen und gib ihr Reisedaten, sobald ein Passstempel, eine Buchung, ein Foto oder ein anderer Beleg die Grenzen bestätigt. Ein Jahr, das ehrlich sagt, was du weißt, ist nützlicher als geratene Reisedaten.</p>
 
     <section class="if-needed">
-      <h2>Wenn eine Reise in einer Summe fehlt</h2>
+      <h2 id="wenn-eine-reise-in-einer-summe-fehlt">Wenn eine Reise in einer Summe fehlt</h2>
       <p>Bei Reisen als Nur Jahr ist das zu erwarten: Sie markieren den Ort als besucht, erzeugen aber keine Kalendertage. Dasselbe gilt für Reisen, die nur mit einem Jahr importiert wurden, etwa aus einer <a href="/de/help/csv-format-reference">CSV</a>-Datei ohne vollständige Datumsangaben. Prüf außerdem, ob es eine Transit-Reise ist. Gib einer Reise nur dann echte Reisedaten, wenn du sie belegen kannst.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-history-and-import">

@@ -165,12 +165,24 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="目次">
+      <p class="toc-title">目次</p>
+      <ul>
+        <li><a href="#section-1">トラッカーを追加する</a></li>
+        <li><a href="#section-2">ルールを設定する</a></li>
+        <li><a href="#section-3">期間を選ぶ</a></li>
+        <li><a href="#section-4">場所を確認する</a></li>
+        <li><a href="#section-5">プリセットはあくまで出発点です</a></li>
+        <li><a href="#0">新しいトラッカーの日数が0のとき</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="パンくずリスト"><a href="/ja/">AtlasDays</a> / <a href="/ja/help/">ヘルプセンター</a></nav>
 
     <h1>トラッカーを作成する</h1>
 <p class="article-answer"><strong>「概要」</strong>で <strong>+</strong> をタップし、プリセットまたは<strong>「カスタム」</strong>を選び、エディタでルールを確認して<strong>「保存」</strong>をタップします。トラッカーが数えるのは、<a href="/ja/help/timeline-and-calendar">タイムライン</a>にすでにある旅行のうち、<a href="/ja/help/history-and-import">正確な日付</a>のあるものだけです。</p>
 
-    <h2>トラッカーを追加する</h2>
+    <h2 id="section-1">トラッカーを追加する</h2>
     <ol>
       <li><strong>「概要」</strong>を開き、右上の <strong>+</strong> をタップします。<strong>「トラッカーを追加」</strong>シートが開きます。</li>
       <li>フィルタのピルのいずれかをタップするか、虫眼鏡をタップしてルール名や国名で検索します。一覧の詳細は<a href="/ja/help/tracker-presets">トラッカーのプリセットを選ぶ</a>で説明しています。</li>
@@ -181,7 +193,7 @@
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/ja/help/create-a-tracker/preset-picker.webp" alt="フィルタのピル、「カスタム」カード、最初のプリセットのセクションが並ぶ「トラッカーを追加」シート" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
     <p>トラッカーの名前は、数える場所から付けられます。名前やサブタイトル、国を変えるには、エディタの上部にあるカードをタップします。</p>
 
-    <h2>ルールを設定する</h2>
+    <h2 id="section-2">ルールを設定する</h2>
     <p>エディタには、ルールが短い行のリストとして表示されます。プリセットを選ぶと自動で入力され、<strong>「カスタム」</strong>では自分の選択から始まります。</p>
     <ul>
       <li><strong>「目標」：</strong><strong>「上限未満に抑える」</strong>は、数値を超えないようにする<strong>「上限」</strong>として扱います。<strong>「目標を達成」</strong>は、数値を目指して達成する<strong>「目標」</strong>として扱います。税務上の居住と米国の州のトラッカーでは、それぞれの選択肢に<strong>「税務上の居住者になるのを避けます。」</strong>と<strong>「税務上の居住者になることを目指します。」</strong>という説明が付きます。</li>
@@ -190,23 +202,23 @@
     </ul>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/ja/help/create-a-tracker/configured-editor.webp" alt="場所、目標、上限、期間の行が並ぶトラッカーのエディタ" width="1320" height="2146" loading="lazy" decoding="async" /></figure>
 
-    <h2>期間を選ぶ</h2>
+    <h2 id="section-3">期間を選ぶ</h2>
     <ul>
       <li><strong>「ローリング」</strong>は、シェンゲンの90/180ルールのように、今日で終わる動く期間です。<strong>「長さ」</strong>の行で、日数または暦の月数で設定します。</li>
       <li><strong>「年」</strong>は、<strong>「開始」</strong>の行の日付から始まる1年を数えます。開始が1月1日なら暦年になり、それ以外の日付なら会計年度になります。</li>
       <li><strong>「入国ごと」</strong>は、<strong>「開始」</strong>の行の日付から日数を数え、別々の訪問を合算せず、1回の滞在ごとに追います。それぞれの期間が何を測るかは、<a href="/ja/help/trackers-and-limits">トラッカーの集計方法</a>で説明しています。</li>
     </ul>
 
-    <h2>場所を確認する</h2>
+    <h2 id="section-4">場所を確認する</h2>
     <p>複数の国を選んだトラッカーは、選択したすべての国を対象に、条件を満たす日数を集計します。米国の州のトラッカーには、州を設定した米国の旅行が必要です。州を指定せずに保存した米国の旅行は州のトラッカーには反映されず、その場合、行の表示は<strong>「国」</strong>ではなく<strong>「州」</strong>になります。</p>
 
-    <h2>プリセットはあくまで出発点です</h2>
+    <h2 id="section-5">プリセットはあくまで出発点です</h2>
     <p>プリセットは設定の手間を省くためのものです。実際に自分へ適用されるルールが変わるわけではありません。数値を頼りにする前に、自分の国籍、認められた条件、渡航目的、現在の状況に合っているか確認してください。シェンゲンの90/180ルールを管理したい場合は、手作業で組み立てるよりも<a href="/ja/help/schengen-90-180">専用の手順</a>のほうが早く済みます。</p>
 
     <div class="callout"><p><strong>1つの上限を管理するトラッカーは無料です。</strong>2つ目のトラッカー、米国の州のトラッカー、<a href="/ja/help/rule-trackers">2つの上限を持つトラッカー</a>には<a href="/ja/help/atlasdays-pro">AtlasDays Pro</a>が必要です。Proがなくても、どれも設定できます。アップグレードの案内は<strong>「保存」</strong>をタップしたときに表示されます。</p></div>
 
     <section class="if-needed">
-      <h2>新しいトラッカーの日数が0のとき</h2>
+      <h2 id="0">新しいトラッカーの日数が0のとき</h2>
       <p>トラッカーの対象地域が旅行と合っているか、該当する旅行に「年のみ」ではなく開始日と終了日があるか、「乗り継ぎ」になっていないかを確認してください。これから始まる旅行は、その日付が来るまで数えられません。</p>
     </section>
     <nav class="help-next" aria-labelledby="next-create-a-tracker">

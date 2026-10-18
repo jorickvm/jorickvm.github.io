@@ -165,12 +165,24 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="Sur cette page">
+      <p class="toc-title">Sur cette page</p>
+      <ul>
+        <li><a href="#ajouter-un-voyage">Ajouter un voyage</a></li>
+        <li><a href="#modifier-un-voyage">Modifier un voyage</a></li>
+        <li><a href="#supprimer-un-voyage">Supprimer un voyage</a></li>
+        <li><a href="#passer-de-la-liste-au-calendrier">Passer de la liste au calendrier</a></li>
+        <li><a href="#s-jours-aux-tats-unis">Séjours aux États-Unis</a></li>
+        <li><a href="#si-un-voyage-ne-peut-pas-tre-enregistr">Si un voyage ne peut pas être enregistré</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="/fr/">AtlasDays</a> / <a href="/fr/help/">Centre d’aide</a></nav>
 
     <h1>Ajouter, modifier ou supprimer un voyage</h1>
 <p class="article-answer">La Chronologie est le registre source derrière l’<a href="/fr/help/dashboard-and-map">Aperçu</a>, la carte, les suivis, les <a href="/fr/help/export-and-reports">exports</a> et les <a href="/fr/help/widgets">widgets</a>. Quand l’une de ces vues a besoin d’autres données, modifiez le voyage dans la Chronologie.</p>
 
-    <h2>Ajouter un voyage</h2>
+    <h2 id="ajouter-un-voyage">Ajouter un voyage</h2>
     <ol>
       <li>Ouvrez la <strong>Chronologie</strong> et touchez <strong>+</strong>.</li>
       <li>Touchez <strong>Sélectionner un pays</strong> et choisissez-en un. Pour un voyage aux États-Unis, vous pouvez ajouter un État sous <strong>État (facultatif)</strong> si vous voulez un suivi par État (Pro).</li>
@@ -179,23 +191,23 @@
     </ol>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/fr/help/timeline-and-calendar/timeline-list.webp" alt="Liste de la Chronologie contenant des voyages passés et en cours" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
-    <h2>Modifier un voyage</h2>
+    <h2 id="modifier-un-voyage">Modifier un voyage</h2>
     <p>Touchez un voyage dans la liste de la Chronologie, ou ouvrez-le depuis un jour de la vue Calendrier. Changez le pays, l’État, les dates, les motifs ou les notes, puis touchez <strong>Enregistrer</strong>. Les totaux concernés se recalculent à partir du voyage modifié.</p>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/fr/help/timeline-and-calendar/add-edit.webp" alt="Fiche de modification d’un voyage montrant le pays et les dates" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
-    <h2>Supprimer un voyage</h2>
+    <h2 id="supprimer-un-voyage">Supprimer un voyage</h2>
     <p>Balayez un voyage vers la gauche dans la liste et touchez l’icône de corbeille, ou ouvrez le voyage et touchez <strong>Supprimer le voyage</strong>, ce qui demande une confirmation. Après une suppression depuis la Chronologie, un bouton <strong>Annuler</strong> apparaît en bas de l’écran pendant environ quatre secondes. Une fois qu’il a disparu, la suppression est définitive ; pour retrouver le voyage, ajoutez-le à nouveau.</p>
 
-    <h2>Passer de la liste au calendrier</h2>
+    <h2 id="passer-de-la-liste-au-calendrier">Passer de la liste au calendrier</h2>
     <p>Le bouton à côté de <strong>•••</strong>, en haut à gauche, change de vue. La liste est la plus rapide pour parcourir les voyages dans l’ordre. Le calendrier rend plus visibles les trous et les voyages qui s’étendent sur plusieurs semaines, et n’affiche que les voyages aux dates exactes. Touchez un jour pour voir ses voyages dans une fiche, et utilisez-y <strong>+</strong> pour ajouter un voyage à cette date. Les deux vues modifient les mêmes enregistrements.</p>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/fr/help/timeline-and-calendar/calendar.webp" alt="Vue Calendrier avec des voyages couvrant plusieurs dates" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
     <p>Pour rechercher, filtrer par année, changer le tri ou trouver des photos pour vos voyages, consultez <a href="/fr/help/timeline-tools">Rechercher, filtrer et personnaliser la Chronologie</a>.</p>
 
-    <h2>Séjours aux États-Unis</h2>
+    <h2 id="s-jours-aux-tats-unis">Séjours aux États-Unis</h2>
     <p>Un voyage aux États-Unis sans État contribue tout de même aux totaux américains au niveau du pays. Avec Pro, l’État s’affiche sous le <a href="/fr/help/languages">nom du pays</a> une fois que vous en avez ajouté un, et des voyages américains consécutifs peuvent être regroupés en une seule carte États-Unis. Ajoutez l’État quand vous avez besoin d’un suivi par État ou du détail par État américain.</p>
 
     <section class="if-needed">
-      <h2>Si un voyage ne peut pas être enregistré</h2>
+      <h2 id="si-un-voyage-ne-peut-pas-tre-enregistr">Si un voyage ne peut pas être enregistré</h2>
       <p><strong>Enregistrer</strong> reste indisponible tant qu’un pays et des dates ne sont pas renseignés : une date de début et une date de fin (ou <strong>Sans date de fin</strong>), ou une année pour Année uniquement. Vérifiez que la date de fin n’est pas antérieure à la date de début. Si le message <strong>Voyage en double</strong> apparaît, ce voyage exact existe déjà. Les chevauchements n’empêchent pas l’enregistrement ; voir <a href="/fr/help/overlapping-trips">Résoudre les voyages qui se chevauchent</a>.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-timeline-and-calendar">

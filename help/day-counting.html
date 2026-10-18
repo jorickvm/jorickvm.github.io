@@ -163,41 +163,69 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="On this page">
+      <p class="toc-title">On this page</p>
+      <ul>
+        <li><a href="#arrival-and-departure-days-are-inclusive">Arrival and departure days are inclusive</a></li>
+        <li><a href="#trackers-can-count-differently">Trackers can count differently</a></li>
+        <li><a href="#overlapping-days-are-deduplicated">Overlapping days are deduplicated</a></li>
+        <li><a href="#open-ended-trips-use-today">Open-ended trips use today</a></li>
+        <li><a href="#year-only-trips-do-not-create-numeric-days">Year Only trips do not create numeric days</a></li>
+        <li><a href="#transit-contributes-zero-days">Transit contributes zero days</a></li>
+        <li><a href="#home-country-has-a-specific-role">Home Country has a specific role</a></li>
+        <li><a href="#if-a-total-differs-from-your-manual-count">If a total differs from your manual count</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">AtlasDays</a> / <a href="/help/">Help Center</a></nav>
 
     <h1>How AtlasDays Counts Travel Days</h1>
 <p class="article-answer">By default, AtlasDays counts each calendar day from a trip's arrival date through its departure date, both included. A tracker can instead count nights, days away, or full days.</p>
 
-    <h2>Arrival and departure days are inclusive</h2>
+    <details class="toc">
+      <summary>On this page</summary>
+      <ul>
+        <li><a href="#arrival-and-departure-days-are-inclusive">Arrival and departure days are inclusive</a></li>
+        <li><a href="#trackers-can-count-differently">Trackers can count differently</a></li>
+        <li><a href="#overlapping-days-are-deduplicated">Overlapping days are deduplicated</a></li>
+        <li><a href="#open-ended-trips-use-today">Open-ended trips use today</a></li>
+        <li><a href="#year-only-trips-do-not-create-numeric-days">Year Only trips do not create numeric days</a></li>
+        <li><a href="#transit-contributes-zero-days">Transit contributes zero days</a></li>
+        <li><a href="#home-country-has-a-specific-role">Home Country has a specific role</a></li>
+        <li><a href="#if-a-total-differs-from-your-manual-count">If a total differs from your manual count</a></li>
+      </ul>
+    </details>
+    <script>(function(){var t=document.currentScript.previousElementSibling;if(matchMedia('(min-width: 760px)').matches)t.open=true})();</script>
+    <h2 id="arrival-and-departure-days-are-inclusive">Arrival and departure days are inclusive</h2>
     <p>A trip from June 1 through June 3 contributes three days: June 1, June 2, and June 3. A same-day trip contributes one day.</p>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/help/day-counting/exact-dates.webp" alt="Trip dates showing the start and end date" width="1320" height="900" loading="lazy" decoding="async" /></figure>
 
-    <h2>Trackers can count differently</h2>
+    <h2 id="trackers-can-count-differently">Trackers can count differently</h2>
     <p>In a tracker's <strong>Limit</strong> setting, <strong>Days</strong> counts arrival and departure days in full. <strong>Nights</strong> counts the nights between arrival and departure, so June 1 through June 3 is two nights. <strong>Days away</strong> counts the days that no stay in the tracker's places touches. It includes days with no trip at all, and it does not treat <strong>Transit</strong> or <strong>Year Only</strong> trips as stays. <strong>Full days</strong> counts whole days only, without the arrival and departure days, so June 1 through June 3 is one full day and a same-day trip counts nothing. <a href="/help/create-a-tracker">Create a tracker</a> shows where to set it.</p>
     <p>One preset adds a rule of its own: Portugal’s tax residence tracker counts days, but a finished same-day visit with no night in Portugal counts nothing.</p>
 
-    <h2>Overlapping days are deduplicated</h2>
+    <h2 id="overlapping-days-are-deduplicated">Overlapping days are deduplicated</h2>
     <p>When multiple qualifying trips cover the same calendar day inside a tracker's country set, that tracker counts the day once. Overlaps stay flagged in the <a href="/help/timeline-and-calendar">Timeline</a> so you can decide whether the records need correction; <a href="/help/overlapping-trips">Resolve Overlapping Trips</a> shows how.</p>
 
-    <h2>Open-ended trips use today</h2>
+    <h2 id="open-ended-trips-use-today">Open-ended trips use today</h2>
     <p>A trip marked <strong>Open-ended</strong> that has started is ongoing. AtlasDays uses today as its effective end date, so its total can increase each day until you add the departure date. A trip that starts in the future does not enter the current total.</p>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/help/day-counting/ongoing.webp" alt="Ongoing trip with no end date" width="1320" height="1150" loading="lazy" decoding="async" /></figure>
 
-    <h2>Year Only trips do not create numeric days</h2>
+    <h2 id="year-only-trips-do-not-create-numeric-days">Year Only trips do not create numeric days</h2>
     <p>A <strong>Year Only</strong> trip preserves travel history without inventing dates. It marks a place as visited, but contributes nothing to numeric day totals or rolling-window calculations. <a href="/help/history-and-import">How Trip Dates Work</a> covers when to use it.</p>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/help/day-counting/approximate.webp" alt="Year Only trip with a start and end year" width="1320" height="1250" loading="lazy" decoding="async" /></figure>
 
-    <h2>Transit contributes zero days</h2>
+    <h2 id="transit-contributes-zero-days">Transit contributes zero days</h2>
     <p>Use <strong>Transit</strong> when you did not enter the country, such as an airside connection. The record stays in your history but contributes zero days and does not mark the country as visited.</p>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/help/day-counting/transit.webp" alt="Trip with the Transit purpose selected" width="1320" height="1250" loading="lazy" decoding="async" /></figure>
 
-    <h2>Home Country has a specific role</h2>
+    <h2 id="home-country-has-a-specific-role">Home Country has a specific role</h2>
     <p>Your <a href="/help/dashboard-and-map">Home Country</a> setting decides which days the <strong>Days Abroad</strong> count treats as abroad. It does not remove trips from a country tracker or change how a trip's dates are counted.</p>
 
     <div class="callout"><p><strong>AtlasDays is a record-keeping tool.</strong> A tracker counts the dates you entered. Official visa, tax, and residency rules decide which days legally qualify. The <a href="/learn/">Travel Rule Library</a> explains the common rules in plain language.</p></div>
 
     <section class="if-needed">
-      <h2>If a total differs from your manual count</h2>
+      <h2 id="if-a-total-differs-from-your-manual-count">If a total differs from your manual count</h2>
       <p>Compare the tracker's places, window, and counting unit (Days, Nights, Days away, or Full days), then check for an open-ended trip, a Transit record, a Year Only trip, or an overlap. Count the arrival and departure dates before comparing again.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-day-counting">

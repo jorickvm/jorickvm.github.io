@@ -165,15 +165,27 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="本頁內容">
+      <p class="toc-title">本頁內容</p>
+      <ul>
+        <li><a href="#flighty">從 Flighty 匯出</a></li>
+        <li><a href="#atlasdays">匯入 AtlasDays</a></li>
+        <li><a href="#section-3">航班如何變成行程</a></li>
+        <li><a href="#section-4">重複與重疊</a></li>
+        <li><a href="#section-5">確認美國州別</a></li>
+        <li><a href="#section-6">檔案遭拒絕時</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="導覽路徑"><a href="/zh-Hant/">AtlasDays</a> / <a href="/zh-Hant/help/">說明中心</a></nav>
 
     <h1>Flighty 匯入</h1>
 <p class="article-answer">將 Flighty 的航班紀錄匯出為 CSV，在 AtlasDays 中選取檔案，儲存前先確認建議的行程。這是<a href="/zh-Hant/help/import-trips">新增過去行程的方式</a>之一。</p>
 
-    <h2>從 Flighty 匯出</h2>
+    <h2 id="flighty">從 Flighty 匯出</h2>
     <p>在 Flighty 中開啟 <strong>設定 → Account Data</strong>，將航班匯出為 CSV。請把檔案存到 iOS「檔案」選取器能開啟的位置，例如 iCloud Drive 或「我的 iPhone」。</p>
 
-    <h2>匯入 AtlasDays</h2>
+    <h2 id="atlasdays">匯入 AtlasDays</h2>
     <ol>
       <li>開啟<strong>設定 → 匯入 → Flighty</strong>。</li>
       <li>點一下<strong>選擇 Flighty CSV</strong>，選取匯出的檔案。</li>
@@ -183,7 +195,7 @@
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/zh-Hant/help/flighty-import/flighty-setup.webp" alt="從 Flighty 匯入的設定畫面" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
     <p>解析在裝置上進行，經你確認之前不會儲存任何內容。</p>
 
-    <h2>航班如何變成行程</h2>
+    <h2 id="section-3">航班如何變成行程</h2>
     <p>AtlasDays 會將每個機場對應到國家；當某個航班抵達一個國家，之後又有航班從該國出發時，就會建立一個行程。預覽中的其他內容都由此而來：</p>
     <ul>
       <li>不到 24 小時的<strong>轉機停留</strong>會另外列出檢查。10 小時以內的停留會標為<a href="/zh-Hant/help/history-and-import">轉機</a>，不計入天數。更長的停留則視為已入境該國。要更改時，可在該行程切換<strong>轉機</strong>。</li>
@@ -195,14 +207,14 @@
 
     <div class="callout"><p><strong>僅限航班。</strong>火車、渡輪與公路行程都不會出現，匯出檔中缺少的航班也不會出現。匯入之前，請將預覽與你實際停留的天數比對。</p></div>
 
-    <h2>重複與重疊</h2>
+    <h2 id="section-4">重複與重疊</h2>
     <p>與<a href="/zh-Hant/help/timeline-and-calendar">時間軸</a>中既有行程相同的項目會標為<strong>重複</strong>。<strong>合併</strong>表示該項目涵蓋既有行程，並會與它合併；<strong>重疊</strong>則表示日期與其他行程部分衝突。匯入之前請先檢查這些項目。</p>
 
-    <h2>確認美國州別</h2>
+    <h2 id="section-5">確認美國州別</h2>
     <p>當機場資訊足以判斷美國州別時，AtlasDays 會建議該州。有 Pro 時，每個州會匯入為各自的行程；沒有 Pro 時，這些州會匯入為一般的美國行程。若你依賴各州的追蹤，儲存前請先確認州別。</p>
 
     <section class="if-needed">
-      <h2>檔案遭拒絕時</h2>
+      <h2 id="section-6">檔案遭拒絕時</h2>
       <p>若顯示「這似乎不是 Flighty 匯出的 CSV」，表示該檔案不是 Flighty 的原始匯出檔。請從 Flighty 重新匯出並選取該檔案，而不是在試算表中重新儲存或重新排列過的檔案。AtlasDays 的 CSV 檔案請改用<a href="/zh-Hant/help/csv-import">CSV 匯入</a>。若預覽顯示<strong>Flighty CSV 中沒有可匯入的資料</strong>，表示匯出檔中沒有 AtlasDays 可用的航班。</p>
     </section>
     <nav class="help-next" aria-labelledby="next-flighty-import">

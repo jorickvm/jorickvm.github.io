@@ -165,12 +165,24 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="目次">
+      <p class="toc-title">目次</p>
+      <ul>
+        <li><a href="#section-1">アラートをオンにする</a></li>
+        <li><a href="#section-2">マイルストーン</a></li>
+        <li><a href="#section-3">アラートは先を見通す</a></li>
+        <li><a href="#section-4">通知の許可は別の設定</a></li>
+        <li><a href="#section-5">スマートアラートと自動検出は別のもの</a></li>
+        <li><a href="#section-6">アラートが届かないとき</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="パンくずリスト"><a href="/ja/">AtlasDays</a> / <a href="/ja/help/">ヘルプセンター</a></nav>
 
     <h1>スマートアラート</h1>
 <p class="article-answer">スマートアラートは、トラッカーが上限や目標に近づいたとき、または到達したときに通知します。トラッカーごとに設定でき、記録済みの旅行と予定している旅行をもとに先を見通し、通知の許可が必要です。</p>
 
-    <h2>アラートをオンにする</h2>
+    <h2 id="section-1">アラートをオンにする</h2>
     <ol>
       <li>トラッカーのエディタを開きます。詳細画面のスライダーのアイコンをタップするか、<strong>「概要」</strong>でトラッカーのカードを長押しして<strong>「編集」</strong>を選びます。</li>
       <li><strong>「アラート」</strong>の行をタップします。値は<strong>「オフ」</strong>、<strong>「オン」</strong>、または有効なアラートの数で表示されます。</li>
@@ -181,22 +193,22 @@
     </ol>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/ja/help/smart-alerts/alert-settings.webp" alt="通知の時刻としきい値のリストが表示されたトラッカーのアラート画面" width="1320" height="2150" loading="lazy" decoding="async" /></figure>
 
-    <h2>マイルストーン</h2>
+    <h2 id="section-2">マイルストーン</h2>
     <p><strong>「上限未満に抑える」</strong>のトラッカーでは、マイルストーンは<strong>「残りN日」</strong>と表示され、最後は<strong>「上限に到達」</strong>です。<strong>「目標を達成」</strong>のトラッカーでは<strong>「目標まであとN日」</strong>と表示され、最後は<strong>「目標達成」</strong>です。新しいトラッカーには、上限に応じたマイルストーンがあらかじめ設定されます。「目標を達成」のトラッカーは、ゴールだけから始まります。</p>
 
-    <h2>アラートは先を見通す</h2>
+    <h2 id="section-3">アラートは先を見通す</h2>
     <p>AtlasDaysは、記録済みの旅行、滞在中の旅行、予定している旅行をもとに、トラッカーを約1年先まで予測します。各アラートは、そのマイルストーンに到達すると見込まれる日に、選んだ時刻に届くよう予約されます。そのため、合計がマイルストーンに達する前にアラートが届くことがあり、旅行やトラッカーのルールを変更すると日付も変わります。2つの上限を持つトラッカーでは、アラートはより近いほうの上限に従います。</p>
 
-    <h2>通知の許可は別の設定</h2>
+    <h2 id="section-4">通知の許可は別の設定</h2>
     <p>iOSで通知がオフになっていても、トラッカーにアラートを設定することはできます。許可のないままアラートをオンにすると、AtlasDaysに<strong>「通知はオフです」</strong>と<strong>「設定を開く」</strong>ボタンが表示されます。<strong>iOSの「設定」＞「通知」＞「AtlasDays」</strong>を自分で開くこともできます。</p>
 
-    <h2>スマートアラートと自動検出は別のもの</h2>
+    <h2 id="section-5">スマートアラートと自動検出は別のもの</h2>
     <p>スマートアラートはトラッカーのしきい値に関するものです。<a href="/ja/help/auto-detect-trips">自動検出</a>の通知は、国境をまたいだ可能性のある新しい移動に関するものです。それぞれ目的も設定も異なります。</p>
 
     <div class="callout"><p><strong>アラートのスイッチには<a href="/ja/help/atlasdays-pro">AtlasDays Pro</a>が必要です。</strong>Proがなくてもマイルストーンのリストは編集できますが、スイッチはオフのままで、アップグレードの案内が表示されます。アラートがなくても、トラッカー自体は使えます。</p></div>
 
     <section class="if-needed">
-      <h2>アラートが届かないとき</h2>
+      <h2 id="section-6">アラートが届かないとき</h2>
       <p>iOSでのAtlasDaysの通知の許可を確認し、そのトラッカーで<strong>「アラート」</strong>のスイッチがオンになっていて保存されているかを確かめ、届ける<strong>「時刻」</strong>も確認してください。そのうえで、マイルストーンをトラッカーの予測と照らし合わせます。アラートはマイルストーンに到達すると見込まれる日に予約されるため、その日がまだ先の場合があります。</p>
     </section>
     <nav class="help-next" aria-labelledby="next-smart-alerts">

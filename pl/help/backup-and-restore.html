@@ -165,12 +165,23 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="Na tej stronie">
+      <p class="toc-title">Na tej stronie</p>
+      <ul>
+        <li><a href="#tworzenie-kopii-zapasowej">Tworzenie kopii zapasowej</a></li>
+        <li><a href="#co-zawiera-plik">Co zawiera plik</a></li>
+        <li><a href="#przywracanie-kopii-zapasowej">Przywracanie kopii zapasowej</a></li>
+        <li><a href="#kopia-zapasowa-synchronizacja-icloud-i-arkusz-kalkulacyjny">Kopia zapasowa, Synchronizacja iCloud i arkusz kalkulacyjny</a></li>
+        <li><a href="#je-li-przywracanie-si-nie-rozpoczyna">Jeśli przywracanie się nie rozpoczyna</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="Ścieżka nawigacji"><a href="/pl/">AtlasDays</a> / <a href="/pl/help/">Centrum pomocy</a></nav>
 
     <h1>Kopia zapasowa i przywracanie</h1>
 <p class="article-answer">Wyeksportuj kopię zapasową AtlasDays w Ustawienia → Eksport, aby zachować podróże, trackery i ustawienia w jednym pliku. Przywrócisz ją w Ustawienia → Import → Kopia zapasowa AtlasDays, na tym samym lub na nowym urządzeniu.</p>
 
-    <h2>Tworzenie kopii zapasowej</h2>
+    <h2 id="tworzenie-kopii-zapasowej">Tworzenie kopii zapasowej</h2>
     <ol>
       <li>Otwórz <strong>Ustawienia → Eksport → Kopia zapasowa AtlasDays</strong>. Eksport jest niedostępny, dopóki nie masz co najmniej jednej podróży.</li>
       <li>Stuknij <strong>Eksportuj kopię zapasową</strong>. Wiersz pod przyciskiem pokazuje, ile podróży i trackerów znajdzie się w pliku.</li>
@@ -179,7 +190,7 @@
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/pl/help/backup-and-restore/backup-export.webp" alt="Ekran Kopia zapasowa AtlasDays z przyciskiem Eksportuj kopię zapasową i liczbą podróży i trackerów" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
     <p>Nazwa pliku to angielskie <strong>AtlasDays Backup</strong> z datą i rozszerzeniem <code>.atlasdays</code>. Kopia odzwierciedla stan z danej chwili: podróży dodanych później w niej nie ma, więc po większych zmianach wyeksportuj ją ponownie. Tworzenie kopii zapasowej jest bezpłatne i niczego w aplikacji nie zmienia.</p>
 
-    <h2>Co zawiera plik</h2>
+    <h2 id="co-zawiera-plik">Co zawiera plik</h2>
     <ul>
       <li>Wszystkie podróże z datami, celem podróży, notatkami i oznaczeniem Tranzyt lub Tylko rok.</li>
       <li>Wszystkie trackery z ich zasadami i ustawieniami alertów.</li>
@@ -187,7 +198,7 @@
     </ul>
     <p>Niektóre elementy są celowo pomijane. Ustawienia Autowykrywania, powiadomień i <a href="/pl/help/icloud-sync-and-restore">Synchronizacji iCloud</a> należą do urządzenia i jego uprawnień. W pliku nie ma też statusu Pro, opcji eksportu, ikony aplikacji ani danych osobowych do PDF, takich jak numer paszportu i data urodzenia. Plik nie zawiera zdjęć ani ich podglądów.</p>
 
-    <h2>Przywracanie kopii zapasowej</h2>
+    <h2 id="przywracanie-kopii-zapasowej">Przywracanie kopii zapasowej</h2>
     <ol>
       <li>Przenieś plik <code>.atlasdays</code> na urządzenie, na przykład do aplikacji Pliki.</li>
       <li>Otwórz <strong>Ustawienia → Import → Kopia zapasowa AtlasDays</strong> i stuknij <strong>Wybierz plik kopii</strong>. Otwarcie pliku z aplikacji Pliki, Mail lub przez AirDrop uruchamia to samo przywracanie.</li>
@@ -199,7 +210,7 @@
 
     <div class="callout"><p><strong>Przywracanie zastępuje dane, a nie je scala.</strong> Podróże i trackery na urządzeniu, których nie ma w kopii, zostaną usunięte i nie da się tego cofnąć. Jeśli obecne dane mogą się przydać, najpierw zrób ich kopię zapasową.</p></div>
 
-    <h2>Kopia zapasowa, Synchronizacja iCloud i arkusz kalkulacyjny</h2>
+    <h2 id="kopia-zapasowa-synchronizacja-icloud-i-arkusz-kalkulacyjny">Kopia zapasowa, Synchronizacja iCloud i arkusz kalkulacyjny</h2>
     <ul>
       <li><strong>Kopia zapasowa AtlasDays</strong> to kopia, którą przechowujesz. Działa bez iCloud i przywraca podróże, trackery i ustawienia, ale tylko w AtlasDays.</li>
       <li><strong><a href="/pl/help/icloud-sync-and-restore">Synchronizacja iCloud</a></strong> utrzymuje jeden bieżący zapis na wszystkich twoich urządzeniach. Przenosi też usunięcia, więc nie pozwala wycofać się z pomyłki.</li>
@@ -208,7 +219,7 @@
     <p>Przy włączonej Synchronizacji iCloud przywracanie zmienia dane na każdym urządzeniu korzystającym z twojego konta iCloud, o czym informuje potwierdzenie. AtlasDays nie przywraca kopii, dopóki iCloud nadal się synchronizuje.</p>
 
     <section class="if-needed">
-      <h2>Jeśli przywracanie się nie rozpoczyna</h2>
+      <h2 id="je-li-przywracanie-si-nie-rozpoczyna">Jeśli przywracanie się nie rozpoczyna</h2>
       <ul>
         <li><strong>Nie można otworzyć kopii</strong> oznacza, że plik nie jest kopią zapasową AtlasDays, jest uszkodzony albo pochodzi z nowszej wersji AtlasDays. Jeśli kopia pochodzi z nowszej wersji, zaktualizuj aplikację. Możesz też wyeksportować nową kopię na urządzeniu źródłowym.</li>
         <li><strong>Nie można jeszcze przywrócić</strong> oznacza, że iCloud nadal się synchronizuje. Poczekaj chwilę i spróbuj ponownie.</li>

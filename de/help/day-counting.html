@@ -165,41 +165,69 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="Auf dieser Seite">
+      <p class="toc-title">Auf dieser Seite</p>
+      <ul>
+        <li><a href="#an-und-abreisetag-z-hlen-mit">An- und Abreisetag zählen mit</a></li>
+        <li><a href="#tracker-k-nnen-anders-z-hlen">Tracker können anders zählen</a></li>
+        <li><a href="#berlappende-tage-werden-nur-einmal-gez-hlt">Überlappende Tage werden nur einmal gezählt</a></li>
+        <li><a href="#reisen-ohne-enddatum-nutzen-den-heutigen-tag">Reisen ohne Enddatum nutzen den heutigen Tag</a></li>
+        <li><a href="#reisen-als-nur-jahr-erzeugen-keine-tageszahlen">Reisen als Nur Jahr erzeugen keine Tageszahlen</a></li>
+        <li><a href="#transit-ergibt-null-tage">Transit ergibt null Tage</a></li>
+        <li><a href="#das-wohnsitzland-hat-eine-bestimmte-rolle">Das Wohnsitzland hat eine bestimmte Rolle</a></li>
+        <li><a href="#wenn-eine-summe-von-deiner-eigenen-z-hlung-abweicht">Wenn eine Summe von deiner eigenen Zählung abweicht</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/de/">AtlasDays</a> / <a href="/de/help/">Hilfe</a></nav>
 
     <h1>Wie AtlasDays Reisetage zählt</h1>
 <p class="article-answer">Standardmäßig zählt AtlasDays jeden Kalendertag vom Anreisedatum einer Reise bis zum Abreisedatum, beide eingeschlossen. Ein Tracker kann stattdessen Nächte, abwesende Tage oder volle Tage zählen.</p>
 
-    <h2>An- und Abreisetag zählen mit</h2>
+    <details class="toc">
+      <summary>Auf dieser Seite</summary>
+      <ul>
+        <li><a href="#an-und-abreisetag-z-hlen-mit">An- und Abreisetag zählen mit</a></li>
+        <li><a href="#tracker-k-nnen-anders-z-hlen">Tracker können anders zählen</a></li>
+        <li><a href="#berlappende-tage-werden-nur-einmal-gez-hlt">Überlappende Tage werden nur einmal gezählt</a></li>
+        <li><a href="#reisen-ohne-enddatum-nutzen-den-heutigen-tag">Reisen ohne Enddatum nutzen den heutigen Tag</a></li>
+        <li><a href="#reisen-als-nur-jahr-erzeugen-keine-tageszahlen">Reisen als Nur Jahr erzeugen keine Tageszahlen</a></li>
+        <li><a href="#transit-ergibt-null-tage">Transit ergibt null Tage</a></li>
+        <li><a href="#das-wohnsitzland-hat-eine-bestimmte-rolle">Das Wohnsitzland hat eine bestimmte Rolle</a></li>
+        <li><a href="#wenn-eine-summe-von-deiner-eigenen-z-hlung-abweicht">Wenn eine Summe von deiner eigenen Zählung abweicht</a></li>
+      </ul>
+    </details>
+    <script>(function(){var t=document.currentScript.previousElementSibling;if(matchMedia('(min-width: 760px)').matches)t.open=true})();</script>
+    <h2 id="an-und-abreisetag-z-hlen-mit">An- und Abreisetag zählen mit</h2>
     <p>Eine Reise vom 1. Juni bis zum 3. Juni ergibt drei Tage: den 1., den 2. und den 3. Juni. Eine Reise an nur einem Tag ergibt einen Tag.</p>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/de/help/day-counting/exact-dates.webp" alt="Reisedaten mit Start- und Enddatum" width="1320" height="900" loading="lazy" decoding="async" /></figure>
 
-    <h2>Tracker können anders zählen</h2>
+    <h2 id="tracker-k-nnen-anders-z-hlen">Tracker können anders zählen</h2>
     <p>In der Einstellung <strong>Limit</strong> eines Trackers zählt <strong>Tage</strong> An- und Abreisetag voll. <strong>Nächte</strong> zählt die Nächte zwischen An- und Abreise, der 1. bis 3. Juni sind also zwei Nächte. <strong>Tage abwesend</strong> zählt die Tage, die kein Aufenthalt an den Orten des Trackers berührt. Dazu gehören auch Tage ganz ohne Reise, und Reisen mit <strong>Transit</strong> oder <strong>Nur Jahr</strong> gelten nicht als Aufenthalte. <strong>Volle Tage</strong> zählt nur ganze Tage, ohne An- und Abreisetag, der 1. bis 3. Juni ist also ein voller Tag, und ein Tagesausflug zählt gar nicht. <a href="/de/help/create-a-tracker">Einen Tracker anlegen</a> zeigt, wo du das einstellst.</p>
     <p>Eine Vorlage hat eine eigene Regel: Der Tracker für den Steuerwohnsitz in Portugal zählt Tage, doch ein abgeschlossener Tagesbesuch ohne Übernachtung in Portugal zählt gar nicht.</p>
 
-    <h2>Überlappende Tage werden nur einmal gezählt</h2>
+    <h2 id="berlappende-tage-werden-nur-einmal-gez-hlt">Überlappende Tage werden nur einmal gezählt</h2>
     <p>Decken mehrere passende Reisen denselben Kalendertag innerhalb der Länder eines Trackers ab, zählt dieser Tracker den Tag einmal. Überschneidungen bleiben in der <a href="/de/help/timeline-and-calendar">Zeitleiste</a> markiert, damit du entscheiden kannst, ob die Einträge korrigiert werden müssen; <a href="/de/help/overlapping-trips">Überschneidende Reisen auflösen</a> zeigt, wie.</p>
 
-    <h2>Reisen ohne Enddatum nutzen den heutigen Tag</h2>
+    <h2 id="reisen-ohne-enddatum-nutzen-den-heutigen-tag">Reisen ohne Enddatum nutzen den heutigen Tag</h2>
     <p>Eine Reise mit <strong>Ohne Enddatum</strong>, die schon begonnen hat, ist unterwegs. AtlasDays nimmt den heutigen Tag als wirksames Enddatum, ihre Summe kann also jeden Tag steigen, bis du das Abreisedatum ergänzt. Eine Reise, die in der Zukunft beginnt, geht nicht in die aktuelle Summe ein.</p>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/de/help/day-counting/ongoing.webp" alt="Eine laufende Reise ohne Enddatum" width="1320" height="1150" loading="lazy" decoding="async" /></figure>
 
-    <h2>Reisen als Nur Jahr erzeugen keine Tageszahlen</h2>
+    <h2 id="reisen-als-nur-jahr-erzeugen-keine-tageszahlen">Reisen als Nur Jahr erzeugen keine Tageszahlen</h2>
     <p>Eine Reise als <strong>Nur Jahr</strong> bewahrt den Reiseverlauf, ohne Reisedaten zu erfinden. Sie markiert einen Ort als besucht, trägt aber nichts zu den Tagessummen oder zu Berechnungen mit gleitendem Zeitraum bei. <a href="/de/help/history-and-import">Wie Reisedaten funktionieren</a> erklärt, wann du sie nutzt.</p>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/de/help/day-counting/approximate.webp" alt="Eine Reise als Nur Jahr mit Startjahr und Endjahr" width="1320" height="1250" loading="lazy" decoding="async" /></figure>
 
-    <h2>Transit ergibt null Tage</h2>
+    <h2 id="transit-ergibt-null-tage">Transit ergibt null Tage</h2>
     <p>Nutze <strong>Transit</strong>, wenn du nicht in das Land eingereist bist, etwa bei einem Anschluss im Transitbereich. Der Eintrag bleibt in deinem Verlauf, ergibt aber null Tage und markiert das Land nicht als besucht.</p>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/de/help/day-counting/transit.webp" alt="Eine Reise mit dem gewählten Zweck Transit" width="1320" height="1250" loading="lazy" decoding="async" /></figure>
 
-    <h2>Das Wohnsitzland hat eine bestimmte Rolle</h2>
+    <h2 id="das-wohnsitzland-hat-eine-bestimmte-rolle">Das Wohnsitzland hat eine bestimmte Rolle</h2>
     <p>Deine Einstellung <a href="/de/help/dashboard-and-map">Wohnsitzland</a> bestimmt, welche Tage die Zählung <strong>Tage im Ausland</strong> als Ausland behandelt. Sie nimmt keine Reisen aus einem Länder-Tracker heraus und ändert nicht, wie die Reisedaten einer Reise gezählt werden.</p>
 
     <div class="callout"><p><strong>AtlasDays ist ein Werkzeug zur Aufzeichnung.</strong> Ein Tracker zählt die Reisedaten, die du eingegeben hast. Welche Tage rechtlich zählen, entscheiden die offiziellen Visa-, Steuer- und Aufenthaltsregeln. Die <a href="/de/learn/">Sammlung der Reiseregeln</a> erklärt die gängigen Regeln in einfacher Sprache.</p></div>
 
     <section class="if-needed">
-      <h2>Wenn eine Summe von deiner eigenen Zählung abweicht</h2>
+      <h2 id="wenn-eine-summe-von-deiner-eigenen-z-hlung-abweicht">Wenn eine Summe von deiner eigenen Zählung abweicht</h2>
       <p>Vergleich die Orte, den Zeitraum und die Zähleinheit des Trackers (Tage, Nächte, Tage abwesend oder Volle Tage), und prüf dann auf eine Reise ohne Enddatum, einen Transit-Eintrag, eine Reise als Nur Jahr oder eine Überschneidung. Zähl An- und Abreisedatum mit, bevor du erneut vergleichst.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-day-counting">

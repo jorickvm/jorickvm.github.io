@@ -165,12 +165,22 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="Bu sayfada">
+      <p class="toc-title">Bu sayfada</p>
+      <ul>
+        <li><a href="#kayna-se-in">Kaynağı seçin</a></li>
+        <li><a href="#kaydetmeden-nce-inceleyin">Kaydetmeden önce inceleyin</a></li>
+        <li><a href="#i-stemedi-iniz-bir-i-e-aktarmay-kald-r-n">İstemediğiniz bir içe aktarmayı kaldırın</a></li>
+        <li><a href="#bekledi-iniz-bir-seyahat-eksikse">Beklediğiniz bir seyahat eksikse</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="İçerik yolu"><a href="/tr/">AtlasDays</a> / <a href="/tr/help/">Yardım Merkezi</a></nav>
 
     <h1>Seyahatleri içe aktarma</h1>
 <p class="article-answer"><strong>Ayarlar → İçe aktar</strong> yolunu açın ve elinizdekine uyan kaynağı seçin: Fotoğraflar, Flighty, CSV dosyası veya AtlasDays yedeği. Yedek dışındaki her kaynak seyahatleri önce incelemenize sunar ve siz onaylayana kadar hiçbir şey kaydedilmez.</p>
 
-    <h2>Kaynağı seçin</h2>
+    <h2 id="kayna-se-in">Kaynağı seçin</h2>
     <p><strong>Seyahatleri içe aktar</strong> ekranında dört kaynak listelenir. İçe aktarma ücretsizdir ve aygıtınızda işlenir.</p>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/tr/help/import-trips/import-hub.webp" alt="AtlasDays yedeği, Fotoğraflar, Flighty ve CSV dosyası kaynaklarını listeleyen Seyahatleri içe aktar ekranı" width="1320" height="1730" loading="lazy" decoding="async" /></figure>
     <ul>
@@ -180,12 +190,12 @@
       <li><strong>AtlasDays yedeği</strong>, seyahatleri, takipleri ve ayarları bir yedek dosyasından geri yükler ve aygıttaki verilerin yerine geçer. Bu bir geri yüklemedir, inceleme değildir. Bkz. <a href="/tr/help/backup-and-restore">Yedekleme ve geri yükleme</a>.</li>
     </ul>
 
-    <h2>Kaydetmeden önce inceleyin</h2>
+    <h2 id="kaydetmeden-nce-inceleyin">Kaydetmeden önce inceleyin</h2>
     <p>Fotoğraflar, Flighty ve CSV, önerilen her seyahat için bir kart içeren bir inceleme ekranıyla biter. Bir seyahati düzeltmek için dokunun ya da dışarıda bırakmak için seçimini kaldırın, ardından içe aktarmayı onaylayın. Bir dosya seçmek veya taramayı bitirmek tek başına <a href="/tr/help/timeline-and-calendar">zaman çizelgesine</a> hiçbir şey eklemez.</p>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/tr/help/import-trips/import-review-pills.webp" alt="Seyahat kartlarında Yinelenen, Birleştir ve Çakışma etiketlerinin göründüğü içe aktarma incelemesi" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
     <p>Kartlarda, seyahati mevcut kayıtlarınızla karşılaştıran küçük bir etiket bulunabilir. <strong>Yinelenen</strong>, aynı ülke ve aynı tarihler ya da o ülkedeki mevcut bir seyahatin zaten kapsadığı bir tarih aralığı demektir. Yinelenenler seçilemez, dolayısıyla asla iki kez içe aktarılmaz. <strong>Birleştir</strong>, seyahatin aynı ülkedeki mevcut bir seyahatten daha geniş bir aralığı kapsadığı anlamına gelir; AtlasDays yeni bir seyahat eklemek yerine ikisini birleştirir. <strong>Çakışma</strong>, tarihlerin mevcut bir seyahatle ortak günleri olduğu, ancak bunun yinelenen ya da birleştirilecek bir kayıt olmadığı anlamına gelir. Seyahati tutmadan önce tarihleri ve yerleri kontrol edin. Her kaynağın eklediği ek denetimler ilgili makalelerde anlatılır.</p>
 
-    <h2>İstemediğiniz bir içe aktarmayı kaldırın</h2>
+    <h2 id="i-stemedi-iniz-bir-i-e-aktarmay-kald-r-n">İstemediğiniz bir içe aktarmayı kaldırın</h2>
     <p>Bir içe aktarma tutmak istemeyeceğiniz seyahatler getirdiyse <strong>Ayarlar → İçe aktarımları yönet</strong> yolunu açın. Bu satır yalnızca seyahatleriniz arasında içe aktarılmış olanlar bulunduğu sürece görünür.</p>
     <ol>
       <li>İçe aktarmayı bulun. Her biri yapıldığı tarih ve saatle, seyahat ve ülke sayısıyla birlikte listelenir. Kayıtlı tarihi olmayan eski içe aktarmalar <strong>Eski biçim</strong> olarak görünür.</li>
@@ -196,7 +206,7 @@
     <p>Yalnızca o içe aktarmadaki seyahatler kaldırılır. Elle eklediğiniz veya Seyahatleri otomatik algıla özelliğinin eklediği seyahatlere dokunulmaz. Tek bir seyahati kaldırmak için <a href="/tr/help/delete-and-reset">Verileri silme veya baştan başlama</a> makalesine bakın.</p>
 
     <section class="if-needed">
-      <h2>Beklediğiniz bir seyahat eksikse</h2>
+      <h2 id="bekledi-iniz-bir-seyahat-eksikse">Beklediğiniz bir seyahat eksikse</h2>
       <p>Seyahatin <strong>Yinelenen</strong> veya <strong>Birleştir</strong> etiketiyle görünüp görünmediğine bakın; bu, AtlasDays'in onu zaten kapsayan bir seyahati olduğu anlamına gelir. Kesin tarihi olmayan seyahatler, <a href="/tr/help/history-and-import">Seyahat tarihleri nasıl çalışır?</a> makalesinde anlatıldığı gibi gün sayılarına eklenmez.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-import-trips">

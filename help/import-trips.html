@@ -163,12 +163,22 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="On this page">
+      <p class="toc-title">On this page</p>
+      <ul>
+        <li><a href="#choose-a-source">Choose a source</a></li>
+        <li><a href="#review-before-saving">Review before saving</a></li>
+        <li><a href="#remove-an-import-you-do-not-want">Remove an import you do not want</a></li>
+        <li><a href="#if-a-trip-you-expected-is-missing">If a trip you expected is missing</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">AtlasDays</a> / <a href="/help/">Help Center</a></nav>
 
     <h1>Import Trips</h1>
 <p class="article-answer">Open Settings → Import and choose the source that matches what you have: Photos, Flighty, a CSV File, or an AtlasDays Backup. Every source except the backup shows its trips for review first, and nothing is saved until you confirm.</p>
 
-    <h2>Choose a source</h2>
+    <h2 id="choose-a-source">Choose a source</h2>
     <p>The <strong>Import Trips</strong> screen lists four sources. Imports are free, and they are processed on your device.</p>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/help/import-trips/import-hub.webp" alt="Import Trips screen listing AtlasDays Backup, Photos, Flighty, and CSV File" width="1320" height="1730" loading="lazy" decoding="async" /></figure>
     <ul>
@@ -178,12 +188,12 @@
       <li><strong>AtlasDays Backup</strong> restores trips, trackers, and settings from a backup file and replaces what is on the device. It is a restore, not a review. See <a href="/help/backup-and-restore">Back Up and Restore</a>.</li>
     </ul>
 
-    <h2>Review before saving</h2>
+    <h2 id="review-before-saving">Review before saving</h2>
     <p>Photos, Flighty, and CSV each end on a review screen with one card per proposed trip. Tap a trip to correct it, or clear its selection to leave it out, then confirm the import. Selecting a file or finishing a scan adds nothing to <a href="/help/timeline-and-calendar">Timeline</a> by itself.</p>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/help/import-trips/import-review-pills.webp" alt="Import review with Duplicate, Merge, and Overlap pills on trip cards" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
     <p>Cards can carry a small pill that compares the trip with what you already have. <strong>Duplicate</strong> means the same country and dates, or a range already covered by an existing trip in that country. Duplicates cannot be selected, so they are never imported twice. <strong>Merge</strong> means the trip covers a wider range than an existing trip in the same country, and AtlasDays combines the two instead of adding another. <strong>Overlap</strong> means the dates share days with an existing trip without being a duplicate or a merge. Check the dates and places before you keep it. The individual articles explain the extra checks each source adds.</p>
 
-    <h2>Remove an import you do not want</h2>
+    <h2 id="remove-an-import-you-do-not-want">Remove an import you do not want</h2>
     <p>If an import brought in trips you would rather not keep, open <strong>Settings → Manage Imports</strong>. The row appears only while your trips include imported ones.</p>
     <ol>
       <li>Find the import. Each one is listed by the date and time it was made, with its number of trips and countries. Older imports without a recorded date appear as <strong>Legacy</strong>.</li>
@@ -194,7 +204,7 @@
     <p>Only the trips from that import are removed. Trips you added by hand or that Auto-Detect added are not touched. To remove a single trip instead, see <a href="/help/delete-and-reset">Delete Data or Start Over</a>.</p>
 
     <section class="if-needed">
-      <h2>If a trip you expected is missing</h2>
+      <h2 id="if-a-trip-you-expected-is-missing">If a trip you expected is missing</h2>
       <p>Check whether it appeared with a <strong>Duplicate</strong> or <strong>Merge</strong> pill, which means AtlasDays already had a trip that covers it. Trips without exact dates do not add to day counts, as described in <a href="/help/history-and-import">How Trip Dates Work</a>.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-import-trips">

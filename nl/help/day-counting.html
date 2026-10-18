@@ -165,41 +165,69 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="Op deze pagina">
+      <p class="toc-title">Op deze pagina</p>
+      <ul>
+        <li><a href="#aankomst-en-vertrekdag-tellen-mee">Aankomst- en vertrekdag tellen mee</a></li>
+        <li><a href="#trackers-kunnen-anders-tellen">Trackers kunnen anders tellen</a></li>
+        <li><a href="#overlappende-dagen-worden-ontdubbeld">Overlappende dagen worden ontdubbeld</a></li>
+        <li><a href="#reizen-zonder-einddatum-gebruiken-vandaag">Reizen zonder einddatum gebruiken vandaag</a></li>
+        <li><a href="#alleen-jaar-reizen-leveren-geen-dagen-op">Alleen jaar-reizen leveren geen dagen op</a></li>
+        <li><a href="#transit-levert-nul-dagen-op">Transit levert nul dagen op</a></li>
+        <li><a href="#je-thuisland-heeft-een-specifieke-rol">Je thuisland heeft een specifieke rol</a></li>
+        <li><a href="#als-een-totaal-afwijkt-van-je-eigen-telling">Als een totaal afwijkt van je eigen telling</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="Broodkruimelpad"><a href="/nl/">AtlasDays</a> / <a href="/nl/help/">Helpcentrum</a></nav>
 
     <h1>Hoe AtlasDays reisdagen telt</h1>
 <p class="article-answer">Standaard telt AtlasDays elke kalenderdag vanaf de aankomstdatum van een reis tot en met de vertrekdatum, beide meegerekend. Een tracker kan in plaats daarvan nachten, dagen weg of volle dagen tellen.</p>
 
-    <h2>Aankomst- en vertrekdag tellen mee</h2>
+    <details class="toc">
+      <summary>Op deze pagina</summary>
+      <ul>
+        <li><a href="#aankomst-en-vertrekdag-tellen-mee">Aankomst- en vertrekdag tellen mee</a></li>
+        <li><a href="#trackers-kunnen-anders-tellen">Trackers kunnen anders tellen</a></li>
+        <li><a href="#overlappende-dagen-worden-ontdubbeld">Overlappende dagen worden ontdubbeld</a></li>
+        <li><a href="#reizen-zonder-einddatum-gebruiken-vandaag">Reizen zonder einddatum gebruiken vandaag</a></li>
+        <li><a href="#alleen-jaar-reizen-leveren-geen-dagen-op">Alleen jaar-reizen leveren geen dagen op</a></li>
+        <li><a href="#transit-levert-nul-dagen-op">Transit levert nul dagen op</a></li>
+        <li><a href="#je-thuisland-heeft-een-specifieke-rol">Je thuisland heeft een specifieke rol</a></li>
+        <li><a href="#als-een-totaal-afwijkt-van-je-eigen-telling">Als een totaal afwijkt van je eigen telling</a></li>
+      </ul>
+    </details>
+    <script>(function(){var t=document.currentScript.previousElementSibling;if(matchMedia('(min-width: 760px)').matches)t.open=true})();</script>
+    <h2 id="aankomst-en-vertrekdag-tellen-mee">Aankomst- en vertrekdag tellen mee</h2>
     <p>Een reis van 1 tot en met 3 juni levert drie dagen op: 1 juni, 2 juni en 3 juni. Een reis binnen dezelfde dag levert één dag op.</p>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/nl/help/day-counting/exact-dates.webp" alt="Reisdatums met de begindatum en de einddatum" width="1320" height="900" loading="lazy" decoding="async" /></figure>
 
-    <h2>Trackers kunnen anders tellen</h2>
+    <h2 id="trackers-kunnen-anders-tellen">Trackers kunnen anders tellen</h2>
     <p>In de instelling <strong>Limiet</strong> van een tracker telt <strong>Dagen</strong> de aankomst- en vertrekdag volledig mee. <strong>Nachten</strong> telt de nachten tussen aankomst en vertrek, dus 1 tot en met 3 juni zijn twee nachten. <strong>Dagen weg</strong> telt de dagen die door geen enkel verblijf in de plekken van de tracker worden geraakt. Daarbij tellen ook dagen zonder enige reis mee, en <strong>Transit</strong>- of <strong>Alleen jaar</strong>-reizen gelden niet als verblijf. <strong>Volle dagen</strong> telt alleen hele dagen, zonder de aankomst- en vertrekdag, dus 1 tot en met 3 juni is één volle dag en een dagtrip telt helemaal niet. <a href="/nl/help/create-a-tracker">Een tracker maken</a> laat zien waar je dit instelt.</p>
     <p>Eén preset heeft een eigen regel: de tracker voor fiscaal inwonerschap in Portugal telt dagen, maar een afgerond dagbezoek zonder overnachting in Portugal telt helemaal niet.</p>
 
-    <h2>Overlappende dagen worden ontdubbeld</h2>
+    <h2 id="overlappende-dagen-worden-ontdubbeld">Overlappende dagen worden ontdubbeld</h2>
     <p>Als meerdere geldige reizen dezelfde kalenderdag binnen de landen van een tracker beslaan, telt die tracker de dag één keer. Overlap blijft gemarkeerd in de <a href="/nl/help/timeline-and-calendar">Tijdlijn</a>, zodat je kunt beslissen of de gegevens gecorrigeerd moeten worden; <a href="/nl/help/overlapping-trips">Overlappende reizen oplossen</a> laat zien hoe.</p>
 
-    <h2>Reizen zonder einddatum gebruiken vandaag</h2>
+    <h2 id="reizen-zonder-einddatum-gebruiken-vandaag">Reizen zonder einddatum gebruiken vandaag</h2>
     <p>Een reis die is gemarkeerd als <strong>Zonder einddatum</strong> en al is begonnen, is nog bezig. AtlasDays gebruikt vandaag als effectieve einddatum, dus het totaal kan elke dag oplopen totdat je de vertrekdatum toevoegt. Een reis die in de toekomst begint, telt nog niet mee in het huidige totaal.</p>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/nl/help/day-counting/ongoing.webp" alt="Reis die nog bezig is, zonder einddatum" width="1320" height="1150" loading="lazy" decoding="async" /></figure>
 
-    <h2>Alleen jaar-reizen leveren geen dagen op</h2>
+    <h2 id="alleen-jaar-reizen-leveren-geen-dagen-op">Alleen jaar-reizen leveren geen dagen op</h2>
     <p>Een reis met <strong>Alleen jaar</strong> bewaart reisgeschiedenis zonder datums te verzinnen. De plek wordt als bezocht gemarkeerd, maar de reis levert niets op voor dagtotalen of berekeningen met een voortschrijdende periode. <a href="/nl/help/history-and-import">Hoe reisdatums werken</a> legt uit wanneer je dit gebruikt.</p>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/nl/help/day-counting/approximate.webp" alt="Alleen jaar-reis met een beginjaar en een eindjaar" width="1320" height="1250" loading="lazy" decoding="async" /></figure>
 
-    <h2>Transit levert nul dagen op</h2>
+    <h2 id="transit-levert-nul-dagen-op">Transit levert nul dagen op</h2>
     <p>Gebruik <strong>Transit</strong> als je het land niet bent binnengegaan, bijvoorbeeld bij een overstap zonder de paspoortcontrole te passeren. De registratie blijft in je geschiedenis staan, maar levert nul dagen op en markeert het land niet als bezocht.</p>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/nl/help/day-counting/transit.webp" alt="Reis met het soort reis Transit geselecteerd" width="1320" height="1250" loading="lazy" decoding="async" /></figure>
 
-    <h2>Je thuisland heeft een specifieke rol</h2>
+    <h2 id="je-thuisland-heeft-een-specifieke-rol">Je thuisland heeft een specifieke rol</h2>
     <p>Je instelling voor <a href="/nl/help/dashboard-and-map">Thuisland</a> bepaalt welke dagen de telling <strong>Dagen in buitenland</strong> als buitenland beschouwt. Ze haalt geen reizen uit een landentracker en verandert niet hoe de datums van een reis worden geteld.</p>
 
     <div class="callout"><p><strong>AtlasDays is een hulpmiddel om je reizen bij te houden.</strong> Een tracker telt de datums die je hebt ingevoerd. Officiële visum-, belasting- en inwonerschapsregels bepalen welke dagen juridisch meetellen. De <a href="/nl/learn/">bibliotheek met reisregels</a> legt de gangbare regels in gewone taal uit.</p></div>
 
     <section class="if-needed">
-      <h2>Als een totaal afwijkt van je eigen telling</h2>
+      <h2 id="als-een-totaal-afwijkt-van-je-eigen-telling">Als een totaal afwijkt van je eigen telling</h2>
       <p>Vergelijk de plekken, de periode en de telling van de tracker (Dagen, Nachten, Dagen weg of Volle dagen) en controleer dan op een reis zonder einddatum, een Transit-registratie, een Alleen jaar-reis of een overlap. Tel de aankomst- en vertrekdatum na voordat je opnieuw vergelijkt.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-day-counting">

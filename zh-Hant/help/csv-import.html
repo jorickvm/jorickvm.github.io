@@ -165,12 +165,23 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="本頁內容">
+      <p class="toc-title">本頁內容</p>
+      <ul>
+        <li><a href="#section-1">匯入檔案</a></li>
+        <li><a href="#section-2">閱讀預覽</a></li>
+        <li><a href="#section-3">在來源檔案中修正錯誤</a></li>
+        <li><a href="#section-4">重新匯入匯出檔</a></li>
+        <li><a href="#section-5">所有資料列都無效時</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="導覽路徑"><a href="/zh-Hant/">AtlasDays</a> / <a href="/zh-Hant/help/">說明中心</a></nav>
 
     <h1>CSV 匯入</h1>
 <p class="article-answer">將存成 CSV 的試算表一次新增多個行程。AtlasDays 會驗證每一列、顯示預覽，經你確認之前不會儲存任何內容。這是<a href="/zh-Hant/help/import-trips">新增過去行程的方式</a>之一。</p>
 
-    <h2>匯入檔案</h2>
+    <h2 id="section-1">匯入檔案</h2>
     <ol>
       <li>開啟<strong>設定 → 匯入 → CSV 檔案</strong>。</li>
       <li>在 Google 試算表、Numbers 或 Excel 中準備檔案，並匯出為 CSV。<strong>CSV 範例</strong>會顯示完整的標題列與範例資料列，按其分享按鈕即可將檔案存下來當作起點。</li>
@@ -183,7 +194,7 @@
 
     <p>也可以直接從檔案開始。在「檔案」App、Safari 的下載項目或「郵件」中分享 CSV 檔案，然後選擇 <strong>AtlasDays</strong>，就會開啟相同的預覽畫面。AtlasDays 會列為開啟 CSV 檔案的選項，但不會被設為這類檔案的預設 App。</p>
 
-    <h2>閱讀預覽</h2>
+    <h2 id="section-2">閱讀預覽</h2>
     <p>預覽會列出有效的資料列，並顯示可點選來篩選的數量。可使用<strong>全選</strong>或<strong>取消全選</strong>來選擇要匯入的項目。</p>
     <ul>
       <li><strong>重複：</strong>該列位於你已有的行程之內，或與前面的資料列重複。這一列會被略過。</li>
@@ -193,16 +204,16 @@
     </ul>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/zh-Hant/help/csv-import/csv-review.webp" alt="CSV 匯入預覽畫面，含有效、無效、重複與重疊資料列" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
-    <h2>在來源檔案中修正錯誤</h2>
+    <h2 id="section-3">在來源檔案中修正錯誤</h2>
     <p>AtlasDays 無法讀取的資料列會顯示在<strong>N 列有錯誤</strong>之下，並附上列號與原因。無效的資料列一律不會匯入。請在試算表中修正，再次匯出，然後重新選取檔案。</p>
 
     <div class="callout"><p><strong>按下匯入之前不會有任何變更。</strong>選取檔案與查看預覽都不會新增行程。</p></div>
 
-    <h2>重新匯入匯出檔</h2>
+    <h2 id="section-4">重新匯入匯出檔</h2>
     <p>存成 CSV 的試算表<a href="/zh-Hant/help/export-and-reports">匯出檔</a>可以再次匯入，前提是匯出時使用英文：欄位標題只能以英文讀取。若要完整複製行程、追蹤器與設定，請改用<a href="/zh-Hant/help/backup-and-restore">備份</a>。</p>
 
     <section class="if-needed">
-      <h2>所有資料列都無效時</h2>
+      <h2 id="section-5">所有資料列都無效時</h2>
       <p>確認第一列是標題列且含有 <strong>Country</strong>，日期則使用 <code>yyyy-mm-dd</code> 或四位數的年份。<a href="/zh-Hant/help/csv-format-reference">CSV 格式參考</a>列出了支援的欄位、值與所有錯誤訊息。</p>
     </section>
     <nav class="help-next" aria-labelledby="next-csv-import">

@@ -165,12 +165,24 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="En esta página">
+      <p class="toc-title">En esta página</p>
+      <ul>
+        <li><a href="#columnas">Columnas</a></li>
+        <li><a href="#formatos-de-fecha">Formatos de fecha</a></li>
+        <li><a href="#casos-especiales">Casos especiales</a></li>
+        <li><a href="#ejemplo">Ejemplo</a></li>
+        <li><a href="#mensajes-de-error">Mensajes de error</a></li>
+        <li><a href="#si-un-valor-no-se-reconoce">Si un valor no se reconoce</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/es/">AtlasDays</a> / <a href="/es/help/">Centro de ayuda</a></nav>
 
     <h1>Referencia de formato CSV</h1>
 <p class="article-answer">Solo la columna <strong>Country</strong> es obligatoria. AtlasDays localiza las columnas por el nombre de su encabezado en inglés, así que el orden de las columnas da igual. Los pasos para importar están en <a href="/es/help/csv-import">Importar CSV</a>.</p>
 
-    <h2>Columnas</h2>
+    <h2 id="columnas">Columnas</h2>
     <p>Fila de encabezados recomendada: <code>Country,State,Start Date,End Date,Purpose,Notes</code>. Los nombres de los encabezados no distinguen mayúsculas de minúsculas. Las columnas no reconocidas, como <code>Days</code>, se ignoran. Si un encabezado aparece dos veces, se usa el primero.</p>
     <dl class="kv kv-text">
       <div><dt><strong>Country</strong></dt><dd>Obligatoria. Nombre del país en inglés o en el idioma de la app, código ISO de dos letras o un alias habitual como <code>USA</code>, <code>UK</code> o <code>Holland</code>. Se rechaza un alias que pueda significar dos lugares.</dd></div>
@@ -184,7 +196,7 @@
     </dl>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/es/help/csv-format-reference/csv-reference.webp" alt="Ejemplo de Importar CSV y controles de la plantilla" width="1320" height="1990" loading="lazy" decoding="async" /></figure>
 
-    <h2>Formatos de fecha</h2>
+    <h2 id="formatos-de-fecha">Formatos de fecha</h2>
     <div class="data-table">
     <table>
       <thead><tr><th>Start Date</th><th>End Date</th><th>Resultado</th></tr></thead>
@@ -199,21 +211,21 @@
     </div>
     <p>Los años deben estar entre 1900 y ocho años después del año actual. Las fechas exactas y los años no se pueden mezclar en una misma fila. Los viajes de Solo año y los viajes sin fechas cuentan para los lugares visitados y el mapa, pero nunca para los recuentos de días ni los controles. Un viaje sin fechas solo se puede crear mediante la importación por CSV.</p>
 
-    <h2>Casos especiales</h2>
+    <h2 id="casos-especiales">Casos especiales</h2>
     <ul>
       <li><strong>Estados de EE. UU.</strong> Usa una fila por estado cuando una misma visita a EE. UU. abarcó varios estados. Una fila normal de <code>United States</code> es válida para el control a nivel de país. Un nombre de estado en la columna Country (<code>California</code>, <code>US-CA</code>) también da un viaje a EE. UU., y un Country vacío con un State válido hace lo mismo. Los códigos de dos letras que además son códigos de país, como <code>CA</code>, siguen siendo países. Sin Pro, las filas de estados se importan como viajes normales a Estados Unidos.</li>
       <li><strong>Tránsito.</strong> Escribe <code>Transit</code> en Purpose si no entraste en el país. Transit es exclusivo: si aparece con otro motivo, solo se conserva Transit.</li>
       <li><strong>Separador y comillas.</strong> La coma, el punto y coma y el tabulador se detectan a partir de la fila de encabezados. Entrecomilla los campos que contengan el separador o un salto de línea.</li>
     </ul>
 
-    <h2>Ejemplo</h2>
+    <h2 id="ejemplo">Ejemplo</h2>
     <pre><code>Country,State,Start Date,End Date,Purpose,Notes
 France,,2026-03-01,2026-03-05,Personal,
 United States,CA,2026-04-10,2026-04-15,Business,Conference
 Japan,,2024,,Personal,Dates not known
 United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></pre>
 
-    <h2>Mensajes de error</h2>
+    <h2 id="mensajes-de-error">Mensajes de error</h2>
     <p>Cada error aparece en la vista previa con su número de fila, y la fila no se importa. El número de fila cuenta el encabezado como fila 1.</p>
     <dl class="kv kv-text">
       <div><dt>No se encontró una columna Country</dt><dd>Pon primero una fila de encabezados con una columna <strong>Country</strong>.</dd></div>
@@ -233,7 +245,7 @@ United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></p
     </dl>
 
     <section class="if-needed">
-      <h2>Si un valor no se reconoce</h2>
+      <h2 id="si-un-valor-no-se-reconoce">Si un valor no se reconoce</h2>
       <p>Usa un código ISO de país, fechas ISO y un nombre o código estándar de estado de EE. UU. Un archivo exportado desde una hoja de cálculo en otro idioma puede llevar encabezados traducidos, que no se reconocen: cámbiales el nombre por los encabezados en inglés de arriba.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-csv-format-reference">

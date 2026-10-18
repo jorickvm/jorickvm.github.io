@@ -165,12 +165,23 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="目次">
+      <p class="toc-title">目次</p>
+      <ul>
+        <li><a href="#section-1">ファイルをインポートする</a></li>
+        <li><a href="#section-2">確認画面の見方</a></li>
+        <li><a href="#section-3">元のファイルのエラーを直す</a></li>
+        <li><a href="#section-4">エクスポートしたファイルを再インポートする</a></li>
+        <li><a href="#section-5">すべての行が無効になるとき</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="パンくずリスト"><a href="/ja/">AtlasDays</a> / <a href="/ja/help/">ヘルプセンター</a></nav>
 
     <h1>CSVインポート</h1>
 <p class="article-answer">CSVとして保存したスプレッドシートから、旅行をまとめて追加します。AtlasDaysはすべての行を検証して確認画面を表示し、確定するまで何も保存しません。過去の旅行を追加する<a href="/ja/help/import-trips">方法</a>の1つです。</p>
 
-    <h2>ファイルをインポートする</h2>
+    <h2 id="section-1">ファイルをインポートする</h2>
     <ol>
       <li><strong>「設定」→「インポート」→「CSVファイル」</strong>を開きます。</li>
       <li>Sheets、Numbers、Excelでファイルを用意し、CSVとしてエクスポートします。<strong>「CSVの例」</strong>には、正確な見出しとサンプル行が表示されます。共有ボタンからファイルを保存して、ひな形として使えます。</li>
@@ -183,7 +194,7 @@
 
     <p>ファイルから直接インポートを始めることもできます。「ファイル」、Safariのダウンロード、または「メール」でCSVファイルを共有し、<strong>「AtlasDays」</strong>を選ぶと、同じ確認画面が開きます。AtlasDaysはCSVファイルを開くアプリの候補として表示されますが、デフォルトのアプリには設定されません。</p>
 
-    <h2>確認画面の見方</h2>
+    <h2 id="section-2">確認画面の見方</h2>
     <p>確認画面には有効な行が並び、タップして絞り込める件数が表示されます。インポートする行は、<strong>「すべて選択」</strong>または<strong>「すべて選択解除」</strong>で選びます。</p>
     <ul>
       <li><strong>「重複」：</strong>すでにある旅行の中に収まっている行、または前の行と同じ行です。スキップされます。</li>
@@ -193,16 +204,16 @@
     </ul>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/ja/help/csv-import/csv-review.webp" alt="有効な行、無効な行、重複、重なりが含まれるCSVインポートの確認画面" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
-    <h2>元のファイルのエラーを直す</h2>
+    <h2 id="section-3">元のファイルのエラーを直す</h2>
     <p>AtlasDaysが読み取れない行は、行番号と理由とともに<strong>「エラーのある行：N件」</strong>に表示されます。無効な行はインポートされません。スプレッドシートで修正し、もう一度エクスポートして、ファイルを選び直してください。</p>
 
     <div class="callout"><p><strong>「インポート」をタップするまで、何も変更されません。</strong>ファイルを選んで確認画面を見ただけでは、旅行は追加されません。</p></div>
 
-    <h2>エクスポートしたファイルを再インポートする</h2>
+    <h2 id="section-4">エクスポートしたファイルを再インポートする</h2>
     <p>スプレッドシートの<a href="/ja/help/export-and-reports">エクスポート</a>をCSVとして保存したものは、英語でエクスポートしたものに限り、再びインポートできます。列見出しは英語でしか読み取れません。旅行、トラッカー、設定をまるごとコピーしたい場合は、代わりに<a href="/ja/help/backup-and-restore">バックアップ</a>を使ってください。</p>
 
     <section class="if-needed">
-      <h2>すべての行が無効になるとき</h2>
+      <h2 id="section-5">すべての行が無効になるとき</h2>
       <p>1行目が見出し行で、<strong>Country</strong>が含まれていること、そして日付が<code>yyyy-mm-dd</code>または4桁の西暦になっていることを確認してください。対応している列、値、すべてのエラーメッセージは、<a href="/ja/help/csv-format-reference">CSV形式リファレンス</a>にまとめてあります。</p>
     </section>
     <nav class="help-next" aria-labelledby="next-csv-import">

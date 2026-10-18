@@ -165,12 +165,23 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="Na tej stronie">
+      <p class="toc-title">Na tej stronie</p>
+      <ul>
+        <li><a href="#sprawd-czy-synchronizacja-jest-w-czona">Sprawdź, czy synchronizacja jest włączona</a></li>
+        <li><a href="#nowe-urz-dzenie-lub-ponowna-instalacja">Nowe urządzenie lub ponowna instalacja</a></li>
+        <li><a href="#co-oznacza-status">Co oznacza status</a></li>
+        <li><a href="#synchronizacja-to-nie-kopia-zapasowa">Synchronizacja to nie kopia zapasowa</a></li>
+        <li><a href="#je-li-brakuje-danych">Jeśli brakuje danych</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="Ścieżka nawigacji"><a href="/pl/">AtlasDays</a> / <a href="/pl/help/">Centrum pomocy</a></nav>
 
     <h1>Synchronizacja iCloud i przywracanie</h1>
 <p class="article-answer">Gdy Synchronizacja iCloud jest włączona, AtlasDays przechowuje twoje podróże i trackery na prywatnym koncie iCloud i utrzymuje je w zgodzie na urządzeniach zalogowanych na to samo konto Apple. Synchronizacja nie jest plikiem kopii zapasowej, więc przechowuj też osobną kopię zapasową AtlasDays.</p>
 
-    <h2>Sprawdź, czy synchronizacja jest włączona</h2>
+    <h2 id="sprawd-czy-synchronizacja-jest-w-czona">Sprawdź, czy synchronizacja jest włączona</h2>
     <ol>
       <li>Otwórz <strong>Ustawienia → Synchronizacja iCloud</strong>. Przełącznik jest domyślnie włączony.</li>
       <li>Sprawdź <strong>Status</strong>. <strong>Zsynchronizowano</strong> oznacza, że to urządzenie jest aktualne.</li>
@@ -178,7 +189,7 @@
     </ol>
     <p>Po włączeniu lub wyłączeniu synchronizacji AtlasDays poprosi o zamknięcie aplikacji w przełączniku aplikacji i ponowne jej otwarcie. Zmiana zacznie działać przy następnym uruchomieniu.</p>
 
-    <h2>Nowe urządzenie lub ponowna instalacja</h2>
+    <h2 id="nowe-urz-dzenie-lub-ponowna-instalacja">Nowe urządzenie lub ponowna instalacja</h2>
     <ol>
       <li>Zaloguj się na to samo konto Apple w Ustawieniach iOS.</li>
       <li>Zainstaluj AtlasDays i otwórz <strong>Ustawienia → Synchronizacja iCloud</strong>, aby sprawdzić, czy jest włączona.</li>
@@ -186,7 +197,7 @@
     </ol>
     <p>Ustawienia związane z urządzeniem wracają osobno. Uprawnienia do lokalizacji i powiadomień przyznaje się na każdym urządzeniu oddzielnie, więc <a href="/pl/help/auto-detect-trips">Autowykrywanie</a> i powiadomienia zadziałają dopiero po ponownym zezwoleniu, a <a href="/pl/help/widgets">widżety</a> trzeba dodać od nowa. Preferencje, takie jak Kraj zamieszkania i wygląd, przenoszą się przez iCloud automatycznie, nawet gdy synchronizacja podróży jest wyłączona.</p>
 
-    <h2>Co oznacza status</h2>
+    <h2 id="co-oznacza-status">Co oznacza status</h2>
     <ul>
       <li><strong>Synchronizowanie…</strong>, <strong>Oczekuje na synchronizację</strong> i <strong>Oczekiwanie na iCloud</strong> to stany przejściowe. Zostaw AtlasDays na chwilę otwarte.</li>
       <li><strong>Zsynchronizowano</strong> oznacza, że nic nie czeka na synchronizację.</li>
@@ -195,11 +206,11 @@
       <li><strong>Problem z synchronizacją</strong> oznacza, że część zmian nie dotarła jeszcze do iCloud. Stuknij <strong>Pokaż szczegóły</strong>, aby zobaczyć wskazówki i dane diagnostyczne, które możesz wysłać do pomocy technicznej.</li>
     </ul>
 
-    <h2>Synchronizacja to nie kopia zapasowa</h2>
+    <h2 id="synchronizacja-to-nie-kopia-zapasowa">Synchronizacja to nie kopia zapasowa</h2>
     <p>Synchronizacja utrzymuje jeden bieżący zapis na wszystkich urządzeniach, więc usunięcie czegoś na jednym z nich dociera do pozostałych. Nie przywróci niczego, co zostało usunięte. <a href="/pl/help/backup-and-restore">Kopia zapasowa AtlasDays</a> to osobny plik, który przechowujesz i przywracasz, gdy jest potrzebny. Jeśli przywrócisz kopię przy włączonej synchronizacji, przywrócone dane zastąpią dane na każdym urządzeniu, a AtlasDays zaczeka, aż iCloud zakończy synchronizację, zanim zacznie przywracanie.</p>
 
     <section class="if-needed">
-      <h2>Jeśli brakuje danych</h2>
+      <h2 id="je-li-brakuje-danych">Jeśli brakuje danych</h2>
       <ol>
         <li>Nie resetuj aplikacji ani nie usuwaj danych, dopóki szukasz przyczyny.</li>
         <li>Upewnij się, że to urządzenie jest zalogowane na to samo konto Apple i że iCloud jest dostępny.</li>

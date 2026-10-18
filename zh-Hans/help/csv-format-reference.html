@@ -165,12 +165,24 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="本页内容">
+      <p class="toc-title">本页内容</p>
+      <ul>
+        <li><a href="#section-1">列</a></li>
+        <li><a href="#section-2">日期格式</a></li>
+        <li><a href="#section-3">特殊情况</a></li>
+        <li><a href="#section-4">示例</a></li>
+        <li><a href="#section-5">错误信息</a></li>
+        <li><a href="#section-6">如果某个值无法识别</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/zh-Hans/">AtlasDays</a> / <a href="/zh-Hans/help/">帮助中心</a></nav>
 
     <h1>CSV 格式参考</h1>
 <p class="article-answer">只有 <strong>Country</strong> 列是必填的。AtlasDays 按英文表头名称识别列，所以列的先后顺序不影响结果。导入步骤见 <a href="/zh-Hans/help/csv-import">CSV 导入</a>。</p>
 
-    <h2>列</h2>
+    <h2 id="section-1">列</h2>
     <p>推荐的标题行：<code>Country,State,Start Date,End Date,Purpose,Notes</code>。表头名称不区分大小写。无法识别的列（例如 <code>Days</code>）会被忽略。同一个表头出现两次时，采用第一个。</p>
     <dl class="kv kv-text">
       <div><dt><strong>Country</strong></dt><dd>必填。英文或 App 语言的国家名称、ISO 两位字母代码，或常见别名，例如 <code>USA</code>、<code>UK</code>、<code>Holland</code>。可能指向两个地方的别名会被拒绝。</dd></div>
@@ -184,7 +196,7 @@
     </dl>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/zh-Hans/help/csv-format-reference/csv-reference.webp" alt="CSV 导入的示例和模板控件" width="1320" height="1990" loading="lazy" decoding="async" /></figure>
 
-    <h2>日期格式</h2>
+    <h2 id="section-2">日期格式</h2>
     <div class="data-table">
     <table>
       <thead><tr><th>Start Date</th><th>End Date</th><th>结果</th></tr></thead>
@@ -199,21 +211,21 @@
     </div>
     <p>年份必须在 1900 年到当前年份之后八年之间。同一行里不能混用确切日期和年份值。仅年份的行程和没有日期的行程会计入到访过的地点和地图，但永远不计入天数或追踪器。没有日期的行程只能通过 CSV 导入创建。</p>
 
-    <h2>特殊情况</h2>
+    <h2 id="section-3">特殊情况</h2>
     <ul>
       <li><strong>美国各州。</strong>一次赴美去了好几个州时，每个州各占一行。只填 <code>United States</code> 的数据行同样有效，可用于国家一级的记录。在 Country 列里填州名（<code>California</code>、<code>US-CA</code>）也会得到美国行程；Country 留空而 State 有效，效果相同。同时也是国家代码的两位字母代码，例如 <code>CA</code>，仍按国家处理。没有 Pro 时，州的数据行会作为普通的美国行程导入。</li>
       <li><strong>转机。</strong>没有实际入境时，在 Purpose 填入 <code>Transit</code>。Transit 具有排他性：与其他目的同时出现时，只保留 Transit。</li>
       <li><strong>分隔符与引号。</strong>逗号、分号和制表符会从标题行自动判断。字段内含分隔符或换行时，请加引号。</li>
     </ul>
 
-    <h2>示例</h2>
+    <h2 id="section-4">示例</h2>
     <pre><code>Country,State,Start Date,End Date,Purpose,Notes
 France,,2026-03-01,2026-03-05,Personal,
 United States,CA,2026-04-10,2026-04-15,Business,Conference
 Japan,,2024,,Personal,Dates not known
 United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></pre>
 
-    <h2>错误信息</h2>
+    <h2 id="section-5">错误信息</h2>
     <p>每条错误都会连同行号显示在预览中，对应的数据行不会导入。行号把标题行算作第 1 行。</p>
     <dl class="kv kv-text">
       <div><dt>找不到 Country 列</dt><dd>先放一行标题行，并包含 <strong>Country</strong> 列。</dd></div>
@@ -233,7 +245,7 @@ United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></p
     </dl>
 
     <section class="if-needed">
-      <h2>如果某个值无法识别</h2>
+      <h2 id="section-6">如果某个值无法识别</h2>
       <p>请使用 ISO 国家代码、ISO 日期，以及标准的美国州名或代码。用其他语言的电子表格导出的文件，可能带有翻译过的表头，这些表头无法识别：请把它们改回上面的英文表头。</p>
     </section>
     <nav class="help-next" aria-labelledby="next-csv-format-reference">

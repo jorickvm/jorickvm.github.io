@@ -165,12 +165,23 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="На этой странице">
+      <p class="toc-title">На этой странице</p>
+      <ul>
+        <li><a href="#section-1">Как импортировать файл</a></li>
+        <li><a href="#section-2">Как читать результат проверки</a></li>
+        <li><a href="#section-3">Исправьте ошибки в исходном файле</a></li>
+        <li><a href="#section-4">Повторный импорт экспорта</a></li>
+        <li><a href="#section-5">Если все строки некорректны</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/ru/">AtlasDays</a> / <a href="/ru/help/">Справка</a></nav>
 
     <h1>Импорт CSV</h1>
 <p class="article-answer">Добавьте сразу много поездок из таблицы, сохранённой в формате CSV. AtlasDays проверяет каждую строку, показывает результат и ничего не сохраняет, пока вы не подтвердите импорт. Это один из <a href="/ru/help/import-trips">способов добавить прошлые поездки</a>.</p>
 
-    <h2>Как импортировать файл</h2>
+    <h2 id="section-1">Как импортировать файл</h2>
     <ol>
       <li>Откройте <strong>«Настройки» → «Импорт» → «Файл CSV»</strong>.</li>
       <li>Подготовьте файл в Google Таблицах, Numbers или Excel и экспортируйте его в CSV. Экран <strong>Пример CSV</strong> показывает точные заголовки с примерами строк, а кнопка «Поделиться» на нём сохраняет файл как основу для вашей таблицы.</li>
@@ -183,7 +194,7 @@
 
     <p>Можно начать и с самого файла. Поделитесь файлом CSV из приложения «Файлы», загрузок Safari или приложения «Почта» и выберите <strong>AtlasDays</strong>: откроется тот же экран проверки. AtlasDays предлагается как один из вариантов для открытия файлов CSV, но не назначается приложением по умолчанию для них.</p>
 
-    <h2>Как читать результат проверки</h2>
+    <h2 id="section-2">Как читать результат проверки</h2>
     <p>В списке показаны корректные строки и счётчики, нажатием на которые можно отфильтровать список. Кнопки <strong>Выбрать всё</strong> и <strong>Снять выбор</strong> помогают выбрать, что импортировать.</p>
     <ul>
       <li><strong>Дубликат:</strong> строка находится внутри уже имеющейся поездки или повторяет предыдущую строку. Она пропускается.</li>
@@ -193,16 +204,16 @@
     </ul>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/ru/help/csv-import/csv-review.webp" alt="Предпросмотр импорта CSV: корректные и некорректные строки, дубликаты и пересечения" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
-    <h2>Исправьте ошибки в исходном файле</h2>
+    <h2 id="section-3">Исправьте ошибки в исходном файле</h2>
     <p>Строки, которые AtlasDays не может прочитать, появляются в разделе <strong>N строк с ошибками</strong> с номером строки и причиной. Некорректные строки никогда не импортируются. Исправьте их в таблице, экспортируйте файл снова и выберите его ещё раз.</p>
 
     <div class="callout"><p><strong>Ничего не меняется, пока вы не нажмёте «Импортировать».</strong> Выбор файла и просмотр результата не добавляют поездки.</p></div>
 
-    <h2>Повторный импорт экспорта</h2>
+    <h2 id="section-4">Повторный импорт экспорта</h2>
     <p>Экспорт «Таблица», сохранённый как CSV, можно импортировать снова, если он был создан на английском: заголовки столбцов читаются только на английском. Чтобы получить полную копию поездок, трекеров и настроек, используйте <a href="/ru/help/backup-and-restore">резервную копию</a>. Подробнее об <a href="/ru/help/export-and-reports">экспорте</a>.</p>
 
     <section class="if-needed">
-      <h2>Если все строки некорректны</h2>
+      <h2 id="section-5">Если все строки некорректны</h2>
       <p>Проверьте, что первая строка — строка заголовков и что в ней есть <strong>Country</strong>, а даты записаны в формате <code>yyyy-mm-dd</code> или как четырёхзначный год. В <a href="/ru/help/csv-format-reference">Справочник по формату CSV</a> перечислены поддерживаемые столбцы, значения и все сообщения об ошибках.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-csv-import">

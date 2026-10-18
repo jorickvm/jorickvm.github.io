@@ -165,12 +165,23 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="Bu sayfada">
+      <p class="toc-title">Bu sayfada</p>
+      <ul>
+        <li><a href="#dosyay-i-e-aktar-n">Dosyayı içe aktarın</a></li>
+        <li><a href="#nizlemeyi-okuyun">Önizlemeyi okuyun</a></li>
+        <li><a href="#kaynak-dosyadaki-hatalar-d-zeltin">Kaynak dosyadaki hataları düzeltin</a></li>
+        <li><a href="#bir-d-a-aktar-m-yeniden-i-e-aktarma">Bir dışa aktarımı yeniden içe aktarma</a></li>
+        <li><a href="#t-m-sat-rlar-ge-ersizse">Tüm satırlar geçersizse</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="İçerik yolu"><a href="/tr/">AtlasDays</a> / <a href="/tr/help/">Yardım Merkezi</a></nav>
 
     <h1>CSV ile içe aktarma</h1>
 <p class="article-answer">CSV olarak kaydedilmiş bir elektronik tablodaki seyahatleri toplu olarak ekleyin. AtlasDays her satırı doğrular, bir önizleme gösterir ve siz onaylayana kadar hiçbir şey kaydetmez. Geçmiş seyahatleri eklemenin <a href="/tr/help/import-trips">yollarından</a> biridir.</p>
 
-    <h2>Dosyayı içe aktarın</h2>
+    <h2 id="dosyay-i-e-aktar-n">Dosyayı içe aktarın</h2>
     <ol>
       <li><strong>Ayarlar → İçe aktar → CSV dosyası</strong> yolunu açın.</li>
       <li>Dosyayı Sheets, Numbers veya Excel'de hazırlayın ve CSV olarak dışa aktarın. <strong>Örnek CSV</strong>, örnek satırlarla birlikte tam başlıkları gösterir; paylaş düğmesi de dosyayı bir başlangıç noktası olarak kaydeder.</li>
@@ -183,7 +194,7 @@
 
     <p>Doğrudan dosyadan da başlayabilirsiniz. Dosyalar, Safari indirmeleri veya Mail üzerinden bir CSV dosyasını paylaşın ve <strong>AtlasDays</strong> seçeneğini seçin: aynı önizleme açılır. AtlasDays, CSV dosyalarını açmak için bir seçenek olarak sunulur, ancak bu dosyalar için varsayılan uygulama olarak ayarlanmaz.</p>
 
-    <h2>Önizlemeyi okuyun</h2>
+    <h2 id="nizlemeyi-okuyun">Önizlemeyi okuyun</h2>
     <p>Önizleme geçerli satırları listeler ve filtrelemek için dokunabileceğiniz sayılar gösterir. Nelerin içe aktarılacağını seçmek için <strong>Tümünü seç</strong> veya <strong>Tüm seçimi kaldır</strong> düğmesini kullanın.</p>
     <ul>
       <li><strong>Yinelenen:</strong> satır, zaten sahip olduğunuz bir seyahatin içinde yer alıyor ya da önceki bir satırı tekrarlıyor. Atlanır.</li>
@@ -193,16 +204,16 @@
     </ul>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/tr/help/csv-import/csv-review.webp" alt="Geçerli, geçersiz, yinelenen ve çakışan satırların bulunduğu CSV içe aktarma önizlemesi" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
-    <h2>Kaynak dosyadaki hataları düzeltin</h2>
+    <h2 id="kaynak-dosyadaki-hatalar-d-zeltin">Kaynak dosyadaki hataları düzeltin</h2>
     <p>AtlasDays'in okuyamadığı satırlar, satır numarası ve nedeniyle birlikte <strong>Hatalı N satır</strong> altında görünür. Geçersiz satırlar hiçbir zaman içe aktarılmaz. Bunları elektronik tabloda düzeltin, yeniden dışa aktarın ve dosyayı yeniden seçin.</p>
 
     <div class="callout"><p><strong>İçe aktar'a dokunana kadar hiçbir şey değişmez.</strong> Bir dosya seçmek ve önizlemeyi görüntülemek seyahat eklemez.</p></div>
 
-    <h2>Bir dışa aktarımı yeniden içe aktarma</h2>
+    <h2 id="bir-d-a-aktar-m-yeniden-i-e-aktarma">Bir dışa aktarımı yeniden içe aktarma</h2>
     <p>CSV olarak kaydedilmiş bir Elektronik tablo <a href="/tr/help/export-and-reports">dışa aktarımı</a>, İngilizce olarak dışa aktarılmış olması koşuluyla yeniden içe aktarılabilir: sütun başlıkları yalnızca İngilizce okunur. Seyahatlerin, takiplerin ve ayarların tam bir kopyası için bunun yerine bir <a href="/tr/help/backup-and-restore">yedek</a> kullanın.</p>
 
     <section class="if-needed">
-      <h2>Tüm satırlar geçersizse</h2>
+      <h2 id="t-m-sat-rlar-ge-ersizse">Tüm satırlar geçersizse</h2>
       <p>İlk satırın bir başlık satırı olduğunu ve <strong>Country</strong> başlığını içerdiğini, tarihlerin ise <code>yyyy-mm-dd</code> biçiminde veya dört haneli bir yıl olarak yazıldığını kontrol edin. <a href="/tr/help/csv-format-reference">CSV biçimi başvuru kılavuzu</a>, desteklenen sütunları, değerleri ve her hata iletisini listeler.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-csv-import">

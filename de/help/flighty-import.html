@@ -165,15 +165,27 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="Auf dieser Seite">
+      <p class="toc-title">Auf dieser Seite</p>
+      <ul>
+        <li><a href="#aus-flighty-exportieren">Aus Flighty exportieren</a></li>
+        <li><a href="#in-atlasdays-importieren">In AtlasDays importieren</a></li>
+        <li><a href="#wie-aus-fl-gen-reisen-werden">Wie aus Flügen Reisen werden</a></li>
+        <li><a href="#duplikate-und-berschneidungen">Duplikate und Überschneidungen</a></li>
+        <li><a href="#us-bundesstaaten-pr-fen">US-Bundesstaaten prüfen</a></li>
+        <li><a href="#wenn-die-datei-abgelehnt-wird">Wenn die Datei abgelehnt wird</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/de/">AtlasDays</a> / <a href="/de/help/">Hilfe</a></nav>
 
     <h1>Flighty-Import</h1>
 <p class="article-answer">Exportiere deinen Flugverlauf aus Flighty als CSV, wähle die Datei in AtlasDays aus und prüfe die vorgeschlagenen Reisen, bevor du sie sicherst. Er ist eine der <a href="/de/help/import-trips">Möglichkeiten, vergangene Reisen hinzuzufügen</a>.</p>
 
-    <h2>Aus Flighty exportieren</h2>
+    <h2 id="aus-flighty-exportieren">Aus Flighty exportieren</h2>
     <p>Öffne in Flighty <strong>Einstellungen → Account Data</strong> und exportiere deine Flüge als CSV. Speichere die Datei dort, wo die iOS-Dateiauswahl sie erreicht, etwa in iCloud Drive oder auf dem iPhone.</p>
 
-    <h2>In AtlasDays importieren</h2>
+    <h2 id="in-atlasdays-importieren">In AtlasDays importieren</h2>
     <ol>
       <li>Öffne <strong>Einstellungen → Importieren → Flighty</strong>.</li>
       <li>Tipp auf <strong>Flighty-CSV auswählen</strong> und wähle die exportierte Datei.</li>
@@ -183,7 +195,7 @@
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/de/help/flighty-import/flighty-setup.webp" alt="Der Einrichtungsbildschirm für den Import aus Flighty" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
     <p>Die Auswertung läuft auf dem Gerät, und nichts wird gesichert, bevor du bestätigst.</p>
 
-    <h2>Wie aus Flügen Reisen werden</h2>
+    <h2 id="wie-aus-fl-gen-reisen-werden">Wie aus Flügen Reisen werden</h2>
     <p>AtlasDays ordnet jeden Flughafen einem Land zu und legt eine Reise an, wenn ein Flug in einem Land ankommt und ein späterer Flug von dort abgeht. Der Rest der Vorschau ergibt sich daraus:</p>
     <ul>
       <li><strong>Zwischenstopps</strong> unter 24 Stunden werden gesondert geprüft. Stopps von 10 Stunden oder weniger werden als <a href="/de/help/history-and-import">Transit</a> markiert und aus der Tageszählung ausgenommen. Bei längeren Stopps wird angenommen, dass du eingereist bist. Ändere das bei einer Reise, indem du <strong>Transit</strong> umschaltest.</li>
@@ -195,14 +207,14 @@
 
     <div class="callout"><p><strong>Nur Flüge.</strong> Züge, Fähren und Autoreisen erscheinen nicht, ebenso wenig Flüge, die im Export fehlen. Vergleiche die Vorschau vor dem Import damit, wo du deine Tage tatsächlich verbracht hast.</p></div>
 
-    <h2>Duplikate und Überschneidungen</h2>
+    <h2 id="duplikate-und-berschneidungen">Duplikate und Überschneidungen</h2>
     <p>Einträge, die eine Reise wiederholen, die schon in der <a href="/de/help/timeline-and-calendar">Zeitleiste</a> steht, sind mit <strong>Duplikat</strong> markiert. <strong>Zusammenführen</strong> heißt: Ein Eintrag deckt eine vorhandene Reise ab und würde sich mit ihr verbinden. <strong>Überschneidung</strong> heißt: Die Reisedaten kollidieren teilweise mit einer anderen Reise. Prüf das vor dem Import.</p>
 
-    <h2>US-Bundesstaaten prüfen</h2>
+    <h2 id="us-bundesstaaten-pr-fen">US-Bundesstaaten prüfen</h2>
     <p>Wenn die Flughafendaten einen US-Bundesstaat hergeben, schlägt AtlasDays ihn vor. Mit Pro wird jeder Bundesstaat als eigene Reise importiert. Ohne Pro werden die Bundesstaaten als gewöhnliche Reisen in die Vereinigten Staaten importiert. Bestätige den Bundesstaat vor dem Sichern, wenn du auf bundesstaatenspezifische Erfassung angewiesen bist.</p>
 
     <section class="if-needed">
-      <h2>Wenn die Datei abgelehnt wird</h2>
+      <h2 id="wenn-die-datei-abgelehnt-wird">Wenn die Datei abgelehnt wird</h2>
       <p>Die Meldung <em>Diese Datei scheint kein Flighty-CSV-Export zu sein</em> bedeutet, dass die Datei nicht der Originalexport von Flighty ist. Exportiere sie erneut aus Flighty und wähle genau diese Datei aus, nicht eine, die in einer Tabellenkalkulation neu gespeichert oder umgestellt wurde. AtlasDays-CSV-Dateien laufen stattdessen über den <a href="/de/help/csv-import">CSV-Import</a>. Steht in der Vorschau <strong>Keine nutzbaren Flighty-Zeilen gefunden</strong>, enthielt der Export keine Flüge, die AtlasDays verwenden konnte.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-flighty-import">

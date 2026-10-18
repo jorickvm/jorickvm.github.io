@@ -163,12 +163,23 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="On this page">
+      <p class="toc-title">On this page</p>
+      <ul>
+        <li><a href="#import-the-file">Import the file</a></li>
+        <li><a href="#read-the-preview">Read the preview</a></li>
+        <li><a href="#fix-errors-in-the-source-file">Fix errors in the source file</a></li>
+        <li><a href="#re-importing-an-export">Re-importing an export</a></li>
+        <li><a href="#if-every-row-is-invalid">If every row is invalid</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">AtlasDays</a> / <a href="/help/">Help Center</a></nav>
 
     <h1>CSV Import</h1>
 <p class="article-answer">Bulk-add trips from a spreadsheet saved as CSV. AtlasDays validates every row, shows a preview, and saves nothing until you confirm. It is one of the <a href="/help/import-trips">ways to add past trips</a>.</p>
 
-    <h2>Import the file</h2>
+    <h2 id="import-the-file">Import the file</h2>
     <ol>
       <li>Open <strong>Settings → Import → CSV File</strong>.</li>
       <li>Prepare the file in Sheets, Numbers, or Excel and export it as CSV. <strong>Example CSV</strong> shows the exact headers with sample rows, and its share button saves the file as a starting point.</li>
@@ -181,7 +192,7 @@
 
     <p>You can also start from the file itself. Share a CSV file from Files, Safari's downloads, or Mail and choose <strong>AtlasDays</strong>: the same preview opens. AtlasDays is offered as an option for CSV files, never made their default app.</p>
 
-    <h2>Read the preview</h2>
+    <h2 id="read-the-preview">Read the preview</h2>
     <p>The preview lists valid rows and shows counts you can tap to filter. Use <strong>Select All</strong> or <strong>Deselect All</strong> to choose what to import.</p>
     <ul>
       <li><strong>Duplicate:</strong> the row sits inside a trip you already have, or repeats an earlier row. It is skipped.</li>
@@ -191,16 +202,16 @@
     </ul>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/help/csv-import/csv-review.webp" alt="CSV Import preview containing valid, invalid, duplicate, and overlap rows" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
-    <h2>Fix errors in the source file</h2>
+    <h2 id="fix-errors-in-the-source-file">Fix errors in the source file</h2>
     <p>Rows AtlasDays cannot read appear under <strong>N rows with errors</strong>, with the row number and the reason. Invalid rows are never imported. Correct them in the spreadsheet, export again, and select the file again.</p>
 
     <div class="callout"><p><strong>Nothing changes until Import.</strong> Selecting a file and viewing the preview does not add trips.</p></div>
 
-    <h2>Re-importing an export</h2>
+    <h2 id="re-importing-an-export">Re-importing an export</h2>
     <p>A Spreadsheet <a href="/help/export-and-reports">export</a> saved as CSV can be imported again, provided it was exported in English: column headers are read in English only. For a full copy of trips, trackers, and settings, use a <a href="/help/backup-and-restore">backup</a> instead.</p>
 
     <section class="if-needed">
-      <h2>If every row is invalid</h2>
+      <h2 id="if-every-row-is-invalid">If every row is invalid</h2>
       <p>Check that the first row is a header row and contains <strong>Country</strong>, and that dates use <code>yyyy-mm-dd</code> or a four-digit year. The <a href="/help/csv-format-reference">CSV Format Reference</a> lists supported columns, values, and every error message.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-csv-import">

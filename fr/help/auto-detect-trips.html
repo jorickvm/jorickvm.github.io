@@ -165,12 +165,40 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="Sur cette page">
+      <p class="toc-title">Sur cette page</p>
+      <ul>
+        <li><a href="#activer-la-d-tection-automatique">Activer la détection automatique</a></li>
+        <li><a href="#ce-qui-se-passe-quand-un-pays-est-d-tect">Ce qui se passe quand un pays est détecté</a></li>
+        <li><a href="#les-voyages-se-terminent-et-le-transit-est-marqu-automatiquement">Les voyages se terminent et le transit est marqué automatiquement</a></li>
+        <li><a href="#v-rifier-les-voyages-d-tect-s">Vérifier les voyages détectés</a></li>
+        <li><a href="#ignorer-les-lieux-que-vous-ne-voulez-pas-d-tecter">Ignorer les lieux que vous ne voulez pas détecter</a></li>
+        <li><a href="#cartes-d-invite-de-la-chronologie">Cartes d’invite de la chronologie</a></li>
+        <li><a href="#garder-la-d-tection-automatique-op-rationnelle">Garder la détection automatique opérationnelle</a></li>
+        <li><a href="#si-aucun-voyage-n-appara-t">Si aucun voyage n’apparaît</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="/fr/">AtlasDays</a> / <a href="/fr/help/">Centre d’aide</a></nav>
 
     <h1>Détection automatique des voyages</h1>
 <p class="article-answer">La détection automatique utilise une surveillance de localisation en arrière-plan à faible consommation pour repérer votre arrivée dans un nouveau pays et ajoute aussitôt le voyage à la <a href="/fr/help/timeline-and-calendar">chronologie</a>. Rien n’attend votre approbation, et vous pouvez ensuite modifier ou supprimer le voyage.</p>
 
-    <h2>Activer la détection automatique</h2>
+    <details class="toc">
+      <summary>Sur cette page</summary>
+      <ul>
+        <li><a href="#activer-la-d-tection-automatique">Activer la détection automatique</a></li>
+        <li><a href="#ce-qui-se-passe-quand-un-pays-est-d-tect">Ce qui se passe quand un pays est détecté</a></li>
+        <li><a href="#les-voyages-se-terminent-et-le-transit-est-marqu-automatiquement">Les voyages se terminent et le transit est marqué automatiquement</a></li>
+        <li><a href="#v-rifier-les-voyages-d-tect-s">Vérifier les voyages détectés</a></li>
+        <li><a href="#ignorer-les-lieux-que-vous-ne-voulez-pas-d-tecter">Ignorer les lieux que vous ne voulez pas détecter</a></li>
+        <li><a href="#cartes-d-invite-de-la-chronologie">Cartes d’invite de la chronologie</a></li>
+        <li><a href="#garder-la-d-tection-automatique-op-rationnelle">Garder la détection automatique opérationnelle</a></li>
+        <li><a href="#si-aucun-voyage-n-appara-t">Si aucun voyage n’apparaît</a></li>
+      </ul>
+    </details>
+    <script>(function(){var t=document.currentScript.previousElementSibling;if(matchMedia('(min-width: 760px)').matches)t.open=true})();</script>
+    <h2 id="activer-la-d-tection-automatique">Activer la détection automatique</h2>
     <ol>
       <li>Ouvrez <strong>Réglages → Suivi → Détection automatique</strong>.</li>
       <li>Activez <strong>Détection automatique des voyages</strong>.</li>
@@ -180,7 +208,7 @@
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/fr/help/auto-detect-trips/auto-detect-settings.webp" alt="Réglages de la détection automatique des voyages avec les commandes de localisation et de notifications" width="1320" height="2100" loading="lazy" decoding="async" /></figure>
     <p>La détection ne fonctionne qu’avec l’accès Toujours. Si vous vous arrêtez à Lorsque l’app est active, l’interrupteur reste désactivé. L’activer depuis la carte de la chronologie (voir plus bas) propose aussi l’autorisation des notifications après les deux demandes de localisation ; l’activer depuis Réglages ne le fait pas.</p>
 
-    <h2>Ce qui se passe quand un pays est détecté</h2>
+    <h2 id="ce-qui-se-passe-quand-un-pays-est-d-tect">Ce qui se passe quand un pays est détecté</h2>
     <ul>
       <li>Le voyage est ajouté aussitôt à la chronologie, à partir de la date de détection, sans date de fin tant que vous n’êtes pas reparti.</li>
       <li>Si AtlasDays est ouverte, une bannière affiche le lieu avec <strong>Annuler</strong>. Elle disparaît après quelques secondes, et aucune notification push n’est affichée tant que l’app est au premier plan.</li>
@@ -189,20 +217,20 @@
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/fr/help/auto-detect-trips/detected-banner.webp" alt="Bannière dans l’app annonçant un pays détecté, avec un bouton Annuler" width="1320" height="720" loading="lazy" decoding="async" /></figure>
     <p>La notification propose une seule action, <strong>Supprimer le voyage</strong>. Elle supprime le voyage qui vient d’être ajouté. Elle n’ajoute pas le lieu à la liste des pays ignorés, et elle laisse de côté tout voyage dont vous avez déjà modifié la date de début.</p>
 
-    <h2>Les voyages se terminent et le transit est marqué automatiquement</h2>
+    <h2 id="les-voyages-se-terminent-et-le-transit-est-marqu-automatiquement">Les voyages se terminent et le transit est marqué automatiquement</h2>
     <ul>
       <li><strong>Clôture automatique.</strong> Quand une détection ultérieure montre que vous avez quitté un pays, le voyage ouvert précédent reçoit une date de fin. Si AtlasDays est ouverte, un message affiche <strong>Voyage terminé : &lt;Pays&gt;</strong> (ou <strong>N voyages terminés</strong>) avec <strong>Annuler</strong> pendant quelques secondes.</li>
       <li><strong>Transit.</strong> Un court arrêt entre deux autres pays apparaît d’abord comme un voyage normal. Quand la détection suivante arrive, AtlasDays le change en <a href="/fr/help/history-and-import">Transit</a>, afin qu’il ne compte pas dans les totaux de jours. Cela ne se produit que si vous n’y avez ajouté ni motif, ni notes, ni photos.</li>
     </ul>
 
-    <h2>Vérifier les voyages détectés</h2>
+    <h2 id="v-rifier-les-voyages-d-tect-s">Vérifier les voyages détectés</h2>
     <p>Ouvrez le voyage dans la chronologie pour vérifier le pays ou l’État américain et les dates. La date de début est le jour où le changement de localisation a été détecté : modifiez-la là où le jour exact compte. La détection des États américains est réservée à Pro ; sans Pro, un voyage aux États-Unis est ajouté comme simple voyage aux États-Unis.</p>
 
-    <h2>Ignorer les lieux que vous ne voulez pas détecter</h2>
+    <h2 id="ignorer-les-lieux-que-vous-ne-voulez-pas-d-tecter">Ignorer les lieux que vous ne voulez pas détecter</h2>
     <p>Sous <strong>Ignorer</strong> dans l’écran de détection automatique, choisissez <strong>Pays</strong> pour écarter les lieux que votre téléphone repère sans cesse près d’une frontière. Les utilisateurs Pro disposent aussi de <strong>États américains</strong>. Aucun voyage n’est créé pour un lieu ignoré, et les jours restent attribués au pays voisin. Vous pouvez toujours ajouter ces voyages vous-même.</p>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/fr/help/auto-detect-trips/ignore-list.webp" alt="Liste des pays ignorés de la détection automatique avec des pays sélectionnés" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
-    <h2>Cartes d’invite de la chronologie</h2>
+    <h2 id="cartes-d-invite-de-la-chronologie">Cartes d’invite de la chronologie</h2>
     <p>La chronologie peut afficher jusqu’à trois cartes en haut de la liste. La croix d’une carte la masque définitivement.</p>
     <ul>
       <li><strong>Enregistrez vos voyages automatiquement</strong> propose <strong>Activer la détection auto</strong> et <strong>Fonctionnement</strong>. Elle apparaît tant que la détection automatique est désactivée et que vous avez au moins un voyage.</li>
@@ -212,7 +240,7 @@
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/fr/help/auto-detect-trips/prompt-card.webp" alt="Carte de la chronologie proposant d’activer la détection automatique" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
     <p>Vous en saurez plus sur ces cartes et sur les autres commandes de la chronologie dans <a href="/fr/help/timeline-tools">Outils de la chronologie</a>.</p>
 
-    <h2>Garder la détection automatique opérationnelle</h2>
+    <h2 id="garder-la-d-tection-automatique-op-rationnelle">Garder la détection automatique opérationnelle</h2>
     <ul>
       <li>Ouvrez AtlasDays de temps en temps. Si l’app reste fermée très longtemps, iOS peut cesser de lui envoyer des mises à jour de localisation.</li>
       <li>Ne forcez pas la fermeture de l’app depuis le sélecteur d’apps. Cela arrête la surveillance jusqu’à sa prochaine ouverture.</li>
@@ -221,7 +249,7 @@
     <div class="callout"><p><strong>Ce n’est pas un GPS continu.</strong> La détection automatique s’appuie sur les événements de changement significatif de position d’iOS, pas sur un itinéraire enregistré. Le moment de la détection dépend d’iOS, de la géographie et de la connectivité : un passage de frontière peut donc être remarqué avec retard.</p></div>
 
     <section class="if-needed">
-      <h2>Si aucun voyage n’apparaît</h2>
+      <h2 id="si-aucun-voyage-n-appara-t">Si aucun voyage n’apparaît</h2>
       <p>Vérifiez que la détection automatique est activée, que la localisation est réglée sur Toujours, que le lieu ne figure pas dans la liste des lieux ignorés et que l’app a été ouverte récemment sans être fermée de force. Pour une notification, vérifiez aussi que <strong>Nouveaux pays détectés</strong> est activé et qu’iOS autorise les notifications d’AtlasDays. Vous pouvez toujours ajouter le voyage manuellement.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-auto-detect-trips">

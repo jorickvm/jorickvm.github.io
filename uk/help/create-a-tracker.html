@@ -165,12 +165,24 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="На цій сторінці">
+      <p class="toc-title">На цій сторінці</p>
+      <ul>
+        <li><a href="#section-1">Як додати трекер</a></li>
+        <li><a href="#section-2">Налаштуйте правило</a></li>
+        <li><a href="#section-3">Виберіть період</a></li>
+        <li><a href="#section-4">Перевірте місця</a></li>
+        <li><a href="#section-5">Шаблони — це початкові налаштування</a></li>
+        <li><a href="#section-6">Якщо в новому трекері немає днів</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/uk/">AtlasDays</a> / <a href="/uk/help/">Довідка</a></nav>
 
     <h1>Створення трекера</h1>
 <p class="article-answer">В <strong>Огляді</strong> торкніться <strong>+</strong>, виберіть шаблон або <strong>Власний</strong>, перевірте правило в редакторі й торкніться <strong>Зберегти</strong>. Трекер рахує лише ті поїздки, які вже є в розділі <a href="/uk/help/timeline-and-calendar">Хронологія</a> і мають <a href="/uk/help/history-and-import">точні дати</a>.</p>
 
-    <h2>Як додати трекер</h2>
+    <h2 id="section-1">Як додати трекер</h2>
     <ol>
       <li>Відкрийте <strong>Огляд</strong> і торкніться <strong>+</strong> угорі праворуч. Відкриється аркуш <strong>Додати трекер</strong>.</li>
       <li>Торкніться однієї з позначок-фільтрів або торкніться лупи й знайдіть правило чи країну. Список докладно описано в статті <a href="/uk/help/tracker-presets">Як вибрати шаблон трекера</a>.</li>
@@ -181,7 +193,7 @@
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/uk/help/create-a-tracker/preset-picker.webp" alt="Аркуш «Додати трекер» із фільтрами, карткою «Власний» і першим розділом шаблонів" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
     <p>Трекер отримує назву від місць, які він рахує. Торкніться картки вгорі редактора, щоб змінити назву чи підзаголовок або змінити країни.</p>
 
-    <h2>Налаштуйте правило</h2>
+    <h2 id="section-2">Налаштуйте правило</h2>
     <p>Редактор показує правило як короткий список рядків. Шаблон заповнює їх сам; у варіанті <strong>Власний</strong> ви починаєте зі своїх виборів.</p>
     <ul>
       <li><strong>Ціль:</strong> варіант <strong>Не перевищувати</strong> сприймає число як <strong>Ліміт</strong>, який не слід перевищувати. Варіант <strong>Досягти цілі</strong> сприймає його як <strong>Ціль</strong>, до якої ви прямуєте. У трекерах податкового резидентства та штатів США під кожним варіантом є рядок: <strong>Уникати податкового резидентства.</strong> і <strong>Стати податковим резидентом.</strong></li>
@@ -190,23 +202,23 @@
     </ul>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/uk/help/create-a-tracker/configured-editor.webp" alt="Редактор трекера з рядками місць, цілі, ліміту й періоду" width="1320" height="2146" loading="lazy" decoding="async" /></figure>
 
-    <h2>Виберіть період</h2>
+    <h2 id="section-3">Виберіть період</h2>
     <ul>
       <li><strong>Ковзний</strong> — це рухомий період, що закінчується сьогодні, як у шенгенському правилі 90/180. Рядок <strong>Тривалість</strong> задає його в днях або в календарних місяцях.</li>
       <li><strong>Рік</strong> рахує один рік, що починається з дати в рядку <strong>Початок</strong>. Початок 1 січня дає календарний рік; будь-яка інша дата робить його фінансовим роком.</li>
       <li><strong>За в’їзд</strong> рахує дні від дати в рядку <strong>Початок</strong> і стежить за одним перебуванням, а не додає окремі візити. Що вимірює кожен період, пояснює стаття <a href="/uk/help/trackers-and-limits">Як обчислюється підсумок трекера</a>.</li>
     </ul>
 
-    <h2>Перевірте місця</h2>
+    <h2 id="section-4">Перевірте місця</h2>
     <p>Трекер із кількома країнами рахує відповідні дні в усіх із них. Трекеру штату США потрібні поїздки до США з позначеним штатом: поїздка до США, збережена без штату, не може наповнити трекер штату, і тоді в рядку буде написано <strong>Штати</strong> замість <strong>Країни</strong>.</p>
 
-    <h2>Шаблони — це початкові налаштування</h2>
+    <h2 id="section-5">Шаблони — це початкові налаштування</h2>
     <p>Шаблон економить час на налаштування. Він не змінює правило, під яке ви насправді підпадаєте, тому перевірте, чи відповідає він вашому громадянству, дозволу, меті поїздки та поточним обставинам, перш ніж покладатися на число. Потрібне шенгенське правило 90/180? <a href="/uk/help/schengen-90-180">Окремий покроковий опис</a> швидший, ніж збирати трекер вручну.</p>
 
     <div class="callout"><p><strong>Один ліміт можна відстежувати безкоштовно.</strong> Другий трекер, трекери штатів США й <a href="/uk/help/rule-trackers">трекери з двома лімітами</a> потребують <a href="/uk/help/atlasdays-pro">AtlasDays Pro</a>. Налаштувати будь-який із них можна й без Pro; пропозиція оновитися з’являється, коли ви торкаєтеся <strong>Зберегти</strong>.</p></div>
 
     <section class="if-needed">
-      <h2>Якщо в новому трекері немає днів</h2>
+      <h2 id="section-6">Якщо в новому трекері немає днів</h2>
       <p>Переконайтеся, що його місця збігаються з вашими поїздками, що потрібні поїздки мають дати початку й завершення, а не «Тільки рік», і що вони не позначені як «Транзит». Поїздка, яка починається в майбутньому, не рахується, доки не настануть її дати.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-create-a-tracker">

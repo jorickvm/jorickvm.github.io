@@ -165,40 +165,68 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="Bu sayfada">
+      <p class="toc-title">Bu sayfada</p>
+      <ul>
+        <li><a href="#var-ve-ayr-l-g-nleri-dahildir">Varış ve ayrılış günleri dahildir</a></li>
+        <li><a href="#takipler-farkl-sayabilir">Takipler farklı sayabilir</a></li>
+        <li><a href="#ak-an-g-nler-tekrar-say-lmaz">Çakışan günler tekrar sayılmaz</a></li>
+        <li><a href="#biti-tarihi-olmayan-seyahatlerde-bug-n-kullan-l-r">Bitiş tarihi olmayan seyahatlerde bugün kullanılır</a></li>
+        <li><a href="#yaln-zca-y-l-seyahatleri-say-sal-g-n-olu-turmaz">Yalnızca yıl seyahatleri sayısal gün oluşturmaz</a></li>
+        <li><a href="#transit-s-f-r-g-n-say-l-r">Transit sıfır gün sayılır</a></li>
+        <li><a href="#i-kamet-lkesinin-belirli-bir-rol-vard-r">İkamet ülkesinin belirli bir rolü vardır</a></li>
+        <li><a href="#toplam-elle-yapt-n-z-hesaptan-farkl-ysa">Toplam elle yaptığınız hesaptan farklıysa</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="İçerik yolu"><a href="/tr/">AtlasDays</a> / <a href="/tr/help/">Yardım Merkezi</a></nav>
 
     <h1>AtlasDays seyahat günlerini nasıl hesaplar?</h1>
 <p class="article-answer">AtlasDays varsayılan olarak bir seyahatin varış tarihinden ayrılış tarihine kadar her takvim gününü sayar; her iki sınır günü de dahildir. Bir takip bunun yerine geceleri, dışarıda geçen günleri veya tam günleri sayabilir.</p>
 
-    <h2>Varış ve ayrılış günleri dahildir</h2>
+    <details class="toc">
+      <summary>Bu sayfada</summary>
+      <ul>
+        <li><a href="#var-ve-ayr-l-g-nleri-dahildir">Varış ve ayrılış günleri dahildir</a></li>
+        <li><a href="#takipler-farkl-sayabilir">Takipler farklı sayabilir</a></li>
+        <li><a href="#ak-an-g-nler-tekrar-say-lmaz">Çakışan günler tekrar sayılmaz</a></li>
+        <li><a href="#biti-tarihi-olmayan-seyahatlerde-bug-n-kullan-l-r">Bitiş tarihi olmayan seyahatlerde bugün kullanılır</a></li>
+        <li><a href="#yaln-zca-y-l-seyahatleri-say-sal-g-n-olu-turmaz">Yalnızca yıl seyahatleri sayısal gün oluşturmaz</a></li>
+        <li><a href="#transit-s-f-r-g-n-say-l-r">Transit sıfır gün sayılır</a></li>
+        <li><a href="#i-kamet-lkesinin-belirli-bir-rol-vard-r">İkamet ülkesinin belirli bir rolü vardır</a></li>
+        <li><a href="#toplam-elle-yapt-n-z-hesaptan-farkl-ysa">Toplam elle yaptığınız hesaptan farklıysa</a></li>
+      </ul>
+    </details>
+    <script>(function(){var t=document.currentScript.previousElementSibling;if(matchMedia('(min-width: 760px)').matches)t.open=true})();</script>
+    <h2 id="var-ve-ayr-l-g-nleri-dahildir">Varış ve ayrılış günleri dahildir</h2>
     <p>1 Haziran ile 3 Haziran arasındaki bir seyahat üç gün sayılır: 1 Haziran, 2 Haziran ve 3 Haziran. Aynı gün içinde biten bir seyahat bir gün sayılır.</p>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/tr/help/day-counting/exact-dates.webp" alt="Başlangıç ve bitiş tarihini gösteren seyahat tarihleri" width="1320" height="900" loading="lazy" decoding="async" /></figure>
 
-    <h2>Takipler farklı sayabilir</h2>
+    <h2 id="takipler-farkl-sayabilir">Takipler farklı sayabilir</h2>
     <p>Bir takibin <strong>Sınır</strong> ayarında <strong>Günler</strong> varış ve ayrılış günlerini tam olarak sayar. <strong>Geceler</strong> varış ile ayrılış arasındaki geceleri sayar; yani 1 Haziran ile 3 Haziran arası iki gecedir. <strong>Dışarıda geçen günler</strong> ise takibin yerlerindeki hiçbir kalışın kapsamadığı günleri sayar. Bu sayım hiç seyahat olmayan günleri de içerir ve <strong>Transit</strong> ya da <strong>Yalnızca yıl</strong> seyahatlerini kalış saymaz. <strong>Tam günler</strong> varış ve ayrılış günleri olmadan yalnızca tam günleri sayar; yani 1 Haziran ile 3 Haziran arası bir tam gündür ve günübirlik bir seyahat hiç sayılmaz. Nereden ayarlanacağını <a href="/tr/help/create-a-tracker">Takip oluşturma</a> sayfasında görebilirsiniz.</p><p>Bir hazır ayarın kendine özgü bir kuralı vardır: Portekiz vergi ikameti takibi günleri sayar, ancak Portekiz’de gece kalınmayan, tamamlanmış günübirlik bir ziyaret hiç sayılmaz.</p>
 
-    <h2>Çakışan günler tekrar sayılmaz</h2>
+    <h2 id="ak-an-g-nler-tekrar-say-lmaz">Çakışan günler tekrar sayılmaz</h2>
     <p>Bir takibin ülke kümesi içinde birden fazla uygun seyahat aynı takvim gününü kapsıyorsa takip o günü bir kez sayar. Kayıtların düzeltilmesi gerekip gerekmediğine karar verebilmeniz için çakışmalar <a href="/tr/help/timeline-and-calendar">zaman çizelgesinde</a> işaretli kalır; nasıl çözüleceğini <a href="/tr/help/overlapping-trips">Çakışan seyahatleri çözme</a> sayfasında bulabilirsiniz.</p>
 
-    <h2>Bitiş tarihi olmayan seyahatlerde bugün kullanılır</h2>
+    <h2 id="biti-tarihi-olmayan-seyahatlerde-bug-n-kullan-l-r">Bitiş tarihi olmayan seyahatlerde bugün kullanılır</h2>
     <p><strong>Bitiş tarihi yok</strong> olarak işaretlenmiş ve başlamış bir seyahat devam ediyordur. AtlasDays geçerli bitiş tarihi olarak bugünü kullanır; bu yüzden ayrılış tarihini ekleyene kadar toplamı her gün artabilir. Gelecekte başlayacak bir seyahat mevcut toplama girmez.</p>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/tr/help/day-counting/ongoing.webp" alt="Bitiş tarihi olmayan devam eden seyahat" width="1320" height="1150" loading="lazy" decoding="async" /></figure>
 
-    <h2>Yalnızca yıl seyahatleri sayısal gün oluşturmaz</h2>
+    <h2 id="yaln-zca-y-l-seyahatleri-say-sal-g-n-olu-turmaz">Yalnızca yıl seyahatleri sayısal gün oluşturmaz</h2>
     <p><strong>Yalnızca yıl</strong> seyahati, tarih uydurmadan seyahat geçmişini korur. Bir yeri ziyaret edilmiş olarak işaretler ancak sayısal gün toplamlarına veya kayan dönem hesaplamalarına hiçbir şey katmaz. Ne zaman kullanılacağını <a href="/tr/help/history-and-import">Seyahat tarihleri nasıl çalışır?</a> sayfasında bulabilirsiniz.</p>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/tr/help/day-counting/approximate.webp" alt="Başlangıç ve bitiş yılı olan Yalnızca yıl seyahati" width="1320" height="1250" loading="lazy" decoding="async" /></figure>
 
-    <h2>Transit sıfır gün sayılır</h2>
+    <h2 id="transit-s-f-r-g-n-say-l-r">Transit sıfır gün sayılır</h2>
     <p>Havalimanı transiti gibi ülkeye giriş yapmadığınız durumlarda <strong>Transit</strong> seçeneğini kullanın. Kayıt geçmişinizde kalır ama sıfır gün sayılır ve ülkeyi ziyaret edilmiş olarak işaretlemez.</p>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/tr/help/day-counting/transit.webp" alt="Transit amacı seçilmiş seyahat" width="1320" height="1250" loading="lazy" decoding="async" /></figure>
 
-    <h2>İkamet ülkesinin belirli bir rolü vardır</h2>
+    <h2 id="i-kamet-lkesinin-belirli-bir-rol-vard-r">İkamet ülkesinin belirli bir rolü vardır</h2>
     <p><a href="/tr/help/dashboard-and-map">İkamet ülkesi</a> ayarınız, <strong>Yurt dışındaki günler</strong> sayısının hangi günleri yurt dışında saydığını belirler. Bir ülke takibinden seyahat çıkarmaz ve bir seyahatin tarihlerinin nasıl sayıldığını değiştirmez.</p>
 
     <div class="callout"><p><strong>AtlasDays bir kayıt tutma aracıdır.</strong> Takip, girdiğiniz tarihleri sayar. Hangi günlerin hukuken geçerli sayılacağını resmî vize, vergi ve ikamet kuralları belirler. <a href="/tr/learn/">Seyahat Kuralları Kitaplığı</a> yaygın kuralları sade bir dille açıklar.</p></div>
 
     <section class="if-needed">
-      <h2>Toplam elle yaptığınız hesaptan farklıysa</h2>
+      <h2 id="toplam-elle-yapt-n-z-hesaptan-farkl-ysa">Toplam elle yaptığınız hesaptan farklıysa</h2>
       <p>Takibin yerlerini, dönemini ve sayım birimini (Günler, Geceler, Dışarıda geçen günler veya Tam günler) karşılaştırın; ardından bitiş tarihi olmayan bir seyahat, Transit kaydı, Yalnızca yıl seyahati veya çakışma olup olmadığına bakın. Yeniden karşılaştırmadan önce varış ve ayrılış tarihlerini de sayın.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-day-counting">

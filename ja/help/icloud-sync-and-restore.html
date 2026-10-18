@@ -165,12 +165,23 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="目次">
+      <p class="toc-title">目次</p>
+      <ul>
+        <li><a href="#section-1">同期がオンか確認する</a></li>
+        <li><a href="#section-2">新しい端末を設定する、または再インストールする</a></li>
+        <li><a href="#section-3">状況の意味</a></li>
+        <li><a href="#section-4">同期はバックアップではありません</a></li>
+        <li><a href="#section-5">データが見当たらないとき</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="パンくずリスト"><a href="/ja/">AtlasDays</a> / <a href="/ja/help/">ヘルプセンター</a></nav>
 
     <h1>iCloud同期とデータの復元</h1>
 <p class="article-answer">iCloud同期をオンにすると、AtlasDaysは旅行とトラッカーを利用中のプライベートなiCloudアカウントに保管し、同じApple アカウントでサインインしているデバイス間で最新の状態に保ちます。同期はバックアップファイルではないため、別途AtlasDaysバックアップも保管しておいてください。</p>
 
-    <h2>同期がオンか確認する</h2>
+    <h2 id="section-1">同期がオンか確認する</h2>
     <ol>
       <li><strong>「設定」→「iCloud同期」</strong>を開きます。スイッチは、初期状態でオンになっています。</li>
       <li><strong>「状況」</strong>を確認します。<strong>「同期済み」</strong>は、この端末が最新であることを意味します。</li>
@@ -178,7 +189,7 @@
     </ol>
     <p>同期をオンまたはオフにすると、AtlasDaysから、Appスイッチャーで終了してもう一度開くよう案内されます。変更は次回の起動時に反映されます。</p>
 
-    <h2>新しい端末を設定する、または再インストールする</h2>
+    <h2 id="section-2">新しい端末を設定する、または再インストールする</h2>
     <ol>
       <li>iOSの設定で、同じApple アカウントにサインインします。</li>
       <li>AtlasDaysをインストールし、<strong>「設定」→「iCloud同期」</strong>を開いて、オンになっていることを確認します。</li>
@@ -186,7 +197,7 @@
     </ol>
     <p>端末ごとの設定は、別に戻ります。位置情報と通知の許可は端末ごとに与えるものなので、<a href="/ja/help/auto-detect-trips">旅行の自動検出</a>と通知は、もう一度許可するまで動作しません。<a href="/ja/help/widgets">ウィジェット</a>も、追加し直す必要があります。居住国や外観などの設定は、旅行の同期がオフでも、iCloudを通じて自動的に引き継がれます。</p>
 
-    <h2>状況の意味</h2>
+    <h2 id="section-3">状況の意味</h2>
     <ul>
       <li><strong>「同期中…」</strong>、<strong>「同期待ち」</strong>、<strong>「iCloud待機中」</strong>は一時的な状態です。しばらくAtlasDaysを開いたままにしてください。</li>
       <li><strong>「同期済み」</strong>は、保留中のものがないことを意味します。</li>
@@ -195,11 +206,11 @@
       <li><strong>「同期の問題」</strong>は、一部の変更がまだiCloudに届いていないことを意味します。<strong>「詳細を表示」</strong>をタップすると、対処のヒントと、サポートに送れる診断情報が表示されます。</li>
     </ul>
 
-    <h2>同期はバックアップではありません</h2>
+    <h2 id="section-4">同期はバックアップではありません</h2>
     <p>同期は、デバイス間で1つの記録を常に最新に保つものなので、1台で行った削除はほかのデバイスにも反映されます。削除したものを元に戻すことはできません。<a href="/ja/help/backup-and-restore">AtlasDaysバックアップ</a>は、手元に保管し、必要なときに復元する別のファイルです。同期がオンの状態でバックアップを復元すると、復元したデータがすべてのデバイスのデータと置き換わります。AtlasDaysは、iCloudの同期が終わるまで待ってから復元を始めます。</p>
 
     <section class="if-needed">
-      <h2>データが見当たらないとき</h2>
+      <h2 id="section-5">データが見当たらないとき</h2>
       <ol>
         <li>原因を調べている間は、アプリのリセットやデータの削除をしないでください。</li>
         <li>この端末が同じApple アカウントでサインインしていて、iCloudが利用できることを確認します。</li>

@@ -165,12 +165,24 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="Auf dieser Seite">
+      <p class="toc-title">Auf dieser Seite</p>
+      <ul>
+        <li><a href="#spalten">Spalten</a></li>
+        <li><a href="#datumsformate">Datumsformate</a></li>
+        <li><a href="#sonderf-lle">Sonderfälle</a></li>
+        <li><a href="#beispiel">Beispiel</a></li>
+        <li><a href="#fehlermeldungen">Fehlermeldungen</a></li>
+        <li><a href="#wenn-ein-wert-nicht-erkannt-wird">Wenn ein Wert nicht erkannt wird</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/de/">AtlasDays</a> / <a href="/de/help/">Hilfe</a></nav>
 
     <h1>CSV-Format: Referenz</h1>
 <p class="article-answer">Nur die Spalte <strong>Country</strong> ist erforderlich. AtlasDays findet Spalten anhand ihres englischen Spaltenkopfs, die Reihenfolge der Spalten spielt also keine Rolle. Die Schritte zum Importieren stehen unter <a href="/de/help/csv-import">CSV-Import</a>.</p>
 
-    <h2>Spalten</h2>
+    <h2 id="spalten">Spalten</h2>
     <p>Empfohlene Kopfzeile: <code>Country,State,Start Date,End Date,Purpose,Notes</code>. Bei den Spaltenköpfen wird Groß- und Kleinschreibung nicht beachtet. Nicht erkannte Spalten wie <code>Days</code> werden ignoriert. Kommt ein Spaltenkopf doppelt vor, wird der erste verwendet.</p>
     <dl class="kv kv-text">
       <div><dt><strong>Country</strong></dt><dd>Erforderlich. Ländername auf Englisch oder in der App-Sprache, ISO-Ländercode aus zwei Buchstaben oder ein gängiger Alias wie <code>USA</code>, <code>UK</code> oder <code>Holland</code>. Ein Alias, der zwei Orte meinen könnte, wird abgelehnt.</dd></div>
@@ -184,7 +196,7 @@
     </dl>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/de/help/csv-format-reference/csv-reference.webp" alt="Beispiel und Vorlagensteuerung für den CSV-Import" width="1320" height="1990" loading="lazy" decoding="async" /></figure>
 
-    <h2>Datumsformate</h2>
+    <h2 id="datumsformate">Datumsformate</h2>
     <div class="data-table">
     <table>
       <thead><tr><th>Start Date</th><th>End Date</th><th>Ergebnis</th></tr></thead>
@@ -199,21 +211,21 @@
     </div>
     <p>Jahreszahlen müssen zwischen 1900 und acht Jahren nach dem aktuellen Jahr liegen. Jahreszahlen und genaue Reisedaten lassen sich in einer Zeile nicht mischen. Reisen vom Typ Nur Jahr und Reisen ohne Reisedaten zählen für besuchte Orte und die Karte, nie aber für die Tageszählung oder Tracker. Eine Reise ohne Reisedaten lässt sich nur über den CSV-Import anlegen.</p>
 
-    <h2>Sonderfälle</h2>
+    <h2 id="sonderf-lle">Sonderfälle</h2>
     <ul>
       <li><strong>US-Bundesstaaten.</strong> Nimm eine Zeile pro Bundesstaat, wenn ein US-Besuch mehrere Bundesstaaten umfasste. Eine einfache Zeile mit <code>United States</code> ist für die Erfassung auf Länderebene gültig. Ein Name eines Bundesstaats in der Spalte Country (<code>California</code>, <code>US-CA</code>) ergibt ebenfalls eine US-Reise, ebenso ein leeres Country mit gültigem State. Zweistellige Codes, die zugleich Ländercodes sind, etwa <code>CA</code>, bleiben Länder. Ohne Pro werden Bundesstaaten-Zeilen als gewöhnliche Reisen in die Vereinigten Staaten importiert.</li>
       <li><strong>Transit.</strong> Trag <code>Transit</code> bei Purpose ein, wenn du nicht in das Land eingereist bist. Transit schließt andere Werte aus: Steht er neben einem anderen Zweck, bleibt nur Transit erhalten.</li>
       <li><strong>Trennzeichen und Anführungszeichen.</strong> Komma, Semikolon und Tabulator werden anhand der Kopfzeile erkannt. Setz Felder in Anführungszeichen, die das Trennzeichen oder einen Zeilenumbruch enthalten.</li>
     </ul>
 
-    <h2>Beispiel</h2>
+    <h2 id="beispiel">Beispiel</h2>
     <pre><code>Country,State,Start Date,End Date,Purpose,Notes
 France,,2026-03-01,2026-03-05,Personal,
 United States,CA,2026-04-10,2026-04-15,Business,Conference
 Japan,,2024,,Personal,Dates not known
 United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></pre>
 
-    <h2>Fehlermeldungen</h2>
+    <h2 id="fehlermeldungen">Fehlermeldungen</h2>
     <p>Jeder Fehler erscheint in der Vorschau mit seiner Zeilennummer, und die Zeile wird nicht importiert. Die Zeilennummer zählt die Kopfzeile als Zeile 1.</p>
     <dl class="kv kv-text">
       <div><dt>Die Spalte „Country“ wurde nicht gefunden</dt><dd>Setz eine Kopfzeile an den Anfang, die eine Spalte <strong>Country</strong> enthält.</dd></div>
@@ -233,7 +245,7 @@ United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></p
     </dl>
 
     <section class="if-needed">
-      <h2>Wenn ein Wert nicht erkannt wird</h2>
+      <h2 id="wenn-ein-wert-nicht-erkannt-wird">Wenn ein Wert nicht erkannt wird</h2>
       <p>Verwende einen ISO-Ländercode, ISO-Datumsangaben und einen gängigen Namen oder Code eines US-Bundesstaats. Eine aus einer Tabellenkalkulation in einer anderen Sprache exportierte Datei kann übersetzte Spaltenköpfe tragen, die nicht erkannt werden: Benenne sie in die oben genannten englischen Spaltenköpfe um.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-csv-format-reference">

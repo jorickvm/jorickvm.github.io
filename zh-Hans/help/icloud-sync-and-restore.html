@@ -165,12 +165,23 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="本页内容">
+      <p class="toc-title">本页内容</p>
+      <ul>
+        <li><a href="#section-1">确认同步已开启</a></li>
+        <li><a href="#section-2">设置新设备或重新安装</a></li>
+        <li><a href="#section-3">状态的含义</a></li>
+        <li><a href="#section-4">同步不是备份</a></li>
+        <li><a href="#section-5">如果数据似乎不见了</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/zh-Hans/">AtlasDays</a> / <a href="/zh-Hans/help/">帮助中心</a></nav>
 
     <h1>iCloud 同步与还原</h1>
 <p class="article-answer">开启 iCloud 同步后，AtlasDays 会把行程和追踪器保存在你的私人 iCloud 账户中，并在登录同一个 Apple 账户的各台设备之间保持一致。同步不是备份文件，所以请另外保留一份 AtlasDays 备份。</p>
 
-    <h2>确认同步已开启</h2>
+    <h2 id="section-1">确认同步已开启</h2>
     <ol>
       <li>打开<strong>设置 → iCloud 同步</strong>。开关默认是开启的。</li>
       <li>查看<strong>状态</strong>。<strong>已同步</strong>表示这台设备已是最新。</li>
@@ -178,7 +189,7 @@
     </ol>
     <p>开启或关闭同步之后，AtlasDays 会请你从应用切换器中将它关闭，再重新打开。更改在下次启动时生效。</p>
 
-    <h2>设置新设备或重新安装</h2>
+    <h2 id="section-2">设置新设备或重新安装</h2>
     <ol>
       <li>在 iOS 设置中登录同一个 Apple 账户。</li>
       <li>安装 AtlasDays，打开<strong>设置 → iCloud 同步</strong>，确认它已开启。</li>
@@ -186,7 +197,7 @@
     </ol>
     <p>与设备相关的选择需要另外恢复。定位和通知权限是按设备授予的，所以<a href="/zh-Hans/help/auto-detect-trips">自动检测行程</a>和通知要等你重新允许后才会生效，<a href="/zh-Hans/help/widgets">小组件</a>也需要重新添加。居住国、外观等偏好设置会通过 iCloud 自行同步，即使行程同步处于关闭状态也一样。</p>
 
-    <h2>状态的含义</h2>
+    <h2 id="section-3">状态的含义</h2>
     <ul>
       <li><strong>同步中…</strong>、<strong>等待同步</strong>和<strong>等待 iCloud</strong>都是暂时的。请让 AtlasDays 保持打开片刻。</li>
       <li><strong>已同步</strong>表示没有待处理的内容。</li>
@@ -195,11 +206,11 @@
       <li><strong>同步问题</strong>表示部分变更尚未到达 iCloud。轻点<strong>显示详细信息</strong>，可查看建议和可发送给支持团队的诊断信息。</li>
     </ul>
 
-    <h2>同步不是备份</h2>
+    <h2 id="section-4">同步不是备份</h2>
     <p>同步让各台设备共用一份实时记录，所以在一台设备上删除的内容也会传到其他设备。它无法找回你已移除的东西。<a href="/zh-Hans/help/backup-and-restore">AtlasDays 备份</a>是另外保管的文件，需要时再还原。如果在同步开启时还原备份，还原的数据会替换每一台设备上的数据，AtlasDays 会等 iCloud 同步完成后才开始。</p>
 
     <section class="if-needed">
-      <h2>如果数据似乎不见了</h2>
+      <h2 id="section-5">如果数据似乎不见了</h2>
       <ol>
         <li>排查期间，不要重置 App，也不要删除数据。</li>
         <li>确认这台设备登录的是同一个 Apple 账户，并且 iCloud 可以使用。</li>

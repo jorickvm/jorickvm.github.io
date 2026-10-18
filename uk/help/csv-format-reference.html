@@ -165,12 +165,24 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="На цій сторінці">
+      <p class="toc-title">На цій сторінці</p>
+      <ul>
+        <li><a href="#section-1">Стовпці</a></li>
+        <li><a href="#section-2">Формати дат</a></li>
+        <li><a href="#section-3">Особливі випадки</a></li>
+        <li><a href="#section-4">Приклад</a></li>
+        <li><a href="#section-5">Повідомлення про помилки</a></li>
+        <li><a href="#section-6">Якщо значення не розпізнано</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/uk/">AtlasDays</a> / <a href="/uk/help/">Довідка</a></nav>
 
     <h1>Довідник із формату CSV</h1>
 <p class="article-answer">Обов’язковий лише стовпець <strong>Country</strong>. AtlasDays знаходить стовпці за англійською назвою заголовка, тому їхній порядок не має значення. Кроки імпорту описано в статті <a href="/uk/help/csv-import">Імпорт CSV</a>.</p>
 
-    <h2>Стовпці</h2>
+    <h2 id="section-1">Стовпці</h2>
     <p>Рекомендований рядок заголовків: <code>Country,State,Start Date,End Date,Purpose,Notes</code>. Регістр у назвах заголовків не має значення. Нерозпізнані стовпці, наприклад <code>Days</code>, ігноруються. Якщо заголовок повторюється, використовується перший.</p>
     <dl class="kv kv-text">
       <div><dt><strong>Country</strong></dt><dd>Обов’язковий. Назва країни англійською або мовою програми, дволітерний код ISO чи поширена альтернативна назва, як-от <code>USA</code>, <code>UK</code> або <code>Holland</code>. Альтернативну назву, яка може означати два місця, буде відхилено.</dd></div>
@@ -184,7 +196,7 @@
     </dl>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/uk/help/csv-format-reference/csv-reference.webp" alt="Приклад CSV та елементи керування шаблоном на екрані імпорту" width="1320" height="1990" loading="lazy" decoding="async" /></figure>
 
-    <h2>Формати дат</h2>
+    <h2 id="section-2">Формати дат</h2>
     <div class="data-table">
     <table>
       <thead><tr><th>Start Date</th><th>End Date</th><th>Результат</th></tr></thead>
@@ -199,21 +211,21 @@
     </div>
     <p>Роки мають бути від 1900 до року, що на вісім років пізніший за поточний. Точні дати й значення року не можна змішувати в одному рядку. Поїздки «Тільки рік» і поїздки без дат зараховуються до відвіданих місць і карти, але ніколи не входять у підрахунок днів чи трекери. Поїздку без дат можна створити лише через імпорт CSV.</p>
 
-    <h2>Особливі випадки</h2>
+    <h2 id="section-3">Особливі випадки</h2>
     <ul>
       <li><strong>Штати США.</strong> Якщо одна поїздка до США охопила кілька штатів, створіть окремий рядок для кожного. Звичайний рядок <code>United States</code> підходить для обліку на рівні країни. Назва штату в стовпці Country (<code>California</code>, <code>US-CA</code>) також дає поїздку до США, і порожній Country з правильним State теж. Дволітерні коди, які збігаються з кодами країн, як-от <code>CA</code>, лишаються країнами. Без Pro рядки зі штатами імпортуються як звичайні поїздки до Сполучених Штатів.</li>
       <li><strong>Транзит.</strong> Укажіть <code>Transit</code> у стовпці Purpose, якщо ви не в’їжджали до країни. Транзит виключає інші цілі: якщо він указаний разом з іншою метою, залишається лише Transit.</li>
       <li><strong>Роздільник і лапки.</strong> Кому, крапку з комою й табуляцію визначають за рядком заголовків. Поля, які містять роздільник або перенесення рядка, беріть у лапки.</li>
     </ul>
 
-    <h2>Приклад</h2>
+    <h2 id="section-4">Приклад</h2>
     <pre><code>Country,State,Start Date,End Date,Purpose,Notes
 France,,2026-03-01,2026-03-05,Personal,
 United States,CA,2026-04-10,2026-04-15,Business,Conference
 Japan,,2024,,Personal,Dates not known
 United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></pre>
 
-    <h2>Повідомлення про помилки</h2>
+    <h2 id="section-5">Повідомлення про помилки</h2>
     <p>Кожна помилка з’являється в попередньому перегляді з номером рядка, і цей рядок не імпортується. У номері рядків заголовок є рядком 1.</p>
     <dl class="kv kv-text">
       <div><dt>Не знайдено стовпця Country</dt><dd>Першим має бути рядок заголовків зі стовпцем <strong>Country</strong>.</dd></div>
@@ -233,7 +245,7 @@ United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></p
     </dl>
 
     <section class="if-needed">
-      <h2>Якщо значення не розпізнано</h2>
+      <h2 id="section-6">Якщо значення не розпізнано</h2>
       <p>Використовуйте код країни за ISO, дати у форматі ISO та стандартну назву або код штату США. Файл, експортований із таблиці іншою мовою, може містити перекладені заголовки, які не розпізнаються: перейменуйте їх на англійські заголовки, наведені вище.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-csv-format-reference">

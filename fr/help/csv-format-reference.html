@@ -165,12 +165,24 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="Sur cette page">
+      <p class="toc-title">Sur cette page</p>
+      <ul>
+        <li><a href="#colonnes">Colonnes</a></li>
+        <li><a href="#formats-de-date">Formats de date</a></li>
+        <li><a href="#cas-particuliers">Cas particuliers</a></li>
+        <li><a href="#exemple">Exemple</a></li>
+        <li><a href="#messages-d-erreur">Messages d’erreur</a></li>
+        <li><a href="#si-une-valeur-n-est-pas-reconnue">Si une valeur n’est pas reconnue</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="/fr/">AtlasDays</a> / <a href="/fr/help/">Centre d’aide</a></nav>
 
     <h1>Référence du format CSV</h1>
 <p class="article-answer">Seule la colonne <strong>Country</strong> est requise. AtlasDays repère les colonnes par leur nom d’en-tête en anglais, l’ordre des colonnes n’a donc pas d’importance. Les étapes de l’import figurent dans <a href="/fr/help/csv-import">Import CSV</a>.</p>
 
-    <h2>Colonnes</h2>
+    <h2 id="colonnes">Colonnes</h2>
     <p>Ligne d’en-têtes recommandée : <code>Country,State,Start Date,End Date,Purpose,Notes</code>. Les noms d’en-têtes ne tiennent pas compte des majuscules. Les colonnes non reconnues, comme <code>Days</code>, sont ignorées. Si un en-tête apparaît deux fois, le premier est utilisé.</p>
     <dl class="kv kv-text">
       <div><dt><strong>Country</strong></dt><dd>Requis. Nom du pays en anglais ou dans la langue de l’app, code ISO à deux lettres, ou alias courant comme <code>USA</code>, <code>UK</code> ou <code>Holland</code>. Un alias pouvant désigner deux lieux est rejeté.</dd></div>
@@ -184,7 +196,7 @@
     </dl>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/fr/help/csv-format-reference/csv-reference.webp" alt="Commandes d’exemple et de modèle de l’import CSV" width="1320" height="1990" loading="lazy" decoding="async" /></figure>
 
-    <h2>Formats de date</h2>
+    <h2 id="formats-de-date">Formats de date</h2>
     <div class="data-table">
     <table>
       <thead><tr><th>Start Date</th><th>End Date</th><th>Résultat</th></tr></thead>
@@ -199,21 +211,21 @@
     </div>
     <p>Les années doivent se situer entre 1900 et huit ans après l’année en cours. Les dates exactes et les années ne peuvent pas être mélangées sur une même ligne. Les voyages Année uniquement et les voyages sans dates comptent pour les lieux visités et la carte, mais jamais pour les décomptes de jours ni les suivis. Un voyage sans dates ne peut être créé que par l’import CSV.</p>
 
-    <h2>Cas particuliers</h2>
+    <h2 id="cas-particuliers">Cas particuliers</h2>
     <ul>
       <li><strong>États américains.</strong> Utilisez une ligne par État quand un même séjour aux États-Unis a couvert plusieurs États. Une simple ligne <code>United States</code> est valide pour un suivi au niveau du pays. Un nom d’État dans la colonne Country (<code>California</code>, <code>US-CA</code>) donne aussi un voyage aux États-Unis, tout comme une colonne Country vide avec un State valide. Les codes à deux lettres qui sont aussi des codes de pays, comme <code>CA</code>, restent des pays. Sans Pro, les lignes d’État sont importées comme de simples voyages aux États-Unis.</li>
       <li><strong>Transit.</strong> Inscrivez <code>Transit</code> dans Purpose quand vous n’êtes pas entré dans le pays. Transit est exclusif : s’il apparaît avec un autre motif, seul Transit est conservé.</li>
       <li><strong>Séparateur et guillemets.</strong> La virgule, le point-virgule et la tabulation sont détectés à partir de la ligne d’en-têtes. Placez entre guillemets les champs qui contiennent le séparateur ou un saut de ligne.</li>
     </ul>
 
-    <h2>Exemple</h2>
+    <h2 id="exemple">Exemple</h2>
     <pre><code>Country,State,Start Date,End Date,Purpose,Notes
 France,,2026-03-01,2026-03-05,Personal,
 United States,CA,2026-04-10,2026-04-15,Business,Conference
 Japan,,2024,,Personal,Dates not known
 United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></pre>
 
-    <h2>Messages d’erreur</h2>
+    <h2 id="messages-d-erreur">Messages d’erreur</h2>
     <p>Chaque erreur apparaît dans la vérification avec son numéro de ligne, et la ligne n’est pas importée. Le numéro de ligne compte l’en-tête comme la ligne 1. Les messages s’affichent dans la langue de l’app.</p>
     <dl class="kv kv-text">
       <div><dt>Colonne Country introuvable</dt><dd>Placez d’abord une ligne d’en-têtes avec une colonne <strong>Country</strong>.</dd></div>
@@ -233,7 +245,7 @@ United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></p
     </dl>
 
     <section class="if-needed">
-      <h2>Si une valeur n’est pas reconnue</h2>
+      <h2 id="si-une-valeur-n-est-pas-reconnue">Si une valeur n’est pas reconnue</h2>
       <p>Utilisez un code de pays ISO, des dates ISO et un nom ou un code d’État américain standard. Un fichier exporté depuis un tableur dans une autre langue peut contenir des en-têtes traduits, qui ne sont pas reconnus : renommez-les avec les en-têtes anglais ci-dessus.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-csv-format-reference">

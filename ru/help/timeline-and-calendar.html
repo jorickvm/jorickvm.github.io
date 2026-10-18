@@ -165,12 +165,24 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="На этой странице">
+      <p class="toc-title">На этой странице</p>
+      <ul>
+        <li><a href="#section-1">Добавление поездки</a></li>
+        <li><a href="#section-2">Изменение поездки</a></li>
+        <li><a href="#section-3">Удаление поездки</a></li>
+        <li><a href="#section-4">Переключение между списком и календарём</a></li>
+        <li><a href="#section-5">Пребывание в США</a></li>
+        <li><a href="#section-6">Если поездка не сохраняется</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/ru/">AtlasDays</a> / <a href="/ru/help/">Справка</a></nav>
 
     <h1>Как добавить, изменить или удалить поездку</h1>
 <p class="article-answer">Раздел «Хронология» хранит исходные записи, на которых основаны <a href="/ru/help/dashboard-and-map">«Обзор»</a>, карта, трекеры, <a href="/ru/help/export-and-reports">экспорт</a> и <a href="/ru/help/widgets">виджеты</a>. Если какому-то из этих экранов нужны другие данные, измените поездку именно в хронологии.</p>
 
-    <h2>Добавление поездки</h2>
+    <h2 id="section-1">Добавление поездки</h2>
     <ol>
       <li>Откройте раздел <strong>«Хронология»</strong> и нажмите <strong>+</strong>.</li>
       <li>Нажмите <strong>«Выберите страну»</strong> и укажите её. Для поездки по США можно добавить штат в поле <strong>«Штат (необязательно)»</strong>, если нужно отслеживание по штатам (Pro).</li>
@@ -179,23 +191,23 @@
     </ol>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/ru/help/timeline-and-calendar/timeline-list.webp" alt="Список хронологии с прошлыми и текущими поездками" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
-    <h2>Изменение поездки</h2>
+    <h2 id="section-2">Изменение поездки</h2>
     <p>Коснитесь поездки в списке хронологии или откройте её из нужного дня в календаре. Измените страну, штат, даты, цели или заметки, затем нажмите <strong>«Сохранить»</strong>. Связанные итоги пересчитываются по изменённой записи.</p>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/ru/help/timeline-and-calendar/add-edit.webp" alt="Экран изменения поездки со страной и датами" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
-    <h2>Удаление поездки</h2>
+    <h2 id="section-3">Удаление поездки</h2>
     <p>Смахните поездку влево в списке и коснитесь значка корзины либо откройте поездку и нажмите <strong>«Удалить поездку»</strong>, после чего приложение попросит подтвердить действие. После удаления из хронологии внизу экрана примерно на четыре секунды появляется кнопка <strong>«Отменить»</strong>. Когда она исчезает, удаление становится окончательным, и вернуть поездку можно, только добавив её заново.</p>
 
-    <h2>Переключение между списком и календарём</h2>
+    <h2 id="section-4">Переключение между списком и календарём</h2>
     <p>Кнопка рядом с <strong>•••</strong> в левом верхнем углу переключает режимы. Список удобнее всего, чтобы просмотреть поездки по порядку. Календарь нагляднее показывает пропуски и поездки длиной в несколько недель, но только с точными датами. Коснитесь дня, чтобы увидеть его поездки в отдельном окне, а кнопкой <strong>+</strong> там же добавьте поездку на эту дату. Оба режима работают с одними и теми же записями.</p>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/ru/help/timeline-and-calendar/calendar.webp" alt="Календарь с поездками, охватывающими несколько дат" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
     <p>Как искать поездки, фильтровать их по году, менять сортировку и находить фото для поездок, рассказывает статья <a href="/ru/help/timeline-tools">Поиск, фильтры и настройка хронологии</a>.</p>
 
-    <h2>Пребывание в США</h2>
+    <h2 id="section-5">Пребывание в США</h2>
     <p>Поездка по США без указания штата всё равно учитывается в итогах по стране. С Pro штат отображается под <a href="/ru/help/languages">названием страны</a>, как только вы его добавите, а подряд идущие поездки по США можно объединять в одну карточку «США». Указывайте штат, если нужен трекер по отдельному штату или разбивка по штатам США.</p>
 
     <section class="if-needed">
-      <h2>Если поездка не сохраняется</h2>
+      <h2 id="section-6">Если поездка не сохраняется</h2>
       <p>Кнопка <strong>«Сохранить»</strong> остаётся недоступной, пока не заданы страна и даты: дата начала и дата окончания (или <strong>«Без даты окончания»</strong>), а для режима «Только год» — год. Проверьте, что дата окончания не раньше даты начала. Если появилось сообщение <strong>«Дубликат поездки»</strong>, такая поездка уже есть. Пересечение сохранению не мешает; о нём рассказывает статья <a href="/ru/help/overlapping-trips">Как устранить пересечения поездок</a>.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-timeline-and-calendar">

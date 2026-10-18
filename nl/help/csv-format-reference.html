@@ -165,12 +165,24 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="Op deze pagina">
+      <p class="toc-title">Op deze pagina</p>
+      <ul>
+        <li><a href="#kolommen">Kolommen</a></li>
+        <li><a href="#datumnotaties">Datumnotaties</a></li>
+        <li><a href="#bijzondere-gevallen">Bijzondere gevallen</a></li>
+        <li><a href="#voorbeeld">Voorbeeld</a></li>
+        <li><a href="#foutmeldingen">Foutmeldingen</a></li>
+        <li><a href="#als-een-waarde-niet-wordt-herkend">Als een waarde niet wordt herkend</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="Broodkruimelpad"><a href="/nl/">AtlasDays</a> / <a href="/nl/help/">Helpcentrum</a></nav>
 
     <h1>CSV-formaatuitleg</h1>
 <p class="article-answer">Alleen de kolom <strong>Country</strong> is verplicht. AtlasDays vindt kolommen aan hun Engelse kolomkop, dus de volgorde van de kolommen maakt niet uit. De stappen voor het importeren staan in <a href="/nl/help/csv-import">Importeren uit CSV</a>.</p>
 
-    <h2>Kolommen</h2>
+    <h2 id="kolommen">Kolommen</h2>
     <p>Aanbevolen kopregel: <code>Country,State,Start Date,End Date,Purpose,Notes</code>. Hoofdletters in kolomkoppen maken niet uit. Onbekende kolommen, zoals <code>Days</code>, worden genegeerd. Komt een kolomkop twee keer voor, dan wordt de eerste gebruikt.</p>
     <dl class="kv kv-text">
       <div><dt><strong>Country</strong></dt><dd>Verplicht. Landnaam in het Engels of in de app-taal, ISO-landcode van twee letters of een gangbare variant zoals <code>USA</code>, <code>UK</code> of <code>Holland</code>. Een variant die twee plaatsen kan betekenen, wordt geweigerd.</dd></div>
@@ -184,7 +196,7 @@
     </dl>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/nl/help/csv-format-reference/csv-reference.webp" alt="Voorbeeld en sjabloon voor een CSV-import" width="1320" height="1990" loading="lazy" decoding="async" /></figure>
 
-    <h2>Datumnotaties</h2>
+    <h2 id="datumnotaties">Datumnotaties</h2>
     <div class="data-table">
     <table>
       <thead><tr><th>Start Date</th><th>End Date</th><th>Resultaat</th></tr></thead>
@@ -199,21 +211,21 @@
     </div>
     <p>Jaartallen moeten tussen 1900 en acht jaar na het huidige jaar liggen. Exacte datums en jaartallen kunnen niet in dezelfde rij worden gemengd. Reizen met alleen een jaar en reizen zonder datums tellen mee voor bezochte plekken en de kaart, maar nooit voor de dagentelling of trackers. Een reis zonder datums kun je alleen via een CSV-import maken.</p>
 
-    <h2>Bijzondere gevallen</h2>
+    <h2 id="bijzondere-gevallen">Bijzondere gevallen</h2>
     <ul>
       <li><strong>Amerikaanse staten.</strong> Gebruik één rij per staat als één bezoek aan de VS meerdere staten omvatte. Een gewone rij <code>United States</code> is geldig voor bijhouden op landniveau. Een staatnaam in de kolom Country (<code>California</code>, <code>US-CA</code>) levert ook een reis naar de VS op, en een lege Country met een geldige State doet hetzelfde. Codes van twee letters die ook landcodes zijn, zoals <code>CA</code>, blijven landen. Zonder Pro worden staatrijen geïmporteerd als gewone reizen naar de Verenigde Staten.</li>
       <li><strong>Transit.</strong> Zet <code>Transit</code> in Purpose als je het land niet bent binnengekomen. Transit is exclusief: staat het naast een ander doel, dan blijft alleen Transit over.</li>
       <li><strong>Scheidingsteken en aanhalingstekens.</strong> Komma, puntkomma en tab worden herkend aan de kopregel. Zet velden die het scheidingsteken of een regelafbreking bevatten tussen aanhalingstekens.</li>
     </ul>
 
-    <h2>Voorbeeld</h2>
+    <h2 id="voorbeeld">Voorbeeld</h2>
     <pre><code>Country,State,Start Date,End Date,Purpose,Notes
 France,,2026-03-01,2026-03-05,Personal,
 United States,CA,2026-04-10,2026-04-15,Business,Conference
 Japan,,2024,,Personal,Dates not known
 United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></pre>
 
-    <h2>Foutmeldingen</h2>
+    <h2 id="foutmeldingen">Foutmeldingen</h2>
     <p>Elke fout verschijnt in de controle met het rijnummer, en de rij wordt niet geïmporteerd. In het rijnummer telt de kopregel als rij 1.</p>
     <dl class="kv kv-text">
       <div><dt>De kolom Country ontbreekt</dt><dd>Zet een kopregel met een kolom <strong>Country</strong> vooraan.</dd></div>
@@ -233,7 +245,7 @@ United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></p
     </dl>
 
     <section class="if-needed">
-      <h2>Als een waarde niet wordt herkend</h2>
+      <h2 id="als-een-waarde-niet-wordt-herkend">Als een waarde niet wordt herkend</h2>
       <p>Gebruik een ISO-landcode, ISO-datums en de standaardnaam of -code van een Amerikaanse staat. Een bestand dat uit een spreadsheet in een andere taal is geëxporteerd, kan vertaalde kolomkoppen hebben, en die worden niet herkend: hernoem ze naar de Engelse kolomkoppen hierboven.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-csv-format-reference">

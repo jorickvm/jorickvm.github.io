@@ -165,15 +165,27 @@
 
   <main id="main-content">
   <article>
+    <nav class="toc-side" aria-label="Na tej stronie">
+      <p class="toc-title">Na tej stronie</p>
+      <ul>
+        <li><a href="#eksport-z-flighty">Eksport z Flighty</a></li>
+        <li><a href="#import-do-atlasdays">Import do AtlasDays</a></li>
+        <li><a href="#jak-loty-staj-si-podr-ami">Jak loty stają się podróżami</a></li>
+        <li><a href="#duplikaty-i-kolizje">Duplikaty i kolizje</a></li>
+        <li><a href="#sprawdzanie-stan-w-usa">Sprawdzanie stanów USA</a></li>
+        <li><a href="#je-li-plik-zostanie-odrzucony">Jeśli plik zostanie odrzucony</a></li>
+      </ul>
+    </nav>
+    <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="Ścieżka nawigacji"><a href="/pl/">AtlasDays</a> / <a href="/pl/help/">Centrum pomocy</a></nav>
 
     <h1>Import z Flighty</h1>
 <p class="article-answer">Wyeksportuj historię lotów z Flighty jako CSV, wybierz plik w AtlasDays i przejrzyj proponowane podróże przed zapisaniem. To jeden ze <a href="/pl/help/import-trips">sposobów dodawania dawnych podróży</a>.</p>
 
-    <h2>Eksport z Flighty</h2>
+    <h2 id="eksport-z-flighty">Eksport z Flighty</h2>
     <p>We Flighty otwórz <strong>Settings → Account Data</strong> i wyeksportuj loty jako CSV. Zapisz plik w miejscu dostępnym w selektorze plików iOS, na przykład na iCloud Drive lub w pamięci telefonu iPhone.</p>
 
-    <h2>Import do AtlasDays</h2>
+    <h2 id="import-do-atlasdays">Import do AtlasDays</h2>
     <ol>
       <li>Otwórz <strong>Ustawienia → Import → Flighty</strong>.</li>
       <li>Stuknij <strong>Wybierz CSV z Flighty</strong> i wskaż wyeksportowany plik.</li>
@@ -183,7 +195,7 @@
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/pl/help/flighty-import/flighty-setup.webp" alt="Ekran konfiguracji importu z Flighty" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
     <p>Plik jest przetwarzany na urządzeniu i nic nie zostaje zapisane, dopóki nie potwierdzisz.</p>
 
-    <h2>Jak loty stają się podróżami</h2>
+    <h2 id="jak-loty-staj-si-podr-ami">Jak loty stają się podróżami</h2>
     <p>AtlasDays przypisuje każde lotnisko do kraju i tworzy podróż, gdy lot przylatuje do kraju, a późniejszy lot z niego odlatuje. Reszta podglądu wynika z tej zasady:</p>
     <ul>
       <li><strong>Przesiadki</strong> krótsze niż 24 godziny są przeglądane osobno. Postoje trwające 10 godzin lub krócej są oznaczane jako <a href="/pl/help/history-and-import">Tranzyt</a> i nie wliczają się do liczby dni. Dłuższe postoje są traktowane jako wjazd do kraju. Możesz to zmienić w podróży, przełączając <strong>Tranzyt</strong>.</li>
@@ -195,14 +207,14 @@
 
     <div class="callout"><p><strong>Tylko loty.</strong> Pociągi, promy i podróże samochodem się nie pojawią, podobnie jak loty, których brakuje w eksporcie. Przed importem porównaj podgląd z tym, gdzie naprawdę spędzono te dni.</p></div>
 
-    <h2>Duplikaty i kolizje</h2>
+    <h2 id="duplikaty-i-kolizje">Duplikaty i kolizje</h2>
     <p>Wpisy powtarzające podróż, która już jest na ekranie <a href="/pl/help/timeline-and-calendar">Oś czasu</a>, są oznaczone jako <strong>Duplikat</strong>. <strong>Scal</strong> oznacza, że wpis obejmuje istniejącą podróż i zostałby z nią połączony, a <strong>Kolizja</strong> oznacza, że daty częściowo pokrywają się z inną podróżą. Sprawdź je przed importem.</p>
 
-    <h2>Sprawdzanie stanów USA</h2>
+    <h2 id="sprawdzanie-stan-w-usa">Sprawdzanie stanów USA</h2>
     <p>Gdy dane lotniska wskazują stan USA, AtlasDays go proponuje. W wersji Pro każdy stan importuje się jako osobna podróż. Bez wersji Pro stany importują się jako zwykłe podróże do Stanów Zjednoczonych. Jeśli polegasz na śledzeniu poszczególnych stanów, potwierdź stan przed zapisaniem.</p>
 
     <section class="if-needed">
-      <h2>Jeśli plik zostanie odrzucony</h2>
+      <h2 id="je-li-plik-zostanie-odrzucony">Jeśli plik zostanie odrzucony</h2>
       <p>Komunikat <em>To nie wygląda na eksport CSV z Flighty</em> oznacza, że plik nie jest oryginalnym eksportem z Flighty. Wyeksportuj go ponownie z Flighty i wybierz ten plik, a nie plik ponownie zapisany lub przerobiony w arkuszu kalkulacyjnym. Pliki CSV z AtlasDays importuje się przez <a href="/pl/help/csv-import">Import z CSV</a>. Jeśli podgląd pokazuje <strong>Nie znaleziono przydatnych wierszy Flighty</strong>, eksport nie zawierał lotów, które AtlasDays mogłoby wykorzystać.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-flighty-import">
