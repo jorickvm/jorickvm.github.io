@@ -709,6 +709,87 @@
       ],
       "current_navigation": "changelog",
       "page_scripts": ""
+    },
+    {
+      "path": "press/index.html",
+      "title": "Press Kit – AtlasDays",
+      "meta": [
+        {
+          "name": "description",
+          "content": "The AtlasDays press kit: fact sheet, ready-to-use descriptions, screenshots, the iPhone Duo release and the app icon, with a press contact."
+        },
+        {
+          "property": "og:title",
+          "content": "AtlasDays Press Kit"
+        },
+        {
+          "property": "og:description",
+          "content": "The AtlasDays press kit: fact sheet, ready-to-use descriptions, screenshots, the iPhone Duo release and the app icon, with a press contact."
+        },
+        {
+          "property": "og:type",
+          "content": "website"
+        },
+        {
+          "property": "og:url",
+          "content": "https://atlasdays.app/press/"
+        },
+        {
+          "property": "og:image",
+          "content": "https://atlasdays.app/assets/social/site-v1.png"
+        },
+        {
+          "property": "og:image:type",
+          "content": "image/png"
+        },
+        {
+          "property": "og:image:width",
+          "content": "1200"
+        },
+        {
+          "property": "og:image:height",
+          "content": "630"
+        },
+        {
+          "property": "og:image:alt",
+          "content": "AtlasDays share card for private travel-day tracking"
+        },
+        {
+          "name": "twitter:card",
+          "content": "summary_large_image"
+        },
+        {
+          "name": "twitter:title",
+          "content": "AtlasDays Press Kit"
+        },
+        {
+          "name": "twitter:description",
+          "content": "The AtlasDays press kit: fact sheet, ready-to-use descriptions, screenshots, the iPhone Duo release and the app icon, with a press contact."
+        },
+        {
+          "name": "twitter:image",
+          "content": "https://atlasdays.app/assets/social/site-v1.png"
+        },
+        {
+          "name": "twitter:image:alt",
+          "content": "AtlasDays share card for private travel-day tracking"
+        }
+      ],
+      "links": [
+        {
+          "rel": "canonical",
+          "href": "https://atlasdays.app/press/"
+        }
+      ],
+      "jsonld": [],
+      "content": "content/pages/press.html",
+      "style_variants": [
+        "legal",
+        "press"
+      ],
+      "current_navigation": "",
+      "toc": true,
+      "page_scripts": "<script>\n  (function() {\n    function decode(parts) {\n      return parts.map(function(code) {\n        return String.fromCharCode(code);\n      }).join('');\n    }\n\n    var local = decode([112, 114, 101, 115, 115]);\n    var domain = decode([97, 116, 108, 97, 115, 100, 97, 121, 115]) + '.' + decode([97, 112, 112]);\n    var addr = local + '@' + domain;\n    document.querySelectorAll('.press-email').forEach(function(el) {\n      el.textContent = addr;\n      el.href = 'mai' + 'lto:' + addr;\n    });\n\n    // Respect Reduce Motion: no autoplay, the viewer starts the video.\n    if (matchMedia('(prefers-reduced-motion: reduce)').matches) {\n      document.querySelectorAll('video.press-video').forEach(function(v) {\n        v.pause();\n        v.removeAttribute('autoplay');\n        v.controls = true;\n      });\n    }\n\n    if (!navigator.clipboard) return;\n    document.querySelectorAll('.press-copy-button').forEach(function(button) {\n      var source = document.getElementById(button.getAttribute('data-copy'));\n      if (!source) return;\n      button.hidden = false;\n      button.addEventListener('click', function() {\n        var text = Array.prototype.map.call(source.matches('p') ? [source] : source.querySelectorAll('p'), function(p) {\n          return p.textContent.replace(/\\s+/g, ' ').trim();\n        }).join('\\n\\n');\n        navigator.clipboard.writeText(text).then(function() {\n          button.textContent = 'Copied';\n          setTimeout(function() { button.textContent = 'Copy'; }, 1600);\n        });\n      });\n    });\n  })();\n</script>"
     }
   ]
 }

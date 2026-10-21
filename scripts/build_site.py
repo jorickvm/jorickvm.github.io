@@ -43,7 +43,7 @@ FOOTER_TEMPLATE = SOURCE_ROOT / "templates" / "partials" / "site-footer.html"
 REDIRECT_TEMPLATE = SOURCE_ROOT / "templates" / "redirect.html"
 CLUSTER_DATA_PATH = SOURCE_ROOT / "data" / "content-clusters.json"
 BUILD_VERSION = "20260928f"
-VARIANT_VERSIONS = {("article", "help20260802"): "20260928f", ("hub", "92c3adc0daf3"): "20260928f", ("article", "49dd6e3e3ea5"): "20261005a", ("article", "88b8694b8f2d"): "20261005a"}
+VARIANT_VERSIONS = {("article", "help20260802"): "20260928f", ("hub", "92c3adc0daf3"): "20260928f", ("article", "49dd6e3e3ea5"): "20261005a", ("article", "88b8694b8f2d"): "20261005a", ("page", "press"): "20261021b"}
 SITE_HEADER_VERSION = "20260930a"
 SITE_FOOTER_VERSION = "20261010a"
 ARTICLE_COMPONENTS_VERSION = "20261006a"
@@ -267,7 +267,8 @@ def render_styles(article: dict[str, object], family: str = "article", prefix: s
     lines.append(
         f'  <link rel="stylesheet" href="{prefix}assets/css/site-header.css?v={SITE_HEADER_VERSION}" />'
     )
-    if family == "article":
+    # A page with "On this page" (record "toc") needs the component's styles too.
+    if family == "article" or article.get("toc"):
         lines.append(
             f'  <link rel="stylesheet" href="{prefix}assets/css/article-components.css?v={ARTICLE_COMPONENTS_VERSION}" />'
         )
@@ -1562,7 +1563,7 @@ TOC_SCRIPT = (
 
 
 def render_toc(content: str, article: dict[str, object]) -> str:
-    """"On this page" for a Learn or Help article.
+    """"On this page" for a Learn or Help article, or a page whose record sets "toc".
 
     Sections are the <h2>s outside the closing app box and the build's source
     panel; each gets an id from its text if it has none. Wide screens get a
@@ -1571,7 +1572,7 @@ def render_toc(content: str, article: dict[str, object]) -> str:
     a one-line <details> on phones and an open list on tablets (.toc). CSS
     shows one or the other (assets/css/article-components.css).
     """
-    if article.get("section") not in {"learn", "help"}:
+    if article.get("section") not in {"learn", "help"} and not article.get("toc"):
         return content
     cta = content.find('<div class="cta-box"')
     heading = re.compile(r"<h2(?P<attrs>[^>]*)>(?P<text>.*?)</h2>", re.S)
@@ -1623,7 +1624,10 @@ def render_toc(content: str, article: dict[str, object]) -> str:
         "    ",
     ])
     top = content.find('<nav class="breadcrumb">')
-    top = top if top >= 0 else len(content) - len(content.lstrip())
+    if top < 0:
+        # A page fragment carries its own <main>; the sidebar goes inside it.
+        opening = re.match(r"\s*<main\b[^>]*>\s*", content)
+        top = opening.end() if opening else len(content) - len(content.lstrip())
     return content[:top] + side + content[top:]
 
 
@@ -1884,6 +1888,8 @@ def render_hub(
     available = {route_for(path) for path in translations.get(code, {})}
     content = render_learn_rules(content, code, locale, available)
     content = render_rule_cards(content, code, locale, available)
+    if hub.get("toc"):
+        content = render_toc(content, hub)
     replacements = {
         "{{HTML_LANG}}": str(locale["html_lang"]),
         # Hubs are marketing surfaces and take the full wash; the legal and

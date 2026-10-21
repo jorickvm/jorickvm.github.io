@@ -3,102 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="robots" content="noindex, nofollow" />
   <title>AtlasDays for iPhone Duo</title>
-  <meta name="description" content="A preview of AtlasDays on iPhone Duo, closed and opened." />
+  <meta name="description" content="AtlasDays 2.8 on iPhone Duo: the Dashboard, the Timeline, tracker detail and Settings, closed and opened, with the unfold video." />
+  <link rel="canonical" href="https://atlasdays.app/press/iphone-duo/" />
+  <meta property="og:title" content="AtlasDays for iPhone Duo" />
+  <meta property="og:description" content="AtlasDays 2.8 on iPhone Duo: the Dashboard, the Timeline, tracker detail and Settings, closed and opened, with the unfold video." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://atlasdays.app/press/iphone-duo/" />
+  <meta property="og:image" content="https://atlasdays.app/assets/press/iphone-duo/share.jpg" />
+  <meta property="og:image:type" content="image/jpeg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="904" />
+  <meta property="og:image:alt" content="AtlasDays Dashboard on the opened iPhone Duo: statistics and the map on the left, trackers on the right" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="AtlasDays for iPhone Duo" />
+  <meta name="twitter:description" content="AtlasDays 2.8 on iPhone Duo: the Dashboard, the Timeline, tracker detail and Settings, closed and opened, with the unfold video." />
+  <meta name="twitter:image" content="https://atlasdays.app/assets/press/iphone-duo/share.jpg" />
+  <meta name="twitter:image:alt" content="AtlasDays Dashboard on the opened iPhone Duo: statistics and the map on the left, trackers on the right" />
   <link rel="icon" type="image/png" sizes="192x192" href="/assets/brand/favicon.png" />
-  <style>
-    :root {
-      color-scheme: dark;
-      --bg: #05080d;
-      --text: #f2f5f8;
-      --muted: #9aa6b4;
-      --line: rgba(255, 255, 255, 0.10);
-      --blue: #4f9dee;
-      --max: 1120px;
-      --gutter: 20px;
-    }
-    * { box-sizing: border-box; }
-    html { background: var(--bg); }
-    body {
-      margin: 0;
-      background:
-        radial-gradient(1200px 600px at 50% -200px, rgba(79, 157, 238, 0.18), transparent 70%),
-        var(--bg);
-      color: var(--text);
-      font: 17px/1.55 -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", Arial, sans-serif;
-      -webkit-font-smoothing: antialiased;
-    }
-    .skip-link { position: absolute; left: -9999px; }
-    .skip-link:focus { left: var(--gutter); top: 12px; background: var(--text); color: var(--bg); padding: 8px 12px; border-radius: 8px; }
-    a { color: var(--blue); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--gutter); }
-
-    header.brand { padding: 28px 0 0; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
-    header.brand a { display: inline-flex; align-items: center; gap: 10px; color: var(--text); font-weight: 600; font-size: 17px; }
-    header.brand img { width: 32px; height: 32px; border-radius: 8px; }
-    /* The site header's "Get AtlasDays" pill (assets/css/site-header.css .top-cta)
-       with the dark --action-* token values inlined: this page loads no site CSS. */
-    header.brand a.top-cta {
-      gap: 7px; min-height: 36px; padding: 0 16px; border-radius: 999px; color: #fff; font-size: 15px; line-height: 1; white-space: nowrap;
-      background: linear-gradient(to right, #2C5E8B 0%, #428FD2 50%, #2C5E8B 100%);
-      box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12), 0 2px 12px rgba(0, 0, 0, 0.08);
-      transition: opacity 140ms ease;
-    }
-    header.brand a.top-cta:hover { opacity: 0.92; text-decoration: none; }
-    .top-cta-glyph { margin-top: -2px; flex: none; }
-
-    .hero { text-align: center; padding: 36px 0 24px; }
-    .eyebrow { color: var(--blue); font-weight: 600; font-size: 15px; letter-spacing: 0.02em; margin: 0 0 12px; }
-    h1 { font-size: clamp(36px, 6vw, 60px); line-height: 1.05; letter-spacing: -0.02em; margin: 0 0 14px; }
-    .byline { color: var(--muted); font-size: 15px; margin: 14px 0 0; }
-    .byline a { color: inherit; }
-    .byline time { white-space: nowrap; }
-    .hero-media { margin-top: 28px; }
-    .fact code { font: 14px ui-monospace, "SF Mono", Menlo, monospace; color: var(--text); }
-    .lede { color: var(--muted); font-size: clamp(18px, 2.2vw, 21px); max-width: 660px; margin: 0 auto; }
-
-    section { padding: 56px 0; border-top: 1px solid var(--line); }
-    section:first-of-type { border-top: 0; }
-    h2 { font-size: clamp(26px, 3.4vw, 36px); line-height: 1.15; letter-spacing: -0.015em; margin: 0 0 12px; text-align: center; }
-    .section-copy { color: var(--muted); max-width: 640px; margin: 0 auto 36px; text-align: center; }
-
-    figure { margin: 0; }
-    figure img, figure video { display: block; width: 100%; height: auto; }
-    figcaption { color: var(--muted); font-size: 14px; text-align: center; margin-top: 12px; }
-
-    /* Closed beside opened at one scale: the images are cropped to the device
-       edges, 1531 and 2985 px wide at the same pixel density, so the closed
-       width is 0.513 of the opened one and both devices stand the same height. */
-    .pair { display: flex; align-items: flex-end; justify-content: center; gap: 4%; }
-    .pair .closed { flex: 0 0 auto; width: 30.77%; }
-    .pair .open { flex: 0 0 auto; width: 60%; }
-    .single { max-width: 900px; margin: 0 auto; }
-    /* A single figure never outgrows the window, so the whole device fits on
-       one screen once scrolled to; on large screens the 900 px cap wins. */
-    .single img, .single video { width: auto; max-width: 100%; max-height: calc(100vh - 64px); max-height: calc(100svh - 64px); margin: 0 auto; }
-
-    .facts { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; max-width: 900px; margin: 8px auto 0; }
-    .fact { background: rgba(255, 255, 255, 0.04); border: 1px solid var(--line); border-radius: 16px; padding: 18px 20px; }
-    .fact h3 { font-size: 17px; margin: 0 0 6px; }
-    .fact p { color: var(--muted); font-size: 15px; margin: 0; }
-
-    .about { max-width: 680px; margin: 0 auto; }
-    .about p { margin: 0 0 16px; }
-    .about .muted { color: var(--muted); }
-
-    footer { padding: 40px 0 56px; color: var(--muted); font-size: 14px; text-align: center; border-top: 1px solid var(--line); }
-
-    @media (max-width: 720px) {
-      .pair { flex-direction: column; align-items: center; gap: 28px; }
-      .pair .closed { width: 51.3%; }
-      .pair .open { width: 100%; }
-      section { padding: 44px 0; }
-      .hero { padding-top: 28px; }
-      .facts { grid-template-columns: 1fr; }
-    }
-  </style>
+  <link rel="stylesheet" href="/assets/css/press-iphone-duo.css?v=20261021a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
@@ -207,7 +130,7 @@
         <div class="about">
           <p>AtlasDays answers a question every traveler is eventually asked: where were you, and for how many days? It logs trips by country and by US state, counts days against rules like Schengen 90/180, tax residency and the US Substantial Presence Test, adds trips automatically when you cross a border, and builds past trips from your photos.</p>
           <p>Unlimited trip logging, auto-detect, every import, the dashboard statistics and one tracker are free. There are no ads and no account, and your trips stay on your device and in your own iCloud.</p>
-          <p class="muted">Made by <a href="/about">Jorick</a>, an independent developer in Tbilisi. Questions: <a href="mailto:hello@atlasdays.app">hello@atlasdays.app</a>. AtlasDays is on the <a href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=press-duo&amp;mt=8">App Store</a>.</p>
+          <p class="muted">Made by <a href="/about">Jorick</a>, an independent developer in Tbilisi. Questions: <a href="mailto:press@atlasdays.app">press@atlasdays.app</a>. Facts, descriptions and downloads are in the <a href="/press/">press kit</a>. AtlasDays is on the <a href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=press-duo&amp;mt=8">App Store</a>.</p>
         </div>
       </section>
     </main>

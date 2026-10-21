@@ -1,0 +1,165 @@
+/* Press kit (/press/). Layered on legal.css, which sets the column and type. */
+
+main.press h3 {
+  margin: 30px 0 12px;
+  color: var(--text);
+  font-size: 1.08rem;
+  line-height: 1.35;
+}
+
+main.press h3 a { color: inherit; text-decoration: none; }
+main.press h3 a:hover { text-decoration: underline; }
+
+.press-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 22px;
+  margin: 0 0 22px;
+}
+
+main a.press-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 0 20px;
+  border-radius: 999px;
+  color: #fff;
+  font-weight: 600;
+  text-decoration: none;
+  background: linear-gradient(to right, var(--action-outer) 0%, var(--action-base) 50%, var(--action-outer) 100%);
+  box-shadow: inset 0 0 0 1px var(--action-border);
+}
+
+main a.press-download:hover { opacity: 0.92; }
+.press-download span { font-weight: 400; opacity: 0.8; font-size: 0.9rem; }
+
+.press-release,
+.press-copy {
+  margin: 0 0 18px;
+  padding: 20px 24px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--bg-card);
+}
+
+.press-release h3 { margin-top: 2px; }
+
+.press-video {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 4px 0 16px;
+  border-radius: 12px;
+  background: #05080d;
+}
+.press-release p:last-child,
+.press-copy p:last-child { margin-bottom: 0; }
+
+main .press-release-date {
+  margin: 0;
+  color: var(--muted-2);
+  font-size: 0.88rem;
+}
+
+.press-facts {
+  margin: 0 0 18px;
+  border-top: 1px solid var(--line);
+}
+
+.press-facts > div {
+  display: grid;
+  grid-template-columns: 9.5rem minmax(0, 1fr);
+  gap: 4px 18px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.press-facts dt { color: var(--muted-2); font-size: 0.95rem; }
+.press-facts dd { margin: 0; color: var(--text); }
+
+.press-copy-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.press-copy-button {
+  min-height: 32px;
+  padding: 0 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--text);
+  font: inherit;
+  font-size: 0.88rem;
+  cursor: pointer;
+}
+
+.press-copy-button:hover { border-color: var(--blue); }
+.press-copy-button:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+
+.press-quote {
+  margin: 26px 0;
+  padding: 2px 0 2px 20px;
+  border-left: 3px solid var(--blue);
+}
+
+main .press-quote p {
+  margin: 0 0 8px;
+  color: var(--text);
+  font-size: 1.12rem;
+  line-height: 1.5;
+}
+
+.press-quote blockquote { margin: 0; }
+.press-quote figcaption { color: var(--muted-2); font-size: 0.92rem; }
+
+.press-gallery,
+.press-icons {
+  display: grid;
+  gap: 22px 16px;
+  margin: 0 0 22px;
+  padding: 0;
+  list-style: none;
+}
+
+main .press-gallery li,
+main .press-icons li { margin: 0; padding: 0; }
+
+.press-gallery img,
+.press-icons img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+main .press-gallery p,
+main .press-icons p {
+  margin: 8px 0 0;
+  font-size: 0.88rem;
+  line-height: 1.4;
+}
+
+main .press-gallery p a { margin-left: 6px; }
+.press-links { display: block; }
+main .press-gallery .press-links a { margin: 0 12px 0 0; }
+
+.press-gallery-phone { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 26px 28px; }
+
+/* A closed and an opened Duo per row, widths in their aspect ratio so both stand the same height. */
+.press-gallery-duo { grid-template-columns: 0.716fr 1.395fr; align-items: end; }
+
+.press-icons { grid-template-columns: repeat(2, minmax(0, 132px)); }
+.press-icons img { border-radius: 22.37%; }
+
+@media (max-width: 520px) {
+  .press-facts > div { grid-template-columns: minmax(0, 1fr); }
+  .press-release,
+  .press-copy { padding: 18px; border-radius: 15px; }
+  .press-gallery-phone { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .press-gallery-duo { gap: 18px 10px; }
+}
