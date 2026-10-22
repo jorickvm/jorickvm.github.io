@@ -1,16 +1,4 @@
-# AtlasDays press kit
-
-[Online press kit](https://atlasdays.app/press/)
-
-Facts, descriptions, screenshots and the app icon, ready to use in coverage of AtlasDays. The download includes a Markdown press sheet.
-
-## News
-
-Out 23 October 2026
-
-### [AtlasDays 2.8 for iPhone Duo](https://atlasdays.app/press/iphone-duo/)
-
-AtlasDays 2.8 adds layouts for iPhone Duo, bringing charts, summaries and trip lists into view side by side. The layouts also adapt to different window sizes on iPad. [Read more](https://atlasdays.app/press/iphone-duo/)
+# AtlasDays press sheet
 
 ## Fact sheet
 
@@ -77,39 +65,6 @@ He also wanted a detailed map of the places he had visited. AtlasDays brings bot
 Jorick van Meijeren, maker of AtlasDays
 
 The full story is on the [About page](https://atlasdays.app/about).
-
-## Screenshots
-
-Full-resolution files, free to use in coverage of AtlasDays.
-
-### iPhone
-
-Framed in an iPhone bezel on a transparent background, or the plain screen. PNG.
-
-- Dashboard [Framed](iphone/framed/iphone-dashboard.png) [Screen](iphone/screen/iphone-dashboard-screen.png)
-- Trip forecast [Framed](iphone/framed/iphone-trip-forecast.png) [Screen](iphone/screen/iphone-trip-forecast-screen.png)
-- Timeline [Framed](iphone/framed/iphone-timeline.png) [Screen](iphone/screen/iphone-timeline-screen.png)
-- Tracker presets [Framed](iphone/framed/iphone-tracker-presets.png) [Screen](iphone/screen/iphone-tracker-presets-screen.png)
-- Photo import [Framed](iphone/framed/iphone-photo-import.png) [Screen](iphone/screen/iphone-photo-import-screen.png)
-- Globe and country [Framed](iphone/framed/iphone-globe.png) [Screen](iphone/screen/iphone-globe-screen.png)
-
-### iPhone Duo
-
-In Apple's iPhone Duo device frames, closed and opened. More on the [iPhone Duo page](https://atlasdays.app/press/iphone-duo/).
-
-- Dashboard, closed [PNG](iphone-duo/duo-dashboard-closed.png)
-- Dashboard, opened [PNG](iphone-duo/duo-dashboard-open.png)
-- Timeline, closed [PNG](iphone-duo/duo-timeline-closed.png)
-- Timeline, opened [PNG](iphone-duo/duo-timeline-open.png)
-- Tracker, closed [PNG](iphone-duo/duo-tracker-closed.png)
-- Tracker, opened [PNG](iphone-duo/duo-tracker-open.png)
-
-## App icon
-
-1024 × 1024 PNG files, square. iOS rounds the corners itself, so please don't add a frame or change the colors.
-
-- [Default](icon/atlasdays-icon.png)
-- [Dark](icon/atlasdays-icon-dark.png)
 
 ## Contact
 

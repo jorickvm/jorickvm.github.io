@@ -52,35 +52,27 @@ class PressParser(HTMLParser):
         self.tree.data(data)
 
 
-def press_markdown(files: list[tuple[Path, str]]) -> str:
-    """Keep the press copy in one source; bundled media links work offline."""
+def press_markdown() -> str:
+    """Export the standalone press sheet from the approved page sections."""
     parser = PressParser()
     parser.feed(SOURCE.read_text(encoding="utf-8"))
     parser.close()
     parser.tree.end("document")
     document = parser.tree.close()
-    local_links = {"/" + path.relative_to(ROOT).as_posix(): name for path, name in files}
-
-    def link(href: str) -> str:
-        return local_links.get(href, urljoin(PAGE_URL, href))
+    sections = {"Fact sheet", "Descriptions", "Key features", "Background", "Contact"}
+    selected = []
+    include = False
+    for node in document.find("main"):
+        if node.tag == "h2":
+            include = "".join(node.itertext()).strip() in sections
+        if include:
+            selected.append(node)
 
     def render(node: ET.Element) -> str:
         tag = node.tag
         classes = node.get("class", "").split()
         if tag in {"button", "img"} or node.get("aria-hidden") == "true" or "press-actions" in classes:
             return ""
-        if tag == "p" and node.find("a[@href='/']") is not None:
-            return ""  # Back-to-home navigation, not press copy.
-        if "press-gallery" in classes:
-            return "\n\n" + "\n".join(
-                "- " + render(item.find("p")).strip() for item in node.findall("li")
-            ) + "\n\n"
-        if "press-icons" in classes:
-            return "\n\n" + "\n".join(
-                f'- [{item.findtext("p")}]({link(item.find("a").get("href"))})'
-                for item in node.findall("li")
-            ) + "\n\n"
-
         content = re.sub(r"\s+", " ", node.text or "")
         for child in node:
             content += render(child) + re.sub(r"\s+", " ", child.tail or "")
@@ -89,13 +81,11 @@ def press_markdown(files: list[tuple[Path, str]]) -> str:
             if "press-email" in classes:
                 address = text.replace(" at ", "@")
                 return f"[{address}](mailto:{address})"
-            return f'[{text}]({link(node.get("href", ""))})' if text else ""
+            return f'[{text}]({urljoin(PAGE_URL, node.get("href", ""))})' if text else ""
         if tag in {"strong", "b"}:
             return f"**{text}**"
         if tag in {"em", "i"}:
             return f"*{text}*"
-        if tag == "h1":
-            return f"# AtlasDays press kit\n\n[Online press kit]({PAGE_URL})\n\n"
         if tag in {"h2", "h3", "h4"}:
             return f'\n\n{"#" * int(tag[1])} {text}\n\n'
         if tag == "dt":
@@ -108,11 +98,10 @@ def press_markdown(files: list[tuple[Path, str]]) -> str:
             return "\n\n" + "\n".join("> " + line for line in text.splitlines()) + "\n\n"
         if tag in {"p", "figcaption", "ul", "dl"} or "press-copy-head" in classes:
             return f"\n\n{text}\n\n"
-        if "press-links" in classes:
-            return " " + text
         return content
 
-    markdown = "\n".join(line.strip() for line in render(document).splitlines())
+    content = "# AtlasDays press sheet\n\n" + "".join(render(node) for node in selected)
+    markdown = "\n".join(line.strip() for line in content.splitlines())
     return re.sub(r"\n{3,}", "\n\n", markdown).strip() + "\n"
 
 
@@ -136,7 +125,7 @@ def main() -> int:
     parser.add_argument("--check", action="store_true", help="Fail if the Markdown or ZIP is stale")
     args = parser.parse_args()
     files = entries()
-    markdown = press_markdown(files).encode("utf-8")
+    markdown = press_markdown().encode("utf-8")
     buffer = io.BytesIO()
     with zipfile.ZipFile(buffer, "w") as archive:
         for path, name in [(SHEET, "README.md"), *files]:
