@@ -3,21 +3,117 @@
 
 The zip holds the full-size files the press page links to one by one: the app
 icons, the iPhone screenshots (framed and plain screen), the framed iPhone Duo
-images and the unfold video. Entries carry a fixed timestamp, so rebuilding
-without a changed file gives a byte-identical zip. Run it after replacing any
-of those files.
+images, the unfold video, and a Markdown press sheet generated from the page
+source. Entries carry a fixed timestamp, so rebuilding without a changed file
+gives a byte-identical zip. Run it after editing the press copy or media.
 """
 
 from __future__ import annotations
 
+import argparse
+import io
+import re
+import xml.etree.ElementTree as ET
 import zipfile
+from html.parser import HTMLParser
 from pathlib import Path
+from urllib.parse import urljoin
 
 ROOT = Path(__file__).resolve().parents[1]
 KIT = ROOT / "assets" / "press" / "kit"
 OUT = KIT / "atlasdays-press-kit.zip"
+SHEET = KIT / "README.md"
+SOURCE = ROOT / "_site-src" / "content" / "pages" / "press.html"
+PAGE_URL = "https://atlasdays.app/press/"
 FOLDER = "AtlasDays-press-kit"
 STAMP = (2026, 1, 1, 0, 0, 0)
+
+
+class PressParser(HTMLParser):
+    """Build a small tree from the authored fragment, including HTML entities."""
+
+    VOID = {"area", "base", "br", "col", "embed", "hr", "img", "input", "link", "meta", "param", "source", "track", "wbr"}
+
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.tree = ET.TreeBuilder()
+        self.tree.start("document", {})
+
+    def handle_starttag(self, tag, attrs):
+        self.tree.start(tag, {key: value or "" for key, value in attrs})
+        if tag in self.VOID:
+            self.tree.end(tag)
+
+    def handle_endtag(self, tag):
+        if tag not in self.VOID:
+            self.tree.end(tag)
+
+    def handle_data(self, data):
+        self.tree.data(data)
+
+
+def press_markdown(files: list[tuple[Path, str]]) -> str:
+    """Keep the press copy in one source; bundled media links work offline."""
+    parser = PressParser()
+    parser.feed(SOURCE.read_text(encoding="utf-8"))
+    parser.close()
+    parser.tree.end("document")
+    document = parser.tree.close()
+    local_links = {"/" + path.relative_to(ROOT).as_posix(): name for path, name in files}
+
+    def link(href: str) -> str:
+        return local_links.get(href, urljoin(PAGE_URL, href))
+
+    def render(node: ET.Element) -> str:
+        tag = node.tag
+        classes = node.get("class", "").split()
+        if tag in {"button", "img"} or node.get("aria-hidden") == "true" or "press-actions" in classes:
+            return ""
+        if tag == "p" and node.find("a[@href='/']") is not None:
+            return ""  # Back-to-home navigation, not press copy.
+        if "press-gallery" in classes:
+            return "\n\n" + "\n".join(
+                "- " + render(item.find("p")).strip() for item in node.findall("li")
+            ) + "\n\n"
+        if "press-icons" in classes:
+            return "\n\n" + "\n".join(
+                f'- [{item.findtext("p")}]({link(item.find("a").get("href"))})'
+                for item in node.findall("li")
+            ) + "\n\n"
+
+        content = re.sub(r"\s+", " ", node.text or "")
+        for child in node:
+            content += render(child) + re.sub(r"\s+", " ", child.tail or "")
+        text = content.strip()
+        if tag == "a":
+            if "press-email" in classes:
+                address = text.replace(" at ", "@")
+                return f"[{address}](mailto:{address})"
+            return f'[{text}]({link(node.get("href", ""))})' if text else ""
+        if tag in {"strong", "b"}:
+            return f"**{text}**"
+        if tag in {"em", "i"}:
+            return f"*{text}*"
+        if tag == "h1":
+            return f"# AtlasDays press kit\n\n[Online press kit]({PAGE_URL})\n\n"
+        if tag in {"h2", "h3", "h4"}:
+            return f'\n\n{"#" * int(tag[1])} {text}\n\n'
+        if tag == "dt":
+            return f"\n- **{text}**: "
+        if tag == "dd":
+            return text + "\n"
+        if tag == "li":
+            return f"\n- {text}\n"
+        if tag == "blockquote":
+            return "\n\n" + "\n".join("> " + line for line in text.splitlines()) + "\n\n"
+        if tag in {"p", "figcaption", "ul", "dl"} or "press-copy-head" in classes:
+            return f"\n\n{text}\n\n"
+        if "press-links" in classes:
+            return " " + text
+        return content
+
+    markdown = "\n".join(line.strip() for line in render(document).splitlines())
+    return re.sub(r"\n{3,}", "\n\n", markdown).strip() + "\n"
 
 
 def entries() -> list[tuple[Path, str]]:
@@ -36,14 +132,32 @@ def entries() -> list[tuple[Path, str]]:
 
 
 def main() -> int:
-    with zipfile.ZipFile(OUT, "w") as archive:
-        for path, name in entries():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--check", action="store_true", help="Fail if the Markdown or ZIP is stale")
+    args = parser.parse_args()
+    files = entries()
+    markdown = press_markdown(files).encode("utf-8")
+    buffer = io.BytesIO()
+    with zipfile.ZipFile(buffer, "w") as archive:
+        for path, name in [(SHEET, "README.md"), *files]:
             info = zipfile.ZipInfo(f"{FOLDER}/{name}", STAMP)
             info.external_attr = 0o644 << 16
             # Images and video are already compressed; deflating them gains nothing.
             info.compress_type = zipfile.ZIP_STORED
-            archive.writestr(info, path.read_bytes())
-    print(f"Wrote {OUT.relative_to(ROOT)}: {len(entries())} files, {OUT.stat().st_size / 1e6:.1f} MB")
+            archive.writestr(info, markdown if path == SHEET else path.read_bytes())
+    outputs = {SHEET: markdown, OUT: buffer.getvalue()}
+    if args.check:
+        stale = [path for path, content in outputs.items() if not path.exists() or path.read_bytes() != content]
+        if stale:
+            print("Press kit is stale; run python3 scripts/build_press_zip.py:")
+            for path in stale:
+                print(f"  {path.relative_to(ROOT)}")
+            return 1
+        print("Checked press kit Markdown and ZIP.")
+        return 0
+    for path, content in outputs.items():
+        path.write_bytes(content)
+    print(f"Wrote {OUT.relative_to(ROOT)}: {len(files) + 1} files, {OUT.stat().st_size / 1e6:.1f} MB")
     return 0
 
 
