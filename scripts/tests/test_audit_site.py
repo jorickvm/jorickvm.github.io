@@ -138,7 +138,6 @@ class AuditSiteTests(unittest.TestCase):
                 "learn/day-limits.html",
                 "learn/how-to-use-atlasdays.html",
                 "learn/icloud-sync-travel-tracking.html",
-                "shift/privacy/index.html",
             },
         )
 
