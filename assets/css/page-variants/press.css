@@ -44,16 +44,21 @@ main a.press-download:hover { opacity: 0.92; }
   background: var(--bg-card);
 }
 
-.press-release h3 { margin-top: 2px; }
+.press-release {
+  display: grid;
+  grid-template-columns: minmax(0, 300px) minmax(0, 1fr);
+  gap: 24px;
+  align-items: center;
+}
 
-.press-video {
+.press-release-image img {
   display: block;
   width: 100%;
   height: auto;
-  margin: 4px 0 16px;
-  border-radius: 12px;
-  background: #05080d;
 }
+
+main.press .press-release h3 { margin: 6px 0 10px; }
+
 .press-release p:last-child,
 .press-copy p:last-child { margin-bottom: 0; }
 
@@ -155,6 +160,11 @@ main .press-gallery .press-links a { margin: 0 12px 0 0; }
 
 .press-icons { grid-template-columns: repeat(2, minmax(0, 132px)); }
 .press-icons img { border-radius: 22.37%; }
+
+@media (max-width: 700px) {
+  .press-release { grid-template-columns: minmax(0, 1fr); gap: 16px; }
+  .press-release-image { max-width: 420px; }
+}
 
 @media (max-width: 520px) {
   .press-facts > div { grid-template-columns: minmax(0, 1fr); }
