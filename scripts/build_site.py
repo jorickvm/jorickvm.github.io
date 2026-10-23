@@ -110,11 +110,12 @@ SITE_URL = "https://atlasdays.app"
 # JSON-LD, and llms.txt keep the canonical URL. One campaign (`ct=web`) for the
 # whole site until traffic is high enough to split it past Apple's threshold.
 APP_STORE_URL = "https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"
-APP_STORE_CAMPAIGN_URL = "https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8"
+APP_STORE_CAMPAIGN_URL = "https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct={campaign}&amp;mt=8"
 
 
-def with_campaign_links(rendered: str) -> str:
-    return rendered.replace(f'href="{APP_STORE_URL}"', f'href="{APP_STORE_CAMPAIGN_URL}"')
+def with_campaign_links(rendered: str, campaign: str = "web") -> str:
+    """Tag App Store links for App Store Connect; a page record can set its own "campaign"."""
+    return rendered.replace(f'href="{APP_STORE_URL}"', 'href="' + APP_STORE_CAMPAIGN_URL.format(campaign=campaign) + '"')
 
 
 def linked_paths(text: str) -> set[str]:
@@ -1991,11 +1992,11 @@ def main() -> int:
     pending: list[tuple[Path, str]] = []
     delistings: list[tuple[str, list[str]]] = []
 
-    def queue(output_path: Path, rendered: str, *, guard: bool = False) -> None:
+    def queue(output_path: Path, rendered: str, *, guard: bool = False, campaign: str = "web") -> None:
         nonlocal selected
         selected += 1
         if output_path.suffix == ".html":
-            rendered = with_campaign_links(rendered)
+            rendered = with_campaign_links(rendered, campaign)
         current = output_path.read_text(encoding="utf-8") if output_path.exists() else ""
         if current == rendered:
             return
@@ -2047,6 +2048,7 @@ def main() -> int:
                     family=page_family,
                 ),
                 guard=True,
+                campaign=str(page.get("campaign", "web")),
             )
 
     for code, overlays in translations.items():
