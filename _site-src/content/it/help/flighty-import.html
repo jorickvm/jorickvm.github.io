@@ -1,0 +1,40 @@
+    <nav class="breadcrumb" aria-label="Percorso di navigazione"><a href="/it/">AtlasDays</a> / <a href="/it/help/">Centro assistenza</a></nav>
+
+    <h1>Importazione da Flighty</h1>
+<p class="article-answer">Esporta lo storico dei voli da Flighty in CSV, selezionalo in AtlasDays e controlla i soggiorni suggeriti prima di salvarli. È uno dei <a href="/it/help/import-trips">modi per aggiungere soggiorni passati</a>.</p>
+
+    <h2>Esporta da Flighty</h2>
+    <p>In Flighty, apri <strong>Settings → Account Data</strong> ed esporta i voli come CSV. Salva il file in un luogo accessibile dalla selezione File di iOS, come iCloud Drive o Su iPhone.</p>
+
+    <h2>Importa in AtlasDays</h2>
+    <ol>
+      <li>Apri <strong>Impostazioni → Importa → Flighty</strong>.</li>
+      <li>Tocca <strong>Seleziona CSV di Flighty</strong> e scegli il file esportato.</li>
+      <li>Controlla l’anteprima, <strong>Trovato in Flighty</strong>: soggiorni suggeriti, scali, voli notturni, soggiorni incompleti, duplicati e sovrapposizioni.</li>
+      <li>Usa <strong>Seleziona tutto</strong> o <strong>Deseleziona tutto</strong>, tocca una voce per modificarla, poi tocca <strong>Importa</strong> e conferma.</li>
+    </ol>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/help/flighty-import/flighty-setup.webp" alt="Schermata di configurazione dell’importazione da Flighty" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <p>L’elaborazione avviene sul dispositivo e nulla viene salvato finché non confermi.</p>
+
+    <h2>Come i voli diventano soggiorni</h2>
+    <p>AtlasDays associa ogni aeroporto a un Paese e crea un soggiorno quando un volo arriva in un Paese e un volo successivo riparte da lì. Il resto dell’anteprima segue da questo:</p>
+    <ul>
+      <li>Gli <strong>Scali</strong> inferiori a 24 ore vengono esaminati separatamente. Le soste di 10 ore o meno sono contrassegnate <a href="/it/help/history-and-import">Transito</a> ed escluse dai conteggi dei giorni. Per le soste più lunghe si presume che tu sia entrato nel Paese. Puoi modificarlo nel soggiorno attivando o disattivando <strong>Transito</strong>.</li>
+      <li>I <strong>voli notturni</strong> vengono registrati come Spazio aereo internazionale quando eri in volo a mezzanotte.</li>
+      <li>Ai <strong>soggiorni incompleti</strong> manca un arrivo o una partenza, ad esempio dopo un viaggio via terra o un volo assente da Flighty. Puoi aggiungere la data mancante nella voce oppure lasciarla senza fine.</li>
+      <li>Le <strong>righe saltate</strong> sono elencate con il motivo, ad esempio volo cancellato o codice aeroportuale mancante.</li>
+    </ul>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/help/flighty-import/flighty-review.webp" alt="Anteprima di importazione da Flighty con soggiorni, transiti e avvisi" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+
+    <div class="callout"><p><strong>Solo voli.</strong> Non compaiono treni, traghetti, viaggi su strada né voli mancanti dall’esportazione. Prima di importare, confronta l’anteprima con i luoghi in cui hai effettivamente trascorso i giorni.</p></div>
+
+    <h2>Duplicati e sovrapposizioni</h2>
+    <p>Le voci che ripetono un soggiorno già nella <a href="/it/help/timeline-and-calendar">Cronologia</a> sono contrassegnate <strong>Duplicato</strong>. <strong>Unisci</strong> indica una voce che comprende un soggiorno esistente e si unirebbe a esso; <strong>Sovrapposizione</strong> indica date che coincidono in parte con un altro soggiorno. Controllale prima di importare.</p>
+
+    <h2>Controlla gli Stati USA</h2>
+    <p>Quando le informazioni aeroportuali permettono di individuare uno Stato USA, AtlasDays lo propone. Con Pro, ogni Stato viene importato come soggiorno distinto. Senza Pro, gli Stati diventano normali soggiorni negli Stati Uniti. Se ti affidi al monitoraggio dei singoli Stati, conferma lo Stato prima di salvare.</p>
+
+    <section class="if-needed">
+      <h2>Se il file viene rifiutato</h2>
+      <p>Il messaggio <em>Questo non sembra un’esportazione CSV di Flighty</em> indica che il file non è l’esportazione originale di Flighty. Esportalo di nuovo da Flighty e seleziona quel file, non una copia salvata o riorganizzata in un foglio di calcolo. I file CSV di AtlasDays passano invece da <a href="/it/help/csv-import">Importazione CSV</a>. Se l’anteprima mostra <strong>Nessuna riga Flighty utilizzabile</strong>, l’esportazione non conteneva voli utilizzabili da AtlasDays.</p>
+    </section>
