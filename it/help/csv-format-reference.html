@@ -186,13 +186,13 @@
     <h2 id="colonne">Colonne</h2>
     <p>Riga di intestazione consigliata: <code>Country,State,Start Date,End Date,Purpose,Notes</code>. I nomi delle intestazioni non distinguono maiuscole e minuscole. Le colonne non riconosciute, come <code>Days</code>, vengono ignorate. Se un’intestazione compare due volte, viene usata la prima.</p>
     <dl class="kv kv-text">
-      <div><dt><strong>Country</strong></dt><dd>Obbligatorio. Nome del Paese in inglese o nella lingua dell’app, codice ISO di due lettere o un alias comune come <code>USA</code>, <code>UK</code>, oppure <code>Holland</code>. Un alias che può indicare due luoghi viene rifiutato.</dd></div>
-      <div><dt><strong>State</strong></dt><dd>Facoltativo, solo per soggiorni negli Stati Uniti. Nome dello Stato, abbreviazione postale di due lettere o codice ISO come <code>US-CA</code>. È accettato anche il Distretto di Columbia.</dd></div>
+      <div><dt><strong>Country</strong></dt><dd>Obbligatorio. Nome del paese in inglese o nella lingua dell’app, codice ISO di due lettere o un alias comune come <code>USA</code>, <code>UK</code>, oppure <code>Holland</code>. Un alias che può indicare due luoghi viene rifiutato.</dd></div>
+      <div><dt><strong>State</strong></dt><dd>Facoltativo, solo per soggiorni negli Stati Uniti. Nome dello stato, abbreviazione postale di due lettere o codice ISO come <code>US-CA</code>. È accettato anche il Distretto di Columbia.</dd></div>
       <div><dt><strong>Start Date</strong></dt><dd>Accettato anche come <code>Start</code>. Data nel formato <code>yyyy-mm-dd</code>, oppure un anno di quattro cifre.</dd></div>
       <div><dt><strong>End Date</strong></dt><dd>Accettato anche come <code>End</code>. Data nel formato <code>yyyy-mm-dd</code>, oppure un anno di quattro cifre. Vuoto significa in corso (inizio con data esatta) o lo stesso anno (inizio con anno).</dd></div>
       <div><dt><strong>Purpose</strong></dt><dd><code>Personal</code>, <code>Business</code>, <code>Study</code>, oppure <code>Transit</code>, senza distinzione tra maiuscole e minuscole. Combina i valori diversi da Transit con virgole tra virgolette, ad esempio <code>"Business, Personal"</code>. I vecchi valori <code>Tourism</code> e <code>Medical</code> vengono importati come Personale. Un valore non riconosciuto viene ignorato senza errore.</dd></div>
       <div><dt><strong>Notes</strong></dt><dd>Accettato anche come <code>Note</code>, <code>Notes (optional)</code>. Testo libero.</dd></div>
-      <div><dt><strong>Transit</strong></dt><dd>Colonna legacy. Letta solo se manca la colonna Purpose. <code>Yes</code>, <code>Y</code>, <code>True</code>, oppure <code>1</code> contrassegna Transito; <code>No</code>, <code>N</code>, <code>False</code>, <code>0</code>, oppure vuoto, non lo contrassegna.</dd></div>
+      <div><dt><strong>Transit</strong></dt><dd>Colonna legacy. Letta solo se manca la colonna Purpose. <code>Yes</code>, <code>Y</code>, <code>True</code>, oppure <code>1</code> contrassegna Transito; <code>No</code>, <code>N</code>, <code>False</code>, <code>0</code>, oppure vuoto non lo contrassegna.</dd></div>
       <div><dt><strong>Start Year</strong>, <strong>End Year</strong></dt><dd>Colonna legacy. Anni di quattro cifre, usati quando le celle delle date non contengono un anno. Non può essere combinata con date esatte nella stessa riga.</dd></div>
     </dl>
     <figure class="help-shot help-shot-control"><img src="/assets/article-images/help/csv-format-reference/csv-reference.webp" alt="Esempio di importazione CSV e controlli del modello" width="1320" height="1990" loading="lazy" decoding="async" /></figure>
@@ -203,7 +203,7 @@
       <thead><tr><th>Start Date</th><th>End Date</th><th>Risultato</th></tr></thead>
       <tbody>
         <tr><td><code>2026-03-01</code></td><td><code>2026-03-05</code></td><td>Soggiorno con date esatte. Per i soggiorni in giornata si usa due volte la stessa data.</td></tr>
-        <tr><td><code>2026-03-01</code></td><td>vuoto</td><td>Soggiorno in corso senza data di fine.</td></tr>
+        <tr><td><code>2026-03-01</code></td><td>vuoto</td><td>Soggiorno in corso senza data finale.</td></tr>
         <tr><td><code>2019</code></td><td>vuoto</td><td>Soggiorno <a href="/it/help/history-and-import">Solo anno</a> per quell’anno.</td></tr>
         <tr><td><code>2018</code></td><td><code>2019</code></td><td>Un soggiorno Solo anno che copre il periodo dal 2018 al 2019.</td></tr>
         <tr><td>vuoto</td><td>vuoto</td><td>Soggiorno senza date.</td></tr>
@@ -214,8 +214,8 @@
 
     <h2 id="casi-particolari">Casi particolari</h2>
     <ul>
-      <li><strong>Stati USA.</strong> Usa una riga per Stato quando una visita negli USA ne comprende diversi. Una semplice riga <code>United States</code> è valida per il monitoraggio a livello di Paese. Un nome di Stato nella colonna Country (<code>California</code>, <code>US-CA</code>) crea anch’esso un soggiorno USA, così come Country vuoto con State valido. I codici di due lettere che sono anche codici di Paese, come <code>CA</code>, restano Paesi. Senza Pro, le righe degli Stati vengono importate come normali soggiorni negli Stati Uniti.</li>
-      <li><strong>Transito.</strong> Inserisci <code>Transit</code> in Purpose quando non sei entrato nel Paese. Transito è esclusivo: se compare con un altro scopo, viene mantenuto solo Transito.</li>
+      <li><strong>Stati USA.</strong> Usa una riga per stato quando una visita negli USA ne comprende diversi. Una semplice riga <code>United States</code> è valida per il monitoraggio a livello di paese. Un nome di stato nella colonna Country (<code>California</code>, <code>US-CA</code>) crea anch’esso un soggiorno USA, così come Country vuoto con State valido. I codici di due lettere che sono anche codici di paese, come <code>CA</code>, restano paesi. Senza Pro, le righe degli stati vengono importate come normali soggiorni negli Stati Uniti.</li>
+      <li><strong>Transito.</strong> Inserisci <code>Transit</code> in Purpose quando non sei entrato nel paese. Transito è esclusivo: se compare con un altro motivo, viene mantenuto solo Transito.</li>
       <li><strong>Separatore e virgolette.</strong> Virgola, punto e virgola e tabulazione vengono rilevati dalla riga di intestazione. Racchiudi tra virgolette i campi che contengono il separatore o un’interruzione di riga.</li>
     </ul>
 
@@ -230,24 +230,24 @@ United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></p
     <p>Ogni errore compare nell’anteprima con il numero di riga; la riga non viene importata. Il conteggio considera l’intestazione come riga 1.</p>
     <dl class="kv kv-text">
       <div><dt>Colonna Country non trovata</dt><dd>Inserisci per prima una riga di intestazione con una colonna <strong>Country</strong>.</dd></div>
-      <div><dt>Paese non valido: «&lt;valore&gt;»</dt><dd>Usa un codice ISO o un nome di Paese non ambiguo.</dd></div>
-      <div><dt>Stato non valido: «&lt;valore&gt;»</dt><dd>Usa un nome di Stato USA, un’abbreviazione o un codice <code>US-XX</code> .</dd></div>
-      <div><dt>Lo Stato «&lt;valore&gt;» è valido solo per soggiorni negli Stati Uniti</dt><dd>Svuota State oppure imposta Country su United States.</dd></div>
-      <div><dt>Stati in conflitto</dt><dd>Le celle Country e State indicano Stati diversi. Mantienine uno solo.</dd></div>
-      <div><dt>Data di inizio non valida / Data di fine non valida</dt><dd>Usa <code>yyyy-mm-dd</code> oppure un anno di quattro cifre.</dd></div>
-      <div><dt>Anno di inizio non valido / Anno di fine non valido</dt><dd>Usa un anno di quattro cifre nell’intervallo consentito.</dd></div>
-      <div><dt>Non è possibile avere una data di fine senza una data di inizio</dt><dd>Aggiungi una Start Date.</dd></div>
-      <div><dt>La data di inizio deve precedere o coincidere con la data di fine</dt><dd>Inverti o correggi le date.</dd></div>
-      <div><dt>L’anno di fine deve essere successivo o uguale all’anno di inizio</dt><dd>Correggi gli anni.</dd></div>
-      <div><dt>Non è possibile avere un anno di fine senza un anno di inizio</dt><dd>Aggiungi un anno di inizio.</dd></div>
+      <div><dt>Paese non valido: «&lt;valore&gt;»</dt><dd>Usa un codice ISO o un nome di paese non ambiguo.</dd></div>
+      <div><dt>Stato non valido: «&lt;valore&gt;»</dt><dd>Usa un nome di stato USA, un’abbreviazione o un codice <code>US-XX</code>.</dd></div>
+      <div><dt>Lo stato «&lt;valore&gt;» è valido solo per soggiorni negli Stati Uniti</dt><dd>Svuota State oppure imposta Country su United States.</dd></div>
+      <div><dt>Stati in conflitto</dt><dd>Le celle Country e State indicano stati diversi. Mantienine uno solo.</dd></div>
+      <div><dt>Data iniziale non valida / Data finale non valida</dt><dd>Usa <code>yyyy-mm-dd</code> oppure un anno di quattro cifre.</dd></div>
+      <div><dt>Anno iniziale non valido / Anno finale non valido</dt><dd>Usa un anno di quattro cifre nell’intervallo consentito.</dd></div>
+      <div><dt>Non è possibile avere una data finale senza una data iniziale</dt><dd>Aggiungi una Start Date.</dd></div>
+      <div><dt>La data iniziale deve precedere o coincidere con la data finale</dt><dd>Inverti o correggi le date.</dd></div>
+      <div><dt>L’anno finale deve essere successivo o uguale all’anno iniziale</dt><dd>Correggi gli anni.</dd></div>
+      <div><dt>Non è possibile avere un anno finale senza un anno iniziale</dt><dd>Aggiungi un anno iniziale.</dd></div>
       <div><dt>Non è possibile mescolare date esatte e campi con anni approssimativi</dt><dd>Usa le date oppure le colonne legacy degli anni.</dd></div>
-      <div><dt>Non è possibile mescolare una data di inizio esatta con una fine Solo anno, o un inizio Solo anno con una data di fine esatta</dt><dd>Usa due date oppure due anni nella stessa riga.</dd></div>
+      <div><dt>Non è possibile mescolare una data iniziale esatta con una fine Solo anno, o un inizio Solo anno con una data finale esatta</dt><dd>Usa due date oppure due anni nella stessa riga.</dd></div>
       <div><dt>Valore di transito non valido</dt><dd>Nella colonna legacy Transit usa Yes/No, True/False o 1/0.</dd></div>
     </dl>
 
     <section class="if-needed">
       <h2 id="se-un-valore-non-viene-riconosciuto">Se un valore non viene riconosciuto</h2>
-      <p>Usa un codice ISO del Paese, date ISO e un nome o codice standard di Stato USA. Un file esportato da un foglio di calcolo in un’altra lingua può avere intestazioni tradotte, che non vengono riconosciute: rinominale con le intestazioni in inglese indicate sopra.</p>
+      <p>Usa un codice ISO del paese, date ISO e un nome o codice standard di stato USA. Un file esportato da un foglio di calcolo in un’altra lingua può avere intestazioni tradotte, che non vengono riconosciute: rinominale con le intestazioni in inglese indicate sopra.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-csv-format-reference">
       <h2 id="next-csv-format-reference">Continua con</h2>

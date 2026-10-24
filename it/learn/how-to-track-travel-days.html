@@ -123,7 +123,7 @@
         "name": "Posso seguire la regola Schengen 90/180 in un foglio di calcolo?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Sì. Usa una riga per giorno di calendario, segna con 1 ogni giorno nell’area Schengen e usa SUMIFS per sommare i 180 giorni che terminano alla data controllata. Con una riga per soggiorno è facile sbagliare i bordi del periodo o le sovrapposizioni."
+          "text": "Sì. Usa una riga per giorno di calendario, segna con 1 ogni giorno nello spazio Schengen e usa SUMIFS per sommare i 180 giorni che terminano alla data controllata. Con una riga per soggiorno è facile sbagliare i bordi del periodo o le sovrapposizioni."
         }
       }
     ]
@@ -314,18 +314,18 @@
     <p>La struttura determina se può gestire un periodo mobile. Con una riga per soggiorno, ogni totale deve tagliare gli intervalli ai bordi del periodo e due righe sovrapposte contano gli stessi giorni due volte. Con <strong>una riga per giorno di calendario</strong>, basta un filtro sulle date:</p>
     <ol class="steps">
       <li>Inserisci tutte le date necessarie nella colonna A, una per riga, senza interruzioni.</li>
-      <li>Assegna una colonna a ogni luogo, per esempio B per l’area Schengen, e inserisci 1 nei giorni in cui eri presente anche solo per una parte della giornata. Un giorno di trasferimento avrà 1 in entrambi i luoghi.</li>
+      <li>Assegna una colonna a ogni luogo, per esempio B per lo spazio Schengen, e inserisci 1 nei giorni in cui eri presente anche solo per una parte della giornata. Un giorno di trasferimento avrà 1 in entrambi i luoghi.</li>
       <li>Inserisci la data da controllare in E1 e, in un’altra cella, <code>=SUMIFS(B:B, A:A, "&gt;="&amp;(E1-179), A:A, "&lt;="&amp;E1)</code>. La formula somma i giorni Schengen nei 180 giorni che terminano in E1, incluso E1. Funziona sia in Excel sia in Google Sheets.</li>
     </ol>
     <div class="example">
-      <p><strong>Controllo al 30 giugno 2026.</strong> Il periodo di 180 giorni va dal 2 gennaio al 30 giugno 2026. Eri nell’area Schengen dal 1 dicembre 2025 al 5 gennaio 2026, dal 10 al 31 marzo e dal 15 maggio al 30 giugno. Del primo soggiorno, soltanto il 2–5 gennaio rientra nel periodo: 4 giorni. Marzo aggiunge 22 giorni e maggio-giugno ne aggiungono 47. La formula restituisce <strong>73 giorni</strong>. Sommando per intero i tre soggiorni si ottiene 105, che farebbe erroneamente pensare a un superamento dei 90.</p>
+      <p><strong>Controllo al 30 giugno 2026.</strong> Il periodo di 180 giorni va dal 2 gennaio al 30 giugno 2026. Eri nello spazio Schengen dal 1 dicembre 2025 al 5 gennaio 2026, dal 10 al 31 marzo e dal 15 maggio al 30 giugno. Del primo soggiorno rientrano nel periodo soltanto i giorni dal 2 al 5 gennaio: 4 giorni. Marzo aggiunge 22 giorni e il periodo maggio–giugno ne aggiunge 47. La formula restituisce <strong>73 giorni</strong>. Sommando per intero i tre soggiorni si ottiene 105, che farebbe erroneamente pensare a un superamento dei 90.</p>
     </div>
     <p>Questo metodo conta ogni giorno segnato, inclusi arrivo e partenza. Non tutte le regole funzionano così: verifica <a href="/it/learn/what-counts-as-a-day-for-visa-purposes">che cosa conta come giorno</a> per quella che segui. La <a href="/it/learn/schengen-rolling-window-walkthrough">guida al periodo mobile Schengen</a> mostra come cambia giorno per giorno.</p>
 
     <h2 id="2-cronologia-della-posizione-del-telefono">2. Cronologia della posizione del telefono</h2>
     <p>Se era attiva, può mostrare dove eri in date che non ricordi più. Funziona soprattutto come fonte per ricostruire il passato, non come conteggio.</p>
     <ul>
-      <li><strong>Spostamenti di Google Maps</strong> conserva ora i dati sul dispositivo. A settembre 2026, la guida Google precisa che Spostamenti non è disponibile in Maps sul computer. Su iPhone puoi esportarla dalle impostazioni di Maps in un file <code>location-history.json</code> e attivare un backup crittografato. L’eliminazione automatica può essere impostata a 3, 18 o 36 mesi: la cronologia più vecchia potrebbe quindi essere già scomparsa. L’esportazione contiene visite e percorsi grezzi che devi ancora trasformare in giorni per paese.</li>
+      <li><strong>Spostamenti di Google Maps</strong> conserva ora i dati sul dispositivo. A settembre 2026, la guida Google precisa che Spostamenti non è disponibile in Maps sul computer. Su iPhone puoi esportarne i dati dalle impostazioni di Maps in un file <code>location-history.json</code> e attivare un backup crittografato. L’eliminazione automatica può essere impostata a 3, 18 o 36 mesi: la cronologia più vecchia potrebbe quindi essere già scomparsa. L’esportazione contiene visite e percorsi grezzi che devi ancora trasformare in giorni per paese.</li>
       <li><strong>Luoghi frequenti di iPhone</strong> è descritto da Apple come un registro dei luoghi visitati di recente, usato per personalizzare funzioni come Ricordi in Foto. Non è un diario di viaggio da cui ricavare conteggi e non risale a molti anni prima.</li>
     </ul>
 
@@ -377,7 +377,7 @@
     <h3>Spostamenti di Google Maps può dirmi quanti giorni ho trascorso in un paese?</h3>
     <p>Non direttamente. Mostra i luoghi visitati se era attivo e su iPhone puoi esportarlo da Maps come file location-history.json, ma non somma i giorni per paese. I dati sono ora sul telefono e l’eliminazione automatica potrebbe aver rimosso la cronologia più vecchia.</p>
     <h3>Posso seguire la regola Schengen 90/180 in un foglio di calcolo?</h3>
-    <p>Sì. Usa una riga per giorno di calendario, segna con 1 ogni giorno nell’area Schengen e usa SUMIFS per sommare i 180 giorni che terminano alla data controllata. Con una riga per soggiorno è facile sbagliare i bordi del periodo o le sovrapposizioni.</p>
+    <p>Sì. Usa una riga per giorno di calendario, segna con 1 ogni giorno nello spazio Schengen e usa SUMIFS per sommare i 180 giorni che terminano alla data controllata. Con una riga per soggiorno è facile sbagliare i bordi del periodo o le sovrapposizioni.</p>
 
     <aside class="article-trust">
       <section class="article-trust-item article-source" aria-labelledby="official-source-heading">

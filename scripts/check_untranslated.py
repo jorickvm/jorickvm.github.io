@@ -232,7 +232,7 @@ EXACT_ALLOW = HELP_EXACT_ALLOW | {"§ 10 StAG", "§ 12b StAG","Request for Inter
 LOCALE_ALLOW = {
     "it": {"Permiso de Ingreso y Permanencia PIP", "New Zealand Superannuation and Retirement Income Act", "in Canada", "in Québec.", "Alberta (AHCIP)", "Ontario (OHIP)", "Québec (RAMQ)", "Malta: Nomad Residence Permit"},
     "pt": {"Alberta (AHCIP)", "Québec (RAMQ)", "Malta: Nomad Residence Permit", ". Portugal:"},
-    "tr": {"virtusopus · Türkiye", "Ontario (OHIP)", "Alberta (AHCIP)", "Québec (RAMQ)", "Malta: Nomad Residence Permit"},
+    "tr": {"Türkiye 90/180", "virtusopus · Türkiye", "Ontario (OHIP)", "Alberta (AHCIP)", "Québec (RAMQ)", "Malta: Nomad Residence Permit"},
     "de": {". Portugal:"},
     "es": {". Indonesia:", ". Portugal:", "Malta: Nomad Residence Permit", "Ontario (OHIP)", "Alberta (AHCIP)"},
     "fr": {"Basecampoversummit · Canada", "Ontario (OHIP)", "Alberta (AHCIP)", "Québec (RAMQ)"},
