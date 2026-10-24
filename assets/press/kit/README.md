@@ -20,7 +20,7 @@
 
 - **Privacy**: No account and no ads. Trips stay on the device, with optional sync through the user's own iCloud.
 
-- **App Store**: [AtlasDays: Country Day Tracker](https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&ct=press-kit&mt=8)
+- **App Store**: [AtlasDays: Country Day Tracker](https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&ct=press&mt=8)
 
 - **Press contact**: [press@atlasdays.app](mailto:press@atlasdays.app)
 
