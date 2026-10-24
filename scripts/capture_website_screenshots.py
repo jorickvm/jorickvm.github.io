@@ -241,6 +241,7 @@ LOCALE_LAUNCH = {
     "zh-Hant": ("(zh-Hant)", "zh_TW"),
     "zh-Hans": ("(zh-Hans)", "zh_CN"),
     "pl": ("(pl)", "pl_PL"),
+    "it": ("(it)", "it_IT"),
 }
 
 
@@ -274,6 +275,7 @@ LOCALE_RESIDENCE = {
     "zh-Hant": "TW",
     "zh-Hans": "CN",
     "pl": "PL",
+    "it": "IT",
 }
 
 

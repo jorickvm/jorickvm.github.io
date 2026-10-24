@@ -63,7 +63,7 @@
         "bccad2bbae69"
       ],
       "current_navigation": "help",
-      "page_scripts": "  <script src=\"{{ASSET_PREFIX}}assets/js/help-hub.js?v=20260802a\"></script>\n<script>\n(function() {\n    var el = document.getElementById('support-email');\n    if (!el) return;\n    var user = el.getAttribute('data-email-user');\n    var domain = el.getAttribute('data-email-domain');\n    var addr = user + '@' + domain;\n    el.setAttribute('href', 'mai' + 'lto:' + addr);\n    el.setAttribute('aria-label', 'Email support at ' + addr);\n    el.setAttribute('title', addr);\n  })();\n  </script>"
+      "page_scripts": "  <script src=\"{{ASSET_PREFIX}}assets/js/help-hub.js?v=20260802a\"></script>\n<script>\n(function() {\n    var el = document.getElementById('support-email');\n    if (!el) return;\n    var user = el.getAttribute('data-email-user');\n    var domain = el.getAttribute('data-email-domain');\n    var addr = user + '@' + domain;\n    el.setAttribute('href', 'mai' + 'lto:' + addr);\n    var label = Array.from(el.childNodes).filter(function(n) { return n.nodeType === 3; }).map(function(n) { return n.textContent; }).join(' ').trim();\n    el.setAttribute('aria-label', label && label !== addr ? label + ' ' + addr : addr);\n    el.setAttribute('title', addr);\n  })();\n  </script>"
     },
     {
       "path": "learn/index.html",
@@ -276,7 +276,7 @@
       "meta": [
         {
           "name": "description",
-          "content": "Free day calculators for Schengen and Turkiye 90/180, tax residency days (183, 182, 180 and the US presence test), and residence and citizenship in the UK, Canada and the US."
+          "content": "Free day calculators for Schengen and Türkiye 90/180, tax residency days (183, 182, 180 and the US presence test), and residence and citizenship in the UK, Canada and the US."
         },
         {
           "property": "og:title",
@@ -284,7 +284,7 @@
         },
         {
           "property": "og:description",
-          "content": "Free day calculators for Schengen and Turkiye 90/180, tax residency days (183, 182, 180 and the US presence test), and residence and citizenship in the UK, Canada and the US."
+          "content": "Free day calculators for Schengen and Türkiye 90/180, tax residency days (183, 182, 180 and the US presence test), and residence and citizenship in the UK, Canada and the US."
         },
         {
           "property": "og:type",
@@ -308,7 +308,7 @@
         },
         {
           "name": "twitter:description",
-          "content": "Free day calculators for Schengen and Turkiye 90/180, tax residency days (183, 182, 180 and the US presence test), and residence and citizenship in the UK, Canada and the US."
+          "content": "Free day calculators for Schengen and Türkiye 90/180, tax residency days (183, 182, 180 and the US presence test), and residence and citizenship in the UK, Canada and the US."
         },
         {
           "name": "twitter:image",
@@ -326,7 +326,7 @@
         }
       ],
       "jsonld": [
-        "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"CollectionPage\",\n  \"name\": \"Travel Day Calculators: Schengen, 183 Days and More\",\n  \"url\": \"https://atlasdays.app/learn/calculators\",\n  \"description\": \"Free day calculators for Schengen and Turkiye 90/180, tax residency days (183, 182, 180 and the US presence test), and residence and citizenship in the UK, Canada and the US.\",\n  \"isPartOf\": {\n    \"@type\": \"WebSite\",\n    \"name\": \"AtlasDays\",\n    \"url\": \"https://atlasdays.app\"\n  },\n  \"mainEntity\": {\n    \"@type\": \"ItemList\",\n    \"itemListElement\": [\n      {\n        \"@type\": \"ListItem\",\n        \"position\": 1,\n        \"url\": \"https://atlasdays.app/learn/schengen-calculator\"\n      },\n      {\n        \"@type\": \"ListItem\",\n        \"position\": 2,\n        \"url\": \"https://atlasdays.app/learn/turkiye-90-180-rule\"\n      },\n      {\n        \"@type\": \"ListItem\",\n        \"position\": 3,\n        \"url\": \"https://atlasdays.app/learn/183-day-rule-calculator\"\n      },\n      {\n        \"@type\": \"ListItem\",\n        \"position\": 4,\n        \"url\": \"https://atlasdays.app/learn/us-substantial-presence-test\"\n      },\n      {\n        \"@type\": \"ListItem\",\n        \"position\": 5,\n        \"url\": \"https://atlasdays.app/learn/malaysia-182-day-tax-residency\"\n      },\n      {\n        \"@type\": \"ListItem\",\n        \"position\": 6,\n        \"url\": \"https://atlasdays.app/learn/thailand-180-day-tax-residency\"\n      },\n      {\n        \"@type\": \"ListItem\",\n        \"position\": 7,\n        \"url\": \"https://atlasdays.app/learn/uk-ilr-absence-calculator\"\n      },\n      {\n        \"@type\": \"ListItem\",\n        \"position\": 8,\n        \"url\": \"https://atlasdays.app/learn/uk-citizenship-absence-limits\"\n      },\n      {\n        \"@type\": \"ListItem\",\n        \"position\": 9,\n        \"url\": \"https://atlasdays.app/learn/canada-pr-residency-obligation\"\n      },\n      {\n        \"@type\": \"ListItem\",\n        \"position\": 10,\n        \"url\": \"https://atlasdays.app/learn/canada-citizenship-physical-presence\"\n      },\n      {\n        \"@type\": \"ListItem\",\n        \"position\": 11,\n        \"url\": \"https://atlasdays.app/learn/us-naturalization-physical-presence\"\n      }\n    ]\n  }\n}"
+        "{\n  \"@context\": \"https://schema.org\",\n  \"@type\": \"CollectionPage\",\n  \"name\": \"Travel Day Calculators: Schengen, 183 Days and More\",\n  \"url\": \"https://atlasdays.app/learn/calculators\",\n  \"description\": \"Free day calculators for Schengen and Türkiye 90/180, tax residency days (183, 182, 180 and the US presence test), and residence and citizenship in the UK, Canada and the US.\",\n  \"isPartOf\": {\n    \"@type\": \"WebSite\",\n    \"name\": \"AtlasDays\",\n    \"url\": \"https://atlasdays.app\"\n  },\n  \"mainEntity\": {\n    \"@type\": \"ItemList\",\n    \"itemListElement\": [\n      {\n        \"@type\": \"ListItem\",\n        \"position\": 1,\n        \"url\": \"https://atlasdays.app/learn/schengen-calculator\"\n      },\n      {\n        \"@type\": \"ListItem\",\n        \"position\": 2,\n        \"url\": \"https://atlasdays.app/learn/turkiye-90-180-rule\"\n      },\n      {\n        \"@type\": \"ListItem\",\n        \"position\": 3,\n        \"url\": \"https://atlasdays.app/learn/183-day-rule-calculator\"\n      },\n      {\n        \"@type\": \"ListItem\",\n        \"position\": 4,\n        \"url\": \"https://atlasdays.app/learn/us-substantial-presence-test\"\n      },\n      {\n        \"@type\": \"ListItem\",\n        \"position\": 5,\n        \"url\": \"https://atlasdays.app/learn/malaysia-182-day-tax-residency\"\n      },\n      {\n        \"@type\": \"ListItem\",\n        \"position\": 6,\n        \"url\": \"https://atlasdays.app/learn/thailand-180-day-tax-residency\"\n      },\n      {\n        \"@type\": \"ListItem\",\n        \"position\": 7,\n        \"url\": \"https://atlasdays.app/learn/uk-ilr-absence-calculator\"\n      },\n      {\n        \"@type\": \"ListItem\",\n        \"position\": 8,\n        \"url\": \"https://atlasdays.app/learn/uk-citizenship-absence-limits\"\n      },\n      {\n        \"@type\": \"ListItem\",\n        \"position\": 9,\n        \"url\": \"https://atlasdays.app/learn/canada-pr-residency-obligation\"\n      },\n      {\n        \"@type\": \"ListItem\",\n        \"position\": 10,\n        \"url\": \"https://atlasdays.app/learn/canada-citizenship-physical-presence\"\n      },\n      {\n        \"@type\": \"ListItem\",\n        \"position\": 11,\n        \"url\": \"https://atlasdays.app/learn/us-naturalization-physical-presence\"\n      }\n    ]\n  }\n}"
       ],
       "content": "content/hubs/learn-calculators.html",
       "style_variants": [

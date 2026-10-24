@@ -40,7 +40,7 @@ def classify(slug: str) -> str:
         return "tax-residency"
     if slug in {"italy-residence-permit-absence", "switzerland-permit-absence",
                 "qatar-residence-return-planning", "france-resident-card-absence",
-                "spain-long-term-residence-eu-absence"}:
+                "spain-long-term-residence-eu-absence", "spain-long-term-residence-absences"}:
         return "immigration-and-entry"
     tax_markers = ("tax-residency", "183-day", "180-day-tax", "substantial-presence", "statutory-residence")
     entry_markers = ("schengen", "visa", "visitor", "eta", "ilr", "citizenship", "overstay", "japan-90", "turkiye-90")
