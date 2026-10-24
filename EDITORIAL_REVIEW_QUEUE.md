@@ -89,6 +89,7 @@ These pages describe something scheduled to change. The tier cadence would revie
 | 2027-05-01 | 1 | [learn/mexico-fmm-180-day-visitor-stay.html](/learn/mexico-fmm-180-day-visitor-stay) | exact-date-required | 3 |
 | 2027-05-01 | 1 | [learn/oman-residence-visa-6-months-outside.html](/learn/oman-residence-visa-6-months-outside) | exact-date-required | 1 |
 | 2027-05-01 | 1 | [learn/schengen-calculator.html](/learn/schengen-calculator) | exact-date-required | 3 |
+| 2027-05-01 | 1 | [learn/spain-long-term-residence-absences.html](/learn/spain-long-term-residence-absences) | exact-date-required | 3 |
 | 2027-05-01 | 1 | [learn/uae-residence-visa-6-months-outside.html](/learn/uae-residence-visa-6-months-outside) | exact-date-required | 1 |
 | 2027-05-01 | 1 | [learn/uk-citizenship-absence-limits.html](/learn/uk-citizenship-absence-limits) | exact-date-required | 4 |
 | 2027-05-01 | 1 | [learn/uk-ilr-absence-calculator.html](/learn/uk-ilr-absence-calculator) | exact-date-required | 2 |
