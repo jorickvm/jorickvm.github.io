@@ -45,6 +45,15 @@ class CheckUntranslatedTests(unittest.TestCase):
     def test_brand_product_name_can_remain_unchanged(self) -> None:
         self.assertTrue(check.is_allowed("AtlasDays Pro"))
 
+    def test_official_name_allowance_stays_scoped_to_its_locale(self) -> None:
+        name = "New Zealand Superannuation and Retirement Income Act"
+        english = {"Read " + name + " for details."}
+        translated = {"Consulta il " + name + " per i dettagli."}
+        self.assertEqual(check.partial_english(english, translated, "it"), set())
+        self.assertEqual(check.partial_english(english, translated, "de"), {name})
+        untranslated = {"Consulta: Read " + name + " for details."}
+        self.assertTrue(check.partial_english(english, untranslated, "it"))
+
     def test_partial_english_run_inside_translated_text_is_found(self) -> None:
         english = {
             "Presumption is a rebuttable presumption based on days alone."

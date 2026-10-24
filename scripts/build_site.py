@@ -43,7 +43,7 @@ FOOTER_TEMPLATE = SOURCE_ROOT / "templates" / "partials" / "site-footer.html"
 REDIRECT_TEMPLATE = SOURCE_ROOT / "templates" / "redirect.html"
 CLUSTER_DATA_PATH = SOURCE_ROOT / "data" / "content-clusters.json"
 BUILD_VERSION = "20260928f"
-VARIANT_VERSIONS = {("article", "help20260802"): "20260928f", ("hub", "92c3adc0daf3"): "20260928f", ("article", "49dd6e3e3ea5"): "20261005a", ("article", "88b8694b8f2d"): "20261005a"}
+VARIANT_VERSIONS = {("article", "help20260802"): "20260928f", ("hub", "92c3adc0daf3"): "20260928f", ("article", "49dd6e3e3ea5"): "20261005a", ("article", "88b8694b8f2d"): "20261005a", ("page", "press"): "20261022b"}
 SITE_HEADER_VERSION = "20260930a"
 SITE_FOOTER_VERSION = "20261010a"
 ARTICLE_COMPONENTS_VERSION = "20261006a"
@@ -110,11 +110,12 @@ SITE_URL = "https://atlasdays.app"
 # JSON-LD, and llms.txt keep the canonical URL. One campaign (`ct=web`) for the
 # whole site until traffic is high enough to split it past Apple's threshold.
 APP_STORE_URL = "https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"
-APP_STORE_CAMPAIGN_URL = "https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8"
+APP_STORE_CAMPAIGN_URL = "https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct={campaign}&amp;mt=8"
 
 
-def with_campaign_links(rendered: str) -> str:
-    return rendered.replace(f'href="{APP_STORE_URL}"', f'href="{APP_STORE_CAMPAIGN_URL}"')
+def with_campaign_links(rendered: str, campaign: str = "web") -> str:
+    """Tag App Store links for App Store Connect; a page record can set its own "campaign"."""
+    return rendered.replace(f'href="{APP_STORE_URL}"', 'href="' + APP_STORE_CAMPAIGN_URL.format(campaign=campaign) + '"')
 
 
 def linked_paths(text: str) -> set[str]:
@@ -214,9 +215,35 @@ def render_metadata(article: dict[str, object], prefix: str = "../") -> str:
     return "\n".join(lines)
 
 
+ARTICLE_IMAGE = "https://atlasdays.app/assets/social/site-v1.png"
+PUBLISHER_LOGO = "https://atlasdays.app/assets/brand/favicon.png"
+
+
+def with_article_defaults(raw: str) -> str:
+    """Article graphs get the fields Google recommends and the registry does
+    not carry: an image, the publisher's logo, and the author's About page.
+    The author stays the AtlasDays organization (Jorick, 2026-10-17)."""
+    try:
+        graph = json.loads(raw)
+    except json.JSONDecodeError:
+        return raw
+    if not isinstance(graph, dict) or graph.get("@type") != "Article":
+        return raw
+    graph.setdefault("image", ARTICLE_IMAGE)
+    for role, extra in (
+        ("author", {"url": "https://atlasdays.app/about"}),
+        ("publisher", {"logo": {"@type": "ImageObject", "url": PUBLISHER_LOGO}}),
+    ):
+        if isinstance(graph.get(role), dict):
+            for key, value in extra.items():
+                graph[role].setdefault(key, value)
+    return json.dumps(graph, indent=2, ensure_ascii=False)
+
+
 def render_structured_data(article: dict[str, object]) -> str:
     lines: list[str] = []
     for raw in article.get("jsonld", []):
+        raw = with_article_defaults(str(raw))
         lines.append('  <script type="application/ld+json">')
         for line in str(raw).strip().splitlines():
             lines.append("  " + line)
@@ -241,7 +268,8 @@ def render_styles(article: dict[str, object], family: str = "article", prefix: s
     lines.append(
         f'  <link rel="stylesheet" href="{prefix}assets/css/site-header.css?v={SITE_HEADER_VERSION}" />'
     )
-    if family == "article":
+    # A page with "On this page" (record "toc") needs the component's styles too.
+    if family == "article" or article.get("toc"):
         lines.append(
             f'  <link rel="stylesheet" href="{prefix}assets/css/article-components.css?v={ARTICLE_COMPONENTS_VERSION}" />'
         )
@@ -310,6 +338,13 @@ TOPIC_GUIDES = {
     "citizenship": "learn/residence-permit-citizenship-absence-rules.html",
 }
 FAMILY_ORDER = ("visa", "tax", "usState", "residence", "citizenship")
+US_STATE_HUB = "learn/us-state-tax-residency.html"
+USE_CASE_CRUMBS = (
+    ("/visa-limits", "nav.visa_limits"),
+    ("/residency-thresholds", "nav.residency_thresholds"),
+    ("/citizenship", "nav.citizenship"),
+    ("/travel-history", "nav.travel_history"),
+)
 GLOBE_ICON = (
     '<span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/>'
     '<path d="M3.5 12h17M12 3.5c2.5 2.6 3.5 5.4 3.5 8.5s-1 5.9-3.5 8.5c-2.5-2.6-3.5-5.4-3.5-8.5s1-5.9 3.5-8.5Z"/></svg></span>'
@@ -456,7 +491,9 @@ def related_paths(path: str) -> list[str]:
         add("learn/schengen-rolling-window-walkthrough.html" if country == "EU" else TOPIC_GUIDES.get(str(family)))
         for candidate in country_pages:
             add(candidate)
-        add(me["pillar"])
+        # A state's parent is the state directory: the tax pillar lists
+        # countries only, and nothing else links the directory.
+        add(US_STATE_HUB if family == "usState" else me["pillar"])
         neighbours = [p for p, i in info.items() if i["family"] == family and me["region"] and i["region"] == me["region"]]
         for candidate in sorted(by_app_order(neighbours), key=lambda p: abs(info[p]["place"] - me["place"])):  # type: ignore[operator]
             add(candidate)
@@ -507,10 +544,25 @@ def title_width(title: str) -> int:
     return sum(2 if unicodedata.east_asian_width(char) in "WF" else 1 for char in title)
 
 
+def fitted_title(title: str) -> str:
+    """The English <title> as published: the same brand-only-where-it-fits
+    rule derive_record applies to translations. The registry keeps the full
+    title, so translations stay pinned to it and nothing goes stale."""
+    if title_width(title) <= TITLE_WIDTH:
+        return title
+    for suffix in (" – AtlasDays Help Center", " – AtlasDays"):
+        if title.endswith(suffix):
+            shorter = title.removesuffix(" Help Center")
+            if suffix != " – AtlasDays" and title_width(shorter) <= TITLE_WIDTH:
+                return shorter
+            return title.removesuffix(suffix)
+    return title
+
+
 def title_budget(source: dict[str, object]) -> int:
-    """How long a translated title may be: what Google shows, or the English
-    title's own length when that is longer."""
-    return max(TITLE_WIDTH, len(str(source.get("title", ""))))
+    """How long a translated title may be: what Google shows, or the published
+    English title's own length when that is longer."""
+    return max(TITLE_WIDTH, len(fitted_title(str(source.get("title", "")))))
 
 
 def render_cluster_related(
@@ -819,6 +871,11 @@ def translate_jsonld(
             ("/learn/calculators", "nav.calculators"),
         )
     }
+    # A use-case page's crumb is its short nav label, not its long headline.
+    use_case_routes = {
+        SITE_URL + localized_route(route, locale, available): key
+        for route, key in USE_CASE_CRUMBS
+    }
     graph = json.loads(raw)
     label = f"{code}/{source['path']}"
     # The English headline is the page title without its " – AtlasDays" suffix;
@@ -862,7 +919,9 @@ def translate_jsonld(
                 out[key] = walk(value)
         if out.get("@type") == "ListItem":
             item = str(out.get("item", ""))
-            if item == own_route:
+            if item in use_case_routes:
+                out["name"] = str(strings[use_case_routes[item]][code])
+            elif item == own_route:
                 out["name"] = str(overlay["headline"])
             elif item in hub_routes:
                 out["name"] = str(strings[hub_routes[item]][code])
@@ -1485,7 +1544,7 @@ def mark_calculator_callout(content: str, article: dict[str, object]) -> str:
 
 # The inline list (phones and tablets) only earns its place above a long
 # article; the sidebar on wide screens sits in empty margin, so every Learn
-# article with sections gets it.
+# and Help article with sections gets it.
 TOC_MIN_SECTIONS = 7
 TOC_SIDE_MIN_SECTIONS = 2
 
@@ -1505,7 +1564,7 @@ TOC_SCRIPT = (
 
 
 def render_toc(content: str, article: dict[str, object]) -> str:
-    """"On this page" for a Learn article.
+    """"On this page" for a Learn or Help article, or a page whose record sets "toc".
 
     Sections are the <h2>s outside the closing app box and the build's source
     panel; each gets an id from its text if it has none. Wide screens get a
@@ -1514,7 +1573,7 @@ def render_toc(content: str, article: dict[str, object]) -> str:
     a one-line <details> on phones and an open list on tablets (.toc). CSS
     shows one or the other (assets/css/article-components.css).
     """
-    if article.get("section") != "learn":
+    if article.get("section") not in {"learn", "help"} and not article.get("toc"):
         return content
     cta = content.find('<div class="cta-box"')
     heading = re.compile(r"<h2(?P<attrs>[^>]*)>(?P<text>.*?)</h2>", re.S)
@@ -1566,7 +1625,10 @@ def render_toc(content: str, article: dict[str, object]) -> str:
         "    ",
     ])
     top = content.find('<nav class="breadcrumb">')
-    top = top if top >= 0 else len(content) - len(content.lstrip())
+    if top < 0:
+        # A page fragment carries its own <main>; the sidebar goes inside it.
+        opening = re.match(r"\s*<main\b[^>]*>\s*", content)
+        top = opening.end() if opening else len(content) - len(content.lstrip())
     return content[:top] + side + content[top:]
 
 
@@ -1649,6 +1711,7 @@ def render_article(
     # falls back to English. Without this the chrome links a Japanese page to
     # /ja/about and friends, which were never built.
     available = {route_for(path) for path in translations.get(code, {})}
+    content = render_rule_cards(content, code, locale, available)
     replacements = {
         "{{HTML_LANG}}": str(locale["html_lang"]),
         "{{HTML_CLASS}}": WASH_SUBTLE,
@@ -1827,6 +1890,8 @@ def render_hub(
     available = {route_for(path) for path in translations.get(code, {})}
     content = render_learn_rules(content, code, locale, available)
     content = render_rule_cards(content, code, locale, available)
+    if hub.get("toc"):
+        content = render_toc(content, hub)
     replacements = {
         "{{HTML_LANG}}": str(locale["html_lang"]),
         # Hubs are marketing surfaces and take the full wash; the legal and
@@ -1906,7 +1971,9 @@ def main() -> int:
         return 1
 
     def with_alternates(record: dict[str, object]) -> dict[str, object]:
-        """English pages advertise their translations; untranslated ones stay bare."""
+        """English pages advertise their translations; untranslated ones stay bare.
+        The <title> is fitted here too, the one place every English page passes."""
+        record = {**record, "title": fitted_title(str(record["title"]))}
         if record.get("locale_alternates") is False:
             return record
         alternates = alternate_links(str(record["path"]), locales, translations)
@@ -1926,11 +1993,11 @@ def main() -> int:
     pending: list[tuple[Path, str]] = []
     delistings: list[tuple[str, list[str]]] = []
 
-    def queue(output_path: Path, rendered: str, *, guard: bool = False) -> None:
+    def queue(output_path: Path, rendered: str, *, guard: bool = False, campaign: str = "web") -> None:
         nonlocal selected
         selected += 1
         if output_path.suffix == ".html":
-            rendered = with_campaign_links(rendered)
+            rendered = with_campaign_links(rendered, campaign)
         current = output_path.read_text(encoding="utf-8") if output_path.exists() else ""
         if current == rendered:
             return
@@ -1982,6 +2049,7 @@ def main() -> int:
                     family=page_family,
                 ),
                 guard=True,
+                campaign=str(page.get("campaign", "web")),
             )
 
     for code, overlays in translations.items():

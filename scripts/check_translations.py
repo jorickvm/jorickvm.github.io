@@ -327,6 +327,12 @@ def main() -> int:
     for record in sources.values():
         fragment = (SOURCE_ROOT / str(record["content"])).read_text(encoding="utf-8")
         check_house_typography(str(record["path"]), visible_text(fragment), problems)
+        # The title and meta tags are reader-facing too: search results and
+        # share cards show them, and the fragment check never sees them.
+        metadata = [str(record.get("title", ""))] + [
+            str(attrs.get("content", "")) for attrs in record.get("meta", [])
+        ]
+        check_house_typography(f"{record['path']} metadata", " ".join(metadata), problems)
 
     glossaries: dict[str, dict] = {}
     if GLOSSARY_PATH.exists():

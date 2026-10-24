@@ -63,6 +63,8 @@ jobs:
           python3 scripts/check_external_sources.py --check-config
       - name: Check social cards
         run: python3 scripts/generate_social_cards.py --check
+      - name: Check press kit
+        run: python3 scripts/build_press_zip.py --check
       - name: Test audit tooling
         run: python3 -m unittest discover -s scripts/tests -p 'test_*.py'
 

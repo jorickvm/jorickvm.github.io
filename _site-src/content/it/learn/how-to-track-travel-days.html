@@ -1,0 +1,140 @@
+    <nav class="breadcrumb">
+      <a href="/it/">AtlasDays</a> / <a href="/it/learn/">Regole di viaggio</a> / <a href="/it/learn/guides">Guide</a>
+    </nav>
+
+    <h1>Come contare i giorni in ogni paese: 6 metodi a confronto</h1>
+    <p class="subtitle">Fogli di calcolo, cronologia della posizione del telefono, foto, voli, registri ufficiali e AtlasDays a confronto: punti di forza, lacune e capacità di gestire un periodo mobile di 180 giorni.</p>
+    <p class="verified">Ultima verifica: settembre 2026</p>
+
+    <div class="tldr">
+      <p><strong>In breve:</strong> il metodo affidabile è un <strong>elenco di soggiorni con date</strong>, aggiornato mentre viaggi, con un calcolo dei giorni per paese e periodo. Un foglio di calcolo può farlo con <strong>una riga per giorno</strong>. <strong>AtlasDays</strong> lo fa per te: aggiungi un soggiorno o lascia che lo aggiunga il rilevamento automatico e tutti i conteggi si aggiornano. Cronologia della posizione, foto e voli servono soprattutto a ricostruire il passato; i registri ufficiali sono le prove più forti. Nessuno di questi quattro strumenti, però, offre da solo un conteggio aggiornato.</p>
+    </div>
+
+    <h2>I sei metodi a confronto</h2>
+    <div class="cards">
+      <section class="card">
+        <h3>Foglio di calcolo</h3>
+        <dl>
+          <div><dt>Impegno</dt><dd>Alto, a ogni viaggio</dd></div>
+          <div><dt>Precisione</dt><dd>Dipende dai dati inseriti</dd></div>
+          <div><dt>Lacune principali</dt><dd>Tutto ciò che dimentichi di registrare</dd></div>
+          <div><dt>Periodi mobili</dt><dd>Sì, con una riga per giorno e una formula per il periodo</dd></div>
+        </dl>
+      </section>
+      <section class="card">
+        <h3>Cronologia della posizione del telefono</h3>
+        <dl>
+          <div><dt>Impegno</dt><dd>Basso dopo l’attivazione</dd></div>
+          <div><dt>Precisione</dt><dd>Buona per sapere dove eri</dd></div>
+          <div><dt>Lacune principali</dt><dd>Periodi di disattivazione, cronologia eliminata automaticamente, dati grezzi da elaborare</dd></div>
+          <div><dt>Periodi mobili</dt><dd>No, devi contare tu</dd></div>
+        </dl>
+      </section>
+      <section class="card">
+        <h3>Foto</h3>
+        <dl>
+          <div><dt>Impegno</dt><dd>Basso</dd></div>
+          <div><dt>Precisione</dt><dd>Buona nei giorni con foto geolocalizzate</dd></div>
+          <div><dt>Lacune principali</dt><dd>Giorni senza foto, orari esatti degli attraversamenti</dd></div>
+          <div><dt>Periodi mobili</dt><dd>No</dd></div>
+        </dl>
+      </section>
+      <section class="card">
+        <h3>Storico dei voli</h3>
+        <dl>
+          <div><dt>Impegno</dt><dd>Basso</dd></div>
+          <div><dt>Precisione</dt><dd>Esatta per i voli</dd></div>
+          <div><dt>Lacune principali</dt><dd>Attraversamenti via terra, scali, voli mai registrati</dd></div>
+          <div><dt>Periodi mobili</dt><dd>No</dd></div>
+        </dl>
+      </section>
+      <section class="card">
+        <h3>Registri ufficiali</h3>
+        <dl>
+          <div><dt>Impegno</dt><dd>Da medio ad alto</dd></div>
+          <div><dt>Precisione</dt><dd>La prova più forte per quel paese</dd></div>
+          <div><dt>Lacune principali</dt><dd>Una richiesta per paese, nessuna vista dei viaggi futuri</dd></div>
+          <div><dt>Periodi mobili</dt><dd>No</dd></div>
+        </dl>
+      </section>
+      <section class="card">
+        <h3>AtlasDays</h3>
+        <dl>
+          <div><dt>Impegno</dt><dd>Da basso a medio</dd></div>
+          <div><dt>Precisione</dt><dd>Dipende dai soggiorni che confermi</dd></div>
+          <div><dt>Lacune principali</dt><dd>I soggiorni rilevati e importati richiedono comunque un controllo</dd></div>
+          <div><dt>Periodi mobili</dt><dd>Sì, integrati</dd></div>
+        </dl>
+      </section>
+    </div>
+    <p>I metodi si completano. Di solito si ricostruisce il passato con posizione, foto, voli e registri, poi si mantiene un unico elenco aggiornato da oggi in avanti.</p>
+
+    <h2>1. Un foglio di calcolo</h2>
+    <p>Un foglio di calcolo è gratuito, trasparente e completamente sotto il tuo controllo. Il punto debole non è l’aritmetica, ma l’aggiornamento: ogni soggiorno va inserito a mano. Un soggiorno dimenticato o una data errata cambia senza avviso tutti i totali che ne dipendono.</p>
+    <p>La struttura determina se può gestire un periodo mobile. Con una riga per soggiorno, ogni totale deve tagliare gli intervalli ai bordi del periodo e due righe sovrapposte contano gli stessi giorni due volte. Con <strong>una riga per giorno di calendario</strong>, basta un filtro sulle date:</p>
+    <ol class="steps">
+      <li>Inserisci tutte le date necessarie nella colonna A, una per riga, senza interruzioni.</li>
+      <li>Assegna una colonna a ogni luogo, per esempio B per lo spazio Schengen, e inserisci 1 nei giorni in cui eri presente anche solo per una parte della giornata. Un giorno di trasferimento avrà 1 in entrambi i luoghi.</li>
+      <li>Inserisci la data da controllare in E1 e, in un’altra cella, <code>=SUMIFS(B:B, A:A, "&gt;="&amp;(E1-179), A:A, "&lt;="&amp;E1)</code>. La formula somma i giorni Schengen nei 180 giorni che terminano in E1, incluso E1. Funziona sia in Excel sia in Google Sheets.</li>
+    </ol>
+    <div class="example">
+      <p><strong>Controllo al 30 giugno 2026.</strong> Il periodo di 180 giorni va dal 2 gennaio al 30 giugno 2026. Eri nello spazio Schengen dal 1 dicembre 2025 al 5 gennaio 2026, dal 10 al 31 marzo e dal 15 maggio al 30 giugno. Del primo soggiorno rientrano nel periodo soltanto i giorni dal 2 al 5 gennaio: 4 giorni. Marzo aggiunge 22 giorni e il periodo maggio–giugno ne aggiunge 47. La formula restituisce <strong>73 giorni</strong>. Sommando per intero i tre soggiorni si ottiene 105, che farebbe erroneamente pensare a un superamento dei 90.</p>
+    </div>
+    <p>Questo metodo conta ogni giorno segnato, inclusi arrivo e partenza. Non tutte le regole funzionano così: verifica <a href="/it/learn/what-counts-as-a-day-for-visa-purposes">che cosa conta come giorno</a> per quella che segui. La <a href="/it/learn/schengen-rolling-window-walkthrough">guida al periodo mobile Schengen</a> mostra come cambia giorno per giorno.</p>
+
+    <h2>2. Cronologia della posizione del telefono</h2>
+    <p>Se era attiva, può mostrare dove eri in date che non ricordi più. Funziona soprattutto come fonte per ricostruire il passato, non come conteggio.</p>
+    <ul>
+      <li><strong>Spostamenti di Google Maps</strong> conserva ora i dati sul dispositivo. A settembre 2026, la guida Google precisa che Spostamenti non è disponibile in Maps sul computer. Su iPhone puoi esportarne i dati dalle impostazioni di Maps in un file <code>location-history.json</code> e attivare un backup crittografato. L’eliminazione automatica può essere impostata a 3, 18 o 36 mesi: la cronologia più vecchia potrebbe quindi essere già scomparsa. L’esportazione contiene visite e percorsi grezzi che devi ancora trasformare in giorni per paese.</li>
+      <li><strong>Luoghi frequenti di iPhone</strong> è descritto da Apple come un registro dei luoghi visitati di recente, usato per personalizzare funzioni come Ricordi in Foto. Non è un diario di viaggio da cui ricavare conteggi e non risale a molti anni prima.</li>
+    </ul>
+
+    <h2>3. Foto</h2>
+    <p>Le foto scattate con la posizione attiva conservano data, ora e coordinate: una libreria può diventare un diario sorprendentemente utile dei luoghi visitati. Restano lacune nei giorni senza foto, nelle immagini senza posizione e nell’istante esatto di attraversamento della frontiera, raramente documentato. AtlasDays può analizzare la libreria sul dispositivo, raggruppare i luoghi in soggiorni suggeriti e non salvare nulla prima del tuo controllo. Vedi <a href="/it/help/photo-import">Centro assistenza: Importazione da Foto</a>.</p>
+
+    <h2>4. Storico dei voli</h2>
+    <p>Il registro di un’app o di una compagnia aerea è un elenco datato degli attraversamenti in volo: quasi uno scheletro degli spostamenti. Non include treni, viaggi in auto e traghetti; una coincidenza non è un soggiorno. <a href="/it/learn/flighty-flight-history-day-count">Come trasformare lo storico Flighty in un conteggio dei giorni</a> spiega il metodo e come trattare gli scali.</p>
+
+    <h2>5. Registri ufficiali</h2>
+    <p>Alcuni governi permettono di richiedere o consultare i propri ingressi e uscite. Per il paese che li conserva hanno il maggior peso e sono il riferimento giusto per una data contestata. Si ottengono però un paese alla volta e riguardano solo il passato: non dicono se il viaggio del mese prossimo rientra in un limite. <a href="/it/learn/get-official-entry-exit-records">Come ottenere i registri ufficiali di ingresso e uscita</a> indica a chi rivolgersi.</p>
+
+    <h2>6. AtlasDays</h2>
+    <p>AtlasDays conserva l’elenco dei soggiorni e calcola i periodi per quelli già fatti e quelli in programma. Conta periodi mobili e anni solari, distingue date incerte ed esatte, mostra i soggiorni importati prima di salvarli ed esporta il registro quando serve per una domanda. Ecco come gestisce ogni passaggio:</p>
+    <ul>
+      <li><strong>Inserimento.</strong> Aggiungi soggiorni a mano, importali da foto, CSV o Flighty oppure attiva Rilevamento soggiorni: aggiunge un soggiorno quando iPhone rileva l’ingresso in un altro paese. Puoi annullare, modificare o eliminare un soggiorno rilevato. Le importazioni non salvano nulla finché non approvi.</li>
+      <li><strong>Qualità delle date.</strong> Un soggiorno può avere date esatte oppure Solo anno, se conosci l’anno ma non le date. I soggiorni Solo anno segnano il paese come visitato, ma non entrano nei conteggi dei giorni o nei tracker.</li>
+      <li><strong>Transito.</strong> Una coincidenza senza ingresso viene salvata con motivo Transito. Resta nello storico, ma aggiunge zero giorni e non segna il paese come visitato.</li>
+      <li><strong>Errori.</strong> I soggiorni sovrapposti vengono segnalati e si possono risolvere dal soggiorno stesso. Le importazioni segnalano duplicati e sovrapposizioni prima di salvare. Gestisci importazioni in Impostazioni rimuove un’intera importazione se qualcosa è andato storto.</li>
+      <li><strong>Conteggio.</strong> I tracker ricalcolano dall’elenco: correggere una data aggiorna tutti i totali che ne dipendono. Un tracker è gratuito; per averne altri serve AtlasDays Pro.</li>
+      <li><strong>Esportazione.</strong> Un foglio di calcolo o un PDF Report di presenza per paese, con AtlasDays Pro.</li>
+      <li><strong>Privacy.</strong> Nessun account. I soggiorni restano sul dispositivo, a meno che tu non attivi la sincronizzazione iCloud, che li conserva nel tuo account iCloud.</li>
+    </ul>
+
+    <h2>Che cosa rende affidabile un metodo</h2>
+    <ul>
+      <li><strong>I soggiorni con date sono il registro.</strong> Dai soggiorni datati puoi sempre ricalcolare i totali per paese. Un totale senza soggiorni a supporto non può essere verificato o corretto.</li>
+      <li><strong>Segnala le date incerte.</strong> Una data esatta ipotizzata sembra affidabile quanto una vera. Tieni «in un momento del 2019» distinto dalle date che puoi documentare.</li>
+      <li><strong>Registra il transito come tale.</strong> Se non hai annotato che uno scalo era senza ingresso, non puoi applicare in seguito una regola che lo tratta diversamente.</li>
+      <li><strong>Un’unica fonte di riferimento.</strong> Un foglio per il fisco, un elenco per i visti e un’esportazione per una domanda finiranno prima o poi per contraddirsi. Mantieni un solo elenco e contalo in più modi.</li>
+    </ul>
+
+    <h2>Oltre il conteggio dei giorni</h2>
+    <p>Un registro accurato risponde a «quanti giorni», ma è ogni regola a decidere quali contano. La <a href="/it/learn/schengen-90-180-rule">regola Schengen 90/180</a>, la <a href="/it/learn/183-day-tax-residency-rule">regola dei 183 giorni per la residenza fiscale</a> e le regole di assenza dei permessi contano gli stessi soggiorni in modi diversi. Per una domanda, <a href="/it/learn/travel-history-for-visa-applications">preparare lo storico dei viaggi per un visto</a> spiega che cosa si aspetta chi esamina la pratica.</p>
+
+    <div class="cta-box">
+      <span class="cta-logo">
+        <img class="logo-dark" src="/assets/brand/logo_dark.png?v=20260325a" alt="Logo di AtlasDays" width="52" height="52" />
+        <img class="logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="Logo di AtlasDays" width="52" height="52" />
+      </span>
+      <h2>AtlasDays conta automaticamente i giorni in ogni paese</h2>
+      <p>Aggiungi soggiorni a mano, importali da Foto o Flighty o lascia che il rilevamento automatico li aggiunga ai cambi di paese. AtlasDays conserva un unico registro datato, in privato sul tuo iPhone, e lo confronta con limiti come la <strong>regola Schengen 90/180 per soggiorni brevi</strong>.</p>
+      <a class="cta-btn" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> Scarica AtlasDays</a>
+    </div>
+
+    <h2>Domande frequenti</h2>
+    <h3>Qual è il modo più semplice per contare i giorni in ogni paese?</h3>
+    <p>Mantieni un unico elenco con date di ingresso e uscita e affidane il conteggio a uno strumento. AtlasDays richiede meno aggiornamenti perché conta ogni periodo quando aggiungi soggiorni; un foglio di calcolo funziona con una riga per giorno e un aggiornamento dopo ogni viaggio. Ricostruisci gli anni passati con foto, voli, posizione e registri ufficiali.</p>
+    <h3>Spostamenti di Google Maps può dirmi quanti giorni ho trascorso in un paese?</h3>
+    <p>Non direttamente. Mostra i luoghi visitati se era attivo e su iPhone puoi esportarlo da Maps come file location-history.json, ma non somma i giorni per paese. I dati sono ora sul telefono e l’eliminazione automatica potrebbe aver rimosso la cronologia più vecchia.</p>
+    <h3>Posso seguire la regola Schengen 90/180 in un foglio di calcolo?</h3>
+    <p>Sì. Usa una riga per giorno di calendario, segna con 1 ogni giorno nello spazio Schengen e usa SUMIFS per sommare i 180 giorni che terminano alla data controllata. Con una riga per soggiorno è facile sbagliare i bordi del periodo o le sovrapposizioni.</p>

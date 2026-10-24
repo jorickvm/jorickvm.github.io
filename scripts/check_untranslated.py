@@ -225,12 +225,14 @@ def visible_text(markup: str) -> set[str]:
 # Help: Flighty's own menu path, which Flighty shows in English, and the
 # languages page's list of interface languages, each named in itself.
 HELP_EXACT_ALLOW = {"Settings → Account Data",
-                    "English US English UK Nederlands Espa ol Deutsch Fran ais T rk e Portugu s Brasil"}
+                    "English US English UK Nederlands Espa ol Deutsch Fran ais T rk e Portugu s Brasil",
+                    "English US English UK Nederlands Espa ol Deutsch Fran ais T rk e Portugu s Brasil Polski"}
 EXACT_ALLOW = HELP_EXACT_ALLOW | {"§ 10 StAG", "§ 12b StAG","Request for International Movement Records", "travel movements requests", "Entry/Exit System", "Boletín Oficial del Estado", "8 U.S.C. 1187(a)(7)", "8 U.S.C. 1202(g)", "IMM 5257 Schedule 1", "How to Calculate Physical Presence (CIT 0407)", "How to Calculate Physical Presence CIT", "deeming rule","Destination Thailand Visa (DTV)", "Electronic Travel Authorisation (ETA)", "Long Residence UK Ancestry Hong Kong BN O", "UK Immigration Rules Part Suitability SUI"}
 
 LOCALE_ALLOW = {
+    "it": {"Permiso de Ingreso y Permanencia PIP", "New Zealand Superannuation and Retirement Income Act", "in Canada", "in Québec.", "Alberta (AHCIP)", "Ontario (OHIP)", "Québec (RAMQ)", "Malta: Nomad Residence Permit"},
     "pt": {"Alberta (AHCIP)", "Québec (RAMQ)", "Malta: Nomad Residence Permit", ". Portugal:"},
-    "tr": {"virtusopus · Türkiye", "Ontario (OHIP)", "Alberta (AHCIP)", "Québec (RAMQ)", "Malta: Nomad Residence Permit"},
+    "tr": {"Türkiye 90/180", "virtusopus · Türkiye", "Ontario (OHIP)", "Alberta (AHCIP)", "Québec (RAMQ)", "Malta: Nomad Residence Permit"},
     "de": {". Portugal:"},
     "es": {". Indonesia:", ". Portugal:", "Malta: Nomad Residence Permit", "Ontario (OHIP)", "Alberta (AHCIP)"},
     "fr": {"Basecampoversummit · Canada", "Ontario (OHIP)", "Alberta (AHCIP)", "Québec (RAMQ)"},
@@ -258,7 +260,7 @@ def is_allowed(text: str, code: str = "") -> bool:
     return not re.search(r"[A-Za-z]", text)
 
 
-def partial_english(english_runs: set[str], translated_runs: set[str]) -> set[str]:
+def partial_english(english_runs: set[str], translated_runs: set[str], code: str = "") -> set[str]:
     """Long English word runs embedded inside otherwise translated nodes."""
     translated_index: dict[str, list[list[str]]] = {}
     for text in translated_runs:
@@ -289,7 +291,7 @@ def partial_english(english_runs: set[str], translated_runs: set[str]) -> set[st
                     if length >= PARTIAL_RUN_WORDS and length > len(best):
                         best = english_words[start : start + length]
         phrase = " ".join(best)
-        if phrase and not is_allowed(phrase):
+        if phrase and not is_allowed(phrase, code):
             found.add(phrase)
     return found
 
@@ -340,7 +342,7 @@ def main() -> int:
             shared = {text for text in english_runs & translated_runs if len(text.split()) >= 2}
             for text in sorted(t for t in shared if not is_allowed(t, code)):
                 problems.append(f"{code}/{overlay['source']}: still English: {text[:90]!r}")
-            for text in sorted(partial_english(english_runs, translated_runs)):
+            for text in sorted(partial_english(english_runs, translated_runs, code)):
                 if text not in shared:
                     problems.append(
                         f"{code}/{overlay['source']}: English run inside translated text: "

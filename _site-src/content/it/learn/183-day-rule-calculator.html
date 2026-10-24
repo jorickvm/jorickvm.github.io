@@ -1,0 +1,141 @@
+    <nav class="breadcrumb">
+      <a href="/it/">AtlasDays</a> / <a href="/it/learn/">Regole di viaggio</a> / <a href="/it/learn/calculators">Calcolatori</a>
+    </nav>
+    <h1>Calcolatore dei 183 giorni: conta i giorni in qualsiasi paese</h1>
+    <p class="subtitle">Scegli un paese e un anno, poi tocca il giorno di arrivo e quello di partenza. Il tracker mostra quanto sei vicino a 183 giorni, compresi i soggiorni in programma.</p>
+    <p class="verified">Ultima verifica: ottobre 2026</p>
+
+    <h2>Conta i tuoi giorni</h2>
+    <div class="daycal" id="days-183" data-day-calendar="days183">
+      <script type="application/json" data-cal-strings>
+{
+  "days": "Giorni",
+  "hintStart": "Tocca un giorno per aggiungere un soggiorno.",
+  "hintEnd": "Tocca l’altro estremo del soggiorno.",
+  "hintSelected": "Trascina un estremo del soggiorno per modificare le date oppure eliminalo qui sotto.",
+  "inTrip": "in un paese",
+  "pending": "inizio di un nuovo soggiorno",
+  "empty": "Nessun soggiorno.",
+  "deleteTrip": "Elimina soggiorno",
+  "country": "Paese",
+  "goal": "Obiettivo",
+  "goalStay": "Resta sotto il limite",
+  "goalReach": "Raggiungi l’obiettivo",
+  "captionStay": "Evita la residenza fiscale.",
+  "captionReach": "Diventa residente fiscale.",
+  "window": "Finestra",
+  "addCountry": "Aggiungi paese",
+  "noMatch": "Nessun paese corrispondente",
+  "periodCalendar": "Anno solare",
+  "periodTax": "Anno fiscale",
+  "periodRolling": "Ultimi 12 mesi",
+  "year": "Anno",
+  "starts": "Inizia",
+  "checkOn": "Conta fino al",
+  "checkOnCaption": "I tuoi giorni nei 12 mesi fino a questa data. Per un viaggio in programma, scegli l’ultimo giorno.",
+  "tripDays": {
+    "one": "{n} giorno",
+    "other": "{n} giorni"
+  },
+  "remaining": {
+    "one": "Ancora {n} giorno",
+    "other": "Ancora {n} giorni"
+  },
+  "atLimit": "Al limite",
+  "needed": {
+    "one": "Manca {n} giorno",
+    "other": "Mancano {n} giorni"
+  },
+  "reachedTarget": "Obiettivo raggiunto",
+  "overBy": {
+    "one": "Limite superato di {n} giorno",
+    "other": "Limite superato di {n} giorni"
+  },
+  "lineNoCountry": {
+    "one": "{n} giorno senza paese",
+    "other": "{n} giorni senza paese"
+  }
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>L</span><span>M</span><span>M</span><span>G</span><span>V</span><span>S</span><span>D</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>Cronologia</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Segui i giorni in AtlasDays</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="days-183-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="days-183-import-title">Segui i giorni in AtlasDays</p>
+            <p class="cal-dialog-sub">Continua a contare mentre viaggi. App gratuita per iPhone e iPad.</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>Verifica di avere AtlasDays sul tuo iPhone o iPad</strong><span>Gratis su App Store.</span></li>
+            <li><strong>Scansiona il codice QR per caricare tutti i soggiorni in AtlasDays</strong><span>Controllali, poi tocca Importa.</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>Scarica AtlasDays</strong><span>Gratis su App Store. Ce l’hai già? Vai al punto 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+          <li><strong>Apri i soggiorni nell’app</strong><span>Controllali, poi tocca Importa. Prima non viene salvato nulla.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Apri in AtlasDays</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>Scarica AtlasDays</strong><span>Gratis su App Store per iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+          <li><strong>Importa i soggiorni con un file</strong><span>Sono troppi soggiorni per un link. Scarica il file e aprilo sul tuo iPhone con AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Scarica file</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Scarica i soggiorni come file CSV</button><span data-cal-downloaded hidden>Apri il file sul tuo iPhone con AtlasDays.</span></p>
+          <button type="button" data-cal-close>Chiudi</button>
+        </div>
+      </dialog>
+    </div>
+    <p class="cal-private">Tutto resta nel browser: nessun dato inserito viene inviato o salvato.</p>
+
+    <h2>Come conta il calcolatore</h2>
+    <ul>
+      <li><strong>Qualsiasi parte di giornata conta.</strong> Arrivo e partenza sono entrambi giorni nel paese: dal 1 al 10 giugno sono dieci giorni. Un giorno di viaggio tra due paesi conta per entrambi.</li>
+      <li><strong>Un paese, un anno.</strong> Scegli il paese nel tracker e la finestra sopra: anno solare, anno fiscale dal giorno in cui inizia (6 aprile nel Regno Unito, 1 luglio in Australia, 1 aprile in Nuova Zelanda e India) oppure ultimi 12 mesi. Contano solo i giorni nella finestra.</li>
+      <li><strong>Resta sotto il limite o raggiungi 183.</strong> La maggior parte delle persone vuole restare sotto 183 giorni. Se ti servono 183 giorni per diventare residente, imposta l’obiettivo su Raggiungi l’obiettivo: la barra diventa verde quando arrivi.</li>
+      <li><strong>Contano anche i soggiorni in programma.</strong> Segna un viaggio non ancora prenotato per vedere se ti porterebbe oltre 183.</li>
+    </ul>
+
+    <h2>Quando il tuo paese conta diversamente</h2>
+    <p>La maggior parte dei paesi conta i giorni come questo calcolatore. Se il tuo ha una regola propria, la guida la spiega e AtlasDays ha un tracker pronto che la conta esattamente:</p>
+    <ul>
+      <li><strong>Mezzanotti.</strong> Il Regno Unito conta i giorni in cui sei presente a mezzanotte. Vedi lo <a href="/it/learn/uk-statutory-residence-test">Statutory Residence Test britannico</a>; il tracker britannico di AtlasDays conta le mezzanotti.</li>
+      <li><strong>Più di 183.</strong> La Spagna richiede più di 183 giorni, non 183. Vedi <a href="/it/learn/spain-183-day-tax-residency">Spagna</a>; ogni tracker AtlasDays usa la soglia esatta del paese.</li>
+      <li><strong>Tre anni insieme.</strong> Il Substantial Presence Test USA conta anche parte dei due anni precedenti. Vedi il <a href="/it/learn/us-substantial-presence-test">Substantial Presence Test</a>; AtlasDays ha un tracker che pondera i giorni.</li>
+    </ul>
+    <p>I giorni non sono l’unico criterio: casa o famiglia possono renderti residente con meno. <a href="/it/learn/183-day-tax-residency-rule">La regola dei 183 giorni</a> spiega questi legami e <a href="/it/learn/tax-residency-by-country">Residenza fiscale per paese: regole dei 183 giorni a confronto</a> raccoglie tutte le guide.</p>
+
+    <div class="cta-box">
+      <span class="cta-logo">
+        <img class="logo-dark" src="/assets/brand/logo_dark.png?v=20260325a" alt="Logo di AtlasDays" width="52" height="52" />
+        <img class="logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="Logo di AtlasDays" width="52" height="52" />
+      </span>
+      <h2>Continua a contare mentre viaggi</h2>
+      <p>Il calcolatore verifica i giorni che ricordi oggi. AtlasDays continua a contare i giorni in ogni paese mentre viaggi, in modo privato sul tuo iPhone, e avvisa prima che un viaggio superi un limite.</p>
+      <a class="cta-btn" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> Scarica AtlasDays</a>
+    </div>
+
+    <h2>Domande frequenti</h2>
+    <h3>Il giorno di arrivo conta come giorno nel paese?</h3>
+    <p>In questo calcolatore sì: qualsiasi parte di giornata conta, quindi arrivo e partenza sono entrambi giorni in quel paese. Molti paesi contano così. Il Regno Unito conta invece le mezzanotti; la <a href="/it/learn/uk-statutory-residence-test">guida britannica</a> spiega come.</p>
+    <h3>Trascorrere 183 giorni in un paese mi rende residente fiscale?</h3>
+    <p>Spesso, ma non sempre. Molti paesi considerano 183 giorni nell’anno fiscale come residenza; alcuni usano soglie o periodi diversi e altri legami, come casa o famiglia, possono renderti residente con meno giorni. Il calcolatore mostra il conteggio, non la decisione.</p>
+    <h3>I miei dati vengono salvati?</h3>
+    <p>No. Il calcolatore funziona nel browser e non invia, registra o salva le date inserite. Chiudere o ricaricare la pagina le cancella. Per conservarle, tocca Segui i giorni in AtlasDays.</p>

@@ -1,0 +1,105 @@
+    <nav class="breadcrumb">
+      <a href="/it/">AtlasDays</a> / <a href="/it/learn/">Regole di viaggio</a> / <a href="/it/learn/guides">Guide</a>
+    </nav>
+
+    <h1>Modello per lo storico dei viaggi nelle domande di visto (CSV gratuito)</h1>
+    <p class="subtitle">Un foglio di calcolo vuoto gratuito per lo storico dei viaggi, con una riga per soggiorno e date ISO. Si apre in Excel, Numbers e Google Sheets, si adatta ai moduli DS-160, britannici e canadesi e si importa direttamente in AtlasDays.</p>
+    <p class="verified">Ultima verifica: settembre 2026</p>
+
+    <div class="tldr">
+      <p><strong>In breve:</strong> scarica il modello, aggiungi <strong>una riga per soggiorno in un paese</strong> e scrivi ogni data come <strong>YYYY-MM-DD</strong>. Le colonne sono Country, State, Start Date, End Date, Purpose e Notes, le stesse importate da AtlasDays. Quando un modulo chiede lo storico, filtra le righe sul periodo richiesto e copiale. Importare lo stesso file in AtlasDays è gratis e l’app conta poi i giorni per paese.</p>
+    </div>
+
+    <p class="download"><a href="/assets/downloads/travel-history-template.csv" download><strong>Scarica il modello per lo storico dei viaggi (CSV)</strong></a></p>
+
+    <div class="factbox">
+      <dl>
+        <div><dt>File</dt><dd>travel-history-template.csv, una riga d’intestazione senza dati, pronta da compilare</dd></div>
+        <div><dt>Colonne</dt><dd>Country, State, Start Date, End Date, Purpose, Notes</dd></div>
+        <div><dt>Date</dt><dd>YYYY-MM-DD oppure un anno a quattro cifre se è tutto ciò che sai</dd></div>
+        <div><dt>Si apre in</dt><dd>Excel, Numbers, Google Sheets e altre app per fogli di calcolo</dd></div>
+        <div><dt>Si importa in</dt><dd>AtlasDays, gratis, da Impostazioni → Importa → File CSV</dd></div>
+      </dl>
+    </div>
+
+    <h2>Cosa inserire in ogni colonna</h2>
+    <dl class="kv kv-text">
+      <div><dt>Country</dt><dd>Il nome inglese del paese (Portugal, United Kingdom) o il codice di due lettere (PT, GB). Obbligatorio in ogni riga.</dd></div>
+      <div><dt>State</dt><dd>Solo soggiorni USA: nome dello stato, codice postale (NY) o ISO (US-NY). Lascia vuoto per ogni altro paese.</dd></div>
+      <div><dt>Start Date</dt><dd>Il giorno di arrivo in quel paese.</dd></div>
+      <div><dt>End Date</dt><dd>Il giorno di partenza. Per una visita in giornata ripeti la data iniziale. Lascia vuoto solo se sei ancora lì.</dd></div>
+      <div><dt>Purpose</dt><dd>Personal, Business, Study o Transit. Usa Transit solo se sei rimasto nell’area transiti senza entrare nel paese.</dd></div>
+      <div><dt>Notes</dt><dd>Tutto ciò che un modulo può richiedere: città del soggiorno (il visto canadese per visitatori la chiede), formulazione del motivo richiesta dal modulo («visita a mia sorella»), fonte delle date (timbro, carta d’imbarco, email di prenotazione) e date stimate.</dd></div>
+    </dl>
+    <p>Il file non ha righe di esempio apposta: quelle dimenticate verrebbero importate come soggiorni reali. Ecco un esempio di file compilato.</p>
+    <p class="data-table-hint">Scorri l’esempio di lato per vedere ogni colonna.</p>
+    <div class="data-table data-table-code">
+      <table>
+        <thead>
+          <tr><th>Country</th><th>State</th><th>Start Date</th><th>End Date</th><th>Purpose</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Portugal</td><td></td><td>2025-03-03</td><td>2025-03-10</td><td>Personal</td><td>Lisbona, famiglia. Timbro</td></tr>
+          <tr><td>Spain</td><td></td><td>2025-03-10</td><td>2025-03-16</td><td>Personal</td><td>Madrid, in treno. Nessun timbro</td></tr>
+          <tr><td>United Arab Emirates</td><td></td><td>2025-01-12</td><td>2025-01-12</td><td>Transit</td><td>Dubai, solo area transiti</td></tr>
+          <tr><td>United States</td><td>NY</td><td>2024-11-04</td><td>2024-11-08</td><td>Business</td><td>New York, conferenza</td></tr>
+          <tr><td>Japan</td><td></td><td>2019</td><td></td><td>Personal</td><td>Osaka, mese sconosciuto</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Date, comprese quelle incerte</h2>
+    <p>Scrivi ogni data esatta come YYYY-MM-DD. Si ordina correttamente, non si confonde tra giorno-mese e mese-giorno ed è il formato importato da AtlasDays. Mantieni la stessa precisione per le due date della riga: entrambe esatte o solo anno.</p>
+    <ul>
+      <li><strong>Conosci la data.</strong> Inseriscila e indica in Notes da dove proviene.</li>
+      <li><strong>Puoi restringere l’intervallo.</strong> Inserisci la migliore stima documentata come data normale e scrivi «stimata» in Notes con la motivazione («partenza il giorno dopo il matrimonio, 14 o 15»). Non inserire una tilde o «circa» nella cella della data: non sarebbe più una data e AtlasDays rifiuterebbe la riga all’importazione.</li>
+      <li><strong>Conosci solo l’anno.</strong> Inserisci l’anno a quattro cifre in Start Date e lascia End Date vuoto, oppure inserisci un anno successivo se il soggiorno è proseguito. È onesto, ma la maggior parte dei moduli richiede almeno un mese: considera queste righe un elenco di lacune da colmare.</li>
+    </ul>
+    <p>Un’insidia dei fogli di calcolo: Excel e altre app spesso convertono 2025-03-03 in una data e possono salvarla nel formato regionale, come 03/03/2025. Prima di importare il file, verifica che le colonne siano ancora YYYY-MM-DD; altrimenti imposta quel formato o il testo semplice.</p>
+
+    <h2>Una riga per soggiorno, non per viaggio</h2>
+    <p>Una riga copre un soggiorno continuativo in un paese. Un viaggio in due paesi richiede due righe e il giorno del passaggio compare in entrambe, come il 10 marzo nell’esempio: quel giorno eri in Portogallo e Spagna. La struttura funziona per ogni modulo perché unire righe è facile, dividerle a posteriori no.</p>
+    <div class="example">
+      <p><strong>Un viaggio, tre moduli.</strong> Vivi nel Regno Unito con un visto, voli a Lisbona il 3 marzo 2025, prendi il treno per Madrid il 10 marzo e torni in aereo il 16 marzo. Il modello ha due righe: Portugal dal 2025-03-03 al 2025-03-10 e Spain dal 2025-03-10 al 2025-03-16.</p>
+      <p>Per un <strong>visto canadese per visitatori</strong>, Schedule 1 vuole ogni paese con anno e mese: entrambe le righe diventano da 2025-03 a 2025-03, con Lisbona e Madrid da Notes come località. Per la <strong>naturalizzazione britannica</strong>, il modulo AN vuole l’assenza dal Regno Unito: le righe diventano una, partenza il 3 marzo e rientro il 16 marzo, cioè <strong>12 giorni interi</strong> di assenza (4–15 marzo). Per un <strong>visto Schengen</strong>, il modulo non chiede alcun elenco di viaggi.</p>
+    </div>
+    <p>Quando unisci righe in un’assenza, controlla i voli ai due estremi. Una partenza notturna colloca l’uscita dal paese di residenza un giorno prima del primo arrivo nel file.</p>
+
+    <h2>Copiare i dati in un modulo</h2>
+    <ol class="steps">
+      <li>Controlla il periodo richiesto nella <a href="/it/learn/travel-history-for-visa-applications">tabella dei periodi</a> (5 anni per DS-160, fino a 10 per visti britannici e residenza permanente canadese, intero periodo richiesto per cittadinanza).</li>
+      <li>Ordina per Start Date e nascondi le righe terminate prima della finestra.</li>
+      <li>Chiarisci, per quanto consentono le prove, ogni riga con data stimata o solo anno.</li>
+      <li>Adatta le righe al modulo: paese per paese per i visti, una riga per assenza per la cittadinanza, solo anno e mese dove bastano.</li>
+      <li>Salva una copia di ciò che hai inviato, così la domanda successiva parte dalle stesse date.</li>
+    </ol>
+
+    <h2>Importarlo in AtlasDays, gratis</h2>
+    <p>Il modello usa le colonne d’importazione di AtlasDays: il file compilato è quello da importare. Apri <strong>Impostazioni → Importa → File CSV</strong> e selezionalo. AtlasDays mostra un’anteprima con righe illeggibili, possibili duplicati e sovrapposizioni e non salva nulla finché non confermi. L’importazione è gratis; poi l’app conta i giorni per paese e rispetto ai limiti di visto o residenza mentre aggiungi soggiorni.</p>
+    <ul>
+      <li><strong>Purpose deve essere una delle quattro parole.</strong> AtlasDays legge Personal, Business, Study e Transit (e interpreta Tourism come Personal). Altro viene ignorato e il soggiorno entra senza motivo: conserva quindi la formulazione del modulo in Notes.</li>
+      <li><strong>State è solo per gli Stati Uniti.</strong> Un valore State in una riga non USA viene segnalato come errore.</li>
+      <li><strong>Le righe con solo anno si conservano ma non si contano.</strong> Segnano il paese come visitato, ma non aggiungono giorni finché non inserisci date esatte.</li>
+    </ul>
+    <p>Non hai ancora un file? La schermata di importazione offre anche un prompt <strong>Crea CSV con l’IA</strong> che trasforma note o itinerario in queste colonne con un assistente IA. Ogni contenuto incollato in uno strumento IA è gestito secondo la sua informativa sulla privacy.</p>
+
+    <h2>Oltre il modello</h2>
+    <p>Un modello organizza un registro, non lo rende completo. Dieci righe ordinate per cinque anni di viaggi indicano di solito che mancano i viaggi brevi e la formulazione del modulo prevale sempre sulla struttura. Per sapere cosa chiedono, vedi <a href="/it/learn/travel-history-for-visa-applications">lo storico dei viaggi per domande di visto</a>. Per colmare lacune da timbri, email e foto, vedi <a href="/it/learn/rebuild-travel-history-from-passport-stamps-emails-photos">ricostruire lo storico dei viaggi</a>; per i dati governativi sui tuoi attraversamenti, <a href="/it/learn/get-official-entry-exit-records">ottenere registrazioni ufficiali di ingresso e uscita</a>.</p>
+
+    <div class="cta-box">
+      <span class="cta-logo">
+        <img class="logo-dark" src="/assets/brand/logo_dark.png?v=20260325a" alt="Logo di AtlasDays" width="52" height="52" />
+        <img class="logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="Logo di AtlasDays" width="52" height="52" />
+      </span>
+      <h2>AtlasDays trasforma il foglio in un conteggio aggiornato dei giorni</h2>
+      <p>Importa gratis il modello e AtlasDays conta i giorni in ogni paese, in modo privato sul tuo iPhone. Continua ad aggiungere soggiorni durante i viaggi: lo storico sarà già aggiornato quando lo chiederà il prossimo modulo.</p>
+      <a class="cta-btn" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> Scarica AtlasDays</a>
+    </div>
+
+    <h2>Domande frequenti</h2>
+    <h3>Esiste un modello ufficiale per lo storico dei viaggi?</h3>
+    <p>Non ne esiste uno universale. Alcuni moduli hanno tabelle proprie, come IMM 5257 Schedule 1 e IMM 5562 canadesi o la parte 8 dell’N-400 USA: sono quelle da inviare. Questo modello è il registro di lavoro da cui copi in ciascun modulo.</p>
+    <h3>Quale formato di data usare nello storico dei viaggi?</h3>
+    <p>Usa YYYY-MM-DD, per esempio 2025-03-03, nel registro. Evita la confusione giorno-mese e mese-giorno, si ordina correttamente e si converte nel formato richiesto, come mm/dd/yyyy nell’N-400 o anno e mese in Schedule 1 canadese.</p>
+    <h3>Posso importare questo modello in AtlasDays?</h3>
+    <p>Sì. Le intestazioni corrispondono all’importazione CSV di AtlasDays: compila il file e selezionalo in Impostazioni → Importa → File CSV. L’importazione è gratis.</p>
