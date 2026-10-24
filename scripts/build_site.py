@@ -1711,6 +1711,7 @@ def render_article(
     # falls back to English. Without this the chrome links a Japanese page to
     # /ja/about and friends, which were never built.
     available = {route_for(path) for path in translations.get(code, {})}
+    content = render_rule_cards(content, code, locale, available)
     replacements = {
         "{{HTML_LANG}}": str(locale["html_lang"]),
         "{{HTML_CLASS}}": WASH_SUBTLE,
