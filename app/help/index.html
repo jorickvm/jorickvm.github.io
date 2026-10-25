@@ -27,26 +27,19 @@
     html[data-theme="light"] body { color: #526075; }
     a { color: #4f9dee; }
     html[data-theme="light"] a { color: #246ca8; }
-    [hidden] { display: none !important; }
   </style>
 
-  <script>window.AtlasDaysAppAliasTarget = '/help/';
-  // Languages this alias has a translated destination for. Add a line
-  // when a locale's Help Center ships; the app already sends ?lang=.
-  window.AtlasDaysAppAliasLocales = { ja: '/ja/help/' };</script>
-  <noscript><meta http-equiv="refresh" content="0; url=/help/" /></noscript>
-  <!-- Cloudflare Web Analytics -->
-  <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
-  (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');(document.body||document.head).appendChild(s)})();
+  <script>
+  // The app opens this address with ?lang=<its interface language>. The in-app
+  // hop picks the translated Help Center for that language when the site has
+  // one, English otherwise, so no list of languages lives here. theme, from and
+  // notrack go to the hop too. The Help Center then loads as itself, analytics
+  // included, with the hop as its referrer.
+  location.replace('/app/open/?to=/help/' + (location.search ? '&' + location.search.slice(1) : ''));
   </script>
-  <!-- End Cloudflare Web Analytics -->
-  <script defer src="/assets/js/app-page-alias.js"></script>
+  <noscript><meta http-equiv="refresh" content="0; url=/help/" /></noscript>
 </head>
 <body>
-  <p data-alias-status role="status" hidden>Loading…</p>
-  <p data-alias-fallback hidden>
-    <span data-alias-message></span>
-    <a href="/help/" data-alias-target-link>Help Center</a>
-  </p>
+  <p><a href="/help/">Help Center</a></p>
 </body>
 </html>
