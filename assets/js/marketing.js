@@ -111,8 +111,8 @@
   })();
 
   // ---------- Reviews on translated pages ----------
-  // The reviewer's own words show first; the button swaps in the translation
-  // into the page's language and back. English pages have no button.
+  // The translation into the page's language shows first; the button swaps in
+  // the reviewer's own words and back. English pages have no button.
   page.querySelectorAll('[data-hx-review]').forEach(function (review) {
     var button = review.querySelector('.hx-quote-toggle');
     var original = review.querySelector('[data-hx-original]');
