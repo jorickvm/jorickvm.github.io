@@ -111,11 +111,31 @@ SITE_URL = "https://atlasdays.app"
 # whole site until traffic is high enough to split it past Apple's threshold.
 APP_STORE_URL = "https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"
 APP_STORE_CAMPAIGN_URL = "https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct={campaign}&amp;mt=8"
+PRODUCT_PAGES_PATH = SOURCE_ROOT / "data" / "product-pages.json"
 
 
-def with_campaign_links(rendered: str, campaign: str = "web") -> str:
-    """Tag App Store links for App Store Connect; a page record can set its own "campaign"."""
-    return rendered.replace(f'href="{APP_STORE_URL}"', 'href="' + APP_STORE_CAMPAIGN_URL.format(campaign=campaign) + '"')
+def with_campaign_links(rendered: str, campaign: str = "web", ppid: str | None = None) -> str:
+    """Tag App Store links for App Store Connect; a page record can set its own "campaign".
+
+    `ppid` opens a custom product page instead of the default one. It rides
+    along with the campaign token, which still opens the custom page.
+    """
+    url = APP_STORE_CAMPAIGN_URL.format(campaign=campaign) + (f"&amp;ppid={ppid}" if ppid else "")
+    return rendered.replace(f'href="{APP_STORE_URL}"', 'href="' + url + '"')
+
+
+def product_page_ppid(source_path: str, app_preset: str | None, locale_code: str, product_pages: dict) -> str | None:
+    """The custom product page for an English source route in one locale, if any.
+
+    product-pages.json explains which routes map and why a locale can be left out.
+    """
+    for page in product_pages.get("pages", {}).values():
+        matches = source_path in page.get("routes", []) or bool(
+            app_preset and any(app_preset.startswith(prefix) for prefix in page.get("app_preset_prefixes", []))
+        )
+        if matches:
+            return None if locale_code in page.get("missing_locales", []) else str(page["ppid"])
+    return None
 
 
 def linked_paths(text: str) -> set[str]:
@@ -1949,6 +1969,7 @@ def main() -> int:
     translations = load_translations(locales)
     hub_data = json.loads(HUB_DATA_PATH.read_text(encoding="utf-8")) if HUB_DATA_PATH.exists() else {"hubs": []}
     page_data = json.loads(PAGE_DATA_PATH.read_text(encoding="utf-8")) if PAGE_DATA_PATH.exists() else {"pages": []}
+    product_pages = json.loads(PRODUCT_PAGES_PATH.read_text(encoding="utf-8")) if PRODUCT_PAGES_PATH.exists() else {}
     sources = {str(record["path"]): record for record in data.get("articles", [])}
     hub_sources = {str(record["path"]): record for record in hub_data.get("hubs", [])}
     page_sources = {str(record["path"]): record for record in page_data.get("pages", [])}
@@ -1993,11 +2014,13 @@ def main() -> int:
     pending: list[tuple[Path, str]] = []
     delistings: list[tuple[str, list[str]]] = []
 
-    def queue(output_path: Path, rendered: str, *, guard: bool = False, campaign: str = "web") -> None:
+    def queue(
+        output_path: Path, rendered: str, *, guard: bool = False, campaign: str = "web", ppid: str | None = None,
+    ) -> None:
         nonlocal selected
         selected += 1
         if output_path.suffix == ".html":
-            rendered = with_campaign_links(rendered, campaign)
+            rendered = with_campaign_links(rendered, campaign, ppid)
         current = output_path.read_text(encoding="utf-8") if output_path.exists() else ""
         if current == rendered:
             return
@@ -2017,6 +2040,9 @@ def main() -> int:
             render_article(
                 with_alternates(article), template, header_template, footer_template,
                 locale, strings, locales, translations,
+            ),
+            ppid=product_page_ppid(
+                str(article["path"]), article.get("app_preset"), default_locale_code(), product_pages,
             ),
         )
 
@@ -2050,6 +2076,7 @@ def main() -> int:
                 ),
                 guard=True,
                 campaign=str(page.get("campaign", "web")),
+                ppid=product_page_ppid(str(page["path"]), None, default_locale_code(), product_pages),
             )
 
     for code, overlays in translations.items():
@@ -2090,6 +2117,7 @@ def main() -> int:
                     target, strings, locales, translations,
                     **({"family": localized_family} if kind == "page" else {}),
                 ),
+                ppid=product_page_ppid(source_path, source.get("app_preset"), code, product_pages),
             )
 
     if args.section in {"all", "learn"}:

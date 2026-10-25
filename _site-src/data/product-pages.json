@@ -1,0 +1,51 @@
+{
+  "_about": [
+    "App Store custom product pages the build links to. `build_site.py` adds `ppid` to every App Store campaign link on a page whose route or app preset maps to one, next to the page's `ct`; every other page keeps the default product page.",
+    "The App Store picks a custom page's localization from the visitor's storefront and language, never from the link. So a route maps to a page only if that page tells the same story in every localization. Tax residence, Schengen 90/180 and Travel history do. Residence and citizenship shows a different country per localization (UK ILR for en-GB, Einbürgerung for de-DE, Australia for nl-NL, ...), so it only fits the general use-case page, never a single-country article.",
+    "`missing_locales` lists website locales the page has no localization for. Their visitors would get the page's primary (en-US) screenshots, so those locale pages keep the default product page until the localization exists.",
+    "Which pages exist, and their stories, keywords and screenshots, are owned by the app repo's Docs/plans/custom-product-pages.md. The ppid comes from App Store Connect."
+  ],
+  "pages": {
+    "tax-residence": {
+      "ppid": "1a1343d8-332a-4e0b-ad29-931faa87a99c",
+      "missing_locales": ["it"],
+      "routes": [
+        "residency-thresholds.html",
+        "learn/183-day-tax-residency-rule.html",
+        "learn/183-day-rule-calculator.html",
+        "learn/spain-183-day-tax-residency.html",
+        "learn/canadian-snowbird-day-limits.html"
+      ],
+      "app_preset_prefixes": ["residence-", "us-state-", "tax-"]
+    },
+    "schengen": {
+      "ppid": "d3a9b2e7-b9b8-479b-be33-c009cef92c74",
+      "missing_locales": ["it"],
+      "routes": [
+        "visa-limits.html",
+        "learn/schengen-calculator.html",
+        "learn/schengen-countries-list-90-180-rule.html",
+        "learn/schengen-rolling-window-walkthrough.html",
+        "learn/when-do-you-get-schengen-days-back-after-90-day-stay.html",
+        "learn/ees-etias-schengen-90-180.html"
+      ],
+      "app_preset_prefixes": ["schengen-"]
+    },
+    "citizenship": {
+      "ppid": "e9c96a66-f2cd-4750-99d7-91295f980cac",
+      "missing_locales": ["it"],
+      "routes": ["citizenship.html"],
+      "app_preset_prefixes": []
+    },
+    "travel-history": {
+      "ppid": "eddb242b-917d-422a-93f8-d39e4846ed31",
+      "missing_locales": ["it"],
+      "routes": [
+        "travel-history.html",
+        "learn/how-many-countries-in-the-world.html",
+        "learn/rebuild-travel-history-from-passport-stamps-emails-photos.html"
+      ],
+      "app_preset_prefixes": []
+    }
+  }
+}
