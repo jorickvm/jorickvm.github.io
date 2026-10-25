@@ -79,7 +79,7 @@ REVIEW_TIERS = {
 ABSENCE_RULE_MARKERS = (
     "citizenship", "naturalization", "permit", "resident-card", "residence-return",
     "residency-obligation", "resident-return", "long-term-residence", "super-overseas",
-    "residence-visa",
+    "residence-visa", "long-term-resident",
 )
 
 

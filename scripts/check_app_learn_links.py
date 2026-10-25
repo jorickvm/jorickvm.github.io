@@ -5,7 +5,9 @@ App builds ship URLs that cannot be taken back: old versions stay on phones for
 years. A renamed, merged-without-redirect, or deleted page therefore turns into
 a dead link inside the app. The app opens two kinds of address:
 
-- Learn articles, by slug: the map in `TrackerLearnLinks.swift` plus any slug
+- Learn articles, by slug: the map in `TrackerLearnLinks.swift` (its literal
+  entries, and a slug merged in on the line that closes it, as the generated EU
+  long-term residence presets are) plus any slug
   written literally at an `AppLinks.learnArticle(slug: "...")` call site (the
   Ireland and Substantial Presence Test links are). They open through the
   in-app hop `/app/open/?to=/learn/<slug>`, which falls back to the English
@@ -39,7 +41,7 @@ DEFAULT_APP_ROOT = Path.home() / "Projects/AtlasDays/AtlasDays/AtlasDays"
 
 # The slug map is the dictionary literal assigned to slugsByPresetID; only
 # parse inside it (the same quoted-pair shape appears elsewhere in the file).
-MAP_RE = re.compile(r"slugsByPresetID:\s*\[String:\s*String\]\s*=\s*\[(.*?)\n    \]", re.DOTALL)
+MAP_RE = re.compile(r"slugsByPresetID:\s*\[String:\s*String\]\s*=\s*\[(.*?)\n    \]([^\n]*)", re.DOTALL)
 ENTRY_RE = re.compile(r'"([a-z0-9-]+)"\s*:\s*"([a-z0-9-]+)"\s*,')
 # Literal slugs at call sites: every quoted slug inside learnArticle(slug: ...).
 CALL_RE = re.compile(r"learnArticle\(slug:([^)\n]*)\)")
@@ -54,6 +56,8 @@ def read_app(app_root: Path) -> dict:
     if not block:
         raise SystemExit(f"error: slugsByPresetID dictionary not found in {links}")
     slugs = {slug for _, slug in ENTRY_RE.findall(block.group(1))}
+    # Generated presets merged into the map on its closing line (`].merging(...)`).
+    slugs.update(LITERAL_RE.findall(block.group(2)))
     if not slugs:
         raise SystemExit(f"error: no map entries parsed from {links}")
     for swift in sorted(app_root.rglob("*.swift")):
