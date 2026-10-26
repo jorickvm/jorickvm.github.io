@@ -185,6 +185,88 @@ article > .learn-disclaimer,
   font-size: 0.86rem;
 }
 
+/* Limit list: one row per place, grouped under a small heading that says how
+   the limit is counted. Flag, linked name with an optional qualifier, and the
+   limit itself on the right, so a reader compares down one column. */
+.limit-group {
+  margin: 22px 0 8px;
+  color: var(--muted-2);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.limit-list {
+  margin: 0 0 8px;
+  padding: 0;
+  list-style: none;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--bg-card);
+  overflow: hidden;
+}
+
+.limit-list li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 24px minmax(0, 1fr) auto;
+  gap: 0 14px;
+  align-items: center;
+  margin: 0;
+  padding: 12px 18px;
+  border-top: 1px solid var(--line);
+}
+
+.limit-list li:first-child { border-top: 0; }
+.limit-list li:hover { background: var(--blue-soft); }
+
+.limit-flag {
+  width: 24px;
+  height: 18px;
+  border-radius: 3px;
+  object-fit: cover;
+  box-shadow: 0 0 0 1px var(--line-strong);
+}
+
+.limit-name { min-width: 0; line-height: 1.4; }
+.limit-name a { color: var(--text); font-weight: 600; text-decoration: none; }
+.limit-name a::after { content: " \2192"; color: var(--blue); font-weight: 500; }
+.limit-name a::before { content: ""; position: absolute; inset: 0; }
+
+.limit-note {
+  display: block;
+  margin-top: 2px;
+  color: var(--muted);
+  font-size: 0.86rem;
+  line-height: 1.45;
+}
+
+.limit-value {
+  color: var(--text);
+  font-size: 0.93rem;
+  font-weight: 600;
+  line-height: 1.35;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* On a phone the limit moves under the name: a right-hand column leaves too
+   little room for German or Russian names and splits them mid-word. */
+@media (max-width: 560px) {
+  .limit-list li {
+    grid-template-columns: 24px minmax(0, 1fr);
+    grid-template-areas: "flag name" "flag value" "flag note";
+    gap: 1px 12px;
+    align-items: start;
+    padding: 12px 14px;
+  }
+  .limit-flag { grid-area: flag; margin-top: 3px; }
+  .limit-name { display: contents; }
+  .limit-name a { grid-area: name; }
+  .limit-value { grid-area: value; text-align: left; }
+  .limit-note { grid-area: note; margin-top: 0; }
+}
+
 /* Key-value list: the factbox look, for a short two-column list mid-article. */
 .kv {
   margin: 18px 0 26px;
