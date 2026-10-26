@@ -1,0 +1,52 @@
+/* Shared AtlasDays website signature. Typography is outlined in wordmark.svg. */
+.brand {
+  --wordmark-color: #e1d9d4;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 14.769px;
+  color: var(--text, currentColor);
+  text-decoration: none;
+}
+
+html[data-theme="light"] .brand { --wordmark-color: #1d2f4d; }
+.brand:hover { text-decoration: none; }
+
+.brand-mark {
+  position: relative;
+  width: 32px;
+  height: 32px;
+  flex: 0 0 32px;
+  overflow: hidden;
+  border-radius: 7.385px;
+}
+
+.brand-mark img {
+  display: block;
+  width: 32px;
+  height: 32px;
+  object-fit: cover;
+}
+
+.brand-mark::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  box-sizing: border-box;
+  border: 1px solid rgb(255 255 255 / 12%);
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+.brand-wordmark {
+  display: block;
+  flex: 0 0 139.259px;
+  width: 139.259px;
+  height: 14.581px;
+  font-size: 0;
+  line-height: 1;
+  background-color: var(--wordmark-color);
+  -webkit-mask: url("../brand/wordmark.svg?v=20261026a") center / contain no-repeat;
+  mask: url("../brand/wordmark.svg?v=20261026a") center / contain no-repeat;
+  mask-mode: alpha;
+}

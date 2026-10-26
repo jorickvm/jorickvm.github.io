@@ -1,3 +1,5 @@
+@import url("brand.css?v=20261026a");
+
 /* Shared site header for every page on the site, homepage included.
    Colours come from the page through var(). The width does not: the bar
    uses --site-max and --site-gutter from tokens.css on every page, so it
@@ -56,29 +58,6 @@
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-}
-
-.brand {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  color: var(--text, currentColor);
-  text-decoration: none;
-}
-.brand:hover { text-decoration: none; }
-
-.brand-mark {
-  width: 36px;
-  height: 36px;
-  overflow: hidden;
-  flex: none;
-}
-.brand-mark img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
 }
 
 .top-links {
@@ -431,21 +410,14 @@ html[data-theme="light"] .theme-toggle .icon-moon { display: block; }
 .mobile-nav-group-panel { display: grid; gap: 3px; }
 .mobile-nav-group-panel a { padding-left: 24px; }
 
-/* Above the drawer but below a full desktop, the bar sheds its two widest
-   optional pieces rather than overflowing: the brand wordmark (the logo mark
-   still links home) and the language name (the globe still says language).
+/* The wider wordmark needs more room beside long translated navigation.
+   Keep this header-only so the footer retains the complete signature. */
+@media (max-width: 1120px) {
+  .top-bar .brand-wordmark { display: none; }
+}
 
-   This band is sized by the longest locale, not by English. Measured on the
-   Russian homepage at 862px: brand 121 + links 814 = 935 inside an 822px
-   inner, a horizontal scrollbar on a page that fit fine in English. Dropping
-   the wordmark and the language name returns ~165px, which clears every
-   locale the site ships. Doing it for all locales rather than :lang(ru) keeps
-   one bar to reason about, which is the whole point of this file.
-
-   1040px rather than 1000px: at 1002px Russian fits with 27px to spare, which
-   is inside the margin a different font stack could eat. */
+/* Compact the language control before switching to the navigation drawer. */
 @media (max-width: 1040px) {
-  .brand > span:not(.brand-mark) { display: none; }
   .lang-switch > summary {
     width: var(--toolbar-control);
     padding: 0;
