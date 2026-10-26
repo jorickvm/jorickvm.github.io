@@ -117,6 +117,16 @@ The audit is the main safety net: it checks canonicals, sitemap agreement, JSON-
 
 Every generated page loads Cloudflare Web Analytics (cookieless, aggregate) through a small inline loader in the three page templates, between the `Cloudflare Web Analytics` comment markers. Opening any page with `?notrack` switches analytics off in that browser (a `localStorage` flag, never sent anywhere); `?notrack=off` switches it back on. It exists so the site owner's own visits are not counted. The app's in-app browser keeps its own storage and has no address bar, so the app adds `notrack=1` to every atlasdays.app link when its hidden analytics opt-out is on; the hand-authored `app/*/index.html` pages, including the in-app hop, honour it too. `assets/js/app-page-alias.js` strips everything between the markers from pages it renders, so an alias never counts twice. `app/help/index.html` instead forwards to the hop with `to=/help/`, so the Help Center counts itself with the hop as referrer, in whichever language the hop picked.
 
+## Favicons
+
+`swift -disable-sandbox scripts/export_favicons.swift` regenerates the icons from
+`assets/press/kit/atlasdays-icon.png` on macOS. The rounded square matches the
+shared website brand mark's corner radius, with a subtle inset hairline outline.
+Browser SVG, root ICO and Apple touch icons use that shape. A circular PNG with
+the same outline is offered as a larger raster candidate for Search; Google
+chooses the icon and its presentation, so the markup cannot guarantee a separate
+shape exclusively for Search. `scripts/build_site.py` owns the shared link tags.
+
 ## Local preview
 
 ```bash

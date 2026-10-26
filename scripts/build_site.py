@@ -81,6 +81,7 @@ def redirect_outputs(locales, translations, sources, strings):
                 "{{TARGET}}": html.escape(href, quote=True),
                 "{{CONTINUE}}": message,
                 "{{COLON}}": colon,
+                "{{FAVICONS}}": render_favicon_links("/"),
             }
             rendered = template
             for marker, value in replacements.items():
@@ -197,6 +198,17 @@ def attrs_html(attrs: dict[str, str]) -> str:
     return " ".join(parts)
 
 
+def render_favicon_links(prefix: str = "../") -> str:
+    """Rounded app artwork for browsers, with a circular raster candidate."""
+    links = [
+        {"rel": "icon", "type": "image/x-icon", "sizes": "16x16 32x32 48x48", "href": f"{prefix}favicon.ico"},
+        {"rel": "icon", "type": "image/png", "sizes": "192x192", "href": f"{prefix}assets/brand/favicon-round.png"},
+        {"rel": "icon", "type": "image/svg+xml", "sizes": "any", "href": f"{prefix}assets/brand/favicon.svg"},
+        {"rel": "apple-touch-icon", "sizes": "180x180", "href": f"{prefix}assets/brand/apple-touch-icon.png"},
+    ]
+    return "\n".join(f"  <link {attrs_html(attrs)} />" for attrs in links)
+
+
 def render_metadata(article: dict[str, object], prefix: str = "../") -> str:
     lines = [f"  <title>{html.escape(str(article['title']))}</title>"]
     meta = [dict(attrs) for attrs in article.get("meta", [])]
@@ -229,9 +241,7 @@ def render_metadata(article: dict[str, object], prefix: str = "../") -> str:
         lines.append(f"  <meta {attrs_html(dict(attrs))} />")
     for attrs in article.get("links", []):
         lines.append(f"  <link {attrs_html(dict(attrs))} />")
-    lines.append(
-        f'  <link rel="icon" type="image/png" sizes="192x192" href="{prefix}assets/brand/favicon.png" />'
-    )
+    lines.append(render_favicon_links(prefix))
     return "\n".join(lines)
 
 
