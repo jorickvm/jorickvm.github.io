@@ -63,7 +63,6 @@ These pages describe something scheduled to change. The tier cadence would revie
 | 2027-03-31 | 1 | [learn/germany-naturalization-absence-limit.html](/learn/germany-naturalization-absence-limit) | exact-date-required | 3 |
 | 2027-03-31 | 1 | [learn/india-tourist-visa-stay-limits.html](/learn/india-tourist-visa-stay-limits) | exact-date-required | 3 |
 | 2027-03-31 | 1 | [learn/italy-residence-permit-absence.html](/learn/italy-residence-permit-absence) | exact-date-required | 2 |
-| 2027-03-31 | 1 | [learn/netherlands-residence-permit-absence-rules.html](/learn/netherlands-residence-permit-absence-rules) | exact-date-required | 3 |
 | 2027-03-31 | 1 | [learn/new-zealand-citizenship-presence-requirement.html](/learn/new-zealand-citizenship-presence-requirement) | exact-date-required | 3 |
 | 2027-03-31 | 1 | [learn/nz-super-overseas-absence.html](/learn/nz-super-overseas-absence) | exact-date-required | 4 |
 | 2027-03-31 | 1 | [learn/overstaying-a-visa-or-stay-limit.html](/learn/overstaying-a-visa-or-stay-limit) | exact-date-required | 14 |
@@ -88,6 +87,7 @@ These pages describe something scheduled to change. The tier cadence would revie
 | 2027-05-01 | 1 | [learn/indonesia-visa-on-arrival-30-days.html](/learn/indonesia-visa-on-arrival-30-days) | exact-date-required | 2 |
 | 2027-05-01 | 1 | [learn/ireland-citizenship-70-day-absence.html](/learn/ireland-citizenship-70-day-absence) | exact-date-required | 2 |
 | 2027-05-01 | 1 | [learn/mexico-fmm-180-day-visitor-stay.html](/learn/mexico-fmm-180-day-visitor-stay) | exact-date-required | 3 |
+| 2027-05-01 | 1 | [learn/netherlands-residence-permit-absence-rules.html](/learn/netherlands-residence-permit-absence-rules) | exact-date-required | 3 |
 | 2027-05-01 | 1 | [learn/oman-residence-visa-6-months-outside.html](/learn/oman-residence-visa-6-months-outside) | exact-date-required | 1 |
 | 2027-05-01 | 1 | [learn/schengen-calculator.html](/learn/schengen-calculator) | exact-date-required | 3 |
 | 2027-05-01 | 1 | [learn/spain-long-term-residence-absences.html](/learn/spain-long-term-residence-absences) | exact-date-required | 3 |
