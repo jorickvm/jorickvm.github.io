@@ -1,8 +1,15 @@
 .site-footer {
+  --footer-heading-color: #e1d9d4;
   margin-top: 72px;
+  padding: 0;
   border-top: 1px solid var(--line, rgba(255,255,255,0.10));
   color: var(--muted, #b2b9c5);
 }
+
+html[data-theme="light"] .site-footer { --footer-heading-color: #1d2f4d; }
+
+/* Marketing CTAs already provide the gap above this divider. */
+main.hx:has(.hx-final) + .site-footer { margin-top: 0; }
 
 .site-footer-inner,
 .site-footer-meta {
@@ -12,21 +19,16 @@
 
 .site-footer-inner {
   display: grid;
-  grid-template-columns: minmax(180px, 1fr) minmax(380px, 1.65fr);
-  gap: 48px;
-  padding: 44px 0 36px;
-}
-
-.site-footer-brand p {
-  max-width: 280px;
-  margin: 14px 0 0;
-  line-height: 1.6;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 32px;
+  padding: 36px 0 32px;
 }
 
 .site-footer-links {
+  grid-column: 2 / -1;
   display: grid;
-  grid-template-columns: repeat(2, minmax(120px, 1fr));
-  gap: 28px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px;
 }
 
 .site-footer-links div {
@@ -34,21 +36,29 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 10px;
+  min-width: 0;
 }
 
 .site-footer-links h2 {
   margin: 0 0 3px;
-  color: var(--text);
-  font-size: 0.84rem;
-  letter-spacing: 0.08em;
+  display: flex;
+  align-items: center;
+  min-height: 32px;
+  color: var(--footer-heading-color);
+  font-size: 0.94rem;
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
 }
 
 .site-footer-links a {
   color: inherit;
   text-decoration: none;
+  overflow-wrap: anywhere;
 }
 
+.site-footer-legal-start { margin-top: 8px; }
 .site-footer-links a:hover { color: var(--text); }
 .site-footer a:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
 
@@ -56,32 +66,41 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  gap: 8px 24px;
+  align-items: baseline;
+  gap: 12px 24px;
   padding: 20px 0 30px;
   border-top: 1px solid var(--line, rgba(255,255,255,0.10));
   font-size: 0.84rem;
 }
 
-/* The maker's site, bysteed.com: a site name, so the same in every language. */
-.site-footer-meta a {
-  color: inherit;
-  text-decoration: none;
-}
+.site-footer-credit { white-space: nowrap; }
 
+/* The maker's site, bysteed.com: a site name, so the same in every language. */
+.site-footer-meta a { color: inherit; text-decoration: none; }
 .site-footer-meta a:hover { color: var(--text); }
+
+@media (max-width: 960px) {
+  .site-footer-inner { grid-template-columns: 1fr; gap: 28px; }
+  .site-footer-links { grid-column: auto; }
+}
 
 @media (max-width: 760px) {
   .site-footer { margin-top: 48px; }
-  .site-footer-inner,
-  .site-footer-meta { width: min(var(--site-max, 1040px), calc(100% - 2 * var(--site-gutter, 20px))); }
-  .site-footer-inner { grid-template-columns: 1fr; gap: 26px; padding: 30px 0 26px; }
-  .site-footer-brand p { display: none; }
+  .site-footer-inner { padding: 30px 0 26px; }
   .site-footer-meta {
-    padding: 18px 0 calc(96px + env(safe-area-inset-bottom));
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 18px 0 calc(30px + env(safe-area-inset-bottom));
     line-height: 1.5;
   }
 }
 
 @media (max-width: 520px) {
-  .site-footer-links { grid-template-columns: 1fr 1fr; gap: 24px 18px; }
+  .site-footer-links { grid-template-columns: 1fr 1fr; gap: 28px 24px; }
+  .site-footer-links > div:last-child { grid-column: 1 / -1; }
+  .site-footer-links h2 { font-size: 0.84rem; letter-spacing: 0.1em; }
+}
+
+@media (max-width: 360px) {
+  .site-footer-links h2 { font-size: 0.75rem; letter-spacing: 0.06em; }
 }
