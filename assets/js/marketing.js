@@ -56,10 +56,8 @@
     var phoneWidth = 0;
     var headerHeight = 0;
     var progress = 0;
-    var mobilePlayed = false;
-    var frame = 0;
-    var observer;
-    var mobileInView = false;
+    var mobileStart = 24;
+    var mobileDistance = 180;
 
     function mix(a, b, t) { return a + (b - a) * t; }
     function paint(p) {
@@ -84,29 +82,14 @@
       if (motion.matches) return;
       if (pinned) {
         paint((headerHeight - stage.getBoundingClientRect().top) / distance);
-      } else if (window.scrollY >= 24 && mobileInView) {
-        // Tall phone viewports can show most of the images on first load.
-        // Visibility alone must not consume the handoff before scrolling.
-        playOnce();
+      } else {
+        // Use position in both directions: reversing the scroll retraces the
+        // same poses, including after leaving and returning to the hero.
+        paint((window.scrollY - mobileStart) / mobileDistance);
       }
-    }
-
-    function playOnce() {
-      if (pinned || mobilePlayed || motion.matches) return;
-      mobilePlayed = true;
-      if (observer) observer.disconnect();
-      var start;
-      function tick(now) {
-        if (start === undefined) start = now;
-        paint((now - start) / 1400);
-        frame = progress < 1 ? requestAnimationFrame(tick) : 0;
-      }
-      frame = requestAnimationFrame(tick);
     }
 
     function configure() {
-      if (observer) observer.disconnect();
-      mobileInView = false;
       headerHeight = header ? header.offsetHeight : 0;
       phoneWidth = dashboard.offsetWidth;
       // Keep all hero content visible while pinned; its trailing padding may
@@ -117,28 +100,20 @@
       stage.classList.toggle('is-pinned', pinned);
       stage.style.setProperty('--hx-hero-top', headerHeight + 'px');
       stage.style.setProperty('--hx-hero-distance', distance + 'px');
-      if (frame && (pinned || motion.matches)) {
-        cancelAnimationFrame(frame);
-        frame = 0;
-      }
       if (motion.matches) {
         tracker.style.removeProperty('transform');
         dashboard.style.removeProperty('transform');
         phones.classList.remove('is-tracker-front');
         return;
       }
-      if (pinned) {
-        update();
-      } else {
-        if (!frame) paint(mobilePlayed ? 1 : 0);
-        if (!mobilePlayed && hasObserver) {
-          observer = new IntersectionObserver(function (entries) {
-            mobileInView = entries[0].intersectionRatio >= 0.55;
-            update();
-          }, { threshold: 0.55 });
-          observer.observe(phones);
-        }
+      if (!pinned) {
+        var bounds = phones.getBoundingClientRect();
+        var top = bounds.top + window.scrollY;
+        // Begin only after scrolling and when 55% of the phone group fits in
+        // view. Compute a stable document position instead of a one-shot gate.
+        mobileStart = Math.max(24, top + bounds.height * 0.55 - window.innerHeight);
       }
+      update();
     }
 
     scrollHandlers.push(update);
@@ -149,23 +124,6 @@
     window.addEventListener('pageshow', configure);
     if (document.fonts) document.fonts.ready.then(configure);
   })();
-
-  // QR hints stay open while hovered or focused and dismiss with Escape.
-  var qrButtons = Array.prototype.slice.call(page.querySelectorAll('.hx-final-button'));
-  qrButtons.forEach(function (wrap) {
-    wrap.addEventListener('mouseleave', function () {
-      if (!wrap.contains(document.activeElement)) wrap.classList.remove('is-qr-dismissed');
-    });
-    wrap.addEventListener('focusout', function (event) {
-      if (!wrap.matches(':hover') && !wrap.contains(event.relatedTarget)) wrap.classList.remove('is-qr-dismissed');
-    });
-  });
-  document.addEventListener('keydown', function (event) {
-    if (event.key !== 'Escape') return;
-    qrButtons.forEach(function (wrap) {
-      if (wrap.matches(':hover') || wrap.contains(document.activeElement)) wrap.classList.add('is-qr-dismissed');
-    });
-  });
 
   // ---------- Reveal: only what starts below the fold is hidden first ----------
   if (!reduceMotion && hasObserver) {

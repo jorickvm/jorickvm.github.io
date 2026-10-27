@@ -31,20 +31,19 @@ function element(props = {}) {
   }, props);
 }
 
-function setup({wide = false, reduced = false} = {}) {
-  let callback;
+function setup({wide = false, reduced = false, height = 900, phoneTop = 530, phoneHeight = 550} = {}) {
   const frames = new Map();
   let frameID = 0;
   const tracker = element();
   const dashboard = element({offsetWidth: 330});
-  const phones = element({querySelector: s => s === '.hx-phone-back' ? tracker : dashboard});
+  const phones = element({querySelector: s => s === '.hx-phone-back' ? tracker : dashboard, getBoundingClientRect: () => ({top: phoneTop - window.scrollY, height: phoneHeight})});
   const panel = element({offsetHeight: 793});
   const motion = {matches: reduced, addEventListener(type, fn) { this.change = fn; }};
   const desktop = {matches: wide};
   const events = {};
   const scrollHandlers = [];
   const window = {
-    scrollY: 0, innerHeight: 900,
+    scrollY: 0, innerHeight: height,
     matchMedia: s => s.includes('reduced') ? motion : desktop,
     addEventListener(type, fn) { events[type] = fn; }
   };
@@ -56,15 +55,9 @@ function setup({wide = false, reduced = false} = {}) {
     getComputedStyle: () => ({paddingBottom: '48px'}),
     requestAnimationFrame: fn => { frames.set(++frameID, fn); return frameID; },
     cancelAnimationFrame: id => frames.delete(id),
-    IntersectionObserver: class {
-      constructor(fn) { callback = fn; }
-      observe() {}
-      disconnect() {}
-    }
   });
   return {
     phones, tracker, stage, motion, events,
-    intersect(ratio) { callback([{isIntersecting: ratio > 0, intersectionRatio: ratio}]); },
     scroll(y) { window.scrollY = y; scrollHandlers.forEach(fn => fn()); },
     tick(now) { const current = [...frames.values()]; frames.clear(); current.forEach(fn => fn(now)); },
     pending() { return frames.size; }
@@ -87,28 +80,44 @@ class HeroMotionTests(unittest.TestCase):
     def test_mobile_visible_on_load_waits_for_scroll(self):
         self.run_controller(r"""
 const mobile = setup();
-mobile.intersect(0.8);
-assert.equal(mobile.pending(), 0, 'visibility on initial load must not start the swap');
-mobile.events.pageshow(); mobile.intersect(0.8);
-mobile.events.resize(); mobile.intersect(0.8);
-assert.equal(mobile.pending(), 0, 'restoring or resizing at the top must not start it');
-mobile.scroll(8);
-assert.equal(mobile.pending(), 0, 'ignore tiny scroll offsets');
-mobile.scroll(40);
-assert.equal(mobile.pending(), 1, 'scrolling with the phones visible starts one animation');
-mobile.tick(0); mobile.tick(1400);
-assert(mobile.phones.classList.contains('is-tracker-front'));
-mobile.scroll(100); mobile.events.resize();
-assert.equal(mobile.pending(), 0, 'the mobile swap must not repeat');
+const initial = mobile.tracker.style.transform;
+mobile.tick(0); mobile.tick(5000);
+assert.equal(mobile.tracker.style.transform, initial, 'time must not start the swap');
+mobile.events.pageshow(); mobile.events.resize();
+mobile.scroll(8); mobile.scroll(24);
+assert.equal(mobile.tracker.style.transform, initial, 'keep the initial pose before scrolling');
+mobile.scroll(100);
+assert.notEqual(mobile.tracker.style.transform, initial, 'scrolling starts the handoff');
+assert.equal(mobile.pending(), 0, 'no independent timer should keep moving the phones');
 """)
 
-    def test_mobile_scroll_still_waits_for_visibility(self):
+    def test_mobile_retraces_the_same_poses_when_scrolling_up(self):
         self.run_controller(r"""
 const mobile = setup();
-mobile.intersect(0.2); mobile.scroll(80);
-assert.equal(mobile.pending(), 0);
-mobile.intersect(0.6);
-assert.equal(mobile.pending(), 1);
+const initial = mobile.tracker.style.transform;
+mobile.scroll(80); const early = mobile.tracker.style.transform;
+mobile.scroll(160); const late = mobile.tracker.style.transform;
+mobile.scroll(400);
+assert(mobile.phones.classList.contains('is-tracker-front'));
+mobile.scroll(160); assert.equal(mobile.tracker.style.transform, late);
+mobile.scroll(80); assert.equal(mobile.tracker.style.transform, early);
+mobile.scroll(0); assert.equal(mobile.tracker.style.transform, initial);
+assert(!mobile.phones.classList.contains('is-tracker-front'));
+mobile.scroll(400); mobile.events.resize(); mobile.scroll(0);
+assert.equal(mobile.tracker.style.transform, initial, 'repeat visits and resize must remain reversible');
+""")
+
+    def test_mobile_waits_until_the_phones_enter_view(self):
+        self.run_controller(r"""
+const mobile = setup({phoneTop: 900, phoneHeight: 500, height: 800});
+const initial = mobile.tracker.style.transform;
+mobile.scroll(200); mobile.scroll(375);
+assert.equal(mobile.tracker.style.transform, initial);
+mobile.scroll(420);
+assert.notEqual(mobile.tracker.style.transform, initial);
+mobile.scroll(600);
+assert(mobile.phones.classList.contains('is-tracker-front'));
+mobile.scroll(375); assert.equal(mobile.tracker.style.transform, initial);
 """)
 
     def test_desktop_scrubbing_and_reduced_motion_are_preserved(self):
@@ -121,11 +130,10 @@ desktop.scroll(0);
 assert(!desktop.phones.classList.contains('is-tracker-front'));
 const reduced = setup({reduced: true});
 reduced.scroll(280);
-assert.equal(reduced.pending(), 0);
 assert.equal(reduced.tracker.style.transform, undefined);
 const mobile = setup();
-mobile.intersect(0.8); mobile.scroll(40);
+mobile.scroll(200);
 mobile.motion.matches = true; mobile.motion.change();
-assert.equal(mobile.pending(), 0, 'turning on reduced motion cancels the swap');
 assert.equal(mobile.tracker.style.transform, undefined);
+assert.equal(mobile.pending(), 0);
 """)

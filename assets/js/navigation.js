@@ -48,6 +48,29 @@
     });
   });
 
+  // QR popovers remain open across the button, hover bridge and QR link.
+  var qrButtons = document.querySelectorAll('.nav-cta-wrap, .hx-final-button');
+  qrButtons.forEach(function (wrap) {
+    wrap.addEventListener('mouseleave', function () {
+      if (!wrap.contains(document.activeElement)) wrap.classList.remove('is-qr-dismissed');
+    });
+    wrap.addEventListener('focusout', function (event) {
+      if (!wrap.matches(':hover') && !wrap.contains(event.relatedTarget)) wrap.classList.remove('is-qr-dismissed');
+    });
+  });
+  document.addEventListener('keydown', function (event) {
+    if (event.key !== 'Escape') return;
+    qrButtons.forEach(function (wrap) {
+      var focused = wrap.contains(document.activeElement);
+      if (!wrap.matches(':hover') && !focused) return;
+      wrap.classList.add('is-qr-dismissed');
+      if (focused) {
+        var button = wrap.querySelector('.top-cta, .hx-btn');
+        if (button) button.focus({preventScroll: true});
+      }
+    });
+  });
+
   // Contact links ship without an address (data-email-user plus
   // data-email-domain) so the markup carries no scrapeable email. The privacy
   // and terms pages use them in every locale, and this file is the one script
