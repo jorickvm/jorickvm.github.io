@@ -50,3 +50,14 @@ html[data-theme="light"] .brand { --wordmark-color: #1d2f4d; }
   mask: url("../brand/wordmark.svg?v=20261026a") center / contain no-repeat;
   mask-mode: alpha;
 }
+
+/* The header keeps the approved ink gaps, with SF caps sized to the 15.04px
+   download label. The footer retains the larger signature above. */
+.top-bar .brand { gap: 11px; }
+.top-bar .brand-wordmark {
+  flex-basis: 114.168px;
+  width: 114.168px;
+  height: 11.140px;
+  -webkit-mask-image: url("../brand/wordmark-header.svg?v=20261027a");
+  mask-image: url("../brand/wordmark-header.svg?v=20261027a");
+}
