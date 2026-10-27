@@ -42,10 +42,9 @@ main.hx:has(.hx-final) + .site-footer { margin-top: 0; }
 }
 
 .site-footer-links h2 {
-  margin: 0 0 3px;
-  display: flex;
-  align-items: center;
-  min-height: 32px;
+  margin: 0;
+  /* Keep the text aligned with the 32px brand icon without extra space below. */
+  padding-top: max(0px, calc(16px - 0.7em));
   color: var(--footer-heading-color);
   font-size: var(--footer-heading-size);
   font-weight: 700;
