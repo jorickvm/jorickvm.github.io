@@ -59,6 +59,7 @@
     var mobilePlayed = false;
     var frame = 0;
     var observer;
+    var mobileInView = false;
 
     function mix(a, b, t) { return a + (b - a) * t; }
     function paint(p) {
@@ -80,13 +81,20 @@
     }
 
     function update() {
-      if (!pinned || motion.matches) return;
-      paint((headerHeight - stage.getBoundingClientRect().top) / distance);
+      if (motion.matches) return;
+      if (pinned) {
+        paint((headerHeight - stage.getBoundingClientRect().top) / distance);
+      } else if (window.scrollY >= 24 && mobileInView) {
+        // Tall phone viewports can show most of the images on first load.
+        // Visibility alone must not consume the handoff before scrolling.
+        playOnce();
+      }
     }
 
     function playOnce() {
       if (pinned || mobilePlayed || motion.matches) return;
       mobilePlayed = true;
+      if (observer) observer.disconnect();
       var start;
       function tick(now) {
         if (start === undefined) start = now;
@@ -98,6 +106,7 @@
 
     function configure() {
       if (observer) observer.disconnect();
+      mobileInView = false;
       headerHeight = header ? header.offsetHeight : 0;
       phoneWidth = dashboard.offsetWidth;
       // Keep all hero content visible while pinned; its trailing padding may
@@ -124,9 +133,8 @@
         if (!frame) paint(mobilePlayed ? 1 : 0);
         if (!mobilePlayed && hasObserver) {
           observer = new IntersectionObserver(function (entries) {
-            if (entries[0].intersectionRatio < 0.55) return;
-            observer.disconnect();
-            playOnce();
+            mobileInView = entries[0].intersectionRatio >= 0.55;
+            update();
           }, { threshold: 0.55 });
           observer.observe(phones);
         }
