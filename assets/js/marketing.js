@@ -40,17 +40,107 @@
     }
   }
 
-  // ---------- Hero: the phones rise into place once ----------
-  var phones = page.querySelector('[data-hx-phones]');
-  if (phones) {
-    if (reduceMotion) {
-      phones.classList.remove('is-pre');
-    } else {
-      requestAnimationFrame(function () {
-        setTimeout(function () { phones.classList.remove('is-pre'); }, 80);
-      });
+  // ---------- Hero: a short scroll handoff from dashboard to tracker ----------
+  (function heroMotion() {
+    var stage = page.querySelector('[data-hx-hero-stage]');
+    var phones = page.querySelector('[data-hx-phones]');
+    if (!stage || !phones) return;
+    var hero = stage.querySelector('.hx-hero');
+    var tracker = phones.querySelector('.hx-phone-back');
+    var dashboard = phones.querySelector('.hx-phone-front');
+    var header = document.querySelector('.top-bar');
+    var motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var desktop = window.matchMedia('(min-width: 900px)');
+    var distance = 280;
+    var pinned = false;
+    var phoneWidth = 0;
+    var headerHeight = 0;
+    var progress = 0;
+    var mobilePlayed = false;
+    var frame = 0;
+    var observer;
+
+    function mix(a, b, t) { return a + (b - a) * t; }
+    function paint(p) {
+      progress = Math.min(1, Math.max(0, p));
+      // Pull the phones apart before changing their stacking order, then
+      // settle the tracker in front. All movement uses compositor transforms.
+      var second = progress >= 0.5;
+      var t = second ? (progress - 0.5) * 2 : progress * 2;
+      t = t * t * (3 - 2 * t);
+      var backX = second ? mix(-0.11, 0.08, t) : mix(0, -0.11, t);
+      var backY = second ? mix(-0.10, -0.30, t) : mix(0, -0.10, t);
+      var backScale = second ? mix(0.90, 1 / 0.84, t) : mix(1, 0.90, t);
+      var frontX = second ? mix(0.11, -0.08, t) : mix(0, 0.11, t);
+      var frontY = second ? mix(0.16, 0.30, t) : mix(0, 0.16, t);
+      var frontScale = second ? mix(0.78, 0.84, t) : mix(1, 0.78, t);
+      tracker.style.transform = 'translate3d(' + backX * phoneWidth + 'px,' + backY * phoneWidth + 'px,0) scale(' + backScale + ')';
+      dashboard.style.transform = 'translate3d(' + frontX * phoneWidth + 'px,' + frontY * phoneWidth + 'px,0) scale(' + frontScale + ')';
+      phones.classList.toggle('is-tracker-front', second);
     }
-  }
+
+    function update() {
+      if (!pinned || motion.matches) return;
+      paint((headerHeight - stage.getBoundingClientRect().top) / distance);
+    }
+
+    function playOnce() {
+      if (pinned || mobilePlayed || motion.matches) return;
+      mobilePlayed = true;
+      var start;
+      function tick(now) {
+        if (start === undefined) start = now;
+        paint((now - start) / 1400);
+        frame = progress < 1 ? requestAnimationFrame(tick) : 0;
+      }
+      frame = requestAnimationFrame(tick);
+    }
+
+    function configure() {
+      if (observer) observer.disconnect();
+      headerHeight = header ? header.offsetHeight : 0;
+      phoneWidth = dashboard.offsetWidth;
+      // Keep all hero content visible while pinned; its trailing padding may
+      // extend below the window. Short windows use the unpinned handoff.
+      var contentHeight = hero.offsetHeight - parseFloat(getComputedStyle(hero).paddingBottom);
+      pinned = !motion.matches && desktop.matches && contentHeight <= window.innerHeight - headerHeight;
+      stage.classList.toggle('is-animated', !motion.matches);
+      stage.classList.toggle('is-pinned', pinned);
+      stage.style.setProperty('--hx-hero-top', headerHeight + 'px');
+      stage.style.setProperty('--hx-hero-distance', distance + 'px');
+      if (frame && (pinned || motion.matches)) {
+        cancelAnimationFrame(frame);
+        frame = 0;
+      }
+      if (motion.matches) {
+        tracker.style.removeProperty('transform');
+        dashboard.style.removeProperty('transform');
+        phones.classList.remove('is-tracker-front');
+        return;
+      }
+      if (pinned) {
+        update();
+      } else {
+        if (!frame) paint(mobilePlayed ? 1 : 0);
+        if (!mobilePlayed && hasObserver) {
+          observer = new IntersectionObserver(function (entries) {
+            if (entries[0].intersectionRatio < 0.55) return;
+            observer.disconnect();
+            playOnce();
+          }, { threshold: 0.55 });
+          observer.observe(phones);
+        }
+      }
+    }
+
+    scrollHandlers.push(update);
+    window.addEventListener('resize', configure);
+    motion.addEventListener('change', configure);
+    configure();
+    // Fonts and restored navigation can change the initial hero geometry.
+    window.addEventListener('pageshow', configure);
+    if (document.fonts) document.fonts.ready.then(configure);
+  })();
 
   // ---------- Reveal: only what starts below the fold is hidden first ----------
   if (!reduceMotion && hasObserver) {

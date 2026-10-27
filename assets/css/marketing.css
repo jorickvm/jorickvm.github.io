@@ -184,6 +184,24 @@ html[data-theme="light"] .hx-map { background-image: url("../home/map/hero-map-l
 html.js .hx-phones.is-pre .hx-phone-front { transform: translateY(56px); opacity: 0; }
 html.js .hx-phones.is-pre .hx-phone-back { transform: translateY(84px); opacity: 0; }
 
+/* One short handoff, with the same screenshot/frame components. The wrapper
+   supplies just 280px of desktop scroll; narrow/short windows never pin. */
+.hx-hero-stage.is-pinned::after { content: ""; display: block; height: var(--hx-hero-distance); }
+.hx-hero-stage.is-pinned .hx-hero { position: sticky; top: var(--hx-hero-top); }
+.hx-hero-stage.is-animated .hx-phones .hx-device {
+  transform-origin: 50% 0;
+  transition: none;
+  will-change: transform;
+}
+.hx-phones.is-tracker-front .hx-phone-back { z-index: 3; }
+@media (prefers-reduced-motion: reduce) {
+  .hx-hero-stage.is-pinned::after { display: none; }
+  .hx-hero-stage.is-pinned .hx-hero { position: relative; top: auto; }
+  .hx-hero-stage .hx-phones .hx-device { transform: none !important; will-change: auto; }
+  .hx-phones.is-tracker-front .hx-phone-back { z-index: 1; }
+}
+
+
 /* ---------- use cases: one quiet tile per situation, real tracker card inside ----------
    The images are the app's own dashboard cards, cropped to the card's edge and
    shown near their on-phone size, so they read as the app rather than as
