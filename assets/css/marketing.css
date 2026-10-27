@@ -345,12 +345,49 @@ html:not(.js) .hx-quote-toggle { display: none; }
 
 /* ---------- final ---------- */
 .hx-final { padding-bottom: 88px; }
-.hx-final-row { display: flex; justify-content: center; align-items: center; gap: 40px; margin-top: 30px; }
+.hx-final-row { display: flex; justify-content: center; margin-top: 30px; }
 .hx-final-download { display: flex; flex-direction: column; align-items: center; min-width: 0; }
+.hx-final-button { position: relative; display: flex; justify-content: center; width: 100%; padding: 0 4px; }
 .hx-final-download .hx-micro { max-width: 42ch; text-wrap: balance; }
-.hx-qr { display: none; flex-direction: column; align-items: center; flex: 0 0 120px; gap: 8px; text-align: center; font-size: 0.84rem; line-height: 1.4; color: var(--muted-2); }
+.hx-qr { display: none; }
 .hx-boundary { max-width: 60ch; margin: 28px auto 0; font-size: 0.8rem; line-height: 1.5; color: var(--muted-2); }
-.hx-qr img { width: 84px; height: 84px; padding: 6px; border-radius: 12px; background: #fff; }
+/* The popover is outside layout, so the download button stays centered.
+   Match the header QR treatment, with a hover bridge and keyboard access. */
+@media (min-width: 900px) {
+  .hx-qr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: -12px;
+    left: calc(100% + 12px);
+    width: 194px;
+    padding: 14px;
+    gap: 8px;
+    border: 1px solid var(--line-strong);
+    border-radius: 18px;
+    background: var(--bg-card);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.18);
+    font-size: 0.84rem;
+    line-height: 1.4;
+    text-align: center;
+    color: var(--muted);
+    z-index: 5;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-4px);
+    transition: opacity 140ms ease, transform 140ms ease, visibility 140ms;
+  }
+  .hx-qr::before { content: ""; position: absolute; inset: 0 100% 0 auto; width: 16px; }
+  .hx-qr img { display: block; width: 164px; height: 164px; max-width: none; border-radius: 8px; }
+  .hx-final-button:focus-within .hx-qr { visibility: visible; opacity: 1; pointer-events: auto; transform: none; }
+}
+@media (min-width: 900px) and (hover: hover) {
+  .hx-final-button:hover .hx-qr { visibility: visible; opacity: 1; pointer-events: auto; transform: none; }
+}
+.hx-final-button.is-qr-dismissed .hx-qr { visibility: hidden; opacity: 0; pointer-events: none; }
+
 
 /* ---------- use-case pages ---------- */
 /* Marketing content spans the full site width, so the header and every
@@ -605,7 +642,6 @@ html:lang(ko) .hx-uc-hero h1 { font-size: calc(var(--fs-display) * 0.8); letter-
   .hx-faq { margin-top: 0; }
   .hx-trust-list { grid-template-columns: repeat(4, 1fr); gap: 36px; margin-top: 48px; }
 
-  .hx-qr { display: flex; }
   .hx-uc-section { padding-top: 96px; }
   .hx-uc-hero { padding: 72px var(--hx-gutter) 16px; }
   .hx-uc-hero .hx-map { height: 100%; }

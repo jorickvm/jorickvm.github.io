@@ -142,6 +142,23 @@
     if (document.fonts) document.fonts.ready.then(configure);
   })();
 
+  // QR hints stay open while hovered or focused and dismiss with Escape.
+  var qrButtons = Array.prototype.slice.call(page.querySelectorAll('.hx-final-button'));
+  qrButtons.forEach(function (wrap) {
+    wrap.addEventListener('mouseleave', function () {
+      if (!wrap.contains(document.activeElement)) wrap.classList.remove('is-qr-dismissed');
+    });
+    wrap.addEventListener('focusout', function (event) {
+      if (!wrap.matches(':hover') && !wrap.contains(event.relatedTarget)) wrap.classList.remove('is-qr-dismissed');
+    });
+  });
+  document.addEventListener('keydown', function (event) {
+    if (event.key !== 'Escape') return;
+    qrButtons.forEach(function (wrap) {
+      if (wrap.matches(':hover') || wrap.contains(document.activeElement)) wrap.classList.add('is-qr-dismissed');
+    });
+  });
+
   // ---------- Reveal: only what starts below the fold is hidden first ----------
   if (!reduceMotion && hasObserver) {
     var revealer = new IntersectionObserver(function (entries) {

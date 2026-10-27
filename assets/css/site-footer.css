@@ -1,5 +1,7 @@
 .site-footer {
   --footer-heading-color: #e1d9d4;
+  --footer-heading-size: 0.94rem;
+  --footer-heading-tracking: 0.2em;
   margin-top: 72px;
   padding: 0;
   border-top: 1px solid var(--line, rgba(255,255,255,0.10));
@@ -45,11 +47,28 @@ main.hx:has(.hx-final) + .site-footer { margin-top: 0; }
   align-items: center;
   min-height: 32px;
   color: var(--footer-heading-color);
-  font-size: 0.94rem;
+  font-size: var(--footer-heading-size);
   font-weight: 700;
   line-height: 1.4;
-  letter-spacing: 0.2em;
+  letter-spacing: var(--footer-heading-tracking);
   text-transform: uppercase;
+}
+
+/* Unlike a fixed-size SVG mask, text follows the browser's text-size control. */
+.site-footer .brand-wordmark {
+  flex: none;
+  width: auto;
+  height: auto;
+  font-size: var(--footer-heading-size);
+  font-weight: 700;
+  line-height: 1.4;
+  letter-spacing: var(--footer-heading-tracking);
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--footer-heading-color);
+  background: none;
+  -webkit-mask: none;
+  mask: none;
 }
 
 .site-footer-links a {
@@ -97,9 +116,9 @@ main.hx:has(.hx-final) + .site-footer { margin-top: 0; }
 @media (max-width: 520px) {
   .site-footer-links { grid-template-columns: 1fr 1fr; gap: 28px 24px; }
   .site-footer-links > div:last-child { grid-column: 1 / -1; }
-  .site-footer-links h2 { font-size: 0.84rem; letter-spacing: 0.1em; }
+  .site-footer { --footer-heading-size: 0.84rem; --footer-heading-tracking: 0.1em; }
 }
 
 @media (max-width: 360px) {
-  .site-footer-links h2 { font-size: 0.75rem; letter-spacing: 0.06em; }
+  .site-footer { --footer-heading-size: 0.75rem; --footer-heading-tracking: 0.06em; }
 }
