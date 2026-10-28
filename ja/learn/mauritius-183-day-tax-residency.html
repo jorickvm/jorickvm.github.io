@@ -136,6 +136,7 @@
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261028a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">本文へスキップ</a>
@@ -209,8 +210,9 @@
       <ul>
         <li><a href="#section-1">ルールの内容</a></li>
         <li><a href="#section-2">数え方</a></li>
-        <li><a href="#section-3">居住者かどうかが重要な理由</a></li>
-        <li><a href="#section-4">よくある質問</a></li>
+        <li><a href="#calculator">モーリシャスの税務上の居住判定計算機</a></li>
+        <li><a href="#section-4">居住者かどうかが重要な理由</a></li>
+        <li><a href="#section-5">よくある質問</a></li>
       </ul>
     </nav>
     <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
@@ -258,9 +260,95 @@
       <p><strong>例。</strong>2024〜25所得年度にモーリシャスで100日、2023〜24所得年度に95日、2022〜23所得年度に90日滞在した場合。</p>
       <p>どの所得年度も183日に届かないため、1つ目の判定は満たしません。しかし100＋95＋90で3年の合計は285日となり、270日を超えるため、2つ目の判定により2024〜25所得年度についてモーリシャスの税務上の居住者となります。</p>
     </div>
-    <p class="calc-callout"><a href="/ja/learn/183-day-rule-calculator?country=MU&amp;period=tax&amp;start=07-01&amp;resident=183">183日ルール計算機</a>で滞在日数を数える。モーリシャスのルールがあらかじめ設定されているので、滞在した日をタップしてください。</p>
+    <h2 id="calculator">モーリシャスの税務上の居住判定計算機</h2>
+    <p>モーリシャスにいた日をタップし、判定する所得年度を選んでください。所得年度は7月1日から翌年6月30日までです。計算機は2つの判定を両方確認します。その所得年度の滞在が183日以上か、その年度と前の2つの所得年度の合計が270日以上かです。</p>
+    <div class="daycal" id="embed-multiYear" data-day-calendar="multiYear" data-cal-preset="{&quot;settings&quot;:{&quot;spec&quot;:&quot;mauritius&quot;,&quot;note&quot;:&quot;Mauritius tax residence calculator&quot;},&quot;lock&quot;:[],&quot;link&quot;:&quot;multi-mu&quot;,&quot;offer&quot;:&quot;residence-mauritius-combined&quot;}">
+      <script type="application/json" data-cal-strings>
+{
+  "hintEnd": "滞在のもう一方の日付をタップしてください。",
+  "hintSelected": "滞在のどちらかの端をドラッグして日付を変更するか、下で削除してください。",
+  "pending": "新しい滞在の開始日",
+  "empty": "滞在はまだありません。",
+  "deleteTrip": "滞在を削除",
+  "country": "国",
+  "goal": "目標",
+  "goalStay": "上限未満に抑える",
+  "goalReach": "目標を達成",
+  "addCountry": "国を追加",
+  "noMatch": "一致する国はありません",
+  "year": "年",
+  "starts": "開始",
+  "tripDays": {
+    "other": "{n}日"
+  },
+  "remaining": {
+    "other": "残り{n}日"
+  },
+  "atLimit": "上限到達",
+  "needed": {
+    "other": "あと{n}日必要"
+  },
+  "reachedTarget": "目標達成",
+  "overBy": {
+    "other": "上限を{n}日超過"
+  },
+  "hintStart": "モーリシャスでの滞在が始まった日をタップし、次に終わった日をタップしてください。",
+  "inTrip": "モーリシャスに滞在",
+  "title": "モーリシャス",
+  "captionStay": "税務上の居住者になるのを避けます。",
+  "captionReach": "税務上の居住者になることを目指します。",
+  "met": "日数基準を満たす",
+  "notMet": "日数基準未達"
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>月</span><span>火</span><span>水</span><span>木</span><span>金</span><span>土</span><span>日</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>タイムライン</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>AtlasDaysで記録する</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="embed-multiYear-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="embed-multiYear-import-title">AtlasDaysで記録する</p>
+            <p class="cal-dialog-sub">旅行中もそのまま日数を数えられる、iPhoneとiPad向けの無料アプリです。</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>iPhoneまたはiPadにAtlasDaysをインストールしておく</strong><span>App Storeで無料で入手できます。</span></li>
+            <li><strong>QRコードを読み取り、すべての旅行をAtlasDaysに読み込む</strong><span>確認してから「インポート」をタップします。</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>AtlasDaysを入手</strong><span>App Storeから無料で入手できます。お持ちの場合は2へ進んでください。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8&amp;ppid=1a1343d8-332a-4e0b-ad29-931faa87a99c">App Store</a></li>
+          <li><strong>アプリで滞在を開く</strong><span>確認してから「インポート」をタップします。それまで何も保存されません。</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">AtlasDaysで開く</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>AtlasDaysを入手</strong><span>iPhone向けにApp Storeで無料で提供しています。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8&amp;ppid=1a1343d8-332a-4e0b-ad29-931faa87a99c">App Store</a></li>
+          <li><strong>ファイルで滞在をインポート</strong><span>滞在の数が多く、リンクでは送れません。ファイルをダウンロードして、iPhoneのAtlasDaysで開いてください。</span><button type="button" class="cal-dialog-primary" data-cal-download>ファイルをダウンロード</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>旅行をCSVファイルでダウンロード</button><span data-cal-downloaded hidden>このファイルをiPhoneのAtlasDaysで開いてください。</span></p>
+          <button type="button" data-cal-close>閉じる</button>
+        </div>
+      </dialog>
+    </div>
 
-    <h2 id="section-3">居住者かどうかが重要な理由</h2>
+    <h2 id="section-4">居住者かどうかが重要な理由</h2>
     <p>どちらかの基準を超えることは、単なる肩書きの問題ではありません。モーリシャスの税務上の居住者は、原則として全世界所得が課税対象ですが、個人の国外源泉所得については、通常モーリシャスに送金された場合にのみ課税されます。非居住者はモーリシャス源泉の所得だけが対象です。別の国も居住者だと主張する場合は、租税条約の振り分け規定（タイブレーカー）が、恒久的な住居や重要な利害関係の中心といった基準で居住地を決めます。</p>
 
     <div class="cta-box">
@@ -276,7 +364,7 @@
       </a>
     </div>
 
-    <h2 id="section-4">よくある質問</h2>
+    <h2 id="section-5">よくある質問</h2>
     <h3>税務上の居住者にならずにモーリシャスに滞在できる日数は？</h3>
     <p>1つの所得年度で183日未満に抑え、あわせて270日の通算判定も下回っている必要があります。1つの所得年度で183日以上になるか、その年とその前の2つの所得年度で270日以上になると、居住者となります。</p>
     <h3>モーリシャスの税務上の居住判定でいう所得年度とは？</h3>
@@ -297,10 +385,10 @@
     <nav class="related generated-related" aria-labelledby="related-mauritius-183-day-tax-residency">
       <h2 id="related-mauritius-183-day-tax-residency">関連記事</h2>
       <div class="rule-cards">
-        <a class="rule-card" href="/ja/learn/183-day-rule-calculator"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.5 2.6 3.5 5.4 3.5 8.5s-1 5.9-3.5 8.5c-2.5-2.6-3.5-5.4-3.5-8.5s1-5.9 3.5-8.5Z"/></svg></span><span class="rule-text"><strong>183日ルール計算機：どの国でも滞在日数をカウント</strong></span></a>
         <a class="rule-card" href="/ja/learn/183-day-tax-residency-rule"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5.5" width="16" height="14.5" rx="3"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/></svg></span><span class="rule-text"><strong>税務上の居住を決める183日ルールと日数の数え方</strong></span></a>
         <a class="rule-card" href="/ja/learn/tax-residency-by-country"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 4.5h9l3 3v12H6z"/><path d="M9 11h6M9 14.5h6"/></svg></span><span class="rule-text"><strong>国別の税務上の居住</strong></span></a>
         <a class="rule-card" href="/ja/learn/albania-183-day-tax-residency"><img class="rule-flag" src="/assets/flags/al.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>アルバニアの183日ルール：税務上の居住はいつ発生するか</strong></span></a>
+        <a class="rule-card" href="/ja/learn/armenia-183-day-tax-residency"><img class="rule-flag" src="/assets/flags/am.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>アルメニアの183日ルール：税務上の居住はいつ発生するか</strong></span></a>
       </div>
     </nav>
   </article>
@@ -350,6 +438,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"ナビゲーションメニューを開く","menuClose":"ナビゲーションメニューを閉じる"};</script>
   <script src="../../assets/js/navigation.js?v=20261027j"></script>
+  <script defer src="../../assets/js/rules/multi-year.js?v=20261029a"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261029a"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

@@ -136,6 +136,7 @@
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261028a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Перейти до вмісту</a>
@@ -209,8 +210,9 @@
       <ul>
         <li><a href="#section-1">Правило</a></li>
         <li><a href="#section-2">Як вести підрахунок</a></li>
-        <li><a href="#section-3">Чому резидентство має значення</a></li>
-        <li><a href="#section-4">Часті запитання</a></li>
+        <li><a href="#calculator">Калькулятор податкового резидентства Маврикію</a></li>
+        <li><a href="#section-4">Чому резидентство має значення</a></li>
+        <li><a href="#section-5">Часті запитання</a></li>
       </ul>
     </nav>
     <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
@@ -258,9 +260,107 @@
       <p><strong>Приклад.</strong> Ви провели на Маврикії 100 днів у фінансовому році 2024–25, 95 днів у 2023–24 і 90 днів у 2022–23.</p>
       <p>Жоден окремий фінансовий рік не сягає 183 днів, тож перший тест не виконано. Але 100 + 95 + 90 = 285 днів за три роки, а це більше ніж 270, тож другий тест робить вас податковим резидентом Маврикію за фінансовий рік 2024–25.</p>
     </div>
-    <p class="calc-callout">Порахуйте свої дні в <a href="/uk/learn/183-day-rule-calculator?country=MU&amp;period=tax&amp;start=07-01&amp;resident=183">калькуляторі 183 днів</a>. Він одразу відкриється з правилом Маврикію: позначте дні, які ви там провели.</p>
+    <h2 id="calculator">Калькулятор податкового резидентства Маврикію</h2>
+    <p>Позначте дні на Маврикії й виберіть фінансовий рік для перевірки. Кожен фінансовий рік триває з 1 липня до 30 червня. Калькулятор перевіряє обидва тести: 183 дні в цьому фінансовому році або 270 днів за цей і два попередні фінансові роки.</p>
+    <div class="daycal" id="embed-multiYear" data-day-calendar="multiYear" data-cal-preset="{&quot;settings&quot;:{&quot;spec&quot;:&quot;mauritius&quot;,&quot;note&quot;:&quot;Mauritius tax residence calculator&quot;},&quot;lock&quot;:[],&quot;link&quot;:&quot;multi-mu&quot;,&quot;offer&quot;:&quot;residence-mauritius-combined&quot;}">
+      <script type="application/json" data-cal-strings>
+{
+  "hintEnd": "Тепер торкніться іншої дати поїздки.",
+  "hintSelected": "Перетягніть будь-який край поїздки, щоб змінити дати, або видаліть її нижче.",
+  "pending": "початок нової поїздки",
+  "empty": "Поїздок поки немає.",
+  "deleteTrip": "Видалити поїздку",
+  "country": "Країна",
+  "goal": "Ціль",
+  "goalStay": "Не перевищувати",
+  "goalReach": "Досягти цілі",
+  "addCountry": "Додати країну",
+  "noMatch": "Країну не знайдено",
+  "year": "Рік",
+  "starts": "Початок",
+  "tripDays": {
+    "one": "{n} день",
+    "few": "{n} дні",
+    "many": "{n} днів",
+    "other": "{n} дня"
+  },
+  "remaining": {
+    "one": "Залишилося: {n} день",
+    "few": "Залишилося: {n} дні",
+    "many": "Залишилося: {n} днів",
+    "other": "Залишилося: {n} дні"
+  },
+  "atLimit": "На межі",
+  "needed": {
+    "one": "Потрібно ще {n} день",
+    "few": "Потрібно ще {n} дні",
+    "many": "Потрібно ще {n} днів",
+    "other": "Потрібно ще {n} дні"
+  },
+  "reachedTarget": "Ціль досягнуто",
+  "overBy": {
+    "one": "Ліміт перевищено на {n} день",
+    "few": "Ліміт перевищено на {n} дні",
+    "many": "Ліміт перевищено на {n} днів",
+    "other": "Ліміт перевищено на {n} дні"
+  },
+  "hintStart": "Торкніться дня початку перебування на Маврикії, а потім дня його завершення.",
+  "inTrip": "на Маврикії",
+  "title": "Маврикій",
+  "captionStay": "Уникати податкового резидентства.",
+  "captionReach": "Стати податковим резидентом.",
+  "met": "Критерій днів виконано",
+  "notMet": "Критерій днів не виконано"
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>П</span><span>В</span><span>С</span><span>Ч</span><span>П</span><span>С</span><span>Н</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>Хронологія</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Відстежувати в AtlasDays</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="embed-multiYear-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="embed-multiYear-import-title">Відстежувати в AtlasDays</p>
+            <p class="cal-dialog-sub">Продовжуйте підрахунок днів у дорозі. Безкоштовна програма для iPhone та iPad.</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>Переконайтеся, що AtlasDays встановлено на вашому iPhone чи iPad</strong><span>Безкоштовно в App Store.</span></li>
+            <li><strong>Відскануйте QR-код, щоб завантажити всі поїздки в AtlasDays</strong><span>Перевірте їх і торкніться «Імпорт».</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>Завантажте AtlasDays</strong><span>Безкоштовно в App Store. Уже встановлено? Переходьте до кроку 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8&amp;ppid=1a1343d8-332a-4e0b-ad29-931faa87a99c">App Store</a></li>
+          <li><strong>Відкрийте поїздки в програмі</strong><span>Перевірте їх і торкніться «Імпорт». До цього нічого не зберігається.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Відкрити в AtlasDays</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>Завантажте AtlasDays</strong><span>Безкоштовно в App Store для iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8&amp;ppid=1a1343d8-332a-4e0b-ad29-931faa87a99c">App Store</a></li>
+          <li><strong>Імпортуйте поїздки з файлу</strong><span>Стільки поїздок не вміститься в посилання. Завантажте файл і відкрийте його в AtlasDays на iPhone.</span><button type="button" class="cal-dialog-primary" data-cal-download>Завантажити файл</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Завантажити поїздки у файлі CSV</button><span data-cal-downloaded hidden>Відкрийте цей файл в AtlasDays на iPhone.</span></p>
+          <button type="button" data-cal-close>Закрити</button>
+        </div>
+      </dialog>
+    </div>
 
-    <h2 id="section-3">Чому резидентство має значення</h2>
+    <h2 id="section-4">Чому резидентство має значення</h2>
     <p>Подолання будь-якого з цих порогів — не просто ярлик статусу. Податковий резидент Маврикію в принципі оподатковується на дохід у всьому світі, хоча для фізичних осіб дохід з іноземних джерел зазвичай оподатковується лише тоді, коли його переказано на Маврикій. Нерезидент оподатковується лише на дохід, отриманий з Маврикію. Якщо резидентом вас вважає й інша країна, питання резидентства вирішує угода про уникнення подвійного оподаткування через такі критерії, як постійне житло та центр життєвих інтересів.</p>
 
     <div class="cta-box">
@@ -276,7 +376,7 @@
       </a>
     </div>
 
-    <h2 id="section-4">Часті запитання</h2>
+    <h2 id="section-5">Часті запитання</h2>
     <h3>Скільки днів можна пробути на Маврикії, не ставши податковим резидентом?</h3>
     <p>Менше ніж 183 дні за один фінансовий рік, і водночас треба залишатися нижче сукупного тесту на 270 днів. Якщо ви сягнули 183 або більше за один фінансовий рік чи 270 або більше за поточний фінансовий рік і два попередні, ви стаєте резидентом.</p>
     <h3>Що таке фінансовий рік для податкового резидентства Маврикію?</h3>
@@ -297,10 +397,10 @@
     <nav class="related generated-related" aria-labelledby="related-mauritius-183-day-tax-residency">
       <h2 id="related-mauritius-183-day-tax-residency">Схожі статті</h2>
       <div class="rule-cards">
-        <a class="rule-card" href="/uk/learn/183-day-rule-calculator"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.5 2.6 3.5 5.4 3.5 8.5s-1 5.9-3.5 8.5c-2.5-2.6-3.5-5.4-3.5-8.5s1-5.9 3.5-8.5Z"/></svg></span><span class="rule-text"><strong>Калькулятор правила 183 днів: підрахунок днів у будь-якій країні</strong></span></a>
         <a class="rule-card" href="/uk/learn/183-day-tax-residency-rule"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5.5" width="16" height="14.5" rx="3"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/></svg></span><span class="rule-text"><strong>Правило 183 днів для податкового резидентства: як рахують дні</strong></span></a>
         <a class="rule-card" href="/uk/learn/tax-residency-by-country"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 4.5h9l3 3v12H6z"/><path d="M9 11h6M9 14.5h6"/></svg></span><span class="rule-text"><strong>Податкове резидентство за країнами: пороги днів</strong></span></a>
         <a class="rule-card" href="/uk/learn/albania-183-day-tax-residency"><img class="rule-flag" src="/assets/flags/al.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Албанія: правило 183 днів для податкового резидентства</strong></span></a>
+        <a class="rule-card" href="/uk/learn/armenia-183-day-tax-residency"><img class="rule-flag" src="/assets/flags/am.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Вірменія: правило 183 днів для податкового резидентства</strong></span></a>
       </div>
     </nav>
   </article>
@@ -350,6 +450,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"Відкрити меню навігації","menuClose":"Закрити меню навігації"};</script>
   <script src="../../assets/js/navigation.js?v=20261027j"></script>
+  <script defer src="../../assets/js/rules/multi-year.js?v=20261029a"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261029a"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

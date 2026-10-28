@@ -136,6 +136,7 @@
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261028a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">İçeriğe geç</a>
@@ -210,6 +211,7 @@
         <li><a href="#kural">Kural</a></li>
         <li><a href="#hangi-ikinci-test-size-uygulan-r">Hangi ikinci test size uygulanır?</a></li>
         <li><a href="#g-n-hesab-nas-l-yap-l-r">Gün hesabı nasıl yapılır?</a></li>
+        <li><a href="#calculator">Hindistan vergi ikameti hesaplama</a></li>
         <li><a href="#mukim-rnor-veya-mukim-olmayan">Mukim, RNOR veya mukim olmayan</a></li>
         <li><a href="#g-n-hesab-n-n-tesinde">Gün hesabının ötesinde</a></li>
         <li><a href="#sss">SSS</a></li>
@@ -240,6 +242,19 @@
       </dl>
     </div>
 
+    <details class="toc">
+      <summary>Bu sayfada</summary>
+      <ul>
+        <li><a href="#kural">Kural</a></li>
+        <li><a href="#hangi-ikinci-test-size-uygulan-r">Hangi ikinci test size uygulanır?</a></li>
+        <li><a href="#g-n-hesab-nas-l-yap-l-r">Gün hesabı nasıl yapılır?</a></li>
+        <li><a href="#calculator">Hindistan vergi ikameti hesaplama</a></li>
+        <li><a href="#mukim-rnor-veya-mukim-olmayan">Mukim, RNOR veya mukim olmayan</a></li>
+        <li><a href="#g-n-hesab-n-n-tesinde">Gün hesabının ötesinde</a></li>
+        <li><a href="#sss">SSS</a></li>
+      </ul>
+    </details>
+    <script>(function(){var t=document.currentScript.previousElementSibling;if(matchMedia('(min-width: 760px)').matches)t.open=true})();</script>
     <h2 id="kural">Kural</h2>
     <p>Hindistan ikameti her vergi yılı için ayrı belirler. Bir kişi, gün sayısına dayanan iki testten birini karşılarsa o vergi yılında mukimdir:</p>
     <ul>
@@ -293,7 +308,115 @@
       <p><strong>Örnek.</strong> 1 Ekim 2026'da Hindistan'a varıyor ve 31 Mart 2027'ye kadar kalıyorsunuz. İki seyahat günü de sayıldığında bu, 2026–27 vergi yılında 182 gün eder ve o yıl için mukim olursunuz.</p>
       <p>Bir gün önce, 30 Mart'ta ayrılırsanız sayı 181 olur. Hindistan kaynaklı geliri ₹15 lakh'a kadar olan, ziyarete gelen bir vatandaşsanız o yıl mukim olmazsınız. Hindistan kaynaklı geliriniz ₹15 lakh'ın üzerindeyse ve önceki dört vergi yılında Hindistan'da 365 gün veya daha fazla geçirdiyseniz, 120 gün testi sizi yine de mukim yapar; ancak olağan mukim olmazsınız.</p>
     </div>
-    <p class="calc-callout">Kendi günlerinizi <a href="/tr/learn/183-day-rule-calculator?country=IN&amp;period=tax&amp;start=04-01&amp;resident=182&amp;limit=182">183 gün hesaplayıcısında</a> sayın. Hesaplayıcı, Hindistan kuralı seçili olarak açılır: Orada bulunduğunuz günlere dokunun.</p>
+    <h2 id="calculator">Hindistan vergi ikameti hesaplama</h2>
+    <p>Hindistan'da geçirdiğiniz günlere dokunun, vergi yılını seçin ve durumunuzla ilgili soruları yanıtlayın. Her vergi yılı 1 Nisan'dan 31 Mart'a kadar sürer ve varış günü de ayrılış günü de sayılır. Sınır 182 gündür; ikinci test size uygulanıyorsa ve önceki dört vergi yılında Hindistan'da 365 gün geçirdiyseniz 60 veya 120 gündür. “Sınırın altında kal” hedefi seçiliyken çubuk, mukim olmadan Hindistan'da geçirebileceğiniz son günü gösterir.</p>
+    <div class="daycal" id="embed-multiYear" data-day-calendar="multiYear" data-cal-preset="{&quot;settings&quot;:{&quot;spec&quot;:&quot;india&quot;,&quot;note&quot;:&quot;India tax residence calculator&quot;},&quot;lock&quot;:[],&quot;link&quot;:&quot;multi-in&quot;,&quot;offer&quot;:&quot;residence-india-combined&quot;}">
+      <script type="application/json" data-cal-strings>
+{
+  "hintEnd": "Kalışın diğer uç gününe dokunun.",
+  "hintSelected": "Tarihlerini değiştirmek için kalışın iki ucundan birini sürükleyin veya kalışı aşağıdan silin.",
+  "pending": "yeni kalışın başlangıcı",
+  "empty": "Henüz kalış yok.",
+  "deleteTrip": "Kalışı sil",
+  "country": "Ülke",
+  "goal": "Hedef",
+  "goalStay": "Sınırın altında kal",
+  "goalReach": "Hedefe ulaş",
+  "addCountry": "Ülke ekle",
+  "noMatch": "Eşleşen ülke yok",
+  "year": "Yıl",
+  "starts": "Başlangıç",
+  "tripDays": {
+    "one": "{n} gün",
+    "other": "{n} gün"
+  },
+  "remaining": {
+    "one": "{n} gün kaldı",
+    "other": "{n} gün kaldı"
+  },
+  "atLimit": "Sınırda",
+  "needed": {
+    "one": "{n} gün daha gerekli",
+    "other": "{n} gün daha gerekli"
+  },
+  "reachedTarget": "Hedefe ulaşıldı",
+  "overBy": {
+    "one": "Sınır {n} gün aşıldı",
+    "other": "Sınır {n} gün aşıldı"
+  },
+  "hintStart": "Hindistan'daki bir kalışın başladığı güne, ardından bittiği güne dokunun.",
+  "inTrip": "Hindistan'da",
+  "title": "Hindistan",
+  "captionStay": "Vergi ikametinden kaçının.",
+  "captionReach": "Vergi mukimi sayılacak kadar kalın.",
+  "nationality": "Uyruk",
+  "nationalityIndian": "Hindistan vatandaşı veya Hint kökenli",
+  "nationalityIndianShort": "Hint",
+  "nationalityOther": "Diğer uyruk",
+  "nationalityOtherShort": "Diğer",
+  "situation": "Durum",
+  "situationLiving": "Hindistan'da yaşıyor",
+  "situationLivingShort": "Hindistan'da",
+  "situationVisiting": "Yurt dışında yaşıyor, Hindistan'ı ziyaret ediyor",
+  "situationVisitingShort": "Ziyaret",
+  "situationWork": "Çalışmak için Hindistan'dan ayrılıyor",
+  "situationWorkShort": "Yurt dışında iş",
+  "income": "Hindistan geliri",
+  "incomeUpTo": "1,5 milyon ₹'ye kadar",
+  "incomeAbove": "1,5 milyon ₹ üstü",
+  "limitThisYear": "Bu yılki sınır",
+  "lookbackCaption": {
+    "one": "Önceki dört vergi yılında Hindistan'da {n} gün.",
+    "other": "Önceki dört vergi yılında Hindistan'da {n} gün."
+  }
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>P</span><span>S</span><span>Ç</span><span>P</span><span>C</span><span>C</span><span>P</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>Zaman çizelgesi</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>AtlasDays'de takip et</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="embed-multiYear-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="embed-multiYear-import-title">AtlasDays'de takip et</p>
+            <p class="cal-dialog-sub">Seyahat ederken günlerinizi saymaya devam edin. iPhone ve iPad için ücretsiz uygulama.</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>AtlasDays'in iPhone veya iPad'inizde yüklü olduğundan emin olun</strong><span>App Store'da ücretsiz.</span></li>
+            <li><strong>Tüm seyahatleri AtlasDays'e aktarmak için QR kodunu tarayın</strong><span>Kontrol edin, ardından İçe aktar düğmesine dokunun.</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>AtlasDays'i indirin</strong><span>App Store'da ücretsiz. Zaten yüklü mü? 2. adıma geçin.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8&amp;ppid=1a1343d8-332a-4e0b-ad29-931faa87a99c">App Store</a></li>
+          <li><strong>Kalışlarınızı uygulamada açın</strong><span>Kontrol edin, ardından İçe aktar düğmesine dokunun. O zamana kadar hiçbir şey kaydedilmez.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">AtlasDays'de aç</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>AtlasDays'i indirin</strong><span>iPhone için App Store'da ücretsiz.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8&amp;ppid=1a1343d8-332a-4e0b-ad29-931faa87a99c">App Store</a></li>
+          <li><strong>Kalışlarınızı dosyayla içe aktarın</strong><span>Bu kadar çok kalış bir bağlantıya sığmıyor. Dosyayı indirin ve iPhone'unuzda AtlasDays ile açın.</span><button type="button" class="cal-dialog-primary" data-cal-download>Dosyayı indir</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Seyahatleri CSV dosyası olarak indir</button><span data-cal-downloaded hidden>Bu dosyayı iPhone'unuzda AtlasDays ile açın.</span></p>
+          <button type="button" data-cal-close>Kapat</button>
+        </div>
+      </dialog>
+    </div>
 
     <h2 id="mukim-rnor-veya-mukim-olmayan">Mukim, RNOR veya mukim olmayan</h2>
     <p>Bir testi karşılamak sizi mukim yapar, ancak Hindistan ardından mukimleri iki gruba ayırır ve bu ayrım gelirinizin ne kadarının vergilendirileceğini belirler:</p>
@@ -342,11 +465,11 @@
       <h2 id="related-india-182-day-tax-residency">İlgili makaleler</h2>
       <div class="rule-cards">
         <a class="rule-card" href="/tr/learn/india-tourist-visa-stay-limits"><img class="rule-flag" src="/assets/flags/in.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Hindistan e-Turist vizesinde 180 günlük kalış sınırları</strong></span></a>
-        <a class="rule-card" href="/tr/learn/183-day-rule-calculator"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.5 2.6 3.5 5.4 3.5 8.5s-1 5.9-3.5 8.5c-2.5-2.6-3.5-5.4-3.5-8.5s1-5.9 3.5-8.5Z"/></svg></span><span class="rule-text"><strong>183 gün hesaplama: Herhangi bir ülkedeki günlerinizi sayın</strong></span></a>
         <a class="rule-card" href="/tr/learn/183-day-tax-residency-rule"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5.5" width="16" height="14.5" rx="3"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/></svg></span><span class="rule-text"><strong>183 gün vergi ikameti kuralı: Gün hesabı nasıl işler?</strong></span></a>
         <a class="rule-card" href="/tr/learn/tax-residency-by-country"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 4.5h9l3 3v12H6z"/><path d="M9 11h6M9 14.5h6"/></svg></span><span class="rule-text"><strong>Ülkeye göre vergi ikameti</strong></span></a>
         <a class="rule-card" href="/tr/learn/kazakhstan-183-day-tax-residency"><img class="rule-flag" src="/assets/flags/kz.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Kazakistan’da vergi mukimliği: 183 gün kuralı</strong></span></a>
         <a class="rule-card" href="/tr/learn/thailand-180-day-tax-residency"><img class="rule-flag" src="/assets/flags/th.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Tayland&#x27;da vergi ikameti: 180 gün kuralı</strong></span></a>
+        <a class="rule-card" href="/tr/learn/malaysia-182-day-tax-residency"><img class="rule-flag" src="/assets/flags/my.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Malezya&#x27;da vergi ikameti: 182 gün kuralı</strong></span></a>
       </div>
     </nav>
   </article>
@@ -396,6 +519,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"Gezinme menüsünü aç","menuClose":"Gezinme menüsünü kapat"};</script>
   <script src="../../assets/js/navigation.js?v=20261027j"></script>
+  <script defer src="../../assets/js/rules/multi-year.js?v=20261029a"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261029a"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

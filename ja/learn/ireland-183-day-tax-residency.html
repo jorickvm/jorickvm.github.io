@@ -136,6 +136,7 @@
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261028a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">本文へスキップ</a>
@@ -209,10 +210,11 @@
       <ul>
         <li><a href="#section-1">規定</a></li>
         <li><a href="#section-2">数え方</a></li>
+        <li><a href="#calculator">アイルランドの税務上の居住判定計算機</a></li>
         <li><a href="#280">280日だけでは足りない場合</a></li>
-        <li><a href="#section-4">別途確認が必要になる記録日は？</a></li>
-        <li><a href="#section-5">居住者になることの意味</a></li>
-        <li><a href="#section-6">よくある質問</a></li>
+        <li><a href="#section-5">別途確認が必要になる記録日は？</a></li>
+        <li><a href="#section-6">居住者になることの意味</a></li>
+        <li><a href="#section-7">よくある質問</a></li>
       </ul>
     </nav>
     <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
@@ -227,6 +229,19 @@
       <div><dt>2年間の判定</dt><dd>対象年と前年で280日、対象年は31日以上</dd></div><div><dt>数える日</dt><dd>1日の一部でも滞在した日</dd></div>
       <div><dt>課税年度</dt><dd>1月1日から12月31日</dd></div><div class="legal-basis"><dt>法的根拠</dt><dd>Taxes Consolidation Act 1997第819条</dd></div>
     </dl></div>
+    <details class="toc">
+      <summary>目次</summary>
+      <ul>
+        <li><a href="#section-1">規定</a></li>
+        <li><a href="#section-2">数え方</a></li>
+        <li><a href="#calculator">アイルランドの税務上の居住判定計算機</a></li>
+        <li><a href="#280">280日だけでは足りない場合</a></li>
+        <li><a href="#section-5">別途確認が必要になる記録日は？</a></li>
+        <li><a href="#section-6">居住者になることの意味</a></li>
+        <li><a href="#section-7">よくある質問</a></li>
+      </ul>
+    </details>
+    <script>(function(){var t=document.currentScript.previousElementSibling;if(matchMedia('(min-width: 760px)').matches)t.open=true})();</script>
     <h2 id="section-1">規定</h2>
     <p>アイルランドでは、次の2つの判定のどちらかを満たすと、その年の税務上の居住者になります。</p>
     <ul>
@@ -242,19 +257,106 @@
       <li>183日未満でも対象年が31日以上なら、前年の対象日数を加えます。前年が30日以下なら加算しません。合計が<strong>280日以上</strong>なら、その年について2年間の判定を満たします。</li>
     </ol>
     <div class="example"><p><strong>例。</strong>ある年に150日、翌年に140日アイルランドに滞在します。</p><p>どちらの年も単独では183日に達しませんが、2年間の合計は290日です。280日以上なので、2年目はアイルランドの税務上の居住者になります。</p></div>
-    <p class="calc-callout"><a href="/ja/learn/183-day-rule-calculator?country=IE&amp;period=calendar&amp;resident=183">183日ルール計算機</a>で滞在日数を数える。アイルランドのルールがあらかじめ設定されているので、滞在した日をタップしてください。2年間の判定では、2年分の合計を足してください。</p>
+    <h2 id="calculator">アイルランドの税務上の居住判定計算機</h2>
+    <p>アイルランドにいた日をタップし、判定する年を選んでください。計算機は2つの判定を両方確認します。その暦年の滞在が183日以上か、その年と前年の合計が280日以上かです。30日以下の年は280日の計算に含めず、280日の判定には対象年に31日以上の滞在が必要です。</p>
+    <div class="daycal" id="embed-multiYear" data-day-calendar="multiYear" data-cal-preset="{&quot;settings&quot;:{&quot;spec&quot;:&quot;ireland&quot;,&quot;note&quot;:&quot;Ireland tax residence calculator&quot;},&quot;lock&quot;:[],&quot;link&quot;:&quot;multi-ie&quot;,&quot;offer&quot;:&quot;residence-ireland-combined&quot;}">
+      <script type="application/json" data-cal-strings>
+{
+  "hintEnd": "滞在のもう一方の日付をタップしてください。",
+  "hintSelected": "滞在のどちらかの端をドラッグして日付を変更するか、下で削除してください。",
+  "pending": "新しい滞在の開始日",
+  "empty": "滞在はまだありません。",
+  "deleteTrip": "滞在を削除",
+  "country": "国",
+  "goal": "目標",
+  "goalStay": "上限未満に抑える",
+  "goalReach": "目標を達成",
+  "addCountry": "国を追加",
+  "noMatch": "一致する国はありません",
+  "year": "年",
+  "starts": "開始",
+  "tripDays": {
+    "other": "{n}日"
+  },
+  "remaining": {
+    "other": "残り{n}日"
+  },
+  "atLimit": "上限到達",
+  "needed": {
+    "other": "あと{n}日必要"
+  },
+  "reachedTarget": "目標達成",
+  "overBy": {
+    "other": "上限を{n}日超過"
+  },
+  "hintStart": "アイルランドでの滞在が始まった日をタップし、次に終わった日をタップしてください。",
+  "inTrip": "アイルランドに滞在",
+  "title": "アイルランド",
+  "captionStay": "税務上の居住者になるのを避けます。",
+  "captionReach": "税務上の居住者になることを目指します。",
+  "met": "日数基準を満たす",
+  "notMet": "日数基準未達",
+  "minimum": "{year}年に31日以上の滞在が必要です。"
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>月</span><span>火</span><span>水</span><span>木</span><span>金</span><span>土</span><span>日</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>タイムライン</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>AtlasDaysで記録する</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="embed-multiYear-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="embed-multiYear-import-title">AtlasDaysで記録する</p>
+            <p class="cal-dialog-sub">旅行中もそのまま日数を数えられる、iPhoneとiPad向けの無料アプリです。</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>iPhoneまたはiPadにAtlasDaysをインストールしておく</strong><span>App Storeで無料で入手できます。</span></li>
+            <li><strong>QRコードを読み取り、すべての旅行をAtlasDaysに読み込む</strong><span>確認してから「インポート」をタップします。</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>AtlasDaysを入手</strong><span>App Storeから無料で入手できます。お持ちの場合は2へ進んでください。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8&amp;ppid=1a1343d8-332a-4e0b-ad29-931faa87a99c">App Store</a></li>
+          <li><strong>アプリで滞在を開く</strong><span>確認してから「インポート」をタップします。それまで何も保存されません。</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">AtlasDaysで開く</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>AtlasDaysを入手</strong><span>iPhone向けにApp Storeで無料で提供しています。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8&amp;ppid=1a1343d8-332a-4e0b-ad29-931faa87a99c">App Store</a></li>
+          <li><strong>ファイルで滞在をインポート</strong><span>滞在の数が多く、リンクでは送れません。ファイルをダウンロードして、iPhoneのAtlasDaysで開いてください。</span><button type="button" class="cal-dialog-primary" data-cal-download>ファイルをダウンロード</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>旅行をCSVファイルでダウンロード</button><span data-cal-downloaded hidden>このファイルをiPhoneのAtlasDaysで開いてください。</span></p>
+          <button type="button" data-cal-close>閉じる</button>
+        </div>
+      </dialog>
+    </div>
     <h2 id="280">280日だけでは足りない場合</h2>
     <p>前年にアイルランドで260日過ごしたとします。今年20日で記録上の2年間合計は280日になりますが、2年間の居住判定はまだ満たしません。今年30日で合計290日になっても、対象年の最低日数を満たしていません。</p>
     <p>今年31日になると合計291日となり、2年間の判定が適用されます。今年さらに183日に達する必要はありません。同じ人に対する2つの代替的な判定であり、自由に選ぶ別々の規定ではありません。</p>
     <p>判定は暦年とともに動きます。新しい年が始まると直前の年と組み合わせ、2年前の日数は比較から外れます。通常居住者の資格、租税条約上の問題、居住者になる選択は別の問題です。</p>
-    <h2 id="section-4">別途確認が必要になる記録日は？</h2>
+    <h2 id="section-5">別途確認が必要になる記録日は？</h2>
     <p>現在の規定では通常、1日の一部でも数えます。アイルランド歳入庁は、空港の制限区域内にとどまった場合と、予見できず避けられない事情により出国できなかった場合の例外を示しています。旅行記録だけですべての例外を証明できるわけではありません。判定が例外に依存する場合は事情の証拠を保管し、下記の公式資料で歳入庁の指針を確認してください。</p>
-    <h2 id="section-5">居住者になることの意味</h2>
+    <h2 id="section-6">居住者になることの意味</h2>
     <p>どちらかの基準日数を超えることは、単なる呼称の変更ではありません。アイルランドの税務上の居住者は原則として全世界所得にアイルランドの税が課され、非居住者は主にアイルランド源泉所得が課税対象になります。ドミサイル（住所地）も重要です。アイルランドにドミサイルを持たない居住者は、国外所得をアイルランドへ送金した範囲でのみ課税される場合があります。別の国でも税務上の居住者とされる場合は、租税条約が恒久的な住居や重要な利害関係の中心などの振り分け規定（タイブレーカー）で税務上の居住地を決めます。</p>
     <div class="cta-box"><span class="cta-logo"><img class="logo-dark" src="/assets/brand/logo_dark.png?v=20260325a" alt="AtlasDaysのロゴ" width="52" height="52" /><img class="logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="AtlasDaysのロゴ" width="52" height="52" /></span>
       <h2>AtlasDaysでアイルランドの2つの日数判定を確認</h2><p><strong>アイルランド：税務上の居住</strong>プリセットを使うと、旅行履歴から2つの日数判定を自動で確認できます。2年間の判定に必要な31日も含まれます。例外的な除外日は別途確認が必要です。</p>
       <a class="cta-btn" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8&amp;ppid=1a1343d8-332a-4e0b-ad29-931faa87a99c"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> アプリを入手</a></div>
-    <h2 id="section-6">よくある質問</h2>
+    <h2 id="section-7">よくある質問</h2>
     <h3>税務上の居住者にならずにアイルランドに何日滞在できますか？</h3><p>182日までなら年間判定には達しません。ただし、対象年が31日以上で、対象年と前年に合計280日以上滞在していれば、2年間の判定が適用される場合があります。ほかの居住規定も関係することがあります。</p>
     <h3>アイルランドの280日ルールとは？</h3><p>対象年と前年を合わせる2年間の判定です。合計280日以上で、対象年に31日以上の滞在が必要です。30日以下の年はこの判定から除外されます。</p>
     <h3>アイルランドでは滞在日をどう数えますか？</h3><p>1日の一部でもアイルランドにいれば、その日を数えます。課税年度は暦年なので、1月1日から12月31日までを合計し、日が連続している必要はありません。</p>
@@ -273,11 +375,11 @@
       <h2 id="related-ireland-183-day-tax-residency">関連記事</h2>
       <div class="rule-cards">
         <a class="rule-card" href="/ja/learn/ireland-citizenship-70-day-absence"><img class="rule-flag" src="/assets/flags/ie.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>アイルランド国籍取得：申請前1年の国外滞在は70日まで</strong></span></a>
-        <a class="rule-card" href="/ja/learn/183-day-rule-calculator"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.5 2.6 3.5 5.4 3.5 8.5s-1 5.9-3.5 8.5c-2.5-2.6-3.5-5.4-3.5-8.5s1-5.9 3.5-8.5Z"/></svg></span><span class="rule-text"><strong>183日ルール計算機：どの国でも滞在日数をカウント</strong></span></a>
         <a class="rule-card" href="/ja/learn/183-day-tax-residency-rule"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5.5" width="16" height="14.5" rx="3"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/></svg></span><span class="rule-text"><strong>税務上の居住を決める183日ルールと日数の数え方</strong></span></a>
         <a class="rule-card" href="/ja/learn/tax-residency-by-country"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 4.5h9l3 3v12H6z"/><path d="M9 11h6M9 14.5h6"/></svg></span><span class="rule-text"><strong>国別の税務上の居住</strong></span></a>
         <a class="rule-card" href="/ja/learn/uk-statutory-residence-test"><img class="rule-flag" src="/assets/flags/gb.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>英国のStatutory Residence Test（法定居住判定）：183日ルールではない理由</strong></span></a>
         <a class="rule-card" href="/ja/learn/denmark-overseas-work-42-day-rule"><img class="rule-flag" src="/assets/flags/dk.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>デンマークの海外勤務42日ルール</strong></span></a>
+        <a class="rule-card" href="/ja/learn/norway-183-day-tax-residency"><img class="rule-flag" src="/assets/flags/no.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>ノルウェーの税務上の居住：183日ルールと270日ルール</strong></span></a>
       </div>
     </nav>
   </article>
@@ -327,6 +429,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"ナビゲーションメニューを開く","menuClose":"ナビゲーションメニューを閉じる"};</script>
   <script src="../../assets/js/navigation.js?v=20261027j"></script>
+  <script defer src="../../assets/js/rules/multi-year.js?v=20261029a"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261029a"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

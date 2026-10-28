@@ -236,7 +236,7 @@ LOCALE_ALLOW = {
     "de": {". Portugal:", "ole_lukoie · Israel", "in Japan", "in Thailand"},
     "es": {"ole_lukoie · Israel", "Australia", ". Indonesia:", ". Portugal:", "Malta: Nomad Residence Permit", "Ontario (OHIP)", "Alberta (AHCIP)"},
     "fr": {"Basecampoversummit · Canada", "Ghanshyam Khokhariya · Canada", "Ontario (OHIP)", "Alberta (AHCIP)", "Québec (RAMQ)"},
-    "nl": {"Basecampoversummit · Canada", ". Portugal:", "Québec (RAMQ)", "Alberta (AHCIP)", "British Columbia (MSP)", "Ontario (OHIP)", "in Québec.", "Malta: Nomad Residence Permit", "Thailand: Destination Thailand Visa (DTV)", "India, e-Tourist Visa", "Entry/Exit System (EES)", "in Canada", "in Colombia", "in India", "in Japan", "in Mexico", "in Thailand"},
+    "nl": {"Basecampoversummit · Canada", ". Portugal:", "Québec (RAMQ)", "Alberta (AHCIP)", "British Columbia (MSP)", "Ontario (OHIP)", "in Québec.", "Malta: Nomad Residence Permit", "Thailand: Destination Thailand Visa (DTV)", "India, e-Tourist Visa", "Entry/Exit System (EES)", "in Canada", "in Colombia", "in India", "in Japan", "in Mexico", "in Thailand", "in Mauritius"},
 }
 
 

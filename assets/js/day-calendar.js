@@ -28,7 +28,7 @@
                              { meter: { title, flag, label, days, limit, tone,
                              more: [further bars] }, statusText, statusTone }. A control is a menu
                              in the result box: { key, prefix, label, value,
-                             options: [{ value, label, group }], moveCalendar };
+                             options: [{ value, label, short, group }], moveCalendar };
                              its choice lands in ctx.settings[key]
      quietHint               optional: the hint floats in the calendar, the
                              idle one only while there are no trips, the others
@@ -96,7 +96,11 @@
     calendar: '<rect x="3" y="4.5" width="14" height="12.5" rx="2.5"/><path d="M3 8.5h14M7 2.75v3M13 2.75v3"/>',
     starts: '<rect x="3" y="4.5" width="11" height="11" rx="2.5"/><path d="M3 8.5h11M6.5 2.75v3M10.5 2.75v3"/><circle cx="14.25" cy="14.25" r="3.6" fill="var(--bg-card)"/><path d="M14.25 12.6v1.8l1.2.8"/>',
     updown: '<path d="M6.5 7.5L10 4l3.5 3.5M6.5 12.5L10 16l3.5-3.5"/>',
-    number: '<path d="M8 3.5L6.5 16.5M13.5 3.5L12 16.5M4 7.5h12.5M3.5 12.5h12.5"/>'
+    number: '<path d="M8 3.5L6.5 16.5M13.5 3.5L12 16.5M4 7.5h12.5M3.5 12.5h12.5"/>',
+    // India's three questions, as the app's rows (person.text.rectangle, person, indianrupeesign)
+    idcard: '<rect x="2.75" y="4.5" width="14.5" height="11" rx="2.5"/><circle cx="7.5" cy="9" r="1.75"/><path d="M4.75 13.25c.6-1.4 1.6-2 2.75-2s2.15.6 2.75 2M11.5 8.5h3.5M11.5 11.5h3.5"/>',
+    person: '<circle cx="10" cy="6.5" r="3"/><path d="M4 16.5c.9-3 3.2-4.75 6-4.75s5.1 1.75 6 4.75"/>',
+    rupee: '<path d="M5.5 4h9M5.5 7.5h9M5.5 4h3a3.5 3.5 0 0 1 0 7h-3l6.5 5.5"/>'
   };
   function icon(name, cls) {
     var span = document.createElement("span");
@@ -823,7 +827,9 @@
         pick.appendChild(opt);
       });
       pick.addEventListener("change", function () { settings[ctl.key] = pick.value; changed(ctl); });
-      var shownValue = el("span", { "class": "cal-value" }, current ? current.label : "");
+      // An option may carry a short form for the row, as the app's menus do
+      // ("Indian" beside Nationality, "Indian citizen or of Indian origin" in the menu).
+      var shownValue = el("span", { "class": "cal-value" }, current ? current.short || current.label : "");
       shownValue.appendChild(icon("updown", "cal-chevron"));
       wrap.classList.add("is-select");
       wrap.appendChild(shownValue);

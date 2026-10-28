@@ -35,6 +35,12 @@ REQUIRED_PLURALS = {
     "pt": {"one", "many", "other"},
 }
 
+# Amounts the app's own translations restate in the reader's units: India's
+# "₹15 lakh" is "1,5 Mio. ₹" in German and "150万ルピー" in Japanese
+# (AtlasDays/Localizable.xcstrings, india.income.*). The app is the
+# terminology authority, so these keep its wording; they still need a number.
+APP_AMOUNTS = {"incomeUpTo", "incomeAbove"}
+
 def check(english, translated, locale="en"):
     source, target = strings(english), strings(translated)
     if source.keys() != target.keys():
@@ -49,5 +55,8 @@ def check(english, translated, locale="en"):
         for variant in (value.values() if isinstance(value, dict) else [value]):
             if sorted(PLACEHOLDER.findall(original)) != sorted(PLACEHOLDER.findall(variant)):
                 raise ValueError(f"{key}: calendar placeholders differ from English")
-            if sorted(re.findall(r"\d+", original)) != sorted(re.findall(r"\d+", variant)):
+            if key in APP_AMOUNTS:
+                if not re.search(r"\d", variant):
+                    raise ValueError(f"{key}: the amount has no number")
+            elif sorted(re.findall(r"\d+", original)) != sorted(re.findall(r"\d+", variant)):
                 raise ValueError(f"{key}: calendar numbers differ from English")

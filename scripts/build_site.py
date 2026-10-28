@@ -1472,6 +1472,7 @@ CALCULATOR_RULES = {
     "spt": {"script": "spt.js", "version": "20261028a"},
     "perEntry": {"script": "per-entry.js", "version": "20261028c"},
     "perVisit": {"script": "per-entry.js", "version": "20261028c"},
+    "multiYear": {"script": "multi-year.js", "version": "20261029a"},
 }
 SHARED_CALCULATOR_STRINGS = {
     "hintEnd", "hintSelected", "pending", "empty", "deleteTrip", "country", "addCountry", "noMatch",
