@@ -134,6 +134,7 @@
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261028a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">跳至主要內容</a>
@@ -207,8 +208,9 @@
       <ul>
         <li><a href="#section-1">規定內容</a></li>
         <li><a href="#section-2">怎麼計算</a></li>
-        <li><a href="#section-3">天數之外</a></li>
-        <li><a href="#section-4">常見問題</a></li>
+        <li><a href="#calculator">NZ Super 離境天數計算機</a></li>
+        <li><a href="#section-4">天數之外</a></li>
+        <li><a href="#section-5">常見問題</a></li>
       </ul>
     </nav>
     <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
@@ -241,7 +243,96 @@
       <li>將離境期間與 182 天比較，再向 Work and Income 分別確認返回及通常居住地條件。</li>
     </ol>
     <div class="example"><p><strong>例子。</strong>你於 2026 年 1 月 1 日離開紐西蘭，7 月 3 日返回。計入的離境時間從 1 月 2 日至 7 月 2 日為止：</p><p>1 月 30 天 + 2 月 28 天 + 3 月 31 天 + 4 月 30 天 + 5 月 31 天 + 6 月 30 天 + 7 月 2 天 = <strong>182 天</strong>，正好是 26 週。</p><p>7 月 4 日返回將使你離境 183 天。這將使旅行超出正常的 26 週期限；這本身並不能確定前 26 週是否仍需支付。這就是返程條件變得重要的地方。在評估旅行時，請將給付期限和返程條件分開。</p></div>
-    <h2 id="section-3">天數之外</h2>
+    <h2 id="calculator">NZ Super 離境天數計算機</h2>
+    <p>先點選離開紐西蘭的日期，再點選返回日期。計算機會計算離境期間的完整天數，並和 26 週（即 182 天）相比。</p>
+    <div class="daycal" id="embed-perEntry" data-day-calendar="perEntry" data-cal-preset="{&quot;settings&quot;:{&quot;away&quot;:true,&quot;home&quot;:&quot;NZ&quot;,&quot;limit&quot;:182,&quot;note&quot;:&quot;NZ Super absence calculator&quot;},&quot;lock&quot;:[],&quot;link&quot;:&quot;super-nz&quot;,&quot;offer&quot;:&quot;benefit-nz-super-absence&quot;}">
+      <script type="application/json" data-cal-strings>
+{
+  "hintEnd": "接著點選行程的另一端。",
+  "hintSelected": "拖曳行程任一端可更改日期，也可以在下方刪除行程。",
+  "pending": "新行程的起點",
+  "empty": "還沒有行程。",
+  "deleteTrip": "刪除行程",
+  "country": "國家或地區",
+  "goal": "目標類型",
+  "goalStay": "低於上限",
+  "goalReach": "達成目標",
+  "addCountry": "新增國家或地區",
+  "noMatch": "找不到符合的國家或地區",
+  "year": "年份",
+  "starts": "起始日",
+  "tripDays": {
+    "other": "{n} 天"
+  },
+  "remaining": {
+    "other": "剩餘 {n} 天"
+  },
+  "atLimit": "已達上限",
+  "needed": {
+    "other": "還需 {n} 天"
+  },
+  "reachedTarget": "目標達成",
+  "overBy": {
+    "other": "超過上限 {n} 天"
+  },
+  "hintStart": "先點選離開紐西蘭的日期，再點選返回日期。",
+  "inTrip": "在紐西蘭境外",
+  "tripAway": {
+    "other": "離境 {n} 天"
+  },
+  "title": "紐西蘭境外天數",
+  "checkOn": "截至日期",
+  "checkOnCaption": "計算這一天仍在持續的離境，或這一天之前最近一次的離境。規劃行程時，選擇返美當天。"
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>時間軸</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>在 AtlasDays 中繼續追蹤</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="embed-perEntry-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="embed-perEntry-import-title">在 AtlasDays 中繼續追蹤</p>
+            <p class="cal-dialog-sub">適用於 iPhone 和 iPad 的免費 App，旅行途中持續計算停留天數。</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>確認 iPhone 或 iPad 已安裝 AtlasDays</strong><span>可在 App Store 免費下載。</span></li>
+            <li><strong>掃描 QR 碼，把所有行程載入 AtlasDays</strong><span>確認無誤後，輕點「匯入」。</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>取得 AtlasDays</strong><span>在 App Store 免費下載。已經有了？直接跳到第 2 步。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>在 App 中開啟停留紀錄</strong><span>確認無誤後輕點「匯入」。在此之前，不會儲存任何資料。</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">在 AtlasDays 中開啟</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>取得 AtlasDays</strong><span>iPhone 版，可在 App Store 免費下載。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>用檔案匯入停留紀錄</strong><span>停留紀錄太多，連結裝不下。請下載檔案，然後在 iPhone 上用 AtlasDays 開啟。</span><button type="button" class="cal-dialog-primary" data-cal-download>下載檔案</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>將行程下載為 CSV 檔案</button><span data-cal-downloaded hidden>請在 iPhone 上用 AtlasDays 開啟這個檔案。</span></p>
+          <button type="button" data-cal-close>關閉</button>
+        </div>
+      </dialog>
+    </div>
+
+    <h2 id="section-4">天數之外</h2>
     <p>告知 Work and Income 部門有關擬議的旅行和返程計劃的任何變更。主要指導要求在離境期間繼續通常居住。將你通常的家搬到國外可能涉及可攜帶安排或與另一國的協議。醫療保健和人道主義工作也有單獨的規定。</p><p>額外的援助可能會比NZ Super本身更短的海外限額，一些根據早期規則保留的伴侶給付安排有自己的規則。請單獨檢查每筆給付，而不是假設每筆家庭給付都會繼續。返國時，當局可以詢問出國旅行日期和獲得的福利或養老金。請將這些證據與旅行紀錄一起保存。</p>
     <div class="cta-box">
       <span class="cta-logo">
@@ -252,7 +343,7 @@
       <p>「<strong>NZ Super 海外停留</strong>」範本將目前或最近一次已結束的離境與 182 天比較。準確紀錄紐西蘭停留後，App 就會在 iPhone 上保護隱私地合計天數。給付與返回條件仍應透過本指南及 Work and Income 確認。</p>
       <a class="cta-btn" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> 下載 App</a>
     </div>
-    <h2 id="section-4">常見問題</h2>
+    <h2 id="section-5">常見問題</h2>
     <h3>允許的海外停留時間是每年 182 天嗎？</h3>
     <p>不。這是臨時離境的正常 26 週給付期，而不是由單獨的海外旅行組成的每年允許的海外停留時間。</p>
     <h3>出發和返回日期算數嗎？</h3>
@@ -326,6 +417,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"開啟導覽選單","menuClose":"關閉導覽選單"};</script>
   <script src="../../assets/js/navigation.js?v=20261027j"></script>
+  <script defer src="../../assets/js/rules/per-entry.js?v=20261028b"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261028a"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

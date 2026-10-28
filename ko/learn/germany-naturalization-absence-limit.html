@@ -136,6 +136,7 @@
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261028a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">본문으로 건너뛰기</a>
@@ -209,8 +210,9 @@
       <ul>
         <li><a href="#section-1">규정 내용</a></li>
         <li><a href="#section-2">계산 방법</a></li>
-        <li><a href="#section-3">일수 계산 외의 기준</a></li>
-        <li><a href="#section-4">자주 묻는 질문</a></li>
+        <li><a href="#calculator">독일 귀화 부재 일수 계산기</a></li>
+        <li><a href="#section-4">일수 계산 외의 기준</a></li>
+        <li><a href="#section-5">자주 묻는 질문</a></li>
       </ul>
     </nav>
     <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
@@ -260,7 +262,96 @@
       <p>부재는 2025년 10월 13일부터 2026년 4월 1일까지 이어집니다. 10월에 19일, 이어서 3월까지 30일과 31일, 31일, 28일, 31일, 그리고 4월 1일 하루를 더하면 <strong>171일</strong>로, 6개월 안에도 앱의 180일 표시 안에도 들어갑니다. 귀국이 2026년 4월 20일로 밀리면 같은 부재가 <strong>189일</strong>이 되어 6개월을 넘기며, 이때는 외국인청이 귀국 기한을 정해 두었고 그 기한을 지킨 경우에만 상시 거주가 이어집니다.</p>
     </div>
 
-    <h2 id="section-3">일수 계산 외의 기준</h2>
+    <h2 id="calculator">독일 귀화 부재 일수 계산기</h2>
+    <p>독일 출국일을 누른 다음 귀국일을 누르십시오. 계산기는 국외에 있었던 온전한 날을 세어 180일과 비교합니다. 규정은 최대 6개월의 해외 체류를 허용합니다. 6개월은 온전한 날로 세면 항상 180일 이상이므로, 계산기는 법적 한도보다 조금 먼저 한도에 도달합니다.</p>
+    <div class="daycal" id="embed-perEntry" data-day-calendar="perEntry" data-cal-preset="{&quot;settings&quot;:{&quot;away&quot;:true,&quot;home&quot;:&quot;DE&quot;,&quot;limit&quot;:180,&quot;note&quot;:&quot;German naturalisation absence calculator&quot;},&quot;lock&quot;:[],&quot;link&quot;:&quot;citizenship-de&quot;,&quot;offer&quot;:&quot;citizenship-germany-absence&quot;}">
+      <script type="application/json" data-cal-strings>
+{
+  "hintEnd": "여행의 다른 끝 날짜를 누르십시오.",
+  "hintSelected": "여행의 양쪽 끝 중 하나를 드래그해 날짜를 변경하거나 아래에서 여행을 삭제하십시오.",
+  "pending": "새 여행 시작",
+  "empty": "아직 여행이 없습니다.",
+  "deleteTrip": "여행 삭제",
+  "country": "국가",
+  "goal": "목표 유형",
+  "goalStay": "한도 미만 유지",
+  "goalReach": "목표 달성",
+  "addCountry": "국가 추가",
+  "noMatch": "일치하는 국가가 없습니다",
+  "year": "연도",
+  "starts": "시작일",
+  "tripDays": {
+    "other": "{n}일"
+  },
+  "remaining": {
+    "other": "{n}일 남음"
+  },
+  "atLimit": "한도 도달",
+  "needed": {
+    "other": "{n}일 더 필요"
+  },
+  "reachedTarget": "목표 달성",
+  "overBy": {
+    "other": "한도 {n}일 초과"
+  },
+  "hintStart": "독일 출국일을 누른 다음 귀국일을 누르십시오.",
+  "inTrip": "독일 밖 체류",
+  "tripAway": {
+    "other": "{n}일 해외 체류"
+  },
+  "title": "독일 밖 체류 일수",
+  "checkOn": "계산 종료일",
+  "checkOnCaption": "이 날짜에 이어지고 있는 부재, 또는 그 전의 마지막 부재를 셉니다. 예정된 여행을 확인하려면 귀국일을 선택하십시오."
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span><span>일</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>타임라인</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>AtlasDays에서 관리하기</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="embed-perEntry-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="embed-perEntry-import-title">AtlasDays에서 관리하기</p>
+            <p class="cal-dialog-sub">여행하는 동안 체류 일수를 계속 계산하는 iPhone 및 iPad용 무료 앱입니다.</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>iPhone 또는 iPad에 AtlasDays 설치 확인</strong><span>App Store에서 무료로 받을 수 있습니다.</span></li>
+            <li><strong>QR 코드를 스캔해 모든 여행을 AtlasDays에 불러오기</strong><span>확인한 다음 '가져오기'를 누르십시오.</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>AtlasDays 받기</strong><span>App Store에서 무료로 받을 수 있습니다. 이미 있다면 2단계로 넘어가십시오.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>앱에서 체류 열기</strong><span>확인한 다음 '가져오기'를 누르십시오. 그 전에는 아무것도 저장되지 않습니다.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">AtlasDays에서 열기</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>AtlasDays 받기</strong><span>App Store에서 무료로 받을 수 있는 iPhone 앱입니다.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>파일로 체류 가져오기</strong><span>체류가 너무 많아 링크에 담을 수 없습니다. 파일을 다운로드해 iPhone의 AtlasDays에서 여십시오.</span><button type="button" class="cal-dialog-primary" data-cal-download>파일 다운로드</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>여행을 CSV 파일로 다운로드</button><span data-cal-downloaded hidden>iPhone의 AtlasDays에서 이 파일을 여십시오.</span></p>
+          <button type="button" data-cal-close>닫기</button>
+        </div>
+      </dialog>
+    </div>
+
+    <h2 id="section-4">일수 계산 외의 기준</h2>
     <p>여행당 6개월이라는 것이 번갈아 반복해도 좋다는 뜻은 아닙니다. 연방내무부 지침은 짧은 부재가 독일에서의 짧은 체류와 여러 차례 번갈아 이어지는 경우, 생활의 중심이 해외로 옮겨진 시점부터 상시 거주가 통째로 사라진다고 지적합니다. 절반 규정을 넘기면 시계는 합법적인 상시 거주가 마지막으로 성립한 때부터 다시 시작되며, 위의 산입 결정이 함께 적용됩니다. EU와 EEA 시민 및 그 가족은 6개월 판정 자체의 밖에 있습니다. 이들에게는 제12b조 제1항 제1문부터 제3문 대신 이동의 자유에 관한 규정이 적용됩니다.</p>
     <p>AtlasDays는 한 번의 부재를 보는 6개월 규정을 부재당 180일로 관리합니다. 귀국 기한과 절반 규정의 총합, 산입 결정은 외국인청이나 시민권 담당 관청에 확인하실 사항이며, 긴 여행을 예약하기 전이 가장 좋습니다. 날짜를 소명하라는 요구를 받게 되므로 여행하면서 기록을 남겨 두십시오. 나중에 복원하는 일은 <a href="/ko/learn/rebuild-travel-history-from-passport-stamps-emails-photos">생각보다 어렵습니다</a>.</p>
 
@@ -277,7 +368,7 @@
       </a>
     </div>
 
-    <h2 id="section-4">자주 묻는 질문</h2>
+    <h2 id="section-5">자주 묻는 질문</h2>
     <h3>귀화에 필요한 거주를 끊지 않으려면 독일 밖에 얼마나 머무를 수 있습니까?</h3>
     <p>한 번의 해외 체류가 6개월 이내라면 상시 거주가 끊기지 않습니다. 그보다 길면 외국인청이 정한 기한 안에 재입국하는 경우에만 유지되며, 오로지 병역 의무 때문에 그 기한을 넘긴 경우라면 전역 후 3개월 안에 재입국해야 합니다.</p>
     <h3>여러 번의 해외여행은 합산됩니까?</h3>
@@ -352,6 +443,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"탐색 메뉴 열기","menuClose":"탐색 메뉴 닫기"};</script>
   <script src="../../assets/js/navigation.js?v=20261027j"></script>
+  <script defer src="../../assets/js/rules/per-entry.js?v=20261028b"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261028a"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

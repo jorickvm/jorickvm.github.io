@@ -136,6 +136,7 @@
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261028a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Перейти до вмісту</a>
@@ -210,9 +211,10 @@
         <li><a href="#section-1">Правило</a></li>
         <li><a href="#section-2">Хто звільнений</a></li>
         <li><a href="#section-3">Як рахувати</a></li>
-        <li><a href="#section-4">Якщо ви були відсутні надто довго</a></li>
-        <li><a href="#section-5">Окрім підрахунку днів</a></li>
-        <li><a href="#section-6">Поширені запитання</a></li>
+        <li><a href="#calculator">Калькулятор відсутності в ОАЕ</a></li>
+        <li><a href="#section-5">Якщо ви були відсутні надто довго</a></li>
+        <li><a href="#section-6">Окрім підрахунку днів</a></li>
+        <li><a href="#section-7">Поширені запитання</a></li>
       </ul>
     </nav>
     <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
@@ -238,6 +240,19 @@
       </dl>
     </div>
 
+    <details class="toc">
+      <summary>На цій сторінці</summary>
+      <ul>
+        <li><a href="#section-1">Правило</a></li>
+        <li><a href="#section-2">Хто звільнений</a></li>
+        <li><a href="#section-3">Як рахувати</a></li>
+        <li><a href="#calculator">Калькулятор відсутності в ОАЕ</a></li>
+        <li><a href="#section-5">Якщо ви були відсутні надто довго</a></li>
+        <li><a href="#section-6">Окрім підрахунку днів</a></li>
+        <li><a href="#section-7">Поширені запитання</a></li>
+      </ul>
+    </details>
+    <script>(function(){var t=document.currentScript.previousElementSibling;if(matchMedia('(min-width: 760px)').matches)t.open=true})();</script>
     <h2 id="section-1">Правило</h2>
     <p>Уряд ОАЕ зазначає, що якщо резидент-експат живе за межами ОАЕ понад 180 днів поспіль, його резидентська віза автоматично анулюється. Більшість випадків вирішують три моменти:</p>
     <ul>
@@ -265,10 +280,114 @@
       <p><strong>Приклад.</strong> Ви виїжджаєте з Дубая 1 червня 2027 року. Якщо ви повернетеся не пізніше <strong>27 листопада 2027 року</strong>, ви вкладетеся в ліміт, хоч би як рахували два дні подорожі. Короткий приїзд до ОАЕ до цієї дати, навіть на вихідні, завершує відсутність, і з наступним виїздом починається новий відлік.</p>
     </div>
 
-    <h2 id="section-4">Якщо ви були відсутні надто довго</h2>
+    <h2 id="calculator">Калькулятор відсутності в ОАЕ</h2>
+    <p>Торкніться дня від’їзду з ОАЕ, а потім дня повернення. Калькулятор рахує повні дні відсутності й показує, скільки зі 180 днів у вас залишилося.</p>
+    <div class="daycal" id="embed-perEntry" data-day-calendar="perEntry" data-cal-preset="{&quot;settings&quot;:{&quot;away&quot;:true,&quot;home&quot;:&quot;AE&quot;,&quot;limit&quot;:180,&quot;note&quot;:&quot;UAE absence calculator&quot;},&quot;lock&quot;:[],&quot;link&quot;:&quot;away-ae&quot;,&quot;offer&quot;:&quot;permit-uae-residence-absence&quot;}">
+      <script type="application/json" data-cal-strings>
+{
+  "hintEnd": "Торкніться іншої дати поїздки.",
+  "hintSelected": "Перетягніть будь-який край поїздки, щоб змінити дати, або видаліть її нижче.",
+  "pending": "початок нової поїздки",
+  "empty": "Поїздок поки немає.",
+  "deleteTrip": "Видалити поїздку",
+  "country": "Країна",
+  "goal": "Ціль",
+  "goalStay": "Не перевищувати",
+  "goalReach": "Досягти цілі",
+  "addCountry": "Додати країну",
+  "noMatch": "Країну не знайдено",
+  "year": "Рік",
+  "starts": "Початок",
+  "tripDays": {
+    "one": "{n} день",
+    "few": "{n} дні",
+    "many": "{n} днів",
+    "other": "{n} дня"
+  },
+  "remaining": {
+    "one": "Залишилося: {n} день",
+    "few": "Залишилося: {n} дні",
+    "many": "Залишилося: {n} днів",
+    "other": "Залишилося: {n} дні"
+  },
+  "atLimit": "На межі",
+  "needed": {
+    "one": "Потрібно ще {n} день",
+    "few": "Потрібно ще {n} дні",
+    "many": "Потрібно ще {n} днів",
+    "other": "Потрібно ще {n} дні"
+  },
+  "reachedTarget": "Ціль досягнуто",
+  "overBy": {
+    "one": "Ліміт перевищено на {n} день",
+    "few": "Ліміт перевищено на {n} дні",
+    "many": "Ліміт перевищено на {n} днів",
+    "other": "Ліміт перевищено на {n} дні"
+  },
+  "hintStart": "Торкніться дня від’їзду з ОАЕ, а потім дня повернення.",
+  "inTrip": "поза ОАЕ",
+  "tripAway": {
+    "one": "{n} день відсутності",
+    "few": "{n} дні відсутності",
+    "many": "{n} днів відсутності",
+    "other": "{n} дня відсутності"
+  },
+  "title": "Дні поза ОАЕ",
+  "checkOn": "Рахувати до",
+  "checkOnCaption": "Відсутність, що триває на цю дату, або остання перед нею. Для запланованої поїздки виберіть день повернення."
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>П</span><span>В</span><span>С</span><span>Ч</span><span>П</span><span>С</span><span>Н</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>Хронологія</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Відстежувати в AtlasDays</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="embed-perEntry-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="embed-perEntry-import-title">Відстежувати в AtlasDays</p>
+            <p class="cal-dialog-sub">Продовжуйте підрахунок днів у дорозі. Безкоштовна програма для iPhone та iPad.</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>Переконайтеся, що AtlasDays встановлено на вашому iPhone чи iPad</strong><span>Безкоштовно в App Store.</span></li>
+            <li><strong>Відскануйте QR-код, щоб завантажити всі поїздки в AtlasDays</strong><span>Перевірте їх і торкніться «Імпорт».</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>Завантажте AtlasDays</strong><span>Безкоштовно в App Store. Уже встановлено? Переходьте до кроку 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>Відкрийте поїздки в програмі</strong><span>Перевірте їх і торкніться «Імпорт». До цього нічого не зберігається.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Відкрити в AtlasDays</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>Завантажте AtlasDays</strong><span>Безкоштовно в App Store для iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>Імпортуйте поїздки з файлу</strong><span>Стільки поїздок не вміститься в посилання. Завантажте файл і відкрийте його в AtlasDays на iPhone.</span><button type="button" class="cal-dialog-primary" data-cal-download>Завантажити файл</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Завантажити поїздки у файлі CSV</button><span data-cal-downloaded hidden>Відкрийте цей файл в AtlasDays на iPhone.</span></p>
+          <button type="button" data-cal-close>Закрити</button>
+        </div>
+      </dialog>
+    </div>
+
+    <h2 id="section-5">Якщо ви були відсутні надто довго</h2>
     <p>Резидент, чию візу анулювали після понад 180 днів за кордоном, може з-за меж країни подати заяву на дозвіл на повернення. У заяві треба пояснити причину тривалої відсутності, а збір становить <strong>100 AED за кожні 30 днів</strong> (або неповні 30 днів), проведені за межами країни. Якщо заяву схвалять, у вас буде 30 днів, щоб в’їхати до ОАЕ. Уряд зазначає, що цей порядок не поширюється на резидентів Дубая і власників Golden Visa та Green-резидентства, тож резидентам Дубая варто уточнити порядок у міграційному відомстві Дубая.</p>
 
-    <h2 id="section-5">Окрім підрахунку днів</h2>
+    <h2 id="section-6">Окрім підрахунку днів</h2>
     <p>Ваш спонсор — роботодавець або член родини — теж може анулювати резидентську візу, а прострочені Emirates ID чи візу треба поновлювати у власні строки. Дні за кордоном важливі й для податкового резидентства ОАЕ, де використовують інші підрахунки: див. <a href="/uk/learn/uae-183-day-tax-residency">правило 183 днів для податкового резидентства ОАЕ</a>.</p>
 
     <div class="cta-box">
@@ -281,7 +400,7 @@
       <a class="cta-btn" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> Завантажити застосунок</a>
     </div>
 
-    <h2 id="section-6">Поширені запитання</h2>
+    <h2 id="section-7">Поширені запитання</h2>
     <h3>Скільки резидент ОАЕ може перебувати за межами країни?</h3>
     <p>До 180 днів поспіль. Після понад 180 днів безперервного перебування за кордоном резидентська віза анулюється автоматично, якщо ви не належите до звільненої категорії, наприклад власників Golden Visa чи Green-резидентства.</p>
     <h3>Чи обнуляє короткий приїзд до ОАЕ лік 180 днів?</h3>
@@ -355,6 +474,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"Відкрити меню навігації","menuClose":"Закрити меню навігації"};</script>
   <script src="../../assets/js/navigation.js?v=20261027j"></script>
+  <script defer src="../../assets/js/rules/per-entry.js?v=20261028b"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261028a"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

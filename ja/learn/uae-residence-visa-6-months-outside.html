@@ -136,6 +136,7 @@
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261028a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">本文へスキップ</a>
@@ -210,9 +211,10 @@
         <li><a href="#section-1">規定</a></li>
         <li><a href="#section-2">対象外となる人</a></li>
         <li><a href="#section-3">数え方</a></li>
-        <li><a href="#section-4">国外滞在が長すぎた場合</a></li>
-        <li><a href="#section-5">日数以外の要素</a></li>
-        <li><a href="#section-6">よくある質問</a></li>
+        <li><a href="#calculator">UAEの不在日数計算機</a></li>
+        <li><a href="#section-5">国外滞在が長すぎた場合</a></li>
+        <li><a href="#section-6">日数以外の要素</a></li>
+        <li><a href="#section-7">よくある質問</a></li>
       </ul>
     </nav>
     <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
@@ -236,6 +238,19 @@
         <div class="legal-basis"><dt>法的根拠</dt><dd>外国人の入国および居住に関する2021年連邦政令法第29号とその施行規則</dd></div>
       </dl>
     </div>
+    <details class="toc">
+      <summary>目次</summary>
+      <ul>
+        <li><a href="#section-1">規定</a></li>
+        <li><a href="#section-2">対象外となる人</a></li>
+        <li><a href="#section-3">数え方</a></li>
+        <li><a href="#calculator">UAEの不在日数計算機</a></li>
+        <li><a href="#section-5">国外滞在が長すぎた場合</a></li>
+        <li><a href="#section-6">日数以外の要素</a></li>
+        <li><a href="#section-7">よくある質問</a></li>
+      </ul>
+    </details>
+    <script>(function(){var t=document.currentScript.previousElementSibling;if(matchMedia('(min-width: 760px)').matches)t.open=true})();</script>
     <h2 id="section-1">規定</h2>
     <p>UAE政府によると、外国人居住者がUAE国外に連続して180日を超えて住むと、居住ビザは自動的に無効になります。多くのケースでは、次の3点が重要です。</p>
     <ul>
@@ -260,9 +275,98 @@
     <div class="example">
       <p><strong>例。</strong>2027年6月1日にドバイを出発したとします。<strong>2027年11月27日</strong>までに戻れば、2つの移動日をどう数えても上限内です。それより前に週末だけでもUAEに短く戻れば不在は終わり、再び出国したときに新しく数え始めます。</p>
     </div>
-    <h2 id="section-4">国外滞在が長すぎた場合</h2>
+    <h2 id="calculator">UAEの不在日数計算機</h2>
+    <p>UAEを出国した日をタップし、次に帰国した日をタップしてください。計算機は国外で過ごした丸一日を数え、180日のうち残りが何日あるかを表示します。</p>
+    <div class="daycal" id="embed-perEntry" data-day-calendar="perEntry" data-cal-preset="{&quot;settings&quot;:{&quot;away&quot;:true,&quot;home&quot;:&quot;AE&quot;,&quot;limit&quot;:180,&quot;note&quot;:&quot;UAE absence calculator&quot;},&quot;lock&quot;:[],&quot;link&quot;:&quot;away-ae&quot;,&quot;offer&quot;:&quot;permit-uae-residence-absence&quot;}">
+      <script type="application/json" data-cal-strings>
+{
+  "hintEnd": "旅行のもう一方の日付をタップしてください。",
+  "hintSelected": "旅行のどちらかの端をドラッグして日付を変更するか、下で削除してください。",
+  "pending": "新しい旅行の開始日",
+  "empty": "旅行はまだありません。",
+  "deleteTrip": "旅行を削除",
+  "country": "国",
+  "goal": "目標",
+  "goalStay": "上限未満に抑える",
+  "goalReach": "目標を達成",
+  "addCountry": "国を追加",
+  "noMatch": "一致する国はありません",
+  "year": "年",
+  "starts": "開始",
+  "tripDays": {
+    "other": "{n}日"
+  },
+  "remaining": {
+    "other": "残り{n}日"
+  },
+  "atLimit": "上限到達",
+  "needed": {
+    "other": "あと{n}日必要"
+  },
+  "reachedTarget": "目標達成",
+  "overBy": {
+    "other": "上限を{n}日超過"
+  },
+  "hintStart": "UAEを出国した日をタップし、次に帰国した日をタップしてください。",
+  "inTrip": "UAE国外に滞在",
+  "tripAway": {
+    "other": "不在{n}日"
+  },
+  "title": "UAE国外で過ごした日数",
+  "checkOn": "集計終了日",
+  "checkOnCaption": "この日の時点で続いている不在か、それより前の直近の不在が対象です。予定している旅行を確認するときは、帰国日を選んでください。"
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>月</span><span>火</span><span>水</span><span>木</span><span>金</span><span>土</span><span>日</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>タイムライン</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>AtlasDaysで記録する</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="embed-perEntry-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="embed-perEntry-import-title">AtlasDaysで記録する</p>
+            <p class="cal-dialog-sub">旅行中もそのまま日数を数えられる、iPhoneとiPad向けの無料アプリです。</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>iPhoneまたはiPadにAtlasDaysをインストールしておく</strong><span>App Storeで無料で入手できます。</span></li>
+            <li><strong>QRコードを読み取り、すべての旅行をAtlasDaysに読み込む</strong><span>確認してから「インポート」をタップします。</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>AtlasDaysを入手</strong><span>App Storeから無料で入手できます。お持ちの場合は2へ進んでください。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>アプリで滞在を開く</strong><span>確認してから「インポート」をタップします。それまで何も保存されません。</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">AtlasDaysで開く</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>AtlasDaysを入手</strong><span>iPhone向けにApp Storeで無料で提供しています。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>ファイルで滞在をインポート</strong><span>滞在の数が多く、リンクでは送れません。ファイルをダウンロードして、iPhoneのAtlasDaysで開いてください。</span><button type="button" class="cal-dialog-primary" data-cal-download>ファイルをダウンロード</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>旅行をCSVファイルでダウンロード</button><span data-cal-downloaded hidden>このファイルをiPhoneのAtlasDaysで開いてください。</span></p>
+          <button type="button" data-cal-close>閉じる</button>
+        </div>
+      </dialog>
+    </div>
+
+    <h2 id="section-5">国外滞在が長すぎた場合</h2>
     <p>国外滞在が180日を超えてビザが取り消された居住者は、国外から再入国許可を申請できます。申請では国外にとどまった理由を説明する必要があり、手数料は国外で過ごした<strong>30日ごとにAED 100</strong>で、30日に満たない端数も1単位と数えます。承認されると、30日以内にUAEに入国する必要があります。政府によると、この手続きはドバイの居住者とゴールデンビザ・グリーン居住資格の保有者には適用されないため、ドバイの居住者はドバイ独自の入国管理当局に確認してください。</p>
-    <h2 id="section-5">日数以外の要素</h2>
+    <h2 id="section-6">日数以外の要素</h2>
     <p>雇用主や家族などのスポンサーも居住ビザを取り消すことができ、期限切れのエミレーツIDやビザは、それぞれの期限に従って更新する必要があります。国外にいた日数はUAEの税務上の居住にも関係しますが、こちらは別の数え方を使います。<a href="/ja/learn/uae-183-day-tax-residency">アラブ首長国連邦の183日ルール</a>をご覧ください。</p>
     <div class="cta-box">
       <span class="cta-logo">
@@ -276,7 +380,7 @@
         アプリを入手
       </a>
     </div>
-    <h2 id="section-6">よくある質問</h2>
+    <h2 id="section-7">よくある質問</h2>
     <h3>UAEの居住者はUAE国外にどのくらい滞在できますか？</h3>
     <p>連続して180日までです。国外に連続して180日を超えて滞在すると、ゴールデンビザやグリーン居住資格の保有者などの対象外グループでない限り、居住ビザは自動的に取り消されます。</p>
     <h3>UAEに短期間戻れば180日はリセットされますか？</h3>
@@ -350,6 +454,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"ナビゲーションメニューを開く","menuClose":"ナビゲーションメニューを閉じる"};</script>
   <script src="../../assets/js/navigation.js?v=20261027j"></script>
+  <script defer src="../../assets/js/rules/per-entry.js?v=20261028b"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261028a"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();
