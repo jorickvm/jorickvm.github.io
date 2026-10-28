@@ -17,9 +17,12 @@
    Each article embeds it set to its own programme (data-cal-preset settings):
      away     true: absences (the mode for days in the country per visit
               comes with the visa articles, plan phase 4)
-     home     the place codes an absence is from ("US", or a list)
+     home     the place codes an absence is from: one code ("US"), a list,
+              or a named set ("EU")
+     stay     with a set, the country exported as the home stays (ES for
+              Spain's long-term residents, who count absence from the EU)
      limit    the last permitted number of days away (the app preset's)
-     flag     optional: the card's flag when home is a list
+     flag     optional: the card's flag (a named set shows its own)
      note     English label for exported rows (read by the importer)
 
    The card reads like the app's tracker card: days away in that absence
@@ -28,7 +31,14 @@
 (function () {
   "use strict";
 
-  function homes(c) { var h = c.settings.home || []; return typeof h === "string" ? [h] : h; }
+  // Named home sets, the app's own lists: EU is
+  // CountryLists.europeanUnionTerritoryCodes (the 27 and their territories).
+  var SETS = {
+    EU: ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IE", "IT", "LV",
+      "LT", "LU", "MT", "NL", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "GF", "GP", "MQ", "YT", "RE", "MF", "AX"]
+  };
+  function homeList(h) { h = h || []; return typeof h === "string" ? (SETS[h] || [h]) : h; }
+  function homes(c) { return homeList(c.settings.home); }
   function limitOf(c) { return +c.settings.limit || 180; }
   function checkOn(c) {
     var iso = c.settings.checkOn;
@@ -67,8 +77,7 @@
 
     // Trips are absences, so they can be anywhere but home.
     countries: function (all, preset) {
-      var home = (preset && preset.home) || [];
-      if (typeof home === "string") home = [home];
+      var home = homeList(preset && preset.home);
       return all.filter(function (code) { return home.indexOf(code) < 0; });
     },
 
@@ -90,7 +99,7 @@
       var days = a ? a.days : 0, left = limit - days;
       return {
         controls: [{ type: "date", key: "checkOn", icon: "calendar", label: c.text("checkOn"), caption: c.text("checkOnCaption"), value: c.D.iso(on), display: c.dateRange(on, on), moveCalendar: true }],
-        meter: { title: c.text("title"), flag: c.settings.flag || homes(c)[0], label: days ? c.dateRange(a.from, a.to) : c.dateRange(on, on), days: days, limit: limit, tone: c.tone(days, limit, false) },
+        meter: { title: c.text("title"), flag: c.settings.flag || (SETS[c.settings.home] ? c.settings.home : homes(c)[0]), label: days ? c.dateRange(a.from, a.to) : c.dateRange(on, on), days: days, limit: limit, tone: c.tone(days, limit, false) },
         statusText: left > 0 ? c.text("remaining", { n: left }) : left === 0 ? c.text("atLimit") : c.text("overBy", { n: -left }),
         lines: []
       };
@@ -104,7 +113,7 @@
     // so the file carries the time at home between past trips, starting a
     // year before the first one, as the ILR calculator's does.
     exportRows: function (trips, c) {
-      var home = homes(c)[0], note = c.settings.note || "Absence calculator";
+      var home = c.settings.stay || homes(c)[0], note = c.settings.note || "Absence calculator";
       var past = trips.filter(function (t) { return t.start <= c.today; });
       if (!past.length) return trips.filter(function (t) { return t.country; }).map(function (t) { return { country: t.country, start: t.start, end: t.end, notes: note }; });
       var rows = [], cursor = c.D.shiftYears(past[0].start, -1);

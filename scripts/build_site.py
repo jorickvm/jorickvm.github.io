@@ -1469,7 +1469,7 @@ CALCULATOR_RULES = {
     "ukIlr": {"script": "uk-ilr.js", "page": "learn/uk-ilr-absence-calculator.html"},
     "presence": {"script": "presence.js", "version": "20261028a"},
     "spt": {"script": "spt.js", "version": "20261028a"},
-    "perEntry": {"script": "per-entry.js", "version": "20261028a"},
+    "perEntry": {"script": "per-entry.js", "version": "20261028b"},
 }
 SHARED_CALCULATOR_STRINGS = {
     "hintEnd", "hintSelected", "pending", "empty", "deleteTrip", "country", "addCountry", "noMatch",
@@ -1806,7 +1806,7 @@ APP_CATALOG_PATH = SOURCE_ROOT / "data" / "app-catalog.json"
 LEARN_CARDS_PATH = SOURCE_ROOT / "data" / "learn-cards.json"
 
 
-def rule_card(path: str, code: str, locale: dict[str, object], available: set[str], preset_id: str | None = None) -> tuple[str, float, str] | None:
+def rule_card(path: str, code: str, locale: dict[str, object], available: set[str], preset_id: str | None = None, anchor: str = "") -> tuple[str, float, str] | None:
     """One rule article as the app's preset card, in this locale: (family,
     rank in the app's order, markup), or None when it has no card.
 
@@ -1840,7 +1840,7 @@ def rule_card(path: str, code: str, locale: dict[str, object], available: set[st
         rank = (max(ranks) if ranks else -1) + 0.5
     else:
         return None
-    href = html.escape(localized_route(route_for(path), locale, available), quote=True)
+    href = html.escape(localized_route(route_for(path), locale, available) + (f"#{anchor}" if anchor else ""), quote=True)
     # A rule for any country gets the globe icon, not the AtlasDays logo.
     image = (
         f'<img class="rule-flag" src="/assets/flags/{flag.lower()}.png" alt="" width="36" height="25" loading="lazy" />'
@@ -1867,8 +1867,11 @@ def render_rule_cards(content: str, code: str, locale: dict[str, object], availa
         for token in match.group(1).split():
             # path@preset: that preset's card, linking to that article (the
             # EU long-term resident preset has no article of its own).
+            # path#anchor links to a section of it (the calculators hub:
+            # #calculator, an article's embedded calculator).
             path, _, preset = token.partition("@")
-            card = rule_card(path, code, locale, available, preset or None)
+            path, _, anchor = path.partition("#")
+            card = rule_card(path, code, locale, available, preset or None, anchor)
             if card is None:
                 raise SystemExit(f"RULE_CARDS: {path} has no card (no app_preset, not in learn-cards.json)")
             rows.append(card[2])
