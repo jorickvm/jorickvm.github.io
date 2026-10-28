@@ -1699,9 +1699,14 @@ def render_embedded_calculator(content: str, article: dict[str, object], code: s
     rule = calculator_rule(article)
     folder = "learn" if code == default_locale_code() else f"{code}/learn"
     page = (SOURCE_ROOT / "content" / folder / Path(CALCULATOR_PAGE).name).read_text(encoding="utf-8")
+    # The calculator is the page's <div class="daycal"> up to its own closing tag.
     start = page.index('<div class="daycal"')
-    privacy = re.search(r'<p class="cal-private">.*?</p>', page, re.S)
-    block = page[start:privacy.start()].rstrip() + "\n    " + privacy.group(0)
+    depth = 0
+    for tag in re.finditer(r"<(/?)div\b", page[start:]):
+        depth += -1 if tag.group(1) else 1
+        if depth == 0:
+            block = page[start:page.index(">", start + tag.end()) + 1]
+            break
     slot = re.compile(r'<div class="calculator-slot" data-calculator>(.*?)</div>', re.S)
     slots = slot.findall(content)
     if len(slots) != 1:
