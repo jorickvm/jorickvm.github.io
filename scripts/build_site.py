@@ -1467,8 +1467,8 @@ CALCULATOR_RULES = {
     "days183": {"script": "days-183.js", "page": "learn/183-day-rule-calculator.html"},
     "schengen": {"script": "schengen.js", "page": "learn/schengen-calculator.html"},
     "ukIlr": {"script": "uk-ilr.js", "page": "learn/uk-ilr-absence-calculator.html"},
-    "presence": {"script": "presence.js", "version": "20261007f"},
-    "spt": {"script": "spt.js", "version": "20261006a"},
+    "presence": {"script": "presence.js", "version": "20261028a"},
+    "spt": {"script": "spt.js", "version": "20261028a"},
 }
 SHARED_CALCULATOR_STRINGS = {
     "hintEnd", "hintSelected", "pending", "empty", "deleteTrip", "country", "addCountry", "noMatch",
@@ -1549,6 +1549,26 @@ def calculator_link_query(article: dict[str, object]) -> str:
     limit = "" if number == 183 else f"&limit={number}"
     overnight = "&overnight=1" if dict(dict(article.get("calculator") or {}).get("settings", {})).get("overnight") else ""
     return f"?country={code.upper()}&{params}&resident={resident}{limit}{overnight}"
+
+
+def render_calculator_offers(content: str, source_path: str) -> str:
+    """The 183-day page's country presets, by country code: the preset the
+    app offers after an import while the page still has the setup a country
+    article's link gave it (days-183.js trackerOffer). `source_path` is the
+    English page's, so every locale's copy gets them."""
+    if source_path != CALCULATOR_PAGE:
+        return content
+    records = json.loads(DATA_PATH.read_text(encoding="utf-8"))["articles"]
+    offers = {
+        str(record["residency"]["code"]).upper(): str(record["app_preset"])
+        for record in records
+        if record.get("app_preset") and calculator_link_query(record)
+    }
+    encoded = html.escape(json.dumps(dict(sorted(offers.items())), separators=(",", ":")), quote=True)
+    marker = 'data-day-calendar="days183"'
+    if content.count(marker) != 1:
+        raise SystemExit(f"{CALCULATOR_PAGE}: needs exactly one {marker} for its country presets")
+    return content.replace(marker, f'{marker} data-cal-offers="{encoded}"', 1)
 
 
 def link_calculator_to_rule(content: str, article: dict[str, object]) -> str:
@@ -1709,6 +1729,10 @@ def render_embedded_calculator(content: str, article: dict[str, object], code: s
         text = json.dumps(labels, ensure_ascii=False, indent=2)
         block = cal_strings.sub(lambda m: m.group(1) + "\n" + text + "\n      " + m.group(3), block, count=1)
         block = block.replace('data-day-calendar="days183"', f'data-day-calendar="{rule}"', 1)
+    # The tracker the app offers after the import (the import link's `p`):
+    # the article's own preset, when the app has one for its rule.
+    if article.get("app_preset"):
+        preset["offer"] = str(article["app_preset"])
     encoded = html.escape(json.dumps(preset, ensure_ascii=False, separators=(",", ":")), quote=True)
     block = block.replace('id="days-183"', f'id="embed-{rule}"', 1).replace("days-183-import-title", f"embed-{rule}-import-title")
     block = block.replace(f'data-day-calendar="{rule}"', f'data-day-calendar="{rule}" data-cal-preset="{encoded}"', 1)
@@ -1733,6 +1757,7 @@ def render_article(
     content = render_factbox_legal_basis(content, article)
     content = render_learn_trust(content, article, locale, strings)
     content = render_embedded_calculator(content, article, code)
+    content = render_calculator_offers(content, source_path)
     content = link_calculator_to_rule(content, article)
     content = mark_calculator_callout(content, article)
     content = render_toc(content, article)

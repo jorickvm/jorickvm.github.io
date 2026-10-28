@@ -45,6 +45,13 @@
     return c.D.fromParts(p[0], p[1], p[2]) || c.today;
   }
 
+  // The window as a link sets it up ("calendar", "rolling", "tax|04-01"), to
+  // tell whether the visitor has since changed the linked country's rule.
+  function windowKey(c) {
+    var type = setting(c, "periodType");
+    return type === "tax" ? type + "|" + setting(c, "taxStart").slice(5) : type;
+  }
+
   function bounds(c) {
     var D = c.D, type = setting(c, "periodType");
     if (type === "rolling") { var on = countUpTo(c); return { from: D.shiftYears(on, -1) + 1, to: on }; }
@@ -90,7 +97,22 @@
       var limit = Math.round(+q.get("limit"));
       if (limit >= 1 && limit <= 366) s.limit = limit;
       if (q.get("overnight") === "1") s.overnight = code;
+      s.linkedWindow = windowKey({ settings: s, D: c.D, today: c.today });
       return { settings: s, link: "183-" + code.toLowerCase() };
+    },
+    // The app's preset for the country's rule: an embed's own, or on this
+    // page a linked country's, while the window and the number are still the
+    // ones its article's link set up. A rule the visitor made themselves has
+    // no preset to match, so it gets none.
+    trackerOffer: function (trips, c) {
+      var s = c.settings, id = c.offer;
+      if (!id && s.linkedCountry && s.linkedCountry === s.country && s.linkedWindow === windowKey(c)
+          && (!s.limitInput || +s.limitInput === (+s.limit || LIMIT))) id = c.offers[s.country];
+      if (!id) return "";
+      var type = setting(c, "periodType"), p = id + ",goal:" + setting(c, "goal");
+      if (type === "calendar") p += ",year:" + setting(c, "year");
+      if (type === "tax") p += ",year:" + setting(c, "taxStart").slice(0, 4);
+      return p;
     },
     newTripCountry: function (c) { return c.settings.country || ""; },
 

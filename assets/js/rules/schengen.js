@@ -52,6 +52,8 @@
     fixedRange: true,
     carryCountry: true,
     linkId: "schengen",
+    // The app's 90/180 preset, or an embed's own (Türkiye's short stays).
+    trackerOffer: function (trips, c) { return c.offer || (c.settings.only ? "" : "schengen-90-180"); },
 
     countries: function (all, preset) {
       if (preset && preset.only) return [preset.only];

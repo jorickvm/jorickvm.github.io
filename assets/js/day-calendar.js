@@ -44,6 +44,11 @@
      carryCountry            optional: a new trip starts with the last country
                              picked
      linkId                  optional: the calculator's `c` in the import link
+     trackerOffer(trips, ctx) optional: the app tracker the import offers,
+                             the link's `p` (a preset id, then key:value
+                             settings), or "" for none. ctx.offer is an
+                             embed's preset (its article's app_preset),
+                             ctx.offers a full page's (data-cal-offers)
      strings                 labels shown by the engine
 
    "Track this in AtlasDays" opens the page's dialog, which shows one of its
@@ -176,7 +181,9 @@
   })();
   // v=1&c=183&b=2026-01-05&n=…&s=ES:0:19,PT:19:8: each stay is its country,
   // its first day counted from b, and its length in days after that day.
-  function importFragment(rows, linkId) {
+  // p=residence-portugal,goal:stay,year:2026 is the tracker the app offers
+  // once the stays are in; its characters need no encoding.
+  function importFragment(rows, linkId, offer) {
     var base = Math.min.apply(null, rows.map(function (r) { return r.start; }));
     var parts = ["v=1"];
     if (linkId) parts.push("c=" + encodeURIComponent(linkId));
@@ -186,6 +193,7 @@
     parts.push("s=" + rows.map(function (r) {
       return String(r.country).toUpperCase() + ":" + (r.start - base) + ":" + (r.end == null ? "" : r.end - r.start);
     }).join(","));
+    if (offer) parts.push("p=" + offer);
     return parts.join("&");
   }
   function loadQr(done) {
@@ -298,6 +306,10 @@
     // rule's own `c` in the import link (e.g. 183-es).
     var preset = {};
     try { preset = JSON.parse(root.getAttribute("data-cal-preset") || "{}"); } catch (e) { preset = {}; }
+    // The app presets a full calculator page can offer after an import, by
+    // the setup a link opened it with (the 183-day page: one per country).
+    var offers = {};
+    try { offers = JSON.parse(root.getAttribute("data-cal-offers") || "{}"); } catch (e) { offers = {}; }
     // A rule whose country comes from the embed (a presence calculator set to
     // Canada) reads it from the preset's settings.
     var allowed = (rule.countries && rule.countries(PLACES, preset.settings || {})) || PLACES;
@@ -324,7 +336,7 @@
     var englishNames = null;
     try { englishNames = new Intl.DisplayNames(["en"], { type: "region" }); } catch (e) {}
 
-    function ctx() { return { today: today, D: D, label: label, plural: plural, text: text, trips: trips, placeName: placeName, settings: settings, dateRange: dateRange, dayMonth: dayMonth, yearSpan: yearSpan, tone: tone, embedded: !!preset.settings }; }
+    function ctx() { return { today: today, D: D, label: label, plural: plural, text: text, trips: trips, placeName: placeName, settings: settings, dateRange: dateRange, dayMonth: dayMonth, yearSpan: yearSpan, tone: tone, embedded: !!preset.settings, offer: preset.offer || "", offers: offers }; }
     // A new trip starts with the rule's fixed country, or (rule.carryCountry)
     // the country picked last, so a run of stays in one country is quick.
     function newCountry() {
@@ -962,7 +974,8 @@
     function openImport() {
       var rows = rule.exportRows(trips, ctx()).slice().sort(function (a, b) { return a.start - b.start; });
       if (!dialog || !dialog.showModal) return downloadCsv();
-      var frag = rows.length ? importFragment(rows, linkId()) : "";
+      var offer = rule.trackerOffer ? rule.trackerOffer(trips, ctx()) : "";
+      var frag = rows.length ? importFragment(rows, linkId(), offer) : "";
       var mode = rows.length > LINK.maxStays ? "file"
         : inApp || appleTouch ? "phone"
         : rows.length <= LINK.maxQrStays ? "computer" : "file";

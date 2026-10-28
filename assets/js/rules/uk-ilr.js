@@ -105,6 +105,11 @@
     // year before the first one. Stays share the travel days with the trips,
     // which AtlasDays does not treat as an overlap.
     linkId: "uk-ilr",
+    // The app's ILR preset, or for naturalisation the embed's, with its route.
+    trackerOffer: function (trips, c) {
+      if (!c.settings.citizenship) return c.offer || "citizenship-uk-ilr-absence";
+      return c.offer ? c.offer + ",route:" + (c.settings.route === "spouse" ? "spouse" : "standard") : "";
+    },
     exportRows: function (trips, c) {
       var past = trips.filter(function (t) { return t.start <= c.today; });
       if (!past.length) return trips.filter(function (t) { return t.country; }).map(function (t) { return { country: t.country, start: t.start, end: t.end, notes: c.settings.note || "ILR absence calculator" }; });

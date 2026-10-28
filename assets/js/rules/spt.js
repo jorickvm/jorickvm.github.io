@@ -34,6 +34,8 @@
     quietHint: true,
     fixedRange: true,
     linkId: "spt",
+    // The app's SPT preset for the year tested, with the goal.
+    trackerOffer: function (trips, c) { return c.offer ? c.offer + ",goal:" + setting(c, "goal") + ",year:" + setting(c, "year") : ""; },
 
     countries: function () { return ["US"]; },
 

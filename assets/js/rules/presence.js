@@ -106,6 +106,9 @@
       };
     },
 
+    // The embed's preset, when the app offers one for its programme.
+    trackerOffer: function (trips, c) { return c.offer; },
+
     exportRows: function (trips, c) {
       return trips.map(function (t) {
         return { country: t.country || c.settings.country, start: t.start, end: t.end, notes: c.settings.note || "Presence calculator" };
