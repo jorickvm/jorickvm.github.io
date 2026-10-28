@@ -186,8 +186,11 @@
   // v=1&c=183&b=2026-01-05&n=…&s=ES:0:19,PT:19:8: each stay is its country,
   // its first day counted from b, and its length in days after that day.
   // p=residence-portugal,goal:stay,year:2026 is the tracker the app offers
-  // once the stays are in; its characters need no encoding.
+  // once the stays are in; its characters need no encoding. With no stays a
+  // link carries the tracker alone, which only version 2 allows: the app
+  // opens it in the tracker editor (AtlasDays 2.8.3).
   function importFragment(rows, linkId, offer) {
+    if (!rows.length) return "v=2" + (linkId ? "&c=" + encodeURIComponent(linkId) : "") + "&p=" + offer;
     var base = Math.min.apply(null, rows.map(function (r) { return r.start; }));
     var parts = ["v=1"];
     if (linkId) parts.push("c=" + encodeURIComponent(linkId));
@@ -719,9 +722,11 @@
     }
     function renderList() {
       list.textContent = "";
-      // Import sits in the Trips card and shows once there is something to import.
+      // Import sits in the Trips card and shows once there is something to
+      // import: stays, or before any, the tracker the rule offers.
       var rowsOut = trips.length ? rule.exportRows(trips, ctx()).length : 0;
-      root.querySelectorAll("[data-cal-import]").forEach(function (btn) { btn.hidden = !rowsOut; });
+      var offer = !rowsOut && rule.trackerOffer ? rule.trackerOffer(trips, ctx()) : "";
+      root.querySelectorAll("[data-cal-import]").forEach(function (btn) { btn.hidden = !rowsOut && !offer; });
       if (!trips.length) { list.appendChild(el("p", { "class": "cal-empty" }, S.empty)); return; }
       var clip = span();
       trips.forEach(function (t, idx) {
@@ -981,13 +986,16 @@
       var rows = rule.exportRows(trips, ctx()).slice().sort(function (a, b) { return a.start - b.start; });
       if (!dialog || !dialog.showModal) return downloadCsv();
       var offer = rule.trackerOffer ? rule.trackerOffer(trips, ctx()) : "";
-      var frag = rows.length ? importFragment(rows, linkId(), offer) : "";
+      var frag = rows.length || offer ? importFragment(rows, linkId(), offer) : "";
       var mode = rows.length > LINK.maxStays ? "file"
         : inApp || appleTouch ? "phone"
         : rows.length <= LINK.maxQrStays ? "computer" : "file";
       dialog.querySelectorAll("[data-cal-on]").forEach(function (part) {
         part.hidden = part.getAttribute("data-cal-on").split(" ").indexOf(mode) < 0;
       });
+      // Its steps name the stays, or with none the tracker alone.
+      dialog.querySelectorAll("[data-cal-stays]").forEach(function (part) { part.hidden = !rows.length; });
+      dialog.querySelectorAll("[data-cal-tracker]").forEach(function (part) { part.hidden = !!rows.length; });
       // Inside the app there is nothing to install.
       dialog.querySelectorAll("[data-cal-store]").forEach(function (part) { part.hidden = inApp; });
       // A single step needs no number.
@@ -999,7 +1007,7 @@
       dialog.classList.toggle("is-file", mode === "file");
       // "Import with a file instead" is the quiet alternative, unless the file
       // is all there is; its follow-up line shows once the file is saved.
-      dialog.querySelectorAll("[data-cal-alt]").forEach(function (part) { part.hidden = mode === "file"; });
+      dialog.querySelectorAll("[data-cal-alt]").forEach(function (part) { part.hidden = mode === "file" || !rows.length; });
       dialog.querySelectorAll("[data-cal-downloaded]").forEach(function (part) { part.hidden = true; part.previousElementSibling.hidden = false; });
       var box = dialog.querySelector("[data-cal-qr]");
       if (box) {

@@ -288,12 +288,12 @@
           <div class="cal-qr" data-cal-qr></div>
           <ol class="cal-steps">
             <li><strong>確認 iPhone 或 iPad 已安裝 AtlasDays</strong><span>可在 App Store 免費下載。</span></li>
-            <li><strong>掃描 QR 碼，把所有行程載入 AtlasDays</strong><span>確認無誤後，輕點「匯入」。</span></li>
+            <li><strong data-cal-stays>掃描 QR 碼，把所有行程載入 AtlasDays</strong><span data-cal-stays>確認無誤後，輕點「匯入」。</span><strong data-cal-tracker hidden>掃描 QR 碼，把這個追蹤器新增到 AtlasDays</strong><span data-cal-tracker hidden>確認無誤後，輕點「儲存」。</span></li>
           </ol>
         </div>
         <ol class="cal-steps" data-cal-on="phone">
           <li data-cal-store><strong>取得 AtlasDays</strong><span>在 App Store 免費下載。已經有了？直接跳到第 2 步。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
-          <li><strong>在 App 中開啟停留紀錄</strong><span>確認無誤後輕點「匯入」。在此之前，不會儲存任何資料。</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">在 AtlasDays 中開啟</a></li>
+          <li><strong data-cal-stays>在 App 中開啟停留紀錄</strong><span data-cal-stays>確認無誤後輕點「匯入」。在此之前，不會儲存任何資料。</span><strong data-cal-tracker hidden>在 App 中開啟這個追蹤器</strong><span data-cal-tracker hidden>確認無誤後輕點「儲存」。在此之前，不會儲存任何資料。</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">在 AtlasDays 中開啟</a></li>
         </ol>
         <ol class="cal-steps" data-cal-on="file">
           <li data-cal-store><strong>取得 AtlasDays</strong><span>iPhone 版，可在 App Store 免費下載。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
@@ -378,7 +378,7 @@
   <script>window.AtlasDaysNavStrings={"menuOpen":"開啟導覽選單","menuClose":"關閉導覽選單"};</script>
   <script src="../../assets/js/navigation.js?v=20261027j"></script>
   <script defer src="../../assets/js/rules/uk-ilr.js?v=20261028b"></script>
-  <script defer src="../../assets/js/day-calendar.js?v=20261029a"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261029b"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();
