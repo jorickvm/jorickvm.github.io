@@ -136,7 +136,6 @@
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
-  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261028a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">本文へスキップ</a>
@@ -210,9 +209,8 @@
       <ul>
         <li><a href="#section-1">ルールの内容</a></li>
         <li><a href="#section-2">数え方</a></li>
-        <li><a href="#calculator">オマーンの不在日数計算機</a></li>
-        <li><a href="#section-4">日数以外の要素</a></li>
-        <li><a href="#section-5">よくある質問</a></li>
+        <li><a href="#section-3">日数以外の要素</a></li>
+        <li><a href="#section-4">よくある質問</a></li>
       </ul>
     </nav>
     <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
@@ -235,96 +233,8 @@
 <ol class="steps"><li>オマーンを出国した日と帰国した日を記録します。</li><li>現在の連続した国外滞在期間を、6か月の基準と照らし合わせます。</li><li>1年間と3年間の上限については、過去の国外滞在も合計します。</li><li>より長い国外滞在が必要な場合は、例外を当てにする前に、その理由が認められるかどうかをオマーン王立警察に確認してください。</li></ol>
 <div class="example"><p><strong>例。</strong>1年間に4か月半の国外滞在が2回ある場合、それぞれは連続6か月未満ですが、合計は9か月になります。例外が適用されない限り、別に設けられた8か月の上限を超えます。</p></div>
 <p>第18条は、出国日や帰国日の一部の扱いや、累計期間を具体的にどの日から数えるかを定義していません。上限に近い日程を計画する場合は、オマーン王立警察に期限を確認してください。</p>
-<h2 id="calculator">オマーンの不在日数計算機</h2>
-<p>オマーンを出国した日をタップし、次に帰国した日をタップしてください。計算機はその1回の国外滞在について丸一日を数え、180日と比べます。規定そのものは連続6か月です。6か月の国外滞在は丸一日で数えると必ず180日以上になるため、数えた日数は6か月後の日付より少し前に180日に達します。確認できるのは一度に1回の国外滞在だけで、上で説明した、複数回の国外滞在にかかる上限は対象外です。</p>
-<div class="daycal" id="embed-perEntry" data-day-calendar="perEntry" data-cal-preset="{&quot;settings&quot;:{&quot;away&quot;:true,&quot;home&quot;:&quot;OM&quot;,&quot;limit&quot;:180,&quot;note&quot;:&quot;Oman absence calculator&quot;},&quot;lock&quot;:[],&quot;link&quot;:&quot;away-om&quot;,&quot;offer&quot;:&quot;permit-oman-residence-absence&quot;}">
-      <script type="application/json" data-cal-strings>
-{
-  "hintEnd": "旅行のもう一方の日付をタップしてください。",
-  "hintSelected": "旅行のどちらかの端をドラッグして日付を変更するか、下で削除してください。",
-  "pending": "新しい旅行の開始日",
-  "empty": "旅行はまだありません。",
-  "deleteTrip": "旅行を削除",
-  "country": "国",
-  "goal": "目標",
-  "goalStay": "上限未満に抑える",
-  "goalReach": "目標を達成",
-  "addCountry": "国を追加",
-  "noMatch": "一致する国はありません",
-  "year": "年",
-  "starts": "開始",
-  "tripDays": {
-    "other": "{n}日"
-  },
-  "remaining": {
-    "other": "残り{n}日"
-  },
-  "atLimit": "上限到達",
-  "needed": {
-    "other": "あと{n}日必要"
-  },
-  "reachedTarget": "目標達成",
-  "overBy": {
-    "other": "上限を{n}日超過"
-  },
-  "hintStart": "オマーンを出国した日をタップし、次に帰国した日をタップしてください。",
-  "inTrip": "オマーン国外に滞在",
-  "tripAway": {
-    "other": "不在{n}日"
-  },
-  "title": "オマーン国外で過ごした日数",
-  "checkOn": "集計終了日",
-  "checkOnCaption": "この日の時点で続いている不在か、それより前の直近の不在が対象です。予定している旅行を確認するときは、帰国日を選んでください。"
-}
-      </script>
-      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
-      <div class="cal-window" data-cal-window>
-        <div class="cal-head">
-          <p class="cal-month-title" data-cal-month></p>
-          <div class="cal-weekdays" aria-hidden="true"><span>月</span><span>火</span><span>水</span><span>木</span><span>金</span><span>土</span><span>日</span></div>
-        </div>
-        <div data-cal-weeks></div>
-      </div>
-      <div class="cal-side">
-        <div class="cal-box" aria-live="polite">
-          <div data-cal-result></div>
-        </div>
-        <div class="cal-box">
-          <h3>タイムライン</h3>
-          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>AtlasDaysで記録する</button>
-        </div>
-      </div>
-      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="embed-perEntry-import-title">
-        <div class="cal-dialog-head">
-          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
-          <div>
-            <p class="cal-dialog-title" id="embed-perEntry-import-title">AtlasDaysで記録する</p>
-            <p class="cal-dialog-sub">旅行中もそのまま日数を数えられる、iPhoneとiPad向けの無料アプリです。</p>
-          </div>
-        </div>
-        <div class="cal-dialog-scan" data-cal-on="computer">
-          <div class="cal-qr" data-cal-qr></div>
-          <ol class="cal-steps">
-            <li><strong>iPhoneまたはiPadにAtlasDaysをインストールしておく</strong><span>App Storeで無料で入手できます。</span></li>
-            <li><strong>QRコードを読み取り、すべての旅行をAtlasDaysに読み込む</strong><span>確認してから「インポート」をタップします。</span></li>
-          </ol>
-        </div>
-        <ol class="cal-steps" data-cal-on="phone">
-          <li data-cal-store><strong>AtlasDaysを入手</strong><span>App Storeから無料で入手できます。お持ちの場合は2へ進んでください。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
-          <li><strong>アプリで滞在を開く</strong><span>確認してから「インポート」をタップします。それまで何も保存されません。</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">AtlasDaysで開く</a></li>
-        </ol>
-        <ol class="cal-steps" data-cal-on="file">
-          <li data-cal-store><strong>AtlasDaysを入手</strong><span>iPhone向けにApp Storeで無料で提供しています。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
-          <li><strong>ファイルで滞在をインポート</strong><span>滞在の数が多く、リンクでは送れません。ファイルをダウンロードして、iPhoneのAtlasDaysで開いてください。</span><button type="button" class="cal-dialog-primary" data-cal-download>ファイルをダウンロード</button></li>
-        </ol>
-        <div class="cal-dialog-foot">
-          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>旅行をCSVファイルでダウンロード</button><span data-cal-downloaded hidden>このファイルをiPhoneのAtlasDaysで開いてください。</span></p>
-          <button type="button" data-cal-close>閉じる</button>
-        </div>
-      </dialog>
-    </div>
 
-<h2 id="section-4">日数以外の要素</h2>
+<h2 id="section-3">日数以外の要素</h2>
 <p>法律の文言は「認められる理由なく」です。個人的な事情があっても、自動的に例外として認められるわけではありません。また、主たる在留者の在留が継続している間は、同行する家族はこれらの国外滞在期間の対象外です。在留資格の種類、スポンサー、ビザの有効期限は、別途確認する必要があります。</p>
     <div class="cta-box"><span class="cta-logo">
         <img class="logo-dark" src="/assets/brand/logo_dark.png?v=20260325a" alt="AtlasDaysのロゴ" width="52" height="52" />
@@ -332,7 +242,7 @@
       </span>
     <h2>AtlasDaysはオマーン国外での滞在期間を自動で管理します</h2><p>「オマーン居住ビザの不在上限」トラッカーは、現在の国外滞在に180日の基準を使い、記録したオマーンでの滞在にかからない日を数えます。出国日と帰国日は両方とも除外します。これは6か月を計画用に近似したものであり、8か月・18か月の上限と例外は、別途確認が必要です。</p><a class="cta-btn" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">
         <svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>アプリを入手</a></div>
-    <h2 id="section-5">よくある質問</h2>
+    <h2 id="section-4">よくある質問</h2>
     <h3>オマーンの6か月ルールは、ちょうど180日ですか？</h3>
 <p>法律は6か月と定めています。暦月は月によって日数が異なるため、180日が法律上の定義ではありません。</p>
 <h3>短期間帰国すれば、国外滞在の上限はすべてリセットされますか？</h3>
@@ -406,8 +316,6 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"ナビゲーションメニューを開く","menuClose":"ナビゲーションメニューを閉じる"};</script>
   <script src="../../assets/js/navigation.js?v=20261027j"></script>
-  <script defer src="../../assets/js/rules/per-entry.js?v=20261028c"></script>
-  <script defer src="../../assets/js/day-calendar.js?v=20261029a"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

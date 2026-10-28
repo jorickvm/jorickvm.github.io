@@ -136,7 +136,6 @@
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
-  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261028a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">본문으로 건너뛰기</a>
@@ -210,10 +209,9 @@
       <ul>
         <li><a href="#section-1">규정 내용</a></li>
         <li><a href="#section-2">체류 기간 계산 방법</a></li>
-        <li><a href="#calculator">캐나다 방문자 체류 계산기</a></li>
-        <li><a href="#section-4">출국과 재입국</a></li>
-        <li><a href="#section-5">일수 계산 외의 기준</a></li>
-        <li><a href="#section-6">자주 묻는 질문</a></li>
+        <li><a href="#section-3">출국과 재입국</a></li>
+        <li><a href="#section-4">일수 계산 외의 기준</a></li>
+        <li><a href="#section-5">자주 묻는 질문</a></li>
       </ul>
     </nav>
     <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
@@ -260,96 +258,10 @@
       <p>허가된 체류는 입국한 날로부터 6개월 뒤인 <strong>9월 10일</strong>까지입니다. 심사관이 6월 10일이라고 적어 주었다면 그 6월 10일이 기한이 되고, 6개월 기본값은 적용되지 않습니다.</p>
     </div>
 
-    <h2 id="calculator">캐나다 방문자 체류 계산기</h2>
-    <p>캐나다에 도착한 날을 누른 다음 출국한 날을 누르십시오. 계산기는 도착일을 1일차로 하여 그 체류의 모든 날을 세고 180일과 비교합니다. 규정 자체는 입국한 날부터 6개월이고, 6개월은 언제나 180일보다 길기 때문에 계산기의 일수는 6개월이 되는 날보다 조금 앞서 180일에 이릅니다. 심사관이 다른 날짜를 도장으로 찍어 주었다면 그 날짜가 기한입니다. 계산기는 체류를 한 번에 하나씩 확인합니다. 방문 패턴도 중요한 이유는 다음 섹션에서 설명합니다.</p>
-    <div class="daycal" id="embed-perVisit" data-day-calendar="perVisit" data-cal-preset="{&quot;settings&quot;:{&quot;country&quot;:&quot;CA&quot;,&quot;limit&quot;:180,&quot;note&quot;:&quot;Canada visitor stay calculator&quot;},&quot;lock&quot;:[],&quot;link&quot;:&quot;visit-ca&quot;,&quot;offer&quot;:&quot;visa-canada-visitor&quot;}">
-      <script type="application/json" data-cal-strings>
-{
-  "hintEnd": "체류의 다른 끝 날짜를 누르십시오.",
-  "hintSelected": "체류의 양쪽 끝 중 하나를 드래그해 날짜를 변경하거나 아래에서 삭제하십시오.",
-  "pending": "새 체류 시작",
-  "empty": "아직 체류가 없습니다.",
-  "deleteTrip": "체류 삭제",
-  "country": "국가",
-  "goal": "목표 유형",
-  "goalStay": "한도 미만 유지",
-  "goalReach": "목표 달성",
-  "addCountry": "국가 추가",
-  "noMatch": "일치하는 국가가 없습니다",
-  "year": "연도",
-  "starts": "시작일",
-  "tripDays": {
-    "other": "{n}일"
-  },
-  "remaining": {
-    "other": "{n}일 남음"
-  },
-  "atLimit": "한도 도달",
-  "needed": {
-    "other": "{n}일 더 필요"
-  },
-  "reachedTarget": "목표 달성",
-  "overBy": {
-    "other": "한도 {n}일 초과"
-  },
-  "hintStart": "캐나다에 도착한 날을 누른 다음 출국한 날을 누르십시오.",
-  "inTrip": "캐나다 체류",
-  "title": "캐나다 체류 일수",
-  "checkOn": "계산 종료일",
-  "checkOnCaption": "이 날짜에 이어지고 있는 체류, 또는 그 전의 마지막 체류를 셉니다. 예정된 체류를 확인하려면 그 체류의 마지막 날을 선택하십시오."
-}
-      </script>
-      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
-      <div class="cal-window" data-cal-window>
-        <div class="cal-head">
-          <p class="cal-month-title" data-cal-month></p>
-          <div class="cal-weekdays" aria-hidden="true"><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span><span>일</span></div>
-        </div>
-        <div data-cal-weeks></div>
-      </div>
-      <div class="cal-side">
-        <div class="cal-box" aria-live="polite">
-          <div data-cal-result></div>
-        </div>
-        <div class="cal-box">
-          <h3>타임라인</h3>
-          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>AtlasDays에서 관리하기</button>
-        </div>
-      </div>
-      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="embed-perVisit-import-title">
-        <div class="cal-dialog-head">
-          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
-          <div>
-            <p class="cal-dialog-title" id="embed-perVisit-import-title">AtlasDays에서 관리하기</p>
-            <p class="cal-dialog-sub">여행하는 동안 체류 일수를 계속 계산하는 iPhone 및 iPad용 무료 앱입니다.</p>
-          </div>
-        </div>
-        <div class="cal-dialog-scan" data-cal-on="computer">
-          <div class="cal-qr" data-cal-qr></div>
-          <ol class="cal-steps">
-            <li><strong>iPhone 또는 iPad에 AtlasDays 설치 확인</strong><span>App Store에서 무료로 받을 수 있습니다.</span></li>
-            <li><strong>QR 코드를 스캔해 모든 여행을 AtlasDays에 불러오기</strong><span>확인한 다음 '가져오기'를 누르십시오.</span></li>
-          </ol>
-        </div>
-        <ol class="cal-steps" data-cal-on="phone">
-          <li data-cal-store><strong>AtlasDays 받기</strong><span>App Store에서 무료로 받을 수 있습니다. 이미 있다면 2단계로 넘어가십시오.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
-          <li><strong>앱에서 체류 열기</strong><span>확인한 다음 '가져오기'를 누르십시오. 그 전에는 아무것도 저장되지 않습니다.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">AtlasDays에서 열기</a></li>
-        </ol>
-        <ol class="cal-steps" data-cal-on="file">
-          <li data-cal-store><strong>AtlasDays 받기</strong><span>App Store에서 무료로 받을 수 있는 iPhone 앱입니다.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
-          <li><strong>파일로 체류 가져오기</strong><span>체류가 너무 많아 링크에 담을 수 없습니다. 파일을 다운로드해 iPhone의 AtlasDays에서 여십시오.</span><button type="button" class="cal-dialog-primary" data-cal-download>파일 다운로드</button></li>
-        </ol>
-        <div class="cal-dialog-foot">
-          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>여행을 CSV 파일로 다운로드</button><span data-cal-downloaded hidden>iPhone의 AtlasDays에서 이 파일을 여십시오.</span></p>
-          <button type="button" data-cal-close>닫기</button>
-        </div>
-      </dialog>
-    </div>
-
-    <h2 id="section-4">출국과 재입국</h2>
+    <h2 id="section-3">출국과 재입국</h2>
     <p>솅겐의 90/180 같은 공표된 롤링 기간도 없고, 방문 사이에 얼마나 기다려야 하는지에 대한 산식도 없습니다. 그러나 새 입국은 권리가 아니라 새로운 심사입니다. 긴 체류를 짧은 간격으로 반복하면 심사관이 진정한 방문인지 의문을 가질 수 있고, 재입국 때 부여되는 체류 기간도 심사관이 정합니다. 국경을 다녀올 때마다 백지에서 다시 시작한다고 여기지 말고 체류 패턴을 관리하십시오.</p>
 
-    <h2 id="section-5">일수 계산 외의 기준</h2>
+    <h2 id="section-4">일수 계산 외의 기준</h2>
     <p>허가된 날짜를 넘겨 머무르려면 현재 체류 자격이 만료되기 전에 <strong>방문자 기록</strong>을 온라인으로 신청하십시오. 기한 안에 신청하면 심사가 진행되는 동안 합법적인 체류 자격이 유지됩니다. 신청 없이 초과 체류하면 이후 입국에 영향이 있을 수 있습니다. 캐나다에서 많은 날을 보내면 출입국 규정과는 별개로 세금 문제도 생길 수 있습니다. 한 해에 183일 이상 머무르면 세법상 간주 거주자가 될 수 있습니다. 이는 별개의 규정이며 전용 글이 있습니다. <a href="/ko/learn/canada-183-day-tax-residency">캐나다 183일 세법상 거주 규정</a></p>
 
     <div class="cta-box">
@@ -365,7 +277,7 @@
       </a>
     </div>
 
-    <h2 id="section-6">자주 묻는 질문</h2>
+    <h2 id="section-5">자주 묻는 질문</h2>
     <h3>방문자로 캐나다에 얼마나 머무를 수 있습니까?</h3>
     <p>방문자는 대부분 1회 입국당 최대 6개월까지 머무를 수 있습니다. 국경 심사관은 더 짧거나 더 긴 기간을 허가할 수 있으며, 여권에 찍히거나 적힌 날짜가 6개월 기본값을 대신합니다.</p>
     <h3>입국할 때 여권에 스탬프를 받지 못했다면 어떻게 됩니까?</h3>
@@ -441,8 +353,6 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"탐색 메뉴 열기","menuClose":"탐색 메뉴 닫기"};</script>
   <script src="../../assets/js/navigation.js?v=20261027j"></script>
-  <script defer src="../../assets/js/rules/per-entry.js?v=20261028c"></script>
-  <script defer src="../../assets/js/day-calendar.js?v=20261029a"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

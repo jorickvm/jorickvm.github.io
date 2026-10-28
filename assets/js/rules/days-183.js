@@ -63,6 +63,22 @@
     return { from: D.fromParts(y, 1, 1), to: D.fromParts(y, 12, 31) };
   }
 
+  // The numbers the card counts against. An embedded calculator knows its
+  // country's exact threshold (residentAt: 184 for "more than 183", 183 for
+  // "183 or more"); the generic page counts against 183, or the number typed
+  // in, and a linked threshold belongs to the linked country only. The meter
+  // shows the number that matters for the goal, and the pill is that number
+  // minus the days (Jorick, 2026-10-05; the app follows): the last safe day
+  // when staying below (182 under "183 or more"), the day that makes you
+  // resident when reaching it. The article that links here explains the rule.
+  function numbers(c, country) {
+    var base = +c.settings.limit || LIMIT, limit = +c.settings.limitInput || base;
+    var linkedResident = c.settings.linkedCountry && c.settings.linkedCountry !== country ? 0 : +c.settings.residentAt || 0;
+    var residentAt = linkedResident ? linkedResident + (limit - base) : 0;
+    var safe = residentAt ? residentAt - 1 : limit;
+    return { limit: limit, residentAt: residentAt, safe: safe, shown: setting(c, "goal") === "reach" ? (residentAt || limit) : safe };
+  }
+
   window.AtlasDaysRules = window.AtlasDaysRules || {};
   window.AtlasDaysRules.days183 = {
     travelDaysCount: true,
@@ -102,17 +118,26 @@
     },
     // The app's preset for the country's rule: an embed's own, or on this
     // page a linked country's, while the window and the number are still the
-    // ones its article's link set up. A rule the visitor made themselves has
-    // no preset to match, so it gets none.
+    // ones its article's link set up. Any other rule (a country the app has
+    // no preset for, as Spain, or one the visitor made themselves) becomes the
+    // app's custom tracker, counting what this calculator counts: the place,
+    // the number the meter shows, days or nights, the window and the goal.
     trackerOffer: function (trips, c) {
-      var s = c.settings, id = c.offer;
+      var s = c.settings, id = c.offer, type = setting(c, "periodType"), goal = setting(c, "goal");
       if (!id && s.linkedCountry && s.linkedCountry === s.country && s.linkedWindow === windowKey(c)
           && (!s.limitInput || +s.limitInput === (+s.limit || LIMIT))) id = c.offers[s.country];
-      if (!id) return "";
-      var type = setting(c, "periodType"), p = id + ",goal:" + setting(c, "goal");
-      if (type === "calendar") p += ",year:" + setting(c, "year");
-      if (type === "tax") p += ",year:" + setting(c, "taxStart").slice(0, 4);
-      return p;
+      if (id) {
+        var p = id + ",goal:" + goal;
+        if (type === "calendar") p += ",year:" + setting(c, "year");
+        if (type === "tax") p += ",year:" + setting(c, "taxStart").slice(0, 4);
+        return p;
+      }
+      if (!s.country) return "";
+      var custom = "custom,place:" + s.country + ",days:" + numbers(c, s.country).shown + ",unit:" + (s.nights ? "nights" : "days");
+      if (type === "calendar") custom += ",window:year,year:" + setting(c, "year");
+      else if (type === "tax") custom += ",window:tax,start:" + setting(c, "taxStart");
+      else custom += ",window:rolling,size:12m";
+      return custom + ",goal:" + goal;
     },
     newTripCountry: function (c) { return c.settings.country || ""; },
 
@@ -143,7 +168,7 @@
       // word with Goal in several languages): a typed number overrides the page's 183, or a
       // linked country's threshold, and that country's exact "resident from"
       // day moves with it. Embedded calculators lock it (calculator_preset).
-      var base = +c.settings.limit || LIMIT, limit = +c.settings.limitInput || base;
+      var n = numbers(c, country), limit = n.limit, residentAt = n.residentAt, safe = n.safe, shown = n.shown;
       var y = c.D.parts(c.today).y, years = [];
       for (var k = y + 1; k >= y - 5; k--) years.push({ value: String(k), label: String(k) });
       var type = setting(c, "periodType"), target = setting(c, "goal") === "reach";
@@ -170,20 +195,7 @@
       var days = country && byCountry[country] ? byCountry[country].size : 0;
       var loose = byCountry[""] ? byCountry[""].size : 0, lines = [];
       if (loose) lines.push(c.text("lineNoCountry", { n: loose }));
-      // An embedded calculator knows its country's exact threshold
-      // (residentAt: 184 for "more than 183", 183 for "183 or more"); the
-      // generic page counts against 183.
-      // A linked threshold belongs to the linked country only.
-      var linkedResident = c.settings.linkedCountry && c.settings.linkedCountry !== country ? 0 : +c.settings.residentAt || 0;
-      var residentAt = linkedResident ? linkedResident + (limit - base) : 0;
-      var safe = residentAt ? residentAt - 1 : limit, left = safe - days;
-      var needed = (residentAt || limit) - days;
-      // The meter shows the number that matters for the goal, and the pill is
-      // that number minus the days (Jorick, 2026-10-05; the app follows): the
-      // last safe day when staying below (182 under "183 or more"), the day
-      // that makes you resident when reaching it. The article that links here
-      // explains the rule itself.
-      var shown = target ? (residentAt || limit) : safe;
+      var left = safe - days, needed = (residentAt || limit) - days;
       // The app's wording: a limit counts down to "At limit"; a target counts
       // the days still needed until "Target reached".
       var status = target
