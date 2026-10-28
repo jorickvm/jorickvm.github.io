@@ -136,6 +136,7 @@
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261028a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">İçeriğe geç</a>
@@ -209,6 +210,7 @@
       <ul>
         <li><a href="#kural">Kural</a></li>
         <li><a href="#g-n-hesab-nas-l-yap-l-r">Gün hesabı nasıl yapılır?</a></li>
+        <li><a href="#calculator">Resident Return vizesi 730 gün hesaplama</a></li>
         <li><a href="#g-n-hesab-n-n-tesinde">Gün hesabının ötesinde</a></li>
         <li><a href="#sss">SSS</a></li>
       </ul>
@@ -257,6 +259,96 @@
     <div class="example">
       <p><strong>Örnek.</strong> 1 Mart 2026'da başvurmayı planlıyorsunuz; dolayısıyla dönem 1 Mart 2021'de başlar. Bu döneme düşen kalışlarınız 1 Nisan - 30 Eylül 2022 (183 gün), 1 Ocak - 30 Haziran 2024 (182 gün) ve 1 Şubat - 31 Aralık 2025 (334 gün).</p>
       <p>Bu 699 gün eder, yani 31 gün eksik. Aynı dönem içinde Avustralya'da geçirilecek bir ay daha, örneğin 1-31 Ocak 2026, 31 gün ekleyerek toplamı tam 730'a çıkarır.</p>
+    </div>
+
+    <h2 id="calculator">Resident Return vizesi 730 gün hesaplama</h2>
+    <p>Avustralya'daki kalışlarınızı eklemek için günlere dokunun. Hesaplama aracı, seçtiğiniz tarihe kadarki beş yılda Avustralya'da geçirdiğiniz günleri varış ve ayrılış günleri dahil sayar ve 730 güne ne kadar uzak olduğunuzu gösterir. Yalnızca daimi vize sahibi ya da Avustralya vatandaşı olduğunuz dönemlerdeki kalışları işaretleyin.</p>
+    <div class="daycal" id="embed-presence" data-day-calendar="presence" data-cal-preset="{&quot;settings&quot;:{&quot;country&quot;:&quot;AU&quot;,&quot;need&quot;:730,&quot;note&quot;:&quot;Australia RRV presence calculator&quot;},&quot;lock&quot;:[],&quot;link&quot;:&quot;rrv-au&quot;,&quot;offer&quot;:&quot;permit-australia-rrv&quot;}">
+      <script type="application/json" data-cal-strings>
+{
+  "hintEnd": "Kalışın diğer uç gününe dokunun.",
+  "hintSelected": "Tarihlerini değiştirmek için kalışın iki ucundan birini sürükleyin veya kalışı aşağıdan silin.",
+  "pending": "yeni kalışın başlangıcı",
+  "empty": "Henüz kalış yok.",
+  "deleteTrip": "Kalışı sil",
+  "country": "Ülke",
+  "goal": "Hedef",
+  "goalStay": "Sınırın altında kal",
+  "goalReach": "Hedefe ulaş",
+  "addCountry": "Ülke ekle",
+  "noMatch": "Eşleşen ülke yok",
+  "year": "Yıl",
+  "starts": "Başlangıç",
+  "tripDays": {
+    "one": "{n} gün",
+    "other": "{n} gün"
+  },
+  "remaining": {
+    "one": "{n} gün kaldı",
+    "other": "{n} gün kaldı"
+  },
+  "atLimit": "Sınırda",
+  "needed": {
+    "one": "{n} gün daha gerekli",
+    "other": "{n} gün daha gerekli"
+  },
+  "reachedTarget": "Hedefe ulaşıldı",
+  "overBy": {
+    "one": "Sınır {n} gün aşıldı",
+    "other": "Sınır {n} gün aşıldı"
+  },
+  "hintStart": "Avustralya'daki bir kalışın başladığı güne, ardından bittiği güne dokunun.",
+  "inTrip": "Avustralya'da",
+  "title": "Avustralya",
+  "checkOn": "Dönem sonu",
+  "checkOnCaption": "Bu tarihe kadarki beş yılda Avustralya'da geçirdiğiniz günler. Başvurmayı planladığınız günü seçin."
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>P</span><span>S</span><span>Ç</span><span>P</span><span>C</span><span>C</span><span>P</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>Zaman çizelgesi</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>AtlasDays'de takip et</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="embed-presence-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="embed-presence-import-title">AtlasDays'de takip et</p>
+            <p class="cal-dialog-sub">Seyahat ederken günlerinizi saymaya devam edin. iPhone ve iPad için ücretsiz uygulama.</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>AtlasDays'in iPhone veya iPad'inizde yüklü olduğundan emin olun</strong><span>App Store'da ücretsiz.</span></li>
+            <li><strong>Tüm seyahatleri AtlasDays'e aktarmak için QR kodunu tarayın</strong><span>Kontrol edin, ardından İçe aktar düğmesine dokunun.</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>AtlasDays'i indirin</strong><span>App Store'da ücretsiz. Zaten yüklü mü? 2. adıma geçin.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>Kalışlarınızı uygulamada açın</strong><span>Kontrol edin, ardından İçe aktar düğmesine dokunun. O zamana kadar hiçbir şey kaydedilmez.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">AtlasDays'de aç</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>AtlasDays'i indirin</strong><span>iPhone için App Store'da ücretsiz.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>Kalışlarınızı dosyayla içe aktarın</strong><span>Bu kadar çok kalış bir bağlantıya sığmıyor. Dosyayı indirin ve iPhone'unuzda AtlasDays ile açın.</span><button type="button" class="cal-dialog-primary" data-cal-download>Dosyayı indir</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Seyahatleri CSV dosyası olarak indir</button><span data-cal-downloaded hidden>Bu dosyayı iPhone'unuzda AtlasDays ile açın.</span></p>
+          <button type="button" data-cal-close>Kapat</button>
+        </div>
+      </dialog>
     </div>
 
     <h2 id="g-n-hesab-n-n-tesinde">Gün hesabının ötesinde</h2>
@@ -350,6 +442,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"Gezinme menüsünü aç","menuClose":"Gezinme menüsünü kapat"};</script>
   <script src="../../assets/js/navigation.js?v=20261027j"></script>
+  <script defer src="../../assets/js/rules/presence.js?v=20261028a"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261028a"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

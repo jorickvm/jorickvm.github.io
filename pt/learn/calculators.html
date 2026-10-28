@@ -199,6 +199,25 @@
         </nav>
         <h1>Calculadoras de dias de viagem</h1>
         <p class="subtitle">Calculadoras gratuitas que contam seus dias do jeito que cada regra conta. Marque suas estadias em um calendário, veja sua situação, incluindo as viagens planejadas, e continue contando no AtlasDays.</p>
+
+        <div class="library-search library-search-inline" data-library-search data-section="calculators" data-lang="pt" data-simple-search aria-label="Buscar nas calculadoras de dias do AtlasDays">
+          <div class="search-controls">
+            <div class="search-query">
+              <label class="search-visually-hidden" for="calculators-search-input">Buscar em todas as calculadoras de dias</label>
+              <svg class="search-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4 4"></path></svg>
+              <input id="calculators-search-input" type="search" data-search-input autocomplete="off" autocapitalize="none" enterkeyhint="search" spellcheck="false" placeholder="Buscar um país ou uma regra…" />
+              <button class="search-clear" type="button" data-search-clear hidden aria-label="Limpar a busca">
+                <svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="m6 6 8 8M14 6l-8 8"></path></svg>
+              </button>
+            </div>
+            <button class="search-close" type="button" data-search-close aria-label="Fechar a busca">
+              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="m5 5 14 14M19 5 5 19"></path></svg>
+            </button>
+          </div>
+          <p class="search-status search-visually-hidden" data-search-status aria-live="polite">Buscar em todas as calculadoras de dias</p>
+          <div class="search-results" data-search-results hidden></div>
+        </div>
+
       </div>
     </section>
 
@@ -227,6 +246,7 @@
         <div class="rule-cards">
           <a class="rule-card" href="/pt/learn/183-day-rule-calculator"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.5 2.6 3.5 5.4 3.5 8.5s-1 5.9-3.5 8.5c-2.5-2.6-3.5-5.4-3.5-8.5s1-5.9 3.5-8.5Z"/></svg></span><span class="rule-text"><strong>Regra dos 183 dias</strong><span>183 dias em qualquer país, por ano civil ou fiscal</span></span></a>
           <a class="rule-card" href="/pt/learn/us-substantial-presence-test#calculator"><img class="rule-flag" src="/assets/flags/us.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Substantial Presence Test (EUA)</strong><span>183 dias ponderados em três anos</span></span></a>
+          <a class="rule-card" href="/pt/learn/canadian-snowbird-day-limits#calculator"><img class="rule-flag" src="/assets/flags/ca.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Snowbirds canadenses</strong><span>Dias de inverno nos EUA segundo o Substantial Presence Test</span></span></a>
           <a class="rule-card" href="/pt/learn/malaysia-182-day-tax-residency#calculator"><img class="rule-flag" src="/assets/flags/my.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Malásia</strong><span>182 dias na Malásia em um ano civil</span></span></a>
           <a class="rule-card" href="/pt/learn/thailand-180-day-tax-residency#calculator"><img class="rule-flag" src="/assets/flags/th.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Tailândia</strong><span>180 dias na Tailândia em um ano civil</span></span></a>
         </div>
@@ -240,6 +260,7 @@
           <a class="rule-card" href="/pt/learn/canada-citizenship-physical-presence#calculator"><img class="rule-flag" src="/assets/flags/ca.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Cidadania canadense</strong><span>1.095 dias nos cinco anos antes da assinatura</span></span></a>
           <a class="rule-card" href="/pt/learn/us-naturalization-physical-presence#calculator"><img class="rule-flag" src="/assets/flags/us.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Naturalização nos EUA</strong><span>913 dias nos cinco anos antes do pedido</span></span></a>
           <a class="rule-card" href="/pt/learn/new-zealand-citizenship-presence-requirement#calculator"><img class="rule-flag" src="/assets/flags/nz.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Cidadania neozelandesa</strong><span>1.350 dias em cinco anos, 240 em cada um</span></span></a>
+                  <a class="rule-card" href="/pt/learn/australia-resident-return-visa-residence#calculator" data-filter-item data-groups="residence"><img class="rule-flag" src="/assets/flags/au.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Resident Return Visa da Austrália</strong><span>Dois anos em cinco, com meta de 730 dias no app.</span></span></a>
         </div>
       </section>
       <section class="hub-section" id="absence-limits">
@@ -308,8 +329,8 @@
   <script src="../../assets/js/theme.js?v=20260714b"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"Abrir o menu de navegação","menuClose":"Fechar o menu de navegação"};</script>
   <script src="../../assets/js/navigation.js?v=20261027j"></script>
-  <script>window.AtlasDaysSearchStrings={"resultOne":"{count} resultado encontrado","resultMany":"{count} resultados encontrados","emptyHelp":"Nenhum artigo de ajuda corresponde. Tente o nome de um recurso, uma tarefa ou uma frase mais curta.","emptyLearn":"Nenhuma regra ou guia corresponde. Tente um país, um estado dos EUA, uma região ou um tema mais amplo.","unavailable":"A busca está indisponível. Veja os temas abaixo."};</script>
-  <script src="../../assets/js/search.js?v=20261007a"></script>
+  <script>window.AtlasDaysSearchStrings={"resultOne":"{count} resultado encontrado","resultMany":"{count} resultados encontrados","emptyHelp":"Nenhum artigo de ajuda corresponde. Tente o nome de um recurso, uma tarefa ou uma frase mais curta.","emptyLearn":"Nenhuma regra ou guia corresponde. Tente um país, um estado dos EUA, uma região ou um tema mais amplo.","emptyCalculators":"Nenhuma calculadora corresponde. Tente um país ou uma regra, como Schengen ou 183 dias.","unavailable":"A busca está indisponível. Veja os temas abaixo."};</script>
+  <script src="../../assets/js/search.js?v=20261028a"></script>
 
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */

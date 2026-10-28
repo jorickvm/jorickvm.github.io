@@ -149,6 +149,7 @@
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261028a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">İçeriğe geç</a>
@@ -223,6 +224,7 @@
         <li><a href="#hesap-farkl-d-nem">Üç hesap, üç farklı dönem</a></li>
         <li><a href="#kanadal-lar-abd-de-ne-kadar-kalabilir">Kanadalılar ABD’de ne kadar kalabilir?</a></li>
         <li><a href="#irs-substantial-presence-test">IRS Substantial Presence Test</a></li>
+        <li><a href="#calculator">Kışı ABD’de geçirenler için Substantial Presence Test hesaplama</a></li>
         <li><a href="#form-8840-daha-yak-n-ba-istisnas">Form 8840: Daha yakın bağ istisnası</a></li>
         <li><a href="#183-g-n-veya-daha-fazla-anla-madaki-ba-belirleme-kural">183 gün veya daha fazla: Anlaşmadaki bağ belirleme kuralı</a></li>
         <li><a href="#30-g-n-veya-daha-uzun-kal-ta-abd-kay-t-y-k-ml-l">30 gün veya daha uzun kalışta ABD kayıt yükümlülüğü</a></li>
@@ -260,6 +262,7 @@
         <li><a href="#hesap-farkl-d-nem">Üç hesap, üç farklı dönem</a></li>
         <li><a href="#kanadal-lar-abd-de-ne-kadar-kalabilir">Kanadalılar ABD’de ne kadar kalabilir?</a></li>
         <li><a href="#irs-substantial-presence-test">IRS Substantial Presence Test</a></li>
+        <li><a href="#calculator">Kışı ABD’de geçirenler için Substantial Presence Test hesaplama</a></li>
         <li><a href="#form-8840-daha-yak-n-ba-istisnas">Form 8840: Daha yakın bağ istisnası</a></li>
         <li><a href="#183-g-n-veya-daha-fazla-anla-madaki-ba-belirleme-kural">183 gün veya daha fazla: Anlaşmadaki bağ belirleme kuralı</a></li>
         <li><a href="#30-g-n-veya-daha-uzun-kal-ta-abd-kay-t-y-k-ml-l">30 gün veya daha uzun kalışta ABD kayıt yükümlülüğü</a></li>
@@ -291,6 +294,100 @@
       <p><strong>Her yıl aynı kalıştaki eşik.</strong> Her yıl aynı sayıda gün kalırsanız ağırlıklı toplam yıllık sayının 1,5 katıdır. Yılda 121 gün, 121 + 40,33 + 20,17 = <strong>181,5</strong> eder ve testin altındadır. Yılda 122 gün ise tam <strong>183</strong> eder ve testi karşılar.</p>
     </div>
     <p>Koşulları sağlayıp Form 8840’ı zamanında sunarsanız testi karşılamış olsanız da mukim olmayan kişi olarak değerlendirilirsiniz. Formu sunmamak sıradan bir kışı ikamet sorununa dönüştürebilir.</p>
+
+    <h2 id="calculator">Kışı ABD’de geçirenler için Substantial Presence Test hesaplama</h2>
+    <p>ABD’de geçirdiğiniz günlere dokunun ve test edilecek yılı seçin. Hesaplama aracı iki koşulu da kontrol eder: o yıl en az 31 gün ve üç yılda 183 gün. Bu hesapta o yılın günlerinin tamamı, önceki yılın günlerinin üçte biri ve ondan önceki yılın günlerinin altıda biri sayılır. Testi karşıladığınız yılda ABD’de 183 günden az kaldıysanız Form 8840 ile yine de mukim olmayan kişi olarak kalabilirsiniz; bunun nasıl yapılacağını bir sonraki bölüm açıklar.</p>
+    <div class="daycal" id="embed-spt" data-day-calendar="spt" data-cal-preset="{&quot;settings&quot;:{},&quot;lock&quot;:[],&quot;link&quot;:&quot;spt-snowbird&quot;,&quot;offer&quot;:&quot;residence-us-spt&quot;}">
+      <script type="application/json" data-cal-strings>
+{
+  "hintEnd": "Kalışın diğer uç gününe dokunun.",
+  "hintSelected": "Tarihlerini değiştirmek için kalışın iki ucundan birini sürükleyin veya kalışı aşağıdan silin.",
+  "pending": "yeni kalışın başlangıcı",
+  "empty": "Henüz kalış yok.",
+  "deleteTrip": "Kalışı sil",
+  "country": "Ülke",
+  "goal": "Hedef",
+  "goalStay": "Sınırın altında kal",
+  "goalReach": "Hedefe ulaş",
+  "addCountry": "Ülke ekle",
+  "noMatch": "Eşleşen ülke yok",
+  "year": "Yıl",
+  "starts": "Başlangıç",
+  "tripDays": {
+    "one": "{n} gün",
+    "other": "{n} gün"
+  },
+  "remaining": {
+    "one": "{n} gün kaldı",
+    "other": "{n} gün kaldı"
+  },
+  "atLimit": "Sınırda",
+  "needed": {
+    "one": "{n} gün daha gerekli",
+    "other": "{n} gün daha gerekli"
+  },
+  "reachedTarget": "Hedefe ulaşıldı",
+  "overBy": {
+    "one": "Sınır {n} gün aşıldı",
+    "other": "Sınır {n} gün aşıldı"
+  },
+  "hintStart": "ABD'de bir kalış eklemek için bir güne dokunun.",
+  "inTrip": "ABD'de",
+  "title": "ABD",
+  "captionStay": "ABD'de vergi mukimi olmaktan kaçının.",
+  "captionReach": "Testi karşılayın.",
+  "met": "Eşiklere ulaşıldı",
+  "barYear": "{year} yılı günleri",
+  "barWeighted": "Ağırlıklı günler",
+  "notMet": "Eşiklere ulaşılmadı"
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>P</span><span>S</span><span>Ç</span><span>P</span><span>C</span><span>C</span><span>P</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>Zaman çizelgesi</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>AtlasDays'de takip et</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="embed-spt-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="embed-spt-import-title">AtlasDays'de takip et</p>
+            <p class="cal-dialog-sub">Seyahat ederken günlerinizi saymaya devam edin. iPhone ve iPad için ücretsiz uygulama.</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>AtlasDays'in iPhone veya iPad'inizde yüklü olduğundan emin olun</strong><span>App Store'da ücretsiz.</span></li>
+            <li><strong>Tüm seyahatleri AtlasDays'e aktarmak için QR kodunu tarayın</strong><span>Kontrol edin, ardından İçe aktar düğmesine dokunun.</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>AtlasDays'i indirin</strong><span>App Store'da ücretsiz. Zaten yüklü mü? 2. adıma geçin.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8&amp;ppid=1a1343d8-332a-4e0b-ad29-931faa87a99c">App Store</a></li>
+          <li><strong>Kalışlarınızı uygulamada açın</strong><span>Kontrol edin, ardından İçe aktar düğmesine dokunun. O zamana kadar hiçbir şey kaydedilmez.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">AtlasDays'de aç</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>AtlasDays'i indirin</strong><span>iPhone için App Store'da ücretsiz.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8&amp;ppid=1a1343d8-332a-4e0b-ad29-931faa87a99c">App Store</a></li>
+          <li><strong>Kalışlarınızı dosyayla içe aktarın</strong><span>Bu kadar çok kalış bir bağlantıya sığmıyor. Dosyayı indirin ve iPhone'unuzda AtlasDays ile açın.</span><button type="button" class="cal-dialog-primary" data-cal-download>Dosyayı indir</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Seyahatleri CSV dosyası olarak indir</button><span data-cal-downloaded hidden>Bu dosyayı iPhone'unuzda AtlasDays ile açın.</span></p>
+          <button type="button" data-cal-close>Kapat</button>
+        </div>
+      </dialog>
+    </div>
 
     <h2 id="form-8840-daha-yak-n-ba-istisnas">Form 8840: Daha yakın bağ istisnası</h2>
     <p>Form 8840, Substantial Presence Test karşılanmış olsa da Kanada ile bağınızın ABD’ye göre daha yakın olduğunu IRS’ye bildirir. Bir yıl için yalnızca şu koşulların tümü sağlanırsa kullanabilirsiniz:</p>
@@ -454,6 +551,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"Gezinme menüsünü aç","menuClose":"Gezinme menüsünü kapat"};</script>
   <script src="../../assets/js/navigation.js?v=20261027j"></script>
+  <script defer src="../../assets/js/rules/spt.js?v=20261028a"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261028a"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

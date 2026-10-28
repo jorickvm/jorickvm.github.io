@@ -149,6 +149,7 @@
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261028a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">본문으로 건너뛰기</a>
@@ -223,12 +224,13 @@
         <li><a href="#section-1">세 가지 계산, 서로 다른 세 가지 기간</a></li>
         <li><a href="#section-2">캐나다인이 미국에 머물 수 있는 기간</a></li>
         <li><a href="#irs">IRS 실질적 체류 기준</a></li>
+        <li><a href="#calculator">스노버드를 위한 실질적 체류 기준 계산기</a></li>
         <li><a href="#8840">양식 8840: 더 밀접한 관계 예외</a></li>
         <li><a href="#183">183일 이상: 조세조약의 판정 순서</a></li>
         <li><a href="#30">미국 체류 30일 이상 시 등록 의무</a></li>
-        <li><a href="#section-7">주별 건강보험 한도</a></li>
-        <li><a href="#section-8">캐나다 세법상 거주는 대개 유지됨</a></li>
-        <li><a href="#section-9">일수 외에 확인할 사항</a></li>
+        <li><a href="#section-8">주별 건강보험 한도</a></li>
+        <li><a href="#section-9">캐나다 세법상 거주는 대개 유지됨</a></li>
+        <li><a href="#section-10">일수 외에 확인할 사항</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
     </nav>
@@ -260,12 +262,13 @@
         <li><a href="#section-1">세 가지 계산, 서로 다른 세 가지 기간</a></li>
         <li><a href="#section-2">캐나다인이 미국에 머물 수 있는 기간</a></li>
         <li><a href="#irs">IRS 실질적 체류 기준</a></li>
+        <li><a href="#calculator">스노버드를 위한 실질적 체류 기준 계산기</a></li>
         <li><a href="#8840">양식 8840: 더 밀접한 관계 예외</a></li>
         <li><a href="#183">183일 이상: 조세조약의 판정 순서</a></li>
         <li><a href="#30">미국 체류 30일 이상 시 등록 의무</a></li>
-        <li><a href="#section-7">주별 건강보험 한도</a></li>
-        <li><a href="#section-8">캐나다 세법상 거주는 대개 유지됨</a></li>
-        <li><a href="#section-9">일수 외에 확인할 사항</a></li>
+        <li><a href="#section-8">주별 건강보험 한도</a></li>
+        <li><a href="#section-9">캐나다 세법상 거주는 대개 유지됨</a></li>
+        <li><a href="#section-10">일수 외에 확인할 사항</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
     </details>
@@ -291,6 +294,96 @@
       <p><strong>매년 같은 기간을 체류할 때의 기준.</strong> 해마다 체류 일수가 같으면 가중 합계는 연간 일수의 1.5배입니다. 연간 121일은 121 + 40.33 + 20.17 = <strong>181.5</strong>로 기준에 미치지 않습니다. 연간 122일은 정확히 <strong>183</strong>이 되어 기준을 충족합니다.</p>
     </div>
     <p>요건을 충족하고 기한 내에 양식 8840을 제출하면 실질적 체류 기준을 충족했더라도 비거주자로 취급됩니다. 신고를 빠뜨리면 평범한 겨울 체류가 거주자 판정 문제로 이어집니다.</p>
+
+    <h2 id="calculator">스노버드를 위한 실질적 체류 기준 계산기</h2>
+    <p>미국에 있었던 날을 누르고 판정할 연도를 선택하십시오. 계산기는 두 조건을 모두 확인합니다. 해당 연도에 31일 이상, 그리고 3개 연도의 가중 합계 183일 이상입니다. 가중 합계는 해당 연도 일수 전부, 직전 연도의 3분의 1, 그 전 연도의 6분의 1을 더합니다. 해당 연도 체류가 183일 미만이면서 기준을 충족한다면 양식 8840으로 비거주자 상태를 유지할 수 있습니다. 방법은 다음 섹션에서 설명합니다.</p>
+    <div class="daycal" id="embed-spt" data-day-calendar="spt" data-cal-preset="{&quot;settings&quot;:{},&quot;lock&quot;:[],&quot;link&quot;:&quot;spt-snowbird&quot;,&quot;offer&quot;:&quot;residence-us-spt&quot;}">
+      <script type="application/json" data-cal-strings>
+{
+  "hintEnd": "체류의 다른 끝 날짜를 누르십시오.",
+  "hintSelected": "체류의 양쪽 끝 중 하나를 드래그해 날짜를 변경하거나 아래에서 삭제하십시오.",
+  "pending": "새 체류 시작",
+  "empty": "아직 체류가 없습니다.",
+  "deleteTrip": "체류 삭제",
+  "country": "국가",
+  "goal": "목표 유형",
+  "goalStay": "한도 미만 유지",
+  "goalReach": "목표 달성",
+  "addCountry": "국가 추가",
+  "noMatch": "일치하는 국가가 없습니다",
+  "year": "연도",
+  "starts": "시작일",
+  "tripDays": {
+    "other": "{n}일"
+  },
+  "remaining": {
+    "other": "{n}일 남음"
+  },
+  "atLimit": "한도 도달",
+  "needed": {
+    "other": "{n}일 더 필요"
+  },
+  "reachedTarget": "목표 달성",
+  "overBy": {
+    "other": "한도 {n}일 초과"
+  },
+  "hintStart": "날짜를 눌러 미국 체류를 추가하십시오.",
+  "inTrip": "미국 체류일",
+  "title": "미국",
+  "captionStay": "미국 세법상 비거주자 상태를 유지합니다.",
+  "captionReach": "기준을 충족합니다.",
+  "met": "일수 기준 충족",
+  "barYear": "{year}년 체류 일수",
+  "barWeighted": "가중 일수",
+  "notMet": "일수 기준 미충족"
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span><span>일</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>타임라인</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>AtlasDays에서 관리하기</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="embed-spt-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="embed-spt-import-title">AtlasDays에서 관리하기</p>
+            <p class="cal-dialog-sub">여행하는 동안 체류 일수를 계속 계산하는 iPhone 및 iPad용 무료 앱입니다.</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>iPhone 또는 iPad에 AtlasDays 설치 확인</strong><span>App Store에서 무료로 받을 수 있습니다.</span></li>
+            <li><strong>QR 코드를 스캔해 모든 여행을 AtlasDays에 불러오기</strong><span>확인한 다음 '가져오기'를 누르십시오.</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>AtlasDays 받기</strong><span>App Store에서 무료로 받을 수 있습니다. 이미 있다면 2단계로 넘어가십시오.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8&amp;ppid=1a1343d8-332a-4e0b-ad29-931faa87a99c">App Store</a></li>
+          <li><strong>앱에서 체류 열기</strong><span>확인한 다음 '가져오기'를 누르십시오. 그 전에는 아무것도 저장되지 않습니다.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">AtlasDays에서 열기</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>AtlasDays 받기</strong><span>App Store에서 무료로 받을 수 있는 iPhone 앱입니다.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8&amp;ppid=1a1343d8-332a-4e0b-ad29-931faa87a99c">App Store</a></li>
+          <li><strong>파일로 체류 가져오기</strong><span>체류가 너무 많아 링크에 담을 수 없습니다. 파일을 다운로드해 iPhone의 AtlasDays에서 여십시오.</span><button type="button" class="cal-dialog-primary" data-cal-download>파일 다운로드</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>여행을 CSV 파일로 다운로드</button><span data-cal-downloaded hidden>iPhone의 AtlasDays에서 이 파일을 여십시오.</span></p>
+          <button type="button" data-cal-close>닫기</button>
+        </div>
+      </dialog>
+    </div>
 
     <h2 id="8840">양식 8840: 더 밀접한 관계 예외</h2>
     <p>양식 8840은 실질적 체류 기준을 충족했지만 미국보다 캐나다와 더 밀접한 관계가 있음을 IRS에 알리는 서류입니다. 해당 연도에 아래 요건을 모두 충족해야 이용할 수 있습니다.</p>
@@ -319,7 +412,7 @@
     </ul>
     <p>등록하지 않으면 벌금과 경범죄 기소로 이어질 수 있습니다. DHS는 2026년 6월 29일 규정을 확정했으며 2026년 9월 현재 시행 중입니다.</p>
 
-    <h2 id="section-7">주별 건강보험 한도</h2>
+    <h2 id="section-8">주별 건강보험 한도</h2>
     <p>공공 건강보험을 유지하려면 해당 주에 계속 거주해야 하며 각 주가 자체 일수 기준을 적용합니다. 2026년 9월 기준 인구가 가장 많은 4개 주의 규정은 다음과 같습니다.</p>
     <div class="cards">
       <section class="card">
@@ -360,10 +453,10 @@
     </div>
     <p>한 해를 쓰는 주에서는 같은 겨울을 두 해로 나눕니다. 퀘벡 스노버드의 11월과 12월은 한 해의 183일 한도에, 1월부터 4월까지는 다음 해 한도에 들어갑니다. 해외에서는 주별 보험이 미국 병원비의 일부만 부담합니다(온타리오는 응급 입원 최고 수준의 경우 하루 최대 $400, 브리티시컬럼비아는 응급 입원 하루 $75). 따라서 여행자 의료보험은 별도로 가입해야 합니다.</p>
 
-    <h2 id="section-8">캐나다 세법상 거주는 대개 유지됨</h2>
+    <h2 id="section-9">캐나다 세법상 거주는 대개 유지됨</h2>
     <p>미국에서 겨울을 보낸다는 사실만으로 캐나다 세법상 거주가 끝나지는 않습니다. 캐나다 국세청은 여행 중에도 캐나다에 중요한 거주 관계를 유지하면 사실상 거주자로 봅니다. 한 해 일부를 미국에서 휴가로 보내는 경우를 예로 듭니다. 자세한 판정법은 <a href="/ko/learn/canada-183-day-tax-residency">캐나다 183일 규정과 거주 관계</a>를 참고하십시오.</p>
 
-    <h2 id="section-9">일수 외에 확인할 사항</h2>
+    <h2 id="section-10">일수 외에 확인할 사항</h2>
     <p>이 일수 계산은 신분을 판정할 뿐 그에 따른 모든 결과를 다루지는 않습니다. 미국 주마다 자체 거주 규정이 있으며 일부는 별도의 일수 기준이 있습니다(<a href="/ko/learn/arizona-tax-residency">애리조나주</a> 참고). 다른 국적자에게 적용되는 방문 규정은 <a href="/ko/learn/us-b1-b2-visa-180-day-limit">B-1/B-2 방문자 안내</a>를 참고하십시오.</p>
 
     <div class="cta-box">
@@ -454,6 +547,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"탐색 메뉴 열기","menuClose":"탐색 메뉴 닫기"};</script>
   <script src="../../assets/js/navigation.js?v=20261027j"></script>
+  <script defer src="../../assets/js/rules/spt.js?v=20261028a"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261028a"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

@@ -1457,7 +1457,8 @@ _calculator_assets: dict[str, object] = {}
 
 
 # The rule plug-ins an article can embed (article record: "calculator":
-# {"rule": ..., "settings": ..., "lock": [...], "link": ...}; the 183-day rule
+# {"rule": ..., "settings": ..., "lock": [...], "link": ..., "offer": ...}, with
+# "offer" only where the article has no app_preset to offer; the 183-day rule
 # needs only {}, its preset comes from the record's residency). An embed on a
 # rule with its own calculator page borrows that page's labels in each
 # locale; the others borrow the shared ones from the 183-day page and bring
@@ -1740,9 +1741,11 @@ def render_embedded_calculator(content: str, article: dict[str, object], code: s
         block = cal_strings.sub(lambda m: m.group(1) + "\n" + text + "\n      " + m.group(3), block, count=1)
         block = block.replace('data-day-calendar="days183"', f'data-day-calendar="{rule}"', 1)
     # The tracker the app offers after the import (the import link's `p`):
-    # the article's own preset, when the app has one for its rule.
-    if article.get("app_preset"):
-        preset["offer"] = str(article["app_preset"])
+    # the article's own preset, when the app has one for its rule, or the
+    # calculator's `offer` on an article with no preset of its own.
+    offer = dict(article["calculator"]).get("offer") or article.get("app_preset")
+    if offer:
+        preset["offer"] = str(offer)
     encoded = html.escape(json.dumps(preset, ensure_ascii=False, separators=(",", ":")), quote=True)
     block = block.replace('id="days-183"', f'id="embed-{rule}"', 1).replace("days-183-import-title", f"embed-{rule}-import-title")
     block = block.replace(f'data-day-calendar="{rule}"', f'data-day-calendar="{rule}" data-cal-preset="{encoded}"', 1)
@@ -1947,6 +1950,7 @@ def render_hub(
             "resultMany": strings["search.result_many"][code],
             "emptyHelp": strings["search.empty_help"][code],
             "emptyLearn": strings["search.empty_learn"][code],
+            "emptyCalculators": strings["search.empty_calculators"][code],
             "unavailable": strings["search.unavailable"][code],
         },
         ensure_ascii=False,
@@ -1988,7 +1992,7 @@ def render_hub(
         ),
         "{{SEARCH_SCRIPT}}": (
             f"  <script>window.AtlasDaysSearchStrings={search_copy};</script>\n"
-            f'  <script src="{prefix}assets/js/search.js?v=20261007a"></script>'
+            f'  <script src="{prefix}assets/js/search.js?v=20261028a"></script>'
             if family == "hub" else ""
         ),
         "{{ASSET_PREFIX}}": prefix,

@@ -136,6 +136,7 @@
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261028a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Vai al contenuto</a>
@@ -209,6 +210,7 @@
       <ul>
         <li><a href="#la-regola">La regola</a></li>
         <li><a href="#come-contare-i-giorni">Come contare i giorni</a></li>
+        <li><a href="#calculator">Calcolatore dei 730 giorni per il Resident Return Visa</a></li>
         <li><a href="#oltre-il-conteggio-dei-giorni">Oltre il conteggio dei giorni</a></li>
         <li><a href="#domande-frequenti">Domande frequenti</a></li>
       </ul>
@@ -257,6 +259,96 @@
     <div class="example">
       <p><strong>Esempio.</strong> Prevedi di presentare domanda il 1 marzo 2026, quindi la finestra parte dal 1 marzo 2021. I soggiorni al suo interno sono dal 1 aprile al 30 settembre 2022 (183 giorni), dal 1 gennaio al 30 giugno 2024 (182 giorni) e dal 1 febbraio al 31 dicembre 2025 (334 giorni).</p>
       <p>Sono 699 giorni, 31 in meno. Un altro mese in Australia nella stessa finestra, per esempio dal 1 al 31 gennaio 2026, aggiunge 31 giorni e porta il totale esattamente a 730.</p>
+    </div>
+
+    <h2 id="calculator">Calcolatore dei 730 giorni per il Resident Return Visa</h2>
+    <p>Tocca i soggiorni in Australia. Il calcolatore conta i tuoi giorni in Australia nei cinque anni fino alla data scelta, compresi i giorni di arrivo e di partenza, e mostra quanto manca a 730 giorni. Segna solo i soggiorni in cui avevi un visto permanente o eri cittadino australiano.</p>
+    <div class="daycal" id="embed-presence" data-day-calendar="presence" data-cal-preset="{&quot;settings&quot;:{&quot;country&quot;:&quot;AU&quot;,&quot;need&quot;:730,&quot;note&quot;:&quot;Australia RRV presence calculator&quot;},&quot;lock&quot;:[],&quot;link&quot;:&quot;rrv-au&quot;,&quot;offer&quot;:&quot;permit-australia-rrv&quot;}">
+      <script type="application/json" data-cal-strings>
+{
+  "hintEnd": "Tocca l’altro estremo del soggiorno.",
+  "hintSelected": "Trascina un estremo del soggiorno per modificare le date oppure eliminalo qui sotto.",
+  "pending": "inizio di un nuovo soggiorno",
+  "empty": "Nessun soggiorno.",
+  "deleteTrip": "Elimina soggiorno",
+  "country": "Paese",
+  "goal": "Obiettivo",
+  "goalStay": "Resta sotto il limite",
+  "goalReach": "Raggiungi l’obiettivo",
+  "addCountry": "Aggiungi paese",
+  "noMatch": "Nessun paese corrispondente",
+  "year": "Anno",
+  "starts": "Inizia",
+  "tripDays": {
+    "one": "{n} giorno",
+    "other": "{n} giorni"
+  },
+  "remaining": {
+    "one": "Ancora {n} giorno",
+    "other": "Ancora {n} giorni"
+  },
+  "atLimit": "Al limite",
+  "needed": {
+    "one": "Manca {n} giorno",
+    "other": "Mancano {n} giorni"
+  },
+  "reachedTarget": "Obiettivo raggiunto",
+  "overBy": {
+    "one": "Limite superato di {n} giorno",
+    "other": "Limite superato di {n} giorni"
+  },
+  "hintStart": "Tocca il giorno in cui è iniziato un soggiorno in Australia, poi quello in cui è finito.",
+  "inTrip": "in Australia",
+  "title": "Australia",
+  "checkOn": "Conta fino al",
+  "checkOnCaption": "I tuoi giorni in Australia nei cinque anni fino a questa data. Scegli il giorno in cui prevedi di presentare domanda."
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>L</span><span>M</span><span>M</span><span>G</span><span>V</span><span>S</span><span>D</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>Cronologia</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Segui i giorni in AtlasDays</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="embed-presence-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="embed-presence-import-title">Segui i giorni in AtlasDays</p>
+            <p class="cal-dialog-sub">Continua a contare mentre viaggi. App gratuita per iPhone e iPad.</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>Verifica di avere AtlasDays sul tuo iPhone o iPad</strong><span>Gratis su App Store.</span></li>
+            <li><strong>Scansiona il codice QR per caricare tutti i soggiorni in AtlasDays</strong><span>Controllali, poi tocca Importa.</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>Scarica AtlasDays</strong><span>Gratis su App Store. Ce l’hai già? Vai al punto 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>Apri i soggiorni nell’app</strong><span>Controllali, poi tocca Importa. Prima non viene salvato nulla.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Apri in AtlasDays</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>Scarica AtlasDays</strong><span>Gratis su App Store per iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>Importa i soggiorni con un file</strong><span>Sono troppi soggiorni per un link. Scarica il file e aprilo sul tuo iPhone con AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Scarica file</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Scarica i soggiorni come file CSV</button><span data-cal-downloaded hidden>Apri il file sul tuo iPhone con AtlasDays.</span></p>
+          <button type="button" data-cal-close>Chiudi</button>
+        </div>
+      </dialog>
     </div>
 
     <h2 id="oltre-il-conteggio-dei-giorni">Oltre il conteggio dei giorni</h2>
@@ -350,6 +442,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"Apri menu di navigazione","menuClose":"Chiudi menu di navigazione"};</script>
   <script src="../../assets/js/navigation.js?v=20261027j"></script>
+  <script defer src="../../assets/js/rules/presence.js?v=20261028a"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261028a"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

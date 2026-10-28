@@ -136,6 +136,7 @@
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261028a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">本文へスキップ</a>
@@ -209,8 +210,9 @@
       <ul>
         <li><a href="#section-1">ルールの内容</a></li>
         <li><a href="#section-2">数え方</a></li>
-        <li><a href="#section-3">日数だけで決まるわけではありません</a></li>
-        <li><a href="#section-4">よくある質問</a></li>
+        <li><a href="#calculator">再入国ビザ（RRV）の730日計算機</a></li>
+        <li><a href="#section-4">日数だけで決まるわけではありません</a></li>
+        <li><a href="#section-5">よくある質問</a></li>
       </ul>
     </nav>
     <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
@@ -259,7 +261,93 @@
       <p>合計は699日で、31日足りません。同じ集計期間内にオーストラリアでもう1か月、たとえば2026年1月1日から31日まで過ごせば31日が加わり、合計はちょうど730日になります。</p>
     </div>
 
-    <h2 id="section-3">日数だけで決まるわけではありません</h2>
+    <h2 id="calculator">再入国ビザ（RRV）の730日計算機</h2>
+    <p>オーストラリアでの滞在をタップしてください。計算機は選んだ日までの5年間にオーストラリアにいた日数を、到着日と出発日も含めて数え、730日まであと何日かを表示します。永住ビザを保持していた期間か、オーストラリア市民だった期間の滞在だけを入力してください。</p>
+    <div class="daycal" id="embed-presence" data-day-calendar="presence" data-cal-preset="{&quot;settings&quot;:{&quot;country&quot;:&quot;AU&quot;,&quot;need&quot;:730,&quot;note&quot;:&quot;Australia RRV presence calculator&quot;},&quot;lock&quot;:[],&quot;link&quot;:&quot;rrv-au&quot;,&quot;offer&quot;:&quot;permit-australia-rrv&quot;}">
+      <script type="application/json" data-cal-strings>
+{
+  "hintEnd": "滞在のもう一方の日付をタップしてください。",
+  "hintSelected": "滞在のどちらかの端をドラッグして日付を変更するか、下で削除してください。",
+  "pending": "新しい滞在の開始日",
+  "empty": "滞在はまだありません。",
+  "deleteTrip": "滞在を削除",
+  "country": "国",
+  "goal": "目標",
+  "goalStay": "上限未満に抑える",
+  "goalReach": "目標を達成",
+  "addCountry": "国を追加",
+  "noMatch": "一致する国はありません",
+  "year": "年",
+  "starts": "開始",
+  "tripDays": {
+    "other": "{n}日"
+  },
+  "remaining": {
+    "other": "残り{n}日"
+  },
+  "atLimit": "上限到達",
+  "needed": {
+    "other": "あと{n}日必要"
+  },
+  "reachedTarget": "目標達成",
+  "overBy": {
+    "other": "上限を{n}日超過"
+  },
+  "hintStart": "オーストラリアでの滞在が始まった日をタップし、次に終わった日をタップしてください。",
+  "inTrip": "オーストラリアに滞在",
+  "title": "オーストラリア",
+  "checkOn": "集計終了日",
+  "checkOnCaption": "この日までの五年間にオーストラリアに滞在した日数です。申請を提出する予定の日を選んでください。"
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>月</span><span>火</span><span>水</span><span>木</span><span>金</span><span>土</span><span>日</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>タイムライン</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>AtlasDaysで記録する</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="embed-presence-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="embed-presence-import-title">AtlasDaysで記録する</p>
+            <p class="cal-dialog-sub">旅行中もそのまま日数を数えられる、iPhoneとiPad向けの無料アプリです。</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>iPhoneまたはiPadにAtlasDaysをインストールしておく</strong><span>App Storeで無料で入手できます。</span></li>
+            <li><strong>QRコードを読み取り、すべての旅行をAtlasDaysに読み込む</strong><span>確認してから「インポート」をタップします。</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>AtlasDaysを入手</strong><span>App Storeから無料で入手できます。お持ちの場合は2へ進んでください。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>アプリで滞在を開く</strong><span>確認してから「インポート」をタップします。それまで何も保存されません。</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">AtlasDaysで開く</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>AtlasDaysを入手</strong><span>iPhone向けにApp Storeで無料で提供しています。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>ファイルで滞在をインポート</strong><span>滞在の数が多く、リンクでは送れません。ファイルをダウンロードして、iPhoneのAtlasDaysで開いてください。</span><button type="button" class="cal-dialog-primary" data-cal-download>ファイルをダウンロード</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>旅行をCSVファイルでダウンロード</button><span data-cal-downloaded hidden>このファイルをiPhoneのAtlasDaysで開いてください。</span></p>
+          <button type="button" data-cal-close>閉じる</button>
+        </div>
+      </dialog>
+    </div>
+
+    <h2 id="section-4">日数だけで決まるわけではありません</h2>
     <p>730日はいくつかある基準の1つで、AtlasDaysが測るのは日数の部分だけです。実質的なつながりの判定、人格要件、長期の不在についてのやむを得ない同情すべき理由は、提出した証拠にもとづいて判断されるため、これらは自分で確認することになります。subclass 157のビザは、限られた事情のもとで3か月の渡航資格を扱います。合計が線の近くにあるときは、一般的な解説よりも内務省のガイダンスと、必要であれば専門家の助言のほうが役に立ちます。</p>
     <p>集計期間は申請する日に固定されるため、その日とともに動きます。5年と1日前に過ごした期間は、すでに外に出ています。同じ日数はオーストラリアの税務上の居住判定にも関わりますが、そちらは別の集計期間と基準日数を使います。<a href="/ja/learn/australia-183-day-tax-residency">オーストラリアの183日ルール</a>を参照してください。</p>
 
@@ -276,7 +364,7 @@
       </a>
     </div>
 
-    <h2 id="section-4">よくある質問</h2>
+    <h2 id="section-5">よくある質問</h2>
     <h3>5年の再入国ビザにはオーストラリアで何日必要ですか？</h3>
     <p>730日、つまり合計2年です。提出する直前の5年間に、永住ビザ保持者またはオーストラリア市民として過ごした日数で数えます。日数は連続している必要はありません。</p>
     <h3>永住ビザの渡航資格が切れるとどうなりますか？</h3>
@@ -350,6 +438,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"ナビゲーションメニューを開く","menuClose":"ナビゲーションメニューを閉じる"};</script>
   <script src="../../assets/js/navigation.js?v=20261027j"></script>
+  <script defer src="../../assets/js/rules/presence.js?v=20261028a"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261028a"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

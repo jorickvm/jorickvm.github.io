@@ -147,6 +147,32 @@
     return value;
   }
 
+  // The calculators hub searches its own cards. Each card borrows the
+  // keywords of the article it opens (translated synonyms included) and its
+  // section's label, so "tax" or another name for the place still finds it.
+  function calculatorEntries(articles) {
+    var byUrl = {};
+    articles.forEach(function (entry) { byUrl[entry.url] = entry; });
+    return Array.prototype.map.call(document.querySelectorAll(".hub-section .rule-card"), function (card) {
+      var url = card.getAttribute("href");
+      var article = byUrl[url.split("#")[0]] || {};
+      var flag = card.querySelector(".rule-flag");
+      var icon = card.querySelector(".rule-icon");
+      var label = card.closest(".hub-section").querySelector(".hub-label");
+      var line = card.querySelector(".rule-text > span");
+      return {
+        title: card.querySelector(".rule-text > strong").textContent,
+        line: line ? line.textContent : "",
+        description: line ? line.textContent : "",
+        jurisdiction: article.jurisdiction || "",
+        keywords: (article.keywords || []).concat(article.card || [], article.title || [], label ? label.textContent : []),
+        url: url,
+        flag: flag ? flag.getAttribute("src").replace(/^.*\/([^/]+)\.png.*$/, "$1") : "",
+        icon: icon ? icon.innerHTML : ""
+      };
+    });
+  }
+
   fetch("/assets/search-index.json")
     .then(function (response) {
       if (!response.ok) throw new Error("Search index unavailable");
@@ -159,8 +185,9 @@
         // must not return English articles it cannot link to sensibly.
         var lang = root.getAttribute("data-lang") || "en";
         var entries = payload.entries.filter(function (entry) {
-          return entry.section === section && (entry.lang || "en") === lang;
+          return entry.section === (section === "calculators" ? "learn" : section) && (entry.lang || "en") === lang;
         });
+        if (section === "calculators") entries = calculatorEntries(entries);
         var input = root.querySelector("[data-search-input]");
         var filter = root.querySelector("[data-search-filter]");
         var clear = root.querySelector("[data-search-clear]");
@@ -241,7 +268,8 @@
           if (!matches.length) {
             var empty = document.createElement("p");
             empty.className = "search-empty";
-            empty.textContent = section === "help" ? copy.emptyHelp : copy.emptyLearn;
+            empty.textContent = section === "help" ? copy.emptyHelp
+              : section === "calculators" ? copy.emptyCalculators || copy.emptyLearn : copy.emptyLearn;
             results.appendChild(empty);
             return;
           }
@@ -251,9 +279,9 @@
             link.href = item.entry.url;
             var heading = document.createElement("strong");
             var copy = document.createElement("span");
-            if (section === "learn") {
-              // As the card the result leads to: flag (a book for a guide),
-              // the card's title and its one-line rule.
+            if (section === "learn" || section === "calculators") {
+              // As the card the result leads to: flag (a book for a guide, a
+              // calculator card's own icon), the card's title and its one-line rule.
               link.className += " search-card";
               var mark;
               if (item.entry.flag) {
@@ -264,7 +292,7 @@
               } else {
                 mark = document.createElement("span");
                 mark.className = "search-guide";
-                mark.innerHTML = '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg>';
+                mark.innerHTML = item.entry.icon || '<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg>';
               }
               heading.textContent = item.entry.card || item.entry.title;
               copy.textContent = item.entry.line || "";

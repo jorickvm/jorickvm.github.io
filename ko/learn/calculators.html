@@ -199,6 +199,25 @@
         </nav>
         <h1>체류 일수 계산기</h1>
         <p class="subtitle">규정마다 정한 방식대로 일수를 세는 무료 계산기입니다. 달력에 체류를 표시하면 예정된 여행을 포함해 현재 상황을 확인할 수 있고, AtlasDays에서 계속 계산할 수 있습니다.</p>
+
+        <div class="library-search library-search-inline" data-library-search data-section="calculators" data-lang="ko" data-simple-search aria-label="AtlasDays 체류 일수 계산기 검색">
+          <div class="search-controls">
+            <div class="search-query">
+              <label class="search-visually-hidden" for="calculators-search-input">모든 체류 일수 계산기 검색</label>
+              <svg class="search-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="6.5"></circle><path d="m16 16 4 4"></path></svg>
+              <input id="calculators-search-input" type="search" data-search-input autocomplete="off" autocapitalize="none" enterkeyhint="search" spellcheck="false" placeholder="국가나 규정으로 검색…" />
+              <button class="search-clear" type="button" data-search-clear hidden aria-label="검색어 지우기">
+                <svg aria-hidden="true" viewBox="0 0 20 20" fill="none"><path d="m6 6 8 8M14 6l-8 8"></path></svg>
+              </button>
+            </div>
+            <button class="search-close" type="button" data-search-close aria-label="검색 닫기">
+              <svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="m5 5 14 14M19 5 5 19"></path></svg>
+            </button>
+          </div>
+          <p class="search-status search-visually-hidden" data-search-status aria-live="polite">모든 체류 일수 계산기 검색</p>
+          <div class="search-results" data-search-results hidden></div>
+        </div>
+
       </div>
     </section>
 
@@ -227,6 +246,7 @@
         <div class="rule-cards">
           <a class="rule-card" href="/ko/learn/183-day-rule-calculator"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.5 2.6 3.5 5.4 3.5 8.5s-1 5.9-3.5 8.5c-2.5-2.6-3.5-5.4-3.5-8.5s1-5.9 3.5-8.5Z"/></svg></span><span class="rule-text"><strong>183일 규정</strong><span>모든 국가에서 183일, 한 해 또는 과세 연도 기준</span></span></a>
           <a class="rule-card" href="/ko/learn/us-substantial-presence-test#calculator"><img class="rule-flag" src="/assets/flags/us.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>미국 실질적 체류 기준</strong><span>3년간 가중 합계 183일</span></span></a>
+          <a class="rule-card" href="/ko/learn/canadian-snowbird-day-limits#calculator"><img class="rule-flag" src="/assets/flags/ca.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>캐나다 스노버드</strong><span>실질적 체류 기준에 따른 겨울철 미국 체류 일수</span></span></a>
           <a class="rule-card" href="/ko/learn/malaysia-182-day-tax-residency#calculator"><img class="rule-flag" src="/assets/flags/my.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>말레이시아</strong><span>한 해에 말레이시아에서 182일</span></span></a>
           <a class="rule-card" href="/ko/learn/thailand-180-day-tax-residency#calculator"><img class="rule-flag" src="/assets/flags/th.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>태국</strong><span>한 해에 태국에서 180일</span></span></a>
         </div>
@@ -240,6 +260,7 @@
           <a class="rule-card" href="/ko/learn/canada-citizenship-physical-presence#calculator"><img class="rule-flag" src="/assets/flags/ca.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>캐나다 시민권</strong><span>서명일 이전 5년 동안 1,095일</span></span></a>
           <a class="rule-card" href="/ko/learn/us-naturalization-physical-presence#calculator"><img class="rule-flag" src="/assets/flags/us.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>미국 시민권</strong><span>신청일까지 5년 동안 913일</span></span></a>
           <a class="rule-card" href="/ko/learn/new-zealand-citizenship-presence-requirement#calculator"><img class="rule-flag" src="/assets/flags/nz.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>뉴질랜드 시민권</strong><span>5년 동안 1,350일, 각 해 240일</span></span></a>
+                  <a class="rule-card" href="/ko/learn/australia-resident-return-visa-residence#calculator" data-filter-item data-groups="residence"><img class="rule-flag" src="/assets/flags/au.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>호주 재입국 비자(RRV)</strong><span>5년 중 2년, 목표 730일로 계산.</span></span></a>
         </div>
       </section>
       <section class="hub-section" id="absence-limits">
@@ -308,8 +329,8 @@
   <script src="../../assets/js/theme.js?v=20260714b"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"탐색 메뉴 열기","menuClose":"탐색 메뉴 닫기"};</script>
   <script src="../../assets/js/navigation.js?v=20261027j"></script>
-  <script>window.AtlasDaysSearchStrings={"resultOne":"{count}건 검색됨","resultMany":"{count}건 검색됨","emptyHelp":"일치하는 도움말 문서가 없습니다. 기능 이름이나 작업, 또는 더 짧은 표현으로 검색해 보십시오.","emptyLearn":"일치하는 규정이나 가이드가 없습니다. 국가, 미국 주, 지역, 또는 더 넓은 주제로 검색해 보십시오.","unavailable":"검색을 사용할 수 없습니다. 아래 주제에서 선택하십시오."};</script>
-  <script src="../../assets/js/search.js?v=20261007a"></script>
+  <script>window.AtlasDaysSearchStrings={"resultOne":"{count}건 검색됨","resultMany":"{count}건 검색됨","emptyHelp":"일치하는 도움말 문서가 없습니다. 기능 이름이나 작업, 또는 더 짧은 표현으로 검색해 보십시오.","emptyLearn":"일치하는 규정이나 가이드가 없습니다. 국가, 미국 주, 지역, 또는 더 넓은 주제로 검색해 보십시오.","emptyCalculators":"일치하는 계산기가 없습니다. 솅겐이나 183일처럼 국가나 규정으로 검색해 보십시오.","unavailable":"검색을 사용할 수 없습니다. 아래 주제에서 선택하십시오."};</script>
+  <script src="../../assets/js/search.js?v=20261028a"></script>
 
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
