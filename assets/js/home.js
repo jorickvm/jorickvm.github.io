@@ -105,7 +105,7 @@ document.querySelectorAll('.hero-video').forEach((video) => {
   else window.addEventListener('load', playFromStart, { once: true });
 });
 
-// On narrow screens the header CTA waits for the hero's own Get AtlasDays
+// On narrow screens the header CTA waits for the hero's own download
 // button to scroll off before it appears, so the first screen has one download
 // button rather than two a thumb-width apart. The bar is sticky, so the button
 // stays reachable from then on. CSS applies the class only under the mobile

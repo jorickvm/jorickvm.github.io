@@ -316,8 +316,6 @@ def render_header(
     switcher: str = "",
 ) -> str:
     section = str(article.get("current_navigation", article.get("section", "")))
-    if article.get("social_source_path", article.get("path")) == "index.html":
-        template = template.replace("{{t:nav.cta}}", "{{t:home.cta}}")
     return (
         template.replace("{{ASSET_PREFIX}}", prefix)
         .replace("{{LANGUAGE_SWITCHER}}", switcher)
