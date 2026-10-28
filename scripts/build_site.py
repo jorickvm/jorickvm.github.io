@@ -1469,7 +1469,8 @@ CALCULATOR_RULES = {
     "ukIlr": {"script": "uk-ilr.js", "page": "learn/uk-ilr-absence-calculator.html"},
     "presence": {"script": "presence.js", "version": "20261028a"},
     "spt": {"script": "spt.js", "version": "20261028a"},
-    "perEntry": {"script": "per-entry.js", "version": "20261028b"},
+    "perEntry": {"script": "per-entry.js", "version": "20261028c"},
+    "perVisit": {"script": "per-entry.js", "version": "20261028c"},
 }
 SHARED_CALCULATOR_STRINGS = {
     "hintEnd", "hintSelected", "pending", "empty", "deleteTrip", "country", "addCountry", "noMatch",
@@ -1715,7 +1716,10 @@ def render_embedded_calculator(content: str, article: dict[str, object], code: s
         if not slots and code != default_locale_code() and os.environ.get("ATLASDAYS_PREVIEW_BUILD"):
             return content
         raise SystemExit(f"{article['path']} ({code}): needs exactly one calculator slot where the calculator goes")
-    if rule == "days183":
+    # A 183-day embed without a `link` takes its rule from the record's
+    # residency; one with a `link` sets the rule itself, like any other (a
+    # visa's days per calendar year: India, Colombia).
+    if rule == "days183" and "link" not in dict(article["calculator"]):
         preset = calculator_preset(article)
     else:
         calc = dict(article["calculator"])

@@ -15,8 +15,8 @@
    on the ILR calculator.
 
    Each article embeds it set to its own programme (data-cal-preset settings):
-     away     true: absences (the mode for days in the country per visit
-              comes with the visa articles, plan phase 4)
+     away     true: absences (days in the country per visit are the
+              sibling rule perVisit, below)
      home     the place codes an absence is from: one code ("US"), a list,
               or a named set ("EU")
      stay     with a set, the country exported as the home stays (ES for
@@ -33,9 +33,12 @@
 
   // Named home sets, the app's own lists: EU is
   // CountryLists.europeanUnionTerritoryCodes (the 27 and their territories).
+  // Schengen is CountryLists.schengenCountryCodes, as in schengen.js.
   var SETS = {
     EU: ["AT", "BE", "BG", "HR", "CY", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IE", "IT", "LV",
-      "LT", "LU", "MT", "NL", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "GF", "GP", "MQ", "YT", "RE", "MF", "AX"]
+      "LT", "LU", "MT", "NL", "PL", "PT", "RO", "SK", "SI", "ES", "SE", "GF", "GP", "MQ", "YT", "RE", "MF", "AX"],
+    Schengen: ["AT", "BE", "BG", "HR", "CZ", "DK", "EE", "FI", "FR", "DE", "GR", "HU", "IS", "IT", "LV", "LI",
+      "LT", "LU", "MC", "MT", "NL", "NO", "PL", "PT", "RO", "SK", "SI", "SM", "ES", "SE", "CH", "VA", "GI"]
   };
   function homeList(h) { h = h || []; return typeof h === "string" ? (SETS[h] || [h]) : h; }
   function homes(c) { return homeList(c.settings.home); }
@@ -148,6 +151,92 @@
       atLimit: "At limit",
       overBy: { one: "Over limit by {n} day", other: "Over limit by {n} days" },
       fileName: "atlasdays-stays.csv"
+    }
+  };
+
+  /* One visit against a limit (plan phase 4, 2026-10-28): the app's
+     per-entry stay trackers (TrackerDayCountCore.perEntryStays and
+     currentEntry), the "stay no longer than N days per entry" rules of
+     visitor visas and visa exemptions. A sibling rule, not a setting, because
+     a one-day visit counts as a day in the country while one day away is no
+     whole day of absence.
+
+     The trips are stays in the country. Every day a stay touches counts,
+     the arrival day as day 1. Stays that overlap or follow on consecutive
+     days are one visit, because no exit lies between them. The card measures
+     the visit running on the "Count up to" date, or otherwise the latest one
+     before it, its days stopping at that date while it runs.
+
+     Settings (data-cal-preset):
+       country     the places a visit is in: a code ("JP") or a named set
+                   ("Schengen")
+       limit       the days the visit may last (the app preset's)
+       daysControl true where the app asks for the days granted (the
+                   Schengen single-entry visa, Mexico's FMM): a Days field,
+                   up to `limit`
+       flag        optional: the card's flag (a named set shows its own)
+       note        English label for exported rows (read by the importer) */
+  function visitLimit(c) { return +c.settings.limitInput || +c.settings.limit || 90; }
+  function visits(trips) {
+    var out = [];
+    trips.slice().sort(function (a, b) { return a.start - b.start; }).forEach(function (t) {
+      var last = out[out.length - 1];
+      if (last && t.start <= last.end + 1) last.end = Math.max(last.end, t.end);
+      else out.push({ start: t.start, end: t.end });
+    });
+    return out;
+  }
+  function measuredVisit(trips, on) {
+    var pick = null;
+    visits(trips).forEach(function (v) { if (v.start <= on) pick = v; });
+    if (!pick) return null;
+    var to = Math.min(pick.end, on);
+    return { from: pick.start, to: to, days: to - pick.start + 1 };
+  }
+
+  window.AtlasDaysRules.perVisit = {
+    travelDaysCount: true,
+    singleDayTrips: true,
+    quietHint: true,
+    fixedRange: true,
+
+    // Stays are in the country (or one of the set's), so one place is fixed.
+    countries: function (all, preset) {
+      var places = homeList(preset && preset.country);
+      return places.length ? all.filter(function (code) { return places.indexOf(code) >= 0; }) : all;
+    },
+
+    range: function (c) {
+      var on = checkOn(c);
+      return { from: c.D.shiftYears(on, -(Math.floor(visitLimit(c) / 365) + 1)) + 1, to: on };
+    },
+
+    tripLabel: function (t, c) { return c.text("tripDays", { n: t.end - t.start + 1 }); },
+
+    evaluate: function (trips, c) {
+      var on = checkOn(c), limit = visitLimit(c), v = measuredVisit(trips, on), controls = [];
+      var days = v ? v.days : 0, left = limit - days, country = c.settings.country;
+      if (c.settings.daysControl) controls.push({ type: "number", key: "limitInput", icon: "number", label: c.text("days"), value: limit, min: 1, max: +c.settings.limit || 90 });
+      controls.push({ type: "date", key: "checkOn", icon: "calendar", label: c.text("checkOn"), caption: c.text("checkOnCaption"), value: c.D.iso(on), display: c.dateRange(on, on), moveCalendar: true });
+      return {
+        controls: controls,
+        meter: { title: c.text("title"), flag: c.settings.flag || (SETS[country] ? country : homeList(country)[0]), label: days ? c.dateRange(v.from, v.to) : c.dateRange(on, on), days: days, limit: limit, tone: c.tone(days, limit, false) },
+        statusText: left > 0 ? c.text("remaining", { n: left }) : left === 0 ? c.text("atLimit") : c.text("overBy", { n: -left }),
+        lines: []
+      };
+    },
+
+    linkId: "per-visit",
+    // The embed's app preset, with the days granted where the visitor set them.
+    trackerOffer: function (trips, c) {
+      if (!c.offer) return "";
+      return c.offer + (c.settings.daysControl && c.settings.limitInput ? ",days:" + visitLimit(c) : "");
+    },
+
+    // The stays themselves, past and planned: a per-entry tracker counts them.
+    exportRows: function (trips, c) {
+      var note = c.settings.note || "Stay calculator";
+      return trips.filter(function (t) { return t.country; }).map(function (t) { return { country: t.country, start: t.start, end: t.end, notes: note }; });
     }
   };
 })();
