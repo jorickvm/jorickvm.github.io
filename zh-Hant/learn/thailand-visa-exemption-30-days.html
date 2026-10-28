@@ -135,6 +135,7 @@
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261028a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">跳至主要內容</a>
@@ -208,13 +209,14 @@
       <ul>
         <li><a href="#2026-9-15">2026 年 9 月 15 日起有哪些變更</a></li>
         <li><a href="#30">30 天如何計算</a></li>
-        <li><a href="#section-3">延長免簽停留</a></li>
-        <li><a href="#section-4">每年兩次陸路入境</a></li>
-        <li><a href="#section-5">逾期停留罰款與再次入境禁令</a></li>
+        <li><a href="#calculator">泰國免簽停留計算機</a></li>
+        <li><a href="#section-4">延長免簽停留</a></li>
+        <li><a href="#section-5">每年兩次陸路入境</a></li>
+        <li><a href="#section-6">逾期停留罰款與再次入境禁令</a></li>
         <li><a href="#2026-9-15-2">若在 2026 年 9 月 15 日前入境</a></li>
         <li><a href="#dtv">想停留更久：觀光簽證與 DTV</a></li>
-        <li><a href="#section-8">天數以外仍有其他問題</a></li>
-        <li><a href="#section-9">常見問題</a></li>
+        <li><a href="#section-9">天數以外仍有其他問題</a></li>
+        <li><a href="#section-10">常見問題</a></li>
       </ul>
     </nav>
     <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
@@ -246,13 +248,14 @@
       <ul>
         <li><a href="#2026-9-15">2026 年 9 月 15 日起有哪些變更</a></li>
         <li><a href="#30">30 天如何計算</a></li>
-        <li><a href="#section-3">延長免簽停留</a></li>
-        <li><a href="#section-4">每年兩次陸路入境</a></li>
-        <li><a href="#section-5">逾期停留罰款與再次入境禁令</a></li>
+        <li><a href="#calculator">泰國免簽停留計算機</a></li>
+        <li><a href="#section-4">延長免簽停留</a></li>
+        <li><a href="#section-5">每年兩次陸路入境</a></li>
+        <li><a href="#section-6">逾期停留罰款與再次入境禁令</a></li>
         <li><a href="#2026-9-15-2">若在 2026 年 9 月 15 日前入境</a></li>
         <li><a href="#dtv">想停留更久：觀光簽證與 DTV</a></li>
-        <li><a href="#section-8">天數以外仍有其他問題</a></li>
-        <li><a href="#section-9">常見問題</a></li>
+        <li><a href="#section-9">天數以外仍有其他問題</a></li>
+        <li><a href="#section-10">常見問題</a></li>
       </ul>
     </details>
     <script>(function(){var t=document.currentScript.previousElementSibling;if(matchMedia('(min-width: 760px)').matches)t.open=true})();</script>
@@ -275,14 +278,100 @@
     </div>
     <p>同一日曆年內的多次停留，仍會加總用於稅務判定；那是另一種計算（見下文）。</p>
 
-    <h2 id="section-3">延長免簽停留</h2>
+    <h2 id="calculator">泰國免簽停留計算機</h2>
+    <p>先點選抵達泰國的日期，再點選離開的日期。計算機採保守做法，把抵達當天算作第 1 天，計算這段停留的每一天，並和 30 天相比。延長後最多可再停留的 30 天不包含在內。</p>
+    <div class="daycal" id="embed-perVisit" data-day-calendar="perVisit" data-cal-preset="{&quot;settings&quot;:{&quot;country&quot;:&quot;TH&quot;,&quot;limit&quot;:30,&quot;note&quot;:&quot;Thailand visa exemption calculator&quot;},&quot;lock&quot;:[],&quot;link&quot;:&quot;visit-th&quot;,&quot;offer&quot;:&quot;visa-thailand-visa-exemption&quot;}">
+      <script type="application/json" data-cal-strings>
+{
+  "hintEnd": "接著點選這段停留的另一端。",
+  "hintSelected": "拖曳停留的任一端可更改日期，也可以在下方刪除。",
+  "pending": "新一段停留的起點",
+  "empty": "還沒有停留紀錄。",
+  "deleteTrip": "刪除停留",
+  "country": "國家或地區",
+  "goal": "目標類型",
+  "goalStay": "低於上限",
+  "goalReach": "達成目標",
+  "addCountry": "新增國家或地區",
+  "noMatch": "找不到符合的國家或地區",
+  "year": "年份",
+  "starts": "起始日",
+  "tripDays": {
+    "other": "{n} 天"
+  },
+  "remaining": {
+    "other": "剩餘 {n} 天"
+  },
+  "atLimit": "已達上限",
+  "needed": {
+    "other": "還需 {n} 天"
+  },
+  "reachedTarget": "目標達成",
+  "overBy": {
+    "other": "超過上限 {n} 天"
+  },
+  "hintStart": "先點選抵達泰國的日期，再點選離開的日期。",
+  "inTrip": "在泰國",
+  "title": "泰國停留天數",
+  "checkOn": "截至日期",
+  "checkOnCaption": "計算這一天仍在持續的停留，或這一天之前最近一次的停留。規劃停留時，選擇停留的最後一天。"
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>時間軸</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>在 AtlasDays 中繼續追蹤</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="embed-perVisit-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="embed-perVisit-import-title">在 AtlasDays 中繼續追蹤</p>
+            <p class="cal-dialog-sub">適用於 iPhone 和 iPad 的免費 App，旅行途中持續計算停留天數。</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>確認 iPhone 或 iPad 已安裝 AtlasDays</strong><span>可在 App Store 免費下載。</span></li>
+            <li><strong>掃描 QR 碼，把所有行程載入 AtlasDays</strong><span>確認無誤後，輕點「匯入」。</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>取得 AtlasDays</strong><span>在 App Store 免費下載。已經有了？直接跳到第 2 步。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>在 App 中開啟停留紀錄</strong><span>確認無誤後輕點「匯入」。在此之前，不會儲存任何資料。</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">在 AtlasDays 中開啟</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>取得 AtlasDays</strong><span>iPhone 版，可在 App Store 免費下載。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>用檔案匯入停留紀錄</strong><span>停留紀錄太多，連結裝不下。請下載檔案，然後在 iPhone 上用 AtlasDays 開啟。</span><button type="button" class="cal-dialog-primary" data-cal-download>下載檔案</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>將行程下載為 CSV 檔案</button><span data-cal-downloaded hidden>請在 iPhone 上用 AtlasDays 開啟這個檔案。</span></p>
+          <button type="button" data-cal-close>關閉</button>
+        </div>
+      </dialog>
+    </div>
+
+    <h2 id="section-4">延長免簽停留</h2>
     <p>可向泰國境內移民局申請延長最多 30 天。是否准許由移民官裁量，並非自動取得。截至 2026 年 9 月，申請延長臨時停留許可的費用為 <strong>1,900 泰銖</strong>。落地簽證持有人不得延長，除非因疾病無法旅行。</p>
 
-    <h2 id="section-4">每年兩次陸路入境</h2>
+    <h2 id="section-5">每年兩次陸路入境</h2>
     <p>使用 30 天或 15 天免簽的旅客，一般在每個日曆年內透過陸路邊境檢查站入境不得超過<strong>兩次</strong>。此上限不適用於馬來西亞、汶萊、印尼及新加坡國民；內政部長也可指定其他豁免國籍。</p>
     <p>《公報》的上限針對陸路越境，但部分泰國大使館的說法更廣。泰國駐倫敦大使館告知旅客，免簽制度在一個日曆年內只能使用兩次，並建議更頻繁造訪的人申請簽證。截至 2026 年 9 月，官方尚未說明 2026 年 9 月 15 日以前的陸路入境，是否計入 2026 年的次數上限。</p>
 
-    <h2 id="section-5">逾期停留罰款與再次入境禁令</h2>
+    <h2 id="section-6">逾期停留罰款與再次入境禁令</h2>
     <p>逾期停留每日罰款 500 泰銖，最高 20,000 泰銖，須於離境前繳納。逾期一週，罰款為 7 × 500 = 3,500 泰銖。逾期較久還會被禁止再次入境，期間從離境日開始計算：</p>
     <div class="cards cards-pair">
       <section class="card">
@@ -340,7 +429,7 @@
     </div>
     <p>DTV 適用於遠距工作者、自由工作者、從事泰拳、泰式烹飪課程或醫療等泰國「軟實力」活動的人，以及其配偶與子女。須提供顯示至少 500,000 泰銖的銀行對帳單；費用依大使館而異（截至 2026 年 9 月，華盛頓為 400 美元，倫敦為 300 英鎊）。停留 180 天並延長後，DTV 持有人必須出境再重新入境，才能開始新的停留期間。</p>
 
-    <h2 id="section-8">天數以外仍有其他問題</h2>
+    <h2 id="section-9">天數以外仍有其他問題</h2>
     <p>免簽入境僅限觀光。在泰國停留的時間也會計入稅務居民判定：一個日曆年內多次造訪合計達 <strong>180 天</strong>，就會成為泰國稅務居民；居民將就帶入泰國的境外所得納稅。詳見<a href="/zh-Hant/learn/thailand-180-day-tax-residency">泰國 180 天稅務居民規定</a>。其他地方如何處理逾期停留，詳見<a href="/zh-Hant/learn/overstaying-a-visa-or-stay-limit">簽證或停留上限逾期</a>。</p>
 
     <div class="cta-box">
@@ -353,7 +442,7 @@
       <a class="cta-btn" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> 下載 App</a>
     </div>
 
-    <h2 id="section-9">常見問題</h2>
+    <h2 id="section-10">常見問題</h2>
     <h3>沒有簽證可以在泰國停留多久？</h3>
     <p>自 2026 年 9 月 15 日起，若國籍列於 30 天名單，每次入境最多可停留 30 天；名單包括美國、英國、加拿大、澳洲及所有歐盟國家。塞席爾與模里西斯適用 15 天。30 天停留可向移民局申請延長一次，最多再延長 30 天。</p>
     <h3>現在還能免簽在泰國停留 60 天嗎？</h3>
@@ -429,6 +518,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"開啟導覽選單","menuClose":"關閉導覽選單"};</script>
   <script src="../../assets/js/navigation.js?v=20261027j"></script>
+  <script defer src="../../assets/js/rules/per-entry.js?v=20261028c"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261028a"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

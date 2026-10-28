@@ -136,6 +136,7 @@
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261028a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">본문으로 건너뛰기</a>
@@ -210,8 +211,9 @@
         <li><a href="#section-1">규정</a></li>
         <li><a href="#fmm">FMM, 도장, 육로 국경</a></li>
         <li><a href="#section-3">계산법</a></li>
-        <li><a href="#section-4">일수 외의 요소</a></li>
-        <li><a href="#section-5">자주 묻는 질문</a></li>
+        <li><a href="#calculator">멕시코 방문자 체류 계산기</a></li>
+        <li><a href="#section-5">일수 외의 요소</a></li>
+        <li><a href="#section-6">자주 묻는 질문</a></li>
       </ul>
     </nav>
     <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
@@ -256,7 +258,94 @@
     </div>
     <p>1년에 방문자 체류를 몇 번까지, 얼마나 짧은 간격으로 할 수 있는지 제한하는 공표된 규정은 없습니다. 입국할 때마다 심사관이 새로 결정하며, 어느 입국에서든 더 적은 일수를 줄 수 있습니다.</p>
 
-    <h2 id="section-4">일수 외의 요소</h2>
+    <h2 id="calculator">멕시코 방문자 체류 계산기</h2>
+    <p>입국 도장이나 FMM에 적힌 일수를 입력한 다음, 멕시코에 도착한 날과 출국한 날을 누르십시오. 계산기는 도착일을 1일차로 하여 그 체류의 모든 날을 세어 입력한 일수와 비교합니다.</p>
+    <div class="daycal" id="embed-perVisit" data-day-calendar="perVisit" data-cal-preset="{&quot;settings&quot;:{&quot;country&quot;:&quot;MX&quot;,&quot;limit&quot;:180,&quot;daysControl&quot;:true,&quot;note&quot;:&quot;Mexico visitor stay calculator&quot;},&quot;lock&quot;:[],&quot;link&quot;:&quot;visit-mx&quot;,&quot;offer&quot;:&quot;visa-mexico-visitor&quot;}">
+      <script type="application/json" data-cal-strings>
+{
+  "hintEnd": "체류의 다른 끝 날짜를 누르십시오.",
+  "hintSelected": "체류의 양쪽 끝 중 하나를 드래그해 날짜를 변경하거나 아래에서 삭제하십시오.",
+  "pending": "새 체류 시작",
+  "empty": "아직 체류가 없습니다.",
+  "deleteTrip": "체류 삭제",
+  "country": "국가",
+  "goal": "목표 유형",
+  "goalStay": "한도 미만 유지",
+  "goalReach": "목표 달성",
+  "addCountry": "국가 추가",
+  "noMatch": "일치하는 국가가 없습니다",
+  "year": "연도",
+  "starts": "시작일",
+  "tripDays": {
+    "other": "{n}일"
+  },
+  "remaining": {
+    "other": "{n}일 남음"
+  },
+  "atLimit": "한도 도달",
+  "needed": {
+    "other": "{n}일 더 필요"
+  },
+  "reachedTarget": "목표 달성",
+  "overBy": {
+    "other": "한도 {n}일 초과"
+  },
+  "hintStart": "멕시코에 도착한 날을 누른 다음 출국한 날을 누르십시오.",
+  "inTrip": "멕시코 체류",
+  "title": "멕시코 체류 일수",
+  "days": "허가된 일수",
+  "checkOn": "계산 종료일",
+  "checkOnCaption": "이 날짜에 이어지고 있는 체류, 또는 그 전의 마지막 체류를 셉니다. 예정된 체류를 확인하려면 그 체류의 마지막 날을 선택하십시오."
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span><span>일</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>타임라인</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>AtlasDays에서 관리하기</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="embed-perVisit-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="embed-perVisit-import-title">AtlasDays에서 관리하기</p>
+            <p class="cal-dialog-sub">여행하는 동안 체류 일수를 계속 계산하는 iPhone 및 iPad용 무료 앱입니다.</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>iPhone 또는 iPad에 AtlasDays 설치 확인</strong><span>App Store에서 무료로 받을 수 있습니다.</span></li>
+            <li><strong>QR 코드를 스캔해 모든 여행을 AtlasDays에 불러오기</strong><span>확인한 다음 '가져오기'를 누르십시오.</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>AtlasDays 받기</strong><span>App Store에서 무료로 받을 수 있습니다. 이미 있다면 2단계로 넘어가십시오.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>앱에서 체류 열기</strong><span>확인한 다음 '가져오기'를 누르십시오. 그 전에는 아무것도 저장되지 않습니다.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">AtlasDays에서 열기</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>AtlasDays 받기</strong><span>App Store에서 무료로 받을 수 있는 iPhone 앱입니다.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>파일로 체류 가져오기</strong><span>체류가 너무 많아 링크에 담을 수 없습니다. 파일을 다운로드해 iPhone의 AtlasDays에서 여십시오.</span><button type="button" class="cal-dialog-primary" data-cal-download>파일 다운로드</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>여행을 CSV 파일로 다운로드</button><span data-cal-downloaded hidden>iPhone의 AtlasDays에서 이 파일을 여십시오.</span></p>
+          <button type="button" data-cal-close>닫기</button>
+        </div>
+      </dialog>
+    </div>
+
+    <h2 id="section-5">일수 외의 요소</h2>
     <p>도장에 적힌 일수를 넘겨 머무르면 멕시코 이민법을 위반하는 것이며, 이민 수용 시설 구금과 멕시코 밖으로의 추방으로 이어질 수 있습니다. 멕시코 고용주나 고객에게서 보수를 받고 일하려면 다른 자격이 필요하며, 출국 전에 영사관에서 신청합니다. 더 오래 머물러야 한다면 임시 거주 비자가 방법이며, 절차는 멕시코 밖에서 시작합니다. 전반적인 내용은 <a href="/ko/learn/overstaying-a-visa-or-stay-limit">비자 또는 체류 한도 초과</a>에서 확인하십시오.</p>
 
     <div class="cta-box">
@@ -272,7 +361,7 @@
       </a>
     </div>
 
-    <h2 id="section-5">자주 묻는 질문</h2>
+    <h2 id="section-6">자주 묻는 질문</h2>
     <h3>관광객으로 멕시코에 180일 머무를 수 있습니까?</h3>
     <p>심사관이 허가하면 최대 180일까지입니다. 머무를 수 있는 일수는 입국할 때 정해져 입국 도장과 함께 기록되며, 1일부터 180일까지 어떤 일수든 될 수 있습니다.</p>
     <h3>멕시코 관광 체류를 연장할 수 있습니까?</h3>
@@ -348,6 +437,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"탐색 메뉴 열기","menuClose":"탐색 메뉴 닫기"};</script>
   <script src="../../assets/js/navigation.js?v=20261027j"></script>
+  <script defer src="../../assets/js/rules/per-entry.js?v=20261028c"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261028a"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

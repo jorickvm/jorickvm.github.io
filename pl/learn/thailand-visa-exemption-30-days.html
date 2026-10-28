@@ -135,6 +135,7 @@
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261028a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Przejdź do treści</a>
@@ -208,6 +209,7 @@
       <ul>
         <li><a href="#co-si-zmieni-o-15-wrze-nia-2026">Co się zmieniło 15 września 2026</a></li>
         <li><a href="#jak-liczy-si-30-dni">Jak liczy się 30 dni</a></li>
+        <li><a href="#calculator">Kalkulator pobytu bez wizy w Tajlandii</a></li>
         <li><a href="#przed-u-enie-pobytu-bez-wizy">Przedłużenie pobytu bez wizy</a></li>
         <li><a href="#dwa-wjazdy-l-dem-w-roku">Dwa wjazdy lądem w roku</a></li>
         <li><a href="#grzywny-i-zakazy-ponownego-wjazdu">Grzywny i zakazy ponownego wjazdu</a></li>
@@ -246,6 +248,7 @@
       <ul>
         <li><a href="#co-si-zmieni-o-15-wrze-nia-2026">Co się zmieniło 15 września 2026</a></li>
         <li><a href="#jak-liczy-si-30-dni">Jak liczy się 30 dni</a></li>
+        <li><a href="#calculator">Kalkulator pobytu bez wizy w Tajlandii</a></li>
         <li><a href="#przed-u-enie-pobytu-bez-wizy">Przedłużenie pobytu bez wizy</a></li>
         <li><a href="#dwa-wjazdy-l-dem-w-roku">Dwa wjazdy lądem w roku</a></li>
         <li><a href="#grzywny-i-zakazy-ponownego-wjazdu">Grzywny i zakazy ponownego wjazdu</a></li>
@@ -274,6 +277,104 @@
       <p><strong>Każdy wjazd to nowe liczenie.</strong> Zwolnienie przysługuje na każdy wjazd, a opublikowane przepisy nie przewidują łącznej sumy w okresie kroczącym dla kolejnych wizyt. Każdy wjazd lądem zużywa jednak jeden z dwóch przysługujących w roku, a o każdym wpuszczeniu decydują funkcjonariusze.</p>
     </div>
     <p>Oddzielne wizyty w jednym roku kalendarzowym nadal się sumują do celów podatkowych, ale to inne liczenie (zobacz niżej).</p>
+
+    <h2 id="calculator">Kalkulator pobytu bez wizy w Tajlandii</h2>
+    <p>Stuknij dzień przyjazdu do Tajlandii, a potem dzień wyjazdu. Kalkulator liczy każdy dzień tego pobytu, przyjmując dzień przyjazdu za dzień 1 (to ostrożne podejście), i porównuje wynik z 30 dniami. Przedłużenie o maksymalnie 30 kolejnych dni nie jest uwzględnione.</p>
+    <div class="daycal" id="embed-perVisit" data-day-calendar="perVisit" data-cal-preset="{&quot;settings&quot;:{&quot;country&quot;:&quot;TH&quot;,&quot;limit&quot;:30,&quot;note&quot;:&quot;Thailand visa exemption calculator&quot;},&quot;lock&quot;:[],&quot;link&quot;:&quot;visit-th&quot;,&quot;offer&quot;:&quot;visa-thailand-visa-exemption&quot;}">
+      <script type="application/json" data-cal-strings>
+{
+  "hintEnd": "Stuknij drugi koniec pobytu.",
+  "hintSelected": "Przeciągnij jeden z końców pobytu, aby zmienić daty, albo usuń go poniżej.",
+  "pending": "początek nowego pobytu",
+  "empty": "Brak pobytów.",
+  "deleteTrip": "Usuń pobyt",
+  "country": "Kraj",
+  "goal": "Cel",
+  "goalStay": "Pozostań poniżej",
+  "goalReach": "Osiągnij cel",
+  "addCountry": "Dodaj kraj",
+  "noMatch": "Brak pasującego kraju",
+  "year": "Rok",
+  "starts": "Początek",
+  "tripDays": {
+    "one": "{n} dzień",
+    "few": "{n} dni",
+    "many": "{n} dni",
+    "other": "{n} dnia"
+  },
+  "remaining": {
+    "one": "{n} dzień w zapasie",
+    "few": "{n} dni w zapasie",
+    "many": "{n} dni w zapasie",
+    "other": "{n} dnia w zapasie"
+  },
+  "atLimit": "Limit osiągnięty",
+  "needed": {
+    "one": "Potrzeba jeszcze {n} dnia",
+    "few": "Potrzeba jeszcze {n} dni",
+    "many": "Potrzeba jeszcze {n} dni",
+    "other": "Potrzeba jeszcze {n} dnia"
+  },
+  "reachedTarget": "Cel osiągnięty",
+  "overBy": {
+    "one": "Limit przekroczony o {n} dzień",
+    "few": "Limit przekroczony o {n} dni",
+    "many": "Limit przekroczony o {n} dni",
+    "other": "Limit przekroczony o {n} dnia"
+  },
+  "hintStart": "Stuknij dzień przyjazdu do Tajlandii, a potem dzień wyjazdu.",
+  "inTrip": "w Tajlandii",
+  "title": "Dni w Tajlandii",
+  "checkOn": "Licz do",
+  "checkOnCaption": "Pobyt trwający w tym dniu albo ostatni przed nim. Przy planowanym pobycie wybierz jego ostatni dzień."
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>P</span><span>W</span><span>Ś</span><span>C</span><span>P</span><span>S</span><span>N</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>Oś czasu</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Śledź w AtlasDays</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="embed-perVisit-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="embed-perVisit-import-title">Śledź w AtlasDays</p>
+            <p class="cal-dialog-sub">Licz dni dalej w trakcie podróży. Darmowa aplikacja na iPhone’a i iPada.</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>Upewnij się, że AtlasDays jest zainstalowane na telefonie iPhone lub tablecie iPad</strong><span>Za darmo w App Store.</span></li>
+            <li><strong>Zeskanuj kod QR, aby wczytać wszystkie podróże do AtlasDays</strong><span>Sprawdź je, a potem stuknij „Importuj”.</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>Pobierz AtlasDays</strong><span>Za darmo w App Store. Masz już aplikację? Przejdź do kroku 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>Otwórz swoje pobyty w aplikacji</strong><span>Sprawdź je, a potem stuknij „Importuj”. Wcześniej nic nie zostanie zapisane.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Otwórz w AtlasDays</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>Pobierz AtlasDays</strong><span>Za darmo w App Store, na iPhone’a.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>Zaimportuj pobyty z pliku</strong><span>To więcej pobytów, niż zmieści się w linku. Pobierz plik i otwórz go w AtlasDays na telefonie iPhone.</span><button type="button" class="cal-dialog-primary" data-cal-download>Pobierz plik</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Pobierz podróże jako plik CSV</button><span data-cal-downloaded hidden>Otwórz ten plik w AtlasDays na telefonie iPhone.</span></p>
+          <button type="button" data-cal-close>Zamknij</button>
+        </div>
+      </dialog>
+    </div>
 
     <h2 id="przed-u-enie-pobytu-bez-wizy">Przedłużenie pobytu bez wizy</h2>
     <p>O przedłużenie pobytu o maksymalnie 30 dni możesz wystąpić w biurze imigracyjnym w Tajlandii. Przedłużenie zależy od uznania funkcjonariusza i nie jest automatyczne. Opłata za wniosek o zgodę na przedłużenie pobytu czasowego wynosi <strong>1 900 THB</strong> według stanu na wrzesień 2026. Posiadacze wizy po przylocie nie mogą przedłużyć pobytu, chyba że choroba uniemożliwia im podróż.</p>
@@ -429,6 +530,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"Otwórz menu nawigacji","menuClose":"Zamknij menu nawigacji"};</script>
   <script src="../../assets/js/navigation.js?v=20261027j"></script>
+  <script defer src="../../assets/js/rules/per-entry.js?v=20261028c"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261028a"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

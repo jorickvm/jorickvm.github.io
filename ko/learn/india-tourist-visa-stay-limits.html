@@ -136,6 +136,7 @@
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261028a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">본문으로 건너뛰기</a>
@@ -209,8 +210,9 @@
       <ul>
         <li><a href="#section-1">규정 내용</a></li>
         <li><a href="#section-2">계산 방법</a></li>
-        <li><a href="#section-3">일수 계산 외의 기준</a></li>
-        <li><a href="#section-4">자주 묻는 질문</a></li>
+        <li><a href="#calculator">인도 전자 관광 비자 일수 계산기</a></li>
+        <li><a href="#section-4">일수 계산 외의 기준</a></li>
+        <li><a href="#section-5">자주 묻는 질문</a></li>
       </ul>
     </nav>
     <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
@@ -260,7 +262,102 @@
       <p>첫 체류는 처음부터 끝까지 151일이지만 해의 경계에서 나뉩니다. 61일은 2025년에(11월에 30일, 12월에 31일), 90일은 2026년에(31 + 28 + 31) 들어갑니다. 두 번째 체류는 92일(31 + 31 + 30)을 더합니다. 2025년 합계는 61일로 여유가 넉넉합니다. 2026년 합계는 90 + 92 = <strong>182일</strong>로 이틀이 넘습니다. 어느 방문도 그 자체로는 180일 근처에 가지 않았는데도 그렇습니다.</p>
     </div>
 
-    <h2 id="section-3">일수 계산 외의 기준</h2>
+    <h2 id="calculator">인도 전자 관광 비자 일수 계산기</h2>
+    <p>체류마다 인도에 도착한 날을 누른 다음 출국한 날을 누르십시오. 계산기는 선택한 해에 머문 모든 날을 입국일과 출국일을 포함해 합산하고, 그 합계를 180일과 비교합니다.</p>
+    <div class="daycal" id="embed-days183" data-day-calendar="days183" data-cal-preset="{&quot;settings&quot;:{&quot;country&quot;:&quot;IN&quot;,&quot;goal&quot;:&quot;stay&quot;,&quot;periodType&quot;:&quot;calendar&quot;,&quot;limit&quot;:180,&quot;note&quot;:&quot;India e-Tourist Visa day calculator&quot;},&quot;lock&quot;:[&quot;country&quot;,&quot;goal&quot;,&quot;periodType&quot;,&quot;limitInput&quot;],&quot;link&quot;:&quot;visa-in&quot;,&quot;offer&quot;:&quot;visa-india-e-tourist&quot;}">
+      <script type="application/json" data-cal-strings>
+{
+  "days": "일수",
+  "hintStart": "인도에 도착한 날을 누른 다음 출국한 날을 누르십시오.",
+  "hintEnd": "체류의 다른 끝 날짜를 누르십시오.",
+  "hintSelected": "체류의 양쪽 끝 중 하나를 드래그해 날짜를 변경하거나 아래에서 삭제하십시오.",
+  "inTrip": "인도 체류",
+  "pending": "새 체류 시작",
+  "empty": "아직 체류가 없습니다.",
+  "deleteTrip": "체류 삭제",
+  "country": "국가",
+  "goal": "목표 유형",
+  "goalStay": "한도 미만 유지",
+  "goalReach": "목표 달성",
+  "captionStay": "세법상 비거주 상태를 유지합니다.",
+  "captionReach": "세법상 거주 기준 일수를 채웁니다.",
+  "window": "기간",
+  "addCountry": "국가 추가",
+  "noMatch": "일치하는 국가가 없습니다",
+  "periodCalendar": "연간",
+  "periodTax": "과세 연도",
+  "periodRolling": "최근 12개월",
+  "year": "연도",
+  "starts": "시작일",
+  "checkOn": "계산 종료일",
+  "checkOnCaption": "이 날짜까지 12개월 동안 체류한 일수입니다. 예정된 여행을 확인하려면 여행 마지막 날을 선택하십시오.",
+  "tripDays": {
+    "other": "{n}일"
+  },
+  "remaining": {
+    "other": "{n}일 남음"
+  },
+  "atLimit": "한도 도달",
+  "needed": {
+    "other": "{n}일 더 필요"
+  },
+  "reachedTarget": "목표 달성",
+  "overBy": {
+    "other": "한도 {n}일 초과"
+  },
+  "lineNoCountry": {
+    "other": "국가 미지정 {n}일"
+  }
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span><span>일</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>타임라인</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>AtlasDays에서 관리하기</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="embed-days183-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="embed-days183-import-title">AtlasDays에서 관리하기</p>
+            <p class="cal-dialog-sub">여행하는 동안 체류 일수를 계속 계산하는 iPhone 및 iPad용 무료 앱입니다.</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>iPhone 또는 iPad에 AtlasDays 설치 확인</strong><span>App Store에서 무료로 받을 수 있습니다.</span></li>
+            <li><strong>QR 코드를 스캔해 모든 여행을 AtlasDays에 불러오기</strong><span>확인한 다음 '가져오기'를 누르십시오.</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>AtlasDays 받기</strong><span>App Store에서 무료로 받을 수 있습니다. 이미 있다면 2단계로 넘어가십시오.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>앱에서 체류 열기</strong><span>확인한 다음 '가져오기'를 누르십시오. 그 전에는 아무것도 저장되지 않습니다.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">AtlasDays에서 열기</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>AtlasDays 받기</strong><span>App Store에서 무료로 받을 수 있는 iPhone 앱입니다.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>파일로 체류 가져오기</strong><span>체류가 너무 많아 링크에 담을 수 없습니다. 파일을 다운로드해 iPhone의 AtlasDays에서 여십시오.</span><button type="button" class="cal-dialog-primary" data-cal-download>파일 다운로드</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>여행을 CSV 파일로 다운로드</button><span data-cal-downloaded hidden>iPhone의 AtlasDays에서 이 파일을 여십시오.</span></p>
+          <button type="button" data-cal-close>닫기</button>
+        </div>
+      </dialog>
+    </div>
+
+    <h2 id="section-4">일수 계산 외의 기준</h2>
     <p>전자 비자는 여행을 허가할 뿐, 입국 여부를 결정하는 것은 입국항의 심사관입니다. 이 비자로 할 수 있는 일은 관광과 여가, 친지 방문, 단기 요가 프로그램, 단기 치료로 한정되고 현지에 도착한 뒤에는 연장도 변경도 되지 않으므로, 연장이 아니라 출국을 계획에 넣으십시오. 허용된 체류를 넘기는 것은 그 자체의 제재가 따르는 초과 체류이며, 다음 글에서 다룹니다. <a href="/ko/learn/overstaying-a-visa-or-stay-limit">비자나 체류 한도를 넘긴 경우</a>. 사안이 통상적이지 않다면 예약 전에 자국 주재 인도 공관에 조건을 확인하십시오.</p>
 
     <div class="cta-box">
@@ -276,7 +373,7 @@
       </a>
     </div>
 
-    <h2 id="section-4">자주 묻는 질문</h2>
+    <h2 id="section-5">자주 묻는 질문</h2>
     <h3>전자 관광 비자로 인도에 얼마나 머무를 수 있습니까?</h3>
     <p>1년 및 5년짜리에서 한 해 180일까지이며, 한 번의 연속 방문도 180일을 넘길 수 없습니다. 5년짜리라고 해서 허용 일수가 늘어나지는 않고, 5년 동안 계속 다시 올 수 있게 해 줄 뿐입니다.</p>
     <h3>인도를 나갔다가 다시 들어오면 180일이 초기화됩니까?</h3>
@@ -352,6 +449,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"탐색 메뉴 열기","menuClose":"탐색 메뉴 닫기"};</script>
   <script src="../../assets/js/navigation.js?v=20261027j"></script>
+  <script defer src="../../assets/js/rules/days-183.js?v=20261028a"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261028a"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

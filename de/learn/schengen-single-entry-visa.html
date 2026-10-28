@@ -136,6 +136,7 @@
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261028a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
@@ -209,6 +210,7 @@
       <ul>
         <li><a href="#die-regel">Die Regel</a></li>
         <li><a href="#so-liest-du-den-erlaubten-aufenthalt-auf-deinem-visum">So liest du den erlaubten Aufenthalt auf deinem Visum</a></li>
+        <li><a href="#calculator">Rechner für das Schengen-Visum zur einmaligen Einreise</a></li>
         <li><a href="#ber-die-zahl-der-einreisen-hinaus">Über die Zahl der Einreisen hinaus</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
@@ -260,6 +262,97 @@
     </div>
     <p class="calc-callout">Für die 90/180-Regel selbst zählt der <a href="/de/learn/schengen-calculator">Schengen-Rechner</a> deine Tage in den 180 Tagen bis zu einem beliebigen Datum.</p>
 
+    <h2 id="calculator">Rechner für das Schengen-Visum zur einmaligen Einreise</h2>
+    <p>Trag die Zahl der Tage ein, die auf deinem Visum aufgedruckt ist, und tippe dann auf den Tag, an dem du in den Schengen-Raum eingereist bist, und auf den Tag deiner Ausreise. Der Rechner zählt alle Tage dieses Aufenthalts, Tag der Einreise und Tag der Ausreise eingeschlossen, und vergleicht sie mit dieser Zahl.</p>
+    <div class="daycal" id="embed-perVisit" data-day-calendar="perVisit" data-cal-preset="{&quot;settings&quot;:{&quot;country&quot;:&quot;Schengen&quot;,&quot;limit&quot;:90,&quot;daysControl&quot;:true,&quot;flag&quot;:&quot;EU&quot;,&quot;note&quot;:&quot;Schengen single-entry visa calculator&quot;},&quot;lock&quot;:[],&quot;link&quot;:&quot;visit-schengen-visa&quot;,&quot;offer&quot;:&quot;schengen-single-entry&quot;}">
+      <script type="application/json" data-cal-strings>
+{
+  "hintEnd": "Tippe jetzt auf das andere Ende des Aufenthalts.",
+  "hintSelected": "Ziehe an einem der beiden Enden, um die Reisedaten zu ändern, oder lösche den Aufenthalt unten.",
+  "pending": "Beginn eines neuen Aufenthalts",
+  "empty": "Noch keine Aufenthalte.",
+  "deleteTrip": "Aufenthalt löschen",
+  "country": "Land",
+  "goal": "Ziel",
+  "goalStay": "Limit einhalten",
+  "goalReach": "Ziel erreichen",
+  "addCountry": "Land hinzufügen",
+  "noMatch": "Kein passendes Land gefunden",
+  "year": "Jahr",
+  "starts": "Beginn",
+  "tripDays": {
+    "one": "{n} Tag",
+    "other": "{n} Tage"
+  },
+  "remaining": {
+    "one": "Noch {n} Tag",
+    "other": "Noch {n} Tage"
+  },
+  "atLimit": "Am Limit",
+  "needed": {
+    "one": "Noch {n} Tag nötig",
+    "other": "Noch {n} Tage nötig"
+  },
+  "reachedTarget": "Ziel erreicht",
+  "overBy": {
+    "one": "{n} Tag über dem Limit",
+    "other": "{n} Tage über dem Limit"
+  },
+  "hintStart": "Tippe auf den Tag, an dem du in den Schengen-Raum eingereist bist, und dann auf den Tag deiner Ausreise.",
+  "inTrip": "im Schengen-Raum",
+  "title": "Tage im Schengen-Raum",
+  "days": "Gewährte Tage",
+  "checkOn": "Zählen bis",
+  "checkOnCaption": "Gezählt wird der Aufenthalt, der an diesem Datum andauert, sonst der letzte davor. Für einen geplanten Aufenthalt wähl seinen letzten Tag."
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>M</span><span>D</span><span>M</span><span>D</span><span>F</span><span>S</span><span>S</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>Zeitleiste</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>In AtlasDays übernehmen</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="embed-perVisit-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="embed-perVisit-import-title">In AtlasDays übernehmen</p>
+            <p class="cal-dialog-sub">Zähl deine Tage unterwegs weiter. Kostenlose App für iPhone und iPad.</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>AtlasDays auf deinem iPhone oder iPad installieren</strong><span>Kostenlos im App Store.</span></li>
+            <li><strong>QR-Code scannen, um alle Reisen in AtlasDays zu laden</strong><span>Prüfe sie und tippe dann auf „Importieren“.</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>AtlasDays laden</strong><span>Kostenlos im App Store. Schon installiert? Weiter mit Schritt 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8&amp;ppid=d3a9b2e7-b9b8-479b-be33-c009cef92c74">App Store</a></li>
+          <li><strong>Aufenthalte in der App öffnen</strong><span>Prüfe sie und tippe dann auf „Importieren“. Vorher wird nichts gespeichert.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">In AtlasDays öffnen</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>AtlasDays laden</strong><span>Kostenlos im App Store für iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8&amp;ppid=d3a9b2e7-b9b8-479b-be33-c009cef92c74">App Store</a></li>
+          <li><strong>Aufenthalte per Datei importieren</strong><span>Das sind mehr Aufenthalte, als ein Link fassen kann. Lade die Datei herunter und öffne sie auf deinem iPhone mit AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Datei herunterladen</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Reisen als CSV-Datei herunterladen</button><span data-cal-downloaded hidden>Öffne diese Datei auf deinem iPhone mit AtlasDays.</span></p>
+          <button type="button" data-cal-close>Schließen</button>
+        </div>
+      </dialog>
+    </div>
+
     <h2 id="ber-die-zahl-der-einreisen-hinaus">Über die Zahl der Einreisen hinaus</h2>
     <p>Die Zahl zur Dauer des Aufenthalts ist eine Höchstgrenze, nie ein Bonus zusätzlich zur Regel für Kurzaufenthalte. Lässt dein jüngerer Verlauf im Schengen-Raum unter dem <a href="/de/learn/schengen-90-180-rule">Limit von 90/180</a> ohnehin weniger Tage übrig als aufgedruckt, gilt die kleinere Zahl. Ein Visum erlaubt bis zu den aufgedruckten Tagen <em>und</em> nicht mehr, als das Kontingent von 90/180 zulässt, je nachdem, was weniger ist. Ein Visum zur zweimaligen Einreise (2) funktioniert genauso, erlaubt aber eine zweite Einreise; ein Visum zur mehrfachen Einreise (MULT) erlaubt mehrere, die jeweils weiterhin gegen denselben gleitenden Zeitraum zählen. Die endgültige Entscheidung an der Grenze liegt bei den Behörden, nicht allein bei der Vignette.</p>
 
@@ -299,8 +392,8 @@
       <div class="rule-cards">
         <a class="rule-card" href="/de/learn/schengen-90-180-rule"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Was bedeuten 90 Tage in einem Zeitraum von 180 Tagen?</strong></span></a>
         <a class="rule-card" href="/de/learn/eu-long-term-resident-status-absences"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Daueraufenthalt-EU: Abwesenheiten in den fünf Jahren vor dem Antrag</strong></span></a>
-        <a class="rule-card" href="/de/learn/schengen-calculator"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Schengen-Rechner: Prüfe deine Tage nach der 90/180-Regel</strong></span></a>
         <a class="rule-card" href="/de/learn/schengen-rolling-window-walkthrough"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Wie der gleitende Zeitraum bei Schengen wirklich funktioniert</strong></span></a>
+        <a class="rule-card" href="/de/learn/schengen-calculator"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Schengen-Rechner: Prüfe deine Tage nach der 90/180-Regel</strong></span></a>
         <a class="rule-card" href="/de/learn/ees-etias-schengen-90-180"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>EES und ETIAS: Was sie für deine Schengen-Tage bedeuten</strong></span></a>
         <a class="rule-card" href="/de/learn/schengen-countries-list-90-180-rule"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Länderliste zu Schengen für die 90/180-Regel</strong></span></a>
       </div>
@@ -352,6 +445,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"Navigationsmenü öffnen","menuClose":"Navigationsmenü schließen"};</script>
   <script src="../../assets/js/navigation.js?v=20261027j"></script>
+  <script defer src="../../assets/js/rules/per-entry.js?v=20261028c"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261028a"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

@@ -136,6 +136,7 @@
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261028a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">本文へスキップ</a>
@@ -209,9 +210,10 @@
       <ul>
         <li><a href="#section-1">規定</a></li>
         <li><a href="#section-2">数え方</a></li>
-        <li><a href="#section-3">訪問者上限とコロンビアの税務上の居住</a></li>
-        <li><a href="#section-4">日数以外の要素</a></li>
-        <li><a href="#section-5">よくある質問</a></li>
+        <li><a href="#calculator">コロンビア訪問者の180日ルール計算機</a></li>
+        <li><a href="#section-4">訪問者上限とコロンビアの税務上の居住</a></li>
+        <li><a href="#section-5">日数以外の要素</a></li>
+        <li><a href="#section-6">よくある質問</a></li>
       </ul>
     </nav>
     <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
@@ -259,11 +261,106 @@
       <p><strong>リセット。</strong>2028年1月1日には、2027年に何日使ったかにかかわらず、0日から数え直します。</p>
     </div>
 
-    <h2 id="section-3">訪問者上限とコロンビアの税務上の居住</h2>
+    <h2 id="calculator">コロンビア訪問者の180日ルール計算機</h2>
+    <p>滞在ごとに、コロンビアに到着した日をタップし、次に出国した日をタップしてください。計算機は、選んだ暦年に含まれるすべての滞在の日を到着日と出発日も含めて合計し、その合計を180日と比べます。入国1回あたりの滞在は、延長しない限り90日です。計算機が確認するのは年間の合計です。</p>
+    <div class="daycal" id="embed-days183" data-day-calendar="days183" data-cal-preset="{&quot;settings&quot;:{&quot;country&quot;:&quot;CO&quot;,&quot;goal&quot;:&quot;stay&quot;,&quot;periodType&quot;:&quot;calendar&quot;,&quot;limit&quot;:180,&quot;note&quot;:&quot;Colombia 180-day visitor calculator&quot;},&quot;lock&quot;:[&quot;country&quot;,&quot;goal&quot;,&quot;periodType&quot;,&quot;limitInput&quot;],&quot;link&quot;:&quot;visa-co&quot;,&quot;offer&quot;:&quot;visa-colombia-visitor&quot;}">
+      <script type="application/json" data-cal-strings>
+{
+  "days": "日数",
+  "hintStart": "コロンビアに到着した日をタップし、次に出国した日をタップしてください。",
+  "hintEnd": "滞在のもう一方の日付をタップしてください。",
+  "hintSelected": "滞在のどちらかの端をドラッグして日付を変更するか、下で削除してください。",
+  "inTrip": "コロンビアに滞在",
+  "pending": "新しい滞在の開始日",
+  "empty": "滞在はまだありません。",
+  "deleteTrip": "滞在を削除",
+  "country": "国",
+  "goal": "目標",
+  "goalStay": "上限未満に抑える",
+  "goalReach": "目標を達成",
+  "captionStay": "税務上の居住者になるのを避けます。",
+  "captionReach": "税務上の居住者になることを目指します。",
+  "window": "期間",
+  "addCountry": "国を追加",
+  "noMatch": "一致する国はありません",
+  "periodCalendar": "暦年",
+  "periodTax": "課税年度",
+  "periodRolling": "直近12か月",
+  "year": "年",
+  "starts": "開始",
+  "checkOn": "集計終了日",
+  "checkOnCaption": "この日までの12か月間の滞在日数です。予定している旅行を確認するときは、旅行の最終日を選んでください。",
+  "tripDays": {
+    "other": "{n}日"
+  },
+  "remaining": {
+    "other": "残り{n}日"
+  },
+  "atLimit": "上限到達",
+  "needed": {
+    "other": "あと{n}日必要"
+  },
+  "reachedTarget": "目標達成",
+  "overBy": {
+    "other": "上限を{n}日超過"
+  },
+  "lineNoCountry": {
+    "other": "国が未設定の日：{n}日"
+  }
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>月</span><span>火</span><span>水</span><span>木</span><span>金</span><span>土</span><span>日</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>タイムライン</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>AtlasDaysで記録する</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="embed-days183-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="embed-days183-import-title">AtlasDaysで記録する</p>
+            <p class="cal-dialog-sub">旅行中もそのまま日数を数えられる、iPhoneとiPad向けの無料アプリです。</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>iPhoneまたはiPadにAtlasDaysをインストールしておく</strong><span>App Storeで無料で入手できます。</span></li>
+            <li><strong>QRコードを読み取り、すべての旅行をAtlasDaysに読み込む</strong><span>確認してから「インポート」をタップします。</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>AtlasDaysを入手</strong><span>App Storeから無料で入手できます。お持ちの場合は2へ進んでください。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>アプリで滞在を開く</strong><span>確認してから「インポート」をタップします。それまで何も保存されません。</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">AtlasDaysで開く</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>AtlasDaysを入手</strong><span>iPhone向けにApp Storeで無料で提供しています。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>ファイルで滞在をインポート</strong><span>滞在の数が多く、リンクでは送れません。ファイルをダウンロードして、iPhoneのAtlasDaysで開いてください。</span><button type="button" class="cal-dialog-primary" data-cal-download>ファイルをダウンロード</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>旅行をCSVファイルでダウンロード</button><span data-cal-downloaded hidden>このファイルをiPhoneのAtlasDaysで開いてください。</span></p>
+          <button type="button" data-cal-close>閉じる</button>
+        </div>
+      </dialog>
+    </div>
+
+    <h2 id="section-4">訪問者上限とコロンビアの税務上の居住</h2>
     <p>年ごとのリセットは税務には適用されません。コロンビアでは<strong>任意の365日間に183日を超えて</strong>滞在すると税務上の居住者になり、その期間は1月1日をまたぐことがあります。ある年の後半に180日をすべて使い、翌年の前半にも180日をすべて使った訪問者は、訪問者の上限に違反することなく365日のうち360日をコロンビアで過ごせますが、その場合は税務上の居住者になります。</p>
     <p>たとえば2027年7月1日から12月27日までは180日、2028年1月1日から6月28日までもさらに180日です。<a href="/ja/learn/colombia-183-day-tax-residency">コロンビアの183日ルール</a>をご覧ください。</p>
 
-    <h2 id="section-4">日数以外の要素</h2>
+    <h2 id="section-5">日数以外の要素</h2>
     <p>コロンビアのビザを持つ訪問者は、この年間上限ではなく、そのビザの条件に従います。認められた日数を超えて滞在すると入国管理上の違反となり、罰金が科されたり、今後の入国に影響したりすることがあります。ほかの国での超過の扱いは、<a href="/ja/learn/overstaying-a-visa-or-stay-limit">ビザ・滞在上限の超過</a>をご覧ください。</p>
 
     <div class="cta-box">
@@ -279,7 +376,7 @@
       </a>
     </div>
 
-    <h2 id="section-5">よくある質問</h2>
+    <h2 id="section-6">よくある質問</h2>
     <h3>観光でコロンビアに何日滞在できますか？</h3>
     <p>入国1回につき最長90日で、最長90日延長でき、すべての訪問を合わせて暦年で180日が上限です。ビザが必要な国籍の人は、そのビザの条件に従います。</p>
     <h3>コロンビアの180日上限は暦年ですか、ローリングですか？</h3>
@@ -355,6 +452,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"ナビゲーションメニューを開く","menuClose":"ナビゲーションメニューを閉じる"};</script>
   <script src="../../assets/js/navigation.js?v=20261027j"></script>
+  <script defer src="../../assets/js/rules/days-183.js?v=20261028a"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261028a"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

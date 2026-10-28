@@ -136,6 +136,7 @@
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261028a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">跳到主要内容</a>
@@ -209,9 +210,10 @@
       <ul>
         <li><a href="#section-1">规定内容</a></li>
         <li><a href="#section-2">怎么计算</a></li>
-        <li><a href="#section-3">访客上限与哥伦比亚税务居民</a></li>
-        <li><a href="#section-4">天数之外</a></li>
-        <li><a href="#section-5">常见问题</a></li>
+        <li><a href="#calculator">哥伦比亚 180 天访客计算器</a></li>
+        <li><a href="#section-4">访客上限与哥伦比亚税务居民</a></li>
+        <li><a href="#section-5">天数之外</a></li>
+        <li><a href="#section-6">常见问题</a></li>
       </ul>
     </nav>
     <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
@@ -259,11 +261,106 @@
       <p><strong>重新计算。</strong>到了 2028 年 1 月 1 日，计数从零重新开始，不论 2027 年用了多少天。</p>
     </div>
 
-    <h2 id="section-3">访客上限与哥伦比亚税务居民</h2>
+    <h2 id="calculator">哥伦比亚 180 天访客计算器</h2>
+    <p>每一段停留，都先点选抵达哥伦比亚的日期，再点选离开的日期。计算器会把所选日历年内所有停留的每一天加起来，抵达日和离境日都算在内，再把总数和 180 天相比。每次入境如不延期就是 90 天；计算器核对的是年度总数。</p>
+    <div class="daycal" id="embed-days183" data-day-calendar="days183" data-cal-preset="{&quot;settings&quot;:{&quot;country&quot;:&quot;CO&quot;,&quot;goal&quot;:&quot;stay&quot;,&quot;periodType&quot;:&quot;calendar&quot;,&quot;limit&quot;:180,&quot;note&quot;:&quot;Colombia 180-day visitor calculator&quot;},&quot;lock&quot;:[&quot;country&quot;,&quot;goal&quot;,&quot;periodType&quot;,&quot;limitInput&quot;],&quot;link&quot;:&quot;visa-co&quot;,&quot;offer&quot;:&quot;visa-colombia-visitor&quot;}">
+      <script type="application/json" data-cal-strings>
+{
+  "days": "天数",
+  "hintStart": "先点选抵达哥伦比亚的日期，再点选离开的日期。",
+  "hintEnd": "再点选这段停留的另一端日期。",
+  "hintSelected": "拖移停留的任一端可更改日期，也可以在下方删除。",
+  "inTrip": "在哥伦比亚",
+  "pending": "新一段停留的起点",
+  "empty": "尚无停留记录。",
+  "deleteTrip": "删除停留",
+  "country": "国家或地区",
+  "goal": "目标类型",
+  "goalStay": "低于上限",
+  "goalReach": "达成目标",
+  "captionStay": "避免成为税务居民。",
+  "captionReach": "以成为税务居民为目标。",
+  "window": "计算期间",
+  "addCountry": "添加国家或地区",
+  "noMatch": "找不到符合的国家或地区",
+  "periodCalendar": "日历年",
+  "periodTax": "纳税年度",
+  "periodRolling": "最近 12 个月",
+  "year": "年份",
+  "starts": "起始日",
+  "checkOn": "截至日期",
+  "checkOnCaption": "截至这一天的 12 个月内停留的天数。规划行程时，选择行程的最后一天。",
+  "tripDays": {
+    "other": "{n} 天"
+  },
+  "remaining": {
+    "other": "剩余 {n} 天"
+  },
+  "atLimit": "已达上限",
+  "needed": {
+    "other": "还需 {n} 天"
+  },
+  "reachedTarget": "目标达成",
+  "overBy": {
+    "other": "超过上限 {n} 天"
+  },
+  "lineNoCountry": {
+    "other": "有 {n} 天未选择国家或地区"
+  }
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>时间轴</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>在 AtlasDays 中继续追踪</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="embed-days183-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="embed-days183-import-title">在 AtlasDays 中继续追踪</p>
+            <p class="cal-dialog-sub">适用于 iPhone 和 iPad 的免费 App，旅途中持续计算停留天数。</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>确认 iPhone 或 iPad 上已安装 AtlasDays</strong><span>可在 App Store 免费下载。</span></li>
+            <li><strong>扫描二维码，把所有行程加载到 AtlasDays</strong><span>核对无误后，轻点“导入”。</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>获取 AtlasDays</strong><span>在 App Store 免费下载。已经安装？直接跳到第 2 步。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>在 App 中打开停留记录</strong><span>核对无误后轻点“导入”。在此之前，不会存储任何内容。</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">在 AtlasDays 中打开</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>获取 AtlasDays</strong><span>可在 App Store 免费下载 iPhone 版。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>用文件导入停留记录</strong><span>停留记录太多，链接放不下。请下载文件，然后在 iPhone 上用 AtlasDays 打开。</span><button type="button" class="cal-dialog-primary" data-cal-download>下载文件</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>将行程下载为 CSV 文件</button><span data-cal-downloaded hidden>请在 iPhone 上用 AtlasDays 打开这个文件。</span></p>
+          <button type="button" data-cal-close>关闭</button>
+        </div>
+      </dialog>
+    </div>
+
+    <h2 id="section-4">访客上限与哥伦比亚税务居民</h2>
     <p>年度重置不适用于税务。在<strong>任一 365 天期间内停留超过 183 天</strong>，就会成为哥伦比亚税务居民，而这个期间可以跨越 1 月 1 日。访客如果在某一年下半年用满 180 天，次年上半年再用满 180 天，就能在 365 天内在哥伦比亚停留 360 天而不违反访客规定，但这时已经是税务居民。</p>
     <p>例如，2027 年 7 月 1 日至 12 月 27 日是 180 天，2028 年 1 月 1 日至 6 月 28 日又是 180 天。见<a href="/zh-Hans/learn/colombia-183-day-tax-residency">哥伦比亚的 183 天税务居民规定</a>。</p>
 
-    <h2 id="section-4">天数之外</h2>
+    <h2 id="section-5">天数之外</h2>
     <p>持哥伦比亚签证的访客，按其签证条件办理，不适用这项年度上限。超过许可天数停留属于移民违法行为，可能被处以罚款并影响以后入境。其他地方如何处理逾期停留，见<a href="/zh-Hans/learn/overstaying-a-visa-or-stay-limit">签证或停留上限逾期</a>。</p>
 
     <div class="cta-box">
@@ -279,7 +376,7 @@
       </a>
     </div>
 
-    <h2 id="section-5">常见问题</h2>
+    <h2 id="section-6">常见问题</h2>
     <h3>以游客身份可以在哥伦比亚停留多久？</h3>
     <p>每次入境最多 90 天，可以延期最多 90 天，所有到访合计每个日历年上限 180 天。需要签证的国籍则按签证规定。</p>
     <h3>哥伦比亚的 180 天上限是按日历年，还是滚动计算？</h3>
@@ -355,6 +452,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"打开导航菜单","menuClose":"关闭导航菜单"};</script>
   <script src="../../assets/js/navigation.js?v=20261027j"></script>
+  <script defer src="../../assets/js/rules/days-183.js?v=20261028a"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261028a"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

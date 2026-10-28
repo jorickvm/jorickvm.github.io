@@ -136,6 +136,7 @@
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261028a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Перейти к содержимому</a>
@@ -209,9 +210,10 @@
       <ul>
         <li><a href="#section-1">Правило</a></li>
         <li><a href="#section-2">Как считать</a></li>
-        <li><a href="#section-3">Туристический лимит и налоговое резидентство Колумбии</a></li>
-        <li><a href="#section-4">За пределами подсчёта дней</a></li>
-        <li><a href="#section-5">Частые вопросы</a></li>
+        <li><a href="#calculator">Калькулятор 180 дней для туристов в Колумбии</a></li>
+        <li><a href="#section-4">Туристический лимит и налоговое резидентство Колумбии</a></li>
+        <li><a href="#section-5">За пределами подсчёта дней</a></li>
+        <li><a href="#section-6">Частые вопросы</a></li>
       </ul>
     </nav>
     <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
@@ -259,11 +261,121 @@
       <p><strong>Обнуление.</strong> 1 января 2028 года счёт начинается заново с нуля, сколько бы дней вы ни использовали в 2027 году.</p>
     </div>
 
-    <h2 id="section-3">Туристический лимит и налоговое резидентство Колумбии</h2>
+    <h2 id="calculator">Калькулятор 180 дней для туристов в Колумбии</h2>
+    <p>Для каждого пребывания нажмите день прибытия в Колумбию, затем день отъезда. Калькулятор складывает все дни ваших пребываний в выбранном календарном году, включая дни прибытия и отъезда, и сравнивает сумму со 180 днями. Каждый въезд даёт 90 дней, если вы не продлите пребывание; калькулятор проверяет сумму за год.</p>
+    <div class="daycal" id="embed-days183" data-day-calendar="days183" data-cal-preset="{&quot;settings&quot;:{&quot;country&quot;:&quot;CO&quot;,&quot;goal&quot;:&quot;stay&quot;,&quot;periodType&quot;:&quot;calendar&quot;,&quot;limit&quot;:180,&quot;note&quot;:&quot;Colombia 180-day visitor calculator&quot;},&quot;lock&quot;:[&quot;country&quot;,&quot;goal&quot;,&quot;periodType&quot;,&quot;limitInput&quot;],&quot;link&quot;:&quot;visa-co&quot;,&quot;offer&quot;:&quot;visa-colombia-visitor&quot;}">
+      <script type="application/json" data-cal-strings>
+{
+  "days": "Дни",
+  "hintStart": "Нажмите день прибытия в Колумбию, затем день отъезда.",
+  "hintEnd": "Теперь нажмите на другой край поездки.",
+  "hintSelected": "Перетащите любой край поездки, чтобы изменить даты, или удалите её ниже.",
+  "inTrip": "в Колумбии",
+  "pending": "начало новой поездки",
+  "empty": "Поездок пока нет.",
+  "deleteTrip": "Удалить поездку",
+  "country": "Страна",
+  "goal": "Цель",
+  "goalStay": "Не превышать",
+  "goalReach": "Достичь цели",
+  "captionStay": "Не стать налоговым резидентом.",
+  "captionReach": "Стать налоговым резидентом.",
+  "window": "Период",
+  "addCountry": "Добавить страну",
+  "noMatch": "Страна не найдена",
+  "periodCalendar": "Календарный год",
+  "periodTax": "Налоговый год",
+  "periodRolling": "Последние 12 месяцев",
+  "year": "Год",
+  "starts": "Начало",
+  "checkOn": "Считать до",
+  "checkOnCaption": "Ваши дни за 12 месяцев до этой даты. Для запланированной поездки выберите её последний день.",
+  "tripDays": {
+    "one": "{n} день",
+    "few": "{n} дня",
+    "many": "{n} дней",
+    "other": "{n} дня"
+  },
+  "remaining": {
+    "one": "Остался {n} день",
+    "few": "Осталось {n} дня",
+    "many": "Осталось {n} дней",
+    "other": "Осталось {n} дня"
+  },
+  "atLimit": "Лимит достигнут",
+  "needed": {
+    "one": "Нужен ещё {n} день",
+    "few": "Нужно ещё {n} дня",
+    "many": "Нужно ещё {n} дней",
+    "other": "Нужно ещё {n} дня"
+  },
+  "reachedTarget": "Цель достигнута",
+  "overBy": {
+    "one": "Лимит превышен на {n} день",
+    "few": "Лимит превышен на {n} дня",
+    "many": "Лимит превышен на {n} дней",
+    "other": "Лимит превышен на {n} дня"
+  },
+  "lineNoCountry": {
+    "one": "{n} день без указанной страны",
+    "few": "{n} дня без указанной страны",
+    "many": "{n} дней без указанной страны",
+    "other": "{n} дня без указанной страны"
+  }
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>П</span><span>В</span><span>С</span><span>Ч</span><span>П</span><span>С</span><span>В</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>Хронология</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Отслеживать в AtlasDays</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="embed-days183-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="embed-days183-import-title">Отслеживать в AtlasDays</p>
+            <p class="cal-dialog-sub">Продолжайте подсчёт дней в дороге. Бесплатное приложение для iPhone и iPad.</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>Убедитесь, что AtlasDays установлено на вашем iPhone или iPad</strong><span>Бесплатно в App Store.</span></li>
+            <li><strong>Отсканируйте QR-код, чтобы загрузить все поездки в AtlasDays</strong><span>Проверьте их и нажмите «Импортировать».</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>Скачайте AtlasDays</strong><span>Бесплатно в App Store. Уже установлено? Переходите к шагу 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>Откройте поездки в приложении</strong><span>Проверьте их и нажмите «Импортировать». До этого ничего не сохраняется.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Открыть в AtlasDays</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>Скачайте AtlasDays</strong><span>Бесплатно в App Store для iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>Импортируйте поездки из файла</strong><span>Столько поездок не поместится в ссылку. Скачайте файл и откройте его в AtlasDays на iPhone.</span><button type="button" class="cal-dialog-primary" data-cal-download>Скачать файл</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Скачать поездки в файле CSV</button><span data-cal-downloaded hidden>Откройте этот файл в AtlasDays на iPhone.</span></p>
+          <button type="button" data-cal-close>Закрыть</button>
+        </div>
+      </dialog>
+    </div>
+
+    <h2 id="section-4">Туристический лимит и налоговое резидентство Колумбии</h2>
     <p>Ежегодное обнуление не действует для налогов. Колумбия делает вас налоговым резидентом, если вы проводите в стране <strong>более 183 дней за любой 365-дневный период</strong>, и этот период может захватывать 1 января. Посетитель, который использует полные 180 дней во второй половине одного года и полные 180 в первой половине следующего, может провести в Колумбии 360 дней за 365 дней, не нарушив туристического правила, и тогда становится налоговым резидентом.</p>
     <p>Например, с 1 июля по 27 декабря 2027 года — это 180 дней, а с 1 января по 28 июня 2028 года — ещё 180. Подробнее: <a href="/ru/learn/colombia-183-day-tax-residency">правило 183 дней для налогового резидентства Колумбии</a>.</p>
 
-    <h2 id="section-4">За пределами подсчёта дней</h2>
+    <h2 id="section-5">За пределами подсчёта дней</h2>
     <p>Посетители с колумбийской визой следуют условиям своей визы, а не этому годовому лимиту. Пребывание сверх разрешённых дней — иммиграционное нарушение, за которое могут оштрафовать и которое может повлиять на будущие въезды. О том, как к превышению срока относятся в других странах, см. <a href="/ru/learn/overstaying-a-visa-or-stay-limit">превышение срока визы или пребывания</a>.</p>
 
     <div class="cta-box">
@@ -276,7 +388,7 @@
       <a class="cta-btn" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> Скачать приложение</a>
     </div>
 
-    <h2 id="section-5">Частые вопросы</h2>
+    <h2 id="section-6">Частые вопросы</h2>
     <h3>Сколько можно находиться в Колумбии как турист?</h3>
     <p>До 90 дней за въезд с возможностью продления ещё до 90 дней, но не более 180 дней за календарный год по всем визитам. Гражданства, которым нужна виза, следуют условиям визы.</p>
     <h3>Лимит 180 дней в Колумбии считается за календарный год или скользящий?</h3>
@@ -352,6 +464,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"Открыть меню навигации","menuClose":"Закрыть меню навигации"};</script>
   <script src="../../assets/js/navigation.js?v=20261027j"></script>
+  <script defer src="../../assets/js/rules/days-183.js?v=20261028a"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261028a"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

@@ -136,6 +136,7 @@
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261028a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Ir al contenido</a>
@@ -210,6 +211,7 @@
         <li><a href="#la-regla">La regla</a></li>
         <li><a href="#la-fmm-el-sello-y-las-fronteras-terrestres">La FMM, el sello y las fronteras terrestres</a></li>
         <li><a href="#c-mo-contarlo">Cómo contarlo</a></li>
+        <li><a href="#calculator">Calculadora de la estancia de visitante en México</a></li>
         <li><a href="#m-s-all-del-recuento-de-d-as">Más allá del recuento de días</a></li>
         <li><a href="#preguntas-frecuentes">Preguntas frecuentes</a></li>
       </ul>
@@ -255,6 +257,101 @@
       <p><strong>Te conceden 30 días.</strong> En la misma fecha, un sello de 30 días fija tu último día el <strong>8 de febrero de 2027</strong>. No hay forma de completarlo hasta 180 desde dentro de México.</p>
     </div>
     <p>Ninguna norma publicada limita cuántas estancias de visitante puedes tener en un año ni cuánto deben separarse. Cada entrada es una nueva decisión del agente, que puede conceder menos días en cualquier entrada.</p>
+
+    <h2 id="calculator">Calculadora de la estancia de visitante en México</h2>
+    <p>Indica el número de días escrito en tu sello de entrada o en tu FMM y después toca el día en que llegaste a México y el día en que saliste. La calculadora cuenta todos los días de esa estancia, con el día de llegada como día 1, y los compara con los días concedidos.</p>
+    <div class="daycal" id="embed-perVisit" data-day-calendar="perVisit" data-cal-preset="{&quot;settings&quot;:{&quot;country&quot;:&quot;MX&quot;,&quot;limit&quot;:180,&quot;daysControl&quot;:true,&quot;note&quot;:&quot;Mexico visitor stay calculator&quot;},&quot;lock&quot;:[],&quot;link&quot;:&quot;visit-mx&quot;,&quot;offer&quot;:&quot;visa-mexico-visitor&quot;}">
+      <script type="application/json" data-cal-strings>
+{
+  "hintEnd": "Ahora toca el otro extremo de la estancia.",
+  "hintSelected": "Arrastra cualquiera de los extremos de la estancia para cambiar sus fechas o elimínala más abajo.",
+  "pending": "inicio de una nueva estancia",
+  "empty": "Aún no hay estancias.",
+  "deleteTrip": "Eliminar estancia",
+  "country": "País",
+  "goal": "Objetivo",
+  "goalStay": "No superar",
+  "goalReach": "Alcanzar objetivo",
+  "addCountry": "Añadir país",
+  "noMatch": "Ningún país coincide",
+  "year": "Año",
+  "starts": "Inicio",
+  "tripDays": {
+    "one": "{n} día",
+    "many": "{n} días",
+    "other": "{n} días"
+  },
+  "remaining": {
+    "one": "Queda {n} día",
+    "many": "Quedan {n} días",
+    "other": "Quedan {n} días"
+  },
+  "atLimit": "En el límite",
+  "needed": {
+    "one": "Falta {n} día",
+    "many": "Faltan {n} días",
+    "other": "Faltan {n} días"
+  },
+  "reachedTarget": "Objetivo alcanzado",
+  "overBy": {
+    "one": "{n} día de más",
+    "many": "{n} días de más",
+    "other": "{n} días de más"
+  },
+  "hintStart": "Toca el día en que llegaste a México y después el día en que saliste.",
+  "inTrip": "en México",
+  "title": "Días en México",
+  "days": "Días concedidos",
+  "checkOn": "Contar hasta",
+  "checkOnCaption": "La estancia en curso en esta fecha o, si no hay ninguna, la última anterior. Para una estancia prevista, elige su último día."
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>L</span><span>M</span><span>X</span><span>J</span><span>V</span><span>S</span><span>D</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>Cronología</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Llevar el control en AtlasDays</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="embed-perVisit-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="embed-perVisit-import-title">Llevar el control en AtlasDays</p>
+            <p class="cal-dialog-sub">Sigue contando tus días mientras viajas. App gratuita para iPhone y iPad.</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>Asegúrate de tener AtlasDays en tu iPhone o iPad</strong><span>Gratis en el App Store.</span></li>
+            <li><strong>Escanea el código QR para cargar todos los viajes en AtlasDays</strong><span>Revísalos y luego toca «Importar».</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>Consigue AtlasDays</strong><span>Gratis en el App Store. ¿Ya lo tienes? Salta al paso 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>Abre tus estancias en la app</strong><span>Revísalas y luego toca «Importar». Hasta entonces no se guarda nada.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Abrir en AtlasDays</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>Consigue AtlasDays</strong><span>Gratis en el App Store para iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>Importa tus estancias con un archivo</strong><span>Son más estancias de las que caben en un enlace. Descarga el archivo y ábrelo en tu iPhone con AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Descargar archivo</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Descargar los viajes en un archivo CSV</button><span data-cal-downloaded hidden>Abre este archivo en tu iPhone con AtlasDays.</span></p>
+          <button type="button" data-cal-close>Cerrar</button>
+        </div>
+      </dialog>
+    </div>
 
     <h2 id="m-s-all-del-recuento-de-d-as">Más allá del recuento de días</h2>
     <p>Quedarte más allá de los días de tu sello infringe la ley migratoria mexicana y puede llevar a la detención en una estación migratoria y a la expulsión de México. El trabajo remunerado para un empleador o cliente mexicano exige otra condición, que se solicita en un consulado antes de viajar. Si necesitas una estancia más larga, la vía es el visado de residente temporal, y el trámite empieza fuera de México. Para el panorama general, consulta <a href="/es/learn/overstaying-a-visa-or-stay-limit">la guía sobre superar el plazo del visado o la estancia</a>.</p>
@@ -348,6 +445,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"Abrir el menú de navegación","menuClose":"Cerrar el menú de navegación"};</script>
   <script src="../../assets/js/navigation.js?v=20261027j"></script>
+  <script defer src="../../assets/js/rules/per-entry.js?v=20261028c"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261028a"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

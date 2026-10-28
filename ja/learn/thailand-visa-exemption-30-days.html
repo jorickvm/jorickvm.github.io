@@ -135,6 +135,7 @@
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261028a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">本文へスキップ</a>
@@ -208,13 +209,14 @@
       <ul>
         <li><a href="#2026-9-15">2026年9月15日に何が変わったか</a></li>
         <li><a href="#30">30日間の数え方</a></li>
-        <li><a href="#section-3">ビザ免除による滞在の延長</a></li>
+        <li><a href="#calculator">タイのビザ免除の滞在日数計算機</a></li>
+        <li><a href="#section-4">ビザ免除による滞在の延長</a></li>
         <li><a href="#2">陸路入国は年2回まで</a></li>
-        <li><a href="#section-5">滞在期間超過の罰金と再入国禁止</a></li>
+        <li><a href="#section-6">滞在期間超過の罰金と再入国禁止</a></li>
         <li><a href="#2026-9-15-2">2026年9月15日より前に入国した場合</a></li>
         <li><a href="#dtv">長く滞在する場合：観光ビザとDTV</a></li>
-        <li><a href="#section-8">滞在日数以外に確認すること</a></li>
-        <li><a href="#section-9">よくある質問</a></li>
+        <li><a href="#section-9">滞在日数以外に確認すること</a></li>
+        <li><a href="#section-10">よくある質問</a></li>
       </ul>
     </nav>
     <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
@@ -239,13 +241,14 @@
       <ul>
         <li><a href="#2026-9-15">2026年9月15日に何が変わったか</a></li>
         <li><a href="#30">30日間の数え方</a></li>
-        <li><a href="#section-3">ビザ免除による滞在の延長</a></li>
+        <li><a href="#calculator">タイのビザ免除の滞在日数計算機</a></li>
+        <li><a href="#section-4">ビザ免除による滞在の延長</a></li>
         <li><a href="#2">陸路入国は年2回まで</a></li>
-        <li><a href="#section-5">滞在期間超過の罰金と再入国禁止</a></li>
+        <li><a href="#section-6">滞在期間超過の罰金と再入国禁止</a></li>
         <li><a href="#2026-9-15-2">2026年9月15日より前に入国した場合</a></li>
         <li><a href="#dtv">長く滞在する場合：観光ビザとDTV</a></li>
-        <li><a href="#section-8">滞在日数以外に確認すること</a></li>
-        <li><a href="#section-9">よくある質問</a></li>
+        <li><a href="#section-9">滞在日数以外に確認すること</a></li>
+        <li><a href="#section-10">よくある質問</a></li>
       </ul>
     </details>
     <script>(function(){var t=document.currentScript.previousElementSibling;if(matchMedia('(min-width: 760px)').matches)t.open=true})();</script>
@@ -268,14 +271,100 @@
     </div>
     <p>同じ暦年中の別々の訪問は、税務上の居住を判定する際には合算されます。これは別の数え方です（後述）。</p>
 
-    <h2 id="section-3">ビザ免除による滞在の延長</h2>
+    <h2 id="calculator">タイのビザ免除の滞在日数計算機</h2>
+    <p>タイに到着した日をタップし、次に出国した日をタップしてください。計算機は慎重な読み方として到着日を1日目とし、その滞在の日をすべて数えて30日と比べます。延長による最長30日の追加分は含まれません。</p>
+    <div class="daycal" id="embed-perVisit" data-day-calendar="perVisit" data-cal-preset="{&quot;settings&quot;:{&quot;country&quot;:&quot;TH&quot;,&quot;limit&quot;:30,&quot;note&quot;:&quot;Thailand visa exemption calculator&quot;},&quot;lock&quot;:[],&quot;link&quot;:&quot;visit-th&quot;,&quot;offer&quot;:&quot;visa-thailand-visa-exemption&quot;}">
+      <script type="application/json" data-cal-strings>
+{
+  "hintEnd": "滞在のもう一方の日付をタップしてください。",
+  "hintSelected": "滞在のどちらかの端をドラッグして日付を変更するか、下で削除してください。",
+  "pending": "新しい滞在の開始日",
+  "empty": "滞在はまだありません。",
+  "deleteTrip": "滞在を削除",
+  "country": "国",
+  "goal": "目標",
+  "goalStay": "上限未満に抑える",
+  "goalReach": "目標を達成",
+  "addCountry": "国を追加",
+  "noMatch": "一致する国はありません",
+  "year": "年",
+  "starts": "開始",
+  "tripDays": {
+    "other": "{n}日"
+  },
+  "remaining": {
+    "other": "残り{n}日"
+  },
+  "atLimit": "上限到達",
+  "needed": {
+    "other": "あと{n}日必要"
+  },
+  "reachedTarget": "目標達成",
+  "overBy": {
+    "other": "上限を{n}日超過"
+  },
+  "hintStart": "タイに到着した日をタップし、次に出国した日をタップしてください。",
+  "inTrip": "タイに滞在",
+  "title": "タイでの滞在日数",
+  "checkOn": "集計終了日",
+  "checkOnCaption": "この日の時点で続いている滞在か、それより前の直近の滞在が対象です。予定している滞在を確認するときは、その滞在の最終日を選んでください。"
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>月</span><span>火</span><span>水</span><span>木</span><span>金</span><span>土</span><span>日</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>タイムライン</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>AtlasDaysで記録する</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="embed-perVisit-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="embed-perVisit-import-title">AtlasDaysで記録する</p>
+            <p class="cal-dialog-sub">旅行中もそのまま日数を数えられる、iPhoneとiPad向けの無料アプリです。</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>iPhoneまたはiPadにAtlasDaysをインストールしておく</strong><span>App Storeで無料で入手できます。</span></li>
+            <li><strong>QRコードを読み取り、すべての旅行をAtlasDaysに読み込む</strong><span>確認してから「インポート」をタップします。</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>AtlasDaysを入手</strong><span>App Storeから無料で入手できます。お持ちの場合は2へ進んでください。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>アプリで滞在を開く</strong><span>確認してから「インポート」をタップします。それまで何も保存されません。</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">AtlasDaysで開く</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>AtlasDaysを入手</strong><span>iPhone向けにApp Storeで無料で提供しています。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>ファイルで滞在をインポート</strong><span>滞在の数が多く、リンクでは送れません。ファイルをダウンロードして、iPhoneのAtlasDaysで開いてください。</span><button type="button" class="cal-dialog-primary" data-cal-download>ファイルをダウンロード</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>旅行をCSVファイルでダウンロード</button><span data-cal-downloaded hidden>このファイルをiPhoneのAtlasDaysで開いてください。</span></p>
+          <button type="button" data-cal-close>閉じる</button>
+        </div>
+      </dialog>
+    </div>
+
+    <h2 id="section-4">ビザ免除による滞在の延長</h2>
     <p>タイ国内の入国管理局で最長30日間の滞在延長を申請できます。延長は審査官の裁量によるもので、自動的には認められません。2026年9月時点で、一時滞在の延長許可の申請手数料は<strong>THB 1,900</strong>です。到着時ビザの保有者は、病気で渡航できない場合を除いて延長できません。</p>
 
     <h2 id="2">陸路入国は年2回まで</h2>
     <p>30日間または15日間のビザ免除を利用する旅行者は、原則として陸路の国境検問所からの入国が<strong>1暦年に2回</strong>までです。マレーシア、ブルネイ、インドネシア、シンガポールの国民には適用されず、内務大臣はほかの対象外の国籍も指定できます。</p>
     <p>官報の上限は陸路入国についてのものですが、タイの一部の大使館は、より広い意味で説明しています。ロンドンのタイ王国大使館は、ビザ免除の利用は暦年中に2回までと案内し、頻繁に訪れる人にはビザを勧めています。2026年9月時点で、2026年9月15日より前の陸路入国を2026年の上限に算入するかどうかを示す公式ガイダンスはありません。</p>
 
-    <h2 id="section-5">滞在期間超過の罰金と再入国禁止</h2>
+    <h2 id="section-6">滞在期間超過の罰金と再入国禁止</h2>
     <p>滞在期間を超えると、出国前に1日THB 500、最大THB 20,000の罰金を支払います。1週間なら7 × 500 = THB 3,500です。超過期間が長い場合は、出国日から数える再入国禁止措置もあります。</p>
     <div class="cards cards-pair">
       <section class="card"><h3>出国時に自ら申し出た場合</h3><dl>
@@ -298,7 +387,7 @@
     </div>
     <p>DTVはリモートワーカー、フリーランス、ムエタイ、タイ料理の講座、医療などタイの「ソフトパワー」に関わる活動をする人と、その配偶者・子どもが対象です。少なくともTHB 500,000を示す銀行取引明細が必要で、手数料は大使館によって異なります（2026年9月時点でワシントンではUSD 400、ロンドンではGBP 300）。180日と延長期間を過ごした後、DTV保有者は出国し、再入国して新たな滞在を始める必要があります。</p>
 
-    <h2 id="section-8">滞在日数以外に確認すること</h2>
+    <h2 id="section-9">滞在日数以外に確認すること</h2>
     <p>ビザ免除による入国は観光目的に限られます。タイでの日数は税務上の居住にも関係します。訪問回数を問わず、<strong>1暦年に180日</strong>に達するとタイの税務上の居住者となり、タイに持ち込んだ国外所得が課税対象になります。<a href="/ja/learn/thailand-180-day-tax-residency">タイの180日による税務上の居住ルール</a>をご覧ください。滞在期間の超過がほかの場所で及ぼす影響は、<a href="/ja/learn/overstaying-a-visa-or-stay-limit">ビザ・滞在上限の超過</a>で説明しています。</p>
 
     <div class="cta-box"><span class="cta-logo"><img class="logo-dark" src="/assets/brand/logo_dark.png?v=20260325a" alt="AtlasDaysのロゴ" width="52" height="52" /><img class="logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="AtlasDaysのロゴ" width="52" height="52" /></span>
@@ -306,7 +395,7 @@
       <p>旅行を一度記録します。<strong>タイ：ビザ免除</strong>トラッカーが、到着日から各滞在をiPhone内で非公開に数え、残りの日数を示します。延長が認められたら上限を60日に変更してください。</p>
       <a class="cta-btn" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> アプリを入手</a>
     </div>
-    <h2 id="section-9">よくある質問</h2>
+    <h2 id="section-10">よくある質問</h2>
     <h3>ビザなしでタイに何日滞在できますか？</h3>
     <p>2026年9月15日から、国籍が30日間の対象一覧にあれば入国1回につき最長30日です。米国、英国、カナダ、オーストラリア、すべてのEU加盟国が含まれます。セーシェルとモーリシャスは15日です。30日間の滞在は入国管理局で1回、最長30日間延長できます。</p>
     <h3>タイで引き続きビザなしで60日間滞在できますか？</h3>
@@ -382,6 +471,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"ナビゲーションメニューを開く","menuClose":"ナビゲーションメニューを閉じる"};</script>
   <script src="../../assets/js/navigation.js?v=20261027j"></script>
+  <script defer src="../../assets/js/rules/per-entry.js?v=20261028c"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261028a"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

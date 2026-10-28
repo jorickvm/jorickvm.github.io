@@ -136,6 +136,7 @@
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261028a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Aller au contenu</a>
@@ -209,6 +210,7 @@
       <ul>
         <li><a href="#la-r-gle">La règle</a></li>
         <li><a href="#comment-le-compter">Comment le compter</a></li>
+        <li><a href="#calculator">Calculateur des 180 jours pour les visiteurs en Colombie</a></li>
         <li><a href="#la-limite-des-visiteurs-et-la-r-sidence-fiscale-colombienne">La limite des visiteurs et la résidence fiscale colombienne</a></li>
         <li><a href="#au-del-du-d-compte-des-jours">Au-delà du décompte des jours</a></li>
         <li><a href="#questions-fr-quentes">Questions fréquentes</a></li>
@@ -257,6 +259,111 @@
     <div class="example">
       <p><strong>Deux visites dans l’année.</strong> Vous passez du 1er février au 1er mai 2027 en Colombie : 90 jours. Vous revenez le 1er septembre. Il vous reste 90 jours pour 2027 : avec une prolongation, cette visite peut donc durer jusqu’au <strong>29 novembre 2027</strong>, et pas au-delà.</p>
       <p><strong>La remise à zéro.</strong> Le 1er janvier 2028, le décompte repart de zéro, quel que soit le nombre de jours utilisés en 2027.</p>
+    </div>
+
+    <h2 id="calculator">Calculateur des 180 jours pour les visiteurs en Colombie</h2>
+    <p>Pour chaque séjour, touchez le jour de votre arrivée en Colombie, puis celui de votre départ. Le calculateur additionne tous les jours de vos séjours sur l’année civile que vous choisissez, jours d’arrivée et de départ compris, et compare le total à 180 jours. Sans prolongation, chaque entrée couvre 90 jours ; le calculateur vérifie le total annuel.</p>
+    <div class="daycal" id="embed-days183" data-day-calendar="days183" data-cal-preset="{&quot;settings&quot;:{&quot;country&quot;:&quot;CO&quot;,&quot;goal&quot;:&quot;stay&quot;,&quot;periodType&quot;:&quot;calendar&quot;,&quot;limit&quot;:180,&quot;note&quot;:&quot;Colombia 180-day visitor calculator&quot;},&quot;lock&quot;:[&quot;country&quot;,&quot;goal&quot;,&quot;periodType&quot;,&quot;limitInput&quot;],&quot;link&quot;:&quot;visa-co&quot;,&quot;offer&quot;:&quot;visa-colombia-visitor&quot;}">
+      <script type="application/json" data-cal-strings>
+{
+  "days": "Jours",
+  "hintStart": "Touchez le jour de votre arrivée en Colombie, puis celui de votre départ.",
+  "hintEnd": "Touchez maintenant l’autre extrémité du séjour.",
+  "hintSelected": "Faites glisser l’une des extrémités du séjour pour modifier ses dates, ou supprimez-le ci-dessous.",
+  "inTrip": "en Colombie",
+  "pending": "début d’un nouveau séjour",
+  "empty": "Aucun séjour pour l’instant.",
+  "deleteTrip": "Supprimer le séjour",
+  "country": "Pays",
+  "goal": "Objectif",
+  "goalStay": "Rester en dessous",
+  "goalReach": "Atteindre l’objectif",
+  "captionStay": "Éviter la résidence fiscale.",
+  "captionReach": "Devenir résident fiscal.",
+  "window": "Fenêtre",
+  "addCountry": "Ajouter un pays",
+  "noMatch": "Aucun pays correspondant",
+  "periodCalendar": "Année civile",
+  "periodTax": "Année fiscale",
+  "periodRolling": "12 derniers mois",
+  "year": "Année",
+  "starts": "Début",
+  "checkOn": "Compter jusqu’au",
+  "checkOnCaption": "Vos jours sur les 12 mois qui mènent à cette date. Pour un voyage prévu, choisissez son dernier jour.",
+  "tripDays": {
+    "one": "{n} jour",
+    "many": "{n} jours",
+    "other": "{n} jours"
+  },
+  "remaining": {
+    "one": "Encore {n} jour",
+    "many": "Encore {n} jours",
+    "other": "Encore {n} jours"
+  },
+  "atLimit": "Limite atteinte",
+  "needed": {
+    "one": "Encore {n} jour nécessaire",
+    "many": "Encore {n} jours nécessaires",
+    "other": "Encore {n} jours nécessaires"
+  },
+  "reachedTarget": "Objectif atteint",
+  "overBy": {
+    "one": "Dépassement de {n} jour",
+    "many": "Dépassement de {n} jours",
+    "other": "Dépassement de {n} jours"
+  },
+  "lineNoCountry": {
+    "one": "{n} jour sans pays",
+    "many": "{n} jours sans pays",
+    "other": "{n} jours sans pays"
+  }
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>Chronologie</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Suivre ces séjours dans AtlasDays</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="embed-days183-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="embed-days183-import-title">Suivre ces séjours dans AtlasDays</p>
+            <p class="cal-dialog-sub">Continuez à compter vos jours en voyage. App gratuite pour iPhone et iPad.</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>Assurez-vous d’avoir AtlasDays sur votre iPhone ou iPad</strong><span>Gratuit sur l’App Store.</span></li>
+            <li><strong>Scannez le code QR pour charger tous les voyages dans AtlasDays</strong><span>Vérifiez-les, puis touchez « Importer ».</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>Téléchargez AtlasDays</strong><span>Gratuit sur l’App Store. Vous l’avez déjà ? Passez à l’étape 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>Ouvrez vos séjours dans l’app</strong><span>Vérifiez-les, puis touchez « Importer ». Rien n’est enregistré avant.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Ouvrir dans AtlasDays</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>Téléchargez AtlasDays</strong><span>Gratuit sur l’App Store, pour iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>Importez vos séjours avec un fichier</strong><span>Il y a trop de séjours pour qu’un lien puisse tous les transmettre. Téléchargez le fichier et ouvrez-le sur votre iPhone avec AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Télécharger le fichier</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Télécharger les voyages au format CSV</button><span data-cal-downloaded hidden>Ouvrez ce fichier sur votre iPhone avec AtlasDays.</span></p>
+          <button type="button" data-cal-close>Fermer</button>
+        </div>
+      </dialog>
     </div>
 
     <h2 id="la-limite-des-visiteurs-et-la-r-sidence-fiscale-colombienne">La limite des visiteurs et la résidence fiscale colombienne</h2>
@@ -355,6 +462,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"Ouvrir le menu de navigation","menuClose":"Fermer le menu de navigation"};</script>
   <script src="../../assets/js/navigation.js?v=20261027j"></script>
+  <script defer src="../../assets/js/rules/days-183.js?v=20261028a"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261028a"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

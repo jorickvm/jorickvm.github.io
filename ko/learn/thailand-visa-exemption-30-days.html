@@ -135,6 +135,7 @@
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261028a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">본문으로 건너뛰기</a>
@@ -208,13 +209,14 @@
       <ul>
         <li><a href="#2026-9-15">2026년 9월 15일 변경된 내용</a></li>
         <li><a href="#30">30일 체류 기간 계산법</a></li>
-        <li><a href="#section-3">무비자 체류 연장</a></li>
+        <li><a href="#calculator">태국 무비자 체류 계산기</a></li>
+        <li><a href="#section-4">무비자 체류 연장</a></li>
         <li><a href="#2">연간 육로 입국 2회</a></li>
-        <li><a href="#section-5">초과 체류 벌금과 재입국 금지</a></li>
+        <li><a href="#section-6">초과 체류 벌금과 재입국 금지</a></li>
         <li><a href="#2026-9-15-2">2026년 9월 15일 전에 입국한 경우</a></li>
         <li><a href="#dtv">더 오래 머물려면: 관광 비자와 DTV</a></li>
-        <li><a href="#section-8">체류 일수 외에 확인할 사항</a></li>
-        <li><a href="#section-9">자주 묻는 질문</a></li>
+        <li><a href="#section-9">체류 일수 외에 확인할 사항</a></li>
+        <li><a href="#section-10">자주 묻는 질문</a></li>
       </ul>
     </nav>
     <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
@@ -246,13 +248,14 @@
       <ul>
         <li><a href="#2026-9-15">2026년 9월 15일 변경된 내용</a></li>
         <li><a href="#30">30일 체류 기간 계산법</a></li>
-        <li><a href="#section-3">무비자 체류 연장</a></li>
+        <li><a href="#calculator">태국 무비자 체류 계산기</a></li>
+        <li><a href="#section-4">무비자 체류 연장</a></li>
         <li><a href="#2">연간 육로 입국 2회</a></li>
-        <li><a href="#section-5">초과 체류 벌금과 재입국 금지</a></li>
+        <li><a href="#section-6">초과 체류 벌금과 재입국 금지</a></li>
         <li><a href="#2026-9-15-2">2026년 9월 15일 전에 입국한 경우</a></li>
         <li><a href="#dtv">더 오래 머물려면: 관광 비자와 DTV</a></li>
-        <li><a href="#section-8">체류 일수 외에 확인할 사항</a></li>
-        <li><a href="#section-9">자주 묻는 질문</a></li>
+        <li><a href="#section-9">체류 일수 외에 확인할 사항</a></li>
+        <li><a href="#section-10">자주 묻는 질문</a></li>
       </ul>
     </details>
     <script>(function(){var t=document.currentScript.previousElementSibling;if(matchMedia('(min-width: 760px)').matches)t.open=true})();</script>
@@ -275,14 +278,100 @@
     </div>
     <p>같은 해의 별도 방문은 세금 목적상 합산되지만 이는 다른 계산입니다(아래 참고).</p>
 
-    <h2 id="section-3">무비자 체류 연장</h2>
+    <h2 id="calculator">태국 무비자 체류 계산기</h2>
+    <p>태국에 도착한 날을 누른 다음 출국한 날을 누르십시오. 계산기는 신중한 해석에 따라 도착일을 1일차로 하여 그 체류의 모든 날을 세고 30일과 비교합니다. 최대 30일의 추가 연장은 포함되지 않습니다.</p>
+    <div class="daycal" id="embed-perVisit" data-day-calendar="perVisit" data-cal-preset="{&quot;settings&quot;:{&quot;country&quot;:&quot;TH&quot;,&quot;limit&quot;:30,&quot;note&quot;:&quot;Thailand visa exemption calculator&quot;},&quot;lock&quot;:[],&quot;link&quot;:&quot;visit-th&quot;,&quot;offer&quot;:&quot;visa-thailand-visa-exemption&quot;}">
+      <script type="application/json" data-cal-strings>
+{
+  "hintEnd": "체류의 다른 끝 날짜를 누르십시오.",
+  "hintSelected": "체류의 양쪽 끝 중 하나를 드래그해 날짜를 변경하거나 아래에서 삭제하십시오.",
+  "pending": "새 체류 시작",
+  "empty": "아직 체류가 없습니다.",
+  "deleteTrip": "체류 삭제",
+  "country": "국가",
+  "goal": "목표 유형",
+  "goalStay": "한도 미만 유지",
+  "goalReach": "목표 달성",
+  "addCountry": "국가 추가",
+  "noMatch": "일치하는 국가가 없습니다",
+  "year": "연도",
+  "starts": "시작일",
+  "tripDays": {
+    "other": "{n}일"
+  },
+  "remaining": {
+    "other": "{n}일 남음"
+  },
+  "atLimit": "한도 도달",
+  "needed": {
+    "other": "{n}일 더 필요"
+  },
+  "reachedTarget": "목표 달성",
+  "overBy": {
+    "other": "한도 {n}일 초과"
+  },
+  "hintStart": "태국에 도착한 날을 누른 다음 출국한 날을 누르십시오.",
+  "inTrip": "태국 체류",
+  "title": "태국 체류 일수",
+  "checkOn": "계산 종료일",
+  "checkOnCaption": "이 날짜에 이어지고 있는 체류, 또는 그 전의 마지막 체류를 셉니다. 예정된 체류를 확인하려면 그 체류의 마지막 날을 선택하십시오."
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>월</span><span>화</span><span>수</span><span>목</span><span>금</span><span>토</span><span>일</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>타임라인</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>AtlasDays에서 관리하기</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="embed-perVisit-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="embed-perVisit-import-title">AtlasDays에서 관리하기</p>
+            <p class="cal-dialog-sub">여행하는 동안 체류 일수를 계속 계산하는 iPhone 및 iPad용 무료 앱입니다.</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>iPhone 또는 iPad에 AtlasDays 설치 확인</strong><span>App Store에서 무료로 받을 수 있습니다.</span></li>
+            <li><strong>QR 코드를 스캔해 모든 여행을 AtlasDays에 불러오기</strong><span>확인한 다음 '가져오기'를 누르십시오.</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>AtlasDays 받기</strong><span>App Store에서 무료로 받을 수 있습니다. 이미 있다면 2단계로 넘어가십시오.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>앱에서 체류 열기</strong><span>확인한 다음 '가져오기'를 누르십시오. 그 전에는 아무것도 저장되지 않습니다.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">AtlasDays에서 열기</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>AtlasDays 받기</strong><span>App Store에서 무료로 받을 수 있는 iPhone 앱입니다.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>파일로 체류 가져오기</strong><span>체류가 너무 많아 링크에 담을 수 없습니다. 파일을 다운로드해 iPhone의 AtlasDays에서 여십시오.</span><button type="button" class="cal-dialog-primary" data-cal-download>파일 다운로드</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>여행을 CSV 파일로 다운로드</button><span data-cal-downloaded hidden>iPhone의 AtlasDays에서 이 파일을 여십시오.</span></p>
+          <button type="button" data-cal-close>닫기</button>
+        </div>
+      </dialog>
+    </div>
+
+    <h2 id="section-4">무비자 체류 연장</h2>
     <p>태국 이민국에서 최대 30일의 체류 연장을 신청할 수 있습니다. 연장은 자동으로 허가되지 않으며 심사관의 재량에 달려 있습니다. 임시 체류 연장 신청 수수료는 <strong>THB 1,900</strong>입니다(2026년 9월 기준). 도착 비자 소지자는 질병으로 여행할 수 없는 경우를 제외하고 연장할 수 없습니다.</p>
 
     <h2 id="2">연간 육로 입국 2회</h2>
     <p>30일 또는 15일 면제를 이용하는 여행자는 일반적으로 육로 국경 검문소를 통해 <strong>한 해에 두 번</strong>까지만 입국할 수 있습니다. 말레이시아, 브루나이, 인도네시아, 싱가포르 국적자에게는 이 한도가 적용되지 않으며 내무부 장관이 다른 면제 국적을 지정할 수도 있습니다.</p>
     <p>관보의 한도는 육로 국경 통과에 관한 것이지만 일부 태국 대사관은 더 넓게 안내합니다. 런던의 태국 대사관은 무비자 입국을 한 해에 두 번만 사용할 수 있다고 안내하고 더 자주 방문한다면 비자를 권합니다. 2026년 9월 현재 2026년 9월 15일 이전의 육로 입국을 2026년 한도에 포함하는지는 공식 지침이 없습니다.</p>
 
-    <h2 id="section-5">초과 체류 벌금과 재입국 금지</h2>
+    <h2 id="section-6">초과 체류 벌금과 재입국 금지</h2>
     <p>초과 체류에는 하루 THB 500씩 최대 THB 20,000의 벌금이 부과되며 출국 전에 납부해야 합니다. 일주일 초과 체류라면 7 × 500 = THB 3,500입니다. 더 오래 초과 체류하면 출국일부터 계산되는 재입국 금지도 적용됩니다.</p>
     <div class="cards cards-pair">
       <section class="card">
@@ -340,7 +429,7 @@
     </div>
     <p>DTV는 원격 근무자, 프리랜서, 무에타이·태국 요리 강좌·의료 치료 등 태국의 ‘소프트 파워’ 활동 참가자와 그 배우자 및 자녀를 대상으로 합니다. 최소 THB 500,000의 잔액을 보여 주는 은행 거래 내역서가 필요하며 수수료는 대사관에 따라 다릅니다(2026년 9월 기준 워싱턴 USD 400, 런던 GBP 300). DTV 소지자는 180일에 연장 기간을 더해 체류한 뒤 새 체류를 시작하려면 출국 후 재입국해야 합니다.</p>
 
-    <h2 id="section-8">체류 일수 외에 확인할 사항</h2>
+    <h2 id="section-9">체류 일수 외에 확인할 사항</h2>
     <p>무비자 입국은 관광 목적으로만 허용됩니다. 태국 체류 기간은 세법상 거주에도 반영됩니다. 방문 횟수와 관계없이 한 해에 <strong>180일</strong>에 도달하면 태국 세법상 거주자가 되며, 거주자가 태국으로 반입한 외국 소득에도 세금이 부과됩니다. 자세한 내용은 <a href="/ko/learn/thailand-180-day-tax-residency">태국 180일 세법상 거주 규정</a>을 참고하십시오. 다른 나라의 초과 체류 결과는 <a href="/ko/learn/overstaying-a-visa-or-stay-limit">비자 또는 체류 한도 초과</a>에서 설명합니다.</p>
 
     <div class="cta-box">
@@ -353,7 +442,7 @@
       <a class="cta-btn" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> 앱 받기</a>
     </div>
 
-    <h2 id="section-9">자주 묻는 질문</h2>
+    <h2 id="section-10">자주 묻는 질문</h2>
     <h3>태국에 비자 없이 얼마나 머물 수 있습니까?</h3>
     <p>2026년 9월 15일부터 미국, 영국, 캐나다, 호주, 모든 EU 국가를 포함한 30일 대상 국적자는 입국당 최대 30일 체류할 수 있습니다. 세이셸과 모리셔스 국적자는 15일입니다. 30일 체류는 이민국에서 한 번 최대 30일 연장할 수 있습니다.</p>
     <h3>태국에서 여전히 무비자로 60일 머물 수 있습니까?</h3>
@@ -429,6 +518,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"탐색 메뉴 열기","menuClose":"탐색 메뉴 닫기"};</script>
   <script src="../../assets/js/navigation.js?v=20261027j"></script>
+  <script defer src="../../assets/js/rules/per-entry.js?v=20261028c"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261028a"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

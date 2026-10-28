@@ -230,13 +230,13 @@ HELP_EXACT_ALLOW = {"Settings → Account Data",
 EXACT_ALLOW = HELP_EXACT_ALLOW | {"§ 10 StAG", "§ 12b StAG","Request for International Movement Records", "travel movements requests", "Entry/Exit System", "Boletín Oficial del Estado", "8 U.S.C. 1187(a)(7)", "8 U.S.C. 1202(g)", "IMM 5257 Schedule 1", "How to Calculate Physical Presence (CIT 0407)", "How to Calculate Physical Presence CIT", "deeming rule","Destination Thailand Visa (DTV)", "Electronic Travel Authorisation (ETA)", "Long Residence UK Ancestry Hong Kong BN O", "UK Immigration Rules Part Suitability SUI"}
 
 LOCALE_ALLOW = {
-    "it": {"Permiso de Ingreso y Permanencia PIP", "New Zealand Superannuation and Retirement Income Act", "in Canada", "in Québec.", "Alberta (AHCIP)", "Ontario (OHIP)", "Québec (RAMQ)", "Malta: Nomad Residence Permit"},
+    "it": {"Permiso de Ingreso y Permanencia PIP", "New Zealand Superannuation and Retirement Income Act", "in Canada", "in Québec.", "in Georgia", "in Indonesia", "in India", "in Colombia", "Alberta (AHCIP)", "Ontario (OHIP)", "Québec (RAMQ)", "Malta: Nomad Residence Permit"},
     "pt": {"ole_lukoie · Israel", "Alberta (AHCIP)", "Québec (RAMQ)", "Malta: Nomad Residence Permit", ". Portugal:"},
     "tr": {"Türkiye 90/180", "Ontario (OHIP)", "Alberta (AHCIP)", "Québec (RAMQ)", "Malta: Nomad Residence Permit"},
-    "de": {". Portugal:", "ole_lukoie · Israel"},
+    "de": {". Portugal:", "ole_lukoie · Israel", "in Japan", "in Thailand"},
     "es": {"ole_lukoie · Israel", ". Indonesia:", ". Portugal:", "Malta: Nomad Residence Permit", "Ontario (OHIP)", "Alberta (AHCIP)"},
     "fr": {"Basecampoversummit · Canada", "Ghanshyam Khokhariya · Canada", "Ontario (OHIP)", "Alberta (AHCIP)", "Québec (RAMQ)"},
-    "nl": {"Basecampoversummit · Canada", ". Portugal:", "Québec (RAMQ)", "Alberta (AHCIP)", "British Columbia (MSP)", "Ontario (OHIP)", "in Québec.", "Malta: Nomad Residence Permit", "Thailand: Destination Thailand Visa (DTV)", "India, e-Tourist Visa", "Entry/Exit System (EES)"},
+    "nl": {"Basecampoversummit · Canada", ". Portugal:", "Québec (RAMQ)", "Alberta (AHCIP)", "British Columbia (MSP)", "Ontario (OHIP)", "in Québec.", "Malta: Nomad Residence Permit", "Thailand: Destination Thailand Visa (DTV)", "India, e-Tourist Visa", "Entry/Exit System (EES)", "in Canada", "in Colombia", "in India", "in Japan", "in Mexico", "in Thailand"},
 }
 
 
