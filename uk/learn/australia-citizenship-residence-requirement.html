@@ -136,6 +136,7 @@
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261028a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Перейти до вмісту</a>
@@ -209,9 +210,10 @@
       <ul>
         <li><a href="#section-1">Правило</a></li>
         <li><a href="#section-2">Як вести підрахунок</a></li>
-        <li><a href="#section-3">Які території вважаються Австралією?</a></li>
-        <li><a href="#section-4">Не лише підрахунок днів</a></li>
-        <li><a href="#section-5">Часті запитання</a></li>
+        <li><a href="#calculator">Калькулятор відсутності для громадянства Австралії</a></li>
+        <li><a href="#section-4">Які території вважаються Австралією?</a></li>
+        <li><a href="#section-5">Не лише підрахунок днів</a></li>
+        <li><a href="#section-6">Часті запитання</a></li>
       </ul>
     </nav>
     <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
@@ -269,10 +271,97 @@
       <p><strong>Перевірте обидва підсумки.</strong> За 275 днів відсутності в перші три роки та 90 в останній рік чотирирічний підсумок становить 365. Обидва звичайні числові ліміти дотримано точно на межі. За 270 днів у перші три роки та 91 в останній загальний підсумок становить лише 361, але ліміт останнього року перевищено. За 276 і 90 днів підсумок становить 366: перевищено лише чотирирічний ліміт.</p>
     </div>
 
-    <h2 id="section-3">Які території вважаються Австралією?</h2>
+    <h2 id="calculator">Калькулятор відсутності для громадянства Австралії</h2>
+    <p>Торкніться дня від’їзду з Австралії, а потім дня повернення. Калькулятор рахує повні дні відсутності за чотири роки до дати подання й порівнює їх із 365 днями. Друга шкала порівнює останні 12 місяців цього періоду з 90 днями.</p>
+    <div class="daycal" id="embed-ukIlr" data-day-calendar="ukIlr" data-cal-preset="{&quot;settings&quot;:{&quot;home&quot;:[&quot;AU&quot;,&quot;CC&quot;,&quot;CX&quot;,&quot;HM&quot;,&quot;NF&quot;],&quot;years&quot;:4,&quot;limit&quot;:365,&quot;recent&quot;:90,&quot;before&quot;:true,&quot;note&quot;:&quot;Australian citizenship absence calculator&quot;},&quot;lock&quot;:[],&quot;link&quot;:&quot;citizenship-au&quot;,&quot;offer&quot;:&quot;citizenship-australia-combined&quot;}">
+      <script type="application/json" data-cal-strings>
+{
+  "hintStart": "Торкніться дня від’їзду з Австралії, а потім дня повернення.",
+  "hintEnd": "Торкніться іншої дати поїздки.",
+  "inTrip": "поза Австралією",
+  "pending": "початок нової поїздки",
+  "empty": "Поїздок поки немає.",
+  "deleteTrip": "Видалити поїздку",
+  "country": "Країна",
+  "addCountry": "Додати країну",
+  "noMatch": "Країну не знайдено",
+  "hintSelected": "Перетягніть будь-який край поїздки, щоб змінити дати, або видаліть її нижче.",
+  "tripAway": {
+    "one": "{n} день відсутності",
+    "few": "{n} дні відсутності",
+    "many": "{n} днів відсутності",
+    "other": "{n} дня відсутності"
+  },
+  "title": "Дні поза Австралією",
+  "checkOn": "Дата подання",
+  "checkOnCaption": "Ваші дні за кордоном за чотири роки до цієї дати.",
+  "remaining": {
+    "one": "Залишилося: {n} день",
+    "few": "Залишилося: {n} дні",
+    "many": "Залишилося: {n} днів",
+    "other": "Залишилося: {n} дні"
+  },
+  "atLimit": "На межі",
+  "overBy": {
+    "one": "Ліміт перевищено на {n} день",
+    "few": "Ліміт перевищено на {n} дні",
+    "many": "Ліміт перевищено на {n} днів",
+    "other": "Ліміт перевищено на {n} дні"
+  },
+  "barRecent": "Останні 12 місяців"
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>П</span><span>В</span><span>С</span><span>Ч</span><span>П</span><span>С</span><span>Н</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>Хронологія</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Відстежувати в AtlasDays</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="embed-ukIlr-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="embed-ukIlr-import-title">Відстежувати в AtlasDays</p>
+            <p class="cal-dialog-sub">Продовжуйте підрахунок днів у дорозі. Безкоштовна програма для iPhone та iPad.</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>Переконайтеся, що AtlasDays встановлено на вашому iPhone чи iPad</strong><span>Безкоштовно в App Store.</span></li>
+            <li><strong>Відскануйте QR-код, щоб завантажити всі поїздки в AtlasDays</strong><span>Перевірте їх і торкніться «Імпорт».</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>Завантажте AtlasDays</strong><span>Безкоштовно в App Store. Уже встановлено? Переходьте до кроку 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>Відкрийте поїздки в програмі</strong><span>Перевірте їх і торкніться «Імпорт». До цього нічого не зберігається.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Відкрити в AtlasDays</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>Завантажте AtlasDays</strong><span>Безкоштовно в App Store для iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>Імпортуйте поїздки з файлу</strong><span>Стільки поїздок не вміститься в посилання. Завантажте файл і відкрийте його в AtlasDays на iPhone.</span><button type="button" class="cal-dialog-primary" data-cal-download>Завантажити файл</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Завантажити поїздки у файлі CSV</button><span data-cal-downloaded hidden>Відкрийте цей файл в AtlasDays на iPhone.</span></p>
+          <button type="button" data-cal-close>Закрити</button>
+        </div>
+      </dialog>
+    </div>
+
+    <h2 id="section-4">Які території вважаються Австралією?</h2>
     <p>Географічне визначення Австралії в Australian Citizenship Act охоплює зовнішні території. Тому перебування на острові Норфолк, острові Різдва, Кокосових (Кілінг) островах або островах Герд і Макдональд не вважається автоматично відсутністю за кордоном для цього розрахунку. Для відвідувань менш поширених територій, зокрема Австралійської антарктичної території, зберігайте точні відомості про місцеперебування. Загальний запис «Антарктида» не вказує, який саме сектор ви відвідали.</p>
 
-    <h2 id="section-4">Не лише підрахунок днів</h2>
+    <h2 id="section-5">Не лише підрахунок днів</h2>
     <p>Ліміти відсутності — лише частина вимоги. Законний статус протягом чотирьох років і постійне резидентство в останній рік є окремими умовами, а для надання громадянства потрібно виконати й інші вимоги, крім проживання. Якщо ваші дати близькі до будь-якого з лімітів, самої арифметики недостатньо: зверніться до настанов департаменту або імміграційного консультанта.</p>
     <p>Ті самі дні відсутності враховують і в інших австралійських правилах, але за іншими періодами. Постійна віза має окремий дозвіл на поїздки, який оцінюють за власний період: див. <a href="/uk/learn/australia-resident-return-visa-residence">вимогу щодо проживання для Resident Return Visa</a>. Для податків час в Австралії рахують інакше, за податковий рік (income year): див. <a href="/uk/learn/australia-183-day-tax-residency">правило 183 днів для податкового резидентства Австралії</a>.</p>
 
@@ -289,7 +378,7 @@
       </a>
     </div>
 
-    <h2 id="section-5">Часті запитання</h2>
+    <h2 id="section-6">Часті запитання</h2>
     <h3>Скільки днів можна провести за межами Австралії перед поданням на громадянство?</h3>
     <p>До 90 днів за 12 місяців безпосередньо перед поданням і до 12 місяців загалом за чотири роки перед поданням.</p>
     <h3>Чи вимірюють ліміт 90 днів за календарний рік?</h3>
@@ -363,6 +452,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"Відкрити меню навігації","menuClose":"Закрити меню навігації"};</script>
   <script src="../../assets/js/navigation.js?v=20261027j"></script>
+  <script defer src="../../assets/js/rules/uk-ilr.js?v=20261028b"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261028a"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

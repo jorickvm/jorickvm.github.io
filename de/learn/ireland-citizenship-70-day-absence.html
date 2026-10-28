@@ -136,6 +136,7 @@
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261028a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
@@ -210,6 +211,7 @@
         <li><a href="#die-regel">Die Regel</a></li>
         <li><a href="#die-zus-tzlichen-30-tage">Die zusätzlichen 30 Tage</a></li>
         <li><a href="#so-z-hlst-du">So zählst du</a></li>
+        <li><a href="#calculator">Abwesenheitsrechner für die irische Einbürgerung</a></li>
         <li><a href="#ber-die-zahl-der-tage-hinaus">Über die Zahl der Tage hinaus</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
@@ -269,6 +271,86 @@
       <p><strong>Beispiel.</strong> Du fliegst am 10. Juli ab und am 31. Juli zurück. Die Tage dazwischen, der 11. bis 30. Juli, sind 20 Tage Abwesenheit. Dazu kommen eine Weihnachtsreise vom 20. Dezember bis 6. Januar, also 16 Tage zwischen den beiden Flügen, und ein langes Wochenende in London mit Abreise am Freitag und Rückkehr am Montag, also 2 Tage. Das sind 38 Tage, deutlich unter 70.</p>
     </div>
     <p>Wer das Antragsdatum verschiebt, verschiebt auch den Zeitraum. Bringt dich eine lange Reise über 70, ist der übliche Weg zurück unter das Limit, zu warten, bis sie aus den zwölf Monaten herausfällt.</p>
+
+    <h2 id="calculator">Abwesenheitsrechner für die irische Einbürgerung</h2>
+    <p>Tippe auf den Tag, an dem du Irland verlassen hast, und dann auf den Tag deiner Rückkehr. Der Rechner zählt die vollen Tage, an denen du in den 12 Monaten vor deinem Antragsdatum weg warst, und vergleicht sie mit 70 Tagen. Die bis zu 30 zusätzlichen Tage, die unter außergewöhnlichen Umständen erlaubt sind, sind nicht eingerechnet.</p>
+    <div class="daycal" id="embed-ukIlr" data-day-calendar="ukIlr" data-cal-preset="{&quot;settings&quot;:{&quot;home&quot;:&quot;IE&quot;,&quot;years&quot;:1,&quot;limit&quot;:70,&quot;before&quot;:true,&quot;note&quot;:&quot;Irish citizenship absence calculator&quot;},&quot;lock&quot;:[],&quot;link&quot;:&quot;citizenship-ie&quot;,&quot;offer&quot;:&quot;citizenship-ireland-final-year&quot;}">
+      <script type="application/json" data-cal-strings>
+{
+  "hintStart": "Tippe auf den Tag, an dem du Irland verlassen hast, und dann auf den Tag deiner Rückkehr.",
+  "hintEnd": "Tippe auf das andere Ende der Reise.",
+  "inTrip": "außerhalb Irlands",
+  "pending": "Beginn einer neuen Reise",
+  "empty": "Noch keine Reisen.",
+  "deleteTrip": "Reise löschen",
+  "country": "Land",
+  "addCountry": "Land hinzufügen",
+  "noMatch": "Kein passendes Land gefunden",
+  "hintSelected": "Ziehe an einem der beiden Enden der Reise, um die Reisedaten zu ändern, oder lösche sie unten.",
+  "tripAway": {
+    "one": "{n} Tag abwesend",
+    "other": "{n} Tage abwesend"
+  },
+  "title": "Abwesenheitstage",
+  "checkOn": "Antragsdatum",
+  "checkOnCaption": "Deine Tage im Ausland in den 12 Monaten vor diesem Datum.",
+  "remaining": {
+    "one": "Noch {n} Tag",
+    "other": "Noch {n} Tage"
+  },
+  "atLimit": "Am Limit",
+  "overBy": {
+    "one": "{n} Tag über dem Limit",
+    "other": "{n} Tage über dem Limit"
+  }
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>M</span><span>D</span><span>M</span><span>D</span><span>F</span><span>S</span><span>S</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>Zeitleiste</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>In AtlasDays übernehmen</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="embed-ukIlr-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="embed-ukIlr-import-title">In AtlasDays übernehmen</p>
+            <p class="cal-dialog-sub">Zähl deine Tage unterwegs weiter. Kostenlose App für iPhone und iPad.</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>AtlasDays auf deinem iPhone oder iPad installieren</strong><span>Kostenlos im App Store.</span></li>
+            <li><strong>QR-Code scannen, um alle Reisen in AtlasDays zu laden</strong><span>Prüfe sie und tippe dann auf „Importieren“.</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>AtlasDays laden</strong><span>Kostenlos im App Store. Schon installiert? Weiter mit Schritt 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>Aufenthalte in der App öffnen</strong><span>Prüfe sie und tippe dann auf „Importieren“. Vorher wird nichts gespeichert.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">In AtlasDays öffnen</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>AtlasDays laden</strong><span>Kostenlos im App Store für iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>Aufenthalte per Datei importieren</strong><span>Das sind mehr Aufenthalte, als ein Link fassen kann. Lade die Datei herunter und öffne sie auf deinem iPhone mit AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Datei herunterladen</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Reisen als CSV-Datei herunterladen</button><span data-cal-downloaded hidden>Öffne diese Datei auf deinem iPhone mit AtlasDays.</span></p>
+          <button type="button" data-cal-close>Schließen</button>
+        </div>
+      </dialog>
+    </div>
 
     <h2 id="ber-die-zahl-der-tage-hinaus">Über die Zahl der Tage hinaus</h2>
     <p>Die 70-Tage-Regel ist nur der Test für das letzte Jahr. Der Standardweg verlangt außerdem insgesamt fünf Jahre anrechenbaren Aufenthalt in den letzten neun Jahren, und ob Aufenthalt anrechenbar ist, hängt von deinen aufenthaltsrechtlichen Erlaubnissen ab, nicht nur von deiner Anwesenheit. Zeit mit einer Erlaubnis für Studierende (Stamp 2 oder 2A), Zeit ohne gültige Erlaubnis und Zeit, in der du auf eine Entscheidung über Schutz wartest, zählen nicht, und schon kurze Lücken in der Erlaubnis können einen Antrag unzulässig machen. Ehegatten und eingetragene Lebenspartner irischer Staatsangehöriger stellen den Antrag nach einer anderen Section, mit drei Jahren Aufenthalt auf der Insel Irland.</p>
@@ -361,6 +443,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"Navigationsmenü öffnen","menuClose":"Navigationsmenü schließen"};</script>
   <script src="../../assets/js/navigation.js?v=20261027j"></script>
+  <script defer src="../../assets/js/rules/uk-ilr.js?v=20261028b"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261028a"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

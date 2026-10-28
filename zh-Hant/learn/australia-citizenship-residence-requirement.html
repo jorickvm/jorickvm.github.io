@@ -136,6 +136,7 @@
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261028a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">跳至主要內容</a>
@@ -209,9 +210,10 @@
       <ul>
         <li><a href="#section-1">規定</a></li>
         <li><a href="#section-2">怎麼計算</a></li>
-        <li><a href="#section-3">哪些領土算澳洲？</a></li>
-        <li><a href="#section-4">不只計算天數</a></li>
-        <li><a href="#section-5">常見問題</a></li>
+        <li><a href="#calculator">澳洲入籍離境天數計算機</a></li>
+        <li><a href="#section-4">哪些領土算澳洲？</a></li>
+        <li><a href="#section-5">不只計算天數</a></li>
+        <li><a href="#section-6">常見問題</a></li>
       </ul>
     </nav>
     <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
@@ -226,10 +228,88 @@
     <div class="example"><p><strong>例子。</strong>預計在 2026 年 9 月 1 日申請，最後一年期間就是 2025 年 9 月 1 日至 2026 年 8 月 31 日。期間內有三趟旅行。</p><p>2025 年 9 月 12 日出境、10 月 11 日返回：整天離境 28 天。2025 年 12 月 20 日出境、2026 年 1 月 12 日返回：22 天。2026 年 5 月 3 日出境、6 月 14 日返回：41 天。合計 91 天，超出一天。</p><p>若改在 2026 年 9 月 15 日申請，期間從 2025 年 9 月 15 日開始，第一趟行程中的 9 月 13、14 日便退出期間，總數降為 89 天。4 年期間也會移動相同的兩週，所以該總數也要重新確認。</p></div>
     <p>內政部提供 Residence Calculator，可估算預定申請日的結果。除了旅行紀錄，也要輸入合法居住和永久居留日期。送件前請檢查輸入資料；內政部會使用自己的紀錄作出評估。</p>
     <div class="example"><p><strong>兩項總數都要查。</strong>前 3 年離境 275 天，最後一年 90 天，4 年總數為 365 天，兩項一般數字上限都剛好符合。前期 270 天、最近 91 天，總數只有 361 天，但最後一年超標。前期 276 天、最近 90 天，總數 366 天，只有較長期間超標。</p></div>
-    <h2 id="section-3">哪些領土算澳洲？</h2><p>《澳洲公民法》的地理定義包括外部領土。因此，在諾福克島、聖誕島、科科斯（基林）群島，或赫德島和麥克唐納群島停留，並不會自動成為這項判定的海外離境。對較少見的領土行程要保留確切地點，包括澳洲南極領地；只寫「南極洲」無法確認造訪的是哪一區。</p>
-    <h2 id="section-4">不只計算天數</h2><p>離境上限只是整項要求的一部分。4 年的合法身分和最後一年的永久居留是不同條件，授予公民身分的要求也不只居住。日期接近任一上限時，應查閱內政部指引或諮詢移民顧問，不能只靠算術。</p><p>同樣的境外停留也會影響澳洲其他制度，但各制度適用的期間和計算方式不同。永久簽證的旅行權利有自己的期間，請參閱<a href="/zh-Hant/learn/australia-resident-return-visa-residence">居民返回簽證的居住要求</a>。稅務採用所得年度，計算方式又不同，請參閱<a href="/zh-Hant/learn/australia-183-day-tax-residency">澳洲 183 天稅務居民規定</a>。</p>
+    <h2 id="calculator">澳洲入籍離境天數計算機</h2>
+    <p>先點選離開澳洲的日期，再點選返回日期。計算機會計算申請日期前四年內離境的完整天數，並和 365 天相比。第二條進度條會把這段期間的最近 12 個月和 90 天相比。</p>
+    <div class="daycal" id="embed-ukIlr" data-day-calendar="ukIlr" data-cal-preset="{&quot;settings&quot;:{&quot;home&quot;:[&quot;AU&quot;,&quot;CC&quot;,&quot;CX&quot;,&quot;HM&quot;,&quot;NF&quot;],&quot;years&quot;:4,&quot;limit&quot;:365,&quot;recent&quot;:90,&quot;before&quot;:true,&quot;note&quot;:&quot;Australian citizenship absence calculator&quot;},&quot;lock&quot;:[],&quot;link&quot;:&quot;citizenship-au&quot;,&quot;offer&quot;:&quot;citizenship-australia-combined&quot;}">
+      <script type="application/json" data-cal-strings>
+{
+  "hintStart": "先點選離開澳洲的日期，再點選返回日期。",
+  "hintEnd": "接著點選行程的另一端。",
+  "inTrip": "在澳洲境外",
+  "pending": "新行程的起點",
+  "empty": "還沒有行程。",
+  "deleteTrip": "刪除行程",
+  "country": "國家或地區",
+  "addCountry": "新增國家或地區",
+  "noMatch": "找不到符合的國家或地區",
+  "hintSelected": "拖曳行程任一端可更改日期，也可以在下方刪除行程。",
+  "tripAway": {
+    "other": "離境 {n} 天"
+  },
+  "title": "澳洲境外天數",
+  "checkOn": "申請日期",
+  "checkOnCaption": "這一天之前四年內離境的天數。",
+  "remaining": {
+    "other": "剩餘 {n} 天"
+  },
+  "atLimit": "已達上限",
+  "overBy": {
+    "other": "超過上限 {n} 天"
+  },
+  "barRecent": "最近 12 個月"
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span><span>日</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>時間軸</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>在 AtlasDays 中繼續追蹤</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="embed-ukIlr-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="embed-ukIlr-import-title">在 AtlasDays 中繼續追蹤</p>
+            <p class="cal-dialog-sub">適用於 iPhone 和 iPad 的免費 App，旅行途中持續計算停留天數。</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>確認 iPhone 或 iPad 已安裝 AtlasDays</strong><span>可在 App Store 免費下載。</span></li>
+            <li><strong>掃描 QR 碼，把所有行程載入 AtlasDays</strong><span>確認無誤後，輕點「匯入」。</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>取得 AtlasDays</strong><span>在 App Store 免費下載。已經有了？直接跳到第 2 步。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>在 App 中開啟停留紀錄</strong><span>確認無誤後輕點「匯入」。在此之前，不會儲存任何資料。</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">在 AtlasDays 中開啟</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>取得 AtlasDays</strong><span>iPhone 版，可在 App Store 免費下載。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>用檔案匯入停留紀錄</strong><span>停留紀錄太多，連結裝不下。請下載檔案，然後在 iPhone 上用 AtlasDays 開啟。</span><button type="button" class="cal-dialog-primary" data-cal-download>下載檔案</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>將行程下載為 CSV 檔案</button><span data-cal-downloaded hidden>請在 iPhone 上用 AtlasDays 開啟這個檔案。</span></p>
+          <button type="button" data-cal-close>關閉</button>
+        </div>
+      </dialog>
+    </div>
+
+    <h2 id="section-4">哪些領土算澳洲？</h2><p>《澳洲公民法》的地理定義包括外部領土。因此，在諾福克島、聖誕島、科科斯（基林）群島，或赫德島和麥克唐納群島停留，並不會自動成為這項判定的海外離境。對較少見的領土行程要保留確切地點，包括澳洲南極領地；只寫「南極洲」無法確認造訪的是哪一區。</p>
+    <h2 id="section-5">不只計算天數</h2><p>離境上限只是整項要求的一部分。4 年的合法身分和最後一年的永久居留是不同條件，授予公民身分的要求也不只居住。日期接近任一上限時，應查閱內政部指引或諮詢移民顧問，不能只靠算術。</p><p>同樣的境外停留也會影響澳洲其他制度，但各制度適用的期間和計算方式不同。永久簽證的旅行權利有自己的期間，請參閱<a href="/zh-Hant/learn/australia-resident-return-visa-residence">居民返回簽證的居住要求</a>。稅務採用所得年度，計算方式又不同，請參閱<a href="/zh-Hant/learn/australia-183-day-tax-residency">澳洲 183 天稅務居民規定</a>。</p>
     <div class="cta-box"><span class="cta-logo"><img class="logo-dark" src="/assets/brand/logo_dark.png?v=20260325a" alt="AtlasDays 標誌" width="52" height="52" /><img class="logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="AtlasDays 標誌" width="52" height="52" /></span><h2>AtlasDays 一次追蹤兩項澳洲入籍離境上限</h2><p>行程只要記錄一次，<strong>澳洲入籍離境日數上限</strong>預設就會把 4 年與最後一年的額度放在同一個追蹤器中。資料在 iPhone 上私密處理，任一額度快用完時就會提醒。</p><a class="cta-btn" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> 下載 App</a></div>
-    <h2 id="section-5">常見問題</h2><h3>申請入籍前最多可在澳洲境外幾天？</h3><p>申請前 12 個月最多 90 天，申請前 4 年合計最多 12 個月。</p><h3>90 天上限按日曆年計算嗎？</h3><p>不是。它從申請日往回計算，會隨申請日期移動，1 月 1 日不會重設。</p><h3>離境會中斷 4 年居住期間嗎？</h3><p>4 年內可以合計離境 12 個月，最後一年不得超過 90 天；但整段期間仍必須持有效簽證居住於澳洲。</p>
+    <h2 id="section-6">常見問題</h2><h3>申請入籍前最多可在澳洲境外幾天？</h3><p>申請前 12 個月最多 90 天，申請前 4 年合計最多 12 個月。</p><h3>90 天上限按日曆年計算嗎？</h3><p>不是。它從申請日往回計算，會隨申請日期移動，1 月 1 日不會重設。</p><h3>離境會中斷 4 年居住期間嗎？</h3><p>4 年內可以合計離境 12 個月，最後一年不得超過 90 天；但整段期間仍必須持有效簽證居住於澳洲。</p>
 
     <aside class="article-trust">
       <section class="article-trust-item article-source" aria-labelledby="official-source-heading">
@@ -297,6 +377,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"開啟導覽選單","menuClose":"關閉導覽選單"};</script>
   <script src="../../assets/js/navigation.js?v=20261027j"></script>
+  <script defer src="../../assets/js/rules/uk-ilr.js?v=20261028b"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261028a"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

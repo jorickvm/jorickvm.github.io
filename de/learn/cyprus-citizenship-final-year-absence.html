@@ -134,6 +134,7 @@
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261028a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
@@ -207,6 +208,7 @@
       <ul>
         <li><a href="#die-regel">Die Regel</a></li>
         <li><a href="#so-z-hlst-du">So zählst du</a></li>
+        <li><a href="#calculator">Abwesenheitsrechner für die zyprische Einbürgerung</a></li>
         <li><a href="#ber-die-zahl-der-tage-hinaus">Über die Zahl der Tage hinaus</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
@@ -240,6 +242,86 @@
       <li>Füge die einzelnen Abwesenheiten hinzu und vergleiche das Ergebnis mit 90. Prüfe das Fenster erneut, wenn das Antragsdatum sich ändert.</li>
     </ol>
     <div class="example"><p><strong>Beispiel.</strong> Betrachte das Jahr vor dem Antrag mit den folgenden Abwesenheiten. Abreise- und Rückkehrtage sind jeweils als Anwesenheit in Zypern erfasst:</p><ul><li>Verlassen am 1. Januar 2026 und zurückkehren am 1. Februar: 2.-31. Januar ergeben 30 Abwesenheitstage.</li><li>Verlassen am 1. April und zurückkehren am 2. Mai: 2. April-1. Mai gibt weitere 30 Tage.</li><li>Verlassen am 1. Juli und zurückkehren am 1. August: 2.-31. Juli gibt weitere 30 Tage.</li></ul><p>Die Summe beträgt <strong>30 + 30 + 30 = 90 Tage</strong>. Eine Rückkehr von der letzten Reise erst am 2. August ergäbe 91. Dabei liegen alle drei Abwesenheiten im Jahr vor dem Antrag; der übrige Verlauf zeigt Anwesenheit in Zypern. Das ist ein rechnerisches Ergebnis, keine Genehmigung des Antrags.</p></div>
+    <h2 id="calculator">Abwesenheitsrechner für die zyprische Einbürgerung</h2>
+    <p>Tippe auf den Tag, an dem du Zypern verlassen hast, und dann auf den Tag deiner Rückkehr. Der Rechner zählt die vollen Tage, an denen du in den 12 Monaten vor deinem Antragsdatum weg warst, und vergleicht sie mit 90 Tagen.</p>
+    <div class="daycal" id="embed-ukIlr" data-day-calendar="ukIlr" data-cal-preset="{&quot;settings&quot;:{&quot;home&quot;:&quot;CY&quot;,&quot;years&quot;:1,&quot;limit&quot;:90,&quot;before&quot;:true,&quot;note&quot;:&quot;Cyprus citizenship absence calculator&quot;},&quot;lock&quot;:[],&quot;link&quot;:&quot;citizenship-cy&quot;,&quot;offer&quot;:&quot;citizenship-cyprus-final-year&quot;}">
+      <script type="application/json" data-cal-strings>
+{
+  "hintStart": "Tippe auf den Tag, an dem du Zypern verlassen hast, und dann auf den Tag deiner Rückkehr.",
+  "hintEnd": "Tippe auf das andere Ende der Reise.",
+  "inTrip": "außerhalb Zyperns",
+  "pending": "Beginn einer neuen Reise",
+  "empty": "Noch keine Reisen.",
+  "deleteTrip": "Reise löschen",
+  "country": "Land",
+  "addCountry": "Land hinzufügen",
+  "noMatch": "Kein passendes Land gefunden",
+  "hintSelected": "Ziehe an einem der beiden Enden der Reise, um die Reisedaten zu ändern, oder lösche sie unten.",
+  "tripAway": {
+    "one": "{n} Tag abwesend",
+    "other": "{n} Tage abwesend"
+  },
+  "title": "Abwesenheitstage",
+  "checkOn": "Antragsdatum",
+  "checkOnCaption": "Deine Tage im Ausland in den 12 Monaten vor diesem Datum.",
+  "remaining": {
+    "one": "Noch {n} Tag",
+    "other": "Noch {n} Tage"
+  },
+  "atLimit": "Am Limit",
+  "overBy": {
+    "one": "{n} Tag über dem Limit",
+    "other": "{n} Tage über dem Limit"
+  }
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>M</span><span>D</span><span>M</span><span>D</span><span>F</span><span>S</span><span>S</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>Zeitleiste</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>In AtlasDays übernehmen</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="embed-ukIlr-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="embed-ukIlr-import-title">In AtlasDays übernehmen</p>
+            <p class="cal-dialog-sub">Zähl deine Tage unterwegs weiter. Kostenlose App für iPhone und iPad.</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>AtlasDays auf deinem iPhone oder iPad installieren</strong><span>Kostenlos im App Store.</span></li>
+            <li><strong>QR-Code scannen, um alle Reisen in AtlasDays zu laden</strong><span>Prüfe sie und tippe dann auf „Importieren“.</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>AtlasDays laden</strong><span>Kostenlos im App Store. Schon installiert? Weiter mit Schritt 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>Aufenthalte in der App öffnen</strong><span>Prüfe sie und tippe dann auf „Importieren“. Vorher wird nichts gespeichert.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">In AtlasDays öffnen</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>AtlasDays laden</strong><span>Kostenlos im App Store für iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>Aufenthalte per Datei importieren</strong><span>Das sind mehr Aufenthalte, als ein Link fassen kann. Lade die Datei herunter und öffne sie auf deinem iPhone mit AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Datei herunterladen</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Reisen als CSV-Datei herunterladen</button><span data-cal-downloaded hidden>Öffne diese Datei auf deinem iPhone mit AtlasDays.</span></p>
+          <button type="button" data-cal-close>Schließen</button>
+        </div>
+      </dialog>
+    </div>
+
     <h2 id="ber-die-zahl-der-tage-hinaus">Über die Zahl der Tage hinaus</h2>
     <p>Reisedaten belegen weder die Gültigkeit eines Aufenthaltstitels noch die erforderliche frühere Aufenthaltszeit oder die sprachlichen, persönlichen und sonstigen Voraussetzungen des jeweiligen Verfahrens. Bewahre die Aufenthaltstitel und geforderten Nachweise zusammen mit dem Reiseverlauf auf. Die M127-Anleitung des Ministeriums bestimmt das passende Verfahren und die erforderlichen Belege.</p><p>Davon zu unterscheiden sind <a href="/de/learn/cyprus-183-day-tax-residency">Zyperns Regeln zur Steueransässigkeit</a>. Eine Abwesenheitsgrenze für die Einbürgerung und ein steuerlicher Anwesenheitstest beantworten unterschiedliche Fragen. Wer einen erfüllt, erfüllt nicht automatisch den anderen.</p>
     <div class="cta-box">
@@ -325,6 +407,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"Navigationsmenü öffnen","menuClose":"Navigationsmenü schließen"};</script>
   <script src="../../assets/js/navigation.js?v=20261027j"></script>
+  <script defer src="../../assets/js/rules/uk-ilr.js?v=20261028b"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261028a"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

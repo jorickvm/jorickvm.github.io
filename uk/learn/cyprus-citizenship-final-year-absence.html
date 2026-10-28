@@ -134,6 +134,7 @@
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261028a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Перейти до вмісту</a>
@@ -207,8 +208,9 @@
       <ul>
         <li><a href="#section-1">Правило</a></li>
         <li><a href="#section-2">Як вести підрахунок</a></li>
-        <li><a href="#section-3">Не лише підрахунок днів</a></li>
-        <li><a href="#section-4">Часті запитання</a></li>
+        <li><a href="#calculator">Калькулятор відсутності для громадянства Кіпру</a></li>
+        <li><a href="#section-4">Не лише підрахунок днів</a></li>
+        <li><a href="#section-5">Часті запитання</a></li>
       </ul>
     </nav>
     <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
@@ -240,7 +242,93 @@
       <li>Підсумуйте відсутності й порівняйте результат із 90. Якщо дата заяви зміниться, перевірте період знову.</li>
     </ol>
     <div class="example"><p><strong>Приклад.</strong> Розгляньмо останній рік, до якого входять наведені відсутності. Дні виїзду й повернення записані як перебування на Кіпрі:</p><ul><li>Виїзд 1 січня 2026 року, повернення 1 лютого: 2–31 січня дають 30 днів відсутності.</li><li>Виїзд 1 квітня, повернення 2 травня: 2 квітня–1 травня дають ще 30.</li><li>Виїзд 1 липня, повернення 1 серпня: 2–31 липня дають ще 30.</li></ul><p>Разом <strong>30 + 30 + 30 = 90 днів</strong>. Повернення з останньої поїздки 2 серпня збільшило б суму до 91. Припускаємо, що всі три відсутності входять до останнього року, а решта записів підтверджує присутність на Кіпрі. Це числовий результат, а не схвалення заяви.</p></div>
-    <h2 id="section-3">Не лише підрахунок днів</h2>
+    <h2 id="calculator">Калькулятор відсутності для громадянства Кіпру</h2>
+    <p>Торкніться дня від’їзду з Кіпру, а потім дня повернення. Калькулятор рахує повні дні відсутності за 12 місяців до дати подання й порівнює їх із 90 днями.</p>
+    <div class="daycal" id="embed-ukIlr" data-day-calendar="ukIlr" data-cal-preset="{&quot;settings&quot;:{&quot;home&quot;:&quot;CY&quot;,&quot;years&quot;:1,&quot;limit&quot;:90,&quot;before&quot;:true,&quot;note&quot;:&quot;Cyprus citizenship absence calculator&quot;},&quot;lock&quot;:[],&quot;link&quot;:&quot;citizenship-cy&quot;,&quot;offer&quot;:&quot;citizenship-cyprus-final-year&quot;}">
+      <script type="application/json" data-cal-strings>
+{
+  "hintStart": "Торкніться дня від’їзду з Кіпру, а потім дня повернення.",
+  "hintEnd": "Торкніться іншої дати поїздки.",
+  "inTrip": "поза Кіпром",
+  "pending": "початок нової поїздки",
+  "empty": "Поїздок поки немає.",
+  "deleteTrip": "Видалити поїздку",
+  "country": "Країна",
+  "addCountry": "Додати країну",
+  "noMatch": "Країну не знайдено",
+  "hintSelected": "Перетягніть будь-який край поїздки, щоб змінити дати, або видаліть її нижче.",
+  "tripAway": {
+    "one": "{n} день відсутності",
+    "few": "{n} дні відсутності",
+    "many": "{n} днів відсутності",
+    "other": "{n} дня відсутності"
+  },
+  "title": "Дні поза Кіпром",
+  "checkOn": "Дата подання",
+  "checkOnCaption": "Ваші дні за кордоном за 12 місяців до цієї дати.",
+  "remaining": {
+    "one": "Залишилося: {n} день",
+    "few": "Залишилося: {n} дні",
+    "many": "Залишилося: {n} днів",
+    "other": "Залишилося: {n} дні"
+  },
+  "atLimit": "На межі",
+  "overBy": {
+    "one": "Ліміт перевищено на {n} день",
+    "few": "Ліміт перевищено на {n} дні",
+    "many": "Ліміт перевищено на {n} днів",
+    "other": "Ліміт перевищено на {n} дні"
+  }
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>П</span><span>В</span><span>С</span><span>Ч</span><span>П</span><span>С</span><span>Н</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>Хронологія</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Відстежувати в AtlasDays</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="embed-ukIlr-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="embed-ukIlr-import-title">Відстежувати в AtlasDays</p>
+            <p class="cal-dialog-sub">Продовжуйте підрахунок днів у дорозі. Безкоштовна програма для iPhone та iPad.</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>Переконайтеся, що AtlasDays встановлено на вашому iPhone чи iPad</strong><span>Безкоштовно в App Store.</span></li>
+            <li><strong>Відскануйте QR-код, щоб завантажити всі поїздки в AtlasDays</strong><span>Перевірте їх і торкніться «Імпорт».</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>Завантажте AtlasDays</strong><span>Безкоштовно в App Store. Уже встановлено? Переходьте до кроку 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>Відкрийте поїздки в програмі</strong><span>Перевірте їх і торкніться «Імпорт». До цього нічого не зберігається.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Відкрити в AtlasDays</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>Завантажте AtlasDays</strong><span>Безкоштовно в App Store для iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
+          <li><strong>Імпортуйте поїздки з файлу</strong><span>Стільки поїздок не вміститься в посилання. Завантажте файл і відкрийте його в AtlasDays на iPhone.</span><button type="button" class="cal-dialog-primary" data-cal-download>Завантажити файл</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Завантажити поїздки у файлі CSV</button><span data-cal-downloaded hidden>Відкрийте цей файл в AtlasDays на iPhone.</span></p>
+          <button type="button" data-cal-close>Закрити</button>
+        </div>
+      </dialog>
+    </div>
+
+    <h2 id="section-4">Не лише підрахунок днів</h2>
     <p>Дати поїздок не підтверджують чинності посвідки, виконання попереднього строку проживання чи мовних та інших вимог, зокрема до доброчесності заявника. Зберігайте історію дозволів і необхідні документи разом із журналом поїздок. Відповідну процедуру та докази слід визначати за роз’ясненнями Міністерства щодо M127.</p><p>Це також окреме питання від <a href="/uk/learn/cyprus-183-day-tax-residency">податкового резидентства Кіпру</a>. Ліміт відсутності для громадянства й податковий тест присутності відповідають на різні запитання. Виконання одного не означає виконання іншого.</p>
     <div class="cta-box">
       <span class="cta-logo">
@@ -251,7 +339,7 @@
       <p>Запишіть перебування один раз. Шаблон <strong>Громадянство Кіпру: відсутність в останній рік</strong> підсумовує дні відсутності за останні 12 календарних місяців і показує використану частину 90-денного ліміту. Користуйтеся ковзним періодом для планування, а перед поданням перевірте записи станом на дату заяви та підтвердні документи.</p>
       <a class="cta-btn" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> Завантажити застосунок</a>
     </div>
-    <h2 id="section-4">Часті запитання</h2>
+    <h2 id="section-5">Часті запитання</h2>
     <h3>Чи дається 90 днів на кожну поїздку?</h3>
     <p>Ні. Це спільний ліміт для всіх відсутностей за останні 12 місяців. Повернення на Кіпр між поїздками не обнуляє суму.</p>
     <h3>Чи обнуляється підрахунок 1 січня?</h3>
@@ -325,6 +413,8 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"Відкрити меню навігації","menuClose":"Закрити меню навігації"};</script>
   <script src="../../assets/js/navigation.js?v=20261027j"></script>
+  <script defer src="../../assets/js/rules/uk-ilr.js?v=20261028b"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261028a"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on (README, "Analytics"). */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();
