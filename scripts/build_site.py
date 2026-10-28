@@ -1469,6 +1469,7 @@ CALCULATOR_RULES = {
     "ukIlr": {"script": "uk-ilr.js", "page": "learn/uk-ilr-absence-calculator.html"},
     "presence": {"script": "presence.js", "version": "20261028a"},
     "spt": {"script": "spt.js", "version": "20261028a"},
+    "perEntry": {"script": "per-entry.js", "version": "20261028a"},
 }
 SHARED_CALCULATOR_STRINGS = {
     "hintEnd", "hintSelected", "pending", "empty", "deleteTrip", "country", "addCountry", "noMatch",
