@@ -139,6 +139,24 @@ def product_page_ppid(source_path: str, app_preset: str | None, locale_code: str
     return None
 
 
+PRODUCT_PAGES_MARKER = "{{PRODUCT_PAGES}}"
+
+
+def product_page_presets(locale_code: str, product_pages: dict) -> str:
+    """`prefix=ppid` pairs for a page that picks its custom product page in the browser.
+
+    The import page has no route of its own to map: its script matches the
+    tracker in the link against these, the same app preset prefixes
+    product_page_ppid uses.
+    """
+    return ",".join(
+        f"{prefix}={page['ppid']}"
+        for page in product_pages.get("pages", {}).values()
+        if locale_code not in page.get("missing_locales", [])
+        for prefix in page.get("app_preset_prefixes", [])
+    )
+
+
 def linked_paths(text: str) -> set[str]:
     """Repo-relative paths for every internal link in a generated file.
 
@@ -2067,11 +2085,14 @@ def main() -> int:
 
     def queue(
         output_path: Path, rendered: str, *, guard: bool = False, campaign: str = "web", ppid: str | None = None,
+        locale_code: str | None = None,
     ) -> None:
         nonlocal selected
         selected += 1
         if output_path.suffix == ".html":
             rendered = with_campaign_links(rendered, campaign, ppid)
+        if locale_code is not None and PRODUCT_PAGES_MARKER in rendered:
+            rendered = rendered.replace(PRODUCT_PAGES_MARKER, product_page_presets(locale_code, product_pages))
         current = output_path.read_text(encoding="utf-8") if output_path.exists() else ""
         if current == rendered:
             return
@@ -2128,6 +2149,7 @@ def main() -> int:
                 guard=True,
                 campaign=str(page.get("campaign", "web")),
                 ppid=product_page_ppid(str(page["path"]), None, default_locale_code(), product_pages),
+                locale_code=default_locale_code(),
             )
 
     for code, overlays in translations.items():
@@ -2169,6 +2191,7 @@ def main() -> int:
                     **({"family": localized_family} if kind == "page" else {}),
                 ),
                 ppid=product_page_ppid(source_path, source.get("app_preset"), code, product_pages),
+                locale_code=code,
             )
 
     if args.section in {"all", "learn"}:

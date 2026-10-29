@@ -1,6 +1,7 @@
 {
   "_about": [
     "App Store custom product pages the build links to. `build_site.py` adds `ppid` to every App Store campaign link on a page whose route or app preset maps to one, next to the page's `ct`; every other page keeps the default product page.",
+    "The import page (`app/import/`, where a calculator's Track this in AtlasDays lands without the app) has no route here. The build hands its script the `app_preset_prefixes` with their ppids for the page's locale, and the script picks the page from the tracker in the link.",
     "The App Store picks a custom page's localization from the visitor's storefront and language, never from the link. So a route maps to a page only if that page tells the same story in every localization. Tax residence, Schengen 90/180 and Travel history do. Residence and citizenship shows a different country per localization (UK ILR for en-GB, Einbürgerung for de-DE, Australia for nl-NL, ...), so it only fits the general use-case page, never a single-country article.",
     "`missing_locales` lists website locales the page has no localization for. Their visitors would get the page's primary (en-US) screenshots, so those locale pages keep the default product page until the localization exists.",
     "Which pages exist, and their stories, keywords and screenshots, are owned by the app repo's Docs/plans/custom-product-pages.md. The ppid comes from App Store Connect."
