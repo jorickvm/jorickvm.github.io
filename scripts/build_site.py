@@ -129,13 +129,15 @@ def product_page_ppid(source_path: str, app_preset: str | None, locale_code: str
     """The custom product page for an English source route in one locale, if any.
 
     product-pages.json explains which routes map and why a locale can be left out.
+    The first page that maps the route and has the locale wins, so a page
+    missing a locale hands the route on to the next page that maps it.
     """
     for page in product_pages.get("pages", {}).values():
         matches = source_path in page.get("routes", []) or bool(
             app_preset and any(app_preset.startswith(prefix) for prefix in page.get("app_preset_prefixes", []))
         )
-        if matches:
-            return None if locale_code in page.get("missing_locales", []) else str(page["ppid"])
+        if matches and locale_code not in page.get("missing_locales", []):
+            return str(page["ppid"])
     return None
 
 
@@ -147,7 +149,7 @@ def product_page_presets(locale_code: str, product_pages: dict) -> str:
 
     The import page has no route of its own to map: its script matches the
     tracker in the link against these, the same app preset prefixes
-    product_page_ppid uses.
+    product_page_ppid uses, in the same order, and takes the first match.
     """
     return ",".join(
         f"{prefix}={page['ppid']}"

@@ -3,10 +3,17 @@
     "App Store custom product pages the build links to. `build_site.py` adds `ppid` to every App Store campaign link on a page whose route or app preset maps to one, next to the page's `ct`; every other page keeps the default product page.",
     "The import page (`app/import/`, where a calculator's Track this in AtlasDays lands without the app) has no route here. The build hands its script the `app_preset_prefixes` with their ppids for the page's locale, and the script picks the page from the tracker in the link.",
     "The App Store picks a custom page's localization from the visitor's storefront and language, never from the link. So a route maps to a page only if that page tells the same story in every localization. Tax residence, Schengen 90/180 and Travel history do. Residence and citizenship shows a different country per localization (UK ILR for en-GB, Einbürgerung for de-DE, Australia for nl-NL, ...), so it only fits the general use-case page, never a single-country article.",
-    "`missing_locales` lists website locales the page has no localization for. Their visitors would get the page's primary (en-US) screenshots, so those locale pages keep the default product page until the localization exists.",
+    "`missing_locales` lists website locales the page has no localization for. Their visitors would get the page's primary (en-US) screenshots, so in those locales the route goes to the next page below that maps it, or keeps the default product page if none does. Order matters: the first page that maps a route and has the locale wins.",
+    "US state tracking has only en-US, the same US story for every visitor, so it fits the US state articles in English. It comes before Tax residence, which takes those articles in every other locale.",
     "Which pages exist, and their stories, keywords and screenshots, are owned by the app repo's Docs/plans/custom-product-pages.md. The ppid comes from App Store Connect."
   ],
   "pages": {
+    "us-states": {
+      "ppid": "106753e2-929c-4aaa-9038-c7962c0db0f7",
+      "missing_locales": ["ja", "nl", "de", "es", "fr", "ru", "uk", "tr", "pt", "ko", "zh-Hant", "zh-Hans", "pl", "it"],
+      "routes": [],
+      "app_preset_prefixes": ["us-state-"]
+    },
     "tax-residence": {
       "ppid": "1a1343d8-332a-4e0b-ad29-931faa87a99c",
       "missing_locales": ["it"],
@@ -44,7 +51,9 @@
       "routes": [
         "travel-history.html",
         "learn/how-many-countries-in-the-world.html",
-        "learn/rebuild-travel-history-from-passport-stamps-emails-photos.html"
+        "learn/rebuild-travel-history-from-passport-stamps-emails-photos.html",
+        "learn/travel-history-for-visa-applications.html",
+        "learn/travel-history-template-visa-application.html"
       ],
       "app_preset_prefixes": []
     }

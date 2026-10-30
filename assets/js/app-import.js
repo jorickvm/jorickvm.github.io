@@ -7,7 +7,8 @@
    bar first (kept in this tab's sessionStorage), so no analytics request can
    ever carry them. Then the page offers the App Store, Open in AtlasDays again
    (the go. link, which works once the app is installed), and the CSV file. A
-   link with a tracker alone (version 2) gets the first two only.
+   link with a tracker alone (version 2) gets the first two only, under the
+   tracker heading.
 
    The build lists the custom product pages by tracker preset on this script's
    data-product-pages (from _site-src/data/product-pages.json), so the App Store
@@ -98,8 +99,16 @@
     if (page) main.querySelectorAll('a[href^="https://apps.apple.com/"]').forEach(function (a) { a.href += "&ppid=" + page; });
     main.querySelectorAll("[data-app-import-open]").forEach(function (a) { a.href = "https://go.atlasdays.app/import/#" + frag; });
     if (!list.length) {
-      // The heading, the file and the note are about stays, and this link has none.
-      [main.querySelector("h1"), main.querySelector(".note")].concat(
+      // A tracker alone: its own heading (and tab title), and no file or note,
+      // which are about stays.
+      var stays = main.querySelector('[data-app-import-heading="stays"]');
+      var tracker = main.querySelector('[data-app-import-heading="tracker"]');
+      if (stays && tracker) {
+        document.title = document.title.replace(stays.textContent, tracker.textContent);
+        stays.hidden = true;
+        tracker.hidden = false;
+      }
+      [main.querySelector(".note")].concat(
         [].slice.call(main.querySelectorAll("[data-app-import-download]")).map(function (btn) { return btn.closest("p"); })
       ).forEach(function (el) { if (el) el.hidden = true; });
       return;
