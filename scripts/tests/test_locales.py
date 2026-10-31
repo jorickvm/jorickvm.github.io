@@ -65,13 +65,19 @@ class LocaleRegistryTests(unittest.TestCase):
         """Markers substitute raw, so an attribute value must not break the tag.
 
         help.contact_body is the deliberate exception: it carries its own anchor
-        so no language is forced into English word order.
+        so no language is forced into English word order. The linked strings
+        mark their link with a bare <a> for the same reason, and the build
+        adds its target.
         """
+        from check_translations import LINKED_STRINGS
+
         for key, values in self.strings.items():
             if key == "help.contact_body":
                 continue
             for code, value in values.items():
                 self.assertNotIn('"', value, f"{key}:{code}")
+                if key in LINKED_STRINGS:
+                    value = value.replace("<a>", "", 1).replace("</a>", "", 1)
                 self.assertNotIn("<", value, f"{key}:{code}")
 
     def test_dutch_hub_embeds_localized_dynamic_search_copy(self) -> None:

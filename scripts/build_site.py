@@ -1771,6 +1771,47 @@ def render_embedded_calculator(content: str, article: dict[str, object], code: s
     return slot.sub(lambda m: block, content, count=1)
 
 
+def render_calculator_intro(
+    content: str, article: dict[str, object], code: str, source_path: str, strings: dict[str, dict[str, str]]
+) -> str:
+    """End a Learn article's subtitle with a sentence that links its calculator.
+
+    A reader who came for the tool gets it from the first screen (Jorick,
+    2026-10-31): the calculator embedded further down, whose heading is
+    always `#calculator`, or else the calculator page the article's callout
+    links, preset and all. The sentence is chrome; its translation marks the
+    linked words with a bare <a>, and the target comes from here.
+    """
+    if article.get("section") != "learn" or source_path in CALCULATOR_PAGES:
+        return content
+    if article.get("calculator") is not None:
+        if 'id="calculator"' not in content:
+            # As in render_embedded_calculator: a preview may build English
+            # before the translations have their calculator section.
+            if code != default_locale_code() and os.environ.get("ATLASDAYS_PREVIEW_BUILD"):
+                return content
+            raise SystemExit(f'{article["path"]} ({code}): an embedded calculator needs its heading at id="calculator"')
+        key, href = "learn.calculator_intro_below", "#calculator"
+    else:
+        callout = re.search(r'<p class="calc-callout">(.*?)</p>', content, re.S)
+        link = callout and re.search(r'href="([^"]*/learn/[a-z0-9-]+-calculator\b[^"]*)"', callout.group(1))
+        if not link:
+            return content
+        key, href = "learn.calculator_intro_page", link.group(1)
+    sentence = str(strings[key][code]).replace("<a>", f'<a href="{href}">', 1)
+
+    def extend(m: re.Match[str]) -> str:
+        intro = m.group(1).rstrip()
+        # Chinese and Japanese run sentences together after a full-width stop.
+        space = "" if intro.endswith(("。", "！", "？")) else " "
+        return f'<p class="subtitle">{intro}{space}{sentence}</p>'
+
+    content, found = re.subn(r'<p class="subtitle">(.*?)</p>', extend, content, count=1, flags=re.S)
+    if not found:
+        raise SystemExit(f"{article['path']} ({code}): the calculator sentence ends the subtitle, and there is none")
+    return content
+
+
 def render_article(
     article: dict[str, object],
     template: str,
@@ -1792,6 +1833,7 @@ def render_article(
     content = render_calculator_offers(content, source_path)
     content = link_calculator_to_rule(content, article)
     content = mark_calculator_callout(content, article)
+    content = render_calculator_intro(content, article, code, source_path, strings)
     content = render_toc(content, article)
     switcher = render_language_switcher(source_path, locales, translations, code, strings)
     # Only routes this locale actually has may be prefixed; everything else

@@ -44,6 +44,8 @@ GLOSSARY_PATH = SOURCE_ROOT / "data" / "glossary.json"
 ARTICLES_PATH = SOURCE_ROOT / "data" / "articles.json"
 HUBS_PATH = SOURCE_ROOT / "data" / "hubs.json"
 PAGES_PATH = SOURCE_ROOT / "data" / "pages.json"
+# Chrome sentences whose translation marks the linked words (build_site.py: render_calculator_intro).
+LINKED_STRINGS = {"learn.calculator_intro_below", "learn.calculator_intro_page"}
 
 EM_DASH = "—"
 EN_DASH = "–"
@@ -311,7 +313,11 @@ def main() -> int:
             if not strings[key].get(code):
                 problems.append(f"ui-strings.json: {key} has no {code} value")
         for code, value in strings[key].items():
-            if key != "help.contact_body" and ('"' in value or "<" in value):
+            if key in LINKED_STRINGS:
+                # The words to link are marked with a bare <a>; build_site.py adds the target.
+                if value.count("<a>") != 1 or value.count("</a>") != 1 or '"' in value or re.sub(r"</?a>", "", value).count("<"):
+                    problems.append(f"ui-strings.json: {key}:{code} needs exactly one bare <a>…</a> and no other markup or quote")
+            elif key != "help.contact_body" and ('"' in value or "<" in value):
                 problems.append(f"ui-strings.json: {key}:{code} contains markup or a quote")
 
     sources: dict[str, dict] = {}
