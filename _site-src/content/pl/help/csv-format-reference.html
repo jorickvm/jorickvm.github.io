@@ -1,0 +1,71 @@
+    <nav class="breadcrumb" aria-label="Ścieżka nawigacji"><a href="/pl/">AtlasDays</a> / <a href="/pl/help/">Centrum pomocy</a></nav>
+
+    <h1>Format pliku CSV</h1>
+<p class="article-answer">Wymagana jest tylko kolumna <strong>Country</strong> (kraj). AtlasDays rozpoznaje kolumny po ich angielskich nagłówkach, więc kolejność kolumn nie ma znaczenia. Kroki importu opisuje artykuł <a href="/pl/help/csv-import">Import z CSV</a>.</p>
+
+    <h2>Kolumny</h2>
+    <p>Zalecany wiersz nagłówków: <code>Country,State,Start Date,End Date,Purpose,Notes</code>. Wielkość liter w nagłówkach nie ma znaczenia. Nierozpoznane kolumny, na przykład <code>Days</code>, są pomijane. Jeśli nagłówek występuje dwa razy, używany jest pierwszy.</p>
+    <dl class="kv kv-text">
+      <div><dt><strong>Country</strong></dt><dd>Kraj, kolumna wymagana. Nazwa kraju po angielsku lub w języku aplikacji, dwuliterowy kod ISO albo popularna nazwa zastępcza, na przykład <code>USA</code>, <code>UK</code> lub <code>Holland</code>. Nazwa zastępcza, która może oznaczać dwa miejsca, jest odrzucana.</dd></div>
+      <div><dt><strong>State</strong></dt><dd>Stan, kolumna opcjonalna, tylko dla podróży do Stanów Zjednoczonych. Nazwa stanu, dwuliterowy skrót pocztowy lub kod ISO, na przykład <code>US-CA</code>. Dystrykt Kolumbii (District of Columbia) jest akceptowany.</dd></div>
+      <div><dt><strong>Start Date</strong></dt><dd>Data początkowa; akceptowana jest też nazwa <code>Start</code>. Data w formacie <code>yyyy-mm-dd</code> albo czterocyfrowy rok.</dd></div>
+      <div><dt><strong>End Date</strong></dt><dd>Data końcowa; akceptowana jest też nazwa <code>End</code>. Data w formacie <code>yyyy-mm-dd</code> albo czterocyfrowy rok. Puste pole oznacza podróż trwającą (przy dokładnej dacie początkowej) albo ten sam rok (gdy początkiem jest rok).</dd></div>
+      <div><dt><strong>Purpose</strong></dt><dd>Cel podróży: <code>Personal</code> (Prywatne), <code>Business</code> (Praca), <code>Study</code> (Nauka) lub <code>Transit</code> (Tranzyt), bez względu na wielkość liter. Wartości inne niż Transit można łączyć przecinkami w cudzysłowie, na przykład <code>"Business, Personal"</code>. Starsze wartości <code>Tourism</code> i <code>Medical</code> są importowane jako Personal. Nierozpoznana wartość jest pomijana bez błędu.</dd></div>
+      <div><dt><strong>Notes</strong></dt><dd>Notatki; akceptowane są też nazwy <code>Note</code> i <code>Notes (optional)</code>. Dowolny tekst.</dd></div>
+      <div><dt><strong>Transit</strong></dt><dd>Starsza kolumna. Odczytywana tylko wtedy, gdy nie ma kolumny Purpose. <code>Yes</code>, <code>Y</code>, <code>True</code> lub <code>1</code> oznacza Tranzyt; <code>No</code>, <code>N</code>, <code>False</code>, <code>0</code> lub puste pole nie.</dd></div>
+      <div><dt><strong>Start Year</strong>, <strong>End Year</strong></dt><dd>Starsze kolumny roku początkowego i końcowego. Czterocyfrowe lata, używane, gdy komórki z datami nie zawierają roku. Nie można ich łączyć z dokładnymi datami w tym samym wierszu.</dd></div>
+    </dl>
+    <figure class="help-shot help-shot-control"><img src="/assets/article-images/pl/help/csv-format-reference/csv-reference.webp" alt="Przykład i szablon w imporcie z CSV" width="1320" height="1990" loading="lazy" decoding="async" /></figure>
+
+    <h2>Formaty dat</h2>
+    <div class="data-table">
+    <table>
+      <thead><tr><th>Start Date</th><th>End Date</th><th>Wynik</th></tr></thead>
+      <tbody>
+        <tr><td><code>2026-03-01</code></td><td><code>2026-03-05</code></td><td>Podróż z dokładnymi datami. Podróż jednodniowa ma dwa razy tę samą datę.</td></tr>
+        <tr><td><code>2026-03-01</code></td><td>puste</td><td>Trwająca podróż bez daty końcowej.</td></tr>
+        <tr><td><code>2019</code></td><td>puste</td><td>Podróż z opcją <a href="/pl/help/history-and-import">Tylko rok</a> w tym roku.</td></tr>
+        <tr><td><code>2018</code></td><td><code>2019</code></td><td>Jedna podróż z opcją Tylko rok obejmująca lata 2018–2019.</td></tr>
+        <tr><td>puste</td><td>puste</td><td>Podróż bez dat.</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p>Lata muszą mieścić się w zakresie od 1900 do ośmiu lat po bieżącym roku. W jednym wierszu nie można łączyć dokładnych dat z samymi latami. Podróże z opcją Tylko rok i podróże bez dat liczą się do odwiedzonych miejsc i mapy, ale nigdy do liczby dni ani trackerów. Podróż bez dat można utworzyć wyłącznie przez import z CSV.</p>
+
+    <h2>Przypadki szczególne</h2>
+    <ul>
+      <li><strong>Stany USA.</strong> Jeśli jedna wizyta w USA obejmowała kilka stanów, użyj osobnego wiersza dla każdego stanu. Zwykły wiersz <code>United States</code> jest prawidłowy przy śledzeniu na poziomie kraju. Nazwa stanu w kolumnie Country (<code>California</code>, <code>US-CA</code>) również daje podróż do USA, podobnie jak puste pole Country z prawidłowym polem State. Dwuliterowe kody, które są też kodami krajów, na przykład <code>CA</code>, pozostają krajami. Bez wersji Pro wiersze ze stanami importują się jako zwykłe podróże do Stanów Zjednoczonych.</li>
+      <li><strong>Tranzyt.</strong> Wpisz <code>Transit</code> w kolumnie Purpose, jeśli podróż odbyła się bez wjazdu do kraju. Tranzyt wyklucza inne cele: jeśli występuje razem z innym celem, zachowany zostaje tylko Tranzyt.</li>
+      <li><strong>Separator i cudzysłowy.</strong> Przecinek, średnik i tabulator są rozpoznawane na podstawie wiersza nagłówków. Pola zawierające separator lub znak nowego wiersza ujmij w cudzysłów.</li>
+    </ul>
+
+    <h2>Przykład</h2>
+    <pre><code>Country,State,Start Date,End Date,Purpose,Notes
+France,,2026-03-01,2026-03-05,Personal,
+United States,CA,2026-04-10,2026-04-15,Business,Konferencja
+Japan,,2024,,Personal,Daty nieznane
+United Arab Emirates,,2026-05-01,2026-05-01,Transit,Przesiadka na lotnisku</code></pre>
+
+    <h2>Komunikaty o błędach</h2>
+    <p>Każdy błąd pojawia się w podglądzie z numerem wiersza, a wiersz nie jest importowany. Numeracja wierszy liczy nagłówek jako wiersz 1.</p>
+    <dl class="kv kv-text">
+      <div><dt>Nie znaleziono kolumny Country</dt><dd>Umieść na początku wiersz nagłówków z kolumną <strong>Country</strong>.</dd></div>
+      <div><dt>Nieprawidłowy kraj: „&lt;wartość&gt;”</dt><dd>Użyj kodu ISO lub jednoznacznej nazwy kraju.</dd></div>
+      <div><dt>Nieprawidłowy stan: „&lt;wartość&gt;”</dt><dd>Użyj nazwy stanu USA, skrótu lub kodu w formacie <code>US-XX</code>.</dd></div>
+      <div><dt>Stan „&lt;wartość&gt;” jest dozwolony tylko dla podróży po Stanach Zjednoczonych</dt><dd>Wyczyść pole State albo zmień Country na United States.</dd></div>
+      <div><dt>Sprzeczne stany</dt><dd>Komórki Country i State wskazują różne stany. Zostaw jeden.</dd></div>
+      <div><dt>Nieprawidłowa data początkowa / Nieprawidłowa data końcowa</dt><dd>Użyj formatu <code>yyyy-mm-dd</code> lub czterocyfrowego roku.</dd></div>
+      <div><dt>Nieprawidłowy rok początkowy / Nieprawidłowy rok końcowy</dt><dd>Użyj czterocyfrowego roku z dozwolonego zakresu.</dd></div>
+      <div><dt>Nie może być daty końcowej bez daty początkowej</dt><dd>Dodaj Start Date.</dd></div>
+      <div><dt>Data początkowa nie może być późniejsza niż końcowa</dt><dd>Zamień daty miejscami lub je popraw.</dd></div>
+      <div><dt>Rok końcowy nie może być wcześniejszy niż rok początkowy</dt><dd>Popraw lata.</dd></div>
+      <div><dt>Nie może być roku końcowego bez roku początkowego</dt><dd>Dodaj rok początkowy.</dd></div>
+      <div><dt>Nie można łączyć dokładnych dat z przybliżonymi polami roku</dt><dd>Użyj albo dat, albo starszych kolumn roku.</dd></div>
+      <div><dt>Nie można łączyć dokładnej daty początkowej z samym rokiem końcowym ani samego roku początkowego z dokładną datą końcową</dt><dd>W jednym wierszu użyj dwóch dat albo dwóch lat.</dd></div>
+      <div><dt>Nieprawidłowa wartość tranzytu</dt><dd>W starszej kolumnie Transit użyj Yes/No, True/False lub 1/0.</dd></div>
+    </dl>
+
+    <section class="if-needed">
+      <h2>Jeśli wartość nie jest rozpoznawana</h2>
+      <p>Użyj kodu kraju ISO, dat w formacie ISO i standardowej nazwy lub kodu stanu USA. Plik wyeksportowany z arkusza kalkulacyjnego w innym języku może mieć przetłumaczone nagłówki, które nie są rozpoznawane: zmień je na podane wyżej angielskie nagłówki.</p>
+    </section>

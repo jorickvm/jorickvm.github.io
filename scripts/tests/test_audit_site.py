@@ -1,0 +1,192 @@
+from __future__ import annotations
+
+import sys
+import json
+import unittest
+from pathlib import Path
+
+
+SCRIPTS = Path(__file__).resolve().parents[1]
+if str(SCRIPTS) not in sys.path:
+    sys.path.insert(0, str(SCRIPTS))
+
+import audit_site  # noqa: E402
+
+
+class AuditSiteTests(unittest.TestCase):
+    EXPECTED_BOOTSTRAP = (
+        "var d=document.documentElement,"
+        "q=new URLSearchParams(location.search).get('theme'),t=null;"
+        "if(q==='light'||q==='dark'){t=q;try{sessionStorage.setItem('theme',q)}catch(e){}}"
+        "else{try{t=sessionStorage.getItem('theme')}catch(e){}"
+        "if(!t)try{t=localStorage.getItem('theme')}catch(e){}}"
+        "d.setAttribute('data-theme',t==='light'?'light':'dark')"
+    )
+
+    def test_dark_default_contract_matches_expected_bootstrap(self) -> None:
+        self.assertRegex(self.EXPECTED_BOOTSTRAP, audit_site.THEME_DARK_DEFAULT)
+
+    def test_app_override_contract_matches_expected_bootstrap(self) -> None:
+        self.assertRegex(self.EXPECTED_BOOTSTRAP, audit_site.THEME_APP_OVERRIDE)
+
+    def test_system_preference_bootstrap_does_not_match_contract(self) -> None:
+        source = (
+            "var t=localStorage.getItem('theme');"
+            "if(t)document.documentElement.setAttribute('data-theme',t)"
+        )
+        self.assertIsNone(audit_site.THEME_DARK_DEFAULT.search(source))
+
+    def test_bootstrap_without_app_override_is_rejected(self) -> None:
+        source = (
+            "var t=localStorage.getItem('theme');"
+            "document.documentElement.setAttribute('data-theme',t==='light'?'light':'dark')"
+        )
+        self.assertRegex(source, audit_site.THEME_DARK_DEFAULT)
+        self.assertIsNone(audit_site.THEME_APP_OVERRIDE.search(source))
+
+    def test_route_mapping(self) -> None:
+        self.assertEqual(audit_site.route_for_path(audit_site.SITE_ROOT / "index.html"), "/")
+        self.assertEqual(
+            audit_site.route_for_path(audit_site.SITE_ROOT / "help" / "index.html"),
+            "/help/",
+        )
+        self.assertEqual(
+            audit_site.route_for_path(audit_site.SITE_ROOT / "learn" / "example.html"),
+            "/learn/example",
+        )
+
+    def test_parser_uses_main_content_for_baseline(self) -> None:
+        parser = audit_site.PageParser()
+        parser.feed(
+            "<header>Navigation changes</header>"
+            "<main><article><h1>Stable title</h1><p>Stable body.</p></article></main>"
+            "<footer>Footer changes</footer>"
+        )
+        self.assertEqual(parser.h1, ["Stable title"])
+        self.assertEqual(parser.content_text, "Stable title Stable body.")
+
+    def test_parser_falls_back_to_article_before_main_migration(self) -> None:
+        parser = audit_site.PageParser()
+        parser.feed("<header>Navigation</header><article><h1>Title</h1><p>Body.</p></article>")
+        self.assertEqual(parser.content_text, "Title Body.")
+
+    def test_legacy_related_block_pattern_matches_only_hand_authored_blocks(self) -> None:
+        self.assertIsNotNone(
+            audit_site.LEGACY_RELATED_PATTERN.search('<div class="related">\n<h2>Related</h2>')
+        )
+        self.assertIsNone(
+            audit_site.LEGACY_RELATED_PATTERN.search('<nav class="related generated-related">')
+        )
+
+    def test_learn_fragments_carry_no_legacy_related_blocks(self) -> None:
+        findings: list[audit_site.Finding] = []
+        audit_site.audit_learn_fragments(findings)
+        self.assertEqual(findings, [])
+
+    def test_manual_sources_allow_declared_stems_per_locale_and_appearance(self) -> None:
+        folder = "assets/article-images/help/_manual-sources"
+        sources = {f"{folder}/widgets-gallery.png"}
+        files = [
+            f"{folder}/widgets-gallery.png",
+            f"{folder}/widgets-gallery-light.png",
+            f"{folder}/widgets-gallery.zh-Hans-light.png",
+            f"{folder}/widgets-gallery.xx.png",
+            f"{folder}/home-hero-pair.de.png",
+            f"{folder}/nested/widgets-gallery.png",
+        ]
+        self.assertEqual(
+            audit_site.stray_manual_sources(files, sources, {"de", "zh-Hans"}),
+            [f"{folder}/widgets-gallery.xx.png", f"{folder}/home-hero-pair.de.png", f"{folder}/nested/widgets-gallery.png"],
+        )
+
+    def test_committed_manual_sources_are_all_declared(self) -> None:
+        findings: list[audit_site.Finding] = []
+        audit_site.audit_manual_sources(findings)
+        self.assertEqual([item.path for item in findings], [])
+
+    def test_two_cards_with_one_title_are_found(self) -> None:
+        markup = (
+            '<a class="rule-card" href="/learn/a"><img /><span class="rule-text"><strong>Georgia Tax Residency</strong></span></a>'
+            '<a class="rule-card" href="/learn/b"><img /><span class="rule-text"><strong>Georgia Tax Residency</strong></span></a>'
+            '<a class="rule-card" href="/learn/c"><img /><span class="rule-text"><strong>Georgia State Tax Residency</strong></span></a>'
+        )
+        self.assertEqual(audit_site.ambiguous_card_titles(markup), ["Georgia Tax Residency"])
+
+    def test_shipped_learn_indexes_have_no_colliding_titles(self) -> None:
+        findings: list[audit_site.Finding] = []
+        audit_site.audit_library_qualifiers(findings)
+        self.assertEqual(findings, [])
+
+    def test_generated_pages_are_not_content_hash_compared(self) -> None:
+        # build_site.py --check already guards generated HTML; hashing it here
+        # would force a baseline update on every copy edit.
+        for path in ("changelog.html", "learn/schengen-90-180-rule.html", "index.html"):
+            with self.subTest(path=path):
+                self.assertNotIn(path, audit_site.BASELINE_HAND_AUTHORED)
+
+    def test_hand_authored_pages_are_content_hash_compared(self) -> None:
+        # Nothing rebuilds these, so the baseline hash is their only guard.
+        self.assertEqual(
+            audit_site.BASELINE_HAND_AUTHORED,
+            {
+                "app/changelog/index.html",
+                "app/help/index.html",
+                "app/open/index.html",
+                "app/privacy/index.html",
+                "app/terms/index.html",
+                "learn/day-limits.html",
+                "learn/how-to-use-atlasdays.html",
+                "learn/icloud-sync-travel-tracking.html",
+            },
+        )
+
+    def test_hand_authored_list_has_not_gone_stale(self) -> None:
+        # A renamed or deleted stub would leave a path here guarding nothing.
+        for path in audit_site.BASELINE_HAND_AUTHORED:
+            with self.subTest(path=path):
+                self.assertTrue((audit_site.SITE_ROOT / path).is_file())
+
+    def test_root_content_pages_have_styles_and_single_shared_scripts(self) -> None:
+        pages = json.loads((audit_site.SITE_ROOT / "_site-src/data/pages.json").read_text())["pages"]
+        by_path = {page["path"]: page for page in pages}
+        for path in ("about.html", "privacy.html", "terms.html"):
+            with self.subTest(path=path):
+                self.assertTrue(by_path[path]["style_variants"])
+                source = (audit_site.SITE_ROOT / path).read_text()
+                self.assertIn("assets/css/page-variants/legal.css", source)
+                self.assertEqual(source.count("assets/js/theme.js"), 1)
+                self.assertEqual(source.count("assets/js/navigation.js"), 1)
+
+    def test_every_translated_hub_names_its_own_search_index(self) -> None:
+        """search.js falls back to "en", so a missing data-lang is silent.
+
+        Asserted over the real fragments rather than a fixture: the failure
+        mode is a fragment copied without the attribute, which a fixture would
+        never reproduce.
+        """
+        findings = []
+        audit_site.audit_search_index_language(findings)
+        self.assertEqual([f.detail for f in findings], [])
+
+    def test_the_search_index_check_catches_both_ways_it_breaks(self) -> None:
+        default = audit_site.default_locale_code()
+        code = next(c for c in sorted(audit_site.load_locales()) if c != default)
+        hub = audit_site.SITE_ROOT / f"_site-src/content/{code}/hubs/learn-index.html"
+        original = hub.read_text(encoding="utf-8")
+        for broken, expected in (
+            (original.replace(f' data-lang="{code}"', "", 1), "no data-lang"),
+            (original.replace(f'data-lang="{code}"', 'data-lang="en"', 1), "but the fragment is"),
+        ):
+            with self.subTest(expected=expected):
+                hub.write_text(broken, encoding="utf-8")
+                try:
+                    findings = []
+                    audit_site.audit_search_index_language(findings)
+                finally:
+                    hub.write_text(original, encoding="utf-8")
+                self.assertEqual(len(findings), 1, findings)
+                self.assertIn(expected, findings[0].detail)
+
+
+if __name__ == "__main__":
+    unittest.main()

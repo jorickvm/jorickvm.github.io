@@ -1,0 +1,58 @@
+    <nav class="breadcrumb">
+      <a href="/ja/">AtlasDays</a> / <a href="/ja/learn/">旅行ルール</a> / <a href="/ja/learn/guides">ガイド</a>
+    </nav>
+
+    <h1>Flightyの履歴からビザと税務上の居住の日数を集計する方法</h1>
+    <p class="subtitle">FlightyのフライトをCSVで書き出し、AtlasDaysにインポートして、作成された旅行を確認します。</p>
+    <p class="verified">最終確認：2026年9月</p>
+
+    <div class="tldr">
+    <p><strong>要点：</strong>Flightyはフライトを記録しますが、<strong>国ごとの滞在日数</strong>は数えません。Flightyの履歴を<strong>CSV</strong>で書き出してAtlasDaysにインポートすると、フライトから日付付きの旅行を作成し、シェンゲンの90/180、183日ルールなどに沿って集計できます。</p>
+    </div>
+
+    <h2>Flightyからフライトを書き出す</h2>
+    <ol class="steps">
+    <li>Flightyで<strong>「Settings」→「Account Data」</strong>を開き、フライトを書き出します。</li>
+    <li>CSVファイルを「ファイル」アプリのiCloud Driveや「このiPhone内」などに保存します。先に表計算ソフトで開いて保存し直さないでください。</li>
+    </ol>
+    <p>書き出されるのはFlightyに入っているフライトだけです。古い旅行をまだ登録していない場合は、先に追加してください。過去1年のフライトは無料でインポートできますが、<strong>それより古いフライトにはFlighty Proが必要</strong>です。</p>
+
+    <h2>AtlasDaysにインポートする</h2>
+    <ol class="steps">
+    <li>AtlasDaysを開き、<strong>設定 → インポート → Flighty</strong>へ進みます。</li>
+    <li><strong>FlightyのCSVを選択</strong>をタップし、保存したファイルを選びます。</li>
+    <li>AtlasDaysはiPhone上でファイルを解析し、乗り継ぎ、日付をまたぐフライト、情報が不足した旅行、重複、重なりの件数とともに確認画面を表示します。各項目をタップすると該当する旅行を確認できます。</li>
+    <li>不要な項目の選択を外し、<strong>インポート</strong>をタップして確定します。</li>
+    </ol>
+    <p>各画面のスクリーンショットは<a href="/ja/help/flighty-import">ヘルプセンター：Flightyからインポート</a>にあります。インポートは<strong>無料</strong>で、米国の旅行を州別に分ける場合だけAtlasDays Proが必要です。フライトは次のように処理されます。</p>
+    <ul>
+    <li><strong>空港を国に置き換えます。</strong>ある国への到着と、その国からの次の出発を1つの滞在の区切りにし、間にある国内線は同じ旅行に含めます。</li>
+    <li><strong>10時間未満の立ち寄りは「乗り継ぎ」になり</strong>、どの日数にも加算されません。10時間から24時間の立ち寄りは、長い乗り継ぎの警告付きの滞在となり、確認して判断できます。<a href="/ja/learn/does-a-layover-count-as-visiting-a-country">乗り継ぎは、その国を訪問したことになるか</a>もご覧ください。</li>
+    <li><strong>フライトの詳細は旅行のメモへ：</strong>各滞在の根拠となる日付、時刻、経路、便名を残します。欠航便は除外します。</li>
+    <li><strong>確定するまで何も保存しません。</strong>到着便や出発便のない旅行は情報不足として表示し、推測の日付を採用するのではなく、自分で日付を追加できます。</li>
+    </ul>
+
+    <h2>集計結果を使う前に</h2>
+    <ul>
+    <li><strong>陸路などの国境越えは記録されません。</strong>列車、フェリー、車で国境を越えた移動はフライト履歴に出ないため、日付を手動で設定します。</li>
+    <li><strong>上限の計算に使う旅行を確認します。</strong>乗り継ぎの誤認や1便の欠落で<a href="/ja/learn/schengen-90-180-rule">シェンゲンの90/180</a>の合計は変わります。確認したい期間内のすべての滞在を見直してください。</li>
+    <li><strong>Flightyの履歴より前の空白に注意します。</strong>複数年の合計を使うには、Flightyに記録していない年をほかの資料で埋める必要があります。</li>
+    </ul>
+
+    <div class="cta-box">
+      <span class="cta-logo">
+        <img class="logo-dark" src="/assets/brand/logo_dark.png?v=20260325a" alt="AtlasDaysのロゴ" width="52" height="52" />
+        <img class="logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="AtlasDaysのロゴ" width="52" height="52" />
+      </span>
+    <h2>Flightyの書き出しデータをAtlasDaysで滞在日数に変換</h2>
+    <p>FlightyのCSVを無料でインポートし、保存前に滞在と乗り継ぎを確認できます。<strong>シェンゲン：90/180短期滞在ルール</strong>プリセットなどのトラッカーが、iPhone上で非公開のまま日数を集計します。</p>
+      <a class="cta-btn" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> {{t:cta.get_app}}</a>
+    </div>
+
+    <h2>よくある質問</h2>
+    <h3>Flightyは国ごとの滞在日数を数えますか？</h3>
+    <p>いいえ。Flightyはフライトを記録して統計を作りますが、各国で過ごした日数の合計や、ビザ・居住の上限との照合は行いません。まずフライトを日付付きの滞在に変換する必要があり、FlightyのCSVをAtlasDaysにインポートすると、その変換ができます。</p>
+    <h3>Flightyから旅行履歴を書き出すには？</h3>
+    <p>Flightyで「Settings」→「Account Data」を開き、フライトを書き出します。CSVを「ファイル」アプリに保存し、原本を編集せず保管してください。表計算ソフトで保存し直すと、Flightyの形式に合わなくなる場合があります。</p>
+    <h3>FlightyのフライトをAtlasDaysへインポートするのに料金はかかりますか？</h3>
+    <p>いいえ。滞在、乗り継ぎ、重複、重なりの確認を含め、FlightyからのインポートはAtlasDaysの無料版で使えます。米国の旅行を州ごとに管理する場合だけAtlasDays Proが必要です。</p>

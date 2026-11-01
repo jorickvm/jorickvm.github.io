@@ -1,0 +1,128 @@
+    <nav class="breadcrumb">
+      <a href="/ru/">AtlasDays</a> / <a href="/ru/learn/">Правила поездок</a> / <a href="/ru/learn/calculators">Калькуляторы</a>
+    </nav>
+    <img class="title-flag" src="/assets/flags/gb.png" alt="Флаг Великобритании" width="56" height="42" />
+    <h1>Калькулятор отсутствия для ILR: 180 дней в любые 12 месяцев</h1>
+    <p class="subtitle">Для каждой поездки нажмите на день выезда из Великобритании и день возвращения. Трекер покажет ваши дни за границей за 12 месяцев до любой выбранной даты. Запланированные поездки тоже учитываются.</p>
+    <p class="verified">Последняя проверка: октябрь 2026 года</p>
+
+    <h2>Проверьте периоды отсутствия</h2>
+    <div class="daycal" id="uk-ilr" data-day-calendar="ukIlr">
+      <script type="application/json" data-cal-strings>
+{
+  "hintStart": "Нажмите день выезда из Великобритании, затем день возвращения.",
+  "hintEnd": "Нажмите на другой край поездки.",
+  "inTrip": "вне Великобритании",
+  "pending": "начало новой поездки",
+  "empty": "Поездок пока нет.",
+  "deleteTrip": "Удалить поездку",
+  "country": "Страна",
+  "addCountry": "Добавить страну",
+  "noMatch": "Страна не найдена",
+  "hintSelected": "Перетащите любой край поездки, чтобы изменить даты, или удалите её ниже.",
+  "tripAway": {
+    "one": "{n} день за границей",
+    "few": "{n} дня за границей",
+    "many": "{n} дней за границей",
+    "other": "{n} дня за границей"
+  },
+  "title": "Дни вне Великобритании",
+  "checkOn": "Считать до",
+  "checkOnCaption": "Ваши дни за границей за 12 месяцев до этой даты. Для запланированной поездки выберите день возвращения.",
+  "remaining": {
+    "one": "Остался {n} день",
+    "few": "Осталось {n} дня",
+    "many": "Осталось {n} дней",
+    "other": "Осталось {n} дня"
+  },
+  "atLimit": "Лимит достигнут",
+  "overBy": {
+    "one": "Лимит превышен на {n} день",
+    "few": "Лимит превышен на {n} дня",
+    "many": "Лимит превышен на {n} дней",
+    "other": "Лимит превышен на {n} дня"
+  }
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>П</span><span>В</span><span>С</span><span>Ч</span><span>П</span><span>С</span><span>В</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>Хронология</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Отслеживать в AtlasDays</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="uk-ilr-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="uk-ilr-import-title">Отслеживать в AtlasDays</p>
+            <p class="cal-dialog-sub">Продолжайте подсчёт дней в дороге. Бесплатное приложение для iPhone и iPad.</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>Убедитесь, что AtlasDays установлено на вашем iPhone или iPad</strong><span>Бесплатно в App Store.</span></li>
+            <li><strong data-cal-stays>Отсканируйте QR-код, чтобы загрузить все поездки в AtlasDays</strong><span data-cal-stays>Проверьте их и нажмите «Импортировать».</span><strong data-cal-tracker hidden>Отсканируйте QR-код, чтобы добавить этот трекер в AtlasDays</strong><span data-cal-tracker hidden>Проверьте его и нажмите «Сохранить».</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>Скачайте AtlasDays</strong><span>Бесплатно в App Store. Уже установлено? Переходите к шагу 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+          <li><strong data-cal-stays>Откройте поездки в приложении</strong><span data-cal-stays>Проверьте их и нажмите «Импортировать». До этого ничего не сохраняется.</span><strong data-cal-tracker hidden>Откройте этот трекер в приложении</strong><span data-cal-tracker hidden>Проверьте его и нажмите «Сохранить». До этого ничего не сохраняется.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Открыть в AtlasDays</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>Скачайте AtlasDays</strong><span>Бесплатно в App Store для iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+          <li><strong>Импортируйте поездки из файла</strong><span>Столько поездок не поместится в ссылку. Скачайте файл и откройте его в AtlasDays на iPhone.</span><button type="button" class="cal-dialog-primary" data-cal-download>Скачать файл</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Скачать поездки в файле CSV</button><span data-cal-downloaded hidden>Откройте этот файл в AtlasDays на iPhone.</span></p>
+          <button type="button" data-cal-close>Закрыть</button>
+        </div>
+      </dialog>
+    </div>
+
+    <h2>Как считает калькулятор</h2>
+    <ul>
+      <li><strong>Только полные дни.</strong> Дни выезда и возвращения не считаются днями за границей, поэтому поездка с 1 по 10 июня — это восемь дней отсутствия (со 2 по 9 июня), а поездка менее чем на 24 часа не добавит ни дня.</li>
+      <li><strong>12 месяцев до одной даты.</strong> Трекер считает ваши дни за границей за 12 месяцев до даты в поле «Считать до» — сегодняшней, если не выбрать другую. Планируете поездку? Укажите в поле «Считать до» день возвращения.</li>
+      <li><strong>Календарные месяцы, а не блоки по 365 дней.</strong> Окно, заканчивающееся 9 января 2027 года, начинается 10 января 2026 года; високосные дни учитываются.</li>
+    </ul>
+
+    <h2>Когда действуют другие правила</h2>
+    <p>Калькулятор применяет к введённым датам нынешний лимит в 180 дней. В некоторых ситуациях действуют свои правила, и их объясняет руководство по ILR:</p>
+    <ul>
+      <li><strong>Ваш зачётный период.</strong> Учитываются только дни отсутствия внутри него. Отмечайте поездки за годы, по которым подаёте заявление, а не более ранние.</li>
+      <li><strong>Разрешение, выданное до 11 января 2018 года.</strong> Дни отсутствия в этот период проверяются по последовательным 12-месячным периодам, заканчивающимся в годовщину даты вашего заявления, а не по скользящим окнам.</li>
+      <li><strong>Отсутствия по Long Residence до 11 апреля 2024 года.</strong> К ним по-прежнему применяются прежние лимиты: 548 дней в сумме и 184 дня за один отъезд.</li>
+      <li><strong>Разрешённые исключения.</strong> Некоторые периоды отсутствия из-за тяжёлой болезни, срыва поездки или работы при кризисных обстоятельствах можно не учитывать. Калькулятор считает каждый отмеченный вами день.</li>
+      <li><strong>Остальные условия заявления.</strong> Законное проживание, знание английского языка и Life in the UK, а также соответствие требованиям к заявителю проверяются отдельно.</li>
+    </ul>
+    <p>Само правило, в том числе дата, от которой отсчитываются 12 месяцев, объясняется в статье <a href="/ru/learn/uk-ilr-absence-limit">«Правило отсутствия для британского ILR: 180 дней в любые 12 месяцев»</a>. Для гражданства действуют другие лимиты, см. <a href="/ru/learn/uk-citizenship-absence-limits">«Гражданство Великобритании: лимиты отсутствия 450 и 90 дней»</a>.</p>
+
+    <div class="cta-box">
+      <span class="cta-logo">
+        <img class="logo-dark" src="/assets/brand/logo_dark.png?v=20260325a" alt="Логотип AtlasDays" width="52" height="52" />
+        <img class="logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="Логотип AtlasDays" width="52" height="52" />
+      </span>
+      <h2>Продолжайте подсчёт после этой проверки</h2>
+      <p>Калькулятор проверяет поездки, которые вы помните сегодня. Готовый трекер <strong>«Британский ILR (бессрочный ВНЖ)»</strong> в AtlasDays продолжает конфиденциально считать дни на вашем iPhone по мере поездок и заранее предупреждает о превышении 180 дней.</p>
+      <a class="cta-btn" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> {{t:cta.get_app}}</a>
+    </div>
+
+    <h2>Частые вопросы</h2>
+    <h3>Результат калькулятора окончательный?</h3>
+    <p>Нет. Он применяет основной лимит к введённым датам. Более ранние разрешения, история по Long Residence, разрешённые исключения и ваш зачётный период могут изменить результат. Решение принимает Home Office.</p>
+    <h3>Почему двухнедельный отпуск показывает меньше 14 дней?</h3>
+    <p>Учитываются лишь полные дни за границей. Дни выезда и возвращения не считаются отсутствием, поэтому поездка с 1 по 15 июня даёт 13 дней.</p>
+    <h3>Сохраняются ли мои данные?</h3>
+    <p>Нет. Калькулятор работает в браузере и не отправляет, не записывает и не сохраняет введённые даты. При закрытии или обновлении страницы они исчезнут. Чтобы сохранить их, нажмите «Отслеживать в AtlasDays».</p>

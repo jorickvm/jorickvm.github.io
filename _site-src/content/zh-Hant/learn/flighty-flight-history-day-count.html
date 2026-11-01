@@ -1,0 +1,58 @@
+    <nav class="breadcrumb">
+      <a href="/zh-Hant/">AtlasDays</a> / <a href="/zh-Hant/learn/">旅行規定</a> / <a href="/zh-Hant/learn/guides">指南</a>
+    </nav>
+
+    <h1>如何把 Flighty 航班紀錄換算成簽證與稅務居民天數</h1>
+    <p class="subtitle">從 Flighty 匯出航班 CSV，匯入 AtlasDays，再逐一確認建立的行程。</p>
+    <p class="verified">最後查核：2026 年 9 月</p>
+
+    <div class="tldr">
+      <p><strong>重點：</strong>Flighty 會記錄航班，但不會計算<strong>在各國停留的天數</strong>。將 Flighty 紀錄匯出為 <strong>CSV</strong> 並匯入 AtlasDays，即可把航班轉成註明日期的行程，對照申根 90/180 規定、183 天門檻及其他追蹤器計算。</p>
+    </div>
+
+    <h2>從 Flighty 匯出航班</h2>
+    <ol class="steps">
+      <li>在 Flighty 開啟<strong>「Settings」→「Account Data」</strong>，匯出航班。</li>
+      <li>將 CSV 檔案儲存到「檔案」App，例如 iCloud 雲碟 或「我的 iPhone」。不要先用試算表開啟再重新儲存。</li>
+    </ol>
+    <p>匯出檔案只包含 Flighty 中已有的航班。如果舊行程尚未加入，請在匯出前補齊：Flighty 可免費匯入過去一年的航班，<strong>更早的航班需要 Flighty Pro</strong>。</p>
+
+    <h2>匯入 AtlasDays</h2>
+    <ol class="steps">
+      <li>開啟 AtlasDays，前往<strong>「設定」→「匯入」→「Flighty」</strong>。</li>
+      <li>點選<strong>「選擇 Flighty CSV」</strong>，選擇剛才儲存的檔案。</li>
+      <li>AtlasDays 會在 iPhone 上解析檔案，並顯示匯入確認，列出轉機、過夜航班、資訊不完整的行程、重複行程與重疊行程的數量。點選任一類別即可逐一檢查。</li>
+      <li>取消勾選不想匯入的項目，接著點選<strong>「匯入」</strong>並確認。</li>
+    </ol>
+    <p><a href="/zh-Hant/help/flighty-import">說明中心的 Flighty 匯入指南</a>提供各畫面的截圖。匯入功能<strong>免費</strong>；只有將美國行程細分至各州時才需要 AtlasDays Pro。匯入時會進行以下處理：</p>
+    <ul>
+      <li><strong>依機場判定國家。</strong>抵達一個國家後，到下一次從該國出發之間，視為一次停留；期間的國內航班仍歸在同一個行程中。</li>
+      <li><strong>未滿 10 小時的停留會標記為轉機</strong>，不計入任何天數。10 至 24 小時的停留會建立為行程並顯示長時間轉機提醒，供自行判斷。詳見<a href="/zh-Hant/learn/does-a-layover-count-as-visiting-a-country">轉機算不算造訪一個國家？</a></li>
+      <li><strong>航班細節會寫入行程備註：</strong>包括構成該次停留的日期、時間、航線及航班號碼。已取消的航班會略過。</li>
+      <li><strong>確認前不會儲存任何行程。</strong>若缺少抵達或離境航班，行程會列為資訊不完整，讓人補上日期，而不是接受猜測的結果。</li>
+    </ul>
+
+    <h2>採用計算結果前</h2>
+    <ul>
+      <li><strong>陸路越境不會出現在航班紀錄中。</strong>搭火車、渡輪或開車越過邊境的日期，必須手動補上。</li>
+      <li><strong>檢查影響上限的行程。</strong>一段誤判的轉機或漏掉的航段就會改變<a href="/zh-Hant/learn/schengen-90-180-rule">申根 90/180</a> 累計，因此要核對相關計算期間內的每次停留。</li>
+      <li><strong>補齊 Flighty 紀錄開始以前的空白。</strong>多年累計要有意義，就必須從其他資料補回未記錄於 Flighty 的年度。</li>
+    </ul>
+
+    <div class="cta-box">
+      <span class="cta-logo">
+        <img class="logo-dark" src="/assets/brand/logo_dark.png?v=20260325a" alt="AtlasDays 標誌" width="52" height="52" />
+        <img class="logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="AtlasDays 標誌" width="52" height="52" />
+      </span>
+      <h2>AtlasDays 把 Flighty 匯出檔案變成停留天數</h2>
+      <p>免費匯入 Flighty CSV，在儲存前確認停留與轉機，再交由<strong>申根 90/180 短期停留規定</strong>預設追蹤器及其他追蹤器計算天數。整個過程都在 iPhone 上私密完成。</p>
+      <a class="cta-btn" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> {{t:cta.get_app}}</a>
+    </div>
+
+    <h2>常見問題</h2>
+    <h3>Flighty 會計算在一個國家待了幾天嗎？</h3>
+    <p>不會。Flighty 會記錄航班並產生飛行統計，但不會加總在各國停留的天數，也不會對照簽證或稅務居民門檻。必須先把航班轉成註明日期的停留紀錄；將 Flighty CSV 匯入 AtlasDays，就是完成這一步。</p>
+    <h3>如何從 Flighty 匯出旅行紀錄？</h3>
+    <p>在 Flighty 開啟「Settings」→「Account Data」，匯出航班。將 CSV 檔案儲存至「檔案」App，並保留未編輯的原檔，因為用試算表重新儲存後可能不再符合 Flighty 的檔案格式。</p>
+    <h3>將 Flighty 航班匯入 AtlasDays 需要付費嗎？</h3>
+    <p>不需要。Flighty 匯入屬於 AtlasDays 免費功能，包含停留、轉機、重複及重疊行程的確認。只有按州追蹤美國行程才需要 AtlasDays Pro。</p>

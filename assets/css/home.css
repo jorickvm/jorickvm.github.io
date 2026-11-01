@@ -1,0 +1,988 @@
+:root {
+  --radius: 24px;
+  --radius-card: 24px;
+  --radius-button: 16px;
+  --radius-control: 12px;
+  --max: 1160px;
+  --section-pad: 84px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+  color: var(--text);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
+.container {
+  width: min(var(--max), calc(100% - 40px));
+  margin: 0 auto;
+}
+
+.icon-moon, .logo-light { display: none; }
+.logo-dark { display: block; }
+
+html[data-theme="dark"] .icon-sun, html[data-theme="dark"] .logo-dark { display: block; }
+html[data-theme="dark"] .icon-moon, html[data-theme="dark"] .logo-light { display: none; }
+html[data-theme="light"] .icon-sun, html[data-theme="light"] .logo-dark { display: none; }
+html[data-theme="light"] .icon-moon, html[data-theme="light"] .logo-light { display: block; }
+
+.hero { padding: 50px 0 var(--section-pad); }
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.02fr 0.98fr;
+  column-gap: 48px;
+  row-gap: 22px;
+  align-items: start;
+}
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--bg-card);
+  color: var(--muted);
+  font-size: 0.88rem;
+  margin-bottom: 22px;
+}
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--blue);
+}
+h1 {
+  font-size: clamp(2.75rem, 6vw, 4.9rem);
+  line-height: 0.98;
+  letter-spacing: -0.05em;
+  margin: 0 0 18px;
+  max-width: 18ch;
+}
+.mobile-break { display: none; }
+.hero-lead {
+  font-size: clamp(1.01rem, 1.7vw, 1.14rem);
+  color: var(--muted);
+  margin: 0 0 22px;
+  max-width: 58ch;
+}
+.hero-lead-mobile { display: none; }
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-bottom: 22px;
+}
+.hero-mobile-visuals { display: none !important; }
+.hero-copy-main {
+  min-width: 0;
+  grid-column: 1;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 52px;
+  padding: 0 20px;
+  border-radius: var(--radius-button);
+  font-weight: 650;
+  border: 1px solid transparent;
+  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn-primary {
+  background: var(--action-gradient);
+  box-shadow: var(--action-chrome);
+  color: white;
+}
+/* The app dims and shrinks a pressed CTA by the same amounts. */
+.btn-primary:active {
+  transform: scale(0.985);
+  filter: brightness(0.95);
+}
+.btn-secondary {
+  background: var(--bg-card);
+  border-color: var(--line);
+  color: var(--text);
+}
+.hero-points {
+  grid-column: 1;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  max-width: 680px;
+}
+/* Links, one per use-case page plus /privacy. A plain block rather than a
+   flex row, so the two-column grid and the strong/text stacking stay intact. */
+.hero-point {
+  display: block;
+  padding: 14px 16px;
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-button);
+  color: var(--muted);
+  font-size: 0.95rem;
+  transition: border-color 160ms ease, transform 160ms ease, background 160ms ease;
+}
+a.hero-point:hover {
+  border-color: var(--line-strong);
+  background: var(--bg-card-strong);
+  transform: translateY(-1px);
+}
+a.hero-point:hover strong { color: var(--blue); }
+.hero-point strong {
+  display: block;
+  color: var(--text);
+  font-size: 0.98rem;
+  margin-bottom: 3px;
+}
+
+/* iPhone frame.
+
+   `assets/home/iphone-frame-blue.webp` and `-orange.webp` are iPhone 17 Pro
+   Max overlays, 980x2000, with a transparent screen hole; the screenshot sits
+   behind and shows through. Both colours share identical geometry: the hole
+   is 880x1912 at (50, 44), giving 5.102% side insets and 2.2% top and
+   bottom.
+
+   The hole's aspect ratio is 2.1727, exactly the screenshots' 1320x2868, so
+   `object-fit: cover` crops nothing.
+
+   The clip radius is squarer than the hole's. The hole is an Apple squircle,
+   and a circular `border-radius` that matches it at the edges cuts inside it
+   near the 45° diagonal (at the hole's 160px tangent distance, by 24px). The
+   clip uses 120px, the largest radius with no gap (125px is the exact
+   limit), and the opaque bezel masks the overshoot. Erring squarer is safe,
+   erring rounder is not.
+
+   The screenshots are raw device captures that include the status bar and
+   Dynamic Island. The frame draws its own island over that one, black on
+   black, so they read as one element; do not crop the island out of the
+   screenshots. The two islands agree to within a third of a percent (frame
+   28.18% of screen width, Pro Max capture 28.48%), sub-pixel at these sizes.
+
+   Exception: home-proof-widgets.webp is 1206x2622, a regular Pro capture,
+   where the island covers 31.2%, slightly wider than the frame's. A Pro Max
+   capture would match exactly. */
+.device {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  aspect-ratio: 980 / 2000;
+  filter: var(--device-shadow);
+}
+.device-screen {
+  position: absolute;
+  top: 2.2%;
+  bottom: 2.2%;
+  left: 5.102%;
+  right: 5.102%;
+  overflow: hidden;
+  border-radius: 13.636% / 6.276%;
+  background: #000;
+}
+.device-screen img,
+.device-screen video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Per-theme screenshots. Same show/hide pattern as `.logo-dark` /
+   `.logo-light` in the header: the theme is an attribute the user toggles,
+   not a media query, so `<picture>` and `prefers-color-scheme` cannot reach
+   it. Both files are fetched, which keeps the alt text and lazy loading that
+   a CSS background would lose.
+
+   The light captures carry no Dynamic Island (iOS does not draw one into a
+   light-appearance simulator capture), so the frame's own island sits on the
+   light screen like real hardware. */
+.device-screen picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+/* Scoped under `.device-screen` because the `img`/`video` rule above is
+   (0,1,1): a bare `.shot-light` at (0,1,0) would lose to it and both themes'
+   screenshots would show. */
+.device-screen .shot-light { display: none; }
+html[data-theme="light"] .device-screen .shot-dark { display: none; }
+html[data-theme="light"] .device-screen .shot-light { display: block; }
+.device-body {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.visual-wrap {
+  display: block;
+  grid-column: 2;
+  grid-row: 1 / span 2;
+  align-self: center;
+  position: relative;
+  min-height: 760px;
+}
+.visual-card {
+  position: absolute;
+}
+.hero-media-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  cursor: pointer;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-media-video { display: none; }
+}
+/* The hero preview video exists in dark mode only, so light mode shows the
+   light still rather than a dark video beside a light phone. Remove this rule
+   if a light recording of `home-hero-preview.mp4` is added. */
+html[data-theme="light"] .hero-media-video { display: none; }
+/* Widths are the frame's outer width. The bezel takes 10.2%, so these are
+   about a ninth wider than the screenshot inside. */
+.visual-card.primary {
+  width: min(354px, 76%);
+  right: 0;
+  top: 0;
+  z-index: 2;
+}
+.visual-card.secondary {
+  width: min(285px, 61%);
+  left: 0;
+  bottom: 54px;
+  z-index: 1;
+}
+
+.section { padding: 0 0 var(--section-pad); }
+.section-header {
+  max-width: 760px;
+  margin: 0 auto 30px;
+  text-align: center;
+}
+.section-kicker {
+  display: inline-block;
+  margin: 0 0 12px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+}
+.section-header h2 {
+  font-size: clamp(2rem, 3vw, 2.9rem);
+  line-height: 1.06;
+  letter-spacing: -0.04em;
+  margin: 0 0 10px;
+  text-wrap: balance;
+}
+.section-header p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.use-cases-grid,
+.feature-grid,
+.proof-grid,
+.faq-grid,
+.footer-grid,
+.doc-grid {
+  display: grid;
+  gap: 18px;
+}
+.use-cases-grid,
+.feature-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.proof-grid,
+.footer-grid,
+.doc-grid { grid-template-columns: 1fr 1fr; align-items: stretch; }
+.faq-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.footer-grid { grid-template-columns: 1.15fr 0.85fr; align-items: stretch; }
+
+.card,
+.feature,
+.faq,
+.proof,
+.cta-panel,
+.footer-box,
+.doc-card {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow);
+}
+
+/* Verifiable product trust */
+.trust-grid {
+  display: grid;
+  gap: 18px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.trust-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.trust-card .trust-label {
+  margin: 0;
+  color: var(--blue);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.trust-card h3,
+.trust-card p {
+  margin: 0;
+}
+.trust-card > p:not(.trust-label) {
+  color: var(--muted);
+  line-height: 1.55;
+}
+.trust-card a {
+  margin-top: auto;
+  padding-top: 8px;
+  font-weight: 750;
+}
+@media (max-width: 820px) {
+  .trust-grid { grid-template-columns: 1fr; }
+}
+.card,
+.feature,
+.proof,
+.faq,
+.footer-box,
+.doc-card { padding: 24px; }
+.card-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-control);
+  display: inline-grid;
+  place-items: center;
+  margin-bottom: 14px;
+  background: var(--blue-soft);
+  color: var(--blue);
+  font-weight: 800;
+}
+.card h3, .feature h3, .proof h3, .faq h3, .doc-card h3 {
+  margin: 0 0 9px;
+  font-size: 1.12rem;
+  letter-spacing: -0.02em;
+}
+.card p, .feature p, .proof p, .faq p, .doc-card p {
+  margin: 0;
+  color: var(--muted);
+}
+code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
+  font-size: 0.92em;
+  padding: 0.14em 0.38em;
+  border-radius: 8px;
+  background: var(--blue-soft);
+  color: var(--text);
+}
+.mini-list {
+  margin: 12px 0 0;
+  padding-left: 18px;
+  color: var(--muted);
+}
+.mini-list li { margin: 6px 0; }
+
+.proof-label {
+  margin: 0 0 10px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+}
+.proof-story {
+  display: grid;
+  gap: 18px;
+}
+.proof-carousel {
+  position: relative;
+  display: grid;
+  gap: 18px;
+}
+.proof-track {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 100%;
+  gap: 18px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 4px;
+}
+.proof-track::-webkit-scrollbar { display: none; }
+.proof-slide {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  min-width: 0;
+  display: grid;
+  gap: 16px;
+  align-content: start;
+}
+.proof-shot {
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
+  justify-self: center;
+}
+/* The height cap has to become a width cap: `.device` sizes from its width
+   through `aspect-ratio`, so a `max-height` would overflow rather than shrink
+   it. 2.041 is the frame's height/width. */
+.proof-shot .device {
+  width: min(412px, calc(min(72svh, 760px) / 2.041));
+}
+.proof-copy {
+  max-width: 46ch;
+  margin: 0 auto;
+  text-align: center;
+}
+.proof-copy h3 {
+  margin: 0 0 8px;
+  font-size: clamp(1.36rem, 2vw, 1.8rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+}
+.proof-copy p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 1rem;
+}
+.proof-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+.proof-dots {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.proof-dot {
+  width: 12px;
+  height: 12px;
+  padding: 0;
+  border-radius: 999px;
+  border: 1px solid var(--line-strong);
+  background: var(--bg-card-strong);
+  cursor: pointer;
+  transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+}
+.proof-dot:hover {
+  border-color: var(--line-strong);
+  background: var(--bg-card-strong);
+}
+.proof-dot.is-active {
+  transform: scale(1.05);
+  border-color: var(--blue);
+  background: var(--blue);
+}
+.proof-arrow {
+  display: none;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--bg-card);
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color 160ms ease, transform 160ms ease, background 160ms ease;
+}
+.proof-arrow:hover {
+  transform: translateY(-1px);
+  border-color: var(--line-strong);
+}
+.proof-arrow:disabled {
+  opacity: 0.42;
+  cursor: default;
+  transform: none;
+}
+@media (min-width: 961px) {
+  .proof-track {
+    gap: 24px;
+    grid-auto-columns: calc((100% - 48px) / 3);
+  }
+  .proof-slide {
+    scroll-snap-align: none;
+    scroll-snap-stop: normal;
+  }
+  .proof-slide:nth-child(3n+1) {
+    scroll-snap-align: start;
+    scroll-snap-stop: always;
+  }
+  .proof-shot .device {
+    width: 312px;
+  }
+  .proof-copy h3 {
+    font-size: clamp(1.2rem, 1.4vw, 1.5rem);
+  }
+  .proof-copy {
+    min-height: 6.4em;
+  }
+  .proof-arrow { display: inline-grid; }
+  .proof-dots { display: none; }
+}
+.doc-card {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.doc-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 6px;
+}
+.doc-links a {
+  color: var(--muted);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+.doc-links a:hover { color: var(--text); }
+
+.privacy-panel {
+  padding: 32px;
+  background: var(--blue-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow);
+}
+.privacy-grid {
+  display: grid;
+  grid-template-columns: 1.04fr 0.96fr;
+  gap: 22px;
+  align-items: center;
+}
+/* The width lives on the wrapper, not on `.device`: a percentage width inside
+   a `fit-content` parent has nothing to resolve against and collapses to zero. */
+.privacy-visual {
+  display: block;
+  width: min(401px, 100%);
+  justify-self: center;
+}
+.privacy-panel h2 {
+  margin: 0 0 10px;
+  font-size: clamp(1.8rem, 2.5vw, 2.6rem);
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+}
+.privacy-panel p {
+  margin: 0 0 16px;
+  color: var(--muted);
+  max-width: 64ch;
+}
+.trust-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.pill {
+  padding: 9px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  background: var(--bg-card-strong);
+  color: var(--text);
+  font-size: 0.92rem;
+}
+.disclaimer {
+  margin-top: 12px;
+  color: var(--muted-2);
+  font-size: 0.9rem;
+}
+.mid-cta {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 36px;
+  padding: 32px 36px;
+  background: var(--blue-soft);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow);
+}
+.mid-cta-copy {
+  flex: 1;
+  min-width: 0;
+}
+.mid-cta-copy strong {
+  display: block;
+  margin-bottom: 6px;
+  font-size: clamp(1.35rem, 1.8vw, 1.7rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.03em;
+  text-wrap: balance;
+}
+.mid-cta-copy p {
+  margin: 0;
+  color: var(--muted);
+}
+.mid-cta .btn {
+  flex: none;
+  white-space: nowrap;
+}
+
+.cta-panel {
+  padding: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+.cta-panel h2 {
+  margin: 0 0 10px;
+  font-size: clamp(1.8rem, 2.8vw, 2.7rem);
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+  text-wrap: balance;
+}
+.cta-panel p {
+  margin: 0;
+  color: var(--muted);
+  max-width: 54ch;
+}
+.cta-panel-copy { max-width: 620px; }
+.cta-panel-actions {
+  flex: none;
+  width: min(390px, 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: stretch;
+}
+.cta-panel-actions .btn {
+  width: 100%;
+}
+.cta-note {
+  color: var(--muted-2);
+  font-size: 0.88rem;
+  max-width: 44ch;
+}
+.cta-note a {
+  color: var(--muted);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+.cta-note a:hover { color: var(--text); }
+
+footer { padding-bottom: 36px; }
+.footer-primary,
+.footer-secondary {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 26px;
+  height: 100%;
+}
+.footer-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.footer-copy p {
+  max-width: 36ch;
+  margin: 0;
+}
+.footer-points {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+.footer-point {
+  padding: 11px 13px;
+  border-radius: var(--radius-button);
+  border: 1px solid var(--line);
+  background: var(--bg-card);
+  color: var(--muted);
+  font-size: 0.92rem;
+  line-height: 1.35;
+}
+.footer-nav {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+.footer-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.footer-group-title {
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--muted-2);
+}
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: var(--muted);
+}
+.footer-links a:hover { color: var(--text); }
+.copyright {
+  color: var(--muted-2);
+  font-size: 0.92rem;
+}
+.muted-link {
+  color: var(--muted);
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 600ms ease, transform 600ms ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (max-width: 1060px) {
+  .hero-grid,
+  .proof-grid,
+  .footer-grid,
+  .doc-grid { grid-template-columns: 1fr; }
+  .hero-grid { gap: 26px; }
+  .privacy-grid { grid-template-columns: 1fr; }
+  .hero-copy-main,
+  .hero-points,
+  .visual-wrap {
+    grid-column: auto;
+    grid-row: auto;
+  }
+  .visual-wrap {
+    align-self: auto;
+    min-height: 720px;
+    width: min(calc(100vw - 40px), 520px);
+    max-width: 520px;
+    margin: 0 auto;
+  }
+  .cta-panel {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .cta-panel-actions { width: 100%; }
+}
+
+@media (max-width: 820px) {
+  :root {
+    --section-pad: 66px;
+  }
+  .use-cases-grid,
+  .feature-grid,
+  .faq-grid,
+  .hero-points { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 760px) {
+  .visual-wrap {
+    width: min(calc(100vw - 20px), 430px);
+    min-height: clamp(560px, 152vw, 760px);
+    max-width: none;
+    margin: 20px auto 20px;
+  }
+  .visual-card.primary {
+    width: 72%;
+    right: 0;
+    top: 0;
+    z-index: 2;
+  }
+  .visual-card.secondary {
+    width: 55%;
+    left: 0;
+    bottom: 52px;
+    z-index: 1;
+  }
+}
+
+@media (max-width: 960px) {
+  .proof-shot .device {
+    width: min(390px, calc(min(66svh, 680px) / 2.041));
+  }
+}
+
+@media (max-width: 620px) {
+  .container { width: min(var(--max), calc(100% - 24px)); }
+  /* Keep the shared header's inner width on the homepage's own gutter, so the
+     logo lines up with the section content below it rather than sitting 2px in. */
+  .top-bar-inner { width: min(var(--max), calc(100% - 24px)); }
+  .eyebrow { display: none; }
+  .hero { padding-top: 26px; }
+  h1 {
+    font-size: clamp(2rem, 8.6vw, 2.6rem);
+    max-width: none;
+  }
+  .mobile-break { display: inline; }
+  .hero-lead-desktop { display: none; }
+  .hero-lead-mobile {
+    display: block;
+    margin-bottom: 16px;
+  }
+  .section-header {
+    margin: 0 0 24px;
+    text-align: left;
+  }
+  .visual-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: min(calc(100vw - 32px), 360px);
+    min-height: 0;
+    margin: 8px auto 24px;
+    position: relative;
+  }
+  .visual-card {
+    position: relative;
+    z-index: 1;
+  }
+  .visual-card.primary {
+    width: 100%;
+    max-width: 360px;
+    inset: auto;
+  }
+  .visual-card.secondary { display: none; }
+  .card,
+  .feature,
+  .proof,
+  .faq,
+  .footer-box,
+  .cta-panel,
+  .privacy-panel,
+  .doc-card { padding: 20px; }
+  .proof-story {
+    gap: 14px;
+  }
+  .proof-shot .device {
+    width: min(356px, calc(min(64svh, 600px) / 2.041));
+  }
+  .proof-copy {
+    text-align: left;
+  }
+  .proof-copy h3 {
+    font-size: 1.34rem;
+    margin-bottom: 6px;
+  }
+  .proof-copy p {
+    font-size: 0.96rem;
+  }
+  .proof-controls {
+    gap: 10px;
+  }
+  .mid-cta {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 18px;
+  }
+  .mid-cta .btn {
+    width: 100%;
+    white-space: normal;
+  }
+  .btn { width: 100%; }
+  .hero-actions {
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+  .hero-actions .btn-secondary { display: none; }
+  .hero-points {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    max-width: none;
+    padding: 2px 0 0;
+    margin: 0;
+  }
+  .hero-point {
+    min-width: 0;
+    padding: 14px 14px;
+    font-size: 0.89rem;
+    line-height: 1.38;
+  }
+  .hero-point strong {
+    font-size: 0.94rem;
+  }
+  .hero-actions { gap: 10px; }
+  .footer-points,
+  .footer-nav { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 950px) and (max-height: 540px) and (orientation: landscape) {
+  .hero-lead-desktop { display: none; }
+  .hero-lead-mobile {
+    display: block;
+    margin-bottom: 14px;
+    max-width: 56ch;
+  }
+  .hero-actions {
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+  .hero-actions .btn-primary {
+    width: 100%;
+  }
+  .hero-actions .btn-secondary { display: none; }
+  .visual-wrap {
+    width: min(calc(100vw - 24px), 340px);
+    min-height: 430px;
+    margin: 12px auto;
+  }
+  .visual-card.primary { width: 72%; }
+  .visual-card.secondary {
+    width: 55%;
+    bottom: 22px;
+  }
+  .proof-arrow {
+    display: none;
+  }
+  .hero-points {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+    max-width: none;
+  }
+  .hero-point {
+    min-width: 0;
+    padding: 12px 12px;
+    font-size: 0.86rem;
+    line-height: 1.32;
+  }
+  .hero-point strong { font-size: 0.92rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .btn { transition: none; }
+}

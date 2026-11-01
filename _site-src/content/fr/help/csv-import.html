@@ -1,0 +1,40 @@
+    <nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="/fr/">AtlasDays</a> / <a href="/fr/help/">Centre d’aide</a></nav>
+
+    <h1>Import CSV</h1>
+<p class="article-answer">Ajoutez des voyages en masse depuis un tableur enregistré au format CSV. AtlasDays valide chaque ligne, affiche une vérification et n’enregistre rien avant votre confirmation. C’est l’une des <a href="/fr/help/import-trips">façons d’ajouter d’anciens voyages</a>.</p>
+
+    <h2>Importer le fichier</h2>
+    <ol>
+      <li>Ouvrez <strong>Réglages → Importer → Fichier CSV</strong>.</li>
+      <li>Préparez le fichier dans Sheets, Numbers ou Excel et exportez-le au format CSV. <strong>Exemple de CSV</strong> montre les en-têtes exacts avec des lignes d’exemple, et son bouton de partage enregistre le fichier comme point de départ.</li>
+      <li>Touchez <strong>Sélectionner un fichier CSV</strong> et choisissez le fichier dans Fichiers.</li>
+      <li>Parcourez la vérification, <strong>Trouvés dans le CSV</strong>.</li>
+      <li>Touchez <strong>Importer</strong> et confirmez.</li>
+    </ol>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/fr/help/csv-import/csv-setup.webp" alt="Configuration de l’import CSV et commandes du fichier d’exemple" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <p><strong>Créer un CSV avec l’IA</strong> copie une consigne prête à l’emploi pour ChatGPT, Claude ou un autre assistant. Collez-y vos notes de voyage à la suite et enregistrez la réponse au format CSV. Ces outils traitent votre texte selon leur propre politique de confidentialité : ne collez rien que vous ne colleriez pas ailleurs.</p>
+
+    <p>Vous pouvez aussi partir directement du fichier. Partagez un fichier CSV depuis Fichiers, les téléchargements de Safari ou Mail, puis choisissez <strong>AtlasDays</strong> : le même écran de vérification s’ouvre. AtlasDays est proposé pour ouvrir les fichiers CSV, mais ne devient pas l’app par défaut pour ces fichiers.</p>
+
+    <h2>Lire la vérification</h2>
+    <p>La vérification liste les lignes valides et affiche des compteurs sur lesquels vous pouvez toucher pour filtrer. Utilisez <strong>Tout sélectionner</strong> ou <strong>Tout désélectionner</strong> pour choisir ce qui sera importé.</p>
+    <ul>
+      <li><strong>Doublon :</strong> la ligne se situe à l’intérieur d’un voyage que vous avez déjà, ou répète une ligne précédente. Elle est ignorée.</li>
+      <li><strong>Fusionner :</strong> la ligne couvre un voyage que vous avez déjà dans le même pays. À l’import, ce voyage est élargi pour inclure les dates de la ligne, et les notes et les motifs sont combinés. <strong>Candidats à la fusion dans le fichier</strong> désigne les lignes du fichier qui se rejoignent entre elles.</li>
+      <li><strong>Chevauchement :</strong> la ligne chevauche en partie un autre voyage. Il peut s’agir d’un véritable second séjour ou d’une seconde version du même, alors comparez les dates avant de la conserver.</li>
+      <li><strong>Transits</strong> et <strong>États américains</strong> comptent les lignes de ces types. Sans Pro, les lignes d’État sont importées comme de simples voyages aux États-Unis.</li>
+    </ul>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/fr/help/csv-import/csv-review.webp" alt="Vérification de l’import CSV avec lignes valides, non valides, doublons et chevauchements" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+
+    <h2>Corriger les erreurs dans le fichier source</h2>
+    <p>Les lignes qu’AtlasDays ne peut pas lire apparaissent sous <strong>N lignes avec erreurs</strong>, avec le numéro de ligne et la raison. Les lignes non valides ne sont jamais importées. Corrigez-les dans le tableur, exportez de nouveau, puis sélectionnez de nouveau le fichier.</p>
+
+    <div class="callout"><p><strong>Rien ne change avant Importer.</strong> Sélectionner un fichier et consulter la vérification n’ajoute aucun voyage.</p></div>
+
+    <h2>Réimporter un export</h2>
+    <p>Un <a href="/fr/help/export-and-reports">export</a> Feuille de calcul enregistré au format CSV peut être réimporté, à condition d’avoir été exporté en anglais : les en-têtes de colonnes ne sont lus qu’en anglais. Pour une copie complète des voyages, des suivis et des réglages, utilisez plutôt une <a href="/fr/help/backup-and-restore">sauvegarde</a>.</p>
+
+    <section class="if-needed">
+      <h2>Si toutes les lignes sont non valides</h2>
+      <p>Vérifiez que la première ligne est une ligne d’en-têtes et contient <strong>Country</strong>, et que les dates utilisent <code>yyyy-mm-dd</code> ou une année à quatre chiffres. La <a href="/fr/help/csv-format-reference">Référence du format CSV</a> liste les colonnes et les valeurs prises en charge, ainsi que chaque message d’erreur.</p>
+    </section>

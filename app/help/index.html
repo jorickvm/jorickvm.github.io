@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex,follow" />
+  <link rel="canonical" href="https://atlasdays.app/help/" />
+  <title>Help Center – AtlasDays</title>
+
+  <script>(function(){var d=document.documentElement,q=new URLSearchParams(location.search).get('theme'),t=null;if(q==='light'||q==='dark'){t=q;try{sessionStorage.setItem('theme',q)}catch(e){}}else{try{t=sessionStorage.getItem('theme')}catch(e){}if(!t)try{t=localStorage.getItem('theme')}catch(e){}}d.setAttribute('data-theme',t==='light'?'light':'dark')})()</script>
+  <style>
+    html { background: #0D1117; color-scheme: dark; }
+    html[data-theme="light"] { background: #f7f8fa; color-scheme: light; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      font-size: 16px;
+      line-height: 1.5;
+      text-align: center;
+      color: #b2b9c5;
+    }
+    html[data-theme="light"] body { color: #526075; }
+    a { color: #4f9dee; }
+    html[data-theme="light"] a { color: #246ca8; }
+  </style>
+
+  <script>
+  // The app opens this address with ?lang=<its interface language>. The in-app
+  // hop picks the translated Help Center for that language when the site has
+  // one, English otherwise, so no list of languages lives here. theme, from and
+  // notrack go to the hop too. The Help Center then loads as itself, analytics
+  // included, with the hop as its referrer.
+  location.replace('/app/open/?to=/help/' + (location.search ? '&' + location.search.slice(1) : ''));
+  </script>
+  <noscript><meta http-equiv="refresh" content="0; url=/help/" /></noscript>
+</head>
+<body>
+  <p><a href="/help/">Help Center</a></p>
+</body>
+</html>

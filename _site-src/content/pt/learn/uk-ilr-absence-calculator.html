@@ -1,0 +1,125 @@
+    <nav class="breadcrumb">
+      <a href="/pt/">AtlasDays</a> / <a href="/pt/learn/">Regras de viagem</a> / <a href="/pt/learn/calculators">Calculadoras</a>
+    </nav>
+    <img class="title-flag" src="/assets/flags/gb.png" alt="Bandeira do Reino Unido" width="56" height="42" />
+    <h1>Calculadora de ausências para ILR: 180 dias em qualquer período de 12 meses</h1>
+    <p class="subtitle">Em cada viagem, toque no dia em que saiu do Reino Unido e no dia em que voltou. O controle mostra seus dias no exterior nos 12 meses até qualquer data, incluindo as viagens planejadas.</p>
+    <p class="verified">Última verificação: outubro de 2026</p>
+
+    <h2>Confira suas ausências</h2>
+    <div class="daycal" id="uk-ilr" data-day-calendar="ukIlr">
+      <script type="application/json" data-cal-strings>
+{
+  "hintStart": "Toque no dia em que saiu do Reino Unido e depois no dia da volta.",
+  "hintEnd": "Toque na outra ponta da viagem.",
+  "inTrip": "fora do Reino Unido",
+  "pending": "início de nova viagem",
+  "empty": "Nenhuma viagem ainda.",
+  "deleteTrip": "Excluir viagem",
+  "country": "País",
+  "addCountry": "Adicionar país",
+  "noMatch": "Nenhum país encontrado",
+  "hintSelected": "Arraste qualquer uma das pontas da viagem para mudar as datas ou exclua-a abaixo.",
+  "tripAway": {
+    "one": "{n} dia fora",
+    "other": "{n} dias fora",
+    "many": "{n} dias fora"
+  },
+  "title": "Dias fora do Reino Unido",
+  "checkOn": "Contar até",
+  "checkOnCaption": "Seus dias no exterior nos 12 meses até esta data. Para uma viagem planejada, escolha o dia da volta.",
+  "remaining": {
+    "one": "{n} dia restante",
+    "other": "{n} dias restantes",
+    "many": "{n} dias restantes"
+  },
+  "atLimit": "No limite",
+  "overBy": {
+    "one": "{n} dia acima do limite",
+    "other": "{n} dias acima do limite",
+    "many": "{n} dias acima do limite"
+  }
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>S</span><span>T</span><span>Q</span><span>Q</span><span>S</span><span>S</span><span>D</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>Linha do tempo</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Acompanhar no AtlasDays</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="uk-ilr-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="uk-ilr-import-title">Acompanhar no AtlasDays</p>
+            <p class="cal-dialog-sub">Continue contando seus dias enquanto viaja. App gratuito para iPhone e iPad.</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>Verifique se o AtlasDays está instalado no seu iPhone ou iPad</strong><span>Grátis na App Store.</span></li>
+            <li><strong data-cal-stays>Escaneie o código QR para carregar todas as viagens no AtlasDays</strong><span data-cal-stays>Confira e toque em Importar.</span><strong data-cal-tracker hidden>Escaneie o código QR para adicionar este controle ao AtlasDays</strong><span data-cal-tracker hidden>Confira e toque em Salvar.</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>Baixe o AtlasDays</strong><span>Grátis na App Store. Já tem o app? Pule para o passo 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+          <li><strong data-cal-stays>Abra suas estadias no app</strong><span data-cal-stays>Confira e toque em Importar. Nada é salvo antes disso.</span><strong data-cal-tracker hidden>Abra este controle no app</strong><span data-cal-tracker hidden>Confira e toque em Salvar. Nada é salvo antes disso.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Abrir no AtlasDays</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>Baixe o AtlasDays</strong><span>Grátis na App Store, para iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+          <li><strong>Importe suas estadias com um arquivo</strong><span>São estadias demais para caber em um link. Baixe o arquivo e abra-o no iPhone com o AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Baixar arquivo</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Baixar as viagens em um arquivo CSV</button><span data-cal-downloaded hidden>Abra este arquivo no iPhone com o AtlasDays.</span></p>
+          <button type="button" data-cal-close>Fechar</button>
+        </div>
+      </dialog>
+    </div>
+
+    <h2>Como a calculadora faz a contagem</h2>
+    <ul>
+      <li><strong>Só dias inteiros.</strong> O dia da partida e o dia da volta não contam como dias no exterior, então uma viagem de 1º a 10 de junho representa oito dias fora (2 a 9 de junho), e uma viagem de menos de 24 horas não soma nenhum dia.</li>
+      <li><strong>Os 12 meses até uma data.</strong> O controle conta seus dias no exterior nos 12 meses até a data em “Contar até”, que é hoje, a menos que você escolha outra. Planejando uma viagem? Em “Contar até”, escolha o dia da volta.</li>
+      <li><strong>Meses de calendário, não blocos de 365 dias.</strong> A janela encerrada em 9 de janeiro de 2027 começa em 10 de janeiro de 2026; dias de ano bissexto entram quando houver.</li>
+    </ul>
+
+    <h2>Quando valem outras regras</h2>
+    <p>A calculadora aplica o limite atual de 180 dias às datas informadas. Algumas situações seguem regras próprias, e o guia de ILR explica cada uma:</p>
+    <ul>
+      <li><strong>Seu período de qualificação.</strong> Só ausências dentro dele contam. Marque viagens dos anos usados no pedido, não viagens anteriores.</li>
+      <li><strong>Autorização concedida antes de 11 de janeiro de 2018.</strong> Ausências desse período são testadas em blocos consecutivos de 12 meses que terminam no aniversário da data do pedido, não numa janela móvel.</li>
+      <li><strong>Ausências em Long Residence antes de 11 de abril de 2024.</strong> Os limites antigos de 548 dias no total e 184 dias numa única ausência ainda valem para elas.</li>
+      <li><strong>Ausências que podem ser desconsideradas.</strong> Algumas ausências por doença grave, transtornos de viagem ou trabalho em situações de crise podem ser excluídas. A calculadora conta todos os dias marcados.</li>
+      <li><strong>Outros requisitos do pedido.</strong> Residência legal, inglês, Life in the UK e idoneidade são avaliados separadamente.</li>
+    </ul>
+    <p>A regra, inclusive a data a partir da qual os 12 meses são contados para trás, está no guia <a href="/pt/learn/uk-ilr-absence-limit">ILR no Reino Unido: limite de 180 dias de ausência em qualquer período de 12 meses</a>. A cidadania tem limites distintos: veja <a href="/pt/learn/uk-citizenship-absence-limits">cidadania britânica: limites de 450 e 90 dias de ausência</a>.</p>
+
+    <div class="cta-box">
+      <span class="cta-logo">
+        <img class="logo-dark" src="/assets/brand/logo_dark.png?v=20260325a" alt="Logo do AtlasDays" width="52" height="52" />
+        <img class="logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="Logo do AtlasDays" width="52" height="52" />
+      </span>
+      <h2>Mantenha a contagem atualizada durante as viagens</h2>
+      <p>A calculadora verifica as viagens que você lembra hoje. O modelo <strong>Indefinite Leave to Remain (Reino Unido)</strong> no AtlasDays continua contando durante suas viagens, com privacidade no iPhone, e avisa antes que uma viagem leve você acima de 180 dias.</p>
+      <a class="cta-btn" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> {{t:cta.get_app}}</a>
+    </div>
+
+    <h2>Perguntas frequentes</h2>
+    <h3>O resultado da calculadora é definitivo?</h3>
+    <p>Não. Ela aplica o limite geral às datas inseridas. Autorização antiga, histórico de Long Residence, ausências que podem ser desconsideradas e seu período de qualificação podem alterar o resultado. A decisão cabe ao Home Office.</p>
+    <h3>Por que duas semanas de férias aparecem como menos de 14 dias?</h3>
+    <p>Porque só dias inteiros fora contam. Partida e retorno não são dias de ausência; uma viagem de 1º a 15 de junho representa 13 dias fora.</p>
+    <h3>Os dados que informo ficam salvos?</h3>
+    <p>Não. A calculadora funciona no navegador e não envia, registra nem salva as datas. Fechar ou recarregar a página apaga os dados. Para guardá-los, toque em Acompanhar no AtlasDays.</p>

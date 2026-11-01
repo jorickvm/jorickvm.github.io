@@ -1,0 +1,58 @@
+    <nav class="breadcrumb">
+      <a href="/ko/">AtlasDays</a> / <a href="/ko/learn/">여행 규정</a> / <a href="/ko/learn/guides">가이드</a>
+    </nav>
+
+    <h1>Flighty 기록을 비자·거주 체류 일수로 계산하는 방법</h1>
+    <p class="subtitle">Flighty 항공편을 CSV로 내보내 AtlasDays로 가져온 뒤 생성된 여행을 검토하는 방법입니다.</p>
+    <p class="verified">최종 확인: 2026년 9월</p>
+
+    <div class="tldr">
+      <p><strong>요약:</strong> Flighty는 항공편을 기록하지만 <strong>국가별 체류 일수</strong>는 계산하지 않습니다. Flighty 기록을 <strong>CSV</strong>로 내보내 AtlasDays로 가져오면 항공편을 날짜가 포함된 여행으로 변환하고 솅겐 90/180, 183일 규정 등의 일수를 계산합니다.</p>
+    </div>
+
+    <h2>Flighty에서 항공편 내보내기</h2>
+    <ol class="steps">
+      <li>Flighty에서 <strong>Settings</strong> → <strong>Account Data</strong>를 열고 항공편을 내보냅니다.</li>
+      <li>CSV 파일을 파일 앱에 저장합니다(예: iCloud Drive 또는 나의 iPhone). 먼저 스프레드시트에서 열어 다시 저장하지 마십시오.</li>
+    </ol>
+    <p>내보내기 파일에는 Flighty에 있는 항공편만 들어갑니다. 오래된 여행이 없다면 내보내기 전에 추가하십시오. Flighty에서 최근 1년의 항공편 가져오기는 무료지만 <strong>더 오래된 항공편에는 Flighty Pro가 필요합니다</strong>.</p>
+
+    <h2>AtlasDays로 가져오기</h2>
+    <ol class="steps">
+      <li>AtlasDays를 열고 <strong>설정 → 가져오기 → Flighty</strong>로 이동합니다.</li>
+      <li><strong>Flighty CSV 선택</strong>을 누르고 저장한 파일을 선택합니다.</li>
+      <li>AtlasDays가 iPhone에서 파일을 분석하고 경유, 야간 항공편, 미완성 여행, 중복, 겹침의 개수가 표시된 미리보기를 보여 줍니다. 항목을 눌러 해당 여행을 검토하십시오.</li>
+      <li>원하지 않는 항목의 선택을 해제한 다음 <strong>가져오기</strong>를 누르고 확인합니다.</li>
+    </ol>
+    <p>각 화면의 스크린샷은 <a href="/ko/help/flighty-import">설명 센터: Flighty 가져오기</a>에서 확인할 수 있습니다. 가져오기는 <strong>무료</strong>입니다. 미국 여행을 주별로 나누는 기능에만 AtlasDays Pro가 필요합니다. 항공편은 다음과 같이 처리됩니다.</p>
+    <ul>
+      <li><strong>공항을 국가로 변환.</strong> 한 국가에 도착한 항공편과 그다음 출발 항공편 사이를 하나의 체류로 묶고 그 사이 국내선은 같은 여행에 포함합니다.</li>
+      <li><strong>10시간 미만의 경유는 환승으로 처리</strong>하여 어느 일수 계산에도 더하지 않습니다. 10~24시간의 경유는 장시간 경유 경고가 붙은 체류로 처리되므로 직접 판단해야 합니다. <a href="/ko/learn/does-a-layover-count-as-visiting-a-country">경유도 국가 방문으로 계산됩니까?</a>를 참고하십시오.</li>
+      <li><strong>항공편 정보는 여행 메모에 보관:</strong> 각 체류의 날짜, 시간, 경로, 편명을 기록합니다. 취소된 항공편은 건너뜁니다.</li>
+      <li><strong>승인 전에는 저장되지 않음.</strong> 도착 또는 출발 항공편이 빠진 여행은 미완성으로 표시되므로 추정 날짜를 받아들이지 않고 직접 날짜를 추가할 수 있습니다.</li>
+    </ul>
+
+    <h2>계산 결과를 사용하기 전에</h2>
+    <ul>
+      <li><strong>육로 국경 통과는 보이지 않음.</strong> 기차, 페리, 자동차로 넘은 국경은 항공편 기록에 나오지 않으므로 날짜를 직접 입력하십시오.</li>
+      <li><strong>한도 계산에 포함된 여행 확인.</strong> 경유 한 번을 잘못 해석하거나 항공편 구간이 빠지면 <a href="/ko/learn/schengen-90-180-rule">솅겐 90/180</a> 합계가 달라집니다. 확인하려는 기간 안의 모든 체류를 검토하십시오.</li>
+      <li><strong>Flighty 기록 이전의 공백 확인.</strong> Flighty에 기록하지 않은 연도는 여러 해의 합계를 계산하기 전에 다른 기록으로 채워야 합니다.</li>
+    </ul>
+
+    <div class="cta-box">
+      <span class="cta-logo">
+        <img class="logo-dark" src="/assets/brand/logo_dark.png?v=20260325a" alt="AtlasDays 로고" width="52" height="52" />
+        <img class="logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="AtlasDays 로고" width="52" height="52" />
+      </span>
+      <h2>Flighty 내보내기 파일로 AtlasDays에서 체류 일수 계산</h2>
+      <p>Flighty CSV를 무료로 가져와 저장 전에 체류와 환승을 검토하십시오. <strong>솅겐 90/180 단기 체류 규정</strong> 프리셋과 다른 트래커가 iPhone에서 비공개로 일수를 계산합니다.</p>
+      <a class="cta-btn" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> {{t:cta.get_app}}</a>
+    </div>
+
+    <h2>자주 묻는 질문</h2>
+    <h3>Flighty가 국가별 체류 일수를 계산합니까?</h3>
+    <p>아닙니다. Flighty는 항공편을 기록하고 통계를 만들지만 국가별 체류 일수를 합산하거나 비자·거주 한도와 비교하지 않습니다. 먼저 항공편을 날짜가 있는 체류로 변환해야 하며, Flighty CSV를 AtlasDays로 가져오면 이 작업을 할 수 있습니다.</p>
+    <h3>Flighty 여행 기록은 어떻게 내보냅니까?</h3>
+    <p>Flighty에서 Settings → Account Data를 열고 항공편을 내보냅니다. 스프레드시트에서 다시 저장하면 Flighty 형식과 달라질 수 있으므로 원본 CSV 파일을 수정하지 않은 채 파일 앱에 보관하십시오.</p>
+    <h3>Flighty 항공편을 AtlasDays로 가져오는 데 비용이 듭니까?</h3>
+    <p>아닙니다. 체류, 환승, 중복, 겹침을 검토하는 기능을 포함해 Flighty 가져오기는 AtlasDays 무료 버전에서 사용할 수 있습니다. 미국 여행을 주별로 추적할 때만 AtlasDays Pro가 필요합니다.</p>

@@ -1,0 +1,122 @@
+    <nav class="breadcrumb">
+      <a href="/nl/">AtlasDays</a> / <a href="/nl/learn/">Reisregels</a> / <a href="/nl/learn/calculators">Calculators</a>
+    </nav>
+    <img class="title-flag" src="/assets/flags/gb.png" alt="Vlag van het Verenigd Koninkrijk" width="56" height="42" />
+    <h1>ILR-calculator voor afwezigheid: 180 dagen in elke periode van 12 maanden</h1>
+    <p class="subtitle">Tik voor elke reis op de dag waarop je het VK verliet en de dag waarop je terugkwam. De tracker laat je dagen buiten het VK zien in de 12 maanden tot en met een willekeurige datum, geplande reizen meegerekend.</p>
+    <p class="verified">Laatst gecontroleerd: oktober 2026</p>
+
+    <h2>Controleer je afwezigheid</h2>
+    <div class="daycal" id="uk-ilr" data-day-calendar="ukIlr">
+      <script type="application/json" data-cal-strings>
+{
+  "hintStart": "Tik op de dag waarop je het VK verliet en daarna op de dag waarop je terugkwam.",
+  "hintEnd": "Tik op het andere uiteinde van de reis.",
+  "inTrip": "buiten het VK",
+  "pending": "begin van een nieuwe reis",
+  "empty": "Nog geen reizen.",
+  "deleteTrip": "Verwijder reis",
+  "country": "Land",
+  "addCountry": "Voeg land toe",
+  "noMatch": "Geen land gevonden",
+  "hintSelected": "Sleep een van beide uiteinden van de reis om de datums te wijzigen, of verwijder de reis hieronder.",
+  "tripAway": {
+    "one": "{n} dag afwezig",
+    "other": "{n} dagen afwezig"
+  },
+  "title": "Dagen buiten het VK",
+  "checkOn": "Tel tot en met",
+  "checkOnCaption": "Je dagen buiten het VK in de 12 maanden tot en met deze datum. Kies voor een geplande reis de dag waarop je terugkomt.",
+  "remaining": {
+    "one": "{n} dag resterend",
+    "other": "{n} dagen resterend"
+  },
+  "atLimit": "Limiet bereikt",
+  "overBy": {
+    "one": "{n} dag boven de limiet",
+    "other": "{n} dagen boven de limiet"
+  }
+}
+      </script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>M</span><span>D</span><span>W</span><span>D</span><span>V</span><span>Z</span><span>Z</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>Tijdlijn</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Houd dit bij in AtlasDays</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="uk-ilr-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="uk-ilr-import-title">Houd dit bij in AtlasDays</p>
+            <p class="cal-dialog-sub">Tel je dagen door terwijl je reist. Gratis app voor iPhone en iPad.</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <ol class="cal-steps">
+            <li><strong>Zorg dat AtlasDays op je iPhone of iPad staat</strong><span>Gratis in de App Store.</span></li>
+            <li><strong data-cal-stays>Scan de QR-code om alle reizen in AtlasDays te laden</strong><span data-cal-stays>Controleer ze en tik dan op Importeren.</span><strong data-cal-tracker hidden>Scan de QR-code om deze tracker in AtlasDays in te stellen</strong><span data-cal-tracker hidden>Controleer hem en tik dan op Bewaar.</span></li>
+          </ol>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li data-cal-store><strong>Download AtlasDays</strong><span>Gratis in de App Store. Heb je de app al? Ga door naar stap 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+          <li><strong data-cal-stays>Open je verblijven in de app</strong><span data-cal-stays>Controleer ze en tik dan op Importeren. Tot die tijd wordt er niets bewaard.</span><strong data-cal-tracker hidden>Open deze tracker in de app</strong><span data-cal-tracker hidden>Controleer hem en tik dan op Bewaar. Tot die tijd wordt er niets bewaard.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Open AtlasDays</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li data-cal-store><strong>Download AtlasDays</strong><span>Gratis in de App Store voor iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+          <li><strong>Importeer je verblijven met een bestand</strong><span>Dat zijn meer verblijven dan er in een link passen. Download het bestand en open het op je iPhone met AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Download bestand</button></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Download je reizen als CSV-bestand</button><span data-cal-downloaded hidden>Open dit bestand op je iPhone met AtlasDays.</span></p>
+          <button type="button" data-cal-close>Sluit</button>
+        </div>
+      </dialog>
+    </div>
+
+    <h2>Zo telt de calculator</h2>
+    <ul>
+      <li><strong>Alleen hele dagen.</strong> De vertrekdag en de terugkeerdag zijn geen dagen buiten het VK, dus een reis van 1 juni tot 10 juni is acht dagen afwezigheid (2 tot en met 9 juni), en een reis van minder dan 24 uur voegt niets toe.</li>
+      <li><strong>De 12 maanden tot en met één datum.</strong> De tracker telt je dagen buiten het VK in de 12 maanden tot en met de datum waarop je de telling laat eindigen, vandaag tenzij je een andere kiest. Plan je een reis? Tel tot en met de dag waarop je terugkomt.</li>
+      <li><strong>Kalendermaanden, geen blokken van 365 dagen.</strong> Een periode die eindigt op 9 januari 2027 begint op 10 januari 2026. Schrikkeldagen tellen mee.</li>
+    </ul>
+
+    <h2>Als er andere regels gelden</h2>
+    <p>De calculator past de huidige limiet van 180 dagen toe op de datums die je invoert. Voor een paar situaties gelden eigen regels, en de ILR-gids legt ze uit:</p>
+    <ul>
+      <li><strong>Je kwalificerende periode.</strong> Alleen afwezigheid binnen die periode telt. Markeer de reizen uit de jaren waarop je aanvraag is gebaseerd, geen oudere reizen.</li>
+      <li><strong>Toestemming verleend vóór 11 januari 2018.</strong> Afwezigheid in die periode wordt getoetst in opeenvolgende periodes van 12 maanden die eindigen op de jaardag van je aanvraagdatum, niet in een voortschrijdende periode.</li>
+      <li><strong>Afwezigheid tijdens Long Residence vóór 11 april 2024.</strong> Daarop gelden nog de oude limieten van in totaal 548 dagen en 184 dagen voor één afwezigheid.</li>
+      <li><strong>Toegestane afwezigheid.</strong> Sommige afwezigheid wegens ernstige ziekte, reisverstoring of werk tijdens een crisis kan buiten beschouwing blijven. De calculator telt elke dag die je markeert.</li>
+      <li><strong>De rest van je aanvraag.</strong> Rechtmatig verblijf, Engels, Life in the UK en geschiktheid zijn aparte vereisten.</li>
+    </ul>
+    <p>De regel zelf, inclusief de datum van waaraf de periode van 12 maanden wordt teruggerekend, staat in <a href="/nl/learn/uk-ilr-absence-limit">Britse ILR-afwezigheidsregel: 180 dagen in elke periode van 12 maanden</a>. Voor staatsburgerschap gelden andere limieten: lees <a href="/nl/learn/uk-citizenship-absence-limits">Brits staatsburgerschap: de afwezigheidslimieten van 450 en 90 dagen</a>.</p>
+
+    <div class="cta-box">
+      <span class="cta-logo">
+        <img class="logo-dark" src="/assets/brand/logo_dark.png?v=20260325a" alt="AtlasDays-logo" width="52" height="52" />
+        <img class="logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="AtlasDays-logo" width="52" height="52" />
+      </span>
+      <h2>Houd de telling ook na vandaag bij</h2>
+      <p>Een calculator controleert de reizen die je je nu herinnert. De preset voor <strong>Britse Indefinite Leave to Remain</strong> in AtlasDays telt tijdens je reizen verder, privé op je iPhone, en waarschuwt voordat een reis je boven 180 dagen brengt.</p>
+      <a class="cta-btn" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> {{t:cta.get_app}}</a>
+    </div>
+
+    <h2>Veelgestelde vragen</h2>
+    <h3>Is de uitkomst van de calculator definitief?</h3>
+    <p>Nee. De calculator past de hoofdlimiet toe op de ingevoerde datums. Eerdere toestemming, je Long Residence-geschiedenis, toegestane afwezigheid en je kwalificerende periode kunnen de uitkomst veranderen. Het Home Office beslist.</p>
+    <h3>Waarom laat een vakantie van twee weken minder dan 14 dagen zien?</h3>
+    <p>Omdat alleen hele dagen buiten het VK tellen. De vertrek- en terugkeerdag zijn geen afwezigheidsdagen. Een reis van 1 juni tot 15 juni telt daarom als 13 dagen.</p>
+    <h3>Worden mijn gegevens opgeslagen?</h3>
+    <p>Nee. De calculator draait in je browser en verzendt, registreert of bewaart de ingevoerde datums niet. Als je de pagina sluit of opnieuw laadt, verdwijnen ze. Tik op Houd dit bij in AtlasDays om ze te bewaren.</p>

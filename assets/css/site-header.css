@@ -1,0 +1,560 @@
+@import url("brand.css?v=20261027f");
+
+/* Shared site header for every page on the site, homepage included.
+   Colours come from the page through var(). The width does not: the bar
+   uses --site-max and --site-gutter from tokens.css on every page, so it
+   never follows a page's own content width (--max). Loaded after the
+   page's own <style> block so it wins the cascade against inline header
+   rules. Pages do not carry their own copy of the header styles. */
+
+.skip-link {
+  position: fixed;
+  top: -80px;
+  left: 16px;
+  z-index: 100;
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: var(--blue, #1692ff);
+  color: #fff;
+  font-weight: 700;
+  text-decoration: none;
+}
+.skip-link:focus { top: 14px; }
+
+.top-bar {
+  /* One size for every square control in the bar: the theme toggle, the
+     language button once it collapses to an icon, and the Menu button.
+     They sit next to each other, so a 44px Menu button beside a 36px
+     toggle reads as a mistake rather than as hierarchy. */
+  --toolbar-control: 36px;
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  padding: 0;
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  background: var(--header-bg);
+  border-bottom: 1px solid var(--line, rgba(255,255,255,0.10));
+}
+
+.top-bar a:focus-visible,
+.top-bar button:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+
+.top-bar-inner {
+  width: min(var(--site-max, 1040px), calc(100% - 2 * var(--site-gutter, 20px)));
+  margin: 0 auto;
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.top-links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  color: var(--muted, #b2b9c5);
+  font-size: 0.94rem;
+}
+.top-links a {
+  color: inherit;
+  text-decoration: none;
+  transition: color 140ms ease;
+  /* CJK has no spaces, so a nav label will otherwise break at any character:
+     Japanese "ホーム" wraps to "ホー / ム". These labels are short in every
+     language and are never the reason the bar overflows. */
+  white-space: nowrap;
+}
+.top-links a:hover { color: var(--text); }
+.top-links a[aria-current="page"] {
+  color: var(--text);
+  font-weight: 600;
+}
+
+/* Use-cases dropdown.
+
+   A `<details>` rather than a hover menu: hover-only submenus are unreachable
+   by keyboard and by touch, and the mobile menu already uses `<details>`. It
+   opens on click in every input mode, and Escape closes it (see
+   navigation.js).
+
+   The panel is `position: absolute` inside a `position: relative` summary
+   parent, so it never widens the bar. `.top-bar` sets its own stacking
+   context, hence the modest z-index. */
+.nav-group {
+  position: relative;
+}
+.nav-group > summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  color: inherit;
+  white-space: nowrap;
+  list-style: none;
+  transition: color 140ms ease;
+}
+.nav-group > summary::-webkit-details-marker { display: none; }
+.nav-group > summary::marker { content: ""; }
+.nav-group > summary:hover { color: var(--text); }
+.nav-group > summary:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+.nav-group[data-current] > summary {
+  color: var(--text);
+  font-weight: 600;
+}
+.nav-group-caret {
+  transition: transform 160ms ease;
+}
+.nav-group[open] .nav-group-caret {
+  transform: rotate(180deg);
+}
+.nav-group-panel {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 30;
+  min-width: 240px;
+  padding: 8px;
+  display: grid;
+  gap: 2px;
+  border: 1px solid var(--line-strong, var(--line));
+  border-radius: 16px;
+  background: var(--bg-card);
+  box-shadow: var(--shadow);
+}
+.top-links .nav-group-panel a {
+  display: block;
+  padding: 9px 12px;
+  border-radius: 10px;
+  white-space: normal;
+  line-height: 1.35;
+}
+.top-links .nav-group-panel a:hover {
+  color: var(--text);
+  background: var(--blue-soft);
+}
+.nav-group-panel a small {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.82rem;
+  color: var(--muted-2, var(--muted));
+}
+.top-links .nav-group-panel a:hover small { color: inherit; }
+
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  color: var(--muted);
+  cursor: pointer;
+  width: var(--toolbar-control);
+  height: var(--toolbar-control);
+  display: inline-grid;
+  place-items: center;
+  padding: 0;
+  transition: border-color 160ms ease, color 160ms ease;
+}
+.theme-toggle:hover {
+  color: var(--text);
+  border-color: var(--blue);
+}
+.theme-toggle:focus-visible { border-color: var(--blue); }
+
+/* Theme controls always contain both icons so the switch can update without
+   replacing DOM. Visibility belongs here, in the shared header, rather than in
+   individual page variants: otherwise a page that omits the duplicate rule
+   displays the sun and moon at the same time. */
+.theme-toggle .icon-sun,
+.theme-toggle .icon-moon { grid-area: 1 / 1; }
+.theme-toggle .icon-moon { display: none; }
+html[data-theme="dark"] .theme-toggle .icon-sun { display: block; }
+html[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+html[data-theme="light"] .theme-toggle .icon-sun { display: none; }
+html[data-theme="light"] .theme-toggle .icon-moon { display: block; }
+
+.top-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  min-height: var(--toolbar-control);
+  padding: 0 16px;
+  border-radius: 999px;
+  background: var(--action-gradient);
+  box-shadow: var(--action-chrome);
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  transition: opacity 140ms ease;
+}
+.top-links a.top-cta,
+.top-links a.top-cta:hover {
+  color: #fff;
+  text-decoration: none;
+}
+.top-cta:hover { opacity: 0.92; }
+/* The glyph sits slightly high against a cap-height label without this. */
+.top-cta-glyph { margin-top: -2px; flex: none; }
+
+/* App Store QR popup on the CTA. Pointer and keyboard users can follow the
+   QR link; phone-sized layouts keep the direct download button. */
+.nav-cta-wrap { position: relative; }
+.nav-qr-popup { display: none; }
+@media (min-width: 861px) and (hover: hover) {
+  .nav-qr-popup {
+    display: block;
+    position: absolute;
+    top: calc(100% + 10px);
+    right: 0;
+    box-sizing: border-box;
+    width: 194px;
+    background: var(--bg-card);
+    border: 1px solid var(--line-strong);
+    border-radius: 18px;
+    padding: 14px;
+    box-shadow: 0 12px 32px rgba(0,0,0,0.18);
+    z-index: 200;
+    pointer-events: none;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-4px);
+    transition: opacity 140ms ease, transform 140ms ease, visibility 140ms;
+  }
+  .nav-cta-wrap:hover .nav-qr-popup,
+  .nav-cta-wrap:focus-within .nav-qr-popup {
+    pointer-events: auto;
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .nav-qr-popup::before { content: ""; position: absolute; inset: auto 0 100%; height: 14px; }
+  .nav-qr-popup span { display: block; margin-top: 8px; font-size: 0.84rem; font-weight: 400; line-height: 1.4; text-align: center; white-space: normal; color: var(--muted); }
+  .nav-cta-wrap.is-qr-dismissed .nav-qr-popup { visibility: hidden; opacity: 0; pointer-events: none; }
+  .nav-qr-popup img {
+    width: 164px;
+    height: 164px;
+    max-width: none;
+    display: block;
+    border-radius: 8px;
+  }
+}
+
+/* Language menu. Its links are the page's hreflang alternates, placed inside
+   one disclosure so the header width stays constant as locales are added. */
+.lang-switch { position: relative; }
+.lang-switch > summary {
+  min-height: var(--toolbar-control);
+  padding: 0 9px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  color: var(--muted);
+  cursor: pointer;
+  font-size: 0.9em;
+  line-height: 1;
+  list-style: none;
+  white-space: nowrap;
+  transition: border-color 160ms ease, color 160ms ease;
+}
+.lang-switch > summary::-webkit-details-marker { display: none; }
+.lang-switch > summary::marker { content: ""; }
+.lang-switch > summary:hover,
+.lang-switch > summary:focus-visible {
+  color: var(--text);
+  border-color: var(--blue);
+}
+.lang-switch > summary:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 3px;
+}
+.lang-switch-caret { transition: transform 160ms ease; }
+.lang-switch[open] .lang-switch-caret { transform: rotate(180deg); }
+.lang-switch-panel {
+  position: absolute;
+  z-index: 50;
+  top: calc(100% + 10px);
+  right: 0;
+  width: max-content;
+  min-width: 190px;
+  max-width: min(280px, calc(100vw - 28px));
+  max-height: min(420px, calc(100vh - 100px));
+  overflow-y: auto;
+  padding: 8px;
+  display: grid;
+  gap: 2px;
+  border: 1px solid var(--line-strong, var(--line));
+  border-radius: 14px;
+  background: var(--bg-card);
+  box-shadow: var(--shadow, 0 18px 48px rgba(0, 0, 0, 0.28));
+}
+/* Scoped to the panel, not to .top-links, so the rows keep their styling
+   wherever the menu is placed. */
+.lang-switch-panel .lang-switch-option {
+  min-height: 50px;
+  padding: 6px 10px;
+  display: grid;
+  grid-template-columns: 16px 1fr;
+  align-items: center;
+  gap: 9px;
+  border-radius: 9px;
+  color: var(--text);
+  line-height: 1.25;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.lang-switch-label {
+  display: grid;
+  gap: 1px;
+}
+.lang-switch-native {
+  font-weight: 550;
+}
+.lang-switch-english {
+  color: var(--muted);
+  font-size: 0.78rem;
+  font-weight: 450;
+  line-height: 1.2;
+}
+.lang-switch-panel a.lang-switch-option:hover,
+.lang-switch-panel a.lang-switch-option:focus-visible {
+  color: var(--text);
+  background: var(--blue-soft, color-mix(in srgb, var(--blue) 10%, transparent));
+}
+.lang-switch-option.is-current {
+  color: var(--text);
+  background: var(--blue-soft, color-mix(in srgb, var(--blue) 10%, transparent));
+}
+.lang-switch-option.is-current .lang-switch-native { font-weight: 700; }
+.lang-switch-check { width: 15px; height: 15px; }
+.mobile-menu { display: none; position: relative; }
+.mobile-menu > summary {
+  min-height: var(--toolbar-control);
+  padding: 0 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  color: var(--text);
+  cursor: pointer;
+  list-style: none;
+  font-weight: 600;
+  font-size: 0.92rem;
+}
+.mobile-menu > summary::-webkit-details-marker { display: none; }
+.mobile-menu > summary:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+.mobile-menu-panel {
+  position: absolute;
+  z-index: 50;
+  top: calc(100% + 10px);
+  right: 0;
+  width: min(290px, calc(100vw - 28px));
+  padding: 10px;
+  display: grid;
+  gap: 3px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--bg-card);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.28);
+}
+.mobile-menu-panel a {
+  min-height: 44px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  color: var(--muted);
+  text-decoration: none;
+}
+.mobile-menu-panel a:hover,
+.mobile-menu-panel a[aria-current="page"] { color: var(--text); background: color-mix(in srgb, var(--blue) 10%, transparent); }
+
+/* Use cases inside the drawer: a collapsed disclosure, like the desktop
+   dropdown, so the section does not take up a third of the drawer's height.
+   Nested <details> is fine here: the outer menu is open by the time this
+   one is reachable, and navigation.js closes both on Escape. */
+.mobile-nav-group > summary {
+  min-height: 44px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  border-radius: 10px;
+  color: var(--muted);
+  cursor: pointer;
+  list-style: none;
+}
+.mobile-nav-group > summary::-webkit-details-marker { display: none; }
+.mobile-nav-group > summary::marker { content: ""; }
+.mobile-nav-group > summary:hover { color: var(--text); background: color-mix(in srgb, var(--blue) 10%, transparent); }
+.mobile-nav-group > summary:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+.mobile-nav-group[data-current] > summary { color: var(--text); font-weight: 600; }
+.mobile-nav-group[open] .nav-group-caret { transform: rotate(180deg); }
+.mobile-nav-group-panel { display: grid; gap: 3px; }
+.mobile-nav-group-panel a { padding-left: 24px; }
+
+/* The wider wordmark needs more room beside long translated navigation.
+   Keep this header-only so the footer retains the complete signature. */
+@media (max-width: 1120px) {
+  .top-bar .brand-wordmark { display: none; }
+}
+
+/* Compact the language control before switching to the navigation drawer. */
+@media (max-width: 1040px) {
+  .lang-switch > summary {
+    width: var(--toolbar-control);
+    padding: 0;
+    justify-content: center;
+  }
+  .lang-switch-current,
+  .lang-switch-caret { display: none; }
+}
+
+/* The bar collapses to the drawer at 860px: at 780px its children already
+   need 763px of a 740px inner width, even in English. */
+@media (max-width: 860px) {
+  /* The bar stays sticky and translucent here, as on desktop, so the nav and
+     the download button stay reachable on a phone and the reveal-on-scroll
+     CTA has a bar to appear in. `--header-bg` is derived from `--wash-top`
+     for this. Raised z-index because the drawer panel is absolutely
+     positioned beneath it. */
+  .top-bar { z-index: 40; }
+  .top-bar-inner {
+    width: min(var(--site-max, 1040px), calc(100% - 2 * var(--site-gutter, 20px)));
+    min-height: 56px;
+    gap: 14px;
+  }
+  .brand-mark { width: 32px; height: 32px; }
+  /* The nav links collapse into the drawer, but the CTA, the theme toggle and
+     the language switcher stay in the bar, pushed right against the Menu
+     button, so these one-tap controls stay visible on a phone. */
+  .top-links > a,
+  .top-links > .nav-group { display: none; }
+  .top-links { margin-left: auto; gap: 8px; }
+  .mobile-menu { display: block; }
+  /* Pages with a hero download button (the homepage and use-case pages):
+     while that button is on screen the bar's button would duplicate it, so it
+     waits until the hero button scrolls away. marketing.js and home.js set
+     the body class; other pages never do, and without JavaScript the button
+     stays visible.
+
+     Hidden with visibility rather than `display: none` so the button keeps
+     its space in the bar: the language, theme and Menu controls stay put
+     instead of sliding sideways when it appears. */
+  body.hero-cta-in-view .nav-cta-wrap {
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .nav-cta-wrap {
+    transition: opacity 160ms ease, visibility 160ms ease;
+  }
+}
+
+/* The wordmark and the language name are already gone by here; this is where
+   the Menu button drops its label and joins them as a square. */
+@media (max-width: 560px) {
+  .mobile-menu-label { display: none; }
+  .mobile-menu > summary {
+    width: var(--toolbar-control);
+    padding: 0;
+    justify-content: center;
+  }
+  .top-cta { padding: 0 13px; font-size: 0.9rem; }
+}
+
+/* Between the 380px label cut-off below and ~400px, the longest download
+   labels (Ukrainian, Dutch, Spanish) overflowed the bar by up to 14px, on the
+   most common iPhone widths. Tighter gaps return ~18px, so every label stays. */
+@media (max-width: 420px) {
+  .top-bar-inner { gap: 10px; }
+  .top-links { gap: 6px; }
+  .top-cta { padding: 0 10px; gap: 5px; }
+}
+
+/* Below ~380px the CTA label and three square controls stop fitting on one
+   line alongside the logo. The label goes and the glyph carries the button; the
+   anchor keeps its aria-label, so the accessible name does not go with it. */
+@media (max-width: 380px) {
+  .top-cta { padding: 0; width: var(--toolbar-control); border-radius: 10px; }
+  .top-cta-label { display: none; }
+  .top-cta-glyph { margin-top: 0; }
+}
+
+/* Inline mid-article CTA (learn/help article bodies) */
+.midcta {
+  margin: 30px 0;
+  padding: 15px 20px;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--blue);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--blue) 7%, transparent);
+}
+.midcta p { margin: 0; color: var(--muted); font-size: 0.98rem; line-height: 1.6; }
+.midcta strong { color: var(--text); }
+.midcta a { color: var(--blue); font-weight: 600; white-space: nowrap; }
+
+/* Body links should remain identifiable without relying on color alone. */
+article a {
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+article .breadcrumb a { text-decoration: none; }
+
+/* Translation offer, injected by assets/js/locale-route.js on a page that has
+   a translation the reader's browser prefers. It sits under the header rather
+   than over the content, so the page itself stays where the reader expects it. */
+.lang-offer {
+  border-bottom: 1px solid var(--line);
+  background: color-mix(in srgb, var(--blue) 8%, transparent);
+  font-size: 0.88rem;
+}
+.lang-offer-inner {
+  /* Same measure as .top-bar-inner, so the offer lines up with the nav above
+     it rather than with the viewport edge. */
+  width: min(var(--site-max, 1040px), calc(100% - 2 * var(--site-gutter, 20px)));
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 9px 0;
+}
+.lang-offer-link {
+  flex: 1 1 auto;
+  min-width: 0;
+  color: var(--blue);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+.lang-offer-close {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 26px;
+  height: 26px;
+  padding: 0;
+  border: 0;
+  border-radius: 7px;
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+}
+.lang-offer-close:hover { background: color-mix(in srgb, var(--text) 8%, transparent); color: var(--text); }
+
+@media (max-width: 760px) {
+  .lang-offer { font-size: 0.85rem; }
+  .lang-offer-inner { width: min(var(--site-max, 1040px), calc(100% - 2 * var(--site-gutter, 20px))); }
+}

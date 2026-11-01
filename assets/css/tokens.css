@@ -1,0 +1,252 @@
+/* AtlasDays site tokens.
+
+   The single source for palette, background wash, and card surface. Loaded
+   first on every page, ahead of the per-page variant stylesheets, which carry
+   layout only.
+
+   The wash and the card fills mirror the app's background wash and card
+   surface at the Atlas blue accent. Values are resolved to hex because the
+   web has no platform color to mix against; if the app's wash changes, they
+   need recomputing.
+
+   Two strengths, matching the app's intensity steps:
+     default        the app's medium step. Marketing surfaces (home, hubs).
+     .wash-subtle   the app's subtle step. Long-form reading (learn, help,
+                    legal), where sustained text should not sit on a tinted
+                    field. Set on <html> by the build.
+
+   The app's wash spans one phone screen and resolves by about 85% of it. A
+   page is far taller, so the gradient is sized to one viewport and does not
+   repeat: the page is tinted where you land and settles into the plain
+   canvas further down. */
+
+:root,
+html[data-theme="dark"] {
+  color-scheme: dark;
+
+  /* Brand blue, fixed. `--brand` is the app's accent and is what the wash and
+     halo are built from. `--blue` is the interactive color (links, CTAs) and
+     darkens in light mode for contrast, so the two cannot share a token. */
+  --brand: #428FD2;
+  --blue: #428FD2;
+  --blue-soft: rgba(66, 143, 210, 0.14);
+
+  /* Action gradient, mirroring the app's action buttons: the accent through
+     the middle, falling away to one derived tone at both outer edges, so the
+     button reads as a single slightly convex surface rather than a fade from
+     one color to another. The outer tone is the accent blended toward the
+     background (34% toward black in dark, 20% toward white in light), so the
+     edges deepen in dark mode and lift in light mode. No glow or gloss.
+     Values are resolved to hex; recompute them if the blend amounts change. */
+  --action-base: #428FD2;
+  --action-outer: #2C5E8B;
+  --action-border: rgba(255, 255, 255, 0.12);
+  /* Pill gradient, for selected chips. A button's symmetric fall-off reads as
+     a highlight, which is loud when repeated across a filter row, so a pill
+     gets a single directional ramp at about half the blend. Same accent, same
+     derivation. */
+  --action-pill-far: #3777AE;
+
+  /* A soft near-black rather than #000: a page is many screens tall, and
+     below the first viewport the canvas is all there is. It gives the card
+     layers something to sit on and keeps long articles from reading as a
+     void. The wash stops below are this value plus a fixed offset. */
+  --bg: #0D1117;
+  --bg-elevated: #171B21;
+  --bg-card: #1F242B;
+  --bg-card-strong: #262C34;
+  --text: #f4f7fb;
+  --muted: #b2b9c5;
+  --muted-2: #8790a0;
+  --line: rgba(255, 255, 255, 0.10);
+  --line-strong: rgba(255, 255, 255, 0.16);
+  --shadow: 0 14px 32px rgba(0, 0, 0, 0.32);
+  /* Applied as `filter: drop-shadow()` on the iPhone frame, so it follows the
+     device silhouette instead of a bounding box. Two stops: a tight contact
+     shadow and a wide ambient one. */
+  --device-shadow: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.34)) drop-shadow(0 20px 38px rgba(0, 0, 0, 0.40));
+
+  /* Wash, medium step. Dark mode mixes onto the canvas, so small offsets
+     still read. The top stop leans harder on blue than on red and green: a
+     neutral lift only turns the page grey. Each stop sits above `--bg` on
+     every channel, so the ramp stays monotonic and meets the canvas without
+     a seam. */
+  --wash-top: #16283A;
+  --wash-mid: #121A24;
+  --wash-mid-stop: 52%;
+  --wash-end-stop: 86%;
+  --halo: rgba(66, 143, 210, 0.17);
+}
+
+html[data-theme="dark"].wash-subtle {
+  --bg-card: #1D2024;
+  --bg-card-strong: #23262B;
+  --wash-top: #121E2B;
+  --wash-mid: #0F1620;
+  --wash-mid-stop: 45%;
+  --wash-end-stop: 78%;
+  --halo: rgba(66, 143, 210, 0.085);
+}
+
+html[data-theme="light"] {
+  color-scheme: light;
+
+  --brand: #428FD2;
+  --blue: #246ca8;
+  --blue-soft: rgba(66, 143, 210, 0.10);
+
+  /* The app builds this from the raw accent in both schemes. Here it is built
+     from `--blue`, which light mode darkens for contrast on a white page.
+     Same construction, one step darker base. */
+  --action-base: #246ca8;
+  --action-outer: #5089B9;
+  --action-border: rgba(255, 255, 255, 0.25);
+  --action-pill-far: #3A7BB1;
+
+  --bg: #F2F2F7;
+  --bg-elevated: #ffffff;
+  --bg-card: #F7FAFD;
+  --bg-card-strong: #ffffff;
+  --text: #0d1422;
+  --muted: #526075;
+  --muted-2: #6c788b;
+  --line: rgba(12, 22, 40, 0.09);
+  --line-strong: rgba(12, 22, 40, 0.14);
+  --shadow: 0 12px 28px rgba(16, 28, 48, 0.08);
+  --device-shadow: drop-shadow(0 2px 5px rgba(16, 28, 48, 0.18)) drop-shadow(0 18px 34px rgba(16, 28, 48, 0.22));
+
+  /* Wash, medium step. Light mode mixes toward a brightness-matched accent
+     (#4EA8F7, the brand blue lifted to the canvas's brightness) rather than
+     the raw brand blue, as the app does. Mixing toward the raw color spends
+     lightness to buy chroma, which near white makes the page dull before it
+     looks colorful. Holding brightness fixed means a stronger step only
+     widens the gap between channels, so the wash gains color and the page
+     keeps its lightness. The stops are a 20% / 13% mix toward #4EA8F7: blue
+     stays at 247 and only red and green come down. */
+  --wash-top: #D1E3F7;
+  --wash-mid: #DDE8F7;
+  --wash-mid-stop: 42%;
+  --wash-end-stop: 84%;
+  --halo: rgba(78, 168, 247, 0.19);
+}
+
+html[data-theme="light"].wash-subtle {
+  --bg-card: #FBFDFE;
+  --wash-top: #EBEFF7;
+  --wash-mid: #EEF0F7;
+  --wash-mid-stop: 31%;
+  --wash-end-stop: 62%;
+  --halo: rgba(78, 168, 247, 0.06);
+}
+
+/* Safari on iOS inflates the text of blocks it decides are "long" when the
+   layout viewport is wider than the phone (landscape, or the aA text-size
+   menu at a reduced size). In a fact table that hits only the rows whose
+   value wraps, so neighbouring rows render at different sizes. 100% turns
+   the heuristic off; the reader's own text-size choice still applies. */
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* The sticky header is tinted from `--wash-top`, not the canvas color, so it
+   starts as a translucent slice of the wash behind it with no seam under the
+   bar, then picks up whatever scrolls under it, like the app's navigation bar
+   over its own wash. */
+html {
+  --header-bg: color-mix(in srgb, var(--wash-top) 82%, transparent);
+
+  /* Horizontal, unlike the app's diagonal (top trailing to bottom leading): at
+     the width of a web CTA a diagonal puts the bright band across one corner.
+     `to right` runs the bright stop down the button's vertical centre line
+     and fans it out to both edges, so a wide button reads as one lit surface.
+     This is the one action token that differs from the app.
+
+     The hairline is an inset ring rather than a `border`, so it sits inside
+     the fill without shrinking the gradient box; the drop shadow shares the
+     declaration. A SwiftUI shadow radius is roughly half a CSS blur, so
+     radius 6 becomes 12px. */
+  --action-gradient: linear-gradient(
+    to right,
+    var(--action-outer) 0%,
+    var(--action-base) 50%,
+    var(--action-outer) 100%
+  );
+  --action-chrome: inset 0 0 0 1px var(--action-border), 0 2px 12px rgba(0, 0, 0, 0.08);
+  --action-pill-gradient: linear-gradient(to right, var(--action-base), var(--action-pill-far));
+}
+
+/* Increased contrast strengthens the ring, as in the app. */
+@media (prefers-contrast: more) {
+  :root, html[data-theme="dark"] { --action-border: rgba(255, 255, 255, 0.30); }
+  html[data-theme="light"] { --action-border: rgba(255, 255, 255, 0.45); }
+}
+
+/* The wash sits on the root, not on <body>, so a variant stylesheet's flat
+   `body { background: var(--bg) }` cannot cover it, and canvas propagation
+   leaves no doubt about which box sizes it.
+
+   Three stops: a straight ramp to the canvas is visually over by the halfway
+   mark, while a high mid stop gives the wash a shoulder, so it carries down
+   the page before fading. The last stop is `--bg` itself, so the gradient
+   meets the untinted page with no seam at any strength. */
+html {
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(ellipse 70% 55% at 50% -8%, var(--halo), transparent 70%),
+    linear-gradient(
+      to bottom,
+      var(--wash-top) 0%,
+      var(--wash-mid) var(--wash-mid-stop),
+      var(--bg) var(--wash-end-stop)
+    );
+  background-repeat: no-repeat, no-repeat;
+  background-position: top center, top center;
+  background-size: 100% 100vh, 100% 100vh;
+}
+
+/* Reduced transparency drops to the flat canvas, the way the app's wash does. */
+@media (prefers-reduced-transparency: reduce) {
+  html {
+    background-image: none;
+  }
+}
+
+/* Jurisdiction flag beside an article H1. Defined here because every article
+   loads tokens.css, while the per-page variants that also declare it cover
+   only some of the pages that use one. */
+.title-flag {
+  display: inline-block;
+  width: 56px;
+  height: 42px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 1px solid var(--line);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.14);
+  margin: 0 0 14px;
+}
+
+/* Layout and type scale: one owner for every page.
+
+   The header and footer use the site width and gutter on every page, never a
+   page's own content width, so the frame stays still as you move between
+   pages. Pages set their content width with --max (720px for articles, the
+   full site width for marketing pages) inside that frame.
+
+   Headlines come in four tiers: hero (the homepage only), display (use-case
+   heroes), page (hubs, About, Privacy, Terms, changelog), and article (Help
+   and Learn). Section headings come in two: marketing sections and article
+   sections. */
+:root {
+  --site-max: 1040px;
+  --site-gutter: 20px;
+  --fs-hero: clamp(3.5rem, 1.2rem + 4.6vw, 4.75rem);
+  --fs-display: clamp(2.3rem, 1.5rem + 3vw, 4rem);
+  --fs-page: clamp(2.1rem, 1.6rem + 1.8vw, 3rem);
+  --fs-article: clamp(1.9rem, 1.5rem + 1.3vw, 2.5rem);
+  --fs-section: clamp(1.75rem, 1.3rem + 1.5vw, 2.4rem);
+  --fs-subsection: clamp(1.3rem, 1.15rem + 0.5vw, 1.5rem);
+}
+@media (min-width: 900px) {
+  :root { --site-gutter: 40px; }
+}

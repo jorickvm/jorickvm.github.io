@@ -1,0 +1,55 @@
+    <nav class="breadcrumb">
+      <a href="/">AtlasDays</a> / <a href="/learn/">Travel Rules</a> / <a href="/learn/guides">Guides</a>
+    </nav>
+
+    <img class="title-flag" src="../assets/flags/eu.png" alt="European Union flag" width="56" height="42" />
+    <h1>How the Schengen Rolling Window Actually Works</h1>
+    <p class="subtitle">A worked example of the Schengen rolling window for people who need the math to make intuitive sense.</p>
+    <p class="verified">Last verified: August 2026</p>
+
+    <div class="callout">
+      <p><strong>In short:</strong> the rolling window is applied on a date, not over a trip. Pick the date you care about, look backward 180 days, and count every day of Schengen presence inside that window. The window moves forward every day, so used days drop off one at a time instead of resetting all at once, and the same trip history can give two different answers on two different check dates.</p>
+    </div>
+
+    <h2>The Core Mental Model</h2>
+    <p>On any date you care about, look backward 180 days and count every day of Schengen presence inside that window. If the count is 90 or fewer, you are within the short-stay limit. If it exceeds 90, you are not.</p>
+    <p>The important part is that the window <strong>moves every day</strong>. There is no fixed quarterly reset and no separate pool for each Schengen country. The same shared counter follows you across the whole area.</p>
+
+    <h2>Worked Example</h2>
+    <p>Suppose your trip history looks like this:</p>
+    <ul>
+      <li><strong>Trip 1:</strong> 15 January to 13 February – 30 Schengen days</li>
+      <li><strong>Trip 2:</strong> 1 April to 15 May – 45 Schengen days</li>
+    </ul>
+    <p>Your combined total is 75 days. That number by itself is not enough. You still need to ask: <strong>75 days inside which 180-day window?</strong></p>
+
+    <h2>Why the Check Date Changes the Answer</h2>
+    <p>If you check on <strong>1 July</strong>, the 180-day lookback reaches into January, so both trips are still inside the window. That means the full 75 days still count, leaving only 15 days available.</p>
+    <p>If you check on <strong>1 September</strong>, the 180-day lookback starts in March. The January–February trip has dropped out completely, so only the 45 days from April–May still count. On that date, you would have 45 days available.</p>
+
+    <div class="callout">
+      <p><strong>Key point:</strong> the rule is never asking “how long ago did I leave?” It is asking “how many Schengen days are still inside the last 180 days on the date I am checking?”</p>
+    </div>
+    <p>The <a href="/learn/schengen-calculator">Schengen calculator</a> shows this with your own dates: tap your stays, then move the date it counts up to.</p>
+
+    <h2>How Days Come Back</h2>
+    <p>Days do not come back in one block. They return in the same order they were used. Once the oldest day becomes older than the 180-day lookback, that one day drops out and one day becomes available again.</p>
+    <p>That is why people often think they have “waited long enough” and still miscount. A long trip does not create a clean reset. It creates a gradual release of days over time.</p>
+
+    <h2>Common Counting Mistakes</h2>
+    <ul>
+      <li><strong>Treating Schengen like a simple 90 days in, 90 days out cycle.</strong> It is not.</li>
+      <li><strong>Forgetting that entry and exit days both count.</strong> Off-by-one errors matter near the limit.</li>
+      <li><strong>Thinking country changes create new allowances.</strong> France, Spain, Germany, Italy, and the rest all draw from the same pool.</li>
+      <li><strong>Counting “days outside” instead of counting days inside the 180-day lookback.</strong> Time outside only matters because it pushes older inside-days out of the window.</li>
+    </ul>
+
+    <h2>Practical Caution and Official Boundary</h2>
+    <p>This page explains the logic, not your specific legal position. For official Schengen short-stay guidance, use the European Commission’s <a href="https://home-affairs.ec.europa.eu/policies/schengen/border-crossing/short-stay-calculator_en">short-stay calculator</a> and its <a href="https://home-affairs.ec.europa.eu/policies/schengen/schengen-area_en">Schengen area overview</a>. They are the right sources when you need the formal framework rather than the intuition.</p>
+    <p>The safest practical rule is: if the trip pattern is important, do not rely on memory and do not assume a rough estimate is close enough.</p>
+
+    <div class="cta-box">
+      <h3>Keep the rolling window in one dated record</h3>
+      <p>AtlasDays keeps the trip record in one place and applies the rolling-window logic to it consistently, so the moving-window math is something you review rather than rebuild from memory each time.</p>
+      <a class="cta-btn" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> {{t:cta.get_app}}</a>
+    </div>

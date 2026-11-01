@@ -1,0 +1,276 @@
+#!/usr/bin/env python3
+"""Snapshot AtlasDays product terminology into _site-src/data/glossary.json.
+
+The terminology comes from the app repo: the shipped translations in
+`Localizable.xcstrings` and the accepted-terminology tables in
+`Docs/reference/translation-guidelines.md`. CI cannot reach that repo, so this
+writes a committed snapshot that records where every row came from. Help
+articles describe the app's own screens, so terms come from the strings the
+app ships rather than from a hand-written glossary.
+
+    python3 scripts/sync_glossary.py --app-repo ~/Projects/AtlasDays/AtlasDays
+"""
+
+from __future__ import annotations
+
+import argparse
+import json
+import re
+from pathlib import Path
+
+from locales import default_locale_code, load_locales
+
+SITE_ROOT = Path(__file__).resolve().parents[1]
+GLOSSARY_PATH = SITE_ROOT / "_site-src" / "data" / "glossary.json"
+DEFAULT_APP_REPO = Path.home() / "Projects" / "AtlasDays" / "AtlasDays"
+
+# Brand, platform, and format names the guidelines keep unchanged in every
+# language. A translated help page must still contain them verbatim.
+VERBATIM = [
+    "AtlasDays",
+    "AtlasDays Pro",
+    "Apple",
+    "iOS",
+    "iPhone",
+    "iPad",
+    "iCloud",
+    "App Store",
+    "SwiftData",
+    "CSV",
+    "PDF",
+    "Flighty",
+    "ESTA",
+]
+
+# Transliterations of the brand. It stays in Latin script in every language, so
+# any of these appearing at all is a defect.
+FORBIDDEN_ALWAYS = {
+    "ja": ["アトラスデイズ", "アトラス・デイズ", "アトラスデイス"],
+}
+
+# A site locale code is not always the app's catalog key. The site registry has
+# no regional codes, but the app ships some languages under a regional locale,
+# so the two have to be mapped rather than assumed equal. Identity otherwise.
+APP_CATALOG_CODE = {
+    "pt": "pt-BR",
+}
+
+# The language name that heads the app's accepted-terminology table, where it
+# differs from the registry's `english_name`. The site serves one Portuguese
+# locale written in Brazilian Portuguese, so `pt` reads the app's Brazilian
+# Portuguese table.
+APP_LANGUAGE_NAME = {
+    "pt": "Brazilian Portuguese",
+}
+
+# A language whose accepted-terminology table lists only its divergences from
+# another language's table; absent rows carry over from the base language. The
+# carry-over is resolved here, and only from the string the app ships in that
+# language, never by converting the base language's characters: a script
+# converter reproduces the prose but not the vocabulary.
+TABLE_INHERITS = {
+    "zh-Hans": "Traditional Chinese",
+}
+
+TABLE_HEADING = re.compile(r"^####\s+Accepted ([\w ]+?) terminology\s*$")
+BACKTICKED = re.compile(r"`([^`]+)`")
+
+
+def translated_locale_codes() -> list[str]:
+    """Every non-English locale, in locales.json order.
+
+    A run rewrites the whole snapshot, so the default covers every translated
+    locale.
+    """
+    default = default_locale_code()
+    return [code for code in load_locales() if code != default]
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--app-repo", type=Path, default=DEFAULT_APP_REPO)
+    parser.add_argument("--locale", action="append", default=None, help="Locale code; repeatable.")
+    parser.add_argument("--check", action="store_true", help="Fail if the snapshot is stale")
+    return parser.parse_args()
+
+
+def catalog_values(app_repo: Path, code: str) -> dict[str, str]:
+    """English catalog key -> shipped translation, across every app catalog."""
+    values: dict[str, str] = {}
+    for relative in (
+        "AtlasDays/Localizable.xcstrings",
+        "AtlasDaysWidgets/Localizable.xcstrings",
+        "AtlasDays/InfoPlist.xcstrings",
+    ):
+        path = app_repo / relative
+        if not path.exists():
+            continue
+        catalog_code = APP_CATALOG_CODE.get(code, code)
+        for key, entry in json.loads(path.read_text(encoding="utf-8"))["strings"].items():
+            unit = entry.get("localizations", {}).get(catalog_code, {}).get("stringUnit", {})
+            if unit.get("state") == "translated" and unit.get("value"):
+                values.setdefault(key, str(unit["value"]))
+    return values
+
+
+def terminology_rows(guidelines: str, language: str) -> list[tuple[str, str, str]]:
+    """(source term, accepted, rejected) from a language's accepted-terminology table."""
+    rows: list[tuple[str, str, str]] = []
+    collecting = False
+    for line in guidelines.splitlines():
+        heading = TABLE_HEADING.match(line)
+        if heading:
+            collecting = heading.group(1).lower() == language.lower()
+            continue
+        # Any heading ends the table, not only a "###" one: the last language
+        # section in the file is followed by a "##" section.
+        if collecting and line.startswith("#"):
+            break
+        if not collecting or not line.startswith("|"):
+            continue
+        cells = [cell.strip() for cell in line.strip().strip("|").split("|")]
+        if len(cells) < 4 or cells[0] in {"Source", "---"} or set(cells[0]) <= {"-", " "}:
+            continue
+        rows.append((cells[0], cells[1], cells[3]))
+    return rows
+
+
+def match_forms(term: str) -> list[str]:
+    """English spellings of a term that should trigger the rule."""
+    forms = {term}
+    if " " not in term and term[-1:].isalpha():
+        forms.add(term + "s" if not term.endswith("s") else term)
+    return sorted(forms, key=len, reverse=True)
+
+
+
+def inherited_terms(
+    guidelines: str,
+    code: str,
+    catalog: dict[str, str],
+    own: list[dict[str, object]],
+) -> list[dict[str, object]]:
+    """Rows a divergences-only table leaves to its base language.
+
+    The accepted form always comes from the shipped catalog, never from the base
+    language's own value, so nothing here is a script conversion. A term the app
+    does not ship under this key is skipped rather than guessed at: an invented
+    accepted form would fail correct copy, which is worse than not checking it.
+    """
+    base_language = TABLE_INHERITS.get(code)
+    if base_language is None:
+        return []
+    seen = {str(entry["en"]) for entry in own}
+    extra: list[dict[str, object]] = []
+    for source, _accepted_cell, _rejected_cell in terminology_rows(guidelines, base_language):
+        if source in seen:
+            continue
+        shipped = catalog.get(source)
+        if not shipped:
+            continue
+        seen.add(source)
+        extra.append(
+            {
+                "en": source,
+                "match": match_forms(source),
+                "accepted": [shipped],
+                # The base language's rejected forms are written in its own
+                # script and would never appear in this one, so they are not
+                # carried across. The accepted form is the part that protects.
+                "forbidden": [],
+                "app_string": shipped,
+                "inherited_from": base_language,
+            }
+        )
+    return extra
+
+
+def build_locale(app_repo: Path, code: str, language: str) -> dict[str, object]:
+    guidelines = (app_repo / "Docs" / "reference" / "translation-guidelines.md").read_text(encoding="utf-8")
+    catalog = catalog_values(app_repo, code)
+    terms: list[dict[str, object]] = []
+    for source, accepted_cell, rejected_cell in terminology_rows(guidelines, language):
+        backticked = [part.strip() for part in BACKTICKED.findall(accepted_cell) if part.strip()]
+        accepted = backticked or [part.strip() for part in accepted_cell.split(" / ") if part.strip()]
+        accepted = [part for part in accepted if part and not part.startswith("%")]
+        if not accepted:
+            continue
+        rejected = [
+            token.strip()
+            for token in BACKTICKED.findall(rejected_cell)
+            if token.strip() and not token.strip().startswith("%")
+        ]
+        entry: dict[str, object] = {
+            "en": source,
+            "match": match_forms(source),
+            "accepted": accepted,
+            "forbidden": rejected,
+        }
+        shipped = catalog.get(source)
+        if shipped:
+            entry["app_string"] = shipped
+            if shipped not in accepted:
+                # The table and the shipped app disagree. The app wins, because
+                # it is what the reader sees on screen.
+                entry["accepted"] = [shipped] + accepted
+                entry["app_disagrees_with_table"] = True
+        terms.append(entry)
+    terms.extend(inherited_terms(guidelines, code, catalog, terms))
+    return {
+        "terms": terms,
+        "verbatim": [name for name in VERBATIM if name],
+        "forbidden_always": FORBIDDEN_ALWAYS.get(code, []),
+        "catalog_size": len(catalog),
+    }
+
+
+def build(app_repo: Path, codes: list[str]) -> dict[str, object]:
+    registry = load_locales()
+    names = {
+        code: APP_LANGUAGE_NAME.get(code, str(registry[code].get("english_name", code)))
+        for code in codes
+    }
+    return {
+        "schema_version": 1,
+        "_comment": [
+            "GENERATED by scripts/sync_glossary.py. Do not hand-edit.",
+            "The app repo is authoritative: Docs/reference/translation-guidelines.md",
+            "for the accepted terms and rejected alternatives, Localizable.xcstrings",
+            "for the strings the app actually ships. Re-run the script when either",
+            "changes, or a help article can drift from the app's own wording.",
+        ],
+        "generated_from": {
+            "guidelines": "Docs/reference/translation-guidelines.md (accepted terminology tables)",
+            "catalogs": [
+                "AtlasDays/Localizable.xcstrings",
+                "AtlasDaysWidgets/Localizable.xcstrings",
+                "AtlasDays/InfoPlist.xcstrings",
+            ],
+        },
+        "locales": {code: build_locale(app_repo, code, names.get(code, code)) for code in codes},
+    }
+
+
+def main() -> int:
+    args = parse_args()
+    app_repo = args.app_repo.expanduser()
+    if not app_repo.exists():
+        print(f"App repo not found: {app_repo}")
+        return 1
+    codes = args.locale or translated_locale_codes()
+    payload = json.dumps(build(app_repo, codes), indent=2, ensure_ascii=False) + "\n"
+    if args.check:
+        current = GLOSSARY_PATH.read_text(encoding="utf-8") if GLOSSARY_PATH.exists() else ""
+        if current != payload:
+            print("glossary.json is stale; re-run scripts/sync_glossary.py")
+            return 1
+        print(f"Checked glossary for {', '.join(codes)}.")
+        return 0
+    GLOSSARY_PATH.write_text(payload, encoding="utf-8")
+    total = sum(len(entry["terms"]) for entry in build(app_repo, codes)["locales"].values())
+    print(f"Wrote glossary for {', '.join(codes)}: {total} terms.")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
