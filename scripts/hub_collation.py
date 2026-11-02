@@ -111,6 +111,20 @@ JAPANESE_READINGS = {
     "Latvia": "ラトビア",
     "Puerto Rico (US territory)": "プエルトリコ",
     "Russia": "ロシア",
+    "Michigan": "ミシガンシュウ",
+    "Indiana": "インディアナシュウ",
+    "Kentucky": "ケンタッキーシュウ",
+    "Delaware": "デラウェアシュウ",
+    "Missouri": "ミズーリシュウ",
+    "West Virginia": "ウェストバージニアシュウ",
+    "North Carolina": "ノースカロライナシュウ",
+    "Iowa": "アイオワシュウ",
+    "New Mexico": "ニューメキシコシュウ",
+    "Louisiana": "ルイジアナシュウ",
+    "Arkansas": "アーカンソーシュウ",
+    "Kansas": "カンザスシュウ",
+    "Oklahoma": "オクラホマシュウ",
+    "Alabama": "アラバマシュウ",
 }
 
 
