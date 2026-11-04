@@ -184,3 +184,9 @@ These pages describe something scheduled to change. The tier cadence would revie
 | 2027-10-31 | 2 | [learn/latvia-183-day-tax-residency.html](/learn/latvia-183-day-tax-residency) | exact-date-required | 1 |
 | 2027-10-31 | 2 | [learn/puerto-rico-183-day-bona-fide-residence.html](/learn/puerto-rico-183-day-bona-fide-residence) | exact-date-required | 2 |
 | 2027-10-31 | 2 | [learn/russia-183-day-tax-residency.html](/learn/russia-183-day-tax-residency) | exact-date-required | 2 |
+
+## 2027-11
+
+| Due | Tier | Article | Status | Sources |
+|---|---|---|---|---:|
+| 2027-11-30 | 2 | [learn/france-tax-residency.html](/learn/france-tax-residency) | exact-date-required | 5 |
