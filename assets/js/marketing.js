@@ -183,18 +183,31 @@
 
     // On phones a horizontal swipe on the pinned block steps too, by moving
     // the page to the middle of the neighbouring step's share of the scroll
-    // range. Vertical scrolling keeps working as before.
+    // range. The gesture's first movement decides its axis, and a touch that
+    // scrolled the page is never a swipe, so a vertical flick (whose momentum
+    // keeps scrolling after the finger lifts) is left alone.
     var touchX = 0;
     var touchY = 0;
+    var touchScrollY = 0;
+    var axis = '';
     story.addEventListener('touchstart', function (e) {
       touchX = e.changedTouches[0].clientX;
       touchY = e.changedTouches[0].clientY;
+      touchScrollY = window.scrollY;
+      axis = '';
+    }, { passive: true });
+    story.addEventListener('touchmove', function (e) {
+      if (axis) return;
+      var dx = Math.abs(e.changedTouches[0].clientX - touchX);
+      var dy = Math.abs(e.changedTouches[0].clientY - touchY);
+      if (dx < 8 && dy < 8) return;
+      axis = dx > dy * 2 ? 'x' : 'y';
     }, { passive: true });
     story.addEventListener('touchend', function (e) {
-      if (wide.matches) return;
+      if (wide.matches || axis !== 'x') return;
+      if (Math.abs(window.scrollY - touchScrollY) > 2) return;
       var dx = e.changedTouches[0].clientX - touchX;
-      var dy = e.changedTouches[0].clientY - touchY;
-      if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy) * 1.5) return;
+      if (Math.abs(dx) < 50) return;
       var n = Math.max(0, Math.min(steps.length - 1, active + (dx < 0 ? 1 : -1)));
       if (n === active) return;
       var r = story.getBoundingClientRect();
