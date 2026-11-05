@@ -189,4 +189,18 @@ These pages describe something scheduled to change. The tier cadence would revie
 
 | Due | Tier | Article | Status | Sources |
 |---|---|---|---|---:|
+| 2027-11-30 | 2 | [learn/alabama-tax-residency.html](/learn/alabama-tax-residency) | exact-date-required | 1 |
+| 2027-11-30 | 2 | [learn/arkansas-tax-residency.html](/learn/arkansas-tax-residency) | exact-date-required | 1 |
+| 2027-11-30 | 2 | [learn/delaware-tax-residency.html](/learn/delaware-tax-residency) | exact-date-required | 1 |
 | 2027-11-30 | 2 | [learn/france-tax-residency.html](/learn/france-tax-residency) | exact-date-required | 5 |
+| 2027-11-30 | 2 | [learn/indiana-tax-residency.html](/learn/indiana-tax-residency) | exact-date-required | 1 |
+| 2027-11-30 | 2 | [learn/iowa-tax-residency.html](/learn/iowa-tax-residency) | exact-date-required | 2 |
+| 2027-11-30 | 2 | [learn/kansas-tax-residency.html](/learn/kansas-tax-residency) | exact-date-required | 1 |
+| 2027-11-30 | 2 | [learn/kentucky-tax-residency.html](/learn/kentucky-tax-residency) | exact-date-required | 2 |
+| 2027-11-30 | 2 | [learn/louisiana-tax-residency.html](/learn/louisiana-tax-residency) | exact-date-required | 2 |
+| 2027-11-30 | 2 | [learn/michigan-tax-residency.html](/learn/michigan-tax-residency) | exact-date-required | 2 |
+| 2027-11-30 | 2 | [learn/missouri-tax-residency.html](/learn/missouri-tax-residency) | exact-date-required | 2 |
+| 2027-11-30 | 2 | [learn/new-mexico-tax-residency.html](/learn/new-mexico-tax-residency) | exact-date-required | 2 |
+| 2027-11-30 | 2 | [learn/north-carolina-tax-residency.html](/learn/north-carolina-tax-residency) | exact-date-required | 1 |
+| 2027-11-30 | 2 | [learn/oklahoma-tax-residency.html](/learn/oklahoma-tax-residency) | exact-date-required | 1 |
+| 2027-11-30 | 2 | [learn/west-virginia-tax-residency.html](/learn/west-virginia-tax-residency) | exact-date-required | 4 |
