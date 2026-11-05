@@ -180,6 +180,31 @@
     }
     scrollHandlers.push(update);
     update();
+
+    // On phones a horizontal swipe on the pinned block steps too, by moving
+    // the page to the middle of the neighbouring step's share of the scroll
+    // range. Vertical scrolling keeps working as before.
+    var touchX = 0;
+    var touchY = 0;
+    story.addEventListener('touchstart', function (e) {
+      touchX = e.changedTouches[0].clientX;
+      touchY = e.changedTouches[0].clientY;
+    }, { passive: true });
+    story.addEventListener('touchend', function (e) {
+      if (wide.matches) return;
+      var dx = e.changedTouches[0].clientX - touchX;
+      var dy = e.changedTouches[0].clientY - touchY;
+      if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy) * 1.5) return;
+      var n = Math.max(0, Math.min(steps.length - 1, active + (dx < 0 ? 1 : -1)));
+      if (n === active) return;
+      var r = story.getBoundingClientRect();
+      var pin = story.firstElementChild.offsetHeight;
+      var top = parseFloat(getComputedStyle(page).getPropertyValue('--hx-sticky-top')) || 76;
+      var travel = Math.max(1, r.height - pin);
+      // Instant: the block is pinned, so only the step and screenshot change.
+      window.scrollTo({ top: window.scrollY + r.top - top + ((n + 0.5) / steps.length) * travel, behavior: 'instant' });
+      update();
+    }, { passive: true });
   })();
 
   // ---------- Reviews on translated pages ----------
