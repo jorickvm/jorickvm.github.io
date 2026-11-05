@@ -203,4 +203,5 @@ These pages describe something scheduled to change. The tier cadence would revie
 | 2027-11-30 | 2 | [learn/new-mexico-tax-residency.html](/learn/new-mexico-tax-residency) | exact-date-required | 2 |
 | 2027-11-30 | 2 | [learn/north-carolina-tax-residency.html](/learn/north-carolina-tax-residency) | exact-date-required | 1 |
 | 2027-11-30 | 2 | [learn/oklahoma-tax-residency.html](/learn/oklahoma-tax-residency) | exact-date-required | 1 |
+| 2027-11-30 | 2 | [learn/us-feie-physical-presence-test.html](/learn/us-feie-physical-presence-test) | exact-date-required | 6 |
 | 2027-11-30 | 2 | [learn/west-virginia-tax-residency.html](/learn/west-virginia-tax-residency) | exact-date-required | 4 |
