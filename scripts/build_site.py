@@ -377,7 +377,12 @@ def render_nav_script(prefix: str, code: str, strings: dict[str, dict[str, str]]
 RELATED_LIMIT = 6
 REGIONS_PATH = SOURCE_ROOT / "data" / "regions.json"
 EDITORIAL_DATA_PATH = SOURCE_ROOT / "data" / "editorial.json"
-CALCULATOR_PAGES = ("learn/183-day-rule-calculator.html", "learn/schengen-calculator.html", "learn/uk-ilr-absence-calculator.html")
+CALCULATOR_PAGES = (
+    "learn/183-day-rule-calculator.html",
+    "learn/schengen-calculator.html",
+    "learn/uk-ilr-absence-calculator.html",
+    "learn/substantial-presence-test-calculator.html",
+)
 # The guide that explains how each kind of rule counts.
 TOPIC_GUIDES = {
     "tax": "learn/183-day-tax-residency-rule.html",
@@ -531,6 +536,8 @@ def related_paths(path: str) -> list[str]:
         for candidate in same_country[:3]:
             add(candidate)
         if not me["embedded"]:
+            if family == "tax" and country == "US":
+                add("learn/substantial-presence-test-calculator.html")
             if family in ("tax", "usState"):
                 add("learn/183-day-rule-calculator.html")
             elif country == "EU":
@@ -1577,13 +1584,13 @@ def link_calculator_to_rule(content: str, article: dict[str, object]) -> str:
 def mark_calculator_callout(content: str, article: dict[str, object]) -> str:
     """Give the paragraph that links a calculator the `calc-callout` class.
 
-    A plain <p> in a Learn article that links the 183-day, Schengen or ILR
+    A plain <p> in a Learn article that links the 183-day, Schengen, ILR or SPT
     calculator is the reader's way to count their own dates, so it is set off
     as the article's one blue callout (assets/css/article-components.css).
     """
     if article.get("section") != "learn":
         return content
-    pattern = re.compile(r'<p>(?=(?:(?!</p>).)*href="(?:/[A-Za-z-]+)?/learn/(?:183-day-rule|schengen|uk-ilr-absence)-calculator[?"])', re.S)
+    pattern = re.compile(r'<p>(?=(?:(?!</p>).)*href="(?:/[A-Za-z-]+)?/learn/(?:183-day-rule|schengen|uk-ilr-absence|substantial-presence-test)-calculator[?"])', re.S)
     return pattern.sub('<p class="calc-callout">', content, count=1)
 
 
