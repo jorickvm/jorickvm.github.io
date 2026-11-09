@@ -1,0 +1,13 @@
+.country-checklist { margin: 32px 0; padding: 24px; border: 1px solid var(--line); border-radius: 16px; background: var(--bg-card); }
+.country-checklist > h2 { margin-top: 0; }
+.country-checklist-count { display: block; margin: 16px 0; font-weight: 650; font-size: 1.12rem; color: var(--text); }
+.country-checklist-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); max-height: 340px; overflow-y: auto; overscroll-behavior-y: contain; border: 1px solid var(--line); border-radius: 12px; }
+.country-checklist-option { display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 8px 12px; color: var(--text); cursor: pointer; line-height: 1.4; }
+.country-checklist-option span { min-width: 0; overflow-wrap: anywhere; }
+.country-checklist-option input { width: 18px; height: 18px; margin: 0; flex: 0 0 18px; accent-color: var(--blue); }
+.country-checklist-option:focus-within { outline: 2px solid var(--blue); outline-offset: -2px; border-radius: 4px; }
+.country-checklist-option:has(input:checked) { background: var(--blue-soft); }
+.country-checklist-result { margin-top: 20px; }
+.country-checklist-cta { padding: 20px 0 0; margin-top: 20px; border: 0; border-top: 1px solid var(--line); border-radius: 0; background: transparent; }
+.cta-box .cta-micro { margin: 14px 0 0; color: var(--muted); font-size: 0.88rem; }
+@media (max-width: 520px) { .country-checklist { padding: 18px; } .country-checklist-options { grid-template-columns: minmax(0, 1fr); } }

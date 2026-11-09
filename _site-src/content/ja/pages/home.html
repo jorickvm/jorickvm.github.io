@@ -6,7 +6,7 @@
     <section class="hx-hero">
       <div class="hx-map" aria-hidden="true"></div>
       <div class="hx-hero-copy">
-        <p class="hx-pill"><span class="hx-pill-dot" aria-hidden="true"></span>iPhone・iPadで配信中</p>
+        <p class="hx-pill"><span class="hx-pill-dot" aria-hidden="true"></span>iPhone・iPad対応</p>
         <h1>ビザ・居住日数、<wbr>旅行履歴を<wbr>まとめて管理</h1>
         <p class="hx-lede">シェンゲンから税務上の居住、帰化まで。国ごとに残りの日数が正確にわかります。記録はiPhoneの中に、プライベートなまま。</p>
         <div class="hx-actions">
@@ -39,7 +39,7 @@
         <div class="hx-cases">
           <a class="hx-case" href="/ja/visa-limits">
             <span class="hx-case-label">ビザの上限</span>
-            <span class="hx-case-text">シェンゲンの90/180、滞在ごとの上限、ローリングの集計期間。</span>
+            <span class="hx-case-text">次の旅行を予約する前に、残りの滞在日数を確認。</span>
             <span class="hx-case-shot">
               <img class="shot-dark" src="/assets/home/ja/v2/case-visa.webp?v=20260928l" alt="AtlasDaysのシェンゲントラッカーのカード。直近180日間の使用日数と残り日数" width="1224" height="380" loading="lazy" />
               <img class="shot-light" src="/assets/home/ja/v2/case-visa-light.webp?v=20260928l" alt="AtlasDaysのシェンゲントラッカーのカード。直近180日間の使用日数と残り日数" width="1224" height="380" loading="lazy" />
@@ -47,7 +47,7 @@
           </a>
           <a class="hx-case" href="/ja/residency-thresholds">
             <span class="hx-case-label">税務上の居住</span>
-            <span class="hx-case-text">183日の判定、暦年、課税年度。</span>
+            <span class="hx-case-text">国ごと、課税年度ごとの滞在日数を管理。</span>
             <span class="hx-case-shot">
               <img class="shot-dark" src="/assets/home/ja/v2/case-residency.webp?v=20260928l" alt="183日の基準日数に向けて日数を数える、AtlasDaysの税務上の居住トラッカーのカード" width="1224" height="380" loading="lazy" />
               <img class="shot-light" src="/assets/home/ja/v2/case-residency-light.webp?v=20260928l" alt="183日の基準日数に向けて日数を数える、AtlasDaysの税務上の居住トラッカーのカード" width="1224" height="380" loading="lazy" />
@@ -55,7 +55,7 @@
           </a>
           <a class="hx-case" href="/ja/citizenship">
             <span class="hx-case-label">永住・帰化</span>
-            <span class="hx-case-text">帰化や永住に必要な滞在日数と、国外滞在の上限。</span>
+            <span class="hx-case-text">申請に関わる滞在要件と国外滞在の上限を確認。</span>
             <span class="hx-case-shot">
               <img class="shot-dark" src="/assets/home/ja/v2/case-citizenship.webp?v=20260928l" alt="帰化の上限に対して日数を数える、AtlasDaysのトラッカーのカード" width="1224" height="557" loading="lazy" />
               <img class="shot-light" src="/assets/home/ja/v2/case-citizenship-light.webp?v=20260928l" alt="帰化の上限に対して日数を数える、AtlasDaysのトラッカーのカード" width="1224" height="557" loading="lazy" />
@@ -63,7 +63,7 @@
           </a>
           <a class="hx-case" href="/ja/travel-history">
             <span class="hx-case-label">旅行履歴</span>
-            <span class="hx-case-text">訪れた国、米国の州、大陸を、ひとつの地図に。</span>
+            <span class="hx-case-text">訪問した国と、合計のもとになった旅行を確認。</span>
             <span class="hx-case-shot">
               <img class="shot-dark" src="/assets/home/ja/v2/case-history.webp?v=20260928l" alt="AtlasDaysの全期間の統計。訪問国、米国の州、海外滞在日数、大陸" width="1224" height="485" loading="lazy" />
               <img class="shot-light" src="/assets/home/ja/v2/case-history-light.webp?v=20260928l" alt="AtlasDaysの全期間の統計。訪問国、米国の州、海外滞在日数、大陸" width="1224" height="485" loading="lazy" />
@@ -95,30 +95,31 @@
           <ol class="hx-steps">
             <li class="hx-step is-active" data-hx-step="0">
               <p class="hx-step-label">ステップ1</p>
-              <h3>行った場所は、写真が覚えています。</h3>
-              <div class="hx-step-body">「写真からインポート」が写真ライブラリの日付と場所をiPhone上で読み取り、旅行の候補にまとめます。保存する前に、内容を確認できます。<a href="/ja/help/photo-import">写真からインポートのしくみ</a></div>
+              <h3>写真から過去の旅行を見つける。</h3>
+              <div class="hx-step-body">写真の撮影日と場所から旅行履歴を作成。追加する前に候補を確認できます。FlightyやCSVファイルからのインポートにも対応しています。 <a href="/ja/help/photo-import">写真からインポートのしくみ</a></div>
             </li>
             <li class="hx-step" data-hx-step="1">
               <p class="hx-step-label">ステップ2</p>
-              <h3>自分に当てはまるルールを選ぶ。</h3>
-              <div class="hx-step-body">シェンゲン、183日の判定、課税年度、米国の州、帰化の国外滞在日数、または独自のルール。どの合計からも、もとになった旅行をたどれます。<a href="/ja/help/create-a-tracker">トラッカーを作成する</a></div>
+              <h3>管理したいルールを選ぶ。</h3>
+              <div class="hx-step-body">ビザや税務上の居住のトラッカーを選ぶか、日数の上限を自分で設定。すべての合計から、もとになった旅行を確認できます。 <a href="/ja/help/create-a-tracker">トラッカーを作成する</a></div>
             </li>
             <li class="hx-step" data-hx-step="2">
               <p class="hx-step-label">ステップ3</p>
-              <h3>上限に達する前に気づける。</h3>
-              <div class="hx-step-body">どのトラッカーにも、残りの日数が表示されます。上限が近づくとオレンジに、上限に達すると赤に変わり、スマートアラートで前もって知らせることもできます。<a href="/ja/help/smart-alerts">スマートアラートについて</a></div>
+              <h3>予約する前に予定を確認。</h3>
+              <div class="hx-step-body">今後の旅行を追加して、滞在日数の変化を確認できます。Proのスマート通知なら、上限に達する前にお知らせできます。 <a href="/ja/help/smart-alerts">スマートアラートについて</a></div>
             </li>
           </ol>
           </div>
         </div>
       </div>
+<aside class="hx-auto-detect"><h3>手入力を減らして、旅行履歴を最新に。</h3><p>自動検出を有効にすると、AtlasDaysが国の変更を検出した際に旅行を追加します。検出された旅行はいつでも編集・削除できます。</p></aside>
     </section>
 
     <section class="hx-section" id="privacy" aria-labelledby="privacy-title">
       <div class="hx-wrap" data-hx-reveal>
-        <h2 class="hx-h2" id="privacy-title">旅行の記録は、iPhoneの中に。</h2>
+        <h2 class="hx-h2" id="privacy-title">旅行履歴の管理は自分の手元で。</h2><p class="hx-privacy-lede">処理はデバイス上で行われます。希望に応じて個人のiCloudアカウントで同期できます。AtlasDaysのアカウントは不要で、旅行のコピーをAtlasDaysのサーバーに保存しません。</p>
         <div class="hx-trust-list">
-          <div><h3>アカウント不要</h3><div class="hx-trust-body">すぐに使いはじめられます。サインインも、個人情報の入力もいりません。</div></div>
+          <div><h3>アカウント不要</h3><div class="hx-trust-body">登録不要。メールアドレスも不要。</div></div>
           <div><h3>iPhoneの中で完結</h3><div class="hx-trust-body">旅行、滞在日数、トラッカーの計算は、デバイス上で保存・処理されます。</div></div>
           <div><h3>写真は外に出ません</h3><div class="hx-trust-body">「写真からインポート」はiPhone上で動作します。写真がAtlasDaysにアップロードされることはありません。</div></div>
           <div><h3>オフラインで使える</h3><div class="hx-trust-body">インターネット接続は不要。機内モードでも使えます。</div></div>
@@ -132,7 +133,7 @@
         <div class="hx-faq">
           <details>
             <summary>AtlasDaysは無料ですか？</summary>
-            <p>はい。基本の日数記録、旅行、トラッカー1つ、マップは無料で、アカウントも不要です。AtlasDays Proは任意のアップグレードで、3か月ごとまたは年ごとのサブスクリプションか、買い切りのライフタイム購入から選べます。トラッカーの無制限追加、スマートアラート、書き出しなどが加わります。<a href="/ja/help/atlasdays-pro">Proに含まれるもの</a>をご覧ください。</p>
+            <p>訪問国の地図、旅行履歴、上限が1つの国別トラッカー1件は無料です。Proではトラッカーの追加、高度なトラッカー、通知、書き出し、米国の州の記録を利用できます。アカウントは不要です。</p><p class="hx-faq-link"><a href="/ja/help/atlasdays-pro">Proに含まれるもの</a></p>
           </details>
           <details>
             <summary>シェンゲンの90/180や独自の上限も管理できますか？</summary>

@@ -77,7 +77,7 @@
         "name": "¿AtlasDays es gratis?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Sí. El recuento de días, los viajes, un control y el mapa son gratuitos y no requieren cuenta. AtlasDays Pro es una mejora opcional, con suscripción trimestral o anual o un pago único de por vida, que añade controles ilimitados, avisos inteligentes, exportaciones y más."
+          "text": "El mapa de países, el historial de viajes y un control de país con un solo límite son gratuitos. Pro añade más controles, controles avanzados, avisos, exportaciones y seguimiento de estados de EE. UU. No hace falta una cuenta."
         }
       },
       {
@@ -152,7 +152,7 @@
   <script defer src="../assets/js/locale-route.js?v=20260830c"></script>
   <link rel="stylesheet" href="../assets/css/tokens.css?v=20260928e" />
   <link rel="stylesheet" href="../assets/css/home.css?v=20260817a" />
-  <link rel="stylesheet" href="../assets/css/marketing.css?v=20261105a" />
+  <link rel="stylesheet" href="../assets/css/marketing.css?v=20261109a" />
   <link rel="stylesheet" href="../assets/css/site-header.css?v=20261027j" />
   <link rel="stylesheet" href="../assets/css/site-footer.css?v=20261027h" />
 
@@ -227,7 +227,7 @@
     <section class="hx-hero">
       <div class="hx-map" aria-hidden="true"></div>
       <div class="hx-hero-copy">
-        <p class="hx-pill"><span class="hx-pill-dot" aria-hidden="true"></span>Ya disponible para iPhone y iPad</p>
+        <p class="hx-pill"><span class="hx-pill-dot" aria-hidden="true"></span>Para iPhone y iPad</p>
         <h1>Controla viajes, residencia y visados</h1>
         <p class="hx-lede">Sabe exactamente cuántos días te quedan en cada país, desde Schengen hasta la residencia fiscal y la nacionalidad. En privado, en tu iPhone.</p>
         <div class="hx-actions">
@@ -260,7 +260,7 @@
         <div class="hx-cases">
           <a class="hx-case" href="/es/visa-limits">
             <span class="hx-case-label">Límites de visado</span>
-            <span class="hx-case-text">Schengen 90/180, límites por estancia y períodos móviles.</span>
+            <span class="hx-case-text">Consulta los días que te quedan antes de reservar tu próximo viaje.</span>
             <span class="hx-case-shot">
               <img class="shot-dark" src="/assets/home/es/v2/case-visa.webp?v=20260928l" alt="Tarjeta de un control Schengen de AtlasDays: días usados y días restantes en el período móvil de 180 días" width="1224" height="380" loading="lazy" />
               <img class="shot-light" src="/assets/home/es/v2/case-visa-light.webp?v=20260928l" alt="Tarjeta de un control Schengen de AtlasDays: días usados y días restantes en el período móvil de 180 días" width="1224" height="380" loading="lazy" />
@@ -268,7 +268,7 @@
           </a>
           <a class="hx-case" href="/es/residency-thresholds">
             <span class="hx-case-label">Residencia fiscal</span>
-            <span class="hx-case-text">Pruebas de 183 días, años naturales y años fiscales.</span>
+            <span class="hx-case-text">Lleva el recuento de tus días por país y año fiscal.</span>
             <span class="hx-case-shot">
               <img class="shot-dark" src="/assets/home/es/v2/case-residency.webp?v=20260928l" alt="Tarjeta de un control de residencia de AtlasDays que cuenta los días hacia un umbral de 183 días" width="1224" height="380" loading="lazy" />
               <img class="shot-light" src="/assets/home/es/v2/case-residency-light.webp?v=20260928l" alt="Tarjeta de un control de residencia de AtlasDays que cuenta los días hacia un umbral de 183 días" width="1224" height="380" loading="lazy" />
@@ -276,7 +276,7 @@
           </a>
           <a class="hx-case" href="/es/citizenship">
             <span class="hx-case-label">Nacionalidad</span>
-            <span class="hx-case-text">Límites de presencia y ausencia para la nacionalidad y la residencia permanente.</span>
+            <span class="hx-case-text">Controla los requisitos de presencia y los límites de ausencia de tu solicitud.</span>
             <span class="hx-case-shot">
               <img class="shot-dark" src="/assets/home/es/v2/case-citizenship.webp?v=20260928l" alt="Tarjeta de un control de nacionalidad de AtlasDays que cuenta los días frente a un límite de naturalización" width="1224" height="557" loading="lazy" />
               <img class="shot-light" src="/assets/home/es/v2/case-citizenship-light.webp?v=20260928l" alt="Tarjeta de un control de nacionalidad de AtlasDays que cuenta los días frente a un límite de naturalización" width="1224" height="557" loading="lazy" />
@@ -284,7 +284,7 @@
           </a>
           <a class="hx-case" href="/es/travel-history">
             <span class="hx-case-label">Historial de viajes</span>
-            <span class="hx-case-text">Todos los países, estados y continentes que has visitado, en un solo mapa.</span>
+            <span class="hx-case-text">Consulta los países que has visitado y los viajes que forman tu total.</span>
             <span class="hx-case-shot">
               <img class="shot-dark" src="/assets/home/es/v2/case-history.webp?v=20260928l" alt="Estadísticas históricas de AtlasDays: países visitados, estados de EE. UU., días en el extranjero y continentes" width="1224" height="485" loading="lazy" />
               <img class="shot-light" src="/assets/home/es/v2/case-history-light.webp?v=20260928l" alt="Estadísticas históricas de AtlasDays: países visitados, estados de EE. UU., días en el extranjero y continentes" width="1224" height="485" loading="lazy" />
@@ -316,30 +316,31 @@
           <ol class="hx-steps">
             <li class="hx-step is-active" data-hx-step="0">
               <p class="hx-step-label">Paso 1</p>
-              <h3>Tus fotos ya saben dónde has estado.</h3>
-              <div class="hx-step-body">La importación desde Fotos lee las fechas y los lugares de tu fototeca, en tu iPhone, y los convierte en viajes que revisas antes de guardar nada. <a href="/es/help/photo-import">Cómo funciona la importación desde Fotos</a></div>
+              <h3>Encuentra viajes anteriores en tus fotos.</h3>
+              <div class="hx-step-body">Reconstruye tu historial con las fechas y ubicaciones de tus fotos. Revisa los viajes sugeridos antes de añadirlos o importa desde Flighty o un archivo CSV. <a href="/es/help/photo-import">Cómo funciona la importación desde Fotos</a></div>
             </li>
             <li class="hx-step" data-hx-step="1">
               <p class="hx-step-label">Paso 2</p>
-              <h3>Elige la regla que se aplica a ti.</h3>
-              <div class="hx-step-body">Schengen, pruebas de 183 días, años fiscales, estados de EE. UU., ausencias para la nacionalidad o tu propia regla. Cada total enlaza con los viajes que lo forman. <a href="/es/help/create-a-tracker">Crear un control</a></div>
+              <h3>Elige lo que necesitas controlar.</h3>
+              <div class="hx-step-body">Empieza con un control predefinido de visado o residencia fiscal, o fija tu propio límite de días. Consulta los viajes que hay detrás de cada total. <a href="/es/help/create-a-tracker">Crear un control</a></div>
             </li>
             <li class="hx-step" data-hx-step="2">
               <p class="hx-step-label">Paso 3</p>
-              <h3>Entérate antes de llegar al límite.</h3>
-              <div class="hx-step-body">Cada control muestra los días que te quedan. Se pone naranja cuando te acercas y rojo al llegar al límite, y los avisos inteligentes pueden avisarte con antelación. <a href="/es/help/smart-alerts">Sobre los avisos inteligentes</a></div>
+              <h3>Comprueba tus planes antes de reservar.</h3>
+              <div class="hx-step-body">Añade un viaje futuro para ver cómo cambia tu recuento de días. Los avisos inteligentes, disponibles con Pro, pueden avisarte antes de alcanzar un límite. <a href="/es/help/smart-alerts">Sobre los avisos inteligentes</a></div>
             </li>
           </ol>
           </div>
         </div>
       </div>
+<aside class="hx-auto-detect"><h3>Mantén tu historial al día con menos trabajo manual.</h3><p>La detección automática opcional añade viajes cuando AtlasDays detecta un cambio de país. Puedes editar o eliminar cualquier viaje detectado.</p></aside>
     </section>
 
     <section class="hx-section" id="privacy" aria-labelledby="privacy-title">
       <div class="hx-wrap" data-hx-reveal>
-        <h2 class="hx-h2" id="privacy-title">Tu historial de viajes se queda en tu iPhone.</h2>
+        <h2 class="hx-h2" id="privacy-title">Tu historial de viajes sigue siendo tuyo.</h2><p class="hx-privacy-lede">El procesamiento se realiza en tu dispositivo, con sincronización opcional mediante tu cuenta privada de iCloud. Sin cuenta de AtlasDays ni copias de tus viajes en un servidor de AtlasDays.</p>
         <div class="hx-trust-list">
-          <div><h3>Sin cuenta</h3><div class="hx-trust-body">Empieza al momento. Sin registro ni datos personales.</div></div>
+          <div><h3>Sin cuenta</h3><div class="hx-trust-body">Sin registro. Sin dirección de correo.</div></div>
           <div><h3>En tu iPhone</h3><div class="hx-trust-body">Los viajes, los recuentos de días y los cálculos de los controles se guardan y se procesan en el dispositivo.</div></div>
           <div><h3>Tus fotos, privadas</h3><div class="hx-trust-body">La importación desde Fotos se ejecuta en tu iPhone. Tus fotos no se suben a ningún servidor de AtlasDays.</div></div>
           <div><h3>Funciona sin conexión</h3><div class="hx-trust-body">No necesitas conexión a internet, ni siquiera en modo avión.</div></div>
@@ -353,7 +354,7 @@
         <div class="hx-faq">
           <details>
             <summary>¿AtlasDays es gratis?</summary>
-            <p>Sí. El recuento de días, los viajes, un control y el mapa son gratuitos y no requieren cuenta. AtlasDays Pro es una mejora opcional, con suscripción trimestral o anual o un pago único de por vida, que añade controles ilimitados, avisos inteligentes, exportaciones y más. Consulta <a href="/es/help/atlasdays-pro">qué incluye Pro</a>.</p>
+            <p>El mapa de países, el historial de viajes y un control de país con un solo límite son gratuitos. Pro añade más controles, controles avanzados, avisos, exportaciones y seguimiento de estados de EE. UU. No hace falta una cuenta.</p><p class="hx-faq-link"><a href="/es/help/atlasdays-pro">qué incluye Pro</a></p>
           </details>
           <details>
             <summary>¿Puede controlar el 90/180 de Schengen y límites personalizados?</summary>
