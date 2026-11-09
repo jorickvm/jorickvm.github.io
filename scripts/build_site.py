@@ -1791,6 +1791,25 @@ def render_calculator_intro(
     return content
 
 
+def render_country_checklist(content: str, code: str) -> str:
+    marker = "<!-- COUNTRY_CHECKLIST -->"
+    if marker not in content:
+        return content
+    data = json.loads((SOURCE_ROOT / "data/country-count.json").read_text(encoding="utf-8"))
+    codes = data["codes"]
+    if len(codes) != 195 or len(set(codes)) != 195:
+        raise ValueError("The country checklist needs 195 distinct countries")
+    names = data["names"][code]
+    labels = []
+    for country in codes:
+        name = html.escape(names[country])
+        labels.append(
+            f'<label class="country-checklist-option"><input type="checkbox" value="{country}">'
+            f'<span>{name}</span></label>'
+        )
+    return content.replace(marker, "\n".join(labels))
+
+
 def render_article(
     article: dict[str, object],
     template: str,
@@ -1806,6 +1825,7 @@ def render_article(
     prefix = asset_prefix(str(article["path"]))
     source_path = str(article.get("social_source_path", article["path"]))
     code = str(locale["code"])
+    content = render_country_checklist(content, code)
     content = render_factbox_legal_basis(content, article)
     content = render_learn_trust(content, article, locale, strings)
     content = render_embedded_calculator(content, article, code)
