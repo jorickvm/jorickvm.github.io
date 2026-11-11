@@ -102,3 +102,40 @@ jobs:
           name: external-source-report
           path: external-source-report.json
           if-no-files-found: warn
+
+  editorial-monitor:
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Find upcoming fact reviews
+        id: findings
+        run: python3 scripts/report_editorial_review.py --lead-days 30 --body editorial-issue.md
+      - name: Maintain the fact-review issue
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ACTIONABLE: ${{ steps.findings.outputs.actionable }}
+        run: |
+          set -euo pipefail
+          gh label create editorial-review --description "Upcoming and overdue article fact reviews" --color FEF2C0 2>/dev/null || true
+          existing="$(gh issue list --state open --label editorial-review --limit 1 --json number --jq '.[0].number // empty')"
+          if [ "${ACTIONABLE:-0}" -gt 0 ]; then
+            if [ -n "$existing" ]; then
+              gh issue edit "$existing" --body-file editorial-issue.md
+            else
+              gh issue create --title "Article fact reviews due soon" --body-file editorial-issue.md --label editorial-review
+            fi
+          elif [ -n "$existing" ]; then
+            gh issue close "$existing" --comment "No article fact reviews are due within the next 30 days."
+          fi
+      - name: Upload editorial review report
+        uses: actions/upload-artifact@v4
+        with:
+          name: editorial-review-report
+          path: editorial-issue.md

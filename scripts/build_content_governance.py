@@ -138,11 +138,28 @@ def verified_month(content: str) -> str | None:
     return f"{match.group(2)}-{MONTHS[match.group(1)]:02d}"
 
 
-def review_due(month: str | None, interval: int) -> str | None:
-    if not month:
+def verification_date(record: dict[str, object], content: str) -> tuple[str | None, str | None]:
+    exact = record.get("last_fact_verified")
+    if exact is not None:
+        try:
+            parsed = date.fromisoformat(str(exact))
+        except ValueError:
+            raise SystemExit(f"{record['path']}: invalid last_fact_verified: {exact!r}")
+        if parsed.isoformat() != exact:
+            raise SystemExit(f"{record['path']}: last_fact_verified must use YYYY-MM-DD")
+        return str(exact), "day"
+    month = verified_month(content)
+    return month, "month" if month else None
+
+
+def review_due(verified: str | None, interval: int) -> str | None:
+    if not verified:
         return None
-    year, number = map(int, month.split("-"))
-    reviewed = date(year, number, calendar.monthrange(year, number)[1])
+    if len(verified) == 10:
+        reviewed = date.fromisoformat(verified)
+    else:
+        year, number = map(int, verified.split("-"))
+        reviewed = date(year, number, calendar.monthrange(year, number)[1])
     return (reviewed + timedelta(days=interval)).isoformat()
 
 
@@ -201,9 +218,9 @@ def build() -> tuple[dict[str, object], dict[str, object], str]:
             raise SystemExit(f"{path}: missing or invalid review_tier (expected 1, 2, or 3, got {tier!r})")
         risk, interval, status = REVIEW_TIERS[tier]
         cluster, pillar = cluster_for(slug, category)
-        month = verified_month(content)
+        verified, precision = verification_date(record, content)
         sources = structured_sources(record, content)
-        cadence_due = review_due(month, interval)
+        cadence_due = review_due(verified, interval)
         scheduled = review_by(record)
         due, trigger, trigger_reason = cadence_due, "tier-cadence", None
         if scheduled and (cadence_due is None or scheduled[0] < cadence_due):
@@ -216,15 +233,19 @@ def build() -> tuple[dict[str, object], dict[str, object], str]:
                 "review_tier": tier,
                 "risk_level": risk,
                 "review_interval_days": interval,
-                "last_fact_verified": month,
-                "verification_precision": "month" if month else None,
+                "last_fact_verified": verified,
+                "verification_precision": precision,
                 "next_review_due": due,
                 "review_trigger": trigger,
                 "review_trigger_reason": trigger_reason,
                 "cadence_review_due": cadence_due,
                 "source_urls": sources,
-                "review_status": status if month else "verification-missing",
-                "review_notes": "Migrated from the visible month-level verification label; record an exact date at the next substantive source review.",
+                "review_status": status if verified else "verification-missing",
+                "review_notes": (
+                    "Official-source review recorded in articles.json."
+                    if precision == "day" else
+                    "Migrated from the visible month-level verification label; record an exact date at the next substantive source review."
+                ),
             }
         )
         cluster_entries.append(

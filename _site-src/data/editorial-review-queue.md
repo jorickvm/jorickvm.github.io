@@ -12,20 +12,21 @@ These pages describe something scheduled to change. The tier cadence would revie
 
 | Due | Article | Cadence would say | Why earlier |
 |---|---|---|---|
-| 2026-12-01 | [learn/ees-etias-schengen-90-180.html](/learn/ees-etias-schengen-90-180) | 2027-03-01 | ETIAS has no confirmed start date (the last-quarter-2026 target was withdrawn in July 2026; eu-LISA was due to set a new timetable in September 2026). Every ETIAS status statement on this page changes when a date is announced. |
-| 2026-12-01 | [learn/uk-ilr-absence-limit.html](/learn/uk-ilr-absence-limit) | 2027-03-31 | Earned settlement consultation closed 12 February 2026 with no government response yet; a response or statement of changes would alter the qualifying-period section. |
-| 2026-12-15 | [learn/thailand-visa-exemption-30-days.html](/learn/thailand-visa-exemption-30-days) | 2027-03-31 | The 30-day and 15-day exemptions took effect on 15 September 2026; expect clarifications on the land-entry cap (whether it covers air entries and pre-15 September entries), transitional extensions and the country lists. |
-| 2027-01-15 | [learn/schengen-90-180-rule.html](/learn/schengen-90-180-rule) | 2027-03-01 | ETIAS was not in operation on 2026-10-03 and had no start date; the EU says it will announce the date several months before launch. Recheck travel-europe.europa.eu/etias and update the EES and ETIAS section once a date is set. |
-| 2027-01-31 | [learn/digital-nomad-visa-day-limits.html](/learn/digital-nomad-visa-day-limits) | 2027-03-31 | Income thresholds for Spain, Portugal, Colombia and Croatia are tied to minimum wages or average salaries that reset each January; recheck every figure in the table for 2027. |
-| 2027-03-01 | [learn/get-official-entry-exit-records.html](/learn/get-official-entry-exit-records) | 2027-03-31 | Request routes change often: CBP moved FOIA online-only on 22 January 2026, EES data access is new, and the UK SAR page carries a delay notice. Re-open every request link. |
-| 2027-03-01 | [learn/prove-you-were-not-in-a-country.html](/learn/prove-you-were-not-in-a-country) | 2027-03-31 | NY Nonresident Audit Guidelines (December 2021) and FTB Publication 1031 (2025 edition) are updated periodically; check for newer editions and for CBP I-94/FOIA process changes. |
-| 2027-03-25 | [learn/canadian-snowbird-day-limits.html](/learn/canadian-snowbird-day-limits) | 2027-03-31 | Six-monthly check of volatile rules: the US alien registration rule (final rule 29 June 2026, litigation around related rules), the Form 8840 revision and due date for the 2026 tax year, and provincial health absence limits. |
+| 2026-12-01 | [learn/ees-etias-schengen-90-180.html](/learn/ees-etias-schengen-90-180) | 2027-05-12 | ETIAS applications remain closed and no specific launch date has been announced. Recheck the official launch status before the general six-month cadence. |
+| 2026-12-01 | [learn/uk-ilr-absence-limit.html](/learn/uk-ilr-absence-limit) | 2027-03-26 | Earned settlement consultation closed 12 February 2026 with no government response yet; a response or statement of changes would alter the qualifying-period section. |
+| 2026-12-15 | [learn/thailand-visa-exemption-30-days.html](/learn/thailand-visa-exemption-30-days) | 2027-03-26 | The 30-day and 15-day exemptions took effect on 15 September 2026; expect clarifications on the land-entry cap (whether it covers air entries and pre-15 September entries), transitional extensions and the country lists. |
+| 2027-01-15 | [learn/schengen-90-180-rule.html](/learn/schengen-90-180-rule) | 2027-04-03 | ETIAS was not in operation on 2026-10-03 and had no start date; the EU says it will announce the date several months before launch. Recheck travel-europe.europa.eu/etias and update the EES and ETIAS section once a date is set. |
+| 2027-01-31 | [learn/digital-nomad-visa-day-limits.html](/learn/digital-nomad-visa-day-limits) | 2027-03-26 | Income thresholds for Spain, Portugal, Colombia and Croatia are tied to minimum wages or average salaries that reset each January; recheck every figure in the table for 2027. |
+| 2027-02-24 | [learn/georgia-visa-free-365-days.html](/learn/georgia-visa-free-365-days) | 2027-05-12 | The transitional stay extension for qualifying Ukrainian citizens reaches its stated end date. |
+| 2027-03-01 | [learn/get-official-entry-exit-records.html](/learn/get-official-entry-exit-records) | 2027-03-28 | Request routes change often: CBP moved FOIA online-only on 22 January 2026, EES data access is new, and the UK SAR page carries a delay notice. Re-open every request link. |
+| 2027-03-01 | [learn/prove-you-were-not-in-a-country.html](/learn/prove-you-were-not-in-a-country) | 2027-03-26 | NY Nonresident Audit Guidelines (December 2021) and FTB Publication 1031 (2025 edition) are updated periodically; check for newer editions and for CBP I-94/FOIA process changes. |
+| 2027-03-25 | [learn/canadian-snowbird-day-limits.html](/learn/canadian-snowbird-day-limits) | 2027-03-26 | Six-monthly check of volatile rules: the US alien registration rule (final rule 29 June 2026, litigation around related rules), the Form 8840 revision and due date for the 2026 tax year, and provincial health absence limits. |
 
 ## 2026-12
 
 | Due | Tier | Article | Status | Sources |
 |---|---|---|---|---:|
-| 2026-12-01 | 1 | [learn/ees-etias-schengen-90-180.html](/learn/ees-etias-schengen-90-180) | exact-date-required | 3 |
+| 2026-12-01 | 1 | [learn/ees-etias-schengen-90-180.html](/learn/ees-etias-schengen-90-180) | exact-date-required | 6 |
 | 2026-12-01 | 1 | [learn/uk-ilr-absence-limit.html](/learn/uk-ilr-absence-limit) | exact-date-required | 4 |
 | 2026-12-15 | 1 | [learn/thailand-visa-exemption-30-days.html](/learn/thailand-visa-exemption-30-days) | exact-date-required | 11 |
 
@@ -36,65 +37,75 @@ These pages describe something scheduled to change. The tier cadence would revie
 | 2027-01-15 | 1 | [learn/schengen-90-180-rule.html](/learn/schengen-90-180-rule) | exact-date-required | 5 |
 | 2027-01-31 | 1 | [learn/digital-nomad-visa-day-limits.html](/learn/digital-nomad-visa-day-limits) | exact-date-required | 30 |
 
+## 2027-02
+
+| Due | Tier | Article | Status | Sources |
+|---|---|---|---|---:|
+| 2027-02-24 | 1 | [learn/georgia-visa-free-365-days.html](/learn/georgia-visa-free-365-days) | exact-date-required | 5 |
+
 ## 2027-03
 
 | Due | Tier | Article | Status | Sources |
 |---|---|---|---|---:|
-| 2027-03-01 | 1 | [learn/canada-visitor-visa-6-month-limit.html](/learn/canada-visitor-visa-6-month-limit) | exact-date-required | 2 |
-| 2027-03-01 | 1 | [learn/georgia-visa-free-365-days.html](/learn/georgia-visa-free-365-days) | exact-date-required | 1 |
 | 2027-03-01 | 1 | [learn/get-official-entry-exit-records.html](/learn/get-official-entry-exit-records) | exact-date-required | 13 |
-| 2027-03-01 | 1 | [learn/japan-90-day-rule.html](/learn/japan-90-day-rule) | exact-date-required | 1 |
 | 2027-03-01 | 1 | [learn/prove-you-were-not-in-a-country.html](/learn/prove-you-were-not-in-a-country) | exact-date-required | 12 |
-| 2027-03-01 | 1 | [learn/schengen-countries-list-90-180-rule.html](/learn/schengen-countries-list-90-180-rule) | exact-date-required | 4 |
 | 2027-03-01 | 1 | [learn/schengen-rolling-window-walkthrough.html](/learn/schengen-rolling-window-walkthrough) | exact-date-required | 3 |
-| 2027-03-01 | 1 | [learn/schengen-single-entry-visa.html](/learn/schengen-single-entry-visa) | exact-date-required | 2 |
-| 2027-03-01 | 1 | [learn/turkiye-90-180-rule.html](/learn/turkiye-90-180-rule) | exact-date-required | 2 |
 | 2027-03-01 | 1 | [learn/uk-standard-visitor-visa-180-day-rule.html](/learn/uk-standard-visitor-visa-180-day-rule) | exact-date-required | 3 |
-| 2027-03-01 | 1 | [learn/us-b1-b2-visa-180-day-limit.html](/learn/us-b1-b2-visa-180-day-limit) | exact-date-required | 4 |
-| 2027-03-01 | 1 | [learn/us-visa-waiver-90-day-limit.html](/learn/us-visa-waiver-90-day-limit) | exact-date-required | 2 |
-| 2027-03-01 | 1 | [learn/when-do-you-get-schengen-days-back-after-90-day-stay.html](/learn/when-do-you-get-schengen-days-back-after-90-day-stay) | exact-date-required | 3 |
+| 2027-03-14 | 1 | [learn/cyprus-citizenship-final-year-absence.html](/learn/cyprus-citizenship-final-year-absence) | exact-date-required | 2 |
+| 2027-03-14 | 1 | [learn/france-resident-card-absence.html](/learn/france-resident-card-absence) | exact-date-required | 2 |
+| 2027-03-14 | 1 | [learn/italy-residence-permit-absence.html](/learn/italy-residence-permit-absence) | exact-date-required | 2 |
+| 2027-03-14 | 1 | [learn/nz-super-overseas-absence.html](/learn/nz-super-overseas-absence) | exact-date-required | 4 |
+| 2027-03-14 | 1 | [learn/qatar-residence-return-planning.html](/learn/qatar-residence-return-planning) | exact-date-required | 1 |
+| 2027-03-14 | 1 | [learn/spain-long-term-residence-eu-absence.html](/learn/spain-long-term-residence-eu-absence) | exact-date-required | 3 |
+| 2027-03-14 | 1 | [learn/switzerland-permit-absence.html](/learn/switzerland-permit-absence) | exact-date-required | 2 |
+| 2027-03-17 | 1 | [learn/australia-citizenship-residence-requirement.html](/learn/australia-citizenship-residence-requirement) | exact-date-required | 4 |
 | 2027-03-25 | 1 | [learn/canadian-snowbird-day-limits.html](/learn/canadian-snowbird-day-limits) | exact-date-required | 13 |
-| 2027-03-31 | 1 | [learn/australia-citizenship-residence-requirement.html](/learn/australia-citizenship-residence-requirement) | exact-date-required | 4 |
+| 2027-03-26 | 1 | [learn/overstaying-a-visa-or-stay-limit.html](/learn/overstaying-a-visa-or-stay-limit) | exact-date-required | 14 |
+| 2027-03-26 | 1 | [learn/residence-permit-citizenship-absence-rules.html](/learn/residence-permit-citizenship-absence-rules) | exact-date-required | 18 |
+| 2027-03-26 | 1 | [learn/uk-eta-vs-standard-visitor-visa.html](/learn/uk-eta-vs-standard-visitor-visa) | exact-date-required | 11 |
+| 2027-03-26 | 1 | [learn/uk-ilr-absence-calculator.html](/learn/uk-ilr-absence-calculator) | exact-date-required | 2 |
+| 2027-03-28 | 1 | [learn/travel-history-for-visa-applications.html](/learn/travel-history-for-visa-applications) | exact-date-required | 10 |
 | 2027-03-31 | 1 | [learn/australia-resident-return-visa-residence.html](/learn/australia-resident-return-visa-residence) | exact-date-required | 3 |
 | 2027-03-31 | 1 | [learn/canada-citizenship-physical-presence.html](/learn/canada-citizenship-physical-presence) | exact-date-required | 3 |
 | 2027-03-31 | 1 | [learn/canada-pr-residency-obligation.html](/learn/canada-pr-residency-obligation) | exact-date-required | 3 |
-| 2027-03-31 | 1 | [learn/cyprus-citizenship-final-year-absence.html](/learn/cyprus-citizenship-final-year-absence) | exact-date-required | 2 |
-| 2027-03-31 | 1 | [learn/france-resident-card-absence.html](/learn/france-resident-card-absence) | exact-date-required | 2 |
 | 2027-03-31 | 1 | [learn/germany-naturalization-absence-limit.html](/learn/germany-naturalization-absence-limit) | exact-date-required | 3 |
 | 2027-03-31 | 1 | [learn/india-tourist-visa-stay-limits.html](/learn/india-tourist-visa-stay-limits) | exact-date-required | 3 |
-| 2027-03-31 | 1 | [learn/italy-residence-permit-absence.html](/learn/italy-residence-permit-absence) | exact-date-required | 2 |
 | 2027-03-31 | 1 | [learn/new-zealand-citizenship-presence-requirement.html](/learn/new-zealand-citizenship-presence-requirement) | exact-date-required | 3 |
-| 2027-03-31 | 1 | [learn/nz-super-overseas-absence.html](/learn/nz-super-overseas-absence) | exact-date-required | 4 |
-| 2027-03-31 | 1 | [learn/overstaying-a-visa-or-stay-limit.html](/learn/overstaying-a-visa-or-stay-limit) | exact-date-required | 14 |
-| 2027-03-31 | 1 | [learn/qatar-residence-return-planning.html](/learn/qatar-residence-return-planning) | exact-date-required | 1 |
-| 2027-03-31 | 1 | [learn/residence-permit-citizenship-absence-rules.html](/learn/residence-permit-citizenship-absence-rules) | exact-date-required | 18 |
-| 2027-03-31 | 1 | [learn/spain-long-term-residence-eu-absence.html](/learn/spain-long-term-residence-eu-absence) | exact-date-required | 3 |
-| 2027-03-31 | 1 | [learn/switzerland-permit-absence.html](/learn/switzerland-permit-absence) | exact-date-required | 2 |
-| 2027-03-31 | 1 | [learn/travel-history-for-visa-applications.html](/learn/travel-history-for-visa-applications) | exact-date-required | 10 |
-| 2027-03-31 | 1 | [learn/uk-eta-vs-standard-visitor-visa.html](/learn/uk-eta-vs-standard-visitor-visa) | exact-date-required | 11 |
 | 2027-03-31 | 1 | [learn/us-green-card-absence-limits.html](/learn/us-green-card-absence-limits) | exact-date-required | 3 |
 | 2027-03-31 | 1 | [learn/us-naturalization-physical-presence.html](/learn/us-naturalization-physical-presence) | exact-date-required | 2 |
+
+## 2027-04
+
+| Due | Tier | Article | Status | Sources |
+|---|---|---|---|---:|
+| 2027-04-01 | 1 | [learn/183-day-rule-calculator.html](/learn/183-day-rule-calculator) | exact-date-required | 5 |
+| 2027-04-04 | 1 | [learn/schengen-calculator.html](/learn/schengen-calculator) | exact-date-required | 3 |
+| 2027-04-05 | 1 | [learn/colombia-visitor-180-days-per-year.html](/learn/colombia-visitor-180-days-per-year) | exact-date-required | 2 |
+| 2027-04-05 | 1 | [learn/destination-thailand-visa-180-days.html](/learn/destination-thailand-visa-180-days) | exact-date-required | 4 |
+| 2027-04-05 | 1 | [learn/germany-residence-permit-6-month-absence.html](/learn/germany-residence-permit-6-month-absence) | exact-date-required | 1 |
+| 2027-04-05 | 1 | [learn/indonesia-visa-on-arrival-30-days.html](/learn/indonesia-visa-on-arrival-30-days) | exact-date-required | 2 |
+| 2027-04-05 | 1 | [learn/ireland-citizenship-70-day-absence.html](/learn/ireland-citizenship-70-day-absence) | exact-date-required | 2 |
+| 2027-04-05 | 1 | [learn/mexico-fmm-180-day-visitor-stay.html](/learn/mexico-fmm-180-day-visitor-stay) | exact-date-required | 3 |
+| 2027-04-05 | 1 | [learn/uae-residence-visa-6-months-outside.html](/learn/uae-residence-visa-6-months-outside) | exact-date-required | 1 |
+| 2027-04-07 | 1 | [learn/oman-residence-visa-6-months-outside.html](/learn/oman-residence-visa-6-months-outside) | exact-date-required | 1 |
+| 2027-04-08 | 1 | [learn/what-counts-as-a-day-for-visa-purposes.html](/learn/what-counts-as-a-day-for-visa-purposes) | exact-date-required | 21 |
+| 2027-04-09 | 1 | [learn/uk-citizenship-absence-limits.html](/learn/uk-citizenship-absence-limits) | exact-date-required | 4 |
+| 2027-04-24 | 1 | [learn/spain-long-term-residence-absences.html](/learn/spain-long-term-residence-absences) | exact-date-required | 3 |
+| 2027-04-25 | 1 | [learn/eu-long-term-resident-status-absences.html](/learn/eu-long-term-resident-status-absences) | exact-date-required | 2 |
 
 ## 2027-05
 
 | Due | Tier | Article | Status | Sources |
 |---|---|---|---|---:|
-| 2027-05-01 | 1 | [learn/183-day-rule-calculator.html](/learn/183-day-rule-calculator) | exact-date-required | 5 |
-| 2027-05-01 | 1 | [learn/colombia-visitor-180-days-per-year.html](/learn/colombia-visitor-180-days-per-year) | exact-date-required | 2 |
-| 2027-05-01 | 1 | [learn/destination-thailand-visa-180-days.html](/learn/destination-thailand-visa-180-days) | exact-date-required | 4 |
-| 2027-05-01 | 1 | [learn/eu-long-term-resident-status-absences.html](/learn/eu-long-term-resident-status-absences) | exact-date-required | 2 |
-| 2027-05-01 | 1 | [learn/germany-residence-permit-6-month-absence.html](/learn/germany-residence-permit-6-month-absence) | exact-date-required | 1 |
-| 2027-05-01 | 1 | [learn/indonesia-visa-on-arrival-30-days.html](/learn/indonesia-visa-on-arrival-30-days) | exact-date-required | 2 |
-| 2027-05-01 | 1 | [learn/ireland-citizenship-70-day-absence.html](/learn/ireland-citizenship-70-day-absence) | exact-date-required | 2 |
-| 2027-05-01 | 1 | [learn/mexico-fmm-180-day-visitor-stay.html](/learn/mexico-fmm-180-day-visitor-stay) | exact-date-required | 3 |
 | 2027-05-01 | 1 | [learn/netherlands-residence-permit-absence-rules.html](/learn/netherlands-residence-permit-absence-rules) | exact-date-required | 3 |
-| 2027-05-01 | 1 | [learn/oman-residence-visa-6-months-outside.html](/learn/oman-residence-visa-6-months-outside) | exact-date-required | 1 |
-| 2027-05-01 | 1 | [learn/schengen-calculator.html](/learn/schengen-calculator) | exact-date-required | 3 |
-| 2027-05-01 | 1 | [learn/spain-long-term-residence-absences.html](/learn/spain-long-term-residence-absences) | exact-date-required | 3 |
-| 2027-05-01 | 1 | [learn/uae-residence-visa-6-months-outside.html](/learn/uae-residence-visa-6-months-outside) | exact-date-required | 1 |
-| 2027-05-01 | 1 | [learn/uk-citizenship-absence-limits.html](/learn/uk-citizenship-absence-limits) | exact-date-required | 4 |
-| 2027-05-01 | 1 | [learn/uk-ilr-absence-calculator.html](/learn/uk-ilr-absence-calculator) | exact-date-required | 2 |
-| 2027-05-01 | 1 | [learn/what-counts-as-a-day-for-visa-purposes.html](/learn/what-counts-as-a-day-for-visa-purposes) | exact-date-required | 21 |
+| 2027-05-12 | 1 | [learn/canada-visitor-visa-6-month-limit.html](/learn/canada-visitor-visa-6-month-limit) | exact-date-required | 4 |
+| 2027-05-12 | 1 | [learn/japan-90-day-rule.html](/learn/japan-90-day-rule) | exact-date-required | 2 |
+| 2027-05-12 | 1 | [learn/schengen-countries-list-90-180-rule.html](/learn/schengen-countries-list-90-180-rule) | exact-date-required | 3 |
+| 2027-05-12 | 1 | [learn/schengen-single-entry-visa.html](/learn/schengen-single-entry-visa) | exact-date-required | 2 |
+| 2027-05-12 | 1 | [learn/turkiye-90-180-rule.html](/learn/turkiye-90-180-rule) | exact-date-required | 2 |
+| 2027-05-12 | 1 | [learn/us-b1-b2-visa-180-day-limit.html](/learn/us-b1-b2-visa-180-day-limit) | exact-date-required | 4 |
+| 2027-05-12 | 1 | [learn/us-visa-waiver-90-day-limit.html](/learn/us-visa-waiver-90-day-limit) | exact-date-required | 2 |
+| 2027-05-12 | 1 | [learn/when-do-you-get-schengen-days-back-after-90-day-stay.html](/learn/when-do-you-get-schengen-days-back-after-90-day-stay) | exact-date-required | 4 |
 
 ## 2027-08
 
@@ -158,41 +169,43 @@ These pages describe something scheduled to change. The tier cadence would revie
 
 | Due | Tier | Article | Status | Sources |
 |---|---|---|---|---:|
-| 2027-09-30 | 2 | [learn/183-day-tax-residency-rule.html](/learn/183-day-tax-residency-rule) | exact-date-required | 10 |
-| 2027-09-30 | 2 | [learn/denmark-overseas-work-42-day-rule.html](/learn/denmark-overseas-work-42-day-rule) | exact-date-required | 1 |
-| 2027-09-30 | 3 | [learn/does-a-layover-count-as-visiting-a-country.html](/learn/does-a-layover-count-as-visiting-a-country) | annual-light-pass | 10 |
-| 2027-09-30 | 3 | [learn/flighty-flight-history-day-count.html](/learn/flighty-flight-history-day-count) | annual-light-pass | 3 |
-| 2027-09-30 | 3 | [learn/how-many-countries-in-the-world.html](/learn/how-many-countries-in-the-world) | annual-light-pass | 7 |
-| 2027-09-30 | 3 | [learn/how-to-track-travel-days.html](/learn/how-to-track-travel-days) | annual-light-pass | 5 |
+| 2027-09-13 | 2 | [learn/denmark-overseas-work-42-day-rule.html](/learn/denmark-overseas-work-42-day-rule) | exact-date-required | 1 |
+| 2027-09-16 | 2 | [learn/us-substantial-presence-test.html](/learn/us-substantial-presence-test) | exact-date-required | 7 |
+| 2027-09-25 | 2 | [learn/183-day-tax-residency-rule.html](/learn/183-day-tax-residency-rule) | exact-date-required | 10 |
+| 2027-09-25 | 3 | [learn/does-a-layover-count-as-visiting-a-country.html](/learn/does-a-layover-count-as-visiting-a-country) | annual-light-pass | 10 |
+| 2027-09-25 | 3 | [learn/rebuild-travel-history-from-passport-stamps-emails-photos.html](/learn/rebuild-travel-history-from-passport-stamps-emails-photos) | annual-light-pass | 5 |
+| 2027-09-25 | 2 | [learn/spain-183-day-tax-residency.html](/learn/spain-183-day-tax-residency) | exact-date-required | 3 |
+| 2027-09-27 | 3 | [learn/flighty-flight-history-day-count.html](/learn/flighty-flight-history-day-count) | annual-light-pass | 3 |
+| 2027-09-27 | 3 | [learn/how-many-countries-in-the-world.html](/learn/how-many-countries-in-the-world) | annual-light-pass | 7 |
+| 2027-09-27 | 3 | [learn/how-to-track-travel-days.html](/learn/how-to-track-travel-days) | annual-light-pass | 5 |
+| 2027-09-27 | 3 | [learn/travel-history-template-visa-application.html](/learn/travel-history-template-visa-application) | annual-light-pass | 3 |
 | 2027-09-30 | 2 | [learn/ireland-183-day-tax-residency.html](/learn/ireland-183-day-tax-residency) | exact-date-required | 2 |
 | 2027-09-30 | 2 | [learn/norway-183-day-tax-residency.html](/learn/norway-183-day-tax-residency) | exact-date-required | 3 |
-| 2027-09-30 | 3 | [learn/rebuild-travel-history-from-passport-stamps-emails-photos.html](/learn/rebuild-travel-history-from-passport-stamps-emails-photos) | annual-light-pass | 5 |
-| 2027-09-30 | 2 | [learn/spain-183-day-tax-residency.html](/learn/spain-183-day-tax-residency) | exact-date-required | 3 |
-| 2027-09-30 | 3 | [learn/travel-history-template-visa-application.html](/learn/travel-history-template-visa-application) | annual-light-pass | 3 |
-| 2027-09-30 | 2 | [learn/us-substantial-presence-test.html](/learn/us-substantial-presence-test) | exact-date-required | 7 |
 
 ## 2027-10
 
 | Due | Tier | Article | Status | Sources |
 |---|---|---|---|---:|
-| 2027-10-31 | 2 | [learn/brazil-183-day-tax-residency.html](/learn/brazil-183-day-tax-residency) | exact-date-required | 1 |
-| 2027-10-31 | 2 | [learn/china-183-day-tax-residency.html](/learn/china-183-day-tax-residency) | exact-date-required | 3 |
-| 2027-10-31 | 2 | [learn/china-90-day-tax-exemption.html](/learn/china-90-day-tax-exemption) | exact-date-required | 3 |
-| 2027-10-31 | 2 | [learn/hong-kong-60-day-salaries-tax-exemption.html](/learn/hong-kong-60-day-salaries-tax-exemption) | exact-date-required | 2 |
-| 2027-10-31 | 2 | [learn/india-182-day-tax-residency.html](/learn/india-182-day-tax-residency) | exact-date-required | 3 |
-| 2027-10-31 | 2 | [learn/kazakhstan-183-day-tax-residency.html](/learn/kazakhstan-183-day-tax-residency) | exact-date-required | 2 |
-| 2027-10-31 | 2 | [learn/latvia-183-day-tax-residency.html](/learn/latvia-183-day-tax-residency) | exact-date-required | 1 |
-| 2027-10-31 | 2 | [learn/puerto-rico-183-day-bona-fide-residence.html](/learn/puerto-rico-183-day-bona-fide-residence) | exact-date-required | 2 |
-| 2027-10-31 | 2 | [learn/russia-183-day-tax-residency.html](/learn/russia-183-day-tax-residency) | exact-date-required | 2 |
+| 2027-10-05 | 2 | [learn/india-182-day-tax-residency.html](/learn/india-182-day-tax-residency) | exact-date-required | 3 |
+| 2027-10-07 | 2 | [learn/brazil-183-day-tax-residency.html](/learn/brazil-183-day-tax-residency) | exact-date-required | 1 |
+| 2027-10-07 | 2 | [learn/china-183-day-tax-residency.html](/learn/china-183-day-tax-residency) | exact-date-required | 3 |
+| 2027-10-07 | 2 | [learn/china-90-day-tax-exemption.html](/learn/china-90-day-tax-exemption) | exact-date-required | 3 |
+| 2027-10-07 | 2 | [learn/hong-kong-60-day-salaries-tax-exemption.html](/learn/hong-kong-60-day-salaries-tax-exemption) | exact-date-required | 2 |
+| 2027-10-07 | 2 | [learn/kazakhstan-183-day-tax-residency.html](/learn/kazakhstan-183-day-tax-residency) | exact-date-required | 2 |
+| 2027-10-07 | 2 | [learn/latvia-183-day-tax-residency.html](/learn/latvia-183-day-tax-residency) | exact-date-required | 1 |
+| 2027-10-07 | 2 | [learn/puerto-rico-183-day-bona-fide-residence.html](/learn/puerto-rico-183-day-bona-fide-residence) | exact-date-required | 2 |
+| 2027-10-07 | 2 | [learn/russia-183-day-tax-residency.html](/learn/russia-183-day-tax-residency) | exact-date-required | 2 |
 
 ## 2027-11
 
 | Due | Tier | Article | Status | Sources |
 |---|---|---|---|---:|
+| 2027-11-04 | 2 | [learn/france-tax-residency.html](/learn/france-tax-residency) | exact-date-required | 5 |
+| 2027-11-04 | 2 | [learn/us-feie-physical-presence-test.html](/learn/us-feie-physical-presence-test) | exact-date-required | 6 |
+| 2027-11-07 | 2 | [learn/substantial-presence-test-calculator.html](/learn/substantial-presence-test-calculator) | exact-date-required | 4 |
 | 2027-11-30 | 2 | [learn/alabama-tax-residency.html](/learn/alabama-tax-residency) | exact-date-required | 1 |
 | 2027-11-30 | 2 | [learn/arkansas-tax-residency.html](/learn/arkansas-tax-residency) | exact-date-required | 1 |
 | 2027-11-30 | 2 | [learn/delaware-tax-residency.html](/learn/delaware-tax-residency) | exact-date-required | 1 |
-| 2027-11-30 | 2 | [learn/france-tax-residency.html](/learn/france-tax-residency) | exact-date-required | 5 |
 | 2027-11-30 | 2 | [learn/indiana-tax-residency.html](/learn/indiana-tax-residency) | exact-date-required | 1 |
 | 2027-11-30 | 2 | [learn/iowa-tax-residency.html](/learn/iowa-tax-residency) | exact-date-required | 2 |
 | 2027-11-30 | 2 | [learn/kansas-tax-residency.html](/learn/kansas-tax-residency) | exact-date-required | 1 |
@@ -203,6 +216,4 @@ These pages describe something scheduled to change. The tier cadence would revie
 | 2027-11-30 | 2 | [learn/new-mexico-tax-residency.html](/learn/new-mexico-tax-residency) | exact-date-required | 2 |
 | 2027-11-30 | 2 | [learn/north-carolina-tax-residency.html](/learn/north-carolina-tax-residency) | exact-date-required | 1 |
 | 2027-11-30 | 2 | [learn/oklahoma-tax-residency.html](/learn/oklahoma-tax-residency) | exact-date-required | 1 |
-| 2027-11-30 | 2 | [learn/substantial-presence-test-calculator.html](/learn/substantial-presence-test-calculator) | exact-date-required | 4 |
-| 2027-11-30 | 2 | [learn/us-feie-physical-presence-test.html](/learn/us-feie-physical-presence-test) | exact-date-required | 6 |
 | 2027-11-30 | 2 | [learn/west-virginia-tax-residency.html](/learn/west-virginia-tax-residency) | exact-date-required | 4 |
