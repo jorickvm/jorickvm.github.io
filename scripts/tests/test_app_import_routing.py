@@ -51,8 +51,14 @@ async function run(options) {
   context.window = context;
   vm.createContext(context);
   vm.runInContext(input.head, context);
-  if (options.noMap) delete context.AtlasDaysPageLocales;
-  if (options.noMatcher) delete context.AtlasDaysMatchLocale;
+  if (options.noMap) {
+    context.AtlasDaysPageLocales = undefined;
+    assert.equal(vm.runInContext('typeof window.AtlasDaysPageLocales', context), 'undefined');
+  }
+  if (options.noMatcher) {
+    context.AtlasDaysMatchLocale = undefined;
+    assert.equal(vm.runInContext('typeof window.AtlasDaysMatchLocale', context), 'undefined');
+  }
   vm.runInContext(input.source, context);
   await new Promise(setImmediate);
   assert.equal(trace.filter(x => x[0] === 'fetch').length, 0, 'do not probe guessed language URLs');
