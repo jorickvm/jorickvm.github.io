@@ -30,22 +30,27 @@
     frag = location.hash.slice(1);
   }
 
-  // The English page sends readers on to their language's version, if the
-  // site has one; the stays wait in sessionStorage.
-  if (document.documentElement.lang === "en" && frag) {
-    var tags = [];
-    (navigator.languages || [navigator.language || ""]).forEach(function (l) {
-      var parts = String(l).split("-");
-      for (var n = parts.length; n > 0; n--) { var t = parts.slice(0, n).join("-"); if (tags.indexOf(t) < 0) tags.push(t); }
-    });
-    tags = tags.filter(function (t) { return !/^en(-|$)/i.test(t) && /^[A-Za-z]{2,3}(-[A-Za-z0-9]{2,8})*$/.test(t); });
-    (function next(i) {
-      if (i >= tags.length) return;
-      var path = "/" + tags[i] + "/app/import/";
-      fetch(path, { method: "HEAD", credentials: "same-origin" })
-        .then(function (r) { if (r.ok) location.replace(path); else next(i + 1); })
-        .catch(function () { next(i + 1); });
-    })(0);
+  // Use the published page map and the site's script-aware language matcher.
+  // Redirect only after the import is retained in this tab, and respect an
+  // explicit language or an English-first browser preference.
+  if (document.documentElement.lang === "en" && frag && !new URLSearchParams(location.search).has("lang")) {
+    var retained = false;
+    try { retained = sessionStorage.getItem(KEY) === frag; } catch (e) {}
+    var matchLocale = window.AtlasDaysMatchLocale;
+    var published = window.AtlasDaysPageLocales;
+    if (retained && typeof matchLocale === "function" && published) {
+      var choices = { en: { url: location.pathname } };
+      Object.keys(published).forEach(function (code) { choices[code] = published[code]; });
+      var preferred = navigator.languages && navigator.languages.length ? navigator.languages : [navigator.language || ""];
+      for (var i = 0; i < preferred.length; i += 1) {
+        var code = matchLocale(preferred[i], choices);
+        if (!code) continue;
+        if (code !== "en" && choices[code].url !== location.pathname) {
+          location.replace(choices[code].url + location.search);
+        }
+        break;
+      }
+    }
   }
 
   function fields() {

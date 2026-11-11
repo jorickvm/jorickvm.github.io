@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import html
 import json
 import os
@@ -102,6 +103,14 @@ def parse_args() -> argparse.Namespace:
 
 
 SITE_URL = "https://atlasdays.app"
+
+
+def version_import_script(rendered: str) -> str:
+    """Keep the import landing page's script cache key tied to its contents."""
+    if "assets/js/app-import.js?v=" not in rendered:
+        return rendered
+    digest = hashlib.sha256((SITE_ROOT / "assets/js/app-import.js").read_bytes()).hexdigest()[:12]
+    return re.sub(r'''(assets/js/app-import\.js\?v=)[^"'&\s<]+''', lambda match: match[1] + digest, rendered)
 
 # Sources carry the plain App Store URL; the build swaps every clickable link to
 # it for an App Store Connect campaign link, so downloads from the site show up
@@ -2132,6 +2141,7 @@ def main() -> int:
         selected += 1
         if output_path.suffix == ".html":
             rendered = with_campaign_links(rendered, campaign, ppid)
+            rendered = version_import_script(rendered)
         if locale_code is not None and PRODUCT_PAGES_MARKER in rendered:
             rendered = rendered.replace(PRODUCT_PAGES_MARKER, product_page_presets(locale_code, product_pages))
         current = output_path.read_text(encoding="utf-8") if output_path.exists() else ""
