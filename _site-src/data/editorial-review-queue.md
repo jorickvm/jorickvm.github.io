@@ -49,8 +49,6 @@ These pages describe something scheduled to change. The tier cadence would revie
 |---|---|---|---|---:|
 | 2027-03-01 | 1 | [learn/get-official-entry-exit-records.html](/learn/get-official-entry-exit-records) | exact-date-required | 13 |
 | 2027-03-01 | 1 | [learn/prove-you-were-not-in-a-country.html](/learn/prove-you-were-not-in-a-country) | exact-date-required | 12 |
-| 2027-03-01 | 1 | [learn/schengen-rolling-window-walkthrough.html](/learn/schengen-rolling-window-walkthrough) | exact-date-required | 3 |
-| 2027-03-01 | 1 | [learn/uk-standard-visitor-visa-180-day-rule.html](/learn/uk-standard-visitor-visa-180-day-rule) | exact-date-required | 3 |
 | 2027-03-14 | 1 | [learn/cyprus-citizenship-final-year-absence.html](/learn/cyprus-citizenship-final-year-absence) | exact-date-required | 2 |
 | 2027-03-14 | 1 | [learn/france-resident-card-absence.html](/learn/france-resident-card-absence) | exact-date-required | 2 |
 | 2027-03-14 | 1 | [learn/italy-residence-permit-absence.html](/learn/italy-residence-permit-absence) | exact-date-required | 2 |
@@ -106,6 +104,8 @@ These pages describe something scheduled to change. The tier cadence would revie
 | 2027-05-12 | 1 | [learn/us-b1-b2-visa-180-day-limit.html](/learn/us-b1-b2-visa-180-day-limit) | exact-date-required | 4 |
 | 2027-05-12 | 1 | [learn/us-visa-waiver-90-day-limit.html](/learn/us-visa-waiver-90-day-limit) | exact-date-required | 2 |
 | 2027-05-12 | 1 | [learn/when-do-you-get-schengen-days-back-after-90-day-stay.html](/learn/when-do-you-get-schengen-days-back-after-90-day-stay) | exact-date-required | 4 |
+| 2027-05-13 | 1 | [learn/schengen-rolling-window-walkthrough.html](/learn/schengen-rolling-window-walkthrough) | exact-date-required | 3 |
+| 2027-05-13 | 1 | [learn/uk-standard-visitor-visa-180-day-rule.html](/learn/uk-standard-visitor-visa-180-day-rule) | exact-date-required | 3 |
 
 ## 2027-08
 
@@ -116,10 +116,8 @@ These pages describe something scheduled to change. The tier cadence would revie
 | 2027-08-31 | 2 | [learn/armenia-183-day-tax-residency.html](/learn/armenia-183-day-tax-residency) | exact-date-required | 2 |
 | 2027-08-31 | 2 | [learn/australia-183-day-tax-residency.html](/learn/australia-183-day-tax-residency) | exact-date-required | 1 |
 | 2027-08-31 | 2 | [learn/bulgaria-183-day-tax-residency.html](/learn/bulgaria-183-day-tax-residency) | exact-date-required | 1 |
-| 2027-08-31 | 2 | [learn/california-tax-residency.html](/learn/california-tax-residency) | exact-date-required | 1 |
 | 2027-08-31 | 2 | [learn/canada-183-day-tax-residency.html](/learn/canada-183-day-tax-residency) | exact-date-required | 1 |
 | 2027-08-31 | 2 | [learn/colombia-183-day-tax-residency.html](/learn/colombia-183-day-tax-residency) | exact-date-required | 1 |
-| 2027-08-31 | 2 | [learn/colorado-tax-residency.html](/learn/colorado-tax-residency) | exact-date-required | 1 |
 | 2027-08-31 | 2 | [learn/connecticut-tax-residency.html](/learn/connecticut-tax-residency) | exact-date-required | 1 |
 | 2027-08-31 | 2 | [learn/cyprus-183-day-tax-residency.html](/learn/cyprus-183-day-tax-residency) | exact-date-required | 1 |
 | 2027-08-31 | 2 | [learn/czech-republic-183-day-tax-residency.html](/learn/czech-republic-183-day-tax-residency) | exact-date-required | 1 |
@@ -129,7 +127,6 @@ These pages describe something scheduled to change. The tier cadence would revie
 | 2027-08-31 | 2 | [learn/greece-183-day-tax-residency.html](/learn/greece-183-day-tax-residency) | exact-date-required | 1 |
 | 2027-08-31 | 2 | [learn/hawaii-tax-residency.html](/learn/hawaii-tax-residency) | exact-date-required | 1 |
 | 2027-08-31 | 2 | [learn/idaho-tax-residency.html](/learn/idaho-tax-residency) | exact-date-required | 1 |
-| 2027-08-31 | 2 | [learn/indonesia-183-day-tax-residency.html](/learn/indonesia-183-day-tax-residency) | exact-date-required | 1 |
 | 2027-08-31 | 2 | [learn/italy-183-day-tax-residency.html](/learn/italy-183-day-tax-residency) | exact-date-required | 1 |
 | 2027-08-31 | 2 | [learn/lithuania-183-day-tax-residency.html](/learn/lithuania-183-day-tax-residency) | exact-date-required | 2 |
 | 2027-08-31 | 2 | [learn/maine-tax-residency.html](/learn/maine-tax-residency) | exact-date-required | 1 |
@@ -142,13 +139,10 @@ These pages describe something scheduled to change. The tier cadence would revie
 | 2027-08-31 | 2 | [learn/moldova-183-day-tax-residency.html](/learn/moldova-183-day-tax-residency) | exact-date-required | 2 |
 | 2027-08-31 | 2 | [learn/montenegro-183-day-tax-residency.html](/learn/montenegro-183-day-tax-residency) | exact-date-required | 1 |
 | 2027-08-31 | 2 | [learn/nebraska-tax-residency.html](/learn/nebraska-tax-residency) | exact-date-required | 1 |
-| 2027-08-31 | 2 | [learn/new-jersey-tax-residency.html](/learn/new-jersey-tax-residency) | exact-date-required | 1 |
-| 2027-08-31 | 2 | [learn/new-york-tax-residency.html](/learn/new-york-tax-residency) | exact-date-required | 2 |
 | 2027-08-31 | 2 | [learn/new-zealand-183-day-tax-residency.html](/learn/new-zealand-183-day-tax-residency) | exact-date-required | 1 |
 | 2027-08-31 | 2 | [learn/north-dakota-tax-residency.html](/learn/north-dakota-tax-residency) | exact-date-required | 1 |
 | 2027-08-31 | 2 | [learn/ohio-tax-residency.html](/learn/ohio-tax-residency) | exact-date-required | 1 |
 | 2027-08-31 | 2 | [learn/oregon-tax-residency.html](/learn/oregon-tax-residency) | exact-date-required | 1 |
-| 2027-08-31 | 2 | [learn/pennsylvania-tax-residency.html](/learn/pennsylvania-tax-residency) | exact-date-required | 1 |
 | 2027-08-31 | 2 | [learn/poland-183-day-tax-residency.html](/learn/poland-183-day-tax-residency) | exact-date-required | 1 |
 | 2027-08-31 | 2 | [learn/portugal-183-day-tax-residency.html](/learn/portugal-183-day-tax-residency) | exact-date-required | 1 |
 | 2027-08-31 | 2 | [learn/rhode-island-tax-residency.html](/learn/rhode-island-tax-residency) | exact-date-required | 1 |
@@ -203,6 +197,12 @@ These pages describe something scheduled to change. The tier cadence would revie
 | 2027-11-04 | 2 | [learn/france-tax-residency.html](/learn/france-tax-residency) | exact-date-required | 5 |
 | 2027-11-04 | 2 | [learn/us-feie-physical-presence-test.html](/learn/us-feie-physical-presence-test) | exact-date-required | 6 |
 | 2027-11-07 | 2 | [learn/substantial-presence-test-calculator.html](/learn/substantial-presence-test-calculator) | exact-date-required | 4 |
+| 2027-11-12 | 2 | [learn/california-tax-residency.html](/learn/california-tax-residency) | exact-date-required | 1 |
+| 2027-11-12 | 2 | [learn/colorado-tax-residency.html](/learn/colorado-tax-residency) | exact-date-required | 3 |
+| 2027-11-12 | 2 | [learn/indonesia-183-day-tax-residency.html](/learn/indonesia-183-day-tax-residency) | exact-date-required | 2 |
+| 2027-11-12 | 2 | [learn/new-jersey-tax-residency.html](/learn/new-jersey-tax-residency) | exact-date-required | 2 |
+| 2027-11-12 | 2 | [learn/new-york-tax-residency.html](/learn/new-york-tax-residency) | exact-date-required | 2 |
+| 2027-11-12 | 2 | [learn/pennsylvania-tax-residency.html](/learn/pennsylvania-tax-residency) | exact-date-required | 2 |
 | 2027-11-30 | 2 | [learn/alabama-tax-residency.html](/learn/alabama-tax-residency) | exact-date-required | 1 |
 | 2027-11-30 | 2 | [learn/arkansas-tax-residency.html](/learn/arkansas-tax-residency) | exact-date-required | 1 |
 | 2027-11-30 | 2 | [learn/delaware-tax-residency.html](/learn/delaware-tax-residency) | exact-date-required | 1 |

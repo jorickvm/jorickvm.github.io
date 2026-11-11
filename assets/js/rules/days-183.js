@@ -37,6 +37,32 @@
   }
   // A same-day stay in a country whose rule needs an overnight stay.
   function dayTrip(t, c) { return !!c.settings.overnight && t.country === c.settings.overnight && t.start === t.end; }
+  function cyprusRule(c, country) { return c.settings.presence === "cyprus" && country === "CY"; }
+  function cyprusDays(trips, b) {
+    var elsewhere = trips.filter(function (t) { return t.country && t.country !== "CY"; });
+    var raw = trips.filter(function (t) { return t.country === "CY" && t.end >= t.start; })
+      .slice().sort(function (a, z) { return a.start - z.start || a.end - z.end; });
+    var stays = [];
+    raw.forEach(function (t) {
+      var last = stays[stays.length - 1];
+      var left = elsewhere.some(function (x) { return x.start <= t.start && x.end >= t.start; });
+      if (last && (t.start < last.end || t.start === last.start || (t.start === last.end && !left))) {
+        last.end = Math.max(last.end, t.end);
+      } else stays.push({ start: t.start, end: t.end });
+    });
+    // Resolve border events before clipping stays to the counting period.
+    var arrivals = new Set(stays.map(function (t) { return t.start; }));
+    var returns = new Set(stays.filter(function (t) { return t.end > t.start && arrivals.has(t.end); })
+      .map(function (t) { return t.end; }));
+    var days = new Set();
+    stays.forEach(function (t) {
+      var last = t.start === t.end ? t.end : t.end - 1;
+      for (var d = Math.max(t.start, b.from); d <= Math.min(last, b.to); d++) {
+        if (!returns.has(d)) days.add(d);
+      }
+    });
+    return days;
+  }
   function setting(c, key) { return c.settings[key] || defaults(c)[key]; }
   function countUpTo(c) {
     var iso = c.settings.checkOn;
@@ -112,6 +138,7 @@
       var limit = Math.round(+q.get("limit"));
       if (limit >= 1 && limit <= 366) s.limit = limit;
       if (q.get("overnight") === "1") s.overnight = code;
+      if (code === "CY") s.presence = "cyprus";
       s.linkedWindow = windowKey({ settings: s, D: c.D, today: c.today });
       return { settings: s, link: "183-" + code.toLowerCase() };
     },
@@ -131,6 +158,8 @@
         if (type === "tax") p += ",year:" + setting(c, "taxStart").slice(0, 4);
         return p;
       }
+      // A generic custom tracker cannot express Cyprus's border-day exceptions.
+      if (cyprusRule(c, s.country)) return "";
       if (!s.country) return "";
       var custom = "custom,place:" + s.country + ",days:" + numbers(c, s.country).shown + ",unit:" + (s.nights ? "nights" : "days");
       if (type === "calendar") custom += ",window:year,year:" + setting(c, "year");
@@ -144,6 +173,9 @@
     // counts only days with an overnight stay (Portugal: "qualquer dia [...]
     // que inclua dormida") counts a same-day visit as none.
     tripLabel: function (t, c) {
+      if (cyprusRule(c, t.country)) return c.text("tripDays", {
+        n: cyprusDays(c.trips || [t], { from: t.start, to: t.end }).size
+      });
       if (dayTrip(t, c)) return c.text("tripDays", { n: 0 });
       return c.text("tripDays", { n: t.end - t.start + (c.settings.nights ? 0 : 1) });
     },
@@ -152,10 +184,12 @@
       var b = bounds(c), byCountry = {};
       trips.forEach(function (t) {
         var code = t.country || "";
+        if (cyprusRule(c, code)) return;
         if (dayTrip(t, c)) return;
         var last = c.settings.nights ? t.end - 1 : t.end;
         for (var d = Math.max(t.start, b.from); d <= Math.min(last, b.to); d++) (byCountry[code] = byCountry[code] || new Set()).add(d);
       });
+      if (cyprusRule(c, "CY")) byCountry.CY = cyprusDays(trips, b);
       // Without a choice yet, check the country with the most days.
       if (!c.settings.country) {
         var top = Object.keys(byCountry).filter(Boolean).sort(function (x, z) { return byCountry[z].size - byCountry[x].size; })[0];

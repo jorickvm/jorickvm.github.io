@@ -63,7 +63,7 @@
     },
     "url": "https://atlasdays.app/zh-Hans/learn/183-day-rule-calculator",
     "datePublished": "2026-10-01",
-    "dateModified": "2026-10-01",
+    "dateModified": "2026-11-12",
     "inLanguage": "zh-Hans",
     "image": "https://atlasdays.app/assets/social/site-v1.png"
   }
@@ -132,7 +132,7 @@
         "name": "到达当天算在该国的天数里吗？",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "在本计算器中算：只要在当地待过，当天就算一天，因此到达当天和离开当天都计为在该国的天数。许多国家都这样计算。英国则按午夜计算，具体做法见英国指南。"
+          "text": "默认计算包含入境日与出境日。国家指南链接可应用其他算法，包括塞浦路斯移动日的例外。英国则计算午夜，详见英国指南。"
         }
       },
       {
@@ -345,16 +345,17 @@
 
     <h2 id="section-2">计算器如何计算</h2>
     <ul>
-      <li><strong>只要在当地待过，当天就算一天。</strong>到达当天和离开当天都计入在该国的天数，因此 6 月 1 日至 10 日共 10 天。从一国前往另一国的那一天，两国都会计入。</li>
+      <li><strong>默认计算包含入境与出境。</strong>若采用首尾日都包含的算法，6 月 1 日至 10 日是 10 天。从国家指南打开的链接，可改用该国的计算方式。</li>
       <li><strong>一个国家，一个年度。</strong>在追踪器中选择国家，并在上方选择计算期间：日历年、从起始日算起的纳税年度（英国为 4 月 6 日，澳大利亚为 7 月 1 日，新西兰和印度为 4 月 1 日），或最近 12 个月。只有计算期间内的天数才会计入。</li>
       <li><strong>低于上限，或达到 183 天。</strong>多数人希望停留少于 183 天。如果需要停留 183 天才能成为某地的税务居民，把目标类型设为“达成目标”：达到后，进度条会变成绿色。</li>
       <li><strong>计划中的停留也会计入。</strong>标记尚未预订的行程，看看它会不会让天数超过 183 天。</li>
     </ul>
 
     <h2 id="section-3">如果当地的计算方式不同</h2>
-    <p>大多数国家的计算方式与本计算器相同。如果当地有自己的规定，对应的指南会加以说明，AtlasDays 也有现成的追踪器可以准确计算：</p>
+    <p>各国的门槛与算法不同。解读结果前，请先核对相关指南：</p>
     <ul>
-      <li><strong>按午夜计算。</strong>英国计算的是午夜时身在英国的天数。参见<a href="/zh-Hans/learn/uk-statutory-residence-test">英国法定居住判定</a>；AtlasDays 的英国追踪器按午夜计算。</li>
+      <li><strong>塞浦路斯移动日。</strong>从<a href="/zh-Hans/learn/cyprus-183-day-tax-residency">塞浦路斯指南</a>打开的链接，会计入入境、排除出境、计入同日访问，并排除同日出境与返回。也请记录对其他国家的访问，才能将出境再返回，与拆开的塞浦路斯记录区分。</li>
+        <li><strong>按午夜计算。</strong>英国计算的是午夜时身在英国的天数。参见<a href="/zh-Hans/learn/uk-statutory-residence-test">英国法定居住判定</a>；AtlasDays 的英国追踪器按午夜计算。</li>
       <li><strong>超过 183 天。</strong>西班牙要求停留超过 183 天，刚好 183 天还不够。参见<a href="/zh-Hans/learn/spain-183-day-tax-residency">西班牙</a>；AtlasDays 的每个追踪器都采用该国的确切门槛。</li>
       <li><strong>同时看三年。</strong>美国实质居留判定还会计入前两年的部分天数。参见<a href="/zh-Hans/learn/us-substantial-presence-test">实质居留判定</a>；AtlasDays 有追踪器会自动完成加权计算。</li>
     </ul>
@@ -372,7 +373,7 @@
 
     <h2 id="section-4">常见问题</h2>
     <h3>到达当天算在该国的天数里吗？</h3>
-    <p>在本计算器中算：只要在当地待过，当天就算一天，因此到达当天和离开当天都计为在该国的天数。许多国家都这样计算。英国则按午夜计算，具体做法见<a href="/zh-Hans/learn/uk-statutory-residence-test">英国指南</a>。</p>
+    <p>默认计算包含入境日与出境日。国家指南链接可应用其他算法，包括塞浦路斯移动日的例外。英国则计算午夜，详见<a href="/zh-Hans/learn/uk-statutory-residence-test">英国指南</a>。</p>
     <h3>在一个国家停留 183 天，就会成为税务居民吗？</h3>
     <p>通常会，但不一定。许多国家会将在一个纳税年度内停留 183 天的人视为税务居民，也有国家采用不同的门槛或期间；此外，住所或家人等其他关联因素，也可能让停留天数较少的人成为税务居民。计算器显示的是天数，而不是判定结果。</p>
     <h3>输入的数据会被存储吗？</h3>
@@ -446,7 +447,7 @@
   <script src="../../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"打开导航菜单","menuClose":"关闭导航菜单"};</script>
   <script src="../../assets/js/navigation.js?v=20261027j"></script>
-  <script defer src="../../assets/js/rules/days-183.js?v=20261029a"></script>
+  <script defer src="../../assets/js/rules/days-183.js?v=20261112a"></script>
   <script defer src="../../assets/js/day-calendar.js?v=20261029b"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on. */

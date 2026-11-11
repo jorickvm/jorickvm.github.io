@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>申根滚动期间实际上如何运作｜AtlasDays</title>
-  <meta name="description" content="用一个算例说明申根 90/180 的滚动期间：为什么同一份行程在不同检查日期给出不同答案，天数为什么一天一天回来，手工计算常错在哪里。" />
+  <meta name="description" content="跟着具体日期核对申根 90/180，了解旧日如何移出期间，以及为什么核对日的余额不等于未来最长停留期限。" />
   <meta property="og:title" content="申根滚动期间实际上如何运作｜AtlasDays" />
-  <meta property="og:description" content="用一个算例说明申根 90/180 的滚动期间：为什么同一份行程在不同检查日期给出不同答案，天数为什么一天一天回来，手工计算常错在哪里。" />
+  <meta property="og:description" content="跟着具体日期核对申根 90/180，了解旧日如何移出期间，以及为什么核对日的余额不等于未来最长停留期限。" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/zh-Hans/learn/schengen-rolling-window-walkthrough" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="申根滚动期间实际上如何运作｜AtlasDays" />
-  <meta name="twitter:description" content="用一个算例说明申根 90/180 的滚动期间：为什么同一份行程在不同检查日期给出不同答案，天数为什么一天一天回来，手工计算常错在哪里。" />
+  <meta name="twitter:description" content="跟着具体日期核对申根 90/180，了解旧日如何移出期间，以及为什么核对日的余额不等于未来最长停留期限。" />
   <meta name="apple-itunes-app" content="app-id=6760133544, app-argument=https://apps.apple.com/app/atlasdays-track-country-days/id6760133544" />
   <meta property="og:locale" content="zh_CN" />
   <meta property="og:image" content="https://atlasdays.app/assets/social/site-v1.png" />
@@ -47,7 +47,7 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "申根滚动期间实际上如何运作",
-    "description": "用一个算例说明申根 90/180 的滚动期间：为什么同一份行程在不同检查日期给出不同答案，天数为什么一天一天回来，手工计算常错在哪里。",
+    "description": "跟着具体日期核对申根 90/180，了解旧日如何移出期间，以及为什么核对日的余额不等于未来最长停留期限。",
     "author": {
       "@type": "Organization",
       "name": "AtlasDays",
@@ -63,7 +63,7 @@
     },
     "url": "https://atlasdays.app/zh-Hans/learn/schengen-rolling-window-walkthrough",
     "datePublished": "2026-03-24",
-    "dateModified": "2026-08-18",
+    "dateModified": "2026-11-12",
     "inLanguage": "zh-Hans",
     "image": "https://atlasdays.app/assets/social/site-v1.png"
   }
@@ -196,18 +196,18 @@
     <img class="title-flag" src="/assets/flags/eu.png" alt="欧盟旗帜" width="56" height="42" />
     <h1>申根滚动期间实际上如何运作</h1>
     <p class="subtitle">用一个算例讲清申根的滚动期间，写给需要把这套算法真正想明白的人。可以用<a href="/zh-Hans/learn/schengen-calculator">计算器</a>检查停留日期。</p>
-    <p class="verified">最后核实：2026 年 8 月</p>
+    <p class="verified">最后核实：<time datetime="2026-11-12">2026 年 11 月 12 日</time></p>
 
     <div class="callout">
-      <p><strong>重点：</strong>滚动期间是针对某一个日期套用的，不是针对一趟行程。选定关心的那个日期，往回看 180 天，数出这个期间内在申根区停留的每一天。这个期间每天都会往前挪，所以已用的天数是一天一天掉出来，而不是一次全部重置；同一份行程记录，在两个不同的检查日期可能给出两个不同的答案。</p>
+      <p><strong>要点：</strong>90/180 判定必须在停留的每一天都成立。对每一天，计算当天及前 179 天的申根停留。期间每天前移，已用天数会逐日移出，而非同时全部重置。因此，同一份旅行记录在两个不同核对日期可能得到不同结果。</p>
     </div>
 
     <h2 id="section-1">核心思路</h2>
-    <p>在任何一个关心的日期，往回看 180 天，数出这个期间内在申根区停留的每一天。如果结果是 90 天或更少，就在短期停留上限之内；如果超过 90 天，就不在。</p>
+    <p>对实际或计划停留的每一天，计算以该日结束的 180 天期间内的所有申根天数。入境日与出境日都计入。合计不超过 90 天，就在短期停留上限内；超过 90 天则不符合。</p>
     <p>关键在于这个期间<strong>每天都在移动</strong>。没有固定的季度重置，也没有每个申根国家各自的额度。同一个共用计数会跟着你走遍整个申根区。</p>
 
     <h2 id="section-2">算例</h2>
-    <p>假设行程记录是这样的：</p>
+    <p>假设在 2026 年进行以下两次旅行，没有其他申根停留：</p>
     <ul>
       <li><strong>行程 1：</strong>1 月 15 日至 2 月 13 日，共 30 个申根停留日</li>
       <li><strong>行程 2：</strong>4 月 1 日至 5 月 15 日，共 45 个申根停留日</li>
@@ -215,20 +215,20 @@
     <p>两趟合计是 75 天。光有这个数字还不够，还得再问一句：<strong>是哪一个 180 天期间内的 75 天？</strong></p>
 
     <h2 id="section-3">检查日期为什么会改变答案</h2>
-    <p>如果在 <strong>7 月 1 日</strong>检查，180 天的回溯期会一直回到 1 月，两趟行程都还在期间之内。也就是说 75 天全部照算，只剩 15 天可用。</p>
-    <p>如果在 <strong>9 月 1 日</strong>检查，180 天的回溯期从 3 月开始算起。1 月至 2 月那趟行程已经完全掉出期间，只剩 4 月至 5 月的 45 天还算数。在那个日期，可用的天数是 45 天。</p>
+    <p>在 <strong>2026 年 7 月 1 日</strong>，计算期间为 1 月 3 日至 7 月 1 日。先前的 75 天全部在内，所以该日距上限还有 15 天。这个时点的余额不是现在起能进行最长旅行的预测。</p>
+    <p>在 <strong>2026 年 9 月 1 日</strong>，期间为 3 月 6 日至 9 月 1 日。只剩 4 月至 5 月的 45 天，因此该日距上限还有 45 天。新停留期间可能一边加入新日，一边移出旧日。请核对计划停留的每一天。</p>
 
     <div class="callout">
-      <p><strong>关键在于：</strong>这项规定问的从来不是“我离开多久了？”，而是“在我检查的那个日期，最近 180 天里还留着多少个申根停留日？”</p>
+      <p><strong>关键：</strong>核对日的合计与未来最长停留是两种不同答案。规划时，计划停留每一天的滚动合计都必须不超过 90 天。</p>
     </div>
     <p class="calc-callout"><a href="/zh-Hans/learn/schengen-calculator">申根计算器</a>可以用你自己的日期呈现这个过程：点选你的停留，再移动“截至日期”。</p>
     <h2 id="section-4">天数怎么回来</h2>
-    <p>天数不会整块一次回来，而是按当初使用的顺序依次回来。最早的那一天一旦比 180 天的回溯期还要早，这一天就掉出期间，同时释放出一天可用。</p>
-    <p>所以很多人以为自己“等得够久了”，结果还是算错。一趟长期停留不会带来一次干净的重置，而是让天数随时间逐步释放。</p>
+    <p>过去停留日会按照使用顺序移出期间。最旧的一天超出 180 天回溯范围时，该日便不再计入，并再次空出一天。</p>
+    <p>因此，以为已经等得够久，仍可能算错。在<strong>申根区外连续 90 天</strong>后，新一次最多 90 天的停留符合 90/180 计算。是否准许入境，仍取决于签证或免签资格及其他入境条件。</p>
 
     <h2 id="section-5">常见的计算错误</h2>
     <ul>
-      <li><strong>把申根当成简单的进 90 天、出 90 天循环。</strong>它不是。</li>
+      <li><strong>以为任何短暂离开都会重置额度。</strong>并不会。但完整、不间断的 90 天离境，确实允许依滚动计算重新停留 90 天。</li>
       <li><strong>忘了入境和出境当天都要算。</strong>接近上限时，差一天就是差一天。</li>
       <li><strong>以为换个国家就有新的额度。</strong>法国、西班牙、德国、意大利和其他成员国都从同一份额度里扣。</li>
       <li><strong>去数“在外面待了几天”，而不是数 180 天回溯期内的停留天数。</strong>在外面的时间之所以有意义，只是因为它把更早的境内停留日推出了期间。</li>
@@ -240,7 +240,7 @@
 
     <div class="cta-box">
       <h3>把滚动期间放进一份带日期的记录里</h3>
-      <p>AtlasDays 把行程记录集中在一处，并一致地对它套用滚动期间的逻辑，于是这套移动期间的算术变成你复核的东西，而不是每次凭记忆重算一遍。</p>
+      <p>在 AtlasDays 保存申根停留，使用申根 90/180 追踪器，将滚动天数与旅行记录一起保留。</p>
       <a class="cta-btn" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8&amp;ppid=d3a9b2e7-b9b8-479b-be33-c009cef92c74"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> 下载 App</a>
     </div>
 
