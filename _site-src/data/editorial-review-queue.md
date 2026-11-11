@@ -119,7 +119,6 @@ These pages describe something scheduled to change. The tier cadence would revie
 | 2027-08-31 | 2 | [learn/canada-183-day-tax-residency.html](/learn/canada-183-day-tax-residency) | exact-date-required | 1 |
 | 2027-08-31 | 2 | [learn/colombia-183-day-tax-residency.html](/learn/colombia-183-day-tax-residency) | exact-date-required | 1 |
 | 2027-08-31 | 2 | [learn/connecticut-tax-residency.html](/learn/connecticut-tax-residency) | exact-date-required | 1 |
-| 2027-08-31 | 2 | [learn/cyprus-183-day-tax-residency.html](/learn/cyprus-183-day-tax-residency) | exact-date-required | 1 |
 | 2027-08-31 | 2 | [learn/czech-republic-183-day-tax-residency.html](/learn/czech-republic-183-day-tax-residency) | exact-date-required | 1 |
 | 2027-08-31 | 2 | [learn/estonia-183-day-tax-residency.html](/learn/estonia-183-day-tax-residency) | exact-date-required | 1 |
 | 2027-08-31 | 2 | [learn/georgia-183-day-tax-residency.html](/learn/georgia-183-day-tax-residency) | exact-date-required | 1 |
@@ -129,7 +128,6 @@ These pages describe something scheduled to change. The tier cadence would revie
 | 2027-08-31 | 2 | [learn/idaho-tax-residency.html](/learn/idaho-tax-residency) | exact-date-required | 1 |
 | 2027-08-31 | 2 | [learn/italy-183-day-tax-residency.html](/learn/italy-183-day-tax-residency) | exact-date-required | 1 |
 | 2027-08-31 | 2 | [learn/lithuania-183-day-tax-residency.html](/learn/lithuania-183-day-tax-residency) | exact-date-required | 2 |
-| 2027-08-31 | 2 | [learn/maine-tax-residency.html](/learn/maine-tax-residency) | exact-date-required | 1 |
 | 2027-08-31 | 2 | [learn/malaysia-182-day-tax-residency.html](/learn/malaysia-182-day-tax-residency) | exact-date-required | 1 |
 | 2027-08-31 | 2 | [learn/malta-183-day-tax-residency.html](/learn/malta-183-day-tax-residency) | exact-date-required | 1 |
 | 2027-08-31 | 2 | [learn/maryland-tax-residency.html](/learn/maryland-tax-residency) | exact-date-required | 1 |
@@ -199,7 +197,9 @@ These pages describe something scheduled to change. The tier cadence would revie
 | 2027-11-07 | 2 | [learn/substantial-presence-test-calculator.html](/learn/substantial-presence-test-calculator) | exact-date-required | 4 |
 | 2027-11-12 | 2 | [learn/california-tax-residency.html](/learn/california-tax-residency) | exact-date-required | 1 |
 | 2027-11-12 | 2 | [learn/colorado-tax-residency.html](/learn/colorado-tax-residency) | exact-date-required | 3 |
+| 2027-11-12 | 2 | [learn/cyprus-183-day-tax-residency.html](/learn/cyprus-183-day-tax-residency) | exact-date-required | 2 |
 | 2027-11-12 | 2 | [learn/indonesia-183-day-tax-residency.html](/learn/indonesia-183-day-tax-residency) | exact-date-required | 2 |
+| 2027-11-12 | 2 | [learn/maine-tax-residency.html](/learn/maine-tax-residency) | exact-date-required | 3 |
 | 2027-11-12 | 2 | [learn/new-jersey-tax-residency.html](/learn/new-jersey-tax-residency) | exact-date-required | 2 |
 | 2027-11-12 | 2 | [learn/new-york-tax-residency.html](/learn/new-york-tax-residency) | exact-date-required | 2 |
 | 2027-11-12 | 2 | [learn/pennsylvania-tax-residency.html](/learn/pennsylvania-tax-residency) | exact-date-required | 2 |
