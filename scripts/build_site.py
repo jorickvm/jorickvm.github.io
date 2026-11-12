@@ -1886,18 +1886,34 @@ APP_CATALOG_PATH = SOURCE_ROOT / "data" / "app-catalog.json"
 LEARN_CARDS_PATH = SOURCE_ROOT / "data" / "learn-cards.json"
 
 
+def preset_card_line(preset_id: str, preset: dict, code: str, clarifications: dict) -> str:
+    """Clarify approximate preset counters without changing catalogue identity."""
+    clarification = clarifications.get(preset_id)
+    if clarification is None:
+        return str(preset["line"][code])
+    source_line = clarification.get("source_line")
+    if not isinstance(source_line, str) or source_line != preset["line"].get(default_locale_code()):
+        raise SystemExit(f"learn-cards.json: {preset_id} catalogue line changed; review its clarification")
+    line = clarification.get("line", {}).get(code)
+    if not isinstance(line, str) or not line.strip():
+        raise SystemExit(f"learn-cards.json: {preset_id} clarification has no {code} line")
+    return line
+
+
 def rule_card(path: str, code: str, locale: dict[str, object], available: set[str], preset_id: str | None = None, anchor: str = "") -> tuple[str, float, str] | None:
     """One rule article as the app's preset card, in this locale: (family,
     rank in the app's order, markup), or None when it has no card.
 
-    The card text is the app's (app-catalog.json, synced from the app by
-    scripts/sync_app_catalog.py) for articles with an `app_preset`; the few
-    without one have a card in learn-cards.json, ranked by its English title
-    among the app's rows. Used by the Learn index and the use-case pages.
+    Preset identity and order come from app-catalog.json. Approximate counters
+    can have guarded line clarifications in learn-cards.json. Articles without
+    a preset have their own card, ranked by its English title among the app's
+    rows. Used by the Learn index and the use-case pages.
     """
     if not _card_data:
         _card_data["catalog"] = json.loads(APP_CATALOG_PATH.read_text(encoding="utf-8"))
-        _card_data["own"] = json.loads(LEARN_CARDS_PATH.read_text(encoding="utf-8"))["cards"]
+        cards_data = json.loads(LEARN_CARDS_PATH.read_text(encoding="utf-8"))
+        _card_data["own"] = cards_data["cards"]
+        _card_data["clarifications"] = cards_data.get("line_clarifications", {})
         _card_data["records"] = {str(r["path"]): r for r in json.loads(DATA_PATH.read_text(encoding="utf-8"))["articles"]}
     catalog, own = _card_data["catalog"], _card_data["own"]
     record = _card_data["records"].get(path, {})
@@ -1906,7 +1922,8 @@ def rule_card(path: str, code: str, locale: dict[str, object], available: set[st
     if preset_id:
         preset = catalog["presets"][preset_id]
         family, flag, rank = preset["family"], preset["flag"], float(preset["rank"][code])
-        title, line = preset["title"][code], preset["line"][code]
+        title = preset["title"][code]
+        line = preset_card_line(preset_id, preset, code, _card_data.get("clarifications", {}))
     elif path in own:
         card = own[path]
         family, flag = card["family"], card["flag"]

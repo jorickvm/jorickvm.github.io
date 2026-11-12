@@ -276,10 +276,36 @@ def check_structure(
         problems.append(f"{label}: translation invents internal links {sorted(invented)}")
 
 
+def check_card_clarifications(cards: dict, locales: dict, problems: list[str]) -> None:
+    for preset_id, clarification in cards.get("line_clarifications", {}).items():
+        lines = clarification.get("line", {})
+        english = lines.get(default_locale_code(), "")
+        if not isinstance(english, str) or not english.strip():
+            problems.append(f"{preset_id}: card clarification has no English line")
+            continue
+        for code, locale in locales.items():
+            if locale.get("status") != "published":
+                continue
+            label = f"{preset_id} card clarification:{code}"
+            text = lines.get(code)
+            if not isinstance(text, str) or not text.strip():
+                problems.append(f"{label}: missing translation")
+                continue
+            check_house_typography(label, text, problems, code)
+            if code == "ja":
+                check_japanese_typography(label, text, problems)
+            lost = Counter(NUMBER.findall(english)) - Counter(NUMBER.findall(text))
+            if lost:
+                problems.append(f"{label}: drops number(s) {dict(lost)}")
+
+
 def main() -> int:
     parse_args()
     problems: list[str] = []
     locales = load_locales()
+    cards_path = SOURCE_ROOT / "data" / "learn-cards.json"
+    if cards_path.exists():
+        check_card_clarifications(json.loads(cards_path.read_text(encoding="utf-8")), locales, problems)
     default = default_locale_code()
     strings = load_ui_strings()
 
