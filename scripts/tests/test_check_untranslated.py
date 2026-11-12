@@ -37,6 +37,12 @@ class CheckUntranslatedTests(unittest.TestCase):
         self.assertEqual(check.without_declared_english_hub_names(
             markup, {"untranslated": [path]}, {}), markup)
 
+    def test_compact_statute_citations_do_not_exempt_surrounding_english(self) -> None:
+        self.assertTrue(check.is_allowed("HRS §235-1; HAR §18-235-1.07"))
+        self.assertTrue(check.is_allowed("HRS §235-1"))
+        self.assertFalse(check.is_allowed("HRS §235-1 makes you a resident after 200 days."))
+        self.assertFalse(check.is_allowed("Read HRS §235-1 for the full rule."))
+
     def test_brand_name_does_not_exempt_an_english_sentence(self) -> None:
         self.assertFalse(
             check.is_allowed("Get AtlasDays on the App Store")

@@ -96,12 +96,26 @@
   // shows the number that matters for the goal, and the pill is that number
   // minus the days: the last safe day when staying below (182 under "183 or
   // more"), the day that makes you resident when reaching it.
+  function majorityWindow(c, country) {
+    var key = windowKey(c);
+    return (country === "AU" && key === "tax|07-01") || (country === "IT" && key === "calendar");
+  }
+  function majorityRule(c, country) {
+    var s = c.settings;
+    if (!majorityWindow(c, country) || (s.linkedCountry && s.linkedCountry !== country)
+        || (s.linkedWindow && s.linkedWindow !== windowKey(c))) return false;
+    if (s.majorityOfYear !== undefined) return s.majorityOfYear === country;
+    // Preserve the country rule in links that predate the explicit setting.
+    return s.linkedCountry === country && +s.residentAt === LIMIT && (!s.limit || +s.limit === LIMIT);
+  }
   function numbers(c, country) {
-    var base = +c.settings.limit || LIMIT, limit = +c.settings.limitInput || base;
-    var linkedResident = c.settings.linkedCountry && c.settings.linkedCountry !== country ? 0 : +c.settings.residentAt || 0;
+    var majority = majorityRule(c, country), b = majority ? bounds(c) : null;
+    var base = majority ? Math.floor((b.to - b.from + 1) / 2) + 1 : +c.settings.limit || LIMIT;
+    var limit = +c.settings.limitInput || base;
+    var linkedResident = majority ? base : c.settings.linkedCountry && c.settings.linkedCountry !== country ? 0 : +c.settings.residentAt || 0;
     var residentAt = linkedResident ? linkedResident + (limit - base) : 0;
     var safe = residentAt ? residentAt - 1 : limit;
-    return { limit: limit, residentAt: residentAt, safe: safe, shown: setting(c, "goal") === "reach" ? (residentAt || limit) : safe };
+    return { base: base, limit: limit, residentAt: residentAt, safe: safe, shown: setting(c, "goal") === "reach" ? (residentAt || limit) : safe };
   }
 
   window.AtlasDaysRules = window.AtlasDaysRules || {};
@@ -115,7 +129,7 @@
     range: function (c) { return bounds(c); },
 
     // ?country=BG&period=calendar|tax|rolling&start=07-01&resident=184&goal=stay|reach
-    // (&limit=182 where the rule's number is not 183, Malaysia): an
+    // (&majority=1 for a period-length majority; &limit=182 for Malaysia): an
     // article's link opens the calculator set to its own rule. `start` is the
     // tax year's first day (the latest one not after today); `resident` is
     // the first day count that makes you resident (184 for "more than 183").
@@ -137,6 +151,8 @@
       if (resident >= 1 && resident <= 366) s.residentAt = resident;
       var limit = Math.round(+q.get("limit"));
       if (limit >= 1 && limit <= 366) s.limit = limit;
+      if (q.get("majority") === "1") s.majorityOfYear = code;
+      else if (q.get("majority") === "0") s.majorityOfYear = false;
       if (q.get("overnight") === "1") s.overnight = code;
       if (code === "CY") s.presence = "cyprus";
       s.linkedWindow = windowKey({ settings: s, D: c.D, today: c.today });
@@ -149,11 +165,15 @@
     // app's custom tracker, counting what this calculator counts: the place,
     // the number the meter shows, days or nights, the window and the goal.
     trackerOffer: function (trips, c) {
-      var s = c.settings, id = c.offer, type = setting(c, "periodType"), goal = setting(c, "goal");
+      var s = c.settings, id = c.offer, type = setting(c, "periodType"), goal = setting(c, "goal"), n = numbers(c, s.country);
       if (!id && s.linkedCountry && s.linkedCountry === s.country && s.linkedWindow === windowKey(c)
-          && (!s.limitInput || +s.limitInput === (+s.limit || LIMIT))) id = c.offers[s.country];
+          && (!s.limitInput || +s.limitInput === n.base)) id = c.offers[s.country];
+      if ((id === "residence-australia" || id === "residence-italy")
+          && (!majorityRule(c, s.country) || n.limit !== n.base)) id = "";
       if (id) {
         var p = id + ",goal:" + goal;
+        // Carry the selected period's trigger rather than a creation-year default.
+        if (majorityRule(c, s.country)) p += ",days:" + n.residentAt;
         if (type === "calendar") p += ",year:" + setting(c, "year");
         if (type === "tax") p += ",year:" + setting(c, "taxStart").slice(0, 4);
         return p;

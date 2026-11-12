@@ -212,7 +212,16 @@ LOCALE_ALLOW = {
 }
 
 
+# Compact statute identifiers are references, not untranslated prose.
+LEGAL_CITATION = re.compile(
+    r"[A-Z][A-Z.]{1,11}\s+§\s*\d[A-Za-z0-9.()/-]*"
+    r"(?:\s*;\s*[A-Z][A-Z.]{1,11}\s+§\s*\d[A-Za-z0-9.()/-]*)*"
+)
+
+
 def is_allowed(text: str, code: str = "") -> bool:
+    if LEGAL_CITATION.fullmatch(text):
+        return True
     if re.fullmatch(r"[A-Z]{3}\s+[0-9][0-9,.\u00a0\u202f ]*", text):
         return True
     if text in EXACT_ALLOW or text in LOCALE_ALLOW.get(code, set()):

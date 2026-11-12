@@ -1529,6 +1529,8 @@ def calculator_preset(article: dict[str, object]) -> dict[str, object]:
     # rule needs the country the setting belongs to.
     if settings.get("overnight") is True:
         settings["overnight"] = settings["country"]
+    if residency.get("majorityOfYear"):
+        settings["majorityOfYear"] = settings["country"]
     return {"settings": settings, "lock": ["country", "goal", "periodType", "limitInput"], "link": f"183-{residency['code']}"}
 
 
@@ -1559,7 +1561,8 @@ def calculator_link_query(article: dict[str, object]) -> str:
     resident = number + 1 if match.group(1) == ">" else number
     limit = "" if number == 183 else f"&limit={number}"
     overnight = "&overnight=1" if dict(dict(article.get("calculator") or {}).get("settings", {})).get("overnight") else ""
-    return f"?country={code.upper()}&{params}&resident={resident}{limit}{overnight}"
+    majority = "&majority=1" if residency.get("majorityOfYear") else ""
+    return f"?country={code.upper()}&{params}&resident={resident}{limit}{overnight}{majority}"
 
 
 def render_calculator_offers(content: str, source_path: str) -> str:
