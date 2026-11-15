@@ -1,0 +1,42 @@
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/">AtlasDays</a> / <a href="/help/">Help Center</a></nav>
+
+    <h1>Google Timeline Import</h1>
+<p class="article-answer">Export your Timeline from Google Maps, select the file in AtlasDays, and review the suggested trips before saving. It is one of the <a href="/help/import-trips">ways to add past trips</a>.</p>
+
+    <h2>Export from Google Maps</h2>
+    <p>Google keeps Timeline on your phone, not online. In Google Maps on that phone, open your profile, then <strong>Settings → Location &amp; Privacy → Export Timeline data</strong>, and save the JSON file to Files. This works from an iPhone or an Android phone; on Android, move the file to where your iPhone's Files app can reach it, such as iCloud Drive.</p>
+    <p>If you downloaded your Location History from Google Takeout in the past, AtlasDays also reads the <code>Records.json</code> file in it. Unzip the download first and select that file. The monthly files in Takeout's Semantic Location History folder are not read.</p>
+
+    <h2>Import into AtlasDays</h2>
+    <ol>
+      <li>Open <strong>Settings → Import → Google Timeline</strong>.</li>
+      <li>Tap <strong>Select Timeline File</strong> and choose the exported file. Large files take a little longer, so keep AtlasDays open until it finishes.</li>
+      <li>Tap <strong>Review N Trips</strong> and check the preview, <strong>Google Timeline Import</strong>.</li>
+      <li>Tap any trip to edit it, or clear its selection to leave it out. Then tap <strong>Import</strong> and confirm.</li>
+    </ol>
+    <!-- SCREENSHOT_DEFERRED: google-timeline-setup | import-google-timeline -->
+    <p>The file is read on your device and is not uploaded anywhere. Nothing is saved until you confirm.</p>
+
+    <h2>How locations become trips</h2>
+    <p>AtlasDays places each location in a country and creates a trip from the first to the last day you were there. The preview follows from that:</p>
+    <ul>
+      <li><strong>Possible transits</strong> are short stops where every location is at an airport. They start unselected and import as <a href="/help/history-and-import">Transit</a> if you select them. Select one only if you stayed airside.</li>
+      <li><strong>Overnight flights</strong> are recorded as International Airspace when you were in the air at midnight. They also start unselected.</li>
+      <li><strong>At sea</strong>, a location inside a country's territorial waters counts for that country, and one farther out counts as International Waters. Flying over a country never creates a stay there.</li>
+      <li>If your most recent locations are from the last few days, the latest trip is left ongoing, because you may still be there.</li>
+    </ul>
+    <p>Tap a trip to see its <strong>Timeline evidence</strong>: the first and last location behind it. <strong>Learn more</strong>, below the list, opens <strong>How trips are inferred</strong>.</p>
+    <!-- SCREENSHOT_DEFERRED: google-timeline-review | import-google-timeline-review -->
+
+    <div class="callout"><p><strong>Location history has gaps.</strong> Days when your phone was off, or Timeline was paused, have no locations, and AtlasDays fills short gaps by estimate. Compare the dates with where you actually spent your days before importing.</p></div>
+
+    <h2>Duplicates and overlaps</h2>
+    <p>Trips that repeat one already in <a href="/help/timeline-and-calendar">Timeline</a> are marked <strong>Duplicate</strong>. <strong>Merge</strong> means a trip shares at least one day with an existing trip in the same country, which AtlasDays widens instead of adding a second trip. <strong>Overlap</strong> means the trip shares a night with a trip in another country. <a href="/help/import-trips#review-before-saving">Import Trips</a> explains the rules every source shares.</p>
+
+    <h2>Review US states</h2>
+    <p>When your locations show which US states you were in, AtlasDays proposes them. With Pro, each state imports as its own trip. Without Pro, the states import as plain United States trips. The import itself is free.</p>
+
+    <section class="if-needed">
+      <h2>If the file is rejected</h2>
+      <p><em>This file isn't a Google Timeline export</em> means AtlasDays does not recognize the file. Select the <code>Timeline.json</code> exported from Google Maps, or <code>Records.json</code> from a Takeout download, not a zip file or a monthly file. <em>This file is not valid JSON</em> means the file is damaged or incomplete; export it again. <em>No usable locations found in this file</em> means the export holds no locations AtlasDays can place.</p>
+    </section>
