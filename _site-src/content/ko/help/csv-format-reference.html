@@ -1,36 +1,55 @@
     <nav class="breadcrumb" aria-label="탐색 경로"><a href="/ko/">AtlasDays</a> / <a href="/ko/help/">도움말 센터</a></nav>
 
     <h1>CSV 형식 참조</h1>
-<p class="article-answer">필수 열은 <strong>Country</strong> 하나뿐입니다. AtlasDays는 영어 헤더 이름으로 열을 찾기 때문에 열 순서는 상관없습니다. 가져오는 절차는 <a href="/ko/help/csv-import">CSV 가져오기</a>에 있습니다.</p>
+<p class="article-answer">파일의 각 행에는 국가가 있어야 하고, 일수 합계에 반영할 여행에는 날짜도 있어야 합니다. AtlasDays는 영어 헤더 이름으로 열을 찾기 때문에 열 순서는 상관없으며, 다른 여행 앱이 쓰는 열 이름도 인식합니다. 가져오는 절차는 <a href="/ko/help/csv-import">CSV 가져오기</a>에 있습니다.</p>
 
     <h2>열</h2>
-    <p>권장 헤더 행은 <code>Country,State,Start Date,End Date,Purpose,Notes</code>입니다. 헤더 이름은 대소문자를 구분하지 않습니다. <code>Days</code>처럼 인식되지 않는 열은 무시합니다. 같은 헤더가 두 번 나오면 첫 번째 열을 사용합니다.</p>
+    <p>직접 작성하는 파일의 권장 헤더 행은 <code>Country,State,Start Date,End Date,Purpose,Notes</code>입니다. 헤더 이름은 대소문자를 구분하지 않으며, 밑줄은 공백으로 처리합니다. <code>Days</code>처럼 인식되지 않는 열은 무시합니다. 같은 뜻의 열이 두 개 있으면 첫 번째 열을 사용하지만, 이름이 정확히 <code>Purpose</code>인 열은 항상 우선합니다.</p>
     <dl class="kv kv-text">
-      <div><dt><strong>Country</strong></dt><dd>필수입니다. 영어 또는 앱 언어의 국가 이름, ISO 두 글자 코드, 또는 <code>USA</code>, <code>UK</code>, <code>Holland</code> 같은 널리 쓰이는 별칭을 씁니다. 두 곳을 뜻할 수 있는 별칭은 거부됩니다.</dd></div>
-      <div><dt><strong>State</strong></dt><dd>선택 항목이며 미국 여행에만 사용합니다. 주 이름, 두 글자 우편 약자, 또는 <code>US-CA</code> 같은 ISO 코드를 씁니다. 컬럼비아 특별구도 사용할 수 있습니다.</dd></div>
-      <div><dt><strong>Start Date</strong></dt><dd><code>Start</code>로도 인식합니다. 날짜는 <code>yyyy-mm-dd</code> 또는 네 자리 연도로 씁니다.</dd></div>
-      <div><dt><strong>End Date</strong></dt><dd><code>End</code>로도 인식합니다. 날짜는 <code>yyyy-mm-dd</code> 또는 네 자리 연도로 씁니다. 비워 두면 정확한 시작일에서는 체류 중인 여행, 연도 시작에서는 같은 해를 뜻합니다.</dd></div>
-      <div><dt><strong>Purpose</strong></dt><dd><code>Personal</code>, <code>Business</code>, <code>Study</code>, <code>Transit</code> 중 하나이며 대소문자는 구분하지 않습니다. Transit이 아닌 값은 <code>"Business, Personal"</code>처럼 따옴표 안에서 쉼표로 이어 쓸 수 있습니다. 이전 형식의 <code>Tourism</code>과 <code>Medical</code>은 Personal로 가져옵니다. 인식되지 않는 값은 오류 없이 무시됩니다.</dd></div>
-      <div><dt><strong>Notes</strong></dt><dd><code>Note</code>, <code>Notes (optional)</code>로도 인식합니다. 자유롭게 쓰는 텍스트입니다.</dd></div>
-      <div><dt><strong>Transit</strong></dt><dd>이전 형식의 열입니다. Purpose 열이 없을 때만 읽습니다. <code>Yes</code>, <code>Y</code>, <code>True</code>, <code>1</code>은 환승으로 표시하고, <code>No</code>, <code>N</code>, <code>False</code>, <code>0</code>이나 빈 칸은 환승으로 표시하지 않습니다.</dd></div>
+      <div><dt><strong>Country</strong></dt><dd><code>Countries</code>, <code>Country Name</code>, <code>Country/Region</code>, <code>Nation</code>, <code>Place</code>, <code>Destination</code>에서도 읽습니다. 영어 또는 앱 언어의 국가 이름, ISO 두 글자 코드, 또는 <code>USA</code>, <code>UK</code>, <code>Holland</code> 같은 널리 쓰이는 별칭을 씁니다. 두 곳을 뜻할 수 있는 별칭은 거부됩니다.</dd></div>
+      <div><dt><strong>Country Code</strong></dt><dd><code>ISO</code>, <code>ISO Code</code>, <code>ISO2</code>, <code>Alpha-2</code>, <code>Code</code>, <code>CC</code>에서도 읽습니다. 두 글자 코드입니다. 파일에 국가 이름과 코드가 모두 있으면 코드를 사용하고 이름은 무시합니다.</dd></div>
+      <div><dt><strong>State</strong></dt><dd><code>US State</code>, <code>State/Province</code>, <code>Province</code>, <code>Region</code>, <code>Subdivision</code>에서도 읽습니다. 미국 여행에만 사용하며, 주 이름, 두 글자 우편 약자, 또는 <code>US-CA</code> 같은 ISO 코드를 씁니다. 컬럼비아 특별구도 사용할 수 있습니다.</dd></div>
+      <div><dt><strong>Start Date</strong></dt><dd><code>Start</code>, <code>Arrival</code>, <code>Arrival Date</code>, <code>Entry</code>, <code>Date From</code>, <code>Begin</code>, <code>Check-in</code> 등 비슷한 이름에서도 읽습니다. 아래의 날짜 형식을 참고하십시오.</dd></div>
+      <div><dt><strong>End Date</strong></dt><dd><code>End</code>, <code>Departure</code>, <code>Departure Date</code>, <code>Exit</code>, <code>Date To</code>, <code>Until</code>, <code>Check-out</code> 등 비슷한 이름에서도 읽습니다. 비워 두면 정확한 시작일에서는 체류 중인 여행, 연도 시작에서는 같은 해를 뜻합니다.</dd></div>
+      <div><dt><strong>Purpose</strong></dt><dd><code>Reason</code>, <code>Type</code>, <code>Trip Type</code>, <code>Category</code>, <code>Visit Type</code>에서도 읽습니다. <code>Personal</code>, <code>Business</code>, <code>Study</code>, <code>Transit</code> 중 하나이며 대소문자는 구분하지 않습니다. Transit이 아닌 값은 <code>"Business, Personal"</code>처럼 따옴표 안에서 쉼표로 이어 쓰거나 <code>;</code> 또는 <code>/</code>로 이어 쓸 수 있습니다. 흔히 쓰는 단어는 자동으로 대응됩니다. <code>Work</code>는 Business, <code>Holiday</code>나 <code>Vacation</code>은 Personal, <code>School</code>은 Study, <code>Layover</code>는 Transit이 됩니다. 그 밖의 값은 여행 메모에 <em>목적:</em> 줄로 남습니다.</dd></div>
+      <div><dt><strong>Notes</strong></dt><dd><code>Note</code>, <code>Notes (optional)</code>, <code>Comment</code>, <code>Description</code>, <code>Remarks</code>, <code>Memo</code>에서도 읽습니다. 자유롭게 쓰는 텍스트입니다.</dd></div>
+      <div><dt><strong>City</strong></dt><dd><code>Cities</code> 또는 <code>Town</code>에서도 읽습니다. 여행 메모에 추가됩니다.</dd></div>
+      <div><dt><strong>Is Current</strong></dt><dd><code>Current</code> 또는 <code>Ongoing</code>에서도 읽습니다. <code>Yes</code>, <code>True</code>, <code>1</code>이면 종료일과 관계없이 여행을 체류 중으로 유지합니다.</dd></div>
+      <div><dt><strong>Work Days</strong>, <strong>Personal Days</strong></dt><dd>Purpose 열이 없을 때 사용합니다. 업무 일만 있는 여행은 Business, 개인 일만 있는 여행은 Personal이 됩니다. 둘 다 있는 여행에는 <em>업무 및 개인</em> 메모가 붙습니다.</dd></div>
+      <div><dt><strong>Transit</strong></dt><dd><code>Layover</code> 또는 <code>Airside</code>에서도 읽습니다. Purpose 열이 없을 때만 읽습니다. <code>Yes</code>, <code>Y</code>, <code>True</code>, <code>1</code>은 환승으로 표시하고, <code>No</code>, <code>N</code>, <code>False</code>, <code>0</code>이나 빈 칸은 환승으로 표시하지 않습니다.</dd></div>
       <div><dt><strong>Start Year</strong>, <strong>End Year</strong></dt><dd>이전 형식의 열입니다. 날짜 칸에 연도가 없을 때 사용하는 네 자리 연도입니다. 같은 행에서 정확한 날짜와 함께 쓸 수 없습니다.</dd></div>
     </dl>
-    <figure class="help-shot help-shot-control"><img src="/assets/article-images/ko/help/csv-format-reference/csv-reference.webp" alt="CSV 가져오기의 CSV 예시와 템플릿 항목" width="1320" height="1990" loading="lazy" decoding="async" /></figure>
+    <figure class="help-shot help-shot-control"><img src="/assets/article-images/ko/help/csv-format-reference/csv-reference.webp" alt="다른 앱에서, CSV 템플릿 사용, AI로 CSV 만들기가 있는 CSV에서 가져오기 화면" width="1320" height="1990" loading="lazy" decoding="async" /></figure>
+
+    <h2>파일 구성</h2>
+    <p>AtlasDays는 열을 보고 세 가지 구성을 구별합니다.</p>
+    <ul>
+      <li><strong>한 행에 여행 하나:</strong> 국가와 시작일, 종료일이 있습니다. 템플릿, AtlasDays 스프레드시트 내보내기 파일, 대부분의 여행 앱이 이 구성을 씁니다.</li>
+      <li><strong>한 행에 하루:</strong> <code>Date</code>(또는 <code>Day</code>) 열과 국가가 있습니다. 같은 국가에 있었던 연속된 날은 여행 하나가 되며, 하루라도 빠지면 그 여행은 끝납니다. 마지막 날이 오늘이나 어제이면 여행은 체류 중으로 남습니다. 첫 행에 날짜와 국가가 있으면 헤더 행을 생략해도 됩니다. 하루에 두 나라에 있었다면 <code>France|Germany</code>처럼 세로 막대로 구분하십시오. 두 나라 모두에 그날이 반영됩니다. 주와 도시도 같은 방식으로 나열할 수 있습니다.</li>
+      <li><strong>한 행에 국경 통과 한 번:</strong> <code>Date</code> 열과 <code>From</code>, <code>To</code> 국가가 있습니다. 국경을 넘은 날은 두 나라 모두에 반영되며, 다음 국경 통과까지는 <code>To</code> 국가에 머문 것으로 봅니다. 마지막 체류는 체류 중으로 남습니다. 국경 통과 행은 날짜별 파일에 섞어 쓸 수도 있습니다.</li>
+    </ul>
+    <p><code>Date</code> 열이 없는 파일에서는 <code>From</code>과 <code>To</code>를 여행의 시작일과 종료일로 읽습니다.</p>
 
     <h2>날짜 형식</h2>
     <div class="data-table">
-    <table>
-      <thead><tr><th>Start Date</th><th>End Date</th><th>결과</th></tr></thead>
-      <tbody>
-        <tr><td><code>2026-03-01</code></td><td><code>2026-03-05</code></td><td>정확한 여행입니다. 당일 여행은 같은 날짜를 두 번 씁니다.</td></tr>
-        <tr><td><code>2026-03-01</code></td><td>빈 칸</td><td>종료일이 없는 체류 중 여행입니다.</td></tr>
-        <tr><td><code>2019</code></td><td>빈 칸</td><td>해당 연도의 <a href="/ko/help/history-and-import">연도만</a> 여행입니다.</td></tr>
-        <tr><td><code>2018</code></td><td><code>2019</code></td><td>2018년부터 2019년까지를 아우르는 연도만 여행 하나입니다.</td></tr>
-        <tr><td>빈 칸</td><td>빈 칸</td><td>날짜 없는 여행입니다.</td></tr>
-      </tbody>
-    </table>
+      <table>
+        <thead><tr><th>Start Date</th><th>End Date</th><th>결과</th></tr></thead>
+        <tbody>
+          <tr><td><code>2026-03-01</code></td><td><code>2026-03-05</code></td><td>정확한 여행입니다. 당일 여행은 같은 날짜를 두 번 씁니다.</td></tr>
+          <tr><td><code>2026-03-01</code></td><td>빈 칸</td><td>종료일이 없는 체류 중 여행입니다.</td></tr>
+          <tr><td><code>2019</code></td><td>빈 칸</td><td>해당 연도의 <a href="/ko/help/history-and-import">연도만</a> 여행입니다.</td></tr>
+          <tr><td><code>2018</code></td><td><code>2019</code></td><td>2018년부터 2019년까지를 아우르는 연도만 여행 하나입니다.</td></tr>
+          <tr><td>빈 칸</td><td>빈 칸</td><td>날짜 없는 여행입니다.</td></tr>
+        </tbody>
+      </table>
     </div>
-    <p>연도는 1900년부터 현재 연도의 8년 뒤까지여야 합니다. 한 행에서 정확한 날짜와 연도 값을 섞어 쓸 수 없습니다. 연도만 있는 여행과 날짜 없는 여행은 방문한 장소와 지도에는 반영되지만 일수 계산이나 트래커에는 반영되지 않습니다. 날짜 없는 여행은 CSV 가져오기로만 만들 수 있습니다.</p>
+    <p><code>yyyy-mm-dd</code> 외에도 다음 형식을 읽습니다.</p>
+    <ul>
+      <li>연도가 앞에 오고 슬래시나 점으로 구분한 형식(<code>2026/03/01</code>, <code>2026.03.01</code> 등). 날짜 뒤에 <code>2026-03-01 22:47</code>이나 <code>2026-03-01T22:47:00Z</code>처럼 시각이 있으면 시각은 무시합니다.</li>
+      <li>영어 월 이름과 약어(<code>1 Mar 2026</code>, <code>Mar 1, 2026</code>, <code>01-Mar-26</code> 등).</li>
+      <li>일이 앞에 오거나 월이 앞에 오는 형식(<code>01/03/2026</code>, <code>03/01/2026</code> 등)이며, 연도는 네 자리든 두 자리든 됩니다. <code>01/03</code>은 어느 쪽으로도 읽힐 수 있으므로, 파일의 어떤 날짜에서든 일이 12보다 커서 순서가 드러날 때만 이런 날짜를 읽습니다. 그렇지 않으면 해당 행은 <em>일과 월을 구분할 수 없습니다</em>로 건너뜁니다.</li>
+    </ul>
+    <p>두 자리 연도는 20xx로 읽었을 때 최대 10년 뒤라면 20xx로, 그렇지 않으면 19xx로 읽습니다. 연도는 1900년부터 현재 연도의 8년 뒤까지여야 합니다. 한 행에서 정확한 날짜와 연도 값을 섞어 쓸 수 없습니다. 연도만 있는 여행과 날짜 없는 여행은 방문한 장소와 지도에는 반영되지만 일수 계산이나 트래커에는 반영되지 않습니다. 날짜 없는 여행은 CSV 가져오기로만 만들 수 있습니다.</p>
 
     <h2>특수한 경우</h2>
     <ul>
@@ -45,27 +64,36 @@ France,,2026-03-01,2026-03-05,Personal,
 United States,CA,2026-04-10,2026-04-15,Business,Conference
 Japan,,2024,,Personal,Dates not known
 United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></pre>
+    <p>같은 프랑스 여행을 한 행에 하루씩 쓰면 다음과 같습니다.</p>
+    <pre><code>Date,Country
+2026-03-01,France
+2026-03-02,France
+2026-03-03,France
+2026-03-04,France
+2026-03-05,France</code></pre>
 
     <h2>오류 메시지</h2>
-    <p>각 오류는 행 번호와 함께 확인 화면에 나타나며, 해당 행은 가져오지 않습니다. 행 번호는 헤더를 1행으로 셉니다.</p>
+    <p>오류가 있는 행은 확인 화면의 <strong>건너뛴 행</strong>에 이유별로 행 번호와 함께 나열되며, 가져오지 않습니다. 행 번호는 헤더를 1행으로 셉니다.</p>
     <dl class="kv kv-text">
-      <div><dt>Country 열을 찾을 수 없습니다</dt><dd>맨 위에 <strong>Country</strong> 열이 있는 헤더 행을 두십시오.</dd></div>
-      <div><dt>잘못된 국가: '&lt;값&gt;'</dt><dd>ISO 코드나 모호하지 않은 국가 이름을 사용하십시오.</dd></div>
+      <div><dt>국가 이름이나 코드가 아님: '&lt;값&gt;'</dt><dd>ISO 코드나 모호하지 않은 국가 이름을 사용하십시오.</dd></div>
+      <div><dt>국가 누락</dt><dd>국가를 입력하거나 행을 삭제하십시오.</dd></div>
       <div><dt>잘못된 주: '&lt;값&gt;'</dt><dd>미국 주 이름, 약자, 또는 <code>US-XX</code> 코드를 사용하십시오.</dd></div>
       <div><dt>미국 여행에만 사용할 수 있는 주: '&lt;값&gt;'</dt><dd>State를 비우거나 Country를 United States로 바꾸십시오.</dd></div>
       <div><dt>주 정보가 일치하지 않습니다</dt><dd>Country 칸과 State 칸이 서로 다른 주를 가리킵니다. 하나만 남기십시오.</dd></div>
-      <div><dt>잘못된 시작일 / 잘못된 종료일</dt><dd><code>yyyy-mm-dd</code> 또는 네 자리 연도를 사용하십시오.</dd></div>
+      <div><dt>잘못된 시작일 / 잘못된 종료일 / 잘못된 날짜</dt><dd>위의 날짜 형식 중 하나를 사용하십시오.</dd></div>
+      <div><dt>'&lt;값&gt;'에서 일과 월을 구분할 수 없습니다. yyyy-mm-dd 형식으로 입력하십시오.</dt><dd>날짜를 연도가 앞에 오도록 쓰거나, 파일에서 일이 앞에 오는 날짜와 월이 앞에 오는 날짜가 일관된지 확인하십시오.</dd></div>
       <div><dt>잘못된 시작 연도 / 잘못된 종료 연도</dt><dd>범위 안의 네 자리 연도를 사용하십시오.</dd></div>
       <div><dt>시작일 없이 종료일만 지정할 수 없습니다</dt><dd>Start Date를 추가하십시오.</dd></div>
       <div><dt>시작일은 종료일보다 이전이거나 같아야 합니다</dt><dd>날짜를 바꾸거나 고치십시오.</dd></div>
       <div><dt>종료 연도는 시작 연도와 같거나 그 이후여야 합니다</dt><dd>연도를 고치십시오.</dd></div>
       <div><dt>시작 연도 없이 종료 연도만 지정할 수 없습니다</dt><dd>시작 연도를 추가하십시오.</dd></div>
       <div><dt>정확한 날짜와 대략적인 연도 항목은 함께 사용할 수 없습니다</dt><dd>날짜와 이전 형식의 연도 열 중 하나만 사용하십시오.</dd></div>
-      <div><dt>정확한 시작일과 연도만 있는 종료일은 함께 사용할 수 없습니다 / 연도만 있는 시작일과 정확한 종료일은 함께 사용할 수 없습니다</dt><dd>한 행에서는 날짜 두 개 또는 연도 두 개를 쓰십시오.</dd></div>
-      <div><dt>잘못된 환승 값</dt><dd>이전 형식의 Transit 열에는 Yes/No, True/False, 1/0을 사용하십시오.</dd></div>
+      <div><dt>정확한 시작일과 연도만 있는 종료일은 함께 사용할 수 없습니다</dt><dd>한 행에서는 날짜 두 개 또는 연도 두 개를 쓰십시오. 반대의 경우에는 <em>연도만 있는 시작일과 정확한 종료일은 함께 사용할 수 없습니다</em>로 표시됩니다.</dd></div>
+      <div><dt>잘못된 환승 값</dt><dd>Transit 열에는 Yes/No, True/False, 1/0을 사용하십시오.</dd></div>
     </dl>
+    <p>가져올 수 있는 행이 하나도 없으면 확인 화면이 열리지 않습니다. 대신 <strong>여행을 찾을 수 없음</strong>에서 이유를 설명합니다. 예를 들면 <em>이 파일에서 국가 열을 찾을 수 없습니다</em>와 같습니다.</p>
 
     <section class="if-needed">
       <h2>값을 인식하지 못하는 경우</h2>
-      <p>ISO 국가 코드, ISO 형식 날짜, 표준 미국 주 이름이나 코드를 사용하십시오. 다른 언어로 된 스프레드시트에서 내보낸 파일은 번역된 헤더가 들어 있을 수 있으며 이는 인식되지 않습니다. 위의 영어 헤더로 바꾸십시오.</p>
+      <p>ISO 국가 코드, <code>yyyy-mm-dd</code> 형식 날짜, 표준 미국 주 이름이나 코드를 사용하십시오. 다른 언어로 된 스프레드시트에서 내보낸 파일은 번역된 헤더가 들어 있을 수 있으며 이는 인식되지 않습니다. 위의 영어 헤더로 바꾸십시오. AtlasDays가 전혀 읽지 못하는 파일은 가져오기 화면의 <strong>AI로 CSV 만들기</strong>에서 변환용 프롬프트를 받을 수 있습니다.</p>
     </section>

@@ -1,0 +1,42 @@
+    <nav class="breadcrumb" aria-label="Fil d’Ariane"><a href="/fr/">AtlasDays</a> / <a href="/fr/help/">Centre d’aide</a></nav>
+
+    <h1>Import Google Timeline</h1>
+<p class="article-answer">Exportez vos trajets Google Timeline depuis Google Maps, sélectionnez le fichier dans AtlasDays et vérifiez les voyages suggérés avant de les enregistrer. C’est l’une des <a href="/fr/help/import-trips">façons d’ajouter d’anciens voyages</a>.</p>
+
+    <h2>Exporter depuis Google Maps</h2>
+    <p>Google conserve Timeline sur votre téléphone, pas en ligne. Dans Google Maps, sur ce téléphone, ouvrez votre profil, puis <strong>Paramètres → Position et confidentialité → Exporter les données de vos trajets</strong>, et enregistrez le fichier JSON dans Fichiers. Cela fonctionne depuis un iPhone comme depuis un téléphone Android ; sur Android, déplacez le fichier vers un emplacement accessible depuis l’app Fichiers de votre iPhone, comme iCloud Drive.</p>
+    <p>Si vous avez téléchargé votre historique des positions depuis Google Takeout par le passé, AtlasDays lit aussi le fichier <code>Records.json</code> qu’il contient. Décompressez d’abord le téléchargement, puis sélectionnez ce fichier. Les fichiers mensuels du dossier Semantic Location History de Takeout ne sont pas lus.</p>
+
+    <h2>Importer dans AtlasDays</h2>
+    <ol>
+      <li>Ouvrez <strong>Réglages → Importer → Google Timeline</strong>.</li>
+      <li>Touchez <strong>Choisir un fichier Timeline</strong> et sélectionnez le fichier exporté. Les gros fichiers prennent un peu plus de temps : gardez AtlasDays ouverte jusqu’à la fin.</li>
+      <li>Touchez <strong>Vérifier N voyages</strong> et parcourez la vérification, <strong>Import Google Timeline</strong>.</li>
+      <li>Touchez un voyage pour le modifier, ou décochez-le pour l’écarter. Touchez ensuite <strong>Importer</strong> et confirmez.</li>
+    </ol>
+    <!-- SCREENSHOT_DEFERRED: google-timeline-setup | import-google-timeline -->
+    <p>Le fichier est lu sur votre appareil et n’est envoyé nulle part. Rien n’est enregistré avant votre confirmation.</p>
+
+    <h2>Comment les positions deviennent des voyages</h2>
+    <p>AtlasDays situe chaque position dans un pays et crée un voyage du premier au dernier jour où vous y étiez. La vérification découle de ce principe :</p>
+    <ul>
+      <li>Les <strong>transits possibles</strong> sont de courts arrêts dont toutes les positions se trouvent dans un aéroport. Ils sont décochés au départ et, si vous les cochez, importés comme <a href="/fr/help/history-and-import">Transit</a>. N’en cochez un que si vous n’avez pas quitté la zone de transit.</li>
+      <li>Les <strong>vols de nuit</strong> sont enregistrés comme Espace aérien international quand vous étiez dans les airs à minuit. Ils sont eux aussi décochés au départ.</li>
+      <li><strong>En mer</strong>, une position dans les eaux territoriales d’un pays compte pour ce pays, et une position plus au large compte comme Eaux internationales. Survoler un pays ne crée jamais de séjour dans ce pays.</li>
+      <li>Si vos positions les plus récentes datent des derniers jours, le dernier voyage reste <strong>En cours</strong>, car vous y êtes peut-être encore.</li>
+    </ul>
+    <p>Touchez un voyage pour voir ses <strong>Données Timeline</strong> : la première et la dernière position sur lesquelles il repose. <strong>En savoir plus</strong>, sous la liste, ouvre <strong>Comment AtlasDays crée ses suggestions de voyage</strong>.</p>
+    <!-- SCREENSHOT_DEFERRED: google-timeline-review | import-google-timeline-review -->
+
+    <div class="callout"><p><strong>L’historique des positions a des trous.</strong> Les jours où votre téléphone était éteint, ou Timeline en pause, n’ont aucune position, et AtlasDays comble les courtes lacunes par estimation. Comparez les dates avec les lieux où vous avez réellement passé vos journées avant d’importer.</p></div>
+
+    <h2>Doublons et chevauchements</h2>
+    <p>Les voyages qui répètent un voyage déjà présent dans la <a href="/fr/help/timeline-and-calendar">chronologie</a> sont marqués <strong>Doublon</strong>. <strong>Fusionner</strong> signifie qu’un voyage partage au moins un jour avec un voyage existant dans le même pays, qu’AtlasDays élargit au lieu d’ajouter un second voyage. <strong>Chevauchement</strong> signifie que le voyage partage une nuit avec un voyage dans un autre pays. <a href="/fr/help/import-trips#review-before-saving">Importer des voyages</a> explique les règles communes à toutes les sources.</p>
+
+    <h2>Vérifier les États américains</h2>
+    <p>Quand vos positions indiquent dans quels États américains vous étiez, AtlasDays les propose. Avec Pro, chaque État est importé comme un voyage distinct. Sans Pro, les États sont importés comme de simples voyages aux États-Unis. L’import lui-même est gratuit.</p>
+
+    <section class="if-needed">
+      <h2>Si le fichier est refusé</h2>
+      <p><em>Ce fichier n’est pas un export Google Timeline</em> signifie qu’AtlasDays ne reconnaît pas le fichier. Sélectionnez le <code>Timeline.json</code> exporté depuis Google Maps, ou le <code>Records.json</code> d’un téléchargement Takeout, et non un fichier zip ou un fichier mensuel. <em>Ce fichier ne contient pas de JSON valide</em> signifie que le fichier est endommagé ou incomplet ; exportez-le de nouveau. <em>Aucune position exploitable dans ce fichier</em> signifie que l’export ne contient aucune position qu’AtlasDays puisse situer.</p>
+    </section>

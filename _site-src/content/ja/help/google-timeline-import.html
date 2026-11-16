@@ -1,0 +1,42 @@
+    <nav class="breadcrumb" aria-label="パンくずリスト"><a href="/ja/">AtlasDays</a> / <a href="/ja/help/">ヘルプセンター</a></nav>
+
+    <h1>Google Timelineの読み込み</h1>
+<p class="article-answer">Google マップからタイムラインのデータを書き出し、そのファイルをAtlasDaysで選択して、提案された旅行を確認してから保存します。過去の旅行を追加する<a href="/ja/help/import-trips">方法</a>の1つです。</p>
+
+    <h2>Google マップから書き出す</h2>
+    <p>Google Timelineのデータは、オンラインではなくスマートフォン上に保存されています。そのスマートフォンのGoogle マップでプロフィールを開き、<strong>「設定」→「位置情報とプライバシー」→「タイムライン データをエクスポート」</strong>を選んで、JSONファイルを「ファイル」に保存します。iPhoneでもAndroidスマートフォンでも書き出せます。Androidの場合は、iCloud Driveなど、iPhoneの「ファイル」アプリから開ける場所にファイルを移してください。</p>
+    <p>以前にGoogle Takeoutでロケーション履歴をダウンロードしたことがある場合は、その中の<code>Records.json</code>ファイルも読み込めます。先にダウンロードしたファイルを解凍してから、そのファイルを選択してください。Takeoutの「Semantic Location History」フォルダにある月ごとのファイルは読み込めません。</p>
+
+    <h2>AtlasDaysに読み込む</h2>
+    <ol>
+      <li><strong>「設定」→「インポート」→「Google Timeline」</strong>を開きます。</li>
+      <li><strong>「Timelineファイルを選択」</strong>をタップし、書き出したファイルを選びます。大きなファイルは少し時間がかかるため、終わるまでAtlasDaysを開いたままにしてください。</li>
+      <li><strong>「N件の旅行を確認」</strong>をタップし、確認画面<strong>「Google Timelineの読み込み」</strong>で内容を確認します。</li>
+      <li>旅行をタップすると編集でき、選択を外すと除外できます。そのあと<strong>「インポート」</strong>をタップして確定します。</li>
+    </ol>
+    <!-- SCREENSHOT_DEFERRED: google-timeline-setup | import-google-timeline -->
+    <p>ファイルは端末上で読み取られ、どこにもアップロードされません。確定するまで何も保存されません。</p>
+
+    <h2>位置情報が旅行になるしくみ</h2>
+    <p>AtlasDaysは各位置情報を国に割り当て、その国にいた最初の日から最後の日までを1件の旅行にします。確認画面の内容は、これに沿って決まります。</p>
+    <ul>
+      <li><strong>「乗り継ぎの可能性」</strong>は、すべての位置情報が空港内にある短い滞在です。最初は選択されておらず、選択すると<a href="/ja/help/history-and-import">乗り継ぎ</a>としてインポートされます。空港の制限エリアから出なかった場合にだけ選択してください。</li>
+      <li><strong>「夜間便」</strong>は、深夜0時に飛行中だった場合、国際空域として記録されます。これも最初は選択されていません。</li>
+      <li><strong>海上</strong>では、国の領海内の位置情報はその国に数えられ、それより沖の位置情報は公海として数えられます。国の上空を飛行しただけでは、その国に滞在したことにはなりません。</li>
+      <li>最新の位置情報がここ数日以内のものであれば、まだその国にいる可能性があるため、最後の旅行は滞在中のまま残されます。</li>
+    </ul>
+    <p>旅行をタップすると、<strong>「Timelineの位置情報」</strong>に、その旅行の根拠となった最初と最後の位置情報が表示されます。リストの下にある<strong>「詳しく見る」</strong>から、<strong>「旅行候補が作られる仕組み」</strong>を開けます。</p>
+    <!-- SCREENSHOT_DEFERRED: google-timeline-review | import-google-timeline-review -->
+
+    <div class="callout"><p><strong>ロケーション履歴には空白があります。</strong>スマートフォンの電源が切れていた日や、Google Timelineが一時停止していた日には位置情報がなく、AtlasDaysは短い空白を推定で埋めます。インポートする前に、日付が実際に過ごした場所と合っているかを確かめてください。</p></div>
+
+    <h2>重複と重なり</h2>
+    <p><a href="/ja/help/timeline-and-calendar">タイムライン</a>にすでにある旅行と同じ旅行には、<strong>「重複」</strong>のラベルが付きます。<strong>「統合」</strong>は、同じ国の既存の旅行と少なくとも1日が共通していることを表し、AtlasDaysは2件目の旅行を追加せず、その旅行の期間を広げます。<strong>「重なり」</strong>は、別の国の旅行と同じ夜を含んでいることを表します。どのソースにも共通するルールは、<a href="/ja/help/import-trips#review-before-saving">旅行をインポート</a>で説明しています。</p>
+
+    <h2>米国の州を確認する</h2>
+    <p>位置情報から米国のどの州にいたかが分かる場合、AtlasDaysはその州を提案します。Proでは、州ごとに別の旅行としてインポートされます。Proでない場合は、通常の米国の旅行としてインポートされます。インポート自体は無料です。</p>
+
+    <section class="if-needed">
+      <h2>ファイルが受け付けられないとき</h2>
+      <p><em>「このファイルはGoogle Timelineの書き出しファイルではありません」</em>と表示された場合、AtlasDaysはそのファイルを認識できません。Google マップから書き出した<code>Timeline.json</code>、またはTakeoutのダウンロードに含まれる<code>Records.json</code>を選択してください。zipファイルや月ごとのファイルは使えません。<em>「このファイルは有効なJSONではありません」</em>は、ファイルが破損しているか不完全であることを意味します。もう一度書き出してください。<em>「このファイルに使用可能な位置情報が見つかりません」</em>は、書き出したデータに、AtlasDaysが場所を特定できる位置情報が含まれていないことを意味します。</p>
+    </section>

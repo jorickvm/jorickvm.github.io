@@ -1,0 +1,42 @@
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/de/">AtlasDays</a> / <a href="/de/help/">Hilfe</a></nav>
+
+    <h1>Google-Timeline-Import</h1>
+<p class="article-answer">Exportiere deine Zeitachse aus Google Maps, wähle die Datei in AtlasDays aus und prüf die vorgeschlagenen Reisen, bevor du sie sicherst. Er ist eine der <a href="/de/help/import-trips">Möglichkeiten, vergangene Reisen hinzuzufügen</a>.</p>
+
+    <h2>Aus Google Maps exportieren</h2>
+    <p>Google speichert die Zeitachse auf deinem Smartphone, nicht online. Öffne in Google Maps auf diesem Smartphone dein Profil, dann <strong>Einstellungen → Standort und Datenschutz → Zeitachsendaten exportieren</strong>, und sichere die JSON-Datei in Dateien. Das geht von einem iPhone und von einem Android-Smartphone aus; leg die Datei unter Android an einen Ort, den die Dateien-App deines iPhone erreicht, etwa iCloud Drive.</p>
+    <p>Wenn du deinen Standortverlauf früher einmal über Google Takeout heruntergeladen hast, liest AtlasDays auch die Datei <code>Records.json</code> darin. Entpacke den Download zuerst und wähle diese Datei aus. Die Monatsdateien im Takeout-Ordner Semantic Location History werden nicht gelesen.</p>
+
+    <h2>In AtlasDays importieren</h2>
+    <ol>
+      <li>Öffne <strong>Einstellungen → Importieren → Google Timeline</strong>.</li>
+      <li>Tipp auf <strong>Timeline-Datei auswählen</strong> und wähle die exportierte Datei aus. Große Dateien brauchen etwas länger, lass AtlasDays also geöffnet, bis es fertig ist.</li>
+      <li>Tipp auf <strong>N Reisen prüfen</strong> und sieh dir die Vorschau <strong>Google-Timeline-Import</strong> an.</li>
+      <li>Tipp eine Reise an, um sie zu bearbeiten, oder entferne ihre Auswahl, um sie wegzulassen. Tipp dann auf <strong>Importieren</strong> und bestätige.</li>
+    </ol>
+    <!-- SCREENSHOT_DEFERRED: google-timeline-setup | import-google-timeline -->
+    <p>Die Datei wird auf deinem Gerät gelesen und nirgendwohin hochgeladen. Nichts wird gesichert, bevor du bestätigst.</p>
+
+    <h2>Wie aus Standorten Reisen werden</h2>
+    <p>AtlasDays ordnet jeden Standort einem Land zu und legt eine Reise vom ersten bis zum letzten Tag an, an dem du dort warst. Der Rest der Vorschau ergibt sich daraus:</p>
+    <ul>
+      <li><strong>Mögliche Transits</strong> sind kurze Stopps, bei denen jeder Standort an einem Flughafen liegt. Sie sind zunächst nicht ausgewählt und werden als <a href="/de/help/history-and-import">Transit</a> importiert, wenn du sie auswählst. Wähle einen nur aus, wenn du im Transitbereich geblieben bist.</li>
+      <li><strong>Nachtflüge</strong> werden als Internationaler Luftraum erfasst, wenn du um Mitternacht in der Luft warst. Auch sie sind zunächst nicht ausgewählt.</li>
+      <li><strong>Auf See</strong> zählt ein Standort in den Hoheitsgewässern eines Landes für dieses Land, und einer weiter draußen als Internationale Gewässer. Ein Überflug über ein Land erzeugt dort nie einen Aufenthalt.</li>
+      <li>Stammen deine neuesten Standorte aus den letzten Tagen, bleibt die letzte Reise ohne Enddatum, weil du vielleicht noch dort bist.</li>
+    </ul>
+    <p>Tipp eine Reise an, um ihre <strong>Timeline-Nachweise</strong> zu sehen: den ersten und letzten Standort, auf denen sie beruht. <strong>Mehr erfahren</strong> unter der Liste öffnet <strong>So erkennt AtlasDays Reisen</strong>.</p>
+    <!-- SCREENSHOT_DEFERRED: google-timeline-review | import-google-timeline-review -->
+
+    <div class="callout"><p><strong>Der Standortverlauf hat Lücken.</strong> Tage, an denen dein Smartphone aus war oder die Zeitachse pausiert war, haben keine Standorte, und kurze Lücken füllt AtlasDays mit einer Schätzung. Vergleiche die Reisedaten vor dem Import damit, wo du deine Tage tatsächlich verbracht hast.</p></div>
+
+    <h2>Duplikate und Überschneidungen</h2>
+    <p>Reisen, die eine Reise wiederholen, die schon in der <a href="/de/help/timeline-and-calendar">Zeitleiste</a> steht, sind mit <strong>Duplikat</strong> markiert. <strong>Zusammenführen</strong> heißt: Eine Reise teilt mindestens einen Tag mit einer vorhandenen Reise im selben Land, die AtlasDays erweitert, statt eine zweite Reise hinzuzufügen. <strong>Überschneidung</strong> heißt: Die Reise teilt eine Nacht mit einer Reise in einem anderen Land. <a href="/de/help/import-trips#review-before-saving">Reisen importieren</a> erklärt die Regeln, die für jede Quelle gelten.</p>
+
+    <h2>US-Bundesstaaten prüfen</h2>
+    <p>Wenn deine Standorte zeigen, in welchen US-Bundesstaaten du warst, schlägt AtlasDays sie vor. Mit Pro wird jeder Bundesstaat als eigene Reise importiert. Ohne Pro werden die Bundesstaaten als gewöhnliche Reisen in die Vereinigten Staaten importiert. Der Import selbst ist kostenlos.</p>
+
+    <section class="if-needed">
+      <h2>Wenn die Datei abgelehnt wird</h2>
+      <p><em>Diese Datei ist kein Google-Timeline-Export</em> heißt, dass AtlasDays die Datei nicht erkennt. Wähle die aus Google Maps exportierte <code>Timeline.json</code> oder <code>Records.json</code> aus einem Takeout-Download aus, keine ZIP-Datei und keine Monatsdatei. <em>Diese Datei enthält kein gültiges JSON</em> heißt, dass die Datei beschädigt oder unvollständig ist; exportiere sie erneut. <em>Keine nutzbaren Standorte in dieser Datei gefunden</em> heißt, dass der Export keine Standorte enthält, die AtlasDays zuordnen kann.</p>
+    </section>

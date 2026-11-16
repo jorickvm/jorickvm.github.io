@@ -1,36 +1,55 @@
     <nav class="breadcrumb" aria-label="Trilha de navegação"><a href="/pt/">AtlasDays</a> / <a href="/pt/help/">Central de ajuda</a></nav>
 
     <h1>Referência do formato CSV</h1>
-<p class="article-answer">Só a coluna <strong>Country</strong> é obrigatória. O AtlasDays encontra as colunas pelo nome do cabeçalho em inglês, então a ordem delas não importa. Os passos da importação estão em <a href="/pt/help/csv-import">Importação de CSV</a>.</p>
+<p class="article-answer">Um arquivo precisa de um país em cada linha, e de datas nas viagens que devem contar nos totais de dias. O AtlasDays encontra as colunas pelo nome do cabeçalho em inglês, então a ordem delas não importa, e ele reconhece os nomes que outros apps de viagem usam. Os passos da importação estão em <a href="/pt/help/csv-import">Importação de CSV</a>.</p>
 
     <h2>Colunas</h2>
-    <p>Linha de cabeçalho recomendada: <code>Country,State,Start Date,End Date,Purpose,Notes</code>. Os nomes dos cabeçalhos não diferenciam maiúsculas de minúsculas. Colunas não reconhecidas, como <code>Days</code>, são ignoradas. Se um cabeçalho aparecer duas vezes, vale o primeiro.</p>
+    <p>Linha de cabeçalho recomendada para um arquivo montado por você: <code>Country,State,Start Date,End Date,Purpose,Notes</code>. Os nomes dos cabeçalhos não diferenciam maiúsculas de minúsculas, e um sublinhado conta como espaço. Colunas não reconhecidas, como <code>Days</code>, são ignoradas. Se duas colunas significarem a mesma coisa, vale a primeira, exceto que uma coluna chamada exatamente <code>Purpose</code> sempre tem prioridade.</p>
     <dl class="kv kv-text">
-      <div><dt><strong>Country</strong></dt><dd>Obrigatória. Nome do país em inglês ou no idioma do app, código ISO de duas letras ou um apelido comum, como <code>USA</code>, <code>UK</code> ou <code>Holland</code>. Um apelido que possa significar dois lugares é recusado.</dd></div>
-      <div><dt><strong>State</strong></dt><dd>Opcional, somente para viagens aos Estados Unidos. Nome do estado, sigla postal de duas letras ou código ISO, como <code>US-CA</code>. O Distrito de Colúmbia é aceito.</dd></div>
-      <div><dt><strong>Start Date</strong></dt><dd>Também aceita como <code>Start</code>. Data no formato <code>yyyy-mm-dd</code> ou um ano de quatro dígitos.</dd></div>
-      <div><dt><strong>End Date</strong></dt><dd>Também aceita como <code>End</code>. Data no formato <code>yyyy-mm-dd</code> ou um ano de quatro dígitos. Vazia significa em andamento (início exato) ou o mesmo ano (início só com o ano).</dd></div>
-      <div><dt><strong>Purpose</strong></dt><dd><code>Personal</code> (Pessoal), <code>Business</code> (Trabalho), <code>Study</code> (Estudo) ou <code>Transit</code> (Trânsito), sem diferenciar maiúsculas de minúsculas. Combine os valores diferentes de Transit com vírgulas, entre aspas, como <code>"Business, Personal"</code>. Os antigos <code>Tourism</code> e <code>Medical</code> são importados como Personal. Um valor não reconhecido é ignorado sem erro.</dd></div>
-      <div><dt><strong>Notes</strong></dt><dd>Também aceita como <code>Note</code>, <code>Notes (optional)</code>. Texto livre.</dd></div>
-      <div><dt><strong>Transit</strong></dt><dd>Coluna antiga. Só é lida quando não há coluna Purpose. <code>Yes</code>, <code>Y</code>, <code>True</code> ou <code>1</code> marca como Transit; <code>No</code>, <code>N</code>, <code>False</code>, <code>0</code> ou vazio não marca.</dd></div>
+      <div><dt><strong>Country</strong></dt><dd>Também lida de <code>Countries</code>, <code>Country Name</code>, <code>Country/Region</code>, <code>Nation</code>, <code>Place</code> ou <code>Destination</code>. Nome do país em inglês ou no idioma do app, código ISO de duas letras ou um apelido comum, como <code>USA</code>, <code>UK</code> ou <code>Holland</code>. Um apelido que possa significar dois lugares é recusado.</dd></div>
+      <div><dt><strong>Country Code</strong></dt><dd>Também lida de <code>ISO</code>, <code>ISO Code</code>, <code>ISO2</code>, <code>Alpha-2</code>, <code>Code</code> ou <code>CC</code>. Um código de duas letras. Quando o arquivo tem as duas colunas, vale o código e o nome é ignorado.</dd></div>
+      <div><dt><strong>State</strong></dt><dd>Também lida de <code>US State</code>, <code>State/Province</code>, <code>Province</code>, <code>Region</code> ou <code>Subdivision</code>. Somente para viagens aos Estados Unidos: nome do estado, sigla postal de duas letras ou código ISO, como <code>US-CA</code>. O Distrito de Colúmbia é aceito.</dd></div>
+      <div><dt><strong>Start Date</strong></dt><dd>Também lida de <code>Start</code>, <code>Arrival</code>, <code>Arrival Date</code>, <code>Entry</code>, <code>Date From</code>, <code>Begin</code>, <code>Check-in</code> e nomes parecidos. Veja Formatos de data abaixo.</dd></div>
+      <div><dt><strong>End Date</strong></dt><dd>Também lida de <code>End</code>, <code>Departure</code>, <code>Departure Date</code>, <code>Exit</code>, <code>Date To</code>, <code>Until</code>, <code>Check-out</code> e nomes parecidos. Vazia significa em andamento (início exato) ou o mesmo ano (início só com o ano).</dd></div>
+      <div><dt><strong>Purpose</strong></dt><dd>Também lida de <code>Reason</code>, <code>Type</code>, <code>Trip Type</code>, <code>Category</code> ou <code>Visit Type</code>. <code>Personal</code> (Pessoal), <code>Business</code> (Trabalho), <code>Study</code> (Estudo) ou <code>Transit</code> (Trânsito), sem diferenciar maiúsculas de minúsculas. Combine os valores diferentes de Transit com vírgulas, entre aspas, como <code>"Business, Personal"</code>, ou com <code>;</code> ou <code>/</code>. Palavras comuns são convertidas: <code>Work</code> vira Business, <code>Holiday</code> ou <code>Vacation</code> vira Personal, <code>School</code> vira Study e <code>Layover</code> vira Transit. Outros valores são mantidos como uma linha <em>Motivo:</em> nas anotações da viagem.</dd></div>
+      <div><dt><strong>Notes</strong></dt><dd>Também lida de <code>Note</code>, <code>Notes (optional)</code>, <code>Comment</code>, <code>Description</code>, <code>Remarks</code> ou <code>Memo</code>. Texto livre.</dd></div>
+      <div><dt><strong>City</strong></dt><dd>Também lida de <code>Cities</code> ou <code>Town</code>. É acrescentada às anotações da viagem.</dd></div>
+      <div><dt><strong>Is Current</strong></dt><dd>Também lida de <code>Current</code> ou <code>Ongoing</code>. <code>Yes</code>, <code>True</code> ou <code>1</code> mantém a viagem em andamento, seja qual for a data de término.</dd></div>
+      <div><dt><strong>Work Days</strong>, <strong>Personal Days</strong></dt><dd>Usadas quando não há coluna Purpose: uma viagem só com dias de trabalho vira Business, e uma só com dias pessoais vira Personal. Uma viagem com os dois recebe a anotação <em>Trabalho e pessoal</em>.</dd></div>
+      <div><dt><strong>Transit</strong></dt><dd>Também lida de <code>Layover</code> ou <code>Airside</code>. Só é lida quando não há coluna Purpose. <code>Yes</code>, <code>Y</code>, <code>True</code> ou <code>1</code> marca como Transit; <code>No</code>, <code>N</code>, <code>False</code>, <code>0</code> ou vazio não marca.</dd></div>
       <div><dt><strong>Start Year</strong>, <strong>End Year</strong></dt><dd>Colunas antigas. Anos de quatro dígitos, usados quando as células de data não trazem nenhum ano. Não podem ser combinadas com datas exatas na mesma linha.</dd></div>
     </dl>
-    <figure class="help-shot help-shot-control"><img src="/assets/article-images/pt/help/csv-format-reference/csv-reference.webp" alt="Exemplo de CSV e controles de modelo da importação de CSV" width="1320" height="1990" loading="lazy" decoding="async" /></figure>
+    <figure class="help-shot help-shot-control"><img src="/assets/article-images/pt/help/csv-format-reference/csv-reference.webp" alt="Tela Importar do CSV com De outro app, Usar um modelo CSV e Criar CSV com IA" width="1320" height="1990" loading="lazy" decoding="async" /></figure>
+
+    <h2>Estruturas de arquivo</h2>
+    <p>O AtlasDays distingue três estruturas pelas colunas:</p>
+    <ul>
+      <li><strong>Uma linha por viagem:</strong> um país com data de início e de término. É a estrutura do modelo, de uma exportação Planilha do AtlasDays e da maioria dos apps de viagem.</li>
+      <li><strong>Uma linha por dia:</strong> uma coluna <code>Date</code> (ou <code>Day</code>) e um país. Dias consecutivos no mesmo país formam uma viagem, e um dia que falta a encerra. Se o último dia for hoje ou ontem, a viagem continua em andamento. A linha de cabeçalho pode ser omitida quando a primeira linha traz uma data e um país. Para um dia em dois países, separe-os com uma barra vertical, como <code>France|Germany</code>: os dois recebem o dia. Estados e cidades podem ser listados da mesma forma.</li>
+      <li><strong>Uma linha por travessia de fronteira:</strong> uma coluna <code>Date</code> com os países <code>From</code> e <code>To</code>. Cada dia de travessia conta para os dois países, e você fica no país de <code>To</code> até a próxima travessia. A última estadia continua em andamento. Linhas de travessia também podem ser misturadas a um arquivo dia a dia.</li>
+    </ul>
+    <p>Em um arquivo sem coluna <code>Date</code>, <code>From</code> e <code>To</code> são lidas como as datas de início e de término de uma viagem.</p>
 
     <h2>Formatos de data</h2>
     <div class="data-table">
-    <table>
-      <thead><tr><th>Start Date</th><th>End Date</th><th>Resultado</th></tr></thead>
-      <tbody>
-        <tr><td><code>2026-03-01</code></td><td><code>2026-03-05</code></td><td>Viagem com datas exatas. Viagens de um único dia usam a mesma data duas vezes.</td></tr>
-        <tr><td><code>2026-03-01</code></td><td>vazia</td><td>Viagem em andamento, sem data de término.</td></tr>
-        <tr><td><code>2019</code></td><td>vazia</td><td>Viagem <a href="/pt/help/history-and-import">Apenas o ano</a> para esse ano.</td></tr>
-        <tr><td><code>2018</code></td><td><code>2019</code></td><td>Uma viagem Apenas o ano cobrindo 2018 a 2019.</td></tr>
-        <tr><td>vazia</td><td>vazia</td><td>Viagem sem datas.</td></tr>
-      </tbody>
-    </table>
+      <table>
+        <thead><tr><th>Start Date</th><th>End Date</th><th>Resultado</th></tr></thead>
+        <tbody>
+          <tr><td><code>2026-03-01</code></td><td><code>2026-03-05</code></td><td>Viagem com datas exatas. Viagens de um único dia usam a mesma data duas vezes.</td></tr>
+          <tr><td><code>2026-03-01</code></td><td>vazia</td><td>Viagem em andamento, sem data de término.</td></tr>
+          <tr><td><code>2019</code></td><td>vazia</td><td>Viagem <a href="/pt/help/history-and-import">Apenas o ano</a> para esse ano.</td></tr>
+          <tr><td><code>2018</code></td><td><code>2019</code></td><td>Uma viagem Apenas o ano cobrindo 2018 a 2019.</td></tr>
+          <tr><td>vazia</td><td>vazia</td><td>Viagem sem datas.</td></tr>
+        </tbody>
+      </table>
     </div>
-    <p>Os anos devem ficar entre 1900 e oito anos depois do ano atual. Datas exatas e valores de ano não podem ser misturados na mesma linha. Viagens Apenas o ano e viagens sem datas contam nos lugares visitados e no mapa, mas nunca nos totais de dias nem nos controles. Uma viagem sem datas só pode ser criada pela importação de CSV.</p>
+    <p>Além de <code>yyyy-mm-dd</code>, o AtlasDays lê:</p>
+    <ul>
+      <li>Ano primeiro, com barras ou pontos, como <code>2026/03/01</code> ou <code>2026.03.01</code>. Um horário depois da data, como <code>2026-03-01 22:47</code> ou <code>2026-03-01T22:47:00Z</code>, é ignorado.</li>
+      <li>Nomes e abreviações de meses em inglês, como <code>1 Mar 2026</code>, <code>Mar 1, 2026</code> ou <code>01-Mar-26</code>.</li>
+      <li>Dia primeiro ou mês primeiro, como <code>01/03/2026</code> ou <code>03/01/2026</code>, com ano de quatro ou de dois dígitos. Como <code>01/03</code> pode ser lido dos dois jeitos, o AtlasDays só lê essas datas quando alguma data do arquivo tem um dia maior que 12, o que revela a ordem. Caso contrário, essas linhas são ignoradas com <em>Não dá para distinguir o dia do mês</em>.</li>
+    </ul>
+    <p>Um ano de dois dígitos é lido como 20xx quando isso fica no máximo 10 anos à frente; caso contrário, como 19xx. Os anos devem ficar entre 1900 e oito anos depois do ano atual. Datas exatas e valores de ano não podem ser misturados na mesma linha. Viagens Apenas o ano e viagens sem datas contam nos lugares visitados e no mapa, mas nunca nos totais de dias nem nos controles. Uma viagem sem datas só pode ser criada pela importação de CSV.</p>
 
     <h2>Casos especiais</h2>
     <ul>
@@ -45,27 +64,36 @@ France,,2026-03-01,2026-03-05,Personal,
 United States,CA,2026-04-10,2026-04-15,Business,Conference
 Japan,,2024,,Personal,Dates not known
 United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></pre>
+    <p>As mesmas viagens à França, com uma linha por dia:</p>
+    <pre><code>Date,Country
+2026-03-01,France
+2026-03-02,France
+2026-03-03,France
+2026-03-04,France
+2026-03-05,France</code></pre>
 
     <h2>Mensagens de erro</h2>
-    <p>Cada erro aparece na prévia com o número da linha, e a linha não é importada. O número da linha conta o cabeçalho como linha 1.</p>
+    <p>Linhas com erro aparecem em <strong>Ignoradas</strong> na prévia, agrupadas por motivo com os números das linhas, e não são importadas. O número da linha conta o cabeçalho como linha 1.</p>
     <dl class="kv kv-text">
-      <div><dt>A coluna Country não foi encontrada</dt><dd>Coloque primeiro uma linha de cabeçalho com uma coluna <strong>Country</strong>.</dd></div>
-      <div><dt>País inválido: “&lt;valor&gt;”</dt><dd>Use um código ISO ou um nome de país sem ambiguidade.</dd></div>
+      <div><dt>“&lt;valor&gt;” não é um nome nem um código de país</dt><dd>Use um código ISO ou um nome de país sem ambiguidade.</dd></div>
+      <div><dt>Falta o país</dt><dd>Preencha o país ou exclua a linha.</dd></div>
       <div><dt>Estado inválido: “&lt;valor&gt;”</dt><dd>Use um nome de estado dos EUA, uma sigla ou um código <code>US-XX</code>.</dd></div>
       <div><dt>O estado “&lt;valor&gt;” só é válido para viagens aos Estados Unidos</dt><dd>Limpe State ou mude Country para United States.</dd></div>
       <div><dt>Estados conflitantes</dt><dd>As células Country e State indicam estados diferentes. Mantenha só um.</dd></div>
-      <div><dt>Data de início inválida / Data de término inválida</dt><dd>Use <code>yyyy-mm-dd</code> ou um ano de quatro dígitos.</dd></div>
+      <div><dt>Data de início inválida / Data de término inválida / Data inválida</dt><dd>Use um dos formatos de data acima.</dd></div>
+      <div><dt>Não dá para distinguir o dia do mês em “&lt;valor&gt;”. Use aaaa-mm-dd.</dt><dd>Escreva as datas com o ano primeiro, ou confira se as datas do arquivo seguem sempre a mesma ordem, dia primeiro ou mês primeiro.</dd></div>
       <div><dt>Ano de início inválido / Ano de término inválido</dt><dd>Use um ano de quatro dígitos dentro do intervalo.</dd></div>
       <div><dt>Uma data de término exige uma data de início</dt><dd>Adicione uma Start Date.</dd></div>
       <div><dt>A data de início deve ser anterior ou igual à data de término</dt><dd>Inverta ou corrija as datas.</dd></div>
       <div><dt>O ano de término deve ser igual ou posterior ao ano de início</dt><dd>Corrija os anos.</dd></div>
       <div><dt>Um ano de término exige um ano de início</dt><dd>Adicione um ano de início.</dd></div>
       <div><dt>Não é possível combinar datas exatas com campos de ano aproximado</dt><dd>Use datas ou as colunas antigas de ano, mas não os dois.</dd></div>
-      <div><dt>Não é possível combinar uma data de início exata com um ano de término, nem um ano de início com uma data de término exata</dt><dd>Use duas datas ou dois anos em uma linha.</dd></div>
-      <div><dt>Valor de trânsito inválido</dt><dd>Na coluna antiga Transit, use Yes/No, True/False ou 1/0.</dd></div>
+      <div><dt>Não é possível combinar uma data de início exata com um ano de término</dt><dd>Use duas datas ou dois anos em uma linha. O caso inverso aparece como <em>Não é possível combinar um ano de início com uma data de término exata</em>.</dd></div>
+      <div><dt>Valor de trânsito inválido</dt><dd>Na coluna Transit, use Yes/No, True/False ou 1/0.</dd></div>
     </dl>
+    <p>Quando nenhuma linha pode ser importada, a prévia não abre. Em vez disso, <strong>Nenhuma viagem encontrada</strong> explica o motivo, por exemplo <em>O AtlasDays não encontrou uma coluna de país neste arquivo</em>.</p>
 
     <section class="if-needed">
       <h2>Se um valor não for reconhecido</h2>
-      <p>Use um código ISO de país, datas no formato ISO e um nome ou código padrão de estado dos EUA. Um arquivo exportado de uma planilha em outro idioma pode trazer cabeçalhos traduzidos, que não são reconhecidos: renomeie-os para os cabeçalhos em inglês acima.</p>
+      <p>Use um código ISO de país, datas no formato <code>yyyy-mm-dd</code> e um nome ou código padrão de estado dos EUA. Um arquivo exportado de uma planilha em outro idioma pode trazer cabeçalhos traduzidos, que não são reconhecidos: renomeie-os para os cabeçalhos em inglês acima. Para um arquivo que o AtlasDays não consegue ler de jeito nenhum, <strong>Criar CSV com IA</strong> na tela de importação oferece um prompt para convertê-lo.</p>
     </section>

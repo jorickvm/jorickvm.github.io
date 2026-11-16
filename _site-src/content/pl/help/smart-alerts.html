@@ -1,18 +1,18 @@
     <nav class="breadcrumb" aria-label="Ścieżka nawigacji"><a href="/pl/">AtlasDays</a> / <a href="/pl/help/">Centrum pomocy</a></nav>
 
     <h1>Inteligentne alerty</h1>
-<p class="article-answer">Inteligentne alerty powiadamiają cię, gdy tracker zbliża się do limitu lub celu albo go osiąga. Ustawia się je osobno dla każdego trackera, wybiegają w przyszłość na podstawie zapisanych i zaplanowanych podróży i wymagają zgody na powiadomienia.</p>
+<p class="article-answer">Inteligentne alerty powiadamiają cię, gdy tracker zbliża się do limitu lub celu albo go osiąga. Ustawia się je osobno dla każdego trackera, wybiegają w przyszłość na podstawie zapisanych i zaplanowanych podróży i wymagają włączonych powiadomień w AtlasDays i w iOS.</p>
 
     <h2>Włączanie alertów</h2>
     <ol>
-      <li>Otwórz edytor trackera: stuknij ikonę suwaków na ekranie jego szczegółów albo przytrzymaj jego kartę na ekranie <strong>Przegląd</strong> i wybierz <strong>Edytuj</strong>.</li>
-      <li>Stuknij wiersz <strong>Alerty</strong>. Jego wartość to <strong>Wył.</strong>, <strong>Wł.</strong> albo liczba aktywnych alertów.</li>
+      <li>Otwórz ekran szczegółów trackera i stuknij dzwonek w prawym górnym rogu. Dzwonek jest wypełniony, dopóki alerty tego trackera będą dostarczane.</li>
       <li>Włącz przełącznik <strong>Alerty</strong> i zezwól na powiadomienia, gdy iOS o to zapyta.</li>
       <li>W wierszu <strong>Godzina</strong> ustaw porę dostarczania alertów. Domyślnie jest to 9:00.</li>
-      <li>W sekcji <strong>Alert, gdy</strong> stuknij <strong>+</strong>, aby dodać próg, albo stuknij ikonę kosza przy progu, aby go usunąć.</li>
-      <li>Wróć i stuknij <strong>Zapisz</strong>. Zmiany alertów są zapisywane razem z trackerem, więc <strong>Anuluj</strong> je odrzuca.</li>
+      <li>W sekcji <strong>Alert, gdy</strong> stuknij <strong>+</strong>, aby dodać próg. Stuknij próg, aby zmienić jego liczbę albo usunąć go ikoną kosza.</li>
+      <li>Stuknij <strong>Gotowe</strong>. Zmiany wprowadzone przez dzwonek są zapisywane po zamknięciu ekranu.</li>
     </ol>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/pl/help/smart-alerts/alert-settings.webp" alt="Ekran Alerty trackera z godziną dostarczania i listą progów" width="1320" height="2150" loading="lazy" decoding="async" /></figure>
+    <p>Ten sam ekran otwiera się z wiersza <strong>Alerty</strong> w edytorze trackera oraz z sekcji <strong>Ustawienia → Powiadomienia</strong>. W edytorze zmiany alertów są zapisywane razem z trackerem po stuknięciu <strong>Zapisz</strong>, więc <strong>Anuluj</strong> je odrzuca. Wiersz Alerty i ekran Powiadomienia pokazują <strong>Wył.</strong> albo liczbę aktywnych alertów.</p>
 
     <h2>Progi</h2>
     <p>W trackerze <strong>Pozostań poniżej</strong> próg ma postać <strong>N dni w zapasie</strong>, a ostatnim progiem jest <strong>Osiągnięto limit</strong>. W trackerze <strong>Osiągnij cel</strong> ma postać <strong>jeszcze N dni</strong> i kończy się na <strong>Cel osiągnięty</strong>. Nowe trackery zaczynają z zestawem progów dobranym do limitu, a tracker Osiągnij cel zaczyna tylko z samą metą.</p>
@@ -20,15 +20,19 @@
     <h2>Alerty wybiegają w przyszłość</h2>
     <p>AtlasDays prognozuje tracker mniej więcej rok naprzód na podstawie zapisanych podróży, trwającej podróży i zaplanowanych podróży. Każdy alert planuje na dzień, w którym próg ma zostać osiągnięty, i dostarcza go o wybranej godzinie. Alert może więc przyjść, zanim suma faktycznie przekroczy próg, a zmiana podróży lub zasady trackera przesuwa tę datę. W trackerze z dwoma limitami alerty śledzą limit, który jest najbliżej.</p>
 
-    <h2>Zgoda na powiadomienia to osobna sprawa</h2>
-    <p>Tracker może mieć skonfigurowane alerty, nawet gdy powiadomienia są wyłączone w iOS. Jeśli włączysz alerty bez zgody, AtlasDays pokaże komunikat <strong>Powiadomienia wyłączone</strong> z przyciskiem <strong>Otwórz Ustawienia</strong>. Możesz też samodzielnie otworzyć w iOS <strong>Ustawienia → Powiadomienia → AtlasDays</strong>.</p>
+    <h2 id="notification-settings">Ustawienia powiadomień</h2>
+    <p>Sekcja <strong>Ustawienia → Powiadomienia</strong> decyduje o wszystkim, co wysyła AtlasDays. Włączenie przełącznika <strong>Powiadomienia</strong> wywołuje prośbę iOS o zgodę i włącza wszystkie rodzaje powiadomień. Potem każdy rodzaj ma własny przełącznik:</p>
+    <ul>
+      <li><strong>Wykrycie nowego kraju</strong>, gdy <a href="/pl/help/auto-detect-trips">Autowykrywanie</a> doda podróż. Wymaga włączonej funkcji Autowykrywanie podróży.</li>
+      <li><strong>Wygasające dokumenty</strong>, czyli przypomnienie, zanim dokument z twojego <a href="/pl/help/profile">Profilu</a> straci ważność.</li>
+      <li><strong>Alerty trackerów</strong>, czyli Inteligentne alerty opisane na tej stronie. Pod przełącznikiem widać każdy tracker z jego alertami; stuknij tracker, aby je zmienić.</li>
+    </ul>
+    <p>Gdy przełącznik Powiadomienia jest wyłączony, AtlasDays nic nie wysyła, niezależnie od ustawień poszczególnych trackerów. Jeśli zgoda nie została udzielona, gdy iOS o nią pytał, AtlasDays pokaże komunikat <strong>Brak zgody na powiadomienia</strong> z przyciskiem <strong>Otwórz Ustawienia</strong>. Możesz też samodzielnie otworzyć w iOS <strong>Ustawienia → Powiadomienia → AtlasDays</strong>.</p>
+    <!-- SCREENSHOT_DEFERRED: notification-settings | settings-notifications -->
 
-    <h2>Inteligentne alerty a Autowykrywanie</h2>
-    <p>Inteligentne alerty dotyczą progów trackerów. Powiadomienia funkcji <a href="/pl/help/auto-detect-trips">Autowykrywanie</a> dotyczą możliwych nowych przekroczeń granicy. Każda z tych funkcji ma własne zadanie i ustawienia.</p>
-
-    <div class="callout"><p><strong>Przełącznik Alerty wymaga <a href="/pl/help/atlasdays-pro">AtlasDays Pro</a>.</strong> Bez Pro nadal możesz edytować listę progów, ale przełącznik pozostaje wyłączony i pokazuje propozycję przejścia na Pro. Tracker działa także bez alertów.</p></div>
+    <div class="callout"><p><strong>Alerty trackerów wymagają <a href="/pl/help/atlasdays-pro">AtlasDays Pro</a>.</strong> Bez Pro nadal możesz edytować listę progów, ale przełącznik Alerty pokazuje opcje przejścia na Pro, a pod przełącznikiem Alerty trackerów widać komunikat <strong>Alerty wymagają AtlasDays Pro.</strong> Tracker działa także bez alertów. Powiadomienia o wykryciu nowego kraju i przypomnienia o dokumentach są bezpłatne.</p></div>
 
     <section class="if-needed">
       <h2>Jeśli alert się nie pojawił</h2>
-      <p>Sprawdź w iOS, czy AtlasDays ma zgodę na powiadomienia, upewnij się, że przełącznik <strong>Alerty</strong> jest włączony dla tego trackera i że zmiany zapisano, oraz sprawdź porę dostarczania w wierszu <strong>Godzina</strong>. Potem porównaj próg z prognozą trackera: alert jest zaplanowany na dzień, w którym próg ma zostać osiągnięty, a ten dzień może być jeszcze przed tobą.</p>
+      <p>Sprawdź w iOS, czy AtlasDays ma zgodę na powiadomienia, oraz czy przełączniki <strong>Powiadomienia</strong> i <strong>Alerty trackerów</strong> są włączone w sekcji <strong>Ustawienia → Powiadomienia</strong>. Upewnij się, że przełącznik <strong>Alerty</strong> jest włączony dla tego trackera, i sprawdź porę dostarczania w wierszu <strong>Godzina</strong>. Potem porównaj próg z prognozą trackera: alert jest zaplanowany na dzień, w którym próg ma zostać osiągnięty, a ten dzień może być jeszcze przed tobą.</p>
     </section>

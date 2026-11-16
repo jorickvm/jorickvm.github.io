@@ -1,0 +1,42 @@
+    <nav class="breadcrumb" aria-label="İçerik yolu"><a href="/tr/">AtlasDays</a> / <a href="/tr/help/">Yardım Merkezi</a></nav>
+
+    <h1>Google Timeline içe aktarma</h1>
+<p class="article-answer">Zaman Çizelgenizi Google Haritalar'dan dışa aktarın, dosyayı AtlasDays'te seçin ve kaydetmeden önce önerilen seyahatleri inceleyin. Geçmiş seyahatleri eklemenin <a href="/tr/help/import-trips">yollarından</a> biridir.</p>
+
+    <h2>Google Haritalar'dan dışa aktarın</h2>
+    <p>Google, Zaman Çizelgesi'ni internette değil telefonunuzda tutar. O telefondaki Google Haritalar'da profilinizi açın, ardından ayarlarda konum ve gizlilik bölümüne gidip Zaman Çizelgesi verilerini dışa aktarma seçeneğine dokunun (İngilizce arayüzde <strong>Settings → Location &amp; Privacy → Export Timeline data</strong>) ve JSON dosyasını Dosyalar'a kaydedin. Bu, iPhone'dan da Android telefondan da yapılabilir; Android'de dosyayı iPhone'unuzdaki Dosyalar uygulamasının erişebileceği bir yere, örneğin iCloud Drive'a taşıyın.</p>
+    <p>Geçmişte Konum Geçmişinizi Google Takeout'tan indirdiyseniz AtlasDays içindeki <code>Records.json</code> dosyasını da okur. Önce indirdiğiniz arşivi açın ve bu dosyayı seçin. Takeout'un Semantic Location History klasöründeki aylık dosyalar okunmaz.</p>
+
+    <h2>AtlasDays'e aktarın</h2>
+    <ol>
+      <li><strong>Ayarlar → İçe aktar → Google Timeline</strong> yolunu açın.</li>
+      <li><strong>Timeline dosyası seç</strong> düğmesine dokunup dışa aktarılan dosyayı seçin. Büyük dosyalar biraz daha uzun sürer; işlem bitene kadar AtlasDays'i açık tutun.</li>
+      <li><strong>N seyahati incele</strong> düğmesine dokunun ve <strong>Google Timeline içe aktarma</strong> önizlemesini kontrol edin.</li>
+      <li>Düzenlemek için herhangi bir seyahate dokunun ya da dışarıda bırakmak için seçimini kaldırın. Ardından <strong>İçe aktar</strong> düğmesine dokunup onaylayın.</li>
+    </ol>
+    <!-- SCREENSHOT_DEFERRED: google-timeline-setup | import-google-timeline -->
+    <p>Dosya aygıtınızda okunur ve hiçbir yere yüklenmez. Siz onaylayana kadar hiçbir şey kaydedilmez.</p>
+
+    <h2>Konumlar nasıl seyahate dönüşür?</h2>
+    <p>AtlasDays her konumu bir ülkeye yerleştirir ve orada bulunduğunuz ilk günden son güne kadar bir seyahat oluşturur. Önizleme bundan çıkar:</p>
+    <ul>
+      <li><strong>Olası transitler</strong>, tüm konumların bir havalimanında olduğu kısa duraklardır. Başlangıçta seçili değildir; seçerseniz <a href="/tr/help/history-and-import">Transit</a> olarak içe aktarılır. Yalnızca havalimanının transit alanından çıkmadıysanız seçin.</li>
+      <li><strong>Gece uçuşları</strong>, gece yarısında havadaysanız Uluslararası hava sahası olarak kaydedilir. Bunlar da başlangıçta seçili değildir.</li>
+      <li><strong>Denizde</strong>, bir ülkenin karasularındaki konum o ülkeye sayılır; daha açıktaki bir konum Uluslararası sular olarak sayılır. Bir ülkenin üzerinden uçmak orada hiçbir zaman bir kalış oluşturmaz.</li>
+      <li>En son konumlarınız son birkaç güne aitse en son seyahat devam ediyor olarak bırakılır, çünkü hâlâ orada olabilirsiniz.</li>
+    </ul>
+    <p>Bir seyahatin dayandığı ilk ve son konumu, yani <strong>Timeline konum verileri</strong>'ni görmek için seyahate dokunun. Listenin altındaki <strong>Daha fazla bilgi</strong>, <strong>Seyahatler nasıl tahmin edilir</strong> sayfasını açar.</p>
+    <!-- SCREENSHOT_DEFERRED: google-timeline-review | import-google-timeline-review -->
+
+    <div class="callout"><p><strong>Konum geçmişinde boşluklar olur.</strong> Telefonunuzun kapalı olduğu ya da Zaman Çizelgesi'nin duraklatıldığı günlerde konum yoktur ve AtlasDays kısa boşlukları tahminle doldurur. İçe aktarmadan önce tarihleri günlerinizi gerçekte nerede geçirdiğinizle karşılaştırın.</p></div>
+
+    <h2>Yinelenenler ve çakışmalar</h2>
+    <p><a href="/tr/help/timeline-and-calendar">Zaman çizelgesinde</a> zaten bulunan bir seyahati tekrarlayan seyahatler <strong>Yinelenen</strong> olarak işaretlenir. <strong>Birleştir</strong>, seyahatin aynı ülkedeki mevcut bir seyahatle en az bir ortak günü olduğunu gösterir; AtlasDays ikinci bir seyahat eklemek yerine o seyahati genişletir. <strong>Çakışma</strong>, seyahatin başka bir ülkedeki bir seyahatle ortak bir gecesi olduğu anlamına gelir. Her kaynağın paylaştığı kuralları <a href="/tr/help/import-trips#review-before-saving">Seyahatleri içe aktarma</a> makalesi açıklar.</p>
+
+    <h2>ABD eyaletlerini inceleyin</h2>
+    <p>Konumlarınız hangi ABD eyaletlerinde bulunduğunuzu gösteriyorsa AtlasDays bunları önerir. Pro ile her eyalet kendi seyahati olarak içe aktarılır. Pro olmadan eyaletler sıradan Amerika Birleşik Devletleri seyahatleri olarak içe aktarılır. İçe aktarmanın kendisi ücretsizdir.</p>
+
+    <section class="if-needed">
+      <h2>Dosya reddedilirse</h2>
+      <p><em>Bu dosya bir Google Timeline dışa aktarımı değil</em>, AtlasDays'in dosyayı tanımadığı anlamına gelir. Google Haritalar'dan dışa aktarılan <code>Timeline.json</code> dosyasını veya bir Takeout indirmesindeki <code>Records.json</code> dosyasını seçin; zip dosyasını ya da aylık bir dosyayı değil. <em>Bu dosya geçerli JSON içermiyor</em>, dosyanın bozuk veya eksik olduğu anlamına gelir; yeniden dışa aktarın. <em>Bu dosyada kullanılabilir konum bulunamadı</em>, dışa aktarımda AtlasDays'in bir yere yerleştirebileceği konum olmadığı anlamına gelir.</p>
+    </section>

@@ -1,40 +1,44 @@
     <nav class="breadcrumb" aria-label="Trilha de navegação"><a href="/pt/">AtlasDays</a> / <a href="/pt/help/">Central de ajuda</a></nav>
 
     <h1>Importação de CSV</h1>
-<p class="article-answer">Adicione viagens em massa a partir de uma planilha salva como CSV. O AtlasDays valida cada linha, mostra uma prévia e não salva nada até você confirmar. É uma das <a href="/pt/help/import-trips">formas de adicionar viagens passadas</a>.</p>
+<p class="article-answer">Adicione viagens a partir da exportação de outro app de viagens, de uma planilha ou de um registro dia a dia salvo como CSV. O AtlasDays verifica cada linha, mostra uma prévia e não salva nada até você confirmar. É uma das <a href="/pt/help/import-trips">formas de adicionar viagens passadas</a>.</p>
 
     <h2>Importe o arquivo</h2>
     <ol>
       <li>Abra <strong>Ajustes → Importar → Arquivo CSV</strong>.</li>
-      <li>Prepare o arquivo no Sheets, no Numbers ou no Excel e exporte-o como CSV. <strong>CSV de exemplo</strong> mostra os cabeçalhos exatos com linhas de amostra, e o botão de compartilhar dele salva o arquivo como ponto de partida.</li>
       <li>Toque em <strong>Selecionar arquivo CSV</strong> e escolha o arquivo no app Arquivos.</li>
       <li>Confira a prévia, <strong>Encontradas no CSV</strong>.</li>
       <li>Toque em <strong>Importar</strong> e confirme.</li>
     </ol>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/pt/help/csv-import/csv-setup.webp" alt="Tela inicial da importação de CSV com os controles do arquivo de exemplo" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
-    <p><strong>Criar CSV com IA</strong> copia um prompt pronto para o ChatGPT, o Claude ou outro assistente. Cole suas anotações de viagem depois dele e salve a resposta como CSV. Essas ferramentas tratam o seu texto conforme as próprias políticas de privacidade, então deixe de fora tudo o que você não colaria em outro lugar.</p>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/pt/help/csv-import/csv-setup.webp" alt="Tela Importar do CSV com De outro app, Usar um modelo CSV e Criar CSV com IA" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
+    <h2>De onde o arquivo pode vir</h2>
+    <ul>
+      <li><strong>De outro app.</strong> Exportações de outros apps de registro de viagens costumam funcionar como estão. O AtlasDays reconhece os nomes mais comuns das colunas de país e de data, e lê arquivos com uma linha por viagem, uma linha por dia ou uma linha por travessia de fronteira. A <a href="/pt/help/csv-format-reference">Referência do formato CSV</a> lista o que ele lê.</li>
+      <li><strong>Usar um modelo CSV.</strong> Para montar o arquivo por conta própria, abra o modelo. <strong>CSV de exemplo</strong> mostra os cabeçalhos com linhas de amostra, e o botão de compartilhar dele salva o arquivo como ponto de partida. Preencha-o no Sheets, no Numbers ou no Excel e exporte-o como CSV.</li>
+      <li><strong>Criar CSV com IA.</strong> Quando o AtlasDays não consegue ler o seu arquivo, ou o seu histórico de viagens está em anotações ou capturas de tela, esta opção abre um prompt pronto. Copie-o no ChatGPT, no Claude ou em outro assistente, adicione o arquivo, as capturas de tela ou as anotações e importe o CSV que ele devolver. O AtlasDays só copia o prompt; ele não envia nada. Essas ferramentas tratam o que você fornece conforme as próprias políticas de privacidade, então deixe de fora tudo o que você não compartilharia em outro lugar.</li>
+    </ul>
     <p>Você também pode começar pelo próprio arquivo. Compartilhe um arquivo CSV pelo app Arquivos, pelos downloads do Safari ou pelo Mail e escolha <strong>AtlasDays</strong>: a mesma prévia será aberta. O AtlasDays aparece como uma opção para abrir arquivos CSV, mas não é definido como o app padrão para esses arquivos.</p>
 
     <h2>Leia a prévia</h2>
-    <p>A prévia lista as linhas válidas e mostra contagens em que você pode tocar para filtrar. Use <strong>Selecionar tudo</strong> ou <strong>Desmarcar tudo</strong> para escolher o que importar.</p>
+    <p>A prévia lista as linhas que podem ser importadas e mostra contagens em que você pode tocar para filtrar. Toque em uma linha para corrigi-la ou desmarque a seleção dela para deixá-la de fora. Com três linhas ou mais, <strong>Selecionar tudo</strong> e <strong>Desmarcar tudo</strong> alteram a lista inteira.</p>
     <ul>
       <li><strong>Duplicada:</strong> a linha está dentro de uma viagem que você já tem ou repete uma linha anterior. Ela é ignorada.</li>
-      <li><strong>Mesclar:</strong> a linha cobre uma viagem que você já tem no mesmo país. Na importação, essa viagem é ampliada para incluir as datas da linha, e as anotações e os motivos são combinados. <strong>Possíveis mesclagens no arquivo</strong> são linhas do próprio arquivo que se unem entre si.</li>
-      <li><strong>Sobreposição:</strong> a linha se sobrepõe em parte a outra viagem. Pode ser uma segunda estadia de verdade ou uma segunda versão da mesma, então compare as datas antes de mantê-la.</li>
+      <li><strong>Mesclar:</strong> a linha compartilha pelo menos um dia com uma viagem que você já tem no mesmo lugar. Na importação, essa viagem é ampliada para incluir as datas da linha, e as anotações e os motivos são combinados. <strong>Viagens para mesclar no arquivo</strong> são linhas do próprio arquivo que se unem entre si.</li>
+      <li><strong>Sobreposição:</strong> a linha compartilha uma noite com uma viagem em outro país ou estado dos EUA. Compare as datas antes de mantê-la.</li>
       <li><strong>Trânsitos</strong> e <strong>Estados dos EUA</strong> contam as linhas desses tipos. Sem o Pro, as linhas de estados são importadas como viagens comuns aos Estados Unidos.</li>
     </ul>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/pt/help/csv-import/csv-review.webp" alt="Prévia da importação de CSV com linhas válidas, inválidas, duplicadas e com sobreposição" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/pt/help/csv-import/csv-review.webp" alt="Prévia Encontradas no CSV com linhas duplicadas, com sobreposição e ignoradas" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
-    <h2>Corrija os erros no arquivo de origem</h2>
-    <p>As linhas que o AtlasDays não consegue ler aparecem em <strong>N linhas com erros</strong>, com o número da linha e o motivo. Linhas inválidas nunca são importadas. Corrija-as na planilha, exporte de novo e selecione o arquivo outra vez.</p>
+    <h2>Corrija as linhas ignoradas no arquivo de origem</h2>
+    <p>As linhas que o AtlasDays não consegue ler são contadas como <strong>N linhas ignoradas</strong> e listadas em <strong>Ignoradas</strong>, agrupadas por motivo com os números das linhas. Linhas ignoradas nunca são importadas. Corrija-as na planilha, exporte de novo e selecione o arquivo outra vez.</p>
 
     <div class="callout"><p><strong>Nada muda até você tocar em Importar.</strong> Selecionar um arquivo e ver a prévia não adiciona viagens.</p></div>
 
     <h2>Importar de novo uma exportação</h2>
-    <p>Uma <a href="/pt/help/export-and-reports">exportação</a> Planilha salva como CSV pode ser importada de novo, desde que tenha sido exportada em inglês: os cabeçalhos das colunas só são lidos em inglês. Para uma cópia completa de viagens, controles e ajustes, use um <a href="/pt/help/backup-and-restore">backup</a>.</p>
+    <p>Uma <a href="/pt/help/export-and-reports">exportação</a> Planilha salva como CSV pode ser importada de novo, desde que tenha sido exportada em inglês com as datas no formato <code>yyyy-mm-dd</code>: os cabeçalhos das colunas só são lidos em inglês. Para uma cópia completa de viagens, controles, seu Perfil e ajustes, use um <a href="/pt/help/backup-and-restore">backup</a>.</p>
 
     <section class="if-needed">
-      <h2>Se todas as linhas estiverem inválidas</h2>
-      <p>Confirme que a primeira linha é um cabeçalho e contém <strong>Country</strong>, e que as datas usam <code>yyyy-mm-dd</code> ou um ano de quatro dígitos. A <a href="/pt/help/csv-format-reference">Referência do formato CSV</a> lista as colunas, os valores e todas as mensagens de erro compatíveis.</p>
+      <h2>Se nenhuma viagem for encontrada</h2>
+      <p>Quando o AtlasDays não consegue usar nenhuma linha, o arquivo continua na tela inicial e <strong>Nenhuma viagem encontrada</strong> explica o motivo, por exemplo que não encontrou uma coluna de país. Toque ali em <strong>Criar CSV com IA</strong> para que um assistente converta o arquivo. A <a href="/pt/help/csv-format-reference">Referência do formato CSV</a> lista as colunas, os valores e todas as mensagens de erro compatíveis.</p>
     </section>

@@ -1,0 +1,42 @@
+    <nav class="breadcrumb" aria-label="Trilha de navegação"><a href="/pt/">AtlasDays</a> / <a href="/pt/help/">Central de ajuda</a></nav>
+
+    <h1>Importação do Google Timeline</h1>
+<p class="article-answer">Exporte seu histórico do Google Timeline pelo Google Maps, selecione o arquivo no AtlasDays e revise as viagens sugeridas antes de salvar. É uma das <a href="/pt/help/import-trips">formas de adicionar viagens passadas</a>.</p>
+
+    <h2>Exportar do Google Maps</h2>
+    <p>O Google guarda o Timeline no seu celular, não on-line. No Google Maps desse celular, abra seu perfil, depois <strong>Configurações → Localização e privacidade → Exportar dados da linha do tempo</strong>, e salve o arquivo JSON em Arquivos. Funciona a partir de um iPhone ou de um celular Android; no Android, mova o arquivo para um lugar que o app Arquivos do seu iPhone consiga acessar, como o iCloud Drive.</p>
+    <p>Se você já baixou seu Histórico de localização pelo Google Takeout, o AtlasDays também lê o arquivo <code>Records.json</code> que vem nele. Descompacte o download primeiro e selecione esse arquivo. Os arquivos mensais da pasta Semantic Location History do Takeout não são lidos.</p>
+
+    <h2>Importar no AtlasDays</h2>
+    <ol>
+      <li>Abra <strong>Ajustes → Importar → Google Timeline</strong>.</li>
+      <li>Toque em <strong>Selecionar arquivo do Timeline</strong> e escolha o arquivo exportado. Arquivos grandes demoram um pouco mais, então mantenha o AtlasDays aberto até terminar.</li>
+      <li>Toque em <strong>Revisar N viagens</strong> e confira a prévia, <strong>Importação do Google Timeline</strong>.</li>
+      <li>Toque em qualquer viagem para editá-la ou desmarque a seleção dela para deixá-la de fora. Depois toque em <strong>Importar</strong> e confirme.</li>
+    </ol>
+    <!-- SCREENSHOT_DEFERRED: google-timeline-setup | import-google-timeline -->
+    <p>O arquivo é lido no seu dispositivo e não é enviado para lugar nenhum. Nada é salvo até você confirmar.</p>
+
+    <h2>Como as localizações viram viagens</h2>
+    <p>O AtlasDays situa cada localização em um país e cria uma viagem do primeiro ao último dia em que você esteve lá. A prévia segue essa lógica:</p>
+    <ul>
+      <li><strong>Possíveis trânsitos</strong> são paradas curtas em que todas as localizações ficam em um aeroporto. Eles começam desmarcados e, se você os marcar, são importados como <a href="/pt/help/history-and-import">Trânsito</a>. Marque um só se você não saiu da área de trânsito do aeroporto.</li>
+      <li><strong>Voos noturnos</strong> são registrados como Espaço aéreo internacional quando você estava no ar à meia-noite. Eles também começam desmarcados.</li>
+      <li><strong>No mar</strong>, uma localização dentro das águas territoriais de um país conta para esse país, e uma mais distante conta como Águas internacionais. Sobrevoar um país nunca cria uma estadia nele.</li>
+      <li>Se as suas localizações mais recentes forem dos últimos dias, a viagem mais recente fica <strong>Em andamento</strong>, porque talvez você ainda esteja lá.</li>
+    </ul>
+    <p>Toque em uma viagem para ver os <strong>Dados do Timeline</strong> dela: a primeira e a última localização em que ela se baseia. <strong>Saiba mais</strong>, abaixo da lista, abre <strong>Como o AtlasDays sugere viagens</strong>.</p>
+    <!-- SCREENSHOT_DEFERRED: google-timeline-review | import-google-timeline-review -->
+
+    <div class="callout"><p><strong>O histórico de localização tem lacunas.</strong> Dias em que o celular estava desligado, ou em que o Timeline estava pausado, não têm localizações, e o AtlasDays preenche lacunas curtas por estimativa. Compare as datas com os lugares onde você realmente passou seus dias antes de importar.</p></div>
+
+    <h2>Duplicadas e sobreposições</h2>
+    <p>Viagens que repetem uma que já está na <a href="/pt/help/timeline-and-calendar">Linha do tempo</a> são marcadas como <strong>Duplicada</strong>. <strong>Mesclar</strong> significa que uma viagem compartilha pelo menos um dia com uma viagem existente no mesmo país, que o AtlasDays amplia em vez de adicionar uma segunda viagem. <strong>Sobreposição</strong> significa que a viagem compartilha uma noite com uma viagem em outro país. <a href="/pt/help/import-trips#review-before-saving">Importar viagens</a> explica as regras que todas as fontes compartilham.</p>
+
+    <h2>Confira os estados dos EUA</h2>
+    <p>Quando suas localizações mostram em quais estados dos EUA você esteve, o AtlasDays os propõe. Com o Pro, cada estado é importado como uma viagem própria. Sem o Pro, os estados são importados como viagens comuns aos Estados Unidos. A importação em si é gratuita.</p>
+
+    <section class="if-needed">
+      <h2>Se o arquivo for recusado</h2>
+      <p><em>Este arquivo não é uma exportação do Google Timeline</em> significa que o AtlasDays não reconhece o arquivo. Selecione o <code>Timeline.json</code> exportado do Google Maps, ou o <code>Records.json</code> de um download do Takeout, não um arquivo zip nem um arquivo mensal. <em>Este arquivo não contém JSON válido</em> significa que o arquivo está danificado ou incompleto; exporte-o de novo. <em>Nenhuma localização utilizável encontrada neste arquivo</em> significa que a exportação não traz nenhuma localização que o AtlasDays consiga situar.</p>
+    </section>

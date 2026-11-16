@@ -1,40 +1,44 @@
     <nav class="breadcrumb" aria-label="탐색 경로"><a href="/ko/">AtlasDays</a> / <a href="/ko/help/">도움말 센터</a></nav>
 
     <h1>CSV 가져오기</h1>
-<p class="article-answer">CSV로 저장한 스프레드시트에서 여행을 한꺼번에 추가합니다. AtlasDays는 모든 행을 검증해 확인 화면을 보여 주며, 확정하기 전에는 아무것도 저장하지 않습니다. 지난 여행을 추가하는 <a href="/ko/help/import-trips">방법</a> 중 하나입니다.</p>
+<p class="article-answer">CSV로 저장한 다른 여행 앱의 내보내기 파일, 스프레드시트, 날짜별 기록에서 여행을 추가합니다. AtlasDays는 모든 행을 검사해 확인 화면을 보여 주며, 확정하기 전에는 아무것도 저장하지 않습니다. 지난 여행을 추가하는 <a href="/ko/help/import-trips">방법</a> 중 하나입니다.</p>
 
     <h2>파일 가져오기</h2>
     <ol>
       <li><strong>설정 → 가져오기 → CSV 파일</strong>을 여십시오.</li>
-      <li>Sheets, Numbers, Excel에서 파일을 준비해 CSV로 내보내십시오. <strong>CSV 예시</strong>에서 정확한 헤더와 샘플 행을 볼 수 있으며, 공유 버튼으로 파일을 저장해 시작 자료로 쓸 수 있습니다.</li>
       <li><strong>CSV 파일 선택</strong>을 탭하고 파일 앱에서 파일을 고르십시오.</li>
       <li>확인 화면인 <strong>CSV에서 찾은 여행</strong>을 살펴보십시오.</li>
       <li><strong>가져오기</strong>를 탭하고 확정하십시오.</li>
     </ol>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/ko/help/csv-import/csv-setup.webp" alt="CSV 가져오기 설정 화면과 CSV 예시 항목" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
-    <p><strong>AI로 CSV 만들기</strong>는 ChatGPT, Claude 등의 어시스턴트에 쓸 수 있는 프롬프트를 복사해 줍니다. 그 뒤에 여행 메모를 붙여 넣고 답변을 CSV로 저장하십시오. 이러한 도구는 각자의 개인정보 처리방침에 따라 입력한 텍스트를 다루므로, 다른 곳에 붙여 넣지 않을 내용은 빼십시오.</p>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/ko/help/csv-import/csv-setup.webp" alt="다른 앱에서, CSV 템플릿 사용, AI로 CSV 만들기가 있는 CSV에서 가져오기 화면" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
+    <h2>파일을 가져올 수 있는 곳</h2>
+    <ul>
+      <li><strong>다른 앱에서.</strong> 다른 여행 트래커의 내보내기 파일은 대개 그대로 사용할 수 있습니다. AtlasDays는 국가와 날짜 열에 흔히 쓰이는 이름을 인식하며, 한 행이 여행 하나이든 하루이든 국경 통과 한 번이든 모두 읽습니다. 읽을 수 있는 내용은 <a href="/ko/help/csv-format-reference">CSV 형식 참조</a>에 정리되어 있습니다.</li>
+      <li><strong>CSV 템플릿 사용.</strong> 파일을 직접 작성하려면 템플릿을 여십시오. <strong>CSV 예시</strong>에서 헤더와 샘플 행을 볼 수 있으며, 공유 버튼으로 파일을 저장해 시작 자료로 쓸 수 있습니다. Sheets, Numbers, Excel에서 내용을 채운 다음 CSV로 내보내십시오.</li>
+      <li><strong>AI로 CSV 만들기.</strong> AtlasDays가 파일을 읽지 못하거나 여행 기록이 메모나 스크린샷에만 있을 때 사용하면 미리 준비된 프롬프트가 열립니다. 이 프롬프트를 ChatGPT, Claude 등의 어시스턴트에 복사하고 파일, 스크린샷, 메모를 추가한 다음 돌려받은 CSV를 가져오십시오. AtlasDays는 프롬프트를 복사할 뿐 아무것도 보내지 않습니다. 이러한 도구는 각자의 개인정보 처리방침에 따라 받은 내용을 다루므로, 다른 곳에 공유하지 않을 내용은 빼십시오.</li>
+    </ul>
     <p>파일에서 바로 시작할 수도 있습니다. 파일 앱, Safari의 다운로드 또는 Mail에서 CSV 파일을 공유하고 <strong>AtlasDays</strong>를 선택하면 같은 확인 화면이 열립니다. AtlasDays는 CSV 파일을 열 수 있는 앱으로 표시되지만, 기본 앱으로 지정되지는 않습니다.</p>
 
     <h2>확인 화면 읽기</h2>
-    <p>확인 화면에는 유효한 행이 나열되고, 탭해서 걸러 볼 수 있는 건수가 표시됩니다. 가져올 항목은 <strong>모두 선택</strong> 또는 <strong>모두 선택 해제</strong>로 고르십시오.</p>
+    <p>확인 화면에는 가져올 수 있는 행이 나열되고, 탭해서 걸러 볼 수 있는 건수가 표시됩니다. 행을 탭하면 고칠 수 있고, 선택을 해제하면 제외됩니다. 행이 3개 이상이면 <strong>모두 선택</strong>과 <strong>모두 선택 해제</strong>로 목록 전체를 바꿀 수 있습니다.</p>
     <ul>
       <li><strong>중복:</strong> 이미 있는 여행에 포함되거나 앞선 행을 반복하는 행입니다. 건너뜁니다.</li>
-      <li><strong>병합:</strong> 같은 국가에 이미 있는 여행을 포함하는 행입니다. 가져올 때 그 여행이 행의 날짜를 포함하도록 넓어지고, 메모와 목적은 합쳐집니다. <strong>파일 내 병합 후보</strong>는 파일 안에서 서로 이어지는 행을 뜻합니다.</li>
-      <li><strong>겹침:</strong> 행이 다른 여행과 일부 겹칩니다. 실제로 두 번째 체류일 수도 있고 같은 체류의 두 번째 기록일 수도 있으므로, 유지하기 전에 날짜를 비교하십시오.</li>
+      <li><strong>병합:</strong> 같은 장소에 이미 있는 여행과 공통된 날이 하루 이상 있는 행입니다. 가져올 때 그 여행이 행의 날짜를 포함하도록 넓어지고, 메모와 목적은 합쳐집니다. <strong>파일 내 병합 후보</strong>는 파일 안에서 서로 이어지는 행을 뜻합니다.</li>
+      <li><strong>겹침:</strong> 다른 국가나 미국 주의 여행과 같은 밤을 포함하는 행입니다. 유지하기 전에 날짜를 비교하십시오.</li>
       <li><strong>환승</strong>과 <strong>미국 주</strong>는 해당 종류의 행 수를 셉니다. Pro가 없으면 주 행은 일반 미국 여행으로 가져옵니다.</li>
     </ul>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/ko/help/csv-import/csv-review.webp" alt="유효한 행, 오류가 있는 행, 중복, 겹침이 함께 표시된 CSV 가져오기 확인 화면" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/ko/help/csv-import/csv-review.webp" alt="중복, 겹침, 건너뛴 행이 표시된 CSV에서 찾은 여행 확인 화면" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
-    <h2>원본 파일에서 오류 수정</h2>
-    <p>AtlasDays가 읽을 수 없는 행은 <strong>오류가 있는 행 N개</strong> 아래에 행 번호와 이유와 함께 나타납니다. 유효하지 않은 행은 가져오지 않습니다. 스프레드시트에서 고친 다음 다시 내보내고 파일을 다시 선택하십시오.</p>
+    <h2>원본 파일에서 건너뛴 행 수정</h2>
+    <p>AtlasDays가 읽을 수 없는 행은 <strong>N행 건너뜀</strong>으로 집계되며, <strong>건너뛴 행</strong> 아래에 이유별로 행 번호와 함께 나열됩니다. 건너뛴 행은 가져오지 않습니다. 스프레드시트에서 고친 다음 다시 내보내고 파일을 다시 선택하십시오.</p>
 
     <div class="callout"><p><strong>가져오기를 누르기 전에는 아무것도 바뀌지 않습니다.</strong> 파일을 선택하고 확인 화면을 보는 것만으로는 여행이 추가되지 않습니다.</p></div>
 
     <h2>내보낸 파일 다시 가져오기</h2>
-    <p>CSV로 저장한 스프레드시트 <a href="/ko/help/export-and-reports">내보내기</a> 파일은 영어로 내보냈다면 다시 가져올 수 있습니다. 열 헤더는 영어로만 읽기 때문입니다. 여행, 트래커, 설정 전체를 복사해 두려면 대신 <a href="/ko/help/backup-and-restore">백업</a>을 사용하십시오.</p>
+    <p>CSV로 저장한 스프레드시트 <a href="/ko/help/export-and-reports">내보내기</a> 파일은 영어로, 날짜를 <code>yyyy-mm-dd</code> 형식으로 내보냈다면 다시 가져올 수 있습니다. 열 헤더는 영어로만 읽기 때문입니다. 여행, 트래커, 프로필, 설정 전체를 복사해 두려면 대신 <a href="/ko/help/backup-and-restore">백업</a>을 사용하십시오.</p>
 
     <section class="if-needed">
-      <h2>모든 행이 오류로 표시되는 경우</h2>
-      <p>첫 행이 헤더 행이고 <strong>Country</strong>가 들어 있는지, 날짜가 <code>yyyy-mm-dd</code> 또는 네 자리 연도 형식인지 확인하십시오. 지원하는 열, 값, 모든 오류 메시지는 <a href="/ko/help/csv-format-reference">CSV 형식 참조</a>에서 볼 수 있습니다.</p>
+      <h2>여행을 찾지 못한 경우</h2>
+      <p>AtlasDays가 어떤 행도 사용할 수 없으면 파일은 설정 화면에 그대로 남고, <strong>여행을 찾을 수 없음</strong>에 그 이유가 표시됩니다. 예를 들어 국가 열을 찾을 수 없었다는 이유입니다. 그 화면에서 <strong>AI로 CSV 만들기</strong>를 탭하면 어시스턴트로 파일을 변환할 수 있습니다. 지원하는 열, 값, 모든 오류 메시지는 <a href="/ko/help/csv-format-reference">CSV 형식 참조</a>에서 볼 수 있습니다.</p>
     </section>

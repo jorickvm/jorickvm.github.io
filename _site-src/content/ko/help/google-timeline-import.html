@@ -1,0 +1,42 @@
+    <nav class="breadcrumb" aria-label="탐색 경로"><a href="/ko/">AtlasDays</a> / <a href="/ko/help/">도움말 센터</a></nav>
+
+    <h1>Google Timeline 가져오기</h1>
+<p class="article-answer">Google 지도에서 타임라인 데이터를 내보내고 AtlasDays에서 그 파일을 선택한 다음, 제안된 여행을 확인하고 저장하십시오. 지난 여행을 추가하는 <a href="/ko/help/import-trips">방법</a> 중 하나입니다.</p>
+
+    <h2>Google 지도에서 내보내기</h2>
+    <p>Google Timeline 데이터는 온라인이 아니라 휴대전화에 저장됩니다. 그 휴대전화의 Google 지도에서 프로필을 열고 <strong>설정 → 위치 및 개인 정보 보호 → 타임라인 데이터 내보내기</strong>를 선택한 다음 JSON 파일을 파일 앱에 저장하십시오. iPhone과 Android 휴대전화 모두에서 내보낼 수 있습니다. Android에서는 iCloud Drive처럼 iPhone의 파일 앱에서 열 수 있는 곳으로 파일을 옮기십시오.</p>
+    <p>예전에 Google Takeout에서 위치 기록을 다운로드한 적이 있다면, 그 안의 <code>Records.json</code> 파일도 AtlasDays가 읽을 수 있습니다. 먼저 다운로드한 파일의 압축을 푼 다음 그 파일을 선택하십시오. Takeout의 Semantic Location History 폴더에 있는 월별 파일은 읽지 않습니다.</p>
+
+    <h2>AtlasDays로 가져오기</h2>
+    <ol>
+      <li><strong>설정 → 가져오기 → Google Timeline</strong>을 여십시오.</li>
+      <li><strong>Timeline 파일 선택</strong>을 탭하고 내보낸 파일을 고르십시오. 파일이 크면 시간이 조금 더 걸리므로 끝날 때까지 AtlasDays를 열어 두십시오.</li>
+      <li><strong>여행 N건 확인</strong>을 탭하고 확인 화면인 <strong>Google Timeline 가져오기</strong>를 살펴보십시오.</li>
+      <li>여행을 탭하면 편집할 수 있고, 선택을 해제하면 제외됩니다. 그런 다음 <strong>가져오기</strong>를 탭하고 확정하십시오.</li>
+    </ol>
+    <!-- SCREENSHOT_DEFERRED: google-timeline-setup | import-google-timeline -->
+    <p>파일은 기기에서 읽으며 어디에도 업로드되지 않습니다. 확정하기 전에는 아무것도 저장되지 않습니다.</p>
+
+    <h2>위치가 여행이 되는 방식</h2>
+    <p>AtlasDays는 각 위치를 국가에 배정하고, 그 국가에 있었던 첫날부터 마지막 날까지를 여행 하나로 만듭니다. 확인 화면의 내용은 이 원리에서 나옵니다.</p>
+    <ul>
+      <li><strong>환승 가능성</strong>은 모든 위치가 공항 안에 있는 짧은 체류입니다. 처음에는 선택되어 있지 않으며, 선택하면 <a href="/ko/help/history-and-import">환승</a>으로 가져옵니다. 입국 심사를 거치지 않고 공항 안에만 머물렀을 때만 선택하십시오.</li>
+      <li><strong>야간 항공편</strong>은 자정에 비행 중이었을 때 국제 공역으로 기록됩니다. 이 항목도 처음에는 선택되어 있지 않습니다.</li>
+      <li><strong>바다 위</strong>에서는 한 국가의 영해 안에 있는 위치는 그 국가로, 그보다 먼 위치는 공해로 셉니다. 어떤 국가 위를 비행했다고 해서 그곳에 체류한 것으로 기록되지는 않습니다.</li>
+      <li>가장 최근 위치가 최근 며칠 사이의 것이라면 아직 그곳에 있을 수 있으므로, 마지막 여행은 체류 중으로 남겨 둡니다.</li>
+    </ul>
+    <p>여행을 탭하면 <strong>Timeline 위치 기록</strong>에서 그 여행의 근거가 된 첫 위치와 마지막 위치를 볼 수 있습니다. 목록 아래의 <strong>자세히 알아보기</strong>를 탭하면 <strong>여행 추정 방식</strong>이 열립니다.</p>
+    <!-- SCREENSHOT_DEFERRED: google-timeline-review | import-google-timeline-review -->
+
+    <div class="callout"><p><strong>위치 기록에는 빈틈이 있습니다.</strong> 휴대전화가 꺼져 있었거나 Google Timeline이 일시 중지된 날에는 위치가 없으며, AtlasDays는 짧은 빈틈을 추정으로 채웁니다. 가져오기 전에 날짜를 실제로 지낸 곳과 비교해 보십시오.</p></div>
+
+    <h2>중복과 겹침</h2>
+    <p><a href="/ko/help/timeline-and-calendar">타임라인</a>에 이미 있는 여행과 같은 여행은 <strong>중복</strong>으로 표시됩니다. <strong>병합</strong>은 같은 국가의 기존 여행과 공통된 날이 하루 이상 있다는 뜻으로, AtlasDays는 두 번째 여행을 추가하지 않고 그 여행의 기간을 넓힙니다. <strong>겹침</strong>은 다른 국가의 여행과 같은 밤을 포함한다는 뜻입니다. 모든 소스에 공통된 규칙은 <a href="/ko/help/import-trips#review-before-saving">여행 가져오기</a>에서 설명합니다.</p>
+
+    <h2>미국 주 확인</h2>
+    <p>위치로 어느 미국 주에 있었는지 알 수 있으면 AtlasDays가 주를 제안합니다. Pro에서는 각 주가 별도의 여행으로 가져와집니다. Pro가 없으면 주는 일반 미국 여행으로 가져옵니다. 가져오기 자체는 무료입니다.</p>
+
+    <section class="if-needed">
+      <h2>파일이 거부되는 경우</h2>
+      <p><em>이 파일은 Google Timeline 내보내기 파일이 아닙니다</em>라는 메시지는 AtlasDays가 파일을 인식하지 못했다는 뜻입니다. Google 지도에서 내보낸 <code>Timeline.json</code> 또는 Takeout 다운로드의 <code>Records.json</code>을 선택하십시오. zip 파일이나 월별 파일은 사용할 수 없습니다. <em>올바른 JSON 파일이 아닙니다</em>는 파일이 손상되었거나 불완전하다는 뜻이니 다시 내보내십시오. <em>이 파일에서 사용할 수 있는 위치를 찾지 못했습니다</em>는 내보낸 파일에 AtlasDays가 장소를 정할 수 있는 위치가 없다는 뜻입니다.</p>
+    </section>

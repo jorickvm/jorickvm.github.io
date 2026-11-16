@@ -1,21 +1,34 @@
     <nav class="breadcrumb" aria-label="İçerik yolu"><a href="/tr/">AtlasDays</a> / <a href="/tr/help/">Yardım Merkezi</a></nav>
 
     <h1>CSV biçimi başvuru kılavuzu</h1>
-<p class="article-answer">Yalnızca <strong>Country</strong> sütunu zorunludur. AtlasDays sütunları İngilizce başlık adlarına göre bulduğu için sütun sırası önemli değildir. İçe aktarma adımları <a href="/tr/help/csv-import">CSV ile içe aktarma</a> makalesindedir.</p>
+<p class="article-answer">Bir dosyada her satır için bir ülke, gün toplamlarına sayılması gereken seyahatler için de tarihler bulunmalıdır. AtlasDays sütunları İngilizce başlık adlarına göre bulduğu için sütun sırası önemli değildir; diğer seyahat uygulamalarının kullandığı adları da tanır. İçe aktarma adımları <a href="/tr/help/csv-import">CSV ile içe aktarma</a> makalesindedir.</p>
 
     <h2>Sütunlar</h2>
-    <p>Önerilen başlık satırı: <code>Country,State,Start Date,End Date,Purpose,Notes</code>. Başlık adlarında büyük/küçük harf ayrımı yoktur. <code>Days</code> gibi tanınmayan sütunlar yok sayılır. Bir başlık iki kez geçerse ilki kullanılır.</p>
+    <p>Kendiniz yazdığınız bir dosya için önerilen başlık satırı: <code>Country,State,Start Date,End Date,Purpose,Notes</code>. Başlık adlarında büyük/küçük harf ayrımı yoktur ve alt çizgi boşluk sayılır. <code>Days</code> gibi tanınmayan sütunlar yok sayılır. İki sütun aynı anlama geliyorsa ilki kullanılır; ancak adı tam olarak <code>Purpose</code> olan sütun her zaman önceliklidir.</p>
     <dl class="kv kv-text">
-      <div><dt><strong>Country</strong></dt><dd>Zorunlu. İngilizce veya uygulama dilinde ülke adı, iki harfli ISO kodu ya da <code>USA</code>, <code>UK</code> veya <code>Holland</code> gibi yaygın bir diğer ad. İki farklı yere işaret edebilecek bir diğer ad reddedilir.</dd></div>
-      <div><dt><strong>State</strong></dt><dd>İsteğe bağlı, yalnızca Amerika Birleşik Devletleri seyahatleri için. Eyalet adı, iki harfli posta kısaltması veya <code>US-CA</code> gibi bir ISO kodu. Columbia Bölgesi (District of Columbia) kabul edilir.</dd></div>
-      <div><dt><strong>Start Date</strong></dt><dd><code>Start</code> olarak da kabul edilir. <code>yyyy-mm-dd</code> biçiminde tarih veya dört haneli bir yıl.</dd></div>
-      <div><dt><strong>End Date</strong></dt><dd><code>End</code> olarak da kabul edilir. <code>yyyy-mm-dd</code> biçiminde tarih veya dört haneli bir yıl. Boş bırakılırsa devam eden seyahat (kesin başlangıç) ya da aynı yıl (yıl olarak başlangıç) anlamına gelir.</dd></div>
-      <div><dt><strong>Purpose</strong></dt><dd><code>Personal</code> (Kişisel), <code>Business</code> (İş), <code>Study</code> (Eğitim) veya <code>Transit</code>; büyük/küçük harf ayrımı yoktur. Transit dışındaki değerleri tırnak içinde virgülle birleştirin, örneğin <code>"Business, Personal"</code>. Eski <code>Tourism</code> ve <code>Medical</code> değerleri Personal olarak içe aktarılır. Tanınmayan bir değer hata verilmeden yok sayılır.</dd></div>
-      <div><dt><strong>Notes</strong></dt><dd><code>Note</code> ve <code>Notes (optional)</code> olarak da kabul edilir. Serbest metin.</dd></div>
-      <div><dt><strong>Transit</strong></dt><dd>Eski sütun. Yalnızca Purpose sütunu yoksa okunur. <code>Yes</code>, <code>Y</code>, <code>True</code> veya <code>1</code> Transit olarak işaretler; <code>No</code>, <code>N</code>, <code>False</code>, <code>0</code> veya boş değer işaretlemez.</dd></div>
-      <div><dt><strong>Start Year</strong>, <strong>End Year</strong></dt><dd>Eski sütun. Tarih hücrelerinde yıl bulunmadığında kullanılan dört haneli yıllar. Aynı satırda kesin tarihlerle birleştirilemez.</dd></div>
+      <div><dt><strong>Country</strong></dt><dd><code>Countries</code>, <code>Country Name</code>, <code>Country/Region</code>, <code>Nation</code>, <code>Place</code> veya <code>Destination</code> sütunundan da okunur. İngilizce veya uygulama dilinde ülke adı, iki harfli ISO kodu ya da <code>USA</code>, <code>UK</code> veya <code>Holland</code> gibi yaygın bir diğer ad. İki farklı yere işaret edebilecek bir diğer ad reddedilir.</dd></div>
+      <div><dt><strong>Country Code</strong></dt><dd><code>ISO</code>, <code>ISO Code</code>, <code>ISO2</code>, <code>Alpha-2</code>, <code>Code</code> veya <code>CC</code> sütunundan da okunur. İki harfli bir kod. Bir dosyada ikisi de varsa kod kullanılır, ad yok sayılır.</dd></div>
+      <div><dt><strong>State</strong></dt><dd><code>US State</code>, <code>State/Province</code>, <code>Province</code>, <code>Region</code> veya <code>Subdivision</code> sütunundan da okunur. Yalnızca Amerika Birleşik Devletleri seyahatleri için: eyalet adı, iki harfli posta kısaltması veya <code>US-CA</code> gibi bir ISO kodu. Columbia Bölgesi (District of Columbia) kabul edilir.</dd></div>
+      <div><dt><strong>Start Date</strong></dt><dd><code>Start</code>, <code>Arrival</code>, <code>Arrival Date</code>, <code>Entry</code>, <code>Date From</code>, <code>Begin</code>, <code>Check-in</code> ve benzeri adlardan da okunur. Aşağıdaki Tarih biçimleri bölümüne bakın.</dd></div>
+      <div><dt><strong>End Date</strong></dt><dd><code>End</code>, <code>Departure</code>, <code>Departure Date</code>, <code>Exit</code>, <code>Date To</code>, <code>Until</code>, <code>Check-out</code> ve benzeri adlardan da okunur. Boş bırakılırsa devam eden seyahat (kesin başlangıç) ya da aynı yıl (yıl olarak başlangıç) anlamına gelir.</dd></div>
+      <div><dt><strong>Purpose</strong></dt><dd><code>Reason</code>, <code>Type</code>, <code>Trip Type</code>, <code>Category</code> veya <code>Visit Type</code> sütunundan da okunur. <code>Personal</code> (Kişisel), <code>Business</code> (İş), <code>Study</code> (Eğitim) veya <code>Transit</code>; büyük/küçük harf ayrımı yoktur. Transit dışındaki değerleri tırnak içinde virgülle, örneğin <code>"Business, Personal"</code>, ya da <code>;</code> veya <code>/</code> ile birleştirin. Yaygın sözcükler eşlenir: <code>Work</code> Business, <code>Holiday</code> veya <code>Vacation</code> Personal, <code>School</code> Study, <code>Layover</code> Transit olur. Diğer değerler seyahatin notlarında bir <em>Amaç:</em> satırı olarak saklanır.</dd></div>
+      <div><dt><strong>Notes</strong></dt><dd><code>Note</code>, <code>Notes (optional)</code>, <code>Comment</code>, <code>Description</code>, <code>Remarks</code> veya <code>Memo</code> sütunundan da okunur. Serbest metin.</dd></div>
+      <div><dt><strong>City</strong></dt><dd><code>Cities</code> veya <code>Town</code> sütunundan da okunur. Seyahatin notlarına eklenir.</dd></div>
+      <div><dt><strong>Is Current</strong></dt><dd><code>Current</code> veya <code>Ongoing</code> sütunundan da okunur. <code>Yes</code>, <code>True</code> veya <code>1</code>, bitiş tarihinde ne yazarsa yazsın seyahati devam ediyor olarak tutar.</dd></div>
+      <div><dt><strong>Work Days</strong>, <strong>Personal Days</strong></dt><dd>Purpose sütunu olmadığında kullanılır: yalnızca iş günleri olan bir seyahat Business, yalnızca kişisel günleri olan Personal olur. İkisini de içeren bir seyahate <em>İş ve kişisel</em> notu eklenir.</dd></div>
+      <div><dt><strong>Transit</strong></dt><dd><code>Layover</code> veya <code>Airside</code> sütunundan da okunur. Yalnızca Purpose sütunu yoksa okunur. <code>Yes</code>, <code>Y</code>, <code>True</code> veya <code>1</code> Transit olarak işaretler; <code>No</code>, <code>N</code>, <code>False</code>, <code>0</code> veya boş değer işaretlemez.</dd></div>
+      <div><dt><strong>Start Year</strong>, <strong>End Year</strong></dt><dd>Eski sütunlar. Tarih hücrelerinde yıl bulunmadığında kullanılan dört haneli yıllar. Aynı satırda kesin tarihlerle birleştirilemez.</dd></div>
     </dl>
-    <figure class="help-shot help-shot-control"><img src="/assets/article-images/tr/help/csv-format-reference/csv-reference.webp" alt="CSV içe aktarımı örneği ve şablon denetimleri" width="1320" height="1990" loading="lazy" decoding="async" /></figure>
+    <figure class="help-shot help-shot-control"><img src="/assets/article-images/tr/help/csv-format-reference/csv-reference.webp" alt="Başka bir uygulamadan, CSV şablonu kullan ve Yapay zekâyla CSV oluştur seçeneklerinin bulunduğu CSV'den içe aktar ekranı" width="1320" height="1990" loading="lazy" decoding="async" /></figure>
+
+    <h2>Dosya düzenleri</h2>
+    <p>AtlasDays üç düzeni sütunlarına bakarak birbirinden ayırır:</p>
+    <ul>
+      <li><strong>Seyahat başına bir satır:</strong> başlangıç ve bitiş tarihi olan bir ülke. Şablonun, AtlasDays Elektronik tablo dışa aktarımının ve çoğu seyahat uygulamasının düzeni budur.</li>
+      <li><strong>Gün başına bir satır:</strong> bir <code>Date</code> (veya <code>Day</code>) sütunu ve bir ülke. Aynı ülkedeki ardışık günler tek bir seyahat olur, eksik bir gün de seyahati bitirir. Son gün bugün veya dünse seyahat devam ediyor olarak tutulur. İlk satırda bir tarih ve bir ülke varsa başlık satırı atlanabilir. İki ülkede geçen bir gün için ülkeleri <code>France|Germany</code> gibi dikey çizgiyle ayırın: gün ikisine de sayılır. Eyaletler ve şehirler de aynı şekilde yazılabilir.</li>
+      <li><strong>Sınır geçişi başına bir satır:</strong> <code>From</code> ve <code>To</code> ülkeleriyle birlikte bir <code>Date</code> sütunu. Her geçiş günü iki ülkeye de sayılır ve bir sonraki geçişe kadar <code>To</code> ülkesinde kalmış sayılırsınız. Son kalış devam ediyor olarak tutulur. Geçiş satırları gün gün tutulan bir dosyaya da karıştırılabilir.</li>
+    </ul>
+    <p><code>Date</code> sütunu olmayan bir dosyada <code>From</code> ve <code>To</code>, bir seyahatin başlangıç ve bitiş tarihleri olarak okunur.</p>
 
     <h2>Tarih biçimleri</h2>
     <div class="data-table">
@@ -30,7 +43,13 @@
       </tbody>
     </table>
     </div>
-    <p>Yıllar 1900 ile geçerli yıldan sekiz yıl sonrası arasında olmalıdır. Kesin tarihler ve yıl değerleri aynı satırda birlikte kullanılamaz. Yalnızca yıl seyahatleri ve tarihsiz seyahatler ziyaret edilen yerlere ve haritaya sayılır, ancak gün sayımlarına veya takiplere hiçbir zaman sayılmaz. Tarihsiz bir seyahat yalnızca CSV ile içe aktarma yoluyla oluşturulabilir.</p>
+    <p>AtlasDays <code>yyyy-mm-dd</code> dışında şunları da okur:</p>
+    <ul>
+      <li>Eğik çizgi veya noktayla yazılmış, yılla başlayan tarihler; örneğin <code>2026/03/01</code> veya <code>2026.03.01</code>. Tarihten sonra gelen bir saat, örneğin <code>2026-03-01 22:47</code> veya <code>2026-03-01T22:47:00Z</code>, yok sayılır.</li>
+      <li>İngilizce ay adları ve kısaltmaları; örneğin <code>1 Mar 2026</code>, <code>Mar 1, 2026</code> veya <code>01-Mar-26</code>.</li>
+      <li>Günle veya ayla başlayan, dört ya da iki haneli yıllı tarihler; örneğin <code>01/03/2026</code> veya <code>03/01/2026</code>. <code>01/03</code> iki türlü de okunabileceği için AtlasDays bunları yalnızca dosyadaki bir tarihin günü 12'den büyükse, yani sıra belli oluyorsa okur. Aksi hâlde bu satırlar <em>gün ile ay ayırt edilemiyor</em> iletisiyle atlanır.</li>
+    </ul>
+    <p>İki haneli bir yıl, en fazla 10 yıl ileriyi gösteriyorsa 20xx, aksi hâlde 19xx olarak okunur. Yıllar 1900 ile geçerli yıldan sekiz yıl sonrası arasında olmalıdır. Kesin tarihler ve yıl değerleri aynı satırda birlikte kullanılamaz. Yalnızca yıl seyahatleri ve tarihsiz seyahatler ziyaret edilen yerlere ve haritaya sayılır, ancak gün sayımlarına veya takiplere hiçbir zaman sayılmaz. Tarihsiz bir seyahat yalnızca CSV ile içe aktarma yoluyla oluşturulabilir.</p>
 
     <h2>Özel durumlar</h2>
     <ul>
@@ -45,27 +64,36 @@ France,,2026-03-01,2026-03-05,Personal,
 United States,CA,2026-04-10,2026-04-15,Business,Conference
 Japan,,2024,,Personal,Dates not known
 United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></pre>
+    <p>Fransa seyahatlerinin gün başına bir satır olarak hâli:</p>
+    <pre><code>Date,Country
+2026-03-01,France
+2026-03-02,France
+2026-03-03,France
+2026-03-04,France
+2026-03-05,France</code></pre>
 
     <h2>Hata iletileri</h2>
-    <p>Her hata, satır numarasıyla birlikte önizlemede görünür ve o satır içe aktarılmaz. Satır numarası, başlığı 1. satır sayar.</p>
+    <p>Hatalı satırlar önizlemede <strong>Atlananlar</strong> altında, nedene göre gruplanmış hâlde satır numaralarıyla listelenir ve içe aktarılmaz. Satır numarası, başlığı 1. satır sayar.</p>
     <dl class="kv kv-text">
-      <div><dt>Country sütunu bulunamadı</dt><dd>En başa <strong>Country</strong> sütunu olan bir başlık satırı koyun.</dd></div>
-      <div><dt>Geçersiz ülke: '&lt;değer&gt;'</dt><dd>Bir ISO kodu veya anlamı açık bir ülke adı kullanın.</dd></div>
+      <div><dt>'&lt;değer&gt;' bir ülke adı veya kodu değil</dt><dd>Bir ISO kodu veya anlamı açık bir ülke adı kullanın.</dd></div>
+      <div><dt>Ülke eksik</dt><dd>Ülkeyi doldurun veya satırı silin.</dd></div>
       <div><dt>Geçersiz eyalet: '&lt;değer&gt;'</dt><dd>Bir ABD eyalet adı, kısaltması veya <code>US-XX</code> kodu kullanın.</dd></div>
       <div><dt>'&lt;değer&gt;' eyaleti yalnızca Amerika Birleşik Devletleri seyahatleri için geçerlidir</dt><dd>State alanını temizleyin veya Country alanını United States olarak değiştirin.</dd></div>
       <div><dt>Çelişen eyaletler</dt><dd>Country ve State hücreleri farklı eyaletleri belirtiyor. Birini bırakın.</dd></div>
-      <div><dt>Geçersiz başlangıç tarihi / Geçersiz bitiş tarihi</dt><dd><code>yyyy-mm-dd</code> veya dört haneli bir yıl kullanın.</dd></div>
+      <div><dt>Geçersiz başlangıç tarihi / Geçersiz bitiş tarihi / Geçersiz tarih</dt><dd>Yukarıdaki tarih biçimlerinden birini kullanın.</dd></div>
+      <div><dt>'&lt;değer&gt;' içinde gün ile ay ayırt edilemiyor. yyyy-mm-dd kullanın.</dt><dd>Tarihleri yılla başlayarak yazın ya da dosyadaki günle veya ayla başlayan tarihlerin tutarlı olduğunu kontrol edin.</dd></div>
       <div><dt>Geçersiz başlangıç yılı / Geçersiz bitiş yılı</dt><dd>Aralık içinde dört haneli bir yıl kullanın.</dd></div>
       <div><dt>Başlangıç tarihi olmadan bitiş tarihi olamaz</dt><dd>Bir Start Date ekleyin.</dd></div>
       <div><dt>Başlangıç tarihi bitiş tarihinden önce veya aynı olmalıdır</dt><dd>Tarihleri değiştirin veya düzeltin.</dd></div>
       <div><dt>Bitiş yılı başlangıç yılıyla aynı veya daha sonra olmalıdır</dt><dd>Yılları düzeltin.</dd></div>
       <div><dt>Başlangıç yılı olmadan bitiş yılı olamaz</dt><dd>Bir başlangıç yılı ekleyin.</dd></div>
       <div><dt>Kesin tarihler yaklaşık yıl alanlarıyla birlikte kullanılamaz</dt><dd>Ya tarihleri ya da eski yıl sütunlarını kullanın.</dd></div>
-      <div><dt>Kesin başlangıç tarihi yalnızca yıl içeren bitiş tarihiyle, yalnızca yıl içeren başlangıç da kesin bitiş tarihiyle kullanılamaz</dt><dd>Bir satırda iki tarih veya iki yıl kullanın.</dd></div>
-      <div><dt>Geçersiz transit değeri</dt><dd>Eski Transit sütununda Yes/No, True/False veya 1/0 kullanın.</dd></div>
+      <div><dt>Kesin başlangıç tarihi yalnızca yıl içeren bitiş tarihiyle kullanılamaz</dt><dd>Bir satırda iki tarih veya iki yıl kullanın. Tersi durumda ileti <em>Yalnızca yıl içeren başlangıç kesin bitiş tarihiyle kullanılamaz</em> şeklindedir.</dd></div>
+      <div><dt>Geçersiz transit değeri</dt><dd>Transit sütununda Yes/No, True/False veya 1/0 kullanın.</dd></div>
     </dl>
+    <p>Hiçbir satır içe aktarılamıyorsa önizleme açılmaz. Bunun yerine <strong>Seyahat bulunamadı</strong> nedenini açıklar; örneğin <em>AtlasDays bu dosyada ülke sütunu bulamadı</em>.</p>
 
     <section class="if-needed">
       <h2>Bir değer tanınmıyorsa</h2>
-      <p>Bir ISO ülke kodu, ISO tarihleri ve standart bir ABD eyalet adı veya kodu kullanın. Başka bir dildeki elektronik tablodan dışa aktarılan bir dosyada çevrilmiş başlıklar bulunabilir ve bunlar tanınmaz: bunları yukarıdaki İngilizce başlıklarla yeniden adlandırın.</p>
+      <p>Bir ISO ülke kodu, <code>yyyy-mm-dd</code> biçiminde tarihler ve standart bir ABD eyalet adı veya kodu kullanın. Başka bir dildeki elektronik tablodan dışa aktarılan bir dosyada çevrilmiş başlıklar bulunabilir ve bunlar tanınmaz: bunları yukarıdaki İngilizce başlıklarla yeniden adlandırın. AtlasDays'in hiç okuyamadığı bir dosya için içe aktarma ekranındaki <strong>Yapay zekâyla CSV oluştur</strong>, dosyayı dönüştürmek üzere size bir istem verir.</p>
     </section>

@@ -1,40 +1,44 @@
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/de/">AtlasDays</a> / <a href="/de/help/">Hilfe</a></nav>
 
     <h1>CSV-Import</h1>
-<p class="article-answer">Füg Reisen aus einer als CSV gespeicherten Tabelle gesammelt hinzu. AtlasDays prüft jede Zeile, zeigt eine Vorschau und sichert nichts, bevor du bestätigst. Er ist eine der <a href="/de/help/import-trips">Möglichkeiten, vergangene Reisen hinzuzufügen</a>.</p>
+<p class="article-answer">Füg Reisen aus dem Export einer anderen Reise-App, aus einer Tabelle oder aus einem Tag-für-Tag-Protokoll hinzu, das als CSV gespeichert ist. AtlasDays prüft jede Zeile, zeigt eine Vorschau und sichert nichts, bevor du bestätigst. Er ist eine der <a href="/de/help/import-trips">Möglichkeiten, vergangene Reisen hinzuzufügen</a>.</p>
 
     <h2>Die Datei importieren</h2>
     <ol>
       <li>Öffne <strong>Einstellungen → Importieren → CSV-Datei</strong>.</li>
-      <li>Bereite die Datei in Google Tabellen, Numbers oder Excel vor und exportiere sie als CSV. <strong>Beispiel-CSV</strong> zeigt die genauen Spaltenköpfe mit Beispielzeilen, und über die Teilen-Taste sicherst du die Datei als Ausgangspunkt.</li>
       <li>Tipp auf <strong>CSV-Datei auswählen</strong> und wähle die Datei in Dateien aus.</li>
       <li>Sieh dir die Vorschau <strong>In CSV gefunden</strong> an.</li>
       <li>Tipp auf <strong>Importieren</strong> und bestätige.</li>
     </ol>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/de/help/csv-import/csv-setup.webp" alt="Der Einrichtungsbildschirm des CSV-Imports mit den Bedienelementen für die Beispieldatei" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
-    <p><strong>CSV mit KI erstellen</strong> kopiert einen fertigen Prompt für ChatGPT, Claude oder einen anderen Assistenten. Füg danach deine Reisenotizen ein und speichere die Antwort als CSV. Diese Tools verarbeiten deinen Text nach ihren eigenen Datenschutzbestimmungen, lass also weg, was du nicht auch anderswo einfügen würdest.</p>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/de/help/csv-import/csv-setup.webp" alt="Der Bildschirm „Aus CSV importieren“ mit „Aus einer anderen App“, „CSV-Vorlage verwenden“ und „CSV mit KI erstellen“" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
+    <h2>Woher die Datei kommen kann</h2>
+    <ul>
+      <li><strong>Aus einer anderen App.</strong> Exporte anderer Reise-Tracker funktionieren meist ohne Änderung. AtlasDays erkennt gängige Namen für die Länder- und Datumsspalten und liest Dateien mit einer Zeile pro Reise, einer Zeile pro Tag oder einer Zeile pro Grenzübertritt. Die <a href="/de/help/csv-format-reference">CSV-Format: Referenz</a> listet, was gelesen wird.</li>
+      <li><strong>CSV-Vorlage verwenden.</strong> Wenn du die Datei selbst schreiben willst, öffne die Vorlage. <strong>Beispiel-CSV</strong> zeigt die Spaltenköpfe mit Beispielzeilen, und über die Teilen-Taste sicherst du die Datei als Ausgangspunkt. Füll sie in Google Tabellen, Numbers oder Excel aus und exportiere sie als CSV.</li>
+      <li><strong>CSV mit KI erstellen.</strong> Wenn AtlasDays deine Datei nicht lesen kann oder dein Reiseverlauf in Notizen oder Bildschirmfotos steckt, öffnet das einen fertigen Prompt. Kopiere ihn in ChatGPT, Claude oder einen anderen Assistenten, füg deine Datei, Bildschirmfotos oder Notizen hinzu und importiere die CSV, die zurückkommt. AtlasDays kopiert nur den Prompt und sendet nichts. Diese Tools verarbeiten, was du ihnen gibst, nach ihren eigenen Datenschutzbestimmungen, lass also weg, was du nicht auch anderswo teilen würdest.</li>
+    </ul>
     <p>Du kannst auch direkt mit der Datei beginnen. Teile eine CSV-Datei aus Dateien, den Safari-Downloads oder Mail und wähle <strong>AtlasDays</strong>: Es öffnet sich dieselbe Vorschau. AtlasDays wird als Option für CSV-Dateien angeboten, aber nicht als Standard-App dafür festgelegt.</p>
 
     <h2>Die Vorschau lesen</h2>
-    <p>Die Vorschau listet gültige Zeilen und zeigt Zähler, die du antippen kannst, um zu filtern. Mit <strong>Alle auswählen</strong> oder <strong>Alle abwählen</strong> legst du fest, was importiert wird.</p>
+    <p>Die Vorschau listet die Zeilen, die sich importieren lassen, und zeigt Zähler, die du antippen kannst, um zu filtern. Tipp eine Zeile an, um sie zu korrigieren, oder entferne ihre Auswahl, um sie wegzulassen. Ab drei Zeilen änderst du mit <strong>Alle auswählen</strong> und <strong>Alle abwählen</strong> die ganze Liste.</p>
     <ul>
       <li><strong>Duplikat:</strong> Die Zeile liegt innerhalb einer Reise, die du schon hast, oder wiederholt eine frühere Zeile. Sie wird übersprungen.</li>
-      <li><strong>Zusammenführen:</strong> Die Zeile deckt eine Reise ab, die du im selben Land schon hast. Beim Import wird diese Reise um die Reisedaten der Zeile erweitert, und Notizen und Zwecke werden kombiniert. <strong>Reisen zum Zusammenführen in der Datei</strong> steht für Zeilen innerhalb der Datei, die sich miteinander verbinden.</li>
-      <li><strong>Überschneidung:</strong> Die Zeile überschneidet sich teilweise mit einer anderen Reise. Das kann ein echter zweiter Aufenthalt sein oder eine zweite Fassung desselben, vergleiche also die Reisedaten, bevor du sie behältst.</li>
-      <li><strong>Transits</strong> und <strong>US-Bundesstaaten</strong> zählen Zeilen dieser Art. Ohne Pro werden Bundesstaaten-Zeilen als gewöhnliche Reisen in die Vereinigten Staaten importiert.</li>
+      <li><strong>Zusammenführen:</strong> Die Zeile teilt mindestens einen Tag mit einer Reise, die du am selben Ort schon hast. Beim Import wird diese Reise um die Reisedaten der Zeile erweitert, und Notizen und Zwecke werden kombiniert. <strong>Reisen zum Zusammenführen in der Datei</strong> steht für Zeilen innerhalb der Datei, die sich miteinander verbinden.</li>
+      <li><strong>Überschneidung:</strong> Die Zeile teilt eine Nacht mit einer Reise in einem anderen Land oder US-Bundesstaat. Vergleiche die Reisedaten, bevor du sie behältst.</li>
+      <li><strong>Transitaufenthalte</strong> und <strong>US-Bundesstaaten</strong> zählen Zeilen dieser Art. Ohne Pro werden Bundesstaaten-Zeilen als gewöhnliche Reisen in die Vereinigten Staaten importiert.</li>
     </ul>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/de/help/csv-import/csv-review.webp" alt="Die Vorschau des CSV-Imports mit gültigen, ungültigen, doppelten und sich überschneidenden Zeilen" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/de/help/csv-import/csv-review.webp" alt="Die Vorschau „In CSV gefunden“ mit doppelten, sich überschneidenden und übersprungenen Zeilen" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
-    <h2>Fehler in der Quelldatei beheben</h2>
-    <p>Zeilen, die AtlasDays nicht lesen kann, erscheinen unter <strong>N Zeilen mit Fehlern</strong>, mit Zeilennummer und Grund. Ungültige Zeilen werden nie importiert. Korrigiere sie in der Tabelle, exportiere erneut und wähle die Datei noch einmal aus.</p>
+    <h2>Übersprungene Zeilen in der Quelldatei beheben</h2>
+    <p>Zeilen, die AtlasDays nicht lesen kann, werden als <strong>N Zeilen übersprungen</strong> gezählt und unter <strong>Übersprungen</strong> aufgeführt, nach Grund gruppiert und mit ihren Zeilennummern. Übersprungene Zeilen werden nie importiert. Korrigiere sie in der Tabelle, exportiere erneut und wähle die Datei noch einmal aus.</p>
 
     <div class="callout"><p><strong>Nichts ändert sich vor dem Import.</strong> Eine Datei auszuwählen und die Vorschau anzusehen, fügt keine Reisen hinzu.</p></div>
 
     <h2>Einen Export erneut importieren</h2>
-    <p>Ein als CSV gespeicherter Tabellen-<a href="/de/help/export-and-reports">Export</a> lässt sich wieder importieren, sofern er auf Englisch exportiert wurde: Spaltenköpfe werden nur auf Englisch gelesen. Für eine vollständige Kopie von Reisen, Trackern und Einstellungen nimm stattdessen ein <a href="/de/help/backup-and-restore">Backup</a>.</p>
+    <p>Ein als CSV gespeicherter Tabellen-<a href="/de/help/export-and-reports">Export</a> lässt sich wieder importieren, sofern er auf Englisch und mit Reisedaten im Format <code>yyyy-mm-dd</code> exportiert wurde: Spaltenköpfe werden nur auf Englisch gelesen. Für eine vollständige Kopie von Reisen, Trackern, deinem Profil und Einstellungen nimm stattdessen ein <a href="/de/help/backup-and-restore">Backup</a>.</p>
 
     <section class="if-needed">
-      <h2>Wenn jede Zeile ungültig ist</h2>
-      <p>Prüf, ob die erste Zeile eine Kopfzeile ist und <strong>Country</strong> enthält, und ob die Reisedaten <code>yyyy-mm-dd</code> oder ein vierstelliges Jahr verwenden. Die <a href="/de/help/csv-format-reference">CSV-Format: Referenz</a> listet unterstützte Spalten, Werte und jede Fehlermeldung.</p>
+      <h2>Wenn keine Reisen gefunden werden</h2>
+      <p>Kann AtlasDays keine einzige Zeile verwenden, bleibt die Datei auf dem Einrichtungsbildschirm, und <strong>Keine Reisen gefunden</strong> nennt den Grund, zum Beispiel dass keine Länderspalte zu finden war. Tipp dort auf <strong>CSV mit KI erstellen</strong>, um die Datei von einem Assistenten umwandeln zu lassen. Die <a href="/de/help/csv-format-reference">CSV-Format: Referenz</a> listet unterstützte Spalten, Werte und jede Fehlermeldung.</p>
     </section>

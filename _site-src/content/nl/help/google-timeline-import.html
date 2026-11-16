@@ -1,0 +1,42 @@
+    <nav class="breadcrumb" aria-label="Broodkruimelpad"><a href="/nl/">AtlasDays</a> / <a href="/nl/help/">Helpcentrum</a></nav>
+
+    <h1>Google Timeline-import</h1>
+<p class="article-answer">Exporteer je tijdlijn uit Google Maps, kies het bestand in AtlasDays en controleer de voorgestelde reizen voordat je ze opslaat. Het is een van de <a href="/nl/help/import-trips">manieren om eerdere reizen toe te voegen</a>.</p>
+
+    <h2>Exporteren uit Google Maps</h2>
+    <p>Google bewaart je tijdlijn op je telefoon, niet online. Open in Google Maps op die telefoon je profiel en dan <strong>Instellingen → Locatie en privacy → Tijdlijngegevens exporteren</strong>, en bewaar het JSON-bestand in Bestanden. Dat werkt vanaf een iPhone en vanaf een Android-telefoon; zet het bestand op Android op een plek die de Bestanden-app van je iPhone kan bereiken, zoals iCloud Drive.</p>
+    <p>Heb je je locatiegeschiedenis ooit gedownload via Google Takeout, dan leest AtlasDays ook het bestand <code>Records.json</code> daarin. Pak de download eerst uit en kies dat bestand. De maandbestanden in de map Semantic Location History van Takeout worden niet gelezen.</p>
+
+    <h2>Importeren in AtlasDays</h2>
+    <ol>
+      <li>Open <strong>Instellingen → Importeren → Google Timeline</strong>.</li>
+      <li>Tik op <strong>Kies Timeline-bestand</strong> en kies het geëxporteerde bestand. Grote bestanden duren wat langer, dus houd AtlasDays open tot het klaar is.</li>
+      <li>Tik op <strong>Controleer N reizen</strong> en bekijk de controle, <strong>Google Timeline-import</strong>.</li>
+      <li>Tik op een reis om hem te bewerken, of haal het vinkje weg om hem weg te laten. Tik dan op <strong>Importeren</strong> en bevestig.</li>
+    </ol>
+    <!-- SCREENSHOT_DEFERRED: google-timeline-setup | import-google-timeline -->
+    <p>Het bestand wordt op je apparaat gelezen en nergens naartoe geüpload. Er wordt niets opgeslagen voordat je bevestigt.</p>
+
+    <h2>Hoe locaties reizen worden</h2>
+    <p>AtlasDays plaatst elke locatie in een land en maakt een reis van de eerste tot de laatste dag dat je daar was. De rest van de controle volgt daaruit:</p>
+    <ul>
+      <li><strong>Mogelijke transits</strong> zijn korte stops waarbij elke locatie op een luchthaven ligt. Ze zijn eerst niet geselecteerd en worden als <a href="/nl/help/history-and-import">Transit</a> geïmporteerd als je ze selecteert. Selecteer er alleen een als je airside bent gebleven.</li>
+      <li><strong>Nachtvluchten</strong> worden vastgelegd als Internationaal luchtruim wanneer je om middernacht in de lucht was. Ook die zijn eerst niet geselecteerd.</li>
+      <li><strong>Op zee</strong> telt een locatie binnen de territoriale wateren van een land voor dat land, en een locatie verder op zee als Internationale wateren. Over een land vliegen levert daar nooit een verblijf op.</li>
+      <li>Zijn je recentste locaties van de afgelopen paar dagen, dan blijft de laatste reis zonder einddatum, omdat je er misschien nog bent.</li>
+    </ul>
+    <p>Tik op een reis om de <strong>Timeline-gegevens</strong> te zien: de eerste en laatste locatie waarop hij berust. <strong>Meer info</strong>, onder de lijst, opent <strong>Zo worden reizen afgeleid</strong>.</p>
+    <!-- SCREENSHOT_DEFERRED: google-timeline-review | import-google-timeline-review -->
+
+    <div class="callout"><p><strong>Locatiegeschiedenis heeft gaten.</strong> Dagen waarop je telefoon uit stond of de tijdlijn was gepauzeerd, hebben geen locaties, en korte gaten vult AtlasDays met een schatting. Vergelijk de datums met waar je je dagen echt hebt doorgebracht voordat je importeert.</p></div>
+
+    <h2>Duplicaten en overlappingen</h2>
+    <p>Reizen die een reis herhalen die al in de <a href="/nl/help/timeline-and-calendar">Tijdlijn</a> staat, krijgen het label <strong>Duplicaat</strong>. <strong>Samenvoegen</strong> betekent dat een reis minstens één dag deelt met een bestaande reis in hetzelfde land; AtlasDays verbreedt die reis in plaats van een tweede reis toe te voegen. <strong>Overlap</strong> betekent dat de reis een nacht deelt met een reis in een ander land. <a href="/nl/help/import-trips#review-before-saving">Reizen importeren</a> legt de regels uit die voor elke bron gelden.</p>
+
+    <h2>Amerikaanse staten controleren</h2>
+    <p>Als je locaties laten zien in welke Amerikaanse staten je was, stelt AtlasDays die voor. Met Pro wordt elke staat als aparte reis geïmporteerd. Zonder Pro worden de staten geïmporteerd als gewone reizen naar de Verenigde Staten. De import zelf is gratis.</p>
+
+    <section class="if-needed">
+      <h2>Als het bestand wordt geweigerd</h2>
+      <p><em>Dit bestand is geen Google Timeline-export</em> betekent dat AtlasDays het bestand niet herkent. Kies het bestand <code>Timeline.json</code> dat uit Google Maps is geëxporteerd, of <code>Records.json</code> uit een Takeout-download, geen zipbestand en geen maandbestand. <em>Dit bestand is geen geldige JSON</em> betekent dat het bestand beschadigd of onvolledig is; exporteer het opnieuw. <em>Geen bruikbare locaties gevonden in dit bestand</em> betekent dat de export geen locaties bevat die AtlasDays kan plaatsen.</p>
+    </section>

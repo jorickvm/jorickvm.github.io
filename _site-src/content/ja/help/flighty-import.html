@@ -10,16 +10,16 @@
     <ol>
       <li><strong>「設定」→「インポート」→「Flighty」</strong>を開きます。</li>
       <li><strong>「FlightyのCSVを選択」</strong>をタップし、エクスポートしたファイルを選びます。</li>
-      <li>確認画面<strong>「Flightyで見つかりました」</strong>で、提案された滞在、乗り継ぎ、夜間便、未完了の旅行、重複、重なりを確認します。</li>
-      <li><strong>「すべて選択」</strong>または<strong>「すべて選択解除」</strong>を使い、項目をタップして編集したら、<strong>「インポート」</strong>をタップして確定します。</li>
+      <li>確認画面<strong>「Flightyインポート」</strong>で、提案された滞在、乗り継ぎ、夜間便、未完了の旅行、重複、重なりを確認します。</li>
+      <li>項目をタップすると編集でき、選択を外すと除外できます。項目が3件以上あるときは、<strong>「すべて選択」</strong>と<strong>「すべて選択解除」</strong>でリスト全体をまとめて切り替えられます。そのあと<strong>「インポート」</strong>をタップして確定します。</li>
     </ol>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/ja/help/flighty-import/flighty-setup.webp" alt="Flightyからインポートする設定画面" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/ja/help/flighty-import/flighty-setup.webp" alt="「FlightyのCSVを選択」ボタンがある「Flightyからインポート」の設定画面" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
     <p>解析は端末上で行われ、確定するまで何も保存されません。</p>
 
     <h2>フライトが旅行になるしくみ</h2>
     <p>AtlasDaysは各空港を国に対応付け、ある国に到着するフライトと、そこから出発する後のフライトがそろうと、旅行を作成します。確認画面の残りの項目は、これに沿って決まります。</p>
     <ul>
-      <li>24時間未満の<strong>「乗り継ぎ」</strong>は、別に確認します。10時間以内の滞在は<a href="/ja/help/history-and-import">乗り継ぎ</a>。それより長い滞在は、入国したものと見なされます。旅行ごとに<strong>「乗り継ぎ」</strong>のオン・オフを切り替えて変更できます。乗り継ぎでは、その国は訪問済みになりません。集計上の扱いはルールによって異なります。<a href="/ja/help/day-counting#transit">乗り継ぎの日数の扱いを確認してください</a>。</li>
+      <li>24時間未満の<strong>「乗り継ぎ」</strong>は、別に確認します。10時間以内の滞在は<a href="/ja/help/history-and-import">乗り継ぎ</a>として扱われます。それより長い滞在は、入国したものと見なされます。旅行ごとに<strong>「乗り継ぎ」</strong>のオン・オフを切り替えて変更できます。乗り継ぎでは、その国は訪問済みになりません。集計上の扱いはルールによって異なります。<a href="/ja/help/day-counting#transit">乗り継ぎの日数の扱いを確認してください</a>。</li>
       <li><strong>「夜間便」</strong>は、深夜0時に飛行中だった場合、国際空域として記録されます。</li>
       <li><strong>「未完了の旅行」</strong>は、陸路の移動やFlightyにないフライトなどで、到着か出発のどちらかが欠けています。項目で足りない日付を追加するか、終了日を決めずにおくこともできます。</li>
       <li><strong>「スキップされた行」</strong>は、欠航や空港コードの欠落など、理由とともに一覧表示されます。</li>
@@ -29,7 +29,7 @@
     <div class="callout"><p><strong>対象はフライトのみです。</strong>列車、フェリー、車での移動は表示されず、エクスポートに含まれないフライトも表示されません。インポートする前に、確認画面の内容が実際に過ごした場所と合っているかを確かめてください。</p></div>
 
     <h2>重複と重なり</h2>
-    <p><a href="/ja/help/timeline-and-calendar">タイムライン</a>にすでにある旅行と同じ項目には、<strong>「重複」</strong>のラベルが付きます。<strong>「統合」</strong>は、項目が既存の旅行を含んでいて、その旅行とまとめられることを表します。<strong>「重なり」</strong>は、日付が別の旅行と一部ぶつかっていることを表します。インポートする前に確認してください。</p>
+    <p><a href="/ja/help/timeline-and-calendar">タイムライン</a>にすでにある旅行と同じ項目には、<strong>「重複」</strong>のラベルが付きます。<strong>「統合」</strong>は、同じ国の既存の旅行と少なくとも1日が共通していることを表し、AtlasDaysは2件目の旅行を追加せず、その旅行の期間を広げます。<strong>「重なり」</strong>は、別の国の旅行と同じ夜を含んでいることを表します。インポートする前に確認してください。どのソースにも共通するルールは、<a href="/ja/help/import-trips#review-before-saving">旅行をインポート</a>で説明しています。</p>
 
     <h2>米国の州を確認する</h2>
     <p>空港の情報から米国の州が特定できる場合、AtlasDaysはその州を提案します。Proでは、州ごとに別の旅行としてインポートされます。Proでない場合は、通常の米国の旅行としてインポートされます。州ごとの記録を利用する場合は、保存する前に州を確認してください。</p>

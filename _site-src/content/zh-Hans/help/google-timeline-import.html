@@ -1,0 +1,42 @@
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/zh-Hans/">AtlasDays</a> / <a href="/zh-Hans/help/">帮助中心</a></nav>
+
+    <h1>Google Timeline 导入</h1>
+<p class="article-answer">从 Google 地图导出时间轴数据，在 AtlasDays 中选择该文件，并在保存前确认建议的行程。这是补录过往行程的<a href="/zh-Hans/help/import-trips">方式之一</a>。</p>
+
+    <h2>从 Google 地图导出</h2>
+    <p>Google Timeline 的数据保存在手机上，而不是在线上。在那部手机的 Google 地图中打开个人资料，依次选择<strong>设置 → 位置信息和隐私设置 → 导出时间轴数据</strong>，然后把 JSON 文件存储到“文件”。iPhone 和 Android 手机都可以导出；如果用的是 Android，请把文件移到 iPhone 的“文件”App 能访问的位置，例如 iCloud 云盘。</p>
+    <p>如果你以前从 Google Takeout 下载过位置记录，AtlasDays 也能读取其中的 <code>Records.json</code> 文件。请先解压下载的文件，再选择该文件。Takeout 的 Semantic Location History 文件夹中的每月文件无法读取。</p>
+
+    <h2>导入到 AtlasDays</h2>
+    <ol>
+      <li>打开<strong>设置 → 导入 → Google Timeline</strong>。</li>
+      <li>轻点<strong>选择 Timeline 文件</strong>，然后选择导出的文件。大文件需要稍长时间，请保持 AtlasDays 打开，直到处理完成。</li>
+      <li>轻点<strong>确认 N 个行程</strong>，查看预览<strong>Google Timeline 导入</strong>。</li>
+      <li>轻点任意行程即可编辑，取消勾选则不导入。然后轻点<strong>导入</strong>并确认。</li>
+    </ol>
+    <!-- SCREENSHOT_DEFERRED: google-timeline-setup | import-google-timeline -->
+    <p>文件在你的设备上读取，不会上传到任何地方。确认之前不会保存任何内容。</p>
+
+    <h2>位置如何变成行程</h2>
+    <p>AtlasDays 把每个位置对应到一个国家，并以你在该国的第一天到最后一天创建一条行程。预览中的内容都由此而来：</p>
+    <ul>
+      <li><strong>可能为转机</strong>是所有位置都在机场内的短暂停留。它们起初不会被勾选；勾选后会作为<a href="/zh-Hans/help/history-and-import">转机</a>导入。只有你一直待在机场隔离区内时才勾选。</li>
+      <li>午夜时仍在空中的<strong>跨夜航班</strong>会记录为“国际空域”。它们起初也不会被勾选。</li>
+      <li><strong>在海上</strong>时，位于某国领海内的位置计入该国，更远的位置计为“国际水域”。飞越某个国家上空，永远不会在该国产生停留。</li>
+      <li>如果最近的位置是最近几天的，最后一条行程会保持停留中，因为你可能还在那里。</li>
+    </ul>
+    <p>轻点行程，即可在<strong>Timeline 位置记录</strong>中查看它所依据的第一个和最后一个位置。列表下方的<strong>了解更多</strong>会打开<strong>如何推断行程</strong>。</p>
+    <!-- SCREENSHOT_DEFERRED: google-timeline-review | import-google-timeline-review -->
+
+    <div class="callout"><p><strong>位置记录会有空缺。</strong>手机关机或 Google Timeline 暂停的日子没有位置数据，AtlasDays 会按估计填补较短的空缺。导入之前，请把日期与你实际所在的地方对照。</p></div>
+
+    <h2>重复与重叠</h2>
+    <p>与<a href="/zh-Hans/help/timeline-and-calendar">时间轴</a>中已有行程重复的行程会标记为<strong>重复</strong>。<strong>合并</strong>表示该行程与同一国家的现有行程至少有一天相同，AtlasDays 会扩大那条行程的日期范围，而不是再添加一条行程。<strong>重叠</strong>表示该行程与另一个国家的行程有同一晚重叠。所有来源共用的规则，见<a href="/zh-Hans/help/import-trips#review-before-saving">导入行程</a>。</p>
+
+    <h2>确认美国各州</h2>
+    <p>当位置数据能看出你去过哪些美国州时，AtlasDays 会建议这些州。有 Pro 时，每个州会作为单独的行程导入；没有 Pro 时，这些州会作为普通的美国行程导入。导入本身是免费的。</p>
+
+    <section class="if-needed">
+      <h2>如果文件被拒绝</h2>
+      <p><em>此文件不是 Google Timeline 导出文件</em>表示 AtlasDays 无法识别该文件。请选择从 Google 地图导出的 <code>Timeline.json</code>，或 Takeout 下载中的 <code>Records.json</code>，而不是 zip 文件或每月文件。<em>此文件不是有效的 JSON</em>表示文件已损坏或不完整，请重新导出。<em>在此文件中未找到可用的位置</em>表示导出的文件中没有 AtlasDays 能对应到地点的位置。</p>
+    </section>

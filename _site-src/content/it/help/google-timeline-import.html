@@ -1,0 +1,42 @@
+    <nav class="breadcrumb" aria-label="Percorso di navigazione"><a href="/it/">AtlasDays</a> / <a href="/it/help/">Centro assistenza</a></nav>
+
+    <h1>Importazione Google Timeline</h1>
+<p class="article-answer">Esporta la tua cronologia da Google Maps, seleziona il file in AtlasDays e controlla i soggiorni suggeriti prima di salvarli. È uno dei <a href="/it/help/import-trips">modi per aggiungere soggiorni passati</a>.</p>
+
+    <h2>Esporta da Google Maps</h2>
+    <p>Google conserva la cronologia sul telefono, non online. In Google Maps su quel telefono apri il profilo, poi <strong>Impostazioni → Posizione e privacy → Esporta dati della cronologia</strong>, e salva il file JSON in File. Funziona da un iPhone o da un telefono Android; su Android sposta il file in un punto raggiungibile dall’app File dell’iPhone, ad esempio iCloud Drive.</p>
+    <p>Se in passato hai scaricato la cronologia delle posizioni da Google Takeout, AtlasDays legge anche il file <code>Records.json</code> al suo interno. Decomprimi prima il download e seleziona quel file. I file mensili nella cartella Semantic Location History di Takeout non vengono letti.</p>
+
+    <h2>Importa in AtlasDays</h2>
+    <ol>
+      <li>Apri <strong>Impostazioni → Importa → Google Timeline</strong>.</li>
+      <li>Tocca <strong>Seleziona file Timeline</strong> e scegli il file esportato. I file grandi richiedono un po’ più di tempo, quindi tieni aperto AtlasDays finché non ha finito.</li>
+      <li>Tocca <strong>Controlla N soggiorni</strong> e verifica l’anteprima, <strong>Importazione Google Timeline</strong>.</li>
+      <li>Tocca un soggiorno per modificarlo oppure deselezionalo per escluderlo. Poi tocca <strong>Importa</strong> e conferma.</li>
+    </ol>
+    <!-- SCREENSHOT_DEFERRED: google-timeline-setup | import-google-timeline -->
+    <p>Il file viene letto sul dispositivo e non viene caricato da nessuna parte. Nulla viene salvato finché non confermi.</p>
+
+    <h2>Come le posizioni diventano soggiorni</h2>
+    <p>AtlasDays colloca ogni posizione in un paese e crea un soggiorno dal primo all’ultimo giorno in cui ci sei stato. Il resto dell’anteprima ne deriva:</p>
+    <ul>
+      <li><strong>Possibili transiti</strong> sono soste brevi in cui ogni posizione si trova in un aeroporto. All’inizio non sono selezionati e, se li selezioni, vengono importati come <a href="/it/help/history-and-import">Transito</a>. Selezionane uno solo se sei rimasto nella zona di transito dell’aeroporto.</li>
+      <li><strong>Voli notturni</strong> vengono registrati come Spazio aereo internazionale quando a mezzanotte eri in volo. Anche questi all’inizio non sono selezionati.</li>
+      <li><strong>In mare</strong>, una posizione nelle acque territoriali di un paese conta per quel paese, mentre una più al largo conta come Acque internazionali. Sorvolare un paese non crea mai un soggiorno in quel paese.</li>
+      <li>Se le posizioni più recenti risalgono agli ultimi giorni, l’ultimo soggiorno resta in corso, perché potresti essere ancora lì.</li>
+    </ul>
+    <p>Tocca un soggiorno per vedere i suoi <strong>Dati Timeline</strong>: la prima e l’ultima posizione su cui si basa. <strong>Scopri di più</strong>, sotto l’elenco, apre <strong>Come vengono ricostruiti i soggiorni</strong>.</p>
+    <!-- SCREENSHOT_DEFERRED: google-timeline-review | import-google-timeline-review -->
+
+    <div class="callout"><p><strong>La cronologia delle posizioni ha dei vuoti.</strong> I giorni in cui il telefono era spento, o la cronologia era in pausa, non hanno posizioni, e AtlasDays colma i vuoti brevi con una stima. Confronta le date con i luoghi in cui hai davvero trascorso i tuoi giorni prima di importare.</p></div>
+
+    <h2>Duplicati e sovrapposizioni</h2>
+    <p>I soggiorni che ripetono un soggiorno già nella <a href="/it/help/timeline-and-calendar">Cronologia</a> sono contrassegnati <strong>Duplicato</strong>. <strong>Unisci</strong> indica un soggiorno che ha almeno un giorno in comune con un soggiorno esistente nello stesso paese, che AtlasDays estende anziché aggiungere un secondo soggiorno. <strong>Sovrapposizione</strong> indica un soggiorno che ha una notte in comune con un soggiorno in un altro paese. <a href="/it/help/import-trips#review-before-saving">Importa soggiorni</a> spiega le regole comuni a tutte le fonti.</p>
+
+    <h2>Controlla gli stati USA</h2>
+    <p>Quando le tue posizioni mostrano in quali stati USA ti trovavi, AtlasDays li propone. Con Pro ogni stato viene importato come soggiorno separato. Senza Pro gli stati vengono importati come normali soggiorni negli Stati Uniti. L’importazione in sé è gratuita.</p>
+
+    <section class="if-needed">
+      <h2>Se il file viene rifiutato</h2>
+      <p><em>Questo file non è un’esportazione di Google Timeline</em> significa che AtlasDays non riconosce il file. Seleziona il file <code>Timeline.json</code> esportato da Google Maps, oppure <code>Records.json</code> da un download di Takeout, non un file zip né un file mensile. <em>Questo file non contiene JSON valido</em> significa che il file è danneggiato o incompleto; esportalo di nuovo. <em>Nessuna posizione utilizzabile trovata nel file</em> significa che l’esportazione non contiene posizioni che AtlasDays possa collocare.</p>
+    </section>
