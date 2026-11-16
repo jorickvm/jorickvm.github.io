@@ -15,6 +15,9 @@ import time
 from datetime import UTC, datetime
 from pathlib import Path
 
+# Largest raw PNG still treated as the blank launch screen.
+LAUNCH_FRAME_MAX_BYTES = 150_000
+
 
 SITE_ROOT = Path(__file__).resolve().parents[1]
 MANIFEST_PATH = SITE_ROOT / "_site-src" / "data" / "screenshots.json"
@@ -485,14 +488,29 @@ def capture_settled(
     if dry_run:
         print(f"+ screenshot {raw_png} once settled (>= {settle_seconds}s)")
         return
-    time.sleep(settle_seconds)
     shot = ["/usr/bin/xcrun", "simctl", "io", udid, "screenshot", str(raw_png)]
-    run(shot, env=env, echo_output=False)
     if exact:
-        # Some states are temporary. The undo toast lives about
-        # four seconds, so waiting for the screen to stop changing is waiting
-        # for the very thing being photographed to disappear.
+        # Some states are temporary. The undo toast lives about four seconds,
+        # so waiting for the screen to stop changing is waiting for the very
+        # thing being photographed to disappear. Launch time varies, so the
+        # settle time counts from the first frame the app has drawn.
+        # The first frames can still show the previous app, so wait for the
+        # launch screen to come and go.
+        waited = 0.0
+        seen_launch = False
+        while waited < 30.0:
+            run(shot, env=env, echo_output=False)
+            if is_launch_frame(raw_png):
+                seen_launch = True
+            elif seen_launch or waited >= 6.0:
+                break
+            time.sleep(0.5)
+            waited += 0.5
+        time.sleep(settle_seconds)
+        run(shot, env=env, echo_output=False)
         return
+    time.sleep(settle_seconds)
+    run(shot, env=env, echo_output=False)
     previous = raw_png.read_bytes()
     waited = 0.0
     while waited < max_extra:
@@ -500,10 +518,18 @@ def capture_settled(
         waited += 2.0
         run(shot, env=env, echo_output=False)
         current = raw_png.read_bytes()
-        if current == previous:
+        # A slow first render can hold the blank launch frame for several
+        # seconds, which would otherwise pass as settled.
+        if current == previous and not is_launch_frame(raw_png):
             return
         previous = current
     print(f"note: {raw_png.stem} never settled; captured after {settle_seconds + waited:.0f}s")
+
+
+def is_launch_frame(png: Path) -> bool:
+    """True for the blank launch screen: a full-screen PNG of one flat colour
+    and a status bar compresses to a small fraction of any drawn screen."""
+    return png.stat().st_size < LAUNCH_FRAME_MAX_BYTES
 
 
 def set_status_bar(udid: str, env: dict[str, str], dry_run: bool) -> None:
