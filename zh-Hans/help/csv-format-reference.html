@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CSV 格式参考｜AtlasDays 帮助中心</title>
-  <meta name="description" content="查阅 AtlasDays 支持的 CSV 表头、确切日期和年份格式、美国各州、转机、目的、备注及示例。" />
+  <meta name="description" content="AtlasDays 导入 CSV 文件时读取的所有列、表头名称、文件布局、日期格式和错误信息。" />
   <meta property="og:title" content="CSV 格式参考｜AtlasDays 帮助中心" />
-  <meta property="og:description" content="查阅 AtlasDays 支持的 CSV 表头、确切日期和年份格式、美国各州、转机、目的、备注及示例。" />
+  <meta property="og:description" content="AtlasDays 导入 CSV 文件时读取的所有列、表头名称、文件布局、日期格式和错误信息。" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/zh-Hans/help/csv-format-reference" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="CSV 格式参考｜AtlasDays 帮助中心" />
-  <meta name="twitter:description" content="查阅 AtlasDays 支持的 CSV 表头、确切日期和年份格式、美国各州、转机、目的、备注及示例。" />
+  <meta name="twitter:description" content="AtlasDays 导入 CSV 文件时读取的所有列、表头名称、文件布局、日期格式和错误信息。" />
   <meta name="apple-itunes-app" content="app-id=6760133544, app-argument=https://apps.apple.com/app/atlasdays-track-country-days/id6760133544" />
   <meta property="og:locale" content="zh_CN" />
   <meta property="og:image" content="https://atlasdays.app/assets/social/site-v1.png" />
@@ -73,7 +73,7 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "CSV 格式参考",
-    "description": "查阅 AtlasDays 支持的 CSV 表头、确切日期和年份格式、美国各州、转机、目的、备注及示例。",
+    "description": "AtlasDays 导入 CSV 文件时读取的所有列、表头名称、文件布局、日期格式和错误信息。",
     "author": {
       "@type": "Organization",
       "name": "AtlasDays",
@@ -173,84 +173,126 @@
       <p class="toc-title">本页内容</p>
       <ul>
         <li><a href="#section-1">列</a></li>
-        <li><a href="#section-2">日期格式</a></li>
-        <li><a href="#section-3">特殊情况</a></li>
-        <li><a href="#section-4">示例</a></li>
-        <li><a href="#section-5">错误信息</a></li>
-        <li><a href="#section-6">如果某个值无法识别</a></li>
+        <li><a href="#section-2">文件布局</a></li>
+        <li><a href="#section-3">日期格式</a></li>
+        <li><a href="#section-4">特殊情况</a></li>
+        <li><a href="#section-5">示例</a></li>
+        <li><a href="#section-6">错误信息</a></li>
+        <li><a href="#section-7">如果某个值无法识别</a></li>
       </ul>
     </nav>
     <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/zh-Hans/">AtlasDays</a> / <a href="/zh-Hans/help/">帮助中心</a></nav>
 
     <h1>CSV 格式参考</h1>
-<p class="article-answer">只有 <strong>Country</strong> 列是必填的。AtlasDays 按英文表头名称识别列，所以列的先后顺序不影响结果。导入步骤见 <a href="/zh-Hans/help/csv-import">CSV 导入</a>。</p>
+<p class="article-answer">文件的每一行都需要国家；要计入天数总计的行程还需要日期。AtlasDays 按英文表头名称识别列，所以列的先后顺序不影响结果，它也能识别其他旅行 App 使用的列名。导入步骤见 <a href="/zh-Hans/help/csv-import">CSV 导入</a>。</p>
 
+    <details class="toc">
+      <summary>本页内容</summary>
+      <ul>
+        <li><a href="#section-1">列</a></li>
+        <li><a href="#section-2">文件布局</a></li>
+        <li><a href="#section-3">日期格式</a></li>
+        <li><a href="#section-4">特殊情况</a></li>
+        <li><a href="#section-5">示例</a></li>
+        <li><a href="#section-6">错误信息</a></li>
+        <li><a href="#section-7">如果某个值无法识别</a></li>
+      </ul>
+    </details>
+    <script>(function(){var t=document.currentScript.previousElementSibling;if(matchMedia('(min-width: 760px)').matches)t.open=true})();</script>
     <h2 id="section-1">列</h2>
-    <p>推荐的标题行：<code>Country,State,Start Date,End Date,Purpose,Notes</code>。表头名称不区分大小写。无法识别的列（例如 <code>Days</code>）会被忽略。同一个表头出现两次时，采用第一个。</p>
+    <p>自己编写文件时推荐的标题行：<code>Country,State,Start Date,End Date,Purpose,Notes</code>。表头名称不区分大小写，下划线视同空格。无法识别的列（例如 <code>Days</code>）会被忽略。两列含义相同时采用第一列，但名称恰好为 <code>Purpose</code> 的列始终优先。</p>
     <dl class="kv kv-text">
-      <div><dt><strong>Country</strong></dt><dd>必填。英文或 App 语言的国家名称、ISO 两位字母代码，或常见别名，例如 <code>USA</code>、<code>UK</code>、<code>Holland</code>。可能指向两个地方的别名会被拒绝。</dd></div>
-      <div><dt><strong>State</strong></dt><dd>选填，仅限美国的行程。州名、两位字母的邮政缩写，或 <code>US-CA</code> 这类 ISO 代码。哥伦比亚特区也可以。</dd></div>
-      <div><dt><strong>Start Date</strong></dt><dd>也可写作 <code>Start</code>。日期格式为 <code>yyyy-mm-dd</code>，或四位数的年份。</dd></div>
-      <div><dt><strong>End Date</strong></dt><dd>也可写作 <code>End</code>。日期格式为 <code>yyyy-mm-dd</code>，或四位数的年份。留空表示停留中（开始日期确切时），或与开始年份相同（开始为年份时）。</dd></div>
-      <div><dt><strong>Purpose</strong></dt><dd><code>Personal</code>、<code>Business</code>、<code>Study</code> 或 <code>Transit</code>，不区分大小写。Transit 以外的多个值可以放在引号内，用逗号分隔，例如 <code>"Business, Personal"</code>。旧的 <code>Tourism</code> 和 <code>Medical</code> 会按 Personal 导入。无法识别的值会被忽略，不会报错。</dd></div>
-      <div><dt><strong>Notes</strong></dt><dd>也可写作 <code>Note</code>、<code>Notes (optional)</code>。自由文本。</dd></div>
-      <div><dt><strong>Transit</strong></dt><dd>旧版的列。只有在没有 Purpose 列时才会读取。<code>Yes</code>、<code>Y</code>、<code>True</code> 或 <code>1</code> 表示转机；<code>No</code>、<code>N</code>、<code>False</code>、<code>0</code> 或留空则不是。</dd></div>
+      <div><dt><strong>Country</strong></dt><dd>也会从 <code>Countries</code>、<code>Country Name</code>、<code>Country/Region</code>、<code>Nation</code>、<code>Place</code> 或 <code>Destination</code> 读取。英文或 App 语言的国家名称、ISO 两位字母代码，或常见别名，例如 <code>USA</code>、<code>UK</code>、<code>Holland</code>。可能指向两个地方的别名会被拒绝。</dd></div>
+      <div><dt><strong>Country Code</strong></dt><dd>也会从 <code>ISO</code>、<code>ISO Code</code>、<code>ISO2</code>、<code>Alpha-2</code>、<code>Code</code> 或 <code>CC</code> 读取。两位字母代码。文件中同时有国家名称和代码时，使用代码，忽略名称。</dd></div>
+      <div><dt><strong>State</strong></dt><dd>也会从 <code>US State</code>、<code>State/Province</code>、<code>Province</code>、<code>Region</code> 或 <code>Subdivision</code> 读取。仅限美国的行程：州名、两位字母的邮政缩写，或 <code>US-CA</code> 这类 ISO 代码。哥伦比亚特区也可以。</dd></div>
+      <div><dt><strong>Start Date</strong></dt><dd>也会从 <code>Start</code>、<code>Arrival</code>、<code>Arrival Date</code>、<code>Entry</code>、<code>Date From</code>、<code>Begin</code>、<code>Check-in</code> 等类似名称读取。见下面的日期格式。</dd></div>
+      <div><dt><strong>End Date</strong></dt><dd>也会从 <code>End</code>、<code>Departure</code>、<code>Departure Date</code>、<code>Exit</code>、<code>Date To</code>、<code>Until</code>、<code>Check-out</code> 等类似名称读取。留空表示停留中（开始日期确切时），或与开始年份相同（开始为年份时）。</dd></div>
+      <div><dt><strong>Purpose</strong></dt><dd>也会从 <code>Reason</code>、<code>Type</code>、<code>Trip Type</code>、<code>Category</code> 或 <code>Visit Type</code> 读取。<code>Personal</code>、<code>Business</code>、<code>Study</code> 或 <code>Transit</code>，不区分大小写。Transit 以外的多个值可以放在引号内用逗号分隔，例如 <code>"Business, Personal"</code>，也可以用 <code>;</code> 或 <code>/</code> 分隔。常见词语会自动对应：<code>Work</code> 为 Business，<code>Holiday</code> 或 <code>Vacation</code> 为 Personal，<code>School</code> 为 Study，<code>Layover</code> 为 Transit。其他值会作为一行 <em>目的：</em> 保留在行程的备注中。</dd></div>
+      <div><dt><strong>Notes</strong></dt><dd>也会从 <code>Note</code>、<code>Notes (optional)</code>、<code>Comment</code>、<code>Description</code>、<code>Remarks</code> 或 <code>Memo</code> 读取。自由文本。</dd></div>
+      <div><dt><strong>City</strong></dt><dd>也会从 <code>Cities</code> 或 <code>Town</code> 读取。添加到行程的备注中。</dd></div>
+      <div><dt><strong>Is Current</strong></dt><dd>也会从 <code>Current</code> 或 <code>Ongoing</code> 读取。<code>Yes</code>、<code>True</code> 或 <code>1</code> 会让行程保持停留中，无论结束日期是什么。</dd></div>
+      <div><dt><strong>Work Days</strong>、<strong>Personal Days</strong></dt><dd>在没有 Purpose 列时使用：只有工作日的行程记为 Business，只有个人日的行程记为 Personal。两者都有的行程会加上 <em>商务和个人</em> 备注。</dd></div>
+      <div><dt><strong>Transit</strong></dt><dd>也会从 <code>Layover</code> 或 <code>Airside</code> 读取。只有在没有 Purpose 列时才会读取。<code>Yes</code>、<code>Y</code>、<code>True</code> 或 <code>1</code> 表示转机；<code>No</code>、<code>N</code>、<code>False</code>、<code>0</code> 或留空则不是。</dd></div>
       <div><dt><strong>Start Year</strong>、<strong>End Year</strong></dt><dd>旧版的列。四位数的年份，在日期单元格里没有年份时使用。同一行里不能与确切日期并用。</dd></div>
     </dl>
-    <figure class="help-shot help-shot-control"><img src="/assets/article-images/zh-Hans/help/csv-format-reference/csv-reference.webp" alt="CSV 导入的示例和模板控件" width="1320" height="1990" loading="lazy" decoding="async" /></figure>
+    <figure class="help-shot help-shot-control"><img src="/assets/article-images/zh-Hans/help/csv-format-reference/csv-reference.webp" alt="从 CSV 导入屏幕，带有“来自其他 App”“使用 CSV 模板”和“用 AI 创建 CSV”" width="1320" height="1990" loading="lazy" decoding="async" /></figure>
 
-    <h2 id="section-2">日期格式</h2>
+    <h2 id="section-2">文件布局</h2>
+    <p>AtlasDays 根据列来区分三种布局：</p>
+    <ul>
+      <li><strong>每行一个行程：</strong>一个国家，加上开始日期和结束日期。模板、AtlasDays 电子表格导出文件和大多数旅行 App 都采用这种布局。</li>
+      <li><strong>每行一天：</strong>一个 <code>Date</code>（或 <code>Day</code>）列和一个国家。同一国家的连续日期会合成一条行程，中间缺一天，行程就结束。最后一天是今天或昨天时，这条行程会保持停留中。第一行包含日期和国家时，可以省略标题行。某天身在两个国家时，用竖线分隔，例如 <code>France|Germany</code>，两个国家都会计入这一天。州和城市也可以这样列出。</li>
+      <li><strong>每行一次跨境：</strong>一个 <code>Date</code> 列，加上 <code>From</code> 和 <code>To</code> 国家。每个跨境日同时计入两个国家，直到下一次跨境之前，都视为停留在 <code>To</code> 国家。最后一段停留会保持停留中。跨境的数据行也可以混在逐日文件里。</li>
+    </ul>
+    <p>在没有 <code>Date</code> 列的文件中，<code>From</code> 和 <code>To</code> 会被读作行程的开始日期和结束日期。</p>
+
+    <h2 id="section-3">日期格式</h2>
     <div class="data-table">
-    <table>
-      <thead><tr><th>Start Date</th><th>End Date</th><th>结果</th></tr></thead>
-      <tbody>
-        <tr><td><code>2026-03-01</code></td><td><code>2026-03-05</code></td><td>确切日期的行程。当天往返的行程，两个日期填同一天。</td></tr>
-        <tr><td><code>2026-03-01</code></td><td>留空</td><td>停留中的行程，没有结束日期。</td></tr>
-        <tr><td><code>2019</code></td><td>留空</td><td>该年的<a href="/zh-Hans/help/history-and-import">仅年份</a>行程。</td></tr>
-        <tr><td><code>2018</code></td><td><code>2019</code></td><td>一条涵盖 2018 至 2019 年的仅年份行程。</td></tr>
-        <tr><td>留空</td><td>留空</td><td>没有日期的行程。</td></tr>
-      </tbody>
-    </table>
+      <table>
+        <thead><tr><th>Start Date</th><th>End Date</th><th>结果</th></tr></thead>
+        <tbody>
+          <tr><td><code>2026-03-01</code></td><td><code>2026-03-05</code></td><td>确切日期的行程。当天往返的行程，两个日期填同一天。</td></tr>
+          <tr><td><code>2026-03-01</code></td><td>留空</td><td>停留中的行程，没有结束日期。</td></tr>
+          <tr><td><code>2019</code></td><td>留空</td><td>该年的<a href="/zh-Hans/help/history-and-import">仅年份</a>行程。</td></tr>
+          <tr><td><code>2018</code></td><td><code>2019</code></td><td>一条涵盖 2018 至 2019 年的仅年份行程。</td></tr>
+          <tr><td>留空</td><td>留空</td><td>没有日期的行程。</td></tr>
+        </tbody>
+      </table>
     </div>
-    <p>年份必须在 1900 年到当前年份之后八年之间。同一行里不能混用确切日期和年份值。仅年份的行程和没有日期的行程会计入到访过的地点和地图，但永远不计入天数或追踪器。没有日期的行程只能通过 CSV 导入创建。</p>
+    <p>除了 <code>yyyy-mm-dd</code>，AtlasDays 还能读取：</p>
+    <ul>
+      <li>年份在前、用斜线或点分隔的日期，例如 <code>2026/03/01</code> 或 <code>2026.03.01</code>。日期后面的时间，例如 <code>2026-03-01 22:47</code> 或 <code>2026-03-01T22:47:00Z</code>，会被忽略。</li>
+      <li>英文月份名称及缩写，例如 <code>1 Mar 2026</code>、<code>Mar 1, 2026</code> 或 <code>01-Mar-26</code>。</li>
+      <li>日在前或月在前的日期，例如 <code>01/03/2026</code> 或 <code>03/01/2026</code>，年份可以是四位数或两位数。由于 <code>01/03</code> 两种读法都有可能，只有当文件中某个日期的日大于 12、能看出顺序时，AtlasDays 才会读取这类日期；否则这些行会以<em>无法分辨日和月</em>跳过。</li>
+    </ul>
+    <p>两位数的年份如果读作 20xx 后最多在 10 年之后，就读作 20xx，否则读作 19xx。年份必须在 1900 年到当前年份之后八年之间。同一行里不能混用确切日期和年份值。仅年份的行程和没有日期的行程会计入到访过的地点和地图，但永远不计入天数或追踪器。没有日期的行程只能通过 CSV 导入创建。</p>
 
-    <h2 id="section-3">特殊情况</h2>
+    <h2 id="section-4">特殊情况</h2>
     <ul>
       <li><strong>美国各州。</strong>一次赴美去了好几个州时，每个州各占一行。只填 <code>United States</code> 的数据行同样有效，可用于国家一级的记录。在 Country 列里填州名（<code>California</code>、<code>US-CA</code>）也会得到美国行程；Country 留空而 State 有效，效果相同。同时也是国家代码的两位字母代码，例如 <code>CA</code>，仍按国家处理。没有 Pro 时，州的数据行会作为普通的美国行程导入。</li>
       <li><strong>转机。</strong>没有实际入境时，在 Purpose 填入 <code>Transit</code>。Transit 具有排他性：与其他目的同时出现时，只保留 Transit。</li>
       <li><strong>分隔符与引号。</strong>逗号、分号和制表符会从标题行自动判断。字段内含分隔符或换行时，请加引号。</li>
     </ul>
 
-    <h2 id="section-4">示例</h2>
+    <h2 id="section-5">示例</h2>
     <pre><code>Country,State,Start Date,End Date,Purpose,Notes
 France,,2026-03-01,2026-03-05,Personal,
 United States,CA,2026-04-10,2026-04-15,Business,Conference
 Japan,,2024,,Personal,Dates not known
 United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></pre>
+    <p>同样的法国行程，改成每行一天：</p>
+    <pre><code>Date,Country
+2026-03-01,France
+2026-03-02,France
+2026-03-03,France
+2026-03-04,France
+2026-03-05,France</code></pre>
 
-    <h2 id="section-5">错误信息</h2>
-    <p>每条错误都会连同行号显示在预览中，对应的数据行不会导入。行号把标题行算作第 1 行。</p>
+    <h2 id="section-6">错误信息</h2>
+    <p>有错误的数据行会在预览的<strong>已跳过</strong>下按原因分组，连同行号一起列出，不会导入。行号把标题行算作第 1 行。</p>
     <dl class="kv kv-text">
-      <div><dt>找不到 Country 列</dt><dd>先放一行标题行，并包含 <strong>Country</strong> 列。</dd></div>
-      <div><dt>国家无效：“&lt;值&gt;”</dt><dd>请使用 ISO 代码，或没有歧义的国家名称。</dd></div>
+      <div><dt>“&lt;值&gt;”不是国家名称或代码</dt><dd>请使用 ISO 代码，或没有歧义的国家名称。</dd></div>
+      <div><dt>缺少国家</dt><dd>填写国家，或删除这一行。</dd></div>
       <div><dt>州无效：“&lt;值&gt;”</dt><dd>请使用美国的州名、缩写或 <code>US-XX</code> 代码。</dd></div>
       <div><dt>州“&lt;值&gt;”只适用于美国行程</dt><dd>清空 State，或把 Country 改为 United States。</dd></div>
       <div><dt>州数据不一致</dt><dd>Country 和 State 单元格指向不同的州，请只保留一个。</dd></div>
-      <div><dt>开始日期无效 / 结束日期无效</dt><dd>请使用 <code>yyyy-mm-dd</code> 或四位数的年份。</dd></div>
+      <div><dt>开始日期无效 / 结束日期无效 / 日期无效</dt><dd>请使用上面的任一日期格式。</dd></div>
+      <div><dt>无法分辨“&lt;值&gt;”中的日和月。请使用 yyyy-mm-dd。</dt><dd>把日期改成年份在前，或检查文件中日在前或月在前的日期写法是否一致。</dd></div>
       <div><dt>开始年份无效 / 结束年份无效</dt><dd>请使用范围内的四位数年份。</dd></div>
       <div><dt>没有开始日期就不能填写结束日期</dt><dd>补上 Start Date。</dd></div>
       <div><dt>开始日期必须等于或早于结束日期</dt><dd>对调或更正日期。</dd></div>
       <div><dt>结束年份必须等于或晚于开始年份</dt><dd>更正年份。</dd></div>
       <div><dt>没有开始年份就不能填写结束年份</dt><dd>补上开始年份。</dd></div>
       <div><dt>精确日期和大约年份字段不能混用</dt><dd>只用日期，或只用旧版的年份列。</dd></div>
-      <div><dt>精确的开始日期不能搭配只有年份的结束日期，只有年份的开始日期也不能搭配精确的结束日期</dt><dd>同一行里请用两个日期，或两个年份。</dd></div>
-      <div><dt>Transit 列的值无效</dt><dd>在旧版的 Transit 列里，请使用 Yes/No、True/False 或 1/0。</dd></div>
+      <div><dt>精确的开始日期不能搭配只有年份的结束日期</dt><dd>同一行里请用两个日期，或两个年份。反过来的情况显示为<em>只有年份的开始日期不能搭配精确的结束日期</em>。</dd></div>
+      <div><dt>Transit 列的值无效</dt><dd>在 Transit 列里，请使用 Yes/No、True/False 或 1/0。</dd></div>
     </dl>
+    <p>如果没有任何一行可以导入，预览不会打开，而是由<strong>未找到行程</strong>说明原因，例如<em>AtlasDays 在这个文件中找不到国家列</em>。</p>
 
     <section class="if-needed">
-      <h2 id="section-6">如果某个值无法识别</h2>
-      <p>请使用 ISO 国家代码、ISO 日期，以及标准的美国州名或代码。用其他语言的电子表格导出的文件，可能带有翻译过的表头，这些表头无法识别：请把它们改回上面的英文表头。</p>
+      <h2 id="section-7">如果某个值无法识别</h2>
+      <p>请使用 ISO 国家代码、<code>yyyy-mm-dd</code> 日期，以及标准的美国州名或代码。用其他语言的电子表格导出的文件，可能带有翻译过的表头，这些表头无法识别：请把它们改回上面的英文表头。对于 AtlasDays 完全无法读取的文件，导入屏幕上的<strong>用 AI 创建 CSV</strong>会提供一段转换用的提示词。</p>
     </section>
     <nav class="help-next" aria-labelledby="next-csv-format-reference">
       <h2 id="next-csv-format-reference">接着阅读</h2>

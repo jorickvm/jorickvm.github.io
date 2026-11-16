@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CSV-formaatuitleg – AtlasDays-helpcentrum</title>
-  <meta name="description" content="Alle ondersteunde CSV-kolomkoppen van AtlasDays, datum- en jaarnotaties, Amerikaanse staten, Transit, doelen, notities en voorbeelden." />
+  <meta name="description" content="Alle kolommen, kolomnamen, bestandsindelingen, datumnotaties en foutmeldingen die AtlasDays leest bij het importeren van een CSV-bestand." />
   <meta property="og:title" content="CSV-formaatuitleg – AtlasDays-helpcentrum" />
-  <meta property="og:description" content="Alle ondersteunde CSV-kolomkoppen van AtlasDays, datum- en jaarnotaties, Amerikaanse staten, Transit, doelen, notities en voorbeelden." />
+  <meta property="og:description" content="Alle kolommen, kolomnamen, bestandsindelingen, datumnotaties en foutmeldingen die AtlasDays leest bij het importeren van een CSV-bestand." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/nl/help/csv-format-reference" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="CSV-formaatuitleg – AtlasDays-helpcentrum" />
-  <meta name="twitter:description" content="Alle ondersteunde CSV-kolomkoppen van AtlasDays, datum- en jaarnotaties, Amerikaanse staten, Transit, doelen, notities en voorbeelden." />
+  <meta name="twitter:description" content="Alle kolommen, kolomnamen, bestandsindelingen, datumnotaties en foutmeldingen die AtlasDays leest bij het importeren van een CSV-bestand." />
   <meta name="apple-itunes-app" content="app-id=6760133544, app-argument=https://apps.apple.com/app/atlasdays-track-country-days/id6760133544" />
   <meta property="og:locale" content="nl_NL" />
   <meta property="og:image" content="https://atlasdays.app/assets/social/site-v1.png" />
@@ -73,7 +73,7 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "CSV-formaatuitleg",
-    "description": "Alle ondersteunde CSV-kolomkoppen van AtlasDays, datum- en jaarnotaties, Amerikaanse staten, Transit, doelen, notities en voorbeelden.",
+    "description": "Alle kolommen, kolomnamen, bestandsindelingen, datumnotaties en foutmeldingen die AtlasDays leest bij het importeren van een CSV-bestand.",
     "author": {
       "@type": "Organization",
       "name": "AtlasDays",
@@ -173,6 +173,7 @@
       <p class="toc-title">Op deze pagina</p>
       <ul>
         <li><a href="#kolommen">Kolommen</a></li>
+        <li><a href="#indelingen-van-het-bestand">Indelingen van het bestand</a></li>
         <li><a href="#datumnotaties">Datumnotaties</a></li>
         <li><a href="#bijzondere-gevallen">Bijzondere gevallen</a></li>
         <li><a href="#voorbeeld">Voorbeeld</a></li>
@@ -184,21 +185,47 @@
     <nav class="breadcrumb" aria-label="Broodkruimelpad"><a href="/nl/">AtlasDays</a> / <a href="/nl/help/">Helpcentrum</a></nav>
 
     <h1>CSV-formaatuitleg</h1>
-<p class="article-answer">Alleen de kolom <strong>Country</strong> is verplicht. AtlasDays vindt kolommen aan hun Engelse kolomkop, dus de volgorde van de kolommen maakt niet uit. De stappen voor het importeren staan in <a href="/nl/help/csv-import">Importeren uit CSV</a>.</p>
+<p class="article-answer">Een bestand heeft per rij een land nodig, en datums voor de reizen die moeten meetellen in de dagtotalen. AtlasDays vindt kolommen aan hun Engelse kolomkop, dus de volgorde van de kolommen maakt niet uit, en het herkent de namen die andere reisapps gebruiken. De stappen voor het importeren staan in <a href="/nl/help/csv-import">Importeren uit CSV</a>.</p>
 
+    <details class="toc">
+      <summary>Op deze pagina</summary>
+      <ul>
+        <li><a href="#kolommen">Kolommen</a></li>
+        <li><a href="#indelingen-van-het-bestand">Indelingen van het bestand</a></li>
+        <li><a href="#datumnotaties">Datumnotaties</a></li>
+        <li><a href="#bijzondere-gevallen">Bijzondere gevallen</a></li>
+        <li><a href="#voorbeeld">Voorbeeld</a></li>
+        <li><a href="#foutmeldingen">Foutmeldingen</a></li>
+        <li><a href="#als-een-waarde-niet-wordt-herkend">Als een waarde niet wordt herkend</a></li>
+      </ul>
+    </details>
+    <script>(function(){var t=document.currentScript.previousElementSibling;if(matchMedia('(min-width: 760px)').matches)t.open=true})();</script>
     <h2 id="kolommen">Kolommen</h2>
-    <p>Aanbevolen kopregel: <code>Country,State,Start Date,End Date,Purpose,Notes</code>. Hoofdletters in kolomkoppen maken niet uit. Onbekende kolommen, zoals <code>Days</code>, worden genegeerd. Komt een kolomkop twee keer voor, dan wordt de eerste gebruikt.</p>
+    <p>Aanbevolen kopregel voor een bestand dat je zelf schrijft: <code>Country,State,Start Date,End Date,Purpose,Notes</code>. Hoofdletters in kolomkoppen maken niet uit, en een onderstrepingsteken telt als spatie. Onbekende kolommen, zoals <code>Days</code>, worden genegeerd. Betekenen twee kolommen hetzelfde, dan wordt de eerste gebruikt, behalve dat een kolom die precies <code>Purpose</code> heet altijd voorgaat.</p>
     <dl class="kv kv-text">
-      <div><dt><strong>Country</strong></dt><dd>Verplicht. Landnaam in het Engels of in de app-taal, ISO-landcode van twee letters of een gangbare variant zoals <code>USA</code>, <code>UK</code> of <code>Holland</code>. Een variant die twee plaatsen kan betekenen, wordt geweigerd.</dd></div>
-      <div><dt><strong>State</strong></dt><dd>Optioneel, alleen voor reizen naar de Verenigde Staten. Naam van de staat, postafkorting van twee letters of ISO-code zoals <code>US-CA</code>. District of Columbia wordt geaccepteerd.</dd></div>
-      <div><dt><strong>Start Date</strong></dt><dd>Ook geaccepteerd als <code>Start</code>. Datum als <code>jjjj-mm-dd</code> of een jaartal van vier cijfers.</dd></div>
-      <div><dt><strong>End Date</strong></dt><dd>Ook geaccepteerd als <code>End</code>. Datum als <code>jjjj-mm-dd</code> of een jaartal van vier cijfers. Leeg betekent nog bezig (bij een exacte startdatum) of hetzelfde jaar (bij een startjaar).</dd></div>
-      <div><dt><strong>Purpose</strong></dt><dd><code>Personal</code>, <code>Business</code>, <code>Study</code> of <code>Transit</code>, hoofdletters maken niet uit. Combineer waarden behalve Transit met komma's tussen aanhalingstekens, zoals <code>"Business, Personal"</code>. Oudere waarden <code>Tourism</code> en <code>Medical</code> worden geïmporteerd als Personal. Een waarde die niet wordt herkend, wordt zonder foutmelding genegeerd.</dd></div>
-      <div><dt><strong>Notes</strong></dt><dd>Ook geaccepteerd als <code>Note</code> of <code>Notes (optional)</code>. Vrije tekst.</dd></div>
-      <div><dt><strong>Transit</strong></dt><dd>Verouderde kolom. Wordt alleen gelezen als er geen kolom Purpose is. <code>Yes</code>, <code>Y</code>, <code>True</code> of <code>1</code> markeert Transit; <code>No</code>, <code>N</code>, <code>False</code>, <code>0</code> of leeg niet.</dd></div>
-      <div><dt><strong>Start Year</strong>, <strong>End Year</strong></dt><dd>Verouderde kolom. Jaartallen van vier cijfers, gebruikt als de datumcellen geen jaar bevatten. Kan in dezelfde rij niet worden gecombineerd met exacte datums.</dd></div>
+      <div><dt><strong>Country</strong></dt><dd>Wordt ook gelezen uit <code>Countries</code>, <code>Country Name</code>, <code>Country/Region</code>, <code>Nation</code>, <code>Place</code> of <code>Destination</code>. Landnaam in het Engels of in de app-taal, ISO-landcode van twee letters of een gangbare variant zoals <code>USA</code>, <code>UK</code> of <code>Holland</code>. Een variant die twee plaatsen kan betekenen, wordt geweigerd.</dd></div>
+      <div><dt><strong>Country Code</strong></dt><dd>Wordt ook gelezen uit <code>ISO</code>, <code>ISO Code</code>, <code>ISO2</code>, <code>Alpha-2</code>, <code>Code</code> of <code>CC</code>. Een code van twee letters. Heeft een bestand beide, dan wordt de code gebruikt en de naam genegeerd.</dd></div>
+      <div><dt><strong>State</strong></dt><dd>Wordt ook gelezen uit <code>US State</code>, <code>State/Province</code>, <code>Province</code>, <code>Region</code> of <code>Subdivision</code>. Alleen voor reizen naar de Verenigde Staten: naam van de staat, postafkorting van twee letters of ISO-code zoals <code>US-CA</code>. District of Columbia wordt geaccepteerd.</dd></div>
+      <div><dt><strong>Start Date</strong></dt><dd>Wordt ook gelezen uit <code>Start</code>, <code>Arrival</code>, <code>Arrival Date</code>, <code>Entry</code>, <code>Date From</code>, <code>Begin</code>, <code>Check-in</code> en vergelijkbare namen. Zie Datumnotaties hieronder.</dd></div>
+      <div><dt><strong>End Date</strong></dt><dd>Wordt ook gelezen uit <code>End</code>, <code>Departure</code>, <code>Departure Date</code>, <code>Exit</code>, <code>Date To</code>, <code>Until</code>, <code>Check-out</code> en vergelijkbare namen. Leeg betekent nog bezig (bij een exacte startdatum) of hetzelfde jaar (bij een startjaar).</dd></div>
+      <div><dt><strong>Purpose</strong></dt><dd>Wordt ook gelezen uit <code>Reason</code>, <code>Type</code>, <code>Trip Type</code>, <code>Category</code> of <code>Visit Type</code>. <code>Personal</code>, <code>Business</code>, <code>Study</code> of <code>Transit</code>, hoofdletters maken niet uit. Combineer waarden behalve Transit met komma's tussen aanhalingstekens, zoals <code>"Business, Personal"</code>, of met <code>;</code> of <code>/</code>. Gangbare woorden worden omgezet: <code>Work</code> wordt Business, <code>Holiday</code> of <code>Vacation</code> wordt Personal, <code>School</code> wordt Study, <code>Layover</code> wordt Transit. Andere waarden blijven bewaard als regel <em>Soort reis:</em> in de notities van de reis.</dd></div>
+      <div><dt><strong>Notes</strong></dt><dd>Wordt ook gelezen uit <code>Note</code>, <code>Notes (optional)</code>, <code>Comment</code>, <code>Description</code>, <code>Remarks</code> of <code>Memo</code>. Vrije tekst.</dd></div>
+      <div><dt><strong>City</strong></dt><dd>Wordt ook gelezen uit <code>Cities</code> of <code>Town</code>. Wordt toegevoegd aan de notities van de reis.</dd></div>
+      <div><dt><strong>Is Current</strong></dt><dd>Wordt ook gelezen uit <code>Current</code> of <code>Ongoing</code>. <code>Yes</code>, <code>True</code> of <code>1</code> houdt de reis zonder einddatum, wat de einddatum ook zegt.</dd></div>
+      <div><dt><strong>Work Days</strong>, <strong>Personal Days</strong></dt><dd>Gebruikt als er geen kolom Purpose is: een reis met alleen werkdagen wordt Business, met alleen persoonlijke dagen Personal. Een reis met beide krijgt de notitie <em>Zakelijk en persoonlijk</em>.</dd></div>
+      <div><dt><strong>Transit</strong></dt><dd>Wordt ook gelezen uit <code>Layover</code> of <code>Airside</code>. Wordt alleen gelezen als er geen kolom Purpose is. <code>Yes</code>, <code>Y</code>, <code>True</code> of <code>1</code> markeert Transit; <code>No</code>, <code>N</code>, <code>False</code>, <code>0</code> of leeg niet.</dd></div>
+      <div><dt><strong>Start Year</strong>, <strong>End Year</strong></dt><dd>Verouderde kolommen. Jaartallen van vier cijfers, gebruikt als de datumcellen geen jaar bevatten. Kunnen in dezelfde rij niet worden gecombineerd met exacte datums.</dd></div>
     </dl>
-    <figure class="help-shot help-shot-control"><img src="/assets/article-images/nl/help/csv-format-reference/csv-reference.webp" alt="Voorbeeld en sjabloon voor een CSV-import" width="1320" height="1990" loading="lazy" decoding="async" /></figure>
+    <figure class="help-shot help-shot-control"><img src="/assets/article-images/nl/help/csv-format-reference/csv-reference.webp" alt="Scherm Importeren uit CSV met Uit een andere app, Gebruik een CSV-template en Maak CSV met AI" width="1320" height="1990" loading="lazy" decoding="async" /></figure>
+
+    <h2 id="indelingen-van-het-bestand">Indelingen van het bestand</h2>
+    <p>AtlasDays onderscheidt drie indelingen aan de hand van de kolommen:</p>
+    <ul>
+      <li><strong>Eén rij per reis:</strong> een land met een begin- en einddatum. Dit is de indeling van de template, van een Spreadsheet-export van AtlasDays en van de meeste reisapps.</li>
+      <li><strong>Eén rij per dag:</strong> een kolom <code>Date</code> (of <code>Day</code>) en een land. Opeenvolgende dagen in hetzelfde land worden één reis, en een ontbrekende dag sluit die af. Is de laatste dag vandaag of gisteren, dan blijft de reis zonder einddatum. De kopregel mag ontbreken als de eerste rij een datum en een land bevat. Voor een dag in twee landen scheid je die met een verticale streep, zoals <code>France|Germany</code>: beide krijgen de dag. Staten en steden kun je op dezelfde manier opsommen.</li>
+      <li><strong>Eén rij per grensovergang:</strong> een kolom <code>Date</code> met de landen <code>From</code> en <code>To</code>. Elke dag van een grensovergang telt voor beide landen, en je blijft in het land uit <code>To</code> tot de volgende grensovergang. Het laatste verblijf blijft zonder einddatum. Rijen met grensovergangen kunnen ook in een dag-voor-dagbestand staan.</li>
+    </ul>
+    <p>In een bestand zonder kolom <code>Date</code> worden <code>From</code> en <code>To</code> gelezen als de begin- en einddatum van een reis.</p>
 
     <h2 id="datumnotaties">Datumnotaties</h2>
     <div class="data-table">
@@ -213,7 +240,13 @@
       </tbody>
     </table>
     </div>
-    <p>Jaartallen moeten tussen 1900 en acht jaar na het huidige jaar liggen. Exacte datums en jaartallen kunnen niet in dezelfde rij worden gemengd. Reizen met alleen een jaar en reizen zonder datums tellen mee voor bezochte plekken en de kaart, maar nooit voor de dagentelling of trackers. Een reis zonder datums kun je alleen via een CSV-import maken.</p>
+    <p>Naast <code>jjjj-mm-dd</code> leest AtlasDays:</p>
+    <ul>
+      <li>Het jaar vooraan met schuine strepen of punten, zoals <code>2026/03/01</code> of <code>2026.03.01</code>. Een tijd na de datum, zoals <code>2026-03-01 22:47</code> of <code>2026-03-01T22:47:00Z</code>, wordt genegeerd.</li>
+      <li>Engelse maandnamen en afkortingen, zoals <code>1 Mar 2026</code>, <code>Mar 1, 2026</code> of <code>01-Mar-26</code>.</li>
+      <li>De dag of de maand vooraan, zoals <code>01/03/2026</code> of <code>03/01/2026</code>, met een jaartal van vier of twee cijfers. Omdat <code>01/03</code> beide kan zijn, leest AtlasDays deze alleen als een datum in het bestand een dag boven de 12 heeft, die de volgorde verraadt. Anders worden die rijen overgeslagen met de melding dat niet duidelijk is wat de dag en wat de maand is.</li>
+    </ul>
+    <p>Een jaartal van twee cijfers wordt gelezen als 20xx als dat hoogstens 10 jaar vooruit ligt, en anders als 19xx. Jaartallen moeten tussen 1900 en acht jaar na het huidige jaar liggen. Exacte datums en jaartallen kunnen niet in dezelfde rij worden gemengd. Reizen met alleen een jaar en reizen zonder datums tellen mee voor bezochte plekken en de kaart, maar nooit voor de dagentelling of trackers. Een reis zonder datums kun je alleen via een CSV-import maken.</p>
 
     <h2 id="bijzondere-gevallen">Bijzondere gevallen</h2>
     <ul>
@@ -228,29 +261,38 @@ France,,2026-03-01,2026-03-05,Personal,
 United States,CA,2026-04-10,2026-04-15,Business,Conference
 Japan,,2024,,Personal,Dates not known
 United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></pre>
+    <p>Dezelfde reis naar Frankrijk als één rij per dag:</p>
+    <pre><code>Date,Country
+2026-03-01,France
+2026-03-02,France
+2026-03-03,France
+2026-03-04,France
+2026-03-05,France</code></pre>
 
     <h2 id="foutmeldingen">Foutmeldingen</h2>
-    <p>Elke fout verschijnt in de controle met het rijnummer, en de rij wordt niet geïmporteerd. In het rijnummer telt de kopregel als rij 1.</p>
+    <p>Rijen met een fout staan in de controle onder <strong>Overgeslagen</strong>, gegroepeerd per reden met hun rijnummers, en worden niet geïmporteerd. In het rijnummer telt de kopregel als rij 1.</p>
     <dl class="kv kv-text">
-      <div><dt>De kolom Country ontbreekt</dt><dd>Zet een kopregel met een kolom <strong>Country</strong> vooraan.</dd></div>
-      <div><dt>Ongeldig land: '&lt;waarde&gt;'</dt><dd>Gebruik een ISO-code of een eenduidige landnaam.</dd></div>
+      <div><dt>'&lt;waarde&gt;' is geen landnaam of landcode</dt><dd>Gebruik een ISO-code of een eenduidige landnaam.</dd></div>
+      <div><dt>Land ontbreekt</dt><dd>Vul het land in of verwijder de rij.</dd></div>
       <div><dt>Ongeldige staat: '&lt;waarde&gt;'</dt><dd>Gebruik de naam of afkorting van een Amerikaanse staat, of een code als <code>US-XX</code>.</dd></div>
       <div><dt>Staat '&lt;waarde&gt;' is alleen geldig voor reizen naar de Verenigde Staten</dt><dd>Maak State leeg of zet Country op United States.</dd></div>
       <div><dt>Tegenstrijdige staten</dt><dd>De cellen Country en State noemen verschillende staten. Houd er één over.</dd></div>
-      <div><dt>Ongeldige startdatum / Ongeldige einddatum</dt><dd>Gebruik <code>jjjj-mm-dd</code> of een jaartal van vier cijfers.</dd></div>
+      <div><dt>Ongeldige startdatum / Ongeldige einddatum / Ongeldige datum</dt><dd>Gebruik een van de datumnotaties hierboven.</dd></div>
+      <div><dt>Bij '&lt;waarde&gt;' is niet duidelijk wat de dag en wat de maand is. Gebruik jjjj-mm-dd.</dt><dd>Schrijf de datums met het jaar vooraan, of controleer of de datums met de dag of de maand vooraan in het hele bestand consequent zijn.</dd></div>
       <div><dt>Ongeldig startjaar / Ongeldig eindjaar</dt><dd>Gebruik een jaartal van vier cijfers binnen het toegestane bereik.</dd></div>
       <div><dt>Een einddatum vereist een startdatum</dt><dd>Voeg een Start Date toe.</dd></div>
       <div><dt>De startdatum moet vóór of op de einddatum liggen</dt><dd>Wissel de datums om of corrigeer ze.</dd></div>
       <div><dt>Het eindjaar moet gelijk zijn aan of na het startjaar liggen</dt><dd>Corrigeer de jaartallen.</dd></div>
       <div><dt>Een eindjaar vereist een startjaar</dt><dd>Voeg een startjaar toe.</dd></div>
       <div><dt>Exacte datums en jaartallen kunnen niet worden gecombineerd</dt><dd>Gebruik óf datums óf de verouderde jaarkolommen.</dd></div>
-      <div><dt>Een exacte startdatum kan niet worden gecombineerd met alleen een eindjaar, en alleen een startjaar niet met een exacte einddatum</dt><dd>Gebruik in één rij twee datums of twee jaartallen.</dd></div>
-      <div><dt>Ongeldige transitwaarde</dt><dd>Gebruik in de verouderde kolom Transit Yes/No, True/False of 1/0.</dd></div>
+      <div><dt>Een exacte startdatum kan niet worden gecombineerd met alleen een eindjaar</dt><dd>Gebruik in één rij twee datums of twee jaartallen. Het omgekeerde geval luidt <em>Alleen een startjaar kan niet worden gecombineerd met een exacte einddatum</em>.</dd></div>
+      <div><dt>Ongeldige transitwaarde</dt><dd>Gebruik in de kolom Transit Yes/No, True/False of 1/0.</dd></div>
     </dl>
+    <p>Kan geen enkele rij worden geïmporteerd, dan opent de controle niet. In plaats daarvan legt <strong>Geen reizen gevonden</strong> uit waarom, bijvoorbeeld <em>AtlasDays vindt geen kolom met landen in dit bestand</em>.</p>
 
     <section class="if-needed">
       <h2 id="als-een-waarde-niet-wordt-herkend">Als een waarde niet wordt herkend</h2>
-      <p>Gebruik een ISO-landcode, ISO-datums en de standaardnaam of -code van een Amerikaanse staat. Een bestand dat uit een spreadsheet in een andere taal is geëxporteerd, kan vertaalde kolomkoppen hebben, en die worden niet herkend: hernoem ze naar de Engelse kolomkoppen hierboven.</p>
+      <p>Gebruik een ISO-landcode, datums als <code>jjjj-mm-dd</code> en de standaardnaam of -code van een Amerikaanse staat. Een bestand dat uit een spreadsheet in een andere taal is geëxporteerd, kan vertaalde kolomkoppen hebben, en die worden niet herkend: hernoem ze naar de Engelse kolomkoppen hierboven. Voor een bestand dat AtlasDays helemaal niet kan lezen, geeft <strong>Maak CSV met AI</strong> op het importscherm je een prompt om het om te zetten.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-csv-format-reference">
       <h2 id="next-csv-format-reference">Ga verder met</h2>

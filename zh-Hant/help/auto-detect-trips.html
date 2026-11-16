@@ -177,7 +177,7 @@
         <li><a href="#section-3">行程會自動結束，轉機也會自動標示</a></li>
         <li><a href="#section-4">檢視偵測到的行程</a></li>
         <li><a href="#section-5">忽略不想偵測的地點</a></li>
-        <li><a href="#section-6">時間軸上的提示卡</a></li>
+        <li><a href="#section-6">自動偵測暫停時</a></li>
         <li><a href="#section-7">讓自動偵測持續運作</a></li>
         <li><a href="#section-8">沒有出現行程時</a></li>
       </ul>
@@ -196,7 +196,7 @@
         <li><a href="#section-3">行程會自動結束，轉機也會自動標示</a></li>
         <li><a href="#section-4">檢視偵測到的行程</a></li>
         <li><a href="#section-5">忽略不想偵測的地點</a></li>
-        <li><a href="#section-6">時間軸上的提示卡</a></li>
+        <li><a href="#section-6">自動偵測暫停時</a></li>
         <li><a href="#section-7">讓自動偵測持續運作</a></li>
         <li><a href="#section-8">沒有出現行程時</a></li>
       </ul>
@@ -204,13 +204,13 @@
     <script>(function(){var t=document.currentScript.previousElementSibling;if(matchMedia('(min-width: 760px)').matches)t.open=true})();</script>
     <h2 id="section-1">開啟自動偵測</h2>
     <ol>
-      <li>開啟<strong>設定 → 行程記錄 → 自動偵測行程</strong>。</li>
+      <li>開啟<strong>設定 → 自動偵測行程</strong>。</li>
       <li>開啟<strong>自動偵測行程</strong>。</li>
       <li>iOS 會詢問兩次位置取用權限。先選擇「使用 App 期間」，第二次提示出現時再選擇「永遠」。</li>
-      <li>如有需要，可在「通知」下開啟<strong>偵測到新國家時通知</strong>。</li>
+      <li>如果想在每次新增行程時收到通知，可視需要在<strong>設定 → 通知</strong>中開啟<strong>偵測到新國家時通知</strong>。</li>
     </ol>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/zh-Hant/help/auto-detect-trips/auto-detect-settings.webp" alt="自動偵測行程設定畫面，含位置和通知控制項" width="1320" height="2100" loading="lazy" decoding="async" /></figure>
-    <p>只有在「永遠」的取用權限下，偵測才會運作。若只停在「使用 App 期間」，開關會維持關閉。從時間軸的卡片開啟（見下方）時，在兩次位置提示之後還會詢問通知權限；從「設定」開啟則不會。</p>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/zh-Hant/help/auto-detect-trips/auto-detect-settings.webp" alt="自動偵測行程設定畫面，含位置開關與忽略清單" width="1320" height="2100" loading="lazy" decoding="async" /></figure>
+    <p>只有在「永遠」的取用權限下，偵測才會運作。若只停在「使用 App 期間」，開關會維持關閉。<a href="/zh-Hant/help/getting-started">設定 AtlasDays</a>中的<strong>自動偵測行程</strong>步驟，也會帶你完成同樣的提示。</p>
 
     <h2 id="section-2">偵測到國家時會發生什麼事</h2>
     <ul>
@@ -234,15 +234,8 @@
     <p>在自動偵測畫面的<strong>已忽略的地點</strong>中，選擇<strong>國家</strong>，即可略過手機在國界附近一再偵測到的地點。Pro 使用者還可以選擇<strong>美國各州</strong>。已忽略的地點不會建立行程，天數仍歸於周邊的國家。你仍然可以自行新增這些行程。</p>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/zh-Hant/help/auto-detect-trips/ignore-list.webp" alt="自動偵測的忽略清單，已選取多個國家" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
-    <h2 id="section-6">時間軸上的提示卡</h2>
-    <p>時間軸最多可在清單頂端顯示三張卡片。卡片上的 X 會將它永久隱藏。</p>
-    <ul>
-      <li><strong>自動偵測行程</strong>卡片提供<strong>開啟自動偵測</strong>與<strong>運作方式</strong>。它在自動偵測關閉且你至少有一個行程時出現。</li>
-      <li><strong>自動偵測已暫停</strong>會在位置不再設為「永遠」時出現。<strong>前往「設定」</strong>會帶你到 iOS 的「設定」來修正。</li>
-      <li><strong>隨時掌握動態</strong>會在通知關閉、而這台裝置上新增了行程之後出現，並提供<strong>開啟通知</strong>。</li>
-    </ul>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/zh-Hant/help/auto-detect-trips/prompt-card.webp" alt="時間軸上的提示卡，提供開啟自動偵測" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
-    <p>關於這些卡片與其他時間軸控制項的更多說明，請見<a href="/zh-Hant/help/timeline-tools">搜尋、篩選與自訂時間軸</a>。</p>
+    <h2 id="section-6">自動偵測暫停時</h2>
+    <p>當 AtlasDays 的位置取用權限不再是「永遠」時，時間軸頂端會出現<strong>自動偵測已暫停</strong>卡片。<strong>前往「設定」</strong>會帶你到 iOS 的「設定」來修正，點<strong>X</strong>則可關閉這張卡片。</p>
 
     <h2 id="section-7">讓自動偵測持續運作</h2>
     <ul>
@@ -254,7 +247,7 @@
 
     <section class="if-needed">
       <h2 id="section-8">沒有出現行程時</h2>
-      <p>確認自動偵測已開啟、位置設為「永遠」、該地點不在忽略清單中，而且 App 最近開啟過、沒有被強制結束。若預期會收到通知，也請確認<strong>偵測到新國家時通知</strong>已開啟，且 iOS 允許 AtlasDays 傳送通知。行程隨時都能手動新增。</p>
+      <p>確認自動偵測已開啟、位置設為「永遠」、該地點不在忽略清單中，而且 App 最近開啟過、沒有被強制結束。若預期會收到通知，也請確認<strong>設定 → 通知</strong>中的<strong>通知</strong>與<strong>偵測到新國家時通知</strong>都已開啟，且 iOS 允許 AtlasDays 傳送通知。行程隨時都能手動新增。</p>
     </section>
     <nav class="help-next" aria-labelledby="next-auto-detect-trips">
       <h2 id="next-auto-detect-trips">接著閱讀</h2>

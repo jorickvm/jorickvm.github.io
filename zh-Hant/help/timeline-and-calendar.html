@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>新增、編輯或刪除行程｜AtlasDays 說明中心</title>
-  <meta name="description" content="用 AtlasDays 的時間軸或行事曆新增行程、修正內容，或從旅行紀錄中移除。" />
+  <meta name="description" content="在 AtlasDays 的時間軸和行事曆中逐筆或連續新增行程、開啟行程頁面，以及編輯或刪除行程。" />
   <meta property="og:title" content="新增、編輯或刪除行程｜AtlasDays 說明中心" />
-  <meta property="og:description" content="用 AtlasDays 的時間軸或行事曆新增行程、修正內容，或從旅行紀錄中移除。" />
+  <meta property="og:description" content="在 AtlasDays 的時間軸和行事曆中逐筆或連續新增行程、開啟行程頁面，以及編輯或刪除行程。" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/zh-Hant/help/timeline-and-calendar" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="新增、編輯或刪除行程｜AtlasDays 說明中心" />
-  <meta name="twitter:description" content="用 AtlasDays 的時間軸或行事曆新增行程、修正內容，或從旅行紀錄中移除。" />
+  <meta name="twitter:description" content="在 AtlasDays 的時間軸和行事曆中逐筆或連續新增行程、開啟行程頁面，以及編輯或刪除行程。" />
   <meta name="apple-itunes-app" content="app-id=6760133544, app-argument=https://apps.apple.com/app/atlasdays-track-country-days/id6760133544" />
   <meta property="og:locale" content="zh_TW" />
   <meta property="og:image" content="https://atlasdays.app/assets/social/site-v1.png" />
@@ -73,7 +73,7 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "新增、編輯或刪除行程",
-    "description": "用 AtlasDays 的時間軸或行事曆新增行程、修正內容，或從旅行紀錄中移除。",
+    "description": "在 AtlasDays 的時間軸和行事曆中逐筆或連續新增行程、開啟行程頁面，以及編輯或刪除行程。",
     "author": {
       "@type": "Organization",
       "name": "AtlasDays",
@@ -173,11 +173,13 @@
       <p class="toc-title">本頁內容</p>
       <ul>
         <li><a href="#section-1">新增行程</a></li>
-        <li><a href="#section-2">編輯行程</a></li>
-        <li><a href="#section-3">刪除行程</a></li>
-        <li><a href="#section-4">在列表與行事曆之間切換</a></li>
-        <li><a href="#section-5">美國的停留</a></li>
-        <li><a href="#section-6">行程無法儲存時</a></li>
+        <li><a href="#section-2">一次補上多筆過去的行程</a></li>
+        <li><a href="#section-3">開啟行程</a></li>
+        <li><a href="#section-4">編輯行程</a></li>
+        <li><a href="#section-5">刪除行程</a></li>
+        <li><a href="#section-6">在列表與行事曆之間切換</a></li>
+        <li><a href="#section-7">美國的停留</a></li>
+        <li><a href="#section-8">行程無法儲存時</a></li>
       </ul>
     </nav>
     <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
@@ -186,33 +188,56 @@
     <h1>新增、編輯或刪除行程</h1>
 <p class="article-answer">時間軸是<a href="/zh-Hant/help/dashboard-and-map">總覽</a>、地圖、追蹤器、<a href="/zh-Hant/help/export-and-reports">匯出</a>和<a href="/zh-Hant/help/widgets">小工具</a>共同依據的原始紀錄。任何一個畫面需要不同的內容時，就到時間軸修改行程。</p>
 
+    <details class="toc">
+      <summary>本頁內容</summary>
+      <ul>
+        <li><a href="#section-1">新增行程</a></li>
+        <li><a href="#section-2">一次補上多筆過去的行程</a></li>
+        <li><a href="#section-3">開啟行程</a></li>
+        <li><a href="#section-4">編輯行程</a></li>
+        <li><a href="#section-5">刪除行程</a></li>
+        <li><a href="#section-6">在列表與行事曆之間切換</a></li>
+        <li><a href="#section-7">美國的停留</a></li>
+        <li><a href="#section-8">行程無法儲存時</a></li>
+      </ul>
+    </details>
+    <script>(function(){var t=document.currentScript.previousElementSibling;if(matchMedia('(min-width: 760px)').matches)t.open=true})();</script>
     <h2 id="section-1">新增行程</h2>
     <ol>
-      <li>開啟<strong>時間軸</strong>，輕點 <strong>+</strong>。還沒有任何行程時沒有 <strong>+</strong>，請改為輕點<strong>新增第一個行程</strong>卡片上的<strong>手動新增</strong>。</li>
+      <li>開啟<strong>時間軸</strong>，輕點 <strong>+</strong>；或在總覽輕點 <strong>+</strong>，選擇<strong>新增行程</strong>。還沒有任何行程時，時間軸沒有 <strong>+</strong>，請改為輕點<strong>新增第一個行程</strong>卡片上的<strong>手動新增</strong>。</li>
       <li>輕點<strong>選擇國家</strong>並選一個國家。若是美國行程，需要州層級追蹤（Pro）時，可在<strong>州（選填）</strong>中加入州別。</li>
       <li>輕點<strong>開始日期</strong>和<strong>結束日期</strong>，兩者都要設定。若停留尚未結束，在結束日期頁面輕點<strong>未定</strong>。<a href="/zh-Hant/help/history-and-import">行程日期的運作方式</a>說明未定、僅年份和轉機。</li>
       <li>視需要選擇目的或加上<strong>備註（選填）</strong>，然後輕點<strong>儲存</strong>。</li>
     </ol>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/zh-Hant/help/timeline-and-calendar/timeline-list.webp" alt="時間軸列表，含過去和停留中的行程" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
-    <h2 id="section-2">編輯行程</h2>
-    <p>在時間軸列表輕點行程，或從行事曆檢視中的某一天開啟。可更改國家、州別、日期、目的或備註，然後輕點<strong>儲存</strong>。相關的總計會依修改後的紀錄更新。</p>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/zh-Hant/help/timeline-and-calendar/add-edit.webp" alt="「編輯行程」面板，顯示國家和日期" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <h2 id="section-2">一次補上多筆過去的行程</h2>
+    <p>想憑記憶一口氣寫下一連串行程，請開啟<strong>設定 → 匯入 → 手動新增</strong>。<strong>新增行程</strong>畫面中，每個行程各有一張卡片，最早的排在最上面。填好一張卡片後，輕點卡片上方的 <strong>+</strong> 新增更早的行程，或輕點下方的 <strong>+</strong> 新增更晚的行程。兩個行程之間有未涵蓋的日子時，會出現<strong>在中間新增行程</strong>。</p>
+    <p>每張卡片在國家和日期填齊後就會儲存，並顯示<strong>已儲存</strong>。與現有行程重複或重疊的卡片會加上標示，和匯入時一樣。完成後輕點<strong>完成</strong>。由於行程已經儲存，輕點<strong>取消</strong>時會先詢問：<strong>刪除</strong>會刪除在這個畫面輸入的行程，<strong>繼續編輯</strong>則會保留它們。</p>
 
-    <h2 id="section-3">刪除行程</h2>
-    <p>在列表中將行程向左滑動並輕點垃圾桶圖示，或開啟行程後輕點<strong>刪除行程</strong>，系統會請你確認。從時間軸刪除後，螢幕底部會出現<strong>還原</strong>按鈕，約四秒後消失。按鈕消失後刪除即成定局，若要找回行程，請重新新增。</p>
+    <h2 id="section-3">開啟行程</h2>
+    <p>在時間軸列表輕點行程，或在行事曆輕點它的橫條，即可開啟行程頁面。頁面會顯示日期和天數、這個行程計入的<a href="/zh-Hant/help/trackers-and-limits">追蹤器</a>、照片，以及可以直接輸入的備註。輕點追蹤器即可開啟該追蹤器。</p>
+    <p>頁面底部的橫條會列出這個行程前後的行程。輕點橫條或向側邊拖動，不必回到列表，就能移到<strong>較早行程</strong>或<strong>較晚行程</strong>。</p>
+    <!-- SCREENSHOT_DEFERRED: trip-page | trip-page -->
 
-    <h2 id="section-4">在列表與行事曆之間切換</h2>
-    <p>左上角<strong>•••</strong>旁的按鈕可切換檢視方式。列表最適合依序檢查行程；行事曆則讓空檔和跨週的行程更容易看出來，而且只顯示有精確日期的行程。輕點某一天，就會在面板中列出當天的行程，並可在其中使用 <strong>+</strong> 新增該日期的行程。兩種檢視編輯的是同一份紀錄，切換回列表時，列表會停留在原本的位置。</p>
+    <h2 id="section-4">編輯行程</h2>
+    <p>在行程頁面輕點右上角的編輯按鈕。也可以在列表中長按行程，選擇<strong>編輯</strong>。可更改國家、州別、日期或目的，然後輕點<strong>儲存</strong>。相關的總計會依修改後的紀錄更新。</p>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/zh-Hant/help/timeline-and-calendar/add-edit.webp" alt="行程表單，顯示國家、日期和目的" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+
+    <h2 id="section-5">刪除行程</h2>
+    <p>在列表中長按行程，選擇<strong>刪除</strong>。也可以開啟行程，輕點編輯按鈕，再輕點<strong>刪除行程</strong>。AtlasDays 一定會請你確認，而且刪除後無法還原；不小心刪掉的行程，請重新新增。</p>
+
+    <h2 id="section-6">在列表與行事曆之間切換</h2>
+    <p>在 iPhone 上，在時間軸上左右滑動，或開啟<strong>•••</strong>並選擇<strong>顯示行事曆</strong>或<strong>顯示列表</strong>。列表最適合依序檢查行程；行事曆則讓空檔和跨週的行程更容易看出來，而且只顯示有精確日期的行程。輕點行程的橫條即可開啟行程，輕點某一天的其他位置，就會在面板中列出當天的行程，並可在其中使用 <strong>+</strong> 新增該日期的行程。兩種檢視編輯的是同一份紀錄，切換回列表時，列表會停留在原本的位置。</p>
     <p>在 <a href="/zh-Hant/help/ipad">iPad</a> 和展開的 <a href="/zh-Hant/help/iphone-duo">iPhone Duo</a> 上，列表與行事曆會並排顯示。<strong>•••</strong>旁有兩個箭頭的按鈕可以交換它們的位置，兩者都會保留瀏覽位置。</p>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/zh-Hant/help/timeline-and-calendar/calendar.webp" alt="行事曆檢視，行程橫跨多個日期" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
-    <p>若要搜尋、依年份篩選、更改排序或為行程尋找照片，請參閱<a href="/zh-Hant/help/timeline-tools">搜尋、篩選與自訂時間軸</a>。</p>
+    <p>若要搜尋、跳到某一年或某個月，或更改排序和顏色，請參閱<a href="/zh-Hant/help/timeline-tools">搜尋與自訂時間軸</a>。</p>
 
-    <h2 id="section-5">美國的停留</h2>
-    <p>未填州別的美國行程，仍會計入國家層級的美國總計。使用 Pro 時，加入州別後會顯示在<a href="/zh-Hant/help/languages">國家名稱</a>下方，連續的美國行程也可以合併成一張美國卡片。需要州追蹤器或美國各州的明細時，請加入州別。</p>
+    <h2 id="section-7">美國的停留</h2>
+    <p>未填州別的美國行程，仍會計入國家層級的美國總計。使用 Pro 時可以加入州別，州別會以旗幟顯示在行程卡片上。連續的美國行程會合併成一張<strong>美國</strong>卡片。輕點它即可看到每個州各自的卡片，或在該頁面輕點 <strong>+</strong> 為這段停留加入另一個州。需要州追蹤器或美國各州統計時，請加入州別。</p>
 
     <section class="if-needed">
-      <h2 id="section-6">行程無法儲存時</h2>
+      <h2 id="section-8">行程無法儲存時</h2>
       <p>必須先設定國家和日期，<strong>儲存</strong>才能使用：開始與結束日期（或<strong>未定</strong>），僅年份行程則是年份。請確認結束日期沒有早於開始日期。若出現<strong>重複行程</strong>訊息，表示完全相同的行程已經存在。重疊不會阻止儲存；請參閱<a href="/zh-Hant/help/overlapping-trips">處理重疊行程</a>。</p>
     </section>
     <nav class="help-next" aria-labelledby="next-timeline-and-calendar">
@@ -223,7 +248,7 @@
           <span>精確日期、未定的停留與僅年份。</span>
         </a></li>
         <li><a href="/zh-Hant/help/timeline-tools">
-          <strong>搜尋、篩選與自訂時間軸</strong>
+          <strong>搜尋與自訂時間軸</strong>
           <span>搜尋、篩選並自訂時間軸。</span>
         </a></li>
         <li><a href="/zh-Hant/help/day-counting">

@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>CSV 匯入｜AtlasDays 說明中心</title>
-  <meta name="description" content="匯入準備好的 CSV 旅行紀錄，儲存前先確認有效資料列、錯誤、重複與重疊。" />
+  <meta name="description" content="從其他 App 的 CSV 匯出檔、試算表或逐日紀錄匯入行程，儲存前先確認重複、重疊與已略過的資料列。" />
   <meta property="og:title" content="CSV 匯入｜AtlasDays 說明中心" />
-  <meta property="og:description" content="匯入準備好的 CSV 旅行紀錄，儲存前先確認有效資料列、錯誤、重複與重疊。" />
+  <meta property="og:description" content="從其他 App 的 CSV 匯出檔、試算表或逐日紀錄匯入行程，儲存前先確認重複、重疊與已略過的資料列。" />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/zh-Hant/help/csv-import" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="CSV 匯入｜AtlasDays 說明中心" />
-  <meta name="twitter:description" content="匯入準備好的 CSV 旅行紀錄，儲存前先確認有效資料列、錯誤、重複與重疊。" />
+  <meta name="twitter:description" content="從其他 App 的 CSV 匯出檔、試算表或逐日紀錄匯入行程，儲存前先確認重複、重疊與已略過的資料列。" />
   <meta name="apple-itunes-app" content="app-id=6760133544, app-argument=https://apps.apple.com/app/atlasdays-track-country-days/id6760133544" />
   <meta property="og:locale" content="zh_TW" />
   <meta property="og:image" content="https://atlasdays.app/assets/social/site-v1.png" />
@@ -73,7 +73,7 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "CSV 匯入",
-    "description": "匯入準備好的 CSV 旅行紀錄，儲存前先確認有效資料列、錯誤、重複與重疊。",
+    "description": "從其他 App 的 CSV 匯出檔、試算表或逐日紀錄匯入行程，儲存前先確認重複、重疊與已略過的資料列。",
     "author": {
       "@type": "Organization",
       "name": "AtlasDays",
@@ -173,52 +173,57 @@
       <p class="toc-title">本頁內容</p>
       <ul>
         <li><a href="#section-1">匯入檔案</a></li>
-        <li><a href="#section-2">閱讀預覽</a></li>
-        <li><a href="#section-3">在來源檔案中修正錯誤</a></li>
-        <li><a href="#section-4">重新匯入匯出檔</a></li>
-        <li><a href="#section-5">所有資料列都無效時</a></li>
+        <li><a href="#section-2">檔案可以從哪裡來</a></li>
+        <li><a href="#section-3">閱讀預覽</a></li>
+        <li><a href="#section-4">在來源檔案中修正已略過的資料列</a></li>
+        <li><a href="#section-5">重新匯入匯出檔</a></li>
+        <li><a href="#section-6">找不到行程時</a></li>
       </ul>
     </nav>
     <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="導覽路徑"><a href="/zh-Hant/">AtlasDays</a> / <a href="/zh-Hant/help/">說明中心</a></nav>
 
     <h1>CSV 匯入</h1>
-<p class="article-answer">將存成 CSV 的試算表一次新增多個行程。AtlasDays 會驗證每一列、顯示預覽，經你確認之前不會儲存任何內容。這是<a href="/zh-Hant/help/import-trips">新增過去行程的方式</a>之一。</p>
+<p class="article-answer">從存成 CSV 的其他旅行 App 匯出檔、試算表或逐日紀錄新增行程。AtlasDays 會檢查每一列、顯示預覽，經你確認之前不會儲存任何內容。這是<a href="/zh-Hant/help/import-trips">新增過去行程的方式</a>之一。</p>
 
     <h2 id="section-1">匯入檔案</h2>
     <ol>
       <li>開啟<strong>設定 → 匯入 → CSV 檔案</strong>。</li>
-      <li>在 Google 試算表、Numbers 或 Excel 中準備檔案，並匯出為 CSV。<strong>CSV 範例</strong>會顯示完整的標題列與範例資料列，按其分享按鈕即可將檔案存下來當作起點。</li>
       <li>點一下<strong>選擇 CSV 檔案</strong>，從「檔案」App 中選取檔案。</li>
       <li>檢查預覽畫面<strong>CSV 中找到的行程</strong>。</li>
       <li>點一下<strong>匯入</strong>並確認。</li>
     </ol>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/zh-Hant/help/csv-import/csv-setup.webp" alt="CSV 匯入設定畫面與範例檔案選項" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
-    <p><strong>用 AI 建立 CSV</strong>會複製一段現成的提示詞，可用於 ChatGPT、Claude 或其他助理。把你的旅行筆記貼在提示詞後面，再將回覆存成 CSV。這些工具會依各自的隱私權政策處理你的文字，所以不想貼到其他地方的內容，請不要放進去。</p>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/zh-Hant/help/csv-import/csv-setup.webp" alt="從 CSV 匯入畫面，含來自其他 App、使用 CSV 範本與用 AI 建立 CSV" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
+    <h2 id="section-2">檔案可以從哪裡來</h2>
+    <ul>
+      <li><strong>來自其他 App：</strong>其他旅行追蹤 App 的匯出檔通常可以直接使用。AtlasDays 能辨識國家與日期欄位的常見名稱，也能讀取每列一個行程、每列一天，或每列一次跨境的檔案。<a href="/zh-Hant/help/csv-format-reference">CSV 格式參考</a>列出了可讀取的內容。</li>
+      <li><strong>使用 CSV 範本：</strong>若要自行製作檔案，請開啟範本。<strong>CSV 範例</strong>會顯示標題列與範例資料列，按其分享按鈕即可將檔案存下來當作起點。在 Google 試算表、Numbers 或 Excel 中填寫後，匯出為 CSV。</li>
+      <li><strong>用 AI 建立 CSV：</strong>當 AtlasDays 無法讀取你的檔案，或旅行紀錄只存在筆記或截圖中時，這個選項會開啟一段現成的提示詞。將它複製到 ChatGPT、Claude 或其他助理，加上你的檔案、截圖或筆記，再匯入它回傳的 CSV。AtlasDays 只會複製提示詞，不會傳送任何內容。這些工具會依各自的隱私權政策處理你提供的內容，所以不想在其他地方分享的內容，請不要放進去。</li>
+    </ul>
     <p>也可以直接從檔案開始。在「檔案」App、Safari 的下載項目或「郵件」中分享 CSV 檔案，然後選擇 <strong>AtlasDays</strong>，就會開啟相同的預覽畫面。AtlasDays 會列為開啟 CSV 檔案的選項，但不會被設為這類檔案的預設 App。</p>
 
-    <h2 id="section-2">閱讀預覽</h2>
-    <p>預覽會列出有效的資料列，並顯示可點選來篩選的數量。可使用<strong>全選</strong>或<strong>取消全選</strong>來選擇要匯入的項目。</p>
+    <h2 id="section-3">閱讀預覽</h2>
+    <p>預覽會列出可以匯入的資料列，並顯示可點選來篩選的數量。點一下資料列即可修正，取消勾選則可略過。有 3 列以上時，可用<strong>全選</strong>和<strong>取消全選</strong>一次變更整份清單。</p>
     <ul>
       <li><strong>重複：</strong>該列位於你已有的行程之內，或與前面的資料列重複。這一列會被略過。</li>
-      <li><strong>合併：</strong>該列涵蓋你在同一國家已有的行程。匯入時，該行程會擴大到包含這一列的日期，備註與目的也會合併。<strong>檔案內可合併</strong>是指檔案內彼此可以相連的資料列。</li>
-      <li><strong>重疊：</strong>該列與另一個行程部分重疊。這可能是真正的第二次停留，也可能是同一段停留的第二個版本，因此保留之前請先比對日期。</li>
+      <li><strong>合併：</strong>該列與你在同一地點已有的行程至少有一天相同。匯入時，該行程會擴大到包含這一列的日期，備註與目的也會合併。<strong>檔案內可合併</strong>是指檔案內彼此可以相連的資料列。</li>
+      <li><strong>重疊：</strong>該列與另一個國家或美國州的行程有同一晚重疊。保留之前請先比對日期。</li>
       <li><strong>轉機</strong>與<strong>美國各州</strong>會統計這兩類資料列的數量。沒有 Pro 時，州別資料列會匯入為一般的美國行程。</li>
     </ul>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/zh-Hant/help/csv-import/csv-review.webp" alt="CSV 匯入預覽畫面，含有效、無效、重複與重疊資料列" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/zh-Hant/help/csv-import/csv-review.webp" alt="CSV 中找到的行程預覽畫面，含重複、重疊與已略過的資料列" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
-    <h2 id="section-3">在來源檔案中修正錯誤</h2>
-    <p>AtlasDays 無法讀取的資料列會顯示在<strong>N 列有錯誤</strong>之下，並附上列號與原因。無效的資料列一律不會匯入。請在試算表中修正，再次匯出，然後重新選取檔案。</p>
+    <h2 id="section-4">在來源檔案中修正已略過的資料列</h2>
+    <p>AtlasDays 無法讀取的資料列會計為<strong>已略過 N 列</strong>，並在<strong>已略過</strong>下依原因分組，附上列號。已略過的資料列一律不會匯入。請在試算表中修正，再次匯出，然後重新選取檔案。</p>
 
     <div class="callout"><p><strong>按下匯入之前不會有任何變更。</strong>選取檔案與查看預覽都不會新增行程。</p></div>
 
-    <h2 id="section-4">重新匯入匯出檔</h2>
-    <p>存成 CSV 的試算表<a href="/zh-Hant/help/export-and-reports">匯出檔</a>可以再次匯入，前提是匯出時使用英文：欄位標題只能以英文讀取。若要完整複製行程、追蹤器與設定，請改用<a href="/zh-Hant/help/backup-and-restore">備份</a>。</p>
+    <h2 id="section-5">重新匯入匯出檔</h2>
+    <p>存成 CSV 的試算表<a href="/zh-Hant/help/export-and-reports">匯出檔</a>可以再次匯入，前提是匯出時使用英文，且日期格式為 <code>yyyy-mm-dd</code>：欄位標題只能以英文讀取。若要完整複製行程、追蹤器、個人檔案與設定，請改用<a href="/zh-Hant/help/backup-and-restore">備份</a>。</p>
 
     <section class="if-needed">
-      <h2 id="section-5">所有資料列都無效時</h2>
-      <p>確認第一列是標題列且含有 <strong>Country</strong>，日期則使用 <code>yyyy-mm-dd</code> 或四位數的年份。<a href="/zh-Hant/help/csv-format-reference">CSV 格式參考</a>列出了支援的欄位、值與所有錯誤訊息。</p>
+      <h2 id="section-6">找不到行程時</h2>
+      <p>當 AtlasDays 無法使用任何一列時，檔案會停留在設定畫面，並由<strong>找不到行程</strong>說明原因，例如找不到國家欄位。在該處點一下<strong>用 AI 建立 CSV</strong>，即可交給助理轉換檔案。<a href="/zh-Hant/help/csv-format-reference">CSV 格式參考</a>列出了支援的欄位、值與所有錯誤訊息。</p>
     </section>
     <nav class="help-next" aria-labelledby="next-csv-import">
       <h2 id="next-csv-import">接著閱讀</h2>

@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Guida al formato CSV – Centro assistenza AtlasDays</title>
-  <meta name="description" content="Intestazioni CSV AtlasDays supportate, date esatte e anni, stati USA, transiti, motivi, note ed esempi." />
+  <meta name="description" content="Tutte le colonne, i nomi delle intestazioni, le strutture di file, i formati delle date e i messaggi di errore che AtlasDays legge importando un CSV." />
   <meta property="og:title" content="Guida al formato CSV – Centro assistenza AtlasDays" />
-  <meta property="og:description" content="Intestazioni CSV AtlasDays supportate, date esatte e anni, stati USA, transiti, motivi, note ed esempi." />
+  <meta property="og:description" content="Tutte le colonne, i nomi delle intestazioni, le strutture di file, i formati delle date e i messaggi di errore che AtlasDays legge importando un CSV." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/it/help/csv-format-reference" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Guida al formato CSV – Centro assistenza AtlasDays" />
-  <meta name="twitter:description" content="Intestazioni CSV AtlasDays supportate, date esatte e anni, stati USA, transiti, motivi, note ed esempi." />
+  <meta name="twitter:description" content="Tutte le colonne, i nomi delle intestazioni, le strutture di file, i formati delle date e i messaggi di errore che AtlasDays legge importando un CSV." />
   <meta name="apple-itunes-app" content="app-id=6760133544, app-argument=https://apps.apple.com/app/atlasdays-track-country-days/id6760133544" />
   <meta property="og:locale" content="it_IT" />
   <meta property="og:image" content="https://atlasdays.app/assets/social/site-v1.png" />
@@ -73,7 +73,7 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "Riferimento del formato CSV",
-    "description": "Intestazioni CSV AtlasDays supportate, date esatte e anni, stati USA, transiti, motivi, note ed esempi.",
+    "description": "Tutte le colonne, i nomi delle intestazioni, le strutture di file, i formati delle date e i messaggi di errore che AtlasDays legge importando un CSV.",
     "author": {
       "@type": "Organization",
       "name": "AtlasDays",
@@ -173,6 +173,7 @@
       <p class="toc-title">In questa pagina</p>
       <ul>
         <li><a href="#colonne">Colonne</a></li>
+        <li><a href="#struttura-del-file">Struttura del file</a></li>
         <li><a href="#formati-delle-date">Formati delle date</a></li>
         <li><a href="#casi-particolari">Casi particolari</a></li>
         <li><a href="#esempio">Esempio</a></li>
@@ -184,21 +185,47 @@
     <nav class="breadcrumb" aria-label="Percorso di navigazione"><a href="/it/">AtlasDays</a> / <a href="/it/help/">Centro assistenza</a></nav>
 
     <h1>Riferimento del formato CSV</h1>
-<p class="article-answer">È obbligatoria solo la colonna <strong>Country</strong>. AtlasDays trova le colonne in base al nome dell’intestazione in inglese, quindi l’ordine non conta. I passaggi per importare sono in <a href="/it/help/csv-import">Importazione CSV</a>.</p>
+<p class="article-answer">Un file ha bisogno di un paese per ogni riga e delle date per i soggiorni che devono contare nei totali dei giorni. AtlasDays trova le colonne in base al nome dell’intestazione in inglese, quindi l’ordine non conta, e riconosce i nomi usati da altre app di viaggio. I passaggi per importare sono in <a href="/it/help/csv-import">Importazione CSV</a>.</p>
 
+    <details class="toc">
+      <summary>In questa pagina</summary>
+      <ul>
+        <li><a href="#colonne">Colonne</a></li>
+        <li><a href="#struttura-del-file">Struttura del file</a></li>
+        <li><a href="#formati-delle-date">Formati delle date</a></li>
+        <li><a href="#casi-particolari">Casi particolari</a></li>
+        <li><a href="#esempio">Esempio</a></li>
+        <li><a href="#messaggi-di-errore">Messaggi di errore</a></li>
+        <li><a href="#se-un-valore-non-viene-riconosciuto">Se un valore non viene riconosciuto</a></li>
+      </ul>
+    </details>
+    <script>(function(){var t=document.currentScript.previousElementSibling;if(matchMedia('(min-width: 760px)').matches)t.open=true})();</script>
     <h2 id="colonne">Colonne</h2>
-    <p>Riga di intestazione consigliata: <code>Country,State,Start Date,End Date,Purpose,Notes</code>. I nomi delle intestazioni non distinguono maiuscole e minuscole. Le colonne non riconosciute, come <code>Days</code>, vengono ignorate. Se un’intestazione compare due volte, viene usata la prima.</p>
+    <p>Riga di intestazione consigliata per un file che prepari tu: <code>Country,State,Start Date,End Date,Purpose,Notes</code>. I nomi delle intestazioni non distinguono maiuscole e minuscole, e un trattino basso conta come spazio. Le colonne non riconosciute, come <code>Days</code>, vengono ignorate. Se due colonne hanno lo stesso significato viene usata la prima, ma una colonna che si chiama esattamente <code>Purpose</code> ha sempre la precedenza.</p>
     <dl class="kv kv-text">
-      <div><dt><strong>Country</strong></dt><dd>Obbligatorio. Nome del paese in inglese o nella lingua dell’app, codice ISO di due lettere o un alias comune come <code>USA</code>, <code>UK</code>, oppure <code>Holland</code>. Un alias che può indicare due luoghi viene rifiutato.</dd></div>
-      <div><dt><strong>State</strong></dt><dd>Facoltativo, solo per soggiorni negli Stati Uniti. Nome dello stato, abbreviazione postale di due lettere o codice ISO come <code>US-CA</code>. È accettato anche il Distretto di Columbia.</dd></div>
-      <div><dt><strong>Start Date</strong></dt><dd>Accettato anche come <code>Start</code>. Data nel formato <code>yyyy-mm-dd</code>, oppure un anno di quattro cifre.</dd></div>
-      <div><dt><strong>End Date</strong></dt><dd>Accettato anche come <code>End</code>. Data nel formato <code>yyyy-mm-dd</code>, oppure un anno di quattro cifre. Vuoto significa in corso (inizio con data esatta) o lo stesso anno (inizio con anno).</dd></div>
-      <div><dt><strong>Purpose</strong></dt><dd><code>Personal</code>, <code>Business</code>, <code>Study</code>, oppure <code>Transit</code>, senza distinzione tra maiuscole e minuscole. Combina i valori diversi da Transit con virgole tra virgolette, ad esempio <code>"Business, Personal"</code>. I vecchi valori <code>Tourism</code> e <code>Medical</code> vengono importati come Personale. Un valore non riconosciuto viene ignorato senza errore.</dd></div>
-      <div><dt><strong>Notes</strong></dt><dd>Accettato anche come <code>Note</code>, <code>Notes (optional)</code>. Testo libero.</dd></div>
-      <div><dt><strong>Transit</strong></dt><dd>Colonna legacy. Letta solo se manca la colonna Purpose. <code>Yes</code>, <code>Y</code>, <code>True</code>, oppure <code>1</code> contrassegna Transito; <code>No</code>, <code>N</code>, <code>False</code>, <code>0</code>, oppure vuoto non lo contrassegna.</dd></div>
-      <div><dt><strong>Start Year</strong>, <strong>End Year</strong></dt><dd>Colonna legacy. Anni di quattro cifre, usati quando le celle delle date non contengono un anno. Non può essere combinata con date esatte nella stessa riga.</dd></div>
+      <div><dt><strong>Country</strong></dt><dd>Letto anche da <code>Countries</code>, <code>Country Name</code>, <code>Country/Region</code>, <code>Nation</code>, <code>Place</code> o <code>Destination</code>. Nome del paese in inglese o nella lingua dell’app, codice ISO di due lettere o un alias comune come <code>USA</code>, <code>UK</code>, oppure <code>Holland</code>. Un alias che può indicare due luoghi viene rifiutato.</dd></div>
+      <div><dt><strong>Country Code</strong></dt><dd>Letto anche da <code>ISO</code>, <code>ISO Code</code>, <code>ISO2</code>, <code>Alpha-2</code>, <code>Code</code> o <code>CC</code>. Un codice di due lettere. Se un file contiene entrambi, viene usato il codice e il nome viene ignorato.</dd></div>
+      <div><dt><strong>State</strong></dt><dd>Letto anche da <code>US State</code>, <code>State/Province</code>, <code>Province</code>, <code>Region</code> o <code>Subdivision</code>. Solo per soggiorni negli Stati Uniti: nome dello stato, abbreviazione postale di due lettere o codice ISO come <code>US-CA</code>. È accettato anche il Distretto di Columbia.</dd></div>
+      <div><dt><strong>Start Date</strong></dt><dd>Letto anche da <code>Start</code>, <code>Arrival</code>, <code>Arrival Date</code>, <code>Entry</code>, <code>Date From</code>, <code>Begin</code>, <code>Check-in</code> e nomi simili. Vedi Formati delle date più avanti.</dd></div>
+      <div><dt><strong>End Date</strong></dt><dd>Letto anche da <code>End</code>, <code>Departure</code>, <code>Departure Date</code>, <code>Exit</code>, <code>Date To</code>, <code>Until</code>, <code>Check-out</code> e nomi simili. Vuoto significa in corso (inizio con data esatta) o lo stesso anno (inizio con anno).</dd></div>
+      <div><dt><strong>Purpose</strong></dt><dd>Letto anche da <code>Reason</code>, <code>Type</code>, <code>Trip Type</code>, <code>Category</code> o <code>Visit Type</code>. <code>Personal</code>, <code>Business</code>, <code>Study</code>, oppure <code>Transit</code>, senza distinzione tra maiuscole e minuscole. Combina i valori diversi da Transit con virgole tra virgolette, ad esempio <code>"Business, Personal"</code>, oppure con <code>;</code> o <code>/</code>. Le parole comuni vengono convertite: <code>Work</code> diventa Business, <code>Holiday</code> o <code>Vacation</code> diventa Personal, <code>School</code> diventa Study, <code>Layover</code> diventa Transit. Gli altri valori vengono conservati come riga <em>Motivo:</em> nelle note del soggiorno.</dd></div>
+      <div><dt><strong>Notes</strong></dt><dd>Letto anche da <code>Note</code>, <code>Notes (optional)</code>, <code>Comment</code>, <code>Description</code>, <code>Remarks</code> o <code>Memo</code>. Testo libero.</dd></div>
+      <div><dt><strong>City</strong></dt><dd>Letto anche da <code>Cities</code> o <code>Town</code>. Viene aggiunto alle note del soggiorno.</dd></div>
+      <div><dt><strong>Is Current</strong></dt><dd>Letto anche da <code>Current</code> o <code>Ongoing</code>. <code>Yes</code>, <code>True</code> o <code>1</code> mantiene il soggiorno in corso, qualunque sia la data finale.</dd></div>
+      <div><dt><strong>Work Days</strong>, <strong>Personal Days</strong></dt><dd>Usati quando manca la colonna Purpose: un soggiorno con soli giorni di lavoro diventa Business, con soli giorni personali Personal. Un soggiorno con entrambi riceve la nota <em>Lavoro e personale</em>.</dd></div>
+      <div><dt><strong>Transit</strong></dt><dd>Letta anche da <code>Layover</code> o <code>Airside</code>. Letta solo se manca la colonna Purpose. <code>Yes</code>, <code>Y</code>, <code>True</code>, oppure <code>1</code> contrassegna Transito; <code>No</code>, <code>N</code>, <code>False</code>, <code>0</code>, oppure vuoto non lo contrassegna.</dd></div>
+      <div><dt><strong>Start Year</strong>, <strong>End Year</strong></dt><dd>Colonne legacy. Anni di quattro cifre, usati quando le celle delle date non contengono un anno. Non possono essere combinate con date esatte nella stessa riga.</dd></div>
     </dl>
-    <figure class="help-shot help-shot-control"><img src="/assets/article-images/it/help/csv-format-reference/csv-reference.webp" alt="Esempio di importazione CSV e controlli del modello" width="1320" height="1990" loading="lazy" decoding="async" /></figure>
+    <figure class="help-shot help-shot-control"><img src="/assets/article-images/it/help/csv-format-reference/csv-reference.webp" alt="Schermata Importa da CSV con Da un’altra app, Usa un modello CSV e Crea CSV con l’IA" width="1320" height="1990" loading="lazy" decoding="async" /></figure>
+
+    <h2 id="struttura-del-file">Struttura del file</h2>
+    <p>AtlasDays distingue tre strutture in base alle colonne:</p>
+    <ul>
+      <li><strong>Una riga per soggiorno:</strong> un paese con una data iniziale e una finale. È la struttura del modello, di un’esportazione in foglio di calcolo di AtlasDays e della maggior parte delle app di viaggio.</li>
+      <li><strong>Una riga per giorno:</strong> una colonna <code>Date</code> (o <code>Day</code>) e un paese. I giorni consecutivi nello stesso paese diventano un unico soggiorno, e un giorno mancante lo chiude. Se l’ultimo giorno è oggi o ieri, il soggiorno resta in corso. La riga di intestazione può mancare quando la prima riga contiene una data e un paese. Per un giorno trascorso in due paesi, separali con una barra verticale, ad esempio <code>France|Germany</code>: il giorno conta per entrambi. Stati e città si possono elencare allo stesso modo.</li>
+      <li><strong>Una riga per attraversamento di frontiera:</strong> una colonna <code>Date</code> con i paesi <code>From</code> e <code>To</code>. Ogni giorno di attraversamento conta per entrambi i paesi, e resti nel paese di <code>To</code> fino all’attraversamento successivo. L’ultimo soggiorno resta in corso. Le righe di attraversamento possono anche essere mescolate a un file giorno per giorno.</li>
+    </ul>
+    <p>In un file senza colonna <code>Date</code>, <code>From</code> e <code>To</code> vengono letti come data iniziale e data finale di un soggiorno.</p>
 
     <h2 id="formati-delle-date">Formati delle date</h2>
     <div class="data-table">
@@ -213,7 +240,13 @@
       </tbody>
     </table>
     </div>
-    <p>Gli anni devono essere compresi tra il 1900 e otto anni dopo l’anno attuale. Nella stessa riga non si possono mescolare date esatte e valori di anno. I soggiorni Solo anno e senza date contano per i luoghi visitati e la mappa, ma mai per i conteggi dei giorni o i tracker. Un soggiorno senza date può essere creato solo tramite importazione CSV.</p>
+    <p>Oltre a <code>yyyy-mm-dd</code>, AtlasDays legge:</p>
+    <ul>
+      <li>L’anno per primo con barre o punti, ad esempio <code>2026/03/01</code> o <code>2026.03.01</code>. Un orario dopo la data, ad esempio <code>2026-03-01 22:47</code> o <code>2026-03-01T22:47:00Z</code>, viene ignorato.</li>
+      <li>Nomi dei mesi in inglese e loro abbreviazioni, ad esempio <code>1 Mar 2026</code>, <code>Mar 1, 2026</code> o <code>01-Mar-26</code>.</li>
+      <li>Il giorno o il mese per primo, ad esempio <code>01/03/2026</code> o <code>03/01/2026</code>, con l’anno di quattro o di due cifre. Poiché <code>01/03</code> può essere l’una o l’altra cosa, AtlasDays legge queste date solo se nel file c’è una data con il giorno maggiore di 12, che rivela l’ordine. Altrimenti quelle righe vengono ignorate con il messaggio che non è chiaro quale sia il giorno e quale il mese.</li>
+    </ul>
+    <p>Un anno di due cifre viene letto come 20xx se così cade al massimo 10 anni nel futuro, altrimenti come 19xx. Gli anni devono essere compresi tra il 1900 e otto anni dopo l’anno attuale. Nella stessa riga non si possono mescolare date esatte e valori di anno. I soggiorni Solo anno e senza date contano per i luoghi visitati e la mappa, ma mai per i conteggi dei giorni o i tracker. Un soggiorno senza date può essere creato solo tramite importazione CSV.</p>
 
     <h2 id="casi-particolari">Casi particolari</h2>
     <ul>
@@ -228,29 +261,38 @@ France,,2026-03-01,2026-03-05,Personal,
 United States,CA,2026-04-10,2026-04-15,Business,Conference
 Japan,,2024,,Personal,Dates not known
 United Arab Emirates,,2026-05-01,2026-05-01,Transit,Airport connection</code></pre>
+    <p>Gli stessi giorni in Francia, una riga per giorno:</p>
+    <pre><code>Date,Country
+2026-03-01,France
+2026-03-02,France
+2026-03-03,France
+2026-03-04,France
+2026-03-05,France</code></pre>
 
     <h2 id="messaggi-di-errore">Messaggi di errore</h2>
-    <p>Ogni errore compare nell’anteprima con il numero di riga; la riga non viene importata. Il conteggio considera l’intestazione come riga 1.</p>
+    <p>Le righe con un errore sono elencate nell’anteprima sotto <strong>Ignorate</strong>, raggruppate per motivo con i numeri di riga, e non vengono importate. Il conteggio considera l’intestazione come riga 1.</p>
     <dl class="kv kv-text">
-      <div><dt>Colonna Country non trovata</dt><dd>Inserisci per prima una riga di intestazione con una colonna <strong>Country</strong>.</dd></div>
-      <div><dt>Paese non valido: «&lt;valore&gt;»</dt><dd>Usa un codice ISO o un nome di paese non ambiguo.</dd></div>
+      <div><dt>«&lt;valore&gt;» non è un nome o un codice di paese</dt><dd>Usa un codice ISO o un nome di paese non ambiguo.</dd></div>
+      <div><dt>Paese mancante</dt><dd>Inserisci il paese oppure elimina la riga.</dd></div>
       <div><dt>Stato non valido: «&lt;valore&gt;»</dt><dd>Usa un nome di stato USA, un’abbreviazione o un codice <code>US-XX</code>.</dd></div>
       <div><dt>Lo stato «&lt;valore&gt;» è valido solo per soggiorni negli Stati Uniti</dt><dd>Svuota State oppure imposta Country su United States.</dd></div>
       <div><dt>Stati in conflitto</dt><dd>Le celle Country e State indicano stati diversi. Mantienine uno solo.</dd></div>
-      <div><dt>Data iniziale non valida / Data finale non valida</dt><dd>Usa <code>yyyy-mm-dd</code> oppure un anno di quattro cifre.</dd></div>
+      <div><dt>Data iniziale non valida / Data finale non valida / Data non valida</dt><dd>Usa uno dei formati delle date indicati sopra.</dd></div>
+      <div><dt>Non è chiaro quale sia il giorno e quale il mese in «&lt;valore&gt;». Usa yyyy-mm-dd.</dt><dd>Scrivi le date con l’anno per primo, oppure verifica che le date del file mettano sempre per primo il giorno o sempre il mese.</dd></div>
       <div><dt>Anno iniziale non valido / Anno finale non valido</dt><dd>Usa un anno di quattro cifre nell’intervallo consentito.</dd></div>
       <div><dt>Non è possibile avere una data finale senza una data iniziale</dt><dd>Aggiungi una Start Date.</dd></div>
       <div><dt>La data iniziale deve precedere o coincidere con la data finale</dt><dd>Inverti o correggi le date.</dd></div>
       <div><dt>L’anno finale deve essere successivo o uguale all’anno iniziale</dt><dd>Correggi gli anni.</dd></div>
       <div><dt>Non è possibile avere un anno finale senza un anno iniziale</dt><dd>Aggiungi un anno iniziale.</dd></div>
       <div><dt>Non è possibile mescolare date esatte e campi con anni approssimativi</dt><dd>Usa le date oppure le colonne legacy degli anni.</dd></div>
-      <div><dt>Non è possibile mescolare una data iniziale esatta con una fine Solo anno, o un inizio Solo anno con una data finale esatta</dt><dd>Usa due date oppure due anni nella stessa riga.</dd></div>
-      <div><dt>Valore di transito non valido</dt><dd>Nella colonna legacy Transit usa Yes/No, True/False o 1/0.</dd></div>
+      <div><dt>Non puoi combinare una data iniziale esatta con il solo anno finale</dt><dd>Usa due date oppure due anni nella stessa riga. Il caso inverso dice <em>Non puoi combinare il solo anno iniziale con una data finale esatta</em>.</dd></div>
+      <div><dt>Valore di transito non valido</dt><dd>Nella colonna Transit usa Yes/No, True/False o 1/0.</dd></div>
     </dl>
+    <p>Quando nessuna riga può essere importata, l’anteprima non si apre. Al suo posto <strong>Nessun soggiorno trovato</strong> spiega il motivo, ad esempio <em>AtlasDays non ha trovato una colonna del paese in questo file</em>.</p>
 
     <section class="if-needed">
       <h2 id="se-un-valore-non-viene-riconosciuto">Se un valore non viene riconosciuto</h2>
-      <p>Usa un codice ISO del paese, date ISO e un nome o codice standard di stato USA. Un file esportato da un foglio di calcolo in un’altra lingua può avere intestazioni tradotte, che non vengono riconosciute: rinominale con le intestazioni in inglese indicate sopra.</p>
+      <p>Usa un codice ISO del paese, date nel formato <code>yyyy-mm-dd</code> e un nome o codice standard di stato USA. Un file esportato da un foglio di calcolo in un’altra lingua può avere intestazioni tradotte, che non vengono riconosciute: rinominale con le intestazioni in inglese indicate sopra. Per un file che AtlasDays non riesce proprio a leggere, <strong>Crea CSV con l’IA</strong> nella schermata di importazione ti dà un prompt per convertirlo.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-csv-format-reference">
       <h2 id="next-csv-format-reference">Continua con</h2>

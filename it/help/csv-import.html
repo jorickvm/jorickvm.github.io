@@ -4,14 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Importazione CSV – Centro assistenza AtlasDays</title>
-  <meta name="description" content="Importa lo storico dei viaggi da CSV in AtlasDays e controlla righe valide, errori, duplicati e sovrapposizioni prima di salvare." />
+  <meta name="description" content="Importa soggiorni dal CSV di un’altra app, da un foglio di calcolo o da un registro giornaliero e controlla duplicati, sovrapposizioni e righe ignorate." />
   <meta property="og:title" content="Importazione CSV – Centro assistenza AtlasDays" />
-  <meta property="og:description" content="Importa lo storico dei viaggi da CSV in AtlasDays e controlla righe valide, errori, duplicati e sovrapposizioni prima di salvare." />
+  <meta property="og:description" content="Importa soggiorni dal CSV di un’altra app, da un foglio di calcolo o da un registro giornaliero e controlla duplicati, sovrapposizioni e righe ignorate." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://atlasdays.app/it/help/csv-import" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Importazione CSV – Centro assistenza AtlasDays" />
-  <meta name="twitter:description" content="Importa lo storico dei viaggi da CSV in AtlasDays e controlla righe valide, errori, duplicati e sovrapposizioni prima di salvare." />
+  <meta name="twitter:description" content="Importa soggiorni dal CSV di un’altra app, da un foglio di calcolo o da un registro giornaliero e controlla duplicati, sovrapposizioni e righe ignorate." />
   <meta name="apple-itunes-app" content="app-id=6760133544, app-argument=https://apps.apple.com/app/atlasdays-track-country-days/id6760133544" />
   <meta property="og:locale" content="it_IT" />
   <meta property="og:image" content="https://atlasdays.app/assets/social/site-v1.png" />
@@ -73,7 +73,7 @@
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "Importazione CSV",
-    "description": "Importa lo storico dei viaggi da CSV in AtlasDays e controlla righe valide, errori, duplicati e sovrapposizioni prima di salvare.",
+    "description": "Importa soggiorni dal CSV di un’altra app, da un foglio di calcolo o da un registro giornaliero e controlla duplicati, sovrapposizioni e righe ignorate.",
     "author": {
       "@type": "Organization",
       "name": "AtlasDays",
@@ -173,52 +173,57 @@
       <p class="toc-title">In questa pagina</p>
       <ul>
         <li><a href="#importa-il-file">Importa il file</a></li>
+        <li><a href="#da-dove-pu-arrivare-il-file">Da dove può arrivare il file</a></li>
         <li><a href="#leggi-l-anteprima">Leggi l’anteprima</a></li>
-        <li><a href="#correggi-gli-errori-nel-file-di-origine">Correggi gli errori nel file di origine</a></li>
+        <li><a href="#correggi-le-righe-ignorate-nel-file-di-origine">Correggi le righe ignorate nel file di origine</a></li>
         <li><a href="#reimporta-un-esportazione">Reimporta un’esportazione</a></li>
-        <li><a href="#se-tutte-le-righe-non-sono-valide">Se tutte le righe non sono valide</a></li>
+        <li><a href="#se-non-vengono-trovati-soggiorni">Se non vengono trovati soggiorni</a></li>
       </ul>
     </nav>
     <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb" aria-label="Percorso di navigazione"><a href="/it/">AtlasDays</a> / <a href="/it/help/">Centro assistenza</a></nav>
 
     <h1>Importazione CSV</h1>
-<p class="article-answer">Aggiungi più soggiorni insieme da un foglio di calcolo salvato come CSV. AtlasDays convalida ogni riga, mostra un’anteprima e non salva nulla finché non confermi. È uno dei <a href="/it/help/import-trips">modi per aggiungere soggiorni passati</a>.</p>
+<p class="article-answer">Aggiungi soggiorni dall’esportazione di un’altra app di viaggio, da un foglio di calcolo o da un registro giorno per giorno salvato come CSV. AtlasDays controlla ogni riga, mostra un’anteprima e non salva nulla finché non confermi. È uno dei <a href="/it/help/import-trips">modi per aggiungere soggiorni passati</a>.</p>
 
     <h2 id="importa-il-file">Importa il file</h2>
     <ol>
       <li>Apri <strong>Impostazioni → Importa → File CSV</strong>.</li>
-      <li>Prepara il file in Sheets, Numbers o Excel ed esportalo come CSV. <strong>CSV di esempio</strong> mostra le intestazioni esatte con righe di esempio; il pulsante di condivisione salva il file come punto di partenza.</li>
       <li>Tocca <strong>Seleziona file CSV</strong> e scegli il file da File.</li>
       <li>Controlla l’anteprima, <strong>Trovato nel CSV</strong>.</li>
       <li>Tocca <strong>Importa</strong> e conferma.</li>
     </ol>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/it/help/csv-import/csv-setup.webp" alt="Configurazione dell’importazione CSV e controlli del file di esempio" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
-    <p><strong>Crea CSV con l’IA</strong> copia un prompt già pronto per ChatGPT, Claude o un altro assistente. Incolla le tue note di viaggio dopo il prompt e salva la risposta come CSV. Questi strumenti trattano il testo secondo le proprie informative sulla privacy: escludi le informazioni che non incolleresti altrove.</p>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/it/help/csv-import/csv-setup.webp" alt="Schermata Importa da CSV con Da un’altra app, Usa un modello CSV e Crea CSV con l’IA" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
+    <h2 id="da-dove-pu-arrivare-il-file">Da dove può arrivare il file</h2>
+    <ul>
+      <li><strong>Da un’altra app.</strong> Le esportazioni di altri tracker di viaggio di solito funzionano così come sono. AtlasDays riconosce i nomi più comuni delle colonne di paese e date e legge file con una riga per soggiorno, una riga per giorno o una riga per attraversamento di frontiera. Il <a href="/it/help/csv-format-reference">Riferimento del formato CSV</a> elenca cosa legge.</li>
+      <li><strong>Usa un modello CSV.</strong> Per preparare il file in autonomia, apri il modello. <strong>CSV di esempio</strong> mostra le intestazioni con righe di esempio; il pulsante di condivisione salva il file come punto di partenza. Compilalo in Sheets, Numbers o Excel ed esportalo come CSV.</li>
+      <li><strong>Crea CSV con l’IA.</strong> Quando AtlasDays non riesce a leggere il file, o lo storico dei viaggi è in note o schermate, questa opzione apre un prompt già pronto. Copialo in ChatGPT, Claude o un altro assistente, aggiungi il file, le schermate o le note e importa il CSV che ricevi. AtlasDays copia soltanto il prompt e non invia nulla. Questi strumenti trattano ciò che fornisci secondo le proprie informative sulla privacy: escludi le informazioni che non condivideresti altrove.</li>
+    </ul>
     <p>Puoi iniziare anche dal file stesso. Condividi un CSV da File, dai download di Safari o da Mail e scegli <strong>AtlasDays</strong>: si apre la stessa anteprima. AtlasDays viene proposto come opzione per i file CSV, senza diventare l’app predefinita.</p>
 
     <h2 id="leggi-l-anteprima">Leggi l’anteprima</h2>
-    <p>L’anteprima elenca le righe valide e mostra conteggi che puoi toccare per filtrare. Usa <strong>Seleziona tutto</strong> o <strong>Deseleziona tutto</strong> per scegliere cosa importare.</p>
+    <p>L’anteprima elenca le righe che può importare e mostra conteggi che puoi toccare per filtrare. Tocca una riga per correggerla oppure deselezionala per escluderla. Con tre o più righe, <strong>Seleziona tutto</strong> e <strong>Deseleziona tutto</strong> cambiano l’intero elenco.</p>
     <ul>
       <li><strong>Duplicato:</strong> la riga è contenuta in un soggiorno già presente oppure ripete una riga precedente. Viene saltata.</li>
-      <li><strong>Unisci:</strong> la riga comprende un soggiorno già presente nello stesso paese. All’importazione, quel soggiorno viene esteso per includere le date della riga, mentre note e motivi vengono combinati. <strong>Soggiorni da unire nel file</strong> indica righe del file che si uniscono tra loro.</li>
-      <li><strong>Sovrapposizione:</strong> la riga si sovrappone in parte a un altro soggiorno. Potrebbe essere un secondo soggiorno reale o una seconda versione dello stesso: confronta le date prima di mantenerla.</li>
+      <li><strong>Unisci:</strong> la riga ha almeno un giorno in comune con un soggiorno già presente nello stesso luogo. All’importazione, quel soggiorno viene esteso per includere le date della riga, mentre note e motivi vengono combinati. <strong>Soggiorni da unire nel file</strong> indica righe del file che si uniscono tra loro.</li>
+      <li><strong>Sovrapposizione:</strong> la riga ha una notte in comune con un soggiorno in un altro paese o stato USA. Confronta le date prima di mantenerla.</li>
       <li><strong>Transiti</strong> e <strong>Stati USA</strong> contano le righe dei rispettivi tipi. Senza Pro, le righe degli stati vengono importate come normali soggiorni negli Stati Uniti.</li>
     </ul>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/it/help/csv-import/csv-review.webp" alt="Anteprima di importazione CSV con righe valide, non valide, duplicate e sovrapposte" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/it/help/csv-import/csv-review.webp" alt="Anteprima Trovato nel CSV con righe duplicate, sovrapposte e ignorate" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
-    <h2 id="correggi-gli-errori-nel-file-di-origine">Correggi gli errori nel file di origine</h2>
-    <p>Le righe che AtlasDays non riesce a leggere compaiono sotto <strong>N righe con errori</strong>, con numero e motivo. Le righe non valide non vengono mai importate. Correggile nel foglio di calcolo, esporta di nuovo e seleziona nuovamente il file.</p>
+    <h2 id="correggi-le-righe-ignorate-nel-file-di-origine">Correggi le righe ignorate nel file di origine</h2>
+    <p>Le righe che AtlasDays non riesce a leggere vengono contate come <strong>N righe ignorate</strong> ed elencate sotto <strong>Ignorate</strong>, raggruppate per motivo con i numeri di riga. Le righe ignorate non vengono mai importate. Correggile nel foglio di calcolo, esporta di nuovo e seleziona nuovamente il file.</p>
 
     <div class="callout"><p><strong>Nulla cambia finché non tocchi Importa.</strong> Selezionare un file e visualizzare l’anteprima non aggiunge soggiorni.</p></div>
 
     <h2 id="reimporta-un-esportazione">Reimporta un’esportazione</h2>
-    <p>Un’<a href="/it/help/export-and-reports">esportazione</a> in foglio di calcolo salvata come CSV può essere importata di nuovo, purché sia stata esportata in inglese: le intestazioni vengono lette solo in inglese. Per una copia completa di soggiorni, tracker e impostazioni, usa un <a href="/it/help/backup-and-restore">backup</a>.</p>
+    <p>Un’<a href="/it/help/export-and-reports">esportazione</a> in foglio di calcolo salvata come CSV può essere importata di nuovo, purché sia stata esportata in inglese con le date nel formato <code>yyyy-mm-dd</code>: le intestazioni vengono lette solo in inglese. Per una copia completa di soggiorni, tracker, Profilo e impostazioni, usa un <a href="/it/help/backup-and-restore">backup</a>.</p>
 
     <section class="if-needed">
-      <h2 id="se-tutte-le-righe-non-sono-valide">Se tutte le righe non sono valide</h2>
-      <p>Verifica che la prima riga contenga le intestazioni e includa <strong>Country</strong>, e che le date usino <code>yyyy-mm-dd</code> oppure un anno di quattro cifre. Il <a href="/it/help/csv-format-reference">Riferimento del formato CSV</a> elenca colonne supportate, valori e ogni messaggio di errore.</p>
+      <h2 id="se-non-vengono-trovati-soggiorni">Se non vengono trovati soggiorni</h2>
+      <p>Quando AtlasDays non può usare nessuna riga, il file resta nella schermata di configurazione e <strong>Nessun soggiorno trovato</strong> spiega il motivo, per esempio che non ha trovato una colonna del paese. Tocca lì <strong>Crea CSV con l’IA</strong> per far convertire il file da un assistente. Il <a href="/it/help/csv-format-reference">Riferimento del formato CSV</a> elenca colonne supportate, valori e ogni messaggio di errore.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-csv-import">
       <h2 id="next-csv-import">Continua con</h2>
