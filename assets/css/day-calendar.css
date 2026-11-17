@@ -526,6 +526,91 @@ html[data-theme="light"] .daycal { --cal-disc: rgba(12, 22, 40, 0.07); --tone-wa
 .cal-qr svg { display: block; width: 100%; height: auto; }
 .cal-dialog [data-cal-close] { margin-left: auto; border: 0; background: none; color: var(--muted); }
 
+/* Give the QR handoff one centered reading order. */
+.cal-dialog-steps:has(.cal-dialog-scan:not([hidden])) {
+  box-sizing: border-box;
+  width: min(420px, calc(100vw - 32px));
+  max-height: calc(100dvh - 32px);
+  padding: 28px 28px 18px;
+  overflow-y: auto;
+  border-radius: 24px;
+}
+.cal-dialog-steps:has(.cal-dialog-scan:not([hidden])):has(.cal-qr.is-large) {
+  width: min(548px, calc(100vw - 32px));
+}
+.cal-dialog-steps:has(.cal-dialog-scan:not([hidden])) .cal-dialog-head {
+  display: block;
+  margin-bottom: 24px;
+  text-align: center;
+}
+.cal-dialog-steps:has(.cal-dialog-scan:not([hidden])) .cal-dialog-icon { display: none; }
+.cal-dialog-steps:has(.cal-dialog-scan:not([hidden])) .cal-dialog-title {
+  max-width: 26ch;
+  margin-inline: auto;
+  font-size: 1.25rem;
+  line-height: 1.3;
+  text-wrap: balance;
+}
+.cal-dialog-steps:has(.cal-dialog-scan:not([hidden])) .cal-dialog-sub {
+  max-width: 36ch;
+  margin: 10px auto 0;
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+.cal-dialog-steps .cal-dialog-scan,
+.cal-dialog-steps .cal-dialog-scan.is-large {
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  margin: 0;
+}
+.cal-dialog-steps .cal-dialog-scan .cal-qr {
+  max-width: 100%;
+  margin: 0 auto;
+  border-radius: 18px;
+}
+.cal-dialog-steps .cal-scan-copy { flex: none; width: 100%; max-width: 30ch; text-align: center; }
+.cal-dialog-steps .cal-scan-lead {
+  margin: 0;
+  font-size: 0.92rem;
+  font-weight: 500;
+  line-height: 1.5;
+  text-wrap: pretty;
+}
+.cal-dialog-steps:has(.cal-dialog-scan:not([hidden])) .cal-dialog-foot {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+  margin-top: 24px;
+  padding: 0;
+  border-top: 0;
+  text-align: center;
+}
+.cal-dialog-steps:has(.cal-dialog-scan:not([hidden])) .cal-dialog-foot .cal-dialog-link {
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 44px;
+  padding: 10px 16px;
+  border: 1px solid var(--line-strong);
+  border-radius: 12px;
+  background: var(--blue-soft);
+  color: var(--text);
+  line-height: 1.4;
+}
+.cal-dialog-steps:has(.cal-dialog-scan:not([hidden])) .cal-dialog-foot .cal-dialog-link:hover {
+  border-color: var(--blue);
+}
+.cal-dialog-steps:has(.cal-dialog-scan:not([hidden])) .cal-dialog-foot [data-cal-close] {
+  align-self: center;
+  min-height: 40px;
+  margin: 0;
+  padding: 8px 20px;
+  font-weight: 500;
+}
+@media (max-width: 420px) {
+  .cal-dialog-steps:has(.cal-dialog-scan:not([hidden])) { padding: 24px 20px 14px; }
+}
+
 /* On a phone: hint, result, calendar, trips, one under the other. */
 @media (max-width: 640px) {
   [data-cal-list] { max-height: min(380px, 55vh); }
