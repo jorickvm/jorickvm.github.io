@@ -669,6 +669,36 @@ def render_cluster_related(
     )
 
 
+ENGLISH_HELP_SHOT = re.compile(
+    r'^([ \t]*)<figure class="help-shot[^"]*"><img src="/assets/article-images/help/',
+    re.MULTILINE,
+)
+
+
+def render_english_screenshot_note(
+    content: str,
+    article: dict[str, object],
+    code: str,
+    strings: dict[str, dict[str, str]],
+) -> str:
+    """Say once, above the first one, that a translated Help page shows
+    English screenshots.
+
+    A slot without a capture in the page's language falls back to the English
+    file, so the picture names controls differently from the text around it.
+    The note follows the image paths: it appears on a page with at least one
+    English capture and goes when the last one is replaced.
+    """
+    if article.get("section") != "help" or code == default_locale_code():
+        return content
+    note = strings.get("help.screenshots_english", {}).get(code)
+    match = ENGLISH_HELP_SHOT.search(content)
+    if not note or not match:
+        return content
+    line = f'{match.group(1)}<p class="help-shot-note">{html.escape(note)}</p>\n'
+    return content[: match.start()] + line + content[match.start() :]
+
+
 def render_help_tail(
     article: dict[str, object],
     locale: dict[str, object],
@@ -1837,6 +1867,7 @@ def render_article(
     prefix = asset_prefix(str(article["path"]))
     source_path = str(article.get("social_source_path", article["path"]))
     code = str(locale["code"])
+    content = render_english_screenshot_note(content, article, code, strings)
     content = render_country_checklist(content, code)
     content = render_factbox_legal_basis(content, article)
     content = render_learn_trust(content, article, locale, strings)
