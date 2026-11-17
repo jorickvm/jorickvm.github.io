@@ -97,7 +97,7 @@
   <script>window.AtlasDaysPageLocales={"en":{"url":"/help/day-counting","label":"Read this page in English","dismiss":"Dismiss"},"ja":{"url":"/ja/help/day-counting","label":"このページを日本語で読む","dismiss":"閉じる"},"nl":{"url":"/nl/help/day-counting","label":"Lees deze pagina in het Nederlands","dismiss":"Sluiten"},"de":{"url":"/de/help/day-counting","label":"Diese Seite auf Deutsch lesen","dismiss":"Schließen"},"es":{"url":"/es/help/day-counting","label":"Lee esta página en español","dismiss":"Cerrar"},"fr":{"url":"/fr/help/day-counting","label":"Lire cette page en français","dismiss":"Fermer"},"ru":{"url":"/ru/help/day-counting","label":"Читать эту страницу на русском","dismiss":"Закрыть"},"uk":{"url":"/uk/help/day-counting","label":"Читати цю сторінку українською","dismiss":"Закрити"},"tr":{"url":"/tr/help/day-counting","label":"Bu sayfayı Türkçe okuyun","dismiss":"Kapat"},"pt":{"url":"/pt/help/day-counting","label":"Leia esta página em português","dismiss":"Fechar"},"zh-Hant":{"url":"/zh-Hant/help/day-counting","label":"以繁體中文閱讀本頁","dismiss":"關閉"},"zh-Hans":{"url":"/zh-Hans/help/day-counting","label":"以简体中文阅读本页","dismiss":"关闭"},"pl":{"url":"/pl/help/day-counting","label":"Przeczytaj tę stronę po polsku","dismiss":"Zamknij"},"it":{"url":"/it/help/day-counting","label":"Leggi questa pagina in italiano","dismiss":"Chiudi"}};window.AtlasDaysMatchLocale=function(tag,m){var w=String(tag||'').trim().replace(/_/g,'-').toLowerCase(),c;if(!w)return '';for(c in m)if(c.toLowerCase()===w)return c;var s=function(t){try{return new Intl.Locale(t).maximize().script||''}catch(err){return null}},b=w.split('-')[0],x=s(w);for(c in m){if(c.toLowerCase().split('-')[0]!==b)continue;if(x===null){if(c.indexOf('-')<0)return c;continue}if(s(c)===x)return c}return ''};(function(){var q=new URLSearchParams(location.search).get('lang');if(!q)return;var m=window.AtlasDaysPageLocales,e=m[window.AtlasDaysMatchLocale(q,m)];if(e&&e.url!==location.pathname)location.replace(e.url+location.search+location.hash)})()</script>
   <script defer src="../../assets/js/locale-route.js?v=20260830c"></script>
   <link rel="stylesheet" href="../../assets/css/tokens.css?v=20260928f" />
-  <link rel="stylesheet" href="../../assets/css/article-variants/help20260802.css?v=20260928f" />
+  <link rel="stylesheet" href="../../assets/css/article-variants/help20260802.css?v=20261117a" />
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20261027j" />
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
@@ -204,7 +204,8 @@
     <script>(function(){var t=document.currentScript.previousElementSibling;if(matchMedia('(min-width: 760px)').matches)t.open=true})();</script>
     <h2 id="section-1">도착일과 출발일을 모두 포함합니다</h2>
     <p>6월 1일부터 6월 3일까지의 여행은 6월 1일, 6월 2일, 6월 3일로 3일을 더합니다. 당일 여행은 1일을 더합니다.</p>
-    <figure class="help-shot help-shot-control"><img src="/assets/article-images/ko/help/day-counting/exact-dates.webp" alt="시작일과 종료일이 보이는 여행 날짜" width="1320" height="900" loading="lazy" decoding="async" /></figure>
+    <p class="help-shot-note">스크린샷은 영어로 표시된 앱 화면입니다. 본문에는 한국어 화면에 보이는 이름을 썼습니다.</p>
+    <figure class="help-shot help-shot-control"><img src="/assets/article-images/help/day-counting/exact-dates.webp" alt="시작일과 종료일이 보이는 여행 날짜" width="1320" height="900" loading="lazy" decoding="async" /></figure>
 
     <h2 id="section-2">트래커마다 세는 방식이 다를 수 있습니다</h2>
     <p>트래커의 <strong>한도</strong> 설정에서 <strong>일수</strong>는 도착일과 출발일을 온전히 셉니다. <strong>숙박 일수</strong>는 도착일과 출발일 사이의 밤 수를 세므로, 6월 1일부터 6월 3일까지는 2박입니다. <strong>부재 일수</strong>는 트래커에 지정한 장소의 체류가 닿지 않는 날을 셉니다. 이 계산에는 여행 기록이 전혀 없는 날도 포함되며, <strong>환승</strong>이나 <strong>연도만</strong> 여행은 체류로 보지 않습니다. <strong>온전한 날</strong>은 도착일과 출발일을 빼고 하루 전체를 보낸 날만 세므로, 6월 1일부터 6월 3일까지는 1일이고 당일치기 여행은 전혀 세지 않습니다. 설정 위치는 <a href="/ko/help/create-a-tracker">트래커 만들기</a>에서 볼 수 있습니다.</p>
@@ -215,11 +216,11 @@
 
     <h2 id="section-4">종료일 미정 여행은 오늘까지 셉니다</h2>
     <p>이미 시작된 <strong>종료일 미정</strong> 여행은 체류 중인 여행입니다. AtlasDays는 오늘을 실질적인 종료일로 사용하므로, 출발일을 추가하기 전까지는 합계가 매일 늘어날 수 있습니다. 앞으로 시작할 여행은 현재 합계에 들어가지 않습니다.</p>
-    <figure class="help-shot help-shot-control"><img src="/assets/article-images/ko/help/day-counting/ongoing.webp" alt="종료일이 없는 체류 중인 여행" width="1320" height="1150" loading="lazy" decoding="async" /></figure>
+    <figure class="help-shot help-shot-control"><img src="/assets/article-images/help/day-counting/ongoing.webp" alt="종료일이 없는 체류 중인 여행" width="1320" height="1150" loading="lazy" decoding="async" /></figure>
 
     <h2 id="section-5">연도만 여행은 일수를 만들지 않습니다</h2>
     <p><strong>연도만</strong> 여행은 없는 날짜를 지어내지 않고 여행 기록을 남깁니다. 그 장소를 방문한 곳으로 표시하지만, 일수 합계나 롤링 기간 계산에는 아무것도 더하지 않습니다. 언제 쓰면 좋은지는 <a href="/ko/help/history-and-import">여행 날짜가 처리되는 방식</a>에서 다룹니다.</p>
-    <figure class="help-shot help-shot-control"><img src="/assets/article-images/ko/help/day-counting/approximate.webp" alt="시작 연도와 종료 연도가 있는 연도만 여행" width="1320" height="1250" loading="lazy" decoding="async" /></figure>
+    <figure class="help-shot help-shot-control"><img src="/assets/article-images/help/day-counting/approximate.webp" alt="시작 연도와 종료 연도가 있는 연도만 여행" width="1320" height="1250" loading="lazy" decoding="async" /></figure>
 
     <h2 id="transit">환승이 일수 계산에 미치는 영향</h2>
     <p>공항 환승 구역에서 갈아타는 경우처럼 해당 국가에 입국하지 않았다면 <strong>환승</strong>을 선택하십시오. 기록은 여행 기록에 남지만 해당 국가는 방문한 곳으로 표시되지 않습니다. 일반적인 체류 일수 계산에서는 환승을 제외하며, 해당 장소 밖에서 보낸 일수를 세는 트래커는 환승을 그곳에서의 체류로 보지 않습니다. <strong>영국: 세법상 거주</strong>와 <strong>미국 실질 체류 테스트</strong> 트래커는 정확한 날짜가 있는 환승 기록을 포함할 수 있습니다. 환승 표시만으로 세법상 일수 제외 요건이 충족되는 것은 아닙니다.</p>

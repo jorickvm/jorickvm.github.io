@@ -97,7 +97,7 @@
   <script>window.AtlasDaysPageLocales={"en":{"url":"/help/tracker-presets","label":"Read this page in English","dismiss":"Dismiss"},"nl":{"url":"/nl/help/tracker-presets","label":"Lees deze pagina in het Nederlands","dismiss":"Sluiten"},"de":{"url":"/de/help/tracker-presets","label":"Diese Seite auf Deutsch lesen","dismiss":"Schließen"},"es":{"url":"/es/help/tracker-presets","label":"Lee esta página en español","dismiss":"Cerrar"},"fr":{"url":"/fr/help/tracker-presets","label":"Lire cette page en français","dismiss":"Fermer"},"ru":{"url":"/ru/help/tracker-presets","label":"Читать эту страницу на русском","dismiss":"Закрыть"},"uk":{"url":"/uk/help/tracker-presets","label":"Читати цю сторінку українською","dismiss":"Закрити"},"tr":{"url":"/tr/help/tracker-presets","label":"Bu sayfayı Türkçe okuyun","dismiss":"Kapat"},"pt":{"url":"/pt/help/tracker-presets","label":"Leia esta página em português","dismiss":"Fechar"},"ko":{"url":"/ko/help/tracker-presets","label":"이 페이지를 한국어로 읽기","dismiss":"닫기"},"zh-Hant":{"url":"/zh-Hant/help/tracker-presets","label":"以繁體中文閱讀本頁","dismiss":"關閉"},"zh-Hans":{"url":"/zh-Hans/help/tracker-presets","label":"以简体中文阅读本页","dismiss":"关闭"},"pl":{"url":"/pl/help/tracker-presets","label":"Przeczytaj tę stronę po polsku","dismiss":"Zamknij"},"it":{"url":"/it/help/tracker-presets","label":"Leggi questa pagina in italiano","dismiss":"Chiudi"}};window.AtlasDaysMatchLocale=function(tag,m){var w=String(tag||'').trim().replace(/_/g,'-').toLowerCase(),c;if(!w)return '';for(c in m)if(c.toLowerCase()===w)return c;var s=function(t){try{return new Intl.Locale(t).maximize().script||''}catch(err){return null}},b=w.split('-')[0],x=s(w);for(c in m){if(c.toLowerCase().split('-')[0]!==b)continue;if(x===null){if(c.indexOf('-')<0)return c;continue}if(s(c)===x)return c}return ''};(function(){var q=new URLSearchParams(location.search).get('lang');if(!q)return;var m=window.AtlasDaysPageLocales,e=m[window.AtlasDaysMatchLocale(q,m)];if(e&&e.url!==location.pathname)location.replace(e.url+location.search+location.hash)})()</script>
   <script defer src="../../assets/js/locale-route.js?v=20260830c"></script>
   <link rel="stylesheet" href="../../assets/css/tokens.css?v=20260928f" />
-  <link rel="stylesheet" href="../../assets/css/article-variants/help20260802.css?v=20260928f" />
+  <link rel="stylesheet" href="../../assets/css/article-variants/help20260802.css?v=20261117a" />
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20261027j" />
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
@@ -211,6 +211,7 @@
       <li><strong>「帰化」：</strong>帰化の申請で求められる滞在と不在の要件です。</li>
     </ul>
     <p>選んだ目的によって、おすすめされるルールと一覧に表示されるルールが決まります。選び終えたら、見出しをタップすると目的の一覧をたたんでおけます。</p>
+    <p class="help-shot-note">スクリーンショットは英語表示のアプリのものです。本文では、日本語の画面に表示される名前を使っています。</p>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/help/tracker-presets/tracker-wizard.webp" alt="4つの目的と「おすすめ」が表示された「トラッカーを追加」画面" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
     <h2 id="section-2">おすすめ</h2>
@@ -223,7 +224,7 @@
 
     <h2 id="section-4">検索</h2>
     <p>右上の虫眼鏡をタップして、ルール名、略称、国名を入力します。検索はルールの説明文にも一致するため、183のような数字でも探せます。検索結果の上にあるピル、<strong>「ビザ」</strong>、<strong>「税務」</strong>、<strong>「米国の州」</strong>、<strong>「在留」</strong>、<strong>「帰化」</strong>で、結果を1つの分類に絞り込めます。国名を入力すると<strong>「この国のトラッカーをカスタム設定します。」</strong>も表示され、結果の最後には<strong>「カスタム設定」</strong>が並びます。一致するプリセットがないときは、入力した語句とともに<strong>「…に一致するプリセットはありません」</strong>と表示されます。</p>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/ja/help/tracker-presets/search-results.webp" alt="国名で検索した「トラッカーを追加」の検索結果" width="1320" height="2097" loading="lazy" decoding="async" /></figure>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/help/tracker-presets/search-results.webp" alt="国名で検索した「トラッカーを追加」の検索結果" width="1320" height="2097" loading="lazy" decoding="async" /></figure>
 
     <h2 id="section-5">カスタム</h2>
     <p>「地域から探す」の先頭にある<strong>「カスタム設定」</strong>カードをタップすると、場所とルールを自分で選ぶエディタが開きます。チェックした目的ごとに1種類のカスタムトラッカーが用意されています。<strong>「ビザ・入国上限をカスタム設定」</strong>、<strong>「税務居住トラッカーをカスタム設定」</strong>、<strong>「在留資格トラッカーをカスタム設定」</strong>、<strong>「帰化トラッカーをカスタム設定」</strong>です。</p>

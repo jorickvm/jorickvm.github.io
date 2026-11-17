@@ -97,7 +97,7 @@
   <script>window.AtlasDaysPageLocales={"en":{"url":"/help/getting-started","label":"Read this page in English","dismiss":"Dismiss"},"ja":{"url":"/ja/help/getting-started","label":"このページを日本語で読む","dismiss":"閉じる"},"nl":{"url":"/nl/help/getting-started","label":"Lees deze pagina in het Nederlands","dismiss":"Sluiten"},"de":{"url":"/de/help/getting-started","label":"Diese Seite auf Deutsch lesen","dismiss":"Schließen"},"es":{"url":"/es/help/getting-started","label":"Lee esta página en español","dismiss":"Cerrar"},"fr":{"url":"/fr/help/getting-started","label":"Lire cette page en français","dismiss":"Fermer"},"ru":{"url":"/ru/help/getting-started","label":"Читать эту страницу на русском","dismiss":"Закрыть"},"uk":{"url":"/uk/help/getting-started","label":"Читати цю сторінку українською","dismiss":"Закрити"},"tr":{"url":"/tr/help/getting-started","label":"Bu sayfayı Türkçe okuyun","dismiss":"Kapat"},"pt":{"url":"/pt/help/getting-started","label":"Leia esta página em português","dismiss":"Fechar"},"ko":{"url":"/ko/help/getting-started","label":"이 페이지를 한국어로 읽기","dismiss":"닫기"},"zh-Hans":{"url":"/zh-Hans/help/getting-started","label":"以简体中文阅读本页","dismiss":"关闭"},"pl":{"url":"/pl/help/getting-started","label":"Przeczytaj tę stronę po polsku","dismiss":"Zamknij"},"it":{"url":"/it/help/getting-started","label":"Leggi questa pagina in italiano","dismiss":"Chiudi"}};window.AtlasDaysMatchLocale=function(tag,m){var w=String(tag||'').trim().replace(/_/g,'-').toLowerCase(),c;if(!w)return '';for(c in m)if(c.toLowerCase()===w)return c;var s=function(t){try{return new Intl.Locale(t).maximize().script||''}catch(err){return null}},b=w.split('-')[0],x=s(w);for(c in m){if(c.toLowerCase().split('-')[0]!==b)continue;if(x===null){if(c.indexOf('-')<0)return c;continue}if(s(c)===x)return c}return ''};(function(){var q=new URLSearchParams(location.search).get('lang');if(!q)return;var m=window.AtlasDaysPageLocales,e=m[window.AtlasDaysMatchLocale(q,m)];if(e&&e.url!==location.pathname)location.replace(e.url+location.search+location.hash)})()</script>
   <script defer src="../../assets/js/locale-route.js?v=20260830c"></script>
   <link rel="stylesheet" href="../../assets/css/tokens.css?v=20260928f" />
-  <link rel="stylesheet" href="../../assets/css/article-variants/help20260802.css?v=20260928f" />
+  <link rel="stylesheet" href="../../assets/css/article-variants/help20260802.css?v=20261117a" />
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20261027j" />
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
@@ -214,28 +214,29 @@
       <li><strong>開啟通知</strong>：接收行程更新與文件提醒。</li>
     </ol>
     <p>卡片會顯示目前完成的進度。全部完成，或不想使用時，長按卡片並選擇<strong>隱藏</strong>。之後可從<strong>設定 → 外觀</strong>重新顯示。本文接下來說明每個步驟能帶來什麼。</p>
+    <p class="help-shot-note">截圖顯示的是英文版 App。內文使用的是你在中文介面看到的名稱。</p>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/help/getting-started/set-up.webp" alt="「設定 AtlasDays」檢查清單，含五個步驟" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
     <h2 id="section-3">不用打字也能補齊時間軸</h2>
     <p>過去的行程交給照片，接下來的旅行交給<a href="/zh-Hant/help/auto-detect-trips">自動偵測</a>。</p>
     <p>開啟<strong>設定 → 匯入 → 照片</strong>，輕點<strong>在照片中尋找行程</strong>。<a href="/zh-Hant/help/photo-import">照片匯入</a>會在裝置上讀取含地理標記的照片中繼資料，提出行程建議供確認；確認前不會儲存任何內容。如果 Google 地圖的定位紀錄涵蓋了你的旅行，可使用 <a href="/zh-Hant/help/google-timeline-import">Google Timeline 匯入</a>；如果 Flighty 的航班紀錄涵蓋了大部分行程，可使用 <a href="/zh-Hant/help/flighty-import">Flighty 匯入</a>；如果紀錄已經在試算表或其他 App 中，則可改用 <a href="/zh-Hant/help/csv-import">CSV 匯入</a>。<a href="/zh-Hant/help/import-trips">匯入行程</a>會比較各種來源。</p>
-    <figure class="help-shot help-shot-control"><img src="/assets/article-images/zh-Hant/help/getting-started/import-hub.webp" alt="匯入畫面，列出新增行程的各種方式" width="1320" height="1730" loading="lazy" decoding="async" /></figure>
+    <figure class="help-shot help-shot-control"><img src="/assets/article-images/help/getting-started/import-hub.webp" alt="匯入畫面，列出新增行程的各種方式" width="1320" height="1730" loading="lazy" decoding="async" /></figure>
     <p>接著在<strong>設定 → 自動偵測</strong>開啟<strong>自動偵測行程</strong>，新的旅行就會自動加入時間軸，不必手動輸入。可從時間軸或通知查看行程，之後隨時可以編輯或刪除。</p>
 
     <h2 id="section-4">時間軸保存整份紀錄</h2>
     <p>每趟行程都會依日期排列，日期就是你填入的那些。輕點行程即可開啟它的頁面，或輕點 <strong>+</strong> 手動新增一筆。時間軸還沒有行程時不會顯示 <strong>+</strong>，而是顯示<strong>新增第一個行程</strong>卡片，提供<strong>查看匯入方式</strong>和<strong>手動新增</strong>。</p>
     <p>較早的旅行紀錄不必勉強填入精確日期。只知道年份時，可將行程存成<a href="/zh-Hant/help/history-and-import">僅年份</a>，讓國家保留在地圖上，又不必憑空編出日期。需要納入目前有效上限計算的行程，則必須填入實際日期。</p>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/zh-Hant/help/getting-started/timeline.webp" alt="AtlasDays 時間軸，依國家和日期列出已儲存的行程" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/help/getting-started/timeline.webp" alt="AtlasDays 時間軸，依國家和日期列出已儲存的行程" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
     <h2 id="section-5">總覽呈現累計結果</h2>
     <p>這裡有你的追蹤器、顯示各國天數、海外天數和已造訪地點的<a href="/zh-Hant/help/statistics">統計</a>卡片，以及世界地圖。統計卡片的期間可切換為全部期間、單一年份、最近的天數或自訂日期，讓同一份紀錄回答不同問題。</p>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/zh-Hant/help/getting-started/dashboard.webp" alt="AtlasDays 總覽，顯示追蹤器、統計卡片和世界地圖" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/help/getting-started/dashboard.webp" alt="AtlasDays 總覽，顯示追蹤器、統計卡片和世界地圖" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
     <div class="callout"><p><strong>告訴 AtlasDays 你住在哪裡。</strong>初始設定不會詢問。請開啟<strong>設定 → 個人檔案</strong>，回答<strong>目前住在哪裡？</strong>，海外天數才知道哪些日子算在外，「新增追蹤器」也能建議可能適用的規則。如果曾在多個國家居住，請在<a href="/zh-Hant/help/profile">居住紀錄</a>中逐一加入每個國家及其日期。</p></div>
 
     <h2 id="section-6">新增第一個追蹤器</h2>
     <p>追蹤器讓 AtlasDays 不只是一本旅行日記。輕點總覽右上角的 <strong>+</strong> 並選擇<strong>新增追蹤器</strong>，或使用「設定 AtlasDays」中的<strong>新增追蹤器</strong>步驟。先選擇想追蹤的項目，例如簽證或稅務，再挑選建議的規則，或依地區瀏覽所有規則。追蹤器隨即會顯示已用天數、剩餘天數和目前進度。<a href="/zh-Hant/help/create-a-tracker">建立追蹤器</a>說明各項選項。</p>
-    <figure class="help-shot help-shot-control"><img src="/assets/article-images/zh-Hant/help/getting-started/add-tracker.webp" alt="總覽頂端列，含可新增行程或追蹤器的 + 按鈕" width="1320" height="900" loading="lazy" decoding="async" /></figure>
+    <figure class="help-shot help-shot-control"><img src="/assets/article-images/help/getting-started/add-tracker.webp" alt="總覽頂端列，含可新增行程或追蹤器的 + 按鈕" width="1320" height="812" loading="lazy" decoding="async" /></figure>
     <p>追蹤器是否準確，取決於行程紀錄。若相關行程日期仍不完整，顯示的總計只能視為暫定結果。追蹤一項上限是免費的；更多追蹤器和部分規則類型需要 <a href="/zh-Hant/help/atlasdays-pro">Pro</a>。</p>
 
     <section class="if-needed">

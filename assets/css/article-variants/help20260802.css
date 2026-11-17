@@ -98,6 +98,14 @@ html[data-theme="light"] .icon-moon, html[data-theme="light"] .logo-light { disp
    scripts/sync_help_screenshots.py adds this class by source width, never by
    orientation. */
 .help-shot-landscape img { max-width: 100%; }
+/* Above the first English capture on a translated page. The negative margin
+   brings it close to the screenshot it introduces. */
+.help-shot-note {
+  margin: 18px 0 -8px;
+  color: var(--muted-2);
+  font-size: 0.86rem;
+  text-align: center;
+}
 @media (max-width: 520px) {
   .help-shot-screen img,
   .help-shot-control img,

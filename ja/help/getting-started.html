@@ -97,7 +97,7 @@
   <script>window.AtlasDaysPageLocales={"en":{"url":"/help/getting-started","label":"Read this page in English","dismiss":"Dismiss"},"nl":{"url":"/nl/help/getting-started","label":"Lees deze pagina in het Nederlands","dismiss":"Sluiten"},"de":{"url":"/de/help/getting-started","label":"Diese Seite auf Deutsch lesen","dismiss":"Schließen"},"es":{"url":"/es/help/getting-started","label":"Lee esta página en español","dismiss":"Cerrar"},"fr":{"url":"/fr/help/getting-started","label":"Lire cette page en français","dismiss":"Fermer"},"ru":{"url":"/ru/help/getting-started","label":"Читать эту страницу на русском","dismiss":"Закрыть"},"uk":{"url":"/uk/help/getting-started","label":"Читати цю сторінку українською","dismiss":"Закрити"},"tr":{"url":"/tr/help/getting-started","label":"Bu sayfayı Türkçe okuyun","dismiss":"Kapat"},"pt":{"url":"/pt/help/getting-started","label":"Leia esta página em português","dismiss":"Fechar"},"ko":{"url":"/ko/help/getting-started","label":"이 페이지를 한국어로 읽기","dismiss":"닫기"},"zh-Hant":{"url":"/zh-Hant/help/getting-started","label":"以繁體中文閱讀本頁","dismiss":"關閉"},"zh-Hans":{"url":"/zh-Hans/help/getting-started","label":"以简体中文阅读本页","dismiss":"关闭"},"pl":{"url":"/pl/help/getting-started","label":"Przeczytaj tę stronę po polsku","dismiss":"Zamknij"},"it":{"url":"/it/help/getting-started","label":"Leggi questa pagina in italiano","dismiss":"Chiudi"}};window.AtlasDaysMatchLocale=function(tag,m){var w=String(tag||'').trim().replace(/_/g,'-').toLowerCase(),c;if(!w)return '';for(c in m)if(c.toLowerCase()===w)return c;var s=function(t){try{return new Intl.Locale(t).maximize().script||''}catch(err){return null}},b=w.split('-')[0],x=s(w);for(c in m){if(c.toLowerCase().split('-')[0]!==b)continue;if(x===null){if(c.indexOf('-')<0)return c;continue}if(s(c)===x)return c}return ''};(function(){var q=new URLSearchParams(location.search).get('lang');if(!q)return;var m=window.AtlasDaysPageLocales,e=m[window.AtlasDaysMatchLocale(q,m)];if(e&&e.url!==location.pathname)location.replace(e.url+location.search+location.hash)})()</script>
   <script defer src="../../assets/js/locale-route.js?v=20260830c"></script>
   <link rel="stylesheet" href="../../assets/css/tokens.css?v=20260928f" />
-  <link rel="stylesheet" href="../../assets/css/article-variants/help20260802.css?v=20260928f" />
+  <link rel="stylesheet" href="../../assets/css/article-variants/help20260802.css?v=20261117a" />
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20261027j" />
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
@@ -214,28 +214,29 @@
       <li><strong>「通知をオン」</strong>：旅行の更新通知と書類のリマインダーを受け取ります。</li>
     </ol>
     <p>カードには進み具合が表示されます。すべて終わったら、または使わない場合は、カードを長押しして<strong>「非表示」</strong>を選びます。<strong>「設定」＞「外観」</strong>からもう一度表示できます。以下では、各ステップで何ができるようになるかを説明します。</p>
+    <p class="help-shot-note">スクリーンショットは英語表示のアプリのものです。本文では、日本語の画面に表示される名前を使っています。</p>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/help/getting-started/set-up.webp" alt="5つのステップが並ぶ「AtlasDaysのセットアップ」のチェックリスト" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
     <h2 id="section-3">手入力せずにタイムラインを埋める</h2>
     <p>過去は写真がカバーします。これから先は<a href="/ja/help/auto-detect-trips">自動検出</a>がカバーします。</p>
     <p><strong>「設定」＞「インポート」＞「写真」</strong>を開き、<strong>「写真の中の旅行を探す」</strong>をタップします。<a href="/ja/help/photo-import">写真からインポート</a>は、デバイス上で写真の位置情報メタデータを読み取って旅行の候補を提示します。確認して保存するまで、何も記録されません。Googleマップのロケーション履歴で旅行をカバーできる場合は<a href="/ja/help/google-timeline-import">Google Timelineの読み込み</a>を、Flightyのフライト履歴でカバーできる場合は<a href="/ja/help/flighty-import">Flightyインポート</a>を、履歴がすでに表計算ファイルやほかのアプリにある場合は<a href="/ja/help/csv-import">CSVインポート</a>を使ってください。取り込み元の比較は<a href="/ja/help/import-trips">旅行をインポート</a>にあります。</p>
-    <figure class="help-shot help-shot-control"><img src="/assets/article-images/ja/help/getting-started/import-hub.webp" alt="旅行を追加する方法が並んだインポート画面" width="1320" height="1730" loading="lazy" decoding="async" /></figure>
+    <figure class="help-shot help-shot-control"><img src="/assets/article-images/help/getting-started/import-hub.webp" alt="旅行を追加する方法が並んだインポート画面" width="1320" height="1730" loading="lazy" decoding="async" /></figure>
     <p>つづいて<strong>「設定」＞「旅行の自動検出」</strong>で<strong>「旅行の自動検出」</strong>をオンにすると、手入力しなくても新しい旅行がタイムラインに自動で追加されます。旅行はタイムラインまたは通知から確認でき、いつでも編集や削除ができます。</p>
 
     <h2 id="section-4">記録の本体はタイムライン</h2>
     <p>すべての旅行が、入力した日付のまま順番に並びます。旅行をタップするとその旅行のページが開き、<strong>+</strong> をタップすると手動で追加できます。旅行がまだないタイムラインには <strong>+</strong> がなく、代わりに<strong>「最初の旅行を追加」</strong>カードに<strong>「インポート方法を見る」</strong>と<strong>「手動で追加」</strong>が表示されます。</p>
     <p>古い履歴に正確な日付は必要ありません。年しかわからない旅行は<a href="/ja/help/history-and-import">「年のみ」</a>で保存でき、日数を作らずにその国をマップに残せます。上限の計算に反映される旅行には、実際の日付が必要です。</p>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/ja/help/getting-started/timeline.webp" alt="保存した旅行が国と日付とともに並ぶAtlasDaysのタイムライン" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/help/getting-started/timeline.webp" alt="保存した旅行が国と日付とともに並ぶAtlasDaysのタイムライン" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
     <h2 id="section-5">合計を確認するのは概要</h2>
     <p>トラッカー、国別滞在日数・海外滞在日数・訪問先を表示する<a href="/ja/help/statistics">統計</a>カード、そして世界地図が表示されます。「統計」カードの期間は、全期間、1年、直近の日数、任意の日付に切り替えられるので、同じ記録から違う問いの答えを引き出せます。</p>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/ja/help/getting-started/dashboard.webp" alt="トラッカー、「統計」カード、世界地図を表示するAtlasDaysの概要" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/help/getting-started/dashboard.webp" alt="トラッカー、「統計」カード、世界地図を表示するAtlasDaysの概要" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
     <div class="callout"><p><strong>住んでいる場所をAtlasDaysに伝えましょう。</strong>初回の案内では尋ねられません。<strong>「設定」＞「プロフィール」</strong>を開いて<strong>「現在はどこに住んでいますか？」</strong>に答えると、「海外滞在日数」がどの日を海外とみなすかがわかり、「トラッカーを追加」で当てはまる可能性のあるルールが提案されます。複数の国に住んだことがある場合は、<a href="/ja/help/profile">住んだ場所</a>にそれぞれの国を期間とともに追加してください。</p></div>
 
     <h2 id="section-6">最初のトラッカーを追加する</h2>
     <p>トラッカーこそが、旅行日記ではなくAtlasDaysを使う理由です。概要の右上の<strong>+</strong>をタップして<strong>「トラッカーを追加」</strong>を選ぶか、「AtlasDaysのセットアップ」の<strong>「トラッカーを追加」</strong>ステップを使います。ビザや税金など、何を管理したいかを選び、提案されたルールを選ぶか、すべてのルールを地域別に見て選びます。以降、トラッカーには使用日数、残り日数、上限までの近さが表示されます。オプションについては<a href="/ja/help/create-a-tracker">トラッカーを作成する</a>で説明しています。</p>
-    <figure class="help-shot help-shot-control"><img src="/assets/article-images/ja/help/getting-started/add-tracker.webp" alt="旅行やトラッカーを追加する+ボタンがある概要の上部" width="1320" height="900" loading="lazy" decoding="async" /></figure>
+    <figure class="help-shot help-shot-control"><img src="/assets/article-images/help/getting-started/add-tracker.webp" alt="旅行やトラッカーを追加する+ボタンがある概要の上部" width="1320" height="812" loading="lazy" decoding="async" /></figure>
     <p>トラッカーの精度は、その裏にある旅行の精度で決まります。関係する旅行がまだおおよそのうちは、合計も暫定的なものとして扱ってください。トラッカーは1つまで無料で、それ以上のトラッカーや一部のルールの種類には<a href="/ja/help/atlasdays-pro">Pro</a>が必要です。</p>
 
     <section class="if-needed">

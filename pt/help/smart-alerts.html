@@ -97,7 +97,7 @@
   <script>window.AtlasDaysPageLocales={"en":{"url":"/help/smart-alerts","label":"Read this page in English","dismiss":"Dismiss"},"ja":{"url":"/ja/help/smart-alerts","label":"このページを日本語で読む","dismiss":"閉じる"},"nl":{"url":"/nl/help/smart-alerts","label":"Lees deze pagina in het Nederlands","dismiss":"Sluiten"},"de":{"url":"/de/help/smart-alerts","label":"Diese Seite auf Deutsch lesen","dismiss":"Schließen"},"es":{"url":"/es/help/smart-alerts","label":"Lee esta página en español","dismiss":"Cerrar"},"fr":{"url":"/fr/help/smart-alerts","label":"Lire cette page en français","dismiss":"Fermer"},"ru":{"url":"/ru/help/smart-alerts","label":"Читать эту страницу на русском","dismiss":"Закрыть"},"uk":{"url":"/uk/help/smart-alerts","label":"Читати цю сторінку українською","dismiss":"Закрити"},"tr":{"url":"/tr/help/smart-alerts","label":"Bu sayfayı Türkçe okuyun","dismiss":"Kapat"},"ko":{"url":"/ko/help/smart-alerts","label":"이 페이지를 한국어로 읽기","dismiss":"닫기"},"zh-Hant":{"url":"/zh-Hant/help/smart-alerts","label":"以繁體中文閱讀本頁","dismiss":"關閉"},"zh-Hans":{"url":"/zh-Hans/help/smart-alerts","label":"以简体中文阅读本页","dismiss":"关闭"},"pl":{"url":"/pl/help/smart-alerts","label":"Przeczytaj tę stronę po polsku","dismiss":"Zamknij"},"it":{"url":"/it/help/smart-alerts","label":"Leggi questa pagina in italiano","dismiss":"Chiudi"}};window.AtlasDaysMatchLocale=function(tag,m){var w=String(tag||'').trim().replace(/_/g,'-').toLowerCase(),c;if(!w)return '';for(c in m)if(c.toLowerCase()===w)return c;var s=function(t){try{return new Intl.Locale(t).maximize().script||''}catch(err){return null}},b=w.split('-')[0],x=s(w);for(c in m){if(c.toLowerCase().split('-')[0]!==b)continue;if(x===null){if(c.indexOf('-')<0)return c;continue}if(s(c)===x)return c}return ''};(function(){var q=new URLSearchParams(location.search).get('lang');if(!q)return;var m=window.AtlasDaysPageLocales,e=m[window.AtlasDaysMatchLocale(q,m)];if(e&&e.url!==location.pathname)location.replace(e.url+location.search+location.hash)})()</script>
   <script defer src="../../assets/js/locale-route.js?v=20260830c"></script>
   <link rel="stylesheet" href="../../assets/css/tokens.css?v=20260928f" />
-  <link rel="stylesheet" href="../../assets/css/article-variants/help20260802.css?v=20260928f" />
+  <link rel="stylesheet" href="../../assets/css/article-variants/help20260802.css?v=20261117a" />
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20261027j" />
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
@@ -187,13 +187,14 @@
 
     <h2 id="ative-os-alertas">Ative os alertas</h2>
     <ol>
-      <li>Abra a tela de detalhe do controle e toque no sino no canto superior direito. O sino fica preenchido enquanto os alertas desse controle estiverem programados para chegar.</li>
+      <li>Abra a tela de detalhe do controle e toque no sino no canto superior direito. Enquanto os alertas desse controle estiverem programados para chegar, o sino fica preenchido e com um ponto verde.</li>
       <li>Ative a chave <strong>Alertas</strong> e permita as notificações quando o iOS pedir.</li>
-      <li>Defina o <strong>Horário</strong> de entrega dos alertas. O padrão é 9:00.</li>
+      <li>Toque no horário na linha <strong>Horário</strong> para escolher quando os alertas são entregues. Por padrão, eles chegam às 9:00.</li>
       <li>Em <strong>Alertar quando</strong>, toque em <strong>+</strong> para adicionar um marco. Toque em um marco para mudar o número dele ou para removê-lo com o ícone de lixeira.</li>
       <li>Toque em <strong>OK</strong>. As mudanças feitas pelo sino são salvas quando você fecha a tela.</li>
     </ol>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/pt/help/smart-alerts/alert-settings.webp" alt="Tela de alertas do controle com o horário de entrega e a lista de marcos" width="1320" height="2150" loading="lazy" decoding="async" /></figure>
+    <p class="help-shot-note">As capturas de tela mostram o app em inglês. No texto, os nomes aparecem como você os vê em português.</p>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/help/smart-alerts/alert-settings.webp" alt="Tela de alertas do controle com o horário de entrega e a lista de marcos" width="1320" height="2150" loading="lazy" decoding="async" /></figure>
     <p>A mesma tela abre pela linha <strong>Alertas</strong> do editor do controle e por <strong>Ajustes → Notificações</strong>. No editor, as mudanças nos alertas ficam guardadas com o controle quando você toca em <strong>Salvar</strong>, então <strong>Cancelar</strong> as descarta. A linha Alertas e a tela Notificações mostram <strong>Desativado</strong> ou o número de alertas ativos.</p>
 
     <h2 id="marcos">Marcos</h2>

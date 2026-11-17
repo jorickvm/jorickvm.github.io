@@ -97,7 +97,7 @@
   <script>window.AtlasDaysPageLocales={"en":{"url":"/help/create-a-tracker","label":"Read this page in English","dismiss":"Dismiss"},"ja":{"url":"/ja/help/create-a-tracker","label":"このページを日本語で読む","dismiss":"閉じる"},"nl":{"url":"/nl/help/create-a-tracker","label":"Lees deze pagina in het Nederlands","dismiss":"Sluiten"},"de":{"url":"/de/help/create-a-tracker","label":"Diese Seite auf Deutsch lesen","dismiss":"Schließen"},"es":{"url":"/es/help/create-a-tracker","label":"Lee esta página en español","dismiss":"Cerrar"},"fr":{"url":"/fr/help/create-a-tracker","label":"Lire cette page en français","dismiss":"Fermer"},"uk":{"url":"/uk/help/create-a-tracker","label":"Читати цю сторінку українською","dismiss":"Закрити"},"tr":{"url":"/tr/help/create-a-tracker","label":"Bu sayfayı Türkçe okuyun","dismiss":"Kapat"},"pt":{"url":"/pt/help/create-a-tracker","label":"Leia esta página em português","dismiss":"Fechar"},"ko":{"url":"/ko/help/create-a-tracker","label":"이 페이지를 한국어로 읽기","dismiss":"닫기"},"zh-Hant":{"url":"/zh-Hant/help/create-a-tracker","label":"以繁體中文閱讀本頁","dismiss":"關閉"},"zh-Hans":{"url":"/zh-Hans/help/create-a-tracker","label":"以简体中文阅读本页","dismiss":"关闭"},"pl":{"url":"/pl/help/create-a-tracker","label":"Przeczytaj tę stronę po polsku","dismiss":"Zamknij"},"it":{"url":"/it/help/create-a-tracker","label":"Leggi questa pagina in italiano","dismiss":"Chiudi"}};window.AtlasDaysMatchLocale=function(tag,m){var w=String(tag||'').trim().replace(/_/g,'-').toLowerCase(),c;if(!w)return '';for(c in m)if(c.toLowerCase()===w)return c;var s=function(t){try{return new Intl.Locale(t).maximize().script||''}catch(err){return null}},b=w.split('-')[0],x=s(w);for(c in m){if(c.toLowerCase().split('-')[0]!==b)continue;if(x===null){if(c.indexOf('-')<0)return c;continue}if(s(c)===x)return c}return ''};(function(){var q=new URLSearchParams(location.search).get('lang');if(!q)return;var m=window.AtlasDaysPageLocales,e=m[window.AtlasDaysMatchLocale(q,m)];if(e&&e.url!==location.pathname)location.replace(e.url+location.search+location.hash)})()</script>
   <script defer src="../../assets/js/locale-route.js?v=20260830c"></script>
   <link rel="stylesheet" href="../../assets/css/tokens.css?v=20260928f" />
-  <link rel="stylesheet" href="../../assets/css/article-variants/help20260802.css?v=20260928f" />
+  <link rel="stylesheet" href="../../assets/css/article-variants/help20260802.css?v=20261117a" />
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20261027j" />
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
@@ -194,7 +194,8 @@
       <li>Проверьте правило в редакторе. Предложение под строками описывает, что будет считать трекер, а кнопка <strong>«Подробнее»</strong> открывает руководство по этому правилу. Некоторые шаблоны сначала задают вопросы: <strong>«Великобритания: налоговое резидентство»</strong> спрашивает о ваших связях с Великобританией, и сохранить его можно, когда вы ответите на каждый вопрос.</li>
       <li>Нажмите <strong>«Сохранить»</strong>. AtlasDays вернётся на экран «Обзор», где уже будет новый трекер. Если обязательная строка ещё не заполнена, «Сохранить» вместо этого выделит её.</li>
     </ol>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/ru/help/create-a-tracker/preset-picker.webp" alt="Экран «Добавление трекера» с темами, рекомендациями и разделом «По регионам»" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <p class="help-shot-note">На скриншотах приложение показано на английском. В тексте названия даны так, как вы видите их на русском.</p>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/help/create-a-tracker/preset-picker.webp" alt="Экран «Добавление трекера» с темами, рекомендациями и разделом «По регионам»" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
     <p>Трекер получает название от мест, которые он считает. Коснитесь карточки вверху редактора, чтобы изменить название или подзаголовок либо сменить страны.</p>
 
     <h2 id="section-2">Как задать правило</h2>
@@ -205,7 +206,7 @@
       <li><strong>«Период»:</strong> промежуток, за который ведётся подсчёт; он описан ниже.</li>
       <li><strong>«Цель поездки»:</strong> в собственных трекерах, в трекере <strong>«Электронная туристическая виза Индии»</strong> и в любом трекере, сохранённом с целью. <strong>«Любая»</strong> учитывает все поездки. Если выбрать цель, например <strong>«Работа»</strong>, учитываются только поездки с этой целью, а поездки без цели не считаются. С отдельным трекером для каждой цели можно считать рабочие и личные поездки в одну страну по отдельности.</li>
     </ul>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/ru/help/create-a-tracker/configured-editor.webp" alt="Редактор трекера со строками мест, цели, лимита и периода" width="1320" height="2146" loading="lazy" decoding="async" /></figure>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/help/create-a-tracker/configured-editor.webp" alt="Редактор трекера со строками мест, цели, лимита и периода" width="1320" height="2290" loading="lazy" decoding="async" /></figure>
 
     <h2 id="section-3">Как выбрать период</h2>
     <ul>

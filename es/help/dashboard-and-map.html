@@ -97,7 +97,7 @@
   <script>window.AtlasDaysPageLocales={"en":{"url":"/help/dashboard-and-map","label":"Read this page in English","dismiss":"Dismiss"},"ja":{"url":"/ja/help/dashboard-and-map","label":"このページを日本語で読む","dismiss":"閉じる"},"nl":{"url":"/nl/help/dashboard-and-map","label":"Lees deze pagina in het Nederlands","dismiss":"Sluiten"},"de":{"url":"/de/help/dashboard-and-map","label":"Diese Seite auf Deutsch lesen","dismiss":"Schließen"},"fr":{"url":"/fr/help/dashboard-and-map","label":"Lire cette page en français","dismiss":"Fermer"},"ru":{"url":"/ru/help/dashboard-and-map","label":"Читать эту страницу на русском","dismiss":"Закрыть"},"uk":{"url":"/uk/help/dashboard-and-map","label":"Читати цю сторінку українською","dismiss":"Закрити"},"tr":{"url":"/tr/help/dashboard-and-map","label":"Bu sayfayı Türkçe okuyun","dismiss":"Kapat"},"pt":{"url":"/pt/help/dashboard-and-map","label":"Leia esta página em português","dismiss":"Fechar"},"ko":{"url":"/ko/help/dashboard-and-map","label":"이 페이지를 한국어로 읽기","dismiss":"닫기"},"zh-Hant":{"url":"/zh-Hant/help/dashboard-and-map","label":"以繁體中文閱讀本頁","dismiss":"關閉"},"zh-Hans":{"url":"/zh-Hans/help/dashboard-and-map","label":"以简体中文阅读本页","dismiss":"关闭"},"pl":{"url":"/pl/help/dashboard-and-map","label":"Przeczytaj tę stronę po polsku","dismiss":"Zamknij"},"it":{"url":"/it/help/dashboard-and-map","label":"Leggi questa pagina in italiano","dismiss":"Chiudi"}};window.AtlasDaysMatchLocale=function(tag,m){var w=String(tag||'').trim().replace(/_/g,'-').toLowerCase(),c;if(!w)return '';for(c in m)if(c.toLowerCase()===w)return c;var s=function(t){try{return new Intl.Locale(t).maximize().script||''}catch(err){return null}},b=w.split('-')[0],x=s(w);for(c in m){if(c.toLowerCase().split('-')[0]!==b)continue;if(x===null){if(c.indexOf('-')<0)return c;continue}if(s(c)===x)return c}return ''};(function(){var q=new URLSearchParams(location.search).get('lang');if(!q)return;var m=window.AtlasDaysPageLocales,e=m[window.AtlasDaysMatchLocale(q,m)];if(e&&e.url!==location.pathname)location.replace(e.url+location.search+location.hash)})()</script>
   <script defer src="../../assets/js/locale-route.js?v=20260830c"></script>
   <link rel="stylesheet" href="../../assets/css/tokens.css?v=20260928f" />
-  <link rel="stylesheet" href="../../assets/css/article-variants/help20260802.css?v=20260928f" />
+  <link rel="stylesheet" href="../../assets/css/article-variants/help20260802.css?v=20261117a" />
   <link rel="stylesheet" href="../../assets/css/site-header.css?v=20261027j" />
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
@@ -188,17 +188,19 @@
     <h2 id="qu-muestra-el-resumen">Qué muestra el Resumen</h2>
     <ul>
       <li><strong>+</strong>, arriba a la derecha, abre <strong>Añadir viaje</strong> y <strong>Añadir control</strong>.</li>
+      <li>En el iPhone, arriba aparece el nombre AtlasDays, o la fecha de hoy si <strong>Fecha de hoy como título</strong> está activado en <strong>Ajustes → Apariencia</strong>.</li>
       <li><strong>Configurar AtlasDays</strong> aparece tras una instalación nueva. Abre una breve lista de pasos para empezar; consulta <a href="/es/help/getting-started">Primeros pasos</a>.</li>
       <li>Cada <a href="/es/help/trackers-and-limits">control</a> tiene su propia tarjeta. Toca la tarjeta de un control para abrir su detalle.</li>
-      <li>La tarjeta <strong>Estadísticas</strong> muestra tus días por país, tus días en el extranjero y los lugares visitados en el período seleccionado. Tócala para abrir la pantalla <a href="/es/help/statistics">Estadísticas</a>.</li>
+      <li>La tarjeta <strong>Estadísticas</strong> muestra tus días por país, tus días en el extranjero y los lugares visitados en el período seleccionado. Toca el período en la tarjeta para elegir otro, toca una cifra para abrir su lista completa o toca el título de la tarjeta para abrir la pantalla <a href="/es/help/statistics">Estadísticas</a>.</li>
       <li>El mapa resalta los lugares que has visitado en ese mismo período.</li>
     </ul>
+    <p class="help-shot-note">Las capturas de pantalla muestran la app en inglés. En el texto, los nombres aparecen como los ves en español.</p>
     <figure class="help-shot help-shot-screen"><img src="/assets/article-images/help/dashboard-and-map/dashboard-overview.webp" alt="Resumen con la tarjeta de un control, la tarjeta Estadísticas y el mapa" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
     <h2 id="el-mapa-y-los-totales-responden-a-preguntas-distintas">El mapa y los totales responden a preguntas distintas</h2>
     <p>El mapa resalta todos los lugares visitados que no son de <a href="/es/help/history-and-import">Tránsito</a>, incluidos los que no tienen fechas: un viaje de Solo año aparece en Todo y en el año que indica. Esos viajes no generan totales de días. Por eso el mapa puede mostrar más lugares que la estadística Visitados, que cuenta solo los de tu lista de <a href="/es/help/country-count">Recuento de países</a>.</p>
     <p>Toca el mapa o sepáralo con dos dedos para abrir el mapa a pantalla completa. Arrastra para girar el globo, pellizca para hacer zoom y toca un país para ver sus viajes y días.</p>
-    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/es/help/dashboard-and-map/map-state.webp" alt="Mapa del mundo de AtlasDays con los países visitados resaltados" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
+    <figure class="help-shot help-shot-screen"><img src="/assets/article-images/help/dashboard-and-map/map-state.webp" alt="Mapa del mundo de AtlasDays con los países visitados resaltados" width="1320" height="2868" loading="lazy" decoding="async" /></figure>
 
     <h2 id="detalle-de-estados-unidos">Detalle de Estados Unidos</h2>
     <p>Un viaje a Estados Unidos a nivel de país resalta EE. UU. y suma a sus totales. Las vistas por estado necesitan Pro y un estado en el viaje; un viaje a EE. UU. sin etiquetar no se puede asignar a un estado automáticamente.</p>
