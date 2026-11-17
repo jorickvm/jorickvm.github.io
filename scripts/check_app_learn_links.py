@@ -60,7 +60,7 @@ def read_app(app_root: Path) -> dict:
     for swift in sorted(app_root.rglob("*.swift")):
         for args in CALL_RE.findall(swift.read_text(encoding="utf-8")):
             slugs.update(LITERAL_RE.findall(args))
-    sheet = app_root / "Shared/SafariSheet.swift"
+    sheet = app_root / "Shared/Components/SafariSheet.swift"
     pages = sorted(set(PATH_RE.findall(sheet.read_text(encoding="utf-8"))))
     if not pages:
         raise SystemExit(f"error: no AppLinks paths parsed from {sheet}")
