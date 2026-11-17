@@ -170,6 +170,7 @@ These pages describe something scheduled to change. The tier cadence would revie
 | Due | Tier | Article | Status | Sources |
 |---|---|---|---|---:|
 | 2027-11-04 | 2 | [learn/france-tax-residency.html](/learn/france-tax-residency) | exact-date-required | 5 |
+| 2027-11-04 | 2 | [learn/us-feie-calculator.html](/learn/us-feie-calculator) | exact-date-required | 6 |
 | 2027-11-04 | 2 | [learn/us-feie-physical-presence-test.html](/learn/us-feie-physical-presence-test) | exact-date-required | 6 |
 | 2027-11-07 | 2 | [learn/substantial-presence-test-calculator.html](/learn/substantial-presence-test-calculator) | exact-date-required | 4 |
 | 2027-11-12 | 2 | [learn/albania-183-day-tax-residency.html](/learn/albania-183-day-tax-residency) | exact-date-required | 4 |
@@ -203,6 +204,7 @@ These pages describe something scheduled to change. The tier cadence would revie
 | 2027-11-12 | 2 | [learn/pennsylvania-tax-residency.html](/learn/pennsylvania-tax-residency) | exact-date-required | 2 |
 | 2027-11-12 | 2 | [learn/slovakia-183-day-tax-residency.html](/learn/slovakia-183-day-tax-residency) | exact-date-required | 2 |
 | 2027-11-12 | 2 | [learn/slovenia-183-day-tax-residency.html](/learn/slovenia-183-day-tax-residency) | exact-date-required | 2 |
+| 2027-11-17 | 2 | [learn/uk-srt-calculator.html](/learn/uk-srt-calculator) | exact-date-required | 4 |
 | 2027-11-30 | 2 | [learn/alabama-tax-residency.html](/learn/alabama-tax-residency) | exact-date-required | 1 |
 | 2027-11-30 | 2 | [learn/arkansas-tax-residency.html](/learn/arkansas-tax-residency) | exact-date-required | 1 |
 | 2027-11-30 | 2 | [learn/delaware-tax-residency.html](/learn/delaware-tax-residency) | exact-date-required | 1 |

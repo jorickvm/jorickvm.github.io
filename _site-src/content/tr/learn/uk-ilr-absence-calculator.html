@@ -52,31 +52,31 @@
         </div>
         <div class="cal-box">
           <h3>Zaman çizelgesi</h3>
-          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>AtlasDays'de takip et</button>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Dışa aktar veya AtlasDays'de aç</button>
         </div>
       </div>
       <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="uk-ilr-import-title">
         <div class="cal-dialog-head">
           <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
           <div>
-            <p class="cal-dialog-title" id="uk-ilr-import-title">AtlasDays'de takip et</p>
-            <p class="cal-dialog-sub">Seyahat ederken günlerinizi saymaya devam edin. iPhone ve iPad için ücretsiz uygulama.</p>
+            <p class="cal-dialog-title" id="uk-ilr-import-title"><span data-cal-on="computer">iPhone veya iPad’inizde devam edin</span><span data-cal-on="phone file">Dışa aktar veya AtlasDays'de aç</span></p>
+            <p class="cal-dialog-sub">Seyahat ederken günlerinizi saymaya devam edin. AtlasDays’i ücretsiz indirin.</p>
           </div>
         </div>
         <div class="cal-dialog-scan" data-cal-on="computer">
           <div class="cal-qr" data-cal-qr></div>
-          <ol class="cal-steps">
-            <li><strong>AtlasDays'in iPhone veya iPad'inizde yüklü olduğundan emin olun</strong><span>App Store'da ücretsiz.</span></li>
-            <li><strong data-cal-stays>Tüm seyahatleri AtlasDays'e aktarmak için QR kodunu tarayın</strong><span data-cal-stays>Kontrol edin, ardından İçe aktar düğmesine dokunun.</span><strong data-cal-tracker hidden>Bu takibi AtlasDays'e eklemek için QR kodunu tarayın</strong><span data-cal-tracker hidden>Kontrol edin, ardından Kaydet düğmesine dokunun.</span></li>
-          </ol>
+          <div class="cal-scan-copy">
+            <p class="cal-scan-lead" data-cal-both>Seyahatlerinizi ve takibinizi AtlasDays’de açmak için kodu tarayın.</p>
+            <p class="cal-scan-lead" data-cal-trips-only hidden>Seyahatlerinizi AtlasDays’de açmak için kodu tarayın.</p>
+            <p class="cal-scan-lead" data-cal-tracker hidden>Takibinizi AtlasDays’de açmak için kodu tarayın.</p>
+          </div>
         </div>
         <ol class="cal-steps" data-cal-on="phone">
-          <li data-cal-store><strong>AtlasDays'i indirin</strong><span>App Store'da ücretsiz. Zaten yüklü mü? 2. adıma geçin.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
           <li><strong data-cal-stays>Kalışlarınızı uygulamada açın</strong><span data-cal-stays>Kontrol edin, ardından İçe aktar düğmesine dokunun. O zamana kadar hiçbir şey kaydedilmez.</span><strong data-cal-tracker hidden>Bu takibi uygulamada açın</strong><span data-cal-tracker hidden>Kontrol edin, ardından Kaydet düğmesine dokunun. O zamana kadar hiçbir şey kaydedilmez.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">AtlasDays'de aç</a></li>
         </ol>
         <ol class="cal-steps" data-cal-on="file">
+          <li><strong>Seyahatleri CSV dosyası olarak indir</strong><span>Bu kadar çok kalış bir bağlantıya sığmıyor. Dosyayı indirin ve iPhone'unuzda AtlasDays ile açın.</span><button type="button" class="cal-dialog-primary" data-cal-download>Dosyayı indir</button></li>
           <li data-cal-store><strong>AtlasDays'i indirin</strong><span>iPhone için App Store'da ücretsiz.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
-          <li><strong>Kalışlarınızı dosyayla içe aktarın</strong><span>Bu kadar çok kalış bir bağlantıya sığmıyor. Dosyayı indirin ve iPhone'unuzda AtlasDays ile açın.</span><button type="button" class="cal-dialog-primary" data-cal-download>Dosyayı indir</button></li>
         </ol>
         <div class="cal-dialog-foot">
           <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Seyahatleri CSV dosyası olarak indir</button><span data-cal-downloaded hidden>Bu dosyayı iPhone'unuzda AtlasDays ile açın.</span></p>
@@ -119,4 +119,4 @@
     <h3>İki haftalık tatil neden 14 günden az görünüyor?</h3>
     <p>Çünkü yalnızca yurt dışında geçirilen tam günler sayılır. Ayrılış ve dönüş günleri devamsızlık günü değildir; dolayısıyla 1 Haziran'dan 15 Haziran'a kadar bir seyahat 13 gündür.</p>
     <h3>Verilerim saklanıyor mu?</h3>
-    <p>Hayır. Hesaplama aracı tarayıcınızda çalışır; girdiğiniz tarihleri göndermez, kayda almaz veya saklamaz. Sayfayı kapatmak ya da yeniden yüklemek tarihleri siler. Saklamak için AtlasDays'de takip et düğmesine dokunun.</p>
+    <p>Hayır. Hesaplama aracı tarayıcınızda çalışır; girdiğiniz tarihleri göndermez, kayda almaz veya saklamaz. Sayfayı kapatmak ya da yeniden yüklemek tarihleri siler. Saklamak için Dışa aktar veya AtlasDays'de aç düğmesine dokunun.</p>

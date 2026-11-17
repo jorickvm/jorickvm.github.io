@@ -58,31 +58,31 @@
         </div>
         <div class="cal-box">
           <h3>Oś czasu</h3>
-          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Śledź w AtlasDays</button>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Eksportuj lub otwórz w AtlasDays</button>
         </div>
       </div>
       <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="uk-ilr-import-title">
         <div class="cal-dialog-head">
           <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
           <div>
-            <p class="cal-dialog-title" id="uk-ilr-import-title">Śledź w AtlasDays</p>
-            <p class="cal-dialog-sub">Licz dni dalej w trakcie podróży. Darmowa aplikacja na iPhone’a i iPada.</p>
+            <p class="cal-dialog-title" id="uk-ilr-import-title"><span data-cal-on="computer">Kontynuuj na iPhonie lub iPadzie</span><span data-cal-on="phone file">Eksportuj lub otwórz w AtlasDays</span></p>
+            <p class="cal-dialog-sub">Licz dni także w podróży. Pobierz AtlasDays za darmo.</p>
           </div>
         </div>
         <div class="cal-dialog-scan" data-cal-on="computer">
           <div class="cal-qr" data-cal-qr></div>
-          <ol class="cal-steps">
-            <li><strong>Upewnij się, że AtlasDays jest zainstalowane na telefonie iPhone lub tablecie iPad</strong><span>Za darmo w App Store.</span></li>
-            <li><strong data-cal-stays>Zeskanuj kod QR, aby wczytać wszystkie podróże do AtlasDays</strong><span data-cal-stays>Sprawdź je, a potem stuknij „Importuj”.</span><strong data-cal-tracker hidden>Zeskanuj kod QR, aby dodać ten tracker do AtlasDays</strong><span data-cal-tracker hidden>Sprawdź go, a potem stuknij „Zapisz”.</span></li>
-          </ol>
+          <div class="cal-scan-copy">
+            <p class="cal-scan-lead" data-cal-both>Zeskanuj kod, aby otworzyć podróże i tracker w AtlasDays.</p>
+            <p class="cal-scan-lead" data-cal-trips-only hidden>Zeskanuj kod, aby otworzyć podróże w AtlasDays.</p>
+            <p class="cal-scan-lead" data-cal-tracker hidden>Zeskanuj kod, aby otworzyć tracker w AtlasDays.</p>
+          </div>
         </div>
         <ol class="cal-steps" data-cal-on="phone">
-          <li data-cal-store><strong>Pobierz AtlasDays</strong><span>Za darmo w App Store. Masz już aplikację? Przejdź do kroku 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
           <li><strong data-cal-stays>Otwórz swoje pobyty w aplikacji</strong><span data-cal-stays>Sprawdź je, a potem stuknij „Importuj”. Wcześniej nic nie zostanie zapisane.</span><strong data-cal-tracker hidden>Otwórz ten tracker w aplikacji</strong><span data-cal-tracker hidden>Sprawdź go, a potem stuknij „Zapisz”. Wcześniej nic nie zostanie zapisane.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Otwórz w AtlasDays</a></li>
         </ol>
         <ol class="cal-steps" data-cal-on="file">
+          <li><strong>Pobierz podróże jako plik CSV</strong><span>To więcej pobytów, niż zmieści się w linku. Pobierz plik i otwórz go w AtlasDays na telefonie iPhone.</span><button type="button" class="cal-dialog-primary" data-cal-download>Pobierz plik</button></li>
           <li data-cal-store><strong>Pobierz AtlasDays</strong><span>Za darmo w App Store, na iPhone’a.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
-          <li><strong>Zaimportuj pobyty z pliku</strong><span>To więcej pobytów, niż zmieści się w linku. Pobierz plik i otwórz go w AtlasDays na telefonie iPhone.</span><button type="button" class="cal-dialog-primary" data-cal-download>Pobierz plik</button></li>
         </ol>
         <div class="cal-dialog-foot">
           <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Pobierz podróże jako plik CSV</button><span data-cal-downloaded hidden>Otwórz ten plik w AtlasDays na telefonie iPhone.</span></p>
@@ -125,4 +125,4 @@
     <h3>Dlaczego dwutygodniowy urlop daje mniej niż 14 dni?</h3>
     <p>Bo liczą się tylko pełne dni za granicą. Dzień wyjazdu i dzień powrotu nie są dniami nieobecności, więc podróż od 1 czerwca do 15 czerwca to 13 dni.</p>
     <h3>Czy moje dane są przechowywane?</h3>
-    <p>Nie. Kalkulator działa w twojej przeglądarce i nie wysyła, nie zapisuje ani nie przechowuje wpisanych dat. Zamknięcie lub odświeżenie strony je usuwa. Aby je zachować, stuknij „Śledź w AtlasDays”.</p>
+    <p>Nie. Kalkulator działa w twojej przeglądarce i nie wysyła, nie zapisuje ani nie przechowuje wpisanych dat. Zamknięcie lub odświeżenie strony je usuwa. Aby je zachować, stuknij „Eksportuj lub otwórz w AtlasDays”.</p>

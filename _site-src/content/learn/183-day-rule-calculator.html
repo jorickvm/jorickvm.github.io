@@ -1,8 +1,8 @@
     <nav class="breadcrumb">
       <a href="/">AtlasDays</a> / <a href="/learn/">Travel Rules</a> / <a href="/learn/calculators">Calculators</a>
     </nav>
-    <h1>183-Day Rule Calculator: Count Your Days in Any Country</h1>
-    <p class="subtitle">Pick a country and a year, then tap the day you arrived and the day you left. The tracker shows how close you are to 183 days, planned stays included.</p>
+    <h1>183-Day Rule Calculator: Count Days by Country or US State</h1>
+    <p class="subtitle">Pick a country or US state and a year, then tap the day you arrived and the day you left. The tracker shows how close you are to 183 days, planned stays included.</p>
     <p class="verified">Last verified: October 2026</p>
 
     <h2>Count your days</h2>
@@ -54,7 +54,61 @@
   "lineNoCountry": {
     "one": "{n} day without a country",
     "other": "{n} days without a country"
-  }
+  },
+  "jurisdiction": "Country or US state",
+  "addJurisdiction": "Add country or US state",
+  "noJurisdictionMatch": "No matching country or US state",
+  "stateUSAL": "Alabama (US)",
+  "stateUSAK": "Alaska (US)",
+  "stateUSAZ": "Arizona (US)",
+  "stateUSAR": "Arkansas (US)",
+  "stateUSCA": "California (US)",
+  "stateUSCO": "Colorado (US)",
+  "stateUSCT": "Connecticut (US)",
+  "stateUSDE": "Delaware (US)",
+  "stateUSDC": "District of Columbia (US)",
+  "stateUSFL": "Florida (US)",
+  "stateUSGA": "Georgia (US)",
+  "stateUSHI": "Hawaii (US)",
+  "stateUSID": "Idaho (US)",
+  "stateUSIL": "Illinois (US)",
+  "stateUSIN": "Indiana (US)",
+  "stateUSIA": "Iowa (US)",
+  "stateUSKS": "Kansas (US)",
+  "stateUSKY": "Kentucky (US)",
+  "stateUSLA": "Louisiana (US)",
+  "stateUSME": "Maine (US)",
+  "stateUSMD": "Maryland (US)",
+  "stateUSMA": "Massachusetts (US)",
+  "stateUSMI": "Michigan (US)",
+  "stateUSMN": "Minnesota (US)",
+  "stateUSMS": "Mississippi (US)",
+  "stateUSMO": "Missouri (US)",
+  "stateUSMT": "Montana (US)",
+  "stateUSNE": "Nebraska (US)",
+  "stateUSNV": "Nevada (US)",
+  "stateUSNH": "New Hampshire (US)",
+  "stateUSNJ": "New Jersey (US)",
+  "stateUSNM": "New Mexico (US)",
+  "stateUSNY": "New York (US)",
+  "stateUSNC": "North Carolina (US)",
+  "stateUSND": "North Dakota (US)",
+  "stateUSOH": "Ohio (US)",
+  "stateUSOK": "Oklahoma (US)",
+  "stateUSOR": "Oregon (US)",
+  "stateUSPA": "Pennsylvania (US)",
+  "stateUSRI": "Rhode Island (US)",
+  "stateUSSC": "South Carolina (US)",
+  "stateUSSD": "South Dakota (US)",
+  "stateUSTN": "Tennessee (US)",
+  "stateUSTX": "Texas (US)",
+  "stateUSUT": "Utah (US)",
+  "stateUSVT": "Vermont (US)",
+  "stateUSVA": "Virginia (US)",
+  "stateUSWA": "Washington (US)",
+  "stateUSWV": "West Virginia (US)",
+  "stateUSWI": "Wisconsin (US)",
+  "stateUSWY": "Wyoming (US)"
 }
       </script>
       <p class="cal-hint" data-cal-hint aria-live="polite"></p>
@@ -71,31 +125,31 @@
         </div>
         <div class="cal-box">
           <h3>Timeline</h3>
-          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Track this in AtlasDays</button>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Export or open in AtlasDays</button>
         </div>
       </div>
       <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="days-183-import-title">
         <div class="cal-dialog-head">
           <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
           <div>
-            <p class="cal-dialog-title" id="days-183-import-title">Track this in AtlasDays</p>
-            <p class="cal-dialog-sub">Keep counting as you travel. Free app for iPhone and iPad.</p>
+            <p class="cal-dialog-title" id="days-183-import-title"><span data-cal-on="computer">Continue on your iPhone or iPad</span><span data-cal-on="phone file">Export or open in AtlasDays</span></p>
+            <p class="cal-dialog-sub">Keep counting as you travel. Get AtlasDays free.</p>
           </div>
         </div>
         <div class="cal-dialog-scan" data-cal-on="computer">
           <div class="cal-qr" data-cal-qr></div>
-          <ol class="cal-steps">
-            <li><strong>Make sure AtlasDays is installed on your iPhone or iPad</strong><span>Free on the App Store.</span></li>
-            <li><strong data-cal-stays>Scan the QR code to load all trips into AtlasDays</strong><span data-cal-stays>Check them, then tap Import.</span><strong data-cal-tracker hidden>Scan the QR code to set up this tracker in AtlasDays</strong><span data-cal-tracker hidden>Check it, then tap Save.</span></li>
-          </ol>
+          <div class="cal-scan-copy">
+            <p class="cal-scan-lead" data-cal-both>Scan to open your trips and tracker in AtlasDays.</p>
+            <p class="cal-scan-lead" data-cal-trips-only hidden>Scan to open your trips in AtlasDays.</p>
+            <p class="cal-scan-lead" data-cal-tracker hidden>Scan to open your tracker in AtlasDays.</p>
+          </div>
         </div>
         <ol class="cal-steps" data-cal-on="phone">
-          <li data-cal-store><strong>Get AtlasDays</strong><span>Free on the App Store. Already have it? Skip to 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
           <li><strong data-cal-stays>Open your stays in the app</strong><span data-cal-stays>Check them, then tap Import. Nothing is saved before that.</span><strong data-cal-tracker hidden>Open this tracker in the app</strong><span data-cal-tracker hidden>Check it, then tap Save. Nothing is saved before that.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Open in AtlasDays</a></li>
         </ol>
         <ol class="cal-steps" data-cal-on="file">
+          <li><strong>Download trips as a CSV file</strong><span>That is more stays than a link can carry. Download the file and open it on your iPhone with AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Download file</button></li>
           <li data-cal-store><strong>Get AtlasDays</strong><span>Free on the App Store for iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
-          <li><strong>Import your stays with a file</strong><span>That is more stays than a link can carry. Download the file and open it on your iPhone with AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Download file</button></li>
         </ol>
         <div class="cal-dialog-foot">
           <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Download trips as a CSV file</button><span data-cal-downloaded hidden>Open this file on your iPhone with AtlasDays.</span></p>
@@ -107,10 +161,12 @@
     <h2>How the calculator counts</h2>
     <ul>
       <li><strong>The default count includes arrival and departure.</strong> For an inclusive-day count, 1 to 10 June is ten days. A link from a country guide can apply that country’s counting method instead.</li>
-      <li><strong>One country, one year.</strong> Pick the country in the tracker and the window above it: a calendar year, a tax year from the day it starts (6 April in the UK, 1 July in Australia, 1 April in New Zealand and India), or the last 12 months. Only days inside that window count.</li>
+      <li><strong>One place, one year.</strong> Pick the country or US state in the tracker and the window above it: a calendar year, a tax year from the day it starts (6 April in the UK, 1 July in Australia, 1 April in New Zealand and India), or the last 12 months. Only days inside that window count.</li>
       <li><strong>Stay below, or reach 183.</strong> Most people want to stay under 183 days. If you need 183 days to become resident somewhere, set the goal to Reach target: the bar turns green once you get there.</li>
       <li><strong>Planned stays count too.</strong> Mark a trip you have not booked yet to see whether it would take you past 183.</li>
     </ul>
+
+    <p>Select a US state to count only stays recorded for that state. Selecting United States counts US stays and state stays together, with shared days counted once. State selection uses the day limit you choose; it does not apply a state’s separate residence tests.</p>
 
     <h2>When your country counts differently</h2>
     <p>Countries use different thresholds and counting methods. Check the relevant guide before interpreting the result:</p>
@@ -138,4 +194,4 @@
     <h3>Does spending 183 days in a country make me tax resident?</h3>
     <p>Often, but not always. Many countries treat 183 days in their tax year as residence, some use a different threshold or period, and other ties such as a home or family can make you resident with fewer days. The calculator shows the count, not the decision.</p>
     <h3>Is my data stored?</h3>
-    <p>No. The calculator runs in your browser and does not send, log or save the dates you enter. Closing or reloading the page clears them. To keep them, tap Track this in AtlasDays.</p>
+    <p>No. The calculator runs in your browser and does not send, log or save the dates you enter. Closing or reloading the page clears them. To keep them, tap Export or open in AtlasDays.</p>

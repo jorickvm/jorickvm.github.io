@@ -156,7 +156,7 @@
         "name": "Сохраняются ли мои данные?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Нет. Калькулятор работает в браузере и не отправляет, не записывает и не сохраняет введённые даты. При закрытии или обновлении страницы они исчезнут. Чтобы сохранить их, нажмите «Отслеживать в AtlasDays»."
+          "text": "Нет. Калькулятор работает в браузере и не отправляет, не записывает и не сохраняет введённые даты. При закрытии или обновлении страницы они исчезнут. Чтобы сохранить их, нажмите «Экспортировать или открыть в AtlasDays»."
         }
       }
     ]
@@ -171,7 +171,7 @@
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
-  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261028a" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261117a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Перейти к содержимому</a>
@@ -258,7 +258,7 @@
     <p class="verified">Последняя проверка: октябрь 2026 года</p>
 
     <h2 id="section-1">Посчитайте свои дни</h2>
-    <div class="daycal" id="schengen" data-day-calendar="schengen">
+    <div class="daycal" id="schengen" data-day-calendar="schengen" data-cal-placement="standalone">
       <script type="application/json" data-cal-strings>
 {
   "hintStart": "Нажмите на день, чтобы добавить поездку.",
@@ -315,31 +315,31 @@
         </div>
         <div class="cal-box">
           <h3>Хронология</h3>
-          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Отслеживать в AtlasDays</button>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Экспортировать или открыть в AtlasDays</button>
         </div>
       </div>
       <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="schengen-import-title">
         <div class="cal-dialog-head">
           <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
           <div>
-            <p class="cal-dialog-title" id="schengen-import-title">Отслеживать в AtlasDays</p>
-            <p class="cal-dialog-sub">Продолжайте подсчёт дней в дороге. Бесплатное приложение для iPhone и iPad.</p>
+            <p class="cal-dialog-title" id="schengen-import-title"><span data-cal-on="computer">Продолжите на iPhone или iPad</span><span data-cal-on="phone file">Экспортировать или открыть в AtlasDays</span></p>
+            <p class="cal-dialog-sub">Продолжайте считать дни в поездках. Скачайте AtlasDays бесплатно.</p>
           </div>
         </div>
         <div class="cal-dialog-scan" data-cal-on="computer">
           <div class="cal-qr" data-cal-qr></div>
-          <ol class="cal-steps">
-            <li><strong>Убедитесь, что AtlasDays установлено на вашем iPhone или iPad</strong><span>Бесплатно в App Store.</span></li>
-            <li><strong data-cal-stays>Отсканируйте QR-код, чтобы загрузить все поездки в AtlasDays</strong><span data-cal-stays>Проверьте их и нажмите «Импортировать».</span><strong data-cal-tracker hidden>Отсканируйте QR-код, чтобы добавить этот трекер в AtlasDays</strong><span data-cal-tracker hidden>Проверьте его и нажмите «Сохранить».</span></li>
-          </ol>
+          <div class="cal-scan-copy">
+            <p class="cal-scan-lead" data-cal-both>Отсканируйте код, чтобы открыть поездки и трекер в AtlasDays.</p>
+            <p class="cal-scan-lead" data-cal-trips-only hidden>Отсканируйте код, чтобы открыть поездки в AtlasDays.</p>
+            <p class="cal-scan-lead" data-cal-tracker hidden>Отсканируйте код, чтобы открыть трекер в AtlasDays.</p>
+          </div>
         </div>
         <ol class="cal-steps" data-cal-on="phone">
-          <li data-cal-store><strong>Скачайте AtlasDays</strong><span>Бесплатно в App Store. Уже установлено? Переходите к шагу 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8&amp;ppid=d3a9b2e7-b9b8-479b-be33-c009cef92c74">App Store</a></li>
           <li><strong data-cal-stays>Откройте поездки в приложении</strong><span data-cal-stays>Проверьте их и нажмите «Импортировать». До этого ничего не сохраняется.</span><strong data-cal-tracker hidden>Откройте этот трекер в приложении</strong><span data-cal-tracker hidden>Проверьте его и нажмите «Сохранить». До этого ничего не сохраняется.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Открыть в AtlasDays</a></li>
         </ol>
         <ol class="cal-steps" data-cal-on="file">
+          <li><strong>Скачать поездки в файле CSV</strong><span>Столько поездок не поместится в ссылку. Скачайте файл и откройте его в AtlasDays на iPhone.</span><button type="button" class="cal-dialog-primary" data-cal-download>Скачать файл</button></li>
           <li data-cal-store><strong>Скачайте AtlasDays</strong><span>Бесплатно в App Store для iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8&amp;ppid=d3a9b2e7-b9b8-479b-be33-c009cef92c74">App Store</a></li>
-          <li><strong>Импортируйте поездки из файла</strong><span>Столько поездок не поместится в ссылку. Скачайте файл и откройте его в AtlasDays на iPhone.</span><button type="button" class="cal-dialog-primary" data-cal-download>Скачать файл</button></li>
         </ol>
         <div class="cal-dialog-foot">
           <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Скачать поездки в файле CSV</button><span data-cal-downloaded hidden>Откройте этот файл в AtlasDays на iPhone.</span></p>
@@ -383,7 +383,7 @@
     <h3>Это официальный калькулятор ЕС?</h3>
     <p>Нет. Европейская комиссия публикует собственный калькулятор краткосрочного пребывания. Этот считает так же — 90 дней за любые 180, включая дни въезда и выезда, — и позволяет сохранить поездки в AtlasDays. Решение принимают пограничные и визовые власти.</p>
     <h3>Сохраняются ли мои данные?</h3>
-    <p>Нет. Калькулятор работает в браузере и не отправляет, не записывает и не сохраняет введённые даты. При закрытии или обновлении страницы они исчезнут. Чтобы сохранить их, нажмите «Отслеживать в AtlasDays».</p>
+    <p>Нет. Калькулятор работает в браузере и не отправляет, не записывает и не сохраняет введённые даты. При закрытии или обновлении страницы они исчезнут. Чтобы сохранить их, нажмите «Экспортировать или открыть в AtlasDays».</p>
 
     <aside class="article-trust">
       <section class="article-trust-item article-source" aria-labelledby="official-source-heading">
@@ -398,12 +398,12 @@
     <nav class="related generated-related" aria-labelledby="related-schengen-calculator">
       <h2 id="related-schengen-calculator">Похожие статьи</h2>
       <div class="rule-cards">
-        <a class="rule-card" href="/ru/learn/turkiye-90-180-rule"><img class="rule-flag" src="/assets/flags/tr.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Турция: правило 90/180 для краткосрочного пребывания</strong></span></a>
-        <a class="rule-card" href="/ru/learn/schengen-90-180-rule"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Шенген 90/180: что означает 90 дней за любой период в 180 дней</strong></span></a>
-        <a class="rule-card" href="/ru/learn/schengen-single-entry-visa"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Однократная шенгенская виза: количество въездов и срок пребывания</strong></span></a>
-        <a class="rule-card" href="/ru/learn/eu-long-term-resident-status-absences"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Статус долгосрочного резидента ЕС: отсутствия за пять лет до подачи заявления</strong></span></a>
-        <a class="rule-card" href="/ru/learn/ees-etias-schengen-90-180"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>EES и ETIAS: что они означают для ваших шенгенских дней</strong></span></a>
-        <a class="rule-card" href="/ru/learn/schengen-countries-list-90-180-rule"><img class="rule-flag" src="/assets/flags/eu.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Список стран Шенгенской зоны для правила 90/180</strong></span></a>
+        <a class="rule-card" href="/ru/learn/turkiye-90-180-rule"><img class="rule-flag" src="/assets/flags/web/tr.webp" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Турция: правило 90/180 для краткосрочного пребывания</strong></span></a>
+        <a class="rule-card" href="/ru/learn/schengen-90-180-rule"><img class="rule-flag" src="/assets/flags/web/eu.webp" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Шенген 90/180: что означает 90 дней за любой период в 180 дней</strong></span></a>
+        <a class="rule-card" href="/ru/learn/schengen-single-entry-visa"><img class="rule-flag" src="/assets/flags/web/eu.webp" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Однократная шенгенская виза: количество въездов и срок пребывания</strong></span></a>
+        <a class="rule-card" href="/ru/learn/eu-long-term-resident-status-absences"><img class="rule-flag" src="/assets/flags/web/eu.webp" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Статус долгосрочного резидента ЕС: отсутствия за пять лет до подачи заявления</strong></span></a>
+        <a class="rule-card" href="/ru/learn/ees-etias-schengen-90-180"><img class="rule-flag" src="/assets/flags/web/eu.webp" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>EES и ETIAS: что они означают для ваших шенгенских дней</strong></span></a>
+        <a class="rule-card" href="/ru/learn/schengen-countries-list-90-180-rule"><img class="rule-flag" src="/assets/flags/web/eu.webp" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Список стран Шенгенской зоны для правила 90/180</strong></span></a>
       </div>
     </nav>
   </article>
@@ -454,7 +454,8 @@
   <script>window.AtlasDaysNavStrings={"menuOpen":"Открыть меню навигации","menuClose":"Закрыть меню навигации"};</script>
   <script src="../../assets/js/navigation.js?v=20261027j"></script>
   <script defer src="../../assets/js/rules/schengen.js?v=20261028a"></script>
-  <script defer src="../../assets/js/day-calendar.js?v=20261029b"></script>
+  <script defer src="../../assets/js/calculator-usage.js?v=20261114a" data-endpoint=""></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261117a"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on. */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

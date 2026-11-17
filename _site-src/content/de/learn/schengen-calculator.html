@@ -55,31 +55,31 @@
         </div>
         <div class="cal-box">
           <h3>Zeitleiste</h3>
-          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>In AtlasDays übernehmen</button>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Exportieren oder in AtlasDays öffnen</button>
         </div>
       </div>
       <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="schengen-import-title">
         <div class="cal-dialog-head">
           <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
           <div>
-            <p class="cal-dialog-title" id="schengen-import-title">In AtlasDays übernehmen</p>
-            <p class="cal-dialog-sub">Zähl deine Tage unterwegs weiter. Kostenlose App für iPhone und iPad.</p>
+            <p class="cal-dialog-title" id="schengen-import-title"><span data-cal-on="computer">Auf deinem iPhone oder iPad fortfahren</span><span data-cal-on="phone file">Exportieren oder in AtlasDays öffnen</span></p>
+            <p class="cal-dialog-sub">Zähle deine Tage auch unterwegs weiter. Hol dir AtlasDays kostenlos.</p>
           </div>
         </div>
         <div class="cal-dialog-scan" data-cal-on="computer">
           <div class="cal-qr" data-cal-qr></div>
-          <ol class="cal-steps">
-            <li><strong>AtlasDays auf deinem iPhone oder iPad installieren</strong><span>Kostenlos im App Store.</span></li>
-            <li><strong data-cal-stays>QR-Code scannen, um alle Reisen in AtlasDays zu laden</strong><span data-cal-stays>Prüfe sie und tippe dann auf „Importieren“.</span><strong data-cal-tracker hidden>QR-Code scannen, um diesen Tracker in AtlasDays einzurichten</strong><span data-cal-tracker hidden>Prüfe ihn und tippe dann auf „Speichern“.</span></li>
-          </ol>
+          <div class="cal-scan-copy">
+            <p class="cal-scan-lead" data-cal-both>Scanne den Code, um deine Reisen und deinen Tracker in AtlasDays zu öffnen.</p>
+            <p class="cal-scan-lead" data-cal-trips-only hidden>Scanne den Code, um deine Reisen in AtlasDays zu öffnen.</p>
+            <p class="cal-scan-lead" data-cal-tracker hidden>Scanne den Code, um deinen Tracker in AtlasDays zu öffnen.</p>
+          </div>
         </div>
         <ol class="cal-steps" data-cal-on="phone">
-          <li data-cal-store><strong>AtlasDays laden</strong><span>Kostenlos im App Store. Schon installiert? Weiter mit Schritt 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
           <li><strong data-cal-stays>Aufenthalte in der App öffnen</strong><span data-cal-stays>Prüfe sie und tippe dann auf „Importieren“. Vorher wird nichts gespeichert.</span><strong data-cal-tracker hidden>Diesen Tracker in der App öffnen</strong><span data-cal-tracker hidden>Prüfe ihn und tippe dann auf „Speichern“. Vorher wird nichts gespeichert.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">In AtlasDays öffnen</a></li>
         </ol>
         <ol class="cal-steps" data-cal-on="file">
+          <li><strong>Reisen als CSV-Datei herunterladen</strong><span>Das sind mehr Aufenthalte, als ein Link fassen kann. Lade die Datei herunter und öffne sie auf deinem iPhone mit AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Datei herunterladen</button></li>
           <li data-cal-store><strong>AtlasDays laden</strong><span>Kostenlos im App Store für iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
-          <li><strong>Aufenthalte per Datei importieren</strong><span>Das sind mehr Aufenthalte, als ein Link fassen kann. Lade die Datei herunter und öffne sie auf deinem iPhone mit AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Datei herunterladen</button></li>
         </ol>
         <div class="cal-dialog-foot">
           <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Reisen als CSV-Datei herunterladen</button><span data-cal-downloaded hidden>Öffne diese Datei auf deinem iPhone mit AtlasDays.</span></p>
@@ -123,4 +123,4 @@
     <h3>Ist das der offizielle Rechner der EU?</h3>
     <p>Nein. Die Europäische Kommission veröffentlicht ihren eigenen Kurzaufenthaltsrechner. Dieser Rechner zählt genauso, 90 Tage in beliebigen 180 Tagen, Einreise- und Ausreisetag eingeschlossen, und lässt dich deine Aufenthalte in AtlasDays behalten. Die Entscheidung treffen die Grenz- und Visumbehörden.</p>
     <h3>Werden meine Eingaben gespeichert?</h3>
-    <p>Nein. Der Rechner läuft in deinem Browser und sendet, protokolliert oder speichert die eingegebenen Reisedaten nicht. Wenn du die Seite schließt oder neu lädst, sind sie weg. Um sie zu behalten, tippe auf „In AtlasDays übernehmen“.</p>
+    <p>Nein. Der Rechner läuft in deinem Browser und sendet, protokolliert oder speichert die eingegebenen Reisedaten nicht. Wenn du die Seite schließt oder neu lädst, sind sie weg. Um sie zu behalten, tippe auf „Exportieren oder in AtlasDays öffnen“.</p>

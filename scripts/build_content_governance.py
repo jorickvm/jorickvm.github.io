@@ -36,7 +36,7 @@ def description(record: dict[str, object]) -> str:
 
 def classify(slug: str) -> str:
     if slug in {"denmark-overseas-work-42-day-rule", "china-90-day-tax-exemption",
-                "hong-kong-60-day-salaries-tax-exemption"}:
+                "hong-kong-60-day-salaries-tax-exemption", "uk-srt-calculator", "us-feie-calculator"}:
         return "tax-residency"
     if slug in {"italy-residence-permit-absence", "switzerland-permit-absence",
                 "qatar-residence-return-planning", "france-resident-card-absence",

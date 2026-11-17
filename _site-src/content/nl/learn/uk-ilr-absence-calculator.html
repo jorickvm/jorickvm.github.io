@@ -52,31 +52,31 @@
         </div>
         <div class="cal-box">
           <h3>Tijdlijn</h3>
-          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Houd dit bij in AtlasDays</button>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Exporteer of open in AtlasDays</button>
         </div>
       </div>
       <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="uk-ilr-import-title">
         <div class="cal-dialog-head">
           <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
           <div>
-            <p class="cal-dialog-title" id="uk-ilr-import-title">Houd dit bij in AtlasDays</p>
-            <p class="cal-dialog-sub">Tel je dagen door terwijl je reist. Gratis app voor iPhone en iPad.</p>
+            <p class="cal-dialog-title" id="uk-ilr-import-title"><span data-cal-on="computer">Ga verder op je iPhone of iPad</span><span data-cal-on="phone file">Exporteer of open in AtlasDays</span></p>
+            <p class="cal-dialog-sub">Tel je dagen door terwijl je reist. Download AtlasDays gratis.</p>
           </div>
         </div>
         <div class="cal-dialog-scan" data-cal-on="computer">
           <div class="cal-qr" data-cal-qr></div>
-          <ol class="cal-steps">
-            <li><strong>Zorg dat AtlasDays op je iPhone of iPad staat</strong><span>Gratis in de App Store.</span></li>
-            <li><strong data-cal-stays>Scan de QR-code om alle reizen in AtlasDays te laden</strong><span data-cal-stays>Controleer ze en tik dan op Importeren.</span><strong data-cal-tracker hidden>Scan de QR-code om deze tracker in AtlasDays in te stellen</strong><span data-cal-tracker hidden>Controleer hem en tik dan op Bewaar.</span></li>
-          </ol>
+          <div class="cal-scan-copy">
+            <p class="cal-scan-lead" data-cal-both>Scan om je reizen en tracker in AtlasDays te openen.</p>
+            <p class="cal-scan-lead" data-cal-trips-only hidden>Scan om je reizen in AtlasDays te openen.</p>
+            <p class="cal-scan-lead" data-cal-tracker hidden>Scan om je tracker in AtlasDays te openen.</p>
+          </div>
         </div>
         <ol class="cal-steps" data-cal-on="phone">
-          <li data-cal-store><strong>Download AtlasDays</strong><span>Gratis in de App Store. Heb je de app al? Ga door naar stap 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
           <li><strong data-cal-stays>Open je verblijven in de app</strong><span data-cal-stays>Controleer ze en tik dan op Importeren. Tot die tijd wordt er niets bewaard.</span><strong data-cal-tracker hidden>Open deze tracker in de app</strong><span data-cal-tracker hidden>Controleer hem en tik dan op Bewaar. Tot die tijd wordt er niets bewaard.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Open AtlasDays</a></li>
         </ol>
         <ol class="cal-steps" data-cal-on="file">
+          <li><strong>Download je reizen als CSV-bestand</strong><span>Dat zijn meer verblijven dan er in een link passen. Download het bestand en open het op je iPhone met AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Download bestand</button></li>
           <li data-cal-store><strong>Download AtlasDays</strong><span>Gratis in de App Store voor iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
-          <li><strong>Importeer je verblijven met een bestand</strong><span>Dat zijn meer verblijven dan er in een link passen. Download het bestand en open het op je iPhone met AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Download bestand</button></li>
         </ol>
         <div class="cal-dialog-foot">
           <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Download je reizen als CSV-bestand</button><span data-cal-downloaded hidden>Open dit bestand op je iPhone met AtlasDays.</span></p>
@@ -119,4 +119,4 @@
     <h3>Waarom laat een vakantie van twee weken minder dan 14 dagen zien?</h3>
     <p>Omdat alleen hele dagen buiten het VK tellen. De vertrek- en terugkeerdag zijn geen afwezigheidsdagen. Een reis van 1 juni tot 15 juni telt daarom als 13 dagen.</p>
     <h3>Worden mijn gegevens opgeslagen?</h3>
-    <p>Nee. De calculator draait in je browser en verzendt, registreert of bewaart de ingevoerde datums niet. Als je de pagina sluit of opnieuw laadt, verdwijnen ze. Tik op Houd dit bij in AtlasDays om ze te bewaren.</p>
+    <p>Nee. De calculator draait in je browser en verzendt, registreert of bewaart de ingevoerde datums niet. Als je de pagina sluit of opnieuw laadt, verdwijnen ze. Tik op Exporteer of open in AtlasDays om ze te bewaren.</p>

@@ -55,31 +55,31 @@
         </div>
         <div class="cal-box">
           <h3>Chronologie</h3>
-          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Suivre ces séjours dans AtlasDays</button>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Exporter ou ouvrir dans AtlasDays</button>
         </div>
       </div>
       <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="uk-ilr-import-title">
         <div class="cal-dialog-head">
           <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
           <div>
-            <p class="cal-dialog-title" id="uk-ilr-import-title">Suivre ces séjours dans AtlasDays</p>
-            <p class="cal-dialog-sub">Continuez à compter vos jours en voyage. App gratuite pour iPhone et iPad.</p>
+            <p class="cal-dialog-title" id="uk-ilr-import-title"><span data-cal-on="computer">Continuez sur votre iPhone ou iPad</span><span data-cal-on="phone file">Exporter ou ouvrir dans AtlasDays</span></p>
+            <p class="cal-dialog-sub">Continuez à compter vos jours en voyage. Téléchargez AtlasDays gratuitement.</p>
           </div>
         </div>
         <div class="cal-dialog-scan" data-cal-on="computer">
           <div class="cal-qr" data-cal-qr></div>
-          <ol class="cal-steps">
-            <li><strong>Assurez-vous d’avoir AtlasDays sur votre iPhone ou iPad</strong><span>Gratuit sur l’App Store.</span></li>
-            <li><strong data-cal-stays>Scannez le code QR pour charger tous les voyages dans AtlasDays</strong><span data-cal-stays>Vérifiez-les, puis touchez « Importer ».</span><strong data-cal-tracker hidden>Scannez le code QR pour créer ce suivi dans AtlasDays</strong><span data-cal-tracker hidden>Vérifiez-le, puis touchez « Enregistrer ».</span></li>
-          </ol>
+          <div class="cal-scan-copy">
+            <p class="cal-scan-lead" data-cal-both>Scannez le code pour ouvrir vos voyages et votre suivi dans AtlasDays.</p>
+            <p class="cal-scan-lead" data-cal-trips-only hidden>Scannez le code pour ouvrir vos voyages dans AtlasDays.</p>
+            <p class="cal-scan-lead" data-cal-tracker hidden>Scannez le code pour ouvrir votre suivi dans AtlasDays.</p>
+          </div>
         </div>
         <ol class="cal-steps" data-cal-on="phone">
-          <li data-cal-store><strong>Téléchargez AtlasDays</strong><span>Gratuit sur l’App Store. Vous l’avez déjà ? Passez à l’étape 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
           <li><strong data-cal-stays>Ouvrez vos séjours dans l’app</strong><span data-cal-stays>Vérifiez-les, puis touchez « Importer ». Rien n’est enregistré avant.</span><strong data-cal-tracker hidden>Ouvrez ce suivi dans l’app</strong><span data-cal-tracker hidden>Vérifiez-le, puis touchez « Enregistrer ». Rien n’est enregistré avant.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Ouvrir dans AtlasDays</a></li>
         </ol>
         <ol class="cal-steps" data-cal-on="file">
+          <li><strong>Télécharger les voyages au format CSV</strong><span>Il y a trop de séjours pour qu’un lien puisse tous les transmettre. Téléchargez le fichier et ouvrez-le sur votre iPhone avec AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Télécharger le fichier</button></li>
           <li data-cal-store><strong>Téléchargez AtlasDays</strong><span>Gratuit sur l’App Store, pour iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
-          <li><strong>Importez vos séjours avec un fichier</strong><span>Il y a trop de séjours pour qu’un lien puisse tous les transmettre. Téléchargez le fichier et ouvrez-le sur votre iPhone avec AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Télécharger le fichier</button></li>
         </ol>
         <div class="cal-dialog-foot">
           <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Télécharger les voyages au format CSV</button><span data-cal-downloaded hidden>Ouvrez ce fichier sur votre iPhone avec AtlasDays.</span></p>
@@ -122,4 +122,4 @@
     <h3>Pourquoi deux semaines de vacances représentent-elles moins de 14 jours ?</h3>
     <p>Seules les journées entières à l’étranger comptent. Le jour du départ et celui du retour ne sont pas des jours d’absence : un voyage du 1er au 15 juin représente 13 jours.</p>
     <h3>Mes données sont-elles enregistrées ?</h3>
-    <p>Non. Le calculateur fonctionne dans votre navigateur et n’envoie, ne journalise ni n’enregistre les dates saisies. Elles disparaissent à la fermeture ou au rechargement de la page. Pour les conserver, touchez « Suivre ces séjours dans AtlasDays ».</p>
+    <p>Non. Le calculateur fonctionne dans votre navigateur et n’envoie, ne journalise ni n’enregistre les dates saisies. Elles disparaissent à la fermeture ou au rechargement de la page. Pour les conserver, touchez « Exporter ou ouvrir dans AtlasDays ».</p>

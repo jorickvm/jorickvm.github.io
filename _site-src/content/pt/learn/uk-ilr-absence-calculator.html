@@ -55,31 +55,31 @@
         </div>
         <div class="cal-box">
           <h3>Linha do tempo</h3>
-          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Acompanhar no AtlasDays</button>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Exportar ou abrir no AtlasDays</button>
         </div>
       </div>
       <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="uk-ilr-import-title">
         <div class="cal-dialog-head">
           <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
           <div>
-            <p class="cal-dialog-title" id="uk-ilr-import-title">Acompanhar no AtlasDays</p>
-            <p class="cal-dialog-sub">Continue contando seus dias enquanto viaja. App gratuito para iPhone e iPad.</p>
+            <p class="cal-dialog-title" id="uk-ilr-import-title"><span data-cal-on="computer">Continue no seu iPhone ou iPad</span><span data-cal-on="phone file">Exportar ou abrir no AtlasDays</span></p>
+            <p class="cal-dialog-sub">Continue contando seus dias enquanto viaja. Baixe o AtlasDays grátis.</p>
           </div>
         </div>
         <div class="cal-dialog-scan" data-cal-on="computer">
           <div class="cal-qr" data-cal-qr></div>
-          <ol class="cal-steps">
-            <li><strong>Verifique se o AtlasDays está instalado no seu iPhone ou iPad</strong><span>Grátis na App Store.</span></li>
-            <li><strong data-cal-stays>Escaneie o código QR para carregar todas as viagens no AtlasDays</strong><span data-cal-stays>Confira e toque em Importar.</span><strong data-cal-tracker hidden>Escaneie o código QR para adicionar este controle ao AtlasDays</strong><span data-cal-tracker hidden>Confira e toque em Salvar.</span></li>
-          </ol>
+          <div class="cal-scan-copy">
+            <p class="cal-scan-lead" data-cal-both>Escaneie o código para abrir suas viagens e seu controle no AtlasDays.</p>
+            <p class="cal-scan-lead" data-cal-trips-only hidden>Escaneie o código para abrir suas viagens no AtlasDays.</p>
+            <p class="cal-scan-lead" data-cal-tracker hidden>Escaneie o código para abrir seu controle no AtlasDays.</p>
+          </div>
         </div>
         <ol class="cal-steps" data-cal-on="phone">
-          <li data-cal-store><strong>Baixe o AtlasDays</strong><span>Grátis na App Store. Já tem o app? Pule para o passo 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
           <li><strong data-cal-stays>Abra suas estadias no app</strong><span data-cal-stays>Confira e toque em Importar. Nada é salvo antes disso.</span><strong data-cal-tracker hidden>Abra este controle no app</strong><span data-cal-tracker hidden>Confira e toque em Salvar. Nada é salvo antes disso.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Abrir no AtlasDays</a></li>
         </ol>
         <ol class="cal-steps" data-cal-on="file">
+          <li><strong>Baixar as viagens em um arquivo CSV</strong><span>São estadias demais para caber em um link. Baixe o arquivo e abra-o no iPhone com o AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Baixar arquivo</button></li>
           <li data-cal-store><strong>Baixe o AtlasDays</strong><span>Grátis na App Store, para iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
-          <li><strong>Importe suas estadias com um arquivo</strong><span>São estadias demais para caber em um link. Baixe o arquivo e abra-o no iPhone com o AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Baixar arquivo</button></li>
         </ol>
         <div class="cal-dialog-foot">
           <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Baixar as viagens em um arquivo CSV</button><span data-cal-downloaded hidden>Abra este arquivo no iPhone com o AtlasDays.</span></p>
@@ -122,4 +122,4 @@
     <h3>Por que duas semanas de férias aparecem como menos de 14 dias?</h3>
     <p>Porque só dias inteiros fora contam. Partida e retorno não são dias de ausência; uma viagem de 1º a 15 de junho representa 13 dias fora.</p>
     <h3>Os dados que informo ficam salvos?</h3>
-    <p>Não. A calculadora funciona no navegador e não envia, registra nem salva as datas. Fechar ou recarregar a página apaga os dados. Para guardá-los, toque em Acompanhar no AtlasDays.</p>
+    <p>Não. A calculadora funciona no navegador e não envia, registra nem salva as datas. Fechar ou recarregar a página apaga os dados. Para guardá-los, toque em Exportar ou abrir no AtlasDays.</p>

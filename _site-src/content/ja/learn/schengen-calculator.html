@@ -51,31 +51,31 @@
         </div>
         <div class="cal-box">
           <h3>タイムライン</h3>
-          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>AtlasDaysで記録する</button>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>エクスポート、またはAtlasDaysで開く</button>
         </div>
       </div>
       <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="schengen-import-title">
         <div class="cal-dialog-head">
           <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
           <div>
-            <p class="cal-dialog-title" id="schengen-import-title">AtlasDaysで記録する</p>
-            <p class="cal-dialog-sub">旅行中もそのまま日数を数えられる、iPhoneとiPad向けの無料アプリです。</p>
+            <p class="cal-dialog-title" id="schengen-import-title"><span data-cal-on="computer">iPhoneまたはiPadで続ける</span><span data-cal-on="phone file">エクスポート、またはAtlasDaysで開く</span></p>
+            <p class="cal-dialog-sub">旅先でも日数の記録を続けましょう。AtlasDaysを無料で入手できます。</p>
           </div>
         </div>
         <div class="cal-dialog-scan" data-cal-on="computer">
           <div class="cal-qr" data-cal-qr></div>
-          <ol class="cal-steps">
-            <li><strong>iPhoneまたはiPadにAtlasDaysをインストールしておく</strong><span>App Storeで無料で入手できます。</span></li>
-            <li><strong data-cal-stays>QRコードを読み取り、すべての旅行をAtlasDaysに読み込む</strong><span data-cal-stays>確認してから「インポート」をタップします。</span><strong data-cal-tracker hidden>QRコードを読み取り、このトラッカーをAtlasDaysに追加する</strong><span data-cal-tracker hidden>確認してから「保存」をタップします。</span></li>
-          </ol>
+          <div class="cal-scan-copy">
+            <p class="cal-scan-lead" data-cal-both>コードをスキャンして、旅行とトラッカーをAtlasDaysで開きます。</p>
+            <p class="cal-scan-lead" data-cal-trips-only hidden>コードをスキャンして、旅行をAtlasDaysで開きます。</p>
+            <p class="cal-scan-lead" data-cal-tracker hidden>コードをスキャンして、トラッカーをAtlasDaysで開きます。</p>
+          </div>
         </div>
         <ol class="cal-steps" data-cal-on="phone">
-          <li data-cal-store><strong>AtlasDaysを入手</strong><span>App Storeから無料で入手できます。お持ちの場合は2へ進んでください。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
           <li><strong data-cal-stays>アプリで滞在を開く</strong><span data-cal-stays>確認してから「インポート」をタップします。それまで何も保存されません。</span><strong data-cal-tracker hidden>アプリでこのトラッカーを開く</strong><span data-cal-tracker hidden>確認してから「保存」をタップします。それまで何も保存されません。</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">AtlasDaysで開く</a></li>
         </ol>
         <ol class="cal-steps" data-cal-on="file">
+          <li><strong>旅行をCSVファイルでダウンロード</strong><span>滞在の数が多く、リンクでは送れません。ファイルをダウンロードして、iPhoneのAtlasDaysで開いてください。</span><button type="button" class="cal-dialog-primary" data-cal-download>ファイルをダウンロード</button></li>
           <li data-cal-store><strong>AtlasDaysを入手</strong><span>iPhone向けにApp Storeで無料で提供しています。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
-          <li><strong>ファイルで滞在をインポート</strong><span>滞在の数が多く、リンクでは送れません。ファイルをダウンロードして、iPhoneのAtlasDaysで開いてください。</span><button type="button" class="cal-dialog-primary" data-cal-download>ファイルをダウンロード</button></li>
         </ol>
         <div class="cal-dialog-foot">
           <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>旅行をCSVファイルでダウンロード</button><span data-cal-downloaded hidden>このファイルをiPhoneのAtlasDaysで開いてください。</span></p>
@@ -119,4 +119,4 @@
     <h3>これはEUの公式計算ツールですか？</h3>
     <p>いいえ。欧州委員会は独自の短期滞在計算ツールを公開しています。この計算機も入国日と出国日を含めて任意の180日間に90日という同じ方法で数え、さらに滞在をAtlasDaysに残しておけます。判断を下すのは入国審査当局とビザ発給当局です。</p>
     <h3>入力したデータは保存されますか？</h3>
-    <p>いいえ。計算機はブラウザ内で動作し、入力した日付を送信、記録、保存しません。ページを閉じるか再読み込みすると消えます。残しておくには「AtlasDaysで記録する」をタップしてください。</p>
+    <p>いいえ。計算機はブラウザ内で動作し、入力した日付を送信、記録、保存しません。ページを閉じるか再読み込みすると消えます。残しておくには「エクスポート、またはAtlasDaysで開く」をタップしてください。</p>

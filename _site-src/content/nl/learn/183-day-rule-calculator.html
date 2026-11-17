@@ -1,8 +1,8 @@
     <nav class="breadcrumb">
       <a href="/nl/">AtlasDays</a> / <a href="/nl/learn/">Reisregels</a> / <a href="/nl/learn/calculators">Calculators</a>
     </nav>
-    <h1>Calculator voor de 183-dagenregel: tel je dagen in elk land</h1>
-    <p class="subtitle">Kies een land en een jaar en tik dan op de dag van aankomst en de dag van vertrek. De tracker laat zien hoe dicht je bij 183 dagen zit, geplande verblijven meegerekend.</p>
+    <h1>Calculator voor de 183-dagenregel: landen en Amerikaanse staten</h1>
+    <p class="subtitle">Kies een land of Amerikaanse staat en een jaar. Tik vervolgens op de dag van aankomst en de dag van vertrek. De tracker laat zien hoe dicht je bij 183 dagen zit, inclusief geplande verblijven.</p>
     <p class="verified">Laatst gecontroleerd: oktober 2026</p>
 
     <h2>Tel je dagen</h2>
@@ -54,7 +54,61 @@
   "lineNoCountry": {
     "one": "{n} dag zonder land",
     "other": "{n} dagen zonder land"
-  }
+  },
+  "jurisdiction": "Land of Amerikaanse staat",
+  "addJurisdiction": "Land of Amerikaanse staat toevoegen",
+  "noJurisdictionMatch": "Geen passend land of Amerikaanse staat gevonden",
+  "stateUSAL": "Alabama (VS)",
+  "stateUSAK": "Alaska (VS)",
+  "stateUSAZ": "Arizona (VS)",
+  "stateUSAR": "Arkansas (VS)",
+  "stateUSCA": "Californië (VS)",
+  "stateUSCO": "Colorado (VS)",
+  "stateUSCT": "Connecticut (VS)",
+  "stateUSDE": "Delaware (VS)",
+  "stateUSDC": "District of Columbia (VS)",
+  "stateUSFL": "Florida (VS)",
+  "stateUSGA": "Georgia (VS)",
+  "stateUSHI": "Hawaï (VS)",
+  "stateUSID": "Idaho (VS)",
+  "stateUSIL": "Illinois (VS)",
+  "stateUSIN": "Indiana (VS)",
+  "stateUSIA": "Iowa (VS)",
+  "stateUSKS": "Kansas (VS)",
+  "stateUSKY": "Kentucky (VS)",
+  "stateUSLA": "Louisiana (VS)",
+  "stateUSME": "Maine (VS)",
+  "stateUSMD": "Maryland (VS)",
+  "stateUSMA": "Massachusetts (VS)",
+  "stateUSMI": "Michigan (VS)",
+  "stateUSMN": "Minnesota (VS)",
+  "stateUSMS": "Mississippi (VS)",
+  "stateUSMO": "Missouri (VS)",
+  "stateUSMT": "Montana (VS)",
+  "stateUSNE": "Nebraska (VS)",
+  "stateUSNV": "Nevada (VS)",
+  "stateUSNH": "New Hampshire (VS)",
+  "stateUSNJ": "New Jersey (VS)",
+  "stateUSNM": "New Mexico (VS)",
+  "stateUSNY": "New York (VS)",
+  "stateUSNC": "North Carolina (VS)",
+  "stateUSND": "North Dakota (VS)",
+  "stateUSOH": "Ohio (VS)",
+  "stateUSOK": "Oklahoma (VS)",
+  "stateUSOR": "Oregon (VS)",
+  "stateUSPA": "Pennsylvania (VS)",
+  "stateUSRI": "Rhode Island (VS)",
+  "stateUSSC": "South Carolina (VS)",
+  "stateUSSD": "South Dakota (VS)",
+  "stateUSTN": "Tennessee (VS)",
+  "stateUSTX": "Texas (VS)",
+  "stateUSUT": "Utah (VS)",
+  "stateUSVT": "Vermont (VS)",
+  "stateUSVA": "Virginia (VS)",
+  "stateUSWA": "Washington (VS)",
+  "stateUSWV": "West Virginia (VS)",
+  "stateUSWI": "Wisconsin (VS)",
+  "stateUSWY": "Wyoming (VS)"
 }
       </script>
       <p class="cal-hint" data-cal-hint aria-live="polite"></p>
@@ -71,31 +125,31 @@
         </div>
         <div class="cal-box">
           <h3>Tijdlijn</h3>
-          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Houd dit bij in AtlasDays</button>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Exporteer of open in AtlasDays</button>
         </div>
       </div>
       <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="days-183-import-title">
         <div class="cal-dialog-head">
           <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
           <div>
-            <p class="cal-dialog-title" id="days-183-import-title">Houd dit bij in AtlasDays</p>
-            <p class="cal-dialog-sub">Tel je dagen door terwijl je reist. Gratis app voor iPhone en iPad.</p>
+            <p class="cal-dialog-title" id="days-183-import-title"><span data-cal-on="computer">Ga verder op je iPhone of iPad</span><span data-cal-on="phone file">Exporteer of open in AtlasDays</span></p>
+            <p class="cal-dialog-sub">Tel je dagen door terwijl je reist. Download AtlasDays gratis.</p>
           </div>
         </div>
         <div class="cal-dialog-scan" data-cal-on="computer">
           <div class="cal-qr" data-cal-qr></div>
-          <ol class="cal-steps">
-            <li><strong>Zorg dat AtlasDays op je iPhone of iPad staat</strong><span>Gratis in de App Store.</span></li>
-            <li><strong data-cal-stays>Scan de QR-code om alle reizen in AtlasDays te laden</strong><span data-cal-stays>Controleer ze en tik dan op Importeren.</span><strong data-cal-tracker hidden>Scan de QR-code om deze tracker in AtlasDays in te stellen</strong><span data-cal-tracker hidden>Controleer hem en tik dan op Bewaar.</span></li>
-          </ol>
+          <div class="cal-scan-copy">
+            <p class="cal-scan-lead" data-cal-both>Scan om je reizen en tracker in AtlasDays te openen.</p>
+            <p class="cal-scan-lead" data-cal-trips-only hidden>Scan om je reizen in AtlasDays te openen.</p>
+            <p class="cal-scan-lead" data-cal-tracker hidden>Scan om je tracker in AtlasDays te openen.</p>
+          </div>
         </div>
         <ol class="cal-steps" data-cal-on="phone">
-          <li data-cal-store><strong>Download AtlasDays</strong><span>Gratis in de App Store. Heb je de app al? Ga door naar stap 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
           <li><strong data-cal-stays>Open je verblijven in de app</strong><span data-cal-stays>Controleer ze en tik dan op Importeren. Tot die tijd wordt er niets bewaard.</span><strong data-cal-tracker hidden>Open deze tracker in de app</strong><span data-cal-tracker hidden>Controleer hem en tik dan op Bewaar. Tot die tijd wordt er niets bewaard.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Open AtlasDays</a></li>
         </ol>
         <ol class="cal-steps" data-cal-on="file">
+          <li><strong>Download je reizen als CSV-bestand</strong><span>Dat zijn meer verblijven dan er in een link passen. Download het bestand en open het op je iPhone met AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Download bestand</button></li>
           <li data-cal-store><strong>Download AtlasDays</strong><span>Gratis in de App Store voor iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
-          <li><strong>Importeer je verblijven met een bestand</strong><span>Dat zijn meer verblijven dan er in een link passen. Download het bestand en open het op je iPhone met AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Download bestand</button></li>
         </ol>
         <div class="cal-dialog-foot">
           <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Download je reizen als CSV-bestand</button><span data-cal-downloaded hidden>Open dit bestand op je iPhone met AtlasDays.</span></p>
@@ -107,10 +161,12 @@
     <h2>Zo telt de calculator</h2>
     <ul>
       <li><strong>De standaardtelling telt aankomst en vertrek mee.</strong> Bij een telling waarbij beide dagen meetellen, is 1 tot en met 10 juni tien dagen. Een link vanuit een landengids kan in plaats daarvan de telmethode van dat land toepassen.</li>
-      <li><strong>Eén land, één jaar.</strong> Kies in de tracker het land en daarboven de periode: een kalenderjaar, een belastingjaar vanaf de dag waarop het begint (6 april in het Verenigd Koninkrijk, 1 juli in Australië, 1 april in Nieuw-Zeeland en India) of de laatste 12 maanden. Alleen dagen binnen die periode tellen mee.</li>
+      <li><strong>Eén plaats, één jaar.</strong> Kies het land of de Amerikaanse staat in de tracker en het venster erboven: een kalenderjaar, een belastingjaar vanaf de begindatum (6 april in het VK, 1 juli in Australië, 1 april in Nieuw-Zeeland en India), of de afgelopen 12 maanden. Alleen dagen binnen dat venster tellen mee.</li>
       <li><strong>Onder de 183 blijven of 183 halen.</strong> De meeste mensen willen onder de 183 dagen blijven. Heb je 183 dagen nodig om ergens inwoner te worden, zet de doelstelling dan op Doel bereiken: de balk wordt groen zodra je dat aantal haalt.</li>
       <li><strong>Geplande verblijven tellen ook mee.</strong> Markeer een reis die je nog niet hebt geboekt en zie of je daarmee boven de 183 uitkomt.</li>
     </ul>
+
+    <p>Selecteer een Amerikaanse staat om alleen verblijven voor die staat te tellen. Met Verenigde Staten tel je verblijven voor de VS en voor afzonderlijke staten samen, waarbij gedeelde dagen één keer meetellen. Voor een staat geldt de daglimiet die je kiest; de afzonderlijke woonplaats- en belastingresidentietoetsen van die staat worden niet toegepast.</p>
 
     <h2>Als jouw land anders telt</h2>
     <p>Landen gebruiken verschillende drempels en telmethoden. Lees de relevante gids voordat je de uitkomst interpreteert:</p>
@@ -138,4 +194,4 @@
     <h3>Word ik fiscaal inwoner als ik 183 dagen in een land ben?</h3>
     <p>Vaak, maar niet altijd. Veel landen zien 183 dagen in hun belastingjaar als inwonerschap, sommige gebruiken een andere drempel of periode, en andere banden zoals een woning of gezin kunnen je met minder dagen al inwoner maken. De calculator laat de telling zien, niet de beslissing.</p>
     <h3>Worden mijn gegevens opgeslagen?</h3>
-    <p>Nee. De calculator draait in je browser en verzendt, registreert of bewaart de ingevoerde datums niet. Als je de pagina sluit of opnieuw laadt, verdwijnen ze. Tik op Houd dit bij in AtlasDays om ze te bewaren.</p>
+    <p>Nee. De calculator draait in je browser en verzendt, registreert of bewaart de ingevoerde datums niet. Als je de pagina sluit of opnieuw laadt, verdwijnen ze. Tik op Exporteer of open in AtlasDays om ze te bewaren.</p>

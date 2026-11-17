@@ -59,31 +59,31 @@
         </div>
         <div class="cal-box">
           <h3>Cronología</h3>
-          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Llevar el control en AtlasDays</button>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Exportar o abrir en AtlasDays</button>
         </div>
       </div>
       <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="schengen-import-title">
         <div class="cal-dialog-head">
           <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
           <div>
-            <p class="cal-dialog-title" id="schengen-import-title">Llevar el control en AtlasDays</p>
-            <p class="cal-dialog-sub">Sigue contando tus días mientras viajas. App gratuita para iPhone y iPad.</p>
+            <p class="cal-dialog-title" id="schengen-import-title"><span data-cal-on="computer">Continúa en tu iPhone o iPad</span><span data-cal-on="phone file">Exportar o abrir en AtlasDays</span></p>
+            <p class="cal-dialog-sub">Sigue contando tus días mientras viajas. Descarga AtlasDays gratis.</p>
           </div>
         </div>
         <div class="cal-dialog-scan" data-cal-on="computer">
           <div class="cal-qr" data-cal-qr></div>
-          <ol class="cal-steps">
-            <li><strong>Asegúrate de tener AtlasDays en tu iPhone o iPad</strong><span>Gratis en el App Store.</span></li>
-            <li><strong data-cal-stays>Escanea el código QR para cargar todos los viajes en AtlasDays</strong><span data-cal-stays>Revísalos y luego toca «Importar».</span><strong data-cal-tracker hidden>Escanea el código QR para añadir este control a AtlasDays</strong><span data-cal-tracker hidden>Revísalo y luego toca «Guardar».</span></li>
-          </ol>
+          <div class="cal-scan-copy">
+            <p class="cal-scan-lead" data-cal-both>Escanea el código para abrir tus viajes y tu seguimiento en AtlasDays.</p>
+            <p class="cal-scan-lead" data-cal-trips-only hidden>Escanea el código para abrir tus viajes en AtlasDays.</p>
+            <p class="cal-scan-lead" data-cal-tracker hidden>Escanea el código para abrir tu seguimiento en AtlasDays.</p>
+          </div>
         </div>
         <ol class="cal-steps" data-cal-on="phone">
-          <li data-cal-store><strong>Consigue AtlasDays</strong><span>Gratis en el App Store. ¿Ya lo tienes? Salta al paso 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
           <li><strong data-cal-stays>Abre tus estancias en la app</strong><span data-cal-stays>Revísalas y luego toca «Importar». Hasta entonces no se guarda nada.</span><strong data-cal-tracker hidden>Abre este control en la app</strong><span data-cal-tracker hidden>Revísalo y luego toca «Guardar». Hasta entonces no se guarda nada.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Abrir en AtlasDays</a></li>
         </ol>
         <ol class="cal-steps" data-cal-on="file">
+          <li><strong>Descargar los viajes en un archivo CSV</strong><span>Son más estancias de las que caben en un enlace. Descarga el archivo y ábrelo en tu iPhone con AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Descargar archivo</button></li>
           <li data-cal-store><strong>Consigue AtlasDays</strong><span>Gratis en el App Store para iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
-          <li><strong>Importa tus estancias con un archivo</strong><span>Son más estancias de las que caben en un enlace. Descarga el archivo y ábrelo en tu iPhone con AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Descargar archivo</button></li>
         </ol>
         <div class="cal-dialog-foot">
           <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Descargar los viajes en un archivo CSV</button><span data-cal-downloaded hidden>Abre este archivo en tu iPhone con AtlasDays.</span></p>
@@ -127,4 +127,4 @@
     <h3>¿Es la calculadora oficial de la UE?</h3>
     <p>No. La Comisión Europea publica su propia calculadora de estancias de corta duración. Esta cuenta igual, 90 días en cualquier período de 180 con los días de entrada y salida incluidos, y te permite guardar tus estancias en AtlasDays. La decisión corresponde a las autoridades fronterizas y de visados.</p>
     <h3>¿Se guardan mis datos?</h3>
-    <p>No. La calculadora funciona en tu navegador y no envía, registra ni guarda las fechas que introduces. Al cerrar o recargar la página se borran. Para conservarlas, toca «Llevar el control en AtlasDays».</p>
+    <p>No. La calculadora funciona en tu navegador y no envía, registra ni guarda las fechas que introduces. Al cerrar o recargar la página se borran. Para conservarlas, toca «Exportar o abrir en AtlasDays».</p>

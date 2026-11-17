@@ -148,7 +148,7 @@
         "name": "Werden meine Reisedaten gespeichert?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Nein. Der Rechner läuft in deinem Browser und sendet, protokolliert oder speichert deine eingegebenen Reisedaten nicht. Wenn du die Seite schließt oder neu lädst, werden sie gelöscht. Um sie zu behalten, tippe auf „In AtlasDays übernehmen“."
+          "text": "Nein. Der Rechner läuft in deinem Browser und sendet, protokolliert oder speichert deine eingegebenen Reisedaten nicht. Wenn du die Seite schließt oder neu lädst, werden sie gelöscht. Um sie zu behalten, tippe auf „Exportieren oder in AtlasDays öffnen“."
         }
       }
     ]
@@ -163,7 +163,7 @@
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
-  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261028a" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261117a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
@@ -245,13 +245,13 @@
     <nav class="breadcrumb">
       <a href="/de/">AtlasDays</a> / <a href="/de/learn/">Reiseregeln</a> / <a href="/de/learn/calculators">Rechner</a>
     </nav>
-    <img class="title-flag" src="/assets/flags/gb.png" alt="Flagge des Vereinigten Königreichs" width="56" height="42" />
+    <img class="title-flag" src="/assets/flags/web/gb.webp" alt="Flagge des Vereinigten Königreichs" width="56" height="42" />
     <h1>ILR-Abwesenheitsrechner: 180 Tage in beliebigen 12 Monaten</h1>
     <p class="subtitle">Tippe bei jeder Reise auf den Tag, an dem du das Vereinigte Königreich verlassen hast, und auf den Tag deiner Rückkehr. Der Tracker zeigt deine Abwesenheitstage in den 12 Monaten bis zu einem beliebigen Datum, geplante Reisen eingeschlossen.</p>
     <p class="verified">Zuletzt geprüft: Oktober 2026</p>
 
     <h2 id="pr-fe-deine-abwesenheiten">Prüfe deine Abwesenheiten</h2>
-    <div class="daycal" id="uk-ilr" data-day-calendar="ukIlr">
+    <div class="daycal" id="uk-ilr" data-day-calendar="ukIlr" data-cal-placement="standalone">
       <script type="application/json" data-cal-strings>
 {
   "hintStart": "Tippe auf den Tag, an dem du das Vereinigte Königreich verlassen hast, und dann auf den Tag deiner Rückkehr.",
@@ -296,31 +296,31 @@
         </div>
         <div class="cal-box">
           <h3>Zeitleiste</h3>
-          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>In AtlasDays übernehmen</button>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Exportieren oder in AtlasDays öffnen</button>
         </div>
       </div>
       <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="uk-ilr-import-title">
         <div class="cal-dialog-head">
           <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
           <div>
-            <p class="cal-dialog-title" id="uk-ilr-import-title">In AtlasDays übernehmen</p>
-            <p class="cal-dialog-sub">Zähl deine Tage unterwegs weiter. Kostenlose App für iPhone und iPad.</p>
+            <p class="cal-dialog-title" id="uk-ilr-import-title"><span data-cal-on="computer">Auf deinem iPhone oder iPad fortfahren</span><span data-cal-on="phone file">Exportieren oder in AtlasDays öffnen</span></p>
+            <p class="cal-dialog-sub">Zähle deine Tage auch unterwegs weiter. Hol dir AtlasDays kostenlos.</p>
           </div>
         </div>
         <div class="cal-dialog-scan" data-cal-on="computer">
           <div class="cal-qr" data-cal-qr></div>
-          <ol class="cal-steps">
-            <li><strong>AtlasDays auf deinem iPhone oder iPad installieren</strong><span>Kostenlos im App Store.</span></li>
-            <li><strong data-cal-stays>QR-Code scannen, um alle Reisen in AtlasDays zu laden</strong><span data-cal-stays>Prüfe sie und tippe dann auf „Importieren“.</span><strong data-cal-tracker hidden>QR-Code scannen, um diesen Tracker in AtlasDays einzurichten</strong><span data-cal-tracker hidden>Prüfe ihn und tippe dann auf „Speichern“.</span></li>
-          </ol>
+          <div class="cal-scan-copy">
+            <p class="cal-scan-lead" data-cal-both>Scanne den Code, um deine Reisen und deinen Tracker in AtlasDays zu öffnen.</p>
+            <p class="cal-scan-lead" data-cal-trips-only hidden>Scanne den Code, um deine Reisen in AtlasDays zu öffnen.</p>
+            <p class="cal-scan-lead" data-cal-tracker hidden>Scanne den Code, um deinen Tracker in AtlasDays zu öffnen.</p>
+          </div>
         </div>
         <ol class="cal-steps" data-cal-on="phone">
-          <li data-cal-store><strong>AtlasDays laden</strong><span>Kostenlos im App Store. Schon installiert? Weiter mit Schritt 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8&amp;ppid=63812983-82c6-4aa2-8078-679f24f007ec">App Store</a></li>
           <li><strong data-cal-stays>Aufenthalte in der App öffnen</strong><span data-cal-stays>Prüfe sie und tippe dann auf „Importieren“. Vorher wird nichts gespeichert.</span><strong data-cal-tracker hidden>Diesen Tracker in der App öffnen</strong><span data-cal-tracker hidden>Prüfe ihn und tippe dann auf „Speichern“. Vorher wird nichts gespeichert.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">In AtlasDays öffnen</a></li>
         </ol>
         <ol class="cal-steps" data-cal-on="file">
+          <li><strong>Reisen als CSV-Datei herunterladen</strong><span>Das sind mehr Aufenthalte, als ein Link fassen kann. Lade die Datei herunter und öffne sie auf deinem iPhone mit AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Datei herunterladen</button></li>
           <li data-cal-store><strong>AtlasDays laden</strong><span>Kostenlos im App Store für iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8&amp;ppid=63812983-82c6-4aa2-8078-679f24f007ec">App Store</a></li>
-          <li><strong>Aufenthalte per Datei importieren</strong><span>Das sind mehr Aufenthalte, als ein Link fassen kann. Lade die Datei herunter und öffne sie auf deinem iPhone mit AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Datei herunterladen</button></li>
         </ol>
         <div class="cal-dialog-foot">
           <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Reisen als CSV-Datei herunterladen</button><span data-cal-downloaded hidden>Öffne diese Datei auf deinem iPhone mit AtlasDays.</span></p>
@@ -363,7 +363,7 @@
     <h3>Warum zeigt ein zweiwöchiger Urlaub weniger als 14 Tage an?</h3>
     <p>Weil nur volle Tage im Ausland zählen. Der Tag der Abreise und der Tag der Rückkehr sind keine Abwesenheitstage. Eine Reise vom 1. bis zum 15. Juni umfasst daher 13 Tage.</p>
     <h3>Werden meine Reisedaten gespeichert?</h3>
-    <p>Nein. Der Rechner läuft in deinem Browser und sendet, protokolliert oder speichert deine eingegebenen Reisedaten nicht. Wenn du die Seite schließt oder neu lädst, werden sie gelöscht. Um sie zu behalten, tippe auf „In AtlasDays übernehmen“.</p>
+    <p>Nein. Der Rechner läuft in deinem Browser und sendet, protokolliert oder speichert deine eingegebenen Reisedaten nicht. Wenn du die Seite schließt oder neu lädst, werden sie gelöscht. Um sie zu behalten, tippe auf „Exportieren oder in AtlasDays öffnen“.</p>
 
     <aside class="article-trust">
       <section class="article-trust-item article-source" aria-labelledby="official-source-heading">
@@ -378,12 +378,12 @@
     <nav class="related generated-related" aria-labelledby="related-uk-ilr-absence-calculator">
       <h2 id="related-uk-ilr-absence-calculator">Verwandte Artikel</h2>
       <div class="rule-cards">
-        <a class="rule-card" href="/de/learn/uk-citizenship-absence-limits"><img class="rule-flag" src="/assets/flags/gb.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Britische Staatsbürgerschaft: die Abwesenheitsgrenzen von 450 und 90 Tagen</strong></span></a>
-        <a class="rule-card" href="/de/learn/canada-pr-residency-obligation"><img class="rule-flag" src="/assets/flags/ca.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Kanadas Residenzpflicht für Permanent Residents: 730 Tage</strong></span></a>
-        <a class="rule-card" href="/de/learn/canada-citizenship-physical-presence"><img class="rule-flag" src="/assets/flags/ca.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Anwesenheit für die kanadische Staatsbürgerschaft: 1.095 Tage</strong></span></a>
-        <a class="rule-card" href="/de/learn/us-naturalization-physical-presence"><img class="rule-flag" src="/assets/flags/us.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>US-Einbürgerung: die geforderten 30 Monate Anwesenheit</strong></span></a>
-        <a class="rule-card" href="/de/learn/new-zealand-citizenship-presence-requirement"><img class="rule-flag" src="/assets/flags/nz.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Neuseelands Anwesenheitserfordernis von 1.350 Tagen</strong></span></a>
-        <a class="rule-card" href="/de/learn/uk-standard-visitor-visa-180-day-rule"><img class="rule-flag" src="/assets/flags/gb.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>UK-Besucher: Sechs Monate pro Besuch</strong></span></a>
+        <a class="rule-card" href="/de/learn/uk-citizenship-absence-limits"><img class="rule-flag" src="/assets/flags/web/gb.webp" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Britische Staatsbürgerschaft: die Abwesenheitsgrenzen von 450 und 90 Tagen</strong></span></a>
+        <a class="rule-card" href="/de/learn/canada-pr-residency-obligation"><img class="rule-flag" src="/assets/flags/web/ca.webp" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Kanadas Residenzpflicht für Permanent Residents: 730 Tage</strong></span></a>
+        <a class="rule-card" href="/de/learn/canada-citizenship-physical-presence"><img class="rule-flag" src="/assets/flags/web/ca.webp" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Anwesenheit für die kanadische Staatsbürgerschaft: 1.095 Tage</strong></span></a>
+        <a class="rule-card" href="/de/learn/us-naturalization-physical-presence"><img class="rule-flag" src="/assets/flags/web/us.webp" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>US-Einbürgerung: die geforderten 30 Monate Anwesenheit</strong></span></a>
+        <a class="rule-card" href="/de/learn/new-zealand-citizenship-presence-requirement"><img class="rule-flag" src="/assets/flags/web/nz.webp" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Neuseelands Anwesenheitserfordernis von 1.350 Tagen</strong></span></a>
+        <a class="rule-card" href="/de/learn/uk-standard-visitor-visa-180-day-rule"><img class="rule-flag" src="/assets/flags/web/gb.webp" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>UK-Besucher: Sechs Monate pro Besuch</strong></span></a>
       </div>
     </nav>
   </article>
@@ -434,7 +434,8 @@
   <script>window.AtlasDaysNavStrings={"menuOpen":"Navigationsmenü öffnen","menuClose":"Navigationsmenü schließen"};</script>
   <script src="../../assets/js/navigation.js?v=20261027j"></script>
   <script defer src="../../assets/js/rules/uk-ilr.js?v=20261028b"></script>
-  <script defer src="../../assets/js/day-calendar.js?v=20261029b"></script>
+  <script defer src="../../assets/js/calculator-usage.js?v=20261114a" data-endpoint=""></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261117a"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on. */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

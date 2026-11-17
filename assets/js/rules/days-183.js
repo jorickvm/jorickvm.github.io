@@ -24,6 +24,9 @@
   "use strict";
 
   var LIMIT = 183;
+  var STATES = "AL AK AZ AR CA CO CT DE DC FL GA HI ID IL IN IA KS KY LA ME MD MA MI MN MS MO MT NE NV NH NJ NM NY NC ND OH OK OR PA RI SC SD TN TX UT VT VA WA WV WI WY".split(" ");
+  var stateNames = {};
+  STATES.forEach(function (code) { stateNames["US-" + code] = "stateUS" + code; });
 
   function defaults(c) {
     var p = c.D.parts(c.today), aprilSixth = c.D.fromParts(p.y, 4, 6);
@@ -125,6 +128,11 @@
     fixedRange: true,
     quietHint: true,
     linkId: "183",
+    placeNames: stateNames,
+    standaloneStrings: { country: "jurisdiction", addCountry: "addJurisdiction", noMatch: "noJurisdictionMatch" },
+    countries: function (all, preset) {
+      return preset && preset.country ? all : all.concat(STATES.map(function (code) { return "US-" + code; }));
+    },
 
     range: function (c) { return bounds(c); },
 
@@ -135,7 +143,7 @@
     // the first day count that makes you resident (184 for "more than 183").
     fromQuery: function (q, c) {
       var code = (q.get("country") || "").toUpperCase();
-      if (!/^[A-Z]{2}$/.test(code) || c.allowed.indexOf(code) < 0) return null;
+      if (!/^(?:[A-Z]{2}|US-[A-Z]{2})$/.test(code) || c.allowed.indexOf(code) < 0) return null;
       var s = { country: code, linkedCountry: code };
       var goal = q.get("goal");
       if (goal === "stay" || goal === "reach") s.goal = goal;
@@ -207,7 +215,10 @@
         if (cyprusRule(c, code)) return;
         if (dayTrip(t, c)) return;
         var last = c.settings.nights ? t.end - 1 : t.end;
-        for (var d = Math.max(t.start, b.from); d <= Math.min(last, b.to); d++) (byCountry[code] = byCountry[code] || new Set()).add(d);
+        var places = /^US-[A-Z]{2}$/.test(code) ? [code, "US"] : [code];
+        places.forEach(function (place) {
+          for (var d = Math.max(t.start, b.from); d <= Math.min(last, b.to); d++) (byCountry[place] = byCountry[place] || new Set()).add(d);
+        });
       });
       if (cyprusRule(c, "CY")) byCountry.CY = cyprusDays(trips, b);
       // Without a choice yet, check the country with the most days.

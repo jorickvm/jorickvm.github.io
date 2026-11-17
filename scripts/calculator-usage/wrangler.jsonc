@@ -1,0 +1,9 @@
+{
+  "name": "atlasdays-calculator-usage",
+  "main": "worker.mjs",
+  "compatibility_date": "2026-11-13",
+  "workers_dev": true,
+  "observability": { "enabled": false },
+  "durable_objects": { "bindings": [{ "name": "COUNTS", "class_name": "UsageCounts" }] },
+  "migrations": [{ "tag": "v1", "new_sqlite_classes": ["UsageCounts"] }]
+}

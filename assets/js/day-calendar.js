@@ -192,7 +192,8 @@
   function importFragment(rows, linkId, offer) {
     if (!rows.length) return "v=2" + (linkId ? "&c=" + encodeURIComponent(linkId) : "") + "&p=" + offer;
     var base = Math.min.apply(null, rows.map(function (r) { return r.start; }));
-    var parts = ["v=1"];
+    var stateRows = rows.some(function (r) { return /^US-[A-Z]{2}$/i.test(String(r.country)); });
+    var parts = [stateRows ? "v=2" : "v=1"];
     if (linkId) parts.push("c=" + encodeURIComponent(linkId));
     parts.push("b=" + D.iso(base));
     var note = rows.length && rows[0].notes;
@@ -324,6 +325,17 @@
     var recent = [];
     var locked = preset.lock || [];
     var settings = Object.assign({}, preset.settings || {}); // choices made in the rule's result menus (rule.evaluate -> controls)
+    var measure = window.AtlasDaysCalculatorUsage
+      ? window.AtlasDaysCalculatorUsage.create(root.getAttribute("data-day-calendar"), root.getAttribute("data-cal-placement"))
+      : function () {};
+    var interacted = false;
+    function usageStarted() { interacted = true; measure("started"); }
+    if (!preset.settings && rule.standaloneStrings) {
+      Object.keys(rule.standaloneStrings).forEach(function (key) {
+        var value = S[rule.standaloneStrings[key]];
+        if (value) S[key] = value;
+      });
+    }
     // A link can open the full calculator already set up, e.g. from an
     // article: ?country=BG&period=rolling (rule.fromQuery reads and checks
     // the values). While the country stays the linked one, imports carry the
@@ -343,7 +355,9 @@
     var englishNames = null;
     try { englishNames = new Intl.DisplayNames(["en"], { type: "region" }); } catch (e) {}
 
-    function ctx() { return { today: today, D: D, label: label, plural: plural, text: text, trips: trips, placeName: placeName, settings: settings, dateRange: dateRange, dayMonth: dayMonth, yearSpan: yearSpan, tone: tone, embedded: !!preset.settings, offer: preset.offer || "", offers: offers }; }
+    function ctx() { return { today: today, D: D, label: label, plural: plural, text: text, trips: trips, placeName: nameForPlace, settings: settings, dateRange: dateRange, dayMonth: dayMonth, yearSpan: yearSpan, tone: tone, embedded: !!preset.settings, offer: preset.offer || "", offers: offers }; }
+    function nameForPlace(code) { return rule.placeNames && rule.placeNames[code] ? text(rule.placeNames[code]) : placeName(code); }
+    function flagSource(code) { return code === "XW" ? FLAGS + "xw.svg" : FLAGS + "web/" + code.toLowerCase() + ".webp"; }
     // A new trip starts with the rule's fixed country, or (rule.carryCountry)
     // the country picked last, so a run of stays in one country is quick.
     function newCountry() {
@@ -412,6 +426,7 @@
     //   tap a trip: select it; drag its end handles to change the dates;
     //   tap it again, tap elsewhere or press Escape to let go
     function tap(day) {
+      usageStarted();
       if (anchor != null) {
         var from = anchor;
         anchor = null; hover = null;
@@ -502,7 +517,7 @@
       bars.appendChild(bar);
       // The trip's flag stamped on the start of its bar, as in the app.
       if (real && starts && t.country) {
-        var flag = el("img", { "class": "cal-bar-flag", src: FLAGS + t.country.toLowerCase() + ".png", alt: "" });
+        var flag = el("img", { "class": "cal-bar-flag", src: flagSource(t.country), alt: "" });
         flag.style.left = left;
         bars.appendChild(flag);
       }
@@ -542,6 +557,7 @@
     }
     function startDrag(e) {
       if (selected < 0) return;
+      usageStarted();
       e.preventDefault(); e.stopPropagation();
       var t = trips[selected], end = e.currentTarget.getAttribute("data-end");
       drag = { trip: t, fixed: end === "start" ? t.end : t.start };
@@ -629,8 +645,9 @@
     var catalogue = null;
     function places() {
       if (!catalogue) catalogue = allowed.map(function (c) {
-        var name = placeName(c), en = englishNames ? (englishNames.of(c) || "") : "";
-        return { code: c, name: name, key: fold(name + " " + en + " " + c + " " + (ALIASES[c] || "")) };
+        var name = nameForPlace(c), en = englishNames && c.indexOf("US-") !== 0 ? (englishNames.of(c) || "") : "";
+        var abbreviation = c.indexOf("US-") === 0 ? " " + c.slice(3) : "";
+        return { code: c, name: name, key: fold(name + " " + en + " " + c + abbreviation + " " + (ALIASES[c] || "")) };
       }).sort(function (a, b) { return a.name.localeCompare(b.name, locale); });
       return catalogue;
     }
@@ -638,32 +655,33 @@
       var q = fold(query.trim());
       if (!q) {
         var picked = recent.map(function (c) { return places().filter(function (p) { return p.code === c; })[0]; }).filter(Boolean);
-        return picked.length ? picked : places().slice(0, 8);
+        return picked.concat(places().filter(function (p) { return recent.indexOf(p.code) < 0; }));
       }
-      // Best first: the name starts with what was typed, then a word in it
-      // does (or the English name or the code), then it appears anywhere.
-      var lead = [], word = [], rest = [];
+      // Exact place codes and state abbreviations precede name matches.
+      var exact = [], abbreviations = [], lead = [], word = [], rest = [];
       places().forEach(function (p) {
+        if (p.code.toLowerCase() === q) { exact.push(p); return; }
+        if (p.code.indexOf("US-") === 0 && p.code.slice(3).toLowerCase() === q) { abbreviations.push(p); return; }
         var at = p.key.indexOf(q);
         if (at < 0) return;
         (at === 0 ? lead : p.key.charAt(at - 1) === " " ? word : rest).push(p);
       });
-      return lead.concat(word, rest).slice(0, 8);
+      return exact.concat(abbreviations, lead, word, rest);
     }
     function flagImg(code, size) {
-      return el("img", { src: FLAGS + code.toLowerCase() + ".png", alt: "", width: String(size), height: String(Math.round(size * 0.75)), loading: "lazy" });
+      return el("img", { src: flagSource(code), alt: "", width: String(size), height: String(Math.round(size * 0.75)), loading: "lazy" });
     }
     function countryField(current, onChoose) {
       var wrap = el("div", { "class": "cal-country-field" });
       var input = el("input", { type: "text", "class": "cal-country-input", placeholder: text("addCountry"), "aria-label": text("country"), autocomplete: "off",
         // "search" in the name keeps Safari from offering contact AutoFill here
         name: "cal-place-search", spellcheck: "false", role: "combobox", "aria-expanded": "false", "aria-autocomplete": "list" });
-      if (current) input.value = placeName(current);
+      if (current) input.value = nameForPlace(current);
       var box = el("ul", { "class": "cal-country-list", role: "listbox", hidden: "" });
       var options = [], active = 0;
-      function choose(code) { close(); remember(code); onChoose(code); }
+      function choose(code) { usageStarted(); close(); remember(code); onChoose(code); }
       function show() {
-        options = matches(current && input.value === placeName(current) ? "" : input.value);
+        options = matches(current && input.value === nameForPlace(current) ? "" : input.value);
         active = 0;
         box.textContent = "";
         if (!options.length) box.appendChild(el("li", { "class": "cal-country-none" }, text("noMatch")));
@@ -675,6 +693,7 @@
           box.appendChild(li);
         });
         box.hidden = false;
+        box.scrollTop = 0;
         input.setAttribute("aria-expanded", "true");
         place();
         window.addEventListener("scroll", place, true);
@@ -695,8 +714,11 @@
         left = Math.max(8, Math.min(left, window.innerWidth - width - 8));
         box.style.left = left + "px";
         box.style.width = width + "px";
-        var below = window.innerHeight - r.bottom - 12, h = Math.min(box.scrollHeight, 260);
-        box.style.top = (below >= Math.min(h, 160) || below >= r.top ? r.bottom + 6 : Math.max(8, r.top - 6 - h)) + "px";
+        var below = Math.max(0, window.innerHeight - r.bottom - 12), above = Math.max(0, r.top - 14);
+        var h = Math.min(box.scrollHeight, 260), opensBelow = below >= Math.min(h, 160) || below >= above;
+        h = Math.min(h, opensBelow ? below : above);
+        box.style.maxHeight = h + "px";
+        box.style.top = (opensBelow ? r.bottom + 6 : Math.max(8, r.top - 6 - h)) + "px";
       }
       function close() {
         box.hidden = true;
@@ -704,10 +726,17 @@
         window.removeEventListener("scroll", place, true);
         window.removeEventListener("resize", place);
       }
-      function mark() { Array.prototype.forEach.call(box.children, function (li, i) { li.classList.toggle("is-active", i === active); }); }
+      function mark() {
+        Array.prototype.forEach.call(box.children, function (li, i) { li.classList.toggle("is-active", i === active); });
+        var row = box.children[active];
+        if (row) {
+          if (row.offsetTop < box.scrollTop) box.scrollTop = row.offsetTop;
+          else if (row.offsetTop + row.offsetHeight > box.scrollTop + box.clientHeight) box.scrollTop = row.offsetTop + row.offsetHeight - box.clientHeight;
+        }
+      }
       input.addEventListener("focus", function () { if (current) input.select(); show(); });
       input.addEventListener("input", show);
-      input.addEventListener("blur", function () { close(); if (current) input.value = placeName(current); fitInput(input); });
+      input.addEventListener("blur", function () { close(); if (current) input.value = nameForPlace(current); fitInput(input); });
       // The field is as wide as the name, so only the name itself opens the list.
       input.addEventListener("input", function () { fitInput(input); });
       input.addEventListener("keydown", function (e) {
@@ -737,7 +766,7 @@
         if (t.country) flag.appendChild(flagImg(t.country, 28));
         card.appendChild(flag);
         var name = el("div", { "class": "cal-trip-country" });
-        if (allowed.length < 2) name.appendChild(el("span", null, placeName(t.country)));
+        if (allowed.length < 2) name.appendChild(el("span", null, nameForPlace(t.country)));
         else name.appendChild(countryField(t.country, function (code) { trips[idx].country = code; commit(); }));
         card.appendChild(name);
         var line = el("div", { "class": "cal-trip-line" });
@@ -769,6 +798,7 @@
     // A rule's result can carry menus (controls), an app-style meter and a
     // status pill, or the headline form.
     function changed(ctl) {
+      usageStarted();
       render();
       if (rule.fixedRange && ctl.moveCalendar) { revealNear(rule.range(ctx())); updateMonth(); }
     }
@@ -852,6 +882,8 @@
     }
     function renderResult() {
       var r = rule.evaluate(trips, ctx());
+      if (interacted && r.meter && (trips.some(function (t) { return t.country && t.end >= t.start; })
+          || (rule.usageReady && rule.usageReady(ctx())))) measure("used");
       result.textContent = "";
       settingsRow.textContent = "";
       var shown = (r.controls || []).filter(function (ctl) { return locked.indexOf(ctl.key) < 0; });
@@ -876,7 +908,7 @@
             var flag = el("span", { "class": "cal-flag" + (m.flag ? "" : " is-empty") });
             if (m.flag) flag.appendChild(flagImg(m.flag, 28));
             head.appendChild(flag);
-            head.appendChild(el("span", { "class": "cal-card-title" + (m.flag ? "" : " is-placeholder") }, m.countryKey && m.flag ? placeName(m.flag) : m.title));
+            head.appendChild(el("span", { "class": "cal-card-title" + (m.flag ? "" : " is-placeholder") }, m.countryKey && m.flag ? nameForPlace(m.flag) : m.title));
           }
           if (r.statusText) head.appendChild(el("span", { "class": "cal-pill tone-" + (r.statusTone || m.tone) }, r.statusText));
           result.appendChild(head);
@@ -983,6 +1015,7 @@
     // ---- import into AtlasDays -----------------------------------------------------
     function csvField(v) { v = String(v == null ? "" : v); return /[",\n]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; }
     function openImport() {
+      usageStarted();
       var rows = rule.exportRows(trips, ctx()).slice().sort(function (a, b) { return a.start - b.start; });
       if (!dialog || !dialog.showModal) return downloadCsv();
       var offer = rule.trackerOffer ? rule.trackerOffer(trips, ctx()) : "";
@@ -996,6 +1029,8 @@
       // Its steps name the stays, or with none the tracker alone.
       dialog.querySelectorAll("[data-cal-stays]").forEach(function (part) { part.hidden = !rows.length; });
       dialog.querySelectorAll("[data-cal-tracker]").forEach(function (part) { part.hidden = !!rows.length; });
+      dialog.querySelectorAll("[data-cal-both]").forEach(function (part) { part.hidden = !rows.length || !offer; });
+      dialog.querySelectorAll("[data-cal-trips-only]").forEach(function (part) { part.hidden = !rows.length || !!offer; });
       // Inside the app there is nothing to install.
       dialog.querySelectorAll("[data-cal-store]").forEach(function (part) { part.hidden = inApp; });
       // A single step needs no number.
@@ -1027,6 +1062,7 @@
       dialog.focus();
     }
     function downloadCsv() {
+      usageStarted(); measure("continued");
       var lines = ["Country,Start Date,End Date,Notes"].concat(rule.exportRows(trips, ctx()).map(function (r) {
         return [r.country, D.iso(r.start), r.end == null ? "" : D.iso(r.end), r.notes || ""].map(csvField).join(",");
       }));
@@ -1073,6 +1109,9 @@
     win.addEventListener("scroll", updateMonth, { passive: true });
     root.querySelectorAll("[data-cal-import]").forEach(function (btn) {
       btn.addEventListener("click", openImport);
+    });
+    root.querySelectorAll("[data-cal-open]").forEach(function (link) {
+      link.addEventListener("click", function () { usageStarted(); measure("continued"); });
     });
     root.querySelectorAll("[data-cal-download]").forEach(function (btn) {
       btn.addEventListener("click", function () {

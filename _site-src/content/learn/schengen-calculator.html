@@ -55,31 +55,31 @@
         </div>
         <div class="cal-box">
           <h3>Timeline</h3>
-          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Track this in AtlasDays</button>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Export or open in AtlasDays</button>
         </div>
       </div>
       <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="schengen-import-title">
         <div class="cal-dialog-head">
           <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
           <div>
-            <p class="cal-dialog-title" id="schengen-import-title">Track this in AtlasDays</p>
-            <p class="cal-dialog-sub">Keep counting as you travel. Free app for iPhone and iPad.</p>
+            <p class="cal-dialog-title" id="schengen-import-title"><span data-cal-on="computer">Continue on your iPhone or iPad</span><span data-cal-on="phone file">Export or open in AtlasDays</span></p>
+            <p class="cal-dialog-sub">Keep counting as you travel. Get AtlasDays free.</p>
           </div>
         </div>
         <div class="cal-dialog-scan" data-cal-on="computer">
           <div class="cal-qr" data-cal-qr></div>
-          <ol class="cal-steps">
-            <li><strong>Make sure AtlasDays is installed on your iPhone or iPad</strong><span>Free on the App Store.</span></li>
-            <li><strong data-cal-stays>Scan the QR code to load all trips into AtlasDays</strong><span data-cal-stays>Check them, then tap Import.</span><strong data-cal-tracker hidden>Scan the QR code to set up this tracker in AtlasDays</strong><span data-cal-tracker hidden>Check it, then tap Save.</span></li>
-          </ol>
+          <div class="cal-scan-copy">
+            <p class="cal-scan-lead" data-cal-both>Scan to open your trips and tracker in AtlasDays.</p>
+            <p class="cal-scan-lead" data-cal-trips-only hidden>Scan to open your trips in AtlasDays.</p>
+            <p class="cal-scan-lead" data-cal-tracker hidden>Scan to open your tracker in AtlasDays.</p>
+          </div>
         </div>
         <ol class="cal-steps" data-cal-on="phone">
-          <li data-cal-store><strong>Get AtlasDays</strong><span>Free on the App Store. Already have it? Skip to 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
           <li><strong data-cal-stays>Open your stays in the app</strong><span data-cal-stays>Check them, then tap Import. Nothing is saved before that.</span><strong data-cal-tracker hidden>Open this tracker in the app</strong><span data-cal-tracker hidden>Check it, then tap Save. Nothing is saved before that.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Open in AtlasDays</a></li>
         </ol>
         <ol class="cal-steps" data-cal-on="file">
+          <li><strong>Download trips as a CSV file</strong><span>That is more stays than a link can carry. Download the file and open it on your iPhone with AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Download file</button></li>
           <li data-cal-store><strong>Get AtlasDays</strong><span>Free on the App Store for iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
-          <li><strong>Import your stays with a file</strong><span>That is more stays than a link can carry. Download the file and open it on your iPhone with AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Download file</button></li>
         </ol>
         <div class="cal-dialog-foot">
           <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Download trips as a CSV file</button><span data-cal-downloaded hidden>Open this file on your iPhone with AtlasDays.</span></p>
@@ -123,4 +123,4 @@
     <h3>Is this the official EU calculator?</h3>
     <p>No. The European Commission publishes its own short-stay calculator. This one counts the same way, 90 days in any 180 with entry and exit days included, and lets you keep your stays in AtlasDays. Border and visa authorities make the decision.</p>
     <h3>Is my data stored?</h3>
-    <p>No. The calculator runs in your browser and does not send, log or save the dates you enter. Closing or reloading the page clears them. To keep them, tap Track this in AtlasDays.</p>
+    <p>No. The calculator runs in your browser and does not send, log or save the dates you enter. Closing or reloading the page clears them. To keep them, tap Export or open in AtlasDays.</p>

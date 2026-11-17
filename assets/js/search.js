@@ -279,7 +279,7 @@
               if (item.entry.flag) {
                 mark = document.createElement("img");
                 mark.className = "search-flag";
-                mark.src = "/assets/flags/" + item.entry.flag + ".png";
+                mark.src = "/assets/flags/web/" + item.entry.flag + ".webp";
                 mark.alt = "";
               } else {
                 mark = document.createElement("span");

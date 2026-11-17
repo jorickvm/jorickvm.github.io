@@ -134,7 +134,7 @@
   <link rel="stylesheet" href="../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../assets/css/site-footer.css?v=20261027h" />
-  <link rel="stylesheet" href="../assets/css/day-calendar.css?v=20261028a" />
+  <link rel="stylesheet" href="../assets/css/day-calendar.css?v=20261117a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
@@ -218,7 +218,7 @@
       <a href="/">AtlasDays</a> / <a href="/learn/">Travel Rules</a> / Malaysia
     </nav>
 
-    <img class="title-flag" src="../assets/flags/my.png" alt="Flag of Malaysia" width="56" height="42" />
+    <img class="title-flag" src="../assets/flags/web/my.webp" alt="Flag of Malaysia" width="56" height="42" />
     <h1>Malaysia's 182-Day Tax Residency Rule</h1>
     <p class="subtitle">Malaysia’s main residence test starts at 182 days in a calendar year. Linked stays and earlier or later years can establish residence with fewer days. Check your own dates in the <a href="#calculator">calculator</a> below.</p>
     <p class="verified">Last verified: 12 November 2026</p>
@@ -260,7 +260,7 @@
 
     <h2 id="calculator">Malaysia 182-day calculator</h2>
     <p>Tap the days you were in Malaysia, planned stays included, and see how close you are to 182 days this year.</p>
-    <div class="daycal" id="embed-days183" data-day-calendar="days183" data-cal-preset="{&quot;settings&quot;:{&quot;country&quot;:&quot;MY&quot;,&quot;goal&quot;:&quot;stay&quot;,&quot;periodType&quot;:&quot;calendar&quot;,&quot;limit&quot;:182,&quot;residentAt&quot;:182},&quot;lock&quot;:[&quot;country&quot;,&quot;goal&quot;,&quot;periodType&quot;,&quot;limitInput&quot;],&quot;link&quot;:&quot;183-my&quot;,&quot;offer&quot;:&quot;residence-malaysia&quot;}">
+    <div class="daycal" id="embed-days183" data-day-calendar="days183" data-cal-placement="embedded" data-cal-preset="{&quot;settings&quot;:{&quot;country&quot;:&quot;MY&quot;,&quot;goal&quot;:&quot;stay&quot;,&quot;periodType&quot;:&quot;calendar&quot;,&quot;limit&quot;:182,&quot;residentAt&quot;:182},&quot;lock&quot;:[&quot;country&quot;,&quot;goal&quot;,&quot;periodType&quot;,&quot;limitInput&quot;],&quot;link&quot;:&quot;183-my&quot;,&quot;offer&quot;:&quot;residence-malaysia&quot;}">
       <script type="application/json" data-cal-strings>
 {
   "days": "Days",
@@ -308,7 +308,61 @@
   "lineNoCountry": {
     "one": "{n} day without a country",
     "other": "{n} days without a country"
-  }
+  },
+  "jurisdiction": "Country or US state",
+  "addJurisdiction": "Add country or US state",
+  "noJurisdictionMatch": "No matching country or US state",
+  "stateUSAL": "Alabama (US)",
+  "stateUSAK": "Alaska (US)",
+  "stateUSAZ": "Arizona (US)",
+  "stateUSAR": "Arkansas (US)",
+  "stateUSCA": "California (US)",
+  "stateUSCO": "Colorado (US)",
+  "stateUSCT": "Connecticut (US)",
+  "stateUSDE": "Delaware (US)",
+  "stateUSDC": "District of Columbia (US)",
+  "stateUSFL": "Florida (US)",
+  "stateUSGA": "Georgia (US)",
+  "stateUSHI": "Hawaii (US)",
+  "stateUSID": "Idaho (US)",
+  "stateUSIL": "Illinois (US)",
+  "stateUSIN": "Indiana (US)",
+  "stateUSIA": "Iowa (US)",
+  "stateUSKS": "Kansas (US)",
+  "stateUSKY": "Kentucky (US)",
+  "stateUSLA": "Louisiana (US)",
+  "stateUSME": "Maine (US)",
+  "stateUSMD": "Maryland (US)",
+  "stateUSMA": "Massachusetts (US)",
+  "stateUSMI": "Michigan (US)",
+  "stateUSMN": "Minnesota (US)",
+  "stateUSMS": "Mississippi (US)",
+  "stateUSMO": "Missouri (US)",
+  "stateUSMT": "Montana (US)",
+  "stateUSNE": "Nebraska (US)",
+  "stateUSNV": "Nevada (US)",
+  "stateUSNH": "New Hampshire (US)",
+  "stateUSNJ": "New Jersey (US)",
+  "stateUSNM": "New Mexico (US)",
+  "stateUSNY": "New York (US)",
+  "stateUSNC": "North Carolina (US)",
+  "stateUSND": "North Dakota (US)",
+  "stateUSOH": "Ohio (US)",
+  "stateUSOK": "Oklahoma (US)",
+  "stateUSOR": "Oregon (US)",
+  "stateUSPA": "Pennsylvania (US)",
+  "stateUSRI": "Rhode Island (US)",
+  "stateUSSC": "South Carolina (US)",
+  "stateUSSD": "South Dakota (US)",
+  "stateUSTN": "Tennessee (US)",
+  "stateUSTX": "Texas (US)",
+  "stateUSUT": "Utah (US)",
+  "stateUSVT": "Vermont (US)",
+  "stateUSVA": "Virginia (US)",
+  "stateUSWA": "Washington (US)",
+  "stateUSWV": "West Virginia (US)",
+  "stateUSWI": "Wisconsin (US)",
+  "stateUSWY": "Wyoming (US)"
 }
       </script>
       <p class="cal-hint" data-cal-hint aria-live="polite"></p>
@@ -325,31 +379,31 @@
         </div>
         <div class="cal-box">
           <h3>Timeline</h3>
-          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Track this in AtlasDays</button>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Export or open in AtlasDays</button>
         </div>
       </div>
       <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="embed-days183-import-title">
         <div class="cal-dialog-head">
           <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
           <div>
-            <p class="cal-dialog-title" id="embed-days183-import-title">Track this in AtlasDays</p>
-            <p class="cal-dialog-sub">Keep counting as you travel. Free app for iPhone and iPad.</p>
+            <p class="cal-dialog-title" id="embed-days183-import-title"><span data-cal-on="computer">Continue on your iPhone or iPad</span><span data-cal-on="phone file">Export or open in AtlasDays</span></p>
+            <p class="cal-dialog-sub">Keep counting as you travel. Get AtlasDays free.</p>
           </div>
         </div>
         <div class="cal-dialog-scan" data-cal-on="computer">
           <div class="cal-qr" data-cal-qr></div>
-          <ol class="cal-steps">
-            <li><strong>Make sure AtlasDays is installed on your iPhone or iPad</strong><span>Free on the App Store.</span></li>
-            <li><strong data-cal-stays>Scan the QR code to load all trips into AtlasDays</strong><span data-cal-stays>Check them, then tap Import.</span><strong data-cal-tracker hidden>Scan the QR code to set up this tracker in AtlasDays</strong><span data-cal-tracker hidden>Check it, then tap Save.</span></li>
-          </ol>
+          <div class="cal-scan-copy">
+            <p class="cal-scan-lead" data-cal-both>Scan to open your trips and tracker in AtlasDays.</p>
+            <p class="cal-scan-lead" data-cal-trips-only hidden>Scan to open your trips in AtlasDays.</p>
+            <p class="cal-scan-lead" data-cal-tracker hidden>Scan to open your tracker in AtlasDays.</p>
+          </div>
         </div>
         <ol class="cal-steps" data-cal-on="phone">
-          <li data-cal-store><strong>Get AtlasDays</strong><span>Free on the App Store. Already have it? Skip to 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8&amp;ppid=1a1343d8-332a-4e0b-ad29-931faa87a99c">App Store</a></li>
           <li><strong data-cal-stays>Open your stays in the app</strong><span data-cal-stays>Check them, then tap Import. Nothing is saved before that.</span><strong data-cal-tracker hidden>Open this tracker in the app</strong><span data-cal-tracker hidden>Check it, then tap Save. Nothing is saved before that.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Open in AtlasDays</a></li>
         </ol>
         <ol class="cal-steps" data-cal-on="file">
+          <li><strong>Download trips as a CSV file</strong><span>That is more stays than a link can carry. Download the file and open it on your iPhone with AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Download file</button></li>
           <li data-cal-store><strong>Get AtlasDays</strong><span>Free on the App Store for iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8&amp;ppid=1a1343d8-332a-4e0b-ad29-931faa87a99c">App Store</a></li>
-          <li><strong>Import your stays with a file</strong><span>That is more stays than a link can carry. Download the file and open it on your iPhone with AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Download file</button></li>
         </ol>
         <div class="cal-dialog-foot">
           <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Download trips as a CSV file</button><span data-cal-downloaded hidden>Open this file on your iPhone with AtlasDays.</span></p>
@@ -404,10 +458,10 @@
       <div class="rule-cards">
         <a class="rule-card" href="/learn/183-day-tax-residency-rule"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5.5" width="16" height="14.5" rx="3"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/></svg></span><span class="rule-text"><strong>183-Day Tax Residency Rule: How the Count Works</strong></span></a>
         <a class="rule-card" href="/learn/tax-residency-by-country"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 4.5h9l3 3v12H6z"/><path d="M9 11h6M9 14.5h6"/></svg></span><span class="rule-text"><strong>Tax Residency by Country</strong></span></a>
-        <a class="rule-card" href="/learn/singapore-183-day-tax-residency"><img class="rule-flag" src="/assets/flags/sg.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Singapore&#x27;s 183-Day Tax Residency Rule</strong></span></a>
-        <a class="rule-card" href="/learn/thailand-180-day-tax-residency"><img class="rule-flag" src="/assets/flags/th.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Thailand&#x27;s 180-Day Tax Residency Rule</strong></span></a>
-        <a class="rule-card" href="/learn/india-182-day-tax-residency"><img class="rule-flag" src="/assets/flags/in.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>India&#x27;s 182-Day Tax Residency Rule for NRIs</strong></span></a>
-        <a class="rule-card" href="/learn/indonesia-183-day-tax-residency"><img class="rule-flag" src="/assets/flags/id.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Indonesia&#x27;s 183-Day Tax Residency Rule</strong></span></a>
+        <a class="rule-card" href="/learn/singapore-183-day-tax-residency"><img class="rule-flag" src="/assets/flags/web/sg.webp" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Singapore&#x27;s 183-Day Tax Residency Rule</strong></span></a>
+        <a class="rule-card" href="/learn/thailand-180-day-tax-residency"><img class="rule-flag" src="/assets/flags/web/th.webp" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Thailand&#x27;s 180-Day Tax Residency Rule</strong></span></a>
+        <a class="rule-card" href="/learn/india-182-day-tax-residency"><img class="rule-flag" src="/assets/flags/web/in.webp" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>India&#x27;s 182-Day Tax Residency Rule for NRIs</strong></span></a>
+        <a class="rule-card" href="/learn/indonesia-183-day-tax-residency"><img class="rule-flag" src="/assets/flags/web/id.webp" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Indonesia&#x27;s 183-Day Tax Residency Rule</strong></span></a>
       </div>
     </nav>
   </article>
@@ -457,8 +511,9 @@
   <script src="../assets/js/theme.js?v=20260714a"></script>
   <script>window.AtlasDaysNavStrings={"menuOpen":"Open navigation menu","menuClose":"Close navigation menu"};</script>
   <script src="../assets/js/navigation.js?v=20261027j"></script>
-  <script defer src="../assets/js/rules/days-183.js?v=20261112b"></script>
-  <script defer src="../assets/js/day-calendar.js?v=20261029b"></script>
+  <script defer src="../assets/js/rules/days-183.js?v=20261113b"></script>
+  <script defer src="../assets/js/calculator-usage.js?v=20261114a" data-endpoint=""></script>
+  <script defer src="../assets/js/day-calendar.js?v=20261117a"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on. */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

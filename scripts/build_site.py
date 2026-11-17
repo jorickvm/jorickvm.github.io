@@ -238,6 +238,24 @@ def render_favicon_links(prefix: str = "../") -> str:
     return "\n".join(f"  <link {attrs_html(attrs)} />" for attrs in links)
 
 
+def render_web_flags(markup: str) -> str:
+    """Serve lightweight flags while source fragments retain master paths."""
+    return re.sub(r"assets/flags/([a-z]{2}(?:-[a-z]{2})?)\.png", r"assets/flags/web/\1.webp", markup)
+
+
+def render_calculator_usage(markup: str, source_path: str, prefix: str) -> str:
+    if 'data-day-calendar="' not in markup:
+        return markup
+    placement = "standalone" if source_path.endswith("-calculator.html") else "embedded"
+    markup = re.sub(r'(data-day-calendar="[^"]+")', lambda m: m[1] + f' data-cal-placement="{placement}"', markup)
+    config = json.loads((SOURCE_ROOT / "data/calculator-usage.json").read_text())
+    endpoint = str(config.get("endpoint", "")) if config.get("enabled") else ""
+    if config.get("enabled") and not re.fullmatch(r"https://[a-z0-9.-]+/collect", endpoint):
+        raise SystemExit("Invalid calculator usage endpoint")
+    script = f'<script defer src="{prefix}assets/js/calculator-usage.js?v=20261114a" data-endpoint="{html.escape(endpoint, quote=True)}"></script>\n  '
+    return markup.replace('<script defer src="' + prefix + 'assets/js/day-calendar.js', script + '<script defer src="' + prefix + 'assets/js/day-calendar.js', 1)
+
+
 def render_metadata(article: dict[str, object], prefix: str = "../") -> str:
     lines = [f"  <title>{html.escape(str(article['title']))}</title>"]
     meta = [dict(attrs) for attrs in article.get("meta", [])]
@@ -391,6 +409,8 @@ CALCULATOR_PAGES = (
     "learn/schengen-calculator.html",
     "learn/uk-ilr-absence-calculator.html",
     "learn/substantial-presence-test-calculator.html",
+    "learn/uk-srt-calculator.html",
+    "learn/us-feie-calculator.html",
 )
 # The guide that explains how each kind of rule counts.
 TOPIC_GUIDES = {
@@ -1510,6 +1530,8 @@ CALCULATOR_RULES = {
     "presence": {"script": "presence.js", "version": "20261028a"},
     "spt": {"script": "spt.js", "version": "20261028a"},
     "multiYear": {"script": "multi-year.js", "version": "20261029a"},
+    "ukSrt": {"script": "uk-srt.js", "version": "20261114a"},
+    "feie": {"script": "feie.js", "version": "20261115a"},
 }
 SHARED_CALCULATOR_STRINGS = {
     "hintEnd", "hintSelected", "pending", "empty", "deleteTrip", "country", "addCountry", "noMatch",
@@ -1626,13 +1648,13 @@ def link_calculator_to_rule(content: str, article: dict[str, object]) -> str:
 def mark_calculator_callout(content: str, article: dict[str, object]) -> str:
     """Give the paragraph that links a calculator the `calc-callout` class.
 
-    A plain <p> in a Learn article that links the 183-day, Schengen, ILR or SPT
+    A plain <p> in a Learn article that links a standalone day
     calculator is the reader's way to count their own dates, so it is set off
     as the article's one blue callout (assets/css/article-components.css).
     """
     if article.get("section") != "learn":
         return content
-    pattern = re.compile(r'<p>(?=(?:(?!</p>).)*href="(?:/[A-Za-z-]+)?/learn/(?:183-day-rule|schengen|uk-ilr-absence|substantial-presence-test)-calculator[?"])', re.S)
+    pattern = re.compile(r'<p>(?=(?:(?!</p>).)*href="(?:/[A-Za-z-]+)?/learn/(?:183-day-rule|schengen|uk-ilr-absence|substantial-presence-test|uk-srt|us-feie)-calculator[?"])', re.S)
     return pattern.sub('<p class="calc-callout">', content, count=1)
 
 
@@ -1814,7 +1836,7 @@ def render_calculator_intro(
             raise SystemExit(f'{article["path"]} ({code}): an embedded calculator needs its heading at id="calculator"')
         key, href = "learn.calculator_intro_below", "#calculator"
     else:
-        callout = re.search(r'<p class="calc-callout">(.*?)</p>', content, re.S)
+        callout = re.search(r'<p\b[^>]*\bclass="[^\"]*\bcalc-callout\b[^\"]*"[^>]*>(.*?)</p>', content, re.S)
         link = callout and re.search(r'href="([^"]*/learn/[a-z0-9-]+-calculator\b[^"]*)"', callout.group(1))
         if not link:
             return content
@@ -1913,7 +1935,7 @@ def render_article(
     if leftovers:
         raise SystemExit(f"Unresolved template markers for {article['path']}: {leftovers}")
     rendered = localize(rendered, locale, strings, available_routes=available, context=str(article["path"]))
-    return rendered.rstrip() + "\n"
+    return render_calculator_usage(render_web_flags(rendered), source_path, prefix).rstrip() + "\n"
 
 
 APP_CATALOG_PATH = SOURCE_ROOT / "data" / "app-catalog.json"
@@ -2110,7 +2132,7 @@ def render_hub(
         ),
         "{{SEARCH_SCRIPT}}": (
             f"  <script>window.AtlasDaysSearchStrings={search_copy};</script>\n"
-            f'  <script src="{prefix}assets/js/search.js?v=20261028a"></script>'
+            f'  <script src="{prefix}assets/js/search.js?v=20261113a"></script>'
             if family == "hub" else ""
         ),
         "{{ASSET_PREFIX}}": prefix,
@@ -2126,7 +2148,7 @@ def render_hub(
     rendered = rendered.replace("{{NAV_SCRIPT}}", nav_script)
     rendered = rendered.replace("{{LANGUAGE_SWITCHER}}", switcher)
     rendered = localize(rendered, locale, strings, available_routes=available, context=str(hub["path"]))
-    return rendered.rstrip() + "\n"
+    return render_web_flags(rendered).rstrip() + "\n"
 
 
 def main() -> int:

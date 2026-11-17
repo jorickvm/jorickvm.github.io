@@ -156,7 +156,7 @@
         "name": "Czy moje dane są przechowywane?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Nie. Kalkulator działa w twojej przeglądarce i nie wysyła, nie zapisuje ani nie przechowuje wpisanych dat. Zamknięcie lub odświeżenie strony je usuwa. Aby je zachować, stuknij „Śledź w AtlasDays”."
+          "text": "Nie. Kalkulator działa w twojej przeglądarce i nie wysyła, nie zapisuje ani nie przechowuje wpisanych dat. Zamknięcie lub odświeżenie strony je usuwa. Aby je zachować, stuknij „Eksportuj lub otwórz w AtlasDays”."
         }
       }
     ]
@@ -171,7 +171,7 @@
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
-  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261028a" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261117a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Przejdź do treści</a>
@@ -253,13 +253,13 @@
     <nav class="breadcrumb">
       <a href="/pl/">AtlasDays</a> / <a href="/pl/learn/">Przepisy dla podróżnych</a> / <a href="/pl/learn/calculators">Kalkulatory</a>
     </nav>
-    <img class="title-flag" src="/assets/flags/us.png" alt="Flaga Stanów Zjednoczonych" width="56" height="42" />
+    <img class="title-flag" src="/assets/flags/web/us.webp" alt="Flaga Stanów Zjednoczonych" width="56" height="42" />
     <h1>Kalkulator Substantial Presence Test</h1>
     <p class="subtitle">Stuknij dni spędzone w Stanach Zjednoczonych i wybierz rok do sprawdzenia. Kalkulator stosuje wzór IRS i sprawdza oba warunki, z uwzględnieniem planowanych podróży.</p>
     <p class="verified">Ostatnio sprawdzono: listopad 2026</p>
 
     <h2 id="calculator">Sprawdź swoje dni</h2>
-    <div class="daycal" id="embed-spt" data-day-calendar="spt" data-cal-preset="{&quot;settings&quot;:{},&quot;lock&quot;:[],&quot;link&quot;:&quot;spt&quot;,&quot;offer&quot;:&quot;residence-us-spt&quot;}">
+    <div class="daycal" id="embed-spt" data-day-calendar="spt" data-cal-placement="standalone" data-cal-preset="{&quot;settings&quot;:{},&quot;lock&quot;:[],&quot;link&quot;:&quot;spt&quot;,&quot;offer&quot;:&quot;residence-us-spt&quot;}">
       <script type="application/json" data-cal-strings>
 {
   "hintEnd": "Stuknij drugi koniec pobytu.",
@@ -326,31 +326,31 @@
         </div>
         <div class="cal-box">
           <h3>Oś czasu</h3>
-          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Śledź w AtlasDays</button>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Eksportuj lub otwórz w AtlasDays</button>
         </div>
       </div>
       <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="embed-spt-import-title">
         <div class="cal-dialog-head">
           <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
           <div>
-            <p class="cal-dialog-title" id="embed-spt-import-title">Śledź w AtlasDays</p>
-            <p class="cal-dialog-sub">Licz dni dalej w trakcie podróży. Darmowa aplikacja na iPhone’a i iPada.</p>
+            <p class="cal-dialog-title" id="embed-spt-import-title"><span data-cal-on="computer">Kontynuuj na iPhonie lub iPadzie</span><span data-cal-on="phone file">Eksportuj lub otwórz w AtlasDays</span></p>
+            <p class="cal-dialog-sub">Licz dni także w podróży. Pobierz AtlasDays za darmo.</p>
           </div>
         </div>
         <div class="cal-dialog-scan" data-cal-on="computer">
           <div class="cal-qr" data-cal-qr></div>
-          <ol class="cal-steps">
-            <li><strong>Upewnij się, że AtlasDays jest zainstalowane na telefonie iPhone lub tablecie iPad</strong><span>Za darmo w App Store.</span></li>
-            <li><strong data-cal-stays>Zeskanuj kod QR, aby wczytać wszystkie podróże do AtlasDays</strong><span data-cal-stays>Sprawdź je, a potem stuknij „Importuj”.</span><strong data-cal-tracker hidden>Zeskanuj kod QR, aby dodać ten tracker do AtlasDays</strong><span data-cal-tracker hidden>Sprawdź go, a potem stuknij „Zapisz”.</span></li>
-          </ol>
+          <div class="cal-scan-copy">
+            <p class="cal-scan-lead" data-cal-both>Zeskanuj kod, aby otworzyć podróże i tracker w AtlasDays.</p>
+            <p class="cal-scan-lead" data-cal-trips-only hidden>Zeskanuj kod, aby otworzyć podróże w AtlasDays.</p>
+            <p class="cal-scan-lead" data-cal-tracker hidden>Zeskanuj kod, aby otworzyć tracker w AtlasDays.</p>
+          </div>
         </div>
         <ol class="cal-steps" data-cal-on="phone">
-          <li data-cal-store><strong>Pobierz AtlasDays</strong><span>Za darmo w App Store. Masz już aplikację? Przejdź do kroku 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
           <li><strong data-cal-stays>Otwórz swoje pobyty w aplikacji</strong><span data-cal-stays>Sprawdź je, a potem stuknij „Importuj”. Wcześniej nic nie zostanie zapisane.</span><strong data-cal-tracker hidden>Otwórz ten tracker w aplikacji</strong><span data-cal-tracker hidden>Sprawdź go, a potem stuknij „Zapisz”. Wcześniej nic nie zostanie zapisane.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Otwórz w AtlasDays</a></li>
         </ol>
         <ol class="cal-steps" data-cal-on="file">
+          <li><strong>Pobierz podróże jako plik CSV</strong><span>To więcej pobytów, niż zmieści się w linku. Pobierz plik i otwórz go w AtlasDays na telefonie iPhone.</span><button type="button" class="cal-dialog-primary" data-cal-download>Pobierz plik</button></li>
           <li data-cal-store><strong>Pobierz AtlasDays</strong><span>Za darmo w App Store, na iPhone’a.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8">App Store</a></li>
-          <li><strong>Zaimportuj pobyty z pliku</strong><span>To więcej pobytów, niż zmieści się w linku. Pobierz plik i otwórz go w AtlasDays na telefonie iPhone.</span><button type="button" class="cal-dialog-primary" data-cal-download>Pobierz plik</button></li>
         </ol>
         <div class="cal-dialog-foot">
           <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Pobierz podróże jako plik CSV</button><span data-cal-downloaded hidden>Otwórz ten plik w AtlasDays na telefonie iPhone.</span></p>
@@ -395,7 +395,7 @@
     <h3>Dlaczego 120 dni rocznie nie spełnia testu?</h3>
     <p>Ponieważ wcześniejsze lata mają mniejszą wagę. 120 dni w każdym z trzech lat daje 120 + 40 + 20 = 180, czyli o trzy dni za mało. 125 dni w najdawniejszym roku dałoby 180⅚, nadal za mało.</p>
     <h3>Czy moje dane są przechowywane?</h3>
-    <p>Nie. Kalkulator działa w twojej przeglądarce i nie wysyła, nie zapisuje ani nie przechowuje wpisanych dat. Zamknięcie lub odświeżenie strony je usuwa. Aby je zachować, stuknij „Śledź w AtlasDays”.</p>
+    <p>Nie. Kalkulator działa w twojej przeglądarce i nie wysyła, nie zapisuje ani nie przechowuje wpisanych dat. Zamknięcie lub odświeżenie strony je usuwa. Aby je zachować, stuknij „Eksportuj lub otwórz w AtlasDays”.</p>
 
     <aside class="article-trust">
       <section class="article-trust-item article-source" aria-labelledby="official-source-heading">
@@ -410,10 +410,12 @@
     <nav class="related generated-related" aria-labelledby="related-substantial-presence-test-calculator">
       <h2 id="related-substantial-presence-test-calculator">Powiązane artykuły</h2>
       <div class="rule-cards">
-        <a class="rule-card" href="/pl/learn/183-day-rule-calculator"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.5 2.6 3.5 5.4 3.5 8.5s-1 5.9-3.5 8.5c-2.5-2.6-3.5-5.4-3.5-8.5s1-5.9 3.5-8.5Z"/></svg></span><span class="rule-text"><strong>Kalkulator 183 dni: policz swoje dni w dowolnym kraju</strong></span></a>
-        <a class="rule-card" href="/pl/learn/canadian-snowbird-day-limits"><img class="rule-flag" src="/assets/flags/ca.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Kanadyjscy snowbirds i zasada 182 dni: pobyty w USA, formularz 8840 i limity ubezpieczenia zdrowotnego w prowincjach</strong></span></a>
-        <a class="rule-card" href="/pl/learn/malaysia-182-day-tax-residency"><img class="rule-flag" src="/assets/flags/my.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Rezydencja podatkowa w Malezji: zasada 182 dni</strong></span></a>
-        <a class="rule-card" href="/pl/learn/thailand-180-day-tax-residency"><img class="rule-flag" src="/assets/flags/th.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Rezydencja podatkowa w Tajlandii: zasada 180 dni</strong></span></a>
+        <a class="rule-card" href="/pl/learn/183-day-rule-calculator"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.5 2.6 3.5 5.4 3.5 8.5s-1 5.9-3.5 8.5c-2.5-2.6-3.5-5.4-3.5-8.5s1-5.9 3.5-8.5Z"/></svg></span><span class="rule-text"><strong>Kalkulator reguły 183 dni: kraje i stany USA</strong></span></a>
+        <a class="rule-card" href="/pl/learn/uk-srt-calculator"><img class="rule-flag" src="/assets/flags/web/gb.webp" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Kalkulator brytyjskiego Statutory Residence Test</strong></span></a>
+        <a class="rule-card" href="/pl/learn/us-feie-calculator"><img class="rule-flag" src="/assets/flags/web/us.webp" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Kalkulator testu fizycznej obecności FEIE</strong></span></a>
+        <a class="rule-card" href="/pl/learn/canadian-snowbird-day-limits"><img class="rule-flag" src="/assets/flags/web/ca.webp" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Kanadyjscy snowbirds i zasada 182 dni: pobyty w USA, formularz 8840 i limity ubezpieczenia zdrowotnego w prowincjach</strong></span></a>
+        <a class="rule-card" href="/pl/learn/malaysia-182-day-tax-residency"><img class="rule-flag" src="/assets/flags/web/my.webp" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Rezydencja podatkowa w Malezji: zasada 182 dni</strong></span></a>
+        <a class="rule-card" href="/pl/learn/thailand-180-day-tax-residency"><img class="rule-flag" src="/assets/flags/web/th.webp" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Rezydencja podatkowa w Tajlandii: zasada 180 dni</strong></span></a>
       </div>
     </nav>
   </article>
@@ -464,7 +466,8 @@
   <script>window.AtlasDaysNavStrings={"menuOpen":"Otwórz menu nawigacji","menuClose":"Zamknij menu nawigacji"};</script>
   <script src="../../assets/js/navigation.js?v=20261027j"></script>
   <script defer src="../../assets/js/rules/spt.js?v=20261028a"></script>
-  <script defer src="../../assets/js/day-calendar.js?v=20261029b"></script>
+  <script defer src="../../assets/js/calculator-usage.js?v=20261114a" data-endpoint=""></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261117a"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on. */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

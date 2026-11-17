@@ -149,7 +149,7 @@
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
-  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261028a" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261117a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Zum Inhalt springen</a>
@@ -297,7 +297,7 @@
 
     <h2 id="calculator">Snowbird-Rechner für den Substantial Presence Test</h2>
     <p>Tippe deine Tage in den Vereinigten Staaten an und wähl das Jahr, das du prüfen willst. Der Rechner prüft beide Bedingungen: mindestens 31 Tage in diesem Jahr und 183 Tage über drei Jahre, wobei die Tage dieses Jahres voll zählen, die des Vorjahres zu einem Drittel und die des Jahres davor zu einem Sechstel. Erfüllst du den Test mit weniger als 183 Tagen im geprüften Jahr selbst, kannst du mit Formular 8840 trotzdem als nicht ansässig gelten; wie das geht, erklärt der nächste Abschnitt.</p>
-    <div class="daycal" id="embed-spt" data-day-calendar="spt" data-cal-preset="{&quot;settings&quot;:{},&quot;lock&quot;:[],&quot;link&quot;:&quot;spt-snowbird&quot;,&quot;offer&quot;:&quot;residence-us-spt&quot;}">
+    <div class="daycal" id="embed-spt" data-day-calendar="spt" data-cal-placement="embedded" data-cal-preset="{&quot;settings&quot;:{},&quot;lock&quot;:[],&quot;link&quot;:&quot;spt-snowbird&quot;,&quot;offer&quot;:&quot;residence-us-spt&quot;}">
       <script type="application/json" data-cal-strings>
 {
   "hintEnd": "Tippe jetzt auf das andere Ende des Aufenthalts.",
@@ -356,31 +356,31 @@
         </div>
         <div class="cal-box">
           <h3>Zeitleiste</h3>
-          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>In AtlasDays übernehmen</button>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Exportieren oder in AtlasDays öffnen</button>
         </div>
       </div>
       <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="embed-spt-import-title">
         <div class="cal-dialog-head">
           <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
           <div>
-            <p class="cal-dialog-title" id="embed-spt-import-title">In AtlasDays übernehmen</p>
-            <p class="cal-dialog-sub">Zähl deine Tage unterwegs weiter. Kostenlose App für iPhone und iPad.</p>
+            <p class="cal-dialog-title" id="embed-spt-import-title"><span data-cal-on="computer">Auf deinem iPhone oder iPad fortfahren</span><span data-cal-on="phone file">Exportieren oder in AtlasDays öffnen</span></p>
+            <p class="cal-dialog-sub">Zähle deine Tage auch unterwegs weiter. Hol dir AtlasDays kostenlos.</p>
           </div>
         </div>
         <div class="cal-dialog-scan" data-cal-on="computer">
           <div class="cal-qr" data-cal-qr></div>
-          <ol class="cal-steps">
-            <li><strong>AtlasDays auf deinem iPhone oder iPad installieren</strong><span>Kostenlos im App Store.</span></li>
-            <li><strong data-cal-stays>QR-Code scannen, um alle Reisen in AtlasDays zu laden</strong><span data-cal-stays>Prüfe sie und tippe dann auf „Importieren“.</span><strong data-cal-tracker hidden>QR-Code scannen, um diesen Tracker in AtlasDays einzurichten</strong><span data-cal-tracker hidden>Prüfe ihn und tippe dann auf „Speichern“.</span></li>
-          </ol>
+          <div class="cal-scan-copy">
+            <p class="cal-scan-lead" data-cal-both>Scanne den Code, um deine Reisen und deinen Tracker in AtlasDays zu öffnen.</p>
+            <p class="cal-scan-lead" data-cal-trips-only hidden>Scanne den Code, um deine Reisen in AtlasDays zu öffnen.</p>
+            <p class="cal-scan-lead" data-cal-tracker hidden>Scanne den Code, um deinen Tracker in AtlasDays zu öffnen.</p>
+          </div>
         </div>
         <ol class="cal-steps" data-cal-on="phone">
-          <li data-cal-store><strong>AtlasDays laden</strong><span>Kostenlos im App Store. Schon installiert? Weiter mit Schritt 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8&amp;ppid=1a1343d8-332a-4e0b-ad29-931faa87a99c">App Store</a></li>
           <li><strong data-cal-stays>Aufenthalte in der App öffnen</strong><span data-cal-stays>Prüfe sie und tippe dann auf „Importieren“. Vorher wird nichts gespeichert.</span><strong data-cal-tracker hidden>Diesen Tracker in der App öffnen</strong><span data-cal-tracker hidden>Prüfe ihn und tippe dann auf „Speichern“. Vorher wird nichts gespeichert.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">In AtlasDays öffnen</a></li>
         </ol>
         <ol class="cal-steps" data-cal-on="file">
+          <li><strong>Reisen als CSV-Datei herunterladen</strong><span>Das sind mehr Aufenthalte, als ein Link fassen kann. Lade die Datei herunter und öffne sie auf deinem iPhone mit AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Datei herunterladen</button></li>
           <li data-cal-store><strong>AtlasDays laden</strong><span>Kostenlos im App Store für iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8&amp;ppid=1a1343d8-332a-4e0b-ad29-931faa87a99c">App Store</a></li>
-          <li><strong>Aufenthalte per Datei importieren</strong><span>Das sind mehr Aufenthalte, als ein Link fassen kann. Lade die Datei herunter und öffne sie auf deinem iPhone mit AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Datei herunterladen</button></li>
         </ol>
         <div class="cal-dialog-foot">
           <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Reisen als CSV-Datei herunterladen</button><span data-cal-downloaded hidden>Öffne diese Datei auf deinem iPhone mit AtlasDays.</span></p>
@@ -501,7 +501,7 @@
         <a class="rule-card" href="/de/learn/digital-nomad-visa-day-limits"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5.5" width="16" height="14.5" rx="3"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/></svg></span><span class="rule-text"><strong>Visa für digitale Nomaden und Steuerwohnsitz: Gilt die 183-Tage-Regel?</strong></span></a>
         <a class="rule-card" href="/de/learn/overstaying-a-visa-or-stay-limit"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5.5" width="16" height="14.5" rx="3"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/></svg></span><span class="rule-text"><strong>Visum oder Aufenthaltsdauer überschritten: Folgen in Schengen, UK und USA</strong></span></a>
         <a class="rule-card" href="/de/learn/residence-permit-citizenship-absence-rules"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="4" y="5.5" width="16" height="14.5" rx="3"/><path d="M4 10h16M8.5 3.5v4M15.5 3.5v4"/></svg></span><span class="rule-text"><strong>Abwesenheitsregeln für Aufenthaltstitel und Einbürgerung nach Land</strong></span></a>
-        <a class="rule-card" href="/de/learn/uk-eta-vs-standard-visitor-visa"><img class="rule-flag" src="/assets/flags/gb.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Britische ETA oder Standard Visitor Visa: Was brauchst du?</strong></span></a>
+        <a class="rule-card" href="/de/learn/uk-eta-vs-standard-visitor-visa"><img class="rule-flag" src="/assets/flags/web/gb.webp" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Britische ETA oder Standard Visitor Visa: Was brauchst du?</strong></span></a>
       </div>
     </nav>
   </article>
@@ -552,7 +552,8 @@
   <script>window.AtlasDaysNavStrings={"menuOpen":"Navigationsmenü öffnen","menuClose":"Navigationsmenü schließen"};</script>
   <script src="../../assets/js/navigation.js?v=20261027j"></script>
   <script defer src="../../assets/js/rules/spt.js?v=20261028a"></script>
-  <script defer src="../../assets/js/day-calendar.js?v=20261029b"></script>
+  <script defer src="../../assets/js/calculator-usage.js?v=20261114a" data-endpoint=""></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261117a"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on. */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

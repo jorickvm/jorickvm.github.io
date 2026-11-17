@@ -1,8 +1,8 @@
     <nav class="breadcrumb">
       <a href="/pt/">AtlasDays</a> / <a href="/pt/learn/">Regras de viagem</a> / <a href="/pt/learn/calculators">Calculadoras</a>
     </nav>
-    <h1>Calculadora da regra dos 183 dias: conte seus dias em qualquer país</h1>
-    <p class="subtitle">Escolha um país e um ano e toque no dia em que chegou e no dia em que saiu. O controle mostra o quanto você está perto de 183 dias, incluindo as estadias planejadas.</p>
+    <h1>Calculadora da regra dos 183 dias: países e estados dos EUA</h1>
+    <p class="subtitle">Escolha um país ou estado dos EUA e um ano, depois toque no dia da chegada e no da saída. O controle mostra quanto você se aproxima de 183 dias, incluindo estadias planejadas.</p>
     <p class="verified">Última verificação: outubro de 2026</p>
 
     <h2>Conte seus dias</h2>
@@ -59,7 +59,61 @@
     "one": "{n} dia sem país",
     "other": "{n} dias sem país",
     "many": "{n} dias sem país"
-  }
+  },
+  "jurisdiction": "País ou estado dos EUA",
+  "addJurisdiction": "Adicionar país ou estado dos EUA",
+  "noJurisdictionMatch": "Nenhum país ou estado dos EUA correspondente",
+  "stateUSAL": "Alabama (EUA)",
+  "stateUSAK": "Alasca (EUA)",
+  "stateUSAZ": "Arizona (EUA)",
+  "stateUSAR": "Arkansas (EUA)",
+  "stateUSCA": "Califórnia (EUA)",
+  "stateUSCO": "Colorado (EUA)",
+  "stateUSCT": "Connecticut (EUA)",
+  "stateUSDE": "Delaware (EUA)",
+  "stateUSDC": "Distrito de Colúmbia (EUA)",
+  "stateUSFL": "Flórida (EUA)",
+  "stateUSGA": "Geórgia (EUA)",
+  "stateUSHI": "Havaí (EUA)",
+  "stateUSID": "Idaho (EUA)",
+  "stateUSIL": "Illinois (EUA)",
+  "stateUSIN": "Indiana (EUA)",
+  "stateUSIA": "Iowa (EUA)",
+  "stateUSKS": "Kansas (EUA)",
+  "stateUSKY": "Kentucky (EUA)",
+  "stateUSLA": "Luisiana (EUA)",
+  "stateUSME": "Maine (EUA)",
+  "stateUSMD": "Maryland (EUA)",
+  "stateUSMA": "Massachusetts (EUA)",
+  "stateUSMI": "Michigan (EUA)",
+  "stateUSMN": "Minnesota (EUA)",
+  "stateUSMS": "Mississippi (EUA)",
+  "stateUSMO": "Missouri (EUA)",
+  "stateUSMT": "Montana (EUA)",
+  "stateUSNE": "Nebraska (EUA)",
+  "stateUSNV": "Nevada (EUA)",
+  "stateUSNH": "Nova Hampshire (EUA)",
+  "stateUSNJ": "Nova Jersey (EUA)",
+  "stateUSNM": "Novo México (EUA)",
+  "stateUSNY": "Nova York (EUA)",
+  "stateUSNC": "Carolina do Norte (EUA)",
+  "stateUSND": "Dakota do Norte (EUA)",
+  "stateUSOH": "Ohio (EUA)",
+  "stateUSOK": "Oklahoma (EUA)",
+  "stateUSOR": "Oregon (EUA)",
+  "stateUSPA": "Pensilvânia (EUA)",
+  "stateUSRI": "Rhode Island (EUA)",
+  "stateUSSC": "Carolina do Sul (EUA)",
+  "stateUSSD": "Dakota do Sul (EUA)",
+  "stateUSTN": "Tennessee (EUA)",
+  "stateUSTX": "Texas (EUA)",
+  "stateUSUT": "Utah (EUA)",
+  "stateUSVT": "Vermont (EUA)",
+  "stateUSVA": "Virgínia (EUA)",
+  "stateUSWA": "Washington (EUA)",
+  "stateUSWV": "Virgínia Ocidental (EUA)",
+  "stateUSWI": "Wisconsin (EUA)",
+  "stateUSWY": "Wyoming (EUA)"
 }
       </script>
       <p class="cal-hint" data-cal-hint aria-live="polite"></p>
@@ -76,31 +130,31 @@
         </div>
         <div class="cal-box">
           <h3>Linha do tempo</h3>
-          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Acompanhar no AtlasDays</button>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Exportar ou abrir no AtlasDays</button>
         </div>
       </div>
       <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="days-183-import-title">
         <div class="cal-dialog-head">
           <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
           <div>
-            <p class="cal-dialog-title" id="days-183-import-title">Acompanhar no AtlasDays</p>
-            <p class="cal-dialog-sub">Continue contando seus dias enquanto viaja. App gratuito para iPhone e iPad.</p>
+            <p class="cal-dialog-title" id="days-183-import-title"><span data-cal-on="computer">Continue no seu iPhone ou iPad</span><span data-cal-on="phone file">Exportar ou abrir no AtlasDays</span></p>
+            <p class="cal-dialog-sub">Continue contando seus dias enquanto viaja. Baixe o AtlasDays grátis.</p>
           </div>
         </div>
         <div class="cal-dialog-scan" data-cal-on="computer">
           <div class="cal-qr" data-cal-qr></div>
-          <ol class="cal-steps">
-            <li><strong>Verifique se o AtlasDays está instalado no seu iPhone ou iPad</strong><span>Grátis na App Store.</span></li>
-            <li><strong data-cal-stays>Escaneie o código QR para carregar todas as viagens no AtlasDays</strong><span data-cal-stays>Confira e toque em Importar.</span><strong data-cal-tracker hidden>Escaneie o código QR para adicionar este controle ao AtlasDays</strong><span data-cal-tracker hidden>Confira e toque em Salvar.</span></li>
-          </ol>
+          <div class="cal-scan-copy">
+            <p class="cal-scan-lead" data-cal-both>Escaneie o código para abrir suas viagens e seu controle no AtlasDays.</p>
+            <p class="cal-scan-lead" data-cal-trips-only hidden>Escaneie o código para abrir suas viagens no AtlasDays.</p>
+            <p class="cal-scan-lead" data-cal-tracker hidden>Escaneie o código para abrir seu controle no AtlasDays.</p>
+          </div>
         </div>
         <ol class="cal-steps" data-cal-on="phone">
-          <li data-cal-store><strong>Baixe o AtlasDays</strong><span>Grátis na App Store. Já tem o app? Pule para o passo 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
           <li><strong data-cal-stays>Abra suas estadias no app</strong><span data-cal-stays>Confira e toque em Importar. Nada é salvo antes disso.</span><strong data-cal-tracker hidden>Abra este controle no app</strong><span data-cal-tracker hidden>Confira e toque em Salvar. Nada é salvo antes disso.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Abrir no AtlasDays</a></li>
         </ol>
         <ol class="cal-steps" data-cal-on="file">
+          <li><strong>Baixar as viagens em um arquivo CSV</strong><span>São estadias demais para caber em um link. Baixe o arquivo e abra-o no iPhone com o AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Baixar arquivo</button></li>
           <li data-cal-store><strong>Baixe o AtlasDays</strong><span>Grátis na App Store, para iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
-          <li><strong>Importe suas estadias com um arquivo</strong><span>São estadias demais para caber em um link. Baixe o arquivo e abra-o no iPhone com o AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Baixar arquivo</button></li>
         </ol>
         <div class="cal-dialog-foot">
           <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Baixar as viagens em um arquivo CSV</button><span data-cal-downloaded hidden>Abra este arquivo no iPhone com o AtlasDays.</span></p>
@@ -112,10 +166,12 @@
     <h2>Como a calculadora faz a contagem</h2>
     <ul>
       <li><strong>A contagem padrão inclui chegada e partida.</strong> Na contagem inclusiva, de 1º a 10 de junho são dez dias. Um link de um guia de país pode aplicar o método de contagem daquele país.</li>
-      <li><strong>Um país, um ano.</strong> Escolha o país no controle e, acima dele, a janela: um ano civil, um ano fiscal a partir do dia em que começa (6 de abril no Reino Unido, 1º de julho na Austrália, 1º de abril na Nova Zelândia e na Índia) ou os últimos 12 meses. Só contam os dias dentro dessa janela.</li>
+      <li><strong>Um lugar, um ano.</strong> Escolha o país ou estado dos EUA no controle e o período acima: um ano-calendário, um ano fiscal a partir da data inicial (6 de abril no Reino Unido, 1 de julho na Austrália, 1 de abril na Nova Zelândia e na Índia) ou os últimos 12 meses. Só contam os dias dentro desse período.</li>
       <li><strong>Ficar abaixo ou chegar a 183.</strong> A maioria das pessoas quer ficar abaixo de 183 dias. Se você precisa de 183 dias para se tornar residente em algum lugar, defina o objetivo como Atingir meta: a barra fica verde quando você chega lá.</li>
       <li><strong>Estadias planejadas também contam.</strong> Marque uma viagem que você ainda não reservou para ver se ela levaria você acima de 183.</li>
     </ul>
+
+    <p>Selecione um estado dos EUA para contar apenas as estadias registradas para ele. Ao selecionar Estados Unidos, as estadias do país e dos estados são somadas, e os dias compartilhados contam uma só vez. Para um estado, vale o limite de dias que você escolher; os testes específicos de residência desse estado não são aplicados.</p>
 
     <h2>Quando seu país conta de outro jeito</h2>
     <p>Os países usam limiares e métodos de contagem diferentes. Confira o guia relevante antes de interpretar o resultado:</p>
@@ -143,4 +199,4 @@
     <h3>Passar 183 dias em um país me torna residente fiscal?</h3>
     <p>Muitas vezes, mas nem sempre. Muitos países consideram residente fiscal quem passa 183 dias no país durante o ano fiscal, alguns usam outro limiar ou outro período, e outros vínculos, como uma casa ou a família, podem tornar você residente com menos dias. A calculadora mostra a contagem, não a decisão.</p>
     <h3>Meus dados ficam salvos?</h3>
-    <p>Não. A calculadora funciona no navegador e não envia, registra nem salva as datas que você informa. Fechar ou recarregar a página apaga os dados. Para guardá-los, toque em Acompanhar no AtlasDays.</p>
+    <p>Não. A calculadora funciona no navegador e não envia, registra nem salva as datas que você informa. Fechar ou recarregar a página apaga os dados. Para guardá-los, toque em Exportar ou abrir no AtlasDays.</p>

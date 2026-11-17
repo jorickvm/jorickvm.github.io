@@ -1,8 +1,8 @@
     <nav class="breadcrumb">
       <a href="/de/">AtlasDays</a> / <a href="/de/learn/">Reiseregeln</a> / <a href="/de/learn/calculators">Rechner</a>
     </nav>
-    <h1>183-Tage-Rechner: Zähle deine Tage in jedem Land</h1>
-    <p class="subtitle">Wähle ein Land und ein Jahr und tippe dann auf den Tag deiner Ankunft und den Tag deiner Abreise. Der Tracker zeigt dir, wie nah du an 183 Tagen bist, geplante Aufenthalte eingeschlossen.</p>
+    <h1>183-Tage-Rechner: Länder und US-Bundesstaaten</h1>
+    <p class="subtitle">Wähle ein Land oder einen US-Bundesstaat und ein Jahr. Tippe dann auf Ankunfts- und Abreisetag. Der Tracker zeigt deine Tage bis zur Grenze von 183, einschließlich geplanter Aufenthalte.</p>
     <p class="verified">Zuletzt geprüft: Oktober 2026</p>
 
     <h2>Zähle deine Tage</h2>
@@ -54,7 +54,61 @@
   "lineNoCountry": {
     "one": "{n} Tag ohne Land",
     "other": "{n} Tage ohne Land"
-  }
+  },
+  "jurisdiction": "Land oder US-Bundesstaat",
+  "addJurisdiction": "Land oder US-Bundesstaat hinzufügen",
+  "noJurisdictionMatch": "Kein passendes Land oder kein passender US-Bundesstaat",
+  "stateUSAL": "Alabama (USA)",
+  "stateUSAK": "Alaska (USA)",
+  "stateUSAZ": "Arizona (USA)",
+  "stateUSAR": "Arkansas (USA)",
+  "stateUSCA": "Kalifornien (USA)",
+  "stateUSCO": "Colorado (USA)",
+  "stateUSCT": "Connecticut (USA)",
+  "stateUSDE": "Delaware (USA)",
+  "stateUSDC": "District of Columbia (USA)",
+  "stateUSFL": "Florida (USA)",
+  "stateUSGA": "Georgia (USA)",
+  "stateUSHI": "Hawaii (USA)",
+  "stateUSID": "Idaho (USA)",
+  "stateUSIL": "Illinois (USA)",
+  "stateUSIN": "Indiana (USA)",
+  "stateUSIA": "Iowa (USA)",
+  "stateUSKS": "Kansas (USA)",
+  "stateUSKY": "Kentucky (USA)",
+  "stateUSLA": "Louisiana (USA)",
+  "stateUSME": "Maine (USA)",
+  "stateUSMD": "Maryland (USA)",
+  "stateUSMA": "Massachusetts (USA)",
+  "stateUSMI": "Michigan (USA)",
+  "stateUSMN": "Minnesota (USA)",
+  "stateUSMS": "Mississippi (USA)",
+  "stateUSMO": "Missouri (USA)",
+  "stateUSMT": "Montana (USA)",
+  "stateUSNE": "Nebraska (USA)",
+  "stateUSNV": "Nevada (USA)",
+  "stateUSNH": "New Hampshire (USA)",
+  "stateUSNJ": "New Jersey (USA)",
+  "stateUSNM": "New Mexico (USA)",
+  "stateUSNY": "New York (USA)",
+  "stateUSNC": "North Carolina (USA)",
+  "stateUSND": "North Dakota (USA)",
+  "stateUSOH": "Ohio (USA)",
+  "stateUSOK": "Oklahoma (USA)",
+  "stateUSOR": "Oregon (USA)",
+  "stateUSPA": "Pennsylvania (USA)",
+  "stateUSRI": "Rhode Island (USA)",
+  "stateUSSC": "South Carolina (USA)",
+  "stateUSSD": "South Dakota (USA)",
+  "stateUSTN": "Tennessee (USA)",
+  "stateUSTX": "Texas (USA)",
+  "stateUSUT": "Utah (USA)",
+  "stateUSVT": "Vermont (USA)",
+  "stateUSVA": "Virginia (USA)",
+  "stateUSWA": "Washington (USA)",
+  "stateUSWV": "West Virginia (USA)",
+  "stateUSWI": "Wisconsin (USA)",
+  "stateUSWY": "Wyoming (USA)"
 }
       </script>
       <p class="cal-hint" data-cal-hint aria-live="polite"></p>
@@ -71,31 +125,31 @@
         </div>
         <div class="cal-box">
           <h3>Zeitleiste</h3>
-          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>In AtlasDays übernehmen</button>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Exportieren oder in AtlasDays öffnen</button>
         </div>
       </div>
       <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="days-183-import-title">
         <div class="cal-dialog-head">
           <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
           <div>
-            <p class="cal-dialog-title" id="days-183-import-title">In AtlasDays übernehmen</p>
-            <p class="cal-dialog-sub">Zähl deine Tage unterwegs weiter. Kostenlose App für iPhone und iPad.</p>
+            <p class="cal-dialog-title" id="days-183-import-title"><span data-cal-on="computer">Auf deinem iPhone oder iPad fortfahren</span><span data-cal-on="phone file">Exportieren oder in AtlasDays öffnen</span></p>
+            <p class="cal-dialog-sub">Zähle deine Tage auch unterwegs weiter. Hol dir AtlasDays kostenlos.</p>
           </div>
         </div>
         <div class="cal-dialog-scan" data-cal-on="computer">
           <div class="cal-qr" data-cal-qr></div>
-          <ol class="cal-steps">
-            <li><strong>AtlasDays auf deinem iPhone oder iPad installieren</strong><span>Kostenlos im App Store.</span></li>
-            <li><strong data-cal-stays>QR-Code scannen, um alle Reisen in AtlasDays zu laden</strong><span data-cal-stays>Prüfe sie und tippe dann auf „Importieren“.</span><strong data-cal-tracker hidden>QR-Code scannen, um diesen Tracker in AtlasDays einzurichten</strong><span data-cal-tracker hidden>Prüfe ihn und tippe dann auf „Speichern“.</span></li>
-          </ol>
+          <div class="cal-scan-copy">
+            <p class="cal-scan-lead" data-cal-both>Scanne den Code, um deine Reisen und deinen Tracker in AtlasDays zu öffnen.</p>
+            <p class="cal-scan-lead" data-cal-trips-only hidden>Scanne den Code, um deine Reisen in AtlasDays zu öffnen.</p>
+            <p class="cal-scan-lead" data-cal-tracker hidden>Scanne den Code, um deinen Tracker in AtlasDays zu öffnen.</p>
+          </div>
         </div>
         <ol class="cal-steps" data-cal-on="phone">
-          <li data-cal-store><strong>AtlasDays laden</strong><span>Kostenlos im App Store. Schon installiert? Weiter mit Schritt 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
           <li><strong data-cal-stays>Aufenthalte in der App öffnen</strong><span data-cal-stays>Prüfe sie und tippe dann auf „Importieren“. Vorher wird nichts gespeichert.</span><strong data-cal-tracker hidden>Diesen Tracker in der App öffnen</strong><span data-cal-tracker hidden>Prüfe ihn und tippe dann auf „Speichern“. Vorher wird nichts gespeichert.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">In AtlasDays öffnen</a></li>
         </ol>
         <ol class="cal-steps" data-cal-on="file">
+          <li><strong>Reisen als CSV-Datei herunterladen</strong><span>Das sind mehr Aufenthalte, als ein Link fassen kann. Lade die Datei herunter und öffne sie auf deinem iPhone mit AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Datei herunterladen</button></li>
           <li data-cal-store><strong>AtlasDays laden</strong><span>Kostenlos im App Store für iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
-          <li><strong>Aufenthalte per Datei importieren</strong><span>Das sind mehr Aufenthalte, als ein Link fassen kann. Lade die Datei herunter und öffne sie auf deinem iPhone mit AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Datei herunterladen</button></li>
         </ol>
         <div class="cal-dialog-foot">
           <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Reisen als CSV-Datei herunterladen</button><span data-cal-downloaded hidden>Öffne diese Datei auf deinem iPhone mit AtlasDays.</span></p>
@@ -107,10 +161,12 @@
     <h2>So zählt der Rechner</h2>
     <ul>
       <li><strong>Standardmäßig zählen Ankunft und Abreise mit.</strong> Bei beidseitig inklusiver Zählung sind der 1. bis 10. Juni zehn Tage. Ein Link aus einem Länderleitfaden kann stattdessen dessen Zählmethode anwenden.</li>
-      <li><strong>Ein Land, ein Jahr.</strong> Wähle im Tracker das Land und darüber den Zeitraum: ein Kalenderjahr, ein Steuerjahr ab seinem ersten Tag (6. April im Vereinigten Königreich, 1. Juli in Australien, 1. April in Neuseeland und Indien) oder die letzten 12 Monate. Nur Tage innerhalb dieses Zeitraums zählen.</li>
+      <li><strong>Ein Ort, ein Jahr.</strong> Wähle im Tracker das Land oder den US-Bundesstaat und darüber das Zeitfenster: ein Kalenderjahr, ein Steuerjahr ab dessen Beginn (6. April im Vereinigten Königreich, 1. Juli in Australien, 1. April in Neuseeland und Indien) oder die letzten 12 Monate. Nur Tage innerhalb dieses Zeitfensters zählen.</li>
       <li><strong>Unter 183 bleiben oder 183 erreichen.</strong> Die meisten wollen unter 183 Tagen bleiben. Wenn du 183 Tage brauchst, um irgendwo ansässig zu werden, stell das Ziel auf „Ziel erreichen“: Der Balken wird grün, sobald du es geschafft hast.</li>
       <li><strong>Geplante Aufenthalte zählen mit.</strong> Markiere auch eine Reise, die du noch nicht gebucht hast, und sieh nach, ob sie dich über 183 bringen würde.</li>
     </ul>
+
+    <p>Wähle einen US-Bundesstaat, um nur für diesen Staat erfasste Aufenthalte zu zählen. Mit Vereinigte Staaten werden Aufenthalte für die USA und einzelne Bundesstaaten zusammengezählt; gemeinsame Tage zählen einmal. Für einen Bundesstaat gilt die von dir gewählte Tagesgrenze. Seine eigenen Tests zur steuerlichen Ansässigkeit werden nicht angewendet.</p>
 
     <h2>Wenn dein Land anders zählt</h2>
     <p>Länder verwenden unterschiedliche Schwellen und Zählmethoden. Prüfe den jeweiligen Leitfaden, bevor du das Ergebnis einordnest:</p>
@@ -138,4 +194,4 @@
     <h3>Macht mich ein Aufenthalt von 183 Tagen in einem Land steuerlich ansässig?</h3>
     <p>Oft, aber nicht immer. Viele Länder werten 183 Tage in ihrem Steuerjahr als Ansässigkeit, manche verwenden eine andere Schwelle oder einen anderen Zeitraum, und andere Bindungen wie eine Wohnung oder Familie können dich schon mit weniger Tagen ansässig machen. Der Rechner zeigt die Zählung, nicht die Entscheidung.</p>
     <h3>Werden meine Eingaben gespeichert?</h3>
-    <p>Nein. Der Rechner läuft in deinem Browser und sendet, protokolliert oder speichert die eingegebenen Reisedaten nicht. Wenn du die Seite schließt oder neu lädst, sind sie weg. Um sie zu behalten, tippe auf „In AtlasDays übernehmen“.</p>
+    <p>Nein. Der Rechner läuft in deinem Browser und sendet, protokolliert oder speichert die eingegebenen Reisedaten nicht. Wenn du die Seite schließt oder neu lädst, sind sie weg. Um sie zu behalten, tippe auf „Exportieren oder in AtlasDays öffnen“.</p>

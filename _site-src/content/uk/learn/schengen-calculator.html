@@ -63,31 +63,31 @@
         </div>
         <div class="cal-box">
           <h3>Хронологія</h3>
-          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Відстежувати в AtlasDays</button>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Експортувати або відкрити в AtlasDays</button>
         </div>
       </div>
       <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="schengen-import-title">
         <div class="cal-dialog-head">
           <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
           <div>
-            <p class="cal-dialog-title" id="schengen-import-title">Відстежувати в AtlasDays</p>
-            <p class="cal-dialog-sub">Продовжуйте підрахунок днів у дорозі. Безкоштовна програма для iPhone та iPad.</p>
+            <p class="cal-dialog-title" id="schengen-import-title"><span data-cal-on="computer">Продовжте на iPhone або iPad</span><span data-cal-on="phone file">Експортувати або відкрити в AtlasDays</span></p>
+            <p class="cal-dialog-sub">Продовжуйте рахувати дні в поїздках. Завантажте AtlasDays безкоштовно.</p>
           </div>
         </div>
         <div class="cal-dialog-scan" data-cal-on="computer">
           <div class="cal-qr" data-cal-qr></div>
-          <ol class="cal-steps">
-            <li><strong>Переконайтеся, що AtlasDays встановлено на вашому iPhone чи iPad</strong><span>Безкоштовно в App Store.</span></li>
-            <li><strong data-cal-stays>Відскануйте QR-код, щоб завантажити всі поїздки в AtlasDays</strong><span data-cal-stays>Перевірте їх і торкніться «Імпорт».</span><strong data-cal-tracker hidden>Відскануйте QR-код, щоб додати цей трекер до AtlasDays</strong><span data-cal-tracker hidden>Перевірте його й торкніться «Зберегти».</span></li>
-          </ol>
+          <div class="cal-scan-copy">
+            <p class="cal-scan-lead" data-cal-both>Відскануйте код, щоб відкрити поїздки й трекер в AtlasDays.</p>
+            <p class="cal-scan-lead" data-cal-trips-only hidden>Відскануйте код, щоб відкрити поїздки в AtlasDays.</p>
+            <p class="cal-scan-lead" data-cal-tracker hidden>Відскануйте код, щоб відкрити трекер в AtlasDays.</p>
+          </div>
         </div>
         <ol class="cal-steps" data-cal-on="phone">
-          <li data-cal-store><strong>Завантажте AtlasDays</strong><span>Безкоштовно в App Store. Уже встановлено? Переходьте до кроку 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
           <li><strong data-cal-stays>Відкрийте поїздки в програмі</strong><span data-cal-stays>Перевірте їх і торкніться «Імпорт». До цього нічого не зберігається.</span><strong data-cal-tracker hidden>Відкрийте цей трекер у програмі</strong><span data-cal-tracker hidden>Перевірте його й торкніться «Зберегти». До цього нічого не зберігається.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Відкрити в AtlasDays</a></li>
         </ol>
         <ol class="cal-steps" data-cal-on="file">
+          <li><strong>Завантажити поїздки у файлі CSV</strong><span>Стільки поїздок не вміститься в посилання. Завантажте файл і відкрийте його в AtlasDays на iPhone.</span><button type="button" class="cal-dialog-primary" data-cal-download>Завантажити файл</button></li>
           <li data-cal-store><strong>Завантажте AtlasDays</strong><span>Безкоштовно в App Store для iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
-          <li><strong>Імпортуйте поїздки з файлу</strong><span>Стільки поїздок не вміститься в посилання. Завантажте файл і відкрийте його в AtlasDays на iPhone.</span><button type="button" class="cal-dialog-primary" data-cal-download>Завантажити файл</button></li>
         </ol>
         <div class="cal-dialog-foot">
           <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Завантажити поїздки у файлі CSV</button><span data-cal-downloaded hidden>Відкрийте цей файл в AtlasDays на iPhone.</span></p>
@@ -131,4 +131,4 @@
     <h3>Це офіційний калькулятор ЄС?</h3>
     <p>Ні. Європейська комісія публікує власний калькулятор короткострокового перебування. Цей рахує так само — 90 днів за будь-які 180, включно з днями в’їзду та виїзду, — і дає змогу зберегти поїздки в AtlasDays. Рішення ухвалюють прикордонні та візові органи.</p>
     <h3>Чи зберігаються мої дані?</h3>
-    <p>Ні. Калькулятор працює у вашому браузері й не надсилає, не записує та не зберігає введені дати. Після закриття або перезавантаження сторінки вони зникнуть. Щоб зберегти їх, торкніться «Відстежувати в AtlasDays».</p>
+    <p>Ні. Калькулятор працює у вашому браузері й не надсилає, не записує та не зберігає введені дати. Після закриття або перезавантаження сторінки вони зникнуть. Щоб зберегти їх, торкніться «Експортувати або відкрити в AtlasDays».</p>

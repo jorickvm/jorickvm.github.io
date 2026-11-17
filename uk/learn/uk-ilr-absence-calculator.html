@@ -148,7 +148,7 @@
         "name": "Чи зберігаються мої дані?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Ні. Калькулятор працює у вашому браузері й не надсилає, не записує та не зберігає введені дати. Після закриття або перезавантаження сторінки вони зникнуть. Щоб зберегти їх, торкніться «Відстежувати в AtlasDays»."
+          "text": "Ні. Калькулятор працює у вашому браузері й не надсилає, не записує та не зберігає введені дати. Після закриття або перезавантаження сторінки вони зникнуть. Щоб зберегти їх, торкніться «Експортувати або відкрити в AtlasDays»."
         }
       }
     ]
@@ -163,7 +163,7 @@
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
-  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261028a" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261117a" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Перейти до вмісту</a>
@@ -245,13 +245,13 @@
     <nav class="breadcrumb">
       <a href="/uk/">AtlasDays</a> / <a href="/uk/learn/">Правила поїздок</a> / <a href="/uk/learn/calculators">Калькулятори</a>
     </nav>
-    <img class="title-flag" src="/assets/flags/gb.png" alt="Прапор Великої Британії" width="56" height="42" />
+    <img class="title-flag" src="/assets/flags/web/gb.webp" alt="Прапор Великої Британії" width="56" height="42" />
     <h1>Калькулятор відсутності для ILR: 180 днів за будь-які 12 місяців</h1>
     <p class="subtitle">Для кожної поїздки торкніться дня від’їзду з Великої Британії та дня повернення. Трекер покаже ваші дні за кордоном за 12 місяців до будь-якої вибраної дати. Заплановані поїздки теж враховуються.</p>
     <p class="verified">Востаннє перевірено: жовтень 2026 року</p>
 
     <h2 id="section-1">Перевірте свої дні відсутності</h2>
-    <div class="daycal" id="uk-ilr" data-day-calendar="ukIlr">
+    <div class="daycal" id="uk-ilr" data-day-calendar="ukIlr" data-cal-placement="standalone">
       <script type="application/json" data-cal-strings>
 {
   "hintStart": "Торкніться дня від’їзду з Великої Британії, а потім дня повернення.",
@@ -302,31 +302,31 @@
         </div>
         <div class="cal-box">
           <h3>Хронологія</h3>
-          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Відстежувати в AtlasDays</button>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Експортувати або відкрити в AtlasDays</button>
         </div>
       </div>
       <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="uk-ilr-import-title">
         <div class="cal-dialog-head">
           <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
           <div>
-            <p class="cal-dialog-title" id="uk-ilr-import-title">Відстежувати в AtlasDays</p>
-            <p class="cal-dialog-sub">Продовжуйте підрахунок днів у дорозі. Безкоштовна програма для iPhone та iPad.</p>
+            <p class="cal-dialog-title" id="uk-ilr-import-title"><span data-cal-on="computer">Продовжте на iPhone або iPad</span><span data-cal-on="phone file">Експортувати або відкрити в AtlasDays</span></p>
+            <p class="cal-dialog-sub">Продовжуйте рахувати дні в поїздках. Завантажте AtlasDays безкоштовно.</p>
           </div>
         </div>
         <div class="cal-dialog-scan" data-cal-on="computer">
           <div class="cal-qr" data-cal-qr></div>
-          <ol class="cal-steps">
-            <li><strong>Переконайтеся, що AtlasDays встановлено на вашому iPhone чи iPad</strong><span>Безкоштовно в App Store.</span></li>
-            <li><strong data-cal-stays>Відскануйте QR-код, щоб завантажити всі поїздки в AtlasDays</strong><span data-cal-stays>Перевірте їх і торкніться «Імпорт».</span><strong data-cal-tracker hidden>Відскануйте QR-код, щоб додати цей трекер до AtlasDays</strong><span data-cal-tracker hidden>Перевірте його й торкніться «Зберегти».</span></li>
-          </ol>
+          <div class="cal-scan-copy">
+            <p class="cal-scan-lead" data-cal-both>Відскануйте код, щоб відкрити поїздки й трекер в AtlasDays.</p>
+            <p class="cal-scan-lead" data-cal-trips-only hidden>Відскануйте код, щоб відкрити поїздки в AtlasDays.</p>
+            <p class="cal-scan-lead" data-cal-tracker hidden>Відскануйте код, щоб відкрити трекер в AtlasDays.</p>
+          </div>
         </div>
         <ol class="cal-steps" data-cal-on="phone">
-          <li data-cal-store><strong>Завантажте AtlasDays</strong><span>Безкоштовно в App Store. Уже встановлено? Переходьте до кроку 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8&amp;ppid=63812983-82c6-4aa2-8078-679f24f007ec">App Store</a></li>
           <li><strong data-cal-stays>Відкрийте поїздки в програмі</strong><span data-cal-stays>Перевірте їх і торкніться «Імпорт». До цього нічого не зберігається.</span><strong data-cal-tracker hidden>Відкрийте цей трекер у програмі</strong><span data-cal-tracker hidden>Перевірте його й торкніться «Зберегти». До цього нічого не зберігається.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Відкрити в AtlasDays</a></li>
         </ol>
         <ol class="cal-steps" data-cal-on="file">
+          <li><strong>Завантажити поїздки у файлі CSV</strong><span>Стільки поїздок не вміститься в посилання. Завантажте файл і відкрийте його в AtlasDays на iPhone.</span><button type="button" class="cal-dialog-primary" data-cal-download>Завантажити файл</button></li>
           <li data-cal-store><strong>Завантажте AtlasDays</strong><span>Безкоштовно в App Store для iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web&amp;mt=8&amp;ppid=63812983-82c6-4aa2-8078-679f24f007ec">App Store</a></li>
-          <li><strong>Імпортуйте поїздки з файлу</strong><span>Стільки поїздок не вміститься в посилання. Завантажте файл і відкрийте його в AtlasDays на iPhone.</span><button type="button" class="cal-dialog-primary" data-cal-download>Завантажити файл</button></li>
         </ol>
         <div class="cal-dialog-foot">
           <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Завантажити поїздки у файлі CSV</button><span data-cal-downloaded hidden>Відкрийте цей файл в AtlasDays на iPhone.</span></p>
@@ -369,7 +369,7 @@
     <h3>Чому за двотижневу відпустку показано менше ніж 14 днів?</h3>
     <p>Тому що враховуються лише повні дні за кордоном. Дні від’їзду та повернення не є днями відсутності, тож поїздка з 1 до 15 червня дає 13 днів.</p>
     <h3>Чи зберігаються мої дані?</h3>
-    <p>Ні. Калькулятор працює у вашому браузері й не надсилає, не записує та не зберігає введені дати. Після закриття або перезавантаження сторінки вони зникнуть. Щоб зберегти їх, торкніться «Відстежувати в AtlasDays».</p>
+    <p>Ні. Калькулятор працює у вашому браузері й не надсилає, не записує та не зберігає введені дати. Після закриття або перезавантаження сторінки вони зникнуть. Щоб зберегти їх, торкніться «Експортувати або відкрити в AtlasDays».</p>
 
     <aside class="article-trust">
       <section class="article-trust-item article-source" aria-labelledby="official-source-heading">
@@ -384,12 +384,12 @@
     <nav class="related generated-related" aria-labelledby="related-uk-ilr-absence-calculator">
       <h2 id="related-uk-ilr-absence-calculator">Схожі статті</h2>
       <div class="rule-cards">
-        <a class="rule-card" href="/uk/learn/uk-citizenship-absence-limits"><img class="rule-flag" src="/assets/flags/gb.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Громадянство Великої Британії: ліміти відсутності 450 і 90 днів</strong></span></a>
-        <a class="rule-card" href="/uk/learn/canada-pr-residency-obligation"><img class="rule-flag" src="/assets/flags/ca.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Обов’язок проживання для постійних резидентів Канади: 730 днів</strong></span></a>
-        <a class="rule-card" href="/uk/learn/canada-citizenship-physical-presence"><img class="rule-flag" src="/assets/flags/ca.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Громадянство Канади: вимога щодо фізичної присутності</strong></span></a>
-        <a class="rule-card" href="/uk/learn/us-naturalization-physical-presence"><img class="rule-flag" src="/assets/flags/us.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Натуралізація у США: вимога 30 місяців фізичної присутності</strong></span></a>
-        <a class="rule-card" href="/uk/learn/new-zealand-citizenship-presence-requirement"><img class="rule-flag" src="/assets/flags/nz.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Громадянство Нової Зеландії: вимога 1 350 днів присутності</strong></span></a>
-        <a class="rule-card" href="/uk/learn/uk-standard-visitor-visa-180-day-rule"><img class="rule-flag" src="/assets/flags/gb.png" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Строк перебування у Великій Британії: шість місяців за візит</strong></span></a>
+        <a class="rule-card" href="/uk/learn/uk-citizenship-absence-limits"><img class="rule-flag" src="/assets/flags/web/gb.webp" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Громадянство Великої Британії: ліміти відсутності 450 і 90 днів</strong></span></a>
+        <a class="rule-card" href="/uk/learn/canada-pr-residency-obligation"><img class="rule-flag" src="/assets/flags/web/ca.webp" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Обов’язок проживання для постійних резидентів Канади: 730 днів</strong></span></a>
+        <a class="rule-card" href="/uk/learn/canada-citizenship-physical-presence"><img class="rule-flag" src="/assets/flags/web/ca.webp" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Громадянство Канади: вимога щодо фізичної присутності</strong></span></a>
+        <a class="rule-card" href="/uk/learn/us-naturalization-physical-presence"><img class="rule-flag" src="/assets/flags/web/us.webp" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Натуралізація у США: вимога 30 місяців фізичної присутності</strong></span></a>
+        <a class="rule-card" href="/uk/learn/new-zealand-citizenship-presence-requirement"><img class="rule-flag" src="/assets/flags/web/nz.webp" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Громадянство Нової Зеландії: вимога 1 350 днів присутності</strong></span></a>
+        <a class="rule-card" href="/uk/learn/uk-standard-visitor-visa-180-day-rule"><img class="rule-flag" src="/assets/flags/web/gb.webp" alt="" width="36" height="25" loading="lazy" /><span class="rule-text"><strong>Строк перебування у Великій Британії: шість місяців за візит</strong></span></a>
       </div>
     </nav>
   </article>
@@ -440,7 +440,8 @@
   <script>window.AtlasDaysNavStrings={"menuOpen":"Відкрити меню навігації","menuClose":"Закрити меню навігації"};</script>
   <script src="../../assets/js/navigation.js?v=20261027j"></script>
   <script defer src="../../assets/js/rules/uk-ilr.js?v=20261028b"></script>
-  <script defer src="../../assets/js/day-calendar.js?v=20261029b"></script>
+  <script defer src="../../assets/js/calculator-usage.js?v=20261114a" data-endpoint=""></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261117a"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on. */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

@@ -1,8 +1,8 @@
     <nav class="breadcrumb">
       <a href="/ja/">AtlasDays</a> / <a href="/ja/learn/">旅行ルール</a> / <a href="/ja/learn/calculators">計算機</a>
     </nav>
-    <h1>183日ルール計算機：どの国でも滞在日数をカウント</h1>
-    <p class="subtitle">国と年を選び、到着した日と出発した日をタップしてください。予定している滞在も含めて、183日にどこまで近づいているかをトラッカーが表示します。</p>
+    <h1>183日ルール計算ツール：国・米国の州ごとの日数</h1>
+    <p class="subtitle">国または米国の州と年を選び、到着日と出発日をタップしてください。予定の滞在も含め、183日までの残りを確認できます。</p>
     <p class="verified">最終確認：2026年10月</p>
 
     <h2>滞在日数を数える</h2>
@@ -49,7 +49,61 @@
   },
   "lineNoCountry": {
     "other": "国が未設定の日：{n}日"
-  }
+  },
+  "jurisdiction": "国または米国の州",
+  "addJurisdiction": "国または米国の州を追加",
+  "noJurisdictionMatch": "一致する国または米国の州がありません",
+  "stateUSAL": "アラバマ州（米国）",
+  "stateUSAK": "アラスカ州（米国）",
+  "stateUSAZ": "アリゾナ州（米国）",
+  "stateUSAR": "アーカンソー州（米国）",
+  "stateUSCA": "カリフォルニア州（米国）",
+  "stateUSCO": "コロラド州（米国）",
+  "stateUSCT": "コネチカット州（米国）",
+  "stateUSDE": "デラウェア州（米国）",
+  "stateUSDC": "コロンビア特別区（米国）",
+  "stateUSFL": "フロリダ州（米国）",
+  "stateUSGA": "ジョージア州（米国）",
+  "stateUSHI": "ハワイ州（米国）",
+  "stateUSID": "アイダホ州（米国）",
+  "stateUSIL": "イリノイ州（米国）",
+  "stateUSIN": "インディアナ州（米国）",
+  "stateUSIA": "アイオワ州（米国）",
+  "stateUSKS": "カンザス州（米国）",
+  "stateUSKY": "ケンタッキー州（米国）",
+  "stateUSLA": "ルイジアナ州（米国）",
+  "stateUSME": "メイン州（米国）",
+  "stateUSMD": "メリーランド州（米国）",
+  "stateUSMA": "マサチューセッツ州（米国）",
+  "stateUSMI": "ミシガン州（米国）",
+  "stateUSMN": "ミネソタ州（米国）",
+  "stateUSMS": "ミシシッピ州（米国）",
+  "stateUSMO": "ミズーリ州（米国）",
+  "stateUSMT": "モンタナ州（米国）",
+  "stateUSNE": "ネブラスカ州（米国）",
+  "stateUSNV": "ネバダ州（米国）",
+  "stateUSNH": "ニューハンプシャー州（米国）",
+  "stateUSNJ": "ニュージャージー州（米国）",
+  "stateUSNM": "ニューメキシコ州（米国）",
+  "stateUSNY": "ニューヨーク州（米国）",
+  "stateUSNC": "ノースカロライナ州（米国）",
+  "stateUSND": "ノースダコタ州（米国）",
+  "stateUSOH": "オハイオ州（米国）",
+  "stateUSOK": "オクラホマ州（米国）",
+  "stateUSOR": "オレゴン州（米国）",
+  "stateUSPA": "ペンシルベニア州（米国）",
+  "stateUSRI": "ロードアイランド州（米国）",
+  "stateUSSC": "サウスカロライナ州（米国）",
+  "stateUSSD": "サウスダコタ州（米国）",
+  "stateUSTN": "テネシー州（米国）",
+  "stateUSTX": "テキサス州（米国）",
+  "stateUSUT": "ユタ州（米国）",
+  "stateUSVT": "バーモント州（米国）",
+  "stateUSVA": "バージニア州（米国）",
+  "stateUSWA": "ワシントン州（米国）",
+  "stateUSWV": "ウェストバージニア州（米国）",
+  "stateUSWI": "ウィスコンシン州（米国）",
+  "stateUSWY": "ワイオミング州（米国）"
 }
       </script>
       <p class="cal-hint" data-cal-hint aria-live="polite"></p>
@@ -66,31 +120,31 @@
         </div>
         <div class="cal-box">
           <h3>タイムライン</h3>
-          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>AtlasDaysで記録する</button>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>エクスポート、またはAtlasDaysで開く</button>
         </div>
       </div>
       <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="days-183-import-title">
         <div class="cal-dialog-head">
           <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
           <div>
-            <p class="cal-dialog-title" id="days-183-import-title">AtlasDaysで記録する</p>
-            <p class="cal-dialog-sub">旅行中もそのまま日数を数えられる、iPhoneとiPad向けの無料アプリです。</p>
+            <p class="cal-dialog-title" id="days-183-import-title"><span data-cal-on="computer">iPhoneまたはiPadで続ける</span><span data-cal-on="phone file">エクスポート、またはAtlasDaysで開く</span></p>
+            <p class="cal-dialog-sub">旅先でも日数の記録を続けましょう。AtlasDaysを無料で入手できます。</p>
           </div>
         </div>
         <div class="cal-dialog-scan" data-cal-on="computer">
           <div class="cal-qr" data-cal-qr></div>
-          <ol class="cal-steps">
-            <li><strong>iPhoneまたはiPadにAtlasDaysをインストールしておく</strong><span>App Storeで無料で入手できます。</span></li>
-            <li><strong data-cal-stays>QRコードを読み取り、すべての旅行をAtlasDaysに読み込む</strong><span data-cal-stays>確認してから「インポート」をタップします。</span><strong data-cal-tracker hidden>QRコードを読み取り、このトラッカーをAtlasDaysに追加する</strong><span data-cal-tracker hidden>確認してから「保存」をタップします。</span></li>
-          </ol>
+          <div class="cal-scan-copy">
+            <p class="cal-scan-lead" data-cal-both>コードをスキャンして、旅行とトラッカーをAtlasDaysで開きます。</p>
+            <p class="cal-scan-lead" data-cal-trips-only hidden>コードをスキャンして、旅行をAtlasDaysで開きます。</p>
+            <p class="cal-scan-lead" data-cal-tracker hidden>コードをスキャンして、トラッカーをAtlasDaysで開きます。</p>
+          </div>
         </div>
         <ol class="cal-steps" data-cal-on="phone">
-          <li data-cal-store><strong>AtlasDaysを入手</strong><span>App Storeから無料で入手できます。お持ちの場合は2へ進んでください。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
           <li><strong data-cal-stays>アプリで滞在を開く</strong><span data-cal-stays>確認してから「インポート」をタップします。それまで何も保存されません。</span><strong data-cal-tracker hidden>アプリでこのトラッカーを開く</strong><span data-cal-tracker hidden>確認してから「保存」をタップします。それまで何も保存されません。</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">AtlasDaysで開く</a></li>
         </ol>
         <ol class="cal-steps" data-cal-on="file">
+          <li><strong>旅行をCSVファイルでダウンロード</strong><span>滞在の数が多く、リンクでは送れません。ファイルをダウンロードして、iPhoneのAtlasDaysで開いてください。</span><button type="button" class="cal-dialog-primary" data-cal-download>ファイルをダウンロード</button></li>
           <li data-cal-store><strong>AtlasDaysを入手</strong><span>iPhone向けにApp Storeで無料で提供しています。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
-          <li><strong>ファイルで滞在をインポート</strong><span>滞在の数が多く、リンクでは送れません。ファイルをダウンロードして、iPhoneのAtlasDaysで開いてください。</span><button type="button" class="cal-dialog-primary" data-cal-download>ファイルをダウンロード</button></li>
         </ol>
         <div class="cal-dialog-foot">
           <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>旅行をCSVファイルでダウンロード</button><span data-cal-downloaded hidden>このファイルをiPhoneのAtlasDaysで開いてください。</span></p>
@@ -102,10 +156,12 @@
     <h2>計算機の日数の数え方</h2>
     <ul>
       <li><strong>標準設定では入国日と出国日を含めます。</strong>両端の日を含める数え方では、6月1日から10日は10日間です。国別ガイドから開くと、その国の数え方が適用される場合があります。</li>
-      <li><strong>1か国、1年間。</strong>トラッカーで国を、その上で期間を選びます。期間は暦年、開始日から1年間の課税年度（英国は4月6日、オーストラリアは7月1日、ニュージーランドとインドは4月1日に開始）、直近12か月から選べます。数えるのはその期間内の日だけです。</li>
+      <li><strong>場所と期間を選択。</strong>トラッカーで国または米国の州を選び、その上で期間を選びます。暦年、開始日からの課税年度（英国は4月6日、オーストラリアは7月1日、ニュージーランドとインドは4月1日）、または直近12か月を選べます。期間内の日だけを数えます。</li>
       <li><strong>183日未満に抑えるか、183日に到達するか。</strong>多くの人は183日未満に抑えたいと考えます。ある国で居住者になるために183日が必要な場合は、目標で「目標を達成」を選んでください。到達するとバーが緑色に変わります。</li>
       <li><strong>予定の滞在も数えます。</strong>まだ予約していない旅行も入力すれば、それで183日を超えるかどうかを確認できます。</li>
     </ul>
+
+    <p>米国の州を選ぶと、その州に記録した滞在だけを数えます。米国を選ぶと、米国全体と各州に記録した滞在を合わせ、重なる日を一度だけ数えます。州を選んでも使用するのは指定した日数上限であり、州独自の居住判定は行いません。</p>
 
     <h2>数え方が異なる国</h2>
     <p>国によって基準日数や数え方が異なります。結果を判断する前に、該当するガイドを確認してください。</p>
@@ -133,4 +189,4 @@
     <h3>ある国に183日滞在すると、税務上の居住者になりますか？</h3>
     <p>多くの場合はなりますが、必ずではありません。課税年度に183日滞在すると居住者として扱う国は多いものの、異なる基準日数や期間を使う国もあります。また、住居や家族などほかのつながりによって、より少ない日数で居住者となる場合もあります。計算機が示すのは日数であり、判定ではありません。</p>
     <h3>入力したデータは保存されますか？</h3>
-    <p>いいえ。計算機はブラウザ内で動作し、入力した日付を送信、記録、保存しません。ページを閉じるか再読み込みすると消えます。残しておくには「AtlasDaysで記録する」をタップしてください。</p>
+    <p>いいえ。計算機はブラウザ内で動作し、入力した日付を送信、記録、保存しません。ページを閉じるか再読み込みすると消えます。残しておくには「エクスポート、またはAtlasDaysで開く」をタップしてください。</p>

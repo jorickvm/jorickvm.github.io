@@ -58,31 +58,31 @@
         </div>
         <div class="cal-box">
           <h3>Хронология</h3>
-          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Отслеживать в AtlasDays</button>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Экспортировать или открыть в AtlasDays</button>
         </div>
       </div>
       <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="uk-ilr-import-title">
         <div class="cal-dialog-head">
           <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
           <div>
-            <p class="cal-dialog-title" id="uk-ilr-import-title">Отслеживать в AtlasDays</p>
-            <p class="cal-dialog-sub">Продолжайте подсчёт дней в дороге. Бесплатное приложение для iPhone и iPad.</p>
+            <p class="cal-dialog-title" id="uk-ilr-import-title"><span data-cal-on="computer">Продолжите на iPhone или iPad</span><span data-cal-on="phone file">Экспортировать или открыть в AtlasDays</span></p>
+            <p class="cal-dialog-sub">Продолжайте считать дни в поездках. Скачайте AtlasDays бесплатно.</p>
           </div>
         </div>
         <div class="cal-dialog-scan" data-cal-on="computer">
           <div class="cal-qr" data-cal-qr></div>
-          <ol class="cal-steps">
-            <li><strong>Убедитесь, что AtlasDays установлено на вашем iPhone или iPad</strong><span>Бесплатно в App Store.</span></li>
-            <li><strong data-cal-stays>Отсканируйте QR-код, чтобы загрузить все поездки в AtlasDays</strong><span data-cal-stays>Проверьте их и нажмите «Импортировать».</span><strong data-cal-tracker hidden>Отсканируйте QR-код, чтобы добавить этот трекер в AtlasDays</strong><span data-cal-tracker hidden>Проверьте его и нажмите «Сохранить».</span></li>
-          </ol>
+          <div class="cal-scan-copy">
+            <p class="cal-scan-lead" data-cal-both>Отсканируйте код, чтобы открыть поездки и трекер в AtlasDays.</p>
+            <p class="cal-scan-lead" data-cal-trips-only hidden>Отсканируйте код, чтобы открыть поездки в AtlasDays.</p>
+            <p class="cal-scan-lead" data-cal-tracker hidden>Отсканируйте код, чтобы открыть трекер в AtlasDays.</p>
+          </div>
         </div>
         <ol class="cal-steps" data-cal-on="phone">
-          <li data-cal-store><strong>Скачайте AtlasDays</strong><span>Бесплатно в App Store. Уже установлено? Переходите к шагу 2.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
           <li><strong data-cal-stays>Откройте поездки в приложении</strong><span data-cal-stays>Проверьте их и нажмите «Импортировать». До этого ничего не сохраняется.</span><strong data-cal-tracker hidden>Откройте этот трекер в приложении</strong><span data-cal-tracker hidden>Проверьте его и нажмите «Сохранить». До этого ничего не сохраняется.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Открыть в AtlasDays</a></li>
         </ol>
         <ol class="cal-steps" data-cal-on="file">
+          <li><strong>Скачать поездки в файле CSV</strong><span>Столько поездок не поместится в ссылку. Скачайте файл и откройте его в AtlasDays на iPhone.</span><button type="button" class="cal-dialog-primary" data-cal-download>Скачать файл</button></li>
           <li data-cal-store><strong>Скачайте AtlasDays</strong><span>Бесплатно в App Store для iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
-          <li><strong>Импортируйте поездки из файла</strong><span>Столько поездок не поместится в ссылку. Скачайте файл и откройте его в AtlasDays на iPhone.</span><button type="button" class="cal-dialog-primary" data-cal-download>Скачать файл</button></li>
         </ol>
         <div class="cal-dialog-foot">
           <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Скачать поездки в файле CSV</button><span data-cal-downloaded hidden>Откройте этот файл в AtlasDays на iPhone.</span></p>
@@ -125,4 +125,4 @@
     <h3>Почему двухнедельный отпуск показывает меньше 14 дней?</h3>
     <p>Учитываются лишь полные дни за границей. Дни выезда и возвращения не считаются отсутствием, поэтому поездка с 1 по 15 июня даёт 13 дней.</p>
     <h3>Сохраняются ли мои данные?</h3>
-    <p>Нет. Калькулятор работает в браузере и не отправляет, не записывает и не сохраняет введённые даты. При закрытии или обновлении страницы они исчезнут. Чтобы сохранить их, нажмите «Отслеживать в AtlasDays».</p>
+    <p>Нет. Калькулятор работает в браузере и не отправляет, не записывает и не сохраняет введённые даты. При закрытии или обновлении страницы они исчезнут. Чтобы сохранить их, нажмите «Экспортировать или открыть в AtlasDays».</p>
