@@ -275,7 +275,7 @@ html[data-theme="light"] .daycal { --cal-disc: rgba(12, 22, 40, 0.07); --tone-wa
    then period and count, then the bar */
 .cal-card-head { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 0 0 12px; }
 .cal-card-head .cal-flag { width: 28px; height: 21px; }
-.cal-card-title { flex: 1 0 auto; max-width: 100%; min-width: 0; color: var(--text); font-size: 1.02rem; font-weight: 650; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.cal-card-title { flex: 1 0 auto; font-family: var(--font-rounded); max-width: 100%; min-width: 0; color: var(--text); font-size: 1.02rem; font-weight: 650; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .cal-card-title.is-placeholder { color: var(--muted); font-weight: 500; }
 .cal-card-head .cal-pill { flex: 0 0 auto; margin: 0 0 0 auto; }
 /* the country picker as the card's title */
@@ -284,14 +284,14 @@ html[data-theme="light"] .daycal { --cal-disc: rgba(12, 22, 40, 0.07); --tone-wa
 .cal-card-head .cal-control.is-country .cal-flag { width: 28px; height: 21px; border-radius: 4px; }
 .cal-card-head .cal-control.is-country .cal-control-pill { min-width: 0; max-width: 100%; }
 .cal-card-head .cal-control.is-country .cal-country-field { min-width: 0; }
-.cal-card-head .cal-control.is-country .cal-country-input { max-width: min(18em, 60vw); padding: 3px 6px; margin-left: -6px; border: 1px solid transparent; border-radius: 8px; font-size: 1.02rem; text-overflow: ellipsis; }
+.cal-card-head .cal-control.is-country .cal-country-input { max-width: min(18em, 60vw); font-family: var(--font-rounded); padding: 3px 6px; margin-left: -6px; border: 1px solid transparent; border-radius: 8px; font-size: 1.02rem; text-overflow: ellipsis; }
 .cal-card-head .cal-control.is-country .cal-country-input:hover { border-color: transparent; background: color-mix(in srgb, var(--cal-bar) 10%, transparent); }
 .cal-measure { position: absolute; visibility: hidden; white-space: pre; }
 .cal-card-head .cal-control.is-country .cal-country-input:focus { border-color: var(--blue); }
 .cal-meter { display: grid; gap: 7px; margin: 2px 0 10px; }
 .cal-meter-row { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
 .cal-meter-period { color: var(--muted); font-size: 0.9rem; }
-.cal-meter-count { color: var(--muted); font-size: 1.25rem; font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.cal-meter-count { color: var(--muted); font-family: var(--font-rounded); font-size: 1.25rem; font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; }
 .cal-meter-count b { color: var(--text); }
 .cal-meter-track { height: 10px; border-radius: 999px; background: var(--cal-track); overflow: hidden; }
 .cal-meter-fill { display: block; height: 100%; border-radius: 999px; background: linear-gradient(90deg, var(--tone), color-mix(in srgb, var(--tone) 75%, transparent)); transition: width 0.2s ease; }
@@ -374,7 +374,7 @@ html[data-theme="light"] .daycal { --cal-disc: rgba(12, 22, 40, 0.07); --tone-wa
 }
 .cal-flag img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .cal-flag.is-empty { background: var(--cal-disc); box-shadow: inset 0 0 0 1.5px var(--line-strong); }
-.cal-trip-country { grid-area: country; min-width: 0; font-size: 0.92rem; font-weight: 650; }
+.cal-trip-country { grid-area: country; font-family: var(--font-rounded); min-width: 0; font-size: 0.92rem; font-weight: 650; }
 /* One fixed line height, so Delete replacing the day count never moves the card. */
 .cal-trip-line { grid-area: line; display: flex; justify-content: space-between; gap: 10px; align-items: center; min-height: 24px; }
 .cal-trip .cal-country-field { display: inline-block; max-width: 100%; vertical-align: top; }
@@ -422,6 +422,7 @@ html[data-theme="light"] .daycal { --cal-disc: rgba(12, 22, 40, 0.07); --tone-wa
 .cal-country-input:hover { border-color: var(--line); }
 .cal-country-input:focus { border-color: var(--blue); background: var(--bg); outline: none; font-weight: 500; }
 .cal-country-list {
+  font-family: var(--font-text);
   position: fixed; /* placed by the engine, so no scrolling card clips it */
   z-index: 50;
   max-height: 260px;
@@ -458,7 +459,7 @@ html[data-theme="light"] .daycal { --cal-disc: rgba(12, 22, 40, 0.07); --tone-wa
   color: var(--text);
 }
 .cal-dialog::backdrop { background: rgba(0, 0, 0, 0.5); }
-.cal-dialog-title { margin: 0 0 6px; font-size: 1.1rem; font-weight: 650; }
+.cal-dialog-title { margin: 0 0 6px; font-family: var(--font-rounded); font-size: 1.1rem; font-weight: 650; }
 .cal-dialog p { margin: 0 0 12px; color: var(--muted); font-size: 0.92rem; line-height: 1.55; }
 .cal-dialog ol { margin: 0 0 16px; padding-left: 20px; color: var(--muted); font-size: 0.92rem; line-height: 1.55; }
 .cal-dialog li { margin: 0 0 6px; }
