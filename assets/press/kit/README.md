@@ -10,7 +10,7 @@
 
 - **First release**: April 2026
 
-- **Release**: 3.0.1, released 17 November 2026
+- **Release**: 3.0.2, released November 2026
 
 - **Price**: Free to download. AtlasDays Pro is $12.99 a quarter, $29.99 a year, or $119.99 for lifetime access (US prices).
 
