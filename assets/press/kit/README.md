@@ -10,13 +10,13 @@
 
 - **First release**: April 2026
 
-- **Release**: 2.8, releasing 23 October 2026
+- **Release**: 3.0.1, released 17 November 2026
 
-- **Price**: Free to download. AtlasDays Pro is $12.99 a quarter, $29.99 a year, or $99.99 for lifetime access (US prices).
+- **Price**: Free to download. AtlasDays Pro is $12.99 a quarter, $29.99 a year, or $119.99 for lifetime access (US prices).
 
-- **Free version**: Unlimited trips, one tracker, all import options (Photos, Flighty, CSV), the Dashboard and the map
+- **Free version**: Unlimited trips, one tracker, all import options (Photos, Flighty, Google Timeline, CSV), the Dashboard, Statistics and the map
 
-- **Languages**: 14 interface languages
+- **Languages**: 16 interface languages
 
 - **Privacy**: No account and no ads. Trips stay on the device, with optional sync through the user's own iCloud.
 
@@ -36,7 +36,7 @@ AtlasDays is a private iPhone and iPad app for tracking travel history, visa day
 
 AtlasDays helps frequent travelers keep an editable travel history and count days toward visa limits and residency thresholds. It logs trips by country and by US state, and counts the days against rules like the Schengen 90/180 rule, 183-day tax-residency tests and the US Substantial Presence Test. Planned trips are counted too, so a tracker shows before departure whether a trip still fits.
 
-Trips can be added by hand, imported from Photos, Flighty or a spreadsheet, or added automatically when AtlasDays detects a country change. Older visits can be recorded with just a year or without dates, keeping incomplete history separate from exact day counts.
+Trips can be added by hand, imported from Photos, Flighty, Google Timeline or a spreadsheet, or added automatically when AtlasDays detects a country change. Older visits can be recorded with just a year or without dates, keeping incomplete history separate from exact day counts.
 
 AtlasDays has no account and no ads. Travel records stay on the device, with optional sync through the user's own iCloud. It is made by Jorick van Meijeren, an independent developer in Tbilisi.
 
@@ -51,6 +51,8 @@ AtlasDays has no account and no ads. Travel records stay on the device, with opt
 - **Auto-Detect.** With location access, AtlasDays adds trips when it detects a country change. Every trip can be edited or deleted afterwards.
 
 - **A record for paperwork.** Spreadsheet and PDF exports of the trip history, for visa applications and tax filings.
+
+- **Statistics.** Days per country, days abroad by year, countries and continents visited, and border crossings, for all time or a single year.
 
 - **The map and the globe.** Every country visited, on a world map and a 3D globe.
 
