@@ -1,13 +1,57 @@
-.country-checklist { margin: 32px 0; padding: 24px; border: 1px solid var(--line); border-radius: 16px; background: var(--bg-card); }
+.country-checklist { --cal-bar: #5B9ED9; margin: 32px 0; }
 .country-checklist > h2 { margin-top: 0; }
-.country-checklist-count { display: block; margin: 16px 0; font-weight: 650; font-size: 1.12rem; color: var(--text); }
-.country-checklist-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); max-height: 340px; overflow-y: auto; overscroll-behavior-y: contain; border: 1px solid var(--line); border-radius: 12px; }
-.country-checklist-option { display: flex; align-items: center; gap: 10px; min-height: 44px; padding: 8px 12px; color: var(--text); cursor: pointer; line-height: 1.4; }
-.country-checklist-option span { min-width: 0; overflow-wrap: anywhere; }
-.country-checklist-option input { width: 18px; height: 18px; margin: 0; flex: 0 0 18px; accent-color: var(--blue); }
-.country-checklist-option:focus-within { outline: 2px solid var(--blue); outline-offset: -2px; border-radius: 4px; }
-.country-checklist-option:has(input:checked) { background: var(--blue-soft); }
-.country-checklist-result { margin-top: 20px; }
+.country-checklist .cal-hint { margin: 0; }
+.country-checklist-count { display: block; margin: 14px 0; font-variant-numeric: tabular-nums; }
+.country-checklist-search { display: flex; align-items: center; gap: 8px; margin: 0 0 14px; padding: 8px 10px; border: 1px solid var(--line); border-radius: 10px; }
+.country-checklist-search svg { width: 18px; height: 18px; flex: 0 0 auto; color: var(--blue); }
+.country-checklist-search .cal-country-input { min-width: 0; margin: 0; padding: 2px 0; font-size: 16px; font-weight: 500; }
+.country-checklist-search:focus-within { outline: 2px solid var(--blue); outline-offset: 2px; }
+.country-checklist-search .cal-country-input:focus { outline: none; border-color: transparent; background: transparent; }
+.country-checklist-filters { margin-bottom: 12px; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.country-checklist-filters .cal-setting { min-height: 44px; }
+.country-checklist-filters .cal-control { max-width: 65%; }
+.country-checklist-filters .cal-value { white-space: normal; text-align: right; }
+.country-checklist-toggle { display: flex; align-items: center; justify-content: space-between; gap: 16px; width: 100%; min-height: 48px; padding: 9px 0; border: 0; background: transparent; color: var(--text); font: inherit; font-size: 0.95rem; text-align: left; cursor: pointer; }
+.country-checklist-switch { flex: 0 0 auto; width: 34px; height: 20px; padding: 2px; box-sizing: border-box; border-radius: 999px; background: var(--line-strong); }
+.country-checklist-switch::after { content: ""; display: block; width: 16px; height: 16px; border-radius: 50%; background: var(--text); }
+.country-checklist-toggle[aria-checked="true"] .country-checklist-switch { background: var(--blue); }
+.country-checklist-toggle[aria-checked="true"] .country-checklist-switch::after { transform: translateX(14px); background: #fff; }
+.country-checklist-toggle:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-radius: 4px; }
+.country-checklist-options { max-height: 336px; overflow-y: auto; overscroll-behavior-y: contain; scrollbar-gutter: stable; }
+.country-checklist-option { display: flex; align-items: center; gap: 12px; width: 100%; min-width: 0; min-height: 48px; padding: 10px 8px; border: 0; border-bottom: 1px solid var(--line); border-radius: 0; background: transparent; color: var(--text); font: inherit; font-size: 0.95rem; line-height: 1.4; text-align: left; cursor: pointer; }
+.country-checklist-name { flex: 1; min-width: 0; overflow-wrap: anywhere; }
+.country-checklist-option .cal-flag { flex: 0 0 auto; }
+.country-checklist-selected { flex: 0 0 auto; width: 20px; height: 20px; color: var(--blue); opacity: 0; }
+.country-checklist-option[aria-pressed="true"] { background: var(--blue-soft); }
+.country-checklist-option[aria-pressed="true"] .country-checklist-selected { opacity: 1; }
+.country-checklist-option:focus-visible { outline: 2px solid var(--blue); outline-offset: -2px; }
+@media (hover: hover) and (pointer: fine) { .country-checklist-option:hover { background: var(--blue-soft); } }
+.country-checklist-option[hidden] { display: none; }
+.country-checklist-result { margin-top: 18px; }
+.country-checklist-result p { margin: 4px 0 0; color: var(--muted); font-size: 0.9rem; }
+.country-checklist-track { min-height: 44px; }
+.country-checklist-track:disabled { opacity: 0.5; cursor: default; }
 .country-checklist-cta { padding: 20px 0 0; margin-top: 20px; border: 0; border-top: 1px solid var(--line); border-radius: 0; background: transparent; }
 .cta-box .cta-micro { margin: 14px 0 0; color: var(--muted); font-size: 0.88rem; }
-@media (max-width: 520px) { .country-checklist { padding: 18px; } .country-checklist-options { grid-template-columns: minmax(0, 1fr); } }
+.country-checklist .cal-qr.is-large { width: 376px; }
+
+.country-checklist .country-checklist-filters select[hidden] { display: none; }
+.country-checklist-continent-open { padding: 3px 0; border: 0; background: transparent; font: inherit; font-weight: 600; cursor: pointer; }
+.country-checklist-continent-menu { position: absolute; right: 0; z-index: 30; min-width: 200px; max-width: calc(100vw - 64px); padding: 6px; overflow-y: auto; border: 1px solid var(--line-strong); border-radius: 12px; background: var(--bg-card); color: var(--text); box-shadow: var(--shadow); }
+.country-checklist-continent-menu[hidden] { display: none; }
+.country-checklist-continent-menu .cal-country-option { width: 100%; min-height: 40px; border: 0; background: transparent; color: inherit; font-family: inherit; text-align: left; }
+.country-checklist-continent-menu .cal-country-option:hover { background: var(--blue-soft); }
+.country-checklist-continent-menu [aria-selected="true"], .country-checklist-continent-menu .cal-country-option:focus-visible { background: var(--blue-soft); outline: 2px solid var(--blue); outline-offset: -2px; }
+.country-checklist-continent-menu .cal-country-option:disabled { opacity: 0.45; cursor: default; }
+.country-checklist-map { --map-land: #4E4E4E; --map-border: #151515; margin: 8px 0 16px; }
+.country-checklist-map[hidden] { display: none; }
+.country-checklist-world { display: block; width: 100%; height: auto; max-height: 300px; overflow: visible; }
+.country-checklist-world .land { fill: var(--map-land) !important; stroke: var(--map-border) !important; stroke-width: 1; stroke-opacity: 0.5; transition: fill 180ms ease; }
+.country-checklist-world .land.is-visited { fill: var(--brand) !important; }
+.country-checklist-map-dot { display: none; fill: var(--brand); stroke: var(--map-border); stroke-width: 0.3; }
+.country-checklist-map-dot.is-visited { display: initial; }
+.country-checklist-map-credit { margin: 4px 0 0; color: var(--muted-2); font-size: 0.65rem; text-align: right; }
+.country-checklist-map-credit a { color: inherit; }
+html[data-theme="light"] .country-checklist-map { --map-land: #E6E6E6; --map-border: #8B949F; }
+html[data-theme="light"] .country-checklist-world .land { stroke-opacity: 0.4; }
+@media (prefers-reduced-motion: reduce) { .country-checklist-world .land { transition: none; } }

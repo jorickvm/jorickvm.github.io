@@ -97,7 +97,7 @@ def cluster_for(slug: str, category: str) -> tuple[str, str]:
         return "travel-history-and-proof", "learn/travel-history-for-visa-applications.html"
     if category == "product-workflow":
         return "product-and-import-workflows", "learn/how-to-use-atlasdays.html"
-    if any(marker in slug for marker in ("country", "countries", "layover", "track-travel", "what-counts")):
+    if any(marker in slug for marker in ("country", "countries", "layover", "track-travel", "what-counts", "calendar-year-vs-rolling")):
         return "day-counting-and-country-models", "learn/how-to-track-travel-days.html"
     # A cluster pillar must be an article the related-links renderer can title
     # and link, so the general stay-limit explainer is the default pillar.

@@ -177,6 +177,7 @@ These pages describe something scheduled to change. The tier cadence would revie
 | 2027-11-12 | 2 | [learn/arizona-tax-residency.html](/learn/arizona-tax-residency) | exact-date-required | 1 |
 | 2027-11-12 | 2 | [learn/armenia-183-day-tax-residency.html](/learn/armenia-183-day-tax-residency) | exact-date-required | 2 |
 | 2027-11-12 | 2 | [learn/australia-183-day-tax-residency.html](/learn/australia-183-day-tax-residency) | exact-date-required | 2 |
+| 2027-11-12 | 3 | [learn/calendar-year-vs-rolling-12-months.html](/learn/calendar-year-vs-rolling-12-months) | annual-light-pass | 1 |
 | 2027-11-12 | 2 | [learn/california-tax-residency.html](/learn/california-tax-residency) | exact-date-required | 1 |
 | 2027-11-12 | 2 | [learn/canada-183-day-tax-residency.html](/learn/canada-183-day-tax-residency) | exact-date-required | 2 |
 | 2027-11-12 | 2 | [learn/colombia-183-day-tax-residency.html](/learn/colombia-183-day-tax-residency) | exact-date-required | 3 |
@@ -204,6 +205,8 @@ These pages describe something scheduled to change. The tier cadence would revie
 | 2027-11-12 | 2 | [learn/pennsylvania-tax-residency.html](/learn/pennsylvania-tax-residency) | exact-date-required | 2 |
 | 2027-11-12 | 2 | [learn/slovakia-183-day-tax-residency.html](/learn/slovakia-183-day-tax-residency) | exact-date-required | 2 |
 | 2027-11-12 | 2 | [learn/slovenia-183-day-tax-residency.html](/learn/slovenia-183-day-tax-residency) | exact-date-required | 2 |
+| 2027-11-12 | 3 | [learn/travel-history-from-booking-emails.html](/learn/travel-history-from-booking-emails) | annual-light-pass | 1 |
+| 2027-11-12 | 3 | [learn/travel-history-from-iphone-photos.html](/learn/travel-history-from-iphone-photos) | annual-light-pass | 2 |
 | 2027-11-17 | 2 | [learn/uk-srt-calculator.html](/learn/uk-srt-calculator) | exact-date-required | 4 |
 | 2027-11-30 | 2 | [learn/alabama-tax-residency.html](/learn/alabama-tax-residency) | exact-date-required | 1 |
 | 2027-11-30 | 2 | [learn/arkansas-tax-residency.html](/learn/arkansas-tax-residency) | exact-date-required | 1 |

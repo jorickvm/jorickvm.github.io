@@ -160,12 +160,16 @@ def product_page_presets(locale_code: str, product_pages: dict) -> str:
     tracker in the link against these, the same app preset prefixes
     product_page_ppid uses, in the same order, and takes the first match.
     """
-    return ",".join(
+    pairs = [
         f"{prefix}={page['ppid']}"
         for page in product_pages.get("pages", {}).values()
         if locale_code not in page.get("missing_locales", [])
         for prefix in page.get("app_preset_prefixes", [])
-    )
+    ]
+    travel = product_pages.get("pages", {}).get("travel-history")
+    if travel and locale_code not in travel.get("missing_locales", []):
+        pairs.append(f"countries={travel['ppid']}")
+    return ",".join(pairs)
 
 
 def linked_paths(text: str) -> set[str]:
@@ -1865,13 +1869,43 @@ def render_country_checklist(content: str, code: str) -> str:
         raise ValueError("The country checklist needs 195 distinct countries")
     names = data["names"][code]
     labels = []
-    for country in codes:
-        name = html.escape(names[country])
-        labels.append(
-            f'<label class="country-checklist-option"><input type="checkbox" value="{country}">'
-            f'<span>{name}</span></label>'
-        )
-    return content.replace(marker, "\n".join(labels))
+    for kind, group in (("country", codes), ("territory", data["territory_codes"]), ("other", data["other_codes"])):
+        for country in group:
+            name = html.escape(names[country])
+            continent = html.escape(data["continents"][country], quote=True)
+            hidden = ' hidden' if kind != "country" else ''
+            labels.append(
+                f'<button type="button" class="country-checklist-option" data-country-code="{country}" '
+                f'data-country-kind="{kind}" data-continent="{continent}" aria-pressed="false"{hidden}>'
+                f'<span class="cal-flag"><img src="/assets/flags/{country.lower()}.png" alt="" width="28" height="21" loading="lazy"></span>'
+                f'<span class="country-checklist-name">{name}</span>'
+                '<svg class="country-checklist-selected" aria-hidden="true" viewBox="0 0 20 20" fill="none" '
+                'stroke="currentColor" stroke-width="2"><path d="m4 10 4 4 8-8"/></svg></button>'
+            )
+    strings = data["ui"][code]
+    escape = lambda text: html.escape(text, quote=True)
+    continent_options = [f'<option value="all">{escape(strings["allContinents"])}</option>']
+    for continent, name in strings["continentNames"].items():
+        disabled = ' disabled' if continent == "antarctica" else ''
+        continent_options.append(f'<option value="{continent}"{disabled}>{escape(name)}</option>')
+    controls = (
+        '<div class="country-checklist-filters">'
+        f'<div class="cal-setting"><span class="cal-setting-label" id="country-continent-label">{escape(strings["continent"])}</span>'
+        '<span class="cal-control is-select"><button type="button" class="cal-value country-checklist-continent-open" '
+        'data-country-continent-open aria-haspopup="listbox" aria-expanded="false" aria-controls="country-continent-options" '
+        'aria-labelledby="country-continent-label country-continent-value">'
+        f'<span data-country-continent-value id="country-continent-value">{escape(strings["allContinents"])}</span>'
+        '<svg class="cal-chevron" aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m6 8 4 4 4-4"/></svg></button>'
+        f'<select data-country-continent aria-label="{escape(strings["continent"])}" hidden tabindex="-1">'
+        + ''.join(continent_options) + '</select>'
+        f'<div class="country-checklist-continent-menu" id="country-continent-options" data-country-continent-menu '
+        f'role="listbox" aria-label="{escape(strings["continent"])}" hidden></div></span></div>'
+        '<button type="button" role="switch" aria-checked="false" class="country-checklist-toggle" data-country-territories>'
+        f'<span>{escape(strings["showTerritories"])}</span><span class="country-checklist-switch" aria-hidden="true"></span></button></div>'
+        '<script type="application/json" data-country-strings>'
+        + json.dumps(strings, ensure_ascii=False).replace('<', '\u003c') + '</script>'
+    )
+    return content.replace(marker, "\n".join(labels)).replace("<!-- COUNTRY_CHECKLIST_FILTERS -->", controls)
 
 
 def render_article(

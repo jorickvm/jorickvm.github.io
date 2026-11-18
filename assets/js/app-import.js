@@ -54,20 +54,30 @@
   }
 
   function fields() {
-    var q = {};
-    frag.split("&").forEach(function (pair) { var i = pair.indexOf("="); if (i > 0) q[pair.slice(0, i)] = pair.slice(i + 1); });
+    var q = Object.create(null);
+    frag.split("&").forEach(function (pair) { var i = pair.indexOf("="); if (i > 0 && !Object.prototype.hasOwnProperty.call(q, pair.slice(0, i))) q[pair.slice(0, i)] = pair.slice(i + 1); });
     return q;
   }
 
   // Version 2 also takes a US state (US-CO) as a stay's place; the CSV
   // import reads that code in the Country column.
   function rows(q) {
-    if ((q.v !== "1" && q.v !== "2") || !q.b || !q.s) return [];
+    if (q.v === "3" && Object.prototype.hasOwnProperty.call(q, "u")) {
+      if (Object.prototype.hasOwnProperty.call(q, "b") || Object.prototype.hasOwnProperty.call(q, "s")) return [];
+      if (frag.length > 16 * 1024) return [];
+      var countries;
+      try { countries = decodeURIComponent(q.u).split(","); } catch (e) { return []; }
+      if (!countries.length || countries.length > 500 || countries.some(function (code) { return !/^[A-Z]{2}$/.test(code); })) return [];
+      var visitNote = "";
+      try { visitNote = decodeURIComponent(q.n || "").replace(/[\r\n]/g, " ").trim().slice(0, 100); } catch (e) {}
+      return countries.filter(function (code, index) { return countries.indexOf(code) === index; }).map(function (code) { return [code, "", "", visitNote]; });
+    }
+    if ((q.v !== "1" && q.v !== "2" && q.v !== "3") || !q.b || !q.s) return [];
     var b = Date.parse(q.b + "T00:00:00Z");
     if (isNaN(b)) return [];
     var note = "";
     try { note = decodeURIComponent(q.n || ""); } catch (e) {}
-    var place = q.v === "2" ? /^(?:[A-Z]{2}|US-[A-Z]{2})$/ : /^[A-Z]{2}$/;
+    var place = q.v !== "1" ? /^(?:[A-Z]{2}|US-[A-Z]{2})$/ : /^[A-Z]{2}$/;
     var day = function (offset) { return new Date(b + offset * 86400000).toISOString().slice(0, 10); };
     return q.s.split(",").map(function (stay) {
       var f = stay.split(":"), start = +f[1];
@@ -96,11 +106,11 @@
     var main = document.querySelector("[data-app-import]");
     if (!main) return;
     var q = fields(), list = rows(q), id = preset(q);
-    var usable = list.length > 0 || (q.v === "2" && !!id);
+    var usable = list.length > 0 || ((q.v === "2" || (q.v === "3" && !Object.prototype.hasOwnProperty.call(q, "u"))) && !!id);
     main.querySelector("[data-app-import-ready]").hidden = !usable;
     main.querySelector("[data-app-import-empty]").hidden = usable;
     if (!usable) return;
-    var page = productPage(id);
+    var page = productPage(id) || (q.v === "3" && q.u ? productPage("countries") : "");
     if (page) main.querySelectorAll('a[href^="https://apps.apple.com/"]').forEach(function (a) { a.href += "&ppid=" + page; });
     main.querySelectorAll("[data-app-import-open]").forEach(function (a) { a.href = "https://go.atlasdays.app/import/#" + frag; });
     if (!list.length) {
