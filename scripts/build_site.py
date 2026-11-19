@@ -405,6 +405,7 @@ RELATED_LIMIT = 6
 REGIONS_PATH = SOURCE_ROOT / "data" / "regions.json"
 EDITORIAL_DATA_PATH = SOURCE_ROOT / "data" / "editorial.json"
 CALCULATOR_PAGES = (
+    "learn/day-count-calculator.html",
     "learn/183-day-rule-calculator.html",
     "learn/schengen-calculator.html",
     "learn/uk-ilr-absence-calculator.html",
