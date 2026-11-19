@@ -411,7 +411,6 @@ CALCULATOR_PAGES = (
     "learn/substantial-presence-test-calculator.html",
     "learn/uk-srt-calculator.html",
     "learn/us-feie-calculator.html",
-    "learn/visa-deadline-calculator.html",
     "learn/turkiye-90-180-calculator.html",
     "learn/new-zealand-citizenship-calculator.html",
     "learn/uk-citizenship-absence-calculator.html",
@@ -1658,7 +1657,7 @@ def mark_calculator_callout(content: str, article: dict[str, object]) -> str:
     """
     if article.get("section") != "learn":
         return content
-    pattern = re.compile(r'<p>(?=(?:(?!</p>).)*href="(?:/[A-Za-z-]+)?/learn/(?:183-day-rule|schengen|uk-ilr-absence|substantial-presence-test|uk-srt|us-feie|turkiye-90-180|new-zealand-citizenship|uk-citizenship-absence|visa-deadline)-calculator[?"])', re.S)
+    pattern = re.compile(r'<p>(?=(?:(?!</p>).)*href="(?:/[A-Za-z-]+)?/learn/(?:183-day-rule|schengen|uk-ilr-absence|substantial-presence-test|uk-srt|us-feie|turkiye-90-180|new-zealand-citizenship|uk-citizenship-absence)-calculator[?"])', re.S)
     return pattern.sub('<p class="calc-callout">', content, count=1)
 
 
