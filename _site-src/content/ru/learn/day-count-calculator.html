@@ -1,0 +1,185 @@
+    <nav class="breadcrumb"><a href="/ru/">AtlasDays</a> / <a href="/ru/learn/">Правила поездок</a> / <a href="/ru/learn/calculators">Калькуляторы</a></nav>
+    <h1>Калькулятор дней: страны, штаты и личные цели</h1>
+    <p class="subtitle">Считайте дни в любой стране или штате США. Начните без лимита или задайте собственный личный предел либо цель.</p>
+    <p class="verified">Последняя проверка: 19 ноября 2026</p>
+    <h2 id="calculator">Подсчитайте свои дни</h2>
+    <p>Выберите место и период, затем добавьте пребывания. Дни приезда и отъезда считаются; пересекающиеся даты в одном месте учитываются один раз. Итоги включают введённые будущие пребывания.</p>
+<div class="daycal" id="day-count" data-day-calendar="dayCount">
+      <script type="application/json" data-cal-strings>
+{
+  "days": "Дни",
+  "hintStart": "Нажмите на день, чтобы добавить поездку.",
+  "hintEnd": "Теперь нажмите на другой край поездки.",
+  "hintSelected": "Перетащите любой край поездки, чтобы изменить даты, или удалите её ниже.",
+  "inTrip": "в стране",
+  "pending": "начало новой поездки",
+  "empty": "Поездок пока нет.",
+  "deleteTrip": "Удалить поездку",
+  "country": "Страна",
+  "goal": "Цель",
+  "goalStay": "Не превышать",
+  "goalReach": "Достичь цели",
+  "captionStay": "Использовать свой личный лимит.",
+  "captionReach": "Достичь своей цели.",
+  "window": "Период",
+  "addCountry": "Добавить страну",
+  "noMatch": "Страна не найдена",
+  "periodCalendar": "Календарный год",
+  "periodTax": "Свой год",
+  "periodRolling": "Последние 12 месяцев",
+  "year": "Год",
+  "starts": "Начало",
+  "checkOn": "Считать до",
+  "checkOnCaption": "Ваши дни за 12 месяцев до этой даты. Для запланированной поездки выберите её последний день.",
+  "tripDays": {
+    "one": "{n} день",
+    "few": "{n} дня",
+    "many": "{n} дней",
+    "other": "{n} дня"
+  },
+  "remaining": {
+    "one": "Остался {n} день",
+    "few": "Осталось {n} дня",
+    "many": "Осталось {n} дней",
+    "other": "Осталось {n} дня"
+  },
+  "atLimit": "Лимит достигнут",
+  "needed": {
+    "one": "Нужен ещё {n} день",
+    "few": "Нужно ещё {n} дня",
+    "many": "Нужно ещё {n} дней",
+    "other": "Нужно ещё {n} дня"
+  },
+  "reachedTarget": "Цель достигнута",
+  "overBy": {
+    "one": "Лимит превышен на {n} день",
+    "few": "Лимит превышен на {n} дня",
+    "many": "Лимит превышен на {n} дней",
+    "other": "Лимит превышен на {n} дня"
+  },
+  "lineNoCountry": {
+    "one": "{n} день без указанной страны",
+    "few": "{n} дня без указанной страны",
+    "many": "{n} дней без указанной страны",
+    "other": "{n} дня без указанной страны"
+  },
+  "jurisdiction": "Страна или штат США",
+  "addJurisdiction": "Добавить страну или штат США",
+  "noJurisdictionMatch": "Подходящая страна или штат США не найдены",
+  "stateUSAL": "Алабама (США)",
+  "stateUSAK": "Аляска (США)",
+  "stateUSAZ": "Аризона (США)",
+  "stateUSAR": "Арканзас (США)",
+  "stateUSCA": "Калифорния (США)",
+  "stateUSCO": "Колорадо (США)",
+  "stateUSCT": "Коннектикут (США)",
+  "stateUSDE": "Делавэр (США)",
+  "stateUSDC": "Округ Колумбия (США)",
+  "stateUSFL": "Флорида (США)",
+  "stateUSGA": "Джорджия (США)",
+  "stateUSHI": "Гавайи (США)",
+  "stateUSID": "Айдахо (США)",
+  "stateUSIL": "Иллинойс (США)",
+  "stateUSIN": "Индиана (США)",
+  "stateUSIA": "Айова (США)",
+  "stateUSKS": "Канзас (США)",
+  "stateUSKY": "Кентукки (США)",
+  "stateUSLA": "Луизиана (США)",
+  "stateUSME": "Мэн (США)",
+  "stateUSMD": "Мэриленд (США)",
+  "stateUSMA": "Массачусетс (США)",
+  "stateUSMI": "Мичиган (США)",
+  "stateUSMN": "Миннесота (США)",
+  "stateUSMS": "Миссисипи (США)",
+  "stateUSMO": "Миссури (США)",
+  "stateUSMT": "Монтана (США)",
+  "stateUSNE": "Небраска (США)",
+  "stateUSNV": "Невада (США)",
+  "stateUSNH": "Нью-Гэмпшир (США)",
+  "stateUSNJ": "Нью-Джерси (США)",
+  "stateUSNM": "Нью-Мексико (США)",
+  "stateUSNY": "Нью-Йорк (США)",
+  "stateUSNC": "Северная Каролина (США)",
+  "stateUSND": "Северная Дакота (США)",
+  "stateUSOH": "Огайо (США)",
+  "stateUSOK": "Оклахома (США)",
+  "stateUSOR": "Орегон (США)",
+  "stateUSPA": "Пенсильвания (США)",
+  "stateUSRI": "Род-Айленд (США)",
+  "stateUSSC": "Южная Каролина (США)",
+  "stateUSSD": "Южная Дакота (США)",
+  "stateUSTN": "Теннесси (США)",
+  "stateUSTX": "Техас (США)",
+  "stateUSUT": "Юта (США)",
+  "stateUSVT": "Вермонт (США)",
+  "stateUSVA": "Виргиния (США)",
+  "stateUSWA": "Вашингтон (США)",
+  "stateUSWV": "Западная Виргиния (США)",
+  "stateUSWI": "Висконсин (США)",
+  "stateUSWY": "Вайоминг (США)",
+  "goalCount": "Считать дни",
+  "captionCount": "Вести учёт без лимита.",
+  "personalDays": "Личная цель в днях",
+  "enterPersonalDays": "Введите свой лимит или цель в днях. Разрешённый законом срок не предполагается."
+}
+</script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>П</span><span>В</span><span>С</span><span>Ч</span><span>П</span><span>С</span><span>В</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>Хронология</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Экспортировать или открыть в AtlasDays</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="day-count-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="day-count-import-title"><span data-cal-on="computer">Продолжите на iPhone или iPad</span><span data-cal-on="phone file">Экспортировать или открыть в AtlasDays</span></p>
+            <p class="cal-dialog-sub">Продолжайте считать дни в поездках. Скачайте AtlasDays бесплатно.</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <div class="cal-scan-copy">
+            <p class="cal-scan-lead" data-cal-both>Отсканируйте код, чтобы открыть поездки и трекер в AtlasDays.</p>
+            <p class="cal-scan-lead" data-cal-trips-only hidden>Отсканируйте код, чтобы открыть поездки в AtlasDays.</p>
+            <p class="cal-scan-lead" data-cal-tracker hidden>Отсканируйте код, чтобы открыть трекер в AtlasDays.</p>
+          </div>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li><strong data-cal-stays>Откройте поездки в приложении</strong><span data-cal-stays>Проверьте их и нажмите «Импортировать». До этого ничего не сохраняется.</span><strong data-cal-tracker hidden>Откройте этот трекер в приложении</strong><span data-cal-tracker hidden>Проверьте его и нажмите «Сохранить». До этого ничего не сохраняется.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Открыть в AtlasDays</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li><strong>Скачать поездки в файле CSV</strong><span>Столько поездок не поместится в ссылку. Скачайте файл и откройте его в AtlasDays на iPhone.</span><button type="button" class="cal-dialog-primary" data-cal-download>Скачать файл</button></li>
+          <li data-cal-store><strong>Скачайте AtlasDays</strong><span>Бесплатно в App Store для iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Скачать поездки в файле CSV</button><span data-cal-downloaded hidden>Откройте этот файл в AtlasDays на iPhone.</span></p>
+          <button type="button" data-cal-close>Закрыть</button>
+        </div>
+      </dialog>
+    </div>
+    <h2>Учёт дней без налогового вердикта</h2>
+    <p>Режим «Считать дни» начинается без лимита. Нет значения 183 дня по умолчанию, процента выполнения или статуса «безопасно/небезопасно». Число — просто итог для выбранного места и периода. День посещения двух стран учитывается в обеих, поэтому сумма по странам может превышать количество дат в календаре.</p>
+    <h2>Используйте личный предел или цель</h2>
+    <p>Выберите «Не превышать» или «Достичь цели» и введите своё число. Например, личный предел 30 дней поможет спланировать лето вдали от дома. Цель 60 дней поможет проводить больше времени рядом с семьёй. Ни одно число не становится юридическим порогом из-за появления в калькуляторе.</p>
+    <h2>Выберите период под свой вопрос</h2>
+    <ul><li><strong>Календарный год:</strong> подсчитайте выбранный год с 1 января по 31 декабря.</li><li><strong>Свой год:</strong> выберите дату начала годового периода.</li><li><strong>Последние 12 месяцев:</strong> выберите конечную дату подсчёта. Окно движется вместе с ней и использует календарные месяцы, а не фиксированное приближение в 365 дней.</li></ul>
+    <h2>Пример расчёта</h2>
+    <p>Пребывание с 1 по 10 июня даёт 10 дней. Другое пребывание с 8 по 12 июня в той же стране добавляет лишь 2 новых дня: всего 12. Если 12 июня вы покинете эту страну и приедете в другую, дата может оказаться в записях обеих стран.</p>
+    <h2>Сохраните записи</h2>
+    <p>Скачайте пребывания в CSV или продолжите с ними в AtlasDays. Передаются пребывания, а не личная цель этого калькулятора. Введённые даты остаются в браузере, пока вы не решите их экспортировать или передать, и стираются при перезагрузке.</p>
+    <h2>Частые вопросы</h2>
+    <h3>Определяет ли это налоговое резидентство?</h3><p>Нет. Инструмент считает даты физического присутствия и необязательные личные цели. Он не применяет налоговые, визовые или резидентские правила отдельных стран.</p>
+    <h3>Учитываются ли приезд и отъезд?</h3><p>Да. Обе даты считаются. Посещение одним днём даёт один день, а пересекающиеся даты в одном месте не дублируются.</p>
+    <h3>Можно ли по-прежнему использовать калькулятор 183 дней?</h3><p>Да. <a href="/ru/learn/183-day-rule-calculator">Калькулятор 183 дней</a> доступен отдельно. Изучите руководство нужной страны, чтобы понять, применяются ли этот порог и способ подсчёта.</p>

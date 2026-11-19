@@ -1,0 +1,180 @@
+    <nav class="breadcrumb"><a href="/fr/">AtlasDays</a> / <a href="/fr/learn/">Règles de voyage</a> / <a href="/fr/learn/calculators">Calculateurs</a></nav>
+    <h1>Calculateur de jours : pays, États et objectifs personnels</h1>
+    <p class="subtitle">Comptez vos jours dans n’importe quel pays ou État américain. Commencez sans limite ou définissez votre propre plafond ou objectif personnel.</p>
+    <p class="verified">Dernière vérification : 19 novembre 2026</p>
+    <h2 id="calculator">Comptez vos jours</h2>
+    <p>Choisissez un lieu et une période, puis ajoutez vos séjours. L’arrivée et le départ comptent ; les dates qui se chevauchent au même endroit comptent une fois. Les totaux incluent les séjours futurs saisis.</p>
+<div class="daycal" id="day-count" data-day-calendar="dayCount">
+      <script type="application/json" data-cal-strings>
+{
+  "days": "Jours",
+  "hintStart": "Touchez un jour pour ajouter un séjour.",
+  "hintEnd": "Touchez maintenant l’autre extrémité du séjour.",
+  "hintSelected": "Faites glisser l’une des extrémités du séjour pour modifier ses dates, ou supprimez-le ci-dessous.",
+  "inTrip": "dans un pays",
+  "pending": "début d’un nouveau séjour",
+  "empty": "Aucun séjour pour l’instant.",
+  "deleteTrip": "Supprimer le séjour",
+  "country": "Pays",
+  "goal": "Objectif",
+  "goalStay": "Rester en dessous",
+  "goalReach": "Atteindre l’objectif",
+  "captionStay": "Fixez votre propre plafond.",
+  "captionReach": "Avancez vers votre propre objectif.",
+  "window": "Fenêtre",
+  "addCountry": "Ajouter un pays",
+  "noMatch": "Aucun pays correspondant",
+  "periodCalendar": "Année civile",
+  "periodTax": "Année personnalisée",
+  "periodRolling": "12 derniers mois",
+  "year": "Année",
+  "starts": "Début",
+  "checkOn": "Compter jusqu’au",
+  "checkOnCaption": "Vos jours sur les 12 mois qui mènent à cette date. Pour un voyage prévu, choisissez son dernier jour.",
+  "tripDays": {
+    "one": "{n} jour",
+    "many": "{n} jours",
+    "other": "{n} jours"
+  },
+  "remaining": {
+    "one": "Encore {n} jour",
+    "many": "Encore {n} jours",
+    "other": "Encore {n} jours"
+  },
+  "atLimit": "Limite atteinte",
+  "needed": {
+    "one": "Encore {n} jour nécessaire",
+    "many": "Encore {n} jours nécessaires",
+    "other": "Encore {n} jours nécessaires"
+  },
+  "reachedTarget": "Objectif atteint",
+  "overBy": {
+    "one": "Dépassement de {n} jour",
+    "many": "Dépassement de {n} jours",
+    "other": "Dépassement de {n} jours"
+  },
+  "lineNoCountry": {
+    "one": "{n} jour sans pays",
+    "many": "{n} jours sans pays",
+    "other": "{n} jours sans pays"
+  },
+  "jurisdiction": "Pays ou État américain",
+  "addJurisdiction": "Ajouter un pays ou un État américain",
+  "noJurisdictionMatch": "Aucun pays ni État américain correspondant",
+  "stateUSAL": "Alabama (États-Unis)",
+  "stateUSAK": "Alaska (États-Unis)",
+  "stateUSAZ": "Arizona (États-Unis)",
+  "stateUSAR": "Arkansas (États-Unis)",
+  "stateUSCA": "Californie (États-Unis)",
+  "stateUSCO": "Colorado (États-Unis)",
+  "stateUSCT": "Connecticut (États-Unis)",
+  "stateUSDE": "Delaware (États-Unis)",
+  "stateUSDC": "District de Columbia (États-Unis)",
+  "stateUSFL": "Floride (États-Unis)",
+  "stateUSGA": "Géorgie (États-Unis)",
+  "stateUSHI": "Hawaï (États-Unis)",
+  "stateUSID": "Idaho (États-Unis)",
+  "stateUSIL": "Illinois (États-Unis)",
+  "stateUSIN": "Indiana (États-Unis)",
+  "stateUSIA": "Iowa (États-Unis)",
+  "stateUSKS": "Kansas (États-Unis)",
+  "stateUSKY": "Kentucky (États-Unis)",
+  "stateUSLA": "Louisiane (États-Unis)",
+  "stateUSME": "Maine (États-Unis)",
+  "stateUSMD": "Maryland (États-Unis)",
+  "stateUSMA": "Massachusetts (États-Unis)",
+  "stateUSMI": "Michigan (États-Unis)",
+  "stateUSMN": "Minnesota (États-Unis)",
+  "stateUSMS": "Mississippi (États-Unis)",
+  "stateUSMO": "Missouri (États-Unis)",
+  "stateUSMT": "Montana (États-Unis)",
+  "stateUSNE": "Nebraska (États-Unis)",
+  "stateUSNV": "Nevada (États-Unis)",
+  "stateUSNH": "New Hampshire (États-Unis)",
+  "stateUSNJ": "New Jersey (États-Unis)",
+  "stateUSNM": "Nouveau-Mexique (États-Unis)",
+  "stateUSNY": "New York (États-Unis)",
+  "stateUSNC": "Caroline du Nord (États-Unis)",
+  "stateUSND": "Dakota du Nord (États-Unis)",
+  "stateUSOH": "Ohio (États-Unis)",
+  "stateUSOK": "Oklahoma (États-Unis)",
+  "stateUSOR": "Oregon (États-Unis)",
+  "stateUSPA": "Pennsylvanie (États-Unis)",
+  "stateUSRI": "Rhode Island (États-Unis)",
+  "stateUSSC": "Caroline du Sud (États-Unis)",
+  "stateUSSD": "Dakota du Sud (États-Unis)",
+  "stateUSTN": "Tennessee (États-Unis)",
+  "stateUSTX": "Texas (États-Unis)",
+  "stateUSUT": "Utah (États-Unis)",
+  "stateUSVT": "Vermont (États-Unis)",
+  "stateUSVA": "Virginie (États-Unis)",
+  "stateUSWA": "Washington (États-Unis)",
+  "stateUSWV": "Virginie-Occidentale (États-Unis)",
+  "stateUSWI": "Wisconsin (États-Unis)",
+  "stateUSWY": "Wyoming (États-Unis)",
+  "goalCount": "Compter les jours",
+  "captionCount": "Gardez un relevé sans limite.",
+  "personalDays": "Objectif personnel en jours",
+  "enterPersonalDays": "Saisissez votre propre limite ou objectif de jours. Aucune durée légale n’est présumée."
+}
+</script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>L</span><span>M</span><span>M</span><span>J</span><span>V</span><span>S</span><span>D</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>Chronologie</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Exporter ou ouvrir dans AtlasDays</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="day-count-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="day-count-import-title"><span data-cal-on="computer">Continuez sur votre iPhone ou iPad</span><span data-cal-on="phone file">Exporter ou ouvrir dans AtlasDays</span></p>
+            <p class="cal-dialog-sub">Continuez à compter vos jours en voyage. Téléchargez AtlasDays gratuitement.</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <div class="cal-scan-copy">
+            <p class="cal-scan-lead" data-cal-both>Scannez le code pour ouvrir vos voyages et votre suivi dans AtlasDays.</p>
+            <p class="cal-scan-lead" data-cal-trips-only hidden>Scannez le code pour ouvrir vos voyages dans AtlasDays.</p>
+            <p class="cal-scan-lead" data-cal-tracker hidden>Scannez le code pour ouvrir votre suivi dans AtlasDays.</p>
+          </div>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li><strong data-cal-stays>Ouvrez vos séjours dans l’app</strong><span data-cal-stays>Vérifiez-les, puis touchez « Importer ». Rien n’est enregistré avant.</span><strong data-cal-tracker hidden>Ouvrez ce suivi dans l’app</strong><span data-cal-tracker hidden>Vérifiez-le, puis touchez « Enregistrer ». Rien n’est enregistré avant.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Ouvrir dans AtlasDays</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li><strong>Télécharger les voyages au format CSV</strong><span>Il y a trop de séjours pour qu’un lien puisse tous les transmettre. Téléchargez le fichier et ouvrez-le sur votre iPhone avec AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Télécharger le fichier</button></li>
+          <li data-cal-store><strong>Téléchargez AtlasDays</strong><span>Gratuit sur l’App Store, pour iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Télécharger les voyages au format CSV</button><span data-cal-downloaded hidden>Ouvrez ce fichier sur votre iPhone avec AtlasDays.</span></p>
+          <button type="button" data-cal-close>Fermer</button>
+        </div>
+      </dialog>
+    </div>
+    <h2>Un relevé de jours sans verdict fiscal</h2>
+    <p>Compter les jours démarre sans limite. Il n’y a ni valeur de 183 jours par défaut, ni pourcentage de progression, ni statut de sécurité fiscale. Le nombre est simplement le total du lieu et de la période choisis. Une journée passée dans deux pays compte dans chacun : la somme des pays peut donc dépasser le nombre de dates du calendrier.</p>
+    <h2>Utilisez un plafond ou un objectif personnel</h2>
+    <p>Choisissez Rester en dessous ou Atteindre l’objectif et saisissez votre nombre. Un plafond personnel de 30 jours peut, par exemple, aider à organiser un été loin de chez vous. Un objectif de 60 jours peut vous aider à passer davantage de temps près de votre famille. Aucun ne devient un seuil légal parce qu’il figure dans un calculateur.</p>
+    <h2>Choisissez la période qui répond à votre question</h2>
+    <ul><li><strong>Année civile :</strong> faites le total de l’année choisie, du 1er janvier au 31 décembre.</li><li><strong>Année personnalisée :</strong> choisissez le début d’une période d’un an.</li><li><strong>Les 12 derniers mois :</strong> choisissez la date jusqu’à laquelle compter. La fenêtre se déplace avec elle et utilise des mois civils, pas une approximation fixe de 365 jours.</li></ul>
+    <h2>Un exemple détaillé</h2>
+    <p>Un séjour du 1er au 10 juin représente 10 jours. Un autre du 8 au 12 juin dans le même pays n’ajoute que 2 nouveaux jours, soit 12 au total. Si vous quittez ce pays et arrivez dans un autre le 12 juin, cette date peut figurer dans les relevés des deux pays.</p>
+    <h2>Conservez le relevé</h2>
+    <p>Téléchargez les séjours en CSV ou poursuivez avec eux dans AtlasDays. Le transfert inclut les séjours, pas l’objectif personnel de ce calculateur. Les dates saisies restent dans le navigateur jusqu’à leur exportation ou leur transfert et sont effacées au rechargement.</p>
+    <h2>Questions fréquentes</h2>
+    <h3>Le calcul détermine-t-il la résidence fiscale ?</h3><p>Non. Il compte les dates de présence physique et les objectifs personnels facultatifs. Il n’applique pas les règles fiscales, de visa ou de résidence propres aux pays.</p>
+    <h3>L’arrivée et le départ sont-ils inclus ?</h3><p>Oui. Les deux dates comptent. Une visite dans la journée compte pour un jour, et les dates qui se chevauchent au même endroit ne sont pas doublées.</p>
+    <h3>Puis-je toujours utiliser le calculateur des 183 jours ?</h3><p>Oui. Le <a href="/fr/learn/183-day-rule-calculator">calculateur des 183 jours</a> reste disponible séparément. Consultez le guide du pays pour savoir si ce seuil et ce mode de décompte s’appliquent.</p>

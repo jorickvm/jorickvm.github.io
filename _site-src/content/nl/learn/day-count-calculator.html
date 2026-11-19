@@ -1,0 +1,175 @@
+    <nav class="breadcrumb"><a href="/nl/">AtlasDays</a> / <a href="/nl/learn/">Reisregels</a> / <a href="/nl/learn/calculators">Calculators</a></nav>
+    <h1>Dagenteller: landen, staten en persoonlijke doelen</h1>
+    <p class="subtitle">Tel je dagen in elk land of elke Amerikaanse staat. Begin zonder limiet of stel je eigen persoonlijke limiet of doel in.</p>
+    <p class="verified">Laatst gecontroleerd: 19 november 2026</p>
+    <h2 id="calculator">Tel je dagen</h2>
+    <p>Kies een plek en periode en voeg je verblijven toe. Aankomst- en vertrekdagen tellen mee; overlappende dagen op dezelfde plek tellen eenmaal. Totalen bevatten ook ingevoerde toekomstige verblijven.</p>
+<div class="daycal" id="day-count" data-day-calendar="dayCount">
+      <script type="application/json" data-cal-strings>
+{
+  "days": "Dagen",
+  "hintStart": "Tik op een dag om een verblijf toe te voegen.",
+  "hintEnd": "Tik nu op het andere uiteinde van het verblijf.",
+  "hintSelected": "Sleep een van beide uiteinden om de datums te wijzigen, of verwijder het verblijf hieronder.",
+  "inTrip": "in een land",
+  "pending": "begin van een nieuw verblijf",
+  "empty": "Nog geen verblijven.",
+  "deleteTrip": "Verwijder verblijf",
+  "country": "Land",
+  "goal": "Doelstelling",
+  "goalStay": "Onder limiet blijven",
+  "goalReach": "Doel bereiken",
+  "captionStay": "Gebruik je eigen persoonlijke limiet.",
+  "captionReach": "Werk naar je eigen doel toe.",
+  "window": "Periode",
+  "addCountry": "Voeg land toe",
+  "noMatch": "Geen land gevonden",
+  "periodCalendar": "Kalenderjaar",
+  "periodTax": "Zelf gekozen jaar",
+  "periodRolling": "Laatste 12 maanden",
+  "year": "Jaar",
+  "starts": "Start",
+  "checkOn": "Tel tot en met",
+  "checkOnCaption": "Je dagen in de 12 maanden tot en met deze datum. Kies voor een geplande reis de laatste dag ervan.",
+  "tripDays": {
+    "one": "{n} dag",
+    "other": "{n} dagen"
+  },
+  "remaining": {
+    "one": "{n} dag resterend",
+    "other": "{n} dagen resterend"
+  },
+  "atLimit": "Limiet bereikt",
+  "needed": {
+    "one": "Nog {n} dag nodig",
+    "other": "Nog {n} dagen nodig"
+  },
+  "reachedTarget": "Doel bereikt",
+  "overBy": {
+    "one": "{n} dag boven de limiet",
+    "other": "{n} dagen boven de limiet"
+  },
+  "lineNoCountry": {
+    "one": "{n} dag zonder land",
+    "other": "{n} dagen zonder land"
+  },
+  "jurisdiction": "Land of Amerikaanse staat",
+  "addJurisdiction": "Land of Amerikaanse staat toevoegen",
+  "noJurisdictionMatch": "Geen passend land of Amerikaanse staat gevonden",
+  "stateUSAL": "Alabama (VS)",
+  "stateUSAK": "Alaska (VS)",
+  "stateUSAZ": "Arizona (VS)",
+  "stateUSAR": "Arkansas (VS)",
+  "stateUSCA": "Californië (VS)",
+  "stateUSCO": "Colorado (VS)",
+  "stateUSCT": "Connecticut (VS)",
+  "stateUSDE": "Delaware (VS)",
+  "stateUSDC": "District of Columbia (VS)",
+  "stateUSFL": "Florida (VS)",
+  "stateUSGA": "Georgia (VS)",
+  "stateUSHI": "Hawaï (VS)",
+  "stateUSID": "Idaho (VS)",
+  "stateUSIL": "Illinois (VS)",
+  "stateUSIN": "Indiana (VS)",
+  "stateUSIA": "Iowa (VS)",
+  "stateUSKS": "Kansas (VS)",
+  "stateUSKY": "Kentucky (VS)",
+  "stateUSLA": "Louisiana (VS)",
+  "stateUSME": "Maine (VS)",
+  "stateUSMD": "Maryland (VS)",
+  "stateUSMA": "Massachusetts (VS)",
+  "stateUSMI": "Michigan (VS)",
+  "stateUSMN": "Minnesota (VS)",
+  "stateUSMS": "Mississippi (VS)",
+  "stateUSMO": "Missouri (VS)",
+  "stateUSMT": "Montana (VS)",
+  "stateUSNE": "Nebraska (VS)",
+  "stateUSNV": "Nevada (VS)",
+  "stateUSNH": "New Hampshire (VS)",
+  "stateUSNJ": "New Jersey (VS)",
+  "stateUSNM": "New Mexico (VS)",
+  "stateUSNY": "New York (VS)",
+  "stateUSNC": "North Carolina (VS)",
+  "stateUSND": "North Dakota (VS)",
+  "stateUSOH": "Ohio (VS)",
+  "stateUSOK": "Oklahoma (VS)",
+  "stateUSOR": "Oregon (VS)",
+  "stateUSPA": "Pennsylvania (VS)",
+  "stateUSRI": "Rhode Island (VS)",
+  "stateUSSC": "South Carolina (VS)",
+  "stateUSSD": "South Dakota (VS)",
+  "stateUSTN": "Tennessee (VS)",
+  "stateUSTX": "Texas (VS)",
+  "stateUSUT": "Utah (VS)",
+  "stateUSVT": "Vermont (VS)",
+  "stateUSVA": "Virginia (VS)",
+  "stateUSWA": "Washington (VS)",
+  "stateUSWV": "West Virginia (VS)",
+  "stateUSWI": "Wisconsin (VS)",
+  "stateUSWY": "Wyoming (VS)",
+  "goalCount": "Dagen tellen",
+  "captionCount": "Houd dagen bij zonder limiet.",
+  "personalDays": "Persoonlijk dagendoel",
+  "enterPersonalDays": "Vul je eigen daglimiet of doel in. Er wordt geen wettelijke verblijfsduur aangenomen."
+}
+</script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>M</span><span>D</span><span>W</span><span>D</span><span>V</span><span>Z</span><span>Z</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>Tijdlijn</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Exporteer of open in AtlasDays</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="day-count-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="day-count-import-title"><span data-cal-on="computer">Ga verder op je iPhone of iPad</span><span data-cal-on="phone file">Exporteer of open in AtlasDays</span></p>
+            <p class="cal-dialog-sub">Tel je dagen door terwijl je reist. Download AtlasDays gratis.</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <div class="cal-scan-copy">
+            <p class="cal-scan-lead" data-cal-both>Scan om je reizen en tracker in AtlasDays te openen.</p>
+            <p class="cal-scan-lead" data-cal-trips-only hidden>Scan om je reizen in AtlasDays te openen.</p>
+            <p class="cal-scan-lead" data-cal-tracker hidden>Scan om je tracker in AtlasDays te openen.</p>
+          </div>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li><strong data-cal-stays>Open je verblijven in de app</strong><span data-cal-stays>Controleer ze en tik dan op Importeren. Tot die tijd wordt er niets bewaard.</span><strong data-cal-tracker hidden>Open deze tracker in de app</strong><span data-cal-tracker hidden>Controleer hem en tik dan op Bewaar. Tot die tijd wordt er niets bewaard.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Open AtlasDays</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li><strong>Download je reizen als CSV-bestand</strong><span>Dat zijn meer verblijven dan er in een link passen. Download het bestand en open het op je iPhone met AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Download bestand</button></li>
+          <li data-cal-store><strong>Download AtlasDays</strong><span>Gratis in de App Store voor iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Download je reizen als CSV-bestand</button><span data-cal-downloaded hidden>Open dit bestand op je iPhone met AtlasDays.</span></p>
+          <button type="button" data-cal-close>Sluit</button>
+        </div>
+      </dialog>
+    </div>
+    <h2>Een dagentelling zonder fiscaal oordeel</h2>
+    <p>„Dagen tellen” begint zonder limiet. Er is geen standaard van 183 dagen, voortgangspercentage of oordeel over fiscale veiligheid. Het getal is alleen het totaal voor de gekozen plek en periode. Een dag waarop je twee landen bezoekt, telt in beide landen mee. Totalen over meerdere landen kunnen daardoor groter zijn dan het aantal datums in je kalender.</p>
+    <h2>Gebruik een persoonlijke limiet of een doel</h2>
+    <p>Kies „Onder limiet blijven” of „Doel bereiken” en voer je eigen getal in. Een persoonlijke limiet van 30 dagen kan bijvoorbeeld helpen bij het plannen van een zomer weg van huis. Een doel van 60 dagen kan helpen om meer tijd bij familie door te brengen. Geen van beide getallen wordt een wettelijke drempel doordat het in een calculator staat.</p>
+    <h2>Kies de periode die je vraag beantwoordt</h2>
+    <ul><li><strong>Kalenderjaar:</strong> tel het gekozen jaar, van 1 januari tot en met 31 december.</li><li><strong>Zelf gekozen jaar:</strong> kies de begindatum van een periode van één jaar.</li><li><strong>Afgelopen 12 maanden:</strong> kies een datum tot wanneer je wilt tellen. De periode verschuift met die datum en gebruikt kalendermaanden, geen vaste benadering van 365 dagen.</li></ul>
+    <h2>Een uitgewerkt voorbeeld</h2>
+    <p>Een verblijf van 1 tot en met 10 juni telt 10 dagen. Een tweede verblijf van 8 tot en met 12 juni in hetzelfde land voegt slechts 2 nieuwe dagen toe, voor een totaal van 12. Verlaat je dat land en kom je op 12 juni in een ander aan, dan kan die datum in de administratie van beide landen staan.</p>
+    <h2>Bewaar de registratie</h2>
+    <p>Download de verblijven als CSV of ga ermee verder in AtlasDays. De overdracht bevat je verblijven, niet het persoonlijke doel van deze calculator. Je ingevoerde datums blijven in de browser totdat je ze exporteert of overdraagt en worden gewist als je de pagina opnieuw laadt.</p>
+    <h2>Veelgestelde vragen</h2>
+    <h3>Bepaalt dit het fiscaal inwonerschap?</h3><p>Nee. Dit telt datums van fysieke aanwezigheid en optionele persoonlijke doelen. Landspecifieke regels voor belasting, visa of verblijf worden niet toegepast.</p>
+    <h3>Tellen aankomst en vertrek mee?</h3><p>Ja. Beide datums tellen mee. Een bezoek op één dag telt als één dag en overlappende datums op dezelfde plek tellen niet dubbel.</p>
+    <h3>Kan ik de 183-dagencalculator nog gebruiken?</h3><p>Ja. De <a href="/nl/learn/183-day-rule-calculator">183-dagencalculator</a> blijft afzonderlijk beschikbaar. Gebruik de specifieke landgids om te begrijpen of die drempel en telmethode gelden.</p>

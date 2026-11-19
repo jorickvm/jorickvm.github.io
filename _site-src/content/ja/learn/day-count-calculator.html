@@ -1,0 +1,168 @@
+    <nav class="breadcrumb"><a href="/ja/">AtlasDays</a> / <a href="/ja/learn/">旅行ルール</a> / <a href="/ja/learn/calculators">計算ツール</a></nav>
+    <h1>滞在日数計算：国、州、個人の目標</h1>
+    <p class="subtitle">国や米国の州ごとの滞在日数を数えます。上限なしで始めることも、自分で上限や目標を設定することもできます。</p>
+    <p class="verified">最終確認：2026年11月19日</p>
+    <h2 id="calculator">滞在日数を数える</h2>
+    <p>場所と期間を選び、滞在を追加してください。到着日と出発日を含み、同じ場所で重なる日は1回だけ数えます。入力した将来の滞在も合計に含まれます。</p>
+<div class="daycal" id="day-count" data-day-calendar="dayCount">
+      <script type="application/json" data-cal-strings>{
+  "days": "日数",
+  "hintStart": "日付をタップすると滞在を追加できます。",
+  "hintEnd": "滞在のもう一方の日付をタップしてください。",
+  "hintSelected": "滞在のどちらかの端をドラッグして日付を変更するか、下で削除してください。",
+  "inTrip": "滞在日",
+  "pending": "新しい滞在の開始日",
+  "empty": "滞在はまだありません。",
+  "deleteTrip": "滞在を削除",
+  "country": "国",
+  "goal": "目標",
+  "goalStay": "上限未満に抑える",
+  "goalReach": "目標を達成",
+  "captionStay": "自分で決めた上限を使います。",
+  "captionReach": "自分の目標を目指します。",
+  "window": "期間",
+  "addCountry": "国を追加",
+  "noMatch": "一致する国はありません",
+  "periodCalendar": "暦年",
+  "periodTax": "任意の開始日から一年",
+  "periodRolling": "直近12か月",
+  "year": "年",
+  "starts": "開始",
+  "checkOn": "集計終了日",
+  "checkOnCaption": "この日までの12か月間の滞在日数です。予定している旅行を確認するときは、旅行の最終日を選んでください。",
+  "tripDays": {
+    "other": "{n}日"
+  },
+  "remaining": {
+    "other": "残り{n}日"
+  },
+  "atLimit": "上限到達",
+  "needed": {
+    "other": "あと{n}日必要"
+  },
+  "reachedTarget": "目標達成",
+  "overBy": {
+    "other": "上限を{n}日超過"
+  },
+  "lineNoCountry": {
+    "other": "国が未設定の日：{n}日"
+  },
+  "jurisdiction": "国または米国の州",
+  "addJurisdiction": "国または米国の州を追加",
+  "noJurisdictionMatch": "一致する国または米国の州がありません",
+  "stateUSAL": "アラバマ州（米国）",
+  "stateUSAK": "アラスカ州（米国）",
+  "stateUSAZ": "アリゾナ州（米国）",
+  "stateUSAR": "アーカンソー州（米国）",
+  "stateUSCA": "カリフォルニア州（米国）",
+  "stateUSCO": "コロラド州（米国）",
+  "stateUSCT": "コネチカット州（米国）",
+  "stateUSDE": "デラウェア州（米国）",
+  "stateUSDC": "コロンビア特別区（米国）",
+  "stateUSFL": "フロリダ州（米国）",
+  "stateUSGA": "ジョージア州（米国）",
+  "stateUSHI": "ハワイ州（米国）",
+  "stateUSID": "アイダホ州（米国）",
+  "stateUSIL": "イリノイ州（米国）",
+  "stateUSIN": "インディアナ州（米国）",
+  "stateUSIA": "アイオワ州（米国）",
+  "stateUSKS": "カンザス州（米国）",
+  "stateUSKY": "ケンタッキー州（米国）",
+  "stateUSLA": "ルイジアナ州（米国）",
+  "stateUSME": "メイン州（米国）",
+  "stateUSMD": "メリーランド州（米国）",
+  "stateUSMA": "マサチューセッツ州（米国）",
+  "stateUSMI": "ミシガン州（米国）",
+  "stateUSMN": "ミネソタ州（米国）",
+  "stateUSMS": "ミシシッピ州（米国）",
+  "stateUSMO": "ミズーリ州（米国）",
+  "stateUSMT": "モンタナ州（米国）",
+  "stateUSNE": "ネブラスカ州（米国）",
+  "stateUSNV": "ネバダ州（米国）",
+  "stateUSNH": "ニューハンプシャー州（米国）",
+  "stateUSNJ": "ニュージャージー州（米国）",
+  "stateUSNM": "ニューメキシコ州（米国）",
+  "stateUSNY": "ニューヨーク州（米国）",
+  "stateUSNC": "ノースカロライナ州（米国）",
+  "stateUSND": "ノースダコタ州（米国）",
+  "stateUSOH": "オハイオ州（米国）",
+  "stateUSOK": "オクラホマ州（米国）",
+  "stateUSOR": "オレゴン州（米国）",
+  "stateUSPA": "ペンシルベニア州（米国）",
+  "stateUSRI": "ロードアイランド州（米国）",
+  "stateUSSC": "サウスカロライナ州（米国）",
+  "stateUSSD": "サウスダコタ州（米国）",
+  "stateUSTN": "テネシー州（米国）",
+  "stateUSTX": "テキサス州（米国）",
+  "stateUSUT": "ユタ州（米国）",
+  "stateUSVT": "バーモント州（米国）",
+  "stateUSVA": "バージニア州（米国）",
+  "stateUSWA": "ワシントン州（米国）",
+  "stateUSWV": "ウェストバージニア州（米国）",
+  "stateUSWI": "ウィスコンシン州（米国）",
+  "stateUSWY": "ワイオミング州（米国）",
+  "goalCount": "日数を記録",
+  "captionCount": "上限なしで記録します。",
+  "personalDays": "個人の目標日数",
+  "enterPersonalDays": "個人の上限または目標日数を入力してください。法律上の滞在枠は設定されていません。"
+}</script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>月</span><span>木</span><span>水</span><span>木</span><span>金</span><span>日</span><span>日</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>タイムライン</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>エクスポート、またはAtlasDaysで開く</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="day-count-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="day-count-import-title"><span data-cal-on="computer">iPhoneまたはiPadで続ける</span><span data-cal-on="phone file">エクスポート、またはAtlasDaysで開く</span></p>
+            <p class="cal-dialog-sub">旅先でも日数の記録を続けましょう。AtlasDaysを無料で入手できます。</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <div class="cal-scan-copy">
+            <p class="cal-scan-lead" data-cal-both>コードをスキャンして、旅行とトラッカーをAtlasDaysで開きます。</p>
+            <p class="cal-scan-lead" data-cal-trips-only hidden>コードをスキャンして、旅行をAtlasDaysで開きます。</p>
+            <p class="cal-scan-lead" data-cal-tracker hidden>コードをスキャンして、トラッカーをAtlasDaysで開きます。</p>
+          </div>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li><strong data-cal-stays>アプリで滞在を開く</strong><span data-cal-stays>確認してから「インポート」をタップします。それまで何も保存されません。</span><strong data-cal-tracker hidden>アプリでこのトラッカーを開く</strong><span data-cal-tracker hidden>確認してから「保存」をタップします。それまで何も保存されません。</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">AtlasDaysで開く</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li><strong>旅行をCSVファイルでダウンロード</strong><span>滞在の数が多く、リンクでは送れません。ファイルをダウンロードして、iPhoneのAtlasDaysで開いてください。</span><button type="button" class="cal-dialog-primary" data-cal-download>ファイルをダウンロード</button></li>
+          <li data-cal-store><strong>AtlasDaysを入手</strong><span>iPhone向けにApp Storeで無料で提供しています。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>旅行をCSVファイルでダウンロード</button><span data-cal-downloaded hidden>このファイルをiPhoneのAtlasDaysで開いてください。</span></p>
+          <button type="button" data-cal-close>閉じる</button>
+        </div>
+      </dialog>
+    </div>
+    <h2>税務上の判定をしない日数記録</h2>
+    <p>「日数を記録」は上限なしで始まります。183日の初期値、進捗率、安全・危険の判定はありません。表示されるのは選んだ場所と期間の合計だけです。同じ日に2つの国を訪れれば両方で数えるため、各国の合計はカレンダー上の日数を超えることがあります。</p>
+    <h2>個人の上限や目標を使う</h2>
+    <p>「上限未満に抑える」または「目標を達成」を選び、自分の日数を入力します。例えば、30日の個人的な上限は夏の旅行計画に、60日の目標は家族の近くで過ごす時間を増やす計画に役立ちます。計算機に表示されても、法律上の基準になるわけではありません。</p>
+    <h2>確認したい内容に合わせて期間を選ぶ</h2>
+    <ul><li><strong>暦年：</strong>選んだ年の1月1日から12月31日までを合計します。</li><li><strong>任意の開始日から一年：</strong>1年間の開始日を選びます。</li><li><strong>直近12か月：</strong>集計終了日を選びます。期間はその日付に合わせて動き、固定365日の近似ではなく暦月を使います。</li></ul>
+    <h2>計算例</h2>
+    <p>6月1日から10日の滞在は10日です。同じ国で6月8日から12日の別の滞在を加えると、新たに増えるのは2日で合計12日になります。6月12日に出国して別の国に到着すれば、その日は両方の記録に含まれることがあります。</p>
+    <h2>記録を保存する</h2>
+    <p>滞在をCSVでダウンロードするか、AtlasDaysに引き継いで続けられます。転送されるのは滞在であり、この計算機の個人目標ではありません。入力した日付は書き出しや転送を選ぶまでブラウザ内に留まり、再読み込みすると消去されます。</p>
+    <h2>よくある質問</h2>
+    <h3>税務上の居住地を判定しますか？</h3><p>いいえ。実際の滞在日と任意の個人目標を数えます。国ごとの税務、ビザ、居住の規定は適用しません。</p>
+    <h3>到着日と出発日は含まれますか？</h3><p>はい。両方を含みます。日帰りは1日、同じ場所で重なる日付は1回だけ数えます。</p>
+    <h3>183日計算機も使えますか？</h3><p>はい。<a href="/ja/learn/183-day-rule-calculator">183日計算機</a>は別に利用できます。その基準と数え方が当てはまるかは、各国のガイドで確認してください。</p>

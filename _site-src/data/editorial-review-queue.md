@@ -106,6 +106,8 @@ These pages describe something scheduled to change. The tier cadence would revie
 | 2027-05-12 | 1 | [learn/when-do-you-get-schengen-days-back-after-90-day-stay.html](/learn/when-do-you-get-schengen-days-back-after-90-day-stay) | exact-date-required | 4 |
 | 2027-05-13 | 1 | [learn/schengen-rolling-window-walkthrough.html](/learn/schengen-rolling-window-walkthrough) | exact-date-required | 3 |
 | 2027-05-13 | 1 | [learn/uk-standard-visitor-visa-180-day-rule.html](/learn/uk-standard-visitor-visa-180-day-rule) | exact-date-required | 3 |
+| 2027-05-20 | 1 | [learn/argentina-tourist-stay.html](/learn/argentina-tourist-stay) | exact-date-required | 3 |
+| 2027-05-20 | 1 | [learn/indonesia-d2-business-visa.html](/learn/indonesia-d2-business-visa) | exact-date-required | 2 |
 
 ## 2027-08
 
@@ -205,6 +207,15 @@ These pages describe something scheduled to change. The tier cadence would revie
 | 2027-11-12 | 2 | [learn/slovakia-183-day-tax-residency.html](/learn/slovakia-183-day-tax-residency) | exact-date-required | 2 |
 | 2027-11-12 | 2 | [learn/slovenia-183-day-tax-residency.html](/learn/slovenia-183-day-tax-residency) | exact-date-required | 2 |
 | 2027-11-17 | 2 | [learn/uk-srt-calculator.html](/learn/uk-srt-calculator) | exact-date-required | 4 |
+| 2027-11-19 | 2 | [learn/barbados-tax-residency.html](/learn/barbados-tax-residency) | exact-date-required | 2 |
+| 2027-11-19 | 2 | [learn/belgium-tax-residency.html](/learn/belgium-tax-residency) | exact-date-required | 1 |
+| 2027-11-19 | 2 | [learn/cambodia-tax-residency.html](/learn/cambodia-tax-residency) | exact-date-required | 2 |
+| 2027-11-19 | 3 | [learn/day-count-calculator.html](/learn/day-count-calculator) | annual-light-pass | 0 |
+| 2027-11-19 | 2 | [learn/germany-tax-residency.html](/learn/germany-tax-residency) | exact-date-required | 2 |
+| 2027-11-19 | 2 | [learn/japan-tax-residency.html](/learn/japan-tax-residency) | exact-date-required | 2 |
+| 2027-11-19 | 2 | [learn/mexico-tax-residency.html](/learn/mexico-tax-residency) | exact-date-required | 1 |
+| 2027-11-19 | 2 | [learn/netherlands-tax-residency.html](/learn/netherlands-tax-residency) | exact-date-required | 2 |
+| 2027-11-19 | 2 | [learn/uae-90-day-tax-residency.html](/learn/uae-90-day-tax-residency) | exact-date-required | 2 |
 | 2027-11-30 | 2 | [learn/alabama-tax-residency.html](/learn/alabama-tax-residency) | exact-date-required | 1 |
 | 2027-11-30 | 2 | [learn/arkansas-tax-residency.html](/learn/arkansas-tax-residency) | exact-date-required | 1 |
 | 2027-11-30 | 2 | [learn/delaware-tax-residency.html](/learn/delaware-tax-residency) | exact-date-required | 1 |
