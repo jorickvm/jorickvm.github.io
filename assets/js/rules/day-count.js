@@ -57,8 +57,23 @@
       return result;
     },
     trackerOffer: function (trips, c) {
-      // A count-only import carries trips, not a fabricated app limit.
-      return "";
+      var place = c.settings.country, selectedGoal = goal(c), days = limit(c);
+      if (!place) return "";
+      if (days === null) selectedGoal = "count";
+      var preset = c.offer === "day-count-" + place.toLowerCase() ? c.offer : "custom";
+      var fields = [preset, "place:" + place, "goal:" + selectedGoal];
+      if (selectedGoal !== "count") fields.push("days:" + days);
+      switch (c.settings.periodType) {
+      case "tax":
+        fields.push("window:tax", "start:" + clean(c).settings.taxStart);
+        break;
+      case "rolling":
+        fields.push("window:rolling", "size:12m");
+        break;
+      default:
+        fields.push("window:year", "year:" + (c.settings.year || c.D.parts(c.today).y));
+      }
+      return fields.join(",");
     },
     exportRows: function (trips) {
       return base.exportRows(trips).map(function (row) { row.notes = "Day count calculator"; return row; });

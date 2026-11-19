@@ -1056,18 +1056,25 @@
       var rows = rule.exportRows(trips, ctx()).slice().sort(function (a, b) { return a.start - b.start; });
       if (!dialog || !dialog.showModal) return downloadCsv();
       var offer = rule.trackerOffer ? rule.trackerOffer(trips, ctx()) : "";
-      var frag = rows.length || offer ? importFragment(rows, linkId(), offer) : "";
       var mode = rows.length > LINK.maxStays ? "file"
         : inApp || appleTouch ? "phone"
         : rows.length <= LINK.maxQrStays ? "computer" : "file";
+      // A large day-count history travels as a CSV. Its small tracker link
+      // still carries all settings, by QR on desktop or directly on iOS.
+      var separateTracker = mode === "file" && !!offer && root.dataset.dayCalendar === "dayCount";
+      var linkedRows = separateTracker ? [] : rows;
+      var frag = linkedRows.length || offer ? importFragment(linkedRows, linkId(), offer) : "";
+      var scan = mode === "computer" || (separateTracker && !inApp && !appleTouch);
       dialog.querySelectorAll("[data-cal-on]").forEach(function (part) {
-        part.hidden = part.getAttribute("data-cal-on").split(" ").indexOf(mode) < 0;
+        var modes = part.getAttribute("data-cal-on").split(" ");
+        part.hidden = modes.indexOf(mode) < 0;
+        if (separateTracker && (scan ? part.matches(".cal-dialog-scan") : part.matches(".cal-steps[data-cal-on=phone]"))) part.hidden = false;
       });
       // Its steps name the stays, or with none the tracker alone.
-      dialog.querySelectorAll("[data-cal-stays]").forEach(function (part) { part.hidden = !rows.length; });
-      dialog.querySelectorAll("[data-cal-tracker]").forEach(function (part) { part.hidden = !!rows.length; });
-      dialog.querySelectorAll("[data-cal-both]").forEach(function (part) { part.hidden = !rows.length || !offer; });
-      dialog.querySelectorAll("[data-cal-trips-only]").forEach(function (part) { part.hidden = !rows.length || !!offer; });
+      dialog.querySelectorAll("[data-cal-stays]").forEach(function (part) { part.hidden = !linkedRows.length; });
+      dialog.querySelectorAll("[data-cal-tracker]").forEach(function (part) { part.hidden = !!linkedRows.length; });
+      dialog.querySelectorAll("[data-cal-both]").forEach(function (part) { part.hidden = !linkedRows.length || !offer; });
+      dialog.querySelectorAll("[data-cal-trips-only]").forEach(function (part) { part.hidden = !linkedRows.length || !!offer; });
       // Inside the app there is nothing to install.
       dialog.querySelectorAll("[data-cal-store]").forEach(function (part) { part.hidden = inApp; });
       // A single step needs no number.
@@ -1084,7 +1091,7 @@
       var box = dialog.querySelector("[data-cal-qr]");
       if (box) {
         box.textContent = "";
-        if (mode === "computer") loadQr(function () {
+        if (scan) loadQr(function () {
           box.innerHTML = qrSvg(LINK.universal + frag);
           // On a 1x screen a big code is too fine at the compact size: start large.
           var big = (window.devicePixelRatio || 1) < 1.5 && box.firstChild.viewBox.baseVal.width * 3 > 240;

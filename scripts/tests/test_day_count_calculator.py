@@ -18,10 +18,10 @@ const rule=window.AtlasDaysRules.dayCount,today=D.fromParts(2026,11,19);
 function ctx(settings={}){return {D,today,settings,trips:[],allowed:['NL','CY','US','US-NY'],text:(k,a)=>a?`${k}:${a.n}`:k,tone:()=> 'personal',dateRange:()=> 'period',offers:{NL:'fake-law'},offer:'fake-law'};}
 const t=(a,b,c='NL')=>({start:D.fromParts(...a),end:D.fromParts(...b),country:c});
 let c=ctx({country:'NL',year:'2026'}),trips=[t([2026,6,1],[2026,6,10]),t([2026,6,8],[2026,6,12])];c.trips=trips;
-let r=rule.evaluate(trips,c);assert.equal(r.meter.days,12);assert.equal(r.meter.limit,null);assert.equal(r.meter.periodDays,365);assert.equal(r.meter.days/r.meter.periodDays,12/365);assert.equal(r.statusText,'');assert.equal(r.meter.tone,'normal');assert(!r.controls.some(x=>x.key==='limitInput'));assert.equal(rule.trackerOffer(trips,c),'');
+let r=rule.evaluate(trips,c);assert.equal(r.meter.days,12);assert.equal(r.meter.limit,null);assert.equal(r.meter.periodDays,365);assert.equal(r.meter.days/r.meter.periodDays,12/365);assert.equal(r.statusText,'');assert.equal(r.meter.tone,'normal');assert(!r.controls.some(x=>x.key==='limitInput'));assert.equal(rule.trackerOffer(trips,c),'custom,place:NL,goal:count,window:year,year:2026');
 c.settings.goal='stay';r=rule.evaluate(trips,c);assert.equal(r.meter.limit,null);assert.equal(r.controls.find(x=>x.key==='limitInput').value,'');
 for(const value of ['',0,-1,30.5,367,'not a number']){c.settings.limitInput=value;assert.equal(rule.evaluate(trips,c).meter.limit,null);}
-c.settings.limitInput=30;r=rule.evaluate(trips,c);assert.equal(r.meter.limit,30);assert.equal(r.meter.periodDays,undefined);assert.equal(r.statusText,'remaining:18');assert.equal(rule.trackerOffer(trips,c),'');
+c.settings.limitInput=30;r=rule.evaluate(trips,c);assert.equal(r.meter.limit,30);assert.equal(r.meter.periodDays,undefined);assert.equal(r.statusText,'remaining:18');assert.equal(rule.trackerOffer(trips,c),'custom,place:NL,goal:stay,days:30,window:year,year:2026');
 c.settings.goal='reach';assert.equal(rule.evaluate(trips,c).statusText,'needed:18');c.settings.limitInput=12;assert.equal(rule.evaluate(trips,c).statusText,'reachedTarget');
 c.settings.goal='count';assert.equal(rule.evaluate(trips,c).meter.limit,null);
 // No Cyprus, overnight, full-day, majority or linked-resident policy leaks into a personal record.
@@ -34,6 +34,12 @@ c=ctx({country:'NL',periodType:'tax',taxStart:'2023-07-01'});assert.equal(rule.e
 c=ctx({country:'NL',periodType:'rolling',checkOn:'2024-03-01'});assert.equal(rule.evaluate([],c).meter.periodDays,366);
 c=ctx({country:'US',year:'2026'});assert.equal(rule.evaluate([t([2026,6,1],[2026,6,5],'US-NY'),t([2026,6,3],[2026,6,6],'US')],c).meter.days,6);
 let q=rule.fromQuery(new URLSearchParams('country=CY&resident=184&overnight=1&goal=count'),ctx());assert.equal(q.settings.presence,undefined);assert.equal(q.settings.residentAt,undefined);assert.equal(q.settings.overnight,undefined);
+c=ctx({country:'US-NY',goal:'reach',limitInput:61,periodType:'tax',taxStart:'2025-07-01'});
+assert.equal(rule.trackerOffer([],c),'custom,place:US-NY,goal:reach,days:61,window:tax,start:2025-07-01');
+c=ctx({country:'NL',periodType:'rolling',checkOn:'2026-06-01'});c.offer='day-count-nl';
+assert.equal(rule.trackerOffer([],c),'day-count-nl,place:NL,goal:count,window:rolling,size:12m');
+c.settings.goal='stay';assert.equal(rule.trackerOffer([],c),'day-count-nl,place:NL,goal:count,window:rolling,size:12m');
+assert.equal(rule.trackerOffer([],ctx()),'');
 // Shared 183-day behaviour remains intact.
 c=ctx({country:'NL',year:'2026'});assert.equal(window.AtlasDaysRules.days183.evaluate([],c).meter.limit,183);
 console.log('No-limit, optional goals, exclusions, boundaries, leap days, state overlap, queries and old-rule regression passed');
