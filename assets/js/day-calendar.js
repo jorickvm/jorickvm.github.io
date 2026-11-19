@@ -651,11 +651,30 @@
       }).sort(function (a, b) { return a.name.localeCompare(b.name, locale); });
       return catalogue;
     }
+    function isUSState(p) { return /^US-[A-Z]{2}$/.test(p.code); }
+    // States are one alphabetical child group of the US, including when a
+    // recent selection or a state-name search would otherwise detach them.
+    function groupUSStates(rows) {
+      var states = rows.filter(isUSState).sort(function (a, b) { return a.name.localeCompare(b.name, locale); });
+      var us = places().filter(function (p) { return p.code === "US"; })[0];
+      if (!states.length || !us) return rows;
+      var countries = rows.filter(function (p) { return !isUSState(p); });
+      var parent = countries.findIndex(function (p) { return p.code === "US"; });
+      if (parent < 0) {
+        var firstState = rows.findIndex(isUSState);
+        parent = rows.slice(0, firstState).filter(function (p) { return !isUSState(p); }).length;
+        countries.splice(parent, 0, Object.assign({}, us, { contextOnly: true }));
+      }
+      countries.splice.apply(countries, [parent + 1, 0].concat(states));
+      return countries;
+    }
     function matches(query) {
       var q = fold(query.trim());
       if (!q) {
-        var picked = recent.map(function (c) { return places().filter(function (p) { return p.code === c; })[0]; }).filter(Boolean);
-        return picked.concat(places().filter(function (p) { return recent.indexOf(p.code) < 0; }));
+        var recentCountries = recent.map(function (c) { return /^US-[A-Z]{2}$/.test(c) ? "US" : c; })
+          .filter(function (c, i, all) { return all.indexOf(c) === i; });
+        var picked = recentCountries.map(function (c) { return places().filter(function (p) { return p.code === c; })[0]; }).filter(Boolean);
+        return groupUSStates(picked.concat(places().filter(function (p) { return recentCountries.indexOf(p.code) < 0; })));
       }
       // Exact place codes and state abbreviations precede name matches.
       var exact = [], abbreviations = [], lead = [], word = [], rest = [];
@@ -666,7 +685,12 @@
         if (at < 0) return;
         (at === 0 ? lead : p.key.charAt(at - 1) === " " ? word : rest).push(p);
       });
-      return exact.concat(abbreviations, lead, word, rest);
+      var found = exact.concat(abbreviations, lead, word, rest);
+      var us = places().filter(function (p) { return p.code === "US"; })[0];
+      if (us && (q === "us" || q === "usa" || fold(us.name).indexOf(q) === 0 || "united states".indexOf(q) === 0)) {
+        found = found.filter(function (p) { return !isUSState(p); }).concat(places().filter(isUSState));
+      }
+      return groupUSStates(found);
     }
     function flagImg(code, size) {
       return el("img", { src: flagSource(code), alt: "", width: String(size), height: String(Math.round(size * 0.75)), loading: "lazy" });
@@ -682,11 +706,14 @@
       function choose(code) { usageStarted(); close(); remember(code); onChoose(code); }
       function show() {
         options = matches(current && input.value === nameForPlace(current) ? "" : input.value);
-        active = 0;
+        var browsing = current && input.value === nameForPlace(current);
+        active = browsing ? options.findIndex(function (p) { return p.code === current; })
+          : options.findIndex(function (p) { return !p.contextOnly; });
+        if (active < 0) active = 0;
         box.textContent = "";
         if (!options.length) box.appendChild(el("li", { "class": "cal-country-none" }, text("noMatch")));
         options.forEach(function (p, i) {
-          var li = el("li", { role: "option", "class": "cal-country-option" + (i === active ? " is-active" : "") });
+          var li = el("li", { role: "option", "data-place": p.code, "class": "cal-country-option" + (isUSState(p) ? " is-state" : "") + (i === active ? " is-active" : "") });
           li.appendChild(flagImg(p.code, 20));
           li.appendChild(el("span", null, p.name));
           li.addEventListener("mousedown", function (e) { e.preventDefault(); choose(p.code); });
@@ -696,6 +723,7 @@
         box.scrollTop = 0;
         input.setAttribute("aria-expanded", "true");
         place();
+        mark();
         window.addEventListener("scroll", place, true);
         window.addEventListener("resize", place);
       }

@@ -51,7 +51,7 @@
         result.meter.tone = "normal";
         result.statusText = "";
       }
-      result.lines.push(c.text(selectedGoal !== "count" && chosenLimit === null ? "enterPersonalDays" : "personalCountNote"));
+      if (selectedGoal !== "count" && chosenLimit === null) result.lines.push(c.text("enterPersonalDays"));
       return result;
     },
     trackerOffer: function (trips, c) {
@@ -65,7 +65,6 @@
       goalCount: "Count days", captionCount: "Keep a record without a limit.",
       captionStay: "Use your own personal cap.", captionReach: "Work toward your own target.",
       personalDays: "Personal day goal", enterPersonalDays: "Enter your own day limit or target. No legal allowance is assumed.",
-      personalCountNote: "Counts include planned stays you enter. This is a day record, not a tax or visa assessment.",
       periodTax: "Custom year"
     })
   });

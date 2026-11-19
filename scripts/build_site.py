@@ -1525,7 +1525,7 @@ _calculator_assets: dict[str, object] = {}
 # article's calculator slot.
 CALCULATOR_RULES = {
     "days183": {"script": "days-183.js", "page": "learn/183-day-rule-calculator.html"},
-    "dayCount": {"script": "day-count.js", "page": "learn/day-count-calculator.html", "version": "20261119a"},
+    "dayCount": {"script": "day-count.js", "page": "learn/day-count-calculator.html", "version": "20261119c"},
     "schengen": {"script": "schengen.js", "page": "learn/schengen-calculator.html"},
     "ukIlr": {"script": "uk-ilr.js", "page": "learn/uk-ilr-absence-calculator.html"},
     "presence": {"script": "presence.js", "version": "20261028a"},
@@ -1557,7 +1557,7 @@ def calculator_assets(rule: str = "days183") -> dict[str, str]:
             version = own.group(1)
         if rule == "dayCount":
             # The personal counter reuses the existing presence arithmetic.
-            scripts = scripts.replace('</script>', '</script>\n  <script defer src="{{ASSET_PREFIX}}assets/js/rules/day-count.js?v=20261119a"></script>', 1)
+            scripts = scripts.replace('</script>', '</script>\n  <script defer src="{{ASSET_PREFIX}}assets/js/rules/day-count.js?v=20261119c"></script>', 1)
         else:
             scripts = re.sub(r"rules/days-183\.js\?v=\w+", f"rules/{spec['script']}?v={version}", scripts)
     return {"head_extra": str(page.get("head_extra", "")), "page_scripts": scripts}
