@@ -73,14 +73,6 @@
           "@type": "Answer",
           "text": "Sí. Cuentan ambas fechas. Una visita de un solo día cuenta como un día y las fechas solapadas en el mismo lugar no se duplican."
         }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Puedo seguir usando la calculadora de los 183 días?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Sí. La calculadora de los 183 días sigue disponible por separado. Consulta la guía específica del país para saber si se aplican ese umbral y ese método de recuento."
-        }
       }
     ]
   }
@@ -126,7 +118,7 @@
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
-  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261119c" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261119d" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Ir al contenido</a>
@@ -224,7 +216,7 @@
         <li><a href="#preguntas-frecuentes">Preguntas frecuentes</a></li>
       </ul>
     </details>
-    <script>(function(){var t=document.currentScript.previousElementSibling;if(matchMedia('(min-width: 760px)').matches)t.open=true})();</script>
+    
     <h2 id="calculator">Cuenta tus días</h2>
     <p>Elige un lugar y un período y añade tus estancias. Cuentan la llegada y la salida; las fechas solapadas en el mismo lugar cuentan una vez. Los totales incluyen las estancias futuras que introduzcas.</p>
 <div class="daycal" id="day-count" data-day-calendar="dayCount" data-cal-placement="standalone">
@@ -282,7 +274,7 @@
     "other": "{n} días sin país"
   },
   "jurisdiction": "País o estado de EE. UU.",
-  "addJurisdiction": "Añadir país o estado de EE. UU.",
+  "addJurisdiction": "Elige un lugar",
   "noJurisdictionMatch": "No hay ningún país o estado de EE. UU. que coincida",
   "stateUSAL": "Alabama (EE. UU.)",
   "stateUSAK": "Alaska (EE. UU.)",
@@ -388,7 +380,7 @@
       </dialog>
     </div>
     <h2 id="un-registro-de-d-as-sin-un-veredicto-fiscal">Un registro de días sin un veredicto fiscal</h2>
-    <p>Contar días empieza sin límite. No hay un valor predeterminado de 183 días, un porcentaje de progreso ni un estado de seguridad fiscal. El número es simplemente el total del lugar y período elegidos. Un día en que visites dos países cuenta en ambos, por lo que la suma de países puede superar el número de fechas del calendario.</p>
+    <p>Contar días empieza sin límite. No hay un valor predeterminado de 183 días ni un estado de seguridad fiscal. El número es simplemente el total del lugar y período elegidos. Un día en que visites dos países cuenta en ambos, por lo que la suma de países puede superar el número de fechas del calendario. La barra muestra qué parte del período elegido representan los días contados.</p>
     <h2 id="usa-un-l-mite-u-objetivo-personal">Usa un límite u objetivo personal</h2>
     <p>Elige Mantenerse por debajo o Alcanzar objetivo e introduce tu número. Por ejemplo, un límite personal de 30 días puede ayudarte a planificar un verano fuera de casa. Un objetivo de 60 días puede ayudarte a pasar más tiempo cerca de tu familia. Ninguno se convierte en umbral legal por aparecer en una calculadora.</p>
     <h2 id="elige-el-per-odo-que-responda-a-tu-pregunta">Elige el período que responda a tu pregunta</h2>
@@ -400,7 +392,6 @@
     <h2 id="preguntas-frecuentes">Preguntas frecuentes</h2>
     <h3>¿Determina la residencia fiscal?</h3><p>No. Cuenta fechas de presencia física y objetivos personales opcionales. No aplica las normas fiscales, de visados o de residencia de cada país.</p>
     <h3>¿Se incluyen la llegada y la salida?</h3><p>Sí. Cuentan ambas fechas. Una visita de un solo día cuenta como un día y las fechas solapadas en el mismo lugar no se duplican.</p>
-    <h3>¿Puedo seguir usando la calculadora de los 183 días?</h3><p class="calc-callout">Sí. La <a href="/es/learn/183-day-rule-calculator">calculadora de los 183 días</a> sigue disponible por separado. Consulta la guía específica del país para saber si se aplican ese umbral y ese método de recuento.</p>
 
     <p class="learn-disclaimer"><strong>Sobre este artículo:</strong> AtlasDays ofrece información general, no asesoramiento legal, fiscal ni de inmigración. Las normas cambian y el resultado depende de tu situación, así que no te fíes solo de AtlasDays: consulta la fuente oficial enlazada o pregunta a un profesional cualificado.</p>
 
@@ -463,9 +454,9 @@
   <script>window.AtlasDaysNavStrings={"menuOpen":"Abrir el menú de navegación","menuClose":"Cerrar el menú de navegación"};</script>
   <script src="../../assets/js/navigation.js?v=20261027j"></script>
   <script defer src="../../assets/js/rules/days-183.js?v=20261113b"></script>
-  <script defer src="../../assets/js/rules/day-count.js?v=20261119c"></script>
+  <script defer src="../../assets/js/rules/day-count.js?v=20261119d"></script>
   <script defer src="../../assets/js/calculator-usage.js?v=20261114a" data-endpoint="https://atlasdays-calculator-usage.jorickvm.workers.dev/collect"></script>
-  <script defer src="../../assets/js/day-calendar.js?v=20261119c"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261119d"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on. */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

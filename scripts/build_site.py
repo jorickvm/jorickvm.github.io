@@ -1732,7 +1732,7 @@ def render_toc(content: str, article: dict[str, object]) -> str:
             *items,
             "      </ul>",
             "    </details>",
-            "    " + TOC_SCRIPT,
+            "    " + ("" if Path(str(article["path"])).name == "day-count-calculator.html" else TOC_SCRIPT),
             "    ",
         ])
         content = content[:first.start()] + block + content[first.start():]

@@ -901,6 +901,10 @@
     }
     // The country in the card header is as wide as its name.
     function fitInput(input) {
+      if (root.getAttribute("data-day-calendar") === "dayCount" && input.closest(".cal-card-head")) {
+        input.style.width = "100%";
+        return;
+      }
       var probe = el("span", { "class": "cal-measure" }, input.value || input.placeholder || "");
       probe.style.font = getComputedStyle(input).font;
       document.body.appendChild(probe);
@@ -955,9 +959,11 @@
           else count.replaceChildren(el("b", null, text("tripDays", { n: bar.days })));
           row.appendChild(count);
           meter.appendChild(row);
-          if (bar.limit != null) {
-            var track = el("div", { "class": "cal-meter-track" }), fill = el("span", { "class": "cal-meter-fill" });
-            fill.style.width = Math.min(100, Math.max(0, (bar.progress != null ? bar.progress : bar.days / bar.limit) * 100)) + "%";
+          var total = bar.limit != null ? bar.limit : bar.periodDays;
+          if (total != null) {
+            var track = el("div", { "class": "cal-meter-track", role: "progressbar", "aria-label": bar.label,
+              "aria-valuemin": "0", "aria-valuemax": String(total), "aria-valuenow": String(Math.min(total, Math.max(0, bar.days))) }), fill = el("span", { "class": "cal-meter-fill" });
+            fill.style.width = Math.min(100, Math.max(0, (bar.progress != null ? bar.progress : bar.days / total) * 100)) + "%";
             track.appendChild(fill);
             meter.appendChild(track);
           }

@@ -73,14 +73,6 @@
           "@type": "Answer",
           "text": "Ja. Beide datums tellen mee. Een bezoek op één dag telt als één dag en overlappende datums op dezelfde plek tellen niet dubbel."
         }
-      },
-      {
-        "@type": "Question",
-        "name": "Kan ik de 183-dagencalculator nog gebruiken?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Ja. De 183-dagencalculator blijft afzonderlijk beschikbaar. Gebruik de specifieke landgids om te begrijpen of die drempel en telmethode gelden."
-        }
       }
     ]
   }
@@ -126,7 +118,7 @@
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
-  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261119c" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261119d" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Ga naar de inhoud</a>
@@ -224,7 +216,7 @@
         <li><a href="#veelgestelde-vragen">Veelgestelde vragen</a></li>
       </ul>
     </details>
-    <script>(function(){var t=document.currentScript.previousElementSibling;if(matchMedia('(min-width: 760px)').matches)t.open=true})();</script>
+    
     <h2 id="calculator">Tel je dagen</h2>
     <p>Kies een plek en periode en voeg je verblijven toe. Aankomst- en vertrekdagen tellen mee; overlappende dagen op dezelfde plek tellen eenmaal. Totalen bevatten ook ingevoerde toekomstige verblijven.</p>
 <div class="daycal" id="day-count" data-day-calendar="dayCount" data-cal-placement="standalone">
@@ -277,7 +269,7 @@
     "other": "{n} dagen zonder land"
   },
   "jurisdiction": "Land of Amerikaanse staat",
-  "addJurisdiction": "Land of Amerikaanse staat toevoegen",
+  "addJurisdiction": "Kies een plek",
   "noJurisdictionMatch": "Geen passend land of Amerikaanse staat gevonden",
   "stateUSAL": "Alabama (VS)",
   "stateUSAK": "Alaska (VS)",
@@ -383,7 +375,7 @@
       </dialog>
     </div>
     <h2 id="een-dagentelling-zonder-fiscaal-oordeel">Een dagentelling zonder fiscaal oordeel</h2>
-    <p>„Dagen tellen” begint zonder limiet. Er is geen standaard van 183 dagen, voortgangspercentage of oordeel over fiscale veiligheid. Het getal is alleen het totaal voor de gekozen plek en periode. Een dag waarop je twee landen bezoekt, telt in beide landen mee. Totalen over meerdere landen kunnen daardoor groter zijn dan het aantal datums in je kalender.</p>
+    <p>„Dagen tellen” begint zonder limiet. Er is geen standaardlimiet van 183 dagen en geen oordeel over fiscale veiligheid. Het getal is alleen het totaal voor de gekozen plek en periode. Een dag waarop je twee landen bezoekt, telt in beide landen mee. Totalen over meerdere landen kunnen daardoor groter zijn dan het aantal datums in je kalender. De balk toont welk deel van de gekozen periode je vastgelegde dagen vormen.</p>
     <h2 id="gebruik-een-persoonlijke-limiet-of-een-doel">Gebruik een persoonlijke limiet of een doel</h2>
     <p>Kies „Onder limiet blijven” of „Doel bereiken” en voer je eigen getal in. Een persoonlijke limiet van 30 dagen kan bijvoorbeeld helpen bij het plannen van een zomer weg van huis. Een doel van 60 dagen kan helpen om meer tijd bij familie door te brengen. Geen van beide getallen wordt een wettelijke drempel doordat het in een calculator staat.</p>
     <h2 id="kies-de-periode-die-je-vraag-beantwoordt">Kies de periode die je vraag beantwoordt</h2>
@@ -395,7 +387,6 @@
     <h2 id="veelgestelde-vragen">Veelgestelde vragen</h2>
     <h3>Bepaalt dit het fiscaal inwonerschap?</h3><p>Nee. Dit telt datums van fysieke aanwezigheid en optionele persoonlijke doelen. Landspecifieke regels voor belasting, visa of verblijf worden niet toegepast.</p>
     <h3>Tellen aankomst en vertrek mee?</h3><p>Ja. Beide datums tellen mee. Een bezoek op één dag telt als één dag en overlappende datums op dezelfde plek tellen niet dubbel.</p>
-    <h3>Kan ik de 183-dagencalculator nog gebruiken?</h3><p class="calc-callout">Ja. De <a href="/nl/learn/183-day-rule-calculator">183-dagencalculator</a> blijft afzonderlijk beschikbaar. Gebruik de specifieke landgids om te begrijpen of die drempel en telmethode gelden.</p>
 
     <p class="learn-disclaimer"><strong>Over dit artikel:</strong> AtlasDays geeft algemene informatie, geen juridisch, fiscaal of immigratieadvies. Regels veranderen en de uitkomst hangt af van je situatie, dus vertrouw er nooit alleen op: raadpleeg de vermelde officiële bron of vraag advies aan een deskundige.</p>
 
@@ -458,9 +449,9 @@
   <script>window.AtlasDaysNavStrings={"menuOpen":"Open het navigatiemenu","menuClose":"Sluit het navigatiemenu"};</script>
   <script src="../../assets/js/navigation.js?v=20261027j"></script>
   <script defer src="../../assets/js/rules/days-183.js?v=20261113b"></script>
-  <script defer src="../../assets/js/rules/day-count.js?v=20261119c"></script>
+  <script defer src="../../assets/js/rules/day-count.js?v=20261119d"></script>
   <script defer src="../../assets/js/calculator-usage.js?v=20261114a" data-endpoint="https://atlasdays-calculator-usage.jorickvm.workers.dev/collect"></script>
-  <script defer src="../../assets/js/day-calendar.js?v=20261119c"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261119d"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on. */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

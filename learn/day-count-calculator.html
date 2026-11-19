@@ -45,7 +45,7 @@
   {"@context": "https://schema.org", "@type": "WebApplication", "name": "Day Count Calculator: Countries, States and Personal Goals", "description": "Count days in any country or US state, with no limit by default. Add an optional personal cap or target, compare periods and export your stays.", "url": "https://atlasdays.app/learn/day-count-calculator", "applicationCategory": "TravelApplication", "operatingSystem": "Any"}
   </script>
   <script type="application/ld+json">
-  {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does this decide tax residency?", "acceptedAnswer": {"@type": "Answer", "text": "No. It counts physical-presence dates and optional personal goals. It does not apply country-specific tax, visa or residence rules."}}, {"@type": "Question", "name": "Are arrival and departure included?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Both dates count. A same-day visit counts as one day, and overlapping dates in the same place are deduplicated."}}, {"@type": "Question", "name": "Can I still use the 183-day calculator?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The 183-day calculator remains available separately. Use a country’s specific guide to understand whether that threshold and counting method apply."}}]}
+  {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Does this decide tax residency?", "acceptedAnswer": {"@type": "Answer", "text": "No. It counts physical-presence dates and optional personal goals. It does not apply country-specific tax, visa or residence rules."}}, {"@type": "Question", "name": "Are arrival and departure included?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Both dates count. A same-day visit counts as one day, and overlapping dates in the same place are deduplicated."}}]}
   </script>
   <script type="application/ld+json">
   {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "AtlasDays", "item": "https://atlasdays.app"}, {"@type": "ListItem", "position": 2, "name": "Travel Rules", "item": "https://atlasdays.app/learn/"}, {"@type": "ListItem", "position": 3, "name": "Calculators", "item": "https://atlasdays.app/learn/calculators"}, {"@type": "ListItem", "position": 4, "name": "Day count calculator", "item": "https://atlasdays.app/learn/day-count-calculator"}]}
@@ -59,7 +59,7 @@
   <link rel="stylesheet" href="../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../assets/css/site-footer.css?v=20261027h" />
-  <link rel="stylesheet" href="../assets/css/day-calendar.css?v=20261119c" />
+  <link rel="stylesheet" href="../assets/css/day-calendar.css?v=20261119d" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
@@ -157,7 +157,7 @@
         <li><a href="#faq">FAQ</a></li>
       </ul>
     </details>
-    <script>(function(){var t=document.currentScript.previousElementSibling;if(matchMedia('(min-width: 760px)').matches)t.open=true})();</script>
+    
     <h2 id="calculator">Count your days</h2>
     <p>Choose a place and period, then add your stays. Arrival and departure days count; overlapping days in the same place count once. Totals include future stays you enter.</p>
 <div class="daycal" id="day-count" data-day-calendar="dayCount" data-cal-placement="standalone">
@@ -210,7 +210,7 @@
     "other": "{n} days without a country"
   },
   "jurisdiction": "Country or US state",
-  "addJurisdiction": "Add country or US state",
+  "addJurisdiction": "Choose a place",
   "noJurisdictionMatch": "No matching country or US state",
   "stateUSAL": "Alabama (US)",
   "stateUSAK": "Alaska (US)",
@@ -316,7 +316,7 @@
       </dialog>
     </div>
     <h2 id="a-day-record-without-a-tax-verdict">A day record without a tax verdict</h2>
-    <p>Count days starts with no limit. There is no 183-day default, progress percentage or safe/unsafe status. The number is simply the total for the selected place and period. A day on which you visit two countries counts in both countries, so totals across countries can exceed the number of dates in your calendar.</p>
+    <p>Count days starts with no limit. There is no 183-day default or safe/unsafe status. The number is simply the total for the selected place and period. A day on which you visit two countries counts in both countries, so totals across countries can exceed the number of dates in your calendar. The bar shows counted days as a share of the selected period.</p>
     <h2 id="use-a-personal-cap-or-target">Use a personal cap or target</h2>
     <p>Choose Stay below or Reach target and enter your own number. For example, a personal cap of 30 days can help plan a summer away from home. A target of 60 days can help you spend more time near family. Neither number becomes a legal threshold because it appears in a calculator.</p>
     <h2 id="choose-the-period-that-answers-your-question">Choose the period that answers your question</h2>
@@ -328,7 +328,6 @@
     <h2 id="faq">FAQ</h2>
     <h3>Does this decide tax residency?</h3><p>No. It counts physical-presence dates and optional personal goals. It does not apply country-specific tax, visa or residence rules.</p>
     <h3>Are arrival and departure included?</h3><p>Yes. Both dates count. A same-day visit counts as one day, and overlapping dates in the same place are deduplicated.</p>
-    <h3>Can I still use the 183-day calculator?</h3><p class="calc-callout">Yes. The <a href="/learn/183-day-rule-calculator">183-day calculator</a> remains available separately. Use a country’s specific guide to understand whether that threshold and counting method apply.</p>
 
     <p class="learn-disclaimer"><strong>About this article:</strong> AtlasDays provides general information, not legal, tax, or immigration advice. Rules change and outcomes depend on your circumstances, so never rely on it alone: check the linked official source or ask a qualified professional.</p>
 
@@ -391,9 +390,9 @@
   <script>window.AtlasDaysNavStrings={"menuOpen":"Open navigation menu","menuClose":"Close navigation menu"};</script>
   <script src="../assets/js/navigation.js?v=20261027j"></script>
   <script defer src="../assets/js/rules/days-183.js?v=20261113b"></script>
-  <script defer src="../assets/js/rules/day-count.js?v=20261119c"></script>
+  <script defer src="../assets/js/rules/day-count.js?v=20261119d"></script>
   <script defer src="../assets/js/calculator-usage.js?v=20261114a" data-endpoint="https://atlasdays-calculator-usage.jorickvm.workers.dev/collect"></script>
-  <script defer src="../assets/js/day-calendar.js?v=20261119c"></script>
+  <script defer src="../assets/js/day-calendar.js?v=20261119d"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on. */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

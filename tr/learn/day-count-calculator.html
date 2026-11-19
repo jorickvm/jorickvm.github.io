@@ -73,14 +73,6 @@
           "@type": "Answer",
           "text": "Evet. İki tarih de sayılır. Aynı günlük ziyaret bir gün sayılır; aynı yerde çakışan tarihler tekilleştirilir."
         }
-      },
-      {
-        "@type": "Question",
-        "name": "183 gün hesaplama aracını hâlâ kullanabilir miyim?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Evet. 183 gün hesaplama aracı ayrıca kullanılabilir. Eşiğin ve sayım yönteminin geçerli olup olmadığını anlamak için ilgili ülke rehberini kullanın."
-        }
       }
     ]
   }
@@ -126,7 +118,7 @@
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
-  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261119c" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261119d" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">İçeriğe geç</a>
@@ -224,7 +216,7 @@
         <li><a href="#s-k-sorulan-sorular">Sık sorulan sorular</a></li>
       </ul>
     </details>
-    <script>(function(){var t=document.currentScript.previousElementSibling;if(matchMedia('(min-width: 760px)').matches)t.open=true})();</script>
+    
     <h2 id="calculator">Günlerinizi hesaplayın</h2>
     <p>Bir yer ve dönem seçin, ardından kalışları ekleyin. Giriş ve çıkış günleri sayılır; aynı yerdeki çakışan günler bir kez sayılır. Toplamlara girdiğiniz gelecekteki kalışlar dahildir.</p>
 <div class="daycal" id="day-count" data-day-calendar="dayCount" data-cal-placement="standalone">
@@ -277,7 +269,7 @@
     "other": "Ülke seçilmemiş {n} gün"
   },
   "jurisdiction": "Ülke veya ABD eyaleti",
-  "addJurisdiction": "Ülke veya ABD eyaleti ekle",
+  "addJurisdiction": "Yer seçin",
   "noJurisdictionMatch": "Eşleşen ülke veya ABD eyaleti yok",
   "stateUSAL": "Alabama (ABD)",
   "stateUSAK": "Alaska (ABD)",
@@ -383,7 +375,7 @@
       </dialog>
     </div>
     <h2 id="vergi-karar-vermeyen-g-n-kayd">Vergi kararı vermeyen gün kaydı</h2>
-    <p>“Gün say” limitsiz başlar. Varsayılan 183 gün, ilerleme yüzdesi veya güvenli/güvensiz durumu yoktur. Sayı yalnızca seçilen yer ve dönemin toplamıdır. İki ülkeyi ziyaret ettiğiniz gün her ikisinde de sayılır; ülke toplamları takviminizdeki tarih sayısını aşabilir.</p>
+    <p>“Gün say” limitsiz başlar. Varsayılan 183 gün veya güvenli/güvensiz durumu yoktur. Sayı yalnızca seçilen yer ve dönemin toplamıdır. İki ülkeyi ziyaret ettiğiniz gün her ikisinde de sayılır; ülke toplamları takviminizdeki tarih sayısını aşabilir. Çubuk, sayılan günlerin seçilen dönemdeki payını gösterir.</p>
     <h2 id="ki-isel-s-n-r-veya-hedef-kullan-n">Kişisel sınır veya hedef kullanın</h2>
     <p>“Sınırın altında kal” veya “Hedefe ulaş” seçip kendi sayınızı girin. Örneğin 30 günlük kişisel sınır, evden uzakta bir yaz planlamanıza yardımcı olabilir. 60 günlük hedef, ailenize yakın daha fazla zaman geçirmenize yardımcı olabilir. Hiçbiri hesaplama aracında göründüğü için hukuki eşik olmaz.</p>
     <h2 id="sorunuzu-yan-tlayan-d-nemi-se-in">Sorunuzu yanıtlayan dönemi seçin</h2>
@@ -395,7 +387,6 @@
     <h2 id="s-k-sorulan-sorular">Sık sorulan sorular</h2>
     <h3>Bu vergi ikametini belirler mi?</h3><p>Hayır. Fiziksel bulunma tarihlerini ve isteğe bağlı kişisel hedefleri sayar. Ülkeye özgü vergi, vize veya ikamet kurallarını uygulamaz.</p>
     <h3>Giriş ve çıkış dahil mi?</h3><p>Evet. İki tarih de sayılır. Aynı günlük ziyaret bir gün sayılır; aynı yerde çakışan tarihler tekilleştirilir.</p>
-    <h3>183 gün hesaplama aracını hâlâ kullanabilir miyim?</h3><p class="calc-callout">Evet. <a href="/tr/learn/183-day-rule-calculator">183 gün hesaplama aracı</a> ayrıca kullanılabilir. Eşiğin ve sayım yönteminin geçerli olup olmadığını anlamak için ilgili ülke rehberini kullanın.</p>
 
     <p class="learn-disclaimer"><strong>Bu makale hakkında:</strong> AtlasDays genel bilgi sunar; hukuki, vergisel veya göçmenlik danışmanlığı sağlamaz. Kurallar değişir ve sonuç durumunuza bağlıdır. Bu nedenle hiçbir zaman yalnızca AtlasDays&#x27;e güvenmeyin: bağlantısı verilen resmî kaynağı kontrol edin veya yetkin bir uzmana danışın.</p>
 
@@ -458,9 +449,9 @@
   <script>window.AtlasDaysNavStrings={"menuOpen":"Gezinme menüsünü aç","menuClose":"Gezinme menüsünü kapat"};</script>
   <script src="../../assets/js/navigation.js?v=20261027j"></script>
   <script defer src="../../assets/js/rules/days-183.js?v=20261113b"></script>
-  <script defer src="../../assets/js/rules/day-count.js?v=20261119c"></script>
+  <script defer src="../../assets/js/rules/day-count.js?v=20261119d"></script>
   <script defer src="../../assets/js/calculator-usage.js?v=20261114a" data-endpoint="https://atlasdays-calculator-usage.jorickvm.workers.dev/collect"></script>
-  <script defer src="../../assets/js/day-calendar.js?v=20261119c"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261119d"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on. */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

@@ -73,14 +73,6 @@
           "@type": "Answer",
           "text": "Sì. Entrambe le date contano. Una visita in giornata conta come un giorno e le date sovrapposte nello stesso luogo non vengono duplicate."
         }
-      },
-      {
-        "@type": "Question",
-        "name": "Posso ancora usare il calcolatore dei 183 giorni?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Sì. Il calcolatore dei 183 giorni resta disponibile separatamente. Consulta la guida del paese per capire se quella soglia e quel metodo di conteggio si applicano."
-        }
       }
     ]
   }
@@ -126,7 +118,7 @@
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
-  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261119c" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261119d" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Vai al contenuto</a>
@@ -224,7 +216,7 @@
         <li><a href="#domande-frequenti">Domande frequenti</a></li>
       </ul>
     </details>
-    <script>(function(){var t=document.currentScript.previousElementSibling;if(matchMedia('(min-width: 760px)').matches)t.open=true})();</script>
+    
     <h2 id="calculator">Conta i tuoi giorni</h2>
     <p>Scegli un luogo e un periodo, poi aggiungi i soggiorni. Arrivo e partenza contano; le date sovrapposte nello stesso luogo contano una volta. I totali includono i soggiorni futuri inseriti.</p>
 <div class="daycal" id="day-count" data-day-calendar="dayCount" data-cal-placement="standalone">
@@ -277,7 +269,7 @@
     "other": "{n} giorni senza paese"
   },
   "jurisdiction": "Paese o stato USA",
-  "addJurisdiction": "Aggiungi paese o stato USA",
+  "addJurisdiction": "Scegli un luogo",
   "noJurisdictionMatch": "Nessun paese o stato USA corrispondente",
   "stateUSAL": "Alabama (USA)",
   "stateUSAK": "Alaska (USA)",
@@ -383,7 +375,7 @@
       </dialog>
     </div>
     <h2 id="un-registro-dei-giorni-senza-valutazioni-fiscali">Un registro dei giorni senza valutazioni fiscali</h2>
-    <p>Conta i giorni parte senza limite. Non ci sono un valore predefinito di 183 giorni, una percentuale di avanzamento o un’indicazione di sicurezza fiscale. Il numero è semplicemente il totale del luogo e del periodo selezionati. Una giornata in due paesi conta in entrambi, quindi la somma dei paesi può superare il numero di date del calendario.</p>
+    <p>Conta i giorni parte senza limite. Non ci sono un valore predefinito di 183 giorni o un’indicazione di sicurezza fiscale. Il numero è semplicemente il totale del luogo e del periodo selezionati. Una giornata in due paesi conta in entrambi, quindi la somma dei paesi può superare il numero di date del calendario. La barra mostra la quota del periodo selezionato occupata dai giorni conteggiati.</p>
     <h2 id="usa-un-limite-o-un-obiettivo-personale">Usa un limite o un obiettivo personale</h2>
     <p>Scegli Resta sotto o Raggiungi l’obiettivo e inserisci il tuo numero. Per esempio, un limite personale di 30 giorni può aiutarti a organizzare un’estate lontano da casa. Un obiettivo di 60 giorni può aiutarti a trascorrere più tempo vicino alla famiglia. Nessuno dei due diventa una soglia legale perché compare in un calcolatore.</p>
     <h2 id="scegli-il-periodo-che-risponde-alla-tua-domanda">Scegli il periodo che risponde alla tua domanda</h2>
@@ -395,7 +387,6 @@
     <h2 id="domande-frequenti">Domande frequenti</h2>
     <h3>Il calcolo determina la residenza fiscale?</h3><p>No. Conta le date di presenza fisica e gli obiettivi personali facoltativi. Non applica le norme fiscali, sui visti o sulla residenza dei singoli paesi.</p>
     <h3>Arrivo e partenza sono inclusi?</h3><p>Sì. Entrambe le date contano. Una visita in giornata conta come un giorno e le date sovrapposte nello stesso luogo non vengono duplicate.</p>
-    <h3>Posso ancora usare il calcolatore dei 183 giorni?</h3><p class="calc-callout">Sì. Il <a href="/it/learn/183-day-rule-calculator">calcolatore dei 183 giorni</a> resta disponibile separatamente. Consulta la guida del paese per capire se quella soglia e quel metodo di conteggio si applicano.</p>
 
     <p class="learn-disclaimer"><strong>Informazioni su questo articolo:</strong> AtlasDays fornisce informazioni generali, non consulenza legale, fiscale o in materia di immigrazione. Le regole cambiano e l’esito dipende dalla tua situazione: non affidarti mai soltanto ad AtlasDays. Consulta la fonte ufficiale citata o rivolgiti a un professionista qualificato.</p>
 
@@ -458,9 +449,9 @@
   <script>window.AtlasDaysNavStrings={"menuOpen":"Apri menu di navigazione","menuClose":"Chiudi menu di navigazione"};</script>
   <script src="../../assets/js/navigation.js?v=20261027j"></script>
   <script defer src="../../assets/js/rules/days-183.js?v=20261113b"></script>
-  <script defer src="../../assets/js/rules/day-count.js?v=20261119c"></script>
+  <script defer src="../../assets/js/rules/day-count.js?v=20261119d"></script>
   <script defer src="../../assets/js/calculator-usage.js?v=20261114a" data-endpoint="https://atlasdays-calculator-usage.jorickvm.workers.dev/collect"></script>
-  <script defer src="../../assets/js/day-calendar.js?v=20261119c"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261119d"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on. */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

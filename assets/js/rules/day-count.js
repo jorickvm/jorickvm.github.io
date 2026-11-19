@@ -47,7 +47,9 @@
         return control;
       });
       if (selectedGoal === "count" || chosenLimit === null) {
+        var period = base.range(context);
         result.meter.limit = null;
+        result.meter.periodDays = period.to - period.from + 1;
         result.meter.tone = "normal";
         result.statusText = "";
       }

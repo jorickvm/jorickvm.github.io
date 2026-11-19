@@ -73,14 +73,6 @@
           "@type": "Answer",
           "text": "是。兩天都計入。當天往返算一天，同一地點的重疊日期不重複計算。"
         }
-      },
-      {
-        "@type": "Question",
-        "name": "仍可使用 183 天計算器嗎？",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "可以。183 天計算器仍獨立提供。請查看各國指南，確認該門檻與計算方式是否適用。"
-        }
       }
     ]
   }
@@ -126,7 +118,7 @@
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
-  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261119c" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261119d" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">跳至主要內容</a>
@@ -224,11 +216,12 @@
         <li><a href="#section-7">常見問題</a></li>
       </ul>
     </details>
-    <script>(function(){var t=document.currentScript.previousElementSibling;if(matchMedia('(min-width: 760px)').matches)t.open=true})();</script>
+    
     <h2 id="calculator">計算停留天數</h2>
     <p>選擇地點與期間，再新增停留。入境與出境日都計入，同一地點的重疊日期只算一次。總數包含輸入的未來停留。</p>
 <div class="daycal" id="day-count" data-day-calendar="dayCount" data-cal-placement="standalone">
-      <script type="application/json" data-cal-strings>{
+      <script type="application/json" data-cal-strings>
+{
   "days": "天數",
   "hintStart": "點選日期，新增一段停留。",
   "hintEnd": "接著點選這段停留的另一端。",
@@ -271,7 +264,7 @@
     "other": "有 {n} 天未選擇國家或地區"
   },
   "jurisdiction": "國家或美國州",
-  "addJurisdiction": "新增國家或美國州",
+  "addJurisdiction": "選擇地點",
   "noJurisdictionMatch": "找不到相符的國家或美國州",
   "stateUSAL": "阿拉巴馬州（美國）",
   "stateUSAK": "阿拉斯加州（美國）",
@@ -328,7 +321,8 @@
   "captionCount": "不設上限，持續記錄。",
   "personalDays": "個人目標天數",
   "enterPersonalDays": "輸入個人天數上限或目標。這裡不預設法律允許的停留額度。"
-}</script>
+}
+</script>
       <p class="cal-hint" data-cal-hint aria-live="polite"></p>
       <div class="cal-window" data-cal-window>
         <div class="cal-head">
@@ -376,7 +370,7 @@
       </dialog>
     </div>
     <h2 id="section-2">記錄天數，不作稅務判定</h2>
-    <p>「記錄天數」預設沒有上限，不預設 183 天，也沒有進度百分比或安全／不安全狀態。數字只是所選地點與期間的合計。同一天到訪兩國會在兩國都計入，因此跨國合計可能超過日曆上的日期數。</p>
+    <p>「記錄天數」預設沒有上限，不預設 183 天，也沒有安全／不安全狀態。數字只是所選地點與期間的合計。同一天到訪兩國會在兩國都計入，因此跨國合計可能超過日曆上的日期數。長條顯示已計算天數占所選期間的比例。</p>
     <h2 id="section-3">使用個人上限或目標</h2>
     <p>選擇「低於上限」或「達成目標」，再輸入自己的數字。例如，30 天的個人上限可協助安排夏季離家旅行，60 天目標可協助增加與家人相近的時間。數字出現在計算器中，不會因此變成法律門檻。</p>
     <h2 id="section-4">選擇符合問題的期間</h2>
@@ -388,7 +382,6 @@
     <h2 id="section-7">常見問題</h2>
     <h3>這會判定稅務居民身分嗎？</h3><p>不會。它計算實際停留日期與選用的個人目標，不套用各國的稅務、簽證或居住規定。</p>
     <h3>入境與出境日都包含嗎？</h3><p>是。兩天都計入。當天往返算一天，同一地點的重疊日期不重複計算。</p>
-    <h3>仍可使用 183 天計算器嗎？</h3><p class="calc-callout">可以。<a href="/zh-Hant/learn/183-day-rule-calculator">183 天計算器</a>仍獨立提供。請查看各國指南，確認該門檻與計算方式是否適用。</p>
 
     <p class="learn-disclaimer"><strong>關於本文：</strong>AtlasDays 僅提供一般資訊，不構成法律、稅務或移民建議。規定可能變更，結果也會因個人情況而異，因此不應只依賴 AtlasDays。請查看文中連結的官方資料來源，或諮詢合格專業人士。</p>
 
@@ -451,9 +444,9 @@
   <script>window.AtlasDaysNavStrings={"menuOpen":"開啟導覽選單","menuClose":"關閉導覽選單"};</script>
   <script src="../../assets/js/navigation.js?v=20261027j"></script>
   <script defer src="../../assets/js/rules/days-183.js?v=20261113b"></script>
-  <script defer src="../../assets/js/rules/day-count.js?v=20261119c"></script>
+  <script defer src="../../assets/js/rules/day-count.js?v=20261119d"></script>
   <script defer src="../../assets/js/calculator-usage.js?v=20261114a" data-endpoint="https://atlasdays-calculator-usage.jorickvm.workers.dev/collect"></script>
-  <script defer src="../../assets/js/day-calendar.js?v=20261119c"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261119d"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on. */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

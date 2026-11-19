@@ -73,14 +73,6 @@
           "@type": "Answer",
           "text": "예. 두 날짜 모두 포함합니다. 당일 방문은 하루이며 같은 장소의 겹치는 날짜는 중복 계산하지 않습니다."
         }
-      },
-      {
-        "@type": "Question",
-        "name": "183일 계산기도 사용할 수 있습니까?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "예. 183일 계산기는 별도로 제공됩니다. 해당 기준과 계산 방식의 적용 여부는 국가별 안내에서 확인하십시오."
-        }
       }
     ]
   }
@@ -126,7 +118,7 @@
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
-  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261119c" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261119d" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">본문으로 건너뛰기</a>
@@ -224,11 +216,12 @@
         <li><a href="#section-7">자주 묻는 질문</a></li>
       </ul>
     </details>
-    <script>(function(){var t=document.currentScript.previousElementSibling;if(matchMedia('(min-width: 760px)').matches)t.open=true})();</script>
+    
     <h2 id="calculator">체류일 계산</h2>
     <p>장소와 기간을 선택하고 체류를 추가하십시오. 입국일과 출국일을 포함하며 같은 장소의 겹치는 날짜는 한 번만 셉니다. 입력한 미래 체류도 합계에 포함됩니다.</p>
 <div class="daycal" id="day-count" data-day-calendar="dayCount" data-cal-placement="standalone">
-      <script type="application/json" data-cal-strings>{
+      <script type="application/json" data-cal-strings>
+{
   "days": "일수",
   "hintStart": "날짜를 눌러 체류를 추가하십시오.",
   "hintEnd": "체류의 다른 끝 날짜를 누르십시오.",
@@ -271,7 +264,7 @@
     "other": "국가 미지정 {n}일"
   },
   "jurisdiction": "국가 또는 미국 주",
-  "addJurisdiction": "국가 또는 미국 주 추가",
+  "addJurisdiction": "장소 선택",
   "noJurisdictionMatch": "일치하는 국가 또는 미국 주가 없습니다",
   "stateUSAL": "앨라배마주 (미국)",
   "stateUSAK": "알래스카주 (미국)",
@@ -328,7 +321,8 @@
   "captionCount": "한도 없이 기록합니다.",
   "personalDays": "개인 목표 일수",
   "enterPersonalDays": "개인 상한 또는 목표 일수를 입력하십시오. 법적 허용 기간은 가정하지 않습니다."
-}</script>
+}
+</script>
       <p class="cal-hint" data-cal-hint aria-live="polite"></p>
       <div class="cal-window" data-cal-window>
         <div class="cal-head">
@@ -376,7 +370,7 @@
       </dialog>
     </div>
     <h2 id="section-2">세법상 판정 없는 일수 기록</h2>
-    <p>'일수 기록'은 한도 없이 시작합니다. 기본 183일, 진행률, 안전·위험 상태가 없습니다. 숫자는 선택한 장소와 기간의 합계일 뿐입니다. 하루에 두 나라를 방문하면 두 나라 모두에서 계산하므로 국가별 합계는 달력의 날짜 수보다 클 수 있습니다.</p>
+    <p>'일수 기록'은 한도 없이 시작합니다. 기본 183일이나 안전·위험 상태가 없습니다. 숫자는 선택한 장소와 기간의 합계일 뿐입니다. 하루에 두 나라를 방문하면 두 나라 모두에서 계산하므로 국가별 합계는 달력의 날짜 수보다 클 수 있습니다. 막대는 선택한 기간에서 기록된 일수가 차지하는 비율을 보여 줍니다.</p>
     <h2 id="section-3">개인 상한이나 목표 사용하기</h2>
     <p>'한도 미만 유지' 또는 '목표 달성'을 선택하고 원하는 숫자를 입력하십시오. 예를 들어 개인 상한 30일은 여름 여행을 계획하는 데 도움이 되고, 60일 목표는 가족 가까이에서 더 오래 지내는 데 도움이 됩니다. 계산기에 표시된다고 법적 기준이 되지는 않습니다.</p>
     <h2 id="section-4">질문에 맞는 기간 선택하기</h2>
@@ -388,7 +382,6 @@
     <h2 id="section-7">자주 묻는 질문</h2>
     <h3>세법상 거주를 판단합니까?</h3><p>아닙니다. 실제 체류 날짜와 선택한 개인 목표를 계산합니다. 국가별 세금·비자·거주 규정을 적용하지 않습니다.</p>
     <h3>입국일과 출국일을 포함합니까?</h3><p>예. 두 날짜 모두 포함합니다. 당일 방문은 하루이며 같은 장소의 겹치는 날짜는 중복 계산하지 않습니다.</p>
-    <h3>183일 계산기도 사용할 수 있습니까?</h3><p class="calc-callout">예. <a href="/ko/learn/183-day-rule-calculator">183일 계산기</a>는 별도로 제공됩니다. 해당 기준과 계산 방식의 적용 여부는 국가별 안내에서 확인하십시오.</p>
 
     <p class="learn-disclaimer"><strong>이 문서에 대하여:</strong> AtlasDays는 일반적인 정보를 제공할 뿐이며, 법률, 세무, 이민에 관한 자문이 아닙니다. 규정은 바뀌고 결과는 개인의 상황에 따라 달라지므로, AtlasDays에만 의존하지 말고 링크된 공식 출처를 확인하거나 자격을 갖춘 전문가에게 문의하십시오.</p>
 
@@ -451,9 +444,9 @@
   <script>window.AtlasDaysNavStrings={"menuOpen":"탐색 메뉴 열기","menuClose":"탐색 메뉴 닫기"};</script>
   <script src="../../assets/js/navigation.js?v=20261027j"></script>
   <script defer src="../../assets/js/rules/days-183.js?v=20261113b"></script>
-  <script defer src="../../assets/js/rules/day-count.js?v=20261119c"></script>
+  <script defer src="../../assets/js/rules/day-count.js?v=20261119d"></script>
   <script defer src="../../assets/js/calculator-usage.js?v=20261114a" data-endpoint="https://atlasdays-calculator-usage.jorickvm.workers.dev/collect"></script>
-  <script defer src="../../assets/js/day-calendar.js?v=20261119c"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261119d"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on. */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

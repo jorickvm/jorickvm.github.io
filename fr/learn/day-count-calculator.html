@@ -73,14 +73,6 @@
           "@type": "Answer",
           "text": "Oui. Les deux dates comptent. Une visite dans la journée compte pour un jour, et les dates qui se chevauchent au même endroit ne sont pas doublées."
         }
-      },
-      {
-        "@type": "Question",
-        "name": "Puis-je toujours utiliser le calculateur des 183 jours ?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Oui. Le calculateur des 183 jours reste disponible séparément. Consultez le guide du pays pour savoir si ce seuil et ce mode de décompte s’appliquent."
-        }
       }
     ]
   }
@@ -126,7 +118,7 @@
   <link rel="stylesheet" href="../../assets/css/article-components.css?v=20261026b" />
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
-  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261119c" />
+  <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261119d" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Aller au contenu</a>
@@ -224,7 +216,7 @@
         <li><a href="#questions-fr-quentes">Questions fréquentes</a></li>
       </ul>
     </details>
-    <script>(function(){var t=document.currentScript.previousElementSibling;if(matchMedia('(min-width: 760px)').matches)t.open=true})();</script>
+    
     <h2 id="calculator">Comptez vos jours</h2>
     <p>Choisissez un lieu et une période, puis ajoutez vos séjours. L’arrivée et le départ comptent ; les dates qui se chevauchent au même endroit comptent une fois. Les totaux incluent les séjours futurs saisis.</p>
 <div class="daycal" id="day-count" data-day-calendar="dayCount" data-cal-placement="standalone">
@@ -282,7 +274,7 @@
     "other": "{n} jours sans pays"
   },
   "jurisdiction": "Pays ou État américain",
-  "addJurisdiction": "Ajouter un pays ou un État américain",
+  "addJurisdiction": "Choisissez un lieu",
   "noJurisdictionMatch": "Aucun pays ni État américain correspondant",
   "stateUSAL": "Alabama (États-Unis)",
   "stateUSAK": "Alaska (États-Unis)",
@@ -388,7 +380,7 @@
       </dialog>
     </div>
     <h2 id="un-relev-de-jours-sans-verdict-fiscal">Un relevé de jours sans verdict fiscal</h2>
-    <p>Compter les jours démarre sans limite. Il n’y a ni valeur de 183 jours par défaut, ni pourcentage de progression, ni statut de sécurité fiscale. Le nombre est simplement le total du lieu et de la période choisis. Une journée passée dans deux pays compte dans chacun : la somme des pays peut donc dépasser le nombre de dates du calendrier.</p>
+    <p>Compter les jours démarre sans limite. Il n’y a ni valeur de 183 jours par défaut, ni statut de sécurité fiscale. Le nombre est simplement le total du lieu et de la période choisis. Une journée passée dans deux pays compte dans chacun : la somme des pays peut donc dépasser le nombre de dates du calendrier. La barre indique la part des jours comptés dans la période choisie.</p>
     <h2 id="utilisez-un-plafond-ou-un-objectif-personnel">Utilisez un plafond ou un objectif personnel</h2>
     <p>Choisissez Rester en dessous ou Atteindre l’objectif et saisissez votre nombre. Un plafond personnel de 30 jours peut, par exemple, aider à organiser un été loin de chez vous. Un objectif de 60 jours peut vous aider à passer davantage de temps près de votre famille. Aucun ne devient un seuil légal parce qu’il figure dans un calculateur.</p>
     <h2 id="choisissez-la-p-riode-qui-r-pond-votre-question">Choisissez la période qui répond à votre question</h2>
@@ -400,7 +392,6 @@
     <h2 id="questions-fr-quentes">Questions fréquentes</h2>
     <h3>Le calcul détermine-t-il la résidence fiscale ?</h3><p>Non. Il compte les dates de présence physique et les objectifs personnels facultatifs. Il n’applique pas les règles fiscales, de visa ou de résidence propres aux pays.</p>
     <h3>L’arrivée et le départ sont-ils inclus ?</h3><p>Oui. Les deux dates comptent. Une visite dans la journée compte pour un jour, et les dates qui se chevauchent au même endroit ne sont pas doublées.</p>
-    <h3>Puis-je toujours utiliser le calculateur des 183 jours ?</h3><p class="calc-callout">Oui. Le <a href="/fr/learn/183-day-rule-calculator">calculateur des 183 jours</a> reste disponible séparément. Consultez le guide du pays pour savoir si ce seuil et ce mode de décompte s’appliquent.</p>
 
     <p class="learn-disclaimer"><strong>À propos de cet article :</strong> AtlasDays fournit des informations générales, pas des conseils juridiques, fiscaux ou en matière d’immigration. Les règles changent et le résultat dépend de votre situation, alors ne vous fiez jamais uniquement à AtlasDays : consultez la source officielle citée ou demandez conseil à un professionnel qualifié.</p>
 
@@ -463,9 +454,9 @@
   <script>window.AtlasDaysNavStrings={"menuOpen":"Ouvrir le menu de navigation","menuClose":"Fermer le menu de navigation"};</script>
   <script src="../../assets/js/navigation.js?v=20261027j"></script>
   <script defer src="../../assets/js/rules/days-183.js?v=20261113b"></script>
-  <script defer src="../../assets/js/rules/day-count.js?v=20261119c"></script>
+  <script defer src="../../assets/js/rules/day-count.js?v=20261119d"></script>
   <script defer src="../../assets/js/calculator-usage.js?v=20261114a" data-endpoint="https://atlasdays-calculator-usage.jorickvm.workers.dev/collect"></script>
-  <script defer src="../../assets/js/day-calendar.js?v=20261119c"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261119d"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on. */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();
