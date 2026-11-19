@@ -68,6 +68,7 @@ These pages describe something scheduled to change. The tier cadence would revie
 | 2027-03-31 | 1 | [learn/canada-pr-residency-obligation.html](/learn/canada-pr-residency-obligation) | exact-date-required | 3 |
 | 2027-03-31 | 1 | [learn/germany-naturalization-absence-limit.html](/learn/germany-naturalization-absence-limit) | exact-date-required | 3 |
 | 2027-03-31 | 1 | [learn/india-tourist-visa-stay-limits.html](/learn/india-tourist-visa-stay-limits) | exact-date-required | 3 |
+| 2027-03-31 | 1 | [learn/new-zealand-citizenship-calculator.html](/learn/new-zealand-citizenship-calculator) | exact-date-required | 3 |
 | 2027-03-31 | 1 | [learn/new-zealand-citizenship-presence-requirement.html](/learn/new-zealand-citizenship-presence-requirement) | exact-date-required | 3 |
 | 2027-03-31 | 1 | [learn/us-green-card-absence-limits.html](/learn/us-green-card-absence-limits) | exact-date-required | 3 |
 | 2027-03-31 | 1 | [learn/us-naturalization-physical-presence.html](/learn/us-naturalization-physical-presence) | exact-date-required | 2 |
@@ -87,6 +88,7 @@ These pages describe something scheduled to change. The tier cadence would revie
 | 2027-04-05 | 1 | [learn/uae-residence-visa-6-months-outside.html](/learn/uae-residence-visa-6-months-outside) | exact-date-required | 1 |
 | 2027-04-07 | 1 | [learn/oman-residence-visa-6-months-outside.html](/learn/oman-residence-visa-6-months-outside) | exact-date-required | 1 |
 | 2027-04-08 | 1 | [learn/what-counts-as-a-day-for-visa-purposes.html](/learn/what-counts-as-a-day-for-visa-purposes) | exact-date-required | 21 |
+| 2027-04-09 | 1 | [learn/uk-citizenship-absence-calculator.html](/learn/uk-citizenship-absence-calculator) | exact-date-required | 4 |
 | 2027-04-09 | 1 | [learn/uk-citizenship-absence-limits.html](/learn/uk-citizenship-absence-limits) | exact-date-required | 4 |
 | 2027-04-24 | 1 | [learn/spain-long-term-residence-absences.html](/learn/spain-long-term-residence-absences) | exact-date-required | 3 |
 | 2027-04-25 | 1 | [learn/eu-long-term-resident-status-absences.html](/learn/eu-long-term-resident-status-absences) | exact-date-required | 2 |
@@ -100,6 +102,7 @@ These pages describe something scheduled to change. The tier cadence would revie
 | 2027-05-12 | 1 | [learn/japan-90-day-rule.html](/learn/japan-90-day-rule) | exact-date-required | 2 |
 | 2027-05-12 | 1 | [learn/schengen-countries-list-90-180-rule.html](/learn/schengen-countries-list-90-180-rule) | exact-date-required | 3 |
 | 2027-05-12 | 1 | [learn/schengen-single-entry-visa.html](/learn/schengen-single-entry-visa) | exact-date-required | 2 |
+| 2027-05-12 | 1 | [learn/turkiye-90-180-calculator.html](/learn/turkiye-90-180-calculator) | exact-date-required | 2 |
 | 2027-05-12 | 1 | [learn/turkiye-90-180-rule.html](/learn/turkiye-90-180-rule) | exact-date-required | 2 |
 | 2027-05-12 | 1 | [learn/us-b1-b2-visa-180-day-limit.html](/learn/us-b1-b2-visa-180-day-limit) | exact-date-required | 4 |
 | 2027-05-12 | 1 | [learn/us-visa-waiver-90-day-limit.html](/learn/us-visa-waiver-90-day-limit) | exact-date-required | 2 |
