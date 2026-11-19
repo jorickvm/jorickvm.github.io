@@ -18,6 +18,47 @@
     <p>Record arrival, the expiry of the stay permit and departure. Keep each extension approval with the original permission. For example, an initial 60-day stay followed by an approved additional 60 days gives a total of 120 days for that stay, not a fresh 120 days from approval.</p>
     <h2>Business visits are not employment permission</h2>
     <p>Follow the activities authorised by the visa and the expiry stated on your stay permit. Do not substitute the visa’s overall validity for that date, or use a business-visit record as evidence that local employment is permitted. A later entry is a new immigration event and should be recorded separately.</p>
+
+    <h2>How an extension changes the count</h2>
+    <div class="example"><p><strong>Illustrative dates:</strong> treating 1 March 2026 as day one, a 60-day stay ends on 29 April. If an extension grants another 60 days, the total becomes 120 days from the original arrival, ending on 28 June under that same inclusive convention.</p><p>An approval received on 15 April does not make 15 April the arrival date. Keep 1 March as the start and use the new expiry on the permit. The example is arithmetic; your issued stay permission remains the authority.</p></div>
+    <h2>Three dates that are easy to mix up</h2>
+    <dl class="kv kv-text"><div><dt>Visa validity</dt><dd>The period in which the visa can be used under its terms. It is not the duration of a single stay.</dd></div><div><dt>Stay-permit expiry</dt><dd>The deadline for the current stay, including an approved extension.</dd></div><div><dt>Planned departure</dt><dd>Your travel plan. It does not extend either document.</dd></div></dl>
+    <p>If these dates disagree, resolve the document question before choosing a convenient number in a calculator. A multiple-entry visa can still have a much shorter allowance for each visit.</p>
+    <h2>A useful extension log</h2>
+    <p>For each entry, retain the arrival record, initial stay expiry, extension application date, approval and revised expiry. Record departure as a separate event. This makes it possible to explain why a stay was longer than the original 60 days without presenting every later visit as if it had the same extension.</p>
+    <p>The business label on a calendar entry is not evidence of which visa you used. If your history contains visits under different permissions, check the document for each entry rather than applying D2 retrospectively to the entire country history.</p>
+
+<h2 id="calculator">Check your departure date</h2>
+<p>Use the departure deadline on your permission when one is given. Otherwise enter the duration actually granted and confirm the counting convention. This tool does not decide your visa allowance or approve an extension.</p>
+    <section class="visa-deadline" data-visa-deadline aria-label="Visa stay deadline calculator">
+      <div class="deadline-layout">
+        <form class="cal-box deadline-fields" novalidate>
+          <label class="deadline-field"><span>Arrival date</span><input type="date" name="arrival" min="1900-01-01" max="2100-12-31" required /></label>
+          <label class="deadline-field"><span>What does your permission specify?</span><select name="mode"><option value="official">Official departure deadline</option><option value="days">Number of days</option><option value="months">Calendar months</option><option value="years">Calendar years</option></select></label>
+          <label class="deadline-field" data-official-field><span>Depart by</span><input type="date" name="deadline" min="1900-01-01" max="2100-12-31" /><small>The last date you are permitted to stay, as recorded for this entry or an approved extension.</small></label>
+          <label class="deadline-field" data-duration-field hidden><span data-duration-label>Days allowed</span><input type="number" name="amount" min="1" max="3660" step="1" inputmode="numeric" /><small>Enter the duration your permission allows. The calculator does not choose an allowance for you.</small></label>
+          <label class="deadline-field" data-convention-field hidden><span>Final day of the calendar period</span><select name="endConvention"><option value="same">Anniversary date</option><option value="before">Day before anniversary</option></select><small>Confirm which convention applies. If that date does not exist in the target month, the anniversary is its last day.</small></label>
+          <label class="deadline-field"><span>Planned departure (optional)</span><input type="date" name="departure" min="1900-01-01" max="2100-12-31" /></label>
+          <div class="deadline-actions"><button type="reset">Clear dates</button></div>
+        </form>
+        <div class="cal-box" aria-live="polite" aria-atomic="true">
+          <p data-deadline-empty>Enter your arrival date and the deadline or duration on your permission.</p>
+          <p class="deadline-error" data-deadline-error hidden></p>
+          <div data-deadline-result hidden>
+            <p class="deadline-label">Departure deadline</p>
+            <p class="deadline-date" data-deadline-date></p>
+            <p class="deadline-detail" data-deadline-basis></p>
+            <span class="cal-pill" data-deadline-status></span>
+            <progress max="1" value="0" aria-label="Elapsed calendar days"></progress>
+            <p class="deadline-detail" data-deadline-progress></p>
+            <p class="deadline-detail" data-deadline-total></p>
+            <p data-departure-status hidden></p>
+          </div>
+          <div class="deadline-actions"><button type="button" data-deadline-download disabled>Download summary as CSV</button></div>
+        </div>
+      </div>
+      <noscript><p>Enable JavaScript to calculate a departure deadline.</p></noscript>
+    </section>
     <div class="cta-box">
       <span class="cta-logo">
         <img class="logo-dark" src="../assets/brand/logo_dark.png?v=20260325a" alt="AtlasDays logo" width="52" height="52" />

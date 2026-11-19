@@ -1525,6 +1525,7 @@ _calculator_assets: dict[str, object] = {}
 # article's calculator slot.
 CALCULATOR_RULES = {
     "days183": {"script": "days-183.js", "page": "learn/183-day-rule-calculator.html"},
+    "dayCount": {"script": "day-count.js", "page": "learn/day-count-calculator.html", "version": "20261119a"},
     "schengen": {"script": "schengen.js", "page": "learn/schengen-calculator.html"},
     "ukIlr": {"script": "uk-ilr.js", "page": "learn/uk-ilr-absence-calculator.html"},
     "presence": {"script": "presence.js", "version": "20261028a"},
@@ -1554,7 +1555,11 @@ def calculator_assets(rule: str = "days183") -> dict[str, str]:
         if not version:
             own = re.search(re.escape(spec["script"]) + r"\?v=(\w+)", str(records[spec["page"]].get("page_scripts", "")))
             version = own.group(1)
-        scripts = re.sub(r"rules/days-183\.js\?v=\w+", f"rules/{spec['script']}?v={version}", scripts)
+        if rule == "dayCount":
+            # The personal counter reuses the existing presence arithmetic.
+            scripts = scripts.replace('</script>', '</script>\n  <script defer src="{{ASSET_PREFIX}}assets/js/rules/day-count.js?v=20261119a"></script>', 1)
+        else:
+            scripts = re.sub(r"rules/days-183\.js\?v=\w+", f"rules/{spec['script']}?v={version}", scripts)
     return {"head_extra": str(page.get("head_extra", "")), "page_scripts": scripts}
 
 
@@ -1807,7 +1812,7 @@ def render_embedded_calculator(content: str, article: dict[str, object], code: s
     # the article's own preset, when the app has one for its rule, or the
     # calculator's `offer` on an article with no preset of its own.
     offer = dict(article["calculator"]).get("offer") or article.get("app_preset")
-    if offer:
+    if offer and rule != "dayCount":
         preset["offer"] = str(offer)
     encoded = html.escape(json.dumps(preset, ensure_ascii=False, separators=(",", ":")), quote=True)
     block = block.replace('id="days-183"', f'id="embed-{rule}"', 1).replace("days-183-import-title", f"embed-{rule}-import-title")

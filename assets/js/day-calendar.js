@@ -834,8 +834,8 @@
         var min = ctl.min || 1, max = ctl.max || 366;
         var num = el("input", { type: "number", inputmode: "numeric", min: String(min), max: String(max), step: "1", value: String(ctl.value), "class": "cal-number", "aria-label": ctl.label || "" });
         num.addEventListener("change", function () {
-          var n = Math.round(+num.value);
-          if (n >= min && n <= max) { settings[ctl.key] = n; changed(ctl); } else num.value = String(ctl.value);
+          var n = ctl.strictInteger ? Number(num.value) : Math.round(+num.value);
+          if (Number.isInteger(n) && n >= min && n <= max) { settings[ctl.key] = n; changed(ctl); } else num.value = String(ctl.value);
         });
         num.addEventListener("keydown", function (e) { if (e.key === "Enter") num.blur(); });
         wrap.appendChild(num);
@@ -923,13 +923,16 @@
           row.appendChild(el("span", { "class": "cal-meter-period" }, bar.label));
           var count = el("span", { "class": "cal-meter-count" });
           count.appendChild(el("b", null, String(bar.days)));
-          count.appendChild(document.createTextNode(" / " + bar.limit));
+          if (bar.limit != null) count.appendChild(document.createTextNode(" / " + bar.limit));
+          else count.replaceChildren(el("b", null, text("tripDays", { n: bar.days })));
           row.appendChild(count);
           meter.appendChild(row);
-          var track = el("div", { "class": "cal-meter-track" }), fill = el("span", { "class": "cal-meter-fill" });
-          fill.style.width = Math.min(100, Math.max(0, (bar.progress != null ? bar.progress : bar.days / bar.limit) * 100)) + "%";
-          track.appendChild(fill);
-          meter.appendChild(track);
+          if (bar.limit != null) {
+            var track = el("div", { "class": "cal-meter-track" }), fill = el("span", { "class": "cal-meter-fill" });
+            fill.style.width = Math.min(100, Math.max(0, (bar.progress != null ? bar.progress : bar.days / bar.limit) * 100)) + "%";
+            track.appendChild(fill);
+            meter.appendChild(track);
+          }
           result.appendChild(meter);
         });
         if (r.statusText && m.title == null) result.appendChild(el("span", { "class": "cal-pill tone-" + m.tone }, r.statusText));

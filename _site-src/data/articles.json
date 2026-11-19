@@ -11567,7 +11567,7 @@
       "last_fact_verified": "2026-09-25",
       "source_note": "The 180-day limit comes from the Immigration Rules, <a href=\"{{source:0}}\" rel=\"nofollow\">Appendix Continuous Residence</a>, and whole-day counting from the Home Office <a href=\"{{source:1}}\" rel=\"nofollow\">continuous residence caseworker guidance</a>.",
       "head_extra": "  <link rel=\"stylesheet\" href=\"{{ASSET_PREFIX}}assets/css/day-calendar.css?v=20261118a\" />",
-      "page_scripts": "  <script defer src=\"{{ASSET_PREFIX}}assets/js/rules/uk-ilr.js?v=20261028b\"></script>\n  <script defer src=\"{{ASSET_PREFIX}}assets/js/day-calendar.js?v=20261117a\"></script>"
+      "page_scripts": "  <script defer src=\"{{ASSET_PREFIX}}assets/js/rules/uk-ilr.js?v=20261028b\"></script>\n  <script defer src=\"{{ASSET_PREFIX}}assets/js/day-calendar.js?v=20261119b\"></script>"
     },
     {
       "path": "learn/uk-ilr-absence-limit.html",
@@ -16315,7 +16315,7 @@
       "last_fact_verified": "2026-10-01",
       "source_note": "Spain's tax agency <a href=\"{{source:0}}\" rel=\"nofollow\">sets residence at more than 183 days in the calendar year</a>, counting sporadic absences. HMRC's <a href=\"{{source:1}}\" rel=\"nofollow\">Statutory Residence Test guidance</a> counts midnights in a tax year that starts on 6 April. The ATO's <a href=\"{{source:2}}\" rel=\"nofollow\">183-day test</a> uses an income year from 1 July, and Inland Revenue New Zealand <a href=\"{{source:3}}\" rel=\"nofollow\">counts 183 days in any 12-month period</a>. The IRS <a href=\"{{source:4}}\" rel=\"nofollow\">Substantial Presence Test</a> weights days from the two previous years.",
       "head_extra": "  <link rel=\"stylesheet\" href=\"{{ASSET_PREFIX}}assets/css/day-calendar.css?v=20261118a\" />",
-      "page_scripts": "  <script defer src=\"{{ASSET_PREFIX}}assets/js/rules/days-183.js?v=20261113b\"></script>\n  <script defer src=\"{{ASSET_PREFIX}}assets/js/day-calendar.js?v=20261117a\"></script>"
+      "page_scripts": "  <script defer src=\"{{ASSET_PREFIX}}assets/js/rules/days-183.js?v=20261113b\"></script>\n  <script defer src=\"{{ASSET_PREFIX}}assets/js/day-calendar.js?v=20261119b\"></script>"
     },
     {
       "path": "learn/schengen-calculator.html",
@@ -16402,7 +16402,7 @@
       "last_fact_verified": "2026-10-04",
       "source_note": "The 90-days-in-any-180 rule is set by the <a href=\"{{source:0}}\" rel=\"nofollow\">Schengen Borders Code</a>, Article 6. The European Commission explains the count, entry and exit days included, with its own <a href=\"{{source:1}}\" rel=\"nofollow\">short-stay calculator</a>, and lists the member countries in its <a href=\"{{source:2}}\" rel=\"nofollow\">Schengen area overview</a>.",
       "head_extra": "  <link rel=\"stylesheet\" href=\"{{ASSET_PREFIX}}assets/css/day-calendar.css?v=20261118a\" />",
-      "page_scripts": "  <script defer src=\"{{ASSET_PREFIX}}assets/js/rules/schengen.js?v=20261028a\"></script>\n  <script defer src=\"{{ASSET_PREFIX}}assets/js/day-calendar.js?v=20261117a\"></script>"
+      "page_scripts": "  <script defer src=\"{{ASSET_PREFIX}}assets/js/rules/schengen.js?v=20261028a\"></script>\n  <script defer src=\"{{ASSET_PREFIX}}assets/js/day-calendar.js?v=20261119b\"></script>"
     },
     {
       "path": "help/backup-and-restore.html",
@@ -17551,7 +17551,9 @@
         }
       ],
       "source_note": "<a href=\"{{source:0}}\" rel=\"nofollow\">Migraciones tourist definition and extension procedure</a>; <a href=\"{{source:1}}\" rel=\"nofollow\">Government guidance for visitor routes</a>; <a href=\"{{source:2}}\" rel=\"nofollow\">Migration Law 25,871, authorised stay and extensions</a>.",
-      "last_fact_verified": "2026-11-19"
+      "last_fact_verified": "2026-11-19",
+      "head_extra": "  <link rel=\"stylesheet\" href=\"{{ASSET_PREFIX}}assets/css/day-calendar.css?v=20261118a\" />\n  <link rel=\"stylesheet\" href=\"{{ASSET_PREFIX}}assets/css/visa-deadline.css?v=20261119a\" />",
+      "page_scripts": "  <script defer src=\"{{ASSET_PREFIX}}assets/js/rules/visa-deadline.js?v=20261119a\"></script>\n  <script defer src=\"{{ASSET_PREFIX}}assets/js/visa-deadline.js?v=20261119a\"></script>"
     },
     {
       "path": "learn/barbados-tax-residency.html",
@@ -17633,7 +17635,24 @@
         }
       ],
       "source_note": "<a href=\"{{source:0}}\" rel=\"nofollow\">Barbados Revenue Authority, individual tax residency</a>; <a href=\"{{source:1}}\" rel=\"nofollow\">Remote Employment Act 2020-23, section 4</a>.",
-      "last_fact_verified": "2026-11-19"
+      "last_fact_verified": "2026-11-19",
+      "calculator": {
+        "rule": "days183",
+        "settings": {
+          "country": "BB",
+          "linkedCountry": "BB",
+          "periodType": "calendar",
+          "limit": 183,
+          "residentAt": 183,
+          "goal": "stay"
+        },
+        "lock": [
+          "country",
+          "periodType",
+          "limitInput"
+        ],
+        "link": "183-bb"
+      }
     },
     {
       "path": "learn/belgium-tax-residency.html",
@@ -17712,7 +17731,19 @@
         }
       ],
       "source_note": "<a href=\"{{source:0}}\" rel=\"nofollow\">FPS Finance guidance on domicile, assets, registration and household</a>.",
-      "last_fact_verified": "2026-11-19"
+      "last_fact_verified": "2026-11-19",
+      "calculator": {
+        "rule": "dayCount",
+        "settings": {
+          "country": "BE",
+          "goal": "count",
+          "periodType": "calendar"
+        },
+        "lock": [
+          "country"
+        ],
+        "link": "daycount"
+      }
     },
     {
       "path": "learn/cambodia-tax-residency.html",
@@ -17794,7 +17825,24 @@
         }
       ],
       "source_note": "<a href=\"{{source:0}}\" rel=\"nofollow\">Prakas 575 of 19 September 2024, Articles 3 and 5</a>; <a href=\"{{source:1}}\" rel=\"nofollow\">General Department of Taxation register confirming the regulation’s status</a>.",
-      "last_fact_verified": "2026-11-19"
+      "last_fact_verified": "2026-11-19",
+      "calculator": {
+        "rule": "days183",
+        "settings": {
+          "country": "KH",
+          "linkedCountry": "KH",
+          "periodType": "rolling",
+          "limit": 183,
+          "residentAt": 183,
+          "goal": "stay"
+        },
+        "lock": [
+          "country",
+          "periodType",
+          "limitInput"
+        ],
+        "link": "183-kh"
+      }
     },
     {
       "path": "learn/germany-tax-residency.html",
@@ -17876,7 +17924,19 @@
         }
       ],
       "source_note": "<a href=\"{{source:0}}\" rel=\"nofollow\">Fiscal Code section 8, residence</a>; <a href=\"{{source:1}}\" rel=\"nofollow\">Fiscal Code section 9, habitual abode</a>.",
-      "last_fact_verified": "2026-11-19"
+      "last_fact_verified": "2026-11-19",
+      "calculator": {
+        "rule": "dayCount",
+        "settings": {
+          "country": "DE",
+          "goal": "count",
+          "periodType": "calendar"
+        },
+        "lock": [
+          "country"
+        ],
+        "link": "daycount"
+      }
     },
     {
       "path": "learn/indonesia-d2-business-visa.html",
@@ -17958,7 +18018,9 @@
         }
       ],
       "source_note": "<a href=\"{{source:0}}\" rel=\"nofollow\">Directorate General of Immigration announcement identifying D2 and the initial allowance</a>; <a href=\"{{source:1}}\" rel=\"nofollow\">Immigration stay-permit and extension guidance</a>.",
-      "last_fact_verified": "2026-11-19"
+      "last_fact_verified": "2026-11-19",
+      "head_extra": "  <link rel=\"stylesheet\" href=\"{{ASSET_PREFIX}}assets/css/day-calendar.css?v=20261118a\" />\n  <link rel=\"stylesheet\" href=\"{{ASSET_PREFIX}}assets/css/visa-deadline.css?v=20261119a\" />",
+      "page_scripts": "  <script defer src=\"{{ASSET_PREFIX}}assets/js/rules/visa-deadline.js?v=20261119a\"></script>\n  <script defer src=\"{{ASSET_PREFIX}}assets/js/visa-deadline.js?v=20261119a\"></script>"
     },
     {
       "path": "learn/japan-tax-residency.html",
@@ -18040,7 +18102,19 @@
         }
       ],
       "source_note": "<a href=\"{{source:0}}\" rel=\"nofollow\">National Tax Agency, domestic resident and non-resident definition</a>; <a href=\"{{source:1}}\" rel=\"nofollow\">NTA income-tax guide, residence and temporary absence</a>.",
-      "last_fact_verified": "2026-11-19"
+      "last_fact_verified": "2026-11-19",
+      "calculator": {
+        "rule": "dayCount",
+        "settings": {
+          "country": "JP",
+          "goal": "count",
+          "periodType": "calendar"
+        },
+        "lock": [
+          "country"
+        ],
+        "link": "daycount"
+      }
     },
     {
       "path": "learn/mexico-tax-residency.html",
@@ -18119,7 +18193,19 @@
         }
       ],
       "source_note": "<a href=\"{{source:0}}\" rel=\"nofollow\">Federal Fiscal Code, Article 9</a>.",
-      "last_fact_verified": "2026-11-19"
+      "last_fact_verified": "2026-11-19",
+      "calculator": {
+        "rule": "dayCount",
+        "settings": {
+          "country": "MX",
+          "goal": "count",
+          "periodType": "calendar"
+        },
+        "lock": [
+          "country"
+        ],
+        "link": "daycount"
+      }
     },
     {
       "path": "learn/netherlands-tax-residency.html",
@@ -18201,7 +18287,19 @@
         }
       ],
       "source_note": "<a href=\"{{source:0}}\" rel=\"nofollow\">Belastingdienst guidance on fiscal residence</a>; <a href=\"{{source:1}}\" rel=\"nofollow\">Belastingdienst guidance on moving abroad</a>.",
-      "last_fact_verified": "2026-11-19"
+      "last_fact_verified": "2026-11-19",
+      "calculator": {
+        "rule": "dayCount",
+        "settings": {
+          "country": "NL",
+          "goal": "count",
+          "periodType": "calendar"
+        },
+        "lock": [
+          "country"
+        ],
+        "link": "daycount"
+      }
     },
     {
       "path": "learn/uae-90-day-tax-residency.html",
@@ -18283,7 +18381,97 @@
         }
       ],
       "source_note": "<a href=\"{{source:0}}\" rel=\"nofollow\">Federal Tax Authority guide, sections 5.2.2 and 6</a>; <a href=\"{{source:1}}\" rel=\"nofollow\">Ministerial Decision 27 of 2023, day counting and exceptional circumstances</a>.",
-      "last_fact_verified": "2026-11-19"
+      "last_fact_verified": "2026-11-19",
+      "calculator": {
+        "rule": "days183",
+        "settings": {
+          "country": "AE",
+          "linkedCountry": "AE",
+          "periodType": "rolling",
+          "limit": 90,
+          "residentAt": 90,
+          "goal": "reach"
+        },
+        "lock": [
+          "country",
+          "periodType",
+          "limitInput"
+        ],
+        "link": "183-ae-90"
+      }
+    },
+    {
+      "path": "learn/day-count-calculator.html",
+      "search_synonyms": [
+        "183 day calculator",
+        "tax residency calculator"
+      ],
+      "section": "learn",
+      "title": "Day Count Calculator: Countries, States and Personal Goals – AtlasDays",
+      "meta": [
+        {
+          "name": "description",
+          "content": "Count days in any country or US state, with no limit by default. Add an optional personal cap or target, compare periods and export your stays."
+        },
+        {
+          "property": "og:title",
+          "content": "Day Count Calculator: Countries, States and Personal Goals"
+        },
+        {
+          "property": "og:description",
+          "content": "Count days in any country or US state, with no limit by default. Add an optional personal cap or target, compare periods and export your stays."
+        },
+        {
+          "property": "og:type",
+          "content": "article"
+        },
+        {
+          "property": "og:url",
+          "content": "https://atlasdays.app/learn/day-count-calculator"
+        },
+        {
+          "property": "og:image",
+          "content": "https://atlasdays.app/assets/home/home-hero-dashboard.png"
+        },
+        {
+          "name": "twitter:card",
+          "content": "summary_large_image"
+        },
+        {
+          "name": "twitter:title",
+          "content": "Day Count Calculator: Countries, States and Personal Goals"
+        },
+        {
+          "name": "twitter:description",
+          "content": "Count days in any country or US state, with no limit by default. Add an optional personal cap or target, compare periods and export your stays."
+        },
+        {
+          "name": "twitter:image",
+          "content": "https://atlasdays.app/assets/home/home-hero-dashboard.png"
+        },
+        {
+          "name": "apple-itunes-app",
+          "content": "app-id=6760133544, app-argument=https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"
+        }
+      ],
+      "links": [
+        {
+          "rel": "canonical",
+          "href": "https://atlasdays.app/learn/day-count-calculator"
+        }
+      ],
+      "jsonld": [
+        "{\"@context\": \"https://schema.org\", \"@type\": \"WebApplication\", \"name\": \"Day Count Calculator: Countries, States and Personal Goals\", \"description\": \"Count days in any country or US state, with no limit by default. Add an optional personal cap or target, compare periods and export your stays.\", \"url\": \"https://atlasdays.app/learn/day-count-calculator\", \"applicationCategory\": \"TravelApplication\", \"operatingSystem\": \"Any\"}",
+        "{\"@context\": \"https://schema.org\", \"@type\": \"FAQPage\", \"mainEntity\": [{\"@type\": \"Question\", \"name\": \"Does this decide tax residency?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"No. It counts physical-presence dates and optional personal goals. It does not apply country-specific tax, visa or residence rules.\"}}, {\"@type\": \"Question\", \"name\": \"Are arrival and departure included?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Yes. Both dates count. A same-day visit counts as one day, and overlapping dates in the same place are deduplicated.\"}}, {\"@type\": \"Question\", \"name\": \"Can I still use the 183-day calculator?\", \"acceptedAnswer\": {\"@type\": \"Answer\", \"text\": \"Yes. The 183-day calculator remains available separately. Use a country’s specific guide to understand whether that threshold and counting method apply.\"}}]}",
+        "{\"@context\": \"https://schema.org\", \"@type\": \"BreadcrumbList\", \"itemListElement\": [{\"@type\": \"ListItem\", \"position\": 1, \"name\": \"AtlasDays\", \"item\": \"https://atlasdays.app\"}, {\"@type\": \"ListItem\", \"position\": 2, \"name\": \"Travel Rules\", \"item\": \"https://atlasdays.app/learn/\"}, {\"@type\": \"ListItem\", \"position\": 3, \"name\": \"Calculators\", \"item\": \"https://atlasdays.app/learn/calculators\"}, {\"@type\": \"ListItem\", \"position\": 4, \"name\": \"Day count calculator\", \"item\": \"https://atlasdays.app/learn/day-count-calculator\"}]}"
+      ],
+      "content": "content/learn/day-count-calculator.html",
+      "style_variants": [
+        "49dd6e3e3ea5"
+      ],
+      "review_tier": 3,
+      "head_extra": "  <link rel=\"stylesheet\" href=\"{{ASSET_PREFIX}}assets/css/day-calendar.css?v=20261118a\" />",
+      "page_scripts": "  <script defer src=\"{{ASSET_PREFIX}}assets/js/rules/days-183.js?v=20261113b\"></script>\n  <script defer src=\"{{ASSET_PREFIX}}assets/js/rules/day-count.js?v=20261119a\"></script>\n  <script defer src=\"{{ASSET_PREFIX}}assets/js/day-calendar.js?v=20261119b\"></script>"
     }
   ]
 }

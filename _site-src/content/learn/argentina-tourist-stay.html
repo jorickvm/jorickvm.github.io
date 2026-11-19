@@ -18,6 +18,47 @@
     <p>Migraciones requires an extension request within the applicable period before a temporary visitor permission expires. Keep the approved extension and update the departure deadline only when it has been granted. Do not assume that leaving and returning guarantees a new admission.</p>
     <h2>A practical record</h2>
     <p>Keep your entry date, authorised departure date, actual departure and any extension approval together. For example, an entry permission with a specific June departure date still controls even if a generic calculator produces a later date. The travel record supports checking the permission; it does not replace it.</p>
+
+    <h2>A concrete example of why the wording matters</h2>
+    <div class="example"><p><strong>Illustrative calculation:</strong> if 1 July 2026 is day one of a granted 90-day stay, day 90 is 28 September. A permission that instead gives an explicit departure date of 30 September is a different input. Enter that official date; do not replace it with the result for a different allowance.</p><p>The phrase “three months” does not tell a date calculator whether the legal final day is an anniversary or the day before it. Where the permission supplies an end date, that removes the need to infer a convention.</p></div>
+    <h2>Keep a permission record, not only a travel record</h2>
+    <p>A trip log tells you when you arrived and left. To check a visitor stay, you also need the permission attached to that entry. Keep these together:</p>
+    <ul><li>The arrival date and admission record.</li><li>The exact permitted duration or authorised departure date.</li><li>Any extension application and, separately, the decision granting it.</li><li>The revised departure deadline if the extension is approved.</li><li>Your planned and actual departure dates.</li></ul>
+    <p>These are useful organising fields, not a substitute list of documents required by Migraciones. The key is to be able to trace a deadline back to the permission that created it.</p>
+    <h2>Which calculator input should you use?</h2>
+    <p>Choose Official departure deadline when you have a date. Choose Number of days only when you know the granted day allowance. Choose Calendar months only when the permission is expressed that way and you have confirmed the end-date convention. A flight booked after the displayed deadline is a reason to review the permission or travel plan, not evidence that an extension will be granted.</p>
+
+<h2 id="calculator">Check your departure date</h2>
+<p>Use the departure deadline on your permission when one is given. Otherwise enter the duration actually granted and confirm the counting convention. This tool does not decide your visa allowance or approve an extension.</p>
+    <section class="visa-deadline" data-visa-deadline aria-label="Visa stay deadline calculator">
+      <div class="deadline-layout">
+        <form class="cal-box deadline-fields" novalidate>
+          <label class="deadline-field"><span>Arrival date</span><input type="date" name="arrival" min="1900-01-01" max="2100-12-31" required /></label>
+          <label class="deadline-field"><span>What does your permission specify?</span><select name="mode"><option value="official">Official departure deadline</option><option value="days">Number of days</option><option value="months">Calendar months</option><option value="years">Calendar years</option></select></label>
+          <label class="deadline-field" data-official-field><span>Depart by</span><input type="date" name="deadline" min="1900-01-01" max="2100-12-31" /><small>The last date you are permitted to stay, as recorded for this entry or an approved extension.</small></label>
+          <label class="deadline-field" data-duration-field hidden><span data-duration-label>Days allowed</span><input type="number" name="amount" min="1" max="3660" step="1" inputmode="numeric" /><small>Enter the duration your permission allows. The calculator does not choose an allowance for you.</small></label>
+          <label class="deadline-field" data-convention-field hidden><span>Final day of the calendar period</span><select name="endConvention"><option value="same">Anniversary date</option><option value="before">Day before anniversary</option></select><small>Confirm which convention applies. If that date does not exist in the target month, the anniversary is its last day.</small></label>
+          <label class="deadline-field"><span>Planned departure (optional)</span><input type="date" name="departure" min="1900-01-01" max="2100-12-31" /></label>
+          <div class="deadline-actions"><button type="reset">Clear dates</button></div>
+        </form>
+        <div class="cal-box" aria-live="polite" aria-atomic="true">
+          <p data-deadline-empty>Enter your arrival date and the deadline or duration on your permission.</p>
+          <p class="deadline-error" data-deadline-error hidden></p>
+          <div data-deadline-result hidden>
+            <p class="deadline-label">Departure deadline</p>
+            <p class="deadline-date" data-deadline-date></p>
+            <p class="deadline-detail" data-deadline-basis></p>
+            <span class="cal-pill" data-deadline-status></span>
+            <progress max="1" value="0" aria-label="Elapsed calendar days"></progress>
+            <p class="deadline-detail" data-deadline-progress></p>
+            <p class="deadline-detail" data-deadline-total></p>
+            <p data-departure-status hidden></p>
+          </div>
+          <div class="deadline-actions"><button type="button" data-deadline-download disabled>Download summary as CSV</button></div>
+        </div>
+      </div>
+      <noscript><p>Enable JavaScript to calculate a departure deadline.</p></noscript>
+    </section>
     <div class="cta-box">
       <span class="cta-logo">
         <img class="logo-dark" src="../assets/brand/logo_dark.png?v=20260325a" alt="AtlasDays logo" width="52" height="52" />
