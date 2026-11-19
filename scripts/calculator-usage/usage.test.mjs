@@ -34,6 +34,16 @@ test("only three fixed fields are sent, once per stage and page visit", () => {
   const another = page(); another.usage.create("ukSrt", "embedded")("used"); assert.equal(another.sent.length, 1);
 });
 
+test("day counter stages keep separate daily totals and accept no dimensions beyond the fixed three", () => {
+  const p = page(), record = p.usage.create("dayCount", "standalone");
+  const stages = ["loaded", "export_dialog_opened", "qr_offered", "app_button_offered", "app_link_tapped", "csv_download_selected"];
+  for (const stage of stages) { record(stage); record(stage); }
+  const events = p.sent.map(request => JSON.parse(request.body));
+  assert.deepEqual(events.map(event => event.stage), stages);
+  assert.ok(events.every(validEvent));
+  assert.ok(events.every(event => !validEvent({ ...event, country: "NL" })));
+});
+
 test("opt-outs, local previews, disabled configuration and blocked storage send nothing", () => {
   for (const overrides of [
     { location: { hostname: "localhost", protocol: "http:", search: "" } },

@@ -1088,6 +1088,10 @@
       // is all there is; its follow-up line shows once the file is saved.
       dialog.querySelectorAll("[data-cal-alt]").forEach(function (part) { part.hidden = mode === "file" || !rows.length; });
       dialog.querySelectorAll("[data-cal-downloaded]").forEach(function (part) { part.hidden = true; part.previousElementSibling.hidden = false; });
+      dialog.showModal();
+      measure("export_dialog_opened");
+      var openButton = dialog.querySelector("[data-cal-open]");
+      if (openButton && openButton.getClientRects().length) measure("app_button_offered");
       var box = dialog.querySelector("[data-cal-qr]");
       if (box) {
         box.textContent = "";
@@ -1098,9 +1102,9 @@
           box.classList.toggle("is-large", big);
           box.parentNode.classList.toggle("is-large", big);
           sizeQr(box);
+          if (dialog.open && box.getClientRects().length) measure("qr_offered");
         });
       }
-      dialog.showModal();
       // Focus the dialog itself, so no button looks preselected.
       dialog.setAttribute("tabindex", "-1");
       dialog.focus();
@@ -1155,10 +1159,11 @@
       btn.addEventListener("click", openImport);
     });
     root.querySelectorAll("[data-cal-open]").forEach(function (link) {
-      link.addEventListener("click", function () { usageStarted(); measure("continued"); });
+      link.addEventListener("click", function () { usageStarted(); measure("continued"); measure("app_link_tapped"); });
     });
     root.querySelectorAll("[data-cal-download]").forEach(function (btn) {
       btn.addEventListener("click", function () {
+        measure("csv_download_selected");
         downloadCsv();
         var done = btn.nextElementSibling;
         if (done && done.hasAttribute("data-cal-downloaded")) { btn.hidden = true; done.hidden = false; }
@@ -1173,6 +1178,7 @@
     var start = rule.range(ctx());
     revealNear(start);
     updateMonth();
+    measure("loaded");
   }
 
   // mount(root) lets a host page start a calendar it adds later (or inside a
