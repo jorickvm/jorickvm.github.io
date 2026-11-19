@@ -211,11 +211,11 @@ These pages describe something scheduled to change. The tier cadence would revie
 | 2027-11-19 | 2 | [learn/belgium-tax-residency.html](/learn/belgium-tax-residency) | exact-date-required | 1 |
 | 2027-11-19 | 2 | [learn/cambodia-tax-residency.html](/learn/cambodia-tax-residency) | exact-date-required | 2 |
 | 2027-11-19 | 3 | [learn/day-count-calculator.html](/learn/day-count-calculator) | annual-light-pass | 0 |
-| 2027-11-19 | 2 | [learn/germany-tax-residency.html](/learn/germany-tax-residency) | exact-date-required | 2 |
 | 2027-11-19 | 2 | [learn/japan-tax-residency.html](/learn/japan-tax-residency) | exact-date-required | 2 |
 | 2027-11-19 | 2 | [learn/mexico-tax-residency.html](/learn/mexico-tax-residency) | exact-date-required | 1 |
 | 2027-11-19 | 2 | [learn/netherlands-tax-residency.html](/learn/netherlands-tax-residency) | exact-date-required | 2 |
 | 2027-11-19 | 2 | [learn/uae-90-day-tax-residency.html](/learn/uae-90-day-tax-residency) | exact-date-required | 2 |
+| 2027-11-20 | 2 | [learn/germany-tax-residency.html](/learn/germany-tax-residency) | exact-date-required | 5 |
 | 2027-11-30 | 2 | [learn/alabama-tax-residency.html](/learn/alabama-tax-residency) | exact-date-required | 1 |
 | 2027-11-30 | 2 | [learn/arkansas-tax-residency.html](/learn/arkansas-tax-residency) | exact-date-required | 1 |
 | 2027-11-30 | 2 | [learn/delaware-tax-residency.html](/learn/delaware-tax-residency) | exact-date-required | 1 |
