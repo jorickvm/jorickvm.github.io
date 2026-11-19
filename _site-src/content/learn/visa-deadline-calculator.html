@@ -1,0 +1,56 @@
+    <nav class="breadcrumb"><a href="/">AtlasDays</a> / <a href="/learn/">Travel Rules</a> / <a href="/learn/calculators">Calculators</a></nav>
+    <h1>Visa Stay Deadline Calculator</h1>
+    <p class="subtitle">Check when a stay ends using an official departure deadline or a duration you enter. Compare your planned departure with that date.</p>
+    <p class="verified">Last verified: November 2026</p>
+    <p>Use the date on your admission record or permission when one is given. A visa’s expiry date can be different from the date you must leave. This is a date-planning tool, not a check of visa eligibility or permission to stay.</p>
+
+    <h2 id="calculator">Check your departure deadline</h2>
+    <section class="visa-deadline" data-visa-deadline aria-label="Visa stay deadline calculator">
+      <div class="deadline-layout">
+        <form class="cal-box deadline-fields" novalidate>
+          <label class="deadline-field"><span>Arrival date</span><input type="date" name="arrival" min="1900-01-01" max="2100-12-31" required /></label>
+          <label class="deadline-field"><span>What does your permission specify?</span><select name="mode"><option value="official">Official departure deadline</option><option value="days">Number of days</option><option value="months">Calendar months</option><option value="years">Calendar years</option></select></label>
+          <label class="deadline-field" data-official-field><span>Depart by</span><input type="date" name="deadline" min="1900-01-01" max="2100-12-31" /><small>The last date you are permitted to stay, such as the admit-until date on an I-94.</small></label>
+          <label class="deadline-field" data-duration-field hidden><span data-duration-label>Days allowed</span><input type="number" name="amount" min="1" max="3660" step="1" inputmode="numeric" /><small>Enter the duration your permission allows. The calculator does not choose an allowance for you.</small></label>
+          <label class="deadline-field" data-convention-field hidden><span>Final day of the calendar period</span><select name="endConvention"><option value="same">Anniversary date</option><option value="before">Day before anniversary</option></select><small>Confirm which convention applies. If that date does not exist in the target month, the anniversary is its last day.</small></label>
+          <label class="deadline-field"><span>Planned departure (optional)</span><input type="date" name="departure" min="1900-01-01" max="2100-12-31" /></label>
+          <div class="deadline-actions"><button type="reset">Clear dates</button></div>
+        </form>
+        <div class="cal-box" aria-live="polite" aria-atomic="true">
+          <p data-deadline-empty>Enter your arrival date and the deadline or duration on your permission.</p>
+          <p class="deadline-error" data-deadline-error hidden></p>
+          <div data-deadline-result hidden>
+            <p class="deadline-label">Departure deadline</p>
+            <p class="deadline-date" data-deadline-date></p>
+            <p class="deadline-detail" data-deadline-basis></p>
+            <span class="cal-pill" data-deadline-status></span>
+            <progress max="1" value="0" aria-label="Elapsed calendar days"></progress>
+            <p class="deadline-detail" data-deadline-progress></p>
+            <p class="deadline-detail" data-deadline-total></p>
+            <p data-departure-status hidden></p>
+          </div>
+          <div class="deadline-actions"><button type="button" data-deadline-download disabled>Download summary as CSV</button></div>
+        </div>
+      </div>
+      <noscript><p>Enable JavaScript to calculate a departure deadline.</p></noscript>
+    </section>
+
+    <h2>How the dates are calculated</h2>
+    <ul>
+      <li><strong>Official deadline.</strong> The calculator uses the date you enter without adjusting it. Check the admission record or permission, rather than assuming the visa expiry date is the departure deadline.</li>
+      <li><strong>A number of days.</strong> Arrival is day 1. For example, a 30-day stay starting on 1 June ends on 30 June.</li>
+      <li><strong>Calendar months and years.</strong> These move to the matching calendar date, not a fixed number of days. When the target month has no matching date, its final day is used. Choose whether your permission ends on that anniversary or the day before it.</li>
+      <li><strong>Remaining time.</strong> The countdown uses today’s date on your device. Zero days means the deadline is today. No time of day or border time zone is inferred.</li>
+    </ul>
+    <p>One entry’s duration is separate from a rolling stay limit. For Schengen or Türkiye, you must also consider earlier stays in the rolling window. Use the <a href="/learn/schengen-calculator">Schengen calculator</a> or <a href="/learn/turkiye-90-180-calculator">Türkiye calculator</a> for that check.</p>
+
+    <h2>Check the permission behind the date</h2>
+    <p>For the United States, the I-94 admit-until date or D/S notation records the authorized stay. This calculator cannot turn D/S into a fixed departure date. For Canada, an officer can specify a shorter or longer stay, and document expiry can matter. Read the <a href="/learn/us-b1-b2-visa-180-day-limit">US visitor guide</a> or <a href="/learn/canada-visitor-visa-6-month-limit">Canada visitor guide</a> before choosing a duration.</p>
+
+    <h2>FAQ</h2>
+    <h3>Does this calculate my legal visa allowance?</h3>
+    <p>No. You supply the deadline or permitted duration. The calculator does not determine nationality-based eligibility, extensions, residence status or any other permission condition.</p>
+    <h3>Is six months always 180 days?</h3>
+    <p>No. Calendar months have different lengths. Use an official departure date when available; otherwise confirm the counting convention that applies to your permission.</p>
+    <h3>What happens to my dates?</h3>
+    <p>They stay in your browser and disappear when you reload. The CSV download contains a deadline summary, not an AtlasDays trip-import file.</p>

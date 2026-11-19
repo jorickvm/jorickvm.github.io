@@ -1,0 +1,22 @@
+.visa-deadline { --tone-normal: #5B9ED9; --tone-warning: #FF9F0A; --tone-critical: #FF453A; margin: 24px 0 32px; }
+html[data-theme="light"] .visa-deadline { --tone-warning: #b56c00; --tone-critical: #c9342c; }
+.deadline-layout { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 18px; align-items: start; }
+.deadline-fields { display: grid; gap: 18px; }
+.deadline-field { display: grid; gap: 7px; min-width: 0; }
+.deadline-field > span { font-size: 0.88rem; font-weight: 650; }
+.deadline-field input, .deadline-field select { box-sizing: border-box; min-width: 0; width: 100%; min-height: 44px; padding: 10px 12px; border: 1px solid var(--line-strong); border-radius: 10px; background: var(--bg); color: var(--text); font: inherit; font-size: 16px; }
+.deadline-field small { color: var(--muted); line-height: 1.5; }
+.visa-deadline .cal-box { padding: 22px; }
+.visa-deadline .deadline-label { margin: 0 0 8px; font-size: 0.9rem; color: var(--muted); }
+.visa-deadline .deadline-date { margin: 0 0 12px; font: 650 1.65rem/1.25 var(--font-rounded); text-wrap: balance; }
+.visa-deadline .deadline-detail { color: var(--muted); font-size: 0.86rem; }
+.visa-deadline progress { display: block; appearance: none; width: 100%; height: 8px; margin: 22px 0 10px; border: 0; border-radius: 999px; overflow: hidden; background: var(--line); accent-color: var(--blue); }
+.visa-deadline progress::-webkit-progress-bar { background: var(--line); }
+.visa-deadline progress::-webkit-progress-value { background: var(--blue); }
+.visa-deadline progress::-moz-progress-bar { background: var(--blue); }
+.deadline-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 20px; }
+.deadline-actions button { min-height: 44px; padding: 9px 15px; border: 1px solid var(--line-strong); border-radius: 999px; background: var(--blue-soft); color: var(--text); font: inherit; cursor: pointer; }
+.deadline-actions button:disabled { opacity: .45; cursor: default; }
+.deadline-error, .visa-deadline .is-over { color: #d5544d; }
+.visa-deadline [hidden] { display: none !important; }
+@media (max-width: 640px) { .deadline-layout { grid-template-columns: minmax(0, 1fr); } }
