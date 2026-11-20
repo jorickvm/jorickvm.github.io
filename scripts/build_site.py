@@ -243,6 +243,25 @@ def render_web_flags(markup: str) -> str:
     return re.sub(r"assets/flags/([a-z]{2}(?:-[a-z]{2})?)\.png", r"assets/flags/web/\1.webp", markup)
 
 
+def render_calculator_handoff(markup: str, article: dict[str, object]) -> str:
+    """Use trips-only export until the app version supporting these presets is available."""
+    if 'data-day-calendar="dayCount"' not in markup and article.get("app_preset") not in {
+        "residence-united-arab-emirates-90-days", "residence-barbados", "residence-cambodia",
+    }:
+        return markup
+    config = json.loads((SOURCE_ROOT / "data/calculator-handoffs.json").read_text())
+    enabled = config["enable_3_0_3_trackers"]
+    if type(enabled) is not bool:
+        raise ValueError("enable_3_0_3_trackers must be true or false")
+    # Older copies of the shared runtime do not recognize the trips-only policy.
+    markup = re.sub(r'(assets/js/day-calendar\.js\?v=)\w+', r"\g<1>20261120c", markup)
+    if enabled:
+        return markup.replace('<div class="cal-dialog-foot">',
+                              '<p class="cal-dialog-sub" data-cal-tracker-version hidden>{{t:cal.tracker_version}}</p>\n'
+                              '        <div class="cal-dialog-foot">', 1)
+    return re.sub(r'(data-day-calendar="[^"]+")', r'\1 data-cal-handoff="trips-only"', markup, count=1)
+
+
 def render_calculator_usage(markup: str, source_path: str, prefix: str) -> str:
     if 'data-day-calendar="' not in markup:
         return markup
@@ -1943,6 +1962,7 @@ def render_article(
     leftovers = [marker for marker in replacements if marker in rendered]
     if leftovers:
         raise SystemExit(f"Unresolved template markers for {article['path']}: {leftovers}")
+    rendered = render_calculator_handoff(rendered, article)
     rendered = localize(rendered, locale, strings, available_routes=available, context=str(article["path"]))
     return render_calculator_usage(render_web_flags(rendered), source_path, prefix).rstrip() + "\n"
 

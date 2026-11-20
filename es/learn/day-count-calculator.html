@@ -219,7 +219,7 @@
 
     <h2 id="calculator">Cuenta tus días</h2>
     <p>Elige un lugar y un período y añade tus estancias. Cuentan la llegada y la salida; las fechas solapadas en el mismo lugar cuentan una vez. Los totales incluyen las estancias futuras que introduzcas.</p>
-<div class="daycal" id="day-count" data-day-calendar="dayCount" data-cal-placement="standalone">
+<div class="daycal" id="day-count" data-day-calendar="dayCount" data-cal-placement="standalone" data-cal-handoff="trips-only">
       <script type="application/json" data-cal-strings>
 {
   "days": "Días",
@@ -456,7 +456,7 @@
   <script defer src="../../assets/js/rules/days-183.js?v=20261113b"></script>
   <script defer src="../../assets/js/rules/day-count.js?v=20261120a"></script>
   <script defer src="../../assets/js/calculator-usage.js?v=20261120b" data-endpoint="https://atlasdays-calculator-usage.jorickvm.workers.dev/collect"></script>
-  <script defer src="../../assets/js/day-calendar.js?v=20261120b"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261120c"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on. */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

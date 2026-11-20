@@ -219,7 +219,7 @@
 
     <h2 id="calculator">체류일 계산</h2>
     <p>장소와 기간을 선택하고 체류를 추가하십시오. 입국일과 출국일을 포함하며 같은 장소의 겹치는 날짜는 한 번만 셉니다. 입력한 미래 체류도 합계에 포함됩니다.</p>
-<div class="daycal" id="day-count" data-day-calendar="dayCount" data-cal-placement="standalone">
+<div class="daycal" id="day-count" data-day-calendar="dayCount" data-cal-placement="standalone" data-cal-handoff="trips-only">
       <script type="application/json" data-cal-strings>
 {
   "days": "일수",
@@ -446,7 +446,7 @@
   <script defer src="../../assets/js/rules/days-183.js?v=20261113b"></script>
   <script defer src="../../assets/js/rules/day-count.js?v=20261120a"></script>
   <script defer src="../../assets/js/calculator-usage.js?v=20261120b" data-endpoint="https://atlasdays-calculator-usage.jorickvm.workers.dev/collect"></script>
-  <script defer src="../../assets/js/day-calendar.js?v=20261120b"></script>
+  <script defer src="../../assets/js/day-calendar.js?v=20261120c"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on. */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

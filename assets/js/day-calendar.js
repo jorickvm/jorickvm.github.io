@@ -777,12 +777,16 @@
       wrap.appendChild(box);
       return wrap;
     }
+    function trackerOffer() {
+      if (root.dataset.calHandoff === "trips-only" || !rule.trackerOffer) return "";
+      return rule.trackerOffer(trips, ctx());
+    }
     function renderList() {
       list.textContent = "";
       // Import sits in the Trips card and shows once there is something to
       // import: stays, or before any, the tracker the rule offers.
       var rowsOut = trips.length ? rule.exportRows(trips, ctx()).length : 0;
-      var offer = !rowsOut && rule.trackerOffer ? rule.trackerOffer(trips, ctx()) : "";
+      var offer = !rowsOut ? trackerOffer() : "";
       root.querySelectorAll("[data-cal-import]").forEach(function (btn) { btn.hidden = !rowsOut && !offer; });
       if (!trips.length) { list.appendChild(el("p", { "class": "cal-empty" }, S.empty)); return; }
       var clip = span();
@@ -1055,13 +1059,15 @@
       usageStarted();
       var rows = rule.exportRows(trips, ctx()).slice().sort(function (a, b) { return a.start - b.start; });
       if (!dialog || !dialog.showModal) return downloadCsv();
-      var offer = rule.trackerOffer ? rule.trackerOffer(trips, ctx()) : "";
+      var offer = trackerOffer();
       var mode = rows.length > LINK.maxStays ? "file"
         : inApp || appleTouch ? "phone"
         : rows.length <= LINK.maxQrStays ? "computer" : "file";
       // A large day-count history travels as a CSV. Its small tracker link
       // still carries all settings, by QR on desktop or directly on iOS.
       var separateTracker = mode === "file" && !!offer && root.dataset.dayCalendar === "dayCount";
+      var versionNote = dialog.querySelector("[data-cal-tracker-version]");
+      if (versionNote) versionNote.hidden = !offer || (mode === "file" && !separateTracker);
       var linkedRows = separateTracker ? [] : rows;
       var frag = linkedRows.length || offer ? importFragment(linkedRows, linkId(), offer) : "";
       var scan = mode === "computer" || (separateTracker && !inApp && !appleTouch);
