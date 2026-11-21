@@ -49,7 +49,7 @@ SITE_HEADER_VERSION = "20261027j"
 SITE_FOOTER_VERSION = "20261027h"
 ARTICLE_COMPONENTS_VERSION = "20261026b"
 RULE_CARDS_VERSION = "20261006b"
-NAVIGATION_VERSION = "20261027j"
+NAVIGATION_VERSION = "20261121a"
 
 # Root class that drops the background wash from the app's `.medium` step to
 # `.subtle`, for pages carrying long-form text. See assets/css/tokens.css.
