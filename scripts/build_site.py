@@ -13,8 +13,10 @@ import sys
 import unicodedata
 from collections import Counter
 from datetime import date
+from functools import lru_cache
 from pathlib import Path
 
+from build_responsive_images import MANIFEST as RESPONSIVE_IMAGES_PATH, variant_path
 from build_route_outputs import ROUTES, expanded_routes, llms_files, sitemap_files
 from locales import (
     default_locale_code,
@@ -241,6 +243,67 @@ def render_favicon_links(prefix: str = "../") -> str:
 def render_web_flags(markup: str) -> str:
     """Serve lightweight flags while source fragments retain master paths."""
     return re.sub(r"assets/flags/([a-z]{2}(?:-[a-z]{2})?)\.png", r"assets/flags/web/\1.webp", markup)
+
+
+# The widest each kind of marketing image is drawn, from marketing.css: the
+# screen inside a phone, the phone frame around it, and a use-case card.
+PHONE_SCREEN_SIZES = "(min-width: 900px) 300px, 240px"
+PHONE_FRAME_SIZES = "(min-width: 900px) 330px, 265px"
+CASE_SHOT_SIZES = "340px"
+IMG_TAG = re.compile(r"<img\b[^>]*>")
+IMG_SOURCE = re.compile(r'\bsrc="([^"]*?)(assets/home/[^"?]+\.webp)(\?[^"]*)?"')
+
+
+@lru_cache(maxsize=None)
+def load_responsive_images() -> dict[str, dict]:
+    return json.loads(RESPONSIVE_IMAGES_PATH.read_text(encoding="utf-8"))["images"]
+
+
+def with_attribute(tag: str, attribute: str) -> str:
+    return f"{tag.rstrip('>').rstrip('/').rstrip()} {attribute} />"
+
+
+def with_srcset(tag: str, sizes: str) -> str:
+    """Let the browser pick a resized copy; the fragment keeps naming the full-size file."""
+    source = IMG_SOURCE.search(tag)
+    record = load_responsive_images().get(source[2]) if source else None
+    if not record or "srcset=" in tag:
+        return tag
+    prefix, path, query = source[1], source[2], source[3] or ""
+    candidates = [f"{prefix}{variant_path(path, int(width))}{query} {width}w" for width in sorted(record["variants"], key=int)]
+    candidates.append(f"{prefix}{path}{query} {record['width']}w")
+    return tag.replace(source[0], f'{source[0]} srcset="{", ".join(candidates)}" sizes="{sizes}"', 1)
+
+
+def render_responsive_images(markup: str) -> str:
+    """Serve the marketing screenshots at the size they are drawn."""
+
+    def screenshot(tag: str, sizes: str) -> str:
+        # The light screenshot stays hidden unless the visitor switched themes,
+        # so it must not download with the page.
+        if re.match(r'<img class="shot-light[" ]', tag) and "loading=" not in tag:
+            tag = with_attribute(tag, 'loading="lazy"')
+        return with_srcset(tag, sizes)
+
+    def frame(match: re.Match[str]) -> str:
+        tag = match[0]
+        # A frame that loads with the page is above the fold, and is the
+        # largest image there.
+        if "loading=" not in tag and "fetchpriority=" not in tag:
+            tag = with_attribute(tag, 'fetchpriority="high"')
+        return with_srcset(tag, PHONE_FRAME_SIZES)
+
+    for pattern, sizes in (
+        (r'(<div class="hx-screen">)(.*?)(</div>)', PHONE_SCREEN_SIZES),
+        (r'(<span class="hx-case-shot">)(.*?)(</span>)', CASE_SHOT_SIZES),
+    ):
+        markup = re.sub(
+            pattern,
+            lambda block, sizes=sizes: block[1] + IMG_TAG.sub(lambda img: screenshot(img[0], sizes), block[2]) + block[3],
+            markup,
+            flags=re.S,
+        )
+    return re.sub(r'<img class="hx-frame"[^>]*>', frame, markup)
 
 
 def render_calculator_handoff(markup: str, article: dict[str, object]) -> str:
@@ -2177,7 +2240,7 @@ def render_hub(
     rendered = rendered.replace("{{NAV_SCRIPT}}", nav_script)
     rendered = rendered.replace("{{LANGUAGE_SWITCHER}}", switcher)
     rendered = localize(rendered, locale, strings, available_routes=available, context=str(hub["path"]))
-    return render_web_flags(rendered).rstrip() + "\n"
+    return render_responsive_images(render_web_flags(rendered)).rstrip() + "\n"
 
 
 def main() -> int:
