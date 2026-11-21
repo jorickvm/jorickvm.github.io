@@ -119,15 +119,32 @@ def version_import_script(rendered: str) -> str:
 # under Sources > Campaigns. Done here rather than in the fragments because the
 # URL sits in every English fragment, and editing those would mark every
 # translation stale. Only `href` is rewritten: the smart-banner app-argument,
-# JSON-LD, and llms.txt keep the canonical URL. One campaign (`ct=web`) covers
-# the whole site.
+# JSON-LD, and llms.txt keep the canonical URL. Each part of the site has its
+# own campaign (`campaign_for`), so the report shows where a download started.
+# The QR code image, assets/qrcode-appstore.png, encodes the same link with
+# `ct=web-qr`: a scan counts as its own campaign on every page.
 APP_STORE_URL = "https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"
 APP_STORE_CAMPAIGN_URL = "https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct={campaign}&amp;mt=8"
 PRODUCT_PAGES_PATH = SOURCE_ROOT / "data" / "product-pages.json"
 
 
-def with_campaign_links(rendered: str, campaign: str = "web", ppid: str | None = None) -> str:
-    """Tag App Store links for App Store Connect; a page record can set its own "campaign".
+def campaign_for(source_path: str, record: dict[str, object]) -> str:
+    """The App Store Connect campaign for an English source route.
+
+    A translation shares its source's campaign. A record can set its own
+    "campaign"; otherwise the calculators, Learn and Help each have one, and
+    every other page shares the last.
+    """
+    if record.get("campaign"):
+        return str(record["campaign"])
+    if source_path in CALCULATOR_PAGES:
+        return "web-calc"
+    section = source_path.split("/", 1)[0]
+    return {"learn": "web-article", "help": "web-help"}.get(section, "web-other")
+
+
+def with_campaign_links(rendered: str, campaign: str, ppid: str | None = None) -> str:
+    """Tag App Store links for App Store Connect with the page's campaign.
 
     `ppid` opens a custom product page instead of the default one. It rides
     along with the campaign token, which still opens the custom page.
@@ -2299,7 +2316,7 @@ def main() -> int:
     delistings: list[tuple[str, list[str]]] = []
 
     def queue(
-        output_path: Path, rendered: str, *, guard: bool = False, campaign: str = "web", ppid: str | None = None,
+        output_path: Path, rendered: str, *, guard: bool = False, campaign: str = "web-other", ppid: str | None = None,
         locale_code: str | None = None,
     ) -> None:
         nonlocal selected
@@ -2329,6 +2346,7 @@ def main() -> int:
                 with_alternates(article), template, header_template, footer_template,
                 locale, strings, locales, translations,
             ),
+            campaign=campaign_for(str(article["path"]), article),
             ppid=product_page_ppid(
                 str(article["path"]), article.get("app_preset"), default_locale_code(), product_pages,
             ),
@@ -2343,6 +2361,7 @@ def main() -> int:
                     locale, strings, locales, translations,
                 ),
                 guard=True,
+                campaign=campaign_for(str(hub["path"]), hub),
             )
 
     if args.section == "all" and PAGE_DATA_PATH.exists():
@@ -2363,7 +2382,7 @@ def main() -> int:
                     family=page_family,
                 ),
                 guard=True,
-                campaign=str(page.get("campaign", "web")),
+                campaign=campaign_for(str(page["path"]), page),
                 ppid=product_page_ppid(str(page["path"]), None, default_locale_code(), product_pages),
                 locale_code=default_locale_code(),
             )
@@ -2406,6 +2425,7 @@ def main() -> int:
                     target, strings, locales, translations,
                     **({"family": localized_family} if kind == "page" else {}),
                 ),
+                campaign=campaign_for(source_path, source),
                 ppid=product_page_ppid(source_path, source.get("app_preset"), code, product_pages),
                 locale_code=code,
             )
