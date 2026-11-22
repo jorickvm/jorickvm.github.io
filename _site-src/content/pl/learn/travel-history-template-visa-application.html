@@ -3,7 +3,7 @@
     </nav>
 
     <h1>Szablon historii podróży do wniosku wizowego (darmowy plik CSV)</h1>
-    <p class="subtitle">Darmowy, pusty arkusz historii podróży: jeden wiersz na pobyt i daty w formacie ISO. Otwiera się w Excelu, Numbers i Arkuszach Google, łatwo go przenieść do DS-160 oraz formularzy brytyjskich i kanadyjskich, a do AtlasDays importuje się bez przeróbek.</p>
+    <p class="subtitle">Darmowy arkusz historii podróży: jeden wiersz na pobyt, daty w formacie ISO i przykładowe wiersze do zastąpienia. Otwiera się w Excelu, Numbers i Arkuszach Google, łatwo go przenieść do DS-160 oraz formularzy brytyjskich i kanadyjskich, a do AtlasDays importuje się bez przeróbek.</p>
     <p class="verified">Ostatnio sprawdzono: wrzesień 2026</p>
 
     <div class="tldr">
@@ -14,13 +14,21 @@
 
     <div class="factbox">
       <dl>
-        <div><dt>Plik</dt><dd>travel-history-template.csv, wiersz nagłówków bez danych, gotowy do wypełnienia</dd></div>
+        <div><dt>Plik</dt><dd>travel-history-template.csv, wiersz nagłówków i pięć przykładowych wierszy do zastąpienia</dd></div>
         <div><dt>Kolumny</dt><dd>Country, State, Start Date, End Date, Purpose, Notes (nagłówki zostają po angielsku, bo tak czyta je import)</dd></div>
         <div><dt>Daty</dt><dd>YYYY-MM-DD albo czterocyfrowy rok, jeśli tylko tyle wiadomo</dd></div>
         <div><dt>Otwiera się w</dt><dd>Excelu, Numbers, Arkuszach Google i każdej innej aplikacji do arkuszy kalkulacyjnych</dd></div>
         <div><dt>Importuje się do</dt><dd>AtlasDays, bezpłatnie, w Ustawienia → Importuj → Plik CSV</dd></div>
       </dl>
     </div>
+
+    <h2>Dwa sposoby na wypełnienie go bez przepisywania</h2>
+    <p>Wpisywanie pięciu czy dziesięciu lat podróży do arkusza to wolna droga. Większość dat już gdzieś istnieje.</p>
+    <ul>
+      <li><strong>Z poczty, z pomocą AI.</strong> Asystent AI może przeczytać twoje potwierdzenia rezerwacji i zwrócić dokładnie taki plik. Prompt do skopiowania jest w poradniku <a href="/pl/learn/travel-history-with-ai">Jak odtworzyć historię podróży z pomocą AI</a>.</li>
+      <li><strong>Ze zdjęć.</strong> AtlasDays potrafi <a href="/pl/learn/travel-history-from-iphone-photos">znaleźć dawne podróże w zdjęciach z iPhone’a</a> i wyeksportować je jako arkusz z tymi kolumnami.</li>
+    </ul>
+    <p>Samego szablonu użyj do tego, co umknie obu metodom, i do poprawienia dat, które mają znaczenie.</p>
 
     <h2>Co wpisać w każdej kolumnie</h2>
     <dl class="kv kv-text">
@@ -31,7 +39,7 @@
       <div><dt>Purpose (cel)</dt><dd><code>Personal</code> (Prywatne), <code>Business</code> (Praca), <code>Study</code> (Nauka) lub <code>Transit</code> (Tranzyt). Transit wpisuj tylko wtedy, gdy pobyt ograniczał się do strefy tranzytowej lotniska, bez wjazdu do kraju.</dd></div>
       <div><dt>Notes (notatki)</dt><dd>Wszystko inne, czego może chcieć formularz: miasto pobytu (pyta o nie kanadyjski formularz wizy turystycznej), cel podróży w brzmieniu z formularza („odwiedziny u siostry”), na czym opierają się daty (pieczątka w paszporcie, karta pokładowa, e-mail z rezerwacją) oraz które daty są szacunkowe.</dd></div>
     </dl>
-    <p>Plik celowo nie zawiera przykładowych wierszy: te, których zapomnisz usunąć, zostałyby zaimportowane jako prawdziwe podróże. Tak wygląda wypełniony plik.</p>
+    <p>Plik zaczyna się od pięciu przykładowych wierszy, po jednym na każdy rodzaj wpisu. Zastąp je własnymi podróżami i usuń te, których nie potrzebujesz: pozostawiony wiersz zostanie zaimportowany jako prawdziwa podróż. Każdy przykład ma w kolumnie Notes słowo „Example”, więc pozostałość łatwo zauważyć w podglądzie importu.</p>
     <p class="data-table-hint">Przesuń przykład w bok, aby zobaczyć wszystkie kolumny.</p>
     <div class="data-table data-table-code">
       <table>
@@ -81,10 +89,10 @@
       <li><strong>State dotyczy tylko Stanów Zjednoczonych.</strong> Wartość w State w wierszu spoza USA jest zgłaszana jako błąd.</li>
       <li><strong>Wiersze z samym rokiem są zachowywane, ale nieliczone.</strong> Oznaczają kraj jako odwiedzony, ale nie dodają dni, dopóki nie dostaną dokładnych dat.</li>
     </ul>
-    <p>Nie masz jeszcze pliku? Ekran importu ma też polecenie <strong>Utwórz CSV z AI</strong>, które za pomocą asystenta AI zamienia notatki lub plan podróży na te kolumny. Wszystko, co wkleisz do narzędzia AI, jest przetwarzane zgodnie z polityką prywatności tego narzędzia.</p>
+    
 
-    <h2>Poza szablonem</h2>
-    <p>Szablon porządkuje dokumentację, ale nie czyni jej kompletną. Dziesięć schludnych wierszy na pięć lat podróży zwykle oznacza, że brakuje krótkich wyjazdów, a brzmienie samego formularza zawsze ma pierwszeństwo przed jakimkolwiek układem. Które formularze o co pytają, opisuje artykuł o <a href="/pl/learn/travel-history-for-visa-applications">historii podróży we wnioskach wizowych</a>. O uzupełnianiu luk z pieczątek, e-maili i zdjęć przeczytasz w artykule o <a href="/pl/learn/rebuild-travel-history-from-passport-stamps-emails-photos">odtwarzaniu historii podróży</a>, a o rządowych zapisach twoich przekroczeń granicy w artykule o <a href="/pl/learn/get-official-entry-exit-records">uzyskaniu oficjalnych zapisów wjazdów i wyjazdów</a>.</p>
+    <h2>Zanim zaczniesz na nim polegać</h2>
+    <p>Brzmienie samego formularza zawsze ma pierwszeństwo przed jakimkolwiek układem. Sprawdź, <a href="/pl/learn/travel-history-for-visa-applications">o co pyta każdy formularz</a>, i potwierdź ważne daty w <a href="/pl/learn/get-official-entry-exit-records">oficjalnych zapisach wjazdów i wyjazdów</a>.</p>
 
     <div class="cta-box">
       <span class="cta-logo">

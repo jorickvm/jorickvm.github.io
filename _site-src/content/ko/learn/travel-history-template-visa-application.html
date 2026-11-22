@@ -3,7 +3,7 @@
     </nav>
 
     <h1>비자 신청용 여행 기록 양식(무료 CSV)</h1>
-    <p class="subtitle">체류마다 한 행을 기록하고 ISO 날짜를 쓰는 무료 빈 스프레드시트입니다. Excel, Numbers, Google Sheets에서 열 수 있으며 DS-160과 영국·캐나다 양식에 맞춰 옮기거나 AtlasDays로 바로 가져올 수 있습니다.</p>
+    <p class="subtitle">체류마다 한 행을 기록하고 ISO 날짜를 쓰며, 바꿔 쓸 예시 행이 들어 있는 무료 스프레드시트입니다. Excel, Numbers, Google Sheets에서 열 수 있으며 DS-160과 영국·캐나다 양식에 맞춰 옮기거나 AtlasDays로 바로 가져올 수 있습니다.</p>
     <p class="verified">최종 확인: 2026년 9월</p>
 
     <div class="tldr">
@@ -14,13 +14,21 @@
 
     <div class="factbox">
       <dl>
-        <div><dt>파일</dt><dd>travel-history-template.csv. 제목 행만 있는 빈 파일</dd></div>
+        <div><dt>파일</dt><dd>travel-history-template.csv. 제목 행과 바꿔 쓸 예시 행 5개</dd></div>
         <div><dt>열</dt><dd>Country, State, Start Date, End Date, Purpose, Notes</dd></div>
         <div><dt>날짜</dt><dd>YYYY-MM-DD. 연도만 알면 네 자리 연도</dd></div>
         <div><dt>열 수 있는 앱</dt><dd>Excel, Numbers, Google Sheets 및 기타 스프레드시트 앱</dd></div>
         <div><dt>가져올 수 있는 앱</dt><dd>AtlasDays에서 무료로 가져오기 가능: 설정 → 가져오기 → CSV 파일</dd></div>
       </dl>
     </div>
+
+    <h2>직접 입력하지 않고 채우는 두 가지 방법</h2>
+    <p>5년이나 10년 치 여행을 스프레드시트에 하나하나 입력하는 것은 느린 길입니다. 날짜 대부분은 이미 어딘가에 남아 있습니다.</p>
+    <ul>
+      <li><strong>이메일에서, AI로.</strong> AI 어시스턴트가 예약 확인 메일을 읽고 바로 이 형식의 파일을 돌려줄 수 있습니다. 복사해 쓸 프롬프트는 <a href="/ko/learn/travel-history-with-ai">AI로 여행 기록 복원하기</a>에 있습니다.</li>
+      <li><strong>사진에서.</strong> AtlasDays는 <a href="/ko/learn/travel-history-from-iphone-photos">iPhone 사진에서 지난 여행을 찾아</a> 이 열 구성의 스프레드시트로 내보낼 수 있습니다.</li>
+    </ul>
+    <p>양식 자체는 이 두 방법이 놓친 여행을 채우고 중요한 날짜를 바로잡는 데 쓰십시오.</p>
 
     <h2>각 열에 적을 내용</h2>
     <dl class="kv kv-text">
@@ -31,7 +39,7 @@
       <div><dt>Purpose</dt><dd>Personal, Business, Study, Transit 중 하나입니다. 입국하지 않고 에어사이드에 머문 경우에만 Transit을 씁니다.</dd></div>
       <div><dt>Notes</dt><dd>양식에서 요구할 수 있는 나머지 정보입니다. 체류 도시(캐나다 방문 비자 양식에서 요구), 양식에 맞는 방문 목적 표현(“자매 방문”), 날짜의 근거(여권 도장, 탑승권, 예약 이메일), 추정 날짜 등을 적습니다.</dd></div>
     </dl>
-    <p>실수로 삭제하지 않은 예시 행이 실제 여행으로 가져와지는 일을 막기 위해 파일에는 예시 행이 없습니다. 아래는 작성한 파일의 모습입니다.</p>
+    <p>파일은 기록 유형마다 하나씩, 예시 행 5개로 시작합니다. 본인의 여행으로 바꾸고 필요 없는 행은 삭제하십시오. 남겨 둔 행은 실제 여행으로 가져오게 됩니다. 예시 행은 모두 Notes에 "Example"이라고 적혀 있어, 남은 행이 있으면 가져오기 확인 화면에서 쉽게 찾을 수 있습니다.</p>
     <p class="data-table-hint">예시를 좌우로 밀면 모든 열을 볼 수 있습니다.</p>
     <div class="data-table data-table-code">
       <table>
@@ -81,10 +89,10 @@
       <li><strong>State는 미국에만 사용.</strong> 미국 이외 국가의 행에 State 값이 있으면 오류로 표시됩니다.</li>
       <li><strong>연도만 있는 행은 보관하지만 일수에는 제외.</strong> 국가를 방문한 것으로 표시하되 정확한 날짜를 입력할 때까지 일수는 더하지 않습니다.</li>
     </ul>
-    <p>아직 파일이 없습니까? 가져오기 화면의 <strong>AI로 CSV 만들기</strong> 프롬프트를 사용하면 AI 도우미를 통해 메모나 일정표를 이 열 형식으로 바꿀 수 있습니다. AI 도구에 붙여 넣은 내용은 그 도구의 개인정보 처리방침에 따라 처리됩니다.</p>
+    
 
-    <h2>양식 외에 확인할 사항</h2>
-    <p>양식은 기록을 정리할 뿐 완전하게 만들지는 않습니다. 5년 여행이 단정한 10행뿐이라면 짧은 여행이 빠졌을 가능성이 큽니다. 언제나 신청 양식의 실제 문구가 이 양식보다 우선합니다. 양식별 요구 사항은 <a href="/ko/learn/travel-history-for-visa-applications">비자 신청용 여행 기록</a>, 여권 도장·이메일·사진으로 공백을 채우는 방법은 <a href="/ko/learn/rebuild-travel-history-from-passport-stamps-emails-photos">여행 기록 재구성</a>, 정부 출입국 기록은 <a href="/ko/learn/get-official-entry-exit-records">공식 출입국 기록 발급</a>에서 확인하십시오.</p>
+    <h2>이 양식에 의존하기 전에</h2>
+    <p>언제나 신청 양식의 실제 문구가 이 양식보다 우선합니다. <a href="/ko/learn/travel-history-for-visa-applications">양식마다 요구하는 내용</a>을 살펴보고, 중요한 날짜는 <a href="/ko/learn/get-official-entry-exit-records">공식 출입국 기록</a>과 대조해 확인하십시오.</p>
 
     <div class="cta-box">
       <span class="cta-logo">

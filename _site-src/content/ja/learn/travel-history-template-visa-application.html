@@ -1,16 +1,24 @@
     <nav class="breadcrumb"><a href="/ja/">AtlasDays</a> / <a href="/ja/learn/">旅行ルール</a> / <a href="/ja/learn/guides">ガイド</a></nav>
     <h1>ビザ申請用の旅行履歴テンプレート（無料CSV）</h1>
-    <p class="subtitle">国での滞在ごとに1行を使い、ISO形式の日付を記入する無料の旅行履歴シートです。Excel、Numbers、Googleスプレッドシートで開け、DS-160、英国、カナダの申請書に転記でき、AtlasDaysにも直接インポートできます。</p>
+    <p class="subtitle">国での滞在ごとに1行を使い、ISO形式の日付を記入する無料の旅行履歴シートです。書き換えて使うサンプル行が入っています。Excel、Numbers、Googleスプレッドシートで開け、DS-160、英国、カナダの申請書に転記でき、AtlasDaysにも直接インポートできます。</p>
     <p class="verified">最終確認：2026年9月</p>
     <div class="tldr"><p><strong>要点：</strong>テンプレートをダウンロードし、<strong>1つの国での滞在につき1行</strong>追加します。すべての日付は<strong>YYYY-MM-DD</strong>形式にします。列はCountry、State、Start Date、End Date、Purpose、Notesで、AtlasDaysがインポートする列と同じです。申請書に旅行履歴が必要になったら、対象期間の行に絞って転記します。同じファイルのAtlasDaysへのインポートは無料で、アプリが国ごとの滞在日数を数えます。</p></div>
     <p class="download"><a href="/assets/downloads/travel-history-template.csv" download><strong>旅行履歴テンプレート（CSV）をダウンロード</strong></a></p>
     <div class="factbox"><dl>
-      <div><dt>ファイル</dt><dd>travel-history-template.csv。見出し行だけがあり、データはないのでそのまま入力可能</dd></div>
+      <div><dt>ファイル</dt><dd>travel-history-template.csv。見出し行と、書き換えて使うサンプル行が5行</dd></div>
       <div><dt>列</dt><dd>Country、State、Start Date、End Date、Purpose、Notes</dd></div>
       <div><dt>日付</dt><dd>YYYY-MM-DD。不明な場合は4桁の年のみ</dd></div>
       <div><dt>開けるアプリ</dt><dd>Excel、Numbers、Googleスプレッドシート、その他の表計算アプリ</dd></div>
       <div><dt>インポート先</dt><dd>AtlasDays。「設定」→「インポート」→「CSVファイル」から無料で利用可能</dd></div>
     </dl></div>
+
+    <h2>入力せずに埋める2つの方法</h2>
+    <p>5年分や10年分の旅行をスプレッドシートに手で入力するのは、時間のかかる方法です。日付の大半は、すでにどこかに残っています。</p>
+    <ul>
+      <li><strong>メールから、AIで。</strong>AIアシスタントに予約確認メールを読ませると、このファイルと同じ形式で返してくれます。コピーして使えるプロンプトは<a href="/ja/learn/travel-history-with-ai">AIで旅行履歴を再構成する方法</a>にあります。</li>
+      <li><strong>写真から。</strong>AtlasDaysは<a href="/ja/learn/travel-history-from-iphone-photos">iPhoneの写真から過去の旅行を見つけ</a>、この列構成のスプレッドシートとして書き出せます。</li>
+    </ul>
+    <p>テンプレートそのものは、この2つの方法で拾えなかった旅行を補い、重要な日付を直すために使ってください。</p>
 
     <h2>各列に入力する内容</h2>
     <dl class="kv kv-text">
@@ -21,7 +29,7 @@
       <div><dt>Purpose</dt><dd>Personal、Business、Study、Transitのいずれか。Transitは空港内にとどまり、その国に入国しなかった場合だけ使います。</dd></div>
       <div><dt>Notes</dt><dd>申請書で必要になり得るその他の情報。滞在都市（カナダの訪問者ビザ申請書では必要）、申請書独自の訪問目的の表現（「姉妹を訪問」など）、日付の根拠（パスポートのスタンプ、搭乗券、予約メール）、推定日付であることなどを記します。</dd></div>
     </dl>
-    <p>サンプル行をファイルに入れていないのは、消し忘れた行が実際の旅行としてインポートされるためです。入力後のファイルは次のようになります。</p>
+    <p>ファイルの先頭には、記入の種類ごとに1行ずつ、5行のサンプル行が入っています。自分の旅行に書き換え、不要な行は削除してください。残した行は実際の旅行としてインポートされます。各サンプルのNotesには「Example」と書いてあるので、消し忘れはインポートの確認画面ですぐに見つかります。</p>
     <p class="data-table-hint">例を左右にスワイプすると、すべての列を見られます。</p>
     <div class="data-table data-table-code"><table><thead><tr><th>Country</th><th>State</th><th>Start Date</th><th>End Date</th><th>Purpose</th><th>Notes</th></tr></thead><tbody>
       <tr><td>Portugal</td><td></td><td>2025-03-03</td><td>2025-03-10</td><td>Personal</td><td>リスボン、家族訪問。スタンプあり</td></tr>
@@ -64,10 +72,10 @@
       <li><strong>Stateは米国のみです。</strong>米国以外の行にStateの値があるとエラーになります。</li>
       <li><strong>年だけの行は保存されますが日数には入りません。</strong>訪問済みの国として記録され、正確な日付を補うまで日数は加算されません。</li>
     </ul>
-    <p>ファイルがまだない場合、インポート画面には<strong>「AIでCSVを作成」</strong>のプロンプトもあります。AIアシスタントを使ってメモや旅程をこれらの列に変換できます。AIツールへ貼り付けた内容には、そのツールのプライバシーポリシーが適用されます。</p>
+    
 
-    <h2>テンプレート以外に確認すること</h2>
-    <p>テンプレートは記録を整理しますが、完全にはしません。5年間の旅行が整った10行だけなら、短い旅行が抜けている可能性があります。申請書自身の指示が常に優先します。申請書別の要件は<a href="/ja/learn/travel-history-for-visa-applications">ビザ申請の旅行履歴</a>、スタンプ、メール、写真から空白を埋める方法は<a href="/ja/learn/rebuild-travel-history-from-passport-stamps-emails-photos">旅行履歴の再構成</a>、公的な出入国記録は<a href="/ja/learn/get-official-entry-exit-records">公的な出入国記録の取得</a>をご覧ください。</p>
+    <h2>このテンプレートに頼る前に</h2>
+    <p>申請書自身の指示が、どのレイアウトよりも常に優先します。<a href="/ja/learn/travel-history-for-visa-applications">申請書ごとに求められる内容</a>を確認し、重要な日付は<a href="/ja/learn/get-official-entry-exit-records">公的な出入国記録</a>と照合してください。</p>
 
     <div class="cta-box"><span class="cta-logo"><img class="logo-dark" src="/assets/brand/logo_dark.png?v=20260325a" alt="AtlasDaysのロゴ" width="52" height="52" /><img class="logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="AtlasDaysのロゴ" width="52" height="52" /></span>
       <h2>AtlasDaysでシートを継続的な滞在日数の集計に</h2>

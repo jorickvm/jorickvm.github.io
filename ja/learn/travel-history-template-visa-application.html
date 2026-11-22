@@ -212,24 +212,25 @@
     <nav class="toc-side" aria-label="目次">
       <p class="toc-title">目次</p>
       <ul>
-        <li><a href="#section-1">各列に入力する内容</a></li>
-        <li><a href="#section-2">不確かな日付を含めた記入方法</a></li>
+        <li><a href="#2">入力せずに埋める2つの方法</a></li>
+        <li><a href="#section-2">各列に入力する内容</a></li>
+        <li><a href="#section-3">不確かな日付を含めた記入方法</a></li>
         <li><a href="#1-1-1-1">1旅行につき1行ではなく、1滞在につき1行</a></li>
-        <li><a href="#section-4">申請書への転記</a></li>
+        <li><a href="#section-5">申請書への転記</a></li>
         <li><a href="#atlasdays">AtlasDaysへの無料インポート</a></li>
-        <li><a href="#section-6">テンプレート以外に確認すること</a></li>
-        <li><a href="#section-7">よくある質問</a></li>
+        <li><a href="#section-7">このテンプレートに頼る前に</a></li>
+        <li><a href="#section-8">よくある質問</a></li>
       </ul>
     </nav>
     <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb"><a href="/ja/">AtlasDays</a> / <a href="/ja/learn/">旅行ルール</a> / <a href="/ja/learn/guides">ガイド</a></nav>
     <h1>ビザ申請用の旅行履歴テンプレート（無料CSV）</h1>
-    <p class="subtitle">国での滞在ごとに1行を使い、ISO形式の日付を記入する無料の旅行履歴シートです。Excel、Numbers、Googleスプレッドシートで開け、DS-160、英国、カナダの申請書に転記でき、AtlasDaysにも直接インポートできます。</p>
+    <p class="subtitle">国での滞在ごとに1行を使い、ISO形式の日付を記入する無料の旅行履歴シートです。書き換えて使うサンプル行が入っています。Excel、Numbers、Googleスプレッドシートで開け、DS-160、英国、カナダの申請書に転記でき、AtlasDaysにも直接インポートできます。</p>
     <p class="verified">最終確認：2026年9月</p>
     <div class="tldr"><p><strong>要点：</strong>テンプレートをダウンロードし、<strong>1つの国での滞在につき1行</strong>追加します。すべての日付は<strong>YYYY-MM-DD</strong>形式にします。列はCountry、State、Start Date、End Date、Purpose、Notesで、AtlasDaysがインポートする列と同じです。申請書に旅行履歴が必要になったら、対象期間の行に絞って転記します。同じファイルのAtlasDaysへのインポートは無料で、アプリが国ごとの滞在日数を数えます。</p></div>
     <p class="download"><a href="/assets/downloads/travel-history-template.csv" download><strong>旅行履歴テンプレート（CSV）をダウンロード</strong></a></p>
     <div class="factbox"><dl>
-      <div><dt>ファイル</dt><dd>travel-history-template.csv。見出し行だけがあり、データはないのでそのまま入力可能</dd></div>
+      <div><dt>ファイル</dt><dd>travel-history-template.csv。見出し行と、書き換えて使うサンプル行が5行</dd></div>
       <div><dt>列</dt><dd>Country、State、Start Date、End Date、Purpose、Notes</dd></div>
       <div><dt>日付</dt><dd>YYYY-MM-DD。不明な場合は4桁の年のみ</dd></div>
       <div><dt>開けるアプリ</dt><dd>Excel、Numbers、Googleスプレッドシート、その他の表計算アプリ</dd></div>
@@ -239,17 +240,26 @@
     <details class="toc">
       <summary>目次</summary>
       <ul>
-        <li><a href="#section-1">各列に入力する内容</a></li>
-        <li><a href="#section-2">不確かな日付を含めた記入方法</a></li>
+        <li><a href="#2">入力せずに埋める2つの方法</a></li>
+        <li><a href="#section-2">各列に入力する内容</a></li>
+        <li><a href="#section-3">不確かな日付を含めた記入方法</a></li>
         <li><a href="#1-1-1-1">1旅行につき1行ではなく、1滞在につき1行</a></li>
-        <li><a href="#section-4">申請書への転記</a></li>
+        <li><a href="#section-5">申請書への転記</a></li>
         <li><a href="#atlasdays">AtlasDaysへの無料インポート</a></li>
-        <li><a href="#section-6">テンプレート以外に確認すること</a></li>
-        <li><a href="#section-7">よくある質問</a></li>
+        <li><a href="#section-7">このテンプレートに頼る前に</a></li>
+        <li><a href="#section-8">よくある質問</a></li>
       </ul>
     </details>
     <script>(function(){var t=document.currentScript.previousElementSibling;if(matchMedia('(min-width: 760px)').matches)t.open=true})();</script>
-    <h2 id="section-1">各列に入力する内容</h2>
+    <h2 id="2">入力せずに埋める2つの方法</h2>
+    <p>5年分や10年分の旅行をスプレッドシートに手で入力するのは、時間のかかる方法です。日付の大半は、すでにどこかに残っています。</p>
+    <ul>
+      <li><strong>メールから、AIで。</strong>AIアシスタントに予約確認メールを読ませると、このファイルと同じ形式で返してくれます。コピーして使えるプロンプトは<a href="/ja/learn/travel-history-with-ai">AIで旅行履歴を再構成する方法</a>にあります。</li>
+      <li><strong>写真から。</strong>AtlasDaysは<a href="/ja/learn/travel-history-from-iphone-photos">iPhoneの写真から過去の旅行を見つけ</a>、この列構成のスプレッドシートとして書き出せます。</li>
+    </ul>
+    <p>テンプレートそのものは、この2つの方法で拾えなかった旅行を補い、重要な日付を直すために使ってください。</p>
+
+    <h2 id="section-2">各列に入力する内容</h2>
     <dl class="kv kv-text">
       <div><dt>Country</dt><dd>国名の英語表記（Portugal、United Kingdom）または2文字のコード（PT、GB）。すべての行に必須です。</dd></div>
       <div><dt>State</dt><dd>米国への旅行のみ。州名、郵便用の略号（NY）、ISOコード（US-NY）のいずれか。ほかの国では空欄にします。</dd></div>
@@ -258,7 +268,7 @@
       <div><dt>Purpose</dt><dd>Personal、Business、Study、Transitのいずれか。Transitは空港内にとどまり、その国に入国しなかった場合だけ使います。</dd></div>
       <div><dt>Notes</dt><dd>申請書で必要になり得るその他の情報。滞在都市（カナダの訪問者ビザ申請書では必要）、申請書独自の訪問目的の表現（「姉妹を訪問」など）、日付の根拠（パスポートのスタンプ、搭乗券、予約メール）、推定日付であることなどを記します。</dd></div>
     </dl>
-    <p>サンプル行をファイルに入れていないのは、消し忘れた行が実際の旅行としてインポートされるためです。入力後のファイルは次のようになります。</p>
+    <p>ファイルの先頭には、記入の種類ごとに1行ずつ、5行のサンプル行が入っています。自分の旅行に書き換え、不要な行は削除してください。残した行は実際の旅行としてインポートされます。各サンプルのNotesには「Example」と書いてあるので、消し忘れはインポートの確認画面ですぐに見つかります。</p>
     <p class="data-table-hint">例を左右にスワイプすると、すべての列を見られます。</p>
     <div class="data-table data-table-code"><table><thead><tr><th>Country</th><th>State</th><th>Start Date</th><th>End Date</th><th>Purpose</th><th>Notes</th></tr></thead><tbody>
       <tr><td>Portugal</td><td></td><td>2025-03-03</td><td>2025-03-10</td><td>Personal</td><td>リスボン、家族訪問。スタンプあり</td></tr>
@@ -268,7 +278,7 @@
       <tr><td>Japan</td><td></td><td>2019</td><td></td><td>Personal</td><td>大阪、月は不明</td></tr>
     </tbody></table></div>
 
-    <h2 id="section-2">不確かな日付を含めた記入方法</h2>
+    <h2 id="section-3">不確かな日付を含めた記入方法</h2>
     <p>正確な日付はすべてYYYY-MM-DD形式にします。並べ替えが正しくでき、日月と月日の取り違えもなく、AtlasDaysがインポートする形式でもあります。1行の2つの日付は同じ精度にします。どちらも正確な日付か、年のみです。</p>
     <ul>
       <li><strong>日付が分かる場合。</strong>その日付を入力し、根拠をNotesに記します。</li>
@@ -285,7 +295,7 @@
     </div>
     <p>複数行を1回の不在にまとめるときは、両端のフライトを確認してください。夜間に出発した場合、居住国を出た日はファイルの最初の到着日より1日早いことがあります。</p>
 
-    <h2 id="section-4">申請書への転記</h2>
+    <h2 id="section-5">申請書への転記</h2>
     <ol class="steps">
       <li><a href="/ja/learn/travel-history-for-visa-applications">対象期間の一覧表</a>で、申請書が何年前まで求めるかを調べます。DS-160は5年、英国の訪問者ビザとカナダの永住申請は最大10年、市民権は資格取得期間全体です。</li>
       <li>Start Dateで並べ替え、対象期間より前に終わった行を非表示にします。</li>
@@ -301,17 +311,17 @@
       <li><strong>Stateは米国のみです。</strong>米国以外の行にStateの値があるとエラーになります。</li>
       <li><strong>年だけの行は保存されますが日数には入りません。</strong>訪問済みの国として記録され、正確な日付を補うまで日数は加算されません。</li>
     </ul>
-    <p>ファイルがまだない場合、インポート画面には<strong>「AIでCSVを作成」</strong>のプロンプトもあります。AIアシスタントを使ってメモや旅程をこれらの列に変換できます。AIツールへ貼り付けた内容には、そのツールのプライバシーポリシーが適用されます。</p>
+    
 
-    <h2 id="section-6">テンプレート以外に確認すること</h2>
-    <p>テンプレートは記録を整理しますが、完全にはしません。5年間の旅行が整った10行だけなら、短い旅行が抜けている可能性があります。申請書自身の指示が常に優先します。申請書別の要件は<a href="/ja/learn/travel-history-for-visa-applications">ビザ申請の旅行履歴</a>、スタンプ、メール、写真から空白を埋める方法は<a href="/ja/learn/rebuild-travel-history-from-passport-stamps-emails-photos">旅行履歴の再構成</a>、公的な出入国記録は<a href="/ja/learn/get-official-entry-exit-records">公的な出入国記録の取得</a>をご覧ください。</p>
+    <h2 id="section-7">このテンプレートに頼る前に</h2>
+    <p>申請書自身の指示が、どのレイアウトよりも常に優先します。<a href="/ja/learn/travel-history-for-visa-applications">申請書ごとに求められる内容</a>を確認し、重要な日付は<a href="/ja/learn/get-official-entry-exit-records">公的な出入国記録</a>と照合してください。</p>
 
     <div class="cta-box"><span class="cta-logo"><img class="logo-dark" src="/assets/brand/logo_dark.png?v=20260325a" alt="AtlasDaysのロゴ" width="52" height="52" /><img class="logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="AtlasDaysのロゴ" width="52" height="52" /></span>
       <h2>AtlasDaysでシートを継続的な滞在日数の集計に</h2>
       <p>テンプレートを無料でインポートすると、AtlasDaysがiPhone内で非公開に国ごとの日数を数えます。旅行のたびに記録を加えれば、次の申請書が旅行履歴を求めたときも最新の状態です。</p>
       <a class="cta-btn" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web-article&amp;mt=8&amp;ppid=eddb242b-917d-422a-93f8-d39e4846ed31"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> アプリを入手</a>
     </div>
-    <h2 id="section-7">よくある質問</h2>
+    <h2 id="section-8">よくある質問</h2>
     <h3>公的な旅行履歴テンプレートはありますか？</h3>
     <p>共通の公的テンプレートはありません。カナダのIMM 5257 Schedule 1、IMM 5562、米国のN-400のPart 8のように、申請書自体に旅行の表があるものもあり、提出するのはそれらです。このテンプレートは、各申請書に転記するための手元の記録です。</p>
     <h3>旅行履歴の日付にはどの形式を使いますか？</h3>
@@ -333,8 +343,10 @@
       <h2 id="related-travel-history-template-visa-application">関連記事</h2>
       <div class="rule-cards">
         <a class="rule-card" href="/ja/learn/travel-history-for-visa-applications"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10A.5.5 0 0 1 7 20V3.5Z"/><path d="M14 3.5V8h4M10 12h5M10 15.5h5"/></svg></span><span class="rule-text"><strong>ビザ申請の旅行履歴：申請書ごとに何年分が必要か</strong></span></a>
+        <a class="rule-card" href="/ja/learn/travel-history-with-ai"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10A.5.5 0 0 1 7 20V3.5Z"/><path d="M14 3.5V8h4M10 12h5M10 15.5h5"/></svg></span><span class="rule-text"><strong>AIでメールから旅行履歴を再構成する方法</strong></span></a>
         <a class="rule-card" href="/ja/learn/get-official-entry-exit-records"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10A.5.5 0 0 1 7 20V3.5Z"/><path d="M14 3.5V8h4M10 12h5M10 15.5h5"/></svg></span><span class="rule-text"><strong>公的な旅行履歴（出入国記録）を取得する方法</strong></span></a>
         <a class="rule-card" href="/ja/learn/rebuild-travel-history-from-passport-stamps-emails-photos"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10A.5.5 0 0 1 7 20V3.5Z"/><path d="M14 3.5V8h4M10 12h5M10 15.5h5"/></svg></span><span class="rule-text"><strong>パスポートのスタンプ、メール、写真から旅行履歴を再構成する方法</strong></span></a>
+        <a class="rule-card" href="/ja/learn/travel-history-from-iphone-photos"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10A.5.5 0 0 1 7 20V3.5Z"/><path d="M14 3.5V8h4M10 12h5M10 15.5h5"/></svg></span><span class="rule-text"><strong>iPhoneの写真から旅の地図と旅行履歴を作る方法</strong></span></a>
         <a class="rule-card" href="/ja/learn/prove-you-were-not-in-a-country"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10A.5.5 0 0 1 7 20V3.5Z"/><path d="M14 3.5V8h4M10 12h5M10 15.5h5"/></svg></span><span class="rule-text"><strong>ある国や州にいなかったことを証明する方法</strong></span></a>
       </div>
     </nav>

@@ -1,6 +1,6 @@
     <nav class="breadcrumb"><a href="/fr/">AtlasDays</a> / <a href="/fr/learn/">Règles de voyage</a> / <a href="/fr/learn/guides">Guides</a></nav>
     <h1>Modèle d’historique de voyages pour une demande de visa (CSV gratuit)</h1>
-    <p class="subtitle">Un tableur vierge et gratuit, avec une ligne par séjour et des dates ISO. Il s’ouvre dans Excel, Numbers et Google Sheets, s’adapte aux formulaires DS-160, britanniques et canadiens, et s’importe directement dans AtlasDays.</p>
+    <p class="subtitle">Un tableur gratuit pour votre historique de voyages, avec une ligne par séjour, des dates ISO et des lignes d’exemple à remplacer. Il s’ouvre dans Excel, Numbers et Google Sheets, s’adapte aux formulaires DS-160, britanniques et canadiens, et s’importe directement dans AtlasDays.</p>
     <p class="verified">Dernière vérification : septembre 2026</p>
 
     <div class="tldr"><p><strong>En bref :</strong> téléchargez le modèle, ajoutez <strong>une ligne par séjour dans un pays</strong> et écrivez chaque date au format <strong>YYYY-MM-DD</strong>. Les colonnes sont Country, State, Start Date, End Date, Purpose et Notes, exactement celles qu’AtlasDays importe. Lorsqu’un formulaire demande votre historique, filtrez les lignes selon la période concernée et recopiez-les. L’importation du même fichier dans AtlasDays est gratuite ; l’app compte alors vos jours par pays.</p></div>
@@ -8,12 +8,20 @@
     <p class="download"><a href="/assets/downloads/travel-history-template.csv" download><strong>Télécharger le modèle d’historique de voyages (CSV)</strong></a></p>
 
     <div class="factbox"><dl>
-      <div><dt>Fichier</dt><dd>travel-history-template.csv, avec une ligne d’en-tête et aucune donnée, prêt à remplir</dd></div>
+      <div><dt>Fichier</dt><dd>travel-history-template.csv, avec une ligne d’en-tête et cinq lignes d’exemple à remplacer</dd></div>
       <div><dt>Colonnes</dt><dd>Country, State, Start Date, End Date, Purpose, Notes</dd></div>
       <div><dt>Dates</dt><dd>YYYY-MM-DD, ou une année à quatre chiffres si c’est tout ce que vous savez</dd></div>
       <div><dt>S’ouvre dans</dt><dd>Excel, Numbers, Google Sheets et tout autre tableur</dd></div>
       <div><dt>S’importe dans</dt><dd>AtlasDays gratuitement, sous Réglages → Importer → Fichier CSV</dd></div>
     </dl></div>
+
+    <h2>Deux façons de le remplir sans rien saisir</h2>
+    <p>Saisir cinq ou dix ans de voyages dans un tableur, c’est la voie lente. La plupart des dates existent déjà quelque part.</p>
+    <ul>
+      <li><strong>Depuis vos e-mails, avec l’IA.</strong> Un assistant IA peut lire vos confirmations de réservation et renvoyer exactement ce fichier. <a href="/fr/learn/travel-history-with-ai">Reconstituer son historique de voyages grâce à l’IA</a> fournit le prompt à copier.</li>
+      <li><strong>Depuis vos photos.</strong> AtlasDays peut <a href="/fr/learn/travel-history-from-iphone-photos">retrouver vos anciens voyages dans les photos de votre iPhone</a> et les exporter sous forme de tableur avec ces colonnes.</li>
+    </ul>
+    <p>Réservez le modèle lui-même à ce que ces deux méthodes laissent de côté, et à la correction des dates qui comptent.</p>
 
     <h2>Que saisir dans chaque colonne ?</h2>
     <dl class="kv kv-text">
@@ -24,7 +32,7 @@
       <div><dt>Purpose</dt><dd>Personal, Business, Study ou Transit. Utilisez Transit uniquement si vous êtes resté en zone de transit sans entrer dans le pays.</dd></div>
       <div><dt>Notes</dt><dd>Tout autre renseignement utile au formulaire : ville du séjour (le formulaire canadien de visa de visiteur en demande une), motif dans les termes du formulaire (« visite à ma sœur »), pièces justifiant les dates (tampon, carte d’embarquement, e-mail de réservation) et dates estimées.</dd></div>
     </dl>
-    <p>Le fichier ne contient volontairement aucun exemple : les lignes que vous oublieriez de supprimer seraient importées comme de vrais voyages. Voici à quoi ressemble un fichier rempli.</p>
+    <p>Le fichier s’ouvre sur cinq lignes d’exemple, une pour chaque type d’entrée. Remplacez-les par vos propres voyages et supprimez celles dont vous n’avez pas besoin : une ligne laissée en place est importée comme un vrai voyage. Chaque exemple porte la mention « Example » dans Notes : un oubli se repère donc facilement dans la vérification de l’import.</p>
     <p class="data-table-hint">Faites défiler l’exemple horizontalement pour voir toutes les colonnes.</p>
     <div class="data-table data-table-code"><table><thead>
       <tr><th>Country</th><th>State</th><th>Start Date</th><th>End Date</th><th>Purpose</th><th>Notes</th></tr>
@@ -69,10 +77,10 @@
       <li><strong>State est réservé aux États-Unis.</strong> Une valeur dans State sur une ligne d’un autre pays est signalée comme erreur.</li>
       <li><strong>Les lignes avec une année seulement sont conservées, mais non comptées.</strong> Elles marquent le pays comme visité sans ajouter de jours tant que vous ne saisissez pas de dates exactes.</li>
     </ul>
-    <p>Vous n’avez pas encore de fichier ? L’écran d’importation propose aussi le prompt <strong>Créer un CSV avec l’IA</strong>, qui transforme des notes ou un itinéraire en ces colonnes avec un assistant IA. Le contenu collé dans cet outil est soumis à sa propre politique de confidentialité.</p>
+    
 
-    <h2>Au-delà du modèle</h2>
-    <p>Un modèle organise le relevé, mais ne le rend pas complet. Dix lignes bien rangées pour cinq ans de voyages peuvent indiquer que les courts déplacements manquent. Le libellé du formulaire fait toujours foi. Pour savoir ce que chaque formulaire demande, voir <a href="/fr/learn/travel-history-for-visa-applications">l’historique de voyages pour les demandes de visa</a>. Pour combler les lacunes avec les tampons, e-mails et photos, voir <a href="/fr/learn/rebuild-travel-history-from-passport-stamps-emails-photos">la reconstitution de l’historique</a> ; pour les données officielles de passage, <a href="/fr/learn/get-official-entry-exit-records">les relevés d’entrée et de sortie</a>.</p>
+    <h2>Avant de vous y fier</h2>
+    <p>Le libellé du formulaire prime toujours sur n’importe quelle mise en page. Voyez <a href="/fr/learn/travel-history-for-visa-applications">ce que demande chaque formulaire</a>, et confirmez les dates qui comptent à l’aide des <a href="/fr/learn/get-official-entry-exit-records">relevés officiels d’entrée et de sortie</a>.</p>
 
     <div class="cta-box"><span class="cta-logo">
       <img class="logo-dark" src="/assets/brand/logo_dark.png?v=20260325a" alt="Logo AtlasDays" width="52" height="52" />

@@ -1,0 +1,72 @@
+<nav class="breadcrumb"><a href="/ru/">AtlasDays</a> / <a href="/ru/learn/">Правила поездок</a> / <a href="/ru/learn/calculators">Калькуляторы</a></nav>
+<h1>Посещённые страны: карта и счётчик</h1>
+<p class="subtitle">Отметьте страны, в которых вы побывали, и посмотрите свой итог из 195 на карте, которую можно приближать. Ваш выбор не покидает эту страницу.</p>
+<p class="verified">Последняя проверка: ноябрь 2026 года</p>
+<section class="country-checklist" data-country-checklist aria-labelledby="country-checklist-title">
+<h2 id="country-checklist-title">Отметьте, где вы побывали</h2>
+<div class="cal-box" data-country-picker hidden>
+<output class="country-checklist-count cal-headline" data-country-count data-count-template="Посещено стран: {count} из {total}." aria-live="polite" aria-atomic="true">Посещено стран: 0 из 195.</output>
+<div class="country-checklist-progress" aria-hidden="true"><span data-country-progress></span></div>
+<div class="country-checklist-map" data-country-map hidden>
+<div class="country-checklist-map-canvas" data-country-map-canvas></div>
+<p class="country-checklist-map-credit">© <a href="https://www.amcharts.com/svg-maps/" rel="nofollow">amCharts</a> · <a href="/assets/maps/SOURCES.txt">CC BY 4.0</a></p>
+</div>
+<p class="cal-hint">Выберите страну на карте или найдите её в списке. Выберите континент, чтобы приблизить его.</p>
+<!-- COUNTRY_CHECKLIST_FILTERS -->
+<div class="country-checklist-search">
+<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg>
+<input type="search" class="cal-country-input" data-country-search aria-label="Поиск стран" placeholder="Поиск стран" autocomplete="off" spellcheck="false" aria-controls="country-checklist-options">
+</div>
+<div class="country-checklist-picked" data-country-picked hidden>
+<div class="country-checklist-picked-head"><strong>Посещено</strong><button type="button" class="country-checklist-clear" data-country-clear>Очистить всё</button></div>
+<div class="country-checklist-picked-list" data-country-picked-list></div>
+</div>
+<div id="country-checklist-options" class="country-checklist-options" data-country-options>
+<!-- COUNTRY_CHECKLIST -->
+</div>
+<p class="cal-empty" data-country-empty hidden>Страна не найдена</p>
+<div class="country-checklist-result" data-country-result hidden><h3>Сохраните поездки, стоящие за вашим итогом.</h3><p>AtlasDays дополняет число стран датами, картой посещений и предложениями поездок по фотографиям.</p></div>
+<button type="button" class="cal-import country-checklist-track" disabled data-country-track>Отслеживать в AtlasDays</button>
+</div>
+<div class="cta-box country-checklist-cta"><p>Число стран мира — один итог. Ваша история поездок — другой. AtlasDays может найти прошлые поездки в фотографиях и показать посещённые страны на личной карте мира.</p><a class="cta-btn" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">{{t:cta.get_app}}</a><p class="cta-micro">Карта и подсчёт стран бесплатны. Аккаунт не нужен.</p></div>
+<dialog class="cal-dialog cal-dialog-steps" data-country-dialog aria-labelledby="countries-import-title">
+<div class="cal-dialog-head">
+<img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+<div>
+<p class="cal-dialog-title" id="countries-import-title"><span data-cal-on="computer">Продолжите на iPhone или iPad</span><span data-cal-on="phone">Открыть в AtlasDays</span></p>
+<p class="cal-dialog-sub">Ведите карту посещённых стран в поездках. Скачайте AtlasDays бесплатно.</p>
+</div>
+</div>
+<div class="cal-dialog-scan" data-cal-on="computer">
+<div class="cal-qr" data-cal-qr></div>
+<div class="cal-scan-copy"><p class="cal-scan-lead">Отсканируйте код, чтобы открыть свои страны в AtlasDays.</p></div>
+</div>
+<ol class="cal-steps" data-cal-on="phone">
+<li>
+<strong>Откройте свои страны в приложении</strong>
+<span>Проверьте их и нажмите «Импортировать». До этого ничего не сохраняется.</span>
+<a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Открыть в AtlasDays</a>
+</li>
+<li data-cal-store>
+<strong>Скачайте AtlasDays</strong>
+<span>Бесплатно в App Store для iPhone и iPad.</span>
+<a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a>
+</li>
+</ol>
+<div class="cal-dialog-foot">
+<p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Скачать страны в файле CSV</button><span data-cal-downloaded hidden>Откройте этот файл в AtlasDays на iPhone.</span></p>
+<button type="button" data-cal-close>Закрыть</button>
+</div>
+</dialog>
+</section>
+<h2>Что здесь считается страной</h2>
+<p>Итог основан на самом распространённом ответе: 195 стран, то есть 193 государства — члена ООН плюс Святой Престол и Государство Палестина. Включите территории, чтобы отмечать и такие места, как Гренландия, Пуэрто-Рико, Гонконг и Антарктида. Они считаются рядом с этими 195, а не внутри них. Статья <a href="/ru/learn/how-many-countries-in-the-world">«Сколько стран в мире»</a> сравнивает этот список с олимпийским, списком FIFA и списком Клуба путешественников ста стран.</p>
+<h2>Что считается посещением</h2>
+<p>Это решать вам, и путешественники тут расходятся. Большинство засчитывает страну, если прошли пограничный контроль и провели в ней какое-то время. Некоторые считают любую землю, на которую ступали, включая аэропорты. Выберите один критерий и применяйте его ко всем странам. Распространённые правила разобраны в статье <a href="/ru/learn/does-a-layover-count-as-visiting-a-country">«Считается ли пересадка посещением страны»</a>.</p>
+<h2>От числа стран к истории поездок</h2>
+<p>Список стран говорит, где вы были. Он не говорит, когда и как долго. В AtlasDays те же страны превращаются в поездки с датами, карту и 3D-глобус, статистику по годам и подсчёт дней по визовым и резидентским лимитам. Свой выбор можно отправить в приложение прямо с этой страницы, а можно поручить ему найти прошлые поездки <a href="/ru/learn/travel-history-from-iphone-photos">в фотографиях на iPhone</a>.</p>
+<h2>Частые вопросы</h2>
+<h3>Сколько всего стран?</h3><p>195 по самому распространённому счёту: 193 государства — члена ООН и 2 государства-наблюдателя. В других списках от 193 до более чем 300 позиций, потому что они учитывают территории, спортивные организации или регионы.</p>
+<h3>Сохраняется ли мой выбор и отправляется ли он куда-нибудь?</h3><p>Нет. Он остаётся на этой странице и исчезает, когда вы её закрываете. Если вы решите продолжить в AtlasDays, страны передаются в ссылке, которую вы открываете, прямо в приложение на вашем устройстве.</p>
+<h3>Можно ли отметить территории, например Гонконг или Гренландию?</h3><p>Да. Включите «Показать территории и другие места» или выберите место на карте. Территории показываются рядом с вашим числом стран.</p>
+<h3>Как сохранить свою карту?</h3><p>Выберите свои страны и нажмите «Отслеживать в AtlasDays». Приложение хранит карту посещённых стран на вашем iPhone или iPad и пополняет её, пока вы путешествуете.</p>

@@ -1,0 +1,65 @@
+<nav class="breadcrumb"><a href="/ko/">AtlasDays</a> / <a href="/ko/learn/">여행 규정</a> / <a href="/ko/learn/guides">가이드</a></nav>
+<h1>AI로 이메일 속 여행 기록 복원하기</h1>
+<p class="subtitle">몇 년 치 항공편과 호텔 예약이 이미 이메일에 남아 있습니다. AI 어시스턴트가 이를 몇 분 만에 여행 목록으로 정리하고, AtlasDays가 그 결과를 가져옵니다.</p>
+<p class="verified">최종 확인: 2026년 11월</p>
+<div class="tldr"><p>AI 어시스턴트를 메일함에 연결하고 아래 프롬프트를 붙여 넣으면, 한 국가에서의 체류마다 한 행씩 담긴 파일을 돌려줍니다. 이 파일을 AtlasDays로 가져와 확인 화면을 살펴보면 지난 여행이 타임라인과 지도에 표시됩니다. 가져오기는 무료입니다.</p></div>
+<h2>진행 순서</h2>
+<ol class="steps">
+<li><strong>이메일을 읽을 수 있는 어시스턴트 열기.</strong> Gemini는 Gmail 안에서 작동하고, ChatGPT와 Claude는 설정에서 메일함을 연결할 수 있습니다. 아무것도 연결하고 싶지 않다면 아래의 <a href="#without-connecting">붙여 넣기 방법</a>을 참고하십시오.</li>
+<li><strong>프롬프트 붙여 넣기.</strong> 프롬프트는 무엇을 검색할지, 변경되거나 취소된 예약을 어떻게 처리할지, AtlasDays가 읽는 파일 형식이 정확히 무엇인지 어시스턴트에 알려 줍니다.</li>
+<li><strong>어시스턴트의 질문에 답하기.</strong> 좋은 어시스턴트는 추측하기 전에 묻습니다. 변경된 항공편에 실제로 탔는지, 출국 기록을 찾지 못한 나라에서 어떻게 떠났는지 같은 질문입니다.</li>
+<li><strong>파일 저장하기.</strong> 어시스턴트는 <code>atlasdays.csv</code> 파일을 돌려주거나, 그 이름으로 저장할 텍스트를 돌려줍니다.</li>
+<li><strong>가져오기.</strong> AtlasDays에서 설정 → 가져오기 → CSV 파일을 열고 파일을 선택하십시오. AtlasDays는 찾은 여행을 모두 보여 주고 중복과 겹침을 표시하며, '가져오기'를 탭하기 전에는 아무것도 저장하지 않습니다.</li>
+</ol>
+<h2>프롬프트</h2>
+<p>전체를 복사하십시오. 다른 기간을 원하면 첫 줄을 바꾸면 됩니다.</p>
+<div class="prompt-box">
+<button type="button" class="prompt-copy" data-copy-target="travel-history-prompt" data-copied-label="복사됨" hidden>프롬프트 복사</button>
+<pre id="travel-history-prompt">2016년 1월 이후 제가 다녀온 모든 해외여행을 제 이메일에서 찾아 여행 기록을 만들어 주세요.
+
+검색
+항공권, 기차표, 페리와 버스 승차권, 탑승권, 호텔과 아파트 예약, 렌터카, 전자비자나 여행 허가 승인 메일을 찾아 주세요. 예약마다 이후 변경 내역까지 따라가서 최종 일정을 사용하고, 취소되었거나 환불된 예약은 무시해 주세요.
+
+작성
+한 국가에서의 체류마다 한 행씩, 날짜순으로 정리해 주세요. 3개국을 거친 여행은 3행입니다. 도착일은 예약한 날이나 이륙한 날이 아니라 제가 착륙했거나 국경을 넘은 현지 날짜입니다. 출발일은 제가 그 나라를 떠난 현지 날짜입니다. 비행기만 갈아타고 공항 밖으로 나가지 않았다면 Purpose를 Transit으로 해서 행을 추가해 주세요.
+
+형식
+atlasdays.csv라는 이름의 CSV 파일을 정확히 다음 헤더로 돌려주세요.
+Country,State,Start Date,End Date,Purpose,Notes
+- Country: 영어 국가명 또는 2자리 코드.
+- State: 미국 체류에만 NY 같은 우편 약자로 입력. 그 외에는 비워 둡니다.
+- Start Date와 End Date: yyyy-mm-dd. 연도만 알면 Start Date에 4자리 연도를 넣고 End Date는 비워 둡니다.
+- Purpose: Personal, Business, Study, Transit 중 하나이거나 비워 둡니다.
+- Notes: 날짜의 근거. 예: "항공편 확인 메일, 호텔 청구서". 쉼표가 들어가면 큰따옴표로 감쌉니다.
+
+규칙
+날짜를 지어내지 마세요. 도착일이나 출발일이 없거나 두 이메일의 내용이 서로 다르면 행을 쓰기 전에 저에게 물어봐 주세요. 제 거주국은 빼 주세요. 파일을 주기 전에 확실하지 않은 여행과 그 이유를 먼저 나열해 주세요. 파일을 만들 수 없으면 CSV를 코드 블록 하나에 넣고 다른 내용은 쓰지 마세요.</pre>
+</div>
+<h2>가져오기 전에 확인할 사항</h2>
+<p>어시스턴트가 읽는 것은 예약이고, 예약은 계획입니다. 계획과 실제 여행이 달라지는 지점은 다음과 같으며, AtlasDays 확인 화면에서 1분쯤 들여 살펴볼 만한 곳이기도 합니다.</p>
+<ul>
+<li><strong>가지 않은 여행.</strong> 취소했거나 놓친 항공편도 행으로 남을 수 있습니다. 확인 화면에서 선택을 해제하십시오.</li>
+<li><strong>이메일이 없는 여행.</strong> 자동차로 넘은 국경, 창구에서 산 표, 다른 사람이 예약한 여행은 빠져 있습니다. 직접 추가하거나 <a href="/ko/learn/travel-history-from-iphone-photos">사진 보관함으로 빈 곳을 채울</a> 수 있습니다.</li>
+<li><strong>야간 항공편.</strong> 도착일은 착륙한 날입니다. 23:40에 출발하면 다음 날 도착합니다.</li>
+<li><strong>경유.</strong> 에어사이드에만 머문 경유지는 '환승'이어야 하며, AtlasDays는 환승을 방문으로도 일수 합계로도 계산하지 않습니다.</li>
+</ul>
+<p>'중복'으로 표시된 행은 건너뛰고, 다른 국가의 여행과 겹치는 행은 날짜를 비교할 수 있도록 표시됩니다. 각 표시의 의미는 <a href="/ko/help/csv-import">CSV 가져오기 안내</a>에서 설명합니다.</p>
+<h2 id="privacy">개인정보: 무엇을 누구와 공유하게 되는지</h2>
+<p>이 방법이 빠른 것은 어시스턴트가 이메일을 읽기 때문입니다. 그 점을 염두에 두고 결정하십시오.</p>
+<ul>
+<li><strong>어시스턴트 제공업체는 어시스턴트가 읽는 내용을 봅니다.</strong> 연결된 어시스턴트는 여행 이메일뿐 아니라 검색에 걸린 모든 메일을 열 수 있습니다. 제공업체가 무엇을 보관하는지, 대화를 모델 학습에 쓰는지는 해당 업체의 개인정보 처리방침과 본인의 계정 설정에 따라 정해집니다. 연결하기 전에 둘 다 확인하십시오.</li>
+<li><strong>개인 메일함을 사용하십시오.</strong> 회사 계정에는 대개 외부 서비스 연결에 관한 규정이 있습니다.</li>
+<li><strong>끝나면 연결을 해제하십시오.</strong> 파일을 받았으면 어시스턴트 설정에서 메일함 연결을 제거하고, 대화를 남기고 싶지 않다면 삭제하십시오.</li>
+<li><strong>AtlasDays는 그중 어느 것도 보지 않습니다.</strong> AtlasDays에는 계정이 없고 여행을 전송받는 서버도 없습니다. 이메일도, 어시스턴트와 나눈 대화도 보지 않습니다. 파일은 iPhone에서 읽히고 여행은 그곳에 남으며, 원하면 본인의 iCloud로 동기화할 수 있습니다.</li>
+</ul>
+<h2 id="without-connecting">메일함을 연결하지 않는 방법</h2>
+<p>어시스턴트를 받은편지함에 들이지 않고도 직접 입력하는 수고를 덜 수 있습니다. 메일에서 '예약 확인'(booking confirmation), '여정'(itinerary), '탑승권'(boarding pass)을 검색한 다음, 해당 메일을 붙여 넣거나 PDF를 첨부해 같은 프롬프트와 함께 보내십시오. 그러면 어시스턴트는 건네받은 내용만 봅니다. 여권 번호와 결제 정보는 먼저 지우십시오.</p>
+<p>같은 프롬프트를 다른 자료에도 쓸 수 있습니다. 항공사의 탑승 내역 페이지, 다른 여행 앱에서 내보낸 스프레드시트, 여권 도장을 찍은 사진 등입니다. AtlasDays는 설정 → 가져오기 → CSV 파일 → AI로 CSV 만들기에 이 프롬프트의 한 버전을 담아 두었습니다.</p>
+<h2>날짜가 검증을 견뎌야 할 때</h2>
+<p>지도와 방문 기록이 목적이라면 가져온 기록으로 충분합니다. 비자나 시민권 신청에 쓴다면 작업용 초안으로 삼으십시오. 중요한 날짜는 <a href="/ko/learn/get-official-entry-exit-records">공식 출입국 기록</a>과 대조해 확인하고, <a href="/ko/learn/travel-history-for-visa-applications">양식마다 요구하는 내용</a>도 살펴보십시오.</p>
+<div class="cta-box"><span class="cta-logo"><img class="logo-dark" src="/assets/brand/logo_dark.png?v=20260325a" alt="" width="52" height="52" /><img class="logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="" width="52" height="52" /></span><h2>여행 기록을 무료로 가져오기</h2><p>AtlasDays는 이 파일을 타임라인, 방문한 모든 국가의 지도, 비자·거주 한도에 따른 체류 일수로 바꿉니다.</p><a class="cta-btn" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">{{t:cta.get_app}}</a></div>
+<h2>자주 묻는 질문</h2>
+<h3>어떤 AI 어시스턴트를 써야 합니까?</h3><p>메일함을 검색하고 파일을 돌려줄 수 있는 어시스턴트라면 무엇이든 됩니다. Gmail에는 Gemini가 가장 빠른 길입니다. ChatGPT와 Claude는 설정에서 메일함을 연결하면 쓸 수 있습니다. 프롬프트는 모두 같습니다.</p>
+<h3>결과는 얼마나 정확합니까?</h3><p>최종 항공권에서 가져온 날짜는 대개 맞습니다. 흔한 오류는 취소했는데도 나타나는 여행과 이메일이 남지 않은 여행입니다. AtlasDays 확인 화면은 저장하기 전에 모든 행을 보여 주므로 여행을 고치거나 뺄 수 있습니다.</p>
+<h3>AtlasDays가 내 이메일을 읽습니까?</h3><p>아니요. AtlasDays는 직접 선택한 CSV 파일만 기기에서 읽습니다. 이메일 검색은 선택한 어시스턴트 안에서, 해당 제공업체의 개인정보 처리방침에 따라 이루어집니다.</p>
+<h3>가져오기는 무료입니까?</h3><p>예. CSV 가져오기는 AtlasDays 무료 버전에 포함되며 여행 수에 제한이 없습니다.</p>

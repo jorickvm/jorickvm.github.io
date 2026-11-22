@@ -1,0 +1,72 @@
+<nav class="breadcrumb"><a href="/zh-Hans/">AtlasDays</a> / <a href="/zh-Hans/learn/">旅行规则</a> / <a href="/zh-Hans/learn/calculators">计算器</a></nav>
+<h1>我去过的国家：地图标记与数量统计</h1>
+<p class="subtitle">标记去过的国家，在可缩放的地图上查看 195 个国家中到访了多少个。选择的内容不会离开这个页面。</p>
+<p class="verified">最后核实：2026 年 11 月</p>
+<section class="country-checklist" data-country-checklist aria-labelledby="country-checklist-title">
+<h2 id="country-checklist-title">标记去过的地方</h2>
+<div class="cal-box" data-country-picker hidden>
+<output class="country-checklist-count cal-headline" data-country-count data-count-template="{total} 个国家中，已到访 {count} 个。" aria-live="polite" aria-atomic="true">195 个国家中，已到访 0 个。</output>
+<div class="country-checklist-progress" aria-hidden="true"><span data-country-progress></span></div>
+<div class="country-checklist-map" data-country-map hidden>
+<div class="country-checklist-map-canvas" data-country-map-canvas></div>
+<p class="country-checklist-map-credit">© <a href="https://www.amcharts.com/svg-maps/" rel="nofollow">amCharts</a> · <a href="/assets/maps/SOURCES.txt">CC BY 4.0</a></p>
+</div>
+<p class="cal-hint">在地图上选择国家，或在列表中查找。选择一个大洲可以放大。</p>
+<!-- COUNTRY_CHECKLIST_FILTERS -->
+<div class="country-checklist-search">
+<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg>
+<input type="search" class="cal-country-input" data-country-search aria-label="搜索国家或地区" placeholder="搜索国家或地区" autocomplete="off" spellcheck="false" aria-controls="country-checklist-options">
+</div>
+<div class="country-checklist-picked" data-country-picked hidden>
+<div class="country-checklist-picked-head"><strong>已到访</strong><button type="button" class="country-checklist-clear" data-country-clear>全部清除</button></div>
+<div class="country-checklist-picked-list" data-country-picked-list></div>
+</div>
+<div id="country-checklist-options" class="country-checklist-options" data-country-options>
+<!-- COUNTRY_CHECKLIST -->
+</div>
+<p class="cal-empty" data-country-empty hidden>找不到符合的国家或地区</p>
+<div class="country-checklist-result" data-country-result hidden><h3>总数背后的行程，也一起留下。</h3><p>AtlasDays 为国家总数加上日期、到访地图，以及根据照片生成的行程建议。</p></div>
+<button type="button" class="cal-import country-checklist-track" disabled data-country-track>在 AtlasDays 中继续追踪</button>
+</div>
+<div class="cta-box country-checklist-cta"><p>世界上的国家总数是一个数字，自己的旅行记录则是另一回事。AtlasDays 能从照片找回过去的行程，将到访过的国家呈现在私人世界地图上。</p><a class="cta-btn" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">{{t:cta.get_app}}</a><p class="cta-micro">国家地图与国家计数均免费，无需账户。</p></div>
+<dialog class="cal-dialog cal-dialog-steps" data-country-dialog aria-labelledby="countries-import-title">
+<div class="cal-dialog-head">
+<img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+<div>
+<p class="cal-dialog-title" id="countries-import-title"><span data-cal-on="computer">在 iPhone 或 iPad 上继续</span><span data-cal-on="phone">在 AtlasDays 中打开</span></p>
+<p class="cal-dialog-sub">旅途中也能持续更新到访地图。免费下载 AtlasDays。</p>
+</div>
+</div>
+<div class="cal-dialog-scan" data-cal-on="computer">
+<div class="cal-qr" data-cal-qr></div>
+<div class="cal-scan-copy"><p class="cal-scan-lead">扫描二维码，在 AtlasDays 中打开所选国家。</p></div>
+</div>
+<ol class="cal-steps" data-cal-on="phone">
+<li>
+<strong>在 App 中打开所选国家</strong>
+<span>核对无误后轻点“导入”。在此之前，不会保存任何内容。</span>
+<a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">在 AtlasDays 中打开</a>
+</li>
+<li data-cal-store>
+<strong>获取 AtlasDays</strong>
+<span>可在 App Store 免费下载，适用于 iPhone 和 iPad。</span>
+<a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a>
+</li>
+</ol>
+<div class="cal-dialog-foot">
+<p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>将国家下载为 CSV 文件</button><span data-cal-downloaded hidden>请在 iPhone 上用 AtlasDays 打开这个文件。</span></p>
+<button type="button" data-cal-close>关闭</button>
+</div>
+</dialog>
+</section>
+<h2>这里怎样算一个国家</h2>
+<p>总数采用最常见的答案：195 个国家，即 193 个联合国成员国加上罗马教廷和巴勒斯坦国。开启地区选项后，还可以标记格陵兰、波多黎各、香港和南极洲等地。它们在 195 之外另行统计，不计入其中。<a href="/zh-Hans/learn/how-many-countries-in-the-world">世界上有多少个国家</a>把这一口径与奥运会、FIFA 和 Travelers' Century Club 的名单做了比较。</p>
+<h2>怎样才算到访</h2>
+<p>这由自己决定，旅行者的看法也不一致。多数人认为，通过入境检查并在当地待过一段时间才算。也有人把踏足过的任何土地都算上，包括机场。选定一个标准，并对每个国家都用同一个标准。<a href="/zh-Hans/learn/does-a-layover-count-as-visiting-a-country">转机算到访一个国家吗</a>逐一介绍了常见的算法。</p>
+<h2>从一个数字到一份旅行记录</h2>
+<p>一份国家清单说明去过哪里，却不说明什么时候去的、待了多久。在 AtlasDays 中，同样这些国家会变成带日期的行程、地图和 3D 地球仪、按年份的统计，以及用于签证和居留上限的天数统计。可以从这个页面把所选内容发送到 App，也可以让它<a href="/zh-Hans/learn/travel-history-from-iphone-photos">从 iPhone 照片中</a>找出过去的行程。</p>
+<h2>常见问题</h2>
+<h3>世界上有多少个国家？</h3><p>按最常见的算法是 195 个：193 个联合国成员国和 2 个观察员国。其他名单从 193 到 300 多个不等，因为它们把属地、体育组织或地区也算在内。</p>
+<h3>我的选择会被保存或发送到别处吗？</h3><p>不会。它只留在这个页面里，关闭页面后就消失。如果选择在 AtlasDays 中继续，这些国家会包含在打开的链接里，直接传到设备上的 App。</p>
+<h3>可以标记香港、格陵兰这样的地区吗？</h3><p>可以。开启“显示地区及其他地点”，或者在地图上选择该地点。地区会显示在国家总数旁边。</p>
+<h3>怎样保留我的地图？</h3><p>选好国家，然后选择“在 AtlasDays 中继续追踪”。App 会把到访地图保存在 iPhone 或 iPad 上，并随着旅行不断补充。</p>

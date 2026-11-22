@@ -1,0 +1,65 @@
+<nav class="breadcrumb"><a href="/tr/">AtlasDays</a> / <a href="/tr/learn/">Seyahat kuralları</a> / <a href="/tr/learn/guides">Rehberler</a></nav>
+<h1>Yapay zekâ ile e-postalarınızdan seyahat geçmişinizi çıkarın</h1>
+<p class="subtitle">Yıllara yayılan uçuşlar ve otel rezervasyonları zaten e-postanızda duruyor. Bir yapay zekâ asistanı bunları birkaç dakikada seyahat listesine dönüştürür, AtlasDays de sonucu içe aktarır.</p>
+<p class="verified">Son doğrulama: Kasım 2026</p>
+<div class="tldr"><p>Bir yapay zekâ asistanını posta kutunuza bağlayın, aşağıdaki istemi yapıştırın; asistan size bir ülkedeki her kalış için bir satır içeren bir dosya döndürür. Bu dosyayı AtlasDays’e aktarın, önizlemeyi kontrol edin; geçmiş seyahatleriniz zaman çizelgenizde ve haritanızda yerini alır. İçe aktarma ücretsizdir.</p></div>
+<h2>Nasıl çalışır?</h2>
+<ol class="steps">
+<li><strong>E-postanızı okuyabilen bir asistan açın.</strong> Gemini, Gmail’in içinde çalışır; ChatGPT ve Claude ise ayarlarından bir posta kutusuna bağlanabilir. Hiçbir şey bağlamak istemiyorsanız aşağıdaki <a href="#without-connecting">yapıştırma yöntemine</a> bakın.</li>
+<li><strong>İstemi yapıştırın.</strong> İstem, asistana neyi arayacağını, değiştirilen ve iptal edilen rezervasyonları nasıl ele alacağını ve AtlasDays’in okuduğu dosya biçimini tam olarak anlatır.</li>
+<li><strong>Sorularını yanıtlayın.</strong> İyi bir asistan tahmin yürütmeden önce sorar: yeniden planlanan bir uçuşa binip binmediğinizi ya da çıkış kaydı bulamadığı bir ülkeden nasıl ayrıldığınızı.</li>
+<li><strong>Dosyayı kaydedin.</strong> Asistan <code>atlasdays.csv</code> dosyasını ya da bu adla kaydedeceğiniz bir metin bloğunu döndürür.</li>
+<li><strong>İçe aktarın.</strong> AtlasDays’de Ayarlar → İçe aktar → CSV dosyası yolunu açın ve dosyayı seçin. AtlasDays bulduğu her seyahati gösterir, yinelenenleri ve çakışmaları işaretler ve siz İçe aktar düğmesine dokunana kadar hiçbir şey kaydetmez.</li>
+</ol>
+<h2>İstem</h2>
+<p>Tamamını kopyalayın. Farklı bir dönem istiyorsanız ilk satırı değiştirin.</p>
+<div class="prompt-box">
+<button type="button" class="prompt-copy" data-copy-target="travel-history-prompt" data-copied-label="Kopyalandı" hidden>İstemi kopyala</button>
+<pre id="travel-history-prompt">E-postalarımda Ocak 2016’dan beri yaptığım tüm yurt dışı seyahatlerini arayın ve seyahat geçmişimi oluşturun.
+
+ARAMA
+Uçak, tren, feribot ve otobüs biletlerini, biniş kartlarını, otel ve daire rezervasyonlarını, araç kiralamalarını ve e-vize veya seyahat izni onaylarını arayın. Her rezervasyonu sonraki değişiklikleriyle birlikte izleyin: son güzergâhı kullanın, iptal edilen veya iadesi yapılan rezervasyonları yok sayın.
+
+OLUŞTURMA
+Bir ülkedeki her kalış için tarih sırasına göre bir satır. Üç ülkeden geçen bir seyahat üç satır eder. Varış, rezervasyon yaptığım veya uçağın kalktığı tarih değil, indiğim ya da sınırı geçtiğim yerel tarihtir. Ayrılış, ülkeden çıktığım yerel tarihtir. Yalnızca uçak değiştirdiysem ve havalimanından çıkmadıysam satırı Transit amacıyla ekleyin.
+
+BİÇİM
+Tam olarak şu başlık satırını içeren, atlasdays.csv adlı bir CSV dosyası döndürün:
+Country,State,Start Date,End Date,Purpose,Notes
+- Country: İngilizce ad veya 2 harfli kod.
+- State: yalnızca Amerika Birleşik Devletleri’ndeki kalışlar için, NY gibi posta kısaltması olarak. Diğer durumlarda boş.
+- Start Date ve End Date: yyyy-mm-dd. Yalnızca yıl biliniyorsa 4 haneli yılı Start Date alanına yazın ve End Date alanını boş bırakın.
+- Purpose: Personal, Business, Study veya Transit ya da boş.
+- Notes: tarihlerin neye dayandığı, örneğin "uçuş onayı, otel faturası". Virgül içeriyorsa çift tırnak içine alın.
+
+KURALLAR
+Tarih uydurmayın. Bir varış veya ayrılış eksikse ya da iki e-posta birbirini tutmuyorsa satırı yazmadan önce bana sorun. İkamet ülkemi dışarıda bırakın. Dosyadan önce, emin olmadığınız seyahatleri nedenleriyle birlikte listeleyin. Dosya oluşturamıyorsanız CSV’yi tek bir kod bloğuna koyun ve başka hiçbir şey eklemeyin.</pre>
+</div>
+<h2>İçe aktarmadan önce neleri kontrol etmeli?</h2>
+<p>Asistan rezervasyonları okur; rezervasyon ise bir plandır. Planlar ile gerçek seyahatin ayrıştığı ve AtlasDays önizlemesine bir dakika ayırmaya değen yerler şunlardır.</p>
+<ul>
+<li><strong>Yapmadığınız seyahatler.</strong> İptal edilen veya kaçırılan bir uçuş yine de bir satır oluşturabilir. Önizlemede seçimini kaldırın.</li>
+<li><strong>E-postası olmayan seyahatler.</strong> Arabayla yapılan sınır geçişleri, gişeden alınan biletler ve başkasının rezervasyon yaptığı seyahatler eksik kalır. Bunları elle ekleyin ya da <a href="/tr/learn/travel-history-from-iphone-photos">boşlukları fotoğraf arşivinizin doldurmasına</a> izin verin.</li>
+<li><strong>Gece uçuşları.</strong> Varış tarihi, indiğiniz gündür. 23:40’ta kalkan bir uçuş ertesi gün varır.</li>
+<li><strong>Aktarmalar.</strong> Havalimanının transit alanından çıkmadığınız bir durak Transit olmalıdır; AtlasDays Transit’i hiçbir zaman ziyaret olarak ya da gün toplamına saymaz.</li>
+</ul>
+<p>Yinelenen olarak işaretlenen satırlar atlanır; başka bir ülkedeki seyahatle çakışan satırlar ise tarihleri karşılaştırabilmeniz için işaretlenir. Her etiketi <a href="/tr/help/csv-import">CSV ile içe aktarma rehberi</a> açıklar.</p>
+<h2 id="privacy">Gizlilik: neyi, kiminle paylaşıyorsunuz?</h2>
+<p>Bu yöntem hızlıdır, çünkü asistan e-postalarınızı okur. Kararınızı bunu bilerek verin.</p>
+<ul>
+<li><strong>Asistanın sağlayıcısı, asistanın okuduklarını görür.</strong> Bağlı bir asistan yalnızca seyahat e-postalarını değil, aramasının döndürdüğü her iletiyi açabilir. Sağlayıcının neleri sakladığını ve konuşmaları model eğitmek için kullanıp kullanmadığını gizlilik politikası ile hesap ayarlarınız belirler. Bağlamadan önce ikisini de kontrol edin.</li>
+<li><strong>Kişisel bir posta kutusu kullanın.</strong> İş hesaplarında dış hizmetlerin bağlanmasına ilişkin kurallar genellikle bulunur.</li>
+<li><strong>Sonrasında bağlantıyı kesin.</strong> Dosyayı aldıktan sonra asistanın ayarlarından posta kutusu bağlantısını kaldırın; saklanmasını istemiyorsanız konuşmayı da silin.</li>
+<li><strong>AtlasDays bunların hiçbirini görmez.</strong> AtlasDays’de hesap yoktur, seyahatlerinizi alan bir sunucu da yoktur. E-postalarınızı ya da asistanla konuşmanızı hiçbir zaman görmez. Dosya iPhone’unuzda okunur ve seyahatleriniz orada kalır; isterseniz kendi iCloud’unuz üzerinden eşzamanlanır.</li>
+</ul>
+<h2 id="without-connecting">Posta kutunuzu bağlamadan</h2>
+<p>Asistanı gelen kutunuzdan uzak tutup yine de elle yazmaktan kurtulabilirsiniz. E-postalarınızda “rezervasyon onayı”, “seyahat planı” ve “biniş kartı” ifadelerini arayın, ardından ilgili iletileri yapıştırın ya da PDF’leri aynı isteme ekleyin. Asistan böylece yalnızca sizin verdiklerinizi görür. Önce pasaport numaralarını ve ödeme bilgilerini çıkarın.</p>
+<p>Aynı istem başka kaynaklarda da işe yarar: bir hava yolunun uçuş geçmişi sayfası, başka bir seyahat uygulamasından alınan bir tablo ya da pasaport damgalarının fotoğrafları. AtlasDays bu istemin bir sürümünü Ayarlar → İçe aktar → CSV dosyası → Yapay zekâyla CSV oluştur altında tutar.</p>
+<h2>Tarihlerin sağlam olması gerektiğinde</h2>
+<p>Bir harita ve nerelerde bulunduğunuzun kaydı için içe aktarılan geçmiş yeterlidir. Vize veya vatandaşlık başvurusu için onu bir çalışma taslağı sayın: önemli tarihleri <a href="/tr/learn/get-official-entry-exit-records">resmî giriş ve çıkış kayıtlarıyla</a> doğrulayın ve <a href="/tr/learn/travel-history-for-visa-applications">her formun ne istediğine</a> bakın.</p>
+<div class="cta-box"><span class="cta-logo"><img class="logo-dark" src="/assets/brand/logo_dark.png?v=20260325a" alt="" width="52" height="52" /><img class="logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="" width="52" height="52" /></span><h2>Seyahat geçmişinizi ücretsiz içe aktarın</h2><p>AtlasDays dosyayı bir zaman çizelgesine, ziyaret ettiğiniz tüm ülkelerin haritasına ve vize ile ikamet sınırları için gün hesaplarına dönüştürür.</p><a class="cta-btn" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">{{t:cta.get_app}}</a></div>
+<h2>Sık sorulan sorular</h2>
+<h3>Hangi yapay zekâ asistanını kullanmalıyım?</h3><p>Posta kutunuzda arama yapıp dosya döndürebilen herhangi bir asistanı. Gmail için en kısa yol Gemini’dir. ChatGPT ve Claude, ayarlarından bir posta kutusu bağladığınızda çalışır. İstem hepsi için aynıdır.</p>
+<h3>Sonuç ne kadar doğru?</h3><p>Kesinleşmiş bir biletten alınan tarihler genellikle doğrudur. Sık görülen hatalar, yine de listede görünen iptal edilmiş seyahatler ve hiç e-posta bırakmamış yolculuklardır. AtlasDays önizlemesi, herhangi bir şey kaydedilmeden önce her satırı listeler; böylece bir seyahati düzeltebilir veya dışarıda bırakabilirsiniz.</p>
+<h3>AtlasDays e-postalarımı okur mu?</h3><p>Hayır. AtlasDays yalnızca seçtiğiniz CSV dosyasını, aygıtınızda okur. E-posta araması, seçtiğiniz asistanda ve o sağlayıcının gizlilik politikası kapsamında yapılır.</p>
+<h3>İçe aktarma ücretsiz mi?</h3><p>Evet. CSV içe aktarımı AtlasDays’in ücretsiz sürümüne dahildir ve seyahat sayısında sınır yoktur.</p>

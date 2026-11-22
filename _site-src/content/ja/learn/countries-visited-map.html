@@ -1,0 +1,72 @@
+<nav class="breadcrumb"><a href="/ja/">AtlasDays</a> / <a href="/ja/learn/">旅行ルール</a> / <a href="/ja/learn/calculators">計算ツール</a></nav>
+<h1>訪れた国を塗りつぶせる世界地図と訪問国カウンター</h1>
+<p class="subtitle">行ったことのある国に印を付けて、195か国のうち何か国を訪れたかを、拡大できる地図で確認できます。選んだ内容がこのページの外に送られることはありません。</p>
+<p class="verified">最終確認：2026年11月</p>
+<section class="country-checklist" data-country-checklist aria-labelledby="country-checklist-title">
+<h2 id="country-checklist-title">訪れた場所に印を付ける</h2>
+<div class="cal-box" data-country-picker hidden>
+<output class="country-checklist-count cal-headline" data-country-count data-count-template="{total}か国中{count}か国を訪問。" aria-live="polite" aria-atomic="true">195か国中0か国を訪問。</output>
+<div class="country-checklist-progress" aria-hidden="true"><span data-country-progress></span></div>
+<div class="country-checklist-map" data-country-map hidden>
+<div class="country-checklist-map-canvas" data-country-map-canvas></div>
+<p class="country-checklist-map-credit">© <a href="https://www.amcharts.com/svg-maps/" rel="nofollow">amCharts</a> · <a href="/assets/maps/SOURCES.txt">CC BY 4.0</a></p>
+</div>
+<p class="cal-hint">地図で国を選ぶか、リストから探します。大陸を選ぶと拡大表示されます。</p>
+<!-- COUNTRY_CHECKLIST_FILTERS -->
+<div class="country-checklist-search">
+<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg>
+<input type="search" class="cal-country-input" data-country-search aria-label="国を検索" placeholder="国を検索" autocomplete="off" spellcheck="false" aria-controls="country-checklist-options">
+</div>
+<div class="country-checklist-picked" data-country-picked hidden>
+<div class="country-checklist-picked-head"><strong>訪問済み</strong><button type="button" class="country-checklist-clear" data-country-clear>すべて解除</button></div>
+<div class="country-checklist-picked-list" data-country-picked-list></div>
+</div>
+<div id="country-checklist-options" class="country-checklist-options" data-country-options>
+<!-- COUNTRY_CHECKLIST -->
+</div>
+<p class="cal-empty" data-country-empty hidden>一致する国はありません</p>
+<div class="country-checklist-result" data-country-result hidden><h3>合計のもとになる旅行も記録。</h3><p>AtlasDaysなら、訪問国の合計に日付や地図を加え、写真から旅行候補を見つけられます。</p></div>
+<button type="button" class="cal-import country-checklist-track" disabled data-country-track>AtlasDaysで記録する</button>
+</div>
+<div class="cta-box country-checklist-cta"><p>世界の国の数と、自分が訪れた国の数。AtlasDaysは写真から過去の旅行を見つけ、訪問国をプライベートな世界地図に表示できます。</p><a class="cta-btn" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">{{t:cta.get_app}}</a><p class="cta-micro">訪問国の地図と集計は無料。アカウント不要。</p></div>
+<dialog class="cal-dialog cal-dialog-steps" data-country-dialog aria-labelledby="countries-import-title">
+<div class="cal-dialog-head">
+<img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+<div>
+<p class="cal-dialog-title" id="countries-import-title"><span data-cal-on="computer">iPhoneまたはiPadで続ける</span><span data-cal-on="phone">AtlasDaysで開く</span></p>
+<p class="cal-dialog-sub">旅を重ねても、訪問国の地図を残せます。AtlasDaysを無料で入手できます。</p>
+</div>
+</div>
+<div class="cal-dialog-scan" data-cal-on="computer">
+<div class="cal-qr" data-cal-qr></div>
+<div class="cal-scan-copy"><p class="cal-scan-lead">コードをスキャンして、選んだ国をAtlasDaysで開きます。</p></div>
+</div>
+<ol class="cal-steps" data-cal-on="phone">
+<li>
+<strong>アプリで選んだ国を開く</strong>
+<span>確認してから「インポート」をタップします。それまで何も保存されません。</span>
+<a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">AtlasDaysで開く</a>
+</li>
+<li data-cal-store>
+<strong>AtlasDaysを入手</strong>
+<span>iPhoneとiPad向けにApp Storeで無料で提供しています。</span>
+<a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a>
+</li>
+</ol>
+<div class="cal-dialog-foot">
+<p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>国をCSVファイルでダウンロード</button><span data-cal-downloaded hidden>このファイルをiPhoneのAtlasDaysで開いてください。</span></p>
+<button type="button" data-cal-close>閉じる</button>
+</div>
+</dialog>
+</section>
+<h2>ここでの「国」の数え方</h2>
+<p>合計には、最も一般的な答えである195か国を使っています。国連加盟193か国に、聖座とパレスチナ国を加えた数です。地域を表示するように切り替えると、グリーンランド、プエルトリコ、香港、南極大陸などの場所にも印を付けられます。これらは195か国の中には入らず、その横に別に数えます。<a href="/ja/learn/how-many-countries-in-the-world">世界の国の数</a>では、この数え方をオリンピック、FIFA、Travelers' Century Clubのリストと比べています。</p>
+<h2>「訪問」の数え方</h2>
+<p>これは自分で決めることで、旅行者の間でも意見が分かれます。多くの人は、入国審査を通ってその国で時間を過ごしたら訪問と数えます。空港を含め、降り立った場所はすべて数える人もいます。基準を1つ決め、すべての国に同じ基準を使ってください。一般的な基準は<a href="/ja/learn/does-a-layover-count-as-visiting-a-country">乗り継ぎは訪問した国に含まれるか</a>で説明しています。</p>
+<h2>国の数から旅行履歴へ</h2>
+<p>国のリストで分かるのは、どこに行ったかです。いつ、どのくらい滞在したかは分かりません。AtlasDaysでは、同じ国が日付のある旅行になり、地図と3D地球儀、年別の統計、ビザや税務上の居住に関わる日数制限の集計につながります。選んだ国はこのページからアプリに送れます。過去の旅行を<a href="/ja/learn/travel-history-from-iphone-photos">iPhoneの写真から</a>探すこともできます。</p>
+<h2>よくある質問</h2>
+<h3>国はいくつありますか？</h3><p>最も一般的な数え方では195か国です。国連加盟国が193か国、オブザーバー国が2か国です。ほかのリストは、地域、スポーツ団体、国内の地方などを数えるため、193から300超まで幅があります。</p>
+<h3>選んだ内容は保存されたり、どこかに送られたりしますか？</h3><p>いいえ。このページの中だけにあり、ページを閉じると消えます。AtlasDaysで続けることを選んだ場合は、開いたリンクに国の情報が含まれ、端末上のアプリに直接渡されます。</p>
+<h3>香港やグリーンランドなどの地域にも印を付けられますか？</h3><p>はい。「地域とその他の場所を表示」をオンにするか、地図でその場所を選びます。地域は、国の合計の横に表示されます。</p>
+<h3>地図を残すにはどうすればよいですか？</h3><p>国を選んで「AtlasDaysで記録する」を選びます。アプリは訪問国の地図をiPhoneまたはiPadに保存し、旅をするたびに更新していきます。</p>

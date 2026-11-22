@@ -126,7 +126,7 @@
         "name": "Bu şablonu AtlasDays’e aktarabilir miyim?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Evet. Başlıklar AtlasDays’in CSV içe aktarımıyla eşleşir. Dosyayı doldurup Ayarlar → İçe aktarma → CSV dosyası yolundan seçebilirsiniz. İçe aktarma ücretsizdir."
+          "text": "Evet. Başlıklar AtlasDays’in CSV içe aktarımıyla eşleşir. Dosyayı doldurup Ayarlar → İçe aktar → CSV dosyası yolundan seçebilirsiniz. İçe aktarma ücretsizdir."
         }
       }
     ]
@@ -212,12 +212,13 @@
     <nav class="toc-side" aria-label="Bu sayfada">
       <p class="toc-title">Bu sayfada</p>
       <ul>
+        <li><a href="#elle-yazmadan-doldurman-n-iki-yolu">Elle yazmadan doldurmanın iki yolu</a></li>
         <li><a href="#her-s-tuna-ne-yaz-lmal">Her sütuna ne yazılmalı?</a></li>
         <li><a href="#kesin-olmad-n-z-tarihler-dahil-t-m-tarihler">Kesin olmadığınız tarihler dahil tüm tarihler</a></li>
         <li><a href="#her-seyahat-i-in-de-il-her-kal-i-in-bir-sat-r">Her seyahat için değil, her kalış için bir satır</a></li>
         <li><a href="#formlara-aktarma">Formlara aktarma</a></li>
         <li><a href="#atlasdays-e-cretsiz-i-e-aktarma">AtlasDays’e ücretsiz içe aktarma</a></li>
-        <li><a href="#ablonun-tesinde">Şablonun ötesinde</a></li>
+        <li><a href="#ablona-g-venmeden-nce">Şablona güvenmeden önce</a></li>
         <li><a href="#s-k-sorulan-sorular">Sık sorulan sorular</a></li>
       </ul>
     </nav>
@@ -227,7 +228,7 @@
     </nav>
 
     <h1>Vize başvuruları için seyahat geçmişi şablonu (ücretsiz CSV)</h1>
-    <p class="subtitle">Her kalış için bir satır ve ISO tarihleri içeren ücretsiz, boş seyahat geçmişi tablosu. Excel, Numbers ve Google Sheets’te açılır; DS-160, Birleşik Krallık ve Kanada formlarına uyarlanır ve AtlasDays’e doğrudan aktarılır.</p>
+    <p class="subtitle">Her kalış için bir satır, ISO tarihleri ve kendi seyahatlerinizle değiştireceğiniz örnek satırlar içeren ücretsiz seyahat geçmişi tablosu. Excel, Numbers ve Google Sheets’te açılır; DS-160, Birleşik Krallık ve Kanada formlarına uyarlanır ve AtlasDays’e doğrudan aktarılır.</p>
     <p class="verified">Son doğrulama: Eylül 2026</p>
 
     <div class="tldr">
@@ -238,27 +239,36 @@
 
     <div class="factbox">
       <dl>
-        <div><dt>Dosya</dt><dd>travel-history-template.csv; veri içermeyen, doldurulmaya hazır başlık satırı</dd></div>
+        <div><dt>Dosya</dt><dd>travel-history-template.csv; bir başlık satırı ve değiştirilecek beş örnek satır</dd></div>
         <div><dt>Sütunlar</dt><dd>Country, State, Start Date, End Date, Purpose, Notes</dd></div>
         <div><dt>Tarihler</dt><dd>YYYY-MM-DD veya yalnızca yılı biliyorsanız dört haneli yıl</dd></div>
         <div><dt>Açılabildiği uygulamalar</dt><dd>Excel, Numbers, Google Sheets ve diğer elektronik tablo uygulamaları</dd></div>
-        <div><dt>İçe aktarılabildiği yer</dt><dd>AtlasDays’e ücretsiz olarak Ayarlar → İçe aktarma → CSV dosyası yolundan</dd></div>
+        <div><dt>İçe aktarılabildiği yer</dt><dd>AtlasDays’e ücretsiz olarak Ayarlar → İçe aktar → CSV dosyası yolundan</dd></div>
       </dl>
     </div>
 
     <details class="toc">
       <summary>Bu sayfada</summary>
       <ul>
+        <li><a href="#elle-yazmadan-doldurman-n-iki-yolu">Elle yazmadan doldurmanın iki yolu</a></li>
         <li><a href="#her-s-tuna-ne-yaz-lmal">Her sütuna ne yazılmalı?</a></li>
         <li><a href="#kesin-olmad-n-z-tarihler-dahil-t-m-tarihler">Kesin olmadığınız tarihler dahil tüm tarihler</a></li>
         <li><a href="#her-seyahat-i-in-de-il-her-kal-i-in-bir-sat-r">Her seyahat için değil, her kalış için bir satır</a></li>
         <li><a href="#formlara-aktarma">Formlara aktarma</a></li>
         <li><a href="#atlasdays-e-cretsiz-i-e-aktarma">AtlasDays’e ücretsiz içe aktarma</a></li>
-        <li><a href="#ablonun-tesinde">Şablonun ötesinde</a></li>
+        <li><a href="#ablona-g-venmeden-nce">Şablona güvenmeden önce</a></li>
         <li><a href="#s-k-sorulan-sorular">Sık sorulan sorular</a></li>
       </ul>
     </details>
     <script>(function(){var t=document.currentScript.previousElementSibling;if(matchMedia('(min-width: 760px)').matches)t.open=true})();</script>
+    <h2 id="elle-yazmadan-doldurman-n-iki-yolu">Elle yazmadan doldurmanın iki yolu</h2>
+    <p>Beş ya da on yıllık seyahati bir tabloya elle yazmak yavaş yoldur. Tarihlerin çoğu zaten bir yerde duruyor.</p>
+    <ul>
+      <li><strong>E-postalarınızdan, yapay zekâ ile.</strong> Bir yapay zekâ asistanı rezervasyon onaylarınızı okuyup tam olarak bu dosyayı döndürebilir. Kopyalanacak istem <a href="/tr/learn/travel-history-with-ai">Yapay zekâ ile seyahat geçmişinizi çıkarın</a> rehberindedir.</li>
+      <li><strong>Fotoğraflarınızdan.</strong> AtlasDays <a href="/tr/learn/travel-history-from-iphone-photos">iPhone fotoğraflarınızda geçmiş seyahatleri bulabilir</a> ve bunları bu sütunlarla bir tablo olarak dışa aktarabilir.</li>
+    </ul>
+    <p>Şablonun kendisini bu iki yolun kaçırdıkları ve önemli tarihleri düzeltmek için kullanın.</p>
+
     <h2 id="her-s-tuna-ne-yaz-lmal">Her sütuna ne yazılmalı?</h2>
     <dl class="kv kv-text">
       <div><dt>Country</dt><dd>Ülkenin İngilizce adı (Portugal, United Kingdom) veya iki harfli kodu (PT, GB). Her satırda zorunludur.</dd></div>
@@ -268,7 +278,7 @@
       <div><dt>Purpose</dt><dd>Personal, Business, Study veya Transit. Transit değerini yalnızca havalimanı transit alanında kalıp ülkeye giriş yapmadığınızda kullanın.</dd></div>
       <div><dt>Notes</dt><dd>Formun isteyebileceği diğer bilgiler: kaldığınız şehir (Kanada ziyaretçi vizesi formu ister), formun kendi amaç ifadesi (“kız kardeşimi ziyaret”), tarihlerin dayandığı kanıtlar (pasaport damgası, biniş kartı, rezervasyon e-postası) ve hangi tarihlerin tahmini olduğu.</dd></div>
     </dl>
-    <p>Dosyada bilerek örnek satır yoktur: silmeyi unuttuğunuz satırlar gerçek seyahat olarak içe aktarılır. Doldurulmuş bir dosya şöyle görünür.</p>
+    <p>Dosya, her kayıt türü için bir tane olmak üzere beş örnek satırla açılır. Bunları kendi seyahatlerinizle değiştirin ve gerekmeyenleri silin: dosyada kalan satır gerçek seyahat olarak içe aktarılır. Her örneğin Notes alanında “Example” yazar; böylece unutulan bir satır içe aktarma önizlemesinde kolayca fark edilir.</p>
     <p class="data-table-hint">Tüm sütunları görmek için örneği yana kaydırın.</p>
     <div class="data-table data-table-code">
       <table>
@@ -312,16 +322,16 @@
     </ol>
 
     <h2 id="atlasdays-e-cretsiz-i-e-aktarma">AtlasDays’e ücretsiz içe aktarma</h2>
-    <p>Şablon AtlasDays’in kendi içe aktarma sütunlarını kullanır; doldurduğunuz dosya doğrudan içe aktaracağınız dosyadır. <strong>Ayarlar → İçe aktarma → CSV dosyası</strong> yolunu açıp seçin. AtlasDays okunamayan satırları, olası yinelenen kayıtları ve çakışmaları incelemede gösterir; onay verene kadar hiçbir şey kaydetmez. İçe aktarma ücretsizdir. Sonrasında seyahat ekledikçe uygulama ülke başına günlerinizi ve vize veya ikamet sınırlarına göre günleri hesaplar.</p>
+    <p>Şablon AtlasDays’in kendi içe aktarma sütunlarını kullanır; doldurduğunuz dosya doğrudan içe aktaracağınız dosyadır. <strong>Ayarlar → İçe aktar → CSV dosyası</strong> yolunu açıp seçin. AtlasDays okunamayan satırları, olası yinelenen kayıtları ve çakışmaları incelemede gösterir; onay verene kadar hiçbir şey kaydetmez. İçe aktarma ücretsizdir. Sonrasında seyahat ekledikçe uygulama ülke başına günlerinizi ve vize veya ikamet sınırlarına göre günleri hesaplar.</p>
     <ul>
       <li><strong>Purpose dört değerden biri olmalıdır.</strong> AtlasDays Personal, Business, Study ve Transit değerlerini okur (Tourism değerini Personal sayar). Diğer değerleri yok sayar ve seyahati amaçsız içe aktarır. Formun amaç ifadesini Notes sütununda saklayın.</li>
       <li><strong>State yalnızca ABD içindir.</strong> ABD dışındaki bir satırda State değeri bulunursa hata bildirilir.</li>
       <li><strong>Yalnızca yıl içeren satırlar saklanır ama gün olarak sayılmaz.</strong> Ülkeyi ziyaret edildi olarak işaretler; kesin tarihler verilene kadar gün eklemez.</li>
     </ul>
-    <p>Henüz dosyanız yok mu? İçe aktarma ekranında notlarınızı veya seyahat planınızı bir yapay zekâ asistanıyla bu sütunlara dönüştüren <strong>Yapay zekâyla CSV oluştur</strong> istemi de bulunur. Yapay zekâ aracına yapıştırdığınız bilgiler o aracın gizlilik politikasına tabidir.</p>
+    
 
-    <h2 id="ablonun-tesinde">Şablonun ötesinde</h2>
-    <p>Şablon kaydı düzenler, eksikleri tamamlamaz. Beş yıllık seyahat için düzenli on satır çoğunlukla kısa seyahatlerin eksik olduğu anlamına gelir; formun kendi ifadesi her zaman şablon düzeninden üstündür. Hangi formun ne istediği için <a href="/tr/learn/travel-history-for-visa-applications">vize başvuruları için seyahat geçmişi</a> rehberine bakın. Damga, e-posta ve fotoğraflarla boşlukları doldurmak için <a href="/tr/learn/rebuild-travel-history-from-passport-stamps-emails-photos">seyahat geçmişinizi yeniden oluşturma</a> rehberini; kendi sınır geçişlerinizin devlet kayıtları için <a href="/tr/learn/get-official-entry-exit-records">resmî giriş ve çıkış kayıtlarını alma</a> rehberini okuyun.</p>
+    <h2 id="ablona-g-venmeden-nce">Şablona güvenmeden önce</h2>
+    <p>Formun kendi ifadesi her zaman her türlü düzenden üstündür. <a href="/tr/learn/travel-history-for-visa-applications">Her formun ne istediğine</a> bakın ve önemli tarihleri <a href="/tr/learn/get-official-entry-exit-records">resmî giriş ve çıkış kayıtlarıyla</a> doğrulayın.</p>
 
     <div class="cta-box">
       <span class="cta-logo">
@@ -339,7 +349,7 @@
     <h3>Seyahat geçmişinde hangi tarih biçimi kullanılmalı?</h3>
     <p>Kendi kaydınızda 2025-03-03 gibi YYYY-MM-DD biçimini kullanın. Gün-ay ve ay-gün karışıklığı yaratmaz, doğru sıralanır ve N-400’deki mm/dd/yyyy veya Kanada Schedule 1’deki yıl ve ay gibi formun istediği biçime dönüştürülebilir.</p>
     <h3>Bu şablonu AtlasDays’e aktarabilir miyim?</h3>
-    <p>Evet. Başlıklar AtlasDays’in CSV içe aktarımıyla eşleşir. Dosyayı doldurup Ayarlar → İçe aktarma → CSV dosyası yolundan seçebilirsiniz. İçe aktarma ücretsizdir.</p>
+    <p>Evet. Başlıklar AtlasDays’in CSV içe aktarımıyla eşleşir. Dosyayı doldurup Ayarlar → İçe aktar → CSV dosyası yolundan seçebilirsiniz. İçe aktarma ücretsizdir.</p>
 
     <aside class="article-trust">
       <section class="article-trust-item article-source" aria-labelledby="official-source-heading">
@@ -355,8 +365,10 @@
       <h2 id="related-travel-history-template-visa-application">İlgili makaleler</h2>
       <div class="rule-cards">
         <a class="rule-card" href="/tr/learn/travel-history-for-visa-applications"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10A.5.5 0 0 1 7 20V3.5Z"/><path d="M14 3.5V8h4M10 12h5M10 15.5h5"/></svg></span><span class="rule-text"><strong>Vize başvurularında seyahat geçmişi: Hangi form kaç yıl ister?</strong></span></a>
+        <a class="rule-card" href="/tr/learn/travel-history-with-ai"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10A.5.5 0 0 1 7 20V3.5Z"/><path d="M14 3.5V8h4M10 12h5M10 15.5h5"/></svg></span><span class="rule-text"><strong>Yapay zekâ ile e-postalarınızdan seyahat geçmişinizi çıkarın</strong></span></a>
         <a class="rule-card" href="/tr/learn/get-official-entry-exit-records"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10A.5.5 0 0 1 7 20V3.5Z"/><path d="M14 3.5V8h4M10 12h5M10 15.5h5"/></svg></span><span class="rule-text"><strong>Resmî seyahat geçmişinizi (giriş ve çıkış kayıtları) nasıl alırsınız?</strong></span></a>
         <a class="rule-card" href="/tr/learn/rebuild-travel-history-from-passport-stamps-emails-photos"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10A.5.5 0 0 1 7 20V3.5Z"/><path d="M14 3.5V8h4M10 12h5M10 15.5h5"/></svg></span><span class="rule-text"><strong>Pasaport damgaları, e-postalar ve fotoğraflarla seyahat geçmişini yeniden oluşturma</strong></span></a>
+        <a class="rule-card" href="/tr/learn/travel-history-from-iphone-photos"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10A.5.5 0 0 1 7 20V3.5Z"/><path d="M14 3.5V8h4M10 12h5M10 15.5h5"/></svg></span><span class="rule-text"><strong>iPhone fotoğraflarından seyahat haritası ve geçmişi oluşturma</strong></span></a>
         <a class="rule-card" href="/tr/learn/prove-you-were-not-in-a-country"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10A.5.5 0 0 1 7 20V3.5Z"/><path d="M14 3.5V8h4M10 12h5M10 15.5h5"/></svg></span><span class="rule-text"><strong>Bir ülkede veya eyalette bulunmadığınızı nasıl kanıtlarsınız?</strong></span></a>
       </div>
     </nav>

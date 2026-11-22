@@ -1,0 +1,65 @@
+<nav class="breadcrumb"><a href="/pt/">AtlasDays</a> / <a href="/pt/learn/">Regras de viagem</a> / <a href="/pt/learn/guides">Guias</a></nav>
+<h1>Use IA para reconstruir seu histórico de viagens a partir do e-mail</h1>
+<p class="subtitle">Anos de voos e reservas de hotel já estão no seu e-mail. Um assistente de IA transforma tudo isso em uma lista de viagens em poucos minutos, e o AtlasDays importa o resultado.</p>
+<p class="verified">Última verificação: novembro de 2026</p>
+<div class="tldr"><p>Conecte um assistente de IA à sua caixa de e-mail, cole o prompt abaixo e ele devolve um arquivo com uma linha por estadia em cada país. Importe esse arquivo no AtlasDays, confira a prévia, e suas viagens passadas aparecem na Linha do tempo e no mapa. A importação é gratuita.</p></div>
+<h2>Como funciona</h2>
+<ol class="steps">
+<li><strong>Abra um assistente que consiga ler seu e-mail.</strong> O Gemini funciona dentro do Gmail, e o ChatGPT e o Claude podem se conectar a uma caixa de e-mail pelos ajustes de cada um. Se preferir não conectar nada, veja <a href="#without-connecting">o método de copiar e colar</a> mais abaixo.</li>
+<li><strong>Cole o prompt.</strong> Ele diz ao assistente o que procurar, como tratar reservas alteradas e canceladas, e o formato exato de arquivo que o AtlasDays lê.</li>
+<li><strong>Responda às perguntas dele.</strong> Um bom assistente pergunta antes de adivinhar: se você pegou mesmo um voo remarcado, ou como saiu de um país para o qual ele não encontrou partida.</li>
+<li><strong>Salve o arquivo.</strong> O assistente devolve <code>atlasdays.csv</code>, ou um bloco de texto para salvar com esse nome.</li>
+<li><strong>Importe.</strong> No AtlasDays, abra Ajustes → Importar → Arquivo CSV e escolha o arquivo. O AtlasDays mostra todas as viagens encontradas, marca duplicadas e sobreposições e não salva nada até você tocar em Importar.</li>
+</ol>
+<h2>O prompt</h2>
+<p>Copie tudo. Mude a primeira linha se quiser outro período.</p>
+<div class="prompt-box">
+<button type="button" class="prompt-copy" data-copy-target="travel-history-prompt" data-copied-label="Copiado" hidden>Copiar prompt</button>
+<pre id="travel-history-prompt">Procure no meu e-mail todas as viagens ao exterior que fiz desde janeiro de 2016 e monte meu histórico de viagens.
+
+BUSCA
+Procure passagens de avião, trem, balsa e ônibus, cartões de embarque, reservas de hotel e de apartamento, aluguéis de carro e aprovações de visto eletrônico ou de autorização de viagem. Acompanhe cada reserva pelas alterações posteriores: use o itinerário final e ignore reservas canceladas ou reembolsadas.
+
+MONTAGEM
+Uma linha por estadia em um país, em ordem cronológica. Uma viagem por três países são três linhas. A chegada é a data local em que pousei ou cruzei a fronteira, não a data em que reservei nem a da decolagem. A partida é a data local em que saí. Se só troquei de avião e não saí do aeroporto, inclua a linha com o motivo Transit.
+
+FORMATO
+Devolva um arquivo CSV chamado atlasdays.csv com exatamente este cabeçalho:
+Country,State,Start Date,End Date,Purpose,Notes
+- Country: nome em inglês ou código de 2 letras.
+- State: só para estadias nos Estados Unidos, como sigla postal, por exemplo NY. Nos outros casos, vazio.
+- Start Date e End Date: yyyy-mm-dd. Se só o ano for conhecido, coloque o ano com 4 dígitos em Start Date e deixe End Date vazio.
+- Purpose: Personal, Business, Study ou Transit, ou vazio.
+- Notes: em que as datas se baseiam, por exemplo "confirmação de voo, fatura do hotel". Coloque entre aspas duplas se houver vírgula.
+
+REGRAS
+Não invente datas. Se faltar uma chegada ou uma partida, ou se dois e-mails divergirem, pergunte antes de escrever a linha. Deixe de fora meu país de residência. Antes do arquivo, liste as viagens sobre as quais você tem dúvida e explique por quê. Se não puder criar um arquivo, coloque o CSV em um único bloco de código e nada mais.</pre>
+</div>
+<h2>O que conferir antes de importar</h2>
+<p>O assistente lê reservas, e reserva é plano. Estes são os pontos em que o plano e a viagem real se separam, e em que vale gastar um minuto na prévia do AtlasDays.</p>
+<ul>
+<li><strong>Viagens que você não fez.</strong> Um voo cancelado ou perdido ainda pode gerar uma linha. Desmarque a seleção dela na prévia.</li>
+<li><strong>Viagens sem e-mail.</strong> Travessias de fronteira de carro, passagens compradas no balcão e viagens reservadas por outra pessoa ficam de fora. Adicione à mão, ou deixe <a href="/pt/learn/travel-history-from-iphone-photos">sua fototeca preencher as lacunas</a>.</li>
+<li><strong>Voos noturnos.</strong> A data de chegada é o dia do pouso. Uma partida às 23:40 chega no dia seguinte.</li>
+<li><strong>Escalas.</strong> Uma parada em que você não saiu da área de trânsito do aeroporto deve ser Trânsito, que o AtlasDays nunca conta como visita nem em um total de dias.</li>
+</ul>
+<p>Linhas marcadas como Duplicada são ignoradas, e as que se sobrepõem a uma viagem em outro país são sinalizadas para você comparar as datas. O <a href="/pt/help/csv-import">guia de Importação de CSV</a> explica cada etiqueta.</p>
+<h2 id="privacy">Privacidade: o que você compartilha, e com quem</h2>
+<p>Este método é rápido porque o assistente lê seu e-mail. Decida levando isso em conta.</p>
+<ul>
+<li><strong>O provedor do assistente vê o que ele lê.</strong> Um assistente conectado pode abrir qualquer mensagem que a busca retornar, não só e-mails de viagem. O que o provedor guarda, e se ele usa as conversas para treinar modelos, depende da política de privacidade dele e dos ajustes da sua conta. Confira os dois antes de conectar.</li>
+<li><strong>Use uma caixa de e-mail pessoal.</strong> Uma conta de trabalho costuma ter regras sobre a conexão de serviços externos.</li>
+<li><strong>Desconecte depois.</strong> Com o arquivo em mãos, remova a conexão com a caixa de e-mail nos ajustes do assistente e apague a conversa se não quiser que ela fique guardada.</li>
+<li><strong>O AtlasDays não vê nada disso.</strong> O AtlasDays não tem conta nem servidor que receba suas viagens. Ele nunca vê seu e-mail nem sua conversa com o assistente. O arquivo é lido no seu iPhone, e suas viagens ficam ali, com sincronização opcional pelo seu próprio iCloud.</li>
+</ul>
+<h2 id="without-connecting">Sem conectar sua caixa de e-mail</h2>
+<p>Dá para manter o assistente fora da sua caixa de entrada e ainda assim não digitar nada. Procure no e-mail por “confirmação de reserva”, “itinerário” e “cartão de embarque”, depois cole as mensagens relevantes ou anexe os PDFs ao mesmo prompt. Assim o assistente vê só o que você entregou. Antes, remova números de passaporte e dados de pagamento.</p>
+<p>O mesmo prompt funciona com outras fontes: a página de histórico de voos de uma companhia aérea, uma planilha de outro app de viagens ou fotos de carimbos do passaporte. O AtlasDays guarda uma versão dele em Ajustes → Importar → Arquivo CSV → Criar CSV com IA.</p>
+<h2>Quando as datas precisam se sustentar</h2>
+<p>Para um mapa e um registro de por onde você passou, o histórico importado basta. Para um pedido de visto ou de cidadania, trate-o como rascunho de trabalho: confirme as datas que importam nos <a href="/pt/learn/get-official-entry-exit-records">registros oficiais de entrada e saída</a> e veja <a href="/pt/learn/travel-history-for-visa-applications">o que cada formulário pede</a>.</p>
+<div class="cta-box"><span class="cta-logo"><img class="logo-dark" src="/assets/brand/logo_dark.png?v=20260325a" alt="" width="52" height="52" /><img class="logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="" width="52" height="52" /></span><h2>Importe seu histórico de viagens de graça</h2><p>O AtlasDays transforma o arquivo em uma Linha do tempo, um mapa de todos os países que você visitou e contagens de dias para limites de visto e de residência.</p><a class="cta-btn" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">{{t:cta.get_app}}</a></div>
+<h2>Perguntas frequentes</h2>
+<h3>Qual assistente de IA devo usar?</h3><p>Qualquer um que consiga buscar na sua caixa de e-mail e devolver um arquivo. O Gemini é o caminho mais curto para o Gmail. O ChatGPT e o Claude funcionam depois que você conecta uma caixa de e-mail nos ajustes deles. O prompt é o mesmo para todos.</p>
+<h3>Qual é a precisão do resultado?</h3><p>Datas tiradas de uma passagem final costumam estar certas. Os erros comuns são viagens canceladas que ainda aparecem e deslocamentos que não deixaram e-mail. A prévia do AtlasDays lista todas as linhas antes de salvar qualquer coisa, então você pode corrigir uma viagem ou deixá-la de fora.</p>
+<h3>O AtlasDays lê meu e-mail?</h3><p>Não. O AtlasDays só lê o arquivo CSV que você escolhe, no seu dispositivo. A busca no e-mail acontece no assistente que você escolheu, conforme a política de privacidade desse provedor.</p>
+<h3>A importação é gratuita?</h3><p>Sim. A importação de CSV faz parte da versão gratuita do AtlasDays, sem limite de número de viagens.</p>

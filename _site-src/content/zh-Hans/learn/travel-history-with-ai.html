@@ -1,0 +1,65 @@
+<nav class="breadcrumb"><a href="/zh-Hans/">AtlasDays</a> / <a href="/zh-Hans/learn/">旅行规定</a> / <a href="/zh-Hans/learn/guides">指南</a></nav>
+<h1>用 AI 从邮箱找回旅行记录</h1>
+<p class="subtitle">多年的航班和酒店预订都还留在邮箱里。AI 助手几分钟就能把它们整理成行程清单，再由 AtlasDays 导入。</p>
+<p class="verified">最后核实：2026 年 11 月</p>
+<div class="tldr"><p>把 AI 助手连接到邮箱，粘贴下面的提示词，它会返回一个文件，每段在某个国家的停留占一行。把这个文件导入 AtlasDays，核对预览，过去的行程就会出现在时间轴和地图上。导入免费。</p></div>
+<h2>操作步骤</h2>
+<ol class="steps">
+<li><strong>打开一个能读取邮件的助手。</strong>Gemini 可以直接在 Gmail 里使用，ChatGPT 和 Claude 可以在设置中连接邮箱。如果什么都不想连接，请看下面的<a href="#without-connecting">粘贴方法</a>。</li>
+<li><strong>粘贴提示词。</strong>它会告诉助手要搜索什么、如何处理改签和取消的预订，以及 AtlasDays 读取的确切文件格式。</li>
+<li><strong>回答它的提问。</strong>好的助手会先问再猜：改签后的航班有没有搭乘，或者某个国家找不到离开记录时是怎么离开的。</li>
+<li><strong>保存文件。</strong>助手会返回 <code>atlasdays.csv</code>，或者一段需要以这个名称保存的文本。</li>
+<li><strong>导入。</strong>在 AtlasDays 中打开“设置 → 导入 → CSV 文件”，选择这个文件。AtlasDays 会显示找到的每一个行程，标出重复和重叠，在轻点“导入”之前不会保存任何内容。</li>
+</ol>
+<h2>提示词</h2>
+<p>请完整拷贝。如果想换一个时间范围，修改第一行即可。</p>
+<div class="prompt-box">
+<button type="button" class="prompt-copy" data-copy-target="travel-history-prompt" data-copied-label="已拷贝" hidden>拷贝提示词</button>
+<pre id="travel-history-prompt">请搜索我的邮箱，找出 2016 年 1 月以来我的每一次出境旅行，整理成我的旅行记录。
+
+搜索
+查找机票、火车票、轮渡和大巴车票、登机牌、酒店和公寓预订、租车订单，以及电子签证或旅行许可的批准通知。每笔预订都要跟进后续变更：以最终行程为准，忽略已取消或已退款的预订。
+
+整理
+每段在一个国家的停留占一行，按日期排序。一趟经过三个国家的旅行就是三行。抵达日期是我落地或跨越边境时的当地日期，不是预订日期，也不是起飞日期。离开日期是我离开时的当地日期。如果我只是转机、没有离开机场，也添加一行，Purpose 填 Transit。
+
+格式
+返回一个名为 atlasdays.csv 的 CSV 文件，表头必须与下面完全一致：
+Country,State,Start Date,End Date,Purpose,Notes
+- Country：国家的英文名称或 2 位字母代码。
+- State：仅用于在美国的停留，填邮政缩写，例如 NY。其他情况留空。
+- Start Date 和 End Date：yyyy-mm-dd。如果只知道年份，在 Start Date 填 4 位数年份，End Date 留空。
+- Purpose：Personal、Business、Study 或 Transit，也可以留空。
+- Notes：日期的依据，例如 "航班确认邮件, 酒店账单"。内容含逗号时，用半角双引号括起来。
+
+规则
+不要编造日期。如果缺少抵达或离开日期，或者两封邮件互相矛盾，写入该行之前先问我。不要包含我的居住国。给出文件之前，先列出你不确定的行程和原因。如果无法生成文件，就把 CSV 放在一个代码块里，不要输出其他内容。</pre>
+</div>
+<h2>导入前要核对什么</h2>
+<p>助手读取的是预订，而预订只是计划。计划和实际出行不一致的地方有以下几种，也正是值得花一分钟看看 AtlasDays 预览的地方。</p>
+<ul>
+<li><strong>没有成行的旅行。</strong>取消或错过的航班仍可能生成一行。在预览中取消勾选即可。</li>
+<li><strong>没有邮件的旅行。</strong>开车跨越边境、在柜台买的票，以及别人代订的行程都不会出现。可以手动添加，或者<a href="/zh-Hans/learn/travel-history-from-iphone-photos">用照片图库补上空缺</a>。</li>
+<li><strong>跨夜航班。</strong>抵达日期是落地的那一天。23:40 起飞的航班次日才抵达。</li>
+<li><strong>中途停留。</strong>一直留在机场禁区内的停留应标为转机，AtlasDays 不会把转机算作到访，也不会计入天数总计。</li>
+</ul>
+<p>标为“重复”的行会被跳过；与另一个国家的行程重叠的行会被标出，方便对照日期。<a href="/zh-Hans/help/csv-import">CSV 导入指南</a>解释了每个标签的含义。</p>
+<h2 id="privacy">隐私：分享了什么，分享给了谁</h2>
+<p>这个方法之所以快，是因为助手会读取邮件。做决定时请记住这一点。</p>
+<ul>
+<li><strong>助手的提供商能看到它读取的内容。</strong>连接邮箱后，助手可以打开搜索返回的任何邮件，不限于旅行邮件。提供商保留哪些内容、是否用对话训练模型，取决于它的隐私政策和你的账户设置。连接之前，两者都要查看。</li>
+<li><strong>使用个人邮箱。</strong>工作账户通常对连接外部服务有规定。</li>
+<li><strong>用完后断开连接。</strong>拿到文件后，在助手的设置中移除邮箱连接；如果不想保留对话，也一并删除。</li>
+<li><strong>AtlasDays 看不到这些内容。</strong>AtlasDays 没有账户，也没有接收行程的服务器。它不会看到邮件，也不会看到与助手的对话。文件在 iPhone 上读取，行程也留在 iPhone 上，还可以选择通过自己的 iCloud 同步。</li>
+</ul>
+<h2 id="without-connecting">不连接邮箱的做法</h2>
+<p>不让助手进入邮箱，也能省去手动输入。在邮件中搜索“预订确认” (booking confirmation)、“行程单” (itinerary) 和“登机牌” (boarding pass)，然后把相关邮件粘贴进去，或者把 PDF 附在同一段提示词后面。这样助手只能看到你提供的内容。请先删去护照号码和支付信息。</p>
+<p>同一段提示词也适用于其他来源：航空公司的飞行记录页面、其他旅行 App 导出的电子表格，或者护照出入境章的照片。AtlasDays 在“设置 → 导入 → CSV 文件 → 用 AI 创建 CSV”中保留了它的一个版本。</p>
+<h2>当日期必须经得起核查时</h2>
+<p>如果只是想要一张地图和一份去过哪里的记录，导入的记录就够用了。用于签证或入籍申请时，请把它当作工作草稿：对照<a href="/zh-Hans/learn/get-official-entry-exit-records">官方出入境记录</a>确认关键日期，并查看<a href="/zh-Hans/learn/travel-history-for-visa-applications">各类表格的具体要求</a>。</p>
+<div class="cta-box"><span class="cta-logo"><img class="logo-dark" src="/assets/brand/logo_dark.png?v=20260325a" alt="" width="52" height="52" /><img class="logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="" width="52" height="52" /></span><h2>免费导入旅行记录</h2><p>AtlasDays 会把这个文件变成时间轴、一张标出所有到访国家的地图，以及用于签证和居留上限的天数统计。</p><a class="cta-btn" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">{{t:cta.get_app}}</a></div>
+<h2>常见问题</h2>
+<h3>应该用哪个 AI 助手？</h3><p>任何能搜索邮箱并返回文件的助手都可以。对 Gmail 来说，Gemini 最省事。ChatGPT 和 Claude 在设置中连接邮箱后即可使用。提示词对它们都一样。</p>
+<h3>结果有多准确？</h3><p>取自最终机票的日期通常是对的。常见错误是已取消的行程仍然出现，以及没有留下邮件的出行。AtlasDays 的预览会在保存之前列出每一行，可以更正或剔除某个行程。</p>
+<h3>AtlasDays 会读取我的邮件吗？</h3><p>不会。AtlasDays 只在设备上读取你选择的 CSV 文件。邮件搜索发生在你选用的助手中，受该提供商的隐私政策约束。</p>
+<h3>导入是免费的吗？</h3><p>是的。CSV 导入包含在 AtlasDays 免费版中，行程数量不限。</p>

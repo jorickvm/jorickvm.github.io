@@ -1,0 +1,65 @@
+<nav class="breadcrumb"><a href="/es/">AtlasDays</a> / <a href="/es/learn/">Reglas de viaje</a> / <a href="/es/learn/guides">Guías</a></nav>
+<h1>Usa la IA para reconstruir tu historial de viajes a partir de tu correo</h1>
+<p class="subtitle">Años de vuelos y reservas de hotel ya están en tu correo. Un asistente de IA puede convertirlos en una lista de viajes en unos minutos, y AtlasDays importa el resultado.</p>
+<p class="verified">Última comprobación: noviembre de 2026</p>
+<div class="tldr"><p>Conecta un asistente de IA a tu buzón, pega las instrucciones de abajo y te devolverá un archivo con una fila por cada estancia en un país. Importa ese archivo a AtlasDays, revisa la vista previa y tus viajes pasados aparecerán en tu Cronología y en tu mapa. Importar es gratis.</p></div>
+<h2>Cómo funciona</h2>
+<ol class="steps">
+<li><strong>Abre un asistente que pueda leer tu correo.</strong> Gemini funciona dentro de Gmail, y ChatGPT y Claude pueden conectarse a un buzón desde sus ajustes. Si prefieres no conectar nada, mira <a href="#without-connecting">el método de copiar y pegar</a> más abajo.</li>
+<li><strong>Pega las instrucciones.</strong> Le indican al asistente qué buscar, cómo tratar las reservas modificadas y canceladas, y el formato exacto de archivo que lee AtlasDays.</li>
+<li><strong>Responde a sus preguntas.</strong> Un buen asistente pregunta antes de suponer: si llegaste a tomar un vuelo que se cambió, o cómo saliste de un país del que no encuentra ninguna salida.</li>
+<li><strong>Guarda el archivo.</strong> El asistente devuelve <code>atlasdays.csv</code>, o un bloque de texto para guardar con ese nombre.</li>
+<li><strong>Impórtalo.</strong> En AtlasDays, abre Ajustes → Importar → Archivo CSV y elige el archivo. AtlasDays muestra todos los viajes que ha encontrado, marca los duplicados y los solapamientos, y no guarda nada hasta que tocas Importar.</li>
+</ol>
+<h2>Las instrucciones</h2>
+<p>Cópialas enteras. Cambia la primera línea si quieres otro período.</p>
+<div class="prompt-box">
+<button type="button" class="prompt-copy" data-copy-target="travel-history-prompt" data-copied-label="Copiado" hidden>Copiar instrucciones</button>
+<pre id="travel-history-prompt">Busca en mi correo todos los viajes al extranjero que he hecho desde enero de 2016 y reconstruye mi historial de viajes.
+
+BÚSQUEDA
+Busca billetes de avión, tren, ferri y autobús, tarjetas de embarque, reservas de hotel y de apartamento, alquileres de coche y aprobaciones de visados electrónicos o de autorizaciones de viaje. Sigue cada reserva a través de sus cambios posteriores: usa el itinerario final e ignora las reservas canceladas o reembolsadas.
+
+ELABORACIÓN
+Una fila por cada estancia en un país, en orden cronológico. Un viaje por tres países son tres filas. La llegada es la fecha local en la que aterricé o crucé la frontera, no la fecha en la que reservé ni la del despegue. La salida es la fecha local en la que me fui. Si solo cambié de avión y no salí del aeropuerto, añade la fila con el motivo Transit.
+
+FORMATO
+Devuelve un archivo CSV llamado atlasdays.csv con exactamente este encabezado:
+Country,State,Start Date,End Date,Purpose,Notes
+- Country: nombre en inglés o código de 2 letras.
+- State: solo para estancias en Estados Unidos, como código postal del estado, por ejemplo NY. Si no, vacío.
+- Start Date y End Date: yyyy-mm-dd. Si solo se conoce el año, pon el año con 4 cifras en Start Date y deja End Date vacío.
+- Purpose: Personal, Business, Study o Transit, o vacío.
+- Notes: en qué se basan las fechas, por ejemplo "confirmación de vuelo, factura de hotel". Ponlo entre comillas dobles si contiene una coma.
+
+REGLAS
+No inventes fechas. Si falta una llegada o una salida, o si dos correos no coinciden, pregúntame antes de escribir la fila. Deja fuera mi país de residencia. Antes del archivo, enumera los viajes sobre los que tengas dudas y explica por qué. Si no puedes crear un archivo, pon el CSV en un único bloque de código y nada más.</pre>
+</div>
+<h2>Qué revisar antes de importar</h2>
+<p>El asistente lee reservas, y una reserva es un plan. Estos son los puntos en los que los planes y los viajes reales no coinciden, y en los que merece la pena dedicar un minuto a la vista previa de AtlasDays.</p>
+<ul>
+<li><strong>Viajes que no hiciste.</strong> Un vuelo cancelado o perdido puede generar una fila igualmente. Quita su selección en la vista previa.</li>
+<li><strong>Viajes sin correo.</strong> Faltan los cruces de frontera en coche, los billetes comprados en ventanilla y los viajes que reservó otra persona. Añádelos a mano o deja que <a href="/es/learn/travel-history-from-iphone-photos">tu fototeca rellene los huecos</a>.</li>
+<li><strong>Vuelos nocturnos.</strong> La fecha de llegada es el día en que aterrizaste. Una salida a las 23:40 llega al día siguiente.</li>
+<li><strong>Escalas.</strong> Una parada en la que no saliste de la zona de tránsito debe ir como Tránsito, que AtlasDays nunca cuenta como visita ni para un total de días.</li>
+</ul>
+<p>Las filas marcadas como Duplicado se omiten, y las que se solapan con un viaje en otro país se señalan para que compares las fechas. La <a href="/es/help/csv-import">guía de Importar CSV</a> explica cada etiqueta.</p>
+<h2 id="privacy">Privacidad: qué compartes y con quién</h2>
+<p>Este método es rápido porque el asistente lee tu correo. Decide teniéndolo en cuenta.</p>
+<ul>
+<li><strong>El proveedor del asistente ve lo que este lee.</strong> Un asistente conectado puede abrir cualquier mensaje que devuelva su búsqueda, no solo los correos de viajes. Lo que el proveedor conserva, y si usa las conversaciones para entrenar modelos, lo determinan su política de privacidad y los ajustes de tu cuenta. Revisa ambas cosas antes de conectar nada.</li>
+<li><strong>Usa un buzón personal.</strong> Una cuenta de trabajo suele tener normas sobre la conexión de servicios externos.</li>
+<li><strong>Desconéctalo después.</strong> Cuando tengas el archivo, elimina la conexión con el buzón en los ajustes del asistente y borra la conversación si no quieres que se conserve.</li>
+<li><strong>AtlasDays no ve nada de esto.</strong> AtlasDays no tiene cuentas ni un servidor que reciba tus viajes. Nunca ve tu correo ni tu conversación con el asistente. El archivo se lee en tu iPhone y tus viajes se quedan ahí, con sincronización opcional a través de tu propio iCloud.</li>
+</ul>
+<h2 id="without-connecting">Sin conectar tu buzón</h2>
+<p>Puedes mantener al asistente fuera de tu bandeja de entrada y ahorrarte igualmente el tecleo. Busca en tu correo «confirmación de reserva», «itinerario» y «tarjeta de embarque», y después pega los mensajes relevantes o adjunta los PDF a las mismas instrucciones. Así el asistente solo ve lo que le has dado. Elimina antes los números de pasaporte y los datos de pago.</p>
+<p>Las mismas instrucciones sirven para otras fuentes: la página de historial de vuelos de una aerolínea, una hoja de cálculo de otra app de viajes o fotos de sellos del pasaporte. AtlasDays guarda una versión en Ajustes → Importar → Archivo CSV → Crear CSV con IA.</p>
+<h2>Cuando las fechas tienen que sostenerse</h2>
+<p>Para tener un mapa y un registro de dónde has estado, el historial importado es suficiente. Para una solicitud de visado o de nacionalidad, trátalo como un borrador de trabajo: confirma las fechas que importan con los <a href="/es/learn/get-official-entry-exit-records">registros oficiales de entrada y salida</a> y consulta <a href="/es/learn/travel-history-for-visa-applications">qué pide cada formulario</a>.</p>
+<div class="cta-box"><span class="cta-logo"><img class="logo-dark" src="/assets/brand/logo_dark.png?v=20260325a" alt="" width="52" height="52" /><img class="logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="" width="52" height="52" /></span><h2>Importa gratis tu historial de viajes</h2><p>AtlasDays convierte el archivo en una Cronología, un mapa de todos los países que has visitado y recuentos de días para los límites de visado y de residencia.</p><a class="cta-btn" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">{{t:cta.get_app}}</a></div>
+<h2>Preguntas frecuentes</h2>
+<h3>¿Qué asistente de IA debo usar?</h3><p>Cualquiera que pueda buscar en tu buzón y devolver un archivo. Gemini es el camino más corto para Gmail. ChatGPT y Claude funcionan una vez que conectas un buzón en sus ajustes. Las instrucciones son las mismas para todos.</p>
+<h3>¿Qué precisión tiene el resultado?</h3><p>Las fechas tomadas de un billete definitivo suelen ser correctas. Los errores habituales son los viajes cancelados que siguen apareciendo y los desplazamientos que no dejaron ningún correo. La vista previa de AtlasDays enumera todas las filas antes de guardar nada, así que puedes corregir un viaje o dejarlo fuera.</p>
+<h3>¿AtlasDays lee mi correo?</h3><p>No. AtlasDays solo lee el archivo CSV que eliges, en tu dispositivo. La búsqueda en el correo se hace en el asistente que hayas elegido, bajo la política de privacidad de ese proveedor.</p>
+<h3>¿Importar es gratis?</h3><p>Sí. Importar CSV forma parte de la versión gratuita de AtlasDays, sin límite en el número de viajes.</p>

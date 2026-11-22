@@ -1,0 +1,65 @@
+<nav class="breadcrumb"><a href="/nl/">AtlasDays</a> / <a href="/nl/learn/">Reisregels</a> / <a href="/nl/learn/guides">Gidsen</a></nav>
+<h1>Je reisgeschiedenis reconstrueren uit je mailbox met AI</h1>
+<p class="subtitle">Jaren aan vluchten en hotelboekingen staan al in je e-mail. Een AI-assistent maakt er in een paar minuten een lijst met reizen van, en AtlasDays importeert het resultaat.</p>
+<p class="verified">Laatst gecontroleerd: november 2026</p>
+<div class="tldr"><p>Koppel een AI-assistent aan je mailbox, plak de prompt hieronder en je krijgt een bestand terug met één rij per verblijf in een land. Importeer dat bestand in AtlasDays, loop de controle na, en je eerdere reizen staan in je Tijdlijn en op je kaart. Importeren is gratis.</p></div>
+<h2>Zo werkt het</h2>
+<ol class="steps">
+<li><strong>Open een assistent die je e-mail kan lezen.</strong> Gemini werkt in Gmail zelf, en ChatGPT en Claude kun je via hun instellingen aan een mailbox koppelen. Koppel je liever niets, lees dan hieronder <a href="#without-connecting">de plakmethode</a>.</li>
+<li><strong>Plak de prompt.</strong> Die vertelt de assistent waarnaar hij moet zoeken, wat hij doet met gewijzigde en geannuleerde boekingen en welk bestandsformaat AtlasDays precies leest.</li>
+<li><strong>Beantwoord zijn vragen.</strong> Een goede assistent vraagt het na voordat hij gokt: of je een omgeboekte vlucht echt hebt genomen, of hoe je een land hebt verlaten waarvoor hij geen vertrek kan vinden.</li>
+<li><strong>Bewaar het bestand.</strong> De assistent geeft <code>atlasdays.csv</code> terug, of een blok tekst dat je onder die naam bewaart.</li>
+<li><strong>Importeer het.</strong> Open in AtlasDays Instellingen → Importeren → CSV-bestand en kies het bestand. AtlasDays toont elke reis die het heeft gevonden, markeert duplicaten en overlappingen en bewaart niets totdat je op Importeren tikt.</li>
+</ol>
+<h2>De prompt</h2>
+<p>Kopieer hem helemaal. Pas de eerste regel aan als je een andere periode wilt.</p>
+<div class="prompt-box">
+<button type="button" class="prompt-copy" data-copy-target="travel-history-prompt" data-copied-label="Gekopieerd" hidden>Kopieer prompt</button>
+<pre id="travel-history-prompt">Doorzoek mijn e-mail op elke reis naar het buitenland die ik sinds januari 2016 heb gemaakt en stel mijn reisgeschiedenis samen.
+
+ZOEKEN
+Zoek naar vlieg-, trein-, veerboot- en bustickets, instapkaarten, boekingen van hotels en appartementen, autoverhuur en goedkeuringen van e-visa of reistoestemmingen. Volg elke boeking door latere wijzigingen heen: gebruik het definitieve reisschema en negeer boekingen die zijn geannuleerd of terugbetaald.
+
+OPBOUW
+Eén rij per verblijf in een land, op volgorde van datum. Een reis door drie landen is drie rijen. De aankomst is de lokale datum waarop ik landde of de grens overging, niet de datum waarop ik boekte of opsteeg. Het vertrek is de lokale datum waarop ik wegging. Als ik alleen ben overgestapt en de luchthaven niet heb verlaten, voeg de rij dan toe met Transit als Purpose.
+
+FORMAAT
+Geef een CSV-bestand terug met de naam atlasdays.csv en precies deze koprij:
+Country,State,Start Date,End Date,Purpose,Notes
+- Country: Engelse naam of 2-lettercode.
+- State: alleen voor verblijven in de Verenigde Staten, als postale afkorting zoals NY. Anders leeg.
+- Start Date en End Date: yyyy-mm-dd. Is alleen het jaar bekend, zet dan het jaartal van 4 cijfers in Start Date en laat End Date leeg.
+- Purpose: Personal, Business, Study of Transit, of leeg.
+- Notes: waarop de datums zijn gebaseerd, bijvoorbeeld "vluchtbevestiging, hotelfactuur". Zet de tekst tussen dubbele aanhalingstekens als er een komma in staat.
+
+REGELS
+Verzin geen datums. Ontbreekt een aankomst of vertrek, of spreken twee e-mails elkaar tegen, vraag het me dan voordat je de rij schrijft. Laat mijn thuisland weg. Geef vóór het bestand een lijst van de reizen waarover je twijfelt, met de reden. Kun je geen bestand maken, zet de CSV dan in één codeblok en verder niets.</pre>
+</div>
+<h2>Wat je controleert voordat je importeert</h2>
+<p>De assistent leest boekingen, en een boeking is een plan. Op deze punten lopen plannen en echte reizen uiteen, en daar is de controle in AtlasDays een minuut van je tijd waard.</p>
+<ul>
+<li><strong>Reizen die je niet hebt gemaakt.</strong> Een geannuleerde of gemiste vlucht kan toch een rij opleveren. Haal in de controle het vinkje ervan weg.</li>
+<li><strong>Reizen zonder e-mail.</strong> Grensovergangen met de auto, tickets die je aan een balie hebt gekocht en reizen die iemand anders heeft geboekt, ontbreken. Voeg ze handmatig toe, of laat <a href="/nl/learn/travel-history-from-iphone-photos">je fotobibliotheek de gaten vullen</a>.</li>
+<li><strong>Nachtvluchten.</strong> De aankomstdatum is de dag waarop je landde. Een vlucht die om 23:40 vertrekt, komt de volgende dag aan.</li>
+<li><strong>Overstappen.</strong> Een stop waarbij je de transitzone van de luchthaven niet hebt verlaten, hoort Transit te zijn. Die telt AtlasDays nooit als bezoek en nooit mee in een dagtotaal.</li>
+</ul>
+<p>Rijen met het label Duplicaat worden overgeslagen, en rijen die overlappen met een reis in een ander land worden gemarkeerd, zodat je de datums kunt vergelijken. De <a href="/nl/help/csv-import">uitleg over importeren uit CSV</a> licht elk label toe.</p>
+<h2 id="privacy">Privacy: wat je deelt, en met wie</h2>
+<p>Deze methode is snel omdat de assistent je e-mail leest. Neem dat mee in je beslissing.</p>
+<ul>
+<li><strong>De aanbieder van de assistent ziet wat die leest.</strong> Een gekoppelde assistent kan elk bericht openen dat zijn zoekopdracht oplevert, niet alleen reismails. Wat de aanbieder bewaart, en of hij gesprekken gebruikt om modellen te trainen, hangt af van zijn privacybeleid en van je accountinstellingen. Controleer beide voordat je koppelt.</li>
+<li><strong>Gebruik een privémailbox.</strong> Voor een werkaccount gelden meestal regels over het koppelen van externe diensten.</li>
+<li><strong>Ontkoppel na afloop.</strong> Heb je het bestand, verwijder dan de koppeling met je mailbox in de instellingen van de assistent en wis het gesprek als je niet wilt dat het bewaard blijft.</li>
+<li><strong>AtlasDays ziet er niets van.</strong> AtlasDays heeft geen account en geen server die je reizen ontvangt. Het ziet je e-mail en je gesprek met de assistent nooit. Het bestand wordt op je iPhone gelezen en je reizen blijven daar, met optionele synchronisatie via je eigen iCloud.</li>
+</ul>
+<h2 id="without-connecting">Zonder je mailbox te koppelen</h2>
+<p>Je kunt de assistent buiten je inbox houden en toch het typen overslaan. Zoek in je mail op „boekingsbevestiging”, „reisschema” en „instapkaart” (of op de Engelse termen „booking confirmation”, „itinerary” en „boarding pass”) en plak de relevante berichten bij dezelfde prompt, of voeg de PDF's toe. De assistent ziet dan alleen wat je hem hebt gegeven. Haal eerst paspoortnummers en betaalgegevens weg.</p>
+<p>Dezelfde prompt werkt ook met andere bronnen: de pagina met je vluchtgeschiedenis bij een luchtvaartmaatschappij, een spreadsheet uit een andere reisapp of foto's van paspoortstempels. AtlasDays bewaart er een versie van onder Instellingen → Importeren → CSV-bestand → Maak CSV met AI.</p>
+<h2>Als de datums stand moeten houden</h2>
+<p>Voor een kaart en een overzicht van waar je bent geweest, is de geïmporteerde reisgeschiedenis genoeg. Behandel haar bij een aanvraag voor een visum of staatsburgerschap als werkversie: controleer de datums die ertoe doen aan de hand van <a href="/nl/learn/get-official-entry-exit-records">officiële in- en uitreisregistraties</a> en lees <a href="/nl/learn/travel-history-for-visa-applications">wat elk formulier vraagt</a>.</p>
+<div class="cta-box"><span class="cta-logo"><img class="logo-dark" src="/assets/brand/logo_dark.png?v=20260325a" alt="" width="52" height="52" /><img class="logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="" width="52" height="52" /></span><h2>Importeer je reisgeschiedenis gratis</h2><p>AtlasDays maakt van het bestand een Tijdlijn, een kaart van elk land dat je hebt bezocht en dagentellingen voor visum- en verblijfslimieten.</p><a class="cta-btn" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">{{t:cta.get_app}}</a></div>
+<h2>Veelgestelde vragen</h2>
+<h3>Welke AI-assistent moet ik gebruiken?</h3><p>Elke assistent die je mailbox kan doorzoeken en een bestand kan teruggeven. Gemini is voor Gmail de kortste weg. ChatGPT en Claude werken zodra je in hun instellingen een mailbox koppelt. De prompt is voor allemaal dezelfde.</p>
+<h3>Hoe nauwkeurig is het resultaat?</h3><p>Datums uit een definitief ticket kloppen meestal. De gebruikelijke fouten zijn geannuleerde reizen die toch verschijnen en reizen die geen e-mail hebben achtergelaten. De controle in AtlasDays toont elke rij voordat er iets wordt bewaard, zodat je een reis kunt corrigeren of weglaten.</p>
+<h3>Leest AtlasDays mijn e-mail?</h3><p>Nee. AtlasDays leest alleen het CSV-bestand dat je kiest, op je apparaat. Het doorzoeken van je e-mail gebeurt in de assistent die je hebt gekozen, onder het privacybeleid van die aanbieder.</p>
+<h3>Is importeren gratis?</h3><p>Ja. Importeren uit CSV hoort bij de gratis versie van AtlasDays, zonder limiet op het aantal reizen.</p>
