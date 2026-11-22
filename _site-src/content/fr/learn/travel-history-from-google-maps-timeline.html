@@ -1,0 +1,48 @@
+<nav class="breadcrumb"><a href="/fr/">AtlasDays</a> / <a href="/fr/learn/">Règles de voyage</a> / <a href="/fr/learn/guides">Guides</a></nav>
+<h1>Transformer vos trajets Google Maps (Timeline) en historique de voyages</h1>
+<p class="subtitle">Si Timeline était activé, Google Maps a enregistré vos déplacements. Exportez ces données depuis votre téléphone : AtlasDays en tire des voyages, une carte et des décomptes de jours.</p>
+<p class="verified">Dernière vérification : novembre 2026</p>
+<div class="tldr"><p>Timeline, la fonction « Vos trajets » de Google Maps, est pour la plupart des gens la trace la plus complète de leurs voyages passés, mais elle ne montre que des lieux, pas des jours par pays. Exportez-la depuis l’app Maps en un seul fichier, sélectionnez ce fichier dans AtlasDays et confirmez les voyages trouvés. L’import est gratuit et le fichier ne quitte jamais votre iPhone.</p></div>
+<h2>De Timeline à l’historique de voyages</h2>
+<ol class="steps">
+<li><strong>Prenez le téléphone qui contient votre Timeline.</strong> Timeline est conservé sur chaque téléphone, pas en ligne : l’export doit donc venir de l’appareil qui l’a enregistré.</li>
+<li><strong>Exportez-le.</strong> Sur un iPhone, ouvrez Google Maps, touchez votre photo de profil, puis Paramètres → Position et confidentialité → Exporter les données de vos trajets → Enregistrer dans Fichiers. Sur Android, ouvrez l’app Paramètres du téléphone, puis Localisation → Services de localisation → Vos trajets → Exporter les données de vos trajets.</li>
+<li><strong>Transférez le fichier sur votre iPhone.</strong> Depuis un iPhone, il est déjà dans Fichiers. Depuis Android, enregistrez-le à un emplacement accessible depuis votre iPhone, comme iCloud Drive.</li>
+<li><strong>Ouvrez Réglages → Importer → Google Timeline dans AtlasDays</strong> et touchez Choisir un fichier Timeline.</li>
+<li><strong>Vérifiez les voyages trouvés.</strong> Corrigez ce qui est inexact, décochez ce que vous ne voulez pas, puis touchez Importer. Rien n’est enregistré avant.</li>
+</ol>
+<p>Le <a href="/fr/help/google-timeline-import">guide pas à pas de l’import Google Timeline</a> montre chaque écran.</p>
+<h2>Ce que vous obtenez</h2>
+<dl class="kv kv-text">
+<div><dt>Des voyages datés</dt><dd>Chaque pays où vous étiez, du premier au dernier jour où votre téléphone vous y a enregistré.</dd></div>
+<div><dt>Une carte de vos voyages</dt><dd>Les pays que vous avez visités sur un planisphère et sur un globe 3D, avec le nombre de pays et de continents.</dd></div>
+<div><dt>Des décomptes de jours</dt><dd>Les jours par pays et par année, et des suivis pour des limites comme le 90/180 Schengen ou un critère de résidence fiscale de 183 jours.</dd></div>
+<div><dt>Un historique toujours à jour</dt><dd>Ajoutez vos nouveaux voyages à la main, ou activez la détection automatique des voyages : AtlasDays ajoute alors un voyage dès que vous franchissez une frontière.</dd></div>
+</dl>
+<h2>Pourquoi Timeline seul ne suffit pas</h2>
+<p>Timeline montre un jour à la fois : les lieux de vos arrêts et les trajets qui les relient. Il ne donne aucun total par pays, ne permet pas de compter par rapport à une limite de visa ou de résidence, et n’est plus consultable sur ordinateur : Google indique que Timeline n’est pas disponible dans Maps sur un ordinateur. L’export est un fichier unique de visites et de trajets bruts, et c’est cette partie qu’AtlasDays lit pour vous.</p>
+<h2>Quelle part de votre historique s’y trouve</h2>
+<p>Cela dépend de vos réglages : mieux vaut donc vérifier avant de compter dessus.</p>
+<ul>
+<li><strong>Timeline est désactivé par défaut.</strong> Si vous ne l’avez jamais activé, il n’y a rien à exporter. Utilisez plutôt <a href="/fr/learn/travel-history-from-iphone-photos">vos photos</a> ou <a href="/fr/learn/travel-history-with-ai">vos e-mails de réservation</a>.</li>
+<li><strong>La suppression automatique efface les données anciennes.</strong> Elle peut être réglée sur 3, 18 ou 36 mois. Si elle est activée, les voyages antérieurs ont déjà disparu et ne peuvent pas être récupérés.</li>
+<li><strong>Les données sont sur le téléphone.</strong> Réinitialiser le téléphone ou supprimer Google Maps efface Timeline de cet appareil, sauf si vous avez activé la sauvegarde chiffrée de Google et que vous l’importez de nouveau.</li>
+<li><strong>Il y a des trous.</strong> Les jours où le téléphone était éteint, ou Timeline en pause, n’ont aucune position. AtlasDays comble les courtes lacunes par estimation : comparez donc ces dates avec les lieux où vous étiez réellement.</li>
+</ul>
+<p>Un ancien téléchargement Google Takeout fonctionne aussi : AtlasDays lit le fichier <code>Records.json</code> qu’il contient.</p>
+<h2>Votre historique des positions reste sur votre iPhone</h2>
+<p>AtlasDays lit le fichier sur votre appareil et n’envoie rien. Il n’y a ni compte ni serveur qui reçoive vos voyages. L’export lui-même contient tous les lieux enregistrés par Timeline : supprimez donc le fichier de Fichiers une fois les voyages importés.</p>
+<h2>À contrôler pendant la vérification</h2>
+<ul>
+<li><strong>Les arrêts en aéroport.</strong> Un arrêt dont toutes les positions se trouvent dans un aéroport figure comme transit possible et est décoché au départ. Ne le cochez que si vous n’avez pas quitté la zone de transit : il est alors importé comme Transit, qui ne compte jamais dans les totaux de jours.</li>
+<li><strong>Les vols de nuit.</strong> Une nuit passée dans les airs figure comme Espace aérien international et est elle aussi décochée au départ. Survoler un pays ne crée jamais de séjour dans ce pays.</li>
+<li><strong>Votre dernier voyage.</strong> Si vos positions les plus récentes datent des derniers jours, ce voyage reste En cours, car vous y êtes peut-être encore.</li>
+<li><strong>Les voyages que vous avez déjà.</strong> Un voyage qui en répète un déjà présent est marqué Doublon : importer Timeline après un import de photos ne double donc pas votre historique.</li>
+</ul>
+<p>Pour une carte de vos voyages, le résultat est utilisable tel quel. Si les dates doivent figurer dans un formulaire de visa ou de nationalité, confirmez celles qui comptent à l’aide des <a href="/fr/learn/get-official-entry-exit-records">relevés officiels d’entrée et de sortie</a>.</p>
+<div class="cta-box"><span class="cta-logo"><img class="logo-dark" src="/assets/brand/logo_dark.png?v=20260325a" alt="" width="52" height="52" /><img class="logo-light" src="/assets/brand/logo_light.png?v=20260325a" alt="" width="52" height="52" /></span><h2>Faites parler votre Timeline</h2><p>L’import Google Timeline est gratuit. Exportez le fichier, confirmez les voyages, et votre historique de voyages est prêt.</p><a class="cta-btn" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">{{t:cta.get_app}}</a></div>
+<h2>Questions fréquentes</h2>
+<h3>Puis-je encore consulter Timeline de Google Maps sur un ordinateur ?</h3><p>Non. Google indique que Timeline n’est pas disponible dans Maps sur un ordinateur. Il est conservé sur votre téléphone, et c’est là que se fait l’export.</p>
+<h3>Jusqu’où remonte Google Timeline ?</h3><p>Aussi loin que la période où il était activé, moins ce que la suppression automatique a effacé. Celle-ci peut être réglée sur 3, 18 ou 36 mois : vérifiez ce réglage avant de compter sur d’anciens voyages.</p>
+<h3>L’import Google Timeline est-il gratuit ?</h3><p>Oui. L’import et les voyages illimités font partie de la version gratuite d’AtlasDays. Importer les États américains comme des voyages distincts nécessite Pro. Sans Pro, ils sont importés comme des voyages aux États-Unis.</p>
+<h3>Mon historique des positions est-il envoyé à AtlasDays ?</h3><p>Non. Le fichier est lu sur votre iPhone et rien n’est envoyé à AtlasDays.</p>
