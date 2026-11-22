@@ -92,11 +92,35 @@
     var svg = null, shapes = [], base = null, view = null, animation = 0;
     var MAX_ZOOM = 14;
 
+    var gradient = null;
+    // Visited land shares one vertical gradient that spans the visited
+    // shapes, lighter toward the top.
     function updateMap() {
+      var top = Infinity, bottom = -Infinity;
       shapes.forEach(function (shape) {
         var button = byCode[shape.getAttribute("data-map-country")];
-        shape.classList.toggle("is-visited", !!button && isOn(button));
+        var visited = !!button && isOn(button);
+        shape.classList.toggle("is-visited", visited);
+        if (!visited || !shape.getBBox) return;
+        var box = shape.getBBox();
+        top = Math.min(top, box.y); bottom = Math.max(bottom, box.y + box.height);
       });
+      if (!gradient || !base) return;
+      if (!(bottom > top)) { top = base.y; bottom = base.y + base.h; }
+      gradient.setAttribute("y1", bottom); gradient.setAttribute("y2", top);
+    }
+    function buildGradient() {
+      var defs = svg.querySelector("defs") || svg.insertBefore(document.createElementNS(SVG_NS, "defs"), svg.firstChild);
+      gradient = document.createElementNS(SVG_NS, "linearGradient");
+      gradient.setAttribute("id", "country-checklist-visited");
+      gradient.setAttribute("gradientUnits", "userSpaceOnUse");
+      gradient.setAttribute("x1", 0); gradient.setAttribute("x2", 0);
+      ["country-checklist-visited-from", "country-checklist-visited-to"].forEach(function (name, index) {
+        var stop = document.createElementNS(SVG_NS, "stop");
+        stop.setAttribute("offset", index); stop.setAttribute("class", name);
+        gradient.appendChild(stop);
+      });
+      defs.appendChild(gradient);
     }
     function clampView(next) {
       var w = Math.min(base.w, Math.max(base.w / MAX_ZOOM, next.w)), h = w * base.h / base.w;
@@ -280,6 +304,7 @@
         var box = svg.getBBox();
         base = { x: box.x - 3, y: box.y - 3, w: box.width + 6, h: box.height + 6 };
         canvas.style.aspectRatio = base.w + " / " + base.h;
+        buildGradient();
         svg.querySelectorAll(".land[id]").forEach(function (shape) { shape.setAttribute("data-map-country", shape.id); });
         Object.keys(markers).forEach(function (code) {
           var dot = document.createElementNS(SVG_NS, "circle");
