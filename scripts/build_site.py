@@ -13,8 +13,10 @@ import sys
 import unicodedata
 from collections import Counter
 from datetime import date
+from functools import lru_cache
 from pathlib import Path
 
+from build_responsive_images import MANIFEST as RESPONSIVE_IMAGES_PATH, variant_path
 from build_route_outputs import ROUTES, expanded_routes, llms_files, sitemap_files
 from locales import (
     default_locale_code,
@@ -49,7 +51,7 @@ SITE_HEADER_VERSION = "20261027j"
 SITE_FOOTER_VERSION = "20261027h"
 ARTICLE_COMPONENTS_VERSION = "20261026b"
 RULE_CARDS_VERSION = "20261006b"
-NAVIGATION_VERSION = "20261027j"
+NAVIGATION_VERSION = "20261121a"
 
 # Root class that drops the background wash from the app's `.medium` step to
 # `.subtle`, for pages carrying long-form text. See assets/css/tokens.css.
@@ -117,15 +119,32 @@ def version_import_script(rendered: str) -> str:
 # under Sources > Campaigns. Done here rather than in the fragments because the
 # URL sits in every English fragment, and editing those would mark every
 # translation stale. Only `href` is rewritten: the smart-banner app-argument,
-# JSON-LD, and llms.txt keep the canonical URL. One campaign (`ct=web`) covers
-# the whole site.
+# JSON-LD, and llms.txt keep the canonical URL. Each part of the site has its
+# own campaign (`campaign_for`), so the report shows where a download started.
+# The QR code image, assets/qrcode-appstore.png, encodes the same link with
+# `ct=web-qr`: a scan counts as its own campaign on every page.
 APP_STORE_URL = "https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"
 APP_STORE_CAMPAIGN_URL = "https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct={campaign}&amp;mt=8"
 PRODUCT_PAGES_PATH = SOURCE_ROOT / "data" / "product-pages.json"
 
 
-def with_campaign_links(rendered: str, campaign: str = "web", ppid: str | None = None) -> str:
-    """Tag App Store links for App Store Connect; a page record can set its own "campaign".
+def campaign_for(source_path: str, record: dict[str, object]) -> str:
+    """The App Store Connect campaign for an English source route.
+
+    A translation shares its source's campaign. A record can set its own
+    "campaign"; otherwise the calculators, Learn and Help each have one, and
+    every other page shares the last.
+    """
+    if record.get("campaign"):
+        return str(record["campaign"])
+    if source_path in CALCULATOR_PAGES:
+        return "web-calc"
+    section = source_path.split("/", 1)[0]
+    return {"learn": "web-article", "help": "web-help"}.get(section, "web-other")
+
+
+def with_campaign_links(rendered: str, campaign: str, ppid: str | None = None) -> str:
+    """Tag App Store links for App Store Connect with the page's campaign.
 
     `ppid` opens a custom product page instead of the default one. It rides
     along with the campaign token, which still opens the custom page.
@@ -247,6 +266,86 @@ def render_web_flags(markup: str) -> str:
     return re.sub(r"assets/flags/([a-z]{2}(?:-[a-z]{2})?)\.png", r"assets/flags/web/\1.webp", markup)
 
 
+# The widest each kind of marketing image is drawn, from marketing.css: the
+# screen inside a phone, the phone frame around it, and a use-case card.
+PHONE_SCREEN_SIZES = "(min-width: 900px) 300px, 240px"
+PHONE_FRAME_SIZES = "(min-width: 900px) 330px, 265px"
+CASE_SHOT_SIZES = "340px"
+IMG_TAG = re.compile(r"<img\b[^>]*>")
+IMG_SOURCE = re.compile(r'\bsrc="([^"]*?)(assets/home/[^"?]+\.webp)(\?[^"]*)?"')
+
+
+@lru_cache(maxsize=None)
+def load_responsive_images() -> dict[str, dict]:
+    return json.loads(RESPONSIVE_IMAGES_PATH.read_text(encoding="utf-8"))["images"]
+
+
+def with_attribute(tag: str, attribute: str) -> str:
+    return f"{tag.rstrip('>').rstrip('/').rstrip()} {attribute} />"
+
+
+def with_srcset(tag: str, sizes: str) -> str:
+    """Let the browser pick a resized copy; the fragment keeps naming the full-size file."""
+    source = IMG_SOURCE.search(tag)
+    record = load_responsive_images().get(source[2]) if source else None
+    if not record or "srcset=" in tag:
+        return tag
+    prefix, path, query = source[1], source[2], source[3] or ""
+    candidates = [f"{prefix}{variant_path(path, int(width))}{query} {width}w" for width in sorted(record["variants"], key=int)]
+    candidates.append(f"{prefix}{path}{query} {record['width']}w")
+    return tag.replace(source[0], f'{source[0]} srcset="{", ".join(candidates)}" sizes="{sizes}"', 1)
+
+
+def render_responsive_images(markup: str) -> str:
+    """Serve the marketing screenshots at the size they are drawn."""
+
+    def screenshot(tag: str, sizes: str) -> str:
+        # The light screenshot stays hidden unless the visitor switched themes,
+        # so it must not download with the page.
+        if re.match(r'<img class="shot-light[" ]', tag) and "loading=" not in tag:
+            tag = with_attribute(tag, 'loading="lazy"')
+        return with_srcset(tag, sizes)
+
+    def frame(match: re.Match[str]) -> str:
+        tag = match[0]
+        # A frame that loads with the page is above the fold, and is the
+        # largest image there.
+        if "loading=" not in tag and "fetchpriority=" not in tag:
+            tag = with_attribute(tag, 'fetchpriority="high"')
+        return with_srcset(tag, PHONE_FRAME_SIZES)
+
+    for pattern, sizes in (
+        (r'(<div class="hx-screen">)(.*?)(</div>)', PHONE_SCREEN_SIZES),
+        (r'(<span class="hx-case-shot">)(.*?)(</span>)', CASE_SHOT_SIZES),
+    ):
+        markup = re.sub(
+            pattern,
+            lambda block, sizes=sizes: block[1] + IMG_TAG.sub(lambda img: screenshot(img[0], sizes), block[2]) + block[3],
+            markup,
+            flags=re.S,
+        )
+    return re.sub(r'<img class="hx-frame"[^>]*>', frame, markup)
+
+
+def render_calculator_handoff(markup: str, article: dict[str, object]) -> str:
+    """Use trips-only export until the app version supporting these presets is available."""
+    if 'data-day-calendar="dayCount"' not in markup and article.get("app_preset") not in {
+        "residence-united-arab-emirates-90-days", "residence-barbados", "residence-cambodia",
+    }:
+        return markup
+    config = json.loads((SOURCE_ROOT / "data/calculator-handoffs.json").read_text())
+    enabled = config["enable_3_0_3_trackers"]
+    if type(enabled) is not bool:
+        raise ValueError("enable_3_0_3_trackers must be true or false")
+    # Older copies of the shared runtime do not recognize the trips-only policy.
+    markup = re.sub(r'(assets/js/day-calendar\.js\?v=)\w+', r"\g<1>20261120c", markup)
+    if enabled:
+        return markup.replace('<div class="cal-dialog-foot">',
+                              '<p class="cal-dialog-sub" data-cal-tracker-version hidden>{{t:cal.tracker_version}}</p>\n'
+                              '        <div class="cal-dialog-foot">', 1)
+    return re.sub(r'(data-day-calendar="[^"]+")', r'\1 data-cal-handoff="trips-only"', markup, count=1)
+
+
 def render_calculator_usage(markup: str, source_path: str, prefix: str) -> str:
     if 'data-day-calendar="' not in markup:
         return markup
@@ -256,7 +355,7 @@ def render_calculator_usage(markup: str, source_path: str, prefix: str) -> str:
     endpoint = str(config.get("endpoint", "")) if config.get("enabled") else ""
     if config.get("enabled") and not re.fullmatch(r"https://[a-z0-9.-]+/collect", endpoint):
         raise SystemExit("Invalid calculator usage endpoint")
-    script = f'<script defer src="{prefix}assets/js/calculator-usage.js?v=20261114a" data-endpoint="{html.escape(endpoint, quote=True)}"></script>\n  '
+    script = f'<script defer src="{prefix}assets/js/calculator-usage.js?v=20261120b" data-endpoint="{html.escape(endpoint, quote=True)}"></script>\n  '
     return markup.replace('<script defer src="' + prefix + 'assets/js/day-calendar.js', script + '<script defer src="' + prefix + 'assets/js/day-calendar.js', 1)
 
 
@@ -409,12 +508,16 @@ RELATED_LIMIT = 6
 REGIONS_PATH = SOURCE_ROOT / "data" / "regions.json"
 EDITORIAL_DATA_PATH = SOURCE_ROOT / "data" / "editorial.json"
 CALCULATOR_PAGES = (
+    "learn/day-count-calculator.html",
     "learn/183-day-rule-calculator.html",
     "learn/schengen-calculator.html",
     "learn/uk-ilr-absence-calculator.html",
     "learn/substantial-presence-test-calculator.html",
     "learn/uk-srt-calculator.html",
     "learn/us-feie-calculator.html",
+    "learn/turkiye-90-180-calculator.html",
+    "learn/new-zealand-citizenship-calculator.html",
+    "learn/uk-citizenship-absence-calculator.html",
 )
 # The guide that explains how each kind of rule counts.
 TOPIC_GUIDES = {
@@ -1529,6 +1632,7 @@ _calculator_assets: dict[str, object] = {}
 # article's calculator slot.
 CALCULATOR_RULES = {
     "days183": {"script": "days-183.js", "page": "learn/183-day-rule-calculator.html"},
+    "dayCount": {"script": "day-count.js", "page": "learn/day-count-calculator.html", "version": "20261120a"},
     "schengen": {"script": "schengen.js", "page": "learn/schengen-calculator.html"},
     "ukIlr": {"script": "uk-ilr.js", "page": "learn/uk-ilr-absence-calculator.html"},
     "presence": {"script": "presence.js", "version": "20261028a"},
@@ -1558,7 +1662,11 @@ def calculator_assets(rule: str = "days183") -> dict[str, str]:
         if not version:
             own = re.search(re.escape(spec["script"]) + r"\?v=(\w+)", str(records[spec["page"]].get("page_scripts", "")))
             version = own.group(1)
-        scripts = re.sub(r"rules/days-183\.js\?v=\w+", f"rules/{spec['script']}?v={version}", scripts)
+        if rule == "dayCount":
+            # The personal counter reuses the existing presence arithmetic.
+            scripts = str(records[spec["page"]]["page_scripts"])
+        else:
+            scripts = re.sub(r"rules/days-183\.js\?v=\w+", f"rules/{spec['script']}?v={version}", scripts)
     return {"head_extra": str(page.get("head_extra", "")), "page_scripts": scripts}
 
 
@@ -1658,7 +1766,7 @@ def mark_calculator_callout(content: str, article: dict[str, object]) -> str:
     """
     if article.get("section") != "learn":
         return content
-    pattern = re.compile(r'<p>(?=(?:(?!</p>).)*href="(?:/[A-Za-z-]+)?/learn/(?:183-day-rule|schengen|uk-ilr-absence|substantial-presence-test|uk-srt|us-feie)-calculator[?"])', re.S)
+    pattern = re.compile(r'<p>(?=(?:(?!</p>).)*href="(?:/[A-Za-z-]+)?/learn/(?:183-day-rule|schengen|uk-ilr-absence|substantial-presence-test|uk-srt|us-feie|turkiye-90-180|new-zealand-citizenship|uk-citizenship-absence)-calculator[?"])', re.S)
     return pattern.sub('<p class="calc-callout">', content, count=1)
 
 
@@ -1730,7 +1838,7 @@ def render_toc(content: str, article: dict[str, object]) -> str:
             *items,
             "      </ul>",
             "    </details>",
-            "    " + TOC_SCRIPT,
+            ("    " + TOC_SCRIPT) if Path(str(article["path"])).name != "day-count-calculator.html" else "",
             "    ",
         ])
         content = content[:first.start()] + block + content[first.start():]
@@ -1968,6 +2076,7 @@ def render_article(
     leftovers = [marker for marker in replacements if marker in rendered]
     if leftovers:
         raise SystemExit(f"Unresolved template markers for {article['path']}: {leftovers}")
+    rendered = render_calculator_handoff(rendered, article)
     rendered = localize(rendered, locale, strings, available_routes=available, context=str(article["path"]))
     return render_calculator_usage(render_web_flags(rendered), source_path, prefix).rstrip() + "\n"
 
@@ -2182,7 +2291,7 @@ def render_hub(
     rendered = rendered.replace("{{NAV_SCRIPT}}", nav_script)
     rendered = rendered.replace("{{LANGUAGE_SWITCHER}}", switcher)
     rendered = localize(rendered, locale, strings, available_routes=available, context=str(hub["path"]))
-    return render_web_flags(rendered).rstrip() + "\n"
+    return render_responsive_images(render_web_flags(rendered)).rstrip() + "\n"
 
 
 def main() -> int:
@@ -2241,7 +2350,7 @@ def main() -> int:
     delistings: list[tuple[str, list[str]]] = []
 
     def queue(
-        output_path: Path, rendered: str, *, guard: bool = False, campaign: str = "web", ppid: str | None = None,
+        output_path: Path, rendered: str, *, guard: bool = False, campaign: str = "web-other", ppid: str | None = None,
         locale_code: str | None = None,
     ) -> None:
         nonlocal selected
@@ -2271,6 +2380,7 @@ def main() -> int:
                 with_alternates(article), template, header_template, footer_template,
                 locale, strings, locales, translations,
             ),
+            campaign=campaign_for(str(article["path"]), article),
             ppid=product_page_ppid(
                 str(article["path"]), article.get("app_preset"), default_locale_code(), product_pages,
             ),
@@ -2285,6 +2395,7 @@ def main() -> int:
                     locale, strings, locales, translations,
                 ),
                 guard=True,
+                campaign=campaign_for(str(hub["path"]), hub),
             )
 
     if args.section == "all" and PAGE_DATA_PATH.exists():
@@ -2305,7 +2416,7 @@ def main() -> int:
                     family=page_family,
                 ),
                 guard=True,
-                campaign=str(page.get("campaign", "web")),
+                campaign=campaign_for(str(page["path"]), page),
                 ppid=product_page_ppid(str(page["path"]), None, default_locale_code(), product_pages),
                 locale_code=default_locale_code(),
             )
@@ -2348,6 +2459,7 @@ def main() -> int:
                     target, strings, locales, translations,
                     **({"family": localized_family} if kind == "page" else {}),
                 ),
+                campaign=campaign_for(source_path, source),
                 ppid=product_page_ppid(source_path, source.get("app_preset"), code, product_pages),
                 locale_code=code,
             )

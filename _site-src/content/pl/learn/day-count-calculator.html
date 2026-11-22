@@ -1,0 +1,184 @@
+    <nav class="breadcrumb"><a href="/pl/">AtlasDays</a> / <a href="/pl/learn/">Przepisy dla podróżnych</a> / <a href="/pl/learn/calculators">Kalkulatory</a></nav>
+    <h1>Kalkulator dni: kraje, stany i osobiste cele</h1>
+    <p class="subtitle">Licz dni w dowolnym kraju lub stanie USA. Zacznij bez limitu albo ustaw własny limit lub cel.</p>
+    <p class="verified">Ostatnio sprawdzono: 19 listopada 2026</p>
+    <h2 id="calculator">Policz swoje dni</h2>
+    <p>Wybierz miejsce i okres, a potem dodaj pobyty. Przyjazd i wyjazd się liczą; nakładające się dni w tym samym miejscu liczą się raz. Sumy obejmują wpisane przyszłe pobyty.</p>
+<div class="daycal" id="day-count" data-day-calendar="dayCount">
+      <script type="application/json" data-cal-strings>
+{
+  "days": "Dni",
+  "hintStart": "Stuknij dzień, aby dodać pobyt.",
+  "hintEnd": "Stuknij drugi koniec pobytu.",
+  "hintSelected": "Przeciągnij jeden z końców pobytu, aby zmienić daty, albo usuń go poniżej.",
+  "inTrip": "dzień pobytu",
+  "pending": "początek nowego pobytu",
+  "empty": "Brak pobytów.",
+  "deleteTrip": "Usuń pobyt",
+  "country": "Kraj",
+  "goal": "Cel",
+  "goalStay": "Pozostań poniżej",
+  "goalReach": "Osiągnij cel",
+  "captionStay": "Ustaw własny limit.",
+  "captionReach": "Dąż do własnego celu.",
+  "window": "Okres",
+  "addCountry": "Dodaj kraj",
+  "noMatch": "Brak pasującego kraju",
+  "periodCalendar": "Rok kalendarzowy",
+  "periodTax": "Własny rok",
+  "periodRolling": "Ostatnie 12 miesięcy",
+  "year": "Rok",
+  "starts": "Początek",
+  "checkOn": "Licz do",
+  "checkOnCaption": "Twoje dni w 12 miesiącach do tej daty. Przy planowanej podróży wybierz jej ostatni dzień.",
+  "tripDays": {
+    "one": "{n} dzień",
+    "few": "{n} dni",
+    "many": "{n} dni",
+    "other": "{n} dnia"
+  },
+  "remaining": {
+    "one": "{n} dzień w zapasie",
+    "few": "{n} dni w zapasie",
+    "many": "{n} dni w zapasie",
+    "other": "{n} dnia w zapasie"
+  },
+  "atLimit": "Limit osiągnięty",
+  "needed": {
+    "one": "Potrzeba jeszcze {n} dnia",
+    "few": "Potrzeba jeszcze {n} dni",
+    "many": "Potrzeba jeszcze {n} dni",
+    "other": "Potrzeba jeszcze {n} dnia"
+  },
+  "reachedTarget": "Cel osiągnięty",
+  "overBy": {
+    "one": "Limit przekroczony o {n} dzień",
+    "few": "Limit przekroczony o {n} dni",
+    "many": "Limit przekroczony o {n} dni",
+    "other": "Limit przekroczony o {n} dnia"
+  },
+  "lineNoCountry": {
+    "one": "{n} dzień bez kraju",
+    "few": "{n} dni bez kraju",
+    "many": "{n} dni bez kraju",
+    "other": "{n} dnia bez kraju"
+  },
+  "jurisdiction": "Kraj lub stan USA",
+  "addJurisdiction": "Wybierz miejsce",
+  "noJurisdictionMatch": "Brak pasującego kraju lub stanu USA",
+  "stateUSAL": "Alabama (USA)",
+  "stateUSAK": "Alaska (USA)",
+  "stateUSAZ": "Arizona (USA)",
+  "stateUSAR": "Arkansas (USA)",
+  "stateUSCA": "Kalifornia (USA)",
+  "stateUSCO": "Kolorado (USA)",
+  "stateUSCT": "Connecticut (USA)",
+  "stateUSDE": "Delaware (USA)",
+  "stateUSDC": "Dystrykt Kolumbii (USA)",
+  "stateUSFL": "Floryda (USA)",
+  "stateUSGA": "Georgia (USA)",
+  "stateUSHI": "Hawaje (USA)",
+  "stateUSID": "Idaho (USA)",
+  "stateUSIL": "Illinois (USA)",
+  "stateUSIN": "Indiana (USA)",
+  "stateUSIA": "Iowa (USA)",
+  "stateUSKS": "Kansas (USA)",
+  "stateUSKY": "Kentucky (USA)",
+  "stateUSLA": "Luizjana (USA)",
+  "stateUSME": "Maine (USA)",
+  "stateUSMD": "Maryland (USA)",
+  "stateUSMA": "Massachusetts (USA)",
+  "stateUSMI": "Michigan (USA)",
+  "stateUSMN": "Minnesota (USA)",
+  "stateUSMS": "Missisipi (USA)",
+  "stateUSMO": "Missouri (USA)",
+  "stateUSMT": "Montana (USA)",
+  "stateUSNE": "Nebraska (USA)",
+  "stateUSNV": "Nevada (USA)",
+  "stateUSNH": "New Hampshire (USA)",
+  "stateUSNJ": "New Jersey (USA)",
+  "stateUSNM": "Nowy Meksyk (USA)",
+  "stateUSNY": "Nowy Jork (USA)",
+  "stateUSNC": "Karolina Północna (USA)",
+  "stateUSND": "Dakota Północna (USA)",
+  "stateUSOH": "Ohio (USA)",
+  "stateUSOK": "Oklahoma (USA)",
+  "stateUSOR": "Oregon (USA)",
+  "stateUSPA": "Pensylwania (USA)",
+  "stateUSRI": "Rhode Island (USA)",
+  "stateUSSC": "Karolina Południowa (USA)",
+  "stateUSSD": "Dakota Południowa (USA)",
+  "stateUSTN": "Tennessee (USA)",
+  "stateUSTX": "Teksas (USA)",
+  "stateUSUT": "Utah (USA)",
+  "stateUSVT": "Vermont (USA)",
+  "stateUSVA": "Wirginia (USA)",
+  "stateUSWA": "Waszyngton (USA)",
+  "stateUSWV": "Wirginia Zachodnia (USA)",
+  "stateUSWI": "Wisconsin (USA)",
+  "stateUSWY": "Wyoming (USA)",
+  "goalCount": "Tylko licz",
+  "captionCount": "Prowadź zapis bez limitu.",
+  "personalDays": "Osobisty cel w dniach",
+  "enterPersonalDays": "Wpisz własny limit lub cel w dniach. Kalkulator nie zakłada prawnego limitu pobytu."
+}
+</script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>P</span><span>W</span><span>Ś</span><span>C</span><span>P</span><span>S</span><span>N</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>Oś czasu</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Eksportuj lub otwórz w AtlasDays</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="day-count-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="day-count-import-title"><span data-cal-on="computer">Kontynuuj na telefonie iPhone lub iPadzie</span><span data-cal-on="phone file">Eksportuj lub otwórz w AtlasDays</span></p>
+            <p class="cal-dialog-sub">Licz dni także w podróży. Pobierz AtlasDays za darmo.</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <div class="cal-scan-copy">
+            <p class="cal-scan-lead" data-cal-both>Zeskanuj kod, aby otworzyć podróże i tracker w AtlasDays.</p>
+            <p class="cal-scan-lead" data-cal-trips-only hidden>Zeskanuj kod, aby otworzyć podróże w AtlasDays.</p>
+            <p class="cal-scan-lead" data-cal-tracker hidden>Zeskanuj kod, aby otworzyć tracker w AtlasDays.</p>
+          </div>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li><strong data-cal-stays>Otwórz swoje pobyty w aplikacji</strong><span data-cal-stays>Sprawdź je, a potem stuknij „Importuj”. Wcześniej nic nie zostanie zapisane.</span><strong data-cal-tracker hidden>Otwórz ten tracker w aplikacji</strong><span data-cal-tracker hidden>Sprawdź go, a potem stuknij „Zapisz”. Wcześniej nic nie zostanie zapisane.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Otwórz w AtlasDays</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li><strong>Pobierz podróże jako plik CSV</strong><span>To więcej pobytów, niż zmieści się w linku. Pobierz plik i otwórz go w AtlasDays na telefonie iPhone.</span><button type="button" class="cal-dialog-primary" data-cal-download>Pobierz plik</button></li>
+          <li data-cal-store><strong>Pobierz AtlasDays</strong><span>Za darmo w App Store, na iPhone’a.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Pobierz podróże jako plik CSV</button><span data-cal-downloaded hidden>Otwórz ten plik w AtlasDays na telefonie iPhone.</span></p>
+          <button type="button" data-cal-close>Zamknij</button>
+        </div>
+      </dialog>
+    </div>
+    <h2>Zapis dni bez rozstrzygnięcia podatkowego</h2>
+    <p>Tryb „Tylko licz” zaczyna bez limitu. Nie ma domyślnego progu 183 dni ani statusu bezpieczeństwa. Liczba jest po prostu sumą dla wybranego miejsca i okresu. Dzień, w którym odwiedzasz dwa kraje, liczy się w obu, więc sumy krajów mogą przekraczać liczbę dat w kalendarzu. Pasek pokazuje udział policzonych dni w wybranym okresie.</p>
+    <h2>Ustaw osobisty limit lub cel</h2>
+    <p>Wybierz „Pozostań poniżej” albo „Osiągnij cel” i wpisz własną liczbę. Na przykład osobisty limit 30 dni może pomóc zaplanować lato poza domem. Cel 60 dni może pomóc spędzać więcej czasu blisko rodziny. Żadna z liczb nie staje się prawnym progiem przez to, że pojawia się w kalkulatorze.</p>
+    <h2>Wybierz okres odpowiadający na twoje pytanie</h2>
+    <ul><li><strong>Rok kalendarzowy:</strong> podsumuj wybrany rok od 1 stycznia do 31 grudnia.</li><li><strong>Własny rok:</strong> wybierz datę początku rocznego okresu.</li><li><strong>Ostatnie 12 miesięcy:</strong> wybierz datę końca liczenia. Okno przesuwa się wraz z nią i stosuje miesiące kalendarzowe, a nie stałe przybliżenie 365 dni.</li></ul>
+    <h2>Przykład obliczenia</h2>
+    <p>Pobyt od 1 do 10 czerwca daje 10 dni. Drugi od 8 do 12 czerwca w tym samym kraju dodaje tylko 2 nowe dni, razem 12. Jeśli 12 czerwca wyjedziesz z tego kraju i przyjedziesz do innego, data może znaleźć się w zapisach obu krajów.</p>
+    <h2>Zachowaj zapis</h2>
+    <p>Pobierz pobyty jako CSV lub kontynuuj z nimi w AtlasDays. Wpisane daty pozostają w przeglądarce do wybranego eksportu lub przeniesienia i są usuwane po odświeżeniu.</p>
+    <h2>Najczęstsze pytania</h2>
+    <h3>Czy to określa rezydencję podatkową?</h3><p>Nie. Liczy daty fizycznej obecności i opcjonalne osobiste cele. Nie stosuje krajowych zasad podatkowych, wizowych ani rezydencji.</p>
+    <h3>Czy uwzględnia przyjazd i wyjazd?</h3><p>Tak. Obie daty się liczą. Wizyta jednodniowa liczy się jako jeden dzień, a nakładające się daty w tym samym miejscu nie są dublowane.</p>

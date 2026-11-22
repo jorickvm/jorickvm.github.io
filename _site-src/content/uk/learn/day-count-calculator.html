@@ -1,0 +1,184 @@
+    <nav class="breadcrumb"><a href="/uk/">AtlasDays</a> / <a href="/uk/learn/">Правила поїздок</a> / <a href="/uk/learn/calculators">Калькулятори</a></nav>
+    <h1>Калькулятор днів: країни, штати й особисті цілі</h1>
+    <p class="subtitle">Рахуйте дні в будь-якій країні чи штаті США. Почніть без ліміту або задайте власну особисту межу чи ціль.</p>
+    <p class="verified">Остання перевірка: 19 листопада 2026</p>
+    <h2 id="calculator">Порахуйте свої дні</h2>
+    <p>Виберіть місце й період, потім додайте перебування. Дні приїзду й від’їзду рахуються; дати, що перекриваються в одному місці, враховуються раз. Підсумки включають введені майбутні перебування.</p>
+<div class="daycal" id="day-count" data-day-calendar="dayCount">
+      <script type="application/json" data-cal-strings>
+{
+  "days": "Дні",
+  "hintStart": "Торкніться дня, щоб додати поїздку.",
+  "hintEnd": "Тепер торкніться іншої дати поїздки.",
+  "hintSelected": "Перетягніть будь-який край поїздки, щоб змінити дати, або видаліть її нижче.",
+  "inTrip": "у країні",
+  "pending": "початок нової поїздки",
+  "empty": "Поїздок поки немає.",
+  "deleteTrip": "Видалити поїздку",
+  "country": "Країна",
+  "goal": "Ціль",
+  "goalStay": "Не перевищувати",
+  "goalReach": "Досягти цілі",
+  "captionStay": "Використовувати власний ліміт.",
+  "captionReach": "Досягти власної цілі.",
+  "window": "Період",
+  "addCountry": "Додати країну",
+  "noMatch": "Країну не знайдено",
+  "periodCalendar": "Календарний рік",
+  "periodTax": "Власний рік",
+  "periodRolling": "Останні 12 місяців",
+  "year": "Рік",
+  "starts": "Початок",
+  "checkOn": "Рахувати до",
+  "checkOnCaption": "Ваші дні за 12 місяців до цієї дати. Для запланованої поїздки виберіть її останній день.",
+  "tripDays": {
+    "one": "{n} день",
+    "few": "{n} дні",
+    "many": "{n} днів",
+    "other": "{n} дня"
+  },
+  "remaining": {
+    "one": "Залишилося: {n} день",
+    "few": "Залишилося: {n} дні",
+    "many": "Залишилося: {n} днів",
+    "other": "Залишилося: {n} дні"
+  },
+  "atLimit": "На межі",
+  "needed": {
+    "one": "Потрібно ще {n} день",
+    "few": "Потрібно ще {n} дні",
+    "many": "Потрібно ще {n} днів",
+    "other": "Потрібно ще {n} дні"
+  },
+  "reachedTarget": "Ціль досягнуто",
+  "overBy": {
+    "one": "Ліміт перевищено на {n} день",
+    "few": "Ліміт перевищено на {n} дні",
+    "many": "Ліміт перевищено на {n} днів",
+    "other": "Ліміт перевищено на {n} дні"
+  },
+  "lineNoCountry": {
+    "one": "{n} день без вибраної країни",
+    "few": "{n} дні без вибраної країни",
+    "many": "{n} днів без вибраної країни",
+    "other": "{n} дня без вибраної країни"
+  },
+  "jurisdiction": "Країна або штат США",
+  "addJurisdiction": "Виберіть місце",
+  "noJurisdictionMatch": "Відповідної країни або штату США не знайдено",
+  "stateUSAL": "Алабама (США)",
+  "stateUSAK": "Аляска (США)",
+  "stateUSAZ": "Аризона (США)",
+  "stateUSAR": "Арканзас (США)",
+  "stateUSCA": "Каліфорнія (США)",
+  "stateUSCO": "Колорадо (США)",
+  "stateUSCT": "Коннектикут (США)",
+  "stateUSDE": "Делавер (США)",
+  "stateUSDC": "Округ Колумбія (США)",
+  "stateUSFL": "Флорида (США)",
+  "stateUSGA": "Джорджія (США)",
+  "stateUSHI": "Гаваї (США)",
+  "stateUSID": "Айдахо (США)",
+  "stateUSIL": "Іллінойс (США)",
+  "stateUSIN": "Індіана (США)",
+  "stateUSIA": "Айова (США)",
+  "stateUSKS": "Канзас (США)",
+  "stateUSKY": "Кентуккі (США)",
+  "stateUSLA": "Луїзіана (США)",
+  "stateUSME": "Мен (США)",
+  "stateUSMD": "Меріленд (США)",
+  "stateUSMA": "Массачусетс (США)",
+  "stateUSMI": "Мічиган (США)",
+  "stateUSMN": "Міннесота (США)",
+  "stateUSMS": "Міссісіпі (США)",
+  "stateUSMO": "Міссурі (США)",
+  "stateUSMT": "Монтана (США)",
+  "stateUSNE": "Небраска (США)",
+  "stateUSNV": "Невада (США)",
+  "stateUSNH": "Нью-Гемпшир (США)",
+  "stateUSNJ": "Нью-Джерсі (США)",
+  "stateUSNM": "Нью-Мексико (США)",
+  "stateUSNY": "Нью-Йорк (США)",
+  "stateUSNC": "Північна Кароліна (США)",
+  "stateUSND": "Північна Дакота (США)",
+  "stateUSOH": "Огайо (США)",
+  "stateUSOK": "Оклахома (США)",
+  "stateUSOR": "Орегон (США)",
+  "stateUSPA": "Пенсільванія (США)",
+  "stateUSRI": "Род-Айленд (США)",
+  "stateUSSC": "Південна Кароліна (США)",
+  "stateUSSD": "Південна Дакота (США)",
+  "stateUSTN": "Теннессі (США)",
+  "stateUSTX": "Техас (США)",
+  "stateUSUT": "Юта (США)",
+  "stateUSVT": "Вермонт (США)",
+  "stateUSVA": "Вірджинія (США)",
+  "stateUSWA": "Вашингтон (США)",
+  "stateUSWV": "Західна Вірджинія (США)",
+  "stateUSWI": "Вісконсин (США)",
+  "stateUSWY": "Вайомінг (США)",
+  "goalCount": "Лише рахувати",
+  "captionCount": "Вести облік без ліміту.",
+  "personalDays": "Особиста ціль у днях",
+  "enterPersonalDays": "Введіть власний ліміт або ціль у днях. Дозволений законом строк не припускається."
+}
+</script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>П</span><span>В</span><span>С</span><span>Ч</span><span>П</span><span>С</span><span>Н</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>Хронологія</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Експортувати або відкрити в AtlasDays</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="day-count-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="day-count-import-title"><span data-cal-on="computer">Продовжте на iPhone або iPad</span><span data-cal-on="phone file">Експортувати або відкрити в AtlasDays</span></p>
+            <p class="cal-dialog-sub">Продовжуйте рахувати дні в поїздках. Завантажте AtlasDays безкоштовно.</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <div class="cal-scan-copy">
+            <p class="cal-scan-lead" data-cal-both>Відскануйте код, щоб відкрити поїздки й трекер в AtlasDays.</p>
+            <p class="cal-scan-lead" data-cal-trips-only hidden>Відскануйте код, щоб відкрити поїздки в AtlasDays.</p>
+            <p class="cal-scan-lead" data-cal-tracker hidden>Відскануйте код, щоб відкрити трекер в AtlasDays.</p>
+          </div>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li><strong data-cal-stays>Відкрийте поїздки в програмі</strong><span data-cal-stays>Перевірте їх і торкніться «Імпорт». До цього нічого не зберігається.</span><strong data-cal-tracker hidden>Відкрийте цей трекер у програмі</strong><span data-cal-tracker hidden>Перевірте його й торкніться «Зберегти». До цього нічого не зберігається.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Відкрити в AtlasDays</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li><strong>Завантажити поїздки у файлі CSV</strong><span>Стільки поїздок не вміститься в посилання. Завантажте файл і відкрийте його в AtlasDays на iPhone.</span><button type="button" class="cal-dialog-primary" data-cal-download>Завантажити файл</button></li>
+          <li data-cal-store><strong>Завантажте AtlasDays</strong><span>Безкоштовно в App Store для iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Завантажити поїздки у файлі CSV</button><span data-cal-downloaded hidden>Відкрийте цей файл в AtlasDays на iPhone.</span></p>
+          <button type="button" data-cal-close>Закрити</button>
+        </div>
+      </dialog>
+    </div>
+    <h2>Облік днів без податкового висновку</h2>
+    <p>Режим «Лише рахувати» починається без ліміту. Немає значення 183 дні за замовчуванням чи статусу «безпечно/небезпечно». Число — просто підсумок для вибраного місця й періоду. День відвідування двох країн враховується в обох, тож сума за країнами може перевищувати кількість дат у календарі. Смуга показує частку врахованих днів у вибраному періоді.</p>
+    <h2>Використовуйте особисту межу чи ціль</h2>
+    <p>Виберіть «Не перевищувати» або «Досягти цілі» й введіть власне число. Наприклад, особиста межа 30 днів допоможе спланувати літо далеко від дому. Ціль 60 днів допоможе проводити більше часу поруч із сім’єю. Жодне число не стає юридичним порогом через появу в калькуляторі.</p>
+    <h2>Виберіть період відповідно до питання</h2>
+    <ul><li><strong>Календарний рік:</strong> порахуйте вибраний рік від 1 січня до 31 грудня.</li><li><strong>Власний рік:</strong> виберіть дату початку річного періоду.</li><li><strong>Останні 12 місяців:</strong> виберіть кінцеву дату підрахунку. Вікно рухається разом із нею й використовує календарні місяці, а не фіксоване наближення 365 днів.</li></ul>
+    <h2>Приклад розрахунку</h2>
+    <p>Перебування від 1 до 10 червня дає 10 днів. Інше перебування від 8 до 12 червня в тій самій країні додає лише 2 нові дні: разом 12. Якщо 12 червня ви залишите цю країну й приїдете в іншу, дата може бути в записах обох країн.</p>
+    <h2>Збережіть записи</h2>
+    <p>Завантажте перебування в CSV або продовжте з ними в AtlasDays. Введені дати залишаються в браузері, поки ви не вирішите їх експортувати чи передати, і стираються після перезавантаження.</p>
+    <h2>Поширені запитання</h2>
+    <h3>Чи визначає це податкове резидентство?</h3><p>Ні. Інструмент рахує дати фізичної присутності й необов’язкові особисті цілі. Він не застосовує податкових, візових чи резидентських правил окремих країн.</p>
+    <h3>Чи враховуються приїзд і від’їзд?</h3><p>Так. Обидві дати рахуються. Одноденне відвідування дає один день, а дати, що перекриваються в одному місці, не дублюються.</p>

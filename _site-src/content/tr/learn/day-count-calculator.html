@@ -1,0 +1,174 @@
+    <nav class="breadcrumb"><a href="/tr/">AtlasDays</a> / <a href="/tr/learn/">Seyahat kuralları</a> / <a href="/tr/learn/calculators">Hesaplama araçları</a></nav>
+    <h1>Gün hesaplama: ülkeler, eyaletler ve kişisel hedefler</h1>
+    <p class="subtitle">Herhangi bir ülkede veya ABD eyaletinde geçirdiğiniz günleri sayın. Limitsiz başlayın ya da kendi kişisel sınırınızı veya hedefinizi belirleyin.</p>
+    <p class="verified">Son doğrulama: 19 Kasım 2026</p>
+    <h2 id="calculator">Günlerinizi hesaplayın</h2>
+    <p>Bir yer ve dönem seçin, ardından kalışları ekleyin. Giriş ve çıkış günleri sayılır; aynı yerdeki çakışan günler bir kez sayılır. Toplamlara girdiğiniz gelecekteki kalışlar dahildir.</p>
+<div class="daycal" id="day-count" data-day-calendar="dayCount">
+      <script type="application/json" data-cal-strings>
+{
+  "days": "Günler",
+  "hintStart": "Kalış eklemek için bir güne dokunun.",
+  "hintEnd": "Kalışın diğer uç gününe dokunun.",
+  "hintSelected": "Tarihlerini değiştirmek için kalışın iki ucundan birini sürükleyin veya kalışı aşağıdan silin.",
+  "inTrip": "bir ülkede",
+  "pending": "yeni kalışın başlangıcı",
+  "empty": "Henüz kalış yok.",
+  "deleteTrip": "Kalışı sil",
+  "country": "Ülke",
+  "goal": "Hedef",
+  "goalStay": "Sınırın altında kal",
+  "goalReach": "Hedefe ulaş",
+  "captionStay": "Kendi kişisel sınırınızı kullanın.",
+  "captionReach": "Kendi hedefinize ilerleyin.",
+  "window": "Pencere",
+  "addCountry": "Ülke ekle",
+  "noMatch": "Eşleşen ülke yok",
+  "periodCalendar": "Takvim yılı",
+  "periodTax": "Özel yıl",
+  "periodRolling": "Son 12 ay",
+  "year": "Yıl",
+  "starts": "Başlangıç",
+  "checkOn": "Dönem sonu",
+  "checkOnCaption": "Bu tarihe kadarki 12 ay içindeki günleriniz. Planladığınız bir seyahat için seyahatin son gününü seçin.",
+  "tripDays": {
+    "one": "{n} gün",
+    "other": "{n} gün"
+  },
+  "remaining": {
+    "one": "{n} gün kaldı",
+    "other": "{n} gün kaldı"
+  },
+  "atLimit": "Sınırda",
+  "needed": {
+    "one": "{n} gün daha gerekli",
+    "other": "{n} gün daha gerekli"
+  },
+  "reachedTarget": "Hedefe ulaşıldı",
+  "overBy": {
+    "one": "Sınır {n} gün aşıldı",
+    "other": "Sınır {n} gün aşıldı"
+  },
+  "lineNoCountry": {
+    "one": "Ülke seçilmemiş {n} gün",
+    "other": "Ülke seçilmemiş {n} gün"
+  },
+  "jurisdiction": "Ülke veya ABD eyaleti",
+  "addJurisdiction": "Yer seçin",
+  "noJurisdictionMatch": "Eşleşen ülke veya ABD eyaleti yok",
+  "stateUSAL": "Alabama (ABD)",
+  "stateUSAK": "Alaska (ABD)",
+  "stateUSAZ": "Arizona (ABD)",
+  "stateUSAR": "Arkansas (ABD)",
+  "stateUSCA": "Kaliforniya (ABD)",
+  "stateUSCO": "Colorado (ABD)",
+  "stateUSCT": "Connecticut (ABD)",
+  "stateUSDE": "Delaware (ABD)",
+  "stateUSDC": "Columbia Bölgesi (ABD)",
+  "stateUSFL": "Florida (ABD)",
+  "stateUSGA": "Georgia (ABD)",
+  "stateUSHI": "Hawaii (ABD)",
+  "stateUSID": "Idaho (ABD)",
+  "stateUSIL": "Illinois (ABD)",
+  "stateUSIN": "Indiana (ABD)",
+  "stateUSIA": "Iowa (ABD)",
+  "stateUSKS": "Kansas (ABD)",
+  "stateUSKY": "Kentucky (ABD)",
+  "stateUSLA": "Louisiana (ABD)",
+  "stateUSME": "Maine (ABD)",
+  "stateUSMD": "Maryland (ABD)",
+  "stateUSMA": "Massachusetts (ABD)",
+  "stateUSMI": "Michigan (ABD)",
+  "stateUSMN": "Minnesota (ABD)",
+  "stateUSMS": "Mississippi (ABD)",
+  "stateUSMO": "Missouri (ABD)",
+  "stateUSMT": "Montana (ABD)",
+  "stateUSNE": "Nebraska (ABD)",
+  "stateUSNV": "Nevada (ABD)",
+  "stateUSNH": "New Hampshire (ABD)",
+  "stateUSNJ": "New Jersey (ABD)",
+  "stateUSNM": "New Mexico (ABD)",
+  "stateUSNY": "New York (ABD)",
+  "stateUSNC": "North Carolina (ABD)",
+  "stateUSND": "Kuzey Dakota (ABD)",
+  "stateUSOH": "Ohio (ABD)",
+  "stateUSOK": "Oklahoma (ABD)",
+  "stateUSOR": "Oregon (ABD)",
+  "stateUSPA": "Pensilvanya (ABD)",
+  "stateUSRI": "Rhode Island (ABD)",
+  "stateUSSC": "South Carolina (ABD)",
+  "stateUSSD": "South Dakota (ABD)",
+  "stateUSTN": "Tennessee (ABD)",
+  "stateUSTX": "Texas (ABD)",
+  "stateUSUT": "Utah (ABD)",
+  "stateUSVT": "Vermont (ABD)",
+  "stateUSVA": "Virginia (ABD)",
+  "stateUSWA": "Washington (ABD)",
+  "stateUSWV": "West Virginia (ABD)",
+  "stateUSWI": "Wisconsin (ABD)",
+  "stateUSWY": "Wyoming (ABD)",
+  "goalCount": "Yalnızca say",
+  "captionCount": "Limitsiz kayıt tutun.",
+  "personalDays": "Kişisel gün hedefi",
+  "enterPersonalDays": "Kendi gün sınırınızı veya hedefinizi girin. Yasal bir kalış süresi varsayılmaz."
+}
+</script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>P</span><span>S</span><span>Ç</span><span>P</span><span>C</span><span>C</span><span>P</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>Zaman çizelgesi</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Dışa aktar veya AtlasDays'de aç</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="day-count-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="day-count-import-title"><span data-cal-on="computer">iPhone veya iPad’inizde devam edin</span><span data-cal-on="phone file">Dışa aktar veya AtlasDays'de aç</span></p>
+            <p class="cal-dialog-sub">Seyahat ederken günlerinizi saymaya devam edin. AtlasDays’i ücretsiz indirin.</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <div class="cal-scan-copy">
+            <p class="cal-scan-lead" data-cal-both>Seyahatlerinizi ve takibinizi AtlasDays’de açmak için kodu tarayın.</p>
+            <p class="cal-scan-lead" data-cal-trips-only hidden>Seyahatlerinizi AtlasDays’de açmak için kodu tarayın.</p>
+            <p class="cal-scan-lead" data-cal-tracker hidden>Takibinizi AtlasDays’de açmak için kodu tarayın.</p>
+          </div>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li><strong data-cal-stays>Kalışlarınızı uygulamada açın</strong><span data-cal-stays>Kontrol edin, ardından İçe aktar düğmesine dokunun. O zamana kadar hiçbir şey kaydedilmez.</span><strong data-cal-tracker hidden>Bu takibi uygulamada açın</strong><span data-cal-tracker hidden>Kontrol edin, ardından Kaydet düğmesine dokunun. O zamana kadar hiçbir şey kaydedilmez.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">AtlasDays'de aç</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li><strong>Seyahatleri CSV dosyası olarak indir</strong><span>Bu kadar çok kalış bir bağlantıya sığmıyor. Dosyayı indirin ve iPhone'unuzda AtlasDays ile açın.</span><button type="button" class="cal-dialog-primary" data-cal-download>Dosyayı indir</button></li>
+          <li data-cal-store><strong>AtlasDays'i indirin</strong><span>iPhone için App Store'da ücretsiz.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Seyahatleri CSV dosyası olarak indir</button><span data-cal-downloaded hidden>Bu dosyayı iPhone'unuzda AtlasDays ile açın.</span></p>
+          <button type="button" data-cal-close>Kapat</button>
+        </div>
+      </dialog>
+    </div>
+    <h2>Vergi kararı vermeyen gün kaydı</h2>
+    <p>“Yalnızca say” limitsiz başlar. Varsayılan 183 gün veya güvenli/güvensiz durumu yoktur. Sayı yalnızca seçilen yer ve dönemin toplamıdır. İki ülkeyi ziyaret ettiğiniz gün her ikisinde de sayılır; ülke toplamları takviminizdeki tarih sayısını aşabilir. Çubuk, sayılan günlerin seçilen dönemdeki payını gösterir.</p>
+    <h2>Kişisel sınır veya hedef kullanın</h2>
+    <p>“Sınırın altında kal” veya “Hedefe ulaş” seçip kendi sayınızı girin. Örneğin 30 günlük kişisel sınır, evden uzakta bir yaz planlamanıza yardımcı olabilir. 60 günlük hedef, ailenize yakın daha fazla zaman geçirmenize yardımcı olabilir. Hiçbiri hesaplama aracında göründüğü için hukuki eşik olmaz.</p>
+    <h2>Sorunuzu yanıtlayan dönemi seçin</h2>
+    <ul><li><strong>Takvim yılı:</strong> seçilen yılı 1 Ocak’tan 31 Aralık’a kadar toplayın.</li><li><strong>Özel yıl:</strong> bir yıllık dönemin başlangıç tarihini seçin.</li><li><strong>Son 12 ay:</strong> hangi tarihe kadar sayılacağını seçin. Dönem o tarihle hareket eder ve sabit 365 günlük yaklaşım yerine takvim ayları kullanır.</li></ul>
+    <h2>Hesaplanmış örnek</h2>
+    <p>1–10 Haziran kalışı 10 gün sağlar. Aynı ülkedeki 8–12 Haziran kalışı yalnızca 2 yeni gün ekler, toplam 12 olur. O ülkeden ayrılıp 12 Haziran’da başka ülkeye girerseniz tarih iki ülkenin kaydında da yer alabilir.</p>
+    <h2>Kaydı saklayın</h2>
+    <p>Kalışları CSV olarak indirin veya onlarla AtlasDays’te devam edin. Girdiğiniz tarihler dışa aktarmayı veya aktarmayı seçene kadar tarayıcıda kalır; sayfa yenilenince temizlenir.</p>
+    <h2>Sık sorulan sorular</h2>
+    <h3>Bu vergi ikametini belirler mi?</h3><p>Hayır. Fiziksel bulunma tarihlerini ve isteğe bağlı kişisel hedefleri sayar. Ülkeye özgü vergi, vize veya ikamet kurallarını uygulamaz.</p>
+    <h3>Giriş ve çıkış dahil mi?</h3><p>Evet. İki tarih de sayılır. Aynı günlük ziyaret bir gün sayılır; aynı yerde çakışan tarihler tekilleştirilir.</p>

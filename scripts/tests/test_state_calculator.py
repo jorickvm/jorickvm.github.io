@@ -37,8 +37,22 @@ vm.runInContext(input.engine.match(/function fold\(s\) \{[^\n]+\}/)[0],catalogue
 const pickerFrom=input.engine.indexOf('function places()'),pickerTo=input.engine.indexOf('function flagImg(',pickerFrom);
 vm.runInContext(input.engine.slice(pickerFrom,pickerTo),catalogue);
 assert.equal(catalogue.matches('').length,input.countries.length+51);
-assert.equal(catalogue.matches('NY')[0].code,'US-NY');
-assert.equal(catalogue.matches('District of Columbia')[0].code,'US-DC');
+assert.deepEqual(Array.from(catalogue.matches('NY').slice(0,2),p=>p.code),['US','US-NY']);
+assert.equal(catalogue.matches('NY')[0].contextOnly,true);
+assert.deepEqual(Array.from(catalogue.matches('District of Columbia'),p=>p.code),['US','US-DC']);
+function assertGrouped(rows) {
+  const parent=rows.findIndex(p=>p.code==='US');
+  const states=rows.filter(p=>p.code.startsWith('US-'));
+  assert.equal(states.length,51);
+  assert.deepEqual(Array.from(rows.slice(parent+1,parent+52),p=>p.code),Array.from(states,p=>p.code));
+  assert.equal(new Set(rows.map(p=>p.code)).size,rows.length);
+  assert.deepEqual(Array.from(states,p=>p.name),Array.from(states,p=>p.name).sort((a,b)=>a.localeCompare(b,'en')));
+}
+assertGrouped(catalogue.matches(''));
+assertGrouped(catalogue.matches('United States'));
+assert.equal(catalogue.matches('CA')[0].code,'CA','Canada retains exact-code priority');
+catalogue.recent=['US-NY','CA'];assertGrouped(catalogue.matches(''));
+assert.equal(catalogue.matches('')[0].code,'US','a recent state promotes its country group');
 assert.equal(catalogue.places().find(p=>p.code==='US-GA').name,'Georgia (US)');
 const trips=[{country:'US-NY',start:day(1,1),end:day(1,10)},
   {country:'US-CA',start:day(1,10),end:day(1,20)},

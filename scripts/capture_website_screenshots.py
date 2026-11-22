@@ -135,8 +135,13 @@ def known_scenarios(app_repo: Path) -> set[str]:
     from it. The app ignores an unrecognised name and launches with an empty
     in-memory store and none of the pinned defaults.
     """
-    source = app_repo / "AtlasDays" / "App" / "WebsiteScreenshotHarness.swift"
-    if not source.exists():
+    app_dir = app_repo / "AtlasDays" / "App"
+    candidates = [
+        app_dir / "DevTools" / "WebsiteScreenshotHarness.swift",
+        app_dir / "WebsiteScreenshotHarness.swift",
+    ]
+    source = next((path for path in candidates if path.exists()), None)
+    if source is None:
         return set()
     names: set[str] = set()
     for line in source.read_text(encoding="utf-8").splitlines():

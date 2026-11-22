@@ -200,7 +200,7 @@ HELP_EXACT_ALLOW = {"Settings → Account Data",
                     "English US English UK Nederlands Espa ol Deutsch Fran ais T rk e Portugu s Brasil",
                     "English US English UK Nederlands Espa ol Deutsch Fran ais T rk e Portugu s Brasil Polski"}
 # The Creative Commons license identifier stays the same in every language.
-EXACT_ALLOW = HELP_EXACT_ALLOW | {"CC BY 4.0", "§ 10 StAG", "§ 12b StAG","Request for International Movement Records", "travel movements requests", "Entry/Exit System", "Boletín Oficial del Estado", "8 U.S.C. 1187(a)(7)", "8 U.S.C. 1202(g)", "IMM 5257 Schedule 1", "How to Calculate Physical Presence (CIT 0407)", "How to Calculate Physical Presence CIT", "deeming rule","Destination Thailand Visa (DTV)", "Electronic Travel Authorisation (ETA)", "Long Residence UK Ancestry Hong Kong BN O", "UK Immigration Rules Part Suitability SUI"}
+EXACT_ALLOW = HELP_EXACT_ALLOW | {"CC BY 4.0", "gewöhnlicher Aufenthalt", "§ 10 StAG", "§ 12b StAG","Request for International Movement Records", "travel movements requests", "Entry/Exit System", "Boletín Oficial del Estado", "8 U.S.C. 1187(a)(7)", "8 U.S.C. 1202(g)", "IMM 5257 Schedule 1", "How to Calculate Physical Presence (CIT 0407)", "How to Calculate Physical Presence CIT", "deeming rule","Destination Thailand Visa (DTV)", "Electronic Travel Authorisation (ETA)", "Long Residence UK Ancestry Hong Kong BN O", "UK Immigration Rules Part Suitability SUI"}
 
 LOCALE_ALLOW = {
     "it": {"Permiso de Ingreso y Permanencia PIP", "New Zealand Superannuation and Retirement Income Act", "in Canada", "in Québec.", "in India", "in Colombia", "in Australia", "Australia", "Alberta (AHCIP)", "Ontario (OHIP)", "Québec (RAMQ)", "Malta: Nomad Residence Permit"},

@@ -1,0 +1,169 @@
+    <nav class="breadcrumb"><a href="/zh-Hant/">AtlasDays</a> / <a href="/zh-Hant/learn/">旅行規定</a> / <a href="/zh-Hant/learn/calculators">計算器</a></nav>
+    <h1>停留天數計算器：國家、美國各州與個人目標</h1>
+    <p class="subtitle">計算在任何國家或美國州的停留天數。可以不設上限開始，也可以自訂個人上限或目標。</p>
+    <p class="verified">最後查證：2026 年 11 月 19 日</p>
+    <h2 id="calculator">計算停留天數</h2>
+    <p>選擇地點與期間，再新增停留。入境與出境日都計入，同一地點的重疊日期只算一次。總數包含輸入的未來停留。</p>
+<div class="daycal" id="day-count" data-day-calendar="dayCount">
+      <script type="application/json" data-cal-strings>
+{
+  "days": "天數",
+  "hintStart": "點選日期，新增一段停留。",
+  "hintEnd": "接著點選這段停留的另一端。",
+  "hintSelected": "拖曳停留的任一端可更改日期，也可以在下方刪除。",
+  "inTrip": "在某個國家停留",
+  "pending": "新一段停留的起點",
+  "empty": "還沒有停留紀錄。",
+  "deleteTrip": "刪除停留",
+  "country": "國家或地區",
+  "goal": "目標類型",
+  "goalStay": "低於上限",
+  "goalReach": "達成目標",
+  "captionStay": "使用自訂個人上限。",
+  "captionReach": "朝個人目標累積。",
+  "window": "計算期間",
+  "addCountry": "新增國家或地區",
+  "noMatch": "找不到符合的國家或地區",
+  "periodCalendar": "日曆年",
+  "periodTax": "自訂年度",
+  "periodRolling": "最近 12 個月",
+  "year": "年份",
+  "starts": "起始日",
+  "checkOn": "截至日期",
+  "checkOnCaption": "截至這一天的 12 個月內停留的天數。規劃行程時，選擇行程的最後一天。",
+  "tripDays": {
+    "other": "{n} 天"
+  },
+  "remaining": {
+    "other": "剩餘 {n} 天"
+  },
+  "atLimit": "已達上限",
+  "needed": {
+    "other": "還需 {n} 天"
+  },
+  "reachedTarget": "目標達成",
+  "overBy": {
+    "other": "超過上限 {n} 天"
+  },
+  "lineNoCountry": {
+    "other": "有 {n} 天未選擇國家或地區"
+  },
+  "jurisdiction": "國家或美國州",
+  "addJurisdiction": "選擇地點",
+  "noJurisdictionMatch": "找不到相符的國家或美國州",
+  "stateUSAL": "阿拉巴馬州（美國）",
+  "stateUSAK": "阿拉斯加州（美國）",
+  "stateUSAZ": "亞利桑那州（美國）",
+  "stateUSAR": "阿肯色州（美國）",
+  "stateUSCA": "加利福尼亞州（美國）",
+  "stateUSCO": "科羅拉多州（美國）",
+  "stateUSCT": "康乃狄克州（美國）",
+  "stateUSDE": "德拉瓦州（美國）",
+  "stateUSDC": "哥倫比亞特區（美國）",
+  "stateUSFL": "佛羅里達州（美國）",
+  "stateUSGA": "喬治亞州（美國）",
+  "stateUSHI": "夏威夷州（美國）",
+  "stateUSID": "愛達荷州（美國）",
+  "stateUSIL": "伊利諾州（美國）",
+  "stateUSIN": "印第安納州（美國）",
+  "stateUSIA": "愛荷華州（美國）",
+  "stateUSKS": "堪薩斯州（美國）",
+  "stateUSKY": "肯塔基州（美國）",
+  "stateUSLA": "路易斯安那州（美國）",
+  "stateUSME": "緬因州（美國）",
+  "stateUSMD": "馬里蘭州（美國）",
+  "stateUSMA": "麻薩諸塞州（美國）",
+  "stateUSMI": "密西根州（美國）",
+  "stateUSMN": "明尼蘇達州（美國）",
+  "stateUSMS": "密西西比州（美國）",
+  "stateUSMO": "密蘇里州（美國）",
+  "stateUSMT": "蒙大拿州（美國）",
+  "stateUSNE": "內布拉斯加州（美國）",
+  "stateUSNV": "內華達州（美國）",
+  "stateUSNH": "新罕布夏州（美國）",
+  "stateUSNJ": "紐澤西州（美國）",
+  "stateUSNM": "新墨西哥州（美國）",
+  "stateUSNY": "紐約州（美國）",
+  "stateUSNC": "北卡羅來納州（美國）",
+  "stateUSND": "北達科他州（美國）",
+  "stateUSOH": "俄亥俄州（美國）",
+  "stateUSOK": "奧克拉荷馬州（美國）",
+  "stateUSOR": "奧勒岡州（美國）",
+  "stateUSPA": "賓夕法尼亞州（美國）",
+  "stateUSRI": "羅德島州（美國）",
+  "stateUSSC": "南卡羅來納州（美國）",
+  "stateUSSD": "南達科他州（美國）",
+  "stateUSTN": "田納西州（美國）",
+  "stateUSTX": "德克薩斯州（美國）",
+  "stateUSUT": "猶他州（美國）",
+  "stateUSVT": "佛蒙特州（美國）",
+  "stateUSVA": "維吉尼亞州（美國）",
+  "stateUSWA": "華盛頓州（美國）",
+  "stateUSWV": "西維吉尼亞州（美國）",
+  "stateUSWI": "威斯康辛州（美國）",
+  "stateUSWY": "懷俄明州（美國）",
+  "goalCount": "只計數",
+  "captionCount": "不設上限，持續記錄。",
+  "personalDays": "個人目標天數",
+  "enterPersonalDays": "輸入個人天數上限或目標。這裡不預設法律允許的停留額度。"
+}
+</script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>一</span><span>四</span><span>三</span><span>四</span><span>五</span><span>日</span><span>日</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>時間軸</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>匯出或在 AtlasDays 開啟</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="day-count-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="day-count-import-title"><span data-cal-on="computer">在 iPhone 或 iPad 上繼續</span><span data-cal-on="phone file">匯出或在 AtlasDays 開啟</span></p>
+            <p class="cal-dialog-sub">旅行途中也能持續計算天數。免費下載 AtlasDays。</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <div class="cal-scan-copy">
+            <p class="cal-scan-lead" data-cal-both>掃描 QR 碼，在 AtlasDays 開啟行程和追蹤器。</p>
+            <p class="cal-scan-lead" data-cal-trips-only hidden>掃描 QR 碼，在 AtlasDays 開啟行程。</p>
+            <p class="cal-scan-lead" data-cal-tracker hidden>掃描 QR 碼，在 AtlasDays 開啟追蹤器。</p>
+          </div>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li><strong data-cal-stays>在 App 中開啟停留紀錄</strong><span data-cal-stays>確認無誤後輕點「匯入」。在此之前，不會儲存任何資料。</span><strong data-cal-tracker hidden>在 App 中開啟這個追蹤器</strong><span data-cal-tracker hidden>確認無誤後輕點「儲存」。在此之前，不會儲存任何資料。</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">在 AtlasDays 中開啟</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li><strong>將行程下載為 CSV 檔案</strong><span>停留紀錄太多，連結裝不下。請下載檔案，然後在 iPhone 上用 AtlasDays 開啟。</span><button type="button" class="cal-dialog-primary" data-cal-download>下載檔案</button></li>
+          <li data-cal-store><strong>取得 AtlasDays</strong><span>iPhone 版，可在 App Store 免費下載。</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>將行程下載為 CSV 檔案</button><span data-cal-downloaded hidden>請在 iPhone 上用 AtlasDays 開啟這個檔案。</span></p>
+          <button type="button" data-cal-close>關閉</button>
+        </div>
+      </dialog>
+    </div>
+    <h2>記錄天數，不作稅務判定</h2>
+    <p>「只計數」預設沒有上限，不預設 183 天，也沒有安全／不安全狀態。數字只是所選地點與期間的合計。同一天到訪兩國會在兩國都計入，因此跨國合計可能超過日曆上的日期數。長條顯示已計算天數占所選期間的比例。</p>
+    <h2>使用個人上限或目標</h2>
+    <p>選擇「低於上限」或「達成目標」，再輸入自己的數字。例如，30 天的個人上限可協助安排夏季離家旅行，60 天目標可協助增加與家人相近的時間。數字出現在計算器中，不會因此變成法律門檻。</p>
+    <h2>選擇符合問題的期間</h2>
+    <ul><li><strong>日曆年：</strong>合計所選年度 1 月 1 日至 12 月 31 日。</li><li><strong>自訂年度：</strong>選擇一整年期間的開始日。</li><li><strong>最近 12 個月：</strong>選擇截至日期。期間隨日期移動，採用日曆月，不以固定 365 天近似。</li></ul>
+    <h2>計算範例</h2>
+    <p>6 月 1 日至 10 日的停留計入 10 天。同一國家另有 6 月 8 日至 12 日的停留，只增加 2 個新日期，合計 12 天。若在 6 月 12 日離開該國並抵達另一國，兩國紀錄都可能包含當天。</p>
+    <h2>保存紀錄</h2>
+    <p>將停留下載為 CSV，或轉到 AtlasDays 繼續使用。輸入日期在選擇匯出或轉移前留在瀏覽器內，重新載入就會清除。</p>
+    <h2>常見問題</h2>
+    <h3>這會判定稅務居民身分嗎？</h3><p>不會。它計算實際停留日期與選用的個人目標，不套用各國的稅務、簽證或居住規定。</p>
+    <h3>入境與出境日都包含嗎？</h3><p>是。兩天都計入。當天往返算一天，同一地點的重疊日期不重複計算。</p>

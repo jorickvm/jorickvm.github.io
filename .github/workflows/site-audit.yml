@@ -23,6 +23,8 @@ jobs:
 
       - name: Check optimized flags
         run: python3 scripts/build_flag_images.py --check
+      - name: Check resized screenshots
+        run: python3 scripts/build_responsive_images.py --check
       - name: Audit committed site
         run: python3 scripts/audit_site.py --strict-semantics --check-baseline _site-src/data/baseline.json
       # Terminology, structural parity with the English source, and typography

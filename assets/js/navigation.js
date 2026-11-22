@@ -71,4 +71,26 @@
     link.textContent = address;
     link.href = 'mai' + 'lto:' + address;
   });
+
+  // A browser opted out with ?notrack sends no analytics; its footer says so
+  // next to the copyright. ?notrack=off opts back in. Other browsers see no
+  // change. The query parameter is read here too, so the note is right on the
+  // page that sets or clears the flag, whatever order the scripts run in.
+  try {
+    var notrack = new URLSearchParams(location.search).get('notrack');
+    var optedOut = notrack === null ? !!localStorage.getItem('atlasdays-notrack') : notrack !== 'off';
+    var credit = document.querySelector('.site-footer-credit');
+    if (optedOut && credit) {
+      var group = document.createElement('span');
+      group.className = 'site-footer-credit-group';
+      group.style.whiteSpace = 'nowrap';
+      credit.parentNode.insertBefore(group, credit);
+      group.appendChild(credit);
+      var note = document.createElement('span');
+      note.lang = 'en';
+      note.textContent = ' · notrack';
+      note.style.opacity = '0.7';
+      group.appendChild(note);
+    }
+  } catch (e) {}
 })();

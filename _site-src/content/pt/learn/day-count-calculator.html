@@ -1,0 +1,179 @@
+    <nav class="breadcrumb"><a href="/pt/">AtlasDays</a> / <a href="/pt/learn/">Regras de viagem</a> / <a href="/pt/learn/calculators">Calculadoras</a></nav>
+    <h1>Calculadora de dias: países, estados e metas pessoais</h1>
+    <p class="subtitle">Conte seus dias em qualquer país ou estado dos EUA. Comece sem limite ou defina seu próprio limite ou meta pessoal.</p>
+    <p class="verified">Última verificação: 19 de novembro de 2026</p>
+    <h2 id="calculator">Conte seus dias</h2>
+    <p>Escolha um local e um período e adicione suas estadias. Chegada e partida contam; datas sobrepostas no mesmo local contam uma vez. Os totais incluem estadias futuras que você inserir.</p>
+<div class="daycal" id="day-count" data-day-calendar="dayCount">
+      <script type="application/json" data-cal-strings>
+{
+  "days": "Dias",
+  "hintStart": "Toque em um dia para adicionar uma estadia.",
+  "hintEnd": "Toque na outra ponta da estadia.",
+  "hintSelected": "Arraste qualquer uma das pontas da estadia para mudar as datas ou exclua-a abaixo.",
+  "inTrip": "em um país",
+  "pending": "início de uma nova estadia",
+  "empty": "Nenhuma estadia ainda.",
+  "deleteTrip": "Excluir estadia",
+  "country": "País",
+  "goal": "Objetivo",
+  "goalStay": "Ficar abaixo",
+  "goalReach": "Atingir meta",
+  "captionStay": "Use seu próprio limite pessoal.",
+  "captionReach": "Avance em direção à sua meta.",
+  "window": "Janela",
+  "addCountry": "Adicionar país",
+  "noMatch": "Nenhum país encontrado",
+  "periodCalendar": "Ano civil",
+  "periodTax": "Ano personalizado",
+  "periodRolling": "Últimos 12 meses",
+  "year": "Ano",
+  "starts": "Início",
+  "checkOn": "Contar até",
+  "checkOnCaption": "Seus dias nos 12 meses até esta data. Para uma viagem planejada, escolha o último dia dela.",
+  "tripDays": {
+    "one": "{n} dia",
+    "other": "{n} dias",
+    "many": "{n} dias"
+  },
+  "remaining": {
+    "one": "{n} dia restante",
+    "other": "{n} dias restantes",
+    "many": "{n} dias restantes"
+  },
+  "atLimit": "No limite",
+  "needed": {
+    "one": "Ainda falta {n} dia",
+    "other": "Ainda faltam {n} dias",
+    "many": "Ainda faltam {n} dias"
+  },
+  "reachedTarget": "Meta atingida",
+  "overBy": {
+    "one": "{n} dia acima do limite",
+    "other": "{n} dias acima do limite",
+    "many": "{n} dias acima do limite"
+  },
+  "lineNoCountry": {
+    "one": "{n} dia sem país",
+    "other": "{n} dias sem país",
+    "many": "{n} dias sem país"
+  },
+  "jurisdiction": "País ou estado dos EUA",
+  "addJurisdiction": "Escolha um local",
+  "noJurisdictionMatch": "Nenhum país ou estado dos EUA correspondente",
+  "stateUSAL": "Alabama (EUA)",
+  "stateUSAK": "Alasca (EUA)",
+  "stateUSAZ": "Arizona (EUA)",
+  "stateUSAR": "Arkansas (EUA)",
+  "stateUSCA": "Califórnia (EUA)",
+  "stateUSCO": "Colorado (EUA)",
+  "stateUSCT": "Connecticut (EUA)",
+  "stateUSDE": "Delaware (EUA)",
+  "stateUSDC": "Distrito de Colúmbia (EUA)",
+  "stateUSFL": "Flórida (EUA)",
+  "stateUSGA": "Geórgia (EUA)",
+  "stateUSHI": "Havaí (EUA)",
+  "stateUSID": "Idaho (EUA)",
+  "stateUSIL": "Illinois (EUA)",
+  "stateUSIN": "Indiana (EUA)",
+  "stateUSIA": "Iowa (EUA)",
+  "stateUSKS": "Kansas (EUA)",
+  "stateUSKY": "Kentucky (EUA)",
+  "stateUSLA": "Luisiana (EUA)",
+  "stateUSME": "Maine (EUA)",
+  "stateUSMD": "Maryland (EUA)",
+  "stateUSMA": "Massachusetts (EUA)",
+  "stateUSMI": "Michigan (EUA)",
+  "stateUSMN": "Minnesota (EUA)",
+  "stateUSMS": "Mississippi (EUA)",
+  "stateUSMO": "Missouri (EUA)",
+  "stateUSMT": "Montana (EUA)",
+  "stateUSNE": "Nebraska (EUA)",
+  "stateUSNV": "Nevada (EUA)",
+  "stateUSNH": "Nova Hampshire (EUA)",
+  "stateUSNJ": "Nova Jersey (EUA)",
+  "stateUSNM": "Novo México (EUA)",
+  "stateUSNY": "Nova York (EUA)",
+  "stateUSNC": "Carolina do Norte (EUA)",
+  "stateUSND": "Dakota do Norte (EUA)",
+  "stateUSOH": "Ohio (EUA)",
+  "stateUSOK": "Oklahoma (EUA)",
+  "stateUSOR": "Oregon (EUA)",
+  "stateUSPA": "Pensilvânia (EUA)",
+  "stateUSRI": "Rhode Island (EUA)",
+  "stateUSSC": "Carolina do Sul (EUA)",
+  "stateUSSD": "Dakota do Sul (EUA)",
+  "stateUSTN": "Tennessee (EUA)",
+  "stateUSTX": "Texas (EUA)",
+  "stateUSUT": "Utah (EUA)",
+  "stateUSVT": "Vermont (EUA)",
+  "stateUSVA": "Virgínia (EUA)",
+  "stateUSWA": "Washington (EUA)",
+  "stateUSWV": "Virgínia Ocidental (EUA)",
+  "stateUSWI": "Wisconsin (EUA)",
+  "stateUSWY": "Wyoming (EUA)",
+  "goalCount": "Apenas contar",
+  "captionCount": "Mantenha um registro sem limite.",
+  "personalDays": "Meta pessoal de dias",
+  "enterPersonalDays": "Informe seu próprio limite ou meta de dias. Nenhuma autorização legal é presumida."
+}
+</script>
+      <p class="cal-hint" data-cal-hint aria-live="polite"></p>
+      <div class="cal-window" data-cal-window>
+        <div class="cal-head">
+          <p class="cal-month-title" data-cal-month></p>
+          <div class="cal-weekdays" aria-hidden="true"><span>S</span><span>T</span><span>Q</span><span>Q</span><span>S</span><span>S</span><span>D</span></div>
+        </div>
+        <div data-cal-weeks></div>
+      </div>
+      <div class="cal-side">
+        <div class="cal-box" aria-live="polite">
+          <div data-cal-result></div>
+        </div>
+        <div class="cal-box">
+          <h3>Linha do tempo</h3>
+          <div data-cal-list></div><button type="button" class="cal-import" data-cal-import>Exportar ou abrir no AtlasDays</button>
+        </div>
+      </div>
+      <dialog class="cal-dialog cal-dialog-steps" data-cal-dialog aria-labelledby="day-count-import-title">
+        <div class="cal-dialog-head">
+          <img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+          <div>
+            <p class="cal-dialog-title" id="day-count-import-title"><span data-cal-on="computer">Continue no seu iPhone ou iPad</span><span data-cal-on="phone file">Exportar ou abrir no AtlasDays</span></p>
+            <p class="cal-dialog-sub">Continue contando seus dias enquanto viaja. Baixe o AtlasDays grátis.</p>
+          </div>
+        </div>
+        <div class="cal-dialog-scan" data-cal-on="computer">
+          <div class="cal-qr" data-cal-qr></div>
+          <div class="cal-scan-copy">
+            <p class="cal-scan-lead" data-cal-both>Escaneie o código para abrir suas viagens e seu controle no AtlasDays.</p>
+            <p class="cal-scan-lead" data-cal-trips-only hidden>Escaneie o código para abrir suas viagens no AtlasDays.</p>
+            <p class="cal-scan-lead" data-cal-tracker hidden>Escaneie o código para abrir seu controle no AtlasDays.</p>
+          </div>
+        </div>
+        <ol class="cal-steps" data-cal-on="phone">
+          <li><strong data-cal-stays>Abra suas estadias no app</strong><span data-cal-stays>Confira e toque em Importar. Nada é salvo antes disso.</span><strong data-cal-tracker hidden>Abra este controle no app</strong><span data-cal-tracker hidden>Confira e toque em Salvar. Nada é salvo antes disso.</span><a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Abrir no AtlasDays</a></li>
+        </ol>
+        <ol class="cal-steps" data-cal-on="file">
+          <li><strong>Baixar as viagens em um arquivo CSV</strong><span>São estadias demais para caber em um link. Baixe o arquivo e abra-o no iPhone com o AtlasDays.</span><button type="button" class="cal-dialog-primary" data-cal-download>Baixar arquivo</button></li>
+          <li data-cal-store><strong>Baixe o AtlasDays</strong><span>Grátis na App Store, para iPhone.</span><a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a></li>
+        </ol>
+        <div class="cal-dialog-foot">
+          <p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Baixar as viagens em um arquivo CSV</button><span data-cal-downloaded hidden>Abra este arquivo no iPhone com o AtlasDays.</span></p>
+          <button type="button" data-cal-close>Fechar</button>
+        </div>
+      </dialog>
+    </div>
+    <h2>Um registro de dias sem conclusão fiscal</h2>
+    <p>Apenas contar começa sem limite. Não há um padrão de 183 dias ou indicação de segurança fiscal. O número é apenas o total do local e período escolhidos. Um dia em que você visita dois países conta nos dois, então a soma dos países pode superar o número de datas no calendário. A barra mostra a proporção dos dias contados no período escolhido.</p>
+    <h2>Use um limite ou uma meta pessoal</h2>
+    <p>Escolha Ficar abaixo ou Atingir a meta e informe seu número. Por exemplo, um limite pessoal de 30 dias pode ajudar a planejar um verão longe de casa. Uma meta de 60 dias pode ajudar você a passar mais tempo perto da família. Nenhum número vira um limiar legal por aparecer em uma calculadora.</p>
+    <h2>Escolha o período que responde à sua pergunta</h2>
+    <ul><li><strong>Ano civil:</strong> some o ano selecionado, de 1º de janeiro a 31 de dezembro.</li><li><strong>Ano personalizado:</strong> escolha o início de um período de um ano.</li><li><strong>Últimos 12 meses:</strong> escolha até qual data contar. A janela acompanha essa data e usa meses do calendário, não uma aproximação fixa de 365 dias.</li></ul>
+    <h2>Um exemplo calculado</h2>
+    <p>Uma estadia de 1 a 10 de junho soma 10 dias. Outra de 8 a 12 de junho no mesmo país acrescenta apenas 2 dias novos, totalizando 12. Se você sai desse país e chega a outro em 12 de junho, essa data pode aparecer no registro dos dois países.</p>
+    <h2>Guarde o registro</h2>
+    <p>Baixe as estadias em CSV ou continue com elas no AtlasDays. As datas informadas ficam no navegador até você exportar ou transferir os dados e são apagadas ao recarregar.</p>
+    <h2>Perguntas frequentes</h2>
+    <h3>Isso determina a residência fiscal?</h3><p>Não. Conta datas de presença física e metas pessoais opcionais. Não aplica regras fiscais, de visto ou de residência específicas de cada país.</p>
+    <h3>Chegada e partida estão incluídas?</h3><p>Sim. As duas datas contam. Uma visita no mesmo dia conta como um dia, e datas sobrepostas no mesmo local não são duplicadas.</p>

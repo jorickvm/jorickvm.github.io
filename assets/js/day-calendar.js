@@ -651,11 +651,30 @@
       }).sort(function (a, b) { return a.name.localeCompare(b.name, locale); });
       return catalogue;
     }
+    function isUSState(p) { return /^US-[A-Z]{2}$/.test(p.code); }
+    // States are one alphabetical child group of the US, including when a
+    // recent selection or a state-name search would otherwise detach them.
+    function groupUSStates(rows) {
+      var states = rows.filter(isUSState).sort(function (a, b) { return a.name.localeCompare(b.name, locale); });
+      var us = places().filter(function (p) { return p.code === "US"; })[0];
+      if (!states.length || !us) return rows;
+      var countries = rows.filter(function (p) { return !isUSState(p); });
+      var parent = countries.findIndex(function (p) { return p.code === "US"; });
+      if (parent < 0) {
+        var firstState = rows.findIndex(isUSState);
+        parent = rows.slice(0, firstState).filter(function (p) { return !isUSState(p); }).length;
+        countries.splice(parent, 0, Object.assign({}, us, { contextOnly: true }));
+      }
+      countries.splice.apply(countries, [parent + 1, 0].concat(states));
+      return countries;
+    }
     function matches(query) {
       var q = fold(query.trim());
       if (!q) {
-        var picked = recent.map(function (c) { return places().filter(function (p) { return p.code === c; })[0]; }).filter(Boolean);
-        return picked.concat(places().filter(function (p) { return recent.indexOf(p.code) < 0; }));
+        var recentCountries = recent.map(function (c) { return /^US-[A-Z]{2}$/.test(c) ? "US" : c; })
+          .filter(function (c, i, all) { return all.indexOf(c) === i; });
+        var picked = recentCountries.map(function (c) { return places().filter(function (p) { return p.code === c; })[0]; }).filter(Boolean);
+        return groupUSStates(picked.concat(places().filter(function (p) { return recentCountries.indexOf(p.code) < 0; })));
       }
       // Exact place codes and state abbreviations precede name matches.
       var exact = [], abbreviations = [], lead = [], word = [], rest = [];
@@ -666,7 +685,12 @@
         if (at < 0) return;
         (at === 0 ? lead : p.key.charAt(at - 1) === " " ? word : rest).push(p);
       });
-      return exact.concat(abbreviations, lead, word, rest);
+      var found = exact.concat(abbreviations, lead, word, rest);
+      var us = places().filter(function (p) { return p.code === "US"; })[0];
+      if (us && (q === "us" || q === "usa" || fold(us.name).indexOf(q) === 0 || "united states".indexOf(q) === 0)) {
+        found = found.filter(function (p) { return !isUSState(p); }).concat(places().filter(isUSState));
+      }
+      return groupUSStates(found);
     }
     function flagImg(code, size) {
       return el("img", { src: flagSource(code), alt: "", width: String(size), height: String(Math.round(size * 0.75)), loading: "lazy" });
@@ -682,11 +706,14 @@
       function choose(code) { usageStarted(); close(); remember(code); onChoose(code); }
       function show() {
         options = matches(current && input.value === nameForPlace(current) ? "" : input.value);
-        active = 0;
+        var browsing = current && input.value === nameForPlace(current);
+        active = browsing ? options.findIndex(function (p) { return p.code === current; })
+          : options.findIndex(function (p) { return !p.contextOnly; });
+        if (active < 0) active = 0;
         box.textContent = "";
         if (!options.length) box.appendChild(el("li", { "class": "cal-country-none" }, text("noMatch")));
         options.forEach(function (p, i) {
-          var li = el("li", { role: "option", "class": "cal-country-option" + (i === active ? " is-active" : "") });
+          var li = el("li", { role: "option", "data-place": p.code, "class": "cal-country-option" + (isUSState(p) ? " is-state" : "") + (i === active ? " is-active" : "") });
           li.appendChild(flagImg(p.code, 20));
           li.appendChild(el("span", null, p.name));
           li.addEventListener("mousedown", function (e) { e.preventDefault(); choose(p.code); });
@@ -696,6 +723,7 @@
         box.scrollTop = 0;
         input.setAttribute("aria-expanded", "true");
         place();
+        mark();
         window.addEventListener("scroll", place, true);
         window.addEventListener("resize", place);
       }
@@ -749,12 +777,16 @@
       wrap.appendChild(box);
       return wrap;
     }
+    function trackerOffer() {
+      if (root.dataset.calHandoff === "trips-only" || !rule.trackerOffer) return "";
+      return rule.trackerOffer(trips, ctx());
+    }
     function renderList() {
       list.textContent = "";
       // Import sits in the Trips card and shows once there is something to
       // import: stays, or before any, the tracker the rule offers.
       var rowsOut = trips.length ? rule.exportRows(trips, ctx()).length : 0;
-      var offer = !rowsOut && rule.trackerOffer ? rule.trackerOffer(trips, ctx()) : "";
+      var offer = !rowsOut ? trackerOffer() : "";
       root.querySelectorAll("[data-cal-import]").forEach(function (btn) { btn.hidden = !rowsOut && !offer; });
       if (!trips.length) { list.appendChild(el("p", { "class": "cal-empty" }, S.empty)); return; }
       var clip = span();
@@ -834,8 +866,8 @@
         var min = ctl.min || 1, max = ctl.max || 366;
         var num = el("input", { type: "number", inputmode: "numeric", min: String(min), max: String(max), step: "1", value: String(ctl.value), "class": "cal-number", "aria-label": ctl.label || "" });
         num.addEventListener("change", function () {
-          var n = Math.round(+num.value);
-          if (n >= min && n <= max) { settings[ctl.key] = n; changed(ctl); } else num.value = String(ctl.value);
+          var n = ctl.strictInteger ? Number(num.value) : Math.round(+num.value);
+          if (Number.isInteger(n) && n >= min && n <= max) { settings[ctl.key] = n; changed(ctl); } else num.value = String(ctl.value);
         });
         num.addEventListener("keydown", function (e) { if (e.key === "Enter") num.blur(); });
         wrap.appendChild(num);
@@ -873,6 +905,10 @@
     }
     // The country in the card header is as wide as its name.
     function fitInput(input) {
+      if (root.getAttribute("data-day-calendar") === "dayCount" && input.closest(".cal-card-head")) {
+        input.style.width = "100%";
+        return;
+      }
       var probe = el("span", { "class": "cal-measure" }, input.value || input.placeholder || "");
       probe.style.font = getComputedStyle(input).font;
       document.body.appendChild(probe);
@@ -923,13 +959,18 @@
           row.appendChild(el("span", { "class": "cal-meter-period" }, bar.label));
           var count = el("span", { "class": "cal-meter-count" });
           count.appendChild(el("b", null, String(bar.days)));
-          count.appendChild(document.createTextNode(" / " + bar.limit));
+          if (bar.limit != null) count.appendChild(document.createTextNode(" / " + bar.limit));
+          else count.replaceChildren(el("b", null, text("tripDays", { n: bar.days })));
           row.appendChild(count);
           meter.appendChild(row);
-          var track = el("div", { "class": "cal-meter-track" }), fill = el("span", { "class": "cal-meter-fill" });
-          fill.style.width = Math.min(100, Math.max(0, (bar.progress != null ? bar.progress : bar.days / bar.limit) * 100)) + "%";
-          track.appendChild(fill);
-          meter.appendChild(track);
+          var total = bar.limit != null ? bar.limit : bar.periodDays;
+          if (total != null) {
+            var track = el("div", { "class": "cal-meter-track", role: "progressbar", "aria-label": bar.label,
+              "aria-valuemin": "0", "aria-valuemax": String(total), "aria-valuenow": String(Math.min(total, Math.max(0, bar.days))) }), fill = el("span", { "class": "cal-meter-fill" });
+            fill.style.width = Math.min(100, Math.max(0, (bar.progress != null ? bar.progress : bar.days / total) * 100)) + "%";
+            track.appendChild(fill);
+            meter.appendChild(track);
+          }
           result.appendChild(meter);
         });
         if (r.statusText && m.title == null) result.appendChild(el("span", { "class": "cal-pill tone-" + m.tone }, r.statusText));
@@ -1018,19 +1059,28 @@
       usageStarted();
       var rows = rule.exportRows(trips, ctx()).slice().sort(function (a, b) { return a.start - b.start; });
       if (!dialog || !dialog.showModal) return downloadCsv();
-      var offer = rule.trackerOffer ? rule.trackerOffer(trips, ctx()) : "";
-      var frag = rows.length || offer ? importFragment(rows, linkId(), offer) : "";
+      var offer = trackerOffer();
       var mode = rows.length > LINK.maxStays ? "file"
         : inApp || appleTouch ? "phone"
         : rows.length <= LINK.maxQrStays ? "computer" : "file";
+      // A large day-count history travels as a CSV. Its small tracker link
+      // still carries all settings, by QR on desktop or directly on iOS.
+      var separateTracker = mode === "file" && !!offer && root.dataset.dayCalendar === "dayCount";
+      var versionNote = dialog.querySelector("[data-cal-tracker-version]");
+      if (versionNote) versionNote.hidden = !offer || (mode === "file" && !separateTracker);
+      var linkedRows = separateTracker ? [] : rows;
+      var frag = linkedRows.length || offer ? importFragment(linkedRows, linkId(), offer) : "";
+      var scan = mode === "computer" || (separateTracker && !inApp && !appleTouch);
       dialog.querySelectorAll("[data-cal-on]").forEach(function (part) {
-        part.hidden = part.getAttribute("data-cal-on").split(" ").indexOf(mode) < 0;
+        var modes = part.getAttribute("data-cal-on").split(" ");
+        part.hidden = modes.indexOf(mode) < 0;
+        if (separateTracker && (scan ? part.matches(".cal-dialog-scan") : part.matches(".cal-steps[data-cal-on=phone]"))) part.hidden = false;
       });
       // Its steps name the stays, or with none the tracker alone.
-      dialog.querySelectorAll("[data-cal-stays]").forEach(function (part) { part.hidden = !rows.length; });
-      dialog.querySelectorAll("[data-cal-tracker]").forEach(function (part) { part.hidden = !!rows.length; });
-      dialog.querySelectorAll("[data-cal-both]").forEach(function (part) { part.hidden = !rows.length || !offer; });
-      dialog.querySelectorAll("[data-cal-trips-only]").forEach(function (part) { part.hidden = !rows.length || !!offer; });
+      dialog.querySelectorAll("[data-cal-stays]").forEach(function (part) { part.hidden = !linkedRows.length; });
+      dialog.querySelectorAll("[data-cal-tracker]").forEach(function (part) { part.hidden = !!linkedRows.length; });
+      dialog.querySelectorAll("[data-cal-both]").forEach(function (part) { part.hidden = !linkedRows.length || !offer; });
+      dialog.querySelectorAll("[data-cal-trips-only]").forEach(function (part) { part.hidden = !linkedRows.length || !!offer; });
       // Inside the app there is nothing to install.
       dialog.querySelectorAll("[data-cal-store]").forEach(function (part) { part.hidden = inApp; });
       // A single step needs no number.
@@ -1044,19 +1094,23 @@
       // is all there is; its follow-up line shows once the file is saved.
       dialog.querySelectorAll("[data-cal-alt]").forEach(function (part) { part.hidden = mode === "file" || !rows.length; });
       dialog.querySelectorAll("[data-cal-downloaded]").forEach(function (part) { part.hidden = true; part.previousElementSibling.hidden = false; });
+      dialog.showModal();
+      measure("export_dialog_opened");
+      var openButton = dialog.querySelector("[data-cal-open]");
+      if (openButton && openButton.getClientRects().length) measure("app_button_offered");
       var box = dialog.querySelector("[data-cal-qr]");
       if (box) {
         box.textContent = "";
-        if (mode === "computer") loadQr(function () {
+        if (scan) loadQr(function () {
           box.innerHTML = qrSvg(LINK.universal + frag);
           // On a 1x screen a big code is too fine at the compact size: start large.
           var big = (window.devicePixelRatio || 1) < 1.5 && box.firstChild.viewBox.baseVal.width * 3 > 240;
           box.classList.toggle("is-large", big);
           box.parentNode.classList.toggle("is-large", big);
           sizeQr(box);
+          if (dialog.open && box.getClientRects().length) measure("qr_offered");
         });
       }
-      dialog.showModal();
       // Focus the dialog itself, so no button looks preselected.
       dialog.setAttribute("tabindex", "-1");
       dialog.focus();
@@ -1111,10 +1165,11 @@
       btn.addEventListener("click", openImport);
     });
     root.querySelectorAll("[data-cal-open]").forEach(function (link) {
-      link.addEventListener("click", function () { usageStarted(); measure("continued"); });
+      link.addEventListener("click", function () { usageStarted(); measure("continued"); measure("app_link_tapped"); });
     });
     root.querySelectorAll("[data-cal-download]").forEach(function (btn) {
       btn.addEventListener("click", function () {
+        measure("csv_download_selected");
         downloadCsv();
         var done = btn.nextElementSibling;
         if (done && done.hasAttribute("data-cal-downloaded")) { btn.hidden = true; done.hidden = false; }
@@ -1129,6 +1184,7 @@
     var start = rule.range(ctx());
     revealNear(start);
     updateMonth();
+    measure("loaded");
   }
 
   // mount(root) lets a host page start a calendar it adds later (or inside a
