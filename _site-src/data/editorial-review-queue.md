@@ -210,8 +210,8 @@ These pages describe something scheduled to change. The tier cadence would revie
 | 2027-11-12 | 2 | [learn/pennsylvania-tax-residency.html](/learn/pennsylvania-tax-residency) | exact-date-required | 2 |
 | 2027-11-12 | 2 | [learn/slovakia-183-day-tax-residency.html](/learn/slovakia-183-day-tax-residency) | exact-date-required | 2 |
 | 2027-11-12 | 2 | [learn/slovenia-183-day-tax-residency.html](/learn/slovenia-183-day-tax-residency) | exact-date-required | 2 |
-| 2027-11-12 | 3 | [learn/travel-history-from-booking-emails.html](/learn/travel-history-from-booking-emails) | annual-light-pass | 1 |
 | 2027-11-12 | 3 | [learn/travel-history-from-iphone-photos.html](/learn/travel-history-from-iphone-photos) | annual-light-pass | 2 |
+| 2027-11-12 | 3 | [learn/travel-history-with-ai.html](/learn/travel-history-with-ai) | annual-light-pass | 1 |
 | 2027-11-17 | 2 | [learn/uk-srt-calculator.html](/learn/uk-srt-calculator) | exact-date-required | 4 |
 | 2027-11-19 | 2 | [learn/barbados-tax-residency.html](/learn/barbados-tax-residency) | exact-date-required | 2 |
 | 2027-11-19 | 2 | [learn/belgium-tax-residency.html](/learn/belgium-tax-residency) | exact-date-required | 1 |
@@ -222,6 +222,7 @@ These pages describe something scheduled to change. The tier cadence would revie
 | 2027-11-19 | 2 | [learn/netherlands-tax-residency.html](/learn/netherlands-tax-residency) | exact-date-required | 2 |
 | 2027-11-19 | 2 | [learn/uae-90-day-tax-residency.html](/learn/uae-90-day-tax-residency) | exact-date-required | 2 |
 | 2027-11-20 | 2 | [learn/germany-tax-residency.html](/learn/germany-tax-residency) | exact-date-required | 5 |
+| 2027-11-22 | 3 | [learn/countries-visited-map.html](/learn/countries-visited-map) | annual-light-pass | 1 |
 | 2027-11-30 | 2 | [learn/alabama-tax-residency.html](/learn/alabama-tax-residency) | exact-date-required | 1 |
 | 2027-11-30 | 2 | [learn/arkansas-tax-residency.html](/learn/arkansas-tax-residency) | exact-date-required | 1 |
 | 2027-11-30 | 2 | [learn/delaware-tax-residency.html](/learn/delaware-tax-residency) | exact-date-required | 1 |

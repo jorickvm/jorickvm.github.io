@@ -136,7 +136,7 @@
   <link rel="stylesheet" href="../assets/css/tokens.css?v=20260928f" />
   <link rel="stylesheet" href="../assets/css/article-variants/49dd6e3e3ea5.css?v=20261005a" />
   <link rel="stylesheet" href="../assets/css/site-header.css?v=20261027j" />
-  <link rel="stylesheet" href="../assets/css/article-components.css?v=20261026b" />
+  <link rel="stylesheet" href="../assets/css/article-components.css?v=20261122a" />
   <link rel="stylesheet" href="../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../assets/css/site-footer.css?v=20261027h" />
 </head>
@@ -210,12 +210,13 @@
     <nav class="toc-side" aria-label="On this page">
       <p class="toc-title">On this page</p>
       <ul>
+        <li><a href="#two-ways-to-fill-it-without-typing">Two ways to fill it without typing</a></li>
         <li><a href="#what-goes-in-each-column">What goes in each column</a></li>
         <li><a href="#dates-including-the-ones-you-are-not-sure-of">Dates, including the ones you are not sure of</a></li>
         <li><a href="#one-row-per-stay-not-per-trip">One row per stay, not per trip</a></li>
         <li><a href="#copying-it-into-a-form">Copying it into a form</a></li>
         <li><a href="#importing-it-into-atlasdays-free">Importing it into AtlasDays, free</a></li>
-        <li><a href="#beyond-the-template">Beyond the template</a></li>
+        <li><a href="#before-you-rely-on-it">Before you rely on it</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
     </nav>
@@ -225,7 +226,7 @@
     </nav>
 
     <h1>Travel History Template for Visa Applications (Free CSV)</h1>
-    <p class="subtitle">A free, blank travel history spreadsheet with one row per stay and ISO dates. It opens in Excel, Numbers and Google Sheets, maps onto the DS-160, UK and Canadian forms, and imports straight into AtlasDays.</p>
+    <p class="subtitle">A free travel history spreadsheet with one row per stay, ISO dates and example rows to replace. It opens in Excel, Numbers and Google Sheets, maps onto the DS-160, UK and Canadian forms, and imports straight into AtlasDays.</p>
     <p class="verified">Last verified: September 2026</p>
 
     <div class="tldr">
@@ -236,7 +237,7 @@
 
     <div class="factbox">
       <dl>
-        <div><dt>File</dt><dd>travel-history-template.csv, a header row with no data, ready to fill in</dd></div>
+        <div><dt>File</dt><dd>travel-history-template.csv, a header row and five example rows to replace</dd></div>
         <div><dt>Columns</dt><dd>Country, State, Start Date, End Date, Purpose, Notes</dd></div>
         <div><dt>Dates</dt><dd>YYYY-MM-DD, or a four-digit year when that is all you know</dd></div>
         <div><dt>Opens in</dt><dd>Excel, Numbers, Google Sheets and any other spreadsheet app</dd></div>
@@ -247,16 +248,25 @@
     <details class="toc">
       <summary>On this page</summary>
       <ul>
+        <li><a href="#two-ways-to-fill-it-without-typing">Two ways to fill it without typing</a></li>
         <li><a href="#what-goes-in-each-column">What goes in each column</a></li>
         <li><a href="#dates-including-the-ones-you-are-not-sure-of">Dates, including the ones you are not sure of</a></li>
         <li><a href="#one-row-per-stay-not-per-trip">One row per stay, not per trip</a></li>
         <li><a href="#copying-it-into-a-form">Copying it into a form</a></li>
         <li><a href="#importing-it-into-atlasdays-free">Importing it into AtlasDays, free</a></li>
-        <li><a href="#beyond-the-template">Beyond the template</a></li>
+        <li><a href="#before-you-rely-on-it">Before you rely on it</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
     </details>
     <script>(function(){var t=document.currentScript.previousElementSibling;if(matchMedia('(min-width: 760px)').matches)t.open=true})();</script>
+    <h2 id="two-ways-to-fill-it-without-typing">Two ways to fill it without typing</h2>
+    <p>Typing five or ten years of trips into a spreadsheet is the slow route. Most of the dates already exist somewhere.</p>
+    <ul>
+      <li><strong>From your email, with AI.</strong> An AI assistant can read your booking confirmations and return this exact file. <a href="/learn/travel-history-with-ai">Use AI to rebuild your travel history</a> has the prompt to copy.</li>
+      <li><strong>From your photos.</strong> AtlasDays can <a href="/learn/travel-history-from-iphone-photos">find past trips in your iPhone photos</a> and export them as a spreadsheet in these columns.</li>
+    </ul>
+    <p>Use the template itself for what those two miss, and to correct the dates that matter.</p>
+
     <h2 id="what-goes-in-each-column">What goes in each column</h2>
     <dl class="kv kv-text">
       <div><dt>Country</dt><dd>The country's English name (Portugal, United Kingdom) or its two-letter code (PT, GB). Required on every row.</dd></div>
@@ -266,7 +276,7 @@
       <div><dt>Purpose</dt><dd>Personal, Business, Study or Transit. Use Transit only when you stayed airside and did not enter the country.</dd></div>
       <div><dt>Notes</dt><dd>Everything else a form may want: the city you stayed in (Canada's visitor visa form asks for one), the form's own purpose wording ("visiting my sister"), what the dates rest on (passport stamp, boarding pass, booking email), and which dates are estimated.</dd></div>
     </dl>
-    <p>The file holds no example rows on purpose: rows you forget to delete would be imported as real trips. Here is what a filled-in file looks like.</p>
+    <p>The file opens with five example rows, one for each kind of entry. Replace them with your own trips and delete the ones you do not need: a row left in is imported as a real trip. Each example says "Example" in its Notes, so a leftover is easy to spot in the import preview.</p>
     <p class="data-table-hint">Swipe the example sideways to see every column.</p>
     <div class="data-table data-table-code">
       <table>
@@ -316,10 +326,10 @@
       <li><strong>State is for the United States only.</strong> A State value on a non-US row is reported as an error.</li>
       <li><strong>Year-only rows are kept but not counted.</strong> They mark the country as visited but add no days until you give them exact dates.</li>
     </ul>
-    <p>No file yet? The import screen also has a <strong>Build CSV with AI</strong> prompt that turns notes or an itinerary into these columns with an AI assistant. Whatever you paste into an AI tool is handled under that tool's privacy policy.</p>
+    
 
-    <h2 id="beyond-the-template">Beyond the template</h2>
-    <p>A template organizes a record; it does not make it complete. Ten tidy rows for five years of travel usually means the short trips are missing, and a form's own wording always wins over any layout. For which forms ask what, see <a href="/learn/travel-history-for-visa-applications">travel history for visa applications</a>. For filling gaps from stamps, emails and photos, see <a href="/learn/rebuild-travel-history-from-passport-stamps-emails-photos">rebuilding your travel history</a>, and for government records of your own crossings, <a href="/learn/get-official-entry-exit-records">getting official entry and exit records</a>.</p>
+    <h2 id="before-you-rely-on-it">Before you rely on it</h2>
+    <p>A form's own wording always wins over any layout. See <a href="/learn/travel-history-for-visa-applications">what each form asks for</a>, and confirm the dates that matter against <a href="/learn/get-official-entry-exit-records">official entry and exit records</a>.</p>
 
     <div class="cta-box">
       <span class="cta-logo">
@@ -353,7 +363,7 @@
       <h2 id="related-travel-history-template-visa-application">Related articles</h2>
       <div class="rule-cards">
         <a class="rule-card" href="/learn/travel-history-for-visa-applications"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10A.5.5 0 0 1 7 20V3.5Z"/><path d="M14 3.5V8h4M10 12h5M10 15.5h5"/></svg></span><span class="rule-text"><strong>Travel History for Visa Applications: How Far Back Each Form Asks</strong></span></a>
-        <a class="rule-card" href="/learn/travel-history-from-booking-emails"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10A.5.5 0 0 1 7 20V3.5Z"/><path d="M14 3.5V8h4M10 12h5M10 15.5h5"/></svg></span><span class="rule-text"><strong>Turn Booking Emails Into Travel History in AtlasDays</strong></span></a>
+        <a class="rule-card" href="/learn/travel-history-with-ai"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10A.5.5 0 0 1 7 20V3.5Z"/><path d="M14 3.5V8h4M10 12h5M10 15.5h5"/></svg></span><span class="rule-text"><strong>Use AI to Rebuild Your Travel History From Your Inbox</strong></span></a>
         <a class="rule-card" href="/learn/get-official-entry-exit-records"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10A.5.5 0 0 1 7 20V3.5Z"/><path d="M14 3.5V8h4M10 12h5M10 15.5h5"/></svg></span><span class="rule-text"><strong>How to Get Your Official Travel History (Entry and Exit Records)</strong></span></a>
         <a class="rule-card" href="/learn/rebuild-travel-history-from-passport-stamps-emails-photos"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10A.5.5 0 0 1 7 20V3.5Z"/><path d="M14 3.5V8h4M10 12h5M10 15.5h5"/></svg></span><span class="rule-text"><strong>How to Rebuild Your Travel History From Passport Stamps, Emails, and Photos</strong></span></a>
         <a class="rule-card" href="/learn/travel-history-from-iphone-photos"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 3.5h7l4 4V20a.5.5 0 0 1-.5.5h-10A.5.5 0 0 1 7 20V3.5Z"/><path d="M14 3.5V8h4M10 12h5M10 15.5h5"/></svg></span><span class="rule-text"><strong>Turn Your iPhone Photos Into a Travel Map and Trip History</strong></span></a>

@@ -49,7 +49,7 @@ BUILD_VERSION = "20260928f"
 VARIANT_VERSIONS = {("article", "help20260802"): "20261117a", ("hub", "92c3adc0daf3"): "20260928f", ("article", "49dd6e3e3ea5"): "20261005a", ("article", "88b8694b8f2d"): "20261005a", ("page", "press"): "20261022b"}
 SITE_HEADER_VERSION = "20261027j"
 SITE_FOOTER_VERSION = "20261027h"
-ARTICLE_COMPONENTS_VERSION = "20261026b"
+ARTICLE_COMPONENTS_VERSION = "20261122a"
 RULE_CARDS_VERSION = "20261006b"
 NAVIGATION_VERSION = "20261121a"
 
@@ -1990,28 +1990,27 @@ def render_country_checklist(content: str, code: str) -> str:
                 '<svg class="country-checklist-selected" aria-hidden="true" viewBox="0 0 20 20" fill="none" '
                 'stroke="currentColor" stroke-width="2"><path d="m4 10 4 4 8-8"/></svg></button>'
             )
-    strings = data["ui"][code]
+    # A locale without its own copy of a newer string shows the English one.
+    strings = {**data["ui"]["en"], **data["ui"][code]}
     escape = lambda text: html.escape(text, quote=True)
-    continent_options = [f'<option value="all">{escape(strings["allContinents"])}</option>']
+    count = '<span class="country-checklist-continent-count" data-continent-count hidden></span>'
+    chips = [
+        f'<button type="button" class="country-checklist-continent" data-country-continent value="all" aria-pressed="true">'
+        f'{escape(strings["allContinents"])}{count}</button>'
+    ]
     for continent, name in strings["continentNames"].items():
-        disabled = ' disabled' if continent == "antarctica" else ''
-        continent_options.append(f'<option value="{continent}"{disabled}>{escape(name)}</option>')
+        hidden = ' hidden' if continent == "antarctica" else ''
+        chips.append(
+            f'<button type="button" class="country-checklist-continent" data-country-continent value="{continent}" '
+            f'aria-pressed="false"{hidden}>{escape(name)}{count}</button>'
+        )
     controls = (
-        '<div class="country-checklist-filters">'
-        f'<div class="cal-setting"><span class="cal-setting-label" id="country-continent-label">{escape(strings["continent"])}</span>'
-        '<span class="cal-control is-select"><button type="button" class="cal-value country-checklist-continent-open" '
-        'data-country-continent-open aria-haspopup="listbox" aria-expanded="false" aria-controls="country-continent-options" '
-        'aria-labelledby="country-continent-label country-continent-value">'
-        f'<span data-country-continent-value id="country-continent-value">{escape(strings["allContinents"])}</span>'
-        '<svg class="cal-chevron" aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="m6 8 4 4 4-4"/></svg></button>'
-        f'<select data-country-continent aria-label="{escape(strings["continent"])}" hidden tabindex="-1">'
-        + ''.join(continent_options) + '</select>'
-        f'<div class="country-checklist-continent-menu" id="country-continent-options" data-country-continent-menu '
-        f'role="listbox" aria-label="{escape(strings["continent"])}" hidden></div></span></div>'
+        f'<div class="country-checklist-continents" role="group" aria-label="{escape(strings["continent"])}">'
+        + ''.join(chips) + '</div>'
         '<button type="button" role="switch" aria-checked="false" class="country-checklist-toggle" data-country-territories>'
-        f'<span>{escape(strings["showTerritories"])}</span><span class="country-checklist-switch" aria-hidden="true"></span></button></div>'
+        f'<span>{escape(strings["showTerritories"])}</span><span class="country-checklist-switch" aria-hidden="true"></span></button>'
         '<script type="application/json" data-country-strings>'
-        + json.dumps(strings, ensure_ascii=False).replace('<', '\u003c') + '</script>'
+        + json.dumps(strings, ensure_ascii=False).replace('<', '\\u003c') + '</script>'
     )
     return content.replace(marker, "\n".join(labels)).replace("<!-- COUNTRY_CHECKLIST_FILTERS -->", controls)
 
