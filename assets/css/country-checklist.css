@@ -9,7 +9,7 @@
 .country-checklist-progress span { display: block; width: 0; height: 100%; border-radius: inherit; background: var(--brand); transition: width 240ms ease; }
 
 /* Map: fills the box, click to mark, zoom and pan */
-.country-checklist-map { --map-land: #44494E; --map-land-hover: #5A6169; --map-border: #151515; --map-sea: #000; --map-visited: #4B95D4; --map-visited-light: #66A5DA; position: relative; margin: 0 0 14px; }
+.country-checklist-map { --map-land: #44494E; --map-land-hover: #5A6169; --map-border: #10181F; --map-sea: linear-gradient(180deg, #16222E 0%, #0F1820 100%); --map-visited: #4B95D4; --map-visited-light: #66A5DA; position: relative; margin: 0 0 14px; }
 .country-checklist-map-canvas { position: relative; overflow: hidden; border: 1px solid var(--line); border-radius: 14px; background: var(--map-sea); touch-action: pan-y; user-select: none; -webkit-user-select: none; }
 .country-checklist-map-canvas.is-zoomed { touch-action: none; cursor: grab; }
 .country-checklist-map-canvas.is-dragging { cursor: grabbing; }
@@ -22,7 +22,7 @@
 .country-checklist-world.is-close .country-checklist-map-dot { display: initial; }
 .country-checklist-map-dot.is-visited { display: initial; fill: url(#country-checklist-visited); }
 @media (hover: hover) and (pointer: fine) {
-  .country-checklist-world .land:hover, .country-checklist-map-dot:hover { fill: var(--map-land-hover) !important; }
+  .country-checklist-world .land:not(.is-visited):hover, .country-checklist-map-dot:not(.is-visited):hover { fill: var(--map-land-hover) !important; }
   .country-checklist-world .land.is-visited:hover, .country-checklist-map-dot.is-visited:hover { filter: brightness(1.08); }
 }
 .country-checklist-map-tools { position: absolute; top: 10px; right: 10px; display: flex; flex-direction: column; border: 1px solid var(--line-strong); border-radius: 10px; background: var(--bg-card); box-shadow: var(--shadow); overflow: hidden; }
@@ -32,14 +32,12 @@
 .country-checklist-map-tools button:focus-visible { outline: 2px solid var(--blue); outline-offset: -2px; }
 .country-checklist-map-tools svg { width: 18px; height: 18px; }
 .country-checklist-map-tip { position: absolute; z-index: 2; transform: translate(-50%, calc(-100% - 12px)); padding: 4px 9px; border-radius: 8px; background: var(--bg-card-strong); color: var(--text); font-size: 0.8rem; font-weight: 600; white-space: nowrap; box-shadow: var(--shadow); pointer-events: none; }
-.country-checklist-map-credit { margin: 4px 2px 0; color: var(--muted-2); font-size: 0.65rem; text-align: right; }
-.country-checklist-map-credit a { color: inherit; }
 html[data-theme="light"] .country-checklist-map { --map-land: #C7D2DB; --map-land-hover: #B3C1CD; --map-border: #6D7780; --map-sea: #F2F2F7; --map-visited: #71ABDD; --map-visited-light: #9CC4E7; }
 
 /* Continents */
 .country-checklist-continents { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 12px; }
 .country-checklist-continent { display: inline-flex; align-items: center; gap: 6px; min-height: 36px; padding: 6px 14px; border: 1px solid var(--line-strong); border-radius: 999px; background: transparent; color: var(--text); font: inherit; font-size: 0.88rem; font-weight: 600; cursor: pointer; }
-.country-checklist-continent[aria-pressed="true"] { border-color: var(--blue); background: var(--blue); color: #fff; }
+.country-checklist-continent[aria-pressed="true"] { border-color: transparent; background: var(--action-pill-gradient); color: #fff; }
 .country-checklist-continent:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
 .country-checklist-continent-count { min-width: 18px; padding: 0 5px; border-radius: 999px; background: var(--blue-soft); color: var(--blue); font-size: 0.75rem; line-height: 18px; text-align: center; font-variant-numeric: tabular-nums; }
 .country-checklist-continent[aria-pressed="true"] .country-checklist-continent-count { background: rgba(255, 255, 255, 0.24); color: #fff; }
