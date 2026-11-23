@@ -172,7 +172,7 @@
     <nav class="toc-side" aria-label="本頁內容">
       <p class="toc-title">本頁內容</p>
       <ul>
-        <li><a href="#google">從 Google 地圖匯出</a></li>
+        <li><a href="#google-timeline">匯出 Google Timeline</a></li>
         <li><a href="#atlasdays">匯入 AtlasDays</a></li>
         <li><a href="#section-3">位置如何變成行程</a></li>
         <li><a href="#section-4">重複與重疊</a></li>
@@ -186,8 +186,8 @@
     <h1>Google Timeline 匯入</h1>
 <p class="article-answer">從 Google 地圖匯出時間軸資料，在 AtlasDays 中選取該檔案，並在儲存前確認建議的行程。這是<a href="/zh-Hant/help/import-trips">新增過去行程的方式</a>之一。</p>
 
-    <h2 id="google">從 Google 地圖匯出</h2>
-    <p>Google Timeline 的資料儲存在手機上，而不是線上。在該手機的 Google 地圖中開啟個人資料，依序選擇<strong>設定 → 位置資訊與隱私權 → 匯出時間軸資料</strong>，然後將 JSON 檔案儲存到「檔案」。iPhone 和 Android 手機都可以匯出；若使用 Android，請將檔案移到 iPhone 的「檔案」App 能存取的位置，例如 iCloud 雲碟。</p>
+    <h2 id="google-timeline">匯出 Google Timeline</h2>
+    <p>Google Timeline 的資料儲存在手機上，而不是線上，因此請從記錄資料的那支手機匯出。在 iPhone 上，開啟 Google 地圖，點一下個人資料相片，然後依序選擇<strong>設定 → 位置資訊與隱私權 → 匯出時間軸資料 → 儲存到檔案</strong>。在 Android 上，開啟手機的「設定」App，然後依序選擇<strong>位置 → 定位服務 → 時間軸 → 匯出時間軸資料</strong>，並將檔案儲存到 iPhone 的「檔案」App 能存取的位置，例如 iCloud 雲碟。</p>
     <p>如果你以前曾從 Google Takeout 下載位置記錄，AtlasDays 也能讀取其中的 <code>Records.json</code> 檔案。請先將下載的檔案解壓縮，再選取該檔案。Takeout 中 Semantic Location History 資料夾內的每月檔案無法讀取。</p>
 
     <h2 id="atlasdays">匯入 AtlasDays</h2>
@@ -222,7 +222,7 @@
 
     <section class="if-needed">
       <h2 id="section-6">檔案遭拒絕時</h2>
-      <p><em>此檔案不是 Google Timeline 匯出檔案</em>表示 AtlasDays 無法辨識該檔案。請選擇從 Google 地圖匯出的 <code>Timeline.json</code>，或 Takeout 下載中的 <code>Records.json</code>，而不是 zip 檔或每月檔案。<em>這個檔案不是有效的 JSON</em>表示檔案已損毀或不完整，請重新匯出。<em>在此檔案中找不到可用的位置</em>表示匯出檔中沒有 AtlasDays 能對應到地點的位置。</p>
+      <p><em>此檔案不是 Google Timeline 匯出檔案</em>表示 AtlasDays 無法辨識該檔案。請選擇手機匯出的檔案（iPhone 為 <code>location-history.json</code>，Android 為 <code>Timeline.json</code>），或 Takeout 下載中的 <code>Records.json</code>，而不是 zip 檔或每月檔案。<em>這個檔案不是有效的 JSON</em>表示檔案已損毀或不完整，請重新匯出。<em>在此檔案中找不到可用的位置</em>表示匯出檔中沒有 AtlasDays 能對應到地點的位置。</p>
     </section>
     <nav class="help-next" aria-labelledby="next-google-timeline-import">
       <h2 id="next-google-timeline-import">接著閱讀</h2>

@@ -3,8 +3,8 @@
     <h1>Import Google Timeline</h1>
 <p class="article-answer">Exportez vos trajets Google Timeline depuis Google Maps, sélectionnez le fichier dans AtlasDays et vérifiez les voyages suggérés avant de les enregistrer. C’est l’une des <a href="/fr/help/import-trips">façons d’ajouter d’anciens voyages</a>.</p>
 
-    <h2>Exporter depuis Google Maps</h2>
-    <p>Google conserve Timeline sur votre téléphone, pas en ligne. Dans Google Maps, sur ce téléphone, ouvrez votre profil, puis <strong>Paramètres → Position et confidentialité → Exporter les données de vos trajets</strong>, et enregistrez le fichier JSON dans Fichiers. Cela fonctionne depuis un iPhone comme depuis un téléphone Android ; sur Android, déplacez le fichier vers un emplacement accessible depuis l’app Fichiers de votre iPhone, comme iCloud Drive.</p>
+    <h2>Exporter votre Timeline</h2>
+    <p>Google conserve Timeline sur votre téléphone, pas en ligne : exportez-le donc depuis le téléphone qui l’a enregistré. Sur un iPhone, ouvrez Google Maps, touchez votre photo de profil, puis <strong>Paramètres → Position et confidentialité → Exporter les données de Vos trajets → Enregistrer dans Fichiers</strong>. Sur Android, ouvrez l’app Paramètres du téléphone, puis <strong>Localisation → Services de localisation → Vos trajets → Exporter Vos trajets</strong>, et enregistrez le fichier à un emplacement accessible depuis l’app Fichiers de votre iPhone, comme iCloud Drive.</p>
     <p>Si vous avez téléchargé votre historique des positions depuis Google Takeout par le passé, AtlasDays lit aussi le fichier <code>Records.json</code> qu’il contient. Décompressez d’abord le téléchargement, puis sélectionnez ce fichier. Les fichiers mensuels du dossier Semantic Location History de Takeout ne sont pas lus.</p>
 
     <h2>Importer dans AtlasDays</h2>
@@ -38,5 +38,5 @@
 
     <section class="if-needed">
       <h2>Si le fichier est refusé</h2>
-      <p><em>Ce fichier n’est pas un export Google Timeline</em> signifie qu’AtlasDays ne reconnaît pas le fichier. Sélectionnez le <code>Timeline.json</code> exporté depuis Google Maps, ou le <code>Records.json</code> d’un téléchargement Takeout, et non un fichier zip ou un fichier mensuel. <em>Ce fichier ne contient pas de JSON valide</em> signifie que le fichier est endommagé ou incomplet ; exportez-le de nouveau. <em>Aucune position exploitable dans ce fichier</em> signifie que l’export ne contient aucune position qu’AtlasDays puisse situer.</p>
+      <p><em>Ce fichier n’est pas un export Google Timeline</em> signifie qu’AtlasDays ne reconnaît pas le fichier. Sélectionnez le fichier exporté par votre téléphone (<code>location-history.json</code> depuis un iPhone, <code>Timeline.json</code> depuis Android), ou le <code>Records.json</code> d’un téléchargement Takeout, et non un fichier zip ou un fichier mensuel. <em>Ce fichier ne contient pas de JSON valide</em> signifie que le fichier est endommagé ou incomplet ; exportez-le de nouveau. <em>Aucune position exploitable dans ce fichier</em> signifie que l’export ne contient aucune position qu’AtlasDays puisse situer.</p>
     </section>

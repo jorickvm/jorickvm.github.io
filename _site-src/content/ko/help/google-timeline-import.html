@@ -3,8 +3,8 @@
     <h1>Google Timeline 가져오기</h1>
 <p class="article-answer">Google 지도에서 타임라인 데이터를 내보내고 AtlasDays에서 그 파일을 선택한 다음, 제안된 여행을 확인하고 저장하십시오. 지난 여행을 추가하는 <a href="/ko/help/import-trips">방법</a> 중 하나입니다.</p>
 
-    <h2>Google 지도에서 내보내기</h2>
-    <p>Google Timeline 데이터는 온라인이 아니라 휴대전화에 저장됩니다. 그 휴대전화의 Google 지도에서 프로필을 열고 <strong>설정 → 위치 및 개인 정보 보호 → 타임라인 데이터 내보내기</strong>를 선택한 다음 JSON 파일을 파일 앱에 저장하십시오. iPhone과 Android 휴대전화 모두에서 내보낼 수 있습니다. Android에서는 iCloud Drive처럼 iPhone의 파일 앱에서 열 수 있는 곳으로 파일을 옮기십시오.</p>
+    <h2>Google Timeline 내보내기</h2>
+    <p>Google Timeline 데이터는 온라인이 아니라 휴대전화에 저장되므로, 기록한 휴대전화에서 내보내야 합니다. iPhone에서는 Google 지도를 열고 프로필 사진을 탭한 다음 <strong>설정 → 위치 및 개인 정보 보호 → 타임라인 데이터 내보내기 → 파일에 저장</strong>을 선택하십시오. Android에서는 휴대전화의 설정 앱을 열고 <strong>위치 → 위치 서비스 → 타임라인 → 타임라인 데이터 내보내기</strong>를 선택한 다음, iCloud Drive처럼 iPhone의 파일 앱에서 열 수 있는 곳에 파일을 저장하십시오.</p>
     <p>예전에 Google Takeout에서 위치 기록을 다운로드한 적이 있다면, 그 안의 <code>Records.json</code> 파일도 AtlasDays가 읽을 수 있습니다. 먼저 다운로드한 파일의 압축을 푼 다음 그 파일을 선택하십시오. Takeout의 Semantic Location History 폴더에 있는 월별 파일은 읽지 않습니다.</p>
 
     <h2>AtlasDays로 가져오기</h2>
@@ -38,5 +38,5 @@
 
     <section class="if-needed">
       <h2>파일이 거부되는 경우</h2>
-      <p><em>이 파일은 Google Timeline 내보내기 파일이 아닙니다</em>라는 메시지는 AtlasDays가 파일을 인식하지 못했다는 뜻입니다. Google 지도에서 내보낸 <code>Timeline.json</code> 또는 Takeout 다운로드의 <code>Records.json</code>을 선택하십시오. zip 파일이나 월별 파일은 사용할 수 없습니다. <em>올바른 JSON 파일이 아닙니다</em>는 파일이 손상되었거나 불완전하다는 뜻이니 다시 내보내십시오. <em>이 파일에서 사용할 수 있는 위치를 찾지 못했습니다</em>는 내보낸 파일에 AtlasDays가 장소를 정할 수 있는 위치가 없다는 뜻입니다.</p>
+      <p><em>이 파일은 Google Timeline 내보내기 파일이 아닙니다</em>라는 메시지는 AtlasDays가 파일을 인식하지 못했다는 뜻입니다. 휴대전화에서 내보낸 파일(iPhone은 <code>location-history.json</code>, Android는 <code>Timeline.json</code>) 또는 Takeout 다운로드의 <code>Records.json</code>을 선택하십시오. zip 파일이나 월별 파일은 사용할 수 없습니다. <em>올바른 JSON 파일이 아닙니다</em>는 파일이 손상되었거나 불완전하다는 뜻이니 다시 내보내십시오. <em>이 파일에서 사용할 수 있는 위치를 찾지 못했습니다</em>는 내보낸 파일에 AtlasDays가 장소를 정할 수 있는 위치가 없다는 뜻입니다.</p>
     </section>

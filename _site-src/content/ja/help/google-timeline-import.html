@@ -3,8 +3,8 @@
     <h1>Google Timelineの読み込み</h1>
 <p class="article-answer">Google マップからタイムラインのデータを書き出し、そのファイルをAtlasDaysで選択して、提案された旅行を確認してから保存します。過去の旅行を追加する<a href="/ja/help/import-trips">方法</a>の1つです。</p>
 
-    <h2>Google マップから書き出す</h2>
-    <p>Google Timelineのデータは、オンラインではなくスマートフォン上に保存されています。そのスマートフォンのGoogle マップでプロフィールを開き、<strong>「設定」→「位置情報とプライバシー」→「タイムライン データをエクスポート」</strong>を選んで、JSONファイルを「ファイル」に保存します。iPhoneでもAndroidスマートフォンでも書き出せます。Androidの場合は、iCloud Driveなど、iPhoneの「ファイル」アプリから開ける場所にファイルを移してください。</p>
+    <h2>Google Timelineを書き出す</h2>
+    <p>Google Timelineのデータは、オンラインではなくスマートフォン上に保存されているため、記録したスマートフォンから書き出します。iPhoneでは、Google マップを開いてプロフィール写真をタップし、<strong>「設定」→「位置情報とプライバシー」→「タイムライン データをエクスポート」→「“ファイル”に保存」</strong>の順に選びます。Androidでは、スマートフォンの「設定」アプリを開き、<strong>「位置情報」→「位置情報サービス」→「タイムライン」→「タイムライン データをエクスポート」</strong>の順に選んで、iCloud Driveなど、iPhoneの「ファイル」アプリから開ける場所にファイルを保存してください。</p>
     <p>以前にGoogle Takeoutでロケーション履歴をダウンロードしたことがある場合は、その中の<code>Records.json</code>ファイルも読み込めます。先にダウンロードしたファイルを解凍してから、そのファイルを選択してください。Takeoutの「Semantic Location History」フォルダにある月ごとのファイルは読み込めません。</p>
 
     <h2>AtlasDaysに読み込む</h2>
@@ -38,5 +38,5 @@
 
     <section class="if-needed">
       <h2>ファイルが受け付けられないとき</h2>
-      <p><em>「このファイルはGoogle Timelineの書き出しファイルではありません」</em>と表示された場合、AtlasDaysはそのファイルを認識できません。Google マップから書き出した<code>Timeline.json</code>、またはTakeoutのダウンロードに含まれる<code>Records.json</code>を選択してください。zipファイルや月ごとのファイルは使えません。<em>「このファイルは有効なJSONではありません」</em>は、ファイルが破損しているか不完全であることを意味します。もう一度書き出してください。<em>「このファイルに使用可能な位置情報が見つかりません」</em>は、書き出したデータに、AtlasDaysが場所を特定できる位置情報が含まれていないことを意味します。</p>
+      <p><em>「このファイルはGoogle Timelineの書き出しファイルではありません」</em>と表示された場合、AtlasDaysはそのファイルを認識できません。スマートフォンで書き出したファイル（iPhoneの場合は<code>location-history.json</code>、Androidの場合は<code>Timeline.json</code>）、またはTakeoutのダウンロードに含まれる<code>Records.json</code>を選択してください。zipファイルや月ごとのファイルは使えません。<em>「このファイルは有効なJSONではありません」</em>は、ファイルが破損しているか不完全であることを意味します。もう一度書き出してください。<em>「このファイルに使用可能な位置情報が見つかりません」</em>は、書き出したデータに、AtlasDaysが場所を特定できる位置情報が含まれていないことを意味します。</p>
     </section>

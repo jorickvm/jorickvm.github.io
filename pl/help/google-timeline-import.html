@@ -172,7 +172,7 @@
     <nav class="toc-side" aria-label="Na tej stronie">
       <p class="toc-title">Na tej stronie</p>
       <ul>
-        <li><a href="#eksport-z-map-google">Eksport z Map Google</a></li>
+        <li><a href="#eksport-osi-czasu">Eksport osi czasu</a></li>
         <li><a href="#import-do-atlasdays">Import do AtlasDays</a></li>
         <li><a href="#jak-z-lokalizacji-powstaj-podr-e">Jak z lokalizacji powstają podróże</a></li>
         <li><a href="#duplikaty-i-kolizje">Duplikaty i kolizje</a></li>
@@ -186,8 +186,8 @@
     <h1>Import Google Timeline</h1>
 <p class="article-answer">Wyeksportuj oś czasu z Map Google, wybierz plik w AtlasDays i przejrzyj proponowane podróże, zanim je zapiszesz. To jeden ze <a href="/pl/help/import-trips">sposobów dodawania dawnych podróży</a>.</p>
 
-    <h2 id="eksport-z-map-google">Eksport z Map Google</h2>
-    <p>Google przechowuje oś czasu na telefonie, a nie w internecie. W Mapach Google na tym telefonie otwórz profil, a następnie <strong>Ustawienia → Lokalizacja i prywatność → Eksportuj dane osi czasu</strong> i zapisz plik JSON w aplikacji Pliki. Działa to zarówno na telefonie iPhone, jak i na telefonie z Androidem; na Androidzie przenieś plik tam, gdzie dotrze do niego aplikacja Pliki na telefonie iPhone, na przykład na iCloud Drive.</p>
+    <h2 id="eksport-osi-czasu">Eksport osi czasu</h2>
+    <p>Google przechowuje oś czasu na telefonie, a nie w internecie, więc wyeksportuj ją z telefonu, który ją zapisał. Na telefonie iPhone otwórz Mapy Google, stuknij zdjęcie profilowe, a następnie <strong>Ustawienia → Lokalizacja i prywatność → Eksportuj dane osi czasu → Zachowaj w Plikach</strong>. Na Androidzie otwórz aplikację Ustawienia telefonu, a następnie <strong>Lokalizacja → Usługi lokalizacyjne → Oś czasu → Eksportuj dane osi czasu</strong> i zapisz plik tam, gdzie dotrze do niego aplikacja Pliki na telefonie iPhone, na przykład na iCloud Drive.</p>
     <p>Jeśli historia lokalizacji była kiedyś pobierana przez Google Takeout, AtlasDays odczyta też znajdujący się w niej plik <code>Records.json</code>. Najpierw rozpakuj pobrane archiwum i wybierz ten plik. Pliki miesięczne z folderu Semantic Location History w Takeout nie są odczytywane.</p>
 
     <h2 id="import-do-atlasdays">Import do AtlasDays</h2>
@@ -222,7 +222,7 @@
 
     <section class="if-needed">
       <h2 id="je-li-plik-zostanie-odrzucony">Jeśli plik zostanie odrzucony</h2>
-      <p><em>Ten plik nie jest eksportem Google Timeline</em> oznacza, że AtlasDays nie rozpoznaje pliku. Wybierz plik <code>Timeline.json</code> wyeksportowany z Map Google albo <code>Records.json</code> z archiwum Takeout, a nie plik ZIP ani plik miesięczny. <em>Ten plik nie zawiera poprawnego JSON</em> oznacza, że plik jest uszkodzony lub niekompletny; wyeksportuj go ponownie. <em>W tym pliku nie znaleziono użytecznych lokalizacji</em> oznacza, że eksport nie zawiera lokalizacji, które AtlasDays potrafi przypisać do miejsca.</p>
+      <p><em>Ten plik nie jest eksportem Google Timeline</em> oznacza, że AtlasDays nie rozpoznaje pliku. Wybierz plik wyeksportowany przez telefon (<code>location-history.json</code> z telefonu iPhone, <code>Timeline.json</code> z Androida) albo <code>Records.json</code> z archiwum Takeout, a nie plik ZIP ani plik miesięczny. <em>Ten plik nie zawiera poprawnego JSON</em> oznacza, że plik jest uszkodzony lub niekompletny; wyeksportuj go ponownie. <em>W tym pliku nie znaleziono użytecznych lokalizacji</em> oznacza, że eksport nie zawiera lokalizacji, które AtlasDays potrafi przypisać do miejsca.</p>
     </section>
     <nav class="help-next" aria-labelledby="next-google-timeline-import">
       <h2 id="next-google-timeline-import">Co dalej</h2>
