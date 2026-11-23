@@ -2,7 +2,7 @@
   "use strict";
   if (window.AtlasDaysCalculatorUsage) return;
   var endpoint = document.currentScript && document.currentScript.getAttribute("data-endpoint");
-  var calculators = ["days183", "schengen", "ukIlr", "presence", "spt", "multiYear", "ukSrt", "feie", "dayCount"];
+  var calculators = ["days183", "schengen", "ukIlr", "presence", "spt", "multiYear", "ukSrt", "feie", "dayCount", "countries"];
   var stages = ["loaded", "started", "used", "continued", "export_dialog_opened", "qr_offered", "app_button_offered", "app_link_tapped", "csv_download_selected"];
   var visits = Object.create(null);
   function permitted() {

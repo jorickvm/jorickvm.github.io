@@ -1,4 +1,4 @@
-const CALCULATORS = new Set(["days183", "schengen", "ukIlr", "presence", "spt", "multiYear", "ukSrt", "feie", "dayCount"]);
+const CALCULATORS = new Set(["days183", "schengen", "ukIlr", "presence", "spt", "multiYear", "ukSrt", "feie", "dayCount", "countries"]);
 const PLACEMENTS = new Set(["standalone", "embedded"]);
 const STAGES = new Set(["loaded", "started", "used", "continued", "export_dialog_opened", "qr_offered", "app_button_offered", "app_link_tapped", "csv_download_selected"]);
 const ORIGIN = "https://atlasdays.app";

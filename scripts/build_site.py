@@ -347,16 +347,28 @@ def render_calculator_handoff(markup: str, article: dict[str, object]) -> str:
 
 
 def render_calculator_usage(markup: str, source_path: str, prefix: str) -> str:
-    if 'data-day-calendar="' not in markup:
+    calendar = 'data-day-calendar="' in markup
+    countries = ' data-country-checklist ' in markup
+    if not calendar and not countries:
         return markup
-    placement = "standalone" if source_path.endswith("-calculator.html") else "embedded"
-    markup = re.sub(r'(data-day-calendar="[^"]+")', lambda m: m[1] + f' data-cal-placement="{placement}"', markup)
     config = json.loads((SOURCE_ROOT / "data/calculator-usage.json").read_text())
     endpoint = str(config.get("endpoint", "")) if config.get("enabled") else ""
     if config.get("enabled") and not re.fullmatch(r"https://[a-z0-9.-]+/collect", endpoint):
         raise SystemExit("Invalid calculator usage endpoint")
-    script = f'<script defer src="{prefix}assets/js/calculator-usage.js?v=20261120b" data-endpoint="{html.escape(endpoint, quote=True)}"></script>\n  '
-    return markup.replace('<script defer src="' + prefix + 'assets/js/day-calendar.js', script + '<script defer src="' + prefix + 'assets/js/day-calendar.js', 1)
+    script = f'<script defer src="{prefix}assets/js/calculator-usage.js?v=20261124a" data-endpoint="{html.escape(endpoint, quote=True)}"></script>\n  '
+    if calendar:
+        placement = "standalone" if source_path.endswith("-calculator.html") else "embedded"
+        markup = re.sub(r'(data-day-calendar="[^"]+")', lambda m: m[1] + f' data-cal-placement="{placement}"', markup)
+        tag = '<script defer src="' + prefix + 'assets/js/day-calendar.js'
+        markup = markup.replace(tag, script + tag, 1)
+    if countries:
+        # The countries map has one page of its own; anywhere else it is an embed.
+        placement = "standalone" if source_path.endswith("learn/countries-visited-map.html") else "embedded"
+        markup = markup.replace(' data-country-checklist ', f' data-country-checklist data-usage-placement="{placement}" ', 1)
+        tag = '<script defer src="' + prefix + 'assets/js/country-checklist.js'
+        if "assets/js/calculator-usage.js" not in markup:
+            markup = markup.replace(tag, script + tag, 1)
+    return markup
 
 
 def render_metadata(article: dict[str, object], prefix: str = "../") -> str:
@@ -2294,7 +2306,7 @@ def render_hub(
     rendered = rendered.replace("{{NAV_SCRIPT}}", nav_script)
     rendered = rendered.replace("{{LANGUAGE_SWITCHER}}", switcher)
     rendered = localize(rendered, locale, strings, available_routes=available, context=str(hub["path"]))
-    return render_responsive_images(render_web_flags(rendered)).rstrip() + "\n"
+    return render_calculator_usage(render_responsive_images(render_web_flags(rendered)), source_path, prefix).rstrip() + "\n"
 
 
 def main() -> int:

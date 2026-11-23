@@ -34,3 +34,16 @@ class CalculatorUsageTests(unittest.TestCase):
             self.assertIn('data-endpoint=""', markup)
             self.assertLess(markup.index('calculator-usage.js'), markup.index('day-calendar.js'))
             self.assertNotIn(path, markup)
+
+    def test_countries_map_gets_the_counter_and_its_placement(self):
+        source = '<section class="country-checklist" data-country-checklist aria-labelledby="t"></section><script defer src="../assets/js/country-checklist.js?v=1"></script>'
+        for path, placement in [("learn/countries-visited-map.html", "standalone"), ("travel-history.html", "embedded")]:
+            with tempfile.TemporaryDirectory() as directory:
+                config = Path(directory) / "data/calculator-usage.json"
+                config.parent.mkdir()
+                config.write_text(json.dumps({"enabled": False}))
+                with patch.object(build_site, "SOURCE_ROOT", Path(directory)):
+                    markup = build_site.render_calculator_usage(source, path, "../")
+            self.assertIn(f'data-usage-placement="{placement}"', markup)
+            self.assertEqual(markup.count("calculator-usage.js"), 1)
+            self.assertLess(markup.index("calculator-usage.js"), markup.index("country-checklist.js"))

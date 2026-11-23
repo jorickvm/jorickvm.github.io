@@ -49,6 +49,10 @@
     var inApp = false;
     try { inApp = new URLSearchParams(location.search).get("from") === "app" || sessionStorage.getItem("atlasdays-from") === "app"; } catch (e) {}
     function fragment() { return "v=3&c=countries&u=" + selected().join(","); }
+    // Anonymous stage counts, shared with the calculators. No country is sent.
+    var measure = window.AtlasDaysCalculatorUsage
+      ? window.AtlasDaysCalculatorUsage.create("countries", root.getAttribute("data-usage-placement"))
+      : function () {};
     function downloadCsv() {
       var csv = "Country,Start Date,End Date,Notes\r\n" + selected().map(function (code) { return code + ",,,"; }).join("\r\n") + "\r\n";
       var url = URL.createObjectURL(new Blob([csv], { type: "text/csv;charset=utf-8" }));
@@ -57,9 +61,11 @@
       document.body.appendChild(a); a.click(); a.remove();
       setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
       if (dialog) dialog.querySelectorAll("[data-cal-downloaded]").forEach(function (part) { part.hidden = false; part.previousElementSibling.hidden = true; });
+      measure("csv_download_selected");
     }
     function openImport() {
       if (!selected().length) return;
+      measure("continued");
       if (!dialog || !dialog.showModal) return downloadCsv();
       var mode = inApp || appleTouch ? "phone" : "computer";
       var universal = "https://go.atlasdays.app/import/#" + fragment();
@@ -73,11 +79,14 @@
       dialog.showModal(); dialog.setAttribute("tabindex", "-1"); dialog.focus();
       var box = dialog.querySelector("[data-cal-qr]");
       if (mode === "computer" && box && window.AtlasDaysImportQr) window.AtlasDaysImportQr.draw(box, universal);
+      measure("export_dialog_opened");
+      measure(mode === "computer" ? "qr_offered" : "app_button_offered");
     }
     if (track) track.addEventListener("click", openImport);
     if (dialog) {
       dialog.querySelectorAll("[data-cal-close]").forEach(function (button) { button.addEventListener("click", function () { dialog.close(); }); });
       dialog.querySelectorAll("[data-cal-download]").forEach(function (button) { button.addEventListener("click", downloadCsv); });
+      dialog.querySelectorAll("[data-cal-open]").forEach(function (a) { a.addEventListener("click", function () { measure("app_link_tapped"); }); });
       dialog.addEventListener("click", function (event) { if (event.target === dialog) dialog.close(); });
       window.addEventListener("resize", function () {
         var box = dialog.querySelector("[data-cal-qr]");
@@ -193,6 +202,7 @@
       // A territory marked on the map shows up in the list too.
       if (button.dataset.countryKind !== "country" && !showsTerritories() && !isOn(button)) setTerritories(true);
       button.setAttribute("aria-pressed", isOn(button) ? "false" : "true");
+      measure("started");
       update();
     }
     function buildTools() {
@@ -396,6 +406,7 @@
       var button = event.target.closest("[data-country-code]");
       if (!button || !options.contains(button)) return;
       button.setAttribute("aria-pressed", isOn(button) ? "false" : "true");
+      measure("started");
       update();
     });
     if (picked) {
@@ -418,6 +429,7 @@
     window.addEventListener("pageshow", update);
     update();
     picker.hidden = false;
+    measure("loaded");
     // The map file is large, so it loads when the map is about to be seen.
     if (map && "IntersectionObserver" in window) {
       var watcher = new IntersectionObserver(function (entries) {

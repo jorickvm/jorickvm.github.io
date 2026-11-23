@@ -219,7 +219,7 @@
 <h1>Países que he visitado: mapa y contador</h1>
 <p class="subtitle">Marca los países en los que has estado y mira tu total sobre 195, en un mapa que puedes ampliar. Nada de lo que selecciones sale de esta página.</p>
 <p class="verified">Última comprobación: noviembre de 2026</p>
-<section class="country-checklist" data-country-checklist aria-labelledby="country-checklist-title">
+<section class="country-checklist" data-country-checklist data-usage-placement="standalone" aria-labelledby="country-checklist-title">
 <h2 id="country-checklist-title">Marca dónde has estado</h2>
 <div class="cal-box" data-country-picker hidden>
 <output class="country-checklist-count cal-headline" data-country-count data-count-template="Has visitado {count} de {total} países." aria-live="polite" aria-atomic="true">Has visitado 0 de 195 países.</output>
@@ -596,7 +596,8 @@
   <script>window.AtlasDaysNavStrings={"menuOpen":"Abrir el menú de navegación","menuClose":"Cerrar el menú de navegación"};</script>
   <script src="../../assets/js/navigation.js?v=20261121a"></script>
   <script defer src="../../assets/js/import-qr.js?v=20261122a"></script>
-  <script defer src="../../assets/js/country-checklist.js?v=20261124a"></script>
+  <script defer src="../../assets/js/calculator-usage.js?v=20261124a" data-endpoint="https://atlasdays-calculator-usage.jorickvm.workers.dev/collect"></script>
+  <script defer src="../../assets/js/country-checklist.js?v=20261124b"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on. */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

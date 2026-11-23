@@ -184,7 +184,7 @@
         <h2 class="hx-uc-h2" id="countries-title">Wie viele Länder hast du schon besucht?</h2>
         <p>Markiere sie auf der Karte und sieh deine Gesamtzahl von 195. Nichts, was du auswählst, verlässt diese Seite.</p>
       </div>
-<section class="country-checklist country-checklist-compact" data-country-checklist aria-labelledby="countries-title">
+<section class="country-checklist country-checklist-compact" data-country-checklist data-usage-placement="embedded" aria-labelledby="countries-title">
 <div class="cal-box" data-country-picker hidden>
 <output class="country-checklist-count cal-headline" data-country-count data-count-template="Du hast {count} von {total} Ländern besucht." aria-live="polite" aria-atomic="true">Du hast 0 von 195 Ländern besucht.</output>
 <div class="country-checklist-progress" aria-hidden="true"><span data-country-progress></span></div>
@@ -619,7 +619,8 @@
 
   <script src="../assets/js/marketing.js?v=20261106a"></script>
   <script defer src="../assets/js/import-qr.js?v=20261122a"></script>
-  <script defer src="../assets/js/country-checklist.js?v=20261124a"></script>
+  <script defer src="../assets/js/calculator-usage.js?v=20261124a" data-endpoint="https://atlasdays-calculator-usage.jorickvm.workers.dev/collect"></script>
+  <script defer src="../assets/js/country-checklist.js?v=20261124b"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on. */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();
