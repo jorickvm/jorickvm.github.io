@@ -222,7 +222,7 @@ These pages describe something scheduled to change. The tier cadence would revie
 | 2027-11-19 | 2 | [learn/netherlands-tax-residency.html](/learn/netherlands-tax-residency) | exact-date-required | 2 |
 | 2027-11-19 | 2 | [learn/uae-90-day-tax-residency.html](/learn/uae-90-day-tax-residency) | exact-date-required | 2 |
 | 2027-11-20 | 2 | [learn/germany-tax-residency.html](/learn/germany-tax-residency) | exact-date-required | 5 |
-| 2027-11-22 | 3 | [learn/countries-visited-map.html](/learn/countries-visited-map) | annual-light-pass | 1 |
+| 2027-11-22 | 3 | [learn/countries-visited-map.html](/learn/countries-visited-map) | annual-light-pass | 0 |
 | 2027-11-23 | 3 | [learn/travel-history-from-google-maps-timeline.html](/learn/travel-history-from-google-maps-timeline) | annual-light-pass | 2 |
 | 2027-11-30 | 2 | [learn/alabama-tax-residency.html](/learn/alabama-tax-residency) | exact-date-required | 1 |
 | 2027-11-30 | 2 | [learn/arkansas-tax-residency.html](/learn/arkansas-tax-residency) | exact-date-required | 1 |
