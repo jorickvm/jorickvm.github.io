@@ -1532,8 +1532,11 @@ def render_learn_trust(
     # A full-width colon already carries its own trailing space in the glyph,
     # so Japanese takes no space after it. Every half-width colon does.
     gap = "" if colon == "：" else " "
+    # A page that reuses licensed material names it on a second line here.
+    credit = str(article.get("credit_line", "")).strip()
+    credit_line = f"<br />{credit}" if credit else ""
     return content.rstrip() + source_block + (
-        f'\n\n    <p class="learn-disclaimer"><strong>{context_label}</strong>{gap}{body}</p>\n'
+        f'\n\n    <p class="learn-disclaimer"><strong>{context_label}</strong>{gap}{body}{credit_line}</p>\n'
     )
 
 
