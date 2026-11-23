@@ -5,7 +5,7 @@
     <div class="hx-uc-wrap hx-uc-hero-grid">
       <div class="hx-uc-hero-copy">
         <h1>Every country you&rsquo;ve been to, on one map.</h1>
-        <p class="hx-lede">Find past trips in your photos, Flighty history or CSV files. See your visited countries on a map, count your total, and keep your record current as you travel.</p>
+        <p class="hx-lede">Find past trips in your photos, Google Timeline, Flighty history or CSV files. See your visited countries on a map, count your total, and keep your record current as you travel.</p>
         <div class="hx-actions">
           <a class="hx-btn" data-hx-hero-cta href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> {{t:cta.get_app}}</a>
         </div>
@@ -37,6 +37,70 @@
     </div>
   </section>
 
+  <section class="hx-uc-section" aria-labelledby="countries-title">
+    <div class="hx-uc-wrap">
+      <div class="hx-uc-head">
+        <h2 class="hx-uc-h2" id="countries-title">How many countries have you visited?</h2>
+        <p>Mark them on the map and see your total out of 195. Nothing you select leaves this page.</p>
+      </div>
+<section class="country-checklist country-checklist-compact" data-country-checklist aria-labelledby="countries-title">
+<div class="cal-box" data-country-picker hidden>
+<output class="country-checklist-count cal-headline" data-country-count data-count-template="You’ve visited {count} of {total} countries." aria-live="polite" aria-atomic="true">You’ve visited 0 of 195 countries.</output>
+<div class="country-checklist-progress" aria-hidden="true"><span data-country-progress></span></div>
+<div class="country-checklist-map" data-country-map hidden>
+<div class="country-checklist-map-canvas" data-country-map-canvas></div>
+</div>
+<p class="cal-hint">Select a country on the map. Pick a continent to zoom in.</p>
+<!-- COUNTRY_CHECKLIST_FILTERS -->
+<div class="country-checklist-search">
+<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg>
+<input type="search" class="cal-country-input" data-country-search aria-label="Search countries" placeholder="Search countries" autocomplete="off" spellcheck="false" aria-controls="country-checklist-options">
+</div>
+<div class="country-checklist-picked" data-country-picked hidden>
+<div class="country-checklist-picked-head"><strong>Visited</strong><button type="button" class="country-checklist-clear" data-country-clear>Clear all</button></div>
+<div class="country-checklist-picked-list" data-country-picked-list></div>
+</div>
+<div id="country-checklist-options" class="country-checklist-options" data-country-options>
+<!-- COUNTRY_CHECKLIST -->
+</div>
+<p class="cal-empty" data-country-empty hidden>No matching country</p>
+<div class="country-checklist-result" data-country-result hidden><p class="country-checklist-result-title">Keep the trips behind your total.</p><p>AtlasDays adds dates, a visited map and photo-based trip suggestions to your country count.</p></div>
+<button type="button" class="cal-import country-checklist-track" disabled data-country-track>Track this in AtlasDays</button>
+</div>
+<dialog class="cal-dialog cal-dialog-steps" data-country-dialog aria-labelledby="countries-import-title">
+<div class="cal-dialog-head">
+<img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+<div>
+<p class="cal-dialog-title" id="countries-import-title"><span data-cal-on="computer">Continue on your iPhone or iPad</span><span data-cal-on="phone">Open in AtlasDays</span></p>
+<p class="cal-dialog-sub">Keep your visited map as you travel. Get AtlasDays free.</p>
+</div>
+</div>
+<div class="cal-dialog-scan" data-cal-on="computer">
+<div class="cal-qr" data-cal-qr></div>
+<div class="cal-scan-copy"><p class="cal-scan-lead">Scan to open your countries in AtlasDays.</p></div>
+</div>
+<ol class="cal-steps" data-cal-on="phone">
+<li>
+<strong>Open your countries in the app</strong>
+<span>Check them, then tap Import. Nothing is saved before that.</span>
+<a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Open in AtlasDays</a>
+</li>
+<li data-cal-store>
+<strong>Get AtlasDays</strong>
+<span>Free on the App Store for iPhone and iPad.</span>
+<a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a>
+</li>
+</ol>
+<div class="cal-dialog-foot">
+<p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Download countries as a CSV file</button><span data-cal-downloaded hidden>Open this file on your iPhone with AtlasDays.</span></p>
+<button type="button" data-cal-close>Close</button>
+</div>
+</dialog>
+</section>
+      <p class="hx-uc-more"><a href="/learn/countries-visited-map">Search the full list of countries</a></p>
+    </div>
+  </section>
+
   <section class="hx-uc-section" aria-labelledby="how-title">
     <div class="hx-uc-wrap">
       <div class="hx-uc-head">
@@ -63,7 +127,7 @@
           <li class="hx-step is-active" data-hx-step="0">
             <p class="hx-step-label">Step 1</p>
             <h3>Import your past</h3>
-            <div class="hx-step-body">Import years of trips from your photos, Flighty, or a CSV file, or add them by hand. You review every import before it is saved. <a href="/help/getting-started">Ways to add your trips</a></div>
+            <div class="hx-step-body">Import years of trips from your photos, Google Timeline, Flighty, or a CSV file, or add them by hand. You review every import before it is saved. <a href="/help/getting-started">Ways to add your trips</a></div>
           </li>
           <li class="hx-step" data-hx-step="1">
             <p class="hx-step-label">Step 2</p>
@@ -86,15 +150,15 @@
     <div class="hx-uc-wrap">
       <div class="hx-uc-head">
         <h2 class="hx-uc-h2" id="deeper-title">Go deeper</h2>
-        <p>Plain-language guides to the rules behind the numbers.</p>
+        <p>Guides to building your travel history from what you already have.</p>
       </div>
       <div class="rule-cards">
         <a class="rule-card" href="/learn/rebuild-travel-history-from-passport-stamps-emails-photos"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>Rebuilding your travel history</strong><span>Which sources are strongest, and how to handle gaps honestly.</span></span></a>
-        <a class="rule-card" href="/learn/how-many-countries-in-the-world"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>How many countries are there?</strong><span>Why 195 is the usual answer, and why travelers meet other numbers.</span></span></a>
-        <a class="rule-card" href="/learn/travel-history-template-visa-application"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>Free travel history template</strong><span>A CSV with one row per stay, ready to copy into a visa or citizenship form.</span></span></a>
+        <a class="rule-card" href="/learn/travel-history-from-iphone-photos"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>From your iPhone photos</strong><span>Your library already stores where you have been. Turn it into trips and a map.</span></span></a>
+        <a class="rule-card" href="/learn/travel-history-from-google-maps-timeline"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>From Google Maps Timeline</strong><span>Export the Timeline on your phone and turn it into trips with dates.</span></span></a>
+        <a class="rule-card" href="/learn/travel-history-with-ai"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>From your inbox, with AI</strong><span>A ready-to-copy prompt that builds your trips from booking emails.</span></span></a>
         <a class="rule-card" href="/learn/flighty-flight-history-day-count"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>Using your Flighty history</strong><span>Turning flights into days in each country.</span></span></a>
-        <a class="rule-card" href="/learn/does-a-layover-count-as-visiting-a-country"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>Does a layover count?</strong><span>Why immigration, day counting, and travel lists answer differently.</span></span></a>
-        <a class="rule-card" href="/learn/travel-history-for-visa-applications"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>Travel history for an application</strong><span>What the record usually needs, and where official instructions take priority.</span></span></a>
+        <a class="rule-card" href="/learn/travel-history-template-visa-application"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>Free travel history template</strong><span>A CSV with one row per stay, ready to copy into a visa or citizenship form.</span></span></a>
       </div>
       <p class="hx-uc-more"><a href="/learn/">All travel rules</a></p>
     </div>

@@ -5,7 +5,7 @@
     <div class="hx-uc-wrap hx-uc-hero-grid">
       <div class="hx-uc-hero-copy">
         <h1>Todos os países que você já visitou, em um só mapa.</h1>
-        <p class="hx-lede">Encontre viagens anteriores nas suas fotos, no histórico do Flighty ou em arquivos CSV. Veja seus países visitados no mapa, confira o total e mantenha o registro atualizado enquanto viaja.</p>
+        <p class="hx-lede">Encontre viagens anteriores nas suas fotos, na linha do tempo do Google Maps, no histórico do Flighty ou em arquivos CSV. Veja seus países visitados no mapa, confira o total e mantenha o registro atualizado enquanto viaja.</p>
         <div class="hx-actions">
           <a class="hx-btn" data-hx-hero-cta href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> {{t:cta.get_app}}</a>
         </div>
@@ -37,6 +37,70 @@
     </div>
   </section>
 
+  <section class="hx-uc-section" aria-labelledby="countries-title">
+    <div class="hx-uc-wrap">
+      <div class="hx-uc-head">
+        <h2 class="hx-uc-h2" id="countries-title">Quantos países você já visitou?</h2>
+        <p>Marque no mapa e veja seu total em 195. Nada do que você seleciona sai desta página.</p>
+      </div>
+<section class="country-checklist country-checklist-compact" data-country-checklist aria-labelledby="countries-title">
+<div class="cal-box" data-country-picker hidden>
+<output class="country-checklist-count cal-headline" data-country-count data-count-template="Você visitou {count} de {total} países." aria-live="polite" aria-atomic="true">Você visitou 0 de 195 países.</output>
+<div class="country-checklist-progress" aria-hidden="true"><span data-country-progress></span></div>
+<div class="country-checklist-map" data-country-map hidden>
+<div class="country-checklist-map-canvas" data-country-map-canvas></div>
+</div>
+<p class="cal-hint">Selecione um país no mapa. Escolha um continente para aproximar.</p>
+<!-- COUNTRY_CHECKLIST_FILTERS -->
+<div class="country-checklist-search">
+<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg>
+<input type="search" class="cal-country-input" data-country-search aria-label="Buscar países" placeholder="Buscar países" autocomplete="off" spellcheck="false" aria-controls="country-checklist-options">
+</div>
+<div class="country-checklist-picked" data-country-picked hidden>
+<div class="country-checklist-picked-head"><strong>Visitados</strong><button type="button" class="country-checklist-clear" data-country-clear>Limpar tudo</button></div>
+<div class="country-checklist-picked-list" data-country-picked-list></div>
+</div>
+<div id="country-checklist-options" class="country-checklist-options" data-country-options>
+<!-- COUNTRY_CHECKLIST -->
+</div>
+<p class="cal-empty" data-country-empty hidden>Nenhum país encontrado</p>
+<div class="country-checklist-result" data-country-result hidden><p class="country-checklist-result-title">Guarde as viagens por trás do seu total.</p><p>O AtlasDays acrescenta datas, um mapa de países visitados e sugestões de viagens a partir de fotos à sua contagem de países.</p></div>
+<button type="button" class="cal-import country-checklist-track" disabled data-country-track>Acompanhar no AtlasDays</button>
+</div>
+<dialog class="cal-dialog cal-dialog-steps" data-country-dialog aria-labelledby="countries-import-title">
+<div class="cal-dialog-head">
+<img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+<div>
+<p class="cal-dialog-title" id="countries-import-title"><span data-cal-on="computer">Continue no seu iPhone ou iPad</span><span data-cal-on="phone">Abrir no AtlasDays</span></p>
+<p class="cal-dialog-sub">Mantenha seu mapa de países visitados enquanto viaja. Baixe o AtlasDays grátis.</p>
+</div>
+</div>
+<div class="cal-dialog-scan" data-cal-on="computer">
+<div class="cal-qr" data-cal-qr></div>
+<div class="cal-scan-copy"><p class="cal-scan-lead">Escaneie o código para abrir seus países no AtlasDays.</p></div>
+</div>
+<ol class="cal-steps" data-cal-on="phone">
+<li>
+<strong>Abra seus países no app</strong>
+<span>Confira e toque em Importar. Nada é salvo antes disso.</span>
+<a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Abrir no AtlasDays</a>
+</li>
+<li data-cal-store>
+<strong>Baixe o AtlasDays</strong>
+<span>Grátis na App Store, para iPhone e iPad.</span>
+<a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a>
+</li>
+</ol>
+<div class="cal-dialog-foot">
+<p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Baixar os países em um arquivo CSV</button><span data-cal-downloaded hidden>Abra este arquivo no iPhone com o AtlasDays.</span></p>
+<button type="button" data-cal-close>Fechar</button>
+</div>
+</dialog>
+</section>
+      <p class="hx-uc-more"><a href="/pt/learn/countries-visited-map">Buscar na lista completa de países</a></p>
+    </div>
+  </section>
+
   <section class="hx-uc-section" aria-labelledby="how-title">
     <div class="hx-uc-wrap">
       <div class="hx-uc-head">
@@ -63,7 +127,7 @@
           <li class="hx-step is-active" data-hx-step="0">
             <p class="hx-step-label">Etapa 1</p>
             <h3>Importe o seu passado</h3>
-            <div class="hx-step-body">Importe anos de viagens das suas fotos, do Flighty ou de um arquivo CSV, ou adicione à mão. Você revisa toda importação antes de ela ser salva. <a href="/pt/help/getting-started">Formas de adicionar suas viagens</a></div>
+            <div class="hx-step-body">Importe anos de viagens das suas fotos, da linha do tempo do Google Maps, do Flighty ou de um arquivo CSV, ou adicione à mão. Você revisa toda importação antes de ela ser salva. <a href="/pt/help/getting-started">Formas de adicionar suas viagens</a></div>
           </li>
           <li class="hx-step" data-hx-step="1">
             <p class="hx-step-label">Etapa 2</p>
@@ -86,15 +150,15 @@
     <div class="hx-uc-wrap">
       <div class="hx-uc-head">
         <h2 class="hx-uc-h2" id="deeper-title">Aprofunde-se</h2>
-        <p>Guias em linguagem simples para as regras por trás dos números.</p>
+        <p>Guias para montar seu histórico de viagens com o que você já tem.</p>
       </div>
       <div class="rule-cards">
         <a class="rule-card" href="/pt/learn/rebuild-travel-history-from-passport-stamps-emails-photos"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>Reconstruindo seu histórico de viagens</strong><span>Quais fontes são mais fortes, e como lidar com lacunas com honestidade.</span></span></a>
-        <a class="rule-card" href="/pt/learn/how-many-countries-in-the-world"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>Quantos países existem no mundo?</strong><span>Por que 195 é a resposta mais comum, e por que viajantes encontram outros números.</span></span></a>
-        <a class="rule-card" href="/pt/learn/travel-history-template-visa-application"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>Modelo gratuito de histórico de viagens</strong><span>Um CSV com uma linha por estadia, pronto para copiar em um formulário de visto ou cidadania.</span></span></a>
+        <a class="rule-card" href="/pt/learn/travel-history-from-iphone-photos"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>A partir das fotos do iPhone</strong><span>Sua fototeca já guarda por onde você passou. Transforme isso em viagens e em um mapa.</span></span></a>
+        <a class="rule-card" href="/pt/learn/travel-history-from-google-maps-timeline"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>A partir da linha do tempo do Google Maps</strong><span>Exporte a linha do tempo no celular e transforme em viagens com datas.</span></span></a>
+        <a class="rule-card" href="/pt/learn/travel-history-with-ai"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>A partir do seu e-mail, com IA</strong><span>Um prompt pronto para copiar que monta suas viagens a partir dos e-mails de reserva.</span></span></a>
         <a class="rule-card" href="/pt/learn/flighty-flight-history-day-count"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>Usando seu histórico do Flighty</strong><span>Transformando voos em dias em cada país.</span></span></a>
-        <a class="rule-card" href="/pt/learn/does-a-layover-count-as-visiting-a-country"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>Uma escala conta como visita?</strong><span>Por que a imigração, a contagem de dias e as listas de viagem respondem de formas diferentes.</span></span></a>
-        <a class="rule-card" href="/pt/learn/travel-history-for-visa-applications"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>Histórico de viagens para um pedido</strong><span>O que o registro costuma exigir, e onde as instruções oficiais têm prioridade.</span></span></a>
+        <a class="rule-card" href="/pt/learn/travel-history-template-visa-application"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>Modelo gratuito de histórico de viagens</strong><span>Um CSV com uma linha por estadia, pronto para copiar em um formulário de visto ou cidadania.</span></span></a>
       </div>
       <p class="hx-uc-more"><a href="/pt/learn/">Todas as regras de viagem</a></p>
     </div>

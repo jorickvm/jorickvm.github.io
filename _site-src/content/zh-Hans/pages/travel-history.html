@@ -5,7 +5,7 @@
     <div class="hx-uc-wrap hx-uc-hero-grid">
       <div class="hx-uc-hero-copy">
         <h1>去过的每一个国家，<wbr>都点亮在<wbr>一张地图上。</h1>
-        <p class="hx-lede">从照片、Flighty 记录或 CSV 文件找回过去的行程。在地图上查看到访国家、确认总数，并在旅行时持续更新记录。</p>
+        <p class="hx-lede">从照片、Google 地图时间轴、Flighty 记录或 CSV 文件找回过去的行程。在地图上查看到访国家、确认总数，并在旅行时持续更新记录。</p>
         <div class="hx-actions">
           <a class="hx-btn" data-hx-hero-cta href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> {{t:cta.get_app}}</a>
         </div>
@@ -37,6 +37,70 @@
     </div>
   </section>
 
+  <section class="hx-uc-section" aria-labelledby="countries-title">
+    <div class="hx-uc-wrap">
+      <div class="hx-uc-head">
+        <h2 class="hx-uc-h2" id="countries-title">你去过多少个国家？</h2>
+        <p>在地图上标记，查看 195 个国家中到访了多少个。选择的内容不会离开这个页面。</p>
+      </div>
+<section class="country-checklist country-checklist-compact" data-country-checklist aria-labelledby="countries-title">
+<div class="cal-box" data-country-picker hidden>
+<output class="country-checklist-count cal-headline" data-country-count data-count-template="{total} 个国家中，已到访 {count} 个。" aria-live="polite" aria-atomic="true">195 个国家中，已到访 0 个。</output>
+<div class="country-checklist-progress" aria-hidden="true"><span data-country-progress></span></div>
+<div class="country-checklist-map" data-country-map hidden>
+<div class="country-checklist-map-canvas" data-country-map-canvas></div>
+</div>
+<p class="cal-hint">在地图上选择国家。选择一个大洲可以放大。</p>
+<!-- COUNTRY_CHECKLIST_FILTERS -->
+<div class="country-checklist-search">
+<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg>
+<input type="search" class="cal-country-input" data-country-search aria-label="搜索国家或地区" placeholder="搜索国家或地区" autocomplete="off" spellcheck="false" aria-controls="country-checklist-options">
+</div>
+<div class="country-checklist-picked" data-country-picked hidden>
+<div class="country-checklist-picked-head"><strong>已到访</strong><button type="button" class="country-checklist-clear" data-country-clear>全部清除</button></div>
+<div class="country-checklist-picked-list" data-country-picked-list></div>
+</div>
+<div id="country-checklist-options" class="country-checklist-options" data-country-options>
+<!-- COUNTRY_CHECKLIST -->
+</div>
+<p class="cal-empty" data-country-empty hidden>找不到符合的国家或地区</p>
+<div class="country-checklist-result" data-country-result hidden><p class="country-checklist-result-title">总数背后的行程，也一起留下。</p><p>AtlasDays 为国家总数加上日期、到访地图，以及根据照片生成的行程建议。</p></div>
+<button type="button" class="cal-import country-checklist-track" disabled data-country-track>在 AtlasDays 中继续追踪</button>
+</div>
+<dialog class="cal-dialog cal-dialog-steps" data-country-dialog aria-labelledby="countries-import-title">
+<div class="cal-dialog-head">
+<img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+<div>
+<p class="cal-dialog-title" id="countries-import-title"><span data-cal-on="computer">在 iPhone 或 iPad 上继续</span><span data-cal-on="phone">在 AtlasDays 中打开</span></p>
+<p class="cal-dialog-sub">旅途中也能持续更新到访地图。免费下载 AtlasDays。</p>
+</div>
+</div>
+<div class="cal-dialog-scan" data-cal-on="computer">
+<div class="cal-qr" data-cal-qr></div>
+<div class="cal-scan-copy"><p class="cal-scan-lead">扫描二维码，在 AtlasDays 中打开所选国家。</p></div>
+</div>
+<ol class="cal-steps" data-cal-on="phone">
+<li>
+<strong>在 App 中打开所选国家</strong>
+<span>核对无误后轻点“导入”。在此之前，不会保存任何内容。</span>
+<a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">在 AtlasDays 中打开</a>
+</li>
+<li data-cal-store>
+<strong>获取 AtlasDays</strong>
+<span>可在 App Store 免费下载，适用于 iPhone 和 iPad。</span>
+<a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a>
+</li>
+</ol>
+<div class="cal-dialog-foot">
+<p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>将国家下载为 CSV 文件</button><span data-cal-downloaded hidden>请在 iPhone 上用 AtlasDays 打开这个文件。</span></p>
+<button type="button" data-cal-close>关闭</button>
+</div>
+</dialog>
+</section>
+      <p class="hx-uc-more"><a href="/zh-Hans/learn/countries-visited-map">搜索完整的国家列表</a></p>
+    </div>
+  </section>
+
   <section class="hx-uc-section" aria-labelledby="how-title">
     <div class="hx-uc-wrap">
       <div class="hx-uc-head">
@@ -63,7 +127,7 @@
           <li class="hx-step is-active" data-hx-step="0">
             <p class="hx-step-label">第 1 步</p>
             <h3>导入过去的行程</h3>
-            <div class="hx-step-body">从照片、Flighty 或 CSV 文件导入多年的行程，也可以手动添加。每一次导入都先经你确认，才会保存。 <a href="/zh-Hans/help/getting-started">添加行程的几种方式</a></div>
+            <div class="hx-step-body">从照片、Google 地图时间轴、Flighty 或 CSV 文件导入多年的行程，也可以手动添加。每一次导入都先经你确认，才会保存。 <a href="/zh-Hans/help/getting-started">添加行程的几种方式</a></div>
           </li>
           <li class="hx-step" data-hx-step="1">
             <p class="hx-step-label">第 2 步</p>
@@ -86,15 +150,15 @@
     <div class="hx-uc-wrap">
       <div class="hx-uc-head">
         <h2 class="hx-uc-h2" id="deeper-title">深入了解</h2>
-        <p>用通俗的语言，讲清数字背后的规定。</p>
+        <p>用手头已有的资料，整理出旅行记录的指南。</p>
       </div>
       <div class="rule-cards">
         <a class="rule-card" href="/zh-Hans/learn/rebuild-travel-history-from-passport-stamps-emails-photos"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>重建旅行记录</strong><span>哪些资料最有说服力，以及如何如实处理缺口。</span></span></a>
-        <a class="rule-card" href="/zh-Hans/learn/how-many-countries-in-the-world"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>世界上有多少个国家？</strong><span>为什么通常的答案是 195，以及旅行者为什么还会碰到别的数字。</span></span></a>
-        <a class="rule-card" href="/zh-Hans/learn/travel-history-template-visa-application"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>免费旅行记录模板</strong><span>一份每次停留占一行的 CSV，可以直接抄进签证或入籍申请表。</span></span></a>
+        <a class="rule-card" href="/zh-Hans/learn/travel-history-from-iphone-photos"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>从 iPhone 照片开始</strong><span>照片图库早已记下你去过的地方，把它变成行程和地图。</span></span></a>
+        <a class="rule-card" href="/zh-Hans/learn/travel-history-from-google-maps-timeline"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>从 Google 地图时间轴开始</strong><span>在手机上导出时间轴，整理成带日期的行程。</span></span></a>
+        <a class="rule-card" href="/zh-Hans/learn/travel-history-with-ai"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>用 AI 从邮箱找回</strong><span>一段可直接复制的提示词，从预订邮件整理出你的行程。</span></span></a>
         <a class="rule-card" href="/zh-Hans/learn/flighty-flight-history-day-count"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>用 Flighty 航班记录计算天数</strong><span>把航班记录变成在每个国家的天数。</span></span></a>
-        <a class="rule-card" href="/zh-Hans/learn/does-a-layover-count-as-visiting-a-country"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>转机算不算？</strong><span>为什么移民规定、天数计算和旅行清单给出的答案各不相同。</span></span></a>
-        <a class="rule-card" href="/zh-Hans/learn/travel-history-for-visa-applications"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>申请用的旅行记录</strong><span>这份记录通常要包含什么，以及哪些情况下应以官方说明为准。</span></span></a>
+        <a class="rule-card" href="/zh-Hans/learn/travel-history-template-visa-application"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>免费旅行记录模板</strong><span>一份每次停留占一行的 CSV，可以直接抄进签证或入籍申请表。</span></span></a>
       </div>
       <p class="hx-uc-more"><a href="/zh-Hans/learn/">所有旅行规定</a></p>
     </div>

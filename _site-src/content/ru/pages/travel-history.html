@@ -5,7 +5,7 @@
     <div class="hx-uc-wrap hx-uc-hero-grid">
       <div class="hx-uc-hero-copy">
         <h1>Каждая страна, в которой вы были, на одной карте.</h1>
-        <p class="hx-lede">Найдите прошлые поездки в фотографиях, истории Flighty или CSV-файлах. Посмотрите посещённые страны на карте, узнайте свой итог и дополняйте записи во время путешествий.</p>
+        <p class="hx-lede">Найдите прошлые поездки в фотографиях, хронологии Google Карт, истории Flighty или CSV-файлах. Посмотрите посещённые страны на карте, узнайте свой итог и дополняйте записи во время путешествий.</p>
         <div class="hx-actions">
           <a class="hx-btn" data-hx-hero-cta href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> {{t:cta.get_app}}</a>
         </div>
@@ -37,6 +37,70 @@
     </div>
   </section>
 
+  <section class="hx-uc-section" aria-labelledby="countries-title">
+    <div class="hx-uc-wrap">
+      <div class="hx-uc-head">
+        <h2 class="hx-uc-h2" id="countries-title">Сколько стран вы посетили?</h2>
+        <p>Отметьте их на карте и посмотрите свой итог из 195. Ваш выбор не покидает эту страницу.</p>
+      </div>
+<section class="country-checklist country-checklist-compact" data-country-checklist aria-labelledby="countries-title">
+<div class="cal-box" data-country-picker hidden>
+<output class="country-checklist-count cal-headline" data-country-count data-count-template="Посещено стран: {count} из {total}." aria-live="polite" aria-atomic="true">Посещено стран: 0 из 195.</output>
+<div class="country-checklist-progress" aria-hidden="true"><span data-country-progress></span></div>
+<div class="country-checklist-map" data-country-map hidden>
+<div class="country-checklist-map-canvas" data-country-map-canvas></div>
+</div>
+<p class="cal-hint">Выберите страну на карте. Выберите континент, чтобы приблизить его.</p>
+<!-- COUNTRY_CHECKLIST_FILTERS -->
+<div class="country-checklist-search">
+<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg>
+<input type="search" class="cal-country-input" data-country-search aria-label="Поиск стран" placeholder="Поиск стран" autocomplete="off" spellcheck="false" aria-controls="country-checklist-options">
+</div>
+<div class="country-checklist-picked" data-country-picked hidden>
+<div class="country-checklist-picked-head"><strong>Посещено</strong><button type="button" class="country-checklist-clear" data-country-clear>Очистить всё</button></div>
+<div class="country-checklist-picked-list" data-country-picked-list></div>
+</div>
+<div id="country-checklist-options" class="country-checklist-options" data-country-options>
+<!-- COUNTRY_CHECKLIST -->
+</div>
+<p class="cal-empty" data-country-empty hidden>Страна не найдена</p>
+<div class="country-checklist-result" data-country-result hidden><p class="country-checklist-result-title">Сохраните поездки, стоящие за вашим итогом.</p><p>AtlasDays дополняет число стран датами, картой посещений и предложениями поездок по фотографиям.</p></div>
+<button type="button" class="cal-import country-checklist-track" disabled data-country-track>Отслеживать в AtlasDays</button>
+</div>
+<dialog class="cal-dialog cal-dialog-steps" data-country-dialog aria-labelledby="countries-import-title">
+<div class="cal-dialog-head">
+<img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+<div>
+<p class="cal-dialog-title" id="countries-import-title"><span data-cal-on="computer">Продолжите на iPhone или iPad</span><span data-cal-on="phone">Открыть в AtlasDays</span></p>
+<p class="cal-dialog-sub">Ведите карту посещённых стран в поездках. Скачайте AtlasDays бесплатно.</p>
+</div>
+</div>
+<div class="cal-dialog-scan" data-cal-on="computer">
+<div class="cal-qr" data-cal-qr></div>
+<div class="cal-scan-copy"><p class="cal-scan-lead">Отсканируйте код, чтобы открыть свои страны в AtlasDays.</p></div>
+</div>
+<ol class="cal-steps" data-cal-on="phone">
+<li>
+<strong>Откройте свои страны в приложении</strong>
+<span>Проверьте их и нажмите «Импортировать». До этого ничего не сохраняется.</span>
+<a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">Открыть в AtlasDays</a>
+</li>
+<li data-cal-store>
+<strong>Скачайте AtlasDays</strong>
+<span>Бесплатно в App Store для iPhone и iPad.</span>
+<a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a>
+</li>
+</ol>
+<div class="cal-dialog-foot">
+<p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>Скачать страны в файле CSV</button><span data-cal-downloaded hidden>Откройте этот файл в AtlasDays на iPhone.</span></p>
+<button type="button" data-cal-close>Закрыть</button>
+</div>
+</dialog>
+</section>
+      <p class="hx-uc-more"><a href="/ru/learn/countries-visited-map">Поиск по полному списку стран</a></p>
+    </div>
+  </section>
+
   <section class="hx-uc-section" aria-labelledby="how-title">
     <div class="hx-uc-wrap">
       <div class="hx-uc-head">
@@ -63,7 +127,7 @@
           <li class="hx-step is-active" data-hx-step="0">
             <p class="hx-step-label">Шаг 1</p>
             <h3>Перенесите прошлое</h3>
-            <div class="hx-step-body">Импортируйте поездки за долгие годы из фото, Flighty или файла CSV, либо добавляйте их вручную. Каждый импорт вы проверяете перед сохранением. <a href="/ru/help/getting-started">Способы добавить поездки</a></div>
+            <div class="hx-step-body">Импортируйте поездки за долгие годы из фото, хронологии Google Карт, Flighty или файла CSV, либо добавляйте их вручную. Каждый импорт вы проверяете перед сохранением. <a href="/ru/help/getting-started">Способы добавить поездки</a></div>
           </li>
           <li class="hx-step" data-hx-step="1">
             <p class="hx-step-label">Шаг 2</p>
@@ -86,15 +150,15 @@
     <div class="hx-uc-wrap">
       <div class="hx-uc-head">
         <h2 class="hx-uc-h2" id="deeper-title">Узнать больше</h2>
-        <p>Понятные руководства о правилах, которые стоят за цифрами.</p>
+        <p>Руководства о том, как собрать историю поездок из того, что у вас уже есть.</p>
       </div>
       <div class="rule-cards">
         <a class="rule-card" href="/ru/learn/rebuild-travel-history-from-passport-stamps-emails-photos"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>Как восстановить историю поездок</strong><span>Какие источники надёжнее всего и как честно обойтись с пробелами в записях.</span></span></a>
-        <a class="rule-card" href="/ru/learn/how-many-countries-in-the-world"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>Сколько всего стран в мире?</strong><span>Почему обычно называют число 195 и откуда берутся другие цифры.</span></span></a>
-        <a class="rule-card" href="/ru/learn/travel-history-template-visa-application"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>Бесплатный шаблон истории поездок</strong><span>Файл CSV с одной строкой на каждое пребывание, готов для переноса в анкету на визу или гражданство.</span></span></a>
+        <a class="rule-card" href="/ru/learn/travel-history-from-iphone-photos"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>Из фото на iPhone</strong><span>В вашей медиатеке уже записано, где вы были. Превратите её в поездки и карту.</span></span></a>
+        <a class="rule-card" href="/ru/learn/travel-history-from-google-maps-timeline"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>Из хронологии Google Карт</strong><span>Экспортируйте хронологию с телефона и превратите её в поездки с датами.</span></span></a>
+        <a class="rule-card" href="/ru/learn/travel-history-with-ai"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>Из почты, с помощью ИИ</strong><span>Готовый запрос, который соберёт ваши поездки из писем о бронировании.</span></span></a>
         <a class="rule-card" href="/ru/learn/flighty-flight-history-day-count"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>Как использовать историю Flighty</strong><span>Как превратить рейсы в дни, проведённые в каждой стране.</span></span></a>
-        <a class="rule-card" href="/ru/learn/does-a-layover-count-as-visiting-a-country"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>Считается ли пересадка визитом?</strong><span>Почему иммиграционная служба, подсчёт дней и список посещённых стран отвечают по-разному.</span></span></a>
-        <a class="rule-card" href="/ru/learn/travel-history-for-visa-applications"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>История поездок для анкеты</strong><span>Что обычно требуется в записи и когда официальные инструкции важнее.</span></span></a>
+        <a class="rule-card" href="/ru/learn/travel-history-template-visa-application"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>Бесплатный шаблон истории поездок</strong><span>Файл CSV с одной строкой на каждое пребывание, готов для переноса в анкету на визу или гражданство.</span></span></a>
       </div>
       <p class="hx-uc-more"><a href="/ru/learn/">Все правила поездок</a></p>
     </div>

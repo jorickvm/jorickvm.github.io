@@ -83,6 +83,7 @@ html[data-theme="light"] .country-checklist-map { --map-land: #C7D2DB; --map-lan
 /* Result and handoff */
 .country-checklist-result { margin-top: 18px; }
 .country-checklist-result p { margin: 4px 0 0; color: var(--muted); font-size: 0.9rem; }
+.country-checklist-result .country-checklist-result-title { margin: 0; color: var(--text); font-size: 1rem; font-weight: 700; }
 .country-checklist-track { min-height: 44px; }
 .country-checklist-track:disabled { opacity: 0.5; cursor: default; }
 .country-checklist-cta { padding: 20px 0 0; margin-top: 20px; border: 0; border-top: 1px solid var(--line); border-radius: 0; background: transparent; }
@@ -91,3 +92,9 @@ html[data-theme="light"] .country-checklist-map { --map-land: #C7D2DB; --map-lan
 @media (prefers-reduced-motion: reduce) {
   .country-checklist-world .land, .country-checklist-progress span, .country-checklist-switch::after { transition: none; }
 }
+
+/* Compact embed: the map and the count, without the searchable list */
+.country-checklist-compact .country-checklist-search,
+.country-checklist-compact .country-checklist-options,
+.country-checklist-compact .country-checklist-toggle,
+.country-checklist-compact .cal-empty { display: none; }

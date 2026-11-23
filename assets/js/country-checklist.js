@@ -418,6 +418,13 @@
     window.addEventListener("pageshow", update);
     update();
     picker.hidden = false;
-    if (map) loadMap();
+    // The map file is large, so it loads when the map is about to be seen.
+    if (map && "IntersectionObserver" in window) {
+      var watcher = new IntersectionObserver(function (entries) {
+        if (!entries.some(function (entry) { return entry.isIntersecting; })) return;
+        watcher.disconnect(); loadMap();
+      }, { rootMargin: "600px" });
+      watcher.observe(root);
+    } else if (map) loadMap();
   });
 })();

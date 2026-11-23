@@ -5,7 +5,7 @@
     <div class="hx-uc-wrap hx-uc-hero-grid">
       <div class="hx-uc-hero-copy">
         <h1>다녀온 모든 나라를, 지도 한 장에.</h1>
-        <p class="hx-lede">사진, Flighty 기록, CSV 파일에서 지난 여행을 찾을 수 있습니다. 방문 국가를 지도에서 확인하고 합계를 계산하며 여행할 때마다 같은 기록을 업데이트합니다.</p>
+        <p class="hx-lede">사진, Google 지도 타임라인, Flighty 기록, CSV 파일에서 지난 여행을 찾을 수 있습니다. 방문 국가를 지도에서 확인하고 합계를 계산하며 여행할 때마다 같은 기록을 업데이트합니다.</p>
         <div class="hx-actions">
           <a class="hx-btn" data-hx-hero-cta href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544"><svg width="15" height="18" viewBox="0 0 384 512" fill="currentColor" aria-hidden="true"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg> {{t:cta.get_app}}</a>
         </div>
@@ -37,6 +37,70 @@
     </div>
   </section>
 
+  <section class="hx-uc-section" aria-labelledby="countries-title">
+    <div class="hx-uc-wrap">
+      <div class="hx-uc-head">
+        <h2 class="hx-uc-h2" id="countries-title">지금까지 몇 개국을 다녀왔습니까?</h2>
+        <p>지도에 표시하면 195개국 중 몇 곳을 방문했는지 확인할 수 있습니다. 선택한 내용은 이 페이지 밖으로 나가지 않습니다.</p>
+      </div>
+<section class="country-checklist country-checklist-compact" data-country-checklist aria-labelledby="countries-title">
+<div class="cal-box" data-country-picker hidden>
+<output class="country-checklist-count cal-headline" data-country-count data-count-template="{total}개국 중 {count}개국 방문." aria-live="polite" aria-atomic="true">195개국 중 0개국 방문.</output>
+<div class="country-checklist-progress" aria-hidden="true"><span data-country-progress></span></div>
+<div class="country-checklist-map" data-country-map hidden>
+<div class="country-checklist-map-canvas" data-country-map-canvas></div>
+</div>
+<p class="cal-hint">지도에서 국가를 선택하십시오. 대륙을 고르면 확대됩니다.</p>
+<!-- COUNTRY_CHECKLIST_FILTERS -->
+<div class="country-checklist-search">
+<svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg>
+<input type="search" class="cal-country-input" data-country-search aria-label="국가 검색" placeholder="국가 검색" autocomplete="off" spellcheck="false" aria-controls="country-checklist-options">
+</div>
+<div class="country-checklist-picked" data-country-picked hidden>
+<div class="country-checklist-picked-head"><strong>방문한 국가</strong><button type="button" class="country-checklist-clear" data-country-clear>모두 지우기</button></div>
+<div class="country-checklist-picked-list" data-country-picked-list></div>
+</div>
+<div id="country-checklist-options" class="country-checklist-options" data-country-options>
+<!-- COUNTRY_CHECKLIST -->
+</div>
+<p class="cal-empty" data-country-empty hidden>일치하는 국가가 없습니다</p>
+<div class="country-checklist-result" data-country-result hidden><p class="country-checklist-result-title">합계에 담긴 여행도 기록</p><p>AtlasDays는 국가 수에 날짜, 방문 지도, 사진 기반 여행 제안을 더합니다.</p></div>
+<button type="button" class="cal-import country-checklist-track" disabled data-country-track>AtlasDays에서 관리하기</button>
+</div>
+<dialog class="cal-dialog cal-dialog-steps" data-country-dialog aria-labelledby="countries-import-title">
+<div class="cal-dialog-head">
+<img class="cal-dialog-icon" src="/assets/brand/app-icon-qr.webp" alt="" width="44" height="44" />
+<div>
+<p class="cal-dialog-title" id="countries-import-title"><span data-cal-on="computer">iPhone 또는 iPad에서 계속하기</span><span data-cal-on="phone">AtlasDays에서 열기</span></p>
+<p class="cal-dialog-sub">여행하는 동안 방문 지도를 계속 채워 가십시오. AtlasDays를 무료로 받을 수 있습니다.</p>
+</div>
+</div>
+<div class="cal-dialog-scan" data-cal-on="computer">
+<div class="cal-qr" data-cal-qr></div>
+<div class="cal-scan-copy"><p class="cal-scan-lead">코드를 스캔하여 선택한 국가를 AtlasDays에서 여십시오.</p></div>
+</div>
+<ol class="cal-steps" data-cal-on="phone">
+<li>
+<strong>앱에서 선택한 국가 열기</strong>
+<span>확인한 다음 '가져오기'를 누르십시오. 그 전에는 아무것도 저장되지 않습니다.</span>
+<a class="cal-dialog-primary" data-cal-open href="https://go.atlasdays.app/import/">AtlasDays에서 열기</a>
+</li>
+<li data-cal-store>
+<strong>AtlasDays 받기</strong>
+<span>App Store에서 무료로 받을 수 있는 iPhone 및 iPad용 앱입니다.</span>
+<a class="cal-dialog-store" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">App Store</a>
+</li>
+</ol>
+<div class="cal-dialog-foot">
+<p data-cal-alt><button type="button" class="cal-dialog-link" data-cal-download>국가를 CSV 파일로 다운로드</button><span data-cal-downloaded hidden>iPhone의 AtlasDays에서 이 파일을 여십시오.</span></p>
+<button type="button" data-cal-close>닫기</button>
+</div>
+</dialog>
+</section>
+      <p class="hx-uc-more"><a href="/ko/learn/countries-visited-map">전체 국가 목록에서 검색하기</a></p>
+    </div>
+  </section>
+
   <section class="hx-uc-section" aria-labelledby="how-title">
     <div class="hx-uc-wrap">
       <div class="hx-uc-head">
@@ -63,7 +127,7 @@
           <li class="hx-step is-active" data-hx-step="0">
             <p class="hx-step-label">1단계</p>
             <h3>지난 여행 가져오기</h3>
-            <div class="hx-step-body">사진, Flighty, CSV 파일에서 몇 년 치 여행을 가져오거나 직접 입력하십시오. 가져온 여행은 저장되기 전에 모두 직접 확인합니다. <a href="/ko/help/getting-started">여행을 추가하는 방법</a></div>
+            <div class="hx-step-body">사진, Google 지도 타임라인, Flighty, CSV 파일에서 몇 년 치 여행을 가져오거나 직접 입력하십시오. 가져온 여행은 저장되기 전에 모두 직접 확인합니다. <a href="/ko/help/getting-started">여행을 추가하는 방법</a></div>
           </li>
           <li class="hx-step" data-hx-step="1">
             <p class="hx-step-label">2단계</p>
@@ -86,15 +150,15 @@
     <div class="hx-uc-wrap">
       <div class="hx-uc-head">
         <h2 class="hx-uc-h2" id="deeper-title">더 알아보기</h2>
-        <p>숫자 뒤에 있는 규정을 알기 쉽게 풀어 쓴 가이드.</p>
+        <p>이미 가지고 있는 자료로 여행 기록을 만드는 가이드.</p>
       </div>
       <div class="rule-cards">
         <a class="rule-card" href="/ko/learn/rebuild-travel-history-from-passport-stamps-emails-photos"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>여행 기록 재구성하기</strong><span>어떤 자료가 가장 확실한지, 빈 구간은 어떻게 정직하게 다루는지.</span></span></a>
-        <a class="rule-card" href="/ko/learn/how-many-countries-in-the-world"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>세계에는 몇 개국이 있을까?</strong><span>보통 195개국이라고 답하는 이유와, 여행자가 다른 숫자를 만나게 되는 이유.</span></span></a>
-        <a class="rule-card" href="/ko/learn/travel-history-template-visa-application"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>무료 여행 기록 양식</strong><span>체류 한 번을 한 줄로 정리한 CSV. 비자나 시민권 신청서에 그대로 옮겨 적을 수 있습니다.</span></span></a>
+        <a class="rule-card" href="/ko/learn/travel-history-from-iphone-photos"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>iPhone 사진으로</strong><span>사진 보관함에는 다녀온 곳이 이미 저장되어 있습니다. 이를 여행과 지도로 바꾸는 방법.</span></span></a>
+        <a class="rule-card" href="/ko/learn/travel-history-from-google-maps-timeline"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>Google 지도 타임라인으로</strong><span>휴대전화에서 타임라인을 내보내 날짜가 있는 여행으로 바꾸는 방법.</span></span></a>
+        <a class="rule-card" href="/ko/learn/travel-history-with-ai"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>AI로 받은 편지함에서</strong><span>예약 이메일에서 여행을 정리해 주는, 복사해서 바로 쓰는 프롬프트.</span></span></a>
         <a class="rule-card" href="/ko/learn/flighty-flight-history-day-count"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>Flighty 기록 활용하기</strong><span>비행 기록을 나라별 체류 일수로 바꾸는 방법.</span></span></a>
-        <a class="rule-card" href="/ko/learn/does-a-layover-count-as-visiting-a-country"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>경유도 방문으로 계산됩니까?</strong><span>출입국 심사, 일수 계산, 여행 목록의 답이 서로 다른 이유.</span></span></a>
-        <a class="rule-card" href="/ko/learn/travel-history-for-visa-applications"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>신청서용 여행 기록</strong><span>기록에 보통 무엇이 필요한지, 그리고 공식 안내가 우선하는 경우.</span></span></a>
+        <a class="rule-card" href="/ko/learn/travel-history-template-visa-application"><span class="rule-icon"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4.5h9.5A3.5 3.5 0 0 1 18 8v11.5H8.5A3.5 3.5 0 0 1 5 16V4.5Z"/><path d="M5 16a3.5 3.5 0 0 1 3.5-3.5H18"/></svg></span><span class="rule-text"><strong>무료 여행 기록 양식</strong><span>체류 한 번을 한 줄로 정리한 CSV. 비자나 시민권 신청서에 그대로 옮겨 적을 수 있습니다.</span></span></a>
       </div>
       <p class="hx-uc-more"><a href="/ko/learn/">모든 여행 규정 보기</a></p>
     </div>

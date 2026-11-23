@@ -2227,6 +2227,7 @@ def render_hub(
     prefix = asset_prefix(str(hub["path"]))
     source_path = str(hub.get("social_source_path", hub["path"]))
     code = str(locale["code"])
+    content = render_country_checklist(content, code)
     switcher = render_language_switcher(source_path, locales, translations, code, strings)
     header = render_header(hub, header_template, prefix, switcher)
     nav_script = render_nav_script(prefix, code, strings)
