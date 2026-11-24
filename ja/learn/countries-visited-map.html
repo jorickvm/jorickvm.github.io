@@ -79,7 +79,7 @@
         "name": "香港やグリーンランドなどの地域にも印を付けられますか？",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "はい。「地域とその他の場所を表示」をオンにするか、地図でその場所を選びます。地域は、国の合計の横に表示されます。"
+          "text": "はい。地図でその場所を選ぶか、合計を195から「すべての場所」に切り替えると、リストで見つけられます。地域は「すべての場所」の数に含まれ、195か国には含まれません。"
         }
       },
       {
@@ -135,7 +135,7 @@
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
   <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261119d" />
-  <link rel="stylesheet" href="../../assets/css/country-checklist.css?v=20261124a" />
+  <link rel="stylesheet" href="../../assets/css/country-checklist.css?v=20261124b" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">本文へスキップ</a>
@@ -217,18 +217,17 @@
     <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb"><a href="/ja/">AtlasDays</a> / <a href="/ja/learn/">旅行ルール</a> / <a href="/ja/learn/calculators">計算ツール</a></nav>
 <h1>訪れた国を塗りつぶせる世界地図と訪問国カウンター</h1>
-<p class="subtitle">行ったことのある国に印を付けて、195か国のうち何か国を訪れたかを、拡大できる地図で確認できます。選んだ内容がこのページの外に送られることはありません。</p>
+<p class="subtitle">行ったことのある国に印を付けて、195か国のうち何か国を訪れたかを、拡大できる地図で確認できます。そのあと、AtlasDaysで記録を続けることも、リストをCSVファイルでダウンロードすることもできます。</p>
 <p class="verified">最終確認：2026年11月</p>
 <section class="country-checklist" data-country-checklist data-usage-placement="standalone" aria-labelledby="country-checklist-title">
 <h2 id="country-checklist-title">訪れた場所に印を付ける</h2>
 <div class="cal-box" data-country-picker hidden>
-<output class="country-checklist-count cal-headline" data-country-count data-count-template="{total}か国中{count}か国を訪問。" aria-live="polite" aria-atomic="true">195か国中0か国を訪問。</output>
-<div class="country-checklist-progress" aria-hidden="true"><span data-country-progress></span></div>
+<div class="country-checklist-tally"><output class="country-checklist-count" data-country-count aria-live="polite" aria-atomic="true"><strong>0</strong>か国</output><label class="country-checklist-scope"><span data-country-total><strong>195</strong>中</span><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 8 4 4 4-4"/></svg><select data-country-scope aria-label="国の数え方"><option value="countries" data-total="195">195か国</option><option value="all" data-total="250">すべての場所</option></select></label></div><div class="country-checklist-progress" aria-hidden="true"><span data-country-progress></span></div>
 <div class="country-checklist-map" data-country-map hidden>
 <div class="country-checklist-map-canvas" data-country-map-canvas></div>
 </div>
 <p class="cal-hint">地図で国を選ぶか、リストから探します。大陸を選ぶと拡大表示されます。</p>
-<div class="country-checklist-continents" role="group" aria-label="大陸"><button type="button" class="country-checklist-continent" data-country-continent value="all" aria-pressed="true">すべての大陸<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="africa" aria-pressed="false">アフリカ<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="asia" aria-pressed="false">アジア<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="europe" aria-pressed="false">ヨーロッパ<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="northAmerica" aria-pressed="false">北アメリカ<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="southAmerica" aria-pressed="false">南アメリカ<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="oceania" aria-pressed="false">オセアニア<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="antarctica" aria-pressed="false" hidden>南極大陸<span class="country-checklist-continent-count" data-continent-count hidden></span></button></div><button type="button" role="switch" aria-checked="false" class="country-checklist-toggle" data-country-territories><span>地域とその他の場所を表示</span><span class="country-checklist-switch" aria-hidden="true"></span></button><script type="application/json" data-country-strings>{"zoomIn": "拡大", "zoomOut": "縮小", "resetMap": "地図全体を表示", "remove": "{name}を解除", "continent": "大陸", "allContinents": "すべての大陸", "showTerritories": "地域とその他の場所を表示", "countWithExtras": "{total}か国中{count}か国と、{extras}を訪問。", "territoryCount": {"one": "{n}地域", "other": "{n}地域"}, "otherCount": {"one": "その他の場所{n}か所", "other": "その他の場所{n}か所"}, "continentNames": {"africa": "アフリカ", "asia": "アジア", "europe": "ヨーロッパ", "northAmerica": "北アメリカ", "southAmerica": "南アメリカ", "oceania": "オセアニア", "antarctica": "南極大陸"}}</script>
+<div class="country-checklist-continents" role="group" aria-label="大陸"><button type="button" class="country-checklist-continent" data-country-continent value="all" aria-pressed="true">すべての大陸<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="africa" aria-pressed="false">アフリカ<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="asia" aria-pressed="false">アジア<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="europe" aria-pressed="false">ヨーロッパ<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="northAmerica" aria-pressed="false">北アメリカ<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="southAmerica" aria-pressed="false">南アメリカ<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="oceania" aria-pressed="false">オセアニア<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="antarctica" aria-pressed="false" hidden>南極大陸<span class="country-checklist-continent-count" data-continent-count hidden></span></button></div><script type="application/json" data-country-strings>{"zoomIn": "拡大", "zoomOut": "縮小", "resetMap": "地図全体を表示", "remove": "{name}を解除", "continent": "大陸", "allContinents": "すべての大陸", "continentNames": {"africa": "アフリカ", "asia": "アジア", "europe": "ヨーロッパ", "northAmerica": "北アメリカ", "southAmerica": "南アメリカ", "oceania": "オセアニア", "antarctica": "南極大陸"}, "countries": {"other": "{n}か国"}, "places": {"other": "{n}か所"}, "ofTotal": "{n}中", "scopeCountries": "195か国", "scopeAll": "すべての場所", "scopeLabel": "国の数え方"}</script>
 <div class="country-checklist-search">
 <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg>
 <input type="search" class="cal-country-input" data-country-search aria-label="国を検索" placeholder="国を検索" autocomplete="off" spellcheck="false" aria-controls="country-checklist-options">
@@ -491,7 +490,7 @@
 </div>
 <p class="cal-empty" data-country-empty hidden>一致する国はありません</p>
 <div class="country-checklist-result" data-country-result hidden><h3>合計のもとになる旅行も記録。</h3><p>AtlasDaysなら、訪問国の合計に日付や地図を加え、写真から旅行候補を見つけられます。</p></div>
-<button type="button" class="cal-import country-checklist-track" disabled data-country-track>AtlasDaysで記録する</button>
+<button type="button" class="cal-import country-checklist-track" hidden data-country-track>AtlasDaysで記録する</button>
 </div>
 <div class="cta-box country-checklist-cta"><p>世界の国の数と、自分が訪れた国の数。AtlasDaysは写真から過去の旅行を見つけ、訪問国をプライベートな世界地図に表示できます。</p><a class="cta-btn" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web-article&amp;mt=8">アプリを入手</a><p class="cta-micro">訪問国の地図と集計は無料。アカウント不要。</p></div>
 <dialog class="cal-dialog cal-dialog-steps" data-country-dialog aria-labelledby="countries-import-title">
@@ -525,7 +524,7 @@
 </dialog>
 </section>
 <h2 id="section-2">ここでの「国」の数え方</h2>
-<p>合計には、最も一般的な答えである195か国を使っています。国連加盟193か国に、聖座とパレスチナ国を加えた数です。地域を表示するように切り替えると、グリーンランド、プエルトリコ、香港、南極大陸などの場所にも印を付けられます。これらは195か国の中には入らず、その横に別に数えます。<a href="/ja/learn/how-many-countries-in-the-world">世界の国の数</a>では、この数え方をオリンピック、FIFA、Travelers' Century Clubのリストと比べています。</p>
+<p>合計には、最も一般的な答えである195か国を使っています。国連加盟193か国に、聖座とパレスチナ国を加えた数です。合計を「すべての場所」に切り替えると、代わりに250か所で数えます。195か国に、グリーンランド、プエルトリコ、香港、南極大陸などの地域と、コソボ、台湾を加えた数です。<a href="/ja/learn/how-many-countries-in-the-world">世界の国の数</a>では、この数え方をオリンピック、FIFA、Travelers' Century Clubのリストと比べています。</p>
 <h2 id="section-3">「訪問」の数え方</h2>
 <p>これは自分で決めることで、旅行者の間でも意見が分かれます。多くの人は、入国審査を通ってその国で時間を過ごしたら訪問と数えます。空港を含め、降り立った場所はすべて数える人もいます。基準を1つ決め、すべての国に同じ基準を使ってください。一般的な基準は<a href="/ja/learn/does-a-layover-count-as-visiting-a-country">乗り継ぎは訪問した国に含まれるか</a>で説明しています。</p>
 <h2 id="section-4">国の数から旅行履歴へ</h2>
@@ -533,7 +532,7 @@
 <h2 id="section-5">よくある質問</h2>
 <h3>国はいくつありますか？</h3><p>最も一般的な数え方では195か国です。国連加盟国が193か国、オブザーバー国が2か国です。ほかのリストは、地域、スポーツ団体、国内の地方などを数えるため、193から300超まで幅があります。</p>
 <h3>選んだ内容は保存されたり、どこかに送られたりしますか？</h3><p>いいえ。このページの中だけにあり、ページを閉じると消えます。AtlasDaysで続けることを選んだ場合は、開いたリンクに国の情報が含まれ、端末上のアプリに直接渡されます。</p>
-<h3>香港やグリーンランドなどの地域にも印を付けられますか？</h3><p>はい。「地域とその他の場所を表示」をオンにするか、地図でその場所を選びます。地域は、国の合計の横に表示されます。</p>
+<h3>香港やグリーンランドなどの地域にも印を付けられますか？</h3><p>はい。地図でその場所を選ぶか、合計を195から「すべての場所」に切り替えると、リストで見つけられます。地域は「すべての場所」の数に含まれ、195か国には含まれません。</p>
 <h3>地図を残すにはどうすればよいですか？</h3><p>国を選んで「AtlasDaysで記録する」を選びます。アプリは訪問国の地図をiPhoneまたはiPadに保存し、旅をするたびに更新していきます。</p>
 
     <p class="learn-disclaimer"><strong>この記事について：</strong>AtlasDaysは一般的な情報を提供するもので、法律・税務・移民に関する助言ではありません。規則は変わり、結果は個別の事情によって異なります。AtlasDaysだけに頼らず、リンク先の公的情報を確認するか、専門家に相談してください。<br />© <a href="https://www.amcharts.com/svg-maps/" rel="nofollow">amCharts</a> · <a href="/assets/maps/SOURCES.txt">CC BY 4.0</a></p>
@@ -597,7 +596,7 @@
   <script src="../../assets/js/navigation.js?v=20261121a"></script>
   <script defer src="../../assets/js/import-qr.js?v=20261122a"></script>
   <script defer src="../../assets/js/calculator-usage.js?v=20261124a" data-endpoint="https://atlasdays-calculator-usage.jorickvm.workers.dev/collect"></script>
-  <script defer src="../../assets/js/country-checklist.js?v=20261124b"></script>
+  <script defer src="../../assets/js/country-checklist.js?v=20261124c"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on. */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

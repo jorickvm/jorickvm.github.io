@@ -4,9 +4,19 @@
 .country-checklist [hidden] { display: none !important; }
 
 /* Total and progress */
-.country-checklist-count { display: block; margin: 0 0 10px; font-size: 1.15rem; font-variant-numeric: tabular-nums; }
-.country-checklist-progress { height: 6px; margin: 0 0 16px; border-radius: 999px; background: var(--line); overflow: hidden; }
-.country-checklist-progress span { display: block; width: 0; height: 100%; border-radius: inherit; background: var(--brand); transition: width 240ms ease; }
+/* Count and bar, as the app's Visited card: "12 countries" left, "of 195" right,
+   the numbers large and rounded, the words small and muted. */
+.country-checklist-tally { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin: 0 0 12px; color: var(--muted); font-size: 1rem; line-height: 1.2; }
+.country-checklist-tally strong { color: var(--text); font-family: var(--font-rounded); font-size: 1.75rem; font-weight: 700; font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
+.country-checklist-count { display: block; white-space: nowrap; }
+.country-checklist-scope { position: relative; display: inline-flex; align-items: baseline; gap: 4px; white-space: nowrap; cursor: pointer; border-radius: 8px; }
+.country-checklist-scope svg { flex: 0 0 auto; width: 18px; height: 18px; align-self: center; color: var(--muted); }
+.country-checklist-scope select { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; font-size: 16px; }
+.country-checklist-scope:focus-within { outline: 2px solid var(--blue); outline-offset: 4px; }
+@media (hover: hover) and (pointer: fine) { .country-checklist-scope:hover svg { color: var(--text); } }
+.country-checklist-progress { --bar-from: #4B95D4; --bar-to: #599CD7; height: 24px; margin: 0 0 18px; border-radius: 8px; background: rgba(255, 255, 255, 0.07); overflow: hidden; }
+html[data-theme="light"] .country-checklist-progress { --bar-from: #5EA0D9; --bar-to: #68A5DB; background: rgba(0, 0, 0, 0.07); }
+.country-checklist-progress span { display: block; width: 0; height: 100%; border-radius: inherit; background: linear-gradient(to right, var(--bar-from), var(--bar-to)); transition: width 240ms ease; }
 
 /* Map: fills the box, click to mark, zoom and pan */
 .country-checklist-map { --map-land: #44494E; --map-land-hover: #5A6169; --map-border: #10181F; --map-sea: linear-gradient(180deg, #16222E 0%, #0F1820 100%); --map-visited: #4B95D4; --map-visited-light: #66A5DA; position: relative; margin: 0 0 14px; }
@@ -72,13 +82,6 @@ html[data-theme="light"] .country-checklist-map { --map-land: #C7D2DB; --map-lan
 .country-checklist-option:focus-visible { outline: 2px solid var(--blue); outline-offset: -2px; }
 @media (hover: hover) and (pointer: fine) { .country-checklist-option:hover { background: var(--blue-soft); } }
 
-/* Territories switch */
-.country-checklist-toggle { display: flex; align-items: center; justify-content: space-between; gap: 16px; width: 100%; min-height: 44px; margin: 0 0 4px; padding: 8px 0; border: 0; background: transparent; color: var(--muted); font: inherit; font-size: 0.9rem; text-align: left; cursor: pointer; }
-.country-checklist-switch { flex: 0 0 auto; width: 34px; height: 20px; padding: 2px; box-sizing: border-box; border-radius: 999px; background: var(--line-strong); }
-.country-checklist-switch::after { content: ""; display: block; width: 16px; height: 16px; border-radius: 50%; background: var(--text); transition: transform 160ms ease; }
-.country-checklist-toggle[aria-checked="true"] .country-checklist-switch { background: var(--blue); }
-.country-checklist-toggle[aria-checked="true"] .country-checklist-switch::after { transform: translateX(14px); background: #fff; }
-.country-checklist-toggle:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; border-radius: 4px; }
 
 /* Result and handoff */
 .country-checklist-result { margin-top: 18px; }
@@ -90,11 +93,10 @@ html[data-theme="light"] .country-checklist-map { --map-land: #C7D2DB; --map-lan
 .cta-box .cta-micro { margin: 14px 0 0; color: var(--muted); font-size: 0.88rem; }
 
 @media (prefers-reduced-motion: reduce) {
-  .country-checklist-world .land, .country-checklist-progress span, .country-checklist-switch::after { transition: none; }
+  .country-checklist-world .land, .country-checklist-progress span { transition: none; }
 }
 
 /* Compact embed: the map and the count, without the searchable list */
 .country-checklist-compact .country-checklist-search,
 .country-checklist-compact .country-checklist-options,
-.country-checklist-compact .country-checklist-toggle,
 .country-checklist-compact .cal-empty { display: none; }

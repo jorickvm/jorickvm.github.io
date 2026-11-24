@@ -1,12 +1,11 @@
 <nav class="breadcrumb"><a href="/pt/">AtlasDays</a> / <a href="/pt/learn/">Regras de viagem</a> / <a href="/pt/learn/calculators">Calculadoras</a></nav>
 <h1>Países que já visitei: mapa e contador</h1>
-<p class="subtitle">Marque os países onde você já esteve e veja seu total em 195, em um mapa com zoom. Nada do que você seleciona sai desta página.</p>
+<p class="subtitle">Marque os países onde você já esteve e veja seu total em 195, em um mapa com zoom. Depois, continue acompanhando no AtlasDays ou baixe sua lista em um arquivo CSV.</p>
 <p class="verified">Última verificação: novembro de 2026</p>
 <section class="country-checklist" data-country-checklist aria-labelledby="country-checklist-title">
 <h2 id="country-checklist-title">Marque por onde você já passou</h2>
 <div class="cal-box" data-country-picker hidden>
-<output class="country-checklist-count cal-headline" data-country-count data-count-template="Você visitou {count} de {total} países." aria-live="polite" aria-atomic="true">Você visitou 0 de 195 países.</output>
-<div class="country-checklist-progress" aria-hidden="true"><span data-country-progress></span></div>
+<!-- COUNTRY_CHECKLIST_COUNT -->
 <div class="country-checklist-map" data-country-map hidden>
 <div class="country-checklist-map-canvas" data-country-map-canvas></div>
 </div>
@@ -25,7 +24,7 @@
 </div>
 <p class="cal-empty" data-country-empty hidden>Nenhum país encontrado</p>
 <div class="country-checklist-result" data-country-result hidden><h3>Guarde as viagens por trás do seu total.</h3><p>O AtlasDays acrescenta datas, um mapa de países visitados e sugestões de viagens a partir de fotos à sua contagem de países.</p></div>
-<button type="button" class="cal-import country-checklist-track" disabled data-country-track>Acompanhar no AtlasDays</button>
+<button type="button" class="cal-import country-checklist-track" hidden data-country-track>Acompanhar no AtlasDays</button>
 </div>
 <div class="cta-box country-checklist-cta"><p>O total mundial é um número. Seu histórico de viagens é outra coisa. O AtlasDays pode encontrar viagens anteriores nas suas fotos e mostrar os países visitados em um mapa-múndi privado.</p><a class="cta-btn" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">{{t:cta.get_app}}</a><p class="cta-micro">Mapa e contagem de países incluídos grátis. Não é preciso ter conta.</p></div>
 <dialog class="cal-dialog cal-dialog-steps" data-country-dialog aria-labelledby="countries-import-title">
@@ -59,7 +58,7 @@
 </dialog>
 </section>
 <h2>O que conta como país aqui</h2>
-<p>O total usa a resposta mais comum: 195 países, ou seja, os 193 Estados-membros das Nações Unidas mais a Santa Sé e o Estado da Palestina. Ative os territórios para marcar também lugares como Groenlândia, Porto Rico, Hong Kong e Antártida. Eles são contados ao lado dos 195, não dentro deles. <a href="/pt/learn/how-many-countries-in-the-world">Quantos países existem no mundo?</a> compara esse total com as listas olímpica, da FIFA e do Travelers' Century Club.</p>
+<p>O total usa a resposta mais comum: 195 países, ou seja, os 193 Estados-membros das Nações Unidas mais a Santa Sé e o Estado da Palestina. Mude o total para “Todos os locais” e conte 250: os 195 mais territórios como Groenlândia, Porto Rico, Hong Kong e Antártida, além de Kosovo e Taiwan. <a href="/pt/learn/how-many-countries-in-the-world">Quantos países existem no mundo?</a> compara esse total com as listas olímpica, da FIFA e do Travelers' Century Club.</p>
 <h2>O que conta como visita</h2>
 <p>Isso é com você, e os viajantes não concordam entre si. A maioria conta um país depois de passar pela imigração e ficar um tempo ali. Alguns contam qualquer chão em que pisaram, aeroportos incluídos. Escolha um critério e use o mesmo para todos os países. <a href="/pt/learn/does-a-layover-count-as-visiting-a-country">Uma escala conta como visita a um país?</a> percorre as regras mais comuns.</p>
 <h2>Da contagem ao histórico de viagens</h2>
@@ -67,5 +66,5 @@
 <h2>Perguntas frequentes</h2>
 <h3>Quantos países existem?</h3><p>195 pela contagem mais comum: 193 Estados-membros da ONU e 2 Estados observadores. Outras listas vão de 193 a mais de 300 porque contam territórios, entidades esportivas ou regiões.</p>
 <h3>Minha seleção é salva ou enviada para algum lugar?</h3><p>Não. Ela fica nesta página e some quando você a fecha. Se você decidir continuar no AtlasDays, os países viajam no link que você abre, direto para o app no seu dispositivo.</p>
-<h3>Posso marcar territórios como Hong Kong ou Groenlândia?</h3><p>Sim. Ative “Mostrar territórios e outros lugares” ou selecione o lugar no mapa. Os territórios aparecem ao lado do seu total de países.</p>
+<h3>Posso marcar territórios como Hong Kong ou Groenlândia?</h3><p>Sim. Selecione o lugar no mapa ou mude o total de 195 para “Todos os locais” para encontrá-lo na lista. Os territórios contam para “Todos os locais”, não para os 195.</p>
 <h3>Como guardo meu mapa?</h3><p>Selecione seus países e escolha Acompanhar no AtlasDays. O app guarda seu mapa de países visitados no iPhone ou iPad e vai completando conforme você viaja.</p>

@@ -41,12 +41,11 @@
     <div class="hx-uc-wrap">
       <div class="hx-uc-head">
         <h2 class="hx-uc-h2" id="countries-title">これまでに何か国を訪れましたか？</h2>
-        <p>地図で印を付けると、195か国のうち何か国を訪れたかが分かります。選んだ内容がこのページの外に送られることはありません。</p>
+        <p>地図で印を付けると、195か国のうち何か国を訪れたかが分かります。そのあと、AtlasDaysで記録を続けることも、リストをCSVファイルでダウンロードすることもできます。</p>
       </div>
 <section class="country-checklist country-checklist-compact" data-country-checklist aria-labelledby="countries-title">
 <div class="cal-box" data-country-picker hidden>
-<output class="country-checklist-count cal-headline" data-country-count data-count-template="{total}か国中{count}か国を訪問。" aria-live="polite" aria-atomic="true">195か国中0か国を訪問。</output>
-<div class="country-checklist-progress" aria-hidden="true"><span data-country-progress></span></div>
+<!-- COUNTRY_CHECKLIST_COUNT -->
 <div class="country-checklist-map" data-country-map hidden>
 <div class="country-checklist-map-canvas" data-country-map-canvas></div>
 </div>
@@ -65,7 +64,7 @@
 </div>
 <p class="cal-empty" data-country-empty hidden>一致する国はありません</p>
 <div class="country-checklist-result" data-country-result hidden><p class="country-checklist-result-title">合計のもとになる旅行も記録。</p><p>AtlasDaysなら、訪問国の合計に日付や地図を加え、写真から旅行候補を見つけられます。</p></div>
-<button type="button" class="cal-import country-checklist-track" disabled data-country-track>AtlasDaysで記録する</button>
+<button type="button" class="cal-import country-checklist-track" hidden data-country-track>AtlasDaysで記録する</button>
 </div>
 <dialog class="cal-dialog cal-dialog-steps" data-country-dialog aria-labelledby="countries-import-title">
 <div class="cal-dialog-head">

@@ -79,7 +79,7 @@
         "name": "Posso marcar territórios como Hong Kong ou Groenlândia?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Sim. Ative “Mostrar territórios e outros lugares” ou selecione o lugar no mapa. Os territórios aparecem ao lado do seu total de países."
+          "text": "Sim. Selecione o lugar no mapa ou mude o total de 195 para “Todos os locais” para encontrá-lo na lista. Os territórios contam para “Todos os locais”, não para os 195."
         }
       },
       {
@@ -135,7 +135,7 @@
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
   <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261119d" />
-  <link rel="stylesheet" href="../../assets/css/country-checklist.css?v=20261124a" />
+  <link rel="stylesheet" href="../../assets/css/country-checklist.css?v=20261124b" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">Pular para o conteúdo</a>
@@ -217,18 +217,17 @@
     <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb"><a href="/pt/">AtlasDays</a> / <a href="/pt/learn/">Regras de viagem</a> / <a href="/pt/learn/calculators">Calculadoras</a></nav>
 <h1>Países que já visitei: mapa e contador</h1>
-<p class="subtitle">Marque os países onde você já esteve e veja seu total em 195, em um mapa com zoom. Nada do que você seleciona sai desta página.</p>
+<p class="subtitle">Marque os países onde você já esteve e veja seu total em 195, em um mapa com zoom. Depois, continue acompanhando no AtlasDays ou baixe sua lista em um arquivo CSV.</p>
 <p class="verified">Última verificação: novembro de 2026</p>
 <section class="country-checklist" data-country-checklist data-usage-placement="standalone" aria-labelledby="country-checklist-title">
 <h2 id="country-checklist-title">Marque por onde você já passou</h2>
 <div class="cal-box" data-country-picker hidden>
-<output class="country-checklist-count cal-headline" data-country-count data-count-template="Você visitou {count} de {total} países." aria-live="polite" aria-atomic="true">Você visitou 0 de 195 países.</output>
-<div class="country-checklist-progress" aria-hidden="true"><span data-country-progress></span></div>
+<div class="country-checklist-tally"><output class="country-checklist-count" data-country-count aria-live="polite" aria-atomic="true"><strong>0</strong> países</output><label class="country-checklist-scope"><span data-country-total>de <strong>195</strong></span><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 8 4 4 4-4"/></svg><select data-country-scope aria-label="Contagem de países"><option value="countries" data-total="195">195 países</option><option value="all" data-total="250">Todos os locais</option></select></label></div><div class="country-checklist-progress" aria-hidden="true"><span data-country-progress></span></div>
 <div class="country-checklist-map" data-country-map hidden>
 <div class="country-checklist-map-canvas" data-country-map-canvas></div>
 </div>
 <p class="cal-hint">Selecione um país no mapa ou procure na lista. Escolha um continente para aproximar.</p>
-<div class="country-checklist-continents" role="group" aria-label="Continente"><button type="button" class="country-checklist-continent" data-country-continent value="all" aria-pressed="true">Todos os continentes<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="africa" aria-pressed="false">África<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="asia" aria-pressed="false">Ásia<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="europe" aria-pressed="false">Europa<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="northAmerica" aria-pressed="false">América do Norte<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="southAmerica" aria-pressed="false">América do Sul<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="oceania" aria-pressed="false">Oceania<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="antarctica" aria-pressed="false" hidden>Antártida<span class="country-checklist-continent-count" data-continent-count hidden></span></button></div><button type="button" role="switch" aria-checked="false" class="country-checklist-toggle" data-country-territories><span>Mostrar territórios e outros lugares</span><span class="country-checklist-switch" aria-hidden="true"></span></button><script type="application/json" data-country-strings>{"zoomIn": "Aproximar", "zoomOut": "Afastar", "resetMap": "Mostrar o mapa inteiro", "remove": "Remover {name}", "continent": "Continente", "allContinents": "Todos os continentes", "showTerritories": "Mostrar territórios e outros lugares", "countWithExtras": "Você visitou {count} de {total} países, além de {extras}.", "territoryCount": {"one": "{n} território", "other": "{n} territórios"}, "otherCount": {"one": "{n} outro lugar", "other": "{n} outros lugares"}, "continentNames": {"africa": "África", "asia": "Ásia", "europe": "Europa", "northAmerica": "América do Norte", "southAmerica": "América do Sul", "oceania": "Oceania", "antarctica": "Antártida"}}</script>
+<div class="country-checklist-continents" role="group" aria-label="Continente"><button type="button" class="country-checklist-continent" data-country-continent value="all" aria-pressed="true">Todos os continentes<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="africa" aria-pressed="false">África<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="asia" aria-pressed="false">Ásia<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="europe" aria-pressed="false">Europa<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="northAmerica" aria-pressed="false">América do Norte<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="southAmerica" aria-pressed="false">América do Sul<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="oceania" aria-pressed="false">Oceania<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="antarctica" aria-pressed="false" hidden>Antártida<span class="country-checklist-continent-count" data-continent-count hidden></span></button></div><script type="application/json" data-country-strings>{"zoomIn": "Aproximar", "zoomOut": "Afastar", "resetMap": "Mostrar o mapa inteiro", "remove": "Remover {name}", "continent": "Continente", "allContinents": "Todos os continentes", "continentNames": {"africa": "África", "asia": "Ásia", "europe": "Europa", "northAmerica": "América do Norte", "southAmerica": "América do Sul", "oceania": "Oceania", "antarctica": "Antártida"}, "countries": {"one": "{n} país", "other": "{n} países"}, "places": {"one": "{n} local", "other": "{n} locais"}, "ofTotal": "de {n}", "scopeCountries": "195 países", "scopeAll": "Todos os locais", "scopeLabel": "Contagem de países"}</script>
 <div class="country-checklist-search">
 <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg>
 <input type="search" class="cal-country-input" data-country-search aria-label="Buscar países" placeholder="Buscar países" autocomplete="off" spellcheck="false" aria-controls="country-checklist-options">
@@ -491,7 +490,7 @@
 </div>
 <p class="cal-empty" data-country-empty hidden>Nenhum país encontrado</p>
 <div class="country-checklist-result" data-country-result hidden><h3>Guarde as viagens por trás do seu total.</h3><p>O AtlasDays acrescenta datas, um mapa de países visitados e sugestões de viagens a partir de fotos à sua contagem de países.</p></div>
-<button type="button" class="cal-import country-checklist-track" disabled data-country-track>Acompanhar no AtlasDays</button>
+<button type="button" class="cal-import country-checklist-track" hidden data-country-track>Acompanhar no AtlasDays</button>
 </div>
 <div class="cta-box country-checklist-cta"><p>O total mundial é um número. Seu histórico de viagens é outra coisa. O AtlasDays pode encontrar viagens anteriores nas suas fotos e mostrar os países visitados em um mapa-múndi privado.</p><a class="cta-btn" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web-article&amp;mt=8">Baixar o app</a><p class="cta-micro">Mapa e contagem de países incluídos grátis. Não é preciso ter conta.</p></div>
 <dialog class="cal-dialog cal-dialog-steps" data-country-dialog aria-labelledby="countries-import-title">
@@ -525,7 +524,7 @@
 </dialog>
 </section>
 <h2 id="o-que-conta-como-pa-s-aqui">O que conta como país aqui</h2>
-<p>O total usa a resposta mais comum: 195 países, ou seja, os 193 Estados-membros das Nações Unidas mais a Santa Sé e o Estado da Palestina. Ative os territórios para marcar também lugares como Groenlândia, Porto Rico, Hong Kong e Antártida. Eles são contados ao lado dos 195, não dentro deles. <a href="/pt/learn/how-many-countries-in-the-world">Quantos países existem no mundo?</a> compara esse total com as listas olímpica, da FIFA e do Travelers' Century Club.</p>
+<p>O total usa a resposta mais comum: 195 países, ou seja, os 193 Estados-membros das Nações Unidas mais a Santa Sé e o Estado da Palestina. Mude o total para “Todos os locais” e conte 250: os 195 mais territórios como Groenlândia, Porto Rico, Hong Kong e Antártida, além de Kosovo e Taiwan. <a href="/pt/learn/how-many-countries-in-the-world">Quantos países existem no mundo?</a> compara esse total com as listas olímpica, da FIFA e do Travelers' Century Club.</p>
 <h2 id="o-que-conta-como-visita">O que conta como visita</h2>
 <p>Isso é com você, e os viajantes não concordam entre si. A maioria conta um país depois de passar pela imigração e ficar um tempo ali. Alguns contam qualquer chão em que pisaram, aeroportos incluídos. Escolha um critério e use o mesmo para todos os países. <a href="/pt/learn/does-a-layover-count-as-visiting-a-country">Uma escala conta como visita a um país?</a> percorre as regras mais comuns.</p>
 <h2 id="da-contagem-ao-hist-rico-de-viagens">Da contagem ao histórico de viagens</h2>
@@ -533,7 +532,7 @@
 <h2 id="perguntas-frequentes">Perguntas frequentes</h2>
 <h3>Quantos países existem?</h3><p>195 pela contagem mais comum: 193 Estados-membros da ONU e 2 Estados observadores. Outras listas vão de 193 a mais de 300 porque contam territórios, entidades esportivas ou regiões.</p>
 <h3>Minha seleção é salva ou enviada para algum lugar?</h3><p>Não. Ela fica nesta página e some quando você a fecha. Se você decidir continuar no AtlasDays, os países viajam no link que você abre, direto para o app no seu dispositivo.</p>
-<h3>Posso marcar territórios como Hong Kong ou Groenlândia?</h3><p>Sim. Ative “Mostrar territórios e outros lugares” ou selecione o lugar no mapa. Os territórios aparecem ao lado do seu total de países.</p>
+<h3>Posso marcar territórios como Hong Kong ou Groenlândia?</h3><p>Sim. Selecione o lugar no mapa ou mude o total de 195 para “Todos os locais” para encontrá-lo na lista. Os territórios contam para “Todos os locais”, não para os 195.</p>
 <h3>Como guardo meu mapa?</h3><p>Selecione seus países e escolha Acompanhar no AtlasDays. O app guarda seu mapa de países visitados no iPhone ou iPad e vai completando conforme você viaja.</p>
 
     <p class="learn-disclaimer"><strong>Sobre este artigo:</strong> O AtlasDays oferece informações gerais, não aconselhamento jurídico, fiscal ou de imigração. As regras mudam e o resultado depende da sua situação, então nunca confie somente nele: consulte a fonte oficial indicada ou fale com um profissional qualificado.<br />© <a href="https://www.amcharts.com/svg-maps/" rel="nofollow">amCharts</a> · <a href="/assets/maps/SOURCES.txt">CC BY 4.0</a></p>
@@ -597,7 +596,7 @@
   <script src="../../assets/js/navigation.js?v=20261121a"></script>
   <script defer src="../../assets/js/import-qr.js?v=20261122a"></script>
   <script defer src="../../assets/js/calculator-usage.js?v=20261124a" data-endpoint="https://atlasdays-calculator-usage.jorickvm.workers.dev/collect"></script>
-  <script defer src="../../assets/js/country-checklist.js?v=20261124b"></script>
+  <script defer src="../../assets/js/country-checklist.js?v=20261124c"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on. */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

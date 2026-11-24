@@ -1,12 +1,11 @@
 <nav class="breadcrumb"><a href="/zh-Hant/">AtlasDays</a> / <a href="/zh-Hant/learn/">旅行規定</a> / <a href="/zh-Hant/learn/calculators">計算器</a></nav>
 <h1>我去過的國家：世界地圖與造訪國家數</h1>
-<p class="subtitle">標記去過的國家，在可縮放的地圖上看看 195 個國家中造訪了幾個。選取的內容不會離開這個頁面。</p>
+<p class="subtitle">標記去過的國家，在可縮放的地圖上看看 195 個國家中造訪了幾個。接著可以在 AtlasDays 中繼續追蹤，或將清單下載為 CSV 檔案。</p>
 <p class="verified">最後查證：2026 年 11 月</p>
 <section class="country-checklist" data-country-checklist aria-labelledby="country-checklist-title">
 <h2 id="country-checklist-title">標記去過的地方</h2>
 <div class="cal-box" data-country-picker hidden>
-<output class="country-checklist-count cal-headline" data-country-count data-count-template="{total} 個國家中，已造訪 {count} 個。" aria-live="polite" aria-atomic="true">195 個國家中，已造訪 0 個。</output>
-<div class="country-checklist-progress" aria-hidden="true"><span data-country-progress></span></div>
+<!-- COUNTRY_CHECKLIST_COUNT -->
 <div class="country-checklist-map" data-country-map hidden>
 <div class="country-checklist-map-canvas" data-country-map-canvas></div>
 </div>
@@ -25,7 +24,7 @@
 </div>
 <p class="cal-empty" data-country-empty hidden>找不到符合的國家或地區</p>
 <div class="country-checklist-result" data-country-result hidden><h3>總數背後的行程，也一起留下。</h3><p>AtlasDays 為國家總數加上日期、造訪地圖，以及根據照片產生的行程建議。</p></div>
-<button type="button" class="cal-import country-checklist-track" disabled data-country-track>在 AtlasDays 中繼續追蹤</button>
+<button type="button" class="cal-import country-checklist-track" hidden data-country-track>在 AtlasDays 中繼續追蹤</button>
 </div>
 <div class="cta-box country-checklist-cta"><p>世界上的國家總數是一個數字，自己的旅行紀錄則是另一回事。AtlasDays 能從照片找回過往行程，將造訪過的國家呈現在私人世界地圖上。</p><a class="cta-btn" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">{{t:cta.get_app}}</a><p class="cta-micro">國家地圖與國家計數皆免費，不需要帳號。</p></div>
 <dialog class="cal-dialog cal-dialog-steps" data-country-dialog aria-labelledby="countries-import-title">
@@ -59,7 +58,7 @@
 </dialog>
 </section>
 <h2>這裡怎麼算一個國家</h2>
-<p>總數採用最常見的答案：195 個國家，也就是 193 個聯合國會員國加上教廷與巴勒斯坦國。開啟地區選項後，還能標記格陵蘭、波多黎各、香港與南極洲等地。這些地方另外統計，不算在 195 之內。<a href="/zh-Hant/learn/how-many-countries-in-the-world">世界上有幾個國家</a>比較了這個算法與奧運、FIFA 及 Travelers' Century Club 的名單。</p>
+<p>總數採用最常見的答案：195 個國家，也就是 193 個聯合國會員國加上教廷與巴勒斯坦國。將總數切換為「所有地點」，就會改以 250 個計算：195 個國家，加上格陵蘭、波多黎各、香港與南極洲等地區，以及科索沃與台灣。<a href="/zh-Hant/learn/how-many-countries-in-the-world">世界上有幾個國家</a>比較了這個算法與奧運、FIFA 及 Travelers' Century Club 的名單。</p>
 <h2>怎樣才算造訪</h2>
 <p>這由自己決定，旅行者之間也沒有共識。多數人認為要通過入境查驗、在當地待過一段時間才算。也有人只要踏上過那塊土地就算，機場也包括在內。選定一個標準，每個國家都用同一個標準。<a href="/zh-Hant/learn/does-a-layover-count-as-visiting-a-country">轉機算不算造訪一個國家</a>逐一說明了常見的算法。</p>
 <h2>從一個數字到一份旅行紀錄</h2>
@@ -67,5 +66,5 @@
 <h2>常見問題</h2>
 <h3>世界上有幾個國家？</h3><p>依最常見的算法是 195 個：193 個聯合國會員國與 2 個觀察員國。其他名單從 193 到超過 300 個都有，因為它們把領地、體育組織或地區也算進去。</p>
 <h3>我選取的內容會被儲存或傳送到別處嗎？</h3><p>不會。內容只留在這個頁面，關閉頁面後就會消失。如果選擇在 AtlasDays 繼續，這些國家會包含在你開啟的連結裡，直接傳到裝置上的 App。</p>
-<h3>可以標記香港、格陵蘭這類地區嗎？</h3><p>可以。開啟「顯示地區及其他地點」，或在地圖上選取該地點。地區會顯示在國家總數旁邊。</p>
+<h3>可以標記香港、格陵蘭這類地區嗎？</h3><p>可以。在地圖上選取該地點，或將總數從 195 切換為「所有地點」，即可在清單中找到它。地區計入「所有地點」，不計入 195。</p>
 <h3>怎麼保留我的地圖？</h3><p>選好國家後，選擇「在 AtlasDays 中繼續追蹤」。App 會把造訪地圖保存在 iPhone 或 iPad 上，並隨著旅行持續補上。</p>

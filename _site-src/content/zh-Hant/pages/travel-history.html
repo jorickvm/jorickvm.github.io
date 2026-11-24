@@ -41,12 +41,11 @@
     <div class="hx-uc-wrap">
       <div class="hx-uc-head">
         <h2 class="hx-uc-h2" id="countries-title">你去過幾個國家？</h2>
-        <p>在地圖上標記，看看 195 個國家中造訪了幾個。選取的內容不會離開這個頁面。</p>
+        <p>在地圖上標記，看看 195 個國家中造訪了幾個。接著可以在 AtlasDays 中繼續追蹤，或將清單下載為 CSV 檔案。</p>
       </div>
 <section class="country-checklist country-checklist-compact" data-country-checklist aria-labelledby="countries-title">
 <div class="cal-box" data-country-picker hidden>
-<output class="country-checklist-count cal-headline" data-country-count data-count-template="{total} 個國家中，已造訪 {count} 個。" aria-live="polite" aria-atomic="true">195 個國家中，已造訪 0 個。</output>
-<div class="country-checklist-progress" aria-hidden="true"><span data-country-progress></span></div>
+<!-- COUNTRY_CHECKLIST_COUNT -->
 <div class="country-checklist-map" data-country-map hidden>
 <div class="country-checklist-map-canvas" data-country-map-canvas></div>
 </div>
@@ -65,7 +64,7 @@
 </div>
 <p class="cal-empty" data-country-empty hidden>找不到符合的國家或地區</p>
 <div class="country-checklist-result" data-country-result hidden><p class="country-checklist-result-title">總數背後的行程，也一起留下。</p><p>AtlasDays 為國家總數加上日期、造訪地圖，以及根據照片產生的行程建議。</p></div>
-<button type="button" class="cal-import country-checklist-track" disabled data-country-track>在 AtlasDays 中繼續追蹤</button>
+<button type="button" class="cal-import country-checklist-track" hidden data-country-track>在 AtlasDays 中繼續追蹤</button>
 </div>
 <dialog class="cal-dialog cal-dialog-steps" data-country-dialog aria-labelledby="countries-import-title">
 <div class="cal-dialog-head">

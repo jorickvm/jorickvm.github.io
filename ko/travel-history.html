@@ -69,7 +69,7 @@
   <link rel="stylesheet" href="../assets/css/marketing.css?v=20261116a" />
   <link rel="stylesheet" href="../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../assets/css/day-calendar.css?v=20261119d" />
-  <link rel="stylesheet" href="../assets/css/country-checklist.css?v=20261124a" />
+  <link rel="stylesheet" href="../assets/css/country-checklist.css?v=20261124b" />
   <link rel="stylesheet" href="../assets/css/site-header.css?v=20261027j" />
   <link rel="stylesheet" href="../assets/css/site-footer.css?v=20261027h" />
 
@@ -182,17 +182,16 @@
     <div class="hx-uc-wrap">
       <div class="hx-uc-head">
         <h2 class="hx-uc-h2" id="countries-title">지금까지 몇 개국을 다녀왔습니까?</h2>
-        <p>지도에 표시하면 195개국 중 몇 곳을 방문했는지 확인할 수 있습니다. 선택한 내용은 이 페이지 밖으로 나가지 않습니다.</p>
+        <p>지도에 표시하면 195개국 중 몇 곳을 방문했는지 확인할 수 있습니다. 그런 다음 AtlasDays에서 계속 관리하거나 목록을 CSV 파일로 다운로드할 수 있습니다.</p>
       </div>
 <section class="country-checklist country-checklist-compact" data-country-checklist data-usage-placement="embedded" aria-labelledby="countries-title">
 <div class="cal-box" data-country-picker hidden>
-<output class="country-checklist-count cal-headline" data-country-count data-count-template="{total}개국 중 {count}개국 방문." aria-live="polite" aria-atomic="true">195개국 중 0개국 방문.</output>
-<div class="country-checklist-progress" aria-hidden="true"><span data-country-progress></span></div>
+<div class="country-checklist-tally"><output class="country-checklist-count" data-country-count aria-live="polite" aria-atomic="true"><strong>0</strong>개국</output><label class="country-checklist-scope"><span data-country-total><strong>195</strong>개 중</span><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 8 4 4 4-4"/></svg><select data-country-scope aria-label="국가 수 집계"><option value="countries" data-total="195">195개국</option><option value="all" data-total="250">모든 장소</option></select></label></div><div class="country-checklist-progress" aria-hidden="true"><span data-country-progress></span></div>
 <div class="country-checklist-map" data-country-map hidden>
 <div class="country-checklist-map-canvas" data-country-map-canvas></div>
 </div>
 <p class="cal-hint">지도에서 국가를 선택하십시오. 대륙을 고르면 확대됩니다.</p>
-<div class="country-checklist-continents" role="group" aria-label="대륙"><button type="button" class="country-checklist-continent" data-country-continent value="all" aria-pressed="true">모든 대륙<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="africa" aria-pressed="false">아프리카<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="asia" aria-pressed="false">아시아<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="europe" aria-pressed="false">유럽<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="northAmerica" aria-pressed="false">북아메리카<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="southAmerica" aria-pressed="false">남아메리카<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="oceania" aria-pressed="false">오세아니아<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="antarctica" aria-pressed="false" hidden>남극<span class="country-checklist-continent-count" data-continent-count hidden></span></button></div><button type="button" role="switch" aria-checked="false" class="country-checklist-toggle" data-country-territories><span>지역 및 기타 장소 표시</span><span class="country-checklist-switch" aria-hidden="true"></span></button><script type="application/json" data-country-strings>{"zoomIn": "확대", "zoomOut": "축소", "resetMap": "전체 지도 보기", "remove": "{name} 제거", "continent": "대륙", "allContinents": "모든 대륙", "showTerritories": "지역 및 기타 장소 표시", "countWithExtras": "{total}개국 중 {count}개국 및 {extras} 방문.", "territoryCount": {"one": "{n}개 지역", "other": "{n}개 지역"}, "otherCount": {"one": "기타 장소 {n}곳", "other": "기타 장소 {n}곳"}, "continentNames": {"africa": "아프리카", "asia": "아시아", "europe": "유럽", "northAmerica": "북아메리카", "southAmerica": "남아메리카", "oceania": "오세아니아", "antarctica": "남극"}}</script>
+<div class="country-checklist-continents" role="group" aria-label="대륙"><button type="button" class="country-checklist-continent" data-country-continent value="all" aria-pressed="true">모든 대륙<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="africa" aria-pressed="false">아프리카<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="asia" aria-pressed="false">아시아<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="europe" aria-pressed="false">유럽<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="northAmerica" aria-pressed="false">북아메리카<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="southAmerica" aria-pressed="false">남아메리카<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="oceania" aria-pressed="false">오세아니아<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="antarctica" aria-pressed="false" hidden>남극<span class="country-checklist-continent-count" data-continent-count hidden></span></button></div><script type="application/json" data-country-strings>{"zoomIn": "확대", "zoomOut": "축소", "resetMap": "전체 지도 보기", "remove": "{name} 제거", "continent": "대륙", "allContinents": "모든 대륙", "continentNames": {"africa": "아프리카", "asia": "아시아", "europe": "유럽", "northAmerica": "북아메리카", "southAmerica": "남아메리카", "oceania": "오세아니아", "antarctica": "남극"}, "countries": {"other": "{n}개국"}, "places": {"other": "{n}곳"}, "ofTotal": "{n}개 중", "scopeCountries": "195개국", "scopeAll": "모든 장소", "scopeLabel": "국가 수 집계"}</script>
 <div class="country-checklist-search">
 <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg>
 <input type="search" class="cal-country-input" data-country-search aria-label="국가 검색" placeholder="국가 검색" autocomplete="off" spellcheck="false" aria-controls="country-checklist-options">
@@ -455,7 +454,7 @@
 </div>
 <p class="cal-empty" data-country-empty hidden>일치하는 국가가 없습니다</p>
 <div class="country-checklist-result" data-country-result hidden><p class="country-checklist-result-title">합계에 담긴 여행도 기록</p><p>AtlasDays는 국가 수에 날짜, 방문 지도, 사진 기반 여행 제안을 더합니다.</p></div>
-<button type="button" class="cal-import country-checklist-track" disabled data-country-track>AtlasDays에서 관리하기</button>
+<button type="button" class="cal-import country-checklist-track" hidden data-country-track>AtlasDays에서 관리하기</button>
 </div>
 <dialog class="cal-dialog cal-dialog-steps" data-country-dialog aria-labelledby="countries-import-title">
 <div class="cal-dialog-head">
@@ -620,7 +619,7 @@
   <script src="../assets/js/marketing.js?v=20261106a"></script>
   <script defer src="../assets/js/import-qr.js?v=20261122a"></script>
   <script defer src="../assets/js/calculator-usage.js?v=20261124a" data-endpoint="https://atlasdays-calculator-usage.jorickvm.workers.dev/collect"></script>
-  <script defer src="../assets/js/country-checklist.js?v=20261124b"></script>
+  <script defer src="../assets/js/country-checklist.js?v=20261124c"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on. */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

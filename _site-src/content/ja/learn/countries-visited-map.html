@@ -1,12 +1,11 @@
 <nav class="breadcrumb"><a href="/ja/">AtlasDays</a> / <a href="/ja/learn/">旅行ルール</a> / <a href="/ja/learn/calculators">計算ツール</a></nav>
 <h1>訪れた国を塗りつぶせる世界地図と訪問国カウンター</h1>
-<p class="subtitle">行ったことのある国に印を付けて、195か国のうち何か国を訪れたかを、拡大できる地図で確認できます。選んだ内容がこのページの外に送られることはありません。</p>
+<p class="subtitle">行ったことのある国に印を付けて、195か国のうち何か国を訪れたかを、拡大できる地図で確認できます。そのあと、AtlasDaysで記録を続けることも、リストをCSVファイルでダウンロードすることもできます。</p>
 <p class="verified">最終確認：2026年11月</p>
 <section class="country-checklist" data-country-checklist aria-labelledby="country-checklist-title">
 <h2 id="country-checklist-title">訪れた場所に印を付ける</h2>
 <div class="cal-box" data-country-picker hidden>
-<output class="country-checklist-count cal-headline" data-country-count data-count-template="{total}か国中{count}か国を訪問。" aria-live="polite" aria-atomic="true">195か国中0か国を訪問。</output>
-<div class="country-checklist-progress" aria-hidden="true"><span data-country-progress></span></div>
+<!-- COUNTRY_CHECKLIST_COUNT -->
 <div class="country-checklist-map" data-country-map hidden>
 <div class="country-checklist-map-canvas" data-country-map-canvas></div>
 </div>
@@ -25,7 +24,7 @@
 </div>
 <p class="cal-empty" data-country-empty hidden>一致する国はありません</p>
 <div class="country-checklist-result" data-country-result hidden><h3>合計のもとになる旅行も記録。</h3><p>AtlasDaysなら、訪問国の合計に日付や地図を加え、写真から旅行候補を見つけられます。</p></div>
-<button type="button" class="cal-import country-checklist-track" disabled data-country-track>AtlasDaysで記録する</button>
+<button type="button" class="cal-import country-checklist-track" hidden data-country-track>AtlasDaysで記録する</button>
 </div>
 <div class="cta-box country-checklist-cta"><p>世界の国の数と、自分が訪れた国の数。AtlasDaysは写真から過去の旅行を見つけ、訪問国をプライベートな世界地図に表示できます。</p><a class="cta-btn" href="https://apps.apple.com/app/atlasdays-track-country-days/id6760133544">{{t:cta.get_app}}</a><p class="cta-micro">訪問国の地図と集計は無料。アカウント不要。</p></div>
 <dialog class="cal-dialog cal-dialog-steps" data-country-dialog aria-labelledby="countries-import-title">
@@ -59,7 +58,7 @@
 </dialog>
 </section>
 <h2>ここでの「国」の数え方</h2>
-<p>合計には、最も一般的な答えである195か国を使っています。国連加盟193か国に、聖座とパレスチナ国を加えた数です。地域を表示するように切り替えると、グリーンランド、プエルトリコ、香港、南極大陸などの場所にも印を付けられます。これらは195か国の中には入らず、その横に別に数えます。<a href="/ja/learn/how-many-countries-in-the-world">世界の国の数</a>では、この数え方をオリンピック、FIFA、Travelers' Century Clubのリストと比べています。</p>
+<p>合計には、最も一般的な答えである195か国を使っています。国連加盟193か国に、聖座とパレスチナ国を加えた数です。合計を「すべての場所」に切り替えると、代わりに250か所で数えます。195か国に、グリーンランド、プエルトリコ、香港、南極大陸などの地域と、コソボ、台湾を加えた数です。<a href="/ja/learn/how-many-countries-in-the-world">世界の国の数</a>では、この数え方をオリンピック、FIFA、Travelers' Century Clubのリストと比べています。</p>
 <h2>「訪問」の数え方</h2>
 <p>これは自分で決めることで、旅行者の間でも意見が分かれます。多くの人は、入国審査を通ってその国で時間を過ごしたら訪問と数えます。空港を含め、降り立った場所はすべて数える人もいます。基準を1つ決め、すべての国に同じ基準を使ってください。一般的な基準は<a href="/ja/learn/does-a-layover-count-as-visiting-a-country">乗り継ぎは訪問した国に含まれるか</a>で説明しています。</p>
 <h2>国の数から旅行履歴へ</h2>
@@ -67,5 +66,5 @@
 <h2>よくある質問</h2>
 <h3>国はいくつありますか？</h3><p>最も一般的な数え方では195か国です。国連加盟国が193か国、オブザーバー国が2か国です。ほかのリストは、地域、スポーツ団体、国内の地方などを数えるため、193から300超まで幅があります。</p>
 <h3>選んだ内容は保存されたり、どこかに送られたりしますか？</h3><p>いいえ。このページの中だけにあり、ページを閉じると消えます。AtlasDaysで続けることを選んだ場合は、開いたリンクに国の情報が含まれ、端末上のアプリに直接渡されます。</p>
-<h3>香港やグリーンランドなどの地域にも印を付けられますか？</h3><p>はい。「地域とその他の場所を表示」をオンにするか、地図でその場所を選びます。地域は、国の合計の横に表示されます。</p>
+<h3>香港やグリーンランドなどの地域にも印を付けられますか？</h3><p>はい。地図でその場所を選ぶか、合計を195から「すべての場所」に切り替えると、リストで見つけられます。地域は「すべての場所」の数に含まれ、195か国には含まれません。</p>
 <h3>地図を残すにはどうすればよいですか？</h3><p>国を選んで「AtlasDaysで記録する」を選びます。アプリは訪問国の地図をiPhoneまたはiPadに保存し、旅をするたびに更新していきます。</p>

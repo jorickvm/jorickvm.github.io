@@ -2022,12 +2022,35 @@ def render_country_checklist(content: str, code: str) -> str:
     controls = (
         f'<div class="country-checklist-continents" role="group" aria-label="{escape(strings["continent"])}">'
         + ''.join(chips) + '</div>'
-        '<button type="button" role="switch" aria-checked="false" class="country-checklist-toggle" data-country-territories>'
-        f'<span>{escape(strings["showTerritories"])}</span><span class="country-checklist-switch" aria-hidden="true"></span></button>'
         '<script type="application/json" data-country-strings>'
         + json.dumps(strings, ensure_ascii=False).replace('<', '\\u003c') + '</script>'
     )
-    return content.replace(marker, "\n".join(labels)).replace("<!-- COUNTRY_CHECKLIST_FILTERS -->", controls)
+
+    # The count reads like the app's Visited card: "0 countries" on the left,
+    # "of 195" on the right, the number in each set large. The total is a
+    # menu that switches between the 195 and every place on the list.
+    def emphasize(phrase: str, number: int) -> str:
+        parts = escape(phrase).split("{n}")
+        return f"<strong>{number}</strong>".join(parts)
+    count_form = strings["countries"].get("other") or next(iter(strings["countries"].values()))
+    all_places = len(codes) + len(data["territory_codes"]) + len(data["other_codes"])
+    chevron = ('<svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" '
+               'stroke-linecap="round" stroke-linejoin="round"><path d="m6 8 4 4 4-4"/></svg>')
+    tally = (
+        '<div class="country-checklist-tally">'
+        '<output class="country-checklist-count" data-country-count aria-live="polite" aria-atomic="true">'
+        f'{emphasize(count_form, 0)}</output>'
+        '<label class="country-checklist-scope">'
+        f'<span data-country-total>{emphasize(strings["ofTotal"], len(codes))}</span>{chevron}'
+        f'<select data-country-scope aria-label="{escape(strings["scopeLabel"])}">'
+        f'<option value="countries" data-total="{len(codes)}">{escape(strings["scopeCountries"])}</option>'
+        f'<option value="all" data-total="{all_places}">{escape(strings["scopeAll"])}</option>'
+        '</select></label></div>'
+        '<div class="country-checklist-progress" aria-hidden="true"><span data-country-progress></span></div>'
+    )
+    return (content.replace(marker, "\n".join(labels))
+            .replace("<!-- COUNTRY_CHECKLIST_FILTERS -->", controls)
+            .replace("<!-- COUNTRY_CHECKLIST_COUNT -->", tally))
 
 
 def render_article(

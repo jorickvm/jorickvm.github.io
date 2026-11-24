@@ -79,7 +79,7 @@
         "name": "Hong Kong veya Grönland gibi bölgeleri işaretleyebilir miyim?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Evet. “Bölgeleri ve diğer yerleri göster” seçeneğini açın ya da yeri haritada seçin. Bölgeler ülke toplamınızın yanında gösterilir."
+          "text": "Evet. Yeri haritada seçin ya da listede bulmak için toplamı 195’ten “Tüm yerler” seçeneğine çevirin. Bölgeler 195’e değil, “Tüm yerler” toplamına dahil edilir."
         }
       },
       {
@@ -135,7 +135,7 @@
   <link rel="stylesheet" href="../../assets/css/rule-cards.css?v=20261006b" />
   <link rel="stylesheet" href="../../assets/css/site-footer.css?v=20261027h" />
   <link rel="stylesheet" href="../../assets/css/day-calendar.css?v=20261119d" />
-  <link rel="stylesheet" href="../../assets/css/country-checklist.css?v=20261124a" />
+  <link rel="stylesheet" href="../../assets/css/country-checklist.css?v=20261124b" />
 </head>
 <body>
   <a class="skip-link" href="#main-content">İçeriğe geç</a>
@@ -217,18 +217,17 @@
     <script>(function(){var a=[].slice.call(document.currentScript.previousElementSibling.querySelectorAll('a'));function on(){var y=innerHeight*0.3,c=0;a.forEach(function(l,i){var e=document.getElementById(l.hash.slice(1));if(e&&e.getBoundingClientRect().top<y)c=i});a.forEach(function(l,i){if(i===c)l.setAttribute('aria-current','true');else l.removeAttribute('aria-current')})}addEventListener('scroll',on,{passive:true});on()})();</script>
     <nav class="breadcrumb"><a href="/tr/">AtlasDays</a> / <a href="/tr/learn/">Seyahat kuralları</a> / <a href="/tr/learn/calculators">Hesaplama araçları</a></nav>
 <h1>Gezdiğim ülkeler: harita ve sayaç</h1>
-<p class="subtitle">Gittiğiniz ülkeleri işaretleyin ve 195 ülke içindeki toplamınızı yakınlaştırılabilen bir haritada görün. Seçtikleriniz bu sayfadan dışarı çıkmaz.</p>
+<p class="subtitle">Gittiğiniz ülkeleri işaretleyin ve 195 ülke içindeki toplamınızı yakınlaştırılabilen bir haritada görün. Ardından AtlasDays’de takip etmeye devam edin ya da listenizi CSV dosyası olarak indirin.</p>
 <p class="verified">Son doğrulama: Kasım 2026</p>
 <section class="country-checklist" data-country-checklist data-usage-placement="standalone" aria-labelledby="country-checklist-title">
 <h2 id="country-checklist-title">Gittiğiniz yerleri işaretleyin</h2>
 <div class="cal-box" data-country-picker hidden>
-<output class="country-checklist-count cal-headline" data-country-count data-count-template="Ziyaret edilen ülke: {count} / {total}." aria-live="polite" aria-atomic="true">Ziyaret edilen ülke: 0 / 195.</output>
-<div class="country-checklist-progress" aria-hidden="true"><span data-country-progress></span></div>
+<div class="country-checklist-tally"><output class="country-checklist-count" data-country-count aria-live="polite" aria-atomic="true"><strong>0</strong> ülke</output><label class="country-checklist-scope"><span data-country-total><strong>195</strong> içinden</span><svg aria-hidden="true" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 8 4 4 4-4"/></svg><select data-country-scope aria-label="Ülke sayısı"><option value="countries" data-total="195">195 ülke</option><option value="all" data-total="250">Tüm yerler</option></select></label></div><div class="country-checklist-progress" aria-hidden="true"><span data-country-progress></span></div>
 <div class="country-checklist-map" data-country-map hidden>
 <div class="country-checklist-map-canvas" data-country-map-canvas></div>
 </div>
 <p class="cal-hint">Haritada bir ülke seçin ya da listede bulun. Yakınlaştırmak için bir kıta seçin.</p>
-<div class="country-checklist-continents" role="group" aria-label="Kıta"><button type="button" class="country-checklist-continent" data-country-continent value="all" aria-pressed="true">Tüm kıtalar<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="africa" aria-pressed="false">Afrika<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="asia" aria-pressed="false">Asya<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="europe" aria-pressed="false">Avrupa<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="northAmerica" aria-pressed="false">Kuzey Amerika<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="southAmerica" aria-pressed="false">Güney Amerika<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="oceania" aria-pressed="false">Okyanusya<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="antarctica" aria-pressed="false" hidden>Antarktika<span class="country-checklist-continent-count" data-continent-count hidden></span></button></div><button type="button" role="switch" aria-checked="false" class="country-checklist-toggle" data-country-territories><span>Bölgeleri ve diğer yerleri göster</span><span class="country-checklist-switch" aria-hidden="true"></span></button><script type="application/json" data-country-strings>{"zoomIn": "Yakınlaştır", "zoomOut": "Uzaklaştır", "resetMap": "Haritanın tamamını göster", "remove": "Kaldır: {name}", "continent": "Kıta", "allContinents": "Tüm kıtalar", "showTerritories": "Bölgeleri ve diğer yerleri göster", "countWithExtras": "Ziyaret edilen: {total} ülkeden {count} ülke ve {extras}.", "territoryCount": {"one": "{n} bölge", "other": "{n} bölge"}, "otherCount": {"one": "{n} diğer yer", "other": "{n} diğer yer"}, "continentNames": {"africa": "Afrika", "asia": "Asya", "europe": "Avrupa", "northAmerica": "Kuzey Amerika", "southAmerica": "Güney Amerika", "oceania": "Okyanusya", "antarctica": "Antarktika"}}</script>
+<div class="country-checklist-continents" role="group" aria-label="Kıta"><button type="button" class="country-checklist-continent" data-country-continent value="all" aria-pressed="true">Tüm kıtalar<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="africa" aria-pressed="false">Afrika<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="asia" aria-pressed="false">Asya<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="europe" aria-pressed="false">Avrupa<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="northAmerica" aria-pressed="false">Kuzey Amerika<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="southAmerica" aria-pressed="false">Güney Amerika<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="oceania" aria-pressed="false">Okyanusya<span class="country-checklist-continent-count" data-continent-count hidden></span></button><button type="button" class="country-checklist-continent" data-country-continent value="antarctica" aria-pressed="false" hidden>Antarktika<span class="country-checklist-continent-count" data-continent-count hidden></span></button></div><script type="application/json" data-country-strings>{"zoomIn": "Yakınlaştır", "zoomOut": "Uzaklaştır", "resetMap": "Haritanın tamamını göster", "remove": "Kaldır: {name}", "continent": "Kıta", "allContinents": "Tüm kıtalar", "continentNames": {"africa": "Afrika", "asia": "Asya", "europe": "Avrupa", "northAmerica": "Kuzey Amerika", "southAmerica": "Güney Amerika", "oceania": "Okyanusya", "antarctica": "Antarktika"}, "countries": {"one": "{n} ülke", "other": "{n} ülke"}, "places": {"one": "{n} yer", "other": "{n} yer"}, "ofTotal": "{n} içinden", "scopeCountries": "195 ülke", "scopeAll": "Tüm yerler", "scopeLabel": "Ülke sayısı"}</script>
 <div class="country-checklist-search">
 <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 4 4"/></svg>
 <input type="search" class="cal-country-input" data-country-search aria-label="Ülke ara" placeholder="Ülke ara" autocomplete="off" spellcheck="false" aria-controls="country-checklist-options">
@@ -491,7 +490,7 @@
 </div>
 <p class="cal-empty" data-country-empty hidden>Eşleşen ülke yok</p>
 <div class="country-checklist-result" data-country-result hidden><h3>Toplamınızın arkasındaki seyahatleri saklayın.</h3><p>AtlasDays ülke sayınıza tarihler, ziyaret haritası ve fotoğraflara dayalı seyahat önerileri ekler.</p></div>
-<button type="button" class="cal-import country-checklist-track" disabled data-country-track>AtlasDays’de takip et</button>
+<button type="button" class="cal-import country-checklist-track" hidden data-country-track>AtlasDays’de takip et</button>
 </div>
 <div class="cta-box country-checklist-cta"><p>Dünyadaki toplam ülke sayısı bir rakamdır. Kendi seyahat geçmişiniz ise başka bir şeydir. AtlasDays fotoğraflarınızda geçmiş seyahatleri bulabilir ve ziyaret ettiğiniz ülkeleri size özel bir dünya haritasında gösterebilir.</p><a class="cta-btn" href="https://apps.apple.com/app/apple-store/id6760133544?pt=128618782&amp;ct=web-article&amp;mt=8">Uygulamayı indirin</a><p class="cta-micro">Ülke haritası ve ülke sayımı ücretsizdir. Hesap gerekmez.</p></div>
 <dialog class="cal-dialog cal-dialog-steps" data-country-dialog aria-labelledby="countries-import-title">
@@ -525,7 +524,7 @@
 </dialog>
 </section>
 <h2 id="burada-lke-olarak-ne-say-l-yor">Burada ülke olarak ne sayılıyor?</h2>
-<p>Toplam, en yaygın yanıtı kullanır: 195 ülke, yani Birleşmiş Milletler’in 193 üye devleti ile Kutsal Makam ve Filistin Devleti. Grönland, Porto Riko, Hong Kong ve Antarktika gibi yerleri de işaretlemek için bölgeleri açın. Bunlar 195’in içinde değil, yanında sayılır. <a href="/tr/learn/how-many-countries-in-the-world">Dünyada kaç ülke var?</a> bu sayıyı Olimpiyat, FIFA ve Travelers’ Century Club listeleriyle karşılaştırır.</p>
+<p>Toplam, en yaygın yanıtı kullanır: 195 ülke, yani Birleşmiş Milletler’in 193 üye devleti ile Kutsal Makam ve Filistin Devleti. Bunun yerine 250 saymak için toplamı “Tüm yerler” olarak değiştirin: 195 ülkenin yanı sıra Grönland, Porto Riko, Hong Kong ve Antarktika gibi bölgeler ile Kosova ve Tayvan da sayılır. <a href="/tr/learn/how-many-countries-in-the-world">Dünyada kaç ülke var?</a> bu sayıyı Olimpiyat, FIFA ve Travelers’ Century Club listeleriyle karşılaştırır.</p>
 <h2 id="ziyaret-olarak-ne-say-l-r">Ziyaret olarak ne sayılır?</h2>
 <p>Buna siz karar verirsiniz; gezginler de bu konuda anlaşamaz. Çoğu kişi, pasaport kontrolünden geçip orada zaman geçirdiği ülkeyi sayar. Bazıları, havalimanları dahil ayak bastığı her toprağı sayar. Bir ölçüt seçin ve her ülke için onu kullanın. <a href="/tr/learn/does-a-layover-count-as-visiting-a-country">Aktarma, bir ülkeyi ziyaret etmiş sayılmak için yeterli mi?</a> yaygın kuralları tek tek ele alır.</p>
 <h2 id="say-dan-seyahat-ge-mi-ine">Sayıdan seyahat geçmişine</h2>
@@ -533,7 +532,7 @@
 <h2 id="s-k-sorulan-sorular">Sık sorulan sorular</h2>
 <h3>Kaç ülke var?</h3><p>En yaygın sayıma göre 195: 193 BM üyesi devlet ve 2 gözlemci devlet. Diğer listeler bölgeleri, spor kuruluşlarını veya yöreleri de saydığı için 193 ile 300’ün üzeri arasında değişir.</p>
 <h3>Seçimim kaydediliyor veya bir yere gönderiliyor mu?</h3><p>Hayır. Bu sayfada kalır ve sayfayı kapattığınızda silinir. AtlasDays’de devam etmeyi seçerseniz ülkeler, açtığınız bağlantının içinde doğrudan aygıtınızdaki uygulamaya gider.</p>
-<h3>Hong Kong veya Grönland gibi bölgeleri işaretleyebilir miyim?</h3><p>Evet. “Bölgeleri ve diğer yerleri göster” seçeneğini açın ya da yeri haritada seçin. Bölgeler ülke toplamınızın yanında gösterilir.</p>
+<h3>Hong Kong veya Grönland gibi bölgeleri işaretleyebilir miyim?</h3><p>Evet. Yeri haritada seçin ya da listede bulmak için toplamı 195’ten “Tüm yerler” seçeneğine çevirin. Bölgeler 195’e değil, “Tüm yerler” toplamına dahil edilir.</p>
 <h3>Haritamı nasıl saklarım?</h3><p>Ülkelerinizi seçin ve AtlasDays’de takip et düğmesine dokunun. Uygulama ziyaret haritanızı iPhone veya iPad’inizde saklar ve siz seyahat ettikçe haritaya ekleme yapar.</p>
 
     <p class="learn-disclaimer"><strong>Bu makale hakkında:</strong> AtlasDays genel bilgi sunar; hukuki, vergisel veya göçmenlik danışmanlığı sağlamaz. Kurallar değişir ve sonuç durumunuza bağlıdır. Bu nedenle hiçbir zaman yalnızca AtlasDays&#x27;e güvenmeyin: bağlantısı verilen resmî kaynağı kontrol edin veya yetkin bir uzmana danışın.<br />© <a href="https://www.amcharts.com/svg-maps/" rel="nofollow">amCharts</a> · <a href="/assets/maps/SOURCES.txt">CC BY 4.0</a></p>
@@ -597,7 +596,7 @@
   <script src="../../assets/js/navigation.js?v=20261121a"></script>
   <script defer src="../../assets/js/import-qr.js?v=20261122a"></script>
   <script defer src="../../assets/js/calculator-usage.js?v=20261124a" data-endpoint="https://atlasdays-calculator-usage.jorickvm.workers.dev/collect"></script>
-  <script defer src="../../assets/js/country-checklist.js?v=20261124b"></script>
+  <script defer src="../../assets/js/country-checklist.js?v=20261124c"></script>
   <!-- Cloudflare Web Analytics -->
   <script>/* Analytics loader; ?notrack switches it off in this browser, ?notrack=off back on. */
   (function(){var off=false,a=null;try{a=new URLSearchParams(location.search).get('notrack');if(a==='off')localStorage.removeItem('atlasdays-notrack');else if(a!==null)localStorage.setItem('atlasdays-notrack','1');off=!!localStorage.getItem('atlasdays-notrack')}catch(e){}if(a!==null)console.info('AtlasDays analytics '+(off?'off':'on')+' in this browser');if(off)return;var s=document.createElement('script');s.defer=true;s.src='https://static.cloudflareinsights.com/beacon.min.js';s.setAttribute('data-cf-beacon','{"token": "1488e163b83a4eee81b63340359b6566"}');document.body.appendChild(s)})();

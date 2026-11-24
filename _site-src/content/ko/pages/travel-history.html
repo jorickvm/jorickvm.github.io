@@ -41,12 +41,11 @@
     <div class="hx-uc-wrap">
       <div class="hx-uc-head">
         <h2 class="hx-uc-h2" id="countries-title">지금까지 몇 개국을 다녀왔습니까?</h2>
-        <p>지도에 표시하면 195개국 중 몇 곳을 방문했는지 확인할 수 있습니다. 선택한 내용은 이 페이지 밖으로 나가지 않습니다.</p>
+        <p>지도에 표시하면 195개국 중 몇 곳을 방문했는지 확인할 수 있습니다. 그런 다음 AtlasDays에서 계속 관리하거나 목록을 CSV 파일로 다운로드할 수 있습니다.</p>
       </div>
 <section class="country-checklist country-checklist-compact" data-country-checklist aria-labelledby="countries-title">
 <div class="cal-box" data-country-picker hidden>
-<output class="country-checklist-count cal-headline" data-country-count data-count-template="{total}개국 중 {count}개국 방문." aria-live="polite" aria-atomic="true">195개국 중 0개국 방문.</output>
-<div class="country-checklist-progress" aria-hidden="true"><span data-country-progress></span></div>
+<!-- COUNTRY_CHECKLIST_COUNT -->
 <div class="country-checklist-map" data-country-map hidden>
 <div class="country-checklist-map-canvas" data-country-map-canvas></div>
 </div>
@@ -65,7 +64,7 @@
 </div>
 <p class="cal-empty" data-country-empty hidden>일치하는 국가가 없습니다</p>
 <div class="country-checklist-result" data-country-result hidden><p class="country-checklist-result-title">합계에 담긴 여행도 기록</p><p>AtlasDays는 국가 수에 날짜, 방문 지도, 사진 기반 여행 제안을 더합니다.</p></div>
-<button type="button" class="cal-import country-checklist-track" disabled data-country-track>AtlasDays에서 관리하기</button>
+<button type="button" class="cal-import country-checklist-track" hidden data-country-track>AtlasDays에서 관리하기</button>
 </div>
 <dialog class="cal-dialog cal-dialog-steps" data-country-dialog aria-labelledby="countries-import-title">
 <div class="cal-dialog-head">

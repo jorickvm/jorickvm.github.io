@@ -17,7 +17,8 @@
     var search = root.querySelector("[data-country-search]");
     var empty = root.querySelector("[data-country-empty]");
     var picked = root.querySelector("[data-country-picked]");
-    var territoriesToggle = root.querySelector("[data-country-territories]");
+    var scope = root.querySelector("[data-country-scope]");
+    var totalLabel = root.querySelector("[data-country-total]");
     var chips = Array.prototype.slice.call(root.querySelectorAll("[data-country-continent]"));
     var strings = JSON.parse(root.querySelector("[data-country-strings]").textContent);
     var buttons = Array.prototype.slice.call(options.querySelectorAll("[data-country-code]"));
@@ -25,17 +26,25 @@
     buttons.forEach(function (button) { byCode[button.dataset.countryCode] = button; });
 
     var plural = new Intl.PluralRules(lang);
-    var list = new Intl.ListFormat(lang, { style: "long", type: "conjunction" });
     var formatter = new Intl.NumberFormat(lang, { useGrouping: false });
     var collator = new Intl.Collator(lang, { sensitivity: "base" });
-    var totalCountries = buttons.filter(function (button) { return button.dataset.countryKind === "country"; }).length;
     var continent = "all";
 
     function isOn(button) { return button.getAttribute("aria-pressed") === "true"; }
     function name(button) { return button.querySelector(".country-checklist-name").textContent; }
     function selected() { return buttons.filter(isOn).map(function (button) { return button.dataset.countryCode; }); }
-    function showsTerritories() { return territoriesToggle.getAttribute("aria-checked") === "true"; }
-    function countPhrase(forms, count) { return (forms[plural.select(count)] || forms.other).replace("{n}", formatter.format(count)); }
+    // "All places" counts territories and the other places too; the 195 counts countries only.
+    function showsTerritories() { return scope.value === "all"; }
+    function counts(button) { return showsTerritories() || button.dataset.countryKind === "country"; }
+    // Writes a phrase such as "12 countries" or "of 195" with its number set large, as the app does.
+    function emphasize(target, phrase, n) {
+      var parts = phrase.split("{n}");
+      target.textContent = "";
+      parts.forEach(function (part, index) {
+        if (index) { var strong = document.createElement("strong"); strong.textContent = formatter.format(n); target.appendChild(strong); }
+        if (part) target.appendChild(document.createTextNode(part));
+      });
+    }
     function normalize(value) { return value.normalize("NFD").replace(/[̀-ͯ]/g, "").toLocaleLowerCase(lang); }
 
     Array.prototype.slice.call(options.children).sort(function (a, b) {
@@ -199,8 +208,6 @@
     function toggleCode(code) {
       var button = byCode[code];
       if (!button) return;
-      // A territory marked on the map shows up in the list too.
-      if (button.dataset.countryKind !== "country" && !showsTerritories() && !isOn(button)) setTerritories(true);
       button.setAttribute("aria-pressed", isOn(button) ? "false" : "true");
       measure("started");
       update();
@@ -352,21 +359,19 @@
       });
     }
     function update() {
-      var counts = { country: 0, territory: 0, other: 0 }, perContinent = {};
+      var perContinent = {}, count = 0, marked = 0;
       buttons.forEach(function (button) {
         if (!isOn(button)) return;
-        counts[button.dataset.countryKind] += 1;
+        marked += 1;
+        if (!counts(button)) return;
+        count += 1;
         perContinent[button.dataset.continent] = (perContinent[button.dataset.continent] || 0) + 1;
       });
-      var count = counts.country + counts.territory + counts.other;
-      var extras = [];
-      if (counts.territory || showsTerritories()) extras.push(countPhrase(strings.territoryCount, counts.territory));
-      if (counts.other) extras.push(countPhrase(strings.otherCount, counts.other));
-      output.textContent = (extras.length ? strings.countWithExtras : output.dataset.countTemplate)
-        .replace("{count}", formatter.format(counts.country))
-        .replace("{total}", formatter.format(totalCountries))
-        .replace("{extras}", list.format(extras));
-      if (progress) progress.style.width = (counts.country / totalCountries * 100) + "%";
+      var total = Number(scope.selectedOptions[0].dataset.total);
+      var forms = showsTerritories() ? strings.places : strings.countries;
+      emphasize(output, forms[plural.select(count)] || forms.other, count);
+      emphasize(totalLabel, strings.ofTotal, total);
+      if (progress) progress.style.width = (count / total * 100) + "%";
       chips.forEach(function (chip) {
         var badge = chip.querySelector("[data-continent-count]");
         var n = chip.value === "all" ? count : (perContinent[chip.value] || 0);
@@ -374,9 +379,10 @@
       });
       updateMap();
       renderPicked();
-      if (result) result.hidden = count === 0;
-      if (invitation) invitation.hidden = count > 0 && !!track;
-      if (track) track.disabled = count === 0;
+      // Anything marked can go to the app, even a territory the 195 leaves out.
+      if (result) result.hidden = marked === 0;
+      if (invitation) invitation.hidden = marked > 0 && !!track;
+      if (track) { track.hidden = marked === 0; track.disabled = marked === 0; }
     }
     function filter() {
       var query = normalize(search.value.trim());
@@ -395,10 +401,10 @@
       chips.forEach(function (chip) { chip.setAttribute("aria-pressed", chip.value === key ? "true" : "false"); });
       filter();
     }
-    function setTerritories(enabled) {
-      territoriesToggle.setAttribute("aria-checked", enabled ? "true" : "false");
-      chips.forEach(function (chip) { if (chip.value === "antarctica") chip.hidden = !enabled; });
-      if (!enabled && continent === "antarctica") { setContinent("all"); focusContinent("all"); }
+    function setScope() {
+      var all = showsTerritories();
+      chips.forEach(function (chip) { if (chip.value === "antarctica") chip.hidden = !all; });
+      if (!all && continent === "antarctica") { setContinent("all"); focusContinent("all"); }
       filter();
     }
 
@@ -423,9 +429,10 @@
       chip.addEventListener("click", function () { setContinent(chip.value); focusContinent(chip.value); });
     });
     search.addEventListener("input", filter);
-    territoriesToggle.addEventListener("click", function () { setTerritories(!showsTerritories()); update(); });
+    scope.addEventListener("change", function () { setScope(); update(); });
 
     setContinent("all");
+    setScope();
     window.addEventListener("pageshow", update);
     update();
     picker.hidden = false;
