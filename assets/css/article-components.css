@@ -471,6 +471,28 @@ article > .learn-disclaimer,
 .calc-callout:has(a:focus-visible) { outline: 2px solid var(--blue); outline-offset: 3px; }
 .calc-callout a:focus-visible { outline: none; }
 
+/* One-line App Store link under the summary box (build: render_app_line). */
+.app-line {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 16px 0 20px;
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  color: var(--text);
+  font-size: 0.95rem;
+  line-height: 1.35;
+  text-decoration: none;
+}
+.app-line:hover { text-decoration: none; }
+.app-line:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+.app-line-logo { flex: 0 0 auto; display: flex; }
+.app-line-logo img { width: 28px; height: 28px; margin: 0; border-radius: 7px; }
+.app-line-text { flex: 1 1 auto; }
+.app-line-cta { flex: 0 0 auto; color: var(--blue); font-weight: 650; white-space: nowrap; }
+.app-line-cta::after { content: " \203A"; }
+
 /* "On this page" (build: render_toc). No card. Wide screens: a sticky list
    in the empty margin beside the 720px column, from the top of every Learn
    and Help article, marking the section being read (.toc-side). Narrower
