@@ -47,11 +47,11 @@ REDIRECT_TEMPLATE = SOURCE_ROOT / "templates" / "redirect.html"
 CLUSTER_DATA_PATH = SOURCE_ROOT / "data" / "content-clusters.json"
 BUILD_VERSION = "20260928f"
 VARIANT_VERSIONS = {("article", "help20260802"): "20261117a", ("hub", "92c3adc0daf3"): "20260928f", ("article", "49dd6e3e3ea5"): "20261005a", ("article", "88b8694b8f2d"): "20261005a", ("page", "press"): "20261022b"}
-SITE_HEADER_VERSION = "20261027j"
+SITE_HEADER_VERSION = "20261125a"
 SITE_FOOTER_VERSION = "20261027h"
 ARTICLE_COMPONENTS_VERSION = "20261125a"
 RULE_CARDS_VERSION = "20261006b"
-NAVIGATION_VERSION = "20261121a"
+NAVIGATION_VERSION = "20261125a"
 
 # Root class that drops the background wash from the app's `.medium` step to
 # `.subtle`, for pages carrying long-form text. See assets/css/tokens.css.

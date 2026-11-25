@@ -63,6 +63,63 @@
     });
   });
 
+  // Every other App Store link shows the header's QR code on hover or
+  // keyboard focus, on wide screens with a pointer. The popover is a copy of
+  // the header's, so it carries the same image, link and translated caption.
+  var headerQr = document.querySelector('.nav-qr-popup');
+  var wide = window.matchMedia && matchMedia('(min-width: 861px) and (hover: hover)');
+  if (headerQr && wide) {
+    var popover = null;
+    var owner = null;
+    var hideTimer = null;
+    var place = function (link) {
+      // A full-width link (the article app line) anchors under its call to action.
+      var rect = (link.querySelector('.app-line-cta') || link).getBoundingClientRect();
+      var width = popover.offsetWidth;
+      var height = popover.offsetHeight;
+      var left = Math.min(Math.max(rect.left + rect.width / 2 - width / 2, 12), document.documentElement.clientWidth - width - 12);
+      var below = rect.bottom + 10 + height <= innerHeight;
+      var top = below ? rect.bottom + 10 : rect.top - 10 - height;
+      popover.classList.toggle('is-above', !below);
+      popover.style.left = (left + scrollX) + 'px';
+      popover.style.top = (top + scrollY) + 'px';
+    };
+    var show = function (link) {
+      if (!wide.matches) return;
+      clearTimeout(hideTimer);
+      if (!popover) {
+        popover = headerQr.cloneNode(true);
+        popover.className = 'qr-popover';
+        popover.tabIndex = -1;
+        popover.querySelector('img').removeAttribute('loading');
+        popover.addEventListener('mouseenter', function () { clearTimeout(hideTimer); });
+        popover.addEventListener('mouseleave', function () { hide(); });
+        document.body.appendChild(popover);
+      }
+      owner = link;
+      popover.classList.add('is-open');
+      place(link);
+    };
+    var hide = function (now) {
+      clearTimeout(hideTimer);
+      hideTimer = setTimeout(function () {
+        if (popover) popover.classList.remove('is-open');
+        owner = null;
+      }, now ? 0 : 120);
+    };
+    document.querySelectorAll('a[href^="https://apps.apple.com/"]').forEach(function (link) {
+      if (link.closest('.nav-cta-wrap, .hx-final-button, .daycal, .qr-popover')) return;
+      link.addEventListener('mouseenter', function () { show(link); });
+      link.addEventListener('mouseleave', function () { hide(); });
+      link.addEventListener('focus', function () { show(link); });
+      link.addEventListener('blur', function () { hide(); });
+    });
+    document.addEventListener('keydown', function (event) {
+      if (event.key === 'Escape' && owner) hide(true);
+    });
+    addEventListener('scroll', function () { if (owner) place(owner); }, {passive: true});
+  }
+
   // Contact links carry the address split across data-email-user and
   // data-email-domain, so the markup holds no scrapeable email. Every page
   // loads this script, so the address is assembled here.
