@@ -41,7 +41,7 @@ ARTICLES_PATH = SOURCE_ROOT / "data" / "articles.json"
 HUBS_PATH = SOURCE_ROOT / "data" / "hubs.json"
 PAGES_PATH = SOURCE_ROOT / "data" / "pages.json"
 # Chrome sentences whose translation marks the linked words (build_site.py: render_calculator_intro).
-LINKED_STRINGS = {"learn.calculator_intro_below", "learn.calculator_intro_page"}
+LINKED_STRINGS = {"learn.calculator_intro_below", "learn.calculator_intro_page", "learn.countries_map_intro"}
 
 EM_DASH = "—"
 EN_DASH = "–"

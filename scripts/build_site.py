@@ -1949,8 +1949,10 @@ def render_calculator_intro(
 
     A reader who came for the tool gets it from the first screen: the
     calculator embedded further down, whose heading is always `#calculator`,
-    or else the calculator page the article's callout links, preset and all. The sentence is chrome; its translation marks the
-    linked words with a bare <a>, and the target comes from here.
+    or else the calculator page the article's callout links, preset and all.
+    A record with "countries_map_intro" links the countries map instead. The
+    sentence is chrome; its translation marks the linked words with a bare <a>,
+    and the target comes from here.
     """
     if article.get("section") != "learn" or source_path in CALCULATOR_PAGES:
         return content
@@ -1962,6 +1964,9 @@ def render_calculator_intro(
                 return content
             raise SystemExit(f'{article["path"]} ({code}): an embedded calculator needs its heading at id="calculator"')
         key, href = "learn.calculator_intro_below", "#calculator"
+    elif article.get("countries_map_intro"):
+        # The countries map is the tool for an article about counting countries.
+        key, href = "learn.countries_map_intro", "{{r:/learn/countries-visited-map}}"
     else:
         callout = re.search(r'<p\b[^>]*\bclass="[^\"]*\bcalc-callout\b[^\"]*"[^>]*>(.*?)</p>', content, re.S)
         link = callout and re.search(r'href="([^"]*/learn/[a-z0-9-]+-calculator\b[^"]*)"', callout.group(1))
