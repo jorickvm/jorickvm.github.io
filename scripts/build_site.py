@@ -2002,9 +2002,16 @@ def render_app_line(content: str, article: dict[str, object], source_path: str) 
     cta = content.find('<div class="cta-box"')
     if tldr < 0 or cta < 0:
         return content
-    heading = re.search(r"<h2[^>]*>(.*?)</h2>", content[cta:], re.S)
-    logos = re.findall(r'<img class="logo-(?:dark|light)"[^>]*/>', content[cta:])
-    if not heading or len(logos) != 2:
+    # The closing box itself, up to its own </div>.
+    box, depth = "", 0
+    for tag in re.finditer(r"<(/?)div\b", content[cta:]):
+        depth += -1 if tag.group(1) else 1
+        if depth == 0:
+            box = content[cta:cta + tag.end()]
+            break
+    heading = re.search(r"<h[23][^>]*>(.*?)</h[23]>", box, re.S)
+    logos = re.findall(r'<img class="logo-(?:dark|light)"[^>]*/>', box)
+    if not heading or len(logos) != 2 or APP_STORE_URL not in box:
         return content
     text = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", heading.group(1))).strip()
     depth = 0
