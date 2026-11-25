@@ -48,11 +48,11 @@ CLUSTER_DATA_PATH = SOURCE_ROOT / "data" / "content-clusters.json"
 TITLE_EXCEPTIONS_PATH = SOURCE_ROOT / "data" / "title-exceptions.json"
 BUILD_VERSION = "20260928f"
 VARIANT_VERSIONS = {("article", "help20260802"): "20261117a", ("hub", "92c3adc0daf3"): "20260928f", ("article", "49dd6e3e3ea5"): "20261005a", ("article", "88b8694b8f2d"): "20261005a", ("page", "press"): "20261022b"}
-SITE_HEADER_VERSION = "20261027j"
+SITE_HEADER_VERSION = "20261125a"
 SITE_FOOTER_VERSION = "20261027h"
-ARTICLE_COMPONENTS_VERSION = "20261122a"
+ARTICLE_COMPONENTS_VERSION = "20261125a"
 RULE_CARDS_VERSION = "20261006b"
-NAVIGATION_VERSION = "20261121a"
+NAVIGATION_VERSION = "20261125a"
 
 # Root class that drops the background wash from the app's `.medium` step to
 # `.subtle`, for pages carrying long-form text. See assets/css/tokens.css.
@@ -2021,8 +2021,10 @@ def render_calculator_intro(
 
     A reader who came for the tool gets it from the first screen: the
     calculator embedded further down, whose heading is always `#calculator`,
-    or else the calculator page the article's callout links, preset and all. The sentence is chrome; its translation marks the
-    linked words with a bare <a>, and the target comes from here.
+    or else the calculator page the article's callout links, preset and all.
+    A record with "countries_map_intro" links the countries map instead. The
+    sentence is chrome; its translation marks the linked words with a bare <a>,
+    and the target comes from here.
     """
     if article.get("section") != "learn" or source_path in CALCULATOR_PAGES:
         return content
@@ -2034,6 +2036,9 @@ def render_calculator_intro(
                 return content
             raise SystemExit(f'{article["path"]} ({code}): an embedded calculator needs its heading at id="calculator"')
         key, href = "learn.calculator_intro_below", "#calculator"
+    elif article.get("countries_map_intro"):
+        # The countries map is the tool for an article about counting countries.
+        key, href = "learn.countries_map_intro", "{{r:/learn/countries-visited-map}}"
     else:
         callout = re.search(r'<p\b[^>]*\bclass="[^\"]*\bcalc-callout\b[^\"]*"[^>]*>(.*?)</p>', content, re.S)
         link = callout and re.search(r'href="([^"]*/learn/[a-z0-9-]+-calculator\b[^"]*)"', callout.group(1))
@@ -2052,6 +2057,55 @@ def render_calculator_intro(
     if not found:
         raise SystemExit(f"{article['path']} ({code}): the calculator sentence ends the subtitle, and there is none")
     return content
+
+
+def render_app_line(content: str, article: dict[str, object], source_path: str) -> str:
+    """A one-line App Store link right after a Learn article's summary box.
+
+    Most search readers get their answer from the summary and leave before the
+    closing app box, so the box's heading is repeated here as a single link.
+    The heading and logo come from the box itself, already translated, so the
+    line needs no copy of its own. Calculator pages hand off to the app from
+    the calculator instead.
+    """
+    if article.get("section") != "learn" or source_path in CALCULATOR_PAGES:
+        return content
+    tldr = content.find('<div class="tldr">')
+    cta = content.find('<div class="cta-box"')
+    if tldr < 0 or cta < 0:
+        return content
+    # The closing box itself, up to its own </div>.
+    box, depth = "", 0
+    for tag in re.finditer(r"<(/?)div\b", content[cta:]):
+        depth += -1 if tag.group(1) else 1
+        if depth == 0:
+            box = content[cta:cta + tag.end()]
+            break
+    heading = re.search(r"<h[23][^>]*>(.*?)</h[23]>", box, re.S)
+    logos = re.findall(r'<img class="logo-(?:dark|light)"[^>]*/>', box)
+    if not heading or len(logos) != 2 or APP_STORE_URL not in box:
+        return content
+    text = re.sub(r"\s+", " ", re.sub(r"<[^>]+>", "", heading.group(1))).strip()
+    depth = 0
+    for tag in re.finditer(r"<(/?)div\b", content[tldr:]):
+        depth += -1 if tag.group(1) else 1
+        if depth == 0:
+            end = content.index(">", tldr + tag.end()) + 1
+            break
+    else:
+        return content
+    # Decorative here: the link text already names the app.
+    images = "".join(
+        re.sub(r'alt="[^"]*"', 'alt=""', re.sub(r'width="\d+" height="\d+"', 'width="28" height="28"', logo))
+        for logo in logos
+    )
+    line = (
+        f'\n\n    <a class="app-line" href="{APP_STORE_URL}">'
+        f'<span class="app-line-logo">{images}</span>'
+        f'<span class="app-line-text">{text}</span>'
+        '<span class="app-line-cta">{{t:cta.get_app}}</span></a>'
+    )
+    return content[:end] + line + content[end:]
 
 
 def render_country_checklist(content: str, code: str) -> str:
@@ -2149,6 +2203,7 @@ def render_article(
     content = link_calculator_to_rule(content, article)
     content = mark_calculator_callout(content, article)
     content = render_calculator_intro(content, article, code, source_path, strings)
+    content = render_app_line(content, article, source_path)
     content = render_toc(content, article)
     switcher = render_language_switcher(source_path, locales, translations, code, strings)
     # Only routes this locale has may be prefixed; everything else falls back
