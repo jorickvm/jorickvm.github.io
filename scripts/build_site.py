@@ -45,6 +45,7 @@ HEADER_TEMPLATE = SOURCE_ROOT / "templates" / "partials" / "site-header.html"
 FOOTER_TEMPLATE = SOURCE_ROOT / "templates" / "partials" / "site-footer.html"
 REDIRECT_TEMPLATE = SOURCE_ROOT / "templates" / "redirect.html"
 CLUSTER_DATA_PATH = SOURCE_ROOT / "data" / "content-clusters.json"
+TITLE_EXCEPTIONS_PATH = SOURCE_ROOT / "data" / "title-exceptions.json"
 BUILD_VERSION = "20260928f"
 VARIANT_VERSIONS = {("article", "help20260802"): "20261117a", ("hub", "92c3adc0daf3"): "20260928f", ("article", "49dd6e3e3ea5"): "20261005a", ("article", "88b8694b8f2d"): "20261005a", ("page", "press"): "20261022b"}
 SITE_HEADER_VERSION = "20261027j"
@@ -739,7 +740,11 @@ def english_h1(record: dict[str, object]) -> str:
     return str(record["title"]).replace(" – AtlasDays Help Center", "").replace(" – AtlasDays", "")
 
 
-TITLE_WIDTH = 65
+# What Google shows of a title before cutting it off, in title_width units.
+TITLE_WIDTH = 60
+# The wider budget pages listed in title-exceptions.json keep until their entry
+# expires, so their published titles do not change in the meantime.
+EXCEPTED_TITLE_WIDTH = 65
 
 
 def title_width(title: str) -> int:
@@ -748,25 +753,91 @@ def title_width(title: str) -> int:
     return sum(2 if unicodedata.east_asian_width(char) in "WF" else 1 for char in title)
 
 
-def fitted_title(title: str) -> str:
+@lru_cache(maxsize=1)
+def title_exceptions() -> tuple[dict, ...]:
+    if not TITLE_EXCEPTIONS_PATH.exists():
+        return ()
+    return tuple(json.loads(TITLE_EXCEPTIONS_PATH.read_text(encoding="utf-8")).get("exceptions", []))
+
+
+def title_exception(path: str, code: str) -> dict | None:
+    """The exceptions entry covering `path` in locale `code`, if any. An entry
+    without `locales` covers every locale."""
+    for entry in title_exceptions():
+        if entry.get("path") == path and code in entry.get("locales", [code]):
+            return entry
+    return None
+
+
+def title_limit(path: str, code: str) -> int:
+    return EXCEPTED_TITLE_WIDTH if title_exception(path, code) else TITLE_WIDTH
+
+
+def fitted_title(title: str, limit: int = TITLE_WIDTH) -> str:
     """The English <title> as published: the same brand-only-where-it-fits
     rule derive_record applies to translations. The registry keeps the full
     title, so translations stay pinned to it and nothing goes stale."""
-    if title_width(title) <= TITLE_WIDTH:
+    if title_width(title) <= limit:
         return title
     for suffix in (" – AtlasDays Help Center", " – AtlasDays"):
         if title.endswith(suffix):
             shorter = title.removesuffix(" Help Center")
-            if suffix != " – AtlasDays" and title_width(shorter) <= TITLE_WIDTH:
+            if suffix != " – AtlasDays" and title_width(shorter) <= limit:
                 return shorter
             return title.removesuffix(suffix)
     return title
 
 
-def title_budget(source: dict[str, object]) -> int:
-    """How long a translated title may be: what Google shows, or the published
-    English title's own length when that is longer."""
-    return max(TITLE_WIDTH, len(fitted_title(str(source.get("title", "")))))
+def title_budget(source: dict[str, object], code: str) -> int:
+    """How long a translated title may be, the brand suffix included."""
+    path = str(source.get("path", ""))
+    if title_exception(path, code):
+        return max(EXCEPTED_TITLE_WIDTH, len(fitted_title(str(source.get("title", "")), EXCEPTED_TITLE_WIDTH)))
+    return TITLE_WIDTH
+
+
+def translated_title(overlay: dict) -> str:
+    return str(overlay.get("page_title") or overlay["headline"])
+
+
+def check_title_widths(
+    sources: dict[str, dict],
+    translations: dict[str, dict[str, dict]],
+    today: date,
+) -> list[str]:
+    """Learn titles wider than what Google shows, with the brand suffix dropped.
+
+    A page under evaluation can be listed in title-exceptions.json with an
+    expiry: it keeps its current title, suffix included, until then. Every
+    entry fails the build once it expires, so the list cannot outlive the
+    evaluations it exists for.
+    """
+    english = default_locale_code()
+    problems: list[str] = []
+    for entry in title_exceptions():
+        try:
+            expired = date.fromisoformat(str(entry.get("expires", ""))) < today
+        except ValueError:
+            problems.append(f"{entry.get('path')}: title exception has an invalid expires")
+            continue
+        if expired:
+            problems.append(
+                f"{entry.get('path')}: title exception expired on {entry['expires']}; "
+                "fit its titles and remove it"
+            )
+    for path, source in sources.items():
+        if not path.startswith("learn/"):
+            continue
+        candidates = [(english, str(source["title"]))]
+        for code, overlays in translations.items():
+            if code != english and path in overlays:
+                candidates.append((code, translated_title(overlays[path])))
+        candidates = [(code, re.sub(r"( – |｜)AtlasDays$", "", title)) for code, title in candidates]
+        for code, title in candidates:
+            width = title_width(title)
+            if width > TITLE_WIDTH and not title_exception(path, code):
+                problems.append(f"{code}: {path} title is {width} wide, over {TITLE_WIDTH}: {title}")
+    return problems
 
 
 def render_cluster_related(
@@ -1216,11 +1287,12 @@ def derive_record(
     # Search words first, the brand only where it fits: Google shows the site
     # name on its own line, so the " – AtlasDays" suffix
     # is added only while the title stays within what Google shows, never at
-    # the cost of a search word. A title that already names AtlasDays (the
-    # homepage leads with it) is left as written.
+    # the cost of a search word. A title written with the suffix gets the same
+    # rule; one that names AtlasDays elsewhere (the homepage leads with it) is
+    # left as written.
     suffix = f"{locale['title_separator']}{strings[suffix_key][code]}"
-    title = str(overlay.get("page_title") or overlay["headline"])
-    if "AtlasDays" not in title and title_width(title + suffix) <= title_budget(source):
+    title = translated_title(overlay).removesuffix(suffix)
+    if "AtlasDays" not in title and title_width(title + suffix) <= title_budget(source, code):
         title += suffix
     description = str(overlay["description"])
     record["title"] = title
@@ -2364,10 +2436,23 @@ def main() -> int:
         )
         return 1
 
+    too_wide = check_title_widths({**sources, **hub_sources}, translations, date.today())
+    if too_wide:
+        print("Refusing to build: a Learn title is wider than search results show.")
+        for problem in too_wide:
+            print(f"  {problem}")
+        print(
+            f"\nShorten the English title or the translation's page_title to {TITLE_WIDTH}, without\n"
+            "the AtlasDays suffix. A page under evaluation can be listed in\n"
+            "_site-src/data/title-exceptions.json with an expiry."
+        )
+        return 1
+
     def with_alternates(record: dict[str, object]) -> dict[str, object]:
         """English pages advertise their translations; untranslated ones stay bare.
         The <title> is fitted here too, the one place every English page passes."""
-        record = {**record, "title": fitted_title(str(record["title"]))}
+        limit = title_limit(str(record["path"]), default_locale_code())
+        record = {**record, "title": fitted_title(str(record["title"]), limit)}
         if record.get("locale_alternates") is False:
             return record
         alternates = alternate_links(str(record["path"]), locales, translations)
